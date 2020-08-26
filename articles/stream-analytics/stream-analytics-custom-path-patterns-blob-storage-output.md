@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747623"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869810"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics
 
@@ -71,7 +71,7 @@ Met de aangepaste DateTime-paden kunt u een uitvoer indeling opgeven die wordt a
 
 De volgende indelings specificatie tokens kunnen alleen worden gebruikt of in combi natie met aangepaste DateTime-indelingen:
 
-|Indelings aanduiding   |Description   |Resultaten van de voorbeeld tijd 2018-01-02T10:06:08|
+|Indelings aanduiding   |Beschrijving   |Resultaten van de voorbeeld tijd 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: jjjj}|Het jaar als een getal van vier cijfers|2018|
 |{DateTime: MM}|Maand van 01 tot en met 12|01|
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Voorbeeld
 
-Maak een opslag account, een resource groep, een Stream Analytics taak en een invoer bron op basis van de introductie handleiding voor [Azure stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) . Gebruik dezelfde voorbeeld gegevens die worden gebruikt in de Quick start-gids, ook beschikbaar op [github](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
+Maak een opslag account, een resource groep, een Stream Analytics taak en een invoer bron op basis van de [Azure Stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) Quick Start Guide (Engelstalig). Gebruik dezelfde voorbeeld gegevens die worden gebruikt in de Quick start-gids, ook beschikbaar op [github](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
 
 Maak een BLOB-uitvoer Sink met de volgende configuratie:
 

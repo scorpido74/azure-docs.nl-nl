@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met GitHub | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en GitHub.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170541"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550740"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Zelfstudie: Azure Active Directory-integratie met GitHub voor eenmalige aanmelding
 
@@ -138,8 +134,14 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Een rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+
+    ![gebruikersfunctie](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > De optie **Een rol selecteren** wordt uitgeschakeld. De standaardrol is USER voor de geselecteerde gebruiker.
+
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-github-sso"></a>Eenmalige aanmelding voor GitHub configureren
 
@@ -147,11 +149,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Ga naar **Settings** en klik op **Security**
 
-    ![Instellingen](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![Instellingen](./media/github-tutorial/security.png)
 
 3. Schakel het selectievakje **Enable SAML authentication** in. De velden voor het configureren van eenmalige aanmelding worden zichtbaar. voer de volgende stappen uit:
 
-    ![Instellingen](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![Instellingen](./media/github-tutorial/saml-sso.png)
 
     a. Kopieer de waarde van **URL voor enkele aanmelding** en plak deze waarde in het vak **Aanmeldings-URL** in **Standaard SAML-configuratie** in de Azure-portal.
     
@@ -159,7 +161,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 4. Configureer de volgende velden:
 
-    ![Instellingen](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![Instellingen](./media/github-tutorial/configure.png)
 
     a. Plak in het tekstvak **Sign on URL** de waarde van de **aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
 
@@ -175,7 +177,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 5. Klik op **Test SAML configuration** om te controleren of er geen validatiefouten of -fouten tijdens eenmalige aanmelding zijn opgetreden.
 
-    ![Instellingen](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![Instellingen](./media/github-tutorial/test.png)
 
 6. Klik op **Opslaan**.
 
@@ -192,21 +194,21 @@ Het doel van deze sectie is om in GitHub een gebruiker te maken met de naam Brit
 
 2. Klik op **People**.
 
-    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![People](./media/github-tutorial/people.png "People")
 
 3. Klik op **Invite member**.
 
-    ![Invite Users](./media/github-tutorial/tutorial_github_config_github_09.png "Invite Users")
+    ![Invite Users](./media/github-tutorial/invite-member.png "Invite Users")
 
 4. Voer in het dialoogvenster **Invite member** de volgende stappen uit:
 
     a. Typ in het tekstvak **Email** het e-mailadres van het account van Britta Simon.
 
-    ![Invite People](./media/github-tutorial/tutorial_github_config_github_10.png "Invite People")
+    ![Invite People](./media/github-tutorial/email-box.png "Invite People")
 
     b. Klik op **Send Invitation**.
 
-    ![Invite People](./media/github-tutorial/tutorial_github_config_github_11.png "Invite People")
+    ![Invite People](./media/github-tutorial/send-invitation.png "Invite People")
 
     > [!NOTE]
     > De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt.

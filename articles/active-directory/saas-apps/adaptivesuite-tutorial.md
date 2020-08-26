@@ -1,211 +1,206 @@
 ---
-title: 'Zelf studie: integratie met adaptieve inzichten Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en adaptieve inzichten.
+title: 'Zelfstudie: Azure Active Directory-integratie met Adaptive Insights | Microsoft Docs'
+description: Leer hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Adaptive Insights.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232127"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537734"
 ---
-# <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Zelf studie: adaptieve inzichten integreren met Azure Active Directory
+# <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Zelfstudie: Adaptive Insights integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u adaptieve inzichten kunt integreren met Azure Active Directory (Azure AD). Wanneer u adaptieve inzichten integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Adaptive Insights integreert met Azure Active Directory (Azure AD). Wanneer u Adaptive Insights integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot adaptieve inzichten.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij adaptieve inzichten met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie er toegang heeft tot Adaptive Insights.
+* Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij Adaptive Insights.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Adaptief Insights single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Adaptive Insights waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Adaptieve inzichten biedt ondersteuning voor **IDP** GEÏNITIEERDe SSO
+* Adaptive Insights ondersteunt door **IDP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-adaptive-insights-from-the-gallery"></a>Adaptieve inzichten toevoegen vanuit de galerie
+## <a name="adding-adaptive-insights-from-the-gallery"></a>Adaptive Insights toevoegen vanuit de galerie
 
-Als u de integratie van adaptieve inzichten in azure AD wilt configureren, moet u adaptieve inzichten uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Adaptive Insights met Azure Active Directory moet u Adaptive Insights vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u **adaptieve inzichten** in het zoekvak.
-1. Selecteer **adaptieve inzichten** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Adaptive Insights**.
+1. Selecteer **Adaptive Insights** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO configureren en testen met adaptieve inzichten met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in adaptieve inzichten.
+Configureer en test eenmalige aanmelding van Azure AD met Adaptive Insights met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Adaptive Insights.
 
-Als u Azure AD SSO wilt configureren en testen met adaptieve inzichten, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Adaptive Insights te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-2. **[Configureer adaptieve inzichten SSO](#configure-adaptive-insights-sso)** -om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
-3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-5. Een **[adaptieve Insights-test gebruiker maken](#create-adaptive-insights-test-user)** : als u een equivalent van B. Simon wilt hebben in adaptieve inzichten die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding bij Adaptive Insights configureren](#configure-adaptive-insights-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+5. **[Een Adaptive Insights-testgebruiker maken](#create-adaptive-insights-test-user)** : als u een equivalent van B.Simon in Adaptive Insights wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **adaptieve inzichten** voor toepassings integratie en selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Adaptive Insights**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
-    > U kunt de Id's (Entiteits-ID) en antwoord-URL-waarden ophalen van de pagina met **SAML SSO-instellingen** van adaptieve inzichten.
+    > De waarden voor Id (entiteits-id) en Antwoord-URL ophalen van de pagina **SAML SSO Settings** van Adaptive Insights.
 
-4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de sectie **adaptieve inzichten instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+6. In de sectie **Adaptive Insights instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-adaptive-insights-sso"></a>Adaptieve inzichten SSO configureren
+### <a name="configure-adaptive-insights-sso"></a>Eenmalige aanmelding configureren in Adaptive Insights
 
-1. Meld u in een ander webbrowser venster aan bij de bedrijfs site voor adaptieve inzichten als beheerder.
+1. Meld u in een andere browser als beheerder aan bij de bedrijfssite van Adaptive Insights.
 
 2. Ga naar **Administration**.
 
     ![Beheerder](./media/adaptivesuite-tutorial/ic805644.png "Beheerder")
 
-3. Klik in de sectie **gebruikers en rollen** op **instellingen voor SAML SSO**.
+3. Klik in de sectie **Users and Roles** op **SAML SSO Settings**.
 
     ![SAML SSO-instellingen beheren](./media/adaptivesuite-tutorial/ic805645.png "SAML SSO-instellingen beheren")
 
-4. Voer de volgende stappen uit op de pagina **SAML SSO-instellingen** :
+4. Voer op de pagina **SAML SSO Settings** de volgende stappen uit:
 
-    ![SAML SSO-instellingen](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO-instellingen")
+    ![SAML SSO Settings](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO-instellingen")
 
-    a. Typ in het tekstvak naam van de **identiteits provider** een naam voor uw configuratie.
+    a. Typ in het tekstvak **Identity provider name** een naam voor de configuratie.
 
-    b. Plak de id-waarde van **Azure AD** die is gekopieerd van Azure Portal naar het tekstvak **ID-provider entiteit** .
+    b. Plak de **Azure AD-id** die u hebt gekopieerd in Azure Portal, in het tekstvak **Identity provider Entity ID**.
 
-    c. Plak de waarde van de **aanmeldings-URL** gekopieerd van Azure Portal naar het tekstvak id- **SSO-URL** .
+    c. Plak de **aanmeldings-URL** die u hebt gekopieerd in Azure Portal, in het tekstvak **Identity provider SSO URL**.
 
-    d. Plak de waarde van de **Afmeldings-URL** gekopieerd van Azure Portal naar het tekstvak **aangepaste afmeldings-URL** .
+    d. Plak de **afmeldings-URL** die u hebt gekopieerd in Azure Portal, in het tekstvak **Custom logout URL**.
 
-    e. Als u het gedownloade certificaat wilt uploaden, klikt u op **bestand kiezen**.
+    e. Klik op **Choose file** om het gedownloade certificaat te uploaden.
 
-    f. Selecteer het volgende voor:
+    f. Selecteer de volgende waarden:
 
-     * Gebruikers **naam van de gebruiker met de adaptieve**gebruikers **-id van SAML**selecteert.
+     * **SAML user id**: selecteer **User’s Adaptive Insights user name**.
 
-     * **Gebruikers**-id-locatie van SAML Selecteer **gebruikers-id bij NameID van onderwerp**.
+     * **SAML user id location**: selecteer **User id in NameID of Subject**.
 
-     * **SAML NameID-indeling**, selecteer **e-mail adres**.
+     * **SAML NameID format**: selecteer **Email address**.
 
-     * **Schakel SAML in**, selecteer **SAML SSO en direct Adaptive Insights-aanmelding toestaan**.
+     * **Enable SAML**: selecteer **Allow SAML SSO and direct Adaptive Insights login**.
 
-    g. Kopieer de **SSO-URL voor adaptieve inzichten** en plak deze in de tekst van de **id (Entiteits-ID)** en de **antwoord-URL** in het gedeelte basis-SAML- **configuratie** in de Azure Portal.
+    g. Kopieer de waarde van **Adaptive Insights SSO URL** en plak deze in de tekstvakken **Id (entiteits-id)** en **Antwoord-URL** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
     h. Klik op **Opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan adaptieve inzichten.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Adaptive Insights.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer **adaptieve inzichten**in de lijst toepassingen.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Adaptive Insights** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-adaptive-insights-test-user"></a>Een adaptieve Insights-test gebruiker maken
+### <a name="create-adaptive-insights-test-user"></a>Testgebruiker maken voor Adaptive Insights
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij adaptieve inzichten, moeten ze worden ingericht in adaptieve inzichten. In het geval van adaptieve inzichten is inrichting een hand matige taak.
+Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Adaptive Insights, moeten ze worden ingericht in Adaptive Insights. In het geval van Adaptive Insights moet dit handmatig gebeuren.
 
-**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
+**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
 
-1. Meld u aan bij de bedrijfs site voor **adaptieve inzichten** als beheerder.
+1. Meld u als beheerder aan bij de bedrijfssite van **Adaptive Insights**.
 
 2. Ga naar **Administration**.
 
    ![Beheerder](./media/adaptivesuite-tutorial/IC805644.png "Beheerder")
 
-3. Klik in de sectie **gebruikers en rollen** op **gebruikers**.
+3. Klik in de sectie **Users and Roles** op **Users**.
 
    ![Gebruiker toevoegen](./media/adaptivesuite-tutorial/IC805648.png "Gebruiker toevoegen")
 
-4. Voer de volgende stappen uit in de sectie **nieuwe gebruiker** :
+4. Voer in het gedeelte **New User** de volgende stappen uit:
 
    ![Verzenden](./media/adaptivesuite-tutorial/IC805649.png "Verzenden")
 
-   a. Typ de **naam**, de **gebruikers naam**, het **e-mail adres**en het **wacht woord** van een geldige Azure Active Directory gebruiker die u wilt inrichten in de bijbehorende tekst vakken.
+   a. Typ waarden voor **Name**, **Username**, **Email** en **Password** voor een geldige Azure Active Directory-gebruiker die u wilt inrichten.
 
-   b. Selecteer een **rol**.
+   b. Selecteer een rol in de vervolgkeuzelijst **Role**.
 
-   c. Klik op **verzenden**.
+   c. Klik op **Submit**
 
 > [!NOTE]
-> U kunt alle andere hulpprogram ma's voor het maken van een adaptief Insights-gebruikers account of Api's die worden geleverd door adaptieve inzichten, gebruiken om Azure AD-gebruikers accounts in te richten.
+> U kunt voor het inrichten van Azure AD-gebruikersaccounts andere hulpprogramma's of API's voor het maken van Adaptive Insights-gebruikersaccount gebruiken die door Adaptive Insights worden verstrekt.
 
-### <a name="test-sso"></a>SSO testen 
+### <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel adaptieve inzichten in het toegangs venster klikt, moet u automatisch worden aangemeld bij de adaptieve inzichten waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Adaptive Insights klikt, wordt u automatisch aangemeld bij de instantie van Adaptive Insights waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 

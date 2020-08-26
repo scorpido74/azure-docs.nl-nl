@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796932"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871174"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Problemen met replicatie oplossen in VMware VM-migratie zonder agent
 
@@ -30,13 +30,36 @@ Gebruik de volgende stappen om de replicatie status voor uw virtuele machines te
 
   1. Ga naar de pagina servers in Azure Migrate op de Azure Portal.
   2. Ga naar de pagina "computers repliceren" door te klikken op "repliceren van servers" in de tegel server migratie.
-  3. U ziet een lijst met replicatie servers samen met aanvullende informatie, zoals status, status, laatste synchronisatie tijd, enzovoort. In de kolom Status wordt de huidige replicatie status van de virtuele machine aangegeven. De waarde ' Critical'or ' warning ' in de kolom Status geeft meestal aan dat de vorige replicatie cyclus voor de virtuele machine is mislukt. Klik met de rechter muisknop op de virtuele machine en selecteer fout gegevens voor meer informatie. De pagina fout Details bevat informatie over de fout en aanvullende informatie over het oplossen van problemen. U ziet ook een koppeling recente gebeurtenissen die kan worden gebruikt om naar de pagina gebeurtenissen voor de virtuele machine te gaan.
+  3. U ziet een lijst met replicatie servers samen met aanvullende informatie, zoals status, status, laatste synchronisatie tijd, enzovoort. In de kolom Status wordt de huidige replicatie status van de virtuele machine aangegeven. Een kritische of waarschuwings waarde in de kolom Status geeft meestal aan dat de vorige replicatie cyclus voor de virtuele machine is mislukt. Klik met de rechter muisknop op de virtuele machine en selecteer fout gegevens voor meer informatie. De pagina fout Details bevat informatie over de fout en aanvullende informatie over het oplossen van problemen. U ziet ook een koppeling recente gebeurtenissen die kan worden gebruikt om naar de pagina gebeurtenissen voor de virtuele machine te gaan.
   4. Klik op recente gebeurtenissen om de eerdere fouten in de replicatie cyclus voor de virtuele machine te bekijken. Zoek op de pagina gebeurtenissen naar de meest recente gebeurtenis van het type ' replicatie cyclus mislukt ' of ' de replicatie cyclus is mislukt voor de schijf ' voor de virtuele machine.
   5. Klik op de gebeurtenis om inzicht te krijgen in de mogelijke oorzaken van de fout en aanbevolen herstel stappen. Gebruik de verstrekte informatie om problemen op te lossen en de fout te herstellen.
     
 ## <a name="common-replication-errors"></a>Veelvoorkomende replicatie fouten
 
 In deze sectie worden enkele veelvoorkomende fouten beschreven en wordt uitgelegd hoe u deze problemen kunt oplossen.
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>Key Vault mislukte bewerking bij het repliceren van Vm's
+
+**Fout:** De bewerking Key Vault is mislukt. Bewerking: een beheerd opslag account configureren, Key Vault: sleutel-kluis-naam, opslag account: naam van opslag account is mislukt met de fout:
+
+**Fout:** De bewerking Key Vault is mislukt. Bewerking: definitie van de hand tekening voor gedeelde toegang genereren, Key Vault: sleutel-kluis-naam, opslag account: naam van opslag account is mislukt met de fout:
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+Deze fout treedt doorgaans op omdat het beleid voor gebruikers toegang voor de Key Vault de gebruiker die momenteel is aangemeld, niet de benodigde machtigingen heeft om opslag accounts te configureren om te worden Key Vault beheerd. Als u het beleid voor gebruikers toegang op de sleutel kluis wilt controleren, gaat u naar de sleutel kluis pagina op de portal voor de sleutel kluis en selecteert u toegangs beleid 
+
+Wanneer de-Portal de sleutel kluis maakt, wordt er ook een gebruikers toegangs beleid toegevoegd waarmee de momenteel aangemelde gebruikers machtigingen worden verleend om opslag accounts te configureren om te worden Key Vault beheerd. Dit kan twee oorzaken hebben
+
+- De aangemelde gebruiker is een externe principal op de Azure-Tenant voor klanten (CSP-abonnement, en de aangemelde gebruiker is de partner beheerder). De tijdelijke oplossing in dit geval is om de sleutel kluis te verwijderen, u af te melden bij de portal en u vervolgens aan te melden met een gebruikers account van de Tenant klanten (geen externe principal) en de bewerking opnieuw uit te voeren. De CSP-partner heeft meestal een gebruikers account in de klanten Azure Active Directory Tenant die ze kunnen gebruiken. Als dat niet het geval is, kunt u zich bij de gebruikers Azure Active Directory Tenant aanmelden bij de portal en de gerepliceerde bewerking vervolgens opnieuw proberen. Voor het gebruikte account moet de machtigingen eigenaar of Inzender + gebruikers toegangs beheerder zijn verleend aan het account in de resource groep (project resource groep migreren)
+
+- De andere gevallen waarin dit kan gebeuren, is wanneer een gebruiker (gebruiker1) in eerste instantie replicatie probeerde uit te voeren en een fout heeft aangetroffen, maar de sleutel kluis al is gemaakt (en het beleid voor gebruikers toegang op de juiste wijze is toegewezen aan deze gebruiker). Op een later tijdstip probeert een andere gebruiker (bijvoorbeeld) replicatie te installeren, maar de bewerking beheerd opslag account configureren of de SAS-definitie genereren mislukt omdat er geen gebruikers toegangs beleid is dat overeenkomt met de voor-en achterrichting in de sleutel kluis.
+
+**Oplossing**: om dit probleem te verhelpen, maakt u een beleid voor gebruikers toegang voor de machtiging verlenen van de sleutel kluis die het beheerde opslag account moet configureren en het genereren van SAS-definities. Met de onderstaande cmdlets kunt u dit doen via Azure PowerShell:
+
+$userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Id
+
+Set-AzureRmKeyVaultAccessPolicy-Kluisnaam "sleutel kluisnaam"-ObjectId $userPrincipalId-PermissionsToStorage Get, List, Delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, herstellen, back-up, herstellen, opschonen
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 

@@ -15,40 +15,40 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181529"
 ---
 ## <a name="test-your-code"></a>Uw code testen
 
-Als u uw project wilt uitvoeren, selecteert u op **F5**in Visual Studio. De **mainwindow** van uw toepassing wordt weer gegeven, zoals hier wordt weer gegeven:
+Druk op **F5** in Visual Studio om uw project uit te voeren. De **MainWindow** van uw toepassing wordt weergegeven, zoals hier wordt getoond:
 
 ![Uw toepassing testen](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-De eerste keer dat u de toepassing uitvoert en de API-knop **oproep Microsoft Graph** selecteert, wordt u gevraagd u aan te melden. Gebruik een Azure Active Directory account (werk-of school account) of een Microsoft-account (live.com, outlook.com) om het te testen.
+De eerste keer dat u de toepassing uitvoert en de knop **Microsoft Graph API aanroepen** selecteert, wordt u gevraagd om u aan te melden. Gebruik een Azure Active Directory-account (werk- of schoolaccount) of een Microsoft-account (live.com, outlook.com) om de toepassing te testen.
 
 ![Aanmelden bij Azure Portal](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
 ### <a name="provide-consent-for-application-access"></a>Toestemming voor toegang tot de toepassing geven
 
-De eerste keer dat u zich bij uw toepassing aanmeldt, wordt u ook gevraagd toestemming te geven om de toepassing toegang te verlenen tot uw profiel en u aan te melden, zoals hier wordt weer gegeven:
+De eerste keer dat u zich bij uw toepassing aanmeldt, wordt u ook gevraagd om de toepassing toestemming te geven om uw profiel te openen en u aan te melden, zoals hier wordt weergegeven:
 
-![Geef uw toestemming voor toegang tot toepassingen](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
+![De toepassing toestemming geven voor toegang](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
 ### <a name="view-application-results"></a>Resultaten van de toepassing weergeven
 
-Nadat u zich hebt aangemeld, ziet u de gebruikers profiel gegevens die worden geretourneerd door de aanroep van de Microsoft Graph-API. De resultaten worden weer gegeven in het vak **API-aanroep resultaten** . Basis informatie over het token dat is verkregen via de aanroep `AcquireTokenInteractive` van of `AcquireTokenSilent` moet zichtbaar zijn in het vak **token info** . De resultaten bevatten de volgende eigenschappen:
+Nadat u zich hebt aangemeld, zouden de gebruikersprofielgegevens die worden geretourneerd door de aanroep aan de Microsoft Graph-API moeten worden weergegeven. De resultaten worden weergegeven in het vak met de **resultaten van de API-aanroep**. Basisgegevens van het token dat is verkregen via de aanroep aan `AcquireTokenInteractive` of `AcquireTokenSilent`, moeten zichtbaar zijn in het vak **Tokengegevens**. De resultaten bevatten de volgende eigenschappen:
 
 |Eigenschap  |Indeling  |Beschrijving |
 |---------|---------|---------|
-|**Gebruikersnaam** |<span>user@domain.com</span> |De gebruikers naam die wordt gebruikt om de gebruiker te identificeren.|
-|**Token verloopt** |DateTime |Het tijdstip waarop het token verloopt. MSAL breidt de verloop datum uit door de token indien nodig te vernieuwen.|
+|**Gebruikersnaam** |<span>user@domain.com</span> |De gebruikersnaam die is gebruikt om de gebruiker te identificeren.|
+|**Vervaldatum van token** |DateTime |Het moment waarop het token verloopt. MSAL verlengt de vervaldatum door het token wanneer nodig te vernieuwen.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Meer informatie over bereiken en gedelegeerde machtigingen
 
-De Microsoft Graph API vereist het bereik *user.read* om het profiel van een gebruiker te lezen. Deze scope wordt standaard automatisch toegevoegd in elke toepassing die is geregistreerd in de portal voor toepassings registratie. Overige API's voor Microsoft Graph, evenals aangepaste API's voor uw back-endserver, vereisen mogelijk aanvullende bereiken. De Microsoft Graph-API vereist het bereik *Calendars. Read* om de agenda's van de gebruiker weer te geven.
+De Microsoft Graph API vereist het bereik *user.read* om het profiel van een gebruiker te lezen. Dit bereik wordt standaard automatisch toegevoegd in elke toepassing die is geregistreerd in de toepassingsregistratieportal. Overige API's voor Microsoft Graph, evenals aangepaste API's voor uw back-endserver, vereisen mogelijk aanvullende bereiken. De Microsoft Graph API vereist het bereik *Calendars.Read* om de agenda's van de gebruiker weer te geven.
 
 Als u toegang wilt krijgen tot de agenda van de gebruiker in de context van een toepassing, voegt u de gedelegeerde toestemming *Calendars.Read* toe aan de toepassingsregistratiegegevens. Voeg vervolgens het bereik *Calendars.Read* toe aan de oproep `acquireTokenSilent`.
 

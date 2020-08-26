@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: Fouten en probleemoplossing voor module
   href: designer-error-codes.md
+- name: Querysyntaxis voor grafieken zoeken
+  href: graph-search-syntax.md

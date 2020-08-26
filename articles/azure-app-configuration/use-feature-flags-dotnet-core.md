@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor het gebruik van functie vlaggen in een .NET core-app | Microsoft Docs
-description: In deze zelf studie leert u hoe u functie vlaggen implementeert in .NET Core-Apps.
+title: Zelfstudie voor het gebruik van functievlaggen in een .NET Core-app | Microsoft Docs
+description: In deze zelfstudie leert u hoe u functievlaggen kunt implementeren in .NET Core-apps.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,35 +11,35 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79473435"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224710"
 ---
-# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Zelf studie: functie vlaggen gebruiken in een ASP.NET Core-app
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Zelfstudie: Functievlaggen gebruiken in een ASP.NET Core-app
 
-De beheer bibliotheken van de .NET-kern functie bieden idiomatisch-ondersteuning voor het implementeren van functie vlaggen in een .NET-of ASP.NET Core-toepassing. Met deze bibliotheken kunt u functie vlaggen declaratief toevoegen aan uw code, zodat u niet alle `if` instructies hiervoor hand matig hoeft te schrijven.
+De .NET Core Feature Management-bibliotheken bieden idiomatische ondersteuning voor het implementeren van functievlaggen in een .NET- of ASP.NET Core-toepassing. Met deze bibliotheken kunt u functievlaggen declaratief toevoegen aan uw code, zodat u niet alle `if`-instructies handmatig hoeft te schrijven.
 
-De functie beheer bibliotheken beheren ook de levens cyclus van functie vlaggen achter de schermen. Bijvoorbeeld: de bibliotheken vernieuwen en cache vlag statussen of garanderen dat een vlag status onveranderbaar is tijdens het aanroepen van een aanvraag. Daarnaast biedt de ASP.NET Core-bibliotheek out-of-the-box-integraties, waaronder MVC-controller acties, weer gaven, routes en middleware.
+De Feature Management-bibliotheken beheren ook de levenscyclus van functievlaggen achter de schermen. Bijvoorbeeld: de bibliotheken worden vernieuwd en slaan vlagstatussen op in een cache of garanderen dat een vlagstatus onveranderbaar is tijdens het aanroepen van een aanvraag. Daarnaast biedt de ASP.NET Core-bibliotheek kant-en-klare integraties, waaronder acties, weergaven, routes en middleware voor MVC-controllers.
 
-[Met de functie vlaggen toevoegen aan een ASP.net core-app Quick Start kunt](./quickstart-feature-flag-aspnet-core.md) u op verschillende manieren functie vlaggen toevoegen aan een ASP.net core-toepassing. In deze zelf studie worden deze methoden uitgebreid beschreven. Zie de [documentatie over het beheer van ASP.net core-onderdelen](https://go.microsoft.com/fwlink/?linkid=2091410)voor een volledige referentie.
+De [quickstart Functievlaggen toevoegen aan een ASP.NET Core-app](./quickstart-feature-flag-aspnet-core.md) bevat verschillende manieren om functievlaggen toe te voegen in een ASP.NET Core-toepassing. In deze zelfstudie worden deze methoden uitgebreid beschreven. Zie de [documentatie over het beheren van ASP.NET Core-functies](https://go.microsoft.com/fwlink/?linkid=2091410) voor een volledig overzicht.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Voeg functie vlaggen toe aan de belangrijkste onderdelen van uw toepassing om de beschik baarheid van functies te bepalen.
-> * Integreer met app-configuratie wanneer u deze gebruikt voor het beheren van functie vlaggen.
+> * Voeg functievlaggen toe aan de belangrijkste onderdelen van uw toepassing om de beschikbaarheid van functies te bepalen.
+> * Integreer met App Configuration wanneer u deze gebruikt voor het beheren van functievlaggen.
 
-## <a name="set-up-feature-management"></a>Functie beheer instellen
+## <a name="set-up-feature-management"></a>Functiebeheer instellen
 
-Voeg een verwijzing naar het `Microsoft.FeatureManagement` NuGet-pakket toe om gebruik te maken van het .net Core-functie beheer.
+Voeg een verwijzing naar de NuGet-pakketten `Microsoft.FeatureManagement.AspNetCore` en `Microsoft.FeatureManagement` toe om gebruik te maken van de .NET Core-functiebeheerder.
     
-De functie vlaggen van het `IFeatureManager` Framework van het systeem eigen configuratie systeem worden in .net core feature Manager opgehaald. Als gevolg hiervan kunt u de functie vlaggen van uw toepassing definiëren met behulp van een configuratie bron die .NET core ondersteunt, inclusief het lokale bestand *appSettings. json* of omgevings variabelen. `IFeatureManager`is afhankelijk van de invoer van .NET core-afhankelijkheid. U kunt de functie Beheer Services registreren met behulp van standaard conventies:
+De .NET Core-functiebeheerder `IFeatureManager` krijgt functievlaggen van het systeemeigen configuratiesysteem van het framework. Als gevolg hiervan kunt u de functievlaggen van uw toepassing definiëren met behulp van een configuratiebron die .NET Core ondersteunt, met inbegrip van het lokale *appsettings.json*-bestand of omgevingsvariabelen. `IFeatureManager` maakt gebruik van .NET Core-afhankelijkheidsinjectie. U kunt de functiebeheerservices registreren met behulp van standaard conventies:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -53,7 +53,7 @@ public class Startup
 }
 ```
 
-Standaard haalt functie beheer functie vlaggen op uit de `"FeatureManagement"` sectie van de .net core-configuratie gegevens. In het volgende voor beeld wordt aangegeven dat de functie beheer van een andere `"MyFeatureFlags"` sectie wordt genoemd:
+Standaard haalt de functiebeheerder functievlaggen op uit de sectie `"FeatureManagement"` van de .NET Core-configuratiegegevens. In het volgende voorbeeld moet de functiebeheerder deze echter lezen vanuit een andere sectie met de naam `"MyFeatureFlags"`:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -70,7 +70,7 @@ public class Startup
 }
 ```
 
-Als u filters in uw functie vlaggen gebruikt, moet u een extra bibliotheek toevoegen en registreren. In het volgende voor beeld ziet u hoe u een ingebouwd functie filter gebruikt `PercentageFilter`met de naam:
+Als u filters in uw functievlaggen gebruikt, moet u een extra bibliotheek toevoegen en registreren. In het volgende voorbeeld ziet u hoe u een ingebouwd functiefilter gebruikt met de naam `PercentageFilter`:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -86,11 +86,11 @@ public class Startup
 }
 ```
 
-U wordt aangeraden de functie vlaggen buiten de toepassing te blijven en deze afzonderlijk te beheren. Als u dit doet, kunt u de status van de vlaggen op elk gewenst moment wijzigen. deze wijzigingen worden direct doorgevoerd in de toepassing. App-configuratie biedt een centrale locatie voor het organiseren en beheren van al uw functie vlaggen via een speciale portal-gebruikers interface. App-configuratie levert ook rechtstreeks de vlaggen aan uw toepassing via de .NET core-client bibliotheken.
+U wordt aangeraden de functievlaggen buiten de toepassing te houden en deze afzonderlijk te beheren. Als u dit doet, kunt u de status van de vlaggen op elk gewenst moment wijzigen. Deze wijzigingen worden direct doorgevoerd in de toepassing. App Configuration biedt een centrale locatie voor het organiseren en beheren van al uw functievlaggen via een toegewezen portal-gebruikersinterface. App Configuration levert ook rechtstreeks de vlaggen aan uw toepassing via de clientbibliotheken voor .NET Core.
 
-De eenvoudigste manier om uw ASP.NET Core-toepassing te koppelen aan app-configuratie is via `Microsoft.Azure.AppConfiguration.AspNetCore`de configuratie provider. Volg deze stappen om dit NuGet-pakket te gebruiken.
+De eenvoudigste manier om uw .NET Core-toepassing te verbinden met App Configuration is via de configuratieprovider `Microsoft.Azure.AppConfiguration.AspNetCore`. Voer deze stappen uit om dit NuGet-pakket te gebruiken.
 
-1. Open het *Program.cs* -bestand en voeg de volgende code toe.
+1. Open het bestand *Program.cs* en voeg de volgende code toe.
 
    ```csharp
    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -107,7 +107,7 @@ De eenvoudigste manier om uw ASP.NET Core-toepassing te koppelen aan app-configu
               .UseStartup<Startup>();
    ```
 
-2. Open *Startup.cs* en werk de `Configure` methode bij om een middleware toe te voegen, zodat de waarden van de functie vlag kunnen worden vernieuwd met een terugkerend interval terwijl de ASP.net core web-app aanvragen blijft ontvangen.
+2. Open *Startup.cs* en werk de methode `Configure` bij om middleware toe te voegen, zodat de waarden van de functievlaggen periodiek kunnen worden vernieuwd terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -117,7 +117,7 @@ De eenvoudigste manier om uw ASP.NET Core-toepassing te koppelen aan app-configu
    }
    ```
 
-De waarden van de functie vlag worden naar verwachting in de loop van de tijd gewijzigd. Standaard worden de waarden van de functie vlag in de cache opgeslagen gedurende een periode van 30 seconden, waardoor een vernieuwings bewerking wordt geactiveerd wanneer de middleware een aanvraag ontvangt, wordt de waarde niet bijgewerkt totdat de waarde in cache verloopt. De volgende code laat zien hoe u de verval tijd van de cache of het polling-interval wijzigt `options.UseFeatureFlags()` in 5 minuten in de aanroep.
+De waarden van de functievlaggen worden naar verwachting in de loop van de tijd gewijzigd. Standaard worden de waarden van de functievlaggen in de cache opgeslagen gedurende een periode van 30 seconden. Als een vernieuwingsbewerking wordt geactiveerd terwijl de middleware een aanvraag ontvangt, wordt de waarde dus pas bijgewerkt als de waarde in de cache verloopt. De volgende code laat zien hoe u de vervaltijd van de cache of het polling-interval wijzigt in 5 minuten met de aanroep `options.UseFeatureFlags()`.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
@@ -128,13 +128,13 @@ config.AddAzureAppConfiguration(options => {
 });
 ```
 
-## <a name="feature-flag-declaration"></a>Declaratie van functie vlaggen
+## <a name="feature-flag-declaration"></a>Declaratie van functievlaggen
 
-Elke functie vlag bestaat uit twee delen: een naam en een lijst met een of meer filters die worden gebruikt om te evalueren of de status van een functie is *ingeschakeld* (dat wil zeggen, `True`wanneer de waarde ervan is). Een filter definieert een use-case voor wanneer een functie moet worden ingeschakeld.
+Elke functievlag bestaat uit twee delen: een naam en een lijst met een of meer filters die worden gebruikt om te evalueren of de status van een functie *aan* is (dat wil zeggen, wanneer de waarde ervan `True` is). Een filter definieert een use-case voor wanneer een functie moet worden ingeschakeld.
 
-Wanneer een functie vlag meerdere filters heeft, wordt de filter lijst in de juiste volg orde gepasseerd totdat een van de filters bepaalt dat de functie moet worden ingeschakeld. Op dat moment is de functie vlag *ingeschakeld*en worden alle resterende filter resultaten overgeslagen. Als geen filter aangeeft dat de functie moet worden ingeschakeld, is de functie vlag *uitgeschakeld*.
+Wanneer een functievlag meerdere filters heeft, wordt de filterlijst in de juiste volgorde doorgelopen, totdat een van de filters bepaalt dat de functie moet worden ingeschakeld. Op dat moment is de functievlag *aan* en worden alle resterende filterresultaten overgeslagen. Als geen enkel filter aangeeft dat de functie moet worden ingeschakeld, is de functievlag *uit*.
 
-De functie beheerder ondersteunt *appSettings. json* als een configuratie bron voor functie vlaggen. In het volgende voor beeld ziet u hoe u functie vlaggen kunt instellen in een JSON-bestand:
+De functiebeheerder ondersteunt *appsettings.json* als een configuratiebron voor functievlaggen. In het volgende voorbeeld ziet u hoe u functievlaggen kunt instellen in een JSON-bestand:
 
 ```JSON
 "FeatureManagement": {
@@ -153,15 +153,15 @@ De functie beheerder ondersteunt *appSettings. json* als een configuratie bron v
 }
 ```
 
-Per Conventie wordt de `FeatureManagement` sectie van dit JSON-document gebruikt voor instellingen voor functie vlaggen. Het vorige voor beeld toont drie functie vlaggen waarvoor de filters zijn gedefinieerd `EnabledFor` in de eigenschap:
+Standaard wordt het gedeelte `FeatureManagement` van dit JSON-document gebruikt voor instellingen voor functievlaggen. Het vorige voorbeeld toont drie functievlaggen waarvoor de filters zijn gedefinieerd in de eigenschap `EnabledFor`:
 
-* `FeatureA`is *ingeschakeld*.
-* `FeatureB`is *uit*.
-* `FeatureC`Hiermee geeft u een `Percentage` filter op `Parameters` met de naam met een eigenschap. `Percentage`is een configureerbaar filter. In dit voor beeld `Percentage` geeft u een kans van 50 procent `FeatureC` *op*voor de vlag.
+* `FeatureA` is *aan*.
+* `FeatureB` is *uit*.
+* Met `FeatureC` geeft u een filter op met de naam `Percentage` met een eigenschap `Parameters`. `Percentage` is een configureerbaar filter. In dit voorbeeld geeft `Percentage` een kans van 50 procent dat de vlag `FeatureC` *aan* is.
 
-## <a name="feature-flag-references"></a>Naslag informatie over functie vlaggen
+## <a name="feature-flag-references"></a>Verwijzingen naar functievlaggen
 
-Zodat u gemakkelijk naar functie vlaggen in code kunt verwijzen, moet u deze definiëren als `enum` variabelen:
+Om gemakkelijk naar functievlaggen in code te kunnen verwijzen, moet u deze definiëren als `enum`-variabelen:
 
 ```csharp
 public enum MyFeatureFlags
@@ -172,9 +172,9 @@ public enum MyFeatureFlags
 }
 ```
 
-## <a name="feature-flag-checks"></a>Controles van functie vlaggen
+## <a name="feature-flag-checks"></a>Controles van functievlaggen
 
-Het basis patroon van functie beheer is om eerst te controleren of een functie vlag is ingesteld op *aan*. Als dit het geval is, voert het onderdeel beheer de acties uit die de functie bevat. Bijvoorbeeld:
+Het basispatroon van functiebeheer is om eerst te controleren of een functievlag is ingesteld op *aan*. Als dit het geval is, voert het functiebeheer de acties uit die de functie bevat. Bijvoorbeeld:
 
 ```csharp
 IFeatureManager featureManager;
@@ -187,7 +187,7 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 
 ## <a name="dependency-injection"></a>Afhankelijkheidsinjectie
 
-In ASP.NET Core MVC kunt u de functie beheer `IFeatureManager` openen via afhankelijkheids injectie:
+In ASP.NET Core MVC krijgt u toegang tot de functiebeheerder `IFeatureManager` via afhankelijkheidsinjectie:
 
 ```csharp
 public class HomeController : Controller
@@ -201,11 +201,13 @@ public class HomeController : Controller
 }
 ```
 
-## <a name="controller-actions"></a>Controller acties
+## <a name="controller-actions"></a>Controller-acties
 
-In MVC-controllers gebruikt u het `FeatureGate` kenmerk om te bepalen of een volledige controller klasse of een specifieke actie is ingeschakeld. De volgende `HomeController` controller moet `FeatureA` zijn *ingeschakeld* voordat er een actie kan worden uitgevoerd die de klasse controller bevat:
+In MVC-controllers gebruikt u het kenmerk `FeatureGate` om te controleren of een hele controllerklasse of een bepaalde actie is ingeschakeld. Voor de volgende `HomeController`-controller moet `FeatureA` worden ingesteld op *aan* voordat een actie in de controllerklasse kan worden uitgevoerd:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -213,9 +215,11 @@ public class HomeController : Controller
 }
 ```
 
-De volgende `Index` actie moet `FeatureA` worden *ingeschakeld* voordat deze kan worden uitgevoerd:
+Voor de volgende actie `Index` moet `FeatureA` *aan* zijn voordat deze kan worden uitgevoerd:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
@@ -223,11 +227,11 @@ public IActionResult Index()
 }
 ```
 
-Wanneer een MVC-controller of-actie wordt geblokkeerd omdat de vlag voor *off*het bepalen van de `IDisabledFeaturesHandler` functie is uitgeschakeld, wordt een geregistreerde interface aangeroepen. De standaard `IDisabledFeaturesHandler` interface retourneert een 404-status code naar de client zonder antwoord tekst.
+Wanneer een MVC-controller of -actie wordt geblokkeerd omdat de vlag voor het controleren van de functie *uit* is, wordt een geregistreerde `IDisabledFeaturesHandler`-interface aangeroepen. De standaard `IDisabledFeaturesHandler`-interface retourneert een 404-statuscode naar de client zonder hoofdtekst van de reactie.
 
-## <a name="mvc-views"></a>MVC-weer gaven
+## <a name="mvc-views"></a>MVC-weergaven
 
-In MVC-weer gaven kunt u een `<feature>` tag gebruiken om inhoud weer te geven op basis van het feit of een functie vlag is ingeschakeld:
+In MVC-weergaven kunt u een `<feature>`-tag gebruiken om inhoud weer te geven op basis van het feit of een functievlag is ingeschakeld:
 
 ```html
 <feature name="FeatureA">
@@ -235,7 +239,7 @@ In MVC-weer gaven kunt u een `<feature>` tag gebruiken om inhoud weer te geven o
 </feature>
 ```
 
-Om alternatieve inhoud weer te geven wanneer niet aan de vereisten `negate` wordt voldaan, kan het kenmerk worden gebruikt.
+Om alternatieve inhoud weer te geven als niet aan de vereisten wordt voldaan, kan het kenmerk `negate` worden gebruikt.
 
 ```html
 <feature name="FeatureA" negate="true">
@@ -243,7 +247,7 @@ Om alternatieve inhoud weer te geven wanneer niet aan de vereisten `negate` word
 </feature>
 ```
 
-Het onderdeel `<feature>` label kan ook worden gebruikt voor het weer geven van inhoud als een of alle functies in een lijst zijn ingeschakeld.
+De `<feature>`-tag kan ook worden gebruikt voor het weergeven van inhoud als een of alle functies in een lijst zijn ingeschakeld.
 
 ```html
 <feature name="FeatureA, FeatureB" requirement="All">
@@ -256,7 +260,7 @@ Het onderdeel `<feature>` label kan ook worden gebruikt voor het weer geven van 
 
 ## <a name="mvc-filters"></a>MVC-filters
 
-U kunt MVC-filters zo instellen dat ze worden geactiveerd op basis van de status van een functie vlag. Met de volgende code wordt een MVC- `SomeMvcFilter`filter toegevoegd met de naam. Dit filter wordt alleen in de MVC-pijp lijn geactiveerd als `FeatureA` dit is ingeschakeld. Deze mogelijkheid is beperkt tot `IAsyncActionFilter`. 
+U kunt MVC-filters zo instellen dat ze worden geactiveerd op basis van de status van een functievlag. Met de volgende code wordt een MVC-filter toegevoegd met de naam `SomeMvcFilter`. Dit filter wordt alleen in de MVC-pijplijn geactiveerd als `FeatureA` is ingeschakeld. Deze mogelijkheid is beperkt tot `IAsyncActionFilter`. 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -273,13 +277,13 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware"></a>Middleware
 
-U kunt ook functie vlaggen gebruiken om toepassings vertakkingen en middleware toe te voegen. Met de volgende code wordt alleen een middleware-onderdeel in de aanvraag pijplijn `FeatureA` ingevoegd wanneer is ingeschakeld:
+U kunt functievlaggen ook gebruiken om voorwaardelijk toepassingsvertakkingen en middleware toe te voegen. Met de volgende code wordt alleen een middleware-onderdeel in de aanvraagpijplijn ingevoegd wanneer `FeatureA` is ingeschakeld:
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));
 ```
 
-Deze code bouwt voort op de meer generieke mogelijkheden om de hele toepassing te vertakking op basis van een functie vlag:
+Deze code bouwt voort op de meer generieke mogelijkheid om de hele toepassing te vertakken op basis van een functievlag:
 
 ```csharp
 app.UseForFeature(featureName, appBuilder => {
@@ -289,8 +293,8 @@ app.UseForFeature(featureName, appBuilder => {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u functie vlaggen kunt implementeren in uw ASP.NET Core-toepassing `Microsoft.FeatureManagement` met behulp van de bibliotheken. Raadpleeg de volgende bronnen voor meer informatie over de ondersteuning van functie beheer in ASP.NET Core en app-configuratie:
+In deze zelfstudie hebt u geleerd hoe u functievlaggen kunt implementeren in een ASP.NET Core-toepassing met behulp van de `Microsoft.FeatureManagement`-bibliotheken. Raadpleeg de volgende bronnen voor meer informatie over de ondersteuning van functiebeheer in ASP.NET Core en App Configuration:
 
-* [Voorbeeld code voor functie vlag ASP.NET Core](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Documentatie voor micro soft. FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Voorbeeldcode voor de ASP.NET Core-functievlag](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Documentatie voor Microsoft.FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Functievlaggen beheren](./manage-feature-flags.md)

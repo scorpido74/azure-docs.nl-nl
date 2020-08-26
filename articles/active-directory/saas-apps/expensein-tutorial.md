@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met ExpenseIn | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ExpenseIn.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 6ac8053b-a216-45d8-bf5e-ecd37d808e57
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017497"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555294"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Zelfstudie: ExpenseIn integreren met Azure Active Directory
 
@@ -127,7 +123,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-expensein-sso"></a>ExpenseIn SSO configureren
 
-1. Open een nieuw browservenster en meld u aan als beheerder bij de ExpenseIn-site van uw bedrijf.
+1. Als u de configuratie in ExpenseIn wilt automatiseren, moet u **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
+
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
+
+1. Als u op **ExpenseIn instellen** klikt nadat u de extensie aan de browser hebt toegevoegd, wordt u doorgestuurd naar de ExpenseIn-toepassing. Geef hier de Administrator-referenties op om u aan te melden bij ExpenseIn. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 5 geautomatiseerd.
+
+    ![Instelling configureren](common/setup-sso.png)
+
+1. Als u ExpenseIn handmatig wilt instellen, meldt u zich als beheerder aan bij de ExpenseIn-bedrijfssite.
 
 1. Klik op **Beheer** bovenaan de pagina, navigeer naar **Eenmalige aanmelding** en klik op **Provider toevoegen**.
 

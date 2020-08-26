@@ -1,164 +1,160 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met eenmalige aanmelding voor Skytap | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en eenmalige aanmelding voor Skytap.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Eenmalige aanmelding voor Skytap | Microsoft Docs'
+description: Leer hoe u eenmalige aanmelding kunt configureren tussen Azure Active Directory en Eenmalige aanmelding voor Skytap.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33a8035f16f531dbb17177d1c2f4d5cd344e5a28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8d34ca8ed01144ee282f6411640894807a09ef08
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77565771"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527857"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Zelf studie: Azure Active Directory SSO-integratie (single sign-on) met eenmalige aanmelding voor Skytap
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Eenmalige aanmelding voor Skytap
 
-In deze zelf studie leert u hoe u eenmalige aanmelding integreert voor Skytap met Azure Active Directory (Azure AD). Wanneer u eenmalige aanmelding integreert voor Skytap met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Eenmalige aanmelding voor Skytap kunt integreren met Azure Active Directory (Azure AD). Wanneer u Single Sign-on for Skytap integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot eenmalige aanmelding voor Skytap.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij eenmalige aanmelding voor Skytap met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie, het Azure Portal.
+* In Azure AD controleren wie toegang heeft tot Eenmalige aanmelding voor Skytap.
+* U kunt instellen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij Single Sign-on voor Skytap.
+* Uw accounts op een centrale locatie beheren, namelijk de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app (Software as a Service) met Azure AD.
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding voor Skytap-abonnement met eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Abonnement op Eenmalige aanmelding voor Skytap waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Eenmalige aanmelding voor Skytap ondersteunt door SP en IDP geïnitieerde SSO.
-* Nadat u eenmalige aanmelding voor Skytap hebt geconfigureerd, kunt u sessie beheer afdwingen. Dit beveiligt exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Eenmalige aanmelding voor Skytap biedt ondersteuning voor door SP en IDP geïnitieerde eenmalige aanmelding.
+* Nadat u Eenmalige aanmelding voor Skytap hebt geconfigureerd, kunt u sessiebeheer afdwingen. Dit biedt realtime bescherming tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="add-single-sign-on-for-skytap-from-the-gallery"></a>Eenmalige aanmelding toevoegen voor Skytap uit de galerie
+## <a name="add-single-sign-on-for-skytap-from-the-gallery"></a>Eenmalige aanmelding voor Skytap toevoegen vanuit de galerie
 
-Als u de integratie van eenmalige aanmelding voor Skytap wilt configureren in azure AD, moet u eenmalige aanmelding voor Skytap in de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Eenmalige aanmelding voor Skytap in Azure AD, moet u Eenmalige aanmelding voor Skytap vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **eenmalige aanmelding voor Skytap** in het zoekvak.
-1. Selecteer **eenmalige aanmelding voor Skytap** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Eenmalige aanmelding voor Skytap** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **Eenmalige aanmelding voor Skytap** in het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>Eenmalige aanmelding van Azure AD voor Skytap configureren en testen voor eenmalige aanmelding
+## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Eenmalige aanmelding voor Skytap
 
-Azure AD SSO configureren en testen met eenmalige aanmelding voor Skytap met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een gekoppelde relatie instellen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in eenmalige aanmelding voor Skytap.
+Configureer en test eenmalige aanmelding van Azure AD met Eenmalige aanmelding voor Skytap met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Eenmalige aanmelding voor Skytap.
 
-Hier volgen de algemene stappen voor het configureren en testen van Azure AD SSO met eenmalige aanmelding voor Skytap:
+Hier volgen de algemene stappen voor het configureren en testen van eenmalige aanmelding van Azure AD met Eenmalige aanmelding voor Skytap:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
 
-    a. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen met B. Simon.
+    a. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding van Azure AD te testen met B.Simon.
 
-    b. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-1. **[Eenmalige aanmelding configureren voor SKYTAP SSO](#configure-single-sign-on-for-skytap-sso)** voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    b. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding voor Skytap configureren](#configure-single-sign-on-for-skytap-sso)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wilt configureren.
 
-    a. **[Maak een eenmalige aanmelding voor Skytap test gebruiker](#create-single-sign-on-for-skytap-test-user)** als u een tegen hanger van B. Simon wilt hebben in eenmalige aanmelding voor Skytap. Deze tegen hanger is gekoppeld aan de Azure AD-weer gave van de gebruiker.
-1. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
+    a. **[Maak een testgebruiker voor Eenmalige aanmelding voor Skytap](#create-single-sign-on-for-skytap-test-user)** om een equivalent van B. Simon te hebben in Eenmalige aanmelding voor Skytap. Deze tegenhanger is gekoppeld aan de Azure AD-voorstelling van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **eenmalige aanmelding voor de Skytap** -toepassings integratie de sectie **beheren** . Selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** het potlood pictogram voor de basis- **SAML-configuratie** om de instellingen te bewerken.
+1. Ga in de [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Eenmalige aanmelding voor Skytap** en zoek de sectie **Beheren**. Selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
-   ![Scherm afbeelding van het instellen van eenmalige aanmelding met de SAML-pagina, waarbij het potlood pictogram is gemarkeerd](common/edit-urls.png)
+   ![Schermopname van de pagina Eenmalige aanmelding instellen met SAML, met het potloodpictogram gemarkeerd](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **id** een URL die gebruikmaakt van het volgende patroon:`http://pingone.com/<custom EntityID>`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `http://pingone.com/<custom EntityID>`
 
-    b. Typ in het tekstvak **antwoord-URL** een URL die gebruikmaakt van het volgende patroon:`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
-1. Selecteer **extra Url's instellen**en voer de volgende stappen uit als u de toepassing in de modus door **SP** gestart wilt configureren:
+1. Selecteer **Extra URL's instellen** en voer de volgende stappen uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **URL voor aanmelding** een URL die gebruikmaakt van het volgende patroon:`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
     
-    b. Typ in het tekstvak **Relay-status** een URL die gebruikmaakt van het volgende patroon:`https://pingone.com/1.0/<custom ID>`
+    b. In het tekstvak **Relaystatus** typt u een URL met het volgende patroon: `https://pingone.com/1.0/<custom ID>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Deze waarden bijwerken met de daad werkelijke id, antwoord-URL, aanmeldings-URL en relay-status. Neem contact op met de [eenmalige aanmelding voor het Skytap-client ondersteunings team](mailto:support@skytap.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, antwoord-URL, aanmeldings-URL en relaystatus. Neem contact op met het [ondersteuningsteam van Eenmalige aanmelding voor Skytap](mailto:support@skytap.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML**. Selecteer **downloaden** om het meta gegevensbestand te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding instellen met SAML** in het gedeelte **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens**. Selecteer **Downloaden** om het metagegevensbestand te downloaden en op uw computer op te slaan.
 
-    ![Scherm afbeelding van de koppeling voor het downloaden van het certificaat](common/metadataxml.png)
+    ![Schermopname van de downloadkoppeling voor het certificaat](common/metadataxml.png)
 
-1. Op de sectie **eenmalige aanmelding instellen voor Skytap** kopieert u de juiste URL of url's, op basis van uw vereiste.
+1. In de sectie **Eenmalige aanmelding voor Skytap instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
-    ![Scherm opname van configuratie-Url's kopiëren](common/copy-configuration-urls.png)
+    ![Schermopname van Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer **Azure Active Directory** > **gebruikers** > van**alle gebruikers**in het linkerdeel venster van de Azure Portal.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het veld **wacht woord** .
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het veld **Wachtwoord**.
    1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan eenmalige aanmelding voor Skytap.
+In deze sectie stelt u in dat B.Simon eenmalige aanmelding van Azure kan gebruiken door toegang te verlenen tot Eenmalige aanmelding voor Skytap.
 
-1. Selecteer in het Azure Portal**alle toepassingen**in **bedrijfs toepassingen** > .
-1. Selecteer **eenmalige aanmelding voor Skytap**in de lijst toepassingen.
-1. Zoek op de pagina overzicht van de app de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer **Eenmalige aanmelding voor Skytap** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
-   ![Scherm afbeelding van de sectie beheren met gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
+   ![Het gedeelte Beheren, met Gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer in het dialoog venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
+1. Selecteer **Gebruiker toevoegen**. Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![Scherm opname van de pagina gebruikers en groepen, met gemarkeerde gebruiker toevoegen](common/add-assign-user.png)
+    ![Schermopname van de pagina Gebruikers en groepen, met Gebruiker toevoegen gemarkeerd](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers. Kies vervolgens de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens de knop **selecteren** onder aan het scherm.
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** in de lijst met gebruikers **B.Simon**. Kies vervolgens onderaan het scherm de knop **Selecteren**.
+1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens onderaan het scherm de knop **Selecteren**.
 1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-## <a name="configure-single-sign-on-for-skytap-sso"></a>Eenmalige aanmelding configureren voor Skytap SSO
+## <a name="configure-single-sign-on-for-skytap-sso"></a>Eenmalige aanmelding voor Skytap configureren
 
-Als u eenmalige aanmelding wilt configureren voor eenmalige aanmelding voor Skytap, moet u het gedownloade **XML-bestand met federatieve meta gegevens**en de juiste gekopieerde url's verzenden van de Azure Portal naar de [eenmalige aanmelding voor Skytap client ondersteunings team](mailto:support@skytap.com). Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
+Als u eenmalige aanmelding aan de zijde van Eenmalige aanmelding voor Skytap wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Microsoft Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Eenmalige aanmelding voor Skytap](mailto:support@skytap.com). Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
 
 
-### <a name="create-single-sign-on-for-skytap-test-user"></a>Eenmalige aanmelding maken voor Skytap test gebruiker
+### <a name="create-single-sign-on-for-skytap-test-user"></a>Testgebruiker maken voor Eenmalige aanmelding voor Skytap
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in eenmalige aanmelding voor Skytap. Werk met de [eenmalige aanmelding voor het Skytap-client ondersteunings team](mailto:support@skytap.com) om de gebruikers toe te voegen aan de eenmalige aanmelding voor Skytap-platform. U kunt eenmalige aanmelding pas gebruiken als u gebruikers maakt en activeert.
+In deze sectie maakt u in Eenmalige aanmelding voor Skytap een gebruiker met de naam B.Simon. Werk samen met het [klantondersteuningsteam van Eenmalige aanmelding voor Skytap](mailto:support@skytap.com) om de gebruikers toe te voegen aan het platform van Eenmalige aanmelding voor Skytap. U kunt eenmalige aanmelding pas gebruiken als u gebruikers hebt gemaakt en geactiveerd.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
-In deze sectie kunt u de configuratie van eenmalige aanmelding voor Azure AD testen met behulp van het toegangs venster.
+In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel eenmalige aanmelding voor Skytap in het toegangs venster selecteert, moet u automatisch worden aangemeld bij de eenmalige aanmelding voor Skytap waarvoor u SSO hebt ingesteld. Zie [Inleiding tot het toegangs venster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie.
+Wanneer u in het toegangsvenster op de tegel Eenmalige aanmelding voor Skytap klikt, wordt u automatisch aangemeld bij het exemplaar van Eenmalige aanmelding voor Skytap waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer vertraging met Azure AD](https://aad.portal.azure.com/)
+- [Slack uitproberen met Azure AD](https://aad.portal.azure.com/)
 

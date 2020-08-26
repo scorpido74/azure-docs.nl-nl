@@ -5,12 +5,12 @@ description: Meer informatie over het bijwerken of opnieuw instellen van de refe
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386925"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871221"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>De referenties voor de Azure Kubernetes-service bijwerken of draaien (AKS)
 
@@ -31,7 +31,8 @@ Wanneer u de referenties voor een AKS-cluster wilt bijwerken, kunt u kiezen uit:
 * Werk de referenties voor de bestaande service-principal bij.
 * Maak een nieuwe Service-Principal en werk het cluster bij om deze nieuwe referenties te gebruiken. 
 
-> ! WAARSCHUWING Als u ervoor kiest om een *nieuwe* Service-Principal te maken, kan het enige tijd duren om een groot AKS-cluster bij te werken voor het gebruik van deze referenties.
+> [!WARNING]
+> Als u ervoor kiest om een *nieuwe* Service-Principal te maken, kan het enige tijd duren om een groot AKS-cluster bij te werken voor het gebruik van deze referenties.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Controleer de verval datum van de Service-Principal
 

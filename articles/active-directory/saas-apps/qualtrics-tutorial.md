@@ -1,167 +1,164 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met SAP Qualtrics | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SAP Qualtrics.
+title: 'Zelfstudie: Integratie van Azure Active Directory met SAP Qualtrics | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SAP Qualtrics.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4df889ab-2685-4d15-a163-1ba26567eeda
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 2e27d020bd25f234d084fba770e234bdccb40a99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 170997099f1194bbc75d6d61a7c29fc1d18b462a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81682379"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552212"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP-Qualtrics
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met SAP Qualtrics
 
-In deze zelf studie leert u hoe u SAP Qualtrics integreert met Azure Active Directory (Azure AD). Wanneer u SAP Qualtrics integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u SAP Qualtrics integreert met Azure AD (Active Directory AD). Wanneer u SAP Qualtrics integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot SAP-Qualtrics.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij SAP Qualtrics met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* U kunt in Azure AD beheren wie toegang tot SAP Qualtrics heeft.
+* Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij SAP Qualtrics.
+* Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app (Software as a Service) met Azure AD.
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 * Een SAP Qualtrics-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* SAP Qualtrics ondersteunt door **SP** en **IDP** geïnitieerde SSO.
-* SAP Qualtrics ondersteunt **just-in-time** -gebruikers inrichting.
-* Nadat u SAP Qualtrics hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time worden beschermd. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. Zie [informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)voor meer informatie.
+* SAP Qualtrics ondersteunt door **SP** en **IDP** geïnitieerde eenmalige aanmelding.
+* SAP Qualtrics biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers.
+* Zodra u SAP Qualtrics hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. Zie [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) voor meer informatie.
 
 ## <a name="add-sap-qualtrics-from-the-gallery"></a>SAP Qualtrics toevoegen vanuit de galerie
 
-Als u de integratie van SAP Qualtrics wilt configureren in azure AD, moet u SAP Qualtrics toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van SAP Qualtrics met Azure AD moet u SAP Qualtrics uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer **Azure Active Directory**in het linkerdeel venster.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **SAP Qualtrics** in het zoekvak.
-1. Selecteer **SAP Qualtrics** van resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ in de sectie **Toevoegen vanuit de galerie** in het zoekvak: **SAP Qualtrics**.
+1. Selecteer **SAP Qualtrics** in de lijst met resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>Eenmalige aanmelding van Azure AD voor SAP Qualtrics configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>Eenmalige aanmelding van Azure AD configureren en testen voor SAP Qualtrics
 
-Azure AD SSO met SAP Qualtrics configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een gekoppelde relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SAP Qualtrics.
+Configureer en test eenmalige aanmelding van Azure AD met SAP Qualtrics met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SAP Qualtrics.
 
-Als u Azure AD SSO wilt configureren en testen met SAP Qualtrics, voltooit u de volgende bouw stenen:
+Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met SAP Qualtrics te configureren en te testen:
 
-1. [Configureer Azure AD SSO](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
-    1. [Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user) eenmalige aanmelding van Azure ad te testen met B. Simon.
-    1. [Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user) toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-1. [SAP QUALTRICS SSO configureren](#configure-sap-qualtrics-sso) voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. [Maak een SAP Qualtrics-test gebruiker](#create-sap-qualtrics-test-user) om een soort tegen te brengen van B. Simon in SAP Qualtrics, gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. [Test SSO](#test-sso) om te controleren of de configuratie werkt.
+1. [Configureer eenmalige aanmelding van Azure AD](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
+    1. [Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user) om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. [Wijs de Azure AD-testgebruiker toe](#assign-the-azure-ad-test-user) zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. [Eenmalige aanmelding configureren in SAP Qualtrics](#configure-sap-qualtrics-sso) als u de instellingen voor eenmalige aanmelding aan de clientzijde wilt configureren.
+    1. [Maak een testgebruiker in SAP Qualtrics](#create-sap-qualtrics-test-user) om in SAP Qualtrics een tegenhanger van B.Simon te hebben, die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. [Test de eenmalige aanmelding](#test-sso) om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **SAP Qualtrics** Application Integration de sectie **Manage** . Selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** het potlood pictogram voor de basis- **SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **SAP Qualtrics** de sectie **Beheren**. Selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
-   ![Scherm afbeelding van het instellen van eenmalige aanmelding met de SAML-pagina, waarbij het potlood pictogram is gemarkeerd](common/edit-urls.png)
+   ![Schermopname van Eenmalige aanmelding instellen met SAML, met het potloodpictogram gemarkeerd](common/edit-urls.png)
 
-1. Als u de toepassing wilt configureren in de gestarte modus **IDP** , voert u op de pagina **eenmalige aanmelding met SAML instellen** de waarden voor de volgende velden in:
+1. Voer op de pagina **Eenmalige aanmelding met SAML instellen** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
     
-    a. Typ in het tekstvak **id** een URL die gebruikmaakt van het volgende patroon:
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
 
     `https://< DATACENTER >.qualtrics.com`
    
-    b. Typ in het tekstvak **antwoord-URL** een URL die gebruikmaakt van het volgende patroon:
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: 
 
     `https://< DATACENTER >.qualtrics.com/login/v1/sso/saml2/default-sp`
 
-    c. Typ in het tekstvak **Relay-status** een URL die gebruikmaakt van het volgende patroon:
+    c. In het tekstvak **Relaystatus** typt u een URL met de volgende notatie:
 
     `https://< brandID >.< DATACENTER >.qualtrics.com`
 
-1. Selecteer **extra Url's instellen**en voer de volgende stap uit als u de toepassing in de modus door **SP** gestart wilt configureren:
+1. Selecteer **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ in het tekstvak **URL voor aanmelden** een URL die gebruikmaakt van het volgende patroon:
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon:
 
     `https://< brandID >.< DATACENTER >.qualtrics.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Deze waarden bijwerken met de werkelijke aanmeldings-URL, id, antwoord-URL en relay-status. Neem contact op met het [ondersteunings team](https://www.qualtrics.com/support/)van de Qualtrics-client om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en relaystatus. Neem contact op met het [Qaultrics-clientondersteuningsteam](https://www.qualtrics.com/support/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , het Kopieer pictogram voor het kopiëren van de URL voor de **federatieve meta gegevens** van de app en sla deze op uw computer op.
+1. Klik op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** op het pictogram Kopiëren om de **URL voor federatieve metagegevens van de app** te kopiëren en sla deze vervolgens op uw computer op.
 
-    ![Scherm opname van het SAML-handtekening certificaat, waarbij het pictogram kopiëren is gemarkeerd](common/copy-metadataurl.png)
+    ![Schermopname van het SAML-handtekeningcertificaat, met het kopieerpictogram gemarkeerd](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer **Azure Active Directory** > **gebruikers** > van**alle gebruikers**in het linkerdeel venster van de Azure Portal.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en schrijf het wacht woord vervolgens op.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer het wachtwoord.
    1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan SAP Qualtrics.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot SAP Qualtrics.
 
-1. Selecteer in het Azure Portal**alle toepassingen**in **bedrijfs toepassingen** > .
-1. Selecteer **SAP Qualtrics**in de lijst toepassingen.
-1. Zoek op de pagina overzicht van de app de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Typ en selecteer **SAP Qualtrics** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
-   ![Scherm afbeelding van de sectie beheren met gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
+   ![Het gedeelte Beheren, met Gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens in het dialoog venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
+1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![Scherm opname van de pagina gebruikers en groepen, met gemarkeerde gebruiker toevoegen](common/add-assign-user.png)
+    ![Schermopname van de pagina Gebruikers en groepen, met Gebruiker toevoegen gemarkeerd](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst met gebruikers. Kies vervolgens **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens **selecteren** onder aan het scherm.
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** **B.Simon** in de lijst met gebruikers. Kies vervolgens **Selecteren** onderaan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens **Selecteren** onderaan het scherm.
 1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-## <a name="configure-sap-qualtrics-sso"></a>SAP Qualtrics SSO configureren
+## <a name="configure-sap-qualtrics-sso"></a>Eenmalige aanmelding voor SAP Qualtrics
 
-Als u eenmalige aanmelding wilt configureren op de SAP Qualtrics-zijde, verzendt u de gekopieerde **app federatieve meta gegevens-URL** van de Azure Portal naar het [SAP Qualtrics-ondersteunings team](https://www.qualtrics.com/support/). Het ondersteunings team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden correct is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant van SAP Qualtrics, verzendt u de gekopieerde **app-URL voor federatieve metagegevens** van de Azure-portal naar het [SAP Qualtrics-ondersteuningsteam](https://www.qualtrics.com/support/). Dit ondersteuningsteam zorgt ervoor dat de SAML SSO-verbinding aan beide kanten juist wordt ingesteld.
 
-### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics-test gebruiker maken
+### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics-testgebruiker maken
 
-SAP Qualtrics ondersteunt just-in-time-gebruikers inrichting, dat standaard is ingeschakeld. U hoeft verder niets te doen. Als een gebruiker nog niet bestaat in SAP Qualtrics, wordt er een nieuwe gemaakt na verificatie.
+SAP Qualtrics biedt ondersteuning voor Just-In-Time-inrichting van gebruikers, wat standaard is ingeschakeld. U hoeft geen verdere actie te ondernemen. Als er nog geen gebruiker in SAP Qualtrics bestaat, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
-In deze sectie kunt u de configuratie van eenmalige aanmelding voor Azure AD testen met behulp van het toegangs venster.
+In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel SAP Qualtrics in het toegangs venster selecteert, wordt u automatisch aangemeld bij de SAP-Qualtrics waarvoor u SSO hebt ingesteld. Zie voor meer informatie [Aanmelden en apps starten vanuit de portal mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wanneer u de tegel SAP Qualtrics in het toegangsvenster selecteert, zou u automatisch moeten worden aangemeld bij het exemplaar van SAP Qualtrics waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Aanmelden bij en het starten van apps vanuit de Mijn apps-portal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [SAP-Qualtrics proberen met Azure AD](https://aad.portal.azure.com/)
+- [SAP Qualtrics proberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [SAP Qualtrics beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [SAP Qualtrics beveiligen met geavanceerde zichtbaarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met Atlassian Cloud | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Atlassian Cloud.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033735"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517645"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Zelfstudie: Atlassian Cloud met Azure Active Directory integreren
 
@@ -77,6 +73,16 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Atlassian C
 ### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
+
+1. Als u de configuratie in Atlassian Cloud wilt automatiseren, moet u de **browseruitbreiding Beveiligde aanmelding voor Mijn Apps** installeren door op **De extensie installeren** te klikken.
+
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
+
+1. Als u op **Atlassian Cloud instellen** klikt nadat u de extensie aan de browser hebt toegevoegd, wordt u doorgestuurd naar de Atlassian Cloud-toepassing. Geef hier de referenties voor een beheerder op om u aan te melden bij Atlassian Cloud. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd.
+
+    ![Instelling configureren](common/setup-sso.png)
+
+1. Als u Atlassian Cloud handmatig wilt instellen, meldt u zich aan bij de Atlassian-bedrijfswebsite als beheerder en voert u de volgende stappen uit.
 
 1. Ga voordat u begint naar uw Atlassian-productinstantie en kopieer/sla de URL van de instantie op
    > [!NOTE]

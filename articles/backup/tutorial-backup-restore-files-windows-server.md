@@ -1,15 +1,15 @@
 ---
-title: 'Zelf studie: items herstellen naar Windows Server'
-description: In deze zelf studie leert u hoe u de MARS-agent (Microsoft Azure Recovery Services agent) kunt gebruiken voor het herstellen van items van Azure naar een Windows-Server.
+title: 'Zelfstudie: Items herstellen naar Windows Server'
+description: In deze zelfstudie leert u hoe u de MARS-agent (Microsoft Azure Recovery Services) kunt gebruiken om items uit Azure naar een Windows-Server te herstellen.
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78672949"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263109"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Bestanden herstellen van Azure naar een Windows-server
 
@@ -29,39 +29,39 @@ Er wordt een handige gebruikersinterfacewizard met de naam Microsoft Azure Backu
 
 1. Open de **Microsoft Azure Backup**-module. U vindt deze door te zoeken naar **Microsoft Azure Backup** op uw machine.
 
-    ![Back-up in behandeling](./media/tutorial-backup-restore-files-windows-server/mars.png)
+    ![Microsoft Azure Backup-invoegtoepassing](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
-2. Klik in de wizard op **Gegevens herstellen** in het **actievenster** van de agentconsole om de wizard **Gegevens herstellen** te starten.
+2. Selecteer in de wizard **Gegevens herstellen** in het **actievenster** van de agentconsole om de wizard **Gegevens herstellen** te starten.
 
-    ![Back-up in behandeling](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
+    ![Gegevens herstellen selecteren](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. Selecteer op de pagina **Aan de slag** pagina **Deze server (servernaam)** en klik op **Volgende**.
+3. Selecteer op de pagina **Aan de slag** de optie **Deze server (servernaam)** en selecteer **Volgende**.
 
-4. Selecteer op de pagina **Selecteer herstelmodus****Afzonderlijke bestanden en mappen** en klik op **Volgende** om het proces voor het selecteren van een herstelpunt te starten.
+4. Selecteer op de pagina **Selecteer herstelmodus** **Afzonderlijke bestanden en mappen** en selecteer **Volgende** om het proces voor het selecteren van een herstelpunt te starten.
 
-5. Selecteer op de pagina **Selecteer volume en datum** het volume dat de bestanden of mappen bevat die u wilt herstellen en klik op **Koppelen**. Selecteer een datum en selecteer in de vervolgkeuzelijst een tijd die overeenkomt met een herstelpunt. **Vet** weergegeven datums geven aan dat er ten minste één herstelpunt beschikbaar is op die dag.
+5. Selecteer op de pagina **Selecteer volume en datum** het volume dat de bestanden of mappen bevat die u wilt herstellen en selecteer **Koppelen**. Selecteer een datum en selecteer in de vervolgkeuzelijst een tijd die overeenkomt met een herstelpunt. **Vet** weergegeven datums geven aan dat er ten minste één herstelpunt beschikbaar is op die dag.
 
-    ![Back-up in behandeling](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
+    ![Volume en datum selecteren](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    Wanneer u op **Koppelen** klikt, maakt Azure Backup het herstelpunt beschikbaar als een schijf. Blader door de schijf en herstel de gewenste bestanden.
+    Wanneer u **Koppelen** selecteert, maakt Azure Backup het herstelpunt beschikbaar als een schijf. Blader door de schijf en herstel de gewenste bestanden.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Items herstellen vanaf een herstelpunt
 
-1. Nadat het herstelvolume is gekoppeld, klikt u op **Bladeren** om Windows Verkenner te openen en de bestanden en mappen te zoeken die u wilt herstellen.
+1. Nadat het herstelvolume is gekoppeld, selecteert u **Bladeren** om Windows Verkenner te openen en de bestanden en mappen te zoeken die u wilt herstellen.
 
-    ![Back-up in behandeling](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
+    ![Bladeren selecteren](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
     U kunt de bestanden rechtstreeks vanuit het herstelvolume openen en de bestanden controleren.
 
-2. Kopieer in Windows Verkenner de bestanden en/of de mappen die u wilt herstellen en plak ze op elke gewenste locatie op de server.
+2. Kopieer in Windows Verkenner de bestanden en mappen die u wilt herstellen en plak ze op elke gewenste locatie op de server.
 
-    ![Back-up in behandeling](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
+    ![De bestanden en mappen kopiëren](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. Wanneer u klaar bent met het herstellen van de bestanden en/of mappen klikt u op de pagina **Bladeren en herstelbestanden** van de wizard **Gegevens herstellen** op **Ontkoppelen**.
+3. Wanneer u klaar bent met het herstellen van de bestanden en mappen selecteert u op de pagina **Bladeren en herstelbestanden** van de wizard **Gegevens herstellen** de optie **Ontkoppelen**.
 
-    ![Back-up in behandeling](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
+    ![Ontkoppelen selecteren](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4. Klik op **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
+4. Selecteer **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
 
     Nadat de momentopname ontkoppeld is, wordt er **Taak voltooid** weergegeven in het deelvenster **Taken** in de console van de agent.
 

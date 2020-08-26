@@ -5,32 +5,32 @@ ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77619301"
 ---
-1. Als u een nieuwe app-configuratie wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com). Selecteer in de linkerbovenhoek van de start pagina de optie **een resource maken**. In het vak **Marketplace doorzoeken** voert u de **app-configuratie** in en selecteert u ENTER.
+1. Als u een nieuw App Configuration-archief wilt maken, moet u zich eerst aanmelden bij de [Azure-portal](https://portal.azure.com). Selecteer in de linkerbovenhoek van de startpagina de optie **Een resource maken**. Voer in het vak **Marketplace doorzoeken** **App Configuration** in en selecteer Invoeren.
 
     ![Zoeken naar App Configuration](media/azure-app-configuration-create/azure-portal-search.png)
 
-1. Selecteer **app-configuratie** in de zoek resultaten en selecteer vervolgens **maken**.
+1. Selecteer **App Configuration** in de zoekresultaten en selecteer vervolgens **Maken**.
 
     ![Selecteer Maken](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
-1. Voer in het deel venster **app-configuratie** > **maken** de volgende instellingen in:
+1. Voer op het deelvenster **App Configuration** > **Maken** de volgende instellingen in:
 
     | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
-    | **Resourcenaam** | Wereldwijd unieke naam | Voer een unieke resource naam in om te gebruiken voor de bron van het configuratie archief van de app. De naam moet een teken reeks zijn tussen 5 en 50 tekens en mag alleen cijfers, letters en het `-` teken bevatten. De naam mag niet beginnen of eindigen met `-` het teken.  |
-    | **Abonnement** | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken om App Configuration te testen. Als uw account slechts één abonnement heeft, wordt dit automatisch geselecteerd en wordt de lijst met **abonnementen** niet weer gegeven. |
-    | **Resourcegroep** | *AppConfigTestResources* | Selecteer of maak een resource groep voor uw app-configuratie opslag resource. Deze groep is handig als u meerdere resources wilt ordenen die u op hetzelfde moment wilt verwijderen door de resource groep te verwijderen. Zie [resource groepen gebruiken om Azure-resources te beheren](/azure/azure-resource-manager/resource-group-overview)voor meer informatie. |
-    | **Locatie** | *VS - centraal* | Gebruik **Locatie** om de geografische locatie op te geven waar het app-configuratiearchief wordt gehost. Voor de beste prestaties maakt u de resource in dezelfde regio als andere onderdelen van uw toepassing. |
-    | **Prijs categorie** | *Gratis* | Selecteer de gewenste prijs categorie. Ga naar de pagina met prijzen voor [app-configuratie](https://azure.microsoft.com/pricing/details/app-configuration/)voor meer informatie.
+    | **Resourcenaam** | Wereldwijd unieke naam | Voer een unieke resourcenaam in voor de resource van het App Configuration-archief. De naam moet een tekenreeks zijn van 5 tot 50 tekens en mag alleen cijfers, letters en `-` bevatten. De naam mag niet beginnen of eindigen met `-`.  |
+    | **Abonnement** | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken om App Configuration te testen. Als uw account maar één abonnement heeft, wordt dit automatisch geselecteerd en wordt de lijst **Abonnement** niet weergegeven. |
+    | **Resourcegroep** | *AppConfigTestResources* | Selecteer of maak een resourcegroep voor de resource van het App Configuration-archief. Deze groep is handig voor het ordenen van meerdere resources die u mogelijk op een bepaald moment wilt verwijderen door resourcegroep te verwijderen. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](/azure/azure-resource-manager/resource-group-overview) voor meer informatie. |
+    | **Locatie** | *US - centraal* | Gebruik **Locatie** om de geografische locatie op te geven waar het app-configuratiearchief wordt gehost. Voor de beste prestaties maakt u de resource in dezelfde regio als de andere onderdelen van uw toepassing. |
+    | **Prijscategorie** | *Gratis* | Selecteer de gewenste prijscategorie. Ga voor meer informatie naar de [pagina met prijzen voor App Configuration](https://azure.microsoft.com/pricing/details/app-configuration/).
 
-    ![Een resource voor het configuratie archief van de app maken](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
+    ![Een resource voor een App Configuration-archief maken](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
 1. Selecteer **Maken**. De implementatie kan enkele minuten duren.
 
-1. Nadat de implementatie is voltooid, selecteert u **instellingen** > **toegangs sleutels**. Noteer de primaire alleen-lezen sleutel connection string. U gebruikt deze connection string later om uw toepassing zo te configureren dat deze communiceert met de app-configuratie die u hebt gemaakt.
+1. Nadat de implementatie is voltooid, selecteert u **Instellingen** > **Toegangssleutels**. Noteer de verbindingsreeks van de primaire alleen-lezensleutel. U hebt de verbindingsreeks later nodig voor de configuratie van uw toepassing, zodat deze kan communiceren met het App Configuration-archief dat u hebt gemaakt.

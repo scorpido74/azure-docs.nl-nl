@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met XaitPorter | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en XaitPorter.
+title: 'Zelfstudie: Integratie van Azure Active Directory met XaitPorter | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en XaitPorter.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 8652073eb3d7d154958566b68fb6e27c35d8da30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086520"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546301"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Zelf studie: integratie Azure Active Directory met XaitPorter
+# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Zelfstudie: Azure Active Directory-integratie met XaitPorter
 
-In deze zelf studie leert u hoe u XaitPorter integreert met Azure Active Directory (Azure AD).
-Het integreren van XaitPorter met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u XaitPorter kunt integreren met Azure Active Directory (Azure AD).
+Als u XaitPorter integreert met Azure AD biedt u dit de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot XaitPorter.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij XaitPorter (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD bepalen wie er toegang heeft tot XaitPorter.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij XaitPorter (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met XaitPorter wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie wilt configureren met XaitPorter, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Abonnement voor eenmalige aanmelding XaitPorter ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
+* Een abonnement op XaitPorter waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* XaitPorter ondersteunt door **SP** GEÏNITIEERDe SSO
+* XaitPorter ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-xaitporter-from-the-gallery"></a>XaitPorter toevoegen uit de galerie
+## <a name="adding-xaitporter-from-the-gallery"></a>XaitPorter toevoegen vanuit de galerie
 
-Als u de integratie van XaitPorter in azure AD wilt configureren, moet u XaitPorter uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van XaitPorter wilt configureren in Azure AD, dient u XaitPorter vanuit de galerie toe te voegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om XaitPorter toe te voegen uit de galerie:**
+**Als u XaitPorter wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van XaitPorter in azure AD wilt configureren, moet u XaitPor
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **XaitPorter**in het zoekvak, selecteer **XaitPorter** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **XaitPorter** in het zoekvak, selecteer **XaitPorter** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![XaitPorter in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met XaitPorter op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in XaitPorter tot stand worden gebracht.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met XaitPorter op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in XaitPorter tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met XaitPorter, moet u de volgende bouw stenen volt ooien:
+Als u Azure AD-eenmalige aanmelding wilt configureren en testen met XaitPorter, dient u de volgende bouwstenen te voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[XaitPorter eenmalige aanmelding configureren](#configure-xaitporter-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een XaitPorter-test gebruiker](#create-xaitporter-test-user)** -om een equivalent van Julia Simon in XaitPorter te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[XaitPorter-eenmalige aanmelding configureren](#configure-xaitporter-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor XaitPorter maken](#create-xaitporter-test-user)** : als u een tegenhanger van Britta Simon in XaitPorter wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met XaitPorter:
+Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configureren met XaitPorter:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **XaitPorter** Application Integration de optie **eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **XaitPorter**-toepassing de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,50 +99,50 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor XaitPorter domein en Url's](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding van domeinen en URL's van XaitPorter](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.xaitporter.com/saml/login`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<subdomain>.xaitporter.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<subdomain>.xaitporter.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van XaitPorter-clients](https://www.xait.com/support/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met [het ondersteuningsteam van de XaitPorter-client](https://www.xait.com/support/) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-6. Geef het **IP-adres** of de URL voor de **federatieve meta gegevens** van de app op voor het [SmartRecruiters-ondersteunings team](https://www.smartrecruiters.com/about-us/contact-us/), zodat XaitPorter kan garanderen dat het IP-adres bereikbaar is vanuit uw XaitPorter-exemplaar white list aan hun kant te configureren. 
+6. Geef het **IP-adres** of de **app-URL voor federatieve metagegevens** aan het [SmartRecruiters-ondersteuningsteam](https://www.smartrecruiters.com/about-us/contact-us/), zodat XaitPorter ervoor kan zorgen dat het IP-adres bereikbaar is vanaf uw XaitPorter-exemplaar door deze op een goedgekeurde lijst te plaatsen. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Eenmalige aanmelding voor XaitPorter configureren
 
-1. Als u de configuratie wilt automatiseren in XaitPorter, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
+1. Als u de configuratie in XaitPorter wilt automatiseren, moet u de **browserextensie voor veilig aanmelden bij mijn apps** installeren door te klikken op **De extensie installeren**.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Setup XaitPorter** gaat u naar de XaitPorter-toepassing. Geef de beheerders referenties op om u aan te melden bij XaitPorter. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
+2. Als u op **XaitPorter instellen** klikt nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar de XaitPorter-toepassing. Geef hier de beheerdersreferenties op om u aan te melden bij XaitPorter. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Instelling configureren](common/setup-sso.png)
 
-3. Als u XaitPorter hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw XaitPorter-bedrijfs site als beheerder en voert u de volgende stappen uit:
+3. Als u XaitPorter handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de XaitPorter-bedrijfssite. Voer hierna de volgende stappen uit:
 
-4. Klik op **beheerder**.
+4. Klik op **Beheerder**.
 
     ![Eenmalige aanmelding configureren](./media/xaitporter-tutorial/user1.png)
 
-5. Selecteer **eenmalige aanmelding beheren** in de vervolg keuzelijst **systeem installatie** .
+5. Selecteer **Eenmalige aanmelding beheren** uit de vervolgkeuzelijst **Systeeminstallatie**.
 
     ![Eenmalige aanmelding configureren](./media/xaitporter-tutorial/user2.png)
 
-6. Voer de volgende stappen uit in de sectie **eenmalige aanmelding beheren** :
+6. Voer in het gedeelte **EENMALIGE AANMELDING BEHEREN** de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/xaitporter-tutorial/user3.png)
 
-    a. Selecteer **verificatie met eenmalige aanmelding inschakelen**.
+    a. Selecteer **Verificatie voor eenmalige aanmelding inschakelen**.
 
-    b. Plak in het tekstvak **ID-provider instellingen** de URL voor de **federatieve meta gegevens** van de app die u hebt gekopieerd uit de Azure Portal en klik op **ophalen**.
+    b. Plak in het tekstvak **Instellingen voor ID-provider** de waarde voor **App-URL voor federatieve metagegevens** die u hebt gekopieerd uit de Azure-portal en klik op de knop **Ophalen**.
 
-    c. Selecteer de optie **voor het inschakelen van het maken van gebruikers**.
+    c. Selecteer **Automatisch gebruikers maken inschakelen**.
 
     d. Klik op **OK**.
 
@@ -158,7 +154,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -166,25 +162,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan XaitPorter.
+In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot XaitPorter.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **XaitPorter**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **XaitPorter**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **XaitPorter**.
+2. Selecteer **XaitPorter** in de lijst met toepassingen.
 
-    ![De koppeling XaitPorter in de lijst met toepassingen](common/all-applications.png)
+    ![De XaitPorter-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -194,27 +190,27 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-xaitporter-test-user"></a>XaitPorter-test gebruiker maken
+### <a name="create-xaitporter-test-user"></a>XaitPorter-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in XaitPorter. Werk samen met het [XaitPorter-client ondersteunings team](https://www.xait.com/support/) om de gebruikers toe te voegen in het XaitPorter-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in XaitPorter. Werk samen met het [XaitPorter-clientondersteuningsteam](https://www.xait.com/support/) om de gebruikers toe te voegen in het XaitPorter-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel XaitPorter in het toegangs venster klikt, moet u automatisch worden aangemeld bij de XaitPorter waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel XaitPorter klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van XaitPorter waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

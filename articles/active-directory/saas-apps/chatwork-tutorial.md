@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Chatwork | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Chatwork.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0982ee1d-7ae2-415b-9e47-cfc72e1885ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 368b87a4abd5b55a807f7184c3a56876169b2517
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293388"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586236"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Chatwork
 
@@ -87,7 +83,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam van Chatwork](mailto:info@support.chatwork.com) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de persoonlijke aanmeldings-URL die u hebt ingesteld na de **configuratie van eenmalige aanmelding bij Chatwork**.
+
+1. Voor de Chatwork-toepassing wordt verwacht dat de waarde van het kenmerk **Unieke gebruikers-id** overeenkomt met het e-mailadres dat is geregistreerd bij Chatwork. Het kenmerk is standaard toegewezen aan **user.principalname**. Wijs **Unieke gebruikers-id** toe aan**user.mail** als de principalname verschilt van het e-mailadres.
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
@@ -129,11 +127,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-chatwork-sso"></a>Eenmalige aanmelding configureren in Chatwork
 
-Als u eenmalige aanmelding wilt configureren in **Chatwork**, moet u het gedownloade **certificaat (Base64)** en de juiste uit de Azure-portal gekopieerde URL's naar het [ondersteuningsteam van Chatwork](mailto:info@support.chatwork.com) sturen. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de **Chatwork**-zijde, raadpleegt u de [Chatwork-beheerdershandleiding](https://download.chatwork.com/Chatwork_AdminGuide.pdf) en configureert u een Chatwork-instelling.
 
 ### <a name="create-chatwork-test-user"></a>Een Chatwork-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B.Simon in Chatwork. Werk samen met het  [ondersteuningsteam van Chatwork](mailto:info@support.chatwork.com) om de gebruikers toe te voegen aan het Chatwork-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam B.Simon in Chatwork. Open de [Chatwork-beheerdershandleiding](https://download.chatwork.com/Chatwork_AdminGuide.pdf) en voeg de gebruiker toe aan het Chatwork-platform.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

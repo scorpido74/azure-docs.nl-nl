@@ -1,60 +1,55 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Yardi eLearning | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Yardi eLearning.
+title: 'Zelfstudie: Azure Active Directory-integratie met Yardi eLearning | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Yardi eLearning.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7ea58b54-ec5b-4576-8586-814b11d0f4fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2555c0040c1f2b587adb57e808ed122a4d4ce808
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: eb71bd8316c553582d87828cb0be7ee6cfa65d04
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086705"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546267"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Zelf studie: integratie Azure Active Directory met Yardi eLearning
+# <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Zelfstudie: Azure Active Directory-integratie met Yardi eLearning
 
-In deze zelf studie leert u hoe u Yardi eLearning integreert met Azure Active Directory (Azure AD).
-Het integreren van Yardi eLearning met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Yardi eLearning met Azure Active Directory (Azure AD) kunt integreren.
+De integratie van Yardi eLearning met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Yardi eLearning.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Yardi eLearning (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD bepalen wie er toegang heeft tot Yardi eLearning.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Yardi eLearning (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Yardi eLearning wilt configureren, hebt u de volgende items nodig:
+Om Azure AD-integratie te configureren met Yardi eLearning hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement op eenmalige aanmelding in Yardi eLearning
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Een abonnement op Yardi eLearning waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Yardi eLearning ondersteunt door **SP** GEÏNITIEERDe SSO
+* Yardi eLearning biedt ondersteuning voor met **SP** geïnitieerde eenmalige aanmelding
 
-* Yardi eLearning ondersteunt **just-in-time** -gebruikers inrichting
+* Yardi eLearning ondersteunt het **Just-In-Time** inrichten van gebruikers
 
-## <a name="adding-yardi-elearning-from-the-gallery"></a>Yardi eLearning toevoegen vanuit de galerie
+## <a name="adding-yardi-elearning-from-the-gallery"></a>Yardi eLearning toevoegen uit de galerie
 
-Als u de integratie van Yardi eLearning in azure AD wilt configureren, moet u Yardi eLearning vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Yardi eLearning in Azure AD wilt configureren, moet u Yardi eLearning uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Yardi eLearning toe te voegen vanuit de galerie:**
+**Voer de volgende stappen uit om Yardi eLearning toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -68,31 +63,31 @@ Als u de integratie van Yardi eLearning in azure AD wilt configureren, moet u Ya
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Yardi eLearning**in het zoekvak, selecteer **Yardi eLearning** uit het paneel result en klik vervolgens op **toevoegen** knop om de toepassing toe te voegen.
+4. Typ **Yardi eLearning** in het zoekvak, selecteer **Yardi eLearning** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-    ![Yardi eLearning in de lijst met resultaten](common/search-new-app.png)
+    ![Yardi eLearning in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Yardi eLearning op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Yardi eLearning tot stand worden gebracht.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Yardi eLearning op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Yardi eLearning tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Yardi eLearning, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding met Azure AD wilt configureren en testen met Yardi eLearning, moet u de volgende stappen uitvoeren:
 
-1. **[Eenmalige aanmelding voor Azure AD configureren](#configure-azure-ad-single-sign-on)** om uw gebruikers in staat te stellen deze functie te gebruiken.
-2. **[Configureer Yardi eLearning eenmalige aanmelding](#configure-yardi-elearning-single-sign-on)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Yardi eLearning-test gebruiker](#create-yardi-elearning-test-user)** -om een tegen hanger te hebben van Julia Simon in Yardi eLearning dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-single-sign-on)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding met Yardi eLearning configureren](#configure-yardi-elearning-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker voor Yardi eLearning maken](#create-yardi-elearning-test-user)** : als u een tegenhanger van Britta Simon in Yardi eLearning wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Yardi eLearning:
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Yardi eLearning te configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Yardi eLearning** Application Integration de optie **eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **Yardi eLearning**-toepassing de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -106,20 +101,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Yardi eLearning domein en Url's](common/sp-identifier.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Yardi eLearning](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.yardielearning.com/login`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.yardielearning.com/trust`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<companyname>.yardielearning.com/trust`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Yardi eLearning](mailto:elearning@yardi.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [Klantondersteuningsteam van Yardi eLearning](mailto:elearning@yardi.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **set up Yardi eLearning** de gewenste URL ('s) volgens uw vereiste.
+6. In de sectie **Yardi eLearning instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -129,9 +124,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-yardi-elearning-single-sign-on"></a>Eenmalige aanmelding voor Yardi eLearning configureren
+### <a name="configure-yardi-elearning-single-sign-on"></a>Eenmalige aanmelding van Yardi eLearning configureren
 
-Als u eenmalige aanmelding op **Yardi eLearning** -zijde wilt configureren, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Yardi eLearning-ondersteunings team](mailto:elearning@yardi.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **Yardi eLearning** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste uit Azure Portal gekopieerde URL's naar het [Yardi eLearning-ondersteuningsteam](mailto:elearning@yardi.com) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -141,7 +136,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -149,23 +144,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Yardi eLearning.
+In deze sectie zorgt u ervoor dat Britta Simon gebruik kan maken van eenmalige aanmelding van Azure, door haar toegang te geven tot Yardi eLearning.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer **Yardi eLearning**.
+1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Yardi eLearning**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Yardi eLearning**.
+2. Selecteer **Yardi eLearning** in de lijst met toepassingen.
 
     ![De koppeling Yardi eLearning in de lijst met toepassingen](common/all-applications.png)
 
@@ -177,30 +172,30 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-yardi-elearning-test-user"></a>Yardi eLearning-test gebruiker maken
+### <a name="create-yardi-elearning-test-user"></a>Yardi eLearning-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Yardi eLearning. Yardi eLearning ondersteunt just-in-time-gebruikers inrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Yardi eLearning bestaat, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Yardi eLearning. Yardi eLearning biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Dit is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Yardi eLearning bestaat, wordt er een nieuwe gemaakt na de verificatie.
 
 >[!NOTE]
->Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team van Yardi eLearning](mailto:elearning@yardi.com).
+>Als u handmatig een gebruiker moet maken, neemt u contact op met het [ondersteuningsteam van Yardi eLearning](mailto:elearning@yardi.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Yardi eLearning in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Yardi-eLearning waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Yardi eLearning klikt, wordt u automatisch aangemeld bij de instantie van Yardi eLearning waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

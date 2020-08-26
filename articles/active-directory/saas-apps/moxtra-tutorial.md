@@ -1,98 +1,93 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Moxtra | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Moxtra.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Moxtra | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Moxtra.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2aed2d4b-1dcd-4839-8fed-9419d107c61c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3e53ba11744b0e78287ffc46c4aac7b99b16b23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74889546"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544040"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Moxtra
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Moxtra
 
-In deze zelf studie leert u hoe u Moxtra integreert met Azure Active Directory (Azure AD). Wanneer u Moxtra integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Moxtra integreert met Azure Active Directory (Azure AD). Wanneer u Moxtra integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot Moxtra.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Moxtra met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot Moxtra.
+* Uw gebruikers zich automatisch laten aanmelden met hun Azure AD-account bij Moxtra.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Moxtra-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een Moxtra-abonnement waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Moxtra ondersteunt door **SP** GEÏNITIEERDe SSO
+* Moxtra ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
 
-## <a name="adding-moxtra-from-the-gallery"></a>Moxtra toevoegen uit de galerie
+## <a name="adding-moxtra-from-the-gallery"></a>Moxtra uit de galerie toevoegen
 
-Als u de integratie van Moxtra in azure AD wilt configureren, moet u Moxtra uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Moxtra met Microsoft Azure Active Directory moet u Moxtra vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Moxtra** in het zoekvak.
-1. Selecteer **Moxtra** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ **Moxtra** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **Moxtra** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-moxtra"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Moxtra
+## <a name="configure-and-test-azure-ad-single-sign-on-for-moxtra"></a>Eenmalige aanmelding bij Moxtra via Azure AD configureren en testen
 
-Azure AD SSO met Moxtra configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Moxtra.
+Configureer en test eenmalige aanmelding bij Moxtra via Azure AD met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Moxtra.
 
-Als u Azure AD SSO wilt configureren en testen met Moxtra, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding via Azure AD bij Moxtra te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[MOXTRA SSO configureren](#configure-moxtra-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een Moxtra-test gebruiker](#create-moxtra-test-user)** -om een equivalent van B. Simon in Moxtra te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij Moxtra configureren](#configure-moxtra-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. **[Een Moxtra-testgebruiker maken](#create-moxtra-test-user)** : als u een equivalent van B.Simon in Moxtra wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Moxtra** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Moxtra** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    Typ een URL in het tekstvak **URL voor aanmelding** :`https://www.moxtra.com/service/#login`
+    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://www.moxtra.com/service/#login`
 
-1. De Moxtra-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
+1. In uw Moxtra-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-1. Daarnaast verwacht Moxtra toepassing nog enkele kenmerken die in het SAML-antwoord weer worden door gegeven. In de sectie Gebruikersclaims in het dialoogvenster Gebruikerskenmerken voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
+1. Bovendien verwacht de Moxtra-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie Gebruikersclaims in het dialoogvenster Gebruikerskenmerken voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
     | Naam | Bronkenmerk|
     | ------------------- | -------------------- |    
@@ -101,7 +96,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | idpid    | < Azure AD-id >
 
     > [!Note]
-    > De waarde van het kenmerk **idpid** is niet reëel. U kunt de daad werkelijke waarde ophalen uit de sectie **Moxtra instellen** uit stap 8. 
+    > De waarde voor het kenmerk **idpid** is niet echt. U kunt de werkelijke waarde ophalen uit het gedeelte **Moxtra instellen** uit stap 8. 
 
     1. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
@@ -117,49 +112,49 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     1. Klik op **Opslaan**.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de sectie **Moxtra instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **Moxtra instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Moxtra.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Moxtra.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Moxtra**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Moxtra** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-moxtra-sso"></a>Moxtra SSO configureren
+## <a name="configure-moxtra-sso"></a>Eenmalige aanmelding bij Moxtra configureren
 
-1. Meld u in een ander browser venster aan bij de Moxtra-bedrijfs site als beheerder.
+1. Meld u in een ander browservenster als beheerder aan bij de bedrijfssite van Moxtra.
 
-2. Klik in de werk balk aan de linkerkant op **beheer Console > eenmalige SAML-aanmelding**en klik vervolgens op **Nieuw**.
+2. Klik in de werkbalk aan de linkerkant op **Beheerconsole > Eenmalige aanmelding via SAML** en klik vervolgens op **Nieuwe**.
    
     ![Eenmalige aanmelding configureren](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
@@ -167,66 +162,66 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
    
     ![Eenmalige aanmelding configureren](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. Typ in het tekstvak **naam** een naam voor uw configuratie (bijvoorbeeld: *SAML*). 
+    a. Typ in het tekstvak **Naam** een naam voor de configuratie (bijv.: *SAML*). 
   
-    b. Plak in het tekstvak **IDP entiteit-id** de waarde van de **Azure ad-id** die u van Azure Portal hebt gekopieerd. 
+    b. Plak in het tekstvak **IDP-entiteits-id** de waarde van **Azure AD-id** die u hebt gekopieerd uit Azure Portal. 
  
     c. Plak in het tekstvak **Login URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal. 
  
-    d. Typ in het tekstvak **AuthnContextClassRef** de tekst **urn: Oasis: names: TC: SAML: 2.0: AC: classes: password**. 
+    d. Typ in het tekstvak **AuthnContextClassRef** de tekst **urn:oasis:names:tc:SAML:2.0:ac:classes:Password**. 
  
-    e. Typ in het tekstvak **NameID-indeling** **urn: Oasis: names: TC: SAML: 1.1: NameID-indeling: emailAddress**. 
+    e. Typ in het tekstvak **Naam-id-indeling** de tekst **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**. 
  
-    f. Open het certificaat dat u hebt gedownload van Azure Portal in Klad blok, kopieer de inhoud en plak deze in het tekstvak **certificaat** .    
+    f. Open het certificaat dat u hebt gedownload vanuit Azure Portal in Kladblok, kopieer de inhoud en plak deze in het tekstvak **Certificaat**.    
  
-    g. Typ uw SAML-e-mail domein in het tekstvak SAML-e-mail domein.    
+    g. Typ uw SAML-e-maildomein in het tekstvak SAML-e-maildomein.    
   
     >[!NOTE]
-    >Klik op '**i**' hieronder voor een overzicht van de stappen om het domein te verifiëren.
+    >Als u de stappen voor het verifiëren van het domein wilt zien, klikt u op de onderstaande **i**.
 
     h. Klik op **Update**.
 
-### <a name="create-moxtra-test-user"></a>Moxtra-test gebruiker maken
+### <a name="create-moxtra-test-user"></a>Een Moxtra-testgebruiker maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in Moxtra.
+Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in Moxtra.
 
-**Voer de volgende stappen uit om een gebruiker te maken met de naam B. Simon in Moxtra:**
+**Voer de volgende stappen uit om een gebruiker met de naam B.Simon te maken in Moxtra:**
 
-1. Meld u aan bij de Moxtra-bedrijfs site als beheerder.
+1. Meld u als beheerder aan bij de bedrijfssite van Moxtra.
 
-1. Klik in de werk balk aan de linkerkant op **beheer Console > gebruikers beheer**en vervolgens **gebruiker toevoegen**.
+1. Klik in de werkbalk aan de linkerkant op **Beheerconsole > Gebruikersbeheer** en klik vervolgens op **Gebruiker toevoegen**.
    
     ![Eenmalige aanmelding configureren](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. Voer in het dialoogvenster **Add User** de volgende stappen uit:
   
-    a. Typ **B**in het tekstvak **voor de voor naam** .
+    a. Typ in het tekstvak **Voornaam** de letter **B**.
   
-    b. Typ in het tekstvak **Achternaam** **Simon**.
+    b. Typ **Simon** in het tekstvak **Last Name**.
   
-    c. Typ in het tekstvak **E-mail** B. het e-mail adres van Simon is hetzelfde als op Azure Portal.
+    c. Typ in het tekstvak **E-mail** het e-mailadres van B.Simon. Gebruik hetzelfde e-mailadres als in Azure Portal.
   
-    d. Typ **dev**in het tekstvak **deling** .
+    d. Typ **Dev**in het tekstvak **Divisie**.
   
-    e. **Typ in het tekstvak** **afdeling** .
+    e. Typ **IT**in het tekstvak **Afdeling**.
   
-    f. Selecteer **beheerder**.
+    f. Selecteer **Beheerder**.
   
     g. Klik op **Add**.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Moxtra in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Moxtra waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Moxtra in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Moxtra waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Moxtra met Azure AD](https://aad.portal.azure.com/)
+- [Moxtra met Azure AD proberen](https://aad.portal.azure.com/)
 

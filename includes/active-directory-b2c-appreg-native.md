@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/02/2020
 ms.author: mimart
 ms.openlocfilehash: 65fb406fa4f52f19b4d8e9dc4e3895207ffe6336
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "84793707"
 ---
 Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuwe uniforme ervaring voor **App-registraties** of de verouderde ervaring **Toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
@@ -23,8 +23,8 @@ Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuw
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *nativeapp1*.
 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst of een identiteitsprovider**.
 1. Gebruik **Omleidings-URI**, gebruik het vervolgkeuzemenu om **Openbare client/systeemeigen (mobiel en desktop)** te selecteren.
-1. Voer een omleidings-URI in met een uniek schema. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Er zijn belang rijke overwegingen bij het kiezen van een omleidings-URI:
-    * **Ontwikkeling** Voor het ontwikkelen van gebruik kunt u de omleidings-URI instellen op `http://localhost` en Azure AD B2C wordt elke poort in de aanvraag geëerbiedigd. Als de geregistreerde URI een poort bevat, wordt deze poort alleen door Azure AD B2C gebruikt. Als de geregistreerde omleidings-URI bijvoorbeeld is `http://localhost` , kan de omleidings-URI in de aanvraag `http://localhost:<randomport>` . Als de geregistreerde omleidings-URI is `http://localhost:8080` , moet de omleidings-URI in de aanvraag zijn `http://localhost:8080` .
+1. Voer een omleidings-URI in met een uniek schema. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Er zijn belangrijke overwegingen bij het kiezen van een omleidings-URI:
+    * **Ontwikkelen**: voor ontwikkelen kunt u de omleidings-URI instellen op `http://localhost`, zodat Azure AD B2C elke poort in de aanvraag accepteert. Als de geregistreerde URI een poort bevat, wordt alleen deze poort door Azure AD B2C gebruikt. Als de geregistreerde omleidings-URI bijvoorbeeld `http://localhost` is, kan de omleidings-URI in de aanvraag `http://localhost:<randomport>` zijn. Als de geregistreerde omleidings-URI `http://localhost:8080` is, moet de omleidings-URI in de aanvraag `http://localhost:8080` zijn.
     * **Uniek**: Het schema van de omleidings-URI moet voor elke toepassing uniek zijn. In het voorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` is `com.onmicrosoft.contosob2c.exampleapp` het schema. Dit patroon moet worden gevolgd. Als twee toepassingen hetzelfde schema delen, kan de gebruiker een toepassing kiezen. Als de gebruiker onjuist kiest, mislukt de aanmelding.
     * **Volledig**: De omleidings-URI moet een schema en een pad hebben. Het pad moet ten minste één slash na het domein bevatten. Bijvoorbeeld: `//oauth/` werkt en `//oauth` mislukt. Neem geen speciale tekens op in de URI, bijvoorbeeld lage streepjes.
 1. Selecteer in **Machtigingen** het selectievakje *Beheerdersgoedkeuring verlenen aan machtigingen van OpenID en offline_access*.

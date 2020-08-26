@@ -4,14 +4,14 @@ description: Meer informatie over het migreren van een aangepaste DNS-domein naa
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782206"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871391"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Een actieve DNS-naam migreren naar Azure App Service
 
@@ -59,31 +59,27 @@ Noteer op de pagina DNS-records het record type van de DNS-naam die u wilt migre
 
 ### <a name="enable-the-domain-for-your-app"></a>Het domein voor uw app inschakelen
 
-Selecteer in de [Azure Portal](https://portal.azure.com), in de linkernavigatiebalk van de app-pagina, de optie **aangepaste domeinen**. 
+1. Selecteer in de [Azure Portal](https://portal.azure.com), in de linkernavigatiebalk van de app-pagina, de optie **aangepaste domeinen**. 
 
-![Menu voor aangepaste domeinen](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Menu voor aangepaste domeinen](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Selecteer op de pagina **aangepaste domeinen** het **+** pictogram naast **hostnaam toevoegen**.
+1. Selecteer op de pagina **aangepaste domeinen** de optie **aangepast domein toevoegen**.
 
-![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Typ de Fully Qualified Domain Name die u wilt migreren, die overeenkomt met de TXT-record die u maakt, zoals `contoso.com` , `www.contoso.com` of `*.contoso.com` .
+1. Typ de Fully Qualified Domain Name die u wilt migreren, die overeenkomt met de TXT-record die u maakt, zoals `contoso.com` , `www.contoso.com` of `*.contoso.com` . Selecteer **Valideren**.
 
-Selecteer **Valideren**.
+    De knop **Aangepast domein toevoegen** wordt geactiveerd. 
 
-De knop **Hostnaam toevoegen** wordt geactiveerd. 
+1. Zorg ervoor dat het **hostnaam-record type** is ingesteld op het DNS-record type dat u wilt migreren. Selecteer **Hostnaam toevoegen**.
 
-Zorg ervoor dat het **hostnaam-record type** is ingesteld op het DNS-record type dat u wilt migreren.
+    ![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Selecteer **Hostnaam toevoegen**.
+    Het kan even duren voor de nieuwe hostnaam wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
 
-![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Het kan even duren voor de nieuwe hostnaam wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
-
-![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-Uw aangepaste DNS-naam is nu ingeschakeld in uw Azure-app. 
+    Uw aangepaste DNS-naam is nu ingeschakeld in uw Azure-app. 
 
 ## <a name="remap-the-active-dns-name"></a>De actieve DNS-naam opnieuw toewijzen
 
@@ -96,8 +92,6 @@ Het enige wat u nog moet doen, is het opnieuw toewijzen van uw actieve DNS-recor
 Als u een CNAME-record opnieuw wilt toewijzen, kunt u deze sectie overs Laan. 
 
 Als u een A-record opnieuw wilt toewijzen, hebt u het externe IP-adres van de App Service-app nodig. dit wordt weer gegeven op de pagina **aangepaste domeinen** .
-
-Sluit de pagina **hostname toevoegen** door **X** in de rechter bovenhoek te selecteren. 
 
 Op de pagina **Aangepaste domeinen** kopieert u het IP-adres van de app.
 

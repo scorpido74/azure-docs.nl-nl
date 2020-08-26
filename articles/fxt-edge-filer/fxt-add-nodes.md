@@ -1,116 +1,116 @@
 ---
-title: 'Zelf studie: knoop punten toevoegen aan een Azure FXT Edge-bestands cluster'
-description: Knoop punten toevoegen aan de Azure FXT Edge-opslag cache
+title: 'Zelfstudie: Knooppunten toevoegen aan een Azure FXT Edge Filer-cluster'
+description: Meer informatie over het toevoegen van clusterknooppunten aan de Azure FXT Edge Filer-opslagcache en het inschakelen van de functie voor hoge beschikbaarheid (HA).
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5b62927930212fc7e59fc4329a29ceecbe2815e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551944"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185329"
 ---
-# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Zelf studie: cluster knooppunten toevoegen aan een Azure FXT Edge-bestands cluster
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Zelfstudie: Clusterknooppunten toevoegen aan een Azure FXT Edge Filer-cluster
 
-Er wordt een nieuw Azure FXT Edge-bestands cluster gemaakt met slechts één knoop punt. U moet ten minste twee extra knoop punten toevoegen en hoge Beschik baarheid inschakelen voordat u een andere configuratie uitvoert. 
+Er wordt een nieuw Azure FXT Edge Filer-cluster gemaakt met slechts één knooppunt. U moet ten minste twee extra knooppunten toevoegen en hoge beschikbaarheid inschakelen voordat u een andere configuratie uitvoert. 
 
-In deze zelf studie wordt uitgelegd hoe u cluster knooppunten toevoegt en de functie hoge Beschik baarheid (HA) inschakelt. 
+In deze zelfstudie wordt uitgelegd hoe u clusterknooppunten toevoegt en de functie voor hoge beschikbaarheid (HA) inschakelt. 
 
 In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
-> * Knoop punten toevoegen aan het FXT-cluster
-> * HA inschakelen
+> * Knooppunten toevoegen aan het FXT-cluster
+> * Hoge beschikbaarheid inschakelen
 
-De stappen in deze zelf studie nemen ongeveer 45 minuten in beslag.
+Het voltooien van de stappen in deze zelfstudie duurt ongeveer 45 minuten.
 
-Voordat u met deze zelf studie begint, moet u de knoop punten die u wilt toevoegen, inschakelen en [de oorspronkelijke wacht woorden instellen](fxt-node-password.md). 
+Voordat u met deze zelfstudie begint, moet u de knooppunten die u wilt toevoegen, inschakelen en [de oorspronkelijke wachtwoorden instellen](fxt-node-password.md). 
 
-## <a name="1-load-the-cluster-nodes-page"></a>1. de pagina cluster knooppunten laden
+## <a name="1-load-the-cluster-nodes-page"></a>1. De pagina Clusterknooppunten laden
 
-Open het configuratie scherm van het cluster in een webbrowser en meld u aan als beheerder. (Gedetailleerde instructies vindt u in het artikel overzicht, onder [de pagina instellingen openen](fxt-cluster-create.md#open-the-settings-pages).)
+Open het configuratiescherm van het cluster in een webbrowser en meld u aan als beheerder. (Gedetailleerde instructies vindt u in het overzichtsartikel, onder [Open the Settings pages](fxt-cluster-create.md#open-the-settings-pages).)
 
-In het configuratie scherm wordt het tabblad **dash board** weer gegeven wanneer het wordt geopend. 
+In het configuratiescherm ziet u het tabblad **Dashboard** wanneer dit wordt geopend. 
 
-![Dash board van het configuratie scherm (eerste tabblad)](media/fxt-cluster-config/dashboard-1-node.png)
+![Dashboard van het configuratiescherm (eerste tabblad)](media/fxt-cluster-config/dashboard-1-node.png)
 
-Deze afbeelding toont het dash board van een nieuw gemaakt cluster, met één knoop punt.
+Deze afbeelding toont het dashboard van een nieuw gemaakt cluster, met één knooppunt.
 
-## <a name="2-locate-the-node-to-add"></a>2. Zoek het toe te voegen knoop punt
+## <a name="2-locate-the-node-to-add"></a>2. Het toe te voegen knooppunt zoeken
 
-Als u knoop punten wilt toevoegen, klikt u op het tabblad **instellingen** en kiest u de pagina **FXT-knoop punten** in de sectie **cluster** .
+Als u knooppunten wilt toevoegen, klikt u op het tabblad **Settings** en kiest u de pagina **FXT Nodes** in het gedeelte **Cluster**.
 
-![Tabblad instellingen van het configuratie scherm (tweede tabblad) met cluster > FXT knoop punten geladen](media/fxt-cluster-config/settings-fxt-nodes.png)
+![Tabblad Instellingen van het configuratiescherm (tweede tabblad) met Cluster > FXT-knooppunten geladen](media/fxt-cluster-config/settings-fxt-nodes.png)
 
-In de **FXT-knoop punten-niet-samenvoegde** lijst worden alle niet-toegewezen FXT-knoop punten weer gegeven (de meeste data centers hebben slechts enkele. Zoek de FXT-knoop punten die u aan het cluster wilt toevoegen.
+In de lijst **FXT Nodes - Unjoined** worden alle niet-toegewezen FXT-knooppunten weergegeven (de meeste datacenters hebben er slechts enkele). Zoek de FXT-knooppunten die u aan het cluster wilt toevoegen.
 
 > [!Tip] 
-> Als u het gewenste knoop punt niet kunt vinden in de niet- **samenvoegde** lijst, controleer dan of het voldoet aan deze vereisten:
+> Als u het gewenste knooppunt niet kunt vinden in de lijst **Unjoined**, controleert u of het aan deze vereisten voldoet:
 > 
-> * Deze is ingeschakeld en er is een [hoofd wachtwoord ingesteld](fxt-node-password.md).
-> * Deze is verbonden met een netwerk waartoe u toegang hebt. Als u VLAN'S gebruikt, moet deze zich op hetzelfde VLAN bekomen als het cluster.
+> * Het is ingeschakeld en er is een [hoofdwachtwoord ingesteld](fxt-node-password.md).
+> * Het is verbonden met een netwerk waartoe u toegang hebt. Als u VLAN's gebruikt, moet het zich op hetzelfde VLAN bevinden als het cluster.
 > * Het kan worden gedetecteerd met het Bonjour-protocol. 
 >
->   Sommige firewall instellingen blok keren de TCP/UDP-poorten die worden gebruikt door Bonjour, waarmee wordt voor komen dat de knoop punten automatisch worden gedetecteerd door het besturings systeem FXT.
+>   Sommige firewallinstellingen blokkeren de TCP/UDP-poorten die door Bonjour worden gebruikt, waarmee wordt voorkomen dat de knooppunten automatisch door het besturingssysteem van FXT worden gedetecteerd.
 > 
-> Als het knoop punt dat u wilt toevoegen, zich niet in de lijst bevindt, probeert u de volgende oplossingen: 
+> Als het knooppunt dat u wilt toevoegen, zich niet in de lijst bevindt, probeert u de volgende oplossingen: 
 > 
-> * Klik op de knop **detectie hand matig** om deze te zoeken op IP-adres.
+> * Klik op de knop **Manual Discover** om deze op basis van het IP-adres te zoeken.
 > 
-> * Hand matig tijdelijke IP-adressen toewijzen. Dit komt zelden voor, maar kan ook nodig zijn als u gecodeerde VLAN'S gebruikt, de knoop punten zich niet in het juiste netwerk bevinden, of als uw netwerk geen zelf-toegewezen IP-adressen toestaat. Volg de instructies in de oudere versie van dit document om [hand matig een statisch IP-adres](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html)in te stellen.
+> * Wijs handmatig tijdelijke IP-adressen toe. Dit komt zelden voor, maar kan ook nodig zijn als u gelabelde VLAN'S gebruikt en de knooppunten zich niet in het juiste netwerk bevinden, of als uw netwerk geen zelf-toegewezen IP-adressen toestaat. Volg de instructies in de oudere versie van dit document om [handmatig een vast IP-adres in te stellen](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
-De knooppunt naam, het IP-adres, de software versie en de geschiktheids status worden weer gegeven in de lijst. Normaal gesp roken bevat de kolom **status** de tekst "wil lid worden" of wordt een systeem-of hardwareprobleem beschreven waardoor het knoop punt niet in aanmerking komt voor deelname aan het cluster.
+De naam van het knooppunt, het IP-adres, de softwareversie en de geschiktheidsstatus worden in de lijst weergegeven. Normaal gesproken bevat de kolom **Status** de tekst Wants to join of wordt een systeem- of hardwareprobleem beschreven waardoor het knooppunt niet meer in aanmerking komt om aan het cluster te worden toegevoegd.
 
-De kolom **acties** bevat knoppen waarmee u het knoop punt kunt toevoegen aan het cluster of de software ervan kunt bijwerken. De knop bijwerken installeert automatisch de software versie die overeenkomt met de knoop punten die zich al in het cluster bekomen.
+De kolom **Actions** bevat knoppen waarmee u het knooppunt aan het cluster kunt toevoegen of de software kunt bijwerken. Met de bijwerkknop wordt de softwareversie die overeenkomt met de knooppunten die zich al in het cluster bevinden, automatisch geïnstalleerd.
 
-Alle knoop punten in een cluster moeten dezelfde versie van het besturings systeem gebruiken, maar u hoeft de software niet bij te werken voordat u een knoop punt toevoegt. Nadat u op de knop **toe te voegen toevoegen** hebt geklikt, controleert en installeert het cluster deelnameproces automatisch de OS-software die overeenkomt met de versie op het cluster.
+Alle knooppunten in een cluster moeten dezelfde versie van het besturingssysteem gebruiken, maar u hoeft de software niet bij te werken voordat u een knooppunt toevoegt. Nadat u op de knop **Allow to join** hebt geklikt, wordt de besturingssysteemsoftware die overeenkomt met de versie op het cluster, automatisch gecontroleerd en geïnstalleerd.
 
-Lees voor meer informatie over de opties op deze pagina [ **cluster** > FXT-knoop punten](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) in de cluster configuratie handleiding.
+Lees voor meer informatie over de opties op deze pagina [**Cluster** > **FXT Nodes**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) in de handleiding over clusterconfiguratie.
 
-## <a name="3-click-the-allow-to-join-button"></a>3. Klik op de knop toe te voegen 
+## <a name="3-click-the-allow-to-join-button"></a>3. Klikken op de knop Allow to join 
 
-Klik op de knop **toe te**voegen * in de kolom **acties** voor het knoop punt dat u wilt toevoegen.
+Klik op de knop **Allow to join*** in de kolom **Actions** voor het knooppunt dat u wilt toevoegen.
 
-Nadat u op de knop hebt geklikt, kan de status van het knoop punt veranderen wanneer de software wordt bijgewerkt in de voor bereiding voor het toevoegen van deze aan het cluster. 
+Nadat u op de knop hebt geklikt, kan de status van het knooppunt veranderen wanneer de software wordt bijgewerkt als voorbereiding op het toevoegen van het knooppunt aan het cluster. 
 
-In de onderstaande afbeelding ziet u een knoop punt dat deel uitmaakt van het cluster (waarschijnlijk wordt er een update van het besturings systeem opgehaald voordat deze wordt toegevoegd). Er worden geen knoppen weer gegeven in de kolom **acties** voor knoop punten die worden toegevoegd aan het cluster.
+In de onderstaande afbeelding ziet u een knooppunt dat aan het cluster wordt toegevoegd (waarschijnlijk wordt er een update van het besturingssysteem opgehaald voordat het wordt toegevoegd). Voor knooppunten die momenteel aan het cluster worden toegevoegd, worden in de kolom **Actions** geen knoppen weergegeven.
 
-![Eén rij van de knooppunt tabel, met de naam van een knoop punt, het IP-adres, de software versie, het bericht ' mag worden toegevoegd ' en een lege laatste kolom](media/fxt-cluster-config/node-join-in-process.png)
+![een rij van de knooppunttabel, met de naam van een knooppunt, het IP-adres, de softwareversie, het bericht Allow to join en een lege laatste kolom](media/fxt-cluster-config/node-join-in-process.png)
 
-Na enkele ogen blikken moet het nieuwe knoop punt worden weer gegeven in de lijst met cluster knooppunten boven aan de pagina instellingen van **FXT-knoop punten** . 
+Na enkele ogenblikken moet het nieuwe knooppunt boven aan de instellingenpagina in de lijst met clusterknooppunten **FXT Nodes** worden weergegeven. 
 
-Herhaal dit proces om de andere knoop punten toe te voegen aan uw cluster. U hoeft niet te wachten tot het ene knoop punt is toegevoegd aan het cluster voordat u een ander start.
+Herhaal dit proces om de andere knooppunten aan het cluster toe te voegen. U hoeft niet te wachten tot het ene knooppunt aan het cluster is toegevoegd voordat u met een ander begint.
 
-## <a name="enable-high-availability"></a>Hoge Beschik baarheid inschakelen
+## <a name="enable-high-availability"></a>Hoge beschikbaarheid inschakelen
 
-Nadat u een tweede knoop punt aan uw cluster hebt toegevoegd, wordt er mogelijk een waarschuwing weer gegeven in het dash board van het configuratie scherm dat de functie voor hoge Beschik baarheid niet is geconfigureerd. 
+Nadat u een tweede knooppunt aan het cluster hebt toegevoegd, kan er in het dashboard van het configuratiescherm de melding verschijnen dat de functie voor hoge beschikbaarheid niet is geconfigureerd. 
 
-Met hoge Beschik baarheid (HA) kunnen de cluster knooppunten worden gecompenseerd als een van de knoop punten uitvalt. HA is standaard niet ingeschakeld.
+Met hoge beschikbaarheid (HA) kunnen de clusterknooppunten elkaar compenseren als er een uitvalt. Hoge beschikbaarheid is standaard niet ingeschakeld.
 
-![Tabblad dash board met het bericht ' het cluster heeft meer dan een knoop punt, maar HA is niet ingeschakeld... ' in de tabel voor waarden](media/fxt-cluster-config/no-ha-2-nodes.png)
+![Tabblad Dashboard met het bericht The cluster has more than one node, but HA is not enabled ... in de tabel Conditions](media/fxt-cluster-config/no-ha-2-nodes.png)
 
 > [!Note] 
-> Schakel HA pas in als u ten minste drie knoop punten in het cluster hebt.
+> Schakel hoge beschikbaarheid pas in als het cluster ten minste drie knooppunten bevat.
 
-Volg deze procedure om HA in te scha kelen: 
+Volg deze procedure om hoge beschikbaarheid in te schakelen: 
 
-1. Laad de pagina **hoge Beschik baarheid** in het gedeelte **cluster** van het tabblad **instellingen** .
+1. Laad de pagina **High Availability** in het gedeelte **Cluster** van het tabblad **Settings**.
 
-   ![Configuratie pagina van HA (cluster > hoge Beschik baarheid). Het selectie vakje ' HA inschakelen ' bevindt zich bovenaan en de knop verzenden onderaan.](media/fxt-cluster-config/enable-ha.png)
+   ![Pagina voor configuratie van hoge beschikbaarheid (Cluster > High Availability). Het selectievakje Enable HA bevindt zich bovenaan en de knop voor verzenden onderaan.](media/fxt-cluster-config/enable-ha.png)
 
-2. Klik op het vak met de naam **Activeer ha** en klik op de knop **verzenden** . 
+2. Klik op het vak **Enable HA** en vervolgens op de knop **Submit**. 
 
-Er wordt een waarschuwing weer gegeven op het **dash board** om te bevestigen dat ha is ingeschakeld.
+Er wordt een waarschuwing op het **dashboard** weergegeven om te bevestigen dat hoge beschikbaarheid is ingeschakeld.
 
-![Dashboard tabel met het bericht ' HA is nu volledig geconfigureerd '](media/fxt-cluster-config/ha-configured-alert.png)
+![Dashboardtabel met het bericht HA is now fully configured](media/fxt-cluster-config/ha-configured-alert.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u alle knoop punten in het cluster hebt toegevoegd, kunt u door gaan met de installatie door de lange termijn opslag van uw cluster te configureren.
+Nadat u alle knooppunten aan het cluster hebt toegevoegd, kunt u doorgaan met de installatie door de langetermijnopslag van uw cluster te configureren.
 
 > [!div class="nextstepaction"]
-> [Back-end-opslag toevoegen en de virtuele naam ruimte instellen](fxt-add-storage.md)
+> [Back-endopslag toevoegen en de virtuele naamruimte instellen](fxt-add-storage.md)

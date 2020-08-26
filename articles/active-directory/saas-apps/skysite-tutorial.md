@@ -1,187 +1,182 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SKYSITE | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SKYSITE.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met SKYSITE | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en SKYSITE.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 04c6a47a-1730-4acf-bc5c-a04daccff9b3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ef7f4201e9613cc6fa4391bc28d257272fa1c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026127"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527975"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SKYSITE
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met SKYSITE
 
-In deze zelf studie leert u hoe u SKYSITE integreert met Azure Active Directory (Azure AD). Wanneer u SKYSITE integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u SKYSITE met Azure Active Directory (Azure AD) integreert. Wanneer u SKYSITE integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot SKYSITE.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij SKYSITE met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD beheren wie er toegang heeft tot SKYSITE.
+* Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij SKYSITE.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* SKYSITE-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement waarvoor eenmalige aanmelding bij SKYSITE is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* SKYSITE ondersteunt door **IDP** GEÏNITIEERDe SSO
+* SKYSITE ondersteunt door **IDP** geïnitieerde SSO
 
-* SKYSITE ondersteunt **just-in-time** -gebruikers inrichting
+* SKYSITE biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
 
-## <a name="adding-skysite-from-the-gallery"></a>SKYSITE toevoegen uit de galerie
+## <a name="adding-skysite-from-the-gallery"></a>SKYSITE toevoegen vanuit de galerie
 
-Als u de integratie van SKYSITE in azure AD wilt configureren, moet u SKYSITE uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van SKYSITE in Azure AD wilt configureren, moet u SKYSITE vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **SKYSITE** in het zoekvak.
-1. Selecteer **SKYSITE** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **SKYSITE**.
+1. Selecteer **SKYSITE** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-skysite"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor SKYSITE
+## <a name="configure-and-test-azure-ad-single-sign-on-for-skysite"></a>Eenmalige aanmelding van Azure AD configureren en testen voor SKYSITE
 
-Azure AD SSO met SKYSITE configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SKYSITE.
+Configureer en test eenmalige aanmelding van Azure AD met SKYSITE met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SKYSITE.
 
-Als u Azure AD SSO wilt configureren en testen met SKYSITE, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met SKYSITE te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[SKYSITE SSO configureren](#configure-skysite-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een SKYSITE-test gebruiker](#create-skysite-test-user)** -om een equivalent van B. Simon in SKYSITE te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij SKYSITE configureren](#configure-skysite-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. **[Een SKYSITE-testgebruiker maken](#create-skysite-test-user)** : als u een equivalent van B.Simon in SKYSITE wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Klik in het [Azure Portal](https://portal.azure.com/)op de pagina **SKYSITE** toepassings integratie op het **tabblad Eigenschappen** en voer de volgende stap uit: 
+1. Ga in **Azure Portal** naar de overzichtspagina van de integratie van [SKYSITE](https://portal.azure.com/), klik op het tabblad **Eigenschappen** en voer de volgende stappen uit: 
 
     ![Eigenschappen voor eenmalige aanmelding](./media/skysite-tutorial/config05.png)
 
-    * Kopieer de **gebruikers toegangs-URL** en u moet deze plakken in de **sectie SKYSITE SSO configureren**. deze wordt verderop in de zelf studie beschreven.
+    * Kopieer de waarde van **URL van gebruikerstoegang** om deze verderop in de zelfstudie te plakken in de sectie **Eenmalige aanmelding SKYSITE configureren**.
 
-1. Ga op de pagina Toepassings integratie van **SKYSITE** naar **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga op de pagina van de toepassingsintegratie van **SKYSITE** naar **eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In het gedeelte **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de gestarte modus **IDP** en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. In de sectie **SAML-basisconfiguratie** is de toepassing vooraf geconfigureerd in de door **IDP** gestarte modus en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
 
-1. De SKYSITE-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
+1. In de SKYSITE-toepassing worden de SAML-beweringen in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van de SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster Gebruikerskenmerken te openen.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-1. Daarnaast verwacht SKYSITE toepassing nog enkele kenmerken die in het SAML-antwoord weer worden door gegeven. Voer de volgende stappen uit in de sectie **gebruikers kenmerken & claims** van het dialoog venster **groeps claims (preview)** :
+1. Bovendien verwacht de SKYSITE-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
-    a. Klik op de **pen** naast **groepen die zijn geretourneerd in claim**.
+    a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
-    ![installatiekopie](./media/skysite-tutorial/config01.png)
+    ![image](./media/skysite-tutorial/config01.png)
 
-    ![installatiekopie](./media/skysite-tutorial/config02.png)
+    ![image](./media/skysite-tutorial/config02.png)
 
-    b. Selecteer **alle groepen** in de lijst met keuze rondjes.
+    b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 
-    c. Selecteer **bron kenmerk** van **groep-ID**.
+    c. Selecteer **Bronkenmerk** bij **Groep-ID**.
 
     d. Klik op **Opslaan**.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de sectie **SKYSITE instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **SKYSITE instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan SKYSITE.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot SKYSITE.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **SKYSITE**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in de lijst met toepassingen de optie **SKYSITE**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="configure-skysite-sso"></a>SKYSITE SSO configureren
+### <a name="configure-skysite-sso"></a>Eenmalige aanmelding voor SKYSITE configureren
 
-1. Open een nieuw webbrowser venster en meld u aan bij uw SKYSITE-bedrijfs site als beheerder en voer de volgende stappen uit:
+1. Open een nieuw webbrowservenster en meld u als beheerder bij uw bedrijfssite van SKYSITE aan en voer de volgende stappen uit:
 
-4. Klik op **instellingen** in de rechter bovenhoek van de pagina en navigeer vervolgens naar **account instelling**.
+4. Klik in de rechter bovenhoek van de pagina op **Instellingen** en navigeer vervolgens naar **Accountinstelling**.
 
     ![Configuratie](./media/skysite-tutorial/config03.png)
 
-5. Ga naar het tabblad **eenmalige aanmelding (SSO)** en voer de volgende stappen uit:
+5. Voer in het tabblad **Eenmalige aanmelding** de volgende stappen uit:
 
     ![Configuratie](./media/skysite-tutorial/config04.png)
 
-    a. Plak de waarde van de URL van de **gebruikers toegang**die u hebt gekopieerd van het tabblad eigenschappen in azure Portal in het tekstvak URL-aanmeldings **gegevens** van **ID-provider** .
+    a. Plak in het tekstvak **Aanmeld-URL van id-provider** de waarde van **URL voor gebruikerstoegang**, die u hebt gekopieerd uit het tabblad **Eigenschappen** in Azure Portal.
 
-    b. Klik op **certificaat uploaden**om het base64-gecodeerde certificaat te uploaden dat u hebt gedownload van de Azure Portal.
+    b. Klik op **Certificaat uploaden** om het Base64-gecodeerde certificaat te uploaden dat u hebt gedownload uit Azure Portal.
 
     c. Klik op **Opslaan**.
 
-### <a name="create-skysite-test-user"></a>SKYSITE-test gebruiker maken
+### <a name="create-skysite-test-user"></a>Een SKYSITE-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in SKYSITE. SKYSITE biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in SKYSITE, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in SKYSITE. SKYSITE biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker bestaat in SKYSITE, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SKYSITE in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SKYSITE waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SKYSITE in het toegangsvenster klikt, wordt u automatisch aangemeld bij het SKYSITE-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer SKYSITE met Azure AD](https://aad.portal.azure.com/)
+- [Probeer SKYSITE met Azure Active Directory](https://aad.portal.azure.com/)
 

@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie met organigram Azure Active Directory nu | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en het organigram.
+title: 'Zelfstudie: Azure Active Directory-integratie met OrgChart Now | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en OrgChart Now.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095436"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543853"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Zelf studie: integratie met organigram Azure Active Directory nu
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Zelfstudie: Azure Active Directory-integratie met OrgChart Now
 
-In deze zelf studie leert u hoe u het organigram nu kunt integreren met Azure Active Directory (Azure AD).
-Met Azure AD kunt u het organigram nu integreren met de volgende voor delen:
+In deze zelfstudie leert u hoe u OrgChart Now kunt integreren met Azure Active Directory (Azure AD).
+De integratie van OrgChart Now met Azure Active Directory biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die nu toegang tot het organigram heeft.
-* U kunt ervoor zorgen dat uw gebruikers zich nu automatisch kunnen aanmelden bij het organigram (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot OrgChart Now.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij OrgChart Now (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie nu met organigram wilt configureren, hebt u de volgende items nodig:
+U hebt het volgende nodig om Azure Active Directory-integratie met OrgChart Now te configureren:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor nu eenmalige aanmelding op organigram
+* Een abonnement op OrgChart Now waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Het organigram ondersteunt nu **SP** en **IDP** geïnitieerde SSO
+* OrgChart Now ondersteunt door **SP** en **IDP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-orgchart-now-from-the-gallery"></a>Het organigram nu toevoegen vanuit de galerie
+## <a name="adding-orgchart-now-from-the-gallery"></a>OrgChart Now toevoegen uit de galerie
 
-Als u de integratie van het organigram nu wilt configureren in azure AD, moet u nu een organigram toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Om de integratie van OrgChart Now te configureren in Azure AD, moet u OrgChart Now uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u nu een organigram wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
+**Als u OrgChart Now wilt toevoegen uit de galerie, moet u de volgende stappen uitvoeren:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van het organigram nu wilt configureren in azure AD, moet u 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **organigram nu**, selecteer **nu organigram** in resultaat paneel en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **OrgChart Now**, selecteer **OrgChart Now** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Organigram nu in de lijst met resultaten](common/search-new-app.png)
+     ![OrgChart Now in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD met het organigram nu configureren en testen op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er nu een koppelings relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in het organigram tot stand worden gebracht.
+In deze sectie gaat u Azure AD-eenmalige aanmelding met OrgChart Now configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in OrgChart Now tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met het organigram, moet u de volgende bouw stenen volt ooien:
+Als u Azure AD-eenmalige aanmelding met OrgChart Now wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer nu het organigram eenmalige aanmelding](#configure-orgchart-now-single-sign-on)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Nu organigram maken test gebruiker](#create-orgchart-now-test-user)** : als u nu een equivalent van Julia Simon in het organigram wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor OrgChart Now configureren](#configure-orgchart-now-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor OrgChart Now maken](#create-orgchart-now-test-user)** : als u een tegenhanger van Britta Simon in OrgChart Now wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de eenmalige aanmelding voor Azure AD te configureren met het organigram:
+Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren voor OrgChart Now:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **nu** op het organigram toepassings integratie de optie **eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **OrgChart Now** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,24 +99,24 @@ Voer de volgende stappen uit om de eenmalige aanmelding voor Azure AD te configu
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein en Url's voor nu op het organigram gegevens van eenmalige aanmelding](common/idp-identifier.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij OrgChart Now](common/idp-identifier.png)
 
     In het tekstvak **Id** typt u een URL: `https://sso2.orgchartnow.com`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![installatiekopie](common/both-preintegrated-signon.png)
+    ![image](common/both-preintegrated-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>`is de **Azure ad-id** gekopieerd van het gedeelte **nu organigram instellen** , verderop in de zelf studie beschreven.
+    > `<YourEntityID>` is de **Azure AD-id** die u hebt gekopieerd uit de sectie **OrgChart Now instellen**, die verderop in de zelfstudie wordt beschreven.
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Kopieer op de sectie **organigram instellen nu** de gewenste URL ('s) volgens uw vereiste.
+7. In de sectie **OrgChart Now instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -130,9 +126,9 @@ Voer de volgende stappen uit om de eenmalige aanmelding voor Azure AD te configu
 
     c. Afmeldings-URL
 
-### <a name="configure-orgchart-now-single-sign-on"></a>Organigram nu configureren voor eenmalige aanmelding
+### <a name="configure-orgchart-now-single-sign-on"></a>Eenmalige aanmelding voor OrgChart Now configureren
 
-Als u eenmalige aanmelding op het **organigram** wilt configureren, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar het [organigram nu ondersteunings team](mailto:ocnsupport@officeworksoftware.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **OrgChart Now** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam van OrgChart Now](mailto:ocnsupport@officeworksoftware.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -142,7 +138,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -150,26 +146,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in voor het gebruik van eenmalige aanmelding van Azure door de toegang tot het organigram nu te verlenen.
+In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot OrgChart Now.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **organigram nu**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **OrgChart Now**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen **nu organigram**.
+2. Selecteer **OrgChart Now** in de lijst met toepassingen.
 
-    ![De koppeling nu organigram in de lijst toepassingen](common/all-applications.png)
+    ![De OrgChart Now-link in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -179,49 +175,49 @@ In deze sectie schakelt u Julia Simon in voor het gebruik van eenmalige aanmeldi
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-orgchart-now-test-user"></a>Nu organigram maken test gebruiker
+### <a name="create-orgchart-now-test-user"></a>Testgebruiker voor OrgChart Now maken
 
-Als u wilt dat Azure AD-gebruikers zich nu kunnen aanmelden bij het organigram, moeten ze nu in het organigram worden ingericht. 
+Als u wilt dat Microsoft Azure Active Directory-gebruikers zich kunnen aanmelden bij OrgChart Now, moeten ze worden ingericht in OrgChart Now. 
 
-1. Het organigram biedt nu ondersteuning voor Just-in-time-inrichting, die standaard is ingeschakeld. Er wordt nu een nieuwe gebruiker gemaakt tijdens een poging om toegang te krijgen tot het organigram als het nog niet bestaat. Met de just-in-time gebruikers inrichtings functie wordt alleen een **alleen-lezen** gebruiker gemaakt wanneer een SSO-aanvraag afkomstig is van een herkende IDP en het e-mail adres in de gebruikers lijst niet is gevonden. Voor deze functie voor automatische inrichting moet u nu een toegangs groep met de titel **Algemeen** in het organigram maken. Volg de onderstaande stappen om een toegangs groep te maken:
+1. OrgChart Now biedt ondersteuning voor Just-In-Time-inrichting. Deze functie is standaard ingeschakeld. Er wordt eventueel een nieuwe gebruiker gemaakt bij een poging OrgChart Now te openen. Met de functie voor het Just-In-Time inrichten van gebruikers wordt alleen een **alleen-lezen** gebruiker gemaakt wanneer de aanvraag voor eenmalige aanmelding afkomstig is van een herkende IDP en het e-mailadres in de SAML-assertie niet voorkomt in de lijst met gebruikers. Als u deze functie voor automatische inrichting wilt gebruiken, moet u een toegangsgroep met de naam **General** (Algemeen) maken in OrgChart Now. Voer de onderstaande stappen uit om een toegangsgroep te maken:
 
-    a. Ga naar de optie **groepen beheren** , nadat u op het **vistuig** hebt geklikt in de rechter bovenhoek van de gebruikers interface.
+    a. Klik op het **tandwiel** rechtsboven in de gebruikersinterface en ga naar de optie **Manage Groups** (Groepen beheren).
 
-    ![Groepen nu op het organigram](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
+    ![Groepen in OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. Selecteer het pictogram **toevoegen** en noem de groep **Algemeen** en klik vervolgens op **OK**. 
+    b. Selecteer het pictogram **Toevoegen**, geef de groep de naam **General** en klik op **OK**. 
 
-    ![Organigram nu toevoegen](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
+    ![Toevoegen in OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
-    c. Selecteer de map (pen) waarvoor u de algemene of alleen-lezen gebruikers toegang wilt geven:
+    c. Selecteer de map(pen) waartoe u de algemene of alleen-lezen gebruikers toegang wilt geven:
 
-    ![Nu mappen op organigram](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
+    ![Mappen in OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **Vergrendel** de mappen zodat alleen gebruikers met beheerders rechten deze kunnen wijzigen. Klik vervolgens op **OK**.
+    d. Vergrendel de mappen (met **Lock**) zodat alleen gebruikers met beheerdersrechten deze kunnen wijzigen. Druk vervolgens op **OK**.
 
-    ![Organigram nu vergren delen](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
+    ![Vergrendelen in OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. Als u gebruikers met **beheerders** rechten en gebruikers voor **lezen/schrijven** wilt maken, moet u hand matig een gebruiker maken om toegang te krijgen tot hun bevoegdheids niveau via SSO. Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
+2. Als u **gebruikers met beheerdersrechten** wilt maken en **gebruikers met lees- en schrijfrechten** wilt maken, moet u handmatig een gebruiker maken om toegang te krijgen tot hun bevoegdheidsniveau via eenmalige aanmelding. Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
 
-    a. Meld u nu aan bij het organigram als een beveiligings beheerder.
+    a. Meld u als beveiligingsbeheerder aan bij OrgChart Now.
 
-    b.  Klik op **instellingen** in de rechter bovenhoek en navigeer vervolgens naar **gebruikers beheren**.
+    b.  Klik op **Settings** (Instellingen) in de rechterbovenhoek en navigeer naar **Manage Users** (Gebruikers beheren).
 
-    ![Instellingen voor het organigram nu](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
+    ![Instellingen in OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
-    c. Klik op **toevoegen** en voer de volgende stappen uit:
+    c. Klik op **Add** (Toevoegen) en voer de volgende stappen uit:
 
-    ![Organigram wordt nu beheerd](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
+    ![Beheren in OrgChart Now](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * Voer in het tekstvak **gebruikers-id** de gebruikers-id in, zoals **\@brittasimon contoso.com**.
+    * Voer in het tekstvak **User ID** de gebruikers-id in, bijvoorbeeld **brittasimon\@contoso.com**.
 
-    * Voer in het tekstvak **e-mail adres** het e-mail bericht van de gebruiker in, zoals **\@brittasimon contoso.com**.
+    * Voer in het tekstvak **Email Address** het e-mailadres van de gebruiker in, bijvoorbeeld **brittasimon\@contoso.com**.
 
     * Klik op **Add**.
 
@@ -229,13 +225,13 @@ Als u wilt dat Azure AD-gebruikers zich nu kunnen aanmelden bij het organigram, 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel organigram nu klikt in het toegangs venster, moet u zich nu automatisch bij het organigram aanmelden waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel OrgChart Now klikt, wordt u automatisch aangemeld bij het exemplaar van OrgChart Now waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

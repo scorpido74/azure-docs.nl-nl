@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 8/20/2020
 ms.author: allensu
-ms.openlocfilehash: ed6c60b4f66361e87f67f3c64bb60846b2df757b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817436"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870447"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Meerdere begin punten Azure CDN
 
@@ -66,6 +66,7 @@ Stel een of meer oorspronkelijke groepen in en kies een standaard oorspronkelijk
 
    | Instelling           | Waarde                                                                 |
    |-------------------|-----------------------------------------------------------------------|
+   | Naam        | Voer een naam in voor de oorsprong.        |
    | Type oorsprong | Selecteer **opslag**, **Cloud service**, **Web-app**of **aangepaste oorsprong**.                                   |
    | Hostnaam van oorsprong        | Selecteer of typ de hostnaam van de oorsprong.  De vervolg keuzelijst bevat alle beschik bare oorsprongen van het type dat u in de vorige instelling hebt opgegeven. Als u **aangepaste oorsprong** als uw oorsprongs type hebt geselecteerd, voert u het domein van de bron server van uw klant in. |
    | Host-header van oorsprong    | Voer de host-header in die u Azure CDN wilt verzenden met elke aanvraag, of wijzig de standaard waarde.                        |
@@ -114,6 +115,34 @@ Zodra u verschillende oorsprongen en een oorspronkelijke groep hebt, kunt u de o
 2. Als u een oorsprong uit de oorspronkelijke groep wilt verwijderen, selecteert u het prullenbak pictogram naast de oorsprong en selecteert u **Opslaan**:
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Oorsprong van groep voor updates verwijderen" border="true":::
+
+## <a name="override-origin-group-with-rules-engine"></a>Bron groep overschrijven met regels-engine
+
+Aanpassen hoe verkeer wordt gedistribueerd naar verschillende bron groepen met behulp van de standaard regels-engine.
+
+Distribueer verkeer naar een andere groep op basis van de aanvraag-URL.
+
+1. Selecteer in het CDN-eind punt **regel engine** onder **instellingen**:
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Engine voor regels" border="true":::
+
+2. Selecteer **+ regel toevoegen**.
+
+3. Voer een naam in voor de regel in de **naam**.
+
+4. Selecteer **+ voor waarde**en selecteer vervolgens **URL-pad**.
+
+5. Selecteer in het vervolg keuzemenu van de **operator** de optie **contains**.
+
+6. Voer in **waarde** **/images**in.
+
+7. Selecteer **+ actie toevoegen**en selecteer vervolgens **overschrijven van de oorspronkelijke groep**.
+
+8. In **oorspronkelijke groep**selecteert u de oorspronkelijke groep in de vervolg keuzelijst.
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Voor waarden van regel engine" border="true":::
+
+Voor alle binnenkomende aanvragen als het URL-pad **/images**bevat, wordt de aanvraag toegewezen aan de oorspronkelijke groep in de sectie Action **(myorigingroup)**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u Azure CDN-eind punt in meerdere oorsprong ingeschakeld.

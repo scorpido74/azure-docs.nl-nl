@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037147"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871238"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en bestandsopslag 
 
@@ -306,7 +306,8 @@ Als u de `--delete-destination` vlag instelt op `true` AzCopy, worden bestanden 
 >
 > |Scenario|Vlag|
 > |---|---|
-> |Opgeven hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden.|**--Check-MD5** = \[ Niet-gecontroleerd \| aanmelden \| FailIfDifferent \| FailIfDifferentOrMissing\]|
+> |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--behoud-SMB-machtigingen** = \[ waar \| Onwaar\]|
+> |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--behoud-SMB-info** = \[ waar \| Onwaar\]|
 > |Bestanden uitsluiten op basis van een patroon.|**--exclude-pad**|
 > |Geef op hoe gedetailleerd u de logboek vermeldingen voor synchronisatie wilt maken.|**--logboek niveau** = \[ \|fout gegevens voor waarschuwing \| \| geen\]|
 > 

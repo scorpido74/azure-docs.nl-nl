@@ -1,14 +1,14 @@
 ---
 title: 'Zelfstudie: Tag governance beheren'
 description: In deze zelfstudie gebruikt u het effect Modify van Azure Policy om een model voor tag-governance model te maken en af te dwingen voor nieuwe en bestaande resources.
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142262"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545502"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Zelfstudie: Tag-governance beheren met Azure Policy
 
@@ -45,7 +45,7 @@ Net als bij een goede implementatie van beheeropties voor governance, moeten de 
 
 ## <a name="configure-the-costcenter-tag"></a>De CostCenter-tag configureren
 
-In terminologie die specifiek is voor een Azure-omgeving die wordt beheerd met Azure Policy, geldt het volgende voor de tag _CostCenter_:
+In terminologie die specifiek is voor een Azure-omgeving die wordt beheerd met Azure Policy, gelden de volgende uitkomsten voor de tag _CostCenter_:
 
 - Resourcegroepen weigeren die geen tag _CostCenter_ hebben
 - Resources wijzigen om de tag _CostCenter_ toe te voegen vanuit de bovenliggende resourcegroep wanneer de tag ontbreekt
@@ -107,7 +107,7 @@ In deze beleidsregel wordt de bewerking **add** gebruikt in plaats van **addOrRe
 
 ## <a name="configure-the-env-tag"></a>De Env-tag configureren
 
-In terminologie die specifiek is voor een Azure-omgeving die wordt beheerd met Azure Policy, geldt het volgende voor de tag _Env_:
+In terminologie die specifiek is voor een Azure-omgeving die wordt beheerd met Azure Policy, gelden de volgende uitkomsten voor de tag _Env_:
 
 - De tag _Env_ wijzigen voor de resourcegroep op basis van het naamgevingsschema van de resourcegroep
 - De tag _Env_ voor alle resources in de resourcegroep wijzigen in de tag van de bovenliggende resourcegroep

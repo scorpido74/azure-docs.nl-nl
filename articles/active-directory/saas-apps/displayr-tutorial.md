@@ -1,226 +1,221 @@
 ---
-title: 'Zelf studie: integratie met de afspeelset Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de deplayr.
+title: 'Zelfstudie: Azure Active Directory-integratie met Displayr | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Displayr.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: b739b4e3-1a37-4e3c-be89-c3945487f4c1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103991"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536254"
 ---
-# <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Zelf studie: de uitsluiter integreren met Azure Active Directory
+# <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Zelfstudie: Displayr integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u de deplayr kunt integreren met Azure Active Directory (Azure AD). Wanneer u de deplayr integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Displayr integreert met Azure Active Directory (Azure AD). Wanneer u Displayr integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot de deplayr.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij de deplayr met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie er toegang heeft tot Displayr.
+* Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Displayr.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Displayr waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. De deplayr ondersteunt door **SP** geïnitieerde SSO.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. Displayr ondersteunt door **SP** geïnitieerde eenmalige aanmelding.
 
-## <a name="adding-displayr-from-the-gallery"></a>De deplayer toevoegen vanuit de galerie
+## <a name="adding-displayr-from-the-gallery"></a>Displayr toevoegen vanuit de galerie
 
-Als u de integratie van de deplayr wilt configureren in azure AD, moet u de weer gave van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Displayr in Azure Active Directory, moet u Displayr uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** de tekst **deplayr** in het zoekvak.
-1. Selecteer de optie **deplayr** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Displayr**.
+1. Selecteer **Displayr** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO met de deplayr configureren en testen met behulp van een test gebruiker met de naam **Julia Simon**. Voor eenmalige aanmelding moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de afspeel omgeving.
+Configureer en test eenmalige aanmelding van Azure AD met Displayr met behulp van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Displayr.
 
-Als u Azure AD SSO wilt configureren en testen met de functie voor afspelen, voert u de volgende bouw stenen uit:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Displayr te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
-2. **[Hiermee configureert u de unplayr](#configure-displayr)** om de SSO-instellingen aan de kant van de toepassing te configureren.
-3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding voor Azure ad te testen met Julia Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om Julia Simon in staat te stellen om eenmalige aanmelding van Azure ad te gebruiken.
-5. **[Maak de test gebruiker](#create-displayr-test-user)** voor het deactiveren van een exemplaar van Julia Simon die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Displayr](#configure-displayr)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** voor het testen van eenmalige aanmelding bij Azure AD met Britta Simon.
+4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat Britta Simon gebruik kan maken van eenmalige aanmelding bij Azure AD.
+5. **[Een testgebruiker maken voor Displayr](#create-displayr-test-user)** : als u in Displayr een equivalent van Britta Simon wilt dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina voor de integratie van **de toepassing de** sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Displayr**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 1. In de sectie **Standaard SAML-configuratie** voert u de volgende stap uit:
 
-    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://<YOURDOMAIN>.displayr.com`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<YOURDOMAIN>.displayr.com`
 
-    b. Typ in het tekstvak **id (Entiteits-ID)** een URL met het volgende patroon:`<YOURDOMAIN>.displayr.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie:`<YOURDOMAIN>.displayr.com`
 
     >[!NOTE]
-    >Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team voor client ondersteuning](mailto:support@displayr.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie Standaard SAML-configuratie in de Azure-portal.
+    >Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantondersteuningsteam van Displayr](mailto:support@displayr.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie Basic SAML-configuratie in Azure Portal.
 
-1. Ga op de pagina **eenmalige aanmelding met SAML instellen** naar het gedeelte SAML **-** **handtekening certificaat** en selecteer vervolgens **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op de computer.
 
    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. De toepassing voor het deplayprogramma verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
+1. In Displayr worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-1. Behalve hierboven verwachtte de toepassing voor het deplayprogramma nog enkele kenmerken die in de SAML-respons worden door gegeven. Voer de volgende stappen uit in de sectie **gebruikers kenmerken & claims** van het dialoog venster **groeps claims (preview)** :
+1. Bovendien verwacht Displayr nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
-    a. Klik op de **pen** naast **groepen die zijn geretourneerd in claim**.
+    a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
-    ![installatiekopie](./media/displayr-tutorial/config04.png)
+    ![image](./media/displayr-tutorial/config04.png)
 
-    ![installatiekopie](./media/displayr-tutorial/config05.png)
+    ![image](./media/displayr-tutorial/config05.png)
 
-    b. Selecteer **alle groepen** in de lijst met keuze rondjes.
+    b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 
-    c. Selecteer **bron kenmerk** van **groep-ID**.
+    c. Selecteer **Bronkenmerk** bij **Groep-ID**.
 
-    d. Controleer **de naam van de groepclaim aanpassen**.
+    d. Selecteer **De naam van de groepsclaim aanpassen**.
 
-    e. Controleer **Verzend groepen als rol claims**.
+    e. Selecteer **Groepen verzenden als rolclaims**.
 
     f. Klik op **Opslaan**.
 
-1. Kopieer de juiste URL ('s) op basis van uw vereiste op de sectie **installatie-uitstel** .
+1. In de sectie **Displayr instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-displayr"></a>De deplayr configureren
+### <a name="configure-displayr"></a>Displayr configureren
 
-1. Als u de configuratie wilt automatiseren in de deplayr, moet u de **extensie mijn apps beveiligde aanmeldings browser** installeren door te klikken op **de uitbrei ding installeren**.
+1. Als u de configuratie in Displayr wilt automatiseren, moet u de **browserextensie My Apps Secure Sign-in** installeren door op **De extensie installeren** te klikken.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op het **installatie programma van Setup** om u naar de toepassing voor het deplayprogramma te leiden. Geef de beheerders referenties op om u aan te melden bij de deplayr. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
+2. Als u op **Displayr instellen** klikt nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar Displayr. Geef hier de beheerdersreferenties op om u aan te melden bij Displayr. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Instelling configureren](common/setup-sso.png)
 
-3. Als u de functie voor het uitvoeren van de installatie hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij de bedrijfs site van uw bedrijf als beheerder en voert u de volgende stappen uit:
+3. Als u Displayr handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de bedrijfssite van Displayr. Voer hierna de volgende stappen uit:
 
-4. Klik op **instellingen** en navigeer vervolgens naar **account**.
+4. Klik op **Settings** en ga naar **Account**.
 
     ![Configuratie](./media/displayr-tutorial/config01.png)
 
-5. Ga naar **instellingen** in het bovenste menu en schuif naar beneden op de pagina om op **eenmalige aanmelding configureren (SAML)** te klikken.
+5. Ga naar **Settings** in het bovenste menu en schuif naar beneden op de pagina om te klikken op **Configure Single Sign On (SAML)** .
 
     ![Configuratie](./media/displayr-tutorial/config02.png)
 
-6. Voer de volgende stappen uit op de pagina voor **eenmalige aanmelding (SAML)** :
+6. Voer op de pagina **Single Sign On (SAML)** de volgende stappen uit:
 
     ![Configuratie](./media/displayr-tutorial/config03.png)
 
-    a. Schakel het selectie vakje **eenmalige aanmelding inschakelen (SAML)** in.
+    a. Schakel het selectievakje **Enable Single Sign On (SAML)** in.
 
-    b. Kopieer de waarde werkelijk **identifier** uit de sectie **basis configuratie van SAML** van Azure AD en plak deze in het tekstvak voor de **Uitgever** .
+    b. Kopieer de werkelijke **id** uit de sectie **Standaard SAML-configuratie** van Azure AD en plak deze in het tekstvak **Issuer**.
 
-    c. Plak in het tekstvak **URL voor aanmelding** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
+    c. Plak in het tekstvak **Login URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    d. Plak in het tekstvak **Afmeldings-URL** de waarde van de **afmeldings-URL**, die u van Azure Portal hebt gekopieerd.
+    d. Plak in het tekstvak **Logout URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    e. Open het certificaat (base64) in Klad blok, kopieer de inhoud en plak het in het tekstvak **certificaat** .
+    e. Open het certificaat (Base64) in Kladblok, kopieer de inhoud ervan en plak deze in het tekstvak **Certificate**.
 
-    f. **Groeps toewijzingen** zijn optioneel.
+    f. Geef desgewenst waarden op voor **Group mappings**.
 
     g. Klik op **Opslaan**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
+In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`Britta Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de deplayr.
+In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Displayr.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **deplayr**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Displayr** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-displayr-test-user"></a>Test gebruiker voor deplayer maken
+### <a name="create-displayr-test-user"></a>Testgebruiker voor Displayr maken
 
-Als u Azure AD-gebruikers wilt inschakelen, meldt u zich aan bij de afspeel functie en moet deze worden ingericht in de afspeel functie. In de deplayr is inrichting een hand matige taak.
+Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Displayr, moeten ze worden ingericht in Displayr. Het inrichten is in Displayr een handmatige taak.
 
-**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
+**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u als beheerder aan bij de deplayr.
+1. Meld u als beheerder aan bij Displayr.
 
-2. Klik op **instellingen** en navigeer vervolgens naar **account**.
+2. Klik op **Settings** en ga naar **Account**.
 
-    ![Configuratie van de deplayr](./media/displayr-tutorial/config01.png)
+    ![Configuratie van Displayr](./media/displayr-tutorial/config01.png)
 
-3. Schakel over naar de **instellingen** in het bovenste menu en schuif omlaag in de pagina totdat de sectie **gebruikers** op **nieuwe gebruiker**klikken.
+3. Ga naar **Settings** in het bovenste menu en schuif naar beneden op de pagina tot de se **Users** en klik daar op **New User**.
 
-    ![Configuratie van de deplayr](./media/displayr-tutorial/config07.png)
+    ![Configuratie van Displayr](./media/displayr-tutorial/config07.png)
 
-4. Voer de volgende stappen uit op de pagina **nieuwe gebruiker** :
+4. Voer op de pagina **New User** de volgende stappen uit:
 
-    ![Configuratie van de deplayr](./media/displayr-tutorial/config06.png)
+    ![Configuratie van Displayr](./media/displayr-tutorial/config06.png)
 
-    a. Voer in het tekstvak **naam** de naam van de gebruiker in, zoals **Brittasimon**.
+    a. Voer in het tekstvak **Name** de naam van de gebruiker in, bijvoorbeeld **Brittasimon**.
 
-    b. Voer in het tekstvak **Email** het e-mailadres van de gebruiker in, zoals `Brittasimon@contoso.com`.
+    b. Voer in het tekstvak **E-mail** het e-mailadres van de gebruiker in, zoals `Brittasimon@contoso.com`.
 
-    c. Selecteer het juiste **groepslid maatschap**.
+    c. Selecteer de juiste waarde bij **Group membership**.
 
     d. Klik op **Opslaan**.
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel deplayr selecteert in het toegangs venster, moet u automatisch worden aangemeld bij de replayr waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Displayr selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de instantie van Displayr waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

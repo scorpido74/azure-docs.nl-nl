@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706372"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871442"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uw toepassing verbinden met het beheerde Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Het verbinden van een toepassing wanneer deze zich in een ander virtueel netwerk
 
 Er zijn twee opties voor het verbinden van virtuele netwerken:
 
-- [Azure VPN-peering](../../virtual-network/virtual-network-peering-overview.md)
+- [Azure VNet-peering](../../virtual-network/virtual-network-peering-overview.md)
 - VNet-naar-VNet VPN-gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [Power shell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure cli](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
 Peering is de voor keur omdat deze gebruikmaakt van het micro soft backbone-netwerk, dus in het oogpunt van connectiviteit is er geen merkbaar verschil in latentie tussen virtuele machines in een gekoppeld virtueel netwerk en in hetzelfde virtuele netwerk. Peering van virtuele netwerken is beperkt tot de netwerken in dezelfde regio.  
@@ -63,7 +63,7 @@ Als u een on-premises Azure-verbinding tot stand hebt gebracht en u geen verbind
 
 ## <a name="connect-the-developer-box"></a>Verbinding maken tussen het vak voor ontwikkel aars
 
-Het is ook mogelijk om verbinding te maken met uw ontwikkelaars venster met een SQL-beheerd exemplaar. SQL Managed instance is alleen toegankelijk via een privé-IP-adres. om het te openen vanuit het vak voor ontwikkel aars, moet u eerst een verbinding maken tussen het vak voor ontwikkel aars en het virtuele netwerk van het SQL Managed instance. Hiervoor configureert u een punt-naar-site-verbinding met een virtueel netwerk met behulp van systeem eigen Azure-certificaat verificatie. Zie [een punt-naar-site-verbinding configureren om verbinding te maken met Azure SQL Managed instance van een on-premises computer](point-to-site-p2s-configure.md)voor meer informatie.
+Het is ook mogelijk om verbinding te maken met uw ontwikkelaars venster met een SQL-beheerd exemplaar. SQL Managed instance is alleen toegankelijk via een privé-IP-adres. om het te openen vanuit het vak voor ontwikkel aars, moet u eerst een verbinding maken tussen het vak voor ontwikkel aars en het virtuele netwerk van het SQL Managed instance. Hiervoor configureert u een punt-naar-site-verbinding met een virtueel netwerk met behulp van systeem eigen Azure-certificaat verificatie. Zie  [een punt-naar-site-verbinding configureren om verbinding te maken met Azure SQL Managed instance van een on-premises computer](point-to-site-p2s-configure.md)voor meer informatie.
 
 ## <a name="connect-with-vnet-peering"></a>Verbinding maken met VNet-peering
 

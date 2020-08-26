@@ -1,68 +1,87 @@
-### YamlMime:Landing
-title: Azure Arc
-summary: Azure Arc breidt de mogelijkheden van Azure Resource Manager uit naar Linux- en Windows-servers, en naar Kubernetes-clusters op elke infrastructuur in on-premises, multi-cloud en Edge. Daarnaast stelt Azure Arc klanten in staat om Azure-gegevensservices overal uit te voeren, zodat ze kunnen profiteren van de voordelen van cloudinnovatie, waaronder altijd actuele gegevensmogelijkheden, implementatie in seconden (in plaats van uren) en dynamische schaalbaarheid in elke infrastructuur.
+### YamlMime:Hub
+title: Documentatie voor Azure Arc
+summary: Vereenvoudig complexe en gedistribueerde omgevingen on-premises, in de Edge en in meerdere clouds.
+brand: azure
 metadata:
   title: Azure Arc
-  description: Meer informatie over het beheren van on-premises machines in Azure
-  author: mgoedtel
+  description: Meer informatie over hoe u resources implementeert in complexe en gedistribueerde omgevingen on-premises, in de Edge en in meerdere clouds. Met Azure Arc kunt u overal Azure-services implementeren en Azure-beheer uitbreiden naar elke infrastructuur.
   ms.service: azure-arc
-  ms.topic: landing-page
-  ms.date: 08/13/2020
+  ms.topic: hub-page
+  author: MGoedtel
   ms.author: magoedte
-  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.date: 08/21/2020
+  ms.openlocfilehash: 961d8b892841f2d8761053279f053afe3b859798
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88212775"
-landingContent:
-- title: Over Azure Arc
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763325"
+highlightedContent:
+  items:
+  - title: Servers met Azure Arc (preview)
+    itemType: overview
+    url: ./servers/overview.md
+  - title: Kubernetes met Azure Arc (preview)
+    itemType: overview
+    url: ./kubernetes/overview.md
+  - title: Over Azure Arc
+    itemType: overview
+    url: https://azure.microsoft.com/en-us/services/azure-arc
+productDirectory:
+  title: Services met Azure Arc
+  summary: Bekijk hoe u overal services uitvoert.
+  items:
+  - title: Servers met Azure Arc
+    imageSrc: ./media/manage-450-machines-azure-arc.svg
     links:
-    - text: Wat is Azure Arc?
-      url: https://aka.ms/Azure-Arc-Info
-- title: Computers verbinden met Azure met behulp van Azure Arc voor ingeschakelde servers
-  linkLists:
-  - linkListType: overview
+    - url: ./servers/onboard-portal.md
+      text: Machines verbinden met Azure Arc vanuit de Azure-portal
+    - url: ./servers/onboard-service-principal.md
+      text: Machines op schaal verbinden met een service-principal
+    - url: ./servers/onboard-dsc.md
+      text: Machines verbinden met Azure met PowerShell DSC
+    - url: ./servers/index.yml
+      text: Meer weergeven...
+  - title: Kubernetes met Azure Arc
+    imageSrc: ./media/containers-101-kubernetes-services.svg
     links:
-    - text: Wat zijn servers met Azure Arc?
-      url: ./servers/overview.md
-  - linkListType: quickstart
+    - url: ./kubernetes/connect-cluster.md
+      text: Cluster verbinden
+    - url: ./kubernetes/use-gitops-connected-cluster.md
+      text: Configuraties implementeren met GitOps
+    - url: ./kubernetes/index.yml
+      text: Meer weergeven...
+conceptualContent:
+  title: Aan de slag
+  items:
+  - title: Servers met Azure Arc (preview)
     links:
-    - text: Servers met Arc-agent inschakelen
-      url: ./servers/learn/quick-enable-hybrid-vm.md
-  - linkListType: how-to-guide
+    - url: ./servers/learn/quick-enable-hybrid-vm.md
+      itemType: get-started
+      text: Servers met Arc-agent inschakelen
+    - url: ./servers/learn/tutorial-enable-vm-insights.md
+      itemType: tutorial
+      text: Een hybride machine bewaken met Azure Monitor voor VM's
+    - url: ./servers/policy-samples.md
+      itemType: learn
+      text: Toegangsbeheer beleid met Azure Policy
+    - url: ./servers/manage-vm-extensions.md
+      itemType: how-to-guide
+      text: Azure VM-extensies beheren en gebruiken
+  - title: Kubernetes met Azure Arc (preview)
     links:
-    - text: Machines verbinden met Azure Arc vanuit de Azure-portal
-      url: ./servers/onboard-portal.md
-    - text: Machines op schaal verbinden met een service-principal
-      url: ./servers/onboard-service-principal.md
-    - text: Machines verbinden met Azure met PowerShell DSC
-      url: ./servers/onboard-dsc.md
-    - text: Azure VM-extensies beheren en gebruiken
-      url: ./servers/manage-vm-extensions.md
-- title: Kubernetes-clusters verbinden met Azure met behulp van Azure Arc
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Wat is Kubernetes met Azure Arc?
-      url: ./kubernetes/overview.md
-  - linkListType: quickstart
-    links:
-    - text: Cluster verbinden
-      url: ./kubernetes/connect-cluster.md
-  - linkListType: how-to-guide
-    links:
-    - text: Configuraties implementeren met GitOps
-      url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: Helm-grafieken implementeren met GitOps
-      url: ./kubernetes/use-gitops-with-helm.md
-    - text: GitOps afdwingen met Azure Policy
-      url: ./kubernetes/use-azure-policy.md
-    - text: Bewaken met Azure Monitor voor containers
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
-    - text: Toegangsbeheer beleid met Azure Policy
-      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
-    - text: Azure IoT Edge-workloads implementeren
-      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - url: ./kubernetes/use-gitops-with-helm.md
+      itemType: deploy
+      text: Helm-grafieken implementeren met GitOps
+    - url: ./kubernetes/use-azure-policy.md
+      itemType: how-to-guide
+      text: GitOps afdwingen met Azure Policy
+    - url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+      itemType: tutorial
+      text: Bewaken met Azure Monitor voor containers
+    - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
+      itemType: learn
+      text: Toegangsbeheer beleid met Azure Policy
+    - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+      itemType: deploy
+      text: Azure IoT Edge-workloads implementeren

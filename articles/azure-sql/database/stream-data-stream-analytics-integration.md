@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345356"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869861"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Gegevens streamen naar Azure SQL Database met behulp van Azure Stream Analytics-integratie (preview)
 
@@ -31,7 +31,7 @@ Gebruikers kunnen nu direct vanuit een data base in Azure SQL Database gegevens 
 - Extra gebruiks gemak met voorbeeld gegevens: binnenkomende gegevens van de bron van de gebeurtenissen (Event hub/IoT Hub) in de context van de geselecteerde tabel bekijken
 
 > [!IMPORTANT]
-> Een Azure Stream Analytics-taak kan worden uitgevoerd naar Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Zie [uitvoer](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)voor meer informatie.
+> Een Azure Stream Analytics-taak kan worden uitgevoerd naar Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Zie [uitvoer](../../stream-analytics/sql-database-output.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,7 +50,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 3. Als u uw streaminggegevens wilt opnemen in deze data base, selecteert u **maken** en geeft u een naam op voor de streaming-taak en selecteert u vervolgens **volgende: invoer**.
 
-    ![Stream Analytics-taak maken](./media/stream-data-stream-analytics-integration/create-job.png)
+    ![basis beginselen van de Stream Analytics-taak configureren](./media/stream-data-stream-analytics-integration/create-job.png)
 
 4. Voer de gegevens van uw gebeurtenis bron in en selecteer **volgende: uitvoer**.
 
@@ -64,7 +64,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
       We raden u aan om een Consumer groep en een beleid te maken voor elke nieuwe Azure Stream Analytics-taak die u hier maakt. Consumenten groepen staan slechts vijf gelijktijdige lezers toe, dus als u een speciale Consumer groep voor elke taak opgeeft, worden eventuele fouten voor komen die kunnen ontstaan door het overschrijden van die limiet. Met een speciaal beleid kunt u uw sleutel draaien of machtigingen intrekken zonder dat dit van invloed is op andere resources.
 
-     ![Stream Analytics-taak maken](./media/stream-data-stream-analytics-integration/create-job-output.png)
+     ![Stream Analytics taak uitvoer configureren](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
 5. Selecteer de tabel waarin u de streaminggegevens wilt opnemen. Wanneer u klaar bent, selecteert u **maken**.
 

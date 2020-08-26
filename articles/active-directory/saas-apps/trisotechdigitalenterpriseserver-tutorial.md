@@ -1,59 +1,55 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Trisotech Digital Enter prise server | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Trisotech Digital Enter prise server.
+title: 'Zelfstudie: Azure Active Directory-integratie met Trisotech Digital Enterprise Server | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Trisotech Digital Enterprise Server.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6d54d20c-eca1-4fa6-b56a-4c3ed0593db0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 56399f99ede611c4a120603cce3a3eede2728c6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3e8bf3d2407e2c3d0db4bb5d8591ba598aba68a3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67088266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546437"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Zelf studie: integratie Azure Active Directory met Trisotech Digital Enter prise server
+# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Zelfstudie: Azure Active Directory-integratie met Trisotech Digital Enterprise Server
 
-In deze zelf studie leert u hoe u Trisotech Digital Enter prise Server integreert met Azure Active Directory (Azure AD).
-Het integreren van Trisotech Digital Enter prise server met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Trisotech Digital Enterprise Server kunt integreren met Azure Active Directory (Azure AD).
+De integratie van Trisotech Digital Enterprise Server met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Trisotech Digital Enter prise server.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor Trisotech Digital Enter prise server (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot Trisotech Digital Enterprise Server.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Trisotech Digital Enterprise Server (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Trisotech Digital Enter prise server wilt configureren, hebt u de volgende items nodig:
+U hebt het volgende nodig om Azure Active Directory-integratie met Trisotech Digital Enterprise Server te configureren:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding voor Trisotech Digital Enter prise server
+* Een abonnement op Trisotech Digital Enterprise Server waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Trisotech Digital Enter prise server ondersteunt door **SP** GEÏNITIEERDe SSO
+* Trisotech Digital Enterprise Server ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-* Trisotech Digital Enter prise server ondersteunt **just-in-time** -gebruikers inrichting
+* Trisotech Digital Enterprise Server ondersteunt het **Just-In-Time** inrichten van gebruikers
 
-## <a name="adding-trisotech-digital-enterprise-server-from-the-gallery"></a>Trisotech Digital Enter prise server toevoegen vanuit de galerie
+## <a name="adding-trisotech-digital-enterprise-server-from-the-gallery"></a>Trisotech Digital Enterprise Server toevoegen uit de galerie
 
-Als u de integratie van Trisotech Digital Enter prise server wilt configureren in azure AD, moet u Trisotech Digital Enter prise server toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Trisotech Digital Enterprise Server te configureren in Azure AD, moet u Trisotech Digital Enterprise Server uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Trisotech Digital Enter prise server toe te voegen vanuit de galerie:**
+**Voer de volgende stappen uit om Trisotech Digital Enterprise Server toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +63,31 @@ Als u de integratie van Trisotech Digital Enter prise server wilt configureren i
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Trisotech Digital Enter prise server**in het zoekvak, selecteer **Trisotech Digital Enter prise server** van result panel en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Trisotech Digital Enterprise Server**, selecteer **Trisotech Digital Enterprise Server** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Trisotech Digital Enter prise server in de lijst met resultaten](common/search-new-app.png)
+     ![Trisotech Digital Enterprise Server in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Trisotech Digital Enter prise server op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Trisotech Digital Enter prise server tot stand worden gebracht.
+In deze sectie gaat u Azure AD-eenmalige aanmelding met Trisotech Digital Enterprise Server configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Trisotech Digital Enterprise Server tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Trisotech Digital Enter prise server, moet u de volgende bouw stenen volt ooien:
+Als u Azure AD-eenmalige aanmelding met Trisotech Digital Enterprise Server wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Trisotech Digital Enter prise server configureren](#configure-trisotech-digital-enterprise-server-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Trisotech Digital Enter prise server test User](#create-trisotech-digital-enterprise-server-test-user)** -als u een equivalent van Julia Simon wilt hebben in Trisotech Digital Enter prise server dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Trisotech Digital Enterprise Server configureren](#configure-trisotech-digital-enterprise-server-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor Trisotech Digital Enterprise Server maken](#create-trisotech-digital-enterprise-server-test-user)** : als u een tegenhanger van Britta Simon in Trisotech Digital Enterprise Server wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Trisotech Digital Enter prise server:
+Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren voor Trisotech Digital Enterprise Server:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Trisotech Digital Enter prise server** Application Integration de optie **eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **Trisotech Digital Enterprise Server** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,46 +101,46 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Trisotech Digital Enter prise Server-domein en Url's](common/sp-identifier.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Trisotech Digital Enterprise Server](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.trisotech.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.trisotech.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<companyname>.trisotech.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Trisotech Digital Enter prise Server-client](mailto:support@trisotech.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteuningsteam van Trisotech Digital Enterprise Server](mailto:support@trisotech.com) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-trisotech-digital-enterprise-server-single-sign-on"></a>Eenmalige aanmelding voor Trisotech Digital Enter prise server configureren
+### <a name="configure-trisotech-digital-enterprise-server-single-sign-on"></a>Eenmalige aanmelding voor Trisotech Digital Enterprise Server configureren
 
-1. Meld u in een ander webbrowser venster aan bij de bedrijfs site van uw Trisotech Digital Enter prise-server configuratie als beheerder.
+1. Meld u in een ander webbrowservenster als beheerder aan bij uw Trisotech Digital Enterprise Server-bedrijfssite.
 
-2. Klik op het **menu pictogram** en selecteer vervolgens **beheer**.
+2. Klik op het **menupictogram** en selecteer **Administration**.
 
     ![Eenmalige aanmelding configureren](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
-3. Selecteer de **gebruikers provider**.
+3. Selecteer **User Provider**.
 
     ![Eenmalige aanmelding configureren](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
-4. Voer de volgende stappen uit in de sectie configuraties van de **gebruikers provider** :
+4. Voer de volgende stappen uit in de sectie **User Provider Configurations**:
 
     ![Eenmalige aanmelding configureren](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a. Selecteer **beveiligde Assertion Markup Language 2 (SAML 2)** in de vervolg keuzelijst in de **verificatie methode**.
+    a. Selecteer **Secured Assertion Markup Language 2 (SAML 2)** in de vervolgkeuzelijst **Authentication Method**.
 
-    b. Plak in het tekstvak **URL voor meta gegevens** de waarde voor de URL van de **app-federatieve meta gegevens** die u hebt gekopieerd Azure Portal.
+    b. Plak in het tekstvak **Metadata URL** de waarde van **App-URL voor federatieve metagegevens** die u uit Azure Portal hebt gekopieerd.
 
-    c. Voer in het tekstvak **toepassings-id** de URL in met het volgende patroon `https://<companyname>.trisotech.com`:.
+    c. Voer in het tekstvak **Application ID** de URL in met het volgende patroon: `https://<companyname>.trisotech.com`.
 
-    d. Klik op **Opslaan**
+    d. Klik op **Opslaan**.
 
-    e. Voer de domein naam in het tekstvak **toegestane domeinen (leeg betekent dat iedereen)** , worden automatisch licenties toegewezen voor gebruikers die overeenkomen met de toegestane domeinen
+    e. Voer in het tekstvak **Allowed Domains (empty means everyone)** de domeinnaam in zodat er automatisch licenties worden toegewezen aan gebruikers die behoren tot de toegestane domeinen
 
-    f. Klik op **Opslaan**
+    f. Klik op **Opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -154,7 +150,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -162,25 +158,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Trisotech Digital Enter prise server.
+In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen Trisotech Digital Enterprise Server.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer **Trisotech Digital Enter prise server**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Trisotech Digital Enterprise Server**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Trisotech Digital Enter prise server**.
+2. Selecteer **Trisotech Digital Enterprise Server** in de lijst met toepassingen.
 
-    ![De koppeling Trisotech Digital Enter prise server in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Trisotech Digital Enterprise Server in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -190,30 +186,30 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-trisotech-digital-enterprise-server-test-user"></a>Test gebruiker voor Trisotech Digital Enter prise server maken
+### <a name="create-trisotech-digital-enterprise-server-test-user"></a>Testgebruiker voor Create Trisotech Digital Enterprise Server maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Trisotech Digital Enter prise server. Trisotech Digital Enter prise server ondersteunt just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Trisotech Digital Enter prise server bestaat, wordt er na verificatie een nieuwe gemaakt.
+In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Trisotech Digital Enterprise Server. Trisotech Digital Enterprise Server ondersteunt het Just-In-Time inrichten van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Trisotech Digital Enterprise Server bestaat, wordt er een nieuwe gemaakt na verificatie.
 
 >[!Note]
->Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van Trisotech Digital Enter prise server](mailto:support@trisotech.com).
+>Als u handmatig een gebruiker moet maken, neemt u contact op met het [ondersteuningsteam van Trisotech Digital Enterprise Server](mailto:support@trisotech.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Trisotech Digital Enter prise server in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Trisotech Digital Enter prise-server waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Trisotech Digital Enterprise Server klikt, wordt u automatisch aangemeld bij de instantie van Trisotech Digital Enterprise Server waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

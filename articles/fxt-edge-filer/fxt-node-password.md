@@ -1,69 +1,69 @@
 ---
-title: 'Zelf studie: een hardware-Azure FXT Edge-bestand initialiseren'
-description: Een eerste wacht woord instellen voor Azure FXT Edge-knoop punten
+title: 'Zelfstudie: Hardware initialiseren: Azure FXT Edge Filer'
+description: Lees hoe u verbinding maakt met het hardwareknooppunt en een initieel wachtwoord instelt voor Azure FXT Edge Filer-knooppunten.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4fae7795cdd61e3eb465285163bcd6c0dd9f7db2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75550888"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184921"
 ---
-# <a name="tutorial-set-hardware-passwords"></a>Zelf studie: Hardware-wacht woorden instellen
+# <a name="tutorial-set-hardware-passwords"></a>Zelfstudie: Hardwarewachtwoorden instellen
 
-De eerste keer dat u een Azure FXT Edge-knoop punt uitschakelt, moet u een Hoofdwacht woord instellen. De hardwarestuurprogramma's worden niet geleverd met een standaard wachtwoord. 
+De eerste keer dat u een Azure FXT Edge Filer-knooppunt inschakelt, moet u een hoofdwachtwoord instellen. De hardwareknooppunten worden geleverd zonder standaardwachtwoord. 
 
-Netwerk poorten worden uitgeschakeld totdat het wacht woord is ingesteld en de hoofd gebruiker zich aanmeldt.
+De netwerkpoorten zijn uitgeschakeld totdat het wachtwoord is ingesteld en de rootgebruiker zich aanmeldt.
 
-Voer deze stap na het installeren en bekabelen van het knoop punt uit, maar voordat u probeert het cluster te maken. 
+Voer deze stap uit na het installeren en bekabelen van het knooppunt, maar voordat u probeert het cluster te maken. 
 
-In deze zelf studie wordt uitgelegd hoe u verbinding maakt met het hardwareprofiel en hoe u het wacht woord instelt. 
+In deze zelfstudie wordt uitgelegd hoe u verbinding maakt met het hardwareknooppunt en hoe u een wachtwoord instelt. 
 
 In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
-> * Een toetsen bord en monitor aansluiten op het knoop punt en deze inschakelen
-> * Wacht woorden instellen voor de iDRAC-poort en hoofd gebruiker op dit knoop punt
-> * Aanmelden als root 
+> * Een toetsenbord en monitor aansluiten op het knooppunt en deze inschakelen
+> * Wachtwoorden instellen voor de iDRAC-poort en rootgebruiker op dit knooppunt
+> * Aanmelden als rootgebruiker 
 
-Herhaal deze stappen voor elk knoop punt dat u in uw cluster wilt gebruiken. 
+Herhaal deze stappen voor elk knooppunt dat u in uw cluster wilt gebruiken. 
 
-Het volt ooien van deze zelf studie duurt ongeveer 15 minuten. 
+Het voltooien van deze zelfstudie duurt ongeveer 15 minuten. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelf studie begint, voert u de volgende stappen uit: 
+Voltooi deze stappen voordat u aan deze zelfstudie begint: 
 
-* [Installeer](fxt-install.md) elk Azure FXT Edge-knoop punt in een materieel rek en koppel energie kabels en netwerk toegang zoals beschreven in de [vorige zelf studie](fxt-network-power.md). 
-* Zoek een toetsen bord met USB-verbinding en een met VGA verbonden monitor die u aan de hardwareprofielen kunt koppelen. (De seriële poort van het knoop punt is niet actief voordat u het wacht woord instelt.)
+* [Installeer](fxt-install.md) elk Azure FXT Edge Filer-knooppunt in een rek, en sluit netsnoeren en netwerkkabels aan zoals wordt beschreven in deze [eerdere zelfstudie](fxt-network-power.md). 
+* Zoek een toetsenbord met USB-aansluiting en een VGA-monitor die u kunt aansluiten op de hardwareknooppunten. (De seriële poort van het knooppunt is inactief totdat u een wachtwoord instelt.)
 
-## <a name="connect-a-keyboard-and-monitor-to-the-node"></a>Een toetsen bord en monitor aansluiten op het knoop punt
+## <a name="connect-a-keyboard-and-monitor-to-the-node"></a>Een toetsenbord en monitor aansluiten op het knooppunt
 
-Verbind een monitor en toetsen bord fysiek met het knoop punt Azure FXT Edge-bestand. 
+Sluit een monitor en toetsenbord aan op het Azure FXT Edge Filer-knooppunt. 
 
-* Verbind de monitor met de VGA-poort.
-* Verbind het toetsen bord met een van de USB-poorten. 
+* Sluit de monitor aan op de VGA-poort.
+* Sluit het toetsenbord aan op een van de USB-poorten. 
 
-Gebruik dit referentie diagram om de poorten op de achterkant van het chassis te vinden. 
+Gebruik dit achteraanzicht om de poorten te vinden op de achterzijde van het chassis. 
 
 > [!NOTE]
-> De seriële poort is pas actief nadat het wacht woord is ingesteld. 
+> De seriële poort is inactief totdat er een wachtwoord is ingesteld. 
 
-![diagram van de back-upbestanden van de Azure FXT-rand met serie-, VGA-en USB-poorten met label](media/fxt-back-serial-vga-usb.png)
+![Achteraanzicht van Azure FXT Edge Filer met seriële poort, VGA-poort en USB-poorten aangegeven](media/fxt-back-serial-vga-usb.png)
 
-U kunt een KVM-switch gebruiken als u meer dan één knoop punt wilt verbinden met dezelfde rand apparatuur. 
+U kunt een KVM-switch gebruiken als u meer dan een knooppunt wilt aansluiten op dezelfde randapparatuur. 
 
-Schakel het knoop punt uit door op de aan/uit-knop aan de voor grond te drukken. 
+Schakel het knooppunt in door aan de voorzijde op de aan/uit-knop te drukken. 
 
-![diagram van front van Azure FXT Edge-beknopte aan de rechter bovenhoek](media/fxt-front-annotated.png)
+![Vooraanzicht van Azure FXT Edge Filer - de ronde aan/uit-knop zit rechtsboven, zoals hier is aangegeven](media/fxt-front-annotated.png)
 
-## <a name="set-initial-passwords"></a>Initiële wacht woorden instellen 
+## <a name="set-initial-passwords"></a>Initiële wachtwoorden instellen 
 
-In het knoop punt Azure FXT Edge-bestand worden verschillende berichten naar de monitor afgedrukt tijdens het opstarten. Na enkele ogen blikken wordt een eerste installatie scherm als volgt weer gegeven:
+Tijdens het opstarten van het Azure FXT Edge Filer-knooppunt verschijnen er verschillende berichten op de monitor. Na enige tijd ziet u een eerste configuratiescherm zoals dit:
 
 ```
 ------------------------------------------------------
@@ -76,17 +76,17 @@ Minimum password length is 8.
 Enter new password:
 ```
 
-Het wacht woord dat u invoert, wordt gebruikt voor twee dingen: 
+Het wachtwoord dat u invoert, wordt gebruikt voor twee dingen: 
 
-* Het is het tijdelijke wacht woord voor dit knoop punt van de Azure FXT Edge-Bestands server. 
+* Het is het tijdelijke hoofdwachtwoord voor dit Azure FXT Edge Filer-knooppunt. 
 
-  Dit wacht woord wordt gewijzigd wanneer u een cluster met dit knoop punt maakt of wanneer u dit knoop punt aan het cluster toevoegt. Het wacht woord voor cluster beheer (gekoppeld aan ``admin``de gebruiker) is ook het hoofd wachtwoord voor alle knoop punten in een cluster.
+  Dit wachtwoord wordt gewijzigd wanneer u een cluster met dit knooppunt maakt of wanneer u dit knooppunt aan het cluster toevoegt. Het wachtwoord voor clusterbeheer (gekoppeld aan de gebruiker ``admin``) is ook het hoofdwachtwoord voor alle knooppunten in een cluster.
 
-* Het is het wacht woord voor de lange termijn voor de iDRAC/IPMI-hardwarematige poort.
+* Het is het langetermijnwachtwoord voor de iDRAC/IPMI-poort voor hardwarebeheer.
 
-  Zorg ervoor dat u het wacht woord vergeet om u later aan te melden met IPMI om een hardwareprobleem op te lossen.
+  Zorg ervoor dat u het wachtwoord niet vergeet, zodat u zich later kunt aanmelden bij IPMI om een hardwareprobleem op te lossen.
 
-Voer het wacht woord in en bevestig dit: 
+Voer het wachtwoord in en bevestig dit: 
 
 ```
 Enter new password:**********
@@ -94,22 +94,22 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-Nadat u het wacht woord hebt ingevoerd, wordt het systeem voortgezet met opstarten. Wanneer de opdracht is voltooid, wordt een ``login:`` prompt gegeven. 
+Nadat u het wachtwoord hebt ingevoerd, wordt het systeem verder opgestart. Als alles klaar is, ziet u de prompt ``login:``. 
 
-## <a name="sign-in-as-root"></a>Aanmelden als root
+## <a name="sign-in-as-root"></a>Aanmelden als rootgebruiker
 
-Meld u aan ``root`` met het wacht woord dat u zojuist hebt ingesteld. 
+Meld u aan als ``root`` met het wachtwoord dat u zojuist hebt ingesteld. 
 
 ```
 login: root
 Password:**********
 ```
 
-Nadat u zich hebt aangemeld als basis, zijn de netwerk poorten actief en neemt het contact op met de DHCP-server voor IP-adressen. 
+Nadat u zich hebt aangemeld als rootgebruiker, zijn de netwerkpoorten actief en wordt er contact opgenomen met de DHCP-server voor IP-adressen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het knoop punt is klaar om deel uit te maken van een cluster. U kunt deze gebruiken om het Azure FXT Edge-bestands cluster te maken of u kunt [het toevoegen aan een bestaand cluster](fxt-add-nodes.md). 
+Het knooppunt is klaar om te worden toegevoegd aan een cluster. U kunt het knooppunt gebruiken om een Azure FXT Edge Filer-cluster te maken of u kunt [het knooppunt toevoegen aan een bestaand cluster](fxt-add-nodes.md). 
 
 > [!div class="nextstepaction"]
 > [Een cluster maken](fxt-cluster-create.md)

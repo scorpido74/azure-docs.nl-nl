@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met rollbar | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en rollbar.
+title: 'Zelfstudie: Integratie van Azure Active Directory met Rollbar | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Rollbar.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57537e54-9388-4272-a610-805ce45a451f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092683"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528546"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Zelf studie: integratie Azure Active Directory met rollbar
+# <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Zelfstudie: Integratie van Azure Active Directory met Rollbar
 
-In deze zelf studie leert u hoe u rollbar integreert met Azure Active Directory (Azure AD).
-Het integreren van rollbar met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Rollbar kunt integreren met Azure Active Directory (Azure AD).
+Integratie van Rollbar met Azure AD heeft de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot rollbar.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij rollbar (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure Active Directory bepalen wie er toegang heeft tot Rollbar.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Rollbar (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met rollbar wilt configureren, hebt u de volgende items nodig:
+Voor de configuratie van Azure AD-integratie met Rollbar, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement voor eenmalige aanmelding rollbar ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Een abonnement op Rollbar waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Rollbar ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* Rollbar ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding (SSO)
 
-## <a name="adding-rollbar-from-the-gallery"></a>Rollbar toevoegen uit de galerie
+## <a name="adding-rollbar-from-the-gallery"></a>Rollbar toevoegen vanuit de galerie
 
-Als u de integratie van rollbar in azure AD wilt configureren, moet u rollbar uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Rollbar in Azure AD te configureren, moet u Rollbar vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om rollbar toe te voegen uit de galerie:**
+**Als u Rollbar wilt toevoegen vanuit de galerie, moet u de volgende stappen uitvoeren:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van rollbar in azure AD wilt configureren, moet u rollbar ui
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **rollbar**in het zoekvak, selecteer **rollbar** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Rollbar** in het zoekvak, selecteer **Rollbar** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Rollbar in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met rollbar op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in rollbar tot stand worden gebracht.
+In deze sectie gaat u Azure AD-eenmalige aanmelding bij Rollbar configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Rollbar tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met rollbar, moet u de volgende bouw stenen volt ooien:
+U moet de volgende bouwstenen voltooien om eenmalige aanmelding met Azure AD bij Rollbar te configureren en te testen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Rollbar eenmalige aanmelding configureren](#configure-rollbar-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een rollbar-test gebruiker](#create-rollbar-test-user)** -om een equivalent van Julia Simon in rollbar te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Rollbar configureren](#configure-rollbar-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker maken voor Rollbar](#create-rollbar-test-user)** : als u een tegenhanger van Britta Simon in Rollbar wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met rollbar:
+Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configureren met Rollbar:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **rollbar** Application Integration de optie **eenmalige aanmelding**.
+1. In de [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **Rollbar**-toepassing de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -101,28 +97,28 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
+4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor rollbar domein en Url's](common/idp-intiated.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Rollbar](common/idp-intiated.png)
 
-    a. Typ de URL in het tekstvak **id** :`https://saml.rollbar.com`
+    a. In het tekstvak **Id** typt u deze URL: `https://saml.rollbar.com`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor rollbar domein en Url's](common/metadata-upload-additional-signon.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Rollbar](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://rollbar.com/<accountname>/saml/login/azure/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://rollbar.com/<accountname>/saml/login/azure/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het [ondersteunings team van rollbar-clients](mailto:support@rollbar.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met [het klantondersteuningsteam van Rollbar](mailto:support@rollbar.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Kopieer op de sectie **rollbar instellen** de gewenste URL ('s) volgens uw vereiste.
+7. In de sectie **Rollbar instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -132,39 +128,39 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-rollbar-single-sign-on"></a>Eenmalige aanmelding voor rollbar configureren
+### <a name="configure-rollbar-single-sign-on"></a>Eenmalige aanmelding configureren voor Rollbar
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw rollbar-bedrijfs site.
+1. Meld u in een andere webbrowser als beheerder aan bij uw Rollbar-bedrijfssite.
 
-1. Klik op de **Profiel instellingen** in de rechter bovenhoek en klik vervolgens op **account naam instellingen**.
+1. Klik in de rechterbovenhoek op **Profile Settings** en vervolgens op **Account Name Settings**.
 
     ![Configuratie](./media/rollbar-tutorial/general.png)
 
-1. Klik op **ID-provider** onder beveiliging.
+1. Klik onder SECURITY op **Identity Provider**.
 
     ![Configuratie](./media/rollbar-tutorial/configure1.png)
 
-1. Voer de volgende stappen uit in de sectie **SAML-ID-provider** :
+1. Voer in de sectie **SAML Identity Provider** de volgende stappen uit:
 
     ![Configuratie](./media/rollbar-tutorial/configure2.png)
 
-    a. Selecteer **Azure** in de vervolg keuzelijst **SAML-ID-provider** .
+    a. Selecteer **AZURE** in de vervolgkeuzelijst **SAML Identity Provider**.
 
-    b. Open het meta gegevensbestand in Klad blok, kopieer de inhoud van het bestand naar het klem bord en plak het in het tekstvak **SAML-meta gegevens** .
+    b. Open het gedownloade metagegevensbestand in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze in het tekstvak **SAML Metadata**.
 
     c. Klik op **Opslaan**.
 
-1. Nadat u op de knop Opslaan hebt geklikt, wordt het scherm als volgt weer gegeven:
+1. Nadat u op de knop Opslaan hebt geklikt, wordt het scherm als volgt weergegeven:
 
     ![Configuratie](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
-    > Als u de volgende stap wilt volt ooien, moet u zich eerst als gebruiker toevoegen aan de rollbar-app in Azure.
+    > Om de volgende stap uit te voeren, moet u zich eerst als gebruiker toevoegen aan de Rollbar-app in Azure.
     >
 
-    a. Als u wilt dat alle gebruikers moeten worden geverifieerd via Azure, klikt u op **Aanmelden via uw ID-provider om zich** opnieuw te verifiëren via Azure.  
+    a. Als u wilt dat alle gebruikers moeten worden geverifieerd via Azure, klikt u op **log in via your identity provider** voor herverificatie via Azure.  
 
-    b.  Wanneer u weer naar het scherm bent teruggekeerd, schakelt u het selectie vakje **Aanmelden via SAML-identiteits provider vereisen** in.
+    b.  Weer terug in het scherm, schakelt u het selectievakje **Require login via SAML Identity Provider** in.
 
     b. Klik op **Opslaan**.
 
@@ -176,7 +172,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -184,26 +180,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`.  
+    b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan rollbar.
+In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te geven tot Rollbar.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **rollbar**.
+1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Rollbar**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **rollbar**.
+2. Selecteer **Rollbar** in de lijst met toepassingen.
 
-    ![De koppeling rollbar in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Rollbar in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -213,21 +209,21 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-rollbar-test-user"></a>Rollbar-test gebruiker maken
+### <a name="create-rollbar-test-user"></a>Testgebruiker maken voor Rollbar
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij rollbar, moeten ze worden ingericht in rollbar. In het geval van rollbar is inrichting een hand matige taak.
+Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Rollbar, moeten ze worden ingericht in Rollbar. In het geval van Rollbar is het inrichten een handmatige taak.
 
-**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
+**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u als beheerder aan bij de rollbar-bedrijfs site.
+1. Meld u als beheerder aan bij de Rollbar-bedrijfssite.
 
-1. Klik op de **Profiel instellingen** in de rechter bovenhoek en klik vervolgens op **account naam instellingen**.
+1. Klik in de rechterbovenhoek op **Profile Settings** en vervolgens op **Account Name Settings**.
 
     ![Gebruiker](./media/rollbar-tutorial/general.png)
 
@@ -235,13 +231,13 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij rollbar, m
 
     ![Werknemer toevoegen](./media/rollbar-tutorial/user1.png)
 
-1. Klik op **team leden uitnodigen**.
+1. Klik op **Invite Team Members**.
 
-    ![Personen uitnodigen](./media/rollbar-tutorial/user2.png)
+    ![Invite People](./media/rollbar-tutorial/user2.png)
 
-1. Voer in het tekstvak de naam van de gebruiker in, zoals **brittasimon\@contoso.com** en klik op **toevoegen/uitnodigen**.
+1. Voer in het tekstvak de naam van de gebruiker in, zoals **brittasimon\@contoso.com** en klik **Toevoegen/Uitnodigen**.
 
-    ![Personen uitnodigen](./media/rollbar-tutorial/user3.png)
+    ![Invite People](./media/rollbar-tutorial/user3.png)
 
 1. De gebruiker ontvangt een uitnodiging en nadat deze is geaccepteerd, worden deze in het systeem gemaakt.
 
@@ -249,13 +245,13 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij rollbar, m
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel rollbar in het toegangs venster klikt, moet u automatisch worden aangemeld bij de rollbar waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Rollbar klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Rollbar in het toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
