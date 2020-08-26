@@ -3,12 +3,12 @@ title: Back-ups van Azure-VM'S beheren en bewaken
 description: Meer informatie over het beheren en bewaken van back-ups van Azure-VM'S met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: cbe0ccef9df27af032cf849b302f6a6211383fe8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531994"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892164"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -188,7 +188,7 @@ Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig
 
 * Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte back-uptaken op aanvraag (mislukte geplande taken worden niet weer gegeven).
 * Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
-* Gebruikers wordt aangeraden om de back-upitems te verwijderen waar de primaire gegevens bron niet meer bestaat om extra kosten te voor komen. als het back-upbestand/de gegevens voor de verwijderings resources niet langer zijn vereist, wordt het laatste herstel punt permanent bewaard en wordt de gebruiker in rekening gebracht op basis van de back-upprijs van toepassing.
+* We raden u aan om de back-upitems te verwijderen waar de primaire gegevens bron niet meer bestaat om extra kosten te voor komen. als het back-upbestand/de gegevens voor de verwijderings resources niet langer zijn vereist, wordt het laatste herstel punt permanent bewaard en wordt de gebruiker in rekening gebracht op basis van de back-upprijs van toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

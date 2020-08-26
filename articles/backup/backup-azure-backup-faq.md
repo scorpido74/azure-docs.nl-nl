@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827389"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892759"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -26,7 +26,7 @@ U kunt per kluis maximaal 1000 virtuele Azure-machines registreren. Als u de Mic
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Hoeveel gegevensbronnen/items kunnen worden beveiligd in een kluis?
 
-U kunt maximaal 2000 gegevensbronnen/items beveiligen voor alle workloads (IaaS VM, SQL, AFS, enzovoort) in een kluis.
+U kunt Maxi maal 2000 gegevens bronnen of-items beveiligen voor alle werk belastingen (zoals IaaS VM, SQL, AFS) in een kluis.
 Als u bijvoorbeeld al 500 Vm's en 400 Azure Files shares in de kluis hebt beveiligd, kunt u Maxi maal 1100 SQL-data bases in het bestand beveiligen.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Hoeveel beleidsregels kan ik maken per kluis?

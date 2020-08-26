@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783007"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893084"
 ---
 # <a name="material-mapping-for-model-formats"></a>Materiaaltoewijzing voor modelindelingen
 
@@ -101,29 +101,30 @@ De bovenstaande toewijzing is het meest complexe deel van de materiaal conversie
 Hieronder worden enkele definities gebruikt:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular` . Groen ∗ 0,7154 + `Specular` . Blue ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse` . Red<sup>2</sup> + 0,587 * `Diffuse` . Groen<sup>2</sup> + 0,114 * `Diffuse` . Blauw<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular` . Red<sup>2</sup> + 0,587 * `Specular` . Groen<sup>2</sup> + 0,114 * `Specular` . Blauw<sup>2</sup>
-* `SpecularStrength`= Max ( `Specular` . Rood, `Specular` . Groen, `Specular` . Meng
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 +  `Specular` . Groen ∗ 0,7154 + `Specular` . Blue ∗ 0,0721
+* `DiffuseBrightness` = 0,299 * `Diffuse` . Red<sup>2</sup> + 0,587 * `Diffuse` . Groen<sup>2</sup> + 0,114 * `Diffuse` . Blauw<sup>2</sup>
+* `SpecularBrightness` = 0,299 * `Specular` . Red<sup>2</sup> + 0,587 * `Specular` . Groen<sup>2</sup> + 0,114 * `Specular` . Blauw<sup>2</sup>
+* `SpecularStrength` = Max ( `Specular` . Rood, `Specular` . Groen, `Specular` . Meng
 
 De formule SpecularIntensity wordt [hier](https://en.wikipedia.org/wiki/Luma_(video))opgehaald.
 De formule voor de helderheid wordt in deze [specificatie](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)beschreven.
 
 ### <a name="roughness"></a>Ruw
 
-`Roughness`wordt berekend op basis van `Specular` en `ShininessExponent` [deze formule](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)wordt gebruikt. De formule is een benadering van de grove-exponent van de Phong:
+`Roughness` wordt berekend op basis van `Specular` en `ShininessExponent` [deze formule](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)wordt gebruikt. De formule is een benadering van de grove-exponent van de Phong:
 
-```Cpp
+```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
 ### <a name="metalness"></a>Metaal
 
-`Metalness`wordt berekend op basis van `Diffuse` en `Specular` met behulp [van deze formule uit de glTF-specificatie](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
+`Metalness` wordt berekend op basis van `Diffuse` en `Specular` met behulp [van deze formule uit de glTF-specificatie](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
 
 Het idee hier is dat we de vergelijking oplossen: AX<sup>2</sup> + BX + C = 0.
 In principe worden dielectric-Opper vlakken weer gegeven rond 4% licht op een reflecterend manier en is de rest diffuus. Metalen Opper vlakken geven geen licht op een diffuse manier, maar allemaal op een manier.
 Deze formule bevat enkele nadelen omdat er geen manier is om onderscheid te maken tussen glanzende plastic en glanzende metalen Opper vlakken. We gaan ervan uit dat het Opper vlak een metallische eigenschappen heeft en dat de glanzende plastic/rubber-Opper vlakken er mogelijk niet op de verwachte manier uitzien.
+
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -138,12 +139,12 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`wordt berekend op basis van `Diffuse` , `Specular` en `Metalness` .
+`Albedo` wordt berekend op basis van `Diffuse` , `Specular` en `Metalness` .
 
 Zoals beschreven in de sectie van de Metaaling, weer spie gelen dielectric Opper vlakken rond 4% licht.  
 Het idee hier is om lineair interpoleren tussen `Dielectric` en `Metal` kleuren met `Metalness` waarde als factor. Als de metaaling is `0.0` , is het afhankelijk van het moment dat deze een donkere kleur heeft (als reflecteel hoog is) of diffuus niet verandert (als er geen reflecterend is). Als de metaaling een grote waarde is, verdwijnt de diffuse kleur ten opzichte van de spiegel kleur.
 
-```Cpp
+```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
 
@@ -153,13 +154,13 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`is berekend met de bovenstaande formule, maar het Alfa kanaal vereist extra berekeningen. De FBX-indeling is vague over transparantie en heeft verschillende manieren om deze te definiëren. Verschillende hulp middelen voor inhoud gebruiken verschillende methoden. Het is hier een idee om ze in één formule samen te voegen. Sommige assets worden onjuist weer gegeven als transparant, maar als ze niet op een gemeen schappelijke manier worden gemaakt.
+`AlbedoRGB` is berekend met de bovenstaande formule, maar het Alfa kanaal vereist extra berekeningen. De FBX-indeling is vague over transparantie en heeft verschillende manieren om deze te definiëren. Verschillende hulp middelen voor inhoud gebruiken verschillende methoden. Het is hier een idee om ze in één formule samen te voegen. Sommige assets worden onjuist weer gegeven als transparant, maar als ze niet op een gemeen schappelijke manier worden gemaakt.
 
 Dit wordt berekend op basis van `TransparentColor` , `TransparencyFactor` , `Opacity` :
 
 Als `Opacity` is gedefinieerd, gebruikt u het vervolgens rechtstreeks: `AlbedoAlpha`  =  `Opacity` else  
 Als `TransparencyColor` is gedefinieerd, dan `AlbedoAlpha` = 1,0-(() `TransparentColor` . Rood + `TransparentColor` . Groen + `TransparentColor` . Blauw)/3,0) anders  
-If `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+If `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 De uiteindelijke `Albedo` kleur heeft vier kanalen, waarbij de wordt gecombineerd `AlbedoRGB` met `AlbedoAlpha` .
 

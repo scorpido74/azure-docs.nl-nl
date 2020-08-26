@@ -4,12 +4,12 @@ description: Meer informatie over hoe u Azure Backup kunt gebruiken om gegevens 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: e5761f56106989084f12b80620ffc417b781965d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187826"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892011"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Werk stroom voor offline back-up in Azure Backup
 
@@ -148,7 +148,7 @@ Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor di
 
     ![Aanmelden bij het Azure-abonnement](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 
-    Het hulp programma begint vervolgens met het voorbereiden van de schijf en het kopiëren van de back-upgegevens. Mogelijk moet u extra schijven koppelen wanneer u hierom wordt gevraagd, in het geval dat de schijf niet voldoende ruimte heeft voor de back-upgegevens. <br/>
+    Het hulp programma begint vervolgens met het voorbereiden van de schijf en het kopiëren van de back-upgegevens. Mogelijk moet u extra schijven toevoegen wanneer u hierom wordt gevraagd door het hulp programma als de schijf niet voldoende ruimte heeft voor de back-upgegevens. <br/>
 
     Aan het einde van de geslaagde uitvoering van het hulp programma biedt de opdracht prompt drie stukjes informatie:
 

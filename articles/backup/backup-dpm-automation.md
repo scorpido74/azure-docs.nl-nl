@@ -3,12 +3,12 @@ title: Power shell gebruiken voor het maken van back-ups van DPM-workloads
 description: Meer informatie over het implementeren en beheren van Azure Backup voor Data Protection Manager (DPM) met behulp van Power shell
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 91fd8559b1561ae83967c7fc74a2390ce2460c95
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825967"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892317"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
 
@@ -72,7 +72,7 @@ De volgende stappen leiden u door het maken van een Recovery Services kluis. Een
 4. Geef het type opslag redundantie op dat moet worden gebruikt. U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md) of [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md)gebruiken. In het volgende voor beeld ziet u de optie-BackupStorageRedundancy voor testVault is ingesteld op georedundant.
 
    > [!TIP]
-   > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handiger het object Backup Recovery Services-kluis in een variabele op te slaan.
+   > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handig om de back-up Recovery Services kluis-object op te slaan in een variabele.
    >
    >
 
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Netwerken
 
-Als de verbinding van de DPM-computer met de Azure Backup-service op Internet via een proxy server wordt uitgevoerd, moeten de proxyserver instellingen worden ingesteld voor geslaagde back-ups. Dit wordt gedaan met behulp van de ```-ProxyServer``` ```-ProxyPort``` -en- ```-ProxyUsername``` en- ```ProxyPassword``` para meters met de cmdlet [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . In dit voor beeld is er geen proxy server, dus we verwijderen expliciet informatie die betrekking heeft op de proxy.
+Als de verbinding van de DPM-computer met de Azure Backup-service op Internet via een proxy server wordt uitgevoerd, moeten de proxyserver instellingen worden ingesteld voor geslaagde back-ups. Dit wordt gedaan met behulp van de ```-ProxyServer``` ```-ProxyPort``` -en- ```-ProxyUsername``` en- ```ProxyPassword``` para meters met de cmdlet [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . In dit voor beeld is er geen proxy server, dus we verwijderen expliciet informatie over de proxy.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -209,7 +209,7 @@ In het bovenstaande voor beeld wordt het faserings gebied ingesteld op *C:\Stagi
 
 ### <a name="encryption-settings"></a>Versleutelingsinstellingen
 
-De back-upgegevens die naar Azure Backup worden verzonden, worden versleuteld om de vertrouwelijkheid van de gegevens te beveiligen. De wachtwoordzin voor versleuteling is het wacht woord voor het ontsleutelen van de gegevens op het moment van herstel. Het is belang rijk om deze informatie veilig en veilig te blijven nadat deze is ingesteld.
+De back-upgegevens die naar Azure Backup worden verzonden, worden versleuteld om de vertrouwelijkheid van de gegevens te beveiligen. De wachtwoordzin voor versleuteling is het wacht woord voor het ontsleutelen van de gegevens op het moment van herstel. Het is belang rijk om deze informatie veilig en veilig te stellen zodra deze is ingesteld.
 
 In het onderstaande voor beeld wordt met de eerste opdracht de teken reeks geconverteerd ```passphrase123456789``` naar een beveiligde teken reeks en wordt de beveiligde teken reeks toegewezen aan de variabele met de naam ```$Passphrase``` . met de tweede opdracht wordt de beveiligde teken reeks ingesteld ```$Passphrase``` als het wacht woord voor het versleutelen van back-ups.
 
@@ -268,7 +268,7 @@ De lijst met servers waarop de DPM-agent is geïnstalleerd en die wordt beheerd 
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-Haal nu de lijst met gegevens bronnen op ```$server``` met behulp van de cmdlet [Get-DPMDatasource](/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) . In dit voor beeld wordt gefilterd op het volume `D:\` dat u wilt configureren voor back-up. Deze gegevens bron wordt vervolgens toegevoegd aan de beveiligings groep met behulp van de cmdlet [add-DPMChildDatasource](/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) . Gebruik het *aanpas* bare beveiligings groeps object ```$MPG``` om de toevoegingen te maken.
+Haal nu de lijst met gegevens bronnen op ```$server``` met behulp van de cmdlet [Get-DPMDatasource](/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) . In dit voor beeld filteren we op het volume `D:\` dat u wilt configureren voor back-up. Deze gegevens bron wordt vervolgens toegevoegd aan de beveiligings groep met behulp van de cmdlet [add-DPMChildDatasource](/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) . Gebruik het *aanpas* bare beveiligings groeps object ```$MPG``` om de toevoegingen te maken.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }

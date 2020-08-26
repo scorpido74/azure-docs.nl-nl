@@ -4,17 +4,17 @@ description: Azure direct Restore-mogelijkheid en veelgestelde vragen over VM-ba
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825848"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892623"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
 > [!NOTE]
-> Op basis van feedback van gebruikers wordt de naam van de **VM-back-upstack v2** gewijzigd in **direct herstellen** om Verwar ring met Azure stack functionaliteit te verminderen.
+> Op basis van feedback van gebruikers hebben we de naam van de **VM-back-upstack v2** gewijzigd in **direct terugzetten** om Verwar ring met Azure stack functionaliteit te verminderen.
 > Alle Azure backup-gebruikers zijn nu bijgewerkt naar **direct herstellen**.
 
 Het nieuwe model voor direct terugzetten biedt de volgende functie verbeteringen:
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-De standaard retentie van de moment opname voor elk beleid is ingesteld op twee dagen. Gebruiker kan de waarde wijzigen in een minimum van 1 en Maxi maal vijf dagen. Voor wekelijks beleid is de Bewaar termijn van de moment opname ingesteld op vijf dagen.
+De standaard retentie van de moment opname voor elk beleid is ingesteld op twee dagen. U kunt de waarde wijzigen in Mini maal 1 en Maxi maal vijf dagen. Voor wekelijks beleid is de Bewaar termijn van de moment opname ingesteld op vijf dagen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 

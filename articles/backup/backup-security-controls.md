@@ -3,12 +3,12 @@ title: Beveiligingsmaatregelen
 description: Meer informatie over de beveiligings opties die worden gebruikt in de Azure Backup-service. Deze besturings elementen helpen de service om beveiligings problemen te voor komen, te detecteren en erop te reageren.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e69053d4646207b34e8df31b949410994c967303
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827287"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892959"
 ---
 # <a name="security-controls-for-azure-backup"></a>Beveiligings controles voor Azure Backup
 
@@ -29,7 +29,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Notities| Documentatie
 |---|---|--|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics wordt ondersteund via resource Logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)voor meer informatie. |  |
+| Ondersteuning voor Azure-bewaking (zoals log Analytics, app Insights)| Ja | Log Analytics wordt ondersteund via resource Logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)voor meer informatie. |  |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Alle door de klant geactiveerde acties van de Azure Portal worden vastgelegd in activiteiten Logboeken. |  |
 | Logboek registratie en controle van het gegevens vlak| Nee | Azure Backup gegevens vlak kan niet rechtstreeks worden bereikt.  |  |
 
@@ -54,7 +54,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Notities| Documentatie
 |---|---|--|--|
-| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja|  |  |
+| Ondersteuning voor configuratie beheer (versie van configuratie, enzovoort)| Ja|  |  |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165767"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691323"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Quickstart: aanmelding met Microsoft toevoegen aan een ASP.NET Core-web-app
 In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-web-app persoonlijke accounts (hotmail.com, outlook.com, enz.) en werk- en schoolaccounts kan aanmelden vanuit een willekeurig exemplaar van Azure Active Directory (Azure AD). (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
@@ -148,7 +148,7 @@ Met de regel die `.AddAzureAd` bevat, wordt het Microsoft-identiteitsplatform to
 > |Waar | Beschrijving |
 > |---------|---------|
 > | ClientId  | Toepassings-id (client-id) van de toepassing die is geregistreerd in de Azure-portal. |
-> | Instantie | Het STS-eindpunt voor gebruikersverificatie. Meestal is dit <https://login.microsoftonline.com/{tenant}/v2.0> voor openbare cloud, waarbij {tenant} de naam is van uw tenant, uw tenant-id of *common* voor een verwijzing naar het algemene eindpunt (gebruikt voor toepassingen met meerdere tenants) |
+> | Instantie | Het STS-eindpunt voor gebruikersverificatie. Meestal is dit `https://login.microsoftonline.com/{tenant}/v2.0` voor openbare cloud, waarbij {tenant} de naam is van uw tenant, uw tenant-id of *common* voor een verwijzing naar het algemene eindpunt (gebruikt voor toepassingen met meerdere tenants) |
 > | TokenValidationParameters | Een lijst met parameters voor de validatie van tokens. In dit geval is `ValidateIssuer` ingesteld op `false` om aan te geven dat aanmeldingen vanaf persoonlijke, werk- of schoolaccounts kunnen worden geaccepteerd. |
 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c646c750cb54228211fadb0a4f6733d495e9219
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311284"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892062"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Een beveiligings module op uw IoT Edge-apparaat implementeren
 
@@ -47,7 +47,7 @@ Gebruik de volgende stappen om een Azure Security Center voor de IoT-beveiliging
     - Controleer of controle actief is door de volgende opdracht uit te voeren:
 
     `sudo systemctl status auditd`<br>
-    - Het verwachte antwoord is:`active (running)`
+    - Het verwachte antwoord is: `active (running)`
 
 ### <a name="deployment-using-azure-portal"></a>Implementatie met behulp van Azure Portal
 
@@ -93,9 +93,21 @@ Voltooi elke stap om uw IoT Edge-implementatie voor Azure Security Center voor I
 
 1. Voeg op het tabblad **dubbele instellingen** voor de module de volgende configuratie toe:
 
-    ``` json
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
-    ```
+   Module dubbele eigenschap:
+   
+   ``` json
+     "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
+   ```
+
+   Inhoud module dubbele eigenschap: 
+
+   ```json
+     {
+
+     }
+   ```
+    
+   Zie [beveiligings agenten configureren](https://docs.microsoft.com/azure/asc-for-iot/how-to-agent-configuration)voor meer informatie over het configureren van de agent.
 
 1. Selecteer **Update**.
 
@@ -165,7 +177,7 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
 
 1. Controleer of de volgende containers worden uitgevoerd:
 
-   | Name | AFBEELDING |
+   | Naam | AFBEELDING |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

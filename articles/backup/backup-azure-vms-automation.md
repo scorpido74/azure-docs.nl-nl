@@ -3,12 +3,12 @@ title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826443"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892402"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -104,7 +104,7 @@ De volgende stappen leiden u door het maken van een Recovery Services kluis. Een
     ```
 
    > [!TIP]
-   > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handiger het object Backup Recovery Services-kluis in een variabele op te slaan.
+   > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handig om de back-up Recovery Services kluis-object op te slaan in een variabele.
    >
    >
 
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> Als u de Azure Government Cloud gebruikt, gebruikt u de waarde ff281ffe-705c-4f53-9f37-a40e6f2c68f3 voor de para meter ServicePrincipalName in de cmdlet [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
+> Als u de Azure Government Cloud gebruikt, gebruikt u de waarde `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` voor de para meter **ServicePrincipalName** in de cmdlet [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
 >
 
 ## <a name="monitoring-a-backup-job"></a>Een back-uptaak bewaken
@@ -294,7 +294,7 @@ Wanneer u een beveiligings beleid maakt, wordt standaard een start tijd toegewez
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that you want to start the backup)
 $UtcTime = $UtcTime.ToUniversalTime()
 $SchPol.ScheduleRunTimes[0] = $UtcTime
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -323,7 +323,7 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-De standaard waarde is 2, de gebruiker kan de waarde instellen op mini maal 1 en Maxi maal 5. Voor wekelijks back-upbeleid is de periode ingesteld op 5 en kan niet worden gewijzigd.
+De standaard waarde is 2. U kunt de waarde met mini maal 1 en Maxi maal 5 instellen. Voor wekelijks back-upbeleid is de periode ingesteld op 5 en kan niet worden gewijzigd.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Azure Backup resource groep maken tijdens het bewaren van moment opnamen
 
@@ -365,7 +365,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Beleid voor back-upitems wijzigen
 
-De gebruiker kan een bestaand beleid wijzigen of het beleid van het back-upitem wijzigen van Policy1 in Policy2. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) met back-upitem als para meter.
+U kunt bestaande beleids regels wijzigen of het beleid van het back-upitem wijzigen van Policy1 in Policy2. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) met back-upitem als para meter.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 Geef een extra para meter **TargetResourceGroupName** op om de RG op te geven waarop de beheerde schijven moeten worden hersteld.
 
 > [!IMPORTANT]
-> Het is raadzaam om de para meter **TargetResourceGroupName** te gebruiken voor het herstellen van beheerde schijven, omdat deze resulteert in aanzienlijke prestatie verbeteringen. Als deze para meter niet is opgegeven, kunt u niet profiteren van de functie voor direct terugzetten en is de herstel bewerking langzamer. Als het doel is om Managed disks als niet-beheerde schijven te herstellen, geeft u deze para meter niet op en maakt u de bedoeling duidelijk door de para meter op te geven `-RestoreAsUnmanagedDisks` . De `-RestoreAsUnmanagedDisks` para meter is beschikbaar vanaf Azure PowerShell 3.7.0. In toekomstige versies is het verplicht om een van deze para meters op te geven voor de juiste herstel ervaring.
+> Het wordt ten zeerste aanbevolen de para meter **TargetResourceGroupName** te gebruiken voor het herstellen van beheerde schijven, omdat deze resulteert in aanzienlijke prestatie verbeteringen. Als deze para meter niet is opgegeven, kunt u niet profiteren van de functie voor direct terugzetten en is de herstel bewerking langzamer. Als het doel is om Managed disks als niet-beheerde schijven te herstellen, geeft u deze para meter niet op en maakt u de bedoeling duidelijk door de para meter op te geven `-RestoreAsUnmanagedDisks` . De `-RestoreAsUnmanagedDisks` para meter is beschikbaar vanaf Azure PowerShell 3.7.0. In toekomstige versies is het verplicht om een van deze para meters op te geven voor de juiste herstel ervaring.
 >
 >
 
@@ -544,7 +544,7 @@ De resulterende taakdetails bevatten de sjabloon-URI die kan worden opgevraagd e
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-De sjabloon is niet rechtstreeks toegankelijk omdat deze zich onder het opslag account van de klant bevindt en de opgegeven container. We hebben de volledige URL nodig (samen met een tijdelijk SAS-token) om toegang te krijgen tot deze sjabloon.
+De sjabloon is niet direct toegankelijk omdat deze zich onder het opslag account van de klant bevindt en de opgegeven container. We hebben de volledige URL nodig (samen met een tijdelijk SAS-token) om toegang te krijgen tot deze sjabloon.
 
 1. Haal eerst de sjabloon naam op uit de templateBlobURI. De indeling wordt hieronder vermeld. U kunt de Splits bewerking in Power shell gebruiken om de definitieve sjabloon naam te extra heren uit deze URL.
 

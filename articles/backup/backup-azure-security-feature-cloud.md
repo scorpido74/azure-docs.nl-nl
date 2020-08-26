@@ -3,18 +3,18 @@ title: Zacht verwijderen voor Azure Backup
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 921d04c530695ee8909fb17b216029849c4fc4a2
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826970"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892470"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Zacht verwijderen voor Azure Backup
 
 Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen.
 
-Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De resterende 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' zijn niet van toepassing op de klant.
+Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' zijn geen kosten voor u.
 
 Tijdelijke verwijderings beveiliging is beschikbaar voor deze services:
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: cc2f6d6a4a65cc2ada44c0b415b51735043096f7
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165597"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683755"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Verkrijg een token en roep Microsoft Graph-API aan met behulp van de id van de console-app
 
@@ -202,7 +202,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > |---------|---------|
 > | `config.ClientSecret` | Het clientgeheim is dat voor de toepassing in Azure-portal wordt gemaakt. |
 > | `config.ClientId` | Is de **Toepassings-id (client-id)** voor de toepassing die is geregistreerd in de Azure-portal. U vindt deze waarde op de pagina **Overzicht** in de Azure-portal. |
-> | `config.Authority`    | (Optioneel) Het STS-eindpunt voor de gebruiker voor verificatie. Dat is meestal <https://login.microsoftonline.com/{tenant}> voor de openbare cloud, waarbij {tenant} de naam van uw tenant of uw tenant-id is.|
+> | `config.Authority`    | (Optioneel) Het STS-eindpunt voor de gebruiker voor verificatie. Dat is meestal `https://login.microsoftonline.com/{tenant}` voor de openbare cloud, waarbij {tenant} de naam van uw tenant of uw tenant-id is.|
 
 Zie de [naslagdocumentatie voor `ConfidentialClientApplication`](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) voor meer informatie
 

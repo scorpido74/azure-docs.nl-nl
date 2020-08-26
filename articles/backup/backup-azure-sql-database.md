@@ -3,12 +3,12 @@ title: Een back-up van SQL Server-databases maken in Azure
 description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Server naar Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826919"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892436"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -51,7 +51,7 @@ Controleer voordat u begint of aan de volgende vereisten wordt voldaan:
 * Hiermee maakt u een NT SERVICE\AzureWLBackupPluginSvc-account om data bases op de virtuele machine te detecteren. Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen.
 * Hiermee worden data bases gedetecteerd die worden uitgevoerd op een virtuele machine, Azure Backup gebruikt het NT AUTHORITY\SYSTEM-account. Dit account moet een open bare aanmelding bij SQL zijn.
 
-Als u de SQL Server virtuele machine niet hebt gemaakt in azure Marketplace of als u zich in SQL 2008 en 2008 R2 bevindt, kan er een **UserErrorSQLNoSysadminMembership** -fout optreden.
+Als u de SQL Server virtuele machine niet hebt gemaakt in azure Marketplace of als u SQL 2008 of 2008 R2 gebruikt, kan er een **UserErrorSQLNoSysadminMembership** -fout optreden.
 
 Zie [hier](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)voor meer informatie over het verlenen van machtigingen in het geval van **SQL 2008** en **2008 R2** die worden uitgevoerd op Windows 2008 R2.
 

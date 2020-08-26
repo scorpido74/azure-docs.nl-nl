@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892980"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP-web- en -werkrollen maken
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit om een webrole te configureren voor het gebruik van
 
 1. Maak een Azure-service project en voeg een PHP-webfunctie toe zoals eerder in dit onderwerp wordt beschreven.
 2. Maak een `php` map in de `bin` map die zich in de hoofdmap van uw webfunctie bevindt en voeg vervolgens de PHP-runtime (alle binaire bestanden, configuratie bestanden, submappen, enzovoort) toe aan de `php` map.
-3. Beschrijving Als uw PHP-runtime gebruikmaakt van de [micro soft-Stuur Programma's voor php voor SQL Server][sqlsrv drivers], moet u uw webrole configureren om [SQL Server Native Client 2012][sql native client] te installeren wanneer het is ingericht. Als u dit wilt doen, voegt u het [installatie programma vansqlncli.msi x64] toe aan de `bin` map in de hoofdmap van uw webrol. Het opstart script dat in de volgende stap wordt beschreven, voert het installatie programma op de achtergrond uit wanneer de rol is ingericht. Als uw PHP-runtime geen gebruikmaakt van de micro soft-Stuur Programma's voor PHP voor SQL Server, kunt u de volgende regel verwijderen uit het script dat wordt weer gegeven in de volgende stap:
+3. Beschrijving Als uw PHP-runtime gebruikmaakt van de [micro soft-Stuur Programma's voor php voor SQL Server][sqlsrv drivers], moet u uw webrole configureren om [SQL Server Native Client 2012][sql native client] te installeren wanneer het is ingericht. Als u dit wilt doen, voegt u het [ installatie programma vansqlncli.msi x64] toe aan de `bin` map in de hoofdmap van uw webrol. Het opstart script dat in de volgende stap wordt beschreven, voert het installatie programma op de achtergrond uit wanneer de rol is ingericht. Als uw PHP-runtime geen gebruikmaakt van de micro soft-Stuur Programma's voor PHP voor SQL Server, kunt u de volgende regel verwijderen uit het script dat wordt weer gegeven in de volgende stap:
 
    ```console
    msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
@@ -153,7 +153,7 @@ Als u een werknemersrol wilt configureren voor het gebruik van een PHP-runtime d
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Uw toepassing uitvoeren in de berekenings-en opslag emulators
 
-De Azure-emulators bieden een lokale omgeving waarin u uw Azure-toepassing kunt testen voordat u deze in de Cloud implementeert. Er zijn enkele verschillen tussen de emulators en de Azure-omgeving. Zie [de Azure-opslag emulator gebruiken voor ontwikkeling en testen](storage/common/storage-use-emulator.md)om dit beter te begrijpen.
+De Azure-emulators bieden een lokale omgeving waarin u uw Azure-toepassing kunt testen voordat u deze in de Cloud implementeert. Er zijn enkele verschillen tussen de emulators en de Azure-omgeving. Zie [de Azure Storage-emulator gebruiken voor ontwikkeling en testen](storage/common/storage-use-emulator.md)voor meer informatie.
 
 U moet PHP lokaal hebben geïnstalleerd om de compute-emulator te kunnen gebruiken. De compute emulator maakt gebruik van uw lokale PHP-installatie om uw toepassing uit te voeren.
 

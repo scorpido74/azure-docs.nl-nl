@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320677"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893124"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
@@ -42,7 +42,7 @@ Een pod-beveiligings context kan ook aanvullende mogelijkheden of machtigingen v
 In het volgende voor beeld wordt pod YAML-manifest ingesteld op het definiëren van beveiligings context instellingen:
 
 * Pod wordt uitgevoerd als gebruikers-ID *1000* en deel van groeps-id *2000*
-* Kan geen bevoegdheden escaleren voor gebruik`root`
+* Kan geen bevoegdheden escaleren voor gebruik `root`
 * Biedt Linux-mogelijkheden toegang tot netwerk interfaces en de real-time (hardware)-klok van de host
 
 ```yaml
@@ -85,7 +85,7 @@ Met de volgende [gekoppelde open-source projecten van AKS][aks-associated-projec
 
 Met een beheerde identiteit voor Azure-resources kan een pod zichzelf verifiëren voor Azure-Services die dit ondersteunen, zoals opslag of SQL. Aan de Pod wordt een Azure-identiteit toegewezen waarmee ze kunnen worden geverifieerd voor Azure Active Directory en een digitaal token kan worden ontvangen. Dit digitale token kan worden gepresenteerd aan andere Azure-Services die controleren of de Pod is gemachtigd om toegang te krijgen tot de service en de vereiste acties uit te voeren. Deze aanpak houdt in dat er geen geheimen vereist zijn voor database verbindings reeksen, bijvoorbeeld. De vereenvoudigde werk stroom voor pod beheerde identiteit wordt weer gegeven in het volgende diagram:
 
-![Vereenvoudigde werk stroom voor pod beheerde identiteit in azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Vereenvoudigde werk stroom voor pod beheerde identiteit in azure":::
 
 Met een beheerde identiteit hoeft uw toepassings code geen referenties op te geven voor toegang tot een service, zoals Azure Storage. Elke pod verifieert met zijn eigen identiteit, zodat u de toegang kunt controleren en controleren. Als uw toepassing verbinding maakt met andere Azure-Services, moet u beheerde identiteiten gebruiken om het hergebruik van referenties en het risico op bloot stelling te beperken.
 
@@ -97,7 +97,7 @@ Met behulp van het Pod-identiteits project kan verificatie worden uitgevoerd op 
 
 Wanneer toepassingen een referentie nodig hebben, kunnen ze communiceren met de digitale kluis, de laatste geheime inhoud ophalen en vervolgens verbinding maken met de vereiste service. Azure Key Vault kan deze digitale kluis zijn. De vereenvoudigde werk stroom voor het ophalen van een referentie van Azure Key Vault met behulp van pod Managed Identities wordt weer gegeven in het volgende diagram:
 
-![Vereenvoudigde werk stroom voor het ophalen van een referentie van Key Vault met behulp van een door Pod beheerde identiteit](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Vereenvoudigde werk stroom voor het ophalen van een referentie van Key Vault met behulp van een door Pod beheerde identiteit":::
 
 Met Key Vault kunt u geheimen, zoals referenties, opslag account sleutels of certificaten, opslaan en regel matig draaien. U kunt Azure Key Vault integreren met een AKS-cluster met behulp [van de Azure Key Vault provider voor het stuur programma geheimen Store CSI](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Met het stuur programma voor geheimen Store CSI kan het AKS-cluster systeem eigen geheime inhoud ophalen uit Key Vault en deze alleen veilig aanbieden aan de aanvraag-pod. Werk samen met uw cluster operator om de geheimen Store CSI-stuur programma te implementeren op AKS worker-knoop punten. U kunt een beheerde pod-id gebruiken om toegang aan te vragen voor Key Vault en de geheime inhoud op te halen die nodig is via het stuur programma geheimen opslaan CSI.
 

@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827372"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892283"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -129,7 +129,7 @@ De instelling voor opslagreplicatie bewerken:
     Met de wizard aan de slag **met back-up** kunt u de optie **infra structuur voorbereiden** gebruiken om een back-up te maken van werk belastingen naar Azure.
 
    > [!NOTE]
-   > Als u alleen back-ups wilt maken van bestanden en mappen, raden we u aan de Azure Backup-Agent te gebruiken en de instructies in het artikel [eerst te bekijken: back-ups maken van bestanden en mappen](./backup-windows-with-mars-agent.md). Als u meer dan bestanden en mappen wilt beveiligen, of als u van plan bent om de beveiligings behoeften in de toekomst uit te breiden, selecteert u die werk belastingen.
+   > Als u alleen back-ups wilt maken van bestanden en mappen, raden we u aan de Azure Backup-Agent te gebruiken en de instructies in het artikel [eerst te bekijken: back-ups maken van bestanden en mappen](./backup-windows-with-mars-agent.md). Als u meer dan bestanden en mappen wilt beveiligen, of als u de beveiligings behoeften in de toekomst wilt uitbreiden, selecteert u die werk belastingen.
    >
    >
 

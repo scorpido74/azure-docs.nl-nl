@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557050"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796796"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Quickstart: Unity-voorbeeld implementeren in HoloLens
 
@@ -44,7 +44,7 @@ Controleer of uw referenties correct zijn opgeslagen bij de scène en u verbindi
 1. Wijzig de configuratie in **Release** en **ARM64**
 1. Schakel de foutopsporingsmodus in op **Externe machine**\
     ![Configuratie van de oplossing](media/unity-deploy-config.png)
-1. Bouw de oplossing (F7)
+1. De oplossing bouwen
 1. Ga voor het project 'QuickStart' naar *Eigenschappen > Foutopsporing*
     1. Controleer of de configuratie *Release* actief is
     1. Stel *Op te starten foutopsporingsprogramma* in op **Externe computer**

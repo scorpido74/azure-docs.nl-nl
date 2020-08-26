@@ -4,12 +4,12 @@ description: In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252365"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685524"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Quickstart: Een gedeelde query maken met behulp van een ARM-sjabloon
 
@@ -31,7 +31,7 @@ In deze quickstart maakt u een gedeelde query met de naam _Aantal VM's per bestu
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
-:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
+:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json":::
 
 De resource die is gedefinieerd in de sjabloon:
 

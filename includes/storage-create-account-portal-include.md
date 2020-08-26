@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76759842"
 ---
 Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, volgt u deze stappen:
@@ -32,12 +32,12 @@ Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, 
    |---------|---------|
    |Implementatiemodel     |Resource Manager         |
    |Prestaties     |Standard         |
-   |Soort account     |StorageV2 (general-purpose v2)         |
+   |Soort account     |StorageV2 (algemeen gebruik v2)         |
    |Replicatie     |Geografisch redundante opslag met leestoegang (RA-GRS)         |
    |Toegangslaag     |Warm         |
 
-8. Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, kiest u het tabblad **Geavanceerd** en stelt u **hiërarchische naam ruimte** in op **ingeschakeld**.
+8. Als u [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) wilt gebruiken, kiest u het tabblad **Geavanceerd** en stelt u vervolgens **Hiërarchische naamruimte** in op **Ingeschakeld**.
 9. Selecteer **Beoordelen en maken** om uw opslagaccountinstellingen te bekijken en het account te maken.
 10. Selecteer **Maken**.
 
-Zie [Azure-opslagaccountoverzicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview) voor meer informatie over typen opslagaccounts en andere opslagaccountinstellingen. Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor meer informatie over resource groepen. 
+Zie [Azure-opslagaccountoverzicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview) voor meer informatie over typen opslagaccounts en andere opslagaccountinstellingen. Zie [Azure Resource Manager overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (Overzicht van Azure Resource Manager) voor meer informatie over resourcegroepen. 

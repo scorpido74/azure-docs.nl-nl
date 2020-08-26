@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: ebf2f926f5be86ffee5f3a3e30277962a6060762
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479757"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706044"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Quickstart: Een load balancer maken om taken van VM's te verdelen met behulp van een ARM-sjabloon
 
@@ -42,7 +42,7 @@ De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsja
 
 SKU's voor load balancer en openbare IP moeten overeenkomen. Wanneer u een Standard Load Balancer maakt, moet u ook een nieuw, standaard, openbaar IP-adres maken dat als de front-end wordt geconfigureerd voor de Standard Load Balancer. Als u een Basic Load Balancer wilt maken, gebruikt u [deze sjabloon](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft raadt aan om Standard SKU te gebruiken voor productiewerkbelastingen.
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="57-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
 Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
 

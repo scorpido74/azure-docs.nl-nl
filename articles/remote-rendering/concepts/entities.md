@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac0bf539cc345f326027f4707b7b50204e2b7850
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509199"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893048"
 ---
 # <a name="entities"></a>Entiteiten
 
@@ -18,7 +18,7 @@ Een *entiteit* vertegenwoordigt een beweegbaar object in ruimte en is de fundame
 
 ## <a name="entity-properties"></a>Entiteits eigenschappen
 
-Entiteiten hebben een trans formatie die is gedefinieerd door een positie, rotatie en schaal. Op zichzelf hebben entiteiten geen waarneem bare functionaliteit. In plaats daarvan wordt gedrag toegevoegd via onderdelen, die zijn gekoppeld aan entiteiten. Als u bijvoorbeeld een [CutPlaneComponent](../overview/features/cut-planes.md) koppelt, wordt er een knip vlak gemaakt op de positie van de entiteit.
+Entiteiten hebben een trans formatie die is gedefinieerd door een positie, rotatie en schaal. Op zichzelf hebben entiteiten geen waarneem bare functionaliteit. In plaats daarvan wordt gedrag toegevoegd via onderdelen, die zijn gekoppeld aan entiteiten. Als u bijvoorbeeld een [CutPlaneComponent](../overview/features/cut-planes.md)  koppelt, wordt er een knip vlak gemaakt op de positie van de entiteit.
 
 Het belangrijkste aspect van de entiteit zelf is de hiërarchie en de resulterende hiërarchische trans formatie. Als er bijvoorbeeld meerdere entiteiten als onderliggende items zijn gekoppeld aan een gedeelde bovenliggende entiteit, kunnen al deze entiteiten worden verplaatst, geroteerd en geschaald in gelijktijdig door de trans formatie van de bovenliggende entiteit te wijzigen.
 
@@ -46,7 +46,7 @@ ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
     if (auto entityRes = session->Actions()->CreateEntity())
     {
         entity = entityRes.value();
-        entity->Position(Double3{ 1, 2, 3 });
+        entity->SetPosition(Double3{ 1, 2, 3 });
         return entity;
     }
     return entity;
@@ -72,7 +72,7 @@ CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType(ObjectType::CutPlaneComponent)->as<CutPlaneComponent>();
 
 // or alternatively:
-ApiHandle<CutPlaneComponent> cutplane = *entity->FindComponentOfType<CutPlaneComponent>();
+ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType<CutPlaneComponent>();
 ```
 
 ### <a name="querying-transforms"></a>Query's uitvoeren op trans formaties
@@ -90,8 +90,8 @@ Quaternion rotation = entity.Rotation;
 
 ```cpp
 // local space transform of the entity
-Double3 translation = *entity->Position();
-Quaternion rotation = *entity->Rotation();
+Double3 translation = entity->GetPosition();
+Quaternion rotation = entity->GetRotation();
 ```
 
 
@@ -124,11 +124,11 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
 ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
 metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
     {
-        if (query->IsRanToCompletion())
+        if (query->GetIsRanToCompletion())
         {
-            ApiHandle<ObjectMetaData> metaData = *query->Result();
+            ApiHandle<ObjectMetaData> metaData = query->GetResult();
             ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
-            int64_t intValue = *entry->AsInt64();
+            int64_t intValue = *entry->GetAsInt64();
 
             // ...
         }

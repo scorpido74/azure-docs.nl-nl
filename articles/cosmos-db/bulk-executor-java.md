@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309151"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892606"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
@@ -183,7 +183,8 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
    |int getNumberOfDocumentsUpdated ()  |   Het totale aantal documenten dat is bijgewerkt van de documenten die zijn geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
    |dubbele getTotalRequestUnitsConsumed () |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk updates.       |
    |Duration getTotalTimeTaken ()  |   De totale tijd die nodig is voor de API-aanroep voor bulk updates om de uitvoering te volt ooien.      |
-   |Lijst met \<Exception> getErrors ()   |       Hiermee wordt de lijst met fouten opgehaald als sommige documenten uit de batch die zijn opgegeven voor de API-aanroep voor bulksgewijs bijwerken, niet kunnen worden ingevoegd.      |
+   |Lijst met \<Exception> getErrors ()   |       Hiermee wordt de lijst met operationele of netwerk problemen met betrekking tot de update bewerking opgehaald.      |
+   |Lijst met \<BulkUpdateFailure> getFailedUpdates ()   |       Hiermee wordt de lijst met updates opgehaald die niet kunnen worden voltooid, samen met de specifieke uitzonde ringen die het gevolg zijn van de fouten.|
 
 3. Nadat u de toepassing voor bulk update gereed hebt, bouwt u het opdracht regel programma vanuit de bron met behulp van de opdracht ' MVN Cleanup package '. Met deze opdracht wordt een jar-bestand in de doelmap gegenereerd:  
 

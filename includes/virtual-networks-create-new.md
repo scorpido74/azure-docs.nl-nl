@@ -9,48 +9,48 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78244986"
 ---
 ## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In deze sectie maakt u een virtueel netwerk en een subnet.
+In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource maken > netwerk > virtueel netwerk** of zoek naar **virtueel netwerk** in het zoekvak.
+1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad **basis beginselen** :
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
-    | **Project Details**  |                                                                 |
+    | **Projectgegevens**  |                                                                 |
     | Abonnement     | Selecteer uw Azure-abonnement                                  |
-    | Resourcegroep   | Selecteer **nieuwe maken**, Voer in **\<resource-group-name>** en selecteer OK of selecteer een bestaand op **\<resource-group-name>** basis van para meters. |
+    | Resourcegroep   | Selecteer **Nieuwe maken**, voer **\<resource-group-name>** in en selecteer vervolgens OK, of selecteer een bestaande **\<resource-group-name>** op basis van parameters. |
     | **Exemplaardetails** |                                                                 |
-    | Name             | Voer**\<virtual-network-name>**                                    |
-    | Regio           | Uitgeschakeld**\<region-name>** |
+    | Naam             | **\<virtual-network-name>** invoeren                                    |
+    | Region           | **\<region-name>** selecteren |
 
-3. Selecteer het tabblad **IP-adressen** of selecteer de knop **volgende: IP-adressen** aan de onderkant van de pagina.
+3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
-4. Voer de volgende gegevens in op het tabblad **IP-adressen** :
-
-    | Instelling            | Waarde                      |
-    |--------------------|----------------------------|
-    | IPv4-adres ruimte | Voer**\<IPv4-address-space>** |
-
-5. Selecteer bij **subnetnaam**het woord **standaard**.
-
-6. Voer in **subnet bewerken**de volgende gegevens in:
+4. Voer op het tabblad **IP-adressen** deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | Subnetnaam | Voer**\<subnet-name>** |
-    | Subnetadresbereik | Voer**\<subnet-address-range>**
+    | IPv4-adresruimte | **\<IPv4-address-space>** invoeren |
+
+5. Onder **Subnetnaam** selecteert u het woord **standaard**.
+
+6. Voer in **Subnet bewerken** deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Subnetnaam | **\<subnet-name>** invoeren |
+    | Subnetadresbereik | **\<subnet-address-range>** invoeren
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer het tabblad **controleren + maken** of selecteer de knop **beoordeling + maken** .
+8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken**.
 
 9. Selecteer **Maken**.

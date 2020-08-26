@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 41bc06e2c63b1b35bb789636bcd269439078be70
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825185"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892181"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -145,7 +145,7 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 ## <a name="cross-region-restore"></a>Meerdere regio's herstellen
 
-Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoegd om de beschik baarheid en tolerantie van gegevens te versterken, waardoor klanten volledig beheer hebben over het herstellen van gegevens naar een secundaire regio. Als u deze functie wilt configureren, gaat u naar [het artikel set cross Region Restore.](backup-create-rs-vault.md#set-cross-region-restore). Deze functie wordt ondersteund voor de volgende beheer typen:
+Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoegd om de beschik baarheid en tolerantie van gegevens te verbeteren, zodat u de volledige controle hebt over het herstellen van gegevens naar een secundaire regio. Als u deze functie wilt configureren, gaat u naar [het artikel set cross Region Restore.](backup-create-rs-vault.md#set-cross-region-restore). Deze functie wordt ondersteund voor de volgende beheer typen:
 
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |

@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor de kluis op schaal configureren
 description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824046"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892232"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
 
@@ -20,9 +20,9 @@ Azure Backup biedt een ingebouwde [Azure Policy](../governance/policy/index.yml)
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-* Het beleid kan in één keer worden toegepast op alle Recovery Services kluizen in een bepaald abonnement (of op een resource groep in het abonnement). De gebruiker die het beleid toewijst, moet de toegang ' eigenaar ' hebben voor het abonnement waaraan het beleid is toegewezen.
+* Het beleid kan in één keer worden toegepast op alle Recovery Services kluizen in een bepaald abonnement (of op een resource groep in het abonnement). De gebruiker die het beleid toewijst, moet **eigenaar** toegang hebben tot het abonnement waaraan het beleid is toegewezen.
 
-* De werk ruimte LA zoals opgegeven door de gebruiker (waarnaar diagnostische gegevens worden verzonden) kan zich in een ander abonnement bevinden dan de kluizen waaraan het beleid is toegewezen. De gebruiker moet ' lezer ', ' Inzender ' of ' eigenaar ' toegang hebben tot het abonnement waarin de opgegeven LA-werk ruimte zich bevindt.
+* De werk ruimte LA zoals opgegeven door de gebruiker (waarnaar diagnostische gegevens worden verzonden) kan zich in een ander abonnement bevinden dan de kluizen waaraan het beleid is toegewezen. De gebruiker moet toegang hebben tot de **lezer**, **Inzender** of **eigenaar** van het abonnement waarin de opgegeven La-werk ruimte zich bevindt.
 
 * Het bereik van de beheer groep wordt momenteel niet ondersteund.
 

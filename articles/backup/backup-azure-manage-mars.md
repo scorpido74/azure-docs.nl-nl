@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b6f6d9ca94b2fda54c9f9aa8048660af450e0d31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757163"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893065"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -80,7 +80,7 @@ U kunt uitsluitings regels toevoegen om bestanden en mappen over te slaan waarva
     ![Selecteer de items die u wilt verwijderen](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
-    > Ga voorzichtig te werk wanneer u een volume volledig uit het beleid verwijdert.  Als u het opnieuw wilt toevoegen, wordt het beschouwd als een nieuw volume. Bij de volgende geplande back-up wordt een eerste back-up (volledige back-up) in plaats van incrementele back-up uitgevoerd. Als u later tijdelijk items moet verwijderen en toevoegen, kunt u het beste **uitsluitings instellingen** gebruiken in plaats van **items verwijderen** om een incrementele back-up te garanderen in plaats van een volledige back-up.
+    > Ga voorzichtig te werk wanneer u een volume volledig uit het beleid verwijdert.  Als u het opnieuw wilt toevoegen, wordt het beschouwd als een nieuw volume. Bij de volgende geplande back-up wordt een eerste back-up (volledige back-up) in plaats van incrementele back-up uitgevoerd. Als u later tijdelijk items moet verwijderen en toevoegen, is het raadzaam om **uitsluitings instellingen** te gebruiken in plaats van **items te verwijderen** om een incrementele back-up te garanderen in plaats van een volledige back-up.
 
 2. Voer de volgende stappen uit en selecteer **volt ooien** om de bewerking te volt ooien.
 
