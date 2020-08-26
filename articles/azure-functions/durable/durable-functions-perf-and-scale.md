@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033578"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853707"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestaties en schaalbaarheid in Durable Functions (Azure Functions)
 
@@ -224,6 +224,10 @@ Er zijn twee mogelijke nadelen van deze instelling om rekening te houden met het
 Als bijvoorbeeld `durableTask/extendedSessionIdleTimeoutInSeconds` is ingesteld op 30 seconden, is een korte functie van Orchestrator of entiteit die in minder dan 1 seconde wordt uitgevoerd, gedurende 30 seconden nog steeds geheugen in beslag neemt. Het telt ook af op basis `durableTask/maxConcurrentOrchestratorFunctions` van het eerder vermelde quotum, waardoor andere Orchestrator-of entiteits functies niet kunnen worden uitgevoerd.
 
 De specifieke effecten van uitgebreide sessies voor Orchestrator-en entiteits functies worden in de volgende secties beschreven.
+
+> [!NOTE]
+> Uitgebreide sessies worden momenteel alleen ondersteund in .NET-talen, zoals C# of F #. De `extendedSessionsEnabled` instelling `true` voor andere platforms kan leiden tot runtime problemen, zoals het op de achtergrond mislukken van het uitvoeren van activiteiten en geactiveerde functies.
+
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator-functie opnieuw afspelen
 

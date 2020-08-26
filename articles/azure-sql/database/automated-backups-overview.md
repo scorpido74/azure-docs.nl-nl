@@ -5,18 +5,18 @@ description: Azure SQL Database en Azure SQL Managed instance maken om de paar m
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: sqldbrb=2
+ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 485a137f552ca06fba366d261eb38268d821ccaf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756721"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853206"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -46,7 +46,14 @@ De optie voor het configureren van redundantie opslag voor back-ups biedt de fle
 > [!IMPORTANT]
 > In het SQL Managed instance wordt de geconfigureerde back-upredundantie toegepast op de instellingen voor retentie van back-ups op korte termijn die worden gebruikt voor herstel van een punt in tijd (PITR) en back-ups voor lange termijn retentie die worden gebruikt voor langdurige back-ups (LTR).
 
+
+> [!NOTE]
+> Azure SQL Database Configureer bare redundantie van back-upopslag is momenteel beschikbaar als een beperkte persoonlijke Preview voor bepaalde klanten in de Azure-regio Zuidoost-Azië. Neem contact op met als u wilt overwegen voor inschrijving in deze persoonlijke preview [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) . 
+
+Als uw regels voor gegevens bescherming vereisen dat uw back-ups langere tijd beschikbaar zijn (tot tien jaar), kunt u de [lange termijn retentie](long-term-retention-overview.md) voor zowel één als gepoolde data bases configureren.
+
 ### <a name="backup-usage"></a>Back-upgebruik
+
 
 U kunt deze back-ups gebruiken om:
 
