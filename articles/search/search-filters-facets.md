@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084208"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923123"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Een facet filter maken in azure Cognitive Search 
 
@@ -38,12 +38,12 @@ Facetten kunnen worden berekend op basis van velden met één waarde en verzamel
 
 Facetatie is ingeschakeld voor een veld per veld wanneer u de index maakt door het `facetable` kenmerk in te stellen op `true` . Normaal gesp roken moet u het `filterable` kenmerk ook instellen op `true` voor dergelijke velden, zodat de zoek toepassing kan filteren op deze velden op basis van facetten die de eind gebruiker selecteert. 
 
-Wanneer u een index maakt met behulp van de REST API, wordt elk [veld type](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) dat mogelijk in facet navigatie kan worden gebruikt, `facetable` standaard als volgt gemarkeerd:
+Wanneer u een index maakt met behulp van de REST API, wordt elk [veld type](/rest/api/searchservice/supported-data-types) dat mogelijk in facet navigatie kan worden gebruikt, `facetable` standaard als volgt gemarkeerd:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Numerieke veld typen: `Edm.Int32` , `Edm.Int64` ,`Edm.Double`
++ Numerieke veld typen: `Edm.Int32` , `Edm.Int64` , `Edm.Double`
 + Verzamelingen van de bovenstaande typen (bijvoorbeeld `Collection(Edm.String)` of `Collection(Edm.Double)` )
 
 U kunt geen `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` velden gebruiken in facet navigatie. Facetten werken het beste bij velden met een lage kardinaliteit. Als gevolg van de omzetting van geo-coördinaten, komt het zelden voor dat twee sets van co-niveaus gelijk zijn aan een bepaalde gegevensset. Als zodanig worden facetten niet ondersteund voor geo-coördinaten. U hebt een veld plaats of regio nodig om te facetten per locatie.
@@ -77,11 +77,11 @@ Index kenmerken die bepalen hoe een veld wordt gebruikt, worden toegevoegd aan a
 ```
 
 > [!Note]
-> Deze index definitie wordt gekopieerd van [een Azure Cognitive search-index maken met behulp van de rest API](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Het is identiek, met uitzonde ring van de Opper vlakke verschillen in de veld definities. De `filterable` `facetable` kenmerken en worden expliciet toegevoegd aan `category` de `tags` velden,,, `parkingIncluded` `smokingAllowed` en `rating` . In de praktijk `filterable` en `facetable` standaard ingeschakeld op deze velden wanneer u de rest API gebruikt. Wanneer u de .NET SDK gebruikt, moeten deze kenmerken expliciet worden ingeschakeld.
+> Deze index definitie wordt gekopieerd van [een Azure Cognitive search-index maken met behulp van de rest API](./search-get-started-powershell.md). Het is identiek, met uitzonde ring van de Opper vlakke verschillen in de veld definities. De `filterable` `facetable` kenmerken en worden expliciet toegevoegd aan `category` de `tags` velden,,, `parkingIncluded` `smokingAllowed` en `rating` . In de praktijk `filterable` en `facetable` standaard ingeschakeld op deze velden wanneer u de rest API gebruikt. Wanneer u de .NET SDK gebruikt, moeten deze kenmerken expliciet worden ingeschakeld.
 
 ## <a name="build-and-load-an-index"></a>Een index maken en laden
 
-Een tussenliggende (en mogelijk duidelijke) stap is dat u [de index moet bouwen en vullen](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) voordat u een query kunt formuleren. Deze stap wordt hier vermeld voor volledigheid. Een manier om te bepalen of de index beschikbaar is, is door de lijst indexen te controleren in de [Portal](https://portal.azure.com).
+Een tussenliggende (en mogelijk duidelijke) stap is dat u [de index moet bouwen en vullen](./search-get-started-dotnet.md#1---create-an-index) voordat u een query kunt formuleren. Deze stap wordt hier vermeld voor volledigheid. Een manier om te bepalen of de index beschikbaar is, is door de lijst indexen te controleren in de [Portal](https://portal.azure.com).
 
 ## <a name="add-facet-filters-to-a-query"></a>Facet filters toevoegen aan een query
 
@@ -107,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Als de gebruiker klikt op een facet waarde voor een veld verzameling als `tags` bijvoorbeeld de waarde pool, moet uw toepassing de volgende filter syntaxis gebruiken:`$filter=tags/any(t: t eq 'pool')`
+Als de gebruiker klikt op een facet waarde voor een veld verzameling als `tags` bijvoorbeeld de waarde pool, moet uw toepassing de volgende filter syntaxis gebruiken: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tips en tijdelijke oplossingen
 
@@ -121,8 +121,8 @@ Een van de uitdagingen met facet navigatie in azure Cognitive Search is dat face
 
 Hoewel dit een veelvoorkomende use-case is, is het niet duidelijk dat de facet navigatie structuur momenteel out-of-the-box bevat. Ontwikkel aars die statische facetten willen, kunnen de beperking meestal omzeilen door twee gefilterde query's uit te geven: één scoped to the results, de andere die wordt gebruikt voor het maken van een statische lijst met facetten voor navigatie doeleinden.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Filters in azure Cognitive Search](search-filters.md)
-+ [Index REST API maken](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Index REST API maken](/rest/api/searchservice/create-index)
++ [REST API voor documenten zoeken](/rest/api/searchservice/search-documents)

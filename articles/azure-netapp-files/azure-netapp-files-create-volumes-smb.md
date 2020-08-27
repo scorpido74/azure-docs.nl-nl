@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080504"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950371"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -177,6 +177,8 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
+        
+        U kunt ook Azure CLI-opdrachten [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) gebruiken [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) om de functie te registreren en de registratie status weer te geven. 
 
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
@@ -237,7 +239,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 4. Klik op **protocol** en voer de volgende informatie uit:  
     * Selecteer **SMB** als het protocol type voor het volume. 
     * Selecteer uw **Active Directory** verbinding in de vervolg keuzelijst.
-    * Geef de naam op van het gedeelde volume in **share naam**.
+    * Geef de naam op van het gedeelde volume in  **share naam**.
 
     ![SMB-protocol opgeven](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 

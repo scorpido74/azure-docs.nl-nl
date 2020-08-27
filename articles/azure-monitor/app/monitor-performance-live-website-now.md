@@ -3,12 +3,13 @@ title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microso
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises of in Vm's worden gehost.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310443"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923820"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
@@ -140,7 +141,7 @@ Dit probleem wordt [hier](https://github.com/Microsoft/ApplicationInsights-Home/
   
 ### <a name="detailed-logs"></a>Gedetailleerde logboeken
 
-* Standaard Status Monitor worden Diagnostische logboeken uitgevoerd op:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Standaard Status Monitor worden Diagnostische logboeken uitgevoerd op: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
 * Als u uitgebreide logboeken wilt uitvoeren, wijzigt u het configuratie bestand: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` en voegt `<add key="TraceLevel" value="All" />` u toe aan de `appsettings` .
 Start de status monitor vervolgens opnieuw.
@@ -243,7 +244,7 @@ Controleer welke apps worden bewaakt:
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name` : de naam van een web-app in IIS.
-* `-InstrumentationKey`(Optioneel.) Gebruik deze om de resource te wijzigen waarnaar de telemetrie van de app wordt verzonden.
+* `-InstrumentationKey` (Optioneel.) Gebruik deze om de resource te wijzigen waarnaar de telemetrie van de app wordt verzonden.
 * Deze cmdlet:
   * Upgradet de benoemde app naar de versie van de SDK die het laatst naar deze computer is gedownload. (Werkt alleen als `SdkState==EnabledAfterDeployment`)
   * Als u een instrumentatiesleutel opgeeft, wordt de vermelde app opnieuw geconfigureerd voor het verzenden van telemetrie naar de resource met die sleutel. (Werkt als `SdkState != Disabled`)

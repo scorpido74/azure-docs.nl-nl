@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027627"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918822"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integreren met een client toepassing met behulp van Speech SDK
 
@@ -302,7 +303,7 @@ Voeg als volgt de code-behind bron toe:
     > 1. Kies **NuGet-pakketten beheren voor oplossing**, selecteer **updates** 
     > 1. Als u **micro soft. NetCore. UniversalWindowsPlatform** in de update lijst ziet, werkt u **micro soft. NetCore. UniversalWindowsPlatform** bij naar de nieuwste versie
 
-1. Voeg de volgende code toe aan de methode hoofdtekst van`InitializeDialogServiceConnector`
+1. Voeg de volgende code toe aan de methode hoofdtekst van `InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -319,7 +320,7 @@ Voeg als volgt de code-behind bron toe:
 
 1. Vervang de teken reeksen `YourApplicationId` , `YourSpeechSubscriptionKey` en `YourServiceRegion` met uw eigen waarden voor uw app, het spraak abonnement en de [regio](regions.md)
 
-1. Voeg het volgende code fragment toe aan het einde van de methode hoofdtekst van`InitializeDialogServiceConnector`
+1. Voeg het volgende code fragment toe aan het einde van de methode hoofdtekst van `InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -403,17 +404,17 @@ Voeg als volgt de code-behind bron toe:
 
 1. Kies in de menu balk de optie **bestand**  >  **Alles opslaan** om uw wijzigingen op te slaan.
 
-## <a name="try-it-out"></a>Uitproberen
+## <a name="try-it-out"></a>Probeer het eens
 
-1. **Kies Build**  >  **Build Solution** in de menu balk om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
+1. Kies in de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
 
-1. Kies **fout**  >  **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
+1. Kies **Debug** > **Start Debugging** (of druk op **F5**) om de toepassing te starten. Het venster **helloworld** wordt weergegeven.
 
    ![Voor beeld van een UWP-toepassing voor virtuele assistenten in C#-Quick Start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
 1. Selecteer **microfoon inschakelen**. Als de toegangs machtigings aanvraag wordt weer gegeven, selecteert u **Ja**.
 
-   ![Verzoek om toegang tot de microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Verzoek om toegang tot microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. Selecteer **Talk**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die wordt weer gegeven in het venster.
 

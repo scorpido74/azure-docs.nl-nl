@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7986ca441f7d274670d8fa0238e7dcfa01497b6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253168"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948161"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Procedure: MFA vereisen voor toegang vanaf niet-vertrouwde netwerken met voorwaardelijke toegang   
 
@@ -69,4 +69,4 @@ Met de aanpak die in dit artikel wordt beschreven, kunt u nu een beleid voor voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is voorwaardelijke toegang in azure Active Directory?](../active-directory-conditional-access-azure-portal.md) voor meer informatie over voorwaardelijke toegang.
+Zie [Wat is voorwaardelijke toegang in azure Active Directory?](./overview.md) voor meer informatie over voorwaardelijke toegang.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: eacfc75b31efaf9a53ed116ed9e75983146d8575
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084123"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922970"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren om te SQL Server op een Azure VM
 
@@ -29,7 +29,7 @@ Voor Azure Cognitive Search is een versleuteld kanaal vereist voor alle indexer 
 
 1. Controleer de eigenschappen van het certificaat om te controleren of de onderwerpnaam de Fully Qualified Domain Name (FQDN) van de virtuele Azure-machine is. U kunt een hulp programma gebruiken zoals CertUtil of de module Certificaten om de eigenschappen weer te geven. U kunt de FQDN-naam ophalen uit de sectie belangrijkste onderdelen van de VM-service in het veld **openbaar IP-adres/DNS-label** in het [Azure Portal](https://portal.azure.com/).
    
-   * Voor virtuele machines die zijn gemaakt met de nieuwere **Resource Manager** -sjabloon, wordt de FQDN-indeling`<your-VM-name>.<region>.cloudapp.azure.com`
+   * Voor virtuele machines die zijn gemaakt met de nieuwere **Resource Manager** -sjabloon, wordt de FQDN-indeling `<your-VM-name>.<region>.cloudapp.azure.com`
    * Voor oudere Vm's die zijn gemaakt als een **klassieke** virtuele machine, wordt de FQDN-indeling als `<your-cloud-service-name.cloudapp.net>` .
 
 2. Configureer SQL Server om het certificaat te gebruiken met behulp van de REGI ster-editor (regedit). 
@@ -53,7 +53,7 @@ Voor Azure Cognitive Search is een versleuteld kanaal vereist voor alle indexer 
 Nadat u de versleutelde verbinding hebt ingesteld die is vereist voor Azure Cognitive Search, zijn er extra configuratie stappen ingebouwd in SQL Server op Azure-Vm's. Als u dit nog niet hebt gedaan, is de volgende stap het volt ooien van de configuratie met behulp van een van deze artikelen:
 
 * Zie [verbinding maken met een virtuele machine van SQL Server in azure met behulp van Resource Manager](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)voor een **Resource Manager** -VM. 
-* Zie [verbinding maken met een virtuele machine van SQL Server op Azure Classic](../virtual-machines/windows/classic/sql-connect.md)voor een **klassieke** VM.
+* Zie [verbinding maken met een virtuele machine van SQL Server op Azure Classic](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect)voor een **klassieke** VM.
 
 Bekijk in het bijzonder de sectie in elk artikel voor ' verbinding maken via internet '.
 
@@ -68,16 +68,16 @@ De onderstaande koppelingen bieden instructies voor de NSG-configuratie voor VM-
 > 
 
 * Zie [nsg's maken voor arm-implementaties](../virtual-network/tutorial-filter-network-traffic.md)voor een **Resource Manager** -VM. 
-* Zie [nsg's maken voor klassieke implementaties](../virtual-network/virtual-networks-create-nsg-classic-ps.md)voor een **klassieke** virtuele machine.
+* Zie [nsg's maken voor klassieke implementaties](/previous-versions/azure/virtual-network/virtual-networks-create-nsg-classic-ps)voor een **klassieke** virtuele machine.
 
 IP-adres Sering kan enkele uitdagingen opleveren die eenvoudig kunnen worden verholpen als u op de hoogte bent van het probleem en mogelijke oplossingen. De overige secties bevatten aanbevelingen voor het verwerken van problemen met betrekking tot IP-adressen in de ACL.
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Toegang tot de Azure-Cognitive Search beperken
-We raden u ten zeerste aan de toegang tot het IP-adres van de zoek service en het IP-adres bereik van de `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) in de ACL te beperken, in plaats van uw SQL Azure-vm's open te maken voor alle verbindings aanvragen.
+We raden u ten zeerste aan de toegang tot het IP-adres van de zoek service en het IP-adres bereik van de `AzureCognitiveSearch` [service tag](../virtual-network/service-tags-overview.md#available-service-tags) in de ACL te beperken, in plaats van uw SQL Azure-vm's open te maken voor alle verbindings aanvragen.
 
 U kunt het IP-adres vinden door de FQDN-namen (bijvoorbeeld `<your-search-service-name>.search.windows.net` ) van uw zoek service te pingen.
 
-U kunt het IP-adres bereik van de `AzureCognitiveSearch` [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) van de service opvragen door [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
+U kunt het IP-adres bereik van de `AzureCognitiveSearch` [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) van de service opvragen door [Download bare json-bestanden](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de [service tag discovery-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
 
 #### <a name="managing-ip-address-fluctuations"></a>Schommelingen van IP-adressen beheren
 Als uw zoek service slechts één Zoek eenheid (dat wil zeggen, één replica en één partitie) heeft, wordt het IP-adres gewijzigd tijdens het starten van de routine service, waarbij een bestaande ACL met het IP-adres van uw zoek service ongeldig wordt.
@@ -93,4 +93,3 @@ Als u de Azure Portal gebruikt om een Indexeer functie te maken, moet Azure Cogn
 
 ## <a name="next-steps"></a>Volgende stappen
 Met configuratie uit de weg kunt u nu een SQL Server op de Azure-VM opgeven als de gegevens bron voor een Azure Cognitive Search indexer. Zie [verbinding maken tussen Azure SQL database en Azure Cognitive Search met behulp van Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) voor meer informatie.
-

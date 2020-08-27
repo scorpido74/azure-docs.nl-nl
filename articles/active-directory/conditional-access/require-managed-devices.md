@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948824"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -28,7 +28,7 @@ In dit artikel wordt uitgelegd hoe u beleid voor voorwaardelijke toegang kunt co
 
 Het vereisen van beheerde apparaten voor Cloud app Access bindt **voorwaardelijke toegang van Azure AD** en het **beheer van Azure ad-apparaten** samen. Als u nog niet bekend bent met een van deze gebieden, lees dan eerst de volgende onderwerpen:
 
-- **[Voorwaardelijke toegang in azure Active Directory: in](../active-directory-conditional-access-azure-portal.md)** dit artikel vindt u een conceptueel overzicht van voorwaardelijke toegang en de gerelateerde terminologie.
+- **[Voorwaardelijke toegang in azure Active Directory: in](./overview.md)** dit artikel vindt u een conceptueel overzicht van voorwaardelijke toegang en de gerelateerde terminologie.
 - **[Inleiding tot Apparaatbeheer in azure Active Directory: in](../devices/overview.md)** dit artikel vindt u een overzicht van de verschillende opties die u nodig hebt om apparaten te verkrijgen onder het beheer van de organisatie. 
 - Voor Chrome-ondersteuning in **Windows 10 Crea tors update (versie 1703)** of nieuwer, installeert u de [extensie Windows 10-accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Deze uitbrei ding is vereist wanneer voor een beleid voor voorwaardelijke toegang apparaatspecifieke Details vereist zijn.
 
@@ -108,7 +108,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een Inge sc
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.

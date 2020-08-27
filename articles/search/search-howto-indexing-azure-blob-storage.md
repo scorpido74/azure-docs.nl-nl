@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6295dfbbee2d44b61b5dc832163adc8d643ab0f1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036144"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924092"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -31,9 +31,9 @@ De BLOB-indexer kan tekst uit de volgende document indelingen ophalen:
 ## <a name="setting-up-blob-indexing"></a>BLOB-indexering instellen
 U kunt een Azure Blob Storage Indexeer functie instellen met behulp van:
 
-* [Azure-portal](https://ms.portal.azure.com)
-* Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* [Azure Portal](https://ms.portal.azure.com)
+* Azure Cognitive Search [rest API](/rest/api/searchservice/Indexer-operations)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/overview/azure/search)
 
 > [!NOTE]
 > Sommige functies (bijvoorbeeld veld Toewijzingen) zijn nog niet beschikbaar in de portal en moeten worden gebruikt via een programma.
@@ -66,7 +66,7 @@ Een gegevens bron maken:
     }   
 ```
 
-Zie [Data Source maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)voor meer informatie over het maken van data source-API.
+Zie [Data Source maken](/rest/api/searchservice/create-data-source)voor meer informatie over het maken van data source-API.
 
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>Referenties opgeven ####
@@ -77,7 +77,7 @@ U kunt de referenties voor de BLOB-container op een van de volgende manieren opg
 - **Opslag account voor Shared Access Signature** (sas) Connection String: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` de SAS moet de lijst en lees machtigingen hebben voor containers en objecten (blobs in dit geval).
 -  **Shared Access-hand tekening voor container**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` de SAS moet de lijst en lees machtigingen voor de container hebben.
 
-Zie [using Shared Access signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md)(Engelstalig) voor meer informatie over gedeelde toegangs handtekeningen voor opslag.
+Zie [using Shared Access signatures](../storage/common/storage-sas-overview.md)(Engelstalig) voor meer informatie over gedeelde toegangs handtekeningen voor opslag.
 
 > [!NOTE]
 > Als u SAS-referenties gebruikt, moet u de referenties van de gegevens bron regel matig bijwerken met de vernieuwde hand tekeningen om te voor komen dat ze verlopen. Als de SAS-referenties verlopen, mislukt de Indexeer functie met een fout bericht dat vergelijkbaar is met `Credentials provided in the connection string are invalid or have expired.` .  
@@ -101,7 +101,7 @@ Ga als volgt te werk om een index met een doorzoekbaar `content` veld te maken v
     }
 ```
 
-Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
+Zie [index maken](/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
 
 ### <a name="step-3-create-an-indexer"></a>Stap 3: een Indexeer functie maken
 Een Indexeer functie verbindt een gegevens bron met een doel zoek index en biedt een planning voor het automatiseren van de gegevens vernieuwing.
@@ -123,7 +123,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu make
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
-Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
+Bekijk [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
@@ -169,8 +169,8 @@ In azure Cognitive Search is de document sleutel een unieke identificatie van ee
 
 U moet zorgvuldig overwegen welk geëxtraheerde veld moet worden toegewezen aan het sleutel veld voor uw index. De kandidaten zijn:
 
-* ** \_ opslag \_ naam van meta gegevens** : dit kan een handige kandidaat zijn, maar houd er rekening mee dat 1) de namen mogelijk niet uniek zijn, omdat u blobs met dezelfde naam in verschillende mappen kunt hebben en 2) de naam mag tekens bevatten die ongeldig zijn in document sleutels, zoals streepjes. U kunt met ongeldige tekens omgaan met de `base64Encode` [functie veld toewijzing](search-indexer-field-mappings.md#base64EncodeFunction) . Als u dit doet, vergeet dan niet om document sleutels te coderen wanneer deze worden door gegeven in API-aanroepen zoals lookup. (In .NET kunt u bijvoorbeeld de [UrlTokenEncode-methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) voor dat doel gebruiken).
-* ** \_ \_ pad naar meta gegevens opslag** : met het volledige pad zorgt u ervoor dat uniek is, maar het pad bevat `/` ook tekens die [ongeldig zijn in een document sleutel](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  Net als hierboven hebt u de mogelijkheid om de sleutels te coderen met behulp van de `base64Encode` [functie](search-indexer-field-mappings.md#base64EncodeFunction).
+* ** \_ opslag \_ naam van meta gegevens** : dit kan een handige kandidaat zijn, maar houd er rekening mee dat 1) de namen mogelijk niet uniek zijn, omdat u blobs met dezelfde naam in verschillende mappen kunt hebben en 2) de naam mag tekens bevatten die ongeldig zijn in document sleutels, zoals streepjes. U kunt met ongeldige tekens omgaan met de `base64Encode` [functie veld toewijzing](search-indexer-field-mappings.md#base64EncodeFunction) . Als u dit doet, vergeet dan niet om document sleutels te coderen wanneer deze worden door gegeven in API-aanroepen zoals lookup. (In .NET kunt u bijvoorbeeld de [UrlTokenEncode-methode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) voor dat doel gebruiken).
+* ** \_ \_ pad naar meta gegevens opslag** : met het volledige pad zorgt u ervoor dat uniek is, maar het pad bevat `/` ook tekens die [ongeldig zijn in een document sleutel](/rest/api/searchservice/naming-rules).  Net als hierboven hebt u de mogelijkheid om de sleutels te coderen met behulp van de `base64Encode` [functie](search-indexer-field-mappings.md#base64EncodeFunction).
 * Als geen van de bovenstaande opties voor u werkt, kunt u een aangepaste meta gegevens eigenschap toevoegen aan de blobs. Deze optie vereist echter dat het proces voor het uploaden van blobs de meta gegevens eigenschap aan alle blobs toevoegt. Omdat de sleutel een vereiste eigenschap is, kunnen niet alle blobs die deze eigenschap hebben, worden geïndexeerd.
 
 > [!IMPORTANT]
@@ -268,9 +268,9 @@ Als beide `indexedFileNameExtensions` en `excludedFileNameExtensions` -para mete
 
 U kunt bepalen welke delen van de blobs worden geïndexeerd met behulp van de `dataToExtract` configuratie parameter. Dit kan de volgende waarden hebben:
 
-* `storageMetadata`-Hiermee geeft u op dat alleen de [standaard-BLOB-eigenschappen en door de gebruiker opgegeven meta gegevens](../storage/blobs/storage-properties-metadata.md) worden geïndexeerd.
-* `allMetadata`-geeft aan dat de meta gegevens van de opslag en de [specifieke meta gegevens van het inhouds type](#ContentSpecificMetadata) die zijn geëxtraheerd uit de blob-inhoud worden geïndexeerd.
-* `contentAndMetadata`-geeft aan dat alle meta gegevens en tekstuele inhoud die uit de BLOB zijn geëxtraheerd, worden geïndexeerd. Dit is de standaardwaarde.
+* `storageMetadata` -Hiermee geeft u op dat alleen de [standaard-BLOB-eigenschappen en door de gebruiker opgegeven meta gegevens](../storage/blobs/storage-blob-container-properties-metadata.md) worden geïndexeerd.
+* `allMetadata` -geeft aan dat de meta gegevens van de opslag en de [specifieke meta gegevens van het inhouds type](#ContentSpecificMetadata) die zijn geëxtraheerd uit de blob-inhoud worden geïndexeerd.
+* `contentAndMetadata` -geeft aan dat alle meta gegevens en tekstuele inhoud die uit de BLOB zijn geëxtraheerd, worden geïndexeerd. Dit is de standaardwaarde.
 
 Als u bijvoorbeeld alleen de meta gegevens van de opslag wilt indexeren, gebruikt u:
 
@@ -316,7 +316,7 @@ Voor sommige blobs kan Azure Cognitive Search het inhouds type niet bepalen of k
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Cognitive Search beperkt de grootte van blobs die worden geïndexeerd. Deze limieten worden beschreven in de [service limieten in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). De grootte van blobs wordt standaard als fouten beschouwd. U kunt echter nog steeds opslag meta gegevens indexeren van overgrote blobs als u `indexStorageMetadataOnlyForOversizedDocuments` configuratie parameters instelt op True: 
+Azure Cognitive Search beperkt de grootte van blobs die worden geïndexeerd. Deze limieten worden beschreven in de [service limieten in Azure Cognitive Search](./search-limits-quotas-capacity.md). De grootte van blobs wordt standaard als fouten beschouwd. U kunt echter nog steeds opslag meta gegevens indexeren van overgrote blobs als u `indexStorageMetadataOnlyForOversizedDocuments` configuratie parameters instelt op True: 
 
 ```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
@@ -345,15 +345,15 @@ Er zijn twee manieren om de methode voor zacht verwijderen te implementeren. Bei
 ### <a name="native-blob-soft-delete-preview"></a>Voorlopig verwijderen van systeemeigen blob (preview)
 
 > [!IMPORTANT]
-> Ondersteuning voor het voorlopig verwijderen van een blob is in preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2020-06-30-preview](https://docs.microsoft.com/azure/search/search-api-preview) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Ondersteuning voor het voorlopig verwijderen van een blob is in preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2020-06-30-preview](./search-api-preview.md) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
 > [!NOTE]
 > Wanneer u het beleid voor voorlopig verwijderen van de native-BLOB gebruikt, moet u de document sleutels voor de documenten in de index een BLOB-eigenschap of BLOB-meta gegevens zijn.
 
-In deze methode gebruikt u de [systeem eigen BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) -functie voor voorlopig verwijderen die wordt aangeboden door Azure Blob-opslag. Als systeem eigen BLOB verwijderen is ingeschakeld in uw opslag account, heeft uw gegevens bron een systeem eigen beleid voor zacht verwijderen en de Indexeer functie vindt een blob die is overgegaan naar een voorlopig verwijderde status. de Indexeer functie verwijdert dat document uit de index. Het beleid voor voorlopig verwijderen van de systeem eigen BLOB wordt niet ondersteund bij het indexeren van blobs uit Azure Data Lake Storage Gen2.
+In deze methode gebruikt u de [systeem eigen BLOB](../storage/blobs/soft-delete-blob-overview.md) -functie voor voorlopig verwijderen die wordt aangeboden door Azure Blob-opslag. Als systeem eigen BLOB verwijderen is ingeschakeld in uw opslag account, heeft uw gegevens bron een systeem eigen beleid voor zacht verwijderen en de Indexeer functie vindt een blob die is overgegaan naar een voorlopig verwijderde status. de Indexeer functie verwijdert dat document uit de index. Het beleid voor voorlopig verwijderen van de systeem eigen BLOB wordt niet ondersteund bij het indexeren van blobs uit Azure Data Lake Storage Gen2.
 
 Voer de volgende stappen uit:
-1. [Systeem eigen zacht verwijderen inschakelen voor Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete). We raden u aan het Bewaar beleid in te stellen op een waarde die veel hoger is dan het schema voor de indexerings interval. Als er een probleem is met het uitvoeren van de Indexeer functie of als u een groot aantal documenten hebt om te indexeren, is er genoeg tijd voor de Indexeer functie om de zachte verwijderde blobs uiteindelijk te verwerken. Met Azure Cognitive Search Indexeer functies wordt alleen een document uit de index verwijderd als het de BLOB verwerkt terwijl deze de status zacht verwijderd heeft.
+1. [Systeem eigen zacht verwijderen inschakelen voor Azure Blob-opslag](../storage/blobs/soft-delete-blob-overview.md). We raden u aan het Bewaar beleid in te stellen op een waarde die veel hoger is dan het schema voor de indexerings interval. Als er een probleem is met het uitvoeren van de Indexeer functie of als u een groot aantal documenten hebt om te indexeren, is er genoeg tijd voor de Indexeer functie om de zachte verwijderde blobs uiteindelijk te verwerken. Met Azure Cognitive Search Indexeer functies wordt alleen een document uit de index verwijderd als het de BLOB verwerkt terwijl deze de status zacht verwijderd heeft.
 1. Configureer een systeem eigen detectie beleid voor het voorlopig verwijderen van blobs op de gegevens bron. Hieronder kunt u een voorbeeld bekijken. Omdat deze functie in preview is, moet u de preview-REST API gebruiken.
 1. Voer de Indexeer functie uit of stel de Indexeer functie in op een schema. Wanneer de Indexeer functie wordt uitgevoerd en de BLOB wordt verwerkt, wordt het document uit de index verwijderd.
 
@@ -434,7 +434,7 @@ Het indexeren van blobs kan een tijdrovend proces zijn. In gevallen waarin u mil
 
 Mogelijk wilt u documenten uit meerdere bronnen in uw index assembleren. U kunt bijvoorbeeld tekst uit blobs samen voegen met andere meta gegevens die zijn opgeslagen in Cosmos DB. U kunt zelfs de push-indexerings-API samen met de verschillende Indexeer functies gebruiken om Zoek documenten uit meerdere delen op te bouwen. 
 
-Om dit te laten werken, moeten alle Indexeer functies en andere onderdelen overeenkomen met de document sleutel. Zie [meerdere Azure-gegevens bronnen indexeren](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)voor meer informatie over dit onderwerp. Zie dit externe artikel: [documenten combi neren met andere gegevens in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)voor gedetailleerde instructies.
+Om dit te laten werken, moeten alle Indexeer functies en andere onderdelen overeenkomen met de document sleutel. Zie [meerdere Azure-gegevens bronnen indexeren](./tutorial-multiple-data-sources.md)voor meer informatie over dit onderwerp. Zie dit externe artikel: [documenten combi neren met andere gegevens in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)voor gedetailleerde instructies.
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Tekst zonder opmaak indexeren 

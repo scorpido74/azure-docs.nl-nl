@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 101fd5298482f2f92e2a3fa4284d6e3fe94989a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905778"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923225"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
 
-Als u versie 9,0 of ouder van de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel bij het upgraden van uw toepassing tot het gebruik van versie 10.
+Als u versie 9,0 of ouder van de [.NET SDK](/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel bij het upgraden van uw toepassing tot het gebruik van versie 10.
 
 De naam van Azure Search is gewijzigd in azure Cognitive Search in versie 10, maar naam ruimten en pakket namen blijven onveranderd. Eerdere versies van de SDK (9,0 en eerder) blijven de oude naam gebruiken. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](search-howto-dotnet-sdk.md)voor meer informatie over het gebruik van de SDK, met inbegrip van voor beelden.
 
@@ -35,13 +35,13 @@ Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar
 Versie 10 van de Azure Cognitive Search .NET SDK-doelen REST API `2019-05-06` met deze updates:
 
 * Introductie van twee nieuwe vaardig heden- [voorwaardelijke](cognitive-search-skill-conditional.md) vaardig heden en [tekst vertalingen](cognitive-search-skill-text-translation.md).
-* [Shaper-vaardigheids](cognitive-search-skill-shaper.md) invoer is herstructureeerd om consolidatie van geneste contexten mogelijk te houden. Zie voor meer informatie dit [voor beeld van JSON-definitie](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
+* [Shaper-vaardigheids](cognitive-search-skill-shaper.md) invoer is herstructureeerd om consolidatie van geneste contexten mogelijk te houden. Zie voor meer informatie dit [voor beeld van JSON-definitie](./cognitive-search-skill-shaper.md#scenario-3-input-consolidation-from-nested-contexts).
 * Toevoeging van twee nieuwe [veld toewijzings functies](search-indexer-field-mappings.md):
-    - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
-    - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* In bepaalde gevallen kunnen fouten en waarschuwingen die worden weer gegeven in de [uitvoerings status van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) extra informatie bevatten over fout opsporing. `IndexerExecutionResult`is bijgewerkt om dit gedrag weer te geven.
+    - [urlEncode](./search-indexer-field-mappings.md#urlencode-function)
+    - [urlDecode](./search-indexer-field-mappings.md#urldecode-function)
+* In bepaalde gevallen kunnen fouten en waarschuwingen die worden weer gegeven in de [uitvoerings status van de Indexeer functie](/rest/api/searchservice/get-indexer-status) extra informatie bevatten over fout opsporing. `IndexerExecutionResult` is bijgewerkt om dit gedrag weer te geven.
 * Afzonderlijke vaardig heden die zijn gedefinieerd binnen een [vakkennisset](cognitive-search-defining-skillset.md) kunnen eventueel worden geïdentificeerd door een eigenschap op te geven `name` .
-* `ServiceLimits`toont de limieten voor [complexe typen](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) en `IndexerExecutionInfo` toont de relevante limieten/quota's voor de Indexeer functie.
+* `ServiceLimits` toont de limieten voor [complexe typen](./search-howto-complex-data-types.md) en `IndexerExecutionInfo` toont de relevante limieten/quota's voor de Indexeer functie.
 
 <a name="UpgradeSteps"></a>
 
@@ -139,13 +139,13 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`wordt toegewezen aan een naam `#1` , wordt toegewezen, wordt toegewezen `WebApiSkill` , enzovoort `#2` `ShaperSkill` `#3` .
+`SentimentSkill` wordt toegewezen aan een naam `#1` , wordt toegewezen, wordt toegewezen `WebApiSkill` , enzovoort `#2` `ShaperSkill` `#3` .
 
 Als u ervoor kiest om de vaardig heden te identificeren met een aangepaste naam, moet u ervoor zorgen dat alle exemplaren van uw clients eerst worden bijgewerkt naar versie 10 van de SDK. Anders is het mogelijk dat een client die gebruikmaakt van een oudere versie van de SDK `null` `Name` , de eigenschap van een vaardigheid zou kunnen gebruiken, waardoor de client terugvalt op het standaard naamgevings schema.
 
 ## <a name="details-about-errors-and-warnings"></a>Details over fouten en waarschuwingen
 
-`ItemError`en `ItemWarning` modellen waarmee details van fouten en waarschuwingen (respectievelijk) die zich voordoen tijdens een uitvoering van de Indexeer functie zijn gewijzigd, zodat er drie nieuwe eigenschappen zijn met het doel om te helpen bij het opsporen van fouten in de Indexeer functie. Deze eigenschappen zijn:
+`ItemError` en `ItemWarning` modellen waarmee details van fouten en waarschuwingen (respectievelijk) die zich voordoen tijdens een uitvoering van de Indexeer functie zijn gewijzigd, zodat er drie nieuwe eigenschappen zijn met het doel om te helpen bij het opsporen van fouten in de Indexeer functie. Deze eigenschappen zijn:
 
 - `Name`: De naam van de bron waarvan de fout afkomstig is. Het kan bijvoorbeeld verwijzen naar een bepaalde vaardigheid in de gekoppelde vaardig heden.
 - `Details`: Meer uitgebreide informatie over de fout of waarschuwing.
@@ -159,4 +159,3 @@ Als u ervoor kiest om de vaardig heden te identificeren met een aangepaste naam,
 - Wijzigingen in de shaper-vaardigheid hebben de meest mogelijke gevolgen voor nieuwe of bestaande code. Als volgende stap moet u het volgende voor beeld bekijken waarin de invoer structuur wordt geïllustreerd: [voor beeld van een shaper skill JSON-definitie](cognitive-search-skill-shaper.md)
 - Ga naar het [overzicht van AI-verrijking](cognitive-search-concept-intro.md).
 - We stellen uw feedback op de SDK. Als u problemen ondervindt, kunt u ons vragen om hulp over [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vindt, kunt u een probleem in de [Azure .NET SDK github-opslag plaats](https://github.com/Azure/azure-sdk-for-net/issues)opslaan. Zorg ervoor dat u de titel van het probleem voordoet met ' [Azure Cognitive Search] '.
-
