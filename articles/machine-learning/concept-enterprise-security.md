@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366924"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918584"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -91,7 +91,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 | Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Storage-account | Inzender voor Storage BLOB-gegevens |
+| Storage-account | Inzender voor Storage Blob-gegevens |
 | Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
@@ -119,19 +119,14 @@ U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 > [!IMPORTANT]
-> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. 
+> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
 
-De `hbi_workspace` markering bepaalt de hoeveelheid gegevens die micro soft verzamelt voor diagnostische doel einden en maakt extra versleuteling mogelijk in door micro soft beheerde omgevingen. Daarnaast kunnen de volgende acties worden uitgevoerd:
+De `hbi_workspace` markering bepaalt de hoeveelheid [gegevens die micro soft verzamelt voor diagnostische doel einden](#microsoft-collected-data) en maakt [extra versleuteling mogelijk in door micro soft beheerde omgevingen](../security/fundamentals/encryption-atrest.md). Daarnaast kunnen de volgende acties worden uitgevoerd:
 
 * Hiermee wordt het versleutelen van de lokale werk schijf in uw Azure Machine Learning Compute-Cluster gestart, mits u geen eerdere clusters hebt gemaakt in dat abonnement. Anders moet u een ondersteunings ticket genereren om versleuteling van de Scratch schijf van uw reken clusters mogelijk te maken 
 * De lokale scratchschijf opschonen tussen uitvoeringen
 * Referenties voor uw opslag account, container register en SSH-account veilig door gegeven van de uitvoerings slaag naar uw reken clusters met behulp van uw sleutel kluis
 * IP-filtering inschakelen om ervoor te zorgen dat de onderliggende batch-groepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService
-
-> [!WARNING]
-> De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
-
-Zie [Azure Data Encryption at rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)(Engelstalig) voor meer informatie over de werking van versleuteling bij rest in Azure.
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -204,7 +199,7 @@ Zie de volgende artikelen voor meer informatie over het maken en gebruiken van e
 
 * Naslag informatie over [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
 * [Waar en hoe u implementeert](how-to-deploy-and-where.md)
-* [Een model implementeren naar Azure Container Instances](how-to-deploy-azure-container-instance.md)
+* [Een model implementeren op Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
 Zie [gegevens versleutelen met een door de klant beheerde sleutel](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)voor meer informatie over het gebruik van een door de klant beheerde sleutel met ACI.
 
@@ -227,7 +222,7 @@ Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssyst
 
 Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
 
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 
 Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning micro services te beveiligen. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
 

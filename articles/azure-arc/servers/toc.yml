@@ -49,3 +49,9 @@
       items:
         - name: Verbindingsproblemen met de agent
           href: troubleshoot-agent-onboard.md
+    - name: Verwijzing
+      items:
+        - name: Regiobeschikbaarheid en gegevenslocatie
+          href: data-residency.md
+        - name: REST
+          href: /rest/api/hybridcompute

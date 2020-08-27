@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130803"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928833"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Query typen en samen stelling in azure Cognitive Search
 
 In azure Cognitive Search is een query een volledige specificatie van een round-trip bewerking. Op de aanvraag zijn er para meters die uitvoerings instructies bieden voor de engine, evenals de para meters die het antwoord vormen. Niet opgegeven ( `search=*` ), zonder match criteria en het gebruik van null of standaard parameters, wordt een query uitgevoerd voor alle Doorzoek bare velden als een zoek bewerking in volledige tekst, waardoor een oneindige resultatenset in een wille keurige volg orde wordt geretourneerd.
 
-Het volgende voor beeld is een representatieve query die is geconstrueerd in de [rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents). In dit voor beeld wordt de index voor de [Hotels-demo](search-get-started-portal.md) en de algemene para meters opgenomen, zodat u kunt zien hoe een query eruit ziet.
+Het volgende voor beeld is een representatieve query die is geconstrueerd in de [rest API](/rest/api/searchservice/search-documents). In dit voor beeld wordt de index voor de [Hotels-demo](search-get-started-portal.md) en de algemene para meters opgenomen, zodat u kunt zien hoe een query eruit ziet.
 
 ```
 {
@@ -55,7 +55,7 @@ In azure Cognitive Search is het uitvoeren van query's altijd op basis van één
 
 Voordat u code schrijft, kunt u query hulpprogramma's gebruiken om te zien wat de syntaxis is en experimenteren met verschillende para meters. De snelste benadering is het ingebouwde Portal-hulp programma, [Search Explorer](search-explorer.md).
 
-Als u deze Quick Start hebt uitgevoerd [om de hotels-demo-index te maken](search-get-started-portal.md), kunt u deze query reeks plakken in de zoek balk van de Explorer om uw eerste query uit te voeren:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+Als u deze Quick Start hebt uitgevoerd [om de hotels-demo-index te maken](search-get-started-portal.md), kunt u deze query reeks plakken in de zoek balk van de Explorer om uw eerste query uit te voeren: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Hoe query bewerkingen worden ingeschakeld door de index
 
@@ -65,7 +65,7 @@ Index kenmerken voor een veld stel de toegestane bewerkingen in: Hiermee stelt u
 
 ![Index definitie voor het voor beeld van een hotel](./media/search-query-overview/hotel-sample-index-definition.png "Index definitie voor het voor beeld van een hotel")
 
-De bovenstaande scherm afbeelding is een gedeeltelijke lijst met index kenmerken voor het voor beeld van hotels. U kunt het volledige index schema weer geven in de portal. Zie [Create index rest API](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over index kenmerken.
+De bovenstaande scherm afbeelding is een gedeeltelijke lijst met index kenmerken voor het voor beeld van hotels. U kunt het volledige index schema weer geven in de portal. Zie [Create index rest API](/rest/api/searchservice/create-index)voor meer informatie over index kenmerken.
 
 > [!Note]
 > Sommige query functies zijn in index-breed en niet per veld. Deze mogelijkheden omvatten: [synoniemen](search-synonyms.md), [aangepaste analyse](index-add-custom-analyzers.md)functies, [suggestie constructies (voor automatisch aanvullen en voorgestelde query's)](index-add-suggesters.md), [Score logica voor classificatie resultaten](index-add-scoring-profiles.md).
@@ -76,24 +76,24 @@ Query's zijn altijd gericht op één index. U kunt geen indexen samen voegen of 
 
 Vereiste elementen voor een query aanvraag zijn onder andere de volgende onderdelen:
 
-+ Verzameling service-eind punten en index documenten, uitgedrukt als een URL met vaste en door de gebruiker gedefinieerde onderdelen:**`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`**(Alleen REST) is vereist omdat meer dan één versie van de API te allen tijde beschikbaar is. 
++ Verzameling service-eind punten en index documenten, uitgedrukt als een URL met vaste en door de gebruiker gedefinieerde onderdelen: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Alleen REST) is vereist omdat meer dan één versie van de API te allen tijde beschikbaar is. 
 + **`api-key`**, ofwel een query of beheerder-API-sleutel, verifieert de aanvraag bij uw service.
 + **`queryType`**, eenvoudig of volledig, wat kan worden wegge laten als u de ingebouwde standaard eenvoudige syntaxis gebruikt.
 + **`search`** of **`filter`** biedt de overeenkomende criteria, die niet kunnen worden opgegeven als u een lege zoek opdracht wilt uitvoeren. Beide query typen worden besproken in termen van de eenvoudige parser, maar zelfs geavanceerde query's vereisen de zoek parameter voor het door geven van complexe query expressies.
 
-Alle andere zoek parameters zijn optioneel. Zie [Create Index (rest) (Engelstalig)](https://docs.microsoft.com/rest/api/searchservice/create-index)voor een volledige lijst met kenmerken. Zie [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)voor meer informatie over hoe para meters worden gebruikt tijdens de verwerking.
+Alle andere zoek parameters zijn optioneel. Zie [Create Index (rest) (Engelstalig)](/rest/api/searchservice/create-index)voor een volledige lijst met kenmerken. Zie [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)voor meer informatie over hoe para meters worden gebruikt tijdens de verwerking.
 
 ## <a name="choose-apis-and-tools"></a>Kies Api's en hulpprogram ma's
 
 De volgende tabel geeft een lijst van de Api's en hulp op basis van gereedschappen voor het verzenden van query's.
 
-| Methodologie | Description |
+| Methodologie | Beschrijving |
 |-------------|-------------|
 | [Search Explorer (portal)](search-explorer.md) | Voorziet in een zoek balk en opties voor selecties van index en API-versie. Resultaten worden geretourneerd als JSON-documenten. Aanbevolen voor verkennen, testen en valideren. <br/>[Meer informatie.](search-get-started-portal.md#query-index) | 
 | [Postman of andere REST-hulp middelen](search-get-started-postman.md) | Webtest-hulpprogram ma's zijn een uitstekende keuze voor het formuleren van REST-aanroepen. De REST API ondersteunt elke mogelijke bewerking in azure Cognitive Search. In dit artikel vindt u informatie over het instellen van een HTTP-aanvraag header en hoofd tekst voor het verzenden van aanvragen naar Azure Cognitive Search.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client die kan worden gebruikt om een query uit te zoeken op een Azure Cognitive Search-index.  <br/>[Meer informatie.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Documenten zoeken (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET-of POST-methoden voor een index met behulp van query parameters voor aanvullende invoer.  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client die kan worden gebruikt om een query uit te zoeken op een Azure Cognitive Search-index.  <br/>[Meer informatie.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Documenten zoeken (REST API)](/rest/api/searchservice/search-documents) | GET-of POST-methoden voor een index met behulp van query parameters voor aanvullende invoer.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Kies een parser: eenvoudig | waard
 
@@ -123,7 +123,7 @@ Azure Cognitive Search ondersteunt een breed scala aan query typen.
 |------------|--------|-------------------------------|
 | Zoek opdracht in vrije tekst | Zoek parameter en beide parsers| Zoek opdrachten in volledige tekst scans voor een of meer voor waarden in alle *Doorzoek* bare velden in uw index en werkt op de manier waarop u een zoek machine zoals Google of Bing verwacht. Het voor beeld in de inleiding is zoeken in volledige tekst.<br/><br/>Zoek opdracht in volledige tekst ondergaate lexicale analyse met behulp van de standaard-lucene Analyzer (standaard) om alle voor waarden kleine letters te verlagen, verwijder stop woorden zoals ' de '. U kunt de standaard instelling overschrijven met [niet-Engelse analyse](index-add-language-analyzers.md#language-analyzer-list) functies of [gespecialiseerde neutraal-](index-add-custom-analyzers.md#AnalyzerTable) analyse functies waarmee lexicale analyses worden gewijzigd. Een voor beeld is een [tref woord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) dat de volledige inhoud van een veld als één token behandelt. Dit is handig voor gegevens zoals post codes, Id's en sommige product namen. | 
 | Gefilterde zoek opdracht | [OData-filter expressie](query-odata-filter-orderby-syntax.md) en een van beide parsers | Met filter query's wordt een booleaanse expressie voor alle *filter* bare velden in een index geëvalueerd. In tegens telling tot zoeken komt een filter query overeen met de exacte inhoud van een veld, inclusief hoofdletter gevoeligheid voor teken reeks velden. Een ander verschil is dat filter query's worden weer gegeven in de OData-syntaxis. <br/>[Voor beeld van filter expressie](search-query-simple-examples.md#example-3-filter-queries) |
-| Op geografische locaties zoeken | Het [type EDM. GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) in het veld, filter expressie en beide parsers | Coördinaten die zijn opgeslagen in een veld met een EDM. GeographyPoint worden gebruikt voor de besturings elementen "dichtbij zoeken" of op basis van een kaart. <br/>[Voor beeld van geo-zoeken](search-query-simple-examples.md#example-5-geo-search)|
+| Op geografische locaties zoeken | Het [type EDM. GeographyPoint](/rest/api/searchservice/supported-data-types) in het veld, filter expressie en beide parsers | Coördinaten die zijn opgeslagen in een veld met een EDM. GeographyPoint worden gebruikt voor de besturings elementen "dichtbij zoeken" of op basis van een kaart. <br/>[Voor beeld van geo-zoeken](search-query-simple-examples.md#example-5-geo-search)|
 | Bereik zoeken | filter expressie en eenvoudige parser | In azure Cognitive Search worden bereik query's gemaakt met behulp van de filter parameter. <br/>[Voor beeld van Range-filter](search-query-simple-examples.md#example-4-range-filters) | 
 | [Zoek opdracht in veld](query-lucene-syntax.md#bkmk_fields) | Zoek parameter en volledige parser | Bouw een samengestelde query-expressie die is gericht op één veld. <br/>[Voor beeld van een zoek opdracht naar een veld](search-query-lucene-examples.md#example-2-fielded-search) |
 | [Zoek actie op fuzzy](query-lucene-syntax.md#bkmk_fuzzy) | Zoek parameter en volledige parser | Komt overeen met de termen met een vergelijk bare constructie of spelling. <br/>[Voor beeld van fuzzy zoeken](search-query-lucene-examples.md#example-3-fuzzy-search) |
@@ -165,9 +165,9 @@ Als u wilt dat Azure Cognitive Search uw resultaten retourneert die zijn besteld
 ### <a name="hit-highlighting"></a>Markeren
 In azure Cognitive Search is het benadrukken van het exacte deel van de zoek resultaten dat overeenkomt met de zoek query, eenvoudig gemaakt met behulp van de **`highlight`** **`highlightPreTag`** **`highlightPostTag`** para meters, en. U kunt opgeven in welke *Doorzoek* bare velden de overeenkomende tekst moet worden benadrukt, evenals de exacte teken reeks tags die moeten worden toegevoegd aan het begin en het einde van de overeenkomende tekst die Azure Cognitive Search retourneert.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [De manier waarop zoeken in volledige tekst werkt in azure Cognitive Search (architectuur voor het parseren van query's)](search-lucene-query-architecture.md)
 + [Zoek Verkenner](search-explorer.md)
-+ [Query's uitvoeren in .NET](search-query-dotnet.md)
-+ [Query's uitvoeren in REST](search-create-index-rest-api.md)
++ [Query's uitvoeren in .NET](./search-get-started-dotnet.md)
++ [Query's uitvoeren in REST](./search-get-started-powershell.md)

@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 85c6d58d78f095f2f221476a91ecae8da0213963
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502083"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928595"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Grote bestands shares inschakelen en maken
 
@@ -23,7 +23,7 @@ Wanneer u grote bestands shares inschakelt voor uw opslag account, kunnen uw bes
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 - Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+- Als u de module Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Beperkingen
 
@@ -35,9 +35,9 @@ Het inschakelen van grote bestands shares voor een account is een onomkeerbaar p
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in de Azure-portal de optie **Alle services**. 
-1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, wordt de lijst gefilterd op basis van uw invoer. Selecteer **opslag accounts**.
+1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Opslagaccounts**.
 1. Selecteer **toevoegen**in het venster **opslag accounts** dat wordt weer gegeven.
 1. Selecteer het abonnement dat u gaat gebruiken om het opslag account te maken.
 1. Selecteer **Nieuwe maken** onder het veld **Resourcegroep**. Voer een naam in voor de nieuwe resource groep.
@@ -54,7 +54,7 @@ Het inschakelen van grote bestands shares voor een account is een onomkeerbaar p
    |Implementatiemodel     |Resource Manager         |
    |Prestaties     |Standard         |
    |Soort account     |StorageV2 (algemeen gebruik v2)         |
-   |Toegangslaag     |Dynamisch         |
+   |Toegangslaag     |Warm         |
 
 1. Selecteer **Geavanceerd**en selecteer vervolgens het **ingeschakelde** keuze rondje rechts van **grote bestands shares**.
 1. Selecteer **Beoordelen en maken** om uw opslagaccountinstellingen te bekijken en het account te maken.
@@ -63,7 +63,7 @@ Het inschakelen van grote bestands shares voor een account is een onomkeerbaar p
 
 1. Selecteer **Maken**.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Installeer eerst [de nieuwste versie van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zodat u grote bestands shares kunt inschakelen.
 
@@ -101,7 +101,7 @@ U kunt ook grote bestands shares inschakelen voor uw bestaande accounts. Als u g
 
 U hebt nu grote bestands shares ingeschakeld voor uw opslag account. Vervolgens moet u [het quotum van de bestaande share bijwerken](#expand-existing-file-shares) om te profiteren van verhoogde capaciteit en schaal.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u grote bestands shares wilt inschakelen voor uw bestaande account, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` en `<yourResourceGroup>` door uw gegevens.
 
@@ -132,12 +132,12 @@ Nadat u grote bestands shares hebt ingeschakeld in uw opslag account, kunt u bes
 Het maken van een grote bestands share is bijna identiek aan het maken van een standaard bestands share. Het belangrijkste verschil is dat u een quotum kunt instellen van Maxi maal 100 TiB.
 
 1. Selecteer in uw opslag account **Bestands shares**.
-1. Selecteer ** + bestandsshare**.
+1. Selecteer **+ Bestands share**.
 1. Voer een naam in voor de bestands share. U kunt ook de gewenste quota grootte instellen, tot 100 TiB. Selecteer vervolgens **Maken**. 
 
 ![De Azure Portal gebruikers interface waarin de naam en quotum vakken worden weer gegeven](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een grote bestands share wilt maken, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` , `<yourStorageAccountKey>` en `<yourFileShareName>` met uw gegevens.
 
@@ -171,7 +171,7 @@ Nadat u grote bestands shares in uw opslag account hebt ingeschakeld, kunt u ook
 
 ![De Azure Portal gebruikers interface met het quotum van de bestaande bestands shares](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik de volgende opdracht om het quotum in te stellen op de maximum grootte. Vervang `<yourStorageAccountName>` , `<yourStorageAccountKey>` en `<yourFileShareName>` met uw gegevens.
 

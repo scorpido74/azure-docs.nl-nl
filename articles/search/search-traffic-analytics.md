@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2a65d31bd7cde0a1f456212a19c06f6b940ce602
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420070"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922731"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetriegegevens verzamelen voor analyse van het zoek verkeer
 
 Search Traffic Analytics is een patroon voor het verzamelen van telemetrie over gebruikers interacties met uw Azure Cognitive Search-toepassing, zoals door de gebruiker geïnitieerde Klik gebeurtenissen en toetsenbord invoer. Met behulp van deze informatie kunt u de effectiviteit van uw zoek oplossing bepalen, waaronder populaire zoek termen, wissel frequentie en de resultaten van de query invoer nul als resultaat.
 
-Dit patroon neemt afhankelijk van [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) (een functie van [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/)) voor het verzamelen van gebruikers gegevens. Hiervoor moet u instrumentatie toevoegen aan de client code, zoals wordt beschreven in dit artikel. Ten slotte hebt u een rapportage mechanisme nodig om de gegevens te analyseren. We raden Power BI aan, maar u kunt het toepassings dashboard of een hulp programma gebruiken dat verbinding maakt met Application Insights.
+Dit patroon neemt afhankelijk van [Application Insights](../azure-monitor/app/app-insights-overview.md) (een functie van [Azure monitor](../azure-monitor/index.yml)) voor het verzamelen van gebruikers gegevens. Hiervoor moet u instrumentatie toevoegen aan de client code, zoals wordt beschreven in dit artikel. Ten slotte hebt u een rapportage mechanisme nodig om de gegevens te analyseren. We raden Power BI aan, maar u kunt het toepassings dashboard of een hulp programma gebruiken dat verbinding maakt met Application Insights.
 
 > [!NOTE]
 > Het patroon dat in dit artikel wordt beschreven, is bedoeld voor geavanceerde scenario's en clickstream gegevens die worden gegenereerd door de code die u aan uw client toevoegt. Service logboeken zijn daarentegen eenvoudig in te stellen, bieden een bereik aan metrische gegevens en kunnen worden uitgevoerd in de Portal zonder dat hiervoor code is vereist. Het inschakelen van logboek registratie wordt aanbevolen voor alle scenario's. Zie [logboek gegevens verzamelen en analyseren](search-monitor-logs.md)voor meer informatie.
@@ -43,9 +43,9 @@ Op de pagina [Portal](https://portal.azure.com) voor uw Azure Cognitive Search-s
 
 ## <a name="1---set-up-application-insights"></a>1-Application Insights instellen
 
-Selecteer een bestaande Application Insights resource of [Maak er een](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) als u er nog geen hebt. Als u de pagina Zoek Traffic Analytics gebruikt, kunt u de instrumentatie sleutel kopiëren die uw toepassing nodig heeft om verbinding te maken met Application Insights.
+Selecteer een bestaande Application Insights resource of [Maak er een](../azure-monitor/app/create-new-resource.md) als u er nog geen hebt. Als u de pagina Zoek Traffic Analytics gebruikt, kunt u de instrumentatie sleutel kopiëren die uw toepassing nodig heeft om verbinding te maken met Application Insights.
 
-Zodra u een Application Insights resource hebt, kunt u de [instructies voor ondersteunde talen en platforms](https://docs.microsoft.com/azure/azure-monitor/app/platforms) volgen om uw app te registreren. Bij de registratie wordt simpelweg de instrumentatie sleutel van Application Insights toegevoegd aan uw code, waarmee de koppeling wordt ingesteld. U kunt de sleutel vinden in de portal of op de pagina zoeken Traffic Analytics wanneer u een bestaande resource selecteert.
+Zodra u een Application Insights resource hebt, kunt u de [instructies voor ondersteunde talen en platforms](../azure-monitor/app/platforms.md) volgen om uw app te registreren. Bij de registratie wordt simpelweg de instrumentatie sleutel van Application Insights toegevoegd aan uw code, waarmee de koppeling wordt ingesteld. U kunt de sleutel vinden in de portal of op de pagina zoeken Traffic Analytics wanneer u een bestaande resource selecteert.
 
 Een snelkoppeling die werkt voor sommige Visual Studio-project typen wordt weer gegeven in de volgende stappen. Hiermee maakt u een resource en registreert u uw app in slechts enkele klikken.
 
@@ -55,7 +55,7 @@ Een snelkoppeling die werkt voor sommige Visual Studio-project typen wordt weer 
 
 1. Registreer uw app door een Microsoft-account, een Azure-abonnement en een Application Insights bron op te geven (een nieuwe resource is de standaard instelling). Klik op **Registreren**.
 
-Uw toepassing is op dit moment ingesteld voor toepassings bewaking, wat betekent dat alle pagina belasting wordt bijgehouden met standaard metrische gegevens. Zie [Application Insights telemetrie aan de server zijde inschakelen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)voor meer informatie over de vorige stappen.
+Uw toepassing is op dit moment ingesteld voor toepassings bewaking, wat betekent dat alle pagina belasting wordt bijgehouden met standaard metrische gegevens. Zie [Application Insights telemetrie aan de server zijde inschakelen](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)voor meer informatie over de vorige stappen.
 
 ## <a name="2---add-instrumentation"></a>2: instrumentatie toevoegen
 
@@ -63,11 +63,11 @@ In deze stap gaat u uw eigen zoek toepassing gebruiken met behulp van de Applica
 
 ### <a name="step-1-create-a-telemetry-client"></a>Stap 1: een telemetrie-client maken
 
-Maak een object waarmee gebeurtenissen naar Application Insights worden verzonden. U kunt instrumentatie toevoegen aan de toepassings code aan de server zijde of aan de client zijde uitgevoerde code in een browser, die hier wordt weer gegeven als C#-en Java script-varianten (Zie de volledige lijst met [ondersteunde platforms en frameworks](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)voor andere talen). Kies de benadering die u de gewenste diepte van de informatie biedt.
+Maak een object waarmee gebeurtenissen naar Application Insights worden verzonden. U kunt instrumentatie toevoegen aan de toepassings code aan de server zijde of aan de client zijde uitgevoerde code in een browser, die hier wordt weer gegeven als C#-en Java script-varianten (Zie de volledige lijst met [ondersteunde platforms en frameworks](../azure-monitor/app/platforms.md)voor andere talen). Kies de benadering die u de gewenste diepte van de informatie biedt.
 
 Met telemetrie aan de server zijde worden metrische gegevens op de toepassingslaag vastgelegd, bijvoorbeeld in toepassingen die worden uitgevoerd als een webservice in de Cloud, of als een on-premises app in een bedrijfs netwerk. Op de telemetrie van de server worden Zoek-en klik gebeurtenissen, de positie van een document in resultaten en query gegevens, maar uw gegevens verzameling wordt bepaald door de gegevens die op die laag beschikbaar zijn.
 
-Op de client hebt u mogelijk extra code voor het bewerken van query-invoer, het toevoegen van navigatie of het opnemen van context (bijvoorbeeld query's die worden gestart vanaf een start pagina versus een product pagina). Als uw oplossing wordt beschreven, kunt u ervoor kiezen om aan client zijde instrumentatie toe te staan, zodat de telemetrie het aanvullende detail weergeeft. Hoe dit aanvullende detail wordt verzameld, valt buiten het bereik van dit patroon, maar u kunt [Application Insights voor](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) webpagina's bekijken voor meer richting. 
+Op de client hebt u mogelijk extra code voor het bewerken van query-invoer, het toevoegen van navigatie of het opnemen van context (bijvoorbeeld query's die worden gestart vanaf een start pagina versus een product pagina). Als uw oplossing wordt beschreven, kunt u ervoor kiezen om aan client zijde instrumentatie toe te staan, zodat de telemetrie het aanvullende detail weergeeft. Hoe dit aanvullende detail wordt verzameld, valt buiten het bereik van dit patroon, maar u kunt [Application Insights voor](../azure-monitor/app/javascript.md#explore-browserclient-side-data) webpagina's bekijken voor meer richting. 
 
 **C# gebruiken**
 
@@ -238,6 +238,6 @@ In de volgende scherm afbeelding ziet u hoe een ingebouwd rapport eruit kan zien
 
 Instrumenteer uw zoek toepassing om krachtige en zicht bare gegevens over uw zoek service te krijgen.
 
-U vindt meer informatie over [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) en gaat u naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/application-insights/) voor meer informatie over de verschillende service lagen.
+U vindt meer informatie over [Application Insights](../azure-monitor/app/app-insights-overview.md) en gaat u naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/application-insights/) voor meer informatie over de verschillende service lagen.
 
-Meer informatie over het maken van verbluffende rapporten. Zie [aan de slag met Power bi Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) voor meer informatie.
+Meer informatie over het maken van verbluffende rapporten. Zie [aan de slag met Power bi Desktop](/power-bi/fundamentals/desktop-getting-started) voor meer informatie.

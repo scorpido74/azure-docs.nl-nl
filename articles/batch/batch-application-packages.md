@@ -3,13 +3,13 @@ title: Toepassings pakketten implementeren op reken knooppunten
 description: Gebruik de functie toepassings pakketten van Azure Batch om eenvoudig meerdere toepassingen en versies te beheren voor installatie op batch Compute-knoop punten.
 ms.topic: how-to
 ms.date: 04/26/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147212"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922001"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -123,7 +123,7 @@ In de toepassings Details kunt u de volgende instellingen voor uw toepassing con
 ### <a name="add-a-new-application"></a>Een nieuwe toepassing toevoegen
 Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en geeft u een nieuwe, unieke toepassings-ID op. Het eerste toepassings pakket dat u met de nieuwe toepassings-ID toevoegt, maakt ook de nieuwe toepassing.
 
-Klik op **toepassingen**  >  **toevoegen**.
+Klik op **Toepassingen** > **Toevoegen**.
 
 ![De Blade nieuwe toepassing in Azure Portal][5]
 
@@ -180,7 +180,7 @@ Wanneer u op **bijwerken**klikt, wordt de Windows **Update-pakket** weer gegeven
 
 Wanneer u op **verwijderen**klikt, wordt u gevraagd om het verwijderen van de pakket versie te bevestigen en wordt het pakket verwijderd uit Azure Storage. Als u de standaard versie van een toepassing verwijdert, wordt de **standaard versie** -instelling voor de toepassing verwijderd.
 
-![Toepassing verwijderen][12]
+![Toepassing verwijderen ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Toepassingen op reken knooppunten installeren
 Nu u hebt geleerd hoe u toepassings pakketten met de Azure Portal kunt beheren, kunnen we bespreken hoe u ze implementeert in reken knooppunten en ze uitvoert met batch taken.
@@ -255,7 +255,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`en `version` zijn waarden die overeenkomen met de versie van de toepassing en het pakket die u voor de implementatie hebt opgegeven. Als u bijvoorbeeld hebt opgegeven dat versie 2,7 van de toepassings *blender* moet worden geïnstalleerd op Windows-knoop punten, gebruiken de opdracht regels van de taak deze omgevings variabele voor toegang tot de bestanden:
+`APPLICATIONID` en `version` zijn waarden die overeenkomen met de versie van de toepassing en het pakket die u voor de implementatie hebt opgegeven. Als u bijvoorbeeld hebt opgegeven dat versie 2,7 van de toepassings *blender* moet worden geïnstalleerd op Windows-knoop punten, gebruiken de opdracht regels van de taak deze omgevings variabele voor toegang tot de bestanden:
 
 ```
 Windows:

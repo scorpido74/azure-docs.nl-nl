@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85051724"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924024"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Een index opnieuw samen stellen in azure Cognitive Search
 
@@ -29,7 +29,7 @@ Opnieuw opbouwen moet niet worden verward met het vernieuwen van de inhoud van e
 
 Zolang u de structuur van de index niet wijzigt, kunt u een index vernieuwen met behulp van dezelfde technieken die u hebt gebruikt om de index in eerste instantie te laden:
 
-* Voor het indexeren van de push-modus roept u het [toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) aan om de wijzigingen naar een index te pushen.
+* Voor het indexeren van de push-modus roept u het [toevoegen, bijwerken of verwijderen van documenten](/rest/api/searchservice/addupdate-or-delete-documents) aan om de wijzigingen naar een index te pushen.
 
 * Voor Indexeer functies kunt u de [uitvoering van de Indexeer functie plannen](search-howto-schedule-indexers.md) en wijzigingen bijhouden of tijds tempels gebruiken om de Delta te identificeren. Als updates sneller moeten worden doorgevoerd dan wat een scheduler kan beheren, kunt u in plaats daarvan het indexeren van push-modus gebruiken.
 
@@ -37,9 +37,9 @@ Zolang u de structuur van de index niet wijzigt, kunt u een index vernieuwen met
 
 Verwijder een index en maak deze opnieuw als aan een van de volgende voor waarden wordt voldaan. 
 
-| Voorwaarde | Description |
+| Conditie | Beschrijving |
 |-----------|-------------|
-| Een veld definitie wijzigen | Voor het wijzigen van een veld naam, gegevens type of specifieke [index kenmerken](https://docs.microsoft.com/rest/api/searchservice/create-index) (doorzoekbaar, filterbaar, sorteerbaar, facetable) is een volledige heropbouw vereist. |
+| Een veld definitie wijzigen | Voor het wijzigen van een veld naam, gegevens type of specifieke [index kenmerken](/rest/api/searchservice/create-index) (doorzoekbaar, filterbaar, sorteerbaar, facetable) is een volledige heropbouw vereist. |
 | Een analyse functie toewijzen aan een veld | [Analyse](search-analyzers.md) functies worden gedefinieerd in een index en vervolgens toegewezen aan velden. U kunt op elk gewenst moment een nieuwe analyse definitie aan een index toevoegen, maar u kunt alleen een analyse *toewijzing toewijzen* wanneer het veld wordt gemaakt. Dit geldt voor de eigenschappen **Analyzer** en **indexAnalyzer** . De eigenschap **searchAnalyzer** is een uitzonde ring (u kunt deze eigenschap toewijzen aan een bestaand veld). |
 | Een analyse definitie in een index bijwerken of verwijderen | U kunt een bestaande analyse configuratie (Analyzer, tokenizer, token filter of char-filter) in de index niet verwijderen of wijzigen, tenzij u de volledige index opnieuw opbouwt. |
 | Een veld aan een suggestie toevoegen | Als er al een veld bestaat en u dit wilt toevoegen aan de construct [suggesties](index-add-suggesters.md) , moet u de index opnieuw samen stellen. |
@@ -48,7 +48,7 @@ Verwijder een index en maak deze opnieuw als aan een van de volgende voor waarde
 
 ## <a name="update-conditions"></a>Update voorwaarden
 
-Er kunnen veel andere wijzigingen worden aangebracht zonder dat dit van invloed is op bestaande fysieke structuren. In het bijzonder vereist de volgende wijzigingen *geen* index opnieuw samen stellen. Voor deze wijzigingen kunt u [een index definitie bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) met uw wijzigingen.
+Er kunnen veel andere wijzigingen worden aangebracht zonder dat dit van invloed is op bestaande fysieke structuren. In het bijzonder vereist de volgende wijzigingen *geen* index opnieuw samen stellen. Voor deze wijzigingen kunt u [een index definitie bijwerken](/rest/api/searchservice/update-index) met uw wijzigingen.
 
 + Een nieuw veld toevoegen
 + Het kenmerk **ophalenable** instellen voor een bestaand veld
@@ -58,7 +58,7 @@ Er kunnen veel andere wijzigingen worden aangebracht zonder dat dit van invloed 
 + CORS-instellingen toevoegen, bijwerken of verwijderen
 + SynonymMaps toevoegen, bijwerken of verwijderen
 
-Wanneer u een nieuw veld toevoegt, krijgen bestaande geïndexeerde documenten een null-waarde voor het nieuwe veld. Bij een toekomstige gegevens vernieuwing worden waarden uit externe bron gegevens vervangen door de nullen die zijn toegevoegd door Azure Cognitive Search. Zie [documenten toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)voor meer informatie over het bijwerken van index inhoud.
+Wanneer u een nieuw veld toevoegt, krijgen bestaande geïndexeerde documenten een null-waarde voor het nieuwe veld. Bij een toekomstige gegevens vernieuwing worden waarden uit externe bron gegevens vervangen door de nullen die zijn toegevoegd door Azure Cognitive Search. Zie [documenten toevoegen, bijwerken of verwijderen](/rest/api/searchservice/addupdate-or-delete-documents)voor meer informatie over het bijwerken van index inhoud.
 
 ## <a name="how-to-rebuild-an-index"></a>Een index opnieuw samen stellen
 
@@ -68,34 +68,34 @@ Voor toepassingen die al in productie zijn, raden we u aan een nieuwe index te m
 
 Indexering wordt niet op de achtergrond uitgevoerd en de service zal de extra indexeringen voor doorlopende query's verdelen. Tijdens het indexeren kunt u [query aanvragen](search-monitor-queries.md) in de portal bewaken om ervoor te zorgen dat query's tijdig worden voltooid.
 
-1. Bepaal of een heropbouw vereist is. Als u alleen velden toevoegt of een deel van de index wijzigt die niet gerelateerd zijn aan velden, kunt u [de definitie](https://docs.microsoft.com/rest/api/searchservice/update-index) mogelijk gewoon bijwerken zonder dat u deze hoeft te verwijderen, opnieuw te maken en volledig opnieuw te laden.
+1. Bepaal of een heropbouw vereist is. Als u alleen velden toevoegt of een deel van de index wijzigt die niet gerelateerd zijn aan velden, kunt u [de definitie](/rest/api/searchservice/update-index) mogelijk gewoon bijwerken zonder dat u deze hoeft te verwijderen, opnieuw te maken en volledig opnieuw te laden.
 
-1. [Haal een index definitie](https://docs.microsoft.com/rest/api/searchservice/get-index) op als u deze nodig hebt voor toekomstig gebruik.
+1. [Haal een index definitie](/rest/api/searchservice/get-index) op als u deze nodig hebt voor toekomstig gebruik.
 
-1. [Verwijder de bestaande index](https://docs.microsoft.com/rest/api/searchservice/delete-index), ervan uitgaande dat u geen nieuwe en oude indexen naast elkaar uitvoert. 
+1. [Verwijder de bestaande index](/rest/api/searchservice/delete-index), ervan uitgaande dat u geen nieuwe en oude indexen naast elkaar uitvoert. 
 
    Alle query's die met de index worden gericht, worden onmiddellijk verwijderd. Houd er rekening mee dat het verwijderen van een index ongedaan kan worden gemaakt en dat fysieke opslag wordt vernietigd voor de verzameling velden en andere constructies. Pauzeer om na te denken over de implicaties voordat u deze verwijdert. 
 
-1. [Maak een gereviseerde index](https://docs.microsoft.com/rest/api/searchservice/create-index), waarbij de hoofd tekst van de aanvraag gewijzigde of gewijzigde veld definities bevat.
+1. [Maak een gereviseerde index](/rest/api/searchservice/create-index), waarbij de hoofd tekst van de aanvraag gewijzigde of gewijzigde veld definities bevat.
 
-1. [Laad de index met documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) uit een externe bron.
+1. [Laad de index met documenten](/rest/api/searchservice/addupdate-or-delete-documents) uit een externe bron.
 
 Wanneer u de index maakt, wordt er een fysieke opslag toegewezen voor elk veld in het index schema, met een omgekeerde index die is gemaakt voor elk doorzoekbaar veld. Velden die niet kunnen worden doorzocht, kunnen worden gebruikt in filters of expressies, maar hebben geen omgekeerde indexen en zijn niet in volledige tekst of op fuzzy doorzoekbaar. Bij een opnieuw opgebouwde index worden deze omgekeerde indexen verwijderd en opnieuw gemaakt op basis van het index schema dat u opgeeft.
 
-Wanneer u de index laadt, wordt de omgekeerde index van elk veld gevuld met alle unieke, tokenve woorden uit elk document, met een kaart aan de bijbehorende document-Id's. Wanneer u bijvoorbeeld een gegevensset van een Hotels indexeert, kan een omgekeerde index die is gemaakt voor een veld woon plaats voor waarden bevatten voor Seattle, Rotterdam, enzovoort. Documenten met Seattle of Rotterdam in het veld plaats zouden hun document-ID naast de term hebben vermeld. Bij een [toevoeg-, bijwerk-of verwijder](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) bewerking worden de lijst met voor waarden en document-id's dienovereenkomstig bijgewerkt.
+Wanneer u de index laadt, wordt de omgekeerde index van elk veld gevuld met alle unieke, tokenve woorden uit elk document, met een kaart aan de bijbehorende document-Id's. Wanneer u bijvoorbeeld een gegevensset van een Hotels indexeert, kan een omgekeerde index die is gemaakt voor een veld woon plaats voor waarden bevatten voor Seattle, Rotterdam, enzovoort. Documenten met Seattle of Rotterdam in het veld plaats zouden hun document-ID naast de term hebben vermeld. Bij een [toevoeg-, bijwerk-of verwijder](/rest/api/searchservice/addupdate-or-delete-documents) bewerking worden de lijst met voor waarden en document-id's dienovereenkomstig bijgewerkt.
 
 > [!NOTE]
 > Als u strenge SLA-vereisten hebt, kunt u overwegen om een nieuwe service specifiek voor dit werk in te richten, met ontwikkelen en indexeren in volledige isolatie vanuit een productie-index. Een afzonderlijke service wordt uitgevoerd op zijn eigen hardware, waardoor de kans op bron conflicten wordt geëlimineerd. Wanneer de ontwikkeling is voltooid, kunt u de nieuwe index op locatie laten staan, query's omleiden naar het nieuwe eind punt en de index, of u kunt de programma code uitvoeren om een gereviseerde index op uw oorspronkelijke Azure Cognitive Search-service te publiceren. Er is momenteel geen mechanisme voor het verplaatsen van een gebruiks klare index naar een andere service.
 
 ## <a name="check-for-updates"></a>Naar updates zoeken
 
-Zodra het eerste document is geladen, kunt u beginnen met het uitvoeren van een query op een index. Als u de ID van een document kent, retourneert het [opzoek document rest API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) het specifieke document. Voor uitgebreid testen moet u wachten tot de index volledig is geladen en vervolgens query's gebruiken om de context te controleren die u verwacht te zien.
+Zodra het eerste document is geladen, kunt u beginnen met het uitvoeren van een query op een index. Als u de ID van een document kent, retourneert het [opzoek document rest API](/rest/api/searchservice/lookup-document) het specifieke document. Voor uitgebreid testen moet u wachten tot de index volledig is geladen en vervolgens query's gebruiken om de context te controleren die u verwacht te zien.
 
 U kunt [Search Explorer](search-explorer.md) of een hulp programma voor het testen van webtoepassingen gebruiken, zoals [na](search-get-started-postman.md) het controleren op bijgewerkte inhoud.
 
-Als u een veld hebt toegevoegd of een andere naam hebt gegeven, gebruikt u [$Select](search-query-odata-select.md) om dat veld te retour neren:`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
+Als u een veld hebt toegevoegd of een andere naam hebt gegeven, gebruikt u [$Select](search-query-odata-select.md) om dat veld te retour neren: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Overzicht van de indexeerfunctie](search-indexer-overview.md)
 + [Grote gegevens sets op schaal indexeren](search-howto-large-index.md)

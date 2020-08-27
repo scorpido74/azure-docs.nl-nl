@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f371f52b0a110afeef6f3f72fb459b30842f77eb
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723704"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930159"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -84,7 +84,7 @@ Zie [*Debug Event grid trigger lokaal*](../azure-functions/functions-debug-event
 
 De functie-app communiceert met Azure Digital Apparaatdubbels met behulp [van de Azure IOT Digital-client bibliotheek voor .net (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Als u de SDK wilt gebruiken, moet u de volgende pakketten in uw project toevoegen:
 * `Azure.DigitalTwins.Core` (versie `1.0.0-preview.2` )
-* `Azure.Identity` (versie `1.1.1` )
+* `Azure.Identity`
 
 Als u de Azure SDK-pijp lijn zo wilt configureren dat deze correct wordt ingesteld voor Azure Functions, hebt u het volgende nodig:
 * `Azure.Net.Http`

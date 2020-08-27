@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd00c357a422a407a3367e45531e3443577f9bec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171938"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923242"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
 
@@ -50,7 +50,7 @@ Het begin punt is een toepassings pagina die facet navigatie biedt, die meestal 
 1. Met een query die wordt verzonden naar Azure Cognitive Search wordt de facet navigatie structuur opgegeven via een of meer facet query parameters. Zo kan de query bijvoorbeeld bevatten `facet=Rating` , mogelijk met een `:values` of- `:sort` optie om de presentatie verder te verfijnen.
 2. De presentatielaag geeft een zoek pagina weer met facet navigatie, met behulp van de facetten die zijn opgegeven in de aanvraag.
 3. Gezien een facet navigatie structuur die classificatie bevat, klikt u op 4 om aan te geven dat alleen producten met een classificatie van 4 of hoger moeten worden weer gegeven. 
-4. Als antwoord wordt met de toepassing een query verzonden met daarin`$filter=Rating ge 4` 
+4. Als antwoord wordt met de toepassing een query verzonden met daarin `$filter=Rating ge 4` 
 5. De laag van de presentatie werkt de pagina bij, met een beperkte resultatenset, die alleen de items bevat die voldoen aan de nieuwe criteria (in dit geval de producten met de waarde 4 en up).
 
 Een facet is een query parameter, maar verwar het niet met query-invoer. Het wordt nooit gebruikt als selectie criterium in een query. U kunt in plaats daarvan facet query parameters beschouwen als invoer voor de navigatie structuur die in het antwoord wordt weer gegeven. Voor elke facet query parameter die u opgeeft, wordt door Azure Cognitive Search geëvalueerd hoeveel documenten de gedeeltelijke resultaten voor elke facet waarde hebben.
@@ -63,7 +63,7 @@ In toepassings code moet het patroon de facet query parameters gebruiken om de f
 
 ### <a name="query-basics"></a>Basis informatie over query's
 
-In azure Cognitive Search wordt een aanvraag opgegeven via een of meer query parameters (Zie [documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor een beschrijving van elk van beide). Geen van de query parameters is vereist, maar u moet ten minste één om een query geldig te maken.
+In azure Cognitive Search wordt een aanvraag opgegeven via een of meer query parameters (Zie [documenten zoeken](/rest/api/searchservice/Search-Documents) voor een beschrijving van elk van beide). Geen van de query parameters is vereist, maar u moet ten minste één om een query geldig te maken.
 
 Nauw keurigheid, gezien als de mogelijkheid om irrelevante treffers te filteren, wordt bereikt door middel van een of beide van de volgende expressies:
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst met `count:<integer>` , `sort:<>` , `interval:<integer>` , en worden uitgebreid met para meters `values:<list>` . Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
+Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst met `count:<integer>` , `sort:<>` , `interval:<integer>` , en worden uitgebreid met para meters `values:<list>` . Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Cognitive Search-API)](/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
 
 Naast de facetten moet de aanvraag die is geformuleerd door uw toepassing ook filters maken om de set met kandidaten documenten te beperken op basis van de selectie van een facet waarde. Voor een fiets winkel biedt facet navigatie aanwijzingen voor vragen, zoals *welke kleuren, fabrikanten en soorten fietsen er beschikbaar zijn?*. Het filteren van antwoorden op vragen *, zoals de exacte fietsen rood, Mountain Bikes, in dit prijs bereik?*. Wanneer u op ' rood ' klikt om aan te geven dat alleen rode producten moeten worden weer gegeven, bevat de volgende query die door de toepassing wordt verzonden `$filter=Color eq 'Red'` .
 
@@ -299,7 +299,7 @@ In het algemeen is het raadzaam om meer filters toe te voegen, als u merkt dat f
 
 Voor elk facet veld in de navigatie structuur geldt een standaard limiet van 10 waarden. Deze standaard instelling is zinvol voor navigatie structuren, omdat de waarden lijst een beheer bare grootte behoudt. U kunt de standaard instelling onderdrukken door een waarde toe te wijzen die moet worden geteld.
 
-* `&facet=city,count:5`Hiermee geeft u op dat alleen de eerste vijf steden in de bovenste gerangschikte resultaten worden geretourneerd als een facet resultaat. Bekijk een voorbeeld query met de zoek term ' lucht haven ' en 32 overeenkomsten. Als met de query wordt opgegeven `&facet=city,count:5` , worden alleen de eerste vijf unieke steden met de meeste documenten in de zoek resultaten opgenomen in de facet resultaten.
+* `&facet=city,count:5` Hiermee geeft u op dat alleen de eerste vijf steden in de bovenste gerangschikte resultaten worden geretourneerd als een facet resultaat. Bekijk een voorbeeld query met de zoek term ' lucht haven ' en 32 overeenkomsten. Als met de query wordt opgegeven `&facet=city,count:5` , worden alleen de eerste vijf unieke steden met de meeste documenten in de zoek resultaten opgenomen in de facet resultaten.
 
 Let op het onderscheid tussen facet resultaten en zoek resultaten. Zoek resultaten zijn alle documenten die overeenkomen met de query. Facet resultaten zijn de overeenkomsten voor elke facet waarde. In het voor beeld omvatten Zoek resultaten plaats namen die niet voor komen in de facet classificatie lijst (5 in ons voor beeld). Resultaten die worden gefilterd via facet navigatie, worden zichtbaar wanneer u facetten wist of andere facetten kiezen naast plaats. 
 
@@ -319,7 +319,7 @@ Wanneer u een filter aan een facet query toevoegt, wilt u mogelijk de facet inst
 
 **Zorg ervoor dat u nauw keurige facet aantallen krijgt**
 
-Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenkomen met de resultaten sets (Zie [facet navigatie in Azure Cognitive Search (micro soft Q&een vraag pagina)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
+Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenkomen met de resultaten sets (Zie [facet navigatie in Azure Cognitive Search (micro soft Q&een vraag pagina)](/answers/topics/azure-cognitive-search.html)).
 
 De facet aantallen kunnen onnauwkeurig zijn als gevolg van de sharding-architectuur. Elke zoek index heeft meerdere Shards en elke Shard rapporteert de bovenste N facetten per document telling, die vervolgens in één resultaat wordt gecombineerd. Als sommige Shards veel overeenkomende waarden hebben, terwijl anderen minder hebben, is het mogelijk dat sommige facet waarden ontbreken of worden ondergeteld in de resultaten.
 
@@ -333,12 +333,12 @@ Labels worden meestal gedefinieerd in de HTML of het formulier ( `index.cshtml` 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filteren op basis van een bereik
-Facet overschrijding van bereik waarden is een algemene vereiste voor het zoeken van toepassingen. Bereiken worden ondersteund voor numerieke gegevens en datum/tijd-waarden. Meer informatie over elke benadering vindt u in [documenten zoeken (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Facet overschrijding van bereik waarden is een algemene vereiste voor het zoeken van toepassingen. Bereiken worden ondersteund voor numerieke gegevens en datum/tijd-waarden. Meer informatie over elke benadering vindt u in [documenten zoeken (Azure Cognitive Search-API)](/rest/api/searchservice/Search-Documents).
 
 Azure Cognitive Search vereenvoudigt de bereik constructie door twee benaderingen te bieden voor het berekenen van een bereik. Voor beide benaderingen maakt Azure Cognitive Search de juiste bereiken op basis van de invoer die u hebt opgegeven. Als u bijvoorbeeld de bereik waarden 10 | 20 | 30 opgeeft, worden er automatisch bereiken van 0-10, 10-20, 20-30 gemaakt. Uw toepassing kan eventueel alle intervallen verwijderen die leeg zijn. 
 
 **Benadering 1: de para meter interval gebruiken**  
-Als u prijs facetten in $10 stappen wilt instellen, geeft u het volgende op:`&facet=price,interval:10`
+Als u prijs facetten in $10 stappen wilt instellen, geeft u het volgende op: `&facet=price,interval:10`
 
 **Benadering 2: een lijst met waarden gebruiken**  
 Voor numerieke gegevens kunt u een lijst met waarden gebruiken.  Houd rekening met het facet bereik voor een `listPrice` veld dat als volgt wordt weer gegeven:
@@ -404,4 +404,3 @@ Voor meer informatie over ontwerp principes voor facet navigatie raden wij de vo
 
 * [Ontwerp patronen: facet navigatie](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [Front-end-overwegingen bij het implementeren van facet zoeken – deel 1](https://articles.uie.com/faceted_search2/)
-

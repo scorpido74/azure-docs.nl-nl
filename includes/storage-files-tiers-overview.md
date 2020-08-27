@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62c2193a0045cc2ee35930e87b360446e94ba861
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: cace61739e13514bb4aba1169c51ea670a167c9d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864906"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944358"
 ---
 Azure Files biedt vier verschillende opslaglagen: premium, geoptimaliseerd voor transacties, dynamisch en statisch. Hiermee kunt u uw shares aanpassen aan de prestaties en prijsvereisten van uw scenario:
 
@@ -30,6 +30,8 @@ Dynamische en statische bestandsshares zijn momenteel beschikbaar in de volgende
 - Australië - centraal 2
 - Australië - oost
 - Australië - zuidoost
+- Canada - oost
+- Canada - midden
 - Frankrijk - centraal
 - Frankrijk - zuid
 - Duitsland - noord (openbaar)
@@ -45,6 +47,8 @@ Dynamische en statische bestandsshares zijn momenteel beschikbaar in de volgende
 - Noorwegen - west
 - Zuid-Afrika - noord
 - Zuid-Afrika - west
+- Zwitserland - noord
+- Zwitserland - west
 - UAE - centraal
 - VAE - noord
 - Verenigd Koninkrijk Zuid

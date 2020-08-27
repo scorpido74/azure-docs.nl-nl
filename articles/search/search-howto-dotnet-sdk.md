@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9b08dff01ad125fb7e0a52674e25a4a973df7c16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905420"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927048"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Micro soft. Azure. Search (v10 toevoegen) gebruiken in een .NET-toepassing
 
-In dit artikel wordt uitgelegd hoe u Zoek objecten maakt en beheert met behulp van C# en de [Azure Cognitive Search (v10 toevoegen) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). Versie 10 is de laatste versie van het pakket micro soft. Azure. Search. Als u verdergaat, worden nieuwe functies in [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) van het Azure SDK-team geïmplementeerd.
+In dit artikel wordt uitgelegd hoe u Zoek objecten maakt en beheert met behulp van C# en de [Azure Cognitive Search (v10 toevoegen) .NET SDK](/dotnet/api/overview/azure/search). Versie 10 is de laatste versie van het pakket micro soft. Azure. Search. Als u verdergaat, worden nieuwe functies in [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) van het Azure SDK-team geïmplementeerd.
 
 Als u bestaande of Inflight-ontwikkel projecten hebt, kunt u versie 10 blijven gebruiken. Voor nieuwe projecten of als u nieuwe functies wilt gebruiken, moet u een bestaande Zoek oplossing naar de nieuwe bibliotheek overzetten.
 
@@ -36,14 +36,14 @@ De andere NuGet-pakketten in de SDK zijn:
 
 De verschillende client bibliotheken definiëren klassen zoals `Index` , `Field` , en `Document` , evenals bewerkingen zoals `Indexes.Create` en `Documents.Search` op de `SearchServiceClient` `SearchIndexClient` klassen and. Deze klassen zijn ingedeeld in de volgende naam ruimten:
 
-* [Micro soft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Micro soft. Azure. Search](/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search.Models](/dotnet/api/microsoft.azure.search.models)
 
 Als u feedback wilt geven voor een toekomstige update van de SDK, raadpleegt u onze [feedback pagina](https://feedback.azure.com/forums/263029-azure-search/) of maakt u een probleem op [github](https://github.com/azure/azure-sdk-for-net/issues) en vermeldt u ' Azure Cognitive Search ' in de titel van het probleem.
 
-De .NET SDK streeft naar de versie `2019-05-06` van de [Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/). Deze versie bevat ondersteuning voor [complexe typen](search-howto-complex-data-types.md), [AI-verrijking](cognitive-search-concept-intro.md), [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete)en [JsonLines-parserings modus bij het indexeren van](search-howto-index-json-blobs.md) Azure-blobs. 
+De .NET SDK streeft naar de versie `2019-05-06` van de [Azure Cognitive Search rest API](/rest/api/searchservice/). Deze versie bevat ondersteuning voor [complexe typen](search-howto-complex-data-types.md), [AI-verrijking](cognitive-search-concept-intro.md), [automatisch aanvullen](/rest/api/searchservice/autocomplete)en [JsonLines-parserings modus bij het indexeren van](search-howto-index-json-blobs.md) Azure-blobs. 
 
-Deze SDK biedt geen ondersteuning voor [beheer bewerkingen](https://docs.microsoft.com/rest/api/searchmanagement/) , zoals het maken en schalen van zoek services en het beheren van API-sleutels. Als u uw Zoek resources wilt beheren vanuit een .NET-toepassing, kunt u de [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)gebruiken.
+Deze SDK biedt geen ondersteuning voor [beheer bewerkingen](/rest/api/searchmanagement/) , zoals het maken en schalen van zoek services en het beheren van API-sleutels. Als u uw Zoek resources wilt beheren vanuit een .NET-toepassing, kunt u de [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)gebruiken.
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Upgraden naar de nieuwste versie van de SDK
 Als u al een oudere versie van de Azure Cognitive Search .NET SDK gebruikt en u een upgrade wilt uitvoeren naar de meest recente, algemeen beschik bare versie, wordt in [dit artikel](search-dotnet-sdk-migration-version-9.md) uitgelegd hoe dat werkt.
@@ -138,7 +138,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> In een typische Zoek toepassing kunnen index beheer en-populatie worden verwerkt door een afzonderlijk onderdeel van zoek query's. `Indexes.GetClient`is handig voor het vullen van een index, omdat u hiermee geen extra kunt opgeven `SearchCredentials` . Dit wordt uitgevoerd door de administratorsleutel die u hebt gebruikt om de `SearchServiceClient` te maken die u wilt doorgeven aan de nieuwe `SearchIndexClient`. In het deel van uw toepassing die query's uitvoert, is het beter om de direct te maken, `SearchIndexClient` zodat u een query sleutel kunt opgeven, waarmee u alleen gegevens in plaats van een Administrator sleutel kan lezen. Dit komt overeen met het -principe van minimale bevoegdheden en zorgt ervoor dat uw toepassing veilig is. Meer informatie over de beheer sleutels en query sleutels vindt u [hier](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
+> In een typische Zoek toepassing kunnen index beheer en-populatie worden verwerkt door een afzonderlijk onderdeel van zoek query's. `Indexes.GetClient` is handig voor het vullen van een index, omdat u hiermee geen extra kunt opgeven `SearchCredentials` . Dit wordt uitgevoerd door de administratorsleutel die u hebt gebruikt om de `SearchServiceClient` te maken die u wilt doorgeven aan de nieuwe `SearchIndexClient`. In het deel van uw toepassing die query's uitvoert, is het beter om de direct te maken, `SearchIndexClient` zodat u een query sleutel kunt opgeven, waarmee u alleen gegevens in plaats van een Administrator sleutel kan lezen. Dit komt overeen met het -principe van minimale bevoegdheden en zorgt ervoor dat uw toepassing veilig is. Meer informatie over de beheer sleutels en query sleutels vindt u [hier](/rest/api/searchservice/#authentication-and-authorization).
 > 
 > 
 
@@ -264,7 +264,7 @@ Met deze methode maakt u een nieuw `Index` object met een lijst met `Field` obje
 >
 > 
 
-Naast velden kunt u ook Score profielen, Voorst Ellen of CORS-opties toevoegen aan de index (deze para meters worden wegge laten uit het voor beeld voor de boog). U kunt meer informatie vinden over het index-object en de onderdelen daarvan in de [SDK-verwijzing](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index), maar ook in de referentie voor [Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/).
+Naast velden kunt u ook Score profielen, Voorst Ellen of CORS-opties toevoegen aan de index (deze para meters worden wegge laten uit het voor beeld voor de boog). U kunt meer informatie vinden over het index-object en de onderdelen daarvan in de [SDK-verwijzing](/dotnet/api/microsoft.azure.search.models.index), maar ook in de referentie voor [Azure Cognitive Search rest API](/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>De index vullen
 Met de volgende stap in wordt `Main` de zojuist gemaakte index gevuld. Deze index populatie wordt uitgevoerd in de volgende methode: (sommige code is vervangen door '... ' voor illustratie doeleinden.  Bekijk de volledige voorbeeld oplossing voor de volledige gegevens populatie code.)
@@ -395,7 +395,7 @@ Met het tweede deel wordt een `IndexBatch` document gemaakt dat de documenten be
 Het derde deel van deze methode is een catch-blok dat een belang rijke fout bij het indexeren afhandelt. Als uw Azure Cognitive Search-service een aantal documenten in de batch niet kan indexeren, wordt een fout `IndexBatchException` gegenereerd door `Documents.Index` . Deze uitzonde ring kan optreden als u documenten indexeert terwijl uw service zwaar wordt belast. **Wij raden u aan deze aanvraag expliciet in uw code te behandelen.** U kunt de indexering van documenten die niet zijn geïndexeerd vertragen en vervolgens opnieuw uitvoeren, maar u kunt ook een logboek maken en doorgaan zoals in het voorbeeld. U kunt ook een andere bewerking uitvoeren, afhankelijk van de vereisten omtrent de gegevensconsistentie van de toepassing.
 
 > [!NOTE]
-> U kunt de [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) methode gebruiken om een nieuwe batch te maken met alleen de acties die zijn mislukt in een eerdere aanroep van `Index` . Er is een discussie over hoe u deze op de juiste wijze kunt gebruiken [op stack overflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> U kunt de [`FindFailedActionsToRetry`](/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) methode gebruiken om een nieuwe batch te maken met alleen de acties die zijn mislukt in een eerdere aanroep van `Index` . Er is een discussie over hoe u deze op de juiste wijze kunt gebruiken [op stack overflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
@@ -470,7 +470,7 @@ Het eerste dat u ziet, is dat de naam van elke open bare eigenschap in de `Hotel
 
 De tweede ding is dat elke eigenschap wordt gedecoreerd met kenmerken als `IsFilterable` , `IsSearchable` , `Key` en `Analyzer` . Deze kenmerken worden rechtstreeks aan de [corresponderende veld kenmerken in een Azure Cognitive search-index](/rest/api/searchservice/create-index)toegewezen. De `FieldBuilder` klasse gebruikt deze eigenschappen om veld definities voor de index te maken.
 
-Het derde belang rijk voor de `Hotel` klasse is de gegevens typen van de open bare eigenschappen. De .NET-typen van deze eigenschappen worden toegewezen aan de gelijkwaardige veldtypen in de definitie van de index. De tekenreekseigenschap `Category` is bijvoorbeeld toegewezen aan het veld `category` van type `Edm.String`. Er zijn Vergelijk bare type toewijzingen tussen `bool?` , `Edm.Boolean` , `DateTimeOffset?` en, `Edm.DateTimeOffset` enzovoort. De specifieke regels voor de toewijzing van het type worden gedocumenteerd met de `Documents.Get` methode in de [Naslag informatie voor Azure COGNITIVE Search .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). De `FieldBuilder` klasse zorgt ervoor dat deze toewijzing voor u wordt gebruikt, maar het kan nog steeds handig zijn om te begrijpen in het geval dat u eventuele problemen met de serialisatie moet oplossen.
+Het derde belang rijk voor de `Hotel` klasse is de gegevens typen van de open bare eigenschappen. De .NET-typen van deze eigenschappen worden toegewezen aan de gelijkwaardige veldtypen in de definitie van de index. De tekenreekseigenschap `Category` is bijvoorbeeld toegewezen aan het veld `category` van type `Edm.String`. Er zijn Vergelijk bare type toewijzingen tussen `bool?` , `Edm.Boolean` , `DateTimeOffset?` en, `Edm.DateTimeOffset` enzovoort. De specifieke regels voor de toewijzing van het type worden gedocumenteerd met de `Documents.Get` methode in de [Naslag informatie voor Azure COGNITIVE Search .NET SDK](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). De `FieldBuilder` klasse zorgt ervoor dat deze toewijzing voor u wordt gebruikt, maar het kan nog steeds handig zijn om te begrijpen in het geval dat u eventuele problemen met de serialisatie moet oplossen.
 
 Hebt u de eigenschap genoteerd `SmokingAllowed` ?
 
@@ -481,7 +481,7 @@ public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => 
 
 Het `JsonIgnore` kenmerk voor deze eigenschap geeft `FieldBuilder` aan dat het niet wordt geserialiseerd in de index als een veld.  Dit is een uitstekende manier om berekende eigenschappen aan client zijde te maken die u als helpers in uw toepassing kunt gebruiken.  In dit geval geeft de `SmokingAllowed` eigenschap aan of er `Room` in de `Rooms` verzameling roken is toegestaan.  Als alles onwaar is, geeft het aan dat het hele hotel geen roken toestaat.
 
-Sommige eigenschappen, zoals `Address` en `Rooms` , zijn exemplaren van .net-klassen.  Deze eigenschappen vertegenwoordigen complexere gegevens structuren en daarom hebben velden met een [complex gegevens type](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) vereist in de index.
+Sommige eigenschappen, zoals `Address` en `Rooms` , zijn exemplaren van .net-klassen.  Deze eigenschappen vertegenwoordigen complexere gegevens structuren en daarom hebben velden met een [complex gegevens type](./search-howto-complex-data-types.md) vereist in de index.
 
 De `Address` eigenschap vertegenwoordigt een set van meerdere waarden in de `Address` klasse, zoals hieronder gedefinieerd:
 
@@ -562,7 +562,7 @@ Uw gegevens model in .NET en het bijbehorende index schema moeten zijn ontworpen
 Deze mogelijkheid om uw eigen klassen te gebruiken voor de interactie met documenten in de index werkt in beide richtingen. U kunt ook Zoek resultaten ophalen en de SDK automatisch deserialiseren naar een type keuze, zoals in de volgende sectie wordt weer geven.
 
 > [!NOTE]
-> De Azure Cognitive Search .NET SDK ondersteunt ook dynamisch getypeerde documenten met behulp `Document` van de klasse, een sleutel/waarde-toewijzing van veld namen tot veld waarden. Dit is handig in situaties waar u het schema van de index op het moment van ontwerp nog niet weet of wanneer het niet handig zou zijn om verbinding te maken met specifieke modelklassen Alle methoden in de SDK die werken met documenten hebben overloads die met werken de `Document`-klasse, evenals sterk getypeerde overloads die een generiek typeparameter moeten uitvoeren. In de voorbeeld code in deze zelf studie wordt alleen deze laatste gebruikt. De [ `Document` klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) neemt over van `Dictionary<string, object>` .
+> De Azure Cognitive Search .NET SDK ondersteunt ook dynamisch getypeerde documenten met behulp `Document` van de klasse, een sleutel/waarde-toewijzing van veld namen tot veld waarden. Dit is handig in situaties waar u het schema van de index op het moment van ontwerp nog niet weet of wanneer het niet handig zou zijn om verbinding te maken met specifieke modelklassen Alle methoden in de SDK die werken met documenten hebben overloads die met werken de `Document`-klasse, evenals sterk getypeerde overloads die een generiek typeparameter moeten uitvoeren. In de voorbeeld code in deze zelf studie wordt alleen deze laatste gebruikt. De [ `Document` klasse](/dotnet/api/microsoft.azure.search.models.document) neemt over van `Dictionary<string, object>` .
 > 
 >
 
@@ -649,12 +649,12 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-Telkens wanneer een query wordt uitgevoerd, maakt deze methode eerst een nieuw- `SearchParameters` object. Dit object wordt gebruikt om aanvullende opties voor de query op te geven, zoals sorteren, filteren, paginering en facetten. In deze methode stellen we de `Filter` `Select` eigenschap,, `OrderBy` en in `Top` voor verschillende query's. Alle `SearchParameters` eigenschappen worden [hier](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)beschreven.
+Telkens wanneer een query wordt uitgevoerd, maakt deze methode eerst een nieuw- `SearchParameters` object. Dit object wordt gebruikt om aanvullende opties voor de query op te geven, zoals sorteren, filteren, paginering en facetten. In deze methode stellen we de `Filter` `Select` eigenschap,, `OrderBy` en in `Top` voor verschillende query's. Alle `SearchParameters` eigenschappen worden [hier](/dotnet/api/microsoft.azure.search.models.searchparameters)beschreven.
 
 De volgende stap is om de zoek query werkelijk uit te voeren. Het uitvoeren van de zoek opdracht wordt uitgevoerd met behulp van de- `Documents.Search` methode. Voor elke query wordt de Zoek tekst door gegeven als een teken reeks (of `"*"` als er geen Zoek tekst is), plus de zoek parameters die u eerder hebt gemaakt. We geven ook `Hotel` de type parameter voor `Documents.Search` , waarmee de SDK de documenten in de zoek resultaten in objecten van het type deserialiseren `Hotel` .
 
 > [!NOTE]
-> U kunt [hier](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)meer informatie vinden over de syntaxis van de zoek query-expressie.
+> U kunt [hier](/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)meer informatie vinden over de syntaxis van de zoek query-expressie.
 > 
 > 
 
@@ -709,7 +709,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Deze query maakt gebruik van een OData `$filter` -expressie, `Rooms/any(r: r/BaseRate lt 100)` waarmee de documenten in de index worden gefilterd. Dit maakt gebruik van de [operator alle](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) om de ' BaseRate lt 100 ' toe te passen op elk item in de verzameling ruimtes. U vindt [hier](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)meer informatie over de OData-syntaxis die door Azure Cognitive Search wordt ondersteund.
+Deze query maakt gebruik van een OData `$filter` -expressie, `Rooms/any(r: r/BaseRate lt 100)` waarmee de documenten in de index worden gefilterd. Dit maakt gebruik van de [operator alle](./search-query-odata-collection-operators.md) om de ' BaseRate lt 100 ' toe te passen op elk item in de verzameling ruimtes. U vindt [hier](./query-odata-filter-orderby-syntax.md)meer informatie over de OData-syntaxis die door Azure Cognitive Search wordt ondersteund.
 
 Dit zijn de resultaten van de query:
 
@@ -769,6 +769,6 @@ En dit zijn de resultaten, die alle velden bevatten omdat we de eigenschap niet 
 Met deze stap wordt de zelf studie voltooid, maar niet meer. * * De volgende stappen bieden aanvullende bronnen voor meer informatie over Azure Cognitive Search.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Neem de referenties voor de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) en [REST API](https://docs.microsoft.com/rest/api/searchservice/) door.
-* Bekijk [naamgevings](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) regels voor meer informatie over de regels voor het benoemen van verschillende objecten.
-* Bekijk [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) in azure Cognitive Search.
+* Neem de referenties voor de [.NET SDK](/dotnet/api/microsoft.azure.search) en [REST API](/rest/api/searchservice/) door.
+* Bekijk [naamgevings](/rest/api/searchservice/Naming-rules) regels voor meer informatie over de regels voor het benoemen van verschillende objecten.
+* Bekijk [ondersteunde gegevens typen](/rest/api/searchservice/Supported-data-types) in azure Cognitive Search.

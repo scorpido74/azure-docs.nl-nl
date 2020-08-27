@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db2017a3bb1a8910049527796f422227b741b960
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562355"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923191"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 9
 
-Als u versie 7,0-Preview of ouder van de [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 9.
+Als u versie 7,0-Preview of ouder van de [Azure Search .NET SDK](/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 9.
 
 > [!NOTE]
 > Als u versie 8,0-Preview wilt gebruiken om functies te evalueren die nog niet algemeen beschikbaar zijn, kunt u ook de instructies in dit artikel volgen om een upgrade uit te voeren naar 8,0-Preview van eerdere versies.
@@ -106,12 +106,12 @@ De constructor zonder para meters van `Field` is gemaakt `internal` . Vanaf nu `
 
 In versie 7,0-Preview en eerder zijn de verschillende klassen die groepen documenten inkapseld ingedeeld in parallelle klassen hiërarchieën:
 
-  -  `DocumentSearchResult`en `DocumentSearchResult<T>` overgenomen van`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`en `DocumentSuggestResult<T>` overgenomen van`DocumentSuggestResultBase`
-  -  `IndexAction`en `IndexAction<T>` overgenomen van`IndexActionBase`
-  -  `IndexBatch`en `IndexBatch<T>` overgenomen van`IndexBatchBase`
-  -  `SearchResult`en `SearchResult<T>` overgenomen van`SearchResultBase`
-  -  `SuggestResult`en `SuggestResult<T>` overgenomen van`SuggestResultBase`
+  -  `DocumentSearchResult` en `DocumentSearchResult<T>` overgenomen van `DocumentSearchResultBase`
+  -  `DocumentSuggestResult` en `DocumentSuggestResult<T>` overgenomen van `DocumentSuggestResultBase`
+  -  `IndexAction` en `IndexAction<T>` overgenomen van `IndexActionBase`
+  -  `IndexBatch` en `IndexBatch<T>` overgenomen van `IndexBatchBase`
+  -  `SearchResult` en `SearchResult<T>` overgenomen van `SearchResultBase`
+  -  `SuggestResult` en `SuggestResult<T>` overgenomen van `SuggestResultBase`
 
 De afgeleide typen zonder een generieke type parameter zijn bedoeld om te worden gebruikt in ' dynamisch getypte ' scenario's en aangenomen gebruik van het `Document` type.
 
