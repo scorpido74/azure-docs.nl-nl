@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206165"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932913"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Meer informatie over OData-verzamelings filters in azure Cognitive Search
 
@@ -88,14 +88,14 @@ De reden hiervoor is dat naar `Rooms/Type` alle geanalyseerde voor waarden van h
 
 Hoe `Rooms/Type` wordt opgeslagen voor zoeken in volledige tekst:
 
-| Term in`Rooms/Type` | Document-Id's |
+| Term in `Rooms/Type` | Document-Id's |
 | --- | --- |
 | PhotoDeluxe | 1, 2 |
 | standaard | 1 |
 
 Hoe `Rooms/Description` wordt opgeslagen voor zoeken in volledige tekst:
 
-| Term in`Rooms/Description` | Document-Id's |
+| Term in `Rooms/Description` | Document-Id's |
 | --- | --- |
 | courtyard | 2 |
 | city | 1 |
@@ -142,7 +142,7 @@ Denk bijvoorbeeld aan een veld voor een filter bare teken reeks verzameling, zoa
 
 De waarden van het `seasons` veld worden opgeslagen in een structuur, een **omgekeerde index**, die er ongeveer als volgt uitziet:
 
-| Term | Document-Id's |
+| Termijn | Document-Id's |
 | --- | --- |
 | lente | 1, 2 |
 | zomer | 1 |
@@ -180,9 +180,9 @@ Daarom is het mogelijk om `all` met en te gebruiken `ne` `and` .
 > [!NOTE]
 > Hoewel de details zich buiten het bereik van dit document bevinden, zijn dezelfde principes ook van toepassing op [afstanden en intersectie tests voor verzamelingen van georuimtelijke punten](search-query-odata-geo-spatial-functions.md) . Daarom doet u het `any` volgende in:
 >
-> - `geo.intersects`kan niet worden genegeerd
-> - `geo.distance`moet worden vergeleken met `lt` of`le`
-> - expressies moeten worden gecombineerd met `or` , en niet`and`
+> - `geo.intersects` kan niet worden genegeerd
+> - `geo.distance` moet worden vergeleken met `lt` of `le`
+> - expressies moeten worden gecombineerd met `or` , en niet `and`
 >
 > De omgekeerde regels zijn van toepassing op `all` .
 
@@ -204,4 +204,4 @@ Zie een [geldige verzameling filters schrijven](search-query-troubleshoot-collec
 - [Filters in azure Cognitive Search](search-filters.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

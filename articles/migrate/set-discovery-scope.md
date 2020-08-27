@@ -3,12 +3,12 @@ title: Het bereik voor VMware-VM-detectie instellen met Azure Migrate
 description: Hierin wordt beschreven hoe u het detectie bereik voor VMware VM-evaluatie en-migratie instelt met Azure Migrate.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: e53eb0d01df2152aeced2901335f75879885fd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770387"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919723"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Detectie bereik instellen voor VMware-Vm's
 
@@ -60,4 +60,4 @@ Het installatie programma voor toegangs beheer op basis van rollen zorgt ervoor 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Stel het apparaat](how-to-set-up-appliance-vmware.md)in en [Start doorlopende detectie](how-to-set-up-appliance-vmware.md#start-continuous-discovery-by-providing-vcenter-server-and-vm-credential).
+[Het apparaat instellen](how-to-set-up-appliance-vmware.md)

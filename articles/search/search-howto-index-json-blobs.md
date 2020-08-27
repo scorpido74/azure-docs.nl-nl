@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: cdf71f939d6e5e1ada0ba141dce3bcba9d7d9b01
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529791"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917989"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-blobs indexeren met behulp van een BLOB-Indexeer functie in azure Cognitive Search
 
@@ -37,7 +37,7 @@ U kunt het beste dezelfde regio of locatie gebruiken voor zowel Azure Cognitive 
 
 ### <a name="1---prepare-source-data"></a>1: Bron gegevens voorbereiden
 
-[Meld u aan bij de Azure Portal](https://portal.azure.com/) en [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om uw gegevens te bevatten. Het niveau van de open bare toegang kan worden ingesteld op een van de geldige waarden.
+[Meld u aan bij de Azure Portal](https://portal.azure.com/) en [Maak een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md) om uw gegevens te bevatten. Het niveau van de open bare toegang kan worden ingesteld op een van de geldige waarden.
 
 U hebt de naam van het opslag account, de container naam en een toegangs sleutel nodig om uw gegevens op te halen in de wizard **gegevens importeren** .
 
@@ -77,7 +77,7 @@ Op de pagina **index** ziet u een lijst met velden met een gegevens type en een 
 
 U kunt kenmerken bulksgewijs selecteren door te klikken op het selectie vakje boven aan een kenmerk kolom. Kies **ophalen** en **doorzoekbaar** voor elk veld dat moet worden geretourneerd naar een client-app en waarop de volledige Zoek verwerking van de tekst van toepassing is. U zult merken dat gehele getallen geen volledige tekst of fuzzy Doorzoek bare waarden zijn (getallen worden geëvalueerd Verbatim en zijn vaak nuttig in filters).
 
-Lees de beschrijving van [index kenmerken](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) en [taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) functies voor meer informatie. 
+Lees de beschrijving van [index kenmerken](/rest/api/searchservice/create-index#bkmk_indexAttrib) en [taal analyse](/rest/api/searchservice/language-support) functies voor meer informatie. 
 
 Neem even de tijd om uw selecties te controleren. Nadat u de wizard hebt uitgevoerd, worden er fysieke gegevens structuren gemaakt en kunt u deze velden niet bewerken zonder alle objecten te verwijderen en opnieuw te maken.
 
@@ -110,9 +110,9 @@ Aan het einde van deze sectie kunt u de code van de [rest-voorbeeld](#rest-examp
 
 Voor op code gebaseerde JSON-indexering gebruikt u [postman](search-get-started-postman.md) en de rest API om deze objecten te maken:
 
-+ [TabIndex](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [TabIndex](/rest/api/searchservice/create-index)
++ [gegevens bron](/rest/api/searchservice/create-data-source)
++ [Indexeer functie](/rest/api/searchservice/create-indexer)
 
 Voor de volg orde van bewerkingen moet u objecten in deze volg orde maken en aanroepen. In tegens telling tot de werk stroom van de portal, is voor een code benadering een beschik bare index vereist om de JSON-documenten te accepteren die via de aanvraag voor het maken van een **Indexeer functie**
 
@@ -120,9 +120,9 @@ JSON-blobs in Azure Blob-opslag zijn meestal één JSON-document of een JSON-mat
 
 | JSON-document | parsingMode | Beschrijving | Beschikbaarheid |
 |--------------|-------------|--------------|--------------|
-| Eén per BLOB | `json` | JSON-blobs worden als één tekst segment geparseerd. Elke JSON-BLOB wordt één Azure Cognitive Search-document. | Algemeen beschikbaar in de [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) -API en [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
-| Meerdere per BLOB | `jsonArray` | Parseert een JSON-matrix in de blob, waarbij elk element van de matrix een afzonderlijk Azure Cognitive Search-document wordt.  | Algemeen beschikbaar in de [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) -API en [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
-| Meerdere per BLOB | `jsonLines` | Parseert een blob die meerdere JSON-entiteiten (een matrix) bevat, gescheiden door een nieuwe regel, waarbij elke entiteit een afzonderlijk Azure Cognitive Search-document wordt. | Algemeen beschikbaar in de [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) -API en [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Eén per BLOB | `json` | JSON-blobs worden als één tekst segment geparseerd. Elke JSON-BLOB wordt één Azure Cognitive Search-document. | Algemeen beschikbaar in de [rest](/rest/api/searchservice/indexer-operations) -API en [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Meerdere per BLOB | `jsonArray` | Parseert een JSON-matrix in de blob, waarbij elk element van de matrix een afzonderlijk Azure Cognitive Search-document wordt.  | Algemeen beschikbaar in de [rest](/rest/api/searchservice/indexer-operations) -API en [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Meerdere per BLOB | `jsonLines` | Parseert een blob die meerdere JSON-entiteiten (een matrix) bevat, gescheiden door een nieuwe regel, waarbij elke entiteit een afzonderlijk Azure Cognitive Search-document wordt. | Algemeen beschikbaar in de [rest](/rest/api/searchservice/indexer-operations) -API en [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-invoer voor de aanvraag samen stellen
 
@@ -168,7 +168,7 @@ Indexeer functies zijn gekoppeld aan een index schema. Als u de API gebruikt (in
 
 De index slaat Doorzoek bare inhoud op in azure Cognitive Search. Als u een index wilt maken, geeft u een schema op waarmee de velden in een document, kenmerken en andere constructies worden opgegeven die de zoek ervaring vormen. Als u een index met dezelfde veld namen en gegevens typen als de bron maakt, komt de Indexeer functie overeen met de bron-en doel velden en bespaart u het werk van het expliciet toewijzen van de velden.
 
-In het volgende voor beeld ziet u een aanvraag voor het maken van een [index](https://docs.microsoft.com/rest/api/searchservice/create-index) . De index bevat een doorzoekbaar `content` veld voor het opslaan van de tekst die uit blobs is geëxtraheerd:   
+In het volgende voor beeld ziet u een aanvraag voor het maken van een [index](/rest/api/searchservice/create-index) . De index bevat een doorzoekbaar `content` veld voor het opslaan van de tekst die uit blobs is geëxtraheerd:   
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -280,10 +280,10 @@ Het maken van de Indexeer functie op Azure Cognitive Search triggers voor gegeve
 
 De .NET SDK heeft volledige pariteit met de REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [micro soft. Azure. Search. Models. data source](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [micro soft. Azure. Search. Models. data source type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [micro soft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [micro soft. Azure. Search. Models. Indexeer functie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source type](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. Indexeer functie](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 
@@ -453,7 +453,7 @@ U kunt ook verwijzen naar afzonderlijke matrix elementen met behulp van een inde
 >
 >
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Indexeerfuncties in Azure Cognitive Search](search-indexer-overview.md)
 + [Azure Blob Storage indexeren met Azure Cognitive Search](search-howto-index-json-blobs.md)

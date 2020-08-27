@@ -8,21 +8,21 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125577"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932794"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>IP-Firewall voor Azure Cognitive Search configureren
 
 Azure Cognitive Search ondersteunt IP-regels voor ondersteuning van binnenkomende firewalls. Dit model bevat een extra beveiligingslaag voor uw zoek service, vergelijkbaar met de IP-regels die u vindt in een Azure Virtual Network-beveiligings groep. Met deze IP-regels kunt u de zoek service zo configureren dat deze alleen toegankelijk is vanaf een goedgekeurde set machines en/of Cloud Services. Voor toegang tot gegevens die zijn opgeslagen in uw zoek service van deze goedgekeurde sets computers en services, moet de aanroeper nog steeds een geldig autorisatie token presen teren.
 
 > [!Important]
-> IP-regels voor uw Azure Cognitive Search-service kunnen worden geconfigureerd met de Azure Portal-of de [beheer rest API versie 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/).
+> IP-regels voor uw Azure Cognitive Search-service kunnen worden geconfigureerd met de Azure Portal-of de [beheer rest API versie 2020-03-13](/rest/api/searchmanagement/).
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a>Een IP-Firewall configureren met behulp van de Azure Portal
+## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Een IP-Firewall configureren met behulp van de Azure Portal
 
 Als u het beleid voor IP-toegangs beheer wilt instellen in de Azure Portal, gaat u naar de pagina van de Azure Cognitive Search-service en selecteert u **netwerken** in het navigatie menu. De netwerk verbinding met het eind punt moet **openbaar**zijn. Als uw verbinding is ingesteld op **privé**, hebt u alleen toegang tot uw zoek service via een persoonlijk eind punt.
 

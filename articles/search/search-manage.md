@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835949"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935038"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +33,9 @@ Azure Cognitive Search is een volledig beheerde, op de cloud gebaseerde zoek ser
 * Toegang beheren via de pagina **sleutels** aan de linkerkant.
 * Pas de capaciteit aan met behulp van de pagina **schalen** aan de linkerkant.
 
-Dezelfde taken die in de portal worden uitgevoerd, kunnen ook programmatisch worden verwerkt via de [beheer-api's](https://docs.microsoft.com/rest/api/searchmanagement/) en [AZ. Search Power shell-module](search-manage-powershell.md). Beheer taken worden volledig weer gegeven in de portal-en programmatische interface. Er is geen specifieke beheer taak die alleen beschikbaar is in één modale versie.
+Dezelfde taken die in de portal worden uitgevoerd, kunnen ook programmatisch worden verwerkt via de [beheer-api's](/rest/api/searchmanagement/) en [AZ. Search Power shell-module](search-manage-powershell.md). Beheer taken worden volledig weer gegeven in de portal-en programmatische interface. Er is geen specifieke beheer taak die alleen beschikbaar is in één modale versie.
 
-Azure Cognitive Search maakt gebruik van andere Azure-Services voor uitgebreidere bewaking en beheer. De enige gegevens die in een zoek service zijn opgeslagen, zijn inhoud (indexen, indexerings-en gegevens bron definities en andere objecten). De metrische gegevens die worden gerapporteerd aan portal pagina's, worden uit interne logboeken getrokken tijdens een cyclus van 30 dagen. Voor door de gebruiker bewaakte logboek registratie en aanvullende gebeurtenissen hebt u [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/)nodig. 
+Azure Cognitive Search maakt gebruik van andere Azure-Services voor uitgebreidere bewaking en beheer. De enige gegevens die in een zoek service zijn opgeslagen, zijn inhoud (indexen, indexerings-en gegevens bron definities en andere objecten). De metrische gegevens die worden gerapporteerd aan portal pagina's, worden uit interne logboeken getrokken tijdens een cyclus van 30 dagen. Voor door de gebruiker bewaakte logboek registratie en aanvullende gebeurtenissen hebt u [Azure monitor](../azure-monitor/index.yml)nodig. 
 
 ## <a name="fixed-service-properties"></a>Eigenschappen vaste service
 
@@ -58,7 +58,7 @@ Met betrekking tot toegang tot het eind punt heeft iedereen die toegang heeft to
 
 Rechten voor service-inrichtings toestellen worden verleend via roltoewijzingen. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. 
 
-In de context van Azure Cognitive Search bepaalt [Azure-roltoewijzingen](search-security-rbac.md) wie taken kan uitvoeren, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken:
+In de context van Azure Cognitive Search bepaalt [Azure-roltoewijzingen](search-security-rbac.md) wie taken kan uitvoeren, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken:
 
 * Een service maken of verwijderen
 * De service schalen
@@ -73,12 +73,12 @@ In de context van Azure Cognitive Search bepaalt [Azure-roltoewijzingen](search-
 
 Op de basis-laag en hierboven bewaakt micro soft alle Azure Cognitive Search Services voor 99,9% Beschik baarheid per service level agreements (SLA). Als de service traag is of de door Voer van een aanvraag onder de drempel waarde voor de SLA ligt, worden de beschik bare logboek bestanden door ondersteunings teams gecontroleerd en wordt het probleem opgelost.
 
-Azure Cognitive Search maakt gebruik van [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) voor het verzamelen en opslaan van indexering en query-activiteiten. In een zoek service zelf wordt alleen de inhoud opgeslagen (indexen, Indexer definities, definities van gegevens bronnen, definities van vaardig heden, synoniemen kaarten). Cache-en logboek gegevens worden in een Azure Storage-account buiten gebruik gestored. Zie [logboek gegevens verzamelen en analyseren](search-monitor-logs.md)voor meer informatie over het registreren van indexering en het uitvoeren van query-workloads.
+Azure Cognitive Search maakt gebruik van [Azure monitor](../azure-monitor/index.yml) voor het verzamelen en opslaan van indexering en query-activiteiten. In een zoek service zelf wordt alleen de inhoud opgeslagen (indexen, Indexer definities, definities van gegevens bronnen, definities van vaardig heden, synoniemen kaarten). Cache-en logboek gegevens worden in een Azure Storage-account buiten gebruik gestored. Zie [logboek gegevens verzamelen en analyseren](search-monitor-logs.md)voor meer informatie over het registreren van indexering en het uitvoeren van query-workloads.
 
 In het kader van algemene informatie over uw service kunt u op de volgende manieren informatie verkrijgen met alleen de ingebouwde voorzieningen in azure Cognitive Search:
 
 * Via de pagina **overzicht** van services, via meldingen, eigenschappen en status berichten.
-* [Power shell](search-manage-powershell.md) of het [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/) gebruiken om [service-eigenschappen te verkrijgen](https://docs.microsoft.com/rest/api/searchmanagement/services). Er zijn geen nieuwe gegevens of bewerkingen beschikbaar op de programma-laag. De interfaces bestaan zodat u scripts kunt schrijven.
+* [Power shell](search-manage-powershell.md) of het [beheer rest API](/rest/api/searchmanagement/) gebruiken om [service-eigenschappen te verkrijgen](/rest/api/searchmanagement/services). Er zijn geen nieuwe gegevens of bewerkingen beschikbaar op de programma-laag. De interfaces bestaan zodat u scripts kunt schrijven.
 
 ## <a name="monitor-resource-usage"></a>Resource gebruik bewaken
 
@@ -86,8 +86,8 @@ In het dash board is bron bewaking beperkt tot de informatie die wordt weer gege
 
 Met de REST API van de zoek service kunt u via programma code een aantal op documenten en indexen ontvangen: 
 
-* [Indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Documenten tellen](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Indexstatistieken ophalen](/rest/api/searchservice/Get-Index-Statistics)
+* [Documenten tellen](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Herstel na nood gevallen en service storingen
 
@@ -135,7 +135,7 @@ In tegens telling tot het verwijderen van replica's, waarvoor u geen extra moeit
 
 Er is geen detectie methode die aangeeft welke index Shards worden opgeslagen op specifieke partities. Elke partitie biedt ongeveer 25 GB opslag ruimte, dus u moet de opslag beperken tot een grootte die kan worden aangepast aan het aantal partities dat u hebt. Als u wilt terugkeren naar één partitie, moeten alle 12 Shards passen.
 
-Als u hulp nodig hebt bij het plannen van de toekomst, wilt u mogelijk de opslag controleren (met behulp van [index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) om te zien hoeveel u werkelijk hebt gebruikt. 
+Als u hulp nodig hebt bij het plannen van de toekomst, wilt u mogelijk de opslag controleren (met behulp van [index statistieken ophalen](/rest/api/searchservice/Get-Index-Statistics)) om te zien hoeveel u werkelijk hebt gebruikt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

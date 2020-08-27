@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76964886"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922885"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren in een door SQL beheerd exemplaar
 
@@ -38,11 +38,11 @@ Controleer of de netwerk beveiligings groep de juiste **regels voor binnenkomend
 > Indexeer functies vereisen nog steeds dat het beheerde exemplaar van SQL wordt geconfigureerd met een openbaar eind punt om gegevens te kunnen lezen.
 > U kunt echter ervoor kiezen de inkomende toegang tot dat open bare eind punt te beperken door de huidige regel () te vervangen door `public_endpoint_inbound` de volgende twee regels:
 >
-> * Het toestaan van inkomende toegang via de servicetag `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) (source "= `AzureCognitiveSearch` ," name "= `cognitive_search_inbound` )
+> * Het toestaan van inkomende toegang via de servicetag `AzureCognitiveSearch` [service tag](../virtual-network/service-tags-overview.md#available-service-tags) (source "= `AzureCognitiveSearch` ," name "= `cognitive_search_inbound` )
 >
 > * Het toestaan van binnenkomende toegang vanaf het IP-adres van de zoek service, die kan worden verkregen door de Fully Qualified Domain Name te pingen (bijvoorbeeld, `<your-search-service-name>.search.windows.net` ). (' Bron ' = `IP address` , ' naam ' = `search_service_inbound` )
 >
-> Stel voor elk van deze twee regels ' poort ' = `3342` , ' Protocol ' = `TCP` , ' doel ' = `Any` , ' actie ' =`Allow`
+> Stel voor elk van deze twee regels ' poort ' = `3342` , ' Protocol ' = `TCP` , ' doel ' = `Any` , ' actie ' = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>connection string van open bare eind punten ophalen
 Zorg ervoor dat u de connection string gebruikt voor het **open bare eind punt** (poort 3342, niet poort 1433).

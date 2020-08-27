@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212388"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934953"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Schaal voor prestaties op Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Voordat u een grotere implementatie inspanning inneemt, moet u weten hoe een typ
 
 1. Begin met een laag aantal query's per seconde (QPS) en verhoog vervolgens geleidelijk het aantal dat in de test wordt uitgevoerd totdat de query latentie onder het vooraf gedefinieerde doel daalt. Dit is een belang rijk referentie punt om u te helpen bij het plannen van de schaal als uw toepassing groeit in gebruik.
 
-1. Gebruik waar mogelijk HTTP-verbindingen. Als u de Azure Cognitive Search .NET SDK gebruikt, betekent dit dat u een instantie of [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) -exemplaar opnieuw moet gebruiken. Als u de rest API gebruikt, moet u één httpclient maakt opnieuw gebruiken.
+1. Gebruik waar mogelijk HTTP-verbindingen. Als u de Azure Cognitive Search .NET SDK gebruikt, betekent dit dat u een instantie of [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) -exemplaar opnieuw moet gebruiken. Als u de rest API gebruikt, moet u één httpclient maakt opnieuw gebruiken.
 
 1. U kan de query op aanvragen van query's variëren zodat de zoek actie plaatsvindt in verschillende onderdelen van de index. Variatie is belang rijk omdat als u dezelfde Zoek opdrachten doorlopend uitvoert, het opslaan van gegevens in de cache wordt gestart, waardoor de prestaties kunnen worden verbeterd.
 
@@ -43,7 +43,7 @@ Tijdens het maken van deze test werkbelastingen zijn er enkele kenmerken van Azu
 + Met Azure Cognitive Search worden index taken niet op de achtergrond uitgevoerd. Als uw service tegelijkertijd query's uitvoert en werk belastingen gelijktijdig indexeert, moet u rekening houden met het introduceren van index taken in uw query tests of door opties te verkennen voor het uitvoeren van index taken tijdens de piek uren.
 
 > [!Tip]
-> U kunt een realistische query belasting simuleren met behulp van hulpprogram ma's voor het testen van de belasting. Probeer [tests met Azure DevOps te laden](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) of gebruik een van deze [alternatieven](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
+> U kunt een realistische query belasting simuleren met behulp van hulpprogram ma's voor het testen van de belasting. Probeer [tests met Azure DevOps te laden](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) of gebruik een van deze [alternatieven](/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
 
 ## <a name="scale-for-high-query-volume"></a>Schaal voor hoog query volume
 
@@ -99,7 +99,7 @@ Het doel van een geografisch gedistribueerde set Zoek Services bestaat uit twee 
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>Gegevens gesynchroniseerd blijven tussen meerdere services
 
-Er zijn twee opties om uw gedistribueerde zoek services synchroon te houden, die bestaan uit het gebruik van de [azure Cognitive Search indexer](search-indexer-overview.md) of de Push-API (ook wel de [Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/)genoemd).  
+Er zijn twee opties om uw gedistribueerde zoek services synchroon te houden, die bestaan uit het gebruik van de [azure Cognitive Search indexer](search-indexer-overview.md) of de Push-API (ook wel de [Azure Cognitive Search rest API](/rest/api/searchservice/)genoemd).  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexeer functies gebruiken voor het bijwerken van inhoud op meerdere services
 
@@ -111,7 +111,7 @@ Hier volgt een globaal visueel element van wat die architectuur eruit zou zien.
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>REST-Api's gebruiken voor het pushen van inhouds updates op meerdere services
 
-Als u de Azure Cognitive Search-REST API gebruikt om [inhoud in uw Azure Cognitive search-index te pushen](https://docs.microsoft.com/rest/api/searchservice/update-index), kunt u uw verschillende Zoek Services synchroon laten door wijzigingen in alle zoek services te pushen wanneer een update is vereist. Zorg ervoor dat u in uw code cases afhandelt waarbij een update naar één zoek service mislukt, maar slaagt voor andere zoek services.
+Als u de Azure Cognitive Search-REST API gebruikt om [inhoud in uw Azure Cognitive search-index te pushen](/rest/api/searchservice/update-index), kunt u uw verschillende Zoek Services synchroon laten door wijzigingen in alle zoek services te pushen wanneer een update is vereist. Zorg ervoor dat u in uw code cases afhandelt waarbij een update naar één zoek service mislukt, maar slaagt voor andere zoek services.
 
 ## <a name="leverage-azure-traffic-manager"></a>Gebruik Azure Traffic Manager
 

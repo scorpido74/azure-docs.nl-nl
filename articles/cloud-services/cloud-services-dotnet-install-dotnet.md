@@ -7,15 +7,16 @@ author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79214711"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932233"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>.NET installeren op Azure Cloud Services-rollen
 In dit artikel wordt beschreven hoe u versies van .NET Framework installeert die niet worden meegeleverd met het Azure-gast besturingssysteem. U kunt .NET gebruiken op het gast besturingssysteem om uw web-en werk rollen van de Cloud service te configureren.

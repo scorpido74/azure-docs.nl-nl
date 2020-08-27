@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18646fc92dda7cebb7a8c1030285956d8fe4df74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565999"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924158"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Verrijkingen vorm geven en exporteren
 
@@ -206,7 +206,7 @@ Projecteren op tabellen in Azure Storage is handig voor rapportage en analyse me
 We gaan een dash board maken om de belangrijkste woord groepen die zijn geëxtraheerd uit documenten te visualiseren als een Word-Cloud. Als u de juiste gegevens structuur wilt maken, voegt u een shaper-vaardigheid toe aan de vaardig heden om een aangepaste vorm te maken die de Documentspecifieke Details en sleutel zinnen heeft. De aangepaste vorm wordt aangeroepen `pbiShape` op het `document` hoofd knooppunt.
 
 > [!NOTE] 
-> Tabel prognoses zijn Azure Storage tabellen, bepaald door de opslag limieten die zijn opgelegd door Azure Storage. Zie [limieten voor tabel opslag](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model)voor meer informatie. Het is handig om te weten dat de grootte van de entiteit niet groter mag zijn dan 1 MB en dat één eigenschap niet groter mag zijn dan 64 KB. Deze beperkingen maken tabellen een goede oplossing voor het opslaan van een groot aantal kleine entiteiten.
+> Tabel prognoses zijn Azure Storage tabellen, bepaald door de opslag limieten die zijn opgelegd door Azure Storage. Zie [limieten voor tabel opslag](/rest/api/storageservices/understanding-the-table-service-data-model)voor meer informatie. Het is handig om te weten dat de grootte van de entiteit niet groter mag zijn dan 1 MB en dat één eigenschap niet groter mag zijn dan 64 KB. Deze beperkingen maken tabellen een goede oplossing voor het opslaan van een groot aantal kleine entiteiten.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Een aangepaste vorm maken met behulp van een shaper-vaardigheid
 
@@ -677,4 +677,3 @@ Voor een overzicht van projecties raadpleegt u meer over mogelijkheden zoals gro
 
 > [!div class="nextstepaction"]
 > [Prognoses in een kennis archief](knowledge-store-projection-overview.md)
-

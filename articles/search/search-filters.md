@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562294"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923072"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filters in azure Cognitive Search 
 
@@ -47,9 +47,9 @@ Voorbeeld scenario's zijn onder andere:
 
 Als u een beperkend effect wilt hebben in de zoek resultaten, zijn de filters niet uw enige keuze. Deze alternatieven kunnen beter passen, afhankelijk van uw doel stelling:
 
- + `searchFields`query parameter Pegs zoek naar specifieke velden. Als uw index bijvoorbeeld afzonderlijke velden voor Engelse en Spaanse beschrijvingen bevat, kunt u searchFields gebruiken om te richten welke velden u moet gebruiken voor het zoeken in volledige tekst. 
+ + `searchFields` query parameter Pegs zoek naar specifieke velden. Als uw index bijvoorbeeld afzonderlijke velden voor Engelse en Spaanse beschrijvingen bevat, kunt u searchFields gebruiken om te richten welke velden u moet gebruiken voor het zoeken in volledige tekst. 
 
-+ `$select`para meter wordt gebruikt om op te geven welke velden in een resultatenset moeten worden meegenomen, waardoor het antwoord effectief wordt afgekapt voordat het naar de aanroepende toepassing wordt verzonden. Met deze para meter wordt de query niet verfijnd of wordt de document verzameling niet verminderd, maar als een kleiner antwoord uw doel is, is deze para meter een optie om rekening mee te houden. 
++ `$select` para meter wordt gebruikt om op te geven welke velden in een resultatenset moeten worden meegenomen, waardoor het antwoord effectief wordt afgekapt voordat het naar de aanroepende toepassing wordt verzonden. Met deze para meter wordt de query niet verfijnd of wordt de document verzameling niet verminderd, maar als een kleiner antwoord uw doel is, is deze para meter een optie om rekening mee te houden. 
 
 Zie [zoeken naar documenten > aanvragen > query parameters](/rest/api/searchservice/search-documents#query-parameters)voor meer informatie over para meters.
 
@@ -61,7 +61,7 @@ Bij het uitvoeren van query's accepteert een filter-parser criteria als invoer, 
 Filteren vindt in combi natie met zoeken plaats in de documenten die in de downstream-verwerking moeten worden meegenomen voor het ophalen van documenten en relevantie punten. Bij het koppelen met een zoek reeks, vermindert het filter de ingetrokken set van de volgende zoek bewerking effectief. Wanneer u alleen gebruikt (bijvoorbeeld wanneer de query reeks leeg is `search=*` ), is de filter criteria de enige invoer. 
 
 ## <a name="defining-filters"></a>Filters definiëren
-Filters zijn OData-expressies, die worden gegeleeerd met behulp [van een subset van Odata v4-syntaxis die wordt ondersteund in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
+Filters zijn OData-expressies, die worden gegeleeerd met behulp [van een subset van Odata v4-syntaxis die wordt ondersteund in Azure Cognitive Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
 U kunt voor elke **Zoek** bewerking één filter opgeven, maar het filter zelf kan meerdere velden bevatten, meerdere criteria en als u een functie **ismatch** gebruikt, meerdere zoek expressies in volledige tekst. In een filter expressie met meerdere delen kunt u predikaten in een wille keurige volg orde opgeven (onderhevig aan de voor waarden van de operator prioriteit). Er is geen merk bare prestatie verbetering als u predikaten probeert te rangschikken in een bepaalde volg orde.
 
@@ -95,7 +95,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Gebruiks patronen filteren
 
-De volgende voor beelden illustreren verschillende gebruiks patronen voor filter scenario's. Zie [OData-expressie syntaxis > voor beelden](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples)voor meer ideeën.
+De volgende voor beelden illustreren verschillende gebruiks patronen voor filter scenario's. Zie [OData-expressie syntaxis > voor beelden](./search-query-odata-filter.md#examples)voor meer ideeën.
 
 + Zelfstandige **$filter**, zonder query teken reeks, handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen scoreing en geen classificatie. U ziet dat de zoek teken reeks slechts een sterretje is, wat betekent dat alle documenten overeenkomen.
 
@@ -135,9 +135,9 @@ Volg deze artikelen voor uitgebreide informatie over specifieke gebruiks voorbee
 
 ## <a name="field-requirements-for-filtering"></a>Veld vereisten voor filteren
 
-In de REST API is filteren standaard *ingeschakeld* voor eenvoudige velden. Filter bare velden verg Roten index grootte; Zorg ervoor dat `"filterable": false` u velden instelt die u niet wilt gebruiken in een filter. Zie [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over de instellingen voor veld definities.
+In de REST API is filteren standaard *ingeschakeld* voor eenvoudige velden. Filter bare velden verg Roten index grootte; Zorg ervoor dat `"filterable": false` u velden instelt die u niet wilt gebruiken in een filter. Zie [Create Index](/rest/api/searchservice/create-index)voor meer informatie over de instellingen voor veld definities.
 
-In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) van het bijbehorende [veld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object in te stellen op `true` . U kunt dit ook declaratief doen met behulp van het [kenmerk IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). In het onderstaande voor beeld is het kenmerk ingesteld op de `BaseRate` eigenschap van een model klasse die is toegewezen aan de index definitie.
+In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) van het bijbehorende [veld](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object in te stellen op `true` . U kunt dit ook declaratief doen met behulp van het [kenmerk IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute). In het onderstaande voor beeld is het kenmerk ingesteld op de `BaseRate` eigenschap van een model klasse die is toegewezen aan de index definitie.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -156,7 +156,7 @@ Teken reeksen zijn hoofdletter gevoelig. Er bevindt zich geen kleine letters in 
 
 ### <a name="approaches-for-filtering-on-text"></a>Benaderingen voor het filteren op tekst
 
-| Methode | Description | Wanneer gebruikt u dit? |
+| Methode | Beschrijving | Wanneer gebruikt u dit? |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Een functie die overeenkomt met een veld in een gescheiden lijst met teken reeksen. | Aanbevolen voor [beveiligings filters](search-security-trimming-for-azure-search.md) en voor filters waarbij veel onbewerkte tekst waarden moeten overeenkomen met een teken reeks veld. De functie **Search.in** is ontworpen voor snelheid en is veel sneller dan expliciet het veld vergelijken met de teken reeks met behulp van `eq` en `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Een functie waarmee u Zoek opdrachten in volledige tekst kunt combi neren met strikt Booleaanse filter bewerkingen in dezelfde filter-expressie. | Gebruik **Search. ismatch** (of het equivalente Score-item **Search. ismatchscoring**) als u meerdere zoek filter combinaties wilt gebruiken in één aanvraag. U kunt deze ook voor een *contains* -filter gebruiken om te filteren op een gedeeltelijke teken reeks binnen een grotere teken reeks. |
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Als u meer voor beelden wilt gebruiken, raadpleegt u de syntaxis van de [OData-filter expressie > voor beelden](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Als u meer voor beelden wilt gebruiken, raadpleegt u de syntaxis van de [OData-filter expressie > voor beelden](./search-query-odata-filter.md#examples).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-+ [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene-query syntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Ondersteunde gegevenstypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [REST API voor documenten zoeken](/rest/api/searchservice/search-documents)
++ [Vereenvoudigde querysyntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene-query syntaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Ondersteunde gegevenstypen](/rest/api/searchservice/supported-data-types)

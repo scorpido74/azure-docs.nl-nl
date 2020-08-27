@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982013"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924636"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Cognitieve vaardigheid van tekst samen voegen
 
@@ -35,7 +35,7 @@ Parameters zijn hoofdlettergevoelig.
 | `insertPostTag`   | De teken reeks die na elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt u de waarde in op `""` .  |
 
 
-##  <a name="sample-input"></a>Voorbeeld invoer
+##  <a name="sample-input"></a>Voorbeeldinvoer
 Een JSON-document dat bruikbare invoer voor deze vaardigheid biedt, kan zijn:
 
 ```json
@@ -75,7 +75,7 @@ In dit voor beeld ziet u de uitvoer van de vorige invoer, ervan uitgaande dat de
 
 Een veelvoorkomend scenario voor het gebruik van het samen voegen van tekst is het samen voegen van de tekstuele weer gave van afbeeldingen (tekst van een OCR-vaardigheid of het bijschrift van een afbeelding) in het veld inhoud van een document. 
 
-In het volgende voor beeld wordt gebruikgemaakt van de OCR-vaardigheid voor het extra heren van tekst uit afbeeldingen die zijn Inge sloten in het document. Vervolgens wordt er een *merged_text* veld gemaakt dat zowel de oorspronkelijke als de OCRed-tekst van elke afbeelding bevat. [Hier](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)vindt u meer informatie over de OCR-vaardigheid.
+In het volgende voor beeld wordt gebruikgemaakt van de OCR-vaardigheid voor het extra heren van tekst uit afbeeldingen die zijn Inge sloten in het document. Vervolgens wordt er een *merged_text* veld gemaakt dat zowel de oorspronkelijke als de OCRed-tekst van elke afbeelding bevat. [Hier](./cognitive-search-skill-ocr.md)vindt u meer informatie over de OCR-vaardigheid.
 
 ```json
 {
@@ -144,8 +144,8 @@ In het bovenstaande voor beeld wordt ervan uitgegaan dat er een veld met genorma
 }
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Indexeerfunctie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexeerfunctie maken (REST)](/rest/api/searchservice/create-indexer)

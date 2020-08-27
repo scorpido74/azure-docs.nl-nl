@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828656"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795589"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Aangepaste beheerdersrollen in Azure Active Directory (preview)
 
@@ -46,7 +46,7 @@ Hier volgen de stappen op hoog niveau die in Azure AD worden gebruikt om te bepa
 
 1. Afhankelijk van de omstandigheden wordt in Azure AD een van de volgende acties uitgevoerd:
 
-    - Evalueren van de rollidmaatschappen van de gebruiker op basis van de [wids-claim](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) in het toegangstoken van de gebruiker.
+    - Evalueren van de rollidmaatschappen van de gebruiker op basis van de [wids-claim](../develop/access-tokens.md) in het toegangstoken van de gebruiker.
     - Ophalen van alle roltoewijzingen die van toepassing zijn op de gebruiker, hetzij rechtstreeks of via groepslidmaatschap, voor de resource waarvoor de actie wordt uitgevoerd.
 
 1. Azure AD bepaalt of de actie in de API-aanroep is opgenomen in de rollen die de gebruiker heeft voor deze resource.

@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561775"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934970"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Gebruik de ' volledige ' lucene-Zoek syntaxis (geavanceerde query's in azure Cognitive Search)
 
@@ -147,7 +147,7 @@ U kunt een zoek bewerking in een veld definiëren met de syntaxis **FieldName: s
 
 Zorg ervoor dat u meerdere teken reeksen tussen aanhalings tekens plaatst als u wilt dat beide teken reeksen als één entiteit worden geëvalueerd. in dit geval zoekt u naar twee afzonderlijke locaties in het `state` veld. Zorg er ook voor dat de operator is gekapitaliseerd, omdat u niet en en kunt zien.
 
-Het veld dat is opgegeven in **veld Naam: searchExpression** moet een doorzoekbaar veld zijn. Zie [Create Index (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het gebruik van index kenmerken in veld definities.
+Het veld dat is opgegeven in **veld Naam: searchExpression** moet een doorzoekbaar veld zijn. Zie [Create Index (Azure Cognitive Search rest API)](/rest/api/searchservice/create-index) voor meer informatie over het gebruik van index kenmerken in veld definities.
 
 > [!NOTE]
 > In het bovenstaande voor beeld is het niet nodig om de `searchFields` para meter te gebruiken omdat elk deel van de query expliciet een veld naam heeft opgegeven. U kunt echter nog steeds de `searchFields` para meter gebruiken als u een query wilt uitvoeren waarbij sommige onderdelen naar een specifiek veld zijn beperkt, en de rest kan van toepassing zijn op verschillende velden. De query `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` zou bijvoorbeeld alleen overeenkomen met `senior NOT junior` het `business_title` veld, terwijl deze ' Extern ' zou overeenkomen met het `posting_type` veld. De naam van het veld in **FieldName: searchExpression** heeft altijd voor rang op de `searchFields` para meter, in dit voor beeld is het niet nodig om `business_title` in de para meter op te nemen `searchFields` .
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Regex-query](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> Regex-query's worden niet [geanalyseerd](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). De enige trans formatie die wordt uitgevoerd bij onvolledige query termen is lowercasing.
+> Regex-query's worden niet [geanalyseerd](./search-lucene-query-architecture.md#stage-2-lexical-analysis). De enige trans formatie die wordt uitgevoerd bij onvolledige query termen is lowercasing.
 >
 
 ## <a name="example-7-wildcard-search"></a>Voor beeld 7: zoeken met Joker tekens
@@ -278,18 +278,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Joker teken query](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> Query's met Joker tekens worden niet [geanalyseerd](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). De enige trans formatie die wordt uitgevoerd bij onvolledige query termen is lowercasing.
+> Query's met Joker tekens worden niet [geanalyseerd](./search-lucene-query-architecture.md#stage-2-lexical-analysis). De enige trans formatie die wordt uitgevoerd bij onvolledige query termen is lowercasing.
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 Geef de Lucene-query-parser op in uw code. In de volgende koppelingen wordt uitgelegd hoe u zoek query's instelt voor zowel .NET als de REST API. De koppelingen gebruiken de standaard eenvoudige syntaxis, zodat u moet Toep assen wat u in dit artikel hebt geleerd om het **query type**op te geven.
 
-* [Query's uitvoeren op uw index met behulp van de .NET SDK](search-query-dotnet.md)
-* [Query's uitvoeren op uw index met behulp van de REST API](search-create-index-rest-api.md)
+* [Query's uitvoeren op uw index met behulp van de .NET SDK](./search-get-started-dotnet.md)
+* [Query's uitvoeren op uw index met behulp van de REST API](./search-get-started-powershell.md)
 
 Aanvullende Naslag informatie over syntaxis, query architectuur en voor beelden vindt u in de volgende koppelingen:
 
 + [Eenvoudige syntaxis query-voor beelden](search-query-simple-examples.md)
 + [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Volledige Lucene-querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Vereenvoudigde querysyntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Volledige Lucene-querysyntaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)

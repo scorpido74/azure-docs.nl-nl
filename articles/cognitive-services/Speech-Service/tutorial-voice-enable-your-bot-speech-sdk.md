@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056649"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934460"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -68,7 +69,7 @@ Dit is wat u moet doen om deze zelf studie te volt ooien:
 
 De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azure-Services. Als u de retour tijd voor reacties van uw bot wilt beperken, moet u ervoor zorgen dat deze services zich in dezelfde Azure-regio bevinden. In deze sectie maakt u een resource groep in de regio **VS-West** . Deze resource groep wordt gebruikt bij het maken van afzonderlijke resources voor het bot Framework, het directe lijn spraak kanaal en de spraak service.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Een resource groep maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Een resource groep maken <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
    * Voer een naam in voor de **resource groep**. We raden **SpeechEchoBotTutorial-ResourceGroup**aan.
@@ -94,7 +95,7 @@ Nu u een resource groep in een ondersteunde regio hebt, is de volgende stap het 
 
 Volg deze instructies om een spraak bron te maken:
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een speech service-resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een speech service-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. U wordt gevraagd om de volgende informatie op te geven:
    * Geef uw resource een **naam**. U kunt **het beste SpeechEchoBotTutorial-speech**
    * Zorg ervoor dat een **gratis proef versie** is geselecteerd voor het **abonnement**.
@@ -114,7 +115,7 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 De volgende stap is het maken van een App Service-abonnement. Een App Service-plan definieert een set rekenresources waarmee een web-app kan worden uitgevoerd.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Een Azure App Service plan maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Een Azure App Service plan maken <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**.
@@ -235,7 +236,7 @@ U moet een kleine configuratie wijziging aanbrengen zodat uw bot met behulp van 
 
 Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap het maken van een **bot-kanaal registratie**. Het maken van een kanaal registratie is een vereiste voor het registreren van uw bot met bot Framework-kanalen, waaronder direct line speech Channel. Zie [een bot verbinden met kanalen](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)als u meer wilt weten over hoe bots kanalen gebruiken.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Een Azure bot-kanaal registratie maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Een Azure bot-kanaal registratie maken <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. U wordt gevraagd om de volgende informatie op te geven:
    * Voor **bot-ingang**voert u **SpeechEchoBotTutorial-BotRegistration-# # #** # in en vervangt u door een wille keurig **####** aantal van uw keuze. Houd er rekening mee dat de bot-ingang globaal uniek moet zijn. Als u een bot-ingang opgeeft, maar het fout bericht ophalen _de aangevraagde bot-id niet beschikbaar is_, kiest u een ander getal. In de onderstaande voor beelden hebben we 8726 gebruikt.
    * Selecteer voor **abonnement**een **gratis proef versie**.
@@ -329,14 +330,14 @@ Als er een fout bericht wordt weer gegeven in het hoofd venster van de app, gebr
 |Fout (ConnectionFailure): de verbinding is door de externe host gesloten. Fout code: 1002. Fout Details: de server heeft de status code ' 503 ' geretourneerd wanneer de status code ' 101 ' werd verwacht | Zorg ervoor dat u het selectie vakje [streaming-eind punt inschakelen](#register-the-direct-line-speech-channel) en/of [ **websockets** ](#enable-web-sockets) op op hebt ingeschakeld.<br>Zorg ervoor dat uw Azure App Service actief is. Als dat het geval is, start u de App Service opnieuw op.|
 |Fout (ConnectionFailure): de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: de antwoord status code geeft geen succes aan: 500 (InternalServerError)| Uw bot heeft een Neural-stem opgegeven in het veld [uitspreken](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) van uitvoer activiteit, maar de Azure-regio die aan uw spraak abonnements sleutel is gekoppeld, biedt geen ondersteuning voor Neural stemmen. Zie de [standaard-en Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Als uw probleem niet wordt opgelost in de tabel, raadpleegt u [spraak assistenten: veelgestelde vragen](faq-voice-assistants.md). Als uw probleem nog steeds niet kan worden opgelost nadat u alle stappen in deze zelf studie hebt uitgevoerd, voert u een nieuw probleem in op de GitHub-pagina van de [Voice Assistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
+Als uw probleem niet wordt opgelost in de tabel, raadpleegt u [spraak assistenten: veelgestelde vragen](faq-voice-assistants.md). Als uw probleem nog steeds niet kan worden opgelost nadat u alle stappen in deze zelf studie hebt uitgevoerd, voert u een nieuw probleem in op de GitHub-pagina van de  [Voice Assistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
 #### <a name="a-note-on-connection-time-out"></a>Een opmerking over de time-out van de verbinding
 
 Als u verbonden bent met een bot en er in de afgelopen vijf minuten geen activiteit is opgetreden, sluit de service automatisch de WebSocket-verbinding met de client en met de bot. Dit is standaard. Er wordt een bericht weer gegeven in de onderste balk: *Er is een time-out opgetreden voor de actieve verbinding, maar u kunt opnieuw verbinding maken op aanvraag*. U hoeft niet op de knop opnieuw verbinding maken te klikken. u hoeft alleen maar op de knop microfoon te drukken en te praten, een SMS-bericht te typen of het tref woord te zeggen (als er een is ingeschakeld). De verbinding wordt automatisch hersteld.  
 ### <a name="view-bot-activities"></a>Bot-activiteiten weer geven
 
-Elke bot verzendt en ontvangt **activiteiten** berichten. In het venster **activiteiten logboek** van de Windows Voice Assistant-client ziet u getimede logboeken met elke activiteit die de client heeft ontvangen van de bot. U kunt ook de activiteiten zien die de client naar de bot heeft verzonden met behulp van de- [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) methode. Wanneer u een logboek item selecteert, worden de details van de gekoppelde activiteit als JSON weer gegeven.
+Elke bot verzendt en ontvangt **activiteiten** berichten. In het venster **activiteiten logboek** van de Windows Voice Assistant-client ziet u getimede logboeken met elke activiteit die de client heeft ontvangen van de bot. U kunt ook de activiteiten zien die de client naar de bot heeft verzonden met behulp van de- [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)  methode. Wanneer u een logboek item selecteert, worden de details van de gekoppelde activiteit als JSON weer gegeven.
 
 Hier volgt een voor beeld van een JSON van een activiteit die de client heeft ontvangen:
 
@@ -379,8 +380,8 @@ Zie [velden in de activiteit](https://github.com/microsoft/botframework-sdk/blob
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Client bron code weer geven voor aanroepen naar de Speech SDK
 
 De Windows Voice Assistant-client maakt gebruik van het NuGet-pakket [micro soft. CognitiveServices. speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), dat de Speech SDK bevat. Een goede plaats om te beginnen met het controleren van de voorbeeld code is de methode InitSpeechConnector () in het bestand [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) , waarmee deze twee Speech SDK-objecten worden gemaakt:
-- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig)-Voor configuratie-instellingen (bijvoorbeeld sleutel voor spraak abonnementen, sleutel regio)
-- [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor)-De kanaal verbinding en gebeurtenissen van client abonnementen beheren voor het verwerken van herkende spraak-en bot-reacties.
+- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -Voor configuratie-instellingen (bijvoorbeeld sleutel voor spraak abonnementen, sleutel regio)
+- [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) -De kanaal verbinding en gebeurtenissen van client abonnementen beheren voor het verwerken van herkende spraak-en bot-reacties.
 
 ## <a name="add-custom-keyword-activation"></a>Aangepaste trefwoord activering toevoegen
 
@@ -411,8 +412,8 @@ Volg deze stappen om een trefwoord model te maken, de Windows Voice Assistant-cl
 
 In de Windows Voice Assistant-client bron code bekijkt u deze bestanden om de code te controleren die wordt gebruikt om de detectie van tref woorden in te scha kelen:
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)bevat een aanroep van de methode Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) , die wordt gebruikt om het model te instantiëren vanuit een lokaal bestand op schijf.
-1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)bevat een aanroep naar de Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) -methode, waarmee doorlopende trefwoord detectie wordt geactiveerd.
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) bevat een aanroep van de methode Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) , die wordt gebruikt om het model te instantiëren vanuit een lokaal bestand op schijf.
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) bevat een aanroep naar de Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) -methode, waarmee doorlopende trefwoord detectie wordt geactiveerd.
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>Beschrijving De taal-en bot-stem wijzigen
 

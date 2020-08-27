@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661483"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921066"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Bekende problemen in azure Digital Apparaatdubbels
 
@@ -51,7 +51,9 @@ Voor gebruikers die zijn aangemeld met een persoonlijk [Microsoft-account (MSA)]
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probleem met interactieve browser verificatie
 
-Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met de nieuwste versie (versie **1.2.0**) van de ** [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek**, kunnen er problemen optreden met de methode [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
+Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de ** [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek**, kunnen er problemen optreden met de [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) -methode.
+
+Dit is niet de meest recente versie van de bibliotheek. De meest recente versie is **1.2.2**.
 
 De betrokken methode wordt gebruikt in de volgende artikelen: 
 * [*Zelfstudie: Een client-app coderen*](tutorial-code.md)
@@ -62,10 +64,7 @@ Het probleem bevat de fout melding ' Azure. Identity. AuthenticationFailedExcept
 
 ### <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
-Als u dit wilt oplossen, moet u uw toepassingen expliciet gebruiken voor Azure. Identity versie **1.1.1**. Met deze versie van de bibliotheek moet de browser naar verwachting laden en verifiëren.
-
->[!NOTE]
-> Het is niet voldoende om de bibliotheek toe te voegen zonder een versie op te geven, omdat dat nog steeds de meest recente **1.2.0**is. U moet versie **1.1.1** expliciet opgeven.
+Werk uw toepassingen bij voor het gebruik van Azure. identiteits versie **1.2.2**om dit probleem op te lossen. Met deze versie van de bibliotheek moet de browser naar verwachting laden en verifiëren.
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 

@@ -2,13 +2,14 @@
 title: Application Insights voor Worker-service-apps (niet-HTTP-apps)
 description: Niet-HTTP-apps van .NET core/. NET bewaken met Azure Monitor Application Insights.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6f31236e516e44df9f5115e3efeb48db46853e8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325403"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933270"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -46,7 +47,7 @@ Specifieke instructies voor elk type toepassing worden beschreven in de volgende
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
 1. Down load en Installeer [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Een nieuw project voor werk nemers maken met behulp van de nieuwe project sjabloon of de opdracht regel van Visual Studio`dotnet new worker`
+2. Een nieuw project voor werk nemers maken met behulp van de nieuwe project sjabloon of de opdracht regel van Visual Studio `dotnet new worker`
 3. Installeer het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) op de toepassing.
 
 4. Voeg toe `services.AddApplicationInsightsTelemetryWorkerService();` aan de `CreateHostBuilder()` methode in uw `Program.cs` klasse, zoals in dit voor beeld:
@@ -124,7 +125,7 @@ U kunt ook de instrumentatie sleutel opgeven in een van de volgende omgevings va
 `APPINSIGHTS_INSTRUMENTATIONKEY` of `ApplicationInsights:InstrumentationKey`
 
 Bijvoorbeeld: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
-OF`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
+OF `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 Geeft doorgaans `APPINSIGHTS_INSTRUMENTATIONKEY` de instrumentatie sleutel voor toepassingen die worden geïmplementeerd op Web apps als webjobs.
 
@@ -312,7 +313,7 @@ De afhankelijkheids verzameling is standaard ingeschakeld. In [Dit](asp-net-depe
 
 ### <a name="eventcounter"></a>Event Counter
 
-`EventCounterCollectionModule`is standaard ingeschakeld en er wordt een standaardset tellers van .NET Core 3,0-apps verzameld. De [Event Counter](eventcounters.md) zelf studie bevat de standaardset met verzamelde items. Het bevat ook instructies voor het aanpassen van de lijst.
+`EventCounterCollectionModule` is standaard ingeschakeld en er wordt een standaardset tellers van .NET Core 3,0-apps verzameld. De [Event Counter](eventcounters.md) zelf studie bevat de standaardset met verzamelde items. Het bevat ook instructies voor het aanpassen van de lijst.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Hand matig extra telemetrie bijhouden
 
@@ -349,14 +350,14 @@ U kunt enkele algemene instellingen wijzigen door door `ApplicationInsightsServi
 
 Houd er rekening mee dat `ApplicationInsightsServiceOptions` in deze SDK zich in de naam ruimte bevindt `Microsoft.ApplicationInsights.WorkerService` , in tegens telling tot `Microsoft.ApplicationInsights.AspNetCore.Extensions` in de ASP.net core SDK.
 
-Veelgebruikte instellingen in`ApplicationInsightsServiceOptions`
+Veelgebruikte instellingen in `ApplicationInsightsServiceOptions`
 
 |Instelling | Beschrijving | Standaard
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
-|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
-|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
+|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | true
+|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | true
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | true
+|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
 
@@ -425,7 +426,7 @@ De volgende automatische verzamelings modules zijn standaard ingeschakeld. Deze 
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`-(Er is momenteel een probleem met deze telemetrie-module. Zie [github Issue 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+* `AppServicesHeartbeatTelemetryModule` -(Er is momenteel een probleem met deze telemetrie-module. Zie [github Issue 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
 )voor een tijdelijke oplossing.)
 * `AzureInstanceMetadataTelemetryModule`
 

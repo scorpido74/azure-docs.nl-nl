@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084191"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923106"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filteren op taal in azure Cognitive Search 
 
@@ -37,11 +37,11 @@ Het volgende voor beeld is afkomstig [uit het voor beeld van](search-get-started
   ![Scherm opname van het venster velden van het voor beeld van het onroerend goed. Een groep velden wordt gemarkeerd om erachter te komen hoe de taal analyse toewijzingen overeenkomen met de talen voor de gemarkeerde velden.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Zie [een index definiëren (.net)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) en [een index definiëren (rest)](search-create-index-rest-api.md)voor code voorbeelden van veld definities met taal analysen.
+> Zie [een index definiëren (.net)](./search-get-started-dotnet.md) en [een index definiëren (rest)](./search-get-started-powershell.md)voor code voorbeelden van veld definities met taal analysen.
 
 ## <a name="build-and-load-an-index"></a>Een index maken en laden
 
-Een tussenliggende (en mogelijk duidelijke) stap is dat u [de index moet bouwen en vullen](https://docs.microsoft.com/azure/search/search-create-index-dotnet) voordat u een query kunt formuleren. Deze stap wordt hier vermeld voor volledigheid. Een manier om te bepalen of de index beschikbaar is, is door de lijst indexen te controleren in de [Portal](https://portal.azure.com).
+Een tussenliggende (en mogelijk duidelijke) stap is dat u [de index moet bouwen en vullen](./search-get-started-dotnet.md) voordat u een query kunt formuleren. Deze stap wordt hier vermeld voor volledigheid. Een manier om te bepalen of de index beschikbaar is, is door de lijst indexen te controleren in de [Portal](https://portal.azure.com).
 
 ## <a name="constrain-the-query-and-trim-results"></a>De resultaten van de query en het knippen beperken
 
@@ -60,10 +60,9 @@ parameters =
 > [!Note]
 > Hoewel er geen $filter argument is voor de query, wordt deze use-case sterk gekoppeld aan filter concepten, zodat deze wordt weer gegeven als een filter scenario.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Filters in azure Cognitive Search](search-filters.md)
-+ [Taalanalyse](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [Taalanalyse](/rest/api/searchservice/language-support)
 + [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-
++ [REST API voor documenten zoeken](/rest/api/searchservice/search-documents)

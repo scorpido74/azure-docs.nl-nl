@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: matrive
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 87135b309f0406528bcada1cd906dd2f8535d1ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3b2e9b501f2ae103900a085e9b7a4b412efb78e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202893"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686833"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Uw abonnementsgegevens op het hoogste niveau exporteren en weergeven
 Als u de set met abonnements-id's wilt weergeven die zijn gekoppeld aan uw gebruikersreferenties, [downloadt u een .json-bestand met uw abonnementsgegevens in het Azure-accountcentrum](https://account.azure.com/subscriptions/download).
