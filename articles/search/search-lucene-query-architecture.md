@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565913"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917955"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Zoeken in volledige tekst in azure Cognitive Search
 
@@ -49,7 +49,7 @@ In het onderstaande diagram ziet u de onderdelen die worden gebruikt voor het ve
 
 Een zoek opdracht is een volledige specificatie van wat er in een resultatenset moet worden geretourneerd. In het eenvoudigste vorm is het een lege query zonder criteria van welke aard dan ook. Een realistischer voor beeld bevat para meters, verschillende query termen, mogelijk op bepaalde velden, met mogelijk een filter expressie en regels voor het ordenen.  
 
-Het volgende voor beeld is een zoek opdracht die u via de [rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents)kunt verzenden naar Azure Cognitive Search.  
+Het volgende voor beeld is een zoek opdracht die u via de [rest API](/rest/api/searchservice/search-documents)kunt verzenden naar Azure Cognitive Search.  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2020-06-30
@@ -69,7 +69,7 @@ Voor deze aanvraag doet de zoek machine het volgende:
 2. Voert de query uit. In dit voor beeld bestaat de zoek query uit zinsdelen en voor waarden: `"Spacious, air-condition* +\"Ocean view\""` (gebruikers voeren doorgaans geen interpunctie tekens in, maar in het voor beeld kunnen we uitleggen hoe analyseers dit verwerken). Voor deze query scant de zoek machine de velden Beschrijving en titel die zijn opgegeven in `searchFields` voor documenten die de weer gave ' ochtend ' bevatten, en ook op de term ' spacious ', of op termen die beginnen met het voor voegsel ' Air-voor waarde '. De `searchMode` para meter wordt gebruikt om een wille keurige term (standaard) of alle waarden te vergelijken, voor gevallen waarbij een term niet expliciet vereist is ( `+` ).
 3. Bestelt de resulterende set hotels door nabij de opgegeven geografische locatie, en keert vervolgens terug naar de aanroepende toepassing. 
 
-Het meren deel van dit artikel is het verwerken van de *Zoek query*: `"Spacious, air-condition* +\"Ocean view\""` . Filteren en ordenen vallen buiten het bereik. Zie de [naslag documentatie voor Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)voor meer informatie.
+Het meren deel van dit artikel is het verwerken van de *Zoek query*: `"Spacious, air-condition* +\"Ocean view\""` . Filteren en ordenen vallen buiten het bereik. Zie de [naslag documentatie voor Search API](/rest/api/searchservice/search-documents)voor meer informatie.
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>Fase 1: Query's parseren 
@@ -86,7 +86,7 @@ De query-parser scheidt Opera tors (zoals `*` en `+` in het voor beeld) uit zoek
 + *woordgroepen query* voor geciteerde voor waarden (zoals de weer gave Oceaan)
 + *voorvoegsel query* voor voor waarden gevolgd door een voorvoegsel operator `*` (zoals airconditioning)
 
-Zie voor een volledige lijst met ondersteunde query typen de [opdracht syntaxis van Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+Zie voor een volledige lijst met ondersteunde query typen de [opdracht syntaxis van Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
 Opera tors die zijn gekoppeld aan een subquery bepalen of de query ' moet zijn ' of ' moet ' zijn ' voldaan om een document als een overeenkomst te worden beschouwd. `+"Ocean view"`Is bijvoorbeeld ' moet ' door de `+` operator. 
 
@@ -96,7 +96,7 @@ De query-parser structureert de subquery's in een *query structuur* (een interne
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Ondersteunde parsers: eenvoudige en volledige lucene 
 
- Azure Cognitive Search biedt twee verschillende query talen, `simple` (standaard) en `full` . Door de `queryType` para meter in te stellen met uw zoek aanvraag, vertelt u de query-parser welke query taal u kiest, zodat u weet hoe de Opera tors en de syntaxis moeten worden geïnterpreteerd. De [eenvoudige query taal](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) is intuïtief en robuust, en is vaak geschikt voor het interpreteren van gebruikers invoer zonder dat de verwerking aan de client zijde wordt uitgevoerd. De functie biedt ondersteuning voor query-Opera tors die bekend zijn met Web Search-Engines. De [volledige lucene-query taal](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), die u op basis van instelling krijgt `queryType=full` , breidt de standaard eenvoudige query taal uit door ondersteuning toe te voegen voor meer Opera tors en query typen, zoals joker tekens, fuzzy, regex en query's met een veld bereik. Een reguliere expressie die in eenvoudige query syntaxis wordt verzonden, wordt bijvoorbeeld geïnterpreteerd als een query reeks en geen expressie. In de voorbeeld aanvraag in dit artikel wordt gebruikgemaakt van de volledige lucene-query taal.
+ Azure Cognitive Search biedt twee verschillende query talen, `simple` (standaard) en `full` . Door de `queryType` para meter in te stellen met uw zoek aanvraag, vertelt u de query-parser welke query taal u kiest, zodat u weet hoe de Opera tors en de syntaxis moeten worden geïnterpreteerd. De [eenvoudige query taal](/rest/api/searchservice/simple-query-syntax-in-azure-search) is intuïtief en robuust, en is vaak geschikt voor het interpreteren van gebruikers invoer zonder dat de verwerking aan de client zijde wordt uitgevoerd. De functie biedt ondersteuning voor query-Opera tors die bekend zijn met Web Search-Engines. De [volledige lucene-query taal](/rest/api/searchservice/lucene-query-syntax-in-azure-search), die u op basis van instelling krijgt `queryType=full` , breidt de standaard eenvoudige query taal uit door ondersteuning toe te voegen voor meer Opera tors en query typen, zoals joker tekens, fuzzy, regex en query's met een veld bereik. Een reguliere expressie die in eenvoudige query syntaxis wordt verzonden, wordt bijvoorbeeld geïnterpreteerd als een query reeks en geen expressie. In de voorbeeld aanvraag in dit artikel wordt gebruikgemaakt van de volledige lucene-query taal.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>De impact van Search mode op de parser 
 
@@ -123,7 +123,7 @@ Een gewijzigde query structuur voor deze query zou er als volgt uitzien, waarbij
  ![Booleaanse query Search mode][3]
 
 > [!Note] 
-> Als u kiest `searchMode=any` `searchMode=all` voor wordt een beslissing aangeraden bij het uitvoeren van representatieve query's. Gebruikers die waarschijnlijk Opera tors kunnen bevatten (gebruikelijk bij het zoeken naar document winkels), kunnen resultaten beter intuïtief vinden als ze `searchMode=all` Boole-query constructies informeren. `searchMode`Zie [eenvoudige query syntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)voor meer informatie over de Interplay tussen en-Opera tors.
+> Als u kiest `searchMode=any` `searchMode=all` voor wordt een beslissing aangeraden bij het uitvoeren van representatieve query's. Gebruikers die waarschijnlijk Opera tors kunnen bevatten (gebruikelijk bij het zoeken naar document winkels), kunnen resultaten beter intuïtief vinden als ze `searchMode=all` Boole-query constructies informeren. `searchMode`Zie [eenvoudige query syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)voor meer informatie over de Interplay tussen en-Opera tors.
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>Fase 2: lexicale analyse 
@@ -137,10 +137,10 @@ De gemeen schappelijke vorm van lexicale analyse is een *linguïstische analyse*
 * Een samengesteld woord in onderdeel delen opsplitsen 
 * Een hoofd letter woord in kleine letters verlagen 
 
-Al deze bewerkingen verwijderen doorgaans verschillen tussen de tekst invoer van de gebruiker en de termen die zijn opgeslagen in de index. Dergelijke bewerkingen gaan verder dan tekst verwerking en vereisen uitgebreide kennis van de taal zelf. Voor het toevoegen van deze laag taal kundige bewustmaking ondersteunt Azure Cognitive Search een lange lijst [taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) van zowel de Lucene als van micro soft.
+Al deze bewerkingen verwijderen doorgaans verschillen tussen de tekst invoer van de gebruiker en de termen die zijn opgeslagen in de index. Dergelijke bewerkingen gaan verder dan tekst verwerking en vereisen uitgebreide kennis van de taal zelf. Voor het toevoegen van deze laag taal kundige bewustmaking ondersteunt Azure Cognitive Search een lange lijst [taal analyse](/rest/api/searchservice/language-support) van zowel de Lucene als van micro soft.
 
 > [!Note]
-> De analyse vereisten kunnen variëren van Mini maal, afhankelijk van uw scenario. U kunt de complexiteit van de lexicale analyse regelen door het selecteren van een van de vooraf gedefinieerde analyse functies of door uw eigen [aangepaste analyse functie](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)te maken. Analyse functies zijn gericht op Doorzoek bare velden en zijn opgegeven als onderdeel van een veld definitie. Zo kunt u de lexicale analyse per veld variëren. Niet opgegeven, de *standaard* -lucene Analyzer wordt gebruikt.
+> De analyse vereisten kunnen variëren van Mini maal, afhankelijk van uw scenario. U kunt de complexiteit van de lexicale analyse regelen door het selecteren van een van de vooraf gedefinieerde analyse functies of door uw eigen [aangepaste analyse functie](/rest/api/searchservice/Custom-analyzers-in-Azure-Search)te maken. Analyse functies zijn gericht op Doorzoek bare velden en zijn opgegeven als onderdeel van een veld definitie. Zo kunt u de lexicale analyse per veld variëren. Niet opgegeven, de *standaard* -lucene Analyzer wordt gebruikt.
 
 In het vorige voor beeld heeft de eerste query structuur de term ' spacious ' met een hoofd letter ' S ' en een komma die de query-parser interpreteert als een deel van de query term (een komma wordt niet beschouwd als een query taal operator).  
 
@@ -150,7 +150,7 @@ Wanneer de standaard-Analyzer de term verwerkt, wordt er in een kleine letter "O
 
 ### <a name="testing-analyzer-behaviors"></a>Gedrag van Test Analyzer 
 
-Het gedrag van een Analyzer kan worden getest met behulp van de [analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer). Geef de tekst op die u wilt analyseren om te zien welke termen worden gegenereerd door de analyse functie. Als u bijvoorbeeld wilt zien hoe de tekst ' Air-condition ' door de standaard-Analyzer wordt verwerkt, kunt u de volgende aanvraag verzenden:
+Het gedrag van een Analyzer kan worden getest met behulp van de [analyse-API](/rest/api/searchservice/test-analyzer). Geef de tekst op die u wilt analyseren om te zien welke termen worden gegenereerd door de analyse functie. Als u bijvoorbeeld wilt zien hoe de tekst ' Air-condition ' door de standaard-Analyzer wordt verwerkt, kunt u de volgende aanvraag verzenden:
 
 ~~~~
 {
@@ -286,7 +286,7 @@ De index voor het veld **Beschrijving** is als volgt:
 | eland | 2
 | spacious | 1
 | het | 1, 2
-| tot | 1
+| in op | 1
 | weergave | 1, 2, 3
 | Walking | 1
 | wordt uitgevoerd met | 3
@@ -359,8 +359,8 @@ Een voor beeld illustreert waarom dit van belang is. Zoek opdrachten met Joker t
 
 Er zijn twee manieren voor het afstemmen van relevantie scores in azure Cognitive Search:
 
-1. **Score profielen** verhogen documenten in de geclassificeerde lijst met resultaten op basis van een set regels. In ons voor beeld kunnen we documenten beschouwen die overeenkomen met het veld titel die relevant zijn voor documenten die overeenkomen met het veld Beschrijving. Daarnaast kunnen we documenten met een lagere prijs promoten als in onze index een prijs veld voor elk hotel voor komt. Meer informatie over het [toevoegen van Score profielen aan een zoek index.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Term versterking** (alleen beschikbaar in de volledige lucene-query syntaxis) biedt een Boosting-operator `^` die kan worden toegepast op elk deel van de query structuur. In ons voor beeld, in plaats van te zoeken op het voor voegsel van de *lucht* \* , kan er een zoek opdracht naar de voor *waarden* voor de airconditioning of het voor voegsel worden gezocht, maar documenten die overeenkomen met de exacte term, worden verhoogd door Boost toe te passen op de term query: * lucht voorwaarde ^ 2 | | lucht conditie * *. Meer informatie over het verbeteren van de [term](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+1. **Score profielen** verhogen documenten in de geclassificeerde lijst met resultaten op basis van een set regels. In ons voor beeld kunnen we documenten beschouwen die overeenkomen met het veld titel die relevant zijn voor documenten die overeenkomen met het veld Beschrijving. Daarnaast kunnen we documenten met een lagere prijs promoten als in onze index een prijs veld voor elk hotel voor komt. Meer informatie over het [toevoegen van Score profielen aan een zoek index.](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+2. **Term versterking** (alleen beschikbaar in de volledige lucene-query syntaxis) biedt een Boosting-operator `^` die kan worden toegepast op elk deel van de query structuur. In ons voor beeld, in plaats van te zoeken op het voor voegsel van de *lucht* \* , kan er een zoek opdracht naar de voor *waarden* voor de airconditioning of het voor voegsel worden gezocht, maar documenten die overeenkomen met de exacte term, worden verhoogd door Boost toe te passen op de term query: * lucht voorwaarde ^ 2 | | lucht conditie * *. Meer informatie over het verbeteren van de [term](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Score in een gedistribueerde index
@@ -383,23 +383,23 @@ In dit artikel wordt gezocht in volledige tekst in de context van Azure Cognitiv
 
 + Bouw de voor beeld-index, probeer verschillende query's uit en Bekijk de resultaten. Zie [een index maken en er query's op uitvoeren in de portal](search-get-started-portal.md#query-index)voor instructies.
 
-+ Probeer extra query syntaxis uit de sectie voor beeld van [Zoeken in documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) of van een [eenvoudige query syntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) in Search Explorer in de portal.
++ Probeer extra query syntaxis uit de sectie voor beeld van [Zoeken in documenten](/rest/api/searchservice/search-documents#bkmk_examples) of van een [eenvoudige query syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) in Search Explorer in de portal.
 
-+ Bekijk [Score profielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) als u de rang schikking in uw zoek toepassing wilt aanpassen.
++ Bekijk [Score profielen](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) als u de rang schikking in uw zoek toepassing wilt aanpassen.
 
-+ Meer informatie over het Toep assen van [taalspecifieke lexicale analyse](https://docs.microsoft.com/rest/api/searchservice/language-support)functies.
++ Meer informatie over het Toep assen van [taalspecifieke lexicale analyse](/rest/api/searchservice/language-support)functies.
 
-+ [Aangepaste analyse functies configureren](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) voor een minimale verwerking of gespecialiseerde verwerking van specifieke velden.
++ [Aangepaste analyse functies configureren](/rest/api/searchservice/custom-analyzers-in-azure-search) voor een minimale verwerking of gespecialiseerde verwerking van specifieke velden.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-[REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[REST API voor documenten zoeken](/rest/api/searchservice/search-documents) 
 
-[Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[Vereenvoudigde querysyntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Volledige Lucene-querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Volledige Lucene-querysyntaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
-[Zoekresultaten verwerken](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+[Zoekresultaten verwerken](./search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

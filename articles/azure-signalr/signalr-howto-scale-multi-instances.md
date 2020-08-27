@@ -4,14 +4,15 @@ description: In veel schaal scenario's moet de klant vaak meerdere instanties in
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74158154"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921984"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hoe kan de signaal service met meerdere exemplaren schalen?
 De nieuwste signalerings Service-SDK ondersteunt meerdere eind punten voor de seingevings service-exemplaren. U kunt deze functie gebruiken om de gelijktijdige verbindingen te schalen of deze te gebruiken voor berichten in meerdere regio's.
@@ -217,7 +218,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 Het `ServiceEndpoint` object heeft een `EndpointType` eigenschap met waarde `primary` of `secondary` .
 
-`primary`eind punten zijn voorkeurs eindpunten voor het ontvangen van client verkeer en worden beschouwd als een betrouwbaardere netwerk verbinding. `secondary`eind punten worden beschouwd als een minder betrouw bare netwerk verbinding en worden alleen gebruikt voor het maken van de server naar client verkeer, bijvoorbeeld het uitzenden van berichten, niet voor het nemen van client-naar-server verkeer.
+`primary` eind punten zijn voorkeurs eindpunten voor het ontvangen van client verkeer en worden beschouwd als een betrouwbaardere netwerk verbinding. `secondary` eind punten worden beschouwd als een minder betrouw bare netwerk verbinding en worden alleen gebruikt voor het maken van de server naar client verkeer, bijvoorbeeld het uitzenden van berichten, niet voor het nemen van client-naar-server verkeer.
 
 In verschillende regio's kan het netwerk Insta Biel zijn. Voor één app-server die zich in *VS-Oost*bevindt, kan het eind punt van de seingevings service die zich in dezelfde regio *VS-Oost* bevindt, worden geconfigureerd als `primary` en eind punten in andere regio's die als zijn gemarkeerd `secondary` . In deze configuratie kunnen service-eind punten in andere regio's berichten **ontvangen** van deze *VS* -server voor Amerikaanse apps, maar er zijn geen clients voor **meerdere regio's** die naar deze app-server worden doorgestuurd. De architectuur wordt weer gegeven in het onderstaande diagram:
 

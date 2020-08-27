@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985781"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918125"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
@@ -27,12 +27,15 @@ U kunt de volgende opties gebruiken om uw DNS-instellingen voor privé-eind punt
 - **Gebruik uw DNS-doorstuur server (optioneel)**. U kunt de DNS-doorstuur server gebruiken om de DNS-omzetting voor een bepaalde persoonlijke koppelings bron te negeren. Als uw [DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wordt gehost op een virtueel netwerk, kunt u een DNS-doorstuur regel maken voor het gebruik van een privé-DNS-zone om de configuratie voor alle persoonlijke koppelings bronnen te vereenvoudigen.
  
 > [!IMPORTANT]
-> Het is niet raadzaam om een zone die actief is in gebruik te overschrijven om open bare eind punten op te lossen. Verbindingen met bronnen kunnen niet correct worden omgezet zonder dat DNS naar de open bare DNS doorstuurt. Als u problemen wilt voor komen, maakt u een andere domein naam of volgt u de voorgestelde naam voor elke service hieronder. 
+> Wordt niet aanbevolen een zone te overschrijven die actief in gebruik is om open bare eind punten op te lossen. Verbindingen met bronnen kunnen niet correct worden omgezet zonder dat DNS naar de open bare DNS doorstuurt. Als u problemen wilt voor komen, maakt u een andere domein naam of volgt u de voorgestelde naam voor elke service hieronder. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>Configuratie van DNS-zone voor Azure-Services
 Azure-Services maken een canonieke naam DNS-record (CNAME) op de open bare DNS-service om de oplossing om te leiden naar de voorgestelde persoonlijke domein naam. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
  
 Uw toepassingen hoeven de verbindings-URL niet te wijzigen. Bij het oplossen van een open bare DNS-service, wordt de DNS-server nu omgezet naar uw privé-eind punten. Het proces heeft geen invloed op uw bestaande toepassingen. 
+
+> [!IMPORTANT]
+> Particuliere netwerken die al gebruikmaken van de privé-DNS-zone voor een bepaald type, kunnen alleen verbinding maken met open bare resources als ze geen privé-eindpunt verbindingen hebben, anders is een bijbehorende DNS-configuratie vereist in de privé-DNS-zone om de DNS-omzettings reeks te volt ooien. 
 
 Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de volgende tabel:
 
@@ -100,7 +103,7 @@ U hebt de volgende resources nodig om correct te configureren:
 
 - Virtueel netwerk van de client
 
-- Privé-DNS zone [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) met [type A-record](../dns/dns-zones-records.md#record-types)
+- Privé-DNS zone [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)  met [type A-record](../dns/dns-zones-records.md#record-types)
 
 - Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
 

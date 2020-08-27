@@ -3,13 +3,13 @@ title: Automatisch schalen rekenknooppunten in een Azure Batch-pool
 description: Schakel automatisch schalen in een Cloud groep in om het aantal reken knooppunten in de pool dynamisch aan te passen.
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387469"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932318"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -163,7 +163,7 @@ Formules voor automatisch schalen ondersteunen de volgende typen:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige sectie.
 
@@ -283,7 +283,7 @@ De volgende methoden kunnen worden gebruikt om voorbeeld gegevens over door de s
 
 | Methode | Beschrijving |
 | --- | --- |
-| GetSample() |De `GetSample()` methode retourneert een vector van gegevens voorbeelden.<br/><br/>Een voor beeld is 30 seconden voor metrische gegevens. Met andere woorden: alle voor beelden worden elke 30 seconden opgehaald. Maar zoals hieronder vermeld, is er een vertraging tussen het moment waarop een voor beeld wordt verzameld en wanneer het beschikbaar is voor een formule. Daarom kunnen niet alle voor beelden voor een bepaalde periode beschikbaar zijn voor evaluatie met een formule.<ul><li>`doubleVec GetSample(double count)`: Hiermee geeft u het aantal steek proeven op dat moet worden opgehaald uit de meest recente voor beelden die zijn verzameld. `GetSample(1)`retourneert het laatst beschik bare voor beeld. Voor metrische gegevens, zoals, `$CPUPercent` `GetSample(1)` mag echter niet worden gebruikt, omdat het niet mogelijk is om te weten *Wanneer* het voor beeld is verzameld. Het kan recent zijn of, vanwege systeem problemen, mogelijk veel oudere items zijn. In dergelijke gevallen is het beter om een tijds interval te gebruiken, zoals hieronder wordt weer gegeven.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Hiermee geeft u een tijds bestek op voor het verzamelen van voorbeeld gegevens. U kunt ook het percentage steek proeven opgeven dat beschikbaar moet zijn in het aangevraagde tijds bestek. `$CPUPercent.GetSample(TimeInterval_Minute * 10)`Retourneert bijvoorbeeld 20 voor beelden als alle voor beelden voor de laatste tien minuten aanwezig zijn in de `CPUPercent` geschiedenis. Als de laatste minuut van de geschiedenis niet beschikbaar is, worden er slechts 18 steek proeven geretourneerd. In dit geval `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` zou er een fout kunnen optreden omdat slechts 90 procent van de voor beelden beschikbaar is, maar wel `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` lukken.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Hiermee geeft u een tijds bestek op voor het verzamelen van gegevens, met een begin tijd en een eind tijd. Zoals hierboven vermeld, is er een vertraging tussen het moment waarop een voor beeld wordt verzameld en wanneer het voor een formule beschikbaar wordt. Houd rekening met deze vertraging wanneer u de- `GetSample` methode gebruikt. Zie `GetSamplePercent` hieronder. |
+| GetSample() |De `GetSample()` methode retourneert een vector van gegevens voorbeelden.<br/><br/>Een voor beeld is 30 seconden voor metrische gegevens. Met andere woorden: alle voor beelden worden elke 30 seconden opgehaald. Maar zoals hieronder vermeld, is er een vertraging tussen het moment waarop een voor beeld wordt verzameld en wanneer het beschikbaar is voor een formule. Daarom kunnen niet alle voor beelden voor een bepaalde periode beschikbaar zijn voor evaluatie met een formule.<ul><li>`doubleVec GetSample(double count)`: Hiermee geeft u het aantal steek proeven op dat moet worden opgehaald uit de meest recente voor beelden die zijn verzameld. `GetSample(1)` retourneert het laatst beschik bare voor beeld. Voor metrische gegevens, zoals, `$CPUPercent` `GetSample(1)` mag echter niet worden gebruikt, omdat het niet mogelijk is om te weten *Wanneer* het voor beeld is verzameld. Het kan recent zijn of, vanwege systeem problemen, mogelijk veel oudere items zijn. In dergelijke gevallen is het beter om een tijds interval te gebruiken, zoals hieronder wordt weer gegeven.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Hiermee geeft u een tijds bestek op voor het verzamelen van voorbeeld gegevens. U kunt ook het percentage steek proeven opgeven dat beschikbaar moet zijn in het aangevraagde tijds bestek. `$CPUPercent.GetSample(TimeInterval_Minute * 10)`Retourneert bijvoorbeeld 20 voor beelden als alle voor beelden voor de laatste tien minuten aanwezig zijn in de `CPUPercent` geschiedenis. Als de laatste minuut van de geschiedenis niet beschikbaar is, worden er slechts 18 steek proeven geretourneerd. In dit geval `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` zou er een fout kunnen optreden omdat slechts 90 procent van de voor beelden beschikbaar is, maar wel `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` lukken.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Hiermee geeft u een tijds bestek op voor het verzamelen van gegevens, met een begin tijd en een eind tijd. Zoals hierboven vermeld, is er een vertraging tussen het moment waarop een voor beeld wordt verzameld en wanneer het voor een formule beschikbaar wordt. Houd rekening met deze vertraging wanneer u de- `GetSample` methode gebruikt. Zie `GetSamplePercent` hieronder. |
 | GetSamplePeriod() |Retourneert de periode van de voor beelden die zijn gemaakt in een historische voorbeeld gegevensset. |
 | Aantal () |Retourneert het totale aantal voor beelden in de metrische geschiedenis. |
 | HistoryBeginTime() |Retourneert het tijds tempel van het oudste beschik bare gegevens voorbeeld voor de metriek. |
@@ -667,7 +667,7 @@ $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
 
-`$curTime`kan worden aangepast aan uw lokale tijd zone door toe te voegen `time()` aan het product van `TimeZoneInterval_Hour` en de UTC-offset. Gebruik bijvoorbeeld `$curTime = time() + (-6 * TimeInterval_Hour);` voor Mountain (zomer tijd) (MDT). Houd er rekening mee dat de offset moet worden aangepast aan het begin en het einde van de zomer tijd (indien van toepassing).
+`$curTime` kan worden aangepast aan uw lokale tijd zone door toe te voegen `time()` aan het product van `TimeZoneInterval_Hour` en de UTC-offset. Gebruik bijvoorbeeld `$curTime = time() + (-6 * TimeInterval_Hour);` voor Mountain (zomer tijd) (MDT). Houd er rekening mee dat de offset moet worden aangepast aan het begin en het einde van de zomer tijd (indien van toepassing).
 
 ### <a name="example-2-task-based-adjustment"></a>Voor beeld 2: aanpassing op basis van een taak
 
