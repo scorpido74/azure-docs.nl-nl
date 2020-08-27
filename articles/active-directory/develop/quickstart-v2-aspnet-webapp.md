@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 297c2354e8a56b681230bfe2cedd0d49ddbb5b82
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165716"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691289"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Quickstart: Aanmelding voor Microsoft Identity Platform toevoegen aan een ASP.NET-web-app
 In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET-web-app persoonlijke accounts (hotmail.com, outlook.com, enz.) en werk- en schoolaccounts kan aanmelden vanuit een willekeurig exemplaar van Azure Active Directory (Azure AD).  (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
@@ -159,7 +159,7 @@ public void Configuration(IAppBuilder app)
 > |Waar  | Beschrijving |
 > |---------|---------|
 > | `ClientId`     | Toepassings-id van de toepassing die is geregistreerd in Azure Portal |
-> | `Authority`    | Het STS-eindpunt voor de gebruiker voor verificatie. Meestal <https://login.microsoftonline.com/{tenant}/v2.0> voor openbare cloud, waarbij {tenant} de naam is van uw tenant, uw tenant-id of *common* voor een verwijzing naar het algemene eindpunt (gebruikt voor toepassingen met meerdere tenants) |
+> | `Authority`    | Het STS-eindpunt voor de gebruiker voor verificatie. Meestal `https://login.microsoftonline.com/{tenant}/v2.0` voor openbare cloud, waarbij {tenant} de naam is van uw tenant, uw tenant-id of *common* voor een verwijzing naar het algemene eindpunt (gebruikt voor toepassingen met meerdere tenants) |
 > | `RedirectUri`  | URL waar gebruikers naartoe worden gestuurd na verificatie bij Microsoft Identity Platform-eindpunt |
 > | `PostLogoutRedirectUri`     | URL waar gebruikers naartoe worden gestuurd na afmelding |
 > | `Scope`     | De lijst met bereiken die wordt aangevraagd, gescheiden door spaties |

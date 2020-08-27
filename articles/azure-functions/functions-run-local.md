@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505713"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929483"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -37,7 +37,7 @@ Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is
 
 + **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
 
-Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
+U kunt slechts één versie van de kern Hulpprogramma's installeren op een bepaalde computer. Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -65,7 +65,7 @@ In de volgende stappen wordt een Windows-installatie programma (MSI) gebruikt om
 
 1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u de [.net Core 3. x SDK voor Windows](https://dotnet.microsoft.com/download).
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -257,20 +257,21 @@ Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wi
 
   ![connection string kopiëren van Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
-+ Gebruik de basis Hulpprogramma's om de connection string te downloaden van Azure met een van de volgende opdrachten:
++ Gebruik de belangrijkste Hulpprogram Ma's van de hoofdmap van het project om de connection string te downloaden van Azure met een van de volgende opdrachten:
 
   + Alle instellingen van een bestaande functie-app downloaden:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + De verbindings reeks ophalen voor een specifiek opslag account:
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Wanneer u nog niet bent aangemeld bij Azure, wordt u gevraagd dit te doen.
+    Wanneer u nog niet bent aangemeld bij Azure, wordt u gevraagd dit te doen. Met deze opdrachten worden bestaande instellingen in het local.settings.jsvan het bestand overschreven. 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Een functie maken
 

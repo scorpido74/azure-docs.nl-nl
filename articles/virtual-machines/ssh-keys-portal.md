@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041745"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929432"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>SSH-sleutels in de Azure Portal genereren en opslaan
 
@@ -26,9 +26,9 @@ Zie [SSH-sleutels gebruiken voor verbinding met virtuele Linux-machines](./linux
 
 ## <a name="generate-new-keys"></a>Nieuwe sleutels genereren
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 
-1. Typ aan de bovenkant van de pagina *SSH* om te zoeken. Onder **Marketplace*selecteert u **SSH-sleutels**.
+1. Typ aan de bovenkant van de pagina *SSH* om te zoeken. Onder **Marketplace**selecteert u **SSH-sleutels**.
 
 1. Op de pagina **SSH-sleutel** selecteert u **maken**.
 
@@ -61,14 +61,14 @@ Open een Power shell-prompt op de lokale computer en typ het volgende:
 ssh -i <path to the .pem file> username@<ipaddress of the VM>
 ```
 
-Typ bijvoorbeeld:`ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
+Typ bijvoorbeeld: `ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
 
 
 ## <a name="upload-an-ssh-key"></a>Een SSH-sleutel uploaden
 
 U kunt ook een open bare SSH-sleutel uploaden om op te slaan in Azure. Zie [SSH-sleutels gebruiken voor verbinding met virtuele Linux-machines](./linux/ssh-from-windows.md)voor informatie over het maken van een SSH-sleutel paar.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 
 1. Typ aan de bovenkant van de pagina *SSH* om te zoeken. Onder **Marketplace*selecteert u **SSH-sleutels**.
 
@@ -89,6 +89,20 @@ U kunt ook een open bare SSH-sleutel uploaden om op te slaan in Azure. Zie [SSH-
 1. Nadat de validatie is voltooid, selecteert u **Maken**. 
 
 Zodra de sleutel is geüpload, kunt u deze gebruiken wanneer u een VM maakt.
+
+## <a name="list-keys"></a>Lijst met sleutels
+
+SSH-sleutels die zijn gemaakt in de portal worden opgeslagen als resources, zodat u de weer gave van resources kunt filteren om deze allemaal weer te geven.
+
+1. Selecteer in de portal **alle resource**.
+1. Selecteer in de filters **type**, hef de selectie van de optie **Alles selecteren** op om de lijst te wissen.
+1. Typ **SSH** in het filter en selecteer **SSH-sleutel**.
+
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Scherm opname van het filteren van de lijst om al uw SSH-sleutels weer te geven.":::
+
+## <a name="get-the-public-key"></a>De open bare sleutel ophalen
+
+Als u uw open bare sleutel nodig hebt, kunt u deze eenvoudig kopiëren van de portal-pagina voor de sleutel. U hoeft alleen uw sleutels op te geven (met behulp van het proces in de laatste sectie) en vervolgens een sleutel te selecteren in de lijst. De pagina voor de sleutel wordt geopend en u kunt klikken op het pictogram **kopiëren naar klem bord** naast de sleutel om deze te kopiëren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
