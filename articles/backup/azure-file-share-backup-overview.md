@@ -3,16 +3,16 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823877"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892249"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
-Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplossing die uw gegevens in de Cloud beschermt en extra onderhouds overhead voor on-premises back-upoplossingen verwijdert. De Azure Backup-service kan probleemloos worden geïntegreerd met Azure File Sync en Hiermee kunt u uw bestands share gegevens en uw back-ups centraliseren. Met deze eenvoudige, betrouw bare en veilige oplossing kunt u de beveiliging van uw zakelijke bestands shares in een paar eenvoudige stappen configureren met een garantie dat u uw gegevens kunt herstellen in het geval van een nood geval.
+Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplossing die uw gegevens in de Cloud beschermt en extra onderhouds overhead voor on-premises back-upoplossingen verwijdert. De Azure Backup-service kan probleemloos worden geïntegreerd met Azure File Sync en Hiermee kunt u uw bestands share gegevens en uw back-ups centraliseren. Met deze eenvoudige, betrouw bare en veilige oplossing kunt u de beveiliging van uw bestands shares in een paar eenvoudige stappen configureren met een garantie dat u uw gegevens in elk nood geval kunt herstellen.
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Belangrijkste voor delen van back-ups van Azure-bestands share
 

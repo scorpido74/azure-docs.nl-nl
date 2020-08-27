@@ -4,15 +4,16 @@ description: Krijg inzicht in waarom u kosten voor uw gratis Azure-account ziet.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200945"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682923"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermijd kosten met uw gratis Azure-account
 
@@ -23,7 +24,6 @@ Laten we eens kijken naar enkele redenen waarom er kosten in rekening worden geb
 ## <a name="your-credit-runs-out-or-is-expired"></a>Uw tegoed is bijna op of is verlopen
 
 Als uw tegoed aan het einde van 30 dagen bijna op of verlopen is, worden uw abonnement en services uitgeschakeld. Als u gebruik wilt blijven maken van Azure-services, moet u uw account upgraden. Zie [Uw gratis Azure-account upgraden](upgrade-azure-subscription.md) voor meer informatie. Nadat u de upgrade hebt uitgevoerd, hebt u nog steeds toegang tot gratis services voor 12 maanden en worden er alleen kosten in rekening gebracht voor gebruik buiten de gratis services en hoeveelheden om.
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Het gebruik overschrijdt de limieten van gratis services
 

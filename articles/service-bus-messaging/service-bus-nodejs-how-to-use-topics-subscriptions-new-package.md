@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080623"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660593"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Quickstart: Service Bus-onderwerpen en-abonnementen gebruiken met Node.js en het pakket azure/service-bus
 In deze zelfstudie leert u hoe u een Node.js-programma kunt schrijven om berichten te versturen naar een Service Bus-onderwerp en berichten te ontvangen van een Service Bus-abonnement met behulp van het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-pakket. Dit pakket maakt gebruik van het snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md), terwijl het oudere [Azure-sb](https://www.npmjs.com/package/azure-sb)-pakket gebruik maakte van [Service Bus REST runtime-API's](/rest/api/servicebus/service-bus-runtime-rest). De voorbeelden zijn geschreven in Javascript.
@@ -86,7 +86,7 @@ Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Stan
 Interactie met een Service Bus-abonnement begint bij het instantiëren van de [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient)-klasse en het gebruiken ervan om de [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient)-klasse te instantiëren. Zodra u de abonnementsclient hebt, kunt u een ontvanger maken en de [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-)- of [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-)-methode gebruiken om berichten te ontvangen.
 
 1. Open uw favoriete editor, bijvoorbeeld [Visual Studio Code](https://code.visualstudio.com/)
-2. Maak een bestand met de naam `recieve.js` en plak de onderstaande code hierin. Deze code probeert 10 berichten van uw abonnement te ontvangen. Het werkelijke aantal dat u ontvangt, is afhankelijk van het aantal berichten in het abonnement en de netwerklatentie.
+2. Maak een bestand met de naam `receive.js` en plak de onderstaande code hierin. Deze code probeert 10 berichten van uw abonnement te ontvangen. Het werkelijke aantal dat u ontvangt, is afhankelijk van het aantal berichten in het abonnement en de netwerklatentie.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -117,7 +117,7 @@ Interactie met een Service Bus-abonnement begint bij het instantiëren van de [S
     });
     ```
 3. Voer in de bovenstaande code de verbindingstekenreeks en namen in van uw onderwerp en abonnement.
-4. Voer vervolgens de opdracht `node receiveMessages.js` in een opdrachtprompt uit om dit bestand uit te voeren.
+4. Voer vervolgens de opdracht `node receive.js` in een opdrachtprompt uit om dit bestand uit te voeren.
 
 Gefeliciteerd! U heeft zojuist berichten van een Service Bus-abonnement ontvangen.
 

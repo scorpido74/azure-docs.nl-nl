@@ -3,15 +3,16 @@ title: Abonnementskortingen voor Red Hat-reserveringen - Azure
 description: Meer informatie over hoe Red Hat-abonnementskortingen worden toegepast op Red Hat-software op virtuele machines.
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 46a1fd9be35abb19d920e2a3bd34f88c557f40b1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4314a52488473bcacd4aa62a0e8f44d88d2b75f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735112"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681597"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Meer informatie over hoe de abonnementskorting voor Red Hat Linux Enterprise-softwarereservering wordt toegepast voor Azure
 

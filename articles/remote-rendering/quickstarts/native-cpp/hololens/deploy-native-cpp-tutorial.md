@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b3909281cf475a003ffaaef6f6f48441337728e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810222"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892657"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Quickstart: Systeemeigen C++-voorbeeld implementeren in HoloLens
 
@@ -62,7 +62,6 @@ Schakel de buildconfiguratie om naar *Foutopsporing* (of *Release*) en *ARM64*. 
 ![Visual Studio-configuratie](media/vs-config-native-cpp-tutorial.png)
 
 Omdat de accountreferenties worden vastgelegd in de broncode van de zelfstudie, wijzigt u deze in geldige referenties. Hiervoor opent u het bestand `HolographicAppMain.cpp` in Visual Studio en wijzigt u het onderdeel waarin de front-end wordt gemaakt in de constructor van klasse `HolographicAppMain`:
-
 
 ```cpp
 // 2. Create front end

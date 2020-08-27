@@ -3,15 +3,16 @@ title: Inzicht in korting voor gereserveerde Dedicated Host-instanties voor in A
 description: Meer informatie over hoe korting voor gereserveerde VM-instanties in Azure wordt toegepast op Azure Dedicated Hosts.
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: a39cd7aa2c15fedeaf69408d8c8ae8c6b0848fed
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677388"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689453"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Hoe korting voor Azure-reserveringen wordt toegepast op Azure Dedicated Hosts
 

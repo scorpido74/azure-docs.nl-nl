@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03d5e3959b85a2b0bd9ae30744051895ff026b77
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79464220"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691221"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Belangrijke kosten voor metrische gegevens weergeven met dashboards
 
@@ -43,7 +44,7 @@ Als u snel aan de slag wilt gaan met een aangepast dashboard, kunt u een bestaan
 
 Een aangepast dashboard maken:
 
-1. Klik op de startpagina op **Nieuwe toevoegen +** . De pagina Mijn dashboard wordt weergegeven.  
+1. Klik op de startpagina op **Nieuwe toevoegen +**. De pagina Mijn dashboard wordt weergegeven.  
     ![Mijn dashboardpagina waar u nieuwe rapporten toevoegt](./media/dashboards/my-dashboard.png)
 2. Klik op **Nieuw rapport toevoegen**. Het vak Rapport toevoegen wordt weergegeven.
 3. Selecteer het rapport dat u wilt toevoegen aan de widget van het dashboard. De widget wordt toegevoegd aan het dashboard.
@@ -102,7 +103,7 @@ Een aangepast dashboard dupliceren (klonen):
 1. Klik op het dashboard dat u wilt dupliceren op **Opslaan als**. Er wordt een nieuw dashboard met dezelfde naam en een nummer geopend.
 2. Wijzig de naam van het gedupliceerde dashboard en wijzig het naar wens.
 
-\- Of -
+- Of -
 
 1. Klik in Dashboardinstellingen op **Opslaan als** op de regel van het dashboard dat u wilt dupliceren.
 2. Het gedupliceerde dashboard wordt geopend.
@@ -114,7 +115,7 @@ U kunt elk dashboard instellen als standaard. Als u dit instelt als standaard, w
 
 - Klik op het dashboard-tabblad dat u wilt instellen als standaard en klik vervolgens op **Standaard** aan de rechterkant.
 
-\- Of -
+- Of -
 
 1. Klik op **Dashboardinstellingen** om de lijst met beschikbare Dash boards weer te geven en selecteer het dashboard dat u wilt instellen als standaard.  
     ![Dashboardopties voor een standaard dashboard](./media/dashboards/dashboard-options.png)

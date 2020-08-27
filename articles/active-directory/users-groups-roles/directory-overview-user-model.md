@@ -14,16 +14,16 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a752eb8f38c5a2ccc88d7ceed3d3b342d20d3f51
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223819"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795299"
 ---
 # <a name="what-is-enterprise-user-management"></a>Wat is Enterprise-gebruikersbeheer?
 
-In dit artikel maakt de Azure AD-beheerder kennis met de relatie tussen de belangrijkste taken voor [identiteitsbeheer](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context) voor gebruikers, wat betreft hun groepen, licenties, geïmplementeerde bedrijfsapps en beheerdersrollen. Naarmate uw organisatie groeit, kunt u Azure AD-groepen en beheerdersrollen gebruik voor het volgende:
+In dit artikel maakt de Azure AD-beheerder kennis met de relatie tussen de belangrijkste taken voor [identiteitsbeheer](../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) voor gebruikers, wat betreft hun groepen, licenties, geïmplementeerde bedrijfsapps en beheerdersrollen. Naarmate uw organisatie groeit, kunt u Azure AD-groepen en beheerdersrollen gebruik voor het volgende:
 
 * Licenties toewijzen aan groepen in plaats van aan personen
 * Machtigingen overdragen om het werk van Azure AD-beheer te delegeren aan rollen met minder bevoegdheden
@@ -37,7 +37,7 @@ Voor meer flexibiliteit en om de hoeveelheid werk voor het beheer van groepslidm
 
 ## <a name="assign-licenses-to-groups"></a>Licenties toewijzen aan groepen
 
-Het toewijzen of verwijderen van licenties van afzonderlijke gebruikers kan veel tijd en aandacht vragen. Als u in plaats daarvan [licenties toewijst aan groepen](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), kunt u grootschalig licentiebeheer eenvoudiger maken.
+Het toewijzen of verwijderen van licenties van afzonderlijke gebruikers kan veel tijd en aandacht vragen. Als u in plaats daarvan [licenties toewijst aan groepen](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), kunt u grootschalig licentiebeheer eenvoudiger maken.
 
 Wanneer gebruikers in Azure AD behoren tot een groep die een licentie heeft, krijgen de gebruikers automatisch de juiste licenties toegewezen. Wanneer gebruikers de groep verlaten, worden hun licentietoewijzingen in Azure AD verwijderd. Zonder Azure AD-groepen zou u een PowerShell-script moeten schrijven of Graph API moeten gebruiken om gebruikerslicenties bulksgewijs toe te voegen of te verwijderen voor gebruikers die toetreden tot de organisatie of de organisatie verlaten.
 
@@ -60,7 +60,7 @@ Er worden meer nieuwe Azure AD-beheerdersrollen toegevoegd. Controleer de Azure 
 
 ## <a name="assign-app-access"></a>App-toegang toewijzen
 
-U kunt Azure AD gebruiken voor het toewijzen van groepstoegang tot de [bedrijfsapps die zijn geïmplementeerd in uw Azure AD-organisatie](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Als u dynamische groepen combineert met groepstoewijzing voor apps, kunt u de gebruikerstoegang tot apps automatiseren wanneer uw organisatie groeit. U hebt een Azure Active Directory Premium P1- of Premium P2-licentie nodig om toegang tot bedrijfsapps toe te wijzen.
+U kunt Azure AD gebruiken voor het toewijzen van groepstoegang tot de [bedrijfsapps die zijn geïmplementeerd in uw Azure AD-organisatie](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context). Als u dynamische groepen combineert met groepstoewijzing voor apps, kunt u de gebruikerstoegang tot apps automatiseren wanneer uw organisatie groeit. U hebt een Azure Active Directory Premium P1- of Premium P2-licentie nodig om toegang tot bedrijfsapps toe te wijzen.
 
 Azure AD geeft u nauwkeurigere controle over de gegevens die tussen de app en de groepen stromen waartoe u toegang verleent. Open in [Bedrijfstoepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) een app en selecteer **Inrichten** om het volgende te doen:
 
@@ -72,6 +72,6 @@ Azure AD geeft u nauwkeurigere controle over de gegevens die tussen de app en de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een beginnende Azure AD-beheerder bent, vindt u de basisbeginselen in de [Basisprincipes van Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
+Als u een beginnende Azure AD-beheerder bent, vindt u de basisbeginselen in de [Basisprincipes van Azure Active Directory](../fundamentals/index.yml).
 
-Of u kunt beginnen met [het maken van groepen](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [toewijzen van licenties](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [het toewijzen van app-toegang](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) of [het toewijzen van beheerdersrollen](directory-assign-admin-roles.md).
+Of u kunt beginnen met [het maken van groepen](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), [toewijzen van licenties](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), [het toewijzen van app-toegang](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) of [het toewijzen van beheerdersrollen](directory-assign-admin-roles.md).
