@@ -8,7 +8,7 @@
       href: lab-services-overview.md
 - name: Snelstartgids
   items:
-    - name: Een lab maken - ARM-sjabloon
+    - name: Een lab maken - Resource Manager-sjabloon
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
 - name: Zelfstudies
@@ -75,6 +75,8 @@
       items:
         - name: Een lab maken
           href: devtest-lab-create-lab.md
+        - name: Een van het netwerk geïsoleerd lab maken
+          href: network-isolation.md
         - name: Labs maken of wijzigen met behulp van Resource Manager-sjabloon
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: Resourcegroep opgeven voor virtuele machines van het lab

@@ -1,203 +1,203 @@
 ---
-title: 'Snelstartgids: Knowledge Base testen met batch vragen'
-description: Gebruik het hulp programma voor het testen van de QnA Maker om de kennis bases in uw QnA Maker resource te testen op de verwachte antwoorden, betrouwbaarheids scores en vragen over meerdere schakelingen.
+title: 'Quickstart: Knowledge Base testen met batchvragen'
+description: Gebruik het batchtestprogramma QnA Maker om de Knowledge Base in uw QnA Maker-resource te testen op verwachte antwoorden, waarschijnlijkheidsscores en vragen met meerdere paden.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337730"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531066"
 ---
-# <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Snelstartgids: Knowledge Base testen met batch vragen en verwachte antwoorden
+# <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Quickstart: Knowledge Base testen met batchvragen en verwachte antwoorden
 
-Gebruik het hulp programma voor het testen van de QnA Maker om de kennis bases in uw QnA Maker resource te testen op de verwachte antwoorden, betrouwbaarheids scores en vragen over meerdere schakelingen.
+Gebruik het batchtestprogramma QnA Maker om de Knowledge Base in uw QnA Maker-resource te testen op verwachte antwoorden, waarschijnlijkheidsscores en vragen met meerdere paden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Maak een QnA Maker-service](create-publish-knowledge-base.md) of gebruik een bestaande service, die gebruikmaakt van de Engelse taal.
-* Het [multi-turn-voorbeeld `.docx` bestand](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) downloaden
-* Down load het [hulp programma voor batch tests](https://aka.ms/qnamakerbatchtestingtool), pak het uitvoer bare bestand uit het `.zip` bestand uit.
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/cognitive-services/)
+* [Maak een QnA Maker-service](create-publish-knowledge-base.md) of gebruik een bestaande service die gebruikmaakt van de Engelse taal.
+* Het `.docx`voorbeeldbestand [meerdere paden downloaden ](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
+* Download het [batchtestprogramma](https://aka.ms/qnamakerbatchtestingtool), pak het uitvoerbaar bestand uit vanuit het `.zip`-bestand.
 
-## <a name="sign-into-qna-maker-portal"></a>Aanmelden bij QnA Maker Portal
+## <a name="sign-into-qna-maker-portal"></a>Aanmelden bij QnA Maker-portal
 
-[Meld](https://www.qnamaker.ai/) u aan bij de QnA Maker Portal.
+[Meld u aan](https://www.qnamaker.ai/) bij de QnA Maker-portal.
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Een nieuwe Knowledge Base maken op basis van het bestand Sample. docx voor meerdere zetten
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Een Knowledge Base maken op basis van het .docx-voorbeeldbestand meerdere paden
 
-1. Selecteer **een Knowledge Base maken** in de werk balk.
-1. Sla **stap 1** over, omdat u al een QnA Maker resource hebt, waarbij u verdergaat met **stap 2** om uw bestaande resource gegevens te selecteren:
+1. Selecteer **Een Knowledge Base maken** in de menubalk.
+1. Sla **Stap 1** over, want u moet al een QnA Maker-resource hebben, ga naar **Stap 2** om uw bestaande resourcegegevens te selecteren:
     * Azure Active Directory-ID
-    * Naam van het Azure-abonnement
-    * Naam van de Azure QnA-service
-    * Taal: de Engelse taal
-1. Voer de naam in `Multi-turn batch test quickstart` als de naam van uw Knowledge Base.
+    * Azure-abonnementsnaam
+    * Azure QnA Service-naam
+    * Taal, de Engelse taal
+1. Voer de naam `Multi-turn batch test quickstart` in als de naam van uw Knowledge Base.
 
-1. Configureer in **stap 4**de instellingen met de volgende tabel:
+1. Configureer in **Stap 4** de instellingen met de volgende tabel:
 
     |Instelling|Waarde|
     |--|--|
-    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Ingeschakeld|
-    |**Standaard antwoord tekst**| `Batch test - default answer not found.`|
-    |**+ Bestand toevoegen**|Selecteer de gedownloade `.docx` Bestands vermelding in de vereisten.|
-    |**Chit-Chat**|**Professionele** selecteren|
+    |**Schakel uitpakken van meerdere paden in vanuit URL's, .pdf- of .docx-bestanden.**|Ingeschakeld|
+    |**Standaardantwoordtekst**| `Batch test - default answer not found.`|
+    |**+ Bestand toevoegen**|Selecteer de gedownloade `.docx`-bestandslijst in de vereisten.|
+    |**Chit-chat**|**Professional** selecteren|
 
-1. Selecteer in **stap 5** **de optie uw KB maken**.
+1. Selecteer in **stap 5**, **Uw KB maken**.
 
-    Wanneer het maken van het proces is voltooid, wordt in de Portal de Bewerk bare Knowledge Base weer gegeven.
+    Wanneer het proces is voltooid, geeft de portal de bewerkbare Knowledge Base weer.
 
-## <a name="save-train-and-publish-knowledge-base"></a>Kennis basis opslaan, trainen en publiceren
+## <a name="save-train-and-publish-knowledge-base"></a>De knowledge base opslaan, trainen en publiceren
 
-1. Selecteer **opslaan en trainen** in de werk balk om de Knowledge Base op te slaan.
-1. Selecteer **publiceren** op de werk balk en selecteer vervolgens **publiceren** opnieuw om de Knowledge Base te publiceren. Met publiceren wordt de Knowledge Base beschikbaar voor query's van een open bare URL-eind punt. Wanneer het publiceren is voltooid, slaat u de host-URL en de informatie over de eindpunt sleutel op die op de pagina **publiceren** worden weer gegeven.
+1. Selecteer **Opslaan en trainen** in de werkbalk om de Knowledge Base op te slaan.
+1. Selecteer **Publiceren** in de werkbalk en selecteer dan nogmaals **Publiceren** om de Knowledge Base te publiceren. Door de Knowledge Base te publiceren is deze beschikbaar voor query's vanuit een openbaar URL-eindpunt. Wanneer het publiceren is voltooid, slaat u de host-URL en eindpuntsleutelgegevens op die worden weergegeven op de pagina **Publiceren**.
 
     |Vereiste gegevens| Voorbeeld|
     |--|--|
     |Gepubliceerde host|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Gepubliceerde sleutel|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 teken reeks wordt weer gegeven na `Endpoint` )|
-    |App-id|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 teken reeks wordt weer gegeven als onderdeel van `POST` ) |
+    |Gepubliceerde sleutel|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (tekenreeks van 32 tekens weergegeven na `Endpoint`)|
+    |App-id|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (tekenreeks van 36 tekens weergegeven als onderdeel van `POST`) |
 
-## <a name="create-batch-test-file-with-question-ids"></a>Batch test bestand maken met vraag-Id's
+## <a name="create-batch-test-file-with-question-ids"></a>Batchtestbestand maken met vraag-ID's
 
-Als u het hulp programma voor batch testen wilt gebruiken, maakt u een bestand `batch-test-data-1.tsv` met de naam met een tekst editor. Het bestand moet de volgende kolommen bevatten, gescheiden door een tabblad.
+Maak een bestand met de naam `batch-test-data-1.tsv` met een teksteditor om het batchtestprogramma te gebruiken. Het bestand moet een UTF-8-indeling hebben en de volgende kolommen, gescheiden door een tab.
 
-|Velden van het TSV-invoer bestand|Opmerkingen|Voorbeeld|
+|TSV-invoerbestandsvelden|Opmerkingen|Voorbeeld|
 |--|--|--|
-|Knowledge Base-ID|Uw Knowledge Base-ID vindt u op de pagina publiceren. Test verschillende kennis grondslagen in dezelfde service in één keer in één bestand met behulp van verschillende Knowledge Base-Id's in één bestand.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 teken reeks wordt weer gegeven als onderdeel van `POST` ) |
-|Vraag|De vraag tekst die een gebruiker invoert. Maxi maal 1.000 tekens.|`How do I sign out?`|
-|Tags met metagegevens|optioneel|`topic:power`maakt gebruik van de indeling _Key: waarde_|
-|Bovenste para meter|optioneel|`25`|
-|Verwachte antwoord-ID|optioneel|`13`|
+|Knowledge Base-ID|Uw Knowledge Base-ID dat u kunt vinden op de pagina Publiceren. Test tegelijkertijd verschillende Knowledge Bases in dezelfde service in een enkel bestand door verschillende Knowledge Base-ID's te gebruiken in een enkel bestand.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (tekenreeks van 36 tekens weergegeven als onderdeel van `POST`) |
+|Vraag|De vraag die een gebruiker zou invoeren. Maximaal 1000 tekens.|`How do I sign out?`|
+|Tags met metagegevens|optioneel|`topic:power` gebruikt de indeling _key:value_|
+|Top-parameter|optioneel|`25`|
+|ID van verwacht antwoord|optioneel|`13`|
 
-Voor deze Knowledge Base voegt u drie rijen van alleen de 2 vereiste kolommen toe aan het bestand. De eerste kolom is uw Knowledge Base-ID en de tweede kolom moet de volgende lijst met vragen zijn:
+Voeg voor deze Knowledge Base drie rijen toe aan het bestand met alleen de twee vereiste kolommen. De eerste kolom is het Knowledge Base-ID en de tweede kolom moet de volgende lijst vragen zijn:
 
-|Kolom 2: vragen|
+|Kolom 2, vragen|
 |--|
 |`Use Windows Hello to sign in`|
 |`Charge your Surface Pro 4`|
 |`Get to know Windows 10`|
 
-Deze vragen zijn de exacte tekst uit de Knowledge Base en retour neren 100 als betrouw bare Score.
+Deze vragen zijn de exacte tekst uit de Knowledge Base en moeten als waarde 100 retourneren voor waarschijnlijkheid.
 
-Voeg vervolgens enkele vragen toe die vergelijkbaar zijn met deze vragen, maar niet precies hetzelfde op drie rijen met dezelfde Knowledge Base-ID:
+Voeg vervolgens een aantal vragen toe op drie rijen, soortgelijk als deze vragen maar niet exact gelijk en gebruik dezelfde Knowledge Base-ID:
 
-|Kolom 2: vragen|
+|Kolom 2, vragen|
 |--|
 |`What is Windows Hello?`|
 |`How do I charge the laptop?`|
 |`What features are in Windows 10?`|
 
 > [!CAUTION]
-> Zorg ervoor dat elke kolom wordt gescheiden door een tab-scheidings teken. Voor loop-of volg spaties worden toegevoegd aan de kolom gegevens en zorgt ervoor dat het programma uitzonde ringen genereert wanneer het type of de grootte onjuist is.
+> Zorg ervoor dat elke kolom wordt gescheiden door alleen een tab-scheidingsteken. Voorloop- of volgspaties worden aan de kolomgegevens toegevoegd en zorgen voor uitzonderingen in het programma als het type of de grootte onjuist is.
 
-Het batch test bestand, wanneer dit wordt geopend in Excel, ziet eruit als in de volgende afbeelding. De Knowledge Base-ID is vervangen door `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` voor beveiliging. Zorg ervoor dat voor uw eigen batch-test de kolom uw Knowledge Base-ID bevat.
+Als het batchtestbestand in Excel wordt geopend, ziet het eruit als de volgende afbeelding. De Knowledge Base-ID is vervangen door `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` voor de beveiliging. Zorg voor uw eigen batchtest dat de kolom uw Knowledge Base-ID weergeeft.
 
 > [!div class="mx-imgBorder"]
-> ![Eerste versie van. TSV-bestand in batch test invoeren](../media/batch-test/batch-test-1-input.png)
+> ![Invoer eerste versie van .tsv-bestand uit batchtest](../media/batch-test/batch-test-1-input.png)
 
-## <a name="test-the-batch-file"></a>Het batch-bestand testen
+## <a name="test-the-batch-file"></a>Batchbestand testen
 
-Voer het programma voor batch tests uit met de volgende CLI-indeling op de opdracht regel.
+Voer op de opdrachtregel het batchtestprogramma uit met de volgende CLI-indeling.
 
-Vervang `YOUR-RESOURCE-NAME` en door `ENDPOINT-KEY` uw eigen waarden voor de service naam en de sleutel van het eind punt. Deze waarden zijn te vinden op de pagina **instellingen** in de QnA Maker Portal.
+Vervang `YOUR-RESOURCE-NAME` en `ENDPOINT-KEY` met uw eigen waarden voor servicenaam en eindpuntsleutel. Deze waarden vindt u op de pagina **Instellingen** in de QnA Maker-portal.
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
 ```
-De test is voltooid en het bestand wordt gegenereerd `out.tsv` :
+De test wordt voltooid en genereert het `out.tsv`-bestand:
 
 > [!div class="mx-imgBorder"]
-> ![Uitvoer van de eerste versie van het. TSV-bestand vanuit de batch test](../media/batch-test/batch-test-1-output.png)
+> ![Uitvoer eerste versie van .tsv-bestand uit batchtest](../media/batch-test/batch-test-1-output.png)
 
-De Knowledge Base-ID is vervangen door `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` voor beveiliging. Voor uw eigen batch test wordt in de kolom de Knowledge Base-ID weer gegeven.
+De Knowledge Base-ID is vervangen door `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` voor de beveiliging. De kolom van uw eigen batchtest geeft uw Knowledge Base-ID weer.
 
-De test uitvoer van een betrouwbaarheids Score, in de vierde kolom, toont de eerste 3 vragen die een Score van 100 zoals verwacht, omdat elke vraag precies hetzelfde is als in de Knowledge Base. De laatste 3 vragen, met een nieuwe woord vorm van de vraag, retour neren 100 niet als de betrouwbaarheids Score. Als u de score voor de test en uw gebruikers wilt verhogen, moet u meer alternatieve vragen toevoegen aan de Knowledge Base.
+De testuitvoer van de waarschijnlijkheidsscore in de vierde kolom, toont dat de drie eerste vragen, zoals verwacht, een score van 100 retourneerden, omdat elke vraag precies hetzelfde is als in de Knowledge Base. De laatste drie vragen met een nieuwe tekst retourneren geen 100 bij de waarschijnlijkheidsscore. Om de score voor de test en uw gebruikers te verhogen, moet u meer alternatieve vragen toevoegen aan de Knowledge Base.
 
-## <a name="testing-with-the-optional-fields"></a>Testen met de optionele velden
+## <a name="testing-with-the-optional-fields"></a>Testen met optionele velden
 
-Wanneer u de indeling en het proces begrijpt, kunt u een test bestand genereren om uit te voeren op basis van uw Knowledge Base uit een gegevens bron, zoals uit chat Logboeken.
+Wanneer u de indeling en het proces begrijpt, kunt u een testbestand genereren om met uw Knowledge Base uit te voeren op basis van een gegevensbron zoals chatlogboeken.
 
-Omdat de gegevens bron en het proces geautomatiseerd zijn, kan het test bestand vaak met verschillende instellingen worden uitgevoerd om de juiste waarden te bepalen.
+Omdat de gegevensbron en het proces zijn geautomatiseerd, kan het testbestand vaak worden uitgevoerd met verschillende instellingen om de juiste waarden te bepalen.
 
-Als u bijvoorbeeld een chat logboek hebt en u wilt bepalen welke chat tekst van toepassing is op welke meta gegevens velden, moet u een test bestand maken en de meta gegevens velden voor elke rij instellen. Voer de test uit en controleer de rijen die overeenkomen met de meta gegevens. Over het algemeen moeten de overeenkomsten positief zijn, maar u moet de resultaten voor valse positieven bekijken. Een fout-positief is een rij die overeenkomt met de meta gegevens, maar op basis van de tekst. de waarde mag niet overeenkomen.
+Als u bijvoorbeeld een chatlogboek hebt en u wilt vaststellen welk chattekst van toepassing is op welke metagegevensvelden, maakt u een testbestand en stelt u voor elke regel de metagegevensvelden in. Voer de test uit en beoordeel de rijen die overeenkomen met de metagegevens. Over het algemeen moeten de overeenkomsten positief zijn, maar u moet de resultaten beoordelen op fout-positieve resultaten. Een fout-positief is een rij die overeenkomt met de metagegevens, maar op basis van de tekst niet overeen zou moeten komen.
 
-## <a name="using-optional-fields-in-the-input-batch-test-file"></a>Optionele velden in het test bestand van de invoer batch gebruiken
+## <a name="using-optional-fields-in-the-input-batch-test-file"></a>Optionele velden gebruiken in het invoerbestand voor batchtesten
 
-Gebruik de volgende tabel om te begrijpen hoe u de veld waarden voor optionele gegevens kunt vinden.
+Gebruik het volgende diagram om de veldwaarden te vinden voor de optionele gegevens.
 
-|Kolom nummer|Optionele kolom|Gegevenslocatie|
+|Kolomnummer|Optionele kolom|Locatie van gegevens|
 |--|--|--|
-|3|metagegevens|Bestaande Knowledge Base exporteren voor bestaande _sleutel:_ waardeparen.|
-|4|top|De standaard waarde van `25` wordt aanbevolen.|
-|5|ID van de vraag en de set met antwoorden|Bestaande Knowledge Base exporteren voor ID-waarden. U ziet ook dat de Id's zijn geretourneerd in het uitvoer bestand.|
+|3|metagegevens|Exporteer bestaande Knowledge Base voor bestaande _key:value_-paren.|
+|4|top|De standaardwaarde `25` wordt aanbevolen.|
+|5|Vraag-en-antwoord-set-ID|Exporteer bestaande Knowledge Base voor ID-waarden. U ziet ook dat de ID's in het uitvoerbestand zijn geretourneerd.|
 
-## <a name="add-metadata-to-the-knowledge-base"></a>Meta gegevens toevoegen aan de Knowledge Base
+## <a name="add-metadata-to-the-knowledge-base"></a>Metagegevens toevoegen aan de Knowledge Base
 
-1. Voeg in de QnA-Portal op de pagina **bewerken** meta gegevens toe van `topic:power` de volgende vragen:
+1. Voeg in de QnA-portal op de pagina **Bewerken** aan de volgende vragen metagegevens toe van `topic:power`:
 
     |Vragen|
     |--|
-    |Uw Surface Pro 4 in rekening brengen|
-    |Het accu niveau controleren|
+    |Uw Surface Pro 4 opladen|
+    |Het niveau van de accu controleren|
 
-    De meta gegevens zijn ingesteld voor twee QnA-paren.
+    Twee QnA-paren hebben de metagegevensset.
 
     > [!TIP]
-    > Als u de meta gegevens en QnA-Id's van elke set wilt zien, exporteert u de Knowledge Base. Selecteer de pagina **instellingen** en selecteer vervolgens **exporteren** als een `.xls` bestand. Zoek dit gedownloade bestand en open het met Excel controleren op meta gegevens en de ID.
+    > Om de metagegevens en QnA-ID's van elke set te zien, moet u de Knowledge Base exporteren. Selecteer de pagina **Instellingen** en selecteer vervolgens **Exporteren** als `.xls`-bestand. Zoek dit gedownloade bestand en open het met Excel om te controleren op metagegevens en ID.
 
-1. Selecteer **opslaan en trainen**, selecteer de pagina **publiceren** en selecteer vervolgens de knop **publiceren** . Deze acties maken de wijziging beschikbaar voor de batch-test. Down load de Knowledge Base via de pagina **instellingen** .
+1. Selecteer **Opslaan en trainen**, selecteer dan de pagina **Publiceren** en vervolgens de knop **Publiceren**. Door deze acties zijn de wijziging beschikbaar voor de batchtest. Download de Knowledge Base vanuit de pagina **Instellingen**.
 
-    Het gedownloade bestand heeft de juiste indeling voor de meta gegevens en de juiste set-ID voor de vraag en het antwoord. Deze velden gebruiken in de volgende sectie
-
-    > [!div class="mx-imgBorder"]
-    > ![Geëxporteerde kennis basis met meta gegevens](../media/batch-test/exported-knowledge-base-with-metadata.png)
-
-## <a name="create-a-second-batch-test"></a>Een tweede batch test maken
-
-Er zijn twee belang rijke scenario's voor batch tests:
-* **Chat-logboek bestanden verwerken** : het meest voorkomende antwoord op een eerder getwijfelde vraag bepalen: de meestvoorkomende situatie is dat u het logboek bestand van query's moet verwerken, zoals de gebruikers vragen van een chat-bot. Een test voor een batch-bestand maken met alleen de vereiste kolommen. De test retourneert het eerste antwoord voor elke vraag. Dat betekent niet dat het beste antwoord het juiste antwoord is. Wanneer u deze test hebt voltooid, gaat u verder met de validatie test.
-* **Validatie test** : Valideer het verwachte antwoord. Deze test vereist dat alle vragen en overeenkomende verwachte antwoorden in de batch test zijn gevalideerd. Dit kan hand matig proces vereisen.
-
-In de volgende procedure wordt ervan uitgegaan dat het scenario is voor het verwerken van chat-logboeken met
-
-1. Maak een nieuw batch-test bestand voor het toevoegen van optionele gegevens, `batch-test-data-2.tsv` . Voeg de 6 rijen toe vanuit het oorspronkelijke invoer bestand voor batch tests en voeg vervolgens de meta gegevens, het hoogste en het QnA-paar ID toe voor elke rij.
-
-    Als u het geautomatiseerde proces voor het controleren van nieuwe tekst in chat logboeken wilt simuleren in de Knowledge Base, stelt u de meta gegevens voor elke kolom in op dezelfde waarde: `topic:power` .
+    Het gedownloade bestand heeft de juiste indeling voor de metagegevens en de juiste vraag-en-antwoord-set-ID. Gebruik deze velden in het volgende gedeelte
 
     > [!div class="mx-imgBorder"]
-    > ![Tweede versie van. TSV-bestand in batch test invoeren](../media/batch-test/batch-test-2-input.png)
+    > ![Geëxporteerde Knowledge Base met metagegevens](../media/batch-test/exported-knowledge-base-with-metadata.png)
 
-1. Voer de test opnieuw uit en wijzig de namen van de invoer-en uitvoer bestanden om aan te geven dat dit de tweede test is.
+## <a name="create-a-second-batch-test"></a>Een tweede batchtest maken
+
+Er zijn twee belangrijke scenario's voor batchtesten:
+* **Chatlogboekbestanden verwerken**, bepaal het meestvoorkomende antwoord voor een nog niet bekeken vraag. De meestvoorkomende situatie is wanneer u een logboekbestand van query's moet verwerken, zoals gebruikersvragen van een chatbot. Maak een batchbestandtest met alleen de vereiste kolommen. De test retourneert het meestvoorkomende antwoord voor elke vraag. Dat betekent niet dat het meestvoorkomende antwoord ook het goede antwoord is. Wanneer deze test is voltooid, gaat u verder met de validatietest.
+* **Validatietest**, valideer het verwachte antwoord. Voor deze test moeten alle vragen en bijbehorende verwachte antwoorden in de batchtest zijn gevalideerd. Hier is mogelijk wat handmatige verwerking nodig.
+
+In de volgende procedure wordt ervan uitgegaan dat het scenario het verwerken is van chatlogboeken met
+
+1. Maak een nieuw batchtestbestand om de optionele gegevens in op te nemen: `batch-test-data-2.tsv`. Voeg de zes rijen van het oorspronkelijke batchtestinvoerbestand toe, vervolgens voor elke rij de metagegevens, top en het QnA-paar-ID.
+
+    Stel de metagegevens voor elke kolom in op dezelfde waarde: `topic:power`, om het geautomatiseerde proces te simuleren van het vergelijken van nieuwe tekst van chatlogboeken met de Knowledge Base.
 
     > [!div class="mx-imgBorder"]
-    > ![Uitvoer tweede versie van. TSV-bestand vanuit batch test](../media/batch-test/batch-test-2-output.png)
+    > ![Invoer tweede versie van .tsv-bestand uit batchtest](../media/batch-test/batch-test-2-input.png)
 
-## <a name="test-results-and-an-automated-test-system"></a>Test resultaten en een geautomatiseerd test systeem
+1. Voer de test opnieuw uit, wijzig de namen van het invoer- en uitvoerbestand om aan te geven dat het de tweede test is.
 
-Dit test uitvoer bestand kan worden geparseerd als onderdeel van een geautomatiseerde continue test pijplijn.
+    > [!div class="mx-imgBorder"]
+    > ![Uitvoer tweede versie van .tsv-bestand uit batchtest](../media/batch-test/batch-test-2-output.png)
 
-Deze specifieke test uitvoer moet worden gelezen als: elke rij is gefilterd met meta gegevens, en omdat elke rij niet overeenkomt met de meta gegevens in de Knowledge Base, wordt het standaard antwoord voor die niet-overeenkomende rijen geretourneerd ("geen goede overeenkomst gevonden in KB"). Van de rijen die overeenkomen, zijn de QnA-ID en Score geretourneerd.
+## <a name="test-results-and-an-automated-test-system"></a>Testresultaten en een geautomatiseerd testsysteem
 
-Alle rijen hebben het label onjuist geretourneerd, omdat er geen rijen worden gevonden die overeenkomen met de verwachte antwoord-ID.
+Dit testuitvoerbestand kan worden geparseerd als onderdeel van een geautomatiseerde doorlopende testpijplijn.
 
-U kunt met deze resultaten zien dat u een chat-logboek wilt maken en de tekst als de query van elke rij wilt gebruiken. Zonder dat u iets hoeft te weten over de gegevens, geven de resultaten u veel informatie over de gegevens die u vervolgens kunt gebruiken om vooruit te gaan:
+Deze specifieke testuitvoer moet als volgt worden gelezen: elke rij is gefilterd met metagegevens en omdat niet elke rij overeenkwam met de metagegevens in de Knowledge Base, is het standaardantwoord geretourneerd voor deze niet-overeenkomende rijen ('geen goede overeenkomst gevonden in KB'). Van de rijen die overeenkwamen, werden de QnA-ID en score geretourneerd.
 
-* meta gegevens
+Alle rijen hebben het label 'onjuist' geretourneerd, omdat geen enkele rij overeenkwam met het verwachte antwoord-ID.
+
+U moet met deze resultaten kunnen zien dat u de tekst van een chatlogboek kunt gebruiken als de query voor elke rij. Zonder iets te weten over de gegevens vertellen de resultaten u veel over de gegevens dat u kunt gebruiken voor het vervolg:
+
+* metagegevens
 * QnA-ID
 * Score
 
-Is het filteren met meta gegevens een goed idee voor de test? Ja en Nee. Het test systeem moet test bestanden maken voor elk meta gegevens paar en een test zonder meta gegevens paren.
+Was het filteren met metagegevens een goed idee voor de test? Ja en nee. Het testsysteem moet testbestanden maken voor elk metagegevenspaar en ook een test zonder metagegevensparen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u niet wilt door gaan met het testen van de Knowledge Base, verwijdert u het hulp programma voor batch bestanden en de test bestanden.
+Als u deze Knowledge Base verder niet gaat testen, verwijder dan het batchbestandprogramma en de testbestanden.
 
-Als u deze Knowledge Base niet wilt blijven gebruiken, verwijdert u de Knowledge Base met de volgende stappen:
+Als u deze Knowledge Base verder niet gaat gebruiken, verwijder dan de Knowledge Base met de volgende stappen:
 
-1. Selecteer in de QnA Maker Portal **mijn Knowledge bases** in het bovenste menu.
-1. Selecteer in de lijst met kennis grondslagen het pictogram **verwijderen** in de rij van de Knowledge Base van deze Quick Start.
+1. Selecteer in de QnA Maker-portal **Mijn Knowledge Bases** in het hoofdmenu.
+1. Selecteer in de lijst met Knowledge Bases het pictogram **Verwijderen** op de rij van de Knowledge Base van deze quickstart.
 
 ## <a name="next-steps"></a>Volgende stappen
 

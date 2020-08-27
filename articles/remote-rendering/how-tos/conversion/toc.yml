@@ -8,5 +8,5 @@
   href: configure-model-conversion.md
 - name: Materialen overschrijven tijden modelconversie
   href: override-materials.md
-- name: Informatie ophalen over een geconverteerd model
+- name: Informatie ophalen over omzettingen
   href: get-information.md

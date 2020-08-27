@@ -4,9 +4,7 @@
   items:
     - name: Over toepassingsgateways
       href: overview.md
-    - name: Wat is nieuw?
-      href: whats-new.md
-- name: Snelstarts
+- name: Quickstarts
   expanded: true
   items:
     - name: Een toepassingsgateway maken - Portal

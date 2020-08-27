@@ -436,6 +436,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
           href: how-to-move-data-in-out-of-pipelines.md
+        - name: ML-pijplijnen implementeren (Python)
+          href: how-to-deploy-pipelines.md
         - name: Een pijplijn plannen (Python)
           href: how-to-schedule-pipelines.md
         - name: Een pijplijn activeren
