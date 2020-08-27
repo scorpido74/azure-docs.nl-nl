@@ -2,15 +2,16 @@
 title: Fouten en uitzonde ringen diagnosticeren met Azure-toepassing Insights
 description: Uitzonde ringen vastleggen vanuit ASP.NET-Apps, samen met aanvraag-telemetrie.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321357"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936500"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonde ringen in uw web-apps diagnosticeren met Application Insights
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonderingen in web-apps diagnosticeren met Application Insights
 Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insights](./app-insights-overview.md). U kunt mislukte aanvragen correleren met uitzonde ringen en andere gebeurtenissen op de client en de server, zodat u snel de oorzaken kunt vaststellen.
 
 ## <a name="set-up-exception-reporting"></a>Uitzonderings rapportage instellen
@@ -91,10 +92,10 @@ De aanvraag details bevatten niet de gegevens die in een POST-aanroep naar uw ap
 * Voeg code in uw toepassing in om [micro soft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace)aan te roepen. Verzend de POST-gegevens in de para meter Message. Er is een limiet voor de toegestane grootte. u moet dus proberen alleen de essentiële gegevens te verzenden.
 * Wanneer u een mislukte aanvraag onderzoekt, zoekt u de bijbehorende traceringen.
 
-## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Uitzonde ringen en gerelateerde diagnostische gegevens vastleggen
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Uitzonde ringen en gerelateerde diagnostische gegevens vastleggen
 In de eerste instantie ziet u in de portal niet alle uitzonde ringen die fouten veroorzaken in uw app. U ziet eventuele browser uitzonderingen (als u de [Java script-SDK](./javascript.md) in uw webpagina's gebruikt). Maar de meeste server uitzonderingen worden door IIS geblokkeerd en u moet een stukje code schrijven om ze te kunnen zien.
 
-U kunt het volgende doen:
+U kunt:
 
 * **Logboek uitzonderingen expliciet** door code in uitzonderings-handlers in te voegen om de uitzonde ringen te rapporteren.
 * **Leg uitzonde ringen automatisch** vast door uw ASP.NET Framework te configureren. De benodigde toevoegingen verschillen voor de verschillende soorten Framework.

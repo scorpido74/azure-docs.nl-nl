@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793239"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928850"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search
 
@@ -217,6 +217,6 @@ Als u de grammatica van de OData-taal die wordt ondersteund door Azure Cognitive
 ## <a name="see-also"></a>Zie ook  
 
 - [Filters in azure Cognitive Search](search-filters.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene-query syntaxis](query-lucene-syntax.md)
 - [Eenvoudige query syntaxis in azure Cognitive Search](query-simple-syntax.md)

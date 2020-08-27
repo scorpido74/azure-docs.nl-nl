@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232505"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935378"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Incrementele verrijking en caching in azure Cognitive Search
 
@@ -28,9 +28,9 @@ Een werk stroom die gebruikmaakt van incrementele caching, omvat de volgende sta
 
 1. [Maak of Identificeer een Azure-opslag account](../storage/common/storage-account-create.md) om de cache op te slaan.
 1. [Schakel incrementele verrijking](search-howto-incremental-index.md) in de Indexeer functie in.
-1. [Maak een Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -plus een [vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) -om de pijp lijn aan te roepen. Tijdens de verwerking worden de stadia van verrijking opgeslagen voor elk document in Blob Storage voor toekomstig gebruik.
-1. Test uw code en gebruik nadat u wijzigingen hebt aangebracht, [vaardig heden bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-skillset) om een definitie te wijzigen.
-1. [Voer Indexeer functie uit](https://docs.microsoft.com/rest/api/searchservice/run-indexer) om de pijp lijn aan te roepen en de uitvoer in de cache op te halen voor snellere en rendabele verwerking.
+1. [Maak een Indexeer functie](/rest/api/searchservice/create-indexer) -plus een [vaardig heden](/rest/api/searchservice/create-skillset) -om de pijp lijn aan te roepen. Tijdens de verwerking worden de stadia van verrijking opgeslagen voor elk document in Blob Storage voor toekomstig gebruik.
+1. Test uw code en gebruik nadat u wijzigingen hebt aangebracht, [vaardig heden bijwerken](/rest/api/searchservice/update-skillset) om een definitie te wijzigen.
+1. [Voer Indexeer functie uit](/rest/api/searchservice/run-indexer) om de pijp lijn aan te roepen en de uitvoer in de cache op te halen voor snellere en rendabele verwerking.
 
 Zie [incrementele verrijking instellen](search-howto-incremental-index.md)voor meer informatie over de stappen en overwegingen bij het werken met een bestaande indexer.
 
@@ -109,9 +109,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Het doel van de cache is om onnodige verwerking te voor komen, maar stel dat u een wijziging aanbrengt in een vaardigheid die de Indexeer functie niet detecteert (bijvoorbeeld het wijzigen van iets in externe code, zoals een aangepaste vaardigheid).
 
-In dit geval kunt u de [vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
+In dit geval kunt u de [vaardig heden opnieuw instellen](/rest/api/searchservice/preview-api/reset-skills) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
 
-## <a name="change-detection"></a>Wijzigings detectie
+## <a name="change-detection"></a>Wijzigingsdetectie
 
 Zodra u een cache inschakelt, evalueert de Indexeer functie de wijzigingen in uw pijplijn samenstelling om te bepalen welke inhoud opnieuw kan worden gebruikt en wat opnieuw moet worden verwerkt. In deze sectie worden wijzigingen die de cache-uitgaan ongeldig gemaakt, gevolgd door wijzigingen die incrementele verwerking activeren. 
 
@@ -150,17 +150,17 @@ Met incrementele verwerking wordt de definitie van uw vaardig heden geëvalueerd
 
 ## <a name="api-reference"></a>API-verwijzing
 
-REST API versie `2020-06-30-Preview` voorziet in incrementele verrijking via extra eigenschappen voor Indexeer functies. Vaardig heden en gegevens bronnen kunnen de algemeen beschik bare versie gebruiken. Zie [caching configureren voor incrementele verrijking](search-howto-incremental-index.md) in aanvulling op de referentie documentatie voor meer informatie over het aanroepen van de api's.
+REST API versie `2020-06-30-Preview` voorziet in incrementele verrijking via extra eigenschappen voor Indexeer functies. Vaardig heden en gegevens bronnen kunnen de algemeen beschik bare versie gebruiken. Zie  [caching configureren voor incrementele verrijking](search-howto-incremental-index.md) in aanvulling op de referentie documentatie voor meer informatie over het aanroepen van de api's.
 
-+ [Indexeer functie maken (API-Version = 2020-06 -30-preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
++ [Indexeer functie maken (API-Version = 2020-06 -30-preview)](/rest/api/searchservice/create-indexer) 
 
-+ [Indexeer functie bijwerken (API-Version = 2020-06 -30-preview)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
++ [Indexeer functie bijwerken (API-Version = 2020-06 -30-preview)](/rest/api/searchservice/update-indexer) 
 
-+ [Update vaardig heden (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (nieuwe Uri-para meter voor de aanvraag)
++ [Update vaardig heden (API-Version = 2020-06-30)](/rest/api/searchservice/update-skillset) (nieuwe Uri-para meter voor de aanvraag)
 
-+ [Vaardig heden opnieuw instellen (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
++ [Vaardig heden opnieuw instellen (API-Version = 2020-06-30)](/rest/api/searchservice/preview-api/reset-skills)
 
-+ Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet worden ingesteld op `true` wanneer de cache niet door de update actie moet worden gevalideerd. 
++ Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet worden ingesteld op `true` wanneer de cache niet door de update actie moet worden gevalideerd. 
 
   Gebruik **ignoreResetRequirement** spaarzaam, omdat dit kan leiden tot onbedoelde inconsistentie in uw gegevens die niet eenvoudig kunnen worden gedetecteerd.
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760308"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935854"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Documenten indexeren in Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ ms.locfileid: "87760308"
 > Azure Data Lake Storage Gen2-ondersteuning is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2020-06-30-preview](search-api-preview.md) en Portal bieden deze functie. Er is momenteel geen .NET SDK-ondersteuning.
 
 
-Wanneer u een Azure Storage-account instelt, hebt u de mogelijkheid om een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)in te scha kelen. Hierdoor kan het verzamelen van inhoud in een account worden georganiseerd in een hiërarchie van directory's en geneste submappen. Door hiërarchische naam ruimte in te scha kelen, schakelt u [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)in.
+Wanneer u een Azure Storage-account instelt, hebt u de mogelijkheid om een [hiërarchische naam ruimte](../storage/blobs/data-lake-storage-namespace.md)in te scha kelen. Hierdoor kan het verzamelen van inhoud in een account worden georganiseerd in een hiërarchie van directory's en geneste submappen. Door hiërarchische naam ruimte in te scha kelen, schakelt u [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)in.
 
 In dit artikel wordt beschreven hoe u aan de slag gaat met het indexeren van documenten in Azure Data Lake Storage Gen2.
 
@@ -44,9 +44,9 @@ Het indexeren van inhoud in Data Lake Storage Gen2 is identiek aan het indexeren
 
 ## <a name="access-control"></a>Toegangsbeheer
 
-Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) dat zowel op rollen gebaseerd toegangs beheer (Azure RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanuit Data Lake Storage Gen2, haalt Azure Cognitive Search de RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
+Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](../storage/blobs/data-lake-storage-access-control.md) dat zowel op rollen gebaseerd toegangs beheer (Azure RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanuit Data Lake Storage Gen2, haalt Azure Cognitive Search de RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
 
-Als het beheren van toegangs beheer voor elk document in de index belang rijk is, is het aan de ontwikkelaar van de toepassing om [beveiligings beperking](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)te implementeren.
+Als het beheren van toegangs beheer voor elk document in de index belang rijk is, is het aan de ontwikkelaar van de toepassing om [beveiligings beperking](./search-security-trimming-for-azure-search.md)te implementeren.
 
 ## <a name="change-detection"></a>Wijzigings detectie
 

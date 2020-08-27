@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214018"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935361"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een Doorzoek bare index
 
@@ -32,7 +32,7 @@ Voor beelden van uitvoer veld toewijzingen:
 * U hebt geen vaardig heden, maar u kunt wel een complex type indexeren vanuit een Cosmos DB-Data Base. U wilt een knoop punt op dat complexe type verkrijgen en toewijzen aan een veld in uw index.
 
 > [!NOTE]
-> We hebben onlangs de functionaliteit van toewijzings functies ingeschakeld voor uitvoer veld toewijzingen. Zie [veld toewijzings functies](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions) voor meer informatie over het toewijzen van functies
+> We hebben onlangs de functionaliteit van toewijzings functies ingeschakeld voor uitvoer veld toewijzingen. Zie [veld toewijzings functies](./search-indexer-field-mappings.md#field-mapping-functions) voor meer informatie over het toewijzen van functies
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings gebruiken
 

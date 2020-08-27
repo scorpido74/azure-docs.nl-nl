@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221319"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935548"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -21,10 +21,10 @@ In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en 
 
 Het indexeren stopt wanneer het aantal fouten groter is dan [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
 
-Als u wilt dat Indexeer functies deze fouten negeren (en overs Laan over ' mislukte documenten '), kunt u overwegen om de `maxFailedItems` en `maxFailedItemsPerBatch` zoals [hier](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)wordt beschreven, bij te werken.
+Als u wilt dat Indexeer functies deze fouten negeren (en overs Laan over ' mislukte documenten '), kunt u overwegen om de `maxFailedItems` en `maxFailedItemsPerBatch` zoals [hier](/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)wordt beschreven, bij te werken.
 
 > [!NOTE]
-> Elk mislukt document samen met de document sleutel (indien beschikbaar) wordt weer gegeven als een fout in de uitvoerings status van de Indexeer functie. U kunt de index- [API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) gebruiken om de documenten op een later tijdstip hand matig te uploaden als u de Indexeer functie hebt ingesteld op het verdragen van fouten.
+> Elk mislukt document samen met de document sleutel (indien beschikbaar) wordt weer gegeven als een fout in de uitvoerings status van de Indexeer functie. U kunt de index- [API](/rest/api/searchservice/addupdate-or-delete-documents) gebruiken om de documenten op een later tijdstip hand matig te uploaden als u de Indexeer functie hebt ingesteld op het verdragen van fouten.
 
 De fout informatie in dit artikel kan u helpen bij het oplossen van fouten, waardoor het indexeren kan worden voortgezet.
 
@@ -49,7 +49,7 @@ De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan ge
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
 | Inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. De kolom AUTHORS kan niet worden opgeslagen `'{47.6,-122.1}'` .  Verwacht type is JArray. "  Fout bij het converteren van het gegevens type nvarchar naar float.  ' De conversie is mislukt tijdens het converteren van de nvarchar-waarde ' 12 maanden ' naar het gegevens type int '.  "Aritmetische overflow fout bij het converteren van de expressie naar het gegevens type int." | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als het eerste document `'startTime'` veld bijvoorbeeld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
-| fouten van de onderliggende service van de gegevens bron | (van Cosmos DB)`{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
+| fouten van de onderliggende service van de gegevens bron | (van Cosmos DB) `{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
 | tijdelijke problemen | Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. (provider: TCP-provider, fout: 0-een bestaande verbinding is geforceerd gesloten door de externe host | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 
 <a name="could-not-extract-document-content"></a>
@@ -60,7 +60,7 @@ Indexeer functie met een BLOB-gegevens bron kan de inhoud of meta gegevens niet 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
 | de BLOB overschrijdt de maximale grootte | Het document is `'150441598'` bytes, wat groter is dan de maximale grootte `'134217728'` voor documenten extractie voor uw huidige servicelaag. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| de BLOB heeft een niet-ondersteund inhouds type | Het inhouds type van het document is niet ondersteund`'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
+| de BLOB heeft een niet-ondersteund inhouds type | Het inhouds type van het document is niet ondersteund `'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | BLOB is versleuteld | Het document kan niet worden verwerkt omdat het mogelijk is versleuteld of met een wacht woord is beveiligd. | U kunt de BLOB overs laan met [BLOB-instellingen](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed). |
 | tijdelijke problemen | "Fout bij verwerken van blob: de aanvraag is afgebroken: de aanvraag is geannuleerd." Er is een time-out opgetreden tijdens het verwerken van het document. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 
@@ -71,7 +71,7 @@ De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is 
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| De document sleutel ontbreekt | De document sleutel mag niet ontbreken of zijn leeg | Zorg ervoor dat alle documenten geldige document sleutels hebben. De document sleutel wordt bepaald door de eigenschap Key in te stellen als onderdeel van de [definitie](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body)van de index. Indexeer functies verzenden deze fout wanneer de eigenschap die als sleutel is gemarkeerd, niet in een bepaald document kan worden gevonden. |
+| De document sleutel ontbreekt | De document sleutel mag niet ontbreken of zijn leeg | Zorg ervoor dat alle documenten geldige document sleutels hebben. De document sleutel wordt bepaald door de eigenschap Key in te stellen als onderdeel van de [definitie](/rest/api/searchservice/create-index#request-body)van de index. Indexeer functies verzenden deze fout wanneer de eigenschap die als sleutel is gemarkeerd, niet in een bepaald document kan worden gevonden. |
 | De document sleutel is ongeldig | De document sleutel mag niet langer zijn dan 1024 tekens | Wijzig de document sleutel zodat deze voldoet aan de validatie vereisten. |
 | Kan de veld toewijzing niet Toep assen op een veld | Kan toewijzings functie niet Toep assen `'functionName'` op veld `'fieldName'` . Matrix kan niet null zijn. Parameter naam: bytes | Controleer of de [veld Toewijzingen](search-indexer-field-mappings.md) die zijn gedefinieerd op de Indexeer functie dubbel zijn en vergelijk met de gegevens van het opgegeven veld van het mislukte document. Het kan nodig zijn om de veld toewijzingen of de document gegevens te wijzigen. |
 | Kan de veld waarde niet lezen | Kan de waarde van de kolom bij de index niet lezen `'fieldName'` `'fieldIndex'` . Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. (provider: TCP-provider, fout: 0-een bestaande verbinding is geforceerd gesloten door de externe host.) | Deze fouten worden meestal veroorzaakt door onverwachte verbindings problemen met de onderliggende service van de gegevens bron. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
@@ -155,7 +155,7 @@ Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevo
 | Er is een probleem opgetreden bij het maken van verbinding met de doel index (die blijft bestaan na nieuwe pogingen), omdat de service wordt uitgevoerd onder andere belasting, zoals het uitvoeren van query's of het indexeren. | Kan geen verbinding maken met update-index. De zoek service wordt zwaar belast. | [De zoek service omhoog schalen](search-capacity-planning.md)
 | De zoek service wordt bijgewerkt voor service-updates of bevindt zich in het midden van de herconfiguratie van een topologie. | Kan geen verbinding maken met update-index. De zoek service is momenteel niet beschikbaar en de zoek service gaat naar een overgang. | Service configureren met ten minste 3 replica's voor een Beschik baarheid van 99,9% per [Sla-documentatie](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Fout in de onderliggende Compute/Networking-Resource (zeldzaam) | Kan geen verbinding maken met update-index. Er is een onbekende fout opgetreden. | Indexeer functies zodanig configureren dat [ze worden uitgevoerd volgens een](search-howto-schedule-indexers.md) mislukte status.
-| Een indexerings aanvraag voor de doel index is niet bevestigd binnen een time-outperiode vanwege netwerk problemen. | Kan geen verbinding maken met de zoek index op tijd. | Indexeer functies zodanig configureren dat [ze worden uitgevoerd volgens een](search-howto-schedule-indexers.md) mislukte status. Probeer ook de [Batch grootte](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) van de Indexeer functie te verlagen als deze fout zich blijft voordoen.
+| Een indexerings aanvraag voor de doel index is niet bevestigd binnen een time-outperiode vanwege netwerk problemen. | Kan geen verbinding maken met de zoek index op tijd. | Indexeer functies zodanig configureren dat [ze worden uitgevoerd volgens een](search-howto-schedule-indexers.md) mislukte status. Probeer ook de [Batch grootte](/rest/api/searchservice/create-indexer#parameters) van de Indexeer functie te verlagen als deze fout zich blijft voordoen.
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>
 
@@ -171,11 +171,11 @@ Het document is gelezen en verwerkt door de Indexeer functie, maar als gevolg va
 | Er is een onbekend type gedetecteerd in het bron document. | Onbekend type '_onbekend_' kan niet worden geïndexeerd |
 | Er is een niet-compatibele notatie voor geografische punten gebruikt in het bron document. | Letterlijke teken reeksen van WKT-punten worden niet ondersteund. Gebruik in plaats daarvan geojson Point-tekens |
 
-In al deze gevallen raadpleegt u [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) en [gegevens type toewijzing voor Indexeer functies](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) om er zeker van te zijn dat u het index schema correct bouwt en de juiste [toewijzings veld Toewijzingen](search-indexer-field-mappings.md)hebt ingesteld. Het fout bericht bevat details die kunnen helpen bij het volgen van de bron van de niet-overeenkomende bronnen.
+In al deze gevallen raadpleegt u [ondersteunde gegevens typen](/rest/api/searchservice/supported-data-types) en [gegevens type toewijzing voor Indexeer functies](/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) om er zeker van te zijn dat u het index schema correct bouwt en de juiste [toewijzings veld Toewijzingen](search-indexer-field-mappings.md)hebt ingesteld. Het fout bericht bevat details die kunnen helpen bij het volgen van de bron van de niet-overeenkomende bronnen.
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Fout: het geïntegreerde beleid voor het bijhouden van wijzigingen kan niet worden gebruikt omdat de tabel een samengestelde primaire sleutel heeft
 
-Dit geldt voor SQL-tabellen. dit gebeurt meestal wanneer de sleutel wordt gedefinieerd als een samengestelde sleutel of wanneer de tabel een unieke geclusterde index heeft gedefinieerd (zoals in een SQL-index, geen Azure Search index). De belangrijkste reden hiervoor is dat het sleutel kenmerk is gewijzigd in een samengestelde primaire sleutel in het geval van een [unieke geclusterde index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). Zorg er in dat geval voor dat uw SQL-tabel geen unieke geclusterde index heeft of dat u het sleutel veld toewijst aan een veld dat gegarandeerd geen dubbele waarden heeft.
+Dit geldt voor SQL-tabellen. dit gebeurt meestal wanneer de sleutel wordt gedefinieerd als een samengestelde sleutel of wanneer de tabel een unieke geclusterde index heeft gedefinieerd (zoals in een SQL-index, geen Azure Search index). De belangrijkste reden hiervoor is dat het sleutel kenmerk is gewijzigd in een samengestelde primaire sleutel in het geval van een [unieke geclusterde index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). Zorg er in dat geval voor dat uw SQL-tabel geen unieke geclusterde index heeft of dat u het sleutel veld toewijst aan een veld dat gegarandeerd geen dubbele waarden heeft.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 
@@ -191,9 +191,9 @@ Deze fout treedt op wanneer de Indexeer functie probeert [gegevens te projectere
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| Kan projectie-BLOB niet bijwerken `'blobUri'` in container`'containerName'` |De opgegeven container bestaat niet. | Met de Indexeer functie wordt gecontroleerd of de opgegeven container eerder is gemaakt en wordt deze zo nodig gemaakt, maar wordt deze controle slechts eenmaal uitgevoerd per Indexeer functie. Deze fout betekent dat de container na deze stap is verwijderd.  Probeer dit probleem op te lossen door de gegevens van uw opslag account op te slaan. wacht totdat de Indexeer functie is voltooid en voer de Indexeer functie opnieuw uit. |
-| Kan projectie-BLOB niet bijwerken `'blobUri'` in container`'containerName'` |Kan geen gegevens schrijven naar de transport verbinding: een bestaande verbinding is geforceerd gesloten door de externe host. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
-| Kan rij `'projectionRow'` in tabel niet bijwerken`'tableName'` | De server is bezet. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
+| Kan projectie-BLOB niet bijwerken `'blobUri'` in container `'containerName'` |De opgegeven container bestaat niet. | Met de Indexeer functie wordt gecontroleerd of de opgegeven container eerder is gemaakt en wordt deze zo nodig gemaakt, maar wordt deze controle slechts eenmaal uitgevoerd per Indexeer functie. Deze fout betekent dat de container na deze stap is verwijderd.  Probeer dit probleem op te lossen door de gegevens van uw opslag account op te slaan. wacht totdat de Indexeer functie is voltooid en voer de Indexeer functie opnieuw uit. |
+| Kan projectie-BLOB niet bijwerken `'blobUri'` in container `'containerName'` |Kan geen gegevens schrijven naar de transport verbinding: een bestaande verbinding is geforceerd gesloten door de externe host. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
+| Kan rij `'projectionRow'` in tabel niet bijwerken `'tableName'` | De server is bezet. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>
 
@@ -255,9 +255,9 @@ Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSki
 ```
 
 Hier volgen enkele referenties voor de momenteel ondersteunde talen voor elk van de vaardig heden die dit fout bericht kunnen veroorzaken:
-* [Text Analytics ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (voor de [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md)en [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
-* Door [Translator ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (voor de [tekst TranslationSkill](cognitive-search-skill-text-translation.md))
-* [Tekst SplitSkill](cognitive-search-skill-textsplit.md) Ondersteunde talen:`da, de, en, es, fi, fr, it, ko, pt`
+* [Text Analytics ondersteunde talen](../cognitive-services/text-analytics/language-support.md) (voor de [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md)en [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
+* Door [Translator ondersteunde talen](../cognitive-services/translator/language-support.md) (voor de [tekst TranslationSkill](cognitive-search-skill-text-translation.md))
+* [Tekst SplitSkill](cognitive-search-skill-textsplit.md) Ondersteunde talen: `da, de, en, es, fi, fr, it, ko, pt`
 
 <a name="skill-input-was-truncated"></a>
 
@@ -304,7 +304,7 @@ Zie [incrementele voortgang en aangepaste query's](search-howto-index-cosmosdb.m
 
 ## <a name="warning-some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>Waarschuwing: sommige gegevens zijn verloren gegaan tijdens de projectie. De rij ' X ' in de tabel ' Y ' heeft een teken reeks eigenschap ' Z ' die te lang is.
 
-De [Table Storage-service](https://azure.microsoft.com/services/storage/tables) heeft een limiet voor de manier waarop de eigenschappen van de grote [entiteit](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types) kunnen zijn. Teken reeksen mogen Maxi maal 32.000 tekens bevatten. Als een rij met een teken reeks-eigenschap die langer is dan 32.000 tekens wordt geprojecteerd, worden alleen de eerste 32.000 tekens bewaard. U kunt dit probleem omzeilen door rijen te projecteren met teken reeks eigenschappen die langer zijn dan 32.000 tekens.
+De [Table Storage-service](https://azure.microsoft.com/services/storage/tables) heeft een limiet voor de manier waarop de eigenschappen van de grote [entiteit](/rest/api/storageservices/understanding-the-table-service-data-model#property-types) kunnen zijn. Teken reeksen mogen Maxi maal 32.000 tekens bevatten. Als een rij met een teken reeks-eigenschap die langer is dan 32.000 tekens wordt geprojecteerd, worden alleen de eerste 32.000 tekens bewaard. U kunt dit probleem omzeilen door rijen te projecteren met teken reeks eigenschappen die langer zijn dan 32.000 tekens.
 
 <a name="truncated-extracted-text-to-x-characters"></a>
 
@@ -326,13 +326,13 @@ Uitvoer veld toewijzingen die naar niet-bestaande/null-gegevens verwijzen, gener
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Waarschuwing: het detectie beleid voor gegevens wijzigingen is geconfigureerd voor het gebruik van sleutel kolom X
-Voor het [beleid voor gegevens wijzigings detectie](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) gelden specifieke vereisten voor de kolommen die worden gebruikt om de wijziging te detecteren. Een van deze vereisten is dat deze kolom wordt bijgewerkt telkens wanneer het bron item wordt gewijzigd. Een andere vereiste is dat de nieuwe waarde voor deze kolom groter is dan de vorige waarde. Sleutel kolommen voldoen niet aan deze vereiste omdat ze niet worden gewijzigd bij elke update. U kunt dit probleem omzeilen door een andere kolom te selecteren voor het beleid voor wijzigings detectie.
+Voor het [beleid voor gegevens wijzigings detectie](/rest/api/searchservice/create-data-source#data-change-detection-policies) gelden specifieke vereisten voor de kolommen die worden gebruikt om de wijziging te detecteren. Een van deze vereisten is dat deze kolom wordt bijgewerkt telkens wanneer het bron item wordt gewijzigd. Een andere vereiste is dat de nieuwe waarde voor deze kolom groter is dan de vorige waarde. Sleutel kolommen voldoen niet aan deze vereiste omdat ze niet worden gewijzigd bij elke update. U kunt dit probleem omzeilen door een andere kolom te selecteren voor het beleid voor wijzigings detectie.
 
 <a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>
 
 ## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Waarschuwing: de document tekst lijkt UTF-16-code ring te zijn, maar er ontbreekt een byte order mark
 
-De [indexerings modi van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) moeten weten hoe tekst moet worden gecodeerd voordat deze wordt geparseerd. De twee meest voorkomende manieren voor het coderen van tekst zijn UTF-16 en UTF-8. UTF-8 is een code ring met variabele lengte waarbij elk teken tussen 1 en 4 bytes lang is. UTF-16 is een code ring met een vaste lengte waarbij elk teken 2 bytes lang is. UTF-16 heeft twee verschillende varianten: ' big endian ' en ' little endian '. Tekst codering wordt bepaald door een ' byte order mark ', een reeks bytes voor de tekst.
+De [indexerings modi van de Indexeer functie](/rest/api/searchservice/create-indexer#blob-configuration-parameters) moeten weten hoe tekst moet worden gecodeerd voordat deze wordt geparseerd. De twee meest voorkomende manieren voor het coderen van tekst zijn UTF-16 en UTF-8. UTF-8 is een code ring met variabele lengte waarbij elk teken tussen 1 en 4 bytes lang is. UTF-16 is een code ring met een vaste lengte waarbij elk teken 2 bytes lang is. UTF-16 heeft twee verschillende varianten: ' big endian ' en ' little endian '. Tekst codering wordt bepaald door een ' byte order mark ', een reeks bytes voor de tekst.
 
 | Encoding | Byte order markering |
 | --- | --- |
@@ -348,4 +348,4 @@ Om deze waarschuwing te omzeilen, bepaalt u wat de tekst codering voor deze blob
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Waarschuwing: Cosmos DB verzameling ' X ' heeft een Lazy-indexerings beleid. Er zijn mogelijk gegevens verloren gegaan
 
-Verzamelingen met een [Lazy](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) -indexerings beleid kunnen niet consistent worden opgevraagd, wat resulteert in uw Indexeer functie waarbij gegevens ontbreken. Als u deze waarschuwing wilt omzeilen, wijzigt u het indexerings beleid in consistent.
+Verzamelingen met een [Lazy](/azure/cosmos-db/index-policy#indexing-mode) -indexerings beleid kunnen niet consistent worden opgevraagd, wat resulteert in uw Indexeer functie waarbij gegevens ontbreken. Als u deze waarschuwing wilt omzeilen, wijzigt u het indexerings beleid in consistent.

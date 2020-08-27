@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553161"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936585"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit (preview)
 
@@ -31,7 +31,7 @@ Deze problemen kunnen worden opgelost door uw verbinding in te stellen met behul
 
 ## <a name="using-managed-identities"></a>Beheerde identiteiten gebruiken
 
-[Beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) is een functie die Azure-Services biedt met een automatisch beheerde identiteit in azure Active Directory (Azure AD). U kunt deze functie in azure Cognitive Search gebruiken om een gegevens bron object te maken met een connection string dat geen referenties bevat. In plaats daarvan wordt uw zoek service toegang verleend tot de gegevens bron via op rollen gebaseerd toegangs beheer (RBAC).
+[Beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) is een functie die Azure-Services biedt met een automatisch beheerde identiteit in azure Active Directory (Azure AD). U kunt deze functie in azure Cognitive Search gebruiken om een gegevens bron object te maken met een connection string dat geen referenties bevat. In plaats daarvan wordt uw zoek service toegang verleend tot de gegevens bron via op rollen gebaseerd toegangs beheer (RBAC).
 
 Bij het instellen van een gegevens bron met behulp van een beheerde identiteit kunt u de referenties van uw gegevens bron wijzigen. uw Indexeer functies kunnen nog steeds verbinding maken met de gegevens bron. U kunt ook gegevens bron objecten maken in uw code zonder een account sleutel op te vragen of Key Vault te gebruiken om een account sleutel op te halen.
 

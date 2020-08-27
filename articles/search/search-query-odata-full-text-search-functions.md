@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201387"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935786"
 ---
-# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData-functies voor zoeken in volledige tekst in azure Cognitive Search- `search.ismatch` en`search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData-functies voor zoeken in volledige tekst in azure Cognitive Search- `search.ismatch` en `search.ismatchscoring`
 
-Azure Cognitive Search ondersteunt zoeken in volledige tekst in de context van [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `search.ismatch` de `search.ismatchscoring` functies en. Met deze functies kunt u Zoek opdrachten in volledige tekst combi neren met strikte Booleaanse filtering op manieren die niet mogelijk zijn alleen met behulp van de para meter op het hoogste niveau `search` van de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Cognitive Search ondersteunt zoeken in volledige tekst in de context van [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `search.ismatch` de `search.ismatchscoring` functies en. Met deze functies kunt u Zoek opdrachten in volledige tekst combi neren met strikte Booleaanse filtering op manieren die niet mogelijk zijn alleen met behulp van de para meter op het hoogste niveau `search` van de [zoek-API](/rest/api/searchservice/search-documents).
 
 > [!NOTE]
-> De `search.ismatch` `search.ismatchscoring` functies en worden alleen ondersteund in filters in de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Ze worden niet ondersteund in de api's [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) of [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
+> De `search.ismatch` `search.ismatchscoring` functies en worden alleen ondersteund in filters in de [zoek-API](/rest/api/searchservice/search-documents). Ze worden niet ondersteund in de api's [suggesties](/rest/api/searchservice/suggestions) of [automatisch aanvullen](/rest/api/searchservice/autocomplete) .
 
 ## <a name="syntax"></a>Syntax
 
@@ -73,10 +73,10 @@ De para meters worden gedefinieerd in de volgende tabel:
 | --- | --- | --- |
 | `search` | `Edm.String` | De zoek query (in een [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) lucene-query syntaxis). |
 | `searchFields` | `Edm.String` | Een door komma's gescheiden lijst met Doorzoek bare velden waarnaar moet worden gezocht; wordt standaard ingesteld op alle Doorzoek bare velden in de index. Bij gebruik van een [Zoek opdracht](query-lucene-syntax.md#bkmk_fields) in de `search` para meter, overschrijven de veld aanduidingen in de Lucene-query alle velden die zijn opgegeven in deze para meter. |
-| `queryType` | `Edm.String` | `'simple'`of `'full'` ; standaard ingesteld op `'simple'` . Hiermee geeft u op welke query taal in de `search` para meter is gebruikt. |
-| `searchMode` | `Edm.String` | `'any'`of `'all'` is standaard ingesteld op `'any'` . Hiermee wordt aangegeven of een of meer zoek termen in de `search` para meter moeten worden afgestemd om het document als een overeenkomst te tellen. Wanneer u de [lucene Booleaanse Opera tors](query-lucene-syntax.md#bkmk_boolean) in de `search` para meter gebruikt, hebben ze prioriteit boven deze para meter. |
+| `queryType` | `Edm.String` | `'simple'` of `'full'` ; standaard ingesteld op `'simple'` . Hiermee geeft u op welke query taal in de `search` para meter is gebruikt. |
+| `searchMode` | `Edm.String` | `'any'` of `'all'` is standaard ingesteld op `'any'` . Hiermee wordt aangegeven of een of meer zoek termen in de `search` para meter moeten worden afgestemd om het document als een overeenkomst te tellen. Wanneer u de [lucene Booleaanse Opera tors](query-lucene-syntax.md#bkmk_boolean) in de `search` para meter gebruikt, hebben ze prioriteit boven deze para meter. |
 
-Alle bovenstaande para meters zijn gelijk aan de overeenkomstige [para meters voor zoek aanvragen in de zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Alle bovenstaande para meters zijn gelijk aan de overeenkomstige [para meters voor zoek aanvragen in de zoek-API](/rest/api/searchservice/search-documents).
 
 De `search.ismatch` functie retourneert een waarde van het type `Edm.Boolean` , zodat u deze kunt samen stellen met andere filter subexpressies met behulp van de [logische booleaanse Opera tors](search-query-odata-logical-operators.md).
 
@@ -96,7 +96,7 @@ Zowel de `search.ismatch` als- `search.ismatchscoring` functies kunnen in dezelf
 
 ## <a name="examples"></a>Voorbeelden
 
-Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront` .
+Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](/rest/api/searchservice/search-documents) met `search=waterfront` .
 
 ```odata-filter-expr
     search.ismatchscoring('waterfront')
@@ -133,4 +133,4 @@ Vind documenten waar de termen "Hotel" en "lucht haven" binnen vijf woorden van 
 - [Filters in azure Cognitive Search](search-filters.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

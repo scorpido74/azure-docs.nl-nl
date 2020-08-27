@@ -2,13 +2,14 @@
 title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Docs
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518081"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936517"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -471,5 +472,5 @@ Deze SDK vereist `HttpContext` en werkt daarom niet in niet-HTTP-toepassingen, w
 * [Configureer een momentopname verzameling](./snapshot-debugger.md) om de status van de bron code en variabelen weer te geven op het moment dat een uitzonde ring wordt gegenereerd.
 * [Gebruik de API](./api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een gedetailleerde weer gave van de prestaties en het gebruik van uw app.
 * Gebruik [beschikbaarheids tests](./monitor-web-app-availability.md) om uw app voortdurend van over de hele wereld te controleren.
-* [Afhankelijkheids injectie in ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
+* [Afhankelijkheidsinjectie in ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
 

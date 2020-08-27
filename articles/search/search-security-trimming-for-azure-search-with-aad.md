@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b8fd25e209316e828e234b4c64c8b2a2152de6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080494"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928578"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Beveiligings filters voor het verkleinen van Azure Cognitive Search-resultaten met behulp van Active Directory-identiteiten
 
@@ -40,7 +40,7 @@ Uw toepassing moet ook zijn geregistreerd bij AAD, zoals beschreven in de volgen
 
 ### <a name="register-your-application-with-aad"></a>Uw toepassing registreren bij AAD
 
-Deze stap integreert uw toepassing met AAD voor het accepteren van aanmeldingen van gebruikers-en groeps accounts. Als u geen AAD-beheerder bent in uw organisatie, moet u mogelijk [een nieuwe Tenant maken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) om de volgende stappen uit te voeren.
+Deze stap integreert uw toepassing met AAD voor het accepteren van aanmeldingen van gebruikers-en groeps accounts. Als u geen AAD-beheerder bent in uw organisatie, moet u mogelijk [een nieuwe Tenant maken](../active-directory/develop/quickstart-create-new-tenant.md) om de volgende stappen uit te voeren.
 
 1. Ga naar de app voor het registreren van de [**toepassings registratie Portal**](https://apps.dev.microsoft.com)  >   **Converged app**  >  **een app toevoegen**.
 2. Voer een naam in voor uw toepassing en klik vervolgens op **maken**. 
@@ -63,7 +63,7 @@ Als u echter geen bestaande gebruikers hebt, kunt u Microsoft Graph-Api's gebrui
 
 Gebruikers-en groepslid maatschappen kunnen zeer onvoorzichtig zijn, met name voor grote organisaties. Code die gebruikers-en groeps-id's bouwt, moet vaak genoeg worden uitgevoerd om wijzigingen in het lidmaatschap van de organisatie op te halen. Op dezelfde manier moet uw Azure Cognitive Search-index een vergelijk bare update planning hebben om de huidige status van toegestane gebruikers en resources weer te geven.
 
-### <a name="step-1-create-aad-group"></a>Stap 1: [Aad-groep](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) maken 
+### <a name="step-1-create-aad-group"></a>Stap 1: [Aad-groep](/graph/api/group-post-groups?view=graph-rest-1.0) maken 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>Stap 2: [Aad-gebruiker](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) maken
+### <a name="step-2-create-aad-user"></a>Stap 2: [Aad-gebruiker](/graph/api/user-post-users?view=graph-rest-1.0) maken
 ```csharp
 User user = new User()
 {
@@ -98,9 +98,9 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>Stap 4: de groeps-id's in de cache opslaan
-Als u de netwerk latentie wilt beperken, kunt u de groeps beleidsobjecten van de gebruiker in de cache opslaan zodat er groepen worden geretourneerd uit de cache, waarbij een retour naar AAD wordt opgeslagen. U kunt [Aad batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) gebruiken om één HTTP-aanvraag met meerdere gebruikers te verzenden en de cache te bouwen.
+Als u de netwerk latentie wilt beperken, kunt u de groeps beleidsobjecten van de gebruiker in de cache opslaan zodat er groepen worden geretourneerd uit de cache, waarbij een retour naar AAD wordt opgeslagen. U kunt [Aad batch API](/graph/json-batching) gebruiken om één HTTP-aanvraag met meerdere gebruikers te verzenden en de cache te bouwen.
 
-Microsoft Graph is ontworpen om een groot aantal aanvragen af te handelen. Als er sprake is van een overweldigend aantal aanvragen, mislukt de aanvraag met de HTTP-status code 429 van Microsoft Graph. Zie [Microsoft Graph beperking](https://developer.microsoft.com/graph/docs/concepts/throttling)voor meer informatie.
+Microsoft Graph is ontworpen om een groot aantal aanvragen af te handelen. Als er sprake is van een overweldigend aantal aanvragen, mislukt de aanvraag met de HTTP-status code 429 van Microsoft Graph. Zie [Microsoft Graph beperking](/graph/throttling)voor meer informatie.
 
 ## <a name="index-document-with-their-permitted-groups"></a>Document indexeren met de toegestane groepen
 
@@ -138,7 +138,7 @@ Als u documenten wilt filteren die zijn geretourneerd in de zoek resultaten op b
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>Stap 1: de groeps-id's van de gebruiker ophalen
 
-Als de gebruikers groepen nog niet in de cache zijn opgeslagen of de cache is verlopen, geeft u de aanvraag voor de [groep](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) op
+Als de gebruikers groepen nog niet in de cache zijn opgeslagen of de cache is verlopen, geeft u de aanvraag voor de [groep](/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) op
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -186,7 +186,7 @@ Het antwoord bevat een gefilterde lijst met documenten, die bestaan uit degene d
 
 In dit overzicht hebt u technieken geleerd voor het gebruik van AAD-aanmeldingen om documenten te filteren in azure Cognitive Search resultaten, waardoor de resultaten van documenten die niet overeenkomen met het filter dat is opgegeven in de aanvraag, worden afgekapt.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Toegangs beheer op basis van identiteiten met behulp van Azure Cognitive Search filters](search-security-trimming-for-azure-search.md)
 + [Filters in azure Cognitive Search](search-filters.md)

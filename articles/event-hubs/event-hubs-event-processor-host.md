@@ -3,12 +3,12 @@ title: Gebeurtenissen ontvangen met Event processor host-Azure Event Hubs | Micr
 description: In dit artikel wordt de Event processor host in azure Event Hubs beschreven, waarmee u het beheer van controle punten, leasing en het lezen van gebeurtenissen met een parallelle activiteit vereenvoudigt.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002519"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936177"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
@@ -43,7 +43,7 @@ Event Hubs biedt deze functionaliteit in plaats van uw eigen oplossing te maken 
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor-interface
 
-Voor de eerste keer gebruiken toepassingen de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -interface, die vier methoden heeft: [openasync, CloseAsync, ProcessErrorAsync en ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Deze interface bevat de werkelijke code voor het gebruiken van de gebeurtenissen die Event Hubs verzendt. De volgende code toont een eenvoudige implementatie:
+Voor de eerste keer gebruiken toepassingen de  [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -interface, die vier methoden heeft: [openasync, CloseAsync, ProcessErrorAsync en ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Deze interface bevat de werkelijke code voor het gebruiken van de gebeurtenissen die Event Hubs verzendt. De volgende code toont een eenvoudige implementatie:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -192,10 +192,10 @@ Het gebruik van de toepassing wordt niet aanbevolen, waarbij u een ontvanger maa
 Nu u bekend bent met de Event processor host, raadpleegt u de volgende artikelen voor meer informatie over Event Hubs:
 
 - Aan de slag met Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Programmeer handleiding voor Event Hubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

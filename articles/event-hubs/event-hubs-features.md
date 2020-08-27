@@ -3,12 +3,12 @@ title: Overzicht van functies-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u informatie over de functies en terminologie van Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172119"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936228"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
 
@@ -37,9 +37,9 @@ U kunt een gebeurtenis publiceren via AMQP 1,0, Kafka 1,0 (en later) of HTTPS. E
 
 De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenario. AMQP vereist de inrichting van een permanente bidirectionele socket naast Transport Layer Security (TLS) of SSL/TLS. AMQP heeft hogere netwerk kosten bij het initialiseren van de sessie, maar HTTPS vereist extra TLS-overhead voor elke aanvraag. AMQP biedt betere prestaties voor regelmatige uitgevers.
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+![Partitie sleutels](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Als deze niet overeenkomen, treedt er een fout op.
+Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Anders treedt er een fout op.
 
 ### <a name="publisher-policy"></a>Uitgeversbeleid
 
@@ -86,13 +86,13 @@ In de volgende voor beelden ziet u de URI-Conventie voor de Consumer groep:
 
 In de volgende afbeelding ziet u de architectuur voor de verwerking van stromen van Event Hubs:
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs architectuur](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>Stroom-offsets
 
 Een *Offset* is de positie van een gebeurtenis binnen een partitie. U kunt een offset beschouwen als een clientcursor. De offset is een bytenummering van de gebeurtenis. Met deze offset kan een gebeurtenisconsumer (lezer) een punt in de gebeurtenisstroom opgeven vanwaaruit begonnen moet worden met het lezen van gebeurtenissen. U kunt de offset opgeven als een tijdstempel of als een offsetwaarde. Consumers zijn zelf verantwoordelijk voor het opslaan van hun eigen offsetwaarden buiten de Event Hubs-service. Binnen een partitie bevat elke gebeurtenis een offset.
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![Partitie-offset](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>Controlepunten maken
 
@@ -104,7 +104,7 @@ Als een lezer van een partitie is losgekoppeld en er vervolgens weer verbinding 
 > Als u Azure Blob Storage gebruikt als controlepunt opslag in een omgeving die ondersteuning biedt voor een andere versie van de Storage BLOB SDK dan die welke meestal beschikbaar zijn op Azure, moet u code gebruiken om de API-versie van de opslag service te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld [Event hubs uitvoert op een Azure stack hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u code gebruiken om de API-versie van de Storage-service te richten op 2017-11-09. Zie voor een voor beeld van het richten op een specifieke opslag-API-versie de volgende voor beelden op GitHub: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) of [type script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) of  [type script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>Algemene taken voor consumers
@@ -138,10 +138,10 @@ U bent verantwoordelijk voor het beheer van de offset.
 Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
 
 - Aan de slag met Event Hubs
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Programmeer handleiding voor Event Hubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928561"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Ontwikkeling en configuratie van Azure Functions met Azure SignalR Service
 
@@ -26,7 +26,7 @@ De Azure signalerings service kan in verschillende modi worden geconfigureerd. B
 
 Ga in het Azure Portal naar de pagina *instellingen* van de bron van de signaal service. Stel de *Service modus* in op *serverloos*.
 
-![Seingevings service-modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
+![SignalR Service-modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 ## <a name="azure-functions-development"></a>Azure Functions-ontwikkeling
 
@@ -109,20 +109,20 @@ Alle functies die gebruikmaken van een op klassen gebaseerd model moeten de meth
 
 ### <a name="define-hub-method"></a>Hub-methode definiëren
 
-Alle hub-methoden **moeten** een `[SignalRTrigger]` kenmerk hebben en **moeten** constructor zonder para meters gebruiken. Vervolgens wordt de **methode naam** beschouwd als parameter **gebeurtenis**.
+Alle hub-methoden **moeten**  een `[SignalRTrigger]` kenmerk hebben en **moeten** constructor zonder para meters gebruiken. Vervolgens wordt de **methode naam** beschouwd als parameter **gebeurtenis**.
 
 Standaard, `category=messages` behalve de naam van de methode is een van de volgende namen:
 
-* **OnConnected**: behandeld als`category=connections, event=connected`
-* **OnDisconnected**: behandeld als`category=connections, event=disconnected`
+* **OnConnected**: behandeld als `category=connections, event=connected`
+* **OnDisconnected**: behandeld als `category=connections, event=disconnected`
 
 ### <a name="parameter-binding-experience"></a>Verbindings ervaring met para meters
 
 In model op basis van klasse `[SignalRParameter]` is niet nodig omdat alle argumenten standaard zijn gemarkeerd, `[SignalRParameter]` behalve als dit een van de volgende situaties is:
 
 * Het argument wordt gedecoreerd door een bindings kenmerk.
-* Het type van het argument is `ILogger` of`CancellationToken`
-* Het argument wordt gedecoreerd op kenmerk`[SignalRIgnore]`
+* Het type van het argument is `ILogger` of `CancellationToken`
+* Het argument wordt gedecoreerd op kenmerk `[SignalRIgnore]`
 
 ### <a name="negotiate-experience-in-class-based-model"></a>Onderhandelen over ervaring in model op basis van klasse
 
@@ -218,8 +218,8 @@ De Java script-type script-client maakt HTTP-aanvragen aan de onderhandelings fu
 
 Wanneer u de functie-app op uw lokale computer uitvoert, kunt u een `Host` sectie toevoegen aan *local.settings.jsin* om CORS in te scha kelen. Voeg in de `Host` sectie twee eigenschappen toe:
 
-* `CORS`-Voer de basis-URL in die de oorsprong is van de client toepassing
-* `CORSCredentials`-Stel deze instelling in op `true` ' withCredentials-aanvragen toestaan
+* `CORS` -Voer de basis-URL in die de oorsprong is van de client toepassing
+* `CORSCredentials` -Stel deze instelling in op `true` ' withCredentials-aanvragen toestaan
 
 Voorbeeld:
 

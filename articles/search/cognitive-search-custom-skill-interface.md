@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891249"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935412"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een Azure Cognitive Search-verrijkings pijplijn
 
@@ -168,5 +168,5 @@ In dit artikel worden de interface vereisten behandeld die nodig zijn voor het i
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vaardig heden maken (REST)](/rest/api/searchservice/create-skillset)
 + [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

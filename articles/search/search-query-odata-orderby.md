@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903779"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926827"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData-$orderby syntaxis in azure Cognitive Search
 
@@ -93,4 +93,4 @@ Sorteer hotels in aflopende volg orde door te zoeken. Score en waardering en ver
 - [Werken met zoek resultaten in azure Cognitive Search](search-pagination-page-layout.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

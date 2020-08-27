@@ -9,25 +9,25 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076403"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936704"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Versies van de Azure Search .NET Management SDK bijwerken
 
 In dit artikel wordt uitgelegd hoe u kunt migreren naar opeenvolgende versies van de Azure Search .NET Management SDK, die wordt gebruikt om Zoek Services in te richten of te verwijderen, de capaciteit aan te passen en de API-sleutels te beheren.
 
-Management-Sdk's richten zich op een specifieke versie van de beheer REST API. Zie [Zoek beheer (rest)](https://docs.microsoft.com/rest/api/searchmanagement/)voor meer informatie over concepten en bewerkingen.
+Management-Sdk's richten zich op een specifieke versie van de beheer REST API. Zie [Zoek beheer (rest)](/rest/api/searchmanagement/)voor meer informatie over concepten en bewerkingen.
 
 ## <a name="versions"></a>Versies
 
 | SDK-versie | Overeenkomende REST API versie | Wijziging van de functie of het gedrag |
 |-------------|--------------------------------|-------------------------------------|
 | [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Endpoint Security toevoegen (IP-firewalls en integratie met [persoonlijke Azure-koppeling](../private-link/private-endpoint-overview.md)) |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Verbeteringen in het gebruik. De wijziging van de [lijst query sleutels](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) opsplitsen (Get wordt stopgezet). |
+| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Verbeteringen in het gebruik. De wijziging van de [lijst query sleutels](/rest/api/searchmanagement/querykeys/listbysearchservice) opsplitsen (Get wordt stopgezet). |
 | [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | Eerste versie |
 
 ## <a name="how-to-upgrade"></a>Een upgrade uitvoeren
@@ -48,21 +48,21 @@ Versie 3,0 voegt persoonlijke Endpoint Protection toe door de toegang tot IP-ber
 
 | API | Categorie| Details |
 |-----|--------|------------------|
-| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP-firewall | Beperk de toegang tot een service-eind punt tot een lijst met toegestane IP-adressen. Zie [Configure IP firewall](service-configure-firewall.md) for concepten and portal instructies (Engelstalig). |
-| [Gedeelde persoonlijke koppelings resource](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Maak een gedeelde persoonlijke koppelings resource die moet worden gebruikt door een zoek service.  |
-| [Verbindingen met privé-eind punten](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Private Link | Verbindingen tot stand brengen en beheren met een zoek service via een persoonlijk eind punt. Zie [een persoonlijk eind punt maken](service-create-private-endpoint.md) voor concepten en Portal-instructies.|
-| [Persoonlijke koppelings resources](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Private Link | Voor een zoek service met een particuliere eindpunt verbinding krijgt u een lijst met alle services die in hetzelfde virtuele netwerk worden gebruikt. Als uw zoek oplossing Indexeer functies bevat die worden opgehaald uit Azure-gegevens bronnen (Azure Storage, Cosmos DB, Azure SQL) of gebruikt Cognitive Services of Key Vault, moeten al deze resources eind punten in het virtuele netwerk hebben en moet deze API een lijst retour neren. |
-| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Dit is een eigenschap voor het maken of bijwerken van service aanvragen. Als deze is uitgeschakeld, is persoonlijke koppeling de enige modale toegang. |
+| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP-firewall | Beperk de toegang tot een service-eind punt tot een lijst met toegestane IP-adressen. Zie [Configure IP firewall](service-configure-firewall.md) for concepten and portal instructies (Engelstalig). |
+| [Gedeelde persoonlijke koppelings resource](/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Maak een gedeelde persoonlijke koppelings resource die moet worden gebruikt door een zoek service.  |
+| [Verbindingen met privé-eind punten](/rest/api/searchmanagement/privateendpointconnections) | Private Link | Verbindingen tot stand brengen en beheren met een zoek service via een persoonlijk eind punt. Zie [een persoonlijk eind punt maken](service-create-private-endpoint.md) voor concepten en Portal-instructies.|
+| [Persoonlijke koppelings resources](/rest/api/searchmanagement/privatelinkresources/) | Private Link | Voor een zoek service met een particuliere eindpunt verbinding krijgt u een lijst met alle services die in hetzelfde virtuele netwerk worden gebruikt. Als uw zoek oplossing Indexeer functies bevat die worden opgehaald uit Azure-gegevens bronnen (Azure Storage, Cosmos DB, Azure SQL) of gebruikt Cognitive Services of Key Vault, moeten al deze resources eind punten in het virtuele netwerk hebben en moet deze API een lijst retour neren. |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Dit is een eigenschap voor het maken of bijwerken van service aanvragen. Als deze is uitgeschakeld, is persoonlijke koppeling de enige modale toegang. |
 
 ### <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
 
-U kunt de aanvraag voor het ophalen van een [lijst met zoek sleutels](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) niet meer gebruiken. In eerdere releases kunt u in deze versie GET of POST, in deze release en in alle releases die vooruit verplaatsen, alleen POST worden ondersteund. 
+U kunt de aanvraag voor het ophalen van een [lijst met zoek sleutels](/rest/api/searchmanagement/querykeys/listbysearchservice) niet meer gebruiken. In eerdere releases kunt u in deze versie GET of POST, in deze release en in alle releases die vooruit verplaatsen, alleen POST worden ondersteund. 
 
 ## <a name="upgrade-to-20"></a>Voer een upgrade uit naar 2,0
 
 Versie 2 van de Azure Search .NET Management SDK is een kleine upgrade, zodat het wijzigen van uw code slechts minimale inspanning vereist. De wijzigingen in de SDK zijn strikt aan de client zijde gewijzigd om de bruikbaarheid van de SDK zelf te verbeteren. Deze wijzigingen omvatten het volgende:
 
-* `Services.CreateOrUpdate`en de bijbehorende asynchrone versies worden nu automatisch door gegeven aan de inrichting `SearchService` en worden niet teruggestuurd totdat het inrichten van de service is voltooid. Zo hoeft u niet zelf een dergelijke polling code te schrijven.
+* `Services.CreateOrUpdate` en de bijbehorende asynchrone versies worden nu automatisch door gegeven aan de inrichting `SearchService` en worden niet teruggestuurd totdat het inrichten van de service is voltooid. Zo hoeft u niet zelf een dergelijke polling code te schrijven.
 
 * Als u nog steeds hand matig Service Provisioning wilt pollen, kunt u de nieuwe `Services.BeginCreateOrUpdate` methode of een van de bijbehorende asynchrone versies gebruiken.
 

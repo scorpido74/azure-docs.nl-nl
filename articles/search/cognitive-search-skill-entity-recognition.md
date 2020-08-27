@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080847"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936075"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van entity erkennen
 
-De kwalificatie voor **entiteits herkenning** extraheert entiteiten van verschillende typen van tekst. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in cognitive Services.
+De kwalificatie voor **entiteits herkenning** extraheert entiteiten van verschillende typen van tekst. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](../cognitive-services/text-analytics/overview.md) in cognitive Services.
 
 > [!NOTE]
 > Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
@@ -29,7 +29,7 @@ De kwalificatie voor **entiteits herkenning** extraheert entiteiten van verschil
 Micro soft. skills. Text. EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
@@ -40,22 +40,22 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 | `categories`    | Matrix van categorieën die moeten worden geëxtraheerd.  Mogelijke categorie typen: `"Person"` , `"Location"` , `"Organization"` , `"Quantity"` , `"Datetime"` , `"URL"` , `"Email"` . Als er geen categorie wordt opgegeven, worden alle typen geretourneerd.|
 | `defaultLanguageCode` |    De taal code van de invoer tekst. De volgende talen worden ondersteund: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Niet alle entiteits categorieën worden ondersteund voor alle talen. Zie de opmerking hieronder.|
 | `minimumPrecision` | Een waarde tussen 0 en 1. Als de betrouwbaarheids Score (in de `namedEntities` uitvoer) lager is dan deze waarde, wordt de entiteit niet geretourneerd. De standaardwaarde is 0. |
-| `includeTypelessEntities` | Stel `true` deze in als u bekende entiteiten wilt herkennen die niet aan de huidige categorieën voldoen. In het complexe uitvoer veld worden herkende entiteiten geretourneerd `entities` . "Windows 10" is bijvoorbeeld een bekende entiteit (een product), maar omdat "Products" geen ondersteunde categorie is, wordt deze entiteit opgenomen in het uitvoer veld entiteiten. Standaard waarde is`false` |
+| `includeTypelessEntities` | Stel `true` deze in als u bekende entiteiten wilt herkennen die niet aan de huidige categorieën voldoen. In het complexe uitvoer veld worden herkende entiteiten geretourneerd `entities` . "Windows 10" is bijvoorbeeld een bekende entiteit (een product), maar omdat "Products" geen ondersteunde categorie is, wordt deze entiteit opgenomen in het uitvoer veld entiteiten. Standaard waarde is `false` |
 
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Description                   |
+| Invoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
-| `languageCode`    | Optioneel. De standaardwaarde is `"en"`.  |
+| `languageCode`    | Optioneel. De standaardinstelling is `"en"`.  |
 | `text`          | De tekst die moet worden geanalyseerd.          |
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
 > [!NOTE]
-> Niet alle entiteits categorieën worden ondersteund voor alle talen. De `"Person"` `"Location"` categorie typen,, en `"Organization"` entiteit worden ondersteund voor de volledige lijst met talen hierboven. Alleen _de_modules _, en,_ _es_, _fr_en _zh-Hans_ ondersteunen extra heren,,, `"Quantity"` `"Datetime"` `"URL"` en `"Email"` typen. Zie [taal-en regio ondersteuning voor de Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)voor meer informatie.  
+> Niet alle entiteits categorieën worden ondersteund voor alle talen. De `"Person"` `"Location"` categorie typen,, en `"Organization"` entiteit worden ondersteund voor de volledige lijst met talen hierboven. Alleen _de_modules _, en,_ _es_, _fr_en _zh-Hans_ ondersteunen extra heren,,, `"Quantity"` `"Datetime"` `"URL"` en `"Email"` typen. Zie [taal-en regio ondersteuning voor de Text Analytics-API](../cognitive-services/text-analytics/language-support.md)voor meer informatie.  
 
-| Uitvoer naam      | Description                   |
+| Uitvoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
 | `persons`       | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
 | `locations`  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
@@ -97,7 +97,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
     ]
   }
 ```
-##    <a name="sample-input"></a>Voorbeeld invoer
+##    <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -187,12 +187,12 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 }
 ```
 
-Houd er rekening mee dat de verplaatsingen die worden geretourneerd voor entiteiten in de uitvoer van deze vaardigheid rechtstreeks worden geretourneerd uit de [Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). Dit betekent dat als u deze gebruikt om te indexeren in de oorspronkelijke teken reeks, u de [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) -klasse in .net moet gebruiken om de juiste inhoud te extra heren.  [Meer informatie vindt u hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Houd er rekening mee dat de verplaatsingen die worden geretourneerd voor entiteiten in de uitvoer van deze vaardigheid rechtstreeks worden geretourneerd uit de [Text Analytics-API](../cognitive-services/text-analytics/overview.md). Dit betekent dat als u deze gebruikt om te indexeren in de oorspronkelijke teken reeks, u de [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) -klasse in .net moet gebruiken om de juiste inhoud te extra heren.  [Meer informatie vindt u hier.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Fout cases
 Als de taal code voor het document niet wordt ondersteund, wordt een fout geretourneerd en worden er geen entiteiten geëxtraheerd.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

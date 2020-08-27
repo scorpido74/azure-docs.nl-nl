@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73496443"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936738"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>AI gebruiken voor het begrijpen van Blob Storage-gegevens
 
@@ -112,7 +112,7 @@ Een verrijkt document aan het einde van de pijp lijn wijkt af van de oorspronkel
 
 U kunt veel meer doen met AI-verrijking om optimaal gebruik te maken van uw gegevens in Azure Storage, waaronder het combi neren van Cognitive Services op verschillende manieren, en het ontwerpen van aangepaste vaardig heden voor gevallen waarin u geen ervaring hebt met de cognitieve service voor het scenario. Meer informatie vindt u op de onderstaande koppelingen.
 
-+ [Het uploaden, downloaden en vermelden van blobs met de Azure Portal (Azure Blob-opslag)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Het uploaden, downloaden en vermelden van blobs met de Azure Portal (Azure Blob-opslag)](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [Een BLOB-indexer instellen (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
 + [Overzicht van AI-verrijking (Azure Cognitive Search)](cognitive-search-concept-intro.md) 
 + [Een vaardig heden maken (Azure Cognitive Search)](cognitive-search-defining-skillset.md)

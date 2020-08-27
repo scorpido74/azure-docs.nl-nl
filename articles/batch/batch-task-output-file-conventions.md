@@ -3,13 +3,13 @@ title: Uitvoer gegevens persistent maken voor Azure Storage met .NET file conven
 description: Meer informatie over het gebruik van Azure Batch bestands conventies bibliotheek voor .NET om batch taken te behouden & taak uitvoer naar Azure Storage en de uitvoer in de Azure Portal te bekijken.
 ms.topic: how-to
 ms.date: 11/14/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147168"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936959"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Taak-en taak gegevens persistent maken om te Azure Storage met de conventies bibliotheek voor batch bestanden voor .NET
 
@@ -99,7 +99,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-De `kind` para meter van de [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ ](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads)De methode SaveAsync categoriseert de persistente bestanden. Er zijn vier vooraf gedefinieerde [TaskOutputKind][net_taskoutputkind] typen: `TaskOutput` , `TaskPreview` , `TaskLog` , en `TaskIntermediate.` u kunt ook aangepaste uitvoer Categorieën definiëren.
+De `kind` para meter van de [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ ](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) De methode SaveAsync categoriseert de persistente bestanden. Er zijn vier vooraf gedefinieerde [TaskOutputKind][net_taskoutputkind] typen: `TaskOutput` , `TaskPreview` , `TaskLog` , en `TaskIntermediate.` u kunt ook aangepaste uitvoer Categorieën definiëren.
 
 Met deze uitvoer typen kunt u opgeven welk type uitvoer moet worden weer gegeven wanneer u later een query uitvoert op batch voor de persistente uitvoer van een bepaalde taak. Met andere woorden, als u de uitvoer van een taak vermeldt, kunt u de lijst filteren op een van de uitvoer typen. Bijvoorbeeld ' Geef mij de *Preview* -uitvoer voor taak *109*'. Meer informatie over het opnemen en ophalen van uitvoer wordt weer gegeven in de uitvoer ophalen verderop in het artikel.
 

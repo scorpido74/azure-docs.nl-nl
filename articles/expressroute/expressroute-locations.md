@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/13/2020
+ms.date: 08/26/2020
 ms.author: cherylmc
-ms.openlocfilehash: 55bf91a0f01c66d43d87b734ce66b68f3995c1c3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: e47f555e33b9b6d3548f82485767184c89236731
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225594"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927626"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-connectiviteits partners en peering-locaties
 
@@ -44,7 +44,7 @@ In de volgende tabel vindt u een toewijzing van Azure-regio's aan ExpressRoute-l
 | --- | --- | --- |
 | **Australië - overheid** |Australië Centraal, Australië Centraal 2 |Canberra, Canberra2 |
 | **Europa** | Frankrijk-centraal, Frankrijk-zuid, Duitsland-noord, Duitsland-west-centraal, Europa-noord, Noor wegen Oost, Noor wegen West, Zwitserland-noord, Zwitserland-west, UK-west, UK-zuid, Europa-west |Amsterdam, Amsterdam2, Berlijn, kopen Hagen, Dublin, Frankfurt, Genève, Londen, London2, Marseille, Milaan, München, Newport (Wales), Utrecht, Parijs, Stavanger, Stockholm, Zürich |
-| **Noord-Amerika** |VS - oost, VS - west, VS - oost 2, VS - west 2, VS - centraal, VS - zuid-centraal, VS - noord-centraal, VS - west-centraal, Canada - centraal, Canada - oost |Atlanta, Chicago, Amsterdam, Denver, Las, Groningen, los Angeles2, Miami, Minneapolis, New York, Queretaro (Mexico), San Antonio, Seattle, silicone dal, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec, Toronto, Vancouver |
+| **Noord-Amerika** |VS - oost, VS - west, VS - oost 2, VS - west 2, VS - centraal, VS - zuid-centraal, VS - noord-centraal, VS - west-centraal, Canada - centraal, Canada - oost |Atlanta, Chicago, Amsterdam, Denver, Las, Groningen, los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec, Queretaro (Mexico), Quincy, San Antonio, Seattle, silicone dal, Silicon Valley2, Toronto, Vancouver, Washington DC, Washington DC2 |
 | **Azië** | Azië - oost, Azië - zuidoost | Bangkok, Hongkong, Hongkong Kong2, Jakarta, Kuala Lumpur, Singapore, Singapore2, Taiwan |
 | **India** | India - west, India - centraal, India - zuid |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | Japan - west, Japan - oost |Osaka, Tokio, Tokyo2 |

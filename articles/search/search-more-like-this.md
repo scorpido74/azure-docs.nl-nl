@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fb43a0d39beacf02a6949228eaa32a719164987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd6b64f118460a115963ed0bf105641d80334348
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552227"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934987"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (preview) in azure Cognitive Search
 
 > [!IMPORTANT] 
 > Deze functie is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2020-06-30-preview](search-api-preview.md) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
-`moreLikeThis=[key]`is een query parameter in de [Search Documents-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) waarmee documenten worden gevonden die vergelijkbaar zijn met het document dat is opgegeven door de document sleutel. Wanneer een zoek opdracht wordt gemaakt met `moreLikeThis` , wordt er een query gegenereerd met zoek termen die zijn geëxtraheerd uit het opgegeven document, waarin het document het beste wordt beschreven. De gegenereerde query wordt vervolgens gebruikt voor het maken van de zoek opdracht. Standaard wordt de inhoud van alle Doorzoek bare velden beschouwd als minus alle beperkte velden die u hebt opgegeven met behulp van de `searchFields` para meter. De `moreLikeThis` para meter kan niet worden gebruikt met de zoek parameter, `search=[string]` .
+`moreLikeThis=[key]` is een query parameter in de [Search Documents-API](/rest/api/searchservice/search-documents) waarmee documenten worden gevonden die vergelijkbaar zijn met het document dat is opgegeven door de document sleutel. Wanneer een zoek opdracht wordt gemaakt met `moreLikeThis` , wordt er een query gegenereerd met zoek termen die zijn geëxtraheerd uit het opgegeven document, waarin het document het beste wordt beschreven. De gegenereerde query wordt vervolgens gebruikt voor het maken van de zoek opdracht. Standaard wordt de inhoud van alle Doorzoek bare velden beschouwd als minus alle beperkte velden die u hebt opgegeven met behulp van de `searchFields` para meter. De `moreLikeThis` para meter kan niet worden gebruikt met de zoek parameter, `search=[string]` .
 
 Standaard wordt de inhoud van alle Doorzoek bare velden op het hoogste niveau beschouwd. Als u in plaats daarvan bepaalde velden wilt opgeven, kunt u de `searchFields` para meter gebruiken. 
 
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
 
 ### <a name="apply-filters"></a>Filters toepassen
 
-`MoreLikeThis`kan worden gecombineerd met andere algemene query parameters, zoals `$filter` . Zo kan de query worden beperkt tot alleen hotels waarvan de categorie ' budget ' is, waarbij de classificatie hoger is dan 3,5:
+`MoreLikeThis` kan worden gecombineerd met andere algemene query parameters, zoals `$filter` . Zo kan de query worden beperkt tot alleen hotels waarvan de categorie ' budget ' is, waarbij de classificatie hoger is dan 3,5:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2020-06-30-Preview

@@ -2,16 +2,17 @@
 title: Live Azure Service Fabric-apps met Application Insights profileren
 description: Profiler inschakelen voor een Service Fabric toepassing
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539836"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930278"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Live Azure Service Fabric-toepassingen met Application Insights profileren
 

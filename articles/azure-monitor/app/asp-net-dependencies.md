@@ -2,13 +2,14 @@
 title: Afhankelijkheden bijhouden in Azure-toepassing Insights | Microsoft Docs
 description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsoft Azure webtoepassing met Application Insights.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321374"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936534"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
 
@@ -16,9 +17,9 @@ Een *afhankelijkheid* is een onderdeel dat wordt aangeroepen door uw toepassing.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch bijgehouden afhankelijkheden
 
-Application Insights Sdk's voor .NET en .NET core wordt geleverd met `DependencyTrackingTelemetryModule` een telemetrie-module waarmee automatisch afhankelijkheden worden verzameld. Deze afhankelijkheids verzameling wordt automatisch ingeschakeld voor [ASP.net](./asp-net.md) -en [ASP.net core](./asp-net-core.md) -toepassingen, wanneer deze zijn geconfigureerd volgens de gekoppelde officiële docs. `DependencyTrackingTelemetryModule`wordt verzonden als [Dit](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-pakket en wordt automatisch geactiveerd wanneer een van de NuGet-pakketten `Microsoft.ApplicationInsights.Web` of wordt gebruikt `Microsoft.ApplicationInsights.AspNetCore` .
+Application Insights Sdk's voor .NET en .NET core worden geleverd met `DependencyTrackingTelemetryModule` , een telemetrie-module waarmee automatisch afhankelijkheden worden verzameld. Deze afhankelijkheids verzameling wordt automatisch ingeschakeld voor [ASP.net](./asp-net.md) -en [ASP.net core](./asp-net-core.md) -toepassingen, wanneer deze zijn geconfigureerd volgens de gekoppelde officiële docs. `DependencyTrackingTelemetryModule` wordt verzonden als [Dit](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-pakket en wordt automatisch geactiveerd wanneer een van de NuGet-pakketten `Microsoft.ApplicationInsights.Web` of wordt gebruikt `Microsoft.ApplicationInsights.AspNetCore` .
 
- `DependencyTrackingTelemetryModule`momenteel worden de volgende afhankelijkheden automatisch bijgehouden:
+ `DependencyTrackingTelemetryModule` momenteel worden de volgende afhankelijkheden automatisch bijgehouden:
 
 |Afhankelijkheden |Details|
 |---------------|-------|
@@ -34,7 +35,7 @@ Als u een afhankelijkheid mist of een andere SDK gebruikt, moet u ervoor zorgen 
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatische tracking van afhankelijkheden instellen in console-apps
 
-Als u afhankelijkheden van .NET-console-apps automatisch wilt bijhouden, installeert u het Nuget `Microsoft.ApplicationInsights.DependencyCollector` -pakket en initialiseert u `DependencyTrackingTelemetryModule` als volgt:
+Als u afhankelijkheden van .NET-console-apps automatisch wilt bijhouden, installeert u het NuGet `Microsoft.ApplicationInsights.DependencyCollector` -pakket en initialiseert u `DependencyTrackingTelemetryModule` als volgt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -122,7 +123,7 @@ In de bovenstaande gevallen wordt de juiste methode voor het valideren van de in
 * Klik van trage of mislukte aanvragen om de afhankelijkheids aanroepen te controleren.
 * [Analyses](#logs-analytics) kunnen worden gebruikt voor het opvragen van afhankelijkheids gegevens.
 
-## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Langzame aanvragen diagnosticeren
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a> Langzame aanvragen diagnosticeren
 
 Elke aanvraag gebeurtenis is gekoppeld aan de afhankelijkheids aanroepen, uitzonde ringen en andere gebeurtenissen die worden bijgehouden terwijl uw app de aanvraag verwerkt. Als sommige aanvragen niet goed worden uitgevoerd, kunt u nagaan of het gaat om een trage reactie van een afhankelijkheid.
 
@@ -154,7 +155,7 @@ Hier ziet u het aantal mislukte afhankelijkheden. Als u meer informatie wilt ove
 
 ## <a name="logs-analytics"></a>Logboeken (Analytics)
 
-U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hieronder ziet u een aantal voorbeelden.
+U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hier volgen enkele voorbeelden.
 
 * Alle mislukte afhankelijkheids aanroepen zoeken:
 
@@ -195,7 +196,19 @@ U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hi
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hoe werkt het automatisch rapport van een afhankelijkheids verzamelaar bij het aanroepen van afhankelijkheden niet?*
 
-* Voor mislukte afhankelijkheids aanroepen is het veld geslaagd ingesteld op ONWAAR. `DependencyTrackingTelemetryModule`rapporteert niet `ExceptionTelemetry` . Het volledige gegevens model voor afhankelijkheid wordt [hier](data-model-dependency-telemetry.md)beschreven.
+* Voor mislukte afhankelijkheids aanroepen is het veld geslaagd ingesteld op ONWAAR. `DependencyTrackingTelemetryModule` rapporteert niet `ExceptionTelemetry` . Het volledige gegevens model voor afhankelijkheid wordt [hier](data-model-dependency-telemetry.md)beschreven.
+
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*Hoe kan ik opname latentie voor mijn afhankelijkheids-telemetrie berekenen?*
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*Hoe kan ik bepalen op welk tijdstip de afhankelijkheids aanroep is gestart?*
+
+In de Log Analytics query weergave `timestamp` vertegenwoordigt het tijdstip waarop de aanroep TrackDependency () is gestart, die onmiddellijk plaatsvindt nadat de reactie op het afhankelijkheids gesprek is ontvangen. Als u wilt berekenen hoe lang het afhankelijkheids gesprek begon, neemt u `timestamp` de registratie `duration` van de afhankelijkheids aanroep af en trekt u deze af.
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK
 Net als elke Application Insights SDK is de module afhankelijkheids verzameling ook open-source. Lees en bijdragen aan de code of Meld problemen bij [de officiële github-opslag plaats](https://github.com/Microsoft/ApplicationInsights-dotnet-server).

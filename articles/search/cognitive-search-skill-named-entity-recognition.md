@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080018"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935939"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van benoemde entiteiten
 
@@ -32,7 +32,7 @@ De **benoemde entiteit herkennings** kwalificatie haalt benoemde entiteiten uit 
 Micro soft. skills. Text. NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
@@ -41,19 +41,19 @@ Parameters zijn hoofdlettergevoelig.
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
 | categorieën    | Matrix van categorieën die moeten worden geëxtraheerd.  Mogelijke categorie typen: `"Person"` , `"Location"` , `"Organization"` . Als er geen categorie wordt opgegeven, worden alle typen geretourneerd.|
-|defaultLanguageCode |  De taal code van de invoer tekst. De volgende talen worden ondersteund:`de, en, es, fr, it`|
+|defaultLanguageCode |  De taal code van de invoer tekst. De volgende talen worden ondersteund: `de, en, es, fr, it`|
 | minimumPrecision  | Een getal tussen 0 en 1. Als de precisie lager is dan deze waarde, wordt de entiteit niet geretourneerd. De standaardwaarde is 0.|
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Description                   |
+| Invoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
-| languageCode  | Optioneel. De standaardwaarde is `"en"`.  |
+| languageCode  | Optioneel. De standaardinstelling is `"en"`.  |
 | tekst          | De tekst die moet worden geanalyseerd.          |
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam     | Description                   |
+| Uitvoer naam     | Beschrijving                   |
 |---------------|-------------------------------|
 | personen      | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
 | locaties  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
@@ -81,7 +81,7 @@ Parameters zijn hoofdlettergevoelig.
     ]
   }
 ```
-##  <a name="sample-input"></a>Voorbeeld invoer
+##  <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -153,7 +153,7 @@ Parameters zijn hoofdlettergevoelig.
 ## <a name="error-cases"></a>Fout cases
 Als de taal code voor het document niet wordt ondersteund, wordt een fout geretourneerd en worden er geen entiteiten geëxtraheerd.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

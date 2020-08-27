@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749483"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926861"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -44,8 +44,8 @@ De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen en an
 | Maximum aantal complexe verzamelings velden per index |40 |40 |40 |40 |40 |40 |40 |40 |
 | Maximum aantal elementen in alle complexe verzamelingen per document &nbsp; <sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Maximale diepte van complexe velden |10 |10 |10 |10 |10 |10 |10 |10 |
-| Maximum aantal [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggesters) per index |1 |1 |1 |1 |1 |1 |1 |1 |
-| Maximum aantal [Score profielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) per index |100 |100 |100 |100 |100 |100 |100 |100 |
+| Maximum aantal [suggesties](/rest/api/searchservice/suggesters) per index |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maximum aantal [Score profielen](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) per index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximum aantal functies per profiel |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Basic-services die zijn gemaakt vóór december 2017 hebben lagere limieten (5 in plaats van 15) op indices. Basic-laag is de enige SKU met een ondergrens van 100 velden per index.
@@ -58,7 +58,7 @@ De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen en an
 
 Vanaf oktober 2018 zijn er geen limieten meer voor het aantal documenten voor nieuwe services die zijn gemaakt in een wille keurige laag (Basic, S1, S2, S3, S3 HD) in een wille keurige regio. Voor oudere services die vóór oktober 2018 zijn gemaakt, zijn mogelijk nog steeds limieten voor document aantallen van toepassing.
 
-Als u wilt bepalen of uw service document limieten heeft, gebruikt u de [rest API service statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). De document limieten worden weer gegeven in het antwoord, waarbij `null` geen limieten worden aangegeven.
+Als u wilt bepalen of uw service document limieten heeft, gebruikt u de [rest API service statistieken ophalen](/rest/api/searchservice/get-service-statistics). De document limieten worden weer gegeven in het antwoord, waarbij `null` geen limieten worden aangegeven.
 
 > [!NOTE]
 > Hoewel er geen document limieten zijn opgelegd door de service, is er een Shard limiet van ongeveer 24.000.000.000 documenten per index op basis-, S1-, S2-en S3-Zoek Services. Voor S3 HD is de limiet voor Shard 2.000.000.000 documenten per index. Elk element van een complexe verzameling telt als een afzonderlijk document in termen van Shard-limieten.
@@ -120,7 +120,7 @@ Voor de lagen geoptimaliseerd voor opslag (L1 en L2) moet u een lagere query doo
 
 ## <a name="data-limits-ai-enrichment"></a>Gegevens limieten (AI-verrijking)
 
-Een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) die aanroepen naar een Text Analytics bron voor [entiteit herkenning](cognitive-search-skill-entity-recognition.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), [analyse van sentiment](cognitive-search-skill-sentiment.md), [taal detectie](cognitive-search-skill-language-detection.md)en [detectie van persoonlijke informatie](cognitive-search-skill-pii-detection.md) is onderhevig aan gegevens limieten. De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
+Een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) die aanroepen naar een Text Analytics bron voor [entiteit herkenning](cognitive-search-skill-entity-recognition.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), [analyse van sentiment](cognitive-search-skill-sentiment.md), [taal detectie](cognitive-search-skill-language-detection.md)en [detectie van persoonlijke informatie](cognitive-search-skill-pii-detection.md) is onderhevig aan gegevens limieten. De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](/dotnet/api/system.string.length) . Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Beperkings limieten
 
@@ -141,7 +141,7 @@ Limieten voor statische frequentie aanvragen voor bewerkingen met betrekking tot
 * Maxi maal 32 velden in de $orderby-component
 * De maximale grootte van de zoek term is 32.766 bytes (32 KB min 2 bytes) van tekst UTF-8-code ring
 
-<sup>1</sup> In Azure Cognitive Search is de hoofd tekst van een aanvraag onderhevig aan een bovengrens van 16 MB, waardoor een praktische limiet wordt opgelegd aan de inhoud van afzonderlijke velden of verzamelingen die niet anderszins beperkt zijn door theoretische limieten (Zie [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor meer informatie over veld samenstelling en beperkingen).
+<sup>1</sup> In Azure Cognitive Search is de hoofd tekst van een aanvraag onderhevig aan een bovengrens van 16 MB, waardoor een praktische limiet wordt opgelegd aan de inhoud van afzonderlijke velden of verzamelingen die niet anderszins beperkt zijn door theoretische limieten (Zie [ondersteunde gegevens typen](/rest/api/searchservice/supported-data-types) voor meer informatie over veld samenstelling en beperkingen).
 
 ## <a name="api-response-limits"></a>API-antwoord limieten
 * Maxi maal 1000 documenten geretourneerd per pagina met zoek resultaten

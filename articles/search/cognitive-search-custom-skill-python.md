@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852783"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936126"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
 
@@ -26,12 +26,12 @@ De aangepaste vaardigheid is eenvoudig in het ontwerp (het voegt twee teken reek
 
 + Bekijk de [aangepaste vaardigheids interface](cognitive-search-custom-skill-interface.md) voor een inleiding in de invoer-en uitvoer interface waarvoor een aangepaste vaardigheid moet worden geïmplementeerd.
 
-+ Stel uw omgeving in. We hebben [de end-to-end-zelf studie](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) gevolgd om een Serverloze Azure-functie in te stellen met behulp van Visual Studio code en python-extensies. De zelf studie leidt u door de installatie van de volgende hulpprogram ma's en onderdelen: 
++ Stel uw omgeving in. We hebben [de end-to-end-zelf studie](/azure/python/tutorial-vs-code-serverless-python-01) gevolgd om een Serverloze Azure-functie in te stellen met behulp van Visual Studio code en python-extensies. De zelf studie leidt u door de installatie van de volgende hulpprogram ma's en onderdelen: 
 
   + [Python 3,75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
-  + [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Python-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Azure Functions-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Een Azure-functie maken
@@ -208,7 +208,7 @@ Nu u de standaardhostcode hebt, moet u de functie als volgt testen:
 POST [Function URL you copied above]
 ```
 
-### <a name="request-body"></a>Aanvraagtekst
+### <a name="request-body"></a>Aanvraagbody
 ```json
 {
     "values": [
@@ -270,5 +270,5 @@ Gefeliciteerd! U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzel
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vaardig heden maken (REST)](/rest/api/searchservice/create-skillset)
 + [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

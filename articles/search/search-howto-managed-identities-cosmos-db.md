@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: f65aa4b307108682fa6e190a229e9d82b6efdec0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553198"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936653"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit (preview)
 
@@ -57,7 +57,7 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
-De [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van hoe u een gegevens bron maakt om gegevens te indexeren van Cosmos DB met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van hoe u een gegevens bron maakt om gegevens te indexeren van Cosmos DB met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
 Wanneer beheerde identiteiten worden gebruikt voor verificatie, bevat de **referenties** geen account sleutel.
 
@@ -111,7 +111,7 @@ api-key: [admin key]
 }
 ```
 
-Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
+Zie [index maken](/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
 
 ### <a name="5---create-the-indexer"></a>5: de Indexeer functie maken
 
@@ -136,7 +136,7 @@ Voor beeld van de definitie van de Indexeer functie:
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
-Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
+Bekijk [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 

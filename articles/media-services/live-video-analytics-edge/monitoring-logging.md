@@ -3,12 +3,12 @@ title: Bewaking en logboek registratie-Azure
 description: Dit artikel bevat een overzicht van live video analyses op IoT Edge bewaking en logboek registratie.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060446"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934290"
 ---
 # <a name="monitoring-and-logging"></a>Bewaking en registratie
 
@@ -100,13 +100,32 @@ Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens o
    ```
 De gebeurtenissen die door de module worden gegenereerd, worden naar de [IOT Edge-hub](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)verzonden en van daaruit kan worden doorgestuurd naar andere bestemmingen. 
 
+### <a name="timestamps-in-analytic-events"></a>Tijds tempels in analytische gebeurtenissen
+Zoals hierboven aangegeven, hebben gebeurtenissen die als onderdeel van de video analyse worden gegenereerd, een tijds tempel gekoppeld. Als u [de live video hebt opgenomen](video-recording-concept.md) als onderdeel van de grafiek topologie, helpt deze tijds tempel u bij het zoeken naar waar in de opgenomen video dat bepaalde gebeurtenis heeft plaatsgevonden. Hieronder vindt u de richt lijnen voor het toewijzen van de tijds tempel in een analytische gebeurtenis aan de tijd lijn van de video die is opgenomen in een [Azure media service-Asset](terminology.md#asset).
+
+Haal eerst de `eventTime` waarde op. Gebruik deze waarde in een [tijds bereik filter](playback-recordings-how-to.md#time-range-filters) om een geschikt deel van de opname op te halen. U kunt bijvoorbeeld video ophalen die 30 seconden eerder begint `eventTime` en eindigt 30 seconden daarna. In het bovenstaande voor beeld, waarbij `eventTime` 2020-05-12T23:33:09.381 z, een aanvraag voor een HLS-manifest voor het venster +/-30s ziet er ongeveer als volgt uit:
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+De URL hierboven retourneert een ' so-' [Master-afspeel lijst](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)met url's voor afspeel lijsten met media. De afspeel lijst van media bevat vermeldingen zoals de volgende:
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+In het bovenstaande rapporteert de vermelding dat er een video fragment beschikbaar is dat begint met een time stamp-waarde van `143039375031270` . De `timestamp` waarde in de analyse gebeurtenis maakt gebruik van dezelfde tijd schaal als de media-afspeel lijst en kan worden gebruikt om het relevante video fragment te identificeren en te zoeken naar het juiste frame.
+
+Voor meer informatie kunt u een van de vele [artikelen](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) in het kader nauw keurig zoeken in HLS lezen.
+
 ## <a name="controlling-events"></a>Gebeurtenissen beheren
 
 U kunt de volgende module dubbele eigenschappen, zoals beschreven in [module dubbele JSON-schema](module-twin-configuration-schema.md), gebruiken om de operationele en diagnostische gebeurtenissen te beheren die door de live video Analytics op IOT Edge module worden gepubliceerd.
 
-`diagnosticsEventsOutputName`– Neem een waarde voor deze eigenschap op en geef deze op om diagnostische gebeurtenissen van de module op te halen. Laat deze weg of laat het leeg om te voor komen dat de module diagnostische gebeurtenissen publiceert.
+`diagnosticsEventsOutputName` – Neem een waarde voor deze eigenschap op en geef deze op om diagnostische gebeurtenissen van de module op te halen. Laat deze weg of laat het leeg om te voor komen dat de module diagnostische gebeurtenissen publiceert.
    
-`operationalEventsOutputName`– Neem een waarde voor deze eigenschap op en geef deze op om operationele gebeurtenissen van de module op te halen. Laat deze weg of laat het leeg om te voor komen dat de module operationele gebeurtenissen publiceert.
+`operationalEventsOutputName` – Neem een waarde voor deze eigenschap op en geef deze op om operationele gebeurtenissen van de module op te halen. Laat deze weg of laat het leeg om te voor komen dat de module operationele gebeurtenissen publiceert.
    
 De analyse gebeurtenissen worden gegenereerd door knoop punten zoals de bewegings detectie processor of de HTTP-extensie processor, en de IoT hub-sink wordt gebruikt om ze naar de IoT Edge hub te verzenden. 
 
@@ -184,7 +203,7 @@ Gebeurtenis typen worden toegewezen aan een naam ruimte op basis van het volgend
 |---|---|
 |Analyse  |Gebeurtenissen die worden gegenereerd als onderdeel van inhouds analyse.|
 |Diagnostiek    |Gebeurtenissen die hulp bieden bij diagnose van problemen en prestaties.|
-|Functioneren    |Gebeurtenissen die worden gegenereerd als onderdeel van de resource bewerking.|
+|Operationeel    |Gebeurtenissen die worden gegenereerd als onderdeel van de resource bewerking.|
 
 De gebeurtenis typen zijn specifiek voor elke gebeurtenis klasse.
 

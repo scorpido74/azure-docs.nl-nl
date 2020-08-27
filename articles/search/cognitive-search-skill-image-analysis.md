@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080835"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936041"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Cognitieve vaardigheid van Image Analysis
 
-De kwalificatie **analyse van installatie kopieën** extraheert een uitgebreide set visuele functies op basis van de inhoud van de installatie kopie. U kunt bijvoorbeeld een bijschrift genereren op basis van een afbeelding, tags genereren of beroemdheden en bezienswaardigheden identificeren. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in cognitive Services. 
+De kwalificatie **analyse van installatie kopieën** extraheert een uitgebreide set visuele functies op basis van de inhoud van de installatie kopie. U kunt bijvoorbeeld een bijschrift genereren op basis van een afbeelding, tags genereren of beroemdheden en bezienswaardigheden identificeren. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](../cognitive-services/computer-vision/home.md) in cognitive Services. 
 
 > [!NOTE]
 > Kleine volumes (minder dan 20 trans acties) kunnen gratis worden uitgevoerd in azure Cognitive Search, maar voor grotere werk belastingen moet [een factureer bare Cognitive Services resource worden gekoppeld](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
@@ -35,12 +35,12 @@ Parameters zijn hoofdlettergevoelig.
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
 | `defaultLanguageCode` |  Een teken reeks die aangeeft welke taal moet worden geretourneerd. De service retourneert herkennings resultaten in een opgegeven taal. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/><br/>Ondersteunde talen zijn: <br/>*en* -Engels (standaard) <br/> *es* -Spaans <br/> *Ja* , Japans <br/> *PT* -Portugees <br/> *zh* -vereenvoudigd Chinees|
-| `visualFeatures` |    Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud genoemd) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li>   *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).|
+| `visualFeatures` |    Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud genoemd) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](../cognitive-services/computer-vision/category-taxonomy.md). </li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li>  *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid](./cognitive-search-custom-skill-interface.md).|
 | `details` | Een matrix met teken reeksen die aangeeft welke specifieke details van het domein moeten worden geretourneerd. Geldige typen visuele functies zijn: <ul><li>*beroemdheden* : identificeert beroemdheden als deze wordt gedetecteerd in de installatie kopie.</li><li>*bezienswaardigheden* : identificeert bezienswaardigheden als deze worden gedetecteerd in de installatie kopie. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Description                                          |
+| Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een andere waarde dan ```none``` . Zie het voor [beeld](#sample-output) voor meer informatie.|
 
@@ -333,7 +333,7 @@ U kunt uitvoer veld toewijzingen definiëren voor eigenschappen op lagere niveau
             "targetFieldName": "celebrities"
         }
 ```
-##  <a name="sample-input"></a>Voorbeeld invoer
+##  <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -512,7 +512,7 @@ U kunt uitvoer veld toewijzingen definiëren voor eigenschappen op lagere niveau
 ## <a name="error-cases"></a>Fout cases
 In de volgende gevallen worden er geen elementen geëxtraheerd.
 
-| Foutcode | Description |
+| Foutcode | Beschrijving |
 |------------|-------------|
 | `NotSupportedLanguage` | De gegeven taal wordt niet ondersteund. |
 | `InvalidImageUrl` | De afbeeldings-URL heeft een ongeldige indeling of is niet toegankelijk.|
@@ -538,8 +538,8 @@ Als u de fout melding ziet `"One or more skills are invalid. Details: Error in s
             ]
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Indexeerfunctie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexeerfunctie maken (REST)](/rest/api/searchservice/create-indexer)

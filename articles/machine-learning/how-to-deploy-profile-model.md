@@ -10,12 +10,12 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 6bbee606c59482e4a06f344d3221e8611f6dcc9d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544554"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935582"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Uw model profileren om het resource gebruik te bepalen
 
@@ -36,6 +36,9 @@ Als u uw model wilt profileren, hebt u het volgende nodig:
 
 > [!IMPORTANT]
 > Op dit moment bieden we alleen ondersteuning voor het profileren van services die hun aanvraag gegevens naar een teken reeks verwachten, bijvoorbeeld: String serialized JSON, Text, String serialized Image, enzovoort. De inhoud van elke rij van de gegevensset (teken reeks) wordt in de hoofd tekst van de HTTP-aanvraag geplaatst en verzonden naar de service die het model voor het scoren inkapselt.
+
+> [!IMPORTANT]
+> We bieden alleen ondersteuning voor profileren van Maxi maal twee Cpu's in de ChinaEast2-en USGovArizona-regio.
 
 Hieronder ziet u een voor beeld van hoe u een invoer-gegevensset kunt samen stellen om een service te profileren die de gegevens van de inkomende aanvraag naar geserializde JSON moet bevatten. In dit geval hebben we een gegevensset gemaakt op basis van 100 exemplaren van dezelfde inhoud van de aanvraag gegevens. In Real-World-scenario's wordt u aangeraden dat u grotere gegevens sets met verschillende invoer gebruikt, met name als uw model resource gebruik/-gedrag afhankelijk is van invoer.
 
@@ -127,7 +130,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 * [Problemen met een mislukte implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Implementeren naar Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Client toepassingen maken voor het gebruik van webservices](how-to-consume-web-service.md)
-* [Web-service bijwerken](how-to-deploy-update-web-service.md)
+* [Webservice bijwerken](how-to-deploy-update-web-service.md)
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)

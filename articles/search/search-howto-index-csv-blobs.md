@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9008b30fd89e9d57923f6c612b7a454aa1ba528e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084089"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935837"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Het indexeren van CSV-blobs met behulp van de delimitedText-verwerkings modus en BLOB-Indexeer functies in azure Cognitive Search
 
@@ -32,7 +32,7 @@ In dit artikel leert u hoe u CSV-blobs kunt parseren met een Azure Cognitive Sea
 > Volg de aanbevelingen voor de configuratie van de Indexeer functie in [een-op-veel-indexering](search-howto-index-one-to-many-blobs.md) om meerdere zoek documenten uit één Azure-Blob af te voeren.
 
 ## <a name="setting-up-csv-indexing"></a>CSV-indexering instellen
-Als u CSV-blobs wilt indexeren, maakt of werkt u een Indexeer functie definitie met de `delimitedText` parserings modus op een aanvraag voor het maken van een [Indexeer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) functie:
+Als u CSV-blobs wilt indexeren, maakt of werkt u een Indexeer functie definitie met de `delimitedText` parserings modus op een aanvraag voor het maken van een [Indexeer](/rest/api/searchservice/create-indexer) functie:
 
 ```http
     {
@@ -42,7 +42,7 @@ Als u CSV-blobs wilt indexeren, maakt of werkt u een Indexeer functie definitie 
     }
 ```
 
-`firstLineContainsHeaders`geeft aan dat de eerste (niet-lege) regel van elke BLOB kopteksten bevat.
+`firstLineContainsHeaders` geeft aan dat de eerste (niet-lege) regel van elke BLOB kopteksten bevat.
 Als blobs geen oorspronkelijke header regel bevatten, moeten de headers worden opgegeven in de Indexeer functie: 
 
 ```http
@@ -98,4 +98,3 @@ Indexeer functie
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Help ons Azure Cognitive Search beter te maken
 Als u een functie verzoek of ideeën voor verbeteringen hebt, geeft u uw invoer op [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)op.
-

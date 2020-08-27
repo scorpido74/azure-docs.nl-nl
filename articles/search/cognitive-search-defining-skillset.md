@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214085"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935446"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Een vakkennisset maken in een AI-pijp lijn in azure Cognitive Search 
 
@@ -42,21 +42,21 @@ Stel dat u een set van financiële adviezen wilt verwerken. Voor elk bestand wil
 
 | record-tekst | bedrijven | gevoel | bedrijfs beschrijvingen |
 |--------|-----|-----|-----|
-|voor beeld-record| ["Micro soft", "LinkedIn"] | 0.99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
+|voor beeld-record| ["Micro soft", "LinkedIn"] | 0,99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
 
 Het volgende diagram illustreert een hypothetische verrijkings pijplijn:
 
 ![Een hypothetische verrijkings pijplijn](media/cognitive-search-defining-skillset/sample-skillset.png "Een hypothetische verrijkings pijplijn")
 
 
-Zodra u een getrouw beeld hebt van wat u in de pijp lijn wilt, kunt u de vaardig heden die deze stappen bieden, uitdrukken. De vaardig heden worden functioneel weer gegeven wanneer u de definitie van de Indexeer functie uploadt naar Azure Cognitive Search. Voor meer informatie over het uploaden van uw Indexeer functie raadpleegt u de [documentatie bij de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Zodra u een getrouw beeld hebt van wat u in de pijp lijn wilt, kunt u de vaardig heden die deze stappen bieden, uitdrukken. De vaardig heden worden functioneel weer gegeven wanneer u de definitie van de Indexeer functie uploadt naar Azure Cognitive Search. Voor meer informatie over het uploaden van uw Indexeer functie raadpleegt u de [documentatie bij de Indexeer functie](/rest/api/searchservice/create-indexer).
 
 
 In het diagram wordt de stap voor het kraken van het *document* automatisch uitgevoerd. In feite weet Azure Cognitive Search hoe u bekende bestanden opent en een *inhouds* veld maakt met daarin de tekst die uit elk document is geëxtraheerd. De witte vakken zijn ingebouwde verrijkers en het gestippelde Bing Entity Search vak vertegenwoordigt een aangepaste verrijker die u maakt. Zoals u ziet, bevat de vakkennisset drie vaardig heden.
 
 ## <a name="skillset-definition-in-rest"></a>De definitie van de vaardig heden in REST
 
-Een vakkennisset wordt gedefinieerd als een matrix met vaardig heden. Elke vaardigheid definieert de bron van de invoer en de naam van de geproduceerde uitvoer. Met de [rest API vaardig heden maken](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kunt u een vaardighedenset definiëren die overeenkomt met het vorige diagram: 
+Een vakkennisset wordt gedefinieerd als een matrix met vaardig heden. Elke vaardigheid definieert de bron van de invoer en de naam van de geproduceerde uitvoer. Met de [rest API vaardig heden maken](/rest/api/searchservice/create-skillset)kunt u een vaardighedenset definiëren die overeenkomt met het vorige diagram: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -281,4 +281,4 @@ U kunt ervoor kiezen om de verrijkte documenten op te slaan als tabellen met hi�
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u bekend bent met de verrijkings pijplijn en vaardig heden, gaat u verder met het [verwijzen naar aantekeningen in een vaardig heden](cognitive-search-concept-annotations-syntax.md) of [over het toewijzen van uitvoer aan velden in een index](cognitive-search-output-field-mapping.md). 
+Nu u bekend bent met de verrijkings pijplijn en vaardig heden, gaat u verder met het [verwijzen naar aantekeningen in een vaardig heden](cognitive-search-concept-annotations-syntax.md) of [over het toewijzen van uitvoer aan velden in een index](cognitive-search-output-field-mapping.md).

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 4a78c85918725533df8c616e598afbd2ad84bdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038508"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935820"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexeer functies plannen in azure Cognitive Search
 
@@ -84,7 +84,7 @@ De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen 
 
 De optionele **StartTime** geeft aan wanneer geplande uitvoeringen moeten beginnen. Als u deze para meter weglaat, wordt de huidige UTC-tijd gebruikt. Deze tijd kan in het verleden liggen. in dat geval wordt de eerste uitvoering gepland alsof de Indexeer functie continu actief is sinds de oorspronkelijke **StartTime**.
 
-U kunt op elk gewenst moment een Indexeer functie op aanvraag uitvoeren met de aanroep run indexer. Zie voor meer informatie over het uitvoeren van Indexeer functies en het instellen van index planningen indexering [uitvoeren](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [Indexeer functie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-indexer)en [Indexeer functie bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-indexer) in de referentie rest API.
+U kunt op elk gewenst moment een Indexeer functie op aanvraag uitvoeren met de aanroep run indexer. Zie voor meer informatie over het uitvoeren van Indexeer functies en het instellen van index planningen indexering [uitvoeren](/rest/api/searchservice/run-indexer), [Indexeer functie ophalen](/rest/api/searchservice/get-indexer)en [Indexeer functie bijwerken](/rest/api/searchservice/update-indexer) in de referentie rest API.
 
 <a name="dotNetSdk"></a>
 
@@ -110,10 +110,10 @@ Als de para meter **schema** wordt wegge laten, wordt de Indexeer functie slecht
 
 De para meter **StartTime** kan worden ingesteld op een tijd in het verleden. In dat geval wordt de eerste uitvoering gepland alsof de Indexeer functie continu actief is sinds de opgegeven **StartTime**.
 
-De planning is gedefinieerd met behulp van de [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) -klasse. De **IndexingSchedule** -constructor vereist een **interval** parameter die is opgegeven met behulp van een **time span** -object. De kleinste toegestane interval waarde is 5 minuten en de grootste is 24 uur. De tweede para meter **StartTime** , opgegeven als **Date Time offset** -object, is optioneel.
+De planning is gedefinieerd met behulp van de [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) -klasse. De **IndexingSchedule** -constructor vereist een **interval** parameter die is opgegeven met behulp van een **time span** -object. De kleinste toegestane interval waarde is 5 minuten en de grootste is 24 uur. De tweede para meter **StartTime** , opgegeven als **Date Time offset** -object, is optioneel.
 
-Met de .NET SDK kunt u Indexeer bewerkingen beheren met de klasse [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) en de eigenschap [indexers](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , waarmee methoden van de **IIndexersOperations** -interface worden geïmplementeerd. 
+Met de .NET SDK kunt u Indexeer bewerkingen beheren met de klasse [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) en de eigenschap [indexers](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , waarmee methoden van de **IIndexersOperations** -interface worden geïmplementeerd. 
 
-U kunt op elk gewenst moment een indexer op aanvraag uitvoeren met een van de methoden [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)of [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
+U kunt op elk gewenst moment een indexer op aanvraag uitvoeren met een van de methoden [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)of [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
 
-Zie [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)voor meer informatie over het maken, bijwerken en uitvoeren van Indexeer functies.
+Zie [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)voor meer informatie over het maken, bijwerken en uitvoeren van Indexeer functies.
