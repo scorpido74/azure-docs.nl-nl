@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169337"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919672"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Herauthenticatie vragen en de levens duur van sessies voor Azure Multi-Factor Authentication optimaliseren
 
@@ -45,6 +45,8 @@ Als u de frequentie van verificatie prompts voor uw gebruikers wilt optimalisere
 ### <a name="evaluate-session-lifetime-policies"></a>Levens duur van sessie beleid evalueren
 
 Zonder de instellingen voor de levens duur van sessies zijn er geen permanente cookies in de browser sessie. Telkens wanneer een gebruiker de browser sluit en opent, wordt u gevraagd om de verificatie te verhelpen. In Office-clients is de standaard periode een voortschrijdende Window van 90 dagen. Als de gebruiker de standaard configuratie van Office heeft ingesteld op het opnieuw instellen van het wacht woord of als er sinds 90 dagen inactiviteit is, moet de gebruiker opnieuw worden geverifieerd met alle vereiste factoren (eerste en tweede factor).
+
+Een gebruiker ziet mogelijk meerdere MFA-prompts op een apparaat dat geen identiteit heeft in azure AD. Wanneer elke toepassing een eigen OAuth-vernieuwings token heeft dat niet wordt gedeeld met andere client-apps, worden er meerdere prompts geretourneerd. In dit scenario vraagt MFA meerdere keren aan dat elke toepassing een OAuth-vernieuwings token moet aanvragen om te worden gevalideerd met MFA.
 
 In azure AD bepaalt het meest beperkende beleid voor de levens duur van de sessie of de gebruiker opnieuw moet worden geverifieerd. Denkt u zich het volgende scenario eens in:
 
@@ -124,7 +126,7 @@ De volgende tabel bevat een overzicht van de aanbevelingen op basis van licentie
 
 |              | Azure AD Free-en Office 365-apps | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| **SSO**                      | Deelname aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md)of [naadloze SSO](../hybrid/how-to-connect-sso.md) voor onbeheerde apparaten. | Azure AD-koppeling<br />Hybride Azure AD-koppeling |
+| **Eenmalige aanmelding**                      | Deelname aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md)of [naadloze SSO](../hybrid/how-to-connect-sso.md) voor onbeheerde apparaten. | Azure AD-koppeling<br />Hybride Azure AD-koppeling |
 | **Instellingen voor opnieuw verifiëren** | Blijven aangemeld                  | Beleid voor voorwaardelijke toegang gebruiken voor aanmeldings frequentie en permanente browser sessie |
 
 ## <a name="next-steps"></a>Volgende stappen

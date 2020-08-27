@@ -7,15 +7,16 @@ documentationcenter: .net
 author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
-ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8270766413729454181c461d469d49e418a1aa67
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386507"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932301"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>De stroom van een Cloud Services toepassing traceren met Azure Diagnostics
 Tracering is een manier om de uitvoering van uw toepassing te bewaken terwijl deze wordt uitgevoerd. U kunt de klassen [System. Diagnostics. trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. debug](/dotnet/api/system.diagnostics.debug)en [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) gebruiken om informatie vast te leggen over fouten en de uitvoering van toepassingen in Logboeken, tekst bestanden of andere apparaten voor latere analyse. Zie [toepassingen traceren en instrumenteren](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)voor meer informatie over tracering.
@@ -58,7 +59,7 @@ Houd er rekening mee dat als u de sjablonen gebruikt die worden verschaft door V
    > Zorg ervoor dat u een project verwijzing hebt naar de assembly micro soft. WindowsAzure. Diagnostics. Werk het versie nummer in bovenstaand XML-bestand bij om overeen te komen met de versie van de micro soft. WindowsAzure. Diagnostics-assembly.
    > 
    > 
-3. Sla het configuratie bestand op.
+3. Sla het configuratiebestand op.
 
 Zie [Trace listeners](/dotnet/framework/debug-trace-profile/trace-listeners)voor meer informatie over listeners.
 

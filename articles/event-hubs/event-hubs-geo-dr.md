@@ -3,12 +3,12 @@ title: Geo-nood herstel-Azure Event Hubs | Microsoft Docs
 description: Over het gebruik van geografische regio's om een failover uit te voeren en herstel na nood gevallen in azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320543"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934069"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure-Event Hubs-geo-nood herstel 
 Als er voor de hele Azure-regio's of-Data Centers (als er geen [beschikbaarheids zones](../availability-zones/az-overview.md) worden gebruikt) downtime actief is, is het essentieel dat de gegevens worden verwerkt in een andere regio of Data Center. Daarom zijn *geo-nood herstel* en *geo-replicatie* belang rijke functies voor elke onderneming. Azure Event Hubs ondersteunt zowel geo-nood herstel als geo-replicatie op het niveau van de naam ruimte. 
@@ -45,10 +45,10 @@ De volgende combi Naties van primaire en secundaire naam ruimten worden onderste
 
 | Primaire naam ruimte | Secundaire naam ruimte | Ondersteund | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Toegewezen | Yes | 
-| Toegewezen | Toegewezen | Yes | 
-| Toegewezen | Standard | No | 
+| Standard | Standard | Ja | 
+| Standard | Toegewezen | Ja | 
+| Toegewezen | Toegewezen | Ja | 
+| Toegewezen | Standard | Nee | 
 
 > [!NOTE]
 > U kunt geen naam ruimten koppelen die zich in hetzelfde toegewezen cluster bevinden. U kunt naam ruimten in afzonderlijke clusters koppelen. 
@@ -150,7 +150,7 @@ Stel dat u twee virtuele netwerken hebt: VNET-1, VNET-2 en deze primaire en secu
 
 ![Persoonlijke eind punten en virtuele netwerken](./media/event-hubs-geo-dr/private-endpoints-virtual-networks.png)
 
-Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Event Hubs naam ruimte. Denk eens na over de volgende scenario's: 
+Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Event Hubs naam ruimte. Neem de volgende scenario's: 
 
 **Failover van toepassing:** Hier komt de toepassing niet voor in VNET-1 maar wordt deze verplaatst naar VNET-2. Als beide persoonlijke eind punten zijn geconfigureerd op zowel VNET-1 als VNET-2 voor zowel primaire als secundaire naam ruimten, werkt de toepassing gewoon. 
 
@@ -167,10 +167,10 @@ Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassings
 Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
 
 - Aan de slag met Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 * [Voorbeeldtoepassingen die gebruikmaken van Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

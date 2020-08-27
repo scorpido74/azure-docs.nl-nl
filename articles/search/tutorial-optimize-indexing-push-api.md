@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3e1845eee9832770cc289821c60097e69eec6c08
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749460"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932012"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Zelfstudie: indexering optimaliseren met de push-API
 
@@ -21,7 +21,7 @@ In Azure Cognitive Search worden [twee basismethoden](search-what-is-data-import
 
 In deze zelfstudie wordt beschreven hoe u efficiënt gegevens indexeert met behulp van het [push-model](search-what-is-data-import.md#pushing-data-to-an-index) door aanvragen als batches te verwerken en een strategie te gebruiken waarbij exponentieel uitstel opnieuw wordt uitgevoerd. U kunt [de toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). In dit artikel worden de belangrijkste aspecten van de toepassing beschreven en tevens de factoren waarmee u rekening moet houden bij het indexeren van gegevens.
 
-In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
+In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een index maken
@@ -111,7 +111,7 @@ Deze eenvoudige C#-/.NET-console-app voert de volgende taken uit:
 
 ### <a name="creating-the-index"></a>De index maken
 
-In dit voorbeeldprogramma wordt de .NET SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Er wordt gebruikgemaakt van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder)-klasse om een indexstructuur te genereren op basis van een C#-gegevensmodelklasse.
+In dit voorbeeldprogramma wordt de .NET SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Er wordt gebruikgemaakt van de [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)-klasse om een indexstructuur te genereren op basis van een C#-gegevensmodelklasse.
 
 Het gegevensmodel wordt gedefinieerd door de klasse Hotel, die ook verwijzingen bevat naar de klasse Address. Met FieldBuilder wordt ingezoomd op meerdere klassedefinities om een complexe gegevensstructuur voor de index te genereren. Tags voor metagegevens worden gebruikt voor het definiëren van de kenmerken van elk veld; er kan bijvoorbeeld worden aangegeven of een veld doorzoekbaar of sorteerbaar is.
 
@@ -162,8 +162,8 @@ Het schema van uw index kan een grote invloed hebben op de indexeringssnelheid. 
 
 In Azure Cognitive Search worden de volgende API's ondersteund om één of meerdere documenten in een index te laden:
 
-+ [Documenten toevoegen, bijwerken of verwijderen (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) of [indexBatch-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [Documenten toevoegen, bijwerken of verwijderen (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction-klasse](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) of [indexBatch-klasse](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 Als u documenten in batches indexeert, worden de prestaties van de indexering aanzienlijk verbeterd. Deze batches kunnen maximaal duizend documenten of maximaal circa 16 MB per batch bevatten.
 
@@ -258,14 +258,14 @@ Als u optimaal gebruik wilt maken van de indexeringssnelheden van Azure Cognitiv
 
 Enkele belangrijke overwegingen die hierboven worden beschreven, zijn van invloed op het optimale aantal threads. U kunt dit voorbeeld wijzigen en testen met verschillende aantallen threads om het optimale aantal voor uw scenario te bepalen. Als u echter meerdere threads gelijktijdig uitvoert, profiteert u van de meeste verbeteringen in de efficiëntie.
 
-Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
+Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
 
 + **503: service niet beschikbaar**: deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
 + **207: meerdere statussen**: deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>Een herhaalstrategie voor exponentieel uitstel implementeren
 
-Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
 Met de .NET SDK van Azure Cognitive Search worden aanvragen bij 503-fouten en andere mislukte aanvragen opnieuw uitgevoerd, maar u moet uw eigen logica implementeren om bij 207-fouten aanvragen opnieuw uit te voeren. Opensource-hulpprogramma's als [Polly](https://github.com/App-vNext/Polly) kunnen ook worden gebruikt voor het implementeren van een herhaalstrategie. 
 
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Het is belangrijk om [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) te ondervangen, omdat deze uitzonderingen aangeven dat de indexeringsbewerking slechts gedeeltelijk is geslaagd (207-fouten). Mislukte items moeten opnieuw worden geprobeerd met de `FindFailedActionsToRetry`-methode, waarna gemakkelijk een nieuwe batch met alleen de mislukte items kan worden gemaakt.
+Het is belangrijk om [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) te ondervangen, omdat deze uitzonderingen aangeven dat de indexeringsbewerking slechts gedeeltelijk is geslaagd (207-fouten). Mislukte items moeten opnieuw worden geprobeerd met de `FindFailedActionsToRetry`-methode, waarna gemakkelijk een nieuwe batch met alleen de mislukte items kan worden gemaakt.
 
 Andere uitzonderingen dan `IndexBatchException` moeten ook worden afgevangen en geven aan dat de aanvraag volledig is mislukt. Deze uitzonderingen zijn minder gangbaar, met name met de .NET SDK, omdat bij 503-fouten automatisch een nieuwe poging wordt uitgevoerd.
 
@@ -346,7 +346,7 @@ U kunt de gevulde zoekindex onderzoeken nadat het programma programmatisch is ui
 
 ### <a name="programatically"></a>Programmatisch
 
-Er zijn twee hoofdopties waarmee het aantal documenten in een index kan worden gecontroleerd: de [API voor het tellen van documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents) en de [API voor het ophalen van de indexstatistieken](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Voor het bijwerken van beide paden is mogelijk enige extra tijd nodig, dus maak u niet ongerust als het aantal geretourneerde documenten lager is dan u aanvankelijk had verwacht.
+Er zijn twee hoofdopties waarmee het aantal documenten in een index kan worden gecontroleerd: de [API voor het tellen van documenten](/rest/api/searchservice/count-documents) en de [API voor het ophalen van de indexstatistieken](/rest/api/searchservice/get-index-statistics). Voor het bijwerken van beide paden is mogelijk enige extra tijd nodig, dus maak u niet ongerust als het aantal geretourneerde documenten lager is dan u aanvankelijk had verwacht.
 
 #### <a name="count-documents"></a>Documenten tellen
 
@@ -370,7 +370,7 @@ Open in de Azure-portal de pagina **Overzicht** van de zoekservice en zoek in de
 
   ![Lijst met Azure Cognitive Search-indexen](media/tutorial-optimize-data-indexing/portal-output.png "Lijst met Azure Cognitive Search-indexen")
 
-*Aantal documenten* en *Opslaggrootte* zijn gebaseerd op [API voor het ophalen van indexstatistieken](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Het bijwerken van deze opties kan enige tijd in beslag nemen.
+*Aantal documenten* en *Opslaggrootte* zijn gebaseerd op [API voor het ophalen van indexstatistieken](/rest/api/searchservice/get-index-statistics). Het bijwerken van deze opties kan enige tijd in beslag nemen.
 
 ## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
 

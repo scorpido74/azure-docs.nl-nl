@@ -2,13 +2,13 @@
 title: Virtuele Azure-machines verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Gebruik Azure Resource Manager om virtuele machines te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063104"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933236"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Richt lijnen voor het verplaatsen van virtuele machines
 
@@ -18,7 +18,6 @@ In dit artikel worden de scenario's beschreven die momenteel niet worden onderst
 
 De volgende scenario's worden nog niet ondersteund:
 
-* Managed Disks in Beschikbaarheidszones kan niet worden verplaatst naar een ander abonnement.
 * Virtual Machine Scale Sets met een standaard-SKU Load Balancer of een open bare standaard-SKU kan niet worden verplaatst.
 * Virtuele machines die zijn gemaakt op basis van Marketplace-resources waarvoor plannen zijn gekoppeld, kunnen niet worden verplaatst naar abonnementen. De inrichting van de virtuele machine in het huidige abonnement ongedaan maken en de implementatie opnieuw uitvoeren in het nieuwe abonnement.
 * Virtuele machines in een bestaand virtueel netwerk kunnen niet worden verplaatst naar een nieuw abonnement wanneer u niet alle resources in het virtuele netwerk verplaatst.
@@ -63,15 +62,15 @@ Als [voorlopig verwijderen](../../../backup/backup-azure-security-feature-cloud.
 * Zoek de locatie van de virtuele machine.
 * Een resource groep zoeken met het volgende naamgevings patroon: `AzureBackupRG_<location of your VM>_1` bijvoorbeeld AzureBackupRG_westus2_1
 * In Power shell gebruikt u de `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
-* De resource zoeken met `Microsoft.Compute/restorePointCollections` een type dat het naamgevings patroon heeft`AzureBackup_<name of your VM that you're trying to move>_###########`
+* De resource zoeken met `Microsoft.Compute/restorePointCollections` een type dat het naamgevings patroon heeft `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
 
 ### <a name="azure-cli"></a>Azure CLI
 
 * Zoek de locatie van de virtuele machine.
 * Een resource groep zoeken met het volgende naamgevings patroon: `AzureBackupRG_<location of your VM>_1` bijvoorbeeld AzureBackupRG_westus2_1
-* Gebruik in CLI de`az resource list -g AzureBackupRG_<location of your VM>_1`
-* De resource zoeken met `Microsoft.Compute/restorePointCollections` een type dat het naamgevings patroon heeft`AzureBackup_<name of your VM that you're trying to move>_###########`
+* Gebruik in CLI de `az resource list -g AzureBackupRG_<location of your VM>_1`
+* De resource zoeken met `Microsoft.Compute/restorePointCollections` een type dat het naamgevings patroon heeft `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
 
 ## <a name="next-steps"></a>Volgende stappen

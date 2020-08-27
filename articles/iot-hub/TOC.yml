@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure IoT Hub?
       href: about-iot-hub.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Telemetrie verzenden
@@ -188,6 +188,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: Uw IoT-implementatie beveiligen
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Beveiligen met behulp van X.509-CA-certificaten
       items:
         - name: Overzicht van beveiliging op basis van X.509-CA-certificaten

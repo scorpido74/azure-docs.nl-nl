@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: e3f3e457a0eb9bcce08499bf7d10c69185d7f211
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 227849380d543f6ea5bc1c0ae9cd6dfbf8de69b0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337713"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934205"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Snelstartgids: een Knowledge Base maken in QnA Maker met behulp van C# met REST
 
@@ -26,20 +26,20 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
+* De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * U moet een [QnA Maker resource](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE.
+Maak een nieuwe .NET Core-toepassing in uw favoriete editor of IDE.
 
-In een console venster (zoals cmd, Power shell of bash) gebruikt `dotnet new` u de opdracht om een nieuwe console-app met de naam te maken `qna-maker-quickstart` . Met deze opdracht maakt u een eenvoudig ' Hallo wereld ' C#-project met één bron bestand: *Program.cs*.
+Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `qna-maker-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs*.
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
 ```
 
-Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
+Wijzig uw map in de zojuist gemaakte app-map. U kunt de toepassing maken met:
 
 ```dotnetcli
 dotnet build
@@ -67,8 +67,8 @@ Voeg boven aan de programma klasse de vereiste constanten toe om toegang te krij
 
 Stel de volgende waarden in omgevings variabelen in:
 
-* `QNA_MAKER_SUBSCRIPTION_KEY`-De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `QNA_MAKER_ENDPOINT`-Het **eind punt** is de URL voor het ontwerpen in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `QNA_MAKER_SUBSCRIPTION_KEY` -De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `QNA_MAKER_ENDPOINT` -Het **eind punt** is de URL voor het ontwerpen in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 

@@ -4,7 +4,7 @@
   items:
     - name: Wat is Kostenbeheer en facturering?
       href: cost-management-billing-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Beginnen met analyseren van kosten
@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: Extra abonnementen maken
               href: manage/create-subscription.md
+            - name: Programmatisch abonnementen maken
+              href: manage/programmatically-create-subscription.md
+            - name: Toegang verlenen om EA-abonnementen te maken
+              href: manage/grant-access-to-create-subscription.md
             - name: Abonnementsgegevens exporteren
               href: manage/export-subscriptions.md
             - name: Creditcard wijzigen

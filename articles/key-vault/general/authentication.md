@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589979"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930856"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Verifiëren bij Azure Key Vault
 
@@ -112,14 +112,9 @@ Nu hebt u een geregistreerde service-principal. U kunt deze weergeven door App-r
 1. Een certificaat maken
 
     * Optie 1: Een certificaat maken met behulp van [OpenSSL](https://www.openssl.org/) (alleen voor testdoeleinden, gebruik geen zelfondertekende certificaten in productie)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * Optie 2: Een certificaat maken met behulp van de sleutelkluis. [Een certificaat maken met behulp van Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. Download het certificaat in PEM-indeling
+1. Het certificaat in de PEM- of PFX-indeling downloaden
 1. Meld u aan bij Azure Portal en ga naar Azure Active Directory
 1. Klik op App-registraties
 1. Selecteer de service-principal die u in deel 1 hebt gemaakt.

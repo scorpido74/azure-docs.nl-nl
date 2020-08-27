@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816402"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933495"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -384,14 +384,60 @@ Wanneer u een functie-app maakt met behulp van hulpprogram ma's, zoals Visual St
 
 ## <a name="powershell-versions"></a>Power shell-versies
 
-In de volgende tabel ziet u de Power shell-versies die worden ondersteund door elke primaire versie van de functions-runtime en de .NET-versie die is vereist:
+In de volgende tabel ziet u de Power shell-versies die beschikbaar zijn voor elke primaire versie van de functions-runtime en de .NET-versie die is vereist:
 
 | Functie versie | Power shell-versie                               | .NET-versie  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (aanbevolen) | Power shell 7 (aanbevolen)<br/>Power shell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 3. x (aanbevolen) | Power shell 7 (aanbevolen)<br/>Power shell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
 | 2.x               | Power shell Core 6                                | .NET Core 2.2 |
 
 U kunt de huidige versie bekijken door af te drukken `$PSVersionTable` vanuit een functie.
+
+### <a name="running-local-on-a-specific-version"></a>Lokaal uitvoeren op een specifieke versie
+
+Wanneer lokaal de Azure Functions-runtime wordt uitgevoerd, wordt standaard Power shell Core 6 gebruikt. Als u in plaats daarvan Power shell 7 wilt gebruiken bij het uitvoeren van een lokale toepassing, moet u de instelling toevoegen `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` aan de `Values` matrix in de local.setting.jsvoor het bestand in de hoofdmap van het project. Wanneer lokaal wordt uitgevoerd op Power shell 7, ziet uw local.settings.jsin het bestand er als volgt uit: 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>De Power shell-versie wijzigen
+
+De functie-app moet worden uitgevoerd op versie 3. x om een upgrade uit te voeren van Power shell Core 6 naar Power shell 7. Zie [de huidige runtime versie weer geven en bijwerken](set-runtime-version.md#view-and-update-the-current-runtime-version)voor meer informatie.
+
+Gebruik de volgende stappen om de Power shell-versie te wijzigen die door uw functie-app wordt gebruikt. U kunt dit doen in de Azure Portal of met behulp van Power shell.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+1. Blader in de [Azure-portal](https://portal.azure.com) naar uw functie-app.
+
+1. Kies onder **instellingen**de optie **configuratie**. Ga naar het tabblad **algemene instellingen** en zoek de **Power shell-versie**. 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="De Power shell-versie kiezen die wordt gebruikt door de functie-app"::: 
+
+1. Kies de gewenste **Power shell core-versie** en selecteer **Opslaan**. Klik op **door gaan**wanneer u wordt gewaarschuwd voor het opnieuw starten in behandeling. De functie-app wordt opnieuw gestart op de gekozen Power shell-versie. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Voer het volgende script uit om de Power shell-versie te wijzigen: 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+Vervang `<SUBSCRIPTION_ID>` , `<RESOURCE_GROUP>` , en `<FUNCTION_APP>` met de id van uw Azure-abonnement, respectievelijk de naam van de resource groep en functie-app.  Vervang ook door `<VERSION>` ofwel `~6` of `~7` . U kunt de bijgewerkte waarde van de `powerShellVersion` instelling in `Properties` de geretourneerde hash-tabel controleren. 
+
+---
+
+De functie-app wordt opnieuw opgestart nadat de wijziging is aangebracht in de configuratie.
 
 ## <a name="dependency-management"></a>Beheer van afhankelijkheden
 

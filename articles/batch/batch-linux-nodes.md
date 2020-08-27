@@ -3,13 +3,13 @@ title: Linux uitvoeren op reken knooppunten van virtuele machine
 description: Meer informatie over het verwerken van uw parallelle Compute-werk belastingen op Pools met virtuele Linux-machines in Azure Batch.
 ms.topic: how-to
 ms.date: 06/01/2018
-ms.custom: H1Hack27Feb2017, devx-track-python
-ms.openlocfilehash: bc4c98472609ef906d59159fb31d396071bf6a8d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
+ms.openlocfilehash: c4dd74a3f2b27680de81c6295f1f27fbcdac16c9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853004"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919434"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
 
@@ -37,7 +37,7 @@ Wanneer u een verwijzing naar een installatie kopie van een virtuele machine con
 | --- | --- |
 | Publisher |Canonical |
 | Aanbieding |UbuntuServer |
-| SKU |18,04-LTS |
+| SKU |18.04-LTS |
 | Versie |meest recente |
 
 > [!TIP]
