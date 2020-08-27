@@ -3,13 +3,14 @@ title: Telemetrie-kanalen in Azure-toepassing Insights | Microsoft Docs
 description: Telemetrie-kanalen aanpassen in Azure-toepassing Insights-Sdk's voor .NET en .NET core.
 ms.topic: conceptual
 ms.date: 05/14/2019
+ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318926"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918397"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetrie-kanalen in Application Insights
 
@@ -19,7 +20,7 @@ Telemetrie-kanalen vormen een integraal onderdeel van de [Azure-toepassing Insig
 
 Telemetrie-kanalen zijn verantwoordelijk voor het bufferen van telemetriegegevens en het verzenden ervan naar de Application Insights-service, waar ze worden opgeslagen voor query's en analyses. Een telemetrie-kanaal is een klasse die de [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) interface implementeert.
 
-De `Send(ITelemetry item)` methode van een telemetrie-kanaal wordt aangeroepen na het aanroepen van alle telemetrie-initialisatie functies en telemetrie-processors. Daarom bereiken items die worden verwijderd door een telemetrie-processor het kanaal niet. `Send()`de items worden meestal niet direct naar de back-end verzonden. Normaal gesp roken worden ze in het geheugen gebufferd en worden ze in batches verzonden voor efficiënte verzen ding.
+De `Send(ITelemetry item)` methode van een telemetrie-kanaal wordt aangeroepen na het aanroepen van alle telemetrie-initialisatie functies en telemetrie-processors. Daarom bereiken items die worden verwijderd door een telemetrie-processor het kanaal niet. `Send()` de items worden meestal niet direct naar de back-end verzonden. Normaal gesp roken worden ze in het geheugen gebufferd en worden ze in batches verzonden voor efficiënte verzen ding.
 
 [Live Metrics stream](live-stream.md) heeft ook een aangepast kanaal dat de live streamen van telemetrie aanstuurt. Dit kanaal is onafhankelijk van het normale telemetrie-kanaal, en dit document is hier niet van toepassing.
 
@@ -39,7 +40,7 @@ De Application Insights .NET en .NET core Sdk's worden geleverd met twee ingebou
 
 U configureert een telemetrie-kanaal door het in te stellen op de actieve telemetrie-configuratie. Voor ASP.NET-toepassingen moet de configuratie het telemetrische kanaal exemplaar instellen op `TelemetryConfiguration.Active` of door te wijzigen `ApplicationInsights.config` . Voor ASP.NET Core toepassingen moet de configuratie het kanaal toevoegen aan de container voor injectie van afhankelijkheid.
 
-In de volgende secties ziet u voor beelden van het configureren van de `StorageFolder` instelling voor het kanaal in verschillende toepassings typen. `StorageFolder`is slechts een van de Configureer bare instellingen. Zie [de sectie instellingen](#configurable-settings-in-channels) verderop in dit artikel voor een volledige lijst met configuratie-instellingen.
+In de volgende secties ziet u voor beelden van het configureren van de `StorageFolder` instelling voor het kanaal in verschillende toepassings typen. `StorageFolder` is slechts een van de Configureer bare instellingen. Zie [de sectie instellingen](#configurable-settings-in-channels) verderop in dit artikel voor een volledige lijst met configuratie-instellingen.
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Configuratie met behulp van ApplicationInsights.config voor ASP.NET-toepassingen
 
@@ -108,9 +109,9 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 ## <a name="operational-details-of-servertelemetrychannel"></a>Operationele details van ServerTelemetryChannel
 
-`ServerTelemetryChannel`slaat binnenkomende items op in een geheugen buffer. De items worden eenmaal per 30 seconden geserialiseerd, gecomprimeerd en opgeslagen in een `Transmission` exemplaar, of wanneer 500 items zijn gebufferd. Eén `Transmission` exemplaar bevat Maxi maal 500 items en vertegenwoordigt een batch van telemetrie die wordt verzonden via één https-aanroep naar de Application Insights-service.
+`ServerTelemetryChannel` slaat binnenkomende items op in een geheugen buffer. De items worden eenmaal per 30 seconden geserialiseerd, gecomprimeerd en opgeslagen in een `Transmission` exemplaar, of wanneer 500 items zijn gebufferd. Eén `Transmission` exemplaar bevat Maxi maal 500 items en vertegenwoordigt een batch van telemetrie die wordt verzonden via één https-aanroep naar de Application Insights-service.
 
-Standaard kunnen Maxi maal 10 `Transmission` instanties parallel worden verzonden. Als telemetrie op snellere tarieven aankomt, of als het netwerk of de back-end van de Application Insights langzaam is, `Transmission` worden de exemplaren in het geheugen opgeslagen. De standaard capaciteit van deze in-Memory `Transmission` buffer is 5 MB. Wanneer de capaciteit in het geheugen is overschreden, `Transmission` worden de exemplaren op de lokale schijf opgeslagen tot een limiet van 50 MB. `Transmission`instanties worden op een lokale schijf opgeslagen, ook als er netwerk problemen zijn. Alleen items die zijn opgeslagen op een lokale schijf, kunnen de toepassing vastlopen. Ze worden verzonden wanneer de toepassing opnieuw wordt gestart.
+Standaard kunnen Maxi maal 10 `Transmission` instanties parallel worden verzonden. Als telemetrie op snellere tarieven aankomt, of als het netwerk of de back-end van de Application Insights langzaam is, `Transmission` worden de exemplaren in het geheugen opgeslagen. De standaard capaciteit van deze in-Memory `Transmission` buffer is 5 MB. Wanneer de capaciteit in het geheugen is overschreden, `Transmission` worden de exemplaren op de lokale schijf opgeslagen tot een limiet van 50 MB. `Transmission` instanties worden op een lokale schijf opgeslagen, ook als er netwerk problemen zijn. Alleen items die zijn opgeslagen op een lokale schijf, kunnen de toepassing vastlopen. Ze worden verzonden wanneer de toepassing opnieuw wordt gestart.
 
 ## <a name="configurable-settings-in-channels"></a>Configureer bare instellingen in kanalen
 
@@ -130,7 +131,7 @@ Hier vindt u de meest gebruikte instellingen voor `ServerTelemetryChannel` :
 
 ## <a name="which-channel-should-i-use"></a>Welk kanaal moet ik gebruiken?
 
-`ServerTelemetryChannel`wordt aanbevolen voor de meeste productie scenario's waarbij langlopende toepassingen worden gebruikt. De `Flush()` methode die wordt geïmplementeerd door `ServerTelemetryChannel` is niet synchroon en garandeert ook niet dat alle in behandeling zijnde items uit het geheugen of de schijf worden verzonden. Als u dit kanaal gebruikt in scenario's waarin de toepassing wordt afgesloten, raden we u aan enige vertraging na het aanroepen in te voeren `Flush()` . De exacte hoeveelheid vertraging die u mogelijk nodig hebt, kan niet voorspelbaar zijn. Dit is afhankelijk van factoren zoals hoeveel items of `Transmission` instanties in het geheugen zijn, hoeveel er op schijf staan, hoeveel er worden verzonden naar de back-end en of het kanaal zich in het midden van de exponentiële back-ups bevindt.
+`ServerTelemetryChannel` wordt aanbevolen voor de meeste productie scenario's waarbij langlopende toepassingen worden gebruikt. De `Flush()` methode die wordt geïmplementeerd door `ServerTelemetryChannel` is niet synchroon en garandeert ook niet dat alle in behandeling zijnde items uit het geheugen of de schijf worden verzonden. Als u dit kanaal gebruikt in scenario's waarin de toepassing wordt afgesloten, raden we u aan enige vertraging na het aanroepen in te voeren `Flush()` . De exacte hoeveelheid vertraging die u mogelijk nodig hebt, kan niet voorspelbaar zijn. Dit is afhankelijk van factoren zoals hoeveel items of `Transmission` instanties in het geheugen zijn, hoeveel er op schijf staan, hoeveel er worden verzonden naar de back-end en of het kanaal zich in het midden van de exponentiële back-ups bevindt.
 
 Als u een synchrone leegmaak bewerking moet uitvoeren, raden we u aan om te gebruiken `InMemoryChannel` .
 
@@ -138,7 +139,7 @@ Als u een synchrone leegmaak bewerking moet uitvoeren, raden we u aan om te gebr
 
 ### <a name="does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost"></a>Garandeert het Application Insights kanaal dat telemetrie wordt geleverd? Als dat niet het geval is, wat zijn dan de scenario's waarin telemetrie kan worden verwijderd?
 
-Het korte antwoord is dat geen van de ingebouwde kanalen een transactie type garantie bieden voor telemetrie-levering aan de back-end. `ServerTelemetryChannel`is geavanceerder vergeleken met `InMemoryChannel` voor betrouw bare levering, maar het maakt ook alleen een poging om telemetrie te verzenden. Telemetrie kan nog steeds in verschillende situaties verloren gaan, met inbegrip van deze algemene scenario's:
+Het korte antwoord is dat geen van de ingebouwde kanalen een transactie type garantie bieden voor telemetrie-levering aan de back-end. `ServerTelemetryChannel` is geavanceerder vergeleken met `InMemoryChannel` voor betrouw bare levering, maar het maakt ook alleen een poging om telemetrie te verzenden. Telemetrie kan nog steeds in verschillende situaties verloren gaan, met inbegrip van deze algemene scenario's:
 
 1. Items in het geheugen gaan verloren wanneer de toepassing vastloopt.
 

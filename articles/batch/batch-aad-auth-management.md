@@ -3,13 +3,13 @@ title: Azure Active Directory gebruiken om oplossingen voor Batch Management te 
 description: Verken het gebruik van Azure Active Directory om te verifiëren vanuit toepassingen die gebruikmaken van de Batch Management .NET-bibliotheek.
 ms.topic: how-to
 ms.date: 04/27/2017
-ms.custom: has-adal-ref
-ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141959"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930210"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Oplossingen voor Batch Management verifiëren met Active Directory
 
@@ -95,7 +95,7 @@ Kopieer ook de omleidings-URI die u tijdens het registratie proces hebt opgegeve
 private const string RedirectUri = "http://myaccountmanagementsample";
 ```
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatie token verkrijgen
+## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatietoken verkrijgen
 
 Nadat u het AccountManagement-voor beeld in de Azure AD-Tenant hebt geregistreerd en de voorbeeld broncode hebt bijgewerkt met uw waarden, is het voor beeld gereed voor verificatie met behulp van Azure AD. Wanneer u het voor beeld uitvoert, probeert de ADAL een verificatie token te verkrijgen. Tijdens deze stap wordt u gevraagd om uw micro soft-referenties:
 

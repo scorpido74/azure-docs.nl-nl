@@ -3,12 +3,13 @@ title: Prestatie meter items in Application Insights | Microsoft Docs
 description: Systeem-en aangepaste .NET-prestatie meter items bewaken in Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322513"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918516"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systeem prestatie meter items in Application Insights
 
@@ -59,11 +60,11 @@ Als het gewenste prestatie meter item niet is opgenomen in de lijst met metrisch
 > [!NOTE]
 > ASP.NET Core-toepassingen hebben niet `ApplicationInsights.config` en daarom is de bovenstaande methode niet geldig voor ASP.net core toepassingen.
 
-U kunt zowel standaard tellers vastleggen als de items die u zelf hebt geïmplementeerd. `\Objects\Processes`is een voor beeld van een standaard teller die beschikbaar is op alle Windows-systemen. `\Sales(photo)\# Items Sold`is een voor beeld van een aangepaste teller die kan worden geïmplementeerd in een webservice.
+U kunt zowel standaard tellers vastleggen als de items die u zelf hebt geïmplementeerd. `\Objects\Processes` is een voor beeld van een standaard teller die beschikbaar is op alle Windows-systemen. `\Sales(photo)\# Items Sold` is een voor beeld van een aangepaste teller die kan worden geïmplementeerd in een webservice.
 
 De indeling is `\Category(instance)\Counter"` of voor categorieën die geen exemplaren hebben, alleen `\Category\Counter` .
 
-`ReportAs`is vereist voor item namen die niet overeenkomen `[a-zA-Z()/-_ \.]+` -dat wil zeggen dat ze tekens bevatten die zich niet in de volgende sets bevinden: letters, ronde haken, slash, afbreek streepje, onderstrepings teken, spatie, punt.
+`ReportAs` is vereist voor item namen die niet overeenkomen `[a-zA-Z()/-_ \.]+` -dat wil zeggen dat ze tekens bevatten die zich niet in de volgende sets bevinden: letters, ronde haken, slash, afbreek streepje, onderstrepings teken, spatie, punt.
 
 Als u een exemplaar opgeeft, wordt deze verzameld als een dimensie ' CounterInstanceName ' van de gerapporteerde metriek.
 

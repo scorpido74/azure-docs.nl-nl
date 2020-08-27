@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053997"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919519"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgraden naar de nieuwste versie van Azure Multi-Factor Authentication Server
 
@@ -25,7 +25,11 @@ Dit artikel begeleidt u bij het upgraden van Azure Multi-Factor Authentication (
 Als u een upgrade uitvoert van v6. x of ouder naar v7. x of hoger, worden alle onderdelen gewijzigd van .NET 2,0 naar .NET 4,5. Voor alle onderdelen is ook micro soft Visual C++ 2015 Redistributable update 1 of hoger vereist. Het installatie programma van de MFA-server installeert zowel de x86-als de x64-versie van deze onderdelen als ze nog niet zijn geïnstalleerd. Als de gebruikers Portal en de webservice voor mobiele apps op verschillende servers worden uitgevoerd, moet u deze pakketten installeren voordat u deze onderdelen bijwerkt. U kunt in het [micro soft Download centrum](https://www.microsoft.com/download/)zoeken naar de meest recente update voor micro soft Visual C++ 2015. 
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Vanaf 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication (MFA) vereisen tijdens aanmeldings gebeurtenissen, moeten Azure Multi-Factor Authentication op basis van de Cloud gebruiken.
+>
+> Zie [zelf studie: aanmeldings gebeurtenissen voor gebruikers beveiligen met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met MFA op basis van de Cloud.
+>
+> Bestaande klanten die MFA-server vóór 1 juli hebben geactiveerd 2019, kunnen de meest recente versie downloaden, toekomstige updates en activerings referenties genereren.
 
 Upgrade stappen in een oogopslag:
 

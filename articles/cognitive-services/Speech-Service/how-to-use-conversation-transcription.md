@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: f9670733f8aa040b87cec20ac28aacc636c04698
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056207"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918652"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Real-time conversatie transcriptie (preview-versie)
 
@@ -108,7 +109,7 @@ De volgende voorbeeld code laat zien hoe u gesp rekken in realtime kunt vertrans
 
 Voor beelden van code-hooglichten zijn:
 
-- Een `Conversation` object maken op basis van het `SpeechConfig` object met behulp van een vergaderings-id die is gegenereerd met`Guid.NewGuid()`
+- Een `Conversation` object maken op basis van het `SpeechConfig` object met behulp van een vergaderings-id die is gegenereerd met `Guid.NewGuid()`
 - Een `ConversationTranscriber` object maken en lid worden van het gesprek met `JoinConversationAsync()` om transcriptie te starten
 - De gebeurtenissen van belang registreren
 - Deel nemers aan de conversatie toevoegen of verwijderen met behulp van het gespreks object

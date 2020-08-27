@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.custom: has-adal-ref
-ms.openlocfilehash: 9f891327a60d5438369c56dd858bfcefff182cdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049339"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919485"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>Aan de slag met de Azure CDN-bibliotheek voor .NET
 > [!div class="op_single_selector"]
@@ -330,7 +330,7 @@ We kunnen het programma nu compileren en uitvoeren door te klikken op de knop **
 
 Wanneer het programma de bovenstaande prompt bereikt, kunt u terugkeren naar de resource groep in de Azure Portal en zien dat het profiel is gemaakt.
 
-![Geslaagd.](./media/cdn-app-dev-net/cdn-success.png)
+![Gelukt!](./media/cdn-app-dev-net/cdn-success.png)
 
 We kunnen vervolgens de prompts bevestigen om de rest van het programma uit te voeren.
 

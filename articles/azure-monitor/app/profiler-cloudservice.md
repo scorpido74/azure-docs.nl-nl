@@ -2,16 +2,17 @@
 title: Live Azure-Cloud Services profiel met Application Insights | Microsoft Docs
 description: Schakel Application Insights Profiler in voor Azure Cloud Services.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8119477a69771c67db1f1e59c082d5d0d611214b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 69a9ba316a1fda14a2e85d4d981321d4b2f9f289
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305853"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930312"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Live Azure-Cloud Services profiel met Application Insights
 
@@ -63,7 +64,7 @@ Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensi
     > * De sleutel die wordt gebruikt door de ApplicationInsights-sink. 
     > * De sleutel die wordt gebruikt door de ApplicationInsightsProfiler-sink. 
     >
-    > U vindt de waarde van de werkelijke instrumentatie sleutel die wordt gebruikt door de `ApplicationInsights` sink in de *ServiceConfiguration. \* . cscfg* -bestanden. 
+    > U vindt de waarde van de werkelijke instrumentatie sleutel die wordt gebruikt door de `ApplicationInsights` sink in de     *ServiceConfiguration. \* . cscfg* -bestanden. 
     > Na de Visual Studio 15,5 Azure SDK-versie moeten alleen de instrumentatie sleutels die worden gebruikt door de toepassing en de ApplicationInsightsProfiler-sink, overeenkomen met elkaar.
 
 1. Implementeer uw service met de nieuwe diagnostische configuratie en Application Insights Profiler is geconfigureerd om te worden uitgevoerd op uw service.

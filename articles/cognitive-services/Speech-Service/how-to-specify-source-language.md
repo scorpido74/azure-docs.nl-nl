@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 10a07e00d451b5e23f49bbb3b0d358057c629b8c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 3d761bbad4cb2cd2cdd1c34459f25c811bb41c7e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406670"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918686"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>De bron taal voor spraak naar tekst opgeven
 
@@ -48,7 +48,7 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> `SpeechRecognitionLanguage`en `EndpointId` set-methoden zijn afgeschaft van de `SpeechConfig` klasse in C#. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
+> `SpeechRecognitionLanguage` en `EndpointId` set-methoden zijn afgeschaft van de `SpeechConfig` klasse in C#. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -78,7 +78,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage`en `SetEndpointId` zijn afgeschafte methoden van de `SpeechConfig` klasse in C++ en Java. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
+> `SetSpeechRecognitionLanguage` en `SetEndpointId` zijn afgeschafte methoden van de `SpeechConfig` klasse in C++ en Java. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -107,7 +107,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage`en `setEndpointId` zijn afgeschafte methoden van de `SpeechConfig` klasse in C++ en Java. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
+> `setSpeechRecognitionLanguage` en `setEndpointId` zijn afgeschafte methoden van de `SpeechConfig` klasse in C++ en Java. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -139,7 +139,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language`en `endpoint_id` eigenschappen zijn afgeschaft van de `SpeechConfig` klasse in python. Het gebruik van deze eigenschappen wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
+> `speech_recognition_language` en `endpoint_id` eigenschappen zijn afgeschaft van de `SpeechConfig` klasse in python. Het gebruik van deze eigenschappen wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -195,7 +195,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
 ```
 
 >[!Note]
-> `speechRecognitionLanguage`en `endpointId` eigenschappen zijn afgeschaft van de `SPXSpeechConfiguration` klasse in doel-C. Het gebruik van deze eigenschappen wordt afgeraden en mag niet worden gebruikt bij het maken van een `SPXSpeechRecognizer` .
+> `speechRecognitionLanguage` en `endpointId` eigenschappen zijn afgeschaft van de `SPXSpeechConfiguration` klasse in doel-C. Het gebruik van deze eigenschappen wordt afgeraden en mag niet worden gebruikt bij het maken van een `SPXSpeechRecognizer` .
 
 ::: zone-end
 

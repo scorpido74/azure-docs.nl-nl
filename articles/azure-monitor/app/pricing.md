@@ -2,16 +2,17 @@
 title: Het gebruik en de kosten voor Azure-toepassing inzichten beheren | Microsoft Docs
 description: Telemetrie-volumes beheren en de kosten controleren in Application Insights.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309678"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930482"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -79,7 +80,7 @@ Als u meer wilt weten over uw gegevens volumes, selecteert u de **metrieken** vo
 
 ### <a name="queries-to-understand-data-volume-details"></a>Query's om details van gegevens volumes te begrijpen
 
-Er zijn twee benaderingen voor het onderzoeken van gegevens volumes voor Application Insights. De eerste gebruikt geaggregeerde informatie in de `systemEvents` tabel en de tweede gebruikt de `_BilledSize` eigenschap, die beschikbaar is voor elke opgenomen gebeurtenis. `systemEvents`heeft geen informatie over de grootte van de gegevens voor [op werk ruimte gebaseerde toepassing-inzichten](#data-volume-for-workspace-based-application-insights-resources).
+Er zijn twee benaderingen voor het onderzoeken van gegevens volumes voor Application Insights. De eerste gebruikt geaggregeerde informatie in de `systemEvents` tabel en de tweede gebruikt de `_BilledSize` eigenschap, die beschikbaar is voor elke opgenomen gebeurtenis. `systemEvents` heeft geen informatie over de grootte van de gegevens voor [op werk ruimte gebaseerde toepassing-inzichten](#data-volume-for-workspace-based-application-insights-resources).
 
 #### <a name="using-aggregated-data-volume-information"></a>Informatie over geaggregeerd gegevens volume gebruiken
 
@@ -215,7 +216,7 @@ Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen
 
 ### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
-Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configureren** van uw Application Insights-resource op de pagina **gebruik en geschatte kosten** de optie **dagelijks Cap**.
+Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configureren** van uw Application Insights-resource op de pagina **gebruik en geschatte kosten** de optie  **dagelijks Cap**.
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
@@ -239,7 +240,7 @@ Er zijn verschillende soorten steek proeven.
 * [Adaptieve steek proeven](./sampling.md) zijn de standaard waarde voor de ASP.NET-SDK. Adaptieve steek proeven worden automatisch aangepast aan het volume van de telemetrie dat uw app verzendt. Het wordt automatisch uitgevoerd in de SDK in uw web-app, zodat het telemetrie verkeer in het netwerk wordt gereduceerd. 
 * Het nemen van *steek proeven* is een alternatief dat werkt op het punt waar telemetrie van uw app de Application Insights-service binnenkomt. De steek proef van opname heeft geen invloed op het volume van de telemetrie die wordt verzonden vanuit uw app, maar vermindert het volume dat door de service wordt bewaard. U kunt opname sampling gebruiken om het quotum te reduceren dat wordt gebruikt door telemetrie van browsers en andere Sdk's.
 
-Ga naar het **prijs** venster om opname sampling in te stellen:
+Ga naar het  **prijs** venster om opname sampling in te stellen:
 
 ![Selecteer in het deel venster quotum en prijs de tegel voor beelden en selecteer vervolgens een steek proef Fractie](./media/pricing/pricing-004.png)
 

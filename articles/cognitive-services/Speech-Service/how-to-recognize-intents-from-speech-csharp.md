@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
-ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918788"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Intenties herkennen vanuit spraak met de Speech SDK voor C #
 
@@ -102,7 +103,7 @@ Vervolgens voegt u code toe aan het project.
    }
    ```
 
-1. Maak een lege asynchrone methode `RecognizeIntentAsync()`, zoals hier wordt weer gegeven:
+1. Maak een lege asynchrone methode `RecognizeIntentAsync()` , zoals hier wordt weer gegeven:
 
    ```csharp
    static async Task RecognizeIntentAsync()
@@ -128,7 +129,7 @@ In de volgende secties wordt dieper ingegaan op de code.
 
 ## <a name="create-an-intent-recognizer"></a>Een mechanisme voor intentieherkenning maken
 
-Eerst moet u een spraak configuratie maken op basis van uw LUIS-eindpunt sleutel en-regio. U kunt spraak configuraties gebruiken om herkennings functies te maken voor de verschillende mogelijkheden van de spraak-SDK. De spraak configuratie heeft meerdere manieren om het abonnement op te geven dat u wilt gebruiken. hier gebruiken `FromSubscription`we, die de sleutel van het abonnement en de regio.
+Eerst moet u een spraak configuratie maken op basis van uw LUIS-eindpunt sleutel en-regio. U kunt spraak configuraties gebruiken om herkennings functies te maken voor de verschillende mogelijkheden van de spraak-SDK. De spraak configuratie heeft meerdere manieren om het abonnement op te geven dat u wilt gebruiken. hier gebruiken we `FromSubscription` , die de sleutel van het abonnement en de regio.
 
 > [!NOTE]
 > Gebruik de sleutel en regio van uw LUIS-abonnement, niet van een spraak service-abonnement.
@@ -139,7 +140,7 @@ Maak vervolgens een mechanisme voor intentieherkenning met behulp van `new Inten
 
 Importeer het model nu uit de LUIS-app met `LanguageUnderstandingModel.FromAppId()` en voeg de intenties van LUIS toe die u wilt herkennen via de methode `AddIntent()` van het mechanisme. Deze twee stappen verbeteren de nauwkeurigheid van spraakherkenning door woorden aan te geven die de gebruiker waarschijnlijk zal gebruiken in aanvragen. U hoeft niet alle intenties van de app toe te voegen als u ze niet allemaal in uw toepassing hoeft te herkennen.
 
-Als u intenties wilt toevoegen, moet u drie argumenten opgeven: het LUIS-model (dat is gemaakt en `model`de naam heeft), de naam van de doel groep en een intentie-id. Het verschil tussen de id en de naam is als volgt.
+Als u intenties wilt toevoegen, moet u drie argumenten opgeven: het LUIS-model (dat is gemaakt en de naam heeft `model` ), de naam van de doel groep en een intentie-id. Het verschil tussen de id en de naam is als volgt.
 
 | `AddIntent()`&nbsp;instelt | Doel |
 | --------------------------- | ------- |
@@ -153,7 +154,7 @@ recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
 
-In plaats van afzonderlijke intenties toe te voegen, kunt `AddAllIntents` u ook de methode gebruiken om alle intenties in een model toe te voegen aan de herkenner.
+In plaats van afzonderlijke intenties toe te voegen, kunt u ook de `AddAllIntents` methode gebruiken om alle intenties in een model toe te voegen aan de herkenner.
 
 ## <a name="start-recognition"></a>Herkenning starten
 
@@ -162,9 +163,9 @@ Het mechanisme voor intentieherkenning is gemaakt en de intenties zijn toegevoeg
 | Herkennings-modus | Methoden om aan te roepen | Resultaat |
 | ---------------- | --------------- | ------ |
 | Eén opname | `RecognizeOnceAsync()` | Retourneert de herkende intentie, indien aanwezig, na één utterance. |
-| Continu | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Herkent meerdere uitingen; verzendt gebeurtenissen (bijvoorbeeld `IntermediateResultReceived`) wanneer er resultaten beschikbaar zijn. |
+| Continu | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Herkent meerdere uitingen; verzendt gebeurtenissen (bijvoorbeeld `IntermediateResultReceived` ) wanneer er resultaten beschikbaar zijn. |
 
-De toepassing maakt gebruik van de modus voor eenmalige `RecognizeOnceAsync()` opname en roept daarom aan om te beginnen met herkenning. Het resultaat is een `IntentRecognitionResult`-object met informatie over de herkende intentie. U haalt het LUIS JSON-antwoord op met behulp van de volgende expressie:
+De toepassing maakt gebruik van de modus voor eenmalige opname en roept daarom `RecognizeOnceAsync()` aan om te beginnen met herkenning. Het resultaat is een `IntentRecognitionResult`-object met informatie over de herkende intentie. U haalt het LUIS JSON-antwoord op met behulp van de volgende expressie:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
@@ -176,11 +177,11 @@ De toepassing parseert het JSON-resultaat niet. De JSON-tekst wordt alleen weer 
 
 ## <a name="specify-recognition-language"></a>Herkenningstaal opgeven
 
-Standaard herkent LUIS intenties in het Amerikaans-Engels (`en-us`). U kunt een landinstellingscode toewijzen aan de eigenschap `SpeechRecognitionLanguage` van de spraakconfiguratie om intenties in andere talen te herkennen. Voeg bijvoorbeeld in onze `config.SpeechRecognitionLanguage = "de-de";` toepassing toe voordat u de herkenner maakt om de intenties in het Duits te herkennen. Zie [Luis language support (Engelstalig)](../LUIS/luis-language-support.md#languages-supported)voor meer informatie.
+Standaard herkent LUIS intenties in het Amerikaans-Engels (`en-us`). U kunt een landinstellingscode toewijzen aan de eigenschap `SpeechRecognitionLanguage` van de spraakconfiguratie om intenties in andere talen te herkennen. Voeg bijvoorbeeld `config.SpeechRecognitionLanguage = "de-de";` in onze toepassing toe voordat u de herkenner maakt om de intenties in het Duits te herkennen. Zie [Luis language support (Engelstalig)](../LUIS/luis-language-support.md#languages-supported)voor meer informatie.
 
 ## <a name="continuous-recognition-from-a-file"></a>Continue herkenning uit een bestand
 
-De volgende code illustreert twee aanvullende mogelijkheden van intentieherkenning met behulp van de Speech SDK. De eerste mogelijkheid, die eerder is genoemd, is continue spraakherkenning. Hierbij verzendt het mechanisme voor intentieherkenning gebeurtenissen wanneer er resultaten beschikbaar zijn. Deze gebeurtenissen kunnen vervolgens worden verwerkt door gebeurtenis-handlers die u opgeeft. Met doorlopende herkenning roept u de methode van `StartContinuousRecognitionAsync()` de Recognizer aan om herkenning `RecognizeOnceAsync()`te starten in plaats van.
+De volgende code illustreert twee aanvullende mogelijkheden van intentieherkenning met behulp van de Speech SDK. De eerste mogelijkheid, die eerder is genoemd, is continue spraakherkenning. Hierbij verzendt het mechanisme voor intentieherkenning gebeurtenissen wanneer er resultaten beschikbaar zijn. Deze gebeurtenissen kunnen vervolgens worden verwerkt door gebeurtenis-handlers die u opgeeft. Met doorlopende herkenning roept u de methode van de Recognizer `StartContinuousRecognitionAsync()` aan om herkenning te starten in plaats van `RecognizeOnceAsync()` .
 
 De andere mogelijkheid is het lezen van de audio met de spraak die moet worden verwerkt uit een WAV-bestand. Implementatie omvat het maken van een audio configuratie die kan worden gebruikt bij het maken van de intentie herkenning. Het bestand moet éénkanaals (mono) zijn met een samplefrequentie van 16 kHz.
 
@@ -200,4 +201,4 @@ Zoek naar de code in dit artikel in de map **samples/csharp/sharedcontent/consol
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: spraak van een microfoon herkennen](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Quickstart: Spraak herkennen met een microfoon](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

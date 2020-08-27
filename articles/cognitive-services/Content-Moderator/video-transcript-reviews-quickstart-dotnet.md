@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f2d0ddae8a9bd8054c740402b8beb3bb0bccfa9f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73744391"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919213"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Transcriptie van video maken met behulp van .NET
 
@@ -80,7 +81,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Private-eigenschappen toevoegen
 
-Voeg de volgende persoonlijke eigenschappen toe aan naam ruimte **VideoTranscriptReviews**, Class **Program**. Werk de `AzureEndpoint` velden `CMSubscriptionKey` en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
+Voeg de volgende persoonlijke eigenschappen toe aan naam ruimte **VideoTranscriptReviews**, Class **Program**. Werk de `AzureEndpoint` `CMSubscriptionKey` velden en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
 ```csharp
 namespace VideoReviews
@@ -144,7 +145,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 **CreateVideoReviews** heeft de volgende vereiste para meters:
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn. 
 1. De naam van uw Content Moderator team.
-1. Een **IList\<CreateVideoReviewsBodyItem>** -object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
+1. Een **IList \<CreateVideoReviewsBodyItem> ** -object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
 
 **CreateVideoReviewsBodyItem** heeft verschillende eigenschappen. U kunt ten minste de volgende eigenschappen instellen:
 - **Inhoud**. De URL van de video die moet worden gecontroleerd.
@@ -152,7 +153,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 - **Status**. Stel de waarde in op ' unpublished '. Als u deze niet instelt, wordt de standaard waarde ' in behandeling ' gebruikt, wat betekent dat de video beoordeling wordt gepubliceerd en de beoordeling van de mens in behandeling is. Zodra een video controle is gepubliceerd, kunt u geen video frames, transcripten of afschrift resultaten meer toevoegen.
 
 > [!NOTE]
-> **CreateVideoReviews** retourneert een IList\<-teken reeks>. Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** .
+> **CreateVideoReviews** retourneert een IList \<string> . Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** .
 
 Voeg de volgende methode definitie toe aan de naam ruimte VideoReviews, het programma class.
 
@@ -234,15 +235,15 @@ Naast het toevoegen van een transcript aan een video beoordeling, voegt u ook he
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn. 
 1. De naam van uw Content Moderator team.
 1. De ID van de video controle die door **CreateVideoReviews**wordt geretourneerd.
-1. Een IList\<TranscriptModerationBodyItem>. Een **TranscriptModerationBodyItem** heeft de volgende eigenschappen:
-1. **Voor waarden**. Een IList\<TranscriptModerationBodyItemTermsItem>. Een **TranscriptModerationBodyItemTermsItem** heeft de volgende eigenschappen:
+1. Een IList \<TranscriptModerationBodyItem> . Een **TranscriptModerationBodyItem** heeft de volgende eigenschappen:
+1. **Voor waarden**. Een IList \<TranscriptModerationBodyItemTermsItem> . Een **TranscriptModerationBodyItemTermsItem** heeft de volgende eigenschappen:
 1. **Index**. De op nul gebaseerde index van de term.
 1. **Term**. Een teken reeks die de term bevat.
 1. **Tijds tempel**. Een teken reeks die, in seconden, de tijd in de transcripten bevat waarop de termen worden gevonden.
 
 De transcript moet de WebVTT-indeling hebben. Zie voor meer informatie [WebVTT: de indeling van de web video-tekst](https://www.w3.org/TR/webvtt1/).
 
-Voeg de volgende methode definitie toe aan de naam ruimte VideoTranscriptReviews, het programma class. Met deze methode wordt een transcript verzonden naar de methode **ContentModeratorClient. TextModeration. ScreenText** . Ook wordt het resultaat omgezet in een IList\<TranscriptModerationBodyItem> en verzonden naar **AddVideoTranscriptModerationResult**.
+Voeg de volgende methode definitie toe aan de naam ruimte VideoTranscriptReviews, het programma class. Met deze methode wordt een transcript verzonden naar de methode **ContentModeratorClient. TextModeration. ScreenText** . Ook wordt het resultaat omgezet in een IList \<TranscriptModerationBodyItem> en verzonden naar **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>
@@ -366,7 +367,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Navigeer naar uw video-transcript beoordeling
 
-Ga naar de video-transcriptcontrole in het hulp programma content moderator beoordeling op het**transcript** scherm van de**video**> **bekijken**>.
+Ga naar de video-transcriptcontrole in het hulp programma content moderator beoordeling **Review**op het > **Video** > **transcript** scherm van de video bekijken.
 
 U ziet de volgende functies:
 - De twee regels transcripten die u hebt toegevoegd

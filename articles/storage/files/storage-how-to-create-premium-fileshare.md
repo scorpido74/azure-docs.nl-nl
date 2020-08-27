@@ -1,40 +1,43 @@
 ---
 title: Een Premium Azure-bestands share maken
-description: In dit artikel leert u hoe u een Premium Azure-bestands share maakt met behulp van de Azure Portal, Power shell of de Azure CLI.
+description: Meer informatie over het maken van een Azure Premium-bestands share met behulp van de Azure Portal, Azure PowerShell module of de Azure CLI.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2019
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 27bedb2a5d9f95632141ce332773e0f4f9c696d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903813"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930635"
 ---
-# <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
+# <a name="how-to-create-an-azure-premium-file-share"></a>Een Azure Premium-bestands share maken
+
 Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.
 
-In dit artikel leest u hoe u dit nieuwe account type maakt met behulp van [Azure Portal](https://portal.azure.com/), Azure PowerShell en Azure cli.
+In dit artikel wordt beschreven hoe u dit nieuwe account type maakt met behulp van de [Azure Portal](https://portal.azure.com/), Azure PowerShell module en de Azure cli.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor toegang tot Azure-resources, inclusief Premium Azure-bestands shares, hebt u een Azure-abonnement nodig. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u de module Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Een Premium-bestands share maken met behulp van de Azure Portal
+## <a name="create-a-filestorage-storage-account"></a>Een FileStorage-opslag account maken
+
+Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. Premium-bestands shares vereisen een FileStorage-account.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-### <a name="create-a-filestorage-storage-account"></a>Een filestorage-opslag account maken
-
 U bent nu klaar om uw opslag account te maken.
-
-Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
 
 1. Selecteer in het Azure Portal **opslag accounts** in het menu links.
 
@@ -60,42 +63,9 @@ Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is
 
 Als uw opslag account is gemaakt, gaat u naar de resource.
 
-### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Ga in het menu links voor het opslag account naar de sectie **Bestands service** en selecteer vervolgens **bestanden**.
-1. Selecteer **Bestands share** om een Premium-bestands share te maken.
-1. Voer een naam en een gewenste quotum in voor de bestands share en selecteer vervolgens **maken**.
-
-> [!NOTE]
-> De inrichtings grootte van de shares worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte omvang. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
-
-   ![Een Premium-bestandsshare maken](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
-
-### <a name="clean-up-resources"></a>Resources opschonen
-
-Als u de resources die in dit artikel zijn gemaakt, wilt opschonen, kunt u gewoon de resource groep verwijderen. Als u de resource groep verwijdert, worden ook het bijbehorende opslag account en alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
-
-## <a name="create-a-premium-file-share-using-powershell"></a>Een Premium-bestands share maken met behulp van Power shell
-
-### <a name="create-an-account-using-powershell"></a>Een account maken met PowerShell
-
-Installeer eerst de meest recente versie van de [ PowerShellGet](/powershell/scripting/gallery/installing-psget)-module.
-
-Vervolgens voert u een upgrade uit van uw Power shell-module, meldt u zich aan bij uw Azure-abonnement, maakt u een resource groep en maakt u vervolgens een opslag account.
-
-### <a name="upgrade-your-powershell-module"></a>Een Power shell-module bijwerken
-
-Als u wilt communiceren met een Premium-bestands share van met Power shell, moet u een AZ. Storage-module versie 1.4.0 of de nieuwste AZ. Storage-module installeren.
-
-Begin door een PowerShell-sessie met verhoogde bevoegdheden te openen.
-
-Installeer de AZ. Storage-module:
-
-```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
-```
-
-### <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
+### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Gebruik de opdracht `Connect-AzAccount` en volg de instructies op het scherm om te verifiëren.
 
@@ -123,32 +93,11 @@ Als u een FileStorage-opslag account wilt maken vanuit Power shell, gebruikt u d
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
 ```
 
-### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
-
-Nu u een FileStorage-account hebt, kunt u een Premium-bestands share maken. Gebruik de cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) om er een te maken.
-
-> [!NOTE]
-> De inrichtings grootte van de shares worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte omvang. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
-
-```powershell
-New-AzStorageShare `
-   -Name myshare `
-   -Context $storageAcct.Context
-```
-
-### <a name="clean-up-resources"></a>Resources opschonen
-
-Gebruik de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle bijbehorende resources te verwijderen, inclusief het nieuwe opslagaccount: 
-
-```powershell
-Remove-AzResourceGroup -Name $resourceGroup
-```
-
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Een Premium-bestands share maken met behulp van Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
-Als u zich wilt aanmelden bij de lokale installatie van de CLI, controleert u eerst of u de meest recente versie hebt en voert u vervolgens de opdracht voor aanmelden uit:
+Als u zich wilt aanmelden bij de lokale installatie van de CLI, controleert u of u de nieuwste versie hebt en meldt u zich aan:
 
 ```azurecli
 az login
@@ -187,13 +136,42 @@ STORAGEKEY=$(az storage account keys list \
     --account-name $STORAGEACCT \
     --query "[0].value" | tr -d '"')
 ```
+---
 
-### <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
+## <a name="create-a-premium-file-share"></a>Een Premium-bestandsshare maken
 
-Nu u een filestorage-account hebt, kunt u een Premium-bestands share maken. Gebruik de opdracht [AZ Storage share Create](/cli/azure/storage/share) om er een te maken.
+Nu u een FileStorage-account hebt gemaakt, kunt u een Premium-bestands share maken binnen dat opslag account.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Ga in het menu links voor het opslag account naar de sectie **Bestands service** en selecteer vervolgens **bestanden**.
+1. Selecteer **Bestands share** om een Premium-bestands share te maken.
+1. Voer een naam en een gewenste quotum in voor de bestands share en selecteer vervolgens **maken**.
 
 > [!NOTE]
-> De inrichtings grootte van de shares worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte omvang. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
+
+   ![Een Premium-bestandsshare maken](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Als u een Premium-bestands share met de module Azure PowerShell wilt maken, gebruikt u de cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) .
+
+> [!NOTE]
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
+
+```powershell
+New-AzStorageShare `
+   -Name myshare `
+   -Context $storageAcct.Context
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Als u een Premium-bestands share wilt maken met de Azure CLI, gebruikt u de opdracht [AZ Storage share Create](/cli/azure/storage/share) .
+
+> [!NOTE]
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
 
 ```azurecli-interactive
 az storage share create \
@@ -201,14 +179,34 @@ az storage share create \
     --account-key $STORAGEKEY \
     --name "myshare" 
 ```
+---
 
-### <a name="clean-up-resources"></a>Resources opschonen
+## <a name="clean-up-resources"></a>Resources opschonen
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Als u de resources die in dit artikel zijn gemaakt, wilt opschonen, verwijdert u de resource groep. Als u de resource groep verwijdert, worden ook het bijbehorende opslag account en alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Als u de resources die in dit artikel zijn gemaakt, wilt opschonen, verwijdert u de resource groep. Als u de resource groep verwijdert, worden ook het bijbehorende opslag account en alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
+
+Gebruik de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle bijbehorende resources te verwijderen, inclusief het nieuwe opslagaccount: 
+
+```powershell
+Remove-AzResourceGroup -Name $resourceGroup
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Als u de resources die in dit artikel zijn gemaakt, wilt opschonen, verwijdert u de resource groep. Als u de resource groep verwijdert, worden ook het bijbehorende opslag account en alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
 
 Gebruik de opdracht [az group delete](/cli/azure/group) om de resourcegroep en alle bijbehorende resources te verwijderen, inclusief het nieuwe opslagaccount.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

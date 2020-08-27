@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 1a7f2983b65c3568ae07e4bcd9d21b7dbd3435a9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: db6dfb36c579f57f9cef66fa00a07b0d1dc2bc03
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705348"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929666"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-gegevens indexeren met behulp van een indexeerfunctie in Azure Cognitive Search 
 
@@ -23,19 +23,19 @@ ms.locfileid: "88705348"
 > MongoDB-API, Gremlin-API en Cassandra-API-ondersteuning zijn momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2020-06-30-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen ondersteuning voor de .NET-SDK.
 
 > [!WARNING]
-> Alleen Cosmos DB verzamelingen waarvoor een [indexerings beleid](https://docs.microsoft.com/azure/cosmos-db/index-policy) is ingesteld op [consistent](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) , worden ondersteund door Azure Cognitive Search. Het indexeren van verzamelingen met een Lazy-indexerings beleid wordt niet aanbevolen en kan leiden tot ontbrekende gegevens. Verzamelingen waarvoor indexeren is uitgeschakeld, worden niet ondersteund.
+> Alleen Cosmos DB verzamelingen waarvoor een [indexerings beleid](/azure/cosmos-db/index-policy) is ingesteld op [consistent](/azure/cosmos-db/index-policy#indexing-mode) , worden ondersteund door Azure Cognitive Search. Het indexeren van verzamelingen met een Lazy-indexerings beleid wordt niet aanbevolen en kan leiden tot ontbrekende gegevens. Verzamelingen waarvoor indexeren is uitgeschakeld, worden niet ondersteund.
 
 In dit artikel wordt beschreven hoe u een Azure Cosmos DB [Indexeer functie](search-indexer-overview.md) configureert om inhoud te extra heren en deze te doorzoeken in azure Cognitive Search. Met deze werk stroom wordt een Azure Cognitive Search-index gemaakt en wordt deze geladen met bestaande tekst die is geëxtraheerd uit Azure Cosmos DB. 
 
-Omdat de terminologie verwarrend kan zijn, is het een goed idee dat [Azure Cosmos DB indexering](https://docs.microsoft.com/azure/cosmos-db/index-overview) en [Azure Cognitive Search indexeren](search-what-is-an-index.md) verschillende bewerkingen zijn, uniek zijn voor elke service. Voordat u begint met het indexeren van Azure Cognitive Search, moet uw Azure Cosmos DB-data base al bestaan en gegevens bevatten.
+Omdat de terminologie verwarrend kan zijn, is het een goed idee dat [Azure Cosmos DB indexering](/azure/cosmos-db/index-overview) en [Azure Cognitive Search indexeren](search-what-is-an-index.md) verschillende bewerkingen zijn, uniek zijn voor elke service. Voordat u begint met het indexeren van Azure Cognitive Search, moet uw Azure Cosmos DB-data base al bestaan en gegevens bevatten.
 
-Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos DB-items](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) die toegankelijk zijn via verschillende protocollen, verkennen. 
+Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos DB-items](../cosmos-db/databases-containers-items.md#azure-cosmos-items) die toegankelijk zijn via verschillende protocollen, verkennen. 
 
-+ Voor [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) gebruiken om de gegevens bron en Indexeer functie te maken.
++ Voor [SQL API](../cosmos-db/sql-query-getting-started.md), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](/rest/api/searchservice/indexer-operations)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) gebruiken om de gegevens bron en Indexeer functie te maken.
 
-+ Voor de [MongoDb-API (preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
++ Voor de [MongoDb-API (preview)](../cosmos-db/mongodb-introduction.md)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
-+ Voor [Cassandra-API (preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) en [Gremlin-API (preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)kunt u alleen de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
++ Voor [Cassandra-API (preview)](../cosmos-db/cassandra-introduction.md) en [Gremlin-API (preview)](../cosmos-db/graph-introduction.md)kunt u alleen de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
 
 > [!Note]
@@ -95,7 +95,7 @@ Op de pagina **index** ziet u een lijst met velden met een gegevens type en een 
 
 U kunt kenmerken bulksgewijs selecteren door te klikken op het selectie vakje boven aan een kenmerk kolom. Kies **ophalen** en **doorzoekbaar** voor elk veld dat moet worden geretourneerd naar een client-app en waarop de volledige Zoek verwerking van de tekst van toepassing is. U zult merken dat gehele getallen geen volledige tekst of fuzzy Doorzoek bare waarden zijn (getallen worden geëvalueerd Verbatim en zijn vaak nuttig in filters).
 
-Lees de beschrijving van [index kenmerken](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) en [taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) functies voor meer informatie. 
+Lees de beschrijving van [index kenmerken](/rest/api/searchservice/create-index#bkmk_indexAttrib) en [taal analyse](/rest/api/searchservice/language-support) functies voor meer informatie. 
 
 Neem even de tijd om uw selecties te controleren. Nadat u de wizard hebt uitgevoerd, worden er fysieke gegevens structuren gemaakt en kunt u deze velden niet bewerken zonder alle objecten te verwijderen en opnieuw te maken.
 
@@ -127,7 +127,7 @@ U kunt de REST API gebruiken om Azure Cosmos DB gegevens te indexeren, het volge
 > [!NOTE]
 > Voor het indexeren van gegevens uit Cosmos DB Gremlin API of Cosmos DB Cassandra-API moet u eerst toegang tot de gefeedte previews aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. Zodra de aanvraag is verwerkt, ontvangt u instructies voor het gebruik van de [rest API versie 2020-06-30-preview](search-api-preview.md) om de gegevens bron te maken.
 
-Eerder in dit artikel wordt vermeld dat [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) indexering en indexering van [Azure Cognitive Search](search-what-is-an-index.md) een afzonderlijke bewerking zijn. Voor het indexeren van Cosmos DB worden standaard alle documenten automatisch geïndexeerd, behalve met de Cassandra-API. Als u automatisch indexeren uitschakelt, kan alleen toegang worden verkregen tot documenten via hun eigen koppelingen of door query's met behulp van de document-ID. Voor het indexeren van Azure-Cognitive Search moet Cosmos DB automatisch indexeren zijn ingeschakeld in de verzameling die wordt geïndexeerd door Azure Cognitive Search. Wanneer u zich aanmeldt voor de Cosmos DB Cassandra-API Indexeer functie preview, krijgt u instructies voor het instellen van Cosmos DB indexeren.
+Eerder in dit artikel wordt vermeld dat [Azure Cosmos DB](/azure/cosmos-db/index-overview) indexering en indexering van [Azure Cognitive Search](search-what-is-an-index.md) een afzonderlijke bewerking zijn. Voor het indexeren van Cosmos DB worden standaard alle documenten automatisch geïndexeerd, behalve met de Cassandra-API. Als u automatisch indexeren uitschakelt, kan alleen toegang worden verkregen tot documenten via hun eigen koppelingen of door query's met behulp van de document-ID. Voor het indexeren van Azure-Cognitive Search moet Cosmos DB automatisch indexeren zijn ingeschakeld in de verzameling die wordt geïndexeerd door Azure Cognitive Search. Wanneer u zich aanmeldt voor de Cosmos DB Cassandra-API Indexeer functie preview, krijgt u instructies voor het instellen van Cosmos DB indexeren.
 
 > [!WARNING]
 > Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb` . Met ingang van API-versie **2019-05-06** worden de Azure Cognitive Search-api's en-Portal alleen ondersteund `cosmosdb` als in dit artikel wordt geadviseerd. Dit betekent dat het gegevens bron type moet zijn `cosmosdb` Als u verbinding wilt maken met een Cosmos DB eind punt.
@@ -296,7 +296,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu make
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
-Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
+Bekijk [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
@@ -304,16 +304,16 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 
 De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen beschik bare REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [micro soft. Azure. Search. Models. data source](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [micro soft. Azure. Search. Models. data source type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [micro soft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [micro soft. Azure. Search. Models. Indexeer functie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source type](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. Indexeer functie](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>Gewijzigde documenten indexeren
 
-Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik van de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
+Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik van de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
 
 ```http
     {
