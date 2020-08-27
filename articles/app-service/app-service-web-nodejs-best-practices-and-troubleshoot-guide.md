@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077472"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961887"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure App Service Windows
 
@@ -166,7 +166,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Ga naar de console voor fout opsporing`https://yoursite.scm.azurewebsites.net/DebugConsole`
+Ga naar de console voor fout opsporing `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Ga naar de map van uw site/wwwroot. U ziet een opdracht prompt zoals in het volgende voor beeld wordt weer gegeven:
 
@@ -267,15 +267,15 @@ Schakel FREB in voor uw toepassing om de Win32-fout code te bekijken (zorg ervoo
 | 503 |1002 |Controleer de Win32-fout code op werkelijke reden: de aanvraag kan niet worden verzonden naar een node.exe. |
 | 503 |1003 |Named pipe is bezet: Controleer of node.exe buitensporige CPU verbruikt |
 
-NODE.exe heeft een instelling met de naam `NODE_PENDING_PIPE_INSTANCES` . Op Azure App Service is deze waarde ingesteld op 5000. Dit betekent dat node.exe op de named pipe 5000-aanvragen tegelijk kunt accepteren. Deze waarde moet voldoende zijn voor de meeste knooppunt toepassingen die op Azure App Service worden uitgevoerd. U moet 503,1003 niet zien op Azure App Service vanwege de hoge waarde voor`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe heeft een instelling met de naam `NODE_PENDING_PIPE_INSTANCES` . Op Azure App Service is deze waarde ingesteld op 5000. Dit betekent dat node.exe op de named pipe 5000-aanvragen tegelijk kunt accepteren. Deze waarde moet voldoende zijn voor de meeste knooppunt toepassingen die op Azure App Service worden uitgevoerd. U moet 503,1003 niet zien op Azure App Service vanwege de hoge waarde voor `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Meer bronnen
 
 Volg deze koppelingen voor meer informatie over node.js toepassingen op Azure App Service.
 
 * [Aan de slag met Node.js-web-apps in Azure App Service](quickstart-nodejs.md)
-* [Fouten opsporen in een Node.js web-app in Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Fouten opsporen in een Node.js web-app in Azure App Service](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Node.js-modules gebruiken met Azure-toepassingen](../nodejs-use-node-modules-azure-apps.md)
-* [Web-apps van Azure App Service: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Web-apps van Azure App Service: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js Developer Center](../nodejs-use-node-modules-azure-apps.md)
 * [De geheimen van de Kudu-console voor foutopsporing](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611446"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958509"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
@@ -57,7 +57,7 @@ Wanneer u een app in App Service maakt, wordt deze in een App Service plan gepla
 
 Op deze manier is het App Service plan de schaal eenheid van de App Service apps. Als het plan is geconfigureerd voor het uitvoeren van vijf VM-exemplaren, worden alle apps in het abonnement uitgevoerd op alle vijf de instanties. Als het plan is geconfigureerd voor automatisch schalen, worden alle apps in het plan samengebracht op basis van de instellingen voor automatisch schalen.
 
-Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)voor meer informatie over het schalen van een app.
+Zie [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md)voor meer informatie over het schalen van een app.
 
 <a name="cost"></a>
 

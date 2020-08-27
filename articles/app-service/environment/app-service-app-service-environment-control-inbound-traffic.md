@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5efca8ab51c789a619e48b1ae96a53494ae411ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831162"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962057"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Inkomend verkeer naar een App Service Environment beheren
 ## <a name="overview"></a>Overzicht
@@ -31,8 +31,8 @@ Voordat u binnenkomend netwerk verkeer met een netwerk beveiligings groep vergre
 
 De volgende lijst bevat de poorten die worden gebruikt door een App Service Environment. Alle poorten zijn **TCP**, tenzij anders duidelijk vermeld:
 
-* 454: de **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via TLS.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
-* 455: de **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via TLS.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
+* 454: de  **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via TLS.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
+* 455: de  **vereiste poort** die wordt gebruikt door de Azure-infra structuur voor het beheren en onderhouden van app service omgevingen via TLS.  Verkeer naar deze poort niet blok keren.  Deze poort is altijd gebonden aan het open bare VIP van een ASE.
 * 80: standaard poort voor binnenkomend HTTP-verkeer naar apps die worden uitgevoerd in App Service plannen in een App Service Environment.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
 * 443: standaard poort voor binnenkomend TLS-verkeer naar apps die worden uitgevoerd in App Service plannen in een App Service Environment.  Op een ILB-ASE is deze poort gebonden aan het ILB-adres van de ASE.
 * 21: besturings kanaal voor FTP.  Deze poort kan veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ILB-ASE kan deze poort worden gebonden aan het ILB-adres voor een ASE.
@@ -86,7 +86,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityR
 Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 ```
 
-(**Opmerking:** het poort bereik van het gegevens kanaal kan tijdens de preview-periode veranderen.)
+(**Opmerking:**  het poort bereik van het gegevens kanaal kan tijdens de preview-periode veranderen.)
 
 Als externe fout opsporing met Visual Studio wordt gebruikt, demonstreert de volgende regels hoe u toegang kunt verlenen.  Er is een afzonderlijke regel voor elke ondersteunde versie van Visual Studio, aangezien elke versie een andere poort gebruikt voor fout opsporing op afstand.  Net als bij FTP-toegang kan het verkeer voor externe fout opsporing niet goed stromen via een traditioneel WAF of proxy apparaat.  De *SourceAddressPrefix* kan in plaats daarvan worden ingesteld op het IP-adres bereik van ontwikkel machines met Visual Studio.
 
@@ -130,12 +130,11 @@ Zie voor meer informatie [veilig verbinding maken met back-end-bronnen via een a
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [SecurelyConnecttoBackend]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md
 [NewPortal]:  https://portal.azure.com  
 
 <!-- IMAGES -->
-

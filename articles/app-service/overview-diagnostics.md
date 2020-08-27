@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869945"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962805"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Overzicht van Azure App Service diagnostische gegevens
 
@@ -20,7 +20,7 @@ Wanneer u een webtoepassing uitvoert, wilt u voor bereid zijn op problemen die z
 
 Hoewel deze ervaring het handigst is wanneer u problemen ondervindt met uw app in de afgelopen 24 uur, zijn alle diagnostische grafieken altijd beschikbaar om te analyseren.
 
-App Service diagnostische gegevens werken alleen voor uw app in Windows, maar ook apps op [Linux/containers](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), [app service Environment](https://docs.microsoft.com/azure/app-service/environment/intro)en [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+App Service diagnostische gegevens werken alleen voor uw app in Windows, maar ook apps op [Linux/containers](./overview.md#app-service-on-linux), [app service Environment](./environment/intro.md)en [Azure functions](../azure-functions/functions-overview.md).
 
 ## <a name="open-app-service-diagnostics"></a>App Service diagnostische gegevens openen
 
@@ -71,7 +71,7 @@ Er zijn vier verschillende grafieken in de status controle van agenten.
 
 ### <a name="investigate-application-code-issues-only-for-windows-app"></a>Problemen met toepassings code onderzoeken (alleen voor Windows-apps)
 
-Omdat veel app-problemen zijn gerelateerd aan problemen in de toepassings code, worden App Service diagnostische gegevens geïntegreerd met [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) om uitzonde ringen en afhankelijkheids kwesties te markeren om te correleren met de geselecteerde uitval tijd. Application Insights moet afzonderlijk worden ingeschakeld.
+Omdat veel app-problemen zijn gerelateerd aan problemen in de toepassings code, worden App Service diagnostische gegevens geïntegreerd met [Application Insights](../azure-monitor/app/app-insights-overview.md) om uitzonde ringen en afhankelijkheids kwesties te markeren om te correleren met de geselecteerde uitval tijd. Application Insights moet afzonderlijk worden ingeschakeld.
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 

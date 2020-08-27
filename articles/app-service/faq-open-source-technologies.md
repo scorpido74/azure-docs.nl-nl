@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 89c317e6623a868fd75b09274c726720e726e470
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848635"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962325"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Open-source technologieën Veelgestelde vragen over Web Apps in azure
 
@@ -33,7 +33,7 @@ PHP-logboek registratie inschakelen:
 5. Selecteer het **+** pictogram en selecteer vervolgens **nieuw bestand**.
 6. Stel de bestands naam in op **.user.ini**.
 7. Selecteer het potlood pictogram naast **.user.ini**.
-8. Voeg in het bestand de volgende code toe:`log_errors=on`
+8. Voeg in het bestand de volgende code toe: `log_errors=on`
 9. Selecteer **Opslaan**.
 10. Selecteer het potlood pictogram naast **wp-config. php**.
 11. Wijzig de tekst in de volgende code:
@@ -43,7 +43,7 @@ PHP-logboek registratie inschakelen:
     ```
 12. Start uw web-app in het menu van de web-app in het Azure Portal.
 
-Zie voor meer informatie [WordPress-fouten logboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Zie voor meer informatie [WordPress-fouten logboeken inschakelen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hoe kan ik python-toepassings fouten vastleggen in apps die worden gehost in App Service?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -72,7 +72,7 @@ Als u de versie van de Node.js toepassing wilt wijzigen, kunt u een van de volge
   Het implementatie proces van het Azure-bron beheer omvat de volgende stappen:
   1. Hiermee verplaatst u inhoud naar de Azure-web-app.
   2. Hiermee maakt u een standaard implementatie script als er zich geen (Deploy. cmd,. Deployment-bestanden) in de hoofdmap van de web-app bevindt.
-  3. Voert een implementatie script uit waarbij het een iisnode. yml-bestand maakt als u de Node.js versie in de package.jsin de engine van file > vermeldt`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Voert een implementatie script uit waarbij het een iisnode. yml-bestand maakt als u de Node.js versie in de package.jsin de engine van file > vermeldt `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Het bestand iisnode. yml heeft de volgende regel code:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -80,7 +80,7 @@ Als u de versie van de Node.js toepassing wilt wijzigen, kunt u een van de volge
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Ik zie het bericht ' fout bij het maken van een database verbinding ' in de WordPress-app die wordt gehost in App Service. Hoe kan ik dit probleem oplossen?
 
-Als deze fout wordt weer geven in de Azure WordPress-app, kunt u php_errors. log en debug. log uitvoeren door de stappen uit te voeren die worden beschreven in [WordPress-fouten logboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Als deze fout wordt weer geven in de Azure WordPress-app, kunt u php_errors. log en debug. log uitvoeren door de stappen uit te voeren die worden beschreven in [WordPress-fouten logboeken inschakelen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 Als de logboeken zijn ingeschakeld, reproduceert u de fout en raadpleegt u de logboeken om te controleren of er verbinding is met de volgende:
 ```
@@ -97,11 +97,11 @@ Als deze fout wordt weer geven in de bestanden debug. log of php_errors. log, ov
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hoe kan ik systeem eigen python-modules installeren in een App Service web-app of API-app?
 
-Sommige pakketten kunnen niet worden geïnstalleerd met behulp van PIP in Azure. Mogelijk is het pakket niet beschikbaar op de python-pakket index of is een compiler vereist (er is geen compiler beschikbaar op de computer waarop de web-app wordt uitgevoerd in App Service). Zie [python-modules installeren in app service](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/)voor meer informatie over het installeren van systeem eigen modules in app service Web apps en API apps.
+Sommige pakketten kunnen niet worden geïnstalleerd met behulp van PIP in Azure. Mogelijk is het pakket niet beschikbaar op de python-pakket index of is een compiler vereist (er is geen compiler beschikbaar op de computer waarop de web-app wordt uitgevoerd in App Service). Zie [python-modules installeren in app service](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps)voor meer informatie over het installeren van systeem eigen modules in app service Web apps en API apps.
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Hoe kan ik een Django-app implementeren op App Service met behulp van Git en de nieuwe versie van python?
 
-Zie [Deploying a Django app to app service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/)voor informatie over het installeren van Django.
+Zie [Deploying a Django app to app service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python)voor informatie over het installeren van Django.
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Waar bevinden zich de logboek bestanden van de Tomcat?
 
@@ -183,7 +183,7 @@ Als u onlangs naar Azure hebt gemigreerd, kan WordPress omleiden naar de oude do
 
 WordPress Buddy + is een Azure-site-uitbrei ding die u kunt gebruiken om de omleidings-URL rechtstreeks in de-data base bij te werken. Zie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)voor meer informatie over het gebruik van WordPress buddy +.
 
-Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of PHPMyAdmin, raadpleegt u [WordPress: omleiden naar de verkeerde URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of PHPMyAdmin, raadpleegt u [WordPress: omleiden naar de verkeerde URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hoe kan ik mijn WordPress-aanmeldings wachtwoord wijzigen?
 
@@ -197,12 +197,12 @@ Als u zichzelf hebt geblokkeerd na de laatste keer dat u een invoeg toepassing h
 
 U hebt meerdere opties voor het migreren van de MySQL-data base die is verbonden met uw WordPress-website:
 
-* Ontwikkel aars: gebruik de [opdracht prompt of phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Ontwikkel aars: gebruik de [opdracht prompt of phpMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service)
 * Niet-ontwikkel aars: gebruik [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hoe kan ik kunt u WordPress veiliger maken?
 
-Zie [Aanbevolen procedures voor WordPress-beveiliging in azure](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/)voor meer informatie over aanbevolen beveiligings procedures voor WordPress.
+Zie [Aanbevolen procedures voor WordPress-beveiliging in azure](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure)voor meer informatie over aanbevolen beveiligings procedures voor WordPress.
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Ik probeer PHPMyAdmin te gebruiken en het bericht ' toegang geweigerd ' wordt weer gegeven. Hoe los ik dit op?
 

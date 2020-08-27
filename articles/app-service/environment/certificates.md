@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831876"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962040"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certificaten en de App Service Environment 
 
-De App Service Environment (ASE) is een implementatie van de Azure App Service die wordt uitgevoerd binnen uw Azure-Virtual Network (VNet). Het kan worden geïmplementeerd met een eind punt voor Internet toegang of een toepassings eindpunt dat zich in uw VNet bevindt. Als u de ASE implementeert met een Internet toegankelijk eind punt, wordt deze implementatie een externe ASE genoemd. Als u de ASE implementeert met een eind punt in uw VNet, wordt die implementatie een ILB-ASE genoemd. Meer informatie over de ILB-ASE vindt u in het document [Create and use a ILB ASE](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) .
+De App Service Environment (ASE) is een implementatie van de Azure App Service die wordt uitgevoerd binnen uw Azure-Virtual Network (VNet). Het kan worden geïmplementeerd met een eind punt voor Internet toegang of een toepassings eindpunt dat zich in uw VNet bevindt. Als u de ASE implementeert met een Internet toegankelijk eind punt, wordt deze implementatie een externe ASE genoemd. Als u de ASE implementeert met een eind punt in uw VNet, wordt die implementatie een ILB-ASE genoemd. Meer informatie over de ILB-ASE vindt u in het document [Create and use a ILB ASE](./create-ilb-ase.md) .
 
 De ASE is één Tenant systeem. Omdat het één Tenant is, zijn er enkele functies die alleen beschikbaar zijn voor een ASE die niet beschikbaar zijn in de multi tenant-App Service. 
 

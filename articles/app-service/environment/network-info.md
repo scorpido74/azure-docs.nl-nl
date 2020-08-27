@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280916"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962533"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerkoverwegingen voor een App Service-omgeving #
 
@@ -109,7 +109,7 @@ Als u de DNS-instelling van het VNet wijzigt waarin uw ASE zich bevindt, moet u 
 Naast de functionele afhankelijkheden van ASE zijn er enkele extra items die betrekking hebben op de portal-ervaring. Enkele van de mogelijkheden van de Azure Portal zijn afhankelijk van directe toegang tot de _SCM-site_. Voor elke app in Azure App Service zijn er twee Url's. De eerste URL is om toegang te krijgen tot uw app. De tweede URL is om toegang te krijgen tot de SCM-site, die ook wel de _kudu-console_wordt genoemd. Functies die gebruikmaken van de SCM-site zijn onder andere:
 
 -   WebJobs
--   Functions
+-   Functies
 -   Logboek streaming
 -   Kudu
 -   Extensies
@@ -122,7 +122,7 @@ Als uw ILB ASE de domein naam *contoso.appserviceenvironment.net* is en de naam 
 
 ## <a name="ase-ip-addresses"></a>IP-adressen van ASE ##
 
-Een ASE heeft enkele IP-adressen waarvan u op de hoogte moet zijn. Dit zijn:
+Een ASE heeft enkele IP-adressen waarvan u op de hoogte moet zijn. Dat zijn:
 
 - **Openbaar binnenkomend IP-adres**: wordt gebruikt voor app-verkeer in een extern ASE en beheer verkeer in zowel een externe ASE als een ILB-ASE.
 - **Uitgaand openbaar IP-adres**dat wordt gebruikt als het ' van ' IP-adres voor uitgaande verbindingen van de ASE die het VNet verlaten, dat niet wordt gerouteerd naar een VPN-verbinding.
@@ -244,14 +244,14 @@ Als Service-eindpunten in een subnet met een Azure SQL-exemplaar is ingeschakeld
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ASEManagement]: ./management-addresses.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [forcedtunnel]: ./forced-tunnel-support.md

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080606"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962516"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Een web-app maken in een App Service Environment v1
 
@@ -57,7 +57,7 @@ In deze zelf studie wordt ervan uitgegaan dat u een App Service Environment hebt
     Als uw ASE een interne VIP gebruikt, is de URL van een app in dat ASE: [*site naam*]. [*subdomein opgegeven tijdens het maken van ASE*]   
     Nadat u uw ASP hebt geselecteerd tijdens het maken van ASE, ziet u de subdomein update onder **naam**
 
-## <a name="create-an-app-service-plan"></a><a name="createplan"></a>Een App Service plan maken
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> Een App Service plan maken
 Wanneer u een App Service plan maakt in een App Service Environment, zijn de keuze mogelijkheden van uw werk nemers verschillend omdat er geen gedeelde werk nemers zijn in een ASE.  De werk rollen die u moet gebruiken, zijn de gebruikers die zijn toegewezen aan de ASE door de beheerder.  Dit betekent dat u voor het maken van een nieuw plan meer werk nemers aan uw ASE-werk groep moet toewijzen dan het totale aantal exemplaren in al uw plannen die al in die werknemers groep zijn.  Als u niet genoeg werk nemers in uw ASE-werk groep hebt om uw plan te maken, moet u samen werken met uw ASE-beheerder om ze toe te voegen.
 
 Een ander verschil met App Service plannen die worden gehost door een App Service Environment, is het ontbreken van prijs selectie.  Wanneer u een App Service Environment hebt die u betaalt voor reken resources die worden gebruikt door het systeem en geen kosten hebt toegevoegd voor de plannen in die omgeving.  Normaal gesp roken wanneer u een App Service plan maakt, selecteert u een prijs plan om uw facturering te bepalen.  Een App Service Environment is in feite een privé locatie waar u inhoud kunt maken.  U betaalt voor de omgeving en niet om uw inhoud te hosten.
@@ -105,4 +105,4 @@ Nadat u uw web-app hebt gemaakt en App Service plant, kunt u ze het beste schale
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: /powershell/azure/?view=azps-3.8.0

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207539"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962176"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -46,12 +46,12 @@ Als u toepassings logboeken wilt inschakelen voor Windows-apps in de [Azure Port
 
 Selecteer **aan** voor **toepassings Logboeken (bestands systeem)** of **toepassings Logboeken (BLOB)** of beide. 
 
-De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schakelt zichzelf in 12 uur uit. De **BLOB** -optie is voor langdurige logboek registratie en er is een BLOB storage-container nodig om logboeken naar te schrijven.  De **BLOB** -optie bevat ook aanvullende informatie in de logboek berichten, zoals de id van de oorspronkelijke VM-instantie van het logboek bericht ( `InstanceId` ), de thread-id ( `Tid` ) en een gedetailleerdere tijds tempel ( [`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks) ).
+De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schakelt zichzelf in 12 uur uit. De **BLOB** -optie is voor langdurige logboek registratie en er is een BLOB storage-container nodig om logboeken naar te schrijven.  De **BLOB** -optie bevat ook aanvullende informatie in de logboek berichten, zoals de id van de oorspronkelijke VM-instantie van het logboek bericht ( `InstanceId` ), de thread-id ( `Tid` ) en een gedetailleerdere tijds tempel ( [`EventTickCount`](/dotnet/api/system.datetime.ticks) ).
 
 > [!NOTE]
 > Momenteel kunnen alleen .NET-toepassings logboeken worden geschreven naar de Blob-opslag. Java, PHP, Node.js, python-toepassings logboeken kunnen alleen worden opgeslagen op het App Service bestands systeem (zonder code wijzigingen voor het schrijven van logboeken naar externe opslag).
 >
-> Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-create-storage-account.md), moet u ook de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte toegangs sleutels te gebruiken. Om dit te doen:
+> Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-account-create.md), moet u ook de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte toegangs sleutels te gebruiken. Om dit te doen:
 >
 > 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit**. Sla de instelling op.
 > 2. Schakel logboek registratie voor de blob van het opslag account opnieuw in. Sla de instelling op.
@@ -66,7 +66,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 |**Fout** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
 |**Informatie** | Info, waarschuwing, fout, kritiek|
-|**Uitgebreid** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
+|**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
 
 Wanneer u klaar bent, selecteert u **Opslaan**.
 
@@ -89,7 +89,7 @@ Voor **logboek registratie van webserver**selecteert u **opslag** om logboeken o
 Stel in de **Bewaar periode (dagen)** het aantal dagen in dat de logboeken moeten worden bewaard.
 
 > [!NOTE]
-> Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-create-storage-account.md), moet u de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte sleutels te gebruiken. Om dit te doen:
+> Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-account-create.md), moet u de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte sleutels te gebruiken. Om dit te doen:
 >
 > 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit**. Sla de instelling op.
 > 2. Schakel logboek registratie voor de blob van het opslag account opnieuw in. Sla de instelling op.
@@ -116,7 +116,7 @@ In de toepassings code gebruikt u de gebruikelijke logboek functies om logboek b
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- ASP.NET Core maakt standaard gebruik van de logboek provider [micro soft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Zie [ASP.net core logboek registratie in azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging/)voor meer informatie.
+- ASP.NET Core maakt standaard gebruik van de logboek provider [micro soft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Zie [ASP.net core logboek registratie in azure](/aspnet/core/fundamentals/logging/)voor meer informatie.
 
 ## <a name="stream-logs"></a>Logboeken streamen
 
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>In lokale terminal
 
-Als u logboeken wilt streamen in de lokale console, [installeert u Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) en [meldt u zich aan bij uw account](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Nadat u bent aangemeld, volgt u de [instructies voor Cloud shell](#in-cloud-shell)
+Als u logboeken wilt streamen in de lokale console, [installeert u Azure cli](/cli/azure/install-azure-cli) en [meldt u zich aan bij uw account](/cli/azure/authenticate-azure-cli). Nadat u bent aangemeld, volgt u de [instructies voor Cloud shell](#in-cloud-shell)
 
 ## <a name="access-log-files"></a>Toegang tot logboek bestanden
 
@@ -197,7 +197,7 @@ De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen:
 | AppServicePlatformLogs  | TBA | Ja | Container logboeken |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Volgende stappen
-* [Query's uitvoeren op Logboeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Logboeken doorzoeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service bewaken](web-sites-monitor.md)
 * [Problemen met Azure App Service oplossen in Visual Studio](troubleshoot-dotnet-visual-studio.md)
-* [App-Logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [App-logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

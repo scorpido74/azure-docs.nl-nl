@@ -5,21 +5,21 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610238"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962873"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Een aangepaste domein naam configureren in Azure App Service met Traffic Manager-integratie
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> Zie voor Cloud Services [een aangepaste domein naam configureren voor een Azure-Cloud service](../cloud-services/cloud-services-custom-domain-name.md).
+> Zie voor Cloud Services [een aangepaste domein naam configureren voor een Azure-Cloud service](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-Wanneer u [Azure Traffic Manager](/azure/traffic-manager/) gebruikt om verkeer te verdelen naar [Azure app service](overview.md), is de app service-App toegankelijk via ** \<traffic-manager-endpoint> . trafficmanager.net**. U kunt een aangepaste domein naam, zoals www \. contoso.com, toewijzen met uw app service-app om een herken bare domein naam voor uw gebruikers te bieden.
+Wanneer u [Azure Traffic Manager](../traffic-manager/index.yml) gebruikt om verkeer te verdelen naar [Azure app service](overview.md), is de app service-App toegankelijk via ** \<traffic-manager-endpoint> . trafficmanager.net**. U kunt een aangepaste domein naam, zoals www \. contoso.com, toewijzen met uw app service-app om een herken bare domein naam voor uw gebruikers te bieden.
 
 In dit artikel wordt beschreven hoe u een aangepaste domein naam configureert met een App Service-app die is geïntegreerd met [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
@@ -55,7 +55,7 @@ Klik op **Toepassen**.
 
 ## <a name="create-traffic-manager-endpoint"></a>Traffic Manager-eind punt maken
 
-Volg de stappen bij het [toevoegen of verwijderen van eind punten](../traffic-manager/traffic-manager-endpoints.md)en voeg uw app service-app toe als een eind punt in uw Traffic Manager-profiel.
+Volg de stappen bij het [toevoegen of verwijderen van eind punten](../traffic-manager/traffic-manager-manage-endpoints.md)en voeg uw app service-app toe als een eind punt in uw Traffic Manager-profiel.
 
 Zodra uw App Service-app een ondersteunde prijs categorie heeft, wordt deze weer gegeven in de lijst met beschik bare App Service doelen wanneer u het eind punt toevoegt. Als uw app niet wordt weer gegeven, [controleert u de prijs categorie van uw app](#prepare-the-app).
 
@@ -90,7 +90,7 @@ Nadat de records voor uw domein naam zijn door gegeven, gebruikt u de browser om
 1. Zodra de domein omzetting is gelukt, gaat u terug naar de app-pagina in [Azure Portal](https://portal.azure.com)
 2. Selecteer in de linkernavigatiebalk **aangepaste domeinen**  >  **hostnaam toevoegen**.
 4. Typ de aangepaste domein naam die u eerder hebt toegewezen en selecteer **valideren**.
-5. Zorg ervoor dat het **hostnaam-record type** is ingesteld op **CNAME (www \. example.com of een ander subdomein)**.
+5. Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **CNAME (www\.example.com of elk subdomein)** .
 
 6. Omdat de App App Service nu is geïntegreerd met een Traffic Manager-eind punt, ziet u de Traffic Manager domein naam onder **CNAME-configuratie**. Selecteer deze en klik op **aangepast domein toevoegen**.
 

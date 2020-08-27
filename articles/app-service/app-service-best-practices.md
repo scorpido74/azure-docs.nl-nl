@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75768483"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962448"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Aanbevolen procedures voor Azure App Service
 Dit artikel bevat een overzicht van de aanbevolen procedures voor het gebruik van [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -67,7 +67,7 @@ Azure App Service standaard configuratie voor Node.js apps is bedoeld om het bes
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](https://docs.microsoft.com/azure/app-service/overview-diagnostics) om te bepalen welke best practices u kunt gebruiken voor uw resource.
+Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](./overview-diagnostics.md) om te bepalen welke best practices u kunt gebruiken voor uw resource.
 
 - Navigeer naar uw web-app in het [Azure Portal](https://portal.azure.com).
 - Klik op **problemen vaststellen en oplossen** in het navigatie venster aan de linkerkant, waarmee app service diagnostische gegevens worden geopend.

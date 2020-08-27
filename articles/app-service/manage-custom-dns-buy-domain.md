@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220717"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958725"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Aangepaste domeinnaam voor Azure App Service kopen
 
@@ -22,7 +22,7 @@ Zie [app service domein toewijzen aan Azure VM of Azure Storage](https://azure.g
 
 Vereisten voor het voltooien van deze zelfstudie:
 
-* [Maak een App Service-app](/azure/app-service/), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
+* [Maak een App Service-app](./index.yml), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 * [Verwijder de bestedings limiet voor uw abonnement](../cost-management-billing/manage/spending-limit.md#remove). U kunt geen App Service domeinen kopen met gratis abonnements tegoeden.
 
 ## <a name="prepare-the-app"></a>De app voorbereiden
@@ -45,7 +45,7 @@ U ziet de beheerpagina van de App Service-app.
 
 ### <a name="check-the-pricing-tier"></a>Controleer de prijscategorie
 
-Schuif in de navigatiebalk links van de app-pagina naar de sectie **Instellingen** en selecteer **Opschalen (App Service-plan)**.
+Schuif in de navigatiebalk links van de app-pagina naar de sectie **Instellingen** en selecteer **Opschalen (App Service-plan)** .
 
 ![Menu Opschalen](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -109,7 +109,7 @@ Selecteer vervolgens de gewenste opties voor uw domein. Zie de volgende tabel vo
 | Instelling | Voorgestelde waarde | Beschrijving |
 |-|-|-|
 |Privacybescherming | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
-| Standaard hostnamen toewijzen | **www** en**\@** | Selecteer de gewenste hostnamen bindingen, indien gewenst. Wanneer de aankoop bewerking van het domein is voltooid, kan uw app worden geopend op de geselecteerde hostnamen. Als de app zich achter [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)bevindt, ziet u de optie voor het toewijzen van het hoofd domein (@) niet, omdat Traffic Manager geen records ondersteunt. U kunt wijzigingen aanbrengen in de hostname-toewijzingen nadat de domein aankoop is voltooid. |
+| Standaard hostnamen toewijzen | **www** en **\@** | Selecteer de gewenste hostnamen bindingen, indien gewenst. Wanneer de aankoop bewerking van het domein is voltooid, kan uw app worden geopend op de geselecteerde hostnamen. Als de app zich achter [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)bevindt, ziet u de optie voor het toewijzen van het hoofd domein (@) niet, omdat Traffic Manager geen records ondersteunt. U kunt wijzigingen aanbrengen in de hostname-toewijzingen nadat de domein aankoop is voltooid. |
 
 ### <a name="accept-terms-and-purchase"></a>Voor waarden accepteren en kopen
 

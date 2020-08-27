@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080929"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958930"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integratie met Service-eind punten Application Gateway
 Er zijn drie variaties van App Service waarvoor een enigszins verschillende configuratie van de integratie met Azure-toepassing gateway is vereist. De variaties zijn onder andere gewone App Service, ook wel bekend als multi tenant, interne Load Balancer (ILB) App Service Environment (ASE) en externe ASE. In dit artikel wordt uitgelegd hoe u dit kunt configureren met App Service (multi tenant) en overwegingen over ILB en externe ASE kunt bespreken.
@@ -84,6 +84,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [app service Environment-documentatie](https://docs.microsoft.com/azure/app-service/environment)voor meer informatie over de app service environment.
+Zie [app service Environment-documentatie](/azure/app-service/environment)voor meer informatie over de app service environment.
 
 Als u uw web-app verder wilt beveiligen, kunt u informatie over Web Application firewall op Application Gateway vinden in de [firewall documentatie van Azure Web Application](../../web-application-firewall/ag/ag-overview.md).

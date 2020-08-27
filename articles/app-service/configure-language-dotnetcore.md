@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211925"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961666"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Een ASP.NET Core-app configureren voor Azure App Service
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-windows"  
 
-Stel het doel raamwerk in het project bestand voor uw ASP.NET Core-project in. Zie voor meer informatie [de .net core-versie selecteren die u wilt gebruiken in de](https://docs.microsoft.com/dotnet/core/versions/selection) documentatie van .net core.
+Stel het doel raamwerk in het project bestand voor uw ASP.NET Core-project in. Zie voor meer informatie [de .net core-versie selecteren die u wilt gebruiken in de](/dotnet/core/versions/selection) documentatie van .net core.
 
 ::: zone-end
 
@@ -128,7 +128,7 @@ namespace SomeNamespace
 Als u een app-instelling met dezelfde naam in App Service configureert en in *appsettings.jsop*bijvoorbeeld de app service-waarde heeft voor rang * op deappsettings.js* waarde. Met de lokale *appsettings.jsop* waarde kunt u de app lokaal fouten opsporen, maar met de app service waarde kunt u de app uitvoeren in het product met productie-instellingen. Verbindings reeksen werken op dezelfde manier. Op deze manier kunt u uw toepassings geheimen buiten uw code opslagplaats houden en toegang krijgen tot de juiste waarden zonder uw code te wijzigen.
 
 > [!NOTE]
-> Houd rekening met de [hiërarchische configuratie gegevens](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.jsop* wordt geopend met behulp `:` van het scheidings teken dat standaard is voor .net core. Als u een specifieke hiërarchische configuratie-instelling in App Service wilt overschrijven, stelt u de naam van de app-instelling in op dezelfde gescheiden indeling in de sleutel. u kunt het volgende voor beeld uitvoeren in de [Cloud shell](https://shell.azure.com):
+> Houd rekening met de [hiërarchische configuratie gegevens](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.jsop* wordt geopend met behulp `:` van het scheidings teken dat standaard is voor .net core. Als u een specifieke hiërarchische configuratie-instelling in App Service wilt overschrijven, stelt u de naam van de app-instelling in op dezelfde gescheiden indeling in de sleutel. u kunt het volgende voor beeld uitvoeren in de [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -144,7 +144,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-ASP.NET Core biedt een [ingebouwde logboek registratie provider voor app service](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service). Voeg in *Program.cs* van uw project de provider toe aan uw toepassing via de `ConfigureLogging` uitbreidings methode, zoals wordt weer gegeven in het volgende voor beeld:
+ASP.NET Core biedt een [ingebouwde logboek registratie provider voor app service](/aspnet/core/fundamentals/logging/#azure-app-service). Voeg in *Program.cs* van uw project de provider toe aan uw toepassing via de `ConfigureLogging` uitbreidings methode, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -159,11 +159,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-U kunt vervolgens logboeken configureren en genereren met het [standaard .net-kern patroon](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+U kunt vervolgens logboeken configureren en genereren met het [standaard .net-kern patroon](/aspnet/core/fundamentals/logging).
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-Zie [probleem oplossing ASP.net Core op Azure app service en IIS](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis) voor meer informatie over het oplossen van problemen met ASP.net core-apps in app service.
+Zie [probleem oplossing ASP.net Core op Azure app service en IIS](/aspnet/core/test/troubleshoot-azure-iis) voor meer informatie over het oplossen van problemen met ASP.net core-apps in app service.
 
 ## <a name="get-detailed-exceptions-page"></a>Pagina gedetailleerde uitzonde ringen ophalen
 
@@ -177,9 +177,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 In App Service vindt [SSL-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats in de load balancers voor het netwerk, zodat alle HTTPS-aanvragen uw app bereiken als niet-versleutelde HTTP-aanvragen. Als uw app-logica moet weten of de gebruikers aanvragen zijn versleuteld of niet, configureert u de doorgestuurde headers-middleware in *Startup.cs*:
 
-- Configureer de middleware met [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) voor het door sturen `X-Forwarded-For` van de en- `X-Forwarded-Proto` headers in `Startup.ConfigureServices` .
+- Configureer de middleware met [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) voor het door sturen `X-Forwarded-For` van de en- `X-Forwarded-Proto` headers in `Startup.ConfigureServices` .
 - Voeg persoonlijke IP-adresbereiken toe aan de bekende netwerken, zodat de middleware de App Service load balancer kan vertrouwen.
-- Roep de methode [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) aan in voordat u een `Startup.Configure` andere middleware aanroept.
+- Roep de methode [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) aan in voordat u een `Startup.Configure` andere middleware aanroept.
 
 Als u alle drie de elementen samen plaatst, ziet uw code eruit als in het volgende voor beeld:
 
@@ -208,7 +208,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Zie [ASP.net core configureren voor het werken met proxy servers en load balancers](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)voor meer informatie.
+Zie [ASP.net core configureren voor het werken met proxy servers en load balancers](/aspnet/core/host-and-deploy/proxy-load-balancer)voor meer informatie.
 
 ::: zone pivot="platform-linux"
 
@@ -223,7 +223,7 @@ Zie [ASP.net core configureren voor het werken met proxy servers en load balance
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: app ASP.NET Core met SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [Zelfstudie: ASP.NET Core-app met SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 ::: zone pivot="platform-linux"
 
@@ -231,4 +231,3 @@ Zie [ASP.net core configureren voor het werken met proxy servers en load balance
 > [Veelgestelde vragen over App Service Linux](faq-app-service-linux.md)
 
 ::: zone-end
-

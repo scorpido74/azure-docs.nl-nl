@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e1fa2fe11873d08fae5add1ee3206f6f887975eb
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121524"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960914"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
@@ -22,7 +22,7 @@ Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk 
 > Mogelijk ziet u ook de Log Analytics agent waarnaar wordt verwezen als de micro soft Monitoring Agent (MMA) of OMS Linux-agent.
 
 > [!NOTE]
-> Azure Diagnostics-extensie is een van de agents die beschikbaar zijn voor het verzamelen van bewakings gegevens uit het gast besturingssysteem van reken resources. Zie [overzicht van de Azure monitor-agents](agents-overview.md) voor een beschrijving van de verschillende agents en richt lijnen voor het selecteren van de juiste agents voor uw vereisten.
+> Azure Diagnostics-extensie is een van de agents die beschikbaar zijn voor het verzamelen van bewakings gegevens uit het gast besturingssysteem van reken resources. Zie [overzicht van de Azure monitor-agents ](agents-overview.md) voor een beschrijving van de verschillende agents en richt lijnen voor het selecteren van de juiste agents voor uw vereisten.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Vergelijking met de Azure Diagnostics-extensie
 De [Azure Diagnostics-extensie](diagnostics-extension-overview.md) in azure monitor kan ook worden gebruikt voor het verzamelen van bewakings gegevens van het gast besturingssysteem van virtuele machines van Azure. U kunt ervoor kiezen om ofwel of beide afhankelijk van uw vereisten te gebruiken. Zie [overzicht van de Azure monitor agents](agents-overview.md) voor een gedetailleerde vergelijking van de Azure monitor agents. 
@@ -118,9 +118,9 @@ Vanaf versies die na augustus 2018 zijn uitgebracht, maken we de volgende wijzig
 ### <a name="python-2-requirement"></a>Python 2-vereiste
  De Log Analytics-agent vereist python 2. Als uw virtuele machine gebruikmaakt van een distributie die niet standaard Python 2 bevat, moet u deze installeren. Met de volgende voorbeeld opdrachten wordt python 2 op verschillende distributies geïnstalleerd.
 
- - Red Hat, CentOS, Oracle:`yum install -y python2`
- - Ubuntu, Debian:`apt-get install -y python2`
- - SuSE`zypper install -y python2`
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SuSE `zypper install -y python2`
 
 Het uitvoer bare bestand python2 moet met behulp van de volgende procedure worden gealiasd voor *python* :
 
@@ -130,7 +130,7 @@ Het uitvoer bare bestand python2 moet met behulp van de volgende procedure worde
     sudo update-alternatives ––display python
     ```
 
-2. Voer de volgende opdracht uit. Vervang door *\<priority\>* een waarde die groter is dan de prioriteit van een bestaande koppeling of 1 als er momenteel geen koppelingen bestaan.
+2. Voer de volgende opdracht uit: Vervang door *\<priority\>* een waarde die groter is dan de prioriteit van een bestaande koppeling of 1 als er momenteel geen koppelingen bestaan.
 
     ```
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
@@ -213,9 +213,6 @@ De Windows-en Linux-agent ondersteunt communicatie via een proxy server of Log A
 Voor de Linux-agent wordt de proxy server tijdens de installatie of [na de installatie](agent-manage.md#update-proxy-settings) opgegeven door het configuratie bestand proxy. conf te wijzigen.  De configuratie waarde van de Linux-agent proxy heeft de volgende syntaxis:
 
 `[protocol://][user:password@]proxyhost[:port]`
-
-> [!NOTE]
-> Als uw proxy server geen verificatie vereist, moet de Linux-agent nog steeds een pseudo-gebruiker/wacht woord opgeven. Dit kan een gebruikers naam of wacht woord zijn.
 
 |Eigenschap| Beschrijving |
 |--------|-------------|

@@ -3,14 +3,14 @@ title: Azure Automation runbooks uitvoeren op een Hybrid Runbook Worker
 description: In dit artikel leest u hoe u runbooks op computers in uw lokale Data Center of Cloud provider kunt uitvoeren met behulp van de Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2019
+ms.date: 08/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 13c982dcfab21371ea6017f730065cc5ced4b79e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186211"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959566"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -43,7 +43,7 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-U kunt ook een [InlineScript](automation-powershell-workflow.md#use-inlinescript) -activiteit gebruiken. `InlineScript`Hiermee kunt u code blokken op een andere computer met referenties uitvoeren.
+U kunt ook een [InlineScript](automation-powershell-workflow.md#use-inlinescript) -activiteit gebruiken. `InlineScript` Hiermee kunt u code blokken op een andere computer met referenties uitvoeren.
 
 ## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Runbook-verificatie gebruiken met beheerde identiteiten
 
@@ -70,7 +70,7 @@ Volg de volgende stappen om een beheerde identiteit voor Azure-resources te gebr
     ```
 
     > [!NOTE]
-    > `Connect-AzAccount -Identity`werkt voor een Hybrid Runbook Worker met behulp van een door het systeem toegewezen identiteit en één door de gebruiker toegewezen identiteit. Als u meerdere door de gebruiker toegewezen identiteiten gebruikt op de Hybrid Runbook Worker, moet uw Runbook de `AccountId` para meter opgeven `Connect-AzAccount` om een specifieke door de gebruiker toegewezen identiteit te selecteren.
+    > `Connect-AzAccount -Identity` werkt voor een Hybrid Runbook Worker met behulp van een door het systeem toegewezen identiteit en één door de gebruiker toegewezen identiteit. Als u meerdere door de gebruiker toegewezen identiteiten gebruikt op de Hybrid Runbook Worker, moet uw Runbook de `AccountId` para meter opgeven `Connect-AzAccount` om een specifieke door de gebruiker toegewezen identiteit te selecteren.
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>Runbook-verificatie gebruiken met het run as-account
 
@@ -305,8 +305,16 @@ Wanneer u een runbook start met behulp van Power shell, gebruikt u de `RunOn` pa
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
+## <a name="logging"></a>Logboekregistratie
+
+Voor hulp bij het oplossen van problemen met uw runbooks die worden uitgevoerd op hybride runbook worker, worden logboeken lokaal opgeslagen op de volgende locatie:
+
+* In Windows op `C:\ProgramData\Microsoft\System Center\Orchestrator\<version>\SMA\Sandboxes` voor gedetailleerde proces logboek registratie van de taak runtime. Taak status gebeurtenissen op hoog niveau worden naar het gebeurtenis logboek van de **toepassing en het Services Logs\Microsoft-Automation\Operations** geschreven.
+
+* In Linux kunt u de logboeken van de gebruiker Hybrid worker vinden op `/home/nxautomation/run/worker.log` en kunnen de logboeken voor systeem runbook worker worden gevonden op `/var/opt/microsoft/omsagent/run/automationworker/worker.log` .
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * Als uw runbooks niet met succes worden voltooid, raadpleegt u de hand leiding voor het oplossen van de [runbook-uitvoerings fouten](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-* Raadpleeg de [Power shell-documenten](/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
+* Raadpleeg de [PowerShell Docs](/powershell/scripting/overview) voor meer informatie over PowerShell, inclusief taalreferentie- en leermodules.
 * Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

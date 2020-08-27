@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170763"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958249"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problemen met prestatie problemen met langzame apps in Azure App Service oplossen
 Dit artikel helpt u bij het oplossen van problemen met prestatie problemen met langzame apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -43,7 +43,7 @@ Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequ
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
 #### <a name="track-service-health"></a>Service status bijhouden
-Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service op het [Azure Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
+Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service op het [Azure Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../service-health/service-notifications.md)voor meer informatie.
 
 #### <a name="monitor-your-app"></a>Uw app controleren
 Met deze optie kunt u nagaan of uw toepassing problemen ondervindt. Klik in de Blade van uw app op de tegel **aanvragen en fouten** . Op de Blade **metrische gegevens** ziet u alle metrische gegevens die u kunt toevoegen.
@@ -61,7 +61,7 @@ Enkele van de metrische gegevens die u mogelijk wilt bewaken voor uw app, zijn
 Zie voor meer informatie:
 
 * [Apps in Azure App Service bewaken](web-sites-monitor.md)
-* [Waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Waarschuwingen ontvangen](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Status van web-eind punt bewaken
 Als uw app wordt uitgevoerd in de prijs categorie **Standard** , kunt u met app service twee eind punten van drie geografische locaties bewaken.
@@ -161,4 +161,4 @@ Het opnieuw starten is vaak de eenvoudigste manier om te herstellen vanuit eenma
 
  ![app opnieuw starten om prestatie problemen op te lossen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-U kunt uw app ook beheren met Azure Power shell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.
+U kunt uw app ook beheren met Azure Power shell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md) voor meer informatie.
