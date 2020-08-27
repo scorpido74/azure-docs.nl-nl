@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846306"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948399"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -115,7 +115,7 @@ Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toep
 
 - Toepassingen die zijn gepubliceerd via [Azure AD-toepassingsproxy](../manage-apps/what-is-application-proxy.md)
 - [Toepassingen die zijn toegevoegd vanuit de galerie](../manage-apps/add-application-portal.md)
-- [Aangepaste toepassingen die niet voor komt in de galerie](../manage-apps/add-non-gallery-app.md)
+- [Aangepaste toepassingen die niet voor komt in de galerie](../manage-apps/view-applications-portal.md)
 - [Verouderde toepassingen die zijn gepubliceerd via app Delivery controllers en Networks](../manage-apps/secure-hybrid-access.md)
 - Toepassingen die gebruikmaken [van op wacht woord gebaseerde eenmalige aanmelding](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 

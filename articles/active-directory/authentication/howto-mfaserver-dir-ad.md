@@ -12,19 +12,23 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480977"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949538"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Adreslijstintegratie tussen Azure MFA-server en Active Directory
 
 Gebruik de sectie Adreslijstintegratie van de Azure MFA-server voor integratie met Active Directory of een andere LDAP-directory. U kunt kenmerken configureren zodat deze overeenkomen met het Active Directory-schema en automatische gebruikerssynchronisatie instellen.
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Vanaf 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication (MFA) vereisen tijdens aanmeldings gebeurtenissen, moeten Azure Multi-Factor Authentication op basis van de Cloud gebruiken.
+>
+> Zie [zelf studie: aanmeldings gebeurtenissen voor gebruikers beveiligen met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met MFA op basis van de Cloud.
+>
+> Bestaande klanten die MFA-server vóór 1 juli hebben geactiveerd 2019, kunnen de meest recente versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="settings"></a>Instellingen
 
@@ -88,7 +92,7 @@ Kenmerken kunnen handmatig worden ingevoerd en hoeven niet overeen te komen met 
 | Achternaam |Voer de kenmerknaam in van het kenmerk dat de achternaam in een gebruikersrecord bevat.  De standaardwaarde is sn. |
 | E-mailadres |Voer de kenmerknaam in van het kenmerk dat het e-mailadres in een gebruikersrecord bevat.  Het e-mailadres wordt gebruikt om via e-mail welkomstberichten en updateberichten naar de gebruiker te verzenden.  De standaardwaarde is mail. |
 | Gebruikersgroep |Voer de kenmerknaam in van het kenmerk dat de gebruikersgroep in een gebruikersrecord bevat.  Gebruikersgroep kan worden gebruikt voor het filteren van gebruikers in de agent en in rapporten in de beheerportal van de Multi-Factor Authentication-server. |
-| Description |Voer de kenmerknaam in van het kenmerk dat de beschrijving in een gebruikersrecord bevat.  Beschrijving wordt alleen gebruikt voor zoekopdrachten.  De standaardwaarde is description. |
+| Beschrijving |Voer de kenmerknaam in van het kenmerk dat de beschrijving in een gebruikersrecord bevat.  Beschrijving wordt alleen gebruikt voor zoekopdrachten.  De standaardwaarde is description. |
 | Taal telefoonoproep |Voer de kenmerknaam in van het kenmerk dat de korte naam bevat van de taal die moet worden gebruikt voor telefoonoproepen voor de gebruiker. |
 | Taal sms-bericht |Voer de kenmerknaam in van het kenmerk dat de korte naam bevat van de taal die moet worden gebruikt voor sms-berichten voor de gebruiker. |
 | Taal mobiele app |Voer de kenmerknaam in van het kenmerk dat de korte naam bevat van de taal die moet worden gebruikt voor tekstberichten van mobiele apps voor de gebruiker. |
@@ -100,7 +104,7 @@ Kenmerken kunnen handmatig worden ingevoerd en hoeven niet overeen te komen met 
 | Fax |Voer de kenmerknaam in van het kenmerk dat het faxnummer in een gebruikersrecord bevat.  De standaardwaarde is facsimileTelephoneNumber. |
 | IP-telefoon |Voer de kenmerknaam in van het kenmerk dat het IP-telefoonnummer in een gebruikersrecord bevat.  De standaardwaarde is ipPhone. |
 | Aangepast |Voer de kenmerknaam in van het kenmerk dat een aangepast telefoonnummer in een gebruikersrecord bevat.  Standaard is dit veld leeg. |
-| Toestelnummer |Voer de kenmerknaam in van het kenmerk dat het toestelnummer in een gebruikersrecord bevat.  De waarde van het veld Toestelnummer wordt alleen gebruikt als het toestelnummer voor het primaire telefoonnummer.  Standaard is dit veld leeg. <br><br>Als het kenmerk Toestelnummer niet wordt opgegeven, kunnen toestelnummers worden opgenomen als onderdeel van het telefoonkenmerk. In dit geval begint u het toestelnummer met een x zodat het juist wordt geparseerd.  Het nummer 020-123-4567 x890 resulteert bijvoorbeeld in 020-123-4567 als het telefoonnummer en 890 als het toestelnummer. |
+| Extensie |Voer de kenmerknaam in van het kenmerk dat het toestelnummer in een gebruikersrecord bevat.  De waarde van het veld Toestelnummer wordt alleen gebruikt als het toestelnummer voor het primaire telefoonnummer.  Standaard is dit veld leeg. <br><br>Als het kenmerk Toestelnummer niet wordt opgegeven, kunnen toestelnummers worden opgenomen als onderdeel van het telefoonkenmerk. In dit geval begint u het toestelnummer met een x zodat het juist wordt geparseerd.  Het nummer 020-123-4567 x890 resulteert bijvoorbeeld in 020-123-4567 als het telefoonnummer en 890 als het toestelnummer. |
 | Knop Standaardwaarden herstellen |Klik op **Standaardwaarden herstellen** om alle kenmerken opnieuw in te stellen op hun standaardwaarde.  De standaardinstellingen werken doorgaans juist met het normale Active Directory- of ADAM-schema. |
 
 Als u kenmerken wilt bewerken, klikt u op het tabblad kenmerken op **bewerken** .  Hiermee wordt een venster geopend waarin u de kenmerken kunt bewerken. Selecteer de **...** naast een willekeurig kenmerk om een venster te openen waarin u kunt kiezen welke kenmerken moeten worden weergegeven.

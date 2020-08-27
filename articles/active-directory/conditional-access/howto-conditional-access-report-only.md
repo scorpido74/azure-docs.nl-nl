@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ea039526b9434501b60ed6ccf762f45625b26
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83994966"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948144"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport
 
@@ -51,8 +51,8 @@ Het resultaat van een alleen-rapport beleid voor een bepaalde aanmelding weer ge
 
 Als u de cumulatieve impact van beleids regels voor voorwaardelijke toegang met behulp van de nieuwe voorwaardelijke Access Insights-werkmap wilt weer geven, moet u Azure Monitor integreren met Azure AD en de aanmeld logboeken exporteren. Er zijn twee stappen voor het instellen van deze integratie: 
 
-1. [Meld u aan voor een Azure monitor-abonnement en maak een werk ruimte](/azure/azure-monitor/learn/quick-create-workspace).
-1. [Exporteer de aanmeldings logboeken van Azure AD naar Azure monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Meld u aan voor een Azure monitor-abonnement en maak een werk ruimte](../../azure-monitor/learn/quick-create-workspace.md).
+1. [Exporteer de aanmeldings logboeken van Azure AD naar Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 Meer informatie over Azure Monitor prijzen vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Resources om kosten te schatten, een daglimiet in te stellen of de Bewaar periode voor gegevens aan te passen, kunt u vinden in het artikel, het [gebruik en de kosten beheren met Azure monitor logboeken](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment).
 

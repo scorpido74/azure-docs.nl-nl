@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225271"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928765"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
@@ -60,7 +60,7 @@ In azure Cognitive Search is dubbele versleuteling een uitbrei ding van CMK. Het
 
 Dubbele versleuteling is momenteel beschikbaar op nieuwe services die na 1 augustus zijn gemaakt in deze regio's:
 
-+ West US 2
++ US - west 2
 + VS - oost
 + VS - zuid-centraal
 + VS (overheid) - Virginia
@@ -94,7 +94,7 @@ Als u de toegang tot uw zoek service verder wilt beheren, kunt u binnenkomende f
 
 U kunt de portal gebruiken om [inkomende toegang te configureren](service-configure-firewall.md).
 
-U kunt ook de REST Api's voor beheer gebruiken. Met de para meter [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) van API-versie 2020-03-13 kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service.
+U kunt ook de REST Api's voor beheer gebruiken. Met de para meter [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) van API-versie 2020-03-13 kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Privé-eind punt (geen Internet verkeer)
 
@@ -127,7 +127,7 @@ Als u nauw keuriger controle per gebruiker met de zoek resultaten nodig hebt, ku
 
 ## <a name="administrative-rights"></a>Beheer rechten
 
-[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. In azure Cognitive Search wordt Resource Manager gebruikt om de service te maken of te verwijderen, de API-sleutels te beheren en de service te schalen. Als zodanig bepalen Azure-roltoewijzingen dat deze taken kunnen worden uitgevoerd, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/overview.md) is een autorisatie systeem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) voor het inrichten van Azure-resources. In azure Cognitive Search wordt Resource Manager gebruikt om de service te maken of te verwijderen, de API-sleutels te beheren en de service te schalen. Als zodanig bepalen Azure-roltoewijzingen dat deze taken kunnen worden uitgevoerd, ongeacht of ze de [Portal](search-manage.md), [Power shell](search-manage-powershell.md)of de [rest-api's van beheer](/rest/api/searchmanagement/search-howto-management-rest-api)gebruiken.
 
 Beheerders rechten voor inhoud die in de service wordt gehost, zoals de mogelijkheid om een index te maken of verwijderen, worden daarentegen door de API-sleutels uitgesteld zoals beschreven in de [vorige sectie](#index-access).
 
@@ -144,7 +144,7 @@ Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beh
 
 Voor Azure Cognitive Search is er momenteel één ingebouwde definitie. Het is voor diagnostische logboek registratie. Met deze ingebouwde kunt u een beleid toewijzen dat een wille keurige zoek service identificeert waarvoor diagnostische logboek registratie ontbreekt en vervolgens weer wordt ingeschakeld. Zie [Azure Policy regulerende nalevings controles voor Azure Cognitive Search](security-controls-policy.md)voor meer informatie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Basisbeginselen van Azure Security](../security/fundamentals/index.yml)
 + [Azure-beveiliging](https://azure.microsoft.com/overview/security)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130429"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950388"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection meldingen
 
@@ -29,7 +29,7 @@ In dit artikel vindt u een overzicht van beide e-mail meldingen.
 
 ## <a name="users-at-risk-detected-email"></a>Gebruikers met een risico voor een gedetecteerd e-mail bericht
 
-Als reactie op een gedetecteerd account dat risico loopt, genereert Azure AD Identity Protection een e-mail waarschuwing met **gebruikers die risico lopen** als onderwerp. Het e-mail bericht bevat een koppeling naar de gebruikers die zijn **[gemarkeerd voor een risico](../reports-monitoring/concept-user-at-risk.md)** rapport. Als best practice moet u onmiddellijk de gebruikers op risico onderzoeken.
+Als reactie op een gedetecteerd account dat risico loopt, genereert Azure AD Identity Protection een e-mail waarschuwing met **gebruikers die risico lopen** als onderwerp. Het e-mail bericht bevat een koppeling naar de gebruikers die zijn **[gemarkeerd voor een risico](./overview-identity-protection.md)** rapport. Als best practice moet u onmiddellijk de gebruikers op risico onderzoeken.
 
 Met de configuratie voor deze waarschuwing kunt u opgeven op welk gebruikers risico niveau u de waarschuwing wilt genereren. Het e-mail adres wordt gegenereerd wanneer het risico niveau van de gebruiker de opgegeven waarde bereikt. Als u het beleid bijvoorbeeld instelt op waarschuwing bij gemiddeld gebruikers risico en de Score van de gebruiker van John van de gebruiker wordt verplaatst naar het gemiddeld risico als gevolg van een realtime-aanmeldings risico, ontvangt u de gebruikers die risico lopen. Als de gebruiker daaropvolgende risico detecties heeft die ervoor zorgen dat de berekening van het gebruikers risico niveau het opgegeven risico niveau is (of hoger), ontvangt u een extra gebruiker tegen risico gedetecteerde e-mail berichten wanneer de risico Score van de gebruiker opnieuw wordt berekend. Als een gebruiker bijvoorbeeld op 1 januari op gemiddeld risico wordt verplaatst, ontvangt u een e-mail melding als uw instellingen zijn ingesteld op waarschuwing over gemiddeld risico. Als dezelfde gebruiker vervolgens een andere risico detectie heeft op 5 januari die ook een gemiddeld risico is, en de risico Score van de gebruiker opnieuw wordt berekend en nog steeds gemiddeld is, ontvangt u een e-mail melding. 
 
@@ -68,6 +68,6 @@ Als beheerder kunt u een wekelijks overzicht van e-mail verzenden naar of uit en
 
 Configureer de week overzichts-e-mail in de **Azure Portal** onder **Azure Active Directory**  >  wekelijkse samen vatting van**beveiligings**  >  **identiteits beveiliging**  >  **Weekly digest**.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

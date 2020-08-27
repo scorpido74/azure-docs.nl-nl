@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295326"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948382"
 ---
 # <a name="building-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang bouwen
 
@@ -42,9 +42,9 @@ In het gedeelte toewijzingen bepaalt u de wie, wat en waar van het beleid voor v
 
 Een beleid kan meerdere [voor waarden](concept-conditional-access-conditions.md)bevatten.
 
-#### <a name="sign-in-risk"></a>Aanmeldings risico
+#### <a name="sign-in-risk"></a>Aanmeldingsrisico
 
-Voor organisaties met [Azure AD Identity Protection](../identity-protection/overview.md)kunnen de gegenereerde risico detecties van invloed zijn op uw beleid voor voorwaardelijke toegang.
+Voor organisaties met [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)kunnen de gegenereerde risico detecties van invloed zijn op uw beleid voor voorwaardelijke toegang.
 
 #### <a name="device-platforms"></a>Apparaatplatformen
 
@@ -115,10 +115,10 @@ Beheerders kunnen ervoor kiezen om een van de vorige besturings elementen of all
 Een beleid voor voorwaardelijke toegang moet mini maal het volgende bevatten om af te dwingen:
 
 - De **naam** van het beleid.
-- **Sneltoetsen**
+- **Toewijzingen**
    - **Gebruikers en/of groepen** waarop het beleid moet worden toegepast.
    - **Cloud-apps of-acties** waarop het beleid moet worden toegepast.
-- **Toegangs beheer**
+- **Besturingselementen voor toegang**
    - Besturings elementen **toekennen** of **blok keren**
 
 ![Leeg beleid voor voorwaardelijke toegang](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)

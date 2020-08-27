@@ -7,23 +7,23 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948637"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synoniemen in azure Cognitive Search
 
 Synoniemen in zoek machines koppelen gelijkwaardige termen waarmee impliciet het bereik van een query wordt uitgebreid, zonder dat de gebruiker daad werkelijk de term hoeft op te geven. Op basis van de term "hond" en synoniemen van "Canine" en "Puppy" worden documenten met "hond", "Canine" of "Puppy" bijvoorbeeld binnen het bereik van de query weer gegeven.
 
-In azure Cognitive Search wordt de uitbrei ding van synoniemen uitgevoerd op het moment van de query. U kunt synoniemen toevoegen aan een service zonder onderbreking van bestaande bewerkingen. U kunt een eigenschap **synonymMaps** toevoegen aan een veld definitie zonder de index opnieuw op te bouwen.
+In azure Cognitive Search wordt de uitbrei ding van synoniemen uitgevoerd op het moment van de query. U kunt synoniemen toevoegen aan een service zonder onderbreking van bestaande bewerkingen. U kunt een eigenschap  **synonymMaps** toevoegen aan een veld definitie zonder de index opnieuw op te bouwen.
 
 ## <a name="create-synonyms"></a>Synoniemen maken
 
-Er is geen portal ondersteuning voor het maken van synoniemen, maar u kunt de REST API of .NET SDK gebruiken. Om aan de slag te gaan met REST, raden we u aan om [postman](search-get-started-postman.md) en formulering van aanvragen te gebruiken met behulp van deze API: [Create synoniem Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Voor C#-ontwikkel aars kunt u aan de slag met [synoniemen toevoegen in azure cognitieve Zoek opdrachten met C#](search-synonyms-tutorial-sdk.md).
+Er is geen portal ondersteuning voor het maken van synoniemen, maar u kunt de REST API of .NET SDK gebruiken. Om aan de slag te gaan met REST, raden we u aan om [postman](search-get-started-postman.md) en formulering van aanvragen te gebruiken met behulp van deze API: [Create synoniem Maps](/rest/api/searchservice/create-synonym-map). Voor C#-ontwikkel aars kunt u aan de slag met [synoniemen toevoegen in azure cognitieve Zoek opdrachten met C#](search-synonyms-tutorial-sdk.md).
 
 Als u gebruikmaakt van door de [klant beheerde sleutels](search-security-manage-encryption-keys.md) voor versleuteling aan de service zijde, kunt u die beveiliging ook Toep assen op de inhoud van uw synoniemen kaart.
 
@@ -92,6 +92,21 @@ Expliciete toewijzing wordt aangeduid met een pijl "=>". Als deze is opgegeven, 
 
 ```
 Washington, Wash., WA => WA
+```
+
+Als u synoniemen wilt definiëren die komma's bevatten, kunt u ze met een back slash, zoals in dit voor beeld:
+
+```
+WA\, USA, WA, Washington
+```
+
+Omdat de back slash zelf een speciaal teken in andere talen is, zoals JSON en C#, moet u dit waarschijnlijk ook met dubbele Escape. De JSON die wordt verzonden naar de REST API voor de bovenstaande synoniemen kaart ziet er bijvoorbeeld als volgt uit:
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Lijst met synoniemen in uw service.
@@ -173,4 +188,4 @@ Als u een bestaande index in een ontwikkelings omgeving (niet-productie) hebt, k
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een synoniemen kaart maken](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [Een synoniemen kaart maken](/rest/api/searchservice/create-synonym-map)

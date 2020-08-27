@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084140"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923021"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -34,13 +34,13 @@ Een **Indexeer functie** is een resource die één gegevens bron verbindt met ee
 * Een index bijwerken met wijzigingen in de gegevens bron volgens een schema.
 * Voer op aanvraag uit om een index naar behoefte bij te werken.
 
-Eén Indexeer functie kan slechts één tabel of weer gave gebruiken, maar u kunt meerdere Indexeer functies maken als u meerdere zoek indexen wilt vullen. Zie voor meer informatie over concepten [index bewerkingen: typische werk stroom](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Eén Indexeer functie kan slechts één tabel of weer gave gebruiken, maar u kunt meerdere Indexeer functies maken als u meerdere zoek indexen wilt vullen. Zie voor meer informatie over concepten [index bewerkingen: typische werk stroom](/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 U kunt een Azure SQL-indexer instellen en configureren met:
 
 * Wizard gegevens importeren in de [Azure Portal](https://portal.azure.com)
-* Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [rest API](/rest/api/searchservice/indexer-operations)
 
 In dit artikel gebruiken we de REST API om **Indexeer functies** en **gegevens bronnen**te maken.
 
@@ -51,7 +51,7 @@ Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is 
 |----------|---------|
 | De gegevens zijn afkomstig uit één tabel of weer gave | Als de gegevens worden verspreid over meerdere tabellen, kunt u één weer gave van de gegevens maken. Als u echter een weer gave gebruikt, kunt u SQL Server geïntegreerde wijzigings detectie niet gebruiken om een index met incrementele wijzigingen te vernieuwen. Zie voor meer informatie [vastleggen van gewijzigde en verwijderde rijen](#CaptureChangedRows) hieronder. |
 | Gegevens typen zijn compatibel | De meeste SQL-typen worden niet ondersteund in een Azure Cognitive Search-index. Zie [gegevens typen toewijzen](#TypeMapping)voor een lijst. |
-| Realtime gegevens synchronisatie is niet vereist | Een Indexeer functie kan de tabel Maxi maal elke vijf minuten opnieuw indexeren. Als uw gegevens regel matig worden gewijzigd en de wijzigingen binnen enkele seconden of enkele minuten moeten worden weer gegeven in de index, kunt u het beste de [rest API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) of [.NET SDK](search-import-data-dotnet.md) gebruiken om bijgewerkte rijen rechtstreeks te pushen. |
+| Realtime gegevens synchronisatie is niet vereist | Een Indexeer functie kan de tabel Maxi maal elke vijf minuten opnieuw indexeren. Als uw gegevens regel matig worden gewijzigd en de wijzigingen binnen enkele seconden of enkele minuten moeten worden weer gegeven in de index, kunt u het beste de [rest API](/rest/api/searchservice/AddUpdate-or-Delete-Documents) of [.NET SDK](./search-get-started-dotnet.md) gebruiken om bijgewerkte rijen rechtstreeks te pushen. |
 | Incrementele indexering is mogelijk | Als u een grote gegevensset hebt en de Indexeer functie volgens een planning wilt uitvoeren, moet Azure Cognitive Search de nieuwe, gewijzigde of verwijderde rijen efficiënt kunnen identificeren. Niet-incrementele indexering is alleen toegestaan als u op aanvraag indexeert (niet op schema) of als u minder dan 100.000 rijen indexeert. Zie voor meer informatie [vastleggen van gewijzigde en verwijderde rijen](#CaptureChangedRows) hieronder. |
 
 > [!NOTE] 
@@ -76,7 +76,7 @@ Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is 
 
    U kunt de connection string ophalen via de [Azure Portal](https://portal.azure.com); Gebruik de `ADO.NET connection string` optie.
 
-2. Maak de doel-Azure-Cognitive Search index als u er nog geen hebt. U kunt een index maken met behulp van de [Portal](https://portal.azure.com) of de [Create Index-API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron tabel. Zie [toewijzing tussen SQL en Azure cognitieve Zoek gegevens typen](#TypeMapping).
+2. Maak de doel-Azure-Cognitive Search index als u er nog geen hebt. U kunt een index maken met behulp van de [Portal](https://portal.azure.com) of de [Create Index-API](/rest/api/searchservice/Create-Index). Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron tabel. Zie [toewijzing tussen SQL en Azure cognitieve Zoek gegevens typen](#TypeMapping).
 
 3. Maak de Indexeer functie door deze een naam te geven en te verwijzen naar de gegevens bron en doel index:
 
@@ -99,9 +99,9 @@ Een Indexeer functie die op deze manier is gemaakt, heeft geen planning. Het wor
     api-key: admin-key
 ```
 
-U kunt verschillende aspecten van het gedrag van de Indexeer functie aanpassen, zoals de Batch grootte en het aantal documenten dat kan worden overgeslagen voordat de uitvoering van een index mislukt. Zie [Create Indexing API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)(Engelstalig) voor meer informatie.
+U kunt verschillende aspecten van het gedrag van de Indexeer functie aanpassen, zoals de Batch grootte en het aantal documenten dat kan worden overgeslagen voordat de uitvoering van een index mislukt. Zie [Create Indexing API](/rest/api/searchservice/Create-Indexer)(Engelstalig) voor meer informatie.
 
-Mogelijk moet u Azure-Services toestaan verbinding te maken met uw data base. Zie [verbinding maken vanuit Azure](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) voor instructies over hoe u dit doet.
+Mogelijk moet u Azure-Services toestaan verbinding te maken met uw data base. Zie [verbinding maken vanuit Azure](../azure-sql/database/firewall-configure.md) voor instructies over hoe u dit doet.
 
 Als u de Indexeer functie en uitvoerings geschiedenis wilt bewaken (aantal geïndexeerde items, fouten enz.), gebruikt u een **Indexeer functie status** aanvraag:
 
@@ -146,7 +146,7 @@ Het antwoord moet er ongeveer als volgt uitzien:
 ```
 
 De uitvoerings geschiedenis bevat tot 50 van de meest recent voltooide uitvoeringen, die in de omgekeerde chronologische volg orde worden gesorteerd (zodat de meest recente uitvoering eerst in het antwoord komt).
-Meer informatie over het antwoord vindt u in de [status van de Indexeer functie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)
+Meer informatie over het antwoord vindt u in de [status van de Indexeer functie ophalen](/rest/api/searchservice/get-indexer-status)
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexeer functies uitvoeren volgens een schema
 U kunt de Indexeer functie ook zo rangschikken dat deze periodiek volgens een planning wordt uitgevoerd. Als u dit wilt doen, voegt u de eigenschap **schema** toe wanneer u de Indexeer functie maakt of bijwerkt. In het onderstaande voor beeld ziet u een PUT-aanvraag om de Indexeer functie bij te werken:
@@ -174,7 +174,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 Azure Cognitive Search gebruikt **incrementele indexering** om te voor komen dat de volledige tabel of weer gave telkens opnieuw moet worden geïndexeerd wanneer een Indexeer functie wordt uitgevoerd. Azure Cognitive Search biedt twee beleids regels voor wijzigingen detectie ter ondersteuning van incrementele indexering. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Wijzigingen bijhouden-beleid voor SQL-integratie
-Als uw SQL database het [bijhouden van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)ondersteunt, kunt u het beste **SQL Integrated wijzigingen bijhouden-beleid**gebruiken. Dit is het meest efficiënte beleid. Daarnaast kunt u met Azure Cognitive Search verwijderde rijen identificeren zonder dat u een expliciete kolom ' voorlopig verwijderen ' aan de tabel hoeft toe te voegen.
+Als uw SQL database het [bijhouden van wijzigingen](/sql/relational-databases/track-changes/about-change-tracking-sql-server)ondersteunt, kunt u het beste **SQL Integrated wijzigingen bijhouden-beleid**gebruiken. Dit is het meest efficiënte beleid. Daarnaast kunt u met Azure Cognitive Search verwijderde rijen identificeren zonder dat u een expliciete kolom ' voorlopig verwijderen ' aan de tabel hoeft toe te voegen.
 
 #### <a name="requirements"></a>Vereisten 
 
@@ -182,7 +182,7 @@ Als uw SQL database het [bijhouden van wijzigingen](https://docs.microsoft.com/s
   * SQL Server 2012 SP3 en hoger als u SQL Server op virtuele Azure-machines gebruikt.
   * Azure SQL Database of SQL Managed instance.
 + Alleen tabellen (geen weer gaven). 
-+ Schakel op de data base het [bijhouden van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) in voor de tabel. 
++ Schakel op de data base het [bijhouden van wijzigingen](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) in voor de tabel. 
 + Er is geen samengestelde primaire sleutel (een primaire sleutel met meer dan één kolom) in de tabel.  
 
 #### <a name="usage"></a>Gebruik
@@ -204,7 +204,7 @@ Als u dit beleid wilt gebruiken, maakt of werkt u de gegevens bron als volgt bij
 Wanneer u het geïntegreerde beleid voor het bijhouden van wijzigingen van SQL gebruikt, moet u geen afzonderlijk detectie beleid voor gegevens verwijdering opgeven. dit beleid heeft ingebouwde ondersteuning voor het identificeren van verwijderde rijen. Als de verwijderingen echter "automagiceel" worden gedetecteerd, moet de document sleutel in uw zoek index hetzelfde zijn als de primaire sleutel in de SQL-tabel. 
 
 > [!NOTE]  
-> Wanneer u [Truncate Table](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) gebruikt om een groot aantal rijen uit een SQL-tabel te verwijderen, moet de Indexeer functie [opnieuw worden ingesteld](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) om de status van het bijhouden van wijzigingen opnieuw in te stellen om het verwijderen van rijen te herstellen.
+> Wanneer u [Truncate Table](/sql/t-sql/statements/truncate-table-transact-sql) gebruikt om een groot aantal rijen uit een SQL-tabel te verwijderen, moet de Indexeer functie [opnieuw worden ingesteld](/rest/api/searchservice/reset-indexer) om de status van het bijhouden van wijzigingen opnieuw in te stellen om het verwijderen van rijen te herstellen.
 
 <a name="HighWaterMarkPolicy"></a>
 
@@ -217,10 +217,10 @@ Dit beleid voor wijzigings detectie is afhankelijk van een kolom met een hoog wa
 * Alle inserts geven een waarde voor de kolom op.
 * Alle updates van een item wijzigen ook de waarde van de kolom.
 * De waarde van deze kolom neemt toe met elke INSERT of update.
-* Query's met de volgende WHERE-en ORDER BY-componenten kunnen efficiënt worden uitgevoerd:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* Query's met de volgende WHERE-en ORDER BY-componenten kunnen efficiënt worden uitgevoerd: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> We raden u ten zeerste aan het gegevens type [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) te gebruiken voor de grote water markerings kolom. Als een ander gegevens type wordt gebruikt, kan het bijhouden van wijzigingen niet worden gegarandeerd om alle veranderingen te registreren in de aanwezigheid van trans acties die gelijktijdig worden uitgevoerd met een indexerings query. Wanneer u **rowversion** gebruikt in een configuratie met alleen-lezen replica's, moet u de Indexeer functie op de primaire replica aanwijzen. Alleen een primaire replica kan worden gebruikt voor gegevens synchronisatie scenario's.
+> We raden u ten zeerste aan het gegevens type [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) te gebruiken voor de grote water markerings kolom. Als een ander gegevens type wordt gebruikt, kan het bijhouden van wijzigingen niet worden gegarandeerd om alle veranderingen te registreren in de aanwezigheid van trans acties die gelijktijdig worden uitgevoerd met een indexerings query. Wanneer u **rowversion** gebruikt in een configuratie met alleen-lezen replica's, moet u de Indexeer functie op de primaire replica aanwijzen. Alleen een primaire replica kan worden gebruikt voor gegevens synchronisatie scenario's.
 
 #### <a name="usage"></a>Gebruik
 
@@ -248,7 +248,7 @@ Als u een beleid met een hoog water merk wilt gebruiken, maakt of werkt u de geg
 
 ##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
 
-Als u een [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) -gegevens type gebruikt voor de kolom hoog water merk, kunt u overwegen de configuratie-instelling voor de `convertHighWaterMarkToRowVersion` Indexeer functie te gebruiken. `convertHighWaterMarkToRowVersion`heeft twee dingen:
+Als u een [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) -gegevens type gebruikt voor de kolom hoog water merk, kunt u overwegen de configuratie-instelling voor de `convertHighWaterMarkToRowVersion` Indexeer functie te gebruiken. `convertHighWaterMarkToRowVersion` heeft twee dingen:
 
 * Gebruik het gegevens type rowversion voor de kolom hoog water merk in de SQL-query van de Indexeer functie. Met het juiste gegevens type verbetert de prestaties van index query's.
 * Trek 1 af van de waarde van rowversion voordat de indexer-query wordt uitgevoerd. Weer gaven met 1 tot veel samen voegingen kunnen rijen met dubbele rowversion-waarden bevatten. Als u 1 aftrekt, zorgt u ervoor dat de Indexeer functie-query deze rijen niet mist.
@@ -314,14 +314,14 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
-| SQL-gegevenstype | Toegestane doel index veld typen | Opmerkingen |
+| SQL-gegevenstype | Toegestane doel index veld typen | Notities |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
 | bigint |EDM. Int64, EDM. String | |
 | Real, float |Edm.Double, Edm.String | |
 | smallmoney, geld decimaal numeriek |Edm.String |Azure Cognitive Search biedt geen ondersteuning voor het converteren van decimale typen naar EDM. double, omdat dit de precisie zou verliezen |
-| char, NCHAR, varchar, nvarchar |Edm.String<br/>Collection(EDM.String) |Een SQL-teken reeks kan worden gebruikt om een verzameling (EDM. String) in te vullen als de teken reeks een JSON-matrix met teken reeksen vertegenwoordigt:`["red", "white", "blue"]` |
+| char, NCHAR, varchar, nvarchar |Edm.String<br/>Collection(EDM.String) |Een SQL-teken reeks kan worden gebruikt om een verzameling (EDM. String) in te vullen als de teken reeks een JSON-matrix met teken reeksen vertegenwoordigt: `["red", "white", "blue"]` |
 | Smalldatetime, datetime, DATETIME2, date, date time offset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Geografie |Edm.GeographyPoint |Alleen geografie-exemplaren van het type POINT met SRID 4326 (dit is de standaard instelling) worden ondersteund |
@@ -354,7 +354,7 @@ Ja. U moet de zoek service echter toestaan om verbinding te maken met uw data ba
 
 **V: kan ik Azure SQL indexer gebruiken met SQL-data bases die on-premises worden uitgevoerd?**
 
-Niet rechtstreeks. Het wordt niet aanbevolen om een directe verbinding te ondersteunen. als dit niet het geval is, moet u uw data bases openen voor Internet verkeer. Klanten hebben het volgende met behulp van Bridge-technologieën, zoals Azure Data Factory, geslaagd. Zie [gegevens pushen naar een Azure Cognitive search-index met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)voor meer informatie.
+Niet rechtstreeks. Het wordt niet aanbevolen om een directe verbinding te ondersteunen. als dit niet het geval is, moet u uw data bases openen voor Internet verkeer. Klanten hebben het volgende met behulp van Bridge-technologieën, zoals Azure Data Factory, geslaagd. Zie [gegevens pushen naar een Azure Cognitive search-index met behulp van Azure Data Factory](../data-factory/v1/data-factory-azure-search-connector.md)voor meer informatie.
 
 **V: kan ik Azure SQL Indexeer functie gebruiken met andere data bases dan SQL Server die worden uitgevoerd in IaaS op Azure?**
 
@@ -368,7 +368,7 @@ Ja. Er kan echter maar één Indexeer functie tegelijk op één knoop punt worde
 
 Ja. Indexeer functie wordt uitgevoerd op een van de knoop punten in uw zoek service, en de resources van dat knoop punt worden gedeeld tussen het indexeren en het leveren van query verkeer en andere API-aanvragen. Als u intensieve indexerings-en query werk belastingen uitvoert, een hoog tempo van 503 fouten ondervindt of de reactie tijden toeneemt, kunt u overwegen [uw zoek service omhoog te schalen](search-capacity-planning.md).
 
-**V: kan ik een secundaire replica in een [failovercluster](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) als gegevens bron gebruiken?**
+**V: kan ik een secundaire replica in een [failovercluster](../azure-sql/database/auto-failover-group-overview.md) als gegevens bron gebruiken?**
 
 Dat hangt ervan af. Voor een volledige indexering van een tabel of weer gave kunt u een secundaire replica gebruiken. 
 
@@ -388,4 +388,4 @@ Het wordt niet aanbevolen. Alleen **rowversion** biedt ondersteuning voor betrou
 
 + U kunt ervoor zorgen dat wanneer de Indexeer functie wordt uitgevoerd, er geen openstaande trans acties zijn in de tabel die wordt geïndexeerd (bijvoorbeeld: alle tabel updates worden als een batch volgens een planning en het Azure Cognitive Search indexer schema is ingesteld om te voor komen dat de planning voor de tabel update overlapt).  
 
-+ U voert regel matig een volledige REINDEX uit om gemiste rijen op te halen. 
++ U voert regel matig een volledige REINDEX uit om gemiste rijen op te halen.

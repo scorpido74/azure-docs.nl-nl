@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546267"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927201"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>De capaciteit in azure Cognitive Search aanpassen
 
@@ -21,7 +21,7 @@ Voordat u [een zoek service inricht](search-create-service-portal.md) en vergren
 
 Capaciteit is een functie van de [laag die u kiest](search-sku-tier.md) (lagen bepalen hardwarekenmerken) en de combi natie van replica en partitie die nodig is voor geraamde werk belastingen. Afhankelijk van de laag en de grootte van de aanpassing kan het toevoegen of beperken van de capaciteit 15 minuten tot enkele uren duren. 
 
-Wanneer u de toewijzing van replica's en partities wijzigt, raden we u aan de Azure Portal te gebruiken. De portal dwingt limieten af voor toegestane combi naties die onder maximum limieten van een laag blijven. Als u echter een op scripts of code gebaseerde inrichtings benadering nodig hebt, zijn de [Azure PowerShell](search-manage-powershell.md) of het [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatieve oplossingen.
+Wanneer u de toewijzing van replica's en partities wijzigt, raden we u aan de Azure Portal te gebruiken. De portal dwingt limieten af voor toegestane combi naties die onder maximum limieten van een laag blijven. Als u echter een op scripts of code gebaseerde inrichtings benadering nodig hebt, zijn de [Azure PowerShell](search-manage-powershell.md) of het [beheer rest API](/rest/api/searchmanagement/services) alternatieve oplossingen.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: replica's en partities
 

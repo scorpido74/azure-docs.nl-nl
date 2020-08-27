@@ -3,12 +3,12 @@ title: Diagnostische logboeken instellen-Azure Event hub | Microsoft Docs
 description: Meer informatie over het instellen van activiteiten logboeken en Diagnostische logboeken voor Event hubs in Azure.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521935"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927728"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
 
@@ -61,18 +61,18 @@ De JSON-teken reeksen van het archief logboek bevatten elementen die in de volge
 
 Naam | Beschrijving
 ------- | -------
-TaskName | Beschrijving van de mislukte taak
-ActivityId | Interne ID, gebruikt voor bijhouden
-trackingId | Interne ID, gebruikt voor bijhouden
-resourceId | Resource-ID Azure Resource Manager
-eventHub | Volledige naam van Event hub (inclusief naam van naam ruimte)
-partitionId | De Event hub-partitie waarnaar wordt geschreven
-archiveStep | mogelijke waarden: ArchiveFlushWriter, DestinationInit
-startTime | Begin tijd van de fout
-Masters | Aantal keer dat de fout is opgetreden
-durationInSeconds | Duur van de fout
-message | Foutbericht
-category | ArchiveLogs
+`TaskName` | Beschrijving van de mislukte taak
+`ActivityId` | Interne ID, gebruikt voor bijhouden
+`trackingId` | Interne ID, gebruikt voor bijhouden
+`resourceId` | Resource-ID Azure Resource Manager
+`eventHub` | Volledige naam van Event hub (inclusief naam van naam ruimte)
+`partitionId` | De Event hub-partitie waarnaar wordt geschreven
+`archiveStep` | mogelijke waarden: ArchiveFlushWriter, DestinationInit
+`startTime` | Begin tijd van de fout
+`failures` | Aantal keer dat de fout is opgetreden
+`durationInSeconds` | Duur van de fout
+`message` | Foutbericht
+`category` | ArchiveLogs
 
 De volgende code is een voor beeld van een JSON-teken reeks in het archief logboek:
 
@@ -99,15 +99,15 @@ De JSON-teken reeksen van het operationele logboek bevatten elementen die in de 
 
 Naam | Beschrijving
 ------- | -------
-ActivityId | Interne ID, gebruikt voor tracking doeleinden |
-Gebeurtenisnaam | Naam van bewerking |
-resourceId | Resource-ID Azure Resource Manager |
-SubscriptionId | Abonnements-id |
-EventTimeString | Bewerkings tijd |
-EventProperties | Bewerkings eigenschappen |
-Status | Bewerkingsstatus |
-Caller | Aanroeper van de bewerking (Azure Portal of Management-client) |
-Categorie | OperationalLogs |
+`ActivityId` | Interne ID, gebruikt voor tracking doeleinden |
+`EventName` | Naam van bewerking |
+`resourceId` | Resource-ID Azure Resource Manager |
+`SubscriptionId` | Abonnements-id |
+`EventTimeString` | Bewerkings tijd |
+`EventProperties` | Bewerkings eigenschappen |
+`Status` | Bewerkingsstatus |
+`Caller` | Aanroeper van de bewerking (Azure Portal of Management-client) |
+`Category` | OperationalLogs |
 
 De volgende code is een voor beeld van een JSON-teken reeks voor een operationeel logboek:
 
@@ -131,9 +131,9 @@ JSON van het logboek voor automatisch schalen bevat elementen die in de volgende
 
 | Naam | Beschrijving |
 | ---- | ----------- | 
-| TrackingId | Interne ID, die wordt gebruikt voor tracerings doeleinden |
-| ResourceId | Azure Resource Manager-resource-id. |
-| Bericht | Informatief bericht, dat details bevat over het automatisch verg Roten van de actie. Het bericht bevat de vorige en huidige waarde van de doorvoer eenheid voor een opgegeven naam ruimte en wat de verg Roten van de TU heeft veroorzaakt. |
+| `TrackingId` | Interne ID, die wordt gebruikt voor tracerings doeleinden |
+| `ResourceId` | Azure Resource Manager-resource-id. |
+| `Message` | Informatief bericht, dat details bevat over het automatisch verg Roten van de actie. Het bericht bevat de vorige en huidige waarde van de doorvoer eenheid voor een opgegeven naam ruimte en wat de verg Roten van de TU heeft veroorzaakt. |
 
 Hier volgt een voor beeld van een gebeurtenis voor automatisch schalen: 
 
@@ -150,13 +150,13 @@ Kafka Coordinator-logboek JSON bevat elementen die in de volgende tabel worden w
 
 | Naam | Beschrijving |
 | ---- | ----------- | 
-| RequestId | Aanvraag-ID, die wordt gebruikt voor tracerings doeleinden |
-| ResourceId | Resource-ID Azure Resource Manager |
-| Bewerking | De naam van de bewerking die wordt uitgevoerd tijdens de groeps coördinatie |
-| ClientId | Client-id |
-| NamespaceName | Naam van naamruimte | 
-| SubscriptionId | Azure-abonnements-ID |
-| Bericht | Informatief of waarschuwings bericht, dat details bevat over acties die zijn uitgevoerd tijdens de groeps coördinatie. |
+| `RequestId` | Aanvraag-ID, die wordt gebruikt voor tracerings doeleinden |
+| `ResourceId` | Resource-ID Azure Resource Manager |
+| `Operation` | De naam van de bewerking die wordt uitgevoerd tijdens de groeps coördinatie |
+| `ClientId` | Client-id |
+| `NamespaceName` | Naam van naamruimte | 
+| `SubscriptionId` | Azure-abonnements-ID |
+| `Message` | Informatief of waarschuwings bericht, dat details bevat over acties die zijn uitgevoerd tijdens de groeps coördinatie. |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -178,14 +178,14 @@ Kafka voor fout logboek van gebruikers bevat elementen die in de volgende tabel 
 
 | Naam | Beschrijving |
 | ---- | ----------- |
-| TrackingId | Tracerings-ID, die wordt gebruikt voor tracerings doeleinden. |
-| NamespaceName | Naam van naamruimte |
-| Eventhub | Naam van Event Hub |
-| PartitionId | Partitie-id |
-| GroupId | Groeps-id |
-| ClientId | Client-id |
-| ResourceId | Azure Resource Manager-resource-id. |
-| Bericht | Informatief bericht, dat details bevat over een fout |
+| `TrackingId` | Tracerings-ID, die wordt gebruikt voor tracerings doeleinden. |
+| `NamespaceName` | Naam van naamruimte |
+| `Eventhub` | Naam van Event Hub |
+| `PartitionId` | Partitie-id |
+| `GroupId` | Groeps-id |
+| `ClientId` | Client-id |
+| `ResourceId` | Azure Resource Manager-resource-id. |
+| `Message` | Informatief bericht, dat details bevat over een fout |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Verbindings gebeurtenis schema voor virtuele netwerk Event Hubs
 
@@ -193,13 +193,13 @@ De JSON-verbindings gebeurtenis van het Event Hubs virtuele netwerk (VNet) bevat
 
 | Naam | Beschrijving |
 | ---  | ----------- | 
-| SubscriptionId | Azure-abonnements-ID |
-| NamespaceName | Naam van naamruimte |
-| IPAddress | IP-adres van een client die verbinding maakt met de Event Hubs-service |
-| Actie | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
-| Reden | Geeft een reden waarom de actie is uitgevoerd |
-| Aantal | Aantal exemplaren voor de opgegeven actie |
-| ResourceId | Azure Resource Manager-resource-id. |
+| `SubscriptionId` | Azure-abonnements-ID |
+| `NamespaceName` | Naam van naamruimte |
+| `IPAddress` | IP-adres van een client die verbinding maakt met de Event Hubs-service |
+| `Action` | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
+| `Reason` | Geeft een reden waarom de actie is uitgevoerd |
+| `Count` | Aantal exemplaren voor de opgegeven actie |
+| `ResourceId` | Azure Resource Manager-resource-id. |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -221,14 +221,14 @@ Door de klant beheerde Key gebruikers logboek JSON bevat elementen die in de vol
 
 | Naam | Beschrijving |
 | ---- | ----------- | 
-| Categorie | Type categorie voor een bericht. Dit is een van de volgende waarden: **fout** en **info** |
-| ResourceId | Interne Resource-ID, waaronder de Azure-abonnements-ID en naam van de naam ruimte |
-| KeyVault | De naam van de Key Vault resource |
-| Sleutel | De naam van de Key Vault sleutel. |
-| Versie | Versie van de Key Vault sleutel |
-| Bewerking | De naam van een bewerking die is uitgevoerd om aanvragen te behandelen |
-| Code | Statuscode |
-| Bericht | Bericht, dat details over een fout of informatief bericht bevat |
+| `Category` | Type categorie voor een bericht. Dit is een van de volgende waarden: **fout** en **info** |
+| `ResourceId` | Interne Resource-ID, waaronder de Azure-abonnements-ID en naam van de naam ruimte |
+| `KeyVault` | De naam van de Key Vault resource |
+| `Key` | De naam van de Key Vault sleutel. |
+| `Version` | Versie van de Key Vault sleutel |
+| `Operation` | De naam van een bewerking die is uitgevoerd om aanvragen te behandelen |
+| `Code` | Statuscode |
+| `Message` | Bericht, dat details over een fout of informatief bericht bevat |
 
 
 
@@ -236,7 +236,7 @@ Door de klant beheerde Key gebruikers logboek JSON bevat elementen die in de vol
 - [Inleiding tot Event Hubs](./event-hubs-about.md)
 - [Event Hubs-voor beelden](sdks.md)
 - Aan de slag met Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

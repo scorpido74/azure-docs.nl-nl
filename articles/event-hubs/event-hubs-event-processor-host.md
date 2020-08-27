@@ -3,22 +3,20 @@ title: Gebeurtenissen ontvangen met Event processor host-Azure Event Hubs | Micr
 description: In dit artikel wordt de Event processor host in azure Event Hubs beschreven, waarmee u het beheer van controle punten, leasing en het lezen van gebeurtenissen met een parallelle activiteit vereenvoudigt.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936177"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949079"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
-> Dit artikel is van toepassing op de oude versie van Azure Event Hubs SDK. Zie deze migratie handleidingen voor meer informatie over het migreren van uw code naar de nieuwere versie van de SDK. 
+> Dit artikel is van toepassing op de oude versie van Azure Event Hubs SDK. Zie [Balancing Partition load over meerdere exemplaren van uw toepassing](event-processor-balance-partition-load.md)voor de huidige versie van de SDK. Zie deze migratie handleidingen voor meer informatie over het migreren van uw code naar de nieuwere versie van de SDK. 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> Zie ook [de verdeling van de partitie verdelen over meerdere exemplaren van uw toepassing](event-processor-balance-partition-load.md).
 
 Azure Event Hubs is een krachtige telemetrie-opname service die kan worden gebruikt voor het streamen van miljoenen gebeurtenissen tegen lage kosten. In dit artikel wordt beschreven hoe u opgenomen gebeurtenissen kunt gebruiken met behulp van de *Event processor host* (EPH). een intelligente Consumer-agent die het beheer van de controle punten, leasing en parallelle gebeurtenis lezers vereenvoudigt.  
 

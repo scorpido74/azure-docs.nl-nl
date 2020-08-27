@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484563"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927014"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
@@ -50,7 +50,7 @@ Over het algemeen raden we u aan om extra eigenschappen toe te voegen aan velden
 
 ### <a name="batch-size"></a>Batch grootte
 
-Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
+Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
 
 Door batches te gebruiken om documenten te indexeren, worden de index prestaties aanzienlijk verbeterd. Het vaststellen van de optimale batchgrootte voor uw gegevens is een belangrijk onderdeel van voor het optimaliseren van de indexeringssnelheid. De twee primaire factoren die van invloed zijn op de optimale batchgrootte zijn:
 + Het schema van uw index
@@ -74,14 +74,14 @@ U kunt dit voorbeeld wijzigen en testen met verschillende aantallen threads om h
 > [!NOTE]
 > Wanneer u de laag van uw zoek service verhoogt of de partities verg root, moet u ook het aantal gelijktijdige threads verg Roten.
 
-Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
+Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
 
 + **503: service niet beschikbaar**: deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
 + **207: meerdere statussen**: deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
 
 ### <a name="retry-strategy"></a>Strategie voor opnieuw proberen 
 
-Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
 Met de .NET SDK van Azure Cognitive Search worden aanvragen bij 503-fouten en andere mislukte aanvragen opnieuw uitgevoerd, maar u moet uw eigen logica implementeren om bij 207-fouten aanvragen opnieuw uit te voeren. Opensource-hulpprogramma's als [Polly](https://github.com/App-vNext/Polly) kunnen ook worden gebruikt voor het implementeren van een herhaalstrategie.
 
@@ -95,14 +95,14 @@ Netwerk gegevens overdrachts snelheden kunnen een beperkende factor zijn bij het
 
 + Met planners kunt u indexeren op regel matige intervallen uitdelen, zodat u deze in de loop van de tijd kan verdelen.
 + Geplande indexering kan worden hervat op het laatste bekende stop punt. Als een gegevens bron niet volledig in een 24-uurs venster wordt verkend, wordt de indexering hervat op dag twee op elke locatie waar deze is gebleven.
-+ Het partitioneren van gegevens in kleinere afzonderlijke gegevens bronnen maakt parallelle verwerking mogelijk. U kunt bron gegevens opsplitsen in kleinere onderdelen, zoals in meerdere containers in Azure Blob Storage, en vervolgens bijbehorende, meerdere [gegevens bron objecten](https://docs.microsoft.com/rest/api/searchservice/create-data-source) maken in azure Cognitive Search die parallel kunnen worden geïndexeerd.
++ Het partitioneren van gegevens in kleinere afzonderlijke gegevens bronnen maakt parallelle verwerking mogelijk. U kunt bron gegevens opsplitsen in kleinere onderdelen, zoals in meerdere containers in Azure Blob Storage, en vervolgens bijbehorende, meerdere [gegevens bron objecten](/rest/api/searchservice/create-data-source) maken in azure Cognitive Search die parallel kunnen worden geïndexeerd.
 
 > [!NOTE]
 > Indexeer functies zijn gegevens bron-specifiek, dus het gebruik van een indexerings benadering is alleen haalbaar voor geselecteerde gegevens bronnen op Azure: [SQL database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
 
 ### <a name="batch-size"></a>Batch grootte
 
-Net als bij de Push-API kunt u met Indexeer functies het aantal items per batch configureren. Voor Indexeer functies op basis van de [rest API Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer), kunt u het `batchSize` argument instellen om deze instelling aan te passen, zodat deze beter overeenkomt met de kenmerken van uw gegevens. 
+Net als bij de Push-API kunt u met Indexeer functies het aantal items per batch configureren. Voor Indexeer functies op basis van de [rest API Indexeer functie maken](/rest/api/searchservice/Create-Indexer), kunt u het `batchSize` argument instellen om deze instelling aan te passen, zodat deze beter overeenkomt met de kenmerken van uw gegevens. 
 
 De standaard batch grootten zijn gegevens bronnen die specifiek zijn. Azure SQL Database en Azure Cosmos DB hebben een standaard Batch grootte van 1000. Met Azure Blob-indexering wordt daarentegen de Batch grootte bij 10 documenten ingesteld op het herkennen van de grotere gemiddelde document grootte. 
 
@@ -112,7 +112,7 @@ De planning van de Indexeer functie is een belang rijk mechanisme voor het verwe
 
 Geplande indexering begint op specifieke intervallen, met een taak die doorgaans wordt voltooid voordat het volgende geplande interval wordt hervat. Als de verwerking echter niet binnen het interval wordt voltooid, stopt de indexer (omdat deze verouderd is). Bij het volgende interval wordt de verwerking hervat, waar deze zich de laatste keer bevindt, waarbij het systeem bijhoudt waar dit gebeurt. 
 
-In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over deze aanpak [grote gegevens sets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
+In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over deze aanpak [grote gegevens sets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](/rest/api/searchservice/Create-Indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
@@ -125,8 +125,8 @@ Voor niet-routine matige, computerintensieve, reken vereisten, zoals OCR op gesc
 Parallelle verwerking heeft de volgende elementen:
 
 + Verdeel bron gegevens over meerdere containers of meerdere virtuele mappen binnen dezelfde container. 
-+ Wijs elke mini maal gegevensset toe aan een eigen [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source), gekoppeld aan een eigen [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
-+ Voor cognitieve Zoek opdrachten verwijzen we naar dezelfde [vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) in elke Indexeer functie definitie.
++ Wijs elke mini maal gegevensset toe aan een eigen [gegevens bron](/rest/api/searchservice/create-data-source), gekoppeld aan een eigen [Indexeer functie](/rest/api/searchservice/create-indexer).
++ Voor cognitieve Zoek opdrachten verwijzen we naar dezelfde [vaardig heden](/rest/api/searchservice/create-skillset) in elke Indexeer functie definitie.
 + Schrijf naar dezelfde doel zoek index. 
 + Plannen dat alle Indexeer functies op hetzelfde moment worden uitgevoerd.
 
@@ -156,7 +156,7 @@ Op de geplande tijd starten alle Indexeer functies, het laden van gegevens, het 
 > [!Note]
 > Bij het verg Roten van replica's, overweeg dan het aantal partities te verhogen als de index grootte wordt geprojecteerd om aanzienlijk te verg Roten. Partities bevatten segmenten van geïndexeerde inhoud; Hoe meer partities u hebt, des te kleiner het segment dat elke partitie bevat om op te slaan.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Overzicht van de indexeerfunctie](search-indexer-overview.md)
 + [Indexeren in de portal](search-import-data-portal.md)

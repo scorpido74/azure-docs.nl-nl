@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553968"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922800"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -98,7 +98,7 @@ Voor [AI-verrijking](cognitive-search-concept-intro.md)moet u plannen om [een fa
 | Bewerking | Facturerings impact |
 |-----------|----------------|
 | Document kraken, tekst extractie | Gratis |
-| Document kraken, afbeeldings extractie | Gefactureerd op basis van het aantal afbeeldingen dat is geëxtraheerd uit uw documenten. In een [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **imageAction** is de para meter die het ophalen van de installatie kopie activeert. Als **imageAction** is ingesteld op ' geen ' (de standaard instelling), worden er geen kosten in rekening gebracht voor het ophalen van afbeeldingen. De frequentie voor het extra heren van afbeeldingen wordt beschreven op de pagina [prijs informatie](https://azure.microsoft.com/pricing/details/search/) voor Azure Cognitive Search.|
+| Document kraken, afbeeldings extractie | Gefactureerd op basis van het aantal afbeeldingen dat is geëxtraheerd uit uw documenten. In een [Indexeer functie](/rest/api/searchservice/create-indexer#indexer-parameters) **imageAction** is de para meter die het ophalen van de installatie kopie activeert. Als **imageAction** is ingesteld op ' geen ' (de standaard instelling), worden er geen kosten in rekening gebracht voor het ophalen van afbeeldingen. De frequentie voor het extra heren van afbeeldingen wordt beschreven op de pagina [prijs informatie](https://azure.microsoft.com/pricing/details/search/) voor Azure Cognitive Search.|
 | [Ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) | Gefactureerd tegen hetzelfde aantal als dat u de taak met Cognitive Services rechtstreeks hebt uitgevoerd. |
 | Aangepaste vaardigheden | Een aangepaste vaardigheid is de functionaliteit die u opgeeft. De kosten voor het gebruik van een aangepaste vaardigheid zijn geheel afhankelijk van of aangepaste code andere services met data limieten aanroept. |
 
@@ -130,7 +130,7 @@ U kunt de volgende suggesties gebruiken om kosten te verlagen of de kosten effec
 
 + Schaal omhoog voor resource-intensieve bewerkingen, zoals indexeren, en pas vervolgens de voor normale query werkbelastingen omlaag aan. Begin met de minimale configuratie voor Azure Cognitive Search (een SU die bestaat uit één partitie en één replica) en controleer vervolgens de gebruikers activiteiten om gebruiks patronen te identificeren die aangeven dat er meer capaciteit nodig is. Als er sprake is van een voorspelbaar patroon, kunt u de schaal aanpassen met de activiteit (u moet code schrijven om dit te automatiseren).
 
-Daarnaast kunt u het [facturerings-en kosten beheer](https://docs.microsoft.com/azure/billing/billing-getting-started) bezoeken voor ingebouwde hulpprogram ma's en functies met betrekking tot uitgaven.
+Daarnaast kunt u het [facturerings-en kosten beheer](../cost-management-billing/manage/getting-started.md) bezoeken voor ingebouwde hulpprogram ma's en functies met betrekking tot uitgaven.
 
 Het is niet mogelijk om een zoek service op tijdelijke basis af te sluiten. Toegewezen resources zijn altijd operationeel en worden toegewezen voor de levens duur van uw service. Het verwijderen van een service is permanent en verwijdert ook de bijbehorende gegevens.
 
@@ -175,7 +175,7 @@ Met een ruwe schatting kunt u de hoeveelheid die u wilt budget teren voor twee i
 
 Toegewezen resources kunnen grotere sampling-en verwerkings tijden bieden voor realistischere schattingen van de index hoeveelheid, grootte en query volumes tijdens de ontwikkeling. Sommige klanten springen direct in met een factureer bare laag en evalueren vervolgens opnieuw als het ontwikkelings project verouderd is.
 
-1. [Bekijk de service limieten per laag](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) om te bepalen of lagere lagen het aantal indexen kunnen ondersteunen dat u nodig hebt. In de lagen Basic, S1 en S2 zijn de index limieten respectievelijk 15, 50 en 200. De laag geoptimaliseerd voor opslag heeft een limiet van 10 indexen, omdat deze is ontworpen voor het ondersteunen van een laag aantal zeer grote indexen.
+1. [Bekijk de service limieten per laag](./search-limits-quotas-capacity.md#index-limits) om te bepalen of lagere lagen het aantal indexen kunnen ondersteunen dat u nodig hebt. In de lagen Basic, S1 en S2 zijn de index limieten respectievelijk 15, 50 en 200. De laag geoptimaliseerd voor opslag heeft een limiet van 10 indexen, omdat deze is ontworpen voor het ondersteunen van een laag aantal zeer grote indexen.
 
 1. [Een service op een factureer bare laag maken](search-create-service-portal.md):
 

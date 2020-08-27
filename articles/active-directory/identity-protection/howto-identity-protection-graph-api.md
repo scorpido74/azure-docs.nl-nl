@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c3715995d0d53cd72acf7277f46a279fa4cfb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019655"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950116"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph
 
-Microsoft Graph is het micro soft Unified API-eind punt en de start van [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) -api's. Er zijn drie Api's die informatie over Risk ante gebruikers en aanmeldingen beschikbaar maken. Met de eerste API, **riskDetection**, kunt u een query uitvoeren op Microsoft Graph voor een lijst van zowel de gebruiker als de aanmelding en de bijbehorende informatie over de detectie. De tweede API, **riskyUsers**, stelt u in staat om Microsoft Graph te zoeken naar informatie over gebruikers identiteits beveiliging die als risico is gedetecteerd. De derde API, **signIn**, stelt u in staat om Microsoft Graph te zoeken naar informatie over Azure AD-aanmeldingen met specifieke eigenschappen die betrekking hebben op risico status, Details en niveau. 
+Microsoft Graph is het micro soft Unified API-eind punt en de start van [Azure Active Directory Identity Protection](./overview-identity-protection.md) -api's. Er zijn drie Api's die informatie over Risk ante gebruikers en aanmeldingen beschikbaar maken. Met de eerste API, **riskDetection**, kunt u een query uitvoeren op Microsoft Graph voor een lijst van zowel de gebruiker als de aanmelding en de bijbehorende informatie over de detectie. De tweede API, **riskyUsers**, stelt u in staat om Microsoft Graph te zoeken naar informatie over gebruikers identiteits beveiliging die als risico is gedetecteerd. De derde API, **signIn**, stelt u in staat om Microsoft Graph te zoeken naar informatie over Azure AD-aanmeldingen met specifieke eigenschappen die betrekking hebben op risico status, Details en niveau. 
 
 In dit artikel wordt u aan de slag met het maken van verbinding met de Microsoft Graph en het uitvoeren van query's op deze Api's. Zie de [Microsoft Graph-site](https://graph.microsoft.io/) of de specifieke referentie documentatie voor deze api's voor een uitgebreide inleiding, volledige documentatie en toegang tot de Graph Explorer:
 
@@ -86,9 +86,9 @@ Op dit moment hebt u het volgende nodig:
 Als u zich wilt verifiëren, verzendt u een post-aanvraag naar `https://login.microsoft.com` met de volgende para meters in de hoofd tekst:
 
 - grant_type:**client_credentials**
-- resource`https://graph.microsoft.com`
-- client_id:\<your client ID\>
-- client_secret:\<your key\>
+- resource `https://graph.microsoft.com`
+- client_id: \<your client ID\>
+- client_secret: \<your key\>
 
 Als deze aanvraag is voltooid, wordt een verificatie token geretourneerd.  
 Maak een header met de volgende para meter om de API aan te roepen:
@@ -99,7 +99,7 @@ Maak een header met de volgende para meter om de API aan te roepen:
 
 Bij het verifiëren vindt u het token type en toegangs token in het geretourneerde token.
 
-Deze header verzenden als een aanvraag naar de volgende API-URL:`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
+Deze header verzenden als een aanvraag naar de volgende API-URL: `https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
 
 Het antwoord, indien geslaagd, is een verzameling identiteits risico detecties en gekoppelde gegevens in de OData-JSON-indeling, die kan worden geparseerd en verwerkt zoals u dat wilt.
 
@@ -167,8 +167,8 @@ Als u meer wilt weten over Microsoft Graph en hoe u toepassingen bouwt met behul
 
 Zie voor verwante informatie:
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-- [Typen risico detecties gedetecteerd door Azure Active Directory Identity Protection](../reports-monitoring/concept-risk-events.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)
+- [Typen risico detecties gedetecteerd door Azure Active Directory Identity Protection](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Overzicht van Microsoft Graph](https://developer.microsoft.com/graph/docs)
-- [Hoofdmap van Azure AD Identity Protection-Service](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)
+- [Hoofdmap van Azure AD Identity Protection-Service](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

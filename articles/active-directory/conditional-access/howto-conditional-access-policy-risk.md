@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce687ae1f47b20bb5fff3827e7bcbd5d7edf2d83
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2564e3f246d23028d6c73832a25f37110e7670c8
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024356"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948093"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Voorwaardelijke toegang: op Risico's gebaseerde voorwaardelijke toegang op basis van een aanmelding
 
@@ -35,11 +35,11 @@ Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten
 1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**.
 1. Stel onder **voor waarden**  >  **gebruikers risico** **configureren** in op **Ja**. Onder **Selecteer het risico niveau voor aanmelden wordt dit beleid van toepassing op** 
    1. Selecteer **hoog** en **gemiddeld**.
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
@@ -52,11 +52,11 @@ Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten
 1. Onder **toewijzingen**selecteert u **gebruikers**.
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **uitgesloten gebruikers selecteren**, kiest u de accounts voor nood toegang of het account van uw organisatie en selecteert u **selecteren**.
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Selecteer onder **voor waarden** **aanmeldings risico**en kies vervolgens **medium en hoger**.
    1. Selecteer **selecteren**en vervolgens **gereed**.
 1. Kies onder **Controls**  >  **Access**de optie **toegang toestaan**en selecteer vervolgens **multi-factor Authentication vereisen**.
-   1. Selecteer **Selecteren**.
+   1. Kies **Selecteren**.
 1. Stel **beleid afdwingen** in **op aan**.
 1. Selecteer **Opslaan**.
 
@@ -64,10 +64,10 @@ Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-[Voorwaardelijke toegang op basis van gebruikers risico](howto-conditional-access-policy-risk-user.md)
+[Voorwaardelijke gebruikerstoegang op basis van risico's](howto-conditional-access-policy-risk-user.md)
 
 [Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 
-[Wat is Azure Active Directory Identity Protection?](../identity-protection/overview.md)
+[Wat is Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)

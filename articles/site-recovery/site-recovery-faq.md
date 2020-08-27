@@ -4,20 +4,20 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263376"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950490"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
 In dit artikel vindt u een overzicht van veelgestelde vragen over Azure Site Recovery. Raadpleeg deze artikelen voor specifieke scenario's
 
-- [Vragen over herstel na nood gevallen voor Azure VM naar Azure](azure-to-azure-common-questions.md)
-- [Vragen over de nood herstel van een VMware-VM naar Azure](vmware-azure-common-questions.md)
-- [Vragen over herstel na nood gevallen voor Hyper-V-VM'S naar Azure](hyper-v-azure-common-questions.md)
+- [Vragen over herstel na noodgeval van virtuele Azure-machines naar Azure](azure-to-azure-common-questions.md)
+- [Vragen over herstel na noodgeval van VMware-VM naar Azure](vmware-azure-common-questions.md)
+- [Vragen over herstel na noodgeval van Hyper-V-VM naar Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Algemeen
 
@@ -256,8 +256,6 @@ Een replicatie beleid definieert de instellingen voor de Bewaar geschiedenis van
 
 - 24 uur voor de Bewaar geschiedenis van herstel punten.
 - 4 uur voor de frequentie van app-consistente moment opnamen.
-
-Meer [informatie over replicatie-instellingen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Wat is een crash-consistent herstel punt?
 

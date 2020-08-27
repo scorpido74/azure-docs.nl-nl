@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275425"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948450"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
 
-Met [Azure Active Directory (Azure AD) voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. In dit artikel vindt u informatie over:
+Met [Azure Active Directory (Azure AD) voorwaardelijke toegang](./overview.md)kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. In dit artikel vindt u informatie over:
 
 - Dingen die u moet weten 
 - Wat u moet doen bij het configureren van beleid voor voorwaardelijke toegang. 
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten en de terminologie die wordt beschreven in [Wat is voorwaardelijke toegang in azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten en de terminologie die wordt beschreven in [Wat is voorwaardelijke toegang in azure Active Directory?](./overview.md)
 
 ## <a name="whats-required-to-make-a-policy-work"></a>Wat is er nodig om een beleid te kunnen gebruiken?
 
@@ -57,7 +57,7 @@ Alle beleids regels worden in twee fasen afgedwongen:
    - Gebruik de sessie details die in fase 1 zijn verzameld om te bepalen of er niet is voldaan aan de vereisten. 
    - Als er een beleid is geconfigureerd voor het blok keren van de toegang, wordt afdwinging door de blok kering van het besturings element geblokkeerd en wordt de gebruiker geblokkeerd. 
    - De gebruiker wordt vervolgens gevraagd aanvullende vereisten voor de toekennings controle uit te voeren die tijdens fase 1 in de volgende volg orde niet aan het beleid zijn voldaan:  
-      - Meervoudige verificatie 
+      - Multi-Factor Authentication 
       - Goedgekeurde client-app/beveiligings beleid voor apps 
       - Beheerd apparaat (compatibel of hybride Azure AD-deelname) 
       - Gebruiksvoorwaarden 
@@ -154,5 +154,5 @@ Zie [Klassiek beleid migreren in Azure Portal](policy-migration.md) voor meer in
 
 Als u wilt weten:
 
-- Hoe u een beleid voor voorwaardelijke toegang configureert, Zie [MFA vereisen voor specifieke apps met Azure Active Directory voorwaardelijke toegang](app-based-mfa.md).
+- Hoe u een beleid voor voorwaardelijke toegang configureert, Zie [MFA vereisen voor specifieke apps met Azure Active Directory voorwaardelijke toegang](../authentication/tutorial-enable-azure-mfa.md).
 - Hoe u uw beleid voor voorwaardelijke toegang plant, Zie [de implementatie van voorwaardelijke toegang plannen in azure Active Directory](plan-conditional-access.md).

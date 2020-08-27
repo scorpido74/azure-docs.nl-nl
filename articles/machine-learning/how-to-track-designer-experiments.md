@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0d8d9f598da41b2bd39369e063200f5445ba740a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554779"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950405"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Logboek registratie inschakelen in Azure Machine Learning Designer (preview)-pijp lijnen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -78,5 +78,5 @@ Nadat de uitvoering van de pijp lijn is voltooid, kunt u de *Mean_Absolute_Error
 
 In dit artikel hebt u geleerd hoe u Logboeken in de ontwerp functie kunt gebruiken. Zie voor de volgende stappen deze gerelateerde artikelen:
 
-* Meer informatie over het oplossen van problemen met Designer-pijp lijnen vindt u in [Debug & Troubleshooting ml-pijp lijnen oplossen](how-to-debug-pipelines.md#azure-machine-learning-designer-preview).
+* Meer informatie over het oplossen van problemen met Designer-pijp lijnen vindt u in [Debug & Troubleshooting ml-pijp lijnen oplossen](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview).
 * Meer informatie over het gebruik van de python-SDK voor het vastleggen van metrische gegevens in de ontwikkel ervaring van de SDK raadpleegt u [logboek registratie inschakelen in azure ml-trainings uitvoeringen](how-to-track-experiments.md).

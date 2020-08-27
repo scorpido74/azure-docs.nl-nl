@@ -4,19 +4,22 @@ description: Meer informatie over vCPU-quota's voor Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 028da1fa9d2b16b4d87c345d8435c99b565e1774
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292306"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949691"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>vCPU-quota virtuele machines
+# <a name="check-vcpu-quotas-using-the-azure-cli"></a>VCPU-quota's controleren met behulp van de Azure CLI
 
 De vCPU-quota's voor virtuele machines en virtuele-machine schaal sets worden gerangschikt in twee lagen voor elk abonnement, in elke regio. De eerste laag is het totale regionale Vcpu's en de tweede laag is de verschillende kernen van de VM-grootte, zoals de Vcpu's van de D-serie. Telkens wanneer een nieuwe virtuele machine wordt geïmplementeerd, mag de Vcpu's voor de virtuele machine niet groter zijn dan het vCPU quotum voor de VM-grootte familie of het totale regionale vCPU-quotum. Als een van deze quota wordt overschreden, is de implementatie van de VM niet toegestaan. Er is ook een quotum voor het totale aantal virtuele machines in de regio. De details van elk van deze quota's kunnen worden weer gegeven in de sectie **gebruik en quota's** van de pagina **abonnement** in de [Azure Portal](https://portal.azure.com), of u kunt een query uitvoeren voor de waarden met behulp van de Azure cli.
+
+> [!NOTE]
+> Het quotum wordt berekend op basis van het totale aantal kernen dat in gebruik is toegewezen en de toewijzing ongedaan gemaakt. Als u aanvullende kernen nodig hebt, moet u [een quotum verhoging aanvragen](../../azure-portal/supportability/resource-manager-core-quotas-request.md) of vm's verwijderen die niet meer nodig zijn. 
 
 
 ## <a name="check-usage"></a>Gebruik controleren

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519776"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929564"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Tabellen indexeren vanuit Azure-tabel opslag met Azure Cognitive Search
 
@@ -24,9 +24,9 @@ In dit artikel wordt beschreven hoe u Azure Cognitive Search gebruikt voor het i
 
 U kunt een Azure Table Storage-indexer instellen met behulp van de volgende resources:
 
-* [Azure-portal](https://ms.portal.azure.com)
-* Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* [Azure Portal](https://ms.portal.azure.com)
+* Azure Cognitive Search [rest API](/rest/api/searchservice/Indexer-operations)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/overview/azure/search)
 
 Hier demonstreren we de stroom met behulp van de REST API. 
 
@@ -62,7 +62,7 @@ Een gegevens bron maken:
     }   
 ```
 
-Zie [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source)voor meer informatie over de Create Data Source-API.
+Zie [Create Data Source](/rest/api/searchservice/create-data-source)voor meer informatie over de Create Data Source-API.
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>Manieren om referenties op te geven ####
@@ -73,7 +73,7 @@ U kunt de referenties voor de tabel op een van de volgende manieren opgeven:
 - **Opslag account gedeelde toegangs handtekening Connection String**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` de Shared Access-hand tekening moet de lijst en lees machtigingen hebben voor containers (tabellen in dit geval) en objecten (tabel rijen).
 -  **Gedeelde toegangs handtekening** `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` van de tabel: de Shared Access-hand tekening moet de machtiging query (lezen) hebben voor de tabel.
 
-Zie [using Shared Access signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md)(Engelstalig) voor meer informatie over gedeelde toegangs handtekeningen voor opslag.
+Zie [using Shared Access signatures](../storage/common/storage-sas-overview.md)(Engelstalig) voor meer informatie over gedeelde toegangs handtekeningen voor opslag.
 
 > [!NOTE]
 > Als u referenties voor een Shared Access-hand tekening gebruikt, moet u de referenties van de gegevens bron regel matig bijwerken met de vernieuwde hand tekeningen om te voor komen dat ze verlopen. Als referenties voor de hand tekening van de gedeelde toegang verlopen, mislukt de Indexeer functie met een fout bericht dat lijkt op de referenties die in de connection string zijn gegeven, ongeldig of verlopen zijn.  
@@ -97,7 +97,7 @@ Een index maken:
     }
 ```
 
-Zie [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over het maken van indexen.
+Zie [Create Index](/rest/api/searchservice/create-index)voor meer informatie over het maken van indexen.
 
 ### <a name="step-3-create-an-indexer"></a>Stap 3: een Indexeer functie maken
 Een Indexeer functie verbindt een gegevens bron met een doel zoek index en biedt een schema om het vernieuwen van gegevens te automatiseren. 
@@ -119,7 +119,7 @@ Nadat de index en gegevens bron zijn gemaakt, bent u klaar om de Indexeer functi
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd. (Het interval van de planning is ingesteld op ' PT2H '.) Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is vijf minuten. De planning is optioneel; Als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt een Indexeer functie echter op elk gewenst moment uitvoeren.   
 
-Zie [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van de API voor indexering.
+Zie [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van de API voor indexering.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
@@ -170,7 +170,7 @@ Hier volgen twee mogelijke benaderingen voor het verbeteren van de prestaties va
 
 - Als uw gegevens op tijd zijn gepartitioneerd (bijvoorbeeld elke dag of week een nieuwe partitie maken), moet u rekening houden met de volgende benadering: 
     - Gebruik een query van het formulier: `(PartitionKey ge <TimeStamp>) and (other filters)` . 
-    - Bewaak de voortgang van de Indexeer functie met behulp van de [API voor Indexeer functie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)en werk de `<TimeStamp>` voor waarde van de query regel matig bij op basis van de meest recente waarde voor hoge water merken. 
+    - Bewaak de voortgang van de Indexeer functie met behulp van de [API voor Indexeer functie ophalen](/rest/api/searchservice/get-indexer-status)en werk de `<TimeStamp>` voor waarde van de query regel matig bij op basis van de meest recente waarde voor hoge water merken. 
     - Als u deze aanpak wilt activeren, moet u de data source-query opnieuw instellen als u de Indexeer functie opnieuw wilt instellen. 
 
 

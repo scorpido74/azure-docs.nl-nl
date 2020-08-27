@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927133"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949028"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Voer een upgrade uit naar de nieuwste versie van de Azure Cognitive Search-service REST API
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Voer een upgrade uit naar de nieuwste REST API in azure Cognitive Search
 
-Als u een eerdere versie van de [zoek rest API](/rest/api/searchservice/)gebruikt, helpt dit artikel bij het bijwerken van uw toepassing voor het gebruik van de nieuwste, algemeen beschik bare API-versie 2020-06-30.
+Als u een eerdere versie van de [**zoek rest API**](/rest/api/searchservice/)gebruikt, helpt dit artikel bij het bijwerken van uw toepassing naar de nieuwste, algemeen beschik bare API-versie **2020-06-30**.
 
-Versie 2020-06-30 van de REST API bevat enkele wijzigingen ten opzichte van eerdere versies. Deze zijn vooral achterwaarts compatibel, dus als u de code wilt wijzigen, moet u slechts minimale inspanning vereisen, afhankelijk van de versie die u eerder gebruikt. [Stappen voor het bijwerken](#UpgradeSteps) van een overzicht van de code wijzigingen die zijn vereist voor het gebruik van nieuwe functies.
+Versie 2020-06-30 bevat een belang rijke nieuwe functie ([Knowledge Store](knowledge-store-concept-intro.md)) en introduceert een aantal kleine gedrags wijzigingen. Als zodanig is deze versie voornamelijk compatibel met eerdere versies, dus code wijzigingen moeten mini maal zijn als u een upgrade uitvoert van de vorige versie (2019-05-06).
 
 > [!NOTE]
-> Een exemplaar van de Azure Cognitive Search-service ondersteunt een groot aantal REST API-versies, waaronder eerder. U kunt deze API-versies blijven gebruiken, maar we raden u aan uw code te migreren naar de nieuwste versie zodat u toegang hebt tot nieuwe mogelijkheden.
+> Een zoek service ondersteunt een reeks REST API-versies, waaronder eerder. U kunt deze API-versies blijven gebruiken, maar we raden u aan uw code te migreren naar de nieuwste versie zodat u toegang hebt tot nieuwe mogelijkheden. Na verloop van tijd worden de meest verouderde versies van de REST API verouderd en [niet meer ondersteund](search-api-versions.md#unsupported-versions).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>Een upgrade uitvoeren
 
-Wanneer u een upgrade uitvoert naar nieuwe versies, hoeft u waarschijnlijk geen wijzigingen aan te brengen in uw code, behalve om het versie nummer te wijzigen. De enige situaties waarin u mogelijk code moet wijzigen, zijn als:
+Wanneer u een upgrade naar een nieuwe versie uitvoert, hoeft u waarschijnlijk niet veel wijzigingen aan te brengen in uw code, behalve om het versie nummer te wijzigen. De enige situaties waarin u mogelijk code moet wijzigen, zijn als:
 
 * De code mislukt wanneer niet-herkende eigenschappen worden geretourneerd in een API-antwoord. Uw toepassing moet standaard eigenschappen negeren die deze niet begrijpt.
 
@@ -36,7 +36,7 @@ Wanneer u een upgrade uitvoert naar nieuwe versies, hoeft u waarschijnlijk geen 
 
 * Uw code verwijst naar een API-versie die is voor 2019-05-06 en is onderhevig aan een of meer van de laatste wijzigingen in die release. De sectie [upgrade naar 2019-05-06](#upgrade-to-2019-05-06) bevat meer details. 
 
-Als een van deze situaties op u van toepassing is, moet u de code mogelijk dienovereenkomstig wijzigen. Als dat niet het geval is, hoeft u niets te wijzigen, tenzij u de functies die in de nieuwe versie zijn toegevoegd wilt gaan gebruiken.
+Als een van deze situaties op u van toepassing is, moet u de code mogelijk dienovereenkomstig wijzigen. Anders zijn er geen wijzigingen nodig, maar u kunt ook beginnen met het gebruik van functies die zijn toegevoegd in de nieuwe versie.
 
 ## <a name="upgrade-to-2020-06-30"></a>Voer een upgrade uit naar 2020-06-30
 
@@ -63,7 +63,7 @@ Versie 2019-05-06 is de vorige, algemeen beschik bare versie van de REST API. Fu
 
 ### <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
 
-Bestaande code die wordt geschreven ten opzichte van eerdere API-versies, verbreekt op API-Version = 2019-05-06 als code de volgende functionaliteit bevat:
+Bestaande code die wordt geschreven ten opzichte van eerdere API-versies, verbreekt op API-Version = 2019-05-06 en hoger als code de volgende functionaliteit bevat:
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexeer functie voor Azure Cosmos DB-Data Source is nu ' type ': ' cosmosdb '
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72886998"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950201"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Gebruikers ervaring met Azure AD Identity Protection
 
@@ -29,7 +29,7 @@ Alle beleids regels voor identiteits beveiliging hebben gevolgen voor de aanmeld
 
 ## <a name="multi-factor-authentication-registration"></a>Multi-factor Authentication-registratie
 
-Het inschakelen van het beleid voor identiteits beveiliging waarbij multi-factor Authentication-registratie vereist is en die gericht is op al uw gebruikers, zorgt ervoor dat ze Azure MFA in de toekomst kunnen gebruiken om zichzelf te herstellen. Door dit beleid te configureren, hebben uw gebruikers een periode van 14 dagen waarin ze zich kunnen registreren en aan het eind moeten registreren. De ervaring voor gebruikers wordt hieronder beschreven. Meer informatie vindt u in de documentatie voor eind gebruikers in het artikel [overzicht van twee ledige verificatie en uw werk-of school account](../user-help/user-help-two-step-verification-overview.md).
+Het inschakelen van het beleid voor identiteits beveiliging waarbij multi-factor Authentication-registratie vereist is en die gericht is op al uw gebruikers, zorgt ervoor dat ze Azure MFA in de toekomst kunnen gebruiken om zichzelf te herstellen. Door dit beleid te configureren, hebben uw gebruikers een periode van 14 dagen waarin ze zich kunnen registreren en aan het eind moeten registreren. De ervaring voor gebruikers wordt hieronder beschreven. Meer informatie vindt u in de documentatie voor eind gebruikers in het artikel [overzicht van twee ledige verificatie en uw werk-of school account](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="registration-interrupt"></a>Registratie onderbreking
 
@@ -84,4 +84,4 @@ IT-mede werkers kunnen de instructies in de sectie de [blok kering van gebruiker
 
 - [Risico's herstellen en gebruikers deblokkeren](howto-identity-protection-remediate-unblock.md)
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

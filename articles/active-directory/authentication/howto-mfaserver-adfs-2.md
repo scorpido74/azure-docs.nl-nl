@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070f9336c3e0ff00f35c4a17460c5c0a60a54031
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919689"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949657"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-server configureren om met AD FS 2.0 te werken
 
@@ -28,6 +28,8 @@ In deze documentatie wordt beschreven hoe u de Azure Multi-Factor Authentication
 > Vanaf 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication (MFA) vereisen tijdens aanmeldings gebeurtenissen, moeten Azure Multi-Factor Authentication op basis van de Cloud gebruiken.
 >
 > Zie [zelf studie: aanmeldings gebeurtenissen voor gebruikers beveiligen met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met MFA op basis van de Cloud.
+>
+> Als u op de cloud gebaseerde MFA gebruikt, raadpleegt u [cloud resources beveiligen met Azure multi-factor Authentication en AD FS](howto-mfa-adfs.md).
 >
 > Bestaande klanten die MFA-server vóór 1 juli hebben geactiveerd 2019, kunnen de meest recente versie downloaden, toekomstige updates en activerings referenties genereren.
 

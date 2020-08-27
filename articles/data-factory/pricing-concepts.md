@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414941"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949950"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory-prijzen leren begrijpen met voorbeelden
 
@@ -166,6 +166,46 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 - Uitvoering van pipeline-Orchestration &amp; = **$1,463**
   - Uitvoeringen van activiteit = 001 \* 2 = 0,002 [1 run = $1/1000 = 0,001]
   - Data flow-activiteiten = $1,461 naar verhouding van 20 minuten (10 minuten uitvoerings tijd + 10 minuten TTL). $0.274/uur op Azure Integration Runtime met een algemene reken kracht van 16 kernen
+
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Gegevens integratie in Azure Data Factory beheerde VNET
+In dit scenario wilt u de oorspronkelijke bestanden op Azure Blob Storage verwijderen en gegevens van Azure SQL Database naar Azure Blob Storage kopiëren. U kunt dit uitvoeren twee keer uitvoeren op verschillende pijp lijnen. De uitvoerings tijd van deze twee pijp lijnen is overlappend.
+![Scenario4 ](media/pricing-concepts/scenario-4.png) u het scenario wilt volt ooien, moet u twee pijp lijnen maken met de volgende items:
+  - Een pijplijn activiteit – activiteit verwijderen.
+  - Een Kopieer activiteit met een invoer-gegevensset voor de gegevens die moeten worden gekopieerd uit Azure Blob-opslag.
+  - Een uitvoer gegevensset voor de gegevens op Azure SQL Database.
+  - Een schema triggers voor het uitvoeren van de pijp lijn.
+
+
+| **Bewerkingen** | **Typen en eenheden** |
+| --- | --- |
+| Een gekoppelde service maken | 4 entiteit voor lezen/schrijven |
+| Gegevens sets maken | 8 entiteiten voor lezen/schrijven (4 voor het maken van de gegevensset, 4 voor gekoppelde service verwijzingen) |
+| Pijp lijn maken | 6 entiteiten voor lezen/schrijven (2 voor het maken van pijp lijnen, 4 voor verwijzingen naar gegevensset) |
+| Pijp lijn ophalen | 2 entiteit voor lezen/schrijven |
+| Pijp lijn uitvoeren | 6 uitvoeringen van activiteit (2 voor uitvoering van trigger, 4 voor uitvoeringen van activiteit) |
+| Delete-activiteit uitvoeren: elke uitvoerings tijd = 5 minuten. De uitvoering van de activiteit verwijderen in de eerste pijp lijn is van 10:00 uur UTC tot 10:05 uur UTC. De uitvoering van de activiteit verwijderen in een tweede pijp lijn is van 10:02 uur UTC tot 10:07 uur UTC.|Totale aantal uitgevoerde pijplijn activiteit in beheerde VNET. Pijplijn activiteit biedt ondersteuning voor Maxi maal 50 gelijktijdigheid in beheerde VNET. |
+| Gegevens kopiëren hypo these: elke uitvoerings tijd = 10 minuten. De Kopieer uitvoering in de eerste pijp lijn is van 10:06 uur UTC tot 10:15 uur UTC. De uitvoering van de activiteit verwijderen in een tweede pijp lijn is van 10:08 uur UTC tot 10:17 uur UTC. | 10 * 4 Azure Integration Runtime (standaard instelling DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
+| Bewaak pijp lijn controleren: er zijn slechts twee uitvoeringen | 6 uitgevoerde uitvoerings records voor bewaking (2 voor pijplijn uitvoering, 4 voor uitvoering van activiteit) |
+
+
+**Totaal prijs scenario: $0,45523**
+
+- Data Factory bewerkingen = $0,00023
+  - Lezen/schrijven = 20 * 00001 = $0,0002 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 6 * 000005 = $0,00003 [1 bewaking = $0,25/50.000 = 0,000005]
+- Pipeline-indeling & Execution = $0,455
+  - Uitvoeringen van activiteit = 0,001 * 6 = 0,006 [1 run = $1/1000 = 0,001]
+  - Activiteiten voor gegevens verplaatsing = $0,333 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
+  - Pijplijn activiteit = $0,116 (in verhouding tot 7 minuten van uitvoerings tijd. $1/uur op Azure Integration Runtime)
+
+> [!NOTE]
+> Deze prijzen zijn alleen bedoeld als voor beeld.
+
+**Veelgestelde vragen**
+
+V: als ik meer dan 50 pijplijn activiteiten wil uitvoeren, kunnen deze activiteiten tegelijk worden uitgevoerd?
+
+A: Maxi maal 50 gelijktijdige pijplijn activiteiten worden toegestaan.  De activiteit van de 51th-pijp lijn wordt in de wachtrij geplaatst totdat een vrije sleuf wordt geopend. Hetzelfde voor externe activiteiten. Maxi maal 800 gelijktijdige externe activiteiten worden toegestaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

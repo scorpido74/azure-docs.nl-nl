@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874772"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948263"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Beheer van verificatiesessies met voorwaardelijke toegang configureren
 
@@ -136,5 +136,5 @@ Om ervoor te zorgen dat uw beleid werkt zoals verwacht, is het aanbevolen best p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u het artikel [MFA vereisen voor specifieke apps met Azure Active Directory voorwaardelijke toegang](app-based-mfa.md).
+* Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u het artikel [MFA vereisen voor specifieke apps met Azure Active Directory voorwaardelijke toegang](../authentication/tutorial-enable-azure-mfa.md).
 * Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u het artikel [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).

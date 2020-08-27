@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f1860f9645a50789803d509a6a1ea98bc0ea1a9e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856040"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950133"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play
 
@@ -57,7 +57,7 @@ De aankondiging van de model-ID is toegevoegd aan de volgende versies van de Sdk
 
 ## <a name="dps-payload"></a>DPS-nettolading
 
-Apparaten met behulp van de [Device Provisioning Service (DPS)](/iot-dps/) kunnen de gebruiken die `modelId` tijdens het inrichtings proces moet worden gebruikt met behulp van de volgende JSON-nettolading.
+Apparaten met behulp van de [Device Provisioning Service (DPS)](../iot-dps/about-iot-dps.md) kunnen de gebruiken die `modelId` tijdens het inrichtings proces moet worden gebruikt met behulp van de volgende JSON-nettolading.
 
 ```json
 {

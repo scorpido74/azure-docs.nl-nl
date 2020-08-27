@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067406"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949130"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -46,7 +46,7 @@ Hieronder vindt u een lijst met een aantal voor delen Git-integratie voor de ont
 -   **Betere prestaties:** Een gemiddelde fabriek met git-integratie laadt tien keer sneller dan een ontwerp voor de data factory service. Deze verbetering van prestaties is omdat resources worden gedownload via git.
 
 > [!NOTE]
-> Als u een Git-opslag plaats configureert, wordt de Data Factory-service direct in de Azure Data Factory UX gemaakt. Wijzigingen kunnen rechtstreeks aan de service worden aangebracht via Power shell of een SDK.
+> Als u een Git-opslag plaats configureert, wordt de Data Factory-service direct in de Azure Data Factory UX gemaakt. Wijzigingen die zijn aangebracht via Power shell of een SDK worden rechtstreeks naar de Data Factory-service gepubliceerd en worden niet in Git ingevoerd.
 
 ## <a name="author-with-azure-repos-git-integration"></a>Ontwerpen met Git-integratie van Azure-opslagplaatsen
 

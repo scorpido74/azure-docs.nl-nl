@@ -2,7 +2,7 @@
 title: Micro soft Identity platform &-bevestigings stroom voor SAML Bearer | Azure
 description: Meer informatie over het ophalen van gegevens uit Microsoft Graph zonder de gebruiker om referenties te vragen met behulp van de SAML Bearer-bevestigings stroom.
 services: active-directory
-author: umeshbarapatre
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.custom: aaddev
-ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114690"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949351"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Micro soft Identity platform en OAuth 2,0-bevestiging stroom voor SAML Bearer
 Met de OAuth 2,0-bevestigings stroom voor SAML Bearer kunt u een OAuth-toegangs token aanvragen met behulp van een SAML-verklaring wanneer een client een bestaande vertrouwens relatie moet gebruiken. De hand tekening die wordt toegepast op de SAML-verklaring biedt verificatie van de geautoriseerde app. Een SAML-verklaring is een XML-beveiligings token dat is uitgegeven door een id-provider en wordt gebruikt door een service provider. De service provider vertrouwt op basis van de inhoud om het onderwerp van de bewering te identificeren voor beveiligings doeleinden.

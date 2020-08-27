@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 621d39a684495edadf6c3134635ade6b86a4ab77
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 747d780b8f679adf66810bdcdf6e9b263e8d241c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798224"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923752"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Gegevenssets in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-create-datasets.md)
 > * [Huidige versie](concepts-datasets-linked-services.md)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 In dit artikel wordt beschreven welke gegevens sets zijn, hoe ze worden gedefinieerd in JSON-indeling en hoe ze worden gebruikt in Azure Data Factory pijp lijnen.
@@ -71,7 +71,7 @@ Eigenschap | Beschrijving | Vereist |
 -------- | ----------- | -------- |
 naam | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
 type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: DelimitedText, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
-schema | Het schema van de gegevensset geeft het fysieke gegevens type en de vorm aan. | No |
+schema | Het schema van de gegevensset geeft het fysieke gegevens type en de vorm aan. | Nee |
 typeProperties | De type-eigenschappen verschillen voor elk type. Zie [type gegevensset](#dataset-type)voor meer informatie over de ondersteunde typen en hun eigenschappen. | Ja |
 
 Wanneer u het schema van de gegevensset importeert, selecteert u de knop **schema importeren** en kiest u importeren uit de bron of van een lokaal bestand. In de meeste gevallen importeert u het schema rechtstreeks vanuit de bron. Maar als u al een lokaal schema bestand (een Parquet-bestand of CSV met headers) hebt, kunt u Data Factory door sturen om het schema op dat bestand te baseren.

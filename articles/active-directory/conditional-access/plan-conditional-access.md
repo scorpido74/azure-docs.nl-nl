@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339725"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948892"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -54,11 +54,11 @@ Als aanvullende functies vereist zijn, hebt u mogelijk ook gerelateerde licentie
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een werkende Azure AD-Tenant met Azure AD Premium of een proef licentie ingeschakeld. [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
+* Een werkende Azure AD-tenant waarvoor een Azure AD Premium- of proeflicentie is ingeschakeld. [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
 
 * Een account met beheerders bevoegdheden voor voorwaardelijke toegang.
 
-* Een niet-beheerders gebruiker met een wacht woord dat u kent, zoals test User. Als u een gebruiker wilt maken, raadpleegt u [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](../fundamentals/add-users-azure-active-directory.md).
+* Een niet-beheerder met een wachtwoord dat u kent, zoals testuser. Als u een gebruiker wilt maken, raadpleegt u [Snelstart: Nieuwe gebruikers toevoegen aan Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) als een testgebruiker zonder beheerdersbevoegdheden een wachtwoord heeft dat u kent, en u een gebruiker moet maken.
 
 * Een groep waarvan de niet-beheerders gebruiker lid is. Als u een groep wilt maken, raadpleegt u [een groep maken en leden toevoegen in azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
@@ -162,7 +162,7 @@ Documenteer de antwoorden op vragen voor elk beleid voordat u het bouwt.
 
 #### <a name="common-questions-about-access-controls"></a>Veelgestelde vragen over toegangs beheer
 
-[Verlenen of blok keren](concept-conditional-access-grant.md) 
+[Verlenen of blok keren ](concept-conditional-access-grant.md) 
 
 Wilt u toegang verlenen tot resources door een of meer van de volgende handelingen uit te voeren?
 
@@ -305,7 +305,7 @@ Bepaal bij het plannen van uw CA-beleids oplossing of u beleid moet maken om de 
 * [Reageren op mogelijk gemanipuleerde accounts](#respond-to-potentially-compromised-accounts)
 * [Beheerde apparaten vereisen](#require-managed-devices)
 * [Goedgekeurde client toepassingen vereisen](#require-approved-client-apps)
-* [Toegang tot](#block-access)
+* [Toegang blokkeren](#block-access)
 
 ### <a name="require-mfa"></a>MFA vereisen
 
@@ -313,7 +313,7 @@ Algemene use cases voor het vereisen van MFA-toegang:
 
 * [Door beheerders](howto-conditional-access-policy-admin-mfa.md)
 
-* [Naar specifieke apps](app-based-mfa.md)
+* [Naar specifieke apps](../authentication/tutorial-enable-azure-mfa.md)
 
 * [Voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -354,7 +354,7 @@ Andere veelvoorkomende scenario's waarin u de toegang tot uw gebruikers kunt blo
 
 * [Bepaalde netwerk locaties blok keren](howto-conditional-access-policy-location.md) voor toegang tot uw Cloud-apps. U kunt dit beleid gebruiken om bepaalde landen te blok keren waarvan u weet dat verkeer niet afkomstig mag zijn.
 
-* Azure AD biedt ondersteuning voor verouderde verificatie. Verouderde verificatie biedt echter geen ondersteuning voor MFA en voor veel omgevingen is het niet nodig om identiteits beveiliging te verhelpen. In dit geval kunt u [apps blok keren die gebruikmaken van verouderde verificatie](block-legacy-authentication.md) om toegang te krijgen tot uw Tenant bronnen.
+* Azure AD biedt ondersteuning voor verouderde verificatie. Verouderde verificatie biedt echter geen ondersteuning voor MFA en voor veel omgevingen is het niet nodig om identiteits beveiliging te verhelpen. In dit geval kunt u [apps blok keren die gebruikmaken van verouderde verificatie ](block-legacy-authentication.md) om toegang te krijgen tot uw Tenant bronnen.
 
 ## <a name="build-and-test-policies"></a>Beleid voor bouwen en testen
 
@@ -384,18 +384,18 @@ Het test plan is belang rijk voor een vergelijking tussen de verwachte resultate
 | - | - | - |
 | [MFA vereisen wanneer dat niet aan het werk is](untrusted-networks.md)| Geautoriseerde gebruiker meldt zich aan bij de app op een vertrouwde locatie/werk| Gebruiker wordt niet gevraagd om MFA |
 | [MFA vereisen wanneer dat niet aan het werk is](untrusted-networks.md)| Geautoriseerde gebruiker meldt zich aan bij de app, maar niet op een vertrouwde locatie/werk| De gebruiker wordt gevraagd om te MFA en kan zich aanmelden |
-| [MFA vereisen (voor beheerder)](howto-baseline-protect-administrators.md)| De globale beheerder meldt zich aan bij de app| Beheerder wordt gevraagd om te MFA |
-| [Riskante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| Gebruiker meldt zich aan bij de app met een niet-goedgekeurde browser| Beheerder wordt gevraagd om te MFA |
+| [MFA vereisen (voor beheerder)](../fundamentals/concept-fundamentals-security-defaults.md)| De globale beheerder meldt zich aan bij de app| Beheerder wordt gevraagd om te MFA |
+| [Riskante aanmeldingen](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Gebruiker meldt zich aan bij de app met een niet-goedgekeurde browser| Beheerder wordt gevraagd om te MFA |
 | [Apparaatbeheer](require-managed-devices.md)| Geautoriseerde gebruiker probeert zich aan te melden bij een bevoegd apparaat| Toegang verleend |
 | [Apparaatbeheer](require-managed-devices.md)| Geautoriseerde gebruiker probeert zich aan te melden vanaf een niet-geautoriseerd apparaat| Toegang geblokkeerd |
-| [Wachtwoord wijziging voor Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| Geautoriseerde gebruiker meldt zich aan met de aangetaste referenties (aanmelden met een hoog risico)| De gebruiker wordt gevraagd om het wacht woord te wijzigen of de toegang wordt geblokkeerd op basis van uw beleid |
+| [Wachtwoord wijziging voor Risk ante gebruikers](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Geautoriseerde gebruiker meldt zich aan met de aangetaste referenties (aanmelden met een hoog risico)| De gebruiker wordt gevraagd om het wacht woord te wijzigen of de toegang wordt geblokkeerd op basis van uw beleid |
 
 
 ### <a name="configure-the-test-policy"></a>Het test beleid configureren
 
 In de [Azure Portal](https://portal.azure.com/)CONFIGUREERT u CA-beleid onder Azure Active Directory > beveiliging > voorwaardelijke toegang.
 
-Als u meer wilt weten over het maken van CA-beleid, raadpleegt u dit voor beeld: [CA-beleid om te vragen aan MFA wanneer een gebruiker zich aanmeldt bij de Azure Portal](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json). Deze Snelstartgids helpt u bij het volgende:
+Als u meer wilt weten over het maken van CA-beleid, raadpleegt u dit voor beeld: [CA-beleid om te vragen aan MFA wanneer een gebruiker zich aanmeldt bij de Azure Portal](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Deze Snelstartgids helpt u bij het volgende:
 
 * Vertrouwd raken met de gebruikers interface
 
@@ -442,7 +442,7 @@ Gebruik een of meer van de volgende opties voor het geval u de zojuist geïmplem
 > [!NOTE]
 >  Deze optie moet spaarzaam worden gebruikt, alleen in situaties waarin de gebruiker wordt vertrouwd. De gebruiker moet zo snel mogelijk worden toegevoegd aan het beleid of de groep.
 
-* **Het beleid verwijderen.** Als het beleid niet meer nodig is, [verwijdert](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) u het.
+* **Het beleid verwijderen.** Als het beleid niet meer nodig is, [verwijdert](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) u het.
 
 ## <a name="manage-access-to-cloud-apps"></a>Toegang tot Cloud-apps beheren
 
@@ -501,4 +501,4 @@ Wanneer u de gegevens hebt verzameld, raadpleegt u de volgende bronnen:
 
 [Meer informatie over identiteits beveiliging](../identity-protection/overview-identity-protection.md)
 
-[CA-beleid beheren met Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[CA-beleid beheren met Microsoft Graph-API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

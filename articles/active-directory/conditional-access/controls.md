@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922094"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948297"
 ---
 # <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
 
@@ -53,7 +53,7 @@ Als u een aangepast besturings element wilt bewerken, moet u het huidige besturi
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 
-Aangepaste besturings elementen kunnen niet worden gebruikt met automatisering van identiteits beveiliging waarvoor Azure Multi-Factor Authentication is vereist, Azure AD self-service password reset (SSPR), voldoet aan de vereisten voor de multi-factor Authentication-claim om rollen te verhogen in privileged Identity Manager (PIM) of als onderdeel van de inschrijving van intune-apparaten.
+Aangepaste besturings elementen kunnen niet worden gebruikt met automatisering van identiteits beveiliging waarvoor Azure Multi-Factor Authentication is vereist, Azure AD self-service password reset (SSPR), voldoen aan de vereisten voor de multi-factor Authentication-claim om rollen in privileged Identity Manager (PIM) te verhogen, als onderdeel van de inschrijving van intune-apparaten of bij het toevoegen van apparaten aan Azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
 

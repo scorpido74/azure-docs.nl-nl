@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432482"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950048"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-invoeg toepassing voor Azure Machine Learning Studio (klassieke) webservices
 
-**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u code hoeft te schrijven.
@@ -28,7 +28,10 @@ Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u
 1. Open het [Excel-voorbeeld bestand](https://aka.ms/amlexcel-sample-2), dat de Excel-invoeg toepassing bevat en gegevens over reizigers op het Titanic. 
  
     > [!NOTE]
-    > U ziet de lijst met de webservices die zijn gerelateerd aan het bestand en onder een selectie vakje voor ' automatisch voors pellen '. Als u automatische voor speling inschakelt, worden de voor spellingen van **alle** Services telkens bijgewerkt wanneer er een wijziging wordt doorgevoerd in de invoer. Als u dit selectie vakje uitschakelt, moet u op alles voors pellen klikken voor vernieuwen. Ga naar stap 6 voor het inschakelen van automatische voor speling op een service niveau.
+    > - U ziet de lijst met de webservices die zijn gerelateerd aan het bestand en onder een selectie vakje voor ' automatisch voors pellen '. Als u automatische voor speling inschakelt, worden de voor spellingen van **alle** Services telkens bijgewerkt wanneer er een wijziging wordt doorgevoerd in de invoer. Als u dit selectie vakje uitschakelt, moet u op alles voors pellen klikken voor vernieuwen. Ga naar stap 6 voor het inschakelen van automatische voor speling op een service niveau.
+    > - De Azure Machine Learning Excel-invoeg toepassing roept het archief van Office-invoeg toepassingen aan om te laden. Als uw organisatie toegang heeft tot de Office-invoeg toepassingen Store, wordt de fout weer geven bij het laden van de invoeg toepassing. In dit geval implementeert u de Azure Machine Learning Excel-invoeg toepassing vanuit Microsoft 365 beheer centrum. Roep vervolgens de invoeg toepassing aan en voeg de webservice hand matig toe door de URL en API-sleutel te plakken.
+
+ 
 
 2. Kies de webservice door erop te klikken: ' Titanic Survivor Prediction (voor beeld van Excel-invoeg toepassing) [score] ' in dit voor beeld.
    

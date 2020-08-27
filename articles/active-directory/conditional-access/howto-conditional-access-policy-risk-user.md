@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605573"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948059"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Voorwaardelijke toegang: voorwaardelijke toegang op basis van gebruikers risico
 
@@ -29,7 +29,7 @@ Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
-1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid. [Stel de naamgevings standaarden voor uw beleid](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies)in voor meer informatie.
+1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid. [Stel de naamgevings standaarden voor uw beleid](./plan-conditional-access.md#set-naming-standards-for-your-policies)in voor meer informatie.
 1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
@@ -66,4 +66,4 @@ Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 
-[Wat is Azure Active Directory Identity Protection](../identity-protection/overview.md)
+[Wat is Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)

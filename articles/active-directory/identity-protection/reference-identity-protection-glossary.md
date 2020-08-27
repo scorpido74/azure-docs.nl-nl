@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232347"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949171"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection woordenlijst
 
@@ -26,7 +26,7 @@ Een gebruiker met een of meer actieve risico detecties.
 ### <a name="atypical-sign-in-location"></a>Ongewoone aanmeldings locatie
 Een aanmelding vanaf een geografische locatie die niet gebruikelijk is voor de specifieke gebruiker, soort gelijke gebruikers of de Tenant.
 
-### <a name="azure-ad-identity-protection"></a>Azure AD-identiteitsbeveiliging
+### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
 Een beveiligings module van Azure Active Directory die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van een organisatie.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
@@ -62,7 +62,7 @@ Een risico detectie wordt geactiveerd wanneer de huidige gebruikers referenties 
 ### <a name="mitigation"></a>Oplossing
 Een actie om de mogelijkheid van een aanvaller te beperken of te elimineren om te voor komen dat de identiteit of het apparaat is aangetast zonder dat de identiteit of de status van een computer wordt hersteld. Bij een oplossing worden eerdere risico detecties die zijn gekoppeld aan de identiteit of het apparaat niet opgelost.
 
-### <a name="multi-factor-authentication"></a>Meervoudige verificatie
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Een verificatie methode waarvoor twee of meer authenticatie methoden zijn vereist, die iets kunnen bevatten dat de gebruiker heeft, een dergelijk certificaat; iets wat de gebruiker weet, zoals gebruikers namen, wacht woorden of door gegeven zinsdelen; fysieke kenmerken, zoals een vinger afdruk. en persoonlijke kenmerken, zoals een persoonlijke hand tekening.
 
 ### <a name="offline-detection"></a>Offline detectie
@@ -95,7 +95,7 @@ Een actie voor het beveiligen van een identiteit of een apparaat dat eerder is v
 ### <a name="resolved-risk-detection"></a>Opgelost (risico detectie)
 Een status van een risico detectie is hand matig ingesteld door een gebruiker voor identiteits beveiliging, waarmee wordt aangegeven dat de gebruiker een geschikte herstel actie heeft ondernomen voor externe identiteits beveiliging en dat de risico detectie als gesloten moet worden beschouwd.
 
-### <a name="risk-detection-status"></a>Status van de risico detectie
+### <a name="risk-detection-status"></a>Status van de risicodetectie
 Een eigenschap van een risico detectie, die aangeeft of de gebeurtenis actief is en wanneer deze is gesloten, de reden voor het sluiten ervan.
 
 ### <a name="risk-detection-type"></a>Risicodetectietype
@@ -137,16 +137,16 @@ Een risico detectie wordt geactiveerd na een geslaagde aanmelding vanaf een IP-a
 ### <a name="sign-in-from-unfamiliar-location"></a>Aanmelden vanaf onbekende locatie
 Een risico detectie wordt geactiveerd wanneer een gebruiker zich heeft aangemeld vanaf een nieuwe locatie (IP, breedte graad/lengte graad en ASN).
 
-### <a name="sign-in-risk"></a>Aanmeldings risico
+### <a name="sign-in-risk"></a>Aanmeldingsrisico
 Zie risico niveau (aanmelden)
 
-### <a name="sign-in-risk-policy"></a>Beleid voor aanmeldings Risico's
+### <a name="sign-in-risk-policy"></a>Beleid voor aanmeldingsrisico's
 Een beleid voor voorwaardelijke toegang dat het risico op een specifieke aanmelding evalueert en oplossingen toepast op basis van vooraf gedefinieerde voor waarden en regels.
 
 ### <a name="user-compromise-risk"></a>Risico op inbreuk van gebruiker
 Zie risico niveau (inbreuk op gebruiker)
 
-### <a name="user-risk"></a>Gebruikers risico
+### <a name="user-risk"></a>Gebruikersrisico
 Zie risico niveau (inbreuk op de gebruiker).
 
 ### <a name="user-risk-policy"></a>Beleid voor gebruikersrisico's
@@ -158,6 +158,6 @@ Gebruikers die risico detecties hebben, die actief of hersteld zijn
 ### <a name="vulnerability"></a>Beveiligingsprobleem
 Een configuratie of voor waarde in Azure Active Directory, waardoor de Directory gevoelig is voor aanvallen of bedreigingen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

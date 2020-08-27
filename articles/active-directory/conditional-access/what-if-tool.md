@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032880"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948195"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen oplossen met behulp van het hulp programma What If in voorwaardelijke toegang
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen met het hulpprogramma What If in Voorwaardelijke toegang oplossen
 
-[Voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) is een functie van Azure Active Directory (Azure AD) waarmee u kunt bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. Hoe weet u wat u kunt verwachten van het beleid voor voorwaardelijke toegang in uw omgeving? Als u deze vraag wilt beantwoorden, kunt u het **hulp programma voor voorwaardelijke toegang What if**gebruiken.
+[Voorwaardelijke toegang](./overview.md) is een functie van Azure Active Directory (Azure AD) waarmee u kunt bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. Hoe weet u wat u kunt verwachten van het beleid voor voorwaardelijke toegang in uw omgeving? Als u deze vraag wilt beantwoorden, kunt u het **hulp programma voor voorwaardelijke toegang What if**gebruiken.
 
 In dit artikel wordt uitgelegd hoe u dit hulp programma kunt gebruiken om uw beleid voor voorwaardelijke toegang te testen.
 
@@ -30,7 +30,7 @@ Met het **What if beleid voor voorwaardelijke toegang** kunt u inzicht krijgen i
 
 Het hulp programma **What if** biedt een manier om snel te bepalen welke beleids regels van toepassing zijn op een specifieke gebruiker. U kunt de informatie gebruiken, bijvoorbeeld als u een probleem moet oplossen.    
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 In het **What if hulp programma voor voorwaardelijke toegang**moet u eerst de instellingen configureren van het aanmeldings scenario dat u wilt simuleren. Deze instellingen zijn onder meer:
 
@@ -105,4 +105,4 @@ In de lijst met beleids regels die niet van toepassing zijn op uw gebruiker, kun
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de toepassing voor beleid voor voorwaardelijke toegang vindt u in de modus alleen rapport-beleid met behulp van [inzichten en rapportage voor voorwaardelijke toegang](howto-conditional-access-insights-reporting.md).
-- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u het [algemene beleid voorwaardelijke toegang](concept-conditional-access-policy-common.md). 
+- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u het [algemene beleid voorwaardelijke toegang](concept-conditional-access-policy-common.md).

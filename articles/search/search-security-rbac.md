@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009202"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928680"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure-rollen instellen voor beheerders toegang tot Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Voor Azure Cognitive Search zijn rollen gekoppeld aan machtigings niveaus die on
 | --- | --- |
 | Eigenaar |Maak of verwijder de service of een object op de service, inclusief de API-sleutels, indexen, Indexeer functies, Indexeer gegevens bronnen en de planningen voor de Indexeer functie.<p>Bekijk de status van de service, inclusief aantallen en opslag grootte.<p>Een rollidmaatschap toevoegen of verwijderen (alleen een eigenaar kan het lidmaatschap van een rol beheren).<p>Abonnements beheerders en service-eigen aren hebben automatisch lidmaatschap van de rol eigen aren. |
 | Inzender |Hetzelfde toegangs niveau als eigenaar, min Azure Role Management. Een inzender kan bijvoorbeeld objecten maken of verwijderen, of de [API-sleutels](search-security-api-keys.md)weer geven en opnieuw genereren, maar kan geen rollidmaatschap wijzigen. |
-| [Ingebouwde rol Search Service Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Gelijk aan de rol Inzender. |
+| [Ingebouwde rol Search Service Inzender](../role-based-access-control/built-in-roles.md#search-service-contributor) | Gelijk aan de rol Inzender. |
 | Lezer |Bekijk de belangrijkste en metrische gegevens van de service. Leden van deze rol kunnen de index, indexer, gegevens bron of sleutel informatie niet weer geven.  |
 
 Rollen verlenen geen toegangs rechten voor het service-eind punt. Zoek service bewerkingen, zoals index beheer, index populatie en query's op zoek gegevens, worden beheerd via API-Keys, niet op rollen. Zie [Manage API-Keys (](search-security-api-keys.md)Engelstalig) voor meer informatie.

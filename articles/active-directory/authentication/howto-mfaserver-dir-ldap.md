@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f15fcd2d8e42d56deb50ee7eaae7472dae6bf6c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949487"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-verificatie en Azure Multi-Factor Authentication-server
 
@@ -25,7 +25,11 @@ Standaard is de Azure Multi-Factor Authentication-server geconfigureerd om de ge
 Als u Azure Multi-Factor Authentication wilt gebruiken als een LDAP-proxy, plaatst u de Azure-Multi-Factor Authentication-server tussen de LDAP-client (bijvoorbeeld VPN-apparaat, toepassing) en de LDAP-adreslijst server. De Azure Multi-Factor Authentication-server moet worden geconfigureerd om te kunnen communiceren met zowel de clientservers als de LDAP-directory. In deze configuratie accepteert de Azure Multi-Factor Authentication-server LDAP-aanvragen van clientservers en toepassingen, en stuurt deze door naar de doel-LDAP-adreslijstserver om de primaire referenties te valideren. Als de LDAP-adres lijst de primaire referenties valideert, voert Azure Multi-Factor Authentication een tweede identiteits verificatie uit en stuurt deze een antwoord terug naar de LDAP-client. De volledige verificatie slaagt alleen als de LDAP-serververificatie en de verificatie in de tweede stap zijn gelukt.
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Vanaf 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication (MFA) vereisen tijdens aanmeldings gebeurtenissen, moeten Azure Multi-Factor Authentication op basis van de Cloud gebruiken.
+>
+> Zie [zelf studie: aanmeldings gebeurtenissen voor gebruikers beveiligen met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met MFA op basis van de Cloud.
+>
+> Bestaande klanten die MFA-server vóór 1 juli hebben geactiveerd 2019, kunnen de meest recente versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="configure-ldap-authentication"></a>LDAP-verificatie configureren
 

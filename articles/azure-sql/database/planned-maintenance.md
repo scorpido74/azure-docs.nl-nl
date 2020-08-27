@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 08/25/2020
-ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c7b78f14602632068a19d520aeeb940b543be61
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869114"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948212"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure-onderhouds gebeurtenissen plannen in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,6 +24,8 @@ ms.locfileid: "88869114"
 Meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw data base in Azure SQL Database en Azure SQL Managed instance.
 
 ## <a name="what-is-a-planned-maintenance-event"></a>Wat is een gepland onderhouds gebeurtenis?
+
+Om ervoor te zorgen dat Azure SQL Database en Azure SQL Managed instance services veilig, compatibel, stabiel en met het uitvoeren van updates worden uitgevoerd via de service onderdelen bijna continu. Dankzij de moderne en robuuste service architectuur en innovatieve technologieën zoals [Hot patching](https://aka.ms/azuresqlhotpatching), zijn de meeste updates volledig transparant en zijn ze niet van invloed op de beschik baarheid van de service. Nog maar weinig typen updates leiden tot korte service interrupts en vereisen een speciale behandeling. 
 
 Voor elke Data Base bewaart Azure SQL Database en Azure SQL Managed instance een quorum van database replica's waarbij één replica het primaire is. Op elk moment moet een primaire replica online onderhoud zijn en moet ten minste één secundaire replica in orde zijn. Tijdens gepland onderhoud gaan leden van het database quorum één keer offline, met de bedoeling dat er één primaire replica is en ten minste één secundaire replica online om ervoor te zorgen dat er geen downtime van de client is. Wanneer de primaire replica offline moet worden gezet, treedt er een herconfiguratie/failover-proces op waarin de ene secundaire replica de nieuwe primair wordt.  
 

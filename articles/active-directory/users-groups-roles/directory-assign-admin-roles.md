@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2bb8b98bfb936421c0522d4637a288d20a708b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 87bb20d23f773997addd170da09ca8f20d2a8ce7
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795402"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949980"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -56,19 +56,12 @@ De volgende beheerders rollen zijn beschikbaar:
 
 Gebruikers met deze rol kunnen alle aspecten van bedrijfs toepassingen, toepassings registraties en toepassings proxy-instellingen maken en beheren. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
 
-Toepassings beheerders kunnen toepassings referenties beheren waarmee ze de toepassing kunnen imiteren. Gebruikers die aan deze rol zijn toegewezen, kunnen dus toepassings referenties beheren van alleen de toepassingen die niet zijn toegewezen aan Azure AD-rollen of die zijn toegewezen aan de volgende beheerders rollen:
-
-* Toepassingsbeheerder
-* Toepassingsontwikkelaar
-* Beheerder van de cloudtoepassing
-* Adreslijst lezers
-
-Als een toepassing wordt toegewezen aan een andere functie die hierboven niet wordt vermeld, kan de toepassings beheerder geen referenties van die toepassing beheren.
-
 Deze rol verleent ook de mogelijkheid om _toestemming_ te geven aan gedelegeerde machtigingen en toepassings machtigingen, met uitzonde ring van machtigingen voor de Microsoft Graph-API.
 
 > [!IMPORTANT]
 > Deze uitzonde ring betekent dat u nog steeds toestemming kunt geven voor _andere_ apps (bijvoorbeeld niet-micro soft-apps of apps die u hebt geregistreerd), maar niet op machtigingen voor Azure AD zelf. U kunt deze machtigingen nog steeds _aanvragen_ als onderdeel van de app-registratie, maar u moet een Azure AD-beheerder hebben om deze machtigingen te _verlenen_ . Dit betekent dat een kwaadwillende gebruiker de machtigingen niet eenvoudig kan verhogen, bijvoorbeeld door te maken en te verzenden naar een app die naar de hele map kan schrijven en de machtigingen van de app kunnen worden uitgebreid naar een globale beheerder.
+>
+>Deze rol biedt de mogelijkheid om toepassings referenties te beheren. Gebruikers aan wie deze rol is toegewezen, kunnen referenties toevoegen aan een toepassing en deze referenties gebruiken om de identiteit van de toepassing te imiteren. Als de identiteit van de toepassing toegang heeft gekregen tot een resource, zoals de mogelijkheid om gebruikers of andere objecten te maken of bij te werken, kan een gebruiker die is toegewezen aan deze rol deze acties uitvoeren tijdens het imiteren van de toepassing. Deze mogelijkheid om de identiteit van de toepassing te imiteren, kan een uitbrei ding van bevoegdheden hebben ten opzichte van wat de gebruiker via hun roltoewijzingen kan doen. Het is belang rijk om te begrijpen dat het toewijzen van een gebruiker aan de rol toepassings beheerder hen de mogelijkheid biedt om de identiteit van een toepassing te imiteren.
 
 ### <a name="application-developer"></a>[Toepassingsontwikkelaar](#application-developer-permissions)
 
@@ -125,15 +118,11 @@ Doet aankopen, beheert abonnementen, beheert ondersteuningstickets en bewaakt de
 
 ### <a name="cloud-application-administrator"></a>[Beheerder van de cloudtoepassing](#cloud-application-administrator-permissions)
 
-Gebruikers met deze rol hebben dezelfde machtigingen als de rol toepassings beheerder, met uitzonde ring van de mogelijkheid om toepassings proxy te beheren. Met deze rol kunnen alle aspecten van bedrijfs toepassingen en toepassings registraties worden gemaakt en beheerd. Deze rol verleent ook de mogelijkheid om toestemming te geven aan gedelegeerde machtigingen en toepassings machtigingen met uitzonde ring van de Microsoft Graph-API. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
+Gebruikers met deze rol hebben dezelfde machtigingen als de rol toepassings beheerder, met uitzonde ring van de mogelijkheid om toepassings proxy te beheren. Met deze rol kunnen alle aspecten van bedrijfs toepassingen en toepassings registraties worden gemaakt en beheerd. Deze rol verleent ook de mogelijkheid om toestemming te geven aan gedelegeerde machtigingen en toepassings machtigingen, met uitzonde ring van Microsoft Graph en Azure AD Graph. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
 
-Cloud toepassings beheerders kunnen toepassings referenties beheren waarmee ze de toepassing kunnen imiteren. Gebruikers die aan deze rol zijn toegewezen, kunnen dus toepassings referenties beheren van alleen de toepassingen die niet zijn toegewezen aan Azure AD-rollen of die zijn toegewezen aan de volgende beheerders rollen:
+> [!IMPORTANT]
+> Deze rol biedt de mogelijkheid om toepassings referenties te beheren. Gebruikers aan wie deze rol is toegewezen, kunnen referenties toevoegen aan een toepassing en deze referenties gebruiken om de identiteit van de toepassing te imiteren. Als de identiteit van de toepassing toegang heeft gekregen tot een resource, zoals de mogelijkheid om gebruikers of andere objecten te maken of bij te werken, kan een gebruiker die is toegewezen aan deze rol deze acties uitvoeren tijdens het imiteren van de toepassing. Deze mogelijkheid om de identiteit van de toepassing te imiteren, kan een uitbrei ding van bevoegdheden hebben ten opzichte van wat de gebruiker via hun roltoewijzingen kan doen. Het is belang rijk om te begrijpen dat het toewijzen van een gebruiker aan de rol van de Cloud toepassings beheerder de mogelijkheid biedt om de identiteit van een toepassing te imiteren.
 
-* Toepassingsontwikkelaar
-* Beheerder van de cloudtoepassing
-* Adreslijst lezers
-
-Als een toepassing wordt toegewezen aan een andere rol die hierboven niet wordt vermeld, kan de beheerder van de Cloud geen referenties van die toepassing beheren.
 
 ### <a name="cloud-device-administrator"></a>[Beheerder van Cloud apparaat](#cloud-device-administrator-permissions)
 

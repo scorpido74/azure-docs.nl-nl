@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 33f6f87f38000fd7874f0ab19d4eea2e71a9e2e8
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506227"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949708"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -66,11 +66,11 @@ Deze eigenschappen zijn opgegeven in de `appSettings` verzameling in het `siteCo
 "appSettings": [
     {
         "name": "AzureWebJobsStorage",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
     },
     {
         "name": "AzureWebJobsDashboard",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
     }
 ]
 ```
@@ -133,7 +133,7 @@ De functie-app resource wordt gedefinieerd met behulp van een resource van het t
 ```
 
 > [!IMPORTANT]
-> Als u een hosting plan expliciet definieert, zou u een extra item nodig hebben in de dependsOn-matrix:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> Als u een hosting plan expliciet definieert, zou u een extra item nodig hebben in de dependsOn-matrix: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 Een functie-app moet deze toepassings instellingen bevatten:
 
@@ -141,7 +141,7 @@ Een functie-app moet deze toepassings instellingen bevatten:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Een connection string naar een opslag account dat door de functions-runtime wordt gebruikt voor interne wachtrij gebruik | Zie [Storage-account](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | De versie van de Azure Functions runtime                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | De taal stack die moet worden gebruikt voor functies in deze app                                   | `dotnet`,,, `node` `java` `python` of`powershell` |
+| FUNCTIONS_WORKER_RUNTIME     | De taal stack die moet worden gebruikt voor functies in deze app                                   | `dotnet`,,, `node` `java` `python` of `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Dit is alleen nodig als `node` u de taal stack gebruikt. Hiermee geeft u de versie op die moet worden gebruikt              | `10.14.1`                             |
 
 Deze eigenschappen zijn opgegeven in de `appSettings` verzameling in de `siteConfig` eigenschap:
@@ -152,7 +152,7 @@ Deze eigenschappen zijn opgegeven in de `appSettings` verzameling in de `siteCon
         "appSettings": [
             {
                 "name": "AzureWebJobsStorage",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
             },
             {
                 "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -231,11 +231,11 @@ In Windows zijn voor een verbruiks abonnement twee extra instellingen vereist in
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTSHARE",
@@ -278,7 +278,7 @@ Op Linux moet de functie-app zijn `kind` ingesteld op `functionapp,linux` en moe
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -353,11 +353,11 @@ Voor een functie-app voor een Premium-abonnement moet de `serverFarmId` eigensch
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTSHARE",
@@ -450,7 +450,7 @@ Voor een functie-app voor een App Service plan moet de `serverFarmId` eigenschap
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -495,7 +495,7 @@ Linux-apps moeten ook een `linuxFxVersion` eigenschap bevatten onder `siteConfig
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -535,7 +535,7 @@ Als u [een aangepaste container installatie kopie implementeert](./functions-cre
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -617,8 +617,8 @@ Een functie-app heeft veel onderliggende resources die u kunt gebruiken in uw im
           "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
         ],
         "properties": {
-          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
-          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
+          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]",
+          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]",
           "FUNCTIONS_EXTENSION_VERSION": "~2",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
@@ -649,7 +649,7 @@ U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure-portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ebe6671e0a5f4821d06e93e3da4e37bd09a2fa7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 7ac4813e26d847f99f6a3bb7e3eb91bf06797d3c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716942"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949334"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Extern bureaublad-gateway en Azure Multi-Factor Authentication-server met behulp van RADIUS
 
@@ -27,7 +27,13 @@ Omdat Windows-verificatie voor Terminal Services niet wordt ondersteund voor Ser
 Installeer de Azure Multi-Factor Authentication-server op een afzonderlijke server. Deze stuurt de RADIUS-aanvraag vervolgens terug naar de NPS op de Extern bureaublad-gatewayserver. Nadat NPS de gebruikersnaam en het wachtwoord heeft gevalideerd, wordt een antwoord naar de Multi-Factor Authentication-server gestuurd. Vervolgens voert de MFA-server de tweede factor van de verificatie uit en retourneert een resultaat naar de gateway.
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Vanaf 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication (MFA) vereisen tijdens aanmeldings gebeurtenissen, moeten Azure Multi-Factor Authentication op basis van de Cloud gebruiken.
+>
+> Zie [zelf studie: aanmeldings gebeurtenissen voor gebruikers beveiligen met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met MFA op basis van de Cloud.
+>
+> Zie [integratie met RADIUS-verificatie voor Azure multi-factor Authentication](howto-mfa-nps-extension.md)als u gebruikmaakt van op de cloud gebaseerde MFA.
+>
+> Bestaande klanten die MFA-server vóór 1 juli hebben geactiveerd 2019, kunnen de meest recente versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184343"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948909"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Gebruiks voorwaarden van Azure Active Directory
 
@@ -50,7 +50,7 @@ Azure AD-gebruiks voorwaarden hebben de volgende mogelijkheden:
 - Een lijst die uw gebruiks voorwaarden al dan niet heeft geaccepteerd.
 - Hulp bij het beantwoorden van privacy-regelgeving.
 - Een logboek met gebruiks voorwaarden voor naleving en controle weer geven.
-- Gebruiks voorwaarden maken en beheren met behulp van [Microsoft Graph api's](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (momenteel als preview-versie).
+- Gebruiks voorwaarden maken en beheren met behulp van [Microsoft Graph api's](/graph/api/resources/agreement?view=graph-rest-beta) (momenteel als preview-versie).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -253,7 +253,7 @@ Met de optie gebruikers moeten toestemming geven voor **elke Apparaatinstellinge
 Hier volgt een lijst met de ondersteunde platforms en software.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Overige |
+> |  | iOS | Android | Windows 10 | Anders |
 > | --- | --- | --- | --- | --- |
 > | **Systeemeigen app** | Ja | Ja | Ja |  |
 > | **Microsoft Edge** | Ja | Ja | Ja |  |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935259"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950473"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Preview-functies in azure Cognitive Search
 
@@ -35,7 +35,7 @@ Preview-functies die worden overgezet naar algemene Beschik baarheid, worden ver
 |  [**Indexeer functie Azure Data Lake Storage Gen2**](search-howto-index-azure-data-lake-storage.md) | Gegevens bron van Indexeer functie | Inhoud en meta gegevens indexeren van Data Lake Storage Gen2.| [Registreren](https://aka.ms/azure-cognitive-search/indexer-preview) is vereist zodat ondersteuning kan worden ingeschakeld voor uw abonnement op de back-end. Toegang tot deze gegevens bron met behulp van [Create Data Source (rest)](/rest/api/searchservice/create-data-source) met API-Version = 2020-06 -30-preview of API-Version = 2019-05 -06-preview. |
 | [**moreLikeThis**](search-more-like-this.md) | Query’s uitvoeren | Zoekt documenten die relevant zijn voor een specifiek document. Deze functie heeft eerdere voor beelden. | Voeg deze query parameter toe aan [Zoek documenten (rest)](/rest/api/searchservice/search-documents) -aanroepen met API-Version = 2020-06 -30-preview, 2019-05-06-preview, 2016-09-01-preview of 2017-11-11-preview. |
 
-## <a name="calling-preview-rest-apis"></a>De preview REST-Api's aanroepen
+## <a name="how-to-call-a-preview-rest-api"></a>Een preview-REST API aanroepen
 
 Met Azure Cognitive Search worden eerst experimentele functies vooraf vrijgegeven via de REST API en vervolgens via voorlopige versies van de .NET SDK.
 
@@ -47,12 +47,14 @@ Hoewel sommige preview-functies beschikbaar zijn in de portal en .NET SDK, bevat
 
 + Voor beheer bewerkingen [**`2019-10-01-Preview`**](/rest/api/searchmanagement/index-2019-10-01-preview) is de huidige preview-versie.
 
-Oudere previews zijn nog operationeel, maar worden na verloop van tijd verouderd. Als uw code aanroept `api-version=2019-05-06-Preview` of `api-version=2016-09-01-Preview` of `api-version=2017-11-11-Preview` , zijn deze aanroepen nog geldig. De nieuwste preview-versie wordt echter vernieuwd met verbeteringen. 
+Oudere previews zijn nog operationeel, maar worden na verloop van tijd verouderd. Als uw code aanroept `api-version=2019-05-06-Preview` of `api-version=2016-09-01-Preview` of `api-version=2017-11-11-Preview` , zijn deze aanroepen nog geldig. De nieuwste preview-versie wordt echter vernieuwd met verbeteringen.
 
 De volgende voorbeeld syntaxis illustreert een aanroep van de preview API-versie.
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 De Azure Cognitive Search-service is beschikbaar in meerdere versies. Zie [API-versies](search-api-versions.md)voor meer informatie.
