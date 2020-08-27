@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/20/2019
 ms.author: trbye
-ms.openlocfilehash: cef47d1c6598e73d2c17c6799f3de90458206a8d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919009"
 ---
-# <a name="custom-keyword-basics"></a>Basis beginselen van aangepaste sleutel woorden
+# <a name="custom-keyword-basics"></a>Basisbeginselen van aangepaste trefwoorden
 
 In dit artikel leert u de basis beginselen van het werken met aangepaste tref woorden, met behulp van speech Studio en de Speech SDK. Een tref woord is een woord of korte woord groep waarmee uw product spraak kan worden geactiveerd. Trefwoord modellen maakt u in speech Studio en vervolgens exporteert u een model bestand dat u gebruikt met de spraak-SDK in uw toepassingen.
 

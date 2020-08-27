@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826237"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892334"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 Deze opdracht zorgt ervoor dat de momentopnamen worden gemaakt via host in plaats van Guest. Probeer de back-upbewerking opnieuw.
 
-**Stap 2**: Probeer het back-upschema te wijzigen in een keer wanneer de virtuele machine minder belasting heeft (minder CPU/IOps enzovoort.)
+**Stap 2**: Probeer het back-upschema te wijzigen in een keer wanneer de virtuele machine minder belasting heeft (zoals minder CPU of IOps)
 
 **Stap 3**: Probeer [de grootte van de virtuele machine te verg Roten](https://azure.microsoft.com/blog/resize-virtual-machines/) en voer de bewerking opnieuw uit
 

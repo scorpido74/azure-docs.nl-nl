@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen met een script
 description: Meer informatie over het instellen van een Azure Migrate apparaat met een script
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 43e47c6b4121a2f389dfec27873b90b7031c4f2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102443"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929972"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Een apparaat met een script instellen
 
@@ -36,7 +36,7 @@ Hyper-V | Windows Server 2016, met 16 GB geheugen, acht Vcpu's, ongeveer 80 GB a
 
 ## <a name="set-up-the-appliance-for-vmware"></a>Het apparaat voor VMware instellen
 
-Als u het apparaat voor VMware wilt instellen, downloadt u het zip-bestand met de naam AzureMigrateInstaller.zip van [hier](https://go.microsoft.com/fwlink/?linkid=2105112)en extraheert u de inhoud. U voert het Power shell-script uit om de web-app voor het toestel te starten. U stelt het apparaat in en configureert het voor de eerste keer. Vervolgens registreert u het apparaat met het Azure Migrate-project.
+Als u het apparaat voor VMware wilt instellen, downloadt u het zip-bestand met de naam AzureMigrateInstaller-Server-Public.zip van de portal of van [hier](https://go.microsoft.com/fwlink/?linkid=2140334)en extraheert u de inhoud. U voert het Power shell-script uit om de web-app voor het toestel te starten. U stelt het apparaat in en configureert het voor de eerste keer. Vervolgens registreert u het apparaat met het Azure Migrate-project.
 
 
 ### <a name="verify-file-security"></a>Bestands beveiliging controleren
@@ -46,12 +46,12 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
 3. Controleer de meest recente versie en het script van het apparaat voor de open bare Azure-Cloud:
 
     **Algoritme** | **Downloaden** | **SHA256**
     --- | --- | ---
-    VMware (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
+    VMware (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140334) | 5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
 
 
 
@@ -74,7 +74,7 @@ Het script uitvoeren:
 3. Wijzig de Power shell-map in de map met de inhoud die is geëxtraheerd uit het gedownloade zip-bestand.
 4. Voer het script **AzureMigrateInstaller.ps1**als volgt uit:
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
    
 5. Nadat het script is uitgevoerd, wordt de web-app voor het toestel gestart, zodat u het apparaat kunt instellen. Als u problemen ondervindt, controleert u de script logboeken op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log.
 
@@ -84,7 +84,7 @@ Zorg ervoor dat het apparaat verbinding kan maken met Azure-Url's voor de [open 
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Het apparaat instellen voor Hyper-V
 
-Als u het apparaat voor Hyper-V wilt instellen, downloadt u het zip-bestand met de naam AzureMigrateInstaller.zip van [hier](https://go.microsoft.com/fwlink/?linkid=2105112)en extraheert u de inhoud. U voert het Power shell-script uit om de web-app voor het toestel te starten. U stelt het apparaat in en configureert het voor de eerste keer. Vervolgens registreert u het apparaat met het Azure Migrate-project.
+Als u het apparaat voor Hyper-V wilt instellen, downloadt u het zip-bestand met de naam AzureMigrateInstaller-Server-Public.zip van de portal of van [hier](https://go.microsoft.com/fwlink/?linkid=2105112)en extraheert u de inhoud. U voert het Power shell-script uit om de web-app voor het toestel te starten. U stelt het apparaat in en configureert het voor de eerste keer. Vervolgens registreert u het apparaat met het Azure Migrate-project.
 
 
 ### <a name="verify-file-security"></a>Bestands beveiliging controleren
@@ -94,13 +94,13 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
 
 3. Controleer de meest recente versie en het script van het apparaat voor de open bare Azure-Cloud:
 
     **Scenario** | **Downloaden** | **SHA256**
     --- | --- | ---
-    Hyper-V (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2105112) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+    Hyper-V (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140334) |  5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
 
 ### <a name="run-the-script"></a>Het script uitvoeren
 
@@ -119,7 +119,9 @@ Het script uitvoeren:
 1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate-apparaat.
 2. Start Power shell op de computer met Administrator bevoegdheden (met verhoogde bevoegdheden).
 3. Wijzig de Power shell-map in de map met de inhoud die is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script **AzureMigrateInstaller.ps1**als volgt uit:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
+4. Voer het script **AzureMigrateInstaller.ps1**als volgt uit: 
+
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
 5. Nadat het script is uitgevoerd, wordt de web-app voor het toestel gestart, zodat u het apparaat kunt instellen. Als u problemen ondervindt, controleert u de script logboeken op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253304"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922094"
 ---
 # <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
 
@@ -33,11 +33,11 @@ Kopieer de JSON-gegevens en plak deze in het bijbehorende tekstvak. Breng geen w
 
 De optie voor het maken van een aangepast besturings element bevindt zich in de sectie **beheren** van de pagina **voorwaardelijke toegang** .
 
-![Beheer](./media/controls/82.png)
+![Aangepaste besturings elementen interface in voorwaardelijke toegang](./media/controls/custom-controls-conditional-access.png)
 
 Als u op **nieuw aangepast besturings element**klikt, wordt een Blade geopend met een tekstvak voor de JSON-gegevens van uw besturings element.  
 
-![Beheer](./media/controls/81.png)
+![Nieuw aangepast besturings element](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>Aangepaste besturings elementen verwijderen
 
@@ -53,7 +53,7 @@ Als u een aangepast besturings element wilt bewerken, moet u het huidige besturi
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 
-Aangepaste besturings elementen kunnen niet worden gebruikt met automatisering van identiteits beveiliging waarvoor Azure Multi-Factor Authentication is vereist, Azure AD self-service password reset (SSPR), voldoen aan de vereisten voor de multi-factor Authentication-claim of voor het verhogen van rollen in privileged Identity Manager (PIM).
+Aangepaste besturings elementen kunnen niet worden gebruikt met automatisering van identiteits beveiliging waarvoor Azure Multi-Factor Authentication is vereist, Azure AD self-service password reset (SSPR), voldoet aan de vereisten voor de multi-factor Authentication-claim om rollen te verhogen in privileged Identity Manager (PIM) of als onderdeel van de inschrijving van intune-apparaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

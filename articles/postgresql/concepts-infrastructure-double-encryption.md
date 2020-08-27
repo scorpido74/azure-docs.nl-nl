@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067491"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918091"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for PostgreSQL-infra structuur
 
@@ -62,6 +62,12 @@ De versleutelings mogelijkheden die door Azure Database for PostgreSQL worden ge
 Voor Azure Database for PostgreSQL heeft de ondersteuning voor infra structuur met dubbele versleuteling met door de service beheerde sleutel de volgende beperkingen:
 
 * Ondersteuning voor deze functionaliteit is beperkt tot de prijs categorie **Algemeen** en **geoptimaliseerd voor geheugen** .
+* U kunt een Azure Database for PostgreSQL maken met een infra structuur met dubbele code ring ingeschakeld in de volgende regio's:
+
+   * VS - oost
+   * VS - zuid-centraal
+   * US - west 2
+   
 * Deze functie wordt alleen ondersteund in regio's en servers, die ondersteuning bieden voor opslag tot Maxi maal 16 TB. Raadpleeg de [opslag documentatie](concepts-pricing-tiers.md#storage)voor de lijst met Azure-regio's die ondersteuning bieden voor opslag tot 16 TB.
 
     > [!NOTE]

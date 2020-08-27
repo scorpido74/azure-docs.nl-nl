@@ -5,15 +5,16 @@ services: cloud-services
 documentationcenter: .net
 author: tgore03
 ms.service: cloud-services
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142312"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930057"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>De levens cyclus van een web-of worker-rol in .NET aanpassen
 Wanneer u een worker-rol maakt, breidt u de klasse [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) uit. deze biedt methoden die u kunt opheffen, waarmee u kunt reageren op levenscyclus gebeurtenissen. Voor webrollen is deze klasse optioneel, dus u moet deze gebruiken om te reageren op levenscyclus gebeurtenissen.

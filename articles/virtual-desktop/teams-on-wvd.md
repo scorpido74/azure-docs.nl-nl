@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509600"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922562"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
 >[!IMPORTANT]
->Media optimalisatie voor teams wordt niet ondersteund voor Microsoft 365-overheids omgevingen.
+>Media optimalisatie voor teams wordt ondersteund voor GCC-omgevingen (Microsoft 365 Government). Media optimalisatie voor teams wordt niet ondersteund voor GCC-High of DoD.
 
 >[!NOTE]
 >Media optimalisatie voor micro soft teams is alleen beschikbaar voor de Windows desktop-client op Windows 10-computers. Voor media optimalisaties is Windows desktop client versie 1.2.1026.0 of hoger vereist.
@@ -32,7 +32,7 @@ Voordat u micro soft teams kunt gebruiken op het virtuele bureau blad van Window
 - [Bereid uw netwerk](/microsoftteams/prepare-network/) voor op micro soft teams.
 - Installeer de [Windows desktop-client](connect-windows-7-10.md) op een Windows 10-of Windows 10 IOT Enter prise-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Verbinding maken met een Windows 10-of Windows 10 Enter prise virtual machine (VM).
-- Installeer de teams bureau blad-app op de host met behulp van installatie per computer. Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
+- [Down load](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) en installeer de teams bureau blad-app op de host met behulp van installatie per computer. Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
 
 ## <a name="install-the-teams-desktop-app"></a>De teams bureau blad-app installeren
 
@@ -94,8 +94,8 @@ U kunt de teams bureau blad-app implementeren met behulp van een installatie per
 
         Hiermee worden teams geïnstalleerd in de map Program Files (x86) op een 64-bits besturings systeem en in de map Program Files op een 32-bits besturings systeem. Op dit moment is de installatie van de gouden installatie kopie voltooid. Het installeren van teams per computer is vereist voor niet-permanente Setup.
 
-        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma voor het hele team van de computer weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen. 
-       
+        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma voor het hele team van de computer weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen.
+
         > [!NOTE]
         > Gebruikers en beheerders kunnen de functie voor het automatisch starten van teams tijdens het aanmelden op dit moment niet uitschakelen.
 

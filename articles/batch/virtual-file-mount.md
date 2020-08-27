@@ -2,13 +2,14 @@
 title: Een virtueel bestands systeem koppelen aan een groep
 description: Meer informatie over het koppelen van een virtueel bestands systeem aan een batch-pool.
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144419"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921627"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
@@ -159,20 +160,20 @@ Als u de logboek bestanden voor fout opsporing wilt ophalen, gebruikt u [OutputF
 
 ## <a name="supported-skus"></a>Ondersteunde Sku's
 
-| Publisher | Aanbieding | SKU | Azure Files share | Blobfuse | NFS-koppeling | CIFS koppelen |
+| Uitgever | Aanbieding | SKU | Azure Files share | Blobfuse | NFS-koppeling | CIFS koppelen |
 |---|---|---|---|---|---|---|
 | batch | Rendering-centos73 | aanwijzer | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04-LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Credativ | Debian | 8| :heavy_check_mark: | BxDxH | :heavy_check_mark: | :heavy_check_mark: |
 | Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | micro soft-Ads | Linux-Data-Science-VM | linuxdsvm | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| micro soft-Azure-batch | CentOS-container | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| micro soft-Azure-batch | CentOS-container-RDMA | 7.4 | :heavy_check_mark: <br>Opmerking: ondersteunt A_8 of 9 opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-Azure-batch | CentOS-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-Azure-batch | CentOS-container-RDMA | 7,4 | :heavy_check_mark: <br>Opmerking: ondersteunt A_8 of 9 opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | micro soft-Azure-batch | Ubuntu-Server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | micro soft-dsvm | Linux-Data-Science-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7,6 | BxDxH | BxDxH | BxDxH | BxDxH |
+| Oracle | Oracle-Linux | 7.6 | BxDxH | BxDxH | BxDxH | BxDxH |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | BxDxH | BxDxH | BxDxH |
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079443"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922749"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Voor beeld: synoniemen voor Azure-Cognitive Search in C toevoegen #
 
@@ -22,8 +22,8 @@ Met synoniemen breidt u een query uit door termen te gebruiken die semantisch ov
 In azure Cognitive Search worden synoniemen gedefinieerd in een *synoniemen toewijzing*via *toewijzings regels* die gelijkwaardige voor waarden koppelen. In dit voor beeld worden de essentiële stappen beschreven voor het toevoegen en gebruiken van synoniemen met een bestaande index. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Maak een synoniemen toewijzing met behulp van de [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) -klasse. 
-> * Stel de eigenschap [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in op velden die query-uitbrei ding moeten ondersteunen via synoniemen.
+> * Maak een synoniemen toewijzing met behulp van de  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) -klasse. 
+> * Stel de eigenschap [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in op velden die query-uitbrei ding moeten ondersteunen via synoniemen.
 
 U kunt een veld met synoniemen uitvoeren zoals u dat normaal zou doen. Er is geen aanvullende query syntaxis vereist voor toegang tot synoniemen.
 
@@ -38,8 +38,8 @@ Voor de zelfstudie gelden de volgende vereisten:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search-service](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET-bibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Microsoft.Azure.Search .NET-bibliotheek](/dotnet/api/overview/azure/search)
+* [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>Overzicht
 
@@ -77,7 +77,7 @@ Met 'voor en na'-query's wordt de meerwaarde van synoniemen aangetoond. In dit v
       Console.ReadKey();
   }
 ```
-De stappen voor het maken en vullen van de voor beeld-index worden uitgelegd in [het gebruik van Azure Cognitive Search van een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+De stappen voor het maken en vullen van de voor beeld-index worden uitgelegd in [het gebruik van Azure Cognitive Search van een .NET-toepassing](./search-howto-dotnet-sdk.md).
 
 ## <a name="before-queries"></a>'Voor'-query's
 
@@ -173,7 +173,7 @@ De snelste manier om na een voor beeld op te schonen is door de resource groep t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit voor beeld wordt de functie synoniemen in C# code getoond voor het maken en plaatsen van toewijzings regels en roept u vervolgens de synoniemen toewijzing aan in een query. Aanvullende informatie vindt u in de referentiedocumentatie voor de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) en [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
+In dit voor beeld wordt de functie synoniemen in C# code getoond voor het maken en plaatsen van toewijzings regels en roept u vervolgens de synoniemen toewijzing aan in een query. Aanvullende informatie vindt u in de referentiedocumentatie voor de [.NET-SDK](/dotnet/api/microsoft.azure.search) en [REST-API](/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
 > [Synoniemen gebruiken in azure Cognitive Search](search-synonyms.md)

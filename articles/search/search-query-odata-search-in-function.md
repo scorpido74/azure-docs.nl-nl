@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206915"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922817"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData- `search.in` functie in Azure Cognitive Search
 
@@ -82,7 +82,7 @@ De para meters worden gedefinieerd in de volgende tabel:
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Prestaties van`search.in`
+### <a name="performance-of-searchin"></a>Prestaties van `search.in`
 
 Als u gebruikt `search.in` , kunt u een sub-Second-reactie tijd verwachten wanneer de tweede para meter een lijst met honderden of duizenden waarden bevat. Er is geen expliciete limiet voor het aantal items dat u kunt door geven `search.in` , hoewel u nog steeds beperkt bent door de maximum grootte van de aanvraag. De latentie neemt echter toe naarmate het aantal waarden toeneemt.
 
@@ -123,4 +123,4 @@ Alle hotels zoeken zonder tag ' Motel ' of ' cabin':
 - [Filters in azure Cognitive Search](search-filters.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)
