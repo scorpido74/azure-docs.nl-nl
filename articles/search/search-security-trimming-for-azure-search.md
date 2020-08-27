@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496414"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928520"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Beveiligings filters voor het verkleinen van de resultaten in azure Cognitive Search
 
@@ -109,13 +109,13 @@ Als u een bestaand document wilt bijwerken met de lijst met groepen, kunt u de `
 }
 ```
 
-Voor gedetailleerde informatie over het toevoegen of bijwerken van documenten, kunt u [documenten bewerken](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)lezen.
+Voor gedetailleerde informatie over het toevoegen of bijwerken van documenten, kunt u [documenten bewerken](/rest/api/searchservice/addupdate-or-delete-documents)lezen.
    
 ## <a name="apply-the-security-filter"></a>Het beveiligings filter Toep assen
 
 Als u documenten wilt knippen op basis van `group_ids` toegang, moet u een zoek opdracht geven met een `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filter, waarbij ' group_id1, group_id2,... ' zijn de groepen waartoe de uitgever van de zoek aanvraag behoort.
 Dit filter komt overeen met alle documenten waarvoor het `group_ids` veld een van de opgegeven id's bevat.
-Voor volledige informatie over het zoeken van documenten met Azure Cognitive Search, kunt u [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents)lezen.
+Voor volledige informatie over het zoeken van documenten met Azure Cognitive Search, kunt u [Zoek documenten](/rest/api/searchservice/search-documents)lezen.
 Houd er rekening mee dat in dit voor beeld wordt uitgelegd hoe u met een POST-aanvraag naar documenten zoekt.
 
 De HTTP POST-aanvraag uitgeven:
@@ -156,7 +156,7 @@ U moet de documenten weer geven `group_ids` met ' group_id1 ' of ' group_id2 '. 
 
 Zo kunt u resultaten filteren op basis van de gebruikers-id en Azure Cognitive Search- `search.in()` functie. U kunt deze functie gebruiken om te voldoen aan principe-id's waarmee de gebruiker die de aanvraag heeft ingediend, overeenkomt met de principal-id's die zijn gekoppeld aan elk doel document. Wanneer een zoek opdracht wordt verwerkt, `search.in` filtert de functie de zoek resultaten op waarvoor geen van de principals van de gebruiker lees toegang heeft. De principal-id's kunnen dingen vertegenwoordigen, zoals beveiligings groepen, rollen of zelfs de eigen identiteit van de gebruiker.
  
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Active Directory toegangs beheer op basis van een id met behulp van Azure Cognitive Search filters](search-security-trimming-for-azure-search-with-aad.md)
 + [Filters in azure Cognitive Search](search-filters.md)

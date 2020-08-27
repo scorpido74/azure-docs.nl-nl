@@ -2,13 +2,13 @@
 title: Een sjabloon specificatie met gekoppelde sjablonen maken
 description: Meer informatie over het maken van een sjabloon spec met gekoppelde sjablonen.
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/26/2020
+ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387860"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936364"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken (preview)
 
@@ -19,7 +19,7 @@ Meer informatie over het maken van een [sjabloon specificatie](template-specs.md
 Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 > [!NOTE]
-> De sjabloon specificaties zijn momenteel beschikbaar als preview-versie. Als u deze wilt gebruiken, moet u [zich aanmelden voor de preview-versie](https://aka.ms/templateSpecOnboarding).
+> Sjabloonspecificaties is momenteel beschikbaar als preview-versie. Als u deze wilt gebruiken, moet u [zich aanmelden voor de preview-versie](https://aka.ms/templateSpecOnboarding).
 
 ## <a name="create-linked-templates"></a>Gekoppelde sjablonen maken
 
@@ -35,7 +35,7 @@ De gekoppelde sjabloon heet **linkedTemplate.jsop**en wordt opgeslagen in een su
 
 De `relativePath` eigenschap is altijd relatief ten opzichte van het sjabloon bestand waar `relativePath` is gedeclareerd, dus als er een andere linkedTemplate2.jsis aangeroepen vanuit linkedTemplate.jsop en linkedTemplate2.jsop wordt opgeslagen in dezelfde submap voor artefacten, is de relativePath die is opgegeven in linkedTemplate.js, alleen `linkedTemplate2.json` .
 
-1. Maak de hoofd sjabloon met de volgende JSON. Sla de hoofd sjabloon **op alsazuredeploy.jsop** de lokale computer. In deze zelf studie wordt ervan uitgegaan dat u hebt opgeslagen in een pad **c:\Templates\linkedTS\azuredeploy.js** , maar u kunt een wille keurig pad gebruiken.
+1. Maak de hoofd sjabloon met de volgende JSON. Sla de hoofd sjabloon ** op alsazuredeploy.jsop** de lokale computer. In deze zelf studie wordt ervan uitgegaan dat u hebt opgeslagen in een pad **c:\Templates\linkedTS\azuredeploy.js** , maar u kunt een wille keurig pad gebruiken.
 
     ```json
     {
@@ -158,11 +158,13 @@ De `relativePath` eigenschap is altijd relatief ten opzichte van het sjabloon be
     }
     ```
 
-1. Sla de sjabloon **op alslinkedTemplate.js** in de map **artefacten** .
+1. Sla de sjabloon ** op alslinkedTemplate.js** in de map **artefacten** .
 
-## <a name="create-template-spec"></a>Sjabloon specificatie maken
+## <a name="create-template-spec"></a>Sjabloonspecificatie maken
 
 Sjabloon specificaties worden opgeslagen in resource groepen.  Maak een resource groep en maak vervolgens een sjabloon specificatie met het volgende script. De naam van de sjabloon specificatie is **webspec**.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -170,22 +172,51 @@ New-AzResourceGroup `
   -Location westus2
 
 New-AzTemplateSpec `
-  -ResourceGroupName templateSpecRG `
   -Name webSpec `
   -Version "1.0.0.0" `
+  -ResourceGroupName templateSpecRG `
   -Location westus2 `
   -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name templateSpecRG \
+  --location westus2
+
+az template-specs create \
+  --name webSpec \
+  --version "1.0.0.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+```
+
+---
+
 Wanneer u klaar bent, kunt u de sjabloon specificatie bekijken vanuit de Azure Portal of met behulp van de volgende cmdlet:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 ```
 
-## <a name="deploy-template-spec"></a>Sjabloon specificatie implementeren
+# <a name="cli"></a>[CLI](#tab/azure-cli)
 
-U kunt nu de sjabloon specificatie implementeren. het implementeren van de sjabloon spec is net als het implementeren van de sjabloon die het bevat, met uitzonde ring van de resource-ID van de sjabloon specificatie. U gebruikt dezelfde implementatie opdrachten, en als dat nodig is, geeft u de parameter waarden door voor de sjabloon specificatie.
+```azurecli
+az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+```
+
+---
+
+## <a name="deploy-template-spec"></a>Sjabloonspecificatie implementeren
+
+U kunt nu de sjabloonspecificatie implementeren. De sjabloonspecificatie wordt op dezelfde manier geïmplementeerd als de sjabloon in de sjabloonspecificatie. Het enige verschil is dat u de resource-id van de sjabloonspecificatie doorgeeft. U gebruikt dezelfde implementatieopdrachten en geeft indien nodig de parameterwaarden voor de sjabloonspecificatie door.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -198,6 +229,25 @@ New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName webRG
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+
+az deployment group create \
+  --resource-group webRG \
+  --template-spec $id
+```
+
+> [!NOTE]
+> Er is een bekend probleem met het ophalen van de sjabloon specificatie-id en wijst deze vervolgens toe aan een variabele in Windows Power shell.
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

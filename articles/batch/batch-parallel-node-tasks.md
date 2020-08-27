@@ -3,13 +3,13 @@ title: Taken parallel uitvoeren om reken resources te optimaliseren
 description: Verhoog de efficiëntie en verlaag de kosten met minder reken knooppunten en voer gelijktijdige taken uit op elk knoop punt in een Azure Batch pool
 ms.topic: how-to
 ms.date: 04/17/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b13f7f276740cd4f37e8d4c4ba1f2967d919ccf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: e4c98244755cae7a606ebe26cbadef53ca5fd922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961571"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926283"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gelijktijdig taken uitvoeren om het gebruik van batch Compute-knoop punten te maximaliseren 
 

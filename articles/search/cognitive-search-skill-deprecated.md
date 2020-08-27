@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85f3b9862bd8155c1a4b11860dc82d92a2f9e810
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936092"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Afgeschafte cognitieve vaardig heden in azure Cognitive Search
 
@@ -38,7 +38,7 @@ In dit document worden cognitieve vaardig heden beschreven die als afgeschaft wo
 
 Gebruik in plaats daarvan [micro soft. skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) . Het biedt de meeste functionaliteit van de NamedEntityRecognitionSkill met een hogere kwaliteit. Het bevat ook uitgebreide informatie over de complexe uitvoer velden.
 
-Als u wilt migreren naar de [kwalificatie voor entiteits herkenning](cognitive-search-skill-entity-recognition.md), moet u een of meer van de volgende wijzigingen door voeren in uw vaardigheids definitie. U kunt de vaardigheids definitie bijwerken met behulp van de [Update-vaardigheidset-API](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
+Als u wilt migreren naar de [kwalificatie voor entiteits herkenning](cognitive-search-skill-entity-recognition.md), moet u een of meer van de volgende wijzigingen door voeren in uw vaardigheids definitie. U kunt de vaardigheids definitie bijwerken met behulp van de [Update-vaardigheidset-API](/rest/api/searchservice/update-skillset).
 
 > [!NOTE]
 > Momenteel wordt de betrouwbaarheids score als concept niet ondersteund. De `minimumPrecision` para meter bevindt zich op de `EntityRecognitionSkill` voor toekomstig gebruik en voor achterwaartse compatibiliteit.

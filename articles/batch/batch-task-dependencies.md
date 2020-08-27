@@ -3,13 +3,13 @@ title: Taak afhankelijkheden maken om taken uit te voeren
 description: Maak taken die afhankelijk zijn van de voltooiing van andere taken voor het verwerken van MapReduce stijl en soort gelijke big data werk belastingen in Azure Batch.
 ms.topic: how-to
 ms.date: 05/22/2017
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4aad67b4537befd251798aac7601bc4efcc276f2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 05b1bb289c215208be448d8ca7de144c82b313b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936976"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Taak afhankelijkheden maken om taken uit te voeren die afhankelijk zijn van andere taken
 
@@ -60,7 +60,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Met dit code fragment maakt u een afhankelijke taak met taak-ID "bloemen". De taak "bloemen" is afhankelijk van de taken "regen" en "Sun". Taak "bloemen" wordt alleen gepland om te worden uitgevoerd op een reken knooppunt nadat taken "regen" en "Sun" zijn voltooid.
 
 > [!NOTE]
-> Standaard wordt een taak als voltooid beschouwd als deze de status **voltooid** heeft en de **afsluit code** ervan `0` . In batch .NET betekent dit een [CloudTask][net_cloudtask]. Waarde van de eigenschap [State][net_taskstate] van `Completed` en de [TaskExecutionInformation][net_taskexecutioninformation]van het CloudTask.[ ][net_exitcode]De waarde van de eigenschap ExitCode is `0` . Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie over hoe u dit kunt wijzigen.
+> Standaard wordt een taak als voltooid beschouwd als deze de status **voltooid** heeft en de **afsluit code** ervan `0` . In batch .NET betekent dit een [CloudTask][net_cloudtask]. Waarde van de eigenschap [State][net_taskstate] van `Completed` en de [TaskExecutionInformation][net_taskexecutioninformation]van het CloudTask.[ ][net_exitcode] De waarde van de eigenschap ExitCode is `0` . Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie over hoe u dit kunt wijzigen.
 
 ## <a name="dependency-scenarios"></a>Afhankelijkheids scenario's
 

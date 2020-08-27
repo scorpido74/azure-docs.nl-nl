@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399883"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944490"
 ---
 :::row:::
     :::column span="3":::
@@ -27,9 +28,9 @@ ms.locfileid: "81399883"
 
 Voor de Speech SDK in Windows is <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">micro soft Visual C++ Redistributable voor Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> op het systeem vereist.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Installeren voor x86<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Installeren voor x64<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Installeren voor ARMx64<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Installeren voor x86 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Installeren voor x64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Installeren voor ARMx64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ### <a name="c"></a>C#
 
@@ -39,7 +40,7 @@ Voor invoer van de microfoon moeten de Media Foundation-bibliotheken zijn geïns
 
 De vereiste spraak-SDK-bestanden kunnen worden geïmplementeerd in dezelfde map als uw toepassing. Op deze manier kan uw toepassing rechtstreeks toegang krijgen tot de bibliotheken. Zorg ervoor dat u de juiste versie (x86/x64) selecteert die overeenkomt met uw toepassing.
 
-| Naam                                            | Functie                                             |
+| Name                                            | Functie                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core-SDK, vereist voor systeem eigen en beheerde implementatie |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Vereist voor beheerde implementatie                      |
@@ -48,7 +49,7 @@ De vereiste spraak-SDK-bestanden kunnen worden geïmplementeerd in dezelfde map 
 > Vanaf de release-1.3.0 het bestand `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (geleverd in eerdere releases) is niet meer nodig. De functionaliteit is nu geïntegreerd in de core-SDK.
 
 > [!IMPORTANT]
-> Voor het C#-project Windows Forms app (.NET Framework) moet u ervoor zorgen dat de bibliotheken zijn opgenomen in de implementatie-instellingen van uw project. U kunt dit controleren onder `Properties -> Publish Section`. Klik op `Application Files` de knop en zoek de bijbehorende bibliotheken in de schuif lijst omlaag. Zorg ervoor dat de waarde is ingesteld `Included`op. Visual Studio neemt het bestand op wanneer het project wordt gepubliceerd/geïmplementeerd.
+> Voor het C#-project Windows Forms app (.NET Framework) moet u ervoor zorgen dat de bibliotheken zijn opgenomen in de implementatie-instellingen van uw project. U kunt dit controleren onder `Properties -> Publish Section` . Klik op de `Application Files` knop en zoek de bijbehorende bibliotheken in de schuif lijst omlaag. Zorg ervoor dat de waarde is ingesteld op `Included` . Visual Studio neemt het bestand op wanneer het project wordt gepubliceerd/geïmplementeerd.
 
 ### <a name="c"></a>C++
 

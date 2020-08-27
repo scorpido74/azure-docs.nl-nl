@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113869"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935531"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verwijzen naar aantekeningen in een Azure Cognitive Search vaardig heden
 
@@ -95,7 +95,7 @@ Wanneer aantekeningen matrices of verzamelingen teken reeksen zijn, wilt u mogel
 
 Soms moet u alle aantekeningen van een bepaald type groeperen om deze door te geven aan een bepaalde vaardigheid. Overweeg een hypothetische aangepaste vaardigheid die de meest voorkomende achternaam identificeert van de achternamen die in voor beeld 2 zijn geëxtraheerd. Als u alleen de laatste namen wilt opgeven voor de aangepaste vaardigheid, geeft u de context op als `"/document"` en de invoer als `"/document/people/*/lastname"` .
 
-U ziet dat de kardinaliteit van `"/document/people/*/lastname"` groter is dan die van het document. Er kunnen 10 achternaam-knoop punten zijn zolang er slechts één document knooppunt is voor dit document. In dat geval wordt met het systeem automatisch een matrix gemaakt met `"/document/people/*/lastname"` alle elementen in het document.
+U ziet dat de kardinaliteit van `"/document/people/*/lastname"` groter is dan die van het document. Er kunnen 10 achternaam-knoop punten zijn zolang er slechts één document knooppunt is voor dit document. In dat geval wordt met het systeem automatisch een matrix gemaakt met  `"/document/people/*/lastname"` alle elementen in het document.
 
 ```json
   {
@@ -120,8 +120,8 @@ U ziet dat de kardinaliteit van `"/document/people/*/lastname"` groter is dan di
 
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 + [Een aangepaste vaardigheid integreren in een verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vaardig heden maken (REST)](/rest/api/searchservice/create-skillset)
 + [Uitgebreide velden toewijzen aan een index](cognitive-search-output-field-mapping.md)

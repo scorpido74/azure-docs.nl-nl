@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855881"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936772"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -65,14 +65,14 @@ De Azure Digital Apparaatdubbels .NET (C#) SDK maakt deel uit van de Azure SDK v
 > [!NOTE]
 > Zie algemene [ontwerp principes voor Azure sdk's](https://azure.github.io/azure-sdk/general_introduction.html) en de specifieke [.net-ontwerp richtlijnen](https://azure.github.io/azure-sdk/dotnet_introduction.html)voor meer informatie over het ontwerp van de SDK.
 
-Als u de SDK wilt gebruiken, voegt u het NuGet-pakket **Azure. DigitalTwins. core** toe aan uw project. U hebt ook het **Azure. Identity** -pakket (versie 1.1.1) nodig.
+Als u de SDK wilt gebruiken, voegt u het NuGet-pakket **Azure. DigitalTwins. core** toe aan uw project. U hebt ook de nieuwste versie van het **Azure. Identity** -pakket nodig.
 
 * In Visual Studio kunt u pakketten toevoegen met NuGet Package Manager (toegankelijk via *Hulpprogram ma's > NuGet package manager > NuGet-pakketten beheren voor oplossing*). 
 * Met het opdracht regel programma .NET kunt u het volgende uitvoeren:
 
     ```cmd/sh
     dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity --version 1.1.1
+    dotnet add package Azure.identity
     ```
 
 Zie de [*zelf studie: een client-app coderen*](tutorial-code.md)voor een gedetailleerde procedure voor het gebruik van de api's in de praktijk. 

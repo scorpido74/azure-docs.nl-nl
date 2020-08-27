@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080813"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936058"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Sleuteltermextractie cognitieve vaardigheid
 
-Met de **Sleuteltermextractie** vaardigheid wordt ongestructureerde tekst geëvalueerd, en voor elke record wordt een lijst met sleutel zinnen geretourneerd. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in cognitive Services.
+Met de **Sleuteltermextractie** vaardigheid wordt ongestructureerde tekst geëvalueerd, en voor elke record wordt een lijst met sleutel zinnen geretourneerd. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](../cognitive-services/text-analytics/overview.md) in cognitive Services.
 
 Deze mogelijkheid is handig als u snel de belangrijkste pratende punten in de record moet identificeren. Als er bijvoorbeeld een invoer tekst is, is de levens middelen Delicious en zijn er fantastische mede werkers. de service retourneert "voedsel" en "fantastische mede werkers".
 
@@ -31,27 +31,27 @@ Deze mogelijkheid is handig als u snel de belangrijkste pratende punten in de re
 Micro soft. skills. Text. KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Parameters zijn hoofdlettergevoelig.
 
-| Invoerwaarden                | Description |
+| Invoerwaarden                | Beschrijving |
 |---------------------|-------------|
-| `defaultLanguageCode` | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven.  Als de standaard taal code niet wordt opgegeven, wordt Engels (en) gebruikt als de standaard taal code. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
+| `defaultLanguageCode` | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven.  Als de standaard taal code niet wordt opgegeven, wordt Engels (en) gebruikt als de standaard taal code. <br/> Bekijk de [volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/language-support.md). |
 | `maxKeyPhraseCount`   | Beschrijving Het maximum aantal sleutel zinnen dat moet worden geproduceerd. |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer  | Description |
+| Invoer  | Beschrijving |
 |--------------------|-------------|
 | `text` | De tekst die moet worden geanalyseerd.|
-| `languageCode`    |  Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, wordt de standaardtaal code gebruikt voor het analyseren van de records. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) weer geven|
+| `languageCode`    |  Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, wordt de standaardtaal code gebruikt voor het analyseren van de records. <br/>[Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/language-support.md) weer geven|
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer     | Description |
+| Uitvoer     | Beschrijving |
 |--------------------|-------------|
 | `keyPhrases` | Een lijst met tref woorden die zijn geëxtraheerd uit de invoer tekst. De sleutel zinnen worden geretourneerd op volg orde van belang. |
 
@@ -114,7 +114,7 @@ Als u een niet-ondersteunde taal code opgeeft, wordt er een fout gegenereerd en 
 Als uw tekst leeg is, wordt er een waarschuwing gegenereerd.
 Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens geanalyseerd en wordt er een waarschuwing gegeven.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

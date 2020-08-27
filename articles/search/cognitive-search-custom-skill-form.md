@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321303"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935429"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Voor beeld: een aangepaste vaardigheid voor het herkennen van een formulier maken
 
@@ -24,24 +24,24 @@ In dit voor beeld van Azure Cognitive Search vaardig heden leert u hoe u een aan
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (alle edities).
 - Ten minste vijf vormen van hetzelfde type. U kunt voorbeeld gegevens gebruiken die in deze hand leiding zijn opgenomen.
 
-## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
 [!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
 
 ## <a name="train-your-model"></a>Uw model trainen
 
-U moet een model voor formulier herkenning trainen met uw invoer formulieren voordat u deze vaardigheid gebruikt. Volg de [krul Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) voor meer informatie over het trainen van een model. U kunt gebruikmaken van de voorbeeld formulieren in die Snelstartgids of u kunt uw eigen gegevens gebruiken. Wanneer het model is getraind, kopieert u de ID-waarde naar een veilige locatie.
+U moet een model voor formulier herkenning trainen met uw invoer formulieren voordat u deze vaardigheid gebruikt. Volg de [krul Snelstartgids](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) voor meer informatie over het trainen van een model. U kunt gebruikmaken van de voorbeeld formulieren in die Snelstartgids of u kunt uw eigen gegevens gebruiken. Wanneer het model is getraind, kopieert u de ID-waarde naar een veilige locatie.
 
 ## <a name="set-up-the-custom-skill"></a>De aangepaste vaardigheid instellen
 
 Deze zelf studie maakt gebruik van het [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) -project in de GitHub-opslag plaats [Azure Search Power skills](https://github.com/Azure-Samples/azure-search-power-skills) . Kloon deze opslag plaats naar uw lokale machine en navigeer naar **Vision/AnalyzeForm/** om het project te openen. Open vervolgens _AnalyzeForm. csproj_ in Visual Studio. Dit project maakt een Azure-functie resource die voldoet aan de [aangepaste vaardigheids interface](cognitive-search-custom-skill-interface.md) en kan worden gebruikt voor de verrijking van azure-Cognitive Search. Er worden formulieren gevormd als invoer en de sleutel/waarde-paren die u opgeeft, worden uitgevoerd (als tekst).
 
 Voeg eerst omgevings variabelen op project niveau toe. Zoek het project **AnalyzeForm** in het linkerdeel venster, klik er met de rechter muisknop op en selecteer **Eigenschappen**. Klik in het venster **Eigenschappen** op het tabblad **fout opsporing** en zoek het veld **omgevings variabelen** . Klik op **toevoegen** om de volgende variabelen toe te voegen:
-* `FORMS_RECOGNIZER_ENDPOINT_URL`met de waarde die is ingesteld op uw eind punt-URL.
-* `FORMS_RECOGNIZER_API_KEY`met de waarde die is ingesteld op uw abonnements sleutel.
-* `FORMS_RECOGNIZER_MODEL_ID`met de waarde die is ingesteld op de ID van het model dat u hebt getraind.
-* `FORMS_RECOGNIZER_RETRY_DELAY`waarvan de waarde is ingesteld op 1000. Deze waarde is de tijd in milliseconden die het programma wacht voordat de query opnieuw wordt uitgevoerd.
-* `FORMS_RECOGNIZER_MAX_ATTEMPTS`waarvan de waarde is ingesteld op 100. Deze waarde is het aantal keren dat het programma de service zal opvragen tijdens het ophalen van een geslaagd antwoord.
+* `FORMS_RECOGNIZER_ENDPOINT_URL` met de waarde die is ingesteld op uw eind punt-URL.
+* `FORMS_RECOGNIZER_API_KEY` met de waarde die is ingesteld op uw abonnements sleutel.
+* `FORMS_RECOGNIZER_MODEL_ID` met de waarde die is ingesteld op de ID van het model dat u hebt getraind.
+* `FORMS_RECOGNIZER_RETRY_DELAY` waarvan de waarde is ingesteld op 1000. Deze waarde is de tijd in milliseconden die het programma wacht voordat de query opnieuw wordt uitgevoerd.
+* `FORMS_RECOGNIZER_MAX_ATTEMPTS` waarvan de waarde is ingesteld op 100. Deze waarde is het aantal keren dat het programma de service zal opvragen tijdens het ophalen van een geslaagd antwoord.
 
 Open vervolgens _AnalyzeForm.cs_ en zoek de `fieldMappings` variabele, die verwijst naar de *field-mappings.jsin* het bestand. Dit bestand (en de variabele waarmee ernaar wordt verwezen) definieert de lijst met sleutels die u wilt extra heren uit uw formulieren en een aangepast label voor elke sleutel. Zo betekent een waarde `{ "Address:", "address" }, { "Invoice For:", "recipient" }` dat het script alleen de waarden voor de gedetecteerde `Address:` en `Invoice For:` velden opslaat, en worden deze waarden labelen met `"address"` `"recipient"` respectievelijk.
 
@@ -107,7 +107,7 @@ Er wordt een antwoord weer gegeven dat vergelijkbaar is met het volgende voor be
 }
 ```
 
-## <a name="publish-the-function-to-azure"></a>De functie publiceren in Azure
+## <a name="publish-the-function-to-azure"></a>De functie publiceren naar Azure
 
 Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
 
@@ -167,5 +167,5 @@ In deze hand leiding hebt u een aangepaste vaardigheid gemaakt op basis van de A
 * [Azure Search Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
 * [Een set vaardigheden definiëren](cognitive-search-defining-skillset.md)
-* [Een vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+* [Een vaardig heden maken (REST)](/rest/api/searchservice/create-skillset)
 * [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

@@ -2,14 +2,15 @@
 title: Azure-toepassing Insights-Snapshot Debugger voor .NET-Apps
 description: Moment opnamen van fout opsporing worden automatisch verzameld wanneer uitzonde ringen worden gegenereerd in productie-.NET-Apps
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325641"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935803"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Momentopnamen voor foutopsporing over uitzonderingen in .NET-apps
 Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger in [Azure-toepassing Insights](./app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in uw toepassing op en Configureer eventueel verzamelings parameters in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](./asp-net-exceptions.md) in de Application Insights Portal.
@@ -46,7 +47,7 @@ Toegang tot momentopnames is beveiligd met RBAC (op rollen gebaseerd toegangsbeh
 Abonnements eigenaren moeten de `Application Insights Snapshot Debugger` rol toewijzen aan gebruikers die moment opnamen zullen inspecteren. Deze rol kan worden toegewezen aan afzonderlijke gebruikers of groepen op abonnements eigenaren voor het doel Application Insights bron of de resource groep of het abonnement.
 
 1. Navigeer naar de Application Insights-resource in de Azure Portal.
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 1. Klik op de knop **+ roltoewijzing toevoegen** .
 1. Selecteer **Application Insights snapshot debugger** in de vervolg keuzelijst **rollen** .
 1. Zoek en voer een naam in voor de gebruiker die u wilt toevoegen.

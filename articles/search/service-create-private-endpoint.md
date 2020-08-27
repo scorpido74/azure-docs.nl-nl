@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206907"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935752"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search
 
@@ -22,11 +22,11 @@ In dit artikel gebruikt u de Azure Portal voor het maken van een nieuw exemplaar
 Privé-eind punten worden als een afzonderlijke service verzorgd door een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md). Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/private-link/)voor meer informatie over de kosten.
 
 > [!Important]
-> Ondersteuning voor privé-eind punten voor Azure Cognitive Search kan worden geconfigureerd met behulp van de Azure Portal of het [beheer rest API versie 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/). Wanneer het service-eind punt privé is, zijn sommige Portal functies uitgeschakeld. U kunt informatie over het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en de verschillende onderdelen in de service, zoals de definities index, Indexer en vaardigheids, is beperkt om veiligheids redenen.
+> Ondersteuning voor privé-eind punten voor Azure Cognitive Search kan worden geconfigureerd met behulp van de Azure Portal of het [beheer rest API versie 2020-03-13](/rest/api/searchmanagement/). Wanneer het service-eind punt privé is, zijn sommige Portal functies uitgeschakeld. U kunt informatie over het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en de verschillende onderdelen in de service, zoals de definities index, Indexer en vaardigheids, is beperkt om veiligheids redenen.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Waarom een persoonlijk eind punt gebruiken voor beveiligde toegang?
 
-[Privé-eind punten](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search een client in een virtueel netwerk in staat stellen om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de [adres ruimte van het virtuele netwerk](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) voor uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Raadpleeg de [sectie Beschik baarheid](../private-link/private-link-overview.md#availability) in de product documentatie voor een lijst met andere PaaS-services die persoonlijke koppelingen ondersteunen.
+[Privé-eind punten](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search een client in een virtueel netwerk in staat stellen om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de [adres ruimte van het virtuele netwerk](../virtual-network/private-ip-addresses.md) voor uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Raadpleeg de [sectie Beschik baarheid](../private-link/private-link-overview.md#availability) in de product documentatie voor een lijst met andere PaaS-services die persoonlijke koppelingen ondersteunen.
 
 Met persoonlijke eind punten voor uw zoek service kunt u het volgende doen:
 
@@ -46,7 +46,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement|
     | Resourcegroep | Selecteer **nieuwe maken**, Voer *myResourceGroup*in en selecteer **OK** . |
-    | Naam | *MyVirtualNetwork* invoeren |
+    | Name | *MyVirtualNetwork* invoeren |
     | Regio | Selecteer de gewenste regio |
     |||
 

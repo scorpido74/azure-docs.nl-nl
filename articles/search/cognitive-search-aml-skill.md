@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245288"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924708"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
 
 > [!IMPORTANT] 
-> Deze vaardigheid is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen ondersteuning voor .NET SDK.
+> Deze vaardigheid is momenteel in openbare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen .NET SDK-ondersteuning.
 
-Met de **AML** -vaardigheid kunt u AI-verrijking uitbreiden met een aangepast [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML)-model. Zodra een AML-model is [getraind en geïmplementeerd](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow), wordt het door een **AML** -vaardigheid geïntegreerd in AI-verrijking.
+Met de **AML** -vaardigheid kunt u AI-verrijking uitbreiden met een aangepast [Azure machine learning](../machine-learning/overview-what-is-azure-ml.md) (AML)-model. Zodra een AML-model is [getraind en geïmplementeerd](../machine-learning/concept-azure-machine-learning-architecture.md#workspace), wordt het door een **AML** -vaardigheid geïntegreerd in AI-verrijking.
 
 Net als bij ingebouwde vaardig heden bevat een **AML** -vaardigheid invoer en uitvoer. De invoer wordt naar uw geïmplementeerde AML-service verzonden als een JSON-object, die een JSON-nettolading levert als antwoord, samen met een status code voor geslaagd. Er wordt verwacht dat het antwoord de uitvoer bevat die is opgegeven door uw **AML** -vaardigheid. Elk ander antwoord wordt als een fout beschouwd en er worden geen verrijkingen uitgevoerd.
 
@@ -31,9 +31,9 @@ Net als bij ingebouwde vaardig heden bevat een **AML** -vaardigheid invoer en ui
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [AML-werk ruimte](https://docs.microsoft.com/azure/machine-learning/concept-workspace)
-* Een [Azure Kubernetes service AML Compute target](https://docs.microsoft.com/azure/machine-learning/concept-compute-target) in deze werk ruimte met een [geïmplementeerd model](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
-  * [SSL moet zijn ingeschakeld voor het Compute-doel](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Cognitive Search verleent alleen toegang tot **https** -eind punten
+* Een [AML-werk ruimte](../machine-learning/concept-workspace.md)
+* Een [Azure Kubernetes service AML Compute target](../machine-learning/concept-compute-target.md) in deze werk ruimte met een [geïmplementeerd model](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
+  * [SSL moet zijn ingeschakeld voor het Compute-doel](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Cognitive Search verleent alleen toegang tot **https** -eind punten
   * Zelfondertekende certificaten kunnen niet worden gebruikt.
 
 ## <a name="odatatype"></a>@odata.type  
@@ -45,8 +45,8 @@ Parameters zijn hoofdlettergevoelig. Welke para meters u kunt gebruiken, is afha
 
 | Parameternaam | Beschrijving |
 |--------------------|-------------|
-| `uri` | (Vereist voor [geen verificatie of sleutel verificatie](#WhatSkillParametersToUse)) De [Score-URI van de AML-service](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) waarnaar de _JSON_ -nettolading wordt verzonden. Alleen het **https** URI-schema is toegestaan. |
-| `key` | (Vereist voor [sleutel verificatie](#WhatSkillParametersToUse)) De [sleutel voor de AML-service](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys). |
+| `uri` | (Vereist voor [geen verificatie of sleutel verificatie](#WhatSkillParametersToUse)) De [Score-URI van de AML-service](../machine-learning/how-to-consume-web-service.md) waarnaar de _JSON_ -nettolading wordt verzonden. Alleen het **https** URI-schema is toegestaan. |
+| `key` | (Vereist voor [sleutel verificatie](#WhatSkillParametersToUse)) De [sleutel voor de AML-service](../machine-learning/how-to-consume-web-service.md#authentication-with-keys). |
 | `resourceId` | (Vereist voor [token verificatie](#WhatSkillParametersToUse)). De Azure Resource Manager Resource-ID van de AML-service. Deze moet de indeling abonnementen/{GUID}/resourceGroups/{resource-group-name}/micro soft. MachineLearningServices/Workspaces/{Workspace-name}/services/{service_name} hebben. |
 | `region` | (Optioneel voor [token verificatie](#WhatSkillParametersToUse)). De [regio](https://azure.microsoft.com/global-infrastructure/regions/) waarin de AML-service is geïmplementeerd. |
 | `timeout` | Beschrijving Hiermee geeft u de time-out op voor de HTTP-client die de API-aanroep maakt. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Bijvoorbeeld `PT60S` gedurende 60 seconden. Als deze niet is ingesteld, wordt de standaard waarde van 30 seconden gekozen. De time-out kan worden ingesteld op een maximum van 230 seconden en een minimum van 1 seconde. |
@@ -58,9 +58,9 @@ Parameters zijn hoofdlettergevoelig. Welke para meters u kunt gebruiken, is afha
 
 Welke para meters voor de AML-vaardig heden zijn vereist, is afhankelijk van de verificatie die uw AML-service gebruikt, indien van toepassing. AML-services bieden drie verificatie opties:
 
-* [Verificatie op basis van een sleutel](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication-for-web-service-deployment). Er wordt een statische sleutel gegeven om Score aanvragen van AML-vaardig heden te verifiëren
+* [Verificatie op basis van een sleutel](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). Er wordt een statische sleutel gegeven om Score aanvragen van AML-vaardig heden te verifiëren
   * De _URI_ -en _sleutel_ parameters gebruiken
-* [Verificatie op basis van tokens](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication). De AML-service wordt [geïmplementeerd met verificatie op basis van tokens](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service#authentication-with-tokens). De [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) van de Azure Cognitive Search-service is toegewezen aan de [rol van lezer](https://docs.microsoft.com/azure/machine-learning/how-to-assign-roles) in de werk ruimte van de AML-service. De AML-vaardigheid gebruikt vervolgens de beheerde identiteit van de Azure Cognitive Search-service om te verifiëren bij de AML-service, zonder dat er statische sleutels vereist zijn.
+* [Verificatie op basis van tokens](../machine-learning/concept-enterprise-security.md#authentication). De AML-service wordt [geïmplementeerd met verificatie op basis van tokens](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens). De [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) van de Azure Cognitive Search-service is toegewezen aan de [rol van lezer](../machine-learning/how-to-assign-roles.md) in de werk ruimte van de AML-service. De AML-vaardigheid gebruikt vervolgens de beheerde identiteit van de Azure Cognitive Search-service om te verifiëren bij de AML-service, zonder dat er statische sleutels vereist zijn.
   * Gebruik de para meter _resourceId_ .
   * Als de Azure Cognitive Search-service zich in een andere regio bevindt dan de AML-werk ruimte, gebruikt u de para meter _Region_ voor het instellen van de regio waarin de AML-service is geïmplementeerd
 * Geen verificatie. Er is geen verificatie vereist voor het gebruik van de AML-service
@@ -171,4 +171,4 @@ Als de AML-service niet beschikbaar is of een HTTP-fout retourneert, wordt een b
 ## <a name="see-also"></a>Zie ook
 
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Problemen met de AML-service oplossen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment)
++ [Problemen met de AML-service oplossen](../machine-learning/how-to-troubleshoot-deployment.md)

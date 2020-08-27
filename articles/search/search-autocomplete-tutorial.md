@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: be873ed122bb521ce00e2d18d55a9be8197a0048
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413014"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936755"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties aan client-apps toevoegen
 
@@ -23,7 +23,7 @@ Search-as-u-type is een algemene techniek voor het verbeteren van de productivit
 Als u deze ervaringen wilt implementeren in azure Cognitive Search, hebt u het volgende nodig:
 
 + Een *suggestie* voor de back-end.
-+ Een *query* die de API voor [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) of [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) voor de aanvraag specificeert.
++ Een *query* die de API voor [automatisch aanvullen](/rest/api/searchservice/autocomplete) of [suggesties](/rest/api/searchservice/suggestions) voor de aanvraag specificeert.
 + Een *UI-besturings element* voor het afhandelen van interacties die zoeken naar u typen in uw client-app. U kunt het beste een bestaande Java script-bibliotheek gebruiken voor dit doel.
 
 In azure Cognitive Search worden automatisch aangeleverde query's en voorgestelde resultaten opgehaald uit de zoek index, van geselecteerde velden die u hebt geregistreerd met een suggestie. Een suggestie maakt deel uit van de index en geeft aan welke velden inhoud leveren die een query voltooit, een resultaat krijgt of beide. Wanneer de index is gemaakt en geladen, wordt er intern een gegevens structuur voor suggesties gemaakt voor het opslaan van voor voegsels die worden gebruikt voor het vergelijken van gedeeltelijke query's. Voor suggesties, het kiezen van de juiste velden die uniek zijn of die ten minste niet herhalend zijn, is essentieel voor de ervaring. Zie [een suggestie maken](index-add-suggesters.md)voor meer informatie.
@@ -54,16 +54,16 @@ Overeenkomsten bevinden zich aan het begin van een term in een wille keurige pla
 
 Volg deze koppelingen voor de REST-en .NET SDK-referentie pagina's:
 
-+ [Suggesties REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [REST API automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [Methode SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Methode AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Suggesties REST API](/rest/api/searchservice/suggestions) 
++ [REST API automatisch aanvullen](/rest/api/searchservice/autocomplete) 
++ [Methode SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [Methode AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>Een reactie structureren
 
-Antwoorden voor automatisch aanvullen en suggesties zijn wat u mogelijk verwacht voor het patroon: door [AutoAanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) een lijst met termen te [retour neren,](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) worden voor waarden en een document-id geretourneerd, zodat u het document kunt ophalen (met behulp van de [opzoek document](https://docs.microsoft.com/rest/api/searchservice/lookup-document) -API om het specifieke document voor een detail pagina op te halen).
+Antwoorden voor automatisch aanvullen en suggesties zijn wat u mogelijk verwacht voor het patroon: door [AutoAanvullen](/rest/api/searchservice/autocomplete#response) een lijst met termen te [retour neren,](/rest/api/searchservice/suggestions#response) worden voor waarden en een document-id geretourneerd, zodat u het document kunt ophalen (met behulp van de [opzoek document](/rest/api/searchservice/lookup-document) -API om het specifieke document voor een detail pagina op te halen).
 
-Antwoorden worden gevormd door de para meters in de aanvraag. Stel voor automatisch aanvullen [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) in om te bepalen of de tekst is voltooid op basis van één of twee voor waarden. Voor suggesties bepaalt het veld dat u kiest de inhoud van het antwoord.
+Antwoorden worden gevormd door de para meters in de aanvraag. Stel voor automatisch aanvullen [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) in om te bepalen of de tekst is voltooid op basis van één of twee voor waarden. Voor suggesties bepaalt het veld dat u kiest de inhoud van het antwoord.
 
 Voor suggesties moet u het antwoord verder verfijnen om duplicaten te voor komen of wat niet-gerelateerde resultaten lijkt te zijn. Als u de resultaten wilt beheren, neemt u meer para meters op voor de aanvraag. De volgende para meters zijn van toepassing op zowel AutoAanvullen als suggesties, maar zijn mogelijk meer nodig voor suggesties, met name wanneer een suggestie meerdere velden bevat.
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
-`InitSearch`Met de-methode wordt een geverifieerde HTTP-index client naar de Azure Cognitive Search-service gemaakt. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)voor meer informatie over de .NET SDK.
+`InitSearch`Met de-methode wordt een geverifieerde HTTP-index client naar de Azure Cognitive Search-service gemaakt. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](./search-howto-dotnet-sdk.md)voor meer informatie over de .NET SDK.
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -175,7 +175,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij het invoeren van de zoekterm markeringen voor treffers worden geretourneerd of zoeken bij benadering wordt gebruikt. De methode maakt een [SuggestParameters-object](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), dat vervolgens wordt door gegeven aan de API Voorst Ellen. Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
+De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij het invoeren van de zoekterm markeringen voor treffers worden geretourneerd of zoeken bij benadering wordt gebruikt. De methode maakt een [SuggestParameters-object](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), dat vervolgens wordt door gegeven aan de API Voorst Ellen. Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
 
 ## <a name="autocomplete"></a>Automatisch aanvullen
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Functie automatisch aanvullen
 
-Automatisch aanvullen is gebaseerd op de [methode DocumentsOperationsExtensions. autocomplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Net als bij suggesties gaat dit code blok in het **HomeController.cs** -bestand.
+Automatisch aanvullen is gebaseerd op de [methode DocumentsOperationsExtensions. autocomplete](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Net als bij suggesties gaat dit code blok in het **HomeController.cs** -bestand.
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -243,7 +243,7 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-De functie automatisch aanvullen neemt de invoer van de zoek term. De methode maakt een [AutoCompleteParameters-object](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
+De functie automatisch aanvullen neemt de invoer van de zoek term. De methode maakt een [AutoCompleteParameters-object](/rest/api/searchservice/autocomplete). Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

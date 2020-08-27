@@ -8,16 +8,16 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1e5269333de27c146d4b9e2040801c4b14564125
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562618"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927133"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Voer een upgrade uit naar de nieuwste versie van de Azure Cognitive Search-service REST API
 
-Als u een eerdere versie van de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/)gebruikt, helpt dit artikel bij het bijwerken van uw toepassing voor het gebruik van de nieuwste, algemeen beschik bare API-versie 2020-06-30.
+Als u een eerdere versie van de [zoek rest API](/rest/api/searchservice/)gebruikt, helpt dit artikel bij het bijwerken van uw toepassing voor het gebruik van de nieuwste, algemeen beschik bare API-versie 2020-06-30.
 
 Versie 2020-06-30 van de REST API bevat enkele wijzigingen ten opzichte van eerdere versies. Deze zijn vooral achterwaarts compatibel, dus als u de code wilt wijzigen, moet u slechts minimale inspanning vereisen, afhankelijk van de versie die u eerder gebruikt. [Stappen voor het bijwerken](#UpgradeSteps) van een overzicht van de code wijzigingen die zijn vereist voor het gebruik van nieuwe functies.
 
@@ -32,7 +32,7 @@ Wanneer u een upgrade uitvoert naar nieuwe versies, hoeft u waarschijnlijk geen 
 
 * De code mislukt wanneer niet-herkende eigenschappen worden geretourneerd in een API-antwoord. Uw toepassing moet standaard eigenschappen negeren die deze niet begrijpt.
 
-* Uw code persistentie van API-aanvragen en probeert deze opnieuw te sturen naar de nieuwe API-versie. Dit kan bijvoorbeeld gebeuren als uw toepassing aanhoudt dat vervolg tokens worden geretourneerd door de zoek-API (Zie de naslag informatie over `@search.nextPageParameters` zoeken naar de [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* Uw code persistentie van API-aanvragen en probeert deze opnieuw te sturen naar de nieuwe API-versie. Dit kan bijvoorbeeld gebeuren als uw toepassing aanhoudt dat vervolg tokens worden geretourneerd door de zoek-API (Zie de naslag informatie over `@search.nextPageParameters` zoeken naar de [Zoek opdracht](/rest/api/searchservice/Search-Documents)).
 
 * Uw code verwijst naar een API-versie die is voor 2019-05-06 en is onderhevig aan een of meer van de laatste wijzigingen in die release. De sectie [upgrade naar 2019-05-06](#upgrade-to-2019-05-06) bevat meer details. 
 
@@ -146,4 +146,4 @@ U kunt ' platte ' Indexen bijwerken met de nieuwe indeling met de volgende stapp
 Raadpleeg de documentatie over zoek REST API. Als u problemen ondervindt, vraagt u ons om hulp voor [stack overflow](https://stackoverflow.com/) of [neemt u contact op met de ondersteuning](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Naslag informatie voor de Search-service REST API](https://docs.microsoft.com/rest/api/searchservice/)
+> [Naslag informatie voor de Search-service REST API](/rest/api/searchservice/)
