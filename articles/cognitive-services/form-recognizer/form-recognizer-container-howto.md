@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547355"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925178"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Containers voor formulier herkenning installeren en uitvoeren (preview-versie)
 
@@ -74,7 +75,7 @@ De minimale en aanbevolen CPU-kernen en het geheugen die moeten worden toegeweze
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
-| Form Recognizer | 2 Core, 4 GB geheugen | 4 kern geheugen van 8 GB |
+| Form Recognizer | 2 kernen, 4 GB geheugen | 4 kernen, 8 GB geheugen |
 | Tekst herkennen | 1 kern geheugen van 8 GB | 2 kernen, 8 GB geheugen |
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.

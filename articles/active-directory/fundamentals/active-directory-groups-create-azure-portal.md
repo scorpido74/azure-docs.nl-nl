@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 69367da8a732f383222836442406a495bf82a0db
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797658"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892589"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Een basisgroep maken en leden toevoegen met Azure Active Directory
 U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azure AD). Voor de toepassing van dit artikel wordt een basisgroep toegevoegd aan één resource door de resource-eigenaar (administrator) en deze bevat specifieke leden (werknemers) die toegang nodig hebben tot die resource. Voor complexere scenario's, met inbegrip van dynamische lidmaatschappen en regels maken, zie de [Azure Active Directory gebruiker beheerdocumentatie](../users-groups-roles/index.yml).
@@ -28,7 +28,7 @@ Er zijn verschillende typen groepen en lidmaatschappen. De volgende informatie b
 
 ### <a name="group-types"></a>Groeps typen:
 - **Beveiliging**. Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen. Een beveiligings groep kan gebruikers, apparaten, groepen en service-principals als leden en gebruikers en service-principals als eigen aren hebben. Zie voor meer informatie over het beheren van toegang tot resources [Toegang tot resources beheren met Azure Active Directory-groepen](active-directory-manage-groups.md).
-- **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep. Een Office 365-groep kan alleen gebruikers als leden hebben. Zowel gebruikers als service-principals kunnen eigen aren van een Office 365-groep zijn. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Microsoft 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep. Een Microsoft 365 groep kan alleen gebruikers als leden hebben. Zowel gebruikers als service-principals kunnen eigen aren van een Microsoft 365 groep zijn. Zie [informatie over Microsoft 365 groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)voor meer informatie over Office 365-groepen.
 
 ### <a name="membership-types"></a>Lidmaatschaps typen:
 - **Assign.** Hiermee kunt u specifieke gebruikers lid maken van deze groep en hen unieke machtigingen geven. Voor de doeleinden van dit artikel gebruiken we deze optie.
@@ -77,7 +77,7 @@ U kunt op hetzelfde moment een basisgroep maken en leden toevoegen. Gebruik de v
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>Welkomst bericht van groep in-of uitschakelen
 
-Wanneer een nieuwe Office 365-groep wordt gemaakt, of het nu een dynamisch of statisch lidmaatschap is, wordt een welkomst melding verzonden naar alle gebruikers die zijn toegevoegd aan de groep. Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, worden alle regels voor de dynamische groep in de organisatie verwerkt voor mogelijke lidmaatschaps wijzigingen. Gebruikers die zijn toegevoegd, ontvangen ook de welkomst melding. U kunt dit gedrag uitschakelen in [Exchange Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+Wanneer een nieuwe Microsoft 365 groep wordt gemaakt, of het nu een dynamisch of statisch lidmaatschap is, wordt een welkomst melding verzonden naar alle gebruikers die zijn toegevoegd aan de groep. Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, worden alle regels voor de dynamische groep in de organisatie verwerkt voor mogelijke lidmaatschaps wijzigingen. Gebruikers die zijn toegevoegd, ontvangen ook de welkomst melding. U kunt dit gedrag uitschakelen in [Exchange Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
 
 ## <a name="next-steps"></a>Volgende stappen
 

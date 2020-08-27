@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
-ms.openlocfilehash: 5c356a1c707ede3b9417bc3e742a940333b4c4ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056819"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934579"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -155,7 +156,7 @@ De HTTP-status code voor elke reactie wijst op geslaagde of veelvoorkomende fout
 
 Gesegmenteerde overdracht ( `Transfer-Encoding: chunked` ) kan helpen de latentie van herkenning te verminderen. Hiermee kan de spraak service de verwerking van het audio bestand starten tijdens de verzen ding. De REST API biedt geen gedeeltelijke of tussentijdse resultaten.
 
-Dit code voorbeeld laat zien hoe u audio kunt verzenden in segmenten. Alleen de eerste chunk moet de header van het audio bestand bevatten. `request`is een `HttpWebRequest` object dat is verbonden met het juiste rest-eind punt. `audioFile`het pad is naar een audio bestand op schijf.
+Dit code voorbeeld laat zien hoe u audio kunt verzenden in segmenten. Alleen de eerste chunk moet de header van het audio bestand bevatten. `request` is een `HttpWebRequest` object dat is verbonden met het juiste rest-eind punt. `audioFile` het pad is naar een audio bestand op schijf.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);

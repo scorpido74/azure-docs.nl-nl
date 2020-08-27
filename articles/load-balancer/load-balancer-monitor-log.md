@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448838"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935599"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-logboeken voor openbare Basic Azure Load Balancer
 
@@ -29,13 +29,13 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 * **Health probe-logboeken:** U kunt dit logboek gebruiken om problemen weer te geven die zijn gedetecteerd door uw Health Probe, zoals het aantal exemplaren in uw back-end-pool die geen aanvragen ontvangen van de load balancer als gevolg van fouten in de status test. In dit logboek wordt geschreven wanneer er een wijziging is in de status van de status test.
 
 > [!IMPORTANT]
-> **Gebeurtenis logboeken met status controle zijn momenteel niet functioneel en worden weer gegeven in de [bekende problemen voor de Azure Load Balancer](whats-new.md#known-issues).** Azure Monitor-logboeken werken momenteel alleen voor open bare Basic load balancers. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatie modellen.
+> **Gebeurtenis logboeken met status controle zijn momenteel niet functioneel en worden weer gegeven in de [bekende problemen voor de Azure Load Balancer](whats-new.md#known-issues).** Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatie modellen.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboek registratie voor gebeurtenis-en status controle in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboek registratie in te scha kelen.
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
+Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
 
 1. Klik in de portal op **resource groepen**.
 2. Selecteer **\<resource-group-name>** waar uw Load Balancer is.

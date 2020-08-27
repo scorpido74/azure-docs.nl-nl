@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260981"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935769"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Zoeken op gedeeltelijke termen en patronen met speciale tekens (Joker teken, regex, patronen)
 
@@ -51,7 +51,7 @@ Als u wilt zoeken naar fragmenten of patronen of speciale tekens, kunt u de stan
 + De index maken en testen
 
 > [!TIP]
-> Het evalueren van analyse functies is een iteratief proces dat veelvuldig opnieuw opgebouwde index vereist. U kunt deze stap eenvoudiger maken met behulp van Postman, de REST-Api's voor het maken van een [index](https://docs.microsoft.com/rest/api/searchservice/create-index), het verwijderen van een [index](https://docs.microsoft.com/rest/api/searchservice/delete-index), het[laden van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)en het zoeken van [documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents). Voor het laden van documenten moet de hoofd tekst van de aanvraag een kleine representatieve gegevensset bevatten die u wilt testen (bijvoorbeeld een veld met telefoon nummers of product codes). Met deze Api's in dezelfde postman-verzameling kunt u deze stappen snel door lopen.
+> Het evalueren van analyse functies is een iteratief proces dat veelvuldig opnieuw opgebouwde index vereist. U kunt deze stap eenvoudiger maken met behulp van Postman, de REST-Api's voor het maken van een [index](/rest/api/searchservice/create-index), het verwijderen van een [index](/rest/api/searchservice/delete-index), het[laden van documenten](/rest/api/searchservice/addupdate-or-delete-documents)en het zoeken van [documenten](/rest/api/searchservice/search-documents). Voor het laden van documenten moet de hoofd tekst van de aanvraag een kleine representatieve gegevensset bevatten die u wilt testen (bijvoorbeeld een veld met telefoon nummers of product codes). Met deze Api's in dezelfde postman-verzameling kunt u deze stappen snel door lopen.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Dubbele velden voor verschillende scenario's
 
@@ -78,14 +78,14 @@ Analyseerers bepalen hoe termen worden getokend in een index. Omdat analyse func
 
 Bij het kiezen van een analyse functie die volledige-termijn tokens produceert, zijn de volgende analyse functies algemene keuzes:
 
-| Procedures | Mogelijkheden |
+| Analyse | Mogelijkheden |
 |----------|-----------|
 | [taal analyse](index-add-language-analyzers.md) | Hiermee behoudt u afbreek streepjes in samengestelde woorden of teken reeksen, klinker mutaties en verbale vormen. Als de query patronen streepjes bevatten, kan het gebruik van een taal analyse voldoende zijn. |
 | [Zoek](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | De inhoud van het hele veld wordt als één periode getokend. |
 | [spaties](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Scheidt alleen op spaties. Voor waarden die streepjes of andere tekens bevatten, worden beschouwd als één token. |
 | [aangepaste analyse functie](index-add-custom-analyzers.md) | aanbevelingen Als u een aangepaste analyse functie maakt, kunt u zowel het tokenizer als het token filter opgeven. De vorige analyse functies moeten worden gebruikt als-is. Met een aangepaste analyse kunt u kiezen welke tokenizers-en Token filters u wilt gebruiken. <br><br>Een aanbevolen combi natie is het [tref woord tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) met een [token filter met een lagere Case](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). De vooraf gedefinieerde [trefwoord analyse](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) biedt geen kleine letters in hoofd letters, wat kan leiden tot het mislukken van query's. Een aangepaste analyse functie biedt u een mechanisme voor het toevoegen van het filter voor het laagste Case-token. |
 
-Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep van Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) toevoegen om de getokende uitvoer te controleren.
+Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep van Test Analyzer](/rest/api/searchservice/test-analyzer) toevoegen om de getokende uitvoer te controleren.
 
 U moet een gevulde index hebben om te kunnen werken met. Als u een bestaande index en een veld met streepjes of gedeeltelijke voor waarden hebt opgegeven, kunt u verschillende analyse functies op basis van specifieke termen uitproberen om te zien welke tokens worden verzonden.  
 
@@ -160,7 +160,7 @@ Of u analyse functies wilt evalueren of vooruit wilt gaan met een specifieke con
 
 Ingebouwde of vooraf gedefinieerde analyse functies kunnen worden opgegeven met de naam van een `analyzer` eigenschap van een veld definitie, zonder dat er aanvullende configuratie is vereist in de index. In het volgende voor beeld ziet u hoe u het `whitespace` analyseprogramma op een veld kunt instellen. 
 
-Zie [vooraf gedefinieerde analyse lijsten](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)voor andere scenario's en meer informatie over andere ingebouwde analyse functies. 
+Zie [vooraf gedefinieerde analyse lijsten](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)voor andere scenario's en meer informatie over andere ingebouwde analyse functies. 
 
 ```json
     {
@@ -222,19 +222,19 @@ Zodra u een index hebt gedefinieerd met analyse functies en veld definities die 
 
 In de vorige secties is de logica uitgelegd. In deze sectie wordt elke API beschreven die u moet aanroepen bij het testen van uw oplossing. Zoals eerder is vermeld, kunt u deze taken snel door lopen als u een interactief hulp programma voor het testen van een web gebruikt, zoals een bericht.
 
-+ [Delete index](https://docs.microsoft.com/rest/api/searchservice/delete-index) verwijdert een bestaande index met dezelfde naam, zodat u deze opnieuw kunt maken.
++ [Delete index](/rest/api/searchservice/delete-index) verwijdert een bestaande index met dezelfde naam, zodat u deze opnieuw kunt maken.
 
-+ Met [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) maakt u de index structuur in uw zoek service, met inbegrip van analyse definities en velden met een analyse specificatie.
++ Met [Create Index](/rest/api/searchservice/create-index) maakt u de index structuur in uw zoek service, met inbegrip van analyse definities en velden met een analyse specificatie.
 
-+ Met [documenten laden](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) worden documenten geïmporteerd die dezelfde structuur hebben als uw index, evenals Doorzoek bare inhoud. Na deze stap is de index gereed om query's uit te proberen of te testen.
++ Met [documenten laden](/rest/api/searchservice/addupdate-or-delete-documents) worden documenten geïmporteerd die dezelfde structuur hebben als uw index, evenals Doorzoek bare inhoud. Na deze stap is de index gereed om query's uit te proberen of te testen.
 
-+ [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) is geïntroduceerd in [een Analyzer kiezen](#choose-an-analyzer). Test enkele van de teken reeksen in uw index met behulp van verschillende analyse functies om te begrijpen hoe de termen worden getokend.
++ [Test Analyzer](/rest/api/searchservice/test-analyzer) is geïntroduceerd in [een Analyzer kiezen](#choose-an-analyzer). Test enkele van de teken reeksen in uw index met behulp van verschillende analyse functies om te begrijpen hoe de termen worden getokend.
 
-+ In [documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) wordt uitgelegd hoe u een query aanvraag opbouwt met behulp van [eenvoudige syntaxis](query-simple-syntax.md) of de [volledige lucene-syntaxis](query-lucene-syntax.md) voor joker tekens en reguliere expressies.
++ In [documenten zoeken](/rest/api/searchservice/search-documents) wordt uitgelegd hoe u een query aanvraag opbouwt met behulp van [eenvoudige syntaxis](query-simple-syntax.md) of de [volledige lucene-syntaxis](query-lucene-syntax.md) voor joker tekens en reguliere expressies.
 
   Voor gedeeltelijke term query's, zoals het opvragen van ' 3-6214 ' om een overeenkomst op ' + 1 (425) 703-6214 ' te vinden, kunt u de eenvoudige syntaxis gebruiken: `search=3-6214&queryType=simple` .
 
-  Voor infix-en achtervoegsel query's, zoals het opvragen van ' num ' of ' numeriek ' om een overeenkomst te vinden op ' alfanumeriek ', gebruikt u de syntaxis Full lucene en een reguliere expressie:`search=/.*num.*/&queryType=full`
+  Voor infix-en achtervoegsel query's, zoals het opvragen van ' num ' of ' numeriek ' om een overeenkomst te vinden op ' alfanumeriek ', gebruikt u de syntaxis Full lucene en een reguliere expressie: `search=/.*num.*/&queryType=full`
 
 ## <a name="tune-query-performance"></a>Queryprestaties afstemmen
 
@@ -287,5 +287,5 @@ In dit artikel wordt uitgelegd hoe analyse functies beide bijdragen om problemen
 
 + [Taalanalyse](search-language-support.md)
 + [Analyse functies voor tekst verwerking in azure Cognitive Search](search-analyzers.md)
-+ [Tekst-API analyseren (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Tekst-API analyseren (REST)](/rest/api/searchservice/test-analyzer)
 + [Hoe zoeken in volledige tekst werkt (query architectuur)](search-lucene-query-architecture.md)

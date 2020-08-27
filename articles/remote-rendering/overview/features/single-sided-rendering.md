@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 1a9f80166e47b17644b37d4bc9b93e1abefe3432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aff636adff48a8882c152eab398a96a8d28f84e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022757"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892742"
 ---
-# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided":::aanwijzer
+# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: aanwijzer
 
 De meeste renderers [maken gebruik van Back-face](https://en.wikipedia.org/wiki/Back-face_culling) om de prestaties te verbeteren. Wanneer de mazen zijn geopend met [knip abonnementen](cut-planes.md), zien de gebruikers er vaak uit dat er drie hoeken worden weer gegeven. Als deze drie hoeken zijn verwijderd, is het resultaat niet goed.
 
@@ -27,7 +27,7 @@ Met de instelling voor * :::no-loc text="single-sided"::: rendering* kunt u dit 
 
 De :::no-loc text="single-sided"::: instelling voor rendering heeft alleen invloed op de netten die zijn [geconverteerd](../../how-tos/conversion/configure-model-conversion.md) met de `opaqueMaterialDefaultSidedness` optie ingesteld op `SingleSided` . Deze optie is standaard ingesteld op `DoubleSided` .
 
-## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided":::Rendering-instelling
+## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided"::: Rendering-instelling
 
 Er zijn drie verschillende modi:
 
@@ -55,13 +55,13 @@ void ChangeSingleSidedRendering(AzureSession session)
 ```cpp
 void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
 {
-    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+    ApiHandle<SingleSidedSettings> settings = session->Actions()->GetSingleSidedSettings();
 
     // Single-sided geometry is rendered as is
-    settings->Mode(SingleSidedMode::Normal);
+    settings->SetMode(SingleSidedMode::Normal);
 
     // Single-sided geometry is always rendered double-sided
-    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
+    settings->SetMode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

@@ -3,12 +3,12 @@ title: Back-up maken van Hyper-V virtuele machines met MABS
 description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823961"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892810"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
 
@@ -149,7 +149,7 @@ Wanneer u back-ups van virtuele machines wilt herstellen, gebruikt u de wizard H
     - Selecteer **Herstel op basis van SAN met behulp van hardwaremomentopnamen inschakelen** als u uw netwerk hebt geconfigureerd.
     - Selecteer **Een e-mail verzenden wanneer het herstel is voltooid** en geef vervolgens de e-mailadressen op, als u e-mailmeldingen wilt verzenden zodra het herstelproces is voltooid.
 
-6. Controleer in het scherm Samenvatting of alle gegevens juist zijn. Als de gegevens niet juist zijn of als u een wijziging wilt aanbrengen, klikt u op **Terug**. Als u tevreden bent met de instellingen, klikt u op **Herstellen** om het herstelproces te starten.
+6. Controleer in het scherm Samenvatting of alle gegevens juist zijn. Als de gegevens niet juist zijn of als u een wijziging wilt aanbrengen, klikt u op **Terug**. Als u tevreden bent met de instellingen, klikt u op **herstellen** om het herstel proces te starten.
 
 7. Het scherm **Herstelstatus** bevat informatie over de hersteltaak.
 

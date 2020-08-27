@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146179"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934919"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 
 In dit artikel wordt uitgelegd hoe u een query-antwoord krijgt dat terugkeert met een totaal aantal overeenkomende documenten, gepagineerde resultaten, gesorteerde resultaten en door waarden gemarkeerde termen.
 
-De structuur van een antwoord wordt bepaald door para meters in de query: [document zoeken](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) in de rest API-of [DocumentSearchResult-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) in de .NET SDK.
+De structuur van een antwoord wordt bepaald door para meters in de query: [document zoeken](/rest/api/searchservice/Search-Documents) in de rest API-of [DocumentSearchResult-klasse](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) in de .NET SDK.
 
 ## <a name="result-composition"></a>Resultaten samen stelling
 
@@ -47,9 +47,9 @@ Om een ander aantal overeenkomende documenten te retour neren, `$top` voegt `$sk
 
 + Voeg toe `$count=true` om een telling van het totaal aantal overeenkomende documenten in een index op te halen.
 
-+ De eerste set van 15 overeenkomende documenten plus een telling van het totaal aantal overeenkomsten retour neren:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ De eerste set van 15 overeenkomende documenten plus een telling van het totaal aantal overeenkomsten retour neren: `GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Retourneert de tweede set, waarbij de eerste 15 wordt overgeslagen om de volgende 15 te verkrijgen: `$top=15&$skip=15` . Doe hetzelfde voor de derde set van 15:`$top=15&$skip=30`
++ Retourneert de tweede set, waarbij de eerste 15 wordt overgeslagen om de volgende 15 te verkrijgen: `$top=15&$skip=15` . Doe hetzelfde voor de derde set van 15: `$top=15&$skip=30`
 
 De resultaten van gepagineerde query's zijn niet gegarandeerd stabiel als de onderliggende index wordt gewijzigd. Paginering wijzigt de waarde van `$skip` voor elke pagina, maar elke query is onafhankelijk en werkt op de huidige weer gave van de gegevens in de index op het moment van de query (met andere woorden, er is geen caching of moment opname van de resultaten, zoals de waarden in een Data Base voor algemeen gebruik).
  
@@ -98,7 +98,7 @@ Een andere optie is het gebruik van een [aangepast Score profiel](index-add-scor
 
 ## <a name="hit-highlighting"></a>Markeren
 
-Treffer markeringen verwijst naar tekst opmaak (zoals vette of gele hooglichten) die wordt toegepast op overeenkomende termen in een resultaat, zodat u de overeenkomst eenvoudig kunt herkennen. Instructies voor het markeren van treffers worden vermeld in de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Treffer markeringen verwijst naar tekst opmaak (zoals vette of gele hooglichten) die wordt toegepast op overeenkomende termen in een resultaat, zodat u de overeenkomst eenvoudig kunt herkennen. Instructies voor het markeren van treffers worden vermeld in de [query-aanvraag](/rest/api/searchservice/search-documents). 
 
 Als u het markeren van treffers wilt inschakelen, voegt `highlight=[comma-delimited list of string fields]` u in om op te geven welke velden markeringen zullen gebruiken. Markeren is handig voor meer inhouds velden, zoals een beschrijvings veld, waarbij de overeenkomst niet onmiddellijk duidelijk is. Alleen veld definities die als **doorzoekbaar** zijn gemarkeerd, komen in aanmerking voor treffer markeringen.
 

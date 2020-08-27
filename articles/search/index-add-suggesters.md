@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7918f83d5328c0bf75461d564f3833167c6195e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565328"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924551"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te scha kelen
 
@@ -25,7 +25,7 @@ De volgende scherm afbeelding van [het maken van uw eerste app in C#](tutorial-c
 
 U kunt deze functies afzonderlijk of samen gebruiken. Als u dit gedrag wilt implementeren in azure Cognitive Search, is er een index-en query onderdeel. 
 
-+ Voeg in de index een suggestie toe aan een index. U kunt de portal, [rest API](https://docs.microsoft.com/rest/api/searchservice/create-index)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)gebruiken. De rest van dit artikel is gericht op het maken van een suggestie.
++ Voeg in de index een suggestie toe aan een index. U kunt de portal, [rest API](/rest/api/searchservice/create-index)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)gebruiken. De rest van dit artikel is gericht op het maken van een suggestie.
 
 + Roep in de query aanvraag een van de [hieronder weer gegeven api's](#how-to-use-a-suggester)aan.
 
@@ -37,7 +37,7 @@ Een suggestie is een interne gegevens structuur die ondersteuning biedt voor zoe
 
 ## <a name="define-a-suggester"></a>Een suggestie definiëren
 
-Als u een suggestie wilt maken, voegt u er een toe aan een [index schema](https://docs.microsoft.com/rest/api/searchservice/create-index) en [stelt u elke eigenschap](#property-reference)in. Het beste moment om een suggestie te maken, is wanneer u ook het veld definieert dat deze gebruikt.
+Als u een suggestie wilt maken, voegt u er een toe aan een [index schema](/rest/api/searchservice/create-index) en [stelt u elke eigenschap](#property-reference)in. Het beste moment om een suggestie te maken, is wanneer u ook het veld definieert dat deze gebruikt.
 
 + Alleen teken reeks velden gebruiken
 
@@ -57,7 +57,7 @@ Als u wilt voldoen aan beide zoek functies, voegt u alle velden toe die u nodig 
 
 De keuze van een analyse functie bepaalt hoe velden worden getokend en vervolgens worden voorafgegaan door. Bijvoorbeeld: voor een teken reeks die is afgebroken als ' context gevoelig ', resulteert het gebruik van een taal analyse in deze combi Naties van tokens. ' context ', ' gevoelig ', ' context gevoelig '. Had u de standaard-lucene Analyzer hebt gebruikt, is de teken reeks met afbreek streepjes niet aanwezig. 
 
-Bij het evalueren van analyse functies kunt u de [tekst-API analyseren](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) gebruiken om inzicht te krijgen in hoe termen worden getokend en vervolgens worden voorafgegaan door. Wanneer u een index hebt gemaakt, kunt u verschillende analyse functies op een teken reeks uitproberen om de uitvoer van het token weer te geven.
+Bij het evalueren van analyse functies kunt u de [tekst-API analyseren](/rest/api/searchservice/test-analyzer) gebruiken om inzicht te krijgen in hoe termen worden getokend en vervolgens worden voorafgegaan door. Wanneer u een index hebt gemaakt, kunt u verschillende analyse functies op een teken reeks uitproberen om de uitvoer van het token weer te geven.
 
 Velden die gebruikmaken van [aangepaste analyse](index-add-custom-analyzers.md) functies of [vooraf gedefinieerde analyse](index-add-custom-analyzers.md#predefined-analyzers-reference) functies (met uitzonde ring van standaard-lucene), zijn expliciet niet toegestaan om slechte resultaten te voor komen.
 
@@ -72,7 +72,7 @@ Als u probeert een suggestie te maken met behulp van bestaande velden, wordt dez
 
 ## <a name="create-using-rest"></a>Maken met REST
 
-Voeg in de REST API suggesties toe via [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) of [update index](https://docs.microsoft.com/rest/api/searchservice/update-index). 
+Voeg in de REST API suggesties toe via [Create Index](/rest/api/searchservice/create-index) of [update index](/rest/api/searchservice/update-index). 
 
   ```json
   {
@@ -110,7 +110,7 @@ Voeg in de REST API suggesties toe via [Create Index](https://docs.microsoft.com
 
 ## <a name="create-using-net"></a>Maken met .NET
 
-Definieer een [suggestie object](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)in C#. `Suggesters`is een verzameling, maar er kan slechts één item worden toegepast. 
+Definieer een [suggestie object](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)in C#. `Suggesters` is een verzameling, maar er kan slechts één item worden toegepast. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -137,7 +137,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |De naam van de suggestie.|
 |`searchMode`  |De strategie die wordt gebruikt om te zoeken naar kandidaten zinsdelen. De enige modus die momenteel wordt ondersteund `analyzingInfixMatching` , die momenteel overeenkomt met het begin van een term.|
-|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en zijn `Collection(Edm.String)` . Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) zijn (geen aangepaste analyse functie).<p/> Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
+|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en zijn `Collection(Edm.String)` . Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) zijn (geen aangepaste analyse functie).<p/> Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -145,10 +145,10 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 Een suggestie wordt gebruikt in een query. Nadat een suggestie is gemaakt, roept u een van de volgende Api's aan voor een zoek-als-u-type-ervaring:
 
-+ [Suggesties REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [REST API automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [Methode SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Methode AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Suggesties REST API](/rest/api/searchservice/suggestions) 
++ [REST API automatisch aanvullen](/rest/api/searchservice/autocomplete) 
++ [Methode SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [Methode AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 In een zoek toepassing moet de client code gebruikmaken van een bibliotheek zoals de [automatisch aanvullen van de jQuery-gebruikers interface](https://jqueryui.com/autocomplete/) om de gedeeltelijke query te verzamelen en de overeenkomst op te geven. Zie voor meer informatie over deze taak [automatisch aanvullen of voorgestelde resultaten aan client code toevoegen](search-autocomplete-tutorial.md).
 
@@ -173,4 +173,4 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 We raden u aan het volgende artikel te lezen om meer te weten te komen over de manier waarop aanvragen worden formulering.
 
 > [!div class="nextstepaction"]
-> [Automatisch aanvullen en suggesties aan client code toevoegen](search-autocomplete-tutorial.md) 
+> [Automatisch aanvullen en suggesties aan client code toevoegen](search-autocomplete-tutorial.md)

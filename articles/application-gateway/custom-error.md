@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d78f7aa2a02f14dc9b875895e3057bd4dee29b74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808085"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934817"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway aangepaste fout pagina's maken
 
@@ -65,11 +65,21 @@ Nadat u een fout pagina hebt opgegeven, wordt deze door de toepassings gateway g
 
 U kunt Azure PowerShell gebruiken om een aangepaste fout pagina te configureren. Bijvoorbeeld een algemene aangepaste fout pagina:
 
-`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+```powershell
+$appgw   = Get-AzApplicationGateway -Name <app-gateway-name> -ResourceGroupName <resource-group-name>
+
+$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
+```
 
 Of een fout pagina op listener-niveau:
 
-`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+```powershell
+$appgw   = Get-AzApplicationGateway -Name <app-gateway-name> -ResourceGroupName <resource-group-name>
+
+$listener01 = Get-AzApplicationGatewayHttpListener -Name <listener-name> -ApplicationGateway $appgw
+
+$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
+```
 
 Zie [add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) en [add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)voor meer informatie.
 

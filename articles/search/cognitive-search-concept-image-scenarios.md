@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1e19fd41b4d98cb401582cd86232d8ada25733
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76838255"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935514"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in AI-verrijkings scenario's
 
@@ -29,7 +29,7 @@ Als onderdeel van het kraken van documenten zijn er een nieuwe set indexer confi
 
 U kunt het normaliseren van afbeeldingen niet uitschakelen. Vaardig heden die over installatie kopieën lopen, verwachten genormaliseerde installatie kopieën. Voor het inschakelen van installatie kopie normalisatie voor een Indexeer functie moet een vakkennisset aan die Indexeer functie worden gekoppeld.
 
-| Configuratie parameter | Description |
+| Configuratie parameter | Beschrijving |
 |--------------------|-------------|
 | imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix te genereren van genormaliseerde installatie kopieën waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven in één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het *normalized_images* veld. <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
 |  normalizedImageMaxWidth | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaardwaarde is 2000. De toegestane maximum waarde is 10000. | 
@@ -42,7 +42,7 @@ Stel de para meter **parsingMode** in op `json` (om elke BLOB als één document
 
 De standaard waarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de vaardigheid van de [afbeeldings analyse](cognitive-search-skill-image-analysis.md). De [OCR-vaardigheid](cognitive-search-skill-ocr.md) ondersteunt een maximale breedte en hoogte van 4200 voor niet-Engelse talen en 10000 voor Engels.  Als u de maximum limiet verhoogt, kan de verwerking op grotere afbeeldingen mislukken, afhankelijk van de definitie van uw vaardig heden en de taal van de documenten. 
 
-U geeft de imageAction op in de definitie van de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) als volgt:
+U geeft de imageAction op in de definitie van de [Indexeer functie](/rest/api/searchservice/create-indexer) als volgt:
 
 ```json
 {
@@ -60,7 +60,7 @@ U geeft de imageAction op in de definitie van de [Indexeer functie](https://docs
 
 Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat het veld nieuwe *normalized_images* een matrix met installatie kopieën. Elke afbeelding is een complex type met de volgende leden:
 
-| Onderdeel van installatie kopie       | Description                             |
+| Onderdeel van installatie kopie       | Beschrijving                             |
 |--------------------|-----------------------------------------|
 | gegevens               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
 | breedte              | Breedte van de genormaliseerde afbeelding in pixels. |
@@ -213,8 +213,8 @@ Als helper moet u het volgende algoritme gebruiken als u genormaliseerde coördi
         }
 ```
 
-## <a name="see-also"></a>Zie tevens
-+ [Indexeer functie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+## <a name="see-also"></a>Zie ook
++ [Indexeer functie maken (REST)](/rest/api/searchservice/create-indexer)
 + [Vaardigheid van afbeeldings analyse](cognitive-search-skill-image-analysis.md)
 + [Vaardigheid OCR](cognitive-search-skill-ocr.md)
 + [Tekst samenvoegings vaardigheid](cognitive-search-skill-textmerger.md)

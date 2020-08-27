@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 5b3df38e8feef2a7b9bbc090e11a669164010f32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213197"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924483"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Gelijkenis en score in azure Cognitive Search
 
@@ -21,11 +21,11 @@ Score verwijst naar de berekening van een zoek score voor elk item dat wordt ger
 
 Standaard worden de bovenste 50 geretourneerd in het antwoord, maar u kunt de para meter **$Top** gebruiken om een kleiner of groter aantal items te retour neren (maxi maal 1000 in één antwoord) en **$Skip** om de volgende set resultaten op te halen.
 
-De zoek score wordt berekend op basis van de statistische eigenschappen van de gegevens en de query. Met Azure Cognitive Search worden documenten gevonden die overeenkomen met zoek termen (sommige of alle, afhankelijk van [Search mode](https://docs.microsoft.com/rest/api/searchservice/search-documents#searchmodeany--all-optional)), waarbij wordt voldaan aan documenten die veel exemplaren van de zoek term bevatten. De zoek score gaat zelfs hoger omhoog als de term zelden voor komt in de gegevens index, maar gebruikelijk is binnen het document. De basis voor deze aanpak voor het berekenen van de relevantie is de *IDF TF-of* term frequentie-inverse document frequentie.
+De zoek score wordt berekend op basis van de statistische eigenschappen van de gegevens en de query. Met Azure Cognitive Search worden documenten gevonden die overeenkomen met zoek termen (sommige of alle, afhankelijk van [Search mode](/rest/api/searchservice/search-documents#searchmodeany--all-optional)), waarbij wordt voldaan aan documenten die veel exemplaren van de zoek term bevatten. De zoek score gaat zelfs hoger omhoog als de term zelden voor komt in de gegevens index, maar gebruikelijk is binnen het document. De basis voor deze aanpak voor het berekenen van de relevantie is de *IDF TF-of* term frequentie-inverse document frequentie.
 
 Zoek Score waarden kunnen worden herhaald in een resultatenset. Wanneer meerdere treffers dezelfde Zoek score hebben, wordt de volg orde van dezelfde gescoorde items niet gedefinieerd en is deze niet stabiel. Voer de query opnieuw uit en u kunt de positie van items verschuiving zien, met name als u de gratis service of een factureer bare service met meerdere replica's gebruikt. Als er twee items met een identieke Score worden opgegeven, is er geen garantie dat er eerst een wordt weer gegeven.
 
-Als u het koppelen tussen herhaalde scores wilt verstoren, kunt u een **$OrderBy** -component toevoegen aan de eerste order by-Score en vervolgens sorteren op een ander sorteerbaar veld (bijvoorbeeld `$orderby=search.score() desc,Rating desc` ). Zie [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby)voor meer informatie.
+Als u het koppelen tussen herhaalde scores wilt verstoren, kunt u een **$OrderBy** -component toevoegen aan de eerste order by-Score en vervolgens sorteren op een ander sorteerbaar veld (bijvoorbeeld `$orderby=search.score() desc,Rating desc` ). Zie [$OrderBy](./search-query-odata-orderby.md)voor meer informatie.
 
 > [!NOTE]
 > Een `@search.score = 1.00` geeft een niet-gescoorde of niet-geclassificeerde resultatenset aan. De score is gelijkmatig verdeeld over alle resultaten. Niet-gescoorde resultaten treden op wanneer het query formulier fuzzy zoeken, joker tekens of regex-query's of een **$filter** expressie is. 
@@ -44,7 +44,7 @@ Voor schaal baarheid distribueert Azure Cognitive Search elke index horizon taal
 
 De Score van een document wordt standaard berekend op basis van de statistische eigenschappen van de gegevens *in een Shard*. Deze aanpak is over het algemeen geen probleem voor een grote hoeveelheid gegevens verzameling en levert betere prestaties dan het berekenen van de score op basis van informatie over alle Shards. Dit zou ertoe kunnen leiden dat met behulp van deze prestatie optimalisatie twee zeer vergelijk bare documenten (of zelfs identieke documenten) worden opgedeeld als ze in verschillende Shards eindigen op verschillende relevantie scores.
 
-Als u de score wilt berekenen op basis van de statistische eigenschappen van alle Shards, kunt u dit doen door *scoringStatistics = Global* toe te voegen als een [query parameter](https://docs.microsoft.com/rest/api/searchservice/search-documents) (of door *' scoringStatistics ': ' Global '* toe te voegen als een hoofd parameter van de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
+Als u de score wilt berekenen op basis van de statistische eigenschappen van alle Shards, kunt u dit doen door *scoringStatistics = Global* toe te voegen als een [query parameter](/rest/api/searchservice/search-documents) (of door *' scoringStatistics ': ' Global '* toe te voegen als een hoofd parameter van de [query-aanvraag](/rest/api/searchservice/search-documents)).
 
 ```http
 GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
@@ -77,7 +77,7 @@ Het volgende video segment is een snelle doorstuur naar een uitleg van de classi
 
 ## <a name="featuresmode-parameter-preview"></a>featuresMode-para meter (preview-versie)
 
-[Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) aanvragen hebben een nieuwe [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) -para meter die aanvullende details kan geven over relevantie op veld niveau. Terwijl de `@searchScore` wordt berekend voor het document all-up (zoals relevant is dit document in de context van deze query), via featuresMode kunt u informatie ophalen over afzonderlijke velden, zoals wordt weer gegeven in een `@search.features` structuur. De structuur bevat alle velden die in de query worden gebruikt (specifieke velden via **searchFields** in een query of alle velden die worden **doorzocht** in een index). Voor elk veld krijgt u de volgende waarden:
+[Zoek documenten](/rest/api/searchservice/preview-api/search-documents) aanvragen hebben een nieuwe [featuresMode](/rest/api/searchservice/preview-api/search-documents#featuresmode) -para meter die aanvullende details kan geven over relevantie op veld niveau. Terwijl de `@searchScore` wordt berekend voor het document all-up (zoals relevant is dit document in de context van deze query), via featuresMode kunt u informatie ophalen over afzonderlijke velden, zoals wordt weer gegeven in een `@search.features` structuur. De structuur bevat alle velden die in de query worden gebruikt (specifieke velden via **searchFields** in een query of alle velden die worden **doorzocht** in een index). Voor elk veld krijgt u de volgende waarden:
 
 + Aantal unieke tokens gevonden in het veld
 + Vergelijk bare Score of een meting van de manier waarop de inhoud van het veld relatief is ten opzichte van de query term
@@ -107,6 +107,6 @@ U kunt deze gegevens punten gebruiken in [aangepaste Score oplossingen](https://
 
 ## <a name="see-also"></a>Zie ook
 
- [Score profielen](index-add-scoring-profiles.md) [rest API referentie](https://docs.microsoft.com/rest/api/searchservice/)   
- [Documenten zoeken-API](https://docs.microsoft.com/rest/api/searchservice/search-documents)   
- [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+ [Score profielen](index-add-scoring-profiles.md) [rest API referentie](/rest/api/searchservice/)   
+ [Documenten zoeken-API](/rest/api/searchservice/search-documents)   
+ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

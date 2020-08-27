@@ -3,13 +3,13 @@ title: Application Insights-API voor aangepaste gebeurtenissen en metrische gege
 description: Voeg een paar regels code toe aan de apparaat-of bureau blad-app, de webpagina of de service om het gebruik en de diagnose problemen op te sporen.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 430ec96006ed8f564ea5bbd0a28beca858ebe1ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366869"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936568"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -59,7 +59,7 @@ Een exemplaar van `TelemetryClient` (behalve in Java script) ophalen van webpagi
 
 Voor [ASP.net core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) -apps en [niet-http/werk nemers voor .net/.net core](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) -apps, wordt u aangeraden een exemplaar van te verkrijgen van `TelemetryClient` de container voor het inspuiten van afhankelijkheden, zoals wordt uitgelegd in hun respectieve documentatie.
 
-Als u AzureFunctions v2 + of Azure WebJobs V3 + gebruikt, volgt u dit document:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+Als u AzureFunctions v2 + of Azure WebJobs V3 + gebruikt, volgt u dit document: https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -204,8 +204,8 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 De telemetrie is beschikbaar in de `customMetrics` tabel in [Application Insights Analytics](../log-query/log-query-overview.md). Elke rij vertegenwoordigt een aanroep naar `trackMetric(..)` in uw app.
 
-* `valueSum`-Dit is de som van de metingen. Delen door om de gemiddelde waarde op te halen `valueCount` .
-* `valueCount`-Het aantal metingen dat is geaggregeerd in deze `trackMetric(..)` aanroep.
+* `valueSum` -Dit is de som van de metingen. Delen door om de gemiddelde waarde op te halen `valueCount` .
+* `valueCount` -Het aantal metingen dat is geaggregeerd in deze `trackMetric(..)` aanroep.
 
 ## <a name="page-views"></a>Pagina weergaven
 
@@ -825,7 +825,7 @@ U ziet dat:
 * Wanneer u een waarde ophaalt uit de JSON customDimensions of customMeasurements, heeft deze een dynamisch type en daarom moet u deze casten `tostring` of `todouble` .
 * Gebruik, om rekening te houden met de mogelijkheid van [steek proeven](./sampling.md) `sum(itemCount)` `count()` .
 
-## <a name="timing-events"></a><a name="timed"></a>Timing gebeurtenissen
+## <a name="timing-events"></a><a name="timed"></a> Timing gebeurtenissen
 
 Soms wilt u een grafiek laten zien hoe lang het duurt om een actie uit te voeren. Het is bijvoorbeeld mogelijk dat u wilt weten hoe lang gebruikers gebruikmaken van keuzes in een spel. U kunt hiervoor de para meter meet gebruiken.
 
@@ -972,7 +972,7 @@ applicationInsights.setup()
     .start();
 ```
 
-Als u deze verzamelaars na de initialisatie wilt uitschakelen, gebruikt u het configuratie object:`applicationInsights.Configuration.setAutoCollectRequests(false)`
+Als u deze verzamelaars na de initialisatie wilt uitschakelen, gebruikt u het configuratie object: `applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="developer-mode"></a><a name="debug"></a>Ontwikkelaars modus
 
@@ -1001,7 +1001,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>De instrumentatie sleutel voor geselecteerde aangepaste telemetrie instellen
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> De instrumentatie sleutel voor geselecteerde aangepaste telemetrie instellen
 
 *C#*
 
@@ -1011,7 +1011,7 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamische instrumentatie sleutel
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamische instrumentatie sleutel
 
 Om te voor komen dat telemetrie wordt gemengd vanuit ontwikkelings-, test-en productie omgevingen, kunt u [afzonderlijke Application Insights resources maken](./create-new-resource.md) en de sleutels wijzigen, afhankelijk van de omgeving.
 

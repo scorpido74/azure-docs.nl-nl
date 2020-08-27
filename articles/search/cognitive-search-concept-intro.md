@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319045"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935497"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-verrijking in azure Cognitive Search
 
@@ -29,7 +29,7 @@ De ingebouwde vaardig heden vallen onder de volgende categorieën:
 
 ![Diagram van verrijkings pijplijn](./media/cognitive-search-intro/cogsearch-architecture.png "overzicht van verrijkings pijplijn")
 
-Ingebouwde vaardig heden in azure Cognitive Search zijn gebaseerd op vooraf getrainde machine learning modellen in Cognitive Services-API's: [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) en [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). U kunt een Cognitive Services resource koppelen als u deze resources tijdens de verwerking van inhoud wilt gebruiken.
+Ingebouwde vaardig heden in azure Cognitive Search zijn gebaseerd op vooraf getrainde machine learning modellen in Cognitive Services-API's: [Computer Vision](../cognitive-services/computer-vision/index.yml) en [Text Analytics](../cognitive-services/text-analytics/overview.md). U kunt een Cognitive Services resource koppelen als u deze resources tijdens de verwerking van inhoud wilt gebruiken.
 
 De verwerking van natuurlijke taal en afbeelding wordt toegepast tijdens de fase van gegevens opname, met resultaten die deel uitmaken van de samen stelling van een document in een Doorzoek bare index in azure Cognitive Search. Gegevens worden als een Azure-gegevensset gedistribueerd en vervolgens gepusht via een indexerings pijplijn met behulp van de [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) die u nodig hebt.  
 
@@ -57,9 +57,9 @@ Een [vaardig](cognitive-search-defining-skillset.md) heden die is geassembleerd 
 
 ### <a name="more-about-custom-skills"></a>Meer informatie over aangepaste vaardig heden
 
-Aangepaste vaardig heden kunnen complexere scenario's ondersteunen, zoals het herkennen van formulieren of het detecteren van aangepaste entiteiten met behulp van een model dat u opgeeft en inpakt in de [aangepaste vaardigheids webinterface](cognitive-search-custom-skill-interface.md). Enkele voor beelden van aangepaste vaardig heden zijn [formulieren Recognizer](/azure/cognitive-services/form-recognizer/overview), integratie van de [Bing entiteiten zoeken-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)en [aangepaste entiteits herkenning](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Aangepaste vaardig heden kunnen complexere scenario's ondersteunen, zoals het herkennen van formulieren of het detecteren van aangepaste entiteiten met behulp van een model dat u opgeeft en inpakt in de [aangepaste vaardigheids webinterface](cognitive-search-custom-skill-interface.md). Enkele voor beelden van aangepaste vaardig heden zijn [formulieren Recognizer](../cognitive-services/form-recognizer/overview.md), integratie van de [Bing entiteiten zoeken-API](./cognitive-search-create-custom-skill-example.md)en [aangepaste entiteits herkenning](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-## <a name="steps-in-an-enrichment-pipeline"></a>Stappen in een verrijkings pijplijn<a name="enrichment-steps"></a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Stappen in een verrijkings pijplijn <a name="enrichment-steps"></a>
 
 Een verrijkings pijplijn is gebaseerd op [*Indexeer functies*](search-indexer-overview.md). Indexeer functies vullen een index op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron voor het kraken van documenten. Vaardig heden, die nu zijn gekoppeld aan Indexeer functies, onderscheppen en verrijkt documenten volgens de vakkennisset (en) die u definieert. Zodra de index is geïndexeerd, hebt u toegang tot inhoud via Zoek opdrachten via alle [query typen die door Azure Cognitive Search worden ondersteund](search-query-overview.md).  Als u geen ervaring hebt met Indexeer functies, begeleidt deze sectie u stapsgewijs door de stappen.
 
@@ -83,7 +83,7 @@ Intern genereert de pijp lijn een verzameling verrijkte documenten. U kunt bepal
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Een knowledgeStore-element toevoegen om verrijkingen op te slaan
 
-[Search rest API-Version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) breidt vaardig heden uit met een `knowledgeStore` definitie die een Azure Storage-verbinding en projecties biedt die beschrijven hoe de verrijkingen worden opgeslagen. Dit is een aanvulling op uw index. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. Zie [Knowledge Store](knowledge-store-concept-intro.md)voor meer informatie.
+[Search rest API-Version = 2020-06-30](/rest/api/searchservice/) breidt vaardig heden uit met een `knowledgeStore` definitie die een Azure Storage-verbinding en projecties biedt die beschrijven hoe de verrijkingen worden opgeslagen. Dit is een aanvulling op uw index. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. Zie [Knowledge Store](knowledge-store-concept-intro.md)voor meer informatie.
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Stap 3: zoek index en op query's gebaseerde toegang
 
@@ -99,13 +99,13 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 
 1. Deel uw Azure-bron gegevens in een representatieve steek proef. Het indexeren vergt enige tijd met een kleine, representatieve gegevensset en bouwt deze vervolgens incrementeel op als uw oplossing is gerijpt.
 
-1. Maak een [gegevens bron object](https://docs.microsoft.com/rest/api/searchservice/create-data-source) in azure Cognitive Search om een Connection String op te geven voor het ophalen van gegevens.
+1. Maak een [gegevens bron object](/rest/api/searchservice/create-data-source) in azure Cognitive Search om een Connection String op te geven voor het ophalen van gegevens.
 
-1. Maak een [vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) met verrijkings stappen.
+1. Maak een [vaardig heden](/rest/api/searchservice/create-skillset) met verrijkings stappen.
 
-1. Definieer het [index schema](https://docs.microsoft.com/rest/api/searchservice/create-index). De verzameling *velden* bevat velden uit de bron gegevens. U moet ook extra velden uitstuben voor het opslaan van gegenereerde waarden voor inhoud die tijdens verrijking is gemaakt.
+1. Definieer het [index schema](/rest/api/searchservice/create-index). De verzameling *velden* bevat velden uit de bron gegevens. U moet ook extra velden uitstuben voor het opslaan van gegenereerde waarden voor inhoud die tijdens verrijking is gemaakt.
 
-1. Definieer de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) die verwijst naar de gegevens bron, de vaardig heden en de index.
+1. Definieer de [Indexeer functie](/rest/api/searchservice/create-indexer) die verwijst naar de gegevens bron, de vaardig heden en de index.
 
 1. Voeg in de Indexeer functie *outputFieldMappings*toe. In deze sectie wordt de uitvoer van de vaardig heden (in stap 3) toegewezen aan de invoer velden in het index schema (in stap 4).
 
@@ -121,6 +121,6 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking (C#)](cognitive-search-create-custom-skill-example.md)
 + [Quick Start: AI-verrijking in een portal door lopen](cognitive-search-quickstart-blob.md)
 + [Zelf studie: meer informatie over de AI-verrijkings Api's](cognitive-search-tutorial-blob.md)
-+ [Kennisarchief](knowledge-store-concept-intro.md)
++ [Knowledge Store](knowledge-store-concept-intro.md)
 + [Een kennis archief maken in REST](knowledge-store-create-rest.md)
 + [Tips voor probleemoplossing](cognitive-search-concept-troubleshooting.md)

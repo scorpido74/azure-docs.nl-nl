@@ -3,13 +3,14 @@ title: ApplicationInsights.config referentie-Azure | Microsoft Docs
 description: Schakel modules voor gegevens verzameling in of uit en voeg prestatie meter items en andere para meters toe.
 ms.topic: conceptual
 ms.date: 05/22/2019
+ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: ec446190cd589eb511a7a905faeb5f29f31e7d69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c0759e78b1adc1704acb602daa12cf9cabbe153
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310477"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934800"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>De Application Insights-SDK configureren met ApplicationInsights.config of ApplicationInsights.xml
 De Application Insights .NET SDK bestaat uit een aantal NuGet-pakketten. Het [kern pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biedt de API voor het verzenden van telemetrie naar de Application Insights. [Aanvullende pakketten](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieden telemetrie- *modules* en *initialisatie functies* voor het automatisch traceren van telemetrie van uw toepassing en de bijbehorende context. Door het configuratie bestand aan te passen, kunt u telemetrie-modules en initialisatie functies in-of uitschakelen en para meters instellen voor een aantal hiervan.
@@ -53,7 +54,7 @@ De `DiagnosticsTelemetryModule` rapporteert fouten in de Application Insights in
 ```
 
 ### <a name="developer-mode"></a>Ontwikkelaars modus
-`DeveloperModeWithDebuggerAttachedTelemetryModule`Hiermee wordt ervoor gezorgd dat de Application Insights `TelemetryChannel` direct gegevens verzendt, één telemetrie-item wanneer een fout opsporingsprogramma aan het toepassings proces is gekoppeld. Dit vermindert de hoeveelheid tijd tussen het moment waarop uw toepassing telemetrie bijhoudt en wanneer deze wordt weer gegeven op de Application Insights Portal. Dit veroorzaakt aanzienlijke overhead in CPU-en netwerk bandbreedte.
+`DeveloperModeWithDebuggerAttachedTelemetryModule` Hiermee wordt ervoor gezorgd dat de Application Insights `TelemetryChannel` direct gegevens verzendt, één telemetrie-item wanneer een fout opsporingsprogramma aan het toepassings proces is gekoppeld. Dit vermindert de hoeveelheid tijd tussen het moment waarop uw toepassing telemetrie bijhoudt en wanneer deze wordt weer gegeven op de Application Insights Portal. Dit veroorzaakt aanzienlijke overhead in CPU-en netwerk bandbreedte.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-pakket
@@ -65,22 +66,22 @@ Rapporteert de [reactie tijd en de resultaat code](../../azure-monitor/app/asp-n
 * Het NuGet-pakket [micro soft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
 
 ### <a name="exception-tracking"></a>Uitzonde ringen bijhouden
-`ExceptionTrackingTelemetryModule`Hiermee worden niet-verwerkte uitzonde ringen in uw web-app bijgehouden. Bekijk [storingen en uitzonde ringen][exceptions].
+`ExceptionTrackingTelemetryModule` Hiermee worden niet-verwerkte uitzonde ringen in uw web-app bijgehouden. Bekijk [storingen en uitzonde ringen][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * Het NuGet-pakket [micro soft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-sporen van niet-geobserveerde taak uitzonderingen
-* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule`-niet-verwerkte uitzonde ringen voor werk rollen, Windows-Services en console toepassingen worden bijgehouden.
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -sporen van niet-geobserveerde taak uitzonderingen
+* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -niet-verwerkte uitzonde ringen voor werk rollen, Windows-Services en console toepassingen worden bijgehouden.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-pakket.
 
 ### <a name="eventsource-tracking"></a>Event source tracking
-`EventSourceTelemetryModule`Hiermee kunt u Event source-gebeurtenissen configureren voor verzen ding naar Application Insights als traceringen. Zie [gebeurtenis source Events gebruiken](./asp-net-trace-logs.md#use-eventsource-events)voor meer informatie over het volgen van Event source-gebeurtenissen.
+`EventSourceTelemetryModule` Hiermee kunt u Event source-gebeurtenissen configureren voor verzen ding naar Application Insights als traceringen. Zie [gebeurtenis source Events gebruiken](./asp-net-trace-logs.md#use-eventsource-events)voor meer informatie over het volgen van Event source-gebeurtenissen.
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>ETW-gebeurtenis tracering
-`EtwCollectorTelemetryModule`Hiermee kunt u gebeurtenissen configureren van ETW-providers die moeten worden verzonden naar Application Insights als traceringen. Zie [etw-gebeurtenissen gebruiken](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events)voor meer informatie over het volgen van etw-gebeurtenissen.
+`EtwCollectorTelemetryModule` Hiermee kunt u gebeurtenissen configureren van ETW-providers die moeten worden verzonden naar Application Insights als traceringen. Zie [etw-gebeurtenissen gebruiken](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events)voor meer informatie over het volgen van etw-gebeurtenissen.
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
@@ -94,8 +95,8 @@ Het pakket micro soft. ApplicationInsights biedt de [kern-API](/dotnet/api/micro
 ## <a name="telemetry-channel"></a>Telemetrie-kanaal
 Het [telemetrie-kanaal](telemetry-channels.md) beheert het bufferen en verzenden van telemetrie naar de Application Insights-service.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`is het standaard kanaal voor webtoepassingen. Het buffert gegevens in het geheugen en maakt gebruik van mechanismen voor opnieuw proberen en lokale schijf opslag voor betrouwbaardere telemetrie-levering.
-* `Microsoft.ApplicationInsights.InMemoryChannel`is een licht gewicht-telemetrie-kanaal, dat wordt gebruikt als er geen ander kanaal is geconfigureerd. 
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` is het standaard kanaal voor webtoepassingen. Het buffert gegevens in het geheugen en maakt gebruik van mechanismen voor opnieuw proberen en lokale schijf opslag voor betrouwbaardere telemetrie-levering.
+* `Microsoft.ApplicationInsights.InMemoryChannel` is een licht gewicht-telemetrie-kanaal, dat wordt gebruikt als er geen ander kanaal is geconfigureerd. 
 
 ## <a name="telemetry-initializers-aspnet"></a>Initialisatie functies voor telemetrie (ASP.NET)
 Met de initialisatie functies voor telemetrie worden context eigenschappen ingesteld die samen met elk item van telemetrie worden verzonden.
@@ -104,27 +105,27 @@ U kunt [uw eigen initialisatie functies schrijven](./api-filtering-sampling.md#a
 
 De standaard initialisatie functies zijn allemaal ingesteld door de web-of WindowsServer NuGet-pakketten:
 
-* `AccountIdTelemetryInitializer`Hiermee wordt de eigenschap AccountId ingesteld.
-* `AuthenticatedUserIdTelemetryInitializer`Hiermee stelt u de eigenschap AuthenticatedUserId in zoals ingesteld door de Java script-SDK.
-* `AzureRoleEnvironmentTelemetryInitializer`Hiermee `RoleName` worden de en `RoleInstance` Eigenschappen van de `Device` context voor alle telemetriegegevens bijgewerkt met gegevens die zijn geëxtraheerd uit de Azure runtime-omgeving.
-* `BuildInfoConfigComponentVersionTelemetryInitializer`Hiermee wordt de `Version` eigenschap van de `Component` context voor alle telemetrie-items bijgewerkt met de waarde die is geëxtraheerd uit het bestand dat wordt `BuildInfo.config` gegenereerd door MS build.
-* `ClientIpHeaderTelemetryInitializer`Hiermee wordt `Ip` de eigenschap bijgewerkt van de `Location` context van alle telemetriegegevens op basis van de `X-Forwarded-For` http-header van de aanvraag.
-* `DeviceTelemetryInitializer`Hiermee worden de volgende eigenschappen van de `Device` context voor alle telemetrie-items bijgewerkt.
-  * `Type`is ingesteld op ' PC '
-  * `Id`is ingesteld op de domein naam van de computer waarop de webtoepassing wordt uitgevoerd.
-  * `OemName`wordt ingesteld op de waarde die is geëxtraheerd uit het `Win32_ComputerSystem.Manufacturer` veld met WMI.
-  * `Model`wordt ingesteld op de waarde die is geëxtraheerd uit het `Win32_ComputerSystem.Model` veld met WMI.
-  * `NetworkType`wordt ingesteld op de waarde die is geëxtraheerd uit de `NetworkInterface` .
-  * `Language`is ingesteld op de naam van `CurrentCulture` .
-* `DomainNameRoleInstanceTelemetryInitializer`Hiermee `RoleInstance` wordt de eigenschap van de `Device` context voor alle telemetriegegevens bijgewerkt met de domein naam van de computer waarop de webtoepassing wordt uitgevoerd.
-* `OperationNameTelemetryInitializer`Hiermee `Name` wordt de eigenschap van de `RequestTelemetry` en de `Name` eigenschap van de `Operation` context van alle telemetrie-items bijgewerkt op basis van de HTTP-methode, evenals de namen van de ASP.NET MVC-controller en de actie die is aangeroepen om de aanvraag te verwerken.
-* `OperationIdTelemetryInitializer`of `OperationCorrelationTelemetryInitializer` werkt de `Operation.Id` eigenschap context bij van alle telemetriegegevens die worden bijgehouden tijdens het verwerken van een aanvraag met de automatisch gegenereerde items `RequestTelemetry.Id` .
-* `SessionTelemetryInitializer`Hiermee `Id` wordt de eigenschap van de `Session` context voor alle telemetrie-items bijgewerkt met de waarde die is geëxtraheerd uit de `ai_session` cookie die wordt gegenereerd door de ApplicationInsights java script Instrumentation-code die wordt uitgevoerd in de browser van de gebruiker.
-* `SyntheticTelemetryInitializer`of `SyntheticUserAgentTelemetryInitializer` werkt de `User` `Session` Eigenschappen,, en `Operation` contexten bij van alle telemetriegegevens die worden bijgehouden bij het afhandelen van een aanvraag van een synthetische bron, zoals een beschikbaarheids test of een zoek machine-bot. [Metrics Explorer](../platform/metrics-charts.md) worden standaard geen synthetische telemetrie weer gegeven.
+* `AccountIdTelemetryInitializer` Hiermee wordt de eigenschap AccountId ingesteld.
+* `AuthenticatedUserIdTelemetryInitializer` Hiermee stelt u de eigenschap AuthenticatedUserId in zoals ingesteld door de Java script-SDK.
+* `AzureRoleEnvironmentTelemetryInitializer` Hiermee `RoleName` worden de en `RoleInstance` Eigenschappen van de `Device` context voor alle telemetriegegevens bijgewerkt met gegevens die zijn geëxtraheerd uit de Azure runtime-omgeving.
+* `BuildInfoConfigComponentVersionTelemetryInitializer` Hiermee wordt de `Version` eigenschap van de `Component` context voor alle telemetrie-items bijgewerkt met de waarde die is geëxtraheerd uit het bestand dat wordt `BuildInfo.config` gegenereerd door MS build.
+* `ClientIpHeaderTelemetryInitializer` Hiermee wordt `Ip` de eigenschap bijgewerkt van de `Location` context van alle telemetriegegevens op basis van de `X-Forwarded-For` http-header van de aanvraag.
+* `DeviceTelemetryInitializer` Hiermee worden de volgende eigenschappen van de `Device` context voor alle telemetrie-items bijgewerkt.
+  * `Type` is ingesteld op ' PC '
+  * `Id` is ingesteld op de domein naam van de computer waarop de webtoepassing wordt uitgevoerd.
+  * `OemName` wordt ingesteld op de waarde die is geëxtraheerd uit het `Win32_ComputerSystem.Manufacturer` veld met WMI.
+  * `Model` wordt ingesteld op de waarde die is geëxtraheerd uit het `Win32_ComputerSystem.Model` veld met WMI.
+  * `NetworkType` wordt ingesteld op de waarde die is geëxtraheerd uit de `NetworkInterface` .
+  * `Language` is ingesteld op de naam van `CurrentCulture` .
+* `DomainNameRoleInstanceTelemetryInitializer` Hiermee `RoleInstance` wordt de eigenschap van de `Device` context voor alle telemetriegegevens bijgewerkt met de domein naam van de computer waarop de webtoepassing wordt uitgevoerd.
+* `OperationNameTelemetryInitializer` Hiermee `Name` wordt de eigenschap van de `RequestTelemetry` en de `Name` eigenschap van de `Operation` context van alle telemetrie-items bijgewerkt op basis van de HTTP-methode, evenals de namen van de ASP.NET MVC-controller en de actie die is aangeroepen om de aanvraag te verwerken.
+* `OperationIdTelemetryInitializer` of `OperationCorrelationTelemetryInitializer` werkt de `Operation.Id` eigenschap context bij van alle telemetriegegevens die worden bijgehouden tijdens het verwerken van een aanvraag met de automatisch gegenereerde items `RequestTelemetry.Id` .
+* `SessionTelemetryInitializer` Hiermee `Id` wordt de eigenschap van de `Session` context voor alle telemetrie-items bijgewerkt met de waarde die is geëxtraheerd uit de `ai_session` cookie die wordt gegenereerd door de ApplicationInsights java script Instrumentation-code die wordt uitgevoerd in de browser van de gebruiker.
+* `SyntheticTelemetryInitializer` of `SyntheticUserAgentTelemetryInitializer` werkt de `User` `Session` Eigenschappen,, en `Operation` contexten bij van alle telemetriegegevens die worden bijgehouden bij het afhandelen van een aanvraag van een synthetische bron, zoals een beschikbaarheids test of een zoek machine-bot. [Metrics Explorer](../platform/metrics-charts.md) worden standaard geen synthetische telemetrie weer gegeven.
 
     De `<Filters>` set waarmee de eigenschappen van de aanvragen worden geïdentificeerd.
-* `UserTelemetryInitializer`Hiermee worden de `Id` en `AcquisitionDate` Eigenschappen van de `User` context voor alle telemetriegegevens bijgewerkt met waarden die zijn geëxtraheerd uit de `ai_user` cookie die wordt gegenereerd door de Application Insights java script-instrumentatie code die wordt uitgevoerd in de browser van de gebruiker.
-* `WebTestTelemetryInitializer`Hiermee stelt u de gebruikers-ID, sessie-ID en synthetische bron eigenschappen in voor HTTP-aanvragen die afkomstig zijn van [beschikbaarheids testen](./monitor-web-app-availability.md).
+* `UserTelemetryInitializer` Hiermee worden de `Id` en `AcquisitionDate` Eigenschappen van de `User` context voor alle telemetriegegevens bijgewerkt met waarden die zijn geëxtraheerd uit de `ai_user` cookie die wordt gegenereerd door de Application Insights java script-instrumentatie code die wordt uitgevoerd in de browser van de gebruiker.
+* `WebTestTelemetryInitializer` Hiermee stelt u de gebruikers-ID, sessie-ID en synthetische bron eigenschappen in voor HTTP-aanvragen die afkomstig zijn van [beschikbaarheids testen](./monitor-web-app-availability.md).
   De `<Filters>` set waarmee de eigenschappen van de aanvragen worden geïdentificeerd.
 
 Voor .NET-toepassingen die worden uitgevoerd in Service Fabric, kunt u het `Microsoft.ApplicationInsights.ServiceFabric` NuGet-pakket toevoegen. Dit pakket bevat een `FabricTelemetryInitializer` , waarmee service Fabric eigenschappen aan telemetrie-items worden toegevoegd. Zie de [pagina github](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) over de eigenschappen die zijn toegevoegd door dit NuGet-pakket voor meer informatie.

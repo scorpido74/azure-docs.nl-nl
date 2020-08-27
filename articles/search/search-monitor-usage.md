@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806808"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935004"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Bewerkingen en activiteiten van Azure Cognitive Search bewaken
 
@@ -59,7 +59,7 @@ U kunt de volgende Api's gebruiken voor het ophalen van dezelfde informatie die 
 
 ### <a name="activity-logs-and-service-health"></a>Activiteiten logboeken en service status
 
-Op de pagina [**activiteiten logboek**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) in de portal wordt informatie verzameld van Azure Resource Manager en rapporten over wijzigingen in de status van de service. U kunt het activiteiten logboek controleren op kritieke, fout-en waarschuwings voorwaarden met betrekking tot de service status.
+Op de pagina [**activiteiten logboek**](../azure-monitor/platform/activity-log.md#view-the-activity-log) in de portal wordt informatie verzameld van Azure Resource Manager en rapporten over wijzigingen in de status van de service. U kunt het activiteiten logboek controleren op kritieke, fout-en waarschuwings voorwaarden met betrekking tot de service status.
 
 Algemene vermeldingen bevatten verwijzingen naar API-sleutels-algemene informatie meldingen, zoals *admin-sleutel ophalen* en *query sleutels ophalen*. Deze activiteiten wijzen op aanvragen die zijn gemaakt met behulp van de beheerder sleutel (objecten maken of verwijderen) of de query sleutel, maar niet de aanvraag zelf weer geven. Voor informatie over deze korrel moet u diagnostische logboek registratie configureren.
 
@@ -75,13 +75,13 @@ De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 
  "Gebruiks status relatief ten opzichte van laag limieten")
 
 > [!NOTE]
-> Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar. het opslag verbruik is niet geaggregeerd of aangemeld bij de **AzureMetrics** -tabel in azure monitor. Als u waarschuwingen voor opslag wilt ontvangen, moet u [een aangepaste oplossing bouwen](../azure-monitor/insights/solutions-creating.md) die meldingen over resources verzendt, waarbij uw code controleert op opslag grootte en het antwoord verwerkt.
+> Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar. het opslag verbruik is niet geaggregeerd of aangemeld bij de **AzureMetrics** -tabel in azure monitor. Als u waarschuwingen voor opslag wilt ontvangen, moet u [een aangepaste oplossing bouwen](../azure-monitor/insights/solutions.md) die meldingen over resources verzendt, waarbij uw code controleert op opslag grootte en het antwoord verwerkt.
 
 <a name="add-azure-monitor"></a>
 
 ## <a name="add-on-monitoring-with-azure-monitor"></a>Bewaking van invoeg toepassingen met Azure Monitor
 
-Veel services, met inbegrip van Azure Cognitive Search, kunnen worden geïntegreerd met [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) voor extra waarschuwingen, metrische gegevens en Diagnostische logboeken voor registratie. 
+Veel services, met inbegrip van Azure Cognitive Search, kunnen worden geïntegreerd met [Azure monitor](../azure-monitor/index.yml) voor extra waarschuwingen, metrische gegevens en Diagnostische logboeken voor registratie. 
 
 [Schakel diagnostische logboek registratie in](search-monitor-logs.md) voor een zoek service als u wilt bepalen hoe gegevens moeten worden verzameld en opgeslagen. Geregistreerde gebeurtenissen die zijn vastgelegd door Azure Monitor worden opgeslagen in de tabel **AzureDiagnostics** en bestaan uit operationele gegevens met betrekking tot query's en indexering.
 
@@ -107,4 +107,4 @@ Het is niet mogelijk om deze informatie afzonderlijk te registreren vanuit de qu
 Fluency met Azure Monitor is essentieel voor het toezicht op elke Azure-service, inclusief resources zoals Azure Cognitive Search. Als u niet bekend bent met Azure Monitor, neemt u de tijd voor het beoordelen van artikelen die betrekking hebben op resources. Naast zelf studies is het volgende artikel een goede plaats om te beginnen.
 
 > [!div class="nextstepaction"]
-> [Azure-resources bewaken met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Azure-resources bewaken met Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md)

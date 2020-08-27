@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383627"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936415"
 ---
 # <a name="connection-strings"></a>Verbindingsreeksen
 
@@ -26,7 +26,7 @@ De sleutel-waardeparen bieden een eenvoudige manier om gebruikers een combi nati
 > Het is niet raadzaam om zowel de verbindings reeks als de instrumentatie sleutel in te stellen. In het geval dat een gebruiker beide heeft ingesteld, is de laatste ingesteld, afhankelijk van de waarde van de vorige. 
 
 
-## <a name="scenario-overview"></a>Scenario-overzicht 
+## <a name="scenario-overview"></a>Overzicht van scenario's 
 
 Klanten scenario's waarin we dit hebben gevisualiseerd, hebben de meeste impact:
 
@@ -56,19 +56,19 @@ De verbinding heeft een maximale ondersteunde lengte van 4096 tekens.
 
 #### <a name="key-value-pairs"></a>Sleutel-waardeparen
 
-De verbindings reeks bestaat uit een lijst met instellingen die worden weer gegeven als sleutel-waardeparen, gescheiden door punt komma's:`key1=value1;key2=value2;key3=value3`
+De verbindings reeks bestaat uit een lijst met instellingen die worden weer gegeven als sleutel-waardeparen, gescheiden door punt komma's: `key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntaxis
+#### <a name="syntax"></a>Syntax
 
-- `InstrumentationKey`(bijvoorbeeld: 00000000-0000-0000-0000-000000000000)  Het connection string is een **verplicht** veld.
-- `Authorization`(bijvoorbeeld: Ikey) (Deze instelling is optioneel, omdat we alleen iKey-autorisatie ondersteunen.)
-- `EndpointSuffix`(bijvoorbeeld: applicationinsights.azure.cn) Als u het eind punt achtervoegsel instelt, wordt de SDK geïnstrueerd waarmee de Azure-Cloud verbinding maakt. De SDK stelt de rest van het eind punt samen voor afzonderlijke services.
+- `InstrumentationKey` (bijvoorbeeld: 00000000-0000-0000-0000-000000000000)  Het connection string is een **verplicht** veld.
+- `Authorization` (bijvoorbeeld: Ikey) (Deze instelling is optioneel, omdat we alleen iKey-autorisatie ondersteunen.)
+- `EndpointSuffix` (bijvoorbeeld: applicationinsights.azure.cn) Als u het eind punt achtervoegsel instelt, wordt de SDK geïnstrueerd waarmee de Azure-Cloud verbinding maakt. De SDK stelt de rest van het eind punt samen voor afzonderlijke services.
 - Expliciete eind punten.
   Elke service kan expliciet worden overschreven in de connection string.
-   - `IngestionEndpoint`(bijvoorbeeld: `https://dc.applicationinsights.azure.com` )
-   - `LiveEndpoint`(bijvoorbeeld: `https://live.applicationinsights.azure.com` )
-   - `ProfilerEndpoint`(bijvoorbeeld: `https://profiler.applicationinsights.azure.com` )
-   - `SnapshotEndpoint`(bijvoorbeeld: `https://snapshot.applicationinsights.azure.com` )
+   - `IngestionEndpoint` (bijvoorbeeld: `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint` (bijvoorbeeld: `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint` (bijvoorbeeld: `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint` (bijvoorbeeld: `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Eindpunt schema
 
@@ -83,15 +83,15 @@ Hier volgt een lijst met geldige achtervoegsels
 - applicationinsights.us
 
 
-Zie ook:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+Zie ook: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
 ##### <a name="valid-prefixes"></a>Geldige voor voegsels
 
-- [Telemetrie-opname](./app-insights-overview.md):`dc`
-- [Live metrische gegevens](./live-stream.md):`live`
-- [Profiler](./profiler-overview.md):`profiler`
-- [Moment opname](./snapshot-debugger.md):`snapshot`
+- [Telemetrie-opname](./app-insights-overview.md): `dc`
+- [Live metrische gegevens](./live-stream.md): `live`
+- [Profiler](./profiler-overview.md): `profiler`
+- [Moment opname](./snapshot-debugger.md): `snapshot`
 
 
 
@@ -107,10 +107,10 @@ In dit voor beeld is alleen de instrumentatie sleutel ingesteld.
 - Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
 - Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
 - De regionale service-Uri's zijn gebaseerd op de [standaard instellingen](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) van de SDK en er wordt verbinding gemaakt met de open bare wereld wijde Azure:
-   - Opname`https://dc.services.visualstudio.com/`
-   - Live metrische gegevens:`https://rt.services.visualstudio.com/`
-   - Profiler`https://agent.azureserviceprofiler.net/`
-   - Foutopsporingsversie`https://agent.azureserviceprofiler.net/`
+   - Opname `https://dc.services.visualstudio.com/`
+   - Live metrische gegevens: `https://rt.services.visualstudio.com/`
+   - Profiler `https://agent.azureserviceprofiler.net/`
+   - Foutopsporingsversie `https://agent.azureserviceprofiler.net/`
 
 
 
@@ -123,10 +123,10 @@ In dit voor beeld geeft deze connection string het eindpunt achtervoegsel op en 
 - Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
 - Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
 - De regionale service-Uri's zijn gebaseerd op het gegeven eind punt achtervoegsel: 
-   - Opname`https://dc.ai.contoso.com`
-   - Live metrische gegevens:`https://live.ai.contoso.com`
-   - Profiler`https://profiler.ai.contoso.com`
-   - Foutopsporingsversie`https://snapshot.ai.contoso.com`  
+   - Opname `https://dc.ai.contoso.com`
+   - Live metrische gegevens: `https://live.ai.contoso.com`
+   - Profiler `https://profiler.ai.contoso.com`
+   - Foutopsporingsversie `https://snapshot.ai.contoso.com`  
 
 
 
@@ -139,10 +139,10 @@ In dit voor beeld geeft deze connection string expliciete onderdrukkingen voor e
 - Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
 - Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
 - De regionale service-Uri's zijn gebaseerd op de expliciete onderdrukkings waarden: 
-   - Opname`https://custom.com:111/`
-   - Live metrische gegevens:`https://custom.com:222/`
-   - Profiler`https://custom.com:333/`
-   - Foutopsporingsversie`https://custom.com:444/`  
+   - Opname `https://custom.com:111/`
+   - Live metrische gegevens: `https://custom.com:222/`
+   - Profiler `https://custom.com:333/`
+   - Foutopsporingsversie `https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>Een connection string instellen
@@ -160,11 +160,11 @@ Een connection string kan worden ingesteld met behulp van code, omgevings variab
 
 ### <a name="environment-variable"></a>Omgevingsvariabele
 
-- Verbindings reeks:`APPLICATIONINSIGHTS_CONNECTION_STRING`
+- Verbindings reeks: `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-TelemetryConfiguration. Connections Tring:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetryConfiguration. Connections Tring: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
 .NET expliciet ingesteld:
 ```csharp

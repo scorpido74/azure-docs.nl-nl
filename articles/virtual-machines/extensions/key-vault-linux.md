@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6702ab3753604af50e21f931dd23f63de3c1451
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522288"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936194"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -35,7 +35,7 @@ De Key Vault VM-extensie ondersteunt deze Linux-distributies:
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Specifiek:  
+De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Met name:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -80,12 +80,12 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForLinux | tekenreeks |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | Het wordt genegeerd op Linux | tekenreeks |
 | linkOnRenewal | false | boolean |
@@ -130,6 +130,8 @@ De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell-implementatie
+> [!WARNING]
+> Power shell-clients voegen vaak toe `\` aan `"` in de settings.js, waardoor akvvm_service mislukt met de volgende fout: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 De Azure PowerShell kan worden gebruikt om de Key Vault VM-extensie te implementeren op een bestaande virtuele machine of virtuele-machine schaalset. 
 

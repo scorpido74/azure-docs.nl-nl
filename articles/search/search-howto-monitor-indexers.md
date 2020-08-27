@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf7ae504e57d0b7947f4ff7dc48d50b2e0141eea
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529740"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936636"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search Indexeer functie-status en-resultaten controleren
 
@@ -80,7 +80,7 @@ Zie problemen [met algemene Indexeer functies in Azure Cognitive Search oplossen
 
 ## <a name="monitor-using-rest-apis"></a>Bewaken met REST-Api's
 
-U kunt de status en de uitvoerings geschiedenis van een Indexeer functie ophalen met behulp van de [opdracht Get Indexing-status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+U kunt de status en de uitvoerings geschiedenis van een Indexeer functie ophalen met behulp van de [opdracht Get Indexing-status](/rest/api/searchservice/get-indexer-status):
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -125,7 +125,7 @@ Elke uitvoering van de Indexeer functie heeft ook een eigen status die aangeeft 
 
 Wanneer een Indexeer functie opnieuw wordt ingesteld om de status van het bijhouden van wijzigingen te vernieuwen, wordt een afzonderlijke vermelding voor de uitvoerings geschiedenis toegevoegd met de status **opnieuw instellen** .
 
-Zie [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)voor meer informatie over de status codes en de bewakings gegevens van de Indexeer functie.
+Zie [GetIndexerStatus](/rest/api/searchservice/get-indexer-status)voor meer informatie over de status codes en de bewakings gegevens van de Indexeer functie.
 
 <a name="dotnetsdk"></a>
 
@@ -184,8 +184,8 @@ Elke uitvoering van de Indexeer functie heeft ook een eigen status om te bepalen
 
 Wanneer een Indexeer functie opnieuw wordt ingesteld om de status van het bijhouden van wijzigingen te vernieuwen, wordt een afzonderlijk geschiedenis item toegevoegd met de status **opnieuw instellen** .
 
-Zie [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) in de rest API voor meer informatie over de status codes en de bewakings gegevens van de Indexeer functie.
+Zie [GetIndexerStatus](/rest/api/searchservice/get-indexer-status) in de rest API voor meer informatie over de status codes en de bewakings gegevens van de Indexeer functie.
 
 Details van Documentspecifieke fouten of waarschuwingen kunnen worden opgehaald door de lijsten `IndexerExecutionResult.Errors` en te inventariseren `IndexerExecutionResult.Warnings` .
 
-Zie [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) en [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)voor meer informatie over de .NET SDK-klassen die worden gebruikt om Indexeer functies te controleren.
+Zie [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) en [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)voor meer informatie over de .NET SDK-klassen die worden gebruikt om Indexeer functies te controleren.

@@ -2,15 +2,16 @@
 title: Automatische verzameling van Azure-toepassing Insights-afhankelijkheden | Microsoft Docs
 description: Afhankelijkheden Application Insights automatisch verzamelen en visualiseren
 ms.topic: reference
+ms.custom: devx-track-dotnet
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324179"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936432"
 ---
 # <a name="dependency-auto-collection"></a>Afhankelijkheden automatisch verzamelen
 
@@ -24,7 +25,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
 | ASP.NET Core | 1.1 + |
-| <b>Communicatie bibliotheken</b> |
+| <b> Communicatie bibliotheken</b> |
 | [Httpclient maakt](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
 | [Micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0-laatste stabiele release. (Zie opmerking hieronder.)
@@ -43,7 +44,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Tomcat](https://tomcat.apache.org/) | 7, 8 | 
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
-| <b>App-Frameworks</b> |  |
+| <b>App-Frameworks </b> |  |
 | [Spring](https://spring.io/) | 3,0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java-servlet | 3.1 + |
@@ -80,11 +81,11 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
 | [Winston](https://www.npmjs.com/package/winston) | 2. x-3. x |
 
-## <a name="javascript"></a>Javascript
+## <a name="javascript"></a>JavaScript
 
 | Communicatie bibliotheken | Versies |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alle |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alles |
 
 ## <a name="next-steps"></a>Volgende stappen
 

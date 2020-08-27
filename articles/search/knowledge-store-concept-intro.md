@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230771"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924296"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Knowledge Store in azure Cognitive Search
 
@@ -21,7 +21,7 @@ Knowledge Store is een functie van Azure Cognitive Search die de uitvoer van een
 
 Als u in het verleden cognitieve vaardig heden hebt gebruikt, weet u al dat *vaardig heden* een document verplaatst via een reeks verrijkingen. Het resultaat kan een zoek index of projecties in een kennis archief zijn. De twee uitvoer, zoek index en kennis opslag zijn producten van dezelfde pijp lijn; afgeleid van dezelfde invoer, maar resulteert in uitvoer die is gestructureerd, opgeslagen en op zeer verschillende manieren gebruikt.
 
-Fysiek is een kennis archief [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), ofwel Azure Table Storage, Azure Blob Storage, of beide. Elk hulp programma of proces waarmee verbinding kan worden gemaakt met Azure Storage, kan de inhoud van een kennis archief gebruiken.
+Fysiek is een kennis archief [Azure Storage](../storage/common/storage-account-overview.md), ofwel Azure Table Storage, Azure Blob Storage, of beide. Elk hulp programma of proces waarmee verbinding kan worden gemaakt met Azure Storage, kan de inhoud van een kennis archief gebruiken.
 
 
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
@@ -39,7 +39,7 @@ Geïnventariseerd, de voor delen van kennis archief zijn onder andere het volgen
 
 + Gebruik verrijkte documenten in [analyse-en rapportage hulpprogramma's,](#tools-and-apps) met uitzonde ring van zoeken. Power BI met Power Query is een fascinerende keuze, maar elk hulp programma of elke app waarmee verbinding kan worden gemaakt met Azure Storage kan worden opgehaald uit een kennis archief dat u maakt.
 
-+ Verfijn een pijp lijn voor AI-indexering bij het opsporen van fouten en definities van vaardig heden. In een kennis archief ziet u het product van een vaardighedenset-definitie in een AI-Indexing-pijp lijn. U kunt deze resultaten gebruiken om een betere vaardig heden te ontwerpen, want u kunt precies zien hoe de verrijkingen eruitzien. U kunt [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) in azure Storage gebruiken om de inhoud van een kennis archief weer te geven.
++ Verfijn een pijp lijn voor AI-indexering bij het opsporen van fouten en definities van vaardig heden. In een kennis archief ziet u het product van een vaardighedenset-definitie in een AI-Indexing-pijp lijn. U kunt deze resultaten gebruiken om een betere vaardig heden te ontwerpen, want u kunt precies zien hoe de verrijkingen eruitzien. U kunt [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) in azure Storage gebruiken om de inhoud van een kennis archief weer te geven.
 
 + De gegevens vorm geven in nieuwe formulieren. Het omvormen wordt in vaardig heden gecodificeerd, maar het punt is dat deze mogelijkheid nu kan worden geboden door een vaardig heden. De [shaper-vaardigheid](cognitive-search-skill-shaper.md) in azure Cognitive Search is uitgebreid om deze taak te kunnen verwerken. Met Reshaping kunt u een projectie definiëren die wordt afgestemd op uw gebruik van de gegevens, terwijl de relaties behouden blijven.
 
@@ -84,7 +84,7 @@ Het is echter mogelijk om meerdere projecties te maken `table` - `object` - `fil
 
 ## <a name="requirements"></a>Vereisten 
 
-[Azure Storage](https://docs.microsoft.com/azure/storage/) is vereist. Het biedt fysieke opslag. U kunt Blob Storage, Table Storage of beide gebruiken. Blob-opslag wordt gebruikt voor onintacte, verrijkte documenten, meestal wanneer de uitvoer naar downstream-processen gaat. Table Storage is voor segmenten van verrijkte documenten, die vaak worden gebruikt voor analyse en rapportage.
+[Azure Storage](../storage/index.yml) is vereist. Het biedt fysieke opslag. U kunt Blob Storage, Table Storage of beide gebruiken. Blob-opslag wordt gebruikt voor onintacte, verrijkte documenten, meestal wanneer de uitvoer naar downstream-processen gaat. Table Storage is voor segmenten van verrijkte documenten, die vaak worden gebruikt voor analyse en rapportage.
 
 De [vaardig heden](cognitive-search-working-with-skillsets.md) zijn vereist. Het bevat de `knowledgeStore` definitie en bepaalt de structuur en samen stelling van een verrijkt document. U kunt geen kennis archief maken met een lege vaardig heden. U moet ten minste één vaardigheid hebben in een vakkennisset.
 
@@ -130,16 +130,16 @@ Zodra de verrijkingen in de opslag ruimte bestaan, kunnen alle hulp middelen of 
 
 + [Power bi](knowledge-store-connect-power-bi.md) voor rapportage en analyse. 
 
-+ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) voor verdere manipulatie.
++ [Azure Data Factory](../data-factory/index.yml) voor verdere manipulatie.
 
 <a name="kstore-rest-api"></a>
 
 ## <a name="api-reference"></a>API-verwijzing
 
-REST API versie `2020-06-30` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
+REST API versie `2020-06-30` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u  [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
 
-+ [Vaardig heden maken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Vaardig heden bijwerken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
++ [Vaardig heden maken (API-Version = 2020-06-30)](/rest/api/searchservice/create-skillset)
++ [Vaardig heden bijwerken (API-Version = 2020-06-30)](/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>Volgende stappen

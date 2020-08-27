@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827134"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892572"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -169,7 +169,7 @@ In de eerste kolom (PV) wordt het fysieke volume weer gegeven, de volgende kolom
 
 ###### <a name="duplicate-volume-groups"></a>Dubbele volume groepen
 
-Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en de back-upvm hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het voor beeld hieronder.
+Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en op de back-upvm hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het voor beeld hieronder.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID

@@ -3,12 +3,12 @@ title: Uw app plannen-LUIS
 description: Betrek relevante app-intenties en entiteiten en maak vervolgens uw toepassings abonnementen in Language Understanding intelligent Services (LUIS).
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340229"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892912"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Uw LUIS-app-schema plannen met onderwerp domein en gegevens extractie
 
@@ -64,10 +64,10 @@ Houd rekening met de volgende twee uitingen die de keuze van woorden zeer dicht 
 
 In plaats van twee afzonderlijke intenties te maken, maakt u één intentie met een `FlightAction` machine learning-entiteit. De machine learning entiteit moet de details van de actie extra heren voor zowel een planning als een annulerings aanvraag, evenals een oorsprong of bestemmings locatie.
 
-De `FlightAction` entiteit zou worden gestructureerd in het volgende suedo-schema van machine learning entiteit en subentiteiten:
+De `FlightAction` entiteit zou worden gestructureerd in het volgende pseudo-schema van machine learning entiteit en subentiteiten:
 
 * FlightAction
-    * Bewerking
+    * Actie
     * Oorsprong
     * Doel
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 5ac1248ddcdf8c0eef68b7c32e322398fa01a6f2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 97d1c14a61e98f98e45e25668841cee1ad9ce0d1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260579"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705466"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Quickstart: Een Azure-firewall en IP-groepen maken - ARM-sjabloon
 
@@ -35,7 +35,7 @@ Met deze sjabloon maakt u een Azure-firewall en IP-groepen, samen met de benodig
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox).
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json":::
 
 Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 

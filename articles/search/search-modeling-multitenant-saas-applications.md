@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230754"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935021"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Cognitive Search
 
@@ -119,7 +119,7 @@ De bovenstaande ontwerp patronen voor het model leren van scenario's met meerder
 
 Als service-per-Tenant-en index-per-Tenant modellen niet voldoende kleine bereiken zijn, is het mogelijk om een index te model leren om een nog nauw keurigere mate van granulatie te bereiken.
 
-Als u een enkele index anders wilt gebruiken voor verschillende client eindpunten, kan een veld worden toegevoegd aan een index die een bepaalde waarde voor elke mogelijke client aanduidt. Telkens wanneer een client Azure Cognitive Search aanroept om een index op te vragen of te wijzigen, geeft de code van de client toepassing de juiste waarde voor dat veld aan met behulp van de [filter](https://msdn.microsoft.com/library/azure/dn798921.aspx) functie van Azure Cognitive Search op het moment van de query.
+Als u een enkele index anders wilt gebruiken voor verschillende client eindpunten, kan een veld worden toegevoegd aan een index die een bepaalde waarde voor elke mogelijke client aanduidt. Telkens wanneer een client Azure Cognitive Search aanroept om een index op te vragen of te wijzigen, geeft de code van de client toepassing de juiste waarde voor dat veld aan met behulp van de [filter](./query-odata-filter-orderby-syntax.md) functie van Azure Cognitive Search op het moment van de query.
 
 Deze methode kan worden gebruikt voor het bezorgen van de functionaliteit van afzonderlijke gebruikers accounts, afzonderlijke machtigings niveaus en zelfs volledig gescheiden toepassingen.
 
@@ -132,4 +132,3 @@ Deze methode kan worden gebruikt voor het bezorgen van de functionaliteit van af
 Azure Cognitive Search is een fascinerende keuze voor veel toepassingen. Bij het evalueren van de verschillende ontwerp patronen voor multi tenant-toepassingen, moet u rekening houden met de [verschillende prijs categorieën](https://azure.microsoft.com/pricing/details/search/) en de bijbehorende [service limieten](search-limits-quotas-capacity.md) voor het Best passend maken van Azure Cognitive Search voor het aanpassen van werk belastingen en architecturen van elke omvang.
 
 Vragen over Azure Cognitive Search en multi tenant scenario's kunnen worden omgeleid naar azuresearch_contact@microsoft.com .
-

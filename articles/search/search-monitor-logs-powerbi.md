@@ -7,15 +7,15 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935106"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-logboeken en-metrische gegevens visualiseren met Power BI
-Met [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) kunt u bewerkings logboeken en metrische service gegevens over uw zoek service opslaan in een Azure Storage-account. Op deze pagina vindt u instructies voor het visualiseren van deze informatie met behulp van een app Power BI-sjabloon. De app biedt gedetailleerde inzichten over uw zoek service, inclusief informatie over zoeken, indexeren, bewerkingen en metrische service gegevens.
+Met [Azure Cognitive Search](./search-what-is-azure-search.md) kunt u bewerkings logboeken en metrische service gegevens over uw zoek service opslaan in een Azure Storage-account. Op deze pagina vindt u instructies voor het visualiseren van deze informatie met behulp van een app Power BI-sjabloon. De app biedt gedetailleerde inzichten over uw zoek service, inclusief informatie over zoeken, indexeren, bewerkingen en metrische service gegevens.
 
 U vindt de Power BI sjabloon app **Azure Cognitive Search: Analyseer logboeken en metrische gegevens** in de [Power bi apps Marketplace](https://appsource.microsoft.com/marketplace/apps).
 
@@ -23,7 +23,7 @@ U vindt de Power BI sjabloon app **Azure Cognitive Search: Analyseer logboeken e
 
 1. Metrische gegevens en bron logboek registratie inschakelen voor uw zoek service:
 
-    1. Maak of Identificeer een bestaand [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) waar u de logboeken kunt archiveren
+    1. Maak of Identificeer een bestaand [Azure Storage-account](../storage/common/storage-account-create.md) waar u de logboeken kunt archiveren
     1. Ga naar de Azure Cognitive Search-service in de Azure Portal
     1. Selecteer in de sectie bewaking in de linkerkolom **Diagnostische instellingen**
 
@@ -33,7 +33,7 @@ U vindt de Power BI sjabloon app **Azure Cognitive Search: Analyseer logboeken e
     1. Controleer het **Archief op een opslag account**, geef de gegevens van uw opslag account op en controleer **OperationLogs** en **AllMetrics**
 
         ![Scherm afbeelding die laat zien hoe u selecties selecteert voor metrische gegevens en bron logboek registratie op de pagina Diagnostische instellingen.](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. Selecteer **Opslaan**
+    1. Selecteer **Opslaan**.
 
 1. Nadat logboek registratie is ingeschakeld, gebruikt u uw zoek service om logboeken en metrische gegevens te genereren. Het duurt Maxi maal een uur voordat de containers in Blob Storage met deze logboeken worden weer gegeven. U ziet de container **Insights-logs-operationlogs** voor het zoeken naar verkeers logboeken en een **pt1m** -container voor metrische gegevens.
 
@@ -98,8 +98,8 @@ Als u vindt dat uw gegevens niet kunnen worden weer gegeven, volgt u deze stappe
 1. Controleer of de gegevensset nog steeds wordt vernieuwd. De status indicator voor vernieuwen wordt weer gegeven in stap 8 hierboven. Als de service nog steeds wordt vernieuwd, wacht u totdat het vernieuwen is voltooid om het rapport te openen en te vernieuwen.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over Azure Cognitive Search](https://docs.microsoft.com/azure/search/)
+[Meer informatie over Azure Cognitive Search](./index.yml)
 
-[Wat is Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Wat is Power BI?](/power-bi/fundamentals/power-bi-overview)
 
-[Basisconcepten voor ontwerpers in de Power BI-service](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Basisconcepten voor ontwerpers in de Power BI-service](/power-bi/service-basic-concepts)

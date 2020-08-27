@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552519"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935072"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Query aanvragen bewaken in azure Cognitive Search
 
@@ -36,10 +36,10 @@ Volume wordt gemeten als **Zoek Query's per seconde** (qps), een ingebouwde metr
 
 Het is gebruikelijk om query's uit te voeren in milliseconden, zodat alleen query's die als seconden worden gemeten, worden weer gegeven in metrische gegevens.
 
-| Aggregatietype | Description |
+| Aggregatietype | Beschrijving |
 |------------------|-------------|
 | Average | Het gemiddelde aantal seconden binnen een minuut gedurende welke de uitvoering van de query heeft plaatsgevonden.|
-| Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
+| Aantal | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
 | Maximum | Het hoogste aantal Zoek query's per seconde dat is geregistreerd tijdens een minuut. |
 | Minimum | Het laagste aantal Zoek query's per seconde dat is geregistreerd tijdens een minuut.  |
 | Sum | De som van alle query's die in de minuut worden uitgevoerd.  |
@@ -57,7 +57,7 @@ Voor de gehele service worden de query prestaties gemeten als Zoek latentie (hoe
 | Aggregatietype | Latentie | 
 |------------------|---------|
 | Average | Gemiddelde query duur in milliseconden. | 
-| Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
+| Aantal | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
 | Maximum | De langste uitvoering van een query in het voor beeld. | 
 | Minimum | De kortste uitvoering van een query in het voor beeld.  | 
 | Totaal | Totale uitvoerings tijd van alle query's in het voor beeld, uitgevoerd binnen het interval (een minuut).  |
@@ -85,7 +85,7 @@ Gebruik de metrische gegevens over vertraagde **Zoek query's** om beperkte query
 | Aggregatietype | Beperking |
 |------------------|-----------|
 | Average | Het percentage query's dat binnen het interval is verwijderd. |
-| Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
+| Aantal | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
 | Maximum | Het percentage query's dat binnen het interval is verwijderd.|
 | Minimum | Het percentage query's dat binnen het interval is verwijderd. |
 | Totaal | Het percentage query's dat binnen het interval is verwijderd. |
@@ -100,7 +100,7 @@ In de volgende scherm afbeelding is het eerste getal het aantal (of het aantal m
 
 Voor een beknopt overzicht van de huidige nummers ziet u op het tabblad **bewaking** op de pagina overzicht van de service drie metrische gegevens (**Zoek latentie**, **Zoek query's per seconde (per Zoek eenheid)**, **beperkt aantal Zoek query's in procenten**) over vaste intervallen gemeten in uren, dagen en weken, met de optie om het aggregatie type te wijzigen.
 
-Open Metrics Explorer in het menu **bewaking** , zodat u de gegevens kunt inzoomen en visualiseren om trends of afwijkingen te verkennen. Meer informatie over metrische gegevens Verkenner vindt u in deze [zelf studie over het maken van een metrieke grafiek](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer).
+Open Metrics Explorer in het menu **bewaking** , zodat u de gegevens kunt inzoomen en visualiseren om trends of afwijkingen te verkennen. Meer informatie over metrische gegevens Verkenner vindt u in deze [zelf studie over het maken van een metrieke grafiek](../azure-monitor/learn/tutorial-metrics-explorer.md).
 
 1. Selecteer in de sectie bewaking **metrische gegevens** om de metrics Explorer te openen met de scope die is ingesteld op uw zoek service.
 
@@ -173,7 +173,7 @@ Bij het pushen van de limieten van een bepaalde replica partitie, is het instell
 
 1. Schuif vervolgens omlaag naar waarschuwings logica. Voor het testen van het concept kunt u een kunst matige lage waarde voor test doeleinden opgeven.
 
-   ![Waarschuwings logica](./media/search-monitor-usage/alert-logic-qps.png "Waarschuwings logica")
+   ![Waarschuwingslogica](./media/search-monitor-usage/alert-logic-qps.png "Waarschuwingslogica")
 
 1. Vervolgens geeft u een actie groep op of maakt u deze. Dit is het antwoord dat moet worden aangeroepen wanneer aan de drempel wordt voldaan. Dit kan een push melding of een geautomatiseerd antwoord zijn.
 

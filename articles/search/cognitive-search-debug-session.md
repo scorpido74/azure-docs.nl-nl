@@ -8,19 +8,19 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560382"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936160"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Sessies voor fout opsporing in azure Cognitive Search
 
 Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen naar een productie vaardighedenset pushen in de AI-verrijkings pijplijn.
 
 > [!Important]
-> Debug-sessies is een preview-functie die zonder service level agreement wordt gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Foutopsporingssessies is een preview-functie die beschikbaar is service level agreement en niet aanbevolen wordt voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
 
 ## <a name="using-debug-sessions"></a>Foutopsporingssessie gebruiken
@@ -95,4 +95,4 @@ Debug sesisons werkt met alle algemeen beschik bare gegevens bronnen AMD de mees
 Nu u inzicht hebt in de onderdelen van debug-sessies, voert u de zelf studie uit voor een praktijk ervaring.
 
 > [!div class="nextstepaction"]
-> [Zelf studie fout opsporings sessies verkennen](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)
+> [Zelf studie fout opsporings sessies verkennen](./cognitive-search-tutorial-debug-sessions.md)

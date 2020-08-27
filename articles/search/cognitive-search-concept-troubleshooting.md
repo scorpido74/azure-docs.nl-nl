@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510867"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935463"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips voor AI-verrijking in azure Cognitive Search
 
@@ -54,7 +54,7 @@ In dat geval kunt u de Indexeer functie de fouten laten negeren. Doe dat door *m
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tip 4: gebruik debug-sessies om problemen met uw vaardig heden te identificeren en op te lossen 
 
-Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen door voeren in een productie vaardighedenset in de AI-verrijkings pijplijn. Dit is een preview-functie en [Lees de documentatie](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Zie [Debug Session](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)(Engelstalig) voor meer informatie over concepten en aan de slag.
+Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen door voeren in een productie vaardighedenset in de AI-verrijkings pijplijn. Dit is een preview-functie en [Lees de documentatie](./cognitive-search-debug-session.md). Zie [Debug Session](./cognitive-search-tutorial-debug-sessions.md)(Engelstalig) voor meer informatie over concepten en aan de slag.
 
 Het oplossen van problemen met sessies met één document is een uitstekende manier om meer complexe verrijkings pijplijnen te bouwen.
 
@@ -112,7 +112,7 @@ Voor indexering op basis van een portal (zoals beschreven in de Quick Start) kie
 Voor [parallelle indexering](search-howto-large-index.md)plaatst u uw gegevens in meerdere containers of meerdere virtuele mappen binnen dezelfde container. Maak vervolgens meerdere data source-en Indexeer functie paren. Alle Indexeer functies kunnen dezelfde vaardig heden gebruiken en naar dezelfde doel zoek index schrijven, zodat uw zoek-app niet op de hoogte hoeft te zijn van deze partities.
 Zie [indexeren van grote gegevens sets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)voor meer informatie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 + [Snelstartgids: een AI-verrijkings pijplijn maken in de portal](cognitive-search-quickstart-blob.md)
 + [Zelf studie: REST-Api's voor AI-verrijking leren](cognitive-search-tutorial-blob.md)
 + [Referenties voor de gegevens bron opgeven](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

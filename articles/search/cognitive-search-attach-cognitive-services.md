@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564441"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924974"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Een Cognitive Services resource koppelen aan een vaardig heden in azure Cognitive Search 
 
@@ -37,7 +37,7 @@ Azure Cognitive Search heeft een afhankelijkheid op Cognitive Services, waaronde
 
 ## <a name="same-region-requirement"></a>Dezelfde regio vereiste
 
-Azure Cognitive Search en Azure Cognitive Services zijn vereist in dezelfde regio. Anders wordt dit bericht weer gegeven tijdens de uitvoering:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Azure Cognitive Search en Azure Cognitive Services zijn vereist in dezelfde regio. Anders wordt dit bericht weer gegeven tijdens de uitvoering: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Er is geen manier om een service te verplaatsen tussen regio's. Als u deze fout ontvangt, moet u een nieuwe Cognitive Services-resource maken in dezelfde regio als Azure Cognitive Search.
 
@@ -170,5 +170,5 @@ U betaalt ongeveer $57,00 tot opname van 1.000 PDF-documenten van dit type met d
 ## <a name="next-steps"></a>Volgende stappen
 + [Pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vaardig heden maken (REST)](/rest/api/searchservice/create-skillset)
 + [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)
