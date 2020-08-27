@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236740"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962159"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faseringsomgevingen in Azure App Service instellen
 <a name="Overview"></a>
@@ -62,7 +62,7 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
 
 6. Selecteer de URL van de app op de resource pagina van de sleuf. De implementatie site heeft een eigen hostnaam en is ook een live app. Zie [Azure app service IP-beperkingen](app-service-ip-restrictions.md)voor het beperken van open bare toegang tot de implementatie site.
 
-De nieuwe implementatie site heeft geen inhoud, zelfs niet als u de instellingen van een andere sleuf kloont. U kunt bijvoorbeeld [publiceren naar deze sleuf met git](app-service-deploy-local-git.md). U kunt implementeren in de sleuf vanuit een andere opslagplaats vertakking of een andere opslag plaats.
+De nieuwe implementatie site heeft geen inhoud, zelfs niet als u de instellingen van een andere sleuf kloont. U kunt bijvoorbeeld [publiceren naar deze sleuf met git](./deploy-local-git.md). U kunt implementeren in de sleuf vanuit een andere opslagplaats vertakking of een andere opslag plaats.
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ Wanneer u twee sleuven (doorgaans van een staging-sleuf naar de productie sleuf)
 
 1. Als de [lokale cache](overview-local-cache.md) is ingeschakeld, wordt de initialisatie van de lokale cache geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf. Wacht totdat elke instantie een HTTP-antwoord retourneert. De initialisatie van de lokale cache veroorzaakt een andere herstart van elk exemplaar.
 
-1. Als [automatisch wisselen](#Auto-Swap) is ingeschakeld met [aangepast opwarmen](#Warm-up), wordt het starten van de [toepassing](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf.
+1. Als [automatisch wisselen](#Auto-Swap) is ingeschakeld met [aangepast opwarmen](#Warm-up), wordt het starten van de [toepassing](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf.
 
     Als `applicationInitialization` niet wordt opgegeven, wordt een HTTP-aanvraag geactiveerd voor de hoofdmap van de bron sleuf van elk exemplaar. 
     
@@ -222,7 +222,7 @@ Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
 
 ## <a name="monitor-a-swap"></a>Een swap bewaken
 
-Als de [wissel bewerking](#AboutConfiguration) veel tijd in beslag neemt, kunt u in het [activiteiten logboek](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)informatie ontvangen over de wissel bewerking.
+Als de [wissel bewerking](#AboutConfiguration) veel tijd in beslag neemt, kunt u in het [activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md)informatie ontvangen over de wissel bewerking.
 
 Selecteer op de resource pagina van de app in de portal in het linkerdeel venster het **activiteiten logboek**.
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Automatiseren met Resource Manager-sjablonen
 
-[Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met behulp van Resource Manager-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
+[Azure Resource Manager sjablonen](../azure-resource-manager/templates/overview.md) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met behulp van Resource Manager-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
 
 - `buildVersion`: dit is een teken reeks eigenschap die de huidige versie vertegenwoordigt van de app die in de sleuf is geïmplementeerd. Bijvoorbeeld: "v1", "1.0.0.1" of "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: dit is een teken reeks eigenschap die aangeeft wat `buildVersion` de sleuf moet hebben. Als de targetBuildVersion niet gelijk is aan de huidige `buildVersion` , wordt de wissel bewerking geactiveerd door de opgegeven sleuf te vinden `buildVersion` .

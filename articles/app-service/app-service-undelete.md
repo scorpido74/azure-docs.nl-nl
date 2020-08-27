@@ -5,16 +5,16 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 04e496806f2c388eb3a69df1b4cc3897b8132f6c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985679"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962907"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Verwijderde App Service-apps herstellen met PowerShell
 
-Als u uw app per ongeluk wilt verwijderen in Azure App Service, kunt u deze herstellen met behulp van de opdrachten uit de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0).
+Als u uw app per ongeluk wilt verwijderen in Azure App Service, kunt u deze herstellen met behulp van de opdrachten uit de [AZ Power shell-module](/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0).
 
 > [!NOTE]
 > - Verwijderde apps worden 30 dagen na de eerste verwijdering uit het systeem verwijderd. Nadat een app is verwijderd, kan deze niet meer worden hersteld.
@@ -53,7 +53,7 @@ De gedetailleerde informatie omvat:
 ## <a name="restore-deleted-app"></a>Verwijderde app herstellen
 
 >[!NOTE]
-> `Restore-AzDeletedWebApp`wordt niet ondersteund voor functie-apps.
+> `Restore-AzDeletedWebApp` wordt niet ondersteund voor functie-apps.
 
 Zodra de app die u wilt herstellen is geïdentificeerd, kunt u deze herstellen met `Restore-AzDeletedWebApp` .
 
@@ -61,7 +61,7 @@ Zodra de app die u wilt herstellen is geïdentificeerd, kunt u deze herstellen m
 Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Implementatie sites worden niet teruggezet als onderdeel van uw app. Als u een faserings sleuf moet herstellen, gebruikt u de `-Slot <slot-name>` vlag.
+> Implementatie sites worden niet teruggezet als onderdeel van uw app. Als u een faserings sleuf moet herstellen, gebruikt u de `-Slot <slot-name>`  vlag.
 >
 
 De invoer voor opdracht is:
@@ -76,4 +76,4 @@ Standaard `Restore-AzDeletedWebApp` worden zowel de configuratie van uw app als 
 > Als de app is gehost op en vervolgens wordt verwijderd uit een App Service Environment, kan deze alleen worden hersteld als de bijbehorende App Service Environment nog bestaat.
 >
 
-U vindt hier de volledige naslag informatie over de commandlet: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).
+U vindt hier de volledige naslag informatie over de commandlet: [Restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp).

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075477"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961921"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -42,7 +42,7 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
 
 ## <a name="requirements-and-restrictions"></a>Vereisten en beperkingen
 * De functie voor back-up en herstellen vereist dat het App Service plan in de **Standard**-, **Premium** -of **geïsoleerd** -laag is. Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie over het schalen van uw app service-abonnement voor het gebruik van een hogere laag. **Premium** -en **geïsoleerde** lagen bieden een groter aantal dagelijkse back-ups dan de **Standard** -laag.
-* U hebt een Azure-opslag account en een container nodig in hetzelfde abonnement als de app waarvan u een back-up wilt maken. Zie [overzicht van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over Azure Storage-accounts.
+* U hebt een Azure-opslag account en een container nodig in hetzelfde abonnement als de app waarvan u een back-up wilt maken. Zie [overzicht van Azure Storage-account](../storage/common/storage-account-overview.md)voor meer informatie over Azure Storage-accounts.
 * Back-ups kunnen Maxi maal 10 GB aan app-en Data Base-inhoud hebben. Als de back-upgrootte deze limiet overschrijdt, wordt er een fout bericht weer geven.
 * Back-ups van TLS ingeschakeld Azure Database for MySQL worden niet ondersteund. Als er een back-up is geconfigureerd, ontvangt u mislukte back-ups.
 * Back-ups van TLS ingeschakeld Azure Database for PostgreSQL worden niet ondersteund. Als er een back-up is geconfigureerd, ontvangt u mislukte back-ups.
@@ -164,9 +164,9 @@ U kunt back-upbeheer automatiseren met scripts met behulp van [Azure cli](/cli/a
 Zie voor voor beelden:
 
 - [Azure CLI-voorbeelden](samples-cli.md)
-- [Azure PowerShell-voorbeelden](samples-powershell.md)
+- [Azure PowerShell-voor beelden](samples-powershell.md)
 
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [een app herstellen in azure](web-sites-restore.md)voor meer informatie over het herstellen van een app vanuit een back-up. 
+Zie [een app herstellen in azure](web-sites-restore.md)voor meer informatie over het herstellen van een app vanuit een back-up.

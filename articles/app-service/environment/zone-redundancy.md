@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1b32ae55030cc24c8892b204ff7330269993a483
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097111"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961564"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Ondersteuning van beschikbaarheids zone voor App Service omgevingen
 
@@ -34,7 +34,7 @@ Zonegebonden ILB as kunnen worden gemaakt in een van de volgende regio's:
 - VS - oost 2
 - VS-Oost 2 (EUAP)
 - Frankrijk - centraal 
-- Japan East
+- Japan - oost
 - Europa - noord
 - Europa -west
 - Azië - zuidoost
@@ -77,7 +77,7 @@ In het volgende voor beeld van een ARM-sjabloon fragment ziet u de eigenschap ni
     ]
 ```
 
-Als u uw apps zone redundant wilt maken, moet u twee zonegebonden ILB as implementeren. De twee zonegebonden ILB as moeten zich in afzonderlijke beschikbaarheids zones bevinden. U moet uw apps vervolgens implementeren in elk van de ILB-as. Nadat uw apps zijn gemaakt, moet u een oplossing voor taak verdeling configureren. De aanbevolen oplossing is het implementeren van een [zone redundant Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) upstream van de zonegebonden ILB as. 
+Als u uw apps zone redundant wilt maken, moet u twee zonegebonden ILB as implementeren. De twee zonegebonden ILB as moeten zich in afzonderlijke beschikbaarheids zones bevinden. U moet uw apps vervolgens implementeren in elk van de ILB-as. Nadat uw apps zijn gemaakt, moet u een oplossing voor taak verdeling configureren. De aanbevolen oplossing is het implementeren van een [zone redundant Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) upstream van de zonegebonden ILB as. 
 
 ## <a name="in-region-data-residency"></a>In regio gegevens locatie ##
 
@@ -90,5 +90,3 @@ Klanten kunnen controleren of een App Service Environment op de juiste wijze is 
 1. Ga in [resource Explorer](https://resources.azure.com)naar de arm-resource voor de app service environment.  As worden vermeld onder *providers/micro soft. Web/hostingEnvironments*.
 2. Als er een *zone* -eigenschap bestaat in de weer gave van de JSON-syntaxis van de arm en deze een JSON-matrix met één waarde bevat met de waarde ' 1 ', ' 2 ' of ' 3 ', dan wordt de ASE zonally geïmplementeerd en blijven de gegevens van de klant in dezelfde regio.
 2. Als een *eigenschap van een zone niet* bestaat, of als de eigenschap niet is opgegeven, is de waarde van het ASE niet zonally geïmplementeerd en worden de klant gegevens niet alleen in dezelfde regio opgeslagen.
-
-

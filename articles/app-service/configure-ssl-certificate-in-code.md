@@ -5,14 +5,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811694"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962125"
 ---
-# <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Gebruik een TLS/SSL-certificaat in uw code in Azure App Service
+# <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service
 
 In de toepassings code kunt u toegang krijgen tot de [open bare of persoonlijke certificaten die u toevoegt aan app service](configure-ssl-certificate.md). Uw app-code kan fungeren als een client en toegang krijgen tot een externe service waarvoor verificatie via een certificaat vereist is, of moet mogelijk cryptografische taken uitvoeren. In deze hand leiding vindt u informatie over het gebruik van open bare of persoonlijke certificaten in de code van uw toepassing.
 
@@ -22,14 +22,14 @@ Wanneer u uw TLS/SSL-certificaten App Service beheren, kunt u de certificaten en
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze hand leiding wilt volgen:
+Voor het volgen van deze instructiegids:
 
-- [Een App Service-app maken](/azure/app-service/)
+- [Een App Service-app maken](./index.yml)
 - [Een certificaat toevoegen aan uw app](configure-ssl-certificate.md)
 
 ## <a name="find-the-thumbprint"></a>De vinger afdruk zoeken
 
-Selecteer in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a>in het linkermenu **app Services**  >  **\<app-name>** .
+Selecteer in het linkermenu in <a href="https://portal.azure.com" target="_blank">Azure Portal</a> de optie **App Services** >  **\<app-name>** .
 
 Selecteer in de linkernavigatiebalk van uw app instellingen voor **TLS/SSL**en selecteer vervolgens **certificaten voor persoonlijke sleutels (PFX)** of certificaten met een **open bare sleutel (. CER)**.
 
@@ -164,4 +164,4 @@ Zie de documentatie voor de desbetreffende taal of het webplatform voor meer inf
 * [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)
 * [HTTPS afdwingen](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 afdwingen](configure-ssl-bindings.md#enforce-tls-versions)
-* [Veelgestelde vragen: App Service certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Veelgestelde vragen: App Service-certificaten](./faq-configuration-and-management.md)

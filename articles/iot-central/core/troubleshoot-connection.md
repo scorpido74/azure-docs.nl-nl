@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816062"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958096"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Problemen oplossen waarom gegevens van uw apparaten niet worden weer gegeven in azure IoT Central
 
@@ -94,8 +94,6 @@ version : 32
 ': 200}, 'brightness': {'value': {'value': 2}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac': 200}, 'p
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
-
-### <a name="interpreting-terminal-output"></a>Terminal uitvoer interpreteren
 
 Als er gegevens worden weer gegeven in uw Terminal, worden de gegevens zo ver mogelijk gemaakt als uw IoT Central-toepassing.
 
@@ -187,8 +185,6 @@ Als u wilt detecteren in welke categorieën uw probleem zich bevindt, voert u de
     az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-- Als u liever een GUI gebruikt, gebruikt u de IoT Central **onbewerkte gegevens** weergave om te zien of er iets niet wordt gemodelleerd. De **onbewerkte gegevens** weergave detecteert niet of het apparaat een onjuist gemanipuleerde JSON verzendt.
-
 `uamqp`De eerste keer dat u een opdracht uitvoert, wordt u mogelijk gevraagd om de bibliotheek te installeren `validate` .
 
 In de volgende uitvoer ziet u een voor beeld van fout-en waarschuwings berichten van de opdracht validate:
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Scherm afbeelding van onbewerkte gegevens weergave":::
+Als u liever een GUI gebruikt, gebruikt u de IoT Central **onbewerkte gegevens** weergave om te zien of er iets niet wordt gemodelleerd. De **onbewerkte gegevens** weergave detecteert niet of het apparaat een onjuist gemanipuleerde JSON verzendt.
 
-### <a name="interpreting-terminal-output"></a>Terminal uitvoer interpreteren
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Scherm afbeelding van onbewerkte gegevens weergave":::
 
 Wanneer u het probleem hebt gedetecteerd, moet u mogelijk de firmware van het apparaat bijwerken of een nieuwe apparaatprofiel maken waarmee eerder niet-gemodelleerde gegevens worden gemodelleerd.
 
@@ -215,9 +211,6 @@ Als u ervoor hebt gekozen om een nieuwe sjabloon te maken waarin de gegevens op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet kunt oplossen met behulp van deze hand leiding, opent u een ondersteunings ticket. Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal:
-
-- [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [Azure-portal voor de overheid van de Verenigde Staten](https://portal.azure.us/)
+Als u meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/community/). U kunt ook een [Azure-ondersteunings ticket](https://portal.azure.com/#create/Microsoft.Support)indienen.
 
 Zie [Azure IOT-ondersteuning en Help-opties](../../iot-fundamentals/iot-support-help.md)voor meer informatie.

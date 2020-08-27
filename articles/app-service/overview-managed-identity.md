@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961581"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -52,7 +52,7 @@ Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, moet u
 
 - Gebruik [Azure Cloud shell](../cloud-shell/overview.md) van de Azure Portal.
 - Gebruik de Inge sloten Azure Cloud Shell via de knop ' Probeer het ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
-- [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt. 
+- [Installeer de nieuwste versie van Azure cli](/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt. 
 
 De volgende stappen helpen u bij het maken van een web-app en het toewijzen van een-id met behulp van de CLI:
 
@@ -109,7 +109,7 @@ De volgende stappen helpen u bij het maken van een app en het toewijzen van een 
 
 1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
 
-2. Maak een functie-app met behulp van Azure PowerShell. Zie voor meer voor beelden van het gebruik van Azure PowerShell met Azure Functions de [verwijzing AZ. functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Maak een functie-app met behulp van Azure PowerShell. Zie voor meer voor beelden van het gebruik van Azure PowerShell met Azure Functions de [verwijzing AZ. functions](/powershell/module/az.functions/?view=azps-4.1.0#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ De volgende stappen helpen u bij het maken van een app en het toewijzen van een 
 
 1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
 
-2. Maak een functie-app met behulp van Azure PowerShell. Zie de [Naslag informatie over AZ. functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)(Engelstalig) voor meer voor beelden van het gebruik van Azure PowerShell met Azure functions. Het onderstaande script maakt ook gebruik van `New-AzUserAssignedIdentity` dat afzonderlijk moet worden geïnstalleerd als per [Create, lijst of een door de gebruiker toegewezen beheerde identiteit te verwijderen met behulp van Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Maak een functie-app met behulp van Azure PowerShell. Zie de [Naslag informatie over AZ. functions](/powershell/module/az.functions/?view=azps-4.1.0#functions)(Engelstalig) voor meer voor beelden van het gebruik van Azure PowerShell met Azure functions. Het onderstaande script maakt ook gebruik van `New-AzUserAssignedIdentity` dat afzonderlijk moet worden geïnstalleerd als per [Create, lijst of een door de gebruiker toegewezen beheerde identiteit te verwijderen met behulp van Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -347,7 +347,7 @@ Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigensch
 > | resource      | De bron waarvoor het toegangs token is aangevraagd, dat overeenkomt met de `resource` query teken reeks parameter van de aanvraag.                                                                                                                               |
 > | token_type    | Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is FBearer. Zie voor meer informatie over Bearer-tokens [het OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
-Dit antwoord is hetzelfde als het [antwoord op de aanvraag van de Azure AD-service-naar-service-toegangs token](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Dit antwoord is hetzelfde als het [antwoord op de aanvraag van de Azure AD-service-naar-service-toegangs token](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 ### <a name="rest-protocol-examples"></a>Voor beelden van REST-protocollen
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159980"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958994"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over toepassings prestaties voor Web Apps in azure
 
@@ -32,15 +32,15 @@ Meerdere factoren kunnen bijdragen aan het vertragen van de app-prestaties. Zie 
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hoe kan ik problemen met een hoog CPU-verbruiks scenario oplossen?
 
-In sommige scenario's met een hoge CPU-verbruik is het mogelijk dat uw app echt meer computer bronnen nodig heeft.In dat geval kunt u het beste schalen naar een hogere servicelaag, zodat de toepassing alle benodigde resources krijgt. Andere tijden, een hoog CPU-verbruik wordt mogelijk veroorzaakt door een ongeldige lus of door een coderings praktijk. Het verkrijgen van inzicht in wat er wordt geactiveerd, is een proces dat uit twee delen bestaat. Maak eerst een proces dump en analyseer vervolgens de proces dump. Zie [een dump bestand vastleggen en analyseren voor een hoog CPU-verbruik voor web apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)voor meer informatie.
+In sommige scenario's met een hoge CPU-verbruik is het mogelijk dat uw app echt meer computer bronnen nodig heeft.In dat geval kunt u het beste schalen naar een hogere servicelaag, zodat de toepassing alle benodigde resources krijgt. Andere tijden, een hoog CPU-verbruik wordt mogelijk veroorzaakt door een ongeldige lus of door een coderings praktijk. Het verkrijgen van inzicht in wat er wordt geactiveerd, is een proces dat uit twee delen bestaat. Maak eerst een proces dump en analyseer vervolgens de proces dump. Zie [een dump bestand vastleggen en analyseren voor een hoog CPU-verbruik voor web apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)voor meer informatie.
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hoe kan ik een scenario met hoog geheugen gebruik oplossen?
 
-In sommige scenario's met een hoog geheugen gebruik is het mogelijk dat uw app echt meer computer bronnen nodig heeft.In dat geval kunt u het beste schalen naar een hogere servicelaag, zodat de toepassing alle benodigde resources krijgt. Andere keren kan een fout in de code leiden tot een geheugenlek. Een coderings praktijk kan ook het geheugen gebruik verg Roten.Het verkrijgen van inzicht in wat is het activeren van hoog geheugen, is een proces dat uit twee delen bestaat. Maak eerst een proces dump en analyseer vervolgens de proces dump. Crash diagnose van de Azure site extension Gallery kan deze stappen efficiënt uitvoeren. Zie voor meer informatie [een dump bestand vastleggen en analyseren voor onregelmatig hoge geheugen voor web apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+In sommige scenario's met een hoog geheugen gebruik is het mogelijk dat uw app echt meer computer bronnen nodig heeft.In dat geval kunt u het beste schalen naar een hogere servicelaag, zodat de toepassing alle benodigde resources krijgt. Andere keren kan een fout in de code leiden tot een geheugenlek. Een coderings praktijk kan ook het geheugen gebruik verg Roten.Het verkrijgen van inzicht in wat is het activeren van hoog geheugen, is een proces dat uit twee delen bestaat. Maak eerst een proces dump en analyseer vervolgens de proces dump. Crash diagnose van de Azure site extension Gallery kan deze stappen efficiënt uitvoeren. Zie voor meer informatie [een dump bestand vastleggen en analyseren voor onregelmatig hoge geheugen voor web apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hoe kan ik App Service web-apps automatisch met behulp van Power shell?
 
-U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te onderhouden. In het blog bericht [automatiseert u web-apps die worden gehost in azure app service met behulp van Power shell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/). hier wordt beschreven hoe u op Azure Resource Manager gebaseerde Power shell-cmdlets gebruikt om algemene taken te automatiseren. Het blog bericht bevat ook voorbeeld code voor de verschillende beheer taken voor web-apps. Zie [AZ. websites](/powershell/module/az.websites)(Engelstalig) voor beschrijvingen en syntaxis voor alle app service Web apps-cmdlets.
+U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te onderhouden. In het blog bericht [automatiseert u web-apps die worden gehost in azure app service met behulp van Power shell](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way). hier wordt beschreven hoe u op Azure Resource Manager gebaseerde Power shell-cmdlets gebruikt om algemene taken te automatiseren. Het blog bericht bevat ook voorbeeld code voor de verschillende beheer taken voor web-apps. Zie [AZ. websites](/powershell/module/az.websites)(Engelstalig) voor beschrijvingen en syntaxis voor alle app service Web apps-cmdlets.
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Hoe kan ik de gebeurtenis logboeken van mijn web-app weer geven?
 
@@ -81,7 +81,7 @@ Drie voor waarden kunnen deze fout veroorzaken:
 * De web-app is gestopt in de portal.
 * De web-app heeft een limiet voor resource quota bereikt die mogelijk van toepassing is op een gratis of gedeeld service plan voor schalen.
 
-Volg de stappen in [Web apps: ' fout 403: deze web-app is gestopt '](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)om te zien wat de oorzaak van de fout is en om het probleem op te lossen.
+Volg de stappen in [Web apps: ' fout 403: deze web-app is gestopt '](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped)om te zien wat de oorzaak van de fout is en om het probleem op te lossen.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Waar kan ik meer informatie vinden over quota en limieten voor verschillende App Service plannen?
 
@@ -167,7 +167,7 @@ Webjobs is ontworpen voor achtergrond verwerking. U kunt zoveel achtergrond verw
 
 Een bekend probleem met een eerdere [versie van Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) kan ertoe leiden dat een ASP.net Core 1,0-app die in app service wordt gehost, niet meer reageert. Dit bericht kan ook worden weer gegeven: ' er is een fout opgetreden in de opgegeven CGI-toepassing en het proces is beëindigd door de server. '
 
-Dit probleem is opgelost in Kestrel-versie 1.0.2. Deze versie is opgenomen in de ASP.NET Core 1.0.3-update. Om dit probleem op te lossen, moet u de app-afhankelijkheden bijwerken om Kestrel 1.0.2 te gebruiken. U kunt ook een van de twee tijdelijke oplossingen gebruiken die worden beschreven in het blog bericht [ASP.NET Core 1,0 trage prestatie problemen in app service Web-apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
+Dit probleem is opgelost in Kestrel-versie 1.0.2. Deze versie is opgenomen in de ASP.NET Core 1.0.3-update. Om dit probleem op te lossen, moet u de app-afhankelijkheden bijwerken om Kestrel 1.0.2 te gebruiken. U kunt ook een van de twee tijdelijke oplossingen gebruiken die worden beschreven in het blog bericht [ASP.NET Core 1,0 trage prestatie problemen in app service Web-apps](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites).
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Ik kan mijn logboek bestanden niet vinden in de bestands structuur van mijn web-app. Hoe kan ik deze vinden?
@@ -188,4 +188,4 @@ Zie het blog bericht over [uitgaande verbindingen met Azure websites](https://ww
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Hoe kan ik Visual Studio gebruiken voor het op afstand opsporen van mijn App Service web-app?
 
-Zie voor een gedetailleerde beschrijving van het opsporen van fouten in uw web-app met behulp van Visual Studio [externe fout opsporing in uw app service Web-app](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
+Zie voor een gedetailleerde beschrijving van het opsporen van fouten in uw web-app met behulp van Visual Studio [externe fout opsporing in uw app service Web-app](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app).

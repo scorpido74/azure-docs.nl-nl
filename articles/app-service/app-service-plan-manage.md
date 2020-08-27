@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811707"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962941"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Een App Service-abonnement beheren in azure
 
@@ -82,7 +82,7 @@ U vindt de **kloon-app** in de sectie **hulp middelen voor ontwikkel aars** van 
 
 Zie [een app omhoog schalen in azure](manage-scale-up.md)om de prijs categorie van een app service plan omhoog te schalen.
 
-Als u het aantal exemplaren van een app wilt uitschalen, raadpleegt u [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Als u het aantal exemplaren van een app wilt uitschalen, raadpleegt u [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md).
 
 <a name="delete"></a>
 

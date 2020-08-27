@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081048"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961870"
 ---
 # <a name="deployment-best-practices"></a>Aanbevolen procedures voor implementatie
 
@@ -127,7 +127,7 @@ Meld u in uw script aan met `az login --service-principal` en geef de gegevens v
 
 ### <a name="java"></a>Java
 
-Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-toepassingen en [WARDEPLOY/](deploy-zip.md#deploy-war-file) voor War-apps. Als u Jenkins gebruikt, kunt u deze Api's rechtstreeks in uw implementatie fase gebruiken. Zie [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md)voor meer informatie.
+Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-toepassingen en [WARDEPLOY/](deploy-zip.md#deploy-war-file) voor War-apps. Als u Jenkins gebruikt, kunt u deze Api's rechtstreeks in uw implementatie fase gebruiken. Zie [dit artikel](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)voor meer informatie.
 
 ### <a name="node"></a>Knooppunt
 
@@ -149,7 +149,7 @@ Gebruik altijd lokale cache in combi natie met [implementatie sleuven](deploy-st
 
 Als uw App Service-abonnement meer dan 90% beschik bare CPU of geheugen gebruikt, kan het zijn dat de onderliggende virtuele machine problemen heeft met het verwerken van uw implementatie. Als dit gebeurt, kunt u het aantal instanties tijdelijk opschalen om de implementatie uit te voeren. Zodra de implementatie is voltooid, kunt u het aantal exemplaren terugsturen naar de vorige waarde.
 
-Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](https://docs.microsoft.com/azure/app-service/overview-diagnostics) om te bepalen welke best practices u kunt gebruiken voor uw resource.
+Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](./overview-diagnostics.md) om te bepalen welke best practices u kunt gebruiken voor uw resource.
 
 - Navigeer naar uw web-app in het [Azure Portal](https://portal.azure.com).
 - Klik op **problemen vaststellen en oplossen** in het navigatie venster aan de linkerkant, waarmee app service diagnostische gegevens worden geopend.

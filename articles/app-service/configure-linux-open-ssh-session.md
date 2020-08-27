@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f663b58de666e2a0fe44fa3c023816a524b7d6c5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082959"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961602"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Open een SSH-sessie naar een Linux-container in Azure App Service
 
@@ -48,7 +48,7 @@ az webapp create-remote-connection --subscription <subscription-id> --resource-g
 ```
 
 > [!TIP]
-> `&`aan het einde van de opdracht is alleen bedoeld voor het gemak als u Cloud Shell gebruikt. Het proces wordt op de achtergrond uitgevoerd, zodat u de volgende opdracht in dezelfde shell kunt uitvoeren.
+> `&` aan het einde van de opdracht is alleen bedoeld voor het gemak als u Cloud Shell gebruikt. Het proces wordt op de achtergrond uitgevoerd, zodat u de volgende opdracht in dezelfde shell kunt uitvoeren.
 
 De uitvoer van de opdracht geeft u de informatie die u nodig hebt om een SSH-sessie te openen.
 
@@ -113,11 +113,11 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt vragen en problemen in het [Azure-forum](https://docs.microsoft.com/answers/topics/azure-webapps.html)plaatsen.
+U kunt vragen en problemen in het [Azure-forum](/answers/topics/azure-webapps.html)plaatsen.
 
 Zie voor meer informatie over Web App for Containers:
 
 * [Introductie van externe fout opsporing van Node.js-apps op Azure App Service van VS code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
-* [Snelstartgids: een aangepaste container uitvoeren op App Service](quickstart-custom-container.md?pivots=container-linux)
+* [Quickstart: Een aangepaste container uitvoeren op App Service](quickstart-custom-container.md?pivots=container-linux)
 * [Ruby gebruiken in Azure App Service onder Linux](quickstart-ruby.md)
 * [Web App for Containers van Azure App Service: veelgestelde vragen](faq-app-service-linux.md)

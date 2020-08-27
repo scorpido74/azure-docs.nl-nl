@@ -6,14 +6,17 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 9dd4067d066362f5842b504971afbc59fd0717a3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d10b36047959299f5b66da5fb16beef8a591a983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212213"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962839"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph bindingen voor Azure Functions
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 In dit artikel wordt uitgelegd hoe u Microsoft Graph triggers en bindingen kunt configureren en gebruiken in Azure Functions. Met deze kunt u Azure Functions gebruiken om te werken met gegevens, inzichten en gebeurtenissen van de [Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -38,6 +41,9 @@ De invoer binding van het auth-token is opgegeven in het pakket [micro soft. Azu
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>De uitbrei dingen instellen
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 Microsoft Graph bindingen zijn beschikbaar via de _bindings extensies_. Bindings uitbreidingen zijn optionele onderdelen voor de runtime van Azure Functions. In deze sectie wordt beschreven hoe u de Microsoft Graph-en auth-token uitbreidingen instelt.
 
@@ -71,6 +77,9 @@ Als u de Azure Portal gebruikt, wordt er een waarschuwing weer gegeven onder de 
 
 <a name="token-input"></a>
 ## <a name="auth-token"></a>Verificatie token
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 De invoer binding van het auth-token krijgt een Azure AD-token voor een bepaalde resource en levert deze aan uw code als een teken reeks. De resource kan elk zijn waarvoor de toepassing machtigingen heeft. 
 
@@ -229,6 +238,9 @@ Het token wordt altijd weer gegeven als een teken reeks.
 
 <a name="excel-input"></a>
 ## <a name="excel-input"></a>Excel-invoer
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 De binding van de Excel-tabel invoer leest de inhoud van een Excel-tabel die is opgeslagen in OneDrive.
 
@@ -538,6 +550,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 <a name="onedrive-input"></a>
 ## <a name="file-input"></a>Bestands invoer
 
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
+
 Met de binding van OneDrive file input wordt de inhoud gelezen van een bestand dat is opgeslagen in OneDrive.
 
 Deze sectie bevat de volgende subsecties:
@@ -681,6 +696,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 <a name="onedrive-output"></a>
 ## <a name="file-output"></a>Bestands uitvoer
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 Met de binding van het OneDrive-bestands uitvoer wijzigt u de inhoud van een bestand dat is opgeslagen in OneDrive.
 
@@ -828,6 +846,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 <a name="outlook-output"></a>
 ## <a name="outlook-output"></a>Outlook-uitvoer
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 De Outlook-bericht uitvoer binding verzendt een e-mail bericht via Outlook.
 
@@ -979,6 +1000,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 ## <a name="webhooks"></a>Webhooks
 
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
+
 Met webhooks kunt u reageren op gebeurtenissen in de Microsoft Graph. Voor het ondersteunen van webhooks zijn functies nodig voor het maken, vernieuwen en reageren op _webhook-abonnementen_. Voor een volledige webhook-oplossing is een combi natie van de volgende bindingen vereist:
 - Met een [Microsoft Graph-webhook-trigger](#webhook-trigger) kunt u reageren op een binnenkomende webhook.
 - Met een [invoer binding van het Microsoft Graph webhook-abonnement](#webhook-input) kunt u bestaande abonnementen weer geven en eventueel vernieuwen.
@@ -993,6 +1017,9 @@ Zie [werken met webhooks in Microsoft Graph]voor meer informatie over webhooks.
 
 
 ## <a name="webhook-trigger"></a>Webhook-trigger
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 Met de trigger voor het Microsoft Graph-webhook kan een functie reageren op een binnenkomende webhook vanuit de Microsoft Graph. Elke instantie van deze trigger kan reageren op één Microsoft Graph-resourcetype.
 
@@ -1112,6 +1139,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 <a name="webhook-input"></a>
 ## <a name="webhook-input"></a>Invoer van webhook
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 Met de Microsoft Graph webhook-invoer binding kunt u de lijst met abonnementen ophalen die worden beheerd door deze functie-app. De binding leest van functie-app-opslag, zodat er geen andere abonnementen worden weer gegeven die zijn gemaakt van buiten de app.
 
@@ -1264,6 +1294,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 ## <a name="webhook-output"></a>Webhook-uitvoer
 
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
+
 Met de webhook-abonnements uitvoer binding kunt u webhook-abonnementen maken, verwijderen en vernieuwen in de Microsoft Graph.
 
 Deze sectie bevat de volgende subsecties:
@@ -1407,6 +1440,9 @@ Met de binding worden de volgende typen in .NET-functies weer gegeven:
 
 <a name="webhook-examples"></a>
 ## <a name="webhook-subscription-refresh"></a>Webhook-abonnement vernieuwen
+
+> [!IMPORTANT]
+> De Microsoft Graph preview-bindingen zijn nu afgeschaft. Raadpleeg de zelf studie [Build Azure functions with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) voor meer informatie over het gebruik van Microsoft Graph met Azure functions.
 
 Er zijn twee manieren om abonnementen te vernieuwen:
 

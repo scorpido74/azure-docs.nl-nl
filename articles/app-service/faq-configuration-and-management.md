@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159997"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962346"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -65,7 +65,7 @@ De tijd zone van de server instellen voor uw web-app:
     * Waarde = *de tijd zone die u wilt*
 3. Selecteer **Opslaan**.
 
-Zie de kolom tijd **zone** in het artikel [standaard tijd zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden voor de app-services die worden uitgevoerd in Windows. Voor de app-services die worden uitgevoerd op Linux, stelt u de naam van de [TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in als de waarde van de tijd zone. Hier volgt een voor beeld van de TZ-database naam: America/Adak.
+Zie de kolom tijd **zone** in het artikel [standaard tijd zones](/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden voor de app-services die worden uitgevoerd in Windows. Voor de app-services die worden uitgevoerd op Linux, stelt u de naam van de [TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in als de waarde van de tijd zone. Hier volgt een voor beeld van de TZ-database naam: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Waarom mislukken mijn doorlopende webtaken?
 
@@ -147,7 +147,7 @@ De uitzonde ring is veroorzaakt door een probleem met de Hybrid Connection Manag
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hoe kan ik een regel voor het opnieuw schrijven van een URL toevoegen?
 
-Als u een regel voor het herschrijven van een URL wilt toevoegen, maakt u een web.config bestand met de relevante configuratie vermeldingen in de map **wwwroot** . Zie [Azure-app Services: informatie over het herschrijven van url's](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)voor meer informatie.
+Als u een regel voor het herschrijven van een URL wilt toevoegen, maakt u een web.config bestand met de relevante configuratie vermeldingen in de map **wwwroot** . Zie [Azure-app Services: informatie over het herschrijven van url's](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)voor meer informatie.
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hoe kan ik inkomend verkeer naar App Service beheren?
 
@@ -222,7 +222,7 @@ U kunt dit oplossen door ervoor te zorgen dat geen van de volgende voor waarden 
 * Een slechte netwerk beveiligings groep voor komt de netwerk verbindings vereisten van een App Service Environment.
 * Geforceerde tunneling is ingeschakeld.
 
-Zie [frequente problemen bij het implementeren (maken) van een nieuwe Azure app service Environment](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/)voor meer informatie.
+Zie [frequente problemen bij het implementeren (maken) van een nieuwe Azure app service Environment](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase)voor meer informatie.
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>Waarom kan ik mijn App Service-abonnement niet verwijderen?
 
@@ -286,7 +286,7 @@ Wanneer u een nieuwe website maakt met behulp van Web Apps in azure, wordt een s
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hoe kan ik bepalen welke versie van .NET version in App Service is geïnstalleerd?
 
-De snelste manier om te zoeken naar de versie van Microsoft .NET die in App Service is geïnstalleerd, is met behulp van de kudu-console. U kunt de kudu-console openen vanuit de portal of met behulp van de URL van uw App Service-app. Zie voor gedetailleerde instructies [de geïnstalleerde .net-versie bepalen in app service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+De snelste manier om te zoeken naar de versie van Microsoft .NET die in App Service is geïnstalleerd, is met behulp van de kudu-console. U kunt de kudu-console openen vanuit de portal of met behulp van de URL van uw App Service-app. Zie voor gedetailleerde instructies [de geïnstalleerde .net-versie bepalen in app service](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Waarom werkt de functie voor automatisch schalen niet zoals verwacht?
 

@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987032"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958657"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
 
@@ -153,7 +153,7 @@ Het volgende voor beeld toont een geslaagde reactie op een aanvraag voor een toe
 ```
 
 > [!NOTE]
-> Het bovenstaande toegangs token is een token met v 1.0-indeling voor Microosft Graph. Dit komt doordat de token indeling is gebaseerd op de **bron** waartoe toegang wordt verkregen en die niet gerelateerd is aan de eind punten die worden gebruikt om deze te vragen. De Microsoft Graph is ingesteld om v 1.0-tokens te accepteren, waardoor het micro soft Identity-platform v 1.0 toegangs tokens produceert wanneer een client tokens voor Microsoft Graph aanvraagt. Andere apps kunnen aangeven dat ze v 2.0-indelings tokens, v 1.0-notatie tokens of zelfs eigen of versleutelde token-indelingen willen hebben.  Zowel de eind punten van de v 1.0 als van de v 2.0 kunnen een wille keurige indeling van het token geven: de resource kan altijd de juiste indeling van token verkrijgen, ongeacht hoe of waar het token door de client is aangevraagd. 
+> Het bovenstaande toegangs token is een token met v 1.0-indeling voor Microsoft Graph. Dit komt doordat de token indeling is gebaseerd op de **bron** waartoe toegang wordt verkregen en die niet gerelateerd is aan de eind punten die worden gebruikt om deze te vragen. De Microsoft Graph is ingesteld om v 1.0-tokens te accepteren, waardoor het micro soft Identity-platform v 1.0 toegangs tokens produceert wanneer een client tokens voor Microsoft Graph aanvraagt. Andere apps kunnen aangeven dat ze v 2.0-indelings tokens, v 1.0-notatie tokens of zelfs eigen of versleutelde token-indelingen willen hebben.  Zowel de eind punten van de v 1.0 als van de v 2.0 kunnen een wille keurige indeling van het token geven: de resource kan altijd de juiste indeling van token verkrijgen, ongeacht hoe of waar het token door de client is aangevraagd. 
 >
 > Alleen toepassingen moeten de toegangs tokens bekijken. Clients **mogen deze niet** controleren. Als de toegangs tokens voor andere apps in uw code worden geïnspecteerd, wordt de app onverwacht verbroken wanneer de app de indeling van de tokens wijzigt of versleutelt. 
 

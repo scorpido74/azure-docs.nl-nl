@@ -4,18 +4,18 @@ description: Meer informatie over hoe Azure App Service het besturings systeem e
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414935"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961513"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
 
 In dit artikel leest u hoe u bepaalde versie gegevens kunt verkrijgen over het besturings systeem of de software in [app service](overview.md). 
 
-App Service is een platform-as-a-service. Dit betekent dat het besturings systeem en de toepassings stack voor u door Azure worden beheerd. u kunt uw toepassing en de bijbehorende gegevens alleen beheren. Meer controle over het besturings systeem en toepassings stack is beschikbaar in [Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/). In het geval is het toch handig voor u als App Service gebruiker om meer informatie te weten, zoals:
+App Service is een platform-as-a-service. Dit betekent dat het besturings systeem en de toepassings stack voor u door Azure worden beheerd. u kunt uw toepassing en de bijbehorende gegevens alleen beheren. Meer controle over het besturings systeem en toepassings stack is beschikbaar in [Azure virtual machines](../virtual-machines/index.yml). In het geval is het toch handig voor u als App Service gebruiker om meer informatie te weten, zoals:
 
 -   Hoe en wanneer worden besturingssysteem updates toegepast?
 -   Hoe worden App Service patches uitgevoerd op basis van belang rijke beveiligings problemen (zoals Zero-Day)?
@@ -25,7 +25,7 @@ Uit veiligheids overwegingen worden bepaalde specifieke beveiligings gegevens ni
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Hoe en wanneer worden besturingssysteem updates toegepast?
 
-Azure beheert patching van het besturings systeem op twee niveaus, de fysieke servers en de virtuele gast machines (Vm's) die de App Service resources uitvoeren. Beide worden maandelijks bijgewerkt, wat wordt uitgelijnd op de planning van de maandelijkse [patch-dinsdag](https://technet.microsoft.com/security/bulletins.aspx) . Deze updates worden automatisch toegepast, op een manier waarmee de SLA met hoge Beschik baarheid van Azure-Services wordt gegarandeerd. 
+Azure beheert patching van het besturings systeem op twee niveaus, de fysieke servers en de virtuele gast machines (Vm's) die de App Service resources uitvoeren. Beide worden maandelijks bijgewerkt, wat wordt uitgelijnd op de planning van de maandelijkse [patch-dinsdag](/security-updates/) . Deze updates worden automatisch toegepast, op een manier waarmee de SLA met hoge Beschik baarheid van Azure-Services wordt gegarandeerd. 
 
 Voor gedetailleerde informatie over hoe updates worden toegepast, Zie [ontrafelen The Magic achter app service updates van het besturings systeem](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
@@ -55,7 +55,7 @@ Patch-updates voor .NET, PHP, Java SDK of Tomcat/jetty-versie worden automatisch
 
 ### <a name="new-major-and-minor-versions"></a>Nieuwe primaire en secundaire versies
 
-Wanneer een nieuwe primaire of secundaire versie wordt toegevoegd, wordt deze naast de bestaande versies geïnstalleerd. U kunt uw app hand matig bijwerken naar de nieuwe versie. Als u de runtime versie in een configuratie bestand (zoals `web.config` en) hebt geconfigureerd `package.json` , moet u een upgrade uitvoeren met dezelfde methode. Als u een App Service instelling hebt gebruikt om uw runtime versie te configureren, kunt u deze wijzigen in de [Azure Portal](https://portal.azure.com) of door een [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -opdracht uit te voeren in de [Cloud shell](../cloud-shell/overview.md), zoals wordt weer gegeven in de volgende voor beelden:
+Wanneer een nieuwe primaire of secundaire versie wordt toegevoegd, wordt deze naast de bestaande versies geïnstalleerd. U kunt uw app hand matig bijwerken naar de nieuwe versie. Als u de runtime versie in een configuratie bestand (zoals `web.config` en) hebt geconfigureerd `package.json` , moet u een upgrade uitvoeren met dezelfde methode. Als u een App Service instelling hebt gebruikt om uw runtime versie te configureren, kunt u deze wijzigen in de [Azure Portal](https://portal.azure.com) of door een [Azure cli](/cli/azure/get-started-with-azure-cli) -opdracht uit te voeren in de [Cloud shell](../cloud-shell/overview.md), zoals wordt weer gegeven in de volgende voor beelden:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -86,7 +86,7 @@ In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden
 | Java-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `java -version` |  
 
 > [!NOTE]  
-> Toegang tot de register locatie `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , waar informatie over [KB-patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
+> Toegang tot de register locatie `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , waar informatie over [KB-patches](/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
 >
 >
 

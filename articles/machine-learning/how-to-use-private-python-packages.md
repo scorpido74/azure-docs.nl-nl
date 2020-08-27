@@ -1,5 +1,5 @@
 ---
-title: Privé Python-pakketten gebruiken
+title: Privépakketten van Python gebruiken
 titleSuffix: Azure Machine Learning
 description: Open persoonlijke Python-pakketten veilig vanuit Azure Machine Learning omgevingen.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 580525b2e8e408949ce1d8f2d1b8241c431fc755
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958147"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Gebruik persoonlijke Python-pakketten met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ De persoonlijke pakketten worden gebruikt via de [omgevings](https://docs.micros
  * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
  * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md)
 
-### <a name="use-small-number-of-packages-for-development-and-testing"></a>Klein aantal pakketten gebruiken voor ontwikkelen en testen
+## <a name="use-small-number-of-packages-for-development-and-testing"></a>Klein aantal pakketten gebruiken voor ontwikkelen en testen
 
 Gebruik de statische methode voor een klein aantal privé-pakketten voor één werk ruimte [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) . Met deze aanpak kunt u snel een persoonlijk pakket toevoegen aan de werk ruimte en is het goed geschikt voor ontwikkelings-en test doeleinden.
 
@@ -50,7 +50,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Intern wordt de URL door Azure Machine Learning service vervangen door een beveiligde SAS-URL, zodat uw wiel bestand privé en beveiligd blijft.
 
-### <a name="consume-a-repository-of-packages-from-azure-devops-feed"></a>Een opslag plaats van pakketten in azure DevOps-feed gebruiken
+## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Een opslag plaats van pakketten van Azure DevOps feed gebruiken
 
 Als u Python-pakketten actief ontwikkelt voor uw machine learning-toepassing, kunt u deze als artefacten hosten in een Azure DevOps-opslag plaats en publiceren als een feed. Met deze aanpak kunt u de DevOps-werk stroom voor het bouwen van pakketten integreren met uw Azure Machine Learning-werkruimte. Lees aan de [slag met Python-pakketten in azure artefacten](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops) voor meer informatie over het instellen van python-feeds met behulp van Azure DevOps
 
@@ -87,18 +87,22 @@ Deze benadering maakt gebruik van een persoonlijk toegangs token voor verificati
 
 De omgeving is nu klaar om te worden gebruikt in trainings runs of implementaties van webservice-eind punten. Bij het bouwen van de omgeving gebruikt Azure Machine Learning service de PAT om te verifiëren tegen de feed met de overeenkomende basis-URL.
 
-### <a name="consume-a-repository-of-packages-from-private-storage"></a>Een opslag plaats van pakketten uit een privé opslag gebruiken
+## <a name="use-a-repository-of-packages-from-private-storage"></a>Een opslag plaats van pakketten uit een privé opslag gebruiken
 
-U kunt pakketten gebruiken van een Azure-opslag account in de firewall van uw organisatie. Een dergelijk opslag account kan een serie van pakketten bevatten voor gebruik in de onderneming of een interne mirror van openbaar beschik bare pakketten.
+U kunt pakketten gebruiken van een Azure-opslag account in de firewall van uw organisatie. Het opslag account kan een serie pakketten of een interne mirror van openbaar beschik bare pakketten bevatten.
 
 Een dergelijke persoonlijke opslag instellen:
 
- 1. [Plaats de werk ruimte in een virtueel netwerk (VNET)](how-to-enable-virtual-network.md).
- 2. Maak een opslag account en [sta open bare toegang niet toe](https://docs.microsoft.com/azure/storage/common/storage-network-security).
- 2. Plaats de Python-pakketten die u wilt gebruiken in een container in het opslag account 
- 3. [Toegang tot het opslag account via de werk ruimte VNET toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network) 
+1. [Plaats de werk ruimte in een virtueel netwerk (VNet)](how-to-enable-virtual-network.md).
+1. Maak een opslag account en [sta open bare toegang niet toe](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+1. Plaats de Python-pakketten die u wilt gebruiken in een container in het opslag account 
+1. [Toegang tot het opslag account via de werk ruimte VNet toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
+1. [Plaats de Azure container Registry (ACR) voor de werk ruimte achter het VNet](how-to-enable-virtual-network.md#azure-container-registry).
 
-Vervolgens kunt u naar de pakketten in de Azure Machine Learning omgevings definitie verwijzen met de volledige URL in Azure Blob-opslag.
+    > [!IMPORTANT]
+    > U moet deze stap volt ooien om modellen te kunnen trainen of implementeren met behulp van de opslag plaats van een persoonlijk pakket.
+
+Nadat u deze configuraties hebt voltooid, kunt u naar de pakketten in de Azure Machine Learning omgevings definitie verwijzen met de volledige URL in Azure Blob-opslag.
 
 ## <a name="next-steps"></a>Volgende stappen
 

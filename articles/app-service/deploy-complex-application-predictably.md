@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: f5e4c4d89a1119b0f59aa15885406cd7261d2f69
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170000"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962023"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Micro services zoals verwacht inrichten en implementeren in azure
 Deze zelf studie laat zien hoe u een toepassing kunt inrichten en implementeren die is samengesteld uit micro [Services](https://en.wikipedia.org/wiki/Microservices) in [Azure app service](https://azure.microsoft.com/services/app-service/) als één eenheid en op een voorspel bare manier met behulp van JSON-resource groeps sjablonen en Power shell-scripts. 
@@ -29,7 +29,7 @@ In de zelf studie gaat u een toepassing implementeren die het volgende bevat:
 In deze zelf studie gebruikt u de volgende hulpprogram ma's. Omdat het geen uitgebreide discussie over hulpprogram ma's is, gaan we naar het end-to-end-scenario en geven we u een korte inleiding tot elke en waar u er meer informatie over kunt vinden. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager sjablonen (JSON)
-Telkens wanneer u een app maakt in Azure App Service, gebruikt Azure Resource Manager bijvoorbeeld een JSON-sjabloon om de hele resource groep te maken met de onderdeel resources. Een complexe sjabloon van [Azure Marketplace](/azure/marketplace) kan de data base, opslag accounts, het app service plan, de app zelf, waarschuwings regels, app-instellingen, instellingen voor automatisch schalen en meer bevatten, en al deze sjablonen zijn beschikbaar voor u via Power shell. Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Azure Resource Manager sjablonen
+Telkens wanneer u een app maakt in Azure App Service, gebruikt Azure Resource Manager bijvoorbeeld een JSON-sjabloon om de hele resource groep te maken met de onderdeel resources. Een complexe sjabloon van [Azure Marketplace](../marketplace/index.yml) kan de data base, opslag accounts, het app service plan, de app zelf, waarschuwings regels, app-instellingen, instellingen voor automatisch schalen en meer bevatten, en al deze sjablonen zijn beschikbaar voor u via Power shell. Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Azure Resource Manager sjablonen
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2,6 voor Visual Studio
 De nieuwste SDK bevat verbeteringen in de ondersteuning van Resource Manager-sjablonen in de JSON-editor. U kunt deze gebruiken om snel een volledig nieuwe sjabloon voor een resource groep te maken of een bestaande JSON-sjabloon (zoals een gedownloade galerie sjabloon) te openen voor wijziging, het parameter bestand in te vullen en de resource groep zelfs rechtstreeks vanuit een Azure-resource groep-oplossing te implementeren.
@@ -39,7 +39,7 @@ Zie [Azure SDK 2,6 voor Visual Studio](https://azure.microsoft.com/blog/2015/04/
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 of hoger
 Vanaf versie 0.8.0 bevat de Azure PowerShell-installatie naast de Azure-module ook de module Azure Resource Manager. Met deze nieuwe module kunt u een script maken voor de implementatie van resource groepen.
 
-Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.
+Zie [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md) voor meer informatie.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 Met dit [Preview-programma](https://resources.azure.com) kunt u de JSON-definities van alle resource groepen in uw abonnement en de afzonderlijke resources verkennen. In het hulp programma kunt u de JSON-definities van een resource bewerken, een volledige hiërarchie van resources verwijderen en nieuwe resources maken.  De informatie die beschikbaar is in dit hulp programma is zeer nuttig voor het ontwerpen van sjablonen, omdat u kunt zien welke eigenschappen u moet instellen voor een bepaald type resource, de juiste waarden, enzovoort. U kunt zelfs uw resource groep in [Azure Portal](https://portal.azure.com/)maken en vervolgens de bijbehorende JSON-definities in het Explorer-hulp programma inspecteren om u te helpen bij het Templatize van de resource groep.
@@ -137,8 +137,8 @@ De app-instellingen worden ook gedefinieerd als een geneste resource.
 
 In het `properties` element voor `config/appsettings` hebt u twee app-instellingen in de indeling `"<name>" : "<value>"` .
 
-* `PROJECT`is een [KUDU-instelling](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) die de Azure-implementatie vertelt die in een Visual Studio-oplossing met meerdere projecten moet worden gebruikt. Ik laat u later weten hoe broncode beheer is geconfigureerd, maar omdat de ToDoApp-code in een multi-project Visual Studio-oplossing is, is deze instelling vereist.
-* `clientUrl`is een app-instelling die wordt gebruikt door de toepassings code.
+* `PROJECT` is een [KUDU-instelling](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) die de Azure-implementatie vertelt die in een Visual Studio-oplossing met meerdere projecten moet worden gebruikt. Ik laat u later weten hoe broncode beheer is geconfigureerd, maar omdat de ToDoApp-code in een multi-project Visual Studio-oplossing is, is deze instelling vereist.
+* `clientUrl` is een app-instelling die wordt gebruikt door de toepassings code.
 
 ##### <a name="connection-strings"></a>Verbindingsreeksen
 De verbindings reeksen worden ook gedefinieerd als een geneste resource.
@@ -157,7 +157,7 @@ De instellingen voor broncode beheer worden ook gedefinieerd als een geneste res
 
 ![Laat zien hoe de instellingen voor broncode beheer worden gedefinieerd als een geneste resource in de JSON-code.](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl`en `branch` moet goed intuïtief zijn en moet verwijzen naar de Git-opslag plaats en de naam van de vertakking waaruit u wilt publiceren. Deze worden vervolgens gedefinieerd door invoer parameters. 
+`RepoUrl` en `branch` moet goed intuïtief zijn en moet verwijzen naar de Git-opslag plaats en de naam van de vertakking waaruit u wilt publiceren. Deze worden vervolgens gedefinieerd door invoer parameters. 
 
 Houd er rekening mee `dependsOn` dat, naast de app-resource zelf, `sourcecontrols/web` ook afhankelijk is van `config/appsettings` en `config/connectionstrings` . Dit komt doordat `sourcecontrols/web` het Azure-implementatie proces automatisch probeert om de toepassings code te implementeren, te bouwen en te starten, omdat er eenmaal is geconfigureerd. Door deze afhankelijkheid in te voegen, kunt u er daarom voor zorgen dat de toepassing toegang heeft tot de vereiste app-instellingen en verbindings reeksen voordat de toepassings code wordt uitgevoerd. 
 
@@ -254,7 +254,7 @@ DevOps, REPEAT baarheid en voorspel baarheid zijn sleutels voor een succes volle
 * [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager-sjabloon functies](../azure-resource-manager/templates/template-functions.md)
 * [Een toepassing implementeren met Azure Resource Manager sjabloon](../azure-resource-manager/templates/deploy-powershell.md)
-* [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Problemen met de implementatie van resource groepen in azure oplossen](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -262,7 +262,7 @@ DevOps, REPEAT baarheid en voorspel baarheid zijn sleutels voor een succes volle
 Zie voor meer informatie over de JSON-syntaxis en eigenschappen voor de resource typen die in dit artikel zijn geïmplementeerd:
 
 * [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
-* [Micro soft. SQL/servers/data bases](/azure/templates/microsoft.sql/servers/databases)
+* [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
 * [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
 * [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)
 * [Micro soft. web/sites](/azure/templates/microsoft.web/sites)

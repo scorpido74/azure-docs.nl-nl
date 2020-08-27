@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318892"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962669"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
 
@@ -78,6 +78,8 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
+## <a name="get-linked-storage-accounts"></a>Gekoppelde opslag accounts ophalen
+
 ### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Gekoppelde opslag accounts ophalen voor alle typen gegevens bronnen
 
 #### <a name="api-request"></a>API-aanvraag
@@ -86,7 +88,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```json
 {
@@ -132,7 +134,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
 ```
 
-#### <a name="response"></a>Reactie 
+#### <a name="response"></a>Antwoord 
 
 ```json
 {
@@ -178,7 +180,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ```json
 {

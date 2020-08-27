@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327341"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961972"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Uw opslag service controleren met Azure Monitor voor opslag
 
@@ -46,7 +46,7 @@ Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens va
 
 Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts**.
 
@@ -54,11 +54,11 @@ Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag
 
 ### <a name="overview-workbook"></a>Overzichts werkmap
 
-In de **overzichts** werkmap voor het geselecteerde abonnement worden in de tabel interactieve metrische opslag gegevens en status van service beschikbaarheid weer gegeven voor Maxi maal 10 opslag accounts gegroepeerd in het abonnement. U kunt de resultaten filteren op basis van de opties die u selecteert in de volgende vervolg keuzelijsten:
+In de **overzichts** werkmap voor het geselecteerde abonnement worden in de tabel interactieve metrische opslag gegevens en status van service beschikbaarheid weer gegeven voor Maxi maal vijf opslag accounts die zijn gegroepeerd in het abonnement. U kunt de resultaten filteren op basis van de opties die u selecteert in de volgende vervolg keuzelijsten:
 
 * **Abonnementen** : alleen abonnementen met opslag accounts worden weer gegeven.  
 
-* **Opslag accounts** : standaard zijn er tien opslag accounts vooraf geselecteerd. Als u alle of meerdere opslag accounts in de scope selector selecteert, worden er Maxi maal 200 opslag accounts geretourneerd. Als u bijvoorbeeld in totaal 573 opslag accounts hebt voor drie abonnementen die u hebt geselecteerd, worden er alleen 200-accounts weer gegeven. 
+* **Opslag accounts** : standaard zijn er 5 opslag accounts vooraf geselecteerd. Als u alle of meerdere opslag accounts in de scope selector selecteert, worden er Maxi maal 200 opslag accounts geretourneerd. Als u bijvoorbeeld in totaal 573 opslag accounts hebt voor drie abonnementen die u hebt geselecteerd, worden er alleen 200-accounts weer gegeven. 
 
 * **Tijds bereik** : de laatste 4 uur aan gegevens worden standaard weer gegeven op basis van de bijbehorende selecties.
 

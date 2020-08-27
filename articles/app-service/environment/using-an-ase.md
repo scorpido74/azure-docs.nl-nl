@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448194"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961904"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
 
@@ -126,17 +126,17 @@ Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, gere
 
 DNS configureren in uw eigen DNS-server met uw ILB-ASE:
 
-1. Maak een zone voor &lt; ASE name &gt; . appserviceenvironment.net
-1. een A-record in die zone maken die verwijst naar * naar het IP-adres van de ILB
-1. een A-record in die zone maken die verwijst naar @ naar het IP-adres van de ILB
-1. Maak een zone in &lt; ASE name &gt; . appserviceenvironment.net met de naam SCM
-1. een A-record maken in de SCM-zone die * verwijst naar het IP-adres van de ILB
+1. Maak een zone voor &lt;ASE name&gt;. appserviceenvironment.net
+1. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
+1. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
+1. Maak een zone in &lt;ASE name&gt;. appserviceenvironment.net met de naam SCM
+1. Maak in die SCM-zone een A-record die * verwijst naar het IP-adres van de ILB
 
 DNS configureren in Azure DNS particuliere zones:
 
 1. Maak een Azure DNS particuliere zone met de naam &lt; ASE name &gt; . appserviceenvironment.net
-1. een A-record in die zone maken die verwijst naar * naar het IP-adres van de ILB
-1. een A-record in die zone maken die verwijst naar @ naar het IP-adres van de ILB
+1. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
+1. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
 1. een A-record in die zone maken die verwijst naar *. scm naar het IP-adres van de ILB
 
 De DNS-instellingen voor uw ASE-standaard domein achtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domein naam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam *contoso.net*wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op * &lt; AppName &gt; . scm. &lt; asename &gt; . appserviceenvironment.net*. 
@@ -302,5 +302,5 @@ For more specific examples, use: az find "az appservice ase"
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/platform/alerts-log.md

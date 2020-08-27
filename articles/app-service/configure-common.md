@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213576"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962890"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -44,7 +44,7 @@ U kunt ook de app-instellingen ophalen als omgevings variabelen tijdens runtime.
 App-instellingen worden altijd versleuteld wanneer ze worden opgeslagen (versleuteld-at-rest).
 
 > [!NOTE]
-> App-instellingen kunnen ook worden omgezet van [Key Vault](/azure/key-vault/) met behulp van [Key Vault-verwijzingen](app-service-key-vault-references.md).
+> App-instellingen kunnen ook worden omgezet van [Key Vault](../key-vault/index.yml) met behulp van [Key Vault-verwijzingen](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Verborgen waarden weer geven
 
@@ -115,7 +115,7 @@ Bijvoorbeeld, een MySql-connection string met de naam *connectionstring1* kan wo
 Verbindings reeksen worden altijd versleuteld wanneer ze worden opgeslagen (versleuteld-at-rest).
 
 > [!NOTE]
-> Verbindings reeksen kunnen ook worden omgezet van [Key Vault](/azure/key-vault/) met behulp van [Key Vault-verwijzingen](app-service-key-vault-references.md).
+> Verbindings reeksen kunnen ook worden omgezet van [Key Vault](../key-vault/index.yml) met behulp van [Key Vault-verwijzingen](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Verborgen waarden weer geven
 

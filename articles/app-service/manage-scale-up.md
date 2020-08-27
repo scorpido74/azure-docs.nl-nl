@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8545c4f8c0dc86d83e0711147a1bda608c2897f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020163"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962482"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Een app omhoog schalen in Azure App Service
 
@@ -18,7 +18,7 @@ Dit artikel laat u zien hoe u uw app kunt schalen in Azure App Service. Er zijn 
 
 * [Omhoog schalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Profiteer van meer CPU, geheugen, schijf ruimte en extra functies zoals toegewezen virtuele machines (vm's), aangepaste domeinen en certificaten, staging-sleuven, automatisch schalen en meer. U kunt omhoog schalen door de prijs categorie te wijzigen van het App Service plan waartoe uw app behoort.
 * [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal VM-exemplaren waarop uw app wordt uitgevoerd.
-  U kunt uitschalen naar Maxi maal 30 exemplaren, afhankelijk van uw prijs categorie. [App service omgevingen](environment/intro.md) in de **geïsoleerde** laag verg Roten het aantal uitschalen tot 100 exemplaren. Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)voor meer informatie over uitschalen. Daar vindt u meer informatie over het gebruik van automatisch schalen, waarmee u het aantal exemplaren op basis van vooraf gedefinieerde regels en planningen kunt schalen.
+  U kunt uitschalen naar Maxi maal 30 exemplaren, afhankelijk van uw prijs categorie. [App service omgevingen](environment/intro.md) in de **geïsoleerde** laag verg Roten het aantal uitschalen tot 100 exemplaren. Zie [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md)voor meer informatie over uitschalen. Daar vindt u meer informatie over het gebruik van automatisch schalen, waarmee u het aantal exemplaren op basis van vooraf gedefinieerde regels en planningen kunt schalen.
 
 De schaal instellingen duren slechts enkele seconden en zijn van invloed op alle apps in uw [app service-abonnement](../app-service/overview-hosting-plans.md).
 U hoeft uw code niet te wijzigen of uw toepassing opnieuw te implementeren.
@@ -77,7 +77,7 @@ Zie [app service limieten](../azure-resource-manager/management/azure-subscripti
 
 ## <a name="more-resources"></a>Meer bronnen
 
-[Het aantal exemplaren handmatig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)  
+[Het aantal exemplaren handmatig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md)  
 [PremiumV2-laag configureren voor App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->

@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544720"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958759"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -479,14 +479,33 @@ Voor beeld: gate keeper v2 Admission Control regel om alleen de opgegeven contai
 
 ## <a name="modify"></a>Wijzigen
 
-Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Een wijzigings beleid moet altijd zijn `mode` ingesteld op _geïndexeerd_ tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
+Modify wordt gebruikt om eigenschappen of tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource.
+Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
+
+De volgende bewerkingen worden ondersteund door modify:
+
+- Resource Tags toevoegen, vervangen of verwijderen. Voor tags moet een wijzigings beleid zijn `mode` ingesteld op _geïndexeerd_ , tenzij de doel resource een resource groep is.
+- De waarde van het beheerde identiteits type ( `identity.type` ) van virtuele machines en virtuele-machine schaal sets toevoegen of vervangen.
+- De waarden van bepaalde aliassen (preview-versie) toevoegen of vervangen.
+  - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` gebruiken
+    in Azure PowerShell om een lijst met aliassen op te halen die kunnen worden gebruikt met wijzigen.
 
 > [!IMPORTANT]
-> Modify is momenteel alleen voor gebruik met tags. Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken.
+> Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken of de alias voor de bron eigenschap niet wilt wijzigen.
 
 ### <a name="modify-evaluation"></a>Evaluatie wijzigen
 
-Met modify worden geëvalueerd voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Met modify worden tags voor een resource toegevoegd of bijgewerkt wanneer wordt voldaan aan de **indienings** voorwaarde van de beleids regel.
+Met modify worden geëvalueerd voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. De wijzigings bewerkingen worden toegepast op de aanvraag inhoud wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Elke wijzigings bewerking kan een voor waarde opgeven die bepaalt wanneer deze wordt toegepast. Bewerkingen met voor waarden die zijn geëvalueerd als _Onwaar_ , worden overgeslagen.
+
+Wanneer een alias is opgegeven, worden de volgende aanvullende controles uitgevoerd om ervoor te zorgen dat de wijzigings bewerking de inhoud van de aanvraag niet wijzigt op een manier die ervoor zorgt dat de resource provider deze weigert:
+
+- De eigenschap waarnaar de alias wordt toegewezen, wordt in de API-versie van de aanvraag gemarkeerd als gewijzigd.
+- Het token type in de wijzigings bewerking komt overeen met het verwachte token type voor de eigenschap in de API-versie van de aanvraag.
+
+Als een van deze controles mislukt, wordt de evaluatie van het beleid terugvallen op de opgegeven **conflictEffect**.
+
+> [!IMPORTANT]
+> Het is met dat definities die aliassen bevatten, gebruikmaken van het _controle_ **conflict effect** om mislukte aanvragen te voor komen met behulp van API-versies waarbij de toegewezen eigenschap niet kan worden gewijzigd. Als dezelfde alias zich anders bevindt dan de API-versies, kunnen voorwaardelijke wijzigings bewerkingen worden gebruikt om te bepalen welke wijzigings bewerking voor elke API-versie wordt gebruikt.
 
 Wanneer een beleids definitie die gebruikmaakt van het Modify-effect, wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan wordt er een resource gemarkeerd die voldoet aan de **if** -voor waarde als niet-compatibel.
 
@@ -498,7 +517,7 @@ De eigenschap **Details** van het effect Modify heeft alle subeigenschappen die 
   - Deze eigenschap moet een matrix van teken reeksen bevatten die overeenkomen met de op rollen gebaseerde toegangs beheer functie-ID die toegankelijk is voor het abonnement. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
   - De gedefinieerde rol moet alle bewerkingen bevatten die zijn toegewezen aan de rol [Inzender](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **conflictEffect** (optioneel)
-  - Hiermee wordt bepaald welke beleids definitie ' WINS ' in het geval van meer dan één beleids definitie dezelfde eigenschap wijzigt.
+  - Hiermee wordt bepaald welke beleids definitie ' WINS ' in het geval van meer dan één beleids definitie dezelfde eigenschap wijzigt of wanneer de wijzigings bewerking niet werkt voor de opgegeven alias.
     - Voor nieuwe of bijgewerkte bronnen heeft de beleids definitie met _weigeren_ prioriteit. Beleids definities met _controle_ alle **bewerkingen**overs Laan. Als er meer dan één beleids definitie is _geweigerd, wordt_de aanvraag geweigerd als een conflict. Als alle beleids definities _controle_hebben, worden geen van de **bewerkingen** van de conflicterende beleids definities verwerkt.
     - Voor bestaande bronnen geldt dat als er meerdere beleids regels zijn _geweigerd_, de nalevings status _conflicterend_is. Als een of minder beleids definities zijn _geweigerd_, retourneert elke toewijzing een nalevings status van _niet-compatibel_.
   - Beschik bare waarden: _controleren_, _weigeren_, _uitgeschakeld_.
@@ -513,6 +532,9 @@ De eigenschap **Details** van het effect Modify heeft alle subeigenschappen die 
     - **waarde** (optioneel)
       - De waarde waarop de tag moet worden ingesteld.
       - Deze eigenschap is vereist als **operation** de bewerking _addOrReplace_ of _add_is.
+    - **voor waarde** (optioneel)
+      - Een teken reeks met een Azure Policy taal expressie met [beleids functies](./definition-structure.md#policy-functions) die worden geëvalueerd als _waar_ of _Onwaar_.
+      - Biedt geen ondersteuning voor de volgende beleids functies: `field()` , `resourceGroup()` , `subscription()` .
 
 ### <a name="modify-operations"></a>Bewerkingen wijzigen
 
@@ -548,9 +570,9 @@ De eigenschap **Operation** heeft de volgende opties:
 
 |Bewerking |Beschrijving |
 |-|-|
-|addOrReplace |Voegt de gedefinieerde tag en waarde toe aan de resource, zelfs als de tag al bestaat met een andere waarde. |
-|Toevoegen |Voegt de gedefinieerde tag en waarde toe aan de resource. |
-|Verwijderen |Hiermee verwijdert u de gedefinieerde tag uit de resource. |
+|addOrReplace |Voegt de gedefinieerde eigenschap of tag en waarde toe aan de resource, zelfs als de eigenschap of tag al bestaat met een andere waarde. |
+|Toevoegen |Voegt de gedefinieerde eigenschap of tag en waarde toe aan de resource. |
+|Verwijderen |Hiermee verwijdert u de gedefinieerde eigenschap of tag uit de resource. |
 
 ### <a name="modify-examples"></a>Voor beelden wijzigen
 
@@ -593,6 +615,28 @@ Voor beeld 2: de `env` tag verwijderen en de `environment` tag toevoegen of best
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+Voor beeld 3: controleren of een opslag account open bare BLOB-toegang niet toestaat, wordt de wijzigings bewerking alleen toegepast bij het evalueren van aanvragen met een API-versie die groter is dan of gelijk is aan 2019-04-01:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

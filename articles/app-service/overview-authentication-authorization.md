@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962822"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
 
@@ -31,7 +31,7 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 > [!NOTE]
 > Als u deze functie inschakelt, worden **alle** niet-beveiligde HTTP-aanvragen voor uw toepassing automatisch omgeleid naar https, ongeacht de app service configuratie-instelling voor het [afdwingen van HTTPS](configure-ssl-bindings.md#enforce-https). Als dat nodig is, kunt u dit uitschakelen via de `requireHttps` instelling in het [configuratie bestand auth-instellingen](app-service-authentication-how-to.md#configuration-file-reference), maar u moet er wel voor zorgen dat er geen beveiligings tokens meer worden verzonden via niet-beveiligde HTTP-verbindingen.
 
-Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
+Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)voor meer informatie over systeem eigen mobiele apps.
 
 ## <a name="how-it-works"></a>Hoe het werkt
 
@@ -52,7 +52,7 @@ De module wordt afzonderlijk van uw toepassings code uitgevoerd en wordt geconfi
 
 ### <a name="on-containers"></a>Op containers
 
-De module verificatie en autorisatie wordt uitgevoerd in een afzonderlijke container, geïsoleerd van uw toepassings code. Met behulp van wat het [ambassadeur-patroon](https://docs.microsoft.com/azure/architecture/patterns/ambassador)wordt genoemd, communiceert het met het binnenkomende verkeer om Vergelijk bare functionaliteit uit te voeren als in Windows. Omdat de service niet in-process wordt uitgevoerd, is geen directe integratie met specifieke taal raamwerken mogelijk. de relevante informatie die uw app nodig heeft, wordt echter door gegeven met behulp van aanvraag headers, zoals hieronder wordt uitgelegd.
+De module verificatie en autorisatie wordt uitgevoerd in een afzonderlijke container, geïsoleerd van uw toepassings code. Met behulp van wat het [ambassadeur-patroon](/azure/architecture/patterns/ambassador)wordt genoemd, communiceert het met het binnenkomende verkeer om Vergelijk bare functionaliteit uit te voeren als in Windows. Omdat de service niet in-process wordt uitgevoerd, is geen directe integratie met specifieke taal raamwerken mogelijk. de relevante informatie die uw app nodig heeft, wordt echter door gegeven met behulp van aanvraag headers, zoals hieronder wordt uitgelegd.
 
 ### <a name="userapplication-claims"></a>Gebruikers/toepassings claims
 
@@ -150,7 +150,7 @@ Met deze optie hoeft u geen verificatie code in uw app te schrijven. Nauw keurig
 ## <a name="more-resources"></a>Meer bronnen
 
 [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](tutorial-auth-aad.md)  
-[Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](containers/tutorial-auth-aad.md)  
+[Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 [Verificatie en autorisatie aanpassen in app service](app-service-authentication-how-to.md) 
  [.Net core-integratie van Azure AppService EasyAuth (derde partij)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
  [Azure app service-verificatie voor het werken met .net core (derden)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
@@ -171,8 +171,8 @@ Hand leidingen voor een specifieke provider:
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
 
-[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
+[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
+[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
+[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal

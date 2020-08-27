@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170797"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958323"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problemen met HTTP-fouten van "502 ongeldige gateway" en "503-Service niet beschikbaar" in Azure App Service
 "502 ongeldige gateway" en "503-Service niet beschikbaar" zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Dit artikel helpt u bij het oplossen van deze fouten.
@@ -42,7 +42,7 @@ Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequ
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
 #### <a name="track-service-health"></a>Service status bijhouden
-Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service in de [Azure-Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
+Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service in de [Azure-Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../service-health/service-notifications.md)voor meer informatie.
 
 #### <a name="monitor-your-app"></a>Uw app controleren
 Met deze optie kunt u nagaan of uw toepassing problemen ondervindt. Klik in de Blade van uw app op de tegel **aanvragen en fouten** . Op de Blade **metrische gegevens** ziet u alle metrische gegevens die u kunt toevoegen.
@@ -60,7 +60,7 @@ Enkele van de metrische gegevens die u mogelijk wilt bewaken voor uw app, zijn
 Zie voor meer informatie:
 
 * [Apps in Azure App Service bewaken](web-sites-monitor.md)
-* [Waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Waarschuwingen ontvangen](../azure-monitor/platform/alerts-overview.md)
 
 <a name="collect"></a>
 
@@ -108,5 +108,4 @@ Dit is vaak de eenvoudigste manier om eenmalige problemen op te lossen. In [Azur
 
  ![de app opnieuw starten voor het oplossen van HTTP-fouten met de 502-ongeldige gateway en de 503-Service is niet beschikbaar](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-U kunt uw app ook beheren met Azure Power shell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.
-
+U kunt uw app ook beheren met Azure Power shell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md) voor meer informatie.

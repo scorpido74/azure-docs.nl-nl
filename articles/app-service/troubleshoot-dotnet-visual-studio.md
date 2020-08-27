@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211988"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958708"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
-Deze zelf studie laat zien hoe u met behulp van Visual Studio-hulpprogram ma's fouten opspoort in [app service](https://go.microsoft.com/fwlink/?LinkId=529714), door [op afstand de foutopsporingsmodus uit](https://docs.microsoft.com/visualstudio/debugger/) te voeren of door toepassings logboeken en webserver logboeken te bekijken.
+Deze zelf studie laat zien hoe u met behulp van Visual Studio-hulpprogram ma's fouten opspoort in [app service](https://go.microsoft.com/fwlink/?LinkId=529714), door [op afstand de foutopsporingsmodus uit](/visualstudio/debugger/) te voeren of door toepassings logboeken en webserver logboeken te bekijken.
 
 U leert het volgende:
 
@@ -680,7 +680,7 @@ Raadpleeg de volgende bronnen voor meer informatie over het analyseren van webse
   Een hulp programma voor het weer geven van gegevens in webserver logboeken (*logboek* bestanden).
 * [Problemen met IIS-prestatie problemen of toepassings fouten oplossen met LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Een inleiding tot het hulp programma log parser dat u kunt gebruiken om webserver logboeken te analyseren.
-* [Blog berichten door Robert McMurray met LogParser](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
+* [Blog berichten door Robert McMurray met LogParser](/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [De HTTP-status code in IIS 7,0, IIS 7,5 en IIS 8,0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Logboeken voor tracering van mislukte aanvragen analyseren

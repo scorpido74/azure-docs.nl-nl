@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272311"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962465"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -146,7 +146,7 @@ App Service gebruikers claims door gegeven aan uw toepassing met behulp van spec
 
 Code die is geschreven in een wille keurige taal of elk Framework, kan de informatie die nodig is van deze headers ophalen. Voor ASP.NET 4,6-apps wordt de **claimsprincipal is** automatisch ingesteld met de juiste waarden. ASP.NET Core biedt echter geen middleware voor authenticatie die kan worden geïntegreerd met App Service gebruikers claims. Zie [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)voor een tijdelijke oplossing.
 
-Als de [token opslag](overview-authentication-authorization.md#token-store) is ingeschakeld voor uw app, kunt u ook aanvullende details over de geverifieerde gebruiker verkrijgen door aan te roepen `/.auth/me` . De Sdk's van de Mobile Apps server bieden hulp methoden om met deze gegevens te werken. Zie [How to use the Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)(Engelstalig) voor meer informatie en [samen werken met de .net back-end-server-sdk voor Azure Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Als de [token opslag](overview-authentication-authorization.md#token-store) is ingeschakeld voor uw app, kunt u ook aanvullende details over de geverifieerde gebruiker verkrijgen door aan te roepen `/.auth/me` . De Sdk's van de Mobile Apps server bieden hulp methoden om met deze gegevens te werken. Zie [How to use the Azure Mobile Apps Node.js SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity)(Engelstalig) voor meer informatie en [samen werken met de .net back-end-server-sdk voor Azure Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Tokens ophalen in app-code
 
@@ -489,7 +489,7 @@ U kunt de huidige versie van de platform verificatie-middleware weer geven met b
 
 ##### <a name="from-the-azure-cli"></a>Uit de Azure CLI
 
-Gebruik de Azure CLI om de huidige middleware-versie te bekijken met de opdracht [AZ webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
+Gebruik de Azure CLI om de huidige middleware-versie te bekijken met de opdracht [AZ webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +520,7 @@ U kunt ook op/.auth/version-eind punt in een app drukken om de huidige middlewar
 
 #### <a name="update-the-current-runtime-version"></a>De huidige runtime versie bijwerken
 
-Met de Azure CLI kunt u de `runtimeVersion` instelling in de app bijwerken met de opdracht [AZ webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
+Met de Azure CLI kunt u de `runtimeVersion` instelling in de app bijwerken met de opdracht [AZ webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,7 +530,7 @@ az webapp auth update --name <my_app_name> \
 
 Vervang door `<my_app_name>` de naam van uw app. Vervang ook door `<my_resource_group>` de naam van de resource groep voor uw app. Vervang ook door `<version>` een geldige versie van de 1. x-runtime of `~1` voor de meest recente versie. U kunt de release opmerkingen vinden in de verschillende runtime versies [hier] ( https://github.com/Azure/app-service-announcements) om te bepalen welke versie moet worden vastgemaakt aan.
 
-U kunt deze opdracht uitvoeren vanuit de [Azure Cloud shell](../cloud-shell/overview.md) door deze in het voor gaande code voorbeeld **te kiezen.** U kunt de [Azure cli ook lokaal](https://docs.microsoft.com/cli/azure/install-azure-cli) gebruiken om deze opdracht uit te voeren nadat u [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) hebt uitgevoerd om u aan te melden.
+U kunt deze opdracht uitvoeren vanuit de [Azure Cloud shell](../cloud-shell/overview.md) door deze in het voor gaande code voorbeeld **te kiezen.** U kunt de [Azure cli ook lokaal](/cli/azure/install-azure-cli) gebruiken om deze opdracht uit te voeren nadat u [AZ login](/cli/azure/reference-index#az-login) hebt uitgevoerd om u aan te melden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

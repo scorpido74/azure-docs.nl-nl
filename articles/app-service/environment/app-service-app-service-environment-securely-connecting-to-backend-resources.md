@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 68667908d25813b61b6a725fddce9ab438a248d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833117"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961802"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Veilig verbinding maken met back-end-bronnen vanuit een App Service omgeving
 Omdat een App Service Environment altijd wordt **gemaakt in een** Azure Resource Manager virtueel netwerk **of** een klassiek implementatie model [virtueel netwerk][virtualnetwork], kunnen uitgaande verbindingen van een app service Environment naar andere back-upbronnen alleen stromen via het virtuele netwerk. Vanaf 2016 juni kan as ook worden geïmplementeerd in virtuele netwerken die gebruikmaken van open bare adresbereiken of RFC1918-adres ruimten (privé adressen).  
@@ -42,7 +42,7 @@ Een algemene SQL Server configuratie heeft een eind punt dat luistert op poort 1
 Er zijn twee benaderingen voor het beperken van verkeer naar dit eind punt:
 
 * [Lijst met netwerk Access Control][NetworkAccessControlLists] (netwerk-acl's)
-* [Netwerk beveiligings groepen][NetworkSecurityGroups]
+* [Netwerkbeveiligingsgroepen][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Toegang beperken met een netwerk toegangs beheer lijst
 Poort 1433 kan worden beveiligd met behulp van een netwerk toegangs beheer lijst.  In het onderstaande voor beeld worden de toewijzings machtigingen voor de client adressen van binnen een virtueel netwerk toegevoegd en wordt de toegang tot alle andere clients geblokkeerd.
@@ -88,16 +88,16 @@ Zie voor meer informatie over het beheren van inkomend verkeer naar uw App Servi
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [ControlInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
-[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
+[SiteToSite]: ../../vpn-gateway/vpn-gateway-multi-site.md
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
-[NetworkAccessControlLists]: https://azure.microsoft.com/documentation/articles/virtual-networks-acl/
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkAccessControlLists]: /previous-versions/azure/virtual-network/virtual-networks-acl
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [ControlInboundASE]:  app-service-app-service-environment-control-inbound-traffic.md
 
 <!-- IMAGES -->
 [SqlServerEndpoint]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/SqlServerEndpoint01.png
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
-[DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png 
+[DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png

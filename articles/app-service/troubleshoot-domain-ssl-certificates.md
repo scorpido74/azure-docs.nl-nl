@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668028"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958402"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problemen met domein-en TLS/SSL-certificaten in Azure App Service oplossen
 
@@ -131,7 +131,7 @@ U kunt geen nieuwe hostnaam toevoegen aan een app om een subdomein toe te wijzen
 #### <a name="solution"></a>Oplossing
 
 - Neem contact op met de abonnements beheerder om ervoor te zorgen dat u gemachtigd bent om een hostnaam toe te voegen aan de app.
-- Als u meer subdomeinen nodig hebt, raden we u aan om het domein hosting te wijzigen in azure Domain Name Service (DNS). U kunt met behulp van Azure DNS 500-hostnamen toevoegen aan uw app. Zie [een subdomein toevoegen](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)voor meer informatie.
+- Als u meer subdomeinen nodig hebt, raden we u aan om het domein hosting te wijzigen in azure Domain Name Service (DNS). U kunt met behulp van Azure DNS 500-hostnamen toevoegen aan uw app. Zie [een subdomein toevoegen](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website)voor meer informatie.
 
 ### <a name="dns-cant-be-resolved"></a>DNS kan niet worden omgezet
 
@@ -310,7 +310,7 @@ Ja. Wanneer u de Blade aangepaste domeinen en TLS in de Azure Portal opent, ziet
 
 **Kan ik een domein van een abonnement overdragen naar een ander abonnement?**
 
-Met de Power shell [-cmdlet Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) kunt u een domein verplaatsen naar een ander abonnement of een andere resource groep.
+Met de Power shell [-cmdlet Move-AzResource](/powershell/module/az.Resources/Move-azResource) kunt u een domein verplaatsen naar een ander abonnement of een andere resource groep.
 
 **Hoe kan ik mijn aangepaste domein beheren als ik momenteel geen Azure App Service-app heb?**
 

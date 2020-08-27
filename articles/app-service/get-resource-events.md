@@ -4,16 +4,16 @@ description: Meer informatie over het ophalen van bron gebeurtenissen via activi
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: 7075e3eacc85198e22a9aa0e53f67a22416b2678
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5c84891187c540c0b24162cf5c8c7f96e9e731a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649066"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962295"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Resource gebeurtenissen in Azure App Service ophalen
 
-Azure App Service biedt ingebouwde hulpprogram ma's voor het bewaken van de status en status van uw resources. Resource gebeurtenissen helpt u bij het begrijpen van alle wijzigingen die zijn aangebracht in uw onderliggende web-app-resources en om indien nodig actie te ondernemen. Voor beelden van gebeurtenissen zijn: schalen van instanties, updates van toepassings instellingen, opnieuw starten van de web-app en nog veel meer. In dit artikel leert u hoe u [Azure-activiteiten logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) kunt weer geven en [Event grid](https://docs.microsoft.com/azure/event-grid/) om bron gebeurtenissen te bewaken die betrekking hebben op uw app service Web-app.
+Azure App Service biedt ingebouwde hulpprogram ma's voor het bewaken van de status en status van uw resources. Resource gebeurtenissen helpt u bij het begrijpen van alle wijzigingen die zijn aangebracht in uw onderliggende web-app-resources en om indien nodig actie te ondernemen. Voor beelden van gebeurtenissen zijn: schalen van instanties, updates van toepassings instellingen, opnieuw starten van de web-app en nog veel meer. In dit artikel leert u hoe u [Azure-activiteiten logboeken](../azure-monitor/platform/activity-log.md#view-the-activity-log) kunt weer geven en [Event grid](../event-grid/index.yml) om bron gebeurtenissen te bewaken die betrekking hebben op uw app service Web-app.
 
 > [!NOTE]
 > App Service integratie met Event Grid is in **Preview**. [Bekijk de aankondiging voor meer informatie.](https://aka.ms/app-service-event-grid-announcement)
@@ -33,18 +33,18 @@ Azure-activiteiten logboeken voor App Service Details, zoals:
 
 De activiteiten logboeken van Azure kunnen worden opgevraagd met behulp van de Azure Portal, Power shell, REST API of CLI. U kunt de logboeken verzenden naar een opslag account, Event hub en Log Analytics. U kunt ze ook analyseren in Power BI of waarschuwingen maken om de resource gebeurtenissen bijgewerkt te houden.
 
-[Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen.](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+[Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen.](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 ## <a name="ship-activity-logs-to-event-grid"></a>Activiteiten logboeken verzenden naar Event Grid
 
-Hoewel activiteiten logboeken op basis van een gebruiker zijn gebaseerd, is er een nieuwe [Event grid](https://docs.microsoft.com/azure/event-grid/) integratie met app service (preview) waarmee zowel gebruikers acties als geautomatiseerde gebeurtenissen worden geregistreerd. Met Event Grid kunt u een handler configureren om te reageren op de genoemde gebeurtenissen. Gebruik Event Grid bijvoorbeeld om direct een serverloze functie te triggeren voor het uitvoeren van beeldanalyse zodra er een nieuwe foto wordt toegevoegd aan de container voor blob-opslag.
+Hoewel activiteiten logboeken op basis van een gebruiker zijn gebaseerd, is er een nieuwe [Event grid](../event-grid/index.yml) integratie met app service (preview) waarmee zowel gebruikers acties als geautomatiseerde gebeurtenissen worden geregistreerd. Met Event Grid kunt u een handler configureren om te reageren op de genoemde gebeurtenissen. Gebruik Event Grid bijvoorbeeld om direct een serverloze functie te triggeren voor het uitvoeren van beeldanalyse zodra er een nieuwe foto wordt toegevoegd aan de container voor blob-opslag.
 
 U kunt Event Grid ook gebruiken met Logic Apps om op elke locatie gegevens te verwerken, zonder dat u hiervoor code hoeft te schrijven. Event Grid verbindt gegevensbronnen en gebeurtenis-handlers. Gebruik Event Grid bijvoorbeeld om direct een serverloze functie te triggeren voor het uitvoeren van beeldanalyse zodra er een nieuwe foto wordt toegevoegd aan de container voor blob-opslag.
 
-[De eigenschappen en het schema voor Azure App Service gebeurtenissen weer geven.](https://docs.microsoft.com/azure/event-grid/event-schema-app-service)
+[De eigenschappen en het schema voor Azure App Service gebeurtenissen weer geven.](../event-grid/event-schema-app-service.md)
 
-## <a name="next-steps"></a><a name="nextsteps"></a>Volgende stappen
-* [Query's uitvoeren op Logboeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+## <a name="next-steps"></a><a name="nextsteps"></a> Volgende stappen
+* [Logboeken doorzoeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service bewaken](web-sites-monitor.md)
 * [Problemen met Azure App Service oplossen in Visual Studio](troubleshoot-dotnet-visual-studio.md)
-* [App-Logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [App-logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962550"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Een interne Load Balancer gebruiken met een App Service Environment
 
@@ -104,7 +104,7 @@ Het IP-adres voor uw ILB wordt vermeld in uw eigenschappen als het virtuele IP-a
 #### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 Een ILB-ASE maakt netwerk isolatie mogelijk voor uw apps. De apps zijn niet toegankelijk of zelfs niet bekend via internet. Deze aanpak is uitstekend voor het hosten van intranet sites, zoals line-of-business-toepassingen. Wanneer u de toegang nog verder wilt beperken, kunt u nog steeds netwerk beveiligings groepen (Nsg's) gebruiken om de toegang op netwerk niveau te beheren. 
 
-Als u Nsg's wilt gebruiken om de toegang verder te beperken, moet u ervoor zorgen dat u niet de communicatie verbreekt die de ASE nodig heeft om te kunnen werken. Hoewel de HTTP/HTTPS-toegang alleen is via de ILB die door de ASE wordt gebruikt, is de ASE nog steeds afhankelijk van resources buiten het VNet. Zie [inkomend verkeer beheren voor een app service Environment][ControlInbound] en [netwerk configuratie Details voor app service omgevingen met ExpressRoute][ExpressRoute]om te zien welke netwerk toegang nog steeds vereist is. 
+Als u Nsg's wilt gebruiken om de toegang verder te beperken, moet u ervoor zorgen dat u niet de communicatie verbreekt die de ASE nodig heeft om te kunnen werken. Hoewel de HTTP/HTTPS-toegang alleen is via de ILB die door de ASE wordt gebruikt, is de ASE nog steeds afhankelijk van resources buiten het VNet. Zie [inkomend verkeer beheren voor een app service Environment][ControlInbound] en  [netwerk configuratie Details voor app service omgevingen met ExpressRoute][ExpressRoute]om te zien welke netwerk toegang nog steeds vereist is. 
 
 Als u uw Nsg's wilt configureren, moet u het IP-adres weten dat door Azure wordt gebruikt voor het beheren van uw ASE. Dat IP-adres is ook het uitgaande IP-adres van uw ASE als Internet aanvragen worden uitgevoerd. Het uitgaande IP-adres voor uw ASE blijft statisch voor de levens duur van uw ASE. Als u uw ASE verwijdert en opnieuw maakt, krijgt u een nieuw IP-adres. Als u het IP-adres wilt vinden, gaat u naar **instellingen-> eigenschappen** en zoekt u het **uitgaande IP-adres**. 
 
@@ -140,9 +140,9 @@ Zie [Inleiding tot app service omgevingen][WhatisASE] om aan de slag te gaan met
 [WhatisASE]: app-service-app-service-environment-intro.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211869"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961700"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Een ASP.NET-app configureren voor Azure App Service
 
@@ -95,7 +95,7 @@ Implementeer uw app opnieuw met de bijgewerkte *Web.config*. U ziet nu dezelfde 
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-U kunt diagnostische berichten toevoegen aan de code van uw toepassing met behulp van [System. Diagnostics. trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace). Bijvoorbeeld: 
+U kunt diagnostische berichten toevoegen aan de code van uw toepassing met behulp van [System. Diagnostics. trace](/dotnet/api/system.diagnostics.trace). Bijvoorbeeld: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

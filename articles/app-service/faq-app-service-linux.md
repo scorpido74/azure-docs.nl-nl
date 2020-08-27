@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082964"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961717"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Veelgestelde vragen over Azure App Service on Linux
 
@@ -35,7 +35,7 @@ U kunt alle docker-bestanden vinden op [github](https://github.com/azure-app-ser
 | Java SE         | de opdracht voor het starten van uw JAR-app (bijvoorbeeld `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
 | Tomcat          | de locatie van een script om de benodigde configuraties uit te voeren (bijvoorbeeld `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | het PM2-configuratie bestand of het script bestand                                |
-| .NET Core       | de gecompileerde DLL-naam als`dotnet <myapp>.dll`                                 |
+| .NET Core       | de gecompileerde DLL-naam als `dotnet <myapp>.dll`                                 |
 | Ruby            | het ruby-script dat u uw app wilt initialiseren met                     |
 
 Deze opdrachten of scripts worden uitgevoerd nadat de ingebouwde docker-container is gestart, maar voordat de code van de toepassing wordt gestart.
@@ -122,7 +122,7 @@ Geef de volledige register-URL op, inclusief `http://` of `https://` .
 
 **Wat is de indeling voor de naam van de installatie kopie in de optie persoonlijk REGI ster?**
 
-Voeg de volledige naam van de installatie kopie toe, met inbegrip van de URL van het persoonlijke REGI ster (bijvoorbeeld myacr.azurecr.io/dotnet:latest). Namen van installatie kopieën die gebruikmaken van een aangepaste poort, [kunnen niet via de portal worden ingevoerd](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`Gebruik het [ `az` opdracht regel programma](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)om in te stellen.
+Voeg de volledige naam van de installatie kopie toe, met inbegrip van de URL van het persoonlijke REGI ster (bijvoorbeeld myacr.azurecr.io/dotnet:latest). Namen van installatie kopieën die gebruikmaken van een aangepaste poort, [kunnen niet via de portal worden ingevoerd](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`Gebruik het [ `az` opdracht regel programma](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)om in te stellen.
 
 **Kan ik meer dan één poort op mijn aangepaste container installatie kopie beschikbaar maken?**
 
@@ -130,7 +130,7 @@ Er wordt geen ondersteuning geboden voor het beschikbaar maken van meer dan éé
 
 **Kan ik mijn eigen opslag plaatsen?**
 
-Ja, [uw eigen opslag ruimte](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage) maken is beschikbaar als preview-versie.
+Ja, [uw eigen opslag ruimte](./configure-connect-to-azure-storage.md) maken is beschikbaar als preview-versie.
 
 **Waarom kan ik niet bladeren in het bestands systeem van mijn aangepaste container of processen uitvoeren vanaf de SCM-site?**
 

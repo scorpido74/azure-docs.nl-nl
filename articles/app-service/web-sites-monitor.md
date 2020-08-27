@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079668"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959788"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
@@ -152,14 +152,14 @@ Selecteer **instellingen**quota's om quota's te vinden  >  **Quotas**. In de gra
 
 Wanneer u op een van deze grafieken klikt, wordt u naar de weer gave metrische gegevens geleid, waar u aangepaste grafieken kunt maken, verschillende metrische gegevens en nog veel meer wilt opvragen. 
 
-Zie [metrische service gegevens bewaken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)voor meer informatie over metrische gegevens.
+Zie [metrische service gegevens bewaken](../azure-monitor/platform/data-platform.md)voor meer informatie over metrische gegevens.
 
 ## <a name="alerts-and-autoscale"></a>Waarschuwingen en automatisch schalen
-Metrische gegevens voor een app of een App Service plan kunnen worden aangesloten op waarschuwingen. Zie [Meldingen van waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-alerts-portal.md) voor meer informatie.
+Metrische gegevens voor een app of een App Service plan kunnen worden aangesloten op waarschuwingen. Zie [Meldingen van waarschuwingen ontvangen](../azure-monitor/platform/alerts-classic-portal.md) voor meer informatie.
 
 App Service-apps die worden gehost in basis-of snellere App Service plannen ondersteunen automatisch schalen. Met automatisch schalen kunt u regels configureren die de metrische gegevens van het App Service plan bewaken. Regels kunnen het aantal instanties verg Roten of verkleinen, zodat u indien nodig aanvullende bronnen kunt opgeven. Regels kunnen u helpen bij het besparen van geld wanneer de app te veel is ingericht.
 
-Zie [How to scale](../monitoring-and-diagnostics/insights-how-to-scale.md) and [Best practices for Azure monitor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md)voor meer informatie over automatisch schalen.
+Zie [How to scale](../azure-monitor/platform/autoscale-get-started.md) and [Best practices for Azure monitor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md)voor meer informatie over automatisch schalen.
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
