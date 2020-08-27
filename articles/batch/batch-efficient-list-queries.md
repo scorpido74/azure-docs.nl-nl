@@ -3,13 +3,13 @@ title: Efficiënte lijst query's ontwerpen
 description: Verbeter de prestaties door uw query's te filteren bij het aanvragen van informatie over batch-resources zoals Pools, Jobs, taken en reken knooppunten.
 ms.topic: how-to
 ms.date: 06/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960602"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933511"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Query's maken om batch resources efficiënt weer te geven
 
@@ -88,8 +88,8 @@ In dit voor beeld wordt de teken reeks uitgebreid geeft aan dat er statistische 
 - Alle eigenschapnamen zijn hoofdletter gevoelig, maar eigenschaps waarden zijn niet hoofdletter gevoelig.
 - Datum-en tijd teken reeksen kunnen een van de twee indelingen hebben en moeten worden voorafgegaan door `DateTime` .
   
-  - Voor beeld van de indeling W3C-DTF:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  - Voor beeld van RFC 1123-indeling:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  - Voor beeld van de indeling W3C-DTF: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  - Voor beeld van RFC 1123-indeling: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 - Booleaanse teken reeksen zijn ofwel `true` of `false` .
 - Als er een ongeldige eigenschap of operator is opgegeven, treedt `400 (Bad Request)` er een fout op.
 

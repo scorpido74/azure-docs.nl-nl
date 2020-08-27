@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202293"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932760"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Overzicht van het importeren van gegevens-Azure Cognitive Search
 
@@ -34,12 +34,12 @@ Deze aanpak is flexibeler dan het pull-model, omdat u documenten afzonderlijk of
 
 U kunt de volgende API's gebruiken om één of meerdere documenten in een index te laden:
 
-+ [Documenten toevoegen, bijwerken of verwijderen (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) of [indexBatch-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [Documenten toevoegen, bijwerken of verwijderen (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction-klasse](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) of [indexBatch-klasse](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 Er is momenteel geen ondersteuning voor het pushen van gegevens via de portal.
 
-Voor een inleiding tot elke methodologie raadpleegt u [Quick Start: een azure Cognitive search-index maken met behulp van Power shell](search-create-index-rest-api.md) of [C# Quick Start: een Azure Cognitive search-index maken met behulp van .NET SDK](search-get-started-dotnet.md).
+Voor een inleiding tot elke methodologie raadpleegt u [Quick Start: een azure Cognitive search-index maken met behulp van Power shell](./search-get-started-powershell.md) of [C# Quick Start: een Azure Cognitive search-index maken met behulp van .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -52,7 +52,7 @@ Geef in het REST API HTTP POST-aanvragen met JSON-aanvraag instanties op de eind
 In de .NET SDK kunt u uw gegevens inpakken in een- `IndexBatch` object. Een `IndexBatch` verzameling objecten die elk een `IndexAction` document bevat en een eigenschap die de Azure-Cognitive Search vertelt welke actie moet worden uitgevoerd op dat document. Zie voor een code voorbeeld de [C#-Snelstartgids](search-get-started-dotnet.md).
 
 
-| @search.action | Beschrijving | Vereiste velden voor elk document | Opmerkingen |
+| @search.action | Beschrijving | Vereiste velden voor elk document | Notities |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Een `upload`-actie is vergelijkbaar met een "upsert", waarbij het document wordt ingevoegd als het nieuw is en wordt bijgewerkt/vervangen als het al bestaat. |sleutel, plus andere velden die u wilt definiëren |Tijdens het bijwerken/vervangen van een bestaand document wordt elk veld dat niet is opgegeven in de aanvraag ingesteld op `null`. Dit gebeurt zelfs als het veld eerder is ingesteld op een niet-null-waarde. |
 | `merge` |Een bestaand document wordt bijgewerkt met de opgegeven velden. Als het document niet in de index bestaat, mislukt de samenvoeging. |sleutel, plus andere velden die u wilt definiëren |Alle velden die u in een samenvoeging opgeeft, vervangen de bestaande velden in het document, In de .NET SDK bevat dit velden van het type `DataType.Collection(DataType.String)` . In de REST API omvat dit velden van het type `Collection(Edm.String)` . Als het document bijvoorbeeld een veld `tags` bevat met de waarde `["budget"]` en u een samenvoeging doet met de waarde `["economy", "pool"]` voor `tags`, wordt de uiteindelijke waarde van het veld `tags``["economy", "pool"]`. Het wordt dus niet `["budget", "economy", "pool"]`. |
@@ -61,7 +61,7 @@ In de .NET SDK kunt u uw gegevens inpakken in een- `IndexBatch` object. Een `Ind
 
 ### <a name="formulate-your-query"></a>Uw query formuleren
 
-Er zijn twee manieren om [in de index te zoeken met behulp van de REST-API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). De ene manier is om een HTTP POST-aanvraag uit te geven waarbij uw queryparameters worden gedefinieerd in een JSON-object in de aanvraagtekst. De andere manier is om een HTTP GET-aanvraag uit te geven waarbij uw queryparameters worden gedefinieerd in de aanvraag-URL. POST heeft [soepelere limieten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) met betrekking tot de grootte van queryparameters dan GET. Daarom wordt u aangeraden POST te gebruiken, tenzij er speciale omstandigheden zijn waarin het gebruik van GET beter zou zijn.
+Er zijn twee manieren om [in de index te zoeken met behulp van de REST-API](/rest/api/searchservice/Search-Documents). De ene manier is om een HTTP POST-aanvraag uit te geven waarbij uw queryparameters worden gedefinieerd in een JSON-object in de aanvraagtekst. De andere manier is om een HTTP GET-aanvraag uit te geven waarbij uw queryparameters worden gedefinieerd in de aanvraag-URL. POST heeft [soepelere limieten](/rest/api/searchservice/Search-Documents) met betrekking tot de grootte van queryparameters dan GET. Daarom wordt u aangeraden POST te gebruiken, tenzij er speciale omstandigheden zijn waarin het gebruik van GET beter zou zijn.
 
 Voor zowel POST als GET moet u uw *service naam*, *index naam*en een *API-versie* opgeven in de aanvraag-URL. 
 

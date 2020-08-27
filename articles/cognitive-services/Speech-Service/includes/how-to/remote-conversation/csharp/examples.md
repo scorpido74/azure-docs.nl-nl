@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 58fa9361cc591f7d2b78a19f3db620112e288592
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 51b919c97a15946f57211cf8fe12d7c5efe435bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284207"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934634"
 ---
 ## <a name="upload-the-audio"></a>De audio uploaden
 
@@ -109,7 +110,7 @@ Installeer de **micro soft. CognitiveServices. speech. Remoteconversation-versie
 
 ### <a name="sample-transcription-code"></a>Voorbeeld code transcriptie
 
-Nadat u de hebt `conversationId` gemaakt, maakt u een externe conversatie transcriptie-client **RemoteConversationTranscriptionClient** op de client toepassing om de status van de asynchrone transcriptie op te vragen. Maak een **RemoteConversationTranscriptionOperation** -object om een lang uitgevoerd [bewerkings](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) object op te halen. U kunt de status van de bewerking controleren of wachten totdat deze is voltooid. 
+Nadat u de hebt `conversationId` gemaakt, maakt u een externe conversatie transcriptie-client **RemoteConversationTranscriptionClient** op de client toepassing om de status van de asynchrone transcriptie op te vragen. Maak een  **RemoteConversationTranscriptionOperation** -object om een lang uitgevoerd [bewerkings](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) object op te halen. U kunt de status van de bewerking controleren of wachten totdat deze is voltooid. 
 
 ```csharp
 // Create the speech config

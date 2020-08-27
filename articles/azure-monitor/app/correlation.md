@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: devx-track-python
-ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843621"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933355"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -34,7 +34,7 @@ In een micro Services-omgeving kunnen traceringen van onderdelen naar verschille
 
 ## <a name="example"></a>Voorbeeld
 
-We kijken naar een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
+We bekijken een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
 
 U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
@@ -210,11 +210,11 @@ De [gegevens model specificatie Opentracering](https://opentracing.io/) en Appli
 
 | Application Insights                   | Opentraceren                                        |
 |------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span`met`span.kind = server`                    |
-| `Dependency`                           | `Span`met`span.kind = client`                    |
-| `Id`van `Request` en`Dependency`     | `SpanId`                                            |
+| `Request`, `PageView`                  | `Span` met `span.kind = server`                    |
+| `Dependency`                           | `Span` met `span.kind = client`                    |
+| `Id` van `Request` en `Dependency`     | `SpanId`                                            |
 | `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference`van `ChildOf` het type (het bovenliggende bereik)     |
+| `Operation_ParentId`                   | `Reference` van `ChildOf` het type (het bovenliggende bereik)     |
 
 Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie.
 
@@ -308,12 +308,12 @@ U kunt de logboek gegevens exporteren met behulp van `AzureLogHandler` . Zie [di
 
 In de loop van de tijd heeft .NET verschillende manieren gedefinieerd voor het correleren van telemetrie-en Diagnostische logboeken:
 
-- `System.Diagnostics.CorrelationManager`staat het volgen van [LogicalOperationStack en ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)toe.
-- `System.Diagnostics.Tracing.EventSource`en Event Tracing for Windows (ETW) definiëren de methode [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
-- `ILogger`maakt gebruik van [logboek bereiken](/aspnet/core/fundamentals/logging#log-scopes).
+- `System.Diagnostics.CorrelationManager` staat het volgen van [LogicalOperationStack en ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)toe.
+- `System.Diagnostics.Tracing.EventSource` en Event Tracing for Windows (ETW) definiëren de methode [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
+- `ILogger` maakt gebruik van [logboek bereiken](/aspnet/core/fundamentals/logging#log-scopes).
 - Windows Communication Foundation (WCF) en HTTP-updoorgifte van de huidige context.
 
-Deze methoden hebben echter geen automatische ondersteuning voor gedistribueerde tracering ingeschakeld. `DiagnosticSource`ondersteunt automatische correlatie tussen computers. .NET-bibliotheken ondersteunen `DiagnosticSource` en toestaan dat de correlatie context automatisch wordt door gegeven via het Trans Port, zoals http.
+Deze methoden hebben echter geen automatische ondersteuning voor gedistribueerde tracering ingeschakeld. `DiagnosticSource` ondersteunt automatische correlatie tussen computers. .NET-bibliotheken ondersteunen `DiagnosticSource` en toestaan dat de correlatie context automatisch wordt door gegeven via het Trans Port, zoals http.
 
 De [Gebruikers handleiding](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor de activiteit in `DiagnosticSource` legt de basis beginselen van het bijhouden van activiteiten uit.
 

@@ -3,13 +3,14 @@ title: Azure-toepassing inzichten voor console toepassingen | Microsoft Docs
 description: Bewaak webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310460"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933338"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights voor .NET-console toepassingen
 
@@ -36,7 +37,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Telemetrie wordt niet direct verzonden. Telemetriegegevens worden batches en verzonden door de ApplicationInsights-SDK. In console-apps die direct na het aanroepen van `Track()` methoden verlaten, mag telemetrie niet worden verzonden, tenzij `Flush()` en `Sleep` / `Delay` wordt uitgevoerd voordat de app wordt [full example](#full-example) afgesloten, zoals verderop in dit artikel wordt weer gegeven. `Sleep`is niet vereist als u gebruikt `InMemoryChannel` . Er is een actief probleem met betrekking tot de nood zaak `Sleep` die hier wordt bijgehouden: [ApplicationInsights-DotNet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
+> Telemetrie wordt niet direct verzonden. Telemetriegegevens worden batches en verzonden door de ApplicationInsights-SDK. In console-apps die direct na het aanroepen van `Track()` methoden verlaten, mag telemetrie niet worden verzonden, tenzij `Flush()` en `Sleep` / `Delay` wordt uitgevoerd voordat de app wordt [full example](#full-example) afgesloten, zoals verderop in dit artikel wordt weer gegeven. `Sleep` is niet vereist als u gebruikt `InMemoryChannel` . Er is een actief probleem met betrekking tot de nood zaak `Sleep` die hier wordt bijgehouden: [ApplicationInsights-DotNet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * Installeer de nieuwste versie van het pakket [micro soft. ApplicationInsights. DependencyCollector.](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) het traceert automatisch http, SQL of andere externe afhankelijkheids aanroepen.

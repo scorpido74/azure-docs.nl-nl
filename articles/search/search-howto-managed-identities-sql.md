@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553135"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924126"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding instellen met Azure SQL Database met behulp van een beheerde identiteit (preview)
 
@@ -44,7 +44,7 @@ Nadat u **Opslaan** hebt geselecteerd, ziet u een object-id die is toegewezen aa
 
 Wanneer u in de volgende stap verbinding maakt met de data base, moet u verbinding maken met Azure Active Directory een Azure AD-account dat beheerders toegang heeft tot de data base om de zoek service toegang te geven tot de data base.
 
-Volg de instructies [hier](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) om uw Azure ad-account beheerder toegang te geven tot de-data base.
+Volg de instructies [hier](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database) om uw Azure ad-account beheerder toegang te geven tot de-data base.
 
 ### <a name="3---assign-the-search-service-permissions"></a>3: de machtigingen van de zoek service toewijzen
 
@@ -56,7 +56,7 @@ Volg de onderstaande stappen om de machtiging Search service toe te wijzen om de
 
 2. Verifiëren met uw Azure AD-account
 
-    ![Verifieer](./media/search-managed-identities/visual-studio-authentication.png "Verifiëren")
+    ![Verifiëren](./media/search-managed-identities/visual-studio-authentication.png "Verifiëren")
 
 3. Voer de volgende opdrachten uit:
 
@@ -97,9 +97,9 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens v
 
 ### <a name="5---create-the-data-source"></a>5: de gegevens bron maken
 
-De [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens van een Azure SQL Database met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens van een Azure SQL Database met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
-Wanneer u een gegevens bron maakt met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), moet de gegevens bron de volgende vereiste eigenschappen hebben:
+Wanneer u een gegevens bron maakt met behulp van de [rest API](/rest/api/searchservice/create-data-source), moet de gegevens bron de volgende vereiste eigenschappen hebben:
 
 * **naam** is de unieke naam van de gegevens bron in uw zoek service.
 * **type** is `azuresql`
@@ -109,7 +109,7 @@ Wanneer u een gegevens bron maakt met behulp van de [rest API](https://docs.micr
         * *Initiële catalogus | Data Base =**database naam**; ResourceId =/Subscriptions/**uw abonnements-id**/resourceGroups/**de naam van uw resource groep**/providers/Microsoft.SQL/servers/**uw SQL Server naam**/; Verbindingstime-out = verbindingstime **-out**;*
 * **container** Hiermee geeft u de naam op van de tabel of weer gave die u wilt indexeren.
 
-Voor beeld van het maken van een Azure SQL-gegevens bron object met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
+Voor beeld van het maken van een Azure SQL-gegevens bron object met behulp van de [rest API](/rest/api/searchservice/create-data-source):
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +144,7 @@ api-key: [admin key]
 }
 ```
 
-Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
+Zie [index maken](/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
 
 ### <a name="7---create-the-indexer"></a>7: de Indexeer functie maken
 
@@ -169,13 +169,13 @@ api-key: [admin key]
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
-Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
+Bekijk [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er een fout optreedt wanneer de Indexeer functie probeert verbinding te maken met de gegevens bron die aangeeft dat de client geen toegang heeft tot de server, bekijkt u [veelvoorkomende fouten in Indexeer functie](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting).
+Als er een fout optreedt wanneer de Indexeer functie probeert verbinding te maken met de gegevens bron die aangeeft dat de client geen toegang heeft tot de server, bekijkt u [veelvoorkomende fouten in Indexeer functie](./search-indexer-troubleshooting.md).
 
 ## <a name="see-also"></a>Zie ook
 

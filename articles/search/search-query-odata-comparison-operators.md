@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146022"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934868"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkings operatoren in azure Cognitive Search-,,,, en `eq` `ne` `gt` `lt` `ge``le`
 
@@ -96,11 +96,11 @@ Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld
 
 <a name="special-case-nan"></a>
 
-### <a name="special-cases-for-null-and-nan"></a>Speciale gevallen voor `null` en`NaN`
+### <a name="special-cases-for-null-and-nan"></a>Speciale gevallen voor `null` en `NaN`
 
 Wanneer vergelijkings operatoren worden gebruikt, is het belang rijk te weten dat alle niet-verzamelings velden in azure Cognitive Search mogelijk zijn `null` . De volgende tabel bevat alle mogelijke resultaten voor een vergelijkings expressie waarbij beide zijden kunnen zijn `null` :
 
-| Operator | Resultaat wanneer alleen het veld of de variabele is`null` | Resultaat wanneer alleen de constante is`null` | Resultaat wanneer het veld of de variabele en de constante worden`null` |
+| Operator | Resultaat wanneer alleen het veld of de variabele is `null` | Resultaat wanneer alleen de constante is `null` | Resultaat wanneer het veld of de variabele en de constante worden `null` |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400: fout met ongeldige aanvraag | HTTP 400: fout met ongeldige aanvraag |
 | `lt` | `false` | HTTP 400: fout met ongeldige aanvraag | HTTP 400: fout met ongeldige aanvraag |
@@ -113,7 +113,7 @@ In samen vatting `null` is alleen gelijk aan zichzelf en is niet kleiner dan of 
 
 Als uw index velden van het type bevat `Edm.Double` en u `NaN` waarden naar die velden uploadt, moet u er rekening mee doen wanneer u filters schrijft. Azure Cognitive Search implementeert de IEEE 754-standaard voor afhandelings `NaN` waarden en vergelijkingen met een dergelijke waarde geven geen duidelijke resultaten, zoals wordt weer gegeven in de volgende tabel.
 
-| Operator | Resultaat wanneer ten minste één operand is`NaN` |
+| Operator | Resultaat wanneer ten minste één operand is `NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -169,4 +169,4 @@ Rooms/any(room: room/Type eq 'Deluxe Room')
 - [Filters in azure Cognitive Search](search-filters.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

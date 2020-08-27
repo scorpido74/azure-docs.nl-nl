@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184649"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933661"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -64,7 +64,7 @@ Als u Azure Monitor-logboeken nog niet gebruikt, kunt u de [Azure monitor prijs 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
-Als u Azure Monitor-logboeken nu gebruikt, is het eenvoudig om te begrijpen wat de kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Gebruik hiervoor **log Analytics gebruik en geschatte kosten** om het gegevens gebruik te controleren en analyseren. Hier ziet u hoeveel gegevens worden verzameld door elke oplossing, hoeveel gegevens er worden bewaard en een schatting van uw kosten op basis van de hoeveelheid gegevens die wordt opgenomen en een extra Bewaar periode van meer dan het inbegrepen bedrag.
+Als u Azure Monitor-logboeken nu gebruikt, is het eenvoudig om te begrijpen wat de kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Gebruik hiervoor  **log Analytics gebruik en geschatte kosten** om het gegevens gebruik te controleren en analyseren. Hier ziet u hoeveel gegevens worden verzameld door elke oplossing, hoeveel gegevens er worden bewaard en een schatting van uw kosten op basis van de hoeveelheid gegevens die wordt opgenomen en een extra Bewaar periode van meer dan het inbegrepen bedrag.
 
 ![Gebruik en geraamde kosten](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -96,7 +96,7 @@ Als u de Log Analytics prijs categorie van uw werk ruimte wilt wijzigen,
 
 U kunt [de prijs categorie ook instellen via Azure Resource Manager](template-workspace-configuration.md#configure-a-log-analytics-workspace) met behulp `sku` van de para meter ( `pricingTier` in de Azure Resource Manager sjabloon). 
 
-## <a name="legacy-pricing-tiers"></a>Verouderde prijs Categorieën
+## <a name="legacy-pricing-tiers"></a>Verouderde prijscategorieën
 
 Abonnementen die een Log Analytics werk ruimte hebben of Application Insights resource vóór 2 april 2018 zijn gekoppeld aan een Enterprise Agreement die zijn gestart vóór 1 februari 2019, blijven toegang hebben tot de verouderde prijs Categorieën: **gratis**, **zelfstandig (per GB)** en **per knoop punt (OMS)**.  Voor werk ruimten in de gratis prijs categorie geldt een dagelijkse gegevens opname van 500 MB (met uitzonde ring van beveiligings gegevens typen die worden verzameld door [Azure Security Center](https://docs.microsoft.com/azure/security-center/)) en de Bewaar periode van gegevens is beperkt tot 7 dagen. De gratis prijs categorie is alleen bedoeld voor evaluatie doeleinden. Werk ruimten in de zelfstandige of per knooppunt prijs categorie hebben een door de gebruiker Configureer bare Bewaar periode van 30 tot 730 dagen.
 
@@ -135,7 +135,7 @@ In de volgende stappen wordt beschreven hoe u kunt configureren hoe lang logboek
 Als u de standaard retentie voor uw werk ruimte wilt instellen, 
  
 1. Selecteer in de Azure Portal in uw werk ruimte de optie **gebruik en geschatte kosten** in het linkerdeel venster.
-2. Klik op de pagina **gebruik en geschatte kosten** op **gegevens retentie** vanaf de bovenkant van de pagina.
+2. Klik op boven aan de pagina **Gebruik en geschatte kosten** op **Gegevensretentie**.
 3. Gebruik de schuifregelaar in het deelvenster om het aantal dagen te vergroten of te verkleinen. Klik vervolgens op **OK**.  Als u zich in de laag *gratis* bevindt, kunt u de Bewaar periode voor gegevens niet wijzigen en moet u upgraden naar de laag betaald om deze instelling te kunnen beheren.
 
     ![Instelling voor het bewaren van gegevens van de werk ruimte wijzigen](media/manage-cost-storage/manage-cost-change-retention-01.png)
@@ -199,7 +199,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Uw maximale dagelijkse gegevens volume beheren
 
-U kunt een dagelijks CAP configureren en de dagelijkse opname voor uw werk ruimte beperken, maar zorg ervoor dat uw doel niet kan worden bereikt door de dagelijkse limiet te gebruiken.  Anders verliest u gegevens voor de rest van de dag, wat van invloed kan zijn op andere Azure-Services en-oplossingen waarvan de functionaliteit afhankelijk is van actuele gegevens die beschikbaar zijn in de werk ruimte.  Dit is nadelig voor uw mogelijkheid om waarnemingen te doen en waarschuwingen te krijgen over de status van resources die uw IT-services ondersteunen.  Het dagelijks kapje is bedoeld om te worden gebruikt als een manier om een **onverwachte toename** van het gegevens volume van uw beheerde resources te beheren en binnen uw limiet te blijven, of wanneer u niet-geplande kosten voor uw werk ruimte wilt beperken. Het is niet nodig om een daglimiet in te stellen, zodat deze elke dag in een werk ruimte wordt bereikt.
+U kunt een dagelijks CAP configureren en de dagelijkse opname voor uw werk ruimte beperken, maar zorg ervoor dat uw doel niet kan worden bereikt door de dagelijkse limiet te gebruiken.  Anders verliest u gegevens voor de rest van de dag, wat van invloed kan zijn op andere Azure-Services en-oplossingen waarvan de functionaliteit afhankelijk is van actuele gegevens die beschikbaar zijn in de werk ruimte.  Dit is nadelig voor uw mogelijkheid om waarnemingen te doen en waarschuwingen te krijgen over de status van resources die uw IT-services ondersteunen.  Het dagelijks kapje is bedoeld om te worden gebruikt als een manier om een **onverwachte toename** van het gegevens volume van uw beheerde resources te beheren en binnen uw limiet te blijven, of wanneer u niet-geplande kosten voor uw werk ruimte wilt beperken. Het is niet de bedoeling dat u een daglimiet in een werkruimte instelt die elke dag wordt bereikt.
 
 Voor elke werk ruimte is de dagelijkse Cap toegepast op een ander uur van de dag. De reset uur wordt weer gegeven op de pagina met het **dagelijks kapje** (zie hieronder). Deze reset uur kan niet worden geconfigureerd. 
 
@@ -432,7 +432,7 @@ Als u meer wilt weten over de gegevens bron voor een bepaald gegevens type, vind
 + **AzureDiagnostics**-gegevenstype
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-## <a name="tips-for-reducing-data-volume"></a>Tips voor het verkleinen van het gegevens volume
+## <a name="tips-for-reducing-data-volume"></a>Tips voor het verminderen van het gegevensvolume
 
 Hieronder vindt u enkele suggesties voor het verkleinen van het aantal logboeken dat wordt verzameld:
 
@@ -604,7 +604,7 @@ Wanneer het verzamelen van gegevens stopt, is de OperationStatus **Waarschuwing*
 |Reden voor verzamelen stopt| Oplossing| 
 |-----------------------|---------|
 |Het dagelijkse kapje van uw werk ruimte is bereikt|Wacht tot de verzameling automatisch opnieuw wordt opgestart of verhoog de dagelijkse gegevens volume limiet die wordt beschreven in het maximale dagelijkse gegevens volume beheren. De tijd voor het opnieuw instellen van dagelijkse limieten wordt weer gegeven op de pagina **dagelijks Cap** . |
-| Uw werk ruimte heeft de [frequentie van het gegevens opname volume](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) bereikt | Een standaard frequentie van 500 MB (gecomprimeerd) voor de opname volume is van toepassing op werk ruimten, wat ongeveer **6 GB/min** niet-gecomprimeerd is. de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze drempel waarde is van toepassing op alle opgenomen gegevens, ongeacht of deze zijn verzonden vanuit Azure-resources met [Diagnostische instellingen](diagnostic-settings.md), [Data Collector API](data-collector-api.md) of agents. Wanneer u gegevens naar een werk ruimte verzendt met een volume snelheid van meer dan 80% van de drempel waarde die in uw werk ruimte is geconfigureerd, wordt er elke 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte terwijl de drempel waarde blijft overschreden. Wanneer de hoeveelheid opgenomen volume hoger is dan de drempel waarde, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als de frequentie van het opname volume de drempel waarde blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een aanvraag indienen om deze in uw werk ruimte te verg Roten door een ondersteunings aanvraag te openen. Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten. Percentage van opname volume bereikt 80% van de drempel waarde: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Drempel waarde van inslikken volume bereikt: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
+| Uw werk ruimte heeft de [frequentie van het gegevens opname volume](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) bereikt | Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume van toepassing op werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze drempel geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](diagnostic-settings.md), [Gegevensverzamelaar-API](data-collector-api.md) of agents. Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als uw opnamevolume de drempel blijft overschrijden of als u verwacht de drempel binnenkort te bereiken, kunt u een verhoging in uw werkruimte aanvragen door een ondersteuningsaanvraag te openen. Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met waarschuwings logica op basis van het aantal resultaten dat groter is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten. Percentage van opname volume bereikt 80% van de drempel waarde: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Drempel waarde van inslikken volume bereikt: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |De dagelijkse limiet van de verouderde gratis prijs categorie is bereikt |Wacht tot de volgende dag voor het automatisch opnieuw opstarten van de verzameling of de prijs categorie is gewijzigd.|
 |Het Azure-abonnement bevindt zich in een onderbroken staat vanwege:<br> De gratis proef versie is beëindigd<br> Azure Pass is verlopen<br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)|Overstappen op een betaald abonnement<br> Limiet verwijderen of wachten tot de limiet is ingesteld|
 

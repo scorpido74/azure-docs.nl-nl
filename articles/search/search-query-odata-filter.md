@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201549"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934851"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-$filter syntaxis in azure Cognitive Search
 
@@ -67,7 +67,7 @@ De typen Booleaanse expressies zijn onder andere:
 - Aanroepen van Booleaanse functies, waaronder:
   - `geo.intersects`, waarmee wordt getest of een bepaald punt zich in een bepaalde veelhoek bevindt. Zie [geo-ruimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md)voor meer informatie.
   - `search.in`Hiermee wordt een veld-of bereik variabele vergeleken met elke waarde in een lijst met waarden. Zie [OData- `search.in` functie in azure Cognitive Search](search-query-odata-search-in-function.md)voor meer informatie.
-  - `search.ismatch`en `search.ismatchscoring` , waarmee Zoek opdrachten in volledige tekst in een filter context worden uitgevoerd. Zie [OData-functies voor zoeken in volledige tekst in Azure Cognitive Search](search-query-odata-full-text-search-functions.md)voor meer informatie.
+  - `search.ismatch` en `search.ismatchscoring` , waarmee Zoek opdrachten in volledige tekst in een filter context worden uitgevoerd. Zie [OData-functies voor zoeken in volledige tekst in Azure Cognitive Search](search-query-odata-full-text-search-functions.md)voor meer informatie.
 - Veld paden of bereik variabelen van het type `Edm.Boolean` . Als uw index bijvoorbeeld een Boole-veld bevat met de naam `IsEnabled` en u wilt alle documenten met dit veld retour neren `true` , kan uw filter expressie alleen de naam zijn `IsEnabled` .
 - Boole-expressies tussen haakjes. Door haakjes te gebruiken kunt u de volg orde van de bewerkingen in een filter expliciet bepalen. Zie de volgende sectie voor meer informatie over de standaard prioriteit van de OData-Opera tors.
 
@@ -77,10 +77,10 @@ Als u een filter expressie zonder haakjes schrijft rond de bijbehorende subexpre
 
 | Groep | Operator (s) |
 | --- | --- |
-| Logische operatoren | `not` |
+| Logische operators | `not` |
 | Vergelijkingsoperatoren | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
-| Logische operatoren | `and` |
-| Logische operatoren | `or` |
+| Logische operators | `and` |
+| Logische operators | `or` |
 
 Een operator die hoger in de bovenstaande tabel staat, wordt ' Binder meer ' aan de operanden dan andere opera tors. Een voor beeld `and` is van een hogere prioriteit dan `or` , en vergelijkings operatoren hebben een hogere prioriteit dan een van beide, dus zijn de volgende twee expressies gelijkwaardig:
 
@@ -142,7 +142,7 @@ Alle hotels zoeken die zijn opgenomen in parkeer plaatsen, waarbij alle kamers n
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 ```
 
- \-Of  
+ \- Of  
 
 ```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
@@ -178,7 +178,7 @@ Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt (waarbij
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij `Location` een veld van het type EDM. GeographyPoint) is. De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [De punten moeten ook links in de volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij `Location` een veld van het type EDM. GeographyPoint) is. De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [De punten moeten ook links in de volg orde worden weer gegeven](/rest/api/searchservice/supported-data-types#Anchor_1).
 
 ```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -214,7 +214,7 @@ Zoek een overeenkomst op zinsdelen in een verzameling, zoals ' verwarmd handdoek
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 ```
 
-Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront` .
+Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](/rest/api/searchservice/search-documents) met `search=waterfront` .
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
@@ -249,4 +249,4 @@ Zoek hotels waar de termen ' Hotel ' en ' lucht haven ' niet meer dan vijf woord
 - [Filters in azure Cognitive Search](search-filters.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

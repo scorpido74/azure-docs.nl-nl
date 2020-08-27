@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/26/2020
+ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875452"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932947"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
 
@@ -102,8 +102,8 @@ Als u wilt werken met verzamelingen, meestal matrices, teken reeksen en soms, wo
 
 | Functie verzameling | Taak |
 | ------------------- | ---- |
-| [bevat](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Controleer of een verzameling een specifiek item heeft. |
-| [leeg](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Controleer of een verzameling leeg is. |
+| [daarin](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Controleer of een verzameling een specifiek item heeft. |
+| [gelaten](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Controleer of een verzameling leeg is. |
 | [instantie](../logic-apps/workflow-definition-language-functions-reference.md#first) | Het eerste item van een verzameling retour neren. |
 | [Snij punt](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Een verzameling retour neren die *alleen* de gemeen schappelijke items in de opgegeven verzamelingen heeft. |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Wanneer een herhalende actie een matrix heeft, wordt het huidige item in de matrix geretourneerd tijdens de huidige iteratie van de actie. |
@@ -153,7 +153,7 @@ Als u het type of de indeling van een waarde wilt wijzigen, kunt u deze conversi
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Retourneert de binaire versie voor een base64-gecodeerde teken reeks. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Retourneert de versie van de teken reeks voor een base64-gecodeerde teken reeks. |
 | [binair](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Retourneert de binaire versie voor een invoer waarde. |
-| [Booleaanse waarde](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Retourneert de Booleaanse versie van een invoer waarde. |
+| [booleaans](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Retourneert de Booleaanse versie van een invoer waarde. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Een matrix van meerdere invoer waarden retour neren. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | De gegevens-URI voor een invoer waarde Retour neren. |
 | [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Retourneert de binaire versie voor een gegevens-URI. |
@@ -165,7 +165,7 @@ Als u het type of de indeling van een waarde wilt wijzigen, kunt u deze conversi
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Retourneert een drijvende-komma waarde voor een invoer waarde. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Retourneert de versie met gehele getallen voor een teken reeks. |
 | [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | De waarde of het object van het type JavaScript Object Notation (JSON) retour neren voor een teken reeks of XML. |
-| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneert de teken reeks versie voor een invoer waarde. |
+| [tekenreeksexpressie](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneert de teken reeks versie voor een invoer waarde. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | De versie van de URI-code ring retour neren voor een invoer waarde door onveilige URL-tekens te vervangen door Escape tekens. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Retourneert de binaire versie voor een teken reeks met URI-code ring. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Retourneert de versie van de teken reeks voor een teken reeks met URI-code ring. |
@@ -213,7 +213,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [toe](../logic-apps/workflow-definition-language-functions-reference.md#add) | Het resultaat van het toevoegen van twee getallen retour neren. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Retourneert het resultaat van het delen van twee getallen. |
 | [aantal](../logic-apps/workflow-definition-language-functions-reference.md#max) | Retourneert de hoogste waarde van een reeks getallen of een matrix. |
-| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Retourneert de laagste waarde van een reeks getallen of een matrix. |
+| [Haal](../logic-apps/workflow-definition-language-functions-reference.md#min) | Retourneert de laagste waarde van een reeks getallen of een matrix. |
 | [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Retourneert de rest van het delen van twee getallen. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Retourneert het product van het vermenigvuldigen van twee getallen. |
 | [ASELECT](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Retourneert een wille keurig geheel getal uit een opgegeven bereik. |
@@ -267,7 +267,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 
 | Werkstroomfunctie | Taak |
 | ----------------- | ---- |
-| [optreden](../logic-apps/workflow-definition-language-functions-reference.md#action) | De uitvoer van de huidige actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen. Zie ook [acties](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | De uitvoer van de huidige actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen. Zie ook [acties](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | De uitvoer van een actie `body` tijdens runtime retour neren. Zie ook [hoofd tekst](../logic-apps/workflow-definition-language-functions-reference.md#body). |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | De uitvoer van een actie tijdens runtime retour neren. Zie [uitvoer](../logic-apps/workflow-definition-language-functions-reference.md#outputs) en [acties](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [regelen](../logic-apps/workflow-definition-language-functions-reference.md#actions) | De uitvoer van een actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen. Zie ook [actie](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
@@ -509,7 +509,7 @@ In dit voor beeld wordt de `status` eigenschaps waarde van de actie Twitter `Get
 actions('Get_user').outputs.body.status
 ```
 
-En retourneert dit resultaat:`"Succeeded"`
+En retourneert dit resultaat: `"Succeeded"`
 
 <a name="add"></a>
 
@@ -539,7 +539,7 @@ In dit voor beeld worden de opgegeven getallen toegevoegd:
 add(1, 1.5)
 ```
 
-En retourneert dit resultaat:`2.5`
+En retourneert dit resultaat: `2.5`
 
 <a name="addDays"></a>
 
@@ -571,7 +571,7 @@ In dit voor beeld worden 10 dagen toegevoegd aan de opgegeven tijds tempel:
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-En retourneert dit resultaat:`"2018-03-25T00:00:0000000Z"`
+En retourneert dit resultaat: `"2018-03-25T00:00:0000000Z"`
 
 *Voorbeeld 2*
 
@@ -581,7 +581,7 @@ In dit voor beeld worden vijf dagen afgetrokken van de opgegeven tijds tempel:
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-En retourneert dit resultaat:`"2018-03-10T00:00:0000000Z"`
+En retourneert dit resultaat: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
@@ -613,7 +613,7 @@ In dit voor beeld worden 10 uur toegevoegd aan de opgegeven tijds tempel:
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-En retourneert dit resultaat:`"2018-03-15T10:00:0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T10:00:0000000Z"`
 
 *Voorbeeld 2*
 
@@ -623,7 +623,7 @@ In dit voor beeld worden vijf uur afgetrokken van de opgegeven tijds tempel:
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-En retourneert dit resultaat:`"2018-03-15T10:00:0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -655,7 +655,7 @@ In dit voor beeld wordt 10 minuten aan de opgegeven tijds tempel toegevoegd:
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-En retourneert dit resultaat:`"2018-03-15T00:20:00.0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T00:20:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -665,7 +665,7 @@ In dit voor beeld worden vijf minuten afgetrokken van de opgegeven tijds tempel:
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-En retourneert dit resultaat:`"2018-03-15T00:15:00.0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
@@ -796,7 +796,7 @@ In dit voor beeld wordt 10 seconden toegevoegd aan de opgegeven tijds tempel:
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-En retourneert dit resultaat:`"2018-03-15T00:00:10.0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T00:00:10.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -806,7 +806,7 @@ In dit voor beeld worden vijf seconden afgetrokken van de opgegeven tijds tempel
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-En retourneert dit resultaat:`"2018-03-15T00:00:25.0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
@@ -840,7 +840,7 @@ In dit voor beeld wordt één dag toegevoegd aan de opgegeven tijds tempel:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-En retourneert dit resultaat:`"2018-01-02T00:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-01-02T00:00:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -850,7 +850,7 @@ In dit voor beeld wordt één dag toegevoegd aan de opgegeven tijds tempel:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-En retourneert het resultaat met de optionele D-indeling:`"Tuesday, January 2, 2018"`
+En retourneert het resultaat met de optionele D-indeling: `"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
@@ -934,7 +934,7 @@ In dit voor beeld wordt een matrix gemaakt op basis van de teken reeks ' Hallo '
 array('hello')
 ```
 
-En retourneert dit resultaat:`["hello"]`
+En retourneert dit resultaat: `["hello"]`
 
 <a name="base64"></a>
 
@@ -967,7 +967,7 @@ In dit voor beeld wordt de teken reeks "Hallo" geconverteerd naar een base64-gec
 base64('hello')
 ```
 
-En retourneert dit resultaat:`"aGVsbG8="`
+En retourneert dit resultaat: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
@@ -1035,7 +1035,7 @@ In dit voor beeld wordt de met base64 gecodeerde teken reeks "aGVsbG8 =" geconve
 base64ToString('aGVsbG8=')
 ```
 
-En retourneert dit resultaat:`"hello"`
+En retourneert dit resultaat: `"hello"`
 
 <a name="binary"></a>
 
@@ -1118,9 +1118,9 @@ En retourneert dit resultaat:
 
 <a name="bool"></a>
 
-### <a name="bool"></a>Booleaanse waarde
+### <a name="bool"></a>booleaans
 
-Retourneert de Booleaanse versie voor een waarde.
+Retourneert de Booleaanse versie van een waarde.
 
 ```
 bool(<value>)
@@ -1128,27 +1128,27 @@ bool(<value>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Alle | De waarde die moet worden geconverteerd |
+| <*Value*> | Ja | Alle | De waarde die moet worden geconverteerd naar Booleaans. |
 |||||
+
+Als u `bool()` met een-object werkt, moet de waarde van het object een teken reeks of een geheel getal zijn dat kan worden geconverteerd naar een Boolean.
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | De Booleaanse versie voor de opgegeven waarde |
+| `true` of `false` | Booleaans | De Booleaanse versie van de opgegeven waarde. |
 ||||
 
-*Voorbeeld*
+*Uitvoerwaarden*
 
-In deze voor beelden worden de opgegeven waarden geconverteerd naar Boole-waarden:
+In deze voor beelden ziet u de verschillende typen invoer die worden ondersteund voor `bool()` :
 
-```
-bool(1)
-bool(0)
-```
-
-En retourneert deze resultaten:
-
-* Eerste voor beeld:`true`
-* Tweede voor beeld:`false`
+| Invoer waarde | Type | Retourwaarde |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | Geheel getal | `true` |
+| `bool(0)` | Geheel getal    | `false` |
+| `bool(-1)` | Geheel getal | `true` |
+| `bool('true')` | Tekenreeks | `true` |
+| `bool('false')` | Tekenreeks | `false` |
 
 <a name="coalesce"></a>
 
@@ -1183,9 +1183,9 @@ coalesce(null, null, null)
 
 En retourneert deze resultaten:
 
-* Eerste voor beeld:`true`
-* Tweede voor beeld:`"hello"`
-* Derde voor beeld:`null`
+* Eerste voor beeld: `true`
+* Tweede voor beeld: `"hello"`
+* Derde voor beeld: `null`
 
 <a name="concat"></a>
 
@@ -1215,7 +1215,7 @@ In dit voor beeld worden de teken reeksen "Hallo" en "wereld" gecombineerd:
 concat('Hello', 'World')
 ```
 
-En retourneert dit resultaat:`"HelloWorld"`
+En retourneert dit resultaat: `"HelloWorld"`
 
 <a name="contains"></a>
 
@@ -1293,7 +1293,7 @@ In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven tijd zo
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-En retourneert dit resultaat:`"2018-01-01T00:00:00.0000000"`
+En retourneert dit resultaat: `"2018-01-01T00:00:00.0000000"`
 
 *Voorbeeld 2*
 
@@ -1303,7 +1303,7 @@ In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven tijd zo
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-En retourneert dit resultaat:`"Monday, January 1, 2018"`
+En retourneert dit resultaat: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
@@ -1336,7 +1336,7 @@ In dit voor beeld wordt de bron tijdzone geconverteerd naar de doel tijdzone:
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-En retourneert dit resultaat:`"2018-01-01T00:00:00.0000000"`
+En retourneert dit resultaat: `"2018-01-01T00:00:00.0000000"`
 
 *Voorbeeld 2*
 
@@ -1346,7 +1346,7 @@ In dit voor beeld wordt een tijd zone geconverteerd naar de opgegeven tijd zone 
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-En retourneert dit resultaat:`"Monday, January 1, 2018"`
+En retourneert dit resultaat: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
@@ -1378,7 +1378,7 @@ In dit voor beeld wordt een tijds tempel geconverteerd naar UTC:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-En retourneert dit resultaat:`"2018-01-01T08:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-01-01T08:00:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -1388,7 +1388,7 @@ In dit voor beeld wordt een tijds tempel geconverteerd naar UTC:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-En retourneert dit resultaat:`"Monday, January 1, 2018"`
+En retourneert dit resultaat: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
@@ -1419,7 +1419,7 @@ In dit voor beeld wordt een matrix gemaakt op basis van deze invoer:
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-En retourneert dit resultaat:`["h", "e", "l", "l", "o"]`
+En retourneert dit resultaat: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
@@ -1449,7 +1449,7 @@ In dit voor beeld wordt een gegevens-URI gemaakt voor de teken reeks "Hallo":
 dataUri('hello')
 ```
 
-En retourneert dit resultaat:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+En retourneert dit resultaat: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
@@ -1516,7 +1516,7 @@ In dit voor beeld wordt een teken reeks gemaakt voor deze gegevens-URI:
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-En retourneert dit resultaat:`"hello"`
+En retourneert dit resultaat: `"hello"`
 
 <a name="dayOfMonth"></a>
 
@@ -1546,7 +1546,7 @@ In dit voor beeld wordt het getal voor de dag van de maand uit deze tijds tempel
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-En retourneert dit resultaat:`15`
+En retourneert dit resultaat: `15`
 
 <a name="dayOfWeek"></a>
 
@@ -1576,7 +1576,7 @@ In dit voor beeld wordt het getal voor de dag van de week uit deze tijds tempel 
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-En retourneert dit resultaat:`4`
+En retourneert dit resultaat: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1606,7 +1606,7 @@ In dit voor beeld wordt het nummer van de dag van het jaar uit deze tijds tempel
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-En retourneert dit resultaat:`74`
+En retourneert dit resultaat: `74`
 
 <a name="decodeBase64"></a>
 
@@ -1680,7 +1680,7 @@ In dit voor beeld worden de escape-tekens in deze teken reeks vervangen door ged
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-En retourneert dit resultaat:`"https://contoso.com"`
+En retourneert dit resultaat: `"https://contoso.com"`
 
 <a name="div"></a>
 
@@ -1705,7 +1705,7 @@ div(<dividend>, <divisor>)
 
 *Voorbeeld 1*
 
-Beide voor beelden retour neren deze waarde met het type geheel getal:`2`
+Beide voor beelden retour neren deze waarde met het type geheel getal: `2`
 
 ```
 div(10,5)
@@ -1714,7 +1714,7 @@ div(11,5)
 
 *Voorbeeld 2*
 
-Beide voor beelden retour neren deze waarde met float-type:`2.2`
+Beide voor beelden retour neren deze waarde met float-type: `2.2`
 
 ```
 div(11,5.0)
@@ -1752,7 +1752,7 @@ In dit voor beeld wordt een met URI gecodeerde versie gemaakt voor deze teken re
 encodeUriComponent('https://contoso.com')
 ```
 
-En retourneert dit resultaat:`"http%3A%2F%2Fcontoso.com"`
+En retourneert dit resultaat: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -1821,7 +1821,7 @@ In dit voor beeld wordt gecontroleerd of de teken reeks "Hallo wereld" eindigt o
 endsWith('hello world', 'world')
 ```
 
-En retourneert dit resultaat:`true`
+En retourneert dit resultaat: `true`
 
 *Voorbeeld 2*
 
@@ -1831,7 +1831,7 @@ In dit voor beeld wordt gecontroleerd of de teken reeks ' Hallo wereld ' eindigt
 endsWith('hello world', 'universe')
 ```
 
-En retourneert dit resultaat:`false`
+En retourneert dit resultaat: `false`
 
 <a name="equals"></a>
 
@@ -1900,8 +1900,8 @@ first(createArray(0, 1, 2))
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`"h"`
-* Tweede voor beeld:`0`
+* Eerste voor beeld: `"h"`
+* Tweede voor beeld: `0`
 
 <a name="float"></a>
 
@@ -1932,7 +1932,7 @@ In dit voor beeld wordt een teken reeks versie gemaakt voor dit getal met drijve
 float('10.333')
 ```
 
-En retourneert dit resultaat:`10.333`
+En retourneert dit resultaat: `10.333`
 
 <a name="formatDateTime"></a>
 
@@ -1963,7 +1963,7 @@ In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven notatie
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-En retourneert dit resultaat:`"2018-03-15T12:00:00"`
+En retourneert dit resultaat: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
@@ -1994,7 +1994,7 @@ In dit voor beeld wordt een matrix gemaakt op basis van de waarde van de sleutel
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-En retourneert de onderwerps tekst in een matrix, bijvoorbeeld:`["Hello world"]`
+En retourneert de onderwerps tekst in een matrix, bijvoorbeeld: `["Hello world"]`
 
 <a name="formDataValue"></a>
 
@@ -2026,7 +2026,7 @@ In dit voor beeld wordt een teken reeks gemaakt op basis van de waarde van de sl
 formDataValue('Send_an_email', 'Subject')
 ```
 
-En retourneert de onderwerpnaam als een teken reeks, bijvoorbeeld:`"Hello world"`
+En retourneert de onderwerpnaam als een teken reeks, bijvoorbeeld: `"Hello world"`
 
 <a name="formatNumber"></a>
 
@@ -2113,7 +2113,7 @@ In dit voor beeld worden vijf dagen toegevoegd aan die tijds tempel:
 getFutureTime(5, 'Day')
 ```
 
-En retourneert dit resultaat:`"2018-03-06T00:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-03-06T00:00:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -2124,7 +2124,7 @@ In dit voor beeld worden vijf dagen toegevoegd en wordt het resultaat geconverte
 getFutureTime(5, 'Day', 'D')
 ```
 
-En retourneert dit resultaat:`"Tuesday, March 6, 2018"`
+En retourneert dit resultaat: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
@@ -2157,7 +2157,7 @@ In dit voor beeld worden vijf dagen afgetrokken van die tijds tempel:
 getPastTime(5, 'Day')
 ```
 
-En retourneert dit resultaat:`"2018-01-27T00:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-01-27T00:00:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -2168,7 +2168,7 @@ In dit voor beeld worden vijf dagen afgetrokken en wordt het resultaat geconvert
 getPastTime(5, 'Day', 'D')
 ```
 
-En retourneert dit resultaat:`"Saturday, January 27, 2018"`
+En retourneert dit resultaat: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
@@ -2204,8 +2204,8 @@ greater('apple', 'banana')
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`true`
-* Tweede voor beeld:`false`
+* Eerste voor beeld: `true`
+* Tweede voor beeld: `false`
 
 <a name="greaterOrEquals"></a>
 
@@ -2241,8 +2241,8 @@ greaterOrEquals('apple', 'banana')
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`true`
-* Tweede voor beeld:`false`
+* Eerste voor beeld: `true`
+* Tweede voor beeld: `false`
 
 <a name="guid"></a>
 
@@ -2278,7 +2278,7 @@ In dit voor beeld wordt dezelfde GUID gegenereerd, maar als 32 cijfers, gescheid
 guid('P')
 ```
 
-En retourneert dit resultaat:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+En retourneert dit resultaat: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
@@ -2341,7 +2341,7 @@ In dit voor beeld wordt gezocht naar de start index-waarde voor de subtekenreeks
 indexOf('hello world', 'world')
 ```
 
-En retourneert dit resultaat:`6`
+En retourneert dit resultaat: `6`
 
 <a name="int"></a>
 
@@ -2371,7 +2371,7 @@ In dit voor beeld wordt een versie met gehele getallen gemaakt voor de teken ree
 int('10')
 ```
 
-En retourneert dit resultaat:`10`
+En retourneert dit resultaat: `10`
 
 <a name="item"></a>
 
@@ -2555,7 +2555,7 @@ In dit voor beeld wordt deze teken reeks geconverteerd naar de JSON-waarde:
 json('[1, 2, 3]')
 ```
 
-En retourneert dit resultaat:`[1, 2, 3]`
+En retourneert dit resultaat: `[1, 2, 3]`
 
 *Voorbeeld 2*
 
@@ -2627,7 +2627,7 @@ In dit voor beeld vindt u de algemene items voor deze matrices:
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-En retourneert alleen een matrix met *alleen* deze items:`[1, 2]`
+En retourneert alleen een matrix met *alleen* deze items: `[1, 2]`
 
 <a name="join"></a>
 
@@ -2658,7 +2658,7 @@ In dit voor beeld wordt een teken reeks gemaakt van alle items in deze matrix me
 join(createArray('a', 'b', 'c'), '.')
 ```
 
-En retourneert dit resultaat:`"a.b.c"`
+En retourneert dit resultaat: `"a.b.c"`
 
 <a name="last"></a>
 
@@ -2692,8 +2692,8 @@ last(createArray(0, 1, 2, 3))
 
 En retourneert deze resultaten:
 
-* Eerste voor beeld:`"d"`
-* Tweede voor beeld:`3`
+* Eerste voor beeld: `"d"`
+* Tweede voor beeld: `3`
 
 <a name="lastindexof"></a>
 
@@ -2772,7 +2772,7 @@ length('abcd')
 length(createArray(0, 1, 2, 3))
 ```
 
-En retour neren dit resultaat:`4`
+En retour neren dit resultaat: `4`
 
 <a name="less"></a>
 
@@ -2808,8 +2808,8 @@ less('banana', 'apple')
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`true`
-* Tweede voor beeld:`false`
+* Eerste voor beeld: `true`
+* Tweede voor beeld: `false`
 
 <a name="lessOrEquals"></a>
 
@@ -2845,8 +2845,8 @@ lessOrEquals('apply', 'apple')
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`true`
-* Tweede voor beeld:`false`
+* Eerste voor beeld: `true`
+* Tweede voor beeld: `false`
 
 <a name="listCallbackUrl"></a>
 
@@ -2901,11 +2901,11 @@ max(1, 2, 3)
 max(createArray(1, 2, 3))
 ```
 
-En retour neren dit resultaat:`3`
+En retour neren dit resultaat: `3`
 
 <a name="min"></a>
 
-### <a name="min"></a>min
+### <a name="min"></a>min.
 
 Retourneert de laagste waarde van een reeks getallen of een matrix.
 
@@ -2934,7 +2934,7 @@ min(1, 2, 3)
 min(createArray(1, 2, 3))
 ```
 
-En retour neren dit resultaat:`1`
+En retour neren dit resultaat: `1`
 
 <a name="mod"></a>
 
@@ -2966,7 +2966,7 @@ In het volgende voor beeld wordt het eerste getal in het tweede getal gedeeld:
 mod(3, 2)
 ```
 
-En retour neren dit resultaat:`1`
+En retour neren dit resultaat: `1`
 
 <a name="mul"></a>
 
@@ -3000,8 +3000,8 @@ mul(1.5, 2)
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`2`
-* Tweede voor beeld`3`
+* Eerste voor beeld: `2`
+* Tweede voor beeld `3`
 
 <a name="multipartBody"></a>
 
@@ -3221,7 +3221,7 @@ In dit voor beeld wordt de waarde voor de opgegeven para meter opgehaald:
 parameters('fullName')
 ```
 
-En retourneert dit resultaat:`"Sophia Owen"`
+En retourneert dit resultaat: `"Sophia Owen"`
 
 <a name="rand"></a>
 
@@ -3252,7 +3252,7 @@ In dit voor beeld wordt een wille keurig geheel getal opgehaald uit het opgegeve
 rand(1, 5)
 ```
 
-En retourneert een van deze getallen als resultaat: `1` , `2` , `3` , of`4`
+En retourneert een van deze getallen als resultaat: `1` , `2` , `3` , of `4`
 
 <a name="range"></a>
 
@@ -3283,7 +3283,7 @@ In dit voor beeld wordt een matrix met gehele getallen gemaakt die begint met de
 range(1, 4)
 ```
 
-En retourneert dit resultaat:`[1, 2, 3, 4]`
+En retourneert dit resultaat: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
@@ -3315,7 +3315,7 @@ In dit voor beeld wordt de subtekenreeks ' old ' in ' Old string ' gezocht en ve
 replace('the old string', 'old', 'new')
 ```
 
-En retourneert dit resultaat:`"the new string"`
+En retourneert dit resultaat: `"the new string"`
 
 <a name="removeProperty"></a>
 
@@ -3656,7 +3656,7 @@ In dit voor beeld wordt één item, het cijfer 0, van de voor kant van de opgege
 skip(createArray(0, 1, 2, 3), 1)
 ```
 
-En retourneert deze matrix met de resterende items:`[1,2,3]`
+En retourneert deze matrix met de resterende items: `[1,2,3]`
 
 <a name="split"></a>
 
@@ -3687,7 +3687,7 @@ In dit voor beeld wordt een matrix gemaakt met subtekenreeksen uit de opgegeven 
 split('a_b_c', '_')
 ```
 
-En retourneert deze matrix als het resultaat:`["a","b","c"]`
+En retourneert deze matrix als het resultaat: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 
@@ -3718,7 +3718,7 @@ In dit voor beeld wordt gezocht naar het begin van de dag voor deze tijds tempel
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-En retourneert dit resultaat:`"2018-03-15T00:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
@@ -3749,7 +3749,7 @@ In dit voor beeld vindt u het begin van het uur voor deze tijds tempel:
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-En retourneert dit resultaat:`"2018-03-15T13:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
@@ -3780,7 +3780,7 @@ In dit voor beeld wordt het begin van de maand voor deze tijds tempel geretourne
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-En retourneert dit resultaat:`"2018-03-01T00:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-03-01T00:00:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -3790,7 +3790,7 @@ In dit voor beeld wordt het begin van de maand in de opgegeven notatie voor deze
 startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
 ```
 
-En retourneert dit resultaat:`"2018-03-01"`
+En retourneert dit resultaat: `"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3823,7 +3823,7 @@ In dit voor beeld wordt gecontroleerd of de teken reeks "Hallo wereld" begint me
 startsWith('hello world', 'hello')
 ```
 
-En retourneert dit resultaat:`true`
+En retourneert dit resultaat: `true`
 
 *Voorbeeld 2*
 
@@ -3833,11 +3833,11 @@ In dit voor beeld wordt gecontroleerd of de teken reeks "Hallo wereld" begint me
 startsWith('hello world', 'greetings')
 ```
 
-En retourneert dit resultaat:`false`
+En retourneert dit resultaat: `false`
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>tekenreeks
 
 Retourneert de teken reeks versie voor een waarde.
 
@@ -3867,7 +3867,7 @@ In dit voor beeld wordt de teken reeks versie gemaakt voor dit nummer:
 string(10)
 ```
 
-En retourneert dit resultaat:`"10"`
+En retourneert dit resultaat: `"10"`
 
 *Voorbeeld 2*
 
@@ -3877,7 +3877,7 @@ In dit voor beeld wordt een teken reeks gemaakt voor het opgegeven JSON-object e
 string( { "name": "Sophie Owen" } )
 ```
 
-En retourneert dit resultaat:`"{ \\"name\\": \\"Sophie Owen\\" }"`
+En retourneert dit resultaat: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
@@ -3908,7 +3908,7 @@ In dit voor beeld wordt het tweede getal afgetrokken van het eerste getal:
 sub(10.3, .3)
 ```
 
-En retourneert dit resultaat:`10`
+En retourneert dit resultaat: `10`
 
 <a name="substring"></a>
 
@@ -3941,7 +3941,7 @@ In dit voor beeld wordt een subtekenreeks van vijf tekens gemaakt op basis van d
 substring('hello world', 6, 5)
 ```
 
-En retourneert dit resultaat:`"world"`
+En retourneert dit resultaat: `"world"`
 
 <a name="subtractFromTime"></a>
 
@@ -3975,7 +3975,7 @@ In dit voor beeld wordt één dag afgetrokken van deze tijds tempel:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-En retourneert dit resultaat:`"2018-01-01T00:00:00:0000000Z"`
+En retourneert dit resultaat: `"2018-01-01T00:00:00:0000000Z"`
 
 *Voorbeeld 2*
 
@@ -3985,7 +3985,7 @@ In dit voor beeld wordt één dag afgetrokken van deze tijds tempel:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 ```
 
-En retourneert dit resultaat met de optionele D-indeling:`"Monday, January, 1, 2018"`
+En retourneert dit resultaat met de optionele D-indeling: `"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
@@ -4020,8 +4020,8 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld:`"abc"`
-* Tweede voor beeld:`[0, 1, 2]`
+* Eerste voor beeld: `"abc"`
+* Tweede voor beeld: `[0, 1, 2]`
 
 <a name="ticks"></a>
 
@@ -4071,7 +4071,7 @@ In dit voor beeld wordt deze teken reeks geconverteerd naar kleine letters:
 toLower('Hello World')
 ```
 
-En retourneert dit resultaat:`"hello world"`
+En retourneert dit resultaat: `"hello world"`
 
 <a name="toUpper"></a>
 
@@ -4101,7 +4101,7 @@ In dit voor beeld wordt deze teken reeks geconverteerd naar hoofd letters:
 toUpper('Hello World')
 ```
 
-En retourneert dit resultaat:`"HELLO WORLD"`
+En retourneert dit resultaat: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
@@ -4170,7 +4170,7 @@ In dit voor beeld wordt een matrix gemaakt op basis van de sleutel waarde ' feed
 triggerFormDataMultiValues('feedUrl')
 ```
 
-En retourneert deze matrix als een voor beeld van een resultaat:`["http://feeds.reuters.com/reuters/topNews"]`
+En retourneert deze matrix als een voor beeld van een resultaat: `["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4201,7 +4201,7 @@ In dit voor beeld wordt een teken reeks gemaakt op basis van de sleutel waarde '
 triggerFormDataValue('feedUrl')
 ```
 
-En retourneert deze teken reeks als voorbeeld resultaat:`"http://feeds.reuters.com/reuters/topNews"`
+En retourneert deze teken reeks als voorbeeld resultaat: `"http://feeds.reuters.com/reuters/topNews"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4268,7 +4268,7 @@ In dit voor beeld worden de voor loop-en volg spaties uit de teken reeks "Hallo 
 trim(' Hello World  ')
 ```
 
-En retourneert dit resultaat:`"Hello World"`
+En retourneert dit resultaat: `"Hello World"`
 
 <a name="union"></a>
 
@@ -4300,7 +4300,7 @@ In dit voor beeld worden *alle* items van deze verzamelingen opgehaald:
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
-En retourneert dit resultaat:`[1, 2, 3, 10, 101]`
+En retourneert dit resultaat: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
@@ -4332,7 +4332,7 @@ In dit voor beeld wordt een met URI gecodeerde versie gemaakt voor deze teken re
 uriComponent('https://contoso.com')
 ```
 
-En retourneert dit resultaat:`"http%3A%2F%2Fcontoso.com"`
+En retourneert dit resultaat: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4397,7 +4397,7 @@ In dit voor beeld wordt de gedecodeerde teken reeks versie gemaakt voor deze tek
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-En retourneert dit resultaat:`"https://contoso.com"`
+En retourneert dit resultaat: `"https://contoso.com"`
 
 <a name="uriHost"></a>
 
@@ -4427,7 +4427,7 @@ In dit voor beeld wordt de `host` waarde voor deze URI gezocht:
 uriHost('https://www.localhost.com:8080')
 ```
 
-En retourneert dit resultaat:`"www.localhost.com"`
+En retourneert dit resultaat: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
@@ -4457,7 +4457,7 @@ In dit voor beeld wordt de `path` waarde voor deze URI gezocht:
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-En retourneert dit resultaat:`"/catalog/shownew.htm"`
+En retourneert dit resultaat: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
@@ -4487,7 +4487,7 @@ In dit voor beeld worden de `path` en- `query` waarden voor deze URI gezocht:
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-En retourneert dit resultaat:`"/catalog/shownew.htm?date=today"`
+En retourneert dit resultaat: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
@@ -4517,7 +4517,7 @@ In dit voor beeld wordt de `port` waarde voor deze URI geretourneerd:
 uriPort('http://www.localhost:8080')
 ```
 
-En retourneert dit resultaat:`8080`
+En retourneert dit resultaat: `8080`
 
 <a name="uriQuery"></a>
 
@@ -4547,7 +4547,7 @@ In dit voor beeld wordt de `query` waarde voor deze URI geretourneerd:
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-En retourneert dit resultaat:`"?date=today"`
+En retourneert dit resultaat: `"?date=today"`
 
 <a name="uriScheme"></a>
 
@@ -4577,7 +4577,7 @@ In dit voor beeld wordt de `scheme` waarde voor deze URI geretourneerd:
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-En retourneert dit resultaat:`"http"`
+En retourneert dit resultaat: `"http"`
 
 <a name="utcNow"></a>
 
@@ -4611,7 +4611,7 @@ In dit voor beeld wordt het huidige tijds tempel opgehaald:
 utcNow()
 ```
 
-En retourneert dit resultaat:`"2018-04-15T13:00:00.0000000Z"`
+En retourneert dit resultaat: `"2018-04-15T13:00:00.0000000Z"`
 
 *Voorbeeld 2*
 
@@ -4622,7 +4622,7 @@ In dit voor beeld wordt de huidige tijds tempel opgehaald met de optionele D-ind
 utcNow('D')
 ```
 
-En retourneert dit resultaat:`"Sunday, April 15, 2018"`
+En retourneert dit resultaat: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
@@ -4653,7 +4653,7 @@ In dit voor beeld wordt de gehele waarde voor deze variabele opgehaald:
 variables('numItems')
 ```
 
-En retourneert dit resultaat:`20`
+En retourneert dit resultaat: `20`
 
 <a name="workflow"></a>
 
@@ -4781,7 +4781,7 @@ In voor beeld 1 wordt in dit voor beeld de XPath-expressie door gegeven `'/produ
 
 `xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-Dit is het resultaat:`Gala`
+Dit is het resultaat: `Gala`
 
 *Voorbeeld 3*
 
@@ -4789,7 +4789,7 @@ In voor beeld 1 wordt in dit voor beeld de XPath-expressie door gegeven `'/produ
 
 `xpath(xml(parameters('items')), '/produce/item/name[last()]')`
 
-Dit is het resultaat:`Honeycrisp`
+Dit is het resultaat: `Honeycrisp`
 
 *Voor beeld 4*
 
@@ -4801,7 +4801,7 @@ In dit voor beeld wordt de XPath-expressie door gegeven `'//name[@expired]'` om 
 
 `xpath(xml(parameters('items')), '//name[@expired]')`
 
-Dit is het resultaat:`[ Gala, Honeycrisp ]`
+Dit is het resultaat: `[ Gala, Honeycrisp ]`
 
 *Voorbeeld 5*
 
@@ -4813,7 +4813,7 @@ In dit voor beeld wordt de XPath-expressie door gegeven `'//name[@expired = 'tru
 
 `xpath(xml(parameters('items')), '//name[@expired = 'true']')`
 
-Dit is het resultaat:`[ Gala ]`
+Dit is het resultaat: `[ Gala ]`
 
 *Voorbeeld 6*
 
@@ -4828,7 +4828,7 @@ In dit voor beeld wordt de XPath-expressie door gegeven `'//name[price>35]'` om 
 
 `xpath(xml(parameters('items')), '//name[price>35]')`
 
-Dit is het resultaat:`Honeycrisp`
+Dit is het resultaat: `Honeycrisp`
 
 *Voorbeeld 7*
 
@@ -4840,7 +4840,7 @@ In dit voor beeld worden knoop punten gevonden die overeenkomen met het `<count>
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-Dit is het resultaat:`30`
+Dit is het resultaat: `30`
 
 *Voorbeeld 8*
 
@@ -4863,9 +4863,9 @@ Dit is het knoop punt resultaat dat overeenkomt met het `<location></location>` 
 > U moet bijvoorbeeld escape tekens gebruiken wanneer u een expressie serialiseren als een JSON-teken reeks. 
 > Als u echter werkt in de Logic app Designer of de expressie-editor, hoeft u het dubbele aanhalings teken niet te escaperen omdat de back slash-waarde automatisch aan de onderliggende definitie wordt toegevoegd, bijvoorbeeld:
 > 
-> * Code weergave:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+> * Code weergave: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
-> * Expressie-editor:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> * Expressie-editor: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
 *Voorbeeld 9*
 
@@ -4873,7 +4873,7 @@ In het volgende voor beeld 8 wordt in dit voor beeld de XPath-expressie gebruikt
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-Dit is het resultaat:`Paris`
+Dit is het resultaat: `Paris`
 
 ## <a name="next-steps"></a>Volgende stappen
 

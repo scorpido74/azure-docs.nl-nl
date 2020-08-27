@@ -3,13 +3,13 @@ title: Containerwerkbelastingen
 description: Meer informatie over het uitvoeren en schalen van apps vanuit container installatie kopieën op Azure Batch. Maak een pool van reken knooppunten die ondersteuning bieden voor het uitvoeren van container taken.
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18
-ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: a26582572302f670010f3038147687b47feef84a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726720"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933542"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Container toepassingen uitvoeren op Azure Batch
 
@@ -56,15 +56,15 @@ Voor de workloads van een Linux-container ondersteunt batch momenteel de volgend
 
 #### <a name="vm-sizes-without-rdma"></a>VM-grootten zonder RDMA
 
-- Uitgever`microsoft-azure-batch`
-  - Oplossingen`centos-container`
-  - Oplossingen`ubuntu-server-container`
+- Uitgever `microsoft-azure-batch`
+  - Oplossingen `centos-container`
+  - Oplossingen `ubuntu-server-container`
 
 #### <a name="vm-sizes-with-rdma"></a>VM-grootten met RDMA
 
-- Uitgever`microsoft-azure-batch`
-  - Oplossingen`centos-container-rdma`
-  - Oplossingen`ubuntu-server-container-rdma`
+- Uitgever `microsoft-azure-batch`
+  - Oplossingen `centos-container-rdma`
+  - Oplossingen `ubuntu-server-container-rdma`
 
 Deze installatie kopieën worden alleen ondersteund voor gebruik in Azure Batch Pools en zijn bestemd voor het uitvoeren van docker-containers. Deze functie:
 
@@ -253,7 +253,7 @@ Optionele [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainers
 
 ### <a name="container-task-working-directory"></a>Werkmap voor container taak
 
-Een batch-container taak wordt uitgevoerd in een werkmap in de container die vergelijkbaar is met de Directory batch is ingesteld voor een normale (niet-container) taak. Deze werkmap wijkt af van de [workdir](https://docs.docker.com/engine/reference/builder/#workdir) als deze is geconfigureerd in de installatie kopie, of de standaard container werkmap ( `C:\` op een Windows-container of `/` in een Linux-container).
+Een batch-container taak wordt uitgevoerd in een werkmap in de container die vergelijkbaar is met de Directory batch is ingesteld voor een normale (niet-container) taak. Deze werkmap wijkt af van de [workdir](https://docs.docker.com/engine/reference/builder/#workdir) als deze is geconfigureerd in de installatie kopie, of de standaard container werkmap ( `C:\`  op een Windows-container of `/` in een Linux-container).
 
 Voor een batch-container taak:
 

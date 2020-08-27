@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891092"
+ms.locfileid: "88923446"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>De Lucene-query syntaxis in azure Cognitive Search
 
 U kunt query's schrijven op Azure Cognitive Search op basis van de syntaxis van de Rich [lucene query-parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) voor gespecialiseerde query formulieren: Joker teken, fuzzy zoeken, proximity Search, reguliere expressies zijn enkele voor beelden. Veel van de eigenschappen van de Lucene-query-parser zijn [geïmplementeerd in azure Cognitive Search](search-lucene-query-architecture.md), met uitzonde ring van *Zoek opdrachten voor bereiken* die zijn gemaakt in azure Cognitive Search door middel van `$filter` expressies. 
 
 > [!NOTE]
-> De syntaxis Full lucene wordt gebruikt voor query-expressies die zijn door gegeven in de **Zoek** parameter van de [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) -API, en niet om te verwarren met de [OData-syntaxis](query-odata-filter-orderby-syntax.md) die wordt gebruikt voor de para meter [$filter](search-filters.md) van die API. Deze verschillende syntaxis hebben hun eigen regels voor het maken van query's, teken reeksen, enzovoort.
+> De syntaxis Full lucene wordt gebruikt voor query-expressies die zijn door gegeven in de **Zoek** parameter van de [Search Documents](/rest/api/searchservice/search-documents) -API, en niet om te verwarren met de [OData-syntaxis](query-odata-filter-orderby-syntax.md) die wordt gebruikt voor de para meter [$filter](search-filters.md) van die API. Deze verschillende syntaxis hebben hun eigen regels voor het maken van query's, teken reeksen, enzovoort.
 
 ## <a name="invoke-full-parsing"></a>Volledige parsering aanroepen
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-Zie voor meer voor beelden de voor [beelden van Lucene-query syntaxis voor het maken van query's in Azure Cognitive Search](search-query-lucene-examples.md). Zie [zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)voor meer informatie over het opgeven van de volledige afhankelijkheid van query parameters.
+Zie voor meer voor beelden de voor [beelden van Lucene-query syntaxis voor het maken van query's in Azure Cognitive Search](search-query-lucene-examples.md). Zie [zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)voor meer informatie over het opgeven van de volledige afhankelijkheid van query parameters.
 
 > [!NOTE]  
 >  Azure Cognitive Search biedt ook ondersteuning voor [eenvoudige query syntaxis](query-simple-syntax.md), een eenvoudige en krachtige query taal die kan worden gebruikt voor het zoeken naar eenvoudige tref woorden.  
@@ -139,7 +139,7 @@ U kunt een zoek bewerking in een veld definiëren met de `fieldName:searchExpres
 
 Zorg ervoor dat u meerdere teken reeksen tussen aanhalings tekens plaatst als u wilt dat beide teken reeksen als één entiteit worden geëvalueerd. in dit geval zoekt u twee afzonderlijke artiesten in het `artists` veld.  
 
-Het opgegeven veld in `fieldName:searchExpression` moet een `searchable` veld zijn.  Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het gebruik van index kenmerken in veld definities.  
+Het opgegeven veld in `fieldName:searchExpression` moet een `searchable` veld zijn.  Zie [index maken](/rest/api/searchservice/create-index) voor meer informatie over het gebruik van index kenmerken in veld definities.  
 
 > [!NOTE]
 > Wanneer u zoek expressies met een formule gebruikt, hoeft u de para meter niet te gebruiken `searchFields` omdat elke zoek expressie in een veld expliciet een veld naam heeft opgegeven. U kunt echter nog steeds de `searchFields` para meter gebruiken als u een query wilt uitvoeren waarbij sommige onderdelen naar een specifiek veld zijn beperkt, en de rest kan van toepassing zijn op verschillende velden. De query `search=genre:jazz NOT history&searchFields=description` zou bijvoorbeeld alleen overeenkomen met `jazz` het `genre` veld, terwijl deze overeenkomt `NOT history` met het `description` veld. De naam van het veld in `fieldName:searchExpression` heeft altijd voor rang op de `searchFields` para meter, wat in dit voor beeld de oorzaak is van het niet gebruiken van de para `genre` `searchFields` meter.
@@ -202,6 +202,6 @@ Azure Cognitive Search maakt gebruik van scores op basis van frequentie ([TF-IDF
 
 + [Query voorbeelden voor eenvoudige Zoek opdrachten](search-query-simple-examples.md)
 + [Query voorbeelden voor volledige lucene-Zoek opdrachten](search-query-lucene-examples.md)
-+ [Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Documenten zoeken](/rest/api/searchservice/Search-Documents)
 + [Syntaxis van de OData-expressie voor filters en sorteren](query-odata-filter-orderby-syntax.md)   
-+ [Eenvoudige query syntaxis in azure Cognitive Search](query-simple-syntax.md)   
++ [Eenvoudige query syntaxis in azure Cognitive Search](query-simple-syntax.md)

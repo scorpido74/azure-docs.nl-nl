@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056075"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923735"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -60,9 +60,9 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Ondersteuning voor bestands systemen in Sdk's, Power shell en Azure CLI
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Ondersteuning voor het recursief instellen van toegangs beheer lijsten (Acl's)
 
-- Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
+De mogelijkheid om ACL-wijzigingen van de bovenliggende map toe te passen op onderliggende items is in [open bare preview](recursive-access-control-lists.md). In de huidige versie van deze mogelijkheid kunt u ACL'S-wijzigingen Toep assen met behulp van Power shell, de .NET SDK en de python-SDK. Ondersteuning is nog niet beschikbaar voor de Java SDK, Azure CLI, de Azure Portal of Azure Storage Explorer.
 
 <a id="known-issues-tools"></a>
 

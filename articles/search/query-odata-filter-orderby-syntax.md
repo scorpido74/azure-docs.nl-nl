@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165206"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923395"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Overzicht van OData-taal voor `$filter` , `$orderby` en `$select` in azure Cognitive Search
 
@@ -76,8 +76,8 @@ Voor beelden van veld paden worden weer gegeven in de volgende tabel:
 | `Address/City` | Verwijst naar het `City` subveld van een complex veld in de index; `Address` is van het type `Edm.ComplexType` in dit voor beeld |
 | `Rooms/Type` | Verwijst naar het `Type` subveld van een complex verzamelings veld in de index; `Rooms` is van het type `Collection(Edm.ComplexType)` in dit voor beeld |
 | `Stores/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van een complex verzamelings veld in de index; `Stores` is van het type `Collection(Edm.ComplexType)` en `Address` is van het type `Edm.ComplexType` in dit voor beeld |
-| `room/Type` | Verwijst naar het `Type` subveld van de `room` variabele Range, bijvoorbeeld in de filter expressie`Rooms/any(room: room/Type eq 'deluxe')` |
-| `store/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van de `store` bereik variabele, bijvoorbeeld in de filter expressie`Stores/any(store: store/Address/Country eq 'Canada')` |
+| `room/Type` | Verwijst naar het `Type` subveld van de `room` variabele Range, bijvoorbeeld in de filter expressie `Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van de `store` bereik variabele, bijvoorbeeld in de filter expressie `Stores/any(store: store/Address/Country eq 'Canada')` |
 
 De betekenis van een pad naar een veld verschilt, afhankelijk van de context. In filters verwijst een veld pad naar de waarde van *één exemplaar* van een veld in het huidige document. In andere contexten, zoals **$OrderBy**, **$Select**of in een [Zoek opdracht in de volledige lucene-syntaxis](query-lucene-syntax.md#bkmk_fields)verwijst een pad naar het veld zelf. Dit verschil heeft een aantal gevolgen voor de manier waarop u veld paden in filters gebruikt.
 
@@ -91,25 +91,25 @@ In dit voor beeld wordt de variabele Range `room` weer gegeven in het `room/Type
 
 ### <a name="using-field-paths"></a>Veld paden gebruiken
 
-Veld paden worden gebruikt in veel para meters van de [Azure COGNITIVE Search rest-api's](https://docs.microsoft.com/rest/api/searchservice/). De volgende tabel bevat alle locaties waar ze kunnen worden gebruikt, plus eventuele beperkingen op het gebruik ervan:
+Veld paden worden gebruikt in veel para meters van de [Azure COGNITIVE Search rest-api's](/rest/api/searchservice/). De volgende tabel bevat alle locaties waar ze kunnen worden gebruikt, plus eventuele beperkingen op het gebruik ervan:
 
 | API | Parameternaam | Beperkingen |
 | --- | --- | --- |
-| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Geen |
-| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Kan alleen verwijzen naar **Doorzoek** bare velden |
-| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Kan alleen verwijzen naar **filter** bare velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Wanneer `queryType` is`full` | Kan alleen verwijzen naar **Doorzoek** bare velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Kan alleen verwijzen naar **facetbare** velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Kan alleen verwijzen naar **Doorzoek** bare velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Kan alleen verwijzen naar **Doorzoek** bare velden |
-| [Suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Kan alleen verwijzen naar velden die deel uitmaken van een [suggestie](index-add-suggesters.md) |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents), Voorst [Ellen](https://docs.microsoft.com/rest/api/searchservice/suggestions)en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Kan alleen verwijzen naar **filter** bare velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) en Voorst [Ellen](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Kan alleen verwijzen naar **Sorteer** bare velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents), Voorst [Ellen](https://docs.microsoft.com/rest/api/searchservice/suggestions)en [Opzoeken](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Kan alleen verwijzen naar **ophaalbaar** velden |
+| Index [maken](/rest/api/searchservice/create-index) of [bijwerken](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Geen |
+| Index [maken](/rest/api/searchservice/create-index) of [bijwerken](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| Index [maken](/rest/api/searchservice/create-index) of [bijwerken](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Kan alleen verwijzen naar **filter** bare velden |
+| [Zoeken](/rest/api/searchservice/search-documents) | `search` Wanneer `queryType` is `full` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| [Zoeken](/rest/api/searchservice/search-documents) | `facet` | Kan alleen verwijzen naar **facetbare** velden |
+| [Zoeken](/rest/api/searchservice/search-documents) | `highlight` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| [Zoeken](/rest/api/searchservice/search-documents) | `searchFields` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| [Suggesties](/rest/api/searchservice/suggestions) en [automatisch aanvullen](/rest/api/searchservice/autocomplete) | `searchFields` | Kan alleen verwijzen naar velden die deel uitmaken van een [suggestie](index-add-suggesters.md) |
+| [Zoeken](/rest/api/searchservice/search-documents), Voorst [Ellen](/rest/api/searchservice/suggestions)en [automatisch aanvullen](/rest/api/searchservice/autocomplete) | `$filter` | Kan alleen verwijzen naar **filter** bare velden |
+| [Zoeken](/rest/api/searchservice/search-documents) en Voorst [Ellen](/rest/api/searchservice/suggestions) | `$orderby` | Kan alleen verwijzen naar **Sorteer** bare velden |
+| [Zoeken](/rest/api/searchservice/search-documents), Voorst [Ellen](/rest/api/searchservice/suggestions)en [Opzoeken](/rest/api/searchservice/lookup-document) | `$select` | Kan alleen verwijzen naar **ophaalbaar** velden |
 
 ## <a name="constants"></a>Constanten
 
-Constanten in OData zijn letterlijke waarden van een bepaald type [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM). Zie [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor een lijst met ondersteunde typen in azure Cognitive Search. Constanten van verzamelings typen worden niet ondersteund.
+Constanten in OData zijn letterlijke waarden van een bepaald type [Entity Data Model](/dotnet/framework/data/adonet/entity-data-model) (EDM). Zie [ondersteunde gegevens typen](/rest/api/searchservice/supported-data-types) voor een lijst met ondersteunde typen in azure Cognitive Search. Constanten van verzamelings typen worden niet ondersteund.
 
 De volgende tabel bevat voor beelden van constanten voor elk van de gegevens typen die worden ondersteund door Azure Cognitive Search:
 
@@ -243,6 +243,6 @@ De para meters **$filter**, **$OrderBy**en **$Select** worden uitgebreid beschre
 
 - [Facet navigatie in azure Cognitive Search](search-faceted-navigation.md)
 - [Filters in azure Cognitive Search](search-filters.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene-query syntaxis](query-lucene-syntax.md)
 - [Eenvoudige query syntaxis in azure Cognitive Search](query-simple-syntax.md)

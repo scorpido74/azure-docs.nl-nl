@@ -3,12 +3,13 @@ title: Gegevens wijziging-LUIS
 description: Meer informatie over hoe gegevens kunnen worden gewijzigd voordat voor spellingen in Language Understanding (LUIS)
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872243"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934664"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Utterance-gegevens wijzigen vóór of tijdens de voor spelling
 LUIS biedt manieren om de utterance voor of tijdens de voor spelling te bewerken. Dit zijn onder andere het corrigeren van de [Spelling](luis-tutorial-bing-spellcheck.md)en het oplossen van problemen met de tijd zone voor vooraf ontwikkelde [datetimeV2](luis-reference-prebuilt-datetimev2.md).
@@ -30,7 +31,7 @@ Voor het eind punt zijn twee para meters vereist voor het werken met spelling co
 
 |Param|Waarde|
 |--|--|
-|`spellCheck`|booleaans|
+|`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -eindpunt sleutel|
 
 Wanneer [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) een fout detecteert, worden de oorspronkelijke utterance en de gecorrigeerde utterance met de voor spellingen van het eind punt geretourneerd.
@@ -77,7 +78,7 @@ Wanneer een LUIS-app gebruikmaakt van de vooraf gemaakte [datetimeV2](luis-refer
 
 ### <a name="v3-prediction-api-to-alter-timezone"></a>V3 Voorspellings-API voor het wijzigen van de tijd zone
 
-In v3 bepaalt de `datetimeReference` tijds interval-offset. Meer informatie over de voor [spellingen van v3](luis-migration-api-v3.md#v3-post-body).
+In v3 bepaalt de tijds `datetimeReference` interval-offset. Meer informatie over de voor [spellingen van v3](luis-migration-api-v3.md#v3-post-body).
 
 ### <a name="v2-prediction-api-to-alter-timezone"></a>V2 Voorspellings-API voor het wijzigen van de tijd zone
 De tijd zone wordt gecorrigeerd door de tijd zone van de gebruiker toe te voegen aan het eind punt met de `timezoneOffset` para meter op basis van de API-versie. De waarde van de para meter moet het positieve of negatieve getal zijn, in minuten, voor het wijzigen van de tijd.

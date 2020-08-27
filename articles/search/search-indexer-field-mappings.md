@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2211dbe8a5e336ec10562bb8a66ed0e8cc2a9e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208739"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935174"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -30,7 +30,7 @@ Een aantal situaties waarin veld Toewijzingen handig zijn:
 * U moet uw gegevens met Base64 coderen of decoderen. Veld Toewijzingen ondersteunen verschillende **toewijzings functies**, waaronder functies voor Base64-code ring en-decodering.
 
 > [!NOTE]
-> Veld toewijzingen in Indexeer functies zijn een eenvoudige manier om gegevens velden toe te wijzen aan index velden, met een zekere mogelijkheid voor gegevens conversie met licht gewicht. Complexere gegevens kunnen vooraf worden verwerkt om deze te wijzigen in een formulier dat kan worden geïndexeerd. Een van de opties die u kunt overwegen, is [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
+> Veld toewijzingen in Indexeer functies zijn een eenvoudige manier om gegevens velden toe te wijzen aan index velden, met een zekere mogelijkheid voor gegevens conversie met licht gewicht. Complexere gegevens kunnen vooraf worden verwerkt om deze te wijzigen in een formulier dat kan worden geïndexeerd. Een van de opties die u kunt overwegen, is [Azure Data Factory](../data-factory/index.yml).
 
 ## <a name="set-up-field-mappings"></a>Veld toewijzingen instellen
 
@@ -47,7 +47,7 @@ Veld toewijzingen worden toegevoegd aan de `fieldMappings` matrix van de definit
 
 ## <a name="map-fields-using-the-rest-api"></a>Velden toewijzen met behulp van de REST API
 
-U kunt veld toewijzingen toevoegen wanneer u een nieuwe Indexeer functie maakt met behulp van de API-aanvraag voor het maken van de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) . U kunt de veld toewijzingen van een bestaande Indexeer functie beheren met de API-aanvraag [Update indexer](https://docs.microsoft.com/rest/api/searchservice/update-indexer) .
+U kunt veld toewijzingen toevoegen wanneer u een nieuwe Indexeer functie maakt met behulp van de API-aanvraag voor het maken van de [Indexeer functie](/rest/api/searchservice/create-Indexer) . U kunt de veld toewijzingen van een bestaande Indexeer functie beheren met de API-aanvraag [Update indexer](/rest/api/searchservice/update-indexer) .
 
 Hier volgt een voor beeld van het toewijzen van een bron veld aan een doel veld met een andere naam:
 
@@ -80,7 +80,7 @@ In meerdere veld toewijzingen kan naar een bron veld worden verwezen. In het vol
 
 ## <a name="map-fields-using-the-net-sdk"></a>Velden toewijzen met behulp van de .NET SDK
 
-U definieert veld toewijzingen in de .NET SDK met behulp van de klasse [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) , die de eigenschappen `SourceFieldName` en bevat `TargetFieldName` en een optionele `MappingFunction` verwijzing.
+U definieert veld toewijzingen in de .NET SDK met behulp van de klasse [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) , die de eigenschappen `SourceFieldName` en bevat `TargetFieldName` en een optionele `MappingFunction` verwijzing.
 
 U kunt veld Toewijzingen opgeven wanneer u de Indexeer functie bouwt of later door de eigenschap rechtstreeks in te stellen `Indexer.FieldMappings` .
 
@@ -125,7 +125,7 @@ Voert *URL-veilige base64-* code ring van de invoer teken reeks uit. Er wordt va
 
 #### <a name="example---document-key-lookup"></a>Voor beeld-zoeken naar document sleutels
 
-Alleen URL-veilige tekens kunnen worden weer gegeven in een Azure Cognitive Search-document sleutel (omdat klanten het document moeten kunnen adresseren met de [lookup-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) ). Als het Bron veld voor uw sleutel URL-onveilige tekens bevat, kunt u de `base64Encode` functie gebruiken om deze te converteren naar de indexerings tijd. Een document sleutel (zowel vóór als na de conversie) mag echter niet langer zijn dan 1.024 tekens.
+Alleen URL-veilige tekens kunnen worden weer gegeven in een Azure Cognitive Search-document sleutel (omdat klanten het document moeten kunnen adresseren met de [lookup-API](/rest/api/searchservice/lookup-document) ). Als het Bron veld voor uw sleutel URL-onveilige tekens bevat, kunt u de `base64Encode` functie gebruiken om deze te converteren naar de indexerings tijd. Een document sleutel (zowel vóór als na de conversie) mag echter niet langer zijn dan 1.024 tekens.
 
 Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u de `base64Decode` functie gebruiken om de oorspronkelijke sleutel waarde op te halen en gebruiken om het bron document op te halen.
 
@@ -200,10 +200,10 @@ Azure Cognitive Search ondersteunt twee verschillende base64-code ringen. U moet
 
 Azure Cognitive Search ondersteunt URL-veilige base64-code ring en normale base64-code ring. Een teken reeks die met base64 is gecodeerd tijdens het indexeren, moet later worden gedecodeerd met dezelfde coderings opties, anders wordt het resultaat niet met de oorspronkelijke waarde overeenkomen.
 
-Als de `useHttpServerUtilityUrlTokenEncode` or `useHttpServerUtilityUrlTokenDecode` -para meters voor respectievelijk coderen en decoderen zijn ingesteld op `true` , wordt `base64Encode` gereageerd als [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) en `base64Decode` gedraagt zich als [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Als de `useHttpServerUtilityUrlTokenEncode` or `useHttpServerUtilityUrlTokenDecode` -para meters voor respectievelijk coderen en decoderen zijn ingesteld op `true` , wordt `base64Encode` gereageerd als [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) en `base64Decode` gedraagt zich als [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8).
 
 > [!WARNING]
-> Als `base64Encode` wordt gebruikt voor het produceren van sleutel waarden, `useHttpServerUtilityUrlTokenEncode` moet worden ingesteld op True. Alleen URL-veilige base64-code ring kan worden gebruikt voor sleutel waarden. Zie [naamgevings regels &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) voor de volledige set beperkingen voor tekens in sleutel waarden.
+> Als `base64Encode` wordt gebruikt voor het produceren van sleutel waarden, `useHttpServerUtilityUrlTokenEncode` moet worden ingesteld op True. Alleen URL-veilige base64-code ring kan worden gebruikt voor sleutel waarden. Zie [naamgevings regels &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules) voor de volledige set beperkingen voor tekens in sleutel waarden.
 
 De .NET-bibliotheken in azure Cognitive Search uitgaan van de volledige .NET Framework, dat ingebouwde code ring biedt. De `useHttpServerUtilityUrlTokenEncode` Opties en maken `useHttpServerUtilityUrlTokenDecode` gebruik van deze ingebouwde functionaliteit. Als u .NET core of een ander Framework gebruikt, raden we u aan om deze opties in te stellen `false` en de functies code ring en decodering van uw Framework rechtstreeks aan te roepen.
 

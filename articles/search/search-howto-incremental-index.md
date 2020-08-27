@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230703"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922834"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Caching configureren voor incrementele verrijking in azure Cognitive Search
 
@@ -38,7 +38,7 @@ Als u een bestaande Indexeer functie hebt die al een vaardig heden hebt, volgt u
 
 Begin met een geldige, bestaande Indexeer functie die deze onderdelen bevat: gegevens bron, vaardig heden, index. De Indexeer functie moet uitvoer bare zijn. 
 
-Maak met behulp van een API-client een [Get Indexeer functie-aanvraag](https://docs.microsoft.com/rest/api/searchservice/get-indexer) om de huidige configuratie van de Indexeer functie op te halen. Wanneer u de preview-API-versie gebruikt voor de Indexeer functie ophalen, `cache` wordt een eigenschap ingesteld op null toegevoegd aan de definities.
+Maak met behulp van een API-client een [Get Indexeer functie-aanvraag](/rest/api/searchservice/get-indexer) om de huidige configuratie van de Indexeer functie op te halen. Wanneer u de preview-API-versie gebruikt voor de Indexeer functie ophalen, `cache` wordt een eigenschap ingesteld op null toegevoegd aan de definities.
 
 ```http
 GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
@@ -75,7 +75,7 @@ Wijzig het cache object zodat de volgende vereiste en optionele eigenschappen zi
 
 ### <a name="step-3-reset-the-indexer"></a>Stap 3: de Indexeer functie opnieuw instellen
 
-Het opnieuw instellen van de Indexeer functie is vereist bij het instellen van incrementele verrijking voor bestaande Indexeer functies om ervoor te zorgen dat alle documenten een consistente status hebben. U kunt de portal of een API-client en de [rest API voor het opnieuw instellen van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) voor deze taak gebruiken.
+Het opnieuw instellen van de Indexeer functie is vereist bij het instellen van incrementele verrijking voor bestaande Indexeer functies om ervoor te zorgen dat alle documenten een consistente status hebben. U kunt de portal of een API-client en de [rest API voor het opnieuw instellen van de Indexeer functie](/rest/api/searchservice/reset-indexer) voor deze taak gebruiken.
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2020-06-30-Preview
@@ -85,7 +85,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-4-save-the-updated-definition"></a>Stap 4: de bijgewerkte definitie opslaan
 
-[De Indexeer functie bijwerken](https://docs.microsoft.com/rest/api/searchservice/preview-api/update-indexer) met een put-aanvraag, de hoofd tekst van de aanvraag moet de bijgewerkte indexerings definitie bevatten met de cache-eigenschap. Als u een 400 krijgt, controleert u de definitie van de Indexeer functie om er zeker van te zijn dat aan alle vereisten wordt voldaan (gegevens bron, vaardig heden, index).
+[De Indexeer functie bijwerken](/rest/api/searchservice/preview-api/update-indexer) met een put-aanvraag, de hoofd tekst van de aanvraag moet de bijgewerkte indexerings definitie bevatten met de cache-eigenschap. Als u een 400 krijgt, controleert u de definitie van de Indexeer functie om er zeker van te zijn dat aan alle vereisten wordt voldaan (gegevens bron, vaardig heden, index).
 
 ```http
 PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
@@ -115,7 +115,7 @@ Als u nu een nieuwe GET-aanvraag voor de Indexeer functie levert, bevat het antw
 
 Als u Indexeer functie wilt uitvoeren, kunt u de portal of de API gebruiken. Selecteer in de portal in de lijst Indexeer functies de Indexeer functie en klik op **uitvoeren**. Een voor deel van het gebruik van de portal is dat u de Indexeer functie-status kunt bewaken, de duur van de taak ziet en hoeveel documenten worden verwerkt. Portal pagina's worden elke paar minuten vernieuwd.
 
-U kunt ook REST gebruiken om [de Indexeer functie uit te voeren](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
+U kunt ook REST gebruiken om [de Indexeer functie uit te voeren](/rest/api/searchservice/run-indexer):
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2020-06-30-Preview
@@ -123,7 +123,7 @@ Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
 
-Nadat de Indexeer functie is uitgevoerd, kunt u de cache vinden in Azure Blob-opslag. De container naam heeft de volgende indeling:`ms-az-search-indexercache-<YOUR-CACHE-ID>`
+Nadat de Indexeer functie is uitgevoerd, kunt u de cache vinden in Azure Blob-opslag. De container naam heeft de volgende indeling: `ms-az-search-indexercache-<YOUR-CACHE-ID>`
 
 > [!NOTE]
 > Het opnieuw instellen en opnieuw uitvoeren van de Indexeer functie resulteert in een volledige heropbouw zodat inhoud in de cache kan worden opgeslagen. Alle cognitieve verrijkingen worden opnieuw op alle documenten uitgevoerd.
@@ -137,7 +137,7 @@ Voer de Indexeer functie opnieuw uit. Alleen de onderdelen van een verrijkte doc
 
 ## <a name="enable-caching-on-new-indexers"></a>Opslaan in cache inschakelen voor nieuwe Indexeer functies
 
-Als u incrementele verrijking wilt instellen voor een nieuwe Indexeer functie, hoeft u alleen de `cache` eigenschap op te geven in de nettolading van de definitie van de Indexeer functie bij het aanroepen van [Create Indexeer functie (2020-06-30-preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer). 
+Als u incrementele verrijking wilt instellen voor een nieuwe Indexeer functie, hoeft u alleen de `cache` eigenschap op te geven in de nettolading van de definitie van de Indexeer functie bij het aanroepen van [Create Indexeer functie (2020-06-30-preview)](/rest/api/searchservice/preview-api/create-indexer). 
 
 
 ```json
@@ -165,16 +165,16 @@ Stel dat er een vakkennisset is die begint met het analyseren van afbeeldingen e
 
 ## <a name="working-with-the-cache"></a>Werken met de cache
 
-Zodra de cache operationeel is, controleren indexers de cache telkens wanneer [Run Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/run-indexer) wordt aangeroepen om te zien welke delen van de bestaande uitvoer kunnen worden gebruikt. 
+Zodra de cache operationeel is, controleren indexers de cache telkens wanneer [Run Indexeer functie](/rest/api/searchservice/run-indexer) wordt aangeroepen om te zien welke delen van de bestaande uitvoer kunnen worden gebruikt. 
 
 De volgende tabel bevat een overzicht van de werking van verschillende Api's met betrekking tot de cache:
 
 | API           | Cache-impact     |
 |---------------|------------------|
-| [Indexeer functie maken (2020-06-30-preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Maakt en voert een indexer uit bij het eerste gebruik, inclusief het maken van een cache als de definitie van de Indexeer functie deze specificeert. |
-| [Indexeer functie uitvoeren](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Voert een verrijkings pijplijn op aanvraag uit. Deze API leest uit de cache als deze bestaat, of maakt een cache als u de cache hebt toegevoegd aan een bijgewerkte indexers definitie. Wanneer u een Indexeer functie uitvoert waarvoor caching is ingeschakeld, worden stappen door de Indexeer functie wegge laten als de in de cache geplaatste uitvoer kan worden gebruikt. U kunt de algemeen beschik bare of preview-API-versie van deze API gebruiken.|
-| [Indexeer functie opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Hiermee wist u de Indexeer functie van alle incrementele indexerings gegevens. De volgende uitvoering van de Indexeer functie (op aanvraag of planning) is volledig opnieuw verwerken, inclusief het opnieuw uitvoeren van alle vaardig heden en het opnieuw opbouwen van de cache. Het is functioneel equivalent om de Indexeer functie te verwijderen en opnieuw te maken. U kunt de algemeen beschik bare of preview-API-versie van deze API gebruiken.|
-| [Vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | Hiermee geeft u op welke vaardig heden moeten worden uitgevoerd bij het uitvoeren van de volgende Indexeer functie, zelfs als u geen enkele vaardig heden hebt gewijzigd. De cache wordt dienovereenkomstig bijgewerkt. Uitvoer, zoals een kennis archief of een zoek index, worden vernieuwd met herbruikbare gegevens uit de cache plus nieuwe inhoud per de bijgewerkte vaardigheid. |
+| [Indexeer functie maken (2020-06-30-preview)](/rest/api/searchservice/preview-api/create-indexer) | Maakt en voert een indexer uit bij het eerste gebruik, inclusief het maken van een cache als de definitie van de Indexeer functie deze specificeert. |
+| [Indexeer functie uitvoeren](/rest/api/searchservice/run-indexer) | Voert een verrijkings pijplijn op aanvraag uit. Deze API leest uit de cache als deze bestaat, of maakt een cache als u de cache hebt toegevoegd aan een bijgewerkte indexers definitie. Wanneer u een Indexeer functie uitvoert waarvoor caching is ingeschakeld, worden stappen door de Indexeer functie wegge laten als de in de cache geplaatste uitvoer kan worden gebruikt. U kunt de algemeen beschik bare of preview-API-versie van deze API gebruiken.|
+| [Indexeer functie opnieuw instellen](/rest/api/searchservice/reset-indexer)| Hiermee wist u de Indexeer functie van alle incrementele indexerings gegevens. De volgende uitvoering van de Indexeer functie (op aanvraag of planning) is volledig opnieuw verwerken, inclusief het opnieuw uitvoeren van alle vaardig heden en het opnieuw opbouwen van de cache. Het is functioneel equivalent om de Indexeer functie te verwijderen en opnieuw te maken. U kunt de algemeen beschik bare of preview-API-versie van deze API gebruiken.|
+| [Vaardig heden opnieuw instellen](/rest/api/searchservice/preview-api/reset-skills) | Hiermee geeft u op welke vaardig heden moeten worden uitgevoerd bij het uitvoeren van de volgende Indexeer functie, zelfs als u geen enkele vaardig heden hebt gewijzigd. De cache wordt dienovereenkomstig bijgewerkt. Uitvoer, zoals een kennis archief of een zoek index, worden vernieuwd met herbruikbare gegevens uit de cache plus nieuwe inhoud per de bijgewerkte vaardigheid. |
 
 Zie [cache beheer](cognitive-search-incremental-indexing-conceptual.md#cache-management)voor meer informatie over het beheren van wat er gebeurt met de cache.
 

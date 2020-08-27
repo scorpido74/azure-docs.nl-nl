@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321378"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935208"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>De wizard gegevens importeren voor Azure Cognitive Search
 
@@ -69,18 +69,18 @@ U moet deze afzonderlijke tabel of weer gave maken voordat u de wizard uitvoert,
 | **SQL Server op virtuele Azure-machine** |Geef een volledig gekwalificeerde service naam, gebruikers-ID en wacht woord en Data Base als connection string op. Voor het gebruik van deze gegevensbron moet u eerder een certificaat hebben geïnstalleerd in het lokale archief dat de verbinding versleutelt. Zie [SQL VM-verbinding met Azure Cognitive Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)voor instructies. <br/><br/>De tabel of weergave die de rijenset bevat, moet worden opgegeven op de pagina. Deze optie wordt weergegeven nadat de verbinding tot stand is gebracht, waarna een vervolgkeuzelijst wordt weergegeven zodat u een selectie kunt maken. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Vereisten zijn het account, de database en de verzameling. Alle documenten in de verzameling worden opgenomen in de index. U kunt een query definiëren om de rijenset samen te voegen of te filteren, of de query leeg laten. Er is geen query vereist in deze wizard.|
 | [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |Vereisten zijn het opslagaccount en een container. Als blob-namen een virtuele naamconventie voor groeperingsdoeleinden volgen, kunt u desgewenst het gedeelte van de virtuele map van de naam als een map onder de container opgeven. Zie [Blob Storage indexeren](search-howto-indexing-azure-blob-storage.md) voor meer informatie. |
-| [**Azure-tabelopslag**](search-howto-indexing-azure-tables.md) |Vereisten zijn het opslagaccount en een tabelnaam. U kunt desgewenst een query opgeven om een subset van de tabellen op te halen. Zie [Table Storage indexeren](search-howto-indexing-azure-tables.md) voor meer informatie. |
+| [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |Vereisten zijn het opslagaccount en een tabelnaam. U kunt desgewenst een query opgeven om een subset van de tabellen op te halen. Zie [Table Storage indexeren](search-howto-indexing-azure-tables.md) voor meer informatie. |
 
 ## <a name="wizard-output"></a>Wizard-uitvoer
 
-Achter de schermen worden de volgende objecten gemaakt, geconfigureerd en aangeroepen door de wizard. Nadat de wizard is uitgevoerd, kunt u de uitvoer ervan vinden in de portal pagina's. De overzichts pagina van uw service bevat lijsten met indexen, Indexeer functies, gegevens bronnen en vaardig heden. Index definities kunnen worden weer gegeven in volledige JSON in de portal. Voor andere definities kunt u de [rest API](https://docs.microsoft.com/rest/api/searchservice/) gebruiken om specifieke objecten op te halen.
+Achter de schermen worden de volgende objecten gemaakt, geconfigureerd en aangeroepen door de wizard. Nadat de wizard is uitgevoerd, kunt u de uitvoer ervan vinden in de portal pagina's. De overzichts pagina van uw service bevat lijsten met indexen, Indexeer functies, gegevens bronnen en vaardig heden. Index definities kunnen worden weer gegeven in volledige JSON in de portal. Voor andere definities kunt u de [rest API](/rest/api/searchservice/) gebruiken om specifieke objecten op te halen.
 
-| Object | Description | 
+| Object | Beschrijving | 
 |--------|-------------|
-| [Gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Persistente verbindings gegevens naar bron gegevens, met inbegrip van referenties. Een gegevens bron object wordt uitsluitend gebruikt met Indexeer functies. | 
-| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Fysieke gegevens structuur die wordt gebruikt voor zoeken in volledige tekst en andere query's. | 
-| [Vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | Een volledige set instructies voor het bewerken, transformeren en vorm geven van inhoud, met inbegrip van het analyseren en extra heren van informatie uit afbeeldings bestanden. Met uitzonde ring van eenvoudige en beperkte structuren bevat het een verwijzing naar een Cognitive Services resource die verrijking levert. Eventueel kan ook een definitie van een kennis archief bevatten.  | 
-| [Indexeerfunctie](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Een configuratie object dat een gegevens bron, doel index, optionele vaardig heden, optionele planning en optionele configuratie-instellingen voor fout-en basis64-code ring opgeeft. |
+| [Gegevensbron](/rest/api/searchservice/create-data-source)  | Persistente verbindings gegevens naar bron gegevens, met inbegrip van referenties. Een gegevens bron object wordt uitsluitend gebruikt met Indexeer functies. | 
+| [Index](/rest/api/searchservice/create-index) | Fysieke gegevens structuur die wordt gebruikt voor zoeken in volledige tekst en andere query's. | 
+| [Vaardig heden](/rest/api/searchservice/create-skillset) | Een volledige set instructies voor het bewerken, transformeren en vorm geven van inhoud, met inbegrip van het analyseren en extra heren van informatie uit afbeeldings bestanden. Met uitzonde ring van eenvoudige en beperkte structuren bevat het een verwijzing naar een Cognitive Services resource die verrijking levert. Eventueel kan ook een definitie van een kennis archief bevatten.  | 
+| [Indexeerfunctie](/rest/api/searchservice/create-indexer)  | Een configuratie object dat een gegevens bron, doel index, optionele vaardig heden, optionele planning en optionele configuratie-instellingen voor fout-en basis64-code ring opgeeft. |
 
 
 ## <a name="how-to-start-the-wizard"></a>De wizard starten
@@ -103,7 +103,7 @@ De wizard genereert een onvolledige index, die wordt gevuld met documenten die z
 
 1. Is de lijst met velden voltooid? Voeg nieuwe velden toe die niet worden gesampled en verwijder de waarden die geen waarde toevoegen aan een zoek ervaring of die niet worden gebruikt in een [filter expressie](search-query-odata-filter.md) of [Score profiel](index-add-scoring-profiles.md).
 
-1. Is het gegevens type dat geschikt is voor de inkomende gegevens? Azure Cognitive Search ondersteunt de [gegevens typen van de Entity Data Model (EDM)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Voor Azure SQL-gegevens is er een [toewijzings grafiek](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) die gelijkwaardige waarden bevat. Zie [veld Toewijzingen en trans formaties](search-indexer-field-mappings.md)voor meer achtergrond informatie.
+1. Is het gegevens type dat geschikt is voor de inkomende gegevens? Azure Cognitive Search ondersteunt de [gegevens typen van de Entity Data Model (EDM)](/rest/api/searchservice/supported-data-types). Voor Azure SQL-gegevens is er een [toewijzings grafiek](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) die gelijkwaardige waarden bevat. Zie [veld Toewijzingen en trans formaties](search-indexer-field-mappings.md)voor meer achtergrond informatie.
 
 1. Hebt u één veld dat kan dienen als de *sleutel*? Dit veld moet EDM. String zijn en moet een unieke identificatie vormen voor een document. Voor relationele gegevens kan deze worden toegewezen aan een primaire sleutel. Voor blobs is dit mogelijk de `metadata-storage-path` . Als veld waarden spaties of streepjes bevatten, moet u de optie **Base-64 Codeer sleutel** instellen in de stap **een Indexeer functie maken** onder **Geavanceerde opties**om de validatie controle voor deze tekens te onderdrukken.
 
@@ -115,7 +115,7 @@ De wizard genereert een onvolledige index, die wordt gevuld met documenten die z
 
    + **Ophalenable** retourneert het veld in de zoek resultaten. Elk veld dat inhoud aan Zoek resultaten levert, moet dit kenmerk hebben. Het instellen van dit veld heeft geen aanzienlijke gevolgen voor de index grootte.
 
-   + Met **filterable** kan worden verwezen naar het veld in filter expressies. Elk veld dat in een **$filter** expressie wordt gebruikt, moet dit kenmerk hebben. Filter expressies zijn voor exacte overeenkomsten. Omdat tekst teken reeksen intact blijven, is extra opslag ruimte vereist voor de Verbatim-inhoud.
+   + Met **filterable** kan worden verwezen naar het veld in filter expressies. Elk veld dat in een **$filter**  expressie wordt gebruikt, moet dit kenmerk hebben. Filter expressies zijn voor exacte overeenkomsten. Omdat tekst teken reeksen intact blijven, is extra opslag ruimte vereist voor de Verbatim-inhoud.
 
    + **Facetable** schakelt het veld in voor facet navigatie. Alleen velden die ook als **filterbaar** zijn gemarkeerd, kunnen als **facetbaar**worden gemarkeerd.
 

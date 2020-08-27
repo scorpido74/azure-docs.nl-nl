@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146129"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934885"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy zoeken om spel fouten en typfouten te corrigeren
 
@@ -82,7 +82,7 @@ Als de resultaten dubbel zinnig zijn, kunt u met [treffers markeren](search-pagi
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Voor beeld 1: fuzzy Search met de exacte term
 
-Stel dat de volgende teken reeks bestaat in een `"Description"` veld in een zoek document:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Stel dat de volgende teken reeks bestaat in een `"Description"` veld in een zoek document: `"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 Begin met een zoek actie op ' Special ' en voeg treffers markeren toe aan het veld Beschrijving:
 
@@ -136,5 +136,5 @@ Het punt van dit uitgevouwen voor beeld is om de duidelijkheid te illustreren da
 
 + [De manier waarop zoeken in volledige tekst werkt in azure Cognitive Search (architectuur voor het parseren van query's)](search-lucene-query-architecture.md)
 + [Zoek Verkenner](search-explorer.md)
-+ [Query's uitvoeren in .NET](search-query-dotnet.md)
-+ [Query's uitvoeren in REST](search-create-index-rest-api.md)
++ [Query's uitvoeren in .NET](./search-get-started-dotnet.md)
++ [Query's uitvoeren in REST](./search-get-started-powershell.md)
