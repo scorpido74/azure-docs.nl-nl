@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496485"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932879"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Een eenvoudige zoek index maken in azure Cognitive Search
 
@@ -26,10 +26,10 @@ De fysieke structuur van een index wordt bepaald door het schema, met velden die
 U kunt een index maken met de volgende hulpprogram ma's en Api's:
 
 * Gebruik de wizard **index toevoegen** of **gegevens importeren** in de Azure Portal
-* De [Create Index gebruiken (rest API)](https://docs.microsoft.com/rest/api/searchservice/create-index)
-* De [.NET-SDK](search-create-index-dotnet.md) gebruiken
+* De [Create Index gebruiken (rest API)](/rest/api/searchservice/create-index)
+* De [.NET-SDK](./search-get-started-dotnet.md) gebruiken
 
-Het is eenvoudiger om te leren werken met een portal-hulp programma. De portal dwingt vereisten en schema regels af voor specifieke gegevens typen, zoals het niet toestaan van zoek mogelijkheden in volledige tekst in numerieke velden. Zodra u een stapsgewijze index hebt, kunt u overstappen op code door de JSON-definitie op te halen van de service met [Get index (rest API)](https://docs.microsoft.com/rest/api/searchservice/get-index) en deze toe te voegen aan uw oplossing.
+Het is eenvoudiger om te leren werken met een portal-hulp programma. De portal dwingt vereisten en schema regels af voor specifieke gegevens typen, zoals het niet toestaan van zoek mogelijkheden in volledige tekst in numerieke velden. Zodra u een stapsgewijze index hebt, kunt u overstappen op code door de JSON-definitie op te halen van de service met [Get index (rest API)](/rest/api/searchservice/get-index) en deze toe te voegen aan uw oplossing.
 
 ## <a name="recommended-workflow"></a>Aanbevolen werk stroom
 
@@ -59,7 +59,7 @@ Het aankomen van een laatste index ontwerp is een iteratief proces. Het is gebru
 
    ![Index pagina met kenmerken op gegevens type toevoegen](media/search-what-is-an-index//field-definitions.png "Index pagina met kenmerken op gegevens type toevoegen")
 
-1. Down load het index schema met [Get index (rest API)](https://docs.microsoft.com/rest/api/searchservice/get-index) en een hulp programma voor het testen van webtoepassingen zoals in het [bericht](search-get-started-postman.md). U hebt nu een JSON-weer gave van de index die u kunt aanpassen voor code.
+1. Down load het index schema met [Get index (rest API)](/rest/api/searchservice/get-index) en een hulp programma voor het testen van webtoepassingen zoals in het [bericht](search-get-started-postman.md). U hebt nu een JSON-weer gave van de index die u kunt aanpassen voor code.
 
 1. [Laad uw index met gegevens](search-what-is-data-import.md). Azure Cognitive Search accepteert JSON-documenten. Als u gegevens wilt laden via een programma, kunt u postman gebruiken met JSON-documenten in de aanvraag lading. Als uw gegevens niet eenvoudig kunnen worden uitgedrukt als JSON, is deze stap het meest arbeids intensief. 
 
@@ -169,7 +169,7 @@ Velden hebben een naam, een type dat de opgeslagen gegevens classificeert en ken
 
 ### <a name="data-types"></a>Gegevenstypen
 
-| Type | Description |
+| Type | Beschrijving |
 |------|-------------|
 | Edm.String |Tekst die eventueel kan worden getokend voor Zoek opdrachten in volledige tekst (woord afbreking, stam bestand, enzovoort). |
 | Collection(EDM.String) |Een lijst met tekenreeksen die van tokens kan worden voorzien om te zoeken in de volledige tekst. Er is geen theoretische bovengrens voor het aantal items in een verzameling, maar de bovengrens van 16 MB voor de nettolading geldt voor alle verzamelingen. |
@@ -180,7 +180,7 @@ Velden hebben een naam, een type dat de opgeslagen gegevens classificeert en ken
 | Edm.DateTimeOffset |Datum en tijd waarden die worden weer gegeven in de OData v4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
 | Edm.GeographyPoint |Een punt voor een geografische locatie op de wereld. |
 
-Zie [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)voor meer informatie.
+Zie [ondersteunde gegevens typen](/rest/api/searchservice/Supported-data-types)voor meer informatie.
 
 <a name="index-attributes"></a>
 
@@ -195,14 +195,14 @@ Teken reeks velden worden vaak aangeduid als doorzoekbaar en kunnen worden opgeh
 |doorzoekbaar |Zoeken in volledige tekst mogelijk, onderworpen aan lexicale analyse, zoals het afbreken van woorden tijdens het indexeren. Als u een doorzoekbaar veld instelt op een waarde als 'zonnige dag', wordt de waarde intern gesplitst in de afzonderlijke tokens 'zonnige' en 'dag'. Zie [Hoe zoeken in de volledige tekst werkt](search-lucene-query-architecture.md) voor meer informatie.|  
 |filterbaar |Hier wordt naar verwezen in $filter-query's. Bij filterbare velden van het type `Edm.String` of `Collection(Edm.String)` worden woorden niet afgebroken, dus vergelijkingen gelden alleen voor exacte overeenkomsten. Als u zo'n veld bijvoorbeeld instelt op 'zonnige dag', worden er met `$filter=f eq 'sunny'` geen overeenkomsten gevonden, maar met `$filter=f eq 'sunny day'` wel. |  
 |sorteerbaar |Het systeem sorteert de resultaten standaard op score, maar u kunt het sorteren configureren op basis van velden in de documenten. Velden van het type `Collection(Edm.String)` kunnen niet ' sorteerbaar ' zijn. |  
-|facetten |Wordt doorgaans gebruikt bij een weergave van zoekresultaten met een treffertelling per categorie (bijvoorbeeld hotels in een specifieke stad). Deze optie kan niet worden gebruikt bij velden van het type `Edm.GeographyPoint`. Velden van `Edm.String` het type dat kan worden gefilterd, ' sorteerbaar ' of ' facetable ' kunnen Maxi maal 32 kilo bytes lang zijn. Zie [Index maken (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie.|  
+|facetten |Wordt doorgaans gebruikt bij een weergave van zoekresultaten met een treffertelling per categorie (bijvoorbeeld hotels in een specifieke stad). Deze optie kan niet worden gebruikt bij velden van het type `Edm.GeographyPoint`. Velden van `Edm.String` het type dat kan worden gefilterd, ' sorteerbaar ' of ' facetable ' kunnen Maxi maal 32 kilo bytes lang zijn. Zie [Index maken (REST API)](/rest/api/searchservice/create-index) voor meer informatie.|  
 |prestatie |Unieke id voor documenten binnen de index. Er moet precies één veld worden uitgekozen als sleutelveld. Dit veld moet van het type `Edm.String` zijn.|  
 |ophalen mogelijk |Hiermee bepaalt u of het veld in een zoekresultaat kan worden geretourneerd. Dit is handig als u een veld (zoals *winstmarge*) wilt gebruiken als filter-, sorteer- of scoremechanisme, maar niet wilt dat het veld zichtbaar is voor de eindgebruiker. Dit kenmerk moet `true` zijn voor `key`-velden.|  
 
 Hoewel u op elk gewenst moment nieuwe velden kunt toevoegen, worden bestaande velddefinities voor de hele levensduur van de index vergrendeld. Daarom gebruiken ontwikkelaars de portal doorgaans om eenvoudige indexen te maken, om ideeën uit te testen of om een instelling op te zoeken met behulp van de portalpagina's. Een frequente iteratie van een index-ontwerp is efficiënter als u een op code gebaseerde benadering hanteert, zodat u uw index eenvoudig kunt herbouwen.
 
 > [!NOTE]
-> De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld ' Doorzoek bare ' en ' ophaalbaar ' zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
+> De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld ' Doorzoek bare ' en ' ophaalbaar ' zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
 
 ## `analyzers`
 
@@ -210,7 +210,7 @@ Het element analyse functies stelt de naam in van de taal analyse die moet worde
 
 ## `suggesters`
 
-Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde documenten of zinsdelen. 
+Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde documenten of zinsdelen. 
 
 Velden die zijn toegevoegd aan een suggestie, worden gebruikt voor het bouwen van type-ahead zoek termen. Alle zoek termen worden tijdens het indexeren gemaakt en afzonderlijk opgeslagen. Zie Voorst [Ellen toevoegen](index-add-suggesters.md)voor meer informatie over het maken van een boom structuur.
 

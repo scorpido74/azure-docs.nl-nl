@@ -2,13 +2,14 @@
 title: Problemen met ontbrekende gegevens oplossen - Application Insights voor .NET
 description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: eeae4503111897d7a2fa64bc2a69c13381515157
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563072"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936466"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
 
@@ -66,7 +67,7 @@ Er is een fout opgetreden tijdens de installatie van Application Insights of mog
 
 Klik in Solution Explorer met de rechter muisknop op het project en kies **Application Insights > Application Insights configureren**. U krijgt een dialoog venster waarin u wordt gevraagd om u aan te melden bij Azure, een Application Insights resource te maken of een bestaand item opnieuw te gebruiken.
 
-## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a>Er ontbreken een of meer NuGet-pakketten op mijn build-server
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> Er ontbreken een of meer NuGet-pakketten op mijn build-server
 *Alles bouwt op OK wanneer ik fout opsporing op mijn ontwikkel computer, maar er wordt een NuGet-fout op de build-server weer geven.*
 
 Zie [NuGet package Restore](https://docs.nuget.org/Consume/Package-Restore) and [Automatic Package Restore](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
@@ -120,7 +121,7 @@ Holpen
   Hier ziet u een aantal samenvattings grafieken. U kunt hier op klikken om meer details weer te geven.
 * Tijdens het opsporen van fouten in uw app, klikt u in Visual Studio op de knop Application Insights.
 
-## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a>Geen server gegevens (of geen gegevens)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> Geen server gegevens (of geen gegevens)
 *Ik heb mijn app uitgevoerd en ik heb de Application Insights-service in Microsoft Azure geopend, maar in alle grafieken wordt uitgelegd hoe ik het verzamelen... of is niet geconfigureerd.* Of, *alleen pagina weergave en gebruikers gegevens, maar geen server gegevens.*
 
 * Voer uw toepassing uit in de foutopsporingsmodus in Visual Studio (F5). Gebruik de toepassing om een telemetrie te genereren. Controleer of de gebeurtenissen in het venster Visual Studio uitvoer worden weer gegeven.  
@@ -185,7 +186,7 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van`Microsoft.ApplicationInsighs`
+1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van `Microsoft.ApplicationInsighs`
 
 2. Wijzig het applicationinsights.config-bestand zodat het het volgende bevat:
 
@@ -227,7 +228,7 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 4. Als u klaar bent, kunt u deze wijzigingen ongedaan maken.
 
 
-## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>Logboeken verzamelen met PerfView
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> Logboeken verzamelen met PerfView
 [PerfView](https://github.com/Microsoft/perfview) is een gratis hulp programma voor diagnostische gegevens en prestaties waarmee u de CPU, het geheugen en andere problemen kunt isoleren door Diagnostische gegevens uit een groot aantal bronnen te verzamelen en te visualiseren.
 
 De logboeken van de logboek gebeurtenissen van de Application Insights-SDK registreren die door PerfView kunnen worden vastgelegd.
@@ -249,7 +250,7 @@ Meer informatie
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Logboeken verzamelen met DotNet-Trace
 
-Een alternatieve methode voor het verzamelen van Logboeken voor het oplossen van problemen die bijzonder handig kunnen zijn voor Linux-omgevingen is[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+Een alternatieve methode voor het verzamelen van Logboeken voor het oplossen van problemen die bijzonder handig kunnen zijn voor Linux-omgevingen is [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore

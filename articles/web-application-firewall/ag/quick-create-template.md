@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
-ms.openlocfilehash: 081bab0cd930d90ca0d359461e4a41b15ba4911b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075504"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705164"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Quickstart: Een Azure WAF v2 maken op Application Gateway met behulp van een ARM-sjabloon
 
@@ -37,7 +37,7 @@ Met deze sjabloon maakt u een eenvoudige Web Application Firewall v2 op Azure Ap
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/).
 
-:::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json" range="001-404" highlight="314-358":::
+:::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json":::
 
 Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 

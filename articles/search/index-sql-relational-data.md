@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c70b42e7d0f647a3b2b60d29b5098a791e4975f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82117566"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924517"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Relationele SQL-gegevens model leren voor importeren en indexeren in azure Cognitive Search
 
@@ -107,7 +107,7 @@ De oplossing is het vastleggen van de ruimte Details als geneste JSON en de JSON
 Deze rijenset kan nu worden geïmporteerd in azure Cognitive Search.
 
 > [!NOTE]
-> Bij deze benadering wordt ervan uitgegaan dat de Inge sloten JSON zich onder de [maximum limieten voor kolom grootte van SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)bevindt. 
+> Bij deze benadering wordt ervan uitgegaan dat de Inge sloten JSON zich onder de [maximum limieten voor kolom grootte van SQL Server](/sql/sql-server/maximum-capacity-specifications-for-sql-server)bevindt. 
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Gebruik een complexe verzameling voor de ' veel'-zijde van een een-op-veel-relatie
 

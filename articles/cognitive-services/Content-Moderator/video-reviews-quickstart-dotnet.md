@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931679"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919315"
 ---
 # <a name="create-video-reviews-using-net"></a>Video beoordelingen maken met .NET
 
@@ -92,7 +93,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Private-eigenschappen toevoegen
 
-Voeg de volgende persoonlijke eigenschappen toe aan naam ruimte **VideoReviews**, Class **Program**. Werk de `AzureEndpoint` velden `CMSubscriptionKey` en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
+Voeg de volgende persoonlijke eigenschappen toe aan naam ruimte **VideoReviews**, Class **Program**. Werk de `AzureEndpoint` `CMSubscriptionKey` velden en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
 
 ```csharp
@@ -157,7 +158,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 **CreateVideoReviews** heeft de volgende vereiste para meters:
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn. 
 1. De naam van uw Content Moderator team.
-1. Een **IList\<CreateVideoReviewsBodyItem>** -object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
+1. Een **IList \<CreateVideoReviewsBodyItem> ** -object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
 
 **CreateVideoReviewsBodyItem** heeft verschillende eigenschappen. U kunt ten minste de volgende eigenschappen instellen:
 - **Inhoud**. De URL van de video die moet worden gecontroleerd.
@@ -165,7 +166,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 - **Status**. Stel de waarde in op ' unpublished '. Als u deze niet instelt, wordt de standaard waarde ' in behandeling ' gebruikt, wat betekent dat de video beoordeling wordt gepubliceerd en de beoordeling van de mens in behandeling is. Zodra een video controle is gepubliceerd, kunt u geen video frames, transcripten of afschrift resultaten meer toevoegen.
 
 > [!NOTE]
-> **CreateVideoReviews** retourneert een IList\<-teken reeks>. Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** . 
+> **CreateVideoReviews** retourneert een IList \<string> . Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** . 
 
 Voeg de volgende methode definitie toe aan de naam ruimte VideoReviews, het programma class.
 
@@ -215,18 +216,18 @@ U voegt video frames toe aan een video beoordeling met **ContentModeratorClient.
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn.
 1. De naam van uw Content Moderator team.
 1. De ID van de video controle die door **CreateVideoReviews**wordt geretourneerd.
-1. Een **IList\<VideoFrameBodyItem>** -object. Elk **VideoFrameBodyItem** -object vertegenwoordigt een video frame.
+1. Een **IList \<VideoFrameBodyItem> ** -object. Elk **VideoFrameBodyItem** -object vertegenwoordigt een video frame.
 
 **VideoFrameBodyItem** heeft de volgende eigenschappen:
 - **Tijds tempel**. Een teken reeks die, in seconden, de tijd in de video van waaruit het video frame is gemaakt.
 - **FrameImage**. De URL van het video frame.
-- **Meta gegevens**. Een IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** is gewoon een sleutel/waarde-paar. Geldige sleutels zijn onder andere:
+- **Meta gegevens**. Een IList \<VideoFrameBodyItemMetadataItem> . **VideoFrameBodyItemMetadataItem** is gewoon een sleutel/waarde-paar. Geldige sleutels zijn onder andere:
 - **reviewRecommended**. Waar als een menselijke beoordeling van het video frame wordt aanbevolen.
 - **adultScore**. Een waarde tussen 0 en 1 waarmee de ernst van inhoud voor volwassenen in het video frame wordt geclassificeerd.
 - **a**. Waar als de video inhoud voor volwassenen bevat.
 - **racyScore**. Een waarde tussen 0 en 1 waarmee de ernst van de ongepaste-inhoud in het video frame wordt geclassificeerd.
 - **r**. Waar als het video frame ongepaste inhoud bevat.
-- **ReviewerResultTags**. Een IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** is gewoon een sleutel/waarde-paar. Een toepassing kan deze tags gebruiken om video frames te organiseren.
+- **ReviewerResultTags**. Een IList \<VideoFrameBodyItemReviewerResultTagsItem> . **VideoFrameBodyItemReviewerResultTagsItem** is gewoon een sleutel/waarde-paar. Een toepassing kan deze tags gebruiken om video frames te organiseren.
 
 > [!NOTE]
 > Deze Quick Start genereert wille keurige waarden voor de eigenschappen **adultScore** en **racyScore** . In een productie toepassing zou u deze waarden verkrijgen van de [video-moderator service](video-moderation-api.md), geïmplementeerd als een Azure media-service.
@@ -541,7 +542,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>Bekijk uw video-beoordeling
 
-Ten slotte ziet u de video-beoordeling in uw content moderator controle programma-account op het scherm**video** **bekijken**>.
+Ten slotte ziet u de video-beoordeling in uw content moderator controle programma-account **Review**op het > scherm**video** bekijken.
 
 ![Video beoordeling voor menselijke moderators](images/ams-video-review.PNG)
 

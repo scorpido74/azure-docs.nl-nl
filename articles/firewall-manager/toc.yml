@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Firewall Manager?
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Virtuele hub beveiligen - ARM-sjabloon
@@ -46,6 +46,8 @@
       href: dns-settings.md
     - name: Meerdere openbare IP-adressen implementeren - PowerShell
       href: multiple-public-ip-powershell.md
+    - name: Een regelhiërarchie definiëren
+      href: rule-hierarchy.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

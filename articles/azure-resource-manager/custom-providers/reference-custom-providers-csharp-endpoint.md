@@ -2,15 +2,16 @@
 title: Naslag informatie voor C#-REST van aangepaste provider
 description: Biedt een eenvoudige referentie voor een gerust eind punt van een Azure Custom providers C#. Het eind punt wordt gegeven via een Azure-functie-app.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651174"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935633"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Naslag informatie voor C#-REST van aangepaste provider
 
@@ -257,5 +258,5 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 - [Overzicht van aangepaste Azure-resource providers](overview.md)
 - [Zelf studie: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Procedure: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Verwijzing: verwijzing naar aangepaste resource-cache](proxy-cache-resource-endpoint-reference.md)

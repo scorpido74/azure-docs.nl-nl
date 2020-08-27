@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 0fd7ba1723da77313407725ec676e69b0ef3bca1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496669"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917853"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Complexe gegevens typen model leren in azure Cognitive Search
 
@@ -33,7 +33,7 @@ Om aan de slag te gaan, raden we de [gegevensverzameling Hotels](https://github.
 
 ## <a name="example-of-a-complex-structure"></a>Voor beeld van een complexe structuur
 
-Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Complexe velden, zoals `Address` en `Rooms` , hebben subvelden. `Address`heeft één set waarden voor die subvelden, omdat het een enkel object in het document is. Daarentegen `Rooms` heeft meerdere waarden sets voor de subvelden, één voor elk object in de verzameling.
+Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Complexe velden, zoals `Address` en `Rooms` , hebben subvelden. `Address` heeft één set waarden voor die subvelden, omdat het een enkel object in het document is. Daarentegen `Rooms` heeft meerdere waarden sets voor de subvelden, één voor elk object in de verzameling.
 
 ```json
 {
@@ -62,9 +62,9 @@ Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Com
 
 ## <a name="creating-complex-fields"></a>Complexe velden maken
 
-Net als bij elke index definitie kunt u de portal, [rest API](https://docs.microsoft.com/rest/api/searchservice/create-index)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) gebruiken om een schema te maken dat complexe typen bevat. 
+Net als bij elke index definitie kunt u de portal, [rest API](/rest/api/searchservice/create-index)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) gebruiken om een schema te maken dat complexe typen bevat. 
 
-In het volgende voor beeld ziet u een JSON-index schema met eenvoudige velden, verzamelingen en complexe typen. U ziet dat in een complex type elk subveld een type heeft en kan kenmerken hebben, net als velden op het hoogste niveau. Het schema komt overeen met de bovenstaande voorbeeld gegevens. `Address`is een complex veld dat geen verzameling is (een hotel heeft één adres). `Rooms`is een complex verzamelings veld (een hotel heeft veel kamers).
+In het volgende voor beeld ziet u een JSON-index schema met eenvoudige velden, verzamelingen en complexe typen. U ziet dat in een complex type elk subveld een type heeft en kan kenmerken hebben, net als velden op het hoogste niveau. Het schema komt overeen met de bovenstaande voorbeeld gegevens. `Address` is een complex veld dat geen verzameling is (een hotel heeft één adres). `Rooms` is een complex verzamelings veld (een hotel heeft veel kamers).
 
 ```json
 {

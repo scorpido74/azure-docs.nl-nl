@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3ea1c42234267bdbc5f8a7d35f0fd73bbb59b33c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553404"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918023"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Een eenvoudige query maken in azure Cognitive Search
 
 In azure Cognitive Search roept de [syntaxis van de eenvoudige query](query-simple-syntax.md) de standaard query-parser aan voor het uitvoeren van zoek query's in volledige tekst voor een index. Deze parser is snel en behandelt veelvoorkomende scenario's, zoals zoeken in volledige tekst, gefilterde en facetten zoeken en geo-Zoek opdrachten. 
 
-In dit artikel gebruiken we voor beelden om de eenvoudige syntaxis te illustreren, waarbij u de `search=` para meter van een bewerking voor het [zoeken naar een document](https://docs.microsoft.com/rest/api/searchservice/search-documents) vult.
+In dit artikel gebruiken we voor beelden om de eenvoudige syntaxis te illustreren, waarbij u de `search=` para meter van een bewerking voor het [zoeken naar een document](/rest/api/searchservice/search-documents) vult.
 
 Een alternatieve query syntaxis is [volledige lucene](query-lucene-syntax.md), waardoor complexere query structuren worden ondersteund, zoals fuzzy en zoek opdrachten met Joker tekens. Dit kan meer tijd kosten om te verwerken. Zie [de syntaxis Full lucene gebruiken](search-query-lucene-examples.md)voor meer informatie en voor beelden met de volledige syntaxis.
 
@@ -103,7 +103,7 @@ Mogelijk hebt u de zoek Score in het antwoord gezien. Een uniforme Score van 1 t
 
 ## <a name="example-2-look-up-by-id"></a>Voor beeld 2: opzoeken op basis van ID
 
-Dit voor beeld is een beetje ongewoon, maar bij het evalueren van het gedrag van de zoek actie wilt u mogelijk de volledige inhoud van een specifiek document inspecteren om te begrijpen waarom het is opgenomen of uitgesloten van de resultaten. Als u één document volledig wilt retour neren, gebruikt u een [opzoek bewerking](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om de document-id door te geven.
+Dit voor beeld is een beetje ongewoon, maar bij het evalueren van het gedrag van de zoek actie wilt u mogelijk de volledige inhoud van een specifiek document inspecteren om te begrijpen waarom het is opgenomen of uitgesloten van de resultaten. Als u één document volledig wilt retour neren, gebruikt u een [opzoek bewerking](/rest/api/searchservice/lookup-document) om de document-id door te geven.
 
 Alle documenten hebben een unieke id. Als u de syntaxis voor een opzoek query wilt uitproberen, moet u eerst een lijst met document-Id's retour neren, zodat u er een kunt vinden om te gebruiken. Voor NYC-taken worden de id's in het veld opgeslagen `id` .
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>Voor beeld 3: query's filteren
 
-De [filter syntaxis](https://docs.microsoft.com/azure/search/search-query-odata-filter) is een OData-expressie die u kunt gebruiken met een **Zoek opdracht** of op zichzelf. Een zelfstandig filter, zonder een zoek parameter, is handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen Score (alle scores zijn 1) en geen classificatie. U ziet dat de zoek teken reeks leeg is.
+De [filter syntaxis](./search-query-odata-filter.md) is een OData-expressie die u kunt gebruiken met een **Zoek opdracht** of op zichzelf. Een zelfstandig filter, zonder een zoek parameter, is handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen Score (alle scores zijn 1) en geen classificatie. U ziet dat de zoek teken reeks leeg is.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -147,7 +147,7 @@ Een andere krachtige manier om filters en zoek opdrachten te combi neren, is via
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-Zie [Search. ismatch in ' filter voorbeelden '](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)voor meer informatie over de functie.
+Zie [Search. ismatch in ' filter voorbeelden '](./search-query-odata-full-text-search-functions.md#examples)voor meer informatie over de functie.
 
 ## <a name="example-4-range-filters"></a>Voor beeld 4: bereik filters
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-5-geo-search"></a>Voor beeld 5: geografisch zoeken
 
-De voor beeld-index bevat een geo_location veld met de breedte graad en lengte graad. In dit voor beeld wordt de [functie geo. Distance](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) gebruikt waarmee wordt gefilterd op documenten in de omtrek van een begin punt, tot een wille keurige afstand (in kilo meters) die u opgeeft. U kunt de laatste waarde in de query (4) aanpassen om de surface area van de query te verkleinen of te verg Roten.
+De voor beeld-index bevat een geo_location veld met de breedte graad en lengte graad. In dit voor beeld wordt de [functie geo. Distance](./search-query-odata-geo-spatial-functions.md#examples) gebruikt waarmee wordt gefilterd op documenten in de omtrek van een begin punt, tot een wille keurige afstand (in kilo meters) die u opgeeft. U kunt de laatste waarde in de query (4) aanpassen om de surface area van de query te verkleinen of te verg Roten.
 
 Het volgende voor beeld is in de bericht indeling voor de Lees baarheid:
 
@@ -223,7 +223,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Term query's zijn enkele termen, misschien veel hiervan, die onafhankelijk van elkaar worden geëvalueerd. Woordgroepen query's worden tussen aanhalings tekens geplaatst en geëvalueerd als een Verbatim teken reeks. De nauw keurigheid van de overeenkomst wordt bepaald door Opera tors en Search mode.
 
-Voor beeld 1: **`&search=fire`** retourneert 150 resultaten, waarbij alle overeenkomsten het woord ergens in het document hebben.
+Voor beeld 1: **`&search=fire`**  retourneert 150 resultaten, waarbij alle overeenkomsten het woord ergens in het document hebben.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire
@@ -288,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ## <a name="next-steps"></a>Volgende stappen
 Probeer query's in uw code op te geven. In de volgende koppelingen wordt uitgelegd hoe u zoek query's instelt voor zowel .NET als de REST API met behulp van de standaard eenvoudige syntaxis.
 
-* [Query's uitvoeren op uw index met behulp van de .NET SDK](search-query-dotnet.md)
-* [Query's uitvoeren op uw index met behulp van de REST API](search-create-index-rest-api.md)
+* [Query's uitvoeren op uw index met behulp van de .NET SDK](./search-get-started-dotnet.md)
+* [Query's uitvoeren op uw index met behulp van de REST API](./search-get-started-powershell.md)
 
 Aanvullende Naslag informatie over syntaxis, query architectuur en voor beelden vindt u in de volgende koppelingen:
 
 + [Voor beelden van Lucene-syntaxis query's voor het maken van geavanceerde query's](search-query-lucene-examples.md)
 + [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Volledige lucene-query](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [De syntaxis filter en OrderBy](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Vereenvoudigde querysyntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Volledige lucene-query](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [De syntaxis filter en OrderBy](/rest/api/searchservice/odata-expression-syntax-for-azure-search)

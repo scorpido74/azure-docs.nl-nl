@@ -2,24 +2,24 @@
 title: Een sjabloon specificatie als gekoppelde sjabloon implementeren
 description: Meer informatie over het implementeren van een bestaande sjabloon specificatie in een gekoppelde implementatie.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096681"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918380"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Zelf studie: een sjabloon specificatie implementeren als gekoppelde sjabloon (preview)
 
-Meer informatie over het implementeren van een bestaande [sjabloon specificatie](template-specs.md) met behulp van een [gekoppelde implementatie](linked-templates.md#linked-template). U kunt sjabloon specificaties gebruiken om ARM-sjablonen te delen met andere gebruikers in uw organisatie. Nadat u een sjabloon specificatie hebt gemaakt, kunt u de sjabloon specificatie implementeren met behulp van Azure PowerShell. U kunt ook de sjabloon specificatie als onderdeel van uw oplossing implementeren met behulp van een gekoppelde sjabloon.
+Meer informatie over het implementeren van een bestaande [sjabloon specificatie](template-specs.md) met behulp van een [gekoppelde implementatie](linked-templates.md#linked-template). U kunt sjabloon specificaties gebruiken om ARM-sjablonen te delen met andere gebruikers in uw organisatie. Nadat u een sjabloon specificatie hebt gemaakt, kunt u de sjabloon specificatie implementeren met behulp van Azure PowerShell of Azure CLI. U kunt ook de sjabloon specificatie als onderdeel van uw oplossing implementeren met behulp van een gekoppelde sjabloon.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 > [!NOTE]
-> De sjabloon specificaties zijn momenteel beschikbaar als preview-versie. Als u deze wilt gebruiken, moet u [zich aanmelden voor de preview-versie](https://aka.ms/templateSpecOnboarding).
+> Sjabloonspecificaties is momenteel beschikbaar als preview-versie. Als u deze wilt gebruiken, moet u [zich aanmelden voor de preview-versie](https://aka.ms/templateSpecOnboarding).
 
 ## <a name="create-a-template-spec"></a>Een sjabloon specificatie maken
 
@@ -117,9 +117,22 @@ Als u een sjabloon specificatie in een ARM-sjabloon wilt implementeren, moet u e
 
 De sjabloon specificatie-ID wordt gegenereerd met behulp van de [`resourceID()`](template-functions-resource.md#resourceid) functie. Het argument voor de resource groep in de functie resourceID () is optioneel als de templateSpec zich in dezelfde resource groep bevindt als de huidige implementatie.  U kunt de resource-ID ook rechtstreeks door geven als een para meter. Als u de ID wilt ophalen, gebruikt u:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> Er is een bekend probleem met het ophalen van de sjabloon specificatie-id en wijst deze vervolgens toe aan een variabele in Windows Power shell.
+
+---
 
 De syntaxis voor het door geven van para meters voor de sjabloon specificatie is:
 
@@ -138,6 +151,8 @@ De syntaxis voor het door geven van para meters voor de sjabloon specificatie is
 
 Wanneer u de gekoppelde sjabloon implementeert, worden zowel de webtoepassing als het opslag account geïmplementeerd. De implementatie is hetzelfde als het implementeren van andere ARM-sjablonen.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -148,6 +163,21 @@ New-AzResourceGroupDeployment `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een sjabloon specificatie van een gekoppelde sjabloon maken](template-specs-create-linked.md)voor meer informatie over het maken van een sjabloon specificatie met gekoppelde sjablonen.
+Zie [Een sjabloonspecificatie van een gekoppelde sjabloon maken](template-specs-create-linked.md) voor meer informatie over het maken van een sjabloonspecificatie die gekoppelde sjablonen bevat.

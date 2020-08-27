@@ -3,18 +3,18 @@ title: .NET-programmeer handleiding-Azure Event Hubs (verouderd) | Microsoft Doc
 description: Dit artikel bevat informatie over het schrijven van code voor Azure-Event Hubs met behulp van de Azure .NET SDK.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5be30d7786fa094a55badb7b38ff2116a6013b6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074843"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934018"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET-programmeer handleiding voor Azure Event Hubs (verouderd micro soft. Azure. Event hubs-pakket)
 In dit artikel worden enkele algemene scenario's beschreven voor het schrijven van code met behulp van Azure Event Hubs. Er wordt uitgegaan van een basisbegrip van Event Hubs. Zie het [Overzicht van Event Hubs](./event-hubs-about.md) voor een conceptueel overzicht van Event Hubs.
 
 > [!WARNING]
-> Deze hand leiding is voor het oude pakket **micro soft. Azure. Event hubs** . U wordt aangeraden uw code te [migreren](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) voor het meest recente [Azure. Messa ging. Event hubs](get-started-dotnet-standard-send-v2.md) -pakket.  
+> Deze hand leiding is voor het oude pakket **micro soft. Azure. Event hubs** . U wordt aangeraden uw code te [migreren](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) voor het meest recente [Azure. Messa ging. Event hubs](event-hubs-dotnet-standard-getstarted-send.md) -pakket.  
 
 
 ## <a name="event-publishers"></a>Gebeurtenisuitgevers

@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201981"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917870"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Opera tors in azure Cognitive Search- `and` , `or` ,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Opera tors in azure Cognitive Search- `and` , `or` , `not`
 
 [OData-filter expressies](query-odata-filter-orderby-syntax.md) in azure Cognitive Search zijn Booleaanse expressies die de waarde van `true` of bepalen `false` . U kunt een complex filter schrijven door een reeks [eenvoudiger filters](search-query-odata-comparison-operators.md) te schrijven en deze samen te stellen met behulp van de logische Opera tors van [Boole algebra](https://en.wikipedia.org/wiki/Boolean_algebra):
 
@@ -58,21 +58,21 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 
 Er zijn twee soorten logische expressies: binary ( `and` / `or` ), waar er twee subexpressies en Unair ( `not` ) zijn, waarbij er slechts één wordt. De subexpressies kunnen Booleaanse expressies van elk soort zijn:
 
-- Velden of bereik variabelen van het type`Edm.Boolean`
-- Functies die waarden van het type retour neren `Edm.Boolean` , zoals `geo.intersects` of`search.ismatch`
-- [Vergelijkings expressies](search-query-odata-comparison-operators.md), zoals`rating gt 4`
-- [Verzamelings expressies](search-query-odata-collection-operators.md), zoals`Rooms/any(room: room/Type eq 'Deluxe Room')`
+- Velden of bereik variabelen van het type `Edm.Boolean`
+- Functies die waarden van het type retour neren `Edm.Boolean` , zoals `geo.intersects` of `search.ismatch`
+- [Vergelijkings expressies](search-query-odata-comparison-operators.md), zoals `rating gt 4`
+- [Verzamelings expressies](search-query-odata-collection-operators.md), zoals `Rooms/any(room: room/Type eq 'Deluxe Room')`
 - De letterlijke Boole-waarden `true` of `false` .
 - Andere logische expressies die zijn gemaakt met `and` , `or` en `not` .
 
 > [!IMPORTANT]
 > Er zijn enkele situaties waarin niet alle soorten Subexpressies kunnen worden gebruikt met, met `and` / `or` name binnen lambda-expressies. Zie [OData-verzamelings operatoren in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) voor meer informatie.
 
-### <a name="logical-operators-and-null"></a>Logische Opera tors en`null`
+### <a name="logical-operators-and-null"></a>Logische Opera tors en `null`
 
 De meeste Booleaanse expressies zoals functies en vergelijkingen kunnen geen `null` waarden produceren en de logische Opera tors kunnen niet rechtstreeks op de `null` letterlijke waarde worden toegepast (bijvoorbeeld `x and null` is niet toegestaan). Boole-velden kunnen echter wel zijn `null` , dus u moet weten hoe de `and` `or` `not` Opera Tors, en zich gedragen in de aanwezigheid van Null. Dit wordt in de volgende tabel samenvatten, waarbij `b` een veld van het type is `Edm.Boolean` :
 
-| Expressie | Resultaat wanneer `b` is`null` |
+| Expression | Resultaat wanneer `b` is `null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -120,4 +120,4 @@ Documenten voor hotels zoeken in Vancouver, Canada waar zich een luxe ruimte bev
 - [Filters in azure Cognitive Search](search-filters.md)
 - [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

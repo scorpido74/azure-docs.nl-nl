@@ -1,28 +1,28 @@
 ---
 title: Kwalificatie Zoek vaardigheid aangepaste entiteit opzoeken
 titleSuffix: Azure Cognitive Search
-description: Extraheer verschillende aangepaste entiteiten van tekst in een Azure Cognitive Search cognitieve Zoek pijplijn. Deze vaardigheid is momenteel beschikbaar als open bare preview.
+description: Extraheer verschillende aangepaste entiteiten van tekst in een Azure Cognitive Search cognitieve Zoek pijplijn. Deze vaardigheid is momenteel in openbare preview.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987476"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936109"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Aangepaste entiteit opzoeken cognitieve vaardigheid (preview-versie)
 
 > [!IMPORTANT] 
-> Deze vaardigheid is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Deze vaardigheid is momenteel in openbare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
 De **Zoek vaardigheid voor aangepaste entiteiten** zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Aan de hand van deze lijst worden alle documenten met overeenkomende entiteiten gelabeld. De vaardigheid ondersteunt ook het zoeken naar fuzzy overeenkomsten, waarmee overeenkomsten worden gevonden die vergelijkbaar zijn, maar niet helemaal exact.  
 
-Deze vaardigheid is niet gebonden aan een Cognitive Services-API en kan gratis worden gebruikt tijdens de preview-periode. U moet nog steeds [een Cognitive Services resource koppelen](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)om de dagelijkse verrijkings limiet te onderdrukken. De dagelijkse limiet is van toepassing op gratis toegang tot Cognitive Services wanneer deze via Azure Cognitive Search wordt geopend.
+Deze vaardigheid is niet gebonden aan een Cognitive Services-API en kan gratis worden gebruikt tijdens de preview-periode. U moet nog steeds [een Cognitive Services resource koppelen](./cognitive-search-attach-cognitive-services.md)om de dagelijkse verrijkings limiet te onderdrukken. De dagelijkse limiet is van toepassing op gratis toegang tot Cognitive Services wanneer deze via Azure Cognitive Search wordt geopend.
 
 ## <a name="odatatype"></a>@odata.type  
 Micro soft. skills. Text. CustomEntityLookupSkill 
@@ -36,7 +36,7 @@ Micro soft. skills. Text. CustomEntityLookupSkill
 
 Parameters zijn hoofdlettergevoelig.
 
-| Parameternaam     | Description |
+| Parameternaam     | Beschrijving |
 |--------------------|-------------|
 | `entitiesDefinitionUri`    | Pad naar een JSON-of CSV-bestand met alle doel tekst die moet worden vergeleken. Deze entiteits definitie wordt gelezen aan het begin van het uitvoeren van een Indexeer functie. eventuele updates van dit bestand worden uitgevoerd totdat de volgende keer wordt uitgevoerd. Deze configuratie moet toegankelijk zijn via HTTPS. Zie de aangepaste indeling voor de [entiteits definitie](#custom-entity-definition-format) hieronder voor het verwachte CSV-of JSON-schema.|
 |`inlineEntitiesDefinition` | Definities van de inline JSON-entiteit. Deze para meter vervangt de para meter entitiesDefinitionUri indien aanwezig. Er kan niet meer dan 10 KB aan configuratie worden meegeleverd. Zie de definitie van de [aangepaste entiteit](#custom-entity-definition-format) hieronder voor het verwachte JSON-schema. |
@@ -45,16 +45,16 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Description                   |
+| Invoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
 | `text`          | De tekst die moet worden geanalyseerd.          |
-| `languageCode`    | Optioneel. De standaardwaarde is `"en"`.  |
+| `languageCode`    | Optioneel. De standaardinstelling is `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
 
-| Uitvoer naam      | Description                   |
+| Uitvoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
 | `entities` | Een matrix met objecten die informatie bevatten over de gevonden overeenkomsten en gerelateerde meta gegevens. Elk van de geïdentificeerde entiteiten bevat mogelijk de volgende velden:  <ul> <li> *naam*: de entiteit op het hoogste niveau dat is geïdentificeerd. De entiteit vertegenwoordigt het ' genormaliseerde ' formulier. </li> <li> *id*: een unieke id voor de entiteit zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *Beschrijving*: beschrijving van de entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit. </li> <li> *type:* Entiteits type zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *subtype:* Subtype van entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit.</li>  <li> *matchs*: verzameling waarmee de overeenkomsten voor die entiteit worden beschreven op de bron tekst. Elke overeenkomst heeft de volgende leden: </li> <ul> <li> *tekst*: de onbewerkte tekst komt overeen met het bron document. </li> <li> *Offset*: de locatie waar de overeenkomst is gevonden in de tekst. </li> <li> *Length*: de lengte van de overeenkomende tekst. </li> <li> *matchDistance*: het aantal tekens dat anders is dan dit komt overeen met de oorspronkelijke entiteits naam of-alias.  </li> </ul> </ul>
   |
@@ -69,7 +69,7 @@ Als de definitie inline wordt vermeld, moet deze als inline worden verschaft als
 
 ### <a name="csv-format"></a>CSV-indeling
 
-U kunt de definitie van de aangepaste entiteiten opgeven om te zoeken in een bestand met door Komma's gescheiden waarden (CSV) door het pad naar het bestand op te geven en in te stellen in de para meter *entitiesDefinitionUri* . Het pad moet zich op een HTTPS-locatie bevinden. Het definitie bestand kan Maxi maal 10 MB groot zijn.
+U kunt de definitie van de aangepaste entiteiten opgeven om te zoeken in een bestand met door Komma's gescheiden waarden (CSV) door het pad naar het bestand op te geven en in te stellen in de para meter *entitiesDefinitionUri*  . Het pad moet zich op een HTTPS-locatie bevinden. Het definitie bestand kan Maxi maal 10 MB groot zijn.
 
 De CSV-indeling is eenvoudig. Elke regel vertegenwoordigt een unieke entiteit, zoals hieronder wordt weer gegeven:
 
@@ -156,7 +156,7 @@ De onderstaande tabellen bevatten meer informatie over de verschillende configur
 | `defaultFuzzyEditDistance` | Beschrijving Wijzigt de standaard waarde voor het bewerken van fuzzy voor deze entiteit. Het kan worden gebruikt om de standaard waarde van alle aliassen fuzzyEditDistance waarden te wijzigen. |
 | `aliases` | Beschrijving Een matrix met complexe objecten die kunnen worden gebruikt om alternatieve spellingen of synoniemen op te geven voor de naam van de hoofd entiteit. |
 
-| Alias eigenschappen | Description |
+| Alias eigenschappen | Beschrijving |
 |------------------|-------------|
 | `text`  | De alternatieve spelling of weer gave van de naam van een doel entiteit.  |
 | `caseSensitive` | Beschrijving Fungeert hetzelfde als de hoofd entiteit ' caseSensitive-para meter hierboven, maar is alleen van toepassing op deze ene alias. |
@@ -231,7 +231,7 @@ Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op 
 
 ```
 
-##    <a name="sample-input"></a>Voorbeeld invoer
+##    <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -302,7 +302,7 @@ Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op 
 
 Deze waarschuwing wordt verzonden als het aantal gedetecteerde overeenkomsten groter is dan het toegestane maximum. In dit geval worden er ook dubbele overeenkomsten beëindigd. Als dit niet acceptabel is, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat we u kunnen helpen met uw individuele use-case.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c8e44a3d57ee519ff792de97ed2b3d183bf666b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171955"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923361"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Een upgrade uitvoeren naar Azure Search .NET SDK-versie 1,1
 
-Als u versie 1.0.2-Preview of ouder van de [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 1,1.
+Als u versie 1.0.2-Preview of ouder van de [Azure Search .NET SDK](/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 1,1.
 
 Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
 
@@ -53,9 +53,9 @@ Ten slotte kunt u, nadat u een opbouw fout hebt aangebracht, wijzigingen aanbren
 De volgende lijst wordt geordend op basis van de kans dat de wijziging invloed heeft op de code van uw toepassing.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch-en IndexAction-wijzigingen
-`IndexBatch.Create`is hernoemd `IndexBatch.New` en heeft geen `params` argument meer. U kunt gebruiken `IndexBatch.New` voor batches die verschillende soorten acties combi neren (samen voegen, verwijderen, enzovoort). Daarnaast zijn er nieuwe statische methoden voor het maken van batches, waarbij alle acties hetzelfde zijn: `Delete` , `Merge` , en `MergeOrUpload` `Upload` .
+`IndexBatch.Create` is hernoemd `IndexBatch.New` en heeft geen `params` argument meer. U kunt gebruiken `IndexBatch.New` voor batches die verschillende soorten acties combi neren (samen voegen, verwijderen, enzovoort). Daarnaast zijn er nieuwe statische methoden voor het maken van batches, waarbij alle acties hetzelfde zijn: `Delete` , `Merge` , en `MergeOrUpload` `Upload` .
 
-`IndexAction`Er zijn geen open bare constructors meer en de bijbehorende eigenschappen zijn nu onveranderbaar. Gebruik de nieuwe statische methoden voor het maken van acties voor verschillende doel einden: `Delete` , `Merge` , en `MergeOrUpload` `Upload` . `IndexAction.Create`is verwijderd. Als u de overbelasting hebt gebruikt die alleen een document inneemt, moet u ervoor zorgen dat u `Upload` in plaats daarvan gebruikt.
+`IndexAction` Er zijn geen open bare constructors meer en de bijbehorende eigenschappen zijn nu onveranderbaar. Gebruik de nieuwe statische methoden voor het maken van acties voor verschillende doel einden: `Delete` , `Merge` , en `MergeOrUpload` `Upload` . `IndexAction.Create` is verwijderd. Als u de overbelasting hebt gebruikt die alleen een document inneemt, moet u ervoor zorgen dat u `Upload` in plaats daarvan gebruikt.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -169,7 +169,7 @@ Vanaf versie 1,1 worden de bewerkings methoden door de Azure Search .NET SDK and
 
 * Optionele para meters worden nu als standaard parameters gemodelleerd in plaats van extra methode Overloads. Dit vermindert het aantal overbelasting van de methode, soms aanzienlijk.
 * De uitbreidings methoden verbergen nu een groot deel van de overbodige details van HTTP van de aanroeper. Oudere versies van de SDK hebben bijvoorbeeld een antwoord object geretourneerd met een HTTP-status code, die u vaak niet hoeft te controleren, omdat bewerkings methoden `CloudException` worden gegenereerd voor een status code die een fout aangeeft. De nieuwe uitbreidings methoden retour neren alleen model objecten, waardoor u geen problemen hoeft op te slaan in uw code.
-* Daarentegen bieden de kern interfaces nu methoden die u meer controle geven over het HTTP-niveau als u dit nodig hebt. U kunt nu aangepaste HTTP-headers door geven die moeten worden opgenomen in-aanvragen en het nieuwe `AzureOperationResponse<T>` retour type geeft u direct toegang tot de `HttpRequestMessage` en `HttpResponseMessage` voor de bewerking. `AzureOperationResponse`is gedefinieerd in de `Microsoft.Rest.Azure` naam ruimte en wordt vervangen `Hyak.Common.OperationResponse` .
+* Daarentegen bieden de kern interfaces nu methoden die u meer controle geven over het HTTP-niveau als u dit nodig hebt. U kunt nu aangepaste HTTP-headers door geven die moeten worden opgenomen in-aanvragen en het nieuwe `AzureOperationResponse<T>` retour type geeft u direct toegang tot de `HttpRequestMessage` en `HttpResponseMessage` voor de bewerking. `AzureOperationResponse` is gedefinieerd in de `Microsoft.Rest.Azure` naam ruimte en wordt vervangen `Hyak.Common.OperationResponse` .
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters wijzigingen
 Er is een nieuwe klasse met `ScoringParameter` de naam toegevoegd in de nieuwste SDK, zodat het eenvoudiger is om para meters in te stellen voor Score profielen in een zoek query. Voorheen `ScoringProfiles` werd de eigenschap van de `SearchParameters` klasse getypt als `IList<string>` ; Nu is deze getypt als `IList<ScoringParameter>` .
@@ -199,10 +199,10 @@ sp.ScoringParameters =
 ### <a name="model-class-changes"></a>Wijzigingen in model klassen
 Als gevolg van de wijzigingen in de hand tekening die worden beschreven in de [bewerkings methode](#OperationMethodChanges), zijn veel klassen in de `Microsoft.Azure.Search.Models` naam ruimte hernoemd of verwijderd. Bijvoorbeeld:
 
-* `IndexDefinitionResponse`is vervangen door`AzureOperationResponse<Index>`
+* `IndexDefinitionResponse` is vervangen door `AzureOperationResponse<Index>`
 * De naam van `DocumentSearchResponse` is gewijzigd in `DocumentSearchResult`
 * De naam van `IndexResult` is gewijzigd in `IndexingResult`
-* `Documents.Count()`retourneert nu een `long` met het aantal documenten in plaats van een`DocumentCountResponse`
+* `Documents.Count()` retourneert nu een `long` met het aantal documenten in plaats van een `DocumentCountResponse`
 * De naam van `IndexGetStatisticsResponse` is gewijzigd in `IndexGetStatisticsResult`
 * De naam van `IndexListResponse` is gewijzigd in `IndexListResult`
 
@@ -401,4 +401,3 @@ Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 Daarom raden we u aan om nullbare typen in uw model klassen als best practice te gebruiken.
 
 Raadpleeg [Dit probleem op github](https://github.com/Azure/azure-sdk-for-net/issues/1063)voor meer informatie over deze fout en de oplossing.
-

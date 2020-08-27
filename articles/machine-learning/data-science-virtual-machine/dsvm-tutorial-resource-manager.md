@@ -10,18 +10,18 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 675ddf073393afde6ac8d08a65b40da11d90d3ea
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9b89c0a4135bf595991439dd47e57a870ea2b0d1
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026658"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855066"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Quickstart: Een virtuele Ubuntu Data Science-machine maken met een ARM-sjabloon
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze quickstart ziet u hoe u een Data Science Virtual Machine maakt voor Ubuntu 18.04 met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon). Data Science Virtual Machines zijn virtuele machines in de cloud waarop vooraf een reeks frameworks en hulpprogramma's voor gegevenswetenschappen en machine learning wordt geladen. Wanneer de VM wordt geïmplementeerd op rekenresources met een GPU, worden alle hulpprogramma's en bibliotheken geconfigureerd voor het gebruik van de GPU. 
+In deze quickstart ziet u hoe u een Data Science Virtual Machine maakt voor Ubuntu 18.04 met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon). Data Science Virtual Machines zijn virtuele machines in de cloud waarop vooraf een reeks frameworks en hulpprogramma's voor gegevenswetenschappen en machine learning wordt geladen. Wanneer de VM wordt geïmplementeerd op rekenresources met een GPU, worden alle hulpprogramma's en bibliotheken geconfigureerd voor het gebruik van de GPU.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,12 +37,17 @@ Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van A
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). De volledige sjabloon voor dit artikel is te lang om hier weer te geven. Als u de volledige sjabloon wilt bekijken, raadpleegt u [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Het gedeelte waarin de specifieke kenmerken van de DSVM wordt gedefinieerd, ziet u hier:
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/).
 
-:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
+:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
 De volgende resources zijn gedefinieerd in de sjabloon:
 
+* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Maak een virtuele machine in de cloud. In deze sjabloon wordt de virtuele machine geconfigureerd als een Data Science Virtual Machine met Ubuntu 18.04.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
@@ -74,7 +79,7 @@ Wanneer u de bovenstaande opdracht uitvoert, voert u het volgende in:
 
 Uw Data Science Virtual Machine weergeven:
 
-1. Ga naar https://portal.azure.com.
+1. Ga naar de [Azure-portal](https://portal.azure.com)
 1. Meld u aan.
 1. Kies de resourcegroep die u net hebt gemaakt.
 

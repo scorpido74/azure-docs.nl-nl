@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a6902d1420090b81c933f07f7e929aa86c052404
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 56e3c1e48df51cd24d70517ee23d47ef27d378d7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935327"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR cognitieve vaardigheid
 
-De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen die door [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) in cognitive services worden verschaft. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
+De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen die door [Computer Vision](../cognitive-services/computer-vision/home.md) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) in cognitive services worden verschaft. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
 
 + Voor Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlands wordt de nieuwe [Lees](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) -API gebruikt.
 + Voor alle andere talen wordt de ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API gebruikt.
@@ -212,4 +212,4 @@ In het bovenstaande voor beeld van de vaardig heden wordt ervan uitgegaan dat er
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [TextMerger-vaardigheid](cognitive-search-skill-textmerger.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Indexeerfunctie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexeerfunctie maken (REST)](/rest/api/searchservice/create-indexer)

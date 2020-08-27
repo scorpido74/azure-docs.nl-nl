@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826409"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890328"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -23,7 +23,7 @@ We gaan ervan uit dat u een VM ' testVM ' wilt beveiligen onder een resource gro
 
 ### <a name="discover-unprotected-azure-vms"></a>Niet-beveiligde Azure-Vm's detecteren
 
-Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post*  -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde virtuele machines in het huidige abonnement en ' caches ' van deze wordt weer gegeven. Zodra de virtuele machine in de cache is opgeslagen, hebben de Recovery Services toegang tot de virtuele machine en kunnen deze worden beveiligd.
+Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post*  -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde virtuele machines in het huidige abonnement en ' caches ' in de sjabloon krijgt. Zodra de virtuele machine in de cache is opgeslagen, hebben de Recovery Services toegang tot de virtuele machine en kunnen deze worden beveiligd.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
