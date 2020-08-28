@@ -3,13 +3,13 @@ title: Gebeurtenissen ontvangen van Azure Event Grid naar een HTTP-eind punt
 description: Hierin wordt beschreven hoe u een HTTP-eind punt valideert en vervolgens gebeurtenissen van Azure Event Grid ontvangt en deserialiseren
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9e89c6920c76914ccab6298b1404b0cae698b532
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415105"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006071"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Gebeurtenissen op een HTTP-eindpunt ontvangen
 
@@ -360,7 +360,7 @@ Controleer ten slotte of uw functie uw aangepaste gebeurtenis type nu kan verwer
 }]
 ```
 
-U kunt deze functionaliteit ook testen door [een aangepaste gebeurtenis te verzenden met een krul vanuit de portal](./custom-event-quickstart-portal.md) of door [te boeken naar een aangepast onderwerp](./post-to-custom-topic.md) met behulp van een service of toepassing die kan worden gepost naar een eind punt, zoals een [postman](https://www.getpostman.com/). Maak een aangepast onderwerp en een gebeurtenis abonnement met het eind punt dat is ingesteld als de functie-URL.
+U kunt deze functionaliteit ook testen door [een aangepaste gebeurtenis te verzenden met een krul vanuit de portal](./custom-event-quickstart-portal.md) of door [te boeken naar een aangepast onderwerp](./post-to-custom-topic.md)  met behulp van een service of toepassing die kan worden gepost naar een eind punt, zoals een [postman](https://www.getpostman.com/). Maak een aangepast onderwerp en een gebeurtenis abonnement met het eind punt dat is ingesteld als de functie-URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 

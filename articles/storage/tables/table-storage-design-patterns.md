@@ -8,12 +8,13 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 8a50aa02a2ba7187c8221c046fcabb7f4a6473fa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826681"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006343"
 ---
 # <a name="table-design-patterns"></a>Tabelontwerppatronen
 In dit artikel worden enkele patronen beschreven die geschikt zijn voor gebruik met Table service oplossingen. U zult ook zien hoe u een aantal van de problemen en commerciële benadert die worden besproken in andere ontwerp artikelen van Table-opslag. In het volgende diagram ziet u een overzicht van de relaties tussen de verschillende patronen:  
@@ -742,7 +743,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -762,7 +763,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -799,7 +800,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -835,7 +836,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -857,7 +858,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -898,7 +899,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>

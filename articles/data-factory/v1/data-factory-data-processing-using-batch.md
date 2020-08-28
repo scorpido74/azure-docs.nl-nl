@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321402"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998065"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
 > [!NOTE]
@@ -130,7 +131,7 @@ U gebruikt [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/
 
    ![Structuur van mappen en submappen](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder`en `outputfolder` zijn mappen op het hoogste niveau in `mycontainer` . De `inputfolder` map bevat submappen met een datum/tijd stempel (jjjj-mm-dd-UU).
+   `Inputfolder` en `outputfolder` zijn mappen op het hoogste niveau in `mycontainer` . De `inputfolder` map bevat submappen met een datum/tijd stempel (jjjj-mm-dd-UU).
 
    Als u Storage Explorer gebruikt, uploadt u in de volgende stap bestanden met de volgende namen: `inputfolder/2015-11-16-00/file.txt` , `inputfolder/2015-11-16-01/file.txt` , enzovoort. Met deze stap worden de mappen automatisch gemaakt.
 
@@ -190,7 +191,7 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
    f. Selecteer **C: \\ ADF** voor de **locatie**. Maak de map **ADF** als deze nog niet bestaat.
 
-   bijvoorbeeld Selecteer **OK** om het project te maken.
+   g. Selecteer **OK** om het project te maken.
 
 1. Selecteer **Hulpprogramma's** > **NuGet Package Manager** > **Package Manager-console**.
 
@@ -964,7 +965,7 @@ Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma'
 * [Gegevens vernieuwen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure en Power BI: basis overzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Inleiding tot de Data Factory-Service](data-factory-introduction.md)

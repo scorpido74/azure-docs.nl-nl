@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873039"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008383"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
@@ -22,7 +23,7 @@ Aangepaste deserializers van .NET bieden uw Azure Stream Analytics-taak de mogel
 
 De volgende code voorbeelden zijn de interfaces die de aangepaste deserializer definiëren en implementeren `StreamDeserializer<T>` .
 
-`UserDefinedOperator`is de basis klasse voor alle aangepaste streaming-Opera tors. Het wordt geïnitialiseerd `StreamingContext` , wat een context biedt met het mechanisme voor het publiceren van diagnostische gegevens waarvoor u fouten wilt opsporen in problemen met uw deserializer.
+`UserDefinedOperator` is de basis klasse voor alle aangepaste streaming-Opera tors. Het wordt geïnitialiseerd `StreamingContext` , wat een context biedt met het mechanisme voor het publiceren van diagnostische gegevens waarvoor u fouten wilt opsporen in problemen met uw deserializer.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -35,7 +36,7 @@ Het volgende code fragment is de deserialisatie voor het streamen van gegevens.
 
 Skippable-fouten moeten worden verzonden met `IStreamingDiagnostics` door gegeven via `UserDefinedOperator` de initialisatie methode. Alle uitzonde ringen worden beschouwd als fouten en de deserializer wordt opnieuw gemaakt. Na een bepaald aantal fouten wordt de taak naar de status mislukt.
 
-`StreamDeserializer<T>`deserialeert een stroom naar een object van het type `T` . Aan de volgende voor waarden moet worden voldaan:
+`StreamDeserializer<T>` deserialeert een stroom naar een object van het type `T` . Aan de volgende voor waarden moet worden voldaan:
 
 1. T is een klasse of een struct.
 1. Alle open bare velden in T zijn
@@ -45,7 +46,7 @@ Skippable-fouten moeten worden verzonden met `IStreamingDiagnostics` door gegeve
     1. IList `T2` waarbij T2 dezelfde regels volgt.
     1. Heeft geen recursieve typen.
 
-De para meter `stream` is de stroom die het geserialiseerde object bevat. `Deserialize`retourneert een verzameling `T` exemplaren.
+De para meter `stream` is de stroom die het geserialiseerde object bevat. `Deserialize` retourneert een verzameling `T` exemplaren.
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +55,7 @@ De para meter `stream` is de stroom die het geserialiseerde object bevat. `Deser
     }
 ```
 
-`StreamingContext`biedt context met het mechanisme voor het publiceren van diagnostische gegevens voor de gebruikers operator.
+`StreamingContext` biedt context met het mechanisme voor het publiceren van diagnostische gegevens voor de gebruikers operator.
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +64,13 @@ De para meter `stream` is de stroom die het geserialiseerde object bevat. `Deser
     }
 ```
 
-`StreamingDiagnostics`is de diagnostische gegevens voor door de gebruiker gedefinieerde Opera Tors, zoals serialisatiefunctie, deserializer en door de gebruiker gedefinieerde functies.
+`StreamingDiagnostics` is de diagnostische gegevens voor door de gebruiker gedefinieerde Opera Tors, zoals serialisatiefunctie, deserializer en door de gebruiker gedefinieerde functies.
 
-`WriteError`schrijft een fout bericht naar bron logboeken en stuurt de fout naar diagnostische gegevens.
+`WriteError` schrijft een fout bericht naar bron logboeken en stuurt de fout naar diagnostische gegevens.
 
-`briefMessage`is een kort fout bericht. Dit bericht wordt weer gegeven in diagnostische gegevens en wordt door het product team gebruikt voor fout opsporing. Neem geen gevoelige informatie op en behoud het bericht van minder dan 200 tekens
+`briefMessage` is een kort fout bericht. Dit bericht wordt weer gegeven in diagnostische gegevens en wordt door het product team gebruikt voor fout opsporing. Neem geen gevoelige informatie op en behoud het bericht van minder dan 200 tekens
 
-`detailedMessage`is een gedetailleerd fout bericht dat alleen wordt toegevoegd aan de bron Logboeken in uw opslag. Dit bericht moet kleiner zijn dan 2000 tekens.
+`detailedMessage` is een gedetailleerd fout bericht dat alleen wordt toegevoegd aan de bron Logboeken in uw opslag. Dit bericht moet kleiner zijn dan 2000 tekens.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -219,7 +220,7 @@ De volgende Java script-code is een voor beeld van de serialisatie-indeling voor
 }  
 ```
 
-`serializationClassName`moet een klasse zijn die wordt geïmplementeerd `StreamDeserializer<T>` . Dit wordt beschreven in de volgende sectie.
+`serializationClassName` moet een klasse zijn die wordt geïmplementeerd `StreamDeserializer<T>` . Dit wordt beschreven in de volgende sectie.
 
 ## <a name="region-support"></a>Ondersteuning voor regio
 

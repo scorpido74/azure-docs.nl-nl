@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392128"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008689"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Queryprestaties afstemmen met Azure Cosmos DB
 
@@ -38,7 +39,7 @@ Wanneer u een query naar Azure Cosmos DB geeft, voert de SDK de volgende logisch
 
 De Sdk's bieden verschillende opties voor het uitvoeren van query's. In .NET zijn deze opties bijvoorbeeld beschikbaar in de- `FeedOptions` klasse. In de volgende tabel worden deze opties beschreven en hoe deze van invloed zijn op de uitvoerings tijd van query's. 
 
-| Optie | Description |
+| Optie | Beschrijving |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Moet worden ingesteld op True voor elke query die moet worden uitgevoerd in meer dan één partitie. Dit is een expliciete vlag waarmee u tijdens de ontwikkelings periode de prestaties kunt afnemen. |
 | `EnableScanInQuery` | Moet worden ingesteld op True als u zich hebt afgemeld bij het indexeren, maar u wilt de query toch uitvoeren via een scan. Alleen van toepassing als indexering voor het aangevraagde filter pad is uitgeschakeld. | 
@@ -124,7 +125,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 De belangrijkste reactie headers die worden geretourneerd door de query zijn onder andere:
 
-| Optie | Description |
+| Optie | Beschrijving |
 | ------ | ----------- |
 | `x-ms-item-count` | Het aantal items dat in het antwoord is geretourneerd. Dit is afhankelijk van de opgegeven `x-ms-max-item-count` waarde, het aantal items dat kan worden aangepast binnen de maximale grootte van de nettolading, de ingerichte door Voer en de uitvoerings tijd van de query. |  
 | `x-ms-continuation:` | Het vervolg token om de uitvoering van de query te hervatten als er aanvullende resultaten beschikbaar zijn. | 
@@ -136,7 +137,7 @@ Zie [Query's uitvoeren op resources met behulp van de rest API](/rest/api/cosmos
 ## <a name="best-practices-for-query-performance"></a>Aanbevolen procedures voor de prestaties van query's
 Hier volgen de meest voorkomende factoren die van invloed zijn op de prestaties van Azure Cosmos DB query's. In elk van deze onderwerpen wordt in dit artikel dieper opgetreden.
 
-| Rekening | Tip | 
+| Factor | Tip | 
 | ------ | -----| 
 | Ingerichte doorvoer | Meet RU per query en zorg ervoor dat u beschikt over de vereiste ingerichte door Voer voor uw query's. | 
 | Partitioneren en partitie sleutels | Voor keur query's met de partitie sleutel waarde in de component filter voor lage latentie. |
@@ -182,7 +183,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maximale graad van parallelle uitvoering
-Voor query's moet u de `MaxDegreeOfParallelism` voor het identificeren van de beste configuraties voor uw toepassing afstemmen, met name als u query's op meerdere partities uitvoert (zonder een filter voor de partitie sleutel waarde). `MaxDegreeOfParallelism`Hiermee bepaalt u het maximum aantal parallelle taken, d.w.z. het maximum aantal partities dat parallel moet worden bezocht. 
+Voor query's moet u de `MaxDegreeOfParallelism` voor het identificeren van de beste configuraties voor uw toepassing afstemmen, met name als u query's op meerdere partities uitvoert (zonder een filter voor de partitie sleutel waarde). `MaxDegreeOfParallelism`  Hiermee bepaalt u het maximum aantal parallelle taken, d.w.z. het maximum aantal partities dat parallel moet worden bezocht. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -237,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Gegevens | Eenheid | Description | 
+| Gegevens | Eenheid | Beschrijving | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milliseconden | Uitvoerings tijd van query | 
 | `queryCompileTimeInMs` | milliseconden | Compilatie tijd van de query  | 
@@ -259,7 +260,7 @@ De client-Sdk's kunnen intern meerdere query bewerkingen uitvoeren om de query b
 
 Hier volgen enkele voor beelden van query's en het interpreteren van enkele metrische gegevens die worden geretourneerd door de uitvoering van query's: 
 
-| Query’s uitvoeren | Voorbeeld metriek | Description | 
+| Query’s uitvoeren | Voorbeeld metriek | Beschrijving | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Het aantal opgehaalde documenten is 100 + 1 om overeen te komen met de component TOP. De query tijd wordt meestal gebruikt in `WriteOutputTime` en `DocumentLoadTime` omdat het een scan is. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount is nu hoger (500 + 1 zodat dit overeenkomt met de TOP-component). | 

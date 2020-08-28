@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891467"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003521"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>De Azure-frontend-API's gebruiken voor verificatie
 
-In deze sectie wordt beschreven hoe u de C#-API voor verificatie gebruikt.
+In deze sectie wordt beschreven hoe u de API voor verificatie en sessie beheer gebruikt.
+
+> [!CAUTION]
+De functies die in dit hoofd stuk worden beschreven, geven de interne aanroepen van de REST op de server. Net als bij alle REST-aanroepen wordt het verzenden van deze opdrachten te vaak vertraagd en wordt de server uiteindelijk niet meer geretourneerd. De waarde van het `SessionGeneralContext.HttpResponseCode` lid in dit geval is 429 (te veel aanvragen). Als vuist regel moet er een vertraging van **5-10 seconden tussen de volgende aanroepen**optreden.
+
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 

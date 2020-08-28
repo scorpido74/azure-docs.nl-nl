@@ -3,13 +3,13 @@ title: Toegang tot Azure Event Hubs verifiëren met hand tekeningen voor gedeeld
 description: Dit artikel laat u zien hoe u de toegang tot Event Hubs-resources kunt verifiëren met behulp van hand tekeningen voor gedeelde toegang.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423096"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008315"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Event Hubs resources verifiëren met behulp van Shared Access signatures (SAS)
 Shared Access Signature (SAS) biedt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de Shared Access Signature hebben. Hier volgen enkele van de besturings elementen die u in een SAS kunt instellen: 
@@ -44,10 +44,10 @@ Wanneer u sendRuleNS-verificatie regel gebruikt, kunnen client toepassingen word
 ## <a name="generate-a-shared-access-signature-token"></a>Een Shared Access Signature-token genereren 
 Elke client die toegang heeft tot de naam van een verificatie regel naam en een van de handtekening sleutels kan een SAS-token genereren. Het token wordt gegenereerd door een teken reeks in de volgende indeling te maken:
 
-- `se`-Het verloopt van tokens. Geheel getal dat seconden weergeeft sinds de epoche 00:00:00 UTC op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt
-- `skn`– Naam van de autorisatie regel, de naam van de SAS-sleutel.
-- `sr`: De URI van de bron waartoe toegang wordt verkregen.
-- `sig`Ondertekening.
+- `se`  -Het verloopt van tokens. Geheel getal dat seconden weergeeft sinds de epoche 00:00:00 UTC op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt
+- `skn` – Naam van de autorisatie regel, de naam van de SAS-sleutel.
+- `sr` : De URI van de bron waartoe toegang wordt verkregen.
+- `sig` Ondertekening.
 
 De hand tekening: de SHA-256-hash wordt berekend op basis van de resource-URI (bereik zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop, gescheiden door CRLF.
 

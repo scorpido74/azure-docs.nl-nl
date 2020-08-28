@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243714"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997724"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
 
@@ -90,10 +91,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Nu hebben we een functie-app met een door het systeem toegewezen beheerde identiteit met de rol Inzender voor het **DocumentDB-account** in de Azure Cosmos DB machtigingen. Met de volgende functie-app code worden de Azure Cosmos DB sleutels opgehaald, wordt een CosmosClient-object gemaakt, wordt de Tempe ratuur van het aquarium opgehaald en wordt dit vervolgens opgeslagen op Azure Cosmos DB.
 
-In dit voor beeld wordt de [List Keys API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) gebruikt om toegang te krijgen tot de sleutels van uw Azure Cosmos DB-account.
+In dit voor beeld wordt de [List Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) gebruikt om toegang te krijgen tot de sleutels van uw Azure Cosmos DB-account.
 
 > [!IMPORTANT] 
-> Als u de rol van [de Cosmos DB-account lezer wilt toewijzen](#grant-access-to-your-azure-cosmos-account) , moet u de [API lijst met alleen-lezen sleutels](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)gebruiken. Hiermee worden alleen-lezen sleutels gevuld.
+> Als u de rol van [de Cosmos DB-account lezer wilt toewijzen](#grant-access-to-your-azure-cosmos-account) , moet u de [API lijst met alleen-lezen sleutels](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys)gebruiken. Hiermee worden alleen-lezen sleutels gevuld.
 
 De List Keys-API retourneert het `DatabaseAccountListKeysResult` object. Dit type is niet gedefinieerd in de C#-bibliotheken. De volgende code toont de implementatie van deze klasse:  
 

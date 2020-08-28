@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over het maken en beheren van bac
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4678c6aaa03d511da35d5efee2b1e75d08546781
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826389"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006258"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Back-upbeleid voor Azure Recovery Services maken met behulp van REST API
 
-De stappen voor het maken van een back-upbeleid voor een Azure Recovery Services-kluis worden beschreven in het [beleid rest API document](/rest/api/backup/protectionpolicies/createorupdate). Laat ons dit document gebruiken als referentie voor het maken van een beleid voor back-ups van Azure-VM'S.
+De stappen voor het maken van een back-upbeleid voor een Azure Recovery Services-kluis worden beschreven in het [beleid rest API document](/rest/api/backup/protectionpolicies/createorupdate). We gebruiken dit document als referentie voor het maken van een beleid voor Azure VM-back-up.
 
 ## <a name="create-or-update-a-policy"></a>Een beleid maken of bijwerken
 

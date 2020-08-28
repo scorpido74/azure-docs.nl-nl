@@ -3,12 +3,13 @@ title: Gepartitioneerde Azure Service Bus-wacht rijen en-onderwerpen maken | Mic
 description: Hierin wordt beschreven hoe u Service Bus-wacht rijen en-onderwerpen partitioneert met meerdere bericht brokers.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c43d8d560ddede021b70b0cdc167f42052904b0b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11cc76b0dd0125c7b54438d3f991069b7c44db59
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064856"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007958"
 ---
 # <a name="partitioned-queues-and-topics"></a>Gepartitioneerde wachtrijen en onderwerpen
 
@@ -19,7 +20,7 @@ Azure Service Bus maakt gebruik van meerdere bericht Brokers voor het verwerken 
  
 Het is niet mogelijk om de partitie optie te wijzigen voor een bestaande wachtrij of elk onderwerp. u kunt de optie alleen instellen wanneer u de entiteit maakt.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 Elke gepartitioneerde wachtrij of elk onderwerp bestaat uit meerdere partities. Elke partitie wordt opgeslagen in een ander berichten archief en verwerkt door een andere Message Broker. Wanneer een bericht wordt verzonden naar een gepartitioneerde wachtrij of onderwerp, wordt het bericht Service Bus toegewezen aan een van de partities. De selectie wordt wille keurig uitgevoerd door Service Bus of door gebruik te maken van een partitie sleutel die door de afzender kan worden opgegeven.
 

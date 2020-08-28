@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495060"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006938"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u computers die zijn gerepliceerd door Azure
 
 Azure Monitor logboeken bieden een platform voor gegevens over het logboek waarmee activiteiten en bron logboeken worden verzameld, samen met andere bewakings gegevens. In Azure Monitor-logboeken gebruikt u Log Analytics om logboek query's te schrijven en te testen, en om logboek gegevens interactief te analyseren. U kunt de resultaten van het logboek visualiseren en doorzoeken en waarschuwingen configureren om acties uit te voeren op basis van bewaakte gegevens.
 
-Voor Site Recovery kunt u Logboeken Azure Monitor om u te helpen de volgende handelingen uit te voeren:
+Voor Site Recovery kunt u Azure Monitor-Logboeken gebruiken om het volgende te doen:
 
 - **Site Recovery status en-status bewaken**. U kunt bijvoorbeeld de replicatie status controleren, de status van de testfailover, Site Recovery gebeurtenissen, herstel punt doelstellingen (Rpo's) voor beveiligde machines en tarieven voor de snelheid van schijven/gegevens wijzigen.
 - **Stel waarschuwingen in voor site Recovery**. U kunt bijvoorbeeld waarschuwingen configureren voor computer status, de status van de testfailover of Site Recovery taak status.
@@ -62,9 +62,9 @@ U kunt de gegevens van het verloop snelheidgegevens en gegevens over de upload s
 1. Ga naar de werk ruimte Log Analytics en klik op **Geavanceerde instellingen**.
 2. Klik op de pagina **verbonden bronnen** en selecteer vervolgens **Windows-servers**.
 3. Down load de Windows-agent (64 bits) op de proces server. 
-4. [De werk ruimte-ID en-sleutel ophalen](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [De werk ruimte-ID en-sleutel ophalen](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [Agent configureren voor het gebruik van TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Voltooi de installatie van de agent](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) door de opgehaalde werk ruimte-ID en-sleutel op te geven.
+6. [Voltooi de installatie van de agent](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) door de opgehaalde werk ruimte-ID en-sleutel op te geven.
 7. Nadat de installatie is voltooid, gaat u naar Log Analytics werk ruimte en klikt u op **Geavanceerde instellingen**. Ga naar de pagina **gegevens** en klik op **Windows-prestatie meter items**. 
 8. Klik op **+** om de volgende twee tellers toe te voegen met een steekproef interval van 300 seconden:
 

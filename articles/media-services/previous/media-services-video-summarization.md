@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0e342e5509aaba05228c7d1032023a6f4710f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231842"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999509"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
 
@@ -33,7 +34,7 @@ Met de **Azure Media video thumbnails** media processor (MP) kunt u een samen va
 
 De **Azure Media Video thumbnail** -MP is momenteel beschikbaar als preview-versie.
 
-Dit artikel bevat informatie over de **miniatuur van Azure Media Video** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
+Dit artikel bevat informatie over de  **miniatuur van Azure Media Video** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -67,7 +68,7 @@ Op dit moment kunt u de volgende para meters wijzigen:
 
 In de volgende tabel wordt de standaard duur beschreven, wanneer **maxMotionThumbnailInSecs** niet wordt gebruikt.
 
-|  | Small | Neemt |
+|  | Klein | Neemt |
 | --- | --- | --- |
 | **Video duur** |d < 3 min. |3 min < d < 15 minuten |
 | **Miniatuur duur** |15 seconden (2-3 scènes) |30 seconden (3-5 scènes) |

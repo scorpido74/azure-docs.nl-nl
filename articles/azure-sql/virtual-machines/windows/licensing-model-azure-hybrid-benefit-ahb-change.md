@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668896"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010219"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Het licentiemodel voor een virtuele SQL-machine in Azure wijzigen
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,7 +156,9 @@ Het wijzigen van het licentie model is:
 
 ## <a name="known-errors"></a>Bekende fouten
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De resource ' micro soft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ' onder de resource groep \<resource-group> is niet gevonden.
+Bekijk de veelvoorkomende fouten en oplossingen. 
+
+**De resource ' micro soft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ' onder de resource groep \<resource-group> is niet gevonden.**
 
 Deze fout treedt op wanneer u probeert het licentie model op een SQL Server virtuele machine te wijzigen die niet is geregistreerd bij de resource provider van de SQL-VM:
 
@@ -165,7 +167,7 @@ Deze fout treedt op wanneer u probeert het licentie model op een SQL Server virt
 U moet uw abonnement registreren bij de resource provider en vervolgens [uw SQL Server-VM registreren bij de resource provider](sql-vm-resource-provider-register.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Aan de virtuele machine zijn \<vmname\> meer dan één NIC gekoppeld
+**Aan de virtuele machine zijn \<vmname\> meer dan één NIC gekoppeld**
 
 Deze fout doet zich voor op virtuele machines met meer dan één NIC. Verwijder een van de Nic's voordat u het licentie model wijzigt. Hoewel u de NIC opnieuw kunt toevoegen aan de VM nadat u het licentie model hebt gewijzigd, worden de bewerkingen in de Azure Portal, zoals automatische back-up en patching, niet meer ondersteund. 
 

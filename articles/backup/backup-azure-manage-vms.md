@@ -3,12 +3,12 @@ title: Back-ups van Azure-VM'S beheren en bewaken
 description: Meer informatie over het beheren en bewaken van back-ups van Azure-VM'S met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892164"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999339"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -29,7 +29,7 @@ U kunt back-ups beheren met behulp van het dash board en door in te zoomen op af
 
 Vm's op het kluis dashboard weer geven:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer in het menu links **Alle services**.
 
     ![Alle services selecteren](./media/backup-azure-manage-vms/select-all-services.png)
@@ -63,7 +63,7 @@ Vm's op het kluis dashboard weer geven:
 
 Een bestaand back-upbeleid wijzigen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer in **> back-upbeleid beheren**het back-upbeleid voor het type **Azure virtual machine**.
 3. Selecteer **wijzigen** en wijzig de instellingen.
 
@@ -71,7 +71,7 @@ Een bestaand back-upbeleid wijzigen:
 
 Een back-upbeleid beheren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer op de tegel **Back-upitems** de optie **Azure virtual machine**.
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/azure-virtual-machine.png)
@@ -186,7 +186,7 @@ Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Back-upitem waarbij primaire gegevens bron niet meer bestaat
 
-* Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte back-uptaken op aanvraag (mislukte geplande taken worden niet weer gegeven).
+* Als Azure-Vm's die zijn geconfigureerd voor Azure Backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, zullen zowel geplande back-uptaken als op aanvraag (ad-hoc) back-uptaken mislukken met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte back-uptaken op aanvraag (mislukte geplande taken worden niet weer gegeven).
 * Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
 * We raden u aan om de back-upitems te verwijderen waar de primaire gegevens bron niet meer bestaat om extra kosten te voor komen. als het back-upbestand/de gegevens voor de verwijderings resources niet langer zijn vereist, wordt het laatste herstel punt permanent bewaard en wordt de gebruiker in rekening gebracht op basis van de back-upprijs van toepassing.
 

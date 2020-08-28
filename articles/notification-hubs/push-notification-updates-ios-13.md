@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529706"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998047"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Updates voor Azure Notification Hubs voor iOS 13
 
@@ -25,7 +26,7 @@ Er zijn onlangs enkele wijzigingen aangebracht in de open bare push service van 
 
 Apple vereist nu dat ontwikkel aars meldingen identificeren als waarschuwings-of achtergrond meldingen via de nieuwe `apns-push-type` header in de APNS API. Volgens de [documentatie van Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): ' de waarde van deze header moet nauw keurig overeenkomen met de inhoud van de nettolading van uw melding. Als er sprake is van een niet-overeenkomend of als de header ontbreekt op de vereiste systemen, retourneert APNs mogelijk een fout, wordt de bezorging van de melding vertraagd of wordt deze helemaal verwijderd. "
 
-Ontwikkel aars moeten deze header nu instellen in toepassingen die meldingen verzenden via Azure Notification Hubs. Vanwege een technische beperking moeten klanten verificatie op basis van tokens gebruiken voor APNS-referenties met aanvragen die dit kenmerk bevatten. Als u verificatie op basis van certificaten gebruikt voor uw APNS-referenties, moet u overschakelen op verificatie op basis van tokens.
+Ontwikkel aars moeten deze header nu instellen in toepassingen die meldingen verzenden via Azure Notification Hubs. Vanwege een technische beperking moeten klanten verificatie op basis van tokens gebruiken voor APNS-referenties met aanvragen die dit kenmerk bevatten. Als u op certificaat gebaseerde verificatie gebruikt voor uw APNS-referenties, moet u overschakelen naar op tokens gebaseerde verificatie.
 
 De volgende voorbeeld code laat zien hoe u dit header-kenmerk instelt in meldings aanvragen die via Azure Notification Hubs worden verzonden.
 

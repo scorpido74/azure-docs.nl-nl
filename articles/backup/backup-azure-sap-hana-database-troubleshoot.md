@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826987"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004167"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -22,7 +22,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Fout bericht**      | <span style="font-weight:normal">Er zijn voor Azure Backup geen vereiste roltoewijzingen voor het uitvoeren van een back-up</span>    |
+| **Fout bericht**      | <span style="font-weight:normal">Azure Backup heeft niet de vereiste rolmachtigingen voor het uitvoeren van een back-up</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Mogelijke oorzaken**    | De rol is mogelijk overschreven.                          |
 | **Aanbevolen actie** | U kunt het probleem oplossen door het script uit te voeren in het deel venster **Discover DB** of [hier](https://aka.ms/scriptforpermsonhana)te downloaden. U kunt ook de rol ' SAP_INTERNAL_HANA_SUPPORT ' toevoegen aan de back-upgebruiker van de werk belasting (AZUREWLBACKUPHANAUSER). |
@@ -31,7 +31,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 | Foutbericht      | <span style="font-weight:normal">Kan geen verbinding maken met het HANA-systeem</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| **Mogelijke oorzaken**    | Het SAP HANA-exemplaar is mogelijk niet actief.<br/>De vereiste machtigingen voor Azure backup voor interactie met de HANA-Data Base zijn niet ingesteld. |
+| **Mogelijke oorzaken**    | Het SAP HANA-exemplaar is mogelijk niet actief.<br/>De vereiste machtigingen voor de Azure Backup om te communiceren met de HANA-Data Base zijn niet ingesteld. |
 | **Aanbevolen actie** | Controleer of de SAP HANA-data base actief is. Als de data base actief is, controleert u of alle vereiste machtigingen zijn ingesteld. Als een van de machtigingen ontbreekt, voert u het script voor de [voorafgaande registratie](https://aka.ms/scriptforpermsonhana) uit om de ontbrekende machtigingen toe te voegen. |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
@@ -45,7 +45,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 | Foutbericht      | <span style="font-weight:normal">De opgegeven SAP HANA bewerking wordt niet ondersteund</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| **Mogelijke oorzaken**    | Azure backup voor SAP HANA biedt geen ondersteuning voor incrementele back-ups en acties die worden uitgevoerd op SAP HANA systeem eigen clients (Studio/cockpit/DBA cockpit) |
+| **Mogelijke oorzaken**    | Azure Backup voor SAP HANA biedt geen ondersteuning voor incrementele back-up en acties die worden uitgevoerd op SAP HANA systeem eigen clients (Studio/cockpit/DBA-cockpit) |
 | **Aanbevolen actie** | Zie [hier](./sap-hana-backup-support-matrix.md#scenario-support)voor meer informatie. |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
@@ -73,7 +73,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 | Foutbericht      | <span style="font-weight:normal">Ongeldige backint-configuratie gedetecteerd</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| **Mogelijke oorzaken**    | De para meters voor back-ups zijn onjuist opgegeven voor Azure backup |
+| **Mogelijke oorzaken**    | De para meters voor de back-up zijn onjuist opgegeven voor Azure Backup |
 | **Aanbevolen actie** | Controleer of de volgende (backint)-para meters zijn ingesteld:<br/>\* [catalog_backup_using_backint: True]<br/>\* [enable_accumulated_catalog_backup: False]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Als de backint-para meters aanwezig zijn op de HOST, verwijdert u deze. Als de para meters niet aanwezig zijn op het niveau van de HOST, maar die hand matig zijn gewijzigd op database niveau, moet u deze herstellen naar de juiste waarden zoals eerder beschreven. Of voer de [beveiliging stoppen uit en behoud back-upgegevens](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) van de Azure Portal en selecteer vervolgens **back-up hervatten**. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore

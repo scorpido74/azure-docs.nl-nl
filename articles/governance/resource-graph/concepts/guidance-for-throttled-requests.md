@@ -3,12 +3,13 @@ title: Richtlijnen voor vertraagde aanvragen
 description: Meer informatie over Group, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541835"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006003"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 
@@ -28,7 +29,7 @@ In azure resource Graph wordt een quotum nummer toegewezen voor elke gebruiker o
 In elke query-antwoord voegt Azure-resource grafiek twee beperkings koppen toe:
 
 - `x-ms-user-quota-remaining` (int): Het resterende resourcequotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
-- `x-ms-user-quota-resets-after`(UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
+- `x-ms-user-quota-resets-after` (UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
 
 Wanneer een beveiligingsprincipal toegang heeft tot meer dan 5000 abonnementen binnen het [query bereik](./query-language.md#query-scope)van de Tenant of beheer groep, wordt het antwoord beperkt tot de eerste 5000-abonnementen en `x-ms-tenant-subscription-limit-hit` wordt de header geretourneerd als `true` .
 

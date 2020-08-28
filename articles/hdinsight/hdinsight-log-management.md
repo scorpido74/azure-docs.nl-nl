@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 14634fac5d4501572a54f80f01a37e440d69d09b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075532"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997554"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -67,7 +67,7 @@ Het is belang rijk om inzicht te krijgen in de werkbelasting typen die op uw HDI
 
 * Denk na over het verzamelen van Logboeken vanuit het cluster of van meer dan één cluster, en om ze te sorteren voor doel einden, zoals controle, bewaking, planning en waarschuwingen. U kunt een aangepaste oplossing gebruiken om regel matig de logboek bestanden te openen en te downloaden en ze te combi neren en analyseren om een dashboard weergave te bieden. U kunt ook aanvullende mogelijkheden toevoegen voor waarschuwingen voor beveiliging of fout detectie. U kunt deze hulpprogram ma's samen stellen met behulp van Power shell, de HDInsight Sdk's of de code die toegang heeft tot het klassieke Azure-implementatie model.
 
-* Overweeg of een bewakings oplossing of service een nuttig voor deel zou zijn. Micro soft System Center biedt een [HDInsight-Management Pack](https://www.microsoft.com/download/details.aspx?id=42521). U kunt ook hulpprogram ma's van derden, zoals Apache Chukwa en ganglia, gebruiken om logboeken te verzamelen en te centraliseren. Veel bedrijven bieden services om op Hadoop gebaseerde big data oplossingen te bewaken, bijvoorbeeld: Centeriteit, Compuware APM, Sematext SPM en Zettaset Orchestrator.
+* Overweeg of een bewakings oplossing of service een nuttig voor deel zou zijn. Micro soft System Center biedt een [HDInsight-Management Pack](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259). U kunt ook hulpprogram ma's van derden, zoals Apache Chukwa en ganglia, gebruiken om logboeken te verzamelen en te centraliseren. Veel bedrijven bieden services om op Hadoop gebaseerde big data oplossingen te bewaken, bijvoorbeeld: Centeriteit, Compuware APM, Sematext SPM en Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Stap 2: Cluster-service versies beheren en logboeken weer geven
 
@@ -173,8 +173,8 @@ U kunt de .NET SDK voor Hadoop gebruiken om de logboek bestanden te controleren 
 
 Als u de grootte en het aantal logboek bestanden dat moet worden behouden wilt beheren, stelt u de volgende eigenschappen in `RollingFileAppender` :
 
-* `maxFileSize`is de kritieke grootte van het bestand, waarboven het bestand wordt getotaliseerd. De standaard waarde is 10 MB.
-* `maxBackupIndex`Hiermee geeft u het aantal back-upbestanden dat moet worden gemaakt, standaard 1.
+* `maxFileSize` is de kritieke grootte van het bestand, waarboven het bestand wordt getotaliseerd. De standaard waarde is 10 MB.
+* `maxBackupIndex` Hiermee geeft u het aantal back-upbestanden dat moet worden gemaakt, standaard 1.
 
 ### <a name="other-log-management-techniques"></a>Andere technieken voor logboek beheer
 

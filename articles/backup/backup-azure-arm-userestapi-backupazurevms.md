@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890328"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006292"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -445,7 +445,7 @@ Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere b
 |202 geaccepteerd     |         |     Geaccepteerd    |
 
 > [!IMPORTANT]
-> Ter bescherming tegen onbedoelde verwijderings scenario's is er een functie voor het [verwijderen van tijdelijke](use-restapi-update-vault-properties.md#soft-delete-state) verwijderingen beschikbaar voor Recovery Services kluis. Als de voorlopig verwijderings status van de kluis is ingesteld op ingeschakeld, worden de gegevens niet meteen verwijderd met de verwijderings bewerking. Het wordt 14 dagen bewaard en vervolgens permanent verwijderd. Er worden geen kosten in rekening gebracht voor de opslag voor deze periode van 14 dagen. Als u de verwijderings bewerking ongedaan wilt maken, raadpleegt u de [sectie ongedaan maken-verwijderen](#undo-the-deletion).
+> Als u wilt beveiligen tegen onbedoelde verwijderings scenario's, is er een functie voor het [voorlopig verwijderen](use-restapi-update-vault-properties.md#soft-delete-state) van Recovery Services kluis beschikbaar. Als de voorlopig verwijderings status van de kluis is ingesteld op ingeschakeld, worden de gegevens niet meteen verwijderd met de verwijderings bewerking. Het wordt 14 dagen bewaard en vervolgens permanent verwijderd. Er worden geen kosten in rekening gebracht voor de opslag voor deze periode van 14 dagen. Als u de verwijderings bewerking ongedaan wilt maken, raadpleegt u de [sectie ongedaan maken-verwijderen](#undo-the-deletion).
 
 ### <a name="undo-the-deletion"></a>De verwijdering ongedaan maken
 

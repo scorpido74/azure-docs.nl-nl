@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 70431ee42566d1cbba5ed239b9da55c2ff7a2afe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893014"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999220"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Herstellen | **Fout code**: CBPServerRegisteredVaultDontMatchWithCurrent/kluis referentie fout: 100110 <br/> <br/>**Fout bericht**: de oorspronkelijke en externe DPM-servers moeten zijn geregistreerd bij dezelfde kluis | **Oorzaak**: dit probleem treedt op wanneer u bestanden probeert te herstellen op de alternatieve server van de oorspronkelijke server met behulp van een externe DPM-herstel optie en als de server die wordt hersteld en de oorspronkelijke server van waaruit de gegevens worden opgeslagen, niet zijn gekoppeld aan dezelfde Recovery Services kluis.<br/> <br/>**Tijdelijke oplossing** Om dit probleem op te lossen, moet u ervoor zorgen dat de oorspronkelijke en alternatieve server zijn geregistreerd bij dezelfde kluis.|
+| Herstellen | **Fout code**: CBPServerRegisteredVaultDontMatchWithCurrent/kluis referentie fout: 100110 <br/> <br/>**Fout bericht**: de oorspronkelijke en externe DPM-servers moeten zijn geregistreerd bij dezelfde kluis | **Oorzaak**: dit probleem treedt op wanneer u bestanden probeert te herstellen op de alternatieve server van de oorspronkelijke server met de externe DPM-herstel optie, en als de server die wordt hersteld en de oorspronkelijke server van waaruit de gegevens worden opgeslagen, niet zijn gekoppeld aan dezelfde Recovery Services kluis.<br/> <br/>**Tijdelijke oplossing** Om dit probleem op te lossen, moet u ervoor zorgen dat de oorspronkelijke en alternatieve server zijn geregistreerd bij dezelfde kluis.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Taken voor het maken van online herstel punten voor VMware VM mislukken
 

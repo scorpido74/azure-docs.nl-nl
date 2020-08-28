@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73605624"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004065"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Query's uitvoeren op Avro-gegevens met behulp van Azure Data Lake Analytics
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u Avro-gegevens doorzoekt om berichten van A
 
 De uitdaging is dat toen Azure IoT Hub berichten naar Azure Blob-opslag stuurt, standaard IoT Hub de inhoud in de Avro-indeling schrijft, met zowel een eigenschap bericht hoofdtekst als een bericht eigenschap. De Avro-indeling wordt niet gebruikt voor andere eind punten. Hoewel de Avro-indeling geweldig is voor gegevens-en bericht behoud, is het een uitdaging om deze te gebruiken om gegevens op te vragen. De JSON-of CSV-indeling is in vergelijking veel gemakkelijker voor het uitvoeren van query's op gegevens. IoT Hub ondersteunt nu het schrijven van gegevens naar Blob Storage in JSON en in AVRO.
 
-Zie [Azure Storage gebruiken als een eind punt voor route ring](iot-hub-devguide-messages-d2c.md#azure-storage)voor meer informatie.
+Zie [Azure Storage gebruiken als een eind punt voor route ring](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)voor meer informatie.
 
 U kunt veel van de Big Data-patronen gebruiken voor het transformeren en schalen van gegevens, zodat u niet-relationele vereisten en indelingen voor Big data hoeft op te lossen en deze uitdaging te verhelpen. Een van de patronen, ' betalen per query ', is Azure Data Lake Analytics, de focus van dit artikel. Hoewel u de query eenvoudig kunt uitvoeren in Hadoop of andere oplossingen, is Data Lake Analytics vaak beter geschikt voor deze methode ' betalen per gebruik '.
 

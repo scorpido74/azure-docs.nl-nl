@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75348917"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007788"
 ---
 # <a name="reliable-actors-state-management"></a>Beheer van Reliable Actors status
 Reliable Actors zijn objecten met één thread die zowel logica als status kunnen inkapselen. Omdat actors worden uitgevoerd op Reliable Services, kunnen ze de status betrouwbaar onderhouden met behulp van dezelfde persistentie-en replicatie mechanismen. Op deze manier verliezen actors hun status na storingen, na het opnieuw activeren na het opschonen van de garbagecollection, of wanneer ze tussen knoop punten in een cluster worden verplaatst vanwege de resource verdeling of-upgrades.

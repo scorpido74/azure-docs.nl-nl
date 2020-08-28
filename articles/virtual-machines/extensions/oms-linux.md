@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029090"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999815"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>De virtuele-machine-extensie Log Analytics voor Linux
 
@@ -36,7 +36,7 @@ Azure Monitor Logboeken biedt bewakings-, waarschuwings-en waarschuwings functie
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) voor meer informatie over de ondersteunde Linux-distributies.
+Raadpleeg het artikel [overzicht van Azure monitor agents](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) voor meer informatie over de ondersteunde Linux-distributies.
 
 ### <a name="agent-and-vm-extension-version"></a>Versie van agent en VM-extensie
 De volgende tabel bevat een overzicht van de versie van de Log Analytics VM-extensie en Log Analytics agent bundel voor elke release. Er wordt een koppeling naar de release opmerkingen voor de Log Analytics agent bundel versie opgenomen. Release opmerkingen bevatten informatie over fout oplossingen en nieuwe functies die beschikbaar zijn voor een bepaalde agent versie.  
@@ -109,7 +109,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 | apiVersion | 2018-06-01 |
 | publisher | Micro soft. EnterpriseCloud. monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.7 |
+| typeHandlerVersion | 1,7 |
 | workspaceId (bijvoorbeeld) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (bijvoorbeeld) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 

@@ -5,12 +5,13 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bd47e5e39684bd4b684cd1e12dd9a3d420640ee2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261114"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005802"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric cluster via een programma schalen 
 
@@ -25,9 +26,9 @@ Een uitdaging voor het schrijven van een service voor het afhandelen van schalen
 U kunt een service-principal maken met de volgende stappen:
 
 1. Meld u aan bij de Azure CLI ( `az login` ) als gebruiker met toegang tot de schaalset voor virtuele machines
-2. De service-principal maken met`az ad sp create-for-rbac`
+2. De service-principal maken met `az ad sp create-for-rbac`
     1. Noteer de appId (client-ID elders genoemd), de naam, het wacht woord en de Tenant voor later gebruik.
-    2. U hebt ook uw abonnements-ID nodig, die kan worden weer gegeven met`az account list`
+    2. U hebt ook uw abonnements-ID nodig, die kan worden weer gegeven met `az account list`
 
 De Fluent Compute-bibliotheek kan als volgt worden aangemeld met deze referenties (Houd er rekening mee dat de belangrijkste Fluent Azure-typen zoals `IAzure` zijn in het [micro soft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) -pakket):
 
@@ -59,7 +60,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss)kan het object voor de virtuele-machine schaalset ophalen. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden bijgewerkt met de [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) opdracht.
+U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) kan het object voor de virtuele-machine schaalset ophalen. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden bijgewerkt met de [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) opdracht.
 
 Net als bij het hand matig toevoegen van een knoop punt, moet u een instantie van een schaalset toevoegen die nodig is om een nieuw Service Fabric knoop punt te starten omdat de sjabloon voor de schaalset extensies bevat om automatisch nieuwe exemplaren toe te voegen aan het Service Fabric cluster. 
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: 4445bb5c73ca001813d529a3e65d1ea95e084616
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082451"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000138"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP-programmeer gids voor Apache Storm in azure HDInsight
 
@@ -72,7 +72,7 @@ Uw invoeg toepassings code implementeert een van de volgende interfaces. Welke i
 
 ### <a name="iscpplugin"></a>ISCPPlugin
 
-**ISCPPlugin** is de gemeen schappelijke interface voor veel invoeg toepassingen. het is momenteel een dummy-interface.
+**ISCPPlugin** is de gemeen schappelijke interface voor veel invoeg toepassingen. Het is momenteel een dummy-interface.
 
 ```csharp
 public interface ISCPPlugin
@@ -434,7 +434,7 @@ U kunt topologie specificaties rechtstreeks bij een storm-cluster indienen voor 
 
 SCP.NET heeft de volgende functies toegevoegd voor het definiëren van transactionele topologieën:
 
-| Nieuwe functie | Parameters | Description |
+| Nieuwe functie | Parameters | Beschrijving |
 | --- | --- | --- |
 | **TX-topolopy** |*topologie-naam*<br />*Spout-kaart*<br />*bout-kaart* |Hiermee wordt een transactionele topologie gedefinieerd met de naam van de topologie, de spouts-definitie en de definitie toewijzing van de schicht. |
 | **SCP-TX-Spout** |*exec-naam*<br />*argumenten*<br />*bedragvelden* |Hiermee wordt een transactionele Spout gedefinieerd. De functie voert de toepassing uit die is opgegeven door *exec-name* en gebruikt *argumenten*.<br /><br />Met de para meter *Fields* geeft u de uitvoer velden voor de Spout op. |
@@ -446,7 +446,7 @@ SCP.NET heeft de volgende functies toegevoegd voor het definiëren van transacti
 
 SCP.NET definieert de volgende sleutel woorden:
 
-| Zoek | Description |
+| Zoek | Beschrijving |
 | --- | --- |
 | **: naam** |De naam van de topologie |
 | **: topologie** |De topologie met behulp van de functies in de vorige tabel en ingebouwde functies |
@@ -539,9 +539,9 @@ SCP.NET voegt een aangepaste groeperings methode toe en maakt gebruik van de inh
 
 In het voor gaande specificatie bestand:
 
-* `scp-field-group`Hiermee geeft u op dat de groepering een aangepaste veld groepering is die door SCP wordt geïmplementeerd.
-* `:tx`of `:non-tx` geeft aan of de topologie transactioneel is. U hebt deze informatie nodig omdat de begin index verschilt van transactionele en niet-transactionele topologieën.
-* `[0,1]`Hiermee geeft u een hash-set veld-Id's op die beginnen met nul.
+* `scp-field-group` Hiermee geeft u op dat de groepering een aangepaste veld groepering is die door SCP wordt geïmplementeerd.
+* `:tx` of `:non-tx` geeft aan of de topologie transactioneel is. U hebt deze informatie nodig omdat de begin index verschilt van transactionele en niet-transactionele topologieën.
+* `[0,1]` Hiermee geeft u een hash-set veld-Id's op die beginnen met nul.
 
 ### <a name="hybrid-topology"></a>Hybride topologie
 

@@ -12,13 +12,13 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 4fbd587b99875690a8c95952ce6b11d41e402726
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053254"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009879"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filters, ordening en paginering van Media Services entiteiten
 
@@ -29,7 +29,7 @@ In dit onderwerp worden de OData-query opties en paginerings ondersteuning besch
 * Eigenschappen van entiteiten van het `Datetime` type zijn altijd in UTC-indeling.
 * De lege ruimte in de query reeks moet een URL-code ring hebben voordat u een aanvraag verzendt.
 
-## <a name="comparison-operators"></a>Vergelijkingsoperators
+## <a name="comparison-operators"></a>Vergelijkingsoperatoren
 
 U kunt de volgende opera toren gebruiken om een veld te vergelijken met een constante waarde:
 
@@ -45,7 +45,7 @@ Bereik operatoren:
 - `ge`: Test of een veld *groter is dan of gelijk is aan* een constante waarde.
 - `le`: Test of een veld *kleiner is dan of gelijk is aan* een constante waarde.
 
-## <a name="filter"></a>Filter
+## <a name="filter"></a>Filteren
 
 Gebruik `$filter` om een OData-filter parameter op te geven om alleen de objecten te vinden waarin u bent geïnteresseerd.
 
@@ -156,27 +156,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 In de volgende tabel ziet u hoe u de opties voor filteren en ordenen kunt Toep assen op verschillende entiteiten:
 
-|Entiteitsnaam|Naam van eigenschap|Filter|Bestellen|
+|Entiteitsnaam|Naam van eigenschap|Filteren|Bestellen|
 |---|---|---|---|
-|[Assets](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
+|[Assets](/rest/api/media/assets/)|naam|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
 ||Eigenschappen. alternateId |`eq`||
 ||Eigenschappen. assetId |`eq`||
 ||Eigenschappen. gemaakt| `eq`, `gt`, `lt`| `asc` en `desc`|
-|[Beleid voor inhoudssleutels](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Beleid voor inhoudssleutels](/rest/api/media/contentkeypolicies)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. Beschrijving    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Eigenschappen. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. policyId|`eq`, `ne`||
-|[Taken](/rest/api/media/jobs)| name  | `eq`            | `asc` en `desc`|
+|[Taken](/rest/api/media/jobs)| naam  | `eq`            | `asc` en `desc`|
 ||Eigenschappen. State        | `eq`, `ne`        |                         |
 ||Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 ||Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le` | `asc` en `desc`| 
-|[Streaming-locators](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Streaming-locators](/rest/api/media/streaminglocators)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-|[Beleid voor streaming](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Beleid voor streaming](/rest/api/media/streamingpolicies)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-|[Transformaties](/rest/api/media/transforms)| name | `eq`            | `asc` en `desc`|
+|[Transformaties](/rest/api/media/transforms)| naam | `eq`            | `asc` en `desc`|
 || Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 || Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 1b6b5af2e6533c13165ae8253813a52b2c7ad261
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756959"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997894"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -28,14 +28,14 @@ In dit artikel wordt uitgelegd hoe u:
 - `Dataset`Objecten gebruiken voor bestaande gegevens
 - Toegang tot gegevens in uw stappen
 - `Dataset`Gegevens splitsen in subsets, zoals training en validatie subsets
-- `OutputFileDatasetConfig`Objecten maken voor het overdragen van gegevens naar de volgende pijplijn stap
-- `OutputFileDatasetConfig`Objecten gebruiken als invoer voor pijplijn stappen
-- Nieuwe `Dataset` objecten maken die `OutputFileDatasetConfig` u wilt behouden
+- `PipelineData`Objecten maken voor het overdragen van gegevens naar de volgende pijplijn stap
+- `PipelineData`Objecten gebruiken als invoer voor pijplijn stappen
+- Nieuwe `Dataset` objecten maken die `PipelineData` u wilt behouden
 
-> [!NOTE]
->De `OutputFileDatasetConfig` `OutputTabularDatasetConfig` klassen en zijn experimentele preview-functies en kunnen op elk gewenst moment worden gewijzigd.
->
->Voor meer informatie raadpleegt u https://aka.ms/azuremlexperimental.
+> [!TIP]
+> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  `OutputFileDatasetConfig` en `OutputTabularDatasetConfig` .  Deze klassen zijn experimentele preview-functies en kunnen op elk gewenst moment worden gewijzigd.
+> 
+>Zie voor meer informatie over experimentele functies https://aka.ms/azuremlexperimental .
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -151,68 +151,67 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
-## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Gebruiken `OutputFileDatasetConfig` voor tussenliggende gegevens
+## <a name="use-pipelinedata-for-intermediate-data"></a>Gebruiken `PipelineData` voor tussenliggende gegevens
 
-Hoewel `Dataset` objecten alleen persistente gegevens vertegenwoordigen, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) kunnen object (en) worden gebruikt voor tijdelijke gegevens uitvoer van pijplijn stappen **en** permanente uitvoer gegevens. 
-
- `OutputFileDatasetConfig` het standaard gedrag van het object is om te schrijven naar de standaard gegevens opslag van de werk ruimte. Geef uw `OutputFileDatasetConfig` objecten door aan uw `PythonScriptStep` met de `arguments` para meter.
+Hoewel `Dataset` objecten persistente gegevens vertegenwoordigen, worden [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -objecten gebruikt voor tijdelijke gegevens die worden uitgevoerd vanuit pijplijn stappen. Omdat de levens duur van een `PipelineData` object langer is dan één pijplijn stap, definieert u deze in het definitie script van de pijp lijn. Wanneer u een `PipelineData` -object maakt, moet u een naam en een gegevens opslag opgeven waarop de gegevens worden opgeslagen. Geef uw `PipelineData` object (en) aan uw `PythonScriptStep` objecten _door_ met behulp van de `arguments` `outputs` argumenten en:
 
 ```python
-from azureml.data import OutputFileDatasetConfig
-dataprep_output = OutputFileDatasetConfig()
-input_dataset = Dataset.get_by_name(workspace, 'raw_data')
+
+default_datastore = workspace.get_default_datastore()
+dataprep_output = PipelineData("clean_data", datastore=default_datastore)
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
     compute_target=cluster,
-    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
-    )
+    arguments=["--output-path", dataprep_output]
+    inputs=[Dataset.get_by_name(workspace, 'raw_data')],
+    outputs=[dataprep_output]
+)
+
 ```
 
-U kunt ervoor kiezen om de inhoud van uw `OutputFileDatasetConfig` object te uploaden aan het einde van een run. In dat geval gebruikt u de `as_upload()` functie samen met uw `OutputFileDatasetConfig` object en geeft u op of bestaande bestanden in de bestemming moeten worden overschreven. 
+U kunt ervoor kiezen om uw `PipelineData` object te maken met behulp van een toegangs modus waarmee u een onmiddellijke upload kunt doen. In dat geval moet u, wanneer u uw maakt `PipelineData` , `upload_mode` het `"upload"` argument instellen en gebruiken `output_path_on_compute` om het pad op te geven waarnaar u de gegevens wilt schrijven:
 
 ```python
-#get blob datastore already registered with the workspace
-blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
+PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
 
-### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>Gebruiken `OutputFileDatasetConfig` als uitvoer van een trainings stap
+> [!TIP]
+> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse `OutputFileDatasetConfig` . Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
 
-Binnen de pijp lijn `PythonScriptStep` kunt u de beschik bare uitvoer paden ophalen met behulp van de argumenten van het programma. Als deze stap het eerst is en de uitvoer gegevens initialiseert, moet u de Directory maken op het opgegeven pad. Vervolgens kunt u de bestanden die u wilt opnemen in de opslaan `OutputFileDatasetConfig` .
+### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Gebruiken `PipelineData` als uitvoer van een trainings stap
+Binnen de pijp lijn `PythonScriptStep` kunt u de beschik bare uitvoer paden ophalen met behulp van de argumenten van het programma. Als deze stap het eerst is en de uitvoer gegevens initialiseert, moet u de Directory maken op het opgegeven pad. Vervolgens kunt u de bestanden die u wilt opnemen in de opslaan `PipelineData` .
 
 ```python
 parser = argparse.ArgumentParser()
 parser.add_argument('--output_path', dest='output_path', required=True)
 args = parser.parse_args()
-
 # Make directory for file
 os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
 with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-### <a name="read-outputfiledatasetconfig-as-inputs-to-non-initial-steps"></a>Lezen `OutputFileDatasetConfig` als invoer van niet-eerste stappen
+Als u uw hebt gemaakt `PipelineData` met het `is_directory` argument ingesteld op `True` , zou het voldoende zijn om alleen de oproep uit te voeren `os.makedirs()` . vervolgens zou u de gewenste bestanden naar het pad kunnen schrijven. Zie de [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -referentie documentatie voor meer informatie.
 
-Nadat de eerste pijplijn stap enkele gegevens naar het `OutputFileDatasetConfig` pad heeft geschreven en deze een uitvoer van die eerste stap wordt, kan deze worden gebruikt als invoer voor een latere stap. 
 
-In de volgende code, 
+### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Lezen `PipelineData` als invoer van niet-eerste stappen
 
-* `step1_output_data` geeft aan dat de uitvoer van de PythonScriptStep, `step1` wordt geschreven naar het gegevens archief van ADLS gen 2 `my_adlsgen2` in de modus voor het uploaden van toegang. Meer informatie over het [instellen van rolmachtigingen](how-to-access-data.md#azure-data-lake-storage-generation-2) voor het terugschrijven van gegevens naar ADLS gen 2-gegevens opslag. 
-
-* Nadat `step1` de uitvoering is voltooid en de uitvoer is geschreven naar de bestemming aangegeven door `step1_output_data` , is step2 klaar om te worden gebruikt `step1_output_data` als invoer. 
+Nadat de eerste pijplijn stap enkele gegevens naar het `PipelineData` pad heeft geschreven en deze een uitvoer van die eerste stap wordt, kan deze worden gebruikt als invoer voor een latere stap:
 
 ```python
+step1_output_data = PipelineData("processed_data", datastore=def_blob_store, output_mode="upload")
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
-step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",
     script_name="step1.py",
     runconfig = aml_run_config,
-    arguments = ["--output_path", step1_output_data]
+    arguments = ["--output_path", step1_output_data],
+    inputs=[],
+    outputs=[step1_output_data]
 )
 
 step2 = PythonScriptStep(
@@ -220,21 +219,38 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
-
+    arguments = ["--pd", step1_output_data],
+    inputs=[step1_output_data]
 )
-
 pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
-## <a name="register-outputfiledatasetconfig-objects-for-reuse"></a>`OutputFileDatasetConfig`Objecten registreren voor hergebruik
+De waarde van een `PipelineData` invoer is het pad naar de vorige uitvoer. 
 
-Als u `OutputFileDatasetConfig` langer dan de duur van uw experiment beschikbaar wilt maken, registreert u deze voor uw werk ruimte om te delen en opnieuw te gebruiken in experimenten.
+> [!TIP]
+> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse `OutputFileDatasetConfig` . Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+
+Als, zoals eerder weer gegeven, de eerste stap een enkel bestand heeft geschreven, kan dit er als volgt uitzien: 
 
 ```python
-step1_output_ds = step1_output_data.register_on_complete(name='processed_data', 
-                                                         description = 'files from step1`)
+parser = argparse.ArgumentParser()
+parser.add_argument('--pd', dest='pd', required=True)
+args = parser.parse_args()
+with open(args.pd) as f:
+    print(f.read())
 ```
+
+## <a name="convert-pipelinedata-objects-to-datasets"></a>`PipelineData`Objecten naar `Dataset` s converteren
+
+Als u `PipelineData` langer dan de duur van een uitvoering beschikbaar wilt maken, gebruikt u de `as_dataset()` functie ervan om deze te converteren naar een `Dataset` . U kunt vervolgens de registreren `Dataset` , waardoor het een eersteklas burger is in uw werk ruimte. Omdat uw `PipelineData` object elke keer dat de pijp lijn wordt uitgevoerd een ander pad heeft, is het raadzaam dat u instelt `create_new_version` op `True` Wanneer u een `Dataset` gemaakt van een `PipelineData` object registreert.
+
+```python
+step1_output_ds = step1_output_data.as_dataset()
+step1_output_ds.register(name="processed_data", create_new_version=True)
+
+```
+> [!TIP]
+> Een verbeterde ervaring voor het persistent maken van uw tussenliggende gegevens buiten uw pijplijn uitvoeringen is beschikbaar met de open bare preview-klasse `OutputFileDatasetConfig` . Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
 
 ## <a name="next-steps"></a>Volgende stappen
 

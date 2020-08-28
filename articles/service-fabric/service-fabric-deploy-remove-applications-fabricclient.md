@@ -3,12 +3,13 @@ title: Azure Service Fabric-implementatie met FabricClient
 description: Gebruik de FabricClient-Api's om toepassingen te implementeren en te verwijderen in Service Fabric.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75376967"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009297"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Toepassingen implementeren en verwijderen met FabricClient
 > [!div class="op_single_selector"]
@@ -122,7 +123,7 @@ Zie [de afbeeldings store Connection String](service-fabric-image-store-connecti
 
 ### <a name="deploy-large-application-package"></a>Omvang rijk toepassings pakket implementeren
 Probleem: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API time-out voor een groot toepassings pakket (volg orde van GB).
-Meld
+Probeer:
 - Geef een grotere time-out op voor de methode [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) met de `timeout` para meter. De time-out is standaard 30 minuten.
 - Controleer de netwerk verbinding tussen de bron computer en het cluster. Als de verbinding langzaam is, kunt u overwegen om een computer met een betere netwerk verbinding te gebruiken.
 Als de client computer zich in een andere regio bevindt dan het cluster, kunt u overwegen om een client computer in een dichter of dezelfde regio als het cluster te gebruiken.
@@ -135,7 +136,7 @@ De compressie vermindert de grootte en het aantal bestanden, waardoor de hoeveel
 
 ### <a name="deploy-application-package-with-many-files"></a>Een toepassings pakket met veel bestanden implementeren
 Probleem: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) is een time-out voor een toepassings pakket met veel bestanden (volg orde van duizenden).
-Meld
+Probeer:
 - [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën. De compressie vermindert het aantal bestanden.
 - Geef een grotere time-out op voor [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) met de `timeout` para meter.
 

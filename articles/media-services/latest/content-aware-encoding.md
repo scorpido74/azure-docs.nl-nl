@@ -11,13 +11,13 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
-ms.custom: ''
-ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c29909d70b0fd55e4b680c79928cdc5d05b494fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039139"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003725"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>De vooraf ingestelde coderings voorinstelling gebruiken om de optimale bitrate waarde voor een bepaalde oplossing te vinden
 
@@ -84,5 +84,5 @@ TransformOutput[] output = new TransformOutput[]
 * [Zelfstudie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
 * [Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST](stream-files-tutorial-with-rest.md)
 * [Zelf studie: een extern bestand coderen op basis van URL en de video-CLI streamen](stream-files-cli-quickstart.md)
-* [Zelf studie: een extern bestand coderen op basis van URL en de video-.NET streamen](stream-files-dotnet-quickstart.md)
-* [Zelf studie: een extern bestand coderen op basis van URL en de video-Node.jsstreamen](stream-files-nodejs-quickstart.md)
+* [Zelfstudie: Extern bestand coderen op basis van URL en video streamen - .NET](stream-files-dotnet-quickstart.md)
+* [Zelfstudie: Extern bestand coderen op basis van URL en video streamen - Node.js](stream-files-nodejs-quickstart.md)

@@ -1,19 +1,19 @@
 ---
-title: Overzicht van Azure Monitor voor VM's inschakelen
+title: Overzicht Azure Monitor voor VM's inschakelen
 description: Meer informatie over het implementeren en configureren van Azure Monitor voor VM's. Ontdek de systeem vereisten.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/27/2020
+ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824763"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998404"
 ---
-# <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
+# <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht Azure Monitor voor VM's inschakelen
 
 In dit artikel vindt u een overzicht van de beschik bare opties voor het inschakelen van Azure Monitor voor VM's om de status en prestaties van het volgende te controleren:
 
@@ -58,7 +58,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
-- Japan East
+- Japan - oost
 - Australië - oost
 - Australië - zuidoost
 
@@ -67,7 +67,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 >
 
 Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van een van de volgende resources:
-* [Azure-CLI](../learn/quick-create-workspace-cli.md)
+* [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure-portal](../learn/quick-create-workspace.md)
 * [Azure Resource Manager](../platform/template-workspace-configuration.md)
@@ -78,86 +78,25 @@ Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van ee
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen die Azure Monitor voor VM's ondersteunt. Verderop in dit gedeelte vindt u een volledige lijst met informatie over de belangrijkste en secundaire versie van het Linux-besturings systeem en de ondersteunde kernel-versies.
+Azure Monitor voor VM's ondersteunt elk besturings systeem dat ondersteuning biedt voor de Log Analytics agent en de afhankelijkheids agent. Zie [overzicht van Azure monitor agents ](../platform/agents-overview.md#supported-operating-systems) voor een volledige lijst.
 
-|Besturingssysteemversie |Prestaties |Maps |
-|-----------|------------|-----|
-|Windows Server 2019 | X | X |
-|Windows Server 2016 1803 | X | X |
-|Windows Server 2016 | X | X |
-|Windows Server 2012 R2 | X | X |
-|Windows Server 2012 | X | X |
-|Windows Server 2008 R2 | X | X|
-|Windows 10 1803 | X | X |
-|Windows 8.1 | X | X |
-|Windows 8 | X | X |
-|Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
-|Ubuntu 18,04, 16,04 | X | X |
-|CentOS Linux 7, 6 | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X |
-|Debian 9,4, 8 | X<sup>1</sup> | |
+Raadpleeg de volgende lijst met overwegingen voor Linux-ondersteuning van de afhankelijkheids agent die Azure Monitor voor VM's ondersteunt:
 
-<sup>1</sup> de functie prestaties van Azure monitor voor VM's is alleen beschikbaar vanuit Azure monitor. Het is niet rechtstreeks beschikbaar vanuit het linkerdeel venster van de Azure-VM.
+- Alleen standaard- en SMP Linux kernelversies worden ondersteund.
+- Niet-standaard kernel-releases, zoals Physical Address Extension (PAE) en xen, worden niet ondersteund voor Linux-distributie. Bijvoorbeeld, een systeem met de release reeks *2.6.16.21-0,8-xen* wordt niet ondersteund.
+- Aangepaste kernels, met inbegrip van hercompilaties van standaard-kernels, worden niet ondersteund.
+- Voor Debian andere distributies dan versie 9,4 is de functie map niet ondersteund en is de functie prestaties alleen beschikbaar vanuit het Azure Monitor menu. Het is niet rechtstreeks beschikbaar vanuit het linkerdeel venster van de Azure-VM.
+- De CentOSPlus-kernel wordt ondersteund.
+- Er moet een patch worden uitgevoerd voor de Linux-kernel voor het Spectre-beveiligings probleem. Neem contact op met de leverancier van de Linux-distributie voor meer informatie.
 
->[!NOTE]
->In het Linux-besturings systeem:
-> - Alleen standaard- en SMP Linux kernelversies worden ondersteund.
-> - Niet-standaard kernel-releases, zoals Physical Address Extension (PAE) en xen, worden niet ondersteund voor Linux-distributie. Bijvoorbeeld, een systeem met de release reeks *2.6.16.21-0,8-xen* wordt niet ondersteund.
-> - Aangepaste kernels, met inbegrip van hercompilaties van standaard-kernels, worden niet ondersteund.
-> - De CentOSPlus-kernel wordt ondersteund.
-> - Er moet een patch worden uitgevoerd voor de Linux-kernel voor het Spectre-beveiligings probleem. Neem contact op met de leverancier van de Linux-distributie voor meer informatie.
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-
-| Besturingssysteemversie | Kernelversie |
-|:--|:--|
-| 7.6 | 3.10.0-957 |
-| 7.5 | 3.10.0-862 |
-| 7.4 | 3.10.0-693 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-
-| Besturingssysteemversie | Kernelversie |
-|:--|:--|
-| 6.10 | 2.6.32-754 |
-| 6.9 | 2.6.32-696 |
-
-#### <a name="centosplus"></a>CentOSPlus
-
-| Besturingssysteemversie | Kernelversie |
-|:--|:--|
-| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-
-#### <a name="ubuntu-server"></a>Ubuntu Server
-
-| Besturingssysteemversie | Kernelversie |
-|:--|:--|
-| 18,04 | 5.3.0-1020<br>5,0 (inclusief door Azure afgestemde kernel)<br>4,18* <br> 4,15* |
-| 16.04.3 | 4,15. * |
-| 16,04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
-
-#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enter prise server
-
-| Besturingssysteemversie | Kernelversie |
-|:--|:--|
-|12 SP4 | 4,12. * (inclusief door Azure afgestemde kernel) |
-|12 SP3 | 4,4. * |
-|12 SP2 | 4,4. * |
-
-#### <a name="debian"></a>Debian 
-
-| Besturingssysteemversie | Kernelversie |
-|:--|:--|
-| 9 | 4.9 | 
 
 ## <a name="supported-azure-arc-machines"></a>Ondersteunde Azure-Arc-machines
 Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld in regio's waar de Arc extension-service beschikbaar is. U moet versie 0,9 of hoger van de Arc-agent uitvoeren.
 
 | Verbonden bron | Ondersteund | Beschrijving |
 |:--|:--|:--|
-| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](../platform/agents-overview.md#supported-operating-systems)voor meer informatie. |
 | Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
 | Beheergroep System Center Operations Manager | Nee | |
 

@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560974"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004317"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Schud, schud voor een Tweet--een Twitter-bericht ophalen met Azure Functions
 
@@ -92,7 +93,7 @@ Vervolgens bouwt en uploadt u de code van het apparaat.
 
 1. Gebruiken `Ctrl+P` om uit te voeren `task device-upload` .
 
-2. De Terminal vraagt u de configuratie modus in te voeren. Dit doet u als volgt:
+2. De Terminal vraagt u de configuratie modus in te voeren. Hiervoor doet u het volgende:
 
    * Knop ingedrukt houden
 
@@ -116,7 +117,7 @@ Nu de connection string is ingesteld, wordt deze gecontroleerd en wordt de app g
 
    ![apparaat uploaden](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
-2. De DevKit wordt opnieuw opgestart en de code wordt gestart.
+2. De DevKit wordt opnieuw opgestart en het uitvoeren van de code wordt gestart.
 
 Het fout bericht ' fout: AZ3166: Unknown package ' wordt weer gegeven. Deze fout treedt op wanneer de pakket index van het board niet correct is vernieuwd. Om dit probleem op te lossen, controleert u de [fout ' Unknown package ' in de veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
@@ -151,7 +152,7 @@ Klik na de initialisatie van de app op knop A en laat deze los en schud vervolge
 - Druk nogmaals op de knop en schud vervolgens naar een nieuwe Tweet.
 - Druk op de knop B om door de rest van de Tweet te schuiven.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 ![schema](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
