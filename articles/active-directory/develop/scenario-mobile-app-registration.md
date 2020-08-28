@@ -1,7 +1,7 @@
 ---
 title: Mobiele apps registreren die web-Api's aanroepen | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (de code configuratie van de app)
+description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (registratie van de app)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652647"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047670"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Mobiele apps registreren die web-Api's aanroepen
 
@@ -40,7 +40,7 @@ U kunt gebruikers ook aanmelden met sociale identiteiten die een B2C-instantie e
 
 Zie [scenario's en ondersteunde verificatie stromen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) en- [scenario's en ondersteunde platforms en talen](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)voor meer informatie.
 
-## <a name="platform-configuration-and-redirect-uris"></a>Platform configuratie en omleidings-Uri's  
+## <a name="platform-configuration-and-redirect-uris"></a>Platform configuratie en omleidings-Uri's
 
 ### <a name="interactive-authentication"></a>Interactieve verificatie
 
@@ -72,20 +72,20 @@ Wanneer u de stappen hebt voltooid, wordt de omleidings-URI voor u berekend, zoa
 
 Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via het manifest van de toepassing. Dit is de aanbevolen indeling voor het manifest:
 
-- **IOS**:`msauth.<BUNDLE_ID>://auth` 
+- **IOS**: `msauth.<BUNDLE_ID>://auth`
   - Voer bijvoorbeeld in: `msauth.com.yourcompany.appName://auth`
-- **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - U kunt de Android-handtekening-hash genereren met behulp van de release sleutel of de debug-toets via de opdracht van het hulp programma.
 
 ### <a name="username-password-authentication"></a>Gebruikers naam-wachtwoord verificatie
 
-Als uw app alleen een gebruikers naam-wachtwoord verificatie gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom voert een retour ronding uit naar het micro soft Identity platform versie 2,0-eind punt. Uw toepassing wordt niet terugaangeroepen op een specifieke URI. 
+Als uw app alleen een gebruikers naam-wachtwoord verificatie gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom voert een retour ronding uit naar het micro soft Identity platform versie 2,0-eind punt. Uw toepassing wordt niet terugaangeroepen op een specifieke URI.
 
 U moet uw toepassing echter identificeren als een open bare client toepassing. Hiertoe gaat u naar het gedeelte **verificatie** van uw toepassing. Selecteer in de Subsectie **Geavanceerde instellingen** in het **standaard-client type** voor de vraag **behandel toepassing als een open bare client**de optie **Ja**.
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Mobiele toepassingen bellen Api's namens de aangemelde gebruiker. Uw app moet gedelegeerde machtigingen aanvragen. Deze machtigingen worden ook bereiken genoemd. Afhankelijk van de gewenste ervaring kunt u gedelegeerde machtigingen statisch aanvragen via de Azure Portal. Of u kunt ze dynamisch aanvragen tijdens runtime. 
+Mobiele toepassingen bellen Api's namens de aangemelde gebruiker. Uw app moet gedelegeerde machtigingen aanvragen. Deze machtigingen worden ook bereiken genoemd. Afhankelijk van de gewenste ervaring kunt u gedelegeerde machtigingen statisch aanvragen via de Azure Portal. Of u kunt ze dynamisch aanvragen tijdens runtime.
 
 Door machtigingen statisch te registreren, kunnen beheerders uw app eenvoudig goed keuren. Statische registratie wordt aanbevolen.
 

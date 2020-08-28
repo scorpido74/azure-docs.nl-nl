@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: f44c3ac51bfc509df0b8f2b82c2d6259bba0aa3c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815807"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047664"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -625,6 +625,8 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en een CI/CD-pij
 
     - Data Factory-entiteiten zijn afhankelijk van elkaar. Triggers zijn bijvoorbeeld afhankelijk van pijp lijnen, en pijp lijnen zijn afhankelijk van gegevens sets en andere pijp lijnen. Selectief publiceren van een subset van bronnen kan leiden tot onverwacht gedrag en fouten.
     - In zeldzame gevallen wanneer u selectief publiceren nodig hebt, kunt u overwegen om een hotfix te gebruiken. Zie [hotfix production environment](#hotfix-production-environment)(Engelstalig) voor meer informatie.
+
+- Het Azure Data Factory team adviseert geen RBAC-besturings elementen toe te wijzen aan afzonderlijke entiteiten (pijp lijnen, gegevens sets, enzovoort) in een data factory. Als een ontwikkelaar bijvoorbeeld toegang heeft tot een pijp lijn of een gegevensset, moeten ze toegang hebben tot alle pijp lijnen of gegevens sets in de data factory. Als u van mening bent dat u veel RBAC-rollen wilt implementeren in een data factory, raadpleegt u de implementatie van een tweede data factory.
 
 -   U kunt niet publiceren vanuit privé-filialen.
 

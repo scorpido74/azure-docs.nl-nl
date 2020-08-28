@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032081"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049244"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: verouderde verificatie blok keren
 
@@ -24,7 +24,7 @@ Vanwege het verhoogde risico dat is gekoppeld aan verouderde verificatie protoco
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om verouderde verificatie aanvragen te blok keren. Dit beleid wordt in de [modus alleen rapport](howto-conditional-access-report-only.md) gezet om te starten, zodat beheerders kunnen bepalen wat het effect is op bestaande gebruikers. Wanneer beheerders weten dat het beleid van toepassing is op dezelfde **plaats** , kunnen ze overschakelen naar de implementatie of deze faseren door specifieke groepen toe te voegen en anderen uit te sluiten.
+De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om verouderde verificatie aanvragen te blok keren. Dit beleid wordt in de [modus alleen rapport](howto-conditional-access-insights-reporting.md) gezet om te starten, zodat beheerders kunnen bepalen wat het effect is op bestaande gebruikers. Wanneer beheerders weten dat het beleid van toepassing is op dezelfde **plaats** , kunnen ze overschakelen naar de implementatie of deze faseren door specifieke groepen toe te voegen en anderen uit te sluiten.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
@@ -48,7 +48,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
+[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-insights-reporting.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 

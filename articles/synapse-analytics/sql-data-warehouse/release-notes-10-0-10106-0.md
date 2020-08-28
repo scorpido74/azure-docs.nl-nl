@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9b3f2f8a6a8a1e4f287af45f994c0f0b1d479811
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001005"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047449"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 | Service verbeteringen | Details |
 | --- | --- |
 |**Workload Management-Portal-ervaring**|Gebruikers kunnen hun instellingen voor workload Management configureren en beheren via de Azure Portal. De mogelijkheid om [werkbelasting groepen](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) en [classificaties van werk belastingen](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) te configureren, is mogelijk.|
-|**Catalogus weergave verbeterde tabel toewijzingen**|De nieuwe catalogus weergave [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) wijst **object_ids** aan permanente gebruikers tabellen toe aan hun fysieke tabel namen. Deze weer gave biedt geoptimaliseerde prestaties ten opzichte van de huidige [sys. pdw_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?view=sqlallproducts-allversions).|
+|**Catalogus weergave verbeterde tabel toewijzingen**|De nieuwe catalogus weergave [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) wijst **object_ids** aan permanente gebruikers tabellen toe aan hun fysieke tabel namen.|
 
 ## <a name="july-2020"></a>Juli 2020
 

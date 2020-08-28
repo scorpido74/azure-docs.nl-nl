@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211694"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048021"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>De werk belasting van uw Azure Synapse Analytics SQL-groep controleren met behulp van Dmv's
 
@@ -102,8 +102,8 @@ Wanneer een DSQL-plan langer duurt dan verwacht, kan de oorzaak een complex plan
 
 Als u meer informatie wilt over één stap, de *operation_type* kolom van de langlopende query stap en noteer de **stap index**:
 
-* Ga door met stap 3a voor **SQL-bewerkingen**: OnOperation, RemoteOperation, ReturnOperation.
-* Ga door met stap 3b voor **gegevens verplaatsings bewerkingen**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Ga verder met stap 3 voor **SQL-bewerkingen**: OnOperation, RemoteOperation, ReturnOperation.
+* Ga door met stap 4 voor **gegevens verplaatsings bewerkingen**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>STAP 3: SQL onderzoeken op gedistribueerde data bases
 

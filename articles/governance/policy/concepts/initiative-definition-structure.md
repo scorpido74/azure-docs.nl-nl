@@ -3,12 +3,12 @@ title: Details van de definitie structuur van het initiatief
 description: Hierin wordt beschreven hoe beleids initiatieven worden gebruikt voor het groeperen van beleids definities voor implementatie naar Azure-resources in uw organisatie.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544635"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048496"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Definitie structuur van Azure Policy initiatief
 
@@ -284,7 +284,7 @@ Deze informatie is:
 
 - Wordt weer gegeven in de Azure Portal op het overzicht van een **besturings element** op een regelgevings nalevings initiatief.
 - Beschikbaar via REST API. Bekijk de `Microsoft.PolicyInsights` resource provider en de [policyMetadata-bewerkings groep](/rest/api/policy-insights/policymetadata/getresource).
-- Beschikbaar via Azure CLI. Zie de opdracht [AZ Policy meta data](/cli/azure/policy/metadata?view=azure-cli-latest) .
+- Beschikbaar via Azure CLI. Zie de opdracht [AZ Policy meta data](/cli/azure/policy/metadata) .
 
 > [!IMPORTANT]
 > Meta gegevens objecten voor naleving van de regelgeving zijn _alleen-lezen_ en kunnen niet door klanten worden gemaakt.

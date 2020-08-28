@@ -3,12 +3,12 @@ title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het werken met matrix parameters en matrix-taal expressies, de alias [*] evalueren en elementen toevoegen met Azure Policy definitie regels.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3ba5179ca7acc60042d23e88d42a504d4d05f08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544584"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048479"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -95,7 +95,7 @@ De notatie voor de parameter waarde is anders wanneer u Azure CLI, Azure PowerSh
 
 Gebruik de volgende opdrachten om deze teken reeks te gebruiken voor elke SDK:
 
-- Azure CLI: opdracht [AZ Policy Assignment Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with para meter **params**
+- Azure CLI: opdracht [AZ Policy Assignment Create](/cli/azure/policy/assignment#az-policy-assignment-create) with para meter **params**
 - Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) met para meter **PolicyParameter**
 - REST API: in de _put_ -bewerking [maken](/rest/api/resources/policyassignments/create) als onderdeel van de aanvraag tekst als de waarde van de **Eigenschappen. para meters** -eigenschap
 
@@ -183,7 +183,7 @@ Voor elk voor beeld hieronder, vervangt u door `<field>` `"field": "Microsoft.St
 
 De volgende resultaten zijn het resultaat van de combi natie van de voor waarde en de beleids regel voor het voor beeld en de matrix van bestaande waarden hierboven:
 
-|Voorwaarde |Resultaat | Scenario |Uitleg |
+|Conditie |Resultaat | Scenario |Uitleg |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Niets |Geen overeenkomst |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_ is en het effect niet wordt geactiveerd. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Beleids effect |Geen overeenkomst |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_ en het effect wordt geactiveerd. |

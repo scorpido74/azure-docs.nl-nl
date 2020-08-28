@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253270"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049414"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Inzichten en rapportage voor voorwaardelijke toegang
 
@@ -46,7 +46,7 @@ Als u geen Azure AD-Logboeken hebt geïntegreerd met Azure Monitor-logboeken, mo
 1. [Een log Analytics-werk ruimte maken in azure monitor](../../azure-monitor/learn/quick-create-workspace.md).
 1. [Integreer Azure AD-logboeken met Azure monitor-logboeken](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
-## <a name="how-it-works"></a>Uitleg 
+## <a name="how-it-works"></a>Hoe het werkt 
 
 Voor toegang tot de werkmap inzichten en rapportage:  
 
@@ -97,6 +97,22 @@ Bekijk de uitsplitsing van gebruikers of aanmeldingen voor elk van de voor waard
 
 U kunt ook de aanmeldingen van een specifieke gebruiker onderzoeken door te zoeken naar aanmeldingen aan de onderkant van het dash board. In de query aan de linkerkant worden de meest voorkomende gebruikers weer gegeven. Als u een gebruiker selecteert, wordt de query aan de rechter kant gefilterd.  
 
+> [!NOTE]
+> Wanneer u de logboeken wilt downloaden, kiest u JSON-indeling om alleen rapport gegevens van het type voorwaardelijke toegang toe te voegen.
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport
+
+Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport:
+
+1. Meld u aan bij de **Azure Portal** als beheerder voor voorwaardelijke toegang, beveiligings beheerder of globale beheerder.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
+1. Selecteer een bestaand beleid of maak een nieuw beleid.
+1. Stel onder **beleid inschakelen** de modus voor **alleen rapport** in.
+1. Selecteer **Opslaan**.
+
+> [!TIP]
+> Als u de **beleids status inschakelen** van een bestaand beleid **van aan aan** **rapporteert,** wordt bestaande beleids afdwinging uitgeschakeld. 
+
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Waarom mislukken query's als gevolg van een machtigings fout?
@@ -111,6 +127,10 @@ Als u toegang wilt krijgen tot de werkmap, hebt u de juiste Azure AD-machtiginge
 ![Problemen met mislukte query's oplossen](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
 Zie het artikel [Azure AD-logboeken integreren met Azure monitor-logboeken](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)voor meer informatie over het streamen van Azure AD-aanmeldings logboeken naar een log Analytics-werk ruimte.
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>Waarom worden de query's in de werkmap niet uitgevoerd?
+
+Klanten hebben opgemerkt dat query's soms mislukken als er verkeerde of meerdere werk ruimten zijn gekoppeld aan de werkmap. Om dit probleem op te lossen, klikt u boven aan de werkmap op **bewerken** en vervolgens op het vistuig instellingen. Selecteer en verwijder werk ruimten die niet aan de werkmap zijn gekoppeld. Er mag slechts één werk ruimte aan elke werkmap zijn gekoppeld.
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Waarom is de para meter voor het beleid voor voorwaardelijke toegang leeg?
 
@@ -134,4 +154,8 @@ U kunt de werkmap bewerken en aanpassen door naar **Azure Active Directory**-  >
  
 ## <a name="next-steps"></a>Volgende stappen
 
-[Alleen rapport modus voor voorwaardelijke toegang](concept-conditional-access-report-only.md)
+- [Alleen rapport modus voor voorwaardelijke toegang](concept-conditional-access-report-only.md)
+
+- Voor meer informatie over Azure AD-werkmappen raadpleegt u het artikel [How to use Azure monitor Workbooks for Azure Active Directory Reports](../reports-monitoring/howto-use-azure-monitor-workbooks.md)(Engelstalig).
+
+- [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)

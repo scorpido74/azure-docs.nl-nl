@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel-werk ruimten op schaal beheren
 description: Meer informatie over het effectief beheren van Azure Sentinel op gedelegeerde klant resources.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511249"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050808"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-werk ruimten op schaal beheren
 
@@ -29,7 +29,7 @@ Dit gecentraliseerde implementatie model biedt de volgende voor delen:
 
 - Het eigendom van de gegevens blijft bij elke beheerde Tenant.
 - Biedt ondersteuning voor vereisten voor het opslaan van gegevens binnen geografische grenzen.
-- Zorgt voor gegevens isolatie, omdat gegevens voor meerdere klanten niet in dezelfde werk ruimte worden opgeslagen. 
+- Zorgt voor gegevens isolatie, omdat gegevens voor meerdere klanten niet in dezelfde werk ruimte worden opgeslagen.
 - Hiermee wordt voor komen dat gegevens worden exfiltration uit de beheerde tenants, zodat de gegevens kunnen worden nageleefd.
 - Gerelateerde kosten worden in rekening gebracht voor elke beheerde Tenant, in plaats van naar de beheer Tenant.
 - Gegevens van alle gegevens bronnen en gegevens connectors die zijn geïntegreerd met Azure Sentinel (zoals Azure AD-activiteiten logboeken, Office 365-Logboeken of waarschuwingen van micro soft Threat Protection) blijven binnen elke Tenant van de klant.
@@ -71,13 +71,21 @@ U kunt werkmappen ook rechtstreeks implementeren in een afzonderlijke Tenant die
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Voer Log Analytics en zoek query's uit in azure Sentinel-werk ruimten
 
-U kunt Log Analytics query's voor bedreigingen detectie centraal maken en opslaan in de beheer Tenant, met inbegrip van [jacht-query's](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Deze query's kunnen vervolgens worden uitgevoerd in al uw Azure Sentinel-werk ruimten van uw klanten met behulp van de operator Union en de werk ruimte ()-expressie. Zie [query's in meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)voor meer informatie.
+Maak en sla Log Analytics query's voor bedreigingen detectie centraal op in de Tenant beheren, met inbegrip van query's voor het uitvoeren van [jacht](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Deze query's kunnen vervolgens worden uitgevoerd in al uw Azure Sentinel-werk ruimten van uw klanten met behulp van de operator Union en de werk ruimte ()-expressie. Zie [query's in meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)voor meer informatie.
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Automatisering gebruiken voor beheer van meerdere werk ruimten
 
 U kunt Automation gebruiken voor het beheren van meerdere Azure Sentinel-werk ruimten en het configureren van [jacht-query's](../../sentinel/hunting.md), playbooks en werkmappen. Zie [beheer op meerdere werk ruimten met Automation](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)voor meer informatie.
 
 Houd er rekening mee dat sommige mogelijkheden [momenteel niet worden ondersteund in meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
+
+## <a name="manage-security-of-office-365-environments"></a>Beveiliging van Office 365-omgevingen beheren
+
+Gebruik Azure Lighthouse in combi natie met Azure Sentinel voor het beheren van de beveiliging van Office 365-omgevingen met meerdere tenants. Eerst moeten kant-en-klare [Office 365-gegevens connectors zijn ingeschakeld in de beheerde Tenant](../../sentinel/connect-office-365.md) , zodat informatie over gebruikers-en beheer activiteiten in Exchange en share point (inclusief OneDrive) kan worden opgenomen in een Azure Sentinel-werk ruimte binnen de beheerde Tenant. Dit omvat Details over acties zoals het downloaden van bestanden, het verzenden van toegangs aanvragen, wijzigingen in groeps gebeurtenissen en Postvak bewerkingen, samen met informatie over de gebruikers die de acties hebben uitgevoerd. [Office 365 DLP-waarschuwingen](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) worden ook ondersteund als onderdeel van de ingebouwde Office 365-connector.
+
+U kunt de [Microsoft Cloud app Security-connector (MCAS)](../../sentinel/connect-cloud-app-security.md) inschakelen voor het streamen van waarschuwingen en Cloud Discovery Logboeken in azure Sentinel. Op die manier krijgt u inzicht in Cloud-apps, kunt u geavanceerde analyses verkrijgen om Cyber dreigingen te identificeren en te bestrijden en te bepalen hoe gegevens worden verplaatst. Activiteiten logboeken voor MCAS kunnen worden [verbruikt met behulp van de algemene gebeurtenis indeling (CEF)](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
+
+Nadat u Office 365-gegevens connectors hebt ingesteld, kunt u gebruikmaken van cross-Tenant Azure-verklikker functies, zoals het weer geven en analyseren van de gegevens in werkmappen, het gebruiken van query's voor het maken van aangepaste waarschuwingen en het configureren van playbooks om te reageren op bedreigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

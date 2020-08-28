@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815049"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047102"
 ---
 # <a name="what-is-risk"></a>Wat is risico?
 
@@ -39,7 +39,6 @@ Deze Risico's worden offline berekend met de interne en externe Threat Intellige
 | Risico detectie | Beschrijving |
 | --- | --- |
 | Gelekte referenties | Dit type risico detectie geeft aan dat de geldige referenties van de gebruiker zijn gelekt. Wanneer Cybercriminals geldige wacht woorden van legitieme gebruikers beveiligt, delen ze deze referenties vaak. Dit delen geschiedt doorgaans door op het donkere web te plaatsen, sites te plakken of door de referenties op de zwarte markt te verhandelen en te verkopen. Wanneer de micro soft lekkende referentie Service gebruikers referenties ophaalt van de donkere websites, plak sites of andere bronnen, worden ze gecontroleerd op basis van de huidige geldige referenties van de Azure AD-gebruikers om geldige overeenkomsten te vinden. Zie [Veelgestelde vragen](#common-questions)voor meer informatie over gelekte referenties. |
-| Wachtwoord spuit | Een aanval met een wacht woord is het geval wanneer meerdere gebruikers namen worden aangevallen met veelvoorkomende wacht woorden in een geïntegreerde brute kracht om onbevoegde toegang te krijgen. Deze risico detectie wordt geactiveerd wanneer een wachtwoord sproei-aanval is uitgevoerd. |
 | Azure AD-bedreigingsinformatie | Dit type risico detectie duidt op de activiteit van de gebruiker die ongebruikelijk is voor de gegeven gebruiker of is consistent met bekende aanvals patronen op basis van de interne en externe informatie bronnen van micro soft. |
 
 ### <a name="sign-in-risk"></a>Aanmeldingsrisico
@@ -57,6 +56,7 @@ Deze Risico's kunnen in realtime worden berekend of offline worden berekend met 
 | Door beheerder bevestigde gebruiker geknoeid | Offline | Deze detectie geeft aan dat een beheerder in de gebruikers interface van Risk ante gebruikers de gebruiker heeft geknoeid, of met behulp van de riskyUsers-API. Als u wilt zien welke beheerder deze gebruiker heeft bevestigd, controleert u de risico geschiedenis van de gebruiker (via de gebruikers interface of API). |
 | Schadelijk IP-adres | Offline | Met deze detectie wordt de aanmelding aangegeven vanaf een schadelijk IP-adres. Een IP-adres wordt beschouwd als schadelijk op basis van hoge fout frequenties vanwege ongeldige referenties die zijn ontvangen van het IP-adres of andere IP-reputatie bronnen. |
 | Verdachte regels voor het bewerken van postvak in | Offline | Deze detectie wordt gedetecteerd door [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Deze detectie profileert uw omgeving en activeert waarschuwingen wanneer verdachte regels die berichten of mappen verwijderen of verplaatsen worden ingesteld op het postvak in van een gebruiker. Deze detectie kan erop wijzen dat het account van de gebruiker is aangetast, dat berichten opzettelijk worden verborgen en dat het postvak wordt gebruikt voor het distribueren van spam of malware in uw organisatie. |
+| Wachtwoord spuit | Offline | Een aanval met een wacht woord is het geval wanneer meerdere gebruikers namen worden aangevallen met veelvoorkomende wacht woorden in een geïntegreerde brute kracht om onbevoegde toegang te krijgen. Deze risico detectie wordt geactiveerd wanneer een wachtwoord sproei-aanval is uitgevoerd. |
 | Onmogelijk traject | Offline | Deze detectie wordt gedetecteerd door [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Deze detectie identificeert twee gebruikers activiteiten (is een of meerdere sessies) die afkomstig zijn van geografisch gelegen locaties binnen een tijds periode die korter is dan de tijd die de gebruiker nodig heeft om te reizen van de eerste locatie naar de tweede, wat aangeeft dat een andere gebruiker dezelfde referenties gebruikt. |
 
 ### <a name="other-risk-detections"></a>Andere risico detecties

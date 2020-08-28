@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869096"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051114"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
@@ -117,6 +117,7 @@ De tabel bevat een overzicht van de VMware VM-ondersteuning voor VMware-Vm's die
 **Azure-vereisten** | Bekijk de vereisten voor het Azure- [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)en de [reken kracht](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) voor site Recovery voor de meest recente informatie. Azure Migrate heeft identieke vereisten voor VMware-migratie.
 **Mobility-service** | De Mobility Service-agent moet zijn geïnstalleerd op elke virtuele machine die u wilt migreren.
 **UEFI-opstart** | Ondersteund.
+**UEFI-beveiligd opstarten**         | Niet ondersteund voor migratie.
 **Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
 **Schijfgrootte** | 2 TB besturingssysteem schijf; 8 TB voor gegevens schijven.
 **Schijf limieten** |  Maxi maal 63 schijven per VM.

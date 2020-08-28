@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1fcec8b591192bba862bf91040e5d6ca1ef9bcd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037726"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046847"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informatie over metrische gegevens voor Azure lente-Cloud
 
@@ -129,7 +129,9 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 >| Tomcat. Sessions. rejected | Tomcat. Sessions. rejected | Aantal | Het aantal sessies dat niet is gemaakt, omdat het maximum aantal actieve sessies is bereikt. |
 >| Tomcat. Sessions. Active. current | Tomcat. Sessions. Active. current | Aantal | Aantal actieve sessies van Tomcat |
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
+* [Snelstartgids: Azure lente-Cloud-apps bewaken met Logboeken, metrische gegevens en tracering](spring-cloud-quickstart-logs-metrics-tracing.md)
+
 * [Aan de slag met Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)

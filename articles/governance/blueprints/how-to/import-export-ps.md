@@ -1,14 +1,14 @@
 ---
 title: Blauw drukken importeren en exporteren met Power shell
 description: Meer informatie over het werken met uw blauw drukken-definities als code. Delen, broncode beheer en beheren met de opdrachten exporteren en importeren.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864042"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051437"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauw druk-definities importeren en exporteren met Power shell
 
@@ -31,7 +31,7 @@ In dit artikel wordt ervan uitgegaan dat u een gemiddelde werk ervaring hebt van
 - Meer informatie over [implementatie fasen](../concepts/deployment-stages.md) en [de levens duur van de blauw druk](../concepts/lifecycle.md)
 - Blauw druk-definities en-toewijzingen [maken](../create-blueprint-powershell.md) en [beheren](./manage-assignments-ps.md) met Power shell
 
-Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ. Blue](./manage-assignments-ps.md#add-the-azblueprint-module) voor het installeren en valideren van de module **AZ. blauw druk** van de PowerShell Gallery.
+Als deze nog niet is geïnstalleerd, volgt u de instructies in [De module Az.Blueprint toevoegen](./manage-assignments-ps.md#add-the-azblueprint-module) om de module **Az.Blueprint** van de PowerShell Gallery te installeren en te valideren.
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>Mapstructuur van een definitie van een blauw druk
 

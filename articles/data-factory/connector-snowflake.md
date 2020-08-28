@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/30/2020
-ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/28/2020
+ms.openlocfilehash: 5bc64985401fce1c58a985b6b9fdead620c9aa8f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529497"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048173"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Gegevens van en naar sneeuw kopiëren met behulp van Azure Data Factory
 
@@ -49,7 +49,7 @@ De volgende eigenschappen worden ondersteund voor een service met sneeuw-koppeli
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | De eigenschap type moet worden ingesteld op **sneeuw vlokken**.              | Yes      |
-| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het sneeuw-exemplaar. U kunt ervoor kiezen om het wacht woord of de hele connection string in Azure Key Vault in te stellen. Raadpleeg de voor beelden onder de tabel, evenals de [archief referenties in azure Key Vault](store-credentials-in-key-vault.md) artikel, voor meer informatie.<br><br>Enkele typische instellingen:<br>- **Account naam:** De [volledige account naam](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) van uw sneeuw-account (met inbegrip van aanvullende segmenten die de regio en het Cloud platform identificeren), bijvoorbeeld xy12345. Oost-US-2. Azure.<br/>- **Gebruikers naam:** De aanmeldings naam van de gebruiker voor de verbinding.<br>- **Wacht woord:** Het wacht woord voor de gebruiker.<br>- **Data Base:** De standaard database die moet worden gebruikt wanneer verbinding wordt gemaakt. Dit moet een bestaande Data Base zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Warehouse:** Het virtuele magazijn dat moet worden gebruikt als de verbinding tot stand is gebracht. Dit moet een bestaand magazijn zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Rol:** De standaard functie voor toegangs beheer die in de sneeuw-sessie moet worden gebruikt. De opgegeven rol moet een bestaande rol zijn die al is toegewezen aan de opgegeven gebruiker. De standaard functie is openbaar. | Yes      |
+| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het sneeuw-exemplaar. U kunt ervoor kiezen om het wacht woord of de hele connection string in Azure Key Vault in te stellen. Raadpleeg de voor beelden onder de tabel, evenals de [archief referenties in azure Key Vault](store-credentials-in-key-vault.md) artikel, voor meer informatie.<br><br>Enkele typische instellingen:<br>- **Account naam:** De  [volledige account naam](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) van uw sneeuw-account (met inbegrip van aanvullende segmenten die de regio en het Cloud platform identificeren), bijvoorbeeld xy12345. Oost-US-2. Azure.<br/>- **Gebruikers naam:** De aanmeldings naam van de gebruiker voor de verbinding.<br>- **Wacht woord:** Het wacht woord voor de gebruiker.<br>- **Data Base:** De standaard database die moet worden gebruikt wanneer verbinding wordt gemaakt. Dit moet een bestaande Data Base zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Warehouse:** Het virtuele magazijn dat moet worden gebruikt als de verbinding tot stand is gebracht. Dit moet een bestaand magazijn zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Rol:** De standaard functie voor toegangs beheer die in de sneeuw-sessie moet worden gebruikt. De opgegeven rol moet een bestaande rol zijn die al is toegewezen aan de opgegeven gebruiker. De standaard functie is openbaar. | Yes      |
 | connectVia       | De [Integration runtime](concepts-integration-runtime.md) die wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration runtime gebruikt. | No       |
 
 **Voorbeeld:**
@@ -160,14 +160,14 @@ Als uw Sink-gegevens archief en-indeling voldoen aan de criteria die in deze sec
 
     - Voor de indeling **Parquet** is de compressie-codec **geen**, **Snappy**of **lzo**.
     - Voor **tekst indeling met scheidings tekens** :
-        - `rowDelimiter`is **\r\n**of een wille keurig teken.
-        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
-        - `encodingName`is standaard ingesteld op **UTF-8**.
-        - `quoteChar`is **dubbele aanhalings**tekens, **enkele aanhalings** tekens of **lege teken reeks** (geen aanhalings teken).
+        - `rowDelimiter` is **\r\n**of een wille keurig teken.
+        - `compression` kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName` is standaard ingesteld op **UTF-8**.
+        - `quoteChar` is **dubbele aanhalings**tekens, **enkele aanhalings**tekens of **lege teken reeks** (geen aanhalings teken).
     - Voor de **JSON** -indeling biedt direct kopiëren alleen ondersteuning voor het geval dat de bron sneeuw Table of het query resultaat slechts één kolom heeft en het gegevens type van deze kolom **Variant**, **object**of **matrix**is.
-        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
-        - `encodingName`is standaard ingesteld op **UTF-8**.
-        - `filePattern`de Sink voor kopieer activiteiten is standaard ingesteld op **setOfObjects**.
+        - `compression` kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName` is standaard ingesteld op **UTF-8**.
+        - `filePattern` de Sink voor kopieer activiteiten is standaard ingesteld op **setOfObjects**.
 
 - De bron van de Kopieer activiteit `additionalColumns` is niet opgegeven.
 - Er is geen kolom toewijzing opgegeven.
@@ -292,20 +292,20 @@ Als uw bron gegevens opslag en-indeling voldoen aan de criteria die in deze sect
     - Voor de indeling **Parquet** is de compressie-codec **geen**of **Snappy**.
 
     - Voor **tekst indeling met scheidings tekens** :
-        - `rowDelimiter`is **\r\n**of een wille keurig teken. Als het scheidings teken van de rij niet ' \r\n ' is, `firstRowAsHeader` moet **Onwaar**zijn en `skipLineCount` niet opgegeven.
-        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
-        - `encodingName`is standaard ingesteld op ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB18030 ', ' ISO-2022-JP ', ' ISO-2022-KR ', ' ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 ".
-        - `quoteChar`is **dubbele aanhalings**tekens, **enkele aanhalings** tekens of **lege teken reeks** (geen aanhalings teken).
+        - `rowDelimiter` is **\r\n**of een wille keurig teken. Als het scheidings teken van de rij niet ' \r\n ' is, `firstRowAsHeader` moet **Onwaar**zijn en `skipLineCount` niet opgegeven.
+        - `compression` kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName` is standaard ingesteld op ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB18030 ', ' ISO-2022-JP ', ' ISO-2022-KR ', ' ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 ".
+        - `quoteChar` is **dubbele aanhalings**tekens, **enkele aanhalings**tekens of **lege teken reeks** (geen aanhalings teken).
     - Voor de **JSON** -indeling ondersteunt direct kopiëren alleen het geval dat de tabel met de Sink-sneeuw vlokken slechts één kolom heeft en het gegevens type van deze kolom **Variant**, **object**of **matrix**is.
-        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
-        - `encodingName`is standaard ingesteld op **UTF-8**.
+        - `compression` kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName` is standaard ingesteld op **UTF-8**.
         - Er is geen kolom toewijzing opgegeven.
 
 - In de bron van de Kopieer activiteit: 
 
-   -  `additionalColumns`is niet opgegeven.
+   -  `additionalColumns` is niet opgegeven.
    - Als uw bron een map is, `recursive` wordt ingesteld op waar.
-   - `prefix`, `modifiedDateTimeStart` , `modifiedDateTimeEnd` zijn niet opgegeven.
+   - `prefix`, `modifiedDateTimeStart` , `modifiedDateTimeEnd` en `enablePartitionDiscovery` zijn niet opgegeven.
 
 **Voorbeeld:**
 

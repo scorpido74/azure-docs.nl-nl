@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 19bd7960c4a6a02566d86d51ff7e21f4e570c34d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6191b0959345e6e69c16890d755407af289ef03
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373637"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047766"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Vm's implementeren op toegewezen hosts met behulp van de portal
+# <a name="deploy-linux-vms-to-dedicated-hosts-using-the-portal"></a>Virtuele Linux-machines implementeren op toegewezen hosts met behulp van de portal 
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 

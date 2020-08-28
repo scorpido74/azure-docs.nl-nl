@@ -3,12 +3,12 @@ title: Programmatisch beleid maken
 description: Dit artikel helpt u bij het programmatisch maken en beheren van beleids regels voor Azure Policy met Azure CLI, Azure PowerShell en REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548308"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047051"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
@@ -235,7 +235,7 @@ De beleids definitie-ID voor de beleids definitie die u hebt gemaakt, moet er on
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Zie [Azure cli-resource beleid](/cli/azure/policy?view=azure-cli-latest)voor meer informatie over hoe u resource beleid kunt beheren met Azure cli.
+Zie [Azure cli-resource beleid](/cli/azure/policy)voor meer informatie over hoe u resource beleid kunt beheren met Azure cli.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -243,6 +243,6 @@ Raadpleeg de volgende artikelen voor meer informatie over de opdrachten en query
 
 - [Azure REST API-resources](/rest/api/resources/)
 - [Azure PowerShell modules](/powershell/module/az.resources/#policies)
-- [Azure CLI-beleids opdrachten](/cli/azure/policy?view=azure-cli-latest)
+- [Azure CLI-beleids opdrachten](/cli/azure/policy)
 - [Naslag informatie over REST API van Azure Policy Insights-resource provider](/rest/api/policy-insights)
 - [Uw resources organiseren met Azure-beheergroepen](../../management-groups/overview.md).

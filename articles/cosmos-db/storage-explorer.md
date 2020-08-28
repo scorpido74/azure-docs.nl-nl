@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799108"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047476"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Werken met gegevens in Azure Storage Explorer
 
@@ -95,7 +95,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 
 * Klik met de rechtermuisknop op een Azure Cosmos DB-account of een database. U kunt **Openen in Portal** kiezen en de bron beheren in de browser op de Azure-portal.
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Openen in portal":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Openen in portal":::
 
 * U kunt ook Azure Cosmos DB-account, database, verzameling toevoegen aan **Snelle toegang**.
 * Met **Zoeken vanaf hier** kunt u naar sleutelwoorden zoeken onder het geselecteerde pad.
@@ -106,25 +106,25 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 
 #### <a name="create-a-database"></a>Een database maken
 
--   Klik met de rechtermuisknop op het Azure Cosmos DB-account, kies **Database maken**, voer de naam van de database in en druk op **Enter**.
+- Klik met de rechtermuisknop op het Azure Cosmos DB-account, kies **Database maken**, voer de naam van de database in en druk op **Enter**.
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Een Data Base maken in uw Azure Cosmos-account":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Een Data Base maken in uw Azure Cosmos-account":::
 
 #### <a name="delete-a-database"></a>Een database verwijderen
 
 - Klik met de rechter muisknop op de data base, selecteer **Data Base verwijderen**en selecteer **Ja** in het pop-upvenster. Het databaseknooppunt wordt verwijderd en het Azure Cosmos DB die Cosmos-account wordt automatisch vernieuwd.
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="De eerste data base verwijderen":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="De eerste data base verwijderen":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="De tweede data bases verwijderen":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="De tweede data bases verwijderen":::
 
 #### <a name="create-a-collection"></a>Een verzameling maken
 
 1. Klik met de rechter muisknop op uw data base, kies **verzameling maken**en geef de volgende informatie op, zoals **verzamelings-id**, **opslag capaciteit**, enzovoort. Klik op **OK** om te volt ooien.
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Eerste verzameling in de data base maken":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Eerste verzameling in de data base maken":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Tweede verzameling in de data base maken":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Tweede verzameling in de data base maken":::
 
 2. Selecteer **onbeperkt** om de partitie sleutel te kunnen opgeven en selecteer vervolgens **OK** om te volt ooien.
 
@@ -146,7 +146,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 
 - Als u een nieuw document wilt maken, opent u **documenten** in het linkerdeel venster, selecteert u **Nieuw document**, bewerkt u de inhoud in het rechterdeel venster en selecteert u **Opslaan**. U kunt ook een bestaand document bijwerken en vervolgens **Opslaan**selecteren. Wijzigingen kunnen worden genegeerd door op **Negeren** te klikken.
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Een nieuw document maken":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="Een nieuw document maken":::
 
 #### <a name="delete-a-document"></a>Een document verwijderen
 
@@ -156,7 +156,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 
 - Bewerk het document filter door een [SQL-query](how-to-sql-query.md) in te voeren en selecteer vervolgens **Toep assen**.
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Query's uitvoeren voor specifieke documenten":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Query's uitvoeren voor specifieke documenten":::
 
 ### <a name="graph-management"></a>Grafiekbeheer
 
@@ -165,7 +165,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 1. Als u een nieuw hoek punt wilt maken, opent u **Graph** vanuit het linkerdeel venster, selecteert u **Nieuw hoek punt**, bewerkt u de inhoud en selecteert u **OK**.
 2. Als u een bestaand hoek punt wilt wijzigen, selecteert u het pictogram pen in het rechterdeel venster.
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Het hoek punt van een grafiek wijzigen":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Het hoek punt van een grafiek wijzigen":::
 
 #### <a name="delete-a-graph"></a>Een grafiek verwijderen
 
@@ -175,7 +175,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 
 - Bewerk het grafiek filter door een [Gremlin-query](gremlin-support.md) in te voeren en vervolgens **filter Toep assen**te selecteren.
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Een grafiek query uitvoeren":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Een grafiek query uitvoeren":::
 
 ### <a name="table-management"></a>Tabelbeheer
 
@@ -184,33 +184,34 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 1. Als u een nieuwe tabel wilt maken, opent u **entiteiten** in het linkerdeel venster, selecteert u **toevoegen**, de inhoud bewerken in het dialoog venster **entiteit** toevoegen, eigenschap toevoegen door op de knop **eigenschap toevoegen**te klikken en vervolgens **Invoegen**te selecteren.
 2. Als u een tabel wilt wijzigen, selecteert u **bewerken**, wijzigt u de inhoud en selecteert u vervolgens **bijwerken**.
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Een tabel maken en wijzigen":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="Een tabel maken en wijzigen":::
 
 #### <a name="import-and-export-table"></a>Tabel importeren en exporteren
 
 1. Als u wilt importeren, selecteert u de knop **importeren** en kiest u een bestaande tabel.
 2. Als u wilt exporteren, selecteert u de knop **exporteren** en kiest u een bestemming.
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Een tabel importeren of exporteren":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Een tabel importeren of exporteren":::
 
 #### <a name="delete-entities"></a>Entiteiten verwijderen
 
 - Selecteer de entiteiten en selecteer de knop **verwijderen**.
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Een tabel verwijderen":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Een tabel verwijderen":::
 
 #### <a name="query-table"></a>Een query uitvoeren op een tabel
 
 - Klik op **query** knop, invoer query voorwaarde en selecteer knop **query uitvoeren** . Sluit het queryvenster door te klikken op de knop **Query sluiten**.
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Gegevens uit de tabel opvragen":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Gegevens uit de tabel opvragen":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Opgeslagen procedures, triggers en UDF's beheren
 
 * Als u een opgeslagen procedure wilt maken, klikt u in de linker boom structuur met de rechter muisknop op **opgeslagen procedure**, kiest u **opgeslagen procedure maken**, voert u een naam in de linkerkant in, typt u de opgeslagen procedure scripts in het rechter venster en selecteert u **maken**.
 * U kunt ook bestaande opgeslagen procedures bewerken door te dubbel klikken, de update uit te voeren en op **bijwerken** te klikken om op te slaan, of op **verwijderen** om de wijziging te annuleren.
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Opgeslagen procedures maken en beheren":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Opgeslagen procedures maken en beheren":::
+
 * De bewerkingen voor **triggers** en **UDF** zijn vergelijkbaar met die voor **opgeslagen procedures**.
 
 ## <a name="troubleshooting"></a>Problemen oplossen

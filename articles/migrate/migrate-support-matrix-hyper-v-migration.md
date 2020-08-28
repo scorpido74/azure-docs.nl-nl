@@ -3,12 +3,12 @@ title: Ondersteuning voor Hyper-V-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-migratie met Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871493"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051148"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Ondersteunings matrix voor Hyper-V-migratie
 
@@ -26,7 +26,10 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | **Implementatie**       | De Hyper-V-host kan zelfstandig of in een cluster worden geïmplementeerd. <br/>Azure Migrate replicatie software (Hyper-V-replicatie provider) is geïnstalleerd op de Hyper-V-hosts.|
 | **Machtigingen**           | U hebt beheerders machtigingen nodig op de Hyper-V-host. |
 | **Host het besturingssysteem** | Windows Server 2019, Windows Server 2016 of Windows Server 2012 R2 met de nieuwste updates. Houd er rekening mee dat Server Core-installatie van deze besturings systemen ook wordt ondersteund. |
+| **Andere software vereisten** | .NET Framework 4,7 of hoger |
 | **Poort toegang** |  Uitgaande verbindingen op HTTPS-poort 443 voor het verzenden van VM-replicatie gegevens.
+| **Vrije schijf ruimte (cache)** |  600 GB |
+| **Vrije schijfruimte (bewaarschijf)** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Virtuele Hyper-V-machines
@@ -39,6 +42,7 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Pas aanpassingen hand matig aan voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
 | **Linux-opstart**                 | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken. |
 | **UEFI-opstart**                  | Ondersteund. Zorg ervoor dat u een VM-grootte selecteert die wordt ondersteund door Azure Generation 2 VM  |
+| **UEFI-beveiligd opstarten**         | Niet ondersteund voor migratie.|
 | **Schijfgrootte**                  | 2 TB voor de besturingssysteem schijf 4 TB voor gegevens schijven.|
 | **Schijf nummer** | Maxi maal 16 schijven per VM.|
 | **Versleutelde schijven/volumes**    | Niet ondersteund voor migratie.|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993742"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049091"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Voorwaardelijke toegang: registratie van beveiligings gegevens beveiligen
 
@@ -67,6 +67,6 @@ Sommige kunnen ervoor kiezen om de apparaatstatus te gebruiken in plaats van loc
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
+[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-insights-reporting.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

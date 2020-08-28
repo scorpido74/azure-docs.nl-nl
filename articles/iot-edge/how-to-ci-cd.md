@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398cf947f0a2d250c3cd0ed73a75bc3c091e5f7a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561028"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047527"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continue integratie en continue implementatie naar Azure IoT Edge
 
@@ -66,7 +66,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 
 3. Volg de aanwijzingen om uw pijp lijn te maken.
 
-   1. Geef de bron gegevens voor de nieuwe build-pijp lijn op. Selecteer **Azure opslag plaatsen Git** als bron en selecteer vervolgens het project, de opslag plaats en de vertakking waar uw IOT Edge oplossings code zich bevindt. Selecteer vervolgens **door gaan**.
+   1. Geef de bron gegevens voor de nieuwe build-pijp lijn op. Selecteer **Azure opslag plaatsen Git** als bron en selecteer vervolgens het project, de opslag plaats en de vertakking waar uw IOT Edge oplossings code zich bevindt. Selecteer vervolgens **Doorgaan**.
 
       ![De pijplijn bron selecteren](./media/how-to-ci-cd/pipeline-source.png)
 
@@ -204,6 +204,15 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
       * Als u op één apparaat implementeert, voert u de **IOT edge apparaat-id**in.
       * Als u implementeert op meerdere apparaten, geeft u de **voor waarde voor**het apparaat doel op. De doel voorwaarde is een filter dat overeenkomt met een set IoT Edge apparaten in IoT Hub. Als u Device Tags als voor waarde wilt gebruiken, moet u de labels van de bijbehorende apparaten bijwerken met IoT Hub apparaat twee. Werk de **IOT Edge implementatie-id** en **IOT Edge implementatie prioriteit** bij in de geavanceerde instellingen. Zie [inzicht IOT Edge automatische implementaties](module-deployment-monitoring.md)voor meer informatie over het maken van een implementatie voor meerdere apparaten.
     * Vouw geavanceerde instellingen uit, selecteer **IOT Edge implementatie-id**, plaats de variabele `$(System.TeamProject)-$(Release.EnvironmentName)` . Hiermee wordt de naam van het project en de release toegewezen aan uw IoT Edge-implementatie-ID.
+
+>[!NOTE]
+>Als u **gelaagde implementaties** wilt gebruiken in uw pijp lijn, worden gelaagde implementaties nog niet ondersteund in azure IOT Edge taken in azure DevOps.
+>
+>U kunt echter een [Azure cli-taak in azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) gebruiken om uw implementatie te maken als een gelaagde implementatie. Voor de **inline-script** waarde kunt u de [opdracht AZ IOT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)gebruiken:
+>
+>   ```azurecli-interactive
+>   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true
+>   ```
 
 12. Selecteer **Opslaan** om uw wijzigingen op te slaan in de nieuwe release pijplijn. Ga terug naar de pijplijn weergave door **pijp lijn** te selecteren in het menu.
 

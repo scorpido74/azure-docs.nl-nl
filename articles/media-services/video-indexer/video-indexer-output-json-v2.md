@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604786"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050859"
 ---
 # <a name="examine-the-video-indexer-output"></a>De Video Indexer uitvoer controleren
 
@@ -27,7 +27,7 @@ U kunt ook de API gebruiken door de API **Get video-index** op te roepen en de a
 
 ![Inzichten](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-In dit artikel wordt de Video Indexer uitvoer (JSON-inhoud) onderzocht. Zie [video indexer Insights](video-indexer-overview.md#video-insights)voor meer informatie over de functies en inzichten die voor u beschikbaar zijn.
+In dit artikel wordt de Video Indexer uitvoer (JSON-inhoud) onderzocht. <br/>Zie [video indexer Insights](video-indexer-overview.md#video-insights)voor meer informatie over de functies en inzichten die voor u beschikbaar zijn.
 
 > [!NOTE]
 > Het verlopen van alle toegangs tokens in Video Indexer is een uur.

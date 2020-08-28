@@ -2,28 +2,34 @@
 title: Inkomende/uitgaande IP-adressen
 description: Meer informatie over hoe binnenkomende en uitgaande IP-adressen worden gebruikt in Azure App Service, wanneer ze worden gewijzigd en hoe u de adressen voor uw app kunt vinden.
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537624"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050689"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Binnenkomende en uitgaande IP-adressen in Azure App Service
 
-[Azure app service](overview.md) is een service met meerdere tenants, met uitzonde ring van [app service omgevingen](environment/intro.md). Apps die zich niet in een App Service omgeving bevinden (niet in de [geïsoleerde laag](https://azure.microsoft.com/pricing/details/app-service/)) delen netwerk infrastructuur met andere apps. Als gevolg hiervan kunnen de inkomende en uitgaande IP-adressen van een app afwijken en kunnen zelfs in bepaalde situaties worden gewijzigd. 
+[Azure app service](overview.md) is een service met meerdere tenants, met uitzonde ring van [app service omgevingen](environment/intro.md). Apps die zich niet in een App Service omgeving bevinden (niet in de [geïsoleerde laag](https://azure.microsoft.com/pricing/details/app-service/)) delen netwerk infrastructuur met andere apps. Als gevolg hiervan kunnen de inkomende en uitgaande IP-adressen van een app afwijken en kunnen zelfs in bepaalde situaties worden gewijzigd.
 
 [App service omgevingen](environment/intro.md) gebruiken specifieke netwerk infrastructuren, zodat apps die in een app service omgeving worden uitgevoerd, statische, specifieke IP-adressen voor binnenkomende en uitgaande verbindingen krijgen.
+
+## <a name="how-ip-addresses-work-in-app-service"></a>Hoe IP-adressen werken in App Service
+
+Een App Service-app wordt uitgevoerd in een App Service plan en App Service plannen worden geïmplementeerd in een van de implementatie-eenheden in de Azure-infra structuur (intern een webruimte genoemd). Elke implementatie-eenheid wordt Maxi maal vijf virtuele IP-adressen toegewezen, die één openbaar inkomend IP-adres en vier uitgaande IP-adressen bevat. Alle App Service plannen in dezelfde implementatie-eenheid en app-exemplaren die hierin worden uitgevoerd, delen dezelfde set virtuele IP-adressen. Voor een App Service Environment (een App Service plan in een [geïsoleerde laag](https://azure.microsoft.com/pricing/details/app-service/)) is het app service plan zelf de implementatie-eenheid, zodat de virtuele IP-adressen hiervoor kunnen worden toegewezen.
+
+Omdat u niet gemachtigd bent om een App Service plan tussen implementatie-eenheden te verplaatsen, blijven de virtuele IP-adressen die zijn toegewezen aan uw app meestal hetzelfde, maar zijn er uitzonde ringen.
 
 ## <a name="when-inbound-ip-changes"></a>Wanneer inkomende IP-wijzigingen
 
 Ongeacht het aantal uitgeschaalde instanties heeft elke app één inkomend IP-adres. Het binnenkomende IP-adres kan veranderen wanneer u een van de volgende acties uitvoert:
 
-- Verwijder een app en maak deze opnieuw in een andere resource groep.
-- Verwijder de laatste app in een combi natie van resource groep _en_ regio en maak deze opnieuw.
-- Een bestaande TLS-binding verwijderen, bijvoorbeeld tijdens het vernieuwen van het certificaat (Zie [certificaat vernieuwen](configure-ssl-certificate.md#renew-certificate)).
+- Een app verwijderen en opnieuw maken in een andere resource groep (implementatie-eenheid kan worden gewijzigd).
+- Verwijder de laatste app in een combi natie van resource groep _en_ regio en maak deze opnieuw (implementatie-eenheid kan worden gewijzigd).
+- Een bestaande TLS/SSL-binding op basis van IP verwijderen, zoals tijdens het vernieuwen van een certificaat (Zie [certificaat vernieuwen](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Het inkomende IP-adres zoeken
 
@@ -39,9 +45,13 @@ Soms wilt u mogelijk een toegewezen, statisch IP-adres voor uw app. Als u een st
 
 ## <a name="when-outbound-ips-change"></a>Wanneer uitgaande Ip's worden gewijzigd
 
-Ongeacht het aantal uitgeschaalde instanties heeft elke app op elk gewenst moment een bepaald aantal uitgaande IP-adressen. Elke uitgaande verbinding van de App Service-app, zoals een back-enddatabase, gebruikt een van de uitgaande IP-adressen als het IP-bron adres. U kunt niet vooraf weten welk IP-adres een gegeven app-exemplaar gebruikt voor het maken van de uitgaande verbinding. Daarom moet uw back-end-service zijn firewall openen voor alle uitgaande IP-adressen van uw app.
+Ongeacht het aantal uitgeschaalde instanties heeft elke app op elk gewenst moment een bepaald aantal uitgaande IP-adressen. Elke uitgaande verbinding van de App Service-app, zoals een back-enddatabase, gebruikt een van de uitgaande IP-adressen als het IP-bron adres. Het IP-adres dat moet worden gebruikt, is wille keurig geselecteerd tijdens runtime. Daarom moet uw back-end-service zijn firewall openen voor alle uitgaande IP-adressen voor uw app.
 
-De set met uitgaande IP-adressen voor uw app verandert wanneer u uw app schaalt tussen de lagere lagen (**Basic**, **Standard**en **Premium**) en de **Premium v2** -laag.
+De set met uitgaande IP-adressen voor uw app wordt gewijzigd wanneer u een van de volgende acties uitvoert:
+
+- Een app verwijderen en opnieuw maken in een andere resource groep (implementatie-eenheid kan worden gewijzigd).
+- Verwijder de laatste app in een combi natie van resource groep _en_ regio en maak deze opnieuw (implementatie-eenheid kan worden gewijzigd).
+- Schaal uw app tussen de lagere lagen (**Basic**, **Standard**en **Premium**) en de **Premium v2** -laag (IP-adressen kunnen worden toegevoegd aan of afgetrokken van de set).
 
 U kunt de set met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken, ongeacht de prijs categorieën, door te zoeken naar de `possibleOutboundIpAddresses` eigenschap of in het veld **extra uitgaande IP-adressen** op de Blade **Eigenschappen** in de Azure Portal. Zie [uitgaande Ip's zoeken](#find-outbound-ips).
 

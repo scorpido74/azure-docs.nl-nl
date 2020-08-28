@@ -3,12 +3,12 @@ title: Beheer groepen maken om resources te organiseren-Azure governance
 description: Meer informatie over het maken van Azure-beheer groepen voor het beheren van meerdere resources met behulp van de portal, Azure PowerShell en Azure CLI.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0739eafdf4cf41195b189a8496c331ab470bbec0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9504679062c9facad60023759b474be1675cb6a8
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056632"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048547"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Beheergroepen maken voor resource-organisatie en -beheer
 
@@ -70,7 +70,7 @@ New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
 
 ### <a name="create-in-azure-cli"></a>Maken in azure CLI
 
-Voor Azure CLI gebruikt u de opdracht [AZ Account Management-Group Create](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) om een nieuwe beheer groep te maken.
+Voor Azure CLI gebruikt u de opdracht [AZ Account Management-Group Create](/cli/azure/account/management-group#az-account-management-group-create) om een nieuwe beheer groep te maken.
 
 ```azurecli-interactive
 az account management-group create --name Contoso

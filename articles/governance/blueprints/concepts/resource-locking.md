@@ -1,14 +1,14 @@
 ---
 title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383598"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051499"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -24,11 +24,11 @@ Vergrendelings modi kunnen echter niet worden gewijzigd buiten Azure-blauw drukk
 
 Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben vier statussen: **niet vergrendeld**, **alleen-lezen**, **niet bewerken/verwijderen**of **kan niet verwijderen**. Elk type artefact kan de status **niet vergrendeld** hebben. De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
 
-|Modus|Bron type voor artefacten|Status|Beschrijving|
+|Modus|Bron type voor artefacten|Staat|Beschrijving|
 |-|-|-|-|
 |Niet vergren delen|*|Niet vergrendeld|Resources worden niet beveiligd door Azure-blauw drukken. Deze status wordt ook gebruikt voor resources die worden toegevoegd aan een **alleen-lezen** -of **verwijderings** artefact van een resource buiten een blauw druk-toewijzing.|
 |Alleen-lezen|Resourcegroep|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
-|Alleen-lezen|Niet-resource groep|Alleen-lezen|De resource kan op geen enkele manier worden gewijzigd: geen wijzigingen en kan niet worden verwijderd.|
+|Alleen-lezen|Niet-resource groep|Alleen-lezen|De resource kan op geen enkele manier worden gewijzigd. Geen wijzigingen en kan niet worden verwijderd.|
 |Niet verwijderen|*|Kan niet verwijderen|De resources kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
 
 ## <a name="overriding-locking-states"></a>Vergrendelings status negeren
@@ -182,8 +182,8 @@ Hoewel **excludedPrincipals** moet expliciet zijn, kunnen **excludedActions** -v
 ## <a name="next-steps"></a>Volgende stappen
 
 - Volg de zelf studie [nieuwe resources beveiligen](../tutorials/protect-new-resources.md) .
-- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
+- Meer informatie over de [levenscyclus van een blauwdruk](./lifecycle.md).
+- Meer informatie over hoe u [statische en dynamische parameters](./parameters.md) gebruikt.
+- Meer informatie over hoe u de [blauwdrukvolgorde](./sequencing-order.md) aanpast.
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
 - Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).

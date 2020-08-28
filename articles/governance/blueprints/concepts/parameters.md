@@ -1,14 +1,14 @@
 ---
 title: Gebruik para meters voor het maken van dynamische blauw drukken
 description: Meer informatie over statische en dynamische para meters en hoe u deze kunt gebruiken om veilig en dynamisch blauw drukken te maken.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970634"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051556"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
 
@@ -55,11 +55,11 @@ Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wor
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. Klik op een bestaande blauw druk en klik vervolgens op **blauw drukken bewerken** of klik op **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
+1. Selecteer een bestaande blauw druk en selecteer vervolgens **blauw** drukken of selecteer **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
 
-1. Klik op **volgende: artefacten** of klik op het tabblad **artefacten** .
+1. Selecteer **volgende: artefacten** of selecteer het tabblad **artefacten** .
 
-1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Klik op de rij artefacten om de artefact parameters te bewerken.
+1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Selecteer de rij artefacten om de artefact parameters te bewerken.
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Blauw druk-para meters voor een definitie van een blauw druk" border="false":::
 
@@ -172,7 +172,7 @@ Het tegenovergestelde van een statische para meter is een **dynamische para mete
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. Klik met de rechter muisknop op de blauw druk die u wilt toewijzen. Selecteer **blauw druk toewijzen** of klik op de blauw druk die u wilt toewijzen en klik vervolgens op de knop **blauw** drukken.
+1. Klik met de rechter muisknop op de blauw druk die u wilt toewijzen. Selecteer **blauw druk toewijzen** of selecteer de blauw druk die u wilt toewijzen en gebruik vervolgens de knop **blauw** drukken.
 
 1. Zoek de sectie **artefact parameters** op de pagina **blauw** drukken. Elk artefact met ten minste één **dynamische para meter** geeft het artefact en de configuratie opties weer. Geef de vereiste waarden voor de para meters op voordat u de blauw druk toewijst. In het onderstaande voor beeld is _name_ een **dynamische para meter** die moet worden gedefinieerd voor het volt ooien van de blauw druk-toewijzing.
 
@@ -234,8 +234,8 @@ Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevo
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk de lijst met [blauw](../reference/blueprint-functions.md)drukken-functies.
-- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
-- Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](./lifecycle.md).
+- Meer informatie over hoe u de [blauwdrukvolgorde](./sequencing-order.md) aanpast.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
 - Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).

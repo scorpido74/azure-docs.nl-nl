@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853922"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047625"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Gebruik de volgende stappen om de standaard back-upopties voor een bestaand Azur
 
    * **Bewaren van back-ups** : deze vertegenwoordigt de periode waarin elke back-up wordt bewaard. U kunt deze configureren in uren of dagen. De minimale Bewaar periode mag niet korter zijn dan twee keer het back-upinterval (in uren) en mag niet groter zijn dan 720 uur.
 
-   * **Kopieën van opgeslagen gegevens** -standaard worden twee back-ups van uw gegevens gratis aangeboden. Als u aanvullende kopieën nodig hebt, moet u een ondersteunings aanvraag maken via de Azure Portal en worden de extra kopieën in rekening gebracht. Zie de sectie verbruikte opslag in de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie over de exacte prijs voor extra exemplaren.
+   * **Kopieën van opgeslagen gegevens** -standaard worden twee back-ups van uw gegevens gratis aangeboden. Er worden extra kosten in rekening gebracht als u meer dan twee exemplaren nodig hebt. Zie de sectie verbruikte opslag in de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie over de exacte prijs voor extra exemplaren.
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Het back-upinterval en de retentie voor een bestaand Azure Cosmos-account configureren" border="true":::
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948892"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049924"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -242,7 +242,7 @@ Het kan lastig zijn om het aantal en de namen van de gebruikers te voors pellen 
 
 Met de [modus alleen rapport](concept-conditional-access-report-only.md) kunnen beheerders de impact van het CA-beleid evalueren voordat ze in hun omgeving worden ingeschakeld.
 
-Meer informatie over het [configureren van de modus alleen rapport voor een CA-beleid](howto-conditional-access-report-only.md).
+Meer informatie over het [configureren van de modus alleen rapport voor een CA-beleid](howto-conditional-access-insights-reporting.md).
 
 ### <a name="plan-for-disruption"></a>Plan voor onderbreking
 

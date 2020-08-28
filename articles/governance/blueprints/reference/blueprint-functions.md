@@ -1,14 +1,14 @@
 ---
 title: Azure-blauw drukken-functies
 description: Hierin worden de functies beschreven die beschikbaar zijn voor gebruik met blauw drukken artefacten in definities en toewijzingen van Azure.
-ms.date: 05/22/2020
+ms.date: 08/27/2020
 ms.topic: reference
-ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422841"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050757"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functies voor gebruik met Azure-blauw drukken
 
@@ -36,7 +36,7 @@ Retourneert een object met eigenschappen die zijn ingevuld met de uitvoer van de
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| artefactnaam |Ja |tekenreeks |De naam van een blauw druk artefact. |
+| artefactnaam |Yes |tekenreeks |De naam van een blauw druk artefact. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -125,8 +125,8 @@ Combineert meerdere teken reeks waarden en retourneert de aaneengeschakelde teke
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| tekenreeks1 |Ja |tekenreeks |De eerste waarde voor samen voegen. |
-| aanvullende argumenten |Nee |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
+| tekenreeks1 |Yes |tekenreeks |De eerste waarde voor samen voegen. |
+| aanvullende argumenten |No |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -150,7 +150,7 @@ Retourneert een waarde voor de para meter blauw druk. De opgegeven parameter naa
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Yes |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -271,7 +271,7 @@ Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. 
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| tijdelijke aanduiding |Ja |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
+| tijdelijke aanduiding |Yes |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 

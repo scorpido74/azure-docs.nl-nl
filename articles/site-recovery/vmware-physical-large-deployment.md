@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131786"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047074"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Herstel na nood geval op schaal instellen voor virtuele VMware-machines/fysieke servers
 
@@ -127,9 +127,9 @@ Het is belang rijk dat u voldoende configuratie servers en scale-out proces serv
  
 De capaciteit van de configuratie server wordt beïnvloed door het aantal computers dat repliceert, en niet op basis van het verloop tempo van gegevens. Als u wilt weten of u aanvullende configuratie servers nodig hebt, gebruikt u deze gedefinieerde VM-limieten.
 
-**CPU** | **Geheugen** | **Cache schijf** | **Limiet van gerepliceerde machines**
+**CPU** | **Geheugen** | **Cacheschijf** | **Limiet van gerepliceerde machines**
  --- | --- | --- | ---
-8 Vcpu's<br> 2 sockets * 4 kernen @ 2,5 GHz | 16 GB | 600 GB | Maxi maal 550 computers<br> Er wordt van uitgegaan dat elke machine drie schijven van 100 GB elk heeft.
+8 vCPU's<br> 2 sockets * 4 kernen @ 2,5 GHz | 16 GB | 600 GB | Maxi maal 550 computers<br> Er wordt van uitgegaan dat elke machine drie schijven van 100 GB elk heeft.
 
 - Deze limieten zijn gebaseerd op een configuratie server die is ingesteld met behulp van een OVF-sjabloon.
 - Bij de limieten wordt ervan uitgegaan dat u niet de proces server gebruikt die standaard op de configuratie server wordt uitgevoerd.
@@ -153,9 +153,9 @@ De capaciteit van de proces server wordt beïnvloed door de gegevens verloop tar
 - U wordt aangeraden een server met de hoogste specificatie toe te voegen. 
 
 
-**CPU** | **Geheugen** | **Cache schijf** | **Verloop frequentie**
+**CPU** | **Geheugen** | **Cacheschijf** | **Verloop frequentie**
  --- | --- | --- | --- 
-12 Vcpu's<br> 2 sockets * 6 kernen @ 2,5 GHz | 24 GB | 1 GB | Tot 2 TB per dag
+12 vCPU's<br> 2 sockets * 6 kernen @ 2,5 GHz | 24 GB | 1 GB | Tot 2 TB per dag
 
 Stel de proces server als volgt in:
 
@@ -205,7 +205,7 @@ Ga als volgt te voor bereiden voor failover:
     - U kunt end-to-end-RTO voor uw apps ramen.
     - Een schatting maken van end-to-end RPO voor uw workloads.
     - Conflicten met het IP-adres bereik identificeren.
-    - Bij het uitvoeren van oefeningen raden wij u aan om geen productie netwerken te gebruiken voor boren, Vermijd het gebruik van dezelfde subnet-namen in productie-en test netwerken en opschonen van testfailover na elke analyse.
+    - Bij het uitvoeren van oefeningen raden wij u aan om geen productie netwerken voor boren te gebruiken en testfailover na elke detail analyse op te schonen.
 
 Als u een grootschalige failover wilt uitvoeren, raden we het volgende aan:
 

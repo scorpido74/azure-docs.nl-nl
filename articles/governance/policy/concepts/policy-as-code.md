@@ -1,14 +1,14 @@
 ---
 title: Beleid ontwerpen als codewerkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131494"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047323"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
@@ -29,10 +29,10 @@ Lees de volgende definities en voor beelden voordat u de details van het beleid 
 - [Initiatiefdefinitie](./initiative-definition-structure.md)
 
 De bestands namen worden uitgelijnd op delen van ofwel het beleid of de initiatief definitie:
-- `policy(set).json`-De volledige definitie
-- `policy(set).parameters.json`-Het `properties.parameters` gedeelte van de definitie
-- `policy.rules.json`-Het `properties.policyRule` gedeelte van de definitie
-- `policyset.definitions.json`-Het `properties.policyDefinitions` gedeelte van de definitie
+- `policy(set).json` -De volledige definitie
+- `policy(set).parameters.json` -Het `properties.parameters` gedeelte van de definitie
+- `policy.rules.json` -Het `properties.policyRule` gedeelte van de definitie
+- `policyset.definitions.json` -Het `properties.policyDefinitions` gedeelte van de definitie
 
 Voor beelden van deze bestands indelingen vindt u in de [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy/):
 
@@ -110,7 +110,8 @@ De toewijzing moet [enforcementMode](./assignment-structure.md#enforcement-mode)
 > [!NOTE]
 > Hoewel de afdwingings modus nuttig is, is het geen vervanging voor het grondig testen van een beleids definitie onder verschillende omstandigheden. De beleids definitie moet worden getest met `PUT` en `PATCH` rest API-aanroepen, compatibele en niet-compatibele resources en rand cases, zoals een eigenschap die van de resource ontbreekt.
 
-Nadat de toewijzing is geïmplementeerd, gebruikt u de SDK van het beleid om de [compatibiliteits gegevens](../how-to/get-compliance-data.md) voor de nieuwe toewijzing op te halen. De omgeving die wordt gebruikt om het beleid en de toewijzingen te testen, moet zowel compatibele als niet-compatibele resources hebben. Net als bij een goede eenheids test voor code, wilt u testen of de resources naar verwachting zijn en dat u ook geen valse positieven of onwaar-negatieven hebt. Als u alleen test en valideert voor wat u verwacht, is er mogelijk een onverwachte en niet-geïdentificeerde impact van het beleid. Zie [de impact van een nieuwe Azure Policy definitie evalueren](./evaluate-impact.md)voor meer informatie.
+Nadat de toewijzing is geïmplementeerd, gebruikt u de beleids-SDK of de [Azure Policy compatibiliteits scan github](https://github.com/marketplace/actions/azure-policy-compliance-scan) om [compatibiliteits gegevens](../how-to/get-compliance-data.md) voor de nieuwe toewijzing op te halen. De omgeving die wordt gebruikt om het beleid en de toewijzingen te testen, moet zowel compatibele als niet-compatibele resources hebben.
+Net als bij een goede eenheids test voor code, wilt u testen of de resources naar verwachting zijn en dat u ook geen valse positieven of onwaar-negatieven hebt. Als u alleen test en valideert voor wat u verwacht, is er mogelijk een onverwachte en niet-geïdentificeerde impact van het beleid. Zie [de impact van een nieuwe Azure Policy definitie evalueren](./evaluate-impact.md)voor meer informatie.
 
 ### <a name="enable-remediation-tasks"></a>Herstel taken inschakelen
 

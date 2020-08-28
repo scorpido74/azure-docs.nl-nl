@@ -1,14 +1,14 @@
 ---
 title: Meer informatie over de volg orde van de implementatie volgorde
 description: Meer informatie over de standaard volgorde waarmee blauw drukken artefacten worden geïmplementeerd tijdens een blauw druk-toewijzing en het aanpassen van de implementatie volgorde.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970617"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051471"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Meer informatie over de implementatie volgorde in azure-blauw drukken
 
@@ -44,7 +44,7 @@ Binnen elk **bron groeps** artefact wordt de volgende volg orde gebruikt voor ar
 
 Bij het opstellen van grote blauw drukken-definities kan het nodig zijn om resources in een specifieke volg orde te maken. Het meest voorkomende patroon van dit scenario is wanneer een blauw druk definitie meerdere ARM-sjablonen bevat. Met Azure-blauw drukken wordt dit patroon verwerkt door de volg orde van sequentiëren te definiëren.
 
-De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn`is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
+De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn` is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
 
 > [!NOTE]
 > Wanneer u blauw drukken-objecten maakt, haalt elke artefact bron de naam van de bestands naam, indien [Power shell](/powershell/module/az.blueprint/new-azblueprintartifact)of het URL-eind punt wordt gebruikt als [rest API](/rest/api/blueprints/artifacts/createorupdate). _resourceGroup_ verwijzingen in artefacten moeten overeenkomen met die in de definitie van de blauw druk.
@@ -141,8 +141,8 @@ Een voor beeld is een resource groep die afhankelijk is van een beleid op abonne
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](./lifecycle.md).
+- Meer informatie over hoe u [statische en dynamische parameters](./parameters.md) gebruikt.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
 - Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).

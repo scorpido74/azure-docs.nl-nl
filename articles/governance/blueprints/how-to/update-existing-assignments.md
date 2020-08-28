@@ -1,14 +1,14 @@
 ---
 title: Een bestaande toewijzing bijwerken vanuit de portal
 description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauw druk-toewijzing vanuit de portal in azure-blauw drukken.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969461"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051420"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
 
@@ -22,14 +22,13 @@ Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zi
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer **toegewezen blauw drukken** op de pagina aan de linkerkant.
+1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 
-1. Klik in de lijst met blauw drukken met de rechter muisknop op de blauw druk-toewijzing. Klik vervolgens op de knop **toewijzing bijwerken** of klik met de rechter muisknop op de blauw druk toewijzing en selecteer **Update toewijzing**.
+1. Selecteer in de lijst met blauw drukken de toewijzing van de blauw druk. Gebruik vervolgens de knop **toewijzing bijwerken** of klik met de rechter muisknop op de blauw druk toewijzing en selecteer **Update toewijzing**.
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Een bestaande blauw druk-toewijzing bijwerken" border="false":::
 
-1. De pagina **blauw** drukken wordt geladen, waarbij alle waarden van de oorspronkelijke toewijzing vooraf zijn ingevuld.
-   U kunt de definitie van de **blauw druk**, de **vergrendelings toewijzings** status en de dynamische para meters van de definitie van de blauw druk wijzigen. Klik op **toewijzen** wanneer u klaar bent met het maken van wijzigingen.
+1. De pagina **blauw drukken toewijzen** wordt vooraf gevuld met alle waarden van de oorspronkelijke toewijzing. U kunt de definitie van de **blauw druk**, de **vergrendelings toewijzings** status en de dynamische para meters van de definitie van de blauw druk wijzigen. Selecteer **toewijzen** wanneer u klaar bent met het maken van wijzigingen.
 
 1. Bekijk op de pagina bijgewerkte toewijzings Details de nieuwe status. In dit voor beeld hebben we **vergren deling** toegevoegd aan de toewijzing.
 
@@ -50,7 +49,7 @@ De implementatie van de bijgewerkte toewijzingen volgt enkele belang rijke regel
   - Als de definitie van de beleids toewijzing is gewijzigd, wordt er een nieuwe beleids toewijzing gemaakt.
     De eerder geïmplementeerde beleids toewijzingen blijven aanwezig.
   - Als het artefact voor beleids toewijzing van de blauw druk wordt verwijderd, blijven geïmplementeerde beleids toewijzingen aanwezig.
-- Azure Resource Manager sjablonen (ARM-sjablonen)
+- Azure Resource Manager-sjablonen (ARM-sjablonen)
   - De sjabloon wordt als een **put**verwerkt door Resource Manager. Raadpleeg de documentatie voor elke opgenomen resource als elk resource type deze actie anders verwerkt, om de impact van deze actie te bepalen wanneer deze wordt uitgevoerd door blauw drukken.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Mogelijke fouten bij het bijwerken van toewijzingen
