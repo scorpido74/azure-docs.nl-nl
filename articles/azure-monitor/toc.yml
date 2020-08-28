@@ -329,6 +329,28 @@
       items:
         - name: Gegevensverzamelingsregels
           href: platform/data-collection-rule-overview.md
+        - name: Agent-gegevensbronnen
+          items:
+            - name: Overzicht
+              href: platform/agent-data-sources.md
+            - name: Windows-gebeurtenissen
+              href: platform/data-sources-windows-events.md
+            - name: Aangepaste JSON-gegevens
+              href: platform/data-sources-json.md
+            - name: Verzamelde prestatiegegevens
+              href: platform/data-sources-collectd.md
+            - name: Syslog
+              href: platform/data-sources-syslog.md
+            - name: Prestatiemeteritems
+              href: platform/data-sources-performance-counters.md
+            - name: Prestaties van Linux-toepassingen
+              href: platform/data-sources-linux-applications.md
+            - name: IIS-logboeken
+              href: platform/data-sources-iis-logs.md
+            - name: Aangepaste logboeken
+              href: platform/data-sources-custom-logs.md
+            - name: Aangepaste velden
+              href: platform/custom-fields.md
         - name: Aangepaste metrische gegevens
           items:
             - name: Aangepaste metrische gegevens
@@ -361,6 +383,24 @@
             - name: Gegevens verzamelen
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Log Analytics-agent
+          items:
+            - name: Overzicht
+              href: platform/log-analytics-agent.md
+            - name: Windows-agents
+              href: platform/agent-windows.md
+            - name: Linux-agents
+              href: platform/agent-linux.md
+            - name: VM-extensie voor Windows
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: VM-extensie voor Linux
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics-gateway
+              href: platform/gateway.md
+            - name: Agents beheren
+              href: platform/agent-manage.md
+            - name: Status van agent
+              href: insights/solution-agenthealth.md
         - name: Azure Diagnostics-extensie
           items:
             - name: Overzicht
@@ -403,46 +443,6 @@
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Metrische gegevens verzamelen met Telegraf
                   href: platform/collect-custom-metrics-linux-telegraf.md
-        - name: Log Analytics-agent
-          items:
-            - name: Overzicht
-              href: platform/log-analytics-agent.md
-            - name: Windows-agents
-              href: platform/agent-windows.md
-            - name: Linux-agents
-              href: platform/agent-linux.md
-            - name: VM-extensie voor Windows
-              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-            - name: VM-extensie voor Linux
-              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-            - name: Log Analytics-gateway
-              href: platform/gateway.md
-            - name: Agents beheren
-              href: platform/agent-manage.md
-            - name: Status van agent
-              href: insights/solution-agenthealth.md
-            - name: Gegevensbronnen
-              items:
-                - name: Overzicht
-                  href: platform/agent-data-sources.md
-                - name: Windows-gebeurtenissen
-                  href: platform/data-sources-windows-events.md
-                - name: Aangepaste JSON-gegevens
-                  href: platform/data-sources-json.md
-                - name: Verzamelde prestatiegegevens
-                  href: platform/data-sources-collectd.md
-                - name: Syslog
-                  href: platform/data-sources-syslog.md
-                - name: Prestatiemeteritems
-                  href: platform/data-sources-performance-counters.md
-                - name: Prestaties van Linux-toepassingen
-                  href: platform/data-sources-linux-applications.md
-                - name: IIS-logboeken
-                  href: platform/data-sources-iis-logs.md
-                - name: Aangepaste logboeken
-                  href: platform/data-sources-custom-logs.md
-                - name: Aangepaste velden
-                  href: platform/custom-fields.md
         - name: Problemen oplossen
           items:
             - name: VM-extensie voor Log Analytics

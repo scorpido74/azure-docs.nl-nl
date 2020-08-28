@@ -1,58 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Bersin | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Bersin.
+title: 'Zelfstudie: Azure Active Directory-integratie met Bersin | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Bersin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bbc9d229-69fb-4ab5-b6c3-5f3d790ea13e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6794baab00dbb59df89187c8ab91f1a42ab03e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6fb8117a3e834dec71b9dbc98b4a34512a43f646
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158882"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540718"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Zelf studie: integratie Azure Active Directory met Bersin
+# <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Zelfstudie: Azure Active Directory-integratie met Bersin
 
-In deze zelf studie leert u hoe u Bersin integreert met Azure Active Directory (Azure AD).
-Het integreren van Bersin met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Bersin kunt integreren met Azure Active Directory (Azure AD).
+De integratie van Bersin met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Bersin.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Bersin (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot Bersin.
+* U kunt ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Bersin (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Bersin wilt configureren, hebt u de volgende items nodig:
+Om Azure AD-integratie met Bersin te configureren, hebt u het volgende nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding Bersin ingeschakeld
+* Een abonnement op Bersin waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Bersin ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* Bersin ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 
 ## <a name="adding-bersin-from-the-gallery"></a>Bersin toevoegen uit de galerie
 
-Als u de integratie van Bersin in azure AD wilt configureren, moet u Bersin uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Bersin in Azure AD te configureren, moet u Bersin uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Bersin toevoegen vanuit de galerie**
+**Bersin toevoegen uit de galerie**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,30 +61,30 @@ Als u de integratie van Bersin in azure AD wilt configureren, moet u Bersin uit 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Bersin**in het zoekvak, selecteer **Bersin** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Bersin**, selecteer **Bersin** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Bersin in de lijst met resultaten](common/search-new-app.png)
+     ![Bersin in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Bersin op basis van een test gebruiker met de naam **Julia Simon** voor eenmalige aanmelding, een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Bersin moet worden ingesteld.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met Bersin op basis van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de hieraan gerelateerde gebruiker in Bersin tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Bersin, moet u de volgende bouw stenen volt ooien:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Bersin te configureren en testen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Bersin eenmalige aanmelding configureren](#configure-bersin-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Bersin-test gebruiker](#create-bersin-test-user)** -om een equivalent van Julia Simon in Bersin te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Bersin configureren](#configure-bersin-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor Bersin maken](#create-bersin-test-user)** : als u een tegenhanger van Britta Simon in Bersin wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Bersin te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Bersin te configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Bersin** Application Integration de optie **eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Bersin** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -101,27 +96,27 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Bersin te
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u de volgende stap uit in de sectie **basis configuratie van SAML** :
+4. In de sectie **Standaard SAML-configuratie** voert u de volgende stap uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor Bersin domein en Url's](common/idp-identifier-relay.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Bersin](common/idp-identifier-relay.png)
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://www.bersin.com/shibboleth`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.bersin.com/shibboleth`
 
     b. Klik op **Extra URL's instellen**.
 
     c. In het tekstvak **Relaystatus** typt u een URL met de volgende notatie: `https://www.bersin.com/secure/`
 
-5. Klik op **aanvullende Url's instellen** en voer de volgende stappen uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
+5. Klik op **Extra URL's instellen** en voer de volgende stappen uit als u de toepassing in de met **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor Bersin domein en Url's](common/metadata-upload-additional-signon.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Bersin](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://www.bersin.com/Login.aspx`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.bersin.com/Login.aspx`
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Kopieer op de sectie **Bersin instellen** de gewenste URL ('s) volgens uw vereiste.
+7. In de sectie **Bersin instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -133,7 +128,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Bersin te
 
 ### <a name="configure-bersin-single-sign-on"></a>Eenmalige aanmelding voor Bersin configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **Bersin** zijde, verzendt u de gedownloade **federatieve meta gegevens-XML** en de juiste gekopieerde Url's van Azure Portal naar [Bersin ondersteunings team](mailto:ramansabde@gmail.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **Bersin** wilt configureren, verzendt u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Azure-portal gekopieerde URL's naar het [Bersin-ondersteuningsteam](mailto:ramansabde@gmail.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -143,34 +138,34 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
-3. Voer de volgende stappen uit in de eigenschappen van de gebruiker.
+3. Voer in Gebruikerseigenschappen de volgende stappen uit.
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer **BrittaSimon**in het veld **naam** in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. Typ **\@brittasimon yourcompanydomain. extension** in het veld **gebruikers naam** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Bersin.
+In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding met Azure te gebruiken door toegang te verlenen tot Bersin.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Bersin**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Bersin**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Bersin**.
+2. Selecteer **Bersin** in de lijst met toepassingen.
 
-    ![De koppeling Bersin in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar Bersin in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -180,26 +175,26 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol in de SAML-bewering verwacht, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik op de knop **selecteren** onder aan het scherm.
+6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onder aan het scherm op de knop **Selecteren**.
 
-7. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-bersin-test-user"></a>Bersin-test gebruiker maken
+### <a name="create-bersin-test-user"></a>Testgebruiker voor Bersin maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in Bersin. Werk met het [Bersin-ondersteunings team](mailto:USBersinServiceClient@deloitte.com) om de gebruikers toe te voegen in het Bersin-platform of het domein dat moet worden toegevoegd aan een acceptatie lijst voor het Bersin-platform. Als het domein wordt toegevoegd door het team, worden gebruikers automatisch ingericht voor het Bersin-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u in Bersin een gebruiker maken met de naam Britta Simon. Werk samen met het  [ondersteuningsteam van Bersin](mailto:USBersinServiceClient@deloitte.com) om de gebruikers die of het domein dat voor het Bersin-platform in de whitelist moet(en) worden opgenomen, toe te voegen. Als het team het domein heeft toegevoegd, worden gebruikers automatisch ingericht voor het Bersin-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Bersin in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Bersin waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Bersin klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Bersin waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

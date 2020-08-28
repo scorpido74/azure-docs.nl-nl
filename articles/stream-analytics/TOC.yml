@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: Uw gegevens versleutelen
           href: data-protection.md
+        - name: Geografische redundantie
+          href: geo-redundancy.md
     - name: Oplossingen bouwen
       items:
         - name: Twitter-sentimentanalyse
