@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81481835"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017699"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenant-toepassingen in Azure
 Een multi tenant-toepassing is een gedeelde bron waarmee ' gebruikers in afzonderlijke tenants ' de toepassing kunnen bekijken alsof ze hun eigen. Een typisch voor beeld van een multi tenant-toepassing is een scenario waarin alle gebruikers van de toepassing van verschillende tenants de gebruikers ervaring kunnen aanpassen, maar anders dezelfde basis vereisten voor het bedrijf hebben. Voor beelden van grote multi tenant-toepassingen zijn Office 365, Outlook.com en visualstudio.com.
@@ -46,7 +47,7 @@ Zie [een toepassing met meerdere tenants in azure hosten][Hosting a Multi-Tenant
 
 Azure biedt een groot aantal functies waarmee u de belangrijkste problemen kunt oplossen die zich voordoen bij het ontwerpen van een multi tenant systeem.
 
-**Isolatie**
+**Zonder**
 
 * Website tenants segmenteren op basis van host headers met of zonder TLS-communicatie
 * Website tenants op basis van query parameters
@@ -67,7 +68,7 @@ Gegevens beheer zoals Azure SQL Database of Azure Storage services zoals de Tabl
 
 * Azure Service Bus, een infra structuur voor berichten waarmee toepassingen berichten kunnen uitwisselen op een losjes gekoppelde manier voor betere schaal baarheid en meer flexibiliteit.
 
-**Netwerk services**
+**Netwerkservices**
 
 Azure biedt verschillende netwerk services die ondersteuning bieden voor verificatie en om de beheer baarheid van uw gehoste toepassingen te verbeteren. Deze services omvatten het volgende:
 

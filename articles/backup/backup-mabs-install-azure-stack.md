@@ -3,12 +3,12 @@ title: Azure Backup Server installeren op Azure Stack
 description: In dit artikel vindt u informatie over het gebruik van Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827004"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018124"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -99,7 +99,7 @@ Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. 
 > - Een computer die wordt uitgevoerd als een domeincontroller
 > - Een computer waarop de toepassingsserverfunctie is geïnstalleerd
 > - Een computer waarop Exchange Server wordt uitgevoerd
-> - Een computer die een knooppunt van een cluster is
+> - Een computer die een knoop punt van een cluster is
 
 Voeg Azure Backup Server altijd toe aan een domein. Als u Azure Backup Server naar een ander domein wilt verplaatsen, installeert u eerst Azure Backup Server en voegt u deze vervolgens toe aan het nieuwe domein. Wanneer u Azure Backup Server implementeert, kunt u het niet verplaatsen naar een nieuw domein.
 

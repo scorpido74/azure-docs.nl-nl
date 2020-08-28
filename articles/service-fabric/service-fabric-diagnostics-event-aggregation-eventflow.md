@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463089"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018651"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Gebeurtenis aggregatie en verzameling met behulp van Event flow
 
@@ -24,12 +25,12 @@ Event flow binaire bestanden zijn beschikbaar als een set NuGet-pakketten. Om ev
 
 U ziet een lijst met verschillende pakketten die worden weer gegeven met "inputs" en "outputs". Event flow ondersteunt diverse verschillende registratie providers en analyse functies. De service hosting Event flow moet toepasselijke pakketten bevatten, afhankelijk van de bron en bestemming voor de toepassings Logboeken. Naast het kern pakket ServiceFabric hebt u ook ten minste één invoer-en uitvoer configuratie nodig. U kunt bijvoorbeeld de volgende pakketten toevoegen om event source-gebeurtenissen te verzenden naar Application Insights:
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`gegevens van de Event source-klasse van de service vastleggen en van standaard EventSources zoals *micro soft-ServiceFabric-Services* en *micro soft-ServiceFabric-actors*)
-* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`(we gaan de logboeken verzenden naar een Azure-toepassing Insights-resource)
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` gegevens van de Event source-klasse van de service vastleggen en van standaard EventSources zoals *micro soft-ServiceFabric-Services* en *micro soft-ServiceFabric-actors*)
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (we gaan de logboeken verzenden naar een Azure-toepassing Insights-resource)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`(Hiermee wordt de initialisatie van de Event flow-pijp lijn vanuit Service Fabric service configuratie ingeschakeld en worden eventuele problemen met het verzenden van diagnostische gegevens gerapporteerd als Service Fabric status rapporten)
 
 >[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Inputs.EventSource`voor het pakket moet het service project zijn gericht op .NET Framework 4,6 of nieuwer. Zorg ervoor dat u het juiste doel raamwerk in project eigenschappen hebt ingesteld voordat u dit pakket installeert.
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` voor het pakket moet het service project zijn gericht op .NET Framework 4,6 of nieuwer. Zorg ervoor dat u het juiste doel raamwerk in project eigenschappen hebt ingesteld voordat u dit pakket installeert.
 
 Nadat alle pakketten zijn geïnstalleerd, is de volgende stap het configureren en inschakelen van Event flow in de service.
 
@@ -39,7 +40,7 @@ De Event flow-pijp lijn die verantwoordelijk is voor het verzenden van de logboe
 >[!NOTE]
 >Als uw project bestand de Visual Studio 2017-indeling heeft `eventFlowConfig.json` , wordt het bestand niet automatisch toegevoegd. U kunt dit probleem oplossen door het bestand in de map te maken `Config` en de opbouw actie in te stellen op `Copy if newer` . 
 
-Hier volgt een *voor beeldeventFlowConfig.jsop* basis van de hierboven genoemde NuGet-pakketten:
+Hier volgt een * voor beeldeventFlowConfig.jsop* basis van de hierboven genoemde NuGet-pakketten:
 ```json
 {
   "inputs": [
@@ -139,7 +140,7 @@ Event flow ondersteunt het gebruik van Service Fabric instellingen en toepassing
 servicefabric:/<section-name>/<setting-name>
 ```
 
-`<section-name>`de naam is van de sectie Service Fabric configuratie, en `<setting-name>` is de configuratie-instelling die de waarde levert die wordt gebruikt om een event flow-instelling te configureren. Ga voor meer informatie over hoe u dit doet naar [ondersteuning voor service Fabric instellingen en toepassings parameters](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
+`<section-name>` de naam is van de sectie Service Fabric configuratie, en `<setting-name>` is de configuratie-instelling die de waarde levert die wordt gebruikt om een event flow-instelling te configureren. Ga voor meer informatie over hoe u dit doet naar [ondersteuning voor service Fabric instellingen en toepassings parameters](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
 
 ## <a name="verification"></a>Verificatie
 

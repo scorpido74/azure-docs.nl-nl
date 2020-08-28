@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652590"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018090"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ Zie [Cross-Origin-resource delen](how-to-deploy-advanced-entry-script.md#cors)vo
 
 ## <a name="call-the-service-c"></a>De service (C#) aanroepen
 
-In dit voor beeld ziet u hoe u C# kunt gebruiken om de webservice aan te roepen die vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld is gemaakt:
+In dit voor beeld ziet u hoe u C# kunt gebruiken om de webservice aan te roepen die vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld is gemaakt:
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="call-the-service-go"></a>De service aanroepen (Go)
 
-In dit voor beeld ziet u hoe u kunt gebruiken om de webservice aan te roepen die is gemaakt vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld:
+In dit voor beeld ziet u hoe u kunt gebruiken om de webservice aan te roepen die is gemaakt vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld:
 
 ```go
 package main
@@ -360,7 +360,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="call-the-service-java"></a>De service aanroepen (Java)
 
-Dit voor beeld laat zien hoe u Java gebruikt voor het aanroepen van de webservice die is gemaakt op basis van de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld:
+Dit voor beeld laat zien hoe u Java gebruikt voor het aanroepen van de webservice die is gemaakt op basis van de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld:
 
 ```java
 import java.io.IOException;
@@ -440,7 +440,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="call-the-service-python"></a>De service aanroepen (python)
 
-In dit voor beeld wordt gedemonstreerd hoe u python gebruikt om de webservice aan te roepen die is gemaakt via de [trein in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld:
+In dit voor beeld wordt gedemonstreerd hoe u python gebruikt om de webservice aan te roepen die is gemaakt via de [trein in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) -voor beeld:
 
 ```python
 import requests

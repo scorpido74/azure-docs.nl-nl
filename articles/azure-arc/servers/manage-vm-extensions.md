@@ -3,12 +3,12 @@ title: VM-extensie beheer met servers voor Azure Arc ingeschakeld (preview)
 description: Servers met Azure-Arc (preview) kunnen de implementatie van extensies van virtuele machines beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213123"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018158"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Extensie beheer voor virtuele machines met Azure Arc-servers (preview-versie)
 
@@ -89,7 +89,7 @@ VM-extensies kunnen worden toegepast op uw Arc voor Server (preview) Managed mac
 
     ![Log Analytics VM-extensie installeren](./media/manage-vm-extensions/mma-extension-config.png)
 
-    Als u de installatie wilt volt ooien, moet u de werk ruimte-ID en de primaire sleutel opgeven. Als u niet bekend bent met het vinden van deze informatie, raadpleegt u de [werk ruimte-id en-sleutel ophalen](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key).
+    Als u de installatie wilt volt ooien, moet u de werk ruimte-ID en de primaire sleutel opgeven. Als u niet bekend bent met het vinden van deze informatie, raadpleegt u de [werk ruimte-id en-sleutel ophalen](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
 4. Nadat u de vereiste gegevens hebt bevestigd, selecteert u **maken**. Er wordt een samen vatting van de implementatie weer gegeven en u kunt de status van de implementatie controleren.
 

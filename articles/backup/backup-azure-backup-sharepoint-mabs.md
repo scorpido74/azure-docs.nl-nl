@@ -3,12 +3,12 @@ title: Een back-up maken van een share point-Farm naar Azure met MABS
 description: Gebruik Azure Backup Server om back-ups te maken van uw share point-gegevens en deze te herstellen. In dit artikel vindt u informatie over het configureren van uw share point-Farm zodat gewenste gegevens kunnen worden opgeslagen in Azure. U kunt beveiligde share point-gegevens herstellen vanaf schijf of Azure.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 00af51764d5a9454b002de6375b2b16d6e80c300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514234"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017427"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Een back-up maken van een share point-Farm naar Azure met MABS
 
@@ -82,7 +82,7 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
     Wanneer u de MABS query's van share Point server uitvouwt, kunt u zien welke gegevens MABS kunnen beveiligen.  Als de share point-data base extern is, wordt er met MABS verbinding gemaakt. Als share point-gegevens bronnen niet worden weer gegeven, controleert u of de VSS Writer wordt uitgevoerd op de share Point-server en eventuele externe SQL Server en of de MABS-agent is geïnstalleerd op zowel de share Point-server als de externe SQL Server. Zorg er ook voor dat share point-data bases niet elders worden beveiligd als SQL Server data bases.
 
-1. Geef in **methode voor gegevens beveiliging selecteren**op hoe u \- back-ups voor de korte en de lange termijn wilt verwerken. Back\-ups voor de korte termijn worden altijd eerst op schijf gemaakt, met de optie om vanaf de schijf een back-up te maken naar de Azure\-cloud met Azure Backup \(voor de korte of lange termijn\).
+1. Geef in **methode voor gegevens beveiliging selecteren**op hoe u \- back-ups voor de korte en de lange termijn wilt verwerken. Back-ups op korte \- termijn zijn altijd eerst op schijf, met de optie om een back-up te maken van de schijf naar de Azure-Cloud met Azure backup \( voor korte of lange \- termijn \) .
 
 1. Geef in ** \- doel stelling van de korte term**op hoe u back-ups wilt maken naar de \- opslag op korte termijn op schijf.   Geef in **Bewaar termijn** op hoe lang u de gegevens op de schijf wilt bewaren. In **synchronisatie frequentie**geeft u op hoe vaak u een incrementele back-up naar schijf wilt uitvoeren. Als u geen back-upinterval wilt instellen, kunt u net voor een herstel punt controleren, zodat MABS een snelle volledige back-up uitvoert, net voordat elk herstel punt wordt gepland.
 
@@ -102,7 +102,7 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
 1. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offlineback-up uitvoeren (offline-seeding). Voor offlineback-ups wordt gebruikgemaakt van de functie Azure Import. [Meer informatie](./backup-azure-backup-import-export.md).
 
-1. Controleer uw instellingen op de pagina **samen vatting** . Nadat u op **groep maken**hebt geklikt, vindt de initiële replicatie van de gegevens plaats. Wanneer deze is voltooid, wordt de status van de beveiligings groep weer gegeven op **OK** op de pagina **status** . Back-up vindt plaats in overeenstemming met de beveiligingsgroepsinstellingen.
+1. Controleer uw instellingen op de pagina  **samen vatting** . Nadat u op **groep maken**hebt geklikt, vindt de initiële replicatie van de gegevens plaats. Wanneer deze is voltooid, wordt de status van de beveiligings groep weer gegeven op **OK** op de pagina **status** . Back-up vindt plaats in overeenstemming met de beveiligingsgroepsinstellingen.
 
 ## <a name="monitoring"></a>Bewaking
 

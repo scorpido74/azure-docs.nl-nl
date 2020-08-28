@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448744"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018362"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 Zorg ervoor dat de verificatie vereisten voor de secundaire server en de data base correct zijn geconfigureerd om ervoor te zorgen dat uw toepassing direct toegang heeft tot de nieuwe primaire na een failover. Zie [SQL database Security na nood herstel](active-geo-replication-security-configure.md)voor meer informatie. Zorg ervoor dat het Bewaar beleid voor back-ups op de secundaire data base overeenkomt met die van de primaire gegevens bank om de naleving na een failover te garanderen. Deze instellingen maken geen deel uit van de data base en worden niet gerepliceerd. Standaard wordt het secundaire geconfigureerd met een standaard PITR-Bewaar periode van zeven dagen. Zie [SQL database automatische back-ups](automated-backups-overview.md)voor meer informatie.
 
 > [!IMPORTANT]
-> Als uw data base lid is van een failovergroep, kunt u de failover niet starten met behulp van de opdracht voor de failover van geo-replicatie. Gebruik de opdracht failover voor de groep. Als u een afzonderlijke Data Base wilt failover, moet u deze eerst verwijderen uit de groep failover. Zie [failover-groepen](auto-failover-group-overview.md) voor meer informatie.
+> Als uw data base lid is van een failovergroep, kunt u de failover niet starten met behulp van de opdracht voor de failover van geo-replicatie. Gebruik de opdracht failover voor de groep. Als u een afzonderlijke Data Base wilt failover, moet u deze eerst verwijderen uit de groep failover. Zie  [failover-groepen](auto-failover-group-overview.md) voor meer informatie.
 
 ## <a name="configuring-secondary-database"></a>Secundaire data base configureren
 
@@ -178,7 +178,8 @@ De client die de wijzigingen uitvoert, heeft netwerk toegang nodig tot de primai
 
 ### <a name="on-the-master-of-the-secondary-server"></a>Op de master van de secundaire server
 
-1. Voeg het IP-adres toe aan de acceptatie lijst van de client die de wijzigingen uitvoert. Dit moet hetzelfde exacte IP-adres van de primaire server zijn.
+1. Voeg het IP-adres van de client toe aan de lijst met toegestane clients onder firewall regels voor de secundaire server. Controleer of precies hetzelfde client-IP-adres dat is toegevoegd op de primaire server ook is toegevoegd aan het secundaire. Dit is een vereiste stap die moet worden uitgevoerd voordat u de opdracht ALTER data base secundair toevoegen uitvoert om geo-replicatie te initiëren.
+
 1. Maak dezelfde aanmelding als op de primaire server met hetzelfde wacht woord voor de gebruikers naam en SID:
 
    ```sql
@@ -247,9 +248,9 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 | Opdracht | Beschrijving |
 | --- | --- |
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik het argument secundair op SERVER toevoegen om een secundaire Data Base voor een bestaande Data Base te maken en gegevens replicatie te starten |
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
+| [DATABASE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik het argument secundair op SERVER toevoegen om een secundaire Data Base voor een bestaande Data Base te maken en gegevens replicatie te starten |
+| [DATABASE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
+| [DATABASE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op een server. |
 | [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een bepaalde data base opgehaald. |
 | [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |

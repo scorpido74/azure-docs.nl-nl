@@ -4,19 +4,19 @@ description: Gebruik op rollen gebaseerde Access Control voor het beheren van de
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1a4bb617511f5d5ccf882ccb11e7d88eb7a848ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533458"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017801"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren
 
 Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 
 > [!IMPORTANT]
-> Rollen die door Azure Backup worden verschaft, zijn beperkt tot acties die kunnen worden uitgevoerd in Azure Portal of via REST API of Recovery Services kluis Power shell of CLI-cmdlets. Acties die worden uitgevoerd in de gebruikers interface van de Azure backup-agent of System Center Data Protection Manager gebruikers interface of Azure Backup Server gebruikers interface zijn niet van invloed op deze rollen.
+> Rollen die door Azure Backup worden verschaft, zijn beperkt tot acties die kunnen worden uitgevoerd in Azure Portal of via REST API of Recovery Services kluis Power shell of CLI-cmdlets. Acties die worden uitgevoerd in de gebruikers interface van de Azure Backup Agent of System Center Data Protection Manager gebruikers interface Azure Backup Server of de gebruikers interface zijn niet van invloed op deze rollen.
 
 Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen voor back-upbeheer. Meer informatie over [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)
 

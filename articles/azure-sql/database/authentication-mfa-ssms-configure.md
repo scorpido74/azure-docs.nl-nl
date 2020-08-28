@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b96627bfdfad039ae23dd134fc76f368d59b7d59
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984701"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018280"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -55,7 +55,7 @@ De volgende stappen laten zien hoe u verbinding maakt met behulp van de nieuwste
 4. Selecteer **Opties** en geef de Data Base op in het dialoog venster **Opties** . (Als de verbonden gebruiker een gast gebruiker is (dat wil zeggen joe@outlook.com ), moet u het selectie vakje inschakelt en de huidige AD-domein naam of Tenant-id toevoegen als onderdeel van de opties. Zie [universele verificatie met SQL database en SQL Data Warehouse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md). Klik vervolgens op **Verbinden**.  
 5. Wanneer het dialoog venster **Aanmelden bij uw account** wordt weer gegeven, geeft u het account en het wacht woord op van uw Azure Active Directory identiteit. Er is geen wacht woord vereist als een gebruiker deel uitmaakt van een domein dat is federatief met Azure AD.
 
-   ![2mfa-aanmelden](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![2mfa-aanmelden](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > Voor universele verificatie met een account waarvoor MFA niet is vereist, kunt u op dit moment verbinding maken. Ga door met de volgende stappen voor gebruikers die MFA vereisen:
@@ -63,13 +63,14 @@ De volgende stappen laten zien hoe u verbinding maakt met behulp van de nieuwste
 
 6. Er kunnen twee dialoog vensters voor het instellen van MFA worden weer gegeven. Deze eenmalige bewerking is afhankelijk van de instelling van de MFA-beheerder en kan daarom optioneel zijn. Voor een domein waarvoor MFA is ingeschakeld, is deze stap soms vooraf gedefinieerd (het domein vereist bijvoorbeeld dat gebruikers een Smart Card en pincode gebruiken).
 
-   ![3mfa-installatie](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![3mfa-installatie](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+  
 7. In de tweede mogelijke tijd in het dialoog venster kunt u de details van uw verificatie methode selecteren. De mogelijke opties worden geconfigureerd door de beheerder.
 
-   ![4mfa-verificatie-1](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![4mfa-verificatie-1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. De Azure Active Directory stuurt de bevestigings gegevens naar u. Wanneer u de verificatie code ontvangt, voert u deze in het vak **verificatie code invoeren** in en klikt u op **Aanmelden**.
 
-   ![5mfa-2 controleren](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![5mfa-2 controleren](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 Wanneer de verificatie is voltooid, maakt SSMS verbinding met het normaal gezien van geldige referenties en toegang tot de firewall.
 
@@ -78,4 +79,4 @@ Wanneer de verificatie is voltooid, maakt SSMS verbinding met het normaal gezien
 - Zie voor een overzicht van multi-factor Authentication [universele verificatie met SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).  
 - Anderen toegang verlenen tot uw Data Base: [SQL database-verificatie en-autorisatie: toegang verlenen](logins-create-manage.md)  
 - Zorg ervoor dat anderen verbinding kunnen maken via de firewall: [Configureer een firewall regel op server niveau met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)  
-- Wanneer u **Active Directory-universele met MFA-** verificatie gebruikt, is ADAL tracering beschikbaar vanaf [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Standaard uitgeschakeld, u kunt ADAL tracering inschakelen via het menu **extra**, **Opties** , onder **Azure-Services**, Azure- **Cloud**, **ADAL uitvoervenster traceer niveau**, gevolgd door **uitvoer** in te scha kelen in het menu **weer gave** . De traceringen zijn beschikbaar in het uitvoer venster wanneer u **Azure Active Directory optie**selecteert.
+- Wanneer u **Active Directory-universele met MFA-** verificatie gebruikt, is ADAL tracering beschikbaar vanaf [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Standaard uitgeschakeld, u kunt ADAL tracering inschakelen via het menu **extra**, **Opties** , onder **Azure-Services**, Azure- **Cloud**, **ADAL uitvoervenster traceer niveau**, gevolgd door **uitvoer**  in te scha kelen in het menu **weer gave** . De traceringen zijn beschikbaar in het uitvoer venster wanneer u **Azure Active Directory optie**selecteert.

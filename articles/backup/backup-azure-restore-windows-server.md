@@ -3,12 +3,12 @@ title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 59e212b31d79c0d9a75369e542fee5e86f29653a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892504"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018906"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
@@ -89,7 +89,7 @@ Deze stappen omvatten de volgende terminologie:
 * Voor beeld van de *kluis* : de Recovery Services kluis waarmee de bron computer en de doel computer zijn geregistreerd.
 
 > [!NOTE]
-> Back-ups kunnen niet worden hersteld naar een doel computer waarop een eerdere versie van het besturings systeem wordt uitgevoerd. U kunt bijvoorbeeld een back-up die is gemaakt van een Windows 7-computer herstellen op een computer met Windows 7 (of hoger). Een back-up die is gemaakt vanaf een Windows 8-computer, kan niet worden hersteld naar een computer met Windows 7.
+> Back-ups kunnen niet worden hersteld naar een doel computer waarop een eerdere versie van het besturings systeem wordt uitgevoerd. U kunt bijvoorbeeld een back-up die is gemaakt van een Windows 7-computer herstellen op een computer met Windows 7 (of hoger). Een back-up die is gemaakt vanaf een Windows 10-computer, kan niet worden hersteld naar een computer met Windows 7.
 >
 >
 

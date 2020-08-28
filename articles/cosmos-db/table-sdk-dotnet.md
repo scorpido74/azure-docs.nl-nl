@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 8c594ba01ea6fe9fb1c3cee2ed415496132d1abc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459998"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018430"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Download-en release-opmerkingen
 
@@ -39,7 +40,7 @@ ms.locfileid: "87459998"
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="212"></a><a name="2.1.2"></a>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>omschreven
 
 * Opgeloste fouten
 
@@ -86,7 +87,7 @@ Het preview-pakket voor [WindowsAzure. Storage-PremiumTable](https://www.nuget.o
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
-| [2.1.2](#2.1.2) |16 september 2019| |
+| [omschreven](#2.1.2) |16 september 2019| |
 | [2.1.0](#2.1.0) |22 januari 2019|01 april 2020 |
 | [2.0.0](#2.0.0) |26 september 2018|01 maart 2020 |
 | [1.1.3](#1.1.3) |17 juli 2018|01 december 2019 |
@@ -119,6 +120,6 @@ Wanneer u probeert het pakket micro soft. Azure. CosmosDB. table NuGet te gebrui
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Zie [Inleiding tot Azure Cosmos DB Table-API](table-introduction.md)voor meer informatie over de Azure Cosmos db table-API. 

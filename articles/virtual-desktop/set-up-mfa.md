@@ -3,15 +3,15 @@ title: Azure Multi-Factor Authentication instellen voor virtueel bureau blad van
 description: Azure Multi-Factor Authentication instellen voor verbeterde beveiliging in Windows virtueel bureau blad.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009457"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017771"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor Windows Virtual Desktop inschakelen
 
@@ -47,29 +47,36 @@ U kunt als volgt een beleid voor voorwaardelijke toegang maken waarvoor multi-fa
 6. Onder **insluiten**selecteert u **gebruikers en groepen**  >  **gebruikers en groepen** selecteren > kiest u de groep die u hebt gemaakt in de fase [vereisten](#prerequisites) .
 7. Selecteer **Gereed**.
 8. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **apps selecteren**.
-9. Selecteer een van de volgende groepen apps op basis van de versie van het virtuele Windows-bureau blad dat u gebruikt.
-   - Als u Windows virtueel bureau blad (klassiek) gebruikt, kiest u deze twee apps:
+9. Selecteer een van de volgende apps op basis van de versie van het virtuele Windows-bureau blad dat u gebruikt.
+   - Als u Windows virtueel bureau blad (klassiek) gebruikt, kiest u deze app:
        - **Virtueel bureau blad van Windows** (app-id 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
-       - **Windows-client voor virtueel bureau blad** (app-id fa4345a4-a730-4230-84a8-7d9651b86739)
-   - Als u virtuele Windows-bureau blad gebruikt, kiest u deze twee apps:
+   - Als u Windows virtueel bureau blad gebruikt, kiest u deze app in plaats daarvan:
        -  **Virtueel bureau blad van Windows** (app-id 9cdead84-a844-4324-93f2-b2e6bb768d07)
-       -  **Windows-client voor virtueel bureau blad** (app-id a85cf173-4192-42f8-81fa-777a763e6e2c)
 
    >[!IMPORTANT]
-   > De Windows-client-apps voor virtueel bureau blad worden gebruikt voor de webclient. Selecteer echter niet de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63). Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen MFA te hebben.
+   > Selecteer de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63) niet. Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen MFA te hebben.
 
-1. Wanneer u uw app hebt geselecteerd, kiest u **selecteren**en selecteert u **gereed**.
+10. Ga naar **voor waarden**  >  **client-apps**en selecteer waar u het beleid wilt Toep assen:
+    
+    - Selecteer **browser** als u wilt dat het beleid wordt toegepast op de webclient.
+    - Selecteer **mobiele apps en desktop-clients** als u het beleid wilt Toep assen op andere clients.
+    - Schakel beide selectie vakjes in als u het beleid wilt Toep assen op alle clients.
+   
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de pagina client-apps. De gebruiker heeft het selectie vakje Mobile apps en desktop-clients ingeschakeld.](media/select-apply.png)
 
-   > [!div class="mx-imgBorder"]
-   > ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
+11. Wanneer u uw app hebt geselecteerd, kiest u **selecteren**en selecteert u **gereed**.
 
-   >[!NOTE]
-   >Als u de App-ID wilt vinden van de app die u wilt selecteren, gaat u naar **bedrijfs toepassingen** en selecteert u **micro soft-toepassingen** in de vervolg keuzelijst toepassings type.
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
 
-10. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
-11. Onder **toegangs beheer**  >  **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**en selecteert u **selecteren**.
-12. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
-13. Selecteer **maken** om uw beleid in te scha kelen.
+    >[!NOTE]
+    >Als u de App-ID wilt vinden van de app die u wilt selecteren, gaat u naar **bedrijfs toepassingen** en selecteert u **micro soft-toepassingen** in de vervolg keuzelijst toepassings type.
+
+12. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
+13. Onder **toegangs beheer**  >  **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**en selecteert u **selecteren**.
+14. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+15. Selecteer **maken** om uw beleid in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

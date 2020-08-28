@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server werk belastingen op Azure Stack
 description: In dit artikel vindt u informatie over het configureren van Microsoft Azure Backup Server (MABS) om SQL Server-data bases op Azure Stack te beveiligen.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032643"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017954"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
 
@@ -124,7 +124,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Bewaarbeleid](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld:
+    In dit voorbeeld geldt het volgende:
 
     * Back-ups worden eenmaal per dag om 12:00 uur en 8 uur (onderste deel van het scherm) gemaakt en blijven 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt 104 weken bewaard

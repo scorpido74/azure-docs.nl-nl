@@ -6,12 +6,13 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3a9039470c32b89d398dd41e3df99e91c70d913c
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4714ec9773b98887de483b7353eea9f4416eec19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542633"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017750"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -74,7 +75,7 @@ In het volgende code voorbeeld ziet u hoe u het eind punt van het Azure Cosmos D
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>Bron tokens<a id="resource-tokens"></a>
+## <a name="resource-tokens"></a>Bron tokens <a id="resource-tokens"></a>
 
 Bron tokens bieden toegang tot de toepassings resources binnen een Data Base. Bron tokens:
 
@@ -162,7 +163,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Als u Azure Cosmos DB account lezer-toegang wilt toevoegen aan uw gebruikers account, moet u de eigenaar van een abonnement hebben om de volgende stappen uit te voeren in de Azure Portal.
 
 1. Open de Azure Portal en selecteer uw Azure Cosmos DB-account.
-2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op **+ roltoewijzing toevoegen**.
+2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op  **+ roltoewijzing toevoegen**.
 3. In het deel venster **toewijzing van rol toevoegen** selecteert u **Cosmos DB rol van account lezer**in het vak **rol** .
 4. Selecteer in het **vak toegang toewijzen aan**de optie **Azure AD-gebruiker,-groep of-toepassing**.
 5. Selecteer de gebruiker, groep of toepassing in de map waaraan u toegang wilt verlenen.  U kunt in de map zoeken op de weergave naam, het e-mail adres of de object-id's.

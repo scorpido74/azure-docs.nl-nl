@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: has-adal-ref
-ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008981"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018141"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerd toegangs beheer configureren in de oplossings versneller voor externe controle
 
@@ -52,7 +52,7 @@ De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatis
 
 Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/view-applications-portal.md) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Controleer of de [gebruiker zich in de map bevindt](../active-directory/fundamentals/add-users-azure-active-directory.md) die u gebruikt. U hebt gekozen voor de map die u wilt gebruiken wanneer u zich aanmeldt bij de [Microsoft Azure IOT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -site. De mapnaam wordt weer gegeven in de rechter bovenhoek van de [pagina](https://www.azureiotsolutions.com/Accelerators).
 

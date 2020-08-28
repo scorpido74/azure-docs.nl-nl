@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950150"
+ms.locfileid: "89018056"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,6 +129,8 @@ Klik op de module voor de specifieke stap. Ga naar het tabblad **Logboeken** . A
 
 > [!TIP]
 > Wordt uitgevoerd voor *gepubliceerde pijp lijnen* vindt u op het tabblad **eind punten** in uw werk ruimte. Wordt uitgevoerd voor *niet-gepubliceerde pijp lijnen* vindt u in **experimenten** of **pijp lijnen**.
+
+`ParallelRunStep`Zie [debug en Troubleshoot ParallelRunStep](how-to-debug-parallel-run-step.md)voor meer informatie over logboek registratie en tracering vanuit een.
 
 ## <a name="logging-in-azure-machine-learning-designer-preview"></a>Aanmelden Azure Machine Learning Designer (preview-versie)
 

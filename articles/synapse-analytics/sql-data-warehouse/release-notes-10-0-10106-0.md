@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b3f2f8a6a8a1e4f287af45f994c0f0b1d479811
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075829"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001005"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -39,6 +39,13 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="aug-2020"></a>Aug 2020
+
+| Service verbeteringen | Details |
+| --- | --- |
+|**Workload Management-Portal-ervaring**|Gebruikers kunnen hun instellingen voor workload Management configureren en beheren via de Azure Portal. De mogelijkheid om [werkbelasting groepen](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) en [classificaties van werk belastingen](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) te configureren, is mogelijk.|
+|**Catalogus weergave verbeterde tabel toewijzingen**|De nieuwe catalogus weergave [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) wijst **object_ids** aan permanente gebruikers tabellen toe aan hun fysieke tabel namen. Deze weer gave biedt geoptimaliseerde prestaties ten opzichte van de huidige [sys. pdw_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?view=sqlallproducts-allversions).|
 
 ## <a name="july-2020"></a>Juli 2020
 

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930533"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017716"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Een Azure Active Directory implementatie van mijn apps plannen
 
-Azure Active Directory (Azure AD) mijn apps is een portal op Internet die helpt ondersteunings kosten te verlagen, de productiviteit en beveiliging te verhogen en de gebruikers frustraties te verminderen. Het systeem bevat gedetailleerde rapporten die bijhouden wanneer u het systeem opent en waarschuwt beheerders van misbruik of misbruik.
+Azure Active Directory (Azure AD) mijn apps is een portal op Internet die helpt ondersteunings kosten te verlagen, de productiviteit en beveiliging te verhogen en de gebruikers frustraties te verminderen. Het systeem bevat gedetailleerde rapporten die bijhouden wanneer u het systeem opent en waarschuwt beheerders van misbruik of misbruik. Zie [de Help van mijn apps-Portal](../user-help/my-apps-portal-end-user-access.md)voor meer informatie over het gebruik van mijn apps vanuit het oogpunt van eind gebruikers.
 
 Met behulp van Azure AD my apps kunt u het volgende doen:
 
@@ -42,7 +42,7 @@ Azure AD mijn apps voor delen bedrijven op de volgende manieren:
 
 **Biedt intuïtieve gebruikers ervaring**: mijn apps biedt u één platform voor al uw Azure-toepassingen voor eenmalige aanmelding (SSO). U hebt een uniforme portal voor het vinden van bestaande instellingen en nieuwe mogelijkheden, zoals groeps beheer en self-service voor het opnieuw instellen van wacht woorden, wanneer ze worden toegevoegd. De intuïtieve ervaring stelt gebruikers in staat om sneller te werken en productiever te zijn, terwijl ze hun frustratie verminderen.
 
-**Verhoogt de productiviteit**: alle gebruikers toepassingen in mijn apps hebben SSO ingeschakeld. Door EENMALIGe aanmelding in te scha kelen tussen bedrijfs toepassingen en Microsoft 365 wordt een superieure aanmeldings ervaring gemaakt door extra aanmeldings prompts te verminderen of te verwijderen. Mijn apps maakt gebruik van self-service en dynamisch lidmaatschap en verbetert de algehele beveiliging van uw identiteits systeem. Dit doet u door ervoor te zorgen dat de juiste personen de toegang tot de toepassingen beheren. Mijn apps fungeert als een samenhangende landings pagina voor u om snel resources te vinden en werk taken voort te zetten.
+**Verhoogt de productiviteit**: alle gebruikers toepassingen in mijn apps hebben SSO ingeschakeld. Door EENMALIGe aanmelding in te scha kelen tussen bedrijfs toepassingen en Microsoft 365 wordt een superieure aanmeldings ervaring gemaakt door extra aanmeldings prompts te verminderen of te verwijderen. Mijn apps maakt gebruik van self-service en dynamisch lidmaatschap en verbetert de algehele beveiliging van uw identiteits systeem. Mijn apps zorgt ervoor dat de juiste personen de toegang tot de toepassingen beheren. Mijn apps fungeert als een samenhangende landings pagina voor u om snel resources te vinden en werk taken voort te zetten.
 
 **Beheert kosten**: mijn apps met Azure AD inschakelen, kan u helpen bij het Divestment van on-premises infra structuren. Het vermindert de ondersteunings kosten door u een consistente portal te bieden om al uw apps te vinden, toegang te vragen tot bronnen en accounts te beheren.
 
@@ -89,6 +89,10 @@ De volgende tabel bevat een overzicht van de belangrijkste use cases voor een im
 | Gebruikerservaring| Gebruikers kunnen hun accounts beheren. |
 | Gebruikerservaring| Gebruikers zijn op de hoogte van browser compatibiliteit. |
 | Ondersteuning| Gebruikers kunnen ondersteuning voor mijn apps-problemen vinden. |
+
+
+> [!TIP]
+> Mijn apps kunnen worden gebruikt met interne bedrijfs-Url's tijdens het extern gebruik van een toepassings proxy. Zie [zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in azure Active Directory](application-proxy-add-on-premises-application.md)voor meer informatie.
 
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>Aanbevolen procedures voor het implementeren van Azure AD mijn apps
 
@@ -189,7 +193,7 @@ Een browser die is beveiligd met intune-beleid (micro soft Edge of Intune Manage
 
 ## <a name="plan-your-my-apps-deployment"></a>Uw implementatie van mijn apps plannen
 
-De basis van mijn apps is de toepassings start Portal, waarmee gebruikers toegang hebben [https://myapps.microsoft.com](https://myapps.microsoft.com/) . De pagina mijn apps geeft gebruikers één plek om hun werk te starten en te profiteren van de benodigde toepassingen. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
+De basis van mijn apps is de toepassings start Portal, waarmee gebruikers toegang hebben [https://myapps.microsoft.com](https://myapps.microsoft.com/) . De pagina mijn apps biedt gebruikers één plek om hun werk te starten en te profiteren van de benodigde toepassingen. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
 
 > [!NOTE]
 > Dezelfde toepassingen worden weer gegeven in het start programma voor apps van Microsoft 365.
@@ -255,7 +259,7 @@ Zie [gebruikers en groepen toewijzen aan een toepassing in Active Directory](met
 
 Als tijdens het testen of de implementatie de groepen wilt toevoegen, maar nog niet toestaan dat de toepassingen in mijn apps worden weer gegeven, raadpleegt u [een toepassing verbergen van gebruikers ervaring in azure Active Directory](hide-application-from-user-portal.md).
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>Micro soft Microsoft 365-toepassingen implementeren in mijn apps
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>Microsoft 365-toepassingen implementeren in mijn apps
 
 Voor Microsoft 365 toepassingen ontvangen gebruikers een exemplaar van Office op basis van licenties die hieraan zijn toegewezen. Een vereiste voor toegang tot Office-toepassingen is dat gebruikers de juiste licenties kunnen toewijzen die zijn gekoppeld aan de Office-toepassingen. Wanneer u een licentie voor een gebruiker toewijst, krijgen ze automatisch de toepassingen te zien die zijn gekoppeld aan de licentie op de pagina mijn apps en in het start programma voor het Microsoft 365 van de app.
 
@@ -303,7 +307,7 @@ Het is belang rijk om te plannen wat u moet doen als uw implementatie niet volge
 
 ## <a name="manage-your-implementation"></a>Uw implementatie beheren
 
-U moet de rol met de minste bevoegdheden gebruiken om een vereiste taak uit te voeren binnen Azure Active Directory. [Bekijk de verschillende beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md) en kies de juiste functie om uw behoeften voor elke persoon voor deze toepassing op te lossen. Sommige rollen moeten mogelijk tijdelijk worden toegepast en worden verwijderd nadat de implementatie is voltooid.
+Gebruik de rol met de minst privileged om een vereiste taak in Azure Active Directory uit te voeren. [Bekijk de verschillende beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md) en kies de juiste functie om uw behoeften voor elke persoon voor deze toepassing op te lossen. Sommige rollen moeten mogelijk tijdelijk worden toegepast en worden verwijderd nadat de implementatie is voltooid.
 
 | Persona's| Rollen| Azure AD-rol  |
 | - | -| -|

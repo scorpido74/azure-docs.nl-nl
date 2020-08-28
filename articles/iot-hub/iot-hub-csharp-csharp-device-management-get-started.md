@@ -9,19 +9,19 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733477"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018396"
 ---
 # <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 * Gebruik de Azure Portal om een IoT-hub te maken en een apparaat-id te maken in uw IoT-hub.
 
@@ -93,7 +93,7 @@ In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee een appar
    static string targetDevice = "myDeviceId";
    ```
 
-1. Voeg de volgende methode toe aan de klasse **Program** .  Met deze code wordt het apparaat voor het opnieuw opstarten van het apparaat opgehaald en worden de gerapporteerde eigenschappen uitgevoerd.
+1. Voeg de volgende methode toe aan de klasse **Program**.  Met deze code wordt het apparaat voor het opnieuw opstarten van het apparaat opgehaald en worden de gerapporteerde eigenschappen uitgevoerd.
 
    ```csharp
    public static async Task QueryTwinRebootReported()
@@ -103,7 +103,7 @@ In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee een appar
    }
    ```
 
-1. Voeg de volgende methode toe aan de klasse **Program** .  Met deze code wordt de computer opnieuw opgestart op het apparaat met behulp van een directe methode.
+1. Voeg de volgende methode toe aan de klasse **Program**.  Met deze code wordt de computer opnieuw opgestart op het apparaat met behulp van een directe methode.
 
    ```csharp
    public static async Task StartReboot()

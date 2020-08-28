@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565457"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018974"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Remote Rendering voor Unity instellen
 
@@ -66,11 +67,11 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="session-state-events"></a>Sessie status gebeurtenissen
 
-`RemoteManagerUnity.OnSessionUpdate`Raadpleeg de code documentatie voor meer informatie over het meebrengen van gebeurtenissen voor de sessie status.
+`RemoteManagerUnity.OnSessionUpdate` Raadpleeg de code documentatie voor meer informatie over het meebrengen van gebeurtenissen voor de sessie status.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`is een optioneel onderdeel voor het stroom lijnen van het instellen en beheren van sessies. Het bevat opties voor het automatisch stoppen van de sessie wanneer de toepassing wordt afgesloten of de afspeel modus wordt afgesloten in de editor, en de sessie lease automatisch vernieuwen wanneer dat nodig is. De gegevens worden in de cache opgeslagen, zoals de sessie-eigenschappen (Zie de `LastProperties` variabele), en er worden gebeurtenissen weer gegeven voor sessie status wijzigingen en sessie fouten.
+`ARRServiceUnity` is een optioneel onderdeel voor het stroom lijnen van het instellen en beheren van sessies. Het bevat opties voor het automatisch stoppen van de sessie wanneer de toepassing wordt afgesloten of de afspeel modus wordt afgesloten in de editor, en de sessie lease automatisch vernieuwen wanneer dat nodig is. De gegevens worden in de cache opgeslagen, zoals de sessie-eigenschappen (Zie de `LastProperties` variabele), en er worden gebeurtenissen weer gegeven voor sessie status wijzigingen en sessie fouten.
 
 Er mag niet meer dan één exemplaar van `ARRServiceUnity` tegelijkertijd zijn. Het is bedoeld om sneller aan de slag te gaan met het implementeren van enkele algemene functionaliteit. Voor een grotere toepassing is het mogelijk beter om deze dingen zelf te doen, maar ook.
 
@@ -79,4 +80,4 @@ Er mag niet meer dan één exemplaar van `ARRServiceUnity` tegelijkertijd zijn. 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Het Remote Rendering-pakket voor Unity installeren](install-remote-rendering-unity-package.md)
-* [Zelf studie: externe gerenderde modellen weer geven](../../tutorials/unity/view-remote-models/view-remote-models.md)
+* [Zelfstudie: Extern gegenereerde modellen bekijken](../../tutorials/unity/view-remote-models/view-remote-models.md)

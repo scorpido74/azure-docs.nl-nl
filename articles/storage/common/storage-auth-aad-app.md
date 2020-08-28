@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref
-ms.openlocfilehash: 57d1cda2e74cfe4ae3948e55124123d05682591b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534223"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018804"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -54,7 +54,7 @@ Verleen vervolgens de machtigingen van uw toepassing om Azure Storage-Api's aan 
 1. Selecteer in de sectie **API-machtigingen** de optie **een machtiging toevoegen** en kies **micro soft-api's**.
 1. Selecteer **Azure Storage** in de lijst met resultaten om het deel venster **API-machtigingen voor aanvragen** weer te geven.
 1. Onder **welk type machtigingen heeft uw toepassing nodig?** Houd er rekening mee dat het beschik bare machtigings type **gedelegeerde machtigingen**is. Deze optie is standaard voor u geselecteerd.
-1. Schakel in de sectie **machtigingen selecteren** van het deel venster **API-machtigingen voor aanvragen** het selectie vakje in naast **user_impersonation**en klik vervolgens op **machtigingen toevoegen**.
+1. Schakel in de sectie **machtigingen selecteren** van het deel venster **API-machtigingen voor aanvragen** het selectie vakje in naast **user_impersonation**en klik vervolgens op  **machtigingen toevoegen**.
 
     ![Scherm opname met machtigingen voor opslag](media/storage-auth-aad-app/registered-app-permissions-1.png)
 

@@ -3,12 +3,12 @@ title: Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 description: Dit gegevens model is een verwijzing naar de resource-specifieke modus voor het verzenden van diagnostische gebeurtenissen naar Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017580"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 

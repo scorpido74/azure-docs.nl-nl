@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253181"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018634"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>De Reliable Services Communication Api's gebruiken
 Azure Service Fabric als platform is volledig neutraal over de communicatie tussen services. Alle protocollen en Stacks zijn acceptabel, van UDP tot HTTP. Het is aan de service ontwikkelaar om te kiezen hoe services moeten communiceren. Het Reliable Services Application Framework biedt ingebouwde communicatie stacks en Api's die u kunt gebruiken om uw aangepaste communicatie-onderdelen te bouwen.
@@ -231,7 +232,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`is het object dat wordt gebruikt voor communicatie met het Service Fabric-cluster voor verschillende beheer bewerkingen op het cluster. Dit is handig als u meer controle wilt over de manier waarop een service partitie-resolver communiceert met uw cluster. `FabricClient`voert intern caching uit en is doorgaans kostbaar. het is dus belang rijk dat instanties zoveel mogelijk opnieuw worden gebruikt `FabricClient` .
+`FabricClient` is het object dat wordt gebruikt voor communicatie met het Service Fabric-cluster voor verschillende beheer bewerkingen op het cluster. Dit is handig als u meer controle wilt over de manier waarop een service partitie-resolver communiceert met uw cluster. `FabricClient` voert intern caching uit en is doorgaans kostbaar. het is dus belang rijk dat instanties zoveel mogelijk opnieuw worden gebruikt `FabricClient` .
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -262,7 +263,7 @@ Normaal gesp roken hoeft de client code niet rechtstreeks met de ServicePartitio
 ### <a name="communication-clients-and-factories"></a>Communicatie clients en-fabrieken
 De communicatie-Factory-bibliotheek implementeert een typisch herhalings patroon voor fout afhandeling waarmee opnieuw verbinding wordt gemaakt met omgezette service-eind punten eenvoudiger. De fabrieks bibliotheek biedt het mechanisme voor opnieuw proberen terwijl u de fout afhandeling opgeeft.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`Hiermee definieert u de basis interface die wordt geïmplementeerd door een communicatie-client-Factory die clients produceert die kunnen communiceren met een Service Fabric-service. De implementatie van de CommunicationClientFactory is afhankelijk van de communicatie stack die wordt gebruikt door de Service Fabric-service waarbij de client wil communiceren. De Reliable Services-API biedt een `CommunicationClientFactoryBase<TCommunicationClient>` . Dit biedt een basis implementatie van de CommunicationClientFactory-interface en voert taken uit die gemeen schappelijk zijn voor alle communicatie stacks. (Deze taken omvatten het gebruik van een ServicePartitionResolver om het service-eind punt te bepalen). Clients implementeren gewoonlijk de abstracte CommunicationClientFactoryBase-klasse voor het verwerken van logica die specifiek is voor de communicatie stack.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` Hiermee definieert u de basis interface die wordt geïmplementeerd door een communicatie-client-Factory die clients produceert die kunnen communiceren met een Service Fabric-service. De implementatie van de CommunicationClientFactory is afhankelijk van de communicatie stack die wordt gebruikt door de Service Fabric-service waarbij de client wil communiceren. De Reliable Services-API biedt een `CommunicationClientFactoryBase<TCommunicationClient>` . Dit biedt een basis implementatie van de CommunicationClientFactory-interface en voert taken uit die gemeen schappelijk zijn voor alle communicatie stacks. (Deze taken omvatten het gebruik van een ServicePartitionResolver om het service-eind punt te bepalen). Clients implementeren gewoonlijk de abstracte CommunicationClientFactoryBase-klasse voor het verwerken van logica die specifiek is voor de communicatie stack.
 
 De communicatie client ontvangt alleen een adres en gebruikt deze om verbinding te maken met een service. De client kan elk gewenst protocol gebruiken.
 

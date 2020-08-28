@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8cea74ec24efa7562caab5074d87d436cddaffb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339889"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018481"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Een C# IoT Edge-module ontwikkelen om bestanden te verplaatsen op Azure Stack rand
 
@@ -93,7 +94,7 @@ Met de volgende stappen maakt u een IoT Edge module project op basis van de .NET
 Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
 1. Selecteer in Visual Studio code **> opdracht palet weer geven** om het VS code-opdracht palet te openen.
-2. Voer in het opdrachtpalet de opdracht **Azure: Sign in** in en voer deze uit. Volg vervolgens de instructies om u aan te melden bij uw Azure-account. Als u al bent aangemeld, kunt u deze stap overslaan.
+2. Voer in het opdrachtpalet de opdracht **Azure: Aanmelden** in, voer deze uit en volg de instructies om u aan te melden bij uw Azure-account. Als u al bent aangemeld, kunt u deze stap overslaan.
 3. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Geef in het opdrachtpalet de volgende informatie op om de oplossing te maken:
 
     1. Selecteer de map waarin u de oplossing wilt maken.

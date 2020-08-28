@@ -8,12 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 3645b6752a49a0cf2544d170ac55a77cc8ae5e40
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082009"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000189"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topologieën ontwikkelen voor Apache Storm met behulp van de Data Lake-hulpprogram ma's voor Visual Studio
 
@@ -31,7 +32,7 @@ C#-topologieën gebruiken .NET 4,5 en gebruiken mono om uit te voeren op het HDI
 
 ## <a name="prerequisite"></a>Vereiste
 
-Een Apache Storm cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor het **cluster type**.
+Een Apache Storm-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor **Clustertype**.
 
 ## <a name="install-visual-studio"></a>Visual Studio installeren
 
@@ -150,9 +151,9 @@ Voeg vervolgens de code toe voor de Spout, die wordt gebruikt om gegevens uit ee
 
    * `NextTuple`: Wordt aangeroepen door storm wanneer de Spout nieuwe Tuples mag verzenden.
 
-   * `Ack`(alleen transactionele topologie): Hiermee worden de bevestigingen die zijn gestart door andere onderdelen in de topologie voor Tuples verzonden vanuit het Spout verwerkt. Door een tuple te bevestigen, kan de Spout weten dat deze is verwerkt door downstream-onderdelen.
+   * `Ack` (alleen transactionele topologie): Hiermee worden de bevestigingen die zijn gestart door andere onderdelen in de topologie voor Tuples verzonden vanuit het Spout verwerkt. Door een tuple te bevestigen, kan de Spout weten dat deze is verwerkt door downstream-onderdelen.
 
-   * `Fail`(alleen transactionele topologie): verwerkt Tuples die niet worden verwerkt door andere onderdelen in de topologie. `Fail`Als u een methode implementeert, kunt u de tuple opnieuw verzenden zodat deze opnieuw kan worden verwerkt.
+   * `Fail` (alleen transactionele topologie): verwerkt Tuples die niet worden verwerkt door andere onderdelen in de topologie. `Fail`Als u een methode implementeert, kunt u de tuple opnieuw verzenden zodat deze opnieuw kan worden verwerkt.
 
 2. Vervang de inhoud van de `Spout` klasse door de volgende tekst:
 
@@ -481,9 +482,9 @@ Houd rekening met het volgende bij het maken en verzenden van een hybride topolo
 
 SCP.NET versie 0.9.4.203 introduceert een nieuwe klasse en methode voor het werken met de Event hub Spout (een Java-Spout die van Event Hubs wordt gelezen). Wanneer u een topologie maakt die gebruikmaakt van een event hub-Spout (bijvoorbeeld met behulp van de **voorbeeld sjabloon Storm EventHub Reader** ), gebruikt u de volgende api's:
 
-* `EventHubSpoutConfig`klasse: maakt een object dat de configuratie voor het onderdeel Spout bevat.
+* `EventHubSpoutConfig` klasse: maakt een object dat de configuratie voor het onderdeel Spout bevat.
 
-* `TopologyBuilder.SetEventHubSpout`methode: voegt het onderdeel Event hub Spout toe aan de topologie.
+* `TopologyBuilder.SetEventHubSpout` methode: voegt het onderdeel Event hub Spout toe aan de topologie.
 
 > [!NOTE]  
 > U moet nog steeds de gebruiken `CustomizedInteropJSONSerializer` om gegevens te serialiseren die door de Spout worden geproduceerd.
@@ -755,7 +756,7 @@ Raadpleeg de volgende documenten voor meer manieren om te werken met HDInsight e
 
 **Apache Storm in HDInsight**
 
-* [Apache Storm topologieën implementeren en beheren in azure HDInsight](apache-storm-deploy-monitor-topology-linux.md)
+* [Apache Storm-topologieën implementeren en beheren in Azure HDInsight](apache-storm-deploy-monitor-topology-linux.md)
 * [Voor beeld Apache Storm topologieën in azure HDInsight](apache-storm-example-topology.md)
 
 **Apache Hadoop op HDInsight**

@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000716"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Bewakings waarschuwing Azure Backup-Veelgestelde vragen
 
@@ -50,13 +50,13 @@ Als u een [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthou
 
 ## <a name="recovery-services-vault"></a>Recovery Services-kluis
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Hoe lang duurt het voordat de taak status van de Azure backup-agent in de portal wordt weer gegeven?
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Hoe lang duurt het voordat de taak status van de Azure Backup Agent wordt weer gegeven in de portal?
 
-Het Azure Portal kan Maxi maal 15 minuten duren om de taak status van de Azure backup-agent weer te geven.
+Het Azure Portal kan Maxi maal 15 minuten duren om de taak status van de Azure Backup Agent weer te geven.
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Hoelang duurt het om een waarschuwing te geven als een back-uptaak mislukt?
 
-Er wordt een waarschuwing gegenereerd binnen 20 minuten van de Azure backup-fout.
+Er treedt een waarschuwing binnen 20 minuten na de Azure Backup fout.
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Is er sprake van een e-mail bericht dat niet wordt verzonden als er meldingen zijn geconfigureerd?
 

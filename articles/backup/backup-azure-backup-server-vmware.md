@@ -3,12 +3,12 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826936"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017563"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 

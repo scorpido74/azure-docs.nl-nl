@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892759"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017733"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -56,7 +56,7 @@ Als u de back-up al hebt geconfigureerd en wilt overstappen van GRS naar LRS, ra
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kan ik herstellen op itemniveau (ILR) uitvoeren voor VM's waarvan een back-up is gemaakt in een Recovery Services-kluis?
 
 - ILR wordt ondersteund voor Azure-VM's waarvan een back-up is gemaakt met Azure VM Backup. Raadpleeg dit [artikel](backup-azure-restore-files-from-vm.md) voor meer informatie
-- ILR wordt niet ondersteund voor online herstel punten van on-premises Vm's waarvan een back-up wordt gemaakt door Azure backup server of System Center DPM.
+- ILR wordt niet ondersteund voor online herstel punten van on-premises Vm's waarvan een back-up is gemaakt door Azure Backup Server (MABS) of System Center DPM.
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 
@@ -184,7 +184,7 @@ U kunt maximaal 9999 herstelpunten maken per beveiligd exemplaar. Een beveiligd 
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Hoe vaak kan ik gegevens herstellen waarvan een back-up is gemaakt in Azure?
 
-Er is geen limiet voor het aantal herstelbewerkingen vanuit Azure Backup.
+Er is geen limiet voor het aantal herstel bewerkingen van Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Als ik gegevens ga herstellen, betaal ik dan voor het uitgaande verkeer van Azure?
 
@@ -218,7 +218,7 @@ Micro soft ontsleutelt de back-upgegevens op geen enkel moment.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Wat is de minimale lengte van de versleutelings sleutel die wordt gebruikt om back-upgegevens te versleutelen?
 
-De versleutelings sleutel die wordt gebruikt door de Microsoft Azure Recovery Services-agent (MARS) is afgeleid van een wachtwoordzin die ten minste 16 tekens lang moet zijn. Voor virtuele machines in azure geldt geen limiet voor de lengte van de sleutels die worden gebruikt door Azure-sleutel kluis.
+De versleutelings sleutel die wordt gebruikt door de Microsoft Azure Recovery Services-agent (MARS) is afgeleid van een wachtwoordzin die ten minste 16 tekens lang moet zijn. Voor virtuele Azure-machines geldt geen limiet voor de lengte van de sleutels die worden gebruikt door Azure-sleutel kluis.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Wat gebeurt er als ik de versleutelingssleutel kwijtraak? Kan ik de gegevens herstellen? Kan Microsoft de gegevens herstellen?
 

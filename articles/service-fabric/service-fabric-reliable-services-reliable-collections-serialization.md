@@ -3,12 +3,13 @@ title: Betrouw bare verzameling van object-serialisatie
 description: Meer informatie over de serialisatie van Azure Service Fabric reliable Collections-objecten, met inbegrip van de standaard strategie en het definiëren van aangepaste serialisatie.
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: f7a0dc56c181ddd6a98ab0e263180c222368dafb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245990"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018617"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Betrouw bare serialisatie van verzamelings objecten in azure Service Fabric
 Betrouw bare verzamelingen repliceren en blijven hun items om ervoor te zorgen dat ze duurzaam zijn in de machine storingen en stroom uitval.
@@ -23,7 +24,7 @@ Betrouw bare status Manager bevat een ingebouwde serialisatiefunctie voor een aa
 Ingebouwde serialisatiefuncties zijn efficiënter omdat ze weten dat hun typen niet kunnen worden gewijzigd en ze hoeven geen informatie over het type op te nemen zoals de type naam ervan.
 
 Betrouw bare status Manager heeft ingebouwde serialisatiefunctie voor de volgende typen: 
-- GUID
+- Guid
 - booleaans
 - DBCS
 - sbyte

@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733373"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018498"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Taken plannen en uitzenden (.NET)
 
@@ -38,7 +38,7 @@ Zie voor meer informatie over elk van deze mogelijkheden:
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 * Maak een apparaat-app die een directe methode met de naam **LockDoor**implementeert, die kan worden aangeroepen door de back-end-app.
 

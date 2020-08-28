@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d4f833926541bafbae211caff37e5974b57e1047
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263500"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019008"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -181,13 +181,13 @@ Nee, het visualisatie rapport van de afhankelijkheid in de op een agent gebaseer
 Voor visualisatie op basis van een agent:
 
 - Gebruik een [script om de afhankelijkheids agent te installeren](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent).
-- Gebruik voor MMA [de opdracht regel of de automatisering](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)of gebruik een [script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+- Gebruik voor MMA [de opdracht regel of de automatisering](../azure-monitor/platform/log-analytics-agent.md#installation-options)of gebruik een [script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 - Naast scripts kunt u implementatie hulpprogramma's zoals micro soft endpoint Configuration Manager en [Intigua](https://www.intigua.com/intigua-for-azure-migration) gebruiken om de agents te implementeren.
 
 ## <a name="what-operating-systems-does-mma-support"></a>Welke besturings systemen ondersteunt MMA?
 
-- Bekijk de lijst met [Windows-besturings systemen die MMA ondersteunt](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems).
-- Bekijk de lijst met [Linux-besturings systemen die MMA ondersteunt](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems).
+- Bekijk de lijst met [Windows-besturings systemen die MMA ondersteunt](../azure-monitor/platform/log-analytics-agent.md#installation-options).
+- Bekijk de lijst met [Linux-besturings systemen die MMA ondersteunt](../azure-monitor/platform/log-analytics-agent.md#installation-options).
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Kan ik afhankelijkheden langer dan een uur visualiseren?
 

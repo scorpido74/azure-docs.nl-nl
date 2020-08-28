@@ -3,7 +3,7 @@ title: Stoppen met het gebruik van een beheerde identiteit VM-extensie-Azure AD
 description: Stapsgewijze instructies om het gebruik van de VM-extensie te stoppen en de Azure Instance Metadata Service (IMDS) te gebruiken voor verificatie.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: markvi
-ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.author: barclayn
+ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848387"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018373"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Stoppen met het gebruik van de extensie voor beheerde identiteiten van de virtuele machine en het gebruik van Azure Instance Metadata Service
 
@@ -119,7 +119,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://localhost:50342/oauth2/token` | Het eind punt Managed Identities voor Azure resources, waarbij 50342 de standaard poort is en kan worden geconfigureerd. |
@@ -145,7 +145,7 @@ Content-Type: application/json
 }
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token in het `Authorization` veld aanvraag header Inge sloten als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
 | `refresh_token` | Wordt niet gebruikt door beheerde identiteiten voor Azure-resources. |
@@ -166,9 +166,9 @@ In Windows en bepaalde versies van Linux, als de extensie stopt, kan de volgende
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Waarbij: 
-- De naam en het type van de extensie voor Windows is:`ManagedIdentityExtensionForWindows`
-- De naam en het type van de extensie voor Linux is:`ManagedIdentityExtensionForLinux`
+Waar: 
+- De naam en het type van de extensie voor Windows is: `ManagedIdentityExtensionForWindows`
+- De naam en het type van de extensie voor Linux is: `ManagedIdentityExtensionForLinux`
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Automatiserings script mislukt bij het proberen van schema export voor beheerde identiteiten voor Azure-bronnen uitbreiding
 
@@ -186,7 +186,7 @@ Er zijn enkele belang rijke beperkingen bij het gebruik van de extensie van de v
 
  * De meest ernstige beperking is het feit dat de referenties die worden gebruikt voor het aanvragen van tokens, worden opgeslagen op de virtuele machine. Een aanvaller die een inbreuk op de virtuele machine heeft, kan de referenties exfiltreren. 
  * Bovendien wordt de extensie van de virtuele machine nog steeds niet ondersteund door verschillende Linux-distributies, met een enorme ontwikkelings kosten voor het wijzigen, bouwen en testen van de uitbrei ding voor elk van deze distributies. Op dit moment worden alleen de volgende Linux-distributies ondersteund: 
-    * CoreOS stabiel
+    * CoreOS Stable
     * CentOS 7.1 
     * Red Hat 7,2 
     * Ubuntu 15,04 

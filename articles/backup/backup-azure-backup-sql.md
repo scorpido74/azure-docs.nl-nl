@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server naar Azure als een DPM-workload
 description: Een inleiding tot het maken van back-ups van SQL Server-data bases met behulp van de Azure Backup-Service
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876305"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017308"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Back-ups maken van SQL Server naar Azure als een DPM-workload
 
@@ -38,7 +38,7 @@ Een back-up maken van een SQL Server Data Base naar Azure en deze herstellen van
   * DPM detecteert een failover en zet de beveiliging van de database voort.
   * DPM ondersteunt configuraties van clusters op meerdere locaties voor een exemplaar van SQL Server.
 * Wanneer u databases beveiligt die het kenmerk AlwaysOn gebruiken, heeft DPM de volgende beperkingen:
-  * DPM zal het back-upbeleid voor beschikbaarheidsgroepen dat is ingesteld in SQL Server op basis van de back-upvoorkeuren als volgt handhaven:
+  * DPM voldoet aan het back-upbeleid voor beschikbaarheids groepen die zijn ingesteld in SQL Server op basis van de voor keuren voor back-ups, als volgt:
     * Voorkeur voor secundaire: back-ups moeten op een secundaire replica plaatsvinden, behalve wanneer de primaire replica de enige replica online is. Als er meerdere secundaire replica's beschikbaar zijn, wordt het knoop punt met de hoogste back-upprioriteit geselecteerd voor back-up. Als alleen de primaire replica beschikbaar is, moet de back-up op de primaire replica worden uitgevoerd.
     * Alleen secundaire: back-up mag niet op de primaire replica worden uitgevoerd. Als de primaire replica de enige online replica is, mag de back-up niet plaatsvinden.
     * Primaire: back-ups moeten altijd op de primaire replica plaatsvinden.
@@ -132,7 +132,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
 
     ![Een Bewaar beleid kiezen](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld:
+    In dit voorbeeld geldt het volgende:
 
     * Back-ups worden dagelijks uitgevoerd om 12:00 uur en 8:00 PM. Ze worden gedurende 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt gedurende 104 weken bewaard.

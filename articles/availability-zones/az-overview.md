@@ -4,15 +4,15 @@ description: Meer informatie over regio's en Beschikbaarheidszones in azure om t
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413158"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018668"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regio's en Beschikbaarheidszones in azure
 
@@ -41,7 +41,7 @@ Een regio is een set data centers die worden geïmplementeerd binnen een latenti
 
 ## <a name="availability-zones"></a>Beschikbaarheidszones
 
-Een beschikbaarheids zone is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
+Een beschikbaarheids zone is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante services repliceren uw toepassingen en gegevens in meerdere beschikbaarheidszones om bescherming te bieden tegen Single Points of Failure. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
 
 Een beschikbaarheidszone in een Azure-regio is een combinatie van een foutdomein en een updatedomein. Als u bijvoorbeeld drie of meer virtuele machines in drie zones in een Azure-regio maakt, worden uw virtuele machines effectief over drie foutdomeinen en drie updatedomeinen verdeeld. Het Azure-platform herkent deze distributie over update domeinen om ervoor te zorgen dat de Vm's in verschillende zones niet op hetzelfde moment worden bijgewerkt.
 
@@ -92,46 +92,45 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > | Fundamentele | Meest | Gespecialiseerd |
 > | --- | --- | --- |
 > | Account opslag | API Management | Azure-API voor FHIR |
-> | Application Gateway | App-configuratie | Azure Blockchain-service |
-> | Azure Backup | App Service | Azure Blueprints |
-> | Azure Cosmos DB | Automation | Azure Database for MariaDB |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure toegewezen HSM |
-> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
-> | Azure SQL Database | Azure Bastion | Azure Digital Twins |
-> | Cloud Services | Azure Cache voor Redis | Azure Lab-Services |
-> | Cloud Services: Av2-serie | Azure Cognitive Search | Azure NetApp Files |
-> | Cloud Services: dv2-serie | Azure Data Explorer | Azure-Quantum |
-> | Cloud Services: Dv3-serie | Azure Data Share | Azure Time Series Insights |
-> | Cloud Services: Ev3-serie | Azure Database for MySQL | Azure VMware Solution by CloudSimple |
-> | Cloud Services: Ip's op exemplaar niveau | Azure Database for PostgreSQL | Cloud Services: A8-A11 (reken intensief) |
-> | Cloud Services: Gereserveerd IP | Azure Database Migration Service | Cloud Services: G-serie |
-> | Disk Storage | Azure Databricks | Cloud Services: H-serie |
-> | Event Hubs | Azure DDoS Protection | Cognitive Services: anomalie detectie |
-> | Key Vault | Azure DevTest Labs | Cognitive Services: Custom Vision |
+> | Application Gateway | App-configuratie | Azure Analysis Services |
+> | Azure Backup | App Service | Azure Blockchain-service |
+> | Azure Cosmos DB | Automation | Azure Blueprints |
+> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure Database for MariaDB |
+> | Azure ExpressRoute | Azure Bastion | Azure toegewezen HSM |
+> | Azure SQL Database | Azure Cache voor Redis | Azure Dev Spaces |
+> | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
+> | Cloud Services: Av2-serie | Azure Data Explorer | Azure Lab-Services |
+> | Cloud Services: dv2-serie | Azure Data Share | Azure NetApp Files |
+> | Cloud Services: Dv3-serie | Azure Database for MySQL | Azure-Quantum |
+> | Cloud Services: Ev3-serie | Azure Database for PostgreSQL | Azure lente-Cloud service |
+> | Cloud Services: Ip's op exemplaar niveau | Azure Database Migration Service | Azure Time Series Insights |
+> | Cloud Services: Gereserveerd IP | Azure Databricks | Azure VMware Solution by CloudSimple |
+> | Disk Storage | Azure DDoS Protection | Cloud Services: G-serie |
+> | Event Hubs | Azure DevTest Labs | Cloud Services: H-serie |
+> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
 > | Load balancer | Azure Firewall Manager | Cognitive Services: Speaker Recognition |
-> | Service Bus | Azure Firewall | Data Box Heavy |
-> | Service Fabric | Azure Functions | Data Catalog |
-> | Virtuele-machineschaalsets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
-> | Virtual Machines: Av2-serie | Azure Kubernetes Service (AKS) | Machine Learning Studio |
-> | Virtual Machines: BS-serie | Azure Machine Learning | Microsoft Genomics |
-> | Virtual Machines: DSv2-serie | Azure Private Link | Remote Rendering |
-> | Virtual Machines: DSv3-serie | Azure Red Hat OpenShift | Spatial Anchors |
+> | Service Bus | Azure Functions | Data Box Heavy |
+> | Service Fabric | Azure HPC Cache | Data Catalog |
+> | Virtuele-machineschaalsets | Azure IoT Hub | Data Factory: Data Factory v1 |
+> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | Virtual Machines: Av2-serie | Azure Machine Learning | Machine Learning Studio |
+> | Virtual Machines: BS-serie | Azure Private Link | Microsoft Genomics |
+> | Virtual Machines: DSv2-serie | Azure Red Hat OpenShift | Remote Rendering |
+> | Virtual Machines: DSv3-serie | Azure SignalR-service | Spatial Anchors |
 > | Virtual Machines: dv2-serie | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3-serie | Azure lente-Cloud service | Video Indexer |
-> | Virtual Machines: ESv3-serie | Azure Stack Hub | Virtual Machines: A8-A11 (reken intensief) |
-> | Virtual Machines: Ev3-serie | Azure Stream Analytics | Virtual Machines: DASv4-serie |
-> | Virtual Machines: F-serie | Azure Synapse Analytics | Virtual Machines: DAv4-serie |
-> | Virtual Machines: FS-serie | Azure SignalR Service | Virtual Machines: DCsv2-serie |
-> | Virtual Machines: Ip's op exemplaar niveau | Batch | Virtual Machines: EASv4-serie |
-> | Virtual Machines: Gereserveerd IP | Cloud Services: M-serie | Virtual Machines: EAv4-serie |
-> | Virtual Network | Cognitive Services | Virtual Machines: G-serie |
-> | VPN Gateway | Cognitive Services: Computer Vision | Virtual Machines: GS-serie |
-> |  | Cognitive Services: Content Moderator | Virtual Machines: HBv1-serie |
-> |  | Cognitive Services: Face | Virtual Machines: HBv2-serie |
+> | Virtual Machines: Dv3-serie | Azure Stack Hub | Video Indexer |
+> | Virtual Machines: ESv3-serie | Azure Stream Analytics | Virtual Machines: DASv4-serie |
+> | Virtual Machines: Ev3-serie | Azure Synapse Analytics | Virtual Machines: DAv4-serie |
+> | Virtual Machines: F-serie | Batch | Virtual Machines: DCsv2-serie |
+> | Virtual Machines: FS-serie | Cloud Services: M-serie | Virtual Machines: EASv4-serie |
+> | Virtual Machines: Ip's op exemplaar niveau | Cognitive Services | Virtual Machines: EAv4-serie |
+> | Virtual Machines: Gereserveerd IP | Cognitive Services: Computer Vision | Virtual Machines: G-serie |
+> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS-serie |
+> | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1-serie |
+> |  | Cognitive Services: formulier herkenning | Virtual Machines: HBv2-serie |
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-serie |
-> |  | Cognitive Services: spraak Services | Virtual Machines: H-serie |
-> |  | Cognitive Services: QnA Maker | Virtual Machines: LS-serie |
+> |  | Cognitive Services: QnA Maker | Virtual Machines: H-serie |
+> |  | Cognitive Services: spraak Services | Virtual Machines: LS-serie |
 > |  | Container Instances | Virtual Machines: LSv2-serie |
 > |  | Container Registry | Virtual Machines: Mv2-serie |
 > |  | Data Factory | Virtual Machines: NC-serie |
@@ -146,6 +145,14 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > |  | Premium files-opslag | Visual Studio App Center |
 > |  | Opslag: Archive Storage |  |
 > |  | Ultra Disk Storage |  |
+> |  | Virtual Machines: Ddsv4-serie |  |
+> |  | Virtual Machines: Ddv4-serie |  |
+> |  | Virtual Machines: Dsv4-serie |  |
+> |  | Virtual Machines: Dv4-serie |  |
+> |  | Virtual Machines: Edsv4-serie |  |
+> |  | Virtual Machines: Edv4-serie |  |
+> |  | Virtual Machines: Esv4-serie |  |
+> |  | Virtual Machines: Ev4-serie |  |
 > |  | Virtual Machines: Fsv2-serie |  |
 > |  | Virtual Machines: M-serie |  |
 > |  | Virtual WAN |  |

@@ -16,12 +16,13 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 467664f4c102a81f6469765ea1742995f04c60e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022001"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017920"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Cross-platform meldingen verzenden met Azure Notification Hubs
 
@@ -30,10 +31,10 @@ Deze zelf studie is gebaseerd op de vorige zelf studie, [stuurt meldingen naar s
 In dit artikel wordt beschreven hoe u sjablonen kunt gebruiken om een melding te verzenden die gericht is op alle platformen. In dit artikel wordt één aanvraag gebruikt voor het verzenden van een platform neutrale melding. Zie [Notification hubs Overview][Templates]voor meer gedetailleerde informatie over sjablonen.
 
 > [!IMPORTANT]
-> Windows Phone projecten 8,1 en lager worden niet ondersteund in Visual Studio 2019. Zie [Visual Studio 2019-platform doelen en-compatibiliteit](/visualstudio/releases/2019/compatibility)voor meer informatie.
+> Windows Phone projecten 8,1 en lager worden niet ondersteund in Visual Studio 2019. Zie [Geschikte platforms voor Visual Studio 2019 en compatibiliteit](/visualstudio/releases/2019/compatibility) voor meer informatie.
 
 > [!NOTE]
-> Met Notification Hubs kan een apparaat meerdere sjablonen registreren met behulp van dezelfde tag. In dit geval wordt een inkomend bericht dat de tag bedoelt, in meerdere meldingen bezorgd bij het apparaat, één voor elke sjabloon. Met dit proces kunt u hetzelfde bericht weer geven in meerdere visuele meldingen, zoals een badge en als een pop-upmelding in een Windows Store-app.
+> Met Notification Hubs kan een apparaat meerdere sjablonen registreren met behulp van dezelfde tag. In dit geval wordt een inkomend bericht dat gericht is op de tag in meerdere meldingen bezorgd bij het apparaat, één voor elke sjabloon. Met dit proces kunt u hetzelfde bericht weergeven in meerdere visuele meldingen, zoals een badge en als een pop-upmelding in een Windows Store-app.
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Cross-platform meldingen verzenden met behulp van sjablonen
 

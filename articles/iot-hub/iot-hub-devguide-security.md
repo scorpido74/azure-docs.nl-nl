@@ -15,12 +15,13 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Operations'
 - devx-track-javascript
-ms.openlocfilehash: 223ec01165922702f8f8fa17b09e530b16fa79e5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-csharp
+ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423470"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017682"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -79,7 +80,7 @@ Zie [IOT hub-beveiligings tokens](iot-hub-devguide-security.md#security-tokens)v
 
 Elk ondersteund protocol, zoals MQTT, AMQP en HTTPS, transporteert tokens op verschillende manieren.
 
-Wanneer u MQTT gebruikt, heeft het CONNECT-pakket de deviceId als ClientId, `{iothubhostname}/{deviceId}` in het veld username en een SAS-token in het veld wacht woord. `{iothubhostname}`moet de volledige CName zijn van de IoT hub (bijvoorbeeld contoso.azure-devices.net).
+Wanneer u MQTT gebruikt, heeft het CONNECT-pakket de deviceId als ClientId, `{iothubhostname}/{deviceId}` in het veld username en een SAS-token in het veld wacht woord. `{iothubhostname}` moet de volledige CName zijn van de IoT hub (bijvoorbeeld contoso.azure-devices.net).
 
 Wanneer u [AMQP](https://www.amqp.org/)gebruikt, ondersteunt IOT hub [sasl Plain](https://tools.ietf.org/html/rfc4616) en [AMQP op claims gebaseerde beveiliging](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
@@ -87,8 +88,8 @@ Als u AMQP op claims gebaseerde beveiliging gebruikt, bepaalt de standaard hoe d
 
 Voor SASL PLAIN kan de **gebruikers naam** de volgende zijn:
 
-* `{policyName}@sas.root.{iothubName}`Als u IoT hub-tokens gebruikt.
-* `{deviceId}@sas.{iothubname}`Als tokens met het bereik van het apparaat worden gebruikt.
+* `{policyName}@sas.root.{iothubName}` Als u IoT hub-tokens gebruikt.
+* `{deviceId}@sas.{iothubname}` Als tokens met het bereik van het apparaat worden gebruikt.
 
 In beide gevallen bevat het wachtwoord veld het token, zoals beschreven in [IOT hub beveiligings tokens](iot-hub-devguide-security.md#security-tokens).
 
@@ -96,7 +97,7 @@ HTTPS implementeert verificatie door een geldig token op te nemen in de header v
 
 #### <a name="example"></a>Voorbeeld
 
-Gebruikers naam (DeviceId is hoofdletter gevoelig):`iothubname.azure-devices.net/DeviceId`
+Gebruikers naam (DeviceId is hoofdletter gevoelig): `iothubname.azure-devices.net/DeviceId`
 
 Wacht woord (u kunt een SAS-token genereren met de CLI [-extensie opdracht AZ IOT hub generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)of de [Azure IOT-Hulpprogram Ma's voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 

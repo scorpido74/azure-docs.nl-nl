@@ -14,12 +14,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 0b4fbe4ab7accec18f48e6319e16d10f083a8709
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327443"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008332"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Berichten vanuit de Cloud naar uw apparaat verzenden met IoT Hub (.NET)
 
@@ -116,7 +117,7 @@ In deze sectie maakt u een .NET-console-app die Cloud-naar-apparaat-berichten na
 
 1. Klik in Solution Explorer met de rechter muisknop op het nieuwe project en selecteer vervolgens **NuGet-pakketten beheren**.
 
-1. Selecteer in **NuGet-pakketten beheren**de optie **Bladeren**, en zoek vervolgens naar **micro soft. Azure. devices**en selecteer deze. Selecteer **installeren**.
+1. Selecteer in **NuGet-pakketten beheren**de optie **Bladeren**, en zoek vervolgens naar **micro soft. Azure. devices**en selecteer deze. Selecteer  **installeren**.
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Devices/)gedownload, geïnstalleerd en toegevoegd.
 

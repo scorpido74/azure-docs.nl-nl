@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9d47974554534a0614eb98b473c1e5539ff4d9aa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530131"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018005"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
@@ -137,7 +138,7 @@ Op hoog niveau:
     }
     ```
 8. Nu gaan we deze app opnieuw implementeren op een Azure-website om deze toegankelijk te maken vanaf alle apparaten. Klik met de rechtermuisknop op het project **AppBackend** en selecteer **Publiceren**.
-9. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publiceren**.
+9. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publish**.
 
 ## <a name="modify-the-ios-project"></a>Het iOS-project wijzigen
 

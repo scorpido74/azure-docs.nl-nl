@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892283"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001158"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -24,7 +24,7 @@ ms.locfileid: "88892283"
 In dit artikel wordt uitgelegd hoe u uw omgeving voorbereidt op back-ups van werk belastingen met behulp van Microsoft Azure Backup Server (MABS). Met Azure Backup Server kunt u werk belastingen van toepassingen, zoals virtuele machines van Hyper-V, Microsoft SQL Server, share Point server, micro soft Exchange en Windows-clients beveiligen vanaf één console.
 
 > [!NOTE]
-> Azure Backup Server kan nu VMware-Vm's beveiligen en biedt verbeterde beveiligings mogelijkheden. Installeer het product zoals beschreven in de onderstaande secties en de nieuwste Azure Backup-Agent. Voor meer informatie over het maken van een back-up van VMware-servers met Azure Backup Server raadpleegt u het artikel [Azure backup server gebruiken om een back-up te maken van een VMware-Server](backup-azure-backup-server-vmware.md). Raadpleeg de [documentatie over Azure backup Security-functies](backup-azure-security-feature.md)voor meer informatie over de beveiligings mogelijkheden.
+> Azure Backup Server kan nu VMware-Vm's beveiligen en biedt verbeterde beveiligings mogelijkheden. Installeer het product zoals beschreven in de onderstaande secties en de nieuwste Azure Backup-Agent. Voor meer informatie over het maken van een back-up van VMware-servers met Azure Backup Server raadpleegt u het artikel [Azure backup server gebruiken om een back-up te maken van een VMware-Server](backup-azure-backup-server-vmware.md). Raadpleeg de [documentatie over Azure backup beveiligings functies](backup-azure-security-feature.md)voor meer informatie over de beveiligings mogelijkheden.
 >
 >
 
@@ -66,9 +66,9 @@ U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Mee
 >
 > * Een computer die wordt uitgevoerd als een domeincontroller
 > * Een computer waarop de toepassingsserverfunctie is geïnstalleerd
-> * Een computer die een System Center Operations Manager-beheerserver is
+> * Een computer die een System Center Operations Manager-beheer server is
 > * Een computer waarop Exchange Server wordt uitgevoerd
-> * Een computer die een knooppunt van een cluster is
+> * Een computer die een knoop punt van een cluster is
 >
 > Het installeren van Azure Backup Server wordt niet ondersteund op Windows Server Core-of Microsoft Hyper-V-Server.
 
@@ -95,7 +95,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als u nog geen Recovery Services kluis hebt geopend, maar wel in de Azure Portal, klikt u op **Bladeren**in het hoofd menu.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -262,24 +262,24 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
   > [!IMPORTANT]
   >
   > * De nieuwe server naam moet dezelfde naam hebben als de oorspronkelijke Azure Backup Server-instantie. U kunt de naam van het nieuwe Azure Backup Server-exemplaar niet wijzigen als u de vorige opslag groep en de MABS-data base (DPMDB) wilt gebruiken om de herstel punten te bewaren.
-  > * U moet een back-up hebben van de MABS-data base (DPMDB). U moet de data base herstellen.
+  > * U moet een back-up hebben van de MABS-data base (DPMDB). U hebt deze nodig om de data base te herstellen.
 
 1. Selecteer in het weergave paneel de client computers waarvoor u de beveiligings agent wilt bijwerken.
-2. Sluit de oorspronkelijke Azure backup-server af of neem de kabel weg.
-3. Stel de computer account in Active Directory opnieuw in.
-4. Installeer Server 2016 op de nieuwe computer en geef deze dezelfde computer naam als de oorspronkelijke Azure Backup Server.
-5. Lid worden van het domein
-6. Azure Backup Server v3 of later installeren (Verplaats MABS-opslag pool schijven van een oude server en importeren)
+2. De oorspronkelijke Azure Backup Server afsluiten of offline halen.
+3. Stel de machine account opnieuw in Active Directory.
+4. Installeer Server 2016 op een nieuwe computer en geef deze dezelfde computer naam als de oorspronkelijke Azure Backup-Server.
+5. Voeg lid van het domein.
+6. Installeer Azure Backup Server v3 of hoger (Verplaats MABS-opslag groeps schijven van een oude server en importeren).
 7. Herstel de DPMDB die u in stap 1 hebt gemaakt.
 8. Koppel de opslag van de oorspronkelijke back-upserver aan de nieuwe server.
-9. De DPMDB van SQL herstellen
-10. Vanaf de opdracht regel van de beheerder op de nieuwe server-cd naar Microsoft Azure Backup installatie locatie en bin-map
+9. Herstel de DPMDB vanuit SQL.
+10. Start CMD (als beheerder) op de nieuwe server. Ga naar de Microsoft Azure Backup installatie locatie en bin-map
 
     Voor beeld van een pad: C:\Windows\System32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
-11. Als u Azure backup wilt uitvoeren, voert u DPMSYNC-SYNC uit
+11. Voer uit om verbinding te maken met Azure Backup `DPMSYNC -SYNC`
 
-    Als u nieuwe schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u DPMSYNC-Reallocatereplica uit uit.
+    Als u **nieuwe** schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u vervolgens `DPMSYNC -Reallocatereplica`
 
 ## <a name="network-connectivity"></a>Netwerkconnectiviteit
 

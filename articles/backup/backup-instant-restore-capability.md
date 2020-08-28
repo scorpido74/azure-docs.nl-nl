@@ -4,22 +4,22 @@ description: Azure direct Restore-mogelijkheid en veelgestelde vragen over VM-ba
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892623"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000376"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
 > [!NOTE]
 > Op basis van feedback van gebruikers hebben we de naam van de **VM-back-upstack v2** gewijzigd in **direct terugzetten** om Verwar ring met Azure stack functionaliteit te verminderen.
-> Alle Azure backup-gebruikers zijn nu bijgewerkt naar **direct herstellen**.
+> Alle Azure Backup gebruikers zijn nu bijgewerkt naar **direct herstellen**.
 
 Het nieuwe model voor direct terugzetten biedt de volgende functie verbeteringen:
 
-* De mogelijkheid om moment opnamen te gebruiken die zijn gemaakt als onderdeel van een back-uptaak die beschikbaar is voor herstel, zonder te wachten tot de overdracht van gegevens naar de kluis is voltooid. Het verkleint de wacht tijd voor moment opnamen die moeten worden gekopieerd naar de kluis voordat de herstel bewerking wordt geactiveerd.
+* De mogelijkheid om moment opnamen te gebruiken die zijn gemaakt als onderdeel van een back-uptaak die beschikbaar is voor herstel, zonder te wachten tot de gegevens overdracht naar de kluis is voltooid. Het verkleint de wacht tijd voor moment opnamen die moeten worden gekopieerd naar de kluis voordat de herstel bewerking wordt geactiveerd.
 * Hiermee vermindert u de back-up-en herstel tijden door moment opnamen lokaal te bewaren, voor twee dagen standaard. Deze standaard waarde voor het bewaren van moment opnamen kan worden geconfigureerd voor elke waarde tussen 1 en 5 dagen.
 * Ondersteunt schijf grootten tot 32 TB. Het wijzigen van de grootte van schijven wordt niet aanbevolen door Azure Backup.
 * Ondersteunt Standard-SSD schijven samen met Standard-HDD schijven en Premium-SSD schijven.
@@ -37,7 +37,7 @@ Een herstelpunt wordt alleen als gemaakt beschouwd nadat fase 1 en 2 zijn voltoo
 
 ![Back-uptaak in VM-back-upstack Resource Manager-implementatie model: opslag en kluis](./media/backup-azure-vms/instant-rp-flow.png)
 
-Moment opnamen worden standaard twee dagen bewaard. Met deze functie kan de herstel bewerking vanuit deze moment opnamen worden uitgevoerd. Het vermindert de tijd die nodig is voor het transformeren en kopiëren van gegevens van de kluis.
+Moment opnamen worden standaard twee dagen bewaard. Met deze functie kan de herstel bewerking vanuit deze moment opnamen worden uitgevoerd. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis.
 
 ## <a name="feature-considerations"></a>Functie overwegingen
 
@@ -108,9 +108,9 @@ Als het herstel type ' moment opname en kluis ' is, wordt de herstel bewerking a
 
 Het nieuwe model staat het verwijderen van het herstel punt (Tier2) niet toe, tenzij de moment opname (Tier1) is verwijderd. Het is raadzaam om de Bewaar periode voor herstel punten (Tier2) te plannen die groter is dan de Bewaar periode voor de moment opname.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Waarom is mijn moment opname na de ingestelde Bewaar periode in back-upbeleid al aanwezig?
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Waarom bestaat mijn moment opname nog, zelfs na het instellen van de Bewaar periode in back-upbeleid?
 
-Als het herstel punt moment opname heeft en de meest recente RP beschikbaar is, wordt het behouden tot de volgende geslaagde back-up. Dit is gebaseerd op het ontworpen beleid voor garbage collection (GC), dat ten minste één laatste RP vereist om altijd aanwezig te zijn in het geval dat alle back-ups verder mislukken als gevolg van een probleem in de virtuele machine. In normale scenario's worden RPs Maxi maal 24 uur na verloop van tijd opgeruimd.
+Als het herstel punt een moment opname heeft en het meest recente herstel punt beschikbaar is, wordt het behouden tot de volgende geslaagde back-up. Dit is afhankelijk van het ingestelde beleid voor garbage collection (GC). Het is verplicht dat er altijd ten minste één laatste herstel punt aanwezig is, in het geval dat alle volgende back-ups mislukken vanwege een probleem in de virtuele machine. In normale scenario's worden herstel punten Maxi maal 24 uur na verloop van tijd opgeruimd.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ik heb niet de functionaliteit voor direct terugzetten nodig. Kan deze worden uitgeschakeld?
 

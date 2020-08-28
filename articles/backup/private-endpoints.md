@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 8e9fe46bf3f7528b3a6a08a7c8d90ea6f9117cdd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890889"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017665"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -551,7 +551,7 @@ A. Nee, privé-eind punten kunnen alleen worden gemaakt voor nieuwe back-upkluiz
 V. Ik heb geprobeerd een item te beveiligen voor mijn kluis, maar dit is mislukt en de kluis bevat nog steeds geen items die ermee zijn beveiligd. Kan ik privé-eind punten voor deze kluis maken?<br>
 A. Nee, de kluis mag geen pogingen hebben gehad om in het verleden items te beveiligen.
 
-V. Ik heb een kluis die persoonlijke eind punten gebruikt voor back-up en herstel. Kan ik later privé-eind punten toevoegen of verwijderen voor deze kluis, zelfs als er back-upitems worden beveiligd?<br>
+V. Ik heb een kluis die gebruikmaakt van privé-eind punten voor back-up en herstel. Kan ik later privé-eind punten toevoegen of verwijderen voor deze kluis, zelfs als er back-upitems worden beveiligd?<br>
 A. Ja. Als u al persoonlijke eind punten voor een kluis en beveiligde back-upitems hebt gemaakt, kunt u later persoonlijke eind punten toevoegen of verwijderen als dat nodig is.
 
 V. Kan het privé-eind punt voor Azure Backup ook worden gebruikt voor Azure Site Recovery?<br>
