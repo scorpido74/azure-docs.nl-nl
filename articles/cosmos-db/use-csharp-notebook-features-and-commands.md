@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.custom: devx-track-python
-ms.openlocfilehash: 6c095083f88c00f706d19d1c652e19da007c6542
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876424"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019263"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB C#-notitie blokken (preview-versie)
 
@@ -59,7 +59,7 @@ Zie de [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master
 > [!IMPORTANT]
 > De ingebouwde Azure Cosmos DB .NET SDK wordt alleen ondersteund voor SQL-(core) API-accounts. Voor andere Api's moet u [het relevante .net-stuur programma installeren](#install-a-new-nuget-package) dat overeenkomt met de API. 
 
-## <a name="set-custom-options-using-cosmosclientoptions"></a>Aangepaste opties instellen met``CosmosClientOptions``
+## <a name="set-custom-options-using-cosmosclientoptions"></a>Aangepaste opties instellen met ``CosmosClientOptions``
 Voor meer flexibiliteit kunt u de aangepaste eigenschap instellen ``CosmosClientOptions`` en deze door geven in uw ``CosmosClient`` exemplaar. U kunt deze eigenschap gebruiken voor het volgende:
 
 - Stel een toepassings naam in het achtervoegsel van de gebruikers agent in om deze in elke aanvraag op te vragen.

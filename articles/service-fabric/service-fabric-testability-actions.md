@@ -5,12 +5,13 @@ author: motanv
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 14b2b5bd2577a10ad77a715fb5d20e10da84cf1d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518976"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022170"
 ---
 # <a name="testability-actions"></a>Test acties
 Voor het simuleren van een onbetrouwbare infra structuur biedt Azure Service Fabric u, de ontwikkelaar, de mogelijkheid om verschillende oorzaken van Real-World en status overgangen te simuleren. Deze worden weer gegeven als test taken. De acties zijn de Api's op laag niveau die een specifieke fout injectie, status overgang of validatie veroorzaken. Door deze acties te combi neren, kunt u uitgebreide test scenario's voor uw services schrijven.
@@ -28,7 +29,7 @@ Test acties worden ingedeeld in twee grote buckets:
 Voor een betere kwaliteits validatie voert u de service en de zakelijke werk belasting uit terwijl u verschillende gepaste en niet-respijt fouten veroorzaakt. Scenario's waarbij het service proces plotseling wordt afgesloten in het midden van een bepaalde werk stroom, worden uitgevallen. Hiermee wordt het herstelpad getest zodra de service replica is hersteld door Service Fabric. Dit helpt de consistentie van gegevens te testen en te controleren of de status van de service correct wordt bewaard na storingen. De andere set fouten (het probleemloze fouten) test of de service op de juiste wijze reageert op replica's die door Service Fabric worden verplaatst. Hiermee wordt de verwerking van de annulering in de methode RunAsync getest. De service moet controleren of het annulerings token is ingesteld, de status op de juiste wijze opslaat en de methode RunAsync afsluiten.
 
 ## <a name="testability-actions-list"></a>Lijst met test acties
-| Actie | Beschrijving | Beheerde API | Power shell-cmdlet | Getoonde of niet-respijt fouten |
+| Bewerking | Beschrijving | Beheerde API | Power shell-cmdlet | Getoonde of niet-respijt fouten |
 | --- | --- | --- | --- | --- |
 | CleanTestState |Hiermee verwijdert u alle test status van het cluster in het geval van een slecht afsluiten van het test stuur programma. |CleanTestStateAsync |Remove-ServiceFabricTestState |Niet van toepassing |
 | InvokeDataLoss |Veroorzaakt gegevens verlies in een service partitie. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Socket |

@@ -3,7 +3,7 @@ title: Beheerde identiteiten op een virtuele machine gebruiken om een toegangs t
 description: Stapsgewijze instructies en voor beelden voor het gebruik van beheerde identiteiten voor Azure-resources op een virtuele machines om een OAuth-toegangs token te verkrijgen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608378"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016135"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure VM om een toegangs token te verkrijgen 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij alle services die Microsoft Azure AD-verificatie ondersteunen, zonder dat u aanmeldingsgegevens in uw code hoeft te hebben. 
+Beheerde identiteiten voor Azure-resources bieden Azure-services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij alle services die Microsoft Azure AD-verificatie ondersteunen, zonder dat u aanmeldingsgegevens in uw code hoeft te hebben. 
 
 In dit artikel vindt u verschillende code-en script voorbeelden voor het verkrijgen van tokens, evenals richt lijnen voor belang rijke onderwerpen, zoals het verwerken van token verloopt en HTTP-fouten. 
 
@@ -70,7 +70,7 @@ Voorbeeld aanvraag met behulp van het Azure Instance Metadata Service (IMDS)-ein
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | De beheerde identiteiten voor het Azure-bronnen eindpunt voor de Instance Metadata Service. |
@@ -88,7 +88,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://localhost:50342/oauth2/token` | Het eind punt Managed Identities voor Azure resources, waarbij 50342 de standaard poort is en kan worden geconfigureerd. |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token in het `Authorization` veld aanvraag header Inge sloten als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
 | `refresh_token` | Wordt niet gebruikt door beheerde identiteiten voor Azure-resources. |
@@ -362,7 +362,7 @@ De beheerde identiteiten voor Azure resources-eind punt signaleert fouten via he
 
 Als er een fout optreedt, bevat de bijbehorende HTTP-antwoord tekst JSON met de fout Details:
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | fout   | Fout-id. |
 | error_description | Uitgebreide beschrijving van de fout. **Fout beschrijvingen kunnen op elk gewenst moment worden gewijzigd. Code die vertakkingen niet schrijven op basis van waarden in de fout beschrijving.**|
@@ -373,15 +373,15 @@ In deze sectie worden de mogelijke fout reacties gedocumenteerd. De status ' 200
 
 | Statuscode | Fout | Beschrijving van de fout | Oplossing |
 | ----------- | ----- | ----------------- | -------- |
-| 400 ongeldige aanvraag | invalid_resource | AADSTS50001: de toepassing met de naam *\<URI\>* is niet gevonden in de Tenant met de naam *\<TENANT-ID\>* . Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de tenant of als er geen toestemming voor is verleend door een gebruiker in de tenant. U hebt uw verificatie aanvraag mogelijk naar de verkeerde Tenant verzonden. \ | (Alleen Linux) |
-| 400 ongeldige aanvraag | bad_request_102 | De vereiste meta gegevens header is niet opgegeven | Het `Metadata` veld met de aanvraag header ontbreekt in uw aanvraag of heeft een onjuiste indeling. De waarde moet worden opgegeven als `true` , in kleine letters. Zie ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld.|
-| 401 niet gemachtigd | unknown_source | Onbekende bron*\<URI\>* | Controleer of de URI van de HTTP GET-aanvraag juist is geformatteerd. Het `scheme:host/resource-path` gedeelte moet worden opgegeven als `http://localhost:50342/oauth2/token` . Zie ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld.|
+| 400 Ongeldige aanvraag | invalid_resource | AADSTS50001: de toepassing met de naam *\<URI\>* is niet gevonden in de Tenant met de naam *\<TENANT-ID\>* . Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de tenant of als er geen toestemming voor is verleend door een gebruiker in de tenant. U hebt uw verificatie aanvraag mogelijk naar de verkeerde Tenant verzonden. \ | (Alleen Linux) |
+| 400 Ongeldige aanvraag | bad_request_102 | De vereiste meta gegevens header is niet opgegeven | Het `Metadata` veld met de aanvraag header ontbreekt in uw aanvraag of heeft een onjuiste indeling. De waarde moet worden opgegeven als `true` , in kleine letters. Zie ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld.|
+| 401 Onbevoegd | unknown_source | Onbekende bron *\<URI\>* | Controleer of de URI van de HTTP GET-aanvraag juist is geformatteerd. Het `scheme:host/resource-path` gedeelte moet worden opgegeven als `http://localhost:50342/oauth2/token` . Zie ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld.|
 |           | invalid_request | Er ontbreekt een vereiste para meter in de aanvraag, bevat een ongeldige parameter waarde, bevat een para meter van meer dan een keer of is anders misvormd. |  |
 |           | unauthorized_client | De client is niet gemachtigd om een toegangs token aan te vragen met behulp van deze methode. | Dit wordt veroorzaakt door een aanvraag die geen lokale loop back heeft gebruikt voor het aanroepen van de extensie, of op een virtuele machine die geen beheerde identiteiten voor de juiste configuratie van Azure-resources heeft. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met](qs-configure-portal-windows-vm.md) behulp van de Azure portal als u hulp nodig hebt bij de configuratie van de virtuele machine. |
 |           | access_denied | De resource-eigenaar of autorisatie server heeft de aanvraag geweigerd. |  |
 |           | unsupported_response_type | De autorisatie server biedt geen ondersteuning voor het verkrijgen van een toegangs token met behulp van deze methode. |  |
 |           | invalid_scope | Het aangevraagde bereik is ongeldig, onbekend of onjuist gevormd. |  |
-| 500 interne server fout | unknown | Kan geen Token ophalen uit Active Directory. Zie Logboeken in voor meer informatie*\<file path\>* | Controleer of de beheerde identiteiten voor Azure-resources zijn ingeschakeld op de VM. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met](qs-configure-portal-windows-vm.md) behulp van de Azure portal als u hulp nodig hebt bij de configuratie van de virtuele machine.<br><br>Controleer ook of uw HTTP GET-aanvraag-URI correct is geformatteerd, met name de bron-URI die is opgegeven in de query reeks. Zie de ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld of [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](services-support-msi.md) voor een lijst met Services en de bijbehorende resource-id's.
+| 500 Interne serverfout | unknown | Kan geen Token ophalen uit Active Directory. Zie Logboeken in voor meer informatie *\<file path\>* | Controleer of de beheerde identiteiten voor Azure-resources zijn ingeschakeld op de VM. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met](qs-configure-portal-windows-vm.md) behulp van de Azure portal als u hulp nodig hebt bij de configuratie van de virtuele machine.<br><br>Controleer ook of uw HTTP GET-aanvraag-URI correct is geformatteerd, met name de bron-URI die is opgegeven in de query reeks. Zie de ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld of [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](services-support-msi.md) voor een lijst met Services en de bijbehorende resource-id's.
 
 ## <a name="retry-guidance"></a>Richt lijnen voor opnieuw proberen 
 
@@ -391,7 +391,7 @@ Beperkings limieten zijn van toepassing op het aantal aanroepen naar het IMDS-ei
 
 Voor opnieuw proberen wordt de volgende strategie aanbevolen: 
 
-| **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Uitleg** |
+| **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Hoe het werkt** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />false |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
 

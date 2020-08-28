@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849723"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009607"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
@@ -69,6 +69,9 @@ Voor beelden van gebruiks scenario's voor de Access-laag voor archiveren zijn:
 - Oorspronkelijke (onbewerkte) gegevens die moeten worden bewaard, zelfs nadat deze zijn verwerkt tot hun uiteindelijke, bruikbare vorm.
 - Compliance- en archiveringsgegevens die gedurende lange tijd moeten worden opgeslagen en bijna nooit worden geopend.
 
+> [!NOTE]
+> De Archive-laag wordt momenteel niet ondersteund voor ZRS-, GZRS-of RA-GZRS-accounts.
+
 ## <a name="account-level-tiering"></a>Lagen op account niveau
 
 Blobs in alle drie de toegangs lagen kunnen naast elkaar worden gebruikt in hetzelfde account. Een blob die geen expliciet toegewezen laag heeft, leidt de laag af van de instelling van de toegangs laag voor het account. Als de toegangs laag afkomstig is van het account, ziet u de eigenschap voor de **uitstelde** blob van de toegangs laag die is ingesteld op ' True ', en de BLOB-eigenschap van de **Access-laag** overeenkomt met de account-laag. In de Azure Portal wordt de eigenschap voor de _toegang tot de laag_ weer gegeven met de BLOB-toegangs laag als **Hot (uitgesteld)** of **koud (uitgesteld)**.
@@ -119,7 +122,7 @@ In de volgende tabel ziet u een vergelijking van de toegangs lagen voor het blok
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Beschikbaarheid**                          | 99,9%                     | 99,9%        | 99%                 | Offline           |
 | **Beschikbaarheid** <br> **(RA-GRS-leesbewerkingen)**  | N.v.t.                       | 99,99%       | 99,9%               | Offline           |
-| **Gebruikskosten**                         | Hogere opslag kosten, lagere toegang en transactie kosten | Hogere opslag kosten, lagere toegang en transactie kosten | Lagere opslag kosten, hogere toegang en transactie kosten | Laagste opslag kosten, hoogste toegang en transactie kosten |
+| **Gebruiks kosten**                         | Hogere opslag kosten, lagere toegang en transactie kosten | Hogere opslag kosten, lagere toegang en transactie kosten | Lagere opslag kosten, hogere toegang en transactie kosten | Laagste opslag kosten, hoogste toegang en transactie kosten |
 | **Minimale objectgrootte**                   | N.v.t.                       | N.v.t.          | N.v.t.                 | N.v.t.               |
 | **Minimale opslagduur**              | N.v.t.                       | N.v.t.          | 30 dagen<sup>1</sup> | 180 dagen
 | **Latentie** <br> **(Tijd tot eerste byte)** | Milliseconden met één cijfer | milliseconden | milliseconden        | uur<sup>2</sup> |

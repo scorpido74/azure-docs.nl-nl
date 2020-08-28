@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500382"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018872"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB-index Tags (preview) gebruiken om gegevens te beheren en te zoeken in Azure Blob-opslag
 
@@ -34,7 +35,7 @@ Als blob-index bevindt zich in de open bare preview-versie, wordt het .NET-opsla
 
 1. Stel uw Visual Studio-project in om aan de slag te gaan met de Azure Blob Storage-client bibliotheek V12 voor .NET. Zie [.net Quick](storage-quickstart-blobs-dotnet.md) start (Engelstalig) voor meer informatie.
 
-2. Zoek in de NuGet package manager het pakket **Azure. storage. blobs** en Installeer versie **12.5.0-Preview. 6** of hoger voor uw project. U kunt ook de opdracht uitvoeren```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
+2. Zoek in de NuGet package manager het pakket **Azure. storage. blobs** en Installeer versie **12.5.0-Preview. 6** of hoger voor uw project. U kunt ook de opdracht uitvoeren ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    Zie [een pakket zoeken en installeren](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)voor meer informatie.
 
@@ -57,7 +58,7 @@ using System.Threading.Tasks;
 
 2. Navigeer naar de optie **containers** onder **BLOB-service**, selecteer uw container
 
-3. Selecteer de knop **uploaden** om de Blade uploaden te openen en blader door het lokale bestands systeem om een bestand te vinden dat u wilt uploaden als een blok-blob.
+3. Selecteer de knop **Uploaden** om de blade voor uploaden te openen en blader door het lokale bestandssysteem om een bestand te vinden dat u wilt uploaden als een blok-blob.
 
 4. Vouw de vervolg keuzelijst **Geavanceerd** uit en ga naar de sectie **index Tags voor BLOB**
 

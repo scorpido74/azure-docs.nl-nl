@@ -3,18 +3,18 @@ title: Over Azure VM Backup
 description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587494"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014639"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
 In dit artikel wordt beschreven hoe de [Azure backup-service](./backup-overview.md) een back-up maakt van Azure virtual machines (vm's).
 
-Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van de gegevens op uw Vm's. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwd beheer van herstelpunten. Configuratie en schalen zijn eenvoudige, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
+Azure Backup biedt onafhankelijke en geïsoleerde back-ups om bescherming te bieden tegen onbedoelde vernietiging van de gegevens op uw VM's. Back-ups worden in een Recovery Services-kluis opgeslagen waarin het beheer van herstelpunten is ingebouwd. Het is eenvoudig om te configureren en de schaal aan te passen, back-ups worden geoptimaliseerd en u kunt, indien nodig, eenvoudig herstelbewerkingen uitvoeren.
 
 Als onderdeel van het back-upproces [wordt er een moment opname gemaakt](#snapshot-creation)en worden de gegevens overgebracht naar de Recovery Services kluis zonder dat dit van invloed is op de werk belasting van de productie. De moment opname biedt verschillende consistentie niveaus, zoals [hier](#snapshot-consistency)wordt beschreven.
 
@@ -22,7 +22,7 @@ Azure Backup heeft ook gespecialiseerde aanbiedingen voor data base-workloads, z
 
 ## <a name="backup-process"></a>Back-upproces
 
-Hier volgt een beschrijving van de manier waarop Azure Backup een back-up voor virtuele Azure-machines uitvoert:
+Hier volgt een beschrijving van de manier waarop in Azure Backup een back-up voor virtuele Azure-machines wordt uitgevoerd:
 
 1. Azure Backup start een back-uptaak op basis van het back-upschema dat u opgeeft voor Azure-Vm's die zijn geselecteerd voor back-up.
 1. Tijdens de eerste back-up wordt een back-upextensie op de VM geïnstalleerd als de virtuele machine wordt uitgevoerd.
@@ -33,9 +33,9 @@ Hier volgt een beschrijving van de manier waarop Azure Backup een back-up voor v
     - Als back-up geen app-consistente moment opname kan maken, wordt een bestands consistente moment opname van de onderliggende opslag gebruikt (omdat er geen schrijf bewerkingen voor de toepassing plaatsvinden terwijl de virtuele machine wordt gestopt).
 1. Voor Linux-Vm's neemt Backup een bestands consistente back-up. Voor app-consistente moment opnamen moet u hand matig vooraf/post-scripts aanpassen.
 1. Nadat de back-up de moment opname heeft gemaakt, worden de gegevens overgedragen naar de kluis.
-    - De back-up wordt geoptimaliseerd door een back-up te maken van elke VM-schijf parallel.
-    - Azure Backup leest de blokken op de schijf voor elke schijf waarvan een back-up wordt gemaakt en identificeert en brengt alleen de gegevens blokken die zijn gewijzigd (Delta) sinds de vorige back-up.
-    - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het kan enkele uren duren om piek tijden. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
+    - De back-up wordt geoptimaliseerd door parallel een back-up te maken van elke VM-schijf.
+    - Azure Backup leest de blokken op elke schijf waarvan een back-up wordt gemaakt, en identificeert en verplaatst alleen de gegevensblokken die sinds de vorige back-up zijn gewijzigd (de delta).
+    - Momentopnamegegevens worden mogelijk niet direct naar de kluis gekopieerd. Het kan enkele uren duren om piek tijden. De totale back-uptijd voor een virtuele machine is minder dan 24 uur bij beleid voor dagelijkse back-ups.
 1. Wijzigingen die zijn aangebracht in een Windows-VM nadat Azure Backup is ingeschakeld, zijn:
     - Te distribueren pakket micro soft Visual C++ 2013 (x64)-12.0.40660 is geïnstalleerd in de VM
     - Het opstart type van de Volume Shadow Copy service (VSS) is gewijzigd in automatisch vanuit hand matig

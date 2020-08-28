@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 44d4e5b6d3e96d2bafa9a7e22f36c6544eaff151
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918305"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999543"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics gebruiken om tekst inhoud in video bestanden te converteren naar digitale tekst  
 
@@ -33,7 +34,7 @@ Wanneer u gebruikt in combi natie met een zoek machine, kunt u uw media eenvoudi
 
 De OCR-media processor van **Azure media** is momenteel beschikbaar als preview-versie.
 
-Dit artikel bevat informatie over de **OCR van Azure media** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net. Zie [deze blog](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)voor meer informatie en voor beelden.
+Dit artikel bevat informatie over de  **OCR van Azure media** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net. Zie [deze blog](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)voor meer informatie en voor beelden.
 
 ## <a name="ocr-input-files"></a>OCR-invoer bestanden
 Video bestanden. Momenteel worden de volgende indelingen ondersteund: MP4, MOV en WMV.
@@ -46,7 +47,7 @@ Taak configuratie (voor instelling). Wanneer u een taak met **Azure media OCR**m
 >
 
 ### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Description |
+| Kenmerk naam | Beschrijving |
 | --- | --- |
 |AdvancedOutput| Als u AdvancedOutput instelt op True, bevat de JSON-uitvoer positionele gegevens voor elk enkel woord (naast zinsdelen en regio's). Als u deze gegevens niet wilt weer geven, stelt u de vlag in op ONWAAR. De standaardwaarde is false. Lees [deze blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/) voor meer informatie.|
 | Taal |(optioneel) Hiermee wordt de taal van de tekst beschreven waarnaar moet worden gezocht. Een van de volgende: automatische detectie (standaard), Arabisch, ChineseSimplified, ChineseTraditional, Tsjechisch, Nederlands, Engels, Fins, Frans, Duits, Grieks, Hong aars, Italiaans, Japans, Koreaans, Noors, Pools, Portugees, Roemeens, Russisch, SerbianCyrillic, SerbianLatin, Slowaaks, Spaans, Zweeds, Turks. |
@@ -107,7 +108,7 @@ De OCR-uitvoer van de video biedt tijdgebonden gegevens over de tekens die in uw
 
 De uitvoer bevat de volgende kenmerken:
 
-| Element | Description |
+| Element | Beschrijving |
 | --- | --- |
 | Tijdschaal |' Ticks ' per seconde van de video |
 | Offset |tijd verschuiving voor tijds tempels. In versie 1,0 van video-Api's is dit altijd 0. |
@@ -115,7 +116,7 @@ De uitvoer bevat de volgende kenmerken:
 | breedte |de breedte van de video in pixels |
 | hoogte |de hoogte van de video in pixels |
 | Fragmenten |matrix van op tijd gebaseerde segmenten van video waarin de meta gegevens worden gesegmenteerd |
-| start |begin tijd van een fragment in ' Ticks ' |
+| starten |begin tijd van een fragment in ' Ticks ' |
 | duur |lengte van een fragment in ' Ticks ' |
 | interval |interval van elke gebeurtenis binnen het gegeven fragment |
 | events |matrix met regio's |

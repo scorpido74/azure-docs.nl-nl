@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447690"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003351"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -103,7 +103,7 @@ Dit probleem kan worden veroorzaakt door lokale configuratie problemen of door e
 
 1. Voer de probleem oplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturings systeem.
 
-2. Zorg ervoor dat uw computer rapporteert aan de juiste werk ruimte. Zie [agent connectiviteit controleren op Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)voor meer informatie over hoe u dit aspect kunt controleren. Zorg er ook voor dat deze werk ruimte is gekoppeld aan uw Azure Automation-account. Als u wilt bevestigen, gaat u naar uw Automation-account en selecteert u **gekoppelde werk ruimte** onder **gerelateerde resources**.
+2. Zorg ervoor dat uw computer rapporteert aan de juiste werk ruimte. Zie [agent connectiviteit controleren op Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor)voor meer informatie over hoe u dit aspect kunt controleren. Zorg er ook voor dat deze werk ruimte is gekoppeld aan uw Azure Automation-account. Als u wilt bevestigen, gaat u naar uw Automation-account en selecteert u **gekoppelde werk ruimte** onder **gerelateerde resources**.
 
 3. Zorg ervoor dat de computers worden weer gegeven in de Log Analytics werkruimte die aan uw Automation-account is gekoppeld. Voer de volgende query uit in de werk ruimte Log Analytics.
 
@@ -417,7 +417,7 @@ In Windows worden updates automatisch geïnstalleerd zodra ze beschikbaar zijn. 
 
 ### <a name="resolution"></a>Oplossing
 
-De `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` register sleutel is standaard ingesteld op een instelling van 4: `auto download and install` .
+De  `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` register sleutel is standaard ingesteld op een instelling van 4: `auto download and install` .
 
 Voor Updatebeheer-clients wordt aangeraden om deze sleutel in te stellen op 3: `auto download but do not auto install` .
 
@@ -534,7 +534,7 @@ Als u een HRESULT ziet, dubbelklikt u op de uitzonde ring die rood wordt weer ge
 |`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Deze duiden op problemen met de netwerk verbinding. Zorg ervoor dat uw computer netwerk verbinding heeft met Updatebeheer. Zie de sectie [netwerk planning](../update-management/update-mgmt-overview.md#ports) voor een lijst met vereiste poorten en adressen.        |
 |`0x8024001E`| De update bewerking is niet voltooid omdat de service of het systeem is afgesloten.|
 |`0x8024002E`| Windows Update-service is uitgeschakeld.|
-|`0x8024402C`     | Als u een WSUS-server gebruikt, moet u ervoor zorgen dat de register waarden voor `WUServer` en `WUStatusServer` onder de `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` register sleutel de juiste WSUS-server opgeven.        |
+|`0x8024402C`     | Als u een WSUS-server gebruikt, moet u ervoor zorgen dat de register waarden voor `WUServer` en `WUStatusServer` onder de  `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` register sleutel de juiste WSUS-server opgeven.        |
 |`0x80072EE2`|Er is een probleem met de netwerk verbinding of een probleem in het praten met een geconfigureerde WSUS-server. Controleer de WSUS-instellingen en controleer of de service toegankelijk is vanaf de client.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Zorg ervoor dat de Windows Update-service (wuauserv) wordt uitgevoerd en niet is uitgeschakeld.        |
 |`0x80070005`| Een fout bericht over geweigerde toegang kan een van de volgende oorzaken hebben:<br> Geïnfecteerde computer<br> De instellingen voor Windows Update zijn niet juist geconfigureerd<br> Fout bij bestands machtiging met map%WinDir%\SoftwareDistribution<br> Onvoldoende schijf ruimte op het systeem station (C:).

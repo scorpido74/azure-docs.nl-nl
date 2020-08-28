@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: bc0d5b0cdf616904ee7ed61fdc681ba60bff8f75
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 705c7dd602d9c908ec9048d131ba66b21c5b2103
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480285"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006503"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Introductie van SQL Server AlwaysOn-beschikbaarheids groepen in azure Virtual Machines
 
@@ -41,8 +41,9 @@ Om redundantie en maximale Beschik baarheid te verbeteren, moeten de SQL Server 
 
 |  | Windows Server-versie | SQL Server versie | SQL Server-editie | Configuratie van WSFC-quorum | DR met meerdere regio's | Ondersteuning voor meerdere subnetten | Ondersteuning voor een bestaande AD | DR met meerdere zones met dezelfde regio | Ondersteuning voor dist-AG zonder AD-domein | Ondersteuning voor VERD-AG zonder cluster |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[SQL-VM-CLI](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | ENT | Cloudwitness | No | Ja | Ja | Ja | Nee | Nee |
-| **[Quick Start-sjablonen](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | ENT | Cloudwitness | No | Ja | Ja | Ja | Nee | Nee |
+| **[Azure Portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | ENT | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
+| **[Azure CLI/Power shell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | ENT | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
+| **[Quick Start-sjablonen](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | ENT | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
 | **[Handmatig](availability-group-manually-configure-prerequisites-tutorial.md)** | Alles | Alles | Alles | Alles | Ja | Ja | Ja | Ja | Ja | Ja |
 
 De sjabloon **voor het SQL Server AlwaysOn-cluster (preview)** is verwijderd uit de Azure Marketplace en is niet meer beschikbaar. 

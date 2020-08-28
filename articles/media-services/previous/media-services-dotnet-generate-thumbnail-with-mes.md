@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 22a79f75fa795226e45e54947f410db4c2a57a7c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836442"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020657"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatuurweergaven genereren met Media Encoder Standard met .NET 
 
@@ -407,7 +408,7 @@ In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volg
 
 * Maak een coderings taak.
 * Een verwijzing naar de Media Encoder Standard encoder ophalen.
-* Laad de vooraf ingestelde [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) of [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) die de voor instelling voor de code ring bevat en de informatie die nodig is om miniaturen te genereren. U kunt deze [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) of [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) opslaan in een bestand en de volgende code gebruiken om het bestand te laden.
+* Laad de vooraf ingestelde [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) of [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) die de voor instelling voor de code ring bevat en de informatie die nodig is om miniaturen te genereren. U kunt deze  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) of [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) opslaan in een bestand en de volgende code gebruiken om het bestand te laden.
 
     ```csharp
     // Load the XML (or JSON) from the local file.

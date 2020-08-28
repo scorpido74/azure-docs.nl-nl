@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79f85473f4eb1839a283ce4fc0d3311defaa741e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439610"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999620"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Uw inhoud versleutelen met opslag versleuteling 
 
@@ -115,7 +116,7 @@ Hieronder vindt u algemene stappen voor het genereren van inhouds sleutels die u
     ---|---
     Id | De ContentKey-ID wordt gegenereerd met de volgende indeling, "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | Het type inhouds sleutel is een geheel getal dat de sleutel definieert. Voor de indeling van opslag versleuteling is de waarde 1.
-    EncryptedContentKey | We maken een nieuwe waarde voor de inhouds sleutel die een 256-bits (32 bytes) waarde is. De sleutel wordt versleuteld met het 509-certificaat dat wordt opgehaald uit Microsoft Azure Media Services door een HTTP GET-aanvraag voor de methoden GetProtectionKeyId en GetProtectionKey uit te voeren. Zie voor beeld de volgende .NET-code: de methode **EncryptSymmetricKeyData** die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)is gedefinieerd.
+    EncryptedContentKey | We maken een nieuwe waarde voor de inhouds sleutel die een 256-bits (32 bytes) waarde is. De sleutel wordt versleuteld met het 509-certificaat dat wordt opgehaald uit Microsoft Azure Media Services door een HTTP GET-aanvraag voor de methoden GetProtectionKeyId en GetProtectionKey uit te voeren. Zie voor beeld de volgende .NET-code: de methode  **EncryptSymmetricKeyData** die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)is gedefinieerd.
     ProtectionKeyId | Dit is de beveiligings sleutel-ID voor het 509-certificaat dat is gebruikt voor het versleutelen van onze inhouds sleutel.
     ProtectionKeyType | Dit is het versleutelings type voor de beveiligings sleutel die is gebruikt voor het versleutelen van de inhouds sleutel. Deze waarde is StorageEncryption (1) voor ons voor beeld.
     Controlesom |De MD5-berekende controlesom voor de inhouds sleutel. Het wordt berekend door de inhouds-ID te versleutelen met de inhouds sleutel. De voorbeeld code laat zien hoe u de controlesom berekent.

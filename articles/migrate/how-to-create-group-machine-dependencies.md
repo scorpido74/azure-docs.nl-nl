@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse op basis van een agent instellen in de evaluatie
 description: In dit artikel wordt beschreven hoe u een afhankelijkheids analyse op basis van een agent instelt in Azure Migrate server-evaluatie.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829914"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022374"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
 
@@ -82,9 +82,9 @@ Installeer de agent als volgt op een Windows-computer:
 5. Klik op **Toevoegen** om een nieuwe Log Analytics-werkruimte toe te voegen. Plak de werkruimte-id en -sleutel die u in de portal hebt gekopieerd. Klik op **Volgende**.
 
 U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode als Configuration Manager of [Intigua](https://www.intigua.com/intigua-for-azure-migration).
-- [Meer informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over het gebruiken van deze methoden om de MMA-agent te installeren.
+- [Meer informatie](../azure-monitor/platform/log-analytics-agent.md#installation-options) over het gebruiken van deze methoden om de MMA-agent te installeren.
 - De MMA-agent kan ook worden geïnstalleerd met behulp van dit [script](https://go.microsoft.com/fwlink/?linkid=2104394).
-- Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) over de Windows-besturings systemen die worden ondersteund door MMA.
+- Meer [informatie](../azure-monitor/platform/agents-overview.md#supported-operating-systems) over de Windows-besturings systemen die worden ondersteund door MMA.
 
 ### <a name="install-mma-on-a-linux-machine"></a>MMA installeren op een Linux-computer
 
@@ -95,7 +95,7 @@ De MMA op een Linux-computer installeren:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Meer informatie](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) over de lijst met door MMA ondersteunde Linux-besturingssystemen. 
+[Meer informatie](../azure-monitor/platform/agents-overview.md#supported-operating-systems) over de lijst met door MMA ondersteunde Linux-besturingssystemen. 
 
 ## <a name="install-the-dependency-agent"></a>De afhankelijkheidsagent installeren
 
@@ -147,7 +147,7 @@ Nadat u de groep hebt gemaakt, wordt u aangeraden agents op alle computers in de
 U kunt een query uitvoeren op afhankelijkheids gegevens die zijn vastgelegd door Servicetoewijzing in de werk ruimte Log Analytics die aan het Azure Migrate project is gekoppeld. Log Analytics wordt gebruikt om Azure Monitor-logboek query's te schrijven en uit te voeren.
 
 - [Meer informatie over het](../azure-monitor/insights/service-map.md#log-analytics-records) zoeken naar servicetoewijzing gegevens in log Analytics.
-- [Bekijk een overzicht van het](../azure-monitor/log-query/get-started-queries.md) schrijven van logboek query's in [log Analytics](../azure-monitor/log-query/get-started-portal.md).
+- [Bekijk een overzicht van het](../azure-monitor/log-query/get-started-queries.md)  schrijven van logboek query's in [log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
 Voer een query uit voor afhankelijkheids gegevens als volgt:
 

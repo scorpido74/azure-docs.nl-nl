@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: laobri
 ms.date: 07/17/2020
 ms.topic: reference
-ms.openlocfilehash: ac56e2e69cf62c8afae73e0a7616e7e7f80c0493
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d5f541dec14eebc944e4eac11dbe569b38cb277e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816317"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001617"
 ---
 # <a name="reference-retirements-of-dsvm-images"></a>Naslag informatie: buiten gebruik stellen van DSVM-installatie kopieën
 
@@ -50,18 +50,3 @@ Bestaande installatie kopieën van DSVM die in uw abonnement zijn ingericht, bli
 >
 > ARM-sjablonen die niet zijn bijgewerkt met de nieuwe Details van de DSVM-installatie kopie, kunnen niet worden geïmplementeerd na de pensionerings datum.
 
-## <a name="mitigating-upcoming-retirements"></a>Het beperken van aanstaande pensioenten
-
-In deze sectie wordt het risico op aanstaande pensioenten besproken.
-
-### <a name="upgrade-windows-2016-dsvm"></a>Upgrade uitvoeren voor Windows 2016 DSVM
-
-Voer de volgende stappen uit als u een gegevens schijf van uw bestaande Windows 2016-DSVM naar een Windows 2019 DSVM wilt migreren:
-
-1. Maak een nieuwe Windows 2019-DSVM en volg de instructies die [hier](./provision-vm.md#create-your-dsvm)worden weer gegeven.
-1. Koppel bestaande gegevens schijven uit uw Windows 2016-installatie kopie met behulp van [deze instructies](../../virtual-machines/windows/detach-disk.md).
-1. Koppel de schijf uit de vorige stap aan uw Windows 2019-installatie kopie met behulp van [deze instructies](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
-
-### <a name="upgrade-ubuntu-1604-dsvm"></a>Upgrade Ubuntu 16,04 DSVM
-
-Het is raadzaam om bestaande Ubuntu 16,04 Dsvm te upgraden naar de [Ubuntu 18,04 DSVM Edition](./dsvm-ubuntu-intro.md).

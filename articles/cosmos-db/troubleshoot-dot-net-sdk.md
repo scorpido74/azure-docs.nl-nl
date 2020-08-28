@@ -8,12 +8,13 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290908"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021898"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -51,7 +52,7 @@ Raadpleeg de [sectie met github-problemen](https://github.com/Azure/azure-cosmos
 ### <a name="check-the-portal-metrics"></a>Controleer de metrische gegevens van de portal
 Door de [metrische gegevens](monitor-accounts.md) van de portal te controleren, kunt u bepalen of het een probleem aan de client zijde is of dat er een probleem is met de service. Als de metrische gegevens bijvoorbeeld een hoog aantal aanvragen met een rente beperking bevatten (HTTP-status code 429), wat betekent dat de aanvraag wordt beperkt, controleert u de sectie [aanvraag snelheid is te groot](troubleshoot-request-rate-too-large.md) . 
 
-## <a name="common-error-status-codes"></a>Algemene fout status codes<a id="error-codes"></a>
+## <a name="common-error-status-codes"></a>Algemene fout status codes <a id="error-codes"></a>
 
 | Statuscode | Beschrijving | 
 |----------|-------------|
