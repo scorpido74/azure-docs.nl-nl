@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642846"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015081"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-beveiligings basislijn voor Azure Machine Learning
 
@@ -270,9 +270,9 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 Azure Machine Learning heeft verschillende ondersteuning voor verschillende reken bronnen en zelfs uw eigen reken bronnen. Voor reken resources die eigendom zijn van uw organisatie, schakelt u de verzameling van antimalware-gebeurtenissen in voor micro soft antimalware voor Azure Cloud Services en Virtual Machines.
 
-- [Micro soft antimalware configureren voor een virtuele machine](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Micro soft antimalware configureren voor een virtuele machine](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [Micro soft antimalware-extensie voor Cloud Services configureren](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Micro soft antimalware-extensie voor Cloud Services configureren](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [Micro soft antimalware begrijpen](../security/fundamentals/antimalware.md)
 

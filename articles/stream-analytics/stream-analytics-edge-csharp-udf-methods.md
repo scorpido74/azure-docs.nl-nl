@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.custom: seodec18
-ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: fff1a228e32f115c498678a654f6c8f028772161
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921859"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015676"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics-taken (preview-versie)
 
@@ -158,7 +158,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`wordt door gegeven als invoer parameter voor de UDF-methode en kan worden gebruikt in de UDF voor het publiceren van aangepaste logboek gegevens. In het onderstaande voor beeld `MyUdfMethod` definieert u een **gegevens** invoer, die wordt opgegeven door de query en een **context** invoer als de `StreamingContext` , die wordt opgegeven door de runtime-engine. 
+`StreamingContext` wordt door gegeven als invoer parameter voor de UDF-methode en kan worden gebruikt in de UDF voor het publiceren van aangepaste logboek gegevens. In het onderstaande voor beeld `MyUdfMethod` definieert u een **gegevens** invoer, die wordt opgegeven door de query en een **context** invoer als de `StreamingContext` , die wordt opgegeven door de runtime-engine. 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)

@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5b5d413eee2528e2d5c7d04d06f1607949beaae
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253232"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012701"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Op WCF gebaseerde communicatie stack voor Reliable Services
 Met het Reliable Services Framework kunnen service ontwerpers de communicatie stack kiezen die ze willen gebruiken voor hun service. Ze kunnen de communicatie stack van hun keuze aansluiten via de **ICommunicationListener** die wordt geretourneerd door de [CreateServiceReplicaListeners-of CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) -methoden. Het Framework bevat een implementatie van de communicatie stack op basis van de Windows Communication Foundation (WCF) voor service auteurs die op WCF gebaseerde communicatie willen gebruiken.
@@ -18,7 +19,7 @@ Met het Reliable Services Framework kunnen service ontwerpers de communicatie st
 ## <a name="wcf-communication-listener"></a>WCF-communicatie-listener
 De WCF-specifieke implementatie van **ICommunicationListener** wordt gegeven door de klasse **micro soft. ServiceFabric. Services. Communication. WCF. runtime. WcfCommunicationListener** .
 
-Lest Stel dat we een service contract van het type hebben`ICalculator`
+Lest Stel dat we een service contract van het type hebben `ICalculator`
 
 ```csharp
 [ServiceContract]

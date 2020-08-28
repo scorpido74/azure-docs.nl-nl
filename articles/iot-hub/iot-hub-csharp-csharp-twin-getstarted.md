@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135559"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013755"
 ---
 # <a name="get-started-with-device-twins-net"></a>Aan de slag met Device apparaatdubbels (.NET)
 
@@ -211,7 +211,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
     }
     ```
 
-   De bovenstaande code werkt de gerapporteerde eigenschap van **myDeviceId** bij met de verbindings gegevens.
+   De bovenstaande code werkt de gerapporteerde eigenschap van  **myDeviceId** bij met de verbindings gegevens.
 
 1. Voeg tot slot de volgende regels toe aan de methode **Main**:
 

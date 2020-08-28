@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320490"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022493"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a> Wat is Azure Monitor voor VM's?
 
@@ -26,10 +26,6 @@ Azure Monitor voor VM's ondersteunt Windows-en Linux-besturings systemen op het 
 - Virtuele machines die worden gehost in een andere cloud omgeving
   
 
-
->[!NOTE]
->We hebben onlangs [Wijzigingen aangekondigd](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-) die zijn aangebracht in de status functie op basis van de feedback die we hebben ontvangen van onze open bare preview-klanten. Gezien het aantal wijzigingen dat we maken, zullen we de status functie voor nieuwe klanten niet meer aanbieden. Bestaande klanten kunnen het status onderdeel blijven gebruiken. Raadpleeg de [Veelgestelde vragen over algemene Beschik baarheid](vminsights-ga-release-faq.md)voor meer informatie.  
 
 
 Azure Monitor voor VM's slaat de gegevens op in Azure Monitor logboeken, zodat IT krachtige aggregatie en filters kan leveren en gegevens trends in de loop van de tijd kan analyseren. U kunt deze gegevens rechtstreeks vanuit de virtuele machine weer geven in één VM of u kunt Azure Monitor gebruiken om een geaggregeerde weer gave van meerdere Vm's te leveren.

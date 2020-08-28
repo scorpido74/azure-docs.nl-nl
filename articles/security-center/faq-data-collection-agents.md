@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089852"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011851"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
-Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief lokale computers) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse.
+Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief lokale computers) om te controleren op beveiligings problemen en bedreigingen. De gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende configuraties en gebeurtenislogboeken met betrekking tot beveiliging van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse.
 
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Ben ik gefactureerd voor Azure Monitor-logboeken op de werk ruimten die door Security Center zijn gemaakt?
@@ -51,9 +51,9 @@ De agent verzamelt diverse beveiligings configuratie details en gebeurtenis logb
 
 Zorg ervoor dat op de computers een van de ondersteunde besturings systemen voor de agent wordt uitgevoerd, zoals wordt beschreven op de volgende pagina's:
 
-* [Log Analytics-agent voor door Windows ondersteunde besturings systemen](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [Log Analytics-agent voor door Windows ondersteunde besturings systemen](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-* [Besturings systemen die worden ondersteund door Log Analytics-agent voor Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [Besturings systemen die worden ondersteund door Log Analytics-agent voor Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 Meer informatie over de [gegevens die worden verzameld door de log Analytics-agent](security-center-enable-data-collection.md).
 

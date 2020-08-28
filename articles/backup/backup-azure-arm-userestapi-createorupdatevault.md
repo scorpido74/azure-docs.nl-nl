@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over het beheren van back-up-en h
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757248"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012599"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-kluis maken met behulp van REST API
 
-De stappen voor het maken van een Azure Recovery Services kluis met behulp van REST API worden beschreven in de documentatie voor het [maken van kluis rest API](/rest/api/recoveryservices/vaults/createorupdate) . Laat ons dit document gebruiken als referentie voor het maken van een kluis met de naam ' testVault ' in ' vs-West '.
+De stappen voor het maken van een Azure Recovery Services kluis met behulp van REST API worden beschreven in de documentatie voor het [maken van kluis rest API](/rest/api/recoveryservices/vaults/createorupdate) . We gebruiken dit document als een verwijzing om een kluis te maken met de naam ' testVault ' in ' vs-West '.
 
 Als u een Azure Recovery Services kluis wilt maken of bijwerken, gebruikt u de volgende *put* -bewerking.
 

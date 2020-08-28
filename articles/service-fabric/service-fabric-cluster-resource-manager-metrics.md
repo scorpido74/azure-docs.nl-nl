@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451998"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005646"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Resource gebruik beheren en laden in Service Fabric met metrische gegevens
 *Metrische gegevens* zijn de resources die door uw services worden aangehouden en die worden geboden door de knoop punten in het cluster. Een metriek is alles wat u wilt beheren om de prestaties van uw services te verbeteren of te controleren. U kunt bijvoorbeeld het geheugen verbruik bekijken om te weten of uw service overbelast is. Een ander gebruik is om te bepalen of de service elders kan worden verplaatst, waarbij geheugen minder beperkt is om betere prestaties te krijgen.
@@ -18,7 +19,7 @@ ms.locfileid: "75451998"
 Dingen zoals geheugen, schijf en CPU-gebruik zijn voor beelden van metrische gegevens. Deze metrische gegevens zijn fysieke metrische gegevens, resources die overeenkomen met fysieke resources op het knoop punt dat moet worden beheerd. Metrische gegevens kunnen ook worden (en meestal) logische metrische gegevens. Logische metrische gegevens zijn dingen zoals "MyWorkQueueDepth" of "MessagesToProcess" of "TotalRecords". Logische metrische gegevens worden door de toepassing gedefinieerd en komen indirect overeen met een fysiek Resource verbruik. Logische metrische gegevens zijn gebruikelijk omdat het lastig is om het verbruik van fysieke resources per service te meten en te rapporteren. De complexiteit van het meten en rapporteren van uw eigen fysieke metrische gegevens is ook waarom Service Fabric een aantal standaard metrische gegevens biedt.
 
 ## <a name="default-metrics"></a>Standaard waarden
-Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw service. Op dit moment weet u niet welke fysieke of logische resources er worden gebruikt. Dat is prima. De Service Fabric cluster resource manager maakt gebruik van enkele standaard waarden wanneer er geen andere metrieken zijn opgegeven. Dit zijn:
+Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw service. Op dit moment weet u niet welke fysieke of logische resources er worden gebruikt. Dat is prima. De Service Fabric cluster resource manager maakt gebruik van enkele standaard waarden wanneer er geen andere metrieken zijn opgegeven. Dat zijn:
 
   - PrimaryCount: aantal primaire replica's op het knoop punt 
   - ReplicaCount-telling van de totale stateful replica's op het knoop punt
@@ -27,13 +28,13 @@ Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw servi
 | Gegevens | Stateless instantie laden | Stateful secundaire belasting | Stateful primaire belasting | Gewicht |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Hoog |
-| ReplicaCount |0 |1 |1 |Normaal |
-| Count |1 |1 |1 |Laag |
+| ReplicaCount |0 |1 |1 |Middelgroot |
+| Aantal |1 |1 |1 |Laag |
 
 
 Voor basis werkbelastingen bieden de standaard metrische gegevens een goede verdeling van het werk in het cluster. In het volgende voor beeld zien we wat er gebeurt wanneer we twee services maken en afhankelijk zijn van de standaard waarden voor de taak verdeling. De eerste service is een stateful service met drie partities en de grootte van de doel replica is ingesteld op drie. De tweede service is een stateless service met één partitie en een aantal exemplaren van drie.
 
-Dit zijn de onderdelen:
+Dit is het resultaat:
 
 <center>
 
@@ -134,7 +135,7 @@ Als herinnering: als u alleen de standaard metrische gegevens wilt gebruiken, ho
 
 Nu gaan we elk van deze instellingen uitvoeriger bekijken en praten over het gedrag dat het beïnvloedt.
 
-## <a name="load"></a>Belasting
+## <a name="load"></a>Laden
 Het hele punt voor het definiëren van metrische gegevens is dat sommige werk belasting aangeeft. *Laden* is het gedeelte van een bepaalde metriek dat door een service-exemplaar of replica op een bepaald knoop punt wordt verbruikt. De belasting kan op bijna elk gewenst moment worden geconfigureerd. Bijvoorbeeld:
 
   - De belasting kan worden gedefinieerd wanneer een service wordt gemaakt. Dit wordt _standaard laden_genoemd.

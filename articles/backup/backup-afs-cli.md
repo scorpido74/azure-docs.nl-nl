@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares met Azure CLI
 description: Meer informatie over het gebruik van Azure CLI voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763216"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012021"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Back-ups maken van Azure-bestands shares met CLI
 
@@ -74,7 +74,7 @@ Name                                  ResourceGroup
 0caa93f4-460b-4328-ac1d-8293521dd928  azurefiles
 ```
 
-Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw **back-** upbewerking inschakelen. Als u de status van de taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die wordt gemaakt door de back-upservice voor uw **back-** upbewerking inschakelen. Als u de status van de taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
 
 ## <a name="trigger-an-on-demand-backup-for-file-share"></a>Een back-up op aanvraag voor de bestands share activeren
 
@@ -98,7 +98,7 @@ Name                                  ResourceGroup
 9f026b4f-295b-4fb8-aae0-4f058124cb12  azurefiles
 ```
 
-Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw back-upbewerking op aanvraag. Als u de status van een taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die wordt gemaakt door de back-upservice voor uw back-upbewerking op aanvraag. Als u de status van een taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
 
 ## <a name="next-steps"></a>Volgende stappen
 

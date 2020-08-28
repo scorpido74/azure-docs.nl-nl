@@ -3,12 +3,13 @@ title: Aanbevolen procedures voor het verbeteren van de prestaties met behulp va
 description: Hierin wordt beschreven hoe u Service Bus kunt gebruiken om de prestaties te optimaliseren bij het uitwisselen van brokered berichten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a81e6fa1c6097f46bbfa3016beb1b7780ad3c351
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2bd5a1598448722f46a91b889b0778e80ad4e140
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065298"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012055"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Best Practices voor prestatieverbeteringen met Service Bus Messaging
 
@@ -37,8 +38,8 @@ Er worden twee Azure Service Bus .NET-Sdk's ondersteund. De Api's zijn vergelijk
 
 | NuGet-pakket | Primaire naam ruimte (n) | Minimum platform (en) | Protocol(len) |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Micro soft. Azure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Universeel Windows-platform 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Micro soft. Azure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Universeel Windows-platform 10.0.16299 | AMQP<br>HTTP |
+| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 Zie [.net-implementatie ondersteuning](/dotnet/standard/net-standard#net-implementation-support)voor meer informatie over minimale .NET Standard-platform ondersteuning.
 

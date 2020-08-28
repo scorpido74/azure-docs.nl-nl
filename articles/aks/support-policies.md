@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050686"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012344"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -20,7 +20,7 @@ In dit artikel vindt u informatie over het technische ondersteunings beleid en d
 ## <a name="service-updates-and-releases"></a>Service-updates en-releases
 
 * Zie [AKS Release Notes](https://github.com/Azure/AKS/releases)(Engelstalig) voor informatie over de release.
-* Zie [AKS preview-functies en gerelateerde projecten](https://github.com/Azure/AKS/blob/master/previews.md)voor meer informatie over de functies van de preview-versie.
+* Zie [AKS preview-functies en gerelateerde projecten](https://awesomeopensource.com/projects/aks?categoryPage=11)voor meer informatie over de functies van de preview-versie.
 
 ## <a name="managed-features-in-aks"></a>Beheerde functies in AKS
 
@@ -140,7 +140,7 @@ Hoewel klanten zich kunnen aanmelden bij en wijzigen van worker-knoop punten, wo
 Als beheerde service heeft AKS specifieke netwerk-en connectiviteits vereisten. Deze vereisten zijn minder flexibel dan vereisten voor normale IaaS-onderdelen. In AKS, zoals het aanpassen van NSG-regels, het blok keren van een specifieke poort (bijvoorbeeld het gebruik van firewall regels die de uitgaande poort 443 blok keren), en het toevoegen van Url's aan een acceptatie lijst, kan uw cluster niet meer worden ondersteund.
 
 > [!NOTE]
-> Op dit moment kunt u geen uitgaand verkeer van het cluster volledig vergren delen met AKS. Zie limiet voor uitgaand [verkeer beperken](limit-egress-traffic.md)voor het beheren van de lijst met url's en poorten die door uw cluster kunnen worden gebruikt voor het uitgaande verkeer.
+> Op dit moment kunt u geen uitgaand verkeer van het cluster volledig vergren delen met AKS. Zie limiet voor uitgaand  [verkeer beperken](limit-egress-traffic.md)voor het beheren van de lijst met url's en poorten die door uw cluster kunnen worden gebruikt voor het uitgaande verkeer.
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Niet-ondersteunde alpha-en bèta Kubernetes-functies
 
@@ -149,7 +149,7 @@ AKS ondersteunt alleen stabiele functies in het upstream Kubernetes-project. Ten
 In twee scenario's kunnen alpha-of bèta-functies worden uitgesteld voordat ze algemeen beschikbaar zijn:
 
 * Klanten hebben voldaan aan het AKS-product, de ondersteunings-of engineering teams en zijn gevraagd deze nieuwe functies uit te proberen.
-* Deze functies zijn [ingeschakeld door een functie vlag](https://github.com/Azure/AKS/blob/master/previews.md). Klanten moeten zich expliciet aanmelden om deze functies te gebruiken.
+* Deze functies zijn [ingeschakeld door een functie vlag](https://awesomeopensource.com/projects/aks?categoryPage=11). Klanten moeten zich expliciet aanmelden om deze functies te gebruiken.
 
 ## <a name="preview-features-or-feature-flags"></a>Preview-functies of functie vlaggen
 

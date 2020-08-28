@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799278"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004898"
 ---
 # <a name="business-card-concepts"></a>Concepten van visitekaartjes
 
-Met een van de vooraf ontwikkelde modellen kan Azure Form Recognizer sleutel waardeparen analyseren en extra heren uit visite kaartjes. De Business Card-API combineert krachtige functies voor optische teken herkenning (OCR) met ons model voor visite kaartjes voor het extra heren van belang rijke informatie uit visite kaartjes in het Engels. Hiermee worden persoonlijke contact gegevens, bedrijfs naam, functie titel en meer opgehaald. De vooraf ontwikkelde Business Card-API is openbaar beschikbaar in de preview-versie van de formulier Recognizer v 2.1. 
+Met een van de vooraf ontwikkelde modellen van Azure Form Recognizer kunt u contact gegevens van visite kaartjes analyseren en ophalen. De Business Card-API combineert krachtige functies voor optische teken herkenning (OCR) met ons model voor visite kaartjes voor het extra heren van belang rijke informatie uit visite kaartjes in het Engels. Hiermee worden persoonlijke contact gegevens, bedrijfs naam, functie titel en meer opgehaald. De vooraf ontwikkelde Business Card-API is openbaar beschikbaar in de preview-versie van de formulier Recognizer v 2.1. 
 
 ## <a name="what-does-the-business-card-api-do"></a>Wat doet de Business Card API?
 
@@ -27,23 +27,24 @@ De Business Card-API extraheert belang rijke velden van visite kaartjes en retou
 
 ![Contoso-geitemde installatie kopie van FOTT + JSON-uitvoer](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>Geëxtraheerde velden: 
+### <a name="fields-extracted"></a>Geëxtraheerde velden:
+
 * Namen van contact personen 
-* Voornaam 
-* Achternaam 
+  * Voor namen
+  * Achternamen
 * Bedrijfs namen 
 * Afdelingen 
 * Taak titels 
 * E-mails 
 * Websites 
 * Adressen 
-* Telefoon nummers 
+* Telefoonnummers 
   * Mobiele telefoons 
   * Faxberichten 
   * Werk telefoons 
   * Andere telefoons 
 
-De Business Card-API retourneert ook alle herkende tekst van de visite kaart. Deze OCR-uitvoer is opgenomen in het JSON-antwoord.  
+De API voor het visite kaartje kan ook alle herkende tekst van de visite kaart retour neren. Deze OCR-uitvoer is opgenomen in het JSON-antwoord.  
 
 ### <a name="input-requirements"></a>Invoer vereisten 
 
@@ -51,7 +52,7 @@ De Business Card-API retourneert ook alle herkende tekst van de visite kaart. De
 
 ## <a name="the-analyze-business-card-operation"></a>De bewerking visite kaartje analyseren
 
-De [kaart](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) voor het analyseren van een visite kaartje neemt een afbeelding of PDF van een visite kaartje als invoer en extraheert de waarden van interest en text. De aanroep retourneert een veld met een antwoord header met de naam `Operation-Location` . De `Operation-Location` waarde is een URL die de resultaat-id bevat die in de volgende stap moet worden gebruikt.
+De [kaart](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) voor het analyseren van een visite kaartje neemt een afbeelding of PDF van een visite kaartje als invoer en extraheert de gewenste waarden. De aanroep retourneert een veld met een antwoord header met de naam `Operation-Location` . De `Operation-Location` waarde is een URL die de resultaat-id bevat die in de volgende stap moet worden gebruikt.
 
 |Reactie header| Resultaten-URL |
 |:-----|:----|
@@ -63,18 +64,15 @@ De tweede stap bestaat uit het aanroepen van de [resultaat bewerking analyse van
 
 |Veld| Type | Mogelijke waarden |
 |:-----|:----:|:----|
-|status | tekenreeks | notStarted: de analyse bewerking is niet gestart. |
-| |  | uitvoeren: de analyse bewerking wordt uitgevoerd. |
-| |  | mislukt: de analyse bewerking is mislukt. |
-| |  | geslaagd: de analyse bewerking is voltooid. |
+|status | tekenreeks | notStarted: de analyse bewerking is niet gestart.<br /><br />uitvoeren: de analyse bewerking wordt uitgevoerd.<br /><br />mislukt: de analyse bewerking is mislukt.<br /><br />geslaagd: de analyse bewerking is voltooid.|
 
-Wanneer het veld **status** de waarde **geslaagd** heeft, bevat het JSON-antwoord de resultaten van de kaart en tekst herkenning. Het resultaat van het visite kaartje is ingedeeld als een woorden lijst met benoemde veld waarden, waarbij elke waarde de geëxtraheerde tekst, genormaliseerde waarde, het begrenzingsvak, betrouw baarheid en bijbehorende woord elementen bevat. Het resultaat van de tekst herkenning is ingedeeld als een hiërarchie van lijnen en woorden, met tekst, selectie kader en betrouwbaarheids informatie.
+Wanneer het veld **status** de waarde **geslaagd** heeft, bevat het JSON-antwoord de resultaten van de visite kaart en de optionele tekst herkenning, indien nodig. Het resultaat van het visite kaartje is ingedeeld als een woorden lijst met benoemde veld waarden, waarbij elke waarde de geëxtraheerde tekst, genormaliseerde waarde, het begrenzingsvak, betrouw baarheid en bijbehorende woord elementen bevat. Het resultaat van de tekst herkenning is ingedeeld als een hiërarchie van lijnen en woorden, met tekst, selectie kader en betrouwbaarheids informatie.
 
 ![voorbeeld uitvoer van visite kaartjes](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Voor beeld van JSON-uitvoer
 
-Zie het volgende voor beeld van een geslaagde JSON-reactie: het knoop punt ' readResults ' bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knoop punt ' documentResults ' bevat de bedrijfsspecifieke waarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de voor naam, achternaam, bedrijfs naam en nog veel meer.
+Zie het volgende voor beeld van een geslaagde JSON-reactie: het knoop punt ' readResults ' bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knoop punt ' documentResults ' bevat de bedrijfsspecifieke waarden die het model heeft gedetecteerd. Hier vindt u nuttige contact gegevens, zoals de voor naam, achternaam, bedrijfs naam en nog veel meer.
 
 ```json
 {
@@ -394,5 +392,4 @@ De Business Card-API voorziet ook in de [verwerkings functie voor AIBuilder-bedr
 - Volg de Snelstartgids om aan de slag te gaan met de [Snelstartgids voor Business Cards API python](./quickstarts/python-business-cards.md)
 - Meer informatie over de [rest API voor formulier herkenning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - Meer informatie over de [formulier herkenning](overview.md)
-
 

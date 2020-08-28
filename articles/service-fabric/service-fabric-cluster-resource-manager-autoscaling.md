@@ -5,12 +5,13 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793088"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005510"
 ---
 # <a name="introduction-to-auto-scaling"></a>Inleiding tot automatisch schalen
 Automatisch schalen is een extra mogelijkheid van Service Fabric om uw services dynamisch te schalen op basis van de belasting die door de Services wordt gerapporteerd of op basis van het gebruik van resources. Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten van aanvullende instanties of partities van uw service op aanvraag mogelijk. Het volledige automatische schaal proces is geautomatiseerd en transparant en wanneer u uw beleid hebt ingesteld voor een service, hoeft u geen hand matige schaal bewerkingen op service niveau uit te stellen. Automatisch schalen kan worden ingeschakeld op het moment dat de service wordt gemaakt, of op elk gewenst moment door de service bij te werken.

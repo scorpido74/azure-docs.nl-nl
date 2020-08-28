@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509838"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012378"
 ---
 # <a name="use-the-session-management-rest-api"></a>De REST API voor sessiebeheer gebruiken
 
@@ -117,7 +117,14 @@ Het antwoord van de bovenstaande aanvraag bevat een **SessionID**, die u nodig h
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>Een sessie bijwerken
+## <a name="modify-and-query-session-properties"></a>Sessie-eigenschappen wijzigen en opvragen
+
+Er zijn enkele opdrachten om de para meters van bestaande sessies op te vragen of te wijzigen.
+
+> [!CAUTION]
+Net als bij alle REST-aanroepen wordt het verzenden van deze opdrachten te vaak vertraagd en wordt de server uiteindelijk niet meer geretourneerd. De status code in dit geval is 429 ("te veel aanvragen"). Als vuist regel moet er een vertraging van **5-10 seconden tussen de volgende aanroepen**optreden.
+
+### <a name="update-session-parameters"></a>Sessie parameters bijwerken
 
 Met deze opdracht worden de para meters van een sessie bijgewerkt. Op dit moment kunt u alleen de lease tijd van een sessie verlengen.
 
@@ -138,7 +145,7 @@ Met deze opdracht worden de para meters van een sessie bijgewerkt. Op dit moment
 |-----------|:-----------|:-----------|
 | 200 | | Geslaagd |
 
-### <a name="example-script-update-a-session"></a>Voorbeeld script: een sessie bijwerken
+#### <a name="example-script-update-a-session"></a>Voorbeeld script: een sessie bijwerken
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,7 +167,7 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Actieve sessies ophalen
+### <a name="get-active-sessions"></a>Actieve sessies ophalen
 
 Met deze opdracht wordt een lijst met actieve sessies geretourneerd.
 
@@ -174,7 +181,7 @@ Met deze opdracht wordt een lijst met actieve sessies geretourneerd.
 |-----------|:-----------|:-----------|
 | 200 | -sessies: matrix van sessie-eigenschappen | Zie de sectie ' sessie-eigenschappen ophalen ' voor een beschrijving van de sessie-eigenschappen |
 
-### <a name="example-script-query-active-sessions"></a>Voorbeeld script: actieve sessies opvragen
+#### <a name="example-script-query-active-sessions"></a>Voorbeeld script: actieve sessies opvragen
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,7 +210,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Eigenschappen van de sessie ophalen
+### <a name="get-sessions-properties"></a>Eigenschappen van de sessie ophalen
 
 Met deze opdracht wordt informatie over een sessie geretourneerd, zoals de hostnaam van de VM.
 
@@ -217,7 +224,7 @@ Met deze opdracht wordt informatie over een sessie geretourneerd, zoals de hostn
 |-----------|:-----------|:-----------|
 | 200 | -bericht: teken reeks<br/>-sessionElapsedTime: time span<br/>-sessionHostname: teken reeks<br/>-sessionId: teken reeks<br/>-sessionMaxLeaseTime: time span<br/>-sessionSize: Enum<br/>-sessionStatus: Enum | inventarisatie van sessionStatus {starten, gereed, stoppen, gestopt, verlopen, fout}<br/>Als de status ' fout ' of ' verlopen ' is, bevat het bericht meer informatie |
 
-### <a name="example-script-get-session-properties"></a>Voorbeeld script: sessie-eigenschappen ophalen
+#### <a name="example-script-get-session-properties"></a>Voorbeeld script: sessie-eigenschappen ophalen
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }

@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515659"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022459"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Bestandssysteem bewerkingen op Data Lake Storage Gen1 met behulp van de .NET SDK
 
@@ -48,8 +49,8 @@ Dit codevoorbeeld beschikbaar [in GitHub](https://github.com/Azure-Samples/data-
    1. Controleer op het tabblad **NuGet package manager** of de **pakket bron** is ingesteld op **nuget.org**. Zorg er ook voor dat het selectie vakje **include Prerelease** is ingeschakeld.
    1. Zoek en installeer de volgende NuGet-pakketten:
 
-      * `Microsoft.Azure.DataLake.Store`-In dit artikel wordt gebruikgemaakt van v 1.0.0.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`-In dit artikel wordt v 2.3.1 gebruikt.
+      * `Microsoft.Azure.DataLake.Store` -In dit artikel wordt gebruikgemaakt van v 1.0.0.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -In dit artikel wordt v 2.3.1 gebruikt.
 
       Sluit **NuGet package manager**.
 
@@ -198,7 +199,7 @@ Hier volgen enkele voor beelden die laten zien hoe u de Data Lake Storage Gen1 b
 * [Basis voorbeeld op GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Geavanceerd voor beeld op GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Naslag informatie over Data Lake Storage Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)

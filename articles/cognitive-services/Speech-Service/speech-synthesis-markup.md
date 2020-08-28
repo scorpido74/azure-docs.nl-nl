@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 069e0f2d14dafe0de208ac69d2d652361a11ee34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934511"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012429"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -192,33 +192,38 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > De aanpassing van gesp roken stijlen werkt alleen met Neural stemmen.
 
-Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behulp van een neutrale spreek stijl voor de standaard-en Neural stemmen. Met Neural stemmen kunt u de spreek stijl aanpassen aan een snelle andere emoties, zoals cheerfulness, empathie en rustig, of de stem optimaliseren voor verschillende scenario's zoals aangepaste service, newscasting en Voice Assistant, met behulp van het-  `mstts:express-as`   element. Dit is een optioneel element dat uniek is voor de spraak service.
+Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behulp van een neutrale spreek stijl voor de standaard-en Neural stemmen. Met Neural stemmen kunt u de spreek stijl aanpassen aan een snelle andere emoties, zoals cheerfulness, empathie en rustig, of de stem optimaliseren voor verschillende scenario's zoals klanten service, newscasting en Voice Assistant, met behulp van het- `mstts:express-as` element. Dit is een optioneel element dat uniek is voor de spraak service.
 
 Op dit moment worden de volgende Neural stemmen ondersteund:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
-Wijzigingen worden toegepast op het niveau van de zin en de stijl varieert per stem. Als een stijl niet wordt ondersteund, retourneert de service spraak in de standaard stijl voor neutrale gesp roken tekst.
+Wijzigingen worden toegepast op het niveau van de zin en stijlen variëren per stem. Als een stijl niet wordt ondersteund, retourneert de service spraak in de standaard stijl voor neutrale gesp roken tekst. U kunt een query uitvoeren voor de stijlen die worden ondersteund voor elke stem via de [Voice List-API](rest-text-to-speech.md#get-a-list-of-voices).
+
+Voor Chinees spraak XiaoxiaoNeural kan de intensiteit van de stijl van de spraak verder worden gewijzigd om beter te voldoen aan uw use-case. U kunt een sterker of zachtere stijl opgeven `styledegree` om de spraak herkenning duidelijker of gematigd te maken.
 
 **Syntaxis**
 
 ```xml
-<mstts:express-as style="string"></mstts:express-as>
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+> [!NOTE]
+> Op het moment `styledegree` ondersteunt alleen XiaoxiaoNeural. 
 
 **Kenmerken**
 
 | Kenmerk | Beschrijving | Vereist/optioneel |
 |-----------|-------------|---------------------|
 | `style` | Geeft de spreek stijl aan. Op dit moment zijn gesp roken stijlen specifiek voor spraak. | Vereist bij het aanpassen van de spreek stijl voor een Neural-stem. Als u gebruikt `mstts:express-as` , moet de stijl worden gegeven. Als er een ongeldige waarde wordt gegeven, wordt dit element genegeerd. |
+| `styledegree` | Geeft de intensiteit van de stijl van de spraak aan. **Geaccepteerde waarden**: 0,01 tot en met 2. De standaard waarde is 1, wat de vooraf gedefinieerde stijl intensiteit aangeeft. De minimale eenheid is 0,01, wat leidt tot een enigszins tendens van de doel stijl. Een waarde van 2 resulteert in een verdubbeling van de standaard stijl intensiteit.  | Optioneel (op het moment wordt `styledegree` alleen XiaoxiaoNeural ondersteund.)|
 
 Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor elke Neural-stem.
 
 | Spraak                   | Stijl                     | Beschrijving                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | Een formele, vertrouwende en bindende Toon voor nieuws levering|
-|                         | `style="newscast-casual"` | Een veelzijdige en inform-Toon voor algemene nieuws levering       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | Een formele, vertrouwende en bindende Toon voor nieuws levering |
+|                         | `style="newscast-casual"` | Een veelzijdige en informe Toon voor algemene nieuws levering        |
 |                         | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  |
 |                         | `style="chat"`            | Een informe en een ongeforceerde Toon                         |
 |                         | `style="cheerful"`        | Een positieve en fijne Toon                         |
@@ -226,6 +231,15 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Een formele en professionele Toon voor gesp roken nieuws |
 |                         | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  |
 |                         | `style="assistant"`       | Een warme en beperkte Toon voor digitale assistenten    |
+|                         | `style="chat"`            | Een ongepaarde Toon voor Chit-Chat           |
+|                         | `style="calm"`            | Een fraaie, verzamelde en opgebouwde stand voor het praten. Tint, Pitch, prosody is veel meer uniform vergeleken met andere soorten spraak.                                |
+|                         | `style="cheerful"`        | Een opvallende en enthousiaste Toon, met hogere Pitch-en gespreks energie                         |
+|                         | `style="sad"`             | Hiermee wordt een Sorrowful-Toon met hogere hoogte, minder intensiteit en lagere vocaal-energie. Algemene indica toren van deze Emotion worden whimpers of huilend tijdens de spraak.            |
+|                         | `style="angry"`           | Hiermee wordt een boos en geergerte Toon, met een lagere hoogte, hogere intensiteit en hogere stem-energie. De spreker heeft de status Irate, gereageerd en is niet in orde.       |
+|                         | `style="fearful"`         | Een Scared-en zenuw Toon, met een hogere hoogte, hogere vocaal-energie en een snellere snelheid. De spreker heeft de status tenseness en Uneasiness.                          |
+|                         | `style="disgruntled"`     | Een disdainful-en-klagende Toon. De spraak van deze Emotion toont het aantal plezier en de bewaarde.              |
+|                         | `style="serious"`         | Hiermee wordt een strikte en een inschakeling van een Toon. De spreker klinkt vaak stijfer en veel minder geforceerd met uitgebracht.          | |                         | `style="affectionate"`    | Een warme en affectionate Toon, met hogere Toon-en gesprek energie. De spreker heeft de status van het aantrekken van de aandacht van de listener. De ' persoonlijkheid ' van de spreker is vaak endearing.          |     
+|                         | `style="gentle"`          | Hiermee wordt een milde, versterkte en prettige Toon, met lagere Toon hoogte en vocaal-energie         |   
 |                         | `style="lyrical"`         | Drukt op emoties op een melodic-en Sentimental manier         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  | 
 
@@ -239,6 +253,18 @@ Dit SSML-fragment laat zien hoe het `<mstts:express-as>` element wordt gebruikt 
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+Dit SSML-fragment laat zien hoe het `styledegree` kenmerk wordt gebruikt om de intensiteit van de spreek stijl voor XiaoxiaoNeural te wijzigen.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
         </mstts:express-as>
     </voice>
 </speak>

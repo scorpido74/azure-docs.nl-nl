@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509277"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014588"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -34,6 +34,14 @@ Zorg ervoor dat de firewalls (op het apparaat, binnen routers, enzovoort) niet d
 Controleer of uw GPU hardware-video-decodering ondersteunt. Zie [ontwikkel-PC](../overview/system-requirements.md#development-pc).
 
 Als u werkt met een laptop met twee Gpu's, is het mogelijk dat de GPU waarop u uitvoert standaard niet de functionaliteit voor het decoderen van hardware-video biedt. Als dit het geval is, probeert u uw app te dwingen de andere GPU te gebruiken. Dit is vaak mogelijk in de instellingen van het GPU-stuur programma.
+
+## <a name="retrieve-sessionconversion-status-fails"></a>Status van ophalen van sessie/conversie mislukt
+
+Het te vaak verzenden van REST API opdrachten leidt ertoe dat de server uiteindelijk kan worden vertraagd en geretourneerd. De HTTP-status code in de beperkings case is 429 ("te veel aanvragen"). Als vuist regel moet er een vertraging van **5-10 seconden tussen de volgende aanroepen**optreden.
+
+Houd er rekening mee dat deze limiet niet alleen van invloed is op de REST API-aanroepen wanneer deze rechtstreeks worden aangeroepen, maar ook de bijbehorende C#/C + +-equivalenten, zoals `Session.GetPropertiesAsync` , `Session.RenewAsync` of `Frontend.GetAssetConversionStatusAsync` .
+
+Als u beperkingen aan de server zijde ondervindt, wijzigt u de code zodat de aanroepen minder vaak worden uitgevoerd. De server zal de vertragings status elke minuut opnieuw instellen, zodat de code na een minuut veilig kan worden uitgevoerd.
 
 ## <a name="h265-codec-not-available"></a>De H265-codec is niet beschikbaar
 

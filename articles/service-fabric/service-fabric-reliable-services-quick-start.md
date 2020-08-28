@@ -3,13 +3,13 @@ title: 'Uw eerste Service Fabric-toepassing maken in C #'
 description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toepassing met stateless en stateful Services.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: sfrev
-ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: sfrev, devx-track-csharp
+ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260483"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012735"
 ---
 # <a name="get-started-with-reliable-services"></a>Aan de slag met Reliable Services
 
@@ -103,7 +103,7 @@ Het platform roept deze methode aan wanneer een exemplaar van een service wordt 
 
 Deze indeling wordt beheerd door het systeem om ervoor te zorgen dat uw service Maxi maal beschikbaar is en op de juiste wijze is gebalanceerd.
 
-`RunAsync()`moet synchroon niet worden geblokkeerd. Uw implementatie van RunAsync moet een taak retour neren of wachten op een langlopende of blokkerende bewerking zodat de runtime kan door gaan. In de `while(true)` lus in het vorige voor beeld wordt een taak geretourneerd `await Task.Delay()` gebruikt. Als uw werk belasting synchroon moet worden geblokkeerd, moet u een nieuwe taak plannen `Task.Run()` in uw `RunAsync` implementatie.
+`RunAsync()` moet synchroon niet worden geblokkeerd. Uw implementatie van RunAsync moet een taak retour neren of wachten op een langlopende of blokkerende bewerking zodat de runtime kan door gaan. In de `while(true)` lus in het vorige voor beeld wordt een taak geretourneerd `await Task.Delay()` gebruikt. Als uw werk belasting synchroon moet worden geblokkeerd, moet u een nieuwe taak plannen `Task.Run()` in uw `RunAsync` implementatie.
 
 Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht totdat de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt ooien en `RunAsync()` zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd.
 
@@ -161,7 +161,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()`werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()` . Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
+`RunAsync()` werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()` . Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouw bare verzamelingen en de betrouw bare status Manager
 

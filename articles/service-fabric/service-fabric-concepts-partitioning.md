@@ -3,12 +3,13 @@ title: Service Fabric Services partitioneren
 description: Hierin wordt beschreven hoe u Service Fabric stateful-Services partitioneert. Partities maken gegevens opslag mogelijk op de lokale computers, zodat de gegevens en reken kracht samen kunnen worden geschaald.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045413"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005425"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitioneren van Service Fabric-betrouwbare services
 Dit artikel bevat een inleiding tot de basis concepten van het partitioneren van Azure Service Fabric reliable Services. De bron code die in het artikel wordt gebruikt, is ook beschikbaar op [github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -224,7 +225,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     }
     ```
    
-    `ProcessInternalRequest`Hiermee worden de waarden van de query teken reeks parameter voor het aanroepen van de partitie en aanroepen `AddUserAsync` om de LastName toe te voegen aan de betrouw bare woorden lijst gelezen `dictionary` .
+    `ProcessInternalRequest` Hiermee worden de waarden van de query teken reeks parameter voor het aanroepen van de partitie en aanroepen `AddUserAsync` om de LastName toe te voegen aan de betrouw bare woorden lijst gelezen `dictionary` .
 10. We gaan een stateless service toevoegen aan het project om te zien hoe u een bepaalde partitie kunt aanroepen.
     
     Deze service fungeert als een eenvoudige webinterface die de para meter LastName als een query teken reeks parameter accepteert, bepaalt de partitie sleutel en verzendt deze naar de alfabet. processing-service voor verwerking.
@@ -307,7 +308,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     ```
     
     Houd er rekening mee dat we voor dit voor beeld 26 partities met één partitie sleutel per partitie gebruiken.
-    Vervolgens verkrijgen we de service partitie `partition` voor deze sleutel met behulp van de `ResolveAsync` methode voor het `servicePartitionResolver` object. `servicePartitionResolver`is gedefinieerd als
+    Vervolgens verkrijgen we de service partitie `partition` voor deze sleutel met behulp van de `ResolveAsync` methode voor het `servicePartitionResolver` object. `servicePartitionResolver` is gedefinieerd als
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
