@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023259"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012192"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
 
@@ -242,7 +242,7 @@ Bijvoorbeeld:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`heeft een waarde van de aangevraagde sleutel. U kunt gebruiken `AlternativeMediaId` Als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. `AlternativeMediaId`Kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
+`ContentKeyId` heeft een waarde van de aangevraagde sleutel. U kunt gebruiken `AlternativeMediaId` Als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. `AlternativeMediaId`Kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
 
 Zie [streaming-beleid-maken](/rest/api/media/streamingpolicies/create)voor rest-voor beelden die gebruikmaken van url's voor aangepaste licentie/sleutel overname.
 

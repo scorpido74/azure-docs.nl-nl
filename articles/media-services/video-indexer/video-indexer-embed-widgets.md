@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-javascript
-ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414017"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011800"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgets insluiten in uw apps
 
@@ -34,10 +34,10 @@ De widget Inzichten bevat alle visuele inzichten die tijdens het indexeringsproc
 |---|---|---|
 |`widgets` | Tekenreeksen gescheiden door komma's | Hiermee kunt u de inzichten bepalen die u wilt weer geven.<br/>Voor beeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` alleen personen en tref woorden weer geven UI Insights.<br/>Beschik bare opties: personen, animatedCharacters, tref woorden, labels, gevoel, emoties, onderwerpen, keyframes, transcripten, OCR, sprekers, scènes en namedEntities.|
 |`controls`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de besturings elementen beheren die u wilt weer geven.<br/>Voor beeld: Hiermee wordt `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` alleen de zoek optie en de download knop weer gegeven.<br/>Beschik bare opties: zoeken, downloaden, voor instellingen en taal.|
-|`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>of`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>of `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Een korte taal code | Hiermee bepaalt u de taal van de gebruikers interface. De standaardwaarde is `en`. <br/>Bijvoorbeeld: `locale=de`.|
 |`tab` | Het standaard geselecteerde tabblad | Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/>Voor beeld: Hiermee wordt `tab=timeline` de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial` is de standaard waarde voor de `location` para meter.| 
 
 ### <a name="player-widget"></a>Widget Speler
 
@@ -51,7 +51,7 @@ U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve 
 |`type`| | Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Bijvoorbeeld: `type=audio`. |
 |`autoplay` | Een Booleaanse waarde | Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaardwaarde is `true`.<br/> Bijvoorbeeld: `autoplay=false`. |
 |`language`/`locale` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`.|
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial` is de standaard waarde voor de `location` para meter.| 
 
 ### <a name="editor-widget"></a>Editor-widget
 
@@ -62,7 +62,7 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 |`accessToken`<sup>*</sup> | Tekenreeks | Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist de `accessToken` para meter. |
 |`language` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`. |
 |`locale` | Een korte taal code | Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Bijvoorbeeld: `language=de`. |
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial` is de standaard waarde voor de `location` para meter.| 
 
 <sup>*</sup>De eigenaar moet `accessToken` voorzichtig zijn.
 
@@ -70,7 +70,7 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 
 In deze sectie wordt beschreven hoe u de open bare en persoonlijke inhoud insluit in apps.
 
-De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial` is de standaard waarde voor de `location` para meter. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Het delen van een koppeling voor de **Media Player** of **Insights** -widget bevat het toegangs token en verleen de alleen-lezen machtigingen voor uw account.
@@ -102,6 +102,17 @@ Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object 
 De widget cognitieve Insights kan communiceren met een video in uw app. In deze sectie wordt beschreven hoe u deze interactie bereikt.
 
 ![Video Indexer van cognitieve Insights-widget](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+
+### <a name="flow-overview"></a>Stroom overzicht
+
+Wanneer u de transcripten bewerkt, treedt de volgende stroom op:
+
+1. U bewerkt de transcriptie in de tijd lijn.
+1. Video Indexer haalt deze updates op en slaat ze op in de [afschriften van transcripten](customize-language-model-with-website.md#customize-language-models-by-correcting-transcripts) in het taal model.
+1. De bijschriften worden bijgewerkt:
+
+    * Als u de Windows Media Player-widget Video Indexer gebruikt, wordt deze automatisch bijgewerkt.
+    * Als u een externe speler gebruikt, ontvangt u een nieuwe bijschriften bestand gebruiker de **ondertitelings gesprek video ophalen** .
 
 ### <a name="cross-origin-communications"></a>Communicatie van verschillende bronnen
 

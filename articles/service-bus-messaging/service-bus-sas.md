@@ -3,12 +3,13 @@ title: Toegangs beheer Azure Service Bus met hand tekeningen voor gedeelde toega
 description: Overzicht van Service Bus toegangs beheer met behulp van hand tekeningen voor gedeelde toegang, Details over SAS-autorisatie met Azure Service Bus.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066182"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012072"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -67,9 +68,9 @@ Elke client die toegang heeft tot de naam van een verificatie regel naam en een 
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**-Token verloop datum direct. Geheel getal dat seconden weergeeft sinds de epoche `00:00:00 UTC` op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt.
-* **`skn`**-De naam van de autorisatie regel.
-* **`sr`**-De URI van de bron waartoe toegang wordt verkregen.
+* **`se`** -Token verloop datum direct. Geheel getal dat seconden weergeeft sinds de epoche `00:00:00 UTC` op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt.
+* **`skn`** -De naam van de autorisatie regel.
+* **`sr`** -De URI van de bron waartoe toegang wordt verkregen.
 * **`sig`** Ondertekening.
 
 De `signature-string` is de SHA-256-Hash berekend op basis van de resource-URI (**bereik** zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop, gescheiden door LF.
@@ -276,7 +277,7 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | De status ophalen die is gekoppeld aan een berichten wachtrij sessie |Luisteren |Een geldig wachtrij adres |
 | De status van een berichten wachtrij sessie instellen |Luisteren |Een geldig wachtrij adres |
 | Een bericht plannen voor latere levering; bijvoorbeeld, [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Luisteren | Een geldig wachtrij adres
-| **Onderwerp** | | |
+| **Thematische** | | |
 | Een onderwerp maken |Beheren |Elk naam ruimte adres |
 | Een onderwerp verwijderen |Beheren |Een geldig onderwerp-adres |
 | Onderwerpen opsommen |Beheren |/$Resources/topics |

@@ -5,12 +5,13 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256302"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012650"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Aangepaste Service Fabric status rapporten toevoegen
 Azure Service Fabric introduceert een [status model](service-fabric-health-introduction.md) dat is ontworpen voor het markeren van slechte cluster-en toepassings voorwaarden voor specifieke entiteiten. Het status model gebruikt **status rapporten** (systeem onderdelen en watchdog). Het doel is eenvoudig en snel te diagnosticeren en te herstellen. Service schrijvers moeten vooraf denken over de status. Elke voor waarde die de status van invloed kan hebben, moet worden gerapporteerd op, met name als het kan helpen om problemen in de buurt van de hoofdmap te markeren. De status informatie kan tijd en moeite besparen bij fout opsporing en onderzoek. Het nut is vooral duidelijk wanneer de service op schaal wordt uitgevoerd in de Cloud (privé of Azure).

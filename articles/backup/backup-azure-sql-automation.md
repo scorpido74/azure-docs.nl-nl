@@ -4,12 +4,12 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892419"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004983"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -321,7 +321,7 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-De bovenstaande uitvoer betekent dat u kunt herstellen naar een wille keurig tijdstip tussen de weer gegeven start tijd en eind tijd. De tijden zijn UTC. Maak een wille keurig tijdstip in Power shell dat zich binnen het hierboven weer gegeven bereik bevindt.
+De bovenstaande uitvoer betekent dat u kunt herstellen naar een wille keurig tijdstip tussen de weer gegeven start tijd en eind tijd. De tijden zijn UTC. Maak een wille keurig tijdstip in Power shell dat zich binnen het hierboven vermelde bereik bevindt.
 
 > [!NOTE]
 > Wanneer er een logboek punt-in-time is geselecteerd voor herstellen, hoeft u het begin punt niet op te geven, dat wil zeggen, de volledige back-up van waaruit de data base is hersteld. Azure Backup-service zorgt voor het hele herstel plan, dat wil zeggen, welke volledige back-up moet worden gekozen, welke logboek back-ups moeten worden toegepast, enzovoort.

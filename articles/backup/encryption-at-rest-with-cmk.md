@@ -3,12 +3,12 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892640"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022408"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
@@ -242,7 +242,7 @@ Nee, CMK-versleuteling kan alleen worden ingeschakeld voor nieuwe kluizen. De kl
 
 Nee, de kluis mag geen pogingen hebben gedaan om de items in het verleden te beveiligen.
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Ik heb een kluis die gebruikmaakt van CMK-versleuteling. Kan ik later teruggaan naar versleuteling met behulp van door het platform beheerde sleutels, zelfs als er back-upitems zijn die zijn beveiligd met de kluis?
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Ik heb een kluis die gebruikmaakt van CMK-versleuteling. Kan ik later teruggaan naar versleuteling met behulp van door het platform beheerde sleutels, zelfs als er back-upitems zijn die zijn beveiligd met de kluis?
 
 Nee, wanneer u CMK-versleuteling hebt ingeschakeld, kan het niet worden hersteld voor het gebruik van door het platform beheerde sleutels. U kunt de sleutels die op basis van uw vereisten worden gebruikt, wijzigen.
 

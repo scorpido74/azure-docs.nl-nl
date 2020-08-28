@@ -7,12 +7,13 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a4d8a919d1881f61e490f135cc8fb1659c64cbd3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871119"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014044"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Problemen vaststellen en oplossen Azure Cosmos DB bericht ' aanvraag header te groot '
 Het bericht ' aanvraag header te groot ' wordt gegenereerd met een HTTP-fout code 400. Deze fout treedt op als de grootte van de aanvraag header zo groot is geworden dat deze de Maxi maal toegestane grootte overschrijdt. U wordt aangeraden de meest recente versie van de SDK te gebruiken. Gebruik ten minste versie 3. x of 2. x, omdat deze versies het traceren van de header grootte aan het uitzonderings bericht toevoegen.

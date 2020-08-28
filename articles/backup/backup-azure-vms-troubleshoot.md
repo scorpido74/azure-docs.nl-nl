@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892334"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014655"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -29,9 +29,9 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
   * Zorg ervoor dat de andere back-upservice niet wordt uitgevoerd.
 * `Services.msc`Controleer of de **Windows Azure Guest agent** -service wordt **uitgevoerd**. Als de **Windows Azure Guest agent** -service ontbreekt, installeert u deze vanuit een back-up van [virtuele Azure-machines in een Recovery Services kluis](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 * In het **gebeurtenis logboek** kunnen back-upfouten worden weer gegeven die afkomstig zijn van andere back-upproducten, bijvoorbeeld Windows Server back-up, en niet door Azure backup. Gebruik de volgende stappen om te bepalen of het probleem met Azure Backup:
-  * Als er een fout is opgetreden bij een **back-upbewerking** in de gebeurtenis bron of het bericht, controleert u of de back-ups van de Azure IaaS VM zijn geslaagd en of er een herstel punt is gemaakt met het gewenste type moment opname.
+  * Als er een fout is opgetreden bij de **back-upbewerking** in de gebeurtenis bron of het bericht, controleert u of de back-ups van de Azure IaaS VM zijn geslaagd en of er een herstel punt is gemaakt met het gewenste type moment opname.
   * Als Azure Backup werkt, wordt het probleem waarschijnlijk veroorzaakt door een andere back-upoplossing.
-  * Hier volgt een voor beeld van een fout 517 van de gebeurtenis Viewer waarbij Azure Backup werkt, maar ' Windows Server Back-up ' is mislukt:<br>
+  * Hier volgt een voor beeld van een Logboeken fout 517 waarbij Azure Backup goed werkte, maar ' Windows Server Back-up ' is mislukt:<br>
     ![Windows Server Back-up mislukt](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Als Azure Backup is mislukt, zoekt u naar de bijbehorende fout code in de sectie veelvoorkomende fouten in VM-back-ups in dit artikel.
 

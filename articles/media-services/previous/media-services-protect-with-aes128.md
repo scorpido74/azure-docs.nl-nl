@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 143583cf11da7687ae99121a2893be1c54810add
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f9d86f979fb27052e7abec43bc94b95705f5ceb5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087351"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012939"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamische AES-128-versleuteling en de sleutelleveringsservice gebruiken
 > [!div class="op_single_selector"]
@@ -250,7 +251,7 @@ De volgende code laat zien hoe u een aanvraag verzendt naar de Media Services ke
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Hierbij
+### <a name="example"></a><a id="example"></a>Voorbeeld
 
 Overschrijf de code in uw Program.cs-bestand met de code die wordt weergegeven in deze sectie.
  

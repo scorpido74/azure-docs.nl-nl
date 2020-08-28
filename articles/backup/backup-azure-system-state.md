@@ -3,12 +3,12 @@ title: Back-up van Windows-systeem status maken in azure
 description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-computers naar Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824459"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013432"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 

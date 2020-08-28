@@ -5,12 +5,13 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 4f20c5180b078bc49fcf1eb35893325fa3a7fa50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: eeb2fd94e6b98bc9d89be22501406db9a8ba7773
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256149"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013160"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric status rapporten weer geven
 Azure Service Fabric introduceert een [status model](service-fabric-health-introduction.md) met status entiteiten waarop systeem onderdelen en watchdog lokale voor waarden kunnen rapporteren die ze controleren. De [Health Store](service-fabric-health-introduction.md#health-store) aggregeert alle statusgegevens om te bepalen of de entiteiten in orde zijn.

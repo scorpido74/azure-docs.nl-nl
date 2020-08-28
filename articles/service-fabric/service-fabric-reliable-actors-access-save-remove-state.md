@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e97fadb374fc45110f5071aab48da0a57eef4284
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645630"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012786"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors status openen, opslaan en verwijderen
 [Reliable actors](service-fabric-reliable-actors-introduction.md) zijn objecten met één thread die zowel de logica als de status kunnen inkapselen, en de status betrouwbaar kan onderhouden. Elk actor-exemplaar heeft een eigen [status Manager](service-fabric-reliable-actors-state-management.md): een gegevens structuur op basis van een woorden lijst die op betrouw bare wijze sleutel/waarde-paren opslaat. De status Manager is een wrapper rond een State-provider. U kunt deze gebruiken om gegevens op te slaan, ongeacht welke [persistentie-instelling](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) wordt gebruikt.

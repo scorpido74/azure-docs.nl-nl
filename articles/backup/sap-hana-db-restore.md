@@ -3,12 +3,12 @@ title: SAP HANA data bases herstellen op virtuele Azure-machines
 description: In dit artikel vindt u informatie over het herstellen van SAP HANA-data bases die worden uitgevoerd op Azure Virtual Machines.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763283"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006309"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA data bases herstellen op virtuele Azure-machines
 
@@ -28,7 +28,7 @@ Azure Backup kan SAP HANA-databases die op virtuele Azure-machines worden uitgev
 
 Let op het volgende voordat u een Data Base herstelt:
 
-* U kunt de database alleen herstellen naar een SAP HANA-exemplaar dat zich in dezelfde regio bevindt
+* U kunt de data base alleen herstellen naar een SAP HANA exemplaar dat zich in dezelfde regio bevindt
 
 * Het doelexemplaar moet zijn geregistreerd bij dezelfde kluis als de bron
 
@@ -138,7 +138,7 @@ Als u de back-upgegevens wilt herstellen als bestanden in plaats van een Data Ba
 
     * Back-upbestanden van database
     * Catalogusbestanden
-    * JSON-metagegevensbestanden (voor elk back-upbestand dat betrokken is)
+    * JSON-meta gegevensbestanden (voor elk van de betrokken back-upbestanden)
 
     Normaal gesproken maakt een netwerksharepad of pad van een gekoppelde Azure-bestandsshare indien opgegeven als doelpad toegang tot deze bestanden door andere computers in hetzelfde netwerk of met dezelfde Azure-bestandsshare die eraan is gekoppeld eenvoudiger.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661551"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013001"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -165,6 +165,30 @@ De API roept alle retour objecten op om modellen op te halen `ModelData` . `Mode
 De `RetrieveModelWithDependencies` aanroep retourneert niet alleen het aangevraagde model, maar ook alle modellen waarvan het aangevraagde model afhankelijk is.
 
 Modellen zijn niet per se geretourneerd in het document formulier waarin ze zijn geüpload. Azure Digital Apparaatdubbels garandeert alleen dat het retour formulier semantisch gelijkwaardig is. 
+
+### <a name="update-models"></a>Modellen bijwerken
+
+Zodra een model is geüpload naar uw exemplaar, is de gehele model interface onveranderbaar. Dit betekent dat er geen traditionele ' editing ' van modellen is.
+
+Als u in plaats daarvan wijzigingen wilt aanbrengen in een model in azure Digital Apparaatdubbels, zoals het wijzigen `DisplayName` van de of, kunt u `Description` dit het beste doen door een **nieuwere versie** van hetzelfde model te uploaden. Hiermee wordt het oorspronkelijke model overschreven.
+
+Als u dit wilt doen, begint u met het DTDL van het oorspronkelijke model. Werk de velden bij die u wilt wijzigen.
+
+Markeer dit vervolgens als een nieuwere versie van het model door het `id` veld van het model bij te werken. De laatste sectie van de model-ID, na de `;` , vertegenwoordigt het model nummer. Om aan te geven dat dit nu een meer bijgewerkte versie van dit model is, verhoogt u het aantal aan het einde van de `id` waarde naar een getal dat groter is dan het huidige versie nummer.
+
+Als uw vorige model-ID bijvoorbeeld er als volgt uitziet:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+versie 2 van dit model kan er als volgt uitzien:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+Upload vervolgens de nieuwe versie van het model naar uw exemplaar. Er wordt gebruikgemaakt van de oude versie en nieuwe apparaatdubbels die u met dit model maakt, gebruiken de bijgewerkte versie.
 
 ### <a name="remove-models"></a>Modellen verwijderen
 

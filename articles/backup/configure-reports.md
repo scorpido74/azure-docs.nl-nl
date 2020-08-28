@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826851"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022391"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -109,7 +109,7 @@ Gebruik dit tabblad om inzicht te krijgen in potentiële mogelijkheden voor kost
 
 ###### <a name="inactive-resources"></a>Inactieve resources
 
-In deze weer gave kunt u de back-upitems identificeren waarvan de back-up gedurende een aanzienlijk tijds duur niet is geslaagd. Dit kan betekenen dat de onderliggende computer waarvan een back-up wordt gemaakt, niet meer bestaat (en dus wat resulteert in mislukte back-ups), of er is een probleem met de computer waardoor back-ups niet betrouwbaar kunnen worden uitgevoerd.
+In deze weer gave kunt u de back-upitems identificeren waarvan de back-up gedurende een aanzienlijk tijds duur niet is geslaagd. Dit kan betekenen dat de onderliggende computer waarvan een back-up wordt gemaakt, niet meer bestaat (en dus wat resulteert in mislukte back-ups), of dat er een probleem is met de computer waardoor back-ups niet betrouwbaar kunnen worden uitgevoerd.
 
 Als u inactieve resources wilt weer geven, gaat u naar het tabblad **optimaliseren** en selecteert u de tegel **inactieve resources** . Selecteer deze tegel bevat een raster met details van alle inactieve resources die in het geselecteerde bereik bestaan. Het raster toont standaard items die geen herstel punt hebben in de afgelopen zeven dagen. Als u inactieve resources wilt zoeken voor een ander tijds bereik, kunt u het filter **tijd bereik** aanpassen boven aan het tabblad.
 

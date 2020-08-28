@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611293"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014911"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Back-up en herstel van versleutelde virtuele Azure-machines
 
@@ -129,7 +129,7 @@ Machtigingen instellen:
     - De vereiste machtigingen zijn vooraf ingevuld voor **sleutel machtigingen** en **geheime machtigingen**.
     - Als uw virtuele machine is versleuteld met **alleen bek**, verwijdert u de selectie voor **sleutel machtigingen** , omdat u alleen machtigingen voor geheimen nodig hebt.
 
-    ![Azure backup-selectie](./media/backup-azure-vms-encryption/select-backup-template.png)
+    ![Azure Backup selectie](./media/backup-azure-vms-encryption/select-backup-template.png)
 
 1. Selecteer **Toevoegen**. **Backup Management-service** is toegevoegd aan het **toegangs beleid**.
 

@@ -5,12 +5,13 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246177"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013109"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Beheerde chaos in Service Fabric clusters induceren
 Grootschalige gedistribueerde systemen zoals Cloud infrastructuren zijn inherent onbetrouwbaar. Met Azure Service Fabric kunnen ontwikkel aars betrouw bare gedistribueerde services bovenop een onbetrouwbare infra structuur schrijven. Ontwikkel aars moeten de stabiliteit van hun services kunnen testen om robuuste gedistribueerde services boven op een onbetrouwbare infra structuur te schrijven, terwijl de onderliggende onbetrouwbare infra structuur in gecompliceerde status overgangen door problemen gaat.

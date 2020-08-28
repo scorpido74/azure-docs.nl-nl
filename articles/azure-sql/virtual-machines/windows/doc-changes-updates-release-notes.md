@@ -10,18 +10,25 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/06/2020
-ms.openlocfilehash: df1e1e90b35c29678151d4f9159195f829022a62
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 08/20/2020
+ms.openlocfilehash: 5f0ba27a0964f08b32e1af19d6f578b3f41ee300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236621"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006411"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kopie van SQL Server ingebouwde. In dit artikel vindt u een overzicht van de wijzigingen in de documentatie die zijn gekoppeld aan nieuwe functies en verbeteringen in de recente releases van [SQL Server op Azure virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). 
+
+## <a name="august-2020"></a>Augustus 2020
+
+| Wijzigingen | Details |
+| --- | --- |
+| **AG in portal configureren** | Het is nu mogelijk om [uw beschikbaarheids groep te configureren via de Azure Portal](availability-group-azure-portal-configure.md). Deze functie is momenteel beschikbaar als preview-versie en wordt geïmplementeerd, zodat de gewenste regio niet meer wordt weer gegeven. | 
+
 
 ## <a name="july-2020"></a>Juli 2020
 

@@ -8,12 +8,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fe143b1c172c5d89a7dba33731a378df988b4a47
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75429164"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014605"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Een IoT-hub maken met behulp van de REST API van de resource provider (.NET)
 

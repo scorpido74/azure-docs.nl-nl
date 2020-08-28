@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774364"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022425"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Zelfstudie: de Video Indexer-API gebruiken
 
 Video Indexer consolideert diverse AI-technologieën (audio en video kunst matige intelligentie) die door micro soft worden aangeboden in één geïntegreerde service, waardoor ontwikkeling eenvoudiger wordt. De Api's zijn zodanig ontworpen dat ontwikkel aars zich kunnen richten op het gebruik van media AI-technologieën zonder dat u zich zorgen hoeft te maken over schaal, wereld wijd bereik, Beschik baarheid en betrouw baarheid van Cloud platforms. U kunt de API gebruiken om uw bestanden te uploaden, gedetailleerde video inzichten te verkrijgen, Url's van een Inge sloten Insight-en speler-widgets op te halen en meer.
 
-Wanneer u een Video Indexer account maakt, kunt u kiezen voor een gratis proef account (waarbij u een bepaald aantal minuten voor de indexering krijgt) of een betaalde optie (waarbij u niet beperkt bent door het quotum). Met een gratis proef versie biedt Video Indexer tot 600 minuten gratis indexering voor website gebruikers en tot 2400 minuten gratis indexering naar API-gebruikers. Met een betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account.
+Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij een gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met een betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account.
 
 In dit artikel wordt uitgelegd hoe ontwikkelaars kunnen profiteren van de [Video Indexer-API](https://api-portal.videoindexer.ai/).
 
@@ -207,7 +208,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Overzicht van Video Indexer](video-indexer-overview.md)
 - [Regio's](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

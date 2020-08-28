@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 4d8e637cd3691e7b1acf1988efe40fc80561a183
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 873f8bfda5dcfbc41d1bdc73bb4f0de97f775f15
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091671"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013398"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady-streaming voor Windows 10  
 
@@ -64,13 +65,13 @@ Hieronder vindt u twee sets test assets, de eerste met PlayReady-licentie leveri
 
 Activa #1:
 
-* URL voor progressieve down load:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (AMS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
+* URL voor progressieve down load: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 Activa #2:
 
-* URL voor progressieve down load:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (on-premises):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
+* URL voor progressieve down load: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (on-premises): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 Voor het testen van afspelen gebruikt ik een universele Windows-toepassing in Windows 10. In [Windows 10 Universal](https://github.com/Microsoft/Windows-universal-samples)-voor beelden is er een basis speler-voor beeld met de naam [adaptief stream](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)-voor beeld. U hoeft alleen maar de code toe te voegen om de gedownloade video te selecteren en deze als bron te gebruiken in plaats van een adaptieve streaming-bron. De wijzigingen bevinden zich in de knop gebeurtenis-handler klikken:
 

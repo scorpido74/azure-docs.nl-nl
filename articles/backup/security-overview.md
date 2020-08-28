@@ -3,12 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890464"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012548"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -36,7 +36,7 @@ Met Azure Backup, dat back-ups van virtuele machines en SQL-en SAP HANA in back-
 
 Voor het maken van een back-up van virtuele Azure-machines is het verplaatsen van gegevens van de schijf naar de Recovery Services kluis vereist. Alle vereiste communicatie-en gegevens overdrachten worden echter alleen uitgevoerd op het Azure-backbone-netwerk zonder dat daarvoor toegang nodig is tot het virtuele netwerk. Daarom is het niet vereist dat voor back-ups van Azure-Vm's in beveiligde netwerken toegang tot IP-adressen of FQDN-namen wordt toegestaan.
 
-## <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure backup
+## <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
 U kunt nu [persoonlijke eind punten](../private-link/private-endpoint-overview.md) gebruiken om een back-up te maken van uw gegevens op een veilige manier van servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-schijf ruimte voor uw kluis. u hoeft uw virtuele netwerken dus niet beschikbaar te maken voor open bare Ip's. Privé-eind punten kunnen worden gebruikt voor het maken van back-ups en het herstellen van uw SQL-en SAP HANA-data bases die worden uitgevoerd in uw Azure-Vm's. Het kan ook worden gebruikt voor uw on-premises servers met behulp van de MARS-agent.
 
@@ -70,7 +70,7 @@ Azure Backup-Service gebruikt de Microsoft Azure Recovery Services-agent (MARS) 
 
 * Verwijderde back-upgegevens worden nog 14 dagen na de verwijdering bewaard. Dit waarborgt de herstel baarheid van de gegevens binnen een bepaalde periode, waardoor er geen gegevens verloren gaan, zelfs als er een aanval plaatsvindt. Daarnaast worden er voor het beveiligen van beschadigde gegevens een groter aantal minimale herstel punten onderhouden. [Meer informatie over het herstellen van verwijderde back-upgegevens](./backup-azure-security-feature.md#recover-deleted-backup-data).
 
-* Voor gegevens waarvan een back-up is gemaakt met behulp Azure Backup van de MARS-agent (Microsoft Azure Recovery Services) wordt een wachtwoordzin gebruikt om ervoor te zorgen dat gegevens worden versleuteld voordat ze naar Azure Backup worden gedecodeerd en alleen worden ontsleuteld na het downloaden De gegevens van de wachtwoordzin zijn alleen beschikbaar voor de gebruiker die de wachtwoordzin en de geconfigureerde agent heeft gemaakt. Er wordt niets verzonden of gedeeld met de service. Dit zorgt voor een volledige beveiliging van uw gegevens als gegevens die per ongeluk worden weer gegeven (zoals een man-in-the-middle-aanval op het netwerk) zonder de wachtwoordzin en de wachtwoordzin wordt niet verzonden op het netwerk.
+* Voor gegevens waarvan een back-up is gemaakt met behulp Azure Backup van de MARS-agent (Microsoft Azure Recovery Services) wordt een wachtwoordzin gebruikt om ervoor te zorgen dat gegevens worden versleuteld voordat ze naar Azure Backup worden gedecodeerd en alleen worden ontsleuteld na het downloaden De gegevens van de wachtwoordzin zijn alleen beschikbaar voor de gebruiker die de wachtwoordzin heeft gemaakt en de agent die ermee is geconfigureerd. Er wordt niets verzonden of gedeeld met de service. Dit zorgt voor een volledige beveiliging van uw gegevens, omdat alle gegevens die per ongeluk worden blootgesteld (zoals een man-in-the-middle-aanval op het netwerk) niet kunnen worden gebruikt zonder de wachtwoordzin en de wachtwoordzin niet via het netwerk wordt verzonden.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Naleving van gestandaardiseerde beveiligings vereisten
 

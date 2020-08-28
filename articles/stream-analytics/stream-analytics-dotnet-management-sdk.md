@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077750"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015591"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: analyse taken instellen en uitvoeren met behulp van de Azure Stream Analytics-API voor .NET
 Meer informatie over het instellen en uitvoeren van analyse taken met behulp van de Stream Analytics-API voor .NET met behulp van de Management .NET SDK. Stel een project in en maak invoer-en uitvoer bronnen, trans formaties en taken voor starten en stoppen. Voor uw analyse taken kunt u gegevens streamen vanuit Blob Storage of van een Event Hub.
@@ -288,7 +288,7 @@ Met de methode **verwijderen** worden de taak en de onderliggende subbronnen, in
 Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt de basis beginselen van het gebruik van een .NET SDK geleerd om analyse taken te maken en uit te voeren. Raadpleeg de volgende artikelen voor meer informatie:
+U hebt de basis beginselen van het gebruik van een .NET SDK geleerd om analyse taken te maken en uit te voeren. Lees de volgende artikelen voor meer informatie:
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

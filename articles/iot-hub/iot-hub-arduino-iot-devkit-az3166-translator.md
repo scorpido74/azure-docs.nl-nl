@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953360"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004337"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 met Azure Functions en Cognitive Services gebruiken om een taal vertaler te maken
 
@@ -29,7 +30,7 @@ Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren
 
 ## <a name="create-azure-cognitive-service"></a>Een Azure cognitieve service maken
 
-1. Klik in de Azure Portal op **een resource maken** en zoek naar **spraak**. Vul het formulier in om de spraak service te maken.
+1. Klik in de Azure Portal op **een resource maken** en zoek naar **spraak**. Vul het formulier in om een Speech Service te maken.
   ![Speech Service](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Ga naar de spraak service die u zojuist hebt gemaakt, klik op de sectie **sleutels** om de **key1** voor DevKit toegang tot deze te kopiëren en te noteren.
@@ -68,7 +69,7 @@ Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren
 1. Klik op `F1` , typ en selecteer **Azure IOT Device Workbench: implementeren naar Azure...**. Als VS code vraagt om bevestiging voor het opnieuw implementeren, klikt u op **Ja**.
    ![Waarschuwing implementeren](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
-1. Controleer of de implementatie is geslaagd.
+1. Controleer of de implementatie is gelukt.
    ![Succes implementeren](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
 1. Ga in Azure Portal naar **functies apps** sectie en zoek de Azure function-app die u zojuist hebt gemaakt. Klik op `devkit_translator` en klik vervolgens op **</> functie-URL ophalen** om de URL te kopiëren.
@@ -101,31 +102,31 @@ Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren
 
 ## <a name="test-the-project"></a>Het project testen
 
-Volg de instructies in het scherm DevKit na de initialisatie van de app. De standaard taal voor de bron is Chinees.
+Volg na initialisatie van de app de instructies op het DevKit-scherm. De standaardbrontaal is het Chinees.
 
-Een andere taal voor de vertaling selecteren:
+Ga als volgt te werk om een andere om te zetten taal te selecteren:
 
-1. Druk op de knop om de installatie modus in te voeren.
+1. Druk op knop A om de installatiemodus in te schakelen.
 
-2. Druk op de knop B om alle ondersteunde bron talen te schuiven.
+2. Druk op knop B om door alle ondersteunde brontalen te schuiven.
 
 3. Druk op de knop om te bevestigen dat u de bron taal hebt gekozen.
 
-4. Houd de knop B ingedrukt terwijl u spreekt en klik vervolgens op de knop release B om de vertaling te initiëren.
+4. Houd knop B ingedrukt terwijl u spreekt en laat knop B vervolgens los om de vertaling te starten.
 
-5. De vertaalde tekst in het Engels wordt weer gegeven op het scherm.
+5. De in het Engels vertaalde tekst wordt weergegeven op het scherm.
 
 ![Schuiven om taal te selecteren](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
 ![Vertaal resultaat](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-In het scherm Vertaal resultaat kunt u het volgende doen:
+Op het scherm met de vertaling kunt u het volgende doen:
 
-- Druk op de knoppen A en B om de bron taal te schuiven en te selecteren.
+- Op de knoppen A en B drukken om door de brontalen te schuiven en de brontaal te selecteren.
 
-- Druk op de knop B om te praten. Als u de stem wilt verzenden en de tekst van de vertaling wilt ontvangen, laat u de B-knop los.
+- Op knop B drukken om te praten. Laat knop B los om de spraak te verzenden en de vertaling op te halen.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 ![Mini-oplossing-stem-naar-Tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 

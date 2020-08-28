@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632932"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022442"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-querytaal voor apparaat- en moduledubbels, taken en-berichtroutering
 
@@ -453,7 +454,7 @@ De volgende Opera tors worden ondersteund:
 | Logisch |EN, OF, NIET |
 | Vergelijking |=,! =, <, >, <=, >=,  <> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 
 Bij het uitvoeren van een query op apparaatdubbels en Jobs is de enige ondersteunde functie:
 
@@ -478,7 +479,7 @@ In routes-voor waarden worden de volgende typen controleren en casting ondersteu
 
 | Functie | Beschrijving |
 | -------- | ----------- |
-| AS_NUMBER | Converteert de invoer teken reeks naar een getal. `noop`Als invoer een getal is; `Undefined`als teken reeks geen getal voor stelt.|
+| AS_NUMBER | Converteert de invoer teken reeks naar een getal. `noop` Als invoer een getal is; `Undefined` als teken reeks geen getal voor stelt.|
 | IS_ARRAY | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een matrix is. |
 | IS_BOOL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Boolean is. |
 | IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. Dit wordt alleen ondersteund als de waarde een primitief type is. Primitieve typen bevatten een teken reeks, een Booleaanse waarde of een getal `null` . DateTime, object typen en matrices worden niet ondersteund. |
