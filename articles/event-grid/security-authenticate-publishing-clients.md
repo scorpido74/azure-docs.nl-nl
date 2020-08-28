@@ -3,12 +3,13 @@ title: Clients die gebeurtenissen publiceren naar Event Grid aangepaste onderwer
 description: In dit artikel worden verschillende manieren beschreven voor het verifiëren van clients die gebeurtenissen publiceren op Event Grid aangepaste onderwerpen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837394"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019110"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Publicerend clients verifiëren (Azure Event Grid)
 Dit artikel bevat informatie over het verifiëren van clients die gebeurtenissen publiceren naar Azure Event Grid onderwerpen of domeinen met behulp van het **toegangs sleutel** **-of Shared Access Signature SAS-** token. U kunt het beste SAS-token gebruiken, maar de sleutel verificatie biedt eenvoudige programmering en is compatibel met veel bestaande webhook-Publishers.  

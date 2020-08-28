@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c0abeedb1253c2561f2d435aa3fe5a428418a50
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052933"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019467"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard voor instellingen aanpassen  
 
@@ -32,7 +33,7 @@ In dit artikel wordt beschreven hoe u een vooraf ingestelde procedure kunt aanpa
 > [!NOTE]
 > De aangepaste voor instellingen die in dit artikel worden beschreven, kunnen niet worden gebruikt in [Media Services v3](../latest/index.yml) -trans formaties of de CLI-opdrachten. Zie de [richt lijnen voor migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md) voor meer informatie.
 
-## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>Een MES-voor instelling aanpassen
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> Een MES-voor instelling aanpassen
 
 ### <a name="original-preset"></a>Oorspronkelijke voor instelling
 
@@ -266,7 +267,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Coderen met een aangepaste trans formatie met behulp van CLI](../latest/custom-preset-cli-howto.md)
 - [Coderen met Media Services v3](../latest/encoding-concept.md)

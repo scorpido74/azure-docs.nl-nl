@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff746b85142714c129c04e7f8a3d20ac4b6cb53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892572"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020164"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -386,7 +386,7 @@ Het gegenereerde script is ondertekend met het officiële micro soft-certificaat
 
 Alleen een beheerder kan het script uitvoeren en het moet worden uitgevoerd in de modus met verhoogde bevoegdheden. Het script voert alleen een vooraf gegenereerde reeks stappen uit en accepteert geen invoer van een externe bron.
 
-Om het script uit te voeren, is een wacht woord vereist dat alleen wordt weer gegeven voor de geautoriseerde gebruiker op het moment van de generatie van het script in de Azure Portal of Power shell/CLI. Dit is om ervoor te zorgen dat de geautoriseerde gebruiker die het script downloadt ook verantwoordelijk is voor het uitvoeren van het script.
+Om het script uit te voeren, is een wacht woord vereist dat alleen wordt weer gegeven voor de geautoriseerde gebruiker op het moment dat het script in de Azure Portal of Power shell/CLI wordt gegenereerd. Dit is om ervoor te zorgen dat de geautoriseerde gebruiker die het script downloadt ook verantwoordelijk is voor het uitvoeren van het script.
 
 #### <a name="browse-files-and-folders"></a>Zoeken in bestanden en mappen
 

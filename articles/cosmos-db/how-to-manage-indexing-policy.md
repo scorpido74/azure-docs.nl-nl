@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
-ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: de9cdaf1dcc398c5db55de78643a19179f6bfdbc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2b1fe86c09349a25c8ebfda38ffc3ec352fdaba3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876475"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019552"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB beheren
 
@@ -346,7 +346,7 @@ Met een [indexerings beleid-update](index-policy.md#modifying-the-indexing-polic
 > [!NOTE]
 > Wanneer u het indexerings beleid bijwerkt, wordt de schrijf bewerking naar Azure Cosmos DB onderbroken. Meer informatie over het [indexeren van trans formaties](indexing-policy.md#modifying-the-indexing-policy)
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
 Azure Cosmos-containers slaan hun indexerings beleid op als een JSON-document waarmee u de Azure Portal rechtstreeks kunt bewerken.
 
@@ -372,7 +372,7 @@ Als u een container met een aangepast indexerings beleid wilt maken, [maakt u ee
 
 Als u een container met een aangepast indexerings beleid wilt maken, [maakt u een container met een aangepast index beleid met behulp van Power shell](manage-with-powershell.md#create-container-custom-index)
 
-## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a>De .NET SDK gebruiken
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> De .NET SDK gebruiken
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 

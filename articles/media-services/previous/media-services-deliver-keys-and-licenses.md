@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 58657ca604e7bd0fc081d6a5bb6ef18a8b7b5b48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0710d41dd44872be550917cbac036d72d052c333
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091705"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019433"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services gebruiken om DRM-licenties of AES-sleutels te leveren 
 
@@ -355,6 +356,6 @@ namespace DeliverDRMLicenses
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Dynamische algemene versleuteling met PlayReady en/of Widevine gebruiken](media-services-protect-with-playready-widevine.md)
 * [Gebruik AES-128 dynamische versleuteling en de key delivery service](media-services-protect-with-aes128.md)

@@ -2,13 +2,13 @@
 title: Systeem onderwerpen in Azure Event Grid
 description: Hierin worden systeem onderwerpen beschreven in Azure Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/27/2020
+ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119919"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019093"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systeem onderwerpen in Azure Event Grid
 Een systeem onderwerp in Event Grid vertegenwoordigt een of meer gebeurtenissen die zijn gepubliceerd door Azure-Services, zoals Azure Storage en Azure Event Hubs. Een systeem onderwerp kan bijvoorbeeld **alle BLOB-gebeurtenissen** vertegenwoordigen of alleen **blobs die zijn gemaakt** en **Verwijderde BLOB** -gebeurtenissen die zijn gepubliceerd voor een **specifiek opslag account**. Wanneer een BLOB in dit voor beeld wordt geüpload naar het opslag account, publiceert de Azure Storage-service een gebeurtenis die door een **blob is gemaakt** naar het onderwerp system in Event grid, waarna de gebeurtenis wordt doorgestuurd naar de [abonnees](event-handlers.md) van het onderwerp die de gebeurtenis ontvangen en verwerken. 
@@ -57,7 +57,7 @@ Het maken van het systeem mislukt als u Azure-beleid zodanig hebt ingesteld dat 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>Locatie en resource groep voor een systeem onderwerp
 Voor Azure-gebeurtenis bronnen die zich in een specifieke regio/locatie bevinden, wordt het systeem onderwerp gemaakt op dezelfde locatie als de Azure-gebeurtenis bron. Als u bijvoorbeeld een gebeurtenis abonnement maakt voor een Azure Blob-opslag in VS-Oost, wordt het onderwerp System gemaakt in VS-Oost. Voor algemene Azure-gebeurtenis bronnen, zoals Azure-abonnementen, resource groepen of Azure Maps, maakt Event Grid het onderwerp System op de **globale** locatie. 
 
-In het algemeen wordt het systeem onderwerp gemaakt in dezelfde resource groep als waarin de Azure-gebeurtenis bron zich bevindt. Voor gebeurtenis abonnementen die zijn gemaakt bij een Azure-abonnement, wordt het onderwerp System gemaakt onder de **standaard-EventGrid**van de resource groep. Als de resource groep niet bestaat, wordt deze door Azure Event Grid gemaakt voordat het onderwerp System wordt gemaakt. 
+In het algemeen wordt het systeem onderwerp gemaakt in dezelfde resource groep als waarin de Azure-gebeurtenis bron zich bevindt. Voor gebeurtenis abonnementen die zijn gemaakt bij een Azure-abonnement, wordt het onderwerp System gemaakt in de standaard resource groep **EventGrid** in de regio **VS West 2** . Als de resource groep niet bestaat, wordt deze door Azure Event Grid gemaakt voordat het onderwerp System wordt gemaakt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 

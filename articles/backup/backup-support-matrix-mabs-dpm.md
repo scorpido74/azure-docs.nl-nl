@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 90b79dfa412102b139f2f094fb9ca07a6361cab0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825219"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019569"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -82,7 +82,7 @@ Azure Backup kunt een back-up maken van DPM-MABS-exemplaren waarop een van de vo
 
 **Probleem** | **Details**
 --- | ---
-**Installatie** | Installeer DPM-MABS op een computer met één doel.<br/><br/> Installeer DPM/MABS niet op een domein controller, op een computer met de installatie van de functie toepassings server op een computer waarop micro soft Exchange Server of System Center Operations Manager, of op een cluster knooppunt.<br/><br/> [Controleer alle DPM-systeem vereisten](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
+**Installatie** | Installeer DPM-MABS op een computer met één doel.<br/><br/> Installeer DPM/MABS niet op een domein controller, op een computer met de installatie van de functie toepassings server op een computer met micro soft Exchange Server of System Center Operations Manager, of op een cluster knooppunt.<br/><br/> [Controleer alle DPM-systeem vereisten](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Domein** | DPM/MABS moet lid zijn van een domein. Installeer eerst en voeg vervolgens DPM-MABS toe aan een domein. Het verplaatsen van DPM-MABS naar een nieuw domein na implementatie wordt niet ondersteund.
 **Storage** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-upgrade** | U kunt MABS v3 rechtstreeks installeren of een upgrade uitvoeren naar MABS v3 vanuit MABS v2. [Meer informatie](backup-azure-microsoft-azure-backup.md#upgrade-mabs).

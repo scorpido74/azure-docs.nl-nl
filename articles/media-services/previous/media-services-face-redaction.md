@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7cdacabcc97d37c144b498ea9a05ccc9d6bffc04
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058007"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019858"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Gezichten met Azure Media Analytics redigeren 
 ## <a name="overview"></a>Overzicht
@@ -34,7 +35,7 @@ Naast een volledig automatische modus, is er een twee richtings werk stroom, waa
 ### <a name="combined-mode"></a>Gecombineerde modus
 Dit produceert automatisch een geredigeerde MP4 zonder hand matige invoer.
 
-| Fase | Bestandsnaam | Notities |
+| Fase | Bestandsnaam | Opmerkingen |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MOV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' gecombineerd '}} |
@@ -49,7 +50,7 @@ Dit produceert automatisch een geredigeerde MP4 zonder hand matige invoer.
 ### <a name="analyze-mode"></a>Analyse modus
 De **analyse** fase van de werk stroom met twee slagen neemt een video-invoer en produceert een JSON-bestand met gezichts locaties en JPG-afbeeldingen van elk gedetecteerd gezicht.
 
-| Fase | Bestandsnaam | Notities |
+| Fase | Bestandsnaam | Opmerkingen |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' analyse '}} |
@@ -114,7 +115,7 @@ Dit omvat een lijst met Id's voor vervagen, de oorspronkelijke video en de JSON 
 
 De uitvoer van de analyse fase bevat niet de oorspronkelijke video. De video moet worden geüpload naar de invoer Asset voor de redactie modus taak en als primair bestand zijn geselecteerd.
 
-| Fase | Bestandsnaam | Notities |
+| Fase | Bestandsnaam | Opmerkingen |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling. Dezelfde video als in stap 1. |
 | Invoer Asset |foo_annotations.jsop |Meta gegevensbestand van de fase één, met optionele wijzigingen. |
@@ -147,9 +148,9 @@ Hieronder vindt u voor beelden van de vervagings typen die hieronder worden besc
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
 ```
 
-#### <a name="low"></a>Laag
+#### <a name="low"></a>Beperkt
 
-![Laag](./media/media-services-face-redaction/blur1.png)
+![Beperkt](./media/media-services-face-redaction/blur1.png)
  
 #### <a name="med"></a>STB
 
@@ -159,9 +160,9 @@ Hieronder vindt u voor beelden van de vervagings typen die hieronder worden besc
 
 ![Hoog](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>Vak
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![Vak](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>Zwart
 

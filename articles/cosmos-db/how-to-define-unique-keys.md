@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 8a87f9c9b2db2c6118134d76cefc7c2813f5a864
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 413664b790423fb5eafb58e2baaee46e10c6a929
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876662"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019960"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Unieke sleutels voor een Azure Cosmos-container definiëren
 
 In dit artikel worden de verschillende manieren beschreven waarop u [unieke sleutels](unique-keys.md) kunt definiëren bij het maken van een Azure Cosmos-container. Het is momenteel mogelijk deze bewerking uit te voeren met behulp van de Azure Portal of via een van de Sdk's.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 

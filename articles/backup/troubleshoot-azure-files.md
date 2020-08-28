@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889805"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001736"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -86,7 +86,7 @@ Fout code: AFSMaxSnapshotReached
 Fout bericht: de maximum limiet van moment opnamen voor deze bestands share is bereikt. u kunt meer doen als de oudere versies verlopen.
 
 - Deze fout kan optreden wanneer u meerdere back-ups op aanvraag voor een bestands share maakt.
-- Er geldt een limiet van 200 moment opnamen per bestands share, met inbegrip van de bestanden die door Azure Backup worden gemaakt. Oudere geplande back-ups (of momentopnamen) worden automatisch opgeschoond. Back-ups (of momentopnamen) op aanvraag moeten worden verwijderd als de limiet is bereikt.
+- Er is een limiet van 200 moment opnamen per bestands share, met inbegrip van de Azure Backup. Oudere geplande back-ups (of momentopnamen) worden automatisch opgeschoond. Back-ups (of momentopnamen) op aanvraag moeten worden verwijderd als de limiet is bereikt.
 
 Verwijder de back-ups op aanvraag (momentopnamen van Azure-bestandsshares) uit de Azure Files-portal.
 

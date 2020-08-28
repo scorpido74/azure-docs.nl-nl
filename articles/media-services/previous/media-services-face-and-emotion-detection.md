@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a3bd50d23f2543c6efeb6297b4dbcba8293269c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232573"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019875"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gezichts-en Emotion detecteren met Azure Media Analytics
 
@@ -45,7 +46,7 @@ Met de **Azure media face detector** media processor (MP) kunt u het aantal bewe
 
 De **Azure media face detector** -MP is momenteel beschikbaar als preview-versie.
 
-Dit artikel bevat informatie over **Azure media face detector** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
+Dit artikel bevat informatie over  **Azure media face detector** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
 
 ## <a name="face-detector-input-files"></a>Gezichts detector-invoer bestanden
 Video bestanden. Momenteel worden de volgende indelingen ondersteund: MP4, MOV en WMV.
@@ -167,8 +168,8 @@ Hieronder vindt u de aanbevolen waarden voor het aggregatie venster en de interv
 
 || Standaard waarden (s) | Max. (n) | Min (en) |
 |--- | --- | --- | --- |
-| **AggregateEmotionWindowMs** |0.5 |2 |0,25|
-| **AggregateEmotionIntervalMs** |0.5 |1 |0,25|
+| **AggregateEmotionWindowMs** |0,5 |2 |0,25|
+| **AggregateEmotionIntervalMs** |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON-uitvoer
 JSON-uitvoer voor cumulatieve Emotion (afgekapt):

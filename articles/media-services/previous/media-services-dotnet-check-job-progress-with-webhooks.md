@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ae177f2cbfa1b6ecef2ef6326b2d8b5008504933
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052958"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019399"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure-webhooks om Media Services taak meldingen te bewaken met .NET 
 
@@ -77,7 +78,7 @@ Als uw functie-app is geïmplementeerd, kunt u deze vinden in **App Services** A
 
 ### <a name="files"></a>Files
 
-Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Standaard is een functie gekoppeld aan **function.js** en **Run. CSX** (C#)-bestanden. U moet eenproject.jstoevoegen **aan** het bestand. In de rest van deze sectie worden de definities van deze bestanden weer gegeven.
+Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Standaard is een functie gekoppeld aan **function.js** en **Run. CSX** (C#)-bestanden. U moet eenproject.jstoevoegen ** aan** het bestand. In de rest van deze sectie worden de definities van deze bestanden weer gegeven.
 
 ![bestanden](./media/media-services-azure-functions/media-services-azure-functions003.png)
 

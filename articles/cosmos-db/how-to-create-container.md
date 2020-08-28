@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498358"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019994"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
@@ -25,7 +25,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
@@ -41,7 +41,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -57,7 +57,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -76,7 +76,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-graph-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -93,7 +93,7 @@ In dit artikel worden de verschillende manieren beschreven om een Azure Cosmos-c
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tabel-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-table-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2cf6d2c02beff93553944474138bee3a2a316aa9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 94465e44a6cc2c4fa94ec8ea4504cbed80742f0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874347"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019144"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Multi-Master configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Als een account is gemaakt terwijl meerdere schrijf regio's zijn ingeschakeld, m
 > [!Note]
 > Cosmos-accounts die in eerste instantie zijn geconfigureerd met één schrijf regio kunnen worden geconfigureerd voor meerdere schrijf regio's (dat wil zeggen multi-master) met een nul-tijd. Zie [meerdere regio's configureren](how-to-manage-database-account.md#configure-multiple-write-regions) voor meer informatie.
 
-## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET-SDK v2
 
 Stel in op om meerdere masters in uw toepassing in te scha kelen `UseMultipleWriteLocations` `true` . Stel ook `SetCurrentLocation` de regio in waarin de toepassing wordt geïmplementeerd en waar Azure Cosmos DB worden gerepliceerd:
 
@@ -35,7 +35,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET-SDK v3
 
 Als u meerdere masters in uw toepassing wilt inschakelen, stelt `ApplicationRegion` u de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
 
@@ -74,7 +74,7 @@ Als u meerdere masters in uw toepassing wilt inschakelen, roept u `.multipleWrit
 
 --- 
 
-## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Asynchrone Java v2 SDK
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Asynchrone Java v2 SDK
 
 De Java v2 SDK heeft de Maven [com. micro soft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)gebruikt. Als u meerdere masters in uw toepassing wilt inschakelen, stelt `policy.setUsingMultipleWriteLocations(true)` u in en stelt `policy.setPreferredLocations` u deze in op de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
 

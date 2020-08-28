@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: d8b5f79d9c9050eeb7957ddcf28021e3c8b3dd94
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500552"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010644"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Streaming-eind punten beheren met Media Services v3
 
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u de [Start](/rest/api/media/streamingendpoi
 
 Bekijk: 
 
-* [Media Services concepten](concepts-overview.md)
+* [Media Services-concepts](concepts-overview.md)
 * [Concept van streaming-eind punt](streaming-endpoint-concept.md)
 * [Dynamische verpakking](dynamic-packaging-overview.md)
 
@@ -45,7 +45,7 @@ Bekijk:
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-Raadpleeg voor meer informatie: 
+Zie voor meer informatie: 
 
 * De documentatie voor [een StreamingEndpoint](/rest/api/media/streamingendpoints/start) -referentie starten.
 * Het starten van een streaming-eind punt is een asynchrone bewerking. 
@@ -53,11 +53,11 @@ Raadpleeg voor meer informatie:
     Zie [langlopende bewerkingen](media-services-apis-overview.md)voor meer informatie over het controleren van langlopende bewerkingen.
 * Deze [postman-verzameling](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) bevat voor beelden van meerdere rest-bewerkingen, met inbegrip van het starten van een streaming-eind punt.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken 
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken 
  
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Ga naar uw Azure Media Services-account.
-1. Selecteer in het linkerdeel venster **streaming-eind punten**.
+1. Selecteer in het linkerdeel venster  **streaming-eind punten**.
 1. Selecteer het streaming-eind punt dat u wilt starten en selecteer vervolgens **starten**.
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken

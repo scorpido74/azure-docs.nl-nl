@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888034"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001873"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
 
@@ -44,12 +45,12 @@ Dit document laat zien hoe u een .NET core-console toepassing maakt die wordt ui
 3. Open deze map in Visual Studio code. Deze stap kan snel worden uitgevoerd via de opdracht regel door `code .` in Windows te typen.
 4. Installeer de [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) vanuit de Visual Studio code Marketplace. Start Visual Studio code opnieuw.
 5. Op dit moment ziet u twee prompts. Een is voor het toevoegen van ' vereiste assets voor het maken en debuggen '. Klik op Ja. Er is nog een prompt voor het herstellen van niet-opgeloste afhankelijkheden. Klik op herstellen.
-6. Wijzig `launch.json` onder `.vscode` om externe terminal te gebruiken als een-console. Deze instelling moet worden gelezen als`"console": "externalTerminal"`
+6. Wijzig `launch.json` onder `.vscode` om externe terminal te gebruiken als een-console. Deze instelling moet worden gelezen als `"console": "externalTerminal"`
 7. Met Visual Studio code kunt u fouten opsporen in .NET core-toepassingen. `F5`Zorg ervoor dat uw toepassing wordt uitgevoerd en controleer of uw installatie werkt. U ziet "Hallo wereld!" afgedrukt op de-console.
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>De bibliotheek voor gegevens verplaatsing toevoegen aan uw project
 
-1. Voeg de nieuwste versie van de bibliotheek voor gegevens verplaatsing toe aan de `dependencies` sectie van uw `<project-name>.csproj` bestand. Op het moment van schrijven zou deze versie worden`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. Voeg de nieuwste versie van de bibliotheek voor gegevens verplaatsing toe aan de `dependencies` sectie van uw `<project-name>.csproj` bestand. Op het moment van schrijven zou deze versie worden `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. Er moet een prompt worden weer gegeven om het project te herstellen. Klik op de knop herstellen. U kunt het project ook herstellen vanaf de opdracht regel door de opdracht `dotnet restore` in de hoofdmap van de projectmap te typen.
 
 Wijzigen `<project-name>.csproj` :

@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825253"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019586"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -27,7 +27,7 @@ Hier vindt u informatie over het maken van back-ups en het herstellen van virtue
 
 **Scenario** | **Een back-up maken** | **Agent** |**Herstellen**
 --- | --- | --- | ---
-Directe back-ups van virtuele Azure-machines  | Maak een back-up van de volledige VM.  | Er is geen extra agent nodig op de Azure-VM. Azure Backup installeert en gebruikt een uitbrei ding van de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) die op de virtuele machine wordt uitgevoerd. | Herstel als volgt:<br/><br/> - **Een basis-VM maken**. Dit is handig als de VM geen speciale configuratie heeft, zoals meerdere IP-adressen.<br/><br/> - **Herstel de VM-schijf**. Herstel de schijf. Koppel deze vervolgens aan een bestaande virtuele machine of maak een nieuwe virtuele machine op basis van de schijf met behulp van Power shell.<br/><br/> - **Vervang de VM-schijf**. Als er een virtuele machine bestaat en beheerde schijven (niet-versleuteld) worden gebruikt, kunt u een schijf herstellen en deze gebruiken om een bestaande schijf op de virtuele machine te vervangen.<br/><br/> - **Specifieke bestanden/mappen herstellen**. U kunt bestanden/mappen herstellen vanaf een virtuele machine in plaats van vanaf de hele VM.
+Directe back-ups van virtuele Azure-machines  | Maak een back-up van de volledige VM.  | Er is geen extra agent nodig op de Azure-VM. Azure Backup installeert en gebruikt een uitbrei ding van de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) die wordt uitgevoerd op de VM. | Herstel als volgt:<br/><br/> - **Een basis-VM maken**. Dit is handig als de VM geen speciale configuratie heeft, zoals meerdere IP-adressen.<br/><br/> - **Herstel de VM-schijf**. Herstel de schijf. Koppel deze vervolgens aan een bestaande virtuele machine of maak een nieuwe virtuele machine op basis van de schijf met behulp van Power shell.<br/><br/> - **Vervang de VM-schijf**. Als er een virtuele machine bestaat en beheerde schijven (niet-versleuteld) worden gebruikt, kunt u een schijf herstellen en deze gebruiken om een bestaande schijf op de virtuele machine te vervangen.<br/><br/> - **Specifieke bestanden/mappen herstellen**. U kunt bestanden/mappen herstellen vanaf een virtuele machine in plaats van vanaf de hele VM.
 Directe back-ups van virtuele Azure-machines (alleen Windows)  | Maak een back-up van specifieke bestanden/mappen/volume. | Installeer de [Azure Recovery Services-agent](backup-azure-file-folder-backup-faq.md).<br/><br/> U kunt de MARS-agent naast de back-upextensie voor de Azure VM-agent uitvoeren om een back-up te maken van de virtuele machine op het niveau van het bestand of de map. | Specifieke mappen/bestanden herstellen.
 Back-up van Azure VM maken op back-upserver  | Back-ups maken van bestanden/mappen/volumes; systeem status/bare metal bestanden; App-gegevens naar System Center DPM of naar Microsoft Azure Backup-Server (MABS).<br/><br/> DPM-MABS maakt vervolgens een back-up van de back-upkluis. | Installeer de DPM/MABS Protection-agent op de VM. De MARS-agent is geïnstalleerd op DPM-MABS.| Bestanden/mappen/volumes herstellen; systeem status/bare metal bestanden; App-gegevens.
 
@@ -146,7 +146,7 @@ Back-ups maken van Vm's die zijn geïmplementeerd vanuit een aangepaste installa
 Back-ups maken van virtuele machines die zijn gemigreerd naar Azure| Ondersteund.<br/><br/> Als u een back-up wilt maken van de VM, moet de VM-agent op de gemigreerde computer zijn geïnstalleerd.
 Back-up van multi-VM-consistentie | Azure Backup biedt geen consistentie van gegevens en toepassingen op meerdere Vm's.
 Back-up met [Diagnostische instellingen](../azure-monitor/platform/platform-logs-overview.md)  | Niet-ondersteunde. <br/><br/> Als het herstellen van de virtuele machine van Azure met Diagnostische instellingen wordt geactiveerd met de optie [nieuwe maken](backup-azure-arm-restore-vms.md#create-a-vm) , mislukt de herstel bewerking.
-Herstellen van op zones vastgemaakte Vm's | Ondersteund (voor VM waarvan een back-up is gemaakt na 2019 januari en waar de [beschikbaarheids zone](https://azure.microsoft.com/global-infrastructure/availability-zones/) beschikbaar is).<br/><br/>We ondersteunen momenteel het herstellen naar dezelfde zone die is vastgemaakt in Vm's. Als de zone echter niet beschikbaar is, mislukt de herstel bewerking.
+Herstellen van op zones vastgemaakte Vm's | Ondersteund (voor een VM waarvan een back-up is gemaakt na 2019 januari en waar [beschikbaarheids zones](https://azure.microsoft.com/global-infrastructure/availability-zones/) beschikbaar zijn).<br/><br/>We ondersteunen momenteel het herstellen naar dezelfde zone die is vastgemaakt in Vm's. Als de zone echter niet beschikbaar is, mislukt de herstel bewerking.
 Gen2 Vm's | Ondersteund <br> Azure Backup ondersteunt het maken van back-ups en het herstellen van [Gen2-vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Wanneer deze Vm's worden hersteld vanaf het herstel punt, worden ze teruggezet als [Gen2 vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 Back-ups van virtuele Azure-machines met vergren delingen | Niet ondersteund voor niet-beheerde Vm's. <br><br> Ondersteund voor beheerde Vm's.
 [Spot-VM's](../virtual-machines/spot-vms.md) | Niet-ondersteunde. Azure Backup de locatie van de virtuele machines als gewone virtuele machines van Azure herstelt.
@@ -160,7 +160,7 @@ Grootte van de gegevens schijf | De afzonderlijke schijf grootte kan Maxi maal 3
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.
 Versleutelde schijven | Ondersteund.<br/><br/> Voor Azure-Vm's met Azure Disk Encryption kan een back-up worden gemaakt (met of zonder de Azure AD-app).<br/><br/> Versleutelde Vm's kunnen niet worden hersteld op het niveau van het bestand of de map. U moet de volledige VM herstellen.<br/><br/> U kunt versleuteling inschakelen voor virtuele machines die al worden beveiligd door Azure Backup.
-Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> De schijven met Write Accelerator (WA) die tijdens het maken van de back-up zijn ingeschakeld, worden door Azure backup automatisch uitgesloten. Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking**: virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
+Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> Azure Backup worden de schijven die zijn ingeschakeld tijdens het maken van de back-up automatisch uitgesloten van Write Accelerator (WA). Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking**: virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
 Back-up maken & ontdubbelde Vm's/schijven herstellen | Azure Backup biedt geen ondersteuning voor ontdubbeling. Raadpleeg dit [artikel](./backup-support-matrix.md#disk-deduplication-support) voor meer informatie <br/> <br/>  -Azure Backup wordt niet gedupliceerd over Vm's in de Recovery Services kluis <br/> <br/>  -Als er Vm's aanwezig zijn tijdens het herstellen, kunnen de bestanden niet worden hersteld omdat de kluis de indeling niet begrijpt. U kunt echter de volledige VM-herstel bewerking uitvoeren.
 Schijf toevoegen aan beveiligde VM | Ondersteund.
 Grootte van schijf op beveiligde virtuele machine wijzigen | Ondersteund.

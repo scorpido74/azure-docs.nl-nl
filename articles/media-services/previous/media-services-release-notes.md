@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ac0b0e0a9c372aebc51af1840491d0f53f9f8f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833025"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010287"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -60,7 +61,7 @@ Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](lega
 
 Zie ook [migreren van Azure media indexer en Azure media indexer 2 naar Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
-## <a name="august-2019"></a>Augustus 2019
+## <a name="august-2019"></a>augustus 2019
 
 ### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
@@ -371,7 +372,7 @@ De Media Services REST-meta gegevens zijn nu versie 2,7. Zie voor meer informati
 
 De Media Services SDK voor .NET is nu versie 3.0.0.7
 
-### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>Wijzigingen die fouten veroorzaken
+### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>Wijzigingen afbreken
 * De naam van de oorsprong is gewijzigd in [StreamingEndpoint].
 * Er is een wijziging aangebracht in het standaard gedrag wanneer u de Azure Portal gebruikt om MP4-bestanden te coderen en vervolgens te publiceren.
 

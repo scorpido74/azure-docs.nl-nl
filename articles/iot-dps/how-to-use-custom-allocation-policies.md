@@ -7,12 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001974"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Aangepaste toewijzings beleid gebruiken
 
@@ -54,7 +55,7 @@ De volgende vereisten gelden voor een ontwikkelomgeving in Windows. Voor Linux o
 In deze sectie gebruikt u de Azure Cloud Shell voor het maken van een inrichtings service en twee IoT-hubs die de **Divisie contoso-pop-upoperators** en de divisie van de **Contoso-hitte pompen**vertegenwoordigen.
 
 > [!TIP]
-> De opdrachten die in dit artikel worden gebruikt, maken de inrichtings service en andere resources op de locatie vs-West. We raden u aan om uw resources te maken in de regio die de Device Provisioning Service ondersteunt. U kunt een lijst met beschikbare locaties weergeven door de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit te voeren of door naar de pagina [Status van Azure](https://azure.microsoft.com/status/) te gaan en te zoeken naar 'device provisioning service'. In opdrachten kunnen locaties worden opgegeven in één woord of in een indeling met meerdere woorden. bijvoorbeeld: westus, VS-West, VS-West, enzovoort. De waarde is niet hoofdletter gevoelig. Als u meerdere woorden gebruikt om een locatie op te geven, voeg dan de waarde toe tussen aanhalingstekens; bijvoorbeeld: `-- location "West US"`.
+> De opdrachten die in dit artikel worden gebruikt, maken de inrichtings service en andere resources op de locatie vs-West. We raden u aan om uw resources te maken in de regio die de Device Provisioning Service ondersteunt. U kunt een lijst met beschikbare locaties weergeven door de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit te voeren of door naar de pagina [Status van Azure](https://azure.microsoft.com/status/) te gaan en te zoeken naar 'device provisioning service'. In opdrachten kunnen locaties worden opgegeven in één woord of in meerdere woorden, bijvoorbeeld: uswest, VS - west, US WEST enzovoort. De waarde is niet hoofdlettergevoelig. Als u meerdere woorden gebruikt om een locatie op te geven, voeg dan de waarde toe tussen aanhalingstekens; bijvoorbeeld: `-- location "West US"`.
 >
 
 1. Gebruik de Azure Cloud Shell om een resource groep te maken met de opdracht [AZ Group Create](/cli/azure/group#az-group-create) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.

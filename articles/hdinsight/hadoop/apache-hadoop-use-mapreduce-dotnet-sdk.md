@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: c165663e19037bd2ebac410adb6b6d05fcc162e6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076348"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020402"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce-taken uitvoeren met behulp van de HDInsight .NET-SDK
 
@@ -169,7 +169,7 @@ Wanneer de taak is voltooid, wordt de inhoud van het uitvoer bestand afgedrukt d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Lees de volgende artikelen voor meer informatie:
 
 * Zie [Apache Hive Query's uitvoeren met HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md)voor informatie over het verzenden van een Hive-taak.
 * Zie voor het maken van HDInsight [-clusters Linux-gebaseerde Apache Hadoop clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).

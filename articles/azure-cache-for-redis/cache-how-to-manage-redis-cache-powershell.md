@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004878"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019212"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Voer de volgende opdracht uit om het abonnement op te geven. In het volgende voo
 
 Voordat u Windows Power shell met Azure Resource Manager kunt gebruiken, hebt u het volgende nodig:
 
-* Windows Power shell, versie 3,0 of 4,0. Als u de versie van Windows Power shell wilt zoeken, typt u: `$PSVersionTable` en verifieert u de waarde van `PSVersion` 3,0 of 4,0. Zie [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) of [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855)als u een compatibele versie wilt installeren.
+* Windows Power shell, versie 3,0 of 4,0. Als u de versie van Windows Power shell wilt zoeken, typt u: `$PSVersionTable` en verifieert u de waarde van `PSVersion` 3,0 of 4,0. Zie [Windows Management Framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595)om een compatibele versie te installeren.
 
 Gebruik de cmdlet Get-Help voor meer informatie over de cmdlets die u in deze zelf studie ziet.
 
@@ -358,7 +358,7 @@ Met de volgende opdracht wordt het maxmemory-beleid voor de Azure-cache bijgewer
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Een Azure-cache schalen voor redis
-`Set-AzRedisCache`kan worden gebruikt voor het schalen van een Azure-cache voor redis-instantie wanneer de `Size` , `Sku` of- `ShardCount` eigenschappen worden gewijzigd. 
+`Set-AzRedisCache` kan worden gebruikt voor het schalen van een Azure-cache voor redis-instantie wanneer de `Size` , `Sku` of- `ShardCount` eigenschappen worden gewijzigd. 
 
 > [!NOTE]
 > Voor het schalen van een cache met behulp van Power shell gelden dezelfde limieten en richt lijnen als voor het schalen van een cache van de Azure Portal. U kunt schalen naar een andere prijs categorie met de volgende beperkingen.

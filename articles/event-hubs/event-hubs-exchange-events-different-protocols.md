@@ -3,22 +3,23 @@ title: Azure Event Hubs-Exchange-gebeurtenissen met verschillende protocollen
 description: In dit artikel wordt uitgelegd hoe consumenten en producenten die gebruikmaken van verschillende protocollen (AMQP, Apache Kafka en HTTPS), gebeurtenissen kunnen uitwisselen bij het gebruik van Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002502"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010316"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Uitwisseling van gebeurtenissen tussen consumenten en producenten die verschillende protocollen gebruiken: AMQP, Kafka en HTTPS
 Azure Event Hubs ondersteunt drie protocollen voor consumenten en producenten: AMQP, Kafka en HTTPS. Elk van deze protocollen heeft een eigen manier om een bericht weer te geven, waardoor natuurlijk de volgende vraag zich voordoet: als een toepassing gebeurtenissen verzendt naar een event hub met één protocol en deze gebruikt met een ander protocol, wat betekenen de verschillende onderdelen en waarden van de gebeurtenis eruit als bij de consument? In dit artikel worden aanbevolen procedures voor zowel de producent als de consument beschreven om ervoor te zorgen dat de waarden in een gebeurtenis correct worden geïnterpreteerd door de verbruikte toepassing.
 
 In het advies in dit artikel worden deze clients specifiek behandeld, met de vermelde versies die worden gebruikt voor het ontwikkelen van de code fragmenten:
 
-* Kafka Java-client (versie 1.1.1 vanhttps://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
-* Microsoft Azure Event Hubs-client voor Java (versie 1.1.0 vanhttps://github.com/Azure/azure-event-hubs-java)
-* Microsoft Azure Event Hubs-client voor .NET (versie 2.1.0 vanhttps://github.com/Azure/azure-event-hubs-dotnet)
-* Microsoft Azure Service Bus (versie 5.0.0 vanhttps://www.nuget.org/packages/WindowsAzure.ServiceBus)
+* Kafka Java-client (versie 1.1.1 van https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+* Microsoft Azure Event Hubs-client voor Java (versie 1.1.0 van https://github.com/Azure/azure-event-hubs-java)
+* Microsoft Azure Event Hubs-client voor .NET (versie 2.1.0 van https://github.com/Azure/azure-event-hubs-dotnet)
+* Microsoft Azure Service Bus (versie 5.0.0 van https://www.nuget.org/packages/WindowsAzure.ServiceBus)
 * HTTPS (ondersteunt alleen producenten)
 
 Andere AMQP-clients gedragen zich mogelijk iets anders. AMQP heeft een goed gedefinieerd type systeem, maar de specifieke informatie over het serialiseren van taalspecifieke typen naar en van het type systeem is afhankelijk van de client, zoals hoe de client toegang biedt tot de onderdelen van een AMQP-bericht.

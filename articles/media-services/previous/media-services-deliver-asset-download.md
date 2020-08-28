@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61465657"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019450"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Procedure: een Asset leveren door te downloaden  
 In dit artikel worden opties beschreven voor het leveren van media-assets die zijn geüpload naar Media Services. U kunt Media Services-inhoud leveren in verschillende toepassings scenario's. Down load na het coderen de gegenereerde media-assets of open ze met behulp van een streaming-Locator. Voor betere prestaties en schaal baarheid kunt u ook inhoud leveren met behulp van een Content Delivery Network (CDN).

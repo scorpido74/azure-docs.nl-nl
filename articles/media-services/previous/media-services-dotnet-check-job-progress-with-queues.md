@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f4f69904954286f15d2fda13ddd26ee64c81776f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060327"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019365"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure Queue Storage om Media Services taak meldingen te bewaken met .NET 
 
@@ -64,7 +65,7 @@ Het code voorbeeld in deze sectie doet het volgende:
 > [!NOTE]
 > De aanbevolen manier om de status van een taak te controleren, is door te Luis teren naar meldings berichten, zoals wordt weer gegeven in het volgende voor beeld:
 >
-> U kunt ook de status van een taak controleren met behulp van de eigenschap **IJob. State** .  Een meldings bericht over de voltooiing van een taak kan worden ontvangen voordat de status op **IJob** is ingesteld op **voltooid**. De eigenschap **IJob. State** weerspiegelt de nauw keurige status met een lichte vertraging.
+> U kunt ook de status van een taak controleren met behulp van de eigenschap **IJob. State** .  Een meldings bericht over de voltooiing van een taak kan worden ontvangen voordat de status op **IJob** is ingesteld op **voltooid**. De eigenschap **IJob. State**  weerspiegelt de nauw keurige status met een lichte vertraging.
 >
 >
 

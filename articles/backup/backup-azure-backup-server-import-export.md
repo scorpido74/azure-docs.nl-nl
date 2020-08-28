@@ -3,12 +3,12 @@ title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890073"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002008"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (MABS)
 
@@ -192,7 +192,7 @@ U kunt de status van uw import taak controleren vanuit de Azure Portal door te n
 
 ### <a name="complete-the-workflow"></a>De werk stroom volt ooien
 
-Nadat de import taak is voltooid, zijn de eerste back-upgegevens beschikbaar in uw opslag account. Op het moment van de volgende geplande back-up kopieert Azure backup de inhoud van de gegevens uit het opslag account naar de Recovery Services kluis.
+Nadat de import taak is voltooid, zijn de eerste back-upgegevens beschikbaar in uw opslag account. Op het moment van de volgende geplande back-up Azure Backup kopieert de inhoud van de gegevens uit het opslag account naar de Recovery Services kluis.
 
 Op het moment van de volgende geplande taak voor het maken van een online replica voert Data Protection Manager incrementele back-up uit via de eerste back-upkopie.
 

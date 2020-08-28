@@ -9,12 +9,13 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564985"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020266"
 ---
 # <a name="graphics-binding"></a>Afbeeldings binding
 
@@ -88,7 +89,7 @@ Er zijn momenteel twee grafische Api's die kunnen worden geselecteerd, `WmrD3D11
 
 ### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
-`GraphicsApiType.WmrD3D11`is de standaard binding die op HoloLens 2 moet worden uitgevoerd. De binding wordt gemaakt `GraphicsBindingWmrD3d11` . In deze modus wordt Azure remote rendering rechtstreeks in de Holographic-Api's weer gegeven.
+`GraphicsApiType.WmrD3D11` is de standaard binding die op HoloLens 2 moet worden uitgevoerd. De binding wordt gemaakt `GraphicsBindingWmrD3d11` . In deze modus wordt Azure remote rendering rechtstreeks in de Holographic-Api's weer gegeven.
 
 Voor toegang tot de afgeleide grafische bindingen moet de basis `GraphicsBinding` cast zijn.
 Er zijn twee dingen die moeten worden uitgevoerd voor het gebruik van de WMR-binding:
@@ -136,7 +137,7 @@ wmrBinding->BlitRemoteFrame();
 
 ### <a name="simulation"></a>Simulatie
 
-`GraphicsApiType.SimD3D11`is de simulatie binding en als deze is geselecteerd, wordt de `GraphicsBindingSimD3d11` grafische binding gemaakt. Deze interface wordt gebruikt voor het simuleren van de hoofd verplaatsing, bijvoorbeeld in een bureaublad toepassing en het renderen van een monoscopic-installatie kopie.
+`GraphicsApiType.SimD3D11` is de simulatie binding en als deze is geselecteerd, wordt de `GraphicsBindingSimD3d11` grafische binding gemaakt. Deze interface wordt gebruikt voor het simuleren van de hoofd verplaatsing, bijvoorbeeld in een bureaublad toepassing en het renderen van een monoscopic-installatie kopie.
 De instelling is een beetje meer betrokken en werkt als volgt:
 
 #### <a name="create-proxy-render-target"></a>Proxy weergave doel maken
@@ -233,4 +234,4 @@ else
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: externe gerenderde modellen weer geven](../tutorials/unity/view-remote-models/view-remote-models.md)
+* [Zelfstudie: Extern gegenereerde modellen bekijken](../tutorials/unity/view-remote-models/view-remote-models.md)

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685405"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020351"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -164,7 +164,7 @@ Voor virtuele Linux-machines moet u ervoor zorgen dat de installatie opdrachten 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-- **MMS-agent**: Bekijk de ondersteunde [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)-en [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) -besturings systemen.
+- **MMS-agent**: Bekijk de ondersteunde [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)-en [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) -besturings systemen.
 - **Afhankelijkheids agent**: de ondersteunde [Windows-en Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) -besturings systemen.
 
 ## <a name="visualize-dependencies-for--hour"></a>Afhankelijkheden voor > uur visualiseren
@@ -199,7 +199,7 @@ Azure Migrate biedt momenteel ondersteuning voor het maken van OMS-werkruimte in
 
 Verzamel logboeken voor netwerk verkeer als volgt:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Druk op F12 om Ontwikkelhulpprogramma's te starten. Als dat nodig is, schakelt u de instelling  **vermeldingen wissen bij navigatie** uit.
 3. Selecteer het tabblad **netwerk** en begin met het vastleggen van netwerk verkeer:
    - In Chrome selecteert u **logboek behouden**. De opname moet automatisch worden gestart. Een rode cirkel geeft aan dat verkeer wordt vastgelegd. Als de rode cirkel niet wordt weer gegeven, selecteert u de zwarte cirkel om te starten.

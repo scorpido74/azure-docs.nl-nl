@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 48f728e697e3ca92eee0469c8368e966479fe7fb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422229"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019603"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u consistentieniveaus beheert in Azure Cosmos
 
 Het [standaard consistentie niveau](consistency-levels.md) is het consistentie niveau dat clients standaard gebruiken.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **standaard consistentie** venster. Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan**. De Azure Portal biedt ook een visualisatie van verschillende consistentie niveaus met muziek notities. 
 
@@ -109,7 +109,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>Sdk's voor Java v2
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Sdk's voor Java v2
 
 # <a name="async"></a>[Async](#tab/api-async)
 

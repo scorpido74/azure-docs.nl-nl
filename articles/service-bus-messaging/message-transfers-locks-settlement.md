@@ -3,12 +3,13 @@ title: Bericht overdrachten, vergren delingen en afwikkeling van Azure Service B
 description: Dit artikel bevat een overzicht van Azure Service Bus bericht overdrachten, vergrendelingen en vereffenings bewerkingen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 22be139fccdeecee846c204a8035804fb897ae5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd71edd12e478bcd5f14815c105c14482cf7e2bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341148"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020028"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Berichten overdragen, vergrendelen en verwerken
 
