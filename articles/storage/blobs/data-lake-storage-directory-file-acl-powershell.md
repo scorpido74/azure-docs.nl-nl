@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e80db84789ab5c8b0f07bc6a76ae99f8db3c8b80
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923871"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051029"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -125,6 +125,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> Als u de hoofdmap van de container wilt ophalen, laat u de `-Path` para meter weg.
 
 ## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
 
@@ -202,7 +204,8 @@ $properties.Group
 $properties.Owner
 ```
 
-Als u de inhoud van een container wilt weer geven, laat u de `-Path` para meter van de opdracht weg.
+> [!NOTE]
+> Als u de inhoud van de hoofdmap van de container wilt weer geven, laat u de `-Path` para meter weg.
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
@@ -227,6 +230,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> Als u een bestand wilt uploaden naar de hoofdmap van de container, laat u de `-Path` para meter weg.
 
 ## <a name="show-file-properties"></a>Bestands eigenschappen weer geven
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207545"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051352"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -95,7 +95,7 @@ De beschik bare protocollen zijn afhankelijk van de gebruikte Load Balancer SKU:
 | **Standaard-SKU** |    &#9989; |   &#9989; |   &#9989; |
 | **Basis-SKU** |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP-test
+### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP-test
 
 TCP-tests initiëren een verbinding door een open TCP-handshake met drie richtings controle uit te voeren met de gedefinieerde poort.  TCP-tests beëindigen een verbinding met een in vier richtingen gesloten TCP-handshake.
 
@@ -223,7 +223,7 @@ Naast Load Balancer status tests [gebruiken de volgende bewerkingen dit IP-adres
 - Maakt communicatie met de virtuele DNS-server mogelijk om gefilterde naam omzetting te bieden aan klanten die geen aangepaste DNS-servers definiëren.  Deze filtering zorgt ervoor dat klanten alleen de hostnamen van hun implementatie kunnen omzetten.
 - Hiermee kan de virtuele machine een dynamisch IP-adres verkrijgen van de DHCP-service in Azure.
 
-## <a name="design-guidance"></a><a name="design"></a>Ontwerp richtlijnen
+## <a name="design-guidance"></a><a name="design"></a> Ontwerp richtlijnen
 
 Status tests worden gebruikt om uw service robuust te maken en te laten schalen. Een onjuiste configuratie of een onjuist ontwerp patroon kan invloed hebben op de beschik baarheid en schaal baarheid van uw service. Bekijk dit hele document en bedenk wat het effect van uw scenario is wanneer deze test reactie wordt gemarkeerd als niet-actief of gemarkeerd, en hoe deze invloed heeft op de beschik baarheid van uw toepassings scenario.
 
@@ -249,7 +249,7 @@ Als u meerdere interfaces op uw VM hebt, moet u ervoor zorgen dat u reageert op 
 
 Schakel TCP- [tijds tempels](https://tools.ietf.org/html/rfc1323)niet in.  Het inschakelen van TCP-tijds tempels kan ertoe leiden dat status controles mislukken omdat TCP-pakketten worden verwijderd door de TCP-stack van het gast besturingssysteem van de virtuele machine, wat leidt tot Load Balancer het respectievelijke eind punt wordt gemarkeerd.  TCP-tijds tempels worden standaard ingeschakeld voor beveiligde VM-installatie kopieën en moeten worden uitgeschakeld.
 
-## <a name="monitoring"></a>Controle
+## <a name="monitoring"></a>Bewaking
 
 Zowel open bare als interne [Standard Load Balancer](load-balancer-standard-overview.md) geven per eind punt en back-end-eindpunt status de waarde met meerdere dimensies via Azure monitor. Deze metrische gegevens kunnen worden gebruikt door andere Azure-Services of partner toepassingen. 
 
@@ -263,6 +263,6 @@ Met Basic Public Load Balancer wordt de status van de status test per back-end-g
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md)
-- [Aan de slag met het maken van een open bare load balancer in Resource Manager met behulp van Power shell](quickstart-create-standard-load-balancer-powershell.md)
+- [Aan de slag met het maken van een open bare load balancer in Resource Manager met behulp van Power shell](quickstart-load-balancer-standard-public-powershell.md)
 - [REST API voor status tests](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - Nieuwe Health probe-vaardig heden aanvragen met [de UserVoice van Load Balancer](https://aka.ms/lbuservoice)

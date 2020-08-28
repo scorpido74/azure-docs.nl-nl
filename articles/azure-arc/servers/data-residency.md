@@ -4,12 +4,12 @@ description: Gegevens locatie en informatie over Azure Arc-servers (preview).
 ms.topic: reference
 ms.date: 08/25/2020
 ms.custom: references_regions
-ms.openlocfilehash: 028398c27dde9760192d366b9e8a91dca8e429cf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f207f5889c1764eebcc6081960ff70c0d5bca3a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860841"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048853"
 ---
 # <a name="azure-arc-enabled-servers-preview-data-residency"></a>Servers met Azure Arc ingeschakeld (preview): data locatie
 
@@ -21,7 +21,7 @@ Servers met Azure-Arc (preview) **[zijn beschikbaar als preview-versie](https://
 
 Azure Arc-servers (preview) configuratie-instellingen voor [Azure VM-extensie](manage-vm-extensions.md) opslaan (dat wil zeggen, eigenschaps waarden) voor de uitbrei ding moet worden opgegeven voordat er wordt geprobeerd op de verbonden computer in te scha kelen. Wanneer u bijvoorbeeld de VM-extensie Log Analytics inschakelt, wordt u gevraagd om de Log Analytics **werk ruimte-id** en de **primaire sleutel**.
 
-Er wordt ook informatie over de meta gegevens van de verbonden computer verzameld. Specifiek:
+Er wordt ook informatie over de meta gegevens van de verbonden computer verzameld. Met name:
 
 * Naam en versie van het besturings systeem
 * Computernaam
@@ -34,4 +34,4 @@ Zie voor meer informatie over onze regionale tolerantie en nalevings ondersteuni
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het ontwerpen van [Azure-tolerantie](/architecture/reliability/architect).
+Meer informatie over het ontwerpen van [Azure-tolerantie](/azure/architecture/reliability/architect).

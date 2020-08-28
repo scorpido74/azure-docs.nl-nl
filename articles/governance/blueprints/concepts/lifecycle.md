@@ -1,14 +1,14 @@
 ---
 title: Inzicht in de levens cyclus van een blauw druk
 description: Meer informatie over de levens cyclus van de definitie van een blauw druk en informatie over elke fase, inclusief het bijwerken en verwijderen van blauw druk-toewijzingen.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864025"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049703"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Inzicht in de levens cyclus van een Azure Blueprint
 
@@ -81,14 +81,14 @@ Een blauw druk verwijderen met de [Azure Portal](../create-blueprint-portal.md#d
 
 Er zijn verschillende punten tijdens de levens cyclus die een blauw druk kan worden toegewezen aan een abonnement. Wanneer de modus van een blauw druk wordt **gepubliceerd**, kan die versie worden toegewezen aan een abonnement. Met deze levens cyclus kunnen versies van een blauw druk worden gebruikt en actief worden toegewezen terwijl er een nieuwere versie wordt ontwikkeld.
 
-Als versies van blauw drukken worden toegewezen, is het belang rijk om te begrijpen waar ze zijn toegewezen en met welke para meters ze zijn toegewezen. De para meters kunnen statisch of dynamisch zijn. Zie [statische en dynamische para meters](parameters.md)voor meer informatie.
+Als versies van blauw drukken worden toegewezen, is het belang rijk om te begrijpen waar ze zijn toegewezen en met welke para meters ze zijn toegewezen. De para meters kunnen statisch of dynamisch zijn. Zie [statische en dynamische para meters](./parameters.md)voor meer informatie.
 
 ### <a name="updating-assignments"></a>Toewijzingen bijwerken
 
 Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zijn verschillende redenen voor het bijwerken van een bestaande toewijzing, waaronder:
 
-- [Resource vergrendeling](resource-locking.md) toevoegen of verwijderen
-- De waarde van [dynamische para meters](parameters.md#dynamic-parameters) wijzigen
+- [Resource vergrendeling](./resource-locking.md) toevoegen of verwijderen
+- De waarde van [dynamische para meters](./parameters.md#dynamic-parameters) wijzigen
 - De toewijzing upgraden naar een nieuwere, **gepubliceerde** versie van de blauw druk
 
 Zie [bestaande toewijzingen bijwerken](../how-to/update-existing-assignments.md)voor meer informatie.
@@ -97,7 +97,7 @@ Zie [bestaande toewijzingen bijwerken](../how-to/update-existing-assignments.md)
 
 Als de blauw druk niet meer nodig is, kan deze niet meer worden toegewezen aan de beheer groep of het abonnement. Tijdens de niet-toewijzing van de blauw druk gebeurt het volgende:
 
-- Verwijderen van [blauw druk-resource vergrendeling](resource-locking.md)
+- Verwijderen van [blauw druk-resource vergrendeling](./resource-locking.md)
 - Het verwijderen van de blauw druk toewijzings object
 - Waarden Als een door het **systeem toegewezen beheerde identiteit** is gebruikt, wordt deze ook verwijderd
 
@@ -106,8 +106,8 @@ Als de blauw druk niet meer nodig is, kan deze niet meer worden toegewezen aan d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
+- Meer informatie over hoe u [statische en dynamische parameters](./parameters.md) gebruikt.
+- Meer informatie over hoe u de [blauwdrukvolgorde](./sequencing-order.md) aanpast.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
 - Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).

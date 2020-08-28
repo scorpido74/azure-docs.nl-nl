@@ -10,14 +10,21 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een Spring Cloud-app starten - portal
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Een Spring Cloud-app starten - Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Een Spring Cloud-app starten - bron
-      href: spring-cloud-launch-from-source.md
-    - name: Een Spring Cloud-app starten - Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: Uw eerste app lanceren
+      href: spring-cloud-quickstart.md
+    - name: Microservices bouwen en uitvoeren
+      expanded: true
+      items:
+        - name: Inleiding in voorbeeldapps
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Azure Spring Cloud-service inrichten
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: Configuratieserver instellen
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: Apps bouwen en implementeren
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: 'Logboeken, metrische gegevens en tracering gebruiken'
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Zelfstudies
   items:
     - name: Schaal van een app handmatig aanpassen

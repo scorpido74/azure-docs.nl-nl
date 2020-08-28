@@ -3,12 +3,12 @@ title: Media Graph-concept-Azure
 description: Met een media grafiek kunt u definiëren waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Dit artikel bevat een gedetailleerde beschrijving van het concept van media Graph.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798836"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048416"
 ---
 # <a name="media-graph"></a>Mediagrafiek
 
@@ -37,19 +37,28 @@ De waarden voor de para meters in de topologie worden opgegeven wanneer u grafie
 
 ## <a name="media-graph-states"></a>Status van media grafiek  
 
-Een media grafiek kan een van de volgende statussen hebben:
+De levens cyclus van Graph-topologieën en grafiek exemplaren wordt weer gegeven in het volgende status diagram.
 
-* Inactief: geeft de status aan waar een media grafiek is geconfigureerd, maar niet actief is.
-* Activeren: de status wanneer een media grafiek wordt geïnstantieerd (dat wil zeggen, de status van de overgang tussen inactieve en actieve).
-* Actief: de status wanneer een media grafiek actief is. 
+![Grafiek topologie en de levens cyclus van Graph-instanties](./media/media-graph/graph-topology-lifecycle.svg)
 
-    > [!NOTE]
-    >  De media grafiek kan actief zijn zonder dat de gegevens worden getransporteerd (de invoer video bron gaat bijvoorbeeld offline).
-* Deactiveren: dit is de status wanneer een media grafiek wordt overgezet van actief naar inactief.
+U begint met [het maken van een grafiek topologie](direct-methods.md#graphtopologyset). Vervolgens maakt u voor elke live video-feed die u met deze topologie wilt verwerken, [een exemplaar van Graph](direct-methods.md#graphinstanceset). 
 
-In het onderstaande diagram ziet u de computer status van media Graph.
+De instantie van Graph heeft de `Inactive` status (niet-actief).
 
-![Status computer media grafiek](./media/media-graph/media-graph-state-machine.png)
+Wanneer u klaar bent om de live video-feed naar het Graph-exemplaar te verzenden, [activeert](direct-methods.md#graphinstanceactivate) u deze. Het exemplaar van de grafiek gaat kort door met een overgangs `Activating` status en gaat als geslaagd in een `Active` staat. In de `Active` status worden media verwerkt (als het exemplaar van de grafiek invoer gegevens ontvangt).
+
+> [!NOTE]
+>  Een instantie van een grafiek kan actief zijn zonder dat de gegevens worden getransporteerd (de camera gaat bijvoorbeeld offline).
+> Uw Azure-abonnement wordt gefactureerd wanneer het exemplaar van de grafiek de status actief heeft.
+
+U kunt het proces voor het maken en activeren van andere Graph-instanties voor dezelfde topologie herhalen als u andere live videofeeds hebt om te verwerken.
+
+Wanneer u klaar bent met het verwerken van de live video feed, kunt u het exemplaar van de grafiek [deactiveren](direct-methods.md#graphinstancedeactivate) . Het exemplaar van de grafiek gaat kort door een overgangs `Deactivating` status, maakt alle gegevens die deze bevat en vervolgens terug naar de `Inactive` status.
+
+U kunt alleen een exemplaar van een grafiek [verwijderen](direct-methods.md#graphinstancedelete) wanneer deze zich in de staat bevindt `Inactive` .
+
+Nadat alle grafiek exemplaren die naar een specifieke grafiek topologie verwijzen, zijn verwijderd, kunt u [de grafiek topologie verwijderen](direct-methods.md#graphtopologydelete).
+
 
 ## <a name="sources-processors-and-sinks"></a>Bronnen, processors en sinks  
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814218"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049860"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partners
 
@@ -31,6 +31,7 @@ Het ISV-partner netwerk breidt onze oplossings mogelijkheden uit om u te helpen 
 | :--- | :--- |
 | ![logo](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) is een oplossings provider voor het voor komen van fraude die organisaties helpt bij het beveiligen tegen bot-aanvallen, inbreuk op account overname en frauduleuze account openingen.
 | ![logo](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) is een identiteits controle-provider waarmee risico beoordelingen worden uitgevoerd op basis van gebruikers kenmerken om fraude te voor komen.|
+| ![logo](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) is een echte verificatie provider met een wacht woord, waarmee wacht woorden met een open bare sleutel versleuteling worden vervangen door fraude, phishing en hergebruik van referenties.|
 | ![logo](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) is een identiteits verificatie en controle provider met id-verificatie oplossingen, fraude preventie oplossingen, compatibiliteits oplossingen en anderen.|
 | ![logo](./media/partner-gallery/itsme-logo.png) | [Itsme](./partner-itsme.md) is een digitale id-oplossing voor identificatie, authenticatie en Trust Services (eiDAS) waarmee gebruikers veilig kunnen worden aangemeld zonder kaart lezers, wacht woorden, twee ledige verificatie en meerdere pincodes. |
 | ![logo](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) is een id-verificatie service waarmee realtime-verificatie via een geautomatiseerde id wordt ingeschakeld, waarbij klant gegevens worden beschermd. |

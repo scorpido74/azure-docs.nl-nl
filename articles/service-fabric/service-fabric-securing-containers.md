@@ -4,14 +4,17 @@ description: Meer informatie over het importeren van certificaat bestanden in ee
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 949cc642572bfbf6ebe297d3ffba16939561ac8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012718"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050740"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Een certificaat bestand importeren in een container die wordt uitgevoerd op Service Fabric
+
+> [!NOTE]
+> Voor Service Fabric-clusters die worden uitgevoerd op Azure, wordt aangeraden om de [beheerde identiteit](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) van de toepassing te service Fabric gebruiken om toepassings certificaten vanuit een container in te richten. Beheerde identiteit biedt isolatie van geheimen en certificaten op het niveau van de service, en maakt het mogelijk dat het inrichten van toepassings certificaten deel uitmaakt van de werk stroom van de toepassing, in plaats van de werk stroom van de infra structuur. Het CertificateRef-mechanisme zal in een toekomstige release worden afgeschaft.
 
 U kunt uw container Services beveiligen door een certificaat op te geven. Service Fabric biedt een mechanisme voor services binnen een container om toegang te krijgen tot een certificaat dat op de knoop punten in een Windows-of Linux-cluster (versie 5,7 of hoger) is geïnstalleerd. Het certificaat moet worden geïnstalleerd in een certificaat archief onder LocalMachine op alle knoop punten van het cluster. De persoonlijke sleutel die overeenkomt met het certificaat moet beschikbaar, toegankelijk en in Windows-exporteerbaar zijn. De certificaat informatie wordt verstrekt in het manifest van de toepassing onder de- `ContainerHostPolicies` tag als in het volgende code fragment wordt weer gegeven:
 
@@ -30,6 +33,8 @@ Voor Linux-clusters worden de certificaten (PEM) gekopieerd van het archief dat 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+Houd er rekening mee dat zowel het `PEM` als- `PrivateKey` bestand het certificaat en de niet-versleutelde persoonlijke sleutel bevatten.
 
 Als u de certificaten al in het vereiste formulier hebt en u deze wilt openen in de container, kunt u een gegevens pakket in uw app-pakket maken en het volgende in het manifest van de toepassing opgeven:
 

@@ -3,21 +3,23 @@ title: Inktgegevens naar de Ink Recognizer-API verzenden
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het aanroepen van de Ink Analyzer-API voor verschillende toepassingen
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/24/2020
+ms.author: aahi
+ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221104"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051097"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Inktgegevens naar de Ink Recognizer-API verzenden 
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Digital Inking verwijst naar technologieën die digitale representaties mogelijk maken van input zoals handgeschreven tekst en tekeningen. Dit wordt doorgaans gerealiseerd met een digitizer waarmee de bewegingen van invoer apparaten, zoals een pen, worden vastgelegd. Omdat apparaten rijke digitale inktwaarneming mogelijk maken, kunnen kunstmatige intelligentie en machine learning geschreven vormen en tekst in vrijwel elke context herkennen. Met de API voor inkt herkenning kunt u inkt streken verzenden en gedetailleerde informatie hierover ophalen. 
 
@@ -90,6 +92,6 @@ Met de herkennings resultaten vooraf vindt u informatie over de kenmerken van in
 * [Naslag informatie over REST API van inkt herkenning](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 * Begin met het verzenden van digitale inkt gegevens met behulp van:
-    * [G #](../quickstarts/csharp.md)
+    * [C#](../quickstarts/csharp.md)
     * [Java](../quickstarts/java.md)
-    * [Javascript](../quickstarts/javascript.md)
+    * [JavaScript](../quickstarts/javascript.md)

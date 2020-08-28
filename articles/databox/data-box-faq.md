@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823978"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051165"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -61,7 +61,7 @@ A. Data Box wordt ondersteund voor alle regio's in VS, Europa-west, Europa-noord
 
 Data Box ondersteunt opname van gegevens of uitgaand verkeer binnen hetzelfde land/dezelfde regio als de bestemming en snijdt geen internationale grenzen. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar gegevens vakken kunnen worden verzonden naar en van een EU-land/regio.
 
-Als u bijvoorbeeld in het import scenario een on-premises gegevens in Canada had die u wilt verplaatsen naar een Azure-account voor een West-opslag, kunt u dit op de volgende manier belopen:
+Als u in het scenario voor importeren bijvoorbeeld de bron gegevens in Canada had die u wilt verplaatsen naar een Azure-account voor een West-opslag, kunt u dit op de volgende manier afleiden:
 
 1. Volg de orde van Data Box in Canada door een opslag account te kiezen in Cananda. Het apparaat wordt verzonden vanuit een Azure-Data Center in Canada naar het verzend adres (in Canada) dat wordt gegeven tijdens het maken van de order.
 

@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530114"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050672"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -39,10 +39,14 @@ Het apparaat kan als volgt worden geïmplementeerd:
 - Als u geen sjabloon wilt gebruiken of als u zich in Azure Government bevindt, kunt u het apparaat voor VMware of Hyper-V implementeren met behulp van een Power shell-script.
 - Voor fysieke servers implementeert u het apparaat altijd met behulp van een script.
 
-
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hoe maakt het apparaat verbinding met Azure?
 
-Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute met open bare/micro soft-peering.
+Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute.
+
+- Als u Azure ExpressRoute wilt gebruiken voor Azure Migrate replicatie verkeer, is micro soft-peering of een bestaande open bare peering vereist (open bare peering is afgeschaft voor nieuwe gemaakte aanmaak bewerkingen).
+- Replicatie via Azure ExpressRoute met (alleen) persoonlijke peering is ingeschakeld, wordt niet ondersteund.
+
+Azure ExpressRoute met micro soft-peering geconfigureerd is het aanbevolen routerings domein voor replicatie verkeer.
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Is de invloed van de apparatuur op de prestaties?
 
@@ -53,7 +57,6 @@ Met de Azure Migrate apparaat worden on-premises machines continu op de prestati
 Wanneer u de gedownloade sjabloon gebruikt om de apparaat-VM te maken, kunt u onderdelen (bijvoorbeeld anti virus) aan de sjabloon toevoegen als u de communicatie-en firewall regels die vereist zijn voor het Azure Migrate apparaat hebt ingesteld.
 
 ## <a name="what-network-connectivity-is-required"></a>Welke netwerk verbinding is vereist?
-
 
 Het apparaat moet toegang hebben tot Azure-Url's. [Controleer](migrate-appliance.md#url-access) de lijst met url's.
 
@@ -99,9 +102,11 @@ In deze stappen wordt beschreven hoe het apparaat verbinding maakt met VMware vC
 Nee. Er is een een-op-een-toewijzing tussen een [Azure migrate apparaat](migrate-appliance.md) en vCenter Server. Als u Vm's op meerdere exemplaren van vCenter Server wilt detecteren, moet u meerdere toestellen implementeren. 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Kan een Azure Migrate project meerdere toestellen hebben?
+
 Aan een project kunnen meerdere apparaten zijn gekoppeld. Een apparaat kan echter slechts aan één project worden gekoppeld. 
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kan de Azure Migrate apparaat/replicatie apparaat verbinding maken met dezelfde vCenter?
+
 Ja. U kunt zowel het Azure Migrate apparaat (gebruikt voor de distributie en de VMware-migratie zonder agent) toevoegen aan dezelfde vCenter-Server (gebruikt voor de migratie van virtuele VMware-machines op basis van een agent).
 
 

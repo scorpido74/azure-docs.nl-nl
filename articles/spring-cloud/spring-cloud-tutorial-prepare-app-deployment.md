@@ -7,16 +7,18 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2ae94da3d9b2dee62bc031c4a32d17b43be00a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021270"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046728"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
 In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
+
+Voordat u dit voor beeld uitvoert, kunt u de [eenvoudige Snelstartgids](spring-cloud-quickstart.md)proberen.
 
 Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
 * [App starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
@@ -39,7 +41,7 @@ De Azure lente-Cloud ondersteunt alleen veer boot-apps van veer boot versie 2,1 
 Spring boot-versie | Lente-Cloud versie
 ---|---
 2.1 | Greenwich. RELEASE
-2.2 | Hoxton. RELEASE
+2,2 | Hoxton. RELEASE
 2.3 | Hoxton.SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring boot versie 2,1
@@ -127,7 +129,7 @@ De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor u
 Spring boot-versie | Lente-Cloud versie | Azure lente-Cloud versie
 ---|---|---
 2.1 | Greenwich. RELEASE | 2.1
-2.2 | Hoxton. RELEASE | 2.2
+2,2 | Hoxton. RELEASE | 2,2
 2.3 | Hoxton.SR5 | 2.3
 
 Neem een van de volgende afhankelijkheden op in uw pom.xml-bestand. Selecteer de afhankelijkheid waarvan de Azure lente-Cloud versie overeenkomt met uw eigen.
@@ -256,10 +258,10 @@ Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` 
 
  U moet ook een Azure-toepassing Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Zie de [documentatie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie over het gebruik van Application Insights met Azure lente Cloud.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Toepassings logboeken en metrische gegevens analyseren](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 * [Uw configuratieserver instellen](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Gedistribueerde tracering gebruiken met Azure veer Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Gedistribueerde tracering gebruiken met Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
 * [Hand leiding voor veer Snelstartgids](https://spring.io/quickstart)
 * [Spring boot-documentatie](https://spring.io/projects/spring-boot)
 

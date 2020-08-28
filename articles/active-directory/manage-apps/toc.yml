@@ -246,7 +246,7 @@
               href: application-types.md
             - name: Onverwachte gebruiker toegewezen
               href: ways-users-get-assigned-to-applications.md
-        - name: Problemen met het toegangspaneel oplossen
+        - name: Problemen met mijn apps oplossen
           items:
             - name: Browserextensie beheren
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: Het aanmelden is mislukt
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Fout bij het installeren van browserextensie
-              href: access-panel-extension-problem-installing.md
             - name: Fout bij selfservice-app-toegang gebruiken
               href: access-panel-troubleshoot-self-service-access.md
         - name: Problemen met on-premises apps oplossen

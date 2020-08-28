@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen en weer geven van de logboeken
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250733"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048275"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Logboeken van Kubernetes-hoofdknooppunten inschakelen en controleren in AKS (Azure Kubernetes Service)
 
@@ -30,12 +30,8 @@ Azure Monitor-logboeken worden in de Azure Portal ingeschakeld en beheerd. Als u
 1. Selecteer uw AKS-cluster, zoals *myAKSCluster*, en kies vervolgens **Diagnostische instelling toevoegen**.
 1. Voer een naam in, zoals *myAKSClusterLogs*, en selecteer vervolgens de optie om naar **log Analytics te verzenden**.
 1. Selecteer een bestaande werk ruimte of maak een nieuwe. Als u een werk ruimte maakt, moet u een werkruimte naam, een resource groep en een locatie opgeven.
-1. Selecteer in de lijst met beschik bare Logboeken de logboeken die u wilt inschakelen. Veelvoorkomende logboeken zijn de *uitvoeren-apiserver*, *uitvoeren-Controller-Manager*en *uitvoeren scheduler*. U kunt extra logboeken inschakelen, zoals *uitvoeren-audit* en *cluster-automatisch schalen*. U kunt de verzamelde logboeken retour neren en wijzigen als Log Analytics werk ruimten zijn ingeschakeld.
+1. Selecteer in de lijst met beschik bare Logboeken de logboeken die u wilt inschakelen. Schakel in dit voor beeld de logboeken voor *uitvoeren-auditing* in. Veelvoorkomende logboeken zijn de *uitvoeren-apiserver*, *uitvoeren-Controller-Manager*en *uitvoeren scheduler*. U kunt de verzamelde logboeken retour neren en wijzigen als Log Analytics werk ruimten zijn ingeschakeld.
 1. Wanneer u klaar bent, selecteert u **Opslaan** om het verzamelen van de geselecteerde Logboeken in te scha kelen.
-
-In de volgende voorbeeld afbeelding van de portal wordt het venster *Diagnostische instellingen* weer gegeven:
-
-![Log Analytics-werk ruimte inschakelen voor Azure Monitor-logboeken van AKS-cluster](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Een test pod plannen op het AKS-cluster
 
@@ -71,30 +67,25 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Verzamelde logboeken weer geven
 
-Het kan enkele minuten duren voordat de diagnostische logboeken zijn ingeschakeld en worden weer gegeven in de werk ruimte Log Analytics. Selecteer in de Azure Portal de resource groep voor uw Log Analytics werk ruimte, zoals *myResourceGroup*, en kies vervolgens uw log Analytics-resource, zoals *myAKSLogs*.
+Het kan enkele minuten duren voordat de diagnostische logboeken zijn ingeschakeld en worden weer gegeven. Ga in het Azure Portal naar uw AKS-cluster en selecteer **Logboeken** aan de linkerkant. Sluit het venster *voorbeeld query's* als dit wordt weer gegeven.
 
-![De Log Analytics-werk ruimte voor uw AKS-cluster selecteren](media/view-master-logs/select-log-analytics-workspace.png)
 
-Kies **Logboeken**aan de linkerkant. Als u de *uitvoeren-apiserver*wilt weer geven, voert u de volgende query in het tekstvak in:
-
-```
-AzureDiagnostics
-| where Category == "kube-apiserver"
-| project log_s
-```
-
-Veel logboeken worden waarschijnlijk geretourneerd voor de API-server. Als u de query wilt verkleinen om de logboeken te bekijken over de NGINX pod die u in de vorige stap hebt gemaakt, voegt u een extra *where* -instructie toe om te zoeken naar *peulen/NGINX* , zoals wordt weer gegeven in de volgende voorbeeld query:
+Kies **Logboeken**aan de linkerkant. Als u de *uitvoeren-audit* logboeken wilt weer geven, voert u de volgende query in het tekstvak in:
 
 ```
 AzureDiagnostics
-| where Category == "kube-apiserver"
-| where log_s contains "pods/nginx"
+| where Category == "kube-audit"
 | project log_s
 ```
 
-De specifieke logboeken voor uw NGINX-pod worden weer gegeven, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
+Veel logboeken worden waarschijnlijk geretourneerd. Als u de query wilt verkleinen om de logboeken te bekijken over de NGINX pod die u in de vorige stap hebt gemaakt, voegt u een extra *where* -instructie toe om naar *NGINX* te zoeken, zoals wordt weer gegeven in de volgende voorbeeld query:
 
-![Query resultaten van log Analytics voor een voor beeld van NGINX pod](media/view-master-logs/log-analytics-query-results.png)
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
+```
 
 Als u aanvullende logboeken wilt weer geven, kunt u de query voor de *categorie* naam bijwerken naar *uitvoeren-Controller-Manager* of *uitvoeren-scheduler*, afhankelijk van de aanvullende logboeken die u inschakelt. Aanvullende *where* -instructies kunnen vervolgens worden gebruikt om de gebeurtenissen te verfijnen die u zoekt.
 
