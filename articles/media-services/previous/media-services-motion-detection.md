@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77913001"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016832"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Bewegingen detecteren met Azure Media Analytics
 
@@ -34,7 +35,7 @@ Deze technologie is gericht op beveiligings videofeeds en kan bewegingen in rele
 
 De **Azure Media Motion detector** -MP is momenteel beschikbaar als preview-versie.
 
-Dit artikel bevat informatie over **Azure Media Motion detector** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net
+Dit artikel bevat informatie over  **Azure Media Motion detector** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net
 
 ## <a name="motion-detector-input-files"></a>Bewegings detector-invoer bestanden
 Video bestanden. Momenteel worden de volgende indelingen ondersteund: MP4, MOV en WMV.
@@ -45,7 +46,7 @@ Wanneer u een taak met **Azure Media Motion detector**maakt, moet u een voor ins
 ### <a name="parameters"></a>Parameters
 U kunt de volgende para meters gebruiken:
 
-| Name | Opties | Description | Standaard |
+| Naam | Opties | Beschrijving | Standaard |
 | --- | --- | --- | --- |
 | sensitivityLevel |Teken reeks: laag, gemiddeld, hoog |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
 | frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
@@ -98,14 +99,14 @@ De bewegings detector-API biedt indica toren wanneer er objecten in beweging zij
 
 In de volgende tabel worden elementen van het JSON-uitvoer bestand beschreven.
 
-| Element | Description |
+| Element | Beschrijving |
 | --- | --- |
 | versie |Dit verwijst naar de versie van de video-API. De huidige versie is 2. |
 | lijnen |' Ticks ' per seconde van de video. |
 | offset |De tijds verschuiving voor tijds tempels in Ticks. In versie 1,0 van video-Api's is dit altijd 0. Deze waarde kan worden gewijzigd in toekomstige scenario's die worden ondersteund. |
 | snelheid |Aantal frames per seconde video. |
 | breedte, hoogte |Verwijst naar de breedte en hoogte van de video in pixels. |
-| start |Het tijds tempel van de begin datum in Ticks. |
+| starten |Het tijds tempel van de begin datum in Ticks. |
 | duur |De lengte van de gebeurtenis, in Ticks. |
 | interval |Het interval van elke vermelding in de gebeurtenis, in Ticks. |
 | events |Elk gebeurtenis fragment bevat de beweging die binnen die tijds duur is gedetecteerd. |

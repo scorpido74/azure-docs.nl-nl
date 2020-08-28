@@ -3,12 +3,13 @@ title: Timers en herinneringen Reliable Actors
 description: Inleiding tot timers en herinneringen voor Service Fabric Reliable Actors, met inbegrip van de richt lijnen voor het gebruik ervan.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245944"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016543"
 ---
 # <a name="actor-timers-and-reminders"></a>Actor timers en herinneringen
 Actors kunnen periodiek werk op zichzelf plannen door timers of herinneringen te registreren. Dit artikel laat u zien hoe u timers en herinneringen kunt gebruiken en hoe u de verschillen tussen deze time-out.
@@ -204,7 +205,7 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Wanneer een herinnering wordt geactiveerd, roept de Reliable Actors runtime de `ReceiveReminderAsync` methode (C#) of `receiveReminderAsync` (Java) aan voor de actor. Een actor kan meerdere herinneringen registreren en de `ReceiveReminderAsync` methode (C#) of `receiveReminderAsync` (Java) wordt aangeroepen wanneer een van deze herinneringen wordt geactiveerd. De actor kan de naam van de herinnering gebruiken die wordt door gegeven aan de `ReceiveReminderAsync` methode (C#) of `receiveReminderAsync` (Java) om te bepalen welke herinnering is geactiveerd.
+Wanneer een herinnering wordt geactiveerd, roept de Reliable Actors runtime de  `ReceiveReminderAsync` methode (C#) of `receiveReminderAsync` (Java) aan voor de actor. Een actor kan meerdere herinneringen registreren en de `ReceiveReminderAsync` methode (C#) of `receiveReminderAsync` (Java) wordt aangeroepen wanneer een van deze herinneringen wordt geactiveerd. De actor kan de naam van de herinnering gebruiken die wordt door gegeven aan de `ReceiveReminderAsync` methode (C#) of `receiveReminderAsync` (Java) om te bepalen welke herinnering is geactiveerd.
 
 Met de functie actors wordt de status van de actor opgeslagen wanneer de `ReceiveReminderAsync` aanroep (C#) of `receiveReminderAsync` (Java) is voltooid. Als er een fout optreedt bij het opslaan van de status, wordt dat actor-object gedeactiveerd en wordt er een nieuw exemplaar geactiveerd.
 

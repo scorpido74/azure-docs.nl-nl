@@ -5,12 +5,13 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260449"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016696"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-levens cyclus, automatische garbage collection en hand matig verwijderen
 Er wordt een actor geactiveerd wanneer een aanroep voor de eerste keer wordt uitgevoerd naar een van de methoden. Een actor wordt gedeactiveerd (garbagecollection door de actors-runtime) als deze niet wordt gebruikt voor een Configureer bare periode. Een actor en de status kunnen op elk gewenst moment hand matig worden verwijderd.
@@ -40,7 +41,7 @@ Wanneer een actor wordt gedeactiveerd, worden verwijzingen naar het actor-object
 Wat is de waarde die wordt gebruikt voor het deactiveren en opschonen van de garbagecollection?
 
 * Een gesprek ontvangen
-* `IRemindable.ReceiveReminderAsync`de methode die wordt aangeroepen (alleen van toepassing als de actor gebruikmaakt van herinneringen)
+* `IRemindable.ReceiveReminderAsync` de methode die wordt aangeroepen (alleen van toepassing als de actor gebruikmaakt van herinneringen)
 
 > [!NOTE]
 > Als de actor timers gebruikt en de retour aanroep wordt aangeroepen, wordt deze **niet** geteld als ' wordt gebruikt '.

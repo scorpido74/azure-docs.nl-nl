@@ -3,12 +3,12 @@ title: Toepassings consistente back-ups van virtuele Linux-machines
 description: Maak toepassings consistente back-ups van uw virtuele Linux-machines naar Azure. In dit artikel wordt uitgelegd hoe u het script Framework kunt configureren voor het maken van back-ups van door Azure geïmplementeerde Linux-Vm's Dit artikel bevat ook informatie over het oplossen van problemen.
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407095"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999237"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassingsconsistente back-up van Azure Linux-VM’s
 
@@ -58,7 +58,7 @@ Pre-scripts aanroepen systeem eigen toepassings-Api's, die de IOs stil leggen en
 
     - **timeoutInSeconds**: Geef afzonderlijke time-outs op voor het pre-script en het post-script (maximum waarde kan 1800 zijn).
 
-    - **continueBackupOnFailure**: Stel deze waarde in op **True** als u wilt dat Azure backup terugvallen op een consistente en crash consistente back-up van een bestands systeem als het pre-script of het post script mislukt. Als deze optie is ingesteld op **False** , mislukt de back-up als er een script fout optreedt (behalve wanneer u een virtuele machine met één schijf hebt die terugvalt op crash consistente back-up, ongeacht deze instelling). Wanneer de **continueBackupOnFailure** -waarde is ingesteld op False en de back-up mislukt, wordt de back-upbewerking opnieuw geprobeerd op basis van een nieuwe logica in de service (voor het opgegeven aantal pogingen).
+    - **continueBackupOnFailure**: Stel deze waarde in op **True** als u wilt dat Azure backup terugvallen op een consistente en crash consistente back-up van een bestands systeem als het pre-script of het post script mislukt. Als u deze optie instelt op **False** , mislukt de back-up als er een script fout optreedt (behalve wanneer u een virtuele machine met één schijf hebt die terugvalt op crash consistente back-up, ongeacht deze instelling). Wanneer de **continueBackupOnFailure** -waarde is ingesteld op False en de back-up mislukt, wordt de back-upbewerking opnieuw geprobeerd op basis van een nieuwe logica in de service (voor het opgegeven aantal pogingen).
 
     - **fsFreezeEnabled**: Geef op of Linux fsfreeze moet worden aangeroepen tijdens het maken van de VM-moment opname om consistentie van het bestands systeem te garanderen. U wordt aangeraden deze instelling in te stellen op **waar** , tenzij uw toepassing afhankelijk is van het uitschakelen van fsfreeze.
 

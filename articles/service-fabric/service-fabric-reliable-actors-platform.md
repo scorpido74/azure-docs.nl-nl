@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 621e325d0b549d2970180a5a40eb09260c1f2ee0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253470"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016611"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hoe Reliable Actors het Service Fabric platform gebruiken?
 In dit artikel wordt uitgelegd hoe Reliable Actors werkt op het Azure Service Fabric-platform. Reliable Actors uitgevoerd in een framework dat wordt gehost in een implementatie van een stateful reliable-service met de naam *actor service*. De actor-service bevat alle onderdelen die nodig zijn voor het beheren van de levens cyclus en het verzenden van berichten voor uw actors:
@@ -61,7 +62,7 @@ Actor Services zijn gepartitioneerde stateful Services. Elke partitie van een ac
 Reliable Services kunnen worden gemaakt met verschillende partitie schema's en partitie sleutel bereik. De actor-service maakt gebruik van het schema Int64 partitioneren met het volledige Int64-sleutel bereik om actors toe te wijzen aan partities.
 
 ### <a name="actor-id"></a>Actor-ID
-Aan elke actor die in de service is gemaakt, is een unieke ID gekoppeld die wordt vertegenwoordigd door de `ActorId` klasse. `ActorId`is een ondoorzichtige ID-waarde die kan worden gebruikt voor een uniforme distributie van actors in de service partities door wille keurige Id's te genereren:
+Aan elke actor die in de service is gemaakt, is een unieke ID gekoppeld die wordt vertegenwoordigd door de `ActorId` klasse. `ActorId` is een ondoorzichtige ID-waarde die kan worden gebruikt voor een uniforme distributie van actors in de service partities door wille keurige Id's te genereren:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());

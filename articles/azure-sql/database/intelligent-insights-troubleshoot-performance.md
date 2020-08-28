@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986382"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017274"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Problemen met prestatie problemen met Azure SQL Database en Azure SQL Managed instance oplossen met Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -168,7 +168,7 @@ Omdat een pagelatch een intern controle mechanisme is, wordt automatisch vastges
 
 Eén methode voor het afhandelen van vergren deling is het vervangen van een sequentiële index sleutel met een niet-opeenvolgende sleutel om toevoegingen gelijkmatig te verdelen over een index bereik. Normaal gesp roken wordt de werk belasting proportioneel gedistribueerd met een voorloop kolom in de index. Een andere methode om te overwegen is het partitioneren van tabellen. Het maken van een schema voor hash-partitionering met een berekende kolom in een gepartitioneerde tabel is een gemeen schappelijke benadering voor het beperken van buitensporige vergrendelings conflicten. In het geval van pagelatch i/o-conflicten helpt de inleiding tot het oplossen van dit prestatie probleem.
 
-Zie voor meer informatie [problemen met Latches diagnosticeren en oplossen op SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (PDF-down load).
+Zie voor meer informatie [problemen met Latches diagnosticeren en oplossen op SQL Server](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf) (PDF-down load).
 
 ## <a name="missing-index"></a>Ontbrekende index
 

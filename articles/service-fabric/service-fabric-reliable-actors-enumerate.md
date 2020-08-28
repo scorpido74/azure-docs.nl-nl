@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 8e462cc5fa82b8692304f58ef6cf0ea0e2db8725
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dd3a61db32fb8e442beb42bd45c88da8559a29dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245973"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016645"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors opsommen
 Met de Reliable Actors-service kan een client meta gegevens over de actors opsommen waarvoor de service wordt gehost. Omdat de actor-service een gepartitioneerde stateful service is, wordt er een inventarisatie uitgevoerd per partitie. Omdat elke partitie veel actors kan bevatten, wordt de inventarisatie geretourneerd als een set met pagina resultaten. De pagina's worden herhaald totdat alle pagina's zijn gelezen. In het volgende voor beeld ziet u hoe u een lijst met alle actieve actors maakt in één partitie van een actor service:

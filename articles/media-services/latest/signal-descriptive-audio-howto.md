@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-csharp
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072084"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006649"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Beschrijvende geluids sporen voor signalen
 
@@ -204,7 +204,7 @@ Wanneer uw coderings taak is voltooid, bevat de uitvoer-Asset de bestanden die d
 
 Nadat de codering is voltooid, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [streaming-locator](/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
 
-Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt en totdat deze wordt verwijderd, tenzij u de optionele start- en eindtijden configureert. 
+Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-Locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt uitgevoerd en de laatste keer totdat deze is verwijderd, tenzij u de optionele begin-en eind tijden configureert. 
 
 Bij het maken van een [StreamingLocator](/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u in-the-Clear (of niet-versleutelde inhoud) streamen, zodat het vooraf gedefinieerde beleid voor Clear streaming (**PredefinedStreamingPolicy. ClearStreamingOnly**) wordt gebruikt.
 

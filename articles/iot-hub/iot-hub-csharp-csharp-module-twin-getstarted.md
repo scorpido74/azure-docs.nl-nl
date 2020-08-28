@@ -8,13 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.custom: amqp
-ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: e990d122367581c785b411f3f6d3c39b334a14fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733381"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998574"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met IoT Hub module-identiteit en-module twee (.NET)
 
@@ -66,7 +66,7 @@ Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij [Az
 
 1. Selecteer **maken** om het project te maken.
 
-1. Open in Visual Studio **tools**  >  **NuGet package manager**  >  **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
+1. Open in Visual Studio **tools**  >  **NuGet package manager**  >  **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Bladeren**.
 
 1. Zoek en selecteer **micro soft. Azure. devices. client**en selecteer vervolgens **installeren**.
 

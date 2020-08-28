@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b603b800dfdfb96e9b6b1074dc1e39d31b994c06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80887194"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997775"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming voor Android met Media Services v3
 
@@ -121,7 +122,7 @@ Ontwikkel aars moeten tijdens de ontwikkeling van een toepassing verwijzen naar 
 
 Voor sommige oudere Android-apparaten moet u waarden instellen voor de volgende **policy_overrides** eigenschappen (gedefinieerd in [Widevine-licentie sjabloon](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**en **license_duration_seconds**. U kunt ze ook instellen op nul, wat betekent oneindig/onbeperkte duur.  
 
-De waarden moeten worden ingesteld om te voor komen dat er een geheeltallige overloop fout optreedt. Zie en voor meer uitleg over het probleem https://github.com/google/ExoPlayer/issues/3150 https://github.com/google/ExoPlayer/issues/3112 . <br/>Als u de waarden niet expliciet instelt, worden zeer grote waarden voor **PlaybackDurationRemaining** en **LicenseDurationRemaining** toegewezen, (bijvoorbeeld 9223372036854775807, de maximale positieve waarde voor een 64-bits geheel getal). Als gevolg hiervan wordt de Widevine-licentie verouderd en daarom wordt de ontsleuteling niet uitgevoerd. 
+De waarden moeten worden ingesteld om te voor komen dat er een geheeltallige overloop fout optreedt. Zie en voor meer uitleg over het probleem https://github.com/google/ExoPlayer/issues/3150 https://github.com/google/ExoPlayer/issues/3112 . <br/>Als u de waarden niet expliciet instelt, worden zeer grote waarden voor  **PlaybackDurationRemaining** en **LicenseDurationRemaining** toegewezen, (bijvoorbeeld 9223372036854775807, de maximale positieve waarde voor een 64-bits geheel getal). Als gevolg hiervan wordt de Widevine-licentie verouderd en daarom wordt de ontsleuteling niet uitgevoerd. 
 
 Dit probleem treedt niet op bij Android 5,0 lollipop of hoger omdat Android 5,0 de eerste Android-versie is, die is ontworpen om ARMv8 ([Advanced RISC machine](https://en.wikipedia.org/wiki/ARM_architecture)) en 64-bits platformen volledig te ondersteunen, terwijl Android 4,4 KitKat oorspronkelijk is ontworpen ter ondersteuning van ARMv7-en 32-bits platforms als andere oudere Android-versies.
 
@@ -147,7 +148,7 @@ Als u uw mobiele Chrome-browser bijwerkt naar v62 (of hoger) op een Android-tele
 
 De bovenstaande open-source PWA-app is gemaakt in Node.js. Als u uw eigen versie op een Ubuntu-server wilt hosten, houdt u rekening met de volgende veelvoorkomende problemen die het afspelen kunnen voor komen:
 
-1. CORS-probleem: de voorbeeld video in de voor beeld-app wordt gehost in https://storage.googleapis.com/biograf-video-files/videos/ . Google heeft CORS ingesteld voor alle test voorbeelden die worden gehost in Google Cloud Storage Bucket. Ze worden geleverd met CORS-headers, waarbij expliciet de CORS-vermelding wordt opgegeven: `https://biograf-155113.appspot.com` (het domein waarin Google als host fungeert voor het voor beeld), waardoor toegang door andere sites wordt voor komen. Als u probeert, wordt de volgende HTTP-fout weer geven:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. CORS-probleem: de voorbeeld video in de voor beeld-app wordt gehost in https://storage.googleapis.com/biograf-video-files/videos/ . Google heeft CORS ingesteld voor alle test voorbeelden die worden gehost in Google Cloud Storage Bucket. Ze worden geleverd met CORS-headers, waarbij expliciet de CORS-vermelding wordt opgegeven: `https://biograf-155113.appspot.com` (het domein waarin Google als host fungeert voor het voor beeld), waardoor toegang door andere sites wordt voor komen. Als u probeert, wordt de volgende HTTP-fout weer geven: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Probleem met het certificaat: vanaf Chrome v 58, EME voor Widevine is HTTPS vereist. Daarom moet u de voor beeld-app via HTTPS hosten met een x509-certificaat. Een normaal test certificaat werkt niet als gevolg van de volgende vereisten: u moet een certificaat verkrijgen dat voldoet aan de volgende minimale vereisten:
     - Chrome en Firefox vereisen een alternatieve naam voor SAN-instelling in het certificaat
     - Het certificaat moet beschikken over een vertrouwde certificerings instantie en een zelf-ondertekend ontwikkelings certificaat niet

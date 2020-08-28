@@ -8,15 +8,13 @@ ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom:
-- amqp
-- mqtt
-ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, mqtt, devx-track-csharp
+ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81730912"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016951"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Inzicht in de runtime van Azure IoT Edge en de architectuur ervan
 
@@ -55,7 +53,7 @@ IoT Edge hub kunt bepalen of deze is verbonden met IoT Hub. Als de verbinding is
 
 ### <a name="module-communication"></a>Module communicatie
 
-IoT Edge hub vereenvoudigt module naar module communicatie. Als u IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeven alleen de invoer op te geven waarop de berichten worden geaccepteerd en de uitvoer waarnaar ze berichten schrijven. Een oplossings ontwikkelaar kan deze invoer en uitvoer samen voegen, zodat de modules gegevens verwerken in de volg orde die specifiek is voor die oplossing.
+IoT Edge-hub vereenvoudigt de communicatie tussen modules. Als u IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeven alleen de invoer op te geven waarmee de berichten worden geaccepteerd en de uitvoer waarmee ze berichten schrijven. Een oplossings ontwikkelaar kan deze invoer en uitvoer samen voegen, zodat de modules gegevens verwerken in de volg orde die specifiek is voor die oplossing.
 
 ![IoT Edge hub vereenvoudigt de communicatie van module-naar-module](./media/iot-edge-runtime/module-endpoints.png)
 
@@ -92,22 +90,22 @@ Elk item in het implementatie manifest bevat specifieke informatie over een modu
 * **status** : de status waarin de IOT Edge agent de module plaatst. Normaal gesp roken is deze waarde ingesteld op *actief* , zodat de IOT Edge agent direct alle modules op het apparaat moet starten. U kunt echter de begin status van een module opgeven die moet worden gestopt en u moet wachten op een toekomstige tijd om de IoT Edge agent te laten weten dat een module moet worden gestart.De IoT Edge agent rapporteert de status van elke module terug naar de cloud in de gerapporteerde eigenschappen. Een verschil tussen de gewenste eigenschap en de gerapporteerde eigenschap is een indicator van een apparaat dat zich niet op de juiste manier bevindt. De ondersteunde statussen zijn:
 
   * Opgehaald
-  * In uitvoering
+  * Wordt uitgevoerd
   * Niet in orde
   * Mislukt
   * Gestopt
 
 * **restartPolicy** : de manier waarop de IOT Edge-agent een module opnieuw opstart. Mogelijke waarden zijn:
   
-  * `never`: De IoT Edge-agent start de module nooit opnieuw op.
-  * `on-failure`-Als de module vastloopt, wordt deze door de IoT Edge-agent opnieuw opgestart. Als de module op een schone manier wordt afgesloten, wordt deze niet opnieuw opgestart door de IoT Edge-agent.
-  * `on-unhealthy`-Als de module vastloopt of als beschadigd wordt beschouwd, wordt deze door de IoT Edge-agent opnieuw opgestart.
-  * `always`-Als de module vastloopt, wordt als niet in orde beschouwd of op een wille keurige manier afgesloten, de IoT Edge-agent wordt opnieuw gestart.
+  * `never` : De IoT Edge-agent start de module nooit opnieuw op.
+  * `on-failure` -Als de module vastloopt, wordt deze door de IoT Edge-agent opnieuw opgestart. Als de module op een schone manier wordt afgesloten, wordt deze niet opnieuw opgestart door de IoT Edge-agent.
+  * `on-unhealthy` -Als de module vastloopt of als beschadigd wordt beschouwd, wordt deze door de IoT Edge-agent opnieuw opgestart.
+  * `always` -Als de module vastloopt, wordt als niet in orde beschouwd of op een wille keurige manier afgesloten, de IoT Edge-agent wordt opnieuw gestart.
 
 * **imagePullPolicy** : bepaalt of de IOT Edge-agent automatisch of niet de nieuwste installatie kopie probeert te halen voor een module. Als u geen waarde opgeeft, wordt de standaard *onCreate*. Mogelijke waarden zijn:
 
-  * `on-create`-Wanneer u een module start of een module bijwerkt op basis van een nieuw implementatie manifest, probeert de IoT Edge agent de module installatie kopie uit het container register te halen.
-  * `never`-De IoT Edge-agent probeert nooit de module installatie kopie uit het container register te halen. Met deze configuratie bent u verantwoordelijk voor het ophalen van de module installatie kopie op het apparaat en het beheren van installatie kopie-updates.
+  * `on-create` -Wanneer u een module start of een module bijwerkt op basis van een nieuw implementatie manifest, probeert de IoT Edge agent de module installatie kopie uit het container register te halen.
+  * `never` -De IoT Edge-agent probeert nooit de module installatie kopie uit het container register te halen. Met deze configuratie bent u verantwoordelijk voor het ophalen van de module installatie kopie op het apparaat en het beheren van installatie kopie-updates.
 
 De IoT Edge agent verzendt runtime-antwoord naar IoT Hub. Hier volgt een lijst met mogelijke reacties:
   

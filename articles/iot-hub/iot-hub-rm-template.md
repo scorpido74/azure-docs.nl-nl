@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dcec1e40e9095c27abb1470e3739f65035a96834
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75976741"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007176"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Een IoT-hub maken met Azure Resource Manager-sjabloon (.NET)
 
@@ -23,7 +24,7 @@ ms.locfileid: "75976741"
 U kunt Azure Resource Manager gebruiken om via een programma een Azure IoT hubs te maken en te beheren. In deze zelf studie wordt uitgelegd hoe u een Azure Resource Manager sjabloon gebruikt om een IoT-hub te maken vanuit een C#-programma.
 
 > [!NOTE]
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../azure-resource-manager/management/deployment-models.md).  In dit artikel wordt beschreven hoe u het Azure Resource Manager-implementatie model gebruikt.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources:  [Azure Resource Manager en klassiek](../azure-resource-manager/management/deployment-models.md).  In dit artikel wordt beschreven hoe u het Azure Resource Manager-implementatie model gebruikt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
