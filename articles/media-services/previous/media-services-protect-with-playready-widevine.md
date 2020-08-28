@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5f7a9f87c73e4c5aa5f905def18534b04688a0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7ef020298b66ce3b66f27bdd482ef7fc04a2504c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000530"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021201"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Dynamische algemene versleuteling met PlayReady en/of Widevine gebruiken
 
@@ -616,7 +617,7 @@ namespace DynamicEncryptionWithDRM
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [De CENC gebruiken met Multi-DRM en toegangsbeheer](media-services-cenc-with-multidrm-access-control.md)
 * [Widevine-verpakking configureren met Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)

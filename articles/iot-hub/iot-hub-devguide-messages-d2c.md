@@ -10,12 +10,13 @@ ms.date: 05/15/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327715"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021235"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -37,7 +38,6 @@ Een IoT-hub heeft een standaard ingebouwde eind punt (**berichten/gebeurtenissen
 
 Elk bericht wordt doorgestuurd naar alle eind punten waarvan de Routing query's overeenkomen. Met andere woorden, een bericht kan naar meerdere eind punten worden doorgestuurd.
 
-
 Als uw aangepaste eind punt firewall configuraties heeft, kunt u de micro soft Trusted First partij Exception gebruiken om uw IoT Hub toegang te geven tot het specifieke eind punt [Azure Storage](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) [Azure Event hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) en [Azure service bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing). Dit is beschikbaar in bepaalde regio's voor IoT-hubs met een [beheerde service-identiteit](./virtual-network-support.md).
 
 IoT Hub ondersteunt momenteel de volgende eind punten:
@@ -47,19 +47,23 @@ IoT Hub ondersteunt momenteel de volgende eind punten:
  - Service Bus-wacht rijen en Service Bus onderwerpen
  - Event Hubs
 
-### <a name="built-in-endpoint"></a>Ingebouwd eind punt
+## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Ingebouwd eind punt als een eind punt voor route ring
 
 U kunt standaard [Event hubs integratie en sdk's](iot-hub-devguide-messages-read-builtin.md) gebruiken om apparaat-naar-Cloud-berichten te ontvangen van het ingebouwde eind punt (**berichten/gebeurtenissen**). Zodra een route is gemaakt, stopt de gegevens naar het ingebouwde eind punt, tenzij er een route naar dat eind punt wordt gemaakt.
 
-### <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage-as-a-routing-endpoint"></a>Azure Storage als een eind punt voor route ring
 
 Er zijn twee opslag Services IoT Hub kunnen berichten verzenden naar-- [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) -en [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -accounts (ADLS Gen2). Azure Data Lake Storage accounts zijn [hiërarchische](../storage/blobs/data-lake-storage-namespace.md)opslag accounts met naam ruimten die boven op de Blob-opslag zijn gebouwd. Beide gebruiken blobs voor hun opslag.
 
-IoT Hub ondersteunt het schrijven van gegevens naar Azure Storage in de [Apache Avro](https://avro.apache.org/) -indeling en in de JSON-indeling. De standaard waarde is AVRO. De coderings indeling kan alleen worden ingesteld wanneer het eind punt van de Blob-opslag is geconfigureerd. De indeling kan niet worden bewerkt voor een bestaand eind punt. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Beide waarden zijn niet hoofdletter gevoelig. Als de inhouds codering niet is ingesteld, schrijft IoT Hub de berichten in de indeling basis 64-code ring. U kunt de coderings indeling selecteren met behulp van de IoT Hub REST API maken of bijwerken, met name de [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), de Azure Portal, de [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)of de [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint). In het volgende diagram ziet u hoe u de coderings indeling kunt selecteren in de Azure Portal.
+IoT Hub ondersteunt het schrijven van gegevens naar Azure Storage in de [Apache Avro](https://avro.apache.org/) -indeling en in de JSON-indeling. De standaard waarde is AVRO. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Beide waarden zijn niet hoofdletter gevoelig. Als de inhouds codering niet is ingesteld, schrijft IoT Hub de berichten in de indeling basis 64-code ring.
+
+De coderings indeling kan alleen worden ingesteld wanneer het eind punt van de Blob-opslag is geconfigureerd; het kan niet worden bewerkt voor een bestaand eind punt. Als u de coderings indelingen voor een bestaand eind punt wilt wijzigen, moet u het aangepaste eind punt verwijderen en opnieuw maken met de gewenste indeling. Een handige strategie is het maken van een nieuw aangepast eind punt met de gewenste coderings indeling en het toevoegen van een parallelle route aan dat eind punt. Op deze manier kunt u uw gegevens controleren voordat u het bestaande eind punt verwijdert.
+
+U kunt de coderings indeling selecteren met behulp van de IoT Hub REST API maken of bijwerken, met name de [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), de Azure Portal, de [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)of de [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint). In de volgende afbeelding ziet u hoe u de coderings indeling kunt selecteren in de Azure Portal.
 
 ![Eindpunt codering van Blob-opslag](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub batch berichten en schrijft gegevens naar de opslag wanneer de batch een bepaalde omvang of een bepaalde hoeveelheid tijd heeft bereikt. IoT Hub wordt standaard ingesteld op de volgende bestands naam Conventie: 
+IoT Hub batch berichten en schrijft gegevens naar de opslag wanneer de batch een bepaalde omvang of een bepaalde hoeveelheid tijd heeft bereikt. IoT Hub wordt standaard ingesteld op de volgende bestands naam Conventie:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -89,12 +93,11 @@ Als u een met Azure Data Lake Gen2 compatibel opslag account wilt maken, maakt u
 
 ![Azure date Lake Gen2-opslag selecteren](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
-
-### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus-wacht rijen en Service Bus onderwerpen
+## <a name="service-bus-queues-and-service-bus-topics-as-a-routing-endpoint"></a>Service Bus-wacht rijen en Service Bus-onderwerpen als een eind punt voor route ring
 
 Service Bus-wacht rijen en-onderwerpen die als IoT Hub-eind punten worden gebruikt, mogen geen **sessies** of **Duplicaten detectie** zijn ingeschakeld. Als een van deze opties is ingeschakeld, wordt het eind punt weer gegeven als **onbereikbaar** in de Azure Portal.
 
-### <a name="event-hubs"></a>Event Hubs
+## <a name="event-hubs-as-a-routing-endpoint"></a>Event Hubs als een eind punt voor route ring
 
 Naast het ingebouwde Event Hubs compatibele eind punt, kunt u ook gegevens routeren naar aangepaste eind punten van het type Event Hubs. 
 

@@ -4,12 +4,13 @@ description: Een C# .NET Core-consoletoepassing schrijven die Service Bus Messag
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bc7435fb46d5783cb487038a10709a9e40b0d136
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337508"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021643"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Aan de slag met Service Bus-onderwerpen
 
@@ -22,11 +23,11 @@ Deze zelfstudie bestaat uit de volgende stappen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voor delen voor Visual Studio of MSDN Subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
-    1. Maak een Service Bus **naam ruimte**.
-    2. Haal de **Connection String**op.
-    3. Maak een **onderwerp** in de naam ruimte.
+1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als Visual Studio- of MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Volg de stappen in de [Quickstart: De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp ](service-bus-quickstart-topics-subscriptions-portal.md)om de volgende taken uit te voeren:
+    1. Maak een Service Bus-**naamruimte**.
+    2. Haal de **verbindingsreeks** op.
+    3. Maak een **onderwerp** in de naamruimte.
     4. Maak **één abonnement** op het onderwerp in de naam ruimte.
 3. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
@@ -358,7 +359,7 @@ Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET 
    
     ![Lengte van het onderwerp][topic-message-receive]
 
-Gefeliciteerd Met de standaard .NET-bibliotheek, hebt u nu een onderwerp en abonnement gemaakt, 10 berichten verzonden en die berichten ontvangen.
+Gefeliciteerd! Met de standaard .NET-bibliotheek, hebt u nu een onderwerp en abonnement gemaakt, 10 berichten verzonden en die berichten ontvangen.
 
 > [!NOTE]
 > U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 

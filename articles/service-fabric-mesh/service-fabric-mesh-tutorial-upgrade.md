@@ -5,13 +5,13 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 876359b45daa280a1f5701f2490ce505327f309b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75351720"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011001"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Zelf studie: meer informatie over het bijwerken van een Service Fabric-toepassing met Visual Studio
 
@@ -24,7 +24,7 @@ In deze zelfstudie leert u het volgende:
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
 > * [Een Service Fabric Mesh-app maken in Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in de lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in uw lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Een Service Fabric Mesh-app implementeren](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * Een Service Fabric Mesh-app bijwerken
 > * [Service Fabric Mesh-bronnen opschonen](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -61,7 +61,7 @@ De `WebFrontEnd_cpu` para meter wordt bijgewerkt om de CPU-Resources bij te werk
 > Standaard wordt het parameter bestand dat een peer is van het profiel. yaml-bestand gebruikt om de waarden voor dat profiel. yaml-bestand op te geven.
 > Bijvoorbeeld: omgevingen > Cloud > para meters. yaml biedt de parameter waarden voor omgevingen > Cloud > profile. yaml.
 >
-> U kunt dit overschrijven door het volgende toe te voegen aan het profiel. yaml-bestand: `parametersFilePath=”relative or full path to the parameters file”` bijvoorbeeld `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` of`parametersFilePath=”..\CommonParameters.yaml”`
+> U kunt dit overschrijven door het volgende toe te voegen aan het profiel. yaml-bestand: `parametersFilePath=”relative or full path to the parameters file”` bijvoorbeeld `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` of `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Het model wijzigen
 

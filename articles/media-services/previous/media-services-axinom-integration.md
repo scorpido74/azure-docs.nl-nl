@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c2dc90b84446917c4f06de707047b92e52cf7bc8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954618"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020980"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom gebruiken om Widevine-licenties te leveren aan Azure Media Services 
 > [!div class="op_single_selector"]
@@ -199,8 +200,8 @@ De volgende para meters zijn vereist in de Axinom Widevine-licentie server van d
 | --- | --- |
 | Communicatie sleutel-ID |Moet worden opgenomen als waarde van de claim "com_key_id" in het JWT-token (Zie [deze](media-services-axinom-integration.md#jwt-token-generation) sectie). |
 | Communicatie sleutel |Moet worden gebruikt als de handtekening sleutel van het JWT-token (Zie [deze](media-services-axinom-integration.md#jwt-token-generation) sectie). |
-| Sleutel zaad |Moet worden gebruikt voor het genereren van een inhouds sleutel met een bepaalde inhouds sleutel-ID (Zie [deze](media-services-axinom-integration.md#content-protection) sectie). |
-| URL voor Widevine-licentie aanschaf |Moet worden gebruikt bij het configureren van het leverings beleid voor assets voor streepje streaming (Zie [deze](media-services-axinom-integration.md#content-protection) sectie). |
+| Sleutel zaad |Moet worden gebruikt voor het genereren van een inhouds sleutel met een bepaalde inhouds sleutel-ID (Zie  [deze](media-services-axinom-integration.md#content-protection) sectie). |
+| URL voor Widevine-licentie aanschaf |Moet worden gebruikt bij het configureren van het leverings beleid voor assets voor streepje streaming (Zie  [deze](media-services-axinom-integration.md#content-protection) sectie). |
 | Inhouds sleutel-ID |Moet worden opgenomen als onderdeel van de waarde van de claim van de toeslag van de JWT-token (Zie [deze](media-services-axinom-integration.md#jwt-token-generation) sectie). |
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
@@ -213,6 +214,6 @@ De volgende para meters zijn vereist in de Axinom Widevine-licentie server van d
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Erkenningen
+### <a name="acknowledgments"></a>Dankwoord
 We willen graag de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Kristjan Jõgi van Axinom, Mingfei Yan en Amit Rajput.
 

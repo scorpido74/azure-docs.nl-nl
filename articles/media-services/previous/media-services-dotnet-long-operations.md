@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4365796a9d7f7b72687db19573c09ccfdf9ea8de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831733"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020521"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Live streamen leveren met Azure Media Services
 
@@ -32,7 +33,7 @@ De Media Services .NET SDK biedt Api's die de aanvraag verzenden en wachten op h
 Er zijn scenario's waarin een toepassing niet kan wachten op een langlopende HTTP-aanvraag en wil hand matig pollen voor de voortgang van de bewerking. Een typisch voor beeld is een browser interactie met een stateless webservice: wanneer de browser een kanaal wil maken, wordt een langlopende bewerking door de webservice gestart en wordt de bewerkings-ID naar de browser geretourneerd. De browser kan vervolgens de webservice vragen de bewerkings status op te halen op basis van de ID. De Media Services .NET SDK biedt Api's die nuttig zijn voor dit scenario. Deze Api's worden "niet-polling methoden" genoemd.
 De "niet-polling methoden" hebben het volgende naamgevings patroon: de bewerking voor het verzenden van de*bewerking*(bijvoorbeeld SendCreateOperation). De bewerkings methoden van de verzend*bewerking*retour neren het **IOperation** -object; het geretourneerde object bevat informatie die kan worden gebruikt om de bewerking bij te houden. De OperationAsync-methoden van de verzend*bewerking*retour neren een **taak \<IOperation> **.
 
-Momenteel ondersteunen de volgende klassen niet-polling methoden: **Channel**, **StreamingEndpoint**en **Program**.
+Momenteel ondersteunen de volgende klassen niet-polling methoden:  **Channel**, **StreamingEndpoint**en **Program**.
 
 Als u wilt pollen voor de bewerkings status, gebruikt u de methode **GetOperation** voor de klasse **OperationBaseCollection** . Gebruik de volgende intervallen om de bewerkings status te controleren: voor **Channel** -en **StreamingEndpoint** -bewerkingen gebruikt u 30 seconden; gebruik 10 seconden voor **programma** bewerkingen.
 

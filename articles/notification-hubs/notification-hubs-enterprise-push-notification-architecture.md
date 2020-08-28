@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084310"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003623"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Hulp voor architectuur via pushmeldingen van het bedrijf
 
@@ -89,7 +90,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
     }
     ```
 
-    c. `CreateTopic`wordt gebruikt om het Service Bus onderwerp te maken.
+    c. `CreateTopic` wordt gebruikt om het Service Bus onderwerp te maken.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -106,7 +107,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
     }
     ```
 
-    d. `SendMessage`wordt gebruikt om de berichten naar dit Service Bus onderwerp te verzenden. Met deze code wordt regel matig een reeks wille keurige berichten naar het onderwerp verzonden voor het doel van het voor beeld. Normaal gesp roken is er een back-end-systeem dat berichten verzendt wanneer er zich een gebeurtenis voordoet.
+    d. `SendMessage` wordt gebruikt om de berichten naar dit Service Bus onderwerp te verzenden. Met deze code wordt regel matig een reeks wille keurige berichten naar het onderwerp verzonden voor het doel van het voor beeld. Normaal gesp roken is er een back-end-systeem dat berichten verzendt wanneer er zich een gebeurtenis voordoet.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -158,7 +159,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
     }
     ```
 
-    c. `CreateSubscription`wordt gebruikt om een Service Bus-abonnement te maken voor het onderwerp waar het back-upsysteem berichten verzendt. Afhankelijk van het bedrijfs scenario maakt dit onderdeel een of meer abonnementen op de bijbehorende onderwerpen (er kunnen bijvoorbeeld enkele berichten worden ontvangen van het HR-systeem, sommige van het financiële systeem, enzovoort)
+    c. `CreateSubscription` wordt gebruikt om een Service Bus-abonnement te maken voor het onderwerp waar het back-upsysteem berichten verzendt. Afhankelijk van het bedrijfs scenario maakt dit onderdeel een of meer abonnementen op de bijbehorende onderwerpen (er kunnen bijvoorbeeld enkele berichten worden ontvangen van het HR-systeem, sommige van het financiële systeem, enzovoort)
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -174,7 +175,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification`wordt gebruikt om het bericht in het onderwerp te lezen met behulp van het-abonnement. als de Lees bewerking is geslaagd, voert u een melding in (in het voorbeeld scenario is een melding van een Windows-systeem eigen pop-up) om te worden verzonden naar de mobiele toepassing met behulp van Azure Notification Hubs.
+    d. `ReceiveMessageAndSendNotification` wordt gebruikt om het bericht in het onderwerp te lezen met behulp van het-abonnement. als de Lees bewerking is geslaagd, voert u een melding in (in het voorbeeld scenario is een melding van een Windows-systeem eigen pop-up) om te worden verzonden naar de mobiele toepassing met behulp van Azure Notification Hubs.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)

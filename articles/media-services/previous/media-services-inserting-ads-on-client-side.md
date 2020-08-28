@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594862"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021303"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Advertenties invoegen aan de client zijde
 Dit artikel bevat informatie over het invoegen van verschillende soorten advertenties aan de client zijde.
@@ -160,7 +161,7 @@ Er zijn ook niet-lineaire advertenties opgegeven in een- `<Creative>` element. I
     </Creative>
 ```
 
-Het element <**NonLinearAds**> kan een of meer <niet- **lineaire**> elementen bevatten, die elk een niet-lineaire advertentie kunnen beschrijven. Met het element <niet- **lineaire**> geeft u de resource voor de niet-lineaire AD op. De resource kan een <**StaticResource**>, een <**IFrameResource**> of een <**HTMLResource** ->. \<**StaticResource**>beschrijft een niet-HTML-resource en definieert een creativeType-kenmerk dat aangeeft hoe de resource wordt weer gegeven:
+Het element <**NonLinearAds**> kan een of meer <niet- **lineaire**> elementen bevatten, die elk een niet-lineaire advertentie kunnen beschrijven. Met het element <niet- **lineaire**> geeft u de resource voor de niet-lineaire AD op. De resource kan een <**StaticResource**>, een <**IFrameResource**> of een <**HTMLResource** ->. \<**StaticResource**> beschrijft een niet-HTML-resource en definieert een creativeType-kenmerk dat aangeeft hoe de resource wordt weer gegeven:
 
 Afbeelding/GIF, afbeelding/JPEG, afbeelding/PNG: de resource wordt weer gegeven in een HTML-<**img**>-tag.
 
@@ -239,9 +240,9 @@ Binnen het `<AdBreak>` -element kan er één <element **AdSource**>. Het **AdSou
 
 Het **AdSource** -element van de <-> biedt de speler een inline AD-antwoord of een verwijzing naar een AD-antwoord. Dit kan een van de volgende elementen bevatten:
 
-* `<VASTAdData>`Hiermee wordt aangegeven dat een VAST AD-antwoord is inge sloten in het VMAP-bestand
-* `<AdTagURI>`een URI die verwijst naar een reactie van een AD van een ander systeem
-* `<CustomAdData>`-een wille keurige teken reeks die een niet-enorme reactie vertegenwoordigt
+* `<VASTAdData>` Hiermee wordt aangegeven dat een VAST AD-antwoord is inge sloten in het VMAP-bestand
+* `<AdTagURI>` een URI die verwijst naar een reactie van een AD van een ander systeem
+* `<CustomAdData>` -een wille keurige teken reeks die een niet-enorme reactie vertegenwoordigt
 
 In dit voor beeld wordt een in line AD-antwoord opgegeven met een- `<VASTAdData>` element dat een vast antwoord op ad bevat. Zie [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)voor meer informatie over de andere elementen.
 
@@ -276,7 +277,7 @@ In het volgende voor beeld ziet u een VMAP-bestand met tracerings gebeurtenissen
     </vmap:VMAP>
 ```
 
-Zie voor meer informatie over het <**TrackingEvents**> element en de onderliggende items.http://iab.net/VMAP.pdf
+Zie voor meer informatie over het <**TrackingEvents**> element en de onderliggende items. http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Een MAST-bestand (Media abstract sequencing Temp late) gebruiken
 Met een MAST-bestand kunt u triggers opgeven die bepalen wanneer een AD wordt weer gegeven. Hier volgt een voor beeld van een MAST-bestand dat triggers bevat voor een Preroll AD, een Mid-Roll AD en een advertentie met de Volg kant.
@@ -327,7 +328,7 @@ Met een MAST-bestand kunt u triggers opgeven die bepalen wanneer een AD wordt we
 
 Een MAST-bestand begint met een **MAST** -element dat één **Triggers** -element bevat. Het `<triggers>` element bevat een of meer **trigger** -elementen die bepalen wanneer een AD moet worden afgespeeld.
 
-Het **trigger** -element bevat een **startConditions** -element dat aangeeft wanneer een AD moet beginnen te spelen. Het **startConditions** -element bevat een of meer `<condition>` elementen. Wanneer elk `<condition>` wordt geëvalueerd als waar, wordt een trigger geïnitieerd of ingetrokken, afhankelijk van het feit of de `<condition>` zich in respectievelijk een **StartConditions** -of **endConditions** -element bevindt. Als `<condition>` er meerdere elementen aanwezig zijn, worden deze behandeld als impliciet of wordt de trigger gestart als een voor waarde die wordt geëvalueerd als waar. `<condition>`elementen kunnen worden genest. Wanneer onderliggende `<condition>` elementen vooraf worden ingesteld, worden deze behandeld als impliciet en moeten alle voor waarden worden geëvalueerd als waar om de trigger te initiëren. Het `<condition>` element bevat de volgende kenmerken die de voor waarde definiëren:
+Het **trigger** -element bevat een **startConditions** -element dat aangeeft wanneer een AD moet beginnen te spelen. Het **startConditions** -element bevat een of meer `<condition>` elementen. Wanneer elk `<condition>` wordt geëvalueerd als waar, wordt een trigger geïnitieerd of ingetrokken, afhankelijk van het feit of de `<condition>` zich in respectievelijk een **StartConditions** -of **endConditions** -element bevindt. Als `<condition>` er meerdere elementen aanwezig zijn, worden deze behandeld als impliciet of wordt de trigger gestart als een voor waarde die wordt geëvalueerd als waar. `<condition>` elementen kunnen worden genest. Wanneer onderliggende `<condition>` elementen vooraf worden ingesteld, worden deze behandeld als impliciet en moeten alle voor waarden worden geëvalueerd als waar om de trigger te initiëren. Het `<condition>` element bevat de volgende kenmerken die de voor waarde definiëren:
 
 1. **type** : Hiermee geeft u het type voor waarde, gebeurtenis of eigenschap op
 2. **naam** : de naam van de eigenschap of gebeurtenis die tijdens de evaluatie moet worden gebruikt

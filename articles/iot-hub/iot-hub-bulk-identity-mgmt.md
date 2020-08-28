@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417936"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003861"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Id's van IoT Hub-apparaten bulksgewijs importeren en exporteren
 
@@ -60,7 +61,7 @@ Als u de connection string voor uw IoT-hub wilt vinden, gaat u in het Azure Port
 
 - Ga naar uw IoT-hub.
 
-- Selecteer **beleid voor gedeelde toegang**.
+- Selecteer **Beleid voor gedeelde toegang**.
 
 - Selecteer een beleid, waarbij rekening wordt gehouden met de machtigingen die u nodig hebt.
 
@@ -261,7 +262,7 @@ Als het import bestand dubbele meta gegevens bevat, worden met deze meta gegeven
 
 Gebruik de optionele eigenschap **importMode** in de import-serialisatie-gegevens voor elk apparaat om het import proces per apparaat te beheren. De eigenschap **importMode** heeft de volgende opties:
 
-| importMode | Description |
+| importMode | Beschrijving |
 | --- | --- |
 | **createOrUpdate** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
 | **creëren** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt er een fout naar het logboek bestand geschreven. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |

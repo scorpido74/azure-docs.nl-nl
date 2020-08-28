@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494663"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020504"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>De virtuele-machine-extensie Log Analytics voor Windows
 
@@ -29,12 +29,12 @@ Azure Monitor Logboeken biedt bewakings mogelijkheden voor Cloud-en on-premises 
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) voor meer informatie over de ondersteunde Windows-besturings systemen.
+Raadpleeg het artikel [overzicht van Azure monitor agents](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) voor meer informatie over de ondersteunde Windows-besturings systemen.
 
 ### <a name="agent-and-vm-extension-version"></a>Versie van agent en VM-extensie
 De volgende tabel bevat een overzicht van de versie van de Windows Log Analytics VM-extensie en Log Analytics agent bundel voor elke release. 
 
-| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Opmerkingen bij de release |
+| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Releaseopmerkingen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Hiermee schakelt u connectiviteit via een persoonlijke koppeling met behulp van Azure Monitor Beveiligingsbereiken</li><li>Voegt opname beperking toe om een onverwachte, onbedoelde instroom te voor komen bij opname naar een werk ruimte</li><li>Voegt ondersteuning toe voor aanvullende Azure Government Clouds en regio's</li><li>Hiermee wordt een bug opgelost waarbij HealthService.exe vastgelopen</li></ul> |
 | 10.20.18029 | 1.0.18029 | Maart 2020   | <ul><li>Hiermee wordt ondersteuning voor het ondertekenen van SHA-2-code toegevoegd</li><li>Verbetert de installatie en het beheer van de VM-extensie</li><li>Hiermee wordt een fout in azure Arc voor servers-integratie opgelost</li><li>Voegt een ingebouwd hulp programma voor probleem oplossing toe voor klant ondersteuning</li><li>Voegt ondersteuning toe voor aanvullende Azure Government regio's</li> |
@@ -91,11 +91,11 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 | apiVersion | 2015-06-15 |
 | publisher | Micro soft. EnterpriseCloud. monitoring |
 | type | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1.0 |
+| typeHandlerVersion | 1,0 |
 | workspaceId (bijvoorbeeld) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (bijvoorbeeld) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
-\*De workspaceId wordt de consumerId in de Log Analytics-API genoemd.
+\* De workspaceId wordt de consumerId in de Log Analytics-API genoemd.
 
 > [!NOTE]
 > Zie Azure [Connect Windows computers to Azure monitor](../../azure-monitor/platform/agent-windows.md)voor extra eigenschappen.
@@ -162,7 +162,7 @@ Bij het plaatsen van de JSON van de extensie in de hoofdmap van de sjabloon, bev
 }
 ```
 
-## <a name="powershell-deployment"></a>Power shell-implementatie
+## <a name="powershell-deployment"></a>PowerShell-implementatie
 
 De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de extensie van de log Analytics agent virtuele machine op een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel. 
 

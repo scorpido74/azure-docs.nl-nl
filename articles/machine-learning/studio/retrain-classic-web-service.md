@@ -7,18 +7,18 @@ ms.subservice: studio
 ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: aa11d17aaba28819c4c5ecfb259eea2d8d12ce7d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: dfc959984147d89ca5bfe68ed103a89b22f75501
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431889"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020683"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Een klassieke studio-webservice (klassiek) opnieuw trainen en implementeren
 
-**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Het opnieuw trainen van machine learning modellen is een manier om ervoor te zorgen dat ze nauw keurig en op basis van de meest relevante gegevens beschikbaar blijven. In dit artikel wordt uitgelegd hoe u een klassieke studio-webservice (Classic) opnieuw traint. Raadpleeg voor meer informatie over het opnieuw trainen van een nieuwe studio-webservice (klassiek) [dit artikel.](retrain-machine-learning-model.md)
@@ -122,7 +122,7 @@ De *apiKey* en de *endpointUrl* voor de oproep kunnen worden verkregen via het d
 
 De waarde van de para meter *name* in *resources* moet overeenkomen met de resource naam van het opgeslagen getrainde model in het voorspellende experiment. De resource naam ophalen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Klik in het linkermenu op **machine learning**.
 1. Klik onder naam op uw werk ruimte en klik vervolgens op **webservices**.
 1. Klik onder naam op **optellings model [voorspellend exp.]**.

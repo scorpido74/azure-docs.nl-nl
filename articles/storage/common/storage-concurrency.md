@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030381"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021558"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
 
@@ -291,6 +292,6 @@ Voor meer informatie over Azure Storage raadpleegt u:
 
 * [Start pagina van Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Kennismaking met Azure Storage](storage-introduction.md)
-* Opslag aan de slag voor [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Queues](../storage-dotnet-how-to-use-queues.md)en [files](../storage-dotnet-how-to-use-files.md)
+* Opslag aan de slag voor [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md),  [Queues](../storage-dotnet-how-to-use-queues.md)en [files](../storage-dotnet-how-to-use-files.md)
 * Opslag architectuur – [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)
 

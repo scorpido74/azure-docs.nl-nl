@@ -5,12 +5,13 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518959"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021966"
 ---
 # <a name="configure-stateful-reliable-services"></a>Stateful reliable Services configureren
 Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set is globaal voor alle betrouw bare Services in het cluster, terwijl de andere set specifiek is voor een bepaalde betrouw bare service.
@@ -63,7 +64,7 @@ SharedLogSizeInMB Hiermee geeft u de hoeveelheid schijf ruimte op die vooraf moe
 U kunt stateful Reliable Services ' standaard configuraties wijzigen met behulp van het configuratie pakket (config) of de service-Implementatie (code).
 
 * **Config** -configuratie via het configuratie pakket wordt bereikt door het Settings.xml bestand te wijzigen dat wordt gegenereerd in de hoofdmap van het micro soft Visual Studio-pakket onder de map config voor elke service in de toepassing.
-* **Code** -configuratie via code wordt bereikt door een ReliableStateManager te maken met behulp van een ReliableStateManagerConfiguration-object met de juiste opties ingesteld.
+* **Code**   -configuratie via code wordt bereikt door een ReliableStateManager te maken met behulp van een ReliableStateManagerConfiguration-object met de juiste opties ingesteld.
 
 De Azure Service Fabric runtime zoekt standaard naar vooraf gedefinieerde sectie namen in het Settings.xml bestand en verbruikt de configuratie waarden tijdens het maken van de onderliggende runtime-onderdelen.
 

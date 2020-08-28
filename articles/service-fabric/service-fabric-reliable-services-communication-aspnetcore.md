@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529298"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022187"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in azure Service Fabric Reliable Services
 
@@ -50,7 +51,7 @@ Een betrouwbaar service-exemplaar wordt vertegenwoordigd door de service klasse 
 ![Diagram voor het hosten van ASP.NET Core in een betrouw bare service][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListeners
-De `ICommunicationListener` implementaties voor Kestrel en HTTP.sys in de `Microsoft.ServiceFabric.AspNetCore.*` NuGet-pakketten hebben vergelijk bare gebruiks patronen. Maar ze voeren enigszins verschillende acties uit die specifiek zijn voor elke webserver. 
+De `ICommunicationListener` implementaties voor Kestrel en HTTP.sys in de  `Microsoft.ServiceFabric.AspNetCore.*` NuGet-pakketten hebben vergelijk bare gebruiks patronen. Maar ze voeren enigszins verschillende acties uit die specifiek zijn voor elke webserver. 
 
 Beide communicatie listeners bieden een constructor die de volgende argumenten gebruikt:
  - **`ServiceContext serviceContext`**: Dit is het `ServiceContext` object dat informatie bevat over de uitgevoerde service.
@@ -92,7 +93,7 @@ Zowel Kestrel-als HTTP.sys- `ICommunicationListener` implementaties gebruiken di
 Daarom wordt zowel Kestrel-als HTTP.sys- `ICommunicationListener` implementaties gestandardization op middleware die door de `UseServiceFabricIntegration` uitbreidings methode wordt gegeven. Daarom hoeven clients alleen een actie voor het opnieuw oplossen van het service-eind punt uit te voeren op HTTP 410-reacties.
 
 ## <a name="httpsys-in-reliable-services"></a>HTTP.sys in Reliable Services
-U kunt HTTP.sys in Reliable Services gebruiken door het pakket **micro soft. ServiceFabric. AspNetCore. HttpSys** NuGet te importeren. Dit pakket bevat `HttpSysCommunicationListener` een implementatie van `ICommunicationListener` . `HttpSysCommunicationListener`Hiermee kunt u een ASP.NET Core WebHost maken binnen een betrouw bare service door HTTP.sys als webserver te gebruiken.
+U kunt HTTP.sys in Reliable Services gebruiken door het pakket **micro soft. ServiceFabric. AspNetCore. HttpSys** NuGet te importeren. Dit pakket bevat `HttpSysCommunicationListener` een implementatie van `ICommunicationListener` . `HttpSysCommunicationListener` Hiermee kunt u een ASP.NET Core WebHost maken binnen een betrouw bare service door HTTP.sys als webserver te gebruiken.
 
 HTTP.sys is gebaseerd op de [Windows HTTP-Server-API](/windows/win32/http/http-api-start-page). Deze API maakt gebruik van het **HTTP.sys** kernel-stuur programma om HTTP-aanvragen te verwerken en te routeren naar processen die webtoepassingen uitvoeren. Hierdoor kunnen meerdere processen op dezelfde fysieke of virtuele machine fungeren als host voor webtoepassingen op dezelfde poort, disambiguated door een unieke URL-pad of hostnaam. Deze functies zijn handig in Service Fabric voor het hosten van meerdere websites in hetzelfde cluster.
 
@@ -129,7 +130,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>HTTP.sys in een stateful service
 
-`HttpSysCommunicationListener`is momenteel niet ontworpen voor gebruik in stateful Services vanwege complicaties met de onderliggende **HTTP.sys** functie voor het delen van poorten. Zie de volgende sectie over dynamische poort toewijzing met HTTP.sys voor meer informatie. Voor stateful Services is Kestrel de voorgestelde webserver.
+`HttpSysCommunicationListener` is momenteel niet ontworpen voor gebruik in stateful Services vanwege complicaties met de onderliggende **HTTP.sys** functie voor het delen van poorten. Zie de volgende sectie over dynamische poort toewijzing met HTTP.sys voor meer informatie. Voor stateful Services is Kestrel de voorgestelde webserver.
 
 ### <a name="endpoint-configuration"></a>Eindpunt configuratie
 
@@ -189,7 +190,7 @@ Als u een dynamisch toegewezen poort met HTTP.sys wilt gebruiken, laat u de `Por
 Een dynamische poort die door een configuratie wordt toegewezen, `Endpoint` biedt slechts één poort *per hostproces*. Met het huidige Service Fabric hosting model kunnen meerdere service-exemplaren en/of replica's worden gehost in hetzelfde proces. Dit betekent dat elke poort hetzelfde is wanneer deze wordt toegewezen via de `Endpoint` configuratie. Meerdere **HTTP.sys** exemplaren kunnen een poort delen met behulp van de onderliggende functie voor het delen van **HTTP.sys** poort. Maar het wordt niet ondersteund door `HttpSysCommunicationListener` de complicaties die het biedt voor client aanvragen. Voor dynamisch poort gebruik is Kestrel de aanbevolen webserver.
 
 ## <a name="kestrel-in-reliable-services"></a>Kestrel in Reliable Services
-U kunt Kestrel in Reliable Services gebruiken door het NuGet-pakket **micro soft. ServiceFabric. AspNetCore. Kestrel** te importeren. Dit pakket bevat `KestrelCommunicationListener` een implementatie van `ICommunicationListener` . `KestrelCommunicationListener`Hiermee kunt u een ASP.NET Core WebHost in een betrouw bare service maken met behulp van Kestrel als de webserver.
+U kunt Kestrel in Reliable Services gebruiken door het NuGet-pakket **micro soft. ServiceFabric. AspNetCore. Kestrel** te importeren. Dit pakket bevat `KestrelCommunicationListener` een implementatie van `ICommunicationListener` . `KestrelCommunicationListener` Hiermee kunt u een ASP.NET Core WebHost in een betrouw bare service maken met behulp van Kestrel als de webserver.
 
 Kestrel is een cross-platform webserver voor ASP.NET Core. In tegens telling tot HTTP.sys gebruikt Kestrel geen gecentraliseerd eindpunt beheer. In tegens telling tot HTTP.sys biedt Kestrel geen ondersteuning voor het delen van poorten tussen meerdere processen. Elk exemplaar van Kestrel moet een unieke poort gebruiken. Zie de [Implementatie Details](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)voor meer informatie over Kestrel.
 
@@ -470,7 +471,7 @@ Kestrel is de voorgestelde webserver voor front-end-services die externe, Intern
  
 Wanneer een stateless service wordt blootgesteld aan Internet, moet een bekende en stabiele eind punt worden gebruikt dat bereikbaar is via een load balancer. U geeft deze URL naar de gebruikers van uw toepassing. We raden u aan de volgende configuratie uit te voeren:
 
-| Type | Aanbeveling | Notities |
+| Type | Aanbeveling | Opmerkingen |
 | ---- | -------------- | ----- |
 | Webserver | Kestrel | Kestrel is de voorkeurs webserver, omdat deze wordt ondersteund in Windows en Linux. |
 | Poort configuratie | statisch | Een bekende statische poort moet worden geconfigureerd in de `Endpoints` configuratie van ServiceManifest.xml, zoals 80 voor http of 443 voor HTTPS. |
@@ -495,7 +496,7 @@ Als meerdere extern belichte Services dezelfde set knoop punten delen, kunt u HT
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Alleen stateless ASP.NET Core Service met alleen interne status
 Stateless services die alleen binnen het cluster worden aangeroepen, moeten unieke Url's en dynamisch toegewezen poorten gebruiken om de samen werking tussen meerdere services te garanderen. We raden u aan de volgende configuratie uit te voeren:
 
-| Type | Aanbeveling | Notities |
+| Type | Aanbeveling | Opmerkingen |
 | ---- | -------------- | ----- |
 | Webserver | Kestrel | Hoewel u HTTP.sys kunt gebruiken voor interne stateless Services, is Kestrel de beste server waarmee meerdere service-exemplaren een host kunnen delen.  |
 | Poort configuratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturings systeem delen, waardoor er unieke poorten nodig zijn. |
@@ -505,7 +506,7 @@ Stateless services die alleen binnen het cluster worden aangeroepen, moeten unie
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Alleen stateful ASP.NET Core-Service
 Stateful services die alleen binnen het cluster worden aangeroepen, moeten dynamisch toegewezen poorten gebruiken om de samen werking tussen meerdere services te garanderen. We raden u aan de volgende configuratie uit te voeren:
 
-| Type | Aanbeveling | Notities |
+| Type | Aanbeveling | Opmerkingen |
 | ---- | -------------- | ----- |
 | Webserver | Kestrel | De `HttpSysCommunicationListener` is niet bedoeld voor gebruik door stateful services waarin replica's een hostproces delen. |
 | Poort configuratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturings systeem delen, waardoor er unieke poorten nodig zijn. |

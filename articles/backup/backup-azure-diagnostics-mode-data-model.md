@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890260"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020946"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -472,7 +472,7 @@ Raadpleeg de derde kolom ' description ' in het hierboven beschreven [gegevens m
 
 Omdat het v1-schema zich op een afschaffing pad bevindt, is het raadzaam om alleen het v2-schema te gebruiken in alle aangepaste query's op Azure Backup diagnostische gegevens. Hieronder ziet u een voor beeld van hoe u uw query's bijwerkt om afhankelijkheden van v1-schema te verwijderen:
 
-1. Bepaal of uw query een veld gebruikt dat alleen van toepassing is op v1-schema. Stel dat u een query hebt om alle back-upitems en de bijbehorende beveiligde servers als volgt weer te geven:
+1. Bepaal of uw query een veld gebruikt dat alleen van toepassing is op het v1-schema. Stel dat u een query hebt om alle back-upitems en de bijbehorende beveiligde servers als volgt weer te geven:
 
     ````Kusto
     AzureDiagnostics

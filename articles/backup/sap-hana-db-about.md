@@ -3,12 +3,12 @@ title: Over SAP HANA back-up van de data base in azure Vm's
 description: In dit artikel vindt u informatie over het maken van back-ups van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757537"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022306"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Over SAP HANA back-up van de data base in azure Vm's
 
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om een VM met SAP HANA te herstellen:
 
 * [Een nieuwe VM herstellen vanaf het laatste herstel punt van een Azure VM-back-up](backup-azure-arm-restore-vms.md) . Of maak een nieuwe lege VM en koppel de schijven van het meest recente herstel punt.
 * Omdat er geen back-up is gemaakt van de schijven van WA, worden ze niet hersteld. Maak lege WA-schijven en logboek gebied.
-* Nadat alle andere configuraties (zoals IP, systeem naam, enzovoort) zijn ingesteld, wordt de VM ingesteld om database gegevens van Azure backup te ontvangen.
+* Nadat alle andere configuraties (zoals IP, systeem naam, enzovoort) zijn ingesteld, wordt de VM ingesteld om database gegevens van Azure Backup te ontvangen.
 * Zet de data base nu terug naar de virtuele machine van de [Azure SAP Hana DB-back-up](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) naar het gewenste tijdstip.
 
 ## <a name="next-steps"></a>Volgende stappen

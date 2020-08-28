@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: f1927d44daf49d938d2c43ce9de02cb1dbfb735f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: cdb2207ab834ab84cedd2ad23e5e26186ac44039
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207754"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020470"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Apache Hive query's uitvoeren met HDInsight .NET SDK
 
@@ -142,7 +142,7 @@ De uitvoer van de toepassing moet er ongeveer als volgt uitzien:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u Apache Hive query's kunt verzenden met behulp van HDInsight .NET SDK. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u geleerd hoe u Apache Hive query's kunt verzenden met behulp van HDInsight .NET SDK. Lees de volgende artikelen voor meer informatie:
 
 * [Aan de slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Apache Hadoop clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)

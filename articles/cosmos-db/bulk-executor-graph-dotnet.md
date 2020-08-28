@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 78cc1fe1a84f1fd596d0c581f034f312cb1a0c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6fd81a844832fbe6ad7410ec786baa431ca9930c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523805"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004099"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 
@@ -128,7 +129,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Deze opslagplaats bevat het GraphBulkExecutor-voorbeeld met de volgende bestanden:
 
-Bestand|Beschrijving
+File|Beschrijving
 ---|---
 `App.config`|Hier worden de voor de toepassing en database specifieke parameters gespecificeerd. Dit bestand moet eerst worden aangepast om verbinding te kunnen maken met de doeldatabase en de verzamelingen.
 `Program.cs`| Dit bestand bevat de logica achter het maken van de `DocumentClient` verzameling, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk levering.

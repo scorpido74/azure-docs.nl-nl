@@ -7,18 +7,18 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 9acb9db0024ea1601f82b96376f084536fbbeabb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7ce7697b92df9c6bef61bbf9eccb9f4252ce957f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431869"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020674"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
-**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Retraining is een manier om ervoor te zorgen dat machine learning modellen nauw keurig blijven en op basis van de meest relevante gegevens die beschikbaar zijn. In dit artikel wordt beschreven hoe u een machine learning model opnieuw traint en implementeert als nieuwe webservice in Studio (klassiek). Als u een klassieke webservice opnieuw wilt trainen, [raadpleegt u dit artikel met instructies.](retrain-classic-web-service.md)
@@ -35,7 +35,7 @@ U kunt deze stappen volgen om een machine learning nieuwe webservice opnieuw te 
 
 ## <a name="deploy-the-retraining-web-service"></a>De webservice voor retraining implementeren
 
-Met een Retrain web service kunt u uw model opnieuw trainen met een nieuwe set para meters, zoals nieuwe gegevens, en deze op een later tijdstip opslaan. Wanneer u een **webservice-uitvoer** verbindt met een **Train-model**, voert het trainings experiment een nieuw model uit dat u wilt gebruiken.
+Met een Retrain web service kunt u uw model opnieuw trainen met een nieuwe set para meters, zoals nieuwe gegevens, en deze op een later tijdstip opslaan. Wanneer u een **webservice-uitvoer**  verbindt met een **Train-model**, voert het trainings experiment een nieuw model uit dat u wilt gebruiken.
 
 Gebruik de volgende stappen voor het implementeren van een retraining-webservice:
 

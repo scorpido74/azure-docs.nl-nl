@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3fe61bf5d116d257ed7aeb32226a437d0193c54
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1bfd83534bda6397983b0595acc089e901c473d6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892385"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021477"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -31,7 +31,7 @@ De meest voorkomende back-upfouten kunnen automatisch worden opgelost door de vo
 - **Controleer of de Azure VM Guest Agent-service is gestart en up-to-date is**:
   - Op een Windows-VM:
     - Navigeer naar **Services. msc** en zorg ervoor dat de **Windows Azure VM Guest Agent-service** actief is. Zorg er ook voor dat de [meest recente versie](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) is geïnstalleerd. Zie problemen met de [Windows VM-gast agent](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)voor meer informatie.
-    - De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit een Azure Marketplace-installatie kopie vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon. Een [hand matige installatie van de agent](../virtual-machines/extensions/agent-windows.md#manual-installation) kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die is geïmplementeerd in Azure.
+    - De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit een Azure Marketplace-installatie kopie vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon. Een [hand matige installatie van de agent](../virtual-machines/extensions/agent-windows.md#manual-installation) kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die wordt geïmplementeerd in Azure.
     - Bekijk de ondersteunings matrix om te controleren of de VM wordt uitgevoerd op het [ondersteunde Windows-besturings systeem](backup-support-matrix-iaas.md#operating-system-support-windows).
   - Op Linux VM,
     - Zorg ervoor dat de Azure VM Guest Agent-service wordt uitgevoerd door de opdracht uit te voeren `ps-e` . Zorg er ook voor dat de [meest recente versie](../virtual-machines/extensions/update-linux-agent.md) is geïnstalleerd. Zie problemen met de [gast agent van Linux VM](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)voor meer informatie.
@@ -277,7 +277,7 @@ De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` .
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en selecteert u **verwijderen**.
@@ -306,7 +306,7 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, wat niet wordt gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **alle resources**in het menu **hub** , selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
 
     ![De resource groep selecteren](./media/backup-azure-arm-vms-prepare/resource-group.png)

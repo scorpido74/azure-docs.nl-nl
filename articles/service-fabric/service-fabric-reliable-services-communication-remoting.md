@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253283"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022153"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Externe service in C# met Reliable Services
 
@@ -109,7 +110,7 @@ Een gebruiker kan deze waarden configureren door het object OperationRetrySettin
 
 Vanaf versie 2,8 van het NuGet Remoting-pakket hebt u de mogelijkheid om de externe v2-stack te gebruiken. De externe v2-stack werkt beter. Het biedt ook functies als aangepaste serialisatie en meer pluggable Api's.
 De sjabloon code blijft de externe v1-stack gebruiken.
-Remoting v2 is niet compatibel met V1 (de vorige externe stack). Volg de instructies in het artikel [upgrade van v1 naar v2](#upgrade-from-remoting-v1-to-remoting-v2) om te voor komen dat er gevolgen zijn voor de beschik baarheid van de service.
+Remoting v2 is niet compatibel met V1 (de vorige externe stack). Volg de instructies in het artikel  [upgrade van v1 naar v2](#upgrade-from-remoting-v1-to-remoting-v2) om te voor komen dat er gevolgen zijn voor de beschik baarheid van de service.
 
 De volgende benaderingen zijn beschikbaar om de v2-stack in te scha kelen.
 
@@ -127,7 +128,7 @@ Met deze stappen wijzigt u de sjabloon code om de v2-stack te gebruiken met behu
    </Resources>
    ```
 
-2. Gebruik de `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` uitbreidings methode voor het maken van externe listeners (gelijk voor v1 en v2).
+2. Gebruik de `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners`  uitbreidings methode voor het maken van externe listeners (gelijk voor v1 en v2).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()

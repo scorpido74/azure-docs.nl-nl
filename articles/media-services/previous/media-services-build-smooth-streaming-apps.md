@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a1a506e7e4c4a90ed39f4371b48e47b632918c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071902"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021469"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Een Smooth Streaming Windows Store-toepassing bouwen  
 
@@ -45,7 +46,7 @@ De voltooide oplossing voor elke les kan worden gedownload van MSDN Developer co
 * [Les 1](https://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) : een eenvoudige Windows 8-Smooth Streaming Media Player, 
 * [Les 2](https://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) : een eenvoudige Windows 8-Smooth Streaming Media Player met een schuif balk besturings element, 
 * [Les 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) : een Windows 8-Smooth Streaming Media Player met stroom selectie,  
-* [Les 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) : een Windows 8-Smooth Streaming Media Player met de optie bijhouden.
+* [Les 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907)  : een Windows 8-Smooth Streaming Media Player met de optie bijhouden.
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Les 1: een basis Smooth Streaming Store-toepassing maken
 
@@ -85,7 +86,7 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
     | Naam | Waarde |
     | --- | --- |
     | Verwijzings groep |Windows/uitbrei dingen |
-    | Verwijzing |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
+    | Naslaginformatie |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
 
 1. Klik op **OK**. 
 

@@ -3,12 +3,12 @@ title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890804"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021031"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -46,7 +46,7 @@ Onderdelen | Op de DPM-server moet Windows Power shell en .NET Framework 4,5 zij
 Ondersteunde apps | [Ontdek](/system-center/dpm/dpm-protection-matrix) waar DPM een back-up van kan maken.
 Ondersteunde bestandstypen | U kunt een back-up van deze bestands typen maken met Azure Backup:<br> <li>Versleuteld (alleen volledige back-ups)<li> Gecomprimeerd (incrementele back-ups worden ondersteund) <li> Sparse (incrementele back-ups worden ondersteund)<li> Gecomprimeerd en verspreid (behandeld als sparse)
 Niet-ondersteunde bestands typen | <li>Servers op hoofdletter gevoelige bestands systemen<li> vaste koppelingen (overgeslagen)<li> reparsepunten (overgeslagen)<li> versleuteld en gecomprimeerd (overgeslagen)<li> versleuteld en verspreid (overgeslagen)<li> Gecomprimeerde stroom<li> stroom parseren
-Lokale opslag | Elke machine waarvan u een back-up wilt maken, moet over lokale vrije opslag beschikken die ten minste 5% van de grootte van de gegevens waarvan een back-up wordt gemaakt. Voor het maken van een back-up van 100 GB aan gegevens is bijvoorbeeld mini maal 5 GB beschik bare ruimte op de Scratch locatie vereist.
+Lokale opslag | Elke machine waarvan u een back-up wilt maken, moet lokale vrije opslag hebben die ten minste 5% van de grootte van de gegevens is waarvan een back-up wordt gemaakt. Voor het maken van een back-up van 100 GB aan gegevens is bijvoorbeeld mini maal 5 GB beschik bare ruimte op de Scratch locatie vereist.
 Kluis opslag | Er is geen limiet voor de hoeveelheid gegevens waarvan u een back-up kunt maken naar een Azure Backup kluis, maar de grootte van een gegevens bron (bijvoorbeeld een virtuele machine of data base) mag niet groter zijn dan 54.400 GB.
 Azure ExpressRoute | U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.<br/><br/> **Met open bare peering**: Zorg ervoor dat u toegang hebt tot de volgende domeinen/adressen:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> Selecteer **bij micro soft-peering**de volgende services/regio's en relevante Community-waarden:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)<br/><br/>-Azure Storage (op basis van de locatie van uw Recovery Services kluis)<br/><br/>Zie [ExpressRoute Routing requirements](../expressroute/expressroute-routing.md)(Engelstalig) voor meer informatie.<br/><br/>**Opmerking**: open bare peering is afgeschaft voor nieuwe circuits.
 Azure Backup-agent | Als DPM wordt uitgevoerd op System Center 2012 SP1, installeert u Rollup 2 of hoger voor DPM SP1. Dit is vereist voor de installatie van de agent.<br/><br/> In dit artikel wordt beschreven hoe u de nieuwste versie van de Azure Backup-Agent, ook wel de MARS-agent (Microsoft Azure Recovery Service), implementeert. Als u een eerdere versie hebt geïmplementeerd, werkt u bij naar de nieuwste versie om te controleren of de back-up naar verwachting werkt.
@@ -97,7 +97,7 @@ Down load het kluis referentie bestand via een beveiligd kanaal van de Azure Por
 
 Down load het kluis referentie bestand als volgt naar een lokale computer:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Open de kluis waarin u de DPM-server wilt registreren.
 3. Selecteer in **instellingen**de optie **Eigenschappen**.
 

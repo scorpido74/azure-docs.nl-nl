@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b9b234f0d701ae2ef269b53c3b3c0276ca31f7f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052833"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020606"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions ontwikkelen met Media Services
 
@@ -42,7 +43,7 @@ Als u bestaande Azure Functions wilt verkennen en implementeren die gebruikmaken
 
 ## <a name="configure-function-app-settings"></a>Instellingen voor de functie-app configureren
 
-Wanneer u Media Services functies ontwikkelt, is het handig om omgevings variabelen toe te voegen die tijdens uw functies worden gebruikt. Als u de app-instellingen wilt configureren, klikt u op de koppeling app-instellingen configureren. Zie [How to configure Azure function app Settings](../../azure-functions/functions-how-to-use-azure-function-app-settings.md)(Engelstalig) voor meer informatie. 
+Wanneer u Media Services functies ontwikkelt, is het handig om omgevings variabelen toe te voegen die tijdens uw functies worden gebruikt. Als u de app-instellingen wilt configureren, klikt u op de koppeling app-instellingen configureren. Zie  [How to configure Azure function app Settings](../../azure-functions/functions-how-to-use-azure-function-app-settings.md)(Engelstalig) voor meer informatie. 
 
 De functie die in dit artikel is gedefinieerd, veronderstelt dat u de volgende omgevings variabelen in de app-instellingen hebt:
 
@@ -74,7 +75,7 @@ Als uw functie-app is geïmplementeerd, kunt u deze vinden in **App Services** A
 
 ## <a name="files"></a>Files
 
-Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie te maken, **function.js** voor u gemaakt en **uitgevoerd. CSX** . U moet eenproject.jstoevoegen of uploaden **voor** het bestand. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
+Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie te maken, **function.js** voor u gemaakt en **uitgevoerd. CSX** . U moet eenproject.jstoevoegen of uploaden ** voor** het bestand. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
 
 ![bestanden](./media/media-services-azure-functions/media-services-azure-functions003.png)
 

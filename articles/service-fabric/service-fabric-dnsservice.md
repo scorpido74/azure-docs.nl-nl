@@ -3,12 +3,13 @@ title: Azure Service Fabric DNS-service
 description: De DNS-service van Service Fabric gebruiken voor het detecteren van micro Services in het cluster.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258915"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021269"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS Service in Azure Service Fabric
 De DNS-service is een optionele systeem service die u in uw cluster kunt inschakelen om andere services te detecteren die gebruikmaken van het DNS-protocol. 
@@ -116,7 +117,7 @@ De DNS-naam voor uw service kan in het hele cluster worden omgezet. het is belan
 Het is raadzaam om een naam schema van `<ServiceDnsName>.<AppInstanceName>` te gebruiken, bijvoorbeeld `service1.application1` . Als een toepassing wordt geïmplementeerd met behulp van docker opstellen, worden aan services automatisch DNS-namen toegewezen met dit naamgevings schema.
 
 ### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Het instellen van de DNS-naam voor een standaard service in de ApplicationManifest.xml
-Open uw project in Visual Studio of uw favoriete editor en open het ApplicationManifest.xml-bestand. Ga naar de sectie standaard services en voeg voor elke service het `ServiceDnsName` kenmerk toe. In het volgende voor beeld ziet u hoe u de DNS-naam van de service instelt op`service1.application1`
+Open uw project in Visual Studio of uw favoriete editor en open het ApplicationManifest.xml-bestand. Ga naar de sectie standaard services en voeg voor elke service het `ServiceDnsName` kenmerk toe. In het volgende voor beeld ziet u hoe u de DNS-naam van de service instelt op `service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -143,7 +144,7 @@ In het volgende voor beeld wordt de DNS-naam voor een stateful service ingesteld
 ```
 
 ### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>De DNS-naam voor een service instellen met behulp van Power shell
-U kunt de DNS-naam voor een service instellen wanneer u deze maakt met behulp van de `New-ServiceFabricService` Power shell-opdracht. In het volgende voor beeld wordt een nieuwe stateless service gemaakt met de DNS-naam`service1.application1`
+U kunt de DNS-naam voor een service instellen wanneer u deze maakt met behulp van de `New-ServiceFabricService` Power shell-opdracht. In het volgende voor beeld wordt een nieuwe stateless service gemaakt met de DNS-naam `service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -173,9 +174,9 @@ DNS-query's die zijn gericht op een partitie, zijn als volgt ingedeeld:
 Waar:
 
 - Het *eerste label van de gepartitioneerde service-DNSName* is het eerste deel van de DNS-naam van uw service.
-- *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is '--'. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
+- *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is '--'. Zie  [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
 - *Doel-partitie: naam* is de naam van de partitie. 
-- *PartitionSuffix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is een lege teken reeks. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
+- *PartitionSuffix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is een lege teken reeks. Zie  [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
 - *Resterend gepartitioneerde service-DNSName* is het resterende deel van de DNS-naam van de service.
 
 In de volgende voor beelden worden DNS-query's weer gegeven voor gepartitioneerde services die worden uitgevoerd op een cluster met standaard instellingen voor `PartitionPrefix` en `PartitionSuffix` : 
@@ -252,4 +253,4 @@ public class ValuesController : Controller
 * De DNS-service voor Service Fabric Services wordt nog niet ondersteund in Linux. De DNS-service wordt ondersteund voor containers in Linux. Hand matige omzetting met Fabric client/ServicePartitionResolver is het beschik bare alternatief.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over service communicatie binnen het cluster met [verbinding maken en communiceren met Services](service-fabric-connect-and-communicate-with-services.md)
+Meer informatie over service communicatie binnen het cluster met  [verbinding maken en communiceren met Services](service-fabric-connect-and-communicate-with-services.md)

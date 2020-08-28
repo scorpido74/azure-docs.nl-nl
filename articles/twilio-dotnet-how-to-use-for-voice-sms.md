@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
-ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69876808"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021133"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Twilio gebruiken voor spraak-en SMS-mogelijkheden van Azure
 In deze hand leiding wordt gedemonstreerd hoe u veelvoorkomende programmeer taken uitvoert met de Twilio API-service in Azure. De besproken scenario's zijn onder andere het maken van een telefoon oproep en het verzenden van een SMS-bericht (Short Message Service). Zie de sectie [volgende stappen](#NextSteps) voor meer informatie over Twilio en het gebruik van spraak en SMS in uw toepassingen.
@@ -144,7 +145,7 @@ Zie voor meer informatie over de para meters die worden door gegeven aan de meth
 Zoals vermeld, gebruikt deze code een Twilio-site voor het retour neren van het TwiML-antwoord. U kunt in plaats daarvan uw eigen site gebruiken om het TwiML-antwoord op te geven. Zie [How to: TwiML Responses van uw eigen website bieden](#howto_provide_twiml_responses)voor meer informatie.
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Procedure: een SMS-bericht verzenden
-De volgende scherm afbeelding laat zien hoe u een SMS-bericht verzendt met behulp van de **MessageResource** -klasse. Het **van** -nummer wordt verzorgd door Twilio voor proef accounts om SMS-berichten te verzenden. Het **to** -nummer moet worden geverifieerd voor uw Twilio-account voordat u de code uitvoert.
+De volgende scherm afbeelding laat zien hoe u een SMS-bericht verzendt met behulp van de **MessageResource**  -klasse. Het **van** -nummer wordt verzorgd door Twilio voor proef accounts om SMS-berichten te verzenden. Het **to** -nummer moet worden geverifieerd voor uw Twilio-account voordat u de code uitvoert.
 
 ```csharp
 // Use your account SID and authentication token instead

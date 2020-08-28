@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954702"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022204"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator gebruiken om mogelijke inhoud voor volwassenen en ongepaste te detecteren 
 
@@ -31,7 +32,7 @@ Met de **Azure media content moderator** media processor (MP) kunt u op uw Video
 
 De **Azure Media Content moderator** -MP is momenteel beschikbaar als preview-versie.
 
-Dit artikel bevat informatie over **Azure Media Content moderator** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
+Dit artikel bevat informatie over  **Azure Media Content moderator** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
 
 ## <a name="content-moderator-input-files"></a>Content Moderator invoer bestanden
 Video bestanden. Momenteel worden de volgende indelingen ondersteund: MP4, MOV en WMV.
@@ -47,7 +48,7 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="root-json-elements"></a>Wortel-JSON-elementen
 
-| Element | Description |
+| Element | Beschrijving |
 | --- | --- |
 | versie |De versie van Content Moderator. |
 | lijnen |' Ticks ' per seconde van de video. |
@@ -60,21 +61,21 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="fragments-json-elements"></a>Fragmenten JSON-elementen
 
-|Element|Description|
+|Element|Beschrijving|
 |---|---|
-| start |De begin tijd van de eerste gebeurtenis in Ticks. |
+| starten |De begin tijd van de eerste gebeurtenis in Ticks. |
 | duur |De lengte van het fragment, in Ticks. |
 | interval |Het interval van elke gebeurtenis vermelding in het fragment, in Ticks. |
 | [evenementen](#events-json-elements) |Elke gebeurtenis vertegenwoordigt een clip en elke clip bevat keyframes die binnen deze tijds duur zijn gedetecteerd en bijgehouden. Het is een matrix met gebeurtenissen. De buitenste matrix vertegenwoordigt een tijdsinterval. De binnenste matrix bestaat uit 0 of meer gebeurtenissen die hebben plaatsgevonden gedurende de interval.|
 
 ### <a name="events-json-elements"></a>JSON-elementen van gebeurtenissen
 
-|Element|Description|
+|Element|Beschrijving|
 |---|---|
-| reviewRecommended | `true`of `false` afhankelijk van of de **AdultScore** of **racyScore** de interne drempel waarden overschrijdt. |
+| reviewRecommended | `true` of `false` afhankelijk van of de **AdultScore** of **racyScore** de interne drempel waarden overschrijdt. |
 | adultScore | Betrouwbaarheids score voor mogelijke inhoud voor volwassenen, op een schaal van 0,00 tot 0,99. |
 | racyScore | Betrouw bare score voor mogelijke ongepaste-inhoud, op een schaal van 0,00 tot 0,99. |
-| TabIndex | index van het frame op een schaal van de eerste frame-index naar de laatste frame-index. |
+| index | index van het frame op een schaal van de eerste frame-index naar de laatste frame-index. |
 | tijdstempel | De locatie van het frame in Ticks. |
 | shotIndex | De index van de bovenliggende opname. |
 

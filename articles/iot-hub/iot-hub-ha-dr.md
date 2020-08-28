@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260162"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021424"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen van IoT Hub
 
@@ -57,12 +57,14 @@ Beide failover-opties bieden de volgende herstel punt doelstellingen (Rpo's):
 
 <sup>1</sup> Cloud-naar-apparaat-berichten en bovenliggende taken worden niet hersteld als onderdeel van een hand matige failover.
 
-Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen van het apparaat en de back-end-toepassingen verwacht te blijven werken zonder dat hiervoor hand matige interventie nodig is. Dit betekent dat uw apparaat-naar-Cloud-berichten moeten blijven werken en dat het hele REGI ster van het apparaat intact is. Gebeurtenissen die via Event Grid worden gegenereerd, kunnen worden gebruikt via dezelfde abonnement (en) die eerder zijn geconfigureerd, mits deze Event Grid abonnementen nog steeds beschikbaar zijn.
+Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen van het apparaat en de back-end-toepassingen verwacht te blijven werken zonder dat hiervoor hand matige interventie nodig is. Dit betekent dat uw apparaat-naar-Cloud-berichten moeten blijven werken en dat het hele REGI ster van het apparaat intact is. Gebeurtenissen die via Event Grid worden gegenereerd, kunnen worden gebruikt via dezelfde abonnement (en) die eerder zijn geconfigureerd, mits deze Event Grid abonnementen nog steeds beschikbaar zijn. Er is geen verdere verwerking vereist voor aangepaste eind punten.
 
 > [!CAUTION]
-> - De Event hub-compatibele naam en het eind punt van het eind punt van de IoT Hub ingebouwde gebeurtenissen na een failover wijzigen. Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event hub-client of de Event processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw toepassing rechtstreeks gebruikt, moet u na [de failover het nieuwe event hub-compatibele eind punt ophalen om de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) bewerkingen voort te zetten. Als u Azure Functions of Azure Stream Analytics om verbinding te maken met het ingebouwde eind punt, moet u de computer mogelijk **opnieuw opstarten**.
+> - De Event hub-compatibele naam en het eind punt van het eind punt van de IoT Hub ingebouwde gebeurtenissen na een failover wijzigen. Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event hub-client of de Event processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw toepassing rechtstreeks gebruikt, moet u na [de failover het nieuwe event hub-compatibele eind punt ophalen om de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) bewerkingen voort te zetten. 
 >
-> - Bij het door sturen naar de opslag wordt u aangeraden de blobs of bestanden weer te geven en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. 
+> - Als u Azure Functions of Azure Stream Analytics gebruikt om verbinding te maken met het ingebouwde eind punt van gebeurtenissen, moet u mogelijk **opnieuw opstarten**. Dit komt doordat tijdens de voorafgaande failover geen geldige offset meer geldig zijn.
+>
+> - Bij het door sturen naar de opslag wordt u aangeraden de blobs of bestanden weer te geven en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. Zie [Azure Storage als een eind punt van een route ring](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)voor meer informatie.
 
 ## <a name="microsoft-initiated-failover"></a>Door micro soft geïnitieerde failover
 
@@ -140,4 +142,4 @@ Hier volgt een samen vatting van de HA/DR-opties die in dit artikel worden gepre
 
 * [Wat is Azure IoT Hub?](about-iot-hub.md)
 * [Aan de slag met IoT hubs (Quick Start)](quickstart-send-telemetry-dotnet.md)
-* [Zelf studie: hand matige failover uitvoeren voor een IoT-hub](tutorial-manual-failover.md)
+* [Zelfstudie: Handmatige failover uitvoeren voor een IoT-hub](tutorial-manual-failover.md)

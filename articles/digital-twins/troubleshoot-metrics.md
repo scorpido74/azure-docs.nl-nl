@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749020"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003878"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problemen met Azure Digital Apparaatdubbels: metrische gegevens oplossen
 
@@ -24,7 +24,7 @@ Metrische gegevens zijn standaard ingeschakeld. U kunt de metrische gegevens van
 
 1. Maak een Azure Digital Apparaatdubbels-exemplaar. U kunt instructies vinden over het instellen van een Azure Digital Apparaatdubbels-instantie in [*How-to: een exemplaar en verificatie instellen*](how-to-set-up-instance-scripted.md).
 
-2. Zoek uw Azure Digital Apparaatdubbels-exemplaar in de [Azure Portal](https:/portal.azure.com) (u kunt de pagina hiervoor openen door de naam ervan te typen in de zoek balk van de portal). 
+2. Zoek uw Azure Digital Apparaatdubbels-exemplaar in de [Azure Portal](https://portal.azure.com) (u kunt de pagina hiervoor openen door de naam ervan te typen in de zoek balk van de portal). 
 
     Selecteer in het menu van de instantie **metrische gegevens**.
    
@@ -56,8 +56,8 @@ Metrische gegevens met API-aanvragen:
 | Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype| Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-aanvragen (preview-versie) | Aantal | Totaal | Het aantal API-aanvragen voor digitale-Apparaatdubbels voor lezen, schrijven, verwijderen en query bewerkingen. |  Verificatie <br>Schijf <br>Protocolsubstatus <br>Status code, <br>Klasse status code, <br>Status tekst |
-| ApiRequestsFailureRate | Aantal mislukte API-aanvragen (preview-versie) | Percentage | Gemiddeld | Het percentage van de API-aanvragen dat door de service wordt ontvangen voor uw exemplaar en die een interne fout (500) reactie code geven voor digitale Apparaatdubbels-Lees-, schrijf-, verwijder-en query bewerkingen. | Verificatie <br>Schijf <br>Protocolsubstatus <br>Status code, <br>Klasse status code, <br>Status tekst
-| ApiRequestsLatency | Latentie aanvragen van API (preview-versie) | Milliseconden | Gemiddeld | De reactie tijd voor API-aanvragen. Dit is de tijd tussen het moment waarop de aanvraag wordt ontvangen door Azure Digital Apparaatdubbels totdat de service een geslaagd/mislukt resultaat verzendt voor digitale Apparaatdubbels lezen, schrijven, verwijderen en query bewerkingen. | Verificatie <br>Schijf <br>Protocol |
+| ApiRequestsFailureRate | Aantal mislukte API-aanvragen (preview-versie) | Percentage | Average | Het percentage van de API-aanvragen dat door de service wordt ontvangen voor uw exemplaar en die een interne fout (500) reactie code geven voor digitale Apparaatdubbels-Lees-, schrijf-, verwijder-en query bewerkingen. | Verificatie <br>Schijf <br>Protocolsubstatus <br>Status code, <br>Klasse status code, <br>Status tekst
+| ApiRequestsLatency | Latentie aanvragen van API (preview-versie) | Milliseconden | Average | De reactie tijd voor API-aanvragen. Dit is de tijd tussen het moment waarop de aanvraag wordt ontvangen door Azure Digital Apparaatdubbels totdat de service een geslaagd/mislukt resultaat verzendt voor digitale Apparaatdubbels lezen, schrijven, verwijderen en query bewerkingen. | Verificatie <br>Schijf <br>Protocol |
 
 #### <a name="billing-metrics"></a>Metrische facturerings gegevens
 
@@ -79,8 +79,8 @@ Metrische gegevens die moeten worden uitgevoerd met inkomend verkeer:
 | Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype| Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Ingangs gebeurtenissen (preview-versie) | Aantal | Totaal | Het aantal inkomende telemetrie-gebeurtenissen in azure Digital Apparaatdubbels. | Resultaat |
-| IngressEventsFailureRate | Aantal mislukte ingangs gebeurtenissen (preview-versie) | Percentage | Gemiddeld | Het percentage inkomende telemetrie-gebeurtenissen waarvoor de service een interne fout (500) respons code retourneert. | Resultaat |
-| IngressEventsLatency | Latentie van ingangs gebeurtenissen (preview-versie) | Milliseconden | Gemiddeld | Het tijdstip waarop een gebeurtenis arriveert wanneer deze klaar is om te worden egressed door Azure Digital Apparaatdubbels, waarbij de service een geslaagd/mislukt resultaat verzendt. | Resultaat |
+| IngressEventsFailureRate | Aantal mislukte ingangs gebeurtenissen (preview-versie) | Percentage | Average | Het percentage inkomende telemetrie-gebeurtenissen waarvoor de service een interne fout (500) respons code retourneert. | Resultaat |
+| IngressEventsLatency | Latentie van ingangs gebeurtenissen (preview-versie) | Milliseconden | Average | Het tijdstip waarop een gebeurtenis arriveert wanneer deze klaar is om te worden egressed door Azure Digital Apparaatdubbels, waarbij de service een geslaagd/mislukt resultaat verzendt. | Resultaat |
 
 #### <a name="routing-metrics"></a>Routerings metrieken
 
@@ -89,8 +89,8 @@ Metrische gegevens die moeten worden uitgevoerd met route ring:
 | Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype| Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Verzonden berichten (preview-versie) | Aantal | Totaal | Het aantal berichten dat wordt doorgestuurd naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
-| RoutingFailureRate | Aantal mislukte routeringen (preview-versie) | Percentage | Gemiddeld | Het percentage gebeurtenissen dat resulteert in een fout wanneer ze worden doorgestuurd van Azure Digital Apparaatdubbels naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
-| RoutingLatency | Routerings latentie (preview-versie) | Milliseconden | Gemiddeld | De tijd die is verstreken tussen een gebeurtenis die wordt gerouteerd van Azure Digital Apparaatdubbels naar het moment dat deze wordt geplaatst in de Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
+| RoutingFailureRate | Aantal mislukte routeringen (preview-versie) | Percentage | Average | Het percentage gebeurtenissen dat resulteert in een fout wanneer ze worden doorgestuurd van Azure Digital Apparaatdubbels naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
+| RoutingLatency | Routerings latentie (preview-versie) | Milliseconden | Average | De tijd die is verstreken tussen een gebeurtenis die wordt gerouteerd van Azure Digital Apparaatdubbels naar het moment dat deze wordt geplaatst in de Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
 
 ## <a name="dimensions"></a>Dimensies
 

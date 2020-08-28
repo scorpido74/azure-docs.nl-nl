@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c7bef7fac23ab054810d7d27f99b773f6910f344
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749691"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021433"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Inleiding tot beheerde Azure-schijven
 
@@ -91,7 +91,7 @@ Een gegevensschijf is een beheerde schijf die is gekoppeld aan een virtuele mach
 
 Elke virtuele machine heeft een gekoppelde besturingssysteemschijf. Die besturingssysteemschijf heeft een vooraf geïnstalleerd besturingssysteem dat is geselecteerd toen de virtuele machine werd gemaakt. Deze schijf bevat het opstartvolume.
 
-Deze gegevensschijf heeft een maximale capaciteit van 2.048 GiB.
+Deze schijf heeft een maximale capaciteit van 4.095 GiB.
 
 ### <a name="temporary-disk"></a>Tijdelijke schijf
 

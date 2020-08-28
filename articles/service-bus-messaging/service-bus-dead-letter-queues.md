@@ -3,13 +3,13 @@ title: Service Bus wacht rijen voor onbestelbare berichten | Microsoft Docs
 description: Beschrijft wacht rijen voor onbestelbare berichten in Azure Service Bus. Service Bus-wacht rijen en-onderwerp-abonnementen bieden een secundaire subwachtrij, een zogeheten wachtrij met onbestelbare berichten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511208"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021677"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Overzicht van Service Bus wacht rijen voor onbestelbare berichten
 
@@ -56,7 +56,7 @@ Dit gedrag kan niet worden uitgeschakeld, maar u kunt [MaxDeliveryCount](/dotnet
 
 ## <a name="exceeding-timetolive"></a>Meer dan TimeToLive
 
-Wanneer de eigenschap [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) of [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) is ingesteld op **True** (de standaard waarde is **False**), worden alle verlopen berichten verplaatst naar de DLQ en worden de `TTLExpiredException` reden code opgegeven.
+Wanneer de eigenschap [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) of [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) is ingesteld op **True** (de standaard waarde is **False**), worden alle verlopen berichten verplaatst naar de DLQ en worden de  `TTLExpiredException` reden code opgegeven.
 
 Verlopen berichten worden alleen opgeschoond en verplaatst naar de DLQ wanneer er ten minste één actieve ontvanger wordt opgehaald uit de hoofd wachtrij of het abonnement, en [uitgestelde berichten](./message-deferral.md) worden ook niet leeg gemaakt en verplaatst naar de wachtrij voor onbestelbare brieven nadat deze zijn verlopen. Dit gedrag is zo ontworpen.
 
@@ -80,7 +80,7 @@ Als u deze berichten met een onbestelbare bericht wilt ophalen, kunt u een ontva
 
 ## <a name="example"></a>Voorbeeld
 
-Met het volgende code fragment wordt een ontvanger van een bericht gemaakt. In de receive-lus voor de hoofd wachtrij wordt met de code het bericht met de status [Receive (time span. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)opgehaald, waarmee de Broker wordt gevraagd om onmiddellijk een bericht te retour neren dat direct beschikbaar is, of om te retour neren zonder resultaat. Als de code een bericht ontvangt, wordt deze onmiddellijk afgebroken, waardoor de wordt verhoogd `DeliveryCount` . Zodra het systeem het bericht naar de DLQ verplaatst, is de hoofd wachtrij leeg en wordt de lus afgesloten, omdat [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **Null**retourneert.
+Met het volgende code fragment wordt een ontvanger van een bericht gemaakt. In de receive-lus voor de hoofd wachtrij wordt met de code het bericht met de status [Receive (time span. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)opgehaald, waarmee de Broker wordt gevraagd om onmiddellijk een bericht te retour neren dat direct beschikbaar is, of om te retour neren zonder resultaat. Als de code een bericht ontvangt, wordt deze onmiddellijk afgebroken, waardoor de wordt verhoogd  `DeliveryCount` . Zodra het systeem het bericht naar de DLQ verplaatst, is de hoofd wachtrij leeg en wordt de lus afgesloten, omdat [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **Null**retourneert.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

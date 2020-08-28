@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718948"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003538"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory wachtwoord beveiliging plannen en implementeren
 
@@ -49,6 +49,8 @@ Het is ook mogelijk om een sterkere wachtwoord validatie te hebben die van invlo
 * [De degradatie van de domein controller is mislukt vanwege een zwak lokaal beheerders wachtwoord](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 Nadat de functie gedurende een redelijke periode in de controle modus is uitgevoerd, kunt u de configuratie van de *controle* wijzigen naar *afdwingen* om veiligere wacht woorden te vereisen. Het is een goed idee om gedurende deze tijd extra bewaking te bewaken.
+
+Het is belang rijk te weten dat Azure AD-wachtwoord beveiliging alleen wacht woorden kan valideren tijdens het wijzigen van het wacht woord of het instellen van bewerkingen. Wacht woorden die in Active Directory voorafgaand aan de implementatie van Azure AD-wachtwoord beveiliging zijn geaccepteerd en opgeslagen, worden nooit gevalideerd en blijven werken. Na verloop van tijd gaan alle gebruikers en accounts uiteindelijk gebruikmaken van Azure AD-wacht woorden voor wachtwoord beveiliging, omdat hun bestaande wacht woorden normaal verlopen. Accounts die zijn geconfigureerd met ' wacht woord nooit verloopt ', worden niet van deze account uitgesloten.
 
 ### <a name="multiple-forest-considerations"></a>Aandachtspunten voor meerdere forests
 

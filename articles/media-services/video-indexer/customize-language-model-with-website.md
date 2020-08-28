@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: d789d74f79fa691a2d5b374530450d966e0c40ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047254"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020453"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Een taal model aanpassen met de Video Indexer-website
 
@@ -133,7 +133,9 @@ Video Indexer ondersteunt automatische aanpassing van taal modellen op basis van
 
     ![Transcriptie voor het bewerken van taal modellen aanpassen: Video Indexer](./media/customize-language-model/edits.png)
 
-    Video Indexer alle regels die door u zijn gecorrigeerd, worden vastgelegd in de transcriptie van uw video en worden ze automatisch toegevoegd aan een tekst bestand met de naam ' van transcripten bewerken '. Deze bewerkingen worden gebruikt voor het opnieuw trainen van het specifieke taal model dat is gebruikt voor het indexeren van deze video.
+    Video Indexer alle regels die door u zijn gecorrigeerd, worden vastgelegd in de transcriptie van uw video en worden ze automatisch toegevoegd aan een tekst bestand met de naam ' van transcripten bewerken '. Deze bewerkingen worden gebruikt voor het opnieuw trainen van het specifieke taal model dat is gebruikt voor het indexeren van deze video. 
+    
+    De bewerkingen die in de tijd lijn [van de widget](video-indexer-embed-widgets.md) zijn uitgevoerd, zijn ook opgenomen.
     
     Als u geen taal model hebt opgegeven bij het indexeren van deze video, worden alle bewerkingen voor deze video opgeslagen in een standaard taal model met de naam ' account aanpassingen ' in de gedetecteerde taal van de video.
     

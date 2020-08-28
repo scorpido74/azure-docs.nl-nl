@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/10/2020
-ms.openlocfilehash: 37f4b7208d7c8fafcd3aa1d25106a2cd5e4949c6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c4b29db8bbcb741116fcd425b4489973228066e6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450218"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021592"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Updatebeheer inschakelen met behulp van Azure Resource Manager-sjabloon
 
@@ -33,8 +33,8 @@ De volgende tabel geeft een lijst van de API-versies voor de resources die in de
 
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
-| Werkruimte | werkruimten | 2020-03-01-preview |
-| Automation-account | automatisering | 2018-06-30 |
+| Werkruimte | workspaces | 2020-03-01-preview |
+| Automation-account | automation | 2018-06-30 |
 | Oplossing | oplossingen | 2015-11-01-preview |
 
 ## <a name="before-using-the-template"></a>Voordat u de sjabloon gebruikt
@@ -45,15 +45,15 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 De JSON-sjabloon is zo geconfigureerd dat u wordt gevraagd om:
 
-* De naam van de werk ruimte.
+* De naam van de werkruimte.
 * De regio waarin u de werk ruimte wilt maken.
 * Om resource-of werkruimte machtigingen in te scha kelen.
 * De naam van het Automation-account.
 * De regio waarin het account moet worden gemaakt.
 
-Met de JSON-sjabloon wordt een standaard waarde opgegeven voor de andere para meters die waarschijnlijk zullen worden gebruikt voor een standaard configuratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
+Met de JSON-sjabloon wordt een standaard waarde opgegeven voor de andere para meters die waarschijnlijk zullen worden gebruikt voor een standaard configuratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
 
-De volgende para meters in de sjabloon zijn ingesteld met een standaard waarde voor de Log Analytics-werk ruimte:
+De volgende parameters in de sjabloon hebben een standaardwaarde voor de Log Analytics-werkruimte:
 
 * SKU: wordt standaard ingesteld op de nieuwe prijs categorie per GB die is uitgebracht in het prijs model van april 2018
 * bewaren van gegevens-standaard ingesteld op dertig dagen
@@ -62,7 +62,7 @@ De volgende para meters in de sjabloon zijn ingesteld met een standaard waarde v
 >Als u een Log Analytics-werk ruimte maakt of configureert in een abonnement dat is aangemeld met het nieuwe prijs model van april 2018, is de enige geldige Log Analytics prijs categorie **PerGB2018**.
 >
 
-Met de JSON-sjabloon wordt een standaard waarde opgegeven voor de andere para meters die waarschijnlijk worden gebruikt als een standaard configuratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
+De JSON-sjabloon bevat standaardwaarden voor de andere parameters die waarschijnlijk worden gebruikt in een standaardconfiguratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
 
 Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen ervaring hebt met Azure Automation en Azure Monitor, om fouten te voor komen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld.
 
@@ -150,7 +150,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "name": "[parameters('sku')]",
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -192,7 +192,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
                 "sku": {
                     "name": "Basic"
                 }
-            },
+            }
         },
         {
             "apiVersion": "2020-03-01-preview",
@@ -231,7 +231,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
 
     De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, ziet u een bericht dat lijkt op het volgende:
 
-    ![Voor beeld van resultaat wanneer de implementatie is voltooid](media/update-mgmt-enable-template/template-output.png)
+    ![Voorbeeld van uitvoer als de implementatie is voltooid](media/update-mgmt-enable-template/template-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

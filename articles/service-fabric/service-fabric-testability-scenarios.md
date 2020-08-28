@@ -5,12 +5,13 @@ author: motanv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 336cd048704055e07de1a20f0694bd5816265a8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245565"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022119"
 ---
 # <a name="testability-scenarios"></a>Test scenario's
 Grote gedistribueerde systemen zoals Cloud infrastructuren zijn inherent onbetrouwbaar. Azure Service Fabric biedt ontwikkel aars de mogelijkheid om services te schrijven voor het uitvoeren van een onbetrouwbare infra structuur. Ontwikkel aars die een hoogwaardige service willen schrijven, moeten een dergelijke onbetrouwbare infra structuur kunnen maken om de stabiliteit van hun services te testen.
@@ -124,7 +125,7 @@ class Test
 
 PowerShell
 
-De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario`is gebaseerd op de client en als de client computer halverwege de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos`maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat fouten blijven worden geïntroduceerd totdat de TimeToRun is ingesteld. `Stop-ServiceFabricChaos`kan worden gebruikt om het scenario hand matig te stoppen en er `Get-ServiceFabricChaosReport` wordt een rapport ontvangen. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
+De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario` is gebaseerd op de client en als de client computer halverwege de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos` maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat fouten blijven worden geïntroduceerd totdat de TimeToRun is ingesteld. `Stop-ServiceFabricChaos` kan worden gebruikt om het scenario hand matig te stoppen en er `Get-ServiceFabricChaosReport` wordt een rapport ontvangen. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"

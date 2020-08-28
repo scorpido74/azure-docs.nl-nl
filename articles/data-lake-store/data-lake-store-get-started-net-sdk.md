@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 379f0c5418c2e15786b16cf1e4f67487432fa905
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ffd00ace0445b1b8cc13881834d7759aa217c4c6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985927"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020963"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van .NET SDK
 > [!div class="op_single_selector"]
@@ -141,7 +142,7 @@ Met het volgende code fragment verwijdert u het Data Lake Storage Gen1 account d
 _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Bestandssysteem bewerkingen op Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-data-operations-net-sdk.md)
 * [Naslag informatie over Data Lake Storage Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 

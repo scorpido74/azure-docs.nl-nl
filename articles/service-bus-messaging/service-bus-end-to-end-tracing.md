@@ -3,12 +3,13 @@ title: End-to-end-tracering en diagnostische gegevens Azure Service Bus | Micros
 description: Overzicht van Service Bus client diagnoses en end-to-end tracering (client via alle services die bij de verwerking betrokken zijn).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340734"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021626"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Gedistribueerde tracering en correlatie via Service Bus berichten
 
@@ -20,7 +21,7 @@ Wanneer een producent een bericht via een wachtrij verzendt, gebeurt dit doorgaa
 Microsoft Azure Service Bus Messa ging heeft eigenschappen van Payload gedefinieerd die door producenten en consumenten moeten worden gebruikt om deze tracerings context door te geven.
 Het protocol is gebaseerd op het [http-correlatie protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Naam van eigenschap        | Description                                                 |
+| Naam van eigenschap        | Beschrijving                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnose-id       | De unieke id van een externe aanroep van de producent naar de wachtrij. Raadpleeg de [aanvraag-id in het HTTP-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) voor de motivering, overwegingen en indeling |
 |  Correlatie-context | Bewerkings context, die wordt door gegeven voor alle services die bij de verwerking van de bewerking betrokken zijn. Zie [correlatie-context in http-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) voor meer informatie. |
@@ -86,7 +87,7 @@ Als uw tracerings systeem geen automatische Service Bus traceringen ondersteunt,
 
 Service Bus .NET-client is instrumentatie met behulp van .NET-tracering primitieven [System. Diagnostics. activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) en [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 
-`Activity`fungeert als tracerings context, maar `DiagnosticSource` is een meldings mechanisme. 
+`Activity` fungeert als tracerings context, maar `DiagnosticSource` is een meldings mechanisme. 
 
 Als er geen listener voor de DiagnosticSource-gebeurtenissen is, is instrumentatie uitgeschakeld, waardoor de kosten voor de instrumentatie gelijk blijven. DiagnosticSource biedt alle controle over de listener:
 - Listener bepaalt naar welke bronnen en gebeurtenissen moet worden geluisterd
@@ -142,8 +143,8 @@ Voor elke bewerking worden twee gebeurtenissen verzonden: Start en stop. Waarsch
 De nettolading van de gebeurtenis biedt een listener met de context van de bewerking, repliceert de API-binnenkomende para meters en retour waarden. De nettolading van de gebeurtenis stop heeft alle eigenschappen van de nettolading van de gebeurtenis, dus u kunt de gebeurtenis start volledig negeren.
 
 Alle gebeurtenissen hebben ook de eigenschappen entity en endpoint, die in de onderstaande tabel worden wegge laten
-  * `string Entity`--De naam van de entiteit (wachtrij, onderwerp, enzovoort)
-  * `Uri Endpoint`-Service Bus eind punt-URL
+  * `string Entity` --De naam van de entiteit (wachtrij, onderwerp, enzovoort)
+  * `Uri Endpoint` -Service Bus eind punt-URL
 
 Voor elke gebeurtenis ' Stop ' is een `Status` eigenschap met `TaskStatus` asynchrone bewerking voltooid, die ook in de volgende tabel wordt wegge laten voor eenvoud.
 
@@ -151,33 +152,33 @@ Hier volgt de volledige lijst met bewerkingen met een instrument:
 
 | Naam van bewerking | Bijgehouden API | Eigenschappen van specifieke nettolading|
 |----------------|-------------|---------|
-| Micro soft. Azure. ServiceBus. Send | [MessageSender. SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`-Lijst met berichten die worden verzonden |
-| Micro soft. Azure. ServiceBus. ScheduleMessage | [MessageSender. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`-Bericht wordt verwerkt<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`-Offset van gepland bericht<br/>`long SequenceNumber`-Volg nummer van het geplande bericht (' Stop ' gebeurtenis lading) |
-| Micro soft. Azure. ServiceBus. Cancel | [MessageSender. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`-Volg nummer van te annuleren bericht | 
-| Micro soft. Azure. ServiceBus. receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`-Het maximum aantal berichten dat kan worden ontvangen.<br/>`IList<Message> Messages`-Lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
-| Micro soft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`: Het begin punt van waaruit een batch berichten moet worden gebladerd.<br/>`int RequestedMessageCount`-Het aantal berichten dat moet worden opgehaald.<br/>`IList<Message> Messages`-Lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
-| Micro soft. Azure. ServiceBus. ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`-De lijst met de reeks nummers die moeten worden ontvangen.<br/>`IList<Message> Messages`-Lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
-| Micro soft. Azure. ServiceBus. complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`-De lijst met de vergrendelings tokens van de bijbehorende berichten die moeten worden voltooid.|
-| Micro soft. Azure. ServiceBus. Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`-Het vergrendelings token van het bijbehorende bericht dat moet worden afgebroken. |
-| Micro soft. Azure. ServiceBus. defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`-Het vergrendelings token van het bijbehorende bericht dat moet worden uitgesteld. | 
-| Micro soft. Azure. ServiceBus. DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`-Het vergrendelings token van het bijbehorende bericht naar een onbestelbare letter. | 
-| Micro soft. Azure. ServiceBus. RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`-Het vergrendelings token van het bijbehorende bericht waarop de vergren deling moet worden vernieuwd.<br/>`DateTime LockedUntilUtc`-Nieuwe eind datum en-tijd van het vergrendelings token in UTC-indeling. (' Stop ' gebeurtenis lading)|
-| Micro soft. Azure. ServiceBus. process | Lambda-functie Message Handler in [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message`-Het bericht wordt verwerkt. |
-| Micro soft. Azure. ServiceBus. ProcessSession | De Lambda-functie Message session handler in [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message`-Het bericht wordt verwerkt.<br/>`IMessageSession Session`-Sessie wordt verwerkt |
-| Micro soft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`-De regel beschrijving die de toe te voegen regel levert. |
-| Micro soft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`-Naam van de regel die u wilt verwijderen. |
-| Micro soft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`-Alle regels die zijn gekoppeld aan het abonnement. (Alleen Payload stoppen) |
-| Micro soft. Azure. ServiceBus. AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`-De sessie-id aanwezig in de berichten. |
-| Micro soft. Azure. ServiceBus. GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`-De sessie-id aanwezig in de berichten.<br/>`byte [] State`-Sessie status (' Stop ' gebeurtenis lading) |
-| Micro soft. Azure. ServiceBus. SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`-De sessie-id aanwezig in de berichten.<br/>`byte [] State`-Sessie status |
-| Micro soft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`-De sessie-id aanwezig in de berichten. |
-| Micro soft. Azure. ServiceBus. Exception | een instrumentele API| `Exception Exception`-Uitzonderings exemplaar |
+| Micro soft. Azure. ServiceBus. Send | [MessageSender. SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` -Lijst met berichten die worden verzonden |
+| Micro soft. Azure. ServiceBus. ScheduleMessage | [MessageSender. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` -Bericht wordt verwerkt<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` -Offset van gepland bericht<br/>`long SequenceNumber` -Volg nummer van het geplande bericht (' Stop ' gebeurtenis lading) |
+| Micro soft. Azure. ServiceBus. Cancel | [MessageSender. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` -Volg nummer van te annuleren bericht | 
+| Micro soft. Azure. ServiceBus. receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` -Het maximum aantal berichten dat kan worden ontvangen.<br/>`IList<Message> Messages` -Lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
+| Micro soft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` : Het begin punt van waaruit een batch berichten moet worden gebladerd.<br/>`int RequestedMessageCount` -Het aantal berichten dat moet worden opgehaald.<br/>`IList<Message> Messages` -Lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
+| Micro soft. Azure. ServiceBus. ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` -De lijst met de reeks nummers die moeten worden ontvangen.<br/>`IList<Message> Messages` -Lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
+| Micro soft. Azure. ServiceBus. complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` -De lijst met de vergrendelings tokens van de bijbehorende berichten die moeten worden voltooid.|
+| Micro soft. Azure. ServiceBus. Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` -Het vergrendelings token van het bijbehorende bericht dat moet worden afgebroken. |
+| Micro soft. Azure. ServiceBus. defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` -Het vergrendelings token van het bijbehorende bericht dat moet worden uitgesteld. | 
+| Micro soft. Azure. ServiceBus. DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` -Het vergrendelings token van het bijbehorende bericht naar een onbestelbare letter. | 
+| Micro soft. Azure. ServiceBus. RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` -Het vergrendelings token van het bijbehorende bericht waarop de vergren deling moet worden vernieuwd.<br/>`DateTime LockedUntilUtc` -Nieuwe eind datum en-tijd van het vergrendelings token in UTC-indeling. (' Stop ' gebeurtenis lading)|
+| Micro soft. Azure. ServiceBus. process | Lambda-functie Message Handler in [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message` -Het bericht wordt verwerkt. |
+| Micro soft. Azure. ServiceBus. ProcessSession | De Lambda-functie Message session handler in [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message` -Het bericht wordt verwerkt.<br/>`IMessageSession Session` -Sessie wordt verwerkt |
+| Micro soft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` -De regel beschrijving die de toe te voegen regel levert. |
+| Micro soft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` -Naam van de regel die u wilt verwijderen. |
+| Micro soft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` -Alle regels die zijn gekoppeld aan het abonnement. (Alleen Payload stoppen) |
+| Micro soft. Azure. ServiceBus. AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` -De sessie-id aanwezig in de berichten. |
+| Micro soft. Azure. ServiceBus. GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` -De sessie-id aanwezig in de berichten.<br/>`byte [] State` -Sessie status (' Stop ' gebeurtenis lading) |
+| Micro soft. Azure. ServiceBus. SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` -De sessie-id aanwezig in de berichten.<br/>`byte [] State` -Sessie status |
+| Micro soft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` -De sessie-id aanwezig in de berichten. |
+| Micro soft. Azure. ServiceBus. Exception | een instrumentele API| `Exception Exception` -Uitzonderings exemplaar |
 
 In elke gebeurtenis kunt u toegang krijgen tot `Activity.Current` de huidige bewerkings context.
 
 #### <a name="logging-additional-properties"></a>Logboek registratie van aanvullende eigenschappen
 
-`Activity.Current`geeft gedetailleerde context van de huidige bewerking en de bovenliggende bewerkingen. Zie voor meer informatie [activiteiten documentatie](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor meer informatie.
+`Activity.Current` geeft gedetailleerde context van de huidige bewerking en de bovenliggende bewerkingen. Zie voor meer informatie [activiteiten documentatie](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor meer informatie.
 Service Bus instrumentatie biedt aanvullende informatie in de `Activity.Current.Tags` -wacht `MessageId` en `SessionId` wanneer deze beschikbaar zijn.
 
 Activiteiten die de gebeurtenis ' Receive ', ' Peek ' en ' ReceiveDeferred ' volgen, kunnen ook `RelatedTo` tag hebben. Het bevat een afzonderlijke lijst met `Diagnostic-Id` berichten die als resultaat zijn ontvangen.
@@ -201,17 +202,17 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Filters en steek proeven
 
 In sommige gevallen is het wenselijk om slechts een deel van de gebeurtenissen te registreren om de prestaties van de overhead of het opslag verbruik te verminderen. U kunt stop gebeurtenissen alleen registreren (zoals in het voor gaande voor beeld) of het voorbeeld percentage van de gebeurtenissen. 
-`DiagnosticSource`bieden een manier om deze te krijgen met een `IsEnabled` predikaat. Zie [context-based filtering in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering)voor meer informatie.
+`DiagnosticSource` bieden een manier om deze te krijgen met een `IsEnabled` predikaat. Zie [context-based filtering in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering)voor meer informatie.
 
-`IsEnabled`kan meerdere keren worden aangeroepen voor één bewerking om de prestaties te verminderen.
+`IsEnabled` kan meerdere keren worden aangeroepen voor één bewerking om de prestaties te verminderen.
 
-`IsEnabled`wordt in de volgende volg orde aangeroepen:
+`IsEnabled` wordt in de volgende volg orde aangeroepen:
 
-1. `IsEnabled(<OperationName>, string entity, null)`bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Houd er rekening mee dat er aan het einde geen ' Start ' of ' Stop ' is. Gebruik het om bepaalde bewerkingen of wacht rijen te filteren. Als retour aanroep wordt geretourneerd `false` , worden gebeurtenissen voor de bewerking niet verzonden
+1. `IsEnabled(<OperationName>, string entity, null)` bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Houd er rekening mee dat er aan het einde geen ' Start ' of ' Stop ' is. Gebruik het om bepaalde bewerkingen of wacht rijen te filteren. Als retour aanroep wordt geretourneerd `false` , worden gebeurtenissen voor de bewerking niet verzonden
 
    * Voor de bewerkingen ' process ' en ' ProcessSession ' ontvangt u ook `IsEnabled(<OperationName>, string entity, Activity activity)` terugbellen. Gebruik deze functie om gebeurtenissen te filteren op basis van `activity.Id` of label eigenschappen.
   
-2. `IsEnabled(<OperationName>.Start)`bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Hiermee wordt gecontroleerd of de gebeurtenis start moet worden gestart. Het resultaat is alleen van invloed op de gebeurtenis start, maar verdere instrumentatie is niet afhankelijk van het item.
+2. `IsEnabled(<OperationName>.Start)` bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Hiermee wordt gecontroleerd of de gebeurtenis start moet worden gestart. Het resultaat is alleen van invloed op de gebeurtenis start, maar verdere instrumentatie is niet afhankelijk van het item.
 
 Er is geen `IsEnabled` voor de gebeurtenis ' Stop '.
 

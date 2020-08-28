@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a39871fd6e2aef2e5120030d17192bb32ba2613b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717775"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003470"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -38,7 +38,7 @@ Met de Azure AD-Portal kunt u de configuratie van on-premises specifieke ' wacht
 
 **V: hoe kan ik de voor delen van Azure AD-wachtwoord beveiliging Toep assen op een subset van mijn on-premises gebruikers?**
 
-Wordt niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
+Niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
 
 **V: wat is het verschil tussen een wachtwoord wijziging en een wachtwoordset (of opnieuw instellen)?**
 
@@ -47,6 +47,14 @@ Een wijziging van het wacht woord is wanneer een gebruiker een nieuw wacht woord
 Een wachtwoordset (ook wel wacht woord opnieuw instellen genoemd) is wanneer een beheerder het wacht woord voor een account vervangt door een nieuw wacht woord, bijvoorbeeld met behulp van het beheer programma Active Directory gebruikers en computers. Voor deze bewerking is een hoog bevoegdheids niveau (meestal domein beheerder) vereist. de persoon die de bewerking uitvoert, heeft doorgaans geen kennis van het oude wacht woord. Help Desk-scenario's voeren vaak wachtwoord sets in, bijvoorbeeld bij het helpen van een gebruiker die het wacht woord is verg eten. U ziet ook wachtwoord sets wanneer er voor de eerste keer een nieuwe gebruikers account wordt gemaakt met een wacht woord.
 
 Het wachtwoord validatie beleid gedraagt zich hetzelfde, ongeacht of er een wacht woord is gewijzigd of ingesteld. De Azure AD-Agent service voor wachtwoord beveiliging registreert verschillende gebeurtenissen om u te informeren of een wacht woord is gewijzigd of een set-bewerking is uitgevoerd.  Zie [Azure AD-controle programma voor wachtwoord beveiliging en logboek registratie](./howto-password-ban-bad-on-premises-monitor.md).
+
+**V: Azure AD-wachtwoord beveiliging valideert bestaande wacht woorden na installatie?**
+
+Nee: Azure AD-wachtwoord beveiliging kan alleen wachtwoord beleid afdwingen op Lees bare wacht woorden tijdens het wijzigen van een wacht woord of het instellen van een bewerking. Zodra een wacht woord is geaccepteerd door Active Directory, worden alleen verificatie-specifieke hashes van het wacht woord bewaard. Het wacht woord voor de Lees bare tekst wordt nooit bewaard, waardoor de wachtwoord beveiliging van Azure AD bestaande wacht woorden niet kan valideren.
+
+Na de eerste implementatie van Azure AD-wachtwoord beveiliging, beginnen alle gebruikers en accounts uiteindelijk met een wacht woord voor Azure AD-wachtwoord beveiliging, waarna hun bestaande wacht woorden normaal gesp roken na verloop van tijd worden verlopen. Dit proces kan, indien gewenst, worden versneld met een eenmalig hand matige verloop tijd van wacht woorden van gebruikers accounts.
+
+Accounts die zijn geconfigureerd met ' wacht woord nooit verloopt ' worden nooit zodanig gewijzigd dat ze hun wacht woord wijzigen, tenzij hand matige verval datum is voltooid.
 
 **V: Waarom worden duplicaat gebeurtenissen voor het afkeuren van wacht woorden vastgelegd bij het instellen van een zwak wacht woord met behulp van de Active Directory-module gebruikers en computers beheren?**
 
@@ -62,11 +70,11 @@ Ja. Ondersteuning voor meerdere geregistreerde wachtwoord filter-dll's is een ke
 
 **V: hoe kan ik Azure AD-wachtwoord beveiliging in mijn Active Directory omgeving implementeren en configureren zonder Azure te gebruiken?**
 
-Wordt niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
+Niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
 
 **V: hoe kan ik de inhoud van het beleid op het Active Directory niveau wijzigen?**
 
-Wordt niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
+Niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
 
 **V: Waarom is DFSR vereist voor SYSVOL-replicatie?**
 
