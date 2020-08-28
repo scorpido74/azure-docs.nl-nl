@@ -4,12 +4,13 @@ description: In deze zelf studie maakt u .NET Core-Console toepassingen om beric
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337543"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021660"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Aan de slag met Service Bus-wachtrijen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -19,10 +20,10 @@ In deze zelf studie maakt u .NET Core-Console toepassingen om berichten te verze
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
-- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) van uw MSDN-abonnee activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Als u geen wachtrij hebt om mee te werken, voert u de stappen in het [Azure Portal gebruik uit om een service bus wachtrij](service-bus-quickstart-portal.md) artikel te maken om een wachtrij te maken.
+- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Als u geen wachtrij hebt om te gebruiken, volgt u de stappen in het artikel [De Azure-portal gebruiken om een Service Bus-wachtrij te maken](service-bus-quickstart-portal.md) om een wachtrij te maken.
 
-  - Lees het kort overzicht van Service Bus-wacht rijen.
+  - Lees het beknopte overzicht van Service Bus-wachtrijen.
   - Maak een Service Bus naam ruimte.
   - De verbindingsreeks ophalen.
   - Maak een Service Bus wachtrij.
@@ -181,7 +182,7 @@ Selecteer de naam van uw wachtrij in het venster **overzicht** van de naam ruimt
 
 De waarde voor het **aantal actieve berichten** voor de wachtrij is nu **10**. Telkens wanneer u deze app Sender uitvoert zonder de berichten op te halen, wordt deze waarde verhoogd met 10.
 
-De huidige grootte van de wachtrij verhoogt de **huidige** waarde in **Essentials** telkens wanneer de app berichten aan de wachtrij toevoegt.
+De huidige grootte van de wachtrij verhoogt de **huidige** waarde in **Essentials**  telkens wanneer de app berichten aan de wachtrij toevoegt.
 
 In de volgende sectie wordt beschreven hoe u deze berichten ophaalt.
 
@@ -382,7 +383,7 @@ Voer het programma uit en controleer de portal opnieuw. Het **aantal actieve ber
 
 ![Wachtrij nadat berichten zijn ontvangen][queue-message-receive]
 
-Gefeliciteerd U hebt nu een wachtrij gemaakt, een set berichten naar die wachtrij verzonden en die berichten ontvangen van dezelfde wachtrij.
+Gefeliciteerd! U hebt nu een wachtrij gemaakt, een set berichten naar die wachtrij verzonden en die berichten ontvangen van dezelfde wachtrij.
 
 > [!NOTE]
 > U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een Service Bus naam ruimte en berichten entiteiten beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerpen, wacht rijen, abonnementen, relay-Services, Notification hubs en Event hubs te testen.

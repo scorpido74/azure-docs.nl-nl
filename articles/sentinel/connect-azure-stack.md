@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8114a5e6db7b82b846d221471f41dbdf418ddd9d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77588515"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001991"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack virtuele machines verbinden met Azure Sentinel
 
@@ -49,7 +49,7 @@ Voeg de extensie van de virtuele machine **Azure monitor, update en configuratie
 1. Plak in het venster **extensie Azure stack installatie** de waarden in de aangegeven velden en klik op **OK**.
 1. Nadat de installatie van de extensie is voltooid, wordt de status ervan weer gegeven als **inrichting geslaagd**. Het kan een uur duren voordat de virtuele machine wordt weer gegeven in de Azure-Sentinel-Portal.
 
-Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)voor meer informatie over het installeren en configureren van de agent voor Windows.
+Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)voor meer informatie over het installeren en configureren van de agent voor Windows.
 
 Zie [Probleemoplossing voor Linux-agent voor Log Analytics](../azure-monitor/platform/agent-linux-troubleshoot.md) voor meer informatie over het oplossen van problemen met agents in Linux.
 

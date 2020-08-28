@@ -3,12 +3,13 @@ title: Status van Event Grid asynchrone bewerkingen
 description: Hierin wordt beschreven hoe u Event Grid asynchrone bewerkingen in azure bijhoudt. Hierin worden de waarden weer gegeven die u gebruikt om de status van een langlopende bewerking op te halen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103327"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011681"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Event Grid asynchrone bewerkingen van Azure bijhouden
 Sommige Azure REST-bewerkingen worden asynchroon uitgevoerd, omdat de bewerking niet snel kan worden voltooid. In dit artikel wordt beschreven hoe u de status van asynchrone bewerkingen kunt volgen via waarden die in het antwoord worden geretourneerd.  
@@ -29,9 +30,9 @@ Raadpleeg de [documentatie van rest API](/rest/api/) voor een overzicht van de a
 ## <a name="monitor-status-of-operation"></a>Bewaak de status van de bewerking
 De asynchrone REST-bewerkingen retour neren koptekst waarden, die u gebruikt om de status van de bewerking te bepalen. Er zijn mogelijk drie header-waarden om te onderzoeken:
 
-* `Azure-AsyncOperation`-URL voor het controleren van de doorlopende status van de bewerking. Als uw bewerking deze waarde retourneert, moet u deze altijd gebruiken (in plaats van locatie) om de status van de bewerking bij te houden.
-* `Location`-URL om te bepalen wanneer een bewerking is voltooid. Gebruik deze waarde alleen als Azure-AsyncOperation niet wordt geretourneerd.
-* `Retry-After`-Het aantal seconden dat moet worden gewacht voordat de status van de asynchrone bewerking wordt gecontroleerd.
+* `Azure-AsyncOperation` -URL voor het controleren van de doorlopende status van de bewerking. Als uw bewerking deze waarde retourneert, moet u deze altijd gebruiken (in plaats van locatie) om de status van de bewerking bij te houden.
+* `Location` -URL om te bepalen wanneer een bewerking is voltooid. Gebruik deze waarde alleen als Azure-AsyncOperation niet wordt geretourneerd.
+* `Retry-After` -Het aantal seconden dat moet worden gewacht voordat de status van de asynchrone bewerking wordt gecontroleerd.
 
 Niet elke asynchrone bewerking retourneert echter al deze waarden. U moet bijvoorbeeld de waarde van de Azure-AsyncOperation-header voor één bewerking en de waarde van de locatie header voor een andere bewerking evalueren. 
 

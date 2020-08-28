@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463341"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002280"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Hand leiding voor het converteren van web-en werk rollen naar Service Fabric stateless Services
 In dit artikel wordt beschreven hoe u uw Cloud Services-Web-en-werk rollen migreert naar Service Fabric stateless Services. Dit is het eenvoudigste migratie traject van Cloud Services naar Service Fabric voor toepassingen waarvan de algehele architectuur op ongeveer dezelfde manier blijft.
@@ -30,12 +31,12 @@ De rol van een werk nemer vertegenwoordigt een staatloze werk belasting, wat bet
 ## <a name="web-role-to-stateless-service"></a>stateless service van webrol
 Net als bij de rol van werk nemer vertegenwoordigt een webrole ook een staatloze werk belasting, en kan deze dus niet worden toegewezen aan een Service Fabric stateless service. Maar in tegens telling tot webrollen biedt Service Fabric geen ondersteuning voor IIS. Als u een webtoepassing van een webrole naar een stateless service wilt migreren, moet u eerst verplaatsen naar een webframework dat zelf kan worden gehost en niet afhankelijk zijn van IIS of System. Web, zoals ASP.NET Core 1.
 
-| **Toepassing** | **Ondersteund** | **Migratie traject** |
+| **App** | **Ondersteund** | **Migratie traject** |
 | --- | --- | --- |
-| Webformulieren voor ASP.NET |No |Converteren naar ASP.NET Core 1 MVC |
+| Webformulieren voor ASP.NET |Nee |Converteren naar ASP.NET Core 1 MVC |
 | ASP.NET MVC |Met migratie |Upgrade uitvoeren naar ASP.NET Core 1 MVC |
 | ASP.NET Web-API |Met migratie |Een zelf-hostende server of ASP.NET Core 1 gebruiken |
-| ASP.NET Core 1 |Yes |N.v.t. |
+| ASP.NET Core 1 |Ja |N.v.t. |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Ingangs punt-API en levens cyclus
 De Worker-en Service Fabric service-Api's bieden vergelijk bare ingangs punten: 
@@ -45,7 +46,7 @@ De Worker-en Service Fabric service-Api's bieden vergelijk bare ingangs punten:
 | Wordt verwerkt |`Run()` |`RunAsync()` |
 | VM starten |`OnStart()` |N.v.t. |
 | VM stoppen |`OnStop()` |N.v.t. |
-| Listener voor client aanvragen openen |N.v.t. |<ul><li> `CreateServiceInstanceListener()`voor stateless</li><li>`CreateServiceReplicaListener()`voor stateful</li></ul> |
+| Listener voor client aanvragen openen |N.v.t. |<ul><li> `CreateServiceInstanceListener()` voor stateless</li><li>`CreateServiceReplicaListener()` voor stateful</li></ul> |
 
 ### <a name="worker-role"></a>Worker-rol
 ```csharp
@@ -113,7 +114,7 @@ De Cloud Services Environment API biedt informatie en functionaliteit voor het h
 | --- | --- | --- |
 | Configuratie-instellingen en wijzigings meldingen |`RoleEnvironment` |`CodePackageActivationContext` |
 | Lokale opslag |`RoleEnvironment` |`CodePackageActivationContext` |
-| Eindpunt gegevens |`RoleInstance` <ul><li>Huidige instantie:`RoleEnvironment.CurrentRoleInstance`</li><li>Andere rollen en instanties:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`voor het huidige knooppunt adres</li><li>`FabricClient`en `ServicePartitionResolver` voor service-eindpunt detectie</li> |
+| Eindpunt gegevens |`RoleInstance` <ul><li>Huidige instantie: `RoleEnvironment.CurrentRoleInstance`</li><li>Andere rollen en instanties: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` voor het huidige knooppunt adres</li><li>`FabricClient` en `ServicePartitionResolver` voor service-eindpunt detectie</li> |
 | Omgevings emulatie |`RoleEnvironment.IsEmulated` |N.v.t. |
 | Gelijktijdige wijzigings gebeurtenis |`RoleEnvironment` |N.v.t. |
 

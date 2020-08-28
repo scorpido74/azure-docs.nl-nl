@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 0e1e50f27c6d0563ab51a74bbfa22d2a7f54ecd3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827185"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000733"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
-Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuur topologie (on-premises versus Azure). Elke back-upgebruiker of beheerder moet zien wat er in alle oplossingen gebeurt en kan worden geïnformeerd over belang rijke scenario's. In dit artikel vindt u meer informatie over de bewakings-en meldings mogelijkheden van Azure Backup service.
+Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuur topologie (on-premises versus Azure). Elke back-upgebruiker of beheerder moet zien wat er gebeurt met alle oplossingen en kan worden geïnformeerd over belang rijke scenario's. In dit artikel vindt u meer informatie over de bewakings-en meldings mogelijkheden van Azure Backup service.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Back-uptaken in Recovery Services kluis
 
@@ -106,4 +106,4 @@ Als u een actieve waarschuwing wilt inactief maken/oplossen, kunt u het lijst it
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure backup-workloads bewaken met behulp van Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)
+[Azure Backup workloads bewaken met behulp van Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796558"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000002"
 ---
 # <a name="features"></a>Functies
 
@@ -49,7 +49,7 @@ Eerdere versies die momenteel worden ondersteund, zijn onder andere: `3.0.2`
 | haalt                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `self` en `next` worden ondersteund                     |
 | schakels                 | Nee        | Nee        | Nee        |                                                     |
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
 Alle typen zoek parameters worden ondersteund. 
 
@@ -61,7 +61,7 @@ Alle typen zoek parameters worden ondersteund.
 | Token                 | Ja       | Ja       | Ja       |         |
 | Naslaginformatie             | Ja       | Ja       | Ja       |         |
 | Composite             | Ja       | Ja       | Ja       |         |
-| Aantal              | Ja       | Ja       | Ja       |         |
+| Hoeveelheid              | Ja       | Ja       | Ja       |         |
 | URI                   | Ja       | Ja       | Ja       |         |
 | Specifiek               | Nee        | Nee        | Nee        |         |
 
@@ -98,7 +98,7 @@ Alle typen zoek parameters worden ondersteund.
 | Zoek bewerkingen       | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Nee        | Nee        | Nee        |         |
-| `_sort`                 | Nee        | Nee        | Nee        |         |
+| `_sort`                 | Nee        | Gedeeltelijk   | Gedeeltelijk        |   `_sort=_lastUpdated` wordt ondersteund       |
 | `_score`                | Nee        | Nee        | Nee        |         |
 | `_count`                | Ja       | Ja       | Ja       |         |
 | `_summary`              | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `_summary=count` wordt ondersteund |

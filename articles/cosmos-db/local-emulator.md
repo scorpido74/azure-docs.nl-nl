@@ -6,12 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 08/19/2020
-ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ece2fdf5c75decb9a2139b973ad4bbb3f0803a0b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607540"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011171"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Azure Cosmos Emulator gebruiken voor lokaal ontwikkelen en testen
 
@@ -539,7 +540,7 @@ Gebruik de volgende tips voor het oplossen van problemen die u kunnen optreden m
 
 - Als u het bericht **Service niet beschikbaar** krijgt, is het mogelijk dat de emulator de netwerkstack niet kan initialiseren. Controleer of de veilige Pulse-client of Juniper-netwerkclient is geïnstalleerd. De netwerkfilterstuurprogramma's van deze clients kunnen mogelijk de oorzaak zijn van het probleem. Doorgaans kan het probleem worden opgelost door stuurprogramma's voor netwerkfilters van derden te verwijderen. U kunt de emulator ook starten met/DisableRIO, waarmee de netwerkcommunicatie van de emulator wordt overgezet naar normale Winsock. 
 
-- Als u **de aanvraag ' verboden ' ontvangt, wordt het bericht ': ' verzonden met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS...** verbindings problemen. Dit kan worden veroorzaakt door algemene wijzigingen in het besturings systeem (bijvoorbeeld insider preview Build 20170) of de instellingen van de browser die TLS 1,3 als standaard inschakelen. Er kan een soort gelijke fout optreden wanneer u de SDK gebruikt om een aanvraag uit te voeren op de Cosmos-emulator, zoals **Microsoft.Azure.Documents.DocumentClientException: er wordt een aanvraag gemaakt met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS-accounts**. Dit wordt op dit moment verwacht, omdat Cosmos-emulator alleen gebruikmaakt van TLS 1,2-protocol. De aanbevolen oplossing is om de instellingen te wijzigen en standaard te bewerken in TLS 1,2. Ga voor instantie in IIS-beheer naar ' sites '-> "standaard websites" en zoek de site bindingen voor poort 8081 en bewerk ze om TLS 1,3 uit te scha kelen. Een vergelijk bare bewerking kan worden uitgevoerd voor de webbrowser via de opties voor instellingen.
+- Als u **de aanvraag ' verboden ' ontvangt, wordt het bericht ': ' verzonden met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS...** verbindings problemen. Dit kan worden veroorzaakt door algemene wijzigingen in het besturings systeem (bijvoorbeeld insider preview Build 20170) of de instellingen van de browser die TLS 1,3 als standaard inschakelen. Er kan een soort gelijke fout optreden wanneer u de SDK gebruikt om een aanvraag uit te voeren op de Cosmos-emulator, zoals **Microsoft.Azure.Documents.DocumentClientException: er wordt een aanvraag gemaakt met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS-accounts**. Dit werkt op dit moment zoals verwacht, omdat de Cosmos Emulator alleen het TLS 1.2-protocol accepteert en gebruikt. De aanbevolen oplossing is om de instellingen te wijzigen en standaard te bewerken in TLS 1,2. Ga voor instantie in IIS-beheer naar ' sites '-> "standaard websites" en zoek de site bindingen voor poort 8081 en bewerk ze om TLS 1,3 uit te scha kelen. Een vergelijkbare bewerking kan worden uitgevoerd voor de webbrowser via de opties in Instellingen.
 
 - Als de emulator wordt uitgevoerd en uw computer naar de slaapstand gaat of er besturingssysteemupdates worden uitgevoerd, wordt mogelijk het bericht **Service is momenteel niet beschikbaar** weergegeven. Stel de gegevens van de emulator opnieuw in door met de rechtermuisknop op het pictogram te klikken dat wordt weergegeven in het Windows-systeemvak. Selecteer vervolgens **Reset Data** (Gegevens opnieuw instellen).
 

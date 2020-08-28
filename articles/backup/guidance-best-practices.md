@@ -3,12 +3,12 @@ title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825576"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000359"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -212,9 +212,9 @@ De mogelijkheden van de Azure Backup-service bieden u de flexibiliteit om uw kos
 
 * Selectieve back-upschijven: schijf uitsluiten (preview-functie) biedt een efficiënte en rendabele keuze om selectief back-ups te maken van belang rijke gegevens. Maak bijvoorbeeld een back-up van slechts één schijf wanneer u geen back-up wilt maken van de rest van de schijven die zijn gekoppeld aan een virtuele machine. Dit is ook handig wanneer u meerdere back-upoplossingen hebt. Wanneer u bijvoorbeeld een back-up maakt van uw data bases of gegevens met een back-upoplossing voor werk belasting (SQL Server-data base in azure VM-back-up) en u back-ups op Azure-VM-niveau wilt gebruiken voor geselecteerde schijven.
 
-* Azure Backup maakt moment opnamen van virtuele Azure-machines en slaat ze samen met de schijven op om het maken van herstel punten te stimuleren en om herstel bewerkingen sneller uit te voeren. Dit wordt direct terugzetten genoemd. Moment opnamen voor direct terugzetten worden standaard twee dagen bewaard. Met deze functie kan een herstel bewerking van deze moment opnamen worden uitgevoerd door de herstel tijden te verlagen. Het vermindert de tijd die nodig is voor het transformeren en kopiëren van gegevens van de kluis. Als gevolg hiervan worden opslag kosten weer gegeven die overeenkomen met moment opnamen die zijn gemaakt tijdens deze periode. Meer [informatie vindt u hier](backup-instant-restore-capability.md#configure-snapshot-retention).
+* Azure Backup maakt moment opnamen van virtuele Azure-machines en slaat ze samen met de schijven op om het maken van herstel punten te stimuleren en om herstel bewerkingen sneller uit te voeren. Dit wordt direct terugzetten genoemd. Moment opnamen voor direct terugzetten worden standaard twee dagen bewaard. Met deze functie kan een herstel bewerking van deze moment opnamen worden uitgevoerd door de herstel tijden te verlagen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Als gevolg hiervan worden opslag kosten weer gegeven die overeenkomen met moment opnamen die zijn gemaakt tijdens deze periode. Meer [informatie vindt u hier](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Het type opslag replicatie van Azure Backup kluis is standaard ingesteld op geo-redundant (GRS). Deze optie kan niet worden gewijzigd na het beveiligen van items. Geo-redundante opslag (GRS) biedt een hoger niveau aan gegevens duurzaamheid dan lokaal redundante opslag (LRS), zodat u een opt-in kunt gebruiken voor het herstellen van meerdere regio's en de kosten. Bekijk de wissel werking tussen lagere kosten en hogere gegevens duurzaamheid die het meest geschikt is voor uw scenario. [Meer informatie vindt u hier](backup-create-rs-vault.md#set-storage-redundancy)
+* Het type opslag replicatie van Azure Backup kluis is standaard ingesteld op geo-redundant (GRS). Deze optie kan niet worden gewijzigd na het beveiligen van items. Geo-redundante opslag (GRS) biedt een hoger niveau aan gegevens duurzaamheid dan lokaal redundante opslag (LRS), zodat u een opt-in kunt gebruiken voor het herstellen van meerdere regio's en de kosten. Bekijk de wissel werking tussen lagere kosten en een hogere duurzaamheid van de gegevens en beslis wat het beste is voor uw scenario. [Meer informatie vindt u hier](backup-create-rs-vault.md#set-storage-redundancy)
 
 * Als u de werk belasting die wordt uitgevoerd in een virtuele machine en de virtuele machine zelf beveiligt, controleert u of deze dubbele beveiliging nodig is.
 

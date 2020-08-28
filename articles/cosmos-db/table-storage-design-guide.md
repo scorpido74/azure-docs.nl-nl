@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: seodec18
-ms.openlocfilehash: b5e2dc56ad84504f0bf5ced09d865d7cb4e467fa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027806"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002173"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerp handleiding voor de Azure Table Storage-tabel: schaal bare en uitvoerende tabellen
 
@@ -39,7 +39,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Tijdstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -51,8 +51,8 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -71,8 +71,8 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -108,8 +108,8 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -152,8 +152,8 @@ De volgende tabel bevat enkele van de belangrijkste waarden waarvan u rekening m
 | Aantal partities in een tabel |Alleen beperkt door de capaciteit van het opslag account. |
 | Aantal entiteiten in een partitie |Alleen beperkt door de capaciteit van het opslag account. |
 | Grootte van een afzonderlijke entiteit |Maxi maal 1 MB, met een maximum van 255 eigenschappen (inclusief de `PartitionKey` , `RowKey` en `Timestamp` ). |
-| Grootte van de`PartitionKey` |Een teken reeks met een grootte van Maxi maal 1 KB. |
-| Grootte van de`RowKey` |Een teken reeks met een grootte van Maxi maal 1 KB. |
+| Grootte van de `PartitionKey` |Een teken reeks met een grootte van Maxi maal 1 KB. |
+| Grootte van de `RowKey` |Een teken reeks met een grootte van Maxi maal 1 KB. |
 | Grootte van de trans actie van een entiteits groep |Een trans actie kan Maxi maal 100 entiteiten bevatten en de payload moet minder dan 4 MB groot zijn. Een EGT kan een entiteit slechts één keer bijwerken. |
 
 Zie [Wat is het Table service-gegevens model](https://msdn.microsoft.com/library/azure/dd179338.aspx)? voor meer informatie.  
@@ -195,8 +195,8 @@ In de volgende voor beelden wordt ervan uitgegaan dat er in tabel opslag werk ne
 
 | Kolomnaam | Gegevenstype |
 | --- | --- |
-| `PartitionKey`(Afdelings naam) |Tekenreeks |
-| `RowKey`(Werk nemer-ID) |Tekenreeks |
+| `PartitionKey` (Afdelings naam) |Tekenreeks |
+| `RowKey` (Werk nemer-ID) |Tekenreeks |
 | `FirstName` |Tekenreeks |
 | `LastName` |Tekenreeks |
 | `Age` |Geheel getal |
@@ -222,7 +222,7 @@ Zie voor voor beelden van code aan client zijde die meerdere entiteits typen kan
 
 * [Werken met heterogene entiteits typen](#work-with-heterogeneous-entity-types)  
 
-### <a name="choose-an-appropriate-partitionkey"></a>Kies een geschikt`PartitionKey`
+### <a name="choose-an-appropriate-partitionkey"></a>Kies een geschikt `PartitionKey`
 U hebt de keuze van de `PartitionKey` nood zaak om het gebruik van EGTs (om consistentie te garanderen) in te stellen op basis van de vereiste voor het distribueren van uw entiteiten over meerdere partities (om te zorgen voor een schaal bare oplossing).  
 
 U kunt op een extreem punt al uw entiteiten opslaan in één partitie. Maar dit kan de schaal baarheid van uw oplossing beperken en voor komen dat tabel opslag taak verdeling kan aanvragen. In het andere extreem kunt u één entiteit per partitie opslaan. Dit is zeer schaalbaar en maakt tabel opslag mogelijk voor het laden van aanvragen, maar voor komt u dat u entiteits groeps transacties gebruikt.  
@@ -1127,7 +1127,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Tijdstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1139,8 +1139,8 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1159,8 +1159,8 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1196,8 +1196,8 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1219,7 +1219,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Tijdstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1232,8 +1232,8 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1254,8 +1254,8 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1295,8 +1295,8 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
-<th>E-mail</th>
+<th>Ouderdom</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>

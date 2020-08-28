@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889648"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011186"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -27,7 +27,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)gemaakt. `{fabricName}` is ' Azure '.
 
-De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig
+De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig.
 
 ### <a name="responses"></a>Antwoorden
 
@@ -210,7 +210,7 @@ Omdat de herstel taak een langlopende bewerking is, moet deze worden gevolgd zoa
 
 ### <a name="restore-disks"></a>Schijven herstellen
 
-Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kunt u alleen schijven herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten van die schijven. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven, evenals de configuratie van de back-up van de virtuele machine (vmconfig.jsop), worden opgeslagen in het opgegeven opslag account. Zoals [hierboven](#restore-operations)is uitgelegd, wordt de relevante aanvraag tekst voor herstel schijven hieronder weer gegeven.
+Als u het maken van een virtuele machine van de back-upgegevens wilt aanpassen, kunt u alleen schijven herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten van die schijven. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven, evenals de configuratie van de back-up van de virtuele machine (vmconfig.jsop), worden opgeslagen in het opgegeven opslag account. Zoals [hierboven](#restore-operations)is uitgelegd, wordt de relevante aanvraag tekst voor herstel schijven hieronder weer gegeven.
 
 #### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 

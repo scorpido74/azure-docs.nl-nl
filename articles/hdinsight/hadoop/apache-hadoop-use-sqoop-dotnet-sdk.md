@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: 5faa3d7bf048eee622ddd5a46082bb2432d84871
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc4b3019cb8308ea19d86eea7bf886063ea28563
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076246"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008281"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-taken uitvoeren met behulp van .NET SDK voor Apache Hadoop in HDInsight
 
@@ -141,7 +141,7 @@ HDInsight op basis van Linux biedt de volgende beperkingen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
+U hebt nu geleerd hoe u Sqoop kunt gebruiken. Zie voor meer informatie:
 
 * [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): gebruik de actie Sqoop in een Oozie-werk stroom.
 * [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight of Azure Blob Storage zoeken.

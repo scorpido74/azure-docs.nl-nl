@@ -10,16 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: d16fabbf08b95d16cf54926d7d0373596e7bcf13
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7b1d8f939e403c795effeca14943791d1554742f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430118"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010729"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Azure Machine Learning Studio (klassieke) webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens
 
-**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Wanneer u een voorspellend experiment maakt, voegt u doorgaans een invoer en uitvoer van een webservice toe. Wanneer u het experiment implementeert, kunnen gebruikers gegevens van de webservice verzenden en ontvangen via de invoer en uitvoer. Voor sommige toepassingen is het mogelijk dat de gegevens van een consument beschikbaar zijn via een gegevensfeed of al aanwezig zijn in een externe gegevens bron, zoals Azure Blob Storage. In deze gevallen hebben ze geen lees-en schrijf gegevens met behulp van de invoer en uitvoer van webservices. Ze kunnen in plaats daarvan de batch Execution Service (BES) gebruiken voor het lezen van gegevens uit de gegevens bron met behulp van een import data-module en de Score resultaten naar een andere gegevens locatie schrijven met behulp van een module export data.

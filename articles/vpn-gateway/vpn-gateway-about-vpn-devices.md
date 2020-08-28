@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: yushwang
-ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 18eaf520c70b064f26cd1da5f50c023f42adb8ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367722"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021813"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>VPN-apparaten en IPSec-/IKE-parameters voor site-naar-site-VPN-gateway-verbindingen
 
@@ -58,17 +58,17 @@ Raadpleeg de koppelingen die overeenkomen met de juiste familie voor meer inform
 | Juniper |ISG |ScreenOS 6.3 |Ondersteund |[Configuratie script](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |SSG |ScreenOS 6.2 |Ondersteund |[Configuratie script](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Ondersteund |[Configuratie script](vpn-gateway-download-vpndevicescript.md) |
-| Microsoft |Routering en Remote Access-Service |Windows Server 2012 |Niet compatibel |Ondersteund |
-| Open Systems AG |Mission Control Security Gateway |N.v.t. |[Configuratiehandleiding](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Niet compatibel |
+| Microsoft-peering |Routering en Remote Access-Service |Windows Server 2012 |Niet compatibel |Ondersteund |
+| Open Systems AG |Mission Control Security Gateway |N.v.t. |[Configuratiehandleiding](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Niet compatibel |
 | Palo Alto Networks |Alle apparaten waarop PAN-OS wordt uitgevoerd |PAN-OS<br>PolicyBased: 6.1.5 of hoger<br>RouteBased: 7.1.4 |Ondersteund |[Configuratiehandleiding](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
-| Sentrium (ontwikkel aars) | VyOS | VyOS 1.2.2 | (niet getest) | [Configuratie handleiding](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
+| Sentrium (ontwikkel aars) | VyOS | VyOS 1.2.2 | (niet getest) | [Configuratie handleiding ](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Next Generation UTM (NU-serie) | 9.0.1.3 | Niet compatibel | [Configuratiehandleiding](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ-serie, NSA-serie<br>SuperMassive-serie<br>E-Class NSA-serie |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Niet compatibel |[Configuratiehandleiding](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Firewall van de volgende generatie | XG v17 | (niet getest) | [Configuratiehandleiding](https://community.sophos.com/kb/127546)<br><br>[Configuratie handleiding-meerdere SAs](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | 1.1.5/VpnPlusServer-1.2.0 | (niet getest) | [Configuratiehandleiding](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v 1,10 | (niet getest) | [BGP via IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI via IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347) |
-| Laag | 3E-636L3 | 5.2.0. T3-build-13  | (niet getest) | [Configuratiehandleiding](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
-| WatchGuard |Alle |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Configuratiehandleiding](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Configuratiehandleiding](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Ultra | 3E-636L3 | 5.2.0. T3-build-13  | (niet getest) | [Configuratiehandleiding](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
+| WatchGuard |Alles |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Configuratiehandleiding](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Configuratiehandleiding](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | ZyXEL |ZyWALL USG-serie<br>ZyWALL ATP-serie<br>ZyWALL VPN-serie | ZLD v 4.32 + | (niet getest) | [VTI via IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br><br>[BGP via IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]

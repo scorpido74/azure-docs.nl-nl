@@ -5,12 +5,13 @@ author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c193ef00d56b2d2fc7ad806cc795dcbe360db548
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645987"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022102"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Fouten simuleren tijdens service werkbelastingen
 De test scenario's in azure Service Fabric ontwikkel aars in staat stellen geen zorgen te maken over afzonderlijke storingen. Er zijn echter scenario's, waarbij een expliciete interleaving van de werk belasting en storingen van de client mogelijk nodig is. De interleaving van de werk belasting en fouten van de client zorgt ervoor dat de service daad werkelijk een actie uitvoert wanneer er een fout optreedt. Op basis van het niveau van de controle die de test baarheid biedt, kunnen deze nauw keurige punten van de werk belasting worden uitgevoerd. Deze inductie van fouten in verschillende statussen in de toepassing kan fouten opsporen en de kwaliteit verbeteren.
@@ -18,7 +19,7 @@ De test scenario's in azure Service Fabric ontwikkel aars in staat stellen geen 
 ## <a name="sample-custom-scenario"></a>Voor beeld van aangepast scenario
 In deze test wordt een scenario weer gegeven dat de zakelijke workload interleaveert met gepaste en niet- [respijt fouten](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). De fouten moeten in het midden van de service bewerkingen worden veroorzaakt of worden berekend voor de beste resultaten.
 
-We gaan een voor beeld bekijken van een service die vier werk belastingen beschikbaar maakt: A, B, C en D. elk komt overeen met een set werk stromen en kan worden berekend, opgeslagen of gecombineerd. In het geval van eenvoud zullen we de workloads in ons voor beeld samen stellen. De verschillende fouten die in dit voor beeld worden uitgevoerd, zijn:
+We gaan een voor beeld bekijken van een service die vier workloads beschikbaar maakt: A, B, C en D. Elk komt overeen met een set werk stromen en kan reken-, opslag-of mix-bewerkingen zijn. In het geval van eenvoud zullen we de workloads in ons voor beeld samen stellen. De verschillende fouten die in dit voor beeld worden uitgevoerd, zijn:
 
 * RestartNode: er is een niet-verwerkings fout opgetreden tijdens het simuleren van een computer opnieuw opstarten.
 * RestartDeployedCodePackage: er is een niet-verwerkings fout opgetreden tijdens het simuleren van het service-hostproces.

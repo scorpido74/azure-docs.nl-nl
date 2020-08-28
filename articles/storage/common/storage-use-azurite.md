@@ -7,12 +7,13 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089410"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001906"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>De Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage
 
@@ -327,10 +328,10 @@ Als u de Azure Sdk's gebruikt, start u Azurite met de `--oauth basic and --cert 
 
 ### <a name="well-known-storage-account-and-key"></a>Bekende opslag account en-sleutel
 
-Azurite accepteert hetzelfde bekende account en dezelfde sleutel die wordt gebruikt door de verouderde Azure-opslag emulator.
+Azurite accepteert dezelfde bekende account en sleutel die wordt gebruikt door de verouderde Azure Storage-emulator.
 
-- Account naam:`devstoreaccount1`
-- Account sleutel:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
+- Account naam: `devstoreaccount1`
+- Account sleutel: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Aangepaste opslag accounts en-sleutels
 
@@ -498,7 +499,7 @@ Voer de volgende stappen uit om Azurite HTTPS toe te voegen aan Storage Explorer
 1. **Lokale & gekoppeld** selecteren
 1. Klik met de rechter muisknop op **opslag accounts** en selecteer **verbinding maken met Azure Storage**.
 1. Selecteer **een Connection String gebruiken**
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Voer een waarde in het veld **weergave naam** in.
 1. Voer de [https-connection string](#https-connection-strings) in uit de vorige sectie van dit document
 1. Selecteer **Volgende**
@@ -508,12 +509,12 @@ Voer de volgende stappen uit om Azurite HTTPS toe te voegen aan Storage Explorer
 
 De volgende bestanden en mappen kunnen worden gemaakt op de werkruimte locatie bij het initialiseren van Azurite.
 
-- `__blobstorage__`-Map met de Azurite BLOB-service permanente binaire gegevens
-- `__queuestorage__`-Map met Azurite Queue-service permanente binaire gegevens
-- `__azurite_db_blob__.json`-Meta gegevensbestand voor Azurite BLOB-service
-- `__azurite_db_blob_extent__.json`-Azurite BLOB service-gebied met meta gegevens
-- `__azurite_db_queue__.json`-Azurite-meta gegevens bestand van de wachtrij service
-- `__azurite_db_queue_extent__.json`-Azurite van het meta gegevens bestand voor de wachtrij service
+- `__blobstorage__` -Map met de Azurite BLOB-service permanente binaire gegevens
+- `__queuestorage__` -Map met Azurite Queue-service permanente binaire gegevens
+- `__azurite_db_blob__.json` -Meta gegevensbestand voor Azurite BLOB-service
+- `__azurite_db_blob_extent__.json` -Azurite BLOB service-gebied met meta gegevens
+- `__azurite_db_queue__.json` -Azurite-meta gegevens bestand van de wachtrij service
+- `__azurite_db_queue_extent__.json` -Azurite van het meta gegevens bestand voor de wachtrij service
 
 Als u Azurite wilt opschonen, verwijdert u de bestanden en mappen en start u de emulator opnieuw.
 
@@ -561,5 +562,5 @@ Bijdragen en suggesties voor Azurite zijn welkom. Ga naar de Azurite [github-pro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gebruik de Azure-opslag emulator voor het ontwikkelen en testen van](storage-use-emulator.md) documenten de verouderde Azure-opslag emulator, die wordt vervangen door Azurite.
+- [Gebruik de Azure Storage-emulator voor het ontwikkelen en testen van](storage-use-emulator.md) documenten de verouderde Azure Storage emulator, die wordt vervangen door Azurite.
 - [Azure Storage verbindings reeksen configureren](storage-configure-connection-string.md) wordt uitgelegd hoe u een geldige Azure Storage Connection String kunt samen stellen.

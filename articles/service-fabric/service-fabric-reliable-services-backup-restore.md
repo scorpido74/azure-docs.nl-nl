@@ -5,12 +5,13 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: bf004b913c032d8a121bf4d508adf4cf9be1c7f9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253317"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021983"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Back-up en herstel Reliable Services en Reliable Actors
 Azure Service Fabric is een platform met hoge Beschik baarheid dat de status van meerdere knoop punten repliceert om deze hoge Beschik baarheid te behouden.  Dus zelfs als één knoop punt in het cluster uitvalt, blijven de services beschikbaar. Hoewel deze door het platform verschafte redundantie mogelijk voldoende is voor sommige, is het wenselijk dat de service back-ups maakt van gegevens (naar een externe opslag).
@@ -80,7 +81,7 @@ Gebruikers kunnen de kans verg Roten dat er incrementele back-ups kunnen worden 
 Als u deze waarden verhoogt, neemt het schijf gebruik per replica toe.
 Zie [reliable Services-configuratie](service-fabric-reliable-services-configuration.md) voor meer informatie.
 
-`BackupInfo`bevat informatie over de back-up, met inbegrip van de locatie van de map waar de runtime de back-up heeft opgeslagen ( `BackupInfo.Directory` ). De call back functie kan de `BackupInfo.Directory` naar een externe opslag of een andere locatie verplaatsen.  Deze functie retourneert ook een Boole-waarde die aangeeft of de back-upmap met succes kan worden verplaatst naar de doel locatie.
+`BackupInfo` bevat informatie over de back-up, met inbegrip van de locatie van de map waar de runtime de back-up heeft opgeslagen ( `BackupInfo.Directory` ). De call back functie kan de `BackupInfo.Directory` naar een externe opslag of een andere locatie verplaatsen.  Deze functie retourneert ook een Boole-waarde die aangeeft of de back-upmap met succes kan worden verplaatst naar de doel locatie.
 
 De volgende code laat zien hoe de `BackupCallbackAsync` methode kan worden gebruikt voor het uploaden van de back-up naar Azure Storage:
 
@@ -137,15 +138,15 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription`door gegeven aan de `RestoreContext.RestoreAsync` aanroep bevat een lid met de naam `BackupFolderPath` .
+`RestoreDescription` door gegeven aan de `RestoreContext.RestoreAsync` aanroep bevat een lid met de naam `BackupFolderPath` .
 Wanneer u één volledige back-up herstelt, `BackupFolderPath` moet dit worden ingesteld op het lokale pad van de map die uw volledige back-up bevat.
 Bij het herstellen van een volledige back-up en een aantal incrementele back-ups `BackupFolderPath` moet worden ingesteld op het lokale pad van de map die niet alleen de volledige back-up bevat, maar ook alle incrementele back-ups.
-`RestoreAsync`de aanroep kan worden gegenereerd `FabricMissingFullBackupException` als de `BackupFolderPath` gegeven geen volledige back-up bevat.
+`RestoreAsync` de aanroep kan worden gegenereerd `FabricMissingFullBackupException` als de `BackupFolderPath` gegeven geen volledige back-up bevat.
 Het kan ook worden gegenereerd `ArgumentException` als `BackupFolderPath` een keten van incrementele back-ups is verbroken.
 Bijvoorbeeld, als het de volledige back-up bevat, de eerste incrementele en derde incrementele back-up, maar geen tweede incrementele back-up.
 
 > [!NOTE]
-> De RestorePolicy is standaard ingesteld op veilig.  Dit betekent dat de `RestoreAsync` API mislukt met ArgumentException als wordt gedetecteerd dat de back-upmap een status bevat die ouder is dan of gelijk is aan de status die is opgenomen in deze replica.  `RestorePolicy.Force`kan worden gebruikt om deze veiligheids controle over te slaan. Dit is opgegeven als onderdeel van `RestoreDescription` .
+> De RestorePolicy is standaard ingesteld op veilig.  Dit betekent dat de `RestoreAsync` API mislukt met ArgumentException als wordt gedetecteerd dat de back-upmap een status bevat die ouder is dan of gelijk is aan de status die is opgenomen in deze replica.  `RestorePolicy.Force` kan worden gebruikt om deze veiligheids controle over te slaan. Dit is opgegeven als onderdeel van `RestoreDescription` .
 > 
 
 ## <a name="deleted-or-lost-service"></a>Service verwijderd of verloren
@@ -223,7 +224,7 @@ Wanneer incrementele back-up is ingeschakeld, `KvsActorStateProvider` gebruikt g
 Bij het herstellen van een back-upketen, vergelijkbaar met Reliable Services, moet de BackupFolderPath submappen bevatten met één submap met volledige back-up en andere submappen met incrementele back-ups. De Restore-API genereert FabricException met het juiste fout bericht als de validatie van de back-upketen mislukt. 
 
 > [!NOTE]
-> `KvsActorStateProvider`de optie RestorePolicy. safe wordt momenteel genegeerd. Ondersteuning voor deze functie is gepland in een toekomstige release.
+> `KvsActorStateProvider` de optie RestorePolicy. safe wordt momenteel genegeerd. Ondersteuning voor deze functie is gepland in een toekomstige release.
 > 
 
 ## <a name="testing-back-up-and-restore"></a>Back-ups testen en herstellen
@@ -251,7 +252,7 @@ Dit betekent dat voor StatefulService Implementers `RunAsync` niet wordt aangero
 Vervolgens `OnDataLossAsync` wordt de nieuwe primaire.
 Totdat een service deze API met succes heeft voltooid (door het retour neren van waar of onwaar) en de relevante herconfiguratie te volt ooien, wordt de API één keer aangeroepen.
 
-`RestoreAsync`eerst wordt de huidige status van de primaire replica waarop deze werd aangeroepen, neergezet. Vervolgens maakt de betrouw bare status beheerder alle betrouw bare objecten die voor komen in de back-upmap. Vervolgens worden de betrouw bare objecten in de back-upmap teruggezet op basis van hun controle punten. Ten slotte herstelt de betrouw bare status beheerder zijn eigen status uit de logboek records in de map backup en voert het herstel uit. Als onderdeel van het herstel proces worden bewerkingen vanaf het ' begin punt ' die vastgelegde logboek records hebben in de back-upmap, opnieuw afgespeeld naar de betrouw bare objecten. Met deze stap zorgt u ervoor dat de herstelde status consistent is.
+`RestoreAsync` eerst wordt de huidige status van de primaire replica waarop deze werd aangeroepen, neergezet. Vervolgens maakt de betrouw bare status beheerder alle betrouw bare objecten die voor komen in de back-upmap. Vervolgens worden de betrouw bare objecten in de back-upmap teruggezet op basis van hun controle punten. Ten slotte herstelt de betrouw bare status beheerder zijn eigen status uit de logboek records in de map backup en voert het herstel uit. Als onderdeel van het herstel proces worden bewerkingen vanaf het ' begin punt ' die vastgelegde logboek records hebben in de back-upmap, opnieuw afgespeeld naar de betrouw bare objecten. Met deze stap zorgt u ervoor dat de herstelde status consistent is.
 
 ## <a name="next-steps"></a>Volgende stappen
   - [Betrouwbare verzamelingen](service-fabric-work-with-reliable-collections.md)

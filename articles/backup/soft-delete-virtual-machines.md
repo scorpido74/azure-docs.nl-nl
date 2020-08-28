@@ -4,12 +4,12 @@ description: Meer informatie over hoe u met zacht verwijderen voor virtuele mach
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889822"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022238"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Voorlopig verwijderen voor virtuele machines
 
@@ -82,7 +82,7 @@ Het ' DeleteState ' van het back-upitem wordt gewijzigd van ' NotDeleted ' in ' 
 
 ### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>De verwijderings bewerking ongedaan maken met Azure PowerShell
 
-U moet eerst het relevante back-upitem ophalen dat zich in de status voorlopig verwijderen bevindt (dat wil zeggen, dat wil zeggen dat het wordt verwijderd).
+Eerst haalt u het relevante back-upitem op dat zich in de status voor zacht verwijderen bevindt (dat wil zeggen, dat wil zeggen dat het wordt verwijderd).
 
 ```powershell
 
