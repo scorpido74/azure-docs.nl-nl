@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131851"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055308"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Speech Service: what's New in docs
 
@@ -44,13 +44,10 @@ Als u meer informatie wilt over updates voor de speech-service, spraak-SDK, Spee
 * [Quick Start: spraak herkennen vanuit een audio bestand](quickstarts/speech-to-text-from-file.md) -toegevoegde java script-instructies in de documentatie.
 * [Quick Start: spraak herkennen aan de hand van een door de microfoon](quickstarts/speech-to-text-from-microphone.md ) toegevoegde en Java script-instructies.
 * [Snelstartgids: spraak die is opgeslagen in Blob Storage herkennen](quickstarts/from-blob.md) -java script-instructies toegevoegd aan documentatie.
-* [Snelstartgids: spraak, intenties en entiteiten herkennen met Language Understanding (LUIS)](quickstarts/intent-recognition.md)
+* [Quickstart: Spraak, intenties en entiteiten herkennen met Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * [Snelstartgids: ontwikkel omgeving instellen](quickstarts/setup-platform.md) -java script-instructies toegevoegd aan documentatie.
 * [Quick Start: spraak samen voegen in een audio bestand](quickstarts/text-to-speech-audio-file.md) -toegevoegde java script-instructies aan de documentatie.
 * [Quick Start: stem de spraak op een door de spreker](quickstarts/text-to-speech.md) toegevoegde java script-instructies aan de documentatie.
-* [Snelstartgids: Vertaal spraak-naar-spraak](quickstarts/translate-speech-to-speech.md) -toegevoegde java script-instructies in de documentatie.
-* [Snelstartgids: spraak omzetten naar meerdere talen](quickstarts/translate-speech-to-text-multiple-languages.md) -java script-instructies toevoegen aan documentatie.
-* [Quick Start: Vertaal](quickstarts/translate-speech-to-text.md) java script-instructies die zijn toegevoegd aan tekst naar documentatie.
 * [Wat is een tref woord?](custom-keyword-overview.md) -De inhoud en koppelingen van aan de slag zijn bijgewerkt.
 * [Geef de bron taal op voor spraak naar tekst](how-to-specify-source-language.md) toegevoegde java script en de doel-C-instructies voor documentatie.
 
@@ -77,7 +74,7 @@ Deze tabel wordt maandelijks bijgewerkt en weerspiegelt alleen problemen die in 
 |[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|fifteenjoy|Fout bij het uitvoeren van Speech Service-containers|2020-05-13|Open|Probleem|
 |[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|Manish-95|Voor beeld voor uitspraak bestand|2020-05-11|Open|Probleem|
 |[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|Java-voor beeld is onjuist.|2020-05-10|Open|Probleem|
-|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Kan de uitspraak-score niet ophalen|2020-05-08|Gesloten|Probleem|
+|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Kan de uitspraak score niet ophalen|2020-05-08|Gesloten|Probleem|
 |[54382](https://github.com/MicrosoftDocs/azure-docs/issues/54382)|jgtellez1|YAML-bestands sjabloon|2020-05-07|Gesloten|Probleem|
 |[54208](https://github.com/MicrosoftDocs/azure-docs/issues/54208)|paparush|De C#-voorbeeld code vraagt de gebruiker niet om te spreken.|2020-05-06|Gesloten|Probleem|
 |[54132](https://github.com/MicrosoftDocs/azure-docs/pull/54132)|anthonsu|TTS upgraden van v 1.3 naar v 1.4|2020-05-05|Gesloten|Pull-aanvraag|

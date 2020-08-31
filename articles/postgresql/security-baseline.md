@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 46aae2acb1f35eb22259e1e648fb869c23f26c9c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500790"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067668"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL één server
 
@@ -34,11 +34,11 @@ U kunt ook Virtual Network Service-eind punten gebruiken om de netwerk toegang t
 
 U kunt ook uw Azure Database for PostgreSQL-server beveiligen met firewall regels. De server firewall voor komt dat de toegang tot uw database server wordt verhinderd totdat u opgeeft welke computers zijn gemachtigd. U configureert de firewall door firewallregels te maken die bereiken opgeven van acceptabele IP-adressen. U kunt Firewall regels maken op server niveau.
 
-Persoonlijke koppeling configureren voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Persoonlijke koppeling configureren voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-VNet-service-eind punten en VNet-regels maken en beheren in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+VNet-service-eind punten en VNet-regels maken en beheren in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-Azure Database for PostgreSQL firewall regels configureren:https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
+Azure Database for PostgreSQL firewall regels configureren: https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
 
 **Azure Security Center bewaking**: Ja
 
@@ -48,11 +48,11 @@ Azure Database for PostgreSQL firewall regels configureren:https://docs.microsof
 
 **Hulp**: wanneer uw Azure database for PostgreSQL-exemplaar is beveiligd met een persoonlijk eind punt, kunt u virtuele machines in hetzelfde virtuele netwerk implementeren. U kunt een netwerk beveiligings groep (NSG) gebruiken om het risico van gegevens exfiltration te verminderen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-Persoonlijke koppeling configureren voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Persoonlijke koppeling configureren voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-NSG-stroom logboeken inschakelen:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Traffic Analytics inschakelen en gebruiken:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Traffic Analytics inschakelen en gebruiken: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure Security Center bewaking**: Ja
 
@@ -72,9 +72,9 @@ Traffic Analytics inschakelen en gebruiken:https://docs.microsoft.com/azure/netw
 
 Schakel DDoS Protection standaard in op de virtuele netwerken die zijn gekoppeld aan uw Azure Database for PostgreSQL-instanties om te beschermen tegen DDoS-aanvallen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
 
-Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+DDoS-beveiliging configureren: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 **Azure Security Center bewaking**: Ja
 
@@ -84,9 +84,9 @@ DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/m
 
 **Hulp**: wanneer uw Azure database for PostgreSQL-exemplaar is beveiligd met een persoonlijk eind punt, kunt u virtuele machines in hetzelfde virtuele netwerk implementeren. U kunt vervolgens een netwerk beveiligings groep (NSG) configureren om het risico van gegevens exfiltration te verminderen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-NSG-stroom logboeken inschakelen:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Traffic Analytics inschakelen en gebruiken:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Traffic Analytics inschakelen en gebruiken: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure Security Center bewaking**: Ja
 
@@ -96,7 +96,7 @@ Traffic Analytics inschakelen en gebruiken:https://docs.microsoft.com/azure/netw
 
 **Hulp**: geavanceerde bedreigingen beveiliging gebruiken voor Azure database for PostgreSQL. Geavanceerde bedreigingen beveiliging detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
 
-Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
 **Azure Security Center bewaking**: Ja
 
@@ -116,9 +116,9 @@ Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for
 
 Opmerking: Azure Database for PostgreSQL gebruikt het service label ' micro soft. SQL '.
 
-Meer informatie over het gebruik van service Tags:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Meer informatie over het gebruik van service Tags: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-Meer informatie over het gebruik van service tags voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
+Meer informatie over het gebruik van service tags voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -132,11 +132,11 @@ Meer informatie over het gebruik van service tags voor Azure Database for Postgr
 
 - Het afdwingen van een TLS-verbinding moet zijn ingeschakeld voor PostgreSQL-database servers
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy voor beelden voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/
+Azure Policy voor beelden voor netwerken: https://docs.microsoft.com/azure/governance/policy/samples/
 
-Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -150,7 +150,7 @@ Gebruik een van de ingebouwde Azure Policy definities met betrekking tot het lab
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -160,9 +160,9 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure database for PostgreSQL exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen maken in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -185,11 +185,11 @@ Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-mon
 
 **Richt lijnen**: Diagnostische instellingen en server logboeken en opname logboeken inschakelen voor het verzamelen van beveiligings gegevens die door uw Azure database for PostgreSQL-instanties zijn gegenereerd. In Azure Monitor kunt u Log Analytics werk ruimte (n) gebruiken om een query uit te voeren en een Analytics-account te gebruiken, en Azure Storage accounts voor lange termijn/archiverings opslag. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-Server logboeken configureren en openen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+Server logboeken configureren en openen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Controle logboeken voor Azure Database for PostgreSQL configureren en openen:https://docs.microsoft.com/azure/postgresql/concepts-audit
+Controle logboeken voor Azure Database for PostgreSQL configureren en openen: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -199,11 +199,11 @@ Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Hulp**: Schakel Diagnostische instellingen in op uw Azure database for PostgreSQL-instanties voor toegang tot de logboeken voor controle, beveiliging en bron. Zorg ervoor dat u het PostgreSQL-controle logboek expliciet inschakelt. Activiteiten logboeken, die automatisch beschikbaar zijn, omvatten gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen. U kunt ook diagnostische instellingen van Azure-activiteiten logboek inschakelen en de logboeken naar dezelfde Log Analytics werk ruimte of hetzelfde opslag account sturen.
 
-Server logboeken configureren en openen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+Server logboeken configureren en openen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Controle logboeken voor Azure Database for PostgreSQL configureren en openen:https://docs.microsoft.com/azure/postgresql/concepts-audit
+Controle logboeken voor Azure Database for PostgreSQL configureren en openen: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Diagnostische instellingen configureren voor het Azure-activiteiten logboek:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Diagnostische instellingen configureren voor het Azure-activiteiten logboek: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -222,9 +222,9 @@ Diagnostische instellingen configureren voor het Azure-activiteiten logboek:http
 
 **Richt lijnen**: in azure monitor voor de log Analytics werk ruimte die wordt gebruikt om uw Azure database for PostgreSQL logboeken te bewaren, stelt u de retentie periode in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 
-Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-Opslaan van bron Logboeken in een Azure Storage-account:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Opslaan van bron Logboeken in een Azure Storage-account: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -234,11 +234,11 @@ Opslaan van bron Logboeken in een Azure Storage-account:https://docs.microsoft.c
 
 **Richt lijnen**: Logboeken analyseren en bewaken vanuit uw Azure database for PostgreSQL-instanties voor afwijkend gedrag. Gebruik de Log Analytics van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Voor meer informatie over de Log Analytics:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Voor meer informatie over de Log Analytics: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Aangepaste query's uitvoeren in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -250,15 +250,15 @@ Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/a
 
 Daarnaast kunt u Server logboeken en diagnostische instellingen voor PostgreSQL inschakelen en logboeken naar een Log Analytics-werk ruimte verzenden. Onboarding van uw Log Analytics-werk ruimte naar Azure-Sentinel, omdat dit een via-oplossing (Security Orchestration Automated Response) biedt. Hiermee kunnen playbooks (geautomatiseerde oplossingen) worden gemaakt en gebruikt om beveiligings problemen op te lossen.
 
-Geavanceerde beveiliging tegen bedreigingen inschakelen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen inschakelen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Server logboeken configureren en openen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+Server logboeken configureren en openen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Controle logboeken voor Azure Database for PostgreSQL configureren en openen:https://docs.microsoft.com/azure/postgresql/concepts-audit
+Controle logboeken voor Azure Database for PostgreSQL configureren en openen: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Diagnostische instellingen configureren voor het Azure-activiteiten logboek:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Diagnostische instellingen configureren voor het Azure-activiteiten logboek: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: Ja
 
@@ -298,11 +298,11 @@ Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 Azure Database for PostgreSQL biedt geen ondersteuning voor ingebouwde op rollen gebaseerd toegangs beheer, maar u kunt aangepaste rollen maken op basis van specifieke bewerkingen van de resource provider.
 
-Meer informatie over aangepaste rollen voor het Azure-abonnement:https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+Meer informatie over aangepaste rollen voor het Azure-abonnement: https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
 
-Meer informatie over de bewerkingen van de resource provider van Azure Database for PostgreSQL:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
+Meer informatie over de bewerkingen van de resource provider van Azure Database for PostgreSQL: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
 
-Meer informatie over toegangs beheer voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
+Meer informatie over toegangs beheer voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
 
 **Azure Security Center bewaking**: Ja
 
@@ -314,9 +314,9 @@ Meer informatie over toegangs beheer voor Azure Database for PostgreSQL:https://
 
 Wanneer de Azure Database for PostgreSQL resource zelf wordt gemaakt, dwingt Azure het maken van een gebruiker met beheerders rechten af met een sterk wacht woord. Als het PostgreSQL-exemplaar eenmaal is gemaakt, kunt u echter het eerste account voor de server beheerder gebruiken dat u hebt gemaakt om aanvullende gebruikers te maken en beheerders toegang te verlenen. Wanneer u deze accounts maakt, moet u een ander, sterk wacht woord configureren voor elk account.
 
-Aanvullende accounts maken voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users
+Aanvullende accounts maken voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
-Beheerders wachtwoord bijwerken:https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
+Beheerders wachtwoord bijwerken: https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -326,9 +326,9 @@ Beheerders wachtwoord bijwerken:https://docs.microsoft.com/azure/postgresql/howt
 
 **Richt lijnen**: Maak standaard procedures voor het gebruik van speciale beheerders accounts die toegang hebben tot uw Azure database for PostgreSQL-exemplaren. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te bewaken. 
 
-Meer informatie over Azure Security Center identiteit en toegang:https://docs.microsoft.com/azure/security-center/security-center-identity-access 
+Meer informatie over Azure Security Center identiteit en toegang: https://docs.microsoft.com/azure/security-center/security-center-identity-access 
 
-Meer informatie over het maken van gebruikers met beheerders rechten in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
+Meer informatie over het maken van gebruikers met beheerders rechten in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -341,11 +341,11 @@ Meer informatie over het maken van gebruikers met beheerders rechten in Azure Da
 
 De toegang tot het beheer vlak voor PostgreSQL is afzonderlijk beschikbaar via REST API en ondersteunt SSO. Als u zich wilt verifiëren, stelt u de autorisatie-header voor uw aanvragen in op een JSON Web Token dat u hebt verkregen via Azure Active Directory.
 
-Azure Active Directory gebruiken voor verificatie met Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Azure Active Directory gebruiken voor verificatie met Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Meer informatie over Azure Database for PostgreSQL REST API:https://docs.microsoft.com/rest/api/postgresql/
+Meer informatie over Azure Database for PostgreSQL REST API: https://docs.microsoft.com/rest/api/postgresql/
 
-Meer informatie over eenmalige aanmelding met Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Meer informatie over eenmalige aanmelding met Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -355,11 +355,11 @@ Meer informatie over eenmalige aanmelding met Azure AD:https://docs.microsoft.co
 
 **Hulp**: schakel Azure Active Directory multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer. Wanneer u Azure AD-tokens gebruikt om u aan te melden bij uw data base, kunt u hiermee multi-factor Authentication vereisen voor database aanmeldingen.
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Azure Active Directory gebruiken voor verificatie met Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Azure Active Directory gebruiken voor verificatie met Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identiteit en toegang bewaken in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center bewaking**: Ja
 
@@ -369,9 +369,9 @@ Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.co
 
 **Hulp**: gebruik Paw's (privileged Access workstations) met multi-factor Authentication (MFA) die zijn geconfigureerd voor aanmelding bij en configureren van Azure-resources.
 
-Meer informatie over privileged Access workstations:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Meer informatie over privileged Access workstations: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -385,11 +385,11 @@ Daarnaast kunt u Azure Active Directory (AD) Privileged Identity Management (PIM
 
 Gebruik Azure AD-risico detecties om waarschuwingen en rapporten weer te geven over Risk ante gebruikers gedrag.
 
-Geavanceerde bedreigings beveiliging instellen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Geavanceerde bedreigings beveiliging instellen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Privileged Identity Management (PIM) implementeren:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management (PIM) implementeren: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Meer informatie over Azure AD-risico detectie:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Meer informatie over Azure AD-risico detectie: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center bewaking**: Ja
 
@@ -399,7 +399,7 @@ Meer informatie over Azure AD-risico detectie:https://docs.microsoft.com/azure/a
 
 **Richt lijnen**: Gebruik voorwaardelijke toegang met de naam locaties om portal en Azure Resource Manager toegang alleen te bieden vanuit specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -413,7 +413,7 @@ Als u zich wilt aanmelden bij Azure Database for PostgreSQL, kunt u het beste Az
 
 Azure AD-referenties kunnen ook worden gebruikt voor beheer op het niveau van het beheer vlak (bijvoorbeeld de Azure Portal) om PostgreSQL-beheerders accounts te beheren.
 
-Azure Active Directory gebruiken voor verificatie met Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Azure Active Directory gebruiken voor verificatie met Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -423,11 +423,11 @@ Azure Active Directory gebruiken voor verificatie met Azure Database for Postgre
 
 **Richt lijnen**: raadpleeg de Azure Active Directory-Logboeken om verouderde accounts te detecteren die kunnen worden toegevoegd met Azure database for PostgreSQL beheerders rollen. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen efficiënt te beheren, toegang te krijgen tot bedrijfs toepassingen die kunnen worden gebruikt voor toegang tot Azure Database for PostgreSQL en roltoewijzingen. Gebruikers toegang moet regel matig worden gecontroleerd, bijvoorbeeld elke 90 dagen, om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-Meer informatie over Azure AD Reporting:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Meer informatie over Azure AD Reporting: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure Identity Access revisies gebruiken: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-Bekijk PostgreSQL-gebruikers en toegewezen rollen:https://www.postgresql.org/docs/current/database-roles.html
+Bekijk PostgreSQL-gebruikers en toegewezen rollen: https://www.postgresql.org/docs/current/database-roles.html
 
 **Azure Security Center bewaking**: Ja
 
@@ -437,11 +437,11 @@ Bekijk PostgreSQL-gebruikers en toegewezen rollen:https://www.postgresql.org/doc
 
 **Hulp**: de diagnostische instellingen voor Azure Database for PostgreSQL en Azure Active Directory inschakelen, waarbij alle logboeken worden verzonden naar een log Analytics-werk ruimte. Gewenste waarschuwingen configureren (zoals mislukte verificatie pogingen) binnen Log Analytics.
 
-Server logboeken configureren en openen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+Server logboeken configureren en openen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-Controle logboeken voor Azure Database for PostgreSQL configureren en openen:https://docs.microsoft.com/azure/postgresql/concepts-audit
+Controle logboeken voor Azure Database for PostgreSQL configureren en openen: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure-activiteiten logboeken integreren in Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-activiteiten logboeken integreren in Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -455,13 +455,13 @@ Gebruik de functies voor identiteits beveiliging en risico detectie van Azure Ac
 
 U kunt ook logboeken opnemen in azure Sentinel voor verder onderzoek.
 
-Geavanceerde bedreigings beveiliging instellen voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Geavanceerde bedreigings beveiliging instellen voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Overzicht van Azure AD Identity Protection:https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+Overzicht van Azure AD Identity Protection: https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
 
-Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: Ja
 
@@ -471,13 +471,13 @@ Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Hulp**: momenteel niet beschikbaar; Klanten-lockbox wordt nog niet ondersteund voor Azure Database for PostgreSQL.
 
-Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -485,7 +485,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Hulp**: Tags gebruiken bij het volgen van Azure database for PostgreSQL instanties of gerelateerde resources die gevoelige informatie opslaan of verwerken.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -495,15 +495,15 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Gebruik een combi natie van persoonlijke koppelingen, service-eind punten en/of firewall regels om netwerk toegang tot uw Azure Database for PostgreSQL-instanties te isoleren en te beperken.
 
-Aanvullende Azure-abonnementen maken:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Aanvullende Azure-abonnementen maken: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheergroepen maken:https://docs.microsoft.com/azure/governance/management-groups/create
+Beheergroepen maken: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Persoonlijke koppeling configureren voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Persoonlijke koppeling configureren voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-VNet-service-eind punten en VNet-regels maken en beheren in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+VNet-service-eind punten en VNet-regels maken en beheren in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-Azure Database for PostgreSQL firewall regels configureren:https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
+Azure Database for PostgreSQL firewall regels configureren: https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -515,9 +515,9 @@ Azure Database for PostgreSQL firewall regels configureren:https://docs.microsof
 
 Micro soft beheert de onderliggende infra structuur voor Azure Database for PostgreSQL en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-Het beperken van gegevens exfiltration voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
+Het beperken van gegevens exfiltration voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: Ja
 
@@ -529,7 +529,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 Op dit moment wordt de TLS-versie die wordt ondersteund voor Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
 
-Versleuteling voor Azure Database for PostgreSQL configureren in transit:https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
+Versleuteling voor Azure Database for PostgreSQL configureren in transit: https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
 
 **Azure Security Center bewaking**: Ja
 
@@ -541,7 +541,7 @@ Versleuteling voor Azure Database for PostgreSQL configureren in transit:https:/
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -549,11 +549,11 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot het Azure database for PostgreSQL besturings vlak (bijvoorbeeld Azure Portal). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen. RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
+**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot het Azure database for PostgreSQL besturings vlak (bijvoorbeeld Azure Portal). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen. Azure RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
 
-RBAC configureren in Azure:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Azure RBAC configureren: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-Gebruikers toegang configureren met SQL voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-create-users
+Gebruikers toegang configureren met SQL voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -565,7 +565,7 @@ Gebruikers toegang configureren met SQL voor Azure Database for PostgreSQL:https
 
 Micro soft beheert de onderliggende infra structuur voor Azure Database for PostgreSQL en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -579,7 +579,7 @@ Gegevens versleuteling met door de klant beheerde sleutels (CMK) voor Azure Data
 
 AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Meer informatie over versleuteling op rest voor Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-security
+Meer informatie over versleuteling op rest voor Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-security
 
 Meer informatie over versleuteling op rest voor Azure Database for PostgreSQL met door de klant beheerde sleutels:https://docs.microsoft.com/azure/postgresql/concepts-data-encryption-postgresql
 
@@ -592,7 +592,7 @@ Meer informatie over versleuteling op rest voor Azure Database for PostgreSQL me
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Azure database for PostgreSQL en andere essentiële of gerelateerde resources.
 
-Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -606,7 +606,7 @@ Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:https://docs
 
 **Hulp**: momenteel niet beschikbaar; Azure Security Center biedt nog geen ondersteuning voor de evaluatie van beveiligings problemen voor Azure Database for PostgreSQL.
 
-Functie dekking voor Azure PaaS Services in Azure Security Center:https://docs.microsoft.com/azure/security-center/features-paas
+Functie dekking voor Azure PaaS Services in Azure Security Center: https://docs.microsoft.com/azure/security-center/features-paas
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -652,11 +652,11 @@ Functie dekking voor Azure PaaS Services in Azure Security Center:https://docs.m
 
 **Hulp**: Azure resource Graph gebruiken om alle resources (inclusief Azure database for PostgreSQL instanties) in uw abonnement (en) te doorzoeken en te detecteren. Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
 
-Query's maken met Azure resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Uw Azure-abonnementen weer geven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -666,7 +666,7 @@ Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-acce
 
 **Richt lijnen**: Labels Toep assen op Azure database for PostgreSQL instanties en andere gerelateerde resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -676,11 +676,11 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure database for PostgreSQL instanties en gerelateerde resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-Aanvullende Azure-abonnementen maken:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Aanvullende Azure-abonnementen maken: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheergroepen maken:https://docs.microsoft.com/azure/governance/management-groups/create
+Beheergroepen maken: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -704,9 +704,9 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren van resources binnen een of meer abonnementen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -744,9 +744,9 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 - Toegestane brontypen
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -764,7 +764,7 @@ Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management. Dit kan ertoe leiden dat het maken en wijzigen van resources binnen een omgeving met hoge beveiliging, zoals exemplaren van Azure Database for PostgreSQL met gevoelige informatie, wordt voor komen.
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -798,9 +798,9 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 - Logboekverbindingen moeten zijn ingeschakeld voor PostgreSQL-databaseservers
 
-Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -818,9 +818,9 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -838,9 +838,9 @@ Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/poli
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Azure database for PostgreSQL instanties en gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-Code opslaan in azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Code opslaan in azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -858,7 +858,7 @@ Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforPostgreSQL ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -876,7 +876,7 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforPostgreSQL ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure Database for PostgreSQL instanties en gerelateerde bronnen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -894,11 +894,11 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Richt lijnen**: voor Azure virtual machines of webtoepassingen die worden uitgevoerd op Azure app service wordt gebruikt om toegang te krijgen tot uw Azure database for PostgreSQL-instanties, gebruikt u Managed Service Identity in combi natie met Azure Key Vault om het beheer van het geheim te vereenvoudigen en te beveiligen. Zorg ervoor Key Vault zacht verwijderen is ingeschakeld.
 
-Integratie met door Azure beheerde identiteiten:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integratie met door Azure beheerde identiteiten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Een Key Vault maken:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Key Vault verificatie bieden met een beheerde identiteit:https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault verificatie bieden met een beheerde identiteit: https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Azure Security Center bewaking**: Ja
 
@@ -912,9 +912,9 @@ Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure Ap
 
 Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in Azure Active Directory (AD). Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-Beheerde identiteiten configureren:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Integratie met door Azure beheerde identiteiten:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integratie met door Azure beheerde identiteiten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 **Azure Security Center bewaking**: Ja
 
@@ -924,7 +924,7 @@ Integratie met door Azure beheerde identiteiten:https://docs.microsoft.com/azure
 
 **Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.
 
-Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -973,9 +973,9 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 **Hulp**: Azure database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
-Een back-up maken van een server in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Een back-up maken van een server in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-Azure Database for PostgreSQL initiële configuratie begrijpen:https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
+Azure Database for PostgreSQL initiële configuratie begrijpen: https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -987,9 +987,9 @@ Azure Database for PostgreSQL initiële configuratie begrijpen:https://docs.micr
 
 Als Azure Key Vault gebruiken om referenties voor uw Azure Database for PostgreSQL-instanties op te slaan, moet u regel matig automatische back-ups van uw sleutels maken.
 
-Een back-up maken van een server in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Een back-up maken van een server in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-Back-ups maken van Key Vault sleutels:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Back-ups maken van Key Vault sleutels: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1003,7 +1003,7 @@ De geschatte duur van de herstel bewerking is afhankelijk van verschillende fact
 
 Test de herstel bewerking van uw Azure Database for PostgreSQL-instanties regel matig.
 
-Een back-up maken van een server in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Een back-up maken van een server in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1013,7 +1013,7 @@ Een back-up maken van een server in Azure Database for PostgreSQL:https://docs.m
 
 **Hulp**: Azure database for PostgreSQL volledige, differentiële en back-ups van transactie Logboeken. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
-Meer informatie over back-up en herstel in Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-backup
+Meer informatie over back-up en herstel in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-backup
 
 **Azure Security Center bewaking**: Ja
 
@@ -1027,13 +1027,13 @@ Meer informatie over back-up en herstel in Azure Database for PostgreSQL:https:/
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-Werk stroom automatisering configureren in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Werk stroom automatisering configureren in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Micro soft Security Response Center anatomie van een incident:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Micro soft Security Response Center anatomie van een incident: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1053,7 +1053,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem op een gewone uitgebracht te testen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
 
-Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1063,7 +1063,7 @@ Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en u
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens van de klant zijn geopend door een onrecht matige of niet-gemachtigde partij.  Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-De Azure Security Center Security-contact persoon instellen:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+De Azure Security Center Security-contact persoon instellen: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Security Center bewaking**: Ja
 
@@ -1073,9 +1073,9 @@ De Azure Security Center Security-contact persoon instellen:https://docs.microso
 
 **Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
 
-Continue export configureren:https://docs.microsoft.com/azure/security-center/continuous-export
+Continue export configureren: https://docs.microsoft.com/azure/security-center/continuous-export
 
-Waarschuwingen streamen naar Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Waarschuwingen streamen naar Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1085,7 +1085,7 @@ Waarschuwingen streamen naar Azure Sentinel:https://docs.microsoft.com/azure/sen
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
 
-Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com/azure/security-center/workflow-automation
+Werk stroom automatisering en Logic Apps configureren: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1097,9 +1097,9 @@ Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
 
-**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center bewaking**: niet van toepassing
 

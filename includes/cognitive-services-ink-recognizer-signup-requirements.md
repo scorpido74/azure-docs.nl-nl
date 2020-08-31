@@ -3,12 +3,12 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2019
-ms.openlocfilehash: 5753ac438979053a20e4ed3312e64fc01553ce78
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.date: 08/17/2020
+ms.openlocfilehash: cd4df7783f314ee9f181074e4eaee93fd478ec11
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68362485"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602302"
 ---
-U moet een [Cognitive Services-API-account](../articles/cognitive-services/cognitive-services-apis-create-account.md) hebben met toegang tot de inkt Recognizer-API. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/) . Nadat u een gratis proef versie hebt geactiveerd, kunt u uw abonnements sleutel ophalen uit de [Azure Portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) na het maken van uw account of [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis) .
+U hebt een [account voor Cognitive Services-API](../articles/cognitive-services/cognitive-services-apis-create-account.md) met toegang tot de Ink Recognizer-API's nodig. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/). U kunt uw resource ook weergeven in [Azure Portal](https://portal.azure.com/).

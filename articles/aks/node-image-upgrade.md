@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654273"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055682"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade van installatie kopie van knoop punt Azure Kubernetes service (AKS)
 
@@ -20,6 +20,10 @@ AKS biedt ondersteuning voor het upgraden van installatie kopieën op een knoop 
 Als u wilt weten over de nieuwste installatie kopieën van AKS, raadpleegt u de [opmerkingen](https://github.com/Azure/AKS/releases) bij de release van AKS voor meer informatie.
 
 Zie [een AKS-cluster upgraden][upgrade-cluster]voor informatie over het bijwerken van de Kubernetes-versie voor uw cluster.
+
+## <a name="limitations"></a>Beperkingen
+
+* Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 
 ## <a name="install-the-aks-cli-extension"></a>De AKS CLI-extensie installeren
 

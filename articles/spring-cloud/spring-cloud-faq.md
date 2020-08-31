@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800366"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054985"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -42,8 +42,8 @@ VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
 
 Tijdens de preview-versie heeft Azure lente Cloud de volgende bekende beperkingen:
 
-* `spring.application.name`wordt overschreven door de naam van de toepassing die wordt gebruikt voor het maken van elke toepassing.
-* `server.port`wordt standaard ingesteld op poort 80/443. Als een andere waarde wordt toegepast, wordt deze overschreven naar 80/443.
+* `spring.application.name` wordt overschreven door de naam van de toepassing die wordt gebruikt voor het maken van elke toepassing.
+* `server.port` wordt standaard ingesteld op poort 80/443. Als een andere waarde wordt toegepast, wordt deze overschreven naar 80/443.
 * De Azure Portal-en Azure Resource Manager-sjablonen bieden geen ondersteuning voor het uploaden van toepassings pakketten. U kunt toepassings pakketten alleen uploaden door de toepassing te implementeren via de Azure CLI.
 
 ### <a name="what-pricing-tiers-are-available"></a>Welke prijs categorieën zijn er beschikbaar? 
@@ -88,6 +88,12 @@ Ja.
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Wanneer ik een Azure lente-Cloud service-exemplaar Verwijder/Verplaats, worden ook de bijbehorende uitbreidings resources verwijderd/verplaatst?
 
 Dit is afhankelijk van de logica van resource providers die eigenaar zijn van de uitbreidings resources. De extensie resources van een `Microsoft.AppPlatform` exemplaar horen niet bij dezelfde naam ruimte, waardoor het gedrag afhankelijk is van de resource provider. De bewerking verwijderen/verplaatsen getrapt bijvoorbeeld niet in de resources met **Diagnostische instellingen** . Als er een nieuw Azure-exemplaar voor de Cloud wordt ingericht met dezelfde resource-ID als de verwijderde, of als het vorige exemplaar van de Azure veer Cloud wordt teruggezet, worden de vorige bronnen voor **Diagnostische gegevens** nog verder uitgebreid.
+
+U kunt de diagnostische instellingen van de lente-Cloud verwijderen met behulp van Azure CLI:
+
+```azurecli
+ az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
+```
 
 ## <a name="java-runtime-and-os-versions"></a>Java runtime en besturingssysteem versies
 

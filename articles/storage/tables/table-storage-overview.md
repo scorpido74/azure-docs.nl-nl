@@ -2,21 +2,21 @@
 title: Inleiding tot Table-opslag - Objectopslag in Azure | Microsoft Docs
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage, een oplossing voor NoSQL-gegevensopslag.
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2670d9ce568195fd97350bf678059ac89610422f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "62129764"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236162"
 ---
-# <a name="introduction-to-table-storage-in-azure"></a>Inleiding tot Table-opslag in Azure
+# <a name="what-is-azure-table-storage-"></a>Wat is Azure Table Storage? 
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -36,4 +36,4 @@ U kunt Table Storage gebruiken voor de opslag van flexibele gegevenssets, zoals 
 
     * [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [Naslaginformatie over REST-API](https://msdn.microsoft.com/library/azure/dd179355)
+    * [Naslaginformatie over REST API](https://msdn.microsoft.com/library/azure/dd179355)

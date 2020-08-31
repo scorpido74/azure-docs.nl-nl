@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029974"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055648"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
 
@@ -28,12 +28,15 @@ Organisaties kunnen verschillende Azure-abonnementen hebben. Elk abonnement is g
 
 In dit artikel worden de basis stappen beschreven die u kunt volgen om een abonnement over te dragen naar een andere Azure AD-Directory en een aantal resources na de overdracht opnieuw te maken.
 
+> [!NOTE]
+> Voor Azure CSP-abonnementen wordt het wijzigen van de Azure AD-Directory voor het abonnement niet ondersteund.
+
 ## <a name="overview"></a>Overzicht
 
 Het overdragen van een Azure-abonnement naar een andere Azure AD-Directory is een complex proces dat zorgvuldig moet worden gepland en uitgevoerd. Voor veel Azure-Services zijn beveiligings-principals (identiteiten) vereist om normaal te werken of om zelfs andere Azure-resources te beheren. Dit artikel bevat een overzicht van de meeste Azure-Services die sterk afhankelijk zijn van beveiligings-principals, maar dat is niet volledig.
 
 > [!IMPORTANT]
-> Voor het overdragen van een abonnement is downtime vereist om het proces te volt ooien.
+> In sommige scenario's is het overdragen van een abonnement mogelijk downtime nodig om het proces te volt ooien. Er is een zorgvuldige planning vereist om te beoordelen of downtime nodig is voor uw migratie.
 
 In het volgende diagram ziet u de basis stappen die u moet volgen wanneer u een abonnement overbrengt naar een andere map.
 
@@ -66,22 +69,23 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 
 | Service of resource | Beïnvloed | Herstel bare | Hebt u last van dit probleem? | Wat u kunt doen |
 | --------- | --------- | --------- | --------- | --------- |
-| Roltoewijzingen | Ja | Yes | [Lijst met roltoewijzingen weergeven](#save-all-role-assignments) | Alle roltoewijzingen worden definitief verwijderd. U moet gebruikers, groepen en service-principals toewijzen aan de bijbehorende objecten in de doel directory. U moet de roltoewijzingen opnieuw maken. |
-| Aangepaste rollen | Ja | Yes | [Aangepaste rollen opvragen](#save-custom-roles) | Alle aangepaste rollen worden permanent verwijderd. U moet de aangepaste rollen en eventuele roltoewijzingen opnieuw maken. |
-| Door het systeem toegewezen beheerde identiteiten | Ja | Yes | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten uitschakelen en opnieuw inschakelen. U moet de roltoewijzingen opnieuw maken. |
-| Door de gebruiker toegewezen beheerde identiteiten | Ja | Yes | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten verwijderen, opnieuw maken en koppelen aan de juiste resource. U moet de roltoewijzingen opnieuw maken. |
-| Azure Key Vault | Ja | Yes | [Key Vault toegangs beleid weer geven](#list-other-known-resources) | U moet de Tenant-ID die is gekoppeld aan de sleutel kluizen bijwerken. U moet een nieuw toegangs beleid verwijderen en toevoegen. |
-| Azure SQL-data bases met Azure AD-verificatie | Yes | Nee | [Azure SQL-data bases controleren met Azure AD-verificatie](#list-other-known-resources) |  |  |
-| Azure Storage en Azure Data Lake Storage Gen2 | Ja | Yes |  | U moet alle Acl's opnieuw maken. |
-| Azure Data Lake Storage Gen1 | Ja |  |  | U moet alle Acl's opnieuw maken. |
-| Azure Files | Ja | Yes |  | U moet alle Acl's opnieuw maken. |
-| Azure File Sync | Ja | Yes |  |  |
-| Azure Managed Disks | Yes | N.v.t. |  |  |
-| Azure container Services voor Kubernetes | Ja | Yes |  |  |
-| Azure Active Directory Domain Services | Yes | Nee |  |  |
+| Roltoewijzingen | Ja | Ja | [Lijst met roltoewijzingen weergeven](#save-all-role-assignments) | Alle roltoewijzingen worden definitief verwijderd. U moet gebruikers, groepen en service-principals toewijzen aan de bijbehorende objecten in de doel directory. U moet de roltoewijzingen opnieuw maken. |
+| Aangepaste rollen | Ja | Ja | [Aangepaste rollen opvragen](#save-custom-roles) | Alle aangepaste rollen worden permanent verwijderd. U moet de aangepaste rollen en eventuele roltoewijzingen opnieuw maken. |
+| Door het systeem toegewezen beheerde identiteiten | Ja | Ja | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten uitschakelen en opnieuw inschakelen. U moet de roltoewijzingen opnieuw maken. |
+| Door de gebruiker toegewezen beheerde identiteiten | Ja | Ja | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten verwijderen, opnieuw maken en koppelen aan de juiste resource. U moet de roltoewijzingen opnieuw maken. |
+| Azure Key Vault | Ja | Ja | [Key Vault toegangs beleid weer geven](#list-other-known-resources) | U moet de Tenant-ID die is gekoppeld aan de sleutel kluizen bijwerken. U moet een nieuw toegangs beleid verwijderen en toevoegen. |
+| Azure SQL-data bases met Azure AD-verificatie integratie ingeschakeld | Ja | Nee | [Azure SQL-data bases controleren met Azure AD-verificatie](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure Storage en Azure Data Lake Storage Gen2 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
+| Azure Data Lake Storage Gen1 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
+| Azure Files | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
+| Azure File Sync | Ja | Ja |  |  |
+| Azure Managed Disks | Ja | N.v.t. |  |  |
+| Azure container Services voor Kubernetes | Ja | Ja |  |  |
+| Azure Active Directory Domain Services | Ja | Nee |  |  |
 | App-registraties | Ja | Ja |  |  |
 
-Als u versleuteling op rest gebruikt voor een resource, zoals een opslag account of SQL database, die een afhankelijkheid heeft van een sleutel kluis die zich niet in hetzelfde abonnement bevindt dat wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
+> [!IMPORTANT]
+> Als u versleuteling op rest gebruikt voor een bron, zoals een opslag account of een SQL database en de resource een afhankelijkheid heeft van een sleutel kluis die *niet* in het abonnement dat wordt overgedragen, wordt mogelijk een onherstelbare fout weer gegeven. Gebruik in dit geval een andere sleutel kluis of schakel de door de klant beheerde sleutels tijdelijk uit om een onherstelbare fout te voor komen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -199,9 +203,9 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
 
     | Criteria | Type beheerde identiteit |
     | --- | --- |
-    | `alternativeNames`eigenschap bevat`isExplicit=False` | Systeem toegewezen |
-    | `alternativeNames`de eigenschap omvat niet`isExplicit` | Systeem toegewezen |
-    | `alternativeNames`eigenschap bevat`isExplicit=True` | Gebruiker toegewezen |
+    | `alternativeNames` eigenschap bevat `isExplicit=False` | Systeem toegewezen |
+    | `alternativeNames` de eigenschap omvat niet `isExplicit` | Systeem toegewezen |
+    | `alternativeNames` eigenschap bevat `isExplicit=True` | Gebruiker toegewezen |
 
     U kunt ook [AZ ID List](https://docs.microsoft.com/cli/azure/identity#az-identity-list) gebruiken om alleen door de gebruiker toegewezen beheerde identiteiten te vermelden. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van de Azure cli](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)voor meer informatie.
 
@@ -217,8 +221,8 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
 
 Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standaard Azure Active Directory Tenant-ID voor het abonnement waarin deze is gemaakt. Alle vermeldingen van het toegangsbeleid zijn ook gekoppeld aan deze tenant-ID. Zie [een Azure Key Vault naar een ander abonnement verplaatsen](../key-vault/general/move-subscription.md)voor meer informatie.
 
-> [!WARNING]
-> Als u versleuteling in rust gebruikt voor een resource, zoals een opslag account of een SQL database, die een afhankelijkheid heeft van een sleutel kluis die niet in hetzelfde abonnement is opgenomen als die wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
+> [!IMPORTANT]
+> Als u versleuteling op rest gebruikt voor een bron, zoals een opslag account of een SQL database en de resource een afhankelijkheid heeft van een sleutel kluis die *niet* in het abonnement dat wordt overgedragen, wordt mogelijk een onherstelbare fout weer gegeven. Gebruik in dit geval een andere sleutel kluis of schakel de door de klant beheerde sleutels tijdelijk uit om een onherstelbare fout te voor komen.
 
 - Als u een sleutel kluis hebt, gebruikt u [AZ Key kluis show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) om het toegangs beleid weer te geven. Zie [Key Vault verificatie bieden met een toegangscontrole beleid](../key-vault/key-vault-group-permissions-for-apps.md)voor meer informatie.
 
@@ -228,7 +232,7 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL-data bases weer geven met Azure AD-verificatie
 
-- Gebruik [AZ SQL Server AD-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) en de [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension om te zien of u Azure SQL-data bases gebruikt met Azure AD-verificatie. Zie [Configure and manage Azure Active Directory Authentication with SQL](../sql-database/sql-database-aad-authentication-configure.md)(Engelstalig) voor meer informatie.
+- Gebruik [AZ SQL Server AD-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) en de [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension om te zien of u Azure SQL-data bases gebruikt met Azure AD-verificatie. Zie [Configure and manage Azure Active Directory Authentication with SQL](../azure-sql/database/authentication-aad-configure.md)(Engelstalig) voor meer informatie.
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -351,7 +355,7 @@ In deze sectie worden de basis stappen beschreven voor het bijwerken van uw sleu
 
 1. Als u Azure Data Lake Storage Gen1 gebruikt, wijst u de juiste Acl's toe. Zie gegevens beveiligen die zijn [opgeslagen in azure data Lake Storage gen1](../data-lake-store/data-lake-store-secure-data.md)voor meer informatie.
 
-1. Als u Azure Data Lake Storage Gen2 gebruikt, wijst u de juiste Acl's toe. Zie [toegangs beheer in azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md)voor meer informatie.
+1. Als u Azure Data Lake Storage Gen2 gebruikt, wijst u de juiste Acl's toe. Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md) voor meer informatie.
 
 1. Als u Azure Files gebruikt, wijst u de juiste Acl's toe.
 

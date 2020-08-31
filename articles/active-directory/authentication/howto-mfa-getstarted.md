@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717027"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055070"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -110,7 +110,7 @@ Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwer
 Beheerders kunnen de [verificatie methoden](../authentication/concept-authentication-methods.md) kiezen die ze beschikbaar willen maken voor gebruikers. Het is belang rijk om meer dan één verificatie methode toe te staan, zodat gebruikers een back-upmethode beschikbaar hebben als de primaire methode niet beschikbaar is. De volgende methoden zijn beschikbaar voor beheerders om in te scha kelen:
 
 > [!TIP]
-> Micro soft raadt u aan de mobiele app te gebruiken als de primaire methode voor Azure Multi-Factor Authentication voor de beste beveiliging en gebruikers ervaring.
+> Micro soft raadt u aan om de Microsoft Authenticator (mobiele app) als primaire methode voor Azure Multi-Factor Authentication te gebruiken voor een veiligere en verbeterde gebruikers ervaring. De Microsoft Authenticator-app [voldoet ook aan](https://azure.microsoft.com/resources/microsoft-nist/) het National Institute of Standards and Technology Authenticator Assurance levels. 
 
 ### <a name="notification-through-mobile-app"></a>Melding via mobiele app
 
@@ -250,7 +250,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de wisselknop **Beleid inschakelen** in op **Aan**.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 

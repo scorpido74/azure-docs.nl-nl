@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810113"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055325"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -183,15 +183,38 @@ Als u het gegevens type voor een invoer binding wilt definiëren, gebruikt u de 
 Opties voor `dataType` zijn: `binary` , `stream` en `string` .
 
 ## <a name="context-object"></a>context object
-De runtime gebruikt een `context` object om gegevens door te geven aan en van uw functie en om u te laten communiceren met de runtime. Het context object kan worden gebruikt voor het lezen en instellen van gegevens van bindingen, het schrijven van Logboeken en het gebruik van de `context.done` call back wanneer de geëxporteerde functie synchroon is.
 
-Het `context` object is altijd de eerste para meter voor een functie. Deze moet worden opgenomen, omdat deze belang rijke methoden heeft, zoals `context.done` en `context.log` . U kunt het object een naam hebben, ongeacht wat u wilt (bijvoorbeeld `ctx` of `c` ).
+De runtime gebruikt een `context` object om gegevens van en naar uw functie en de runtime door te geven. Voor het lezen en instellen van gegevens van bindingen en voor het schrijven naar Logboeken `context` is het object altijd de eerste para meter die aan een functie is door gegeven.
+
+Voor functies met synchrone code bevat het context object de `done` call back die u aanroept wanneer de functie wordt uitgevoerd. Expliciet aanroepen `done` is niet nodig voor het schrijven van asynchrone code; de `done` call back wordt impliciet aangeroepen.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+De context die wordt door gegeven aan de functie `executionContext` , bevat een eigenschap, een object met de volgende eigenschappen:
+
+| Naam van eigenschap  | Type  | Beschrijving |
+|---------|---------|---------|
+| `invocationId` | Tekenreeks | Biedt een unieke id voor de specifieke functie aanroep. |
+| `functionName` | Tekenreeks | Geeft de naam van de functie die wordt uitgevoerd |
+| `functionDirectory` | Tekenreeks | Voorziet in de app-map met functies. |
+
+In het volgende voor beeld ziet u hoe de wordt geretourneerd `invocationId` .
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 
@@ -201,7 +224,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Retourneert een benoemd object dat wordt gebruikt om bindings gegevens te lezen of toe te wijzen. Invoer-en trigger gegevens voor bindingen kunnen worden geopend door het lezen van eigenschappen van `context.bindings` . Uitvoer binding gegevens kunnen worden toegewezen door gegevens toe te voegen aan`context.bindings`
+Retourneert een benoemd object dat wordt gebruikt om bindings gegevens te lezen of toe te wijzen. Invoer-en trigger gegevens voor bindingen kunnen worden geopend door het lezen van eigenschappen van `context.bindings` . Uitvoer binding gegevens kunnen worden toegewezen door gegevens toe te voegen aan `context.bindings`
 
 Met de volgende bindings definities in uw function.jshebt u bijvoorbeeld toegang tot de inhoud van een wachtrij van `context.bindings.myInput` en het toewijzen van uitvoer aan een wachtrij met behulp van `context.bindings.myOutput` .
 
@@ -395,7 +418,7 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Alleen antwoord]_ Door aan te roepen `context.res.send(body?: any)` .** Er wordt een HTTP-antwoord met invoer gemaakt `body` als de antwoord tekst. `context.done()`wordt impliciet aangeroepen.
++ **_[Alleen antwoord]_ Door aan te roepen `context.res.send(body?: any)` .** Er wordt een HTTP-antwoord met invoer gemaakt `body` als de antwoord tekst. `context.done()` wordt impliciet aangeroepen.
 
 + **_[Alleen antwoord]_ Door aan te roepen `context.done()` .** Een speciaal type HTTP-binding retourneert het antwoord dat is door gegeven aan de- `context.done()` methode. De volgende HTTP-uitvoer binding definieert een `$return` uitvoer parameter:
 
@@ -430,7 +453,7 @@ In de volgende tabel ziet u de huidige ondersteunde Node.js versies voor elke ho
 |---|---| --- |
 | 1.x | 6.11.2 (vergrendeld door de runtime) | N.v.t. |
 | 2.x  | ~ 8<br/>~ 10 (aanbevolen)<br/>~ 12<sup>*</sup> | ~ 8 (aanbevolen)<br/>~ 10  |
-| controleert | ~ 10<br/>~ 12 (aanbevolen)  | ~ 10<br/>~ 12 (aanbevolen) |
+| 3.x | ~ 10<br/>~ 12 (aanbevolen)  | ~ 10<br/>~ 12 (aanbevolen) |
 
 <sup>*</sup>Het knoop punt ~ 12 is momenteel toegestaan op versie 2. x van de functions-runtime. Voor de beste prestaties raden we u echter aan functions runtime versie 3. x met het knoop punt ~ 12 te gebruiken. 
 
@@ -500,7 +523,7 @@ De `function.json` eigenschappen `scriptFile` en `entryPoint` kunnen worden gebr
 
 Een Java script-functie wordt standaard uitgevoerd vanuit `index.js` , een bestand met dezelfde bovenliggende map als de bijbehorende `function.json` .
 
-`scriptFile`kan worden gebruikt om een mapstructuur te verkrijgen die eruitziet als in het volgende voor beeld:
+`scriptFile` kan worden gebruikt om een mapstructuur te verkrijgen die eruitziet als in het volgende voor beeld:
 
 ```
 FunctionApp
@@ -647,7 +670,7 @@ Bij het ontwikkelen van Azure Functions in het serverloze hosting model is koude
 
 Wanneer u een servicespecifieke client gebruikt in een Azure Functions-toepassing, moet u geen nieuwe client maken bij elke functie aanroep. Maak in plaats daarvan een enkele statische client in het globale bereik. Zie [verbindingen beheren in azure functions](manage-connections.md)voor meer informatie.
 
-### <a name="use-async-and-await"></a>Gebruiken `async` en`await`
+### <a name="use-async-and-await"></a>Gebruiken `async` en `await`
 
 Wanneer u Azure Functions in Java script schrijft, moet u code schrijven met behulp van de `async` `await` sleutel woorden en. Het schrijven van code met behulp `async` `await` van en in plaats van retour aanroepen of `.then` en `.catch` met beloftes helpt twee veelvoorkomende problemen te voor komen:
  - Niet-onderschepte uitzonde ringen genereren die [het Node.js proces vastlopen](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), waardoor de uitvoering van andere functies kan worden beïnvloed.

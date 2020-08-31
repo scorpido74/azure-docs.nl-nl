@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853365"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068640"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -302,7 +302,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | streetaddress | Adres |
 | Gebruiker | postalcode | Postcode |
 | Gebruiker | preferredlanguange | Voorkeurstaal |
-| Gebruiker | onpremisesuserprincipalname | On-premises UPN |
+| Gebruiker | onpremisesuserprincipalname | On-premises UPN |*
 | Gebruiker | mailNickname | E-mail bijnaam |
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
 | Gebruiker | extensionattribute2 | Uitbreidings kenmerk 2 |
@@ -322,7 +322,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | staat | Staat |
+| Gebruiker | staat | Status |
 | Gebruiker | jobtitle | Functie |
 | Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
@@ -340,6 +340,8 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 
 - De JwtClaimType moet de naam van de claim bevatten die moet worden verzonden in JWTs.
 - De SamlClaimType moet de URI bevatten van de claim die moet worden verzonden in SAML-tokens.
+
+* **kenmerk onPremisesUserPrincipalName:** Wanneer u een alternatieve ID gebruikt, wordt het on-premises kenmerk userPrincipalName gesynchroniseerd met het Azure AD-kenmerk onPremisesUserPrincipalName. Dit kenmerk is alleen beschikbaar wanneer alternatieve ID is geconfigureerd, maar is ook beschikbaar via MS Graph Beta: https://graph.microsoft.com/beta/me/ .
 
 > [!NOTE]
 > Namen en Uri's van claims in de beperkte claim sets kunnen niet worden gebruikt voor de claim type-elementen. Zie de sectie ' uitzonde ringen en beperkingen ' verderop in dit artikel voor meer informatie.

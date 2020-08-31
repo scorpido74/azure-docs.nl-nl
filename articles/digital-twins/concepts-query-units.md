@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5334a1196ac8044c56e615cf8894b44646b48fb4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88615107"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067702"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Query-eenheden in azure Digital Apparaatdubbels 
 
@@ -20,7 +20,9 @@ Een Azure Digital Apparaatdubbels **query Unit (qu)** is een eenheid op aanvraag
 
 De systeem bronnen, zoals CPU, IOPS en geheugen die nodig zijn om query bewerkingen uit te voeren die worden ondersteund door Azure Digital Apparaatdubbels, worden abstract. Hiermee kunt u in plaats daarvan het gebruik bijhouden in query-eenheden.
 
-De complexiteit van de query is van invloed op het aantal QUs dat wordt gebruikt om die query uit te voeren. 
+De hoeveelheid query eenheden die wordt gebruikt om een query uit te voeren, wordt beïnvloed door...
+* de complexiteit van de query 
+* de grootte van de resultatenset (dus een query die 10 resultaten retourneert, verbruikt meer QUs dan een query met vergelijk bare complexiteit die slechts één resultaat retourneert)
 
 In dit artikel wordt uitgelegd hoe u query-eenheden begrijpt en verbruik van query eenheden kunt bijhouden.
 

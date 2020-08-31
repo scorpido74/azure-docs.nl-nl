@@ -5,8 +5,6 @@
   items:
     - name: Wat is Azure Spring Cloud?
       href: spring-cloud-overview.md
-    - name: Java- en Base-besturingssysteem voor Spring Microservice-apps
-      href: spring-cloud-principles-microservice-apps.md
 - name: Snelstartgidsen
   expanded: true
   items:

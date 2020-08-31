@@ -3,7 +3,7 @@
 - name: Overzicht
   items:
     - name: Over Azure Arc
-      href: arc-overview.md
+      href: overview.md
 - name: Server met Arc >
   href: ./servers/overview.md
 - name: Kubernetes met Arc >

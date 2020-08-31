@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/27/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934494"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055529"
 ---
 # <a name="what-is-speech-translation"></a>Wat is spraakomzetting?
 
@@ -30,25 +30,14 @@ Momenteel gebruikt micro soft NMT voor de vertaling van de populairste talen. Al
 
 ## <a name="core-features"></a>Kern functies
 
-Hier volgen de functies die beschikbaar zijn via de Speech SDK en REST Api's:
+* Conversie van spraak naar tekst met herkennings resultaten.
+* Conversie van spraak naar spraak.
+* Ondersteuning voor vertaling naar meerdere doel talen.
+* Tussentijdse herkenning en omzettings resultaten.
 
-| Gebruiksvoorbeeld | SDK | REST |
-|----------|-----|------|
-| Conversie van spraak naar tekst met herkennings resultaten. | Ja | Nee |
-| Conversie van spraak naar spraak. | Ja | Nee |
-| Tussentijdse herkenning en omzettings resultaten. | Ja | Nee |
+## <a name="get-started"></a>Aan de slag 
 
-## <a name="get-started-with-speech-translation"></a>Aan de slag met spraak omzetting
-
-We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor spraak vertalingen, geordend op taal.
-
-| Snelstart | Platform | API-verwijzing |
-|------------|----------|---------------|
-| [C#, .NET core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Bladeren](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Bladeren](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Bladeren](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Bladeren](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Bladeren](https://aka.ms/csspeech/javaref) |
+Raadpleeg de [Snelstartgids](get-started-speech-translation.md) om aan de slag te gaan met spraak omzetting. De service voor spraak omzetting is beschikbaar via de [Speech SDK](speech-sdk.md) en de [Speech cli](spx-overview.md).
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
@@ -72,5 +61,6 @@ Als uw toepassingen, hulpprogram ma's of producten de [Translator Speech-API](ht
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* De [Snelstartgids](get-started-speech-translation.md) voor spraak omzetting volt ooien
 * [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
 * [De Speech SDK ophalen](speech-sdk.md)

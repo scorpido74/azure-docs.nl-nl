@@ -3,12 +3,12 @@ title: Veelgestelde vragen over VMware-nood herstel met Azure Site Recovery
 description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086146"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054968"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
 
@@ -114,7 +114,7 @@ Site Recovery repliceert on-premises virtuele VMware-machines en fysieke servers
 
 Nee. Vanaf maart 2019 kunt u in de Azure Portal alleen repliceren naar Azure Managed disks.
 
-De replicatie van nieuwe Vm's naar een opslag account is alleen beschikbaar via Power shell of de REST API (versie 2018-01-10 of 2016-08-10).
+De replicatie van nieuwe Vm's naar een opslag account is alleen beschikbaar via Power shell ([AZ. Recovery Services module versie 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) of de rest API (versie 2018-01-10 of 2016-08-10). [Meer informatie over](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) het instellen van replicatie met behulp van de Power shell-opdrachten.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Wat zijn de voor delen van repliceren naar Managed disks?
 
