@@ -12,12 +12,12 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853592"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068723"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Procedure: optionele claims voor uw app opgeven
 
@@ -58,7 +58,7 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 | `verified_secondary_email` | Bron van de SecondaryAuthoritativeEmail van de gebruiker   | JWT        |           |        |
 | `vnet`                     | Gegevens van VNET-specificatie. | JWT        |           |      |
 | `fwd`                      | IP-adres.| JWT    |   | Hiermee wordt het oorspronkelijke IPv4-adres van de aanvragende client toegevoegd (in een VNET) |
-| `ctry`                     | Land/regio van gebruiker | JWT |  | Azure AD retourneert de `ctry` optionele claim als deze aanwezig is en de waarde van het veld is een standaard land/regio code van twee letters, zoals fr, JP, Sz, enzovoort. |
+| `ctry`                     | Land/regio van gebruiker | JWT, SAML |  | Azure AD retourneert de `ctry` optionele claim als deze aanwezig is en de waarde van het veld is een standaard land/regio code van twee letters, zoals fr, JP, Sz, enzovoort. |
 | `tenant_ctry`              | Land van de resource Tenant | JWT | | Gelijk aan `ctry` , behalve instellen op Tenant niveau door een beheerder.  Moet ook een standaard waarde van twee letters zijn. |
 | `xms_pdl`             | Voorkeurs locatie van gegevens   | JWT | | Voor multi-geo-tenants is de gewenste gegevens locatie de code van drie letters waarin de geografische regio waarin de gebruiker zich bevindt. Zie de [Azure AD Connect documentatie over de voorkeurs locatie van gegevens](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)voor meer informatie.<br/>Bijvoorbeeld: `APC` voor Azië en Stille Oceaan. |
 | `xms_pl`                   | Voorkeurs taal van gebruiker  | JWT ||De voorkeurs taal van de gebruiker, indien ingesteld. Vanuit hun thuis Tenant, in scenario's voor toegang tot de gast. Geformatteerd LL-CC ("en-US"). |
@@ -398,7 +398,7 @@ In het onderstaande voor beeld gebruikt u de gebruikers interface voor **token c
 
 **Manifest configuratie:**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Zoek de toepassing waarvoor u de optionele claims wilt configureren in de lijst en selecteer deze.

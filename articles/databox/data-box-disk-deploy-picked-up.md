@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923778"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257444"
 ---
 ::: zone target="docs"
 
@@ -224,7 +224,7 @@ Voer de volgende stappen uit als het apparaat vanuit China retourneert.
 
 ### <a name="self-managed"></a>[Zelfbeheerd](#tab/in-selfmanaged)
 
-Als u Data Box Disk gebruikt in Japan, Singapore, Korea, West-Europa of India en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies.
+Als uAls u Data Box Disk gebruikt in de Amerikaanse overheid, Japan, Singapore, Korea, West-Europa, Zuid-Afrika of India en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies.
 
 1. Ga naar de blade **Overzicht** van uw bestelling in de Azure-portal. Loop de instructies door die worden weergegeven wanneer u **Ophalen plannen**selecteert. U ziet een autorisatiecode die wordt gebruikt op het moment dat de bestelling wordt bezorgd.
 

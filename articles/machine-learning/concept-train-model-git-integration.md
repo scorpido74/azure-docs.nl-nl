@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78402819"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144818"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -41,7 +41,7 @@ Lees hier hier voor een hand leiding voor het gebruik van de Git [cli.](https://
 
 Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Machine Learning CLI, worden de bestanden die nodig zijn om het model te trainen, geüpload naar uw werk ruimte. Als de `git` opdracht beschikbaar is in uw ontwikkelings omgeving, gebruikt het upload proces om te controleren of de bestanden zijn opgeslagen in een Git-opslag plaats. Als dat het geval is, worden de gegevens uit uw Git-opslag plaats ook geüpload als onderdeel van de trainings uitvoering. Deze informatie wordt opgeslagen in de volgende eigenschappen voor het uitvoeren van de training:
 
-| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Description |
+| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Beschrijving |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
@@ -116,4 +116,4 @@ Zie voor meer informatie de documentatie van [AZ ml run](https://docs.microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Reken doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md)
+* [Reken doelen voor model training gebruiken](how-to-set-up-training-targets.md)

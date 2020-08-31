@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120776"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068470"
 ---
 # <a name="publisher-verification-preview"></a>Verificatie van uitgever (preview)
 
@@ -38,17 +38,17 @@ Verificatie van de uitgever biedt de volgende voor delen:
 - **Verbeterde risico beoordeling**: de micro soft-detecties voor toestemmings aanvragen voor ' Risk ante ' bevatten uitgevers verificatie als signaal. 
 
 ## <a name="requirements"></a>Vereisten
-Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-partners al zijn voltooid. Dit zijn: 
+Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-partners al zijn voltooid. Dat zijn: 
 
 -  Een MPN-ID voor een geldig [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid. Dit MPN-account moet het [globale account van de partner (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) voor uw organisatie zijn. 
 
--  Een Azure AD-Tenant met een door DNS geverifieerd [aangepast domein](../fundamentals/add-custom-domain.md). Het aangepaste domein moet overeenkomen met het domein van het e-mail adres dat wordt gebruikt tijdens de verificatie in de vorige stap. 
+-  Een app die is geregistreerd in een Azure AD-Tenant, waarbij een [Uitgever domein](howto-configure-publisher-domain.md) is geconfigureerd.
 
--  Een app die is geregistreerd in een Azure AD-Tenant, met een [uitgevers domein](howto-configure-publisher-domain.md) dat is geconfigureerd met het domein dat eerder is gebruikt. 
+-  Het domein van het e-mail adres dat wordt gebruikt tijdens de verificatie van het MPN-account moet overeenkomen met het Uitgever domein dat is geconfigureerd op de app of een aangepast DNS- [domein](../fundamentals/add-custom-domain.md) dat is toegevoegd aan de Azure AD-Tenant. 
 
 -  De gebruiker die de verificatie uitvoert, moet gemachtigd zijn om wijzigingen aan te brengen in de app-registratie in azure AD en het MPN-account in partner centrum. 
 
-    -  In azure AD moet deze gebruiker de eigenaar van de app zijn of een van de volgende [rollen](../users-groups-roles/directory-assign-admin-roles.md)hebben: toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
+    -  In azure AD moet deze gebruiker lid zijn van een van de volgende [rollen](../users-groups-roles/directory-assign-admin-roles.md): toepassings beheerder, Cloud toepassings beheerder of globale beheerder. 
 
     -  In het partner centrum moet deze gebruiker over de volgende [rollen](/partner-center/permissions-overview)beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD).
     

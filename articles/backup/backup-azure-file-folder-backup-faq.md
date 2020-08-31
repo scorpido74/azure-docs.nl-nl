@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-agent (MARS) – Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874619"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144461"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Veelgestelde vragen-agent voor Microsoft Azure Recovery Services (MARS)
 
@@ -109,7 +109,7 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Controleren of de Scratch-map geldig is en toegankelijk is?
 
-1. Standaard bevindt de map Scratch op`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+1. Standaard bevindt de map Scratch op `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Zorg ervoor dat het pad naar de locatie van de map Scratch overeenkomt met de waarden van de register sleutel vermeldingen die hieronder worden weer gegeven:
 
     | Registerpad | Registersleutel | Waarde |
@@ -123,7 +123,7 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 
     ```Net stop obengine```
 2. Als u de systeem status back-up hebt geconfigureerd, opent u schijf beheer en ontkoppelt u de schijven met namen in de indeling `"CBSSBVol_<ID>"` .
-3. De map Scratch bevindt zich standaard op`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+3. De map Scratch bevindt zich standaard op `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Kopieer de volledige `\Scratch` map naar een ander station dat voldoende ruimte heeft. Zorg ervoor dat de inhoud wordt gekopieerd, niet verplaatst.
 5. Werk de volgende Register vermeldingen bij met het pad van de zojuist verplaatste Scratch-map.
 
@@ -199,7 +199,7 @@ Als u dezelfde wachtwoordzin hebt (die u tijdens de registratie hebt ingesteld) 
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Mijn back-uptaken zijn in een lange periode mislukt of worden niet uitgevoerd. Ik ben de Bewaar periode verstreken. Kan ik nog steeds herstellen?
 
-Als veiligheids maatregel Azure Backup het laatste herstel punt behouden, zelfs als de retentie periode is verstreken. Zodra back-ups zijn hervat en nieuwe herstel punten beschikbaar komen, wordt het oudere herstel punt verwijderd volgens de opgegeven Bewaar periode.
+In het geval van een veiligheids maatregel behoudt Azure Backup het meest recente herstel punt, zelfs als de retentie periode is verstreken. Zodra back-ups zijn hervat en nieuwe herstel punten beschikbaar komen, wordt het oudere herstel punt verwijderd volgens de opgegeven Bewaar periode.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Wat gebeurt er als ik een actieve herstel taak Annuleer?
 

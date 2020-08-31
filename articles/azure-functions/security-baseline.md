@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4d4f6ff7819ef3cd0cf8e6a4c504a9b89dd5fda9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810238"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070663"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
 
@@ -179,7 +179,7 @@ Het is ook mogelijk dat er meerdere Marketplace-opties zijn, zoals de Barracuda 
 - Functie-app mag alleen toegankelijk zijn via HTTPS
 - De nieuwste TLS-versie moet worden gebruikt in uw functie-app
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels in één blauw druk-definitie. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Toegangs beheer op basis van rollen (Azure RBAC) en beleids regels in één blauw definitie te verpakken. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -595,9 +595,9 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory (AD) op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het Azure function Control-vlak (de Azure Portal). 
+**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot het Azure function Control-vlak (het Azure Portal). 
 
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -896,7 +896,7 @@ Een interne ASE maken:
 
 **Hulp**: arm-sjablonen en aangepaste Azure-beleids definities veilig opslaan en beheren in broncode beheer.
 
-- [Wat is infrastructuur als code?](/azure/devops/learn/what-is-infrastructure-as-code)
+- [Wat is een infra structuur als code](/azure/devops/learn/what-is-infrastructure-as-code)
 
 - [Ontwerp beleid als code werk stromen](../governance/policy/concepts/policy-as-code.md)
 

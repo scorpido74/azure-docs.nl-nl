@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049244"
+ms.locfileid: "89068623"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: verouderde verificatie blok keren
 
@@ -37,7 +37,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Selecteer onder **Cloud-apps of-acties** **alle Cloud-apps**.
    1. Selecteer **Gereed**.
 1. Stel onder **voor waarden**  >  **client-apps** **configureren** in op **Ja**.
-   1. Controleer alleen de vakken **Exchange ActiveSync-clients** en **andere clients**.
+   1. Controleer alleen de vakken **Exchange ActiveSync-clients** en **andere clients**. Als u beleid voor voorwaardelijke toegang van Exchange ActiveSync wilt implementeren in azure, moet de gebruiker ook een globale beheerder zijn.
    1. Selecteer **Gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang blok keren**.
    1. Kies **Selecteren**.

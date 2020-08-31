@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227147"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89143730"
 ---
-# <a name="data-encryption-models"></a>Gegevens versleutelings modellen
+# <a name="data-encryption-models"></a>Gegevensversleutelingmodellen
 
 Het is belang rijk dat u begrijpt hoe de verschillende versleutelings modellen en hun voor-en nadelen essentieel zijn om te zien hoe de verschillende resource providers in azure versleuteling in rust implementeren. Deze definities worden gedeeld door alle resource providers in azure om een gemeen schappelijke taal en taxonomie te garanderen.
 
@@ -44,7 +44,7 @@ Er zijn drie scenario's voor versleuteling aan server zijde:
 
 Versleutelings modellen aan de server zijde verwijzen naar versleuteling die wordt uitgevoerd door de Azure-service. In dat model voert de resource provider de bewerkingen versleutelen en ontsleutelen uit. Azure Storage kunnen bijvoorbeeld gegevens ontvangen in bewerkingen met tekst zonder opmaak en de versleuteling en ontsleuteling intern uitvoeren. De resource provider kan gebruikmaken van versleutelings sleutels die door micro soft of door de klant worden beheerd, afhankelijk van de ingestelde configuratie.
 
-![Server](./media/encryption-models/azure-security-encryption-atrest-fig3.png)
+![server](./media/encryption-models/azure-security-encryption-atrest-fig3.png)
 
 Elk van de versleuteling aan de server zijde bij rest modellen impliceert de onderscheidende kenmerken van sleutel beheer. Dit omvat waar en hoe versleutelings sleutels worden gemaakt en opgeslagen, evenals de toegangs modellen en de procedures voor sleutel rotatie.  
 
@@ -159,12 +159,12 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Translator Text                  | Ja                | Ja                | -                  |
 | Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
 | **Analyse**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ja                | N.v.t.\*            | -                  |
-| Event Hubs                       | Ja                | Ja, alle RSA-lengten. | -                  |
-| Functions                        | Ja                | Ja, alle RSA-lengten. | -                  |
+| Azure Stream Analytics           | Ja                | N.v.t.\*              | -                  |
+| Event Hubs                       | Ja                | Ja                | -                  |
+| Functions                        | Ja                | Ja                | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
-| Azure HDInsight                  | Ja                | Alles                | -                  |
+| Azure HDInsight                  | Ja                | Alle                | -                  |
 | Azure Monitor Application Insights | Ja                | Ja                | -                  |
 | Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
@@ -175,9 +175,9 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Container Instances              | Ja                | Ja                | -                  |
 | Container Registry               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtual Machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
-| Schaalset voor virtuele machines        | Ja                | Ja, RSA 2048-bits  | -                  |
-| SAP HANA                         | Ja                | Ja, RSA 2048-bits  | -                  |
+| Virtual Machines                 | Ja                | Ja                | -                  |
+| Schaalset voor virtuele machines        | Ja                | Ja                | -                  |
+| SAP HANA                         | Ja                | Ja                | -                  |
 | App Service                      | Ja                | Klikt\*\*            | -                  |
 | Automation                       | Ja                | Klikt\*\*            | -                  |
 | Azure Functions                  | Ja                | Klikt\*\*            | -                  |
@@ -187,13 +187,13 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Service Bus                      | Ja                | Ja                | -                  |
 | Siteherstel                    | Ja                | Ja                | -                  |
 | **Databases**                    |                    |                    |                    |
-| SQL Server on Virtual Machines   | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Azure SQL Database               | Ja                | Ja, RSA 2048-bits  | Ja                |
+| SQL Server on Virtual Machines   | Ja                | Ja                | Ja                |
+| Azure SQL Database               | Ja                | Ja, RSA 3072-bits  | Ja                |
 | Azure SQL Database voor MariaDB   | Ja                | -                  | -                  |
 | Azure SQL Database voor MySQL     | Ja                | Ja                | -                  |
 | Azure SQL Database voor PostgreSQL | Ja               | Ja                | -                  |
-| Azure Synapse Analytics          | Ja                | Ja, RSA 2048-bits  | -                  |
-| SQL Server Stretch Database      | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Azure Synapse Analytics          | Ja                | Ja, RSA 3072-bits  | -                  |
+| SQL Server Stretch Database      | Ja                | Ja, RSA 3072-bits  | Ja                |
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
@@ -203,7 +203,7 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Azure-opslagplaatsen                      | Ja                | -                  | Ja                |
 | **Identiteit**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
-| Azure Active Directory Domain Services | Ja          | Ja, RSA 2048-bits  | -                  |
+| Azure Active Directory Domain Services | Ja          | Ja                | -                  |
 | **Integratie**                  |                    |                    |                    |
 | Service Bus                      | Ja                | Ja                | Ja                |
 | Event Grid                       | Ja                | -                  | -                  |
@@ -220,20 +220,20 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Azure Security Center voor IoT    | Ja                | Ja                | -                  |
 | Azure Sentinel                   | Ja                | Ja                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Premium-Blob Storage             | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Blob Storage                     | Ja                | Ja                | Ja                |
+| Premium-Blob Storage             | Ja                | Ja                | Ja                |
 | Disk Storage                     | Ja                | Ja                | -                  |
 | Ultra Disk Storage               | Ja                | Ja                | -                  |
 | Beheerde Disk Storage             | Ja                | Ja                | -                  |
-| File Storage                     | Ja                | Ja, RSA 2048-bits  | -                  |
-| Bestands Premium Storage             | Ja                | Ja, RSA 2048-bits  | -                  |
-| File Sync                        | Ja                | Ja, RSA 2048-bits  | -                  |
+| File Storage                     | Ja                | Ja                | -                  |
+| Bestands Premium Storage             | Ja                | Ja                | -                  |
+| File Sync                        | Ja                | Ja                | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure Cache voor Redis            | Ja                | N.v.t.\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
-| Archive Storage                  | Ja                | Ja, RSA 2048-bits  | -                  |
-| StorSimple                       | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Archive Storage                  | Ja                | Ja                | -                  |
+| StorSimple                       | Ja                | Ja                | Ja                |
 | Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
 | Data Box Edge                    | Ja                | Ja                | -                  |

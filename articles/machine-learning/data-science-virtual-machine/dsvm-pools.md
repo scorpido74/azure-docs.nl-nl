@@ -2,7 +2,7 @@
 title: Gedeelde Pools
 titleSuffix: Azure Data Science Virtual Machine
 description: Meer informatie over het maken van & een gedeelde groep data Science Virtual Machines (Dsvm) te implementeren als een gedeelde bron voor een team.
-keywords: diep leren, AI, data Science tools, data Science virtual machine, georuimtelijke analyse, team data Science process
+keywords: deep learning, AI, data science tools, data science virtual machine, geospatial analytics, team data science process
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477337"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144767"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Een gedeelde groep data Science maken Virtual Machines
 
 In dit artikel leert u hoe u een gedeelde pool van data Science Virtual Machines (Dsvm) kunt maken voor een team. De voor delen van het gebruik van een gedeelde groep zijn het verbeteren van het resource gebruik, het eenvoudig delen en samen werken en een efficiëntere beheer van DSVM-resources.
 
-U kunt veel methoden en technologieën gebruiken om een pool met Dsvm te maken. Dit artikel richt zich op Pools voor interactieve virtuele machines (Vm's). Een alternatieve beheerde Compute-infra structuur is Azure Machine Learning Reken kracht. Zie [reken doelen instellen](../how-to-set-up-training-targets.md#amlcompute)voor meer informatie.
+U kunt veel methoden en technologieën gebruiken om een pool met Dsvm te maken. Dit artikel richt zich op Pools voor interactieve virtuele machines (Vm's). Een alternatieve beheerde Compute-infra structuur is Azure Machine Learning Reken kracht. Zie [Compute-doelen maken met PYTHON SDK](../how-to-create-attach-compute-sdk.md)voor meer informatie.
 
 ## <a name="interactive-vm-pool"></a>Interactieve VM-groep
 

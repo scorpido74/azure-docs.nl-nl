@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bce1f00603d9304fc544fb92d4cc5f1a429504ed
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039174"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068997"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Een Azure Stream Analytics taak starten
 
@@ -28,11 +29,11 @@ De eerste mogelijke uitvoer gebeurtenis zou een tijds tempel hebben die gelijk i
 * **Wanneer de laatste keer is gestopt**. Deze optie is beschikbaar wanneer de taak eerder is gestart, maar niet hand matig is gestopt of mislukt. Wanneer u deze optie kiest, gebruikt Azure Stream Analytics de laatste uitvoer tijd om de taak opnieuw te starten, zodat er geen gegevens verloren gaan. Net als bij vorige opties Azure Stream Analytics de gegevens vóór deze tijd automatisch lezen als er een tijdelijke operator wordt gebruikt. Omdat verschillende invoer partities een andere tijd kunnen hebben, wordt de eerste stop tijd van alle partities gebruikt, omdat er mogelijk dubbele waarden worden weer gegeven in de uitvoer. Meer informatie over eenmalige verwerking is beschikbaar op de pagina [gebeurtenis bezorgings garanties](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
 
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 Navigeer naar uw taak in de Azure Portal en selecteer **starten** op de pagina overzicht. Selecteer een **begin tijd voor de taak uitvoer** en selecteer vervolgens **starten**.
 
-Kies een van de opties voor de **Start tijd van de taak uitvoer**. De opties zijn *nu*, *aangepast*en, als de taak eerder werd uitgevoerd, wanneer het de *laatste keer is gestopt*. Zie hierboven voor meer informatie over deze opties.
+Kies een van de opties voor de **Start tijd van de taak uitvoer**. De opties zijn *nu*, *aangepast*en, als de taak eerder werd uitgevoerd, wanneer het de  *laatste keer is gestopt*. Zie hierboven voor meer informatie over deze opties.
 
 ## <a name="visual-studio"></a>Visual Studio
 

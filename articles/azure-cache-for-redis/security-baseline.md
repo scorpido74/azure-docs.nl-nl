@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e22e7c1295747725cf40f1fd1b84b49ab6d6fbb2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242697"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071190"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure-beveiligings basislijn voor Azure cache voor redis
 
@@ -158,7 +158,7 @@ Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
 
 De DDoS Protection-standaard moet zijn ingeschakeld
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager ARM-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één definitie van de blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager (ARM)-Sjablonen, Azure op rollen gebaseerd toegangs beheer (Azure RBAC) en beleids regels, in één blauw druk te definiëren. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 Azure Policy configureren en beheren:
 
@@ -216,7 +216,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Hulp**: Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een log Analytics-werk ruimte, een Azure Event hub of een Azure-opslag account voor archivering. Met activiteiten Logboeken kunt u inzicht krijgen in de bewerkingen die zijn uitgevoerd op uw Azure-cache voor redis-exemplaren op het niveau van het besturings vlak. Met Azure-activiteiten logboek gegevens kunt u de ' What, wie en wanneer ' bepalen voor schrijf bewerkingen (PUT, POST, DELETE) die zijn uitgevoerd op het niveau van het besturings vlak voor uw Azure-cache voor redis-exemplaren.
 
-Diagnostische instellingen inschakelen voor Azure-activiteiten logboek:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Diagnostische instellingen inschakelen voor Azure-activiteiten logboek: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -228,7 +228,7 @@ Diagnostische instellingen inschakelen voor Azure-activiteiten logboek:https://d
 
 Als er metrische gegevens beschikbaar zijn door Diagnostische instellingen in te scha kelen, is controle logboek registratie op het gegevensvlak nog niet beschikbaar voor Azure-cache voor redis.
 
-Diagnostische instellingen inschakelen voor Azure-activiteiten logboek:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Diagnostische instellingen inschakelen voor Azure-activiteiten logboek: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -262,9 +262,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 Houd er rekening mee dat audit logboek registratie op het gegevens vlak nog niet beschikbaar is voor Azure cache voor redis.
 
-Diagnostische instellingen inschakelen voor Azure-activiteiten logboek:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Diagnostische instellingen inschakelen voor Azure-activiteiten logboek: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
+Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -276,7 +276,7 @@ Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruim
 
 Als er metrische gegevens beschikbaar zijn door Diagnostische instellingen in te scha kelen, is controle logboek registratie op het gegevensvlak nog niet beschikbaar voor Azure-cache voor redis.
 
-Waarschuwingen voor Azure cache configureren voor redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
+Waarschuwingen voor Azure cache configureren voor redis: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -314,9 +314,9 @@ Waarschuwingen voor Azure cache configureren voor redis:https://docs.microsoft.c
 
 **Hulp**: Azure Active Directory (AD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-Een directory-rol verkrijgen in azure AD met Power shell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Een directory-rol verkrijgen in azure AD met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Leden van een directory-rol in azure AD ophalen met Power shell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Leden van een directory-rol in azure AD ophalen met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 **Azure Security Center bewaking**: Ja
 
@@ -330,7 +330,7 @@ Toegang tot het gegevens vlak voor Azure cache voor redis wordt beheerd via toeg
 
 Het is niet raadzaam om standaard wachtwoorden te bouwen in uw toepassing. In plaats daarvan kunt u uw wacht woorden opslaan in Azure Key Vault en vervolgens Azure Active Directory gebruiken om deze op te halen.
 
-Azure-cache opnieuw genereren voor de toegangs sleutels voor redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
+Azure-cache opnieuw genereren voor de toegangs sleutels voor redis: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -348,9 +348,9 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 - Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
-Azure Security Center gebruiken om identiteit en toegang te bewaken (preview):https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Azure Security Center gebruiken om identiteit en toegang te bewaken (preview): https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Azure Policy gebruiken:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy gebruiken: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 **Azure Security Center bewaking**: Ja
@@ -361,9 +361,9 @@ Azure Policy gebruiken:https://docs.microsoft.com/azure/governance/policy/tutori
 
 **Richt lijnen**: Azure cache voor redis maakt gebruik van toegangs sleutels om gebruikers te verifiëren en biedt geen ondersteuning voor eenmalige aanmelding (SSO) op het niveau van het gegevens vlak. Toegang tot het besturings vlak voor Azure cache voor redis is beschikbaar via REST API en ondersteunt SSO. Als u zich wilt verifiëren, stelt u de autorisatie-header voor uw aanvragen in op een JSON Web Token dat u hebt verkregen via Azure Active Directory.
 
-Meer informatie over Azure cache voor redis REST API:https://docs.microsoft.com/rest/api/redis/
+Meer informatie over Azure cache voor redis REST API: https://docs.microsoft.com/rest/api/redis/
 
-Meer informatie over eenmalige aanmelding met Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Meer informatie over eenmalige aanmelding met Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -374,9 +374,9 @@ Meer informatie over eenmalige aanmelding met Azure AD:https://docs.microsoft.co
 
 **Hulp**: Schakel Azure Active Directory (AD) multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identiteit en toegang bewaken in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center bewaking**: Ja
 
@@ -404,9 +404,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijken over Risk ante gebruikers gedrag.
 
-Privileged Identity Management (PIM) implementeren:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management (PIM) implementeren: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Meer informatie over Azure AD-risico detectie:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Meer informatie over Azure AD-risico detectie: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center bewaking**: Ja
 
@@ -416,7 +416,7 @@ Meer informatie over Azure AD-risico detectie:https://docs.microsoft.com/azure/a
 
 **Hulp**: benoemde locaties in azure Active Directory (AD) voorwaardelijke toegang configureren om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -437,9 +437,9 @@ Azure AD-verificatie kan niet worden gebruikt voor directe toegang tot Azure cac
 
 **Hulp**: Azure Active Directory (AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
-Meer informatie over Azure AD Reporting:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Meer informatie over Azure AD Reporting: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure Identity Access revisies gebruiken: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure Security Center bewaking**: Ja
 
@@ -451,9 +451,9 @@ Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste logboek waarschuwingen configureren in Log Analytics.
 
-Azure-activiteiten logboeken integreren in Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-activiteiten logboeken integreren in Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-De Azure-Sentinel op het bord:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+De Azure-Sentinel op het bord: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -463,11 +463,11 @@ De Azure-Sentinel op het bord:https://docs.microsoft.com/azure/sentinel/quicksta
 
 **Richt lijnen**: voor de afwijking van het aanmeldings gedrag van accounts op het besturings vlak, gebruikt u Azure Active Directory (AD) identiteits beveiliging en risico detectie functies voor het configureren van automatische antwoorden op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Risico beleid voor identiteits beveiliging configureren en inschakelen:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Risico beleid voor identiteits beveiliging configureren en inschakelen: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -485,7 +485,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -535,7 +535,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Micro soft beheert de onderliggende infra structuur voor Azure cache voor redis en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -563,7 +563,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -571,9 +571,9 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory (Aad) op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot de Azure-cache voor redis-besturings vlak (dat wil zeggen Azure Portal). 
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot de Azure-cache te beheren voor redis-besturings vlak (dat wil zeggen Azure Portal). 
 
-RBAC configureren in Azure:
+Azure RBAC configureren:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -603,11 +603,11 @@ Als u de Azure-cache gebruikt voor redis-functie ' redis data Persistence ', wor
 
 Gegevens in Azure Storage worden transparant versleuteld en ontsleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Azure Storage versleuteling kan niet worden uitgeschakeld. U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw opslag account, of u kunt versleuteling beheren met uw eigen sleutels.
 
-Persistentie configureren in azure cache voor redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
+Persistentie configureren in azure cache voor redis: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
 
-Informatie over versleuteling voor Azure Storage accounts:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Informatie over versleuteling voor Azure Storage accounts: https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
-Meer informatie over Azure-beveiliging van klant gegevens:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Meer informatie over Azure-beveiliging van klant gegevens: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -635,7 +635,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure cache voor redis.
 
-Meer informatie over Azure Security Center-aanbevelingen:https://docs.microsoft.com/azure/security-center/recommendations-reference
+Meer informatie over Azure Security Center-aanbevelingen: https://docs.microsoft.com/azure/security-center/recommendations-reference
 
 **Azure Security Center bewaking**: Ja
 
@@ -683,11 +683,11 @@ Meer informatie over Azure Security Center-aanbevelingen:https://docs.microsoft.
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-Query's maken met Azure resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Uw Azure-abonnementen weer geven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -715,11 +715,11 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 
 - Toegestane brontypen
 
-Aanvullende Azure-abonnementen maken:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Aanvullende Azure-abonnementen maken: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheergroepen maken:https://docs.microsoft.com/azure/governance/management-groups/create
+Beheergroepen maken: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -845,9 +845,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
 
-Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -865,9 +865,9 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -885,9 +885,9 @@ Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/poli
 
 **Richt lijnen**: als u aangepaste Azure Policy definities of Azure Resource Manager sjablonen voor uw Azure-cache gebruikt voor redis-instanties en gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-Code opslaan in azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Code opslaan in azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -905,7 +905,7 @@ Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. cache ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -923,7 +923,7 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. cache ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure-cache voor redis-exemplaren en gerelateerde resources.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -979,7 +979,7 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 **Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.
 
-Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1087,7 +1087,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Richt lijnen**: Azure cache voor redis-back-ups van redis-export en redis-persistentie worden opgeslagen in uw geselecteerde Azure Storage-account. Gegevens in Azure Storage worden transparant versleuteld en ontsleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Azure Storage versleuteling kan niet worden uitgeschakeld. U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw opslag account, of u kunt versleuteling beheren met uw eigen sleutels.
 
-Informatie over versleuteling voor Azure Storage accounts:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Informatie over versleuteling voor Azure Storage accounts: https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
 **Azure Security Center bewaking**: Ja
 

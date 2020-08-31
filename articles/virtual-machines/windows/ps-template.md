@@ -7,16 +7,20 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266296"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072295"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een Resource Manager-sjabloon
 
 Meer informatie over het maken van een virtuele Windows-machine met behulp van een Azure Resource Manager sjabloon en Azure PowerShell van de Azure Cloud shell. De sjabloon die in dit artikel wordt gebruikt, implementeert één virtuele machine met Windows Server in een nieuw virtueel netwerk met één subnet. Zie [een virtuele Linux-machine maken met Azure Resource Manager sjablonen](../linux/create-ssh-secured-vm-from-template.md)voor het maken van een virtuele Linux-machine.
+
+U kunt de sjabloon ook implementeren vanuit de Azure Portal. Als u de sjabloon wilt openen in de portal, selecteert u de knop **implementeren in azure** .
+
+[![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 

@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358290"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071428"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
@@ -113,7 +113,7 @@ De communicatie tussen elke pass-through-verificatie agent en Azure AD wordt bev
 
 Zolang er een Pass-Through-verificatie agent wordt uitgevoerd, blijft deze actief en wordt de aanmeldings aanvragen van gebruikers continu verwerkt. Als u de installatie van een verificatie agent wilt ongedaan maken, gaat u naar **configuratie scherm-> Program ma's-> Program ma's en onderdelen** en verwijdert u de **Microsoft Azure AD Connect Authentication Agent** en de Microsoft Azure AD Program ma's voor de verbinding met de **agent bijwerken** .
 
-Als u de Blade Pass-Through-verificatie in het [Azure Active Directory-beheer centrum](https://aad.portal.azure.com) controleert nadat u de vorige stap hebt voltooid, ziet u dat de verificatie agent wordt weer gegeven als **inactief**. Dit wordt _verwacht_. De verificatie agent wordt na een paar dagen automatisch verwijderd uit de lijst.
+Als u de Blade Pass-Through-verificatie in het [Azure Active Directory-beheer centrum](https://aad.portal.azure.com) controleert nadat u de vorige stap hebt voltooid, ziet u dat de verificatie agent wordt weer gegeven als **inactief**. Dit wordt _verwacht_. De verificatie agent wordt na 10 dagen automatisch uit de lijst verwijderd.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Ik gebruik AD FS al om je aan te melden bij Azure AD. Hoe kan ik overschakelen naar Pass-Through-verificatie?
 

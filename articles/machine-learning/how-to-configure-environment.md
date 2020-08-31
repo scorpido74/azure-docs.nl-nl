@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652635"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144886"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelingsomgeving voor Azure Machine Learning configureren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ In de volgende tabel ziet u elke ontwikkel omgeving die in dit artikel wordt beh
 
 | Omgeving | Voordelen | Nadelen |
 | --- | --- | --- |
-| [Azure Machine Learning Compute-instantie in de Cloud (preview-versie)](#compute-instance) | Eenvoudigste manier om aan de slag te gaan. De volledige SDK is al geïnstalleerd in uw werk ruimte-VM en de notitieblok zelfstudies zijn vooraf gekloond en klaar om te worden uitgevoerd. | Geen controle over uw ontwikkel omgeving en afhankelijkheden. Er zijn extra kosten verbonden aan de virtuele Linux-machine (VM kan worden gestopt wanneer deze niet wordt gebruikt om kosten te voor komen). Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Azure Machine Learning Compute-instantie op basis van Cloud](#compute-instance) | Eenvoudigste manier om aan de slag te gaan. De volledige SDK is al geïnstalleerd in uw werk ruimte-VM en de notitieblok zelfstudies zijn vooraf gekloond en klaar om te worden uitgevoerd. | Geen controle over uw ontwikkel omgeving en afhankelijkheden. Er zijn extra kosten verbonden aan de virtuele Linux-machine (VM kan worden gestopt wanneer deze niet wordt gebruikt om kosten te voor komen). Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Lokale omgeving](#local) | Volledig beheer van uw ontwikkel omgeving en afhankelijkheden. Voer uit met een hulp programma, omgeving of IDE van uw keuze. | Duurt langer om aan de slag te gaan. De benodigde SDK-pakketten moeten worden geïnstalleerd en er moet ook een omgeving worden geïnstalleerd als u er nog geen hebt. |
 | [Azure Databricks](#aml-databricks) | Ideaal voor het uitvoeren van grootschalige intensieve machine learning werk stromen op het schaal bare Apache Spark platform. | Overbodig voor experimentele machine learning, of kleinschalige experimenten en werk stromen. Er zijn extra kosten gemaakt voor Azure Databricks. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/databricks/). |
 | [De Data Science Virtual Machine (DSVM)](#dsvm) | Vergelijkbaar met het Cloud Compute-exemplaar (python en de SDK zijn vooraf geïnstalleerd), maar met extra populaire gegevens wetenschap en machine learning-hulpprogram ma's vooraf geïnstalleerd. Eenvoudig te schalen en combi neren met andere aangepaste hulp middelen en werk stromen. | Een langzamere aan de slag-ervaring in vergelijking met het Cloud Compute-exemplaar. |
@@ -55,7 +55,7 @@ Als u de SDK-omgeving voor uw [lokale computer](#local)wilt installeren, [Jupyte
 
 ## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>Uw eigen Cloud computer exemplaar
 
-Het Azure Machine Learning [Compute-exemplaar (preview)](concept-compute-instance.md) is een veilig Azure-werk station in de cloud dat gegevens wetenschappers levert met een Jupyter notebook-server, jjupyterlab en een volledig bereide ml-omgeving.
+Het Azure Machine Learning [Compute-exemplaar](concept-compute-instance.md) is een veilig, op de cloud gebaseerd Azure-werk station dat gegevens wetenschappers biedt met een Jupyter notebook-server, jjupyterlab en een volledig bereide ml-omgeving.
 
 Er is niets om te installeren of te configureren voor een reken instantie.  Maak een wille keurig moment in uw Azure Machine Learning-werk ruimte. Geef een naam op en geef een Azure VM-type op. Probeer het nu met deze [zelf studie: omgeving en werk ruimte voor installatie](tutorial-1st-experiment-sdk-setup.md).
 
@@ -156,7 +156,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
 
     In dit voor beeld wordt een omgeving gemaakt met behulp van python 3.7.7, maar alle specifieke subversies kunnen worden gekozen. SDK-compatibiliteit is mogelijk niet gegarandeerd met bepaalde primaire versies (3.5 + wordt aanbevolen) en het wordt aanbevolen een andere versie/Subversion te gebruiken in uw Anaconda-omgeving als u fouten ondervindt. Het duurt enkele minuten om de omgeving te maken terwijl onderdelen en pakketten worden gedownload.
 
-1. Voer de volgende opdrachten uit in uw nieuwe omgeving om specifieke IPython-kernels in te scha kelen. Dit zorgt voor een verwachte kernel-en pakket import gedrag bij het werken met Jupyter-notebooks in Anaconda-omgevingen:
+1. Voer de volgende opdrachten uit in uw nieuwe omgeving om specifieke I python-kernels voor de omgeving in te scha kelen. Dit zorgt voor een verwachte kernel-en pakket import gedrag bij het werken met Jupyter-notebooks in Anaconda-omgevingen:
 
     ```bash
     conda install notebook ipykernel
@@ -306,10 +306,10 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    |SDK- &nbsp; pakket &nbsp; extra's|Bron|PyPi- &nbsp; naam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Voor Databricks| Python-ei of PyPI uploaden | azureml-SDK [databricks]|
-   |Voor Databricks-with-<br> automatische ML-mogelijkheden| Python-ei of PyPI uploaden | azureml-SDK [automl]|
+   |Voor Databricks-with-<br> automatische ML-mogelijkheden| Python-ei of PyPI uploaden | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies slechts een van de voor gaande opties [databricks] of [automl].
+   > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies slechts een van de voor gaande opties [ `databricks` ] of [ `automl` ].
 
    * Selecteer niet **automatisch koppelen aan alle clusters**.
    * Selecteer  **koppelen** naast de naam van uw cluster.

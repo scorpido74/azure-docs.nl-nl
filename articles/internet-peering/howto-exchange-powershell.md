@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 1c0620875e7da4582156080c4a52fd6fbe0e573c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 59d098f1ff0f78e37601544619c603b776e0cf22
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700243"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071751"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>Een Exchange-peering maken of wijzigen met behulp van Power shell
 
@@ -54,7 +55,7 @@ Als u wilt, kunt u deze hand leiding volt ooien met behulp van Azure [Portal](ho
 * [Een directe peering maken of wijzigen met behulp van Power shell](howto-direct-powershell.md)
 * [Een verouderde directe peering naar een Azure-resource converteren met behulp van Power shell](howto-legacy-direct-powershell.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 U kunt gedetailleerde beschrijvingen van alle para meters verkrijgen door de volgende opdracht uit te voeren:
 
 ```powershell
