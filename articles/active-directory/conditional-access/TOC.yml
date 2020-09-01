@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: Sessie
           href: concept-conditional-access-session.md
-    - name: Inzichten en rapportage
-      href: howto-conditional-access-insights-reporting.md
     - name: Modus Alleen rapporteren
       href: concept-conditional-access-report-only.md
     - name: Service-afhankelijkheden
@@ -78,6 +76,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: Verouderde verificatie blokkeren
       href: block-legacy-authentication.md
+    - name: Modus alleen rapporteren configureren
+      href: howto-conditional-access-insights-reporting.md
     - name: Goedgekeurde client-apps vereisen
       href: app-based-conditional-access.md
     - name: Beleid voor app-beveiliging vereisen
@@ -88,12 +88,8 @@
       href: untrusted-networks.md
     - name: Gebruiksvoorwaarden vereisen
       href: terms-of-use.md
-    - name: Modus Alleen rapporteren configureren
-      href: howto-conditional-access-report-only.md
     - name: Aanmeldingsfrequentie en besturingselementen voor browserpersistentie
       href: howto-conditional-access-session-lifetime.md
-    - name: Klassieke beleidsregels migreren
-      href: policy-migration-mfa.md
     - name: Problemen oplossen
       items:
         - name: Problemen met aanmelden oplossen
@@ -102,6 +98,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: Veelgestelde vragen
           href: faqs.md
+    - name: Klassieke beleidsregels migreren
+      href: policy-migration-mfa.md
 - name: Naslaginformatie
   items:
     - name: Bètaversies van Graph-API's

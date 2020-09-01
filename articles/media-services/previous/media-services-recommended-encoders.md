@@ -9,14 +9,16 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259520"
 ---
 # <a name="recommended-on-premises-encoders"></a>Aanbevolen on-premises coderingsprogramma's
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Wanneer u live streamt met Azure Media Services, kunt u opgeven hoe u wilt dat uw kanaal de invoer stroom ontvangt. Als u kiest voor het gebruik van een on-premises Encoder met een live encoding-kanaal, moet uw encoder een single-bitrate stream van hoge kwaliteit pushen als uitvoer. Als u kiest voor het gebruik van een on-premises Encoder met een Pass-Through kanaal, moet uw encoder een multi-bitrate stream als uitvoer met alle gewenste uitvoer kwaliteiten pushen. Zie [live streamen met on-premises encoders](media-services-live-streaming-with-onprem-encoders.md)voor meer informatie.
 

@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3a931955451722d7d925be482a78e1f6cc6d43d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08ebda8bdd17cc4d620792934e1299365d0ced71
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042977"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257922"
 ---
-# <a name="content-protection-overview"></a>Overzicht van inhoudsbeveiliging 
+# <a name="content-protection-overview"></a>Overzicht van inhoudsbeveiliging
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)

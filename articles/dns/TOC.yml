@@ -33,6 +33,8 @@
           href: dns-delegate-domain-azure-dns.md
         - name: Aangepaste DNS-records voor een web-app maken
           href: dns-web-sites-custom-domain.md
+        - name: Een nieuwe onderliggende DNS-zone maken
+          href: tutorial-public-dns-zones-child.md
         - name: Aliasrecords voor Traffic Manager
           href: tutorial-alias-tm.md
         - name: Aliasrecords voor openbare IP-adressen

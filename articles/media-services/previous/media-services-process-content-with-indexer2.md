@@ -15,14 +15,16 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 82c69d67d261c493d89f259720e1f903824d6ef8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34f71242b5d9c607d0b27dca3abd3c441ddad36e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013602"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259758"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Media bestanden indexeren met Azure Media Indexer 2 Preview
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > De **Azure media indexer 2** media processor wordt buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.

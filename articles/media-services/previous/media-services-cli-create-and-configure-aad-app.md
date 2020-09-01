@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 82d5c605baf6f95df7fee62379772ce13d696ac6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000802"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258347"
 ---
-# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI gebruiken om een Azure AD-app te maken en deze te configureren voor toegang tot Media Services-API 
+# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI gebruiken om een Azure AD-app te maken en deze te configureren voor toegang tot Media Services-API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -34,7 +36,7 @@ In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om een Azure Activ
 
 ## <a name="use-the-azure-cloud-shell"></a>De Azure Cloud Shell gebruiken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
 2. Start de Cloud Shell vanuit het bovenste navigatie deel venster van de portal.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 

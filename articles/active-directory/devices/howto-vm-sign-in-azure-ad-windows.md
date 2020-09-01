@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180334"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259367"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 Raadpleeg de volgende artikelen voor meer informatie over het gebruik van Azure RBAC voor het beheren van de toegang tot uw Azure-abonnements bronnen:
 
-- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](/azure/role-based-access-control/role-assignments-portal)
-- [Voeg Azure-roltoewijzingen toe of verwijder deze met behulp van Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md)
+- [Voeg Azure-roltoewijzingen toe of verwijder deze met behulp van Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Voorwaardelijke toegang gebruiken
 
@@ -339,7 +339,7 @@ Als het volgende fout bericht wordt weer gegeven wanneer u een verbinding met ee
 
 ![Uw referenties werken niet](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Controleer of de Windows 10-computer die u gebruikt voor het initiëren van de verbinding met een extern bureau blad, een Azure AD-lid is, of dat hybride Azure AD is toegevoegd aan dezelfde Azure AD-directory waar de virtuele machine is gekoppeld. Zie het artikel [Wat is een apparaat-id](/azure/active-directory/devices/overview)? voor meer informatie over de identiteit van het apparaat.
+Controleer of de Windows 10-computer die u gebruikt voor het initiëren van de verbinding met een extern bureau blad, een Azure AD-lid is, of dat hybride Azure AD is toegevoegd aan dezelfde Azure AD-directory waar de virtuele machine is gekoppeld. Zie het artikel [Wat is een apparaat-id](./overview.md)? voor meer informatie over de identiteit van het apparaat.
 
 > [!NOTE]
 > Windows 10 build 20H1 heeft ondersteuning toegevoegd voor een Azure AD-geregistreerde computer om de RDP-verbinding met uw virtuele machine te initiëren. Wanneer u een Azure AD-PC (niet toegevoegd aan Azure AD of hybride Azure AD) als de RDP-client gebruikt om verbindingen met uw virtuele machine te initiëren, moet u referenties opgeven in de notatie AzureAD\UPn (bijvoorbeeld AzureAD\john@contoso.com ).
@@ -367,4 +367,4 @@ Deel uw feedback over deze preview-functie of Meld problemen met het gebruik erv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) voor meer informatie over Azure Active Directory
+Zie [Wat is Azure Active Directory](../fundamentals/active-directory-whatis.md) voor meer informatie over Azure Active Directory

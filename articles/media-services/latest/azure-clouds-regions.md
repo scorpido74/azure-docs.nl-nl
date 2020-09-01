@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001346"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258653"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds en regio's waarin Azure Media Services v3 bestaat
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services v3 is beschikbaar via Azure Resource Manager-manifest in Global Azure, Azure Government, Azure Duitsland, Azure China 21Vianet. Niet alle Media Services-functies zijn echter beschikbaar in alle Azure-Clouds. In dit document wordt een overzicht van de beschik baarheid van belangrijkste Media Services v3-onderdelen beschreven.
 
@@ -39,12 +41,12 @@ Azure Media Services v3 is beschikbaar via Azure Resource Manager-manifest in Gl
 [LiveTranscription](live-transcription.md) is beschikbaar in de volgende regio's:
 
 - Azië - zuidoost
-- Europa - west
+- Europa -west
 - Europa - noord
 - VS - oost
 - Central US
 - VS - zuid-centraal
-- VS - west 2
+- US - west 2
 - Brazil South
 
 ## <a name="regionsgeographieslocations"></a>Regio's/geografi/locaties
@@ -110,7 +112,7 @@ De volgende eind punten zijn belang rijk om te weten wanneer u verbinding maakt 
 | Verificatie | `https://login.chinacloudapi.cn/` |
 | Token doelgroep |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Geografische gebieden in Azure](https://azure.microsoft.com/global-infrastructure/geographies/)

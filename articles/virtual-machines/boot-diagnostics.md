@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: aca41edeb159a65b27ecbbc27ae568f8bc94cebe
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d425953b278a98af35a172d8777ab758db52709e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181864"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257752"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostische gegevens over Azure-opstarten
 
@@ -36,6 +36,7 @@ De optie diagnostische gegevens over opstarten bevindt zich op de Blade van de v
 ## <a name="limitations"></a>Beperkingen
 - Diagnostische gegevens over opstarten zijn alleen beschikbaar voor Azure Resource Manager-Vm's. 
 - Diagnostische gegevens over het opstarten bieden geen ondersteuning voor Premium Storage-accounts. als een Premium Storage-account wordt gebruikt voor diagnostische gegevens over opstarten, treedt er een `StorageAccountTypeNotSupported` fout op bij het starten van de virtuele machine. 
+- De seriële console van Azure is momenteel niet compatibel met een beheerd opslag account voor diagnostische gegevens over opstarten. Meer informatie over [Azure Serial console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview).
 
 ## <a name="next-steps"></a>Volgende stappen
 

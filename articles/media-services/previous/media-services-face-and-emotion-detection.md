@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a3bd50d23f2543c6efeb6297b4dbcba8293269c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ac27fa5773e266d546b6511a24c6a5e14c5fda7f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019875"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257837"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gezichts-en Emotion detecteren met Azure Media Analytics
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > De **Azure media face detector** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
@@ -82,7 +84,7 @@ Wanneer u een taak met **Azure media face detector**maakt, moet u een voor inste
 ```
 
 #### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Beschrijving |
+| Kenmerk naam | Description |
 | --- | --- |
 | Modus |Snelle verwerkings snelheid, maar minder nauw keurig (standaard).|
 
@@ -157,7 +159,7 @@ Wanneer u een taak met **Azure media face detector**maakt, moet u een voor inste
 
 
 #### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Beschrijving |
+| Kenmerk naam | Description |
 | --- | --- |
 | Modus |Gezichten: alleen gezichts detectie.<br/>PerFaceEmotion: retourneert Emotion onafhankelijk voor elke gezichts detectie.<br/>AggregateEmotion: gemiddelde Emotion-waarden retour neren voor alle gezichten in het kader. |
 | AggregateEmotionWindowMs |Gebruiken als de AggregateEmotion-modus is geselecteerd. Hiermee geeft u de lengte van de video op die wordt gebruikt voor het produceren van elk samengeteld resultaat, in milliseconden. |

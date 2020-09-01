@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Meer informatie over het analyseren van audio-en video-inhoud met behulp van AudioAnalyzerPreset en VideoAnalyzerPreset in Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/30/2020
-ms.author: juliako
-ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053467"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258891"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video-en audio bestanden analyseren met Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Azure Media Services v3 kunt u inzichten uit uw video-en audio bestanden ophalen met Video Indexer. In dit artikel worden de Media Services v3 Analyzer-voor waarden beschreven die worden gebruikt om deze inzichten te extra heren. Als u meer gedetailleerde inzichten wilt, gebruikt u Video Indexer rechtstreeks. Bekijk het [vergelijkings document](../video-indexer/compare-video-indexer-with-media-services-presets.md)als u wilt weten wanneer de voor instellingen van Video Indexer versus Media Services Analyzer moeten worden gebruikt.
 

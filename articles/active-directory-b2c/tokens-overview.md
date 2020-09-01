@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482580"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258432"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-toke
 | Bereik | `scp` | `Read`| De machtigingen die zijn verleend aan de resource voor een toegangs token. Meerdere verleende machtigingen worden gescheiden door een spatie. |
 | Gemachtigde partij | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | De **toepassings-id** van de client toepassing die de aanvraag heeft gestart. |
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 De volgende eigenschappen worden gebruikt voor het [beheren van de levens duur van beveiligings tokens](configure-tokens.md) die worden gegenereerd door Azure AD B2C:
 
@@ -119,7 +119,7 @@ De header van het token bevat informatie over de sleutel en versleutelings metho
 }
 ```
 
-De waarde van de claim **alg** is het algoritme dat is gebruikt voor het ondertekenen van het token. De waarde van de **Kid** -claim is de open bare sleutel die is gebruikt voor het ondertekenen van het token. Azure AD B2C kunt op elk gewenst moment een token ondertekenen met een van de combi Naties van open bare en persoonlijke sleutels. Azure AD B2C roteert de mogelijke set sleutels regel matig. Uw toepassing moet worden geschreven om deze sleutel wijzigingen automatisch te kunnen verwerken. Een redelijke frequentie om te controleren op updates voor de open bare sleutels die worden gebruikt door Azure AD B2C elke 24 uur.
+De waarde van de claim **alg** is het algoritme dat is gebruikt voor het ondertekenen van het token. De waarde van de **Kid** -claim is de open bare sleutel die is gebruikt voor het ondertekenen van het token. Azure AD B2C kunt op elk gewenst moment een token ondertekenen met een van de combi Naties van open bare en persoonlijke sleutels. Azure AD B2C roteert de mogelijke set sleutels regel matig. Uw toepassing moet worden geschreven om deze sleutel wijzigingen automatisch te kunnen verwerken. Een redelijke frequentie om te controleren op updates voor de open bare sleutels die worden gebruikt door Azure AD B2C elke 24 uur. Voor het afhandelen van onverwachte sleutel wijzigingen moet uw toepassing worden geschreven om de open bare sleutels opnieuw op te halen als er een onverwachte **Kid** -waarde wordt ontvangen.
 
 Azure AD B2C heeft een OpenID Connect voor het verbinden van meta gegevens. Met dit eind punt kunnen toepassingen informatie opvragen over Azure AD B2C tijdens runtime. Deze informatie omvat eind punten, token inhoud en sleutels voor token-ondertekening. Uw Azure AD B2C-Tenant bevat een JSON-meta gegevens document voor elk beleid. Het meta gegevens document is een JSON-object dat verschillende nuttige informatie bevat. De meta gegevens bevatten **jwks_uri**, die de locatie van de set open bare sleutels die worden gebruikt voor het ondertekenen van tokens. Deze locatie wordt hier weer gegeven, maar het is raadzaam om de locatie dynamisch op te halen met behulp van het meta gegevens document en **jwks_uri**te parseren:
 

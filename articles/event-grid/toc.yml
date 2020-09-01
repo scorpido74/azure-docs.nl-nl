@@ -234,13 +234,23 @@
       href: custom-disaster-recovery.md
     - name: Asynchrone REST-bewerkingen bijhouden
       href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Verplaatsen
+      items:
+        - name: Systeemonderwerpen verplaatsen tussen regio's
+          href: move-system-topics-across-regions.md
+        - name: Aangepaste onderwerpen verplaatsen tussen regio's
+          href: move-custom-topics-across-regions.md
+        - name: Domeinen verplaatsen tussen regio's
+          href: move-domains-across-regions.md
+        - name: Partnernaamruimtes verplaatsen tussen regio's
+          href: move-partner-namespaces-across-regions.md
     - name: Beveiligen
       items:
         - name: Privé-eindpunten configureren
           href: configure-private-endpoints.md
         - name: IP-firewall configureren
           href: configure-firewall.md
-        - name: Webhook beveiligen met AAD
+        - name: Beveiligde Webhook met Azure Active Directory
           href: secure-webhook-delivery.md
         - name: Gebeurtenisverzending met beheerde identiteit
           href: managed-service-identity.md

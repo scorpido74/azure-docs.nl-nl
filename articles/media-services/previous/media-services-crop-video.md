@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 87348899a70d45fbfbce805bf2169f9f5e4e3f3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4264d1c0d83f14da02b26107d336521250fcf13b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956760"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257854"
 ---
-# <a name="crop-videos-with-media-encoder-standard"></a>Video’s bijsnijden met Media Encoder Standard  
+# <a name="crop-videos-with-media-encoder-standard"></a>Video’s bijsnijden met Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 U kunt Media Encoder Standard (MES) gebruiken om uw invoer video bij te snijden. Bijsnijden is het proces van het selecteren van een rechthoekig venster binnen het video frame en het coderen van alleen de pixels in het venster. Het volgende diagram illustreert het proces.
 

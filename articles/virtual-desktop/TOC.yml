@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: Taalpakketten installeren
       href: language-packs.md
+    - name: Aanbevelingen oplossen
+      href: azure-advisor-recommendations.md
 - name: Concepten
   items:
     - name: Verificatie

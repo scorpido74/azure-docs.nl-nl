@@ -10,17 +10,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/18/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 27082499263af6eedd7d9d628b7b1746a9177672
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 3507d3f0ac978c6f7c2f5fc29fc563eaba79d98a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606841"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258857"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Activa in Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services is een [activum](/rest/api/media/assets) een kern concept. U voert media in (bijvoorbeeld via upload-of live-opname), uitvoer media (van een taak uitvoer) en het publiceren van media van (voor streaming). 
 

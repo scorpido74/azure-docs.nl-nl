@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082729"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257140"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure Active Directory-verificatie gebruiken voor toegang tot de Media Services-API met REST
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -54,7 +56,7 @@ In deze zelfstudie leert u het volgende:
 - Bekijk de Access [Azure Media Services-API met het overzichts artikel van Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md) .
 - Installeer de [postman](https://www.getpostman.com/) rest-client voor het uitvoeren van de rest-api's die in dit artikel worden weer gegeven. 
 
-    In deze zelf studie gebruiken we **postman** , maar een rest hulp programma is geschikt. Andere alternatieven zijn: **Visual Studio code** met de rest-invoeg toepassing of **Telerik Fiddler**. 
+    In deze zelf studie gebruiken we **postman** , maar een rest hulp programma is geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>De verificatie gegevens ophalen van de Azure Portal
 
@@ -168,7 +170,7 @@ In deze sectie wordt beschreven hoe u **de Asset** -API opent met behulp van **p
 
 1. Open **postman**.
 2. Selecteer **GET**.
-3. Plak het REST API-eind punt (bijvoorbeeldhttps://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+3. Plak het REST API-eind punt (bijvoorbeeld https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Selecteer het tabblad **autorisatie** . 
 5. Selecteer een **Bearer-token**.
 6. Plak het token dat in de vorige sectie is gemaakt.

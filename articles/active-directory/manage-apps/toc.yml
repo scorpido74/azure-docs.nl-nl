@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: Fout bij toestemming gebruiker
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: Problemen met aanmelden vanaf aangepaste portal
-              href: application-sign-in-other-problem-deeplink.md
-            - name: Problemen met aanmelden vanaf toegangsvenster
+            - name: Problemen met aanmelden vanaf Mijn apps
               href: application-sign-in-other-problem-access-panel.md
             - name: Fout bij de aanmeldingspagina van toepassing
               href: application-sign-in-problem-application-error.md
-            - name: Probleem met wachtwoord eenmalige aanmelding - niet-galerie-app
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: Probleem met wachtwoord eenmalige aanmelding - galerie-app
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: Probleem met aanmelden bij een Microsoft-app
               href: application-sign-in-problem-first-party-microsoft.md
             - name: Probleem met federatieve eenmalige aanmelding - niet-galerie-app
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: Problemen met eenmalige aanmelding oplossen
           items:
+            - name: Problemen met eenmalige aanmelding op basis van wachtwoord
+              href: troubleshoot-password-based-sso.md
             - name: Veelvoorkomende problemen bij federatief configureren - galerie-apps
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Veelvoorkomende problemen bij federatief configureren - niet-galerie-apps
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: Veelvoorkomende problemen bij wachtwoord configureren - galerie-apps
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: Veelvoorkomende problemen bij wachtwoord configureren - niet-galerie-apps
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Problemen met vermelding en toewijzing van apps oplossen
           items:
             - name: De toepassingslijst voor uw tenant beheren
@@ -248,14 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: Problemen met mijn apps oplossen
           items:
-            - name: Browserextensie beheren
-              href: manage-access-panel-browser-extension.md
             - name: App wordt niet weergegeven
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: App wordt onverwacht weergegeven
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: Het aanmelden is mislukt
-              href: access-panel-troubleshoot-web-sign-in-problem.md
             - name: Fout bij selfservice-app-toegang gebruiken
               href: access-panel-troubleshoot-self-service-access.md
         - name: Problemen met on-premises apps oplossen

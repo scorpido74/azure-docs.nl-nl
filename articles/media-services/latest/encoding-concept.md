@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: In dit artikel wordt uitgelegd hoe u video en audio met Azure Media Services versleutelt.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e4db27f268d0d49696fd2a7dacc200942fa4477
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053345"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258976"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video en audio coderen met Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 De term encoding in Media Services is van toepassing op het proces van het converteren van bestanden met digitale video en/of audio van de ene standaard indeling naar een andere, met het doel van (a) om de grootte van de bestanden te reduceren en/of (b) die een indeling produceert die compatibel is met een groot aantal apparaten en apps. Dit proces wordt ook wel video compressie of transcode ring genoemd. Zie [gegevens compressie](https://en.wikipedia.org/wiki/Data_compression) en [Wat is code ring en trans codering?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) voor verdere bespreking van de concepten.
 

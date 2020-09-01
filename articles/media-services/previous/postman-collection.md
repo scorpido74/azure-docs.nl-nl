@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d3bf8b43bc12a2a8a193ea2708ab1668235edde
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f7a40cb72e1ae58f7962c4c8b80195a82ebdc5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047573"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259265"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Een postman-verzameling importeren met on-demand streaming-bewerkingen 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Een postman-verzameling importeren met on-demand streaming-bewerkingen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Dit artikel bevat een definitie van de verzameling **postman** die gegroepeerde HTTP-aanvragen bevat die Azure Media Services rest-api's aanroepen. Voor informatie over het configureren van **postman** zodat deze kan worden gebruikt om Media Services rest-api's aan te roepen, raadpleegt [u postman configureren voor Media Services rest API](media-rest-apis-with-postman.md) -zelf studie.
 

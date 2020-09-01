@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542375"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259180"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -217,7 +219,7 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 |Azure Media Redactor|Algemene beschikbaarheid|Alles|
 |Azure Media Video Thumbnails|Preview|Alles|
 
-### <a name="protection"></a>Beveiliging
+### <a name="protection"></a>Protection
 
 Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Zie [AMS-inhoud beveiligen](media-services-content-protection-overview.md) voor meer informatie.
 

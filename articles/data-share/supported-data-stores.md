@@ -6,12 +6,12 @@ author: jifems
 ms.author: jife
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258600"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259010"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevens archieven in azure data share
 
@@ -23,7 +23,7 @@ In dit artikel vindt u meer informatie over de uitgebreide set met Azure-gegeven
 
 De onderstaande tabel bevat een overzicht van de ondersteunde gegevens bronnen voor Azure data share. 
 
-| Gegevensopslag | Op moment opnamen gebaseerd delen | In-place delen 
+| Gegevensarchief | Op moment opnamen gebaseerd delen | In-place delen 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
@@ -38,7 +38,7 @@ Azure-gegevens share biedt gegevens gebruikers flexibiliteit bij het bepalen van
 
 De onderstaande tabel bevat informatie over verschillende combi Naties en keuzen die gebruikers van gegevens hebben wanneer ze hun gegevens delen accepteren en configureren. Zie [toewijzing van gegevensset configureren](how-to-configure-mapping.md)voor meer informatie over het configureren van gegevensset-toewijzingen.
 
-| Gegevensopslag | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure Data Explorer
+| Gegevensarchief | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage | ✓ || ✓ ||
 | Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
@@ -50,20 +50,23 @@ De onderstaande tabel bevat informatie over verschillende combi Naties en keuzen
 ## <a name="share-from-a-storage-account"></a>Delen vanuit een opslag account
 De Azure-gegevens share ondersteunt het delen van bestanden, mappen en bestands systemen van Azure Data Lake gen1 en Azure Data Lake Gen2. Het biedt ook ondersteuning voor het delen van blobs, mappen en containers vanuit Azure Blob Storage. Momenteel wordt alleen blok-BLOB ondersteund. Wanneer bestands systemen, containers of mappen worden gedeeld in delen op basis van moment opnamen, kan de gegevens consument ervoor kiezen om een volledige kopie van de share gegevens te maken of om alleen nieuwe of bijgewerkte bestanden te kopiëren. Incrementele moment opname is gebaseerd op de tijd van de laatste wijziging van de bestanden. Bestaande bestanden met dezelfde naam worden overschreven.
 
+Raadpleeg [en ontvang gegevens van Azure Blob Storage en Azure data Lake Storage](how-to-share-from-storage.md) voor meer informatie.
+
 ## <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL
-Azure data share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW). Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Store Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand. Houd er rekening mee dat bestands indelingen standaard CSV zijn. De gegevens verbruiker kan ervoor kiezen om de gegevens indien gewenst te ontvangen in de Parquet-indeling. Dit kan worden gedaan in de instellingen voor gegevensset toewijzing bij de ontvangst van de gegevens. 
+Azure data share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW). Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Storage Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand, evenals in Azure SQL Database en Azure Synapse Analytics als tabellen.
 
-Bij het accepteren van gegevens in Azure Data Lake Store Gen2 of Azure Blob Storage, wordt de inhoud van het doel bestand overschreven door volledige moment opnamen. 
+Wanneer gegevens worden geaccepteerd in Azure Data Lake Store Gen2 of Azure Blob Storage, overschrijven volledige moment opnamen de inhoud van het doel bestand als dit al bestaat.
+Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet bestaat, maakt Azure-gegevens share de SQL-tabel met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Incrementele moment opnamen worden momenteel niet ondersteund.
 
-Een gegevens verbruiker kan ervoor kiezen om gegevens te ontvangen in een tabel van hun keuze. Als in dit scenario de doel tabel nog niet bestaat, wordt de SQL-tabel door Azure data share gemaakt met het bron schema. Als er al een doel tabel met dezelfde naam bestaat, wordt deze verwijderd en overschreven met de laatste volledige moment opname. Bij het toewijzen van de doel tabel kan een alternatief schema en een tabel naam worden opgegeven. Incrementele moment opnamen worden momenteel niet ondersteund. 
-
-Voor delen van bronnen op basis van SQL gelden vereisten voor firewall regels en machtigingen. Raadpleeg de sectie vereisten van de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie.
+Raadpleeg [en ontvang gegevens van Azure SQL database en Azure Synapse Analytics](how-to-share-from-sql.md) voor meer informatie.
 
 ## <a name="share-from-azure-data-explorer"></a>Delen vanuit Azure Data Explorer
 Azure data share ondersteunt de mogelijkheid om data bases in-place te delen vanuit Azure Data Explorer-clusters. Gegevens provider kan delen op Data Base of cluster niveau. Wanneer gegevens worden gedeeld op database niveau, hebben gebruikers alleen toegang tot de specifieke data base (s) die worden gedeeld door de gegevens provider. Wanneer gegevens worden gedeeld op cluster niveau, heeft de gebruiker toegang tot alle data bases van het cluster van de provider, met inbegrip van toekomstige data bases die zijn gemaakt door de gegevens provider.
 
 Voor toegang tot gedeelde data bases moet de gegevens consument zijn eigen Azure Data Explorer-cluster hebben. Azure Data Explorer-cluster van de gegevens verbruiker moet in hetzelfde Azure-Data Center vinden als het Azure Data Explorer-cluster van de gegevens provider. Wanneer het delen van een relatie tot stand is gebracht, maakt Azure data share een symbolische koppeling tussen de Azure Data Explorer-clusters van de provider en de consumer. Gegevens die worden opgenomen in de batch-modus in de bron-Azure-Data Explorer cluster worden binnen een paar seconden tot een paar minuten weer gegeven op het doel cluster.
 
+Raadpleeg uw [gegevens delen en ontvangen van Azure Data Explorer](/azure/data-explorer/data-share) voor meer informatie. 
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over hoe u gegevens kunt beginnen delen, gaat u verder naar de zelfstudie [uw gegevens delen](share-your-data.md).
+Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.

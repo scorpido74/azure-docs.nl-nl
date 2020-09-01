@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccc765a3fb0063d92382edcec260808183f27a2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926717"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259248"
 ---
-# <a name="import-the-postman-environment"></a>De Postman-omgeving importeren  
+# <a name="import-the-postman-environment"></a>De Postman-omgeving importeren
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 Dit artikel bevat een definitie van de **postman** -omgevings variabelen die worden gebruikt de [postman-verzameling](postman-collection.md) die gegroepeerde HTTP-aanvragen bevat die Media Services rest-api's aanroepen. De omgevings-en verzamelings bestanden worden gebruikt door de zelf studie [postman configureren voor Media Services rest API](media-rest-apis-with-postman.md) .
 

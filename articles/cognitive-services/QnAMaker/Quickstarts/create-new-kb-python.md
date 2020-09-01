@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: eea54d493a27373a682b361ab7138ae1fa527362
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: afee82b66f9803333e27f029ecb487a47ba5dd9e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873055"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259724"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Snelstart: een knowledge base maken in QnA Maker met behulp van Python
 
@@ -37,7 +37,7 @@ Maak een bestand met de naam `create-new-knowledge-base-3x.py`.
 
 Voeg bovenaan `create-new-knowledge-base-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
-[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
 Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe voor toegang tot QnA Maker. Vervang de waarde van de `<your-qna-maker-subscription-key>` en `<your-resource-name>` door uw eigen QnA Maker sleutel en resource naam.
@@ -46,29 +46,29 @@ Voeg boven aan de programma klasse de vereiste constanten toe om toegang te krij
 
 Stel de volgende waarden in:
 
-* `<your-qna-maker-subscription-key>`-De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `<your-resource-name>`-De **resource naam** wordt gebruikt voor het maken van de URL voor het ontwerpen van eind punten voor het ontwerpen, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `<your-qna-maker-subscription-key>` -De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `<your-resource-name>` -De **resource naam** wordt gebruikt voor het maken van de URL voor het ontwerpen van eind punten voor het ontwerpen, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
-[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="constants":::
 
 ## <a name="add-the-kb-model-definition"></a>De definitie van het KB-model toevoegen
 
 Voeg na de constanten de volgende KB-modeldefinitie toe. Het model wordt na de definitie naar een tekenreeks geconverteerd.
 
-[!code-python[Add the KB model definition](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=15-41 "Add the KB model definition")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="model":::
 
 ## <a name="add-supporting-function"></a>Ondersteunende functie toevoegen
 
 Voeg de volgende functie toe om JSON in een leesbare indeling weer te geven:
 
-[!code-python[Add supporting function](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=43-45 "Add supporting function")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="pretty":::
 
 ## <a name="add-function-to-create-kb"></a>Functie toevoegen om KB te maken
 
 Voeg de volgende functie toe voor het maken van een HTTP POST-aanvraag om de knowledge base te maken.
 Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id in het headerveld **Locatie** bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt. De `Ocp-Apim-Subscription-Key` is de sleutel van de QnA Maker-service die wordt gebruikt voor verificatie.
 
-[!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="create_kb":::
 
 Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt.
 
@@ -86,7 +86,7 @@ Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebru
 
 De volgende functie controleert de status van het maken en verzendt de bewerkings-ID aan het eind van de URL-route. De aanroep van `check_status` bevindt zich binnen de belangrijkste _WHILE_-lus.
 
-[!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="get_status":::
 
 Deze API-aanroep retourneert een JSON-antwoord dat de bewerkingsstatus bevat:
 
@@ -116,7 +116,7 @@ Herhaal de aanroep totdat deze lukt of mislukt:
 ## <a name="add-main-code-block"></a>Belangrijkste codeblok toevoegen
 De volgende lus doet periodiek navraag naar de bewerkingsstatus van het maken totdat de bewerking is voltooid.
 
-[!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="main":::
 
 ## <a name="build-and-run-the-program"></a>Het programma bouwen en uitvoeren
 

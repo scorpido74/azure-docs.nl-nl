@@ -1,16 +1,16 @@
 ---
 title: 'Snelstart: Knowledge base maken - REST, Java - QnA Maker'
-description: In deze op Java REST gebaseerde snelstart wordt stapsgewijs uitgelegd hoe u, met behulp van een programma, een voorbeeldexemplaar van een knowledge base in QnA Maker kunt maken, dat wordt weergegeven op het Azure-dashboard van uw account voor de Cognitive Services-API.
+description: In deze op Java REST gebaseerde Snelstartgids wordt u begeleid bij het maken van een voor beeld QnA Maker Knowledge Base, die wordt weer gegeven in uw Azure-dash board van uw Cognitive Services API-account.
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 2dcea06fa0cb61813330298c833be7eb21a63ae7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325947"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259792"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Snelstart: Een knowledge base maken in QnA Maker met behulp van Java
 
@@ -39,7 +39,7 @@ Maak een bestand met de naam `CreateKB.java`
 
 Voeg bovenaan `CreateKB.java` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
-[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
 Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe aan de klasse `CreateKB` om toegang te krijgen tot QnA Maker.
@@ -48,18 +48,18 @@ U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben
 
 Stel de volgende waarden in:
 
-* `<your-qna-maker-subscription-key>`-De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `<your-resource-name>`-De **resource naam** wordt gebruikt voor het maken van de URL voor het ontwerpen van eind punten voor het ontwerpen, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `<your-qna-maker-subscription-key>` -De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Deze sleutel is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `<your-resource-name>` -De **resource naam** wordt gebruikt voor het maken van de URL voor het ontwerpen van eind punten voor het ontwerpen, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Deze resource naam is niet hetzelfde als die waarmee een query kan worden uitgevoerd op het Voorspellings eindpunt.
 
 U hoeft de laatste accolade niet toe te voegen om de klasse te beëindigen; deze staat in het laatste codefragment aan het einde van deze snelstart.
 
-[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="constants":::
 
 
 ## <a name="add-the-kb-model-definition-classes"></a>De definitieklassen van het KB-model toevoegen
 Voeg na de constanten de volgende klassen en functies toe in de klasse `CreateKB` om het modeldefinitieobject in JSON te serialiseren.
 
-[!code-java[Add the KB model definition classes](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=36-80 "Add the KB model definition classes")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="model":::
 
 ## <a name="add-supporting-functions"></a>Ondersteunende functies toevoegen
 
@@ -67,24 +67,24 @@ Voeg daarna de volgende ondersteunende functies toe in de klasse `CreateKB`.
 
 1. Voeg de volgende functie toe om JSON in een leesbare indeling weer te geven:
 
-    [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="pretty":::
 
 2. Voeg de volgende klasse toe om het HTTP-antwoord te beheren:
 
-    [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="response":::
 
 3. Voeg de volgende methode toe om een POST-aanvraag te doen bij de QnA Maker-API's. De `Ocp-Apim-Subscription-Key` is de sleutel van de QnA Maker-service die wordt gebruikt voor verificatie.
 
-    [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="post":::
 
 4. Voeg de volgende methode toe om een GET-aanvraag te doen bij de QnA Maker-API's.
 
-    [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get":::
 
 ## <a name="add-a-method-to-create-the-kb"></a>Een methode toevoegen om de KB te maken
 Voeg de volgende methode toe om de KB te maken door de Post-methode aan te roepen.
 
-[!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="create_kb":::
 
 Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt.
 
@@ -101,7 +101,7 @@ Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebru
 ## <a name="add-a-method-to-get-status"></a>Een methode toevoegen om de status op te halen
 Voeg de volgende methode om de maakstatus te controleren.
 
-[!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get_status":::
 
 Herhaal de aanroep totdat deze lukt of mislukt:
 
@@ -119,17 +119,17 @@ Herhaal de aanroep totdat deze lukt of mislukt:
 ## <a name="add-a-main-method"></a>Een hoofdmethode toevoegen
 De hoofdmethode maakt de KB en vraagt vervolgens de status na. De bewerkings-ID wordt geretourneerd in de veld **locatie**van de post-antwoord header en vervolgens gebruikt als onderdeel van de route in de GET-aanvraag. De `while` lus wordt opnieuw geprobeerd om de status te herhalen als deze nog niet is voltooid.
 
-[!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="main":::
 
 ## <a name="compile-and-run-the-program"></a>Het programma compileren en uitvoeren
 
-1. Zorg ervoor dat de gson-bibliotheek zich in de directory `./libs` bevindt. Compileer het bestand `CreateKB.java` op de opdrachtregel:
+1. Zorg ervoor dat de gson-bibliotheek zich in de directory `./libs` bevindt. Compileer het bestand op de opdracht regel `CreateKB.java` :
 
     ```bash
     javac -cp ".;libs/*" CreateKB.java
     ```
 
-2. Voer de volgende opdracht op een opdrachtregel in om het programma uit te voeren. Hiermee wordt de aanvraag verzonden naar de QnA Maker-API om de KB te maken en vervolgens worden elke 30 seconden de resultaten gecontroleerd. Elk antwoord wordt weergegeven in het consolevenster.
+2. Voer de volgende opdracht in op de opdracht regel om het programma uit te voeren. Hiermee wordt de aanvraag verzonden naar de QnA Maker-API om de KB te maken en vervolgens worden elke 30 seconden de resultaten gecontroleerd. Elk antwoord wordt weergegeven in het consolevenster.
 
     ```bash
     java -cp ",;libs/*" CreateKB

@@ -89,13 +89,13 @@
             - name: Een beheerde schijf maken op basis van een momentopname
               href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Een beheerde schijf kopiëren naar hetzelfde of een ander abonnement
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Een momentopname als VHD exporteren naar een opslagaccount
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: De VHD van een beheerde schijf exporteren naar een opslagaccount
               href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Een momentopname kopiëren naar hetzelfde of een ander abonnement
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Netwerken voor virtuele machines instellen
           items:
             - name: Netwerkverkeer tussen virtuele machines beveiligen
@@ -143,13 +143,13 @@
             - name: Een momentopname maken van een VHD
               href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Een momentopname kopiëren naar hetzelfde of een ander abonnement
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Virtuele machines bewaken
           items:
             - name: Een VM bewaken met Azure Monitor-logboeken
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Een beheerde schijf kopiëren naar hetzelfde of een ander abonnement
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Details verzamelen over alle virtuele machines in een abonnement met PowerShell
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Ingebouwde modules voor Azure Policy
@@ -239,7 +239,7 @@
             - name: Mv2-serie
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Beperkte vCPU's
-              href: ../constrained-vcpu.md
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Geoptimaliseerde opslag
           items:
             - name: Overzicht
@@ -294,7 +294,7 @@
             - name: Wat zijn Azure-reserveringen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Flexibiliteit van de VM-instantiegrootte
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Spot-VM's
           displayName: 'pre-empt, preempt'
           href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -317,7 +317,7 @@
             - name: Wat zijn Azure-reserveringen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibiliteit van de VM-instantiegrootte
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Benchmarkscores
           href: compute-benchmark-scores.md
     - name: Goedgekeurde distributies
@@ -329,21 +329,21 @@
     - name: File Storage
       items:
         - name: Inleiding tot beheerde schijven
-          href: ../managed-disks-overview.md
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een schijftype selecteren voor IaaS-VM's
-          href: ../disks-types.md
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Versleuteling
           href: disk-encryption.md
         - name: Disk Storage-reservering
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Ontwerpen voor hoge prestaties
-          href: ../premium-storage-performance.md
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Disk Bursting
           href: disk-bursting.md
         - name: Schaalbaarheidsdoelen voor schijven
           href: disk-scalability-targets.md
         - name: Back-up en herstel na noodgeval voor schijven
-          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Gedeelde schijven
           href: disks-shared.md
         - name: Kortstondige besturingssysteemschijven
@@ -357,7 +357,7 @@
     - name: Beveiliging
       items:
         - name: Beveiliging en beleid
-          href: ../security-policy.md
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Besturingselementen voor beveiliging van Azure Policy
@@ -370,7 +370,7 @@
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Toestanden en levenscyclus
-      href: ../states-lifecycle.md
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Bewaking
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Diagnostische gegevens over opstarten
@@ -418,7 +418,7 @@
         - name: Migratieoverzicht
           href: migration-classic-resource-manager-overview.md
         - name: Gedetailleerde informatie over migratie
-          href: ../migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Plan voor migratie
           href: migration-classic-resource-manager-plan.md
         - name: Migreren via CLI
@@ -428,7 +428,7 @@
         - name: Community-hulpprogramma's voor migratie
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Veelgestelde vragen
-          href: ../migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Installatiekopieën gebruiken
       displayName: 'SIG, AMI, image'
       items:
@@ -474,7 +474,7 @@
               href: cloudinit-bash-script.md
             - name: Een bestaande virtuele machine voorbereiden voor cloud-init
               href: cloudinit-prepare-custom-image.md
-        - name: Installatiekopieën maken zonder een
+        - name: Installatiekopieën maken zonder een inrichtingsagent
           href: no-agent.md
         - name: Inrichten van Linux-agent uitschakelen
           href: disable-provisioning.md
@@ -956,9 +956,9 @@
           href: detach-disk.md
         - name: Schijven implementeren met ARM-sjabloon
           displayName: 'Azure Resource Manager, ARM'
-          href: ../using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Gedeelde schijven inschakelen
-          href: ../disks-shared-enable.md
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een VHD uploaden naar een schijf - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Een schijf veilig importeren/exporteren - CLI
@@ -968,11 +968,11 @@
         - name: De grootte van een schijf wijzigen
           href: expand-disks.md
         - name: Storage Explorer gebruiken om schijven te beheren
-          href: ../disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een momentopname maken van een schijf
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage reserveren
-          href: ../disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een incrementele momentopname maken - CLI
           href: disks-incremental-snapshots.md
         - name: Een incrementele momentopname maken - Portal
@@ -1006,9 +1006,9 @@
         - name: Prestaties
           items:
             - name: Write Accelerator gebruiken
-              href: ../how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Ultraschijven gebruiken
-              href: ../disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Een benchmark-test uitvoeren op een schijf
               href: disks-benchmarks.md
             - name: Prestaties optimaliseren

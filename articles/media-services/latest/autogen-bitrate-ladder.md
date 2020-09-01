@@ -3,7 +3,7 @@ title: Video's coderen met een standaard encoder in Media Services-Azure | Micro
 description: In dit onderwerp wordt uitgelegd hoe u het standaard coderings programma in Media Services kunt gebruiken om een invoer video te coderen met een automatisch gegenereerde bitrate ladder, op basis van de invoer resolutie en bitrate.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c5fb04597ec274eaf2b4a4e7a5e2b96f1816f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60733314"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258823"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Coderen met een automatisch gegenereerde bitrate voor bitsnelheid
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Overzicht
 
@@ -40,7 +42,7 @@ In deze sectie worden drie voor beelden van de video lagen voor uitvoer gegenere
 ### <a name="example-1"></a>Voorbeeld 1
 Bron met de hoogte "1080" en de frame snelheid "29,970" produceert 6 video lagen:
 
-|Laag|Height|Breedte|Bitrate (kbps)|
+|Laag|Hoogte|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -52,7 +54,7 @@ Bron met de hoogte "1080" en de frame snelheid "29,970" produceert 6 video lagen
 ### <a name="example-2"></a>Voorbeeld 2
 Bron met de hoogte "720" en de frame snelheid "23,970" produceert 5 video lagen:
 
-|Laag|Height|Breedte|Bitrate (kbps)|
+|Laag|Hoogte|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -63,7 +65,7 @@ Bron met de hoogte "720" en de frame snelheid "23,970" produceert 5 video lagen:
 ### <a name="example-3"></a>Voorbeeld 3
 Bron met de hoogte "360" en de frame snelheid "29,970" produceert 3 video lagen:
 
-|Laag|Height|Breedte|Bitrate (kbps)|
+|Laag|Hoogte|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

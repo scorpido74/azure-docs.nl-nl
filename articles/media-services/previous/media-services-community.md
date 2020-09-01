@@ -14,14 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5e8318b480cfa0d399a7fb2a0e7f6ebed1488397
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6ac638d9062f31b68d3e1954688dde7ed40c4d2c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836493"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258296"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services-community  
+# <a name="azure-media-services-community"></a>Azure Media Services-community
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Deze Azure Media Services (AMS) community-pagina bespreekt verschillende manieren om updates over AMS te krijgen. U kunt ook nieuwe Video's en podcasts bekijken, vragen stellen en feedback geven.   
 
@@ -54,7 +56,7 @@ Het team bewaakt ook vragen die zijn gelabeld op Stack Overflow met ' Azure-Medi
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

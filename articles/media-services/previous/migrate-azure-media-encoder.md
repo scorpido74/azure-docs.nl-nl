@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 353024513885651cbc791548d8b91def3de65d90
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 32eab0f729280ad25f45853e05ea982b60a6d9f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013466"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259333"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migreren van Azure Media Encoder naar Media Encoder Standard
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In dit artikel worden de stappen beschreven voor het migreren van de verouderde Azure Media Encoder (AAM) media processor (die buiten gebruik wordt gesteld) naar de Media Encoder Standard-media processor. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 

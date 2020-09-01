@@ -5,17 +5,19 @@ services: media-services
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/02/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af6a7fc988271fc350ecc6e8be19742ede8ecee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298628"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258636"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Uw on-premises live streaming encoder controleren
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Als Azure Media Services on-premises encoder-partner Media Services propageert u uw product door uw Codeer aan te bevelen voor zakelijke klanten. Als u een on-premises encoder partner wilt worden, moet u de compatibiliteit van uw on-premises encoder controleren met Media Services. Voer hiervoor de volgende verificaties uit.
 
@@ -67,7 +69,7 @@ Volg dezelfde stappen als in [Pass-through live-gebeurtenis verificatie](#pass-t
 
 Als laatste moet u de vastgelegde instellingen en de para meters van uw Live-Archief per e-mail verzenden naar Azure Media Services amshelp@microsoft.com als een melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Geteste on-premises encoders](recommended-on-premises-live-encoders.md)
 

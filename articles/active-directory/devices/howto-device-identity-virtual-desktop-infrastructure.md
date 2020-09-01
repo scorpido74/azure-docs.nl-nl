@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604387"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259350"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
 
@@ -48,16 +48,16 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 
 | Type apparaat-id | Id-infrastructuur | Windows-apparaten | VDI-platform versie | Ondersteund |
 | --- | --- | --- | --- | --- |
-| Hybride Azure AD-deelname | Federatief<sup>3</sup> | Windows huidige en Windows down level | Permanent | Ja |
+| Hybride Azure AD-deelname | Federatief<sup>3</sup> | Windows huidige en Windows down level | Permanent | Yes |
 |   |   | Windows actueel | Niet-persistent | Ja<sup>5</sup> |
 |   |   | Downlevel Windows | Niet-persistent | Ja<sup>6</sup> |
-|   | Beheerd<sup>4</sup> | Windows huidige en Windows down level | Permanent | Ja |
-|   |   | Windows actueel | Niet-persistent | Nee |
+|   | Beheerd<sup>4</sup> | Windows huidige en Windows down level | Permanent | Yes |
+|   |   | Windows actueel | Niet-persistent | No |
 |   |   | Downlevel Windows | Niet-persistent | Ja<sup>6</sup> |
-| Azure AD-deelname | Federatief | Windows actueel | Permanent | Nee |
-|   |   |   | Niet-persistent | Nee |
-|   | Beheerd | Windows actueel | Permanent | Nee |
-|   |   |   | Niet-persistent | Nee |
+| Azure AD-deelname | Federatief | Windows actueel | Permanent | No |
+|   |   |   | Niet-persistent | No |
+|   | Beheerd | Windows actueel | Permanent | No |
+|   |   |   | Niet-persistent | No |
 | Geregistreerd bij Azure AD | Federatief/beheerd | Windows-huidige/Windows-down level | Persistent/niet-persistent | Niet van toepassing |
 
 <sup>1</sup> **Windows-huidige** apparaten vertegenwoordigen Windows 10, Windows Server 2016 en Windows Server 2019.
@@ -68,7 +68,7 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 
 <sup>4</sup> een **beheerde** identiteits infrastructuur is een omgeving met Azure AD als de ID-provider die is geïmplementeerd met een [PHS (Password Hash Sync)](../hybrid/whatis-phs.md) of [Pass Through-verificatie (PTA)](../hybrid/how-to-connect-pta.md) met [naadloze eenmalige aanmelding](../hybrid/how-to-connect-sso.md).
 
-<sup>5</sup> de **niet-persistente ondersteuning voor Windows Current** vereist extra aandacht als hieronder beschreven in het gedeelte met instructies.
+<sup>5</sup> de **niet-persistente ondersteuning voor Windows Current** vereist extra aandacht als hieronder beschreven in het gedeelte met instructies. Voor dit scenario is Windows 10 1803, Windows Server 2019 of Windows Server (semi-Annual-kanaal) vereist voor het starten van versie 1803
 
 <sup>6</sup> **niet-persistente ondersteuning voor Windows-lager niveau** vereist extra aandacht als hieronder beschreven in het gedeelte met instructies.
 

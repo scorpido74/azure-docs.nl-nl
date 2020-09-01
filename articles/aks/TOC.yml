@@ -129,6 +129,8 @@
       href: security-hardened-vm-host-image.md
     - name: Overzicht van de diagnostische gegevens van de Azure Kubernetes Service
       href: concepts-diagnostics.md
+    - name: Duurzame software-engineering
+      href: concepts-sustainable-software-engineering.md
 - name: Instructiegidsen
   items:
     - name: Clusterbewerkingen
