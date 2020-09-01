@@ -1,6 +1,6 @@
 ---
-title: Reken netwerk op Azure Stack Edge beheren voor toegang tot modules | Microsoft Docs
-description: Hierin wordt beschreven hoe u het Compute-netwerk uitbreidt op uw Azure Stack Edge om modules te openen via een extern IP-adres.
+title: Kubernetes stateless app implementeren op Azure Stack Edge GPU via IoT Edge module | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Kubernetes stateless toepassing implementeert op uw Azure Stack Edge GPU-apparaat met behulp van een IoT Edge module die wordt geopend via een extern IP-adres.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 8de3dbd754cd0cbef947d2cde44542f9f3f77a08
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084229"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254165"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>IoT Edge-module gebruiken voor het uitvoeren van een Kubernetes stateless toepassing op uw Azure Stack edge-apparaat
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>IoT Edge-module gebruiken voor het uitvoeren van een Kubernetes stateless toepassing op uw Azure Stack Edge GPU-apparaat
 
 In dit artikel wordt beschreven hoe u een IoT Edge module kunt gebruiken voor het implementeren van een staatloze toepassing op uw Azure Stack edge-apparaat.
 

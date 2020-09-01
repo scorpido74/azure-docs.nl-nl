@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 146a257a9b8f31e79283d71ede1e1c5c0355765c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335107"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147819"
 ---
 | Resource | Limiet |
 | --- | --- |
@@ -24,8 +24,10 @@ ms.locfileid: "80335107"
 | Het maximale aantal routes dat mag worden geadverteerd vanaf Azure-privépeering vanuit de VNet-adresruimte voor een ExpressRoute-verbinding |200 |
 | Het maximale aantal routes dat mag worden geadverteerd aan Microsoft-peering met ExpressRoute Standard |200 |
 | Het maximale aantal routes dat mag worden geadverteerd aan Microsoft-peering met de ExpressRoute Premium-invoegtoepassing |200 |
-| Het maximale aantal ExpressRoute-circuits dat mag worden gekoppeld aan hetzelfde virtuele netwerk op dezelfde peeringlocatie |4 |
-| Het maximale aantal ExpressRoute-circuits dat mag worden gekoppeld aan hetzelfde virtuele netwerk op verschillende peeringlocaties |4 |
+| Maximum aantal ExpressRoute-circuits die zijn gekoppeld aan een Standard Performance/ErGw1AZ-gateway |4 | 
+| Maximum aantal ExpressRoute-circuits die zijn gekoppeld aan een High Performance/ErGw2AZ-gateway |8 | 
+| Maximum aantal ExpressRoute-circuits die zijn gekoppeld aan een Ultra Performance/ErGw3AZ-gateway |16 | 
+| Het maximale aantal ExpressRoute-circuits dat mag worden gekoppeld aan hetzelfde virtuele netwerk op verschillende peeringlocaties (alle SKU's) |4 |
 | Aantal toegestane virtuele netwerkkoppelingen per ExpressRoute-circuit |Zie de tabel [Aantal virtuele netwerken per ExpressRoute-circuit](#vnetpercircuit).  |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a> Aantal virtuele netwerken per ExpressRoute-circuit

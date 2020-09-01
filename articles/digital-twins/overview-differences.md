@@ -5,16 +5,16 @@ description: Meer informatie over wat er is gewijzigd in de nieuwe versie van Az
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826820"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181422"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Waarin verschilt de nieuwe Azure Digital Twins van de vorige versie (2018)?
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Wat is het nieuwe Azure Digital Twins? Wat is het verschil met de vorige versie (2018)?
 
 De eerste openbare preview van Azure Digital Twins is uitgebracht in oktober 2018. Hoewel de basisconcepten van die vorige versie nu in de openbare preview zijn overgenomen, zijn veel van de interfaces en implementatiegegevens gewijzigd om de service flexibeler en toegankelijker te maken. Deze wijzigingen zijn gebaseerd op de feedback van klanten.
 
@@ -44,5 +44,4 @@ Voor een lijst van de beperkingen van Azure Digital Twins tijdens een openbare p
 
 Ga nu direct aan de slag met Azure Digital Twins door de eerste zelfstudie te volgen:
 
-> [!div class="nextstepaction"]
-> [*Zelfstudie: Een client-app coderen*](tutorial-code.md)
+[*Zelfstudie: Een client-app coderen*](tutorial-code.md)

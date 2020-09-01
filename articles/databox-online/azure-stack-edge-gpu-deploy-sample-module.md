@@ -1,23 +1,23 @@
 ---
-title: De GPU-module implementeren op uw Microsoft Azure Stack edge-apparaat | Microsoft Docs
+title: De GPU-module implementeren op uw Azure Stack Edge GPU-apparaat | Microsoft Docs
 description: Hierin wordt beschreven hoe u Compute kunt inschakelen en uw Azure Stack edge-apparaat kunt instellen met behulp van de lokale gebruikers interface.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 68badb1524c869309a0e2d96eaf6c9e490111bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084307"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254556"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-device"></a>Een IoT-module met GPU-functionaliteit implementeren op Azure Stack edge-apparaat
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren op Azure Stack Edge GPU-apparaat
 
-In dit artikel wordt beschreven hoe u een IoT Edge module met GPU-functionaliteit implementeert op uw Azure Stack edge-apparaat. 
+In dit artikel wordt beschreven hoe u een IoT Edge module met GPU-functionaliteit implementeert op uw Azure Stack Edge GPU-apparaat. 
 
 In dit artikel leert u het volgende:
   - Azure Stack Edge voorbereiden om een GPU-module uit te voeren.

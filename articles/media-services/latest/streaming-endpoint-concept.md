@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Meer informatie over streaming-eind punten (oorsprong), een dynamische verpakkings-en streaming-service die inhoud rechtstreeks levert aan een client speler of een Content Delivery Network (CDN).
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.author: inhenkel
+ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446207"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256494"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
@@ -51,10 +51,10 @@ De maximale limiet voor de streaming-eenheid is doorgaans 10. Neem [hier](https:
 
 In de tabel worden de typen beschreven:
 
-|Type|Schaaleenheden|Beschrijving|
+|Type|Schaaleenheden|Description|
 |--------|--------|--------|  
 |**Standard**|0|Het standaard streaming-eind punt is een **standaard** type. Dit kan worden gewijzigd in het Premium-type door de aanpassing `scaleUnits` .|
-|**Premium**|>0|**Premium** Streaming-eind punten zijn geschikt voor geavanceerde workloads en bieden specifieke en schaal bare bandbreedte capaciteit. U gaat naar een **Premium** -type door aanpassing `scaleUnits` (streaming units). `scaleUnits`Geef een specifieke uitvoerige capaciteit die kan worden aangeschaft in stappen van 200 Mbps. Wanneer u het **Premium** -type gebruikt, biedt elke ingeschakelde eenheid extra bandbreedte capaciteit voor de app. |
+|**Premium**|>0|**Premium** Streaming-eind punten zijn geschikt voor geavanceerde workloads en bieden specifieke en schaal bare bandbreedte capaciteit. U gaat naar een **Premium** -type door aanpassing `scaleUnits` (streaming units). `scaleUnits` Geef een specifieke uitvoerige capaciteit die kan worden aangeschaft in stappen van 200 Mbps. Wanneer u het **Premium** -type gebruikt, biedt elke ingeschakelde eenheid extra bandbreedte capaciteit voor de app. |
 
 > [!NOTE]
 > Voor klanten die inhoud willen leveren aan grote Internet doelgroepen, raden we u aan CDN op het streaming-eind punt in te scha kelen.
@@ -92,8 +92,8 @@ Deze sectie bevat informatie over een aantal eigenschappen van het streaming-ein
 
     Als deze fout wordt weer gegeven, ondersteunt het data centrum het niet. Probeer een ander Data Center.
 
-- `cdnProfile`: Wanneer `cdnEnabled` is ingesteld op waar, kunt u ook waarden door geven `cdnProfile` . `cdnProfile`is de naam van het CDN-profiel waar het CDN-eind punt wordt gemaakt. U kunt een bestaande cdnProfile opgeven of een nieuwe maken. Als de waarde NULL is en `cdnEnabled` waar is, wordt de standaard waarde ' AzureMediaStreamingPlatformCdnProfile ' gebruikt. Als de gegeven `cdnProfile` al bestaat, wordt er een eind punt gemaakt. Als het profiel niet bestaat, wordt er automatisch een nieuw profiel gemaakt.
-- `cdnProvider`: Wanneer CDN is ingeschakeld, kunt u ook waarden door geven `cdnProvider` . `cdnProvider`Hiermee wordt bepaald welke provider wordt gebruikt. Op dit moment worden drie waarden ondersteund: "StandardVerizon", "PremiumVerizon" en "StandardAkamai". Als er geen waarde wordt gegeven en `cdnEnabled` waar is, wordt "StandardVerizon" gebruikt (dat is de standaard waarde).
+- `cdnProfile`: Wanneer `cdnEnabled` is ingesteld op waar, kunt u ook waarden door geven `cdnProfile` . `cdnProfile` is de naam van het CDN-profiel waar het CDN-eind punt wordt gemaakt. U kunt een bestaande cdnProfile opgeven of een nieuwe maken. Als de waarde NULL is en `cdnEnabled` waar is, wordt de standaard waarde ' AzureMediaStreamingPlatformCdnProfile ' gebruikt. Als de gegeven `cdnProfile` al bestaat, wordt er een eind punt gemaakt. Als het profiel niet bestaat, wordt er automatisch een nieuw profiel gemaakt.
+- `cdnProvider`: Wanneer CDN is ingeschakeld, kunt u ook waarden door geven `cdnProvider` . `cdnProvider` Hiermee wordt bepaald welke provider wordt gebruikt. Op dit moment worden drie waarden ondersteund: "StandardVerizon", "PremiumVerizon" en "StandardAkamai". Als er geen waarde wordt gegeven en `cdnEnabled` waar is, wordt "StandardVerizon" gebruikt (dat is de standaard waarde).
 - `crossSiteAccessPolicies`: Wordt gebruikt om beleid voor meerdere sites op te geven voor verschillende clients. Zie voor meer informatie [beleid voor meerdere domein beleids regels](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) en [het beschikbaar maken van een service over domein grenzen](/previous-versions/azure/azure-services/gg185950(v=azure.100)). De instellingen zijn alleen van toepassing op Smooth Streaming.
 - `customHostNames`: Wordt gebruikt om een streaming-eind punt te configureren voor het accepteren van verkeer dat naar een aangepaste hostnaam wordt gestuurd. Deze eigenschap is geldig voor standaard-en Premium-streaming-eind punten en kan worden ingesteld als `cdnEnabled` : False.
 
@@ -122,7 +122,7 @@ Deze sectie bevat informatie over een aantal eigenschappen van het streaming-ein
 
     Media Services ondersteunt momenteel geen TLS met aangepaste domeinen.
 
-- `maxCacheAge`-Overschrijft de standaard instelling voor de HTTP-cache van de maximale leeftijds waarde voor het streamen van het streaming-eind punt op media fragmenten en on-demand manifesten. De waarde wordt ingesteld in seconden.
+- `maxCacheAge` -Overschrijft de standaard instelling voor de HTTP-cache van de maximale leeftijds waarde voor het streamen van het streaming-eind punt op media fragmenten en on-demand manifesten. De waarde wordt ingesteld in seconden.
 - `resourceState` -
 
     - Gestopt: de initiële status van een streaming-eind punt nadat deze is gemaakt
@@ -165,7 +165,7 @@ Zie de volgende artikelen:
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Dynamische verpakking](dynamic-packaging-overview.md)
 

@@ -1,5 +1,5 @@
 ---
-title: PHP-Gastenboek-app implementeren op Kubernetes met Arc ingeschakeld op Azure Stack edge-apparaat | Microsoft Docs
+title: PHP-Gastenboek-app implementeren op Kubernetes met Azure Stack Edge GPU | Microsoft Docs
 description: Hierin wordt beschreven hoe u een PHP-Gastenboek met redis implementeert met behulp van GitOps op een Kubernetes-cluster met Arc-functionaliteit van uw Azure Stack edge-apparaat.
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 46cef291a447a7c243ee9ef66ee64e9c6264ad23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084288"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254216"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge"></a>Een PHP-gasten boek zonder een stateless toepassing met redis op een Kubernetes-cluster met Arc-functionaliteit implementeren op Azure Stack Edge
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Een niet-beschik bare-gastenboek toepassing met redis implementeren op een Kubernetes-cluster dat is ingeschakeld op Azure Stack Edge GPU
 
 In dit artikel wordt beschreven hoe u een eenvoudige webtoepassing met meerdere lagen bouwt en implementeert met behulp van Kubernetes en Azure Arc. Dit voor beeld bestaat uit de volgende onderdelen:
 

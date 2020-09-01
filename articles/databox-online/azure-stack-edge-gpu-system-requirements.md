@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 207afe4117e0ab843a35ceadd021c2a201bc5de3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7754c57563ec5acb9028c2ace217f318fea5e959
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256264"
 ---
 # <a name="system-requirements-for-azure-stack-edge-with-gpu"></a>Systeem vereisten voor Azure Stack Edge met GPU 
 
@@ -73,7 +73,7 @@ Gebruik de volgende tabel voor poort configuratie voor de servers die als host f
 
 | Poort nummer | In of uit | Poort bereik | Vereist | Hulp |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Uit       | WAN        | Ja      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist wanneer u hand matige scripts of een Azure IoT Device Provisioning Service (DPS) gebruikt.|
+| TCP 443 (HTTPS)| Uit       | WAN        | Yes      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist wanneer u hand matige scripts of een Azure IoT Device Provisioning Service (DPS) gebruikt.|
 
 Voor volledige informatie gaat u naar de [firewall-en poort configuratie regels voor IOT Edge-implementatie](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

@@ -12,23 +12,25 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/18/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 65b0b276dcda58810f44494c14f06dd412d633f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: aa5c9178bc84983b7e577cd63cf5b8d9fb9a8436
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719288"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254658"
 ---
 # <a name="create-an-asset"></a>Een Asset maken
 
-In dit artikel wordt beschreven hoe u een Media Services-activum maakt.  U gebruikt een Asset om media-inhoud te bewaren voor code ring en streaming.  Lees [assets in azure Media Services v3](assets-concept.md) voor meer informatie over Media Services assets
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+In dit artikel wordt beschreven hoe u een Media Services-asset maakt.  U gebruikt een asset om media-inhoud te bewaren voor codering en streaming.  Lees [Assets in Azure Media Services v3](assets-concept.md) voor meer informatie over Media Services-assets
 
 ## <a name="prerequisites"></a>Vereisten
 
-Volg de stappen in [een Media Services-account maken](./create-account-howto.md) om het benodigde Media Services account en de resource groep te maken om een Asset te maken.
+Volg de stappen in [Een Media Services-account maken](./create-account-howto.md) om het vereiste Media Services-account en de resourcegroep te maken om een asset te maken.
 
 ## <a name="methods"></a>Methoden
 

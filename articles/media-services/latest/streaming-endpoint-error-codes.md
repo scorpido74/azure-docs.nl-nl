@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services verpakkings-en bron fouten | Microsoft Docs
 description: In dit onderwerp worden fouten beschreven die u kunt ontvangen van de Azure Media Services streaming endpoint-service (Orgin).
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: 8f4e0d9a6781e35c1ed6197dd32181511506d145
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091977"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256477"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Fouten met streaming-eindpunten (oorsprong) 
 
@@ -34,7 +34,7 @@ De aanvraag bevat ongeldige gegevens en wordt geweigerd met deze fout codes en o
 |MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|De aanvraag heeft geen versleutelings code in de URL. CMAF-aanvragen vereisen een versleutelings code in de URL. Andere protocollen die zijn geconfigureerd met meer dan één versleutelings type, hebben ook de versleutelings code voor ondubbelzinnige configuratie nodig. |
 |MPE_STORAGE_BAD_URL_SYNTAX |0x808900E9|De aanvraag voor opslag om te voldoen aan de aanvraag is mislukt met een onjuiste aanvraag fout. |
 
-## <a name="403-forbidden"></a>403 Verboden
+## <a name="403-forbidden"></a>403 verboden
 
 De aanvraag is niet toegestaan vanwege een van de volgende redenen:
 
@@ -198,7 +198,7 @@ De server kan momenteel geen aanvragen ontvangen. Deze fout kan zijn veroorzaakt
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Foutcodes voor codering](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services concepten](concepts-overview.md)

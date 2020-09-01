@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484305"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254488"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Aanbevelingen en aanbevolen procedures voor Azure Active Directory B2C
 
@@ -44,6 +44,7 @@ Definieer uw toepassings-en service architectuur, inventarisatie van de huidige 
 | Bruikbaarheid versus beveiliging | Uw oplossing moet de juiste balans tussen toepassings bruikbaarheid en het acceptabele risico niveau van uw organisatie halen. |
 | On-premises afhankelijkheden verplaatsen naar de Cloud | Overweeg om bestaande toepassings afhankelijkheden te verplaatsen naar de cloud om een flexibele oplossing te garanderen. |
 | Bestaande apps migreren naar b2clogin.com | De afschaffing van login.microsoftonline.com gaat in van kracht voor alle Azure AD B2C tenants op 04 december 2020. [Meer informatie](b2clogin.md). |
+| Identiteits beveiliging en voorwaardelijke toegang gebruiken | Gebruik deze mogelijkheden voor aanzienlijk meer controle over Risk ante authenticatie en toegangs beleid. Azure AD B2C Premium P2 is vereist. [Meer informatie](conditional-access-identity-protection-overview.md). |
 
 ## <a name="implementation"></a>Implementatie
 
@@ -70,7 +71,7 @@ Uw Azure AD B2C-implementatie testen en automatiseren.
 | Beperking |  Azure AD B2C beperkt het verkeer als er te veel aanvragen worden verzonden vanuit dezelfde bron in een korte periode. Gebruik verschillende verkeers bronnen tijdens het testen en handel de `AADB2C90229` fout code probleemloos af in uw toepassingen. |
 | Automation | Gebruik pijp lijnen voor continue integratie en levering (CI/CD) om testen en implementaties te automatiseren, bijvoorbeeld [Azure DevOps](deploy-custom-policies-devops.md). |
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 Uw Azure AD B2C omgeving beheren.
 
@@ -92,4 +93,4 @@ Blijf op de hoogte van de status van de service en vind ondersteunings opties.
 |--|--|
 | [Service-updates](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Blijf op de hoogte van Azure AD B2C product updates en aankondigingen. |
 | [Microsoft-ondersteuning](support-options.md) | Een ondersteunings aanvraag indienen voor Azure AD B2C technische problemen. Ondersteuning bij facturering en abonnements beheer is gratis. |
-| [Azure-status](https://status.azure.com/status) | De huidige status van alle Azure-Services weer geven. |
+| [Status van Azure](https://status.azure.com/status) | De huidige status van alle Azure-Services weer geven. |

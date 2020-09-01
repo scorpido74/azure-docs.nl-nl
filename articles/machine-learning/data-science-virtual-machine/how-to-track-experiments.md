@@ -1,7 +1,7 @@
 ---
 title: Experimenteren en implementeren van modellen
 titleSuffix: Azure Data Science Virtual Machine
-description: Meer informatie over het volgen en registreren van experimenten van de DSVM met Azure Machine Learning en/of MLFlow.
+description: Meer informatie over het bijhouden en registreren van experimenten van de Data Science Virtual Machine met Azure Machine Learning en/of MLFlow.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146892"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254771"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Experimenten bijhouden en modellen implementeren in Azure Machine Learning
 
@@ -36,11 +36,11 @@ De SDK voor Azure Machine Learning en MLFlow zijn vooraf geïnstalleerd op de Da
 
 ## <a name="set-up-the-workspace"></a>De werk ruimte instellen
 
-Ga naar de [Azure Portal](https://portal.azure.com) en selecteer de werk ruimte die u als onderdeel van de vereisten hebt ingericht. U ziet de __config.jsop__ (zie hieronder). down load de configuratie en controleer of deze is opgeslagen in uw werkmap op het DSVM.
+Ga naar de [Azure Portal](https://portal.azure.com) en selecteer de werk ruimte die u als onderdeel van de vereisten hebt ingericht. U ziet het __download config.jsop__ (zie hieronder). down load de configuratie en controleer of deze is opgeslagen in uw werkmap op het DSVM.
 
 ![Configuratie bestand ophalen](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-De configuratie bevat informatie zoals de naam van de werk ruimte, het abonnement enzovoort. Dit betekent dat u deze para meters niet hoeft vast te maken.
+De configuratie bevat informatie zoals de naam van de werk ruimte, het abonnement enzovoort. Dit betekent dat u deze para meters niet hoeft vast te coderen.
 
 ## <a name="track-dsvm-runs"></a>DSVM-uitvoeringen bijhouden
 
@@ -123,7 +123,7 @@ Als het goed is, wordt de gekwadrateerde fout (MSE) weer geven:
 
 ![MSE](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-Als u op de uitvoeren klikt, ziet u andere details en ook het selectie model in de __uitvoer en logboeken__
+Als u op uitvoeren klikt, ziet u andere details en ook het selectie model in de __uitvoer en logboeken__ .
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>Model implementeren in Azure Machine Learning
 
@@ -131,11 +131,11 @@ In deze sectie wordt uitgelegd hoe u modellen implementeert die zijn getraind op
 
 ### <a name="step-1-create-inference-compute"></a>Stap 1: een berekenings berekening maken
 
-Klik in het menu aan de linkerkant in [AzureML Studio](https://ml.azure.com) op __Compute__ en vervolgens op het tabblad Afleidings __clusters__ . Klik vervolgens op __+ Nieuw__ , zoals hieronder is gegeleeerd:
+Klik in het menu aan de linkerkant in [AzureML Studio](https://ml.azure.com) op __Compute__ en vervolgens op het tabblad Afleidings __clusters__ . Klik vervolgens op __+ Nieuw__ , zoals hieronder wordt beschreven:
 
 ![Reken kracht maken](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-Vul in het deel venster __Nieuw cluster__ voor delegeren Details in voor:
+In de __nieuwe__ Details van het deel venster voor het delegeren van het cluster paneel voor:
 
 * Compute name
 * Kubernetes-service-Selecteer nieuwe maken
@@ -151,7 +151,7 @@ Klik vervolgens op __maken__.
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>Stap 2: implementeer de service voor het afwijzen van geen code
 
-Wanneer we het model in onze code hebben geregistreerd met behulp van `register_model` we hebben we het Framework opgegeven als sklearn. Azure Machine Learning ondersteunt geen code-implementaties voor de volgende frameworks:
+Wanneer we het model in onze code hebben geregistreerd met `register_model` , hebben we het Framework opgegeven als sklearn. Azure Machine Learning ondersteunt geen code-implementaties voor de volgende frameworks:
 
 * scikit-learn
 * Tensor flow SaveModel-indeling
@@ -167,7 +167,7 @@ Klik vervolgens op de knop __implementeren__ in het deel venster model Details:
 
 ![Implementeren](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-We implementeren het model in het cluster voor afnemen (Azure Kubernetes service) dat we hebben gemaakt in stap 1. Vul de onderstaande gegevens in door een naam op te geven voor de service en de naam van het AKS-berekenings cluster (gemaakt in stap 1). U wordt ook aangeraden de capaciteit van de __CPU-reserve ring__ te verhogen naar 1 (van 0,1) en de capaciteit van het __geheugen reserve ring__ op 1 (van 0,5). u kunt dit doen door te klikken op __Geavanceerd__ en de details in te vullen. Klik vervolgens op __implementeren__.
+We implementeren het model in het cluster voor afnemen (Azure Kubernetes service) dat we hebben gemaakt in stap 1. Vul de onderstaande gegevens in door een naam op te geven voor de service en de naam van het AKS Compute-Cluster (gemaakt in stap 1). We raden u ook aan om de __capaciteit van de CPU-reserve ring__ te verhogen naar 1 (van 0,1) en de capaciteit van het __geheugen reserve ring__ op 1 (van 0,5). u kunt deze toename doen door te klikken op __Geavanceerd__ en de details op te vullen. Klik vervolgens op __implementeren__.
 
 ![Details implementeren](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,9 +177,9 @@ Wanneer het model is geïmplementeerd, ziet u het volgende (als u deze pagina wi
 
 ![Model verbruiken](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-Houd er rekening mee dat de implementatie status van __overgang__ naar __in orde__gaat. Daarnaast bevat deze sectie Details de Url's REST-eind punt en Swagger die een toepassings ontwikkelaar kan gebruiken om uw ML-model in hun apps te integreren.
+U ziet dat de implementatie status van __overgang__ naar __in orde__gaat. Daarnaast bevat deze sectie Details de Url's REST-eind punt en Swagger die een toepassings ontwikkelaar kan gebruiken om uw ML-model in hun apps te integreren.
 
-U kunt het eind punt testen met behulp van [postman](https://www.postman.com/), en u kunt ook de AZUREML-SDK gebruiken:
+U kunt het eind punt testen met behulp van [postman](https://www.postman.com/), of u kunt de AZUREML-SDK gebruiken:
 
 ```python
 from azureml.core import Webservice
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>Stap 4: opschonen
 
-U moet de reken kracht die u in stap 1 hebt gemaakt, verwijderen zodat er geen lopende reken kosten in rekening worden gebracht. Klik in het menu aan de linkerkant in de Azure Machine Learning Studio op Compute-> clusters maken > Selecteer de reken > verwijderen.
+Verwijder de reken kracht die u in stap 1 hebt gemaakt, zodat u geen lopende reken kosten hebt. Klik in het menu aan de linkerkant in het Azure Machine Learning Studio op Compute-> clusters > Selecteer de reken > verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

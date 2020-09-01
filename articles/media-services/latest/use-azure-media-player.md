@@ -3,20 +3,20 @@ title: Afspelen met Azure Media Player-Azure | Microsoft Docs
 description: Azure Media Player is een web-videospeler voor het afspelen van media-inhoud van Microsoft Azure Media Services op een groot aantal browsers en apparaten.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
-ms.author: juliako
-ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: inhenkel
+ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836017"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89253978"
 ---
 # <a name="playback-with-azure-media-player"></a>Afspelen met Azure Media Player
 

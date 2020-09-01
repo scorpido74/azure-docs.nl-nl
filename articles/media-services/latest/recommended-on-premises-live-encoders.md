@@ -6,17 +6,19 @@ keywords: code ring; encoders; media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 04/16/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b246833b5a6ea38c70afe49f8b2d0421943a3a02
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030662"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256783"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Geverifieerde on-premises live streaming encoders
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services vertegenwoordigt een [live gebeurtenis](/rest/api/media/liveevents) (kanaal) een pijp lijn voor het verwerken van live-streaming-inhoud. De live-gebeurtenis ontvangt Live invoer stromen op een van de volgende twee manieren.
 
@@ -114,7 +116,7 @@ Als u de inhoud wilt afspelen, moet zowel een audio-als een video stroom aanwezi
 > [!IMPORTANT]
 > Bekijk de fysieke toestand van de machine (CPU/geheugen/etc.) als het uploaden van fragmenten naar de Cloud CPU-en i/o-bewerkingen vergt. Als u instellingen in het coderings programma wijzigt, moet u er zeker van zijn dat de kanalen/live-gebeurtenis opnieuw worden ingesteld om de wijziging door te voeren.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Live streamen met Media Services v3](live-streaming-overview.md)
 

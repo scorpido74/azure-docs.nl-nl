@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0309579a674533ebd056c8493b149cc78beef607
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254056"
 ---
-#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard gebruiken om een bitrate ladder automatisch te genereren  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard gebruiken om een bitrate ladder automatisch te genereren
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>Overzicht
 
@@ -174,7 +176,7 @@ In deze sectie worden drie voor beelden van uitvoer lagen geproduceerd door MES 
 ### <a name="example-1"></a>Voorbeeld 1
 Bron met de hoogte "1080" en de frame snelheid "29,970" produceert 6 video lagen:
 
-|Laag|Height|Breedte|Bitrate (kbps)|
+|Laag|Hoogte|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +188,7 @@ Bron met de hoogte "1080" en de frame snelheid "29,970" produceert 6 video lagen
 ### <a name="example-2"></a>Voorbeeld 2
 Bron met de hoogte "720" en de frame snelheid "23,970" produceert 5 video lagen:
 
-|Laag|Height|Breedte|Bitrate (kbps)|
+|Laag|Hoogte|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +199,7 @@ Bron met de hoogte "720" en de frame snelheid "23,970" produceert 5 video lagen:
 ### <a name="example-3"></a>Voorbeeld 3
 Bron met de hoogte "360" en de frame snelheid "29,970" produceert 3 video lagen:
 
-|Laag|Height|Breedte|Bitrate (kbps)|
+|Laag|Hoogte|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
