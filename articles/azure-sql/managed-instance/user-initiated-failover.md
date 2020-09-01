@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589500"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181762"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar
 
@@ -36,6 +36,15 @@ U kunt overwegen om een van de volgende redenen een [hand matige failover](../da
 > Om ervoor te zorgen dat uw toepassingen flexibeler zijn dan de implementatie van de productie, kunt u het risico op toepassings fouten in de productie verminderen en bijdragen aan de beschik baarheid van toepassingen voor uw klanten.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Hand matige failover initiëren op een SQL-beheerd exemplaar
+
+### <a name="rbac-permissions-required"></a>RBAC-machtigingen vereist
+
+De gebruiker die een failover initieert, moet een van de volgende RBAC-rollen hebben:
+
+- De rol van abonnements eigenaar of
+- Rol van beheerde instantie Inzender of
+- Aangepaste rol met de volgende machtiging:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>PowerShell gebruiken
 

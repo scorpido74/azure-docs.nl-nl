@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: db3bfddd3376a013cc8921f9e0b94bd30bfe041f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146637"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181524"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -29,7 +29,8 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 
 * [B-serie](../sizes-b-series-burstable.md)
 * [DCsv2-serie](../dcv2-series.md)
-* [DSv2-serie](../dv2-dsv2-series.md) en [Dsv3-serie](../dv3-dsv3-series.md)
+* [DSv2-serie](../dv2-dsv2-series.md) 
+* [Dsv3-serie](../dv3-dsv3-series.md)
 * [Dsv4-serie](../dv4-dsv4-series.md)
 * [Ddsv4-serie](../ddv4-ddsv4-series.md)
 * [Dasv4-serie](../dav4-dasv4-series.md)
@@ -39,10 +40,12 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 * [GS-serie](../sizes-previous-gen.md#gs-series)
 * [HB-serie](../hb-series.md)
 * [HC-serie](../hc-series.md)
-* [Ls-Series](../sizes-previous-gen.md#ls-series) en [Lsv2-serie](../lsv2-series.md)
+* [LS-serie](../sizes-previous-gen.md#ls-series) 
+* [Lsv2-serie](../lsv2-series.md)
 * [M-serie](../m-series.md)
 * [Mv2-serie](../mv2-series.md)<sup>1</sup>
-* [NCv2-serie](../ncv2-series.md) en [NCv3-serie](../ncv3-series.md)
+* [NCv2-serie](../ncv2-series.md) 
+* [NCv3-serie](../ncv3-series.md)
 * [ND-serie](../nd-series.md)
 * [NVv3-serie](../nvv3-series.md)
 
@@ -84,7 +87,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
-| Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
+| Formaten van virtuele machines         | Alle VM-grootten | [Beschik bare grootten weer geven](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 

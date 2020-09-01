@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791177"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180470"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Waarschuwingen valideren (EICAR-testbestand) in Azure Security Center
+# <a name="alert-validation-in-azure-security-center"></a>Validatie van waarschuwingen in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
 
 ## <a name="what-are-security-alerts"></a>Wat zijn beveiligingswaarschuwingen?
@@ -33,12 +33,12 @@ Zie [beveiligings waarschuwingen in Security Center](security-center-alerts-over
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## <a name="validate-alerts-on-windows-vms"></a>Waarschuwingen op Windows-Vm's valideren<a name="validate-windows"></a>
+## <a name="validate-alerts-on-windows-vms"></a>Waarschuwingen op Windows-Vm's valideren <a name="validate-windows"></a>
 
 Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgende stappen uit vanaf de computer waar u de aangevallen bron van de waarschuwing wilt ontvangen:
 
 1. Kopieer een uitvoerbaar bestand (bijvoorbeeld **calc.exe**) naar het bureau blad van de computer of een andere map met uw gemak en wijzig de naam ervan in **ASC_AlertTest_662jfi039N.exe**.
-1. Open de opdracht prompt en voer dit bestand uit met een argument (alleen een valse argument naam), zoals:```ASC_AlertTest_662jfi039N.exe -foo```
+1. Open de opdracht prompt en voer dit bestand uit met een argument (alleen een valse argument naam), zoals: ```ASC_AlertTest_662jfi039N.exe -foo```
 1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgend
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>Waarschuwingen valideren op virtuele Linux-machines<a name="validate-linux"></a>
+## <a name="validate-alerts-on-linux-vms"></a>Waarschuwingen valideren op virtuele Linux-machines <a name="validate-linux"></a>
 
 Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgende stappen uit vanaf de computer waar u de aangevallen bron van de waarschuwing wilt ontvangen:
 1. Kopieer een uitvoerbaar bestand naar een handige locatie en wijzig de naam in **./asc_alerttest_662jfi039n**, bijvoorbeeld:
@@ -60,7 +60,7 @@ Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgend
 1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven.
 
 
-## <a name="validate-alerts-on-kubernetes"></a>Waarschuwingen valideren op Kubernetes<a name="validate-kubernetes"></a>
+## <a name="validate-alerts-on-kubernetes"></a>Waarschuwingen valideren op Kubernetes <a name="validate-kubernetes"></a>
 
 Als u de preview-functie Security Center van het integreren van de Azure Kubernetes-service gebruikt, voert u de volgende kubectl-opdracht uit om te testen of uw waarschuwingen werken:
 

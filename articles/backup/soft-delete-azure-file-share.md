@@ -4,12 +4,12 @@ description: Meer informatie over hoe u met zacht verwijderen uw Azure-bestands 
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282701"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179909"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Onbedoeld verwijderen van beveiliging voor Azure-bestands shares met behulp van Azure Backup
 
@@ -53,7 +53,7 @@ Als u ten minste één beveiligde bestands share in een opslag account hebt, bet
 >U moet stap 2 uitvoeren voordat de volgende geplande back-uptaak wordt uitgevoerd op de beveiligde bestands share in uw opslag account. Omdat telkens wanneer de back-uptaak wordt uitgevoerd, de optie zacht verwijderen opnieuw wordt ingeschakeld voor alle bestands shares in het opslag account.
 
 >[!WARNING]
->Na het uitschakelen van de functie voor voorlopig verwijderen in stap 2, is een Verwijder bewerking die wordt uitgevoerd op de bestands shares een permanente Verwijder bewerking. Dit betekent dat als u per ongeluk de back-upbestanden verwijdert na het uitschakelen van zacht verwijderen, alle moment opnamen kwijtraakt en u uw gegevens niet kunt herstellen.
+>Na het uitschakelen van de functie voor voorlopig verwijderen in stap 2, is een Verwijder bewerking die wordt uitgevoerd op de bestands shares een permanente Verwijder bewerking. Dus als u de back-upbestanden per ongeluk verwijdert nadat u de tijdelijke verwijdering hebt uitgeschakeld, gaan alle moment opnamen verloren en kunt u uw gegevens niet meer herstellen.
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>Welke wijzigingen worden Azure Backup wanneer ik de registratie van een opslag account ongedaan maken in de context van de instelling voor voorlopig verwijderen van een bestands share?
 

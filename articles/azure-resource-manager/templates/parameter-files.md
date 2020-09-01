@@ -2,13 +2,13 @@
 title: Parameterbestand maken
 description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082933"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179620"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Een Resource Manager-parameterbestand maken
 
@@ -184,10 +184,30 @@ In het volgende voor beeld ziet u de indelingen van verschillende parameter type
 
 ## <a name="deploy-template-with-parameter-file"></a>Sjabloon implementeren met parameter bestand
 
-Zie:
+Als u een lokaal parameter bestand wilt door geven met Azure CLI, gebruikt u @ en de naam van het parameter bestand.
 
-- [Resources implementeren met ARM-sjablonen en Azure CLI](./deploy-cli.md#parameters)
-- [Resources implementeren met ARM-sjablonen en Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+Zie [resources implementeren met arm-sjablonen en Azure cli](./deploy-cli.md#parameters)voor meer informatie.
+
+Als u een lokaal parameter bestand wilt door geven met Azure PowerShell, gebruikt u de `TemplateParameterFile` para meter.
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+Zie [resources implementeren met arm-sjablonen en Azure PowerShell](./deploy-powershell.md#pass-parameter-values) voor meer informatie.
+
+> [!NOTE]
+> Het is niet mogelijk om een parameter bestand te gebruiken met de Blade aangepaste sjabloon in de portal.
 
 ## <a name="file-name"></a>Bestandsnaam
 
@@ -199,7 +219,7 @@ Als u wilt implementeren in verschillende omgevingen, moet u meer dan één para
 
 U kunt inline-para meters en een lokaal parameter bestand gebruiken in dezelfde implementatie bewerking. U kunt bijvoorbeeld een aantal waarden opgeven in het lokale parameter bestand en andere waarden inline toevoegen tijdens de implementatie. Als u waarden opgeeft voor een para meter in zowel het lokale parameter bestand als inline, heeft de inline-waarde prioriteit.
 
-Het is mogelijk om een extern parameter bestand te gebruiken door de URI naar het bestand op te geven. Wanneer u dit doet, kunt u geen andere waarden door geven in line of vanuit een lokaal bestand. Alle inline-para meters worden genegeerd. Geef alle parameter waarden op in het externe bestand.
+Het is mogelijk om een extern parameter bestand te gebruiken door de URI naar het bestand op te geven. Wanneer u een extern parameter bestand gebruikt, kunt u geen andere waarden door geven via inline of vanuit een lokaal bestand. Alle inline-para meters worden genegeerd. Geef alle parameter waarden op in het externe bestand.
 
 ## <a name="parameter-name-conflicts"></a>Conflicten met parameter namen
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: e3faad025a794b0ae9905fa73b090b55799f3279
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5c5f690fd5fefbd67180ea04d5ca1d269676f7b7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103035"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180810"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Software aanschaffen op Microsoft AppSource
 
@@ -57,7 +57,7 @@ Nadat uw bestelling is ontvangen, kan het enkele seconden duren voordat deze wor
     > [!Note]
     > Deze stap is verplicht en kan op elk gewenst moment worden uitgevoerd.
 
-## <a name="contact-support"></a>Contact opnemen met de ondersteuning
+## <a name="contact-support"></a>Contact opnemen met ondersteuning
 
 Een [ondersteunings ticket](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) kan via het Microsoft 365-beheer centrum worden verzonden.
 

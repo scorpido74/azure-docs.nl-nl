@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: c789a5fdd2aed7a904dc71065340b3c921ac9abb
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146603"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181711"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Toegang tot Self-service toepassingen gebruiken
 
@@ -28,7 +28,7 @@ Zie [de Help van mijn apps-Portal](../user-help/my-apps-portal-end-user-access.m
 
 Met deze functie kunt u het volgende doen:
 
--   Laat gebruikers zelf toepassingen detecteren vanuit het [toegangs venster](https://myapps.microsoft.com/) van de toepassing zonder dat ze de IT-groep hoeven te gebruiken.
+-   Laat gebruikers zelf toepassingen van [mijn apps](https://myapps.microsoft.com/) detecteren zonder dat ze de IT-groep hoeven te verzorgen.
 -   Voeg deze gebruikers toe aan een vooraf geconfigureerde groep, zodat u kunt zien wie toegang heeft aangevraagd, de toegang moet verwijderen en de functies die eraan zijn toegewezen, moeten beheren.
 -   Desgewenst toestaan dat iemand toegang tot aanvragen voor apps kan goed keuren, zodat de IT-groep het niet hoeft te doen.
 -   U kunt Maxi maal 10 personen configureren die de toegang tot deze toepassing goed keuren.
@@ -57,14 +57,14 @@ Volg de onderstaande stappen om de toegang van selfservice toepassingen voor een
 13. **Optioneel:** **voor toepassingen die rollen beschikbaar**maken, moet u, als u goedgekeurde selfservice gebruikers wilt toewijzen aan een rol, de selector selecteren naast de **rol waaraan gebruikers moeten worden toegewezen in deze toepassing?** om de rol te selecteren waaraan deze gebruikers moeten worden toegewezen.
 14. Selecteer de knop **Opslaan** bovenaan om te volt ooien.
 
-Zodra u de configuratie van de selfservice toepassing hebt voltooid, kunnen gebruikers naar het [toegangs paneel](https://myapps.microsoft.com/) van de toepassing navigeren en de knop **toevoegen** selecteren om de apps te vinden waarvoor u selfservice toegang hebt ingeschakeld. Zakelijke goed keurders zien ook een melding in het [toegangs venster](https://myapps.microsoft.com/)van hun toepassing. U kunt een e-mail bericht ontvangen wanneer een gebruiker toegang tot een toepassing heeft aangevraagd waarvoor de goed keuring is vereist. 
+Zodra u de configuratie van de selfservice toepassing hebt voltooid, kunnen gebruikers naar [mijn apps](https://myapps.microsoft.com/) navigeren en de knop **+ toevoegen** selecteren om de apps te vinden waarvoor u selfservice toegang hebt ingeschakeld. Zakelijke goed keurders zien ook een melding op de pagina [mijn apps](https://myapps.microsoft.com/) . U kunt een e-mail bericht ontvangen wanneer een gebruiker toegang tot een toepassing heeft aangevraagd waarvoor de goed keuring is vereist. 
 
 Deze goed keuringen ondersteunen alleen één goedkeurings werk stromen, wat betekent dat als u meerdere goed keurders opgeeft, één fiatteur de toegang tot de toepassing kan goed keuren.
 
 ## <a name="things-to-check-if-self-service-isnt-working"></a>Dingen om te controleren of selfservice werkt
 -   Zorg ervoor dat de gebruiker of groep is ingeschakeld om self-service toepassings toegang aan te vragen.
--   Zorg ervoor dat de gebruiker de juiste locatie voor de toegang tot de selfservice toepassing bezoekt. gebruikers kunnen naar hun [toepassings toegangs paneel](https://myapps.microsoft.com/) navigeren en de knop **+ toevoegen** selecteren om de apps te vinden waarvoor u selfservice toegang hebt ingeschakeld.
--   Als de toegang van selfservice toepassingen onlangs is geconfigureerd, probeert u zich na een paar minuten opnieuw aan te melden en weer aan te sluiten in het toegangs venster van de gebruiker om te zien of de wijzigingen in de selfservice-toegang zijn verschenen.
+-   Zorg ervoor dat de gebruiker de juiste locatie voor de toegang tot de selfservice toepassing bezoekt. gebruikers kunnen naar de pagina [mijn apps](https://myapps.microsoft.com/) navigeren en de knop **+ toevoegen** selecteren om te zoeken naar de apps waarvoor u selfservice toegang hebt ingeschakeld.
+-   Als de toegang van selfservice toepassingen onlangs is geconfigureerd, probeert u zich na een paar minuten opnieuw aan te melden bij mijn apps van de gebruiker en te controleren of de wijzigingen in de self-service toegang zijn verschenen.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Azure Active Directory instellen voor groepsbeheer met self-service](../users-groups-roles/groups-self-service-management.md)

@@ -9,12 +9,12 @@ ms.date: 08/08/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: af7cb87f8caf0176505c8af864ae8d3cb0c312a0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585692"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180912"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
@@ -54,7 +54,7 @@ Voor .NET-toepassingen is de eenvoudigste manier om te werken met een beheerde i
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-De `AzureServiceTokenProvider`-klasse slaat het token in de cache op en haalt het op voor het verstrijken van Azure AD. U hoeft dus niet langer de verval datum te controleren voordat u de-methode aanroept `GetAccessTokenAsync` . Roep de methode aan wanneer u het token wilt gebruiken.
+U hoeft de verval datum van het token niet te controleren voordat u de `GetAccessTokenAsync` methode aanroept, omdat `AzureServiceTokenProvider` het token in de cache wordt opgeslagen en wordt opgehaald uit Azure AD net vóór de verval datum. 
 
 De `GetAccessTokenAsync` methode vereist een resource-id. Zie [Wat is beheerde identiteiten voor Azure-resources](../../active-directory/msi-overview.md)voor meer informatie over Microsoft Azure Services.
 

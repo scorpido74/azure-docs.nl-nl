@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001158"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181694"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -275,11 +275,11 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 9. Herstel de DPMDB vanuit SQL.
 10. Start CMD (als beheerder) op de nieuwe server. Ga naar de Microsoft Azure Backup installatie locatie en bin-map
 
-    Voor beeld van een pad: C:\Windows\System32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Voor beeld van pad: `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
 11. Voer uit om verbinding te maken met Azure Backup `DPMSYNC -SYNC`
 
-    Als u **nieuwe** schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u vervolgens `DPMSYNC -Reallocatereplica`
+    Als u **nieuwe** schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u uit `DPMSYNC -Reallocatereplica` .
 
 ## <a name="network-connectivity"></a>Netwerkconnectiviteit
 
@@ -355,7 +355,7 @@ Gebruik de volgende stappen om MABS bij te werken:
 4. Back-ups moeten worden voortgezet zonder dat u uw productie servers opnieuw hoeft op te starten.
 5. U kunt nu beginnen met het beveiligen van uw gegevens. Als u een upgrade uitvoert naar Modern Backup Storage, kunt u tijdens het beveiligen ook de volumes kiezen waarvoor u de back-ups wilt opslaan en op basis van de ingerichte ruimte controleren. [Meer informatie](backup-mabs-add-storage.md).
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Als Microsoft Azure Backup Server mislukt met fouten tijdens de installatie fase (of een back-up of herstel), raadpleegt u dit [document met fout codes](https://support.microsoft.com/kb/3041338)  voor meer informatie.
 U kunt ook verwijzen naar [Azure backup gerelateerde Veelgestelde vragen](backup-azure-backup-faq.md)

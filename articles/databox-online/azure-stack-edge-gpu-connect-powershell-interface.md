@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 26d4476217d5a6f6abea6093f453cd52d654911e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 85e95dc4138fd638c8db9f5c98a7064153c7ef17
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084511"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181643"
 ---
 # <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Een Azure Stack Edge GPU-apparaat beheren via Windows Power shell
 
@@ -184,7 +184,8 @@ Use "kubectl options" for a list of global command-line options (applies to all 
 C:\Users\myuser>
 ```
 
-Voor een uitgebreide lijst met `kubectl` opdrachten gaat u naar [ `kubectl` materiaal](https://kubernetes.io/docs/reference/kubectl/cheatsheet/). 
+Voor een uitgebreide lijst met `kubectl` opdrachten gaat u naar [ `kubectl` materiaal](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+
 
 ### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Het IP-adres van de service of module die buiten het Kubernetes-cluster wordt weer gegeven, ophalen
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005020"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180334"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -32,7 +32,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 - U hoeft niet langer lokale beheerders accounts te beheren.
 - Met Azure RBAC kunt u de juiste toegang verlenen aan Vm's op basis van behoefte en deze verwijderen wanneer deze niet meer nodig is.
 - Voordat u toegang tot een virtuele machine toestaat, kan voorwaardelijke toegang van Azure AD aanvullende vereisten afdwingen, zoals: 
-   - Meervoudige verificatie
+   - Multi-Factor Authentication
    - Aanmeldings risico controle
 - Automatiseer en schaal Azure AD-samen voeging van Azure Windows-Vm's die deel uitmaken van uw VDI-implementaties.
 
@@ -274,7 +274,7 @@ Deze afsluit code wordt omgezet naar DSREG_E_MSI_TENANTID_UNAVAILABLE omdat de e
 
    - RDP naar de virtuele machine als lokale beheerder en controleer of het eind punt een geldige Tenant-ID retourneert door deze opdracht uit te voeren vanaf een opdracht regel met verhoogde bevoegdheid op de virtuele machine:
       
-      - krul-H meta gegevens: Truehttp://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - krul-H meta gegevens: True http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
 
 1. De VM-beheerder probeert de AADLoginForWindows-uitbrei ding te installeren, maar een door het systeem toegewezen beheerde identiteit heeft de virtuele machine niet eerst ingeschakeld. Ga naar de Blade identiteit van de virtuele machine. Controleer op het tabblad toegewezen systeem of de status is in-of uitgeschakeld.
 
@@ -329,7 +329,7 @@ Als het volgende fout bericht wordt weer gegeven wanneer u een verbinding met ee
 
 ![Uw account is geconfigureerd om te voor komen dat u dit apparaat kunt gebruiken.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Controleer of u [RBAC-beleids regels hebt geconfigureerd](../../virtual-machines/linux/login-using-aad.md) voor de virtuele machine die de gebruiker de aanmeldings naam van de beheerder of de gebruiker van de virtuele machine verleent:
+Controleer of u het [Azure RBAC-beleid](../../virtual-machines/linux/login-using-aad.md) voor de VM hebt geconfigureerd waarmee de gebruiker de beheerder van de virtuele machine of de gebruikers aanmelding voor de virtuele machine verleent:
  
 #### <a name="unauthorized-client"></a>Niet-geautoriseerde client
 

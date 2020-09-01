@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 53e97e768dc13c32f6c174d01dfb222e0de61e43
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017869"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180946"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -160,7 +160,7 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet voor een bewerking in een periode van 24 uur hebt bereikt, wordt deze fout weer gegeven. <br> Bijvoorbeeld: als u de limiet hebt bereikt van het aantal back-uptaken configureren dat per dag kan worden geactiveerd en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
+De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet voor een bewerking in een periode van 24 uur hebt bereikt, wordt deze fout weer gegeven. <br> Bijvoorbeeld: als u de limiet hebt bereikt voor het aantal back-uptaken configureren dat per dag kan worden geactiveerd en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 

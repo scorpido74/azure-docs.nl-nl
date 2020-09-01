@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000716"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181490"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Bewakings waarschuwing Azure Backup-Veelgestelde vragen
 
@@ -19,7 +19,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Backup bewak
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Hoe kan ik controleren of rapport gegevens in een werk ruimte van Log Analytics (LA) zijn gestart?
 
-Ga naar de LA-werk ruimte die u hebt geconfigureerd, navigeer naar het menu-item **logs** en voer de query CoreAzureBackup | 1 nemen. Als u een record ziet die wordt geretourneerd, betekent dit dat gegevens zijn gestart in de werk ruimte. Het pushen van de eerste gegevens kan tot wel 24 uur duren.
+Ga naar de LA-werk ruimte die u hebt geconfigureerd. Ga naar het menu-item **logs** en voer de query uit `CoreAzureBackup | take 1` . Als u een record ziet die wordt geretourneerd, betekent dit dat gegevens zijn gestart in de werk ruimte. Het pushen van de eerste gegevens kan tot wel 24 uur duren.
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Wat is de frequentie van het pushen van gegevens naar een LA-werk ruimte?
 

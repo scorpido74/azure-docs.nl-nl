@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225365"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181439"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problemen en oplossingen tijdens de certificering van virtuele machines 
 
@@ -84,7 +84,7 @@ Neem contact op met het ondersteunings team voor een eerdere goed keuring als u 
 
 Zie [technische assets van uw virtuele Azure-machines maken](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)voor meer informatie over het selecteren van een goedgekeurde basis.
 
-## <a name="tool-kit-test-case-execution-failed"></a>Uitvoering van test case van Tool Kit is mislukt
+## <a name="tool-kit-test-case-execution-failed"></a>Uitvoering van test case van Tool Kit is mislukt 
 
 Met de micro soft-certificerings Toolkit kunt u test cases uitvoeren en controleren of uw VHD of installatie kopie compatibel is met de Azure-omgeving.
 
@@ -113,7 +113,7 @@ De volgende tabel bevat algemene fouten die zijn gevonden tijdens het uitvoeren 
  
 |Scenario|Testcase|Fout|Oplossing|
 |---|---|---|---|
-|1|Test case voor Linux-agent versie|De minimale versie van de Linux-agent is 2,241 of hoger. Deze vereiste is verplicht sinds 1 mei 2020.|De installatie kopie moet worden bijgewerkt met de vereiste versie om [de aanvraag](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)in te dienen.|
+|1|Test case voor Linux-agent versie|De minimale versie van de Linux-agent is 2.2.41 of hoger. Deze vereiste is verplicht sinds 1 mei 2020.|Werk de versie van de Linux-agent bij en deze moet 2,241 of hoger zijn. Ga voor meer informatie naar de [Update pagina van de Linux-agent versie](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
 |2|Test case voor bash geschiedenis|U ziet een fout als de grootte van de bash-geschiedenis in uw verzonden afbeelding meer dan 1 kilo byte (KB) is. De grootte is beperkt tot 1 KB om ervoor te zorgen dat mogelijk gevoelige gegevens niet worden vastgelegd in uw bash-geschiedenis bestand.|Om dit probleem op te lossen, koppelt u de VHD aan een andere werkende VM en brengt u de gewenste wijzigingen aan (u kunt bijvoorbeeld de *bash* -geschiedenis bestanden verwijderen) om de grootte te verkleinen tot minder dan of gelijk aan 1 KB.|
 |3|Vereiste test case voor de kernel-para meter|U ontvangt deze fout melding wanneer de waarde voor de **console** niet is ingesteld op **ttyS0**. Controleer door de volgende opdracht uit te voeren:<br>`cat /proc/cmdline`|Stel de waarde voor de **console** in op **ttyS0**en verzend de aanvraag opnieuw.|
 |4|Test case ClientAlive-interval|Als het resultaat van de Toolkit een mislukt resultaat voor deze test case geeft, is er een onjuiste waarde voor **' ClientAliveInterval**.|Stel de waarde voor **' ClientAliveInterval** in op kleiner dan of gelijk aan 235 en verzend de aanvraag vervolgens opnieuw.|
@@ -154,7 +154,7 @@ Verzend de aanvraag opnieuw met een grootte die kleiner is dan of gelijk is aan 
 
 Raadpleeg de volgende regels voor beperkingen op de schijf grootte van het besturings systeem. Wanneer u een aanvraag indient, controleert u of de grootte van de besturingssysteem schijf binnen de limiet voor Linux of Windows valt.
 
-|OS|Aanbevolen grootte voor VHD|
+|Besturingssysteem|Aanbevolen grootte voor VHD|
 |---|---|
 |Linux|30 GB tot 1023 GB|
 |Windows|30 GB tot 250 GB|
@@ -180,7 +180,7 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 > [!NOTE]
 > Windows Server 2019 heeft geen verplichte versie vereisten.
 
-|OS|Versie|
+|Besturingssysteem|Versie|
 |---|---|
 |Windows met 2008 R2|6.1.7601.23689|
 |Windows Server 2012|6.2.9200.22099|
@@ -213,7 +213,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 |RHEL en Cent OS|6.10|2.6.32-754.15.3|
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
-||7.4|3.10.0-693.50.3|
+||7,4|3.10.0-693.50.3|
 ||7.5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
@@ -363,7 +363,8 @@ Uitgevers moeten toegang krijgen tot de ondersteuning op [Marketplace-Uitgever o
    4.    Versie: de versie van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
    5.   Uitzonderings type: tests, vergrendelde virtuele machine, aangepaste sjablonen
    6.   Reden van aanvraag: reden voor deze uitzonde ring en informatie over de tests die moeten worden uitgesloten 
-   7.   Bijlage: Voeg documenten met een belang rijk bewijs toe. Voor vergrendelde Vm's koppelt u het test rapport en aangepaste sjablonen, geeft u de aangepaste ARM-sjabloon op als bijlage. Fout bij het koppelen van het rapport voor de vergrendelde Vm's en de aangepaste ARM-sjabloon voor aangepaste sjablonen, resulteert in een weigering van de aanvraag
+   7. Tijd lijn: de datum waarop deze uitzonde ring is aangevraagd 
+   8.   Bijlage: Voeg documenten met een belang rijk bewijs toe. Voor vergrendelde Vm's koppelt u het test rapport en aangepaste sjablonen, geeft u de aangepaste ARM-sjabloon op als bijlage. Fout bij het koppelen van het rapport voor de vergrendelde Vm's en de aangepaste ARM-sjabloon voor aangepaste sjablonen, resulteert in een weigering van de aanvraag
 
 
 ## <a name="next-steps"></a>Volgende stappen

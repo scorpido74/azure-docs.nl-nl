@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e9fe46bf3f7528b3a6a08a7c8d90ea6f9117cdd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017665"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179229"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -192,7 +192,7 @@ Zie [hand matige goed keuring van privé-eind punten met behulp van de Azure Res
 ## <a name="adding-dns-records"></a>DNS-records toevoegen
 
 >[!NOTE]
-> Deze stap is niet vereist als u gebruikmaakt van een geïntegreerde DNS-zone. Als u echter uw eigen Azure-Privé-DNS zone hebt gemaakt of een aangepaste privé-DNS-zone gebruikt, controleert u of de vermeldingen zijn aangebracht zoals beschreven in deze sectie.
+> Deze stap is niet vereist als u gebruikmaakt van een geïntegreerde DNS-zone. Als u echter uw eigen Azure-Privé-DNS zone hebt gemaakt of een aangepaste privé-DNS-zone gebruikt, moet u ervoor zorgen dat de vermeldingen zijn aangebracht zoals beschreven in deze sectie.
 
 Wanneer u de optionele privé-DNS-zone en de persoonlijke eind punten voor uw kluis hebt gemaakt, moet u DNS-records toevoegen aan uw DNS-zone. U kunt dit hand matig doen of met een Power shell-script. Dit moet alleen worden uitgevoerd voor de DNS-zone van de back-up. deze voor blobs en wacht rijen worden automatisch bijgewerkt.
 

@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) upgraden
 description: Meer informatie over het upgraden van de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: c822c75fa1232d2304b5bcb4a0afe4323e52287f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007363"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181473"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>De Microsoft Azure Recovery Services-agent (MARS) upgraden
 

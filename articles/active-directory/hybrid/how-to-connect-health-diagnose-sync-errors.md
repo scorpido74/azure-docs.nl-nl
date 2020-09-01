@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359089"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179144"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose and remediate duplicated attribute sync errors (Synchronisatiefouten door dubbel kenmerk analyseren en herstellen)
 
@@ -58,7 +58,7 @@ De functie voor het diagnosticeren ondersteunt gebruikers objecten met de volgen
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> Als u deze functie wilt gebruiken, moet u de machtigingen **globale beheerder** of **Inzender** machtiging van de RBAC-instellingen opgeven.
+> Om deze functie te kunnen gebruiken, is de machtiging **globale beheerder** of **INZENDER** van Azure RBAC vereist.
 >
 
 Volg de stappen in de Azure Portal om de details van de synchronisatie fout te verfijnen en meer specifieke oplossingen te bieden:
@@ -148,7 +148,7 @@ Cloud-gebaseerde gebruiker in azure AD mag geen bron anker hebben. Het bijwerken
 
 
 **Nils.** Welke machtigingen heeft een gebruiker nodig om de oplossing toe te passen?  
-**Één.** **Globale beheerder**of **INZENDER** van de RBAC-instellingen heeft toestemming voor toegang tot het diagnose-en probleemoplossings proces.
+**Één.** **Globale beheerder**of **INZENDER** van Azure RBAC heeft toestemming voor toegang tot het diagnose-en probleemoplossings proces.
 
 
 **Nils.** Moet ik Azure AD Connect configureren of de Azure AD Connect Health Agent bijwerken voor deze functie?  

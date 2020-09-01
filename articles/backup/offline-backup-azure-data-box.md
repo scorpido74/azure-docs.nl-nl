@@ -3,12 +3,12 @@ title: Offline back-ups met behulp van Azure Data Box
 description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote initiële back-upgegevens offline te brengen van de MARS-agent naar een Recovery Services kluis.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761556"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180929"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
 
@@ -195,7 +195,7 @@ Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen 
 
     ![Data Box-taken voor abonnements-ID ophalen](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Next**.
+1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Volgende**.
 
     ![Data Box orders selecteren](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -247,7 +247,7 @@ In deze sectie worden de stappen beschreven die u moet uitvoeren nadat de back-u
 
 - Nadat de MARS-agent een herstel punt heeft gemaakt dat overeenkomt met de eerste back-up, kunt u het opslag account of de specifieke inhoud verwijderen die aan de Azure Data Box-taak is gekoppeld.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Met de Microsoft Azure Recovery Services-agent (MARS) wordt een Azure Active Directory-toepassing (Azure AD) voor u gemaakt in uw Tenant. Voor deze toepassing is een certificaat vereist voor verificatie dat wordt gemaakt en geüpload wanneer u een offline seeding-beleid configureert. We gebruiken Azure PowerShell om het certificaat te maken en te uploaden naar de Azure AD-toepassing.
 

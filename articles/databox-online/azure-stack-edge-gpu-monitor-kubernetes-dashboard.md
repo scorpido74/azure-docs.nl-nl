@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084043"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180674"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Kubernetes-dash board gebruiken om uw Azure Stack Edge GPU-apparaat te bewaken
 
@@ -26,6 +26,7 @@ In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
 > * Toegang tot het Kubernetes-dash board op uw apparaat
+> * `aseuser`Configuratie downloaden
 > * Modules weer geven die op uw apparaat zijn geïmplementeerd
 > * IP-adres ophalen voor toepassingen die op uw apparaat zijn geïmplementeerd
 > * Container logboeken weer geven voor modules die op uw apparaat zijn geïmplementeerd
@@ -33,13 +34,13 @@ In dit artikel leert u het volgende:
 
 ## <a name="about-kubernetes-dashboard"></a>Over Kubernetes-dash board
 
-Kubernetes dash board is een webinterface die u kunt gebruiken voor het oplossen van problemen met in containers geplaatste toepassingen. Het Kubernetes-dash board is een alternatief voor de Kubernetes- `kubectl` opdracht regel. 
+Kubernetes dash board is een webinterface die u kunt gebruiken voor het oplossen van problemen met in containers geplaatste toepassingen. Het Kubernetes-dash board is een alternatief voor de Kubernetes- `kubectl` opdracht regel. Zie [Kubernetes-dash board](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)voor meer informatie. 
 
-Op uw Azure Stack edge-apparaat kunt u het Kubernetes-dash board in de modus alleen-lezen gebruiken om een overzicht te krijgen van de toepassingen die worden uitgevoerd op uw Azure Stack edge-apparaat, de status van Kubernetes-cluster bronnen weer geven en eventuele fouten op het apparaat te bekijken.
+Op uw Azure Stack edge-apparaat kunt u het Kubernetes-dash board in de modus *alleen-lezen* gebruiken om een overzicht te krijgen van de toepassingen die worden uitgevoerd op uw Azure stack edge-apparaat, de status van Kubernetes-cluster bronnen weer geven en eventuele fouten op het apparaat te bekijken.
 
 ## <a name="access-dashboard"></a>Access-dash board
 
-Het Kubernetes-dash board is alleen-lezen en wordt uitgevoerd op het Kubernetes-hoofd knooppunt op poort 31000. Volg deze stappen om toegang te krijgen tot het dash board: 
+Het Kubernetes-dash board is *alleen-lezen* en wordt uitgevoerd op het Kubernetes-hoofd knooppunt op poort 31000. Volg deze stappen om toegang te krijgen tot het dash board: 
 
 1. Ga in de lokale gebruikers interface van uw apparaat naar **apparaat** en ga vervolgens naar **eind punten**van het apparaat. Selecteer de URL van het Kubernetes-dash board om het dash board in een browser te openen.
 

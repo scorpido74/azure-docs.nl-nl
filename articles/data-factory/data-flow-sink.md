@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 49cfc4899379698cab78a5e22fcffacb60636052
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/18/2020
+ms.openlocfilehash: b2a356f8ee6c8e3d11548a3c7c17a868e4c057c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223632"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179178"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -36,7 +36,7 @@ Als u een inline gegevensset wilt gebruiken, selecteert u de gewenste indeling i
 
 ![Inline gegevensset](media/data-flow/inline-selector.png "Inline gegevensset")
 
-##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Ondersteunde Sink-typen
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Ondersteunde Sink-typen
 
 Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (ELT) en werkt met *faserings* gegevens sets die allemaal in azure zijn. Momenteel kunnen de volgende gegevens sets worden gebruikt in een bron transformatie:
 
@@ -48,8 +48,9 @@ Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure-CosmosDB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **instellingen** . voor beelden van informatie en gegevensstroom scripts in deze instellingen vindt u in de documentatie van de connector. 
+De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **instellingen** . Voor beelden van gegevens-en gegevensstroom scripts in deze instellingen vindt u in de documentatie van de connector. 
 
 Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](connector-overview.md). Als u gegevens wilt schrijven naar deze andere bronnen uit uw gegevens stroom, gebruikt u de Kopieer activiteit om die gegevens uit een ondersteunde sink te laden.
 

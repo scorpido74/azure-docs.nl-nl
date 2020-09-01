@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van beveiligings functies in Azure
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892453"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181677"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van hybride back-ups die gebruikmaken van Azure Backup
 
@@ -48,7 +48,7 @@ Als u een Recovery Services kluis maakt, kunt u alle beveiligings functies gebru
     ![Scherm afbeelding van Recovery Services kluis eigenschappen](./media/backup-azure-security-feature/security-settings-update.png)
 
     Met de koppeling bijwerken wordt het deel venster **beveiligings instellingen** geopend, met een overzicht van de functies en kunt u deze inschakelen.
-5. In de vervolg keuzelijst **hebt u azure multi-factor Authentication geconfigureerd?** Selecteer een waarde om te bevestigen of [Azure multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)is ingeschakeld. Als deze is ingeschakeld, wordt u gevraagd om te verifiëren vanaf een ander apparaat (bijvoorbeeld een mobiele telefoon) terwijl u zich aanmeldt bij de Azure Portal.
+5. In de vervolg keuzelijst **hebt u azure multi-factor Authentication geconfigureerd?** Selecteer een waarde om te bevestigen of u [Azure multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)hebt ingeschakeld. Als deze is ingeschakeld, wordt u gevraagd om te verifiëren vanaf een ander apparaat (bijvoorbeeld een mobiele telefoon) terwijl u zich aanmeldt bij de Azure Portal.
 
    Wanneer u kritieke bewerkingen in een back-up uitvoert, moet u een beveiligings pincode invoeren die beschikbaar is op de Azure Portal. Als Azure Multi-Factor Authentication wordt ingeschakeld, wordt er een beveiligingslaag toegevoegd. Alleen geautoriseerde gebruikers met geldige Azure-referenties en vanaf een tweede apparaat worden geverifieerd, hebben toegang tot de Azure Portal.
 6. Als u de beveiligings instellingen wilt opslaan, selecteert u **inschakelen** en selecteert u **Opslaan**. U kunt alleen **inschakelen** selecteren nadat u een waarde hebt geselecteerd in de lijst met **geconfigureerde Azure multi-factor Authentication?** in de vorige stap.

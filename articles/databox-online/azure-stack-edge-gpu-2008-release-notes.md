@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 6c29240aa3267cd93ba0c3de1f0c797ce1a1483c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: de0847beb92ebc95e1998d88cae93dbc19c3fb27
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084516"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180045"
 ---
 # <a name="azure-stack-edge-with-gpu-preview-release-notes"></a>Release opmerkingen bij Azure Stack Edge met GPU preview
 
@@ -46,7 +46,7 @@ De volgende tabel bevat een overzicht van bekende problemen voor het Azure Stack
 |**9.**|Kubernetes |Kubernetes ondersteunt momenteel geen LoadBalancer-Services met meerdere protocollen. Bijvoorbeeld een DNS-service die luistert op TCP en UDP. |Om deze beperking van Kubernetes met MetalLB te omzeilen, kunnen twee services (een voor TCP, een voor UDP) worden gemaakt op dezelfde pod selector. Deze services gebruiken dezelfde uitwisselings sleutel en spec. loadBalancerIP om hetzelfde IP-adres te delen. Ip's kunnen ook worden gedeeld als u meer services hebt dan beschik bare IP-adressen. <br> Zie [IP-adres delen](https://metallb.universe.tf/usage/#ip-address-sharing)voor meer informatie.|
 |**12.**|Kubernetes-cluster|Bestaande Azure IoT Edge Marketplace-modules kunnen niet worden uitgevoerd op het Kubernetes-cluster als het hosting platform voor IoT Edge op Azure Stack edge-apparaat.|De modules moeten worden gewijzigd voordat deze op het Azure Stack edge-apparaat worden geïmplementeerd. Zie voor meer informatie Azure IoT Edge modules van Marketplace aanpassen zodat ze op Azure Stack edge-apparaat kunnen worden uitgevoerd.<!-- insert link-->|
 |**13.**|Kubernetes |Op bestanden gebaseerde BIND koppelingen worden niet ondersteund met Azure IoT Edge op Kubernetes op Azure Stack edge-apparaat.|IoT Edge maakt gebruik van een Vertaal laag om `ContainerCreate` Opties om te zetten in Kubernetes-constructies. Het maken `Binds` van toewijzingen naar de map hostpath of het maken en op bestanden gebaseerde BIND koppelingen kan niet worden gekoppeld aan paden in IOT Edge containers.|
-
+|**15.**|Kubernetes |Als u uw eigen certificaten voor IoT Edge en deze toevoegt aan uw Azure Stack edge-apparaat, worden de nieuwe certificaten niet opgenomen als onderdeel van de update van de helm-grafieken.|U kunt dit probleem omzeilen door [verbinding te maken met de Power shell-interface van het apparaat](azure-stack-edge-gpu-connect-powershell-interface.md). Opnieuw opstarten `iotedged` en `edgehub` peulen.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Back-up van Windows-systeem status maken in azure
 description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-computers naar Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013432"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181626"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 
@@ -80,7 +80,7 @@ Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up 
 
     ![MARS-installatie programma is voltooid](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
-    U hoeft de agent nog niet te installeren. U kunt de agent installeren nadat u de kluisreferenties hebt gedownload.
+    U hoeft de agent nog niet te installeren. U kunt de agent installeren nadat u de kluis referenties hebt gedownload.
 
 6. Selecteer **downloaden**in het deel venster **infra structuur voorbereiden** .
 

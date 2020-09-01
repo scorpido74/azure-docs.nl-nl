@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87bb20d23f773997addd170da09ca8f20d2a8ce7
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 953217d15e6aede86d863bcd5be6df583d15df6d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949980"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180079"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -1961,7 +1961,7 @@ De volgende rollen mogen niet worden gebruikt. Ze zijn afgeschaft en worden in d
 
 Niet elke rol die wordt geretourneerd door Power shell of MS Graph API is zichtbaar in Azure Portal. In de volgende tabel worden deze verschillen ingedeeld.
 
-API-naam | Azure Portal naam | Notities
+API-naam | Azure Portal naam | Opmerkingen
 -------- | ------------------- | -------------
 Company Administratoristrain opr | Globale beheerder | [De naam is gewijzigd voor betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
 CRM Service-beheerder | Dynamics 365-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)
@@ -1980,6 +1980,6 @@ Werkplek apparaat toevoegen | Afgeschaft | [Documentatie over afgeschafte functi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [toegang beheren met Azure roles (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor meer informatie over het toewijzen van een gebruiker als beheerder van een Azure-abonnement.
+* Zie [Azure-roltoewijzingen toevoegen of verwijderen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor meer informatie over het toewijzen van een gebruiker als beheerder van een Azure-abonnement.
 * Zie [inzicht in de verschillende rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md) voor meer informatie over het beheren van toegang tot resources in Microsoft Azure.
 * Zie [een Azure-abonnement koppelen aan of toevoegen aan uw Azure Active Directory Tenant](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant, of voor instructies om een abonnement te koppelen of toe te voegen.

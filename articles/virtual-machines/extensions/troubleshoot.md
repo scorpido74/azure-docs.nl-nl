@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 2fa87e860d0f5f5117840b9e230e383cdd6aae7c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ad3197f20428ec751b4e3520af72dc5f8eb9ad28
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187554"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180352"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problemen met extensie fouten van Azure Windows VM oplossen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -63,6 +63,7 @@ Extensions:  {
 ```
 
 ## <a name="troubleshooting-extension-failures"></a>Problemen met extensies oplossen
+
 ### <a name="rerun-the-extension-on-the-vm"></a>De uitbrei ding op de VM opnieuw uitvoeren
 Als u scripts uitvoert op de VM met behulp van aangepaste script extensie, zou u soms een fout kunnen ondervinden waarbij de VM is gemaakt, maar het script is mislukt. Onder deze omstandigheden wordt de aanbevolen manier om deze fout te herstellen, de uitbrei ding te verwijderen en de sjabloon opnieuw uit te voeren.
 Opmerking: in de toekomst zou deze functionaliteit worden uitgebreid om de installatie van de uitbrei ding te verwijderen.
@@ -74,3 +75,28 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 Zodra de extensie is verwijderd, kan de sjabloon opnieuw worden uitgevoerd om de scripts op de virtuele machine uit te voeren.
 
+### <a name="trigger-a-new-goalstate-to-the-vm"></a>Een nieuwe GoalState naar de virtuele machine activeren
+U zult merken dat een uitbrei ding niet is uitgevoerd of niet kan worden uitgevoerd vanwege een ontbrekende ' Windows Azure CRP-certificaat Generator ' (dat certificaat wordt gebruikt voor het beveiligen van het Trans Port van de beveiligde instellingen van de extensie).
+Het certificaat wordt automatisch opnieuw gegenereerd door de Windows-gast agent opnieuw op te starten in de virtuele machine:
+- Open taak beheer
+- Ga naar het tabblad Details
+- Zoek het WindowsAzureGuestAgent.exe proces
+- Klik met de rechter muisknop en selecteer taak beëindigen. Het proces wordt automatisch opnieuw gestart
+
+
+U kunt ook een nieuwe GoalState naar de virtuele machine activeren door een lege update uit te voeren:
+
+Azure PowerShell:
+
+```azurepowershell
+$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
+Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+```
+
+Azure CLI:
+
+```azurecli
+az vm update -g <rgname> -n <vmname>
+```
+
+Als een lege update niet werkt, kunt u een nieuwe, lege gegevens schijf toevoegen aan de VM vanuit de Azure Beheerportal en deze later verwijderen zodra het certificaat weer is toegevoegd.

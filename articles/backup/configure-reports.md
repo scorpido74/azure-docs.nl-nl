@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022391"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180283"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 

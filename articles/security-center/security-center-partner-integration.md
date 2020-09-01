@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519217"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180844"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -35,10 +35,7 @@ Geïntegreerde beveiligings oplossingen omvatten momenteel de evaluatie van beve
 > [!NOTE]
 > Security Center installeert de Log Analytics agent niet op virtualisatie apparaten van de partner, omdat de meeste beveiligings leveranciers externe agents die op hun apparaten worden uitgevoerd, niet verbieden.
 
-Voor meer informatie over de integratie van hulpprogram ma's voor het scannen van beveiligings problemen van Qualys, met inbegrip van een ingebouwde scanner die beschikbaar is voor klanten met een Standard-laag, raadpleegt u: 
-
-- [Geïntegreerde scanner voor beveiligings problemen voor virtuele machines](built-in-vulnerability-assessment.md).
-- [Het implementeren van een oplossing voor het scannen van een partner probleem](partner-vulnerability-assessment.md).
+Zie voor meer informatie over de integratie van hulpprogram ma's voor het scannen van beveiligings problemen van Qualys, met inbegrip van een ingebouwde scanner die beschikbaar is voor klanten met een Standard-laag, [het beveiligings risico voor uw Azure-virtual machines](deploy-vulnerability-assessment-vm.md).
 
 Security Center biedt ook een beveiligingslek met betrekking tot de analyse van uw:
 
@@ -81,7 +78,7 @@ Selecteer **weer geven** voor meer informatie en opties, zoals:
    - **Solution console** : Hiermee opent u de beheer ervaring voor deze oplossing.
    - **Koppelings-VM** : Hiermee opent u de pagina koppelings toepassingen. Hier kunt u resources verbinden met de partneroplossing.
    - **Oplossing verwijderen**
-   - **Configureren**
+   - **Configureerer**
 
    ![Details van partneroplossingen](./media/security-center-partner-integration/partner-solutions-detail.png)
 

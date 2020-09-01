@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027696"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179400"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -220,7 +220,7 @@ Als u uw eigen aangepaste berichten wilt gebruiken, voert u de volgende stappen 
 
 1. Blader naar **Azure Active Directory**instellingen voor de  >  **Security**  >  **MFA**  >  **telefoon oproep**voor de beveiliging MFA.
 1. Selecteer **begroeting toevoegen**.
-1. Kies het **type** begroeting, zoals *begroeting (standaard)* of de *verificatie is geslaagd*.
+1. Kies het **type** begroeting, zoals *begroeting (standaard)* of de  *verificatie is geslaagd*.
 1. Selecteer de **taal**op basis van de vorige sectie op het gedrag van de [aangepaste taal voor berichten](#custom-message-language-behavior).
 1. Blader naar en selecteer een *. mp3* -of *. WAV* -geluids bestand dat u wilt uploaden.
 1. Wanneer u klaar bent, selecteert u **toevoegen**en vervolgens **Opslaan**.
@@ -242,12 +242,9 @@ Met de functie voor _vertrouwde ip's_ van Azure multi-factor Authentication word
 
 Als uw organisatie de NPS-extensie implementeert voor het leveren van MFA aan on-premises toepassingen, ziet u dat het bron-IP-adres altijd de NPS-server is die de verificatie poging doorloopt.
 
-| Type Azure AD-Tenant | Opties voor vertrouwde IP-functies |
-|:--- |:--- |
-| Beheerd |**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee de verificatie in twee stappen kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. Er kunnen Maxi maal 50 vertrouwde IP-adresbereiken worden geconfigureerd.|
-| Federatief |**Alle federatieve gebruikers**: alle federatieve gebruikers die zich aanmelden bij de organisatie, kunnen verificatie in twee stappen overs Laan. De gebruikers Bypass de verificatie met behulp van een claim die is uitgegeven door Active Directory Federation Services (AD FS).<br/>**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee de verificatie in twee stappen kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. |
+| Azure AD-Tenant type | Opties voor vertrouwde IP-functies | |:---|:---| twee stappen | Beheerd | **Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee multi-factor Authentication kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. Er kunnen Maxi maal 50 vertrouwde IP-adresbereiken worden geconfigureerd. | | Federatief | **Alle federatieve gebruikers**: alle federatieve gebruikers die zich aanmelden bij binnen van de organisatie, kunnen multi-factor Authentication overs Laan. De gebruikers Bypass de verificatie met behulp van een claim die is uitgegeven door Active Directory Federation Services (AD FS).<br/>**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee multi-factor Authentication kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. |
 
-De functie voor het overs laan van vertrouwde IP-adressen werkt alleen binnen het bedrijfs intranet. Als u de optie **alle federatieve gebruikers** selecteert en de gebruiker zich aanmeldt van buiten het bedrijfs intranet, moet de gebruiker verifiëren met behulp van verificatie in twee stappen. Het proces is hetzelfde, zelfs als de gebruiker een AD FS claim presenteert.
+De functie voor het overs laan van vertrouwde IP-adressen werkt alleen binnen het bedrijfs intranet. Als u de optie **alle federatieve gebruikers** selecteert en de gebruiker zich aanmeldt van buiten het bedrijfs intranet, moet de gebruiker verifiëren met behulp van multi-factor Authentication. Het proces is hetzelfde, zelfs als de gebruiker een AD FS claim presenteert.
 
 ### <a name="end-user-experience-inside-of-corpnet"></a>Ervaring van de eind gebruiker in Corpnet
 
@@ -278,14 +275,14 @@ Voer de volgende stappen uit om vertrouwde IP-adressen in te scha kelen met behu
 1. Selecteer **vertrouwde IP-adressen voor MFA configureren**.
 1. Kies op de pagina **Service-instellingen** onder **vertrouwde IP-adressen**een van de volgende twee opties:
 
-   * **Voor aanvragen van federatieve gebruikers die afkomstig zijn van mijn intranet**: als u deze optie kiest, schakelt u het selectie vakje in. Alle federatieve gebruikers die zich aanmelden vanuit het bedrijfs netwerk, kunnen verificatie in twee stappen overs Laan door gebruik te maken van een claim die is uitgegeven door AD FS. Zorg ervoor dat AD FS een regel heeft om de intranet claim toe te voegen aan het juiste verkeer. Als de regel niet bestaat, maakt u de volgende regel in AD FS:
+   * **Voor aanvragen van federatieve gebruikers die afkomstig zijn van mijn intranet**: als u deze optie kiest, schakelt u het selectie vakje in. Alle federatieve gebruikers die zich aanmelden vanuit het bedrijfs netwerk, hebben multi-factor Authentication overs laan met behulp van een claim die is uitgegeven door AD FS. Zorg ervoor dat AD FS een regel heeft om de intranet claim toe te voegen aan het juiste verkeer. Als de regel niet bestaat, maakt u de volgende regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Voor aanvragen van een specifiek bereik van open bare ip's**: als u deze optie wilt kiezen, voert u de IP-adressen in het tekstvak in met behulp van CIDR-notatie.
       * Voor IP-adressen in het bereik xxx. xxx. xxx. 1 t/m xxx. xxx. xxx. 254 gebruikt u notatie als **xxx. xxx. xxx. 0/24**.
       * Gebruik voor één IP-adres notatie zoals **xxx.xxx.xxx.xxx/32**.
-      * Voer Maxi maal 50 IP-adresbereiken in. Gebruikers die zich aanmelden vanaf deze IP-adressen, passeren verificatie in twee stappen.
+      * Voer Maxi maal 50 IP-adresbereiken in. Gebruikers die zich aanmelden vanaf deze IP-adressen, passeren multi-factor Authentication.
 
 1. Selecteer **Opslaan**.
 
@@ -298,20 +295,20 @@ Als u geen beleid voor voorwaardelijke toegang wilt gebruiken om vertrouwde IP-a
 1. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 1. Kies op de pagina **Service-instellingen** onder **betrouw bare ip's**een (of beide) van de volgende twee opties:
 
-   * **Voor aanvragen van federatieve gebruikers op mijn intranet**: als u deze optie wilt selecteren, schakelt u het selectie vakje in. Alle federatieve gebruikers die zich aanmelden vanuit het bedrijfs netwerk, kunnen verificatie in twee stappen overs Laan door gebruik te maken van een claim die is uitgegeven door AD FS. Zorg ervoor dat AD FS een regel heeft om de intranet claim toe te voegen aan het juiste verkeer. Als de regel niet bestaat, maakt u de volgende regel in AD FS:
+   * **Voor aanvragen van federatieve gebruikers op mijn intranet**: als u deze optie wilt selecteren, schakelt u het selectie vakje in. Alle federatieve gebruikers die zich aanmelden vanuit het bedrijfs netwerk, hebben multi-factor Authentication overs laan met behulp van een claim die is uitgegeven door AD FS. Zorg ervoor dat AD FS een regel heeft om de intranet claim toe te voegen aan het juiste verkeer. Als de regel niet bestaat, maakt u de volgende regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Voor aanvragen van een opgegeven bereik van subnetten met IP-adressen**: als u deze optie wilt kiezen, voert u de IP-adressen in het tekstvak in met behulp van CIDR-notatie.
       * Voor IP-adressen in het bereik xxx. xxx. xxx. 1 t/m xxx. xxx. xxx. 254 gebruikt u notatie als **xxx. xxx. xxx. 0/24**.
       * Gebruik voor één IP-adres notatie zoals **xxx.xxx.xxx.xxx/32**.
-      * Voer Maxi maal 50 IP-adresbereiken in. Gebruikers die zich aanmelden vanaf deze IP-adressen, passeren verificatie in twee stappen.
+      * Voer Maxi maal 50 IP-adresbereiken in. Gebruikers die zich aanmelden vanaf deze IP-adressen, passeren multi-factor Authentication.
 
 1. Selecteer **Opslaan**.
 
 ## <a name="verification-methods"></a>Verificatie methoden
 
-U kunt kiezen welke verificatie methoden beschikbaar zijn voor uw gebruikers in de portal voor service-instellingen. Wanneer uw gebruikers hun accounts voor Azure Multi-Factor Authentication inschrijven, kiezen ze hun voorkeurs verificatie methode van de opties die u hebt ingeschakeld. Richt lijnen voor het proces van gebruikers registratie vindt [u in mijn account instellen voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-first-time.md).
+U kunt kiezen welke verificatie methoden beschikbaar zijn voor uw gebruikers in de portal voor service-instellingen. Wanneer uw gebruikers hun accounts voor Azure Multi-Factor Authentication inschrijven, kiezen ze hun voorkeurs verificatie methode van de opties die u hebt ingeschakeld. Richt lijnen voor het proces van gebruikers registratie vindt [u in mijn account instellen voor multi-factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 De volgende verificatie methoden zijn beschikbaar:
 
@@ -336,25 +333,25 @@ Voer de volgende stappen uit om verificatie methoden in of uit te scha kelen:
 
 ## <a name="remember-multi-factor-authentication"></a>Onthouden Multi-Factor Authentication
 
-Met de functie _multi-factor Authentication onthouden_ kunnen gebruikers volgende controles over een bepaald aantal dagen overs Laan nadat ze zich hebben aangemeld bij een apparaat met behulp van multi-factor Authentication. De functie verbetert de bruikbaarheid door het aantal keren dat een gebruiker MFA moet uitvoeren op hetzelfde apparaat wordt geminimaliseerd.
+Met de functie _multi-factor Authentication onthouden_ kunnen gebruikers volgende controles over een bepaald aantal dagen overs Laan nadat ze zich hebben aangemeld bij een apparaat met behulp van multi-factor Authentication. Selecteer een duur van 90 dagen of meer om de bruikbaarheid te verg Roten en zo het aantal keren dat een gebruiker MFA moet uitvoeren op hetzelfde apparaat.
 
 > [!IMPORTANT]
 > Als een account of apparaat is aangetast, kan de beveiliging worden beïnvloed door Multi-Factor Authentication voor vertrouwde apparaten. Als er een bedrijfs account wordt aangetast of een vertrouwd apparaat verloren is gegaan of wordt gestolen, moet u [MFA-sessies intrekken](howto-mfa-userdevicesettings.md).
 >
-> Met de herstel actie wordt de vertrouwde status van alle apparaten ingetrokken en de gebruiker moet de verificatie in twee stappen opnieuw uitvoeren. U kunt uw gebruikers ook de opdracht geven om Multi-Factor Authentication op hun eigen apparaten te herstellen, zoals wordt vermeld in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
+> De herstel actie trekt de vertrouwde status van alle apparaten in en de gebruiker is verplicht om multi-factor Authentication opnieuw uit te voeren. U kunt uw gebruikers ook de opdracht geven om Multi-Factor Authentication op hun eigen apparaten te herstellen, zoals wordt vermeld in [uw instellingen voor multi-factor Authentication beheren](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
 
 ### <a name="how-the-feature-works"></a>Hoe de functie werkt
 
 De functie Multi-Factor Authentication onthouden stelt een permanente cookie in op de browser wanneer een gebruiker de optie **niet opnieuw vragen voor X dagen** selecteert tijdens het aanmelden. De gebruiker wordt niet opnieuw gevraagd om Multi-Factor Authentication van dezelfde browser totdat de cookie verloopt. Als de gebruiker een andere browser op hetzelfde apparaat opent of de cookies wist, wordt deze opnieuw gevraagd om te verifiëren.
 
-De optie **niet opnieuw vragen voor X dagen** wordt niet weer gegeven voor niet-browser toepassingen, ongeacht of de app moderne verificatie ondersteunt. Deze apps maken gebruik van _vernieuwings tokens_ die elk uur nieuwe toegangs tokens bieden. Wanneer een vernieuwings token is gevalideerd, controleert Azure AD of de laatste verificatie in twee stappen binnen het opgegeven aantal dagen is uitgevoerd.
+De optie **niet opnieuw vragen voor X dagen** wordt niet weer gegeven voor niet-browser toepassingen, ongeacht of de app moderne verificatie ondersteunt. Deze apps maken gebruik van _vernieuwings tokens_ die elk uur nieuwe toegangs tokens bieden. Wanneer een vernieuwings token is gevalideerd, controleert Azure AD of de laatste multi-factor Authentication binnen het opgegeven aantal dagen is uitgevoerd.
 
-De functie beperkt het aantal authenticaties op Web-apps, die Norma liter elke keer worden gevraagd. De functie verhoogt het aantal authenticaties voor moderne authenticatie clients die Norma liter elke 90 dagen worden gevraagd. Kan ook het aantal authenticaties verhogen in combi natie met beleid voor voorwaardelijke toegang.
+De functie beperkt het aantal authenticaties op Web-apps, die Norma liter elke keer worden gevraagd. De functie kan het aantal authenticaties verhogen voor moderne authenticatie clients die Norma liter elke 90 dagen vragen, als een lagere duur is geconfigureerd. Kan ook het aantal authenticaties verhogen in combi natie met beleid voor voorwaardelijke toegang.
 
 > [!IMPORTANT]
-> De functie **multi-factor Authentication onthouden** is niet compatibel met de functie **aangemeld blijven** van AD FS, wanneer gebruikers verificatie in twee stappen uitvoeren voor AD FS via Azure multi-factor Authentication-Server of een multi-factor Authentication-oplossing van derden.
+> De functie **multi-factor Authentication onthouden** is niet compatibel met de functie **aangemeld blijven** van AD FS, wanneer gebruikers multi-factor Authentication uitvoeren voor AD FS via Azure multi-factor Authentication-Server of een multi-factor Authentication-oplossing van derden.
 >
-> Als uw gebruikers **ingelogd blijven aangemeld** bij AD FS en hun apparaat ook markeren als vertrouwd voor multi-factor Authentication, wordt de gebruiker niet automatisch gecontroleerd wanneer het aantal dagen van de **Meervoudige multi-factor Authentication** is verlopen. Azure AD vraagt een nieuwe verificatie in twee stappen aan, maar AD FS retourneert een token met de oorspronkelijke Multi-Factor Authentication claim en datum, in plaats van de verificatie in twee stappen opnieuw uit te voeren. **Met deze reactie wordt een verificatie lus tussen Azure AD en AD FS.**
+> Als uw gebruikers **ingelogd blijven aangemeld** bij AD FS en hun apparaat ook markeren als vertrouwd voor multi-factor Authentication, wordt de gebruiker niet automatisch gecontroleerd wanneer het aantal dagen van de **Meervoudige multi-factor Authentication** is verlopen. Azure AD vraagt een nieuwe multi-factor Authentication aan, maar AD FS retourneert een token met de oorspronkelijke Multi-Factor Authentication claim en datum, in plaats van multi-factor Authentication opnieuw uit te voeren. **Met deze reactie wordt een verificatie lus tussen Azure AD en AD FS.**
 >
 > De functie **multi-factor Authentication onthouden** is niet compatibel met B2B-gebruikers en is niet zichtbaar voor B2B-gebruikers wanneer ze zich aanmelden bij de uitgenodigde tenants.
 >
@@ -366,8 +363,8 @@ Voer de volgende stappen uit om de optie in te scha kelen en zo te configureren 
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
 1. Selecteer **Multi-Factor Authentication**.
 1. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
-1. Op de pagina **service** -instellingen **beheert u multi-factor Authentication onthouden**en selecteert **u de optie gebruikers toestaan om multi-factor Authentication te onthouden op apparaten die ze vertrouwen** .
-1. Stel het aantal dagen in zodat vertrouwde apparaten de verificatie in twee stappen kunnen overs Laan. De standaard waarde is 14 dagen.
+1. Selecteer op de pagina **Service-instellingen** onder **multi-factor Authentication onthouden**de optie **gebruikers toestaan om multi-factor Authentication te onthouden op apparaten die ze vertrouwen** .
+1. Stel in hoeveel dagen multi-factor Authentication door vertrouwde apparaten mag worden omzeild. Voor de optimale gebruikers ervaring breidt u de duur naar *90* of meer dagen uit.
 1. Selecteer **Opslaan**.
 
 ### <a name="mark-a-device-as-trusted"></a>Een apparaat als vertrouwd markeren

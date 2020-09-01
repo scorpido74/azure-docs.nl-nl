@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919672"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179348"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Herauthenticatie vragen en de levens duur van sessies voor Azure Multi-Factor Authentication optimaliseren
 
 Azure Active Directory (Azure AD) heeft meerdere instellingen die bepalen hoe vaak gebruikers opnieuw moeten worden geverifieerd. Deze herauthenticatie kan worden uitgevoerd met een eerste factor zoals wacht woord, FIDO of wacht woord Microsoft Authenticator, of om multi-factor Authentication (MFA) uit te voeren. U kunt deze instellingen voor opnieuw verifiëren zo nodig configureren voor uw eigen omgeving en de gewenste gebruikers ervaring.
+
+De standaard configuratie van Azure AD voor de aanmeldings frequentie van gebruikers is een rolling venster van 90 dagen. Het is vaak handig om gebruikers te vragen om referenties, maar dit kan Backfire. Als gebruikers zijn getraind om hun referenties op te geven zonder te denken, kunnen ze per ongeluk ze aan een kwaad aardige referentie prompt leveren.
+
+Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, hoewel een schending van het beleid de sessie intrekt. Enkele voor beelden zijn onder andere het wijzigen van een wacht woord, het incompatibele apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
 
 In dit artikel worden de aanbevolen configuraties beschreven en wordt uitgelegd hoe verschillende instellingen werken en met elkaar communiceren.
 
@@ -35,6 +39,7 @@ Om uw gebruikers het juiste evenwicht te geven tussen beveiliging en gebruiks ge
 * Als u Office 365 apps-licenties of de gratis Azure AD-laag hebt:
     * Schakel eenmalige aanmelding (SSO) in voor toepassingen die gebruikmaken van [beheerde apparaten](../devices/overview.md) of [naadloze SSO](../hybrid/how-to-connect-sso.md).
     * Houd de optie *aangemeld blijven* ingeschakeld en richt uw gebruikers in om deze te accepteren.
+* Zorg ervoor dat uw gebruikers de app Microsoft Authenticator gebruiken voor scenario's voor mobiele apparaten. Deze app wordt gebruikt als een Broker voor andere federatieve Azure AD-apps en vermindert verificatie prompts op het apparaat.
 
 In ons onderzoek ziet u dat deze instellingen geschikt zijn voor de meeste tenants. Sommige combi Naties van deze instellingen, zoals *MFA onthouden* en *blijven aanwezig*, kunnen ertoe leiden dat uw gebruikers te vaak te verifiëren worden gewaarschuwd. Regel matige herverificaties vragen zijn slecht voor gebruikers productiviteit en kunnen deze kwetsbaarder maken voor aanvallen.
 
@@ -71,11 +76,11 @@ Zie [uw aanmeldings pagina voor Azure AD aanpassen](../fundamentals/customize-br
 
 ### <a name="remember-multi-factor-authentication"></a>Onthouden Multi-Factor Authentication  
 
-Met deze instelling kunt u waarden tussen 1-60 dagen configureren en een permanente cookie op de browser instellen wanneer een gebruiker de optie **niet opnieuw vragen voor X dagen** selecteert bij het aanmelden.
+Met deze instelling kunt u waarden tussen 1-365 dagen configureren en een permanente cookie op de browser instellen wanneer een gebruiker de optie **niet opnieuw vragen voor X dagen** selecteert bij het aanmelden.
 
 ![Scherm afbeelding van de voorbeeld prompt voor het goed keuren van een aanmeldings aanvraag](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-Hoewel deze instelling het aantal authenticaties op Web-apps vermindert, wordt het aantal authenticaties voor moderne verificatie-clients, zoals Office-clients, verhoogd. Deze clients vragen normaal gesp roken alleen na het opnieuw instellen van het wacht woord of de inactiviteit van 90 dagen. De maximale waarde voor het aantal *onthouden MFA* is echter 60 dagen. Bij gebruik in combi natie met **blijven aangemeld** of beleid voor voorwaardelijke toegang, kan het aantal verificatie aanvragen toenemen.
+Hoewel deze instelling het aantal authenticaties op Web-apps vermindert, wordt het aantal authenticaties voor moderne verificatie-clients, zoals Office-clients, verhoogd. Deze clients vragen normaal gesp roken alleen na het opnieuw instellen van het wacht woord of de inactiviteit van 90 dagen. Als u deze waarde instelt op minder dan 90 dagen, worden de standaard MFA-prompts voor Office-clients verkort en wordt de frequentie van de herauthenticatie verlengd. Bij gebruik in combi natie met **blijven aangemeld** of beleid voor voorwaardelijke toegang, kan het aantal verificatie aanvragen toenemen.
 
 Als u *MFA onthouden* gebruikt en Azure AD Premium 1 licenties hebt, kunt u deze instellingen migreren naar de aanmeldings frequentie voor voorwaardelijke toegang. Als dat niet het geval is, kunt u in plaats daarvan aanmelden gebruiken *?*
 

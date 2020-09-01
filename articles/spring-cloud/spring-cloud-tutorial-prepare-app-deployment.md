@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046728"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179756"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
@@ -21,8 +21,8 @@ In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereid
 Voordat u dit voor beeld uitvoert, kunt u de [eenvoudige Snelstartgids](spring-cloud-quickstart.md)proberen.
 
 Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
-* [App starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
-* [App starten met Azure CLI](spring-cloud-quickstart-launch-app-cli.md)
+* [Uw eerste app starten](spring-cloud-quickstart.md)
+* [Microservices bouwen en uitvoeren](spring-cloud-quickstart-sample-app-introduction.md)
 
 In dit artikel worden de vereiste afhankelijkheden beschreven en wordt uitgelegd hoe u deze toevoegt aan het POM-bestand.
 
@@ -41,7 +41,7 @@ De Azure lente-Cloud ondersteunt alleen veer boot-apps van veer boot versie 2,1 
 Spring boot-versie | Lente-Cloud versie
 ---|---
 2.1 | Greenwich. RELEASE
-2,2 | Hoxton. RELEASE
+2.2 | Hoxton. RELEASE
 2.3 | Hoxton.SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring boot versie 2,1
@@ -129,7 +129,7 @@ De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor u
 Spring boot-versie | Lente-Cloud versie | Azure lente-Cloud versie
 ---|---|---
 2.1 | Greenwich. RELEASE | 2.1
-2,2 | Hoxton. RELEASE | 2,2
+2.2 | Hoxton. RELEASE | 2.2
 2.3 | Hoxton.SR5 | 2.3
 
 Neem een van de volgende afhankelijkheden op in uw pom.xml-bestand. Selecteer de afhankelijkheid waarvan de Azure lente-Cloud versie overeenkomt met uw eigen.

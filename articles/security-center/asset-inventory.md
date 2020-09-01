@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 7fab15ae4e9e58af58a4490beb2d512379976d1c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263942"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181100"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Uw resources verkennen en beheren met Asset Inventory and management tools
 
@@ -102,6 +102,9 @@ Met behulp van de [Kusto-query taal (KQL)](https://docs.microsoft.com/azure/data
 1. Als u de **beveiligings resultaten** wilt gebruiken, moet u de vrije tekst van de id, de beveiligings controle of de CVE-naam van een beveiligings probleem bepalen dat kan worden gefilterd op de betrokken resources:
 
     ![' Beveiligings resultaten bevatten ' filter](./media/asset-inventory/security-findings-contain-elements.png)
+
+    > [!TIP]
+    > De **beveiligings resultaten bevatten** en **Tags** filters accepteren slechts één waarde. Gebruik filters toevoegen om op meer dan één filter **toe te voegen**.
 
 1. Als u het filter **prijs categorie** wilt gebruiken, selecteert u een of meer opties (gratis, gedeeltelijk of standaard):
 

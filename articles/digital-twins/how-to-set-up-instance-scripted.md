@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587970"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181371"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -55,7 +55,7 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
     * Voor het exemplaar: een naam van een *resource groep* . U kunt een bestaande resource groep gebruiken of een nieuwe naam opgeven om deze te maken.
     * Voor het exemplaar: een *naam* voor uw Azure Digital apparaatdubbels-exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio voor uw abonnement (wat betekent dat als uw abonnement een ander Azure Digital Apparaatdubbels-exemplaar heeft in de regio die al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
     * Voor de app-registratie: een *weergave naam van de Azure AD-toepassing* die u aan de registratie wilt koppelen. Met deze app-registratie kunt u toegangs machtigingen voor de [Azure Digital apparaatdubbels-api's](how-to-use-apis-sdks.md)configureren. Later wordt de client-app geverifieerd op basis van de app-registratie, en worden daarom de geconfigureerde toegangs machtigingen voor de Api's verleend.
-    * Voor de app-registratie: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. U kunt gebruiken `http://localhost` .
+    * Voor de app-registratie: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. Gebruik `http://localhost`. Met het script wordt een URI voor een *open bare client/systeem eigen (mobile & Desktop)* ingesteld.
 
 Met het script maakt u een Azure Digital Apparaatdubbels-exemplaar, wijst u uw Azure-gebruiker de rol *Azure Digital apparaatdubbels-eigenaar (preview)* toe aan het exemplaar en stelt u een Azure AD-App-registratie in voor uw client-app.
 

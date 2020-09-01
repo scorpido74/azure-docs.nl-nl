@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795912"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179569"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -310,11 +310,11 @@ De [Azure Security Center](../../security-center/security-center-intro.md):
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Uw geprivilegieerde accounts inventariseren in gehoste Virtual Machines
 
-Normaal gesp roken hoeft u geen gebruikers onbeperkte machtigingen te geven voor al uw Azure-abonnementen of-resources. Gebruik Azure AD-beheerders rollen om alleen de toegang toe te kennen die uw gebruikers nodig hebben om hun taken uit te voeren. U kunt Azure AD-beheerders rollen gebruiken om één beheerder toe te staan alleen Vm's in een abonnement te beheren, terwijl een andere SQL-data bases binnen hetzelfde abonnement kan beheren. Zie [aan de slag met Access Control op basis van rollen in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie.
+Normaal gesp roken hoeft u geen gebruikers onbeperkte machtigingen te geven voor al uw Azure-abonnementen of-resources. Gebruik Azure AD-beheerders rollen om alleen de toegang toe te kennen die uw gebruikers nodig hebben om hun taken uit te voeren. U kunt Azure AD-beheerders rollen gebruiken om één beheerder toe te staan alleen Vm's in een abonnement te beheren, terwijl een andere SQL-data bases binnen hetzelfde abonnement kan beheren. Zie [Wat is Azure Role-based Access Control](../../role-based-access-control/overview.md)voor meer informatie.
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>PIM implementeren voor Azure AD-beheerders rollen
 
-Gebruik privileged Identity Management met Azure AD-beheerders rollen voor het beheren, beheren en bewaken van de toegang tot Azure-resources. Met PIM beschermt u de belichtings tijd van bevoegdheden en verhoogt u uw zicht baarheid in het gebruik via rapporten en waarschuwingen. Zie RBAC-toegang tot [Azure-resources beheren met privileged Identity Management](../../role-based-access-control/best-practices.md)voor meer informatie.
+Gebruik privileged Identity Management met Azure AD-beheerders rollen voor het beheren, beheren en bewaken van de toegang tot Azure-resources. Met PIM beschermt u de belichtings tijd van bevoegdheden en verhoogt u uw zicht baarheid in het gebruik via rapporten en waarschuwingen. Zie [Wat is Azure AD privileged Identity Management](../privileged-identity-management/pim-configure.md)voor meer informatie.
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure-logboek integratie gebruiken om relevante Azure-logboeken te verzenden naar uw SIEM-systemen
 
@@ -359,7 +359,7 @@ Fase 4 van het schema moet worden geïmplementeerd op zes maanden en verder. Vol
 Het beveiligen van bevoegde toegang is belang rijk voor het instellen van beveiligings garanties voor uw bedrijfs middelen. Het moet echter deel uitmaken van een volledig beveiligings programma dat permanente beveiligings garanties biedt. Dit programma moet elementen bevatten zoals:
 
 * Beleid
-* Operations
+* Bewerkingen
 * Gegevens beveiliging
 * Servers
 * Toepassingen

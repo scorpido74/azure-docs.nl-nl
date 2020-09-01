@@ -3,12 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892249"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180011"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -50,7 +50,13 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 
 ## <a name="backup-costs"></a>Back-upkosten
 
-Op dit moment worden alleen moment opnamen in rekening gebracht, omdat Azure file share Backup een oplossing op basis van moment opnamen is. De opslag kosten die worden gemaakt voor moment opnamen worden gefactureerd samen met Azure Files gebruik volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/)genoemde prijs gegevens.
+Er zijn twee kosten verbonden aan de back-upoplossing voor Azure-bestands share:
+
+1. **Opslag kosten voor moment opname**: de opslag kosten die worden gemaakt voor moment opnamen worden gefactureerd samen met Azure files gebruik volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/) genoemde prijs informatie 
+
+2. **Kosten van beveiligde instanties** : vanaf 1 september 2020 worden de kosten van een beveiligd exemplaar in rekening gebracht op basis van de [hier](https://azure.microsoft.com/en-in/pricing/details/backup/) genoemde prijs gegevens. De kosten voor het beveiligde exemplaar zijn afhankelijk van de totale grootte van beveiligde bestands shares in een opslag account.
+
+Als u gedetailleerde schattingen wilt ontvangen voor het maken van back-ups van Azure-bestands shares, kunt u de gedetailleerde [Azure backup prijzen Estimator](https://aka.ms/AzureBackupCostEstimates).  
 
 ## <a name="next-steps"></a>Volgende stappen
 

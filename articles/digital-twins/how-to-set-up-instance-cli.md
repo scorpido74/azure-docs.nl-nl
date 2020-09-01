@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 17e39a7b94384827af19b2362d478456cde8f167
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078492"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181456"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Een Azure Digital Apparaatdubbels-exemplaar en-authenticatie (CLI) instellen
 
@@ -108,7 +108,7 @@ Maak een nieuw bestand in uw werkmap en voer het volgende JSON-fragment in om de
 }]
 ``` 
 
-Sla dit bestand _**op alsmanifest.jsop**_.
+Sla dit bestand _** op alsmanifest.jsop**_.
 
 > [!NOTE] 
 > Er zijn enkele locaties waar een ' vriendelijke ', lees bare teken reeks `https://digitaltwins.azure.net` kan worden gebruikt voor de app-id van de Azure Digital apparaatdubbels-bron in plaats van de GUID `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Zo kunnen bijvoorbeeld veel voor beelden in deze documentatieset authenticatie gebruiken met de MSAL-bibliotheek, en de beschrijvende teken reeks kan hiervoor worden gebruikt. Tijdens deze stap voor het maken van de app-registratie is de GUID-vorm van de ID echter vereist, zoals hierboven wordt weer gegeven. 
@@ -118,7 +118,7 @@ Vervolgens uploadt u dit bestand naar Cloud Shell. Klik in het venster Cloud She
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
 Ga naar de *manifest.js* die u zojuist hebt gemaakt en klik op openen.
 
-Voer vervolgens de volgende opdracht uit om een app-registratie te maken (waar nodig tijdelijke aanduidingen vervangen):
+Voer vervolgens de volgende opdracht uit om een app-registratie te maken met de antwoord-URL van een *open bare client/systeem eigen (mobile & bureau blad)* `http://localhost` . Vervang tijdelijke aanduidingen naar behoefte:
 
 ```azurecli
 az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
