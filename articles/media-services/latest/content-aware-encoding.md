@@ -3,23 +3,25 @@ title: Een voor instelling voor code ring met Content-Aware-Azure Media Services
 description: In dit artikel wordt beschreven hoe u met inhoud compatibele code ring in Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c29909d70b0fd55e4b680c79928cdc5d05b494fa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 853381dbccea5374806fbeadb1d29632f0525fdb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003725"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265606"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>De vooraf ingestelde coderings voorinstelling gebruiken om de optimale bitrate waarde voor een bepaalde oplossing te vinden
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Video moet worden gecodeerd met meerdere bitsnelheden (hoog naar laag) om inhoud voor te bereiden voor levering door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). Dit zorgt voor een goede vermindering van de kwaliteit, omdat de bitsnelheid lager is. Dit is de resolutie van de video. Een dergelijke multiple-bit-factor encoding maakt gebruik van een zogenaamde ' coderings ladder ', een tabel met resoluties en bitrates, de Media Services [ingebouwde coderings definities](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 

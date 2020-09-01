@@ -7,19 +7,16 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 07e7b8db3bf7e1131ec8892a69223eaf4505e8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10f3856a7c0c0a98ab8b23e20342d745b1966b9b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037743"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263192"
 ---
 # <a name="az-spring-cloud"></a>AZ lente-Cloud
 
 ## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Azure lente-Cloud beheren met de Azure CLI
-
->[!Note]
-> Er is momenteel een preview-versie van Azure lente Cloud beschikbaar.  Deze opdrachten kunnen worden gewijzigd of verwijderd in een toekomstige versie.
 
 | AZ lente-Cloud | Opdracht |
 |------|------:|
@@ -90,14 +87,14 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam voor dit Azure veer Cloud-exemplaar. |
-| --Resource-Group-g | Hiermee geeft u de resource groep voor deze app op.  De standaard groep configureren met`az configure --defaults group=<name>` |
+| --Resource-Group-g | Hiermee geeft u de resource groep voor deze app op.  De standaard groep configureren met `az configure --defaults group=<name>` |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
-| --locatie-l | Hiermee geeft u de server locatie op voor deze app.  Geldige locaties zoeken met`az account list-locations` |
+| --locatie-l | Hiermee geeft u de server locatie op voor deze app.  Geldige locaties zoeken met `az account list-locations` |
 | --geen wacht tijd | Zorg dat er geen langlopende bewerkingen worden uitgevoerd.
 
 ### <a name="examples"></a>Voorbeelden
@@ -118,12 +115,12 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | De naam van het Azure veer Cloud-exemplaar dat moet worden verwijderd. |
 | --Resource-Group-g | De naam van de resource groep waartoe de Azure lente-Cloud behoort. |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | -geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
 
@@ -143,7 +140,7 @@ Alle Azure lente-Cloud exemplaren weer geven die zijn gekoppeld aan de opgegeven
 az spring-cloud list --resource-group -g
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --Resource-Group-g | De naam van de resourcegroep. |
 
@@ -156,7 +153,7 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | De naam van het Azure veer Cloud-exemplaar. |
 | --Resource-Group-g | De naam van de resource groep waartoe het Azure veer Cloud-exemplaar behoort.
@@ -176,13 +173,13 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --CPU | Aantal virtuele kernen per exemplaar.  Standaard: 1. |
 | --Enable-persistent-storage | Booleaanse waarde.  Indien waar, wordt een 50 GB-schijf gekoppeld aan het standaardpad. |
@@ -214,7 +211,7 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -241,25 +238,25 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --CPU | Aantal virtuele CPI-kernen per exemplaar. |
 | --implementatie-d | Naam van een bestaande app-implementatie.  De standaard instelling is de productie-implementatie als deze niet is opgegeven. |
 | --env | Met ruimte gescheiden omgevings variabelen in de indeling ' sleutel [= waarde] '. |
 | --exemplaar-aantal | Aantal exemplaren. |
 | --jar-pad | Implementeer, indien opgegeven, jar vanaf gegeven pad. Als dat niet het geval is, implementeert u de huidige map als een tar. |
-| --JVM-opties | Een teken reeks met JVM-opties.  Gebruik ' = ' in plaats van ' ' om fouten bij het parseren van shells te voor komen. Bijvoorbeeld, `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM-opties | Een teken reeks met JVM-opties.  Gebruik ' = ' in plaats van ' ' om fouten bij het parseren van shells te voor komen. Bijvoorbeeld,  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --geheugen | Aantal GB aan geheugen per instantie. |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
 | --runtime-versie | Runtime versie van de taal die in de app wordt gebruikt.  Toegestane waarden: `Java_11` , `Java_8` . |
 | --doel module | De onderliggende module die moet worden geïmplementeerd.  Vereist wanneer meerdere jar-pakketten zijn gebouwd op basis van de bron code. |
-| --versie | Implementatie versie.  Ongewijzigd als dit niet is ingesteld. |
+| --version | Implementatie versie.  Ongewijzigd als dit niet is ingesteld. |
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -290,7 +287,7 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|Vereiste parameters | Beschrijving |
+|Vereiste parameters | Description |
 | --- | :--- |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
@@ -307,13 +304,13 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --implementatie-d | De naam van de bestaande implementatie van de app.  De standaard instelling is de productie-implementatie als deze niet is opgegeven. |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
@@ -333,13 +330,13 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --CPU | Aantal virtuele CPU-kernen per app-exemplaar. |
 | --implementatie-d | De naam van de bestaande implementatie van de app.  De standaard instelling is de productie-implementatie als deze niet is opgegeven. |
@@ -373,14 +370,14 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --implementatie-d | De naam van een bestaande implementatie van de app. |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
 
@@ -402,7 +399,7 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -419,13 +416,13 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --implementatie-d | De naam van een bestaande implementatie van de app.  Wordt standaard ingesteld op de productie omgeving. |
 
@@ -441,13 +438,13 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --implementatie-d | De naam van een bestaande implementatie van de app.  Wordt standaard ingesteld op de productie omgeving. |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
@@ -464,13 +461,13 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --implementatie-d | De naam van een bestaande implementatie van de app.  Wordt standaard ingesteld op de productie omgeving. |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
@@ -492,19 +489,19 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam-n | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --implementatie-d | De naam van een bestaande implementatie van de app.  Wordt standaard ingesteld op de productie omgeving. |
 | --Enable-persistent-storage | True.  Als dit het geval is, koppelt u een 50 GB-schijf aan het standaardpad. |
 | --env | Met ruimte gescheiden omgevings variabelen in de indeling ' sleutel [= waarde] '. |
 | --is-openbaar | True.  Indien waar, wordt een openbaar domein toegewezen aan de app. |
-| --JVM-opties | Een teken reeks met JVM-opties.  Gebruik ' = ' in plaats van ' ' om fouten bij het parseren van shells te voor komen. Bijvoorbeeld, `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM-opties | Een teken reeks met JVM-opties.  Gebruik ' = ' in plaats van ' ' om fouten bij het parseren van shells te voor komen. Bijvoorbeeld,  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
 | --runtime-versie | Runtime versie van de taal die in de app wordt gebruikt.  Toegestane waarden: `Java_11` , `Java_8` . |
 
@@ -526,7 +523,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -543,7 +540,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding die moet worden verwijderd. |
@@ -561,7 +558,7 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding. |
@@ -591,7 +588,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --API-type | Geef het API-type op met een van de volgende waarden: Cassandra, Gremlin, Mongo, SQL, Table. |
 | --app | Naam van de app. |
@@ -599,7 +596,7 @@ az spring-cloud app binding list --app
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-|Optionele parameters | Beschrijving |
+|Optionele parameters | Description |
 | --- | :--- |
 | --verzameling-naam | De naam van de verzameling.  Vereist wanneer Gremlin wordt gebruikt. |
 | --database naam | De naam van de data base.  Vereist wanneer Mongo, SQL en Gremlin worden gebruikt. |
@@ -617,14 +614,14 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-|Optionele parameters | Beschrijving |
+|Optionele parameters | Description |
 | --- | :--- |
 | --verzameling-naam | De naam van de verzameling.  Vereist wanneer Gremlin wordt gebruikt. |
 | --database naam | De naam van de data base.  Vereist wanneer Mongo, SQL en Gremlin worden gebruikt. |
@@ -642,7 +639,7 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --database naam | De naam van de data base. |
@@ -667,14 +664,14 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --database naam | De naam van de data base. |
 | --sleutel | API-sleutel van de service. |
@@ -693,7 +690,7 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding. |
@@ -701,7 +698,7 @@ az spring-cloud app binding redis add --app
 | --resource-id | De Azure-Resource-ID van de service waarmee u een binding wilt maken. |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --uitschakelen-SSL | Schakel TLS uit. |
 
@@ -709,14 +706,14 @@ az spring-cloud app binding redis add --app
 
 Een service binding voor Azure cache bijwerken voor redis.
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --uitschakelen-SSL | Schakel TLS uit. |
 
@@ -726,26 +723,26 @@ Maak een faserings implementatie voor de app.
 
 Voor het implementeren van code of het bijwerken van instellingen voor een bestaande implementatie, gebruik `az spring-cloud app deploy --deployment <staging-deployment>` of ' AZ lente-Cloud App Update--Deployment <staging deployment> .
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de service binding. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --Service-s | De naam van de Azure lente-Cloud.  U kunt de standaard service configureren met `az configure --defaults spring-cloud=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --CPU | Aantal virtuele CPU-kernen per exemplaar.  Standaardinstelling: 1 |
 | --env | Met ruimte gescheiden omgevings variabelen in de indeling ' sleutel [= waarde] '. |
 | --exemplaar-aantal | Aantal exemplaren. Standaard: 1. |
 | --jar-pad | Implementeer jar als dit wordt gegeven.  Als dat niet het geval is, implementeert u de huidige map als een tar. |
-| --JVM-opties | Een teken reeks met JVM-opties.  Gebruik ' = ' in plaats van ' ' om fouten bij het parseren van shells te voor komen. Bijvoorbeeld, `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM-opties | Een teken reeks met JVM-opties.  Gebruik ' = ' in plaats van ' ' om fouten bij het parseren van shells te voor komen. Bijvoorbeeld,  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --geheugen | Aantal GB aan geheugen per instantie. |
 | --geen wacht tijd | Wacht niet totdat langlopende bewerkingen zijn voltooid. |
 | --runtime-versie | Runtime versie van de taal die in de app wordt gebruikt.  Toegestane waarden: `Java_11` , `Java_8` . |
 | --overs Laan-klonen-instellingen | Maak een staging-implementatie door de huidige instellingen voor productie-implementatie te klonen. |
 | --doel module | De onderliggende module die moet worden geïmplementeerd.  Vereist wanneer meerdere jar-pakketten zijn gebouwd op basis van de bron code. |
-| --versie | Implementatie versie.  Ongewijzigd als dit niet is ingesteld. |
+| --version | Implementatie versie.  Ongewijzigd als dit niet is ingesteld. |
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -772,7 +769,7 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de implementatie. |
@@ -789,7 +786,7 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -806,7 +803,7 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --naam | De naam van de implementatie. |
@@ -822,7 +819,7 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -838,13 +835,13 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --config-bestand | Bestandspad naar een YAML-manifest voor de configuratie van de configuratie server. |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --geen wacht tijd | Zorg dat er geen langlopende bewerkingen worden uitgevoerd.
 
@@ -857,7 +854,7 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -881,13 +878,13 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --URI | De URI van de toegevoegde configuratie. |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --defer | Sla het object tijdelijk op in de lokale cache in plaats van naar Azure te verzenden.  Gebruiken `az cache` om weer te geven/wissen. |
 | --host-sleutel | Host-sleutel voor de toegevoegde configuratie. |
@@ -918,14 +915,14 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --opslag plaats-naam | De URI van de opslag plaats. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 | --URI | De URI van de toegevoegde configuratie. |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --defer | Sla het object tijdelijk op in de lokale cache in plaats van naar Azure te verzenden.  Gebruiken `az cache` om weer te geven/wissen. |
 | --host-sleutel | Host-sleutel voor de toegevoegde configuratie. |
@@ -948,12 +945,12 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --defer | Sla het object tijdelijk op in de lokale cache in plaats van naar Azure te verzenden.  Gebruiken `az cache` om weer te geven/wissen. |
 
@@ -968,13 +965,13 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --opslag plaats-naam | De URI van de opslag plaats. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --defer | Sla het object tijdelijk op in de lokale cache in plaats van naar Azure te verzenden.  Gebruiken `az cache` om weer te geven/wissen. |
 
@@ -987,7 +984,7 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -1001,7 +998,7 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
@@ -1017,12 +1014,12 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |
 
-| Optionele parameters | Beschrijving |
+| Optionele parameters | Description |
 | --- | :--- |
 | --app | Naam van de app. |
 | --implementatie-d | De naam van een bestaande implementatie van de app.  De standaard instelling is productie als niet opgegeven. |
@@ -1037,7 +1034,7 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| Vereiste parameters | Beschrijving |
+| Vereiste parameters | Description |
 | --- | :--- |
 | --naam | De naam van de Azure lente-Cloud. |
 | --Resource-Group-g | De naam van de resourcegroep.  U kunt de standaard groep configureren met `az configure --defaults group=<name>` . |

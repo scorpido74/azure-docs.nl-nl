@@ -3,7 +3,7 @@ title: Verbinding maken met Azure Media Services v3 API-.NET
 description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met .NET.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 933342c8917b3219ec858bfc3edc4013863d2c6a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90f5c55922a5fafb29a40faf9af719f77c74c6cf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008111"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265640"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 .NET SDK met behulp van de Service-Principal-aanmeldings methode.
 
@@ -46,7 +48,7 @@ De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code
 1. Selecteer in Visual Studio **extra**  >  **NuGet package manager**  >  **NuGet Manager-console**.
 2. In het venster **Package Manager-console** gebruikt u `Install-Package` de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
-|Pakket|Beschrijving|
+|Pakket|Description|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [micro soft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatie bibliotheek voor Azure SDK voor NET|

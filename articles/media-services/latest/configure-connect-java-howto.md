@@ -3,7 +3,7 @@ title: Verbinding maken met Azure Media Services v3 API-Java
 description: In dit artikel wordt beschreven hoe u verbinding maakt met Azure Media Services v3 API met Java.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 08/31/2020
 ms.custom: devx-track-java
-ms.author: juliako
-ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: inhenkel
+ms.openlocfilehash: dc667a46d9802332d0f8c8dc673b28a9aeab96ea
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319827"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265623"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinding maken met Media Services v3 API-Java
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dit artikel laat u zien hoe u verbinding kunt maken met de Azure Media Services v3 Java SDK met behulp van de aanmeldings methode voor de Service-Principal.
 
@@ -59,7 +61,7 @@ Wanneer u de opdracht uitvoert, `pom.xml` worden de-, `App.java` en andere besta
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
 1. Open in Visual Studio code de map waar uw project zich bevindt
-1. Zoek en open de`pom.xml`
+1. Zoek en open de `pom.xml`
 1. De vereiste afhankelijkheden toevoegen
 
     ```xml
@@ -120,9 +122,9 @@ Wanneer u de opdracht uitvoert, `pom.xml` worden de-, `App.java` en andere besta
    ```
 1. Voer de app uit.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Media Services concepten](concepts-overview.md)
+- [Media Services-concepts](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
 - [Java-referentie](https://aka.ms/ams-v3-java-ref)
 - [com. micro soft. Azure. Media Services. v2018_07_01: Azure-beheer-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)

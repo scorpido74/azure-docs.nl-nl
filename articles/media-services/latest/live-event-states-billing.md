@@ -3,7 +3,7 @@ title: LiveEvent Staten en facturering in Azure Media Services | Microsoft Docs
 description: In dit onderwerp vindt u een overzicht van Azure Media Services statussen en facturering van LiveEvent.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/24/2019
-ms.author: juliako
-ms.openlocfilehash: dd63152776e0268b8f9e3e0ce116fea897cdf4e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 37098b8268d5a451935c925114fb762c574fa55c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000870"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265300"
 ---
 # <a name="live-event-states-and-billing"></a>Live gebeurtenis statussen en facturering
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services begint de facturering van een live gebeurtenis zodra de status overgangen **wordt uitgevoerd**. U wordt gefactureerd, zelfs als er geen video door de service wordt getransporteerd. Als u de live-gebeurtenis van facturering wilt stoppen, moet u de live-gebeurtenis beëindigen. Live transcriptie wordt gefactureerd op dezelfde manier als de live-gebeurtenis.
 

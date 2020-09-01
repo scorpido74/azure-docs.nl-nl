@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039188"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265657"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Het ontwerpen en bouwen van een Digital Rights Management (DRM)-subsysteem voor een over-the-top (OTT) of online streaming-oplossing is een complexe taak. Opera tors/online video providers doen deze taak doorgaans door aan gespecialiseerde DRM-service providers. Het doel van dit document is om een referentie-ontwerp en een referentie-implementatie van een end-to-end DRM-subsysteem in een OTT of online streaming-oplossing te presen teren.
 
@@ -51,7 +53,7 @@ De volgende tabel bevat een overzicht van systeem eigen DRM-ondersteuning op ver
 | **Windows 10** | PlayReady | Micro soft Edge/IE11 voor PlayReady|
 | **Android-apparaten (telefoon, Tablet, TV)** |Widevine |Chrome voor Widevine |
 | **iOS** | FairPlay | Safari voor FairPlay (sinds iOS 11,2) |
-| **MacOS** | FairPlay | Safari voor FairPlay (sinds Safari 9 + op Mac OS X 10.11 + El Capitan)|
+| **macOS** | FairPlay | Safari voor FairPlay (sinds Safari 9 + op Mac OS X 10.11 + El Capitan)|
 | **tvOS** | FairPlay | |
 
 Als u de huidige status van de implementatie voor elke DRM overweegt, wil een service doorgaans twee of drie DRMs implementeren om ervoor te zorgen dat u alle typen eind punten op de beste manier adresseert.

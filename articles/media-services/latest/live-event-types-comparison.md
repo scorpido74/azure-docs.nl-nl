@@ -3,7 +3,7 @@ title: LiveEvent-typen Azure Media Services | Microsoft Docs
 description: In Azure Media Services kan een live-gebeurtenis worden ingesteld op een *Pass-Through-* of *Live-code ring*. In dit artikel wordt een gedetailleerde tabel weer gegeven waarin live gebeurtenis typen worden vergeleken.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,18 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090056"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265249"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
-In Azure Media Services kan een [live gebeurtenis](/rest/api/media/liveevents) worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+In Azure Media Services kan een  [live gebeurtenis](/rest/api/media/liveevents) worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). 
 
 In deze artikelen worden de functies van de live-gebeurtenis typen vergeleken.
 
@@ -36,13 +38,13 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 
 | Functie | Pass-through live-gebeurtenis | Standard-of Premium1080p live-gebeurtenis |
 | --- | --- | --- |
-| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |No |Yes |
+| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Ja |
 | Maximale video resolutie voor invoer van contributie |4.000 (4096x2160 bij 60 frames per seconde) |1080p (1920x1088 bij 30 frames per seconde)|
 | Aanbevolen maximum aantal lagen in de invoer van bijdragen|Maxi maal 12|Eén audio|
 | Maximum aantal lagen in uitvoer| Hetzelfde als invoer|Maxi maal 6 (zie onderstaande systeem instellingen)|
 | Maximale cumulatieve band breedte van invoer voor bijdragen|60 Mbps|N.v.t.|
 | Maximale bitrate voor één laag in de bijdrage |20 Mbps|20 Mbps|
-| Ondersteuning voor audio tracks met meerdere talen|Yes|No|
+| Ondersteuning voor audio tracks met meerdere talen|Ja|Nee|
 | Ondersteunde video-codecs voor invoer |H. 264/AVC en H. 265/HEVC|H. 264/AVC|
 | Ondersteunde video-codecs voor uitvoer|Hetzelfde als invoer|H. 264/AVC|
 | Ondersteunde bitdiepte, invoer en uitvoer van video|Maxi maal 10 bits inclusief HDR 10/HLG|8-bits|
@@ -53,11 +55,11 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 | Invoer protocollen|RTMP, gefragmenteerd-MP4 (Smooth Streaming)|RTMP, gefragmenteerd-MP4 (Smooth Streaming)|
 | Prijs|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|
 | Maximale uitvoerings tijd| 24 uur x 365 dagen, Live lineair | 24 uur x 365 dagen, Live lineair (preview-versie)|
-| De mogelijkheid om gegevens van Inge sloten CEA 608/708-bijschriften door te geven|Yes|Ja|
-| Mogelijkheid om live-transcriptie in te scha kelen|Yes|Ja|
+| De mogelijkheid om gegevens van Inge sloten CEA 608/708-bijschriften door te geven|Ja|Ja|
+| Mogelijkheid om live-transcriptie in te scha kelen|Ja|Ja|
 | Ondersteuning voor het invoegen van pastels|Nee|Nee|
 | Ondersteuning voor AD-Signa lering via API| Nee|Nee|
-| Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Yes|Ja|
+| Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Ja|Ja|
 | Mogelijkheid om te herstellen van korte hokjes in een bijdrager|Ja|Gedeeltelijk|
 | Ondersteuning voor niet-uniforme invoer GOPs|Yes|Nee: de duur van de invoer moet een vaste GOP terug hebben|
 | Ondersteuning voor variabele frame-rate invoer|Yes|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|

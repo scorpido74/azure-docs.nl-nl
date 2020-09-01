@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9409b340e8c1bd06b689acb849a9f47d24ed0391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fec4a958e730c485c998d1f0591b8e4d61df050
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170765"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264195"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetrie configureren met REST
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In dit onderwerp worden algemene stappen beschreven die u kunt uitvoeren bij het configureren van de telemetrie van Azure Media Services (AMS) met behulp van REST API. 
 
@@ -88,7 +90,7 @@ Authorization: (redacted)
 Host: wamsbnp1clus001rest-hs.cloudapp.net
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ```console
 HTTP/1.1 200 OK
@@ -137,7 +139,7 @@ Content-Length: 115
 > [!NOTE]
 > Vergeet niet om de waarde ' https: \/ /telemetryvalidationstore.table.core.Windows.net ' te wijzigen in uw opslag account.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ```console
 HTTP/1.1 201 Created
@@ -172,7 +174,7 @@ Authorization: (redacted)
 Host: wamsbnp1clus001rest-hs.cloudapp.net
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ```console  
 HTTP/1.1 200 OK
@@ -218,7 +220,7 @@ Content-Length: 133
 }
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ```console
 HTTP/1.1 201 Created

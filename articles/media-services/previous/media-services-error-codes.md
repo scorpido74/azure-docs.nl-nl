@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042836"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263668"
 ---
 # <a name="azure-media-services-error-codes"></a>Foutcodes van Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Wanneer u Microsoft Azure Media Services gebruikt, kunt u HTTP-fout codes van de service ontvangen, afhankelijk van problemen zoals verificatie tokens die niet worden ondersteund in Media Services. Hier volgt een lijst met **HTTP-fout codes** die kunnen worden geretourneerd door Media Services en de mogelijke oorzaken hiervoor.  
 
 ## <a name="400-bad-request"></a>400 Ongeldige aanvraag
@@ -51,7 +54,7 @@ De aanvraag kan niet worden geverifieerd (voordat deze kan worden geautoriseerd)
   * Het token is verlopen. 
   * Het token bevat een ongeldige hand tekening.
 
-## <a name="403-forbidden"></a>403 Verboden
+## <a name="403-forbidden"></a>403 verboden
 De aanvraag is niet toegestaan vanwege een van de volgende redenen:
 
 * Het Media Services-account is niet gevonden of is verwijderd.

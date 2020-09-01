@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765009"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264960"
 ---
 # <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 De Azure media-service levert video, audio en tekst in verschillende protocollen. Wanneer u uw Live Stream publiceert met MPEG-DASH of HLS/CMAF en vervolgens video en audio, levert onze service de getranscribeerde tekst in IMSC 1.1 compatibele TTML. De levering is verpakt in fragmenten van MPEG-4 Part 30 (ISO/IEC 14496-30). Als u levering via HLS/TS gebruikt, wordt de tekst geleverd als gesegmenteerde VTT.
 
@@ -37,10 +39,10 @@ Live transcriptie is beschikbaar in de volgende regio's:
 - Europa -west
 - Europa - noord
 - VS - oost
-- VS - centraal
+- Central US
 - VS - zuid-centraal
-- VS - west 2
-- Brazilië - zuid
+- US - west 2
+- Brazil South
 
 Dit is de lijst met beschik bare talen die kunnen worden getranscribeerd. Gebruik de taal code in de API.
 
@@ -135,7 +137,7 @@ Als u live transcripties wilt inschakelen of de transcriptie wilt bijwerken, pat
 
 Dit is de voor beeld-oproep om live-transcripties in te scha kelen.
 
-VERZENDEN```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+VERZENDEN ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
 
 ```
 {

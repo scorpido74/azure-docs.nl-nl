@@ -3,7 +3,7 @@ title: Instellingen voor LiveEvent lage latentie in Azure Media Services | Micro
 description: Dit onderwerp bevat een overzicht van de instellingen voor LiveEvent-lage latentie en laat zien hoe u een lage latentie kunt instellen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/22/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e454ce84049f0f7c90da45ed77532f9ba2d90fd4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7f874491f392f320a6cdf833864c7b3eddc2f5e2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018702"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265314"
 ---
 # <a name="live-event-low-latency-settings"></a>Instellingen voor lage latentie van Live Event
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dit artikel wordt beschreven hoe u een lage latentie kunt instellen voor een [live gebeurtenis](/rest/api/media/liveevents). Ook worden de gebruikelijke resultaten besproken die u ziet wanneer u de instellingen voor lage latentie gebruikt in verschillende spelers. De resultaten variëren op basis van CDN en netwerk latentie.
 

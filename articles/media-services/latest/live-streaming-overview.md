@@ -3,7 +3,7 @@ title: Overzicht van live streamen met Azure Media Services v3 | Microsoft Docs
 description: Dit artikel geeft een overzicht van live streamen met behulp van Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
-ms.author: juliako
-ms.openlocfilehash: fd592469a4435504f1eecf1f24e50faf23fad17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0c373a2ae19a4f899dc72a337fed415bc36c8210
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022970"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265062"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via de Azure-Cloud. Als u uw Live-gebeurtenissen wilt streamen met Media Services, hebt u het volgende nodig:  
 
@@ -86,7 +88,7 @@ Als u inzicht wilt krijgen in de werk stroom voor live streamen in Media Service
 ### <a name="general-steps"></a>Algemene stappen
 
 1. Controleer in uw Media Services-account of het **streaming-eind punt** (origin) wordt uitgevoerd. 
-2. Maak een [livegebeurtenis](live-events-outputs-concept.md). <br/>Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet stoppen op de resource van de live-gebeurtenis expliciet aanroepen om verdere facturering te stoppen. Zie [Live Event States and billing](live-event-states-billing.md)(Engelstalig) voor meer informatie.
+2. Maak een [livegebeurtenis](live-events-outputs-concept.md). <br/>Bij het maken van de gebeurtenis kunt u opgeven dat deze automatisch wordt gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet stoppen op de resource van de live-gebeurtenis expliciet aanroepen om verdere facturering te stoppen. Zie [Live Event States and billing](live-event-states-billing.md)(Engelstalig) voor meer informatie.
 3. Haal de opname-URL ('s) op en configureer uw on-premises Encoder voor het gebruik van de URL om de contributie feed te verzenden.<br/>Bekijk [Aanbevolen Live coderings](recommended-on-premises-live-encoders.md)Programma's.
 4. Haal de Preview-URL op en gebruik deze om te controleren of de invoer van het coderings programma daad werkelijk wordt ontvangen.
 5. Maak een nieuw **Asset** -object. 

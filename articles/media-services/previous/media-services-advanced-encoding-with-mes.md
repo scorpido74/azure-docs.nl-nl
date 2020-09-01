@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018022"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264807"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Geavanceerde code ring uitvoeren door MES-voor instellingen aan te passen 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Geavanceerde code ring uitvoeren door MES-voor instellingen aan te passen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Overzicht
 
@@ -51,7 +53,7 @@ Bij het genereren van miniaturen hoeft u niet altijd de uitvoer breedte en-hoogt
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Miniaturen genereren
+## <a name="generate-thumbnails"></a>Miniaturen genereren
 
 In deze sectie ziet u hoe u een voor instelling kunt aanpassen waarmee miniaturen worden gegenereerd. De hieronder gedefinieerde definitie bevat informatie over hoe u uw bestand wilt coderen en de informatie die nodig is om miniaturen te genereren. U kunt een van de MES-voor instellingen volgen die in [deze](media-services-mes-presets-overview.md) sectie worden beschreven en code toevoegen waarmee miniaturen worden gegenereerd.  
 
@@ -64,7 +66,7 @@ Zie dit onderwerp voor meer informatie over [het](media-services-mes-schema.md) 
 
 Zorg ervoor dat u de sectie [overwegingen](#considerations) bekijkt.
 
-### <a name="json-preset"></a><a id="json"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voor instelling
 
 ```json
 {
@@ -166,7 +168,7 @@ Zorg ervoor dat u de sectie [overwegingen](#considerations) bekijkt.
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML-voor instelling
+### <a name="xml-preset"></a>XML-voor instelling
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

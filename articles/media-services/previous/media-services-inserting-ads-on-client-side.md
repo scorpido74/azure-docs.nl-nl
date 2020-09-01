@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021303"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263566"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Advertenties invoegen aan de client zijde
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Dit artikel bevat informatie over het invoegen van verschillende soorten advertenties aan de client zijde.
 
 Voor informatie over ondertiteling en AD-ondersteuning in live streaming Video's, Zie [ondersteunde ondertiteling en normen voor AD-invoeging](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).

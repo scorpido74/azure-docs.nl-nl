@@ -11,24 +11,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/4/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000948"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265368"
 ---
 # <a name="media-services-live-event-error-codes"></a>Fout codes voor Live-gebeurtenissen Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In de tabellen in deze sectie worden de fout codes voor [Live-gebeurtenissen](live-events-outputs-concept.md) vermeld.
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Wanneer u zich abonneert op de [Event grid](../../event-grid/index.yml) gebeurtenissen voor een live gebeurtenis, ziet u mogelijk een van de volgende fouten van de [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) -gebeurtenis.
+Wanneer u zich abonneert op de [Event grid](../../event-grid/index.yml) gebeurtenissen voor een live gebeurtenis, ziet u mogelijk een van de volgende fouten van de [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)  -gebeurtenis.
 
-| Resultaatcode | Beschrijving |
+| Resultaatcode | Description |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Onjuiste opname-URL |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | IP encoder is niet aanwezig in de lijst met toegestane IP-adressen |
@@ -46,7 +48,7 @@ Wanneer u zich abonneert op de [Event grid](../../event-grid/index.yml) gebeurte
 
 Mogelijk wordt een van de volgende fouten weer geven in de [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) -gebeurtenis.
 
-|Resultaatcode|Beschrijving|
+|Resultaatcode|Description|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|Er is een time-out opgetreden voor RTMP-sessie na inactiviteit van de toegestane tijds limiet.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|De tijds tempel van de video-of audio-FLVTag is ongeldig vanuit het RTMP-coderings programma.|
@@ -54,10 +56,10 @@ Mogelijk wordt een van de volgende fouten weer geven in de [LiveEventEncoderDisc
 |Onbekende fout codes|Deze fout codes kunnen variëren van geheugen fout om vermeldingen in de hash-map te dupliceren.|
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Fout codes voor streaming-eind punten (oorsprong)](streaming-endpoint-error-codes.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelf studie: live streamen met Media Services](stream-live-tutorial-with-api.md)
+[Zelfstudie: Live streamen met Media Services](stream-live-tutorial-with-api.md)

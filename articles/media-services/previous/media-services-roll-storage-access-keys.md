@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000122"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264127"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>Media Services bijwerken na gebruik toegangssleutels voor opslag 
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>Media Services bijwerken na gebruik toegangssleutels voor opslag
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Wanneer u een nieuw Azure Media Services-account (AMS) maakt, wordt u ook gevraagd om een Azure Storage account te selecteren dat wordt gebruikt voor het opslaan van uw media-inhoud. U kunt meer dan één opslag account toevoegen aan uw Media Services-account. In dit artikel wordt beschreven hoe u opslag sleutels kunt draaien. Ook wordt uitgelegd hoe u opslag accounts toevoegt aan een media account. 
 
@@ -80,5 +82,5 @@ In het volgende artikel ziet u hoe u opslag accounts toevoegt aan uw AMS-account
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Erkenningen
+### <a name="acknowledgments"></a>Dankwoord
 We willen graag de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Cenk Dingiloglu, Milaan gada, Seva Titov.

@@ -3,7 +3,7 @@ title: Verbinding maken met Azure Media Services v3 API-Node.js
 description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met Node.js.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8e54fec584f8961dfc44a7c93f95772ea03e1259
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95059710ce759a1536bcaacd35c0d2cf6497269b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424423"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265589"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinding maken met Media Services v3 API-Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 node.js SDK met behulp van de aanmeldings methode voor de Service-Principal.
 
@@ -55,7 +57,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 De volgende pakketten moeten worden opgegeven:
 
-|Pakket|Beschrijving|
+|Pakket|Description|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [NPM Azure-arm-Media Services installeren](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Opslag-SDK. Wordt gebruikt bij het uploaden van bestanden naar assets.|
@@ -115,7 +117,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 });
 ```
 
-## <a name="run-your-app"></a>Uw app uitvoeren
+## <a name="run-your-app"></a>Voer uw app uit
 
 Open een opdrachtprompt. Blader naar de map van het voor beeld en voer de volgende opdrachten uit:
 
@@ -126,7 +128,7 @@ node index.js
 
 ## <a name="see-also"></a>Zie ook
 
-- [Media Services concepten](concepts-overview.md)
+- [Media Services-concepts](concepts-overview.md)
 - [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>Volgende stappen
