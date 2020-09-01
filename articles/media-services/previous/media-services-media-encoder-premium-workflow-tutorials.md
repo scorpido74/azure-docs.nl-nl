@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 55d9d9191dc62d7397c5de944985d5653eff4e13
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057463"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269825"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Zelfstudies voor geavanceerde Media Encoder Premium Workflow
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Overzicht
-Dit document bevat scenario's waarin wordt getoond hoe u werk stromen kunt aanpassen met **Workflow Designer**. U vindt [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)de daad werkelijke werk stroom bestanden.  
+Dit document bevat scenario's waarin wordt getoond hoe u werk stromen kunt aanpassen met  **Workflow Designer**. U vindt [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)de daad werkelijke werk stroom bestanden.  
 
 ## <a name="toc"></a>INHOUDS OPGAVE
 De volgende onderwerpen komen aan bod:
@@ -462,7 +465,7 @@ Het JPG-coderings onderdeel maakt niet uit van onze MP4 video meer dan een besta
 
 *Introductie van de schrijver van het JPG-bestand van scène zoeken*
 
-Configureer de eigenschap pad naar de map uitvoermap met de expressie:`${ROOT_outputWriteDirectory}`
+Configureer de eigenschap pad naar de map uitvoermap met de expressie: `${ROOT_outputWriteDirectory}`
 
 en de eigenschap bestands naam voor voegsel met:
 

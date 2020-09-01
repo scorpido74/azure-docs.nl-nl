@@ -3,7 +3,7 @@ title: Media Services Diagnostische logboeken bewaken via Azure Monitor | Micros
 description: In dit artikel wordt beschreven hoe u Diagnostische logboeken kunt routeren en weer geven via Azure Monitor.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 15c8cd3eff7b0eb64e1a512282de129f606a33ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 837113c11f24eda91a62cc68fdc68180951eee16
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501232"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269451"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van Media Services controleren
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw toepassingen worden uitgevoerd. Zie [Media Services metrische gegevens en Diagnostische logboeken controleren](media-services-metrics-diagnostic-logs.md)voor een gedetailleerde beschrijving van deze functie en om te zien waarom u Azure Media Services metrische gegevens en Diagnostische logboeken wilt gebruiken.
 
@@ -30,7 +32,7 @@ In dit artikel wordt beschreven hoe u gegevens naar het opslag account rondstuur
 ## <a name="prerequisites"></a>Vereisten
 
 - [Een Azure Media Services-account maken](./create-account-howto.md).
-- Controleren [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md).
+- Controleren  [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Gegevens naar het opslag account routeren met behulp van de portal
 
@@ -179,7 +181,7 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 
 * Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Azure Monitor metrische gegevens](../../azure-monitor/platform/data-platform.md)
 * [Diagnostische logboeken Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

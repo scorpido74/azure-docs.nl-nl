@@ -2,16 +2,51 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313219"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272162"
 ---
-Op een Azure Stack edge-apparaat waarop de compute-rol is geconfigureerd, is een subset van docker-opdrachten beschikbaar voor het controleren of oplossen van problemen met modules. [Maak verbinding met de Power shell-interface](#connect-to-the-powershell-interface) en gebruik de functie om een lijst met beschik bare opdrachten weer te geven `dkrdbe` .
+Op een Azure Stack edge-apparaat waarop de compute-rol is geconfigureerd, kunt u problemen oplossen of het apparaat bewaken met behulp van twee verschillende sets opdrachten.
+
+- `iotedge`Opdrachten gebruiken. Deze opdrachten zijn beschikbaar voor basis bewerkingen voor uw apparaat.
+- `dkrdbe`Opdrachten gebruiken. Deze opdrachten zijn beschikbaar voor een uitgebreide set bewerkingen voor uw apparaat.
+
+Als u een van de bovenstaande opdrachten wilt uitvoeren, moet u [verbinding maken met de Power shell-interface](#connect-to-the-powershell-interface).
+
+### <a name="use-iotedge-commands"></a>`iotedge`Opdrachten gebruiken
+
+[Maak verbinding met de Power shell-interface](#connect-to-the-powershell-interface) en gebruik de functie om een lijst met beschik bare opdrachten weer te geven `iotedge` .
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                                                                                                 Usage: iotedge COMMAND
+
+Commands:
+   check
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+De volgende tabel bevat een korte beschrijving van de opdrachten die beschikbaar zijn voor `iotedge` :
+
+|command  |Beschrijving |
+|---------|---------|
+|`check`     | Geautomatiseerde controles uitvoeren op veelvoorkomende configuratie-en verbindings problemen       |
+|`list`     | Modules in lijst weergeven         |
+|`logs`     | De logboeken van een module ophalen        |
+|`restart`     | Een module stoppen en opnieuw starten         |
+
+
+### <a name="use-dkrdbe-commands"></a>`dkrdbe`Opdrachten gebruiken
+
+[Maak verbinding met de Power shell-interface](#connect-to-the-powershell-interface) en gebruik de functie om een lijst met beschik bare opdrachten weer te geven `dkrdbe` .
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -37,9 +72,9 @@ Commands:
 ```
 De volgende tabel bevat een korte beschrijving van de opdrachten die beschikbaar zijn voor `dkrdbe` :
 
-|command  |Description |
+|command  |Beschrijving |
 |---------|---------|
-|`image`     | Installatie kopieën beheren. Als u ongebruikte installatie kopieën wilt verwijderen, gebruikt u:`dkrdbe image prune -a -f`       |
+|`image`     | Installatie kopieën beheren. Als u ongebruikte installatie kopieën wilt verwijderen, gebruikt u: `dkrdbe image prune -a -f`       |
 |`images`     | Afbeeldingen weer geven         |
 |`inspect`     | Gegevens op laag niveau op docker-objecten retour neren         |
 |`login`     | Aanmelden bij een docker-REGI ster         |
@@ -89,14 +124,14 @@ Voer de opdracht uit om de lijst met alle containers (met inbegrip van de onderb
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
-Als er een fout is opgetreden bij het maken van de container installatie kopie of tijdens het ophalen van de installatie kopie, voert u uit `logs edgeAgent` .  `EdgeAgent`is de IoT Edge runtime-container die verantwoordelijk is voor het inrichten van andere containers.
+Als er een fout is opgetreden bij het maken van de container installatie kopie of tijdens het ophalen van de installatie kopie, voert u uit `logs edgeAgent` .  `EdgeAgent` is de IoT Edge runtime-container die verantwoordelijk is voor het inrichten van andere containers.
 
 Omdat `logs edgeAgent` alle logboeken worden gedumpt, is het gebruik van de optie een goede manier om de recente fouten te bekijken `--tail 20` .
 
@@ -127,10 +162,10 @@ Als u Logboeken voor een specifieke container wilt ophalen, moet u eerst de cont
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
 3. Noteer de container-ID voor de container waarvoor u de logboeken nodig hebt.

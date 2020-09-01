@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Meer informatie over terminologie en concepten voor Azure Media Services.
 services: media-servicesgit
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/18/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5f0436394d6d45e8a8e112cc59bc7be50356ce10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 895e29608a9f0d80b8e03c3bc95c3c74005f7c4c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092096"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269706"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Terminologie en concepten Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dit onderwerp vindt u een kort overzicht van Azure Media Services terminologie en concepten. Het artikel bevat ook koppelingen naar artikelen met uitgebreide uitleg over Media Services v3-concepten en-functionaliteit.
 
@@ -28,20 +30,20 @@ De basis concepten die in deze onderwerpen worden beschreven, moeten worden geco
 
 > [!NOTE]
 > Op dit moment kunt u de [Azure Portal](https://portal.azure.com/) gebruiken om te: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, v3- [assets](assets-concept.md)weer geven (niet beheren) en [informatie opvragen over toegang tot api's](./access-api-howto.md).
-> Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
+> Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3-terminologie
 
-|Term|Beschrijving|
+|Termijn|Beschrijving|
 |---|---|
 |Live-gebeurtenis|Een **live-gebeurtenis** vertegenwoordigt een pijp lijn voor opname, code ring (optioneel) en het verpakken van live streams van video, audio en realtime meta gegevens.<br/><br/>Voor klanten die migreren van Media Services v2 Api's, vervangt de **live-gebeurtenis** de **kanaal** entiteit in v2. Zie voor meer informatie [migreren van v2 naar v3](migrate-from-v2-to-v3.md).|
 |Streaming-eind punt/verpakking/oorsprong|Een **streaming-eind punt** vertegenwoordigt een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren. Er wordt een van de algemene protocollen voor streaming media (HLS of DASH) gebruikt. Daarnaast biedt het **streaming-eind punt** dynamische code ring (just-in-time) voor toonaangevende Digital Rights Management systemen (DRMs).<br/><br/>In de media streaming-industrie wordt deze service meestal een **packager** of **Origin**genoemd.  Andere veelvoorkomende termen in de branche voor deze mogelijkheid zijn JITP (just-in-time-packager) of JITE (just-in-time-Encryption).
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3-concepten
 
-|Concepten|Beschrijving|Koppelingen|
+|Concepten|Description|Koppelingen|
 |---|---|---|
 |Activa en uploaden van inhoud|Als u media-inhoud in azure wilt beheren, versleutelen, coderen, analyseren en streamen, moet u een Media Services account maken en uw digitale bestanden uploaden naar **assets**.|[Uploaden naar en opslaan in de cloud](storage-account-concept.md)<br/><br/>[Het concept van assets](assets-concept.md)|
 |Inhoud versleutelen|Wanneer u uw digitale media bestanden van hoge kwaliteit uploadt naar assets, kunt u ze coderen in indelingen die kunnen worden afgespeeld op een groot aantal verschillende browsers en apparaten. <br/><br/>Als u wilt coderen met Media Services v3, moet u **trans formaties** en **taken**maken.|[Trans formaties en taken](transforms-jobs-concept.md)<br/><br/>[Code ring met Media Services](encoding-concept.md)|
@@ -60,8 +62,8 @@ Ga naar het artikel van de [Azure Media Services-community](media-services-commu
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Externe bestanden coderen en video streamen - REST](stream-files-tutorial-with-rest.md)
-* [Externe bestanden coderen en video streamen - .NET](stream-files-tutorial-with-api.md)
+* [Geüploade bestanden coderen en video streamen - .NET](stream-files-tutorial-with-api.md)
 * [Live streamen - .NET](stream-live-tutorial-with-api.md)
 * [Uw video analyseren - .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamische AES-128-versleuteling - .NET](protect-with-aes128.md)
-* [Dynamisch versleutelen met multi-DRM-.NET](protect-with-drm.md)
+* [Dynamisch versleutelen met multi-DRM - .NET](protect-with-drm.md)

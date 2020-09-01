@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252777"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269553"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Een beveiligd, door Azure beheerd werk station implementeren
 
@@ -84,7 +84,7 @@ Blader in het Azure Portal naar **Azure Active Directory**  >  **groepen**  >  *
    * **Groeps naam** -beveiligde werk Station gebruikers
    * **Type lidmaatschap** : toegewezen
 
-1. Uw beveiligde werk station-beheerders gebruiker toevoegen:`secure-ws-admin@identityitpro.com`
+1. Uw beveiligde werk station-beheerders gebruiker toevoegen: `secure-ws-admin@identityitpro.com`
 1. U kunt andere gebruikers toevoegen die beveiligde werk stations gaan beheren.
 1. Selecteer **Maken**.
 1. Voer voor de groep werk station apparaten het volgende in:
@@ -101,21 +101,21 @@ Blader in het Azure Portal naar **Azure Active Directory**  >  **groepen**  >  *
 
 Configureer de instelling van uw apparaten in Active Directory zodat uw administratieve beveiligings groep apparaten kan toevoegen aan uw domein. Als u deze instelling wilt configureren vanuit de Azure Portal:
 
-1. Ga naar de apparaatinstellingen van **Azure Active Directory**  >  **apparaten**  >  **Device settings**.
+1. Ga naar **Azure Active Directory** > **Apparaten** > **Apparaatinstellingen**.
 1. Kies **geselecteerd** onder **gebruikers kunnen apparaten toevoegen aan Azure AD**en selecteer vervolgens de groep beveiligde werk Station-gebruikers.
 
 #### <a name="removal-of-local-admin-rights"></a>Verwijderen van lokale beheerders rechten
 
 Deze methode vereist dat gebruikers van het VIP-, DevOps-en secure-level werk station geen beheerders rechten hebben op hun computers. Als u deze instelling wilt configureren vanuit de Azure Portal:
 
-1. Ga naar de apparaatinstellingen van **Azure Active Directory**  >  **apparaten**  >  **Device settings**.
+1. Ga naar **Azure Active Directory** > **Apparaten** > **Apparaatinstellingen**.
 1. Selecteer **geen** onder **aanvullende lokale beheerders op apparaten die zijn toegevoegd aan Azure AD**.
 
 #### <a name="require-multi-factor-authentication-to-join-devices"></a>Multi-factor Authentication vereisen voor het toevoegen van apparaten
 
 Om het proces van het toevoegen van apparaten aan Azure AD verder te verbeteren:
 
-1. Ga naar de apparaatinstellingen van **Azure Active Directory**  >  **apparaten**  >  **Device settings**.
+1. Ga naar **Azure Active Directory** > **Apparaten** > **Apparaatinstellingen**.
 1. Selecteer **Ja** onder **vereisen multi-factor Authentication om lid te worden van apparaten**.
 1. Selecteer **Opslaan**.
 
@@ -238,7 +238,7 @@ Down load en voer het juiste script uit om de beveiliging van de oplossing te vo
 | Gespecialiseerde naleving * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
 | Beveiligd | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
 
-\*Gespecialiseerde naleving is een script dat de gespecialiseerde configuratie afdwingt die is opgenomen in de NCSC Windows10 Security Baseline Baseline.
+\* Gespecialiseerde naleving is een script dat de gespecialiseerde configuratie afdwingt die is opgenomen in de NCSC Windows10 Security Baseline Baseline.
 
 Nadat het script is uitgevoerd, kunt u in intune updates Toep assen op profielen en beleid. De scripts voor uitgebreide en veilige profielen maken beleids regels en profielen voor u, maar u moet het beleid toewijzen aan uw apparaatgroep voor **beveiligde werk stations** .
 
@@ -449,9 +449,9 @@ Toepassings Logboeken is beschikbaar in uw geselecteerde Log Analytics-werk ruim
 
 ## <a name="monitoring"></a>Bewaking
 
-* Meer informatie over het [detecteren van bedreigingen met Azure Sentinel](/azure/sentinel/tutorial-detect-threats)
-* [Incidenten onderzoeken met Azure Sentinel](/azure/sentinel/tutorial-investigate-cases)
-* [Automatische bedreigings reacties instellen in azure Sentinel](/azure/sentinel/tutorial-respond-threats-playbook)
+* Meer informatie over het [detecteren van bedreigingen met Azure Sentinel](../../sentinel/tutorial-detect-threats-built-in.md)
+* [Incidenten onderzoeken met Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
+* [Automatische bedreigings reacties instellen in azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
 * Meer informatie over hoe u uw [blootstellings Score](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) kunt controleren
 * [Beveiligings aanbeveling](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) controleren
 * Beveiligings [herstel](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) beheren
@@ -463,4 +463,4 @@ Toepassings Logboeken is beschikbaar in uw geselecteerde Log Analytics-werk ruim
 * Meer informatie over [Microsoft intune](/intune/index).
 * Meer informatie over [Azure AD](../index.yml).
 * Werken met [micro soft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
-* [Azure-Sentinel](/azure/sentinel/) ontdekken
+* [Azure-Sentinel](../../sentinel/index.yml) ontdekken

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e16121005a34f67ba4ce940e08cb632c1206ad6a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146212"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269434"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Certificaat fouten oplossen
 
@@ -26,7 +26,7 @@ De volgende tabel bevat algemene certificaat fouten en gedetailleerde informatie
 > [!NOTE]
 > Exemplaren van &#8220;{0} , {1} ,..., {n} &#8221; positionele para meters aangeven. De positionele para meters hebben waarden, afhankelijk van de certificaten die u gebruikt.
 
-| Foutcode | Beschrijving |
+| Foutcode | Description |
 |---|---|
 | CertificateManagement_UntrustedCertificate | De certificaat keten van het certificaat met de onderwerpnaam {0} is verbroken. Upload het handtekening keten certificaat voordat u dit certificaat uploadt.|
 | CertificateManagement_DeviceNotRegistered| Het apparaat is niet geactiveerd. U kunt een ondersteunings certificaat pas na activering uploaden.|

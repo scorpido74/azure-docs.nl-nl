@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services v3 invoer schema voor meta gegevens
 description: Dit artikel bevat een overzicht van Azure Media Services v3 invoer van meta gegevens schema.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095588"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269145"
 ---
-# <a name="input-metadata"></a>Invoermetagegevens 
+# <a name="input-metadata"></a>Invoermetagegevens
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren.  Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd. Het uitvoer element bevat video, audio, miniaturen, manifest en andere bestanden. 
 
@@ -45,13 +47,13 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | --- | --- | 
 | **VideoTracks**|Elk fysiek-activa bestand kan nul of meer video tracks bevatten die Interleaved zijn in een geschikte container indeling. Zie [VideoTracks](#videotracks)voor meer informatie. |
 | **AudioTracks**|Elk fysiek-activa bestand kan nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Zie [AudioTracks](#audiotracks) voor meer informatie. |
-| **Metagegevens**  |Meta gegevens van Asset file worden weer gegeven als key\value-teken reeksen. <br />Bijvoorbeeld: `<Metadata key="language" value="eng" />` |
+| **Metagegevensarchiefmethode**  |Meta gegevens van Asset file worden weer gegeven als key\value-teken reeksen. <br />Bijvoorbeeld: `<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>Andere onderliggende elementen
 
 | Naam | Beschrijving |
 | --- | --- |
-| **Naam**<br />Vereist |Bestands naam van het activum. <br /><br />Voorbeeld: `"Name": "Ignite-short.mp4"` |
+| **Name**<br />Vereist |Bestands naam van het activum. <br /><br />Voorbeeld: `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />Vereist |De URL waar het invoer element zich bevindt. Gebruik het `Uri` veld in plaats van id om de input-Asset bij te horen waarvan het uitvoer element deel uitmaakt.|
 | **Grootte**<br />Vereist |Grootte van het activa bestand in bytes.  <br /><br />Voorbeeld: `"Size": 75739259`|
 | **Duur**<br />Vereist |Duur van het afspelen van inhoud. <br /><br />Bijvoorbeeld: `"Duration": "PT1M10.304S"`. |
@@ -69,8 +71,8 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | **Profiel** |Profiel van video spoor. <br /><br />Voorbeeld: `"Profile": "Main"`|
 | **Afvlakking** |Niveau van de video track. <br /><br />Voorbeeld: `"Level": "3.2"`|
 | **PixelFormat** |Pixel indeling van video track. <br /><br />Voorbeeld: `"PixelFormat": "yuv420p"`|
-| **Width**<br />Vereist |Breedte van gecodeerde video in pixels. <br /><br />Voorbeeld: `"Width": "1280"`|
-| **Height**<br />Vereist |Versleutelde video hoogte in pixels.<br /><br />Voorbeeld: `"Height": "720"` |
+| **Breedte**<br />Vereist |Breedte van gecodeerde video in pixels. <br /><br />Voorbeeld: `"Width": "1280"`|
+| **Hoogte**<br />Vereist |Versleutelde video hoogte in pixels.<br /><br />Voorbeeld: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Vereist |Teller voor hoogte-breedte verhouding video weergave.<br /><br />Voorbeeld: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Vereist |Noemer van hoogte-breedte verhouding video weergave. <br /><br />Voorbeeld: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Teller voor sample aspect verhouding van video. <br /><br />Voorbeeld: `"SampleAspectRatioNumerator": 1.0`|
@@ -78,7 +80,7 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | **Snelheid**<br />Vereist |Gemeten video frame frequentie in. 3F-indeling. <br /><br />Voorbeeld: `"FrameRate": 29.970`|
 | **Bitsnelheid** |De gemiddelde bitsnelheid van video in bits per seconde, zoals berekend op basis van het activa bestand. Alleen de nettolading van de elementaire stream wordt geteld en de verpakkings overhead is niet opgenomen. <br /><br />Voorbeeld: `"Bitrate": 8421583`|
 | **HasBFrames** |Video track van het aantal B-frames. <br /><br />Voorbeeld: `"HasBFrames": 2`|
-| **Metagegevens** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens. <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
+| **Metagegevensarchiefmethode** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens. <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
 | **Id**<br />Vereist |Op nul gebaseerde index van dit audio-of video spoor.<br /><br /> Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. <br /><br />Voorbeeld: `"Id": 2`|
 | **Videocodec** |Video track-codec teken reeks. <br /><br />Voorbeeld: `"Codec": "h264"`|
 | **CodecLongName** |De lange naam van de audio-of video track-codec. <br /><br />Voorbeeld: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
@@ -97,7 +99,7 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | **Kanalen**<br />Vereist |Aantal (0 of meer) audio kanalen. <br /><br />Voorbeeld: `"Channels": 2`|
 | **SamplingRate**<br />Vereist |Audio sampling frequentie in samples/sec of Hz. <br /><br />Voorbeeld: `"SamplingRate": 48000`|
 | **Bitsnelheid** |De gemiddelde bitsnelheid van audio in bits per seconde, zoals berekend op basis van het Asset-bestand. Alleen de nettolading van de elementaire stream wordt geteld en de pakket belasting is niet inbegrepen in dit aantal. <br /><br />Voorbeeld: `"Bitrate": 192080`|
-| **Metagegevens** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens.  <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
+| **Metagegevensarchiefmethode** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens.  <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
 | **Id**<br />Vereist |Op nul gebaseerde index van dit audio-of video spoor.<br /><br /> Dit is niet noodzakelijkerwijs het TrackID dat wordt gebruikt in een MP4-bestand. <br /><br />Voorbeeld: `"Id": 1`|
 | **Videocodec** |Video track-codec teken reeks. <br /><br />Voorbeeld: `"Codec": "aac"`|
 | **CodecLongName** |De lange naam van de audio-of video track-codec. <br /><br />Voorbeeld: `"CodecLongName": "AAC (Advanced Audio Coding)"`|

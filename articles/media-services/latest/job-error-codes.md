@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services taak (coderen en analyseren) fout codes | Microsoft Docs
 description: Dit artikel is gekoppeld aan taak fout codes Naslag informatie onderwerp en bevat nuttige koppelingen naar verwante onderwerpen.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
-ms.author: juliako
-ms.openlocfilehash: ec057d86ea39afb7eabd4e8227646eaec11c5655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6d5268e0a0c7e6606ac28aa9b62e81bb4c4bc460
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023004"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269128"
 ---
 # <a name="media-services-job-error-codes"></a>Fout codes Media Services taak
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dit onderwerp vindt u koppelingen naar een REST-referentie document voor een gedetailleerde beschrijving van [taak](transforms-jobs-concept.md) fout codes en-berichten.
 
@@ -32,7 +34,7 @@ In het volgende REST-document vindt u gedetailleerde uitleg over [taak fout code
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Fout codes voor streaming-eind punten](streaming-endpoint-error-codes.md)
 - [Azure Media Services concepten](concepts-overview.md)

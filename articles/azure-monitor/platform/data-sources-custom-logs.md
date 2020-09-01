@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269485"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste logboeken in Azure Monitor
 
@@ -109,7 +109,7 @@ Gebruik het volgende proces in de Azure Portal om een aangepast logboek te verwi
 1. Selecteer in het menu **Data** van de **Geavanceerde instellingen** voor uw werk ruimte de optie **aangepaste logboeken** om alle aangepaste logboeken weer te geven.
 2. Klik op **verwijderen** naast het aangepaste logboek dat u wilt verwijderen.
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Azure Monitor worden ongeveer elke vijf minuten nieuwe vermeldingen van elk aangepast logboek verzameld.  De agent registreert de locatie in elk logboek bestand dat wordt verzameld.  Als de agent gedurende een bepaalde tijd offline gaat, worden er door Azure Monitor gegevens verzameld van waar deze zich voor het laatst heeft verlaten, zelfs als deze vermeldingen zijn gemaakt terwijl de agent offline was.
 
 De volledige inhoud van de logboek vermelding wordt geschreven naar één eigenschap met de naam **RawData**.  Zie [tekst gegevens parseren in azure monitor](../log-query/parse-text.md) voor methoden om elke geïmporteerde logboek vermelding te parseren in meerdere eigenschappen.
@@ -158,7 +158,7 @@ We gebruiken een eenvoudige query van *MyApp_CL* om alle records uit het verzame
 
 
 ## <a name="alternatives-to-custom-logs"></a>Alternatieven voor aangepaste logboeken
-Aangepaste logboeken zijn nuttig als uw gegevens voldoen aan de criteria die worden weer gegeven, maar er zijn situaties zoals de volgende, waar u een andere strategie nodig hebt:
+Hoewel aangepaste logboeken handig zijn als uw gegevens voldoen aan de bovenstaande criteria, zijn er situaties zoals de volgende waar u een andere strategie nodig hebt:
 
 - De gegevens passen niet op de vereiste structuur, zoals het hebben van de tijds tempel in een andere indeling.
 - Het logboek bestand voldoet niet aan de vereisten, zoals bestands codering of een niet-ondersteunde mapstructuur.

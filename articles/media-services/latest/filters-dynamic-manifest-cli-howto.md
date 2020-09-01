@@ -3,7 +3,7 @@ title: Gebruik CLI om filters te maken met Azure Media Services | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u CLI gebruikt om filters te maken met Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 024136ab6f660ecc5b6c5c7c0ecae62c83238659
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023208"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269536"
 ---
-# <a name="creating-filters-with-cli"></a>Filters maken met CLI 
+# <a name="creating-filters-with-cli"></a>Filters maken met CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bij het leveren van uw inhoud aan klanten (het streamen van Live-gebeurtenissen of video op aanvraag), heeft uw client mogelijk meer flexibiliteit nodig dan is beschreven in het manifest bestand van het standaard activum. Met Azure Media Services kunt u account filters en activa filters definiëren voor uw inhoud. 
 
@@ -130,6 +132,6 @@ In de volgende tabel ziet u enkele voor beelden van Url's met filters:
 
 [Video streamen](stream-files-tutorial-with-api.md) 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Azure-CLI](/cli/azure/ams?view=azure-cli-latest)

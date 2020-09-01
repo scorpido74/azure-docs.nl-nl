@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269621"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die een multi-bitrate live stream van on-premises encoders ontvangen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Vanaf 12 mei 2018 krijgen Live kanalen niet langer ondersteuning voor het RTP/MPEG-2 Trans Port stream opname protocol. Migreer van RTP/MPEG-2 naar RTMP-of gefragmenteerde MP4 (Smooth Streaming)-opname protocollen.
@@ -141,7 +143,7 @@ U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. Ee
 Als er geen IP-adressen zijn opgegeven en er geen regel definitie is, is geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 
 ### <a name="channel-preview"></a>Channel Preview
-#### <a name="preview-urls"></a>Preview-Url's
+#### <a name="preview-urls"></a>Preview-URL's
 Kanalen bieden een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
 
 U kunt de voor beeld-URL ophalen wanneer u het kanaal maakt. U kunt de URL alleen ophalen als het kanaal niet de status **actief** heeft. Wanneer het kanaal begint met het opnemen van gegevens, kunt u een voor beeld van de stroom bekijken.
@@ -236,6 +238,6 @@ Hier volgen andere overwegingen met betrekking tot het werken met kanalen en ver
 
 [Overzicht van Azure Media Services en algemene scenario's](media-services-overview.md)
 
-[Media Services concepten](media-services-concepts.md)
+[Media Services-concepts](media-services-concepts.md)
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
