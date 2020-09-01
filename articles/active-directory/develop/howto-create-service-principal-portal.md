@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117223"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178940"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
 
@@ -55,7 +55,7 @@ Uw abonnements machtigingen controleren:
 
 1. Zoek en selecteer **abonnementen**of selecteer **abonnementen** op de **Start** pagina.
 
-   ![Zoeken](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Selecteer het abonnement waarin u de Service-Principal wilt maken.
 
@@ -87,7 +87,7 @@ U hebt uw Azure AD-toepassing en service-principal gemaakt.
 
 ## <a name="assign-a-role-to-the-application"></a>Een rol aan de toepassing toewijzen
 
-Als u toegang wilt krijgen tot resources in uw abonnement, moet u een rol aan de toepassing toewijzen. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)voor meer informatie over de beschik bare rollen.
+Als u toegang wilt krijgen tot resources in uw abonnement, moet u een rol aan de toepassing toewijzen. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor meer informatie over de beschik bare rollen.
 
 U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen door lagere bereik niveaus. Als u bijvoorbeeld een toepassing toevoegt aan de rol van *lezer* voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
 
@@ -121,13 +121,13 @@ Wanneer u zich programmatisch aanmeldt, moet u de Tenant-ID door geven aan uw ve
 1. Selecteer uw toepassing in **app-registraties** in azure AD.
 1. Kopieer de Directory-ID (Tenant) en sla deze op in de code van uw toepassing.
 
-    ![Kopieer de directory (Tenant-ID) en sla deze op in uw app-code](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+    ![De map-id (tenant-id) kopiëren en in uw app-code opslaan](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
     De Directory-ID (Tenant) kan ook worden gevonden op de standaard pagina overzicht van mappen.
 
 1. Kopieer de **Toepassings-id** en sla deze op in uw toepassingscode.
 
-   ![De toepassings-ID (client) kopiëren](./media/howto-create-service-principal-portal/copy-app-id.png)
+   ![De toepassings-id (client-id) kopiëren](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>Een certificaat uploaden of een geheim maken om u aan te melden
 Er zijn twee soorten verificatie beschikbaar voor service-principals: verificatie op basis van wacht woorden (toepassings geheim) en verificatie op basis van certificaten.  We raden u aan een certificaat te gebruiken, maar u kunt ook een nieuw toepassings geheim maken.
@@ -154,7 +154,7 @@ Het certificaat uploaden:
 
 1. Selecteer **Azure Active Directory**.
 1. Selecteer uw toepassing in **app-registraties** in azure AD.
-1. Selecteer **certificaten & geheimen**.
+1. Selecteer **Certificaten en geheimen**.
 1. Selecteer **certificaat uploaden** en selecteer het certificaat (een bestaand certificaat of het zelfondertekende certificaat dat u hebt geëxporteerd).
 
     ![Selecteer certificaat uploaden en selecteer het account dat u wilt toevoegen.](./media/howto-create-service-principal-portal/upload-cert.png)
@@ -163,19 +163,19 @@ Het certificaat uploaden:
 
 Nadat u het certificaat hebt geregistreerd bij uw toepassing in de portal voor toepassings registratie, moet u de client toepassings code inschakelen om het certificaat te gebruiken.
 
-### <a name="create-a-new-application-secret"></a>Een nieuw toepassings geheim maken
+### <a name="create-a-new-application-secret"></a>Een nieuw toepassingsgeheim maken
 
 Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings geheim maken.
 
 1. Selecteer **Azure Active Directory**.
 1. Selecteer uw toepassing in **app-registraties** in azure AD.
-1. Selecteer **certificaten & geheimen**.
-1. Selecteer **client geheimen-> nieuw client Secret**.
-1. Geef een beschrijving op van het geheim en een duur. Wanneer u klaar bent, selecteert u **toevoegen**.
+1. Selecteer **Certificaten en geheimen**.
+1. Selecteer **Clientgeheimen -> Nieuw clientgeheim**.
+1. Geef een beschrijving van het geheim en een duur op. Selecteer **Toevoegen** wanneer u klaar bent.
 
-   Nadat het client geheim is opgeslagen, wordt de waarde van het client geheim weer gegeven. Kopieer deze waarde omdat u de sleutel later niet meer kunt ophalen. U geeft de sleutel waarde op met de toepassings-ID om u aan te melden als de toepassing. Bewaar de sleutelwaarde op een locatie waar de toepassing deze kan ophalen.
+   Nadat u het clientgeheim hebt opgeslagen, wordt de waarde van het clientgeheim weergegeven. Kopieer deze waarde omdat u de sleutel later niet meer kunt ophalen. U geeft de sleutel waarde op met de toepassings-ID om u aan te melden als de toepassing. Bewaar de sleutelwaarde op een locatie waar de toepassing deze kan ophalen.
 
-   ![Kopieer de geheime waarde omdat u deze later niet kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
+   ![De geheimwaarde kopiëren omdat u deze later niet meer kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Toegangs beleid voor resources configureren
 Houd er rekening mee dat u aanvullende machtigingen moet configureren voor bronnen die voor uw toepassing toegankelijk moeten zijn. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  

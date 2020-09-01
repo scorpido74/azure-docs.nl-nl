@@ -3,16 +3,16 @@ title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 59e212b31d79c0d9a75369e542fee5e86f29653a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0d2f9e8197ac397bf61e4cb293e354a10ba0e1da
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018906"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178554"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
-In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt:
+In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt het volgende doen:
 
 * Gegevens herstellen op dezelfde computer waarvan de back-ups zijn gemaakt.
 * Gegevens herstellen naar een alternatieve machine
@@ -23,7 +23,7 @@ Gebruik de functie voor direct terugzetten om een moment opname van een Beschrij
 > De [Update van januari 2017 Azure backup](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) is vereist als u direct terugzetten wilt gebruiken om gegevens te herstellen. Daarnaast moeten de back-upgegevens worden beveiligd in kluizen in de land instellingen die worden vermeld in het ondersteunings artikel. Raadpleeg de [Update van januari 2017 Azure backup](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) voor de meest recente lijst met land instellingen die ondersteuning bieden voor direct terugzetten.
 >
 
-Gebruik direct terugzetten met Recovery Services kluizen in de Azure Portal. Als u gegevens in back-upkluizen hebt opgeslagen, zijn deze geconverteerd naar Recovery Services-kluizen. Als u direct terugzetten wilt gebruiken, downloadt u de MARS-update en volgt u de procedures die het direct terugzetten vermelden.
+Gebruik direct terugzetten met Recovery Services kluizen in de Azure Portal. Als u gegevens hebt opgeslagen in back-upkluizen, zijn ze geconverteerd naar Recovery Services-kluizen. Als u direct terugzetten wilt gebruiken, downloadt u de MARS-update en volgt u de procedures die het direct terugzetten vermelden.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 

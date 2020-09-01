@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799363"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177088"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>Het koppel punt instellen
 
 Voor het opsporen van fouten in een Power shell-functie moet de functie worden gestopt om het fout opsporingsprogramma te koppelen. De `Wait-Debugger` cmdlet stopt de uitvoering en wacht op het fout opsporingsprogramma.
+
+>[!NOTE]
+>Wanneer u Power shell 7 gebruikt, hoeft u de aanroep niet aan uw code toe te voegen `Wait-Debugger` .
 
 U hoeft alleen maar op de volgende manier een aanroep naar de cmdlet toe te voegen `Wait-Debugger` `if` :
 
@@ -243,11 +246,11 @@ De Azure Functions runtime voert enkele opdrachten uit voordat u het script daad
 
 Als deze onderbreking plaatsvindt, voert `continue` u de `c` opdracht of uit om dit onderbrekings punt over te slaan. Vervolgens stopt u bij het verwachte onderbrekings punt.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Als u problemen ondervindt tijdens het opsporen van fouten, moet u het volgende controleren:
 
-| Selecteren | Bewerking |
+| Selecteren | Actie |
 |------|------|
 | Voer `func --version` uit vanaf de Terminal. Als er een fout optreedt die `func` niet kan worden gevonden, zijn de kern hulpprogramma's (func.exe) mogelijk niet aanwezig in de lokale `path` variabele.| [Installeer kern Hulpprogramma's opnieuw](functions-run-local.md#v2).|  
 | In Visual Studio code moet de standaard terminal toegang hebben tot func.exe. Zorg ervoor dat u geen standaard terminal gebruikt waarvoor geen kern Hulpprogramma's zijn geïnstalleerd, zoals Windows-subsysteem voor Linux (WSL).  | Stel de standaard shell in Visual Studio code in op Power shell 7 (aanbevolen) of Windows Power shell 5,1.|

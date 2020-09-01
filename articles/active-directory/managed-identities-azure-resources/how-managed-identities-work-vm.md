@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb5355d4c83961d87ad4b880f6b3758b212e74dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014346"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178668"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Hoe beheerde identiteiten voor Azure-resources werken met virtuele machines van Azure
 
@@ -55,7 +55,7 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 3. Azure Resource Manager configureert de identiteit op de virtuele machine door het Azure Instance Metadata Service Identity-eindpunt bij te werken met de client-id en het certificaat van de service-principal.
 
-4. Als de VM een identiteit heeft, gebruikt u de informatie van de service-principal om de VM toegang te verlenen tot Azure-resources. Voor het aanroepen van Azure Resource Manager gebruikt u op rollen gebaseerd toegangsbeheer (RBAC) in Azure AD om de juiste rol aan de VM-service-principal toe te wijzen. Als u Key Vault wilt aanroepen, geeft u de code toegang tot het specifieke geheim of de specifieke sleutel in Key Vault.
+4. Als de VM een identiteit heeft, gebruikt u de informatie van de service-principal om de VM toegang te verlenen tot Azure-resources. Als u Azure Resource Manager wilt aanroepen, gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer) om de juiste rol toe te wijzen aan de service-principal van de VM. Als u Key Vault wilt aanroepen, geeft u de code toegang tot het specifieke geheim of de specifieke sleutel in Key Vault.
 
 5. De code die wordt uitgevoerd op de VM, kan een token aanvragen vanaf het Azure Instance Metadata-eindpunt, dat alleen toegankelijk is vanuit de VM: `http://169.254.169.254/metadata/identity/oauth2/token`
     - De resourceparameter geeft de service op waarnaar het token wordt verzonden. Gebruik `resource=https://management.azure.com/` om bij Azure Resource Manager te verificatie uit te voeren.
@@ -73,7 +73,7 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 3. Azure Resource Manager ontvangt een aanvraag om de door de gebruiker toegewezen beheerde identiteit op een virtuele machine te configureren en werkt het Azure Instance Metadata Service Identity-eindpunt bij met de client-id en het certificaat van de service-principal voor de door de gebruiker toegewezen beheerde identiteit.
 
-4. Nadat de door de gebruiker toegewezen beheerde identiteit is gemaakt, gebruikt u de informatie van de service-principal om de identiteit toegang te verlenen tot Azure-resources. Voor het aanroepen van Azure Resource Manager gebruikt u RBAC in Azure AD om de juiste rol aan de service-principal van de door de gebruiker toegewezen identiteit toe te wijzen. Als u Key Vault wilt aanroepen, geeft u de code toegang tot het specifieke geheim of de specifieke sleutel in Key Vault.
+4. Nadat de door de gebruiker toegewezen beheerde identiteit is gemaakt, gebruikt u de informatie van de service-principal om de identiteit toegang te verlenen tot Azure-resources. Als u Azure Resource Manager wilt aanroepen, gebruikt u Azure RBAC om de juiste rol toe te wijzen aan de service-principal van de door de gebruiker toegewezen identiteit. Als u Key Vault wilt aanroepen, geeft u de code toegang tot het specifieke geheim of de specifieke sleutel in Key Vault.
 
    > [!Note]
    > U kunt deze stap ook vóór stap 3 uitvoeren.

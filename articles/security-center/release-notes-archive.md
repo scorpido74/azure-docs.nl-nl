@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167008"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177309"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -141,7 +141,7 @@ De nieuwe mogelijkheden in deze open bare preview-versie zijn onder andere:
 
 Toepassingen die in virtuele machines worden geïnstalleerd, hebben vaak beveiligings problemen die kunnen leiden tot een schending van de virtuele machine. We kondigen dat de Security Center Standard-laag geïntegreerde evaluatie van beveiligings problemen bevat voor virtuele machines zonder extra kosten. Met de evaluatie van beveiligings problemen, mogelijk gemaakt door Qualys in de open bare preview, kunt u voortdurend alle geïnstalleerde toepassingen op een virtuele machine scannen om te zoeken naar kwets bare toepassingen en de bevindingen presen teren in de ervaring van de Security Center Portal. Security Center zorgt voor alle implementatie bewerkingen, zodat er geen extra werk van de gebruiker is vereist. We zijn van plan om opties voor evaluatie van beveiligings problemen op te geven voor het ondersteunen van de unieke bedrijfs behoeften van onze klanten.
 
-Meer [informatie over de evaluatie van beveiligings problemen voor uw Azure-virtual machines](security-center-vulnerability-assessment-recommendations.md).
+Meer [informatie over de evaluatie van beveiligings problemen voor uw Azure-virtual machines](deploy-vulnerability-assessment-vm.md).
 
 
 ### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines (preview-versie)

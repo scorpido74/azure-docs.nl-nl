@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f9adf6ce4559234eec74c92f09aa752eb1f9ab51
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386059"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177326"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Facturerings model voor Azure Active Directory B2C
 
@@ -132,11 +133,24 @@ Het beheer van Azure AD B2C met op rollen gebaseerd toegangs beheer wordt niet b
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Het facturerings abonnement voor de Azure AD B2C-Tenant wijzigen
 
-Azure AD B2C-tenants kunnen worden verplaatst naar een ander abonnement als de bron-en doel abonnementen binnen dezelfde Azure Active Directory Tenant bestaan.
+### <a name="move-using-azure-resource-manager"></a>Verplaatsen met behulp van Azure Resource Manager
+
+Azure AD B2C-tenants kunnen worden verplaatst naar een ander abonnement met behulp van Azure Resource Manager als de bron-en doel abonnementen binnen dezelfde Azure Active Directory Tenant bestaan.
 
 Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van Azure-resources, zoals uw Azure AD B2C-Tenant naar een ander abonnement.
 
 Lees voordat u begint met verplaatsen het hele artikel om de beperkingen en vereisten voor een dergelijke verplaatsing volledig te begrijpen. Naast instructies voor het verplaatsen van resources bevat deze essentiële informatie zoals een controle lijst voorafgaand aan het verplaatsen en het valideren van de verplaatsings bewerking.
+
+### <a name="move-by-un-linking-and-re-linking"></a>Verplaatsen door koppeling te verwijderen en opnieuw te koppelen
+
+Als de bron-en doel abonnementen zijn gekoppeld aan verschillende Azure Active Directory-tenants, kunt u de stap niet uitvoeren via Azure Resource Manager zoals hierboven wordt beschreven. U kunt echter wel hetzelfde eind resultaat krijgen door de koppeling tussen de Azure AD B2C Tenant en het bron abonnement te verwijderen en opnieuw te koppelen aan het doel abonnement. Deze methode is veilig omdat het enige object dat u verwijdert de *facturerings koppeling*is, niet de Azure AD B2C Tenant zelf. Geen van de gebruikers, apps, gebruikers stromen enz. worden beïnvloed.
+
+1. Vanuit de Azure AD B2C Directory zelf [een gast gebruiker uitnodigen](user-overview.md#guest-user) vanuit de Azure AD-doel-Tenant (waarmee het doel-Azure-abonnement is gekoppeld) en ervoor zorgen dat deze gebruiker de rol **globale beheerder** heeft in azure AD B2C.
+1. Ga naar de *Azure-resource* die Azure AD B2C in uw bron-Azure-abonnement vertegenwoordigt, zoals wordt uitgelegd in het gedeelte [uw Azure AD B2C Tenant resources beheren](#manage-your-azure-ad-b2c-tenant-resources) . Schakel niet over naar de daad werkelijke Azure AD B2C Tenant.
+1. Klik op de knop **verwijderen** op de pagina **overzicht** . Hiermee worden de verwante Azure AD B2C gebruikers of toepassingen van de Tenant *niet* verwijderd. De facturerings koppeling wordt alleen uit het bron abonnement verwijderd.
+1. Meld u aan bij de Azure Portal met het gebruikers account dat is toegevoegd als beheerder in Azure AD B2C in stap 1. Ga vervolgens naar het doel-Azure-abonnement dat is gekoppeld aan de doel-Azure Active Directory Tenant. 
+1. Stel de facturerings koppeling in het doel abonnement opnieuw in door de bovenstaande procedure [koppeling maken](#create-the-link) te volgen.
+1. Uw Azure AD B2C resource is nu verplaatst naar het bestemmings-Azure-abonnement (gekoppeld aan het doel Azure Active Directory) en wordt in rekening gebracht via dit abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 

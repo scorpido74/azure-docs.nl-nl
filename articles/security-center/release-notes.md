@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723959"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177241"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -159,11 +159,11 @@ Bij het implementeren van een oplossing voor de evaluatie van beveiligings probl
 
 Op basis van deze update is de controle verwijderd en kunt u nu hulpprogram ma's voor evaluatie van beveiligings problemen implementeren op aangepaste Windows-en Linux-machines. Aangepaste installatie kopieën zijn bestanden die u hebt gewijzigd op basis van de standaard instellingen voor Marketplace.
 
-Hoewel u nu de geïntegreerde uitbrei ding van het beveiligingslek kunt implementeren (mogelijk gemaakt door Qualys) op veel meer computers, is ondersteuning alleen beschikbaar als u een besturings systeem gebruikt dat wordt vermeld bij [het implementeren van de Qualys-ingebouwde beveiligings scanner](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner).
+Hoewel u nu de geïntegreerde uitbrei ding van het beveiligingslek kunt implementeren (mogelijk gemaakt door Qualys) op veel meer computers, is ondersteuning alleen beschikbaar als u een besturings systeem gebruikt dat wordt vermeld in [de geïntegreerde scanner voor beveiligings problemen implementeren op vm's van de Standard-laag](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms) .
 
-Meer informatie over de [geïntegreerde scanner voor beveiligings problemen voor virtuele machines (alleen de laag standaard)](built-in-vulnerability-assessment.md).
+Meer informatie over de [geïntegreerde scanner voor beveiligings problemen voor virtuele machines (alleen de laag standaard)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 
-Meer informatie over het gebruik van uw eigen, privé-beoordelings oplossing voor beveiligings problemen van Qualys of Rapid7 bij [het implementeren van een oplossing voor het scannen van beveiligings problemen](partner-vulnerability-assessment.md).
+Meer informatie over het gebruik van uw eigen, privé-beoordelings oplossing voor beveiligings problemen van Qualys of Rapid7 bij [het implementeren van een oplossing voor het scannen van beveiligings problemen](deploy-vulnerability-assessment-vm.md).
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)
@@ -236,7 +236,7 @@ De functie voor besturings elementen voor adaptieve toepassingen heeft twee bela
 
     * Een Joker teken aan het einde van een pad gebruiken om alle uitvoer bare bestanden in deze map en submappen toe te staan
 
-    * Een Joker teken gebruiken in het midden van een pad om een bekende naam voor een uitvoerbaar bestand met een veranderende mapnaam (bijvoorbeeld persoonlijke gebruikers mappen met een bekend uitvoerbaar bestand, automatisch gegenereerde mapnamen, enzovoort) in te scha kelen.
+    * Een Joker teken gebruiken in het midden van een pad om een bekende naam voor een uitvoerbaar bestand met een veranderende mapnaam (bijvoorbeeld persoonlijke gebruikers mappen met een bekend uitvoerbaar bestand, automatisch gegenereerde mapnamen enz.) in te scha kelen.
 
 
 Meer [informatie over adaptieve toepassings besturings elementen](security-center-adaptive-application.md).
@@ -415,7 +415,7 @@ Als u de oplossing wilt implementeren, gebruikt u de nieuwe beveiligings aanbeve
 
 "De ingebouwde oplossing voor de evaluatie van beveiligings problemen inschakelen op virtuele machines (aangedreven door Qualys)"
 
-Meer informatie over [de evaluatie van het geïntegreerde beveiligings risico van Security Center voor virtuele machines](built-in-vulnerability-assessment.md).
+Meer informatie over [de evaluatie van het geïntegreerde beveiligings risico van Security Center voor virtuele machines](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 
 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565720"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177740"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -52,6 +52,8 @@ De volgende query prestatie-indica toren zijn beschikbaar voor elke query die wo
 
 ## <a name="total-cpu"></a>Totale CPU
 De werkelijke Compute-CPU die is belegd om deze query te verwerken op alle knoop punten in de query verwerking. Aangezien de meeste query's worden uitgevoerd op een groot aantal knoop punten, is dit doorgaans veel groter dan de duur die de query daad werkelijk heeft uitgevoerd. 
+
+Een query die gebruikmaakt van meer dan 100 seconden CPU, wordt beschouwd als een query die overmatige resources verbruikt. Een query die gebruikmaakt van meer dan 1.000 seconden CPU wordt beschouwd als een beledigende query en kan worden beperkt.
 
 De verwerkings tijd van de query wordt uitgegeven op:
 - Het ophalen van gegevens: het ophalen van oude gegevens zal meer tijd in beslag nemen dan het ophalen van recente gegevens.
@@ -177,6 +179,8 @@ SecurityEvent
 
 Een kritieke factor bij het verwerken van de query is het volume van de gegevens die worden gescand en gebruikt voor de verwerking van query's. Azure Data Explorer maakt gebruik van agressieve optimalisaties die het gegevens volume aanzienlijk reduceren ten opzichte van andere gegevens platforms. Toch zijn er kritieke factoren in de query die van invloed kunnen zijn op het gebruikte gegevens volume.
 
+Een query die meer dan 2 000KB gegevens verwerkt, wordt beschouwd als een query die overmatige resources verbruikt. Een query die meer dan 20 gegevens verwerkt, wordt beschouwd als een beledigende query en wordt mogelijk beperkt.
+
 In Azure Monitor-Logboeken wordt de kolom **TimeGenerated** gebruikt als een manier om de gegevens te indexeren. Het beperken van de waarden van de **TimeGenerated** om een bereik zo klein mogelijk te maken, vormen een aanzienlijke verbetering van de prestaties van query's door de hoeveelheid gegevens die moet worden verwerkt aanzienlijk te beperken.
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Vermijd onnodig gebruik van de Opera tors zoeken en samen voegen
@@ -300,6 +304,8 @@ SecurityEvent
 
 Alle logboeken in Azure Monitor-logboeken worden gepartitioneerd op basis van de kolom **TimeGenerated** . Het aantal geopende partities is rechtstreeks gerelateerd aan de tijds Panne. Het verminderen van het tijds bereik is de meest efficiënte manier om de uitvoering van een prompt query's te voor gaan.
 
+Query's met een tijds duur van meer dan 15 dagen worden beschouwd als een query die overmatige resources verbruikt. Query's met een tijds panne van meer dan 90 dagen worden beschouwd als een beledigende query en worden mogelijk beperkt.
+
 Het tijds bereik kan worden ingesteld met behulp van de tijds bereik kiezer in het Log Analytics scherm, zoals wordt beschreven in het [logboek query bereik en het tijds bereik in Azure Monitor Log Analytics](scope.md#time-range). Dit is de aanbevolen methode als het geselecteerde tijds bereik wordt door gegeven aan de back-end met behulp van de meta gegevens van de query. 
 
 Een alternatieve methode is het expliciet toevoegen van een [where](/azure/kusto/query/whereoperator) -voor waarde voor **TimeGenerated** in de query. U moet deze methode gebruiken om er zeker van te zijn dat de tijds Panne vast is, zelfs wanneer de query wordt gebruikt vanuit een andere interface.
@@ -389,6 +395,9 @@ Er zijn verschillende gevallen waarin het systeem geen nauw keurige meting van h
 ## <a name="age-of-processed-data"></a>Ouderdom van verwerkte gegevens
 Azure Data Explorer maakt gebruik van verschillende opslag lagen: lokale SSD-schijven in het geheugen en veel langzamere Azure-blobs. De nieuwere gegevens, hoe hoger is de kans dat deze wordt opgeslagen in een meer krachtige laag met een kleinere latentie, waardoor de duur en CPU van de query worden verminderd. Met uitzonde ring van de gegevens zelf, heeft het systeem ook een cache voor meta gegevens. De oudere gegevens, de mindere meta gegevens worden in de cache opgeslagen.
 
+Query's waarmee gegevens worden verwerkt dan 14 dagen oud, worden beschouwd als een query die overmatige resources verbruikt.
+
+
 Hoewel voor sommige query's gebruik van oude gegevens vereist is, zijn er gevallen waarin oude gegevens per ongeluk worden gebruikt. Dit gebeurt wanneer query's worden uitgevoerd zonder tijds bereik in de meta gegevens op te geven en niet alle tabel verwijzingen filter bevatten in de kolom **TimeGenerated** . In deze gevallen scant het systeem alle gegevens die in die tabel zijn opgeslagen. Wanneer de gegevens retentie lang is, kan deze lange tijd bereiken en dus gegevens die net zo oud zijn als de Bewaar periode van de gegevens bedekken.
 
 Dergelijke gevallen kunnen bijvoorbeeld:
@@ -408,6 +417,8 @@ Er zijn verschillende situaties waarin één query kan worden uitgevoerd in vers
 Voor het uitvoeren van query's voor meerdere regio's moet het systeem serialisatie en overdracht in de back-end grote segmenten van tussenliggende gegevens hebben die meestal veel groter zijn dan de eind resultaten van de query. Het beperkt ook de mogelijkheid van het systeem voor het uitvoeren van optimalisaties, heuristiek en het gebruik van caches.
 Als er geen echte reden is om al deze regio's te scannen, moet u het bereik aanpassen zodat het minder regio's beslaat. Als het bron bereik is geminimaliseerd, maar er nog steeds veel regio's worden gebruikt, kan dit worden veroorzaakt door een onjuiste configuratie. Audit logboeken en diagnostische instellingen worden bijvoorbeeld verzonden naar verschillende werk ruimten in verschillende regio's of er zijn meerdere configuraties voor Diagnostische instellingen. 
 
+Een query die meer dan drie regio's omvat, wordt beschouwd als een query die overmatige resources verbruikt. Een query die meer dan 6 regio's omvat, wordt beschouwd als een beledigende query en kan worden beperkt.
+
 > [!IMPORTANT]
 > Wanneer een query wordt uitgevoerd in meerdere regio's, zijn de CPU-en gegevens metingen niet nauw keurig en wordt de meting alleen in een van de regio's weer gegeven.
 
@@ -420,6 +431,8 @@ Het gebruik van meerdere werk ruimten kan voortkomen uit:
 - Wanneer een query in een resource bereik gegevens ophaalt en de gegevens worden opgeslagen in meerdere werk ruimten.
  
 Voor het uitvoeren van query's in meerdere regio's en meerdere clusters moet het systeem een serialisatie hebben en overzetten in de back-end grote segmenten van tussenliggende gegevens die doorgaans veel groter zijn dan de eind resultaten van de query. Daarnaast beperkt het de systeem capaciteit om optimalisaties, heuristiek en het gebruik van caches uit te voeren.
+
+Een query die meer dan 5 werk ruimte omvat, wordt beschouwd als een query die overmatige resources verbruikt. Query's kunnen niet naar meer dan 100 werk ruimten worden gesplitst.
 
 > [!IMPORTANT]
 > In sommige scenario's met meerdere werk ruimten zijn de CPU-en gegevens metingen niet nauw keurig en wordt de meting alleen voor een aantal werk ruimten weer gegeven.

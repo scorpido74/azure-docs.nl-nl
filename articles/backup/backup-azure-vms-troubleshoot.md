@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014655"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178008"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -103,18 +103,60 @@ De back-upbewerking is mislukt vanwege een probleem met de Windows service **com
 Fout code: ExtensionFailedVssWriterInBadState <br/>
 Fout bericht: de momentopname bewerking is mislukt, omdat de status van de VSS-schrijvers ongeldig is.
 
-Herstart de VSS-schrijvers die een slechte status hebben. Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid ```vssadmin list writers``` . De uitvoer bevat alle VSS-schrijvers en hun status. Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid voor elke VSS Writer met een status die niet **[1] stabiel**is, om VSS Writer opnieuw op te starten:
+Deze fout treedt op omdat de VSS-schrijvers een slechte status hebben. Azure Backup extensies communiceren met VSS-schrijvers om moment opnamen van de schijven te maken. Volg deze stappen om dit probleem op te lossen:
 
-* ```net stop serviceName```
-* ```net start serviceName```
+Herstart de VSS-schrijvers die een slechte status hebben.
+- Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid ```vssadmin list writers``` .
+- De uitvoer bevat alle VSS-schrijvers en hun status. Voor elke VSS Writer met een status die niet **[1] stabiel**is, start u de service van de betreffende VSS Writer opnieuw. 
+- Als u de service opnieuw wilt starten, voert u de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
 
-Een andere procedure die u kan helpen, is om de volgende opdracht uit te voeren vanaf een opdracht prompt met verhoogde bevoegdheid (als beheerder).
+ ```net stop serviceName``` <br>
+ ```net start serviceName```
+
+> [!NOTE]
+> Het opnieuw starten van sommige services kan invloed hebben op uw productie omgeving. Zorg ervoor dat het goedkeurings proces wordt gevolgd en dat de service opnieuw wordt gestart op de geplande downtime.
+ 
+   
+Als het probleem niet is opgelost door de VSS-schrijvers opnieuw op te starten, wordt het probleem nog steeds persistent gemaakt als gevolg van een time-out.
+- Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid (als beheerder) om te voor komen dat de threads worden gemaakt voor BLOB-moment opnamen.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-Als u deze register sleutel toevoegt, worden de threads niet gemaakt voor BLOB-moment opnamen en wordt de time-out voor komen.
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState-momentopname bewerking is mislukt omdat de VSS-service (Volume Shadow Copy) een ongeldige status heeft
+
+Fout code: ExtensionFailedVssServiceInBadState <br/>
+Fout bericht: de momentopname bewerking is mislukt omdat de VSS-service (Volume Shadow Copy) een ongeldige status heeft.
+
+Deze fout treedt op omdat de VSS-service een ongeldige status heeft. Azure Backup extensies communiceren met de VSS-service om moment opnamen van de schijven te maken. Volg deze stappen om dit probleem op te lossen:
+
+Start de VSS-service (Volume Shadow Copy) opnieuw.
+- Navigeer naar Services. msc en start de Volume Shadow Copy-service opnieuw.<br>
+of<br>
+- Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
+
+ ```net stop VSS``` <br>
+ ```net start VSS```
+
+ 
+Als het probleem zich blijft voordoen, start u de VM opnieuw op met de geplande uitval tijd.
+
+### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>Het maken van een UserErrorSkuNotAvailable-VM is mislukt omdat de geselecteerde VM-grootte niet beschikbaar is
+
+Fout code: UserErrorSkuNotAvailable-fout bericht: het maken van de VM is mislukt omdat de geselecteerde VM-grootte niet beschikbaar is. 
+ 
+Deze fout treedt op omdat de grootte van de virtuele machine die tijdens de herstel bewerking is geselecteerd, niet wordt ondersteund. <br>
+
+Gebruik de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) tijdens de herstel bewerking om dit probleem op te lossen. Gebruik deze schijven om een VM te maken op basis van de lijst met [beschik bare ondersteunde VM-grootten](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) met behulp van [Power shell-cmdlets](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks).
+
+### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>Het maken van een UserErrorMarketPlaceVMNotSupported-VM is mislukt omdat de markt plaatsings aanvraag niet aanwezig is
+
+Fout code: UserErrorMarketPlaceVMNotSupported-fout bericht: het maken van de virtuele machine is mislukt omdat de aankoop aanvraag voor de markt plaats niet aanwezig is. 
+ 
+Azure Backup ondersteunt het maken van back-ups en het herstellen van Vm's die beschikbaar zijn in azure Marketplace. Deze fout treedt op wanneer u een virtuele machine probeert te herstellen (met een specifieke instelling voor het abonnement/de uitgever) die niet meer beschikbaar is in azure Marketplace, kunt u [hier meer informatie](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)vinden.
+- U kunt dit probleem oplossen door de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) te gebruiken tijdens de herstel bewerking en vervolgens [Power shell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) -of [Azure cli](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -CMDLETS te gebruiken om de virtuele machine te maken met de meest recente Marketplace-informatie die overeenkomt met de virtuele machine.
+- Als de uitgever geen Marketplace-informatie heeft, kunt u de gegevens schijven gebruiken om uw gegevens op te halen en kunt u deze koppelen aan een bestaande virtuele machine.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-fout bij het parseren van de configuratie voor de back-upextensie
 

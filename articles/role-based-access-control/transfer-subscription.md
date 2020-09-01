@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055648"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177275"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
 
@@ -29,14 +29,14 @@ Organisaties kunnen verschillende Azure-abonnementen hebben. Elk abonnement is g
 In dit artikel worden de basis stappen beschreven die u kunt volgen om een abonnement over te dragen naar een andere Azure AD-Directory en een aantal resources na de overdracht opnieuw te maken.
 
 > [!NOTE]
-> Voor Azure CSP-abonnementen wordt het wijzigen van de Azure AD-Directory voor het abonnement niet ondersteund.
+> Voor Azure Cloud service providers (CSP)-abonnementen wordt het wijzigen van de Azure AD-Directory voor het abonnement niet ondersteund.
 
 ## <a name="overview"></a>Overzicht
 
 Het overdragen van een Azure-abonnement naar een andere Azure AD-Directory is een complex proces dat zorgvuldig moet worden gepland en uitgevoerd. Voor veel Azure-Services zijn beveiligings-principals (identiteiten) vereist om normaal te werken of om zelfs andere Azure-resources te beheren. Dit artikel bevat een overzicht van de meeste Azure-Services die sterk afhankelijk zijn van beveiligings-principals, maar dat is niet volledig.
 
 > [!IMPORTANT]
-> In sommige scenario's is het overdragen van een abonnement mogelijk downtime nodig om het proces te volt ooien. Er is een zorgvuldige planning vereist om te beoordelen of downtime nodig is voor uw migratie.
+> In sommige scenario's is het overdragen van een abonnement mogelijk downtime nodig om het proces te volt ooien. Er is een zorgvuldige planning vereist om te beoordelen of downtime voor uw overdracht is vereist.
 
 In het volgende diagram ziet u de basis stappen die u moet volgen wanneer u een abonnement overbrengt naar een andere map.
 
@@ -73,7 +73,7 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 | Aangepaste rollen | Ja | Ja | [Aangepaste rollen opvragen](#save-custom-roles) | Alle aangepaste rollen worden permanent verwijderd. U moet de aangepaste rollen en eventuele roltoewijzingen opnieuw maken. |
 | Door het systeem toegewezen beheerde identiteiten | Ja | Ja | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten uitschakelen en opnieuw inschakelen. U moet de roltoewijzingen opnieuw maken. |
 | Door de gebruiker toegewezen beheerde identiteiten | Ja | Ja | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten verwijderen, opnieuw maken en koppelen aan de juiste resource. U moet de roltoewijzingen opnieuw maken. |
-| Azure Key Vault | Ja | Ja | [Key Vault toegangs beleid weer geven](#list-other-known-resources) | U moet de Tenant-ID die is gekoppeld aan de sleutel kluizen bijwerken. U moet een nieuw toegangs beleid verwijderen en toevoegen. |
+| Azure Key Vault | Ja | Ja | [Key Vault toegangs beleid weer geven](#list-key-vaults) | U moet de Tenant-ID die is gekoppeld aan de sleutel kluizen bijwerken. U moet een nieuw toegangs beleid verwijderen en toevoegen. |
 | Azure SQL-data bases met Azure AD-verificatie integratie ingeschakeld | Ja | Nee | [Azure SQL-data bases controleren met Azure AD-verificatie](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure Storage en Azure Data Lake Storage Gen2 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
@@ -84,8 +84,8 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 | Azure Active Directory Domain Services | Ja | Nee |  |  |
 | App-registraties | Ja | Ja |  |  |
 
-> [!IMPORTANT]
-> Als u versleuteling op rest gebruikt voor een bron, zoals een opslag account of een SQL database en de resource een afhankelijkheid heeft van een sleutel kluis die *niet* in het abonnement dat wordt overgedragen, wordt mogelijk een onherstelbare fout weer gegeven. Gebruik in dit geval een andere sleutel kluis of schakel de door de klant beheerde sleutels tijdelijk uit om een onherstelbare fout te voor komen.
+> [!WARNING]
+> Als u versleuteling op rest gebruikt voor een resource, zoals een opslag account of SQL database, die een afhankelijkheid heeft van een sleutel kluis die zich **niet** in hetzelfde abonnement bevindt dat wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -221,8 +221,8 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
 
 Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standaard Azure Active Directory Tenant-ID voor het abonnement waarin deze is gemaakt. Alle vermeldingen van het toegangsbeleid zijn ook gekoppeld aan deze tenant-ID. Zie [een Azure Key Vault naar een ander abonnement verplaatsen](../key-vault/general/move-subscription.md)voor meer informatie.
 
-> [!IMPORTANT]
-> Als u versleuteling op rest gebruikt voor een bron, zoals een opslag account of een SQL database en de resource een afhankelijkheid heeft van een sleutel kluis die *niet* in het abonnement dat wordt overgedragen, wordt mogelijk een onherstelbare fout weer gegeven. Gebruik in dit geval een andere sleutel kluis of schakel de door de klant beheerde sleutels tijdelijk uit om een onherstelbare fout te voor komen.
+> [!WARNING]
+> Als u versleuteling op rest gebruikt voor een resource, zoals een opslag account of SQL database, die een afhankelijkheid heeft van een sleutel kluis die zich **niet** in hetzelfde abonnement bevindt dat wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
 
 - Als u een sleutel kluis hebt, gebruikt u [AZ Key kluis show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) om het toegangs beleid weer te geven. Zie [Key Vault verificatie bieden met een toegangscontrole beleid](../key-vault/key-vault-group-permissions-for-apps.md)voor meer informatie.
 
@@ -232,7 +232,7 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL-data bases weer geven met Azure AD-verificatie
 
-- Gebruik [AZ SQL Server AD-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) en de [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension om te zien of u Azure SQL-data bases gebruikt met Azure AD-verificatie. Zie [Configure and manage Azure Active Directory Authentication with SQL](../azure-sql/database/authentication-aad-configure.md)(Engelstalig) voor meer informatie.
+- Gebruik [AZ SQL Server AD-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) en de [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension om te zien of u Azure SQL-data bases gebruikt met Azure AD-verificatie integratie ingeschakeld. Zie [Configure and manage Azure Active Directory Authentication with SQL](../azure-sql/database/authentication-aad-configure.md)(Engelstalig) voor meer informatie.
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -262,16 +262,21 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-billing-ownership"></a>Stap 2: eigendom van de facturering overdragen
+## <a name="step-2-transfer-the-subscription"></a>Stap 2: het abonnement overdragen
 
-In deze stap brengt u het eigendom van het abonnement over van de bron directory naar de doel directory.
+In deze stap brengt u het abonnement over van de bron directory naar de doel directory. De stappen verschillen, afhankelijk van of u ook het eigendom van de facturering wilt overdragen.
 
 > [!WARNING]
-> Wanneer u het eigendom van het abonnement overdraagt, worden alle roltoewijzingen in de bronmap **permanent** verwijderd en kunnen deze niet worden hersteld. U kunt niet meer terugkeren zodra u het eigendom van de facturering van het abonnement hebt overgedragen. Zorg ervoor dat u de vorige stappen hebt voltooid voordat u deze stap uitvoert.
+> Wanneer u het abonnement overdraagt, worden alle roltoewijzingen in de bronmap **permanent** verwijderd en kunnen deze niet worden hersteld. U kunt niet meer terugkeren zodra u het abonnement hebt overgedragen. Zorg ervoor dat u de vorige stappen hebt voltooid voordat u deze stap uitvoert.
 
-1. Volg de stappen in het [eigendom van de facturering van een Azure-abonnement overdragen aan een ander account](../cost-management-billing/manage/billing-subscription-transfer.md). Als u het abonnement wilt overdragen naar een andere Azure AD-Directory, moet u het selectie vakje **Azure AD-Tenant abonnement** controleren.
+1. Bepaal of u ook het eigendom van de facturering wilt overdragen.
 
-1. Nadat u het eigendom hebt overgedragen, keert u terug naar dit artikel om de resources in de doel Directory opnieuw te maken.
+1. Zet het abonnement over naar een andere map.
+
+    - Als u het huidige eigendom van de facturering wilt blijven gebruiken, volgt u de stappen in [koppelen of een Azure-abonnement toevoegen aan uw Azure Active Directory-Tenant](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    - Als u ook het eigendom van de facturering wilt overdragen, volgt u de stappen in het [eigendom van de facturering van een Azure-abonnement overdragen aan een ander account](../cost-management-billing/manage/billing-subscription-transfer.md). Als u het abonnement wilt overdragen naar een andere adres lijst, moet u het selectie vakje **abonnement Azure AD-Tenant** controleren.
+
+1. Zodra u klaar bent met het overdragen van het abonnement, keert u terug naar dit artikel om de resources in de doel Directory opnieuw te maken.
 
 ## <a name="step-3-re-create-resources"></a>Stap 3: resources opnieuw maken
 

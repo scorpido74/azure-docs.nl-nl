@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117240"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178821"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Woorden lijst voor ontwikkel aars van micro soft Identity platform
 
@@ -164,7 +164,7 @@ Net als bij [bereiken](#scopes)bieden rollen een manier om de toegang tot de bev
 
 Rollen zijn door de resource gedefinieerde teken reeksen (bijvoorbeeld ' fiatteur onkosten ', ' alleen-lezen ', ' Directory. ReadWrite. all '), beheerd in de [Azure Portal][AZURE-portal] via het [toepassings manifest](#application-manifest)van de resource en opgeslagen in de [eigenschap appRoles][Graph-Sp-Resource]van de resource. De Azure Portal wordt ook gebruikt om gebruikers toe te wijzen aan gebruikers rollen en client [toepassings machtigingen](#permissions) te configureren voor toegang tot een functie van de toepassing.
 
-Zie [Graph API-machtigings bereik][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de toepassings rollen die worden weer gegeven door de Microsoft Graph-API. Zie [toegang beheren met RBAC en de Azure Portal][AAD-RBAC]voor een voor beeld van een stapsgewijze implementatie.
+Zie [Graph API-machtigings bereik][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de toepassings rollen die worden weer gegeven door de Microsoft Graph-API. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal][AAD-RBAC]voor een stapsgewijze implementatie-voor beeld.
 
 ## <a name="scopes"></a>bereiken
 

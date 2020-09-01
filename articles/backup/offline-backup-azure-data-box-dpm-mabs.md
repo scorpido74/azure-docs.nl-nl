@@ -3,12 +3,12 @@ title: Offline back-up met Azure Data Box voor DPM en MABS
 description: U kunt Azure Data Box gebruiken om de eerste back-upgegevens offline van DPM en MABS te maken.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017597"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177683"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline seeding met behulp van Azure Data Box voor DPM en MABS (preview)
 
@@ -201,7 +201,7 @@ Volg deze stappen wanneer de back-up van de gegevens naar de Azure Data Box Disk
 
 - Nadat de DPM-MABS-server een herstel punt heeft gemaakt dat overeenkomt met de eerste back-up, kunt u het opslag account (of de specifieke inhoud) verwijderen die aan de Azure Data Box-taak is gekoppeld.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 De Microsoft Azure Backup-Agent (MAB) op de DPM-server maakt een Azure AD-toepassing voor u, in uw Tenant. Voor deze toepassing is een certificaat vereist voor verificatie dat is gemaakt en geüpload bij het configureren van het offline seeding-beleid.
 

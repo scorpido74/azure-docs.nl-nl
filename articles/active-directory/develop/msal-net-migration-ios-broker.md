@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed29752e0b5f2ee9acf0382ef96e1b685f9cc886
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068504"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177428"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.NET naar MSAL.NET
 
@@ -239,6 +239,19 @@ Voorbeeld:
 </table>
 
 Zie [stap 7: een omleidings-URI toevoegen aan de registratie van uw app](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration)voor meer informatie over het registreren van de omleidings-URI in de Azure Portal.
+
+### <a name="step-7-set-the-entitlementsplist"></a>**Stap 7: Stel de rechten in. plist**
+
+Toegang tot sleutel hanger inschakelen in het bestand *rechten. plist* :
+
+```xml
+ <key>keychain-access-groups</key>
+    <array>
+      <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
+    </array>
+```
+
+Zie [toegang tot sleutel hanger inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)voor meer informatie over het inschakelen van de toegang tot de sleutel hanger.
 
 ## <a name="next-steps"></a>Volgende stappen
 

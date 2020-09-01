@@ -3,12 +3,12 @@ title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892402"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178128"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -474,7 +474,7 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Beheerde schijven herstellen
 
 > [!NOTE]
-> Als de back-up van de virtuele machines beheerde schijven heeft en u deze wilt herstellen als managed disks, hebben we de mogelijkheid geïntroduceerd van Azure PowerShell RM-module v-6.7.0. en hoger
+> Als de back-up van de virtuele machines beheerde schijven heeft en u deze wilt herstellen als managed disks, hebben we de mogelijkheid geïntroduceerd van Azure PowerShell RM-module v-6.7.0. en hoger.
 >
 >
 

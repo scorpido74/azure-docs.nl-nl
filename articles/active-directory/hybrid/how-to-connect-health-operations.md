@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828792"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177615"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health bewerkingen
 In dit onderwerp worden de verschillende bewerkingen beschreven die u kunt uitvoeren met behulp van Azure Active Directory (Azure AD) Connect Health.
@@ -103,8 +103,8 @@ Wanneer u een service-exemplaar verwijdert, moet u rekening houden met het volge
    <br><br>
 
 [//]: # (Het gedeelte voor het starten van RBAC)
-## <a name="manage-access-with-role-based-access-control"></a>Toegang beheren met op rollen gebaseerd toegangsbeheer
-[Toegangs beheer op basis van rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor Azure AD Connect Health biedt toegang tot gebruikers en groepen, met uitzonde ring van globale beheerders. RBAC wijst rollen toe aan de beoogde gebruikers en groepen en biedt een mechanisme voor het beperken van de globale beheerders in uw Directory.
+## <a name="manage-access-with-azure-rbac"></a>Toegang beheren met Azure RBAC
+[Toegangs beheer op basis van rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor Azure AD Connect Health biedt toegang tot gebruikers en groepen, met uitzonde ring van globale beheerders. Azure RBAC wijst rollen toe aan de beoogde gebruikers en groepen en biedt een mechanisme voor het beperken van de globale beheerders in uw Directory.
 
 ### <a name="roles"></a>Rollen
 Azure AD Connect Health ondersteunt de volgende ingebouwde rollen:
@@ -135,12 +135,12 @@ Als u een gebruiker toegang wilt geven tot het niveau *alle service-exemplaren* 
    ![Scherm opname van Azure AD Connect Health resource zijbalk](./media/how-to-connect-health-operations/startRBAC.png)
 2. Selecteer **Toevoegen**.
 3. Selecteer in het deel venster **een rol selecteren** een rol (bijvoorbeeld **eigenaar**).<br>
-   ![Scherm opname van het venster Azure AD Connect Health RBAC-gebruikers](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Scherm opname van Azure AD Connect Health en Azure RBAC-menu configureren](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Typ de naam of id van de doel gebruiker of-groep. U kunt een of meer gebruikers of groepen tegelijk selecteren. Klik op **Selecteren**.
-   ![Scherm opname van het venster Azure AD Connect Health RBAC-gebruikers](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Scherm afbeelding van Azure AD Connect Health en de lijst met Azure RBAC-rollen](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. Selecteer **OK**.<br>
 6. Nadat de roltoewijzing is voltooid, worden de gebruikers en groepen weer gegeven in de lijst.<br>
-   ![Scherm opname van het venster Azure AD Connect Health RBAC-gebruikers, waarbij nieuwe gebruikers zijn gemarkeerd](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Scherm opname van Azure AD Connect Health en Azure RBAC en nieuwe gebruikers gemarkeerd](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 De vermelde gebruikers en groepen hebben nu toegang tot, volgens hun toegewezen rollen.
 
@@ -153,7 +153,7 @@ De vermelde gebruikers en groepen hebben nu toegang tot, volgens hun toegewezen 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Stap 3: de Blade locatie delen met gebruikers of groepen
 1. Nadat u machtigingen hebt toegewezen, kan een gebruiker Azure AD Connect Health gebruiken door [hier](https://aka.ms/aadconnecthealth)te gaan.
 2. Op de Blade kan de gebruiker de Blade of verschillende delen ervan vastmaken aan het dash board. Klik op het pictogram **vastmaken aan dash board** .<br>
-   ![Scherm afbeelding van de Blade Azure AD Connect Health RBAC-pincode, met het pictogram pincode gemarkeerd](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![Scherm afbeelding van de Blade Azure AD Connect Health en Azure RBAC-pincode, met het pictogram pincode gemarkeerd](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > Een gebruiker met de toegewezen rol van lezer kan geen Azure AD Connect Health-uitbrei ding ophalen van de Azure Marketplace. De gebruiker kan de benodigde bewerking ' maken ' daarom niet uitvoeren. De gebruiker kan nog steeds toegang krijgen tot de Blade door naar de vorige koppeling te gaan. Voor het volgende gebruik kan de gebruiker de Blade vastmaken aan het dash board.
@@ -161,8 +161,8 @@ De vermelde gebruikers en groepen hebben nu toegang tot, volgens hun toegewezen 
 >
 
 ### <a name="remove-users-or-groups"></a>Gebruikers of groepen verwijderen
-U kunt een gebruiker of een groep die is toegevoegd aan Azure AD Connect Health RBAC verwijderen. Klik met de rechter muisknop op de gebruiker of groep en selecteer **verwijderen**.<br>
-![Scherm opname van het venster Azure AD Connect Health RBAC-gebruikers met de markering verwijderen](./media/how-to-connect-health-operations/RBAC_remove.png)
+U kunt een gebruiker of een groep die is toegevoegd aan Azure AD Connect Health en Azure RBAC verwijderen. Klik met de rechter muisknop op de gebruiker of groep en selecteer **verwijderen**.<br>
+![Scherm afbeelding van Azure AD Connect Health en Azure RBAC met gemarkeerd verwijderen](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (Sectie einde van RBAC)
 

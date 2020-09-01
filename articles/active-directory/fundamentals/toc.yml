@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: Externe werkrollen beveiligen
           href: concept-secure-remote-workers.md
-        - name: Continue toegangsevaluatie
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Groepen en gebruikers
       items:
         - name: Groepen en toegangsbeheer
