@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78299326"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226927"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Het Azure AD-schema begrijpen
 Een object in Azure Active Directory (Azure AD), zoals elke directory, is een programmatische gegevens constructie op hoog niveau waarmee items worden aangeduid als gebruikers, groepen en contact personen. Wanneer u een nieuwe gebruiker of contact persoon in azure AD maakt, maakt u een nieuw exemplaar van dat object. Deze instanties kunnen worden gedifferentieerd op basis van hun eigenschappen.
@@ -51,7 +51,7 @@ Als u bijvoorbeeld het kenmerk mail had john.smith@contoso.com en nodig hebt om 
 * **Invoer** (e-mail adres): " john.smith@contoso.com "
 * **Uitvoer**: "Jan. Smit"
 
-Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)voor meer informatie over het schrijven van aangepaste expressies en de syntaxis.
+Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md)voor meer informatie over het schrijven van aangepaste expressies en de syntaxis.
 
 De volgende tabel bevat algemene kenmerken en hoe deze worden gesynchroniseerd met Azure AD.
 
@@ -245,7 +245,7 @@ Volg deze stappen om het schema weer te geven en te controleren.
  
     Voorbeeld: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   Vervang `{Service Principal Id}` en `{AD2ADD Provisioning Id}` door uw waarden.
+   Vervang `{Service Principal Id}` en `{AD2ADD Provisioning Id}` door uw eigen waarden.
 
 1. Deze query retourneert het schema.
 

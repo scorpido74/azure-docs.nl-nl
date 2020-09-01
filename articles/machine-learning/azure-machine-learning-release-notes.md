@@ -9,18 +9,63 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b6a060f4487bed5b820126d7a886cf68fa76868a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 648a1ab7eac05e42a2d3ae292cccef8c0833a84d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652063"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226808"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+## <a name="2020-08-31"></a>2020-08-31
+
+### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Azure Machine Learning SDK voor python v-1.13.0
++ **Preview-functies**
+  + **azureml-core**
+  
+    Met de nieuwe functie voor uitvoer gegevens sets kunt u terugschrijven naar de Cloud opslag met inbegrip van BLOB, ADLS gen 1, ADLS gen 2 en file share. U kunt configureren waar gegevens worden uitgevoerd, hoe gegevens moeten worden uitgevoerd (via koppelen of uploaden), of de uitvoer gegevens moeten worden geregistreerd voor toekomstig hergebruik en delen en tussenliggende gegevens tussen pijplijn stappen naadloos kunnen worden gepasseerd. Dit maakt reproduceer baarheid, delen, voor komt het dupliceren van gegevens en resulteert in rendabele efficiëntie en productiviteits toename. [Meer informatie over hoe u deze kunt gebruiken](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py)
+    
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + Er is validated_ {platform} _requirements.txt bestand toegevoegd om alle PIP-afhankelijkheden voor AutoML vast te maken.
+    + Deze release ondersteunt modellen van meer dan 4 GB.
+    + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
+  + **azureml-automl-runtime**
+    + Stel horovod in op text dnns om altijd FP16-compressie te gebruiken.
+    + Deze release ondersteunt modellen van meer dan 4 GB.
+    + Er is een probleem opgelost waarbij AutoML mislukt met ImportError: kan de naam niet importeren `RollingOriginValidator` .
+    + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
+  + **azureml-contrib-automl-DNN-Forecasting**
+    + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
+  + **azureml-contrib-fairness**
+    + Geef een korte beschrijving op voor azureml-contrib-verdeling.
+  + **azureml-contrib-pipeline-steps**
+    + Er is een bericht toegevoegd dat dit pakket wordt afgeschaft en de gebruiker moet in plaats daarvan gebruikmaken van de stappen voor azureml-pipeline.
+  + **azureml-core**
+    + De lijst met opdracht sleutels voor de werk ruimte is toegevoegd.
+    + De para meter Tags toevoegen in de werk ruimte SDK en CLI.
+    + Er is een fout opgelost waarbij het verzenden van een onderliggende run with dataset mislukt als gevolg van `TypeError: can't pickle _thread.RLock objects` .
+    + Page_count standaard/documentatie voor model lijst () toevoegen.
+    + Wijzig de CLI&SDK om de adbworkspace-para meter in te voeren en de werk ruimte toe te voegen ADB koppelen/ontkoppelen.
+    + Los de fout op in DataSet. Update waardoor de nieuwste gegevensset-versie wordt bijgewerkt, niet de versie van de gegevensset-update is aangeroepen. 
+    + Los de fout op in DataSet. get_by_name die de labels zou weer geven voor de nieuwste versie van de gegevensset, zelfs wanneer een specifieke oudere versie daad werkelijk is opgehaald.
+  + **azureml-interpret**
+    + Er zijn waarschijnlijke uitvoer waarden toegevoegd aan Shap Score-uitleg in azureml-Interpreting op basis van shap_values_output para meter van de oorspronkelijke uitleger.
+  + **azureml-pipeline-core**
+    + Verbeterde `PipelineOutputAbstractDataset.register` documentatie.
+  + **azureml-train-automl-client**
+    + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
+  + **azureml-train-automl-runtime**
+    + Geüpgraded AutoML-afhankelijkheden: `scikit-learn` (nu 0.22.1), `pandas` (nu 0.25.1), `numpy` (nu 1.18.2).
+  + **azureml-train-core**
+    + Gebruikers moeten nu een geldig hyperparameter_sampling ARG opgeven bij het maken van een HyperDriveConfig. Daarnaast is de documentatie voor HyperDriveRunConfig bewerkt om gebruikers te informeren over de afschaffing van HyperDriveRunConfig.
+    + Herstellen van PyTorch-standaard versie naar 1,4.
+    + PyTorch 1,6 & tensor Flow 2,2-installatie kopieën en een gecuratorte omgeving toevoegen.
 
 ## <a name="2020-08-17"></a>2020-08-17
 
@@ -169,7 +214,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   + **azureml-mlflow**
     + Ondersteuning voor het implementeren van lokale file://-modellen met AzureML-MLflow toevoegen
     + _With_auth para meter in WS. get_mlflow_tracking_uri () afschaft
-  + **azureml-opengegevenssets**
+  + **azureml-opendatasets**
     + Recent gepubliceerde Covid-19 tracking-gegevens sets zijn nu beschikbaar met de SDK
   + **azureml-pipeline-core**
     + Waarschuwing voor afmelden als ' azureml-defaults ' niet is opgenomen als onderdeel van PIP-afhankelijkheid
@@ -234,7 +279,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   + **azureml-mlflow**
     + Document verbeteringen voor azureml-mlflow.
     + Voegt ondersteuning toe voor het AML-model register met MLFlow.
-  + **azureml-opendatasets**
+  + **azureml-opengegevenssets**
     + Ondersteuning toegevoegd voor python 3,8
   + **azureml-pipeline-core**
     + `PipelineDataset`De documentatie is bijgewerkt om er een interne klasse van te maken.
@@ -296,7 +341,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + Verbeterde documentatie voor register_azure_blob_container en register_azure_file_share
   + **azureml-datadrift**
     + Verbeterde implementatie voor het uitschakelen en inschakelen van dataset drift monitors
-  + **azureml-interpreteren**
+  + **azureml-interpret**
     + In uitleg client verwijdert u NaNs of inf-bestanden vóór JSON-serialisatie bij het uploaden van artefacten
     + Bijwerken naar de meest recente versie van interpreteren-Community voor het verbeteren van geheugen fouten voor globale toelichtingen met veel functies en klassen
     + Voeg true_ys optionele para meter toe aan het uploaden van uitleg om extra functies in de Studio-gebruikers interface in te scha kelen
@@ -341,7 +386,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
       + De standaard waarde voor process_count_per_node is gewijzigd in 1. De gebruiker moet deze waarde afstemmen voor betere prestaties. Aanbevolen procedure is om in te stellen als het aantal GPU-of CPU-knoop punt.
       + ParallelRunStep geen pakketten injecteert, moet de gebruiker de pakketten voor **azureml-core** en **azureml-dataprep [Pandas, zeker]** opnemen in de omgevings definitie. Als de aangepaste docker-installatie kopie wordt gebruikt met user_managed_dependencies moet de gebruiker Conda installeren op de installatie kopie.
       
-+ **Wijzigingen afbreken**
++ **Wijzigingen die fouten veroorzaken**
   + **azureml-pipeline-steps**
     + Het gebruik van azureml. dprep. gegevensstroom is afgeschaft als een geldig type invoer voor AutoMLConfig
   + **azureml-train-automl-client**
@@ -545,7 +590,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + AmlCompute-clusters bieden nu ondersteuning voor het instellen van een beheerde identiteit op het cluster op het moment van de inrichting. Geef aan of u een door het systeem toegewezen identiteit of een door de gebruiker toegewezen identiteit wilt gebruiken en geef een identityId op in het geval van de laatste. U kunt vervolgens machtigingen instellen voor toegang tot verschillende bronnen, zoals opslag of ACR, op een manier dat de identiteit van de compute wordt gebruikt om veilig toegang te krijgen tot de gegevens, in plaats van een op tokens gebaseerde benadering die AmlCompute maakt. Bekijk onze SDK-referentie voor meer informatie over de para meters.
   
 
-+ **Wijzigingen afbreken**
++ **Wijzigingen die fouten veroorzaken**
   + AmlCompute-clusters ondersteunen een preview-functie voor het maken van een uitvoering, die we in twee weken plannen. U kunt persistente Compute-doelen maken als always met behulp van de Amlcompute-klasse, maar de specifieke benadering van het opgeven van de id ' Amlcompute ' als het reken doel in run config wordt niet in de nabije toekomst ondersteund. 
 
 + **Oplossingen en verbeteringen voor oplossingen**
@@ -556,7 +601,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Verbeterde documentatie voor de `grant_workspace_msi` para meter voor `Datastore.register_azure_blob_store` .
     + Er is een fout opgelost met `datastore.upload` ter ondersteuning van het `src_dir` argument dat eindigt op een `/` of `\` .
     + Er is een fout bericht toegevoegd dat kan worden uitgevoerd bij het uploaden naar een Azure Blob Storage-gegevens opslag dat geen toegangs sleutel of SAS-token heeft.
-  + **azureml-interpreteren**
+  + **azureml-interpret**
     + Er is een bovengrens voor de bestands grootte van de visualisatie gegevens op geüploade uitleg toegevoegd.
   + **azureml-train-automl-client**
     + Expliciet controleren op label_column_name & weight_column_name para meters voor AutoMLConfig is van het type teken reeks.
@@ -616,7 +661,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Azure Machine Learning SDK voor python v-1.2.0
 
-+ **Wijzigingen afbreken**
++ **Wijzigingen die fouten veroorzaken**
   + Ondersteuning voor python 2,7 door halen
 
 + **Oplossingen en verbeteringen voor oplossingen**
@@ -651,7 +696,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **Python 2,7**
     + Laatste versie voor de ondersteuning van python 2,7
 
-+ **Wijzigingen afbreken**
++ **Wijzigingen die fouten veroorzaken**
   + **Semantic Versioning 2.0.0**
     + Vanaf versie 1,1 Azure ML python SDK worden semantische versie beheer 2.0.0. [Meer informatie vindt u hier](https://semver.org/). Alle volgende versies volgen een nieuw Nummerings schema en een contract voor semantische versie. 
 
@@ -707,7 +752,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een fout opgelost waarbij hoofd letters niet kunnen worden gebruikt als de invoer naam van de gegevensset.
   + **azureml-standaards**
     + `azureml-dataprep` wordt nu geïnstalleerd als onderdeel van `azureml-defaults` . Het is niet meer nodig om data prep [zeker] hand matig te installeren op reken doelen om gegevens sets te koppelen.
-  + **azureml-interpreteren**
+  + **azureml-interpret**
     + Updated azureml-interprete voor interprete-Community 0,6. *
     + Bijgewerkt azureml-interpreteren om afhankelijk te zijn van interprete-Community 0.5.0
     + Uitzonde ringen voor azureml-stijl toegevoegd aan azureml-interprete
@@ -814,7 +859,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Azure Machine Learning SDK voor python v 1.1.0 RC0 (voorlopige versie)
 
-+ **Wijzigingen afbreken**
++ **Wijzigingen die fouten veroorzaken**
   + **Semantic Versioning 2.0.0**
     + Vanaf versie 1,1 Azure ML python SDK worden semantische versie beheer 2.0.0. [Meer informatie vindt u hier](https://semver.org/). Alle volgende versies volgen een nieuw Nummerings schema en een contract voor semantische versie. 
   
@@ -824,7 +869,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De frequentie controle tijdens de score is opgelost. in de prognose taken is geen strikte frequentie-equivalentie vereist tussen de trein-en testset.
   + **azureml-core**
     + De gebruiker kan nu een waarde opgeven voor de verificatie sleutel bij het opnieuw genereren van sleutels voor webservices.
-  + **azureml-interpreteren**
+  + **azureml-interpret**
     + Bijgewerkt azureml-interpreteren om afhankelijk te zijn van interprete-Community 0.5.0
   + **azureml-pipeline-core**
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
@@ -944,7 +989,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK voor python v-1.0.76
 
-+ **Wijzigingen afbreken**
++ **Wijzigingen die fouten veroorzaken**
   + Upgrade problemen voor Azureml-Train-AutoML
     + Upgraden naar azureml-Train-automl>= 1.0.76 van azureml-Train-automl<1.0.76 kan gedeeltelijke installaties veroorzaken, waardoor sommige AutoML-import bewerkingen mislukken. U kunt dit oplossen door het installatie script uit te voeren dat is gevonden op https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd . Of als u PIP direct gebruikt, kunt u het volgende doen:
       + "PIP-installatie--upgrade voor azureml-Train-automl"
@@ -1510,10 +1555,6 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
   + Ingeschakeld `TabularDataset` om te worden gebruikt door AutomatedML. Ga voor meer informatie naar `TabularDataset` https://aka.ms/azureml/howto/createdatasets .
 
 + **Oplossingen en verbeteringen voor oplossingen**
-  + **automl-client-core-nativeclient**
-    + Er is een fout opgelost die optreedt wanneer training en/of validerings labels (y en y_valid) zijn opgenomen in de vorm van Pandas data frame, maar niet als numpy-matrix.
-    + De interface voor het maken van een `RawDataContext` kan alleen worden gemaakt als de gegevens en het object zijn vereist `AutoMLBaseSettings` .
-    +  Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komt in de Trainingsset tijdens het maken van prognoses.
   + **Azure-cli-ml**
     + U kunt nu het TLS/SSL-certificaat bijwerken voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster, zowel voor het micro soft-certificaat dat is gegenereerd als voor klanten.
   + **azureml-automl-core**
@@ -1581,7 +1622,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
 ### <a name="azure-portal"></a>Azure Portal
 + **Preview-functie**
   + Logboek-en uitvoer bestands streaming is nu beschikbaar voor pagina's met details van de uitvoering. De bestanden streamen updates in realtime wanneer de schakel optie voor preview is ingeschakeld.
-  + De mogelijkheid om een quotum op een werkruimte niveau in te stellen, wordt vrijgegeven in de preview-versie. AmlCompute quota worden toegewezen op abonnements niveau, maar we bieden u de mogelijkheid om dat quotum tussen werk ruimten te verdelen en toe te wijzen voor eerlijk delen en governance. Klik op de Blade gebruiks namen en **quota's** in de linkernavigatiebalk van uw werk ruimte en selecteer het tabblad **Quota's configureren** . Houd er rekening mee dat u een abonnements beheerder moet zijn om quota's op het niveau van de werk ruimte te kunnen instellen, omdat dit een bewerking in meerdere werk ruimten is.
+  + De mogelijkheid om een quotum op een werkruimte niveau in te stellen, wordt vrijgegeven in de preview-versie. AmlCompute quota worden toegewezen op abonnements niveau, maar we bieden u de mogelijkheid om dat quotum tussen werk ruimten te verdelen en toe te wijzen voor eerlijk delen en governance. Klik op de Blade gebruiks namen en **quota's** in de linkernavigatiebalk van uw werk ruimte en selecteer het tabblad **quota's configureren** . Houd er rekening mee dat u een abonnements beheerder moet zijn om quota's op het niveau van de werk ruimte te kunnen instellen, omdat dit een bewerking in meerdere werk ruimten is.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -1650,9 +1691,6 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Meer informatie over het [gebruik van schattingen om de training van een vorige uitvoering te hervatten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/training/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)
 
 + **Oplossingen en verbeteringen voor oplossingen**
-  + **automl-client-core-nativeclient**
-    + De bug over verbroken-kolom typen na de trans formatie oplossen (bug gekoppeld);
-    + Y_query mag een object type zijn dat geen (e) (of) bevat aan het begin (#459519).
   + **Azure-cli-ml**
     + CLI-opdrachten ' model implementeren ' en ' service-update ' accepteren nu para meters, configuratie bestanden of een combi natie van beide. Para meters hebben voor rang op kenmerken in bestanden.
     + De model beschrijving kan nu worden bijgewerkt na de registratie

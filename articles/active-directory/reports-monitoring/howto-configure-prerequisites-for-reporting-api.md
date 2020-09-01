@@ -17,18 +17,18 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608259"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226961"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
-De [Azure Active Directory (Azure AD) rapportage-API's](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze Api's aanroepen vanuit programmeer talen en hulpprogram ma's.
+De [Azure Active Directory (Azure AD) rapportage-API's](./concept-reporting-api.md) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze Api's aanroepen vanuit programmeer talen en hulpprogram ma's.
 
-De rapportage-API maakt gebruik van [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) om toegang tot de Web-api's te verlenen.
+De rapportage-API maakt gebruik van [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) om toegang tot de Web-api's te verlenen.
 
 U moet het volgende doen om de toegang tot de rapportage-API voor te bereiden:
 
@@ -200,7 +200,7 @@ In deze sectie vindt u de algemene fout berichten die u kunt uitvoeren bij het o
 
  Meld u aan bij uw account met behulp van de aanmeldings knoppen in de interface van Graph Explorer om te voor komen dat er een fout optreedt wanneer u zich aanmeldt met Graph Explorer. 
 
-![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
+![Grafiekverkenner](./media/troubleshoot-graph-api/graph-explorer.png)
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Fout: kan geen Premium-licentie controle uitvoeren vanuit Microsoft Graph 
 
@@ -225,5 +225,5 @@ Volg de stappen in de [vereisten voor toegang tot de API voor Azure Active Direc
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten](tutorial-access-api-with-certificates.md)
-* [Controle-API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [API-naslag informatie voor aanmeld activiteiten](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Controle-API-verwijzing](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [API-naslag informatie voor aanmeld activiteiten](/graph/api/resources/signin?view=graph-rest-beta)

@@ -1,25 +1,25 @@
 ---
-title: Versie beheer van BLOB (preview)
+title: BLOB-versie beheer
 titleSuffix: Azure Storage
-description: Met de versie beheer van Blob Storage (preview) worden automatisch eerdere versies van een object bewaard en geïdentificeerd met tijds tempels. U kunt eerdere versies van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
+description: Versie beheer van Blob-opslag houdt automatisch eerdere versies van een object bij en identificeert deze met tijds tempels. U kunt eerdere versies van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074531"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226260"
 ---
-# <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
+# <a name="blob-versioning"></a>BLOB-versie beheer
 
-U kunt Blob Storage-versie beheer (preview) inschakelen om automatisch eerdere versies van een object te onderhouden.  Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
+U kunt versie beheer van Blob Storage inschakelen om automatisch eerdere versies van een object te onderhouden.  Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
 
 BLOB-versie beheer is ingeschakeld voor het opslag account en is van toepassing op alle blobs in het opslag account. Nadat u BLOB-versie beheer voor een opslag account hebt ingeschakeld, onderhoudt Azure Storage automatisch versies voor elke Blob in het opslag account.
 
@@ -41,6 +41,10 @@ Wanneer u een BLOB maakt waarvoor versie beheer is ingeschakeld, is de nieuwe BL
 Wanneer u een BLOB verwijdert waarvoor versie beheer is ingeschakeld, wordt door Azure Storage een versie gemaakt die de status van de BLOB vastlegt voordat deze werd verwijderd. De huidige versie van de BLOB wordt vervolgens verwijderd, maar de versies van de BLOB blijven behouden, zodat deze indien nodig opnieuw kunnen worden gemaakt. 
 
 BLOB-versies zijn onveranderbaar. U kunt de inhoud of meta gegevens van een bestaande BLOB-versie niet wijzigen.
+
+BLOB-versie beheer is beschikbaar voor algemeen gebruik v2-, blok-Blob-en Blob Storage-accounts. Opslag accounts met een hiërarchische naam ruimte die is ingeschakeld voor gebruik met Azure Data Lake Storage Gen2 worden momenteel niet ondersteund.
+
+Versie 2019-10-10 en hoger van de Azure Storage REST API ondersteunt BLOB-versie beheer.
 
 ### <a name="version-id"></a>Versie-ID
 
@@ -108,7 +112,7 @@ Gebruik het levenscyclus beheer van de blob om het proces van het verplaatsen va
 
 ## <a name="enable-or-disable-blob-versioning"></a>BLOB-versie beheer in-of uitschakelen
 
-Zie [BLOB-versie beheer in-of uitschakelen](versioning-enable.md)voor meer informatie over het in-of uitschakelen van BLOB-versie beheer.
+Zie [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)voor meer informatie over het in-of uitschakelen van BLOB-versies.
 
 Als u BLOB-versie beheer uitschakelt, worden bestaande blobs, versies of moment opnamen niet verwijderd. Wanneer u BLOB-versie beheer uitschakelt, blijven alle bestaande versies toegankelijk in uw opslag account. Er worden vervolgens geen nieuwe versies gemaakt.
 
@@ -196,134 +200,95 @@ De volgende tabel bevat de vereiste machtiging voor een SAS om een BLOB-versie t
 |----------------|----------------|------------------------|
 | Verwijderen         | x              | Een BLOB-versie verwijderen. |
 
-## <a name="about-the-preview"></a>Over de preview-versie
-
-BLOB-versie beheer is beschikbaar als preview in de volgende regio's:
-
-- US - oost 2
-- Central US
-- Europa - noord
-- Europa - west
-- Frankrijk - centraal
-- Canada - oost
-- Canada - midden
-
-> [!IMPORTANT]
-> De preview-versie van BLOB-versies is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
-
-Versie 2019-10-10 en hoger van de Azure Storage REST API ondersteunt BLOB-versie beheer.
-
-### <a name="storage-account-support"></a>Ondersteuning voor opslag accounts
-
-BLOB-versie beheer is beschikbaar voor de volgende typen opslag accounts:
-
-- V2-opslag accounts voor algemeen gebruik
-- Blob Storage-accounts blok keren
-- Blob Storage-accounts
-
-Als uw opslag account een algemeen v1-account is, gebruikt u de Azure Portal om te upgraden naar een v2-account voor algemeen gebruik. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
-
-Opslag accounts met een hiërarchische naam ruimte die is ingeschakeld voor gebruik met Azure Data Lake Storage Gen2 worden momenteel niet ondersteund.
-
-### <a name="register-for-the-preview"></a>Registreren voor de preview-versie
-
-Als u zich wilt inschrijven voor de preview-versie van de blob, gebruikt u Power shell of Azure CLI om een aanvraag in te dienen voor het registreren van de functie bij uw abonnement. Nadat uw aanvraag is goedgekeurd, kunt u BLOB-versie beheer inschakelen met alle nieuwe of bestaande algemene v2-, Blob Storage-of Premium-opslag accounts voor algemeen gebruik.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Als u zich wilt registreren bij Power shell, roept u de opdracht [REGI ster-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) aan.
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Controleer de status van uw registratie
-
-Als u de status van uw registratie wilt controleren, gebruikt u Power shell of Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Als u de status van uw registratie met Power shell wilt controleren, roept u de opdracht [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) aan.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 
 Het inschakelen van BLOB-versie beheer kan leiden tot extra kosten voor gegevens opslag voor uw account. Bij het ontwerpen van uw toepassing is het belang rijk om te weten hoe deze kosten kunnen toenemen, zodat u de kosten kunt minimaliseren.
 
-BLOB-versies, zoals BLOB-moment opnamen, worden in rekening gebracht tegen hetzelfde tarieven als actieve gegevens. Als een versie wordt geblokkeerd of pagina's met de bijbehorende basis-blob, betaalt u alleen voor extra blokken of pagina's die niet worden gedeeld tussen de versie en de basis-blob.
+BLOB-versies, zoals BLOB-moment opnamen, worden in rekening gebracht tegen hetzelfde tarieven als actieve gegevens. Hoe versies worden gefactureerd, is afhankelijk van of u de laag expliciet hebt ingesteld voor de basis-BLOB of voor een van de versies (of moment opnamen). Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](storage-blob-storage-tiers.md)voor meer informatie over blob-lagen.
+
+Als u de laag van een BLOB of versie niet hebt gewijzigd, worden er kosten in rekening gebracht voor unieke gegevens blokken voor die blob, de bijbehorende versies en eventuele moment opnamen. Zie [Facturering wanneer de BLOB-laag niet expliciet is ingesteld](#billing-when-the-blob-tier-has-not-been-explicitly-set)voor meer informatie.
+
+Als u de laag van een BLOB of versie hebt gewijzigd, wordt u gefactureerd voor het hele object, ongeacht of de BLOB en versie uiteindelijk weer in dezelfde laag staan. Zie [Facturering wanneer de BLOB-laag expliciet is ingesteld](#billing-when-the-blob-tier-has-been-explicitly-set)voor meer informatie.
 
 > [!NOTE]
 > Het inschakelen van versie beheer voor gegevens die regel matig worden overschreven, kan leiden tot hogere kosten voor de opslag capaciteit en een verhoogde latentie tijdens het aanbieden van bewerkingen. Sla vaak overschreven gegevens op in een afzonderlijk opslag account waarvoor versie beheer is uitgeschakeld om deze problemen te verhelpen.
 
-### <a name="important-billing-considerations"></a>Belang rijke overwegingen met betrekking tot facturering
+Zie [BLOB-moment opnamen](snapshots-overview.md)voor meer informatie over de facturerings gegevens voor BLOB-moment opnamen.
 
-Let op de volgende punten bij het inschakelen van BLOB-versie beheer:
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>Facturering wanneer de BLOB-laag niet expliciet is ingesteld
 
-- In uw opslag account worden kosten in rekening gebracht voor unieke blokken of pagina's, ongeacht of deze zich in de BLOB of in een vorige versie van de BLOB bevinden. Voor uw account worden geen extra kosten in rekening gebracht voor versies die aan een BLOB zijn gekoppeld, totdat u de BLOB waarop deze zijn gebaseerd, bijwerkt. Nadat u de BLOB hebt bijgewerkt, is deze van de vorige versies afwijkend. Als dit gebeurt, worden er kosten in rekening gebracht voor de unieke blokken of pagina's in elke BLOB of versie.
-- Wanneer u een blok in een blok-BLOB vervangt, wordt dat blok vervolgens als een uniek blok in rekening gebracht. Dit geldt ook als het blok dezelfde blok-ID en dezelfde gegevens bevat als in de versie. Nadat het blok opnieuw is doorgevoerd, is het afwijkend van de tegen hanger in elke versie en worden er kosten in rekening gebracht voor de gegevens. Hetzelfde geldt voor een pagina in een pagina-blob die wordt bijgewerkt met identieke gegevens.
-- Blob-opslag is niet van een manier om te bepalen of twee blokken identieke gegevens bevatten. Elk blok dat wordt geüpload en doorgevoerd, wordt behandeld als uniek, zelfs als het dezelfde gegevens en dezelfde blok-ID heeft. Omdat kosten toenemen voor unieke blokken, is het belang rijk om te overwegen dat het bijwerken van een BLOB wanneer versie beheer is ingeschakeld, extra unieke blokken en extra kosten oplevert.
-- Wanneer BLOB-versie beheer is ingeschakeld, ontwerpt u update-bewerkingen op blok-blobs zodat ze het minst mogelijke aantal blokken bijwerken. De schrijf bewerkingen die nauw keurige controle over blokken toestaan, zijn [blok keren](/rest/api/storageservices/put-block) en [blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list). De [put-BLOB](/rest/api/storageservices/put-blob) -bewerking, daarentegen, vervangt de volledige inhoud van een BLOB en kan dus leiden tot extra kosten.
+Als u de BLOB-laag niet expliciet hebt ingesteld voor een basis-BLOB of een van de bijbehorende versies, worden er unieke blokken of pagina's in rekening gebracht voor de blob, de bijbehorende versies en eventuele moment opnamen. Gegevens die worden gedeeld via een BLOB en de versies ervan worden slechts één keer in rekening gebracht. Wanneer een BLOB wordt bijgewerkt, worden gegevens in een basis-BLOB afwijkt van de gegevens die zijn opgeslagen in de versie en worden de unieke gegevens per blok of pagina in rekening gebracht.
 
-### <a name="versioning-billing-scenarios"></a>Facturerings scenario's voor versies
+Wanneer u een blok in een blok-BLOB vervangt, wordt dat blok vervolgens als een uniek blok in rekening gebracht. Dit geldt ook als het blok dezelfde blok-ID en dezelfde gegevens bevat als in de vorige versie. Nadat het blok opnieuw is doorgevoerd, is het afwijkend van de tegen hanger in de vorige versie en worden er kosten in rekening gebracht voor de gegevens. Hetzelfde geldt voor een pagina in een pagina-blob die wordt bijgewerkt met identieke gegevens.
 
-De volgende scenario's laten zien hoe kosten worden toegerekend voor een blok-Blob en de bijbehorende versies.
+Blob-opslag is niet van een manier om te bepalen of twee blokken identieke gegevens bevatten. Elk blok dat wordt geüpload en doorgevoerd, wordt behandeld als uniek, zelfs als het dezelfde gegevens en dezelfde blok-ID heeft. Omdat kosten toenemen voor unieke blokken, is het belang rijk om te onthouden dat het bijwerken van een BLOB wanneer versie beheer is ingeschakeld, extra unieke blokken en extra kosten oplevert.
+
+Wanneer BLOB-versie beheer is ingeschakeld, moet u update bewerkingen aanroepen op blok-blobs zodat ze het minst mogelijke aantal blokken bijwerken. De schrijf bewerkingen die nauw keurige controle over blokken toestaan, zijn [blok keren](/rest/api/storageservices/put-block) en [blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list). De [put-BLOB](/rest/api/storageservices/put-blob) -bewerking, daarentegen, vervangt de volledige inhoud van een BLOB en kan dus leiden tot extra kosten.
+
+De volgende scenario's laten zien hoe kosten worden toegerekend voor een blok-Blob en de bijbehorende versies wanneer de BLOB-laag niet expliciet is ingesteld.
 
 #### <a name="scenario-1"></a>Scenario 1
 
-In scenario 1 heeft de BLOB een eerdere versie. De blob is niet bijgewerkt sinds de versie is gemaakt. Daarom worden er alleen kosten in rekening gebracht voor unieke blokken 1, 2 en 3.
+In scenario 1 heeft de BLOB een vorige versie. De blob is niet bijgewerkt sinds de versie is gemaakt. Daarom worden er alleen kosten in rekening gebracht voor unieke blokken 1, 2 en 3.
 
-![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-1.png)
+![Diagram 1 met facturering voor unieke blokken in de basis-Blob en de vorige versie](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>Scenario 2
 
 In scenario 2 is één blok (3 in het diagram) in de BLOB bijgewerkt. Hoewel het bijgewerkte blok dezelfde gegevens en dezelfde ID bevat, is dit niet hetzelfde als blok 3 in de vorige versie. Als gevolg hiervan wordt het account in rekening gebracht voor vier blokken.
 
-![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-2.png)
+![Diagram 2 de facturering van unieke blokken in de basis-Blob en de vorige versie weer geven](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>Scenario 3
 
 In scenario 3 is de BLOB bijgewerkt, maar de versie niet. Blok 3 is vervangen door blok 4 in de basis-blob, maar de vorige versie komt nog steeds overeen met blok 3. Als gevolg hiervan wordt het account in rekening gebracht voor vier blokken.
 
-![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-3.png)
+![Diagram 3 met facturering voor unieke blokken in de basis-Blob en de vorige versie](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>Scenario 4
 
-In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke blokken &mdash; vier in de basis-Blob en vier in de vorige versie. Dit scenario kan zich voordoen als u naar een BLOB schrijft met de put-BLOB-bewerking, omdat deze de volledige inhoud van de basis-BLOB vervangt.
+In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke blokken &mdash; vier in de basis-Blob en vier in de vorige versie. Dit scenario kan zich voordoen als u naar een BLOB schrijft met de [put-BLOB](/rest/api/storageservices/put-blob) -bewerking, omdat deze de volledige inhoud van de basis-BLOB vervangt.
 
-![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-4.png)
+![Diagram 4 met facturering voor unieke blokken in de basis-Blob en de vorige versie](./media/versioning-overview/versions-billing-scenario-4.png)
+
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>Facturering wanneer de BLOB-laag expliciet is ingesteld
+
+Als u de BLOB-laag voor een BLOB of versie (of een moment opname) expliciet hebt ingesteld, worden er kosten in rekening gebracht voor de volledige inhouds lengte van het object in de nieuwe laag, ongeacht of het wordt geblokkeerd door een object in de oorspronkelijke laag. Ook worden er kosten in rekening gebracht voor de volledige inhouds lengte van de oudste versie in de oorspronkelijke laag. Alle andere eerdere versies of moment opnamen die in de oorspronkelijke laag blijven, worden in rekening gebracht voor unieke blokken die ze kunnen delen, zoals wordt beschreven in [Facturering wanneer de BLOB-laag niet expliciet is ingesteld](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>Een BLOB verplaatsen naar een nieuwe laag
+
+In de volgende tabel wordt het facturerings gedrag voor een BLOB of versie beschreven wanneer het wordt verplaatst naar een nieuwe laag.
+
+| Wanneer de BLOB-laag expliciet is ingesteld... | Vervolgens wordt u gefactureerd voor... |
+|-|-|
+| Een basis-blob met een vorige versie | De basis-Blob in de nieuwe laag en de oudste versie in de oorspronkelijke laag, plus eventuele unieke blokken in andere versies. <sup>1</sup> |
+| Een basis-blob met een vorige versie en een moment opname | De basis-Blob in de nieuwe laag, de oudste versie in de oorspronkelijke laag en de oudste moment opname in de oorspronkelijke laag, plus eventuele unieke blokken in andere versies of moment opnamen<sup>1</sup>. |
+| Een vorige versie | De versie in de nieuwe laag en de basis-Blob in de oorspronkelijke laag, plus eventuele unieke blokken in andere versies. <sup>1</sup> |
+
+<sup>1</sup> Als er andere eerdere versies of moment opnamen zijn die niet zijn verplaatst uit de oorspronkelijke laag, worden deze versies of moment opnamen in rekening gebracht op basis van het aantal unieke blokken dat ze bevatten, zoals wordt beschreven in [Facturering wanneer de BLOB-laag niet expliciet is ingesteld](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Het expliciet instellen van de laag voor een blob, versie of moment opname kan niet ongedaan worden gemaakt. Als u een BLOB naar een nieuwe laag verplaatst en vervolgens weer naar de oorspronkelijke laag verplaatst, worden er kosten in rekening gebracht voor de volledige lengte van de inhoud van het object, zelfs als er blokken met andere objecten in de oorspronkelijke laag worden gedeeld.
+
+Bewerkingen die de laag van een blob, versie of moment opname expliciet instellen, zijn onder andere:
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier) (Blob-laag instellen)
+- [BLOB](/rest/api/storageservices/put-blob) met opgegeven laag plaatsen
+- [Blokkerings lijst](/rest/api/storageservices/put-block-list) met opgegeven laag plaatsen
+- [BLOB kopiëren](/rest/api/storageservices/copy-blob) met opgegeven laag
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>Een BLOB verwijderen wanneer de functie voor voorlopig verwijderen is ingeschakeld
+
+Als de functie voor het voorlopig verwijderen van blobs is ingeschakeld, wordt de volledige inhouds lengte in rekening gebracht als u een basis-BLOB verwijdert of overschrijft waarvan de laag expliciet is ingesteld. Zie voor meer informatie over hoe BLOB versie en soft delete samen werken, [BLOB-versie beheer en zacht verwijderen](#blob-versioning-and-soft-delete).
+
+In de volgende tabel wordt het facturerings gedrag voor een verwijderde BLOB beschreven, afhankelijk van het feit of versie beheer is ingeschakeld of uitgeschakeld. Wanneer versie beheer is ingeschakeld, wordt er een versie gemaakt wanneer een BLOB zacht wordt verwijderd. Wanneer versie beheer is uitgeschakeld, wordt door het zacht verwijderen van een BLOB een tijdelijke moment opname verwijderd.
+
+| Wanneer u een basis-BLOB overschrijft waarbij de laag expliciet is ingesteld... | Vervolgens wordt u gefactureerd voor... |
+|-|-|
+| Als de functie voor het voorlopig verwijderen van blobs en versie beheer beide zijn ingeschakeld | Alle bestaande versies met volledige inhouds lengte, ongeacht de laag. |
+| Als de functie voor het voorlopig verwijderen van BLOB is ingeschakeld, maar versie beheer is uitgeschakeld | Alle bestaande tijdelijke moment opnamen met een volledige inhouds lengte, ongeacht de laag, worden verwijderd. |
 
 ## <a name="see-also"></a>Zie ook
 
-- [Blobversiebeheer inschakelen](versioning-enable.md)
+- [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)
 - [Een moment opname van een BLOB maken](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Zacht verwijderen voor Azure Storage-blobs](storage-blob-soft-delete.md)

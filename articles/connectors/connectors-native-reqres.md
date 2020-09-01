@@ -5,18 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289430"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226511"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-en reactie actie, kunt u geautomatiseerde taken en werk stromen maken die binnenkomende HTTPS-aanvragen ontvangen en erop reageren. U kunt bijvoorbeeld uw logische app:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-en reactie actie, kunt u geautomatiseerde taken en werk stromen maken die binnenkomende aanvragen via https kunnen ontvangen. Als u in plaats daarvan uitgaande aanvragen wilt verzenden, gebruikt u de ingebouwde [http-trigger of HTTP-actie](../connectors/connectors-native-http.md).
+
+U kunt bijvoorbeeld uw logische app:
 
 * Ontvangen en reageren op een HTTPS-aanvraag voor gegevens in een on-premises data base.
 
@@ -24,47 +26,28 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 * Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
 
-De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](../active-directory/develop/index.yml) (Azure AD OAuth) voor het machtigen van binnenkomende oproepen aan uw logische app. Zie voor meer informatie over het inschakelen van deze verificatie [beveiligde toegang en gegevens in azure Logic apps-Azure AD OAuth-verificatie inschakelen](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+In dit artikel wordt beschreven hoe u de actie trigger en reactie aanvragen kunt gebruiken zodat uw logische app inkomende oproepen kan ontvangen en erop kan reageren.
+
+Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL) of [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), raadpleegt [u beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement hebt, kunt u [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. Als u geen abonnement hebt, kunt u [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Basis kennis over [Logic apps](../logic-apps/logic-apps-overview.md). Als u geen ervaring hebt met Logic apps, kunt u leren [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
-
-* Inkomende aanroepen bieden *alleen* ondersteuning voor Transport Layer Security (TLS) 1,2. Als u TLS-Handshake-fouten ontvangt, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Zie [het probleem met het TLS 1,0 oplossen](/security/solving-tls1-problem)voor meer informatie. Uitgaande oproepen ondersteunen TLS 1,0, 1,1 en 1,2, op basis van de mogelijkheid van het doel eindpunt.
-
-* Binnenkomende oproepen ondersteunen deze coderings suites:
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md)?
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>Aanvraag trigger toevoegen
 
-Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u de [aanvraag trigger type](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met https-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
+Deze ingebouwde trigger maakt een hand matig aanroepbaar eind punt dat *alleen* binnenkomende aanvragen via https kan verwerken. Wanneer een beller een aanvraag naar dit eind punt verzendt, wordt de trigger voor de [aanvraag](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) geactiveerd en wordt de logische app uitgevoerd. Zie [werk stromen aanroepen, activeren of nesten met https-eind punten in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie over het aanroepen van deze trigger.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
+Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte periode](../logic-apps/logic-apps-limits-and-config.md#request-limits)open. Ervan uitgaande dat uw logische app een [reactie actie](#add-response)bevat, als uw logische app na deze tijd niet terugstuurt naar de aanroeper, retourneert uw logische app een `504 GATEWAY TIMEOUT` status naar de aanroeper. Als uw logische app geen reactie actie bevat, 
+> uw logische app retourneert direct een `202 ACCEPTED` status naar de aanroeper.
 
-1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak in `http request` als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+
+1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak in `http request` als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** .
 
    ![Aanvraag trigger selecteren](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -144,11 +127,11 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    1. Selecteer in de trigger voor de aanvraag een **voor beeld-nettolading gebruiken om een schema te genereren**.
 
-      ![Schema genereren vanuit nettolading](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![Scherm opname met de selectie voor beeld van nettolading gebruiken om schema te genereren](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. Voer de voor beeld-nettolading in en selecteer **gereed**.
 
-      ![Schema genereren vanuit nettolading](./media/connectors-native-reqres/enter-payload.png)
+      ![Voor beeld-nettolading invoeren om schema te genereren](./media/connectors-native-reqres/enter-payload.png)
 
       Dit is de nettolading van de steek proef:
 
@@ -206,15 +189,13 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
    ![URL die moet worden gebruikt om de logische app te activeren](./media/connectors-native-reqres/generated-url.png)
 
    > [!NOTE]
-   > Als u het hash-of hekje-symbool ( **#** ) in de URI wilt opnemen bij het aanroepen van de aanvraag trigger, gebruikt u in plaats daarvan deze gecodeerde versie:`%25%23`
+   > Als u het hash-of hekje-symbool ( **#** ) in de URI wilt opnemen bij het aanroepen van de aanvraag trigger, gebruikt u in plaats daarvan deze gecodeerde versie: `%25%23`
 
 1. Als u uw logische app wilt activeren, verzendt u een HTTP POST naar de gegenereerde URL.
 
-   U kunt bijvoorbeeld een hulp programma zoals [postman](https://www.getpostman.com/) gebruiken om het HTTP-bericht te verzenden. Als u [Azure Active Directory open verificatie](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) hebt ingeschakeld voor het autoriseren van binnenkomende aanroepen aan de aanvraag trigger, roept u de trigger aan met behulp van een [URL voor Shared Access Signature (SAS)](../logic-apps/logic-apps-securing-a-logic-app.md#sas) of met behulp van een verificatie token, maar u kunt niet beide gebruiken. Het verificatie token moet het `Bearer` type opgeven in de autorisatie-header. Zie voor meer informatie [beveiligde toegang en gegevens in azure Logic apps toegang tot op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers).
+   U kunt bijvoorbeeld een hulp programma zoals [postman](https://www.getpostman.com/) gebruiken om het HTTP-bericht te verzenden. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u deze onderwerpen, [type aanvraag trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [aanroepen, activeren of nesten van werk stromen met http-eind punten in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
-Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u deze onderwerpen, [type aanvraag trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [aanroepen, activeren of nesten van werk stromen met http-eind punten in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
-
-### <a name="trigger-outputs"></a>Trigger uitvoer
+## <a name="trigger-outputs"></a>Trigger uitvoer
 
 Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
@@ -228,15 +209,13 @@ Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
 ## <a name="add-a-response-action"></a>Een reactie actie toevoegen
 
-U kunt de reactie actie gebruiken om te reageren met een Payload (gegevens) naar een binnenkomende HTTPS-aanvraag, maar alleen in een logische app die wordt geactiveerd door een HTTPS-aanvraag. U kunt de reactie actie op elk gewenst moment in uw werk stroom toevoegen. Zie het [actie type reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger.
-
-Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte periode](../logic-apps/logic-apps-limits-and-config.md#request-limits)open. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
+Wanneer u de aanvraag trigger gebruikt voor het verwerken van inkomende aanvragen, kunt u het antwoord model leren en de lading resultaten terugsturen naar de aanroeper met behulp van de ingebouwde [reactie actie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action). U kunt de reactie actie *alleen* met de aanvraag trigger gebruiken. Met deze combi natie van de actie trigger en reactie van aanvragen maakt u het [antwoord patroon](https://en.wikipedia.org/wiki/Request%E2%80%93response)voor de aanvraag. Met uitzonde ring van binnen foreach-lussen en tot lussen, en parallelle vertakkingen kunt u de reactie actie overal in uw werk stroom toevoegen.
 
 > [!IMPORTANT]
 > Als een antwoord actie deze headers bevat, verwijdert Logic Apps deze headers uit het gegenereerde antwoord bericht zonder dat er een waarschuwing of fout wordt weer gegeven:
 >
 > * `Allow`
-> * `Content-*`met deze uitzonde ringen: `Content-Disposition` , `Content-Encoding` en`Content-Type`
+> * `Content-*` met deze uitzonde ringen: `Content-Disposition` , `Content-Encoding` en `Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -253,7 +232,7 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
 
    Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer onder **Kies een actie**in het zoekvak het woord "antwoord" in als uw filter en selecteer de **reactie** actie.
+1. Onder **Kies een actie**, typt `response` u als filter in het zoekvak en selecteert u de **reactie** actie.
 
    ![De reactie actie selecteren](./media/connectors-native-reqres/select-response-action.png)
 
@@ -276,7 +255,7 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
    | **Status code** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
-   | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
+   | **Koppen** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
    | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
    |||||
 
@@ -286,5 +265,5 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Beveiligde toegang en gegevens toegang voor inkomende oproepen naar activeringen op basis van een aanvraag](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [Connectors voor Logic Apps](../connectors/apis-list.md)
-

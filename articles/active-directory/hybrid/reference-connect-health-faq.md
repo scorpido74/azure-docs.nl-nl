@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718540"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182374"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD Connect Health
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Directory (Azure AD) Connect Health. Deze veelgestelde vragen worden behandeld in het gebruik van de service, waaronder het facturerings model, de mogelijkheden, beperkingen en ondersteuning.
@@ -137,7 +137,7 @@ De status agent kan niet worden geregistreerd door de volgende mogelijke redenen
 
 * De agent kan niet communiceren met de vereiste eind punten omdat het verkeer wordt geblokkeerd door een firewall. Dit is met name gebruikelijk op Web Application proxy-servers. Zorg ervoor dat u de toegestane uitgaande communicatie met de vereiste eind punten en poorten hebt toegestaan. Zie de [sectie vereisten](how-to-connect-health-agent-install.md#requirements) voor meer informatie.
 * Uitgaande communicatie wordt onderhevig aan een TLS-inspectie door de netwerklaag. Dit zorgt ervoor dat het certificaat dat door de agent wordt gebruikt, wordt vervangen door de controle server/entiteit en de stappen voor het volt ooien van de registratie van de agent mislukken.
-* De gebruiker heeft geen toegang om de registratie van de agent uit te voeren. Globale beheerders hebben standaard toegang. U kunt Azure [RBAC (op rollen gebaseerd toegangs beheer)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) gebruiken om de toegang tot andere gebruikers te delegeren.
+* De gebruiker heeft geen toegang om de registratie van de agent uit te voeren. Globale beheerders hebben standaard toegang. U kunt Azure [RBAC (op rollen gebaseerd toegangs beheer)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) gebruiken om de toegang tot andere gebruikers te delegeren.
 
 **V: Ik ontvang een waarschuwing dat Health Service gegevens niet up-to-date zijn. Hoe kan ik het probleem op te lossen?**
 

@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959898"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226026"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Webjobs ontwikkelen en implementeren met behulp van Visual Studio
 
@@ -184,9 +184,9 @@ Implementatie gegevens van Webtaak:
 
 Het type van een Webtaak kan worden *geactiveerd* of *doorlopend*zijn:
 
-- Geactiveerd (standaard): een geactiveerde Webtaak wordt gestart op basis van een bindings gebeurtenis, volgens een [planning](#scheduling-a-triggered-webjob)of wanneer u deze hand matig (op aanvraag) aanstuurt. Het wordt uitgevoerd op alle exemplaren waarop de web-app wordt uitgevoerd, maar u kunt de Webtaak desgewenst beperken tot één exemplaar.
+- Geactiveerd (standaard): een geactiveerde Webtaak wordt gestart op basis van een bindings gebeurtenis, volgens een [planning](#scheduling-a-triggered-webjob)of wanneer u deze hand matig (op aanvraag) aanstuurt. Het wordt uitgevoerd op één exemplaar waarop de web-app wordt uitgevoerd.
 
-- Doorlopend: een [doorlopende](#continuous-execution) Webtaak wordt onmiddellijk gestart wanneer de Webtaak wordt gemaakt. Dit type Webtaak is het meest geschikt voor ongebonden of langlopende taken. Als de taak wordt beëindigd, kunt u deze opnieuw starten.  
+- Doorlopend: een [doorlopende](#continuous-execution) Webtaak wordt onmiddellijk gestart wanneer de Webtaak wordt gemaakt. De service wordt standaard uitgevoerd op alle geschaalde exemplaren van de web-app, maar kan worden geconfigureerd om te worden uitgevoerd als één exemplaar via *instellingen. Job*.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
@@ -218,10 +218,10 @@ De volgende instellingen worden ondersteund door webjobs:
 
 | **Instelling** | **Type**  | **Beschrijving** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Alles | Hiermee kan de Webtaak op locatie worden uitgevoerd zonder eerst naar een tijdelijke map te worden gekopieerd. Zie voor meer informatie [werk directory Webtaak](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Alle | Hiermee kan de Webtaak op locatie worden uitgevoerd zonder eerst naar een tijdelijke map te worden gekopieerd. Zie voor meer informatie [werk directory Webtaak](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Continu | Voer de Webtaak alleen uit op één instantie wanneer deze is uitgeschaald. Zie [een continue taak als Singleton instellen](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)voor meer informatie. |
 | `schedule` | Geactiveerd | Voer de Webtaak uit op basis van een CRON schema. Zie [NCRONTAB-expressies](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)voor meer informatie. |
-| `stopping_wait_time`| Alles | Hiermee staat u het beheer van het afsluit gedrag toe. Zie voor meer informatie [correct afsluiten](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Alle | Hiermee staat u het beheer van het afsluit gedrag toe. Zie voor meer informatie [correct afsluiten](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ### <a name="continuous-execution"></a>Doorlopende uitvoering
 

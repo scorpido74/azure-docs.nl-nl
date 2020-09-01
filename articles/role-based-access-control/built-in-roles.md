@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: b58316cf5a56eae46c81056a78446dc6c3d10764
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271988"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226757"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
@@ -24,7 +24,7 @@ Dit artikel bevat een overzicht van de ingebouwde rollen van Azure, die altijd i
 
 De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouwde rol. Klik op de naam van de rol om de lijst met `Actions` ,, `NotActions` `DataActions` en `NotDataActions` voor elke rol weer te geven. Zie [begrippen van Azure-functies begrijpen](role-definitions.md)voor informatie over wat deze acties betekenen en hoe deze van toepassing zijn op het beheer-en gegevens abonnement.
 
-## <a name="all"></a>Alles
+## <a name="all"></a>Alle
 
 > [!div class="mx-tableFixed"]
 > | Ingebouwde rol | Beschrijving | Id |
@@ -153,7 +153,15 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Azure Sentinel Contributor](#azure-sentinel-contributor) | Azure Sentinel Contributor | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel Reader](#azure-sentinel-reader) | Azure Sentinel Reader | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel Responder](#azure-sentinel-responder) | Azure Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Inzender Key Vault](#key-vault-contributor) | Hiermee kunt u sleutel kluizen beheren, maar niet de toegang tot de kluis. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Key Vault beheerder (preview-versie)](#key-vault-administrator-preview) | Alle gegevenslaag bewerkingen uitvoeren op een sleutel kluis en alle objecten hierin, met inbegrip van certificaten, sleutels en geheimen. Kan geen sleutel kluis resources beheren of roltoewijzingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vaulte-certificerings instanties (preview-versie)](#key-vault-certificates-officer-preview) | Acties uitvoeren op de certificaten van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Inzender Key Vault](#key-vault-contributor) | Sleutel kluizen beheren, maar u kunt geen rollen toewijzen in azure RBAC en biedt geen toegang tot geheimen, sleutels of certificaten. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Key Vault crypto-functionaris (preview-versie)](#key-vault-crypto-officer-preview) | Acties uitvoeren op de sleutels van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Versleuteling van crypto-service Key Vault (preview-versie)](#key-vault-crypto-service-encryption-preview) | Lees de meta gegevens van sleutels en voer terugloop/uitlopende bewerkingen uit. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault crypto grafie-gebruiker (preview-versie)](#key-vault-crypto-user-preview) | Voer cryptografische bewerkingen uit met behulp van sleutels. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault lezer (preview-versie)](#key-vault-reader-preview) | Lees de meta gegevens van sleutel kluizen en de bijbehorende certificaten, sleutels en geheimen. Kan geen gevoelige waarden lezen, zoals geheime inhoud of sleutel materiaal. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vaulte geheimen-auditeur (preview-versie)](#key-vault-secrets-officer-preview) | Acties uitvoeren op de geheimen van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault geheimen gebruiker (preview-versie)](#key-vault-secrets-user-preview) | Geheime inhoud lezen. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Beveiligings beheerder](#security-admin) | Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen als de rol van beveiligings lezer en kunnen ook het beveiligings beleid bijwerken en waarschuwingen en aanbevelingen negeren. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Inzender voor beveiligings beoordeling](#security-assessment-contributor) | Hiermee kunt u evaluaties naar Security Center pushen | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Beveiligings beheer (verouderd)](#security-manager-legacy) | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -6276,9 +6284,129 @@ Azure Sentinel responder [meer informatie](../sentinel/roles.md)
 }
 ```
 
+### <a name="key-vault-administrator-preview"></a>Key Vault beheerder (preview-versie)
+
+Alle gegevenslaag bewerkingen uitvoeren op een sleutel kluis en alle objecten hierin, met inbegrip van certificaten, sleutels en geheimen. Kan geen sleutel kluis resources beheren of roltoewijzingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/CheckNameAvailability/Read-kluis | Hiermee wordt gecontroleerd of de naam van een sleutel kluis geldig is en niet wordt gebruikt |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/DeletedVaults/Read-kluis | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/locations/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/Operations/Read-kluis | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on certificates, keys and secrets of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00482a5a-887f-4fb3-b363-3b7fe8e74483",
+  "name": "00482a5a-887f-4fb3-b363-3b7fe8e74483",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Administrator (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-certificates-officer-preview"></a>Key Vaulte-certificerings instanties (preview-versie)
+
+Acties uitvoeren op de certificaten van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/CheckNameAvailability/Read-kluis | Hiermee wordt gecontroleerd of de naam van een sleutel kluis geldig is en niet wordt gebruikt |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/DeletedVaults/Read-kluis | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/locations/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/Operations/Read-kluis | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/certificatecas/* |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/certificates/* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the certificates of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a4417e6f-fecd-4de8-b567-7b0420556985",
+  "name": "a4417e6f-fecd-4de8-b567-7b0420556985",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/certificatecas/*",
+        "Microsoft.KeyVault/vaults/certificates/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="key-vault-contributor"></a>Inzender Key Vault
 
-Hiermee kunt u sleutel kluizen beheren, maar niet de toegang tot de kluis. [Meer informatie](../key-vault/general/secure-your-key-vault.md)
+Sleutel kluizen beheren, maar u kunt geen rollen toewijzen in azure RBAC en biedt geen toegang tot geheimen, sleutels of certificaten. [Meer informatie](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -6324,6 +6452,324 @@ Hiermee kunt u sleutel kluizen beheren, maar niet de toegang tot de kluis. [Meer
     }
   ],
   "roleName": "Key Vault Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-officer-preview"></a>Key Vault crypto-functionaris (preview-versie)
+
+Acties uitvoeren op de sleutels van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/CheckNameAvailability/Read-kluis | Hiermee wordt gecontroleerd of de naam van een sleutel kluis geldig is en niet wordt gebruikt |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/DeletedVaults/Read-kluis | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/locations/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/Operations/Read-kluis | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the keys of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
+  "name": "14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-service-encryption-preview"></a>Versleuteling van crypto-service Key Vault (preview-versie)
+
+Lees de meta gegevens van sleutels en voer terugloop/uitlopende bewerkingen uit. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | *geen* |  |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Read-kluis | Lijst met sleutels in de opgegeven kluis of lees de eigenschappen en het open bare materiaal van een sleutel. Voor asymmetrische sleutels wordt met deze bewerking de open bare sleutel beschikbaar gemaakt en is de mogelijkheid om open bare sleutel algoritmen uit te voeren, zoals versleutelen en hand tekeningen controleren. Persoonlijke sleutels en symmetrische sleutels worden nooit weer gegeven. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/wrap/Action-kluis | Een symmetrische sleutel inpakken met een Key Vault sleutel. Houd er rekening mee dat als de Key Vault sleutel asymmetrisch is, deze bewerking kan worden uitgevoerd met lees toegang. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Unwrap/Action-kluis | Pak een symmetrische sleutel uit met een Key Vault sleutel. |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read metadata of keys and perform wrap/unwrap operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e147488a-f6f5-4113-8e2d-b22465e65bf6",
+  "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/read",
+        "Microsoft.KeyVault/vaults/keys/wrap/action",
+        "Microsoft.KeyVault/vaults/keys/unwrap/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-user-preview"></a>Key Vault crypto grafie-gebruiker (preview-versie)
+
+Voer cryptografische bewerkingen uit met behulp van sleutels. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | *geen* |  |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Read-kluis | Lijst met sleutels in de opgegeven kluis of lees de eigenschappen en het open bare materiaal van een sleutel. Voor asymmetrische sleutels wordt met deze bewerking de open bare sleutel beschikbaar gemaakt en is de mogelijkheid om open bare sleutel algoritmen uit te voeren, zoals versleutelen en hand tekeningen controleren. Persoonlijke sleutels en symmetrische sleutels worden nooit weer gegeven. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/update/Action-kluis | Hiermee worden de opgegeven kenmerken bijgewerkt die zijn gekoppeld aan de opgegeven sleutel. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/backup/Action-kluis | Maak het back-upbestand van een sleutel. Het bestand kan worden gebruikt om de sleutel te herstellen in een Key Vault van hetzelfde abonnement. Er kunnen beperkingen van toepassing zijn. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Encrypt/Action-kluis | Versleutelen van Lees bare tekst met een sleutel. Houd er rekening mee dat als de sleutel asymmetrisch is, deze bewerking kan worden uitgevoerd door principals met lees toegang. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Decrypt/Action-kluis | Ontsleutelen van gecodeerde tekst met een sleutel. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/wrap/Action-kluis | Een symmetrische sleutel inpakken met een Key Vault sleutel. Houd er rekening mee dat als de Key Vault sleutel asymmetrisch is, deze bewerking kan worden uitgevoerd met lees toegang. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Unwrap/Action-kluis | Pak een symmetrische sleutel uit met een Key Vault sleutel. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/Sign/Action-kluis | Een hash ondertekenen met een sleutel. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Keys/verify/Action-kluis | Verifieer een hash. Houd er rekening mee dat als de sleutel asymmetrisch is, deze bewerking kan worden uitgevoerd door principals met lees toegang. |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform cryptographic operations on keys and certificates.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/12338af0-0e69-4776-bea7-57ae8d297424",
+  "name": "12338af0-0e69-4776-bea7-57ae8d297424",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/read",
+        "Microsoft.KeyVault/vaults/keys/update/action",
+        "Microsoft.KeyVault/vaults/keys/backup/action",
+        "Microsoft.KeyVault/vaults/keys/encrypt/action",
+        "Microsoft.KeyVault/vaults/keys/decrypt/action",
+        "Microsoft.KeyVault/vaults/keys/wrap/action",
+        "Microsoft.KeyVault/vaults/keys/unwrap/action",
+        "Microsoft.KeyVault/vaults/keys/sign/action",
+        "Microsoft.KeyVault/vaults/keys/verify/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto User (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-reader-preview"></a>Key Vault lezer (preview-versie)
+
+Lees de meta gegevens van sleutel kluizen en de bijbehorende certificaten, sleutels en geheimen. Kan geen gevoelige waarden lezen, zoals geheime inhoud of sleutel materiaal. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/CheckNameAvailability/Read-kluis | Hiermee wordt gecontroleerd of de naam van een sleutel kluis geldig is en niet wordt gebruikt |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/DeletedVaults/Read-kluis | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/locations/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/Operations/Read-kluis | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Secrets/readMetadata/Action-kluis | De eigenschappen van een geheim weer geven of bekijken, maar niet de bijbehorende waarde. |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read metadata of key vaults and its certificates, keys and secrets. Cannot read sensitive values such as secret contents or key material.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/21090545-7ca7-4776-b22c-e363652d74d2",
+  "name": "21090545-7ca7-4776-b22c-e363652d74d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Reader (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-secrets-officer-preview"></a>Key Vaulte geheimen-auditeur (preview-versie)
+
+Acties uitvoeren op de geheimen van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/CheckNameAvailability/Read-kluis | Hiermee wordt gecontroleerd of de naam van een sleutel kluis geldig is en niet wordt gebruikt |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/DeletedVaults/Read-kluis | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/locations/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/*/Read |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/Operations/Read-kluis | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Secrets/* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the secrets of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "name": "b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/secrets/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-secrets-user-preview"></a>Key Vault geheimen gebruiker (preview-versie)
+
+Geheime inhoud lezen. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '.
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | *geen* |  |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Secrets/getSecret/Action-kluis | Haal de waarde van een geheim op. |
+> | [Micro soft.](resource-provider-operations.md#microsoftkeyvault)/vaults/Secrets/readMetadata/Action-kluis | De eigenschappen van een geheim weer geven of bekijken, maar niet de bijbehorende waarde. |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read secret contents.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+  "name": "4633458b-17de-408a-b874-0445c86b69e6",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+        "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Secrets User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8565,7 +9011,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Overige
+## <a name="other"></a>Anders
 
 
 ### <a name="biztalk-contributor"></a>BizTalk-bijdrager

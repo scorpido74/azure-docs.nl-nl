@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373859"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226893"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor het inrichten van Azure AD Connect Cloud
 Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
@@ -27,7 +27,7 @@ Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Dir
 U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting:
     
 - Een hybride identiteits beheerders account voor uw Azure AD-Tenant die geen gast gebruiker is.
-- Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.  Deze server moet een laag 0-server zijn op basis van het [Active Directory administratieve laag model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.  Deze server moet een laag 0-server zijn op basis van het [Active Directory administratieve laag model](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - On-premises firewall configuraties.
 
 >[!NOTE]
@@ -35,14 +35,14 @@ U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting
 
 De rest van het document bevat stapsgewijze instructies voor deze vereisten.
 
-### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheer centrum
+### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheercentrum
 
-1. Maak een alleen-Cloud account voor hybride identiteits beheerders in uw Azure AD-Tenant. Op deze manier kunt u de configuratie van uw Tenant beheren als uw on-premises Services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een Hybrid Identity Administrator-account voor de Cloud](../active-directory-users-create-azure-portal.md). Het volt ooien van deze stap is van cruciaal belang om ervoor te zorgen dat de Tenant niet wordt vergrendeld.
-1. Voeg een of meer [aangepaste domein namen](../active-directory-domains-add-azure-portal.md) toe aan uw Azure AD-Tenant. Uw gebruikers kunnen zich aanmelden met een van deze domein namen.
+1. Maak een alleen-Cloud account voor hybride identiteits beheerders in uw Azure AD-Tenant. Op deze manier kunt u de configuratie van uw Tenant beheren als uw on-premises Services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een Hybrid Identity Administrator-account voor de Cloud](../fundamentals/add-users-azure-active-directory.md). Het volt ooien van deze stap is van cruciaal belang om ervoor te zorgen dat de Tenant niet wordt vergrendeld.
+1. Voeg een of meer [aangepaste domeinnamen](../fundamentals/add-custom-domain.md) toe aan uw Azure AD-tenant. Uw gebruikers kunnen zich aanmelden met een van deze domeinnamen.
 
 ### <a name="in-your-directory-in-active-directory"></a>In uw directory in Active Directory
 
-Voer het [hulp programma IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) uit om de Directory kenmerken voor te bereiden op synchronisatie.
+Voer het [hulp programma IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) uit om de Directory kenmerken voor te bereiden op synchronisatie.
 
 ### <a name="in-your-on-premises-environment"></a>In uw on-premises omgeving
 
@@ -51,7 +51,7 @@ Voer het [hulp programma IdFix](https://docs.microsoft.com/office365/enterprise/
 1. Het Power shell-uitvoerings beleid op de lokale server moet worden ingesteld op niet-gedefinieerde of RemoteSigned.
 
 1. Als er zich een firewall tussen uw servers en Azure AD bevindt, configureert u de volgende items:
-   - Zorg ervoor dat agenten *uitgaande* aanvragen kunnen indienen bij Azure AD via de volgende poorten:
+   - Zorg ervoor dat agenten *uitgaande* aanvragen voor Azure AD via de volgende poorten kunnen maken:
 
         | Poortnummer | Hoe dat wordt gebruikt |
         | --- | --- |
@@ -59,9 +59,9 @@ Voer het [hulp programma IdFix](https://docs.microsoft.com/office365/enterprise/
         | **443** | Hiermee wordt alle uitgaande communicatie met de service verwerkt. |
         | **8080** (optioneel) | Agents rapporteren hun status elke 10 minuten via poort 8080, als poort 443 niet beschikbaar is. Deze status wordt weer gegeven in de Azure AD-Portal. |
      
-   - Als uw firewall regels afdwingt op basis van de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als een netwerk service worden uitgevoerd.
-   - Als u met uw firewall of proxy veilige achtervoegsels kunt opgeven, voegt u verbindingen toe aan \* . msappproxy.net en \* . servicebus.Windows.net. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
-   - Uw agenten hebben toegang tot login.windows.net en login.microsoftonline.com nodig voor de eerste registratie. Open ook uw firewall voor deze Url's.
+   - Als met uw firewall regels worden afgedwongen op basis van de herkomst van gebruikers, opent u deze poorten voor verkeer dat afkomstig is van Windows-services die als een netwerkservice worden uitgevoerd.
+   - Als u met uw firewall of proxy veilige achtervoegsels kunt opgeven, voegt u verbindingen toe aan \* . msappproxy.net en \* . servicebus.Windows.net. Als dat niet het geval is, moet u toegang toestaan tot de [IP-adresbereiken van Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653), die elke week worden bijgewerkt.
+   - Uw agenten hebben voor de eerste registratie toegang nodig tot login.windows.net en login.microsoftonline.com. Open uw firewall ook voor deze URL's.
    - Voor validatie van het certificaat kunt u de volgende Url's blok keren: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 en www \. Microsoft.com:80. Deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, zodat u deze Url's mogelijk al hebt gedeblokkeerd.
 
 >[!NOTE]
@@ -96,4 +96,3 @@ Voer de volgende stappen uit om TLS 1,2 in te scha kelen.
 
 - [Wat is inrichting?](what-is-provisioning.md)
 - [Wat is Azure AD Connect-cloudinrichting?](what-is-cloud-provisioning.md)
-

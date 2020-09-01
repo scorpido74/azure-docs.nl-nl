@@ -1,27 +1,27 @@
 ---
 title: Een BLOB-moment opname maken en beheren in .NET
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een alleen-lezen momentopname van een blob om een back-up van blobgegevens op een bepaald moment in de tijd.
+description: Meer informatie over het gebruik van de .NET-client bibliotheek voor het maken van een alleen-lezen momentopname van een blob om een back-up van blobgegevens op een bepaald moment in de tijd.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d50357a648d63984ae70a32e0fdd7260a86d6a6a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020810"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226128"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Een BLOB-moment opname maken en beheren in .NET
 
 Een moment opname is een alleen-lezen versie van een blob die op een bepaald moment wordt uitgevoerd. In dit artikel wordt beschreven hoe u BLOB-moment opnamen maakt en beheert met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-Zie [een BLOB-moment opname maken en beheren in .net](snapshots-overview.md)voor meer informatie over blob-moment opnamen in azure Storage.
+Zie [BLOB-moment opnamen](snapshots-overview.md)voor meer informatie over blob-moment opnamen in azure Storage.
 
 ## <a name="create-a-snapshot"></a>Een momentopname maken
 
@@ -162,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>Volgende stappen
 
 - [BLOB-moment opnamen](snapshots-overview.md)
-- [BLOB-versies (preview-versie)](versioning-overview.md)
+- [BLOB-versies](versioning-overview.md)
 - [Blobs voorlopig verwijderen](storage-blob-soft-delete.md)

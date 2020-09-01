@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Meer informatie over het streamen van inhoud met CDN-integratie en het vooraf ophalen en verkrijgen van CDN-prefetch.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: inhenkel
+ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799346"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226145"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Inhoud streamen met CDN-integratie
 
@@ -29,14 +29,19 @@ De populaire inhoud wordt rechtstreeks vanuit de CDN-cache verwerkt zolang het v
 
 U moet ook nadenken over de werking van adaptieve streaming. Elk afzonderlijk video fragment wordt in de cache opgeslagen als een eigen entiteit. Stel bijvoorbeeld dat de eerste keer dat een bepaalde video wordt bekeken. Als de Viewer niet meer dan een paar seconden ziet, worden er alleen video fragmenten weer gegeven die zijn gekoppeld aan wat de persoon bekijkt in het cache geheugen in CDN. Met adaptieve streaming hebt u doorgaans 5 tot 7 verschillende bitrates voor video. Als één persoon een bitrate bekijkt en een andere persoon een andere bitsnelheid bekijkt, worden ze afzonderlijk in het CDN opgeslagen. Zelfs als twee mensen dezelfde bitsnelheid volgen, kunnen ze worden gestreamd via verschillende protocollen. Elk protocol (HLS, MPEG-DASH, Smooth Streaming) wordt afzonderlijk in de cache opgeslagen. Elke bitsnelheid en elk protocol worden afzonderlijk in de cache opgeslagen en alleen de video fragmenten die zijn aangevraagd, worden in de cache opgeslagen.
 
-Als u wilt bepalen of CDN moet worden ingeschakeld op het Media Services [streaming-eind punt](streaming-endpoint-concept.md), moet u rekening houden met het aantal verwachte viewers. CDN helpt alleen als u veel kijkers voor uw inhoud verwacht. Als de maximale gelijktijdigheid van viewers lager is dan 500, is het raadzaam CDN uit te scha kelen omdat CDN het beste met gelijktijdigheid kan worden geschaald.
+Met uitzonde ring van de test omgeving raden we aan dat CDN is ingeschakeld voor standaard-en Premium-streaming-eind punten. Elk type streaming-eind punt heeft een andere ondersteunde doorvoer limiet.
+Het is moeilijk om een nauw keurige berekening te maken voor het maximum aantal gelijktijdige stromen dat wordt ondersteund door een streaming-eind punt, omdat er verschillende factoren zijn om rekening te houden. Deze omvatten:
+
+- Maximum aantal bitrates dat wordt gebruikt voor streaming
+- Gedrag van de voor-en schakel functie van de speler. Spelers proberen segmenten van een oorsprong te breken en de laad snelheid te gebruiken voor het berekenen van de switching van adaptieve bitsnelheid. Als een streaming-eind punt bijna verzadigd wordt, kunnen de reactie tijden variëren en beginnen spelers met het overschakelen naar een lagere kwaliteit. Omdat dit de belasting van de streaming-eind punten verlaagt, kunt u terugschalen naar een hogere kwaliteit om ongewenste switch triggers te maken.
+Over het algemeen is het veilig om het maximum aantal gelijktijdige stromen te schatten door de maximale streaming-eindpunt doorvoer te nemen en deze te delen door de maximale bitsnelheid (ervan uitgaande dat alle spelers de hoogste bitrate gebruiken.) U kunt bijvoorbeeld een Standard streaming-eind punt hebben dat is beperkt tot 600 Mbps en de hoogste bitrate van 3Mbp. In dit geval worden ongeveer 200 gelijktijdige stromen ondersteund op de hoogste bitrate. Houd ook rekening met de vereisten voor de audio bandbreedte. Hoewel een audio stroom alleen kan worden gestreamd op 128 KPS, wordt het totale aantal streams snel toegevoegd wanneer u het vermenigvuldigt met het aantal gelijktijdige streams.
 
 In dit onderwerp vindt u informatie over het inschakelen van [CDN-integratie](#enable-azure-cdn-integration). Ook wordt uitgelegd hoe u vooraf haalt (actieve cache) en het concept van [CDN-prefetch](#origin-assist-cdn-prefetch) .
 
 ## <a name="considerations"></a>Overwegingen
 
-* Het [streaming-eind punt](streaming-endpoint-concept.md) `hostname` en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt.
-* Als u de mogelijkheid wilt bieden om uw inhoud te testen met of zonder CDN, maakt u een ander streaming-eind punt dat niet is ingeschakeld voor CDN.
+- Het [streaming-eind punt](streaming-endpoint-concept.md) `hostname` en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt.
+- Als u de mogelijkheid wilt bieden om uw inhoud te testen met of zonder CDN, maakt u een ander streaming-eind punt dat niet is ingeschakeld voor CDN.
 
 ## <a name="enable-azure-cdn-integration"></a>Integratie van Azure CDN inschakelen
 
@@ -82,7 +87,7 @@ De voor delen van de functie voor *CDN-prefetch van oorsprong-assistentie zijn* 
 > [!NOTE]
 > Deze functie is nog niet van toepassing op het Akamai CDN dat is geïntegreerd met Media Services streaming-eind punt. Het is echter wel beschikbaar voor Media Services klanten die een reeds bestaand Akamai-contract hebben en aangepaste integratie vereisen tussen Akamai CDN en de Media Services oorsprong.
 
-### <a name="how-it-works"></a>Hoe het werkt
+### <a name="how-it-works"></a>Uitleg
 
 CDN-ondersteuning voor de `Origin-Assist CDN-Prefetch` headers (voor Live en video on-demand streaming) is beschikbaar voor klanten die een direct-contract met AKAMAI CDN hebben. De functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en de Media Services Origin:
 

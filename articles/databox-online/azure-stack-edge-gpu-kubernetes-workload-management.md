@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 21845b51fdd108221d5e1bce50e953b79084d17d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084084"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182051"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes op uw Azure Stack edge-apparaat
 
@@ -33,40 +33,13 @@ De twee algemene typen werk belastingen die u kunt implementeren op uw Azure Sta
 
     U kunt een Kubernetes-implementatie maken om een stateful toepassing te implementeren. 
 
-## <a name="namespaces-types"></a>Typen naam ruimten
+## <a name="deployment-flow"></a>Implementatie stroom
 
-Kubernetes-resources, zoals peulen en implementaties, worden logisch gegroepeerd in een naam ruimte. Deze groeperingen bieden een manier om een Kubernetes-cluster logisch te verdelen en de toegang te beperken tot het maken, weer geven of beheren van resources. Gebruikers kunnen alleen communiceren met resources binnen hun toegewezen naam ruimten.
-
-Naam ruimten zijn bedoeld voor gebruik in omgevingen met veel gebruikers verspreid over meerdere teams of projecten. Voor clusters met een paar van tien gebruikers hoeft u helemaal geen naam ruimten te maken of te bedenken. Begin met het gebruik van naam ruimten wanneer u de functies nodig hebt die ze bieden.
-
-Zie [Kubernetes-naam ruimten](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)voor meer informatie.
-
-
-Uw Azure Stack edge-apparaat heeft de volgende naam ruimten:
-
-- **Systeem naam ruimte** : deze naam ruimte is de belangrijkste bronnen, zoals netwerk functies, zoals DNS en proxy, of het Kubernetes-dash board. Normaal gesp roken implementeert u uw eigen toepassingen niet in deze naam ruimte. Gebruik deze naam ruimte om problemen met een Kubernetes-cluster op te sporen. 
-
-    Uw apparaat bevat meerdere naam ruimten voor het systeem en de namen die overeenkomen met deze systeem naam ruimten zijn gereserveerd. Hier volgt een lijst met de gereserveerde systeem naam ruimten: 
-    - uitvoeren-systeem
-    - metallb-systeem
-    - DBE-naam ruimte
-    - standaardinstelling
-    - kubernetes-dash board
-    - standaardinstelling
-    - uitvoeren-node-lease
-    - uitvoeren-openbaar
-    - iotedge
-    - Azure-boog
-
-    Zorg ervoor dat u geen gereserveerde namen gebruikt voor gebruikers naam ruimten die u maakt. 
-<!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
-
-- **Gebruikers naam ruimte** : Dit zijn de naam ruimten die u kunt maken via **kubectl** om toepassingen lokaal te implementeren.
+Als u toepassingen op een Azure Stack edge-apparaat wilt implementeren, volgt u deze stappen: 
  
-- **IOT Edge naam ruimte** : u maakt verbinding met deze `iotedge` naam ruimte om toepassingen te implementeren via IOT Edge.
-
-- **Azure ARC-naam ruimte** : u maakt verbinding met deze `azure-arc` naam ruimte om toepassingen te implementeren via Azure Arc.
-
+1. **Toegang configureren**: eerst gebruikt u de Power shell-runs Pace voor het maken van een gebruiker, het maken van een naam ruimte en het verlenen van gebruikers toegang tot die naam ruimte.
+2. **Opslag configureren**: vervolgens gebruikt u de resource Azure stack Edge in de Azure Portal om permanente volumes te maken met behulp van statische of dynamische inrichting voor de stateful toepassingen die u gaat implementeren.
+3. **Netwerken configureren**: tot slot gebruikt u de services om toepassingen extern en binnen het Kubernetes-cluster beschikbaar te maken.
  
 ## <a name="deployment-types"></a>Implementatie typen
 
@@ -78,7 +51,7 @@ Er zijn drie manieren om uw workloads te implementeren. Met elk van deze impleme
 
 - **IOT Edge-implementatie**: dit is via IOT Edge, waarmee verbinding wordt gemaakt met de Azure-IOT hub. U maakt verbinding met het K8-cluster op uw Azure Stack edge-apparaat via de `iotedge` naam ruimte. De IoT Edge agents die in deze naam ruimte zijn geïmplementeerd, zijn verantwoordelijk voor de connectiviteit met Azure. U past de `IoT Edge deployment.json` configuratie toe met behulp van Azure DEVOPS CI/cd. De naam ruimte en het IoT Edge beheer worden uitgevoerd via de Cloud operator.
 
-- **Implementatie van Azure/Arc**: Azure Arc is een Hybrid management tool waarmee u toepassingen kunt implementeren in uw K8-clusters. U verbindt het K8-cluster op uw Azure Stack edge-apparaat via de `azure-arc namespace` .  Agents worden geïmplementeerd in deze naam ruimte die verantwoordelijk zijn voor de connectiviteit met Azure. U past de implementatie configuratie toe met behulp van het GitOps-configuratie beheer. Met Azure Arc kunt u ook Azure Monitor voor containers gebruiken om uw clusters weer te geven en te bewaken. Ga naar [Wat is Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)voor meer informatie.
+- **Implementatie van Azure/Arc**: Azure Arc is een Hybrid management tool waarmee u toepassingen kunt implementeren in uw K8-clusters. U verbindt het K8-cluster op uw Azure Stack edge-apparaat via de `azure-arc namespace` . Agents worden geïmplementeerd in deze naam ruimte die verantwoordelijk zijn voor de connectiviteit met Azure. U past de implementatie configuratie toe met behulp van het GitOps-configuratie beheer. Met Azure Arc kunt u ook Azure Monitor voor containers gebruiken om uw clusters weer te geven en te bewaken. Ga naar [Wat is Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)voor meer informatie.
 
 ## <a name="choose-the-deployment-type"></a>Het implementatie type kiezen
 

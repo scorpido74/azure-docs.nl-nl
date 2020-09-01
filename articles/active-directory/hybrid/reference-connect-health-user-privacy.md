@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690690"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182357"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Privacy en Azure AD Connect Health van gebruiker 
 
@@ -41,7 +41,7 @@ Servers met actieve **Health Service-gegevens zijn niet up-to-date** - **fout** 
 Met Azure AD Connect Health kunt u het verzamelen van gegevens voor elke afzonderlijke bewaakte server of voor een exemplaar van een bewaakte service stoppen. U kunt bijvoorbeeld het verzamelen van gegevens voor afzonderlijke ADFS (Active Directory Federation Services)-servers die worden bewaakt met behulp van Azure AD Connect Health stoppen. U kunt ook het verzamelen van gegevens stoppen voor het hele ADFS-exemplaar dat wordt bewaakt met behulp van Azure AD Connect Health. Wanneer u ervoor kiest om dit te doen, worden de bijbehorende servers verwijderd uit de Azure AD Connect Health Portal nadat het verzamelen van gegevens is gestopt. 
 
 >[!IMPORTANT]
-> U hebt de globale beheerders bevoegdheden van Azure AD of de rol Inzender in RBAC nodig om bewaakte servers van Azure AD Connect Health te verwijderen.
+> U hebt de globale beheerders bevoegdheden van Azure AD of de rol Inzender in azure RBAC nodig om bewaakte servers van Azure AD Connect Health te verwijderen.
 >
 > Het verwijderen van een server-of service-exemplaar uit Azure AD Connect Health is geen omkeerbaar actie. 
 

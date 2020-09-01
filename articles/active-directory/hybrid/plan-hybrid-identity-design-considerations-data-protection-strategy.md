@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109359"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182442"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Strategie voor gegevens beveiliging definiëren voor uw hybride identiteits oplossing
 In deze taak definieert u de strategie voor gegevens beveiliging voor uw hybride identiteits oplossing om te voldoen aan de bedrijfs vereisten die u hebt gedefinieerd in:
@@ -121,7 +121,7 @@ Elke interactie in het diagram wordt weer gegeven in afbeelding X, een scenario 
 
 1. Voorwaardelijke toegang tot toepassingen die on-premises worden gehost: u kunt geregistreerde apparaten gebruiken met toegangs beleid voor toepassingen die zijn geconfigureerd voor het gebruik van AD FS met Windows Server 2012 R2.
 
-2. Access Control met de Azure Portal: met Azure kunt u ook de toegang tot de portal beheren door gebruik te maken van op rollen gebaseerd toegangs beheer (RBAC)). Met deze methode kan het bedrijf het aantal bewerkingen beperken dat een persoon in de Azure Portal kan doen. Door RBAC te gebruiken om de toegang tot de portal te beheren, kunnen IT-beheerders de toegang delegeren met behulp van de volgende toegangs beheer methoden:
+2. Access Control met de Azure Portal: Azure kunt u ook de toegang tot de portal beheren door gebruik te maken van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)). Met deze methode kan het bedrijf het aantal bewerkingen beperken dat een persoon in de Azure Portal kan doen. Door gebruik te maken van Azure RBAC om de toegang tot de portal te beheren, kunnen IT-beheerders de toegang delegeren met behulp van de volgende toegangs beheer methoden:
 
    - Functie toewijzing op basis van een groep: u kunt toegang tot Azure AD-groepen toewijzen die kunnen worden gesynchroniseerd met uw lokale Active Directory. Zo kunt u gebruikmaken van de bestaande investeringen die uw organisatie heeft gemaakt bij het beheer en de processen voor het beheren van groepen. U kunt ook de functie gedelegeerde groeps beheer van Azure AD Premium gebruiken.
    - Ingebouwde rollen gebruiken in Azure: u kunt drie rollen: eigenaar, Inzender en lezer gebruiken om ervoor te zorgen dat gebruikers en groepen gemachtigd zijn om alleen de taken uit te voeren die ze nodig hebben om hun taken uit te voeren.

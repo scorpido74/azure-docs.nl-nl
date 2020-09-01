@@ -4,16 +4,16 @@ description: Meer informatie over hoe u webverkeer beperkt met een Web Applicati
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50aaf4f2639f48e5536e6eeaba5edbc246b2bba7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: faa46b3ad96e9555a08a662f205a0a130c28bac2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501062"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225166"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Web Application Firewall inschakelen met behulp van Azure CLI
 
@@ -21,11 +21,10 @@ U kunt verkeer op een toepassingsgateway beperken met een [WAF (Web Application 
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken met WAF ingeschakeld
-> * Een virtuele-machineschaalset maken
-> * Een opslagaccount maken en diagnostische gegevens configureren
+ * Het netwerk instellen
+ * Een toepassingsgateway maken met WAF ingeschakeld
+ * Een virtuele-machineschaalset maken
+ * Een opslagaccount maken en diagnostische gegevens configureren
 
 ![Voorbeeld van Web Application Firewall](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 

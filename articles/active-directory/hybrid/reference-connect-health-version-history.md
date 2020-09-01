@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165155"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182340"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Versiegeschiedenis van status Azure AD Connect
 Het Azure Active Directory team werkt Azure AD Connect Health regel matig bij met nieuwe functies en functionaliteit. In dit artikel vindt u een overzicht van de versies en functies die zijn uitgebracht.  
@@ -149,7 +149,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
   1. Verbeteringen van agent beschikbaarheid 
   2. Oplossingen voor fouten en algemene verbeteringen
 
-## <a name="december-2017"></a>december 2017
+## <a name="december-2017"></a>December 2017
 **Agent update:**
 
 * Azure AD Connect Health Agent voor AD DS (versie 3.0.145.0)
@@ -225,7 +225,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
 ## <a name="november-2015"></a>November 2015
 **Nieuwe functies:**
 
-* Ondersteuning voor [op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* Ondersteuning voor [op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac)
 
 **Nieuwe preview-functies:**
 

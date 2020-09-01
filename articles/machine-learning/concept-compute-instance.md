@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146756"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226791"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -80,10 +80,10 @@ Python-pakketten zijn allemaal geïnstalleerd in de **Python 3,6-AzureML-** omge
 
 ### <a name="installing-packages"></a>Pakketten installeren
 
-U kunt pakketten rechtstreeks in een Jupyter-notebook of Rstudio installeren:
+U kunt pakketten rechtstreeks installeren in Jupyter Notebook of RStudio:
 
 * RStudio gebruik het tabblad **pakketten** aan de rechter kant of op het tabblad **console** linksboven.  
-* Python: Voeg installatie code toe en voer uit in een Jupyter notebook-cel.
+* Python: Voeg een installatie code toe en voer deze uit in een Jupyter Notebook-cel.
 
 Of u kunt op een van de volgende manieren toegang krijgen tot een Terminal venster:
 

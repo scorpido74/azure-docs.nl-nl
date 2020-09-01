@@ -5,28 +5,32 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286628"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226423"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-trigger of-actie kunt u geautomatiseerde taken en werk stromen maken waarmee aanvragen worden verzonden naar service-eind punten via http of https. U kunt bijvoorbeeld het service-eind punt voor uw website bewaken door dat eind punt op een specifiek schema te controleren. Wanneer de opgegeven gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de acties uitgevoerd in die werk stroom. Als u in plaats daarvan binnenkomende HTTPS-aanroepen wilt ontvangen en beantwoorden, gebruikt u de ingebouwde [aanvraag-of reactie actie](../connectors/connectors-native-reqres.md).
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-trigger of-actie kunt u geautomatiseerde taken en werk stromen maken die uitgaande aanvragen kunnen verzenden naar eind punten op andere services en systemen via http of https. Als u in plaats daarvan binnenkomende HTTPS-aanroepen wilt ontvangen en beantwoorden, gebruikt u de ingebouwde [aanvraag-en reactie actie](../connectors/connectors-native-reqres.md).
+
+U kunt bijvoorbeeld een service-eind punt voor uw website bewaken door dat eind punt op een specifiek schema te controleren. Wanneer de opgegeven gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de acties uitgevoerd in die werk stroom.
 
 * Als u een eind punt in een terugkerend schema wilt controleren of *pollen* , [voegt u de http-trigger](#http-trigger) als eerste stap in de werk stroom toe. Telkens wanneer de trigger het eind punt controleert, wordt de trigger aangeroepen of een *aanvraag* naar het eind punt verzonden. Het antwoord van het eind punt bepaalt of de werk stroom van uw logische app wordt uitgevoerd. De trigger geeft inhoud van het antwoord van het eind punt door aan de acties in uw logische app.
 
 * Als u een eind punt van ergens anders in uw werk stroom wilt aanroepen, [voegt u de HTTP-actie toe](#http-action). Het antwoord van het eind punt bepaalt hoe de resterende acties van uw werk stroom worden uitgevoerd.
 
-In dit artikel wordt beschreven hoe u een HTTP-trigger of actie kunt toevoegen aan de werk stroom van uw logische app.
+In dit artikel wordt beschreven hoe u de HTTP-trigger en de HTTP-actie gebruikt, zodat uw logische app uitgaande oproepen naar andere services en systemen kan verzenden.
+
+Voor informatie over versleuteling, beveiliging en autorisatie voor uitgaande oproepen vanuit uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL), zelfondertekende certificaten of [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), raadpleegt [u beveiligde toegang en gegevens toegang voor uitgaande oproepen naar andere services en systemen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 * De URL voor het doel eindpunt dat u wilt aanroepen
 
@@ -40,9 +44,9 @@ In dit artikel wordt beschreven hoe u een HTTP-trigger of actie kunt toevoegen a
 
 Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een eind punt en retourneert een antwoord.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer in het zoekvak van de ontwerp functie **ingebouwd**. Voer in het zoekvak in `http` als uw filter. Selecteer in de lijst **Triggers** de **http-** trigger.
+1. Selecteer in het zoekvak van de ontwerp functie **ingebouwd**. Voer in het zoekvak `http` als uw filter in. Selecteer in de lijst **Triggers** de **http-** trigger.
 
    ![Selecteer HTTP-trigger](./media/connectors-native-http/select-http-trigger.png)
 
@@ -69,7 +73,7 @@ Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een ein
 
 Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een eind punt gemaakt en wordt een antwoord geretourneerd.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-trigger als eerste stap gebruikt.
 
@@ -77,7 +81,7 @@ Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een 
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `http` als uw filter. Selecteer in de lijst **acties** de **http-** actie.
+1. Selecteer onder **Kies een actie**de optie **Ingebouwd**. Voer in het zoekvak `http` als uw filter in. Selecteer in de lijst **acties** de **http-** actie.
 
    ![HTTP-actie selecteren](./media/connectors-native-http/select-http-action.png)
 
@@ -96,21 +100,27 @@ Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een 
 
 1. Als u klaar bent, kunt u uw logische app niet opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
-<a name="tls-support"></a>
+## <a name="trigger-and-action-outputs"></a>Trigger-en actie-uitvoer
 
-## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+Hier vindt u meer informatie over de uitvoer van een HTTP-trigger of actie, waarmee deze gegevens worden geretourneerd:
 
-Op basis van de mogelijkheid van het doel eindpunt, worden uitgaande oproepen ondersteund Transport Layer Security (TLS), dat eerder is Secure Sockets Layer (SSL), versie 1,0, 1,1 en 1,2. Logic Apps onderhandelt met het eind punt met behulp van de hoogst ondersteunde versie die mogelijk is.
+| Eigenschap | Type | Beschrijving |
+|----------|------|-------------|
+| `headers` | JSON-object | De headers van de aanvraag |
+| `body` | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
+| `status code` | Geheel getal | De status code van de aanvraag |
+|||
 
-Als het eind punt bijvoorbeeld 1,2 ondersteunt, gebruikt de HTTP-connector eerst 1,2. Anders gebruikt de connector de eerstvolgende hoogste ondersteunde versie.
-
-<a name="self-signed"></a>
-
-## <a name="self-signed-certificates"></a>Zelfondertekende certificaten
-
-* Voor Logic apps in de wereld wijde Azure-omgeving met meerdere tenants, de HTTP-connector staat niet-ondertekende TLS/SSL-certificaten niet toe. Als uw logische app een HTTP-aanroep naar een server maakt en een zelfondertekend TLS/SSL-certificaat presenteert, mislukt de HTTP-aanroep met een `TrustFailure` fout.
-
-* Voor Logic apps in een [Integration service-omgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de http-connector zelfondertekende certificaten voor TLS/SSL-Handshake toegestaan. U moet echter eerst [zelfondertekende ondersteuning voor certificaten inschakelen](../logic-apps/create-integration-service-environment-rest-api.md#request-body) voor een bestaande ISE of nieuwe ISE met behulp van de Logic apps rest API en het open bare certificaat op de `TrustedRoot` locatie installeren.
+| Statuscode | Description |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Geaccepteerd |
+| 400 | Ongeldige aanvraag |
+| 401 | Niet geautoriseerd |
+| 403 | Verboden |
+| 404 | Niet gevonden |
+| 500 | Interne serverfout. Er is een onbekende fout opgetreden. |
+|||
 
 ## <a name="content-with-multipartform-data-type"></a>Inhoud met meerdelige/formulier-gegevens type
 
@@ -231,7 +241,7 @@ Als een HTTP-trigger of actie deze headers bevat, verwijdert Logic Apps deze hea
 
 * `Accept-*`
 * `Allow`
-* `Content-*`met deze uitzonde ringen: `Content-Disposition` , `Content-Encoding` en`Content-Type`
+* `Content-*` met deze uitzonde ringen: `Content-Disposition` , `Content-Encoding` en `Content-Type`
 * `Cookie`
 * `Expires`
 * `Host`
@@ -249,29 +259,8 @@ Zie de volgende secties voor meer informatie over trigger-en actie parameters:
 * [HTTP-trigger parameters](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [HTTP-actie parameters](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
-### <a name="output-details"></a>Uitvoer Details
-
-Hier vindt u meer informatie over de uitvoer van een HTTP-trigger of actie, waarmee deze gegevens worden geretourneerd:
-
-| Eigenschap | Type | Beschrijving |
-|----------|------|-------------|
-| `headers` | JSON-object | De headers van de aanvraag |
-| `body` | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
-| `status code` | Geheel getal | De status code van de aanvraag |
-|||
-
-| Statuscode | Beschrijving |
-|-------------|-------------|
-| 200 | OK |
-| 202 | Geaccepteerd |
-| 400 | Ongeldige aanvraag |
-| 401 | Niet geautoriseerd |
-| 403 | Verboden |
-| 404 | Niet gevonden |
-| 500 | Interne serverfout. Er is een onbekende fout opgetreden. |
-|||
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* [Beveiligde toegang en gegevens toegang voor uitgaande oproepen naar andere services en systemen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
+* [Connectors voor Logic Apps](../connectors/apis-list.md)
 

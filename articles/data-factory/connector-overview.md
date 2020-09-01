@@ -6,29 +6,40 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/31/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 334d5b5113dba17c5abc2b4f2520bde0d16e4c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a729d470cccd4121523c767ada9077a51361c061
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007437"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181970"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory ondersteunt de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
+Azure Data Factory ondersteunt de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, ophalen van meta gegevens en delete-activiteiten. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
 [!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
 
+## <a name="integrate-with-more-data-stores"></a>Integreren met meer gegevens archieven
+
+Azure Data Factory kunnen een grotere set gegevens archieven bereiken dan de bovenstaande lijst. Als u gegevens wilt verplaatsen naar/van een gegevens archief dat zich niet in de lijst met Azure Data Factory ingebouwde connectors bevindt, kunt u de volgende uitbreid bare opties volgen:
+- Voor de data base en het Data Warehouse kunt u meestal een bijbehorend ODBC-stuur programma vinden, waarmee u [algemene ODBC-Connector](connector-odbc.md)kunt gebruiken.
+- Voor SaaS-toepassingen:
+    - Als er REST-Api's worden geboden, kunt u een [generieke rest-connector](connector-rest.md)gebruiken.
+    - Als het OData-feed heeft, kunt u de [algemene OData-connector](connector-odata.md)gebruiken.
+    - Als u SOAP-Api's hebt, kunt u de [algemene HTTP-connector](connector-http.md)gebruiken.
+    - Als het ODBC-stuur programma heeft, kunt u de [algemene ODBC-Connector](connector-odbc.md)gebruiken.
+- Controleer voor anderen of u gegevens kunt laden in of weer geven als een opgeslagen ADF-gegevens archief, bijvoorbeeld Azure Blob/file/FTP/SFTP/etc, en laat de ADF vervolgens van daaruit ophalen. U kunt het mechanisme voor het laden van aangepaste gegevens aanroepen via [Azure function](control-flow-azure-function-activity.md), [aangepaste activiteit](transform-data-using-dotnet-custom-activity.md), [Databricks](transform-data-databricks-notebook.md) / [HDInsight](transform-data-using-hadoop-hive.md), [webactiviteit](control-flow-web-activity.md), enzovoort.
+
 ## <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
 
-Azure Data Factory ondersteunt de volgende bestands indelingen. Raadpleeg elk artikel voor instellingen op basis van een indeling.
+Azure Data Factory ondersteunt de volgende bestandsindelingen. Raadpleeg elk artikel voor op indeling gebaseerde instellingen.
 
 - [Avro-indeling](format-avro.md)
 - [Binaire indeling](format-binary.md)

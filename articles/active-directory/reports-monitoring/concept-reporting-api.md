@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf2e3f98bd96c09fe741a24a1332443c876e2e61
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647409"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225907"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Aan de slag met de API voor Azure Active Directory rapportage
 
@@ -32,7 +32,7 @@ Met de Microsoft Graph-API voor Azure AD-rapporten kunt u programmatisch toegang
 
 Dit artikel bevat een overzicht van de rapportage-API, inclusief manieren om toegang te krijgen tot het rapport.
 
-Zie [ondersteuning voor Azure Active Directory krijgen](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)als u problemen ondervindt.
+Zie [ondersteuning voor Azure Active Directory krijgen](../fundamentals/active-directory-troubleshooting-support-howto.md)als u problemen ondervindt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,15 +47,15 @@ Zie voor gedetailleerde instructies de [vereisten voor toegang tot de Azure Acti
 
 ## <a name="api-endpoints"></a>API-eind punten 
 
-Het Microsoft Graph API-eind punt voor audit Logboeken is `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` en het Microsoft Graph API-eind punt voor aanmeldingen is `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Zie de naslag informatie over de [controle-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit) en [aanmeldings-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn)voor meer gegevens.
+Het Microsoft Graph API-eind punt voor audit Logboeken is `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` en het Microsoft Graph API-eind punt voor aanmeldingen is `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Zie de naslag informatie over de [controle-API](/graph/api/resources/directoryaudit?view=graph-rest-1.0) en [aanmeldings-API](/graph/api/resources/signIn?view=graph-rest-1.0)voor meer gegevens.
 
-Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
+Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](/graph/api/resources/identityriskevent?view=graph-rest-beta) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)voor meer informatie. 
   
 ## <a name="apis-with-microsoft-graph-explorer"></a>Api's met Microsoft Graph Explorer
 
 U kunt de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om uw aanmeld-en controle-API-gegevens te verifiëren. Meld u aan bij uw account met behulp van beide aanmeld knoppen in de gebruikers interface van Graph Explorer en stel **AuditLog. Read. all** en **Directory. Read. all** in voor uw Tenant, zoals wordt weer gegeven.   
 
-![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
+![Grafiekverkenner](./media/concept-reporting-api/graph-explorer.png)
 
 ![Machtigingen voor gebruikers interface wijzigen](./media/concept-reporting-api/modify-permissions.png)
 
@@ -70,5 +70,3 @@ Zie [gegevens ophalen met de rapportage-API van Azure AD met certificaten](tutor
  * [Vereisten voor toegang tot de rapportage-API](howto-configure-prerequisites-for-reporting-api.md) 
  * [Gegevens ophalen met de rapportage-API van Azure AD met certificaten](tutorial-access-api-with-certificates.md)
  * [Fouten in de rapportage-API van Azure AD oplossen](troubleshoot-graph-api.md)
-
-

@@ -3,12 +3,12 @@ title: Nieuw in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server biedt uitgebreide back-upmogelijkheden voor het beveiligen van Vm's, bestanden en mappen, werk belastingen en nog veel meer.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893184"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182136"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Wat is er nieuw in Microsoft Azure Backup Server (MABS)
 
@@ -37,7 +37,7 @@ Met MABS v3 UR1 kunt u een back-up maken van de ReFS-volumes en werk belastingen
 >[!NOTE]
 > Back-ups van Hyper-V-Vm's die zijn opgeslagen op een ReFS-volume worden ondersteund met MABS v3
 
->BELANG rijk Er zijn enkele problemen met het maken van back-ups van ontdubbelde ReFS-volumes vastgesteld. We werken eraan om deze sectie bij te werken zodra er een oplossing beschikbaar is. Tot dat moment wordt de ondersteuning voor het maken van back-ups van ontdubbelde ReFS-volumes uit MABSv3 UR1 verwijderd.
+>BELANG rijk Er zijn enkele problemen met het maken van back-ups van ontdubbelde ReFS-volumes. We werken eraan om deze sectie bij te werken zodra er een oplossing beschikbaar is. Tot dat moment wordt de ondersteuning voor het maken van back-ups van ontdubbelde ReFS-volumes uit MABSv3 UR1 verwijderd.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Ondersteuning voor Azure VMware-oplossings beveiliging
 

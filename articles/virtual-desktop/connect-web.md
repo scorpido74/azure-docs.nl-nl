@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c97009a69c937863a5776d63bab1c994a8a9160
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2ca5a591d168e18181a29cf1c00a7d1fead54595
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007604"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226043"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Verbinding maken met een virtueel bureau blad van Windows met de webclient
 
@@ -41,6 +41,8 @@ Ga in een browser naar de Azure Resource Manager-geïntegreerde versie van de Wi
 
 >[!NOTE]
 >Als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager integratie, kunt u in plaats daarvan verbinding maken met uw resources <https://rdweb.wvd.microsoft.com/webclient> .
+>
+> Als u de US Gov Portal gebruikt, gebruikt u <https://rdweb.wvd.azure.us/arm/webclient/index.html> .
 
 >[!NOTE]
 >Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u zich afmelden of een persoonlijk browser venster gebruiken.

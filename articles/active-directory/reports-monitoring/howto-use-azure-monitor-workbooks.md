@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ec492466e107eb6f4821f0e6d2caed9daa141a35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608947"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226978"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 
@@ -42,13 +42,13 @@ Wilt u:
 
 - Krijg meer inzicht in aanmeldings logboek query's, de werkmap rapporteert aan hoeveel gebruikers toegang is verleend of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben overgeslagen bij het openen van bronnen.
 
-- Azure Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
+- Azure Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](../../azure-monitor/platform/workbooks-overview.md) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
 
 
 
 Dit artikel:
 
-- Er wordt van uitgegaan dat u bekend bent met het [maken van interactieve rapporten met behulp van werk bladen controleren](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
+- Er wordt van uitgegaan dat u bekend bent met het [maken van interactieve rapporten met behulp van werk bladen controleren](../../azure-monitor/platform/workbooks-overview.md).
 
 - In dit artikel wordt uitgelegd hoe u Bewaak werkmappen gebruikt om inzicht te krijgen in het effect van uw beleid voor voorwaardelijke toegang, problemen met aanmelding op te lossen en verouderde authenticaties te identificeren.
  
@@ -58,11 +58,11 @@ Dit artikel:
 
 Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
 
-- Een Azure Active Directory-Tenant met een Premium-licentie (P1 of P2). Meer informatie over het [verkrijgen van een Premium-licentie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Een Azure Active Directory-Tenant met een Premium-licentie (P1 of P2). Meer informatie over het [verkrijgen van een Premium-licentie](../fundamentals/active-directory-get-started-premium.md).
 
-- Een [log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+- Een [Log Analytics-werkruimte](../../azure-monitor/learn/quick-create-workspace.md).
 
-- [Toegang](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
+- [Toegang](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
 - De volgende rollen in Azure Active Directory (als u Log Analytics via Azure Active Directory Portal opent)
     - Beveiligingsbeheerder
     - Beveiligingslezer
@@ -70,7 +70,7 @@ Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
     - Globale beheerder
 
 ## <a name="roles"></a>Rollen
-U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) werk ruimte om de werkmappen te beheren:
+U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende log Analytics](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) werk ruimte om de werkmappen te beheren:
 -   Globale beheerder
 -   Beveiligingsbeheerder
 -   Beveiligingslezer
@@ -186,7 +186,7 @@ Werkmappen bevatten aanmeld logboek query's waarmee IT-beheerders de impact van 
 ### <a name="instructions"></a>Instructies 
 Als u toegang wilt krijgen tot de werkmap voor inzichten voor voorwaardelijke toegang, selecteert u de Insights-werkmap voor **voorwaardelijke toegang** in de sectie voorwaardelijke toegang. Deze werkmap toont de verwachte impact van elk beleid voor voorwaardelijke toegang in uw Tenant. Selecteer een of meer beleids regels voor voorwaardelijke toegang in de vervolg keuzelijst en Verfijn het bereik van de werkmap door de volgende filters toe te passen: 
 
-- **Tijds bereik**
+- **Tijdsbereik**
 
 - **Gebruiker**
 
@@ -205,7 +205,7 @@ In deze werkmap ziet u ook de impact van de geselecteerde beleids regels, onderv
 - **Apparaatstatus**
 - **Apparaatplatform**
 - **Client-apps**
-- **Aanmeldings risico**
+- **Aanmeldingsrisico**
 - **Locatie**
 - **Toepassingen**
 
@@ -302,4 +302,4 @@ Azure Monitor biedt u een uitsplitsing van de volgende categorieën om u te help
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Interactieve rapporten maken met behulp van werk bladen bewaken](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
+[Interactieve rapporten maken met behulp van werk bladen bewaken](../../azure-monitor/platform/workbooks-overview.md).

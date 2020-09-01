@@ -3,17 +3,17 @@ title: Dynamische, coole en archief toegangs lagen voor blobs-Azure Storage
 description: Meer informatie over de toegangs lagen hot, cool en Archive voor Azure Blob Storage. Bekijk opslag accounts die ondersteuning bieden voor lagen. Vergelijkings opties voor blok-Blob-opslag.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009607"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226179"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
@@ -156,7 +156,7 @@ In deze sectie worden de volgende scenario's geïllustreerd met behulp van de Az
 
 1. Klik bovenaan op **Opslaan** .
 
-![Laag van opslag account wijzigen](media/storage-tiers/account-tier.png)
+![De standaardlaag van de account wijzigen in Azure Portal](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de account tier te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. Selecteer onder **Opslaan** onder.
 
-![Laag van opslag account wijzigen](media/storage-tiers/blob-access-tier.png)
+![BLOB-laag wijzigen in Azure Portal](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de BLOB-laag te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$containerName` variabele moet worden geïnitialiseerd met de container naam. De `$blobName` variabele moet worden geïnitialiseerd met de naam van de blob. 
@@ -219,6 +219,8 @@ Alle opslag accounts gebruiken een prijs model voor blok-Blob-opslag op basis va
 - **Kosten voor gegevensoverdracht met geo-replicatie**: deze kosten zijn alleen van toepassing op accounts waarvoor geo-replicatie is geconfigureerd, inclusief GRS en RA-GRS. Kosten voor gegevensoverdracht met geo-replicatie worden in rekening gebracht per GB.
 - **Kosten voor uitgaande gegevensoverdracht**: uitgaande gegevensoverdracht (gegevens die buiten een Azure-regio worden overgedragen) worden gefactureerd voor bandbreedtegebruik per GB, net zoals bij opslagaccounts voor algemeen gebruik.
 - **De toegangs laag wijzigen**: als u de toegangs laag van het account wijzigt, worden de kosten voor het wijzigen van de laag voor niet- _verstelde_ blobs in het account waarvoor geen expliciete laag is ingesteld. Raadpleeg voor meer informatie over het wijzigen van de toegangs laag voor één BLOB de [facturering op BLOB-niveau](#blob-level-tiering-billing).
+
+    Het wijzigen van de toegangs laag voor een BLOB wanneer versie beheer is ingeschakeld, of als de BLOB moment opnamen bevat, kunnen er extra kosten in rekening worden gebracht. Zie [prijzen en facturering](versioning-overview.md#pricing-and-billing) in de documentatie voor BLOB-versie beheer voor meer informatie over hoe u wordt gefactureerd wanneer BLOB-versie beheer is ingeschakeld en u de laag van een BLOB expliciet wijzigt. Zie [prijzen en facturering](snapshots-overview.md#pricing-and-billing) in de documentatie voor BLOB-moment opnamen voor meer informatie over hoe u wordt gefactureerd wanneer een BLOB moment opnamen heeft en u de laag van de BLOB expliciet wijzigt.
 
 > [!NOTE]
 > Zie Azure Storage-pagina met [prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/) voor meer informatie over de prijzen voor blok-blobs. Zie de pagina [Prijsinformatie voor bandbreedte](https://azure.microsoft.com/pricing/details/data-transfers/) voor meer informatie over de kosten voor uitgaande gegevensoverdracht.

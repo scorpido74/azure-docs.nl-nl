@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 254732630dcf28b90413a1269a34d3aa388cb06c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997860"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226740"
 ---
 # <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 
@@ -23,7 +23,7 @@ De volgende tabel bevat de gegevens typen die worden ondersteund door Azure Time
 | Gegevenstype | Beschrijving | Voorbeeld | [Syntaxis van de expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Naam van eigenschaps kolom in Parquet
 |---|---|---|---|---|
 | **booleaans** | Een gegevens type met een van de twee statussen: `true` of `false` . | `"isQuestionable" : true` | `$event.isQuestionable.Bool` of `$event['isQuestionable'].Bool` | `isQuestionable_bool`
-| **datetime** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Als ' eventProcessedLocalTime ' de tijds tempel van de gebeurtenis bron is: `$event.$ts` . Als het een andere JSON-eigenschap is: `$event.eventProcessedLocalTime.DateTime` of `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
+| **datum/tijd** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Als ' eventProcessedLocalTime ' de tijds tempel van de gebeurtenis bron is: `$event.$ts` . Als het een andere JSON-eigenschap is: `$event.eventProcessedLocalTime.DateTime` of `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Een 64-bits getal met dubbele precisie  | `"value": 31.0482941` | `$event.value.Double` of `$event['value'].Double` |  `value_double`
 | **long** | Een ondertekend 64-bits geheel getal  | `"value" : 31` | `$event.value.Long` of `$event['value'].Long` |  `value_long`
 | **tekenreeksexpressie** | Tekst waarden moeten bestaan uit geldige UTF-8. Null en lege teken reeksen worden op dezelfde manier behandeld. |  `"site": "DIM_MLGGG"`| `$event.site.String` of `$event['site'].String`| `site_string`
@@ -34,9 +34,10 @@ De volgende tabel bevat de gegevens typen die worden ondersteund door Azure Time
 
 > [!NOTE]
 > **Teken reeks** type is niet nullbaar:
->   * Een [tijdreeks expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) in een [Time Series-query](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) die de waarde van een lege teken reeks (**' '**) op basis van **Null** vergelijkt, gedraagt zich op dezelfde manier: `$event.siteid.String = NULL` is gelijk aan `$event.siteid.String = ''` .
->   * De API kan **Null** -waarden retour neren, zelfs als oorspronkelijke gebeurtenissen lege teken reeksen bevatten.
->   * Maak geen afhankelijkheid van **Null** -waarden in **teken reeks** kolommen om vergelijkingen of evaluaties uit te voeren. Behandel ze op dezelfde manier als lege teken reeksen.
+>
+> * Een [tijdreeks expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) in een [Time Series-query](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) die de waarde van een lege teken reeks (**' '**) op basis van **Null** vergelijkt, gedraagt zich op dezelfde manier: `$event.siteid.String = NULL` is gelijk aan `$event.siteid.String = ''` .
+> * De API kan **Null** -waarden retour neren, zelfs als oorspronkelijke gebeurtenissen lege teken reeksen bevatten.
+> * Maak geen afhankelijkheid van **Null** -waarden in **teken reeks** kolommen om vergelijkingen of evaluaties uit te voeren. Behandel ze op dezelfde manier als lege teken reeksen.
 
 ## <a name="sending-mixed-data-types"></a>Gemengde gegevens typen verzenden
 

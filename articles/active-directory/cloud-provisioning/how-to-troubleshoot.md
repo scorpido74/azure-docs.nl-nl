@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256863"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226944"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Problemen met het inrichten van Clouds oplossen
 
@@ -120,7 +120,7 @@ Er wordt mogelijk een fout bericht weer gegeven wanneer u de Cloud inrichtings A
 
 Dit probleem wordt meestal veroorzaakt door de agent waardoor de Power shell-registratie scripts niet kunnen worden uitgevoerd vanwege het lokale Power shell-uitvoerings beleid.
 
-Om dit probleem op te lossen, wijzigt u het Power shell-uitvoerings beleid op de-server. U moet het beleid voor de computer en gebruiker instellen op niet- *gedefinieerde* of *RemoteSigned*. Als ze zijn ingesteld als *onbeperkt*, wordt deze fout weer geven. Zie [Power shell Execution policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)(Engelstalig) voor meer informatie. 
+Om dit probleem op te lossen, wijzigt u het Power shell-uitvoerings beleid op de-server. U moet het beleid voor de computer en gebruiker instellen op niet- *gedefinieerde* of *RemoteSigned*. Als ze zijn ingesteld als *onbeperkt*, wordt deze fout weer geven. Zie [Power shell Execution policies](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)(Engelstalig) voor meer informatie. 
 
 ### <a name="log-files"></a>Logboekbestanden
 
@@ -195,7 +195,7 @@ Als u de status selecteert, ziet u aanvullende informatie over de quarantaine. U
 
   ![Inrichting opnieuw starten](media/how-to-troubleshoot/quarantine3.png)
 
-- Gebruik Microsoft Graph om [de inrichtings taak opnieuw te starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). U hebt volledige controle over wat u opnieuw opstart. U kunt het volgende wissen:
+- Gebruik Microsoft Graph om [de inrichtings taak opnieuw te starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). U hebt volledige controle over wat u opnieuw opstart. U kunt het volgende wissen:
   - Borg, om de borg teller opnieuw op te starten die de quarantaine status toeneemt.
   - Quarantaine, om de toepassing uit quarantaine te verwijderen.
   - Water merken. 
@@ -208,6 +208,3 @@ Als u de status selecteert, ziet u aanvullende informatie over de quarantaine. U
 
 - [Wat is inrichting?](what-is-provisioning.md)
 - [Wat is Azure AD Connect-cloudinrichting?](what-is-cloud-provisioning.md)
-
-
-

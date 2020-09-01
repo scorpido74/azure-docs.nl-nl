@@ -5,15 +5,15 @@ description: Meer informatie over het beperken van webverkeer met een Web Applic
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74046278"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225183"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Firewall voor webtoepassingen inschakelen met behulp van Azure PowerShell
 
@@ -21,17 +21,16 @@ U kunt verkeer op een toepassingsgateway beperken met een [WAF (Web Application 
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken met WAF ingeschakeld
-> * Een virtuele-machineschaalset maken
-> * Een opslagaccount maken en diagnostische gegevens configureren
+* Het netwerk instellen
+* Een toepassingsgateway maken met WAF ingeschakeld
+* Een virtuele-machineschaalset maken
+* Een opslagaccount maken en diagnostische gegevens configureren
 
 ![Voorbeeld van een WAF (Web Application Firewall)](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
 Als u wilt, kunt u dit artikel volt ooien met behulp van de [Azure Portal](application-gateway-web-application-firewall-portal.md) of de [Azure cli](tutorial-restrict-web-traffic-cli.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

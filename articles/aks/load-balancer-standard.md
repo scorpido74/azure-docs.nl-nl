@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056812"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182119"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Een open bare Standard Load Balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -267,16 +267,15 @@ Als u verwacht dat er veel korte verbindingen worden uitgevoerd, en geen verbind
 *outboundIPs* \* 64.000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Als u bijvoorbeeld drie *nodeVMs*en 50.000 *desiredAllocatedOutboundPorts*hebt, moet u Mini maal drie *outboundIPs*hebben. Het wordt aanbevolen dat u extra uitgaande IP-capaciteit opneemt dan wat u nodig hebt. Daarnaast moet u de cluster automatisch schalen en de mogelijkheid van upgrades van knooppunt groepen voor het berekenen van de uitgaande IP-capaciteit. Bekijk het huidige aantal knoop punten en het maximum aantal knoop punten en gebruik de hogere waarde voor het cluster automatisch schalen. Voor het uitvoeren van een upgrade moet u een extra VM-knoop punt voor elke knooppunt groep waarmee een upgrade kan worden uitgevoerd.
- 
+
 - Wanneer u *IdleTimeoutInMinutes* instelt op een andere waarde dan de standaard instelling van 30 minuten, kunt u overwegen hoe lang uw workloads een uitgaande verbinding nodig hebben. Houd ook rekening met de standaardtime-outwaarde voor een *standaard* -SKU Load Balancer die buiten AKS wordt gebruikt, is 4 minuten. Een *IdleTimeoutInMinutes* -waarde die uw specifieke AKS-werk belasting nauw keuriger maakt, kan de SNAT-uitputting afnemen als gevolg van het koppelen van verbindingen die niet meer worden gebruikt.
 
 > [!WARNING]
 > Het wijzigen van de waarden voor *AllocatedOutboundPorts* en *IdleTimeoutInMinutes* kunnen het gedrag van de uitgaande regel voor uw Load Balancer aanzienlijk wijzigen en moet niet lichter worden uitgevoerd, zonder inzicht te krijgen in de afwegingen en verbindings patronen van uw toepassing. Controleer de [onderstaande sectie over het oplossen van problemen][troubleshoot-snat] en controleer de [Load Balancer uitgaande regels][azure-lb-outbound-rules-overview] en [uitgaande verbindingen in azure][azure-lb-outbound-connections] voordat u deze waarden bijwerkt.
 
-
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>Inkomend verkeer beperken tot specifieke IP-bereiken
 
-De netwerk beveiligings groep (NSG) die is gekoppeld aan het virtuele netwerk voor de load balancer, heeft standaard een regel om al het inkomende externe verkeer toe te staan. U kunt deze regel bijwerken zodat alleen specifieke IP-adresbereiken voor inkomend verkeer worden toegestaan. In het volgende manifest wordt *loadBalancerSourceRanges* gebruikt om een nieuw IP-adres bereik op te geven voor binnenkomend extern verkeer:
+In het volgende manifest wordt *loadBalancerSourceRanges* gebruikt om een nieuw IP-adres bereik op te geven voor binnenkomend extern verkeer:
 
 ```yaml
 apiVersion: v1
@@ -292,6 +291,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> Binnenkomend, extern verkeer loopt van de load balancer naar het virtuele netwerk van uw AKS-cluster. Het virtuele netwerk heeft een netwerk beveiligings groep (NSG) waarmee al het inkomende verkeer van de load balancer wordt toegestaan. In deze NSG wordt [een servicetag][service-tags] van het type *Load Balancer* gebruikt om verkeer van de Load Balancer toe te staan.
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Het IP-adres van de client voor binnenkomende verbindingen onderhouden
 
@@ -322,7 +324,7 @@ Hieronder vindt u een lijst met annotaties die worden ondersteund voor Kubernete
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Naam van het DNS-label op open bare Ip's   | Geef de DNS-label naam voor de **open bare** service op. Als deze is ingesteld op een lege teken reeks, wordt de DNS-vermelding in het open bare IP-adres niet gebruikt.
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` of `false`                     | Geef op dat de service moet worden weer gegeven met een Azure-beveiligings regel die kan worden gedeeld met een andere service, handels specificiteit van regels voor een toename van het aantal services dat kan worden blootgesteld. Deze aantekening is afhankelijk van de functie uitgebreide [beveiligings regels](../virtual-network/security-overview.md#augmented-security-rules) van netwerk beveiligings groepen van Azure. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Naam van de resource groep            | Geef de resource groep van load balancer open bare IP-adressen op die zich niet in dezelfde resource groep bevinden als de cluster infrastructuur (knooppunt resource groep).
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Lijst met toegestane service Tags          | Geef een lijst met toegestane [service Tags](../virtual-network/security-overview.md#service-tags) op, gescheiden door komma's.
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Lijst met toegestane service Tags          | Geef een lijst met toegestane [service Tags][service-tags] op, gescheiden door komma's.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Time-outs voor TCP-inactiviteit in minuten          | Geef op hoelang, in minuten, de time-outs voor de TCP-verbinding moeten worden uitgevoerd op het load balancer. De standaard waarde is 4. De maximum waarde is 30. Moet een geheel getal zijn.
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Uitschakelen `enableTcpReset` voor SLB
 
@@ -424,3 +426,4 @@ Meer informatie over het gebruik van interne Load Balancer voor binnenkomend ver
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/security-overview.md#service-tags

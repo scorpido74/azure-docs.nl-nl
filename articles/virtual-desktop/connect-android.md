@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ebf91f68e45148d9a609ff671ffa4683bd74c82c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007757"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226111"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Verbinding maken met een virtueel bureau blad van Windows met de Android-client
 
@@ -36,6 +36,7 @@ Abonneren op een feed:
 2. Voer de URL van de feed in het veld URL van de **feed** in. De feed-URL kan een URL of een e-mail adres zijn.
    - Als u een URL gebruikt, gebruikt u de beheerder die u normaal gesp roken hebt gekregen <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. De client zoekt naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
+   - Als u verbinding wilt maken via de portal van US Gov, gebruikt u <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. Tik op **VOLGENDE**.
 4. Geef uw referenties op wanneer u hierom wordt gevraagd.
    - Geef voor de **gebruikers naam**de gebruikers naam op met machtigingen voor toegang tot resources.

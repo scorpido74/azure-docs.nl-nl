@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607120"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181932"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
@@ -35,7 +35,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
 |[Beveiligings waarschuwingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
-|[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Beoordeling van systeem eigen beveiligings problemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
@@ -59,7 +59,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Standard|
 |[Beveiligings waarschuwingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
-|[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Beoordeling van systeem eigen beveiligings problemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|

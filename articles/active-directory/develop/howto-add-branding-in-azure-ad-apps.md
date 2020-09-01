@@ -1,7 +1,7 @@
 ---
 title: Richt lijnen voor app-branding | Azure
 titleSuffix: Microsoft identity platform
-description: Een uitgebreide handleiding voor bronnen voor ontwikkelaars voor Azure Active Directory
+description: Meer informatie over de richt lijnen voor de toepassings huisstijl van micro soft Identity platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,25 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/31/2020
 ms.author: ryanwi
-ms.reviewer: arielgo
+ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117291"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226638"
 ---
 # <a name="branding-guidelines-for-applications"></a>Huisstijlrichtlijnen voor apps
 
-Wanneer u toepassingen ontwikkelt met Azure Active Directory (Azure AD), moet u uw klanten wanneer ze hun werk- of schoolaccount (dat in Azure AD wordt beheerd) of hun persoonlijke account willen gebruiken, aangeven dat ze zich moeten registreren voor en aanmelden bij uw app.
+Bij het ontwikkelen van toepassingen met het micro soft-identiteits platform moet u uw klanten omleiden wanneer ze hun werk-of school account willen gebruiken (beheerd in azure AD) of hun persoonlijke account voor het aanmelden en aanmelden bij uw toepassing.
 
 In dit artikel gaat u het volgende doen:
 
 - Meer informatie over de twee soorten gebruikersaccounts die worden beheerd door Microsoft en hoe u in uw toepassing naar Azure AD-accounts kunt verwijzen
-- Wat u moet doen om het Microsoft-logo toe te voegen voor gebruik in uw app
+- Meer informatie over wat u moet doen om het micro soft-logo toe te voegen voor gebruik in uw app
 - Hoe u de officiële afbeeldingen voor **Aanmelden** of **Aanmelden bij Microsoft** downloadt voor gebruik in uw app
 - De do's en don'ts van huisstijl en navigatie
 
@@ -38,7 +38,7 @@ Microsoft beheert twee soorten gebruikersaccounts:
 - **Persoonlijke accounts** (voorheen bekend als Windows Live ID). Deze accounts vertegenwoordigen de relatie tussen *afzonderlijke* gebruikers en Microsoft, en worden gebruikt om toegang te verkrijgen tot consumentenapparaten en services van Microsoft. Deze accounts zijn bedoeld voor persoonlijk gebruik.
 - **Werk- of schoolaccounts.** Deze accounts worden beheerd door Microsoft namens organisaties die Azure Active Directory gebruiken. Deze accounts worden gebruikt voor aanmelding bij Office 365 en andere zakelijke services van Microsoft.
 
-Werk- of schoolaccounts van Microsoft worden meestal toegewezen aan eindgebruikers (werknemers, leerlingen/studenten, overheidspersoneel) door hun organisaties (bedrijf, school, overheidsinstelling). Deze accounts worden rechtstreeks in de cloud beheerd (op het Azure AD-platform) of met Azure AD gesynchroniseerd vanuit een on-premises directory, zoals Windows Server Active Directory. Microsoft is de *bewaarder* van de werk- of schoolaccounts, maar de accounts zijn eigendom van en worden beheerd door de organisatie.
+Werk- of schoolaccounts van Microsoft worden meestal toegewezen aan eindgebruikers (werknemers, leerlingen/studenten, overheidspersoneel) door hun organisaties (bedrijf, school, overheidsinstelling). Deze accounts worden rechtstreeks in de Cloud gemastereerd (in het Azure AD-platform) of gesynchroniseerd met Azure AD vanuit een on-premises Directory, zoals Windows Server Active Directory. Microsoft is de *bewaarder* van de werk- of schoolaccounts, maar de accounts zijn eigendom van en worden beheerd door de organisatie.
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Verwijzen naar Azure AD-accounts in uw app
 

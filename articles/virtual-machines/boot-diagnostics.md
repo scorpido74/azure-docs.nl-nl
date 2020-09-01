@@ -7,16 +7,24 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: e2ba5d909a3aa43921f52295d2f7216aac76bc32
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: aca41edeb159a65b27ecbbc27ae568f8bc94cebe
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067083"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181864"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostische gegevens over Azure-opstarten
 
 Diagnostische gegevens over opstarten is een functie voor het opsporen van fouten in azure virtual machines (VM) die de diagnose van opstart fouten van VM'S mogelijk maakt. Met diagnostische gegevens over opstarten kan een gebruiker de status van de virtuele machine observeren terwijl deze opstart door seriële logboek gegevens en scherm afbeeldingen te verzamelen.
+
+## <a name="boot-diagnostics-storage-account"></a>Opslag account voor diagnostische gegevens over opstarten
+Bij het maken van een virtuele machine in Azure Portal is diagnostische gegevens over opstarten standaard ingeschakeld. De aanbevolen diagnostische gegevens over het opstarten zijn het gebruik van een beheerd opslag account, omdat het de prestaties van een Azure-VM aanzienlijk verduidelijkt. Dit komt doordat er een Azure Managed Storage-account wordt gebruikt, waarbij de tijd die nodig is om een nieuw gebruikers opslag account te maken voor het opslaan van de diagnostische gegevens over opstarten wordt verwijderd.
+
+Een alternatieve ervaring voor het opstarten van diagnostische gegevens is het gebruik van een door de gebruiker beheerd opslag account. Een gebruiker kan een nieuw opslag account maken of een bestaande gebruiken.
+
+> [!IMPORTANT]
+> Azure-klanten betalen niet voor de opslag kosten associted met diagnostische gegevens over opstarten met behulp van een beheerd opslag account tot en met 2020.
 
 ## <a name="boot-diagnostics-view"></a>Weer gave diagnostische gegevens over opstarten
 De optie diagnostische gegevens over opstarten bevindt zich op de Blade van de virtuele machine onder het gedeelte *ondersteuning en probleem oplossing* in de Azure Portal. Als u Diagnostische gegevens over opstarten selecteert, wordt een scherm opname en seriële logboek informatie weer gegeven. Het seriële logboek bevat kernel-berichten en de scherm opname is een moment opname van de huidige status van uw virtuele machines. Op basis van als op de virtuele machine Windows of Linux wordt uitgevoerd, wordt bepaald hoe de verwachte scherm afbeelding eruitziet. Voor Windows krijgen gebruikers een bureaublad achtergrond en voor Linux te zien, zien gebruikers een aanmeldings prompt.

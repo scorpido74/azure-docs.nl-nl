@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 300a11c36b11230d2bd75534f152a0a5955743ed
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234982"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181783"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -107,7 +107,7 @@ Begin met het navigeren naar [Azure Active Directory](https://portal.azure.com/#
 Vul op de pagina *een toepassing registreren* de gevraagde waarden in:
 * **Naam**: een weergave naam voor de Azure AD-toepassing die u aan de registratie wilt koppelen
 * **Ondersteunde account typen**: Selecteer *accounts in deze organisatie-Directory alleen (alleen standaard mappen-één Tenant)*
-* **Omleidings-URI**: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. U kunt gebruiken `http://localhost` .
+* **Omleidings-URI**: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. Voeg een URI voor de *open bare client/systeem eigen (mobile & Desktop)* toe voor `http://localhost` .
 
 Wanneer u klaar bent, klikt u op de knop *registreren* .
 
