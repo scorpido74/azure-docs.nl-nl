@@ -154,7 +154,7 @@
         - name: Problemen oplossen
           items:
             - name: Problemen met apparaten
-              href: azure-stack-edge-troubleshoot.md
+              href: azure-stack-edge-gpu-troubleshoot.md
             - name: Problemen met ordenen
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: Neem contact op met Microsoft Ondersteuning

@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: e53aad83e79f236bf9a0bb3029e332cad211471a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058092"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261305"
 ---
 # <a name="output-metadata"></a>Uitvoer meta gegevens
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Overzicht
 Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren. U kunt bijvoorbeeld een MP4-bestand coderen naar H. 264 MP4 Adaptive bitrate sets; Maak een miniatuur. Maak overlays. Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd.  Het uitvoer element bevat video, audio, miniaturen, enzovoort. Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: &lt; source_file_name &gt;_manifest.xml (bijvoorbeeld BigBuckBunny_manifest.xml).  
 
@@ -33,62 +36,62 @@ In dit artikel worden de elementen en typen beschreven van het XML-schema waarop
 
 Aan het eind van dit artikel vindt u de volledige schema code en het XML-voor beeld.  
 
-## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a>AssetFiles-hoofd element
+## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a> AssetFiles-hoofd element
 Verzameling van AssetFile-vermeldingen voor de coderings taak.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |Een AssetFile-element dat deel uitmaakt van de AssetFiles-verzameling. |
 
-## <a name="assetfile-element"></a><a name="AssetFile"></a>AssetFile-element
+## <a name="assetfile-element"></a><a name="AssetFile"></a> AssetFile-element
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Naam**<br/><br/> Vereist |**XS: teken reeks** |De bestands naam voor het Media-activum. |
+| **Name**<br/><br/> Vereist |**XS: teken reeks** |De bestands naam voor het Media-activum. |
 | **Grootte**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: Long** |Grootte van het activa bestand in bytes. |
 | **Duur**<br/><br/> Vereist |**XS: duration** |Duur van het afspelen van inhoud. |
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
 | **Bronnen** |Verzameling van invoer/bron media bestanden, die zijn verwerkt om deze AssetFile te maken. Zie bron element voor meer informatie. |
 | **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. Zie het element VideoTracks voor meer informatie. |
 | **AudioTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Elk fysiek AssetFile kan in de waarde nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Dit is de verzameling van al deze audio sporen. Zie het element AudioTracks voor meer informatie. |
 
-## <a name="sources-element"></a><a name="Sources"></a>Bron element
+## <a name="sources-element"></a><a name="Sources"></a> Bron element
 Verzameling van invoer/bron media bestanden, die zijn verwerkt om deze AssetFile te maken.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
 | **Bron**<br/><br/> minOccurs = "1" maxOccurs = "ontgrensd" |Een invoer-of bron bestand dat wordt gebruikt bij het genereren van deze asset. Zie bron element voor meer informatie. |
 
-## <a name="source-element"></a><a name="Source"></a>Bron element
+## <a name="source-element"></a><a name="Source"></a> Bron element
 Een invoer-of bron bestand dat wordt gebruikt bij het genereren van deze asset.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Naam**<br/><br/> Vereist |**XS: teken reeks** |Bestands naam van invoer bron. |
+| **Name**<br/><br/> Vereist |**XS: teken reeks** |Bestands naam van invoer bron. |
 
-## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks-element
+## <a name="videotracks-element"></a><a name="VideoTracks"></a> VideoTracks-element
 Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. Het **VideoTracks** -element vertegenwoordigt een verzameling van alle video tracks.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "ontgrensd" |Een specifiek video spoor in het bovenliggende AssetFile. Zie het element VideoTrack voor meer informatie. |
 
-## <a name="videotrack-element"></a><a name="VideoTrack"></a>VideoTrack-element
+## <a name="videotrack-element"></a><a name="VideoTrack"></a> VideoTrack-element
 Een specifiek video spoor in het bovenliggende AssetFile.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
@@ -100,8 +103,8 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 | **FourCC**<br/><br/> Vereist |**XS: teken reeks** |Code van de video-codec FourCC. |
 | **Profiel** |**XS: teken reeks** |H264-Profiel (alleen van toepassing op H264-codec). |
 | **Afvlakking** |**XS: teken reeks** |Niveau H264 (alleen van toepassing op H264-codec). |
-| **Width**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Breedte van gecodeerde video in pixels. |
-| **Height**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Versleutelde video hoogte in pixels. |
+| **Breedte**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Breedte van gecodeerde video in pixels. |
+| **Hoogte**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Versleutelde video hoogte in pixels. |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: Double** |Teller voor hoogte-breedte verhouding video weergave. |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: Double** |Noemer van hoogte-breedte verhouding video weergave. |
 | **Framesnelheid**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: decimaal** |Gemeten video frame frequentie in. 3F-indeling. |
@@ -110,17 +113,17 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 | **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |De gemiddelde bitrate van het doel voor dit video spoor, zoals aangevraagd via de voor instelling voor versleuteling, in kilobits per seconde. |
 | **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**XS: int** |Maximale GOP terug gemiddelde bitrate voor dit video spoor, in kilobits per seconde. |
 
-## <a name="audiotracks-element"></a><a name="AudioTracks"></a>AudioTracks-element
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a> AudioTracks-element
 Elk fysiek AssetFile kan in de waarde nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Het **AudioTracks** -element vertegenwoordigt een verzameling van al deze audio sporen.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs = "1" maxOccurs = "ontgrensd" |Een specifiek audio spoor in het bovenliggende AssetFile. Zie het element AudioTrack voor meer informatie. |
 
-## <a name="audiotrack-element"></a><a name="AudioTrack"></a>AudioTrack-element
+## <a name="audiotrack-element"></a><a name="AudioTrack"></a> AudioTrack-element
 Een specifiek audio spoor in het bovenliggende AssetFile.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
@@ -137,11 +140,11 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 | **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Vereist |**XS: int** |Bits per voor beeld voor het wFormatTag-indelings type. |
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Para meters voor Loudness-meet resultaten. Zie het element LoudnessMeteringResultParameters voor meer informatie. |
 
-## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a>LoudnessMeteringResultParameters-element
+## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a> LoudnessMeteringResultParameters-element
 Para meters voor Loudness-meet resultaten.  
 
 U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
@@ -511,7 +514,7 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 
 
 
-## <a name="xml-example"></a><a name="xml"></a>XML-voor beeld
+## <a name="xml-example"></a><a name="xml"></a> XML-voor beeld
 
 Het volgende XML-bestand is een voor beeld van het meta gegevensbestand voor uitvoer.  
 

@@ -41,6 +41,8 @@
       href: location-condition.md
     - name: Hulpprogramma What If
       href: what-if-tool.md
+    - name: Continue toegangsevaluatie
+      href: concept-continuous-access-evaluation.md
     - name: Aangepaste besturingselementen
       href: controls.md
     - name: Klassieke beleidsmigraties

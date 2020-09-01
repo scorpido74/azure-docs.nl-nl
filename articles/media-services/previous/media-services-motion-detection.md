@@ -15,14 +15,16 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e9a978cd96da47e91434c7146eb3e258d77d8ee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016832"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261339"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Bewegingen detecteren met Azure Media Analytics
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > De **Azure Media Motion detector** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
@@ -46,7 +48,7 @@ Wanneer u een taak met **Azure Media Motion detector**maakt, moet u een voor ins
 ### <a name="parameters"></a>Parameters
 U kunt de volgende para meters gebruiken:
 
-| Naam | Opties | Beschrijving | Standaard |
+| Name | Opties | Description | Standaard |
 | --- | --- | --- | --- |
 | sensitivityLevel |Teken reeks: laag, gemiddeld, hoog |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
 | frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |

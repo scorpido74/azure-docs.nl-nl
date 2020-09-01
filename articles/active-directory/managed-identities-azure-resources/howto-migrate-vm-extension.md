@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018373"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260183"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Stoppen met het gebruik van de extensie voor beheerde identiteiten van de virtuele machine en het gebruik van Azure Instance Metadata Service
 
@@ -35,7 +35,7 @@ Als gevolg van verschillende beperkingen die in de volgende sectie worden beschr
 
 ### <a name="provision-the-extension"></a>De uitbrei ding inrichten 
 
-Wanneer u een schaalset voor een virtuele machine of virtuele machine configureert voor een beheerde identiteit, kunt u eventueel de beheerde identiteiten voor de VM-extensie van Azure-resources inrichten met behulp `-Type` van de para meter voor de cmdlet [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . U kunt ofwel `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux` , afhankelijk van het type van de virtuele machine, een naam geven met behulp van de `-Name` para meter. De `-Settings` para meter geeft de poort die wordt gebruikt door het OAuth-token-eind punt voor het ophalen van tokens:
+Wanneer u een schaalset voor een virtuele machine of virtuele machine configureert voor een beheerde identiteit, kunt u eventueel de beheerde identiteiten voor de VM-extensie van Azure-resources inrichten met behulp `-Type` van de para meter voor de cmdlet [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) . U kunt ofwel `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux` , afhankelijk van het type van de virtuele machine, een naam geven met behulp van de `-Name` para meter. De `-Settings` para meter geeft de poort die wordt gebruikt door het OAuth-token-eind punt voor het ophalen van tokens:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ Als u de extensie voor virtuele-machine schaal sets wilt inrichten met de sjablo
 Het inrichten van de extensie van de virtuele machine kan mislukken vanwege fouten in de DNS-zoek actie. Als dit het geval is, start u de virtuele machine opnieuw op en probeert u het opnieuw. 
 
 ### <a name="remove-the-extension"></a>De extensie verwijderen 
-Als u de uitbrei ding wilt verwijderen, gebruikt `-n ManagedIdentityExtensionForWindows` of `-n ManagedIdentityExtensionForLinux` schakelt u (afhankelijk van het type virtuele machine) met [AZ VM extension delete](https://docs.microsoft.com/cli/azure/vm/)of [AZ vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) voor Virtual Machine Scale sets met behulp van Azure CLI of `Remove-AzVMExtension` voor Power shell:
+Als u de uitbrei ding wilt verwijderen, gebruikt `-n ManagedIdentityExtensionForWindows` of `-n ManagedIdentityExtensionForLinux` schakelt u (afhankelijk van het type virtuele machine) met [AZ VM extension delete](/cli/azure/vm/)of [AZ vmss extension delete](/cli/azure/vmss) voor Virtual Machine Scale sets met behulp van Azure CLI of `Remove-AzVMExtension` voor Power shell:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ Er zijn enkele belang rijke beperkingen bij het gebruik van de extensie van de v
 
 ## <a name="azure-instance-metadata-service"></a>Azire Instance Metadata Service
 
-[Azure instance metadata service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) is een rest-eind punt dat informatie bevat over het uitvoeren van virtuele machine-instanties die kunnen worden gebruikt voor het beheren en configureren van uw virtuele machines. Het eind punt is beschikbaar op een bekende niet-Routeer bare IP-adres ( `169.254.169.254` ) die alleen vanuit de virtuele machine kan worden geopend.
+[Azure instance metadata service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) is een rest-eind punt dat informatie bevat over het uitvoeren van virtuele machine-instanties die kunnen worden gebruikt voor het beheren en configureren van uw virtuele machines. Het eind punt is beschikbaar op een bekende niet-Routeer bare IP-adres ( `169.254.169.254` ) die alleen vanuit de virtuele machine kan worden geopend.
 
 Er zijn verschillende voor delen van het gebruik van Azure IMDS voor het aanvragen van tokens. 
 
@@ -212,4 +212,4 @@ Daarom is de Azure IMDS-service de enige manier om tokens aan te vragen, zodra d
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Beheerde identiteiten voor Azure-resources gebruiken op een virtuele machine van Azure om een toegangs token te verkrijgen](how-to-use-vm-token.md)
-* [Azire Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azire Instance Metadata Service](../../virtual-machines/windows/instance-metadata-service.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cda22c63a70c5121e6a6972c66bdc0a4bb5158fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089461"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260353"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Quota's en service plannen voor Azure lente-Cloud
 
@@ -27,9 +27,6 @@ Geheugen | 2 GB per service-exemplaar | 8 GB per service-exemplaar
 Azure veer Cloud service-instanties per regio per abonnement | 10 | 10
 Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 25 | 500
 Permanente volumes | 1 GB/app x 10 apps | 50 GB/app x 10-apps
-
-
-Tijdens de preview-periode biedt Azure lente-Cloud slechts één servicelaag. Wanneer u een limiet bereikt, ontvangt u een 400-fout die lees bewerkingen: ' quotum overschrijdt de limiet voor het abonnement op *uw abonnement* in regio regio *waar uw Azure lente-Cloud service wordt gemaakt*.
 
 ## <a name="next-steps"></a>Volgende stappen
 

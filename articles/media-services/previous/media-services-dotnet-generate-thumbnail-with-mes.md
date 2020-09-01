@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22a79f75fa795226e45e54947f410db4c2a57a7c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3988bbb46782f6dbc703823135f5bda4e2539bd8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020657"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262257"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatuurweergaven genereren met Media Encoder Standard met .NET 
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatuurweergaven genereren met Media Encoder Standard met .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 U kunt Media Encoder Standard gebruiken om een of meer miniaturen te genereren op basis van uw invoer video in [JPEG](https://en.wikipedia.org/wiki/JPEG)-, [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)-of [BMP](https://en.wikipedia.org/wiki/BMP_file_format) -afbeeldings bestands indelingen. U kunt taken verzenden die alleen installatie kopieën produceren, of u kunt het genereren van miniaturen combi neren met code ring. In dit artikel vindt u enkele voor beelden van XML-en JSON-miniaturen voor dergelijke scenario's. Aan het einde van het artikel ziet u een [voorbeeld code](#code_sample) die laat zien hoe u de Media Services .NET SDK kunt gebruiken om de coderings taak uit te voeren.
 

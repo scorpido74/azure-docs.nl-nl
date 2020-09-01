@@ -16,14 +16,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a15afcba26c8c8dcc8b023e57d05b04dfa5e3e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 498e6d9e38468b126dbe10e0d0f59f54f1816ff0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016713"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261033"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Meer informatie over hoe clients tokens door geven aan de Azure Media Services key delivery service
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Klanten vragen vaak hoe een speler tokens kan door geven aan de Azure Media Services key delivery service voor verificatie, zodat de speler de sleutel kan verkrijgen. Media Services ondersteunt de SWT-indelingen (Simple Web token) en JSON Web Token (JWT). Verificatie van tokens wordt toegepast op elk type sleutel, ongeacht of u gebruikmaakt van een common Encryption-of Advanced Encryption Standard (AES)-envelop versleuteling in het systeem.
 
  Afhankelijk van de speler en het platform waarop u het doel hebt, kunt u het token door geven aan uw speler op de volgende manieren:

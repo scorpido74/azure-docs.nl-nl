@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ead605462eeb92b31181ce9bba3100df521b471b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004412"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262397"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Een Asset coderen met Media Encoder Standard met behulp van .NET  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Een Asset coderen met Media Encoder Standard met behulp van .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Coderings taken zijn een van de meest voorkomende verwerkings bewerkingen in Media Services. U maakt coderings taken voor het converteren van media bestanden van de ene code ring naar een andere. Wanneer u codeert, kunt u de ingebouwde Media Encoder van Media Services gebruiken. U kunt ook een coderings programma van een Media Services partner gebruiken. coderings Programma's van derden zijn beschikbaar via de Azure Marketplace. 
 

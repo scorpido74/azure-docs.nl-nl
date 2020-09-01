@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: d49b74ffff8f382427422071b7d8f494f71a52fb
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38bfada87701533002a2dcf304af573da4c87766
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345186"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259894"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Snelstart: Een knowledge base maken in QnA Maker met behulp van Go
 
@@ -37,44 +37,34 @@ Maak een bestand met de naam `create-new-knowledge-base.go`.
 
 Voeg bovenaan `create-new-knowledge-base.go` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
-[!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
-
-## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
-Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe voor toegang tot QnA Maker.
-
-Stel de volgende waarden in:
-
-* `<your-qna-maker-subscription-key>`-De **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `{your-resource-name}`-De **resource naam** wordt gebruikt voor het maken van de URL voor het ontwerpen van eind punten voor het ontwerpen, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
-
-[!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="dependencies":::
 
 ## <a name="add-the-kb-model-definition"></a>De definitie van het KB-model toevoegen
 Voeg na de constanten de volgende KB-modeldefinitie toe. Het model wordt na de definitie naar een tekenreeks geconverteerd.
 
-[!code-go[Add the KB model definition](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=22-44 "Add the KB model definition")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="model":::
 
 ## <a name="add-supporting-structures-and-functions"></a>Ondersteunende functies en structuren toevoegen
 
 Voeg daarna de volgende ondersteunende functies toe.
 
-1. De structuur van een HTTP-aanvraag toevoegen:
+1. De structuur voor een HTTP-antwoord toevoegen:
 
-    [!code-go[Add the structure for an HTTP request](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=46-49 "Add the structure for an HTTP request")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="response":::
 
-2. Voeg de volgende methode toe voor het afhandelen van een POST-bewerking voor de QnA Maker-API's. In deze snelstart wordt POST gebruikt voor het verzenden van de KB-definitie naar QnA Maker.
+1. Voeg de volgende methode toe voor het afhandelen van een POST-bewerking voor de QnA Maker-API's. In deze snelstart wordt POST gebruikt voor het verzenden van de KB-definitie naar QnA Maker.
 
-    [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="post":::
 
-3. Voeg de volgende methode toe voor het afhandelen van een GET-bewerking voor de QnA Maker-API's. In deze snelstart wordt GET gebruikt om de status van de maakbewerking te controleren.
+1. Voeg de volgende methode toe voor het afhandelen van een GET-bewerking voor de QnA Maker-API's. In deze snelstart wordt GET gebruikt om de status van de maakbewerking te controleren.
 
-    [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="get":::
 
 ## <a name="add-function-to-create-kb"></a>Functie toevoegen om KB te maken
 
 Voeg de volgende functies toe voor het maken van een HTTP POST-aanvraag om de knowledge base te maken. De _create_ **bewerking-id** voor maken wordt geretourneerd in de veld **locatie**van de post-antwoord header en vervolgens gebruikt als onderdeel van de route in de GET-aanvraag. De `Ocp-Apim-Subscription-Key` is de sleutel van de QnA Maker-service die wordt gebruikt voor verificatie.
 
-[!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="create_kb":::
 
 Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt.
 
@@ -92,7 +82,7 @@ Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebru
 
 Voeg de volgende functie toe om een HTTP GET-aanvraag te maken om de bewerkingsstatus te controleren. De `Ocp-Apim-Subscription-Key` is de sleutel van de QnA Maker-service die wordt gebruikt voor verificatie.
 
-[!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="get_status":::
 
 Herhaal de aanroep totdat deze lukt of mislukt:
 
@@ -110,7 +100,7 @@ Herhaal de aanroep totdat deze lukt of mislukt:
 
 De volgende functie is de hoofdfunctie. Deze maakt de KB en voert herhalend controles uit voor de status. Omdat het maken van de KB enige tijd kan duren, moet u aanroepen herhalen om de status te controleren totdat de status geslaagd of mislukt is.
 
-[!code-go[Add the main method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=110-140 "Add the main method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="main":::
 
 
 ## <a name="compile-the-program"></a>Het programma compileren

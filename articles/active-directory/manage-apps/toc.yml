@@ -238,14 +238,6 @@
               href: application-types.md
             - name: Onverwachte gebruiker toegewezen
               href: ways-users-get-assigned-to-applications.md
-        - name: Problemen met mijn apps oplossen
-          items:
-            - name: App wordt niet weergegeven
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: App wordt onverwacht weergegeven
-              href: access-panel-troubleshoot-unexpected-application.md
-            - name: Fout bij selfservice-app-toegang gebruiken
-              href: access-panel-troubleshoot-self-service-access.md
         - name: Problemen met on-premises apps oplossen
           items:
             - name: Probleemoplossing toepassingsproxy

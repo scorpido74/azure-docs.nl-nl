@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179756"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260320"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
@@ -41,8 +41,8 @@ De Azure lente-Cloud ondersteunt alleen veer boot-apps van veer boot versie 2,1 
 Spring boot-versie | Lente-Cloud versie
 ---|---
 2.1 | Greenwich. RELEASE
-2.2 | Hoxton. RELEASE
-2.3 | Hoxton.SR5
+2.2 | Hoxton.SR8
+2.3 | Hoxton.SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring boot versie 2,1
 
@@ -62,7 +62,7 @@ Voor Spring boot versie 2,1 voegt u de volgende afhankelijkheden toe aan het POM
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -88,7 +88,7 @@ Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -113,7 +113,7 @@ Voor Spring boot versie 2,3 voegt u de volgende afhankelijkheden toe aan het POM
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -122,49 +122,23 @@ Voor Spring boot versie 2,3 voegt u de volgende afhankelijkheden toe aan het POM
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure veer cloud client-afhankelijkheid
 
-Azure lente-Cloud hosts en beheert lente-Cloud onderdelen. De onderdelen omvatten veer-Cloud service register en lente-Cloud configuratie server. Neem de Azure veer cloud-client bibliotheek op in uw afhankelijkheden om communicatie met uw Azure lente-Cloud service-exemplaar toe te staan.
+Azure lente-Cloud hosts en beheert lente-Cloud onderdelen. De onderdelen omvatten veer-Cloud service register en lente-Cloud configuratie server. U wordt aangeraden Spring boot 2,2 of 2,3 te gebruiken. Voor Spring boot 2,1 moet u de Azure veer cloud-client bibliotheek in uw afhankelijkheden toevoegen om communicatie met uw Azure lente-Cloud service-exemplaar toe te staan.
 
 De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor uw app die een lente-boot-en lente-Cloud gebruiken.
 
-Spring boot-versie | Lente-Cloud versie | Azure lente-Cloud versie
+Spring boot-versie | Lente-Cloud versie | Azure lente cloud client starter-versie
 ---|---|---
-2.1 | Greenwich. RELEASE | 2.1
-2.2 | Hoxton. RELEASE | 2.2
-2.3 | Hoxton.SR5 | 2.3
+2.1 | Greenwich. RELEASE | 2.1.2
+2.2 | Hoxton.SR8 | Niet nodig
+2.3 | Hoxton.SR8 | Niet nodig
 
-Neem een van de volgende afhankelijkheden op in uw pom.xml-bestand. Selecteer de afhankelijkheid waarvan de Azure lente-Cloud versie overeenkomt met uw eigen.
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Afhankelijkheid voor Azure lente Cloud versie 2,1
-
-Voor Spring boot versie 2,1 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
+Neem de volgende dependenciy op in uw pom.xml-bestand als u een Spring boot 2,1 gebruikt.
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Afhankelijkheid voor Azure lente Cloud versie 2,2
-
-Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-Voor Spring boot versie 2,3 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

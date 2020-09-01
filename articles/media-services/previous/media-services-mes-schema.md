@@ -13,34 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901438"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261509"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-schema
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 In dit artikel worden enkele elementen en typen van het XML-schema beschreven waarop [Media Encoder Standard voor instellingen](media-services-mes-presets-overview.md) zijn gebaseerd. Het artikel geeft uitleg over elementen en hun geldige waarden.  
 
-## <a name="preset-root-element"></a><a name="Preset"></a>Vooraf ingesteld (hoofd element)
+## <a name="preset-root-element"></a><a name="Preset"></a> Vooraf ingesteld (hoofd element)
 Hiermee wordt een vooraf ingestelde code ring gedefinieerd.  
 
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Encoding** |[Encoding](media-services-mes-schema.md#Encoding) |Hoofd element, geeft aan dat de invoer bronnen moeten worden gecodeerd. |
+| **Codering** |[Codering](media-services-mes-schema.md#Encoding) |Hoofd element, geeft aan dat de invoer bronnen moeten worden gecodeerd. |
 | **Uitvoerwaarden** |[Uitvoerwaarden](media-services-mes-schema.md#Output) |Verzameling gewenste uitvoer bestanden. |
 | **StretchMode**<br/>minOccurs = "0"<br/>standaard instelling = "AutoSize|XS: teken reeks|De kader grootte, opvulling, pixel of weergave hoogte-breedte verhouding van het video besturings element beheren. **StretchMode** kan een van de volgende waarden hebben: **geen**, **AutoSize** (standaard) of **AutoAanpassen**.<br/><br/>**Geen**: de uitvoer resolutie (bijvoorbeeld de **breedte** en de **hoogte** in de voor instelling) volgen zonder rekening te houden met de pixel verhouding of de hoogte-breedte verhouding van de invoer video. Aanbevolen in scenario's zoals [bijsnijden](media-services-crop-video.md), waarbij de video met uitvoer een andere hoogte-breedte verhouding heeft dan de invoer. <br/><br/>**AutoSize**: de uitvoer resolutie past in het venster (breedte * hoogte) dat is opgegeven met de voor instelling. Het coderings programma produceert echter een uitvoer video met een vier kante pixel verhouding (1:1). Daarom kan de uitvoer breedte of uitvoer hoogte worden overschreven zodat deze overeenkomt met de weergave hoogte-breedte verhouding van de invoer, zonder opvulling. Als de invoer bijvoorbeeld 1920 is en de voor instelling voor code ring vraagt om 1280x1280, wordt de waarde van Height in de voor instelling overschreven en wordt de uitvoer op 1280x720, die de invoer hoogte-breedte verhouding van 16:9 houdt. <br/><br/>**AutoAanpassen**: als dat nodig is, kunt u de uitvoer video (met ofwel letterbox of pillarbox) aanvullen om te voldoen aan de gewenste uitvoer resolutie, terwijl u ervoor zorgt dat de actieve video regio in de uitvoer dezelfde hoogte-breedte verhouding heeft als de invoer. Stel bijvoorbeeld dat de invoer 1920 is en dat de voor instelling voor code ring vraagt om 1280x1280. De uitvoer video gaat dan op 1280x1280, maar bevat een binnenste 1280x720-rechthoek van ' actieve video ' met een hoogte-breedte verhouding van 16:9 en letterbox regio's 280 pixels hoog aan de bovenkant en de onderkant. Een ander voor beeld: als de invoer is 1440x1080 en de voor instelling voor code ring vraagt om 1280x720, is de uitvoer op 1280x720, die een binnenste rechthoek bevat van 960x720 met een hoogte-breedte verhouding van 4:3 en de regio's in de pijler Box 160 pixels breed aan de linkerkant en de rechter kant. 
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | **Versie**<br/><br/> Vereist |**XS: decimaal** |De vooraf ingestelde versie. De volgende beperkingen zijn van toepassing: XS: fractionDigits-waarde = "1" en XS: minInclusive-waarde = "1" bijvoorbeeld **Version = "1.0"**. |
 
-## <a name="encoding"></a><a name="Encoding"></a>Gecodeerd
+## <a name="encoding"></a><a name="Encoding"></a> Gecodeerd
 Bevat een reeks van de volgende elementen:  
 
 ### <a name="elements"></a>Elementen
@@ -53,7 +56,7 @@ Bevat een reeks van de volgende elementen:
 | **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |Instellingen voor PNG-afbeelding. |
 | **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |Instellingen voor JPG-afbeelding. |
 
-## <a name="h264video"></a><a name="H264Video"></a>H264Video
+## <a name="h264video"></a><a name="H264Video"></a> H264Video
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
@@ -69,9 +72,9 @@ Bevat een reeks van de volgende elementen:
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Voorwaarde** |**XS: teken reeks** | Wanneer de invoer geen video bevat, wilt u mogelijk het coderings programma dwingen om een monochroom video spoor in te voegen. Gebruik hiervoor voor waarde = "InsertBlackIfNoVideoBottomLayerOnly" (om een video te plaatsen bij alleen de laagste bitrate) of voor waarde = "InsertBlackIfNoVideo" (om een video in te voegen bij alle uitvoer bitrates). Zie [Dit](media-services-advanced-encoding-with-mes.md#no_video) artikel voor meer informatie.|
+| **Condition** |**XS: teken reeks** | Wanneer de invoer geen video bevat, wilt u mogelijk het coderings programma dwingen om een monochroom video spoor in te voegen. Gebruik hiervoor voor waarde = "InsertBlackIfNoVideoBottomLayerOnly" (om een video te plaatsen bij alleen de laagste bitrate) of voor waarde = "InsertBlackIfNoVideo" (om een video in te voegen bij alle uitvoer bitrates). Zie [Dit](media-services-advanced-encoding-with-mes.md#no_video) artikel voor meer informatie.|
 
-## <a name="h264layers"></a><a name="H264Layers"></a>H264Layers
+## <a name="h264layers"></a><a name="H264Layers"></a> H264Layers
 
 Standaard, als u een invoer verzendt naar het coderings programma dat alleen audio bevat en geen video, bevat de uitvoer Asset alleen bestanden met audio gegevens. Sommige spelers kunnen dergelijke uitvoer stromen mogelijk niet verwerken. U kunt de H264Video's **InsertBlackIfNoVideo** -kenmerk instelling gebruiken om ervoor te zorgen dat het coderings programma een video spoor toevoegt aan de uitvoer in dat scenario. Zie [Dit](media-services-advanced-encoding-with-mes.md#no_video) artikel voor meer informatie.
               
@@ -81,7 +84,7 @@ Standaard, als u een invoer verzendt naar het coderings programma dat alleen aud
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[H264Layer](media-services-mes-schema.md#H264Layer) |Een verzameling H264-lagen. |
 
-## <a name="h264layer"></a><a name="H264Layer"></a>H264Layer
+## <a name="h264layer"></a><a name="H264Layer"></a> H264Layer
 > [!NOTE]
 > Video limieten zijn gebaseerd op de waarden die worden beschreven in de tabel [H264 niveaus](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels) .  
 > 
@@ -96,16 +99,16 @@ Standaard, als u een invoer verzendt naar het coderings programma dat alleen aud
 | **Bitsnelheid**<br/><br/> minOccurs = "0" |**XS: int** |De bitrate die wordt gebruikt voor deze videolaag, opgegeven in kbps. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**XS: int** |De maximale bitsnelheid die wordt gebruikt voor deze videolaag, opgegeven in kbps. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "00:00:05" |**XS: tijd** |Lengte van de video buffer. |
-| **Width**<br/><br/> minOccurs = "0" |**XS: int** |De breedte van het video frame van de uitvoer, in pixels.<br/><br/> Op dit moment moet u zowel width als Height opgeven. De breedte en hoogte moeten even cijfers zijn. |
-| **Height**<br/><br/> minOccurs = "0" |**XS: int** |De hoogte van het video frame van de uitvoer, in pixels.<br/><br/> Op dit moment moet u zowel width als Height opgeven. De breedte en hoogte moeten even cijfers zijn.|
+| **Breedte**<br/><br/> minOccurs = "0" |**XS: int** |De breedte van het video frame van de uitvoer, in pixels.<br/><br/> Op dit moment moet u zowel width als Height opgeven. De breedte en hoogte moeten even cijfers zijn. |
+| **Hoogte**<br/><br/> minOccurs = "0" |**XS: int** |De hoogte van het video frame van de uitvoer, in pixels.<br/><br/> Op dit moment moet u zowel width als Height opgeven. De breedte en hoogte moeten even cijfers zijn.|
 | **BFrames**<br/><br/> minOccurs = "0" |**XS: int** |Aantal B-frames tussen referentie frames. |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "3" |**XS: int** |Het aantal referentie frames in een GOP terug. |
 | **EntropyMode**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "CABAC" |**XS: teken reeks** |Dit kan een van de volgende waarden zijn: **CABAC** en **Cavlc**. |
 | **Snelheid**<br/><br/> minOccurs = "0" |rationeel nummer |Bepaalt de frame frequentie van de uitvoer video. Gebruik de standaard waarde van "0/1" om ervoor te zorgen dat het coderings programma dezelfde frame frequentie gebruikt als de invoer video. Toegestane waarden worden naar verwachting gang bare video frame frequenties. Een geldige rationele ordening is echter toegestaan. Bijvoorbeeld: 1/1 zou 1 fps zijn en geldig zijn.<br/><br/> -12/1 (12 fps)<br/><br/> -15/1 (15 fps)<br/><br/> -24/1 (24 fps)<br/><br/> -24000/1001 (23,976 fps)<br/><br/> -25/1 (25 fps)<br/><br/>  -30/1 (30 fps)<br/><br/> -30000/1001 (29,97 fps) <br/> <br/>**Opmerking** Als u een aangepaste voor instelling voor code ring met meerdere bitsnelheden maakt, **moeten** voor alle lagen van de vooraf ingestelde de waarde voor de frame snelheid worden gebruikt.|
 | **AdaptiveBFrame**<br/><br/> minOccurs = "0" |**XS: Boolean** |Kopiëren uit Azure Media Encoder |
-| **Segment**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "0" |**XS: int** |Hiermee wordt bepaald op hoeveel segmenten een frame is verdeeld. U wordt aangeraden standaard te gebruiken. |
+| **Segmenten**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "0" |**XS: int** |Hiermee wordt bepaald op hoeveel segmenten een frame is verdeeld. U wordt aangeraden standaard te gebruiken. |
 
-## <a name="aacaudio"></a><a name="AACAudio"></a>AACAudio
+## <a name="aacaudio"></a><a name="AACAudio"></a> AACAudio
  Bevat een reeks van de volgende elementen en groepen.  
 
  Zie [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)voor meer informatie over AAC.  
@@ -120,15 +123,15 @@ Standaard, als u een invoer verzendt naar het coderings programma dat alleen aud
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Voorwaarde** |**XS: teken reeks** |Geef de ' InsertSilenceIfNoAudio-waarde op als u wilt afdwingen dat het coderings programma een Asset produceert die een Silent audio-track bevat wanneer de invoer geen audio heeft.<br/><br/> Standaard, als u een invoer verzendt naar het coderings programma dat alleen video bevat en geen audio, bevat het uitvoer element alleen bestanden die alleen video gegevens bevatten. Sommige spelers kunnen dergelijke uitvoer stromen mogelijk niet verwerken. U kunt deze instelling gebruiken om ervoor te zorgen dat het coderings programma een Silent audio-track toevoegt aan de uitvoer in dat scenario. |
+| **Condition** |**XS: teken reeks** |Geef de ' InsertSilenceIfNoAudio-waarde op als u wilt afdwingen dat het coderings programma een Asset produceert die een Silent audio-track bevat wanneer de invoer geen audio heeft.<br/><br/> Standaard, als u een invoer verzendt naar het coderings programma dat alleen video bevat en geen audio, bevat het uitvoer element alleen bestanden die alleen video gegevens bevatten. Sommige spelers kunnen dergelijke uitvoer stromen mogelijk niet verwerken. U kunt deze instelling gebruiken om ervoor te zorgen dat het coderings programma een Silent audio-track toevoegt aan de uitvoer in dat scenario. |
 
 ### <a name="groups"></a>Groepen
 
-| Verwijzing | Description |
+| Referentie | Description |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs = "0" |Zie beschrijving van [AudioGroup](media-services-mes-schema.md#AudioGroup) om het juiste aantal kanalen, de sampling frequentie en de bitsnelheid te weten die voor elk profiel kunnen worden ingesteld. |
 
-## <a name="audiogroup"></a><a name="AudioGroup"></a>AudioGroup
+## <a name="audiogroup"></a><a name="AudioGroup"></a> AudioGroup
 Zie de tabel ' Details van audiocodec ' verderop voor meer informatie over welke waarden voor elk profiel geldig zijn.  
 
 ### <a name="elements"></a>Elementen
@@ -147,7 +150,7 @@ Audiocodec|Details
 **HEAACV1** |1:<br/><br/> -22050: bitrate = 8<br/><br/> -24000:8 &lt; = bitrate &lt; = 10<br/><br/> -32000:12 &lt; = bitrate &lt; = 64<br/><br/> -44100:20 &lt; = bitrate &lt; = 64<br/><br/> -48000:20 &lt; = bitrate &lt; = 64<br/><br/> -88200: bitrate = 64<br/><br/> 2:<br/><br/> -32000:16 &lt; = bitrate &lt; = 128<br/><br/> -44100:16 &lt; = bitrate &lt; = 128<br/><br/> -48000:16 &lt; = bitrate &lt; = 128<br/><br/> -88200:96 &lt; = bitrate &lt; = 128<br/><br/> -96000:96 &lt; = bitrate &lt; = 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt; = bitrate &lt; = 320<br/><br/> -44100:64 &lt; = bitrate &lt; = 320<br/><br/> -48000:64 &lt; = bitrate &lt; = 320<br/><br/> -88200:256 &lt; = bitrate &lt; = 320<br/><br/> -96000:256 &lt; = bitrate &lt; = 320<br/><br/> 8:<br/><br/> -32000:96 &lt; = bitrate &lt; = 448<br/><br/> -44100:96 &lt; = bitrate &lt; = 448<br/><br/> -48000:96 &lt; = bitrate &lt; = 448<br/><br/> -88200:384 &lt; = bitrate &lt; = 448<br/><br/> -96000:384 &lt; = bitrate &lt; = 448  
 **HEAACV2** |2:<br/><br/> -22050:8 &lt; = bitrate &lt; = 10<br/><br/> -24000:8 &lt; = bitrate &lt; = 10<br/><br/> -32000:12 &lt; = bitrate &lt; = 64<br/><br/> -44100:20 &lt; = bitrate &lt; = 64<br/><br/> -48000:20 &lt; = bitrate &lt; = 64<br/><br/> -88200:64 &lt; = bitrate &lt; = 64  
   
-## <a name="clip"></a><a name="Clip"></a>Clip
+## <a name="clip"></a><a name="Clip"></a> Clip
 ### <a name="attributes"></a>Kenmerken
 
 | Naam | Type | Description |
@@ -155,7 +158,7 @@ Audiocodec|Details
 | **StartTime** |**XS: duration** |Hiermee geeft u de begin tijd van een presentatie op. De waarde van StartTime moet overeenkomen met de absolute tijds tempels van de invoer video. Als bijvoorbeeld het eerste frame van de invoer video een tijds tempel van 12:00:10.000 heeft, moet StartTime ten minste 12:00:10.000 of hoger zijn. |
 | **Duur** |**XS: duration** |Hiermee geeft u de duur van een presentatie op (bijvoorbeeld de weer gave van een overlay in de video). |
 
-## <a name="output"></a><a name="Output"></a>Uitvoer
+## <a name="output"></a><a name="Output"></a> Uitvoer
 ### <a name="attributes"></a>Kenmerken
 
 | Naam | Type | Description |
@@ -175,7 +178,7 @@ Audiocodec|Details
 | **Switch** |Neemt over van de eigenschap ' type ' voor het uitvoer bestand. De naam van het uitvoer bestand heeft een extensie die een van de volgende is: "MP4", "TS", "jpg", "PNG" of "BMP". |
 | **TabIndex** |Verplicht voor miniatuur. Mag slechts één keer worden weer gegeven. |
 
-## <a name="video-complex-type-inherits-from-codec"></a><a name="Video"></a>Video (complex type neemt van codec over)
+## <a name="video-complex-type-inherits-from-codec"></a><a name="Video"></a> Video (complex type neemt van codec over)
 ### <a name="attributes"></a>Kenmerken
 
 | Naam | Type | Description |
@@ -185,7 +188,7 @@ Audiocodec|Details
 | **Bereik** |**XS: teken reeks** | |
 | **PreserveResolutionAfterRotation** |**XS: Boolean** |Zie de volgende sectie voor gedetailleerde uitleg: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
-### <a name="preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a>PreserveResolutionAfterRotation
+### <a name="preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
 Het is raadzaam om de vlag **PreserveResolutionAfterRotation** in combi natie met oplossings waarden te gebruiken, uitgedrukt in percentages (breedte = "100%", hoogte = "100%").  
 
 Standaard zijn de instellingen voor het omzetten van de omzetting (breedte, hoogte) in de voor instellingen van de Media Encoder Standard (MES) gericht op Video's met een rotatie van 0 graden. Als uw invoer video bijvoorbeeld 1280x720 is met een draai hoek van nul graden, moeten de standaard instellingen ervoor zorgen dat de uitvoer dezelfde resolutie heeft.  
@@ -200,7 +203,7 @@ U kunt ook het gebruik van de vlag **PreserveResolutionAfterRotation** maken en 
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
-## <a name="formatgroup-group"></a><a name="FormatGroup"></a>FormatGroup (groep)
+## <a name="formatgroup-group"></a><a name="FormatGroup"></a> FormatGroup (groep)
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
@@ -209,85 +212,85 @@ U kunt ook het gebruik van de vlag **PreserveResolutionAfterRotation** maken en 
 | **PngFormat** |**PngFormat** | |
 | **JpgFormat** |**JpgFormat** | |
 
-## <a name="bmplayer"></a><a name="BmpLayer"></a>BmpLayer
+## <a name="bmplayer"></a><a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>Element
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**XS: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Breedte**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Hoogte**<br/><br/> minOccurs = "0" |**XS: int** | |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Voorwaarde** |**XS: teken reeks** | |
+| **Condition** |**XS: teken reeks** | |
 
-## <a name="pnglayer"></a><a name="PngLayer"></a>PngLayer
+## <a name="pnglayer"></a><a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>Element
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**XS: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Breedte**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Hoogte**<br/><br/> minOccurs = "0" |**XS: int** | |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Voorwaarde** |**XS: teken reeks** | |
+| **Condition** |**XS: teken reeks** | |
 
-## <a name="jpglayer"></a><a name="JpgLayer"></a>JpgLayer
+## <a name="jpglayer"></a><a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>Element
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**XS: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Breedte**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Hoogte**<br/><br/> minOccurs = "0" |**XS: int** | |
 | **Kwaliteit**<br/><br/> minOccurs = "0" |**XS: int** |Geldige waarden: 1 (slechtste)-100 (beste) |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Naam | Type | Description |
 | --- | --- | --- |
-| **Voorwaarde** |**XS: teken reeks** | |
+| **Condition** |**XS: teken reeks** | |
 
-## <a name="pnglayers"></a><a name="PngLayers"></a>PngLayers
+## <a name="pnglayers"></a><a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
-## <a name="bmplayers"></a><a name="BmpLayers"></a>BmpLayers
+## <a name="bmplayers"></a><a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
-## <a name="jpglayers"></a><a name="JpgLayers"></a>JpgLayers
+## <a name="jpglayers"></a><a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
-## <a name="bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a>BmpImage (complex type neemt uit video over)
+## <a name="bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a> BmpImage (complex type neemt uit video over)
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-lagen |
 
-## <a name="jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a>JpgImage (complex type neemt uit video over)
+## <a name="jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a> JpgImage (complex type neemt uit video over)
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-lagen |
 
-## <a name="pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a>PngImage (complex type neemt uit video over)
+## <a name="pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a> PngImage (complex type neemt uit video over)
 ### <a name="elements"></a>Elementen
 
 | Naam | Type | Description |

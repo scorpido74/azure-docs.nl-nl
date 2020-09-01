@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ffc6ba2725a8ce9e3eeb4202ed7d10dd3d1937a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997469"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260217"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Veelgestelde vragen en bekende problemen met beheerde identiteiten voor Azure-resources
 
@@ -86,8 +86,8 @@ Nee. Beheerde identiteiten bieden momenteel geen ondersteuning voor scenario's m
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Welke Azure RBAC-machtigingen zijn vereist voor de beheerde identiteit van een resource? 
 
-- Door het systeem toegewezen beheerde identiteit: u hebt schrijf machtigingen nodig voor de resource. Voor virtuele machines hebt u bijvoorbeeld Microsoft. Compute/virtualMachines/write nodig. Deze actie is opgenomen in resource-specifieke ingebouwde rollen als [Inzender voor virtuele machines](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Door de gebruiker toegewezen beheerde identiteit: u hebt schrijf machtigingen nodig voor de resource. Voor virtuele machines hebt u bijvoorbeeld Microsoft. Compute/virtualMachines/write nodig. Naast de roltoewijzing voor [beheerde identiteits operatoren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) via de beheerde identiteit.
+- Door het systeem toegewezen beheerde identiteit: u hebt schrijf machtigingen nodig voor de resource. Voor virtuele machines hebt u bijvoorbeeld Microsoft. Compute/virtualMachines/write nodig. Deze actie is opgenomen in resource-specifieke ingebouwde rollen als [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+- Door de gebruiker toegewezen beheerde identiteit: u hebt schrijf machtigingen nodig voor de resource. Voor virtuele machines hebt u bijvoorbeeld Microsoft. Compute/virtualMachines/write nodig. Naast de roltoewijzing voor [beheerde identiteits operatoren](../../role-based-access-control/built-in-roles.md#managed-identity-operator) via de beheerde identiteit.
 
 
 

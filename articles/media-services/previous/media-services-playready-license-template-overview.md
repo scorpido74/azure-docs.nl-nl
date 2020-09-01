@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1fcb935a7a07629ba3d7424a39f6c8542628a842
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084616"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261044"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Overzicht van sjablonen voor Media Services PlayReady-licentie
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure Media Services biedt nu een service voor het leveren van PlayReady-licenties. Als de speler (bijvoorbeeld Silverlight) probeert uw met PlayReady beveiligde inhoud af te spelen, wordt een aanvraag verzonden naar de service voor levering van licenties om een licentie te verkrijgen. Als de licentie service de aanvraag goedkeurt, wordt de licentie die naar de client wordt verzonden, uitgegeven en wordt de opgegeven inhoud gedecodeerd en afgespeeld.
 
 Media Services biedt ook Api's die u kunt gebruiken om uw PlayReady-licenties te configureren. Licenties bevatten de rechten en beperkingen die u wilt dat de runtime van PlayReady Digital Rights Management (DRM) wordt afgedwongen wanneer een gebruiker beveiligde inhoud wil afspelen.

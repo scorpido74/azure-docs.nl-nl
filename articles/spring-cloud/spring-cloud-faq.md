@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054985"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260523"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -40,10 +40,10 @@ VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Wat zijn de bekende beperkingen van Azure lente-Cloud?
 
-Tijdens de preview-versie heeft Azure lente Cloud de volgende bekende beperkingen:
-
+Voor de Azure lente-Cloud gelden de volgende bekende beperkingen:
+    
 * `spring.application.name` wordt overschreven door de naam van de toepassing die wordt gebruikt voor het maken van elke toepassing.
-* `server.port` wordt standaard ingesteld op poort 80/443. Als een andere waarde wordt toegepast, wordt deze overschreven naar 80/443.
+* `server.port` wordt standaard ingesteld op poort 1025. Als een andere waarde wordt toegepast, wordt deze overschreven naar 1025.
 * De Azure Portal-en Azure Resource Manager-sjablonen bieden geen ondersteuning voor het uploaden van toepassings pakketten. U kunt toepassings pakketten alleen uploaden door de toepassing te implementeren via de Azure CLI.
 
 ### <a name="what-pricing-tiers-are-available"></a>Welke prijs categorieën zijn er beschikbaar? 
