@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608922"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231160"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Gebruikers herstellen voor wie wordt aangegeven dat ze risico lopen in de Azure Active Directory-portal
 
@@ -40,7 +40,7 @@ Vanuit de gebruikers die zijn gemarkeerd voor risico rapport, kunt u de volgende
 - Vereisen dat gebruikers veilig hun wachtwoord opnieuw instellen de volgende keer dat ze zich aanmelden
 - Het gebruikersrisico afwijzen zonder een herstelactie uit te voeren.
 
-Zie gebruikers voor wie wordt aangegeven dat [ze risico lopen op beveiligings rapport](concept-user-at-risk.md)voor meer informatie.
+Zie gebruikers voor wie wordt aangegeven dat [ze risico lopen op beveiligings rapport](../identity-protection/overview-identity-protection.md)voor meer informatie.
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-abonnement voor Office 365-klanten
 
@@ -75,7 +75,7 @@ Onderneem de volgende acties om de betreffende accounts te herstellen en uw omge
 
     f. Stel de wachtwoordcomplexiteit voor het account in op Hoog.
 
-    bijvoorbeeld Schakel postvakcontrole in.
+    g. Schakel postvakcontrole in.
 
     h. Maak een audit logboek voor de beheerder om dit te controleren.
 
@@ -91,5 +91,5 @@ Daarnaast dient u:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [Gebruikers voor wie wordt aangegeven dat ze risico lopen](../identity-protection/overview-identity-protection.md)

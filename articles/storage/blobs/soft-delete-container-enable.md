@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066658"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230072"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Voorlopig verwijderen voor containers inschakelen en beheren (preview-versie)
 
@@ -22,7 +22,7 @@ Met de tijdelijke verwijdering van de container (preview) wordt voor komen dat u
 
 Als er een mogelijkheid is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, wordt door micro soft aangeraden om de optie voor het voorlopig verwijderen van containers in te scha kelen. In dit artikel wordt beschreven hoe u de optie voorlopig verwijderen voor containers inschakelt. Zie [voorlopig verwijderen voor containers (preview)](soft-delete-container-overview.md)voor meer informatie over het voorlopig verwijderen van een container, inclusief hoe u zich kunt registreren voor de preview-versie.
 
-Voor end-to-end gegevens beveiliging raadt micro soft u aan om ook voor het voorlopig verwijderen van blobs en BLOB-versie beheer (preview) in te scha kelen. Zie voor meer informatie over het inschakelen van zacht verwijderen voor blobs de [optie voorlopig verwijderen inschakelen en beheren voor blobs](soft-delete-blob-enable.md). Zie voor meer informatie over het inschakelen van versie beheer van BLOB [(preview-versie)](versioning-overview.md).
+Voor end-to-end gegevens beveiliging raadt micro soft u aan om ook voor het dynamisch verwijderen van blobs en BLOB-versie beheer in te scha kelen. Zie voor meer informatie over het inschakelen van zacht verwijderen voor blobs de [optie voorlopig verwijderen inschakelen en beheren voor blobs](soft-delete-blob-enable.md). Zie [BLOB-versie beheer](versioning-overview.md)voor meer informatie over het inschakelen van BLOB-versie beheer.
 
 ## <a name="enable-container-soft-delete"></a>Voorlopig verwijderen van container inschakelen
 
@@ -100,5 +100,5 @@ U kunt een voorlopig verwijderde container en de inhoud ervan herstellen binnen 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Voorlopig verwijderen voor containers (preview-versie)](soft-delete-container-overview.md)
-- [Voorlopig verwijderen voor blobs](soft-delete-blob-overview.md)
-- [Versie beheer van BLOB (preview)](versioning-overview.md)
+- [Blobs voorlopig verwijderen](soft-delete-blob-overview.md)
+- [BLOB-versie beheer](versioning-overview.md)

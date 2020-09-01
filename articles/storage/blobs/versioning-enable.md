@@ -1,29 +1,27 @@
 ---
-title: BLOB-versie beheer inschakelen en beheren (preview)
+title: BLOB-versie beheer inschakelen en beheren
 titleSuffix: Azure Storage
-description: Meer informatie over het inschakelen van BLOB-versie beheer (preview) in de Azure Portal of met behulp van een Azure Resource Manager sjabloon.
+description: Meer informatie over het inschakelen van BLOB-versie beheer in de Azure Portal of met behulp van een Azure Resource Manager sjabloon.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074403"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230667"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB-versie beheer inschakelen en beheren (preview)
+# <a name="enable-and-manage-blob-versioning"></a>BLOB-versie beheer inschakelen en beheren
 
-U kunt Blob Storage-versie beheer (preview) inschakelen om automatisch eerdere versies van een object te onderhouden.  Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
+U kunt versie beheer van Blob Storage inschakelen om automatisch eerdere versies van een object te onderhouden.  Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
 
-In dit artikel wordt beschreven hoe u BLOB-versie beheer in-of uitschakelt voor het opslag account met behulp van de Azure Portal of een Azure Resource Manager sjabloon.
-
-U moet zich registreren voor de preview voordat u BLOB-versie beheer inschakelt. Zie voor meer informatie over de BLOB-versie, inclusief hoe u zich kunt registreren voor de preview, [BLOB-versie beheer (preview)](versioning-overview.md).
+In dit artikel wordt beschreven hoe u BLOB-versie beheer in-of uitschakelt voor het opslag account met behulp van de Azure Portal of een Azure Resource Manager sjabloon. Zie [BLOB-versie beheer](versioning-overview.md)voor meer informatie over blob-versie beheer.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -75,7 +73,7 @@ Zie [resources implementeren met Azure Portal](../../azure-resource-manager/temp
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Een BLOB wijzigen om een nieuwe versie te activeren
 
-In het volgende code voorbeeld ziet u hoe u het maken van een nieuwe versie kunt activeren met de Azure Storage-client bibliotheek voor .NET versie [12.5.0-Preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) of hoger. Voordat u dit voor beeld uitvoert, moet u ervoor zorgen dat versie beheer voor uw opslag account is ingeschakeld.
+In het volgende code voorbeeld ziet u hoe u het maken van een nieuwe versie kunt activeren met de Azure Storage-client bibliotheek voor .NET, versie [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) of hoger. Voordat u dit voor beeld uitvoert, moet u ervoor zorgen dat versie beheer voor uw opslag account is ingeschakeld.
 
 In het voor beeld wordt een blok-BLOB gemaakt en vervolgens worden de meta gegevens van de BLOB bijgewerkt. Bij het bijwerken van de meta gegevens van de BLOB wordt het maken van een nieuwe versie geactiveerd. In het voor beeld worden de initiële versie en de huidige versie opgehaald en wordt aangegeven dat alleen de huidige versie de meta gegevens bevat.
 
@@ -161,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Versie beheer van BLOB (preview)](versioning-overview.md)
+- [BLOB-versie beheer](versioning-overview.md)
 - [Voorlopig verwijderen voor Azure Storage-blobs](soft-delete-overview.md)

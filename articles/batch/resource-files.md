@@ -3,12 +3,12 @@ title: Bron bestanden maken en gebruiken
 description: Meer informatie over het maken van batch-resource bestanden uit verschillende invoer bronnen. In dit artikel worden enkele algemene methoden beschreven voor het maken en plaatsen van deze op een virtuele machine.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146297"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230939"
 ---
 # <a name="creating-and-using-resource-files"></a>Bron bestanden maken en gebruiken
 
@@ -99,7 +99,7 @@ Als elke taak veel bestanden bevat die uniek zijn voor deze taak, zijn bron best
 
 Als er meerdere honderd bron bestanden op een taak zijn opgegeven, kan de taak door batch worden geweigerd omdat deze te groot is. Het is raadzaam om uw taken klein te blijven door het aantal resource bestanden voor de taak zelf te minimaliseren.
 
-Als er geen manier is om het aantal bestanden dat uw taak nodig heeft te minimaliseren, kunt u de taak optimaliseren door één bron bestand te maken dat verwijst naar een opslag container van bron bestanden. Als u dit wilt doen, plaatst u de bron bestanden in een Azure Storage-container en gebruikt u de verschillende container [methoden](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods) voor bron bestanden. Gebruik de opties voor het voor voegsel van de blob om verzamelingen bestanden op te geven die moeten worden gedownload voor uw taken.
+Als er geen manier is om het aantal bestanden dat uw taak nodig heeft te minimaliseren, kunt u de taak optimaliseren door één bron bestand te maken dat verwijst naar een opslag container van bron bestanden. Als u dit wilt doen, plaatst u de bron bestanden in een Azure Storage-container en gebruikt u de verschillende container [methoden](/dotnet/api/microsoft.azure.batch.resourcefile#methods) voor bron bestanden. Gebruik de opties voor het voor voegsel van de blob om verzamelingen bestanden op te geven die moeten worden gedownload voor uw taken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

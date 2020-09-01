@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016883"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230344"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,9 +41,7 @@ De voorkeurs manier _om gegevens naar_ een ml-pijp lijn te verplaatsen, is met `
 
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klassen  `OutputFileDatasetConfig` en `OutputTabularDatasetConfig` .  Deze klassen zijn experimentele preview-functies en kunnen op elk gewenst moment worden gewijzigd.
-> 
->Zie voor meer informatie over experimentele functies https://aka.ms/azuremlexperimental .
+> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klassen  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
 
 De `AutoMLStep` is geconfigureerd via een- `AutoMLConfig` object. `AutoMLConfig` is een flexibele klasse, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
 
@@ -272,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Met het bovenstaande code fragment maakt u een hoge uitvoering van `PipelineOutputTabularDataset` de `PipelineOutputFileDataset` uitvoer van de stap voor het voorbereiden van gegevens.
 
 > [!TIP]
-> De open bare preview-klasse `OutputFileDatasetConfig` heeft ook de mogelijkheid om een te converteren naar `OutputFileDatasetConfig` een `OutputTabularDatasetConfig` voor gebruik in AutoML-uitvoeringen. Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> De open bare preview-klasse `OutputFileDatasetConfig` heeft ook de mogelijkheid om een te converteren naar `OutputFileDatasetConfig` een [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) voor gebruik in AutoML-uitvoeringen. Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
 
 Een andere optie is `Dataset` het gebruik van objecten die zijn geregistreerd in de werk ruimte:
 

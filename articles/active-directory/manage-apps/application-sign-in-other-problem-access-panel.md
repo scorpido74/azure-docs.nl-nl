@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070323"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231177"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
 
@@ -27,10 +27,16 @@ Voor meer informatie over het gebruik van Azure AD als een id-provider voor een 
 Deze toepassingen worden geconfigureerd namens de gebruiker in de Azure AD-Portal. De toepassing moet op de juiste wijze zijn geconfigureerd en toegewezen aan de gebruiker of een groep waarvan de gebruiker lid is om de toepassing in mijn apps weer te geven. 
 
 Het type apps dat een gebruiker kan zien, kan worden weer gegeven in de volgende categorieën:
--   Office 365-toepassingen
+-   Microsoft 365-en Office 365-toepassingen
 -   Toepassingen van micro soft en derden die zijn geconfigureerd met SSO op basis van Federatie
 -   SSO-toepassingen op basis van wacht woorden
 -   Toepassingen met bestaande SSO-oplossingen
+
+Hier volgen enkele dingen die u kunt controleren of een app wordt weer gegeven of niet wordt weer gegeven.
+- Zorg ervoor dat de app is toegevoegd aan Azure AD en controleer of de gebruiker is toegewezen. Zie voor meer informatie de Quick Start- [serie over toepassings beheer](view-applications-portal.md).
+- Als een app onlangs is toegevoegd, moet de gebruiker zich opnieuw afmelden en weer aanmelden. 
+- Als de app een licentie vereist, zoals Office, controleert u of de gebruiker de juiste licentie heeft toegewezen.
+- De tijd die nodig is voor het wijzigen van de licentie wijzigingen kan variëren, afhankelijk van de grootte en complexiteit van de groep.
 
 ## <a name="general-issues-to-check-first"></a>Algemene problemen om eerst te controleren
 

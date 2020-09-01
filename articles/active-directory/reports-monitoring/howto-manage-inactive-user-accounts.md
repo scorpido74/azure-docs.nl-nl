@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608140"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244718"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Procedure: inactieve gebruikers accounts beheren in azure AD
 
@@ -43,9 +43,9 @@ De laatste geslaagde aanmelding biedt mogelijke inzichten in de voortdurende beh
 
 U kunt inactieve accounts detecteren door de eigenschap **lastSignInDateTime** te evalueren die wordt weer gegeven door het resource type **signInActivity** van de API van **Microsoft Graph** . Met deze eigenschap kunt u een oplossing implementeren voor de volgende scenario's:
 
-- **Gebruikers op naam**: in dit scenario zoekt u naar een specifieke gebruiker op naam, waarmee u de lastSignInDateTime kunt evalueren:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Gebruikers op naam**: in dit scenario zoekt u naar een specifieke gebruiker op naam, waarmee u de lastSignInDateTime kunt evalueren: `https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Gebruikers op datum**: in dit scenario vraagt u een lijst met gebruikers met een lastSignInDateTime op voor een opgegeven datum:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Gebruikers op datum**: in dit scenario vraagt u een lijst met gebruikers met een lastSignInDateTime op voor een opgegeven datum: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -58,7 +58,7 @@ In deze sectie vindt u informatie over wat u moet weten over de eigenschap lastS
 
 ### <a name="how-can-i-access-this-property"></a>Hoe kan ik toegang krijgen tot deze eigenschap?
 
-De eigenschap **lastSignInDateTime** wordt weer gegeven door het [resource type signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) van de [Microsoft Graph rest API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
+De eigenschap **lastSignInDateTime** wordt weer gegeven door het [resource type signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta) van de [Microsoft Graph rest API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Is de eigenschap lastSignInDateTime beschikbaar via de cmdlet Get-AzureAdUser?
 
@@ -91,5 +91,5 @@ U moet een geslaagde aanmelding hebben als u een lastSignInDateTime-tijds tempel
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten](tutorial-access-api-with-certificates.md)
-* [Controle-API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [API-naslag informatie voor aanmeld activiteiten](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Controle-API-verwijzing](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [API-naslag informatie voor aanmeld activiteiten](/graph/api/resources/signin?view=graph-rest-beta)

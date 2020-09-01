@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ab996c3f3310656e7b85dded8e57a129b901660
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873803"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230412"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib gebruiken om een machine learning-toepassing te bouwen en een gegevensset te analyseren
 
@@ -24,7 +24,7 @@ MLlib is een belang rijke Spark-bibliotheek die veel hulpprogram ma's biedt die 
 * Classificatie
 * Regressie
 * Clustering
-* Modelleren
+* Modellen maken
 * Enkelvouds waarde (SVD) en Principal component analyse (PCA)
 * Hypo Thesen testen en voorbeeld statistieken berekenen
 
@@ -44,7 +44,7 @@ In de onderstaande stappen ontwikkelt u een model om te zien wat er nodig is om 
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Een Apache Spark MLlib machine learning-app maken
 
-1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [Een Jupyter-notebook maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook) voor de instructies.
+1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [een Jupyter-notebook bestand maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)voor instructies.
 
 2. Importeer de typen die vereist zijn voor deze toepassing. Kopieer en plak de volgende code in een lege cel en druk op **SHIFT + ENTER**.
 
@@ -84,7 +84,7 @@ Gebruik de Spark-context om de onbewerkte CSV-gegevens in het geheugen te halen 
     inspections.take(1)
     ```
 
-    Dit is de uitvoer:
+    De uitvoer is:
 
     ```
     [['413707',
@@ -108,7 +108,7 @@ Gebruik de Spark-context om de onbewerkte CSV-gegevens in het geheugen te halen 
 
     De uitvoer geeft u een idee van het schema van het invoer bestand. Het bevat de naam van elke vestiging en het type van de inrichting. Ook het adres, de gegevens van de controles en de locatie, onder andere.
 
-3. Voer de volgende code uit om een data frame (*DF*) en een tijdelijke tabel (*CountResults*) te maken met een paar kolommen die nuttig zijn voor de voorspellende analyse. `sqlContext`wordt gebruikt om trans formaties uit te voeren op gestructureerde gegevens.
+3. Voer de volgende code uit om een data frame (*DF*) en een tijdelijke tabel (*CountResults*) te maken met een paar kolommen die nuttig zijn voor de voorspellende analyse. `sqlContext` wordt gebruikt om trans formaties uit te voeren op gestructureerde gegevens.
 
     ```PySpark
     schema = StructType([
@@ -129,7 +129,7 @@ Gebruik de Spark-context om de onbewerkte CSV-gegevens in het geheugen te halen 
     df.show(5)
     ```
 
-    Dit is de uitvoer:
+    De uitvoer is:
 
     ```
     +------+--------------------+-------+--------------------+
@@ -153,7 +153,7 @@ Laten we een idee krijgen van wat de gegevensset bevat.
     df.select('results').distinct().show()
     ```
 
-    Dit is de uitvoer:
+    De uitvoer is:
 
     ```
     +--------------------+
@@ -176,7 +176,7 @@ Laten we een idee krijgen van wat de gegevensset bevat.
 
     Het `%%sql` Magic wordt gevolgd door `-o countResultsdf` ervoor te zorgen dat de uitvoer van de query lokaal wordt opgeslagen op de Jupyter-server (doorgaans de hoofd knooppunt van het cluster). De uitvoer wordt persistent gemaakt als een [Panda](https://pandas.pydata.org/) data frame met de opgegeven naam **countResultsdf**. `%%sql`Zie [kernels die beschikbaar zijn op Jupyter-notebooks met Apache Spark HDInsight-clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic en andere magics die beschikbaar zijn in de PySpark-kernel.
 
-    Dit is de uitvoer:
+    De uitvoer is:
 
     ![SQL-query-uitvoer](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-query-uitvoer")
 
@@ -227,7 +227,7 @@ Laten we een idee krijgen van wat de gegevensset bevat.
     labeledData.take(1)
     ```
 
-    Dit is de uitvoer:
+    De uitvoer is:
 
     ```
     [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
@@ -349,7 +349,7 @@ U kunt nu een definitieve visualisatie maken om u te helpen de resultaten van de
     plt.axis('equal')
     ```
 
-    In dat geval moet de volgende uitvoer worden weergegeven:
+    U moet de volgende uitvoer zien:
 
     ![Spark machine learning toepassings uitvoer-cirkel diagram percentages van mislukte voedings inspecties.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Uitvoer resultaat van Spark machine learning")
 

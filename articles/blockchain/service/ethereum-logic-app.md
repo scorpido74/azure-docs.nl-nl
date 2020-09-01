@@ -1,23 +1,24 @@
 ---
 title: Ethereum Block Chain-connector gebruiken met Azure Logic Apps-Azure Block Chain-Service
 description: Gebruik de Ethereum Block Chain-connector met Azure Logic Apps om slimme contract functies te activeren en te reageren op slimme contract gebeurtenissen.
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077043"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230531"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
 
-Gebruik de [Ethereum Block Chain-connector](/connectors/blockchainethereum/) met [Azure Logic apps](../../logic-apps/index.yml) om slimme contract acties uit te voeren en te reageren op slimme contract gebeurtenissen. Stel bijvoorbeeld dat u een REST-gebaseerde micro service wilt maken die gegevens uit een Block Chain-boek houding retourneert. Door gebruik te maken van een logische app, kunt u HTTP-aanvragen accepteren die query's uitvoeren op gegevens die zijn opgeslagen in een Block Chain-groot boek.
+Gebruik de [Ethereum Block Chain-connector](/connectors/blockchainethereum/) met [Azure Logic apps](../../logic-apps/index.yml) om slimme contract acties uit te voeren en te reageren op slimme contract gebeurtenissen. In dit artikel wordt uitgelegd hoe u de Ethereum Block Chain-connector kunt gebruiken om Block Chain informatie naar een andere service te verzenden of om een Block Chain-functie aan te roepen. Stel bijvoorbeeld dat u een REST-gebaseerde micro service wilt maken die gegevens uit een Block Chain-boek houding retourneert. Door gebruik te maken van een logische app, kunt u HTTP-aanvragen accepteren die query's uitvoeren op gegevens die zijn opgeslagen in een Block Chain-groot boek.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi de optionele [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren [van Azure Block Chain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw Block Chain-ontwikkel omgeving.
+- Voltooi de optionele [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren [van Azure Block Chain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw Block Chain-ontwikkel omgeving.
+- Als u niet bekend bent met Azure Logic Apps, kunt u overwegen om de Microsoft Learn modules [Inleiding tot Azure Logic apps te](/learn/modules/intro-to-logic-apps/) bekijken en [een API aan te roepen vanuit een Logic apps werk stroom met behulp van een aangepaste connector](/learn/modules/logic-apps-and-custom-connectors/).
 
 ## <a name="create-a-logic-app"></a>Een logische app maken
 
@@ -33,7 +34,7 @@ Azure Logic Apps helpt u bij het plannen en automatiseren van bedrijfs processen
 
 Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert.
 
-De Ethereum Block Chain-connector heeft één trigger en verschillende acties. Welke trigger of actie u gebruikt, is afhankelijk van uw scenario.
+De Ethereum Block Chain-connector heeft één trigger en verschillende acties. Welke trigger of actie u gebruikt, is afhankelijk van uw scenario. Volg de sectie in dit artikel die het beste overeenkomt met uw scenario.
 
 Als uw werk stroom:
 

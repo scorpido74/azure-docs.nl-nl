@@ -6,13 +6,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f7da9b1779ed2cf46cb29b21215a9415cbaef494
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004484"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231279"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure-beveiligings basislijn voor Security Center
 
@@ -394,7 +394,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 **Hulp**: Azure Security Center gebruikt een geconfigureerde log Analytics-werk ruimte om de gegevens, waarschuwingen en aanbevelingen op te slaan die worden gegenereerd. Configureer een door de klant beheerde sleutel (CMK) voor de werk ruimte die u hebt geconfigureerd voor het verzamelen van Security Center gegevens. CMK maakt het mogelijk om alle gegevens die worden opgeslagen of verzonden naar de werk ruimte te versleutelen met een Azure Key Vault sleutel die u hebt gemaakt en waarvan u de eigenaar bent. 
 
-- [Azure Monitor door de klant beheerde sleutel](../azure-monitor/platform/customer-managed-keys.md)
+- [Door de klant beheerde sleutel van Azure Monitor](../azure-monitor/platform/customer-managed-keys.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -596,7 +596,7 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 
 **Hulp**: Azure Security Center gebruikt een geconfigureerde log Analytics-werk ruimte om de gegevens, waarschuwingen en aanbevelingen op te slaan die worden gegenereerd. Configureer een door de klant beheerde sleutel (CMK) voor de werk ruimte die u hebt geconfigureerd voor het verzamelen van Security Center gegevens. CMK maakt het mogelijk om alle gegevens die worden opgeslagen of verzonden naar de werk ruimte te versleutelen met een Azure Key Vault sleutel die u hebt gemaakt en waarvan u de eigenaar bent. 
 
-- [Azure Monitor door de klant beheerde sleutel](../azure-monitor/platform/customer-managed-keys.md)
+- [Door de klant beheerde sleutel van Azure Monitor](../azure-monitor/platform/customer-managed-keys.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

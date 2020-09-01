@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 25c2096de4c3643a4e6a3ba7bdad1e69ae93a179
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 272f5b747efbc3776b1b2ba7c3546ade717c2452
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019076"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231364"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Persoonlijke IP-adresbereiken van Azure Firewall SNAT
 
@@ -20,7 +20,7 @@ Azure Firewall biedt automatische SNAT voor al het uitgaande verkeer naar open b
 
 Deze logica werkt goed wanneer u verkeer rechtstreeks op Internet rondstuurt. Als u [geforceerde tunneling](forced-tunneling.md)hebt ingeschakeld, wordt het Internet-gebonden verkeer echter omgezet naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet, waarbij u de bron van uw on-premises firewall kunt verbergen.
 
-Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall echter zodanig configureren dat uw open bare IP-adres bereik **niet** wordt gesnat.
+Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall echter zodanig configureren dat uw open bare IP-adres bereik **niet** wordt gesnat. Als u bijvoorbeeld een afzonderlijk IP-adres wilt opgeven, kunt u dit als volgt opgeven: `192.168.1.10` . Als u een bereik van IP-adressen wilt opgeven, kunt u dit als volgt opgeven: `192.168.1.0/24` .
 
 Als u Azure Firewall wilt configureren op nooit-SNAT ongeacht het doel-IP-adres, gebruikt u **0.0.0.0/0** als privé-IP-adres bereik. Met deze configuratie kan Azure Firewall verkeer nooit rechtstreeks naar Internet routeren. Als u de firewall wilt configureren op altijd SNAT, ongeacht het doel adres, gebruikt u **255.255.255.255/32** als uw privé-IP-adres bereik.
 

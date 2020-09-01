@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046708"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230973"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Azure Time Series Insights in Power BI
 
@@ -52,24 +52,24 @@ Voer de volgende stappen uit om uw Azure Time Series Insights-omgeving te verbin
 
 Aan de slag:
 
-1. Open de Azure Time Series Insights Gen2 Explorer om uw gegevens te openen.
+1. Open de Azure Time Series Insights Explorer en verlaag uw gegevens.
 1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en selecteert u **verbinding maken met Power bi**.
 
-    [![Azure Time Series Insights Gen2 Explorer exporteren](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Explorer-export](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Stel de para meters in op dit tabblad:
 
    1. Geef een relatieve periode op die u wilt weer geven. Als u tevreden bent met uw bestaande weer gave, kunt u deze als een **bestaande periode**laten staan.
-   
-   1. U kunt kiezen tussen **geaggregeerde** en **onbewerkte gebeurtenissen**. 
-   
+
+   1. U kunt kiezen tussen **geaggregeerde** en **onbewerkte gebeurtenissen**.
+
        > [!NOTE]
-       > U kunt uw gegevens later in Power BI samen voegen, maar niet herstellen naar onbewerkte gegevens na aggregatie. 
-       
+       > U kunt uw gegevens later in Power BI samen voegen, maar niet herstellen naar onbewerkte gegevens na aggregatie.
+
        > [!NOTE]
        > Er is een limiet van 250.000 gebeurtenissen voor onbewerkte gebeurtenis niveau gegevens.
 
-       [![Verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![Verbinden](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. Als u uw Azure Time Series Insights-omgeving niet hebt geconfigureerd met een **warme archief**, wordt een waarschuwing weer gegeven.
 
@@ -89,7 +89,7 @@ Aan de slag:
     [![Power BI verbinden met Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     U kunt ook naar het tabblad **Azure** gaan, **Azure time series Insights (bèta)** selecteren en vervolgens **verbinding maken**.
-    
+
 1. In een dialoog venster voor bericht wordt u gevraagd om toestemming te geven om verbinding te maken met bronnen van derden. Selecteer **door gaan**.
 
     [![Kies aangepaste query maken](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
@@ -112,17 +112,17 @@ Nu u de gegevens in Power BI hebt geïmporteerd, is het tijd om een rapport met 
 
     [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  Selecteer in de kolom **Visualisaties** uw visuele element van uw keuze. Selecteer bijvoorbeeld **lijn diagram**. Hiermee wordt een leeg lijn diagram aan uw canvas toegevoegd.
+1. Selecteer in de kolom **Visualisaties** uw visuele element van uw keuze. Selecteer bijvoorbeeld **lijn diagram**. Hiermee wordt een leeg lijn diagram aan uw canvas toegevoegd.
 
-1.  Selecteer in de lijst **velden** **_Timestamp** en sleep het veld naar het **asveld** om items weer te geven langs de X-as. Zorg ervoor dat u overschakelt naar **_Timestamp** als de waarde voor de **as** (standaard is **datum hiërarchie**).
+1. Selecteer in de lijst **velden** **_Timestamp** en sleep het veld naar het **asveld** om items weer te geven langs de X-as. Zorg ervoor dat u overschakelt naar **_Timestamp** als de waarde voor de **as** (standaard is **datum hiërarchie**).
 
     [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  Klik opnieuw in de lijst **velden** op **TimeSeriesId** en sleep deze naar het veld **waarden** om items weer te geven op de Y-as.
+1. Klik opnieuw in de lijst **velden** op **TimeSeriesId** en sleep deze naar het veld **waarden** om items weer te geven op de Y-as.
 
     [![Een lijndiagram maken](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Als u nog een grafiek aan uw canvas wilt toevoegen, selecteert u ergens op het canvas buiten het lijn diagram en herhaalt u dit proces.
+1. Als u nog een grafiek aan uw canvas wilt toevoegen, selecteert u ergens op het canvas buiten het lijn diagram en herhaalt u dit proces.
 
     [![Extra grafieken maken om te delen](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 

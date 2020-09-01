@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82129202"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231109"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Het schema voor logboek registraties van Azure AD interpreteren in Azure Monitor
 
@@ -155,7 +155,7 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 | ResultSignature | Bevat de fout code, indien aanwezig, voor de aanmeldings bewerking. |
 | ResultDescription | Bevat de fout beschrijving voor de aanmeldings bewerking. |
 | riskDetail | riskDetail | Biedt de ' reason ' achter een specifieke status van een Risk ante gebruiker, aanmelding of een risico detectie. De mogelijke waarden zijn: `none` , `adminGeneratedTemporaryPassword` , `userPerformedSecuredPasswordChange` , `userPerformedSecuredPasswordReset` , `adminConfirmedSigninSafe` , `aiConfirmedSigninSafe` , `userPassedMFADrivenByRiskBasedPolicy` , `adminDismissedAllRiskForUser` , `adminConfirmedSigninCompromised` , `unknownFutureValue` . De waarde `none` betekent dat er geen actie is uitgevoerd voor de gebruiker of zich tot nu toe heeft aangemeld. <br>**Opmerking:** Voor de details van deze eigenschap is een Azure AD Premium P2-licentie vereist. Andere licenties retour neren de waarde `hidden` . |
-| riskEventTypes | riskEventTypes | Typen risico detectie die zijn gekoppeld aan de aanmelding. De mogelijke waarden zijn: `unlikelyTravel` , `anonymizedIPAddress` , `maliciousIPAddress` , `unfamiliarFeatures` , `malwareInfectedIPAddress` , `suspiciousIPAddress` , `leakedCredentials` , `investigationsThreatIntelligence` , `generic` en `unknownFutureValue` . |
+| riskEventTypes | riskEventTypes | Typen risico detectie die zijn gekoppeld aan de aanmelding. De mogelijke waarden zijn: `unlikelyTravel` , `anonymizedIPAddress` , `maliciousIPAddress` , `unfamiliarFeatures` , `malwareInfectedIPAddress` , `suspiciousIPAddress` , `leakedCredentials` , `investigationsThreatIntelligence` ,  `generic` en `unknownFutureValue` . |
 | riskLevelAggregated | riskLevel | Samengevoegd risico niveau. De mogelijke waarden zijn: `none` , `low` , `medium` , `high` , `hidden` en `unknownFutureValue` . De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden` . |
 | riskLevelDuringSignIn | riskLevel | Risico niveau tijdens het aanmelden. De mogelijke waarden zijn: `none` , `low` , `medium` , `high` , `hidden` en `unknownFutureValue` . De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden` . |
 | riskState | riskState | Hiermee wordt de status van de Risk ante gebruiker, het aanmelden of een risico detectie gerapporteerd. De mogelijke waarden zijn: `none` , `confirmedSafe` , `remediated` , `dismissed` , `atRisk` , `confirmedCompromised` , `unknownFutureValue` . |
@@ -165,7 +165,7 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 | Identiteit | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. Dit kan een gebruikers account, systeem account of Service-Principal zijn. |
 | Niveau | Geeft het type bericht. Voor audit is het altijd *informatief*. |
 | Locatie | Hiermee wordt de locatie van de aanmeldings activiteit verstrekt. |
-| Eigenschappen | Een lijst met alle eigenschappen die aan aanmeldingen zijn gekoppeld. Zie [Microsoft Graph API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)voor meer informatie. In dit schema worden dezelfde kenmerk namen gebruikt als voor de aanmeldings resource, voor de Lees baarheid.
+| Eigenschappen | Een lijst met alle eigenschappen die aan aanmeldingen zijn gekoppeld. Zie [Microsoft Graph API-verwijzing](/graph/api/resources/signin?view=graph-rest-beta)voor meer informatie. In dit schema worden dezelfde kenmerk namen gebruikt als voor de aanmeldings resource, voor de Lees baarheid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

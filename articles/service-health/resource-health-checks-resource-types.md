@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611939"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230157"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -22,6 +22,11 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |Controles uitgevoerd|
 |---|
 |<ul><li>Is de API Management-service actief?</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Micro soft. AppPlatform/lente
+|Controles uitgevoerd|
+|---|
+|<ul><li>Is het Azure veer Cloud-exemplaar beschikbaar?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Bat-CH/batchAccounts
 |Controles uitgevoerd|
@@ -56,12 +61,17 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="microsoftcomputehostgroupshosts"></a>Micro soft. Compute/hostgroups/hosts
 |Controles uitgevoerd|
 |---|
-|<ul><li>Is de host actief</li><li>Is de host-hardware gedegradeerd?</li><li>Is de toewijzing van de host ongedaan gemaakt?</li><li>Is de host-hardware-service hersteld naar andere hardware?</li></ul>|
+|<ul><li>Is de host actief?</li><li>Is de host-hardware gedegradeerd?</li><li>Is de toewijzing van de host ongedaan gemaakt?</li><li>Is de host-hardware-service hersteld naar andere hardware?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Micro soft. Compute/informatie
 |Controles uitgevoerd|
 |---|
 |<ul><li>Wordt de server die als host fungeert voor deze virtuele machine actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Micro soft. container service/managedClusters
+|Controles uitgevoerd|
+|---|
+|<ul><li>Is het cluster actief?</li><li>Zijn er kern services beschikbaar op het cluster?</li><li>Zijn alle cluster knooppunten gereed?</li><li>Is de Service-Principal actueel en geldig?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Micro soft. DataFactory/fabrieken
 |Controles uitgevoerd|
@@ -124,10 +134,20 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Zijn er kern services beschikbaar op het HDInsight-cluster?</li><li>Kan het HDInsight-cluster de sleutel voor BYOK-versleuteling in rust benaderen?</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Micro soft. IoTCentral/IoTApps
+|Controles uitgevoerd|
+|---|
+|<ul><li>Is de IoT Central toepassing beschikbaar?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Micro soft.-sleutel kluis/-kluizen
 |Controles uitgevoerd|
 |---|
 |<ul><li>Worden aanvragen voor de sleutel kluis mislukt als gevolg van problemen met het Azure-kern systeem van het platform?</li><li>Worden aanvragen voor sleutel kluis beperkt vanwege te veel aanvragen van de klant?</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Micro soft. Kusto/clusters
+|Controles uitgevoerd|
+|---|
+|<ul><li>Ondervindt het cluster een lage opname van succes percentages?</li><li>Ondervindt het cluster een hoge opname latentie?</li><li>Wordt er een groot aantal query fouten in het cluster ondervonden?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Micro soft. MachineLearning/webservices
 |Controles uitgevoerd|
@@ -164,6 +184,11 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Zijn de eind punten voor taak verdeling beschikbaar?</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Micro soft. Network/trafficmanagerprofiles
+|Controles uitgevoerd|
+|---|
+|<ul><li>Zijn er problemen die invloed hebben op het Traffic Manager profiel?</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Micro soft. Network/virtualNetworkGateways
 |Controles uitgevoerd|
 |---|
@@ -183,11 +208,6 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |Controles uitgevoerd|
 |---|
 |<ul><li>Is de capaciteits resource actief?</li><li>Zijn alle werk belastingen actief?</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Micro soft. PowerBI/workspaceCollections
-|Controles uitgevoerd|
-|---|
-|<ul><li>Wordt het hostbesturingssysteem geactiveerd?</li><li>Is de workspaceCollection bereikbaar vanaf buiten het Data Center?</li><li>Is de Power BI resource provider beschikbaar?</li><li>Is de Power BI-service beschikbaar in de juiste regio?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Micro soft. Search/searchServices
 |Controles uitgevoerd|

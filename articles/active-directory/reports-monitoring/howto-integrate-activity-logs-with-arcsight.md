@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c3c597c172c7ec21c2d46e89602abf87d750127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608174"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230514"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Active Directory-logboeken integreren met ArcSight met behulp van Azure Monitor
 
@@ -33,7 +33,7 @@ In dit artikel leert u hoe u Azure AD-Logboeken kunt door sturen naar ArcSight m
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om deze functie te gebruiken:
-* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het [streamen van uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het [streamen van uw activiteiten logboeken naar een event hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * Een geconfigureerd exemplaar van ArcSight syslog NG aardgas SmartConnector (SmartConnector) of ArcSight Load Balancer. Als de gebeurtenissen worden verzonden naar ArcSight Load Balancer, worden deze daarom naar de SmartConnector verzonden door de Load Balancer.
 
 Down load en open de [configuratie handleiding voor ArcSight SmartConnector voor Azure monitor event hub](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Deze hand leiding bevat de stappen die u moet installeren en configureren van de ArcSight SmartConnector voor Azure Monitor. 

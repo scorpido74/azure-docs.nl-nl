@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bbc421baddf03068ac72907aaa88a71a81d208d0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041316"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230429"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
 
@@ -32,9 +32,9 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 Om het risico van gegevens verlies via exfiltration te verminderen, beperkt u het uitgaande netwerk verkeer voor Azure HDInsight-clusters met behulp van Azure Firewall.
 
-Azure HDInsight implementeren in een Virtual Network en beveiligen met een netwerk beveiligings groep:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Azure HDInsight implementeren in een Virtual Network en beveiligen met een netwerk beveiligings groep: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Uitgaand verkeer voor Azure HDInsight-clusters beperken met Azure Firewall:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Uitgaand verkeer voor Azure HDInsight-clusters beperken met Azure Firewall: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 **Azure Security Center bewaking**: Ja
 
@@ -108,11 +108,11 @@ Er zijn verschillende afhankelijkheden voor Azure HDInsight waarvoor binnenkomen
 
 Om het risico van gegevens verlies via exfiltration te verminderen, beperkt u het uitgaande netwerk verkeer voor Azure HDInsight-clusters met behulp van Azure Firewall.
 
-HDInsight implementeren in een Virtual Network en beveiligen met een netwerk beveiligings groep:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+HDInsight implementeren in een Virtual Network en beveiligen met een netwerk beveiligings groep: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Informatie over HDInsight-afhankelijkheden en firewall gebruik:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Informatie over HDInsight-afhankelijkheden en firewall gebruik: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
-IP-adressen van HDInsight-beheer:https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
+IP-adressen van HDInsight-beheer: https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -192,7 +192,7 @@ Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen maken in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -526,7 +526,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 
 **Richt lijnen**: niet beschikbaar; Klanten-lockbox nog niet ondersteund voor Azure HDInsight.
 
-Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -534,7 +534,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -834,15 +834,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 
@@ -883,13 +883,13 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -909,7 +909,7 @@ Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -1290,7 +1290,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center bewaking**: niet van toepassing
 

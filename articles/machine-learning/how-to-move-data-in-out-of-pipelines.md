@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997894"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230310"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -33,9 +33,8 @@ In dit artikel wordt uitgelegd hoe u:
 - Nieuwe `Dataset` objecten maken die `PipelineData` u wilt behouden
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  `OutputFileDatasetConfig` en `OutputTabularDatasetConfig` .  Deze klassen zijn experimentele preview-functies en kunnen op elk gewenst moment worden gewijzigd.
-> 
->Zie voor meer informatie over experimentele functies https://aka.ms/azuremlexperimental .
+> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
+
 
 ## <a name="prerequisites"></a>Vereisten
 

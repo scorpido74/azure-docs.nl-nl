@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 08/27/2020
+ms.openlocfilehash: 442b5acf3a6786b9fcaf0a96015a6df31215653c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719526"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231415"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -19,11 +19,11 @@ Azure Logic Apps is afhankelijk van [Azure Storage](../storage/index.yml) om geg
 
 Als u de toegang wilt controleren en gevoelige gegevens in Azure Logic Apps wilt beveiligen, kunt u op de volgende gebieden extra beveiliging instellen:
 
-* [Toegang tot activeringen op basis van een aanvraag](#secure-triggers)
+* [Toegang tot inkomende oproepen voor activeringen op basis van een aanvraag](#secure-inbound-requests)
 * [Toegang tot logische app-bewerkingen](#secure-operations)
 * [Toegang tot de invoer en uitvoer van de uitvoerings geschiedenis](#secure-run-history)
 * [Toegang tot parameter invoer](#secure-action-parameters)
-* [Toegang tot services en systemen die worden aangeroepen vanuit Logic apps](#secure-outbound-requests)
+* [Toegang tot uitgaande oproepen naar andere services en systemen](#secure-outbound-requests)
 * [Maken van verbindingen voor specifieke connectors blok keren](#block-connections)
 * [Isolatie richtlijnen voor Logic apps](#isolation-logic-apps)
 * [Azure-beveiligings basislijn voor Azure Logic Apps](../logic-apps/security-baseline.md)
@@ -34,18 +34,29 @@ Zie de volgende onderwerpen voor meer informatie over beveiliging in Azure:
 * [Azure-gegevens versleuteling-at-rest](../security/fundamentals/encryption-atrest.md)
 * [Azure Security-benchmark](../security/benchmarks/overview.md)
 
-<a name="secure-triggers"></a>
+<a name="secure-inbound-requests"></a>
 
-## <a name="access-to-request-based-triggers"></a>Toegang tot activeringen op basis van een aanvraag
+## <a name="access-for-inbound-calls-to-request-based-triggers"></a>Toegang tot inkomende oproepen voor activeringen op basis van een aanvraag
 
-Als uw logische app gebruikmaakt van een trigger op basis van een aanvraag, die inkomende aanroepen of aanvragen ontvangt, zoals de trigger van de [aanvraag](../connectors/connectors-native-reqres.md) of de [webhook](../connectors/connectors-native-webhook.md) , kunt u de toegang beperken zodat alleen geautoriseerde clients uw logische app kunnen aanroepen. Alle aanvragen die door een logische app worden ontvangen, zijn versleuteld en beveiligd met het Transport Layer Security TLS-protocol (voorheen bekend als Secure Sockets Layer (SSL).
+Inkomende oproepen die een logische app via een op een aanvraag gebaseerde trigger ontvangt, zoals de trigger voor het [aanvragen](../connectors/connectors-native-reqres.md) of de [http-webhook](../connectors/connectors-native-webhook.md) , ondersteunen versleuteling en worden beveiligd met [Transport Layer Security (TLS) 1,2 (](https://en.wikipedia.org/wiki/Transport_Layer_Security)voorheen bekend als Secure Sockets Layer (SSL). Logic Apps afdwingt deze versie bij het ontvangen van een inkomende oproep naar de aanvraag trigger of een retour aanroep naar de trigger of actie van de HTTP-webhook. Als u TLS-Handshake-fouten ontvangt, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Zie [het probleem met het TLS 1,0 oplossen](/security/solving-tls1-problem)voor meer informatie.
 
-Hier vindt u opties die u kunnen helpen bij het beveiligen van de toegang tot dit trigger type:
+Binnenkomende oproepen ondersteunen deze coderings suites:
 
-* [Hand tekeningen voor gedeelde toegang genereren](#sas)
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+Hier vindt u meer manieren waarop u de toegang tot triggers kunt beperken die binnenkomende oproepen naar uw logische app ontvangen, zodat alleen geautoriseerde clients uw logische app kunnen aanroepen:
+
+* [Hand tekeningen voor gedeelde toegang (SAS) genereren](#sas)
 * [Verificatie Azure Active Directory openen inschakelen (Azure AD OAuth)](#enable-oauth)
+* [Uw logische app beschikbaar maken met Azure API Management](#azure-api-management)
 * [Inkomende IP-adressen beperken](#restrict-inbound-ip-addresses)
-* [Azure Active Directory open-verificatie (Azure AD OAuth) of andere beveiliging toevoegen](#add-authentication)
 
 <a name="sas"></a>
 
@@ -108,9 +119,21 @@ In de hoofd tekst, neemt `KeyType` u de eigenschap op als `Primary` of `Secondar
 
 <a name="enable-oauth"></a>
 
-### <a name="enable-azure-active-directory-oauth"></a>Azure Active Directory OAuth inschakelen
+### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Verificatie Azure Active Directory openen inschakelen (Azure AD OAuth)
 
-Als uw logische app begint met een [trigger voor aanvragen](../connectors/connectors-native-reqres.md), kunt u [Azure Active Directory open verificatie](../active-directory/develop/index.yml) (Azure AD OAuth) inschakelen door een autorisatie beleid voor inkomende oproepen te definiëren of toe te voegen aan de aanvraag trigger. Wanneer uw logische app een binnenkomende aanvraag met een verificatie token ontvangt, vergelijkt Azure Logic Apps de claims van het token met de claims in elk autorisatie beleid. Als er een overeenkomst is tussen de claims van het token en alle claims in ten minste één beleid, is de autorisatie geslaagd voor de inkomende aanvraag. Het token kan meer claims hebben dan het aantal dat is opgegeven door het autorisatie beleid.
+Als uw logische app begint met een [trigger voor aanvragen](../connectors/connectors-native-reqres.md), kunt u [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml) inschakelen door een autorisatie beleid voor inkomende oproepen te definiëren of toe te voegen aan de aanvraag trigger.
+
+Lees de volgende overwegingen voordat u deze verificatie inschakelt:
+
+* De inkomende oproep naar de trigger voor aanvragen kan slechts één autorisatie schema gebruiken: Azure AD OAuth met behulp van een verificatie token. dit wordt alleen ondersteund voor de trigger van de aanvraag, of door gebruik te maken van een [Shared Access Signature SAS-URL](#sas) die u niet beide schema's kunt gebruiken.
+
+  Hoewel het gebruik van één schema het andere schema niet uitschakelt, veroorzaakt het gebruik van beide tegelijkertijd een fout omdat de service niet weet welk schema u moet kiezen. Daarnaast worden alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) ondersteund voor OAuth-verificatie tokens, die alleen voor de aanvraag trigger worden ondersteund. Het verificatie token moet worden opgegeven `Bearer-type` in de autorisatie-header.
+
+* Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
+
+* Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de uitgever van Azure AD. Zie [toegangs tokens voor micro soft Identity platform](../active-directory/develop/access-tokens.md)voor meer informatie over toegangs tokens.
+
+Wanneer uw logische app een binnenkomende aanvraag met een OAuth-verificatie token ontvangt, Azure Logic Apps vergelijkt de claims van het token met de claims in elk autorisatie beleid. Als er een overeenkomst is tussen de claims van het token en alle claims in ten minste één beleid, is de autorisatie geslaagd voor de inkomende aanvraag. Het token kan meer claims hebben dan het aantal dat is opgegeven door het autorisatie beleid.
 
 Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee claim typen vereist, **verlener** en **publiek**. Dit voor beeld van een gedecodeerd [toegangs token](../active-directory/develop/access-tokens.md) bevat beide claim typen:
 
@@ -155,16 +178,6 @@ Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee clai
 }
 ```
 
-#### <a name="considerations-for-enabling-azure-oauth"></a>Overwegingen voor het inschakelen van Azure OAuth
-
-Lees de volgende overwegingen voordat u deze verificatie inschakelt:
-
-* Een inkomende oproep naar uw logische app kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access signatures (SAS)](#sas), gebruiken. Als u één schema gebruikt, wordt de andere niet uitgeschakeld, maar als beide tegelijkertijd worden gebruikt, treedt er een fout op omdat de service niet weet welk schema u moet kiezen. Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor OAuth-tokens, die alleen voor de aanvraag trigger worden ondersteund.
-
-* Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
-
-* Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de uitgever van Azure AD. Zie [toegangs tokens voor micro soft Identity platform](../active-directory/develop/access-tokens.md)voor meer informatie over toegangs tokens.
-
 <a name="define-authorization-policy-portal"></a>
 
 #### <a name="define-authorization-policy-in-azure-portal"></a>Autorisatie beleid definiëren in Azure Portal
@@ -183,7 +196,7 @@ Als u Azure AD OAuth wilt inschakelen voor uw logische app in de Azure Portal, v
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Beleids naam** | Ja | De naam die u wilt gebruiken voor het autorisatie beleid |
+   | **Naam van beleid** | Ja | De naam die u wilt gebruiken voor het autorisatie beleid |
    | **Claims** | Ja | De claim typen en-waarden die uw logische app accepteert van binnenkomende oproepen. Dit zijn de beschik bare claim typen: <p><p>- **Verlener** <br>- **Gericht** <br>- **Onderwerp** <br>- **JWT-id** (JSON Web token-id) <p><p>De **claim** lijst moet mini maal de claim van de **verlener** bevatten, die een waarde heeft die begint met de `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven. |
    |||
 
@@ -241,6 +254,12 @@ Als u Azure AD OAuth wilt inschakelen in de ARM-sjabloon voor het implementeren 
 ```
 
 Zie voor meer informatie over de `accessControl` sectie [binnenkomende IP-bereiken beperken in azure Resource Manager sjabloon](#restrict-inbound-ip-template) en [verwijzing naar sjablonen voor micro soft. Logic-werk stromen](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+<a name="azure-api-management"></a>
+
+### <a name="expose-your-logic-app-with-azure-api-management"></a>Uw logische app beschikbaar maken met Azure API Management
+
+Als u meer [verificatie protocollen](../active-directory/develop/authentication-vs-authorization.md) wilt toevoegen aan uw logische app, kunt u overwegen de [Azure API Management](../api-management/api-management-key-concepts.md) -service te gebruiken. Deze service helpt u uw logische app beschikbaar te maken als een API en biedt uitgebreide bewaking, beveiliging, beleid en documentatie voor elk eind punt. API Management kunt een openbaar of persoonlijk eind punt beschikbaar maken voor uw logische app. Als u toegang tot dit eind punt wilt verlenen, kunt u Azure AD OAuth, [client certificaten](#client-certificate-authentication)of andere beveiligings standaarden gebruiken om toegang tot het eind punt te verlenen. Wanneer API Management een aanvraag ontvangt, stuurt de service de aanvraag naar uw logische app, worden ook de nodige trans formaties of beperkingen door lopen. Om alleen API Management uw logische app aan te roepen, kunt u de [inkomende IP-adressen van uw logische app beperken](#restrict-inbound-ip).
 
 <a name="restrict-inbound-ip"></a>
 
@@ -311,12 +330,6 @@ Als u de [implementatie van Logic apps automatiseert met behulp van Resource Man
    "outputs": {}
 }
 ```
-
-<a name="add-authentication"></a>
-
-### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>Azure Active Directory open-verificatie of andere beveiliging toevoegen
-
-Als u meer [verificatie](../active-directory/develop/authentication-vs-authorization.md) protocollen wilt toevoegen aan uw logische app, kunt u overwegen de [Azure API Management](../api-management/api-management-key-concepts.md) -service te gebruiken. Deze service helpt u uw logische app beschikbaar te maken als een API en biedt uitgebreide bewaking, beveiliging, beleid en documentatie voor elk eind punt. API Management kunt een openbaar of persoonlijk eind punt beschikbaar maken voor uw logische app. Als u toegang tot dit eind punt wilt verlenen, kunt u [Azure Active Directory open verificatie](#azure-active-directory-oauth-authentication) (Azure AD OAuth), [client certificaat](#client-certificate-authentication)of andere beveiligings normen gebruiken om toegang tot het eind punt te verlenen. Wanneer API Management een aanvraag ontvangt, stuurt de service de aanvraag naar uw logische app, worden ook de nodige trans formaties of beperkingen door lopen. Als u uw logische app alleen API Management activeren, kunt u de instellingen voor het binnenkomende IP-adres bereik van uw logische app gebruiken.
 
 <a name="secure-operations"></a>
 
@@ -719,13 +732,21 @@ Deze voorbeeld sjabloon met meerdere beveiligde parameter definities die gebruik
 
 <a name="secure-outbound-requests"></a>
 
-## <a name="access-to-services-and-systems-called-from-logic-apps"></a>Toegang tot services en systemen die worden aangeroepen vanuit Logic apps
+## <a name="access-for-outbound-calls-to-other-services-and-systems"></a>Toegang tot uitgaande oproepen naar andere services en systemen
 
-Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of aanvragen ontvangen van uw logische app:
+Op basis van de mogelijkheid van het doel eindpunt, worden uitgaande oproepen verzonden door de [http-trigger of HTTP-actie](../connectors/connectors-native-http.md), wordt versleuteling ondersteund en beveiligd met [Transport Layer Security (TLS) 1,0, 1,1 of 1,2](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL). Logic Apps onderhandelt met het doel eindpunt met behulp van de hoogst mogelijke versie die wordt ondersteund. Als het doel eindpunt bijvoorbeeld 1,2 ondersteunt, gebruikt de HTTP-trigger of actie eerst 1,2. Anders gebruikt de connector de eerstvolgende hoogste ondersteunde versie.
 
-* Verificatie toevoegen aan uitgaande aanvragen.
+Hier vindt u informatie over zelf-ondertekende TLS/SSL-certificaten:
 
-  Wanneer u een op HTTP gebaseerde trigger of actie gebruikt waarmee uitgaande aanroepen worden uitgevoerd, bijvoorbeeld HTTP, kunt u verificatie toevoegen aan de aanvraag die wordt verzonden door uw logische app. U kunt bijvoorbeeld de volgende verificatie typen selecteren:
+* Voor Logic apps in de wereld wijde Azure-omgeving met meerdere tenants, de HTTP-connector staat niet-ondertekende TLS/SSL-certificaten niet toe. Als uw logische app een HTTP-aanroep naar een server maakt en een zelfondertekend TLS/SSL-certificaat presenteert, mislukt de HTTP-aanroep met een `TrustFailure` fout.
+
+* Voor Logic apps in een [Integration service-omgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de http-connector zelfondertekende certificaten voor TLS/SSL-Handshake toegestaan. U moet echter eerst [zelfondertekende ondersteuning voor certificaten inschakelen](../logic-apps/create-integration-service-environment-rest-api.md#request-body) voor een bestaande ISE of nieuwe ISE met behulp van de Logic apps rest API en het open bare certificaat op de `TrustedRoot` locatie installeren.
+
+Hier vindt u meer manieren waarop u eind punten kunt beveiligen die gesp rekken afhandelen die vanuit uw logische app worden verzonden:
+
+* [Verificatie toevoegen aan uitgaande aanvragen](#add-authentication-outbound).
+
+  Wanneer u de HTTP-trigger of actie gebruikt voor het verzenden van uitgaande oproepen, kunt u verificatie toevoegen aan de aanvraag die wordt verzonden door uw logische app. U kunt bijvoorbeeld de volgende verificatie typen selecteren:
 
   * [Basisverificatie](#basic-authentication)
 
@@ -734,8 +755,6 @@ Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of
   * [Active Directory OAuth-verificatie](#azure-active-directory-oauth-authentication)
 
   * [Verificatie van beheerde identiteit](#managed-identity-authentication)
-
-  Zie [verificatie toevoegen aan uitgaande oproepen](#add-authentication-outbound) verderop in dit onderwerp voor meer informatie.
 
 * Beperk de toegang tot IP-adressen van logische apps.
 
@@ -776,7 +795,7 @@ Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of
 
 <a name="add-authentication-outbound"></a>
 
-## <a name="add-authentication-to-outbound-calls"></a>Verificatie toevoegen aan uitgaande oproepen
+### <a name="add-authentication-to-outbound-calls"></a>Verificatie toevoegen aan uitgaande oproepen
 
 HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Bij sommige triggers en acties die u gebruikt voor het verzenden van uitgaande oproepen of aanvragen naar deze eind punten, kunt u een verificatie type opgeven. In de ontwerp functie voor logische apps hebben triggers en acties die ondersteuning bieden voor het kiezen van een verificatie type een **verificatie** -eigenschap. Deze eigenschap wordt echter mogelijk niet standaard altijd weer gegeven. In deze gevallen opent u de lijst **nieuwe para meter toevoegen** op de trigger of actie en selecteert u **verificatie**.
 
@@ -869,7 +888,7 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 
 ### <a name="azure-active-directory-open-authentication"></a>Verificatie Azure Active Directory openen
 
-Op aanvraag triggers kunt u [Azure Active Directory open-verificatie](../active-directory/develop/index.yml) (Azure AD OAuth) gebruiken voor de verificatie van binnenkomende oproepen nadat u een [Azure AD-autorisatie beleid hebt ingesteld](#enable-oauth) voor uw logische app. Voor alle andere triggers en acties die het **Active Directory OAuth** -verificatie type voor u selecteren, geeft u de volgende eigenschaps waarden op:
+Op aanvraag triggers kunt u [Azure Active Directory open-verificatie (Azure AD OAuth)](../active-directory/develop/index.yml)gebruiken voor de verificatie van binnenkomende oproepen nadat u een [Azure AD-autorisatie beleid hebt ingesteld](#enable-oauth) voor uw logische app. Voor alle andere triggers en acties die het **Active Directory OAuth** -verificatie type voor u selecteren, geeft u de volgende eigenschaps waarden op:
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|

@@ -7,13 +7,13 @@ ms.workload: data-services
 ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/31/2020
+ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854268"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230824"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale para meters in Azure Data Factory
 
@@ -41,13 +41,28 @@ Globale para meters kunnen worden gebruikt in elke [pijplijn expressie](control-
 
 ![Globale para meters gebruiken](media/author-global-parameters/expression-global-parameters.png)
 
-## <a name="global-parameters-in-cicd"></a><a name="cicd"></a>Algemene para meters in CI/CD
+## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> Algemene para meters in CI/CD
 
-Globale para meters hebben een uniek CI/CD-proces ten opzichte van andere entiteiten in Azure Data Factory. Wanneer u een fabriek publiceert of een ARM-sjabloon met globale para meters exporteert, wordt een map met de naam *globalParameters* gemaakt met een bestand met de naam *your-factory-name_GlobalParameters.jsop*. Dit bestand is een JSON-object dat elk globaal parameter type en waarde bevat in de gepubliceerde Factory.
+Er zijn twee manieren om globale para meters te integreren in uw continue integratie-en implementatie oplossing:
+
+* Algemene para meters in de ARM-sjabloon toevoegen
+* Globale para meters implementeren via een Power shell-script
+
+Voor de meeste gebruiks voorbeelden wordt aanbevolen globale para meters in de ARM-sjabloon in te sluiten. Dit wordt systeem eigen geïntegreerd met de oplossing die wordt beschreven in [het CI/cd-document](continuous-integration-deployment.md). Globale para meters worden standaard toegevoegd als een ARM-sjabloon parameter, aangezien ze vaak van omgeving veranderen in omgeving. U kunt het opnemen van globale para meters in de ARM-sjabloon inschakelen vanuit de Management hub.
+
+![In ARM-sjabloon toevoegen](media/author-global-parameters/include-arm-template.png)
+
+Het toevoegen van globale para meters aan de ARM-sjabloon voegt een instelling op fabrieks niveau toe die andere instellingen op fabrieks niveau kan overschrijven, zoals een door de klant beheerde sleutel of een Git-configuratie in andere omgevingen. Als u deze instellingen hebt ingeschakeld in een omgeving met verhoogde bevoegdheden, zoals bedoeld of PROD, is het beter om globale para meters te implementeren via een Power shell-script in de hieronder gemarkeerde stappen.
+
+### <a name="deploying-using-powershell"></a>Implementeren met Power shell
+
+In de volgende stappen wordt uitgelegd hoe u globale para meters kunt implementeren via Power shell. Dit is handig als uw doel-Factory een instelling op fabrieks niveau heeft, zoals door de klant beheerde sleutel.
+
+Wanneer u een fabriek publiceert of een ARM-sjabloon met globale para meters exporteert, wordt een map met de naam *globalParameters* gemaakt met een bestand met de naam *your-factory-name_GlobalParameters.jsop*. Dit bestand is een JSON-object dat elk globaal parameter type en waarde bevat in de gepubliceerde Factory.
 
 ![Global-para meters publiceren](media/author-global-parameters/global-parameters-adf-publish.png)
 
-Als u implementeert in een nieuwe omgeving, zoals TEST of PROD, is het raadzaam om een kopie te maken van dit bestand met globale para meters en de juiste waarden voor de specifieke omgeving te overschrijven. Wanneer u het oorspronkelijke bestand met globale para meters opnieuw publiceert, wordt overschreven, maar wordt de kopie voor de andere omgeving niet meer gewijzigd.
+Als u in een nieuwe omgeving implementeert, zoals TEST of productie, is het raadzaam om een kopie te maken van dit bestand met globale para meters en de juiste waarden voor de specifieke omgeving te overschrijven. Wanneer u het oorspronkelijke bestand met globale para meters opnieuw publiceert, wordt overschreven, maar wordt de kopie voor de andere omgeving niet meer gewijzigd.
 
 Als u bijvoorbeeld een fabriek met de naam ' ADF-DEV ' hebt en een algemene para meter van het type teken reeks met de naam ' omgeving ' met de waarde ' dev ', worden er bij het publiceren van een bestand met de naam *ADF-DEV_GlobalParameters.jsop* gegenereerd. Als u implementeert in een test-Factory met de naam ' ADF_TEST ', maakt u een kopie van het JSON-bestand (bijvoorbeeld de naam ADF-TEST_GlobalParameters.jsop) en vervangt u de parameter waarden door de omgevings waarden. De para meter Environment kan nu een waarde ' test ' hebben. 
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79db3db5a46700f55c1dc759443cae194660372d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007638"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230038"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>Verbinding maken met het virtuele bureau blad van Windows met de iOS-client
 
@@ -36,6 +36,7 @@ Abonneren op een feed:
 2. Voer de URL van de feed in het veld URL van de **feed** in. De feed-URL kan een URL of een e-mail adres zijn.
    - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is de URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
+   - Als u verbinding wilt maken via de portal van US Gov, gebruikt u <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. Tik op **Volgende**.
 4. Geef uw referenties op wanneer u hierom wordt gevraagd.
    - Geef voor de **gebruikers naam**de gebruikers naam op met machtigingen voor toegang tot resources.

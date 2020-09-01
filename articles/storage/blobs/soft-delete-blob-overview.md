@@ -1,5 +1,5 @@
 ---
-title: Voorlopig verwijderen voor blobs
+title: Blobs voorlopig verwijderen
 titleSuffix: Azure Storage
 description: Met zacht verwijderen voor blobs worden uw gegevens beschermd, zodat u uw gegevens eenvoudiger kunt herstellen wanneer deze foutief worden gewijzigd of verwijderd door een toepassing of door een andere gebruiker van het opslag account.
 services: storage
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2e390c9d5d2fa7c6551ed661c6c25096732eefd5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057220"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230106"
 ---
-# <a name="soft-delete-for-blobs"></a>Voorlopig verwijderen voor blobs
+# <a name="soft-delete-for-blobs"></a>Blobs voorlopig verwijderen
 
-Met zacht verwijderen voor blobs wordt voor komen dat uw gegevens per ongeluk of onbedoeld worden gewijzigd of verwijderd. Wanneer het voorlopig verwijderen voor blobs is ingeschakeld voor een opslag account, kunnen blobs, Blob-versies (preview) en moment opnamen in dat opslag account worden hersteld nadat ze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
+Met zacht verwijderen voor blobs wordt voor komen dat uw gegevens per ongeluk of onbedoeld worden gewijzigd of verwijderd. Als zacht verwijderen voor blobs is ingeschakeld voor een opslag account, kunnen blobs, Blob-versies en moment opnamen in dat opslag account worden hersteld nadat ze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
 
 Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, raadt micro soft aan om de functie voor voorlopig verwijderen in te scha kelen. Zie voor meer informatie over het inschakelen van zacht verwijderen [voor het inschakelen en beheren van voorlopig verwijderen voor blobs](soft-delete-enable.md).
 
@@ -28,7 +28,7 @@ Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd do
 
 Als zacht verwijderen voor blobs is ingeschakeld voor een opslag account, kunt u objecten herstellen nadat ze zijn verwijderd binnen de opgegeven Bewaar periode voor gegevens. Deze beveiliging wordt uitgebreid naar alle blobs (blok-blobs, toevoeg-blobs of pagina-blobs) die worden gewist als gevolg van een overschrijving.
 
-Als de gegevens in een bestaande BLOB of moment opname worden verwijderd terwijl BLOB zacht verwijderen is ingeschakeld, maar BLOB-versie beheer (preview) niet is ingeschakeld, wordt er een voorlopig verwijderde moment opname gegenereerd om de status van de overschreven gegevens op te slaan. Nadat de opgegeven Bewaar periode is verlopen, wordt het object definitief verwijderd.
+Als de gegevens in een bestaande BLOB of moment opname worden verwijderd terwijl BLOB zacht verwijderen is ingeschakeld, maar BLOB-versie beheer niet is ingeschakeld, wordt er een voorlopig verwijderde moment opname gegenereerd om de status van de overschreven gegevens op te slaan. Nadat de opgegeven Bewaar periode is verlopen, wordt het object definitief verwijderd.
 
 Als blob-versie beheer en dynamisch verwijderen van BLOB zijn ingeschakeld voor het opslag account, wordt door het verwijderen van een BLOB een nieuwe versie gemaakt in plaats van een tijdelijke, verwijderde moment opname. De nieuwe versie wordt niet zacht verwijderd en wordt niet verwijderd wanneer de tijdelijke Bewaar periode voor het verwijderen is verlopen. Zacht verwijderde versies van een BLOB kunnen worden hersteld binnen de Bewaar periode door de bewerking voor het [ongedaan](/rest/api/storageservices/undelete-blob) maken van de BLOB aan te roepen. De Blob kan vervolgens worden hersteld vanuit een van de versies door de bewerking [BLOB kopiëren](/rest/api/storageservices/copy-blob) aan te roepen. Zie voor meer informatie over het samen voegen van BLOB-versie en zacht verwijderen, [BLOB-versie beheer en soft verwijderen](versioning-overview.md#blob-versioning-and-soft-delete).
 
@@ -193,5 +193,5 @@ Het is mogelijk om te profiteren van de functie voor voorlopig verwijderen, onge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voorlopig verwijderen voor blobs inschakelen](soft-delete-enable.md)
-- [Versie beheer van BLOB (preview)](versioning-overview.md)
+- [Voorlopig verwijderen inschakelen voor blobs](soft-delete-enable.md)
+- [BLOB-versie beheer](versioning-overview.md)

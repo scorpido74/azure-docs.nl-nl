@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608225"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231228"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken
 
@@ -36,13 +36,13 @@ In dit artikel leert u hoe u de Azure AD-activiteiten Logboeken in uw Log Analyt
 
 Als u wilt volgen, hebt u het volgende nodig:
 
-* Een Log Analytics-werk ruimte in uw Azure-abonnement. Leer [een Log Analytics-werkruimte maken](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Een Log Analytics-werk ruimte in uw Azure-abonnement. Leer [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md).
 * Voer eerst de stappen uit om [de Azure AD-activiteiten logboeken te routeren naar uw log Analytics-werk ruimte](howto-integrate-activity-logs-with-log-analytics.md).
-*  [Toegang](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
+*  [Toegang](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
 * De volgende rollen in Azure Active Directory (als u Log Analytics via Azure Active Directory Portal opent)
     - Beveiligingsbeheerder
     - Beveiligingslezer
-    - Rapport lezer
+    - Rapportlezer
     - Globale beheerder
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Ga naar de werk ruimte Log Analytics
@@ -96,7 +96,7 @@ U kunt ook waarschuwingen instellen voor uw query. Als u bijvoorbeeld een waarsc
 
 3. Voer een naam en beschrijving in voor de waarschuwing en kies het Ernst niveau. In ons voor beeld kan het worden ingesteld op **informatief**.
 
-4. Selecteer de **actie groep** die wordt gewaarschuwd wanneer het signaal optreedt. U kunt ervoor kiezen om uw team op de hoogte te stellen van een e-mail of SMS-bericht of u zou de actie kunnen automatiseren met webhooks, Azure functions of Logic apps. Meer informatie over [het maken en beheren van waarschuwings groepen vindt u in de Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+4. Selecteer de **actie groep** die wordt gewaarschuwd wanneer het signaal optreedt. U kunt ervoor kiezen om uw team op de hoogte te stellen van een e-mail of SMS-bericht of u zou de actie kunnen automatiseren met webhooks, Azure functions of Logic apps. Meer informatie over [het maken en beheren van waarschuwings groepen vindt u in de Azure Portal](../../azure-monitor/platform/action-groups.md).
 
 5. Zodra u de waarschuwing hebt geconfigureerd, selecteert u **waarschuwing maken** om deze in te scha kelen. 
 
@@ -113,6 +113,6 @@ Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aan de slag met query's in Azure Monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
-* [Waarschuwings groepen maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
+* [Aan de slag met query's in Azure Monitor-logboeken](../../azure-monitor/log-query/get-started-queries.md)
+* [Waarschuwings groepen maken en beheren in de Azure Portal](../../azure-monitor/platform/action-groups.md)
 * [De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken](howto-install-use-log-analytics-views.md)

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045940"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231024"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure-beveiligings basislijn voor Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -119,7 +119,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **Hulp**: Schakel Advanced Threat Protection (ATP) in voor Azure SQL database.  Gebruikers ontvangen een waarschuwing bij verdachte database activiteiten, potentiële kwetsbaar heden en SQL-injectie aanvallen, evenals afwijkende database toegang en query patronen. Geavanceerde bedreigingen beveiliging integreert ook waarschuwingen met Azure Security Center.
 
-Advanced Threat Protection voor Azure SQL Database begrijpen en gebruiken:https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Advanced Threat Protection voor Azure SQL Database begrijpen en gebruiken: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure Security Center bewaking**: Ja
 
@@ -157,9 +157,9 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure resource management-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één definitie van de blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Azure Security Center bewaking**: Ja
 
@@ -437,7 +437,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-over
 
 **Richt lijnen**: Gebruik voorwaardelijke toegang met de naam locaties om toegang tot portal-en Azure-resource beheer toe te staan vanaf alleen specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -515,7 +515,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -627,7 +627,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
-**Richt lijnen**: transparent Data Encryption (TDE) helpt bij het beschermen van Azure SQL database, Azure SQL Managed instance en Azure Data Warehouse tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. TDE is standaard ingeschakeld voor alle zojuist geïmplementeerde data bases in SQL Database en SQL Managed instance. De versleutelings sleutel TDE kan worden beheerd door micro soft of de klant.
+**Richt lijnen**: transparent Data Encryption (TDE) helpt bij het beschermen van Azure SQL database, Azure SQL Managed instance en Azure Data Warehouse tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database uit, van bijbehorende back-ups en van transactielogboekbestanden, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. TDE is standaard ingeschakeld voor alle zojuist geïmplementeerde data bases in SQL Database en SQL Managed instance. De versleutelings sleutel TDE kan worden beheerd door micro soft of de klant.
 
 Transparante gegevens versleuteling beheren en uw eigen versleutelings sleutels gebruiken:
 
@@ -723,11 +723,11 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-Query's maken met Azure resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Uw Azure-abonnementen weer geven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -777,15 +777,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -819,15 +819,15 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 **Hulp: gebruik**Azure Policy om beperkingen te plaatsen voor het type resources dat kan worden gemaakt in klant abonnementen met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -845,7 +845,7 @@ Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1011,7 +1011,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 **Richt lijnen**: referentie scanner implementeren om referenties in uw code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.
 
-Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1035,7 +1035,7 @@ Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.
 
 Scan vooraf op inhoud die wordt geüpload naar niet-reken resources van Azure, zoals App Service, Data Lake Storage, Blob Storage, Azure SQL Database, enzovoort. Micro soft heeft geen toegang tot uw gegevens in deze instanties.
 
-Meer informatie over micro soft antimalware voor Azure Cloud Services en Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Meer informatie over micro soft antimalware voor Azure Cloud Services en Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1133,7 +1133,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Hulp**: Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde van de instructies voor elke waarschuwing kunt bepalen, zodat u meteen aan de voor waarde krijgt wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
 
-Beveiligings waarschuwingen in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+Beveiligings waarschuwingen in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
 **Azure Security Center bewaking**: Ja
 
@@ -1201,7 +1201,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center bewaking**: niet van toepassing
 

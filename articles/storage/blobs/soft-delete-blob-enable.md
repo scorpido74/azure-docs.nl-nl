@@ -10,16 +10,16 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cba56e699afed8178f93bceddf6bf32a242ed124
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020844"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230225"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Zacht verwijderen voor blobs inschakelen en beheren
 
-Met de methode voor het zacht verwijderen van blobs worden uw gegevens per ongeluk of onbedoeld gewijzigd of verwijderd. Als de functie voor het voorlopig verwijderen van blobs is ingeschakeld voor een opslag account, kunnen blobs, Blob-versies (preview) en moment opnamen in dat opslag account worden hersteld nadat ze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
+Met de methode voor het zacht verwijderen van blobs worden uw gegevens per ongeluk of onbedoeld gewijzigd of verwijderd. Wanneer het dynamisch verwijderen van blobs is ingeschakeld voor een opslag account, kunnen blobs, Blob-versies en moment opnamen in dat opslag account worden hersteld nadat ze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
 
 Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, raadt micro soft aan om de optie voor het voorlopig verwijderen van blobs in te scha kelen. In dit artikel wordt beschreven hoe u de optie voor het voorlopig verwijderen van blobs inschakelt. Zie [voorlopig verwijderen voor blobs](soft-delete-blob-overview.md)voor meer informatie over het voorlopig verwijderen van blobs.
 
@@ -195,4 +195,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Voorlopig verwijderen voor Blob Storage](soft-delete-overview.md)
-- [Versie beheer van BLOB (preview)](versioning-overview.md)
+- [BLOB-versie beheer](versioning-overview.md)

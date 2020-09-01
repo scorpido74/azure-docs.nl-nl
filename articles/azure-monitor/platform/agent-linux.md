@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998931"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230463"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-agent installeren op Linux-computers
 In dit artikel vindt u informatie over het installeren van de Log Analytics-agent op Linux-computers met behulp van de volgende methoden:
@@ -51,11 +51,19 @@ Vanaf versies die na augustus 2018 zijn uitgebracht, maken we de volgende wijzig
  - Ubuntu, Debian: `apt-get install -y python2`
  - SuSE `zypper install -y python2`
 
-Het uitvoer bare bestand python2 moet met de volgende opdracht worden gealiasd als ' python ':
+Het uitvoer bare bestand van python2 moet zijn alias voor *python*. Hier volgt een methode die u kunt gebruiken om deze alias in te stellen:
 
-```
-alternatives --set python `which python2`
-```
+1. Voer de volgende opdracht uit om alle bestaande aliassen te verwijderen.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. Voer de volgende opdracht uit om de alias te maken.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ## <a name="supported-linux-hardening"></a>Ondersteunde Linux-beveiliging
 De OMS-agent heeft beperkte aanpassings ondersteuning voor Linux. 
@@ -64,7 +72,8 @@ De volgende worden momenteel ondersteund:
 - FIPs
 
 De volgende zijn gepland, maar nog niet ondersteund:
-- CIS-SELINUX
+- CIS
+- SELINUX
 
 Andere methoden voor beveiliging en aanpassing worden niet ondersteund en worden niet gepland voor de OMS-agent.  
 

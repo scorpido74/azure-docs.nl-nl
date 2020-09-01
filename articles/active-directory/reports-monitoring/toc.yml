@@ -36,11 +36,11 @@
     - name: Rapport over gebruik en inzichten weergeven
       href: concept-usage-insights-report.md
     - name: Riskante aanmeldingen
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Risicodetectie
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Gebruikers die risico lopen
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Inrichtingslogboeken
       href: concept-provisioning-logs.md
     - name: API's voor rapportage
@@ -94,9 +94,9 @@
     - name: Azure AD PowerShell-cmdlets voor rapportage
       href: reference-powershell-reporting.md
     - name: API-verwijzing voor auditlogboeken
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
     - name: API-verwijzing voor aanmeldlogboeken
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin?view=graph-rest-beta
     - name: Activiteiten controleren
       href: reference-audit-activities.md
     - name: Beleid voor gegevensretentie

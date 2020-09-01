@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891506"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231143"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referentie voor auditactiviteiten van Azure AD
 
@@ -35,8 +35,8 @@ De rapportstructuur in Azure AD bestaat uit de volgende onderdelen:
     - [Auditlogboeken](concept-audit-logs.md): traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. 
     
 - **Beveiligingsrapporten** 
-    - [Riskante aanmeldingen](concept-risky-sign-ins.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
-    - [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
+    - [Riskante aanmeldingen](../identity-protection/overview-identity-protection.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
+    - [Gebruikers voor wie wordt aangegeven dat ze risico lopen](../identity-protection/overview-identity-protection.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
 In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunnen worden geregistreerd.
 
@@ -500,7 +500,7 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 
 
-## <a name="identity-protection"></a>Identiteitsbeveiliging
+## <a name="identity-protection"></a>Identiteitsbescherming
 
 |Controlecategorie|Activiteit|
 |---|---|

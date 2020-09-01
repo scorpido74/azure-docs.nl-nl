@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608208"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230616"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteitenrapporten zoeken in de Azure-portal
 
@@ -52,7 +52,7 @@ U kunt Geavanceerd filteren in het controle rapport gebruiken om toegang te krij
 
 Categorieën zijn onder andere:
 
-- Alles
+- Alle
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -73,7 +73,7 @@ U kunt ook filteren op een specifieke service met behulp van het vervolg filter 
 
 Services omvatten:
 
-- Alles
+- Alle
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
@@ -114,7 +114,7 @@ U kunt het rapport aanmeldingen gebruiken om details over toepassings gebruik te
 
 Afwijkende activiteiten rapporten bieden informatie over beveiligings risico detecties die Azure AD kan detecteren en rapporteren.
 
-De volgende tabel bevat de beveiligings rapporten van de afwijkende Azure AD-activiteiten en de bijbehorende typen risico detectie in de Azure Portal. Zie [Azure Active Directory-risico detectie](concept-risk-events.md)voor meer informatie.  
+De volgende tabel bevat de beveiligings rapporten van de afwijkende Azure AD-activiteiten en de bijbehorende typen risico detectie in de Azure Portal. Zie [Azure Active Directory-risico detectie](../identity-protection/overview-identity-protection.md)voor meer informatie.  
 
 
 | Rapport over afwijkend Azure AD-activiteiten |  Type risico detectie identiteits bescherming|
@@ -136,8 +136,8 @@ De volgende afwijkende beveiligings rapporten van Azure AD worden niet opgenomen
 
 U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **beveiliging** van de blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Gedetecteerde risico detecties worden bijgehouden in de volgende rapporten:   
 
-- [Gebruikers die risico lopen](concept-user-at-risk.md)
-- [Riskante aanmeldingen](concept-risky-sign-ins.md)
+- [Gebruikers die risico lopen](../identity-protection/overview-identity-protection.md)
+- [Riskante aanmeldingen](../identity-protection/overview-identity-protection.md)
 
     ![Beveiligingsrapporten](./media/howto-find-activity-reports/04.png "Beveiligingsrapporten")
 
@@ -147,7 +147,7 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 
 #### <a name="symptoms"></a>Symptomen 
 
-Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe kan dat? 
+Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Waarom? 
 
  ![Rapportage](./media/troubleshoot-missing-data-download/01.png)
  
@@ -205,7 +205,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 #### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe kan dat? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Waarom? 
 
  ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -228,4 +228,4 @@ U hebt twee opties om de gegevens langer dan 30 dagen te bewaren. U kunt de [API
 
 * [Overzicht van audit logboeken](concept-audit-logs.md)
 * [Overzicht van aanmeldingen](concept-sign-ins.md)
-* [Overzicht van Risk ante gebeurtenissen](concept-risk-events.md)
+* [Overzicht van Risk ante gebeurtenissen](../identity-protection/overview-identity-protection.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8342ffc122f56f4e2a3a41e249007b2ceaad22a6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4fe353467a11e9581db76ec495194878414f4dfb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034648"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230684"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -32,7 +32,7 @@ V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van A
 
 - Blobs (alle typen: blok keren, toevoegen, pagina)
 - Data Lake Gen2
-- Files
+- Bestanden
 - Disks
 - Wachtrijen
 - Tabellen
@@ -49,7 +49,7 @@ V2-opslag accounts voor algemeen gebruik bieden meerdere toegangs lagen voor het
 V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-services, maar hebben mogelijk niet de nieuwste functies of de laagste prijzen per gigabyte. V1-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
 
 - Blobs (alle typen)
-- Files
+- Bestanden
 - Disks
 - Wachtrijen
 - Tabellen
@@ -129,10 +129,10 @@ Een opslagaccount biedt een unieke naamruimte in Azure voor uw gegevens. Elk obj
 
 Als uw opslag account voor algemeen gebruik bijvoorbeeld *mystorageaccount*heet, zijn de standaard eindpunten voor dat account:
 
-- Blob-opslag:`https://*mystorageaccount*.blob.core.windows.net`
-- Tabel opslag:`https://*mystorageaccount*.table.core.windows.net`
-- Wachtrij opslag:`https://*mystorageaccount*.queue.core.windows.net`
-- Azure Files:`https://*mystorageaccount*.file.core.windows.net`
+- Blob-opslag: `https://*mystorageaccount*.blob.core.windows.net`
+- Tabel opslag: `https://*mystorageaccount*.table.core.windows.net`
+- Wachtrij opslag: `https://*mystorageaccount*.queue.core.windows.net`
+- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
 
 > [!NOTE]
 > Blok-Blob en Blob Storage-accounts bieden alleen het Blob service-eind punt.
@@ -174,7 +174,7 @@ De Azure Storage-bibliotheek voor gegevensverplaatsing voor .NET is gebaseerd op
 
 ### <a name="rest-api-or-client-library"></a>REST-API of clientbibliotheek
 
-U kunt een aangepaste toepassing maken om uw gegevens te migreren van een v1-opslag account voor algemeen gebruik naar een Blob Storage-account. Gebruik een van de Azure-client bibliotheken of de Azure Storage-services REST API. Azure Storage biedt uitgebreide clientbibliotheken voor meerdere talen en platforms, zoals  .NET, Java, C++, Node.JS, PHP, Ruby en Python. De clientbibliotheken bieden geavanceerde mogelijkheden, zoals pogingslogica, logboekregistratie en parallelle uploads. U kunt ook rechtstreeks met de REST API ontwikkelen. Deze kan worden aangeroepen in elke taal waarin HTTP-/HTTPS-verzoeken kunnen worden gemaakt.
+U kunt een aangepaste toepassing maken om uw gegevens te migreren van een v1-opslag account voor algemeen gebruik naar een Blob Storage-account. Gebruik een van de Azure-client bibliotheken of de Azure Storage services-REST API. Azure Storage biedt uitgebreide clientbibliotheken voor meerdere talen en platforms, zoals  .NET, Java, C++, Node.JS, PHP, Ruby en Python. De clientbibliotheken bieden geavanceerde mogelijkheden, zoals pogingslogica, logboekregistratie en parallelle uploads. U kunt ook rechtstreeks met de REST API ontwikkelen. Deze kan worden aangeroepen in elke taal waarin HTTP-/HTTPS-verzoeken kunnen worden gemaakt.
 
 Zie [Azure Storage Services rest API Reference](https://docs.microsoft.com/rest/api/storageservices/)(Engelstalig) voor meer informatie over de Azure Storage rest API.
 

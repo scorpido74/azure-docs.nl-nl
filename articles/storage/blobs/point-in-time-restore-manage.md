@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a4c68454807cb26ac62799b598f146680e37c42
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445437"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230174"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Herstel naar een bepaald tijdstip voor blok-blobs inschakelen en beheren (preview-versie)
 
@@ -48,7 +48,7 @@ Zie [Install Azure PowerShell with PowerShellGet](/powershell/azure/install-az-p
 
 Voordat u herstel naar een bepaald tijdstip inschakelt en configureert, moet u de vereisten voor het opslag account inschakelen: voorlopig verwijderen, feed wijzigen en BLOB-versie beheer. Raadpleeg de volgende artikelen voor meer informatie over het inschakelen van elk van deze functies:
 
-- [Voorlopig verwijderen voor blobs inschakelen](soft-delete-enable.md)
+- [Voorlopig verwijderen inschakelen voor blobs](soft-delete-enable.md)
 - [De wijzigings feed in-en uitschakelen](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)
 
@@ -184,4 +184,4 @@ $job | Wait-Job
 - [Herstel naar een bepaald tijdstip voor blok-blobs (preview-versie)](point-in-time-restore-overview.md)
 - [Voorlopig verwijderen](soft-delete-overview.md)
 - [Wijzigings feed (preview-versie)](storage-blob-change-feed.md)
-- [Versie beheer van BLOB (preview)](versioning-overview.md)
+- [BLOB-versie beheer](versioning-overview.md)

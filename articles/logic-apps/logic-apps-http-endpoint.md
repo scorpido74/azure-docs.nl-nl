@@ -1,46 +1,41 @@
 ---
-title: Logische apps aanroepen, triggeren of nesten
+title: Logische apps aanroepen, activeren of nesten met behulp van aanvraag triggers
 description: HTTPS-eind punten instellen voor het aanroepen, activeren of nesten van logische app-werk stromen in Azure Logic Apps
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078675"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230803"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
 
-Als u wilt dat uw logische app kan worden opgeroepen via een URL zodat uw logische app binnenkomende aanvragen van andere services kan ontvangen, kunt u een synchroon HTTPS-eind punt beschikbaar maken als een trigger voor die logische app. Wanneer u deze mogelijkheid instelt, kunt u ook uw logische app nesten in andere logische apps, waarmee u een patroon van aanroep bare eind punten maakt.
-
-Als u een aanroepbaar eind punt wilt instellen, kunt u een van deze trigger typen gebruiken, waarmee logische apps binnenkomende aanvragen kunnen ontvangen:
+Als u wilt dat uw logische app kan aanroepen via een URL en inkomende aanvragen van andere services ontvangt, kunt u een synchroon HTTPS-eind punt beschikbaar stellen met behulp van een trigger op basis van een aanvraag in uw logische app. Met deze mogelijkheid kunt u uw logische app aanroepen vanuit andere Logic apps en een patroon van aanroep bare eind punten maken. Als u een aanroepbaar eind punt voor het verwerken van binnenkomende oproepen wilt instellen, kunt u een van de volgende trigger typen gebruiken:
 
 * [Aanvraag](../connectors/connectors-native-reqres.md)
 * [HTTP-webhook](../connectors/connectors-native-webhook.md)
 * Beheerde connector triggers die het [ApiConnectionWebhook-type](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) hebben en binnenkomende HTTPS-aanvragen kunnen ontvangen
 
-> [!NOTE]
-> In deze voor beelden wordt de trigger voor aanvragen gebruikt, maar u kunt een HTTPS-aanvraag op basis van aanvragen gebruiken die in de vorige lijst voor komt. Alle principes zijn identiek van toepassing op deze andere trigger typen.
+In dit artikel wordt beschreven hoe u een aanroepbaar eind punt maakt in uw logische app met behulp van de trigger voor aanvragen en dat eind punt aanroept vanuit een andere logische app. Alle principes zijn identiek van toepassing op de andere trigger typen die u kunt gebruiken om inkomende aanvragen te ontvangen.
 
-Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL) of [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), raadpleegt [u beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De logische app waar u de trigger wilt gebruiken om het aanroep bare eind punt te maken. U kunt beginnen met een lege logische app of een bestaande logische app waarvoor u de huidige trigger wilt vervangen. Dit voor beeld begint met een lege logische app.
+* De logische app waar u de trigger wilt gebruiken om het aanroep bare eind punt te maken. U kunt beginnen met een lege logische app of een bestaande logische app, waar u de huidige trigger kunt vervangen. Dit voor beeld begint met een lege logische app. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-callable-endpoint"></a>Een aanroepbaar eind punt maken
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
 
-   In dit voor beeld wordt de trigger voor aanvragen gebruikt, maar u kunt elke trigger gebruiken die binnenkomende HTTPS-aanvragen kan ontvangen. Alle principes zijn identiek van toepassing op deze triggers. Zie voor meer informatie over de aanvraag trigger [binnenkomende https-aanroepen ontvangen en erop reageren met behulp van Azure Logic apps](../connectors/connectors-native-reqres.md).
-
-1. Selecteer in het zoekvak **ingebouwde**. Voer in het zoekvak in `request` als uw filter. Selecteer in de lijst triggers **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Selecteer in het zoekvak **ingebouwde**. Voer in het zoekvak `request` als uw filter in. Selecteer in de lijst triggers **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
    ![De aanvraag trigger zoeken en selecteren](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -200,7 +195,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?{parameter-name=parameter-value}&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   De browser retourneert een antwoord met deze tekst:`Postal Code: 123456`
+   De browser retourneert een antwoord met deze tekst: `Postal Code: 123456`
 
    ![Antwoord van het verzenden van een aanvraag naar een call back-URL](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
@@ -210,12 +205,12 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    In dit voor beeld wordt de call back-URL met de naam en waarde van de voor beeld-para meter `postalCode=123456` in verschillende posities binnen de URL weer gegeven:
 
-   * 1e positie:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * 1e positie: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   * 2e positie:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * 2e positie: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
 > [!NOTE]
-> Als u het hash-of hekje-symbool ( **#** ) in de URI wilt toevoegen, gebruikt u in plaats daarvan deze gecodeerde versie:`%25%23`
+> Als u het hash-of hekje-symbool ( **#** ) in de URI wilt toevoegen, gebruikt u in plaats daarvan deze gecodeerde versie: `%25%23`
 
 <a name="relative-path"></a>
 
@@ -257,12 +252,12 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
 1. Als u uw aanroep bare eind punt wilt testen, kopieert u de bijgewerkte call back-URL uit de trigger voor aanvragen, plakt u de URL in een ander browser venster, vervangt u `{postalCode}` in de URL door `123456` en drukt u op ENTER.
 
-   De browser retourneert een antwoord met deze tekst:`Postal Code: 123456`
+   De browser retourneert een antwoord met deze tekst: `Postal Code: 123456`
 
    ![Antwoord van het verzenden van een aanvraag naar een call back-URL](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
 > [!NOTE]
-> Als u het hash-of hekje-symbool ( **#** ) in de URI wilt toevoegen, gebruikt u in plaats daarvan deze gecodeerde versie:`%25%23`
+> Als u het hash-of hekje-symbool ( **#** ) in de URI wilt toevoegen, gebruikt u in plaats daarvan deze gecodeerde versie: `%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Logische app aanroepen via eind punt-URL
 
@@ -310,7 +305,7 @@ U kunt werk stromen nesten in uw logische app door andere logische apps toe te v
 
 1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de stap waarin u een andere logische app wilt aanroepen.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `logic apps` als uw filter. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
+1. Selecteer onder **Kies een actie**de optie **Ingebouwd**. Voer in het zoekvak `logic apps` als uw filter in. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
 
    ![Logische app nesten in huidige logische app](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -360,7 +355,7 @@ Antwoorden hebben de volgende eigenschappen:
 | Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
 |--------------------|-----------------|-------------|
 | **Status code** | `statusCode` | De HTTPS-status code die moet worden gebruikt in het antwoord op de binnenkomende aanvraag. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
-| **Kopteksten** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Koppen** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
 | **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 
@@ -408,3 +403,4 @@ Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps](../connectors/connectors-native-reqres.md)
+* [Toegang en gegevens beveiligen in Azure Logic Apps Access-toegang voor inkomende oproepen naar activerings methoden op basis van een aanvraag](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

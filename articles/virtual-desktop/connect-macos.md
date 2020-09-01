@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007629"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230871"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>Verbinding maken met het virtuele bureau blad van Windows met de macOS-client
 
@@ -24,7 +24,7 @@ U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw m
 
 ## <a name="install-the-client"></a>De client installeren
 
-[Down load](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)   en installeer de-client op uw macOS-apparaat om aan de slag te gaan.
+[Down load](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) en installeer de-client op uw macOS-apparaat om aan de slag te gaan.
 
 ## <a name="subscribe-to-a-feed"></a>Abonneren op een feed
 
@@ -36,6 +36,7 @@ Abonneren op een feed:
 2. Voer de URL voor de feed in. Dit kan een URL of e-mail adres zijn:
    - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is de URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
+   - Als u verbinding wilt maken via de portal van US Gov, gebruikt u <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. Selecteer **Toevoegen**.
 4. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
 

@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74007704"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231058"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory reporting latencies (Rapportagevertraging in Azure Active Directory)
 
@@ -54,12 +54,12 @@ Als u al activiteiten gegevens met uw gratis licentie hebt, kunt u deze direct n
 
 Er zijn twee typen beveiligingsrapporten:
 
-- [Riskante aanmeldingen](concept-risky-sign-ins.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
-- [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
+- [Riskante aanmeldingen](../identity-protection/overview-identity-protection.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
+- [Gebruikers voor wie wordt aangegeven dat ze risico lopen](../identity-protection/overview-identity-protection.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
 De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
 
-| Rapport | Minimum | Average | Maximum |
+| Rapport | Minimum | Gemiddeld | Maximum |
 | :-- | --- | --- | --- |
 | Gebruikers die risico lopen          | 5 minuten   | 15 minuten  | 2 uur  |
 | Riskante aanmeldingen         | 5 minuten   | 15 minuten  | 2 uur  |
@@ -70,7 +70,7 @@ Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdach
 
 De volgende tabel bevat de latentie-informatie voor risico detectie.
 
-| Rapport | Minimum | Average | Maximum |
+| Rapport | Minimum | Gemiddeld | Maximum |
 | :-- | --- | --- | --- |
 | Aanmeldingen vanaf anonieme IP-adressen |5 minuten |15 minuten |2 uur |
 | Aanmeldingen vanaf onbekende locaties |5 minuten |15 minuten |2 uur |
@@ -84,4 +84,4 @@ De volgende tabel bevat de latentie-informatie voor risico detectie.
 
 * [Overzicht van Azure AD-rapporten](overview-reports.md)
 * [Programmatische toegang tot Azure AD-rapporten](concept-reporting-api.md)
-* [Detectie van Azure Active Directory-Risico's](concept-risk-events.md)
+* [Detectie van Azure Active Directory-Risico's](../identity-protection/overview-identity-protection.md)

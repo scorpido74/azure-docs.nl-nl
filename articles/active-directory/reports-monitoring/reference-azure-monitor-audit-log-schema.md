@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68987946"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231092"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Het Azure AD audit logs-schema interpreteren in Azure Monitor (preview)
 
@@ -167,7 +167,7 @@ In dit artikel wordt het schema voor het audit logboek voor Azure Active Directo
 
 <br>
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 |---------------|-------------|
 | AuditEventCategory | Het type controle gebeurtenis. Dit kan *gebruikers beheer*, *toepassings beheer*of een ander type zijn.|
 | Identiteits type | Het type kan *toepassing* of *gebruiker*zijn. |
@@ -179,5 +179,5 @@ In dit artikel wordt het schema voor het audit logboek voor Azure Active Directo
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Aanmeldingslogboekenschema interpreteren in Azure Monitor)
-* [Diagnostische logboeken van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Diagnostische logboeken van Azure](../../azure-monitor/platform/platform-logs-overview.md)
 * [Veelgestelde vragen en bekende problemen](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

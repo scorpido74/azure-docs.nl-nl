@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656534"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231313"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Maak een integratie service omgeving (ISE) met behulp van de Logic Apps REST API
 
@@ -58,7 +58,7 @@ Neem de volgende eigenschappen op in de aanvraag header:
 
 ## <a name="request-body"></a>Aanvraagbody
 
-Hier volgt de syntaxis van de hoofd tekst van de aanvraag, waarin de eigenschappen worden beschreven die moeten worden gebruikt bij het maken van uw ISE. Als u een ISE wilt maken die het gebruik van een zelfondertekend certificaat dat is geïnstalleerd op de `TrustedRoot` locatie, neemt u het `certificates` object op in de sectie ISE-definitie `properties` . Voor een bestaande ISE kunt u een PATCH aanvraag alleen voor het object verzenden `certificates` . Zie ook [http-connector-zelfondertekende certificaten](../connectors/connectors-native-http.md#self-signed)voor meer informatie over het gebruik van zelfondertekende certificaten.
+Hier volgt de syntaxis van de hoofd tekst van de aanvraag, waarin de eigenschappen worden beschreven die moeten worden gebruikt bij het maken van uw ISE. Als u een ISE wilt maken die het gebruik van een zelfondertekend certificaat dat is geïnstalleerd op de `TrustedRoot` locatie, neemt u het `certificates` object op in de sectie ISE-definitie `properties` . Voor een bestaande ISE kunt u een PATCH aanvraag alleen voor het object verzenden `certificates` . Zie voor meer informatie over het gebruik van zelfondertekende certificaten [beveiligde toegang en gegevens toegang voor uitgaande oproepen naar andere services en systemen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ```json
 {
