@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1bf8fbfb6d2c141a2b18c3599631f6383883908
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494550"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074420"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -61,7 +62,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -82,7 +83,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 9. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Zoek en selecteer uw opslag account in de Azure Portal.
 
@@ -286,9 +287,9 @@ Filters omvatten:
 
 | Bestandsnaam | Filtertype | Notities | Is vereist |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` . | Yes |
-| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | No |
-| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is de blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | No |
+| blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` . | Ja |
+| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
+| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is de blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |
 
 > [!NOTE]
 > BLOB-index bevindt zich in de open bare preview en is beschikbaar in de regio's **Canada-centraal**, **Canada-Oost**, **Frankrijk-centraal**en **Frankrijk-Zuid** . Zie voor meer informatie over deze functie, samen met bekende problemen en beperkingen, [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
@@ -310,7 +311,7 @@ Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het 
 
 De uitvoerings voorwaarden zijn gebaseerd op leeftijd. Basis-blobs gebruiken het tijdstip waarop het laatst is gewijzigd voor het bijhouden van leeftijd en de BLOB-moment opnamen maken gebruik van de moment opname voor het bijhouden van leeftijd.
 
-| Voor waarde voor actie uitvoeren             | Waarde voor waarde                          | Description                             |
+| Voor waarde voor actie uitvoeren             | Waarde voor waarde                          | Beschrijving                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor basis-BLOB-acties     |
 | daysAfterCreationGreaterThan     | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor BLOB-momentopname acties |

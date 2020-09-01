@@ -97,7 +97,11 @@
     - name: Beveiliging
       items:
         - name: Netwerkbeveiligingsgroepen
-          href: security-overview.md
+          items:
+            - name: Overzicht
+              href: security-overview.md
+            - name: Hoe het werkt
+              href: network-security-group-how-it-works.md
         - name: Toepassingsbeveiligingsgroepen
           href: application-security-groups.md
         - name: Servicetags

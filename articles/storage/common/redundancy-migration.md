@@ -10,13 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50745c96f73f4e2d666a82746549ed361502e381
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501386"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072992"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslag account wordt gerepliceerd
 
@@ -76,7 +76,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -SkuName <sku>
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de optie voor redundantie voor uw opslag account wilt wijzigen met Azure CLI, roept u de opdracht [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan en geeft u de `--sku` para meter:
 
@@ -123,14 +123,14 @@ U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://
 
 1. **Nieuwe ondersteunings aanvraag** selecteren
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en de resource die u wilt converteren naar ZRS.
-3. Selecteer **Next**.
+3. Selecteer **Volgende**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: behoud de standaard waarde in.
     - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar ZRS**.
     - **Titel**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
     - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio.
-5. Selecteer **Next**.
+5. Selecteer **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 
@@ -172,7 +172,7 @@ Als u wilt bijwerken naar ZRS met behulp van Power shell, roept u de volgende op
 Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een upgrade wilt uitvoeren naar ZRS met behulp van Azure CLI, roept u de volgende opdracht aan:
 

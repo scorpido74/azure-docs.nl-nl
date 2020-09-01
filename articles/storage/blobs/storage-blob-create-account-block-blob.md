@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c23c034af40d7db2379f9d02357131a00482bd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 0e312cf49ee54020d0feb8d8e2f4c7a9bb77215a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495740"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074522"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
@@ -37,7 +37,7 @@ Geen.
 
 Voor dit procedure-artikel is de Azure PowerShell AZ versie 1.2.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om uw huidige versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt u aanmelden bij Azure en Azure CLI-opdrachten uitvoeren. Dit kan op twee manieren:
 
@@ -64,7 +64,7 @@ U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit procedure-artikel
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg d
 Connect-AzAccount
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
@@ -170,7 +170,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
    > [!NOTE]
    > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account is in open bare preview en is beschikbaar in de Verenigde Staten Oost, VS Oost 2, VS centraal, VS Zuid-Centraal, VS West 2, UK-zuid, Canada-centraal en Australië-oost regio's. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) en [bekende problemen](data-lake-storage-known-issues.md)als u beperkingen wilt bekijken. Zie [dit formulier](https://aka.ms/adlspremiumonboard)als u zich wilt inschrijven voor de preview-versie.
 
-## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moet u eerst Azure CLI v installeren. 2.0.46 of een latere versie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 

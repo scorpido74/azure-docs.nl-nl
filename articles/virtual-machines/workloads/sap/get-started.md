@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 08/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871374"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075950"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -88,6 +88,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 08/28/2020: wijziging in [ha voor SAP NW op Azure vm's op SLES met ANF](./high-availability-guide-suse-netapp-files.md) om type fouten op te lossen
 - 08/25/2020: wijziging in [ha-hand leiding voor SAP ASCS/SCS met wsfc en gedeelde schijf](./sap-high-availability-guide-wsfc-shared-disk.md), een [Azure-infra structuur voorbereiden voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-high-availability-infrastructure-wsfc-shared-disk.md) en [SAP NW ha installeren met wsfc en gedeelde schijf](./sap-high-availability-guide-wsfc-shared-disk.md) om de optie te gebruiken voor het gebruik van een gedeelde Azure-schijf en document SAP ERS2-architectuur
 - 08/25/2020: release van een [multi-sid ha-hand leiding voor SAP ASCS/SCS met WSFC-en Azure gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
 - 08/25/2020: wijziging in [ha-hand leiding voor SAP ASCS/SCS met WSFC en Azure NetApp files (SMB)](./high-availability-guide-windows-netapp-files-smb.md), [bereid Azure-infra structuur voor SAP ASCS/SCS met](./sap-high-availability-infrastructure-wsfc-file-share.md)behulp van de wsfc-en bestands share, [multi-sid ha-hand leiding voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) en de [multi-sid ha-hand leiding voor SAP ASCS/SCS met wsfc-en SOFS-bestands share](./sap-ascs-ha-multi-sid-wsfc-file-share.md) als gevolg van de inhouds updates 

@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5c4a43d113df09d88e8b93028c68dcf04f718fad
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 94ac7282375660308f8dab37ae5bd874828f778a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653984"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074732"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell gebruiken om SQL Server in te richten op Azure Virtual Machines
 
@@ -27,7 +28,7 @@ ms.locfileid: "88653984"
 
 Deze hand leiding bevat opties voor het inrichten van SQL Server op Azure Virtual Machines (Vm's) voor het gebruik van Power shell. Voor een gestroomlijnd Azure PowerShell-voor beeld dat afhankelijk is van standaard waarden, raadpleegt u de [virtuele machine van SQL Azure PowerShell Quick](sql-vm-create-powershell-quickstart.md)start.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

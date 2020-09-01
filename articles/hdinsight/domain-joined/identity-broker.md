@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086599"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075304"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>ID-Broker (preview-versie) gebruiken voor referentie beheer
 
@@ -98,13 +98,21 @@ Nadat ID Broker is ingeschakeld, hebt u nog steeds een wacht woord-hash die is o
 
 Voor SSH-verificatie moet de hash beschikbaar zijn in azure AD DS. Als u SSH alleen wilt gebruiken voor beheer scenario's, kunt u één alleen-Cloud account maken en gebruiken om te SSHen naar het cluster. Andere gebruikers kunnen nog steeds gebruikmaken van Ambari-of HDInsight-hulpprogram ma's (zoals de IntelliJ-invoeg toepassing) zonder dat de wacht woord-hash beschikbaar is in azure AD DS.
 
+Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)voor informatie over het oplossen van problemen met verificatie.
+
 ## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clients die OAuth gebruiken om verbinding te maken met de HDInsight-gateway met de ID Broker-installatie
 
 In de Setup van ID Broker kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U kunt de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
 
-*   OAuth-resource-URI:`https://hib.azurehdinsight.net` 
+*   OAuth-resource-URI: `https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Machtiging: (naam: cluster. ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+
+Nadat u het OAuth-token het, kunt u dit gebruiken in de autorisatie-header voor de HTTP-aanvraag voor de cluster gateway (bijvoorbeeld <clustername> -int.azurehdinsight.net). Een voor beeld van een krul opdracht naar livy-API kan er als volgt uitzien:
+    
+```bash
+curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+``` 
 
 ## <a name="next-steps"></a>Volgende stappen
 

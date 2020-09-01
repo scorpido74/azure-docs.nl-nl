@@ -7,12 +7,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336618"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075253"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -30,10 +31,10 @@ Azure Resource Manager Sjablonen helpen u de resources te definiëren die voor e
 Deze Service Bus Azure Resource Manager sjablonen kunnen worden gedownload en geïmplementeerd. Klik op de volgende koppelingen voor meer informatie over elk item, met koppelingen naar de sjablonen op GitHub:
 
 * [Een Service Bus-naamruimte maken](service-bus-resource-manager-namespace.md)
-* [Een Service Bus naam ruimte maken met wachtrij](service-bus-resource-manager-namespace-queue.md)
-* [Een Service Bus naam ruimte met een onderwerp en een abonnement maken](service-bus-resource-manager-namespace-topic.md)
-* [Een Service Bus naam ruimte maken met een wachtrij-en autorisatie regel](service-bus-resource-manager-namespace-auth-rule.md)
-* [Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Een Service Bus-naamruimte met een wachtrij maken](service-bus-resource-manager-namespace-queue.md)
+* [Een Service Bus-naamruimte met een onderwerp en abonnement maken](service-bus-resource-manager-namespace-topic.md)
+* [Een Service Bus-naamruimte met een wachtrij en een autorisatieregel maken](service-bus-resource-manager-namespace-auth-rule.md)
+* [Een Service Bus-naamruimte met een onderwerp, een abonnement en een regel maken](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056530"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074531"
 ---
 # <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
 
@@ -29,6 +29,8 @@ Zie [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)voor meer i
 
 > [!IMPORTANT]
 > BLOB-versie beheer kan u niet helpen bij het herstellen van een onbedoelde verwijdering van een opslag account of container. Als u onbedoeld verwijderen van het opslag account wilt voor komen, configureert u een **CannotDelete** -vergren deling voor de bron van het opslag account. Zie [resources vergren delen om onverwachte wijzigingen](../../azure-resource-manager/management/lock-resources.md)te voor komen voor meer informatie over het vergren delen van Azure-resources.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-versioning-works"></a>Hoe BLOB versie beheer werkt
 
@@ -163,7 +165,7 @@ Wanneer u een moment opname van een blob met een versie maakt, wordt er een nieu
 
 In het volgende diagram ziet u wat er gebeurt wanneer u een moment opname van een blob met een versie maakt. In het diagram bevatten de BLOB-versies en moment opnamen met versie 2 en 3 identieke gegevens.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram van de moment opnamen van een blob met versie":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram van de moment opnamen van een blob met versie ":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Bewerkingen op BLOB-versies autoriseren
 
@@ -198,8 +200,8 @@ De volgende tabel bevat de vereiste machtiging voor een SAS om een BLOB-versie t
 
 BLOB-versie beheer is beschikbaar als preview in de volgende regio's:
 
-- VS - oost 2
-- VS - centraal
+- US - oost 2
+- Central US
 - Europa - noord
 - Europa - west
 - Frankrijk - centraal
@@ -240,7 +242,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -264,7 +266,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 

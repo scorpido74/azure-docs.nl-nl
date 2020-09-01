@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602629"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075423"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall implementeren en configureren met behulp van Azure CLI
 
@@ -35,13 +35,12 @@ Voor dit artikel maakt u een vereenvoudigd single VNet met drie subnetten voor e
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een testnetwerkomgeving instellen
-> * Een firewall implementeren
-> * Een standaardroute maken
-> * Een toepassingsregel configureren om toegang tot www.google.com toe te staan
-> * Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
-> * De firewall testen
+* Een testnetwerkomgeving instellen
+* Een firewall implementeren
+* Een standaardroute maken
+* Een toepassingsregel configureren om toegang tot www.google.com toe te staan
+* Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
+* De firewall testen
 
 Als u wilt, kunt u deze procedure volt ooien met behulp van de [Azure Portal](tutorial-firewall-deploy-portal.md) of [Azure PowerShell](deploy-ps.md).
 

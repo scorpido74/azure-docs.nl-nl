@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001056"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074403"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>BLOB-versie beheer inschakelen en beheren (preview)
 
@@ -24,6 +24,8 @@ U kunt Blob Storage-versie beheer (preview) inschakelen om automatisch eerdere v
 In dit artikel wordt beschreven hoe u BLOB-versie beheer in-of uitschakelt voor het opslag account met behulp van de Azure Portal of een Azure Resource Manager sjabloon.
 
 U moet zich registreren voor de preview voordat u BLOB-versie beheer inschakelt. Zie voor meer informatie over de BLOB-versie, inclusief hoe u zich kunt registreren voor de preview, [BLOB-versie beheer (preview)](versioning-overview.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>Blobversiebeheer inschakelen
 

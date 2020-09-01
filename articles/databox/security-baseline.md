@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1961aa3ee21d5b04108b3107731560d747a2c963
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497321"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075559"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure-beveiligings basislijn voor Azure Data Box
 
@@ -216,11 +216,11 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Richt lijnen**: Houd een inventarisatie bij van de gebruikers accounts met beheerders toegang tot uw Azure data box. U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. u kunt bepalen wie toegang heeft tot uw bestelling wanneer de order voor het eerst wordt gemaakt. Stel Azure-rollen in verschillende bereiken in om de toegang tot de Data Box order te beheren. Een Azure-rol bepaalt het type toegang – lezen/schrijven, alleen-lezen, lezen-schrijven naar een subset van bewerkingen.
+**Richt lijnen**: Houd een inventarisatie bij van de gebruikers accounts met beheerders toegang tot uw Azure data box. U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. u kunt bepalen wie toegang heeft tot uw bestelling wanneer de order voor het eerst wordt gemaakt. Stel Azure-rollen in verschillende bereiken in om de toegang tot de Data Box order te beheren. Een Azure-rol bepaalt het type toegang – lezen/schrijven, alleen-lezen, lezen-schrijven naar een subset van bewerkingen.
 
 * [Informatie over aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [RBAC configureren voor werkmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Azure RBAC voor werkmappen configureren](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Meer informatie over het instellen van toegangs beheer voor de order](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
 
@@ -427,7 +427,7 @@ Tijdens het uploaden van gegevens naar Azure zijn het Data Box apparaat en de se
 
 **Verantwoordelijkheid**: niet van toepassing
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Hulp**: Zorg ervoor dat u eigenaar of Inzender toegang tot het abonnement hebt om een Data Box order te maken. U kunt ook Data Box lezer en Data Box Inzender rollen op het niveau van de resource definiëren.
 

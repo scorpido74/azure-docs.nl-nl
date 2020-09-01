@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 097b3c71b01a8ad0e930d7aa0d7be46a1e835e1a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: edbce017b1090a029d49c9f2f8812e7e65133fcb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495162"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073128"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs (preview-versie)
 
@@ -31,6 +31,8 @@ In het volgende diagram ziet u hoe object replicatie blok-blobs van een bron ops
 :::image type="content" source="media/object-replication-overview/object-replication-diagram.svg" alt-text="Diagram waarin wordt weer gegeven hoe object replicatie werkt":::
 
 Zie [Configure object Replication (preview)](object-replication-configure.md)voor meer informatie over het configureren van object replicatie.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="object-replication-policies-and-rules"></a>Beleid en regels voor object replicatie
 
@@ -111,7 +113,7 @@ Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Voer de volgende opdrachten uit om u te registreren voor de preview-versie met Azure CLI:
 
@@ -143,7 +145,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Voer de volgende opdrachten uit om de status van uw registratie aanvragen te controleren met behulp van Azure CLI:
 

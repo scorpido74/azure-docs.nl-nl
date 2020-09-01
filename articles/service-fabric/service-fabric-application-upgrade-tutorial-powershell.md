@@ -3,12 +3,13 @@ title: Upgrade van de app Service Fabric met behulp van Power shell
 description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing implementeert, hoe u de code wijzigt en een upgrade uitvoert met behulp van Power shell.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064584"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075185"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade van toepassing Service Fabric met behulp van Power shell
 > [!div class="op_single_selector"]
