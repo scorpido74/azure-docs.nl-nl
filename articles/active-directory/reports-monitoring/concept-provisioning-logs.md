@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826868"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229868"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
 
@@ -34,8 +34,8 @@ De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de v
     - **Inrichtings logboeken** : systeem activiteiten bieden over gebruikers, groepen en rollen die zijn ingericht door de Azure AD-inrichtings service. 
 
 - **Beveiliging** 
-    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is.
-    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](../identity-protection/overview-identity-protection.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is.
+    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](../identity-protection/overview-identity-protection.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
 In dit onderwerp vindt u een overzicht van het inrichtings rapport.
 
@@ -118,7 +118,7 @@ Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum 
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 - Overgeslagen
@@ -218,7 +218,7 @@ Op het tabblad **samen vatting** vindt u een overzicht van wat er is gebeurd en 
 
 - Er is momenteel geen ondersteuning voor log Analytics.
 
-- Wanneer u de inrichtings logboeken vanuit de context van een app opent, worden de gebeurtenissen niet automatisch gefilterd op de specifieke app, zoals bij de controle Logboeken.
+- Er worden mogelijk overgeslagen gebeurtenissen weer geven voor gebruikers die zich niet in het bereik bevinden. Dit wordt verwacht, vooral wanneer het synchronisatie bereik is ingesteld op alle gebruikers en groepen. Onze service evalueert alle objecten in de Tenant, zelfs degene die buiten het bereik vallen. 
 
 ## <a name="error-codes"></a>Foutcodes
 
@@ -226,28 +226,26 @@ Gebruik de onderstaande tabel voor meer informatie over het oplossen van fouten 
 
 |Foutcode|Beschrijving|
 |---|---|
-|Conflict, EntryConflict|Corrigeer de conflicterende kenmerk waarden in azure AD of de toepassing of Controleer de overeenkomende kenmerk configuratie als het conflicterende gebruikers account zou moeten overeenkomen en moeten worden overgenomen. Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) voor meer informatie over het configureren van overeenkomende kenmerken.|
+|Conflict, EntryConflict|Corrigeer de conflicterende kenmerk waarden in azure AD of de toepassing of Controleer de overeenkomende kenmerk configuratie als het conflicterende gebruikers account zou moeten overeenkomen en moeten worden overgenomen. Raadpleeg de volgende [documentatie](../app-provisioning/customize-application-attributes.md) voor meer informatie over het configureren van overeenkomende kenmerken.|
 |TooManyRequests|De doel-app heeft deze poging geweigerd de gebruiker bij te werken omdat deze is overbelast en te veel aanvragen ontvangt. Er is niets te doen. Deze poging wordt automatisch buiten gebruik gesteld. Micro soft is ook op de hoogte gesteld van dit probleem.|
 |InternalServerError |De doel-app heeft een onverwachte fout geretourneerd. Er is mogelijk een service probleem met de doel toepassing die verhindert dat dit werkt. Deze poging wordt binnen 40 minuten automatisch ingetrokken.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, niet geautoriseerd| Azure AD kan worden geverifieerd met de doel toepassing, maar is niet gemachtigd om de update uit te voeren. Lees alle instructies van de doel toepassing en de bijbehorende [zelf studie](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)over toepassingen.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, niet geautoriseerd| Azure AD kan worden geverifieerd met de doel toepassing, maar is niet gemachtigd om de update uit te voeren. Lees alle instructies van de doel toepassing en de bijbehorende [zelf studie](../saas-apps/tutorial-list.md)over toepassingen.|
 |UnprocessableEntity|De doel toepassing heeft een onverwacht antwoord geretourneerd. De configuratie van de doel toepassing is mogelijk niet juist of er is mogelijk een service probleem met de doel toepassing die verhindert dat dit werkt.|
 |WebExceptionProtocolError |Er is een HTTP-protocol fout opgetreden tijdens het verbinden met de doel toepassing. Er is niets te doen. Deze poging wordt binnen 40 minuten automatisch ingetrokken.|
-|InvalidAnchor|Een gebruiker die eerder is gemaakt of die overeenkomt met de inrichtings service, bestaat niet meer. Controleer of de gebruiker bestaat. Als u een nieuwe overeenkomst wilt afdwingen van alle gebruikers, gebruikt u de MS Graph API om de [taak opnieuw te starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Houd er rekening mee dat bij het opnieuw starten van de inrichting een eerste cyclus wordt geactiveerd. Dit kan enige tijd duren. Ook wordt de cache verwijderd die wordt gebruikt door de inrichtings service, wat betekent dat alle gebruikers en groepen in de Tenant opnieuw moeten worden geëvalueerd en dat bepaalde inrichtings gebeurtenissen kunnen worden verwijderd.|
-|Niet geïmplementeerd | De doel-app heeft een onverwacht antwoord geretourneerd. De configuratie van de app is mogelijk niet juist of er is mogelijk een service probleem met de doel-app die verhindert dat dit werkt. Lees alle instructies van de doel toepassing en de bijbehorende [zelf studie](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)over toepassingen. |
-|MandatoryFieldsMissing, MissingValues |De gebruiker kan niet worden gemaakt omdat vereiste waarden ontbreken. Corrigeer de ontbrekende kenmerk waarden in de bron record of Controleer de overeenkomende kenmerk configuratie om ervoor te zorgen dat de vereiste velden niet worden wegge laten. Meer [informatie](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) over het configureren van overeenkomende kenmerken.|
-|SchemaAttributeNotFound |Kan de bewerking niet uitvoeren omdat er een kenmerk is opgegeven dat niet bestaat in de doel toepassing. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) over het aanpassen van kenmerken en zorg ervoor dat uw configuratie juist is.|
+|InvalidAnchor|Een gebruiker die eerder is gemaakt of die overeenkomt met de inrichtings service, bestaat niet meer. Controleer of de gebruiker bestaat. Als u een nieuwe overeenkomst wilt afdwingen van alle gebruikers, gebruikt u de MS Graph API om de [taak opnieuw te starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Houd er rekening mee dat bij het opnieuw starten van de inrichting een eerste cyclus wordt geactiveerd. Dit kan enige tijd duren. Ook wordt de cache verwijderd die wordt gebruikt door de inrichtings service, wat betekent dat alle gebruikers en groepen in de Tenant opnieuw moeten worden geëvalueerd en dat bepaalde inrichtings gebeurtenissen kunnen worden verwijderd.|
+|Niet geïmplementeerd | De doel-app heeft een onverwacht antwoord geretourneerd. De configuratie van de app is mogelijk niet juist of er is mogelijk een service probleem met de doel-app die verhindert dat dit werkt. Lees alle instructies van de doel toepassing en de bijbehorende [zelf studie](../saas-apps/tutorial-list.md)over toepassingen. |
+|MandatoryFieldsMissing, MissingValues |De gebruiker kan niet worden gemaakt omdat vereiste waarden ontbreken. Corrigeer de ontbrekende kenmerk waarden in de bron record of Controleer de overeenkomende kenmerk configuratie om ervoor te zorgen dat de vereiste velden niet worden wegge laten. Meer [informatie](../app-provisioning/customize-application-attributes.md) over het configureren van overeenkomende kenmerken.|
+|SchemaAttributeNotFound |Kan de bewerking niet uitvoeren omdat er een kenmerk is opgegeven dat niet bestaat in de doel toepassing. Raadpleeg de [documentatie](../app-provisioning/customize-application-attributes.md) over het aanpassen van kenmerken en zorg ervoor dat uw configuratie juist is.|
 |InternalError |Er is een interne service fout opgetreden in de Azure AD-inrichtings service. Er is niets te doen. Deze poging wordt binnen 40 minuten automatisch opnieuw geprobeerd.|
 |InvalidDomain |De bewerking kan niet worden uitgevoerd vanwege een kenmerk waarde met een ongeldige domein naam. Werk de domein naam op de gebruiker bij of voeg deze toe aan de lijst met toegestane items in de doel toepassing. |
 |Time-out |De bewerking kan niet worden voltooid omdat de doel toepassing te lang duurde om te reageren. Er is niets te doen. Deze poging wordt binnen 40 minuten automatisch opnieuw geprobeerd.|
 |LicenseLimitExceeded|De gebruiker kan niet worden gemaakt in de doel toepassing omdat er geen beschik bare licenties voor deze gebruiker zijn. U kunt aanvullende licenties voor de doel toepassing aanschaffen of uw gebruikers toewijzingen en configuratie van kenmerk toewijzing controleren om ervoor te zorgen dat de juiste gebruikers zijn toegewezen met de juiste kenmerken.|
-|DuplicateTargetEntries  |De bewerking kan niet worden voltooid omdat er meer dan één gebruiker in de doel toepassing is gevonden met de geconfigureerde overeenkomende kenmerken. Verwijder de dubbele gebruiker uit de doel toepassing of configureer de kenmerk toewijzingen opnieuw, zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)wordt beschreven.|
-|DuplicateSourceEntries | De bewerking kan niet worden voltooid omdat er meer dan één gebruiker met de geconfigureerde overeenkomende kenmerken is gevonden. Verwijder de dubbele gebruiker of configureer de kenmerk toewijzingen opnieuw, zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)wordt beschreven.|
+|DuplicateTargetEntries  |De bewerking kan niet worden voltooid omdat er meer dan één gebruiker in de doel toepassing is gevonden met de geconfigureerde overeenkomende kenmerken. Verwijder de dubbele gebruiker uit de doel toepassing of configureer de kenmerk toewijzingen opnieuw, zoals [hier](../app-provisioning/customize-application-attributes.md)wordt beschreven.|
+|DuplicateSourceEntries | De bewerking kan niet worden voltooid omdat er meer dan één gebruiker met de geconfigureerde overeenkomende kenmerken is gevonden. Verwijder de dubbele gebruiker of configureer de kenmerk toewijzingen opnieuw, zoals [hier](../app-provisioning/customize-application-attributes.md)wordt beschreven.|
 |ImportSkipped | Wanneer elke gebruiker wordt geëvalueerd, wordt geprobeerd de gebruiker te importeren uit het bron systeem. Deze fout treedt doorgaans op wanneer de gebruiker die wordt geïmporteerd, de overeenkomende eigenschap die is gedefinieerd in uw kenmerk toewijzingen ontbreekt. Zonder dat er een waarde aanwezig is in het gebruikers object voor het overeenkomende kenmerk, kunnen we geen bereik-, zoek-of export wijzigingen evalueren. Let op: de aanwezigheid van deze fout geeft niet aan dat de gebruiker zich in het bereik bevindt omdat er nog geen bereik voor de gebruiker is geëvalueerd.|
 |EntrySynchronizationSkipped | De inrichtings service heeft een query uitgevoerd op het bron systeem en heeft de gebruiker geïdentificeerd. Er is geen verdere actie ondernomen voor de gebruiker en deze is overgeslagen. De overs Laan kan worden veroorzaakt door de gebruiker buiten het bereik of de gebruiker die al in het doel systeem aanwezig is, zonder verdere wijzigingen vereist.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De status van het inrichten van gebruikers controleren](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [De status van het inrichten van gebruikers controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](../app-provisioning/application-provisioning-config-problem.md)

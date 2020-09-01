@@ -7,6 +7,8 @@
     - name: Nieuw in Media Services
       displayName: release notes
       href: release-notes.md
+    - name: Media Services-naleving
+      href: concept-compliance.md
 - name: Snelstartgidsen
   items:
     - name: Uw omgeving instellen
@@ -45,33 +47,34 @@
           href: encrypt-content-quickstart.md
 - name: Zelfstudies
   items:
-    - name: Externe bestanden coderen en video streamen
+    - name: .NET
       items:
-        - name: Met REST
-          displayName: 'encoding, job, transform'
+        - name: Een extern bestand REST coderen en streamen
           href: stream-files-tutorial-with-rest.md
-        - name: Met CLI
-          href: stream-files-cli-quickstart.md
-        - name: Met .NET
+        - name: Een extern bestand .NET coderen en streamen
           href: stream-files-dotnet-quickstart.md
-        - name: Met Node.js
+        - name: Een geüpload bestand coderen en streamen
+          href: stream-files-tutorial-with-api.md
+        - name: Live streamen
+          href: stream-live-tutorial-with-api.md
+        - name: Uw video analyseren
+          href: analyze-videos-tutorial-with-api.md
+        - name: Dynamisch versleutelen met AES-128
+          href: protect-with-aes128.md
+        - name: Dynamisch versleutelen met DRM
+          href: protect-with-drm.md
+    - name: CLI
+      items:
+        - name: Een extern bestand CLI coderen en streamen
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: Een extern bestand Node.js coderen en streamen
           href: stream-files-nodejs-quickstart.md
-    - name: AMS-gebeurtenissen opslaan in Azure Log Analytics
-      href: tutorial-events-log-analytics.md
-    - name: Geüploade bestanden coderen en video streamen
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: Live streamen
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: Uw video analyseren
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: Dynamisch versleutelen met AES-128
-      href: protect-with-aes128.md
-    - name: Dynamisch versleutelen met DRM
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure Portal
+      items:
+        - name: AMS-gebeurtenissen opslaan in Azure Log Analytics
+          href: tutorial-events-log-analytics.md
 - name: Voorbeelden
   items:
     - name: Voorbeelden van Media Services v3
@@ -378,7 +381,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Aan de slag
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.media/allversions

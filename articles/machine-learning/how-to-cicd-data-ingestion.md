@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843705"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228882"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps voor een pijp lijn voor gegevens opname
 
@@ -64,7 +64,7 @@ De code wordt bijvoorbeeld opgeslagen in een Azure DevOps-, GitHub-of GitLab-ops
 De gegevens technici werken met de bron code van python-notebook lokaal in een IDE (bijvoorbeeld [Visual Studio code](https://code.visualstudio.com)) of rechtstreeks in de Databricks-werk ruimte. Zodra de code wijzigingen zijn voltooid, worden ze samengevoegd met de opslag plaats na een vertakkings beleid.
 
 > [!TIP] 
-> We raden u aan de code op te slaan in `.py` bestanden in plaats van in de Jupyter-notebook- `.ipynb` indeling. Het verbetert de Lees baarheid van de code en maakt automatische controle van de code kwaliteit mogelijk in het CI-proces.
+> We raden u aan de code op te slaan in `.py` bestanden in plaats van in `.ipynb` Jupyter notebook indeling. Het verbetert de Lees baarheid van de code en maakt automatische controle van de code kwaliteit mogelijk in het CI-proces.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory bron code
 
@@ -80,7 +80,7 @@ Het ultieme doel van het proces voor continue integratie is het verzamelen van h
 
 Het CI-proces voor de python-notebooks haalt de code op uit de vertakking voor samen werking (bijvoorbeeld ***Master*** of ***develope***) en voert de volgende activiteiten uit:
 * Code linting
-* Moduletests uitvoeren
+* Het testen van modules
 * De code opslaan als een artefact
 
 In het volgende code fragment ziet u de implementatie van deze stappen in een Azure DevOps ***yaml*** -pijp lijn:

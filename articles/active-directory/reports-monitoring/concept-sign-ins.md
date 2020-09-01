@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816079"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228763"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -32,8 +32,8 @@ De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de v
     - **Aanmeldingen** : informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
     - **Audit logboeken**  -  [Audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
 - **Beveiliging** 
-    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging door iemand die niet de rechtmatige eigenaar van een gebruikers account is.
-    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](../identity-protection/overview-identity-protection.md) is een indicator voor een aanmeldings poging door iemand die niet de rechtmatige eigenaar van een gebruikers account is.
+    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](../identity-protection/overview-identity-protection.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
 In dit artikel vindt u een overzicht van het rapport met aanmeldingen.
 
@@ -149,7 +149,7 @@ De **locatie** -de locatie van de verbinding vanaf:
 |Exchange ActiveSync:| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
 |Browser|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
 |Exchange ActiveSync:| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiceSync om verbinding te maken met Exchange Online|
-|Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
+|Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
 |Exchange-webservices| |Een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
 |IMAP4| |Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.|
 |MAPI via HTTP| |Gebruikt door Outlook 2010 en hoger.|
@@ -271,13 +271,12 @@ Met de optie **Aanmeldingen** krijgt u een volledig overzicht van alle aanmeldin
 
 ## <a name="office-365-activity-logs"></a>Office 365-activiteiten logboeken
 
-U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Denk na over het punt dat, Office 365-activiteit en Azure AD-activiteiten Logboeken een aanzienlijk aantal Directory bronnen delen. Alleen het Microsoft 365-beheer centrum biedt een volledig overzicht van de activiteiten logboeken van Office 365. 
+U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](/office365/admin/admin-overview/about-the-admin-center). Denk na over het punt dat, Office 365-activiteit en Azure AD-activiteiten Logboeken een aanzienlijk aantal Directory bronnen delen. Alleen het Microsoft 365-beheer centrum biedt een volledig overzicht van de activiteiten logboeken van Office 365. 
 
-U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Fout codes voor aanmeldings activiteiten rapport](reference-sign-ins-error-codes.md)
 * [Beleid voor het bewaren van Azure AD-gegevens](reference-reports-data-retention.md)
 * [Vertragingen van Azure AD-rapporten](reference-reports-latencies.md)
-

@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fd49ddcb59e0d0f3a706f566cf0c011116b1501a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856815"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229222"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Maak HDInsight-clusters met Azure Data Lake Storage Gen1 met behulp van de Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal gebruiken](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [De Azure-portal gebruiken](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Power shell gebruiken (voor standaard opslag)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Power shell gebruiken (voor extra opslag)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Resource Manager gebruiken](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -85,18 +85,11 @@ In deze sectie configureert u Data Lake Storage Gen1 toegang vanaf HDInsight-clu
 Vanuit de Azure Portal, kunt u een bestaande Service-Principal gebruiken of een nieuwe maken.
 
 Een service-principal maken op basis van de Azure Portal:
-
-1. Selecteer **Data Lake Store toegang** via de Blade opslag.
-1. Selecteer op de Blade **Data Lake Storage gen1 toegang** de optie **nieuwe maken**.
-1. Selecteer **Service-Principal**en volg de instructies voor het maken van een service-principal.
-1. Down load het certificaat als u het later opnieuw wilt gebruiken. Het downloaden van het certificaat is handig als u dezelfde service-principal wilt gebruiken bij het maken van extra HDInsight-clusters.
-
-    ![Service-Principal toevoegen aan HDInsight-cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "Service-Principal toevoegen aan HDInsight-cluster")
-
-1. Selecteer **toegang** om de toegang tot de map te configureren.  Zie [machtigingen voor bestanden configureren](#configure-file-permissions).
+1. Zie [Service-Principal en certificaten maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) met behulp van Azure Active Directory.
 
 Een bestaande Service-Principal gebruiken van de Azure Portal:
 
+1. De Service-Principal moet eigenaars machtigingen hebben voor het opslag account. Zie [machtigingen voor de service-principal instellen als eigenaar van het opslag account](#configure-serviceprincipal-permissions)
 1. Selecteer **Data Lake Store toegang**.
 1. Selecteer op de Blade **Data Lake Storage gen1 toegang** de optie **bestaande gebruiken**.
 1. Selecteer **Service-Principal**en selecteer vervolgens een service-principal.
@@ -105,6 +98,10 @@ Een bestaande Service-Principal gebruiken van de Azure Portal:
     ![Service-Principal toevoegen aan HDInsight-cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Service-Principal toevoegen aan HDInsight-cluster")
 
 1. Selecteer **toegang** om de toegang tot de map te configureren.  Zie [machtigingen voor bestanden configureren](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Stel de machtigingen voor de Service-Principal in op eigenaar van het opslag account
+1. Klik op de Blade Access Control (IAM) van het opslag account op een roltoewijzing toevoegen. 
+2. Op de Blade een roltoewijzing toevoegen selecteert u rol als eigenaar en selecteert u de SPN en klikt u op opslaan.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Bestands machtigingen configureren
 
@@ -130,7 +127,7 @@ Om machtigingen toe te wijzen op het hoofd niveau van het Data Lake Storage Gen1
 
 1. Klik op **selecteren** onder aan de pagina.
 1. Selecteer **uitvoeren** om machtigingen toe te wijzen.
-1. Selecteer **Voltooid**.
+1. Selecteer **Gereed**.
 
 Machtigingen toewijzen op het basis niveau van het HDInsight-cluster:
 
@@ -140,7 +137,7 @@ Machtigingen toewijzen op het basis niveau van het HDInsight-cluster:
 1. Stel de machtigingen voor de map in.  Standaard zijn lezen, schrijven en uitvoeren geselecteerd.
 1. Klik op **selecteren** onder aan de pagina.
 1. Selecteer **Uitvoeren**.
-1. Selecteer **Voltooid**.
+1. Selecteer **Gereed**.
 
 Als u Data Lake Storage Gen1 als extra opslag gebruikt, moet u alleen machtigingen toewijzen voor de mappen die u wilt openen vanuit het HDInsight-cluster. In de onderstaande scherm afbeelding hebt u bijvoorbeeld alleen toegang tot de map **mynewfolder** in een Data Lake Storage gen1-account.
 
@@ -176,9 +173,9 @@ CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.a
 
 Beschreven
 
-* `adl://hdiadlsg1storage.azuredatalakestore.net/`is de hoofdmap van het Data Lake Storage Gen1-account.
-* `/clusters/myhdiadlcluster`is de basis van de cluster gegevens die u hebt opgegeven tijdens het maken van het cluster.
-* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/`is de locatie van het voorbeeld bestand dat u in de query hebt gebruikt.
+* `adl://hdiadlsg1storage.azuredatalakestore.net/` is de hoofdmap van het Data Lake Storage Gen1-account.
+* `/clusters/myhdiadlcluster` is de basis van de cluster gegevens die u hebt opgegeven tijdens het maken van het cluster.
+* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` is de locatie van het voorbeeld bestand dat u in de query hebt gebruikt.
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-additional-storage"></a>Een Hive-query uitvoeren op gegevens in een Data Lake Storage Gen1 account (als extra opslag)
 
@@ -197,7 +194,7 @@ U kunt een Spark-cluster gebruiken om Spark-taken uit te voeren op gegevens die 
 
 U kunt het Data Lake Storage Gen1-account gebruiken om gegevens van een storm-topologie te schrijven. Zie [Azure data Lake Storage gen1 gebruiken met Apache Storm met HDInsight](../hdinsight/storm/apache-storm-write-data-lake-store.md)voor instructies over het uitvoeren van dit scenario.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Power shell: een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)

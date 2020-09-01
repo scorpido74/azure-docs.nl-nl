@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177275"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227029"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
 
@@ -42,7 +42,7 @@ In het volgende diagram ziet u de basis stappen die u moet volgen wanneer u een 
 
 1. Voorbereiden voor de overdracht
 
-1. Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
+1. Het Azure-abonnement overdragen naar een andere map
 
 1. Resources opnieuw maken in de doel directory, zoals roltoewijzingen, aangepaste rollen en beheerde identiteiten
 
@@ -269,7 +269,7 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
 > [!WARNING]
 > Wanneer u het abonnement overdraagt, worden alle roltoewijzingen in de bronmap **permanent** verwijderd en kunnen deze niet worden hersteld. U kunt niet meer terugkeren zodra u het abonnement hebt overgedragen. Zorg ervoor dat u de vorige stappen hebt voltooid voordat u deze stap uitvoert.
 
-1. Bepaal of u ook het eigendom van de facturering wilt overdragen.
+1. Bepaal of u ook het eigendom van de facturering wilt overdragen aan een ander account.
 
 1. Zet het abonnement over naar een andere map.
 

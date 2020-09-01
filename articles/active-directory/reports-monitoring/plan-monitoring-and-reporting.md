@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829626"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229749"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Een Azure Active Directory rapportage en bewakings implementatie plannen
 
@@ -47,9 +47,9 @@ Met Azure AD monitoring kunt u Logboeken routeren naar:
 * een Azure-Event Hub waar u kunt integreren met uw bestaande SIEM-hulpprogram ma's zoals Splunk, Sumologic of QRadar.
 
 > [!NOTE]
-We hebben onlangs begonnen met het gebruik van de term Azure Monitor Logboeken in plaats van Log Analytics. Logboek gegevens worden nog steeds opgeslagen in een Log Analytics-werk ruimte en worden nog steeds verzameld en geanalyseerd door dezelfde Log Analytics-service. De terminologie wordt bijgewerkt zodat deze beter overeenkomt met de rol van de [Logboeken in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection). Zie [Azure monitor terminologie wijzigen](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand) voor meer informatie.
+We hebben onlangs begonnen met het gebruik van de term Azure Monitor Logboeken in plaats van Log Analytics. Logboekgegevens worden nog steeds opgeslagen in een Log Analytics-werkruimte, en worden nog steeds verzameld en geanalyseerd met dezelfde Log Analytics-service. De terminologie wordt bijgewerkt om de rol van [logboeken in Azure Monitor](../../azure-monitor/platform/data-platform.md) beter te weerspiegelen. Zie [Wijzigingen in Azure Monitor-terminologie](../../azure-monitor/terminology.md) voor meer informatie.
 
-Meer [informatie over het Bewaar beleid voor rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention).
+Meer [informatie over het Bewaar beleid voor rapporten](./reference-reports-data-retention.md).
 
 ### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Licenties en vereisten voor Azure AD-rapportage en-bewaking
 
@@ -61,7 +61,7 @@ Als u Azure AD-bewaking en-rapportage wilt implementeren, hebt u een gebruiker n
 
 Afhankelijk van de uiteindelijke bestemming van uw logboek gegevens, hebt u een van de volgende opties nodig:
 
-* Een Azure-opslagaccount waarop u ListKeys-machtigingen hebt. We raden u aan om een algemeen opslagaccount te gebruiken en geen Blob Storage-account. Raadpleeg de [Azure Storage-prijscalculator](https://azure.microsoft.com/pricing/calculator/?service=storage) voor opslagprijzen.
+* Een Azure-opslagaccount waarop u ListKeys-machtigingen hebt. We raden u aan om een algemeen opslagaccount te gebruiken en geen Blob Storage-account. Zie de [Prijscalculator voor Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage) voor prijsinformatie over opslag.
 
 * Een Azure Event Hubs-naam ruimte om te integreren met SIEM-oplossingen van derden.
 
@@ -115,25 +115,25 @@ Met Azure AD monitoring kunt u uw Azure AD-activiteiten logboeken door sturen na
 
 #### <a name="archive-logs-in-a-storage-account"></a>Logboeken archiveren in een opslag account
 
-Door Logboeken te routeren naar een Azure Storage-account, kunt u ze langer houden dan de standaard Bewaar periode die wordt beschreven in het [Bewaar beleid](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention). Gebruik deze methode als u uw logboeken wilt archiveren, maar deze niet wilt integreren met een SIEM-systeem en geen doorlopende query's en analyses nodig hebt. U kunt nog steeds zoeken op aanvraag.
+Door Logboeken te routeren naar een Azure Storage-account, kunt u ze langer houden dan de standaard Bewaar periode die wordt beschreven in het [Bewaar beleid](./reference-reports-data-retention.md). Gebruik deze methode als u uw logboeken wilt archiveren, maar deze niet wilt integreren met een SIEM-systeem en geen doorlopende query's en analyses nodig hebt. U kunt nog steeds zoeken op aanvraag.
 
-Ontdek hoe u [gegevens routeert naar uw opslagaccount](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account).
+Ontdek hoe u [gegevens routeert naar uw opslagaccount](./quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Logboeken verzenden naar logboeken van Azure Monitor
 
-Met [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) worden controle gegevens uit verschillende bronnen geconsolideerd. Het bevat ook een query taal en analyse-engine waarmee u inzicht krijgt in de werking van uw toepassingen en het gebruik van resources. Door Azure AD-activiteiten logboeken naar Azure Monitor-logboeken te verzenden, kunt u snel verzamelde gegevens ophalen, bewaken en er waarschuwingen op ontvangen. Gebruik deze methode als u geen bestaande SIEM-oplossing hebt waarnaar u uw gegevens rechtstreeks wilt verzenden, maar query's en analyse wilt uitvoeren. Zodra uw gegevens zich in Azure Monitor logboeken bevinden, kunt u deze vervolgens naar Event Hub en van daaruit verzenden naar een SIEM als u wilt.
+Met [Azure monitor logboeken](../../azure-monitor/log-query/log-query-overview.md) worden controle gegevens uit verschillende bronnen geconsolideerd. Het bevat ook een query taal en analyse-engine waarmee u inzicht krijgt in de werking van uw toepassingen en het gebruik van resources. Door Azure AD-activiteiten logboeken naar Azure Monitor-logboeken te verzenden, kunt u snel verzamelde gegevens ophalen, bewaken en er waarschuwingen op ontvangen. Gebruik deze methode als u geen bestaande SIEM-oplossing hebt waarnaar u uw gegevens rechtstreeks wilt verzenden, maar query's en analyse wilt uitvoeren. Zodra uw gegevens zich in Azure Monitor logboeken bevinden, kunt u deze vervolgens naar Event Hub en van daaruit verzenden naar een SIEM als u wilt.
 
-Lees meer over [het verzenden van gegevens naar de logboeken van Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+Lees meer over [het verzenden van gegevens naar de logboeken van Azure Monitor](./howto-integrate-activity-logs-with-log-analytics.md).
 
 U kunt ook de vooraf gemaakte weer gaven voor Azure AD-activiteiten logboeken installeren om veelvoorkomende scenario's met betrekking tot aanmeldings-en controle gebeurtenissen te bewaken.
 
-Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD installeert en gebruikt](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views).
+Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD installeert en gebruikt](./howto-install-use-log-analytics-views.md).
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>Stream-logboeken naar uw Azure Event Hub
 
 Met routerings logboeken naar een Azure-Event Hub kunt u integratie met SIEM-hulpprogram ma's van derden. Zo kunt u gegevens van Azure Active Directory-activiteitenlogboeken combineren met andere gegevens die worden beheerd door uw SIEM en meer inzicht krijgen in uw omgeving. 
 
-Ontdek hoe u [logboeken streamt naar een Event Hub](https://docs.microsoft.com//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Ontdek hoe u [logboeken streamt naar een Event Hub](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Plan bewerkingen en beveiliging voor Azure AD-rapportage en-bewaking
 
@@ -151,9 +151,9 @@ De volgende rollen kunnen Azure AD-rapporten lezen:
 
 * Rapportlezer
 
-Meer informatie over [Azure AD-beheerders rollen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
+Meer informatie over [Azure AD-beheerders rollen](../users-groups-roles/directory-assign-admin-roles.md).
 
-*Pas het concept van minimale bevoegdheden altijd toe om het risico van inbreuk op een account te verminderen*. Overweeg het implementeren van [privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) om uw organisatie verder te beveiligen.
+*Pas het concept van minimale bevoegdheden altijd toe om het risico van inbreuk op een account te verminderen*. Overweeg het implementeren van [privileged Identity Management](../privileged-identity-management/pim-configure.md) om uw organisatie verder te beveiligen.
 
 ##  
 
@@ -163,27 +163,27 @@ Afhankelijk van de beslissingen die u eerder hebt gemaakt met behulp van de bove
 
 ### <a name="consume-and-archive-azure-ad-logs"></a>Azure AD-Logboeken gebruiken en archiveren
 
-[Activiteitenrapporten zoeken in de Azure-portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
+[Activiteitenrapporten zoeken in de Azure-portal](./howto-find-activity-reports.md)
 
-[Azure AD-logboeken archiveren in een Azure Storage-account](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
+[Azure AD-logboeken archiveren in een Azure Storage-account](./quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 ### <a name="implement-monitoring-and-analytics"></a>Bewaking en analyse implementeren
 
-[Logboeken naar Azure Monitor verzenden](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+[Logboeken naar Azure Monitor verzenden](./howto-integrate-activity-logs-with-log-analytics.md)
 
-[De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
+[De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken](./howto-install-use-log-analytics-views.md)
 
-[Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
+[Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Schema van audit logboeken interpreteren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
+* [Schema van audit logboeken interpreteren in Azure Monitor](./reference-azure-monitor-audit-log-schema.md)
 
-* [Het schema voor logboek registratie interpreteert in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
+* [Het schema voor logboek registratie interpreteert in Azure Monitor](./reference-azure-monitor-sign-ins-log-schema.md)
 
- * [Azure AD-logboeken streamen naar een Azure-Event Hub](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
+ * [Azure AD-logboeken streamen naar een Azure-Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 
-* [Integrate Azure AD logs with Splunk by using Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-integrate-activity-logs-with-splunk) (Azure AD-logboeken integreren met Splunk met behulp van Azure Monitor)
+* [Integrate Azure AD logs with Splunk by using Azure Monitor](./howto-integrate-activity-logs-with-splunk.md) (Azure AD-logboeken integreren met Splunk met behulp van Azure Monitor)
 
-* [Integrate Azure AD logs with SumoLogic by using Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic) (Azure AD-logboeken integreren met SumoLogic met behulp van Azure Monitor)
+* [Integrate Azure AD logs with SumoLogic by using Azure Monitor](./howto-integrate-activity-logs-with-sumologic.md) (Azure AD-logboeken integreren met SumoLogic met behulp van Azure Monitor)
 
  
 
@@ -191,6 +191,6 @@ Afhankelijk van de beslissingen die u eerder hebt gemaakt met behulp van de bove
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Overweeg het implementeren van [privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
+Overweeg het implementeren van [privileged Identity Management](../privileged-identity-management/pim-configure.md) 
 
-Overweeg [het implementeren van op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+Overweeg [het implementeren van op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](../../role-based-access-control/overview.md)

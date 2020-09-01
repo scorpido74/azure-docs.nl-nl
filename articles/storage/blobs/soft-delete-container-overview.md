@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854545"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228627"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Voorlopig verwijderen voor containers (preview-versie)
 
@@ -25,7 +25,7 @@ Micro soft raadt u aan de volgende functies voor gegevens beveiliging in te scha
 
 - Container soft delete, ter bescherming tegen onbedoeld verwijderen of overschrijven van een container. Zie voor meer informatie over het inschakelen van de container Soft soft delete [voor containers, voorlopig verwijderen inschakelen en beheren](soft-delete-container-enable.md).
 - Zacht verwijderen van BLOB, om te beschermen tegen onbedoeld verwijderen of overschrijven van een afzonderlijke blob. Zie [voorlopig verwijderen voor blobs](soft-delete-blob-overview.md)voor meer informatie over het inschakelen van de optie voor het voorlopig verwijderen van blobs.
-- BLOB-versie beheer (preview), om automatisch eerdere versies van een BLOB te onderhouden. Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd. Zie [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)voor meer informatie over het inschakelen van BLOB-versies.
+- BLOB-versie beheer om eerdere versies van een blob automatisch te onderhouden. Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd. Zie [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)voor meer informatie over het inschakelen van BLOB-versies.
 
 > [!WARNING]
 > Het verwijderen van een opslag account kan niet ongedaan worden gemaakt. Zacht verwijderen beschermt niet tegen het verwijderen van een opslag account. Configureer een **CannotDelete** -vergren deling voor de bron van het opslag account om onbedoeld verwijderen van een opslag account te voor komen. Zie [resources vergren delen om onverwachte wijzigingen](../../azure-resource-manager/management/lock-resources.md)te voor komen voor meer informatie over het vergren delen van Azure-resources.
@@ -82,7 +82,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -105,7 +105,7 @@ Als u de status van uw registratie met Power shell wilt controleren, roept u de 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName ContainerSoftDelete
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 
@@ -123,4 +123,4 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van het vo
 
 - [Zacht verwijderen van container configureren](soft-delete-container-enable.md)
 - [Blobs voorlopig verwijderen](soft-delete-blob-overview.md)
-- [Versie beheer van BLOB (preview)](versioning-overview.md)
+- [BLOB-versie beheer](versioning-overview.md)

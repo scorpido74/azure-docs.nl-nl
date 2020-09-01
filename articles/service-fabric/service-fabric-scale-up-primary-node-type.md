@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van een Service Fabric cluster doo
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854629"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228712"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Het primaire knooppunt type van een Service Fabric cluster omhoog schalen door een knooppunt type toe te voegen
 In dit artikel wordt beschreven hoe u het primaire knooppunt type van een Service Fabric cluster omhoog kunt schalen door een extra knooppunt type aan het cluster toe te voegen. Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunttype kan vervolgens afzonderlijk worden beheerd.
@@ -124,6 +124,134 @@ SKU VAN BESTURINGS SYSTEEM
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
+
+Het volgende code fragment is een voor beeld van een nieuwe resource voor de Schaalset van virtuele machines die wordt gebruikt voor het maken van een nieuw knooppunt type voor een Service Fabric cluster. U moet ervoor zorgen dat u aanvullende uitbrei dingen opneemt die vereist zijn voor uw werk belasting. 
+
+```json
+    {
+      "apiVersion": "[variables('vmssApiVersion')]",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "name": "[variables('vmNodeType1Name')]",
+      "location": "[variables('computeLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+      ],
+      "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
+                "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                  },
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
+                    "dataPath": "D:\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "enableParallelJobs": true,
+                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
+                    "certificate": {
+                      "thumbprint": "[parameters('certificateThumbprint')]",
+                      "x509StoreName": "[parameters('certificateStoreValue')]"
+                    }
+                  },
+                  "typeHandlerVersion": "1.0"
+                }
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "[concat(variables('nicName'), '-1')]",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "[concat(variables('nicName'),'-',1)]",
+                      "properties": {
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[variables('lbPoolID1')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[variables('lbNatPoolID1')]"
+                          }
+                        ],
+                        "subnet": {
+                          "id": "[variables('subnet1Ref')]"
+                        }
+                      }
+                    }
+                  ],
+                  "primary": true
+                }
+              }
+            ]
+          },
+          "osProfile": {
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "computernamePrefix": "[variables('vmNodeType1Name')]",
+            "secrets": [
+              {
+                "sourceVault": {
+                  "id": "[parameters('sourceVaultValue')]"
+                },
+                "vaultCertificates": [
+                  {
+                    "certificateStore": "[parameters('certificateStoreValue')]",
+                    "certificateUrl": "[parameters('certificateUrlValue')]"
+                  }
+                ]
+              }
+            ]
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('vmImagePublisher1')]",
+              "offer": "[parameters('vmImageOffer1')]",
+              "sku": "[parameters('vmImageSku1')]",
+              "version": "[parameters('vmImageVersion1')]"
+            },
+            "osDisk": {
+              "caching": "ReadOnly",
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[parameters('storageAccountType')]"
+              }
+            }
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('vmNodeType1Size')]",
+        "capacity": "[parameters('nt1InstanceCount')]",
+        "tier": "Standard"
+      },
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+      }
+    },
+
+```
+
 5. Voeg een nieuw knooppunt type toe aan het cluster, dat verwijst naar de Schaalset voor virtuele machines die hierboven is gemaakt. De eigenschap **isPrimary** van dit type knoop punt moet worden ingesteld op True. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -339,7 +467,7 @@ Alleen voor Silver-en hogere duurzaamheids clusters werkt u de cluster bron bij 
 ```
 10. Verwijder alle andere resources met betrekking tot het oorspronkelijke knooppunt type uit de ARM-sjabloon. Zie [service Fabric-nieuw cluster knooppunt type](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) voor een sjabloon waarbij al deze oorspronkelijke resources zijn verwijderd.
 
-11. Implementeer de gewijzigde Azure Resource Manager sjabloon. * * Deze stap neemt enige tijd in beslag, meestal Maxi maal twee uur. Met deze upgrade worden instellingen gewijzigd in de InfrastructureService. Daarom is het opnieuw opstarten van het knoop punt vereist. In dit geval wordt forceRestart genegeerd. De para meter upgradeReplicaSetCheckTimeout geeft de maximale tijds duur op die Service Fabric wacht tot een partitie een veilige status heeft, als deze niet al een veilige status heeft. Zodra de controle van de veiligheid is geslaagd voor alle partities op een knoop punt, wordt Service Fabric door gegeven aan de upgrade op dat knoop punt. De waarde voor de para meter upgradeTimeout kan worden teruggebracht tot 6 uur, maar er moet een maximale beveiliging van 12 uur worden gebruikt.
+11. Implementeer de gewijzigde Azure Resource Manager sjabloon. * * Deze stap neemt enige tijd in beslag, meestal Maxi maal twee uur. Met deze upgrade worden de instellingen gewijzigd in de InfrastructureService. Daarom is het opnieuw opstarten van een knoop punt vereist. In dit geval wordt forceRestart genegeerd. De para meter upgradeReplicaSetCheckTimeout geeft de maximale tijds duur op die Service Fabric wacht tot een partitie een veilige status heeft, als deze niet al een veilige status heeft. Zodra de controle van de veiligheid is geslaagd voor alle partities op een knoop punt, wordt Service Fabric door gegeven aan de upgrade op dat knoop punt. De waarde voor de para meter upgradeTimeout kan worden teruggebracht tot 6 uur, maar er moet een maximale beveiliging van 12 uur worden gebruikt.
 Controleer vervolgens of de Service Fabric resource in de portal gereed wordt weer gegeven. 
 
 ```powershell

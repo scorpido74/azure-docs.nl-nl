@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 263f018155aa6effada3d509c907d825b65a8d45
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079639"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228389"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-beveiligings basislijn voor Logic Apps
 
@@ -94,9 +94,9 @@ Gebruik Azure Security Center just-in-time-netwerk toegang om Nsg's te configure
 
 Gebruik Azure Security Center adaptieve netwerk beveiliging om NSG-configuraties aan te bevelen die poorten en bron-Ip's beperken op basis van daad werkelijk verkeer en bedreigings informatie.
 
-* [Binnenkomende oproepen naar Logic Apps beveiligen](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Binnenkomende oproepen naar Logic Apps beveiligen](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Hoe kan ik de inkomende IP-adressen beperken?](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Hoe kan ik de inkomende IP-adressen beperken?](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 * [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
@@ -368,7 +368,7 @@ Elk aanvraag eindpunt op een logische app heeft een Shared Access Signature (SAS
 
 * [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Toegang en gegevens beveiligen in Azure Logic Apps met behulp van SAS](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Toegang en gegevens beveiligen in Azure Logic Apps met behulp van SAS](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 **Azure Security Center bewaking**: n.v.t.
 
@@ -382,7 +382,7 @@ Als basis verificatie wordt gebruikt, moet u een gebruikers naam en wacht woord 
 
 Als u gebruikmaakt van een infra structuur als code, kunt u wacht woorden beter niet opslaan in code en in plaats daarvan Azure Key Vault gebruiken om referenties op te slaan en op te halen.
 
-* [Gegevens beveiligen en openen in Logic Apps](./logic-apps-securing-a-logic-app.md)
+* [Gegevens beveiligen en openen in Logic Apps](logic-apps-securing-a-logic-app.md)
 
 * [Een geheim instellen en ophalen uit Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
 
@@ -473,7 +473,7 @@ Daarnaast heeft elk aanvraag eindpunt op een logische app een Shared Access Sign
 
 * [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Meer informatie over het beperken van inkomende IP-adressen in Logic Apps](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Meer informatie over het beperken van inkomende IP-adressen in Logic Apps](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure Security Center bewaking**: n.v.t.
 
@@ -611,11 +611,11 @@ De trigger voor aanvragen ondersteunt alleen Transport Layer Security (TLS) 1,2 
 
 Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-* [Beveiligde toegang en gegevens in Azure Logic Apps](./logic-apps-securing-a-logic-app.md)
+* [Beveiligde toegang en gegevens in Azure Logic Apps](logic-apps-securing-a-logic-app.md)
 
-* [Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps](../connectors/connectors-native-reqres.md#tls-support)
+* [Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps](../connectors/connectors-native-http.md#tls-support)
+* [Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Meer informatie over versleuteling in transit met Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -633,7 +633,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 Micro soft beheert de onderliggende infra structuur voor Azure Logic Apps en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-* [Beveiligde toegang tot uitvoerings geschiedenis gegevens](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
+* [Beveiligde toegang tot uitvoerings geschiedenis gegevens](logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
 * [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Logic Apps en hee
 
 U kunt Azure resource Lock gebruiken om te voor komen dat anderen uw logische app wijzigen of verwijderen. Deze mogelijkheid voor komt dat anderen productie resources wijzigen of verwijderen.
 
-* [Veilige toegang tot Azure Logic Apps bewerkingen](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Veilige toegang tot Azure Logic Apps bewerkingen](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center bewaking**: n.v.t.
 
@@ -885,7 +885,7 @@ Logic Apps die vereist zijn voor bedrijfs activiteiten, maar een groter risico k
 
 * [Beheergroepen maken](../governance/management-groups/create.md)
 
-* [Toegang tot Logic Apps beveiligen via Azure RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Toegang tot Logic Apps beveiligen via Azure RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center bewaking**: n.v.t.
 
@@ -911,9 +911,9 @@ Gebruik ook beveiligde para meters voor het beveiligen van gevoelige gegevens en
 
 * [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Resource Manager sjablonen implementeren voor Azure Logic Apps](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Resource Manager sjablonen implementeren voor Azure Logic Apps](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Informatie over veilige actie parameters](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Informatie over veilige actie parameters](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Beveiligings aanbevelingen voor para meters](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -947,11 +947,11 @@ Zorg er ook voor dat u gegevens in de uitvoerings geschiedenis beveiligt met beh
 
 * [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Resource Manager sjablonen implementeren voor Azure Logic Apps](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Resource Manager sjablonen implementeren voor Azure Logic Apps](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Veilige toegang voor invoer en uitvoer van de uitvoering van de geschiedenis](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Veilige toegang voor invoer en uitvoer van de uitvoering van de geschiedenis](logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Veilige toegang tot parameter invoer](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Veilige toegang tot parameter invoer](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Beveiligings aanbevelingen voor para meters](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -1033,11 +1033,11 @@ Daarnaast heeft Azure Resource Manager de mogelijkheid om de sjabloon in JavaScr
 
 Wanneer u een Integration service Environment (ISE) maakt voor het hosten van uw logische apps en u meer controle wilt hebben over de versleutelings sleutels die worden gebruikt door Azure Storage, kunt u uw eigen sleutel instellen, gebruiken en beheren met behulp van Azure Key Vault. Deze mogelijkheid is ook bekend als ' Bring Your Own Key ' (BYOK) en uw sleutel wordt een ' door de klant beheerde sleutel ' genoemd.
 
-* [Invoer en uitvoer in de uitvoerings geschiedenis in Azure Logic Apps beveiligen](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Invoer en uitvoer in de uitvoerings geschiedenis in Azure Logic Apps beveiligen](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Beveiligings aanbevelingen voor para meters](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Veilige toegang tot para meter invoer in Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Veilige toegang tot para meter invoer in Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Veilige parameter waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1069,11 +1069,11 @@ Momenteel ondersteunen alleen specifieke ingebouwde triggers en acties beheerde 
 
 U kunt referentie scanner ook implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.
 
-* [Invoer en uitvoer in de uitvoerings geschiedenis in Azure Logic Apps beveiligen](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Invoer en uitvoer in de uitvoerings geschiedenis in Azure Logic Apps beveiligen](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Beveiligings aanbevelingen voor para meters](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Veilige toegang tot para meter invoer in Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Veilige toegang tot para meter invoer in Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Veilige parameter waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1133,7 +1133,7 @@ Bovendien moet u de onderliggende werk stroom definitie van uw logische app uitb
 
 * [Meer informatie over bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](./logic-apps-azure-resource-manager-templates-overview.md)
+* [Implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure Security Center bewaking**: n.v.t.
 
@@ -1151,9 +1151,9 @@ Elk aanvraag eindpunt op een logische app heeft een Shared Access Signature (SAS
 
 * [Meer informatie over bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](./logic-apps-azure-resource-manager-templates-overview.md)
+* [Implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](logic-apps-azure-resource-manager-templates-overview.md)
 
-* [Toegang en gegevens beveiligen in Azure Logic Apps met behulp van SAS](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Toegang en gegevens beveiligen in Azure Logic Apps met behulp van SAS](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Back-ups maken van Key Vault sleutels](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 

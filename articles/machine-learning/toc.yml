@@ -216,6 +216,13 @@
         - name: Resource Manager-sjabloon gebruiken
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: Compute-resources maken
+      items:
+        - name: Studio gebruiken
+          href: how-to-create-attach-compute-studio.md
+        - name: De Python-SDK gebruiken
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-create-attach-compute-sdk.md
     - name: Uw omgeving instellen
       items:
         - name: Ontwikkelomgevingen instellen
@@ -265,7 +272,7 @@
         - name: Toegang tot gegevens
           items:
             - name: Verbinding maken met Azure Storage
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: Gegevens uit gegevensarchief ophalen
               displayName: 'data, data set, register, access data'
@@ -286,7 +293,7 @@
               href: how-to-differential-privacy.md
     - name: Modellen trainen
       items:
-        - name: Een trainingsomgeving instellen
+        - name: Trainingsuitvoering verzenden
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Schattingen gebruiken voor ML

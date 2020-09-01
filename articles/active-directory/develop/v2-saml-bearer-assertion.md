@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949351"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227913"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Micro soft Identity platform en OAuth 2,0-bevestiging stroom voor SAML Bearer
 Met de OAuth 2,0-bevestigings stroom voor SAML Bearer kunt u een OAuth-toegangs token aanvragen met behulp van een SAML-verklaring wanneer een client een bestaande vertrouwens relatie moet gebruiken. De hand tekening die wordt toegepast op de SAML-verklaring biedt verificatie van de geautoriseerde app. Een SAML-verklaring is een XML-beveiligings token dat is uitgegeven door een id-provider en wordt gebruikt door een service provider. De service provider vertrouwt op basis van de inhoud om het onderwerp van de bewering te identificeren voor beveiligings doeleinden.
@@ -27,7 +27,7 @@ De bevestigings stroom van de SAML Bearer is handig bij het ophalen van gegevens
 
 U kunt een OAuth-aanvraag voor het verkrijgen van een toegangs token voor de API maken voor toepassingen die interactieve aanmelding op basis van een browser uitvoeren om een SAML-bevestiging te verkrijgen en vervolgens toegang toe te voegen aan een met OAuth beveiligde API (zoals Microsoft Graph). Wanneer de browser wordt omgeleid naar Azure AD om de gebruiker te verifiëren, wordt de sessie door de browser opgehaald via de SAML-aanmelding en hoeft de gebruiker geen referenties in te voeren.
 
-De OAuth-Bearer-bevestigings stroom wordt ook ondersteund voor gebruikers die worden geverifieerd met id-providers, zoals Active Directory Federation Services (ADFS), federatieve tot Azure Active Directory.  De SAML-bevestiging die is verkregen van ADFS, kan worden gebruikt in een OAuth-stroom om de gebruiker te verifiëren.
+De OAuth-Bearer-bevestigings stroom wordt alleen ondersteund voor gebruikers die zijn geverifieerd met id-providers, zoals Active Directory Federation Services (ADFS), Federated to Azure Active Directory.  De SAML-bevestiging die is verkregen van ADFS, kan worden gebruikt in een OAuth-stroom om de gebruiker te verifiëren.
 
 ![OAuth-stroom](./media/v2-saml-bearer-assertion/1.png)
 

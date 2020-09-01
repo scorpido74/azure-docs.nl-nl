@@ -17,14 +17,14 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261020"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229851"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-activiteiten Logboeken in Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-activiteitenlogboeken in Azure Monitor
 
 U kunt de activiteiten logboeken van Azure Active Directory (Azure AD) naar verschillende eind punten routeren voor lange termijn retentie en gegevens inzichten. Met deze functie kunt u het volgende doen:
 
@@ -55,12 +55,12 @@ U hebt het volgende nodig om deze functie te gebruiken:
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, kunt u zich registreren voor een [gratis proefversie](https://azure.microsoft.com/free/).
 * Een [licentie](https://azure.microsoft.com/pricing/details/active-directory/) voor Azure AD Free, Basic, Premium 1 of Premium 2 voor toegang tot de Azure AD-auditlogboeken in de Azure-portal. 
 * Een Azure AD-tenant.
-* Een gebruiker die een **globale beheerder** of **beveiligingsbeheerder** voor de Azure-tenant is.
+* Een gebruiker die een **globale beheerder** of **beveiligings beheerder** is voor de Azure AD-Tenant.
 * Een [licentie](https://azure.microsoft.com/pricing/details/active-directory/) voor Azure AD Premium 1 of Premium 2 voor toegang tot de Azure AD-aanmeldingslogboeken in de Azure-portal. 
 
 Afhankelijk van waarnaar u uw auditlogboekgegevens wilt doorsturen, hebt u het volgende nodig:
 
-* Een Azure-opslagaccount waarop u *ListKeys*-machtigingen hebt. We raden u aan om een algemeen opslagaccount te gebruiken en geen Blob Storage-account. Raadpleeg de [Azure Storage-prijscalculator](https://azure.microsoft.com/pricing/calculator/?service=storage) voor opslagprijzen. 
+* Een Azure-opslagaccount waarop u *ListKeys*-machtigingen hebt. We raden u aan om een algemeen opslagaccount te gebruiken en geen Blob Storage-account. Zie de [Prijscalculator voor Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage) voor prijsinformatie over opslag. 
 * Een Azure Event Hubs-naamruimte om te integreren met oplossingen van derden.
 * Een Azure Log Analytics-werk ruimte om logboeken naar Azure Monitor-logboeken te verzenden.
 
@@ -70,7 +70,7 @@ Als u al een Azure AD-licentie hebt, moet u een Azure-abonnement hebben om het o
 
 ### <a name="storage-size-for-activity-logs"></a>Opslaggrootte voor activiteitenlogboeken
 
-Elke auditlogboekgebeurtenis neemt ongeveer 2 KB aan opslagruimte in beslag. Gebeurtenis logboeken voor aanmelden zijn ongeveer 4 KB aan gegevens opslag. Zo hebt u voor een tenant met 100.000 gebruikers, wat neerkomt op ongeveer 1,5 miljoen gebeurtenissen per dag, ongeveer 3 GB aan gegevensopslag per dag nodig. Aangezien schrijfbewerkingen in batches van ongeveer 5 minuten voorkomen, kunt u om en nabij 9000 schrijfbewerkingen per maand verwachten. 
+Elke gebeurtenis in een auditlogboek gebruikt ongeveer 2 kB gegevensopslag. Gebeurtenis logboeken voor aanmelden zijn ongeveer 4 KB aan gegevens opslag. Zo hebt u voor een tenant met 100.000 gebruikers, wat neerkomt op ongeveer 1,5 miljoen gebeurtenissen per dag, ongeveer 3 GB aan gegevensopslag per dag nodig. Aangezien schrijfbewerkingen in batches van ongeveer 5 minuten voorkomen, kunt u om en nabij 9000 schrijfbewerkingen per maand verwachten. 
 
 
 De volgende tabel bevat een kostenraming, afhankelijk van de grootte van de tenant, voor een opslagaccount voor algemeen gebruik v2 in VS - west met een bewaringstermijn van ten minste één jaar. Gebruik de [Azure Storage-prijscalculator](https://azure.microsoft.com/pricing/details/storage/blobs/) om een meer nauwkeurige inschatting te maken van het gegevensvolume dat u denkt te gebruiken voor uw toepassing.
@@ -103,7 +103,7 @@ De volgende tabel bevat de geschatte kosten per maand voor een Basic-Event Hub i
 | Logboekcategorie | Aantal gebruikers | Gebeurtenissen per seconde | Gebeurtenissen met een interval van vijf minuten | Volume per interval | Berichten per interval | Berichten per maand | Kosten per maand (geschat) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Controleren | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $ 10,83 |
-| Controleren | 1000 | 0.1 | 52 | 104 kB | 1 | 8640 | $ 10,80 |
+| Controleren | 1000 | 0,1 | 52 | 104 kB | 1 | 8640 | $ 10,80 |
 | Aanmeldingen | 100.000 | 18000 | 5.400.000 | 10,8 GB | 42188 | 364.504.320 | $23,9 |  
 | Aanmeldingen | 1000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | $ 11,06 |  
 
@@ -126,7 +126,7 @@ De volgende tabel bevat de geschatte kosten per maand voor een Basic-Event Hub i
 
 
 
-Als u de kosten voor het beheren van de Azure Monitor logboeken wilt bekijken, raadpleegt u [kosten beheren door het gegevens volume en de retentie in azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)te beheren.
+Als u de kosten voor het beheren van de Azure Monitor logboeken wilt bekijken, raadpleegt u [kosten beheren door het gegevens volume en de retentie in azure monitor logboeken](../../azure-monitor/platform/manage-cost-storage.md)te beheren.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -180,13 +180,13 @@ Deze sectie bevat antwoorden op veelgestelde vragen en bekende problemen met bet
 
 **V: welke SIEM-hulpprogramma's worden momenteel ondersteund?** 
 
-**A**: **op**dit moment wordt Azure monitor ondersteund door [Splunk](tutorial-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), LogRhythm en Logz.io. Raadpleeg [Azure-bewakingsgegevens streamen naar een Event Hub voor gebruik door een extern hulpprogramma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) voor meer informatie over hoe de connectors werken.
+**A**: **op**dit moment wordt Azure monitor ondersteund door [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm en Logz.io. Raadpleeg [Azure-bewakingsgegevens streamen naar een Event Hub voor gebruik door een extern hulpprogramma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) voor meer informatie over hoe de connectors werken.
 
 ---
 
 **V: Hoe kan ik de Azure Active Directory-activiteitenlogboeken integreren in mijn Splunk-exemplaar?**
 
-**A**: [Routeer eerst de Azure Active Directory-activiteitenlogboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md) en volg daarna de stappen in [Activiteitenlogboeken integreren met Splunk](tutorial-integrate-activity-logs-with-splunk.md).
+**A**: [Routeer eerst de Azure Active Directory-activiteitenlogboeken naar een event hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md) en volg daarna de stappen in [Activiteitenlogboeken integreren met Splunk](./howto-integrate-activity-logs-with-splunk.md).
 
 ---
 
@@ -198,7 +198,7 @@ Deze sectie bevat antwoorden op veelgestelde vragen en bekende problemen met bet
 
 **V: heb ik toegang tot de gegevens van Event Hub zonder een extern SIEM-hulpprogramma?** 
 
-**A**: Ja. U kunt de [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) gebruiken om de logboeken vanuit uw eigen aangepaste toepassing te bekijken. 
+**A**: Ja. U kunt de [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) gebruiken om de logboeken vanuit uw eigen aangepaste toepassing te bekijken. 
 
 ---
 
@@ -206,5 +206,5 @@ Deze sectie bevat antwoorden op veelgestelde vragen en bekende problemen met bet
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Activiteitenlogboeken in een opslagaccount archiveren](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [Activiteitenlogboeken doorsturen naar een Event Hub](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Activiteitenlogboeken doorsturen naar een Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Activiteiten logboeken integreren met Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

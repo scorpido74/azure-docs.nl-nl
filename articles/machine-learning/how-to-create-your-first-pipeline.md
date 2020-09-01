@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0d917ea686c2003bf46b6fca872ef67fb0363107
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144070"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228900"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 
@@ -56,10 +56,8 @@ Maak de resources die vereist zijn voor het uitvoeren van een ML-pijp lijn:
 * Een `Dataset` object configureren om te verwijzen naar permanente gegevens die zich in bevinden of toegankelijk zijn in, een gegevens opslag. Een `PipelineData` object configureren voor tijdelijke gegevens die tussen de pijplijn stappen worden door gegeven. 
 
     > [!TIP]
-    > Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse  `OutputFileDatasetConfig` .  Deze klasse is een experimentele preview-functie en kan op elk gewenst moment worden gewijzigd.
-    > 
-    >Zie voor meer informatie over experimentele functies https://aka.ms/azuremlexperimental .
-    
+    > Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) .  Deze klasse is een [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) preview-functie en kan op elk gewenst moment worden gewijzigd.
+
 * De [reken doelen](concept-azure-machine-learning-architecture.md#compute-targets) instellen waarop de pijplijn stappen worden uitgevoerd.
 
 ### <a name="set-up-a-datastore"></a>Een gegevens opslag instellen

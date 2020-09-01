@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077004"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228678"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2
 
@@ -45,7 +45,6 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |Momentopnamen|Preview|Nog niet ondersteund|[BLOB-moment opnamen](snapshots-overview.md)|
 |Statische websites|Preview|Nog niet ondersteund|[Een statische website hosten in Azure Storage](storage-blob-static-website.md)|
 |Onveranderbare opslag|Preview|Nog niet ondersteund|[Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag](storage-blob-immutable-storage.md)|
-|Levenscyclus beheer beleid|Preview|Nog niet ondersteund|[De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)|
 |Container zacht verwijderen|Preview|Preview|[Voorlopig verwijderen voor containers (preview-versie)](soft-delete-container-overview.md)|
 |BLOB zacht verwijderen|Nog niet ondersteund|Nog niet ondersteund|[Blobs voorlopig verwijderen](storage-blob-soft-delete.md)|
 |Blobfuse|Preview|Nog niet ondersteund|[Blob-opslag koppelen als een bestands systeem met blobfuse](storage-how-to-mount-container-linux.md)|

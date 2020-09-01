@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c99aa1bdb246d242c4c1cbd33672367b66f923ea
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007255"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229967"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>De Power shell-module voor Windows virtueel bureau blad instellen
 
@@ -40,6 +40,12 @@ Voer vervolgens de volgende cmdlet uit om verbinding te maken met Azure:
 ```powershell
 Connect-AzAccount
 ```
+
+>! BELANG rijk Als u verbinding maakt met de US Gov Portal, voert u de volgende cmdlet uit:
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
 
 Als u zich aanmeldt bij uw Azure-account, moet er een code worden gegenereerd wanneer u de Connect-cmdlet uitvoert. Als u zich wilt aanmelden, gaat u naar <https://microsoft.com/devicelogin> , voert u de code in en meldt u zich aan met de referenties van uw Azure-beheerder.
 

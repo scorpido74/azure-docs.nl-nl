@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 04a50d37606754ff4540d1056e378d46388e2592
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590635"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228032"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v3 voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Artefacten die afhankelijk zijn van Lente data Framework v 2.3:
 
 # <a name="connect"></a>[Verbinding maken](#tab/connect)
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Verbinden
 
 Geef Azure Cosmos DB account en container Details op. Lente gegevens Azure Cosmos DB maakt de client automatisch en maakt verbinding met de container.
 
@@ -129,6 +129,8 @@ cosmos.queryMetricsEnabled=true
 |**Zelfstudie**| [Zelf studie over Azure Cosmos DB van Lente gegevens op GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Zelf studie over Azure Cosmos DB van Lente gegevens op GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>Release geschiedenis
+
+### <a name="300-beta2-unreleased"></a>3.0.0-bèta versie 2 (niet-vrijgegeven)
 
 ### <a name="300-beta1-2020-08-17"></a>3.0.0-Beta. 1 (2020-08-17)
 #### <a name="new-features"></a>Nieuwe functies

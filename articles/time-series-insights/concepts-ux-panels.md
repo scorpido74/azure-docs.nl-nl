@@ -1,6 +1,6 @@
 ---
-title: Gegevens visualiseren in de Gen2 Explorer-Azure Time Series Insights Gen2 | Microsoft Docs
-description: Meer informatie over de functies en opties die beschikbaar zijn in de Azure Time Series Insights Gen2 Explorer.
+title: Gegevens visualiseren in de TSI Explorer-Azure Time Series Insights Gen2 | Microsoft Docs
+description: Meer informatie over de functies en opties die beschikbaar zijn in de Azure Time Series Insights Explorer.
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -8,22 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164152"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227046"
 ---
-# <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Explorer
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
 In dit artikel worden de verschillende functies en opties beschreven die beschikbaar zijn in de Azure Time Series Insights Gen2- [demo omgeving](https://insights.timeseries.azure.com/preview/demo).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan met de Azure Time Series Insights Gen2 Explorer moet u het volgende doen:
+Om aan de slag te gaan met de Azure Time Series Insights Explorer, moet u het volgende doen:
 
 * Een Azure Time Series Insights Gen2-omgeving hebben ingericht. Lees de [Azure time series Insights Gen2](./time-series-insights-update-create-environment.md) -zelf studie voor meer informatie over het inrichten van een exemplaar.
 * [Geef gegevens toegang](./time-series-insights-data-access.md) tot de Azure time series Insights Gen2-omgeving die u hebt gemaakt voor het account. U kunt ook toegang verlenen aan anderen en aan uzelf.
@@ -31,11 +31,11 @@ Om aan de slag te gaan met de Azure Time Series Insights Gen2 Explorer moet u he
   * Meer informatie [over verbinding maken met een event hub](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * Meer informatie [over verbinding maken met een IOT-hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
-## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>De Azure Time Series Insights Gen2 Explorer verkennen
+## <a name="explore-the-azure-time-series-insights-explorer"></a>De Azure Time Series Insights Explorer verkennen
 
-De Azure Time Series Insights Gen2 Explorer bestaat uit de volgende zeven elementen:
+De Azure Time Series Insights Explorer bestaat uit de volgende zeven elementen:
 
-[![Azure Time Series Insights Gen2 Explorer-overzicht](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
+[![Overzicht van Azure Time Series Insights Explorer](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [Omgevings paneel](#1-environment-panel): geeft al uw Azure time series Insights Gen2 omgevingen.
 1. [Navigatie balk](#2-navigation-bar): Hiermee kunt u scha kelen tussen de pagina's **analyseren** en **model** .
@@ -193,7 +193,7 @@ Als u een nieuw thema wilt selecteren, selecteert u het profiel pictogram in de 
 > [!TIP]
 > Taal selectie is ook beschikbaar door uw profiel pictogram te selecteren.
 
-Azure Time Series Insights Gen2 Explorer ondersteunt twee Thema's:
+Azure Time Series Insights Explorer ondersteunt twee Thema's:
 
 * **Licht thema**: het standaard thema dat in dit document wordt weer gegeven.
 * **Donker thema**: Hiermee wordt de Explorer weer gegeven zoals hier:
@@ -204,7 +204,7 @@ Azure Time Series Insights Gen2 Explorer ondersteunt twee Thema's:
 
 ### <a name="gen2-terms-panel"></a>Gen2-termen paneel
 
-Deze sectie is alleen van toepassing op bestaande omgevingen van de 1 generatie die de Explorer in de bijgewerkte gebruikers interface proberen te gebruiken. U kunt het product product en Gen2 van generatie 1 in combi natie gebruiken. We hebben een aantal functies van de bestaande gebruikers interface aan de bijgewerkte Explorer toegevoegd, maar u kunt de volledige UI-ervaring voor een generatie 1-omgeving in de nieuwe Azure Time Series Insights Gen2 Explorer.
+Deze sectie is alleen van toepassing op bestaande omgevingen van de 1 generatie die de Explorer in de bijgewerkte gebruikers interface proberen te gebruiken. U kunt het product product en Gen2 van generatie 1 in combi natie gebruiken. We hebben een aantal functies van de bestaande gebruikers interface aan de bijgewerkte Explorer toegevoegd, maar u kunt de volledige UI-ervaring voor een generatie 1-omgeving in de nieuwe Azure Time Series Insights Explorer krijgen.
 
 In plaats van de hiërarchie wordt het deel venster Azure Time Series Insights Gen2-voor waarden weer gegeven. In het deel venster voor waarden kunt u query's definiëren in uw omgeving. Gebruik deze functie om ook gegevens te filteren op basis van een predikaat.
 

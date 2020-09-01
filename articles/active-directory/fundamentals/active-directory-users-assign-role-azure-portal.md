@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e28da81400a97216836cfd9eccf0d4859ce0762f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902351"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228219"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Beheerders-en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory
 
@@ -31,7 +31,7 @@ Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-role
 Een gemeen schappelijke manier om Azure AD-rollen aan een gebruiker toe te wijzen, is op de pagina **toegewezen rollen** voor een gebruiker. U kunt ook de geschiktheid van de gebruiker zo configureren dat deze alleen maar op tijd kan worden uitgebreid naar een rol met behulp van Privileged Identity Management (PIM). Zie [privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)voor meer informatie over het gebruik van Pim.
 
 > [!Note]
-> Als u een licentie voor Azure AD Premium P2 hebt en al gebruik maakt van PIM, worden alle rollen beheer taken uitgevoerd in de [privileged Identity Management-ervaring](../users-groups-roles/directory-manage-roles-portal.md).
+> Als u een licentie voor Azure AD Premium P2 hebt en al gebruik maakt van PIM, worden alle rollen beheer taken uitgevoerd in de [privileged Identity Management-ervaring](../users-groups-roles/directory-manage-roles-portal.md). Deze functie is momenteel beperkt tot het toewijzen van slechts één rol per keer. U kunt momenteel niet meerdere rollen selecteren en deze aan een gebruiker tegelijk toewijzen.
 >
 > ![Azure AD-rollen die worden beheerd in PIM voor gebruikers die PIM al gebruiken en een Premium P2-licentie hebben](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 

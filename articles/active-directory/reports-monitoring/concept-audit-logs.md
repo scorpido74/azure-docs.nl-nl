@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846971"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229919"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -34,8 +34,8 @@ De rapportage architectuur bestaat uit de volgende onderdelen:
     - **Aanmeldingen** : het [rapport met aanmeldingen](concept-sign-ins.md) bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
     - **Auditlogboeken**: traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. Voor beelden van audit logboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleid.
 - **Beveiliging** 
-    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is. 
-    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](../identity-protection/overview-identity-protection.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is. 
+    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](../identity-protection/overview-identity-protection.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
 In dit artikel vindt u een overzicht van het controle rapport.
  
@@ -89,7 +89,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alles
+- Alle
 - AAD-beheer UX
 - Toegangsbeoordelingen
 - Account inrichten
@@ -111,7 +111,7 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alles
+- Alle
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -134,11 +134,11 @@ Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
 Het **activiteiten** filter is gebaseerd op de selectie van de categorie en het resource type voor de activiteit die u maakt. U kunt een specifieke activiteit of alle activiteiten selecteren. 
 
-U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph API:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph API: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 
@@ -210,9 +210,9 @@ Als u controle gegevens wilt bekijken die betrekking hebben op uw toepassingen, 
 
 ## <a name="office-365-activity-logs"></a>Office 365-activiteiten logboeken
 
-U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Hoewel Office 365-activiteiten en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen, is alleen het Microsoft 365-beheer centrum een volledig overzicht van de activiteiten logboeken van Office 365. 
+U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](/office365/admin/admin-overview/about-the-admin-center). Hoewel Office 365-activiteiten en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen, is alleen het Microsoft 365-beheer centrum een volledig overzicht van de activiteiten logboeken van Office 365. 
 
-U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Volgende stappen
 
