@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274082"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268533"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Veelgestelde vragen over instellingen en gegevensroaming
 
@@ -37,7 +37,7 @@ In dit artikel vindt u antwoorden op enkele vragen die beheerders kunnen hebben 
 > [!NOTE]
 > Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
-**Toepassings gegevens**: universele Windows-apps kunnen instellingen gegevens schrijven naar een zwervende map en alle gegevens die naar deze map worden geschreven, worden automatisch gesynchroniseerd. Het is aan te melden dat een app door de ontwikkelaar van de app kan worden ontworpen om gebruik te maken van deze mogelijkheid. Voor meer informatie over het ontwikkelen van een universele Windows-app die gebruikmaakt van roaming, raadpleegt u de [Opslag-API van AppData](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) en de [Windows 8 AppData-blog voor ontwikkel aars](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
+**Toepassings gegevens**: universele Windows-apps kunnen instellingen gegevens schrijven naar een zwervende map en alle gegevens die naar deze map worden geschreven, worden automatisch gesynchroniseerd. Het is aan te melden dat een app door de ontwikkelaar van de app kan worden ontworpen om gebruik te maken van deze mogelijkheid. Voor meer informatie over het ontwikkelen van een universele Windows-app die gebruikmaakt van roaming, raadpleegt u de [Opslag-API van AppData](/windows/uwp/design/app-settings/store-and-retrieve-app-data) en de [Windows 8 AppData-blog voor ontwikkel aars](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Welk account wordt gebruikt voor de synchronisatie van instellingen?
 
@@ -86,9 +86,9 @@ Wanneer meerdere Azure AD-accounts van verschillende Azure AD-tenants zich op he
 Roaming werkt alleen voor universele Windows-apps. Er zijn twee opties beschikbaar voor het inschakelen van roaming op een bestaande Windows Desktop-toepassing:
 
 * De [bureau blad-brug](https://aka.ms/desktopbridge) helpt u uw bestaande Windows-bureau blad-apps naar de universeel Windows-platform te brengen. Hier worden minimale code wijzigingen vereist om te profiteren van Azure AD App data roaming. De bureaublad brug biedt uw apps een app-identiteit, die nodig is om app data roaming in te scha kelen voor bestaande bureau blad-apps.
-* [Gebruikers ervaring-virtualisatie (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) helpt u bij het maken van een sjabloon voor aangepaste instellingen voor bestaande Windows-bureau blad-apps en voor het inschakelen van roaming voor Win32-apps. Voor deze optie is het niet vereist dat de ontwikkelaar van de app de code van de app wijzigt. UE-V is beperkt tot on-premises Active Directory roaming voor klanten die het micro soft Desktop Optimization Pack hebben aangeschaft.
+* [Gebruikers ervaring-virtualisatie (UE-V)](/previous-versions//dn458947(v=vs.85)) helpt u bij het maken van een sjabloon voor aangepaste instellingen voor bestaande Windows-bureau blad-apps en voor het inschakelen van roaming voor Win32-apps. Voor deze optie is het niet vereist dat de ontwikkelaar van de app de code van de app wijzigt. UE-V is beperkt tot on-premises Active Directory roaming voor klanten die het micro soft Desktop Optimization Pack hebben aangeschaft.
 
-Beheerders kunnen UE-V configureren om gegevens van Windows Desktop-apps te roamen door roaming van instellingen voor Windows-besturings systemen en universele app-gegevens te wijzigen via [het groeps beleid van UE-V](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), waaronder:
+Beheerders kunnen UE-V configureren om gegevens van Windows Desktop-apps te roamen door roaming van instellingen voor Windows-besturings systemen en universele app-gegevens te wijzigen via [het groeps beleid van UE-V](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), waaronder:
 
 * Groeps beleid voor Windows-instellingen roamen
 * Groeps beleid Windows-apps niet synchroniseren

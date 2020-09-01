@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541886"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268601"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Enterprise state roaming inschakelen in Azure Active Directory
 
@@ -32,11 +32,11 @@ Als u Enterprise State Roaming inschakelt, krijgt uw organisatie automatisch een
 
 1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com/).
 1. Selecteer **Azure Active Directory**  >  **apparaten**  >  **Enterprise State roaming**.
-1. Selecteer **gebruikers kunnen instellingen en app-gegevens synchroniseren op verschillende apparaten**. Zie [Apparaatinstellingen configureren](/azure/active-directory/device-management-azure-portal)voor meer informatie.
+1. Selecteer **gebruikers kunnen instellingen en app-gegevens synchroniseren op verschillende apparaten**. Zie [Apparaatinstellingen configureren](./device-management-azure-portal.md)voor meer informatie.
   
    ![afbeelding van de apparaat-instelling met de naam gebruikers kan instellingen en app-gegevens op verschillende apparaten synchroniseren](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Voor een Windows 10-apparaat om de Enterprise State Roaming-service te kunnen gebruiken, moet het apparaat worden geverifieerd met een Azure AD-identiteit. Voor apparaten die lid zijn van Azure AD, is de identiteit van de primaire aanmelding van de gebruiker hun Azure AD-identiteit, zodat er geen aanvullende configuratie is vereist. Voor apparaten die on-premises Active Directory gebruiken, moet de IT-beheerder [hybrid Azure Active Directory joind-apparaten configureren](hybrid-azuread-join-manual-steps.md). 
+Voor een Windows 10-apparaat om de Enterprise State Roaming-service te kunnen gebruiken, moet het apparaat worden geverifieerd met een Azure AD-identiteit. Voor apparaten die lid zijn van Azure AD, is de identiteit van de primaire aanmelding van de gebruiker hun Azure AD-identiteit, zodat er geen aanvullende configuratie is vereist. Voor apparaten die on-premises Active Directory gebruiken, moet de IT-beheerder [hybrid Azure Active Directory joind-apparaten configureren](./hybrid-azuread-join-plan.md). 
 
 ## <a name="data-storage"></a>Gegevensopslag
 
@@ -66,7 +66,7 @@ Volg deze stappen om een synchronisatie status rapport per gebruiker-apparaat we
   
    ![afbeelding van kolom met synchronisatie gegevens van apparaat](./media/enterprise-state-roaming-enable/device-status-row.png)
 
-## <a name="data-retention"></a>Bewaartijd voor gegevens
+## <a name="data-retention"></a>Gegevensretentie
 
 Gegevens die zijn gesynchroniseerd met de micro soft-Cloud met Enterprise State Roaming worden bewaard totdat deze hand matig wordt verwijderd of totdat de betreffende gegevens verouderd zijn. 
 

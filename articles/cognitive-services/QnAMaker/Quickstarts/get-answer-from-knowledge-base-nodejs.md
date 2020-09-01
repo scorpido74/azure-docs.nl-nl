@@ -5,18 +5,18 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa5a6395b537daa750a2e9b97bde4df320193c1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342779"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268054"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Snelstartgids: antwoorden op een vraag van een Knowledge Base krijgen met behulp van node. js
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Snelstartgids: Krijg antwoorden op een vraag van een kennis database met Node.js
 
 In deze quickstart wordt beschreven hoe u programmatisch een antwoord uit een gepubliceerde QnA Maker-knowledge base kunt ophalen. De Knowledge Base bevat vragen en antwoorden van [gegevens bronnen](../Concepts/knowledge-base.md) , zoals Veelgestelde vragen. De [vraag](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wordt verzonden naar de QnA Maker-service. Het [antwoord](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) bevat het meest voorspelde antwoord.
 
-[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
+[Referentiedocumentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Voorbeeld](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,29 +37,19 @@ Open VSCode en maak een nieuw bestand met de naam `get-answer.js`.
 
 Voeg bovenaan het bestand `get-answer.js` de vereiste afhankelijkheden toe aan het project:
 
-[!code-nodejs[Add the required dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=1-4 "Add the required dependencies")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
 
 Voeg vervolgens de vereiste constanten toe voor toegang tot QnA Maker. Deze waarden vindt u op de pagina **Publiceren** nadat u de knowledge base hebt gepubliceerd.
 
-[!code-nodejs[Add the required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=6-22 "Add the required constants")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question-and-get-an-answer"></a>Een POST-aanvraag toevoegen om vragen te verzenden en antwoorden op te halen
 
 Met de volgende code wordt een HTTPS-aanvraag naar de QnA Maker-API verzonden om de vraag naar de knowledge base te verzenden en het antwoord te ontvangen:
 
-[!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
-
-De waarde van de header van `Authorization` bevat de tekenreeks `EndpointKey`.
-
-## <a name="install-the-dependencies"></a>De afhankelijkheden installeren
-
-Installeer als volgt de afhankelijkheden vanaf de opdrachtregel:
-
-```bash
-npm install request request-promise
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="query":::
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 

@@ -3,23 +3,25 @@ title: Beschrijvende audio sporen met Azure Media Services v3 | Microsoft Docs
 description: Volg de stappen in deze zelf studie voor het uploaden van een bestand, het coderen van de video, het toevoegen van beschrijvende geluids sporen en het streamen van uw inhoud met Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006649"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267425"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Beschrijvende geluids sporen voor signalen
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 U kunt een commentaar track toevoegen aan uw video om visueel gehandicapten te helpen bij het volgen van de video-opname door naar de gesp roken tekst te Luis teren. In Media Services v3 signaleert u beschrijvende audio tracks door aantekeningen te maken op het audio spoor in het manifest bestand.
 

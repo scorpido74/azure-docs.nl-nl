@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: b85586a431a20102035e253537fc45c8a8a54796
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be7e01644d7d1f232c50b1efbadf100671a262fe
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084103"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268105"
 ---
-# <a name="kubernetes-on-your-azure-stack-edge-device"></a>Kubernetes op uw Azure Stack edge-apparaat
+# <a name="kubernetes-on-your-azure-stack-edge-gpu-device"></a>Kubernetes op uw Azure Stack Edge GPU-apparaat
 
 Kubernetes is een populair open-source platform voor het organiseren van container toepassingen. Dit artikel bevat een overzicht van Kubernetes en beschrijft hoe Kubernetes werkt op uw Azure Stack edge-apparaat. 
 

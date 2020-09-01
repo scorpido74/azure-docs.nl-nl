@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0a2f5fbc2139a8340ee763efc51c36a01dd24d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b71a2064887cc2b6099ead2e59f9fa3113d2f0b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999578"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269009"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>De micro soft Smooth Streaming-invoeg toepassing voor het Adobe Open source-media Framework gebruiken  
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>De micro soft Smooth Streaming-invoeg toepassing voor het Adobe Open source-media Framework gebruiken
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Overzicht
 De micro soft Smooth Streaming-invoeg toepassing voor open source media Framework 2,0 (SS voor OSMF) breidt de standaard mogelijkheden van OSMF uit en voegt micro soft Smooth Streaming inhoud af te spelen op nieuwe en bestaande OSMF-spelers. De invoeg toepassing voegt ook Smooth Streaming afspeel mogelijkheden toe aan het afspelen van een stroboscopisch licht (SMP-media).
 

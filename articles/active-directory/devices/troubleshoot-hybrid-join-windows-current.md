@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611310"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268771"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen
 
@@ -28,8 +28,8 @@ Zie voor andere Windows-clients het artikel [problemen oplossen met hybride Azur
 In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory gekoppelde apparaten hebt geconfigureerd](hybrid-azuread-join-plan.md) om de volgende scenario's te ondersteunen:
 
 - Voorwaardelijke toegang op basis van het apparaat
-- [Zwervende instellingen voor ondernemingen](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello voor Bedrijven](../active-directory-azureadjoin-passport-deployment.md)
+- [Zwervende instellingen voor ondernemingen](./enterprise-state-roaming-overview.md)
+- [Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Dit document bevat richt lijnen voor probleem oplossing om mogelijke problemen op te lossen.
 
@@ -42,7 +42,7 @@ Voor Windows 10 en Windows Server 2016, hybride Azure Active Directory-koppeling
 **De status van de samen voeging ophalen:**
 
 1. Open een opdracht prompt als beheerder
-2. Type `dsregcmd /status`
+2. Typ `dsregcmd /status`
 
 ```
 +----------------------------------------------------------------------+
@@ -170,7 +170,7 @@ Mogelijke oorzaken voor fout:
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
    - Reden: algemene detectie fout. Ophalen van de meta gegevens van de detectie van DRS is mislukt.
    - Oplossing: Zoek hieronder de subfout op om verder te onderzoeken.
-- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609)
    - Reden: er is een time-out opgetreden tijdens de bewerking tijdens het detecteren.
    - Oplossing: Zorg ervoor dat deze `https://enterpriseregistration.windows.net` toegankelijk is in de systeem context. Zie de sectie [netwerk connectiviteit vereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
@@ -387,7 +387,7 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Stap 5: Logboeken verzamelen en contact opnemen met Microsoft Ondersteuning
 
-Down load het bestand Auth.zip van[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Down load het bestand Auth.zip van [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
 1. Pak de bestanden uit en wijzig de naam van de Inge sloten bestanden **start-auth.txt** en **stop-auth.txt** in **Start-auth. cmd** en **Stop-auth. cmd**.
 1. Voer **Start-auth. cmd**uit vanaf een opdracht prompt met verhoogde bevoegdheid.

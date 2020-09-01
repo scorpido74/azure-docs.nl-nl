@@ -16,14 +16,16 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0e342e5509aaba05228c7d1032023a6f4710f1f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e6810e20373aa6fcaab447d6b6be51a47f400e24
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999509"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268584"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > De **Azure Media video thumbnails** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
@@ -60,7 +62,7 @@ Wanneer u een miniatuur van een video met **Azure Media video thumbnails**maakt,
 
 Op dit moment kunt u de volgende para meters wijzigen:
 
-| Param | Beschrijving |
+| Param | Description |
 | --- | --- |
 | outputAudio |Hiermee wordt aangegeven of de resulterende video audio bevat. <br/>Toegestane waarden zijn: True of false. De standaard waarde is True. |
 | fadeInFadeOut |Hiermee wordt aangegeven of vervag overgangen tussen de afzonderlijke animatie miniaturen worden gebruikt.  <br/>Toegestane waarden zijn: True of false.  De standaard waarde is True. |

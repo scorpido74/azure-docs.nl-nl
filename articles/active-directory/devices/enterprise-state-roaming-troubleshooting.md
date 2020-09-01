@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604536"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267238"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problemen met Enterprise State Roaming instellingen in Azure Active Directory oplossen
 
@@ -108,7 +108,7 @@ Zorg ervoor dat de Windows 10 v1511-client de cumulatieve update van juli 2016 (
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Het thema wordt niet gesynchroniseerd, evenals gegevens die zijn beveiligd met Windows Information Protection 
 
-Om te voor komen dat gegevens lekken, worden gegevens die zijn beveiligd met [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) , niet gesynchroniseerd via Enterprise State roaming voor apparaten met de update voor Windows 10 jubileum.
+Om te voor komen dat gegevens lekken, worden gegevens die zijn beveiligd met [Windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) , niet gesynchroniseerd via Enterprise State roaming voor apparaten met de update voor Windows 10 jubileum.
 
 **Aanbevolen actie**  
 Geen. In toekomstige updates voor Windows is dit probleem mogelijk opgelost.
@@ -159,8 +159,8 @@ Als de gebruiker een gemengde UPN heeft (bijvoorbeeld gebruikers naam in plaats 
 De gebruiker moet het apparaat ontkoppelen en opnieuw toevoegen aan de Cloud. Als u dit wilt doen, meldt u zich aan als de lokale beheerders gebruiker en ontkoppelt u het apparaat door naar het **instellingen**  >  **systeem**  >  **over** te gaan en ' beheren of verbinding met werk of school verbreken ' te selecteren. Ruim de onderstaande bestanden op en probeer Azure AD vervolgens opnieuw toe te voegen in het **instellingen**  >  **systeem**  >  **over** en selecteer verbinding maken met werk of school. Ga door met het toevoegen van het apparaat aan Azure Active Directory en voltooi de stroom.
 
 Ruim de volgende bestanden op in de opschoon stap:
-- Settings. dat in`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Alle bestanden in de map`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- Settings. dat in `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Alle bestanden in de map `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

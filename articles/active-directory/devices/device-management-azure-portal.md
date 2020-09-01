@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce09bd2a3f5f474ad5c6e6eb73865e2b2dc9fe3a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4f12b4e1d64db097730494da746b44479a791f9d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541945"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268635"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Apparaat-id's beheren in Azure Portal
 
 Azure AD biedt een centrale plek voor het beheren van apparaat-id's.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **apparaten**.
 
 [![Weer gave alle apparaten in de Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
@@ -32,7 +32,7 @@ Op de pagina **alle apparaten** kunt u het volgende doen:
 - Apparaten identificeren, zoals:
    - Apparaten die zijn toegevoegd aan of geregistreerd in azure AD.
    - Apparaten die zijn geïmplementeerd met [Windows auto pilot](/windows/deployment/windows-autopilot/windows-autopilot).
-   - Printers met [universeel afdrukken](https://docs.microsoft.com/universal-print/fundamentals/universal-print-getting-started)
+   - Printers met [universeel afdrukken](/universal-print/fundamentals/universal-print-getting-started)
 - U kunt taken voor het beheren van apparaat-id's uitvoeren, zoals inschakelen, uitschakelen, verwijderen of beheren.
    - [Printers](/universal-print/fundamentals/) en [Windows auto pilot](/windows/deployment/windows-autopilot/windows-autopilot) -apparaten hebben beperkte beheer opties in azure AD. Ze moeten worden beheerd vanuit hun respectieve beheer interfaces.
 - Configureer de instellingen voor uw apparaat-id.
@@ -130,14 +130,14 @@ Voorheen kon u de lijst met apparaten alleen filteren op activiteit en status in
 - Status conform
 - Koppelings type (Azure AD toegevoegd, hybride Azure AD toegevoegd, Azure AD geregistreerd)
 - Tijdstempel van activiteit
-- OS
+- Besturingssysteem
 - Apparaattype (printers, beveiligde Vm's, gedeelde apparaten, geregistreerde apparaten)
 
 De functie voor beeld filtering inschakelen in de weer gave **alle apparaten** :
 
 ![Preview-functionaliteit voor filteren inschakelen](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **apparaten**.
 1. Selecteer de banner waarin wordt **vermeld, probeer de nieuwe verbeteringen voor het filteren van apparaten uit. Klik om de preview-versie in te scha kelen.**
 
@@ -156,7 +156,7 @@ Als u apparaat-id's wilt beheren met de Azure AD-Portal, moeten die apparaten zi
 
 - **Aanvullende lokale beheerders op aan Azure AD gekoppelde apparaten** : u kunt de gebruikers selecteren die lokale beheerders rechten op een apparaat krijgen. Deze gebruikers worden toegevoegd aan de rol van het *apparaat Administrators* in azure AD. Globale beheerders in azure AD en eigen aren van apparaten krijgen standaard lokale beheerders rechten. Deze optie is een Premium Edition-mogelijkheid die beschikbaar is via producten als Azure AD Premium of de Enter prise Mobility Suite (EMS).
 - **Gebruikers kunnen hun apparaten registreren bij Azure AD** . u moet deze instelling configureren zodat Windows 10 Personal-, Ios-, Android-en macOS-apparaten kunnen worden geregistreerd bij Azure AD. Als u **geen**selecteert, mogen apparaten zich niet registreren bij Azure AD. Inschrijving met Microsoft Intune of Mobile Device Management (MDM) voor Office 365 vereist registratie. Als u een van deze services hebt geconfigureerd, is **Alles** **geselecteerd en is er geen beschikbaar** .
-- **Multi-factor Authentication vereisen voor het toevoegen van apparaten** : u kunt kiezen of gebruikers een extra verificatie factor moeten opgeven om hun apparaat toe te voegen aan Azure AD. De standaard waarde is **Nee**. U wordt aangeraden multi-factor Authentication te vereisen bij het registreren van een apparaat. Voordat u multi-factor Authentication inschakelt voor deze service, moet u ervoor zorgen dat multi-factor Authentication is geconfigureerd voor de gebruikers die hun apparaten registreren. Zie aan de slag [met Azure multi-factor Authentication](../authentication/concept-mfa-whichversion.md)voor meer informatie over de verschillende Azure multi-factor Authentication-Services. 
+- **Multi-factor Authentication vereisen voor het toevoegen van apparaten** : u kunt kiezen of gebruikers een extra verificatie factor moeten opgeven om hun apparaat toe te voegen aan Azure AD. De standaard waarde is **Nee**. U wordt aangeraden multi-factor Authentication te vereisen bij het registreren van een apparaat. Voordat u multi-factor Authentication inschakelt voor deze service, moet u ervoor zorgen dat multi-factor Authentication is geconfigureerd voor de gebruikers die hun apparaten registreren. Zie aan de slag [met Azure multi-factor Authentication](../authentication/concept-mfa-howitworks.md)voor meer informatie over de verschillende Azure multi-factor Authentication-Services. 
 
 > [!NOTE]
 > **Vereisen dat multi-factor Authentication wordt toegevoegd** aan de instelling apparaten is van toepassing op apparaten die zijn opgenomen in azure AD of Azure AD. Deze instelling is niet van toepassing op hybride apparaten die deel uitmaken van Azure AD.

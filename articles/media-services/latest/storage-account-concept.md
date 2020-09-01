@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Meer informatie over het maken van een Azure Storage-account voor gebruik met Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/01/2019
-ms.author: juliako
-ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 120bd403d84f9912bd309f965f3b69306fabcc24
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072011"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267068"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-accounts
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Als u media-inhoud in azure wilt beheren, versleutelen, coderen, analyseren en streamen, moet u een Media Services-account maken. Als u een Media Services-account gaat maken, moet u de naam van een Azure Storage-accountresource opgeven. Het opgegeven opslagaccount wordt gekoppeld aan uw Media Services-account.
 
@@ -45,11 +47,11 @@ In Media Services v3 worden de opslag-Api's gebruikt voor het uploaden van besta
 
 Ter bescherming van uw assets op rest moeten de activa worden versleuteld door de versleuteling van de opslag side. In de volgende tabel ziet u hoe de opslag side-versleuteling werkt in Media Services V3:
 
-|Versleutelings optie|Beschrijving|Media Services v3|
+|Versleutelings optie|Description|Media Services v3|
 |---|---|---|
 |Opslag versleuteling Media Services| AES-256-versleuteling, sleutel beheerd door Media Services. |Niet ondersteund. <sup>(1)</sup>|
 |[Versleuteling van de opslag service voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund.|
-|[Versleuteling van de opslag aan de client zijde](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Wordt niet ondersteund.|
+|[Versleuteling van de opslag aan de client zijde](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund.|
 
 <sup>1</sup> in Media Services V3 wordt opslag VERSLEUTELING (AES-256-versleuteling) alleen ondersteund voor achterwaartse compatibiliteit wanneer uw assets zijn gemaakt met Media Services v2, wat betekent dat v3 werkt met bestaande, versleutelde opslag elementen, maar niet om nieuwe te maken.
 

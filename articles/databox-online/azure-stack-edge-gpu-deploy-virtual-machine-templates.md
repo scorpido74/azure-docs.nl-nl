@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 330186b12efcc31e9f99d7c4bdbff3e081311c23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084150"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268156"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-templates"></a>Vm's op uw Azure Stack edge-apparaat implementeren via sjablonen
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Vm's op uw Azure Stack Edge GPU-apparaat implementeren via sjablonen
 
 In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack edge-apparaat maakt en beheert met behulp van sjablonen. Deze sjablonen zijn JavaScript Object Notation (JSON)-bestanden waarmee de infra structuur en configuratie voor uw virtuele machine worden gedefinieerd. In deze sjablonen geeft u de resources op die u wilt implementeren en de eigenschappen voor deze resources.
 

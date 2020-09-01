@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 635c1bb500f563da3c0eef8698cad8ab9fa5c810
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: af320b94950d5999b6dd181b7a8e0eb198088e98
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068136"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267629"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Miniaturen genereren met behulp van coderings standaard met REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 U kunt Media Encoder Standard gebruiken om een of meer miniaturen te genereren op basis van uw invoer video in [JPEG](https://en.wikipedia.org/wiki/JPEG)-, [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)-of [BMP](https://en.wikipedia.org/wiki/BMP_file_format) -afbeeldings bestands indelingen.
 

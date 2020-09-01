@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 52b737e88e13c59d260da73c6fa37a1088cb91d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038457"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265895"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -78,9 +79,9 @@ Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
 PartitionKey|{account-ID} _ {entiteit-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>De account-ID is opgenomen in de partitie sleutel om werk stromen te vereenvoudigen waarbij meerdere Media Services-accounts naar hetzelfde opslag account worden geschreven.
 RowKey|{seconden tot middernacht} _ {wille keurige waarde}|01688_00199<br/><br/>De rij begint met het aantal seconden tot middernacht om de bovenste n-stijl query's in een partitie toe te staan. Zie [Dit](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) artikel voor meer informatie. 
-Timestamp|Datum/tijd|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
+Tijdstempel|Datum en tijd|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Het type entiteit dat telemetrie-gegevens levert|Kanaal-StreamingEndpoint/archief<br/><br/>Het gebeurtenis type is een teken reeks waarde.
-Naam|De naam van de telemetrie-gebeurtenis|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|De naam van de telemetrie-gebeurtenis|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Het tijdstip waarop de telemetrie-gebeurtenis is opgetreden (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>De waargenomen tijd wordt gegeven door de entiteit die de telemetrie verzendt (bijvoorbeeld een kanaal). Er kunnen tijd synchronisatie problemen zijn tussen onderdelen, dus deze waarde is ongeveer gelijk aan
 ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entiteit-specifieke eigenschappen|Zoals gedefinieerd door de gebeurtenis|Streamnaam: stream1, bitrate 10123,...<br/><br/>De overige eigenschappen worden gedefinieerd voor het opgegeven gebeurtenis type. Azure-tabel inhoud is sleutel waardeparen.  (dat wil zeggen dat verschillende rijen in de tabel verschillende sets eigenschappen hebben).
@@ -99,9 +100,9 @@ Eigenschap|Waarde|Voorbeelden
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Automatische tijds tempel van Azure Table 2016-09-09T22:43:42.241 Z
+Tijdstempel|Tijdstempel|Automatische tijds tempel van Azure Table 2016-09-09T22:43:42.241 Z
 Type|Type|StreamingEndpoint
-Naam|Naam|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-id|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|Hostnaam van het eind punt|builddemoserver.origin.mediaservices.windows.net
@@ -118,9 +119,9 @@ Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
+Tijdstempel|Tijdstempel|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Type|Kanaal
-Naam|Naam|ChannelHeartbeat
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-id|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Type track video/audio/tekst|video/audio
@@ -143,9 +144,9 @@ Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
+Tijdstempel|Tijdstempel|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Type|Archiveren
-Naam|Naam|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-id|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Manifestnaam|Programma-URL|Asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba. ISM

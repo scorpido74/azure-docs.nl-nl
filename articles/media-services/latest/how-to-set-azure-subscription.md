@@ -11,25 +11,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal
-ms.openlocfilehash: fadb290d1bd1126c3bfc0cd76d6e6b862d1396e3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8924b77cddc9efc4d2b1b8451df38de77b37c09c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556293"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267357"
 ---
-# <a name="find-your-azure-subscription"></a>Uw Azure-abonnement zoeken
+# <a name="find-your-azure-subscription"></a>Uw Azure-abonnement vinden
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 1. Onder de kop Azure-Services selecteert u abonnementen. (Als er geen abonnementen worden weer gegeven, moet u mogelijk de Azure AD-tenants wijzigen.) Uw abonnement-Id's worden weer gegeven in de tweede kolom.
 1. Kopieer de abonnements-ID en plak deze in een tekst-document van uw keuze voor later gebruik.
 

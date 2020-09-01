@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896c1909c8cc920e53fc2f43fbc4dbca41ad7db4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014231"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266354"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven en verwijderen met behulp van Azure Resource Manager
 
@@ -44,12 +44,12 @@ Net als bij de Azure Portal en scripting bieden Azure Resource Manager sjablonen
 
 - Met een [aangepaste sjabloon van Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kunt u een volledig nieuwe sjabloon maken of deze baseren op een bestaande sjabloon common of [Quick](https://azure.microsoft.com/documentation/templates/)start.
 - Deze worden afgeleid van een bestaande resource groep door een sjabloon te exporteren uit [de oorspronkelijke implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)of vanuit de [huidige status van de implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Een lokale [JSON-editor gebruiken (zoals VS code)](../../azure-resource-manager/resource-manager-create-first-template.md)en vervolgens uploaden en implementeren met behulp van Power shell of cli.
+- Een lokale [JSON-editor gebruiken (zoals VS code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)en vervolgens uploaden en implementeren met behulp van Power shell of cli.
 - Het Visual Studio [Azure Resource Group-project](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) gebruiken om een sjabloon te maken en te implementeren. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken 
 
-Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
 
 Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt u de volgende sjabloon. Vervang de `<USER ASSIGNED IDENTITY NAME>` waarde door uw eigen waarden:
 
@@ -88,4 +88,3 @@ Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt 
 Voor informatie over het toewijzen van een door de gebruiker toegewezen beheerde identiteit aan een Azure-VM met behulp van een Azure Resource Manager-sjabloon raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een Azure-VM met behulp van een](qs-configure-template-windows-vm.md)sjabloon.
 
 
- 

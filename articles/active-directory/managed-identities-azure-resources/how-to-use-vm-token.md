@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016135"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266286"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure VM om een toegangs token te verkrijgen 
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Een Token ophalen met behulp van de micro soft. Azure. Services. AppAuthentication-bibliotheek voor .NET
 
-Voor .NET-toepassingen en-functies is de eenvoudigste manier om te werken met beheerde identiteiten voor Azure-resources via het pakket micro soft. Azure. Services. AppAuthentication. Met deze bibliotheek kunt u uw code ook lokaal op uw ontwikkel computer testen met behulp van uw gebruikers account uit Visual Studio, de [Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)of Active Directory geïntegreerde verificatie. Zie de [referentie micro soft. Azure. Services. AppAuthentication](/azure/key-vault/service-to-service-authentication)voor meer informatie over de lokale ontwikkelings opties voor deze bibliotheek. In deze sectie wordt beschreven hoe u aan de slag kunt met de bibliotheek in uw code.
+Voor .NET-toepassingen en-functies is de eenvoudigste manier om te werken met beheerde identiteiten voor Azure-resources via het pakket micro soft. Azure. Services. AppAuthentication. Met deze bibliotheek kunt u uw code ook lokaal op uw ontwikkel computer testen met behulp van uw gebruikers account uit Visual Studio, de [Azure cli](/cli/azure?view=azure-cli-latest)of Active Directory geïntegreerde verificatie. Zie de [referentie micro soft. Azure. Services. AppAuthentication](../../key-vault/general/service-to-service-authentication.md)voor meer informatie over de lokale ontwikkelings opties voor deze bibliotheek. In deze sectie wordt beschreven hoe u aan de slag kunt met de bibliotheek in uw code.
 
 1. Voeg referenties toe aan de [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) -en [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-pakketten voor uw toepassing.
 
@@ -141,7 +141,7 @@ Voor .NET-toepassingen en-functies is de eenvoudigste manier om te werken met be
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Voor meer informatie over micro soft. Azure. Services. AppAuthentication en de bewerkingen die worden weer gegeven, raadpleegt u de naslag informatie over [micro soft. Azure. Services. AppAuthentication](/azure/key-vault/service-to-service-authentication) en de [app service en de sleutel kluis met beheerde identiteiten voor Azure resources .net-voor beeld](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Voor meer informatie over micro soft. Azure. Services. AppAuthentication en de bewerkingen die worden weer gegeven, raadpleegt u de naslag informatie over [micro soft. Azure. Services. AppAuthentication](../../key-vault/general/service-to-service-authentication.md) en de [app service en de sleutel kluis met beheerde identiteiten voor Azure resources .net-voor beeld](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Een Token ophalen met C #
 
@@ -381,7 +381,7 @@ In deze sectie worden de mogelijke fout reacties gedocumenteerd. De status ' 200
 |           | access_denied | De resource-eigenaar of autorisatie server heeft de aanvraag geweigerd. |  |
 |           | unsupported_response_type | De autorisatie server biedt geen ondersteuning voor het verkrijgen van een toegangs token met behulp van deze methode. |  |
 |           | invalid_scope | Het aangevraagde bereik is ongeldig, onbekend of onjuist gevormd. |  |
-| 500 Interne serverfout | unknown | Kan geen Token ophalen uit Active Directory. Zie Logboeken in voor meer informatie *\<file path\>* | Controleer of de beheerde identiteiten voor Azure-resources zijn ingeschakeld op de VM. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met](qs-configure-portal-windows-vm.md) behulp van de Azure portal als u hulp nodig hebt bij de configuratie van de virtuele machine.<br><br>Controleer ook of uw HTTP GET-aanvraag-URI correct is geformatteerd, met name de bron-URI die is opgegeven in de query reeks. Zie de ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld of [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](services-support-msi.md) voor een lijst met Services en de bijbehorende resource-id's.
+| 500 Interne serverfout | unknown | Kan geen Token ophalen uit Active Directory. Zie Logboeken in voor meer informatie *\<file path\>* | Controleer of de beheerde identiteiten voor Azure-resources zijn ingeschakeld op de VM. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met](qs-configure-portal-windows-vm.md) behulp van de Azure portal als u hulp nodig hebt bij de configuratie van de virtuele machine.<br><br>Controleer ook of uw HTTP GET-aanvraag-URI correct is geformatteerd, met name de bron-URI die is opgegeven in de query reeks. Zie de ' voorbeeld aanvraag ' in de voor gaande REST sectie voor een voor beeld of [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](./services-support-managed-identities.md) voor een lijst met Services en de bijbehorende resource-id's.
 
 ## <a name="retry-guidance"></a>Richt lijnen voor opnieuw proberen 
 
@@ -391,23 +391,15 @@ Beperkings limieten zijn van toepassing op het aantal aanroepen naar het IMDS-ei
 
 Voor opnieuw proberen wordt de volgende strategie aanbevolen: 
 
-| **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Hoe het werkt** |
+| **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Uitleg** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />false |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
 
 ## <a name="resource-ids-for-azure-services"></a>Resource-Id's voor Azure-Services
 
-Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](services-support-msi.md) voor een lijst met resources die ondersteuning bieden voor Azure AD en die zijn getest met beheerde identiteiten voor Azure-resources en de bijbehorende resource-id's.
+Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](./services-support-managed-identities.md) voor een lijst met resources die ondersteuning bieden voor Azure AD en die zijn getest met beheerde identiteiten voor Azure-resources en de bijbehorende resource-id's.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met behulp van de Azure Portal](qs-configure-portal-windows-vm.md)om beheerde identiteiten voor Azure-resources in te scha kelen op een Azure VM.
-
-
-
-
-
-
-
-

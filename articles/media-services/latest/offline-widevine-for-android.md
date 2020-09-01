@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b603b800dfdfb96e9b6b1074dc1e39d31b994c06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a1e85f37a0dfdbb7ff10db13e53b1998ef391caa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997775"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267187"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming voor Android met Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Naast het beveiligen van inhoud voor online streaming bieden media-inhouds abonnementen en verhuur Services Download bare inhoud die werkt wanneer u niet met internet verbonden bent. Mogelijk moet u inhoud downloaden naar uw telefoon of Tablet voor het afspelen in de vliegtuig modus wanneer de verbinding met het netwerk is verbroken. Aanvullende scenario's waarin u mogelijk inhoud wilt downloaden:
 

@@ -1,21 +1,21 @@
 ---
 title: Certificaten met Azure Stack Edge GPU gebruiken | Microsoft Docs
 description: Beschrijft het gebruik van certificaten met Azure Stack Edge GPU-apparaat, met inbegrip van de reden voor het gebruik van, het type en het uploaden van certificaten op uw apparaat.
-services: Azure Stack Edge
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147079"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268873"
 ---
-# <a name="use-certificates-with-azure-stack-edge-series"></a>Certificaten gebruiken met Azure Stack Edge-serie 
+# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Certificaten met Azure Stack Edge GPU-apparaat gebruiken
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -324,7 +324,7 @@ Als u certificaten wilt importeren op een Windows-client, voert u de volgende st
         ![Certificaat importeren 3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
 
  
-4. Selecteer **Voltooien**. Er wordt een bericht weer gegeven met het effect dat het importeren is geslaagd.
+4. Selecteer **Finish**. Er wordt een bericht weer gegeven met het effect dat het importeren is geslaagd.
 
 ### <a name="export-certificates-as-pfx-format-with-private-key"></a>Certificaten exporteren als. pfx-indeling met persoonlijke sleutel
 
@@ -366,7 +366,7 @@ Voer de volgende stappen uit om een SSL-certificaat met een persoonlijke sleutel
 
     ![Certificaat exporteren 7](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-7.png)
   
-8. Selecteer **Voltooien**.
+8. Selecteer **Finish**.
 
     ![Certificaat exporteren 8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
@@ -394,7 +394,7 @@ De back-up van het pfx-bestand wordt nu opgeslagen op de locatie die u hebt gese
     ![Certificaat exporteren 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
-4. Selecteer **Voltooien**.
+4. Selecteer **Finish**.
 
     ![Certificaat exporteren 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 

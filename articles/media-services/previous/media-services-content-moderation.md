@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 395d2239970e7efbf6973d6262df0e049306584b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022204"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266694"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator gebruiken om mogelijke inhoud voor volwassenen en ongepaste te detecteren 
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator gebruiken om mogelijke inhoud voor volwassenen en ongepaste te detecteren
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > De media processor van **Azure media content moderator** wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.

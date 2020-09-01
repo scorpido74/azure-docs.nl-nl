@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44d4e5b6d3e96d2bafa9a7e22f36c6544eaff151
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4f89215525232f9722cd95cc4dd85a4bd19118de
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999543"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268983"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics gebruiken om tekst inhoud in video bestanden te converteren naar digitale tekst  
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics gebruiken om tekst inhoud in video bestanden te converteren naar digitale tekst 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > De OCR-media processor van **Azure media** wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
@@ -47,7 +49,7 @@ Taak configuratie (voor instelling). Wanneer u een taak met **Azure media OCR**m
 >
 
 ### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Beschrijving |
+| Kenmerk naam | Description |
 | --- | --- |
 |AdvancedOutput| Als u AdvancedOutput instelt op True, bevat de JSON-uitvoer positionele gegevens voor elk enkel woord (naast zinsdelen en regio's). Als u deze gegevens niet wilt weer geven, stelt u de vlag in op ONWAAR. De standaardwaarde is false. Lees [deze blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/) voor meer informatie.|
 | Taal |(optioneel) Hiermee wordt de taal van de tekst beschreven waarnaar moet worden gezocht. Een van de volgende: automatische detectie (standaard), Arabisch, ChineseSimplified, ChineseTraditional, Tsjechisch, Nederlands, Engels, Fins, Frans, Duits, Grieks, Hong aars, Italiaans, Japans, Koreaans, Noors, Pools, Portugees, Roemeens, Russisch, SerbianCyrillic, SerbianLatin, Slowaaks, Spaans, Zweeds, Turks. |

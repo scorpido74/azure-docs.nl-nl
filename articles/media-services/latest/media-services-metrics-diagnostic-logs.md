@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Meer informatie over het bewaken van Azure Media Services metrische gegevens en Diagnostische logboeken via Azure Monitor.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011648"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267602"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrische gegevens en Diagnostische logboeken via Azure Monitor bewaken
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw apps worden uitgevoerd. Alle gegevens die worden verzameld door Azure Monitor, komen in een van de volgende twee fundamentele typen voor: metrieken en Logboeken. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt de metrische gegevens visualiseren en analyseren met behulp van [Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md). U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), ze exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
 
@@ -42,7 +44,7 @@ Media Services biedt ondersteuning voor het bewaken van metrische gegevens voor 
 
 U kunt de metrische gegevens van het volgende account bewaken.
 
-|Naam van meetwaarde|Weergavenaam|Beschrijving|
+|Naam van meetwaarde|Weergavenaam|Description|
 |---|---|---|
 |AssetCount|Aantal assets|Assets in uw account.|
 |AssetQuota|Activa quotum|Activa quota in uw account.|
@@ -60,7 +62,7 @@ U moet ook [rekening quota's en limieten](limits-quotas-constraints.md)bekijken.
 
 De volgende Media Services gegevens [stromen voor streaming-eind punten](/rest/api/media/streamingendpoints) worden ondersteund:
 
-|Naam van meetwaarde|Weergavenaam|Beschrijving|
+|Naam van meetwaarde|Weergavenaam|Description|
 |---|---|---|
 |Aanvragen|Aanvragen|Geeft het totale aantal HTTP-aanvragen dat door het streaming-eind punt wordt geleverd.|
 |Uitgaand verkeer|Uitgaand verkeer|Totaal aantal uitgaande bytes per minuut per streaming-eind punt.|

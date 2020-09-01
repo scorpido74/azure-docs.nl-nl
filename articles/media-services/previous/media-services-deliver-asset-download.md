@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019450"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266524"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Procedure: een Asset leveren door te downloaden  
+# <a name="how-to-deliver-an-asset-by-download"></a>Procedure: een Asset leveren door te downloaden
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 In dit artikel worden opties beschreven voor het leveren van media-assets die zijn geüpload naar Media Services. U kunt Media Services-inhoud leveren in verschillende toepassings scenario's. Down load na het coderen de gegenereerde media-assets of open ze met behulp van een streaming-Locator. Voor betere prestaties en schaal baarheid kunt u ook inhoud leveren met behulp van een Content Delivery Network (CDN).
 
 In dit voor beeld ziet u hoe u media-assets van Media Services naar uw lokale computer kunt downloaden. De code voert een query uit op de taken die zijn gekoppeld aan het Media Services-account op taak-ID en opent de **OutputMediaAssets** -verzameling (dat wil zeggen de set van een of meer uitvoer media-assets die het resultaat zijn van het uitvoeren van een taak). In dit voor beeld ziet u hoe uitvoer media-assets van een taak kunnen worden gedownload, maar u kunt dezelfde benadering Toep assen om andere assets te downloaden.

@@ -3,23 +3,25 @@ title: Aangepaste trans formatie coderen met Media Services v3 .NET-Azure | Micr
 description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services V3 gebruikt om een aangepaste trans formatie te coderen met behulp van .NET.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/03/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8557a11a4768b547096fb56371f0f358c890f883
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001142"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266983"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Coderen met een aangepaste trans formatie-.NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen standaard instellingen op basis van best practices in de branche, zoals wordt getoond in de zelf studie voor [streaming-bestanden](stream-files-tutorial-with-api.md) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 

@@ -7,23 +7,22 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 46a55b83b38593a514d40a9f75d99739a1efb8a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871804"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267255"
 ---
-# <a name="configure-export-setting-and-export-the-data-to-a-storage-account"></a>De export instelling configureren en de gegevens exporteren naar een opslag account
+# <a name="configure-export-setting-and-set-up-the-storage-account"></a>De instelling exporteren configureren en het opslag account instellen
 
 De Azure-API voor FHIR ondersteunt $export opdracht waarmee u de gegevens uit de Azure API voor het FHIR-account kunt exporteren naar een opslag account.
 
-Er zijn vier stappen betrokken bij het uitvoeren van exporteren in azure API voor FHIR:
+Er zijn drie stappen betrokken bij het configureren van exporteren in azure API voor FHIR:
 
 1. Beheerde identiteit inschakelen op de Azure-API voor de FHIR-service
 2. Een Azure Storage-account maken (indien dit nog niet is gedaan) en machtigingen toewijzen aan de Azure-API voor FHIR aan het opslag account
 3. Het opslag account in de Azure-API selecteren voor FHIR als export-opslag account
-4. De export uitvoeren door $export opdracht aan te roepen in azure API voor FHIR
 
 ## <a name="enabling-managed-identity-on-azure-api-for-fhir"></a>Beheerde identiteit inschakelen op de Azure-API voor FHIR
 
@@ -51,18 +50,11 @@ We zijn nu klaar voor de volgende stap, waarbij we het opslag account in azure A
 
 ## <a name="selecting-the-storage-account-for-export"></a>Het opslag account voor $export selecteren
 
-De laatste stap voor het aanroepen van $export opdracht is het toewijzen van het Azure-opslag account dat door de Azure-API voor FHIR wordt gebruikt om de gegevens te exporteren naar. Hiertoe gaat u naar de Blade integratie in azure API voor de service FHIR in Azure Portal en selecteert u het opslag account 
+De laatste stap is het toewijzen van het Azure-opslag account dat door Azure API voor FHIR wordt gebruikt om de gegevens te exporteren naar. Hiertoe gaat u naar de Blade integratie in azure API voor de service FHIR in Azure Portal en selecteert u het opslag account
 
 ![Beheerde identiteit inschakelen](media/export-data/fhir-export-storage.png)
 
 Daarna kunt u de gegevens exporteren met behulp van $export opdracht.
-
-## <a name="exporting-the-data-using-export-command"></a>De gegevens exporteren met behulp van $export-opdracht
-
-Nadat we Azure API voor FHIR voor export hebben geconfigureerd, kunnen we de $export opdracht gebruiken om de gegevens uit de service te exporteren naar het opslag account dat we hebben opgegeven. Raadpleeg voor meer informatie over het aanroepen van $export-opdracht in FHIR Server documentatie over $export specificatie op[https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html)
-
-> [!IMPORTANT]
-> Houd er rekening mee dat de Azure-API voor FHIR alleen de export van het systeem niveau ondersteunt zoals gedefinieerd in de specificatie export op [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) . We bieden momenteel ook geen ondersteuning voor query parameters met de $export.
 
 >[!div class="nextstepaction"]
 >[Aanvullende instellingen](azure-api-for-fhir-additional-settings.md)

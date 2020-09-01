@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 912f8bdf90e2b45932a73e5bd99190f58cf546a7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086231"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265946"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft &reg; Smooth streaming client Porting kit 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft &reg; Smooth streaming client Porting kit
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 ## <a name="overview"></a>Overzicht
 Micro soft Smooth Streaming client Porting kit (**SSPK** for Short) is een Smooth streaming-client implementatie die is geoptimaliseerd voor het helpen van Inge sloten hardwarefabrikanten, kabel en mobiele Opera Tors, aanbieders van leveranciers, leveranciers van Hoorn, onafhankelijke software leveranciers (isv's) en oplossingen voor het maken van adaptieve inhoud in Smooth streaming indeling. SSPK is een apparaat-en platform onafhankelijke implementatie van Smooth Streaming-client die door de licentie kan worden getransporteerd naar elk apparaat en platform. 
 
@@ -29,7 +32,7 @@ Hieronder vindt u een architectuur op hoog niveau en het vak IIS Smooth Streamin
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Beschrijving
+## <a name="description"></a>Description
 SSPK wordt in licentie gegeven voor termen die uitstekende bedrijfs waarde bieden. SSPK-licentie biedt de branche de volgende mogelijkheden:
 
 * Smooth Streaming Porting kit-bron in C++ 

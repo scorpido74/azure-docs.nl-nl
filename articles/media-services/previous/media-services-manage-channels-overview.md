@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb508831d7a10537f27bb5b4e55f3a0627ce1f3c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042851"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265963"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Overzicht van live streamen met Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -74,13 +76,13 @@ De volgende tabel bevat een hand leiding voor het vergelijken van de twee typen 
 
 | Functie | Pass-Through-kanaal | Standaard kanaal |
 | --- | --- | --- |
-| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Yes |
+| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Ja |
 | Maximum resolutie, aantal lagen |1080p, 8 lagen, 60 + fps |720p, 6 lagen, 30 fps |
 | Invoer protocollen |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Prijs |Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video |De [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) bekijken |
 | Maximale uitvoerings tijd |24x7 |8 uur |
-| Ondersteuning voor het invoegen van pastels |Nee |Yes |
-| Ondersteuning voor AD-Signa lering |Nee |Yes |
+| Ondersteuning voor het invoegen van pastels |Nee |Ja |
+| Ondersteuning voor AD-Signa lering |Nee |Ja |
 | Pass-Through CEA 608/708-bijschriften |Ja |Ja |
 | Ondersteuning voor niet-uniforme invoer GOPs |Yes |Nee – invoer moet worden vastgesteld 2sec GOPs |
 | Ondersteuning voor variabele frame-rate invoer |Yes |Nee – invoer moet een vaste frame frequentie zijn.<br/>Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Code ring kan echter niet worden verwijderd uit 10 frames per seconde. |

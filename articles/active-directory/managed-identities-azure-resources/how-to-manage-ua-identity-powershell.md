@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9861b257ee487824db26288925a786a9a6aeee34
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1211245786bbb734e0338be1b79030f5f9552793
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014214"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266371"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van Azure PowerShell
 
@@ -45,7 +45,7 @@ In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identitei
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken
 
-Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
 
 Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt u de `New-AzUserAssignedIdentity` opdracht. Met de `ResourceGroupName` para meter wordt de resource groep opgegeven waarin de door de gebruiker toegewezen beheerde identiteit moet worden gemaakt `-Name` . de para meter geeft de naam op. Vervang de `<RESOURCE GROUP>` `<USER ASSIGNED IDENTITY NAME>` para meters en door uw eigen waarden:
 
@@ -56,7 +56,7 @@ New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGN
 ```
 ## <a name="list-user-assigned-managed-identities"></a>Door de gebruiker toegewezen beheerde identiteiten weer geven
 
-Als u een door de gebruiker toegewezen beheerde identiteit wilt weer geven/lezen, moet uw account beschikken over de rol [Managed Identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) of [Managed id contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
+Als u een door de gebruiker toegewezen beheerde identiteit wilt weer geven/lezen, moet uw account beschikken over de rol [Managed Identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) of [Managed id contributor](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
 
 Als u door de gebruiker toegewezen beheerde identiteiten wilt weer geven, gebruikt u de opdracht [Get-AzUserAssigned].  Met de `-ResourceGroupName` para meter wordt de resource groep opgegeven waarin de door de gebruiker toegewezen beheerde identiteit is gemaakt. Vervang de `<RESOURCE GROUP>` door uw eigen waarde:
 
@@ -69,7 +69,7 @@ In het antwoord hebben door de gebruiker toegewezen beheerde identiteiten een `"
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen
 
-Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
+Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
 
 Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, gebruikt u de `Remove-AzUserAssignedIdentity` opdracht.  De `-ResourceGroupName` para meter geeft de resource groep op waarin de door de gebruiker toegewezen identiteit is gemaakt en de `-Name` para meter geeft de naam op. Vervang de `<RESOURCE GROUP>` `<USER ASSIGNED IDENTITY NAME>` para meters en de parameter waarden door uw eigen waarden:
 

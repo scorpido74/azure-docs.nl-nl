@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948297"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266575"
 ---
 # <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
 
 Aangepaste besturings elementen zijn een preview-functie van de Azure Active Directory. Wanneer u aangepaste besturings elementen gebruikt, worden uw gebruikers omgeleid naar een compatibele service om te voldoen aan de verificatie vereisten buiten Azure Active Directory. Om aan dit besturings element te voldoen, wordt de browser van een gebruiker omgeleid naar de externe service, wordt elke vereiste verificatie uitgevoerd en wordt vervolgens teruggeleid naar Azure Active Directory. Azure Active Directory controleert het antwoord en, als de gebruiker is geverifieerd of gevalideerd, wordt de gebruiker in de stroom voor voorwaardelijke toegang voortgezet.
 
 > [!NOTE]
-> Zie de [nieuwe update van](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)februari 2020 voor meer informatie over wijzigingen die zijn gepland voor de aangepaste beheer functie.
+> Zie voor meer informatie over wijzigingen die voor aangepaste besturings elementen worden gepland, het [Archief van februari 2020 voor wat er nieuw is](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls).
 
 ## <a name="creating-custom-controls"></a>Aangepaste besturings elementen maken
 

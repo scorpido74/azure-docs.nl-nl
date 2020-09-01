@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 703e67b4829413776dc8d98843888fbd67906baa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182187"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268071"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-device"></a>Op Kubernetes Access Control op basis van rollen op uw Azure Stack edge-apparaat
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Op rollen gebaseerd Access Control op Kubernetes op uw Azure Stack Edge GPU-apparaat
 
 
 Wanneer u een compute-rol configureert op uw Azure Stack edge-apparaat, wordt er een Kubernetes-cluster gemaakt. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de toegang tot de cluster bronnen op uw apparaat te beperken.

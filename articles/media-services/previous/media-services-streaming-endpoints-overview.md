@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052525"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265912"
 ---
 # <a name="streaming-endpoints-overview"></a>Overzicht van streaming-eind punten  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -39,9 +41,9 @@ In dit onderwerp vindt u een overzicht van de belangrijkste functies die worden 
 
 ## <a name="naming-conventions"></a>Naamconventies
 
-Voor het standaard eindpunt:`{AccountName}.streaming.mediaservices.windows.net`
+Voor het standaard eindpunt: `{AccountName}.streaming.mediaservices.windows.net`
 
-Voor alle extra eind punten:`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
+Voor alle extra eind punten: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Typen streaming en versies
 
@@ -50,7 +52,7 @@ Voor alle extra eind punten:`{EndpointName}-{AccountName}.streaming.mediaservice
 Vanaf de versie van Media Services januari 2017 hebt u twee streaming-typen: **Standard** (preview) en **Premium**. Deze typen maken deel uit van de streaming-eindpunt versie ' 2,0 '.
 
 
-|Type|Beschrijving|
+|Type|Description|
 |--------|--------|  
 |**Standard**|Het standaard streaming-eind punt is een **standaard** type, dat kan worden gewijzigd in het Premium-type door streaming-eenheden aan te passen.|
 |**Premium** |Deze optie is geschikt voor professionele scenario's die een hogere schaal of beheer vereisen. U gaat naar een **Premium** -type door streaming-eenheden aan te passen.<br/>Toegewezen streaming-eind punten zijn Live in geïsoleerde omgevingen en concurreren niet voor resources.|
@@ -77,9 +79,9 @@ Als het streaming-eind punt van uw **versie 1,0** >= 1 Premium streaming-eenhede
 
 |Type|StreamingEndpointVersion|ScaleUnits|CDN|Billing|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klassiek|1.0|0|N.v.t.|Gratis|
+|Klassiek|1,0|0|NA|Gratis|
 |Standard streaming-eind punt (preview-versie)|2,0|0|Yes|Teken|
-|Premium-streaming-eenheden|1.0|>0|Yes|Teken|
+|Premium-streaming-eenheden|1,0|>0|Yes|Teken|
 |Premium-streaming-eenheden|2,0|>0|Yes|Teken|
 
 ### <a name="features"></a>Functies
@@ -102,7 +104,7 @@ Zie [prijzen en sla](https://azure.microsoft.com/pricing/details/media-services/
 
 ## <a name="migration-between-types"></a>Migratie tussen typen
 
-Van | Tot | Bewerking
+Van | Tot | Actie
 ---|---|---
 Klassiek|Standard|Moet u zich aanmelden
 Klassiek|Premium| Schalen (extra streaming-eenheden)

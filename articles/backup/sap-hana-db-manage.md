@@ -3,12 +3,12 @@ title: Back-ups van SAP HANA data bases op virtuele machines van Azure beheren
 description: In dit artikel leert u algemene taken voor het beheren en bewaken van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006562"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267476"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Back-ups van SAP HANA-databases beheren en bewaken
 
@@ -32,7 +32,7 @@ Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](./back
 
 Waarschuwingen zijn een eenvoudige manier om back-ups van SAP HANA-data bases te bewaken. Waarschuwingen zorgen ervoor dat u zich kunt concentreren op de gebeurtenissen die u het meest vindt, zonder dat u in het grootst aan gebeurtenissen gaat die door een back-up worden gegenereerd. Met Azure Backup kunt u waarschuwingen instellen en ze kunnen als volgt worden bewaakt:
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
 * Selecteer **back-upwaarschuwingen**op het kluis dashboard.
 
   ![Back-upwaarschuwingen op het kluis dashboard](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -65,6 +65,8 @@ Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back
 2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
 3. Kies in **Nu back-up**het type back-up dat u wilt uitvoeren. Klik vervolgens op **OK**. Deze back-up wordt bewaard op basis van het beleid dat aan dit back-upitem is gekoppeld.
 4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
+
+Standaard is het bewaren van back-ups op aanvraag 45 dagen.
 
 ### <a name="hana-native-client-integration"></a>HANA native client-integratie
 

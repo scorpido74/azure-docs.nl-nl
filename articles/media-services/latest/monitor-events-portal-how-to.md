@@ -3,7 +3,7 @@ title: Azure Media Services gebeurtenissen controleren met Event Grid met behulp
 description: In dit artikel wordt beschreven hoe u zich abonneert op Event Grid om Azure Media Services-gebeurtenissen te controleren.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 602ff0a29f3fd8717e581b6ac15d493e3ad475f7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 26e6e56d7c14cfa0ab54776003ae4489bb254094
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542392"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265844"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services-gebeurtenissen maken en bewaken met Event Grid met de Azure-portal
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. Deze service maakt gebruik van [gebeurtenis abonnementen](../../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Media Services gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U kunt een Media Services gebeurtenis identificeren omdat de eigenschap Event type met ' micro soft. media. ' begint. Zie [Media Services-gebeurtenis schema's](media-services-event-schemas.md)voor meer informatie.
 
@@ -32,7 +34,7 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
 ## <a name="prerequisites"></a>Vereisten 
 
-* Een actief Azure-abonnement hebben.
+* Een actief Azure-abonnement.
 * Maak een nieuw Media Services-account zoals beschreven in deze [snelstart](./create-account-howto.md).
 
 ## <a name="create-a-message-endpoint"></a>Het eindpunt van een bericht maken
@@ -41,7 +43,7 @@ Voordat u zich abonneert op de gebeurtenissen voor het Media Services-account, g
 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. Geef in Azure Portal waarden op voor de parameters.
 
-   [![Afbeelding met een knop met het label implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 
 1. De implementatie kan enkele minuten duren. Controleer of uw web-app wordt uitgevoerd nadat de implementatie is voltooid. Navigeer in een webbrowser naar: `https://<your-site-name>.azurewebsites.net`
 

@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744608"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267867"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Wat is Azure Media Services Video Indexer?
 
 Video Indexer (VI) is de Azure Media Services AI-oplossing en deel van het Cognitive Services merk van Azure. Video Indexer biedt de mogelijkheid om diepere inzichten te verkrijgen (zonder gegevens analyse of codeer vaardig heden) met behulp van machine learning modellen op basis van meerdere kanalen (spraak, vocals, Visual). U kunt de modellen verder aanpassen en trainen. Met de service kunnen uitgebreide zoek opdrachten worden uitgevoerd, worden operationele kosten verminderd, worden nieuwe verdiensten maximaliseren-mogelijkheden geboden en worden nieuwe gebruikers ervaringen gemaakt op grote archieven van Video's (met een lage vermelding).
 
 Als u inzichten wilt gaan extra heren met Video Indexer, moet u een account maken en Video's uploaden. Wanneer u uw Video's uploadt naar Video Indexer, analyseert deze zowel visuele elementen als audio door verschillende AI-modellen uit te voeren. Als Video Indexer analyseert u uw video, de inzichten die worden geëxtraheerd door de AI-modellen.
+
+Wanneer u een Video Indexer account maakt en verbindt met Media Services, worden de media-en meta gegevensbestanden opgeslagen in het Azure-opslag account dat is gekoppeld aan dat Media Services-account. Zie [een video indexer-account maken dat is verbonden met Azure](connect-to-azure.md)voor meer informatie.
 
 Het volgende diagram is een illustratie en is geen technische uitleg over de werking van Video Indexer in de back-end.
 
@@ -32,9 +34,9 @@ Het volgende diagram is een illustratie en is geen technische uitleg over de wer
 
 Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Video Indexer en mag u Video Indexer of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk voor anderen kunnen zijn.
 
-Voordat u een video/afbeelding naar Video Indexer uploadt, moet u over alle juiste rechten beschikken voor het gebruik van de video/afbeelding, inclusief, indien vereist door de wet, alle vereiste mede werkers (indien van toepassing) in de video/afbeelding, voor gebruik, verwerking en opslag van hun gegevens in Video Indexer en Azure. Sommige jurisdicties kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde gegevens categorieën, zoals biometrische gegevens. Voordat u Video Indexer en Azure gebruikt voor het verwerken en opslaan van gegevens die onder bijzondere wettelijke vereisten vallen, moet u ervoor zorgen dat u voldoet aan de wettelijke vereisten die voor u van toepassing kunnen zijn.
+Voordat u een video/afbeelding naar Video Indexer uploadt, moet u over alle juiste rechten beschikken voor het gebruik van de video/afbeelding, inclusief, indien vereist door de wet, alle vereiste mede werkers (indien van toepassing) in de video/afbeelding, voor gebruik, verwerking en opslag van hun gegevens in Video Indexer en Azure. Sommige jurisdicties kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde typen gegevens, zoals biometrische gegevens. Voordat u Video Indexer en Azure gebruikt voor het verwerken en opslaan van gegevens die onder bijzondere wettelijke vereisten vallen, moet u ervoor zorgen dat u voldoet aan de wettelijke vereisten die voor u van toepassing kunnen zijn.
 
-Ga naar het [vertrouwens centrum](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)van micro soft voor meer informatie over naleving, privacy en beveiliging in video indexer. Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft, het verwerken en bewaren van gegevens, inclusief de manier waarop u uw gegevens kunt verwijderen, de [Privacy verklaring](https://privacy.microsoft.com/PrivacyStatement), de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") en de [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Door Video Indexer te gebruiken, gaat u ermee akkoord dat u bent gebonden aan de OST, DPA en de privacyverklaring.
+Ga naar het [vertrouwens centrum](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)van micro soft voor meer informatie over naleving, privacy en beveiliging in video indexer. Als u meer wilt weten over de privacyverplichtingen en procedures voor gegevensverwerking en -retentie die Microsoft hanteert ten aanzien van uw gegevens, inclusief het verwijderen van uw gegevens, kunt u de [Privacyverklaring](https://privacy.microsoft.com/PrivacyStatement) van Microsoft, de [Voorwaarden voor Online Diensten](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ('OST') en het [Addendum met betrekking tot gegevensverwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ('DPA') raadplegen. Door Video Indexer te gebruiken, gaat u ermee akkoord dat u bent gebonden aan de OST, DPA en de privacyverklaring.
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Wat kan ik doen met Video Indexer?
 
@@ -70,9 +72,9 @@ In de volgende lijst ziet u de inzichten die u uit uw Video's kunt ophalen met V
 
 ### <a name="audio-insights"></a>Audio inzichten
 
-* **Audio-transcriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Arabisch, Russisch, Portugees, Hindi en Koreaans.
-* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Russisch en Portugees. Als de taal niet met vertrouwen kan worden geïdentificeerd Video Indexer, wordt ervan uitgegaan dat de gesp roken taal Engels is. Zie [Language Identification model (Engelstalig)](language-identification-model.md)voor meer informatie.
-* **Meertalige spraak-identificatie en transcriptie** (preview-versie): identificeert automatisch de gesp roken taal in verschillende segmenten van audio. Elk segment van het Media bestand dat moet worden getranscribeerd, wordt verzonden en vervolgens wordt de transcriptie opnieuw gecombineerd tot één Unified transcriptie. Zie voor meer informatie [automatisch inhoud identificeren en transcriberen in meerdere talen](multi-language-identification-transcription.md).
+* **Audio-transcriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. De volgende talen worden ondersteund: Engels, Spaans, Frans, Duits, Italiaans, Chinees (Mandarijn), Japans, Arabisch, Russisch, Portugees, Hindi en Koreaans.
+* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. De volgende talen worden ondersteund: Engels, Spaans, Frans, Duits, Italiaans, Chinees (Mandarijn), Japans, Arabisch, Russisch en Portugees. Als de taal niet met vertrouwen kan worden geïdentificeerd, neemt Video Indexer aan dat de gesproken taal Engels is. Zie [Taalidentificatiemodel](language-identification-model.md) voor meer informatie.
+* **Meertalige spraak-identificatie en transcriptie** (preview-versie): identificeert automatisch de gesp roken taal in verschillende segmenten van audio. Elke segment van het mediabestand wordt verzonden voor een transcriptie en deze transcripties worden vervolgens gecombineerd in één uniforme transcriptie. Zie [Inhoud in meerdere talen automatisch identificeren en transcriberen](multi-language-identification-transcription.md) voor meer informatie.
 * **Ondertiteling**: hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
 * **Twee kanaal verwerking**: automatisch detecteert afzonderlijke transcripten en samen voegingen op één tijd lijn.
 * **Ruis reductie**: Hiermee wist u de audio of ruis opnamen van telefonie (op basis van Skype-filters).

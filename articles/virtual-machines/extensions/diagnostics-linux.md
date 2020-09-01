@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837037"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267850"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -23,7 +23,7 @@ In dit document wordt versie 3,0 en nieuwer van de Linux Diagnostic-extensie bes
 > [!IMPORTANT]
 > Zie [dit document](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)voor meer informatie over versie 2,3 en ouder.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 De diagnostische extensie van Linux helpt gebruikers bij het controleren van de status van een virtuele Linux-machine die wordt uitgevoerd op Microsoft Azure. Het heeft de volgende mogelijkheden:
 
@@ -128,7 +128,7 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 # If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
@@ -173,7 +173,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Naam | Waarde
+Name | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -213,7 +213,7 @@ In deze optionele sectie worden extra bestemmingen gedefinieerd waarnaar de uitb
 
 Element | Waarde
 ------- | -----
-naam | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
+name | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
 type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
 
 Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: EventHub en JsonBlob.
@@ -233,8 +233,8 @@ Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: Even
 
 De vermelding ' sasURL ' bevat de volledige URL, inclusief SAS-token, voor de Event hub waarnaar de gegevens moeten worden gepubliceerd. LAD vereist een SAS-naamgevings beleid dat de verzend claim mogelijk maakt. Een voor beeld:
 
-* Een Event Hubs naam ruimte maken met de naam`contosohub`
-* Een event hub maken in de naam ruimte met de naam`syslogmsgs`
+* Een Event Hubs naam ruimte maken met de naam `contosohub`
+* Een event hub maken in de naam ruimte met de naam `syslogmsgs`
 * Een beleid voor gedeelde toegang maken op de Event hub `writer` met de naam waarmee de verzend claim wordt ingeschakeld
 
 Als u een goede SAS hebt gemaakt tot middernacht UTC op 1 januari 2018, kan de waarde van sasURL:
@@ -367,9 +367,9 @@ displayName | Het label (in de taal die is opgegeven door de instellingen van de
 
 De counterSpecifier is een wille keurige id. Consumenten van metrische gegevens, zoals het Azure Portal grafiek-en waarschuwings onderdeel, gebruiken counterSpecifier als de "sleutel" waarmee een metriek of een exemplaar van een metriek wordt aangeduid. Voor `builtin` metrische gegevens raden we u aan om counterSpecifier-waarden te gebruiken die beginnen met `/builtin/` . Als u een specifiek exemplaar van een metriek verzamelt, raden we u aan de id van het exemplaar te koppelen aan de waarde counterSpecifier. Een aantal voorbeelden:
 
-* `/builtin/Processor/PercentIdleTime`-Niet-actieve tijd, gemiddeld in alle Vcpu's
-* `/builtin/Disk/FreeSpace(/mnt)`-Beschik bare ruimte voor het/mnt-bestands systeem
-* `/builtin/Disk/FreeSpace`-Beschik bare ruimte op alle gekoppelde bestands systemen
+* `/builtin/Processor/PercentIdleTime` -Niet-actieve tijd, gemiddeld in alle Vcpu's
+* `/builtin/Disk/FreeSpace(/mnt)` -Beschik bare ruimte voor het/mnt-bestands systeem
+* `/builtin/Disk/FreeSpace` -Beschik bare ruimte op alle gekoppelde bestands systemen
 
 LAD en de Azure Portal verwacht dat de counterSpecifier-waarde overeenkomt met een patroon. Wees consistent met het samen stellen van counterSpecifier-waarden.
 
@@ -757,7 +757,7 @@ Gegevens die worden verzonden naar JsonBlob-sinks, worden opgeslagen in blobs in
 Daarnaast kunt u deze hulpprogram ma's voor de gebruikers interface gebruiken om toegang te krijgen tot de gegevens in Azure Storage:
 
 * Visual Studio Server Explorer.
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Opslagverkenner").
 
 Deze moment opname van een Microsoft Azure Storage Explorer-sessie toont de gegenereerde Azure Storage tabellen en containers van een correct geconfigureerde LAD 3,0-extensie op een test-VM. De installatie kopie komt niet exact overeen met de voor [beeld-LAD 3,0-configuratie](#an-example-lad-30-configuration).
 

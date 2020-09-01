@@ -3,22 +3,24 @@ title: Opmerkingen bij de release van Azure Media Services v3 | Microsoft Docs
 description: Om up-to-date te blijven met de meest recente ontwikkelingen, biedt dit artikel u de meest recente updates op Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072143"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267496"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` in uw RSS-feed-lezer.
 
@@ -141,7 +143,7 @@ Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire co
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het onderwerp [oudere onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
+Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het onderwerp  [oudere onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
@@ -270,31 +272,31 @@ De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](/cli/azure
 
 #### <a name="asset-commands"></a>Asset-opdrachten
 
-- ```--storage-account```en ```--container``` argumenten zijn toegevoegd.
+- ```--storage-account``` en ```--container``` argumenten zijn toegevoegd.
 - Standaard waarden voor verloop tijd (nu + 23h) en machtigingen (lezen) in de ```az ams asset get-sas-url``` opdracht toegevoegd.
 
 #### <a name="job-commands"></a>Opdracht opdrachten
 
-- ```--correlation-data```en ```--label``` argumenten toegevoegd
-- ```--output-asset-names```de naam is gewijzigd in ```--output-assets``` . Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
+- ```--correlation-data``` en ```--label``` argumenten toegevoegd
+- ```--output-asset-names``` de naam is gewijzigd in ```--output-assets``` . Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
 
 #### <a name="streaming-locator-commands"></a>Opdrachten voor streaming-Locator
 
-- ```az ams streaming locator```de basis opdracht is vervangen door ```az ams streaming-locator``` .
-- ```--streaming-locator-id```en ```--alternative-media-id support``` argumenten zijn toegevoegd.
-- ```--content-keys argument```het argument is bijgewerkt.
-- ```--content-policy-name```de naam is gewijzigd in ```--content-key-policy-name``` .
+- ```az ams streaming locator``` de basis opdracht is vervangen door ```az ams streaming-locator``` .
+- ```--streaming-locator-id``` en ```--alternative-media-id support``` argumenten zijn toegevoegd.
+- ```--content-keys argument``` het argument is bijgewerkt.
+- ```--content-policy-name``` de naam is gewijzigd in ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Streaming-beleids opdrachten
 
-- ```az ams streaming policy```de basis opdracht is vervangen door ```az ams streaming-policy``` .
+- ```az ams streaming policy``` de basis opdracht is vervangen door ```az ams streaming-policy``` .
 - De ondersteuning voor versleutelings parameters is ```az ams streaming-policy create``` toegevoegd.
 
 #### <a name="transform-commands"></a>Opdrachten transformeren
 
-- ```--preset-names```het argument is vervangen door ```--preset``` . Nu kunt u slechts één uitvoer/voor instelling per keer instellen (om meer informatie toe te voegen om uit te voeren ```az ams transform output add``` ). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
-- ```az ams transform output remove```kan worden uitgevoerd door de uitvoer index door te geven die moet worden verwijderd.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenten die zijn toegevoegd in ```az ams transform create``` en ```az ams transform output add``` opdrachten.
+- ```--preset-names``` het argument is vervangen door ```--preset``` . Nu kunt u slechts één uitvoer/voor instelling per keer instellen (om meer informatie toe te voegen om uit te voeren ```az ams transform output add``` ). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
+- ```az ams transform output remove``` kan worden uitgevoerd door de uitvoer index door te geven die moet worden verwijderd.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumenten die zijn toegevoegd in ```az ams transform create``` en ```az ams transform output add``` opdrachten.
 
 ## <a name="october-2018---ga"></a>Oktober 2018-GA
 
@@ -390,7 +392,7 @@ De volgende functies zijn aanwezig in de .NET SDK:
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3](migrate-from-v2-to-v3.md#known-issues).
 

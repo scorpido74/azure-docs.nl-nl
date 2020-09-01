@@ -1,7 +1,7 @@
 ---
 title: Meta gegevens schema voor uitvoer Azure Media Services | Microsoft Docs
 description: Dit artikel bevat een overzicht van Azure Media Services schema voor uitvoer van meta gegevens.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080921"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267201"
 ---
 # <a name="output-metadata"></a>Uitvoermetagegevens
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren. U kunt bijvoorbeeld een MP4-bestand coderen naar H. 264 MP4 Adaptive bitrate sets; Maak een miniatuur. Maak overlays. Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd.  Het uitvoer element bevat video, audio, miniaturen en andere bestanden. Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het JSON-bestand met meta gegevens heeft de volgende indeling: `<source_file_name>_manifest.json` (bijvoorbeeld `BigBuckBunny_manifest.json` ). U moet zoeken naar een * _metadata.jsen een query uitvoeren op de filepath teken reeks in om de bron bestandsnaam te vinden (zonder afkap ping).
 
@@ -39,7 +41,7 @@ Verzameling van AssetFile-vermeldingen voor de coderings taak.
 | **Bronnen** |Verzameling van invoer/bron media bestanden, die zijn verwerkt om deze AssetFile te maken.<br />Voorbeeld: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. <br />Zie [VideoTracks](#videotracks). |
 | **AudioTracks**|Elk fysiek AssetFile kan in de waarde nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Dit is de verzameling van al deze audio sporen.<br /> Zie [AudioTracks](#audiotracks)voor meer informatie. |
-| **Naam**<br />Vereist |De bestands naam voor het Media-activum. <br /><br />Voorbeeld: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Name**<br />Vereist |De bestands naam voor het Media-activum. <br /><br />Voorbeeld: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
 | **Grootte**<br />Vereist |Grootte van het activa bestand in bytes. <br /><br />Voorbeeld: `"Size": 32414631`|
 | **Duur**<br />Vereist |Duur van het afspelen van inhoud. Zie de [iso8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling voor meer informatie. <br /><br />Voorbeeld: `"Duration": "PT1M10.315S"`|
 

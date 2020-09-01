@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Informatie over het gebruik van dynamische DRM-versleuteling en licentie leverings service om stromen te leveren die zijn versleuteld met de micro soft PlayReady-, Google Widevine-of Apple FairPlay-licenties.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97011222593d249461719e3492dd5b54fb63baff
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060614"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267136"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Zelf studie: DRM dynamische versleuteling en licentie leverings service gebruiken
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Hoewel in deze zelfstudie de [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-voorbeelden worden gebruikt, zijn de algemene stappen hetzelfde voor de [REST API](/rest/api/media/liveevents), de [CLI-](/cli/azure/ams/live-event?view=azure-cli-latest) of andere ondersteunde [SDK's](media-services-apis-overview.md#sdks).
@@ -114,7 +116,7 @@ Een inhoudssleutel biedt veilige toegang tot uw assets. U moet een beleid voor [
 
 U moet de vereisten (beperkingen) instellen voor het beleid voor de **inhouds sleutel** waaraan moet worden voldaan om sleutels te kunnen leveren met de opgegeven configuratie. In dit voorbeeld worden de volgende configuraties en vereisten ingesteld:
 
-* Configuratie
+* Configuration
 
     De licenties van [PlayReady](playready-license-template-overview.md) en [Widevine](widevine-license-template-overview.md) zijn geconfigureerd om te kunnen worden geleverd door de Media Services-service voor het leveren van licenties. Hoewel deze voor beeld-app de [Fairplay](fairplay-license-overview.md) -licentie niet configureert, bevat deze een methode die u kunt gebruiken om Fairplay te configureren. U kunt de FairPlay-configuratie als een andere optie toevoegen.
 

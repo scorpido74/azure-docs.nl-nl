@@ -3,7 +3,7 @@ title: Filters maken met Azure Media Services v3 REST API
 description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stroom te streamen. Media Services maakt dynamische manifesten om deze selectief streaming te verzorgen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a98a56bf27f76de706d02691d5dfbb54b5466c49
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023106"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268516"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Filters maken met Media Services REST API
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bij het leveren van uw inhoud aan klanten (het streamen van Live-gebeurtenissen of video op aanvraag), heeft uw client mogelijk meer flexibiliteit nodig dan is beschreven in het manifest bestand van het standaard activum. Met Azure Media Services kunt u account filters en activa filters definiëren voor uw inhoud. 
 

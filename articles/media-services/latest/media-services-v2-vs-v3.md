@@ -3,7 +3,7 @@ title: Migreren van Azure Media Services v2 naar v3
 description: In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd en verschillen tussen twee versies worden weer gegeven.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448379"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267561"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd en verschillen tussen twee versies worden weer gegeven.
 
@@ -93,22 +95,22 @@ In de volgende tabel ziet u hoe de eigenschappen van het [element](/rest/api/med
 
 |V3-eigenschappen|v2-eigenschappen|
 |---|---|
-|`id`-(uniek) het volledige Azure Resource Manager pad, zie voor beelden in [Asset](/rest/api/media/assets/createorupdate)||
-|`name`-(uniek) Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions) ||
+|`id` -(uniek) het volledige Azure Resource Manager pad, zie voor beelden in [Asset](/rest/api/media/assets/createorupdate)||
+|`name` -(uniek) Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
-|`assetId`|`Id`-(unieke) waarde begint met het `nb:cid:UUID:` voor voegsel.|
+|`assetId`|`Id` -(unieke) waarde begint met het `nb:cid:UUID:` voor voegsel.|
 |`created`|`Created`|
 |`description`|`Name`|
 |`lastModified`|`LastModified`|
 |`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options`(opties voor maken)|
+|`storageEncryptionFormat`| `Options` (opties voor maken)|
 |`type`||
 
 ### <a name="storage-side-encryption"></a>Versleuteling van opslag side
 
 Ter bescherming van uw assets op rest moeten de activa worden versleuteld door de versleuteling van de opslag side. In de volgende tabel ziet u hoe de opslag side-versleuteling werkt in Media Services:
 
-|Versleutelings optie|Beschrijving|Media Services v2|Media Services v3|
+|Versleutelings optie|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
 |[Storage Service Encryption voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|

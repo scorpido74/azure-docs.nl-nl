@@ -3,7 +3,7 @@ title: Streaming-eind punten beheren met Azure Media Services v3
 description: In dit artikel wordt beschreven hoe u streaming-eind punten beheert met Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: d8b5f79d9c9050eeb7957ddcf28021e3c8b3dd94
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 08730961d81cd14b5ba8af0778d2de4078398bff
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010644"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266541"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Streaming-eind punten beheren met Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Wanneer uw Media Services-account is gemaakt, wordt er een **standaard** [streaming-eind punt](streaming-endpoint-concept.md) aan uw account toegevoegd met de status **gestopt** . Als u de inhoud wilt streamen en gebruik wilt maken van [dynamische pakketten](dynamic-packaging-overview.md) en [dynamische versleuteling](content-protection-overview.md), moet het streaming-eind punt van waar u inhoud wilt streamen, de status **wordt uitgevoerd** hebben.
 
@@ -55,7 +57,7 @@ Zie voor meer informatie:
 
 ## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken 
  
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
 1. Ga naar uw Azure Media Services-account.
 1. Selecteer in het linkerdeel venster  **streaming-eind punten**.
 1. Selecteer het streaming-eind punt dat u wilt starten en selecteer vervolgens **starten**.

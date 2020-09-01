@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61229047"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268567"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Een miniatuursprite genereren  
+# <a name="generate-a-thumbnail-sprite"></a>Een miniatuursprite genereren
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 U kunt Media Encoder Standard gebruiken voor het genereren van een miniatuur sprite, een JPEG-bestand met meerdere miniaturen voor kleine oplossingen die samen worden gecombineerd in één (grote) installatie kopie, samen met een VTT-bestand. Dit VTT-bestand bevat het tijds bereik in de invoer video dat elke miniatuur vertegenwoordigt, samen met de grootte en coördinaten van die miniatuur binnen het grote JPEG-bestand. Video spelers gebruiken de VTT-bestand en de sprite-afbeelding om een ' Visual ' SeekBar weer te geven, met een viewer met visuele feedback bij het reinigen en door sturen van de video tijdlijn.
 

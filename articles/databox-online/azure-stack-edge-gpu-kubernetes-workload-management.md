@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182051"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268024"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes op uw Azure Stack edge-apparaat
 
@@ -47,11 +47,11 @@ Er zijn drie manieren om uw workloads te implementeren. Met elk van deze impleme
 
 ![Implementatie van Kubernetes-werk belasting](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Lokale implementatie**: dit is via het opdracht regel programma voor toegang, zoals `kubectl` waarmee u K8 kunt implementeren `yamls` . U maakt verbinding met het K8-cluster op uw Azure Stack-rand die u maakt met behulp van het `kubeconfig` bestand. Ga voor meer informatie naar [toegang tot een Kubernetes-cluster via kubectl](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- **Lokale implementatie**: dit is via het opdracht regel programma voor toegang, zoals `kubectl` waarmee u Kubernetes kunt implementeren `yamls` . U maakt verbinding met het Kubernetes-cluster op uw Azure Stack-rand die u maakt met behulp van het `kubeconfig` bestand. Ga voor meer informatie naar [toegang tot een Kubernetes-cluster via kubectl](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
-- **IOT Edge-implementatie**: dit is via IOT Edge, waarmee verbinding wordt gemaakt met de Azure-IOT hub. U maakt verbinding met het K8-cluster op uw Azure Stack edge-apparaat via de `iotedge` naam ruimte. De IoT Edge agents die in deze naam ruimte zijn geïmplementeerd, zijn verantwoordelijk voor de connectiviteit met Azure. U past de `IoT Edge deployment.json` configuratie toe met behulp van Azure DEVOPS CI/cd. De naam ruimte en het IoT Edge beheer worden uitgevoerd via de Cloud operator.
+- **IOT Edge-implementatie**: dit is via IOT Edge, waarmee verbinding wordt gemaakt met de Azure-IOT hub. U maakt verbinding met het Kubernetes-cluster op uw Azure Stack edge-apparaat via de `iotedge` naam ruimte. De IoT Edge agents die in deze naam ruimte zijn geïmplementeerd, zijn verantwoordelijk voor de connectiviteit met Azure. U past de `IoT Edge deployment.json` configuratie toe met behulp van Azure DEVOPS CI/cd. De naam ruimte en het IoT Edge beheer worden uitgevoerd via de Cloud operator.
 
-- **Implementatie van Azure/Arc**: Azure Arc is een Hybrid management tool waarmee u toepassingen kunt implementeren in uw K8-clusters. U verbindt het K8-cluster op uw Azure Stack edge-apparaat via de `azure-arc namespace` . Agents worden geïmplementeerd in deze naam ruimte die verantwoordelijk zijn voor de connectiviteit met Azure. U past de implementatie configuratie toe met behulp van het GitOps-configuratie beheer. Met Azure Arc kunt u ook Azure Monitor voor containers gebruiken om uw clusters weer te geven en te bewaken. Ga naar [Wat is Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)voor meer informatie.
+- **Implementatie van Azure/Arc**: Azure Arc is een Hybrid management tool waarmee u toepassingen kunt implementeren in uw Kubernetes-clusters. U verbindt het Kubernetes-cluster op uw Azure Stack edge-apparaat via de `azure-arc namespace` . Agents worden geïmplementeerd in deze naam ruimte die verantwoordelijk zijn voor de connectiviteit met Azure. U past de implementatie configuratie toe met behulp van het GitOps-configuratie beheer. Met Azure Arc kunt u ook Azure Monitor voor containers gebruiken om uw clusters weer te geven en te bewaken. Ga naar [Wat is Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)voor meer informatie.
 
 ## <a name="choose-the-deployment-type"></a>Het implementatie type kiezen
 

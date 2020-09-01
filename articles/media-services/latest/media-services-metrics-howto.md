@@ -3,7 +3,7 @@ title: Metrische gegevens weer geven met Azure Monitor
 description: In dit artikel wordt uitgelegd hoe u metrische gegevens kunt controleren met behulp van de Azure Portal grafieken en Azure CLI.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 154e5b5d9639203810e9d16dec4e2907fe5ee80a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc532df51b4bbe2e7da1b47dfcc8d2e05e42f796
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504293"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267583"
 ---
 # <a name="monitor-media-services-metrics"></a>Metrische gegevens voor Media Services controleren
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw toepassingen worden uitgevoerd. Zie [Media Services metrische gegevens en Diagnostische logboeken controleren](media-services-metrics-diagnostic-logs.md)voor een gedetailleerde beschrijving van deze functie en om te zien waarom u Azure Media Services metrische gegevens en Diagnostische logboeken wilt gebruiken.
 
@@ -30,7 +32,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 ## <a name="prerequisites"></a>Vereisten
 
 - [Een Azure Media Services-account maken](./create-account-howto.md)
-- Controleren [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md)
+- Controleren  [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>Metrische gegevens weer geven in Azure Portal
 
@@ -68,7 +70,7 @@ az monitor metrics list --resource \
 
 Als u andere metrische gegevens wilt ophalen, vervangt u ' uitgang ' door de naam van de metrische gegevens die u wilt gebruiken.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Azure Monitor metrische gegevens](../../azure-monitor/platform/data-platform.md)
 * [Metrische waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](../../azure-monitor/platform/alerts-metric.md).

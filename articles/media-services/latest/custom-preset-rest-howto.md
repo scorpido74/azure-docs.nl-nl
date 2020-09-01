@@ -3,23 +3,25 @@ title: Aangepaste trans formatie coderen met behulp van Media Services v3 REST-A
 description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services V3 gebruikt voor het coderen van een aangepaste trans formatie met behulp van REST.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9bdea0998b5d6b4c10a96d2ef593f46d6b7c02bf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053322"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267000"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Coderen met een aangepaste transform-REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen ingebouwde voor instellingen, op basis van best practices in de branche, zoals wordt getoond in de zelf studie voor [streaming-bestanden](stream-files-tutorial-with-rest.md#create-a-transform) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 

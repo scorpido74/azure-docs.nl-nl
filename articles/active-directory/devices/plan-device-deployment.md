@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541869"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268805"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -48,13 +48,13 @@ De belangrijkste voor delen van het geven van uw apparaten een Azure AD-identite
 
 * Verbeter de gebruikers ervaring – met apparaat-id's in azure AD kunt u uw gebruikers eenvoudig toegang bieden tot de cloud resources van uw organisatie op zowel persoonlijke als zakelijke apparaten. Beheerders kunnen [Enterprise State roaming](enterprise-state-roaming-overview.md) voor een uniforme ervaring op alle Windows-apparaten inschakelen.
 
-* Vereenvoudig de implementatie en het beheer van apparaat-Identity Management vereenvoudigt het proces van het naar Azure AD brengen van apparaten met [Windows auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot), [Bulksgewijs inrichten](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)en [self-service: out of Box Experience (OOBE)](../user-help/user-help-join-device-on-network.md). U kunt deze apparaten beheren met Mobile Device Management (MDM)-hulpprogram ma's zoals [Microsoft intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune), en hun identiteiten in [Azure Portal](https://portal.azure.com/).
+* Vereenvoudig de implementatie en het beheer van apparaat-Identity Management vereenvoudigt het proces van het naar Azure AD brengen van apparaten met [Windows auto pilot](/windows/deployment/windows-autopilot/windows-10-autopilot), [Bulksgewijs inrichten](/mem/intune/enrollment/windows-bulk-enroll)en [self-service: out of Box Experience (OOBE)](../user-help/user-help-join-device-on-network.md). U kunt deze apparaten beheren met Mobile Device Management (MDM)-hulpprogram ma's zoals [Microsoft intune](/mem/intune/fundamentals/what-is-intune), en hun identiteiten in [Azure Portal](https://portal.azure.com/).
 
 ### <a name="training-resources"></a>Trainings bronnen
 
-Video: [voorwaardelijke toegang met apparaatbesturing](https://youtu.be/NcONUf-jeS4)
+Video:  [voorwaardelijke toegang met apparaatbesturing](https://youtu.be/NcONUf-jeS4)
 
-Veelgestelde vragen: [Veelgestelde vragen over Azure AD-Apparaatbeheer](faq.md) en [instellingen en veelgestelde vragen over gegevens roaming](enterprise-state-roaming-faqs.md) 
+Veelgestelde vragen: [Veelgestelde vragen over Azure AD-Apparaatbeheer](faq.md)  en [instellingen en veelgestelde vragen over gegevens roaming](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Het implementatie project plannen
 
@@ -102,7 +102,7 @@ Gebruik deze structuur om opties te bepalen voor apparaten die eigendom zijn van
 
 iOS-en Android-apparaten kunnen alleen worden geregistreerd bij Azure AD. De volgende tabel geeft een hoog niveau van overwegingen voor Windows-client apparaten. Gebruik dit als een overzicht en verken de verschillende integratie methoden uitvoerig.
 
-| Overweging | Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling |
+| Overweging | Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling |
 | - | - | - | - |
 | **Client besturingssystemen**| | |  |
 | Windows 10-apparaten| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
@@ -127,21 +127,21 @@ Voorwaardelijke toegang <br>(Hybride Azure AD-apparaten vereisen)| | | ![Kijk](.
 
 ## <a name="azure-ad-registration"></a>Azure AD-registratie 
 
-Geregistreerde apparaten worden vaak beheerd met [Microsoft intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment). Apparaten worden op een aantal manieren Inge schreven bij intune, afhankelijk van het besturings systeem. 
+Geregistreerde apparaten worden vaak beheerd met [Microsoft intune](/mem/intune/enrollment/device-enrollment). Apparaten worden op een aantal manieren Inge schreven bij intune, afhankelijk van het besturings systeem. 
 
 Geregistreerde Azure AD-apparaten bieden ondersteuning voor het meenemen van uw eigen apparaten (BYOD) en apparaten in bedrijfs eigendom tot SSO met cloud resources. Toegang tot resources is gebaseerd op het Azure AD- [CA-beleid](../conditional-access/require-managed-devices.md) dat is toegepast op het apparaat en de gebruiker.
 
 ### <a name="registering-devices"></a>Apparaten registreren
 
-Geregistreerde apparaten worden vaak beheerd met [Microsoft intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment). Apparaten worden op een aantal manieren Inge schreven bij intune, afhankelijk van het besturings systeem. 
+Geregistreerde apparaten worden vaak beheerd met [Microsoft intune](/mem/intune/enrollment/device-enrollment). Apparaten worden op een aantal manieren Inge schreven bij intune, afhankelijk van het besturings systeem. 
 
 BYOD en mobiele apparaten in bedrijfs eigendom worden geregistreerd door gebruikers die de bedrijfs portal-app installeren.
 
-* [iOS](https://docs.microsoft.com/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
+* [iOS](/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
 
-* [Android](https://docs.microsoft.com/mem/intune/user-help/enroll-device-android-company-portal)
+* [Android](/mem/intune/user-help/enroll-device-android-company-portal)
 
-* [Windows 10](https://docs.microsoft.com/mem/intune/user-help/enroll-windows-10-device)
+* [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
 
 Als het registreren van uw apparaten de beste optie is voor uw organisatie, raadpleegt u de volgende bronnen:
 
@@ -171,9 +171,9 @@ Als Windows 10 Professional of Windows 10 Enterprise op een apparaat is geïnsta
 
 * [Windows out of Box Experience (OOBE) of Windows-instellingen](../user-help/user-help-join-device-on-network.md)
 
-* [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)
+* [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)
 
-* [Bulk inschrijving](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)
+* [Bulk inschrijving](/mem/intune/enrollment/windows-bulk-enroll)
 
 Kies uw implementatie procedure na een zorgvuldige [vergelijking van deze benaderingen](azureadjoin-plan.md).
 
@@ -183,7 +183,7 @@ U kunt bepalen dat Azure AD-deelname de beste oplossing voor een apparaat is, en
 | - | - | - |
 | On-premises domein toegevoegd| Azure AD-Join| Het apparaat loskoppelen van het on-premises domein voordat u deelneemt aan Azure AD |
 | Hybride Azure AD-deelname| Azure AD-Join| Het apparaat loskoppelen van on-premises domein en van Azure AD voordat u deelneemt aan Azure AD |
-| Azure AD-geregistreerd| Azure AD-Join| De registratie van het apparaat ongedaan maken voordat u deelneemt aan Azure AD |
+| Geregistreerd bij Azure AD| Azure AD-Join| De registratie van het apparaat ongedaan maken voordat u deelneemt aan Azure AD |
 
 
 ## <a name="hybrid-azure-ad-join"></a>Hybride Azure AD-koppeling
@@ -216,7 +216,7 @@ U kunt bepalen dat hybride Azure AD-deelname de beste oplossing voor een apparaa
 | Huidige Apparaatstatus| Gewenste Apparaatstatus| Uitleg |
 | - | - | - |
 | On-premises domein deelname| Hybride Azure AD-deelname| Azure AD Connect of AD FS gebruiken om lid te worden van Azure |
-| On-premises werk groep toegevoegd of nieuw| Hybride Azure AD-deelname| Ondersteund met [Windows auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot). Anders moet het apparaat een on-premises domein zijn dat is gekoppeld aan een hybride Azure AD join |
+| On-premises werk groep toegevoegd of nieuw| Hybride Azure AD-deelname| Ondersteund met [Windows auto pilot](/windows/deployment/windows-autopilot/windows-autopilot). Anders moet het apparaat een on-premises domein zijn dat is gekoppeld aan een hybride Azure AD join |
 | Azure AD-deelname| Hybride Azure AD-deelname| Ontkoppelen van Azure AD, waarmee het wordt geplaatst in de on-premises werk groep of nieuwe status. |
 | Azure AD geregistreerd| Hybride Azure AD-deelname| Is afhankelijk van de Windows-versie. [Zie deze overwegingen](hybrid-azuread-join-plan.md). |
 
@@ -237,15 +237,15 @@ Beheerders kunnen deze geregistreerde en gekoppelde apparaten beveiligen en verd
 
 Ondersteunde en niet-ondersteunde platforms voor geïntegreerde apparaten bekijken:
 
-| Hulpprogramma’s voor apparaatbeheer| Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling|
+| Hulpprogramma’s voor apparaatbeheer| Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling|
 | - | - | - | - |
-| [Beheer van mobiele apparaten (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
-| [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
-| [Groeps beleid](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Alleen Windows)| | | ![Kijk](./media/plan-device-deployment/check.png)|  |
+| [Beheer van mobiele apparaten (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
+| [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
+| [Groeps beleid](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Alleen Windows)| | | ![Kijk](./media/plan-device-deployment/check.png)|  |
 
 
 
- U wordt aangeraden [Microsoft intune Mobile Application Management (mam)](https://docs.microsoft.com/mem/intune/apps/app-management) met of zonder Apparaatbeheer te controleren op geregistreerde IOS-of Android-apparaten.
+ U wordt aangeraden [Microsoft intune Mobile Application Management (mam)](/mem/intune/apps/app-management) met of zonder Apparaatbeheer te controleren op geregistreerde IOS-of Android-apparaten.
 
  Beheerders kunnen ook [VDI-platforms (Virtual Desktop Infrastructure)](howto-device-identity-virtual-desktop-infrastructure.md) die als host fungeren voor Windows-besturings systemen in hun organisaties, gebruiken om het beheer te stroom lijnen en de kosten te verlagen door consolidatie en gecentraliseering van resources. 
 

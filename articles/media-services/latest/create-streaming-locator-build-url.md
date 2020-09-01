@@ -3,23 +3,25 @@ title: Een streaming-Locator maken en Url's bouwen-Azure Media Services
 description: In dit artikel wordt beschreven hoe u een streaming-Locator maakt en Url's bouwt.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/04/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9eae2b0d8b5bebc027dd46afd17a37b8a19b422
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c00729e236cb314f47df8f622db2e19438af61ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012157"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267901"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Een streaming-locator maken en URL's bouwen
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services moet u eerst een [streaming-Locator](streaming-locators-concept.md)maken om een streaming-URL te bouwen. Vervolgens voegt u de hostnaam van het [streaming-eind punt](/rest/api/media/streamingendpoints) en het pad naar de **streaming-Locator** toe. In dit voorbeeld wordt het *standaard***streaming-eindpunt** gebruikt. Wanneer u voor het eerst een media service-account maakt, wordt dit *standaard* **streaming-eind punt** gestopt, dus u moet **starten** aanroepen om te beginnen met streamen.
 

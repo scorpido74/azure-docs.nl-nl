@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 87c96ef6487895d3230541f0ae5fe15c5a645368
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084049"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266660"
 ---
-# <a name="azure-stack-edge-technical-specifications-and-compliance"></a>Technische specificaties en naleving van Azure Stack rand
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technische specificaties en naleving voor Azure Stack Edge met GPU 
 
 De hardwareonderdelen van uw Azure Stack rand met een onboard grafische processor (GPU) voldoen aan de technische specificaties en regelgevings normen die in dit artikel worden beschreven. De technische specificaties beschrijven hardware, voedingen (PSUs), opslag capaciteit, behuizingen en omgevings standaarden.
 
@@ -47,14 +47,14 @@ Het Azure Stack edge-apparaat heeft twee 100-240 V-voedings eenheden (PSUs) met 
 | Maximale uitvoer kracht    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
-| Hot pluggable           | Ja                        |
+| Hot pluggable           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Specificaties van netwerk interface
 
 Uw Azure Stack edge-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
-| Specificatie           | Beschrijving                 |
+| Specificatie           | Description                 |
 |-------------------------|----------------------------|
 |  Netwerkinterfaces    | **2 X 1 GbE-interfaces** – 1 beheer interface poort 1 wordt gebruikt voor initiële installatie en is standaard statisch. Nadat de eerste installatie is voltooid, kunt u de interface gebruiken voor gegevens met elk IP-adres. Bij het opnieuw instellen wordt de interface echter teruggezet naar het statische IP-adres. <br>De andere interface poort 2 kan door de gebruiker worden geconfigureerd, kan worden gebruikt voor gegevens overdracht en is standaard DHCP. <br>**4 X 25 GbE-interfaces** : deze gegevens interfaces, poort 3 tot en met poort 6, kunnen worden geconfigureerd door de gebruiker als DHCP (standaard) of statisch. Deze kunnen ook worden gebruikt als 10 GbE-interfaces.  | 
 

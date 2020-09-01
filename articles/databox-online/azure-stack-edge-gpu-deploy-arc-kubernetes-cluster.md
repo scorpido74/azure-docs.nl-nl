@@ -1,6 +1,6 @@
 ---
-title: Azure-Arc op Kubernetes inschakelen op Azure Stack edge-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe u Azure-Arc op een bestaand Kubernetes-cluster op uw Azure Stack edge-apparaat inschakelt.
+title: Azure-Arc op Kubernetes inschakelen op Azure Stack Edge GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u Azure-Arc op een bestaand Kubernetes-cluster op uw Azure Stack Edge GPU-apparaat inschakelt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 03bf2a01ad4c1d5d017d881bf171806fa33e8799
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084486"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268190"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-device"></a>Azure Arc op Kubernetes-cluster op uw Azure Stack edge-apparaat inschakelen
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Arc op Kubernetes-cluster op uw Azure Stack Edge GPU-apparaat inschakelen
 
 Dit artikel laat u zien hoe u Azure Arc kunt inschakelen op een bestaand Kubernetes-cluster op uw Azure Stack edge-apparaat. 
 

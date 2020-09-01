@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 8394ddbc4247eb992532fb11d06d8f5432edd1c7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084114"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268122"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-device"></a>Kubernetes-netwerken in uw Azure Stack edge-apparaat
+# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes-netwerken in uw Azure Stack Edge GPU-apparaat
 
 Op uw Azure Stack edge-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunnen in een van beide toepassingen met containers in de Kubernetes-cluster worden geïmplementeerd. Er zijn verschillende manieren waarop netwerken worden gebruikt voor het Peul in uw Kubernetes-cluster. 
 

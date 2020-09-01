@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83fc8316171601b7a55e4fc2cb83f49978269150
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9022b1e91b8a1030bf283675b213e87ecf171f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999560"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265929"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure media packager gebruiken voor het uitvoeren van statische pakket taken  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)

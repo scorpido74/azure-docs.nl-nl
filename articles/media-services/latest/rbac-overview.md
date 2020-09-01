@@ -3,23 +3,25 @@ title: Op rollen gebaseerd toegangs beheer voor Media Services accounts-Azure | 
 description: In dit artikel vindt u informatie over op rollen gebaseerd toegangs beheer (RBAC) voor Azure Media Services accounts.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 03e6c54ae9931f8f209a5f59150db2801827da06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a29280815a1c9cf3d578f0d304bc679bf234c185
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003760"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267119"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Op dit moment worden door Azure Media Services geen aangepaste rollen gedefinieerd die specifiek zijn voor de service. Klanten kunnen de ingebouwde rollen van **eigenaar** of **Inzender**gebruiken om volledige toegang te krijgen tot het Media Services-account. Het belangrijkste verschil tussen deze rollen is: de **eigenaar** kan bepalen wie toegang heeft tot een resource en de **mede werker** niet kan. De ingebouwde rol **lezer** kan ook worden gebruikt, maar de gebruiker of toepassing heeft alleen lees toegang tot de Media Services-api's. 
 

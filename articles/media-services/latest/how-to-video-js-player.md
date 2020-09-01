@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 39c790ea3c7799c59d4b49e3ce3284fb96b8b254
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2730c6ce523e618110cd29b13ba2f37115e2cbd0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422960"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267680"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>De Video.js Player gebruiken met Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Overzicht
 
@@ -73,10 +75,10 @@ Voorbeeld code voor dit artikel is beschikbaar op [Azure-samples/Media-Services-
 
 Voer de `addRemoteTextTrack` -methode uit en vervang:
 
-- `subtitleKind`met ofwel,, `"captions"` `"subtitles"` `"descriptions"` of`"metadata"`  
-- `caption`met het bestandspad. VTT (VTT-bestand moet zich op dezelfde host bevinden om CORS-fout te voor komen)
-- `subtitleLang`met de BCP 47-code voor taal, bijvoorbeeld `"eng"` voor Engels of `"es"` Spaans
-- `subtitleLabel`met de gewenste weergave naam van het bijschrift
+- `subtitleKind` met ofwel,, `"captions"` `"subtitles"` `"descriptions"` of `"metadata"`  
+- `caption` met het bestandspad. VTT (VTT-bestand moet zich op dezelfde host bevinden om CORS-fout te voor komen)
+- `subtitleLang` met de BCP 47-code voor taal, bijvoorbeeld `"eng"` voor Engels of `"es"` Spaans
+- `subtitleLabel` met de gewenste weergave naam van het bijschrift
 
 ```javascript
 videojs.players.video.addRemoteTextTrack({

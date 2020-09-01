@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387027"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266966"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -40,6 +40,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 **VMware** | **Details**
 --- | ---
 **VMware-VM's** | Alle besturings systemen kunnen worden geëvalueerd voor migratie. 
+**Storage** | Schijven die zijn gekoppeld aan SCSI-, IDE-en SATA-controllers, worden ondersteund.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten
@@ -55,7 +56,7 @@ Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor d
 
 **Apparaat** | **Verbinding**
 --- | ---
-**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **vCenter-Server** | Binnenkomende verbindingen op TCP-poort 443 zodat het apparaat configuratie-en prestatie-meta gegevens voor evaluaties kan verzamelen. <br/><br/> Het apparaat maakt standaard verbinding met vCenter op poort 443. Als de vCenter-Server op een andere poort luistert, kunt u de poort wijzigen bij het instellen van detectie.
 **ESXi-hosts** | Als u [app-detectie](how-to-discover-applications.md)wilt uitvoeren of een [afhankelijkheids analyse zonder agent](concepts-dependency-visualization.md#agentless-analysis)wilt uitvoeren, maakt het apparaat verbinding met ESXI-hosts op TCP-poort 443, om toepassingen te detecteren, en om te worden uitgevoerd op virtuele machines met agentloze afhankelijkheden.
 

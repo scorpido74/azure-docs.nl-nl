@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011868"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268822"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -118,7 +118,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
         
     - Voor beeld: https: \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&FaceId = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&persoons naam = Inigo_Montoya 
 
-##### <a name="notes"></a>Opmerkingen
+##### <a name="notes"></a>Notities
 
 - Video Indexer retourneert alle bestaande parameters die zijn opgegeven in de oorspronkelijke URL.
 - De opgegeven URL moet worden gecodeerd.
@@ -167,7 +167,7 @@ Als de `videoUrl` niet is opgegeven, verwacht de Video Indexer dat u het bestand
 
 Het volgende C#-codefragment toont het gebruik van alle Video Indexer-API's samen.
 
-#### <a name="instructions-for-running-this-code-sample"></a>Instructies voor het uitvoeren van dit code voorbeeld
+**Instructies voor het uitvoeren van het volgende code voorbeeld**
 
 Nadat u deze code naar uw ontwikkel platform hebt gekopieerd, moet u twee para meters opgeven: API Management verificatie sleutel en video-URL.
 
@@ -359,7 +359,7 @@ public class AccountContractSlim
 
 De statuscodes in de volgende tabel kunnen worden geretourneerd door de uploadbewerking.
 
-|Statuscode|ErrorType (in hoofdtekst van antwoord)|Beschrijving|
+|Statuscode|ErrorType (in hoofdtekst van antwoord)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Dezelfde video wordt al verwerkt in het opgegeven account.|
 |400|VIDEO_ALREADY_FAILED|Dezelfde video kon minder dan twee uur geleden niet worden verwerkt in het opgegeven account. API-clients moeten ten minste twee uur wachten voordat ze een video opnieuw uploaden.|

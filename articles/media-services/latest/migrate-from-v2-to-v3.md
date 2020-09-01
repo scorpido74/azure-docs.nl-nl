@@ -3,7 +3,7 @@ title: Migreren van Azure Media Services v2 naar v3 | Microsoft Docs
 description: In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd en verschillen tussen twee versies worden weer gegeven. Het artikel bevat ook migratie richtlijnen voor het overstappen van Media Services v2 naar v3.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: c9ec677e356f5d4e70a49c9de10f0fdb2039917d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: e692eef45f8a0b4a8918e7255fa1ac85d4ad064c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078057"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265827"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` in uw RSS-feed-lezer.
 
@@ -67,7 +69,7 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
     * V3- [assets](assets-concept.md)weer geven (niet beheren), 
     * [krijg informatie over het openen van api's](./access-api-howto.md). 
 
-    Gebruik de [rest API](/rest/api/media/), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
+    Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 * U moet gereserveerde media-eenheden (MRUs) inrichten in uw account om de gelijktijdigheid en prestaties van uw taken te bepalen, met name voor de analyse van video of audio. Zie [Mediaverwerking schalen](../previous/media-services-scale-media-processing-overview.md) voor meer informatie. U kunt de MRUs beheren met [CLI 2,0 voor Media Services v3](media-reserved-units-cli-how-to.md), met behulp van de [Azure Portal](../previous/media-services-portal-scale-media-processing.md)of met behulp van de [v2-api's](../previous/media-services-dotnet-encoding-units.md). U moet MRUs inrichten, ongeacht of u Media Services v2-of v3-Api's gebruikt.
 * Media Services entiteiten die met de V3 API zijn gemaakt, kunnen niet worden beheerd door de v2 API.  
 * Niet alle entiteiten in de v2 API worden automatisch weer gegeven in de V3 API.  Hieronder volgen enkele voor beelden van entiteiten in de twee versies die niet compatibel zijn:  
@@ -83,4 +85,4 @@ Ga naar het artikel van de [Azure Media Services-community](media-services-commu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelf studie: een extern bestand coderen op basis van URL en de video-.NET streamen](stream-files-dotnet-quickstart.md)
+[Zelfstudie: Extern bestand coderen op basis van URL en video streamen - .NET](stream-files-dotnet-quickstart.md)

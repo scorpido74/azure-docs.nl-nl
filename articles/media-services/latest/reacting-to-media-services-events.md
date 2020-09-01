@@ -3,22 +3,24 @@ title: Reageren op Azure Media Services gebeurtenissen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Event Grid kunt gebruiken om u te abonneren op Media Services-gebeurtenissen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: juliako
-ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d2dffc90d78d5d173e25232010171a5c0109e028
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887881"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267499"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-gebeurtenissen verwerken
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Media Services gebeurtenissen kunnen toepassingen reageren op verschillende gebeurtenissen (bijvoorbeeld de taak status wijzigings gebeurtenis) met behulp van moderne serverloze architecturen. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn. In plaats daarvan worden gebeurtenissen gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar gebeurtenis-handlers zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen webhook en betaalt u alleen voor wat u gebruikt. Zie [Event grid prijzen](https://azure.microsoft.com/pricing/details/event-grid/)voor meer informatie over prijzen.
 

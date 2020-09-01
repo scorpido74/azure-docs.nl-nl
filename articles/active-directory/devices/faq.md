@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689041"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266779"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Veelgestelde vragen over het beheer van apparaten Azure Active Directory
 
@@ -62,7 +62,7 @@ Onder **gebruikers apparaten**worden alleen de volgende apparaten weer gegeven:
 - Gebruiker het apparaat uitschakelt vanuit de portal mijn apps. 
 - Een beheerder (of gebruiker) verwijdert het apparaat uit het Azure Portal of schakelt het in met behulp van Power shell
 - Alleen lid worden van hybride Azure AD: een beheerder verwijdert het bereik van de organisatie-eenheid uit de synchronisatie, waardoor de apparaten uit Azure AD worden verwijderd
-- Upgrade uitvoeren van Azure AD Connect naar versie 1.4. xx. x. Meer [informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten](/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Upgrade uitvoeren van Azure AD Connect naar versie 1.4. xx. x. Meer [informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten](../hybrid/reference-connect-device-disappearance.md).
 
 
 Hieronder ziet u hoe deze acties kunnen worden verholpen.
@@ -312,7 +312,7 @@ UPN-wijzigingen worden ondersteund met update voor Windows 10 2004. Gebruikers o
 **A:** Voer de volgende stappen uit:
 
 1.    [Een nalevings beleid maken](/intune/compliance-policy-create-mac-os)
-1.    [Beleid voor voorwaardelijke toegang voor macOS-apparaten definiëren](../active-directory-conditional-access-azure-portal.md) 
+1.    [Beleid voor voorwaardelijke toegang voor macOS-apparaten definiëren](../conditional-access/overview.md) 
 
 **Opmerkingen**
 
@@ -322,6 +322,6 @@ UPN-wijzigingen worden ondersteund met update voor Windows 10 2004. Gebruikers o
 ---
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [geregistreerde Azure ad-apparaten](concept-azure-ad-register.md)
-- Meer informatie over [apparaten die zijn toegevoegd aan Azure AD](concept-azure-ad-join.md)
-- Meer informatie over [hybride Azure AD gekoppelde apparaten](concept-azure-ad-join-hybrid.md)
+- Meer informatie over [bij Azure AD geregistreerde apparaten](concept-azure-ad-register.md)
+- Meer informatie over [aan Azure AD gekoppelde apparaten](concept-azure-ad-join.md)
+- Meer informatie over [aan hybride Azure AD-gekoppelde apparaten](concept-azure-ad-join-hybrid.md)

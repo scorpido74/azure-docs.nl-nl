@@ -3,7 +3,7 @@ title: Standaard indelingen en-codecs voor encoders-Azure
 description: Dit artikel bevat een lijst met de meest voorkomende indelingen voor het importeren en exporteren van bestanden die u kunt gebruiken met StandardEncoderPreset.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8c111d046bfaefac11df576e455162d20acecd0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053240"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266558"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standaard indelingen en-codecs voor encoders
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dit artikel bevat een lijst met de meest voorkomende indelingen voor het importeren en exporteren van bestanden die u kunt gebruiken met [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Zie [een trans formatie maken met een aangepaste voor instelling](customize-encoder-presets-how-to.md)voor informatie over het maken van aangepaste voor instellingen met behulp van **StandardEncoderPreset**.
 

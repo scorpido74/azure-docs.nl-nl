@@ -3,22 +3,24 @@ title: Azure Event Grid schema's voor Media Services gebeurtenissen
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Media Services gebeurtenissen met Azure Event Grid
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f7c9f3b000973868c003477e58de14634b139cae
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393736"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267663"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schema's voor Media Services gebeurtenissen
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dit artikel bevat de schema's en eigenschappen voor Media Services gebeurtenissen.
 
@@ -137,7 +139,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | previousState | tekenreeks | De status van de taak vóór de gebeurtenis. |
-| state | tekenreeks | De nieuwe status van de taak die wordt gewaarschuwd bij deze gebeurtenis. Bijvoorbeeld ' gepland: de taak is gereed om te beginnen ' of ' voltooid: de taak is voltooid '.|
+| staat | tekenreeks | De nieuwe status van de taak die wordt gewaarschuwd bij deze gebeurtenis. Bijvoorbeeld ' gepland: de taak is gereed om te beginnen ' of ' voltooid: de taak is voltooid '.|
 
 Waarbij de taak status kan een van de volgende waarden zijn *: in de wachtrij geplaatst*, *gepland*, *verwerkt*, *voltooid*, *fout*, *geannuleerd*, *Annuleren*
 
@@ -444,7 +446,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor. |
-| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| bitsnelheid | integer | De bitrate van het spoor. |
 | tijdstempel | tekenreeks | Tijds tempel van het gegevens segment is verwijderd. |
 | lijnen | tekenreeks | Tijd schaal van de tijds tempel. |
 | resultCode | tekenreeks | De reden van de drop van het gegevens segment. **FragmentDrop_OverlapTimestamp** of **FragmentDrop_NonIncreasingTimestamp**. |
@@ -484,7 +486,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
-| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| bitsnelheid | integer | De bitrate van het spoor. |
 | ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |
 | encoderIp | tekenreeks  | IP-adres van het coderings programma. |
 | encoderPort | tekenreeks | Poort van het coderings programma waaruit deze stroom afkomstig is. |
@@ -601,15 +603,15 @@ Het gegevens object heeft de volgende eigenschappen:
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
-| bitsnelheid | geheel getal | De bitrate van het spoor. |
-| incomingBitrate | geheel getal | Berekende bitrate op basis van gegevens segmenten die afkomstig zijn van encoder. |
+| bitsnelheid | integer | De bitrate van het spoor. |
+| incomingBitrate | integer | Berekende bitrate op basis van gegevens segmenten die afkomstig zijn van encoder. |
 | lastTimestamp | tekenreeks | Laatste ontvangen tijds tempel voor een track in de afgelopen 20 seconden. |
 | lijnen | tekenreeks | De tijd schaal waarin tijds tempels worden weer gegeven. |
-| overlapCount | geheel getal | Het aantal gegevens segmenten heeft de afgelopen 20 seconden overlappende tijds tempels. |
-| discontinuityCount | geheel getal | Aantal in de afgelopen 20 seconden waargenomen handelingen. |
-| nonIncreasingCount | geheel getal | Het aantal gegevens segmenten met tijds tempels in het verleden zijn in de afgelopen 20 seconden ontvangen. |
+| overlapCount | integer | Het aantal gegevens segmenten heeft de afgelopen 20 seconden overlappende tijds tempels. |
+| discontinuityCount | integer | Aantal in de afgelopen 20 seconden waargenomen handelingen. |
+| nonIncreasingCount | integer | Het aantal gegevens segmenten met tijds tempels in het verleden zijn in de afgelopen 20 seconden ontvangen. |
 | unexpectedBitrate | booleaans | Als de verwachte en werkelijke bitsnelheid per seconde in de afgelopen 20 seconden verschillen van de toegestane limiet. Het is waar en alleen als, incomingBitrate >= 2 * bitrate of incomingBitrate <= bitrate/2 of IncomingBitrate = 0. |
-| state | tekenreeks | De status van de live-gebeurtenis. |
+| staat | tekenreeks | De status van de live-gebeurtenis. |
 | blijft | booleaans | Hiermee wordt aangegeven of opname in orde is op basis van de aantallen en vlaggen. In orde is waar als overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -645,7 +647,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
-| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| bitsnelheid | integer | De bitrate van het spoor. |
 | previousTimestamp | tekenreeks | Tijds tempel van het vorige fragment. |
 | newTimestamp | tekenreeks | Tijds tempel van het huidige fragment. |
 | discontinuityGap | tekenreeks | Tussen ruimte tussen twee tijds tempels. |
@@ -659,7 +661,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Het onderwerp EventGrid. Deze eigenschap heeft de resource-ID voor het Media Services-account. |
 | Onderwerp | tekenreeks | Het bronpad voor het Media Services kanaal onder het Media Services-account. Als u het onderwerp en onderwerp samenvoegt, geeft u de resource-ID voor de taak. |
-| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. Bijvoorbeeld ' micro soft. media. JobStateChange '. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. Bijvoorbeeld ' micro soft. media. JobStateChange '. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Media Services gebeurtenis gegevens. |

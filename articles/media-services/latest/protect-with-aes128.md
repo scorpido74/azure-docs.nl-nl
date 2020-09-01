@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Meer informatie over het versleutelen van video met AES 128-bits versleuteling en het gebruik van de key delivery service in Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 45bb8637d37c9c3789a962c9f5ac42227d547637
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d8bc270549f702f9ba277b3514a3332d16b52d8d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022817"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267170"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Zelf studie: video versleutelen met AES-128 en de key delivery service gebruiken
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Hoewel in de zelf studie de [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -voor beelden worden gebruikt, zijn de algemene stappen hetzelfde voor [rest API](/rest/api/media/liveevents), [cli](/cli/azure/ams/live-event?view=azure-cli-latest)of andere ondersteunde [sdk's](media-services-apis-overview.md#sdks).

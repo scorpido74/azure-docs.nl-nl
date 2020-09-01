@@ -3,7 +3,7 @@ title: Schema's van Azure Media Services Diagnostische logboeken-Azure
 description: In dit artikel worden de schema's van Azure Media Services Diagnostische logboeken gedemonstreerd.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6f09a0ab88273aa10bb5f3cb55f89d014897df12
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092011"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268448"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schema's van diagnostische logboeken
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw toepassingen worden uitgevoerd. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
 

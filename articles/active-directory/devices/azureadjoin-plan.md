@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555016"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268224"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -26,7 +26,7 @@ In dit artikel vindt u de informatie die u nodig hebt om de implementatie van Az
  
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met de [Inleiding tot Apparaatbeheer in azure Active Directory](../device-management-introduction.md).
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de [Inleiding tot Apparaatbeheer in azure Active Directory](./overview.md).
 
 ## <a name="plan-your-implementation"></a>Uw implementatie plannen
 
@@ -58,7 +58,7 @@ Azure AD-deelname werkt met zowel beheerde als federatieve omgevingen.
 
 ### <a name="managed-environment"></a>Beheerde omgeving
 
-Een beheerde omgeving kan worden geïmplementeerd via een [wachtwoord-hash-synchronisatie](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) of door [middel van verificatie](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) met naadloze eenmalige aanmelding.
+Een beheerde omgeving kan worden geïmplementeerd via een [wachtwoord-hash-synchronisatie](../hybrid/how-to-connect-password-hash-synchronization.md) of door [middel van verificatie](../hybrid/how-to-connect-pta-quick-start.md) met naadloze eenmalige aanmelding.
 
 Voor deze scenario's is het niet nodig om een federatieve server te configureren voor authenticatie.
 
@@ -90,7 +90,7 @@ U kunt geen smart cards of verificatie op basis van certificaten gebruiken om ap
 
 Als u gebruikers maakt in uw:
 
-- **On-premises Active Directory**moet u deze synchroniseren met Azure AD met behulp van [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
+- **On-premises Active Directory**moet u deze synchroniseren met Azure AD met behulp van [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md). 
 - **Azure AD**, er is geen aanvullende installatie vereist.
 
 On-premises Upn's die verschillen van Azure AD-Upn's, worden niet ondersteund op apparaten die zijn toegevoegd aan Azure AD. Als uw gebruikers een lokale UPN gebruiken, moet u overschakelen naar het gebruik van de primaire UPN in azure AD.
@@ -162,7 +162,7 @@ Als u AD FS gebruikt, raadpleegt u [eenmalige aanmelding controleren en beheren 
 
 Gebruikers ontvangen SSO van apparaten die lid zijn van Azure AD als het apparaat toegang heeft tot een domein controller. 
 
-**Aanbeveling:** Implementeer [Azure AD-App proxy](/azure/active-directory/manage-apps/application-proxy) om veilige toegang in te scha kelen voor deze toepassingen.
+**Aanbeveling:** Implementeer [Azure AD-App proxy](../manage-apps/application-proxy.md) om veilige toegang in te scha kelen voor deze toepassingen.
 
 ### <a name="on-premises-network-shares"></a>On-premises netwerk shares
 
@@ -180,7 +180,7 @@ Apparaten die zijn toegevoegd aan Azure AD, bieden geen ondersteuning voor on-pr
 
 **Aanbeveling:** Overweeg deze toepassingen buiten gebruik te stellen en te verplaatsen naar hun moderne alternatieven.
 
-### <a name="remote-desktop-services"></a>Extern bureaublad-services
+### <a name="remote-desktop-services"></a>Externe bureaubladservices
 
 Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
 
@@ -190,7 +190,7 @@ De Windows 10 2004-update wordt gestart, kunnen gebruikers extern bureau blad AL
 
 U kunt Azure AD-deelname inrichten met behulp van de volgende methoden:
 
-- **Selfservice in OOBE/instellingen** : in de selfservice modus gaan gebruikers door met het Azure AD-deelname proces tijdens Windows out of Box Experience (OOBE) of Windows-instellingen. Zie [uw werk apparaat lid maken van het netwerk van uw organisatie](/azure/active-directory/user-help/user-help-join-device-on-network)voor meer informatie. 
+- **Selfservice in OOBE/instellingen** : in de selfservice modus gaan gebruikers door met het Azure AD-deelname proces tijdens Windows out of Box Experience (OOBE) of Windows-instellingen. Zie [uw werk apparaat lid maken van het netwerk van uw organisatie](../user-help/user-help-join-device-on-network.md)voor meer informatie. 
 - **Windows auto pilot** : met Windows Automatische pilot kunt u apparaten vooraf configureren voor een probleemloze ervaring in OOBE voor het uitvoeren van een Azure AD-deelname. Zie voor meer informatie het [overzicht van Windows auto pilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
 - **Bulk inschrijving** : bij bulk registratie kan een beheerder een Azure AD-deelname door middel van een bulk inrichting hulp programma gebruiken om apparaten te configureren. Zie [bulk Registratie voor Windows-apparaten](/intune/windows-bulk-enroll)voor meer informatie.
  
@@ -201,8 +201,8 @@ Hier volgt een vergelijking van deze drie benaderingen
 | Gebruikers interactie vereist voor het instellen van | Ja | Ja | Nee |
 | IT-inspanningen vereisen | Nee | Ja | Ja |
 | Toepasselijke stromen | OOBE-&-instellingen | Alleen OOBE | Alleen OOBE |
-| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureerbaar | No |
-| OEM-ondersteuning van apparaat vereisen | Nee | Yes | Nee |
+| Lokale beheerdersrechten voor de primaire gebruiker | Standaard ja, | Configureerbaar | Nee |
+| OEM-ondersteuning van apparaat vereisen | Nee | Ja | Nee |
 | Ondersteunde versies | 1511 + | 1709 + | 1703 + |
  
 Kies uw implementatie benadering of benaderingen door de bovenstaande tabel te controleren en de volgende aandachtspunten voor het aannemen van een van beide benaderingen te controleren:  
@@ -220,17 +220,17 @@ Kies uw implementatie benadering of benaderingen door de bovenstaande tabel te c
 
 Met de Azure Portal kunt u de implementatie van aan Azure AD gekoppelde apparaten in uw organisatie beheren. Als u de gerelateerde instellingen wilt configureren, selecteert u op de **pagina Azure Active Directory** `Devices > Device settings` .
 
-### <a name="users-may-join-devices-to-azure-ad"></a>Gebruikers kunnen apparaten toevoegen aan Azure AD
+### <a name="users-may-join-devices-to-azure-ad"></a>Gebruikers mogen apparaten aan Azure AD toevoegen
 
 Stel deze optie in op **Alles** of **geselecteerd** op basis van het bereik van uw implementatie en voor wie u een Azure AD-apparaat wilt instellen dat kan worden toegevoegd. 
 
-![Gebruikers kunnen apparaten toevoegen aan Azure AD](./media/azureadjoin-plan/01.png)
+![Gebruikers mogen apparaten aan Azure AD toevoegen](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Aanvullende lokale beheerders op aan Azure AD gekoppelde apparaten
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Extra lokale beheerders voor apparaten die zijn toegevoegd aan Azure AD
 
 Kies **geselecteerd** en selecteer de gebruikers die u wilt toevoegen aan de lokale groep Administrators op alle aan Azure AD gekoppelde apparaten. 
 
-![Aanvullende lokale beheerders op aan Azure AD gekoppelde apparaten](./media/azureadjoin-plan/02.png)
+![Extra lokale beheerders voor apparaten die zijn toegevoegd aan Azure AD](./media/azureadjoin-plan/02.png)
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>Multi-factor Authentication vereisen voor het toevoegen van apparaten
 
@@ -252,18 +252,18 @@ Voordat u uw mobiliteits instellingen kunt configureren, moet u mogelijk eerst e
 
 Selecteer uw MDM-provider om de gerelateerde instellingen te configureren. 
 
-### <a name="mdm-user-scope"></a>MDM-gebruikers bereik
+### <a name="mdm-user-scope"></a>Gebruikersbereik van MDM
 
 Selecteer **een aantal** of **Alles** op basis van het bereik van uw implementatie. 
 
-![MDM-gebruikers bereik](./media/azureadjoin-plan/05.png)
+![Gebruikersbereik van MDM](./media/azureadjoin-plan/05.png)
 
 Op basis van uw bereik gebeurt een van de volgende situaties: 
 
 - **Gebruiker bevindt zich in MDM-bereik**: als u een Azure AD Premium abonnement hebt, wordt MDM-inschrijving samen met Azure AD-deelname geautomatiseerd. Alle gebruikers met een bereik moeten een juiste licentie voor uw MDM hebben. Als MDM-inschrijving in dit scenario mislukt, wordt de Azure AD-koppeling ook teruggedraaid.
 - **Gebruiker bevindt zich niet in MDM-bereik**: als gebruikers zich niet in MDM-bereik bevinden, wordt Azure AD-deelname voltooid zonder MDM-registratie. Dit resulteert in een onbeheerd apparaat.
 
-### <a name="mdm-urls"></a>MDM-Url's
+### <a name="mdm-urls"></a>MDM-URL's
 
 Er zijn drie Url's die betrekking hebben op uw MDM-configuratie:
 
@@ -273,7 +273,7 @@ Er zijn drie Url's die betrekking hebben op uw MDM-configuratie:
 
 ![Een toepassing toevoegen](./media/azureadjoin-plan/06.png)
 
-Elke URL heeft een vooraf gedefinieerde standaard waarde. Als deze velden leeg zijn, neemt u contact op met uw MDM-provider voor meer informatie.
+Elke URL heeft een vooraf gedefinieerde standaardwaarde. Als deze velden leeg zijn, neemt u contact op met uw MDM-provider voor meer informatie.
 
 ### <a name="mam-settings"></a>MAM-instellingen
 
@@ -297,7 +297,7 @@ U kunt deze implementatie gebruiken om [beheerde apparaten te vereisen voor toeg
 
 > [!div class="nextstepaction"]
 > [Een nieuw Windows 10-apparaat toevoegen aan Azure ad tijdens een eerste uitvoering](azuread-joined-devices-frx.md) 
->  [Uw werk apparaat toevoegen aan het netwerk van uw organisatie](/azure/active-directory/user-help/user-help-join-device-on-network)
+>  [Uw werk apparaat toevoegen aan het netwerk van uw organisatie](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

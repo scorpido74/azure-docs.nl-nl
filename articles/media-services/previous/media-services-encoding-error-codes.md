@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042864"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269026"
 ---
 # <a name="encoding-error-codes"></a>Foutcodes voor codering
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 De volgende tabel bevat de fout codes die kunnen worden geretourneerd als er een fout is opgetreden tijdens het uitvoeren van de coderings taak.  Als u fout gegevens in uw .NET-code wilt ophalen, gebruikt u de [Error Details](/previous-versions/azure/jj126075(v=azure.100)) -klasse. Als u details van de fout in uw REST code wilt weer geven, gebruikt u de [ErrorDetail](/rest/api/media/operations/errordetail) -rest API.
 

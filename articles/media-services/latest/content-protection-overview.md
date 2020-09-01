@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Meer informatie over beveiliging van inhoud met dynamische versleuteling, streaming-protocollen en versleutelings typen in Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 81ec96d244c36c0328134b415465d632ef6c1dd5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012192"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267918"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. Als inhoud is versleuteld met een AES-sleutel en via HTTPS wordt verzonden, wordt deze niet duidelijk totdat de client wordt bereikt. 
 

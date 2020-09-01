@@ -1,21 +1,21 @@
 ---
-title: Controle lijst voor implementaties voor het implementeren van Azure Stack edge-apparaat | Microsoft Docs
-description: In dit artikel worden de gegevens beschreven die kunnen worden verzameld voordat u uw Azure Stack edge-apparaat implementeert.
+title: Controle lijst voor implementaties voor het implementeren van Azure Stack Edge GPU-apparaat | Microsoft Docs
+description: In dit artikel worden de gegevens beschreven die kunnen worden verzameld voordat u uw Azure Stack Edge GPU-apparaat implementeert.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/29/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: e1233e17dfe2a56e6ea995190b243ed9c64b8945
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d7b3388b7e3a31c23b34b21017f012d40e9f849
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181354"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268139"
 ---
-# <a name="deployment-checklist-for-your-azure-stack-edge-device"></a>Controle lijst voor implementaties voor uw Azure Stack edge-apparaat  
+# <a name="deployment-checklist-for-your-azure-stack-edge-gpu-device"></a>Controle lijst voor implementaties voor uw Azure Stack Edge GPU-apparaat  
 
 In dit artikel wordt beschreven welke informatie kan worden verzameld vóór de werkelijke implementatie van uw Azure Stack edge-apparaat. 
 

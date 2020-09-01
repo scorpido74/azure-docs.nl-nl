@@ -16,12 +16,12 @@ ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 02815003bf5167a73c1e2362d9270deb867c84b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999407"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266320"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure-VM voor aanmelding 
 
@@ -34,7 +34,7 @@ In dit artikel vindt u voor beelden van Power shell-en CLI-scripts voor aanmeldi
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Als u van plan bent de Azure PowerShell of Azure CLI-voor beelden in dit artikel te gebruiken, moet u ervoor zorgen dat u de meest recente versie van [Azure PowerShell](/powershell/azure/install-az-ps) of [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)installeert. 
+Als u van plan bent de Azure PowerShell of Azure CLI-voor beelden in dit artikel te gebruiken, moet u ervoor zorgen dat u de meest recente versie van [Azure PowerShell](/powershell/azure/install-az-ps) of [Azure cli](/cli/azure/install-azure-cli)installeert. 
 
 > [!IMPORTANT]
 > - In elk voorbeeld script in dit artikel wordt ervan uitgegaan dat de opdracht regel-client wordt uitgevoerd op een virtuele machine met beheerde identiteiten voor Azure-resources ingeschakeld. Gebruik de VM-functie ' Connect ' in het Azure Portal om extern verbinding te maken met uw VM. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met behulp van de Azure Portal](qs-configure-portal-windows-vm.md), of een van de variant artikelen (met behulp van Power shell, CLI, een sjabloon of een Azure SDK), voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources op een virtuele machine. 
@@ -100,9 +100,3 @@ Als een van beide onjuist is, moet u de beheerde identiteiten voor Azure-resourc
 ## <a name="next-steps"></a>Volgende stappen
 
 - Als u beheerde identiteiten wilt inschakelen voor Azure-resources op een Azure-VM, raadpleegt u [Managed Identities voor Azure resources op een Azure-VM configureren met behulp van Power shell](qs-configure-powershell-windows-vm.md)of [beheerde identiteiten voor Azure-resources configureren op een Azure-VM met behulp van Azure cli](qs-configure-cli-windows-vm.md)
-
-
-
-
-
-

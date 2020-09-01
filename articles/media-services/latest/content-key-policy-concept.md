@@ -3,23 +3,25 @@ title: Beleid voor inhouds sleutels in Media Services-Azure | Microsoft Docs
 description: Dit artikel geeft een uitleg van de beleids regels voor inhouds sleutels en hoe deze worden gebruikt door Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/26/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 49226ba703e8ade963b368616102db035b3c07ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6d907e987cb57836997cab43e9bfa9e919bf67d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092062"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268284"
 ---
 # <a name="content-key-policies"></a>Beleid voor inhoudssleutels
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. 
 

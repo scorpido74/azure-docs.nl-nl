@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services V3 met micro soft PlayReady-licentie sjabloon
 description: Dit onderwerp bevat een overzicht van een PlayReady-licentie sjabloon die wordt gebruikt voor het configureren van PlayReady-licenties.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 302c938aa3a778f4e1b0ca7884f82943edf43ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b4131ff0cb2169660b231cdf136f52c3f26a02dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998965"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267153"
 ---
-# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 met PlayReady-licentie sjabloon 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 met PlayReady-licentie sjabloon
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Azure Media Services kunt u uw inhoud versleutelen met **micro soft PlayReady**. Media Services biedt ook een service voor het leveren van PlayReady-licenties. U kunt Media Services Api's gebruiken om PlayReady-licenties te configureren. Wanneer een speler uw met PlayReady beveiligde inhoud probeert af te spelen, wordt een aanvraag verzonden naar de service voor levering van licenties om een licentie te verkrijgen. Als de licentie service de aanvraag goedkeurt, wordt de licentie die naar de client wordt verzonden, uitgegeven en wordt de opgegeven inhoud gedecodeerd en afgespeeld.
 

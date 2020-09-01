@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Meer informatie over het maken van filters met behulp van dynamische pakket voor het filteren en selectief streamen van uw manifesten.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4a2464cbb47291f35cd4d7e20b555356e3e9aa8b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705199"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266456"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Uw manifesten filteren met behulp van dynamische pakket
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Wanneer u Adaptive Bitrate Streaming inhoud aan apparaten levert, moet u soms meerdere versies van een manifest publiceren om specifieke apparaatfuncties of beschik bare netwerk bandbreedte te bereiken. Met de [Dynamic packager](dynamic-packaging-overview.md) kunt u filters opgeven waarmee u specifieke codecs, resoluties, bitsnelheden en combi Naties van audio tracks kunt filteren. Met deze filtering wordt de nood zaak om meerdere kopieën te maken verwijderd. U hoeft alleen maar een nieuwe URL te publiceren met een specifieke set filters die zijn geconfigureerd voor uw doel apparaten (iOS, Android, SmartTV of browsers) en de netwerk mogelijkheden (scenario's met een hoge band breedte, mobiele of lage band breedte). In dit geval kunnen clients de streaming van uw inhoud manipuleren via de query reeks (door beschik bare [Asset filters of account filters](filters-concept.md)op te geven) en filters gebruiken om specifieke secties van een stroom te streamen.
 

@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae177f2cbfa1b6ecef2ef6326b2d8b5008504933
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019399"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267731"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure-webhooks om Media Services taak meldingen te bewaken met .NET 
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure-webhooks om Media Services taak meldingen te bewaken met .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -62,7 +64,7 @@ Wanneer u Media Services functies ontwikkelt, is het handig om omgevings variabe
 
 De sectie [Toepassings instellingen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) definieert para meters die worden gebruikt in de webhook die in dit artikel is gedefinieerd. Voeg ook de volgende para meters toe aan de app-instellingen. 
 
-|Naam|Definitie|Voorbeeld| 
+|Name|Definitie|Voorbeeld| 
 |---|---|---|
 |SigningKey |Een handtekening sleutel.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Een adres van een webhook-eind punt. Zodra de webhook-functie is gemaakt, kunt u de URL kopiëren van de koppeling **functie-URL ophalen** . | https: \/ /juliakofuncapp.azurewebsites.net/API/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|

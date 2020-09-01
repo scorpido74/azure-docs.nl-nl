@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060221"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268380"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Aan de slag met het leveren van inhoud op aanvraag via Azure Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
@@ -51,7 +53,7 @@ Bij het werken met Azure Media Services wordt video meestal via Adaptive Bitrate
 
 Het streaming-eindpunt starten:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
 2. Selecteer **instellingen**  >  **streaming-eind punten**. 
 3. Selecteert het standaardstreaming-eindpunt. Het venster **standaard gegevens van het streaming-eind punt** wordt weer gegeven.
 4. Selecteer het pictogram **Start**.

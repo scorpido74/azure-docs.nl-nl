@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Meer informatie over regels die van toepassing zijn op entiteiten en Api's bij het ontwikkelen met Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6cb771b8df4ab81ff9c538a38b084856b1dfbc39
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719186"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267272"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-API’s
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Als een ontwikkelaar kunt u de [REST-API](/rest/api/media/) van Media Services gebruiken, of clientbibliotheken waarmee u kunt communiceren met de REST-API, om eenvoudig aangepaste mediawerkstromen te maken, beheren en onderhouden. De [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API is gebaseerd op de OpenAPI-specificatie (voorheen bekend als Swagger).
 
@@ -118,7 +120,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Naslaginformatie|
+|SDK|Referentie|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
