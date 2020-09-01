@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ddf4336015ad172cdf13e224b10ca2536e8f6a25
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018073"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144070"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 
@@ -111,7 +111,8 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-a-compute-target"></a>Een reken doel instellen
 
-In Azure Machine Learning verwijst de term __Compute__ (of __Compute target__) naar de computers of clusters die de reken stappen in uw machine learning pijp lijn uitvoeren. Zie [Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md) voor een volledige lijst met reken doelen en hoe u deze kunt maken en koppelen aan uw werk ruimte. Het proces voor het maken en of koppelen van een reken doel is hetzelfde, of u nu een model traint of een pijplijn stap uitvoert. Nadat u het reken doel hebt gemaakt en gekoppeld, gebruikt u het `ComputeTarget` object in de [pijplijn stap](#steps).
+
+In Azure Machine Learning verwijst de term __Compute__ (of __Compute target__) naar de computers of clusters die de reken stappen in uw machine learning pijp lijn uitvoeren.   Zie [Compute-doelen voor model training](concept-compute-target.md#train) voor een volledige lijst met Compute-doelen en [Maak reken doelen](how-to-create-attach-compute-sdk.md) voor het maken en koppelen aan uw werk ruimte.   Het proces voor het maken en of koppelen van een reken doel is hetzelfde, of u nu een model traint of een pijplijn stap uitvoert. Nadat u het reken doel hebt gemaakt en gekoppeld, gebruikt u het `ComputeTarget` object in de [pijplijn stap](#steps).
 
 > [!IMPORTANT]
 > Het uitvoeren van beheer bewerkingen op Compute-doelen wordt niet ondersteund vanuit externe taken. Omdat machine learning-pijp lijnen worden verzonden als een externe taak, mag u geen beheer bewerkingen gebruiken op reken doelen vanuit de pijp lijn.

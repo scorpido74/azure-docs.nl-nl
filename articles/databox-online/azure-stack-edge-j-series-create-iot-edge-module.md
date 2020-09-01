@@ -1,19 +1,19 @@
 ---
-title: Module C# IoT Edge voor Azure Stack Edge | Microsoft Docs
-description: Meer informatie over het ontwikkelen van een C# IoT Edge-module die op uw Azure Stack Edge kan worden geïmplementeerd.
+title: Module C# IoT Edge voor Azure Stack Edge met GPU | Microsoft Docs
+description: Meer informatie over het ontwikkelen van een C# IoT Edge-module die op uw Azure Stack Edge GPU-apparaat kan worden geïmplementeerd.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: a6fb02033d7f242649907eaed8bf01aa23b3cbbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: cef6524bd228d5fed342cabfb2959e5d8ab8954e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083896"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146229"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Een C# IoT Edge-module ontwikkelen om bestanden te verplaatsen op Azure Stack rand
 
@@ -65,7 +65,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 Een Azure-containerregister is een persoonlijk Docker-register in Azure waar u uw persoonlijke installatiekopieën van de Docker-container kunt opslaan en beheren. De twee populaire docker-register services die beschikbaar zijn in de Cloud, zijn Azure Container Registry en docker hub. In dit artikel wordt gebruikgemaakt van de Container Registry.
 
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
-2. Selecteer **een resource maken > Containers > container Registry**. Klik op **Maken**.
+2. Selecteer **een resource maken > Containers > container Registry**. Klik op **Create**.
 3. Geleverd
 
    1. Een unieke **register naam** in azure die 5 tot 50 alfanumerieke tekens bevat.

@@ -3,12 +3,12 @@ title: Bron bestanden maken en gebruiken
 description: Meer informatie over het maken van batch-resource bestanden uit verschillende invoer bronnen. In dit artikel worden enkele algemene methoden beschreven voor het maken en plaatsen van deze op een virtuele machine.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964019"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146297"
 ---
 # <a name="creating-and-using-resource-files"></a>Bron bestanden maken en gebruiken
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > Voor toegang tot de container moet u zowel `Read` als `List` machtigingen hebben, terwijl BLOB-toegang u alleen toestemming nodig heeft `Read` .
 
-Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met de opgemaakte SAS-URL voor de opslag container een bron bestand met [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
+Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met de opgemaakte SAS-URL voor de opslag container een bron bestand met [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl) .
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ Als elke taak veel bestanden bevat die uniek zijn voor deze taak, zijn bron best
 
 Als er meerdere honderd bron bestanden op een taak zijn opgegeven, kan de taak door batch worden geweigerd omdat deze te groot is. Het is raadzaam om uw taken klein te blijven door het aantal resource bestanden voor de taak zelf te minimaliseren.
 
-Als er geen manier is om het aantal bestanden dat uw taak nodig heeft te minimaliseren, kunt u de taak optimaliseren door één bron bestand te maken dat verwijst naar een opslag container van bron bestanden. Als u dit wilt doen, plaatst u de bron bestanden in een Azure Storage-container en gebruikt u de verschillende container [methoden](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) voor bron bestanden. Gebruik de opties voor het voor voegsel van de blob om verzamelingen bestanden op te geven die moeten worden gedownload voor uw taken.
+Als er geen manier is om het aantal bestanden dat uw taak nodig heeft te minimaliseren, kunt u de taak optimaliseren door één bron bestand te maken dat verwijst naar een opslag container van bron bestanden. Als u dit wilt doen, plaatst u de bron bestanden in een Azure Storage-container en gebruikt u de verschillende container [methoden](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods) voor bron bestanden. Gebruik de opties voor het voor voegsel van de blob om verzamelingen bestanden op te geven die moeten worden gedownload voor uw taken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

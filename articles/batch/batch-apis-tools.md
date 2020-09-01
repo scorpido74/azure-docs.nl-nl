@@ -4,12 +4,12 @@ description: Meer informatie over de API's en hulpprogramma's voor het ontwikkel
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7484e59391be8f4853c2394bff20c6d9676dec9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 502eb08631223215933b75dca882c12c02d17bd9
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032189"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146399"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Overzicht van Batch-API's en -hulpprogramma's
 
@@ -33,9 +33,9 @@ Azure Batch heeft twee sets Api's: één voor het service niveau en één voor h
 
 Alleen acties van de beheer-Api's worden bijgehouden in het activiteiten logboek. Api's op service niveau slaan de Azure Resource Management-laag (management.azure.com) over en worden niet geregistreerd.
 
-De batch-Service-API voor het [verwijderen van een pool](/rest/api/batchservice/pool/delete) is bijvoorbeeld rechtstreeks gericht op het batch-account:`DELETE {batchUrl}/pools/{poolId}`
+De batch-Service-API voor het [verwijderen van een pool](/rest/api/batchservice/pool/delete) is bijvoorbeeld rechtstreeks gericht op het batch-account: `DELETE {batchUrl}/pools/{poolId}`
 
-Terwijl de [batch-beheer-API voor het verwijderen van een pool](/rest/api/batchmanagement/pool/delete) is gericht op de Management.Azure.com-laag:`DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}`
+Terwijl de [batch-beheer-API voor het verwijderen van een pool](/rest/api/batchmanagement/pool/delete)  is gericht op de Management.Azure.com-laag: `DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}`
 
 ## <a name="batch-service-apis"></a>API’s voor Batch-service
 
@@ -44,10 +44,10 @@ Uw toepassingen en services kunnen direct REST-API-aanroepen verstrekken of een 
 | API | API-verwijzing | Downloaden | Zelfstudie | Codevoorbeelden | Meer informatie |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[Azure-REST API-docs](/rest/api/batchservice/) |N.v.t. |- |- | [Ondersteunde versies](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[Azure SDK voor .NET-docs](/dotnet/api/overview/azure/batch?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Zelfstudie](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Releaseopmerkingen](https://aka.ms/batch-net-dataplane-changelog) |
-| **Batch Python** |[Azure SDK voor python-docs](/python/api/overview/azure/batch/client?view=azure-python) |[PyPI](https://pypi.org/project/azure-batch/) |[Zelfstudie](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Leesmij](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
-| **Batch Node.js** |[Azure SDK voor Java script-docs](/javascript/api/overview/azure/batch/client?view=azure-node-latest) |[npm](https://www.npmjs.com/package/azure-batch) |[Zelfstudie](batch-nodejs-get-started.md) |- | [Leesmij](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
-| **Batch Java** |[Azure SDK voor Java-docs](/java/api/overview/azure/batch?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [Leesmij](https://github.com/Azure/azure-batch-sdk-for-java)|
+| **Batch .NET** |[Azure SDK voor .NET-docs](/dotnet/api/overview/azure/batch) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Zelfstudie](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Opmerkingen bij de release](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch Python** |[Azure SDK voor python-docs](/python/api/overview/azure/batch/client) |[PyPI](https://pypi.org/project/azure-batch/) |[Zelfstudie](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Leesmij](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
+| **Batch Node.js** |[Azure SDK voor Java script-docs](/javascript/api/overview/azure/batch/client) |[npm](https://www.npmjs.com/package/azure-batch) |[Zelfstudie](batch-nodejs-get-started.md) |- | [Leesmij](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Java** |[Azure SDK voor Java-docs](/java/api/overview/azure/batch) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [Leesmij](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>API’s voor Batch Management
 
@@ -56,10 +56,10 @@ De Azure Resource Manager-API's voor Batch bieden programmatisch toegang tot Bat
 | API | API-verwijzing | Downloaden | Zelfstudie | Codevoorbeelden |
 | --- | --- | --- | --- | --- |
 | **Batch Management REST** |[Azure-REST API-docs](/rest/api/batchmanagement/) |- |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
-| **Batch Management .NET** |[Azure SDK voor .NET-docs](/dotnet/api/overview/azure/batch/management?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Zelfstudie](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
-| **Batch Management Python** |[Azure SDK voor python-docs](/python/api/overview/azure/batch/management?view=azure-python) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
-| **Batch Management Node.js** |[Azure SDK voor Java script-docs](/javascript/api/overview/azure/batch/management?view=azure-node-latest) |[npm](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
-| **Batch Management Java** |[Azure SDK voor Java-docs](/java/api/overview/azure/batch/management?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
+| **Batch Management .NET** |[Azure SDK voor .NET-docs](/dotnet/api/overview/azure/batch/management) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Zelfstudie](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
+| **Batch Management Python** |[Azure SDK voor python-docs](/python/api/overview/azure/batch/management) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
+| **Batch Management Node.js** |[Azure SDK voor Java script-docs](/javascript/api/overview/azure/batch/management) |[npm](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
+| **Batch Management Java** |[Azure SDK voor Java-docs](/java/api/overview/azure/batch/management) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
 
 ## <a name="batch-command-line-tools"></a>Batch-opdrachtregelprogramma's
 
@@ -77,7 +77,7 @@ Deze extra hulpprogram ma's zijn mogelijk handig voor het maken en opsporen van 
 - [Azure batch Shipyard](https://github.com/Azure/batch-shipyard): batch Shipyard is een hulp programma voor het inrichten, uitvoeren en bewaken van op containers gebaseerde batch verwerking en HPC-workloads op Azure batch.
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/): Hoewel er geen Azure batch-hulp programma is, is de Storage Explorer nog een waardevol hulp middel om uw batch-oplossingen te ontwikkelen en fouten op te sporen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie [batch-metrische gegevens, waarschuwingen en logboeken voor diagnostische evaluatie en controle voor](batch-diagnostics.md)meer informatie over het vastleggen van gebeurtenissen in uw batch-toepassing.
 - Zie [batch Analytics](batch-analytics.md)voor naslag informatie over gebeurtenissen die door de batch-service worden veroorzaakt.

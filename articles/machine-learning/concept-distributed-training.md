@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995018"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146654"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Gedistribueerde training met Azure Machine Learning
 
@@ -50,7 +50,7 @@ In model parallelie hoeven werk knooppunten alleen de gedeelde para meters te sy
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [instellen van trainings omgevingen](how-to-set-up-training-targets.md) met de PYTHON-SDK.
+* Meer informatie over het [gebruik van Compute-doelen voor model training](how-to-set-up-training-targets.md) met de PYTHON-SDK.
 * Zie het [scenario referentie architectuur](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)voor een technisch voor beeld.
 * [Train ml-modellen met tensor flow](how-to-train-tensorflow.md).
 * [Train ml-modellen met PyTorch](how-to-train-pytorch.md). 

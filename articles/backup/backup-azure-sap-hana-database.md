@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c1db5bb8cd49fb45f1d34b5748d820a16724372e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 07b82e166b0ec6f0d3a29de50584158b67750e8e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892487"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146552"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -193,6 +193,8 @@ Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back
 2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
 3. Kies in **Nu back-up**het type back-up dat u wilt uitvoeren. Klik vervolgens op **OK**. Deze back-up wordt bewaard op basis van het beleid dat aan dit back-upitem is gekoppeld.
 4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
+
+Standaard is het bewaren van back-ups op aanvraag 45 dagen.
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA Studio-back-up uitvoeren op een Data Base met Azure Backup ingeschakeld
 

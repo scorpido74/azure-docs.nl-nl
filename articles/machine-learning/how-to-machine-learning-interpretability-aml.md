@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8682342d23c37d527528de0b525dbdd49a52676e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853395"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144104"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen (preview)
 
@@ -73,8 +73,8 @@ In het volgende voor beeld ziet u hoe u het vertolkings pakket gebruikt op uw pe
    * Als u uw uitleg en visualisaties meer informatiever wilt maken, kunt u ervoor kiezen om de namen van onderdelen en uitvoer klassen door te geven als u de classificatie uitvoert.
 
    In de volgende code blokken ziet u hoe u een object van een uitleg maakt met `TabularExplainer` , `MimicExplainer` en `PFIExplainer` lokaal.
-   * `TabularExplainer`roept een van de drie SHAP-uitleg onder ( `TreeExplainer` , `DeepExplainer` , of `KernelExplainer` ) aan.
-   * `TabularExplainer`selecteert automatisch het meest geschikte voor uw use-case, maar u kunt elk van de drie onderliggende uitleg rechtstreeks aanroepen.
+   * `TabularExplainer` roept een van de drie SHAP-uitleg onder ( `TreeExplainer` , `DeepExplainer` , of `KernelExplainer` ) aan.
+   * `TabularExplainer` selecteert automatisch het meest geschikte voor uw use-case, maar u kunt elk van de drie onderliggende uitleg rechtstreeks aanroepen.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -147,7 +147,7 @@ global_explanation.get_feature_importance_dict()
 ### <a name="explain-an-individual-prediction-local-explanation"></a>Uitleg over een afzonderlijke voor spelling (lokale uitleg)
 Haal de belang rijke waarden van de afzonderlijke functie van verschillende data Points op door uitleg te geven voor een afzonderlijk exemplaar of een groep exemplaren.
 > [!NOTE]
-> `PFIExplainer`biedt geen ondersteuning voor lokale toelichtingen.
+> `PFIExplainer` biedt geen ondersteuning voor lokale toelichtingen.
 
 ```python
 # get explanation for the first data point in the test set
@@ -275,7 +275,7 @@ In het volgende voor beeld ziet u hoe u de-klasse kunt gebruiken `ExplanationCli
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. Stel een Azure Machine Learning Compute in als uw reken doel en verzend uw trainings uitvoering. Zie [Compute-doelen voor model training instellen](how-to-set-up-training-targets.md#amlcompute) voor instructies. Mogelijk vindt u ook de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) nuttig.
+1. Stel een Azure Machine Learning Compute in als uw reken doel en verzend uw trainings uitvoering. Zie [Compute-doelen met PYTHON SDK maken](how-to-create-attach-compute-sdk.md#amlcompute) voor instructies. Mogelijk vindt u ook de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) nuttig.
 
 1. Down load de uitleg in uw lokale Jupyter-notebook.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651912"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146756"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -24,7 +24,7 @@ Reken instanties maken het eenvoudig om aan de slag te gaan met Azure Machine Le
 
 Gebruik een reken instantie als uw volledig geconfigureerde en beheerde ontwikkel omgeving in de Cloud voor machine learning. Ze kunnen ook worden gebruikt als een reken doel voor training en demijnen voor ontwikkelings-en test doeleinden.  
 
-Gebruik voor de training van productie kwaliteit model een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute) met mogelijkheden voor schalen op meerdere knoop punten. Gebruik [Azure Kubernetes service-cluster](how-to-deploy-azure-kubernetes-service.md)voor productie kwaliteit van het model.
+Gebruik voor de training van productie kwaliteit model een [Azure machine learning Compute-Cluster](how-to-create-attach-compute-sdk.md#amlcompute) met mogelijkheden voor schalen op meerdere knoop punten. Gebruik [Azure Kubernetes service-cluster](how-to-deploy-azure-kubernetes-service.md)voor productie kwaliteit van het model.
 
 ## <a name="why-use-a-compute-instance"></a>Waarom een reken instantie gebruiken?
 
@@ -138,18 +138,7 @@ Deze acties kunnen worden beheerd door RBAC:
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Een reken instantie maken
 
-Maak in uw werk ruimte in Azure Machine Learning Studio een nieuw reken exemplaar van het gedeelte **Compute** of in de sectie **notebooks** , wanneer u klaar bent om een van uw notitie blokken uit te voeren.
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Een nieuw reken exemplaar maken":::
-
-
-|Veld  |Beschrijving  |
-|---------|---------|
-|Naam berekening     |  <li>De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.</li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het  **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-**  teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
-|Type virtuele machine |  Kies CPU of GPU. Dit type kan niet worden gewijzigd nadat het is gemaakt     |
-|Grootte van de virtuele machine     |  Ondersteunde grootten voor virtuele machines kunnen worden beperkt in uw regio. De [beschikbaarheids lijst](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) controleren     |
-|SSH-toegang inschakelen/uitschakelen     |   SSH-toegang is standaard uitgeschakeld.  SSH-toegang kan niet. gewijzigd na het maken. Zorg ervoor dat u toegang inschakelt als u van plan bent om interactief fouten op te lossen met [versus externe code](how-to-set-up-vs-code-remote.md)   |
-|Geavanceerde instellingen     |  Optioneel. Configureer een virtueel netwerk. Geef de **resource groep**, het **virtuele netwerk**en het **subnet** op om het reken exemplaar te maken binnen een Azure-Virtual Network (vnet). Zie deze [netwerk vereisten](how-to-enable-virtual-network.md#compute-instance) voor vnet voor meer informatie.        |
+Maak in uw werk ruimte in Azure Machine Learning Studio [een nieuw reken exemplaar](how-to-create-attach-compute-studio.md#compute-instance) van het gedeelte **Compute** of in de sectie **notebooks** , wanneer u klaar bent om een van uw notitie blokken uit te voeren. 
 
 U kunt ook een exemplaar maken
 * Rechtstreeks vanuit de [ervaring met geïntegreerde notebooks](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -158,7 +147,7 @@ U kunt ook een exemplaar maken
 * Met Azure Machine Learning SDK
 * Vanuit de [cli-uitbrei ding voor Azure machine learning](reference-azure-machine-learning-cli.md#computeinstance)
 
-De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum, die van toepassing zijn op het maken van een reken instantie. is Unified en gedeeld met Azure Machine Learning-quotum voor het trainings berekenings cluster. Wanneer het reken exemplaar wordt gestopt, wordt er geen quotum vrijgegeven om ervoor te zorgen dat u het reken exemplaar opnieuw kunt starten.
+De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum, dat van toepassing is op het maken van een reken instantie, worden gecombineerd en gedeeld met Azure Machine Learning trainings berekenings cluster quotum. Wanneer het reken exemplaar wordt gestopt, wordt er geen quotum vrijgegeven om ervoor te zorgen dat u het reken exemplaar opnieuw kunt starten.
 
 ## <a name="compute-target"></a>Rekendoel
 

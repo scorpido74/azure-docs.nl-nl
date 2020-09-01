@@ -1,19 +1,19 @@
 ---
-title: Een implementatie van Kubernetes stateless toepassingen uitvoeren en beheren op een Microsoft Azure Stack edge-apparaat met behulp van kubectl | Microsoft Docs
+title: Kubernetes stateless toepassing implementeren op Azure Stack Edge GPU-apparaat met behulp van kubectl | Microsoft Docs
 description: Hierin wordt beschreven hoe u een Kubernetes stateless toepassings implementatie maakt en beheert met behulp van kubectl op een Microsoft Azure Stack edge-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/21/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: be93e2806e499e3a9331493c16c8a87195a98600
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2bd0b8c222b9f9643d53da33619af438c121a2f
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083872"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145957"
 ---
 # <a name="run-and-manage-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>Een Kubernetes stateless toepassing op uw Azure Stack edge-apparaat uitvoeren en beheren
 

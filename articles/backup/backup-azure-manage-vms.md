@@ -3,12 +3,12 @@ title: Back-ups van Azure-VM'S beheren en bewaken
 description: Meer informatie over het beheren en bewaken van back-ups van Azure-VM'S met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999339"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145430"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -121,7 +121,7 @@ Er zijn twee manieren om het beveiligen van een virtuele machine te stoppen:
 * **Stop de beveiliging en verwijder de back-upgegevens**. Met deze optie worden alle toekomstige back-uptaken gestopt om uw virtuele machine te beschermen en alle herstel punten te verwijderen. U kunt de virtuele machine niet herstellen of u kunt de *back-* upoptie voor hervatten niet gebruiken.
 
 >[!NOTE]
->Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstel punten verlopen volgens het beleid, maar er wordt altijd één laatste herstel punt bewaard totdat u de back-ups stopt en de gegevens verwijdert.
+>Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstel punten verlopen volgens het beleid, maar het meest recente herstel punt wordt altijd bewaard totdat u de back-ups stopt en de gegevens verwijdert.
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Beveiliging stoppen en back-upgegevens behouden
@@ -187,8 +187,8 @@ Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Back-upitem waarbij primaire gegevens bron niet meer bestaat
 
 * Als Azure-Vm's die zijn geconfigureerd voor Azure Backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, zullen zowel geplande back-uptaken als op aanvraag (ad-hoc) back-uptaken mislukken met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte back-uptaken op aanvraag (mislukte geplande taken worden niet weer gegeven).
-* Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
-* We raden u aan om de back-upitems te verwijderen waar de primaire gegevens bron niet meer bestaat om extra kosten te voor komen. als het back-upbestand/de gegevens voor de verwijderings resources niet langer zijn vereist, wordt het laatste herstel punt permanent bewaard en wordt de gebruiker in rekening gebracht op basis van de back-upprijs van toepassing.
+* Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het meest recente herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
+* We raden u aan om de back-upitems te verwijderen waar de primaire gegevens bron niet meer bestaat om extra kosten te voor komen. als het back-upbestand/de gegevens voor de verwijderings resources niet langer vereist zijn omdat het meest recente herstel punt permanent wordt bewaard en de gebruiker wordt in rekening gebracht op basis van de back-upprijs van toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

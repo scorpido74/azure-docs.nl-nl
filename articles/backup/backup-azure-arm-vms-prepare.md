@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826307"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145651"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -155,7 +155,7 @@ Voltooid | Mislukt | Voltooid met waarschuwing
 Mislukt | Mislukt | Mislukt
 
 Met deze mogelijkheid kunnen twee back-ups voor dezelfde virtuele machine parallel worden uitgevoerd, maar in beide fase (moment opname, gegevens overdragen naar de kluis) kan slechts één subtaak worden uitgevoerd. In gevallen waarin een back-uptaak wordt uitgevoerd en de back-up van de volgende dag mislukt, wordt deze voor komen met deze ontkoppelings functionaliteit. De back-ups van volgende dagen kunnen de moment opname hebben voltooid, terwijl het **overdragen van gegevens naar de kluis** wordt overgeslagen als de back-uptaak van een eerdere dag wordt uitgevoerd.
-Met het incrementele herstel punt dat in de kluis is gemaakt, worden alle verloop van het laatste herstel punt dat in de kluis is gemaakt, vastgelegd. Er zijn geen kosten voor de gebruiker.
+Het incrementele herstel punt dat in de kluis is gemaakt, legt alle verloop van het meest recente herstel punt dat in de kluis is gemaakt, vast. Er zijn geen kosten voor de gebruiker.
 
 ## <a name="optional-steps"></a>Optionele stappen
 

@@ -4,12 +4,12 @@ description: Dit artikel laat u zien hoe u Azure Event Grid aangepaste onderwerp
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: f33636f7033495a1e437715cc89c492889e4dfe0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084570"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145333"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Azure Event Grid aangepaste onderwerpen verplaatsen naar een andere regio
 Mogelijk wilt u uw resources om een aantal redenen verplaatsen naar een andere regio. Om bijvoorbeeld te profiteren van een nieuwe Azure-regio, om te voldoen aan de interne beleids-en beheer vereisten, of als reactie op vereisten voor capaciteits planning. 
@@ -80,6 +80,8 @@ Implementeer de sjabloon voor het maken van een aangepast onderwerp in de doel r
 ## <a name="verify"></a>Verifiëren
 
 1. Nadat de implementatie is voltooid, selecteert **u naar resource**. 
+
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Ga naar resource":::
 1. Controleer of de pagina **Event grid onderwerp** wordt weer geven voor het aangepaste onderwerp.   
 1. Volg de stappen in het gedeelte [aangepaste gebeurtenissen naar een webeindpunt door sturen](custom-event-quickstart-portal.md#send-an-event-to-your-topic) om gebeurtenissen naar het onderwerp te verzenden. Controleer of de gebeurtenis-handler van webhooks is aangeroepen. 
 

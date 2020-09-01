@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a532ec11cdcd97bd1f72c40f603bce7cc4b12c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f037ea30a1507d4736db7f837e5286701db030e0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611761"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146675"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installeer & gebruik de CLI-extensie voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,9 +34,9 @@ De CLI is geen vervanging voor de Azure Machine Learning SDK. Het is een aanvull
 
 * Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
+* Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving**, hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-    Als u de [Azure Cloud shell](https://azure.microsoft.com//features/cloud-shell/)gebruikt, wordt de CLI geopend via de browser en in de Cloud.
+    Als u [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) gebruikt, opent u de CLI via de browser en bevindt deze zich in de cloud.
 
 ## <a name="full-reference-docs"></a>Volledige referentie documenten
 
@@ -47,13 +47,13 @@ Zoek de [volledige referentie documenten voor de extensie Azure-cli-ml van Azure
 > [!IMPORTANT]
 > Als u de Azure Cloud Shell gebruikt, kunt u deze sectie overs Laan. De Cloud shell verifieert u automatisch met het account dat u hebt aangemeld bij uw Azure-abonnement.
 
-Er zijn verschillende manieren waarop u kunt verifiëren bij uw Azure-abonnement vanuit de CLI. De meeste basis is om interactief te verifiëren met behulp van een browser. Als u interactief wilt verifiëren, opent u een opdracht regel of Terminal en gebruikt u de volgende opdracht:
+Er zijn verschillende manieren waarop u zich kunt verifiëren bij uw Azure-abonnement vanuit de CLI. De eenvoudigste methode is interactieve verificatie met behulp van een browser. Voor interactieve verificatie opent u een opdrachtregel of terminal en gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az login
 ```
 
-Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de instructies op de opdracht regel volgen. De instructies moeten bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en een autorisatie code invoeren.
+Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de aanwijzingen op de opdrachtregel volgen. Dit omvat het bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en het invoeren van een autorisatiecode.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
@@ -150,15 +150,49 @@ De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren 
 
     Zie [AZ ml computetarget attach AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) voor meer informatie.
 
-+ Maak een nieuw AMLcompute-doel.
+### <a name="compute-clusters"></a>Reken clusters
+
++ Maak een nieuw beheerd reken cluster.
 
     ```azurecli-interactive
     az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
     ```
 
-    Zie [AZ ml computetarget Create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)voor meer informatie.
 
-+ <a id="computeinstance"></a>Reken instanties beheren.  In alle onderstaande voor beelden is de naam van de reken instantie **CPU**
+
++ Een nieuw beheerd reken cluster maken met beheerde identiteit
+
+  + Door een gebruiker toegewezen beheerde identiteit
+
+    ```azurecli
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+    ```
+
+  + Door het systeem toegewezen beheerde identiteit
+
+    ```azurecli
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '[system]'
+    ```
++ Een beheerde identiteit toevoegen aan een bestaand cluster:
+
+    + Door een gebruiker toegewezen beheerde identiteit
+        ```azurecli
+        az ml computetarget amlcompute identity assign --name cpu-cluster '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+        ```
+    + Door het systeem toegewezen beheerde identiteit
+
+        ```azurecli
+        az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
+        ```
+
+Zie [AZ ml computetarget Create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)voor meer informatie.
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
+
+<a id="computeinstance"></a>
+
+### <a name="compute-instance"></a>Rekenproces
+Reken instanties beheren.  In alle onderstaande voor beelden is de naam van de reken instantie **CPU**
 
     + Maak een nieuwe computeinstance.
 
@@ -226,6 +260,36 @@ De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren 
 
     Zie voor meer informatie [AZ ml experimenten List](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
 
+### <a name="hyperdrive-run"></a>HyperDrive uitvoeren
+
+U kunt HyperDrive gebruiken met Azure CLI om het afstemmen van de para meters uit te voeren. Maak eerst een HyperDrive-configuratie bestand in de volgende indeling. Zie [Hyper parameters afstemmen voor uw model](how-to-tune-hyperparameters.md) artikel voor meer informatie over afstemming-tuning-para meters.
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Voeg dit bestand toe naast de configuratie bestanden voor uitvoeren. Dien vervolgens een HyperDrive-uitvoering in met:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Let op de sectie *argumenten* in runconfig en de *parameter ruimte* in HyperDrive config. Ze bevatten de opdracht regel argumenten die moeten worden door gegeven aan het trainings script. De waarde in runconfig blijft hetzelfde voor elke iteratie, terwijl het bereik in HyperDrive config wordt herhaald. Geef in beide bestanden niet hetzelfde argument op.
+
 ## <a name="dataset-management"></a>Beheer van gegevensset
 
 De volgende opdrachten laten zien hoe u met gegevens sets in Azure Machine Learning kunt werken:
@@ -264,7 +328,7 @@ De volgende opdrachten laten zien hoe u met gegevens sets in Azure Machine Learn
 
     Zie [AZ ml dataset unregisterd](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)(Engelstalig) voor meer informatie.
 
-## <a name="environment-management"></a>Omgevings beheer
+## <a name="environment-management"></a>Omgevingsbeheer
 
 De volgende opdrachten laten zien hoe u Azure Machine Learning [omgevingen](how-to-configure-environment.md) kunt maken, registreren en weer geven voor uw werk ruimte:
 
@@ -348,7 +412,7 @@ Als u de opdracht hebt gebruikt, wordt er `az ml environment scaffold` een sjabl
 
 De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JSON-bestand, het type en een beschrijving. Als een object type is gekoppeld aan een klasse uit de python-SDK, is er een losse 1:1 overeenkomst tussen elk JSON-veld en de naam van de open bare variabele in de python-klasse. In sommige gevallen kan het veld worden toegewezen aan een constructor-argument in plaats van een klassen variabele. Het veld wordt bijvoorbeeld `environmentVariables` toegewezen aan de `environment_variables` variabele in de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) klasse.
 
-| JSON-veld | Type | Description |
+| JSON-veld | Type | Beschrijving |
 |---|---|---|
 | `name` | `string` | De naam van de omgeving. Start de naam niet met **micro soft** of **AzureML**. |
 | `version` | `string` | De versie van de omgeving. |

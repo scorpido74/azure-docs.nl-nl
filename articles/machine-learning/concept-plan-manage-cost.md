@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3173f81f84463cde488dcbf0242f8d65c5b9c9fe
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012685"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144988"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -69,7 +69,7 @@ Met gegevens die voortdurend worden gewijzigd, moet u snelle en gestroomlijnde m
 
 Azure Machine Learning gebruikers kunnen gebruikmaken van het beheerde Azure Machine Learning Compute-Cluster, ook wel AmlCompute genoemd. AmlCompute ondersteunt diverse GPU-en CPU-opties. De AmlCompute wordt intern gehost namens uw abonnement door Azure Machine Learning. Het biedt dezelfde zakelijke beveiliging, naleving en governance op Azure IaaS-Cloud schaal.
 
-Omdat deze reken groepen zich bevinden in de IaaS-infra structuur van Azure, kunt u uw training implementeren, schalen en beheren met dezelfde beveiligings-en nalevings vereisten als de rest van uw infra structuur.  Deze implementaties worden uitgevoerd in uw abonnement en voldoen aan de regels voor beheer. Meer informatie over [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute).
+Omdat deze reken groepen zich bevinden in de IaaS-infra structuur van Azure, kunt u uw training implementeren, schalen en beheren met dezelfde beveiligings-en nalevings vereisten als de rest van uw infra structuur.  Deze implementaties worden uitgevoerd in uw abonnement en voldoen aan de regels voor beheer. Meer informatie over [Azure machine learning Compute](how-to-create-attach-compute-sdk.md#amlcompute).
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Trainings clusters configureren voor automatisch schalen
 
@@ -105,9 +105,9 @@ In sommige gevallen moet u uw trainings uitvoeringen configureren om de duur te 
 Hier volgen enkele opties die u hebt:
 * Definieer een para meter `max_run_duration_seconds` in uw RunConfiguration om de maximale duur te bepalen dat een uitvoering kan worden uitgebreid naar de compute die u kiest (lokale of externe Cloud Compute).
 * Voor [afstemming tuning](how-to-tune-hyperparameters.md#early-termination)definieert u een beleid voor vroegtijdige beëindiging van een Bandit-beleid, een mediaan stop beleid of een selectie beleid voor afkap ping. Gebruik para meters zoals of als u afstemming-sweeps verder wilt beheren `max_total_runs` `max_duration_minutes` .
-* Stel voor [automatische machine learning](how-to-configure-auto-train.md#exit)soort gelijke afsluitings beleid in met behulp van de `enable_early_stopping` vlag. Gebruik ook eigenschappen zoals `iteration_timeout_minutes` en `experiment_timeout_minutes` om de maximale duur van een uitvoering of voor het hele experiment te bepalen.
+* Stel voor [automatische machine learning](how-to-configure-auto-train.md#exit)soort gelijke afsluitings beleid in met behulp van de  `enable_early_stopping` vlag. Gebruik ook eigenschappen zoals `iteration_timeout_minutes` en `experiment_timeout_minutes` om de maximale duur van een uitvoering of voor het hele experiment te bepalen.
 
-## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Virtuele machines met lage prioriteit gebruiken
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Virtuele machines met lage prioriteit gebruiken
 
 Met Azure kunt u overtollige ongebruikte capaciteit gebruiken als virtuele machines met lage prioriteit voor virtuele-machine schaal sets, batch en de Machine Learning service. Deze toewijzingen zijn pre-emptible, maar worden geleverd tegen een gereduceerde prijs vergeleken met toegewezen Vm's. Over het algemeen kunt u het beste virtuele machines met lage prioriteit gebruiken voor batch-workloads. U moet ze ook gebruiken waar onderbrekingen kunnen worden hersteld via opnieuw verzenden (voor batch destorie) of via het opnieuw opstarten (voor diepe trainingen met controle punten).
 
@@ -127,4 +127,4 @@ Azure Machine Learning Compute ondersteunt gereserveerde instanties inherent. Al
 Meer informatie over:
 * [Resource quota beheren en verhogen](how-to-manage-quotas.md)
 * [Kosten beheren met kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute).
+* Maak Azure Machine Learning Compute met [SDK](how-to-create-attach-compute-sdk.md#amlcompute) of in [Studio](how-to-create-attach-compute-studio.md#amlcompute).

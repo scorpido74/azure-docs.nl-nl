@@ -3,12 +3,12 @@ title: Een pool met opgegeven open bare IP-adressen maken
 description: Meer informatie over het maken van een batch-pool die gebruikmaakt van uw eigen open bare IP-adressen.
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.openlocfilehash: 630da3ff9c1f2318c7ed4da0e8f4b5ee8212f389
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023752"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146484"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Een Azure Batch groep met opgegeven open bare IP-adressen maken
 
@@ -24,7 +24,7 @@ Voor informatie over het maken van Pools zonder open bare IP-adressen, Lees [een
 
 - **Een Azure-VNet**. U moet een [virtueel netwerk](batch-virtual-network.md) gebruiken van hetzelfde Azure-abonnement waarin u uw pool en uw IP-adressen maakt. Alleen op Azure Resource Manager gebaseerde VNets kunnen worden gebruikt. Zorg ervoor dat het VNet voldoet aan alle [algemene vereisten](batch-virtual-network.md#vnet-requirements).
 
-- **Ten minste één openbaar IP-adres van Azure**. Als u een of meer open bare IP-adressen wilt maken, kunt u de [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), de [Azure-opdracht regel interface (CLI)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)of [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)gebruiken. Zorg ervoor dat u voldoet aan de vereisten die hieronder worden weer gegeven.
+- **Ten minste één openbaar IP-adres van Azure**. Als u een of meer open bare IP-adressen wilt maken, kunt u de [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), de [Azure-opdracht regel interface (CLI)](/cli/azure/network/public-ip#az-network-public-ip-create)of [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)gebruiken. Zorg ervoor dat u voldoet aan de vereisten die hieronder worden weer gegeven.
 
 > [!NOTE]
 > Batch wijst automatisch extra netwerk bronnen toe aan de resource groep met de open bare IP-adressen. Voor elke 100 toegewezen knoop punten wijst batch in het algemeen één netwerk beveiligings groep (NSG) en één load balancer toe. Deze resources worden beperkt door de resource quota van het abonnement. Wanneer u grotere groepen gebruikt, moet u mogelijk [een quotum toename aanvragen](batch-quota-limit.md#increase-a-quota) voor een of meer van deze resources.

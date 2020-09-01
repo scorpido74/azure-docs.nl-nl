@@ -12,19 +12,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319572"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144032"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel wordt beschreven waar u invoer bestanden opslaat, en waar u uitvoer bestanden van uw experimenten schrijft om opslag limiet fouten en experiment latentie te voor komen.
 
-Wanneer u training uitvoert op een [Compute-doel](how-to-set-up-training-targets.md), zijn ze geïsoleerd van buiten omgevingen. Het doel van dit ontwerp is om te zorgen voor reproduceer baarheid en draag baarheid van het experiment. Als u hetzelfde script twee keer uitvoert op hetzelfde of een ander Compute-doel, worden dezelfde resultaten weer gegeven. Met dit ontwerp kunt u Compute-doelen behandelen als resources zonder stateless reken kracht, die elk geen affiniteit hebben met de taken die worden uitgevoerd nadat ze zijn voltooid.
+Wanneer u training uitvoert op een [Compute-doel](concept-compute-target.md), zijn ze geïsoleerd van buiten omgevingen. Het doel van dit ontwerp is om te zorgen voor reproduceer baarheid en draag baarheid van het experiment. Als u hetzelfde script twee keer uitvoert op hetzelfde of een ander Compute-doel, worden dezelfde resultaten weer gegeven. Met dit ontwerp kunt u Compute-doelen behandelen als resources zonder stateless reken kracht, die elk geen affiniteit hebben met de taken die worden uitgevoerd nadat ze zijn voltooid.
 
 ## <a name="where-to-save-input-files"></a>Waar de invoer bestanden worden opgeslagen
 
@@ -79,4 +79,4 @@ Als u geen gegevens opslag nodig hebt, schrijft u de bestanden naar de `./output
 
 * Meer informatie over [het verkrijgen van toegang tot gegevens uit uw gegevens opslag](how-to-access-data.md).
 
-* Meer informatie over [het instellen van trainings doelen](how-to-set-up-training-targets.md).
+* Meer informatie over het maken van Compute-doelen met de [python-SDK](how-to-create-attach-compute-sdk.md) of het gebruik van [Studio](how-to-create-attach-compute-studio.md).

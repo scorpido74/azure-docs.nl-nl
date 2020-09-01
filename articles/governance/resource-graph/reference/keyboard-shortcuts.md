@@ -4,12 +4,12 @@ description: Azure resource Graph Explorer in de Azure Portal ondersteunt snelto
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848819"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146433"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Sneltoetsen voor Azure resource Graph Explorer
 
@@ -17,12 +17,11 @@ In dit artikel vindt u een overzicht van de sneltoetsen die worden gebruikt op d
 
 ## <a name="keyboard-shortcuts-for-editing-queries"></a>Sneltoetsen voor het bewerken van query's
 
-| Actie | Windows-snelkoppeling | Mac-snelkoppeling |
+| Bewerking | Windows-snelkoppeling | Mac-snelkoppeling |
 |---|---|---|
 |Opmerking/Opmerking opheffen |<kbd>TOETS</kbd>+<kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
 |Inspringing verkleinen |<kbd>CTRL</kbd> + <kbd>[</kbd> |<kbd>Cmd</kbd> + <kbd>[</kbd> |
 |Inspringing verg Roten |<kbd>CTRL</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd> + <kbd>]</kbd> |
-|Alles selecteren |<kbd>CTRL</kbd> + <kbd>Een</kbd> |<kbd>Cmd</kbd> + <kbd>Een</kbd> |
 |De regel omlaag verplaatsen |<kbd>Alt</kbd> + <kbd>↓</kbd> |<kbd>Optie</kbd> + <kbd>↓</kbd> |
 |De regel omhoog verplaatsen |<kbd>Alt</kbd> + <kbd>↑</kbd> |<kbd>Optie</kbd> + <kbd>↑</kbd> |
 |Vervangen |<kbd>CTRL</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> |
@@ -38,7 +37,7 @@ In dit artikel vindt u een overzicht van de sneltoetsen die worden gebruikt op d
 
 ## <a name="keyboard-shortcuts-for-the-query-editor"></a>Sneltoetsen voor de query-editor
 
-| Actie | Windows-snelkoppeling | Mac-snelkoppeling |
+| Bewerking | Windows-snelkoppeling | Mac-snelkoppeling |
 |---|---|---|
 |Momenteel geselecteerde query uitvoeren |<kbd>SHIFT</kbd> + <kbd>Voer</kbd> in | <kbd>SHIFT</kbd> + <kbd>Voer</kbd> in |
 |Actieve query annuleren |<kbd>Esc</kbd> | <kbd>Esc</kbd> |
@@ -53,7 +52,7 @@ In dit artikel vindt u een overzicht van de sneltoetsen die worden gebruikt op d
 
 ## <a name="keyboard-shortcuts-for-the-results-pane"></a>Sneltoetsen voor het resultaten venster
 
-| Actie | Windows-snelkoppeling | Mac-snelkoppeling |
+| Bewerking | Windows-snelkoppeling | Mac-snelkoppeling |
 |---|---|---|
 |Overschakelen naar het tabblad ' aan de slag '  |<kbd>CTRL</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | <kbd>Cmd</kbd> + <kbd>Optie</kbd> + <kbd>S</kbd> |
 |Overschakelen naar het tabblad resultaten  |<kbd>CTRL</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> | <kbd>Cmd</kbd> + <kbd>Optie</kbd> + <kbd>R</kbd> |

@@ -4,12 +4,12 @@ description: Gebruik de functie toepassings pakketten van Azure Batch om eenvoud
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d847dd926d157e455a6ef4e0c58c9dd204a1ecc7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922001"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146466"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -334,8 +334,8 @@ Met toepassings pakketten kunt u uw klanten helpen bij het selecteren van de toe
 * De [batch-rest API][api_rest] biedt ook ondersteuning voor het werken met toepassings pakketten. Zie bijvoorbeeld het element [applicationPackageReferences][rest_add_pool_with_packages] in [een groep toevoegen aan een account][rest_add_pool] voor informatie over het opgeven van pakketten die moeten worden geïnstalleerd met behulp van de rest API. Zie [toepassingen][rest_applications] voor meer informatie over het verkrijgen van toepassings gegevens met behulp van de Batch-rest API.
 * Meer informatie over het programmatisch [beheren van Azure batch accounts en quota's met Batch Management .net](batch-management-dotnet.md). Met de [Batch Management .net][api_net_mgmt] -bibliotheek kunt u functies voor het maken en verwijderen van accounts inschakelen voor uw batch toepassing of service.
 
-[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_net]: /dotnet/api/overview/azure/batch/client
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management
 [api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples

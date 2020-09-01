@@ -8,22 +8,18 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513057"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145923"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Virtuele hubroutering configureren
 
 Een virtuele hub kan meerdere gateways bevatten, zoals een site-naar-site-VPN-gateway, ExpressRoute-gateway, Point-to-site gateway en Azure Firewall. De routerings mogelijkheden in de virtuele hub worden geboden door een router die alle route ring beheert, met inbegrip van transit routering, tussen de gateways met behulp van Border Gateway Protocol (BGP). Deze router biedt ook transit connectiviteit tussen virtuele netwerken die verbinding maken met een virtuele hub en die een geaggregeerde door Voer van 50 Gbps kan ondersteunen. Deze routerings mogelijkheden zijn van toepassing op standaard virtuele WAN-klanten.
 
 Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie.
-
-> [!NOTE]
-> Sommige van deze mogelijkheden kunnen nog steeds worden geïmplementeerd. Dit wordt naar verwachting voltooid op 17 augustus.
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Een routetabel maken
 
@@ -36,7 +32,7 @@ Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor 
 
    :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Tabblad Basisbeginselen":::
 
-   * **Naam**
+   * **Name**
    * **Routes**
    * **Routenaam**
    * **Doeltype**

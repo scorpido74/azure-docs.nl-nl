@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145271"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146416"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -28,8 +28,8 @@ In dit voor beeld maken we een pijp lijn voor Build en release om een Azure Batc
 
 Als u de stappen in dit artikel wilt volgen, hebt u een Azure DevOps-organisatie en een team project nodig.
 
-* [Een Azure DevOps-organisatie maken](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Een project maken in azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Een Azure DevOps-organisatie maken](/azure/devops/organizations/accounts/create-organization)
+* [Een project maken in azure DevOps](/azure/devops/organizations/projects/create-projects)
 
 ### <a name="source-control-for-your-environment"></a>Broncode beheer voor uw omgeving
 
@@ -48,7 +48,7 @@ De code basis structuur die in dit voor beeld wordt gebruikt, lijkt op het volge
 
 In deze sectie wordt ervan uitgegaan dat u bekend bent met versie beheer en het ontwerpen van Resource Manager-sjablonen. Als u niet bekend bent met deze concepten, raadpleegt u de volgende pagina's voor meer informatie.
 
-* [Wat is broncode beheer?](/azure/devops/user-guide/source-control?view=azure-devops)
+* [Wat is broncode beheer?](/azure/devops/user-guide/source-control)
 * [Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
@@ -309,7 +309,7 @@ Nu de bron code is ingesteld, kunnen we beginnen met de eerste build.
 
 ## <a name="continuous-integration"></a>Continue integratie
 
-[Azure-pijp lijnen](/azure/devops/pipelines/get-started/?view=azure-devops), binnen Azure DevOps Services, helpt u bij het implementeren van een pijp lijn voor bouwen, testen en implementatie voor uw toepassingen.
+[Azure-pijp lijnen](/azure/devops/pipelines/get-started/), binnen Azure DevOps Services, helpt u bij het implementeren van een pijp lijn voor bouwen, testen en implementatie voor uw toepassingen.
 
 In deze fase van uw pijp lijn worden tests meestal uitgevoerd om code te valideren en de juiste onderdelen van de software te bouwen. Het aantal en de typen tests, en eventuele extra taken die u uitvoert, zijn afhankelijk van uw bredere build-en release strategie.
 
@@ -323,9 +323,9 @@ In dit voor beeld wordt de focus gelegd op de map **HPC-Application** . De map *
 
 1. U hebt twee opties voor het maken van een build-pijp lijn:
 
-    a. [Visual Designer gebruiken](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Als u dit wilt gebruiken, klikt u op de Visual Designer gebruiken op de pagina **nieuwe pijp lijn** .
+    a. [Visual Designer gebruiken](/azure/devops/pipelines/get-started-designer). Als u dit wilt gebruiken, klikt u op de Visual Designer gebruiken op de pagina **nieuwe pijp lijn** .
 
-    b. [Yaml-builds gebruiken](/azure/devops/pipelines/get-started-yaml?view=azure-devops). U kunt een nieuwe YAML-pijp lijn maken door te klikken op de optie Azure opslag plaatsen of GitHub op de pagina nieuwe pijp lijn. U kunt het voor beeld hieronder ook opslaan in het bron beheer en verwijzen naar een bestaand YAML-bestand door te klikken op Visual Designer en vervolgens de YAML-sjabloon te gebruiken.
+    b. [Yaml-builds gebruiken](/azure/devops/pipelines/get-started-yamls). U kunt een nieuwe YAML-pijp lijn maken door te klikken op de optie Azure opslag plaatsen of GitHub op de pagina nieuwe pijp lijn. U kunt het voor beeld hieronder ook opslaan in het bron beheer en verwijzen naar een bestaand YAML-bestand door te klikken op Visual Designer en vervolgens de YAML-sjabloon te gebruiken.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,7 +357,7 @@ In dit voor beeld wordt de focus gelegd op de map **HPC-Application** . De map *
     ![Live uitvoer van uw build weer geven](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Als u een-client toepassing gebruikt om uw HPC-batch toepassing uit te voeren, moet u een afzonderlijke build-definitie maken voor die toepassing. U kunt een aantal hand leidingen vinden in de documentatie over [Azure-pijp lijnen](/azure/devops/pipelines/get-started/index?view=azure-devops) .
+> Als u een-client toepassing gebruikt om uw HPC-batch toepassing uit te voeren, moet u een afzonderlijke build-definitie maken voor die toepassing. U kunt een aantal hand leidingen vinden in de documentatie over [Azure-pijp lijnen](/azure/devops/pipelines/get-started/index) .
 
 ## <a name="continuous-deployment"></a>Doorlopende implementatie
 
@@ -440,7 +440,7 @@ Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat 
     * **Resource groep**: $ (resourceGroupName)
     * **Locatie**: $ (locatie)
     * **Sjabloon**: $ (System. ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.jsop
-    * **Sjabloon parameters overschrijven**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Sjabloon parameters overschrijven**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Een veelvoorkomende procedure is het gebruik van Azure Key Vault taken. Als voor de Service-Principal (verbinding met uw Azure-abonnement) een geschikt toegangs beleid is ingesteld, kunnen er geheimen van een Azure Key Vault worden gedownload en als variabelen worden gebruikt in uw pijp lijn. De naam van het geheim wordt ingesteld met de bijbehorende waarde. In de release definitie kan bijvoorbeeld naar een geheim van sshPassword worden verwezen met $ (sshPassword).
 
@@ -450,7 +450,7 @@ Een veelvoorkomende procedure is het gebruik van Azure Key Vault taken. Als voor
     * **Weergave naam:** Toepassing maken in Azure Batch-account
     * **Azure-abonnement:** Selecteer het juiste Azure-abonnement
     * **Script locatie**: inline-script
-    * **Inline-script**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Inline-script**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. De tweede stap wordt gebruikt voor het uploaden van gekoppelde pakketten naar de toepassing. In ons geval worden de ffmpeg-bestanden.
 
@@ -458,7 +458,7 @@ Een veelvoorkomende procedure is het gebruik van Azure Key Vault taken. Als voor
     * **Weergave naam:** Pakket uploaden naar Azure Batch-account
     * **Azure-abonnement:** Selecteer het juiste Azure-abonnement
     * **Script locatie**: inline-script
-    * **Inline-script**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Inline-script**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Het versie nummer van het toepassings pakket is ingesteld op een variabele. Dit is handig als eerdere versies van het pakket worden overschreven, en als u het versie nummer van het pakket dat is gepusht naar Azure Batch, hand matig wilt beheren.
@@ -476,7 +476,7 @@ Nadat de omgeving is ingesteld, bevestigt u dat de volgende tests kunnen worden 
 Maak verbinding met het nieuwe Azure Batch-account met behulp van de Azure CLI vanuit een Power shell-opdracht prompt.
 
 * Meld u aan bij uw Azure-account `az login` en volg de instructies om te verifiëren.
-* Verifieer nu het batch-account:`az batch account login -g <resourceGroup> -n <batchAccount>`
+* Verifieer nu het batch-account: `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>De beschik bare toepassingen weer geven
 

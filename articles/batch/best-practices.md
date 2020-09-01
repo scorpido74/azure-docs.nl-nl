@@ -3,12 +3,12 @@ title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191816"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146535"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -29,12 +29,12 @@ In dit artikel wordt een verzameling aanbevolen procedures beschreven voor het e
     Afzonderlijke knoop punten zijn niet gegarandeerd altijd beschikbaar. Hoewel ongebruikelijk, hardwarestoringen, updates van het besturings systeem en een andere fout optreden, kunnen afzonderlijke knoop punten offline zijn. Als uw batch-workload deterministisch, gegarandeerde voortgang vereist, moet u Pools met meerdere knoop punten toewijzen.
 
 - **Resource namen niet opnieuw gebruiken.**
-    Batch-resources (taken, Pools, enz.) zijn vaak beschikbaar en zijn in de loop van de tijd. U kunt bijvoorbeeld een pool maken op maandag, deze verwijderen op dinsdag en vervolgens een andere pool maken op donderdag. Elke nieuwe resource die u maakt, moet een unieke naam hebben die u nog niet eerder hebt gebruikt. Dit kan worden gedaan met behulp van een GUID (als de volledige resource naam of als onderdeel ervan) of het insluiten van de tijd waarin de resource is gemaakt in de resource naam. Batch ondersteunt [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet), die kan worden gebruikt om een resource een door de mens lees bare naam te geven, zelfs als de werkelijke resource-id iets anders is dan dat van mensen vriendelijke. Door gebruik te maken van unieke namen is het gemakkelijker om te onderscheiden welke resource iets in Logboeken en metrische gegevens heeft gedaan. Er wordt ook dubbel zinnigheid verwijderd als u ooit een ondersteunings aanvraag voor een resource moet opslaan.
+    Batch-resources (taken, Pools, enz.) zijn vaak beschikbaar en zijn in de loop van de tijd. U kunt bijvoorbeeld een pool maken op maandag, deze verwijderen op dinsdag en vervolgens een andere pool maken op donderdag. Elke nieuwe resource die u maakt, moet een unieke naam hebben die u nog niet eerder hebt gebruikt. Dit kan worden gedaan met behulp van een GUID (als de volledige resource naam of als onderdeel ervan) of het insluiten van de tijd waarin de resource is gemaakt in de resource naam. Batch ondersteunt [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname), die kan worden gebruikt om een resource een door de mens lees bare naam te geven, zelfs als de werkelijke resource-id iets anders is dan dat van mensen vriendelijke. Door gebruik te maken van unieke namen is het gemakkelijker om te onderscheiden welke resource iets in Logboeken en metrische gegevens heeft gedaan. Er wordt ook dubbel zinnigheid verwijderd als u ooit een ondersteunings aanvraag voor een resource moet opslaan.
 
 - **Continuïteit tijdens het onderhoud van de groep en de fout.**
     Het is raadzaam om uw taken dynamisch gebruik van Pools te laten doen. Als uw taken dezelfde pool gebruiken voor alles, is er een kans dat uw taken niet worden uitgevoerd als er iets mis gaat met de groep. Dit is vooral belang rijk voor tijd gevoelige workloads. Om dit probleem op te lossen, selecteert of maakt u een pool dynamisch wanneer u een taak plant of een manier om de naam van de groep te overschrijven zodat u een beschadigde pool kunt overs Laan.
 
-- **Bedrijfs continuïteit tijdens het onderhoud van Pools en storingen** Er zijn veel mogelijke oorzaken waardoor een pool niet groter kan worden dan de vereiste grootte die u wenst, zoals interne fouten, capaciteits beperkingen, enzovoort. Daarom moet u de taken in een andere groep kunnen richten (mogelijk met een andere VM-grootte-batch ondersteunt deze via [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)), indien nodig. Vermijd het gebruik van een statische groeps-ID met de verwachting dat deze nooit wordt verwijderd en nooit wordt gewijzigd.
+- **Bedrijfs continuïteit tijdens het onderhoud van Pools en storingen** Er zijn veel mogelijke oorzaken waardoor een pool niet groter kan worden dan de vereiste grootte die u wenst, zoals interne fouten, capaciteits beperkingen, enzovoort. Daarom moet u de taken in een andere groep kunnen richten (mogelijk met een andere VM-grootte-batch ondersteunt deze via [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)), indien nodig. Vermijd het gebruik van een statische groeps-ID met de verwachting dat deze nooit wordt verwijderd en nooit wordt gewijzigd.
 
 ### <a name="pool-lifetime-and-billing"></a>Levens duur van groep en facturering
 
@@ -63,7 +63,7 @@ Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virt
 
 ### <a name="third-party-images"></a>Installatie kopieën van derden
 
-Pools kunnen worden gemaakt met installatie kopieën van derden die naar Azure Marketplace worden gepubliceerd. In het geval van een batch-account in de gebruikers abonnements modus ziet u mogelijk de fout ' toewijzing is mislukt vanwege een Marketplace-aankoop geschiktheids controle ' bij het maken van een groep met bepaalde installatie kopieën van derden. Ga akkoord met de voor waarden die zijn ingesteld door de uitgever van de installatie kopie om deze fout op te lossen. U kunt dit doen met behulp van [Azure Power shell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) of [Azure cli](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest).
+Pools kunnen worden gemaakt met installatie kopieën van derden die naar Azure Marketplace worden gepubliceerd. In het geval van een batch-account in de gebruikers abonnements modus ziet u mogelijk de fout ' toewijzing is mislukt vanwege een Marketplace-aankoop geschiktheids controle ' bij het maken van een groep met bepaalde installatie kopieën van derden. Ga akkoord met de voor waarden die zijn ingesteld door de uitgever van de installatie kopie om deze fout op te lossen. U kunt dit doen met behulp van [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) of [Azure cli](https://docs.microsoft.com/cli/azure/vm/image/terms).
 
 ### <a name="azure-region-dependency"></a>Azure-regio afhankelijkheid
 
@@ -83,7 +83,7 @@ Zorg er daarom voor dat u niet een batch-oplossing ontwerpt waarvoor duizenden g
 
 Een batch-taak heeft een onbeperkte levens duur tot deze uit het systeem is verwijderd. De status geeft aan of er meer taken kunnen worden geaccepteerd voor de planning of niet.
 
-Een taak wordt niet automatisch verplaatst naar de status voltooid, tenzij deze expliciet is beëindigd. Dit kan automatisch worden geactiveerd via de eigenschap [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) of [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints).
+Een taak wordt niet automatisch verplaatst naar de status voltooid, tenzij deze expliciet is beëindigd. Dit kan automatisch worden geactiveerd via de eigenschap [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) of [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints).
 
 Er is een standaard quotum voor taak- [en taak planning](batch-quota-limit.md#resource-quotas). Taken en taak planningen in de status voltooid tellen niet mee voor dit quotum.
 
@@ -99,7 +99,7 @@ Batch heeft geïntegreerde ondersteunings Azure Storage voor het uploaden van ge
 
 ### <a name="manage-task-lifetime"></a>Levens duur van taken beheren
 
-Verwijder taken wanneer ze niet meer nodig zijn of stel een beperking voor een [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -taak in. Als er een `retentionTime` is ingesteld, wordt door batch automatisch de schijf ruimte opgeschoond die door de taak wordt gebruikt wanneer de `retentionTime` verloopt.
+Verwijder taken wanneer ze niet meer nodig zijn of stel een beperking voor een [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) -taak in. Als er een `retentionTime` is ingesteld, wordt door batch automatisch de schijf ruimte opgeschoond die door de taak wordt gebruikt wanneer de `retentionTime` verloopt.
 
 Als u taken verwijdert, worden twee dingen uitgevoerd. Het zorgt ervoor dat u niet beschikt over een opgebouwde taak in de taak, waardoor het lastig is om een query uit te voeren/te zoeken naar de taken die u wilt uitvoeren (omdat u de voltooide taken moet filteren). Ook worden de bijbehorende taak gegevens op het knoop punt opgeschoond (de waarde `retentionTime` is nog niet al bereikt). Dit helpt ervoor te zorgen dat uw knoop punten niet worden gevuld met taak gegevens en dat er geen schijf ruimte meer beschikbaar is.
 
@@ -113,7 +113,7 @@ Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van
 
 ### <a name="design-for-retries-and-re-execution"></a>Ontwerpen voor nieuwe pogingen en opnieuw uitvoeren
 
-Taken kunnen automatisch opnieuw worden uitgevoerd op batch. Er zijn twee soorten nieuwe pogingen: door de gebruiker beheerd en intern. Door de gebruiker beheerde nieuwe pogingen worden opgegeven door de [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)van de taak. Wanneer een programma dat is opgegeven in de taak wordt afgesloten met een afsluit code die niet gelijk is aan nul, wordt de taak opnieuw uitgevoerd tot de waarde van `maxTaskRetryCount` .
+Taken kunnen automatisch opnieuw worden uitgevoerd op batch. Er zijn twee soorten nieuwe pogingen: door de gebruiker beheerd en intern. Door de gebruiker beheerde nieuwe pogingen worden opgegeven door de [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount)van de taak. Wanneer een programma dat is opgegeven in de taak wordt afgesloten met een afsluit code die niet gelijk is aan nul, wordt de taak opnieuw uitgevoerd tot de waarde van `maxTaskRetryCount` .
 
 Hoewel zeldzame gevallen kan een taak intern opnieuw worden geprobeerd vanwege storingen op het reken knooppunt, zoals het niet mogelijk is interne status of een fout op het knoop punt bij te werken terwijl de taak wordt uitgevoerd. De taak wordt indien mogelijk opnieuw geprobeerd op hetzelfde reken knooppunt, tot een interne limiet voordat de taak wordt uitgevoerd en de taak moet worden uitgesteld op basis van een batch, mogelijk op een ander reken knooppunt.
 
@@ -192,7 +192,7 @@ Als uw aanvragen een HTTP-reactie van het 5xx-niveau ontvangen en er in het antw
 
 ### <a name="retry-requests-automatically"></a>Aanvragen automatisch opnieuw proberen
 
-Zorg ervoor dat uw batch-service-clients over het juiste beleid voor nieuwe pogingen beschikken om uw aanvragen automatisch opnieuw uit te voeren, zelfs tijdens normale werking en niet alleen tijdens een service-onderhouds periode. Deze beleids regels voor opnieuw proberen moeten een interval van ten minste vijf minuten omvatten. Automatische mogelijkheden voor opnieuw proberen worden geboden bij verschillende batch-Sdk's, zoals de [.net RetryPolicyProvider-klasse](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
+Zorg ervoor dat uw batch-service-clients over het juiste beleid voor nieuwe pogingen beschikken om uw aanvragen automatisch opnieuw uit te voeren, zelfs tijdens normale werking en niet alleen tijdens een service-onderhouds periode. Deze beleids regels voor opnieuw proberen moeten een interval van ten minste vijf minuten omvatten. Automatische mogelijkheden voor opnieuw proberen worden geboden bij verschillende batch-Sdk's, zoals de [.net RetryPolicyProvider-klasse](/dotnet/api/microsoft.azure.batch.retrypolicyprovider).
 
 ### <a name="static-public-ip-addresses"></a>Statische openbare IP-adressen
 

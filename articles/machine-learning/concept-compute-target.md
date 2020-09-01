@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141922"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146726"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -33,7 +33,7 @@ Azure Machine Learning heeft verschillende ondersteuning voor verschillende reke
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-Meer informatie over [het instellen en gebruiken van een berekenings doel voor model training](how-to-set-up-training-targets.md).
+Meer informatie over [het gebruik van een reken doel voor model training](how-to-set-up-training-targets.md).
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>Implementatiedoelen
 
@@ -46,10 +46,10 @@ Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning Compute (beheerd)
 
-Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute-clusters en [reken instanties](concept-compute-instance.md) zijn de enige beheerde reken processen. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
+Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute-clusters en [reken instanties](concept-compute-instance.md) zijn de enige beheerde reken processen. 
 
 U kunt Azure Machine Learning Compute-exemplaren of reken clusters maken van:
-* Azure Machine Learning Studio
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) -en [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) -klassen
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (preview-versie)
@@ -68,7 +68,7 @@ Wanneer u deze reken resources maakt, maakt u automatisch deel uit van uw werk r
 
 
 > [!NOTE]
-> Wanneer een berekenings cluster niet actief is, wordt het automatisch geschaald naar 0 knoop punten, zodat u niet betaalt wanneer het niet in gebruik is.  Een reken *instantie*is echter altijd ingeschakeld en wordt niet automatisch geschaald.  U moet [het reken exemplaar stoppen](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) wanneer u het niet gebruikt om extra kosten te voor komen.
+> Wanneer een berekenings cluster niet actief is, wordt het automatisch geschaald naar 0 knoop punten, zodat u niet betaalt wanneer het niet in gebruik is.  Een reken *instantie*is echter altijd ingeschakeld en wordt niet automatisch geschaald.  U moet [het reken exemplaar stoppen](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) wanneer u het niet gebruikt om extra kosten te voor komen. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Ondersteunde VM-reeksen en-groottes
 
@@ -107,5 +107,5 @@ Een niet-beheerd reken doel wordt *niet* beheerd door Azure machine learning. U 
 ## <a name="next-steps"></a>Volgende stappen
 
 Leer hoe u het volgende doet:
-* [Een reken doel instellen om uw model te trainen](how-to-set-up-training-targets.md)
+* [Een reken doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md)
 * [Uw model implementeren naar een berekenings doel](how-to-deploy-and-where.md)

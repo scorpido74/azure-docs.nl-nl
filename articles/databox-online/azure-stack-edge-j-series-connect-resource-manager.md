@@ -1,19 +1,19 @@
 ---
-title: Verbinding maken met Azure Resource Manager op uw Azure Stack edge-apparaat
-description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die op uw Azure Stack Edge wordt uitgevoerd met behulp van Azure PowerShell.
+title: Verbinding maken met Azure Resource Manager op uw Azure Stack Edge GPU-apparaat
+description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge GPU met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/21/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bb8a90a1efa84c637cd70caee131ac6346d84814
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 8c7f571489a9e565fac8c23db4c08321be6f551d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083932"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146195"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Verbinding maken met Azure Resource Manager op uw Azure Stack edge-apparaat
 

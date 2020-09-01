@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017716"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146620"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Een Azure Active Directory implementatie van mijn apps plannen
 
@@ -55,11 +55,8 @@ Azure AD mijn apps voor delen bedrijven op de volgende manieren:
 Mijn apps is gratis en er zijn geen licenties nodig om op basis niveau te gebruiken. Voor het aantal objecten in uw directory en de aanvullende functies die u wilt implementeren, kunnen echter extra licenties nodig zijn. Enkele algemene scenario's voor Azure AD met licentie vereisten zijn onder andere de volgende beveiligings functies:
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
 * [Groepslid maatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
 * [Self-service voor wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 Raadpleeg de [volledige licentie handleiding voor Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -69,7 +66,6 @@ Raadpleeg de [volledige licentie handleiding voor Azure AD](https://azure.micros
 Voer de volgende vereisten uit voordat u met dit project begint:
 
 * [SSO van de toepassing integreren](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
 * [Azure AD-gebruikers-en-groeps infrastructuur beheren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Implementatie van Azure AD-apps plannen
@@ -80,7 +76,7 @@ De volgende tabel bevat een overzicht van de belangrijkste use cases voor een im
 | - | - |
 | Access| De portal van mijn apps is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
 |Access | De portal van mijn apps is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
-| Controles| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
+| Controleren| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
 | Beheer| De levens cyclus van de gebruikers toewijzingen aan toepassingen en groepen die zijn verbonden met Azure AD, wordt gedefinieerd en bewaakt. |
 | Beveiliging| Toegang tot bronnen wordt geregeld via gebruikers-en groeps toewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot resources beheren. |
 | Prestaties| De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. |
@@ -139,7 +135,6 @@ Gebruikers of beheerders moeten toestemming geven voor de gebruiks voorwaarden e
 Als u toestemming van de beheerder wilt gebruiken, moet u een globale beheerder van de organisatie zijn en moeten de toepassingen:
 
 * Geregistreerd in uw organisatie
-
 * Geregistreerd in een andere Azure AD-organisatie en eerder door ten minste één gebruiker gezonden
 
 Zie [configureren hoe eind gebruikers toestemming geven voor een toepassing in azure Active Directory](configure-user-consent.md)voor meer informatie.
@@ -180,9 +175,7 @@ Wanneer gebruikers zich aanmelden bij SSO-toepassingen op basis van wacht woorde
 Als u SSO-toepassingen op basis van wacht woorden moet integreren, moet u een mechanisme definiëren om de uitbrei ding op schaal te implementeren met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Opties zijn onder andere:
 
 * [groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
 * [Configuration Manager voor Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
 * [Door de gebruiker gestuurde down load en configuratie voor Chrome, Firefox, micro soft Edge of IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Gebruikers die geen SSO-toepassingen op basis van wacht woorden gebruiken, profiteren ook van de uitbrei ding. Deze voor delen zijn onder andere de mogelijkheid om apps te starten vanaf de zoek balk, toegang te verkrijgen tot recent gebruikte toepassingen en een koppeling naar de pagina mijn apps te maken.
@@ -245,7 +238,7 @@ Azure AD biedt [rapporten die technische en zakelijke inzichten bieden](../repor
 
 Azure AD houdt de meeste controle gegevens gedurende 30 dagen. De gegevens zijn beschikbaar via de Azure-beheer portal of-API die u kunt downloaden naar uw analyse systemen.
 
-#### <a name="auditing"></a>Controles
+#### <a name="auditing"></a>Controleren
 
 Audit logboeken voor toegang tot toepassingen zijn 30 dagen beschikbaar. Als de beveiligings controle binnen uw onderneming een langere retentie vereist, moeten de logboeken worden geëxporteerd naar een SIEM-hulp programma (Security Information Event and Management), zoals Splunk of ArcSight.
 
@@ -294,7 +287,6 @@ De volgende tests moeten worden uitgevoerd met apparaten in bedrijfs eigendom en
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>Case-voor beelden van de self-service voor toepassingen testen
 
-
 | Business Case| Verwacht resultaat |
 | - | - |
 | Gebruiker kan lidmaatschap van de toepassing beheren| Gebruiker kan leden toevoegen/verwijderen die toegang hebben tot de app |
@@ -319,22 +311,5 @@ Gebruik de rol met de minst privileged om een vereiste taak in Azure Active Dire
 
 U kunt [privileged Identity Management](../privileged-identity-management/pim-configure.md) gebruiken om uw rollen te beheren om extra controle, controle en toegangs beoordeling te bieden voor gebruikers met mapmachtigingen.
 
-### <a name="troubleshoot-my-apps-issues"></a>Problemen met mijn apps oplossen
-
-Maak richt lijnen voor probleem oplossing voor uw ondersteunings organisatie met veelvoorkomende scenario's, die verwijzen naar micro soft-documentatie in hun resoluties. Mogelijk wilt u hand leidingen maken die ondersteuning bieden voor de lagen die door uw organisatie worden gebruikt.
-
-Raadpleeg deze hand leidingen voor probleem oplossing voor naslag informatie:
-
-[Toepassingen die niet worden weer gegeven](access-panel-troubleshoot-application-not-appearing.md)
-
-[Onverwachte toepassingen die worden weer gegeven](access-panel-troubleshoot-unexpected-application.md)
-
-[Gebruiker kan zich niet aanmelden bij mijn apps](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[Problemen met het gebruik van self-service toepassings toegang](access-panel-troubleshoot-self-service-access.md)
-
-[Problemen met de browser uitbreiding](manage-access-panel-browser-extension.md)
-
 ## <a name="next-steps"></a>Volgende stappen
-
 [Een implementatie van Azure Multi-Factor Authentication plannen](https://aka.ms/deploymentplans/mfa)

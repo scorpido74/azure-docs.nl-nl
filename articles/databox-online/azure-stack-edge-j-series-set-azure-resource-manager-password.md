@@ -1,23 +1,23 @@
 ---
-title: Azure Resource Manager wacht woord instellen op uw Azure Stack edge-apparaat
-description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die op uw Azure Stack Edge wordt uitgevoerd met behulp van Azure PowerShell.
+title: Azure Resource Manager wacht woord instellen op uw Azure Stack Edge GPU-apparaat
+description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge GPU met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d56f12c746383576a32e2c0ade542bc8aedff22d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d64db4ab8da1f5f0f4c2dc69b2bc6d4da66c8e91
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084711"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146280"
 ---
 # <a name="set-azure-resource-manager-password"></a>Azure Resource Manager wacht woord instellen
 
-[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]
+<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 In dit artikel wordt beschreven hoe u uw Azure Resource Manager wacht woord instelt. U moet dit wacht woord instellen wanneer u verbinding maakt met de lokale Api's van het apparaat via de Azure Resource Manager.
 

@@ -3,15 +3,15 @@ title: Azure Functions Premium-abonnement
 description: Details en configuratie opties (VNet, geen koude start, onbeperkte uitvoerings duur) voor het Azure Functions Premium-abonnement.
 author: jeffhollan
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506193"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145743"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -36,21 +36,42 @@ Met het plan dat u hebt gemaakt, kunt u [AZ functionapp Create](/cli/azure/funct
 
 De volgende functies zijn beschikbaar voor het werken met apps die zijn geïmplementeerd in een Premium-abonnement.
 
-### <a name="pre-warmed-instances"></a>Vooraf gewarmde instanties
+### <a name="always-ready-instances"></a>Always ready instances
 
 Als er vandaag geen gebeurtenissen en uitvoeringen in het verbruiks abonnement worden uitgevoerd, kan uw app worden geschaald naar nul instanties. Wanneer er nieuwe gebeurtenissen binnenkomen in, moet er een nieuw exemplaar worden gespecialiseerd in de app die erop wordt uitgevoerd.  Het maken van nieuwe instanties kan enige tijd duren, afhankelijk van de app.  Deze extra latentie bij de eerste aanroep wordt vaak app koude start genoemd.
 
-In het Premium-abonnement kunt u uw app vooraf laten opwarmen op een opgegeven aantal exemplaren, tot aan de minimale plan grootte.  Met vooraf gewarmde instanties kunt u een app vooraf schalen voor een hoge belasting. Wanneer de app wordt geschaald, wordt deze voor het eerst geschaald naar de vooraf gewarmde instanties. Aanvullende instanties blijven in de voor bereiding van de volgende schaal bewerking direct in de buffer worden geplaatst en warme. Door een buffer van vooraf gewarmde instanties te hebben, kunt u de latentie van koude start effectief vermijden.  Voor bereide instanties is een functie van het Premium-abonnement en u moet ten minste één instantie actief houden en op elk moment dat het abonnement actief is.
+In het Premium-abonnement kunt u uw app altijd gereed hebben voor een bepaald aantal exemplaren.  Het maximum aantal always ready-exemplaren is 20.  Wanneer gebeurtenissen beginnen met het activeren van de app, worden ze eerst doorgestuurd naar de altijd gereede exemplaren.  Wanneer de functie actief wordt, worden extra instanties geheten als een buffer.  Deze buffer voor komt koude start voor nieuwe instanties die zijn vereist tijdens de schaal.  Deze gebufferde instanties worden [vooraf gehete instanties](#pre-warmed-instances)genoemd.  Met de combi natie van de always ready instances en een vooraf gewarmde buffer, kan uw app in feite koud starten elimineren.
 
-U kunt het aantal vooraf gewarmde instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor **uitschalen** te selecteren. In het venster functie-app bewerken zijn vooraf gewarmde exemplaren specifiek voor die app, maar de minimum-en maximum exemplaren zijn van toepassing op uw hele abonnement.
+> [!NOTE]
+> Elk Premium-abonnement heeft te allen tijde ten minste één actief en gefactureerd exemplaar.
+
+U kunt het aantal always ready-instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor **uitschalen** te selecteren. In het venster functie-app bewerken zijn de altijd gereede exemplaren specifiek voor die app.
 
 ![Instellingen voor Elastic Scale](./media/functions-premium-plan/scale-out.png)
 
-U kunt ook vooraf gewarmde instanties configureren voor een app met de Azure CLI.
+U kunt ook altijd gereede exemplaren configureren voor een app met de Azure CLI.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
 ```
+
+#### <a name="pre-warmed-instances"></a>Vooraf gewarmde instanties
+
+Voor bereide instanties zijn het aantal exemplaren dat is geheten als een buffer tijdens de schaal-en activerings gebeurtenissen.  Vooraf gewarmde instanties blijven bufferen totdat de limiet voor de maximale uitstel grootte is bereikt.  Het standaard aantal vooraf gewarme instanties is 1 en voor de meeste scenario's moet 1 zijn.  Als een app een lang opwarmen heeft (zoals een aangepaste container installatie kopie), kunt u deze buffer verg Roten.  Een eerder gewarmd exemplaar wordt pas actief wanneer alle actieve instanties voldoende zijn gebruikt.
+
+Bekijk dit voor beeld van de manier waarop always ready instances en vooraf gewarmde instanties samen werken.  Er zijn vijf exemplaren van de Premium-functie-app geconfigureerd en de standaard waarde van een vooraf geheted exemplaar.  Wanneer de app niet actief is en er geen gebeurtenissen worden geactiveerd, wordt de app ingericht en uitgevoerd op vijf exemplaren.  
+
+Zodra de eerste trigger is opgenomen in, worden de vijf altijd bewerkte instanties actief en wordt er een extra vooraf gewarmd exemplaar toegewezen.  De app wordt nu uitgevoerd met zes ingerichte instanties: de vijf nu actieve, altijd bewaarde instanties en de zesde vooraf gewarmde en inactieve buffer.  Als het aantal uitvoeringen blijft toenemen, worden de vijf actieve instanties uiteindelijk gebruikt.  Wanneer het platform beslist tot meer dan vijf instanties heeft geschaald, wordt het geschaald in het vooraf gewarme exemplaar.  Als dat het geval is, zijn er nu zes actieve instanties en wordt er onmiddellijk een zevende exemplaar ingericht en wordt de vooraf gewarmde buffer gevuld.  Deze volg orde van schalen en vooraf opwarmen gaat door totdat het maximum aantal exemplaren voor de app wordt bereikt.  Er worden geen exemplaren vooraf gewarmd of buiten het maximum geactiveerd.
+
+U kunt het aantal vooraf gehetede instanties voor een app wijzigen met behulp van de Azure CLI.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+```
+
+#### <a name="maximum-instances-for-an-app"></a>Maximum aantal exemplaren voor een app
+
+Naast het [maximum aantal exemplaren](#plan-and-sku-settings)per app, kunt u Maxi maal een maximum van de instantie configureren.  Het maximum aantal apps kan worden geconfigureerd met de [schaal limiet](./functions-scale.md#limit-scale-out)van de app.
 
 ### <a name="private-network-connectivity"></a>Connectiviteit van particuliere netwerken
 
@@ -68,16 +89,13 @@ Zie [functie schaal en hosting](./functions-scale.md#how-the-consumption-and-pre
 
 ### <a name="longer-run-duration"></a>Langere duur van de uitvoering
 
-Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host.jsop de configuratie wijzigen](./functions-host-json.md#functiontimeout) om deze niet-gebonden te maken voor apps uit het Premium-abonnement (gegarandeerd 60 minuten).
+Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host.jsop de configuratie wijzigen](./functions-host-json.md#functiontimeout) om de duur ongebonden te maken voor apps uit het Premium-abonnement (gegarandeerd 60 minuten).
 
 ## <a name="plan-and-sku-settings"></a>Plannings-en SKU-instellingen
 
-Wanneer u het plan maakt, configureert u twee instellingen: het minimum aantal exemplaren (of de plan grootte) en de maximale burst-limiet.  Minimum exemplaren worden gereserveerd en worden altijd uitgevoerd.
+Wanneer u het plan maakt, zijn er twee instellingen voor de plan grootte: het minimum aantal exemplaren (of de plan grootte) en de maximale burst-limiet.
 
-> [!IMPORTANT]
-> Er worden kosten in rekening gebracht voor elke instantie die wordt toegewezen in het minimum aantal exemplaren, ongeacht of de functies worden uitgevoerd.
-
-Als uw app exemplaren vereist die groter zijn dan de grootte van uw abonnement, kan deze worden uitgeschaald totdat het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden gehuurd.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet, terwijl de minimale plan exemplaren gegarandeerd zijn voor uw app.
+Als uw app exemplaren van de altijd gereede exemplaren vereist, kan deze worden uitgeschaald tot het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden gehuurd.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet.
 
 U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **Uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
 
@@ -87,11 +105,24 @@ U kunt ook de maximale burst-limiet van de Azure CLI verhogen:
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
+Het minimum voor elk abonnement is ten minste één exemplaar.  Het daad werkelijke minimum aantal exemplaren wordt automatisch geconfigureerd voor u op basis van de altijd gereed te maken exemplaren die worden aangevraagd door apps in het plan.  Als er bijvoorbeeld een aanvraag voor vijf exemplaren van de app altijd gereed is, en app B twee altijd gereede exemplaren in hetzelfde abonnement aanvraagt, wordt de minimale plan grootte berekend als vijf.  App A wordt uitgevoerd op alle 5 en app B wordt alleen uitgevoerd op 2.
+
+> [!IMPORTANT]
+> Er worden kosten in rekening gebracht voor elke instantie die wordt toegewezen in het minimum aantal exemplaren, ongeacht of de functies worden uitgevoerd.
+
+In de meeste gevallen moet deze automatisch berekende minimum voldoende zijn.  Het schalen van het minimale aantal gebeurt echter een beste poging.  Het is echter wel mogelijk dat er op een specifiek tijdschaal vertraging kan worden vertraagd als er geen extra instanties beschikbaar zijn.  Door een minimum hoger in te stellen dan het automatisch berekende minimum, reserveert u exemplaren vooraf van uitschalen.
+
+Het verhogen van het berekende minimum voor een plan kan worden uitgevoerd met behulp van de Azure CLI.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+```
+
 ### <a name="available-instance-skus"></a>Beschik bare exemplaar-Sku's
 
 Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  Er worden kosten in rekening gebracht voor het totale aantal kernen en het geheugen dat per seconde wordt verbruikt.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
 
-|SKU|Kernen|Geheugen|Opslag|
+|SKU|Kernen|Geheugen|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -104,7 +135,7 @@ Een Java script-functie-app is bijvoorbeeld beperkt door de standaard limiet voo
 
 ## <a name="region-max-scale-out"></a>Schaal van regio Maxi maal
 
-Hieronder vindt u de momenteel ondersteunde maximum waarden voor uitschalen voor één abonnement in elke regio en de configuratie van het besturings systeem. Open een ondersteunings ticket als u een verhoging wilt aanvragen.
+Hieronder vindt u de momenteel ondersteunde maximum waarden voor scale-out voor één abonnement in elke regio en de configuratie van het besturings systeem. Als u een verhoging wilt aanvragen, opent u een ondersteunings ticket.
 
 Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
@@ -113,16 +144,16 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |Australië - centraal| 20 | Niet beschikbaar |
 |Australië - centraal 2| 20 | Niet beschikbaar |
 |Australië - oost| 100 | 20 |
-|Australië - zuidoost | 100 | 20 |
-|Brazilië - zuid| 60 | 20 |
+|Australia Southeast | 100 | 20 |
+|Brazil South| 60 | 20 |
 |Canada - midden| 100 | 20 |
-|US - centraal| 100 | 20 |
+|Central US| 100 | 20 |
 |Azië - oost| 100 | 20 |
 |VS - oost | 100 | 20 |
 |US - oost 2| 100 | 20 |
 |Frankrijk - centraal| 100 | 20 |
 |Duitsland - west-centraal| 100 | Niet beschikbaar |
-|Japan - oost| 100 | 20 |
+|Japan East| 100 | 20 |
 |Japan - west| 100 | 20 |
 |Korea - centraal| 100 | 20 |
 |VS - noord-centraal| 100 | 20 |
@@ -133,11 +164,11 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |Azië - zuidoost| 100 | 20 |
 |Verenigd Koninkrijk Zuid| 100 | 20 |
 |Verenigd Koninkrijk West| 100 | 20 |
-|Europa - west| 100 | 20 |
+|Europa -west| 100 | 20 |
 |India - west| 100 | 20 |
 |VS - west-centraal| 20 | 20 |
 |VS - west| 100 | 20 |
-|US - west 2| 100 | 20 |
+|West US 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

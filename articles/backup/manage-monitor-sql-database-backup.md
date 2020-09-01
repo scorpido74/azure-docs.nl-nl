@@ -3,12 +3,12 @@ title: SQL Server Db's op een virtuele Azure-machine beheren en controleren
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases die worden uitgevoerd op een virtuele machine van Azure kunt beheren en controleren.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826630"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146518"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-databases beheren en bewaken
 
@@ -34,7 +34,7 @@ Omdat logboek back-ups om de 15 minuten worden uitgevoerd, kan het lastig zijn o
 
 Database back-upwaarschuwingen bewaken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **waarschuwingen en gebeurtenissen**op het kluis dashboard.
 
@@ -55,7 +55,7 @@ Houd rekening met het volgende als u ervoor kiest de herstelpunten intact te lat
 
 - Alle herstel punten blijven intact en alle Pruning stopt bij het stoppen van de beveiliging met behoud van gegevens.
 - Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag. Zie [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
-- Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstel punten verlopen volgens het beleid, maar er wordt altijd één laatste herstel punt bewaard totdat u de back-ups stopt en de gegevens verwijdert.
+- Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstel punten verlopen volgens het beleid, maar het meest recente herstel punt wordt altijd bewaard totdat u de back-ups stopt en de gegevens verwijdert.
 
 Ga als volgt te werk om de beveiliging van een database te stoppen:
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500307"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146637"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -30,6 +30,8 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 * [B-serie](../sizes-b-series-burstable.md)
 * [DCsv2-serie](../dcv2-series.md)
 * [DSv2-serie](../dv2-dsv2-series.md) en [Dsv3-serie](../dv3-dsv3-series.md)
+* [Dsv4-serie](../dv4-dsv4-series.md)
+* [Ddsv4-serie](../ddv4-ddsv4-series.md)
 * [Dasv4-serie](../dav4-dasv4-series.md)
 * [Esv3-serie](../ev3-esv3-series.md)
 * [Easv4-serie](../eav4-easv4-series.md)
@@ -110,7 +112,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).

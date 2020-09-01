@@ -1,19 +1,19 @@
 ---
-title: TLS 1,2 configureren op Windows-clients die toegang hebben tot Azure Stack edge-apparaat
-description: Hierin wordt beschreven hoe u TLS 1,2 configureert op Windows-clients die toegang hebben tot Azure Stack edge-apparaat.
+title: TLS 1,2 configureren op Windows-clients die toegang krijgen tot Azure Stack Edge GPU-apparaat
+description: Hierin wordt beschreven hoe u TLS 1,2 configureert op Windows-clients die toegang krijgen tot Azure Stack Edge GPU-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/06/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 552e44e4d3d1b9e237d6ee99d82b946d34fa5e3d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: fdd88a902e812c89270a175aef4bf0de197c6e9b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083938"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146127"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>TLS 1,2 configureren op Windows-clients die toegang hebben tot Azure Stack edge-apparaat
 

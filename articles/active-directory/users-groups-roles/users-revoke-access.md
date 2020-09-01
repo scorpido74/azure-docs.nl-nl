@@ -1,6 +1,6 @@
 ---
 title: Gebruikers toegang intrekken in een nood geval in Azure Active Directory | Microsoft Docs
-description: Gebruikers bulksgewijs toevoegen in het Azure AD-beheer centrum in Azure Active Directory
+description: Alle toegang voor een gebruiker intrekken in Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798411"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147130"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Gebruikers toegang intrekken in Azure Active Directory
 
@@ -38,7 +38,7 @@ Toegangs tokens en vernieuwings tokens worden vaak gebruikt met dikke client toe
 
 Azure AD evalueert vervolgens het autorisatie beleid opnieuw. Als de gebruiker nog gemachtigd is, geeft Azure AD een nieuw toegangs token en vernieuwings token uit.
 
-Toegangs tokens kunnen een beveiligings probleem zijn als de toegang moet worden ingetrokken binnen een tijd die korter is dan de levens duur van het token, meestal ongeveer een uur. Daarom werkt micro soft actief om [voortdurende toegang](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) te geven aan Office 365-toepassingen, waardoor de validatie van toegangs tokens in bijna realtime niet mogelijk is.  
+Toegangs tokens kunnen een beveiligings probleem zijn als de toegang moet worden ingetrokken binnen een tijd die korter is dan de levens duur van het token, meestal ongeveer een uur. Daarom werkt micro soft actief om [voortdurende toegang](../conditional-access/concept-continuous-access-evaluation.md) te geven aan Office 365-toepassingen, waardoor de validatie van toegangs tokens in bijna realtime niet mogelijk is.  
 
 ## <a name="session-tokens-cookies"></a>Sessie tokens (cookies)
 

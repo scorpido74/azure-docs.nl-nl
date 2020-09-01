@@ -3,12 +3,12 @@ title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ad1c0944076f24363961da21ee347dbd7c0239c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163506"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146909"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -35,7 +35,7 @@ U kunt Beheer taken op gedelegeerde resources rechtstreeks uitvoeren in de porta
 
 De Azure PowerShell [Get-AzSubscription-cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription) toont `HomeTenantId` de `ManagedByTenantIds` kenmerken en voor elk abonnement, zodat u kunt bepalen of een geretourneerd abonnement behoort tot een beheerde Tenant of met uw Tenant beheren.
 
-Net als bij Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , worden de-en-kenmerken weer gegeven `homeTenantId` `managedByTenants` .
+Net als bij Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account#az-account-list) , worden de-en-kenmerken weer gegeven `homeTenantId` `managedByTenants` .
 
 > [!TIP]
 > Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te wissen door uit te voeren, `az account clear` gevolgd door `az login --identity` .

@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 343063c74912b234268757c36384ea876c068c21
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824199"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146812"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -438,7 +438,7 @@ except ComputeTargetException:
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Wanneer het maken van het proces is voltooid, traint u uw model met behulp van het cluster in een experiment. Zie voor meer informatie [een berekenings doel selecteren en gebruiken voor training](how-to-set-up-training-targets.md).
+Wanneer het maken van het proces is voltooid, traint u uw model met behulp van het cluster in een experiment. Zie [use a Compute Target for training](how-to-set-up-training-targets.md)voor meer informatie.
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
@@ -588,7 +588,7 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+__Azure-CLI__
 
 ```azurecli-interactive
 az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
@@ -667,7 +667,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 > * De regio voor de Azure Machine Learning werkruimte moet een [persoonlijke regio](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)voor een koppeling zijn ingeschakeld. 
 > * Uw Azure Container Registry moet Premium-versie zijn. Zie [wijzigen van sku's](/azure/container-registry/container-registry-skus#changing-skus)voor meer informatie over het uitvoeren van upgrades.
 > * Uw Azure Container Registry moeten zich in hetzelfde virtuele netwerk en subnet bevinden als het opslag account en reken doelen die worden gebruikt voor training of deinterferentie.
-> * Uw Azure Machine Learning-werk ruimte moet een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute)bevatten.
+> * Uw Azure Machine Learning-werk ruimte moet een [Azure machine learning Compute-Cluster](how-to-create-attach-compute-sdk.md#amlcompute)bevatten.
 >
 >     Wanneer ACR zich achter een virtueel netwerk bevindt, kan Azure Machine Learning het niet gebruiken om docker-installatie kopieën rechtstreeks te bouwen. In plaats daarvan wordt het berekenings cluster gebruikt voor het bouwen van de installatie kopieën.
 
@@ -679,7 +679,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 
     :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="Azure Container Registry voor de werk ruimte" border="true":::
 
-    __Azure CLI__
+    __Azure-CLI__
 
     Als u [de machine learning extensie voor Azure cli hebt geïnstalleerd](reference-azure-machine-learning-cli.md), kunt u de `az ml workspace show` opdracht gebruiken om de werkruimte gegevens weer te geven.
 
@@ -828,14 +828,15 @@ Als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwer
 
     Behoud de standaard regels voor uitgaande verbindingen voor de netwerk beveiligings groep. Zie de standaard beveiligings regels in [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)voor meer informatie.
 
+
     Als u de standaard regels voor uitgaand verkeer niet wilt gebruiken en u de uitgaande toegang van uw virtuele netwerk wilt beperken, raadpleegt u de sectie [uitgaande verbindingen beperken via het virtuele netwerk](#limiting-outbound-from-vnet) .
 
-1. Koppel de virtuele machine of het HDInsight-cluster aan uw Azure Machine Learning-werk ruimte. Zie [Compute-doelen voor model training instellen](how-to-set-up-training-targets.md)voor meer informatie.
+1. Koppel de virtuele machine of het HDInsight-cluster aan uw Azure Machine Learning-werk ruimte. Zie [Compute-doelen voor model training gebruiken](how-to-set-up-training-targets.md)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een trainingsomgeving instellen](how-to-set-up-training-targets.md)
+* [Reken doelen voor model training gebruiken](how-to-set-up-training-targets.md)
 * [Privé-eind punten instellen](how-to-configure-private-link.md)
 * [Waar modellen te implementeren](how-to-deploy-and-where.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)

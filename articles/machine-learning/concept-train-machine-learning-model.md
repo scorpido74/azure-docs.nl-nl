@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651757"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144835"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -55,7 +55,7 @@ U kunt beginnen met het uitvoeren van een configuratie voor uw lokale computer e
 * [Wat is een uitvoerings configuratie?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Zelfstudie: Uw eerste ML-model trainen](tutorial-1st-experiment-sdk-train.md)
 * [Voor beelden: Jupyter Notebook voor beelden van trainings modellen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [Procedure: Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md)
+* [Procedure: Compute-doelen voor model training gebruiken](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Geautomatiseerde Machine Learning
 
@@ -123,7 +123,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Zelf studie: een logistiek regressie model maken](tutorial-1st-r-experiment.md)
 * [Naslag informatie over Azure Machine Learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/index.html)
 
-## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-ontwerpprogramma
 
 Met de ontwerper kunt u modellen trainen met behulp van een slepen-en-neerzetten-interface in uw webbrowser.
 
@@ -160,4 +160,4 @@ U kunt de VS code-extensie gebruiken om uw trainings taken uit te voeren en te b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [instellen van trainings omgevingen](how-to-set-up-training-targets.md).
+Meer informatie over het [gebruik van Compute-doelen voor model training](how-to-set-up-training-targets.md).

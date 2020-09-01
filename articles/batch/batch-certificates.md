@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5f7d547ad549b2747ae41182ee4058b001d9e78a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960823"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146382"
 ---
 # <a name="using-certificates-with-batch"></a>Certificaten gebruiken met Batch
 
@@ -39,6 +39,6 @@ Wanneer u nu een batch-pool maakt, kunt u naar certificaten in de groep navigere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Batch heeft een certificaat-API, [AZ batch Certificate Create](/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
+Batch heeft een certificaat-API, [AZ batch Certificate Create](/cli/azure/batch/certificate)
 
 Zie voor meer informatie over het gebruik van Key Vault [beveiligde toegang Key Vault met batch](credential-access-key-vault.md).

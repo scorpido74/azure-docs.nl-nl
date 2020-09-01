@@ -11,17 +11,17 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650312"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146586"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Met Azure Machine Learning kunt u eenvoudig uw trainings script naar [verschillende reken doelen](how-to-set-up-training-targets.md#compute-targets-for-training)verzenden met behulp van een [RunConfiguration-object](how-to-set-up-training-targets.md#whats-a-run-configuration) en een ScriptRunConfig- [object](how-to-set-up-training-targets.md#submit). Met dit patroon kunt u veel flexibiliteit en maximale controle bieden.
+Met Azure Machine Learning kunt u eenvoudig uw trainings script naar [verschillende reken doelen](how-to-set-up-training-targets.md)verzenden met behulp van een [RunConfiguration-object](how-to-set-up-training-targets.md#whats-a-run-configuration) en een ScriptRunConfig- [object](how-to-set-up-training-targets.md#submit). Met dit patroon kunt u veel flexibiliteit en maximale controle bieden.
 
 
 De Estimator-klasse maakt het gemakkelijker om modellen te trainen met diep gaande lessen en meer informatie. Het biedt een abstracte abstractie op hoog niveau waarmee u eenvoudig een uitvoer configuratie kunt samen stellen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) maken en gebruiken om trainings script te verzenden met behulp van een door u gekozen trainings raamwerk (zoals scikit-informatie) op elk reken doel dat u kiest, of het nu uw lokale computer, één virtuele machine in azure of een GPU-cluster in Azure is. Voor PyTorch-, tensor flow-, Chainer-en versterking-leer taken biedt Azure Machine Learning ook de geraamde [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)en [versterking van leer](how-to-use-reinforcement-learning.md) .
@@ -29,7 +29,7 @@ De Estimator-klasse maakt het gemakkelijker om modellen te trainen met diep gaan
 ## <a name="train-with-an-estimator"></a>Train met een estimator
 
 Nadat u uw [werk ruimte](concept-workspace.md) hebt gemaakt en uw [ontwikkel omgeving](how-to-configure-environment.md)hebt ingesteld, moet u de volgende stappen uitvoeren voor het trainen van een model in azure machine learning:  
-1. Een [extern Compute-doel](how-to-set-up-training-targets.md) maken (Opmerking: u kunt ook een lokale computer als reken doel gebruiken)
+1. Een [extern Compute-doel](how-to-create-attach-compute-sdk.md) maken (of u kunt ook een lokale computer als reken doel gebruiken)
 2. Uw [trainings gegevens](how-to-access-data.md) uploaden naar de Data Store (optioneel)
 3. Uw [trainings script](tutorial-train-models-with-aml.md#create-a-training-script) maken
 4. Maak een `Estimator`-object
@@ -39,7 +39,7 @@ Dit artikel richt zich op stap 4-5. Raadpleeg voor stap 1-3 de [zelf studie een 
 
 ### <a name="single-node-training"></a>Training met één knoop punt
 
-Gebruik een `Estimator` voor training met één knoop punt op externe Compute in azure voor een scikit-leer model. U moet al uw [berekenings doel](how-to-set-up-training-targets.md#amlcompute) object `compute_target` en uw [FileDataset](how-to-create-register-datasets.md) -object hebben gemaakt `ds` .
+Gebruik een `Estimator` voor training met één knoop punt op externe Compute in azure voor een scikit-leer model. U moet al uw [berekenings doel](how-to-create-attach-compute-sdk.md#amlcompute) object `compute_target` en uw [FileDataset](how-to-create-register-datasets.md) -object hebben gemaakt `ds` .
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -63,7 +63,7 @@ Parameter | Beschrijving
 --|--
 `source_directory`| Lokale map met alle code die nodig is voor de trainings taak. Deze map wordt van uw lokale computer naar de externe Compute gekopieerd.
 `script_params`| Dictionary waarmee de opdracht regel argumenten worden opgegeven die moeten worden door gegeven aan uw trainings script `entry_script` , in de vorm van `<command-line argument, value>` paren. Als u een uitgebreide vlag in wilt opgeven `script_params` , gebruikt u `<command-line argument, "">` .
-`compute_target`| Het externe Compute-doel waarvoor uw trainings script wordt uitgevoerd, in dit geval een[AmlCompute](how-to-set-up-training-targets.md#amlcompute)-cluster (Azure machine learning Compute). (Houd er rekening mee dat het AmlCompute-cluster het doel is dat het vaakst wordt gebruikt. het is ook mogelijk om andere berekenings doel typen te kiezen, zoals virtuele Azure-machines of zelfs lokale computers.)
+`compute_target`| Het externe Compute-doel waarvoor uw trainings script wordt uitgevoerd, in dit geval een[AmlCompute](how-to-create-attach-compute-sdk.md#amlcompute)-cluster (Azure machine learning Compute). (Houd er rekening mee dat het AmlCompute-cluster het doel is dat het vaakst wordt gebruikt. het is ook mogelijk om andere berekenings doel typen te kiezen, zoals virtuele Azure-machines of zelfs lokale computers.)
 `entry_script`| Het bestandspad (ten opzichte `source_directory` van het) van het trainings script dat moet worden uitgevoerd op de externe compute. Dit bestand en eventuele extra bestanden waarvan het afhankelijk is, moeten zich in deze map bevinden.
 `conda_packages`| Lijst met Python-pakketten die moeten worden geïnstalleerd via Conda die nodig zijn voor uw trainings script.  
 
@@ -93,7 +93,7 @@ Er zijn twee aanvullende trainings scenario's die u kunt uitvoeren met `Estimato
 
 De volgende code laat zien hoe u gedistribueerde training kunt uitvoeren voor een Keras-model. In plaats van de standaard-Azure Machine Learning installatie kopieën te gebruiken, wordt er bovendien een aangepaste docker-installatie kopie van docker hub `continuumio/miniconda` voor training opgegeven.
 
-U moet uw [reken doel](how-to-set-up-training-targets.md#amlcompute) object al hebben gemaakt `compute_target` . U maakt de Estimator als volgt:
+U moet uw [reken doel](how-to-create-attach-compute-sdk.md#amlcompute) object al hebben gemaakt `compute_target` . U maakt de Estimator als volgt:
 
 ```Python
 from azureml.train.estimator import Estimator

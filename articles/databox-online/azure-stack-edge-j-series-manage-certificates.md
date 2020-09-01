@@ -1,19 +1,19 @@
 ---
-title: Certificaten gebruiken met Azure Stack Edge | Microsoft Docs
-description: Hierin wordt het gebruik van certificaten met Azure Stack edge-apparaat beschreven, met inbegrip van de redenen voor het gebruik van, de typen en het uploaden van certificaten op het apparaat.
+title: Certificaten met Azure Stack Edge GPU gebruiken | Microsoft Docs
+description: Beschrijft het gebruik van certificaten met Azure Stack Edge GPU-apparaat, met inbegrip van de reden voor het gebruik van, het type en het uploaden van certificaten op uw apparaat.
 services: Azure Stack Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e257ecbcc608dfc6ecb9aedae69eeef083395836
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084623"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147079"
 ---
 # <a name="use-certificates-with-azure-stack-edge-series"></a>Certificaten gebruiken met Azure Stack Edge-serie 
 

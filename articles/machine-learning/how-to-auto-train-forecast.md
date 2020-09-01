@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852160"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144784"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -248,7 +248,6 @@ automl_config = AutoMLConfig(task='forecasting',
 Als u DNN wilt inschakelen voor een AutoML-experiment dat is gemaakt in de Azure Machine Learning Studio, raadpleegt u de instellingen voor het [taak type in de Studio How-to](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
 Automatische ML biedt gebruikers zowel systeem eigen time-series als diepe leer modellen als onderdeel van het aanbevelings systeem. 
-
 
 Modellen| Beschrijving | Voordelen
 ----|----|---

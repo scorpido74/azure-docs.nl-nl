@@ -4,23 +4,23 @@ description: Meer informatie over het koppelen van een virtueel bestands systeem
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921627"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145481"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
 Azure Batch ondersteunt nu het koppelen van Cloud opslag of een extern bestands systeem op Windows-of Linux-reken knooppunten in uw batch-Pools. Wanneer een reken knooppunt wordt toegevoegd aan een pool, wordt het virtuele bestands systeem gekoppeld en behandeld als een lokaal station op het knoop punt. U kunt bestands systemen zoals Azure Files, Azure Blob Storage, Network File System (NFS), waaronder een [avere vFXT-cache](../avere-vfxt/avere-vfxt-overview.md)of een common Internet File System (CIFS) koppelen.
 
-In dit artikel leert u hoe u een virtueel bestands systeem koppelt aan een pool van reken knooppunten met behulp [van de batch-beheer bibliotheek voor .net](/dotnet/api/overview/azure/batch?view=azure-dotnet).
+In dit artikel leert u hoe u een virtueel bestands systeem koppelt aan een pool van reken knooppunten met behulp [van de batch-beheer bibliotheek voor .net](/dotnet/api/overview/azure/batch).
 
 > [!NOTE]
 > Het koppelen van een virtueel bestands systeem wordt ondersteund op batch-Pools die zijn gemaakt op of na 2019-08-19. Batch-Pools die zijn gemaakt vóór 2019-08-19 bieden geen ondersteuning voor deze functie.
 > 
-> De Api's voor het koppelen van bestands systemen op een reken knooppunt maken deel uit van de [batch .net](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -bibliotheek.
+> De Api's voor het koppelen van bestands systemen op een reken knooppunt maken deel uit van de [batch .net](/dotnet/api/microsoft.azure.batch) -bibliotheek.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Voor delen van koppelen aan een groep
 

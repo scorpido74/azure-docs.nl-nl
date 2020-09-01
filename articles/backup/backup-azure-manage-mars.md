@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893065"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145566"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -173,7 +173,7 @@ Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegev
 
 In deze sectie wordt een scenario beschreven waarin uw bron machine die is beveiligd met MARS, niet meer beschikbaar is, omdat deze is verwijderd, beschadigd, geïnfecteerd met malware/Ransomware of uit bedrijf genomen.
 
-Voor deze computers zorgt de Azure Backup-service ervoor dat het laatste herstel punt niet verloopt (dat wil zeggen, niet wordt weggehaald) volgens de Bewaar regels die zijn opgegeven in het back-upbeleid. Daarom kunt u de computer veilig herstellen.  Houd rekening met de volgende scenario's die u kunt uitvoeren op de gegevens waarvan een back-up is gemaakt:
+Voor deze computers zorgt de Azure Backup-service ervoor dat het meest recente herstel punt niet verloopt (dat wil zeggen, niet wordt weggehaald) volgens de Bewaar regels die zijn opgegeven in het back-upbeleid. Daarom kunt u de computer veilig herstellen.  Houd rekening met de volgende scenario's die u kunt uitvoeren op de gegevens waarvan een back-up is gemaakt:
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Scenario 1: de bron machine is niet beschikbaar en u hoeft geen back-upgegevens meer te bewaren
 

@@ -1,7 +1,7 @@
 ---
 title: Toegang tot gegevens in de Cloud beveiligen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u veilig verbinding maakt met uw gegevens vanaf Azure Machine Learning en hoe u gegevens sets en data stores gebruikt voor ML-taken. Data stores kunnen gegevens van een Azure-Blob opslaan, Azure Data Lake gen 1 & 2, SQL DB, Databricks,...
+description: Meer informatie over hoe u veilig verbinding maakt met uw gegevens vanaf Azure Machine Learning en hoe u gegevens sets en data stores gebruikt voor ML-taken. Data stores kunnen gegevens van een Azure-Blob opslaan, Azure Data Lake gen 1 & 2, SQL DB en Azure Databricks.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651791"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146684"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
 Met Azure Machine Learning kunt u eenvoudig verbinding maken met uw gegevens in de Cloud.  Het biedt een abstracte laag voor de onderliggende opslag service, zodat u veilig toegang hebt tot uw gegevens en deze kunt gebruiken zonder dat u code hoeft te schrijven die specifiek zijn voor uw opslag type. Azure Machine Learning biedt ook de volgende gegevens mogelijkheden:
 
+*    Interoperabiliteit met Panda-en Spark-DataFrames
 *    Versie beheer en het bijhouden van gegevens afkomst
 *    Gegevens labelen 
 *    Bewaking van gegevensafwijking
-*    Interoperabiliteit met Panda-en Spark-DataFrames
-
+    
 ## <a name="data-workflow"></a>Gegevens werk stroom
 
 Wanneer u klaar bent voor het gebruik van de gegevens in uw opslag oplossing op basis van de Cloud, raden we u aan de volgende werk stroom voor het leveren van gegevens te gebruiken. In deze werk stroom wordt ervan uitgegaan dat u een [Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) en gegevens hebt in een cloud-gebaseerde opslag service in Azure. 
@@ -67,13 +67,19 @@ Ondersteunde cloud-gebaseerde opslag Services in azure die als gegevens opslag k
 
 ## <a name="datasets"></a>Gegevenssets
 
-Azure Machine Learning gegevens sets zijn verwijzingen die verwijzen naar de gegevens in uw Storage-service. Ze zijn geen kopieën van uw gegevens, waardoor er geen extra opslag kosten in rekening worden gebracht en de integriteit van uw oorspronkelijke gegevens bronnen geen risico loopt.
+Azure Machine Learning gegevens sets zijn verwijzingen die verwijzen naar de gegevens in uw Storage-service. Ze bevatten geen kopieën van uw dataBy het maken van een Azure Machine Learning-gegevensset, u maakt een verwijzing naar de locatie van de gegevens bron, samen met een kopie van de meta gegevens. 
 
- Als u met uw gegevens in de opslag wilt werken, [maakt u een gegevensset](how-to-create-register-datasets.md) om uw gegevens te verpakken in een verbruikt object voor machine learning taken. Registreer de gegevensset voor uw werk ruimte om deze te delen en opnieuw te gebruiken in verschillende experimenten zonder complexiteit van gegevens opname.
+Omdat gegevens sets worden geëvalueerd als vertraagd, en de huidige locatie blijft bestaan, kunt u
 
-Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, open bare url's, [Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/)of Azure Storage-services via data stores. Als u een gegevensset wilt maken op basis van een in geheugen-Panda data frame, schrijft u de gegevens naar een lokaal bestand, zoals een Parquet, en maakt u uw gegevensset vanuit dat bestand.  
+* Geen extra opslag kosten in rekening gebracht.
+* Geen risico dat u onbedoeld uw oorspronkelijke gegevens bronnen wijzigt.
+* Verbeter de prestaties van de werk stroom snelheid.
 
-We ondersteunen twee typen gegevens sets: 
+Als u met uw gegevens in de opslag wilt werken, [maakt u een gegevensset](how-to-create-register-datasets.md) om uw gegevens te verpakken in een verbruikt object voor machine learning taken. Registreer de gegevensset voor uw werk ruimte om deze te delen en opnieuw te gebruiken in verschillende experimenten zonder complexiteit van gegevens opname.
+
+Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, open bare url's, [Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/)of Azure Storage-services via data stores. 
+
+Er zijn twee typen gegevens sets: 
 
 + Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Als uw gegevens al zijn gereinigd en klaar zijn voor gebruik in trainings experimenten, kunt u [bestanden downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) waarnaar wordt verwezen door FileDatasets naar uw reken doel.
 

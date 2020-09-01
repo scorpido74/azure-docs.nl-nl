@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: b90cda409096f940d6c2b1c64517731e81c41fbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069154"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146773"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -106,7 +106,7 @@ Een uitvoerings configuratie is een set instructies die definieert hoe een scrip
 
 Een uitvoerings configuratie kan worden opgeslagen in een bestand in de map die uw trainings script bevat.   Of kan worden geconstrueerd als een in-memory-object en worden gebruikt voor het verzenden van een run.
 
-Zie bijvoorbeeld configuraties [selecteren en een compute-doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md).
+Zie voor beelden van configuraties uitvoeren [een compute-doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md).
 
 ### <a name="estimators"></a>Schattingen
 
