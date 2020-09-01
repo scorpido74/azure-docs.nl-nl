@@ -1,0 +1,106 @@
+---
+title: Meer informatie over Kubernetes workload Management op Azure Stack edge-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe Kubernetes-workloads kunnen worden beheerd op uw Azure Stack edge-apparaat.
+services: databox
+author: alkohli
+ms.service: databox
+ms.subservice: edge
+ms.topic: conceptual
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: 21845b51fdd108221d5e1bce50e953b79084d17d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89084084"
+---
+# <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes op uw Azure Stack edge-apparaat
+
+Op uw Azure Stack edge-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunnen in een van beide toepassingen met containers in de Kubernetes-cluster worden geïmplementeerd. Er zijn verschillende manieren om werk belastingen te implementeren in uw Kubernetes-cluster. 
+
+In dit artikel worden de verschillende methoden beschreven die kunnen worden gebruikt voor het implementeren van werk belastingen op uw Azure Stack edge-apparaat.
+
+## <a name="workload-types"></a>Typen werk belasting
+
+De twee algemene typen werk belastingen die u kunt implementeren op uw Azure Stack edge-apparaat zijn stateless toepassingen of stateful toepassingen.
+
+- **Stateless toepassingen** behouden hun status niet en slaan geen gegevens op in permanente opslag. Alle gebruikers-en sessie gegevens blijven bij de client. Enkele voor beelden van stateless toepassingen zijn web-frontends zoals nginx en andere webtoepassingen.
+
+    U kunt een Kubernetes-implementatie maken om een stateless toepassing in uw cluster te implementeren. 
+
+- **Stateful toepassingen** vereisen dat hun status wordt opgeslagen. Stateful toepassingen gebruiken permanente opslag, zoals permanente volumes, om gegevens op te slaan voor gebruik door de server of door andere gebruikers. Voor beelden van stateful toepassingen zijn data bases zoals MongoDB.
+
+    U kunt een Kubernetes-implementatie maken om een stateful toepassing te implementeren. 
+
+## <a name="namespaces-types"></a>Typen naam ruimten
+
+Kubernetes-resources, zoals peulen en implementaties, worden logisch gegroepeerd in een naam ruimte. Deze groeperingen bieden een manier om een Kubernetes-cluster logisch te verdelen en de toegang te beperken tot het maken, weer geven of beheren van resources. Gebruikers kunnen alleen communiceren met resources binnen hun toegewezen naam ruimten.
+
+Naam ruimten zijn bedoeld voor gebruik in omgevingen met veel gebruikers verspreid over meerdere teams of projecten. Voor clusters met een paar van tien gebruikers hoeft u helemaal geen naam ruimten te maken of te bedenken. Begin met het gebruik van naam ruimten wanneer u de functies nodig hebt die ze bieden.
+
+Zie [Kubernetes-naam ruimten](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)voor meer informatie.
+
+
+Uw Azure Stack edge-apparaat heeft de volgende naam ruimten:
+
+- **Systeem naam ruimte** : deze naam ruimte is de belangrijkste bronnen, zoals netwerk functies, zoals DNS en proxy, of het Kubernetes-dash board. Normaal gesp roken implementeert u uw eigen toepassingen niet in deze naam ruimte. Gebruik deze naam ruimte om problemen met een Kubernetes-cluster op te sporen. 
+
+    Uw apparaat bevat meerdere naam ruimten voor het systeem en de namen die overeenkomen met deze systeem naam ruimten zijn gereserveerd. Hier volgt een lijst met de gereserveerde systeem naam ruimten: 
+    - uitvoeren-systeem
+    - metallb-systeem
+    - DBE-naam ruimte
+    - standaardinstelling
+    - kubernetes-dash board
+    - standaardinstelling
+    - uitvoeren-node-lease
+    - uitvoeren-openbaar
+    - iotedge
+    - Azure-boog
+
+    Zorg ervoor dat u geen gereserveerde namen gebruikt voor gebruikers naam ruimten die u maakt. 
+<!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
+
+- **Gebruikers naam ruimte** : Dit zijn de naam ruimten die u kunt maken via **kubectl** om toepassingen lokaal te implementeren.
+ 
+- **IOT Edge naam ruimte** : u maakt verbinding met deze `iotedge` naam ruimte om toepassingen te implementeren via IOT Edge.
+
+- **Azure ARC-naam ruimte** : u maakt verbinding met deze `azure-arc` naam ruimte om toepassingen te implementeren via Azure Arc.
+
+ 
+## <a name="deployment-types"></a>Implementatie typen
+
+Er zijn drie manieren om uw workloads te implementeren. Met elk van deze implementatie methoden kunt u verbinding maken met een afzonderlijke naam ruimte op het apparaat en vervolgens stateless of stateful toepassingen implementeren.
+
+![Implementatie van Kubernetes-werk belasting](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
+
+- **Lokale implementatie**: dit is via het opdracht regel programma voor toegang, zoals `kubectl` waarmee u K8 kunt implementeren `yamls` . U maakt verbinding met het K8-cluster op uw Azure Stack-rand die u maakt met behulp van het `kubeconfig` bestand. Ga voor meer informatie naar [toegang tot een Kubernetes-cluster via kubectl](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+
+- **IOT Edge-implementatie**: dit is via IOT Edge, waarmee verbinding wordt gemaakt met de Azure-IOT hub. U maakt verbinding met het K8-cluster op uw Azure Stack edge-apparaat via de `iotedge` naam ruimte. De IoT Edge agents die in deze naam ruimte zijn geïmplementeerd, zijn verantwoordelijk voor de connectiviteit met Azure. U past de `IoT Edge deployment.json` configuratie toe met behulp van Azure DEVOPS CI/cd. De naam ruimte en het IoT Edge beheer worden uitgevoerd via de Cloud operator.
+
+- **Implementatie van Azure/Arc**: Azure Arc is een Hybrid management tool waarmee u toepassingen kunt implementeren in uw K8-clusters. U verbindt het K8-cluster op uw Azure Stack edge-apparaat via de `azure-arc namespace` .  Agents worden geïmplementeerd in deze naam ruimte die verantwoordelijk zijn voor de connectiviteit met Azure. U past de implementatie configuratie toe met behulp van het GitOps-configuratie beheer. Met Azure Arc kunt u ook Azure Monitor voor containers gebruiken om uw clusters weer te geven en te bewaken. Ga naar [Wat is Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)voor meer informatie.
+
+## <a name="choose-the-deployment-type"></a>Het implementatie type kiezen
+
+Houd bij het implementeren van toepassingen rekening met de volgende informatie:
+
+- **Eén of meer typen**: u kunt kiezen uit één implementatie optie of een combi natie van verschillende implementatie opties.
+- **Cloud versus lokaal**: afhankelijk van uw toepassingen kunt u lokale implementatie kiezen via kubectl of Cloud implementatie via IOT Edge en Azure Arc. 
+    - Lokale implementatie is geschikter voor ontwikkelings scenario's. Wanneer u een lokale implementatie kiest, bent u beperkt tot het netwerk waarin uw Azure Stack edge-apparaat wordt geïmplementeerd.
+    - Als u een Cloud agent hebt die u kunt implementeren, moet u uw Cloud operator implementeren en Cloud beheer gebruiken.
+- **IOT versus Azure Arc**: de keuze van de implementatie is ook afhankelijk van het doel van uw product scenario. Als u toepassingen of containers implementeert die een diep gaande integratie met IoT of IoT-ecosysteem hebben, moet u de IoT Edge manier kiezen voor het implementeren van toepassingen. Als u bestaande Kubernetes-implementaties hebt, is Azure Arc de voorkeurs keuze.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Als u een app lokaal wilt implementeren via kubectl, raadpleegt u:
+
+- [Implementeer een staatloze toepassing op uw Azure stack Edge via kubectl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+
+Ga als volgt te werk om een app te implementeren via IoT Edge:
+
+- [Implementeer een voorbeeld module op uw Azure stack rand via IOT Edge](azure-stack-edge-gpu-deploy-sample-module.md).
+
+Zie voor informatie over het implementeren van een app via Azure Arc:
+
+- [Implementeer een toepassing met behulp van Azure Arc](azure-stack-edge-gpu-deploy-sample-module.md).

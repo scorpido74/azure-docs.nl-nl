@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080519"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079588"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uw toepassing implementeren op virtuele-machineschaalsets
 
@@ -43,8 +43,8 @@ Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd 
 
 Met de Power shell DSC-extensie kunt u VM-exemplaren in een schaalset aanpassen met Power shell. Het volgende voor beeld:
 
-- Hiermee wordt de VM-instantie geïnstrueerd een DSC-pakket te downloaden van GitHub-*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
-- Hiermee stelt u de uitbrei ding voor het uitvoeren van een installatie script-`configure-http.ps1`
+- Hiermee wordt de VM-instantie geïnstrueerd een DSC-pakket te downloaden van GitHub- *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Hiermee stelt u de uitbrei ding voor het uitvoeren van een installatie script- `configure-http.ps1`
 - Haalt informatie op over een schaalset met [Get-AzVmss](/powershell/module/az.compute/get-azvmss)
 - Hiermee wordt de extensie toegepast op de VM [-exemplaren met update-AzVmss](/powershell/module/az.compute/update-azvmss)
 

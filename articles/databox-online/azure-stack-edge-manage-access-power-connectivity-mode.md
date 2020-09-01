@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339719"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079792"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Stack Edge beheren
 
@@ -95,7 +95,7 @@ Voor Azure Stack edge-apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Zie [fouten voor de registratie van de resource provider oplossen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)voor meer informatie over het registreren van een resource provider.
+Zie [fouten voor de registratie van de resource provider oplossen](../azure-resource-manager/templates/error-register-resource-provider.md)voor meer informatie over het registreren van een resource provider.
 
 ## <a name="manage-connectivity-mode"></a>Connectiviteits modus beheren
 
@@ -120,7 +120,7 @@ Voer de volgende stappen uit om de modus apparaat te wijzigen:
  
 ## <a name="manage-power"></a>Energie beheren
 
-U kunt het fysieke apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. U kunt het beste de shares offline halen op de gegevens server en vervolgens op het apparaat. Deze actie minimaliseert de kans op beschadiging van gegevens.
+U kunt uw fysieke apparaat afsluiten of opnieuw starten met de lokale webinterface. We raden u aan de shares vóór de herstart offline te zetten op de gegevensserver en vervolgens op het apparaat. Deze actie minimaliseert de kans op beschadigde gegevens.
 
 1. Ga in de lokale web-UI naar **onderhoud > energie-instellingen**.
 2. Selecteer **Afsluiten** of **opnieuw opstarten** , afhankelijk van wat u wilt doen.

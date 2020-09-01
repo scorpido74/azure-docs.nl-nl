@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958759"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079656"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -488,7 +488,7 @@ De volgende bewerkingen worden ondersteund door modify:
 - De waarde van het beheerde identiteits type ( `identity.type` ) van virtuele machines en virtuele-machine schaal sets toevoegen of vervangen.
 - De waarden van bepaalde aliassen (preview-versie) toevoegen of vervangen.
   - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` gebruiken
-    in Azure PowerShell om een lijst met aliassen op te halen die kunnen worden gebruikt met wijzigen.
+    in Azure PowerShell **4.6.0** of hoger om een lijst met aliassen op te halen die kunnen worden gebruikt met wijzigen.
 
 > [!IMPORTANT]
 > Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken of de alias voor de bron eigenschap niet wilt wijzigen.

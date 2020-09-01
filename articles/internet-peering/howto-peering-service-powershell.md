@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 579af2d5cbe0f3dcdbdf749894d5c400112f37cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 98341fbbbcafb6aee938870c22050c6edec352ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710793"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079044"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>Azure peering service inschakelen op een directe peering met behulp van Power shell
 
@@ -49,7 +50,7 @@ Als u de verbindings instellingen wilt wijzigen, raadpleegt u de sectie ' een di
 * [Exchange-peering maken of wijzigen met behulp van Power shell](howto-exchange-powershell.md)
 * [Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van Power shell](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 U kunt gedetailleerde beschrijvingen van alle para meters verkrijgen door de volgende opdracht uit te voeren:
 
 ```powershell

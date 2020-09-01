@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013001"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079773"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -170,9 +170,9 @@ Modellen zijn niet per se geretourneerd in het document formulier waarin ze zijn
 
 Zodra een model is geüpload naar uw exemplaar, is de gehele model interface onveranderbaar. Dit betekent dat er geen traditionele ' editing ' van modellen is.
 
-Als u in plaats daarvan wijzigingen wilt aanbrengen in een model in azure Digital Apparaatdubbels, zoals het wijzigen `DisplayName` van de of, kunt u `Description` dit het beste doen door een **nieuwere versie** van hetzelfde model te uploaden. Hiermee wordt het oorspronkelijke model overschreven.
+Als u in plaats daarvan wijzigingen wilt aanbrengen in een model in azure Digital Apparaatdubbels, kunt u dit het beste doen door een **nieuwere versie** van hetzelfde model te uploaden. Tijdens de preview-fase kunt u met het verplaatsen van een model versie alleen velden verwijderen, geen nieuwe velden toevoegen (u hoeft alleen maar [een gloed nieuw model te maken](#create-models)).
 
-Als u dit wilt doen, begint u met het DTDL van het oorspronkelijke model. Werk de velden bij die u wilt wijzigen.
+Begin met het DTDL van het oorspronkelijke model om een nieuwe versie van een bestaand model te maken. Werk de velden die u wilt wijzigen bij.
 
 Markeer dit vervolgens als een nieuwere versie van het model door het `id` veld van het model bij te werken. De laatste sectie van de model-ID, na de `;` , vertegenwoordigt het model nummer. Om aan te geven dat dit nu een meer bijgewerkte versie van dit model is, verhoogt u het aantal aan het einde van de `id` waarde naar een getal dat groter is dan het huidige versie nummer.
 

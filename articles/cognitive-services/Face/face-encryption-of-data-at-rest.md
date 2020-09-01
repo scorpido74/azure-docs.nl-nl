@@ -1,20 +1,20 @@
 ---
 title: Face service-versleuteling van data-at-rest
 titleSuffix: Azure Cognitive Services
-description: Face service-versleuteling van data-at-rest.
+description: Micro soft biedt door micro soft beheerde coderings sleutels en kunt u ook uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). In dit artikel worden gegevens versleuteling in rust voor gezicht beschreven en wordt uitgelegd hoe u CMK kunt inschakelen en beheren.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 33495dd5b092cb51b3421e7204f3b529077d63b3
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: eab90fc2cb30ae8e9f1c19bdbefc6fbc88c32f76
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309030"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079265"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Face service-versleuteling van data-at-rest
 
@@ -24,15 +24,6 @@ Met de service Face worden uw gegevens automatisch versleuteld wanneer deze pers
 
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn alleen beschikbaar in de prijs categorie E0. Als u de mogelijkheid wilt aanvragen om door de klant beheerde sleutels te gebruiken, vult u het [aanvraag formulier voor de klant beheerde sleutel](https://aka.ms/cogsvc-cmk)in. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van CMK met de face-service, moet u een nieuwe gezichts bron maken en E0 selecteren als prijs categorie. Zodra uw gezichts bron met de prijs categorie E0 is gemaakt, kunt u Azure Key Vault gebruiken om uw beheerde identiteit in te stellen.
-
-## <a name="regional-availability"></a>Regionale beschikbaarheid
-
-Door de klant beheerde sleutels zijn momenteel beschikbaar in deze regio's:
-
-* US - zuid-centraal
-* VS - west 2
-* VS - oost
-* VS (overheid) - Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

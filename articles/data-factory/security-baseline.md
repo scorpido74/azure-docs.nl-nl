@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 256751e452be539084a7dc022dc56c0f60e910e6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044172"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079180"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-beveiligings basislijn voor Azure Data Factory
 
@@ -520,7 +520,7 @@ Als u uw Integration Runtime uitvoert in een virtuele Azure-machine (VM), wordt 
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -598,15 +598,15 @@ De functies voor gegevens detectie en-classificatie zijn nog niet beschikbaar vo
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory (AD) op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het Azure Data Factory besturings vlak (de Azure Portal).
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot het Azure Data Factory besturings vlak (de Azure Portal) te beheren.
 
 Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rol Inzender of Eigenaar, of moet dit een beheerder van het Azure-abonnement zijn.
 
-Raadpleeg voor uw Data Factory gegevens bronnen, zoals Azure SQL Database, de beveiligings basislijn voor die service voor meer informatie over RBAC.
+Raadpleeg voor uw Data Factory gegevens bronnen, zoals Azure SQL Database, de beveiligings basislijn voor die service voor meer informatie over Azure RBAC.
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Rollen en machtigingen voor Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -656,7 +656,7 @@ U kunt referenties of geheime waarden opslaan in een Azure Key Vault en deze geb
 
 * [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-* [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+* [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -767,7 +767,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure-resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
 Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -843,7 +843,7 @@ Opmerking: de software naam, versie, uitgever en vernieuwings tijd zijn beschikb
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
@@ -984,15 +984,15 @@ In de meeste gevallen kunnen de micro soft-sjablonen voor virtuele machines in c
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Richt lijnen**: als u aangepaste installatie kopieën gebruikt, moet u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
+**Richt lijnen**: als u aangepaste installatie kopieën gebruikt, moet u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om ervoor te zorgen dat alleen gemachtigde gebruikers toegang kunnen krijgen tot de installatie kopieën. Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van Azure RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
 De rol Data Factory Inzender kan worden gebruikt om gegevens fabrieken te maken en te beheren, evenals onderliggende resources.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Wat is RBAC voor Container Registry?](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Meer informatie over Azure RBAC voor Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Rollen en machtigingen voor Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 

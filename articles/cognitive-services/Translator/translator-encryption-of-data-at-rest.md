@@ -1,20 +1,20 @@
 ---
 title: Conversie van gegevens in rust versleutelen
 titleSuffix: Azure Cognitive Services
-description: Vertaal versleuteling van gegevens in rust.
+description: Met micro soft kunt u uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). In dit artikel worden de gegevens versleuteling in rust voor Translator beschreven en wordt uitgelegd hoe u CMK kunt inschakelen en beheren.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310832"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079197"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Conversie van gegevens in rust versleutelen
 
@@ -22,11 +22,11 @@ Met Translator worden uw gegevens automatisch versleuteld, die u uploadt om aang
 
 ## <a name="about-cognitive-services-encryption"></a>Over Cognitive Services versleuteling
 
-Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om te kunnen profiteren van versleuteling.
+Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om van versleuteling te kunnen profiteren.
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
-Uw abonnement maakt standaard gebruik van door micro soft beheerde versleutelings sleutels. Als u een prijs categorie gebruikt die door de klant beheerde sleutels ondersteunt, kunt u de versleutelings instellingen voor uw resource bekijken in de sectie **versleuteling** van het [Azure Portal](https://portal.azure.com), zoals wordt weer gegeven in de volgende afbeelding.
+Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelingssleutels. Als u een prijs categorie gebruikt die door de klant beheerde sleutels ondersteunt, kunt u de versleutelings instellingen voor uw resource bekijken in de sectie **versleuteling** van het [Azure Portal](https://portal.azure.com), zoals wordt weer gegeven in de volgende afbeelding.
 
 ![Versleutelings instellingen weer geven](../media/cognitive-services-encryption/encryptionblade.png)
 
@@ -34,7 +34,7 @@ Voor abonnementen die alleen door micro soft beheerde versleutelings sleutels on
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Door de klant beheerde sleutels met Azure Key Vault
 
-Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
+Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelingssleutels. Er is ook de mogelijkheid om uw abonnement te beheren met uw eigen sleutels, genaamd door de klant beheerde sleutels (CMK). CMK biedt meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens. Als CMK is geconfigureerd voor uw abonnement, wordt er dubbele versleuteling gegeven, die een tweede beveiligingslaag biedt, terwijl u de versleutelings sleutel via uw Azure Key Vault kunt beheren.
 
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn beschikbaar voor alle prijs categorieën voor de Vertaal service. Als u de mogelijkheid wilt bieden om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor de door de [klant beheerde sleutel](https://aka.ms/cogsvc-cmk) te vullen en in. het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met de Translator-service, moet u een nieuwe Translator-resource maken. Zodra uw Translator-resource is gemaakt, kunt u Azure Key Vault gebruiken om uw beheerde identiteit in te stellen.
@@ -45,11 +45,9 @@ Volg deze stappen om door de klant beheerde sleutels voor Translator in te scha 
 2. Ingeschakelde beheerde identiteit in de Azure Portal en voeg de door de klant beheerde sleutel gegevens toe.
 3. Maak een nieuwe werk ruimte in Custom Translator en koppel deze abonnements gegevens.
 
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
-
 ### <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 
-U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
+U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
 Een nieuwe Cognitive Services resource wordt altijd versleuteld met door micro soft beheerde sleutels. Het is niet mogelijk om door de klant beheerde sleutels in te scha kelen op het moment dat de resource wordt gemaakt. Door de klant beheerde sleutels worden opgeslagen in Azure Key Vault en de sleutel kluis moet worden ingericht met toegangs beleid waarmee sleutel machtigingen worden verleend aan de beheerde identiteit die aan de Cognitive Services-resource is gekoppeld. De beheerde identiteit is beschikbaar zodra de resource is gemaakt.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0004b7689b6ede2200e3fe4cb06bba2bbc168d6d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dc6b8e5d34dc24ce4f84a313738fe3587970a856
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259392"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079826"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure-beveiligings basislijn voor Azure Container Registry
 
@@ -30,9 +30,9 @@ Zie [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-
 
 **Hulp**: Azure Virtual Network biedt veilige, persoonlijke netwerken voor uw Azure-en on-premises resources. Door de toegang tot uw persoonlijke Azure-container register te beperken vanuit een virtueel Azure-netwerk, zorgt u ervoor dat alleen bronnen in het virtuele netwerk toegang hebben tot het REGI ster. Voor cross-premises scenario's kunt u ook firewall regels configureren om alleen toegang tot het REGI ster vanuit specifieke IP-adressen toe te staan. Configureer vanaf een firewall firewall toegangs regels en service tags om toegang te krijgen tot uw container register.
 
-Beperk de toegang tot een Azure container Registry met behulp van een virtueel netwerk of een firewall-regel van Azure:https://docs.microsoft.com/azure/container-registry/container-registry-vnet 
+Beperk de toegang tot een Azure container Registry met behulp van een virtueel netwerk of een firewall-regel van Azure: https://docs.microsoft.com/azure/container-registry/container-registry-vnet 
 
-Regels configureren voor toegang tot een Azure container Registry achter een firewall:https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules
+Regels configureren voor toegang tot een Azure container Registry achter een firewall: https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules
 
 
 **Azure Security Center bewaking**: Ja
@@ -43,9 +43,9 @@ Regels configureren voor toegang tot een Azure container Registry achter een fir
 
 **Hulp**: gebruik Azure Security Center en herstel aanbevelingen voor netwerk beveiliging om uw netwerk bronnen in azure te beveiligen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle.
 
-NSG-stroom logboeken inschakelen:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Beveilig uw netwerk bronnen:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+Beveilig uw netwerk bronnen: https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
 
 
@@ -67,15 +67,15 @@ Beveilig uw netwerk bronnen:https://docs.microsoft.com/azure/security-center/sec
 
 U kunt Azure Security Center just-in-time-netwerk toegang gebruiken om Nsg's te configureren om de bloot stelling van eind punten te beperken tot goedgekeurde IP-adressen gedurende een beperkte periode. U kunt ook Azure Security Center adaptieve netwerk beveiliging gebruiken om NSG-configuraties aan te bevelen die poorten en bron-Ip's beperken op basis van daad werkelijk verkeer en bedreigings informatie.
 
-DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+DDoS-beveiliging configureren:  https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Azure Firewall implementeren:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
+Azure Firewall implementeren: https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-Meer informatie over Azure Security Center geïntegreerde bedreigings informatie:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Meer informatie over Azure Security Center geïntegreerde bedreigings informatie: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Meer informatie over Azure Security Center adaptieve netwerk beveiliging:https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
+Meer informatie over Azure Security Center adaptieve netwerk beveiliging: https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Azure Security Center just-in-time-netwerk Access Control:https://docs.microsoft.com/azure/security-center/security-center-just-in-time
+Azure Security Center just-in-time-netwerk Access Control: https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 
 **Azure Security Center bewaking**: Ja
@@ -86,9 +86,9 @@ Azure Security Center just-in-time-netwerk Access Control:https://docs.microsoft
 
 **Hulp**: Schakel de stroom logboeken voor netwerk beveiligings groepen (NSG) in voor de NSG die zijn gekoppeld aan het subnet dat wordt gebruikt voor het beveiligen van uw Azure container Registry. U kunt de NSG-stroom logboeken vastleggen in een Azure Storage-account om stroom records te genereren. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Azure Network Watcher pakket vastleggen in.
 
-NSG-stroom logboeken inschakelen:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Network Watcher inschakelen:https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+Network Watcher inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 
 **Azure Security Center bewaking**: Ja
@@ -101,11 +101,11 @@ Network Watcher inschakelen:https://docs.microsoft.com/azure/network-watcher/net
 
 Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen van uw organisatie om schadelijk verkeer te detecteren en/of te weigeren.
 
-Azure Marketplace:https://azuremarketplace.microsoft.com/marketplace/?term=Firewall 
+Azure Marketplace:  https://azuremarketplace.microsoft.com/marketplace/?term=Firewall 
 
-Azure Firewall implementeren:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
+Azure Firewall implementeren: https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-Waarschuwingen configureren met Azure Firewall:https://docs.microsoft.com/azure/firewall/threat-intel
+Waarschuwingen configureren met Azure Firewall: https://docs.microsoft.com/azure/firewall/threat-intel
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -124,7 +124,7 @@ Waarschuwingen configureren met Azure Firewall:https://docs.microsoft.com/azure/
 
 **Richt lijnen**: voor bronnen die toegang nodig hebben tot uw container register, gebruikt u de tags voor de virtuele netwerk service voor de Azure container Registry-service om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de servicetag naam ' AzureContainerRegistry ' op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-Toegang toestaan per service label:https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag
+Toegang toestaan per service label: https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -135,11 +135,11 @@ Toegang toestaan per service label:https://docs.microsoft.com/azure/container-re
 
 **Richt lijnen**: Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen die zijn gekoppeld aan uw Azure-container registers met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. ContainerRegistry ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw container registers te controleren of af te dwingen. 
 
-U kunt Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door het verpakken van sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en-beleid, in één definitie van blauw drukken. De blauw druk Toep assen op nieuwe abonnementen en beheer en beheer op basis van versies.
+U kunt Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door het verpakken van sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Azure RBAC-besturings elementen en-beleid, in één blauw druk-definitie. De blauw druk Toep assen op nieuwe abonnementen en beheer en beheer op basis van versies.
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -148,9 +148,9 @@ Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
 
-**Richt lijn**: klant kan gebruikmaken van Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en beleids regels, in één definitie van de blauw druk te brengen. De blauw druk Toep assen op nieuwe abonnementen en beheer en beheer op basis van versies.
+**Hulp**: klant kan gebruikmaken van Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Azure RBAC-besturings elementen en beleids regels, in één definitie van de blauw druk te brengen. De blauw druk Toep assen op nieuwe abonnementen en beheer en beheer op basis van versies.
 
-Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
 
@@ -162,9 +162,9 @@ Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw container registers. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:  https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen maken in Azure Monitor:  https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
@@ -180,7 +180,7 @@ Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-mon
 
 **Hulp**: micro soft onderhoudt tijd bronnen voor Azure-resources, maar u hebt de mogelijkheid om de tijd synchronisatie-instellingen voor uw reken resources te beheren.
 
-Tijd synchronisatie voor Azure Compute-resources configureren:https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
+Tijd synchronisatie voor Azure Compute-resources configureren: https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -191,7 +191,7 @@ Tijd synchronisatie voor Azure Compute-resources configureren:https://docs.micro
 
 **Hulp**: opname logboeken via Azure monitor voor het verzamelen van beveiligings gegevens die zijn gegenereerd door een Azure container Registry. In Azure Monitor kunt u Log Analytics werk ruimte (n) gebruiken om een query uit te voeren en een Analytics-account te gebruiken, en Azure Storage accounts voor lange termijn/archiverings opslag.
 
-Azure Container Registry logboeken voor diagnostische evaluatie en controle:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry logboeken voor diagnostische evaluatie en controle:  https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
 
 
@@ -203,7 +203,7 @@ Azure Container Registry logboeken voor diagnostische evaluatie en controle:http
 
 **Hulp**: Azure monitor verzamelt bron Logboeken (voorheen Diagnostische logboeken genoemd) voor door gebruikers gestuurde gebeurtenissen in het REGI ster. Verzamel en gebruik deze gegevens om register verificatie gebeurtenissen te controleren en een compleet activiteiten traject te geven op register artefacten, zoals pull-en push gebeurtenissen, zodat u beveiligings problemen met uw REGI ster kunt vaststellen.
 
-Azure Container Registry logboeken voor diagnostische evaluatie en controle:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry logboeken voor diagnostische evaluatie en controle: https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -222,7 +222,7 @@ Azure Container Registry logboeken voor diagnostische evaluatie en controle:http
 
 **Hulp**: stel binnen Azure monitor uw Bewaar periode voor log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 
-Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -233,11 +233,11 @@ Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk rui
 
 **Richt lijnen**: Azure container Registry logboeken analyseren en controleren op afwijkend gedrag en regel matig de resultaten bekijken. Gebruik de Log Analytics werk ruimte van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens.
 
-Azure Container Registry logboeken voor diagnostische evaluatie en controle:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry logboeken voor diagnostische evaluatie en controle:  https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
-Meer informatie over Log Analytics-werk ruimte:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Meer informatie over Log Analytics-werk ruimte: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Aangepaste query's uitvoeren in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -248,9 +248,9 @@ Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/a
 
 **Hulp**: Azure log Analytics-werk ruimte gebruiken voor bewaking en waarschuwingen over afwijkende activiteiten in beveiligings logboeken en gebeurtenissen die betrekking hebben op uw Azure container Registry.
 
-Azure Container Registry logboeken voor diagnostische evaluatie en controle:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry logboeken voor diagnostische evaluatie en controle: https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
-Een waarschuwing over logboek gegevens van log Analytics:https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+Een waarschuwing over logboek gegevens van log Analytics:  https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -293,11 +293,11 @@ Een waarschuwing over logboek gegevens van log Analytics:https://docs.microsoft.
 
 Voor elk Azure container Registry moet u bijhouden of het ingebouwde beheerders account is in-of uitgeschakeld. Schakel het account uit wanneer het niet wordt gebruikt.
 
-Een directory-rol verkrijgen in azure AD met Power shell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Een directory-rol verkrijgen in azure AD met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Leden van een directory-rol in azure AD ophalen met Power shell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Leden van een directory-rol in azure AD ophalen met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-Azure Container Registry-beheerders account:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
+Azure Container Registry-beheerders account:  https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
 
 
 **Azure Security Center bewaking**: Ja
@@ -310,7 +310,7 @@ Azure Container Registry-beheerders account:https://docs.microsoft.com/azure/con
 
 Als het standaard beheerders account van een Azure container Registry is ingeschakeld, worden er automatisch complexe wacht woorden gemaakt en moeten ze worden gedraaid. Schakel het account uit wanneer het niet wordt gebruikt.
 
-Azure Container Registry-beheerders account:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
+Azure Container Registry-beheerders account: https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
 
 
 
@@ -324,9 +324,9 @@ Azure Container Registry-beheerders account:https://docs.microsoft.com/azure/con
 
 Maak ook procedures om het ingebouwde beheerders account van een container register in te scha kelen. Schakel het account uit wanneer het niet wordt gebruikt.
 
-Meer informatie over Azure Security Center identiteit en toegang:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Meer informatie over Azure Security Center identiteit en toegang:  https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Azure Container Registry-beheerders account:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
+Azure Container Registry-beheerders account:  https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
 
 
 
@@ -340,9 +340,9 @@ Azure Container Registry-beheerders account:https://docs.microsoft.com/azure/con
 
 Gebruik voor individuele toegang tot het container register afzonderlijke aanmeldingen die zijn geïntegreerd met Azure Active Directory.
 
-Meer informatie over eenmalige aanmelding met Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Meer informatie over eenmalige aanmelding met Azure AD:  https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-Afzonderlijke aanmelding bij een container register:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#individual-login-with-azure-ad
+Afzonderlijke aanmelding bij een container register:  https://docs.microsoft.com/azure/container-registry/container-registry-authentication#individual-login-with-azure-ad
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -353,9 +353,9 @@ Afzonderlijke aanmelding bij een container register:https://docs.microsoft.com/a
 
 **Hulp**: Schakel Azure Active Directory (Azure AD) multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identiteit en toegang bewaken in Azure Security Center:  https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
 **Azure Security Center bewaking**: Ja
@@ -366,9 +366,9 @@ Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.co
 
 **Richt lijnen**: gebruik paw's (privileged Access workstations) met MFA dat is geconfigureerd om Azure-resources aan te melden en te configureren.
 
-Meer informatie over privileged Access workstations:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Meer informatie over privileged Access workstations:  https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 **Azure Security Center bewaking**: n.v.t.
@@ -379,9 +379,9 @@ MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authe
 
 **Hulp**: gebruik Azure Active Directory (Azure AD)-beveiligings rapporten voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten:  https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-De identiteits-en toegangs activiteit van gebruikers controleren in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+De identiteits-en toegangs activiteit van gebruikers controleren in Azure Security Center:  https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -392,7 +392,7 @@ De identiteits-en toegangs activiteit van gebruikers controleren in Azure Securi
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Benoemde locaties configureren in Azure:  https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -403,7 +403,7 @@ Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-
 
 **Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-Een Azure AD-exemplaar maken en configureren:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Een Azure AD-exemplaar maken en configureren: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -414,9 +414,9 @@ Een Azure AD-exemplaar maken en configureren:https://docs.microsoft.com/azure/ac
 
 **Hulp**: Azure Active Directory (Azure AD) biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-Meer informatie over Azure AD Reporting:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Meer informatie over Azure AD Reporting:  https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure Identity Access revisies gebruiken:  https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 
 
@@ -430,7 +430,7 @@ Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Active Directory gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste waarschuwingen configureren in Log Analytics werk ruimte.
 
-Azure-activiteiten logboeken integreren in Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-activiteiten logboeken integreren in Azure Monitor:  https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -441,9 +441,9 @@ Azure-activiteiten logboeken integreren in Azure Monitor:https://docs.microsoft.
 
 **Hulp**: gebruik Azure Active Directory (Azure AD) risico-en identiteits beveiligings functies voor het configureren van automatische antwoorden op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. 
 
-Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Risico beleid voor identiteits beveiliging configureren en inschakelen:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Risico beleid voor identiteits beveiliging configureren en inschakelen: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -454,7 +454,7 @@ Risico beleid voor identiteits beveiliging configureren en inschakelen:https://d
 
 **Richt lijnen**: niet beschikbaar; Klanten-lockbox wordt momenteel niet ondersteund voor Azure Container Registry.
 
-Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -462,7 +462,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -472,11 +472,11 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 Tags en versie container installatie kopieën of andere artefacten in een REGI ster, en vergren delen van installatie kopieën of opslag plaatsen, om te helpen bij het volgen van installatie kopieën die gevoelige informatie opslaan of verwerken.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken:  https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Aanbevelingen voor het coderen en versie beheer van container installatie kopieën:https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
+Aanbevelingen voor het coderen en versie beheer van container installatie kopieën:  https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
 
-Een container installatie kopie in een Azure container Registry vergren delen:https://docs.microsoft.com/azure/container-registry/container-registry-image-lock
+Een container installatie kopie in een Azure container Registry vergren delen:  https://docs.microsoft.com/azure/container-registry/container-registry-image-lock
 
 
 
@@ -490,15 +490,15 @@ Een container installatie kopie in een Azure container Registry vergren delen:ht
 
 Resources moeten worden gescheiden door een virtueel netwerk of subnet, worden op de juiste wijze gelabeld en beveiligd door een netwerk beveiligings groep (NSG) of Azure Firewall.
 
-Aanvullende Azure-abonnementen maken:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Aanvullende Azure-abonnementen maken:  https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheer groepen maken:https://docs.microsoft.com/azure/governance/management-groups/create
+Beheer groepen maken:  https://docs.microsoft.com/azure/governance/management-groups/create
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Beperk de toegang tot een Azure container Registry met behulp van een virtueel netwerk of een firewall-regel van Azure:https://docs.microsoft.com/azure/container-registry/container-registry-vnet
+Beperk de toegang tot een Azure container Registry met behulp van een virtueel netwerk of een firewall-regel van Azure: https://docs.microsoft.com/azure/container-registry/container-registry-vnet
 
-Een NSG maken met een beveiligings configuratie:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+Een NSG maken met een beveiligings configuratie: https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 Azure Firewall implementeren:
 
@@ -520,7 +520,7 @@ https://docs.microsoft.com/azure/firewall/threat-intel
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure:  https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -533,7 +533,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-Meer informatie over versleuteling in transit met Azure:https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
+Meer informatie over versleuteling in transit met Azure:  https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
 
 
 
@@ -547,7 +547,7 @@ Meer informatie over versleuteling in transit met Azure:https://docs.microsoft.c
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -556,11 +556,11 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory (Azure AD) RBAC om de toegang tot gegevens en resources in een Azure-container register te beheren. 
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot gegevens en resources in een Azure container Registry. 
 
-RBAC configureren in Azure:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Azure RBAC configureren:  https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-Rollen en machtigingen Azure Container Registry:https://docs.microsoft.com/azure/container-registry/container-registry-roles
+Rollen en machtigingen Azure Container Registry:  https://docs.microsoft.com/azure/container-registry/container-registry-roles
 
 
 
@@ -574,7 +574,7 @@ Rollen en machtigingen Azure Container Registry:https://docs.microsoft.com/azure
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure:  https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -585,9 +585,9 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 **Hulp**: Gebruik versleuteling in rust voor alle Azure-resources. Standaard worden alle gegevens in een Azure container Registry op rest versleuteld met door micro soft beheerde sleutels.
 
-Meer informatie over versleuteling in de rest van Azure:https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
+Meer informatie over versleuteling in de rest van Azure: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
 
-Door de klant beheerde sleutels in Azure Container Registry:https://aka.ms/acr/cmk
+Door de klant beheerde sleutels in Azure Container Registry:  https://aka.ms/acr/cmk
 
 
 
@@ -599,7 +599,7 @@ Door de klant beheerde sleutels in Azure Container Registry:https://aka.ms/acr/c
 
 **Hulp**: Azure monitor verzamelt bron Logboeken (voorheen Diagnostische logboeken genoemd) voor door gebruikers gestuurde gebeurtenissen in het REGI ster. Verzamel en gebruik deze gegevens om register authenticatie gebeurtenissen te controleren en een compleet activiteiten traject te geven op register artefacten, zoals pull-en pull-gebeurtenissen, zodat u operationele problemen met uw REGI ster kunt vaststellen.
 
-Azure Container Registry logboeken voor diagnostische evaluatie en controle:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry logboeken voor diagnostische evaluatie en controle: https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -614,9 +614,9 @@ Azure Container Registry logboeken voor diagnostische evaluatie en controle:http
 
 **Richt lijnen**: Volg aanbevelingen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op uw container installatie kopieën. Implementeer optioneel oplossingen van derden vanuit Azure Marketplace om evaluatie van beveiligings problemen in de installatie kopie uit te voeren.
 
-Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren:https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations
+Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren:  https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations
 
-Azure Container Registry integratie met Security Center (preview-versie):https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+Azure Container Registry integratie met Security Center (preview-versie):  https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
 
 
 
@@ -630,7 +630,7 @@ Azure Container Registry integratie met Security Center (preview-versie):https:/
 
 Automatisch bijwerken van container installatie kopieën wanneer updates van basis installatie kopieën van het besturings systeem en andere patches worden gedetecteerd.
 
-Over updates van de basis installatie kopie voor Azure Container Registry taken:https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
+Over updates van de basis installatie kopie voor Azure Container Registry taken:  https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -641,7 +641,7 @@ Over updates van de basis installatie kopie voor Azure Container Registry taken:
 
 **Richt lijnen**: u kunt oplossingen van derden gebruiken om installatie kopieën van toepassingen te patchen.  U kunt ook Azure Container Registry taken uitvoeren om updates voor toepassings installatie kopieën in een container register te automatiseren op basis van beveiligings patches of andere updates in basis installatie kopieën.
 
-Over updates van basis installatie kopieën voor ACR-taken:https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
+Over updates van basis installatie kopieën voor ACR-taken:  https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
 
 
 
@@ -653,7 +653,7 @@ Over updates van basis installatie kopieën voor ACR-taken:https://docs.microsof
 
 **Hulp**: Integreer Azure container Registry (ACR) met Azure Security Center om het periodiek scannen van container installatie kopieën voor beveiligings problemen in te scha kelen. Implementeer optioneel oplossingen van derden vanuit Azure Marketplace voor het uitvoeren van periodieke installatie kopieën van beveiligings problemen.
 
-Azure Container Registry integratie met Security Center (preview-versie):https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+Azure Container Registry integratie met Security Center (preview-versie):  https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
 
 
 **Azure Security Center bewaking**: Ja
@@ -664,7 +664,7 @@ Azure Container Registry integratie met Security Center (preview-versie):https:/
 
 **Hulp**: Integreer Azure container Registry (ACR) met Azure Security Center om het periodiek scannen van container installatie kopieën in te scha kelen voor beveiligings problemen en om Risico's te classificeren. Implementeer optioneel oplossingen van derden vanuit Azure Marketplace voor het uitvoeren van periodieke installatie kopieën en risico classificatie.
 
-Azure Container Registry integratie met Security Center (preview-versie):https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+Azure Container Registry integratie met Security Center (preview-versie):  https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
 
 
 
@@ -682,11 +682,11 @@ Azure Container Registry integratie met Security Center (preview-versie):https:/
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-Query's maken met Azure resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure resource Graph:  https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Uw Azure-abonnementen weer geven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0 
+Uw Azure-abonnementen weer geven:  https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0 
 
-Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Meer informatie over Azure RBAC:  https://docs.microsoft.com/azure/role-based-access-control/overview
 
 
 
@@ -698,9 +698,9 @@ Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-acce
 
 **Hulp**: Azure container registry behoudt meta gegevens, inclusief tags en manifesten voor installatie kopieën in een REGI ster. Volg de aanbevolen procedures voor het labelen van artefacten.
 
-Over registers, opslag plaatsen en installatie kopieën:https://docs.microsoft.com/azure/container-registry/container-registry-concepts
+Over registers, opslag plaatsen en installatie kopieën: https://docs.microsoft.com/azure/container-registry/container-registry-concepts
 
-Aanbevelingen voor het coderen en versie beheer van container installatie kopieën:https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
+Aanbevelingen voor het coderen en versie beheer van container installatie kopieën: https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -711,9 +711,9 @@ Aanbevelingen voor het coderen en versie beheer van container installatie kopie�
 
 **Hulp**: Azure container registry behoudt meta gegevens, inclusief tags en manifesten voor installatie kopieën in een REGI ster. Volg de aanbevolen procedures voor het labelen van artefacten.
 
-Over registers, opslag plaatsen en installatie kopieën:https://docs.microsoft.com/azure/container-registry/container-registry-concepts
+Over registers, opslag plaatsen en installatie kopieën: https://docs.microsoft.com/azure/container-registry/container-registry-concepts
 
-Aanbevelingen voor het coderen en versie beheer van container installatie kopieën:https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
+Aanbevelingen voor het coderen en versie beheer van container installatie kopieën:  https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
 
 
 
@@ -735,11 +735,11 @@ Aanbevelingen voor het coderen en versie beheer van container installatie kopie�
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen hun abonnement (en).  Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren:  https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Graph:  https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -750,11 +750,11 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 **Richt lijnen**: Azure container Registry logboeken analyseren en controleren op afwijkend gedrag en regel matig de resultaten bekijken. Gebruik de Log Analytics werk ruimte van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens.
 
-Azure Container Registry logboeken voor diagnostische evaluatie en controle:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry logboeken voor diagnostische evaluatie en controle:  https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
-Meer informatie over Log Analytics-werk ruimte:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Meer informatie over Log Analytics-werk ruimte:  https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Aangepaste query's uitvoeren in Azure Monitor:  https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -763,7 +763,7 @@ Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/a
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: niet-goedgekeurde Azure-resources en software toepassingen verwijderen
 
-**Richt lijnen**: Azure Automation biedt volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van werk belastingen en resources.  U kunt uw eigen oplossing implementeren voor het verwijderen van niet-geautoriseerde Azure-resources. Een inleiding tot Azure Automation:https://docs.microsoft.com/azure/automation/automation-intro
+**Richt lijnen**: Azure Automation biedt volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van werk belastingen en resources.  U kunt uw eigen oplossing implementeren voor het verwijderen van niet-geautoriseerde Azure-resources. Een inleiding tot Azure Automation:  https://docs.microsoft.com/azure/automation/automation-intro
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -783,11 +783,11 @@ Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/a
 
 **Hulp**: Maak gebruik van Azure Policy om te beperken welke services u in uw omgeving kunt inrichten.
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy:  https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
@@ -809,7 +809,7 @@ Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com
 
 **Richt lijnen**: gebruik specifieke configuraties van het besturings systeem of bronnen van derden om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure Compute-resources te beperken.
 
-Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren:  https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 
@@ -821,7 +821,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te b
 
 **Hulp**: gebruik specifieke configuraties van besturings systemen of bronnen van derden om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure Compute-resources te beperken.
 
-Bijvoorbeeld hoe u de uitvoering van Power shell-scripts kunt beheren in Windows-omgevingen:https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
+Bijvoorbeeld hoe u de uitvoering van Power shell-scripts kunt beheren in Windows-omgevingen:  https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -832,9 +832,9 @@ Bijvoorbeeld hoe u de uitvoering van Power shell-scripts kunt beheren in Windows
 
 **Richt lijnen**: software die vereist is voor bedrijfs activiteiten, maar die een groter risico voor de organisatie kan opleveren, moet worden geïsoleerd binnen een eigen virtuele machine en/of virtueel netwerk en voldoende beveiligd zijn met een Azure firewall of netwerk beveiligings groep.
 
-Een virtueel netwerk maken:https://docs.microsoft.com/azure/virtual-network/quick-create-portal
+Een virtueel netwerk maken:  https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-Een NSG maken met een beveiligings configuratie:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+Een NSG maken met een beveiligings configuratie:  https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -849,9 +849,9 @@ Een NSG maken met een beveiligings configuratie:https://docs.microsoft.com/azure
 
 **Hulp**: gebruik Azure Policy of Azure Security Center om beveiligings configuraties voor alle Azure-resources te onderhouden.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren:  https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -862,9 +862,9 @@ Controleer de naleving van Azure-container registers met behulp van Azure Policy
 
 **Richt lijnen**: gebruik Azure Security Center aanbeveling ' Verhelp de beveiligings configuraties op uw virtual machines ' om beveiligings configuraties voor alle reken resources te onderhouden.
 
-Azure Security Center aanbevelingen bewaken:https://docs.microsoft.com/azure/security-center/security-center-recommendations
+Azure Security Center aanbevelingen bewaken:  https://docs.microsoft.com/azure/security-center/security-center-recommendations
 
-Azure Security Center aanbevelingen oplossen:https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+Azure Security Center aanbevelingen oplossen:  https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -875,11 +875,11 @@ Azure Security Center aanbevelingen oplossen:https://docs.microsoft.com/azure/se
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effecten begrijpen:  https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 
@@ -899,9 +899,9 @@ Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/poli
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-Code opslaan in azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Code opslaan in azure DevOps:  https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Documentatie voor Azure opslag plaatsen:  https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -921,9 +921,9 @@ Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/
 
 **Hulp**: gebruik Azure Policy om systeem configuraties te signasen, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren:  https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -945,9 +945,9 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 Gebruik Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in uw abonnement (en).
 
-Aanbevelingen herstellen in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+Aanbevelingen herstellen in Azure Security Center:  https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-Controleer de naleving van Azure-container registers met behulp van Azure Policy:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+Controleer de naleving van Azure-container registers met behulp van Azure Policy:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
 
 
@@ -968,13 +968,13 @@ Controleer de naleving van Azure-container registers met behulp van Azure Policy
 
 **Hulp**: gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen.
 
-Integratie met door Azure beheerde identiteiten:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integratie met door Azure beheerde identiteiten:  https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Een Key Vault maken:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Een Key Vault maken:  https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Key Vault verificatie bieden met een beheerde identiteit:https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault verificatie bieden met een beheerde identiteit:  https://docs.microsoft.com/azure/key-vault/managed-identity
 
-Gebruik een door Azure beheerde identiteit in Azure Container Registry taken:https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
+Gebruik een door Azure beheerde identiteit in Azure Container Registry taken:  https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -985,9 +985,9 @@ Gebruik een door Azure beheerde identiteit in Azure Container Registry taken:htt
 
 **Richt lijnen**: gebruik beheerde identiteiten voor het leveren van Azure-Services met een automatisch beheerde identiteit in azure AD. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-Beheerde identiteiten configureren:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Beheerde identiteiten configureren:  https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Een beheerde identiteit gebruiken om te verifiëren bij een Azure container Registry:https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity
+Een beheerde identiteit gebruiken om te verifiëren bij een Azure container Registry:  https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -998,7 +998,7 @@ Een beheerde identiteit gebruiken om te verifiëren bij een Azure container Regi
 
 **Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.
 
-Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen:  https://secdevtools.azurewebsites.net/helpcredscan.html
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1013,7 +1013,7 @@ Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.
 
 **Hulp**: gebruik micro soft antimalware voor Azure Cloud Services en virtual machines om uw resources voortdurend te controleren en te beschermen. Gebruik voor Linux een oplossing van antimalware van derden.
 
-Micro soft antimalware configureren voor Cloud Services en Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Micro soft antimalware configureren voor Cloud Services en Virtual Machines:  https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1050,7 +1050,7 @@ Scan vooraf bestanden die worden geüpload naar niet-reken resources van Azure, 
 
 Eventueel geo-replicatie van een container register voor het onderhouden van register replica's in meerdere Azure-regio's. 
 
-Geo-replicatie in Azure Container Registry:https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication
+Geo-replicatie in Azure Container Registry:  https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication
 
 
 
@@ -1064,9 +1064,9 @@ Geo-replicatie in Azure Container Registry:https://docs.microsoft.com/azure/cont
 
 Maak een back-up van door de klant beheerde sleutels in Azure Key Vault met behulp van Azure-opdracht regel Programma's of Sdk's.
 
-Container installatie kopieën importeren in een container register:https://docs.microsoft.com/azure/container-registry/container-registry-import-images
+Container installatie kopieën importeren in een container register:  https://docs.microsoft.com/azure/container-registry/container-registry-import-images
 
-Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1077,7 +1077,7 @@ Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure:https://docs.mi
 
 **Richt lijnen**: het herstellen van back-ups van door de klant beheerde sleutels in azure Key Vault met behulp van Azure-opdracht regel Programma's of sdk's testen.
 
-Azure Key Vault sleutels herstellen in Azure:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+Azure Key Vault sleutels herstellen in Azure:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1088,7 +1088,7 @@ Azure Key Vault sleutels herstellen in Azure:https://docs.microsoft.com/powershe
 
 **Hulp**: u kunt het tijdelijk verwijderen in azure Key Vault inschakelen om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-Het inschakelen van zacht verwijderen in Key Vault:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Het inschakelen van zacht verwijderen in Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1103,13 +1103,13 @@ Het inschakelen van zacht verwijderen in Key Vault:https://docs.microsoft.com/az
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-Werk stroom automatisering configureren in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Werk stroom automatisering configureren in Azure Security Center:  https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces:  https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Micro soft Security Response Center anatomie van een incident:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Micro soft Security Response Center anatomie van een incident:  https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten:  https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 
 
@@ -1132,7 +1132,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem op een gewone uitgebracht te testen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
 
-Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:  https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1143,7 +1143,7 @@ Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en u
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens van de klant zijn geopend door een onrecht matige of niet-gemachtigde partij.  Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-De Azure Security Center Security-contact persoon instellen:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+De Azure Security Center Security-contact persoon instellen:  https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1154,9 +1154,9 @@ De Azure Security Center Security-contact persoon instellen:https://docs.microso
 
 **Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
 
-Continue export configureren:https://docs.microsoft.com/azure/security-center/continuous-export
+Continue export configureren:  https://docs.microsoft.com/azure/security-center/continuous-export
 
-Waarschuwingen streamen naar Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Waarschuwingen streamen naar Azure Sentinel:  https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1167,7 +1167,7 @@ Waarschuwingen streamen naar Azure Sentinel:https://docs.microsoft.com/azure/sen
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
 
-Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com/azure/security-center/workflow-automation
+Werk stroom automatisering en Logic Apps configureren:  https://docs.microsoft.com/azure/security-center/workflow-automation
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1180,9 +1180,9 @@ Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
 
-**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:  https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen:  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met een Azure Data Factory beheerde VNet-toewijzings gegevens stroom
-description: Deze zelf studie bevat stapsgewijze instructies voor het gebruik van Azure Data Factory om gegevens te transformeren met toewijzings gegevens stroom
+title: Gegevens transformeren met een Azure Data Factory stroom voor het toewijzen van beheerde virtuele netwerk gegevens
+description: In deze zelf studie vindt u stapsgewijze instructies voor het gebruik van Azure Data Factory om gegevens te transformeren met toewijzing van gegevens stromen.
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
@@ -8,20 +8,20 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
-ms.openlocfilehash: 5515f6c4dfbc5d3c0e391373e763597d7fdc89ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d752b747a0156bcef587f81ee421c55a6de81e17
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531755"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079469"
 ---
-# <a name="transform-data-securely-using-mapping-data-flows"></a>Gegevens veilig transformeren met toewijzing van gegevens stromen
+# <a name="transform-data-securely-by-using-mapping-data-flow"></a>Gegevens veilig transformeren met behulp van gegevens stroom toewijzen
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Zie [Inleiding tot Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) als u niet bekend bent met Azure Data Factory.
 
-In deze zelf studie gebruikt u de Azure Data Factory gebruikers interface (UX) om een pijp lijn te maken waarmee gegevens worden gekopieerd en getransformeerd **van een Azure data Lake Storage (ADLS) Gen2-bron naar een ADLS Gen2 Sink (zowel toegang verlenen aan geselecteerde netwerken)** met toewijzing van gegevens stroom in [Azure Data Factory beheerde Virtual Network](managed-virtual-network-private-endpoint.md). Het configuratie patroon in deze zelf studie kan worden uitgebreid bij het transformeren van gegevens met behulp van de toewijzings gegevens stroom.
+In deze zelf studie gebruikt u de Data Factory gebruikers interface (UI) om een pijp lijn te maken waarmee gegevens *van een Azure data Lake Storage Gen2 bron worden gekopieerd en getransformeerd naar een Data Lake Storage Gen2 Sink (zowel toegang verlenen aan geselecteerde netwerken)* via toewijzing van gegevens stroom in [Data Factory beheerde Virtual Network](managed-virtual-network-private-endpoint.md). U kunt in deze zelf studie het configuratie patroon uitbreiden wanneer u gegevens transformeert met behulp van gegevens stroom toewijzen.
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -31,50 +31,53 @@ In deze zelfstudie voert u de volgende stappen uit:
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties.
 > * De uitvoering van de pijplijn testen.
-> * Een gegevens stroom activiteit bewaken
+> * Een gegevens stroom activiteit bewaken.
 
 ## <a name="prerequisites"></a>Vereisten
 * **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslagaccount**. U gebruikt ADLS-opslag als *bron* -en *sink* -gegevens opslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) om een account te maken. **Zorg ervoor dat het opslag account alleen toegang toestaat vanuit geselecteerde netwerken.** 
+* **Azure-opslagaccount**. U gebruikt Data Lake Storage als *bron* -en *sink* -gegevens opslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) om een account te maken. *Zorg ervoor dat het opslag account alleen toegang toestaat vanuit geselecteerde netwerken.* 
 
-Het bestand dat u in deze zelf studie transformeert, is MoviesDB.csv, dat u [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kunt vinden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met de Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
+Het bestand dat in deze zelf studie wordt getransformeerd, is moviesDB.csv, dat u kunt vinden op deze [github-inhouds site](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om deze lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met de Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). In de voor beelden wordt verwezen naar een container met de naam **Sample-Data**.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp lijn te maken in de data factory.
+In deze stap maakt u een data factory en opent u de Data Factory-gebruikers interface om een pijp lijn te maken in de data factory.
 
-1. Open **Microsoft Edge** of **Google Chrome**. Momenteel wordt Data Factory gebruikers interface alleen ondersteund in de micro soft Edge-en Google Chrome-webbrowsers.
-2. Selecteer in het linkermenu **Een resource maken** > **Analyse** > **Data Factory**.
-3. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
+1. Open Microsoft Edge of Google Chrome. Op dit moment ondersteunen alleen de webbrowsers van micro soft Edge en Google Chrome de Data Factory-gebruikers interface.
+1. Selecteer in het linkermenu **Een resource maken** > **Analyse** > **Data Factory**.
+1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
 
-   De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (Gebruik dan bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de data factory moet *wereldwijd uniek* zijn. Als er een fout bericht over de naam waarde wordt weer gegeven, voert u een andere naam in voor de data factory (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
-4. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken.
-5. Voer een van de volgende stappen uit voor **Resourcegroep**:
+1. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken.
+1. Voer een van de volgende stappen uit voor **Resourcegroep**:
 
-    a. Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
-
-    b. Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in. 
+    * Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
+    * Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in. 
          
     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie. 
-6. Selecteer **V2** onder **Versie**.
-7. Selecteer onder **Locatie** een locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. Gegevens archieven (bijvoorbeeld Azure Storage en SQL Database) en berekeningen (zoals Azure HDInsight) die door de data factory worden gebruikt, kunnen zich in andere regio's bevindt.
+1. Selecteer **V2** onder **Versie**.
+1. Selecteer onder **Locatie** een locatie voor de data factory. Alleen locaties die worden ondersteund, worden weer gegeven in de vervolg keuzelijst. Gegevens archieven (bijvoorbeeld Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die door de data factory worden gebruikt, kunnen zich in andere regio's bevindt.
 
-8. Selecteer **Maken**.
+1. Selecteer **Maken**.
+1. Nadat het maken is voltooid, ziet u de melding in het meldingen centrum. Selecteer **Ga naar resource** om naar de pagina **Data Factory** te gaan.
+1. Selecteer de tegel **Maken en controleren** om de Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad.
 
-9. Als het maken is voltooid, ziet u de melding in het meldingencentrum. Selecteer **Naar resource gaan** om naar de pagina Data factory te gaan.
-10. Selecteer de tegel **Maken en controleren** om de Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad.
+## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Een Azure IR maken in Data Factory beheerde Virtual Network
+In deze stap maakt u een Azure IR en schakelt u Data Factory beheerde Virtual Network in.
 
-## <a name="create-an-azure-integration-runtime-in-adf-managed-virtual-network"></a>Een Azure Integration Runtime maken in een door ADF beheerde Virtual Network
-In deze stap maakt u een Azure Integration Runtime en schakelt u beheerde Virtual Network in.
+1. Ga in de Data Factory Portal naar **beheren**en selecteer **Nieuw** om een nieuwe Azure IR te maken.
 
-1. Ga in de ADF-Portal naar **Manage hub** en klik op **New** om een nieuwe Azure Integration runtime te maken.
-   ![Nieuwe Azure Integration Runtime maken](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-2. Kies voor het maken van een **Azure** Integration runtime.
-   ![Nieuwe Azure Integration Runtime](./media/tutorial-copy-data-portal-private/azure-ir.png)
-3. Schakel **Virtual Network**in.
-   ![Nieuwe Azure Integration Runtime](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
-4. Selecteer **Maken**.
+   ![Scherm opname van het maken van een nieuwe Azure IR.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+1. Selecteer de optie **Azure** IR.
+
+   ![Scherm opname waarin een nieuwe Azure IR wordt weer gegeven.](./media/tutorial-copy-data-portal-private/azure-ir.png)
+
+1. Selecteer onder **virtuele netwerk configuratie (preview)** de optie **inschakelen**.
+
+   ![Scherm opname van het inschakelen van een nieuwe Azure IR.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+
+1. Selecteer **Maken**.
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Een pijp lijn maken met een activiteit voor gegevens stromen
 
@@ -82,103 +85,105 @@ In deze stap maakt u een pijp lijn die een gegevens stroom activiteit bevat.
 
 1. Selecteer op de pagina **Aan de slag** de optie **Pijplijn maken**.
 
-   ![Pijplijn maken](./media/doc-common-process/get-started-page.png)
+   ![Scherm opname waarin een pijp lijn wordt weer gegeven.](./media/doc-common-process/get-started-page.png)
 
-1. Voer in het deel venster **Eigenschappen** voor de pijp lijn **TransformMovies** in als **naam** van de pijp lijn.
-1. Schuif in de bovenste balk van de fabriek de schuif regelaar voor **fout opsporing van gegevens stromen** aan. In de modus voor fout opsporing kunt u de transformatie logica interactief testen op een live Spark-cluster. Gegevens stroom clusters nemen 5-7 minuten in beslag en gebruikers worden aanbevolen om debug eerst in te scha kelen als de ontwikkeling van gegevens stromen wordt gepland. Zie [debug mode (foutopsporingsmodus](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode)) voor meer informatie.
+1. Voer in het deel venster Eigenschappen voor de pijp lijn **TransformMovies** in voor de naam van de pijp lijn.
+1. Schuif in de bovenste balk van de fabriek de schuif regelaar voor **fout opsporing van gegevens stromen** aan. In de modus voor fout opsporing kunt u de transformatie logica interactief testen op een live Spark-cluster. Gegevens stroom clusters nemen vijf tot zeven minuten in beslag. Schakel de **fout opsporing van gegevens stromen** eerst in als u de ontwikkeling van gegevens stromen wilt plannen. Zie [debug mode (foutopsporingsmodus](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode)) voor meer informatie.
 
-    ![Fout opsporing voor gegevens stromen](media/tutorial-data-flow-private/dataflow-debug.png)
-1. Vouw in het deel venster **activiteiten** de accordeon **verplaatsen en transformeren** uit. Sleep de activiteit **gegevens stroom** van het deel venster naar het pijp lijn-canvas.
+    ![Scherm opname van de schuif regelaar voor fout opsporing van gegevens stromen.](media/tutorial-data-flow-private/dataflow-debug.png)
+1. Vouw in het deel venster **activiteiten** het item **verplaatsen en transformeren**uit. Sleep de activiteit **gegevens stroom** van het deel venster naar het pijp lijn-canvas.
 
-1. Selecteer in het pop-upvenster **gegevens stroom toevoegen** de optie **nieuwe gegevens stroom maken** en selecteer vervolgens **gegevens stroom toewijzen**. Klik op **OK** wanneer u klaar bent.
+1. Selecteer in het pop-upvenster **gegevens stroom toevoegen** de optie **nieuwe gegevens stroom maken** en selecteer vervolgens **gegevens stroom toewijzen**. Selecteer **OK** wanneer u klaar bent.
 
-    ![Toewijzingsgegevensstroom](media/tutorial-data-flow-private/mapping-dataflow.png)
+    ![Scherm opname van de toewijzings gegevens stroom.](media/tutorial-data-flow-private/mapping-dataflow.png)
 
 1. Geef uw gegevensstroom **TransformMovies** een naam in het deel venster Eigenschappen.
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Transformatie logica bouwen in het canvas voor gegevens stromen
 
-Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas voor gegevens stromen verzonden. In deze stap bouwt u een gegevens stroom die de moviesDB.csv in ADLS-opslag neemt en de gemiddelde beoordeling van comedies van 1910 tot 2000 samenvoegt. Vervolgens schrijft u dit bestand terug naar de ADLS-opslag.
+Nadat u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas voor gegevens stromen verzonden. In deze stap maakt u een gegevens stroom die het moviesDB.csv bestand in Data Lake Storage neemt en de gemiddelde waardering van comedies van 1910 tot 2000 samenvoegt. Vervolgens schrijft u dit bestand terug naar Data Lake Storage.
 
 ### <a name="add-the-source-transformation"></a>De bron transformatie toevoegen
 
-In deze stap stelt u Azure Data Lake Storage Gen2 in als bron.
+In deze stap stelt u Data Lake Storage Gen2 in als een bron.
 
-1. Voeg in het canvas gegevens stroom een bron toe door te klikken op het vak **bron toevoegen** .
+1. Voeg in het canvas voor gegevens stroom een bron toe door het vak **bron toevoegen** te selecteren.
 
-1. Geef uw bron **MoviesDB**een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
+1. Geef uw bron **MoviesDB**een naam. Selecteer **Nieuw** om een nieuwe bron-gegevensset te maken.
 
-1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
+1. Selecteer **Azure data Lake Storage Gen2**en selecteer vervolgens **door gaan**.
 
-1. Kies **DelimitedText**. Klik op door gaan.
+1. Selecteer **DelimitedText**en selecteer vervolgens **door gaan**.
 
-1. Geef uw gegevensset een naam **MoviesDB**. Kies in de vervolg keuzelijst gekoppelde service de optie **Nieuw**.
+1. Geef uw gegevensset een naam **MoviesDB**. Selecteer in de vervolg keuzelijst gekoppelde service de optie **Nieuw**.
 
-1. Typ in het scherm gekoppelde service maken de naam van uw ADLS Gen2-gekoppelde service **ADLSGen2** en geef uw verificatie methode op. Voer vervolgens uw verbindings referenties in. In deze zelf studie gebruiken we de account sleutel om verbinding te maken met het opslag account. 
+1. Geef in het scherm gekoppelde service maken de naam op van de Data Lake Storage Gen2 gekoppelde service **ADLSGen2** en de verificatie methode op. Voer vervolgens uw verbindings referenties in. In deze zelf studie gebruiken we de **account sleutel** om verbinding te maken met het opslag account. 
 
-1. Zorg ervoor dat u **interactieve ontwerp**functie inschakelt. Het kan ongeveer 1 minuut duren voordat deze is ingeschakeld.
+1. Zorg ervoor dat u **interactieve ontwerp**functie inschakelt. Het kan een minuut duren voordat deze is ingeschakeld.
 
-    ![Interactief ontwerpen](./media/tutorial-data-flow-private/interactive-authoring.png)
+    ![Scherm opname waarin interactieve ontwerpen worden weer gegeven.](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. Selecteer **verbinding testen**, de fout moet mislukken omdat het opslag account geen toegang inschakelt zonder een persoonlijk eind punt te maken en goed te keuren. In het fout bericht wordt een koppeling weer gegeven om een **persoonlijk eind punt** te maken dat u kunt volgen om een beheerd persoonlijk eind punt te maken. *U kunt ook rechtstreeks naar het tabblad beheren gaan en de instructies in [deze sectie](#create-a-managed-private-endpoint) volgen om een beheerd privé-eind punt te maken.*
+1. Selecteer **Verbinding testen**. Het moet mislukken omdat het opslag account geen toegang tot de server inschakelt zonder een persoonlijk eind punt te maken en goed te keuren. In het foutbericht wordt een koppeling weergegeven om een privé-eindpunt te maken dat u kunt volgen om een beheerd privé-eindpunt te maken. U kunt ook rechtstreeks naar het tabblad **beheren** gaan en de instructies in [deze sectie](#create-a-managed-private-endpoint) volgen om een beheerd privé-eind punt te maken.
 
-1. Houd het dialoog venster geopend en ga vervolgens naar het hierboven geselecteerde opslag account.
+1. Houd het dialoog venster geopend en ga vervolgens naar uw opslag account.
 
-1. Volg de instructies in [deze sectie](#approval-of-a-private-link-in-storage-account) om de persoonlijke koppeling goed te keuren.
+1. Volg de instructies in [deze sectie](#approval-of-a-private-link-in-a-storage-account) om de persoonlijke koppeling goed te keuren.
 
-1. Ga terug naar het dialoog venster. **Test de verbinding** opnieuw en selecteer **maken** om de gekoppelde service te implementeren.
+1. Ga terug naar het dialoogvenster. Selecteer opnieuw **verbinding testen** en selecteer **maken** om de gekoppelde service te implementeren.
 
-1. Wanneer u weer op het scherm gegevensset maken hebt geklikt, voert u in waar het bestand zich bevindt in het veld **bestandspad** . In deze zelf studie wordt het bestand moviesDB.csv bevindt zich in container-voorbeeld gegevens. Controleer de **eerste rij als koptekst**, terwijl het bestand kopteksten bevat. Selecteer **in verbinding/archief** om het header-schema rechtstreeks te importeren uit het bestand in de opslag. Klik op OK wanneer u klaar bent.
+1. Voer in het scherm gegevensset maken de locatie in waar uw bestand zich bevindt in het veld **bestandspad** . In deze zelf studie wordt het bestand moviesDB.csv bevindt zich in de container **-voorbeeld gegevens**. Schakel het selectie vakje **eerste rij als koptekst** in, omdat het bestand kopteksten bevat. Selecteer **in verbinding/archief** om het header-schema rechtstreeks te importeren uit het bestand in de opslag. Selecteer **OK** wanneer u klaar bent.
 
-    ![Bronpad](media/tutorial-data-flow-private/source-file-path.png)
+    ![Scherm afbeelding waarin het bronpad wordt weer gegeven.](media/tutorial-data-flow-private/source-file-path.png)
 
-1. Als het cluster voor fout opsporing is gestart, gaat u naar het tabblad **voor beeld van gegevens** van de bron transformatie en klikt u op **vernieuwen** om een moment opname van de gegevens op te halen. U kunt gegevens voorbeeld gebruiken om te controleren of uw trans formatie correct is geconfigureerd.
+1. Als het cluster voor fout opsporing is gestart, gaat u naar het tabblad **voor beeld van gegevens** van de bron transformatie en selecteert u **vernieuwen** om een moment opname van de gegevens op te halen. U kunt het voor beeld van de gegevens gebruiken om te controleren of uw trans formatie correct is geconfigureerd.
 
-    ![Voorbeeld van gegevens](media/tutorial-data-flow-private/data-preview.png)
+    ![Scherm opname van het tabblad voor het voor beeld van de gegevens.](media/tutorial-data-flow-private/data-preview.png)
 
-#### <a name="create-a-managed-private-endpoint"></a>Een beheerd privé-eind punt maken
+#### <a name="create-a-managed-private-endpoint"></a>Een beheerd privé-eindpunt maken
 
-Als u tijdens het testen van de bovenstaande verbinding niet op de Hyper Link hebt geklikt, volgt u het volgende pad. Nu moet u een beheerd privé-eind punt maken dat u maakt verbinding met de gekoppelde service die hierboven is gemaakt.
+Als u de Hyper link niet hebt gebruikt tijdens het testen van de voor gaande verbinding, volgt u het pad. Nu moet u een beheerd persoonlijk eind punt maken dat u gaat verbinden met de gekoppelde service die u hebt gemaakt.
 
-1. Ga naar het tabblad beheren.
-> [!NOTE]
-> Het tabblad beheren is mogelijk niet beschikbaar voor alle exemplaren van data factory. Als u dit niet ziet, hebt u nog steeds toegang tot persoonlijke eind punten via het tabblad '**Auteur**'--> '**verbindingen**'--> '**persoonlijk eind punt**'
-1. Ga naar de sectie beheerde privé-eind punten.
-1. Selecteer **+ Nieuw** onder beheerde persoonlijke eind punten.
+1. Ga naar het tabblad **beheren** .
 
-    ![Nieuw beheerd persoonlijk eind punt](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
+   > [!NOTE]
+   > Het tabblad **beheren** is mogelijk niet beschikbaar voor alle exemplaren van Data Factory. Als u deze niet ziet, kunt u toegang krijgen tot persoonlijke eind punten door **Auteur**-verbindingen te selecteren  >  **Connections**  >  **persoonlijk eind punt**.
 
-1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en selecteer **door gaan**.
-1. Voer de naam in van het opslag account dat u hierboven hebt gemaakt.
+1. Ga naar de sectie **beheerde privé-eind punten** .
+1. Selecteer **+ Nieuw** onder **beheerde persoonlijke eind punten**.
+
+    ![Scherm afbeelding met de knop Nieuw privé-eind punten weer geven.](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
+
+1. Selecteer de tegel **Azure data Lake Storage Gen2** in de lijst en selecteer **door gaan**.
+1. Voer de naam in van het opslag account dat u hebt gemaakt.
 1. Selecteer **Maken**.
-1. U moet zien nadat u enkele seconden hebt gewacht dat de persoonlijke koppeling een goed keuring vereist.
-1. Selecteer het persoonlijke eind punt dat u hierboven hebt gemaakt. U ziet een Hyper link waarmee u het persoonlijke eind punt kunt goed keuren op het niveau van het opslag account.
+1. Na een paar seconden ziet u dat er een goed keuring is vereist voor de persoonlijke koppeling die is gemaakt.
+1. Selecteer het persoonlijke eind punt dat u hebt gemaakt. U ziet een Hyper link waarmee u het persoonlijke eind punt kunt goed keuren op het niveau van het opslag account.
 
-    ![Privé-eind punt beheren](./media/tutorial-data-flow-private/manage-private-endpoint.png) 
+    ![Scherm opname van het deel venster privé-eind punt beheren.](./media/tutorial-data-flow-private/manage-private-endpoint.png) 
 
-#### <a name="approval-of-a-private-link-in-storage-account"></a>Goed keuring van een persoonlijke koppeling in het opslag account
+#### <a name="approval-of-a-private-link-in-a-storage-account"></a>Goed keuring van een persoonlijke koppeling in een opslag account
 
-1. Ga in het opslag account naar **verbindingen voor privé-eind punten** in het gedeelte instellingen.
+1. Ga in het opslag account naar **verbindingen met privé-eind punten** in de sectie **instellingen** .
 
-1. Tik het persoonlijke eind punt dat u hierboven hebt gemaakt en selecteer **goed keuren**.
+1. Schakel het selectie vakje in op het persoonlijke eind punt dat u hebt gemaakt en selecteer **goed keuren**.
 
-    ![Persoonlijk eind punt goed keuren](./media/tutorial-data-flow-private/approve-private-endpoint.png)
+    ![Scherm opname van de knop voor goed keuring van privé-eind punten.](./media/tutorial-data-flow-private/approve-private-endpoint.png)
 
-1. Voeg een beschrijving toe en klik op **Ja**.
-1. Ga terug naar de sectie **beheerde persoonlijke eind punten** van het tabblad **beheren** in azure Data Factory.
-1. Het duurt ongeveer 1 minuut voordat de goed keuring voor uw persoonlijke eind punt wordt weer gegeven.
+1. Voeg een beschrijving toe en selecteer **Ja**.
+1. Ga terug naar de sectie **beheerde persoonlijke eind punten** van het tabblad **beheren** in Data Factory.
+1. Na ongeveer een minuut ziet u dat de goed keuring voor uw persoonlijke eind punt wordt weer gegeven.
 
 ### <a name="add-the-filter-transformation"></a>De filter transformatie toevoegen
 
-1. Klik naast het bron knooppunt op het canvas voor gegevens stromen op het plus pictogram om een nieuwe trans formatie toe te voegen. De eerste trans formatie die u toevoegt, is een **filter**.
+1. Selecteer het plus pictogram naast het bron knooppunt op het canvas voor gegevens stromen om een nieuwe trans formatie toe te voegen. De eerste trans formatie die u toevoegt, is een **filter**.
 
-    ![Filter toevoegen](media/tutorial-data-flow-private/add-filter.png)
-1. Geef een naam op voor de filter transformatie **FilterYears**. Klik op het expressievak naast **filteren op** om de opbouw functie voor expressies te openen. Hier geeft u uw filter voorwaarde op.
+    ![Scherm opname van het toevoegen van een filter.](media/tutorial-data-flow-private/add-filter.png)
+1. Geef een naam op voor de filter transformatie **FilterYears**. Selecteer het expressievak naast **filteren op** om de opbouw functie voor expressies te openen. Hier geeft u uw filter voorwaarde op.
 
-    ![Jaren filteren](media/tutorial-data-flow-private/filter-years.png)
+    ![Scherm opname van FilterYears.](media/tutorial-data-flow-private/filter-years.png)
 1. Met de opbouw functie voor de data flow-expressie kunt u interactief expressies bouwen voor gebruik in verschillende trans formaties. Expressies kunnen ingebouwde functies, kolommen uit het invoer schema en door de gebruiker gedefinieerde para meters bevatten. Zie de [opbouw functie voor data flow](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder)-expressies voor meer informatie over het maken van expressies.
 
-    * In deze zelf studie wilt u de films van genre Comedy filteren die zijn uitgekomen tussen de jaren 1910 en 2000. Als jaar momenteel een teken reeks is, moet u deze converteren naar een geheel getal met behulp van de ```toInteger()``` functie. Gebruik de Opera tors groter dan of gelijk aan (>=) en kleiner dan of gelijk aan (<=) om te vergelijken met de letterlijke jaar waarden 1910 en 200-. Voeg deze expressies samen met de operator and (&&). De expressie wordt als volgt opgehaald:
+    * In deze zelf studie wilt u films filteren in het Comedy-genre dat is opgetreden tussen de jaren 1910 en 2000. Omdat het jaar momenteel een teken reeks is, moet u deze converteren naar een geheel getal met behulp van de ```toInteger()``` functie. Gebruik de Opera tors groter dan of gelijk aan (>=) en kleiner dan of gelijk aan (<=) om te vergelijken met de letterlijke jaar waarden 1910 en 2000. Voeg deze expressies samen met de operator and (&&). De expressie wordt als volgt opgehaald:
 
         ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
@@ -186,69 +191,69 @@ Als u tijdens het testen van de bovenstaande verbinding niet op de Hyper Link he
 
         ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
-    * Als u een debug-cluster hebt geactiveerd, kunt u uw logica controleren door op **vernieuwen** te klikken om de expressie-uitvoer te bekijken in vergelijking met de gebruikte invoer. Er is meer dan één recht antwoord op hoe u deze logica kunt uitvoeren met behulp van de data flow-expressie taal.
+    * Als u een debug-cluster hebt geactiveerd, kunt u uw logica controleren door **vernieuwen** te selecteren om de expressie-uitvoer te bekijken vergeleken met de gebruikte invoer. Er is meer dan één recht antwoord op hoe u deze logica kunt uitvoeren met behulp van de data flow-expressie taal.
 
-        ![Filterexpressie](media/tutorial-data-flow-private/filter-expression.png)
+        ![Scherm opname waarin de filter expressie wordt weer gegeven.](media/tutorial-data-flow-private/filter-expression.png)
 
-    * Klik op **opslaan en volt ooien** zodra u klaar bent met de expressie.
+    * Selecteer **opslaan en volt ooien** nadat u klaar bent met uw expressie.
 
 1. Een **voor beeld** van een gegevens ophalen om te controleren of het filter goed werkt.
 
-    ![Voorbeeld weergave van gegevens filteren](media/tutorial-data-flow-private/filter-data.png)
+    ![Scherm opname van de gefilterde voorbeeld gegevens.](media/tutorial-data-flow-private/filter-data.png)
 
 ### <a name="add-the-aggregate-transformation"></a>De cumulatieve trans formatie toevoegen
 
 1. De volgende trans formatie die u toevoegt, is een **statistische** trans formatie onder **schema wijzigings functie**.
 
-    ![Aggregatie toevoegen](media/tutorial-data-flow-private/add-aggregate.png)
-1. Geef uw aggregatie transformatie **AggregateComedyRatings**een naam. Selecteer in het tabblad **groeperen op** **jaar** in de vervolg keuzelijst om de aggregaties te groeperen op het jaar dat de film is uitkwam.
+    ![Scherm opname van het toevoegen van de samen voeging.](media/tutorial-data-flow-private/add-aggregate.png)
+1. Geef uw aggregatie transformatie **AggregateComedyRating**een naam. Selecteer op het tabblad **groeperen op** **jaar** in de vervolg keuzelijst om de aggregaties te groeperen op het jaar dat de film is binnengekomen.
 
-    ![Statistische groep](media/tutorial-data-flow-private/group-by-year.png)
-1. Ga naar het tabblad **aggregaties** . Geef in het vak links de cumulatieve kolom **AverageComedyRating**. Klik op het vak rechter expressie om de statistische expressie op te geven via de opbouw functie voor expressies.
+    ![Scherm opname van de groep samen voegen.](media/tutorial-data-flow-private/group-by-year.png)
+1. Ga naar het tabblad **aggregaties** . Geef in het vak links de cumulatieve kolom **AverageComedyRating**. Selecteer het vak juiste expressie om de statistische expressie via de opbouw functie voor expressies in te voeren.
 
-    ![Statistische kolom naam](media/tutorial-data-flow-private/name-column.png)
-1. Gebruik de functie aggregate om het gemiddelde van de kolom **classificatie**te berekenen ```avg()``` . Als **classificatie** is een teken reeks die ```avg()``` in een numerieke invoer neemt, moeten we de waarde converteren naar een getal via de ```toInteger()``` functie. De expressie ziet er als volgt uit:
+    ![Scherm afbeelding met de naam van de cumulatieve kolom.](media/tutorial-data-flow-private/name-column.png)
+1. Gebruik de functie aggregate om het gemiddelde van de kolom **classificatie**te berekenen ```avg()``` . Omdat **classificatie** een teken reeks is en ```avg()``` een numerieke invoer opneemt, moeten we de waarde converteren naar een getal via de ```toInteger()``` functie. Deze expressie ziet er als volgt uit:
 
     ```avg(toInteger(Rating))```
 
-    Klik op **opslaan en volt ooien** wanneer u klaar bent.
+1. Selecteer **opslaan en volt ooien** nadat u klaar bent.
 
-    ![Samen voegen opslaan](media/tutorial-data-flow-private/save-aggregate.png)
+    ![Scherm opname van het opslaan van de samen voeging.](media/tutorial-data-flow-private/save-aggregate.png)
 1. Ga naar het tabblad voor **beeld van gegevens** om de trans formatie-uitvoer weer te geven. U ziet slechts twee kolommen, **jaar** en **AverageComedyRating**.
 
 ### <a name="add-the-sink-transformation"></a>De Sink-trans formatie toevoegen
 
 1. Vervolgens wilt u een **sink** -trans formatie toevoegen onder **bestemming**.
 
-    ![Sink toevoegen](media/tutorial-data-flow-private/add-sink.png)
-1. Geef **uw Sink een naam.** Klik op **Nieuw** om uw Sink-gegevensset te maken.
+    ![Scherm opname van het toevoegen van een sink.](media/tutorial-data-flow-private/add-sink.png)
+1. Geef **uw Sink een naam.** Selecteer **Nieuw** om uw Sink-gegevensset te maken.
 
-    ![Sink maken](media/tutorial-data-flow-private/create-sink.png)
-1. Kies op de pagina nieuwe gegevensset de optie **Azure data Lake Storage Gen2**. Klik op door gaan.
+    ![Scherm opname van het maken van een sink.](media/tutorial-data-flow-private/create-sink.png)
+1. Selecteer op de pagina **nieuwe gegevensset** de optie **Azure data Lake Storage Gen2** en selecteer vervolgens **door gaan**.
 
-1. Kies op de pagina indeling selecteren de optie **DelimitedText**. Klik op door gaan.
+1. Selecteer op de pagina **indeling selecteren** de optie **DelimitedText** en selecteer vervolgens **door gaan**.
 
-1. Geef uw Sink-gegevensset een naam **MoviesSink**. Kies voor gekoppelde service dezelfde ADLSGen2 gekoppelde service die u hebt gemaakt voor de bron transformatie. Voer een uitvoermap in om uw gegevens naar te schrijven. In deze zelf studie schrijven we naar map ' uitvoer ' in container ' voor beeld-gegevens '. De map hoeft niet vooraf te bestaan en kan dynamisch worden gemaakt. Stel de **eerste rij als koptekst** in op True en selecteer **geen** voor het **import schema**. Klik op OK.
+1. Geef uw Sink-gegevensset een naam **MoviesSink**. Kies voor gekoppelde service dezelfde **ADLSGen2** gekoppelde service die u hebt gemaakt voor de bron transformatie. Voer een uitvoermap in om uw gegevens naar te schrijven. In deze zelf studie schrijven we naar de **uitvoer** van de map in de container **-voorbeeld gegevens**. De map hoeft niet vooraf te bestaan en kan dynamisch worden gemaakt. Schakel het selectie vakje **eerste rij als koptekst** in en selecteer **geen** voor **import schema**. Selecteer **OK**.
 
-    ![Sink-pad](media/tutorial-data-flow-private/sink-file-path.png)
+    ![Scherm opname die het sink-pad weergeeft.](media/tutorial-data-flow-private/sink-file-path.png)
 
 Nu bent u klaar met het bouwen van uw gegevens stroom. U kunt deze nu uitvoeren in de pijp lijn.
 
-## <a name="running-and-monitoring-the-data-flow"></a>De gegevens stroom wordt uitgevoerd en bewaakt
+## <a name="run-and-monitor-the-data-flow"></a>De gegevens stroom uitvoeren en controleren
 
-U kunt fouten opsporen in een pijp lijn voordat u deze publiceert. In deze stap gaat u een debug-uitvoering van de gegevensstroom pijplijn activeren. Terwijl voor beeld van de gegevens geen gegevens worden geschreven, worden gegevens naar de Sink-bestemming geschreven.
+U kunt fouten opsporen in een pijp lijn voordat u deze publiceert. In deze stap gaat u een debug-uitvoering van de gegevensstroom pijplijn activeren. Terwijl het voor beeld van de gegevens geen gegevens schrijft, worden er door een debug run gegevens naar uw Sink-bestemming geschreven.
 
-1. Ga naar het pijp lijn-canvas. Klik op **fout opsporing** om een uitvoering van de fout opsporing te activeren.
+1. Ga naar het pijp lijn-canvas. Selecteer **fout opsporing** om een uitvoering van de fout opsporing te activeren.
 
-1. Bij het opsporen van pijp lijn voor gegevens stroom activiteiten wordt het actieve debug-cluster gebruikt, maar het kan wel ten minste een minuut duren om te initialiseren. U kunt de voortgang volgen via het tabblad **uitvoer** . Zodra de uitvoering is voltooid, klikt u op het pictogram bril voor details van de uitvoering.
+1. Bij het opsporen van pijp lijn voor gegevens stroom activiteiten wordt het actieve debug-cluster gebruikt, maar het kan wel ten minste een minuut duren. U kunt de voortgang volgen via het tabblad **uitvoer** . Nadat de uitvoering is voltooid, selecteert u het bril pictogram voor details van de uitvoering.
 
-1. Op de pagina Details ziet u het aantal rijen en tijd dat aan elke transformatie stap is besteed.
+1. Op de pagina Details ziet u het aantal rijen en de tijd die aan elke transformatie stap is besteed.
 
-    ![Bewakings uitvoering](media/tutorial-data-flow-private/run-details.png)
-1. Klik op een trans formatie om gedetailleerde informatie over de kolommen en het partitioneren van de gegevens op te halen.
+    ![Scherm afbeelding waarin een bewakings uitvoering wordt weer gegeven.](media/tutorial-data-flow-private/run-details.png)
+1. Selecteer een trans formatie om gedetailleerde informatie over de kolommen en het partitioneren van de gegevens op te halen.
 
 Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw map Sink hebben geschreven. U kunt controleren of de gegevens correct zijn door uw Blob-opslag te controleren.
 
 ## <a name="summary"></a>Samenvatting
 
-In deze zelf studie gebruikt u de Azure Data Factory gebruikers interface (UX) om een pijp lijn te maken waarmee gegevens **van een Azure data Lake Storage (ADLS) Gen2-bron worden gekopieerd en getransformeerd naar een ADLS Gen2 Sink (zowel toegang verlenen aan geselecteerde netwerken)** met toewijzing van gegevens stroom in [Azure Data Factory beheerde Virtual Network](managed-virtual-network-private-endpoint.md).
+In deze zelf studie hebt u de Data Factory-gebruikers interface gebruikt om een pijp lijn te maken waarmee gegevens van een Data Lake Storage Gen2 bron worden gekopieerd en getransformeerd naar een Data Lake Storage Gen2 Sink (zowel toegang tot geselecteerde netwerken toestaan) met behulp van toewijzing van gegevens stroom in [Data Factory beheerde Virtual Network](managed-virtual-network-private-endpoint.md).

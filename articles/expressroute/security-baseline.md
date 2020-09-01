@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f84c73f3fbefddd2972f077826fe1e2a8738ad5a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079040"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079146"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure-beveiligings basislijn voor ExpressRoute
 
@@ -240,13 +240,13 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Richt lijnen**: behoud een inventaris van de gebruikers accounts met beheerders toegang tot het besturings vlak (bijvoorbeeld Azure Portal) van uw Azure ExpressRoute-resources.
 
-U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
+U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
 
 Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API op rollen gebaseerde Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Gebruik RBAC in de ExpressRoute-partner Resource Manager-API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Gebruik Azure RBAC in de ExpressRoute-partner Resource Manager-API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure Security Center bewaking**: Ja
 
@@ -437,7 +437,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 * [Site-naar-site-IPSEC configureren via ExpressRoute](https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering)
 
-Site-naar-site-IPSEC configureren via ExpressRoute:https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
+Site-naar-site-IPSEC configureren via ExpressRoute: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -453,17 +453,17 @@ Site-naar-site-IPSEC configureren via ExpressRoute:https://docs.microsoft.com/az
 
 **Verantwoordelijkheid**: niet van toepassing
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
+**Richt lijnen**: u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure portal voor uw abonnement gebruiken om op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
 
 Azure ExpressRoute heeft ook de eigenaar van circuits en circuit gebruikers rollen. Circuit gebruikers zijn eigen aren van virtuele netwerk gateways die zich niet in hetzelfde abonnement bevinden als het ExpressRoute-circuit. De eigenaar van het circuit heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Het intrekken van een autorisatie resulteert in alle koppelings verbindingen die worden verwijderd uit het abonnement waarvan de toegang is ingetrokken. Circuit gebruikers kunnen autorisaties inwisselen (één autorisatie per virtueel netwerk).
 
 Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API op rollen gebaseerde Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Gebruik RBAC in de ExpressRoute-partner Resource Manager-API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Gebruik Azure RBAC in de ExpressRoute-partner Resource Manager-API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 * [Beheerders rollen in ExpressRoute begrijpen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
 

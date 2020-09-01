@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045532"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078993"
 ---
 # <a name="security-control-data-protection"></a>Beveiligings beheer: gegevens beveiliging
 
@@ -70,7 +70,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4,5 | 14,5 | Gedeeld |
+| 4.5 | 14,5 | Gedeeld |
 
 Als er geen functie beschikbaar is voor uw specifieke service in azure, gebruikt u een actief detectie hulpprogramma van derden om alle gevoelige informatie te identificeren die is opgeslagen, verwerkt of verzonden door de technologie systemen van de organisatie, met inbegrip van de locaties op locatie of op een externe service provider, en de gevoelige informatie-inventaris van de organisatie bij te werken.
 
@@ -84,15 +84,15 @@ Gebruik Azure SQL Information Protection om u te helpen bij het classificeren en
 
 - [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.6 | 14,6 | Klant |
+| 4,6 | 14,6 | Klant |
 
-Gebruik Azure AD RBAC om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van servicespecifieke methoden voor toegangs beheer.
+Gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van specifieke methoden voor toegangs beheer op basis van een service.
 
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
 
@@ -110,7 +110,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4,8 | 14,8 | Klant |
+| 4.8 | 14,8 | Klant |
 
 Gebruik versleuteling in rust voor alle Azure-resources. Micro soft raadt u aan Azure te laten beheren van uw versleutelings sleutels, maar in sommige gevallen kunt u ook uw eigen sleutels beheren. 
 
@@ -122,7 +122,7 @@ Gebruik versleuteling in rust voor alle Azure-resources. Micro soft raadt u aan 
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4,9 | 14,9 | Klant |
+| 4.9 | 14,9 | Klant |
 
 Gebruik Azure Monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer wijzigingen worden aangebracht in essentiële Azure-resources.
 
@@ -131,4 +131,4 @@ Gebruik Azure Monitor met het Azure-activiteiten logboek om waarschuwingen te ma
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie het volgende beveiligings beheer: [beveiligings beheer](security-control-vulnerability-management.md)
+- Zie het volgende beveiligings beheer:  [beveiligings beheer](security-control-vulnerability-management.md)

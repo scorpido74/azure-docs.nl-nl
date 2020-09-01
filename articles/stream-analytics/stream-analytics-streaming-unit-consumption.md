@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 08/28/2020
+ms.openlocfilehash: e568051bfd5ac58f283eac7f9dc8a72be5c9dbbb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903558"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079673"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
@@ -20,7 +20,7 @@ Streaming-eenheden (SUs) vertegenwoordigt de computer resources die zijn toegewe
 
 Om verwerking met lage latentie te bereiken, voeren Azure Stream Analytics-taken alle verwerking in het geheugen uit. Als er onvoldoende geheugen beschikbaar is, mislukt de streaming-taak. Als gevolg hiervan is het belang rijk om voor een productie taak het resource gebruik van een streaming-taak te controleren en ervoor te zorgen dat er voldoende resources zijn toegewezen om te zorgen dat de taken met 24/7 worden uitgevoerd.
 
-De metrische gegevens van het gebruik SU%, die tussen 0% en 100% liggen, beschrijft het geheugen verbruik van uw workload. Voor een streaming-taak met minimale footprint is deze metriek meestal tussen 10% en 20%. Als het gebruik van het SU-percentage laag is en de invoer gebeurtenissen een achterstand krijgen, vereist uw werk belasting waarschijnlijk meer reken resources, waardoor u het aantal SUs moet verhogen. Het is het beste om de SU-metriek onder 80% te hand haven voor incidentele pieken. Micro soft raadt u aan om een waarschuwing in te stellen voor de metriek van 80% SU-gebruik om te voor komen dat de resource wordt uitgeput Zie [zelf studie: waarschuwingen instellen voor Azure stream Analytics taken](stream-analytics-set-up-alerts.md)voor meer informatie.
+De metrische gegevens van het gebruik SU%, die tussen 0% en 100% liggen, beschrijft het geheugen verbruik van uw workload. Voor een streaming-taak met minimale footprint is deze metriek meestal tussen 10% en 20%. Als SU% gebruik hoog is (boven 80%), of als de invoer gebeurtenissen een achterstand ontvangen (zelfs met een laag verbruik van minder dan het CPU-gebruik), zijn voor uw werk belasting waarschijnlijk meer reken bronnen vereist, waarmee u het aantal SUs kunt verhogen. Het is het beste om de SU-metriek onder 80% te hand haven voor incidentele pieken. Micro soft raadt u aan om een waarschuwing in te stellen voor de metriek van 80% SU-gebruik om te voor komen dat de resource wordt uitgeput Zie [zelf studie: waarschuwingen instellen voor Azure stream Analytics taken](stream-analytics-set-up-alerts.md)voor meer informatie.
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics streaming-eenheden configureren (SUs)
 1. Aanmelden bij [Azure Portal](https://portal.azure.com/)
@@ -111,7 +111,7 @@ Het aantal niet-overeenkomende gebeurtenissen in de samen voeging is van invloed
 
 In dit voor beeld is het mogelijk dat er veel advertenties worden weer gegeven en dat er slechts enkele mensen op de reclame klikken. het is vereist dat alle gebeurtenissen in het tijd venster bewaard blijven. Het verbruikte geheugen is gerelateerd aan de venstergrootte en de snelheid waarmee gebeurtenissen elkaar opvolgen. 
 
-Om dit op te lossen, moet u gebeurtenissen verzenden naar Event hub die is gepartitioneerd door de koppelings sleutels (ID in dit geval) en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp **van partitie** , zoals wordt weer gegeven:
+Om dit op te lossen, moet u gebeurtenissen verzenden naar Event hub die is gepartitioneerd door de koppelings sleutels (ID in dit geval) en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp  **van partitie** , zoals wordt weer gegeven:
 
    ```sql
    SELECT clicks.id

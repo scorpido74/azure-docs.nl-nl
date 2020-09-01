@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958776"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079027"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -653,7 +653,7 @@ De lijst met aliassen is altijd groeien. Als u wilt weten welke aliassen momente
   ```
 
   > [!NOTE]
-  > Als u aliassen wilt vinden die kunnen worden gebruikt met het [wijzigings](./effects.md#modify) effect, gebruikt u de volgende opdracht:
+  > Als u aliassen wilt vinden die kunnen worden gebruikt met het [wijzigings](./effects.md#modify) effect, gebruikt u de volgende opdracht in azure PowerShell **4.6.0** of hoger:
   >
   > ```azurepowershell-interactive
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
