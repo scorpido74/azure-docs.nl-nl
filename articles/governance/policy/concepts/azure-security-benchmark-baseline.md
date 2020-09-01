@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 909d423b31bb76d8d6aaed994d1c9f7372cbc01f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937510"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069779"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy beveiligings basislijn voor Azure Security Bench Mark
 
-Deze beveiligings basislijn is van toepassing op de richt lijnen van [Azure Security](../../../security/benchmarks/overview.md) voor de Azure Policy. De Security Bench Mark van Azure biedt aanbevelingen over hoe u uw cloud oplossingen op Azure kunt beveiligen. De inhoud wordt gegroepeerd op de **compatibiliteits domeinen** en **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op Azure Policy. **Besturings elementen** die niet van toepassing zijn op Azure Policy, zijn uitgesloten. Als u wilt zien hoe Azure Policy volledig is toegewezen aan de beveiligings benchmark van Azure, raadpleegt u het [volledige Azure Policy beveiligings basislijn toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Deze beveiligings basislijn is van toepassing op de richt lijnen van [Azure Security](../../../security/benchmarks/overview.md) voor de Azure Policy. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op de **compatibiliteits domeinen** en **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op Azure Policy. **Besturings elementen** die niet van toepassing zijn op Azure Policy, zijn uitgesloten. Als u wilt zien hoe Azure Policy volledig is toegewezen aan de beveiligings benchmark van Azure, raadpleegt u het [volledige Azure Policy beveiligings basislijn toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 Zie [regelgevings naleving: Azure Security Bench Mark](../samples/azure-security-benchmark.md)(Engelstalig) voor een overzicht van de beveiligings maatregelen van Azure Security op ingebouwde beleids definities via het ingebouwde initiatief.
 
@@ -68,17 +68,17 @@ U kunt ook een just-in-time-of just-out-Access-oplossing inschakelen met behulp 
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../../../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure Policy.
+**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot Azure Policy.
 
-* [RBAC-machtigingen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure RBAC-machtigingen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
 
-* [RBAC configureren in azure](../../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC configureren](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar

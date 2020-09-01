@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611166"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069405"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
 
@@ -31,17 +31,16 @@ Voor dit artikel maakt u drie virtuele netwerken:
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * De variabelen declareren
-> * Het virtuele hub-netwerk voor de firewall maken
-> * Het virtuele spoke-netwerk maken
-> * Het on-premises virtuele netwerk maken
-> * De firewall configureren en implementeren
-> * De VPN-gateways maken en verbinden
-> * De hub- en virtuele spoke-netwerken koppelen
-> * De routes maken
-> * De virtuele machines maken
-> * De firewall testen
+* De variabelen declareren
+* Het virtuele hub-netwerk voor de firewall maken
+* Het virtuele spoke-netwerk maken
+* Het on-premises virtuele netwerk maken
+* De firewall configureren en implementeren
+* De VPN-gateways maken en verbinden
+* De hub- en virtuele spoke-netwerken koppelen
+* De routes maken
+* De virtuele machines maken
+* De firewall testen
 
 Zie [zelf studie: Azure firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal](tutorial-hybrid-portal.md)als u in plaats daarvan Azure Portal wilt gebruiken om deze zelf studie te volt ooien.
 
@@ -71,7 +70,7 @@ Zie de sectie [routes maken](#create-the-routes) in dit artikel om te zien hoe d
 
 Zie [Naslagdocumentatie voor Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall) om de gerelateerde naslaginformatie voor Azure PowerShell te bekijken.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="declare-the-variables"></a>De variabelen declareren
 

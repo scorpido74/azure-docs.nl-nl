@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 59b795462ff6e033e299c15f4099b7bfd3874451
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963866"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069390"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-beveiligings basislijn voor batch
 
@@ -178,9 +178,9 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure batch groepen. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
 
-Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
+Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
 
-Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen maken in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center bewaking**: Ja
 
@@ -500,7 +500,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Richt lijnen**: niet beschikbaar; Klanten-lockbox nog niet ondersteund voor Azure Batch.
  
-Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -508,7 +508,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -596,13 +596,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory (Aad) op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het beheer vlak van Azure-resources, inclusief batch-account, batch-pool (s) en opslag accounts.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot het beheer vlak van Azure-resources, inclusief batch-account, batch-pool (s) en opslag accounts.
 
 Meer informatie over Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-RBAC configureren in Azure:
+Azure RBAC configureren:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -773,14 +773,14 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -818,12 +818,12 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -843,7 +843,7 @@ Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
@@ -907,9 +907,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - Microsoft.Network
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -942,13 +942,13 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Richt lijnen**: als u aangepaste installatie kopieën gebruikt voor uw Azure batch groepen, gebruikt u op rollen gebaseerd toegangs beheer (RBAC) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
+**Richt lijnen**: als u aangepaste installatie kopieën gebruikt voor uw Azure batch groepen, gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
-Meer informatie over RBAC in Azure:
+Meer informatie over Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-RBAC configureren in Azure:
+Azure RBAC configureren:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
@@ -987,9 +987,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - Diagnostische logboeken in Batch-accounts moeten worden ingeschakeld
 
-Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -1039,7 +1039,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault. 
 
-Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1169,7 +1169,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem op een gewone uitgebracht te testen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
 
-Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center bewaking**: niet van toepassing
 

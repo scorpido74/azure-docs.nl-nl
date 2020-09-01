@@ -1,20 +1,20 @@
 ---
 title: Personalisatie service versleuteling van gegevens in rust
 titleSuffix: Azure Cognitive Services
-description: Personaler service versleuteling van gegevens in rust.
+description: Micro soft biedt door micro soft beheerde coderings sleutels en kunt u ook uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). In dit artikel vindt u informatie over gegevens versleuteling in rust voor Personaler en hoe u CMK inschakelt en beheert.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 10eb627a340b45c93b2cfb2973e294d8d5d7c7e5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a19f0a204bec1c0a43a84d93c2dc4b70ef6ecbe6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307802"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069902"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Personalisatie service versleuteling van gegevens in rust
 
@@ -24,8 +24,6 @@ Met de Personaler service worden uw gegevens automatisch versleuteld wanneer dez
 
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn alleen beschikbaar in de prijs categorie E0. Als u de mogelijkheid wilt aanvragen om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor de door de [klant beheerde sleutel van de persoonlijkere service](https://aka.ms/cogsvc-cmk)in en verzendt u deze. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van CMK met de Personaler-service, moet u een nieuwe Personaler-resource maken en E0 selecteren als prijs categorie. Zodra uw persoonlijke resource met de prijs categorie E0 is gemaakt, kunt u Azure Key Vault gebruiken om uw beheerde identiteit in te stellen.
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

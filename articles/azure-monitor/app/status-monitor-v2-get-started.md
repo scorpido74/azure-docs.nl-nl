@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 66b0ba083dc05c10dbf001eebcbbdfa269285c2e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 690304ecef80d988f9a554cd10ce4689f5c72133
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318960"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070136"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Aan de slag met Azure Monitor Application Insights-agent voor on-premises servers
 
@@ -20,7 +21,7 @@ Deze opdrachten ondersteunen de Power shell- `-Proxy` para meter.
 
 Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md)voor een uitleg van deze opdrachten, instructies voor het aanpassen en informatie over het oplossen van problemen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Downloaden en installeren via PowerShell Gallery
 

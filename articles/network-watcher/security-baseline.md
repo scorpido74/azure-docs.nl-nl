@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f50310b8494b65ff8e9170d333d7c3e70c82ded
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255936"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071513"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Azure-beveiligings basislijn voor Network Watcher
 
@@ -234,9 +234,9 @@ Network Watcher moet zijn ingeschakeld
 
 **Hulp**: behoud een inventaris van de gebruikers accounts met beheerders toegang tot het besturings vlak (bijvoorbeeld Azure Portal) van Azure Network Watcher. Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u zich aanmeldt bij Azure met, worden toegewezen aan de rol van eigenaar, bijdrager of netwerk bijdrager of worden toegewezen aan een aangepaste rol waaraan de acties worden toegewezen die worden vermeld voor specifieke Network Watcher mogelijkheden.
 
-U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
+U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
@@ -387,7 +387,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -443,15 +443,15 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: niet van toepassing
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
+**Richt lijnen**: u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure portal voor uw abonnement gebruiken om op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
 
 Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u zich aanmeldt bij Azure met, worden toegewezen aan de rol van eigenaar, bijdrager of netwerk bijdrager of worden toegewezen aan een aangepaste rol waaraan de acties worden toegewezen die worden vermeld voor specifieke Network Watcher mogelijkheden.
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-* [Informatie over RBAC-machtigingen in Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Meer informatie over Azure RBAC-machtigingen in Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -564,7 +564,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure-resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
 Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -626,7 +626,7 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

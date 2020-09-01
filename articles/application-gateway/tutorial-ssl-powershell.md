@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: af1ba6bdf8edc3ce8653c9ecf196a599fb984ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805919"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071445"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Een toepassings gateway met TLS-beëindiging maken met behulp van Azure PowerShell
 
@@ -28,7 +28,7 @@ In dit artikel leert u het volgende:
 > * Een toepassingsgateway maken met behulp van het certificaat
 > * Een virtuele-machineschaalset maken met de standaard back-endgroep
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

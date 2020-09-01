@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 869c6590146561f6f2f50694c5cc3f79530dad25
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854295"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069286"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure-beveiligings basislijn voor Azure Firewall
 
@@ -74,7 +74,7 @@ U kunt geen eigen servicetag maken en opgeven welke IP-adressen zijn opgenomen i
 
 **Hulp**: Azure-beleid is nog niet volledig ondersteund voor Azure firewall. Azure Firewall Manager kan worden gebruikt om de standaard instellingen van beveiligings configuraties te benutten.
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één definitie van een blauw druk te verpakken. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resources Manager-sjablonen, Azure RBAC-besturings elementen en beleids regels, in één blauw definitie te voorzien. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
 
 - [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -132,7 +132,7 @@ Opmerking: beide logboeken kunnen worden opgeslagen in een opslag account, gestr
 
 Lijst met resource acties in activiteiten logboeken: bewerkingen van Azure Resource Manager resource provider
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor ](../azure-monitor/platform/diagnostic-settings.md)
 
 - [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
@@ -416,11 +416,11 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: Azure Active Directory op rollen gebaseerd toegangs beheer (RBAC) gebruiken om de toegang tot Azure firewall en gerelateerde resources te beheren.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot Azure firewall en gerelateerde resources te beheren.
 
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

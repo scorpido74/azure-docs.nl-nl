@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6e620502deb67c7fe79341bc1a45cb1ce33fa52f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836714"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071462"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-beveiligings basislijn voor Service Fabric
 
@@ -546,7 +546,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor niet-reken resources die zijn ontworpen om gegevens op te slaan.
 
@@ -868,13 +868,13 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Richt lijnen**: als u aangepaste installatie kopieën gebruikt, moet u RBAC gebruiken om ervoor te zorgen dat alleen gemachtigde gebruikers toegang kunnen krijgen tot de installatie kopieën. Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
+**Richt lijnen**: als u aangepaste installatie kopieën gebruikt, moet u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om ervoor te zorgen dat alleen gemachtigde gebruikers toegang kunnen krijgen tot de installatie kopieën. Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van Azure RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
-* [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Meer informatie over Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Wat is RBAC voor Container Registry?](../container-registry/container-registry-roles.md)
+* [Meer informatie over Azure RBAC voor Container Registry](../container-registry/container-registry-roles.md)
 
-* [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC configureren](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

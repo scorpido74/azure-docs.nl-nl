@@ -10,13 +10,13 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056717"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070493"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Een account maken dat door de klant beheerde sleutels voor tabellen en wacht rijen ondersteunt
 
@@ -32,7 +32,7 @@ U kunt een opslag account maken dat afhankelijk is van de account versleutelings
 
 - VS - oost
 - VS - zuid-centraal
-- VS - west 2  
+- US - west 2  
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Registreren voor het gebruik van de account versleutelings sleutel
 
@@ -49,7 +49,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -81,7 +81,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 
@@ -110,7 +110,7 @@ Als u de resource provider opnieuw wilt registreren bij Power shell, roept u de 
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de resource provider opnieuw wilt registreren bij Azure CLI, roept u de opdracht [AZ provider REGI ster](/cli/azure/provider#az-provider-register) aan.
 
@@ -154,7 +154,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
     -EncryptionKeyTypeForQueue Account
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een opslag account te maken dat afhankelijk is van de versleutelings sleutel van het account, moet u ervoor zorgen dat u Azure CLI-versie 2.0.80 of hoger hebt geïnstalleerd. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie.
 
@@ -217,7 +217,7 @@ In het volgende JSON-voor beeld wordt een v2-opslag account voor algemeen gebrui
 
 Nadat u een account hebt gemaakt dat afhankelijk is van de versleutelings sleutel van het account, raadpleegt u een van de volgende artikelen voor het configureren van door de klant beheerde sleutels met Azure Key Vault:
 
-- [Door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal](storage-encryption-keys-portal.md)
+- [Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van de Azure Portal](storage-encryption-keys-portal.md)
 - [Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Power shell](storage-encryption-keys-powershell.md)
 - [Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI](storage-encryption-keys-cli.md)
 
@@ -236,7 +236,7 @@ $account.Encryption.Services.Queue
 $account.Encryption.Services.Table
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u wilt controleren of een service in een opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht [AZ Storage account show](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `keyType` veld voor elke service binnen de versleutelings eigenschap en controleer of deze is ingesteld op `Account` .
 

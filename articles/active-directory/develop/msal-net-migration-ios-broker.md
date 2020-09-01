@@ -12,16 +12,16 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bc94c7be4e3979cf9aa7624a9aeadf156cc48035
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ed29752e0b5f2ee9acf0382ef96e1b685f9cc886
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166073"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068504"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.NET naar MSAL.NET
 
-U gebruikt de Azure Active Directory Authentication Library voor .NET (ADAL.NET) en de iOS-Broker. Nu is het tijd om te migreren naar de [micro soft Authentication Library](msal-overview.md) voor .net (MSAL.net), die ondersteuning biedt voor de Broker op Ios vanaf versie 4,3 en hoger. 
+U gebruikt de Azure Active Directory Authentication Library voor .NET (ADAL.NET) en de iOS-Broker. Nu is het tijd om te migreren naar de [micro soft Authentication Library](msal-overview.md) voor .net (MSAL.net), die ondersteuning biedt voor de Broker op Ios vanaf versie 4,3 en hoger.
 
 Waar moet u beginnen? Dit artikel helpt u bij het migreren van uw Xamarin iOS-app van ADAL naar MSAL.
 
@@ -32,7 +32,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Xamarin iOS-app hebt die is ge
 
 ### <a name="what-are-brokers"></a>Wat zijn makelaars?
 
-Makelaars zijn toepassingen die door micro soft worden verschaft op Android en iOS. (Zie de app [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) op Ios en Android en de intune-bedrijfsportal-app op Android.) 
+Makelaars zijn toepassingen die door micro soft worden verschaft op Android en iOS. (Zie de app [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) op Ios en Android en de intune-bedrijfsportal-app op Android.)
 
 Ze inschakelen:
 
@@ -47,21 +47,21 @@ Ze inschakelen:
 <table>
 <tr><td>Huidige ADAL-code:</td><td>MSAL-tegen hanger:</td></tr>
 <tr><td>
-In ADAL.NET is Broker-ondersteuning ingeschakeld op basis van context per verificatie. Het is standaard uitgeschakeld. U moest een 
+In ADAL.NET is Broker-ondersteuning ingeschakeld op basis van context per verificatie. Het is standaard uitgeschakeld. U moest een
 
-`useBroker`vlag toevoegen aan True in de `PlatformParameters` constructor om de Broker aan te roepen:
+`useBroker` vlag toevoegen aan True in de `PlatformParameters` constructor om de Broker aan te roepen:
 
 ```csharp
 public PlatformParameters(
-        UIViewController callerViewController, 
+        UIViewController callerViewController,
         bool useBroker)
 ```
-Daarnaast stelt u in de platformspecifieke code, in dit voor beeld in de pagina renderer voor iOS, het`useBroker` 
+Daarnaast stelt u in de platformspecifieke code, in dit voor beeld in de pagina renderer voor iOS, het `useBroker`
 vlag toevoegen aan waar:
 ```csharp
 page.BrokerParameters = new PlatformParameters(
-          this, 
-          true, 
+          this,
+          true,
           PromptBehavior.SelectAccount);
 ```
 
@@ -70,17 +70,17 @@ Neem vervolgens de para meters op in de aanroep voor het verkrijgen van een toke
  AuthenticationResult result =
                     await
                         AuthContext.AcquireTokenAsync(
-                              Resource, 
-                              ClientId, 
-                              new Uri(RedirectURI), 
+                              Resource,
+                              ClientId,
+                              new Uri(RedirectURI),
                               platformParameters)
                               .ConfigureAwait(false);
 ```
 
 </td><td>
-In MSAL.NET is de ondersteuning van Broker ingeschakeld op basis van één PublicClientApplication. Het is standaard uitgeschakeld. Als u deze wilt inschakelen, gebruikt u de 
+In MSAL.NET is de ondersteuning van Broker ingeschakeld op basis van één PublicClientApplication. Het is standaard uitgeschakeld. Als u deze wilt inschakelen, gebruikt u de
 
-`WithBroker()`para meter (standaard ingesteld op True) om de Broker aan te roepen:
+`WithBroker()` para meter (standaard ingesteld op True) om de Broker aan te roepen:
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -98,24 +98,25 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>Stap 2: Stel een UIViewController in ()
-In ADAL.NET hebt u een UIViewController door gegeven als onderdeel van `PlatformParameters` . (Zie het voor beeld in stap 1.) In MSAL.NET wordt een object venster gebruikt om ontwikkel aars meer flexibiliteit te geven, maar dit is niet vereist in het gebruik van gewoon iOS. Als u de Broker wilt gebruiken, stelt u het object venster in om antwoorden te verzenden en te ontvangen van de Broker. 
+In ADAL.NET hebt u een UIViewController door gegeven als onderdeel van `PlatformParameters` . (Zie het voor beeld in stap 1.) In MSAL.NET wordt een object venster gebruikt om ontwikkel aars meer flexibiliteit te geven, maar dit is niet vereist in het gebruik van gewoon iOS. Als u de Broker wilt gebruiken, stelt u het object venster in om antwoorden te verzenden en te ontvangen van de Broker.
 <table>
 <tr><td>Huidige ADAL-code:</td><td>MSAL-tegen hanger:</td></tr>
 <tr><td>
-Er wordt een UIViewController door gegeven aan 
+Er wordt een UIViewController door gegeven aan
 
-`PlatformParameters`in het iOS-specifieke platform.
+`PlatformParameters` in het iOS-specifieke platform.
 
 ```csharp
 page.BrokerParameters = new PlatformParameters(
-          this, 
-          true, 
+          this,
+          true,
           PromptBehavior.SelectAccount);
 ```
 </td><td>
 In MSAL.NET voert u twee dingen uit om het object venster voor iOS in te stellen:
 
-1. `AppDelegate.cs`Stel in `App.RootViewController` op een nieuw `UIViewController()` . Deze toewijzing zorgt ervoor dat er een UIViewController is met de aanroep naar de Broker. Als deze niet correct is ingesteld, wordt deze fout mogelijk weer geven:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. `AppDelegate.cs`Stel in `App.RootViewController` op een nieuw `UIViewController()` .
+Deze toewijzing zorgt ervoor dat er een UIViewController is met de aanroep naar de Broker. Als deze niet correct is ingesteld, wordt deze fout mogelijk weer geven: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. Gebruik in de AcquireTokenInteractive-aanroep `.WithParentActivityOrWindow(App.RootViewController)` en geef in de verwijzing naar het object venster dat u gaat gebruiken.
 
 **Bijvoorbeeld:**
@@ -151,13 +152,13 @@ ADAL.NET en MSAL.NET gebruiken Url's om de Broker aan te roepen en retour neren 
 <tr><td>
 Het URL-schema is uniek voor uw app.
 </td><td>
-Kan 
+Kan
 
-`CFBundleURLSchemes`naam moet bevatten 
+`CFBundleURLSchemes` naam moet bevatten
 
 `msauth.`
 
-Als voor voegsel, gevolgd door uw`CFBundleURLName`
+Als voor voegsel, gevolgd door uw `CFBundleURLName`
 
 Bijvoorbeeld: `$"msauth.(BundleId")`
 
@@ -189,7 +190,7 @@ ADAL.NET en MSAL.NET beide gebruiken `-canOpenURL:` om te controleren of de Brok
 <table>
 <tr><td>Huidige ADAL-code:</td><td>MSAL-tegen hanger:</td></tr>
 <tr><td>
-Gebruikt 
+Gebruikt
 
 `msauth`
 
@@ -201,7 +202,7 @@ Gebruikt
 </array>
 ```
 </td><td>
-Gebruikt 
+Gebruikt
 
 `msauthv2`
 
@@ -215,16 +216,16 @@ Gebruikt
 ```
 </table>
 
-### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>Stap 6: de omleidings-URI registreren in de portal
+### <a name="step-6-register-your-redirect-uri-in-the-azure-portal"></a>Stap 6: de omleidings-URI registreren in de Azure Portal
 
-ADAL.NET en MSAL.NET voegen zowel een extra vereiste voor de omleidings-URI toe als deze de Broker doel heeft. Registreer de omleidings-URI met uw toepassing in de portal.
+ADAL.NET en MSAL.NET voegen zowel een extra vereiste voor de omleidings-URI toe als deze de Broker doel heeft. Registreer de omleidings-URI met uw toepassing in de Azure Portal.
 <table>
 <tr><td>Huidige ADAL-code:</td><td>MSAL-tegen hanger:</td></tr>
 <tr><td>
 
 `"<app-scheme>://<your.bundle.id>"`
 
-Voorbeeld: 
+Voorbeeld:
 
 `mytestiosapp://com.mycompany.myapp`
 </td><td>
@@ -237,7 +238,7 @@ Voorbeeld:
 
 </table>
 
-Zie [de Broker gebruiken in Xamarin. IOS-toepassingen](msal-net-use-brokers-with-xamarin-apps.md#step-8-make-sure-the-redirect-uri-is-registered-with-your-app)voor meer informatie over het registreren van de omleidings-URI in de portal.
+Zie [stap 7: een omleidings-URI toevoegen aan de registratie van uw app](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration)voor meer informatie over het registreren van de omleidings-URI in de Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

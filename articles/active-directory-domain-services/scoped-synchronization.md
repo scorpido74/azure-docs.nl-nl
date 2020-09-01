@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: iainfou
-ms.openlocfilehash: 97c561b2ae919799343abe844b57239d04c26d90
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe373b9aa08d6999a9c57dd0008a207071e1dddd
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283126"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068895"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Configureer de synchronisatie van scoped vanuit Azure AD naar Azure Active Directory Domain Services met behulp van de Azure Portal
 
@@ -56,7 +57,7 @@ Zie voor meer informatie over het synchronisatie proces [begrijpen synchronisati
 
 Voer de volgende stappen uit om scoped synchronisatie in te scha kelen in de Azure Portal:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Selecteer **scoped**voor het *synchronisatie type*.
 1. Kies **groepen selecteren**, zoek naar en selecteer de groepen die u wilt toevoegen.
@@ -68,7 +69,7 @@ Het wijzigen van het bereik van de synchronisatie zorgt ervoor dat het beheerde 
 
 Voer de volgende stappen uit om de lijst met groepen te wijzigen waarvan gebruikers moeten worden gesynchroniseerd met het beheerde domein:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Als u een groep wilt toevoegen, **selecteert u groepen bovenaan selecteren** en kiest u vervolgens de groepen die u wilt toevoegen.
 1. Als u een groep uit het synchronisatie bereik wilt verwijderen, selecteert u deze in de lijst met momenteel gesynchroniseerde groepen en kiest u **groepen verwijderen**.
@@ -80,7 +81,7 @@ Het wijzigen van het bereik van de synchronisatie zorgt ervoor dat het beheerde 
 
 Voer de volgende stappen uit als u de synchronisatie op basis van een groep wilt uitschakelen voor een beheerd domein:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Wijzig het *synchronisatie type* van **scoped** in **all**en selecteer vervolgens **synchronisatie bereik opslaan**.
 

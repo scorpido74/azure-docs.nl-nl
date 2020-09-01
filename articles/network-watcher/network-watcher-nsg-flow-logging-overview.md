@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084361"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070578"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -294,7 +294,7 @@ De volgende tekst is een voor beeld van een stroom logboek. Zoals u ziet, zijn e
 ```
 **Uitleg van logboek-tuple**
 
-![overzicht van stroom logboeken](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![stroom logboeken tuple](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
 **Berekening van de voor beeld-band breedte**
 
@@ -317,7 +317,7 @@ Gebruik de relevante koppeling hieronder voor hulp lijnen voor het inschakelen v
 
 ## <a name="updating-parameters"></a>Para meters bijwerken
 
-**Azure-portal**
+**Azure Portal**
 
 Ga in het Azure Portal naar de sectie NSG-stroom Logboeken in Network Watcher. Klik vervolgens op de naam van de NSG. Hiermee wordt het deel venster instellingen voor het stroom logboek weer gegeven. Wijzig de gewenste para meters en druk op **Opslaan** om de wijzigingen te implementeren.
 
@@ -357,7 +357,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Kosten**voor het vastleggen van de stroom: de logboek registratie voor NSG wordt gefactureerd op het volume van de logboeken die zijn gegenereerd. High Traffic volume kan leiden tot een groot stroom logboek volume en de bijbehorende kosten. De prijzen voor het NSG-stroom logboek bevatten geen onderliggende kosten voor opslag. Het gebruik van de functie voor het Bewaar beleid met de logboek registratie van de NSG-stroom houdt in dat afzonderlijke opslag kosten voor langere Peri Oden worden bespaard. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0. Zie voor meer informatie [Network Watcher prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie.
 
-**Problemen met door de gebruiker gedefinieerde binnenkomende TCP-regels**: [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview) worden geïmplementeerd als een [stateful firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vanwege de beperkingen van het huidige platform worden door de gebruiker gedefinieerde regels die van invloed zijn op binnenkomende TCP-stromen echter op een staatloze manier geïmplementeerd. Als gevolg hiervan worden stromen beïnvloed door door de gebruiker gedefinieerde binnenkomende regels niet beëindigd. Daarnaast worden geen byte-en pakket aantallen voor deze stromen vastgelegd. Het aantal bytes en pakketten dat in de NSG-stroom Logboeken (en Traffic Analytics) wordt gerapporteerd, kan daarom afwijken van de werkelijke getallen. Een opt-in-vlag waarmee deze problemen worden opgelost, is gepland om uiterlijk op december 2020 te zijn. In de tussen tijd kunnen klanten die ernstige problemen ondervinden door dit gedrag aan te melden via ondersteuning, een ondersteunings aanvraag indienen onder Network Watcher > NSG-stroom Logboeken.  
+**Problemen met door de gebruiker gedefinieerde binnenkomende TCP-regels**: [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview) worden geïmplementeerd als een [stateful firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vanwege de beperkingen van het huidige platform worden door de gebruiker gedefinieerde regels die van invloed zijn op binnenkomende TCP-stromen echter op een staatloze manier geïmplementeerd. Als gevolg hiervan worden stromen beïnvloed door door de gebruiker gedefinieerde binnenkomende regels niet beëindigd. Daarnaast worden geen byte-en pakket aantallen voor deze stromen vastgelegd. Het aantal bytes en pakketten dat in de NSG-stroom Logboeken (en Traffic Analytics) wordt gerapporteerd, kan daarom afwijken van de werkelijke getallen. Een opt-in-vlag waarmee deze problemen worden opgelost, is gepland om uiterlijk op december 2020 te zijn. In de tussen tijd kunnen klanten die ernstige problemen ondervinden vanwege dit gedrag, via ondersteuning aanvragen voor intrekken, een ondersteunings aanvraag doen onder Network Watcher > NSG-stroom Logboeken.  
 
 **Binnenkomende stromen die zijn geregistreerd van Internet ip's naar vm's zonder open bare ip's**: vm's waaraan geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis Load Balancer back-end-groep, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md) en hebben een IP-adres dat is toegewezen door Azure om uitgaande connectiviteit te vergemakkelijken. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
 
@@ -365,7 +365,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Inschakelen op kritieke VNETs/subnetten**: stroom logboeken moeten worden ingeschakeld op alle kritieke VNETs/subnetten in uw abonnement als controle bare en beveiligings best practice. 
 
-**Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, wordt aangeraden om NSG-stroom Logboeken in te scha kelen op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Zie [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) in netwerk beveiligings groepen voor meer informatie.
+**Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, wordt aangeraden om NSG-stroom Logboeken in te scha kelen op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Zie [hoe verkeer wordt geëvalueerd](../virtual-network/network-security-group-how-it-works.md) in netwerk beveiligings groepen voor meer informatie.
 
 **Opslag inrichten**: opslag moet worden ingericht in afstemming met het verwachte flow-logboek volume.
 
@@ -406,8 +406,8 @@ Gegevens van stroom logboeken worden verzameld buiten het pad van het netwerk ve
 Als u een opslag account achter een firewall wilt gebruiken, moet u een uitzonde ring voor vertrouwde micro soft-Services voor toegang tot uw opslag account opgeven:
 
 - Navigeer naar het opslag account door de naam van het opslag account in de globale zoek opdracht op de portal of op de [pagina opslag accounts](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) te typen.
-- Selecteer in de sectie **instellingen** de optie **firewalls en virtuele netwerken**
-- Selecteer in **toegang toestaan vanuit**de optie **geselecteerde netwerken**. Tik vervolgens onder **uitzonde ringen**op het vakje naast * * * * vertrouwde micro soft-Services toegang geven tot dit opslag account * * * *
+- Selecteer in de sectie  **instellingen**  de optie  **firewalls en virtuele netwerken**
+- Selecteer in **toegang toestaan vanuit**de optie  **geselecteerde netwerken**. Tik vervolgens onder  **uitzonde ringen**op het vakje naast * * * * vertrouwde micro soft-Services toegang geven tot dit opslag account * * * *
 - Als deze optie al is geselecteerd, is er geen wijziging nodig.
 - Zoek uw doel-NSG op de [overzichts pagina van de NSG-stroom logboeken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) en schakel NSG-stroom Logboeken in met het hierboven geselecteerde opslag account.
 

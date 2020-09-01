@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7c6f115597b5b95cd1004f67adec53727736c377
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498341"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072023"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azure-beveiligings basislijn voor Cognitive Services
 
@@ -151,7 +151,7 @@ U kunt ook toepassings beveiligings groepen (ASG) gebruiken om complexe beveilig
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen die betrekking hebben op uw Azure Cognitive Services-container met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. CognitiveServices ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure-cache voor redis-exemplaren te controleren of af te dwingen.
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door belang rijke omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één blauw definitie te verpakken. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Toegangs beheer op basis van rollen (Azure RBAC) en beleids regels, in één blauw definitie te verpakken. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -532,9 +532,9 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: op rollen gebaseerd toegangs beheer (RBAC) van Azure Active Directory (Azure AD) gebruiken om de toegang tot het beheer vlak van Azure Cognitive Services (dat wil zeggen Azure Portal) te beheren.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot het beheer vlak van Azure Cognitive Services (dat wil zeggen Azure Portal) te beheren.
 
 * [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 

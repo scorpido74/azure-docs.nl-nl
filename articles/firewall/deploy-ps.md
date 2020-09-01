@@ -4,15 +4,15 @@ description: In dit artikel vindt u informatie over het implementeren en configu
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 08/28/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 50d870590fa6b8351838af9cb91b7be39b8d30db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610656"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071700"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure Firewall implementeren en configureren met behulp van Azure PowerShell
 
@@ -25,7 +25,7 @@ Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren van
 
 Netwerkverkeer is onderhevig aan de geconfigureerde firewallregels wanneer u het routeert naar de firewall als standaardgateway van het subnet.
 
-Voor dit artikel maakt u een vereenvoudigd single VNet met drie subnetten voor een eenvoudige implementatie. Voor productie-implementaties wordt een [hub-en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen, waarbij de firewall zich in een eigen VNet bevindt. De werkbelastingservers bevinden zich in gepeerde VNets in dezelfde regio met een of meer subnetten.
+Voor dit artikel maakt u een vereenvoudigd single VNet met drie subnetten voor een eenvoudige implementatie. Voor productie-implementaties wordt een [hub en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen, waarbij de firewall zich in een eigen VNet bevindt. De werkbelastingservers bevinden zich in gepeerde VNets in dezelfde regio met een of meer subnetten.
 
 * **AzureFirewallSubnet** – De firewall bevindt zich in dit subnet.
 * **Workload-SN** – De workloadserver bevindt zich in dit subnet. Het netwerkverkeer van dit subnet gaat via de firewall.
@@ -35,13 +35,13 @@ Voor dit artikel maakt u een vereenvoudigd single VNet met drie subnetten voor e
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een testnetwerkomgeving instellen
-> * Een firewall implementeren
-> * Een standaardroute maken
-> * Een toepassingsregel configureren om toegang tot www.google.com toe te staan
-> * Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
-> * De firewall testen
+
+* Een testnetwerkomgeving instellen
+* Een firewall implementeren
+* Een standaardroute maken
+* Een toepassingsregel configureren om toegang tot www.google.com toe te staan
+* Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
+* De firewall testen
 
 Als u wilt, kunt u deze procedure volt ooien met behulp van de [Azure Portal](tutorial-firewall-deploy-portal.md).
 

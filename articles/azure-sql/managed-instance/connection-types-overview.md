@@ -10,14 +10,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517317"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070714"
 ---
-# <a name="azure-sql-managed-instance-connection-types"></a>Verbindings typen van Azure SQL Managed instance
+# <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Managed Instance-verbindingstypen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 In dit artikel wordt uitgelegd hoe clients verbinding maken met een beheerd exemplaar van Azure SQL, afhankelijk van het verbindings type. Hieronder vindt u voor beelden van scripts voor het wijzigen van de verbindings typen, samen met overwegingen met betrekking tot het wijzigen van de standaard connectiviteits instellingen.

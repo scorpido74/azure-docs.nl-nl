@@ -1,532 +1,190 @@
 ---
-title: Problemen bij het aanmelden bij een toepassing vanuit het toegangs venster | Microsoft Docs
-description: Problemen oplossen met toegang tot een toepassing vanuit het Microsoft Azure AD toegangs venster op myapps.microsoft.com
+title: Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
+description: Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8d2c1ba156ba4e3c937ced6b81950859e1c095
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759586"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070323"
 ---
-# <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Problemen bij het aanmelden bij een toepassing vanuit het toegangs venster
+# <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
 
-Het toegangs venster is een portal op Internet waarmee een gebruiker met een werk-of school account in Azure Active Directory (Azure AD) Cloud toepassingen kan weer geven en starten waartoe de Azure AD-beheerder hen toegang heeft verleend. 
+Mijn apps is een webgebaseerde portal die een gebruiker met een werk-of school account in Azure Active Directory (Azure AD) in staat stelt om Cloud toepassingen te bekijken en te starten waartoe de Azure AD-beheerder hen toegang heeft verleend. 
 
-Deze toepassingen worden geconfigureerd namens de gebruiker in de Azure AD-Portal. De toepassing moet op de juiste wijze zijn geconfigureerd en toegewezen aan de gebruiker of een groep waarvan de gebruiker lid is om de toepassing te zien in het toegangs venster.
+Voor meer informatie over het gebruik van Azure AD als een id-provider voor een app, Zie [Wat is toepassings beheer in azure AD](what-is-application-management.md). Bekijk de Quick Start- [serie op toepassings beheer](view-applications-portal.md)om snel aan de slag te gaan.
+
+Deze toepassingen worden geconfigureerd namens de gebruiker in de Azure AD-Portal. De toepassing moet op de juiste wijze zijn geconfigureerd en toegewezen aan de gebruiker of een groep waarvan de gebruiker lid is om de toepassing in mijn apps weer te geven. 
 
 Het type apps dat een gebruiker kan zien, kan worden weer gegeven in de volgende categorieën:
-
 -   Office 365-toepassingen
-
 -   Toepassingen van micro soft en derden die zijn geconfigureerd met SSO op basis van Federatie
-
 -   SSO-toepassingen op basis van wacht woorden
-
 -   Toepassingen met bestaande SSO-oplossingen
 
 ## <a name="general-issues-to-check-first"></a>Algemene problemen om eerst te controleren
 
--   Zorg ervoor dat u een **browser** gebruikt die voldoet aan de minimale vereisten voor het toegangs venster.
-
+-   Zorg ervoor dat de webbrowser aan de vereisten voldoet. Zie [mijn apps ondersteunde browsers](../user-help/my-apps-portal-end-user-access.md).
 -   Zorg ervoor dat de browser van de gebruiker de URL van de toepassing heeft toegevoegd aan de **vertrouwde sites**.
-
 -   Controleer of de toepassing correct is **geconfigureerd** .
-
 -   Zorg ervoor dat het gebruikers account is **ingeschakeld** voor aanmeldingen.
-
 -   Controleer of het account van de gebruiker **niet is vergrendeld.**
-
 -   Zorg ervoor dat het wacht woord van de gebruiker **niet is verlopen of is verg eten.**
-
 -   Zorg ervoor dat **multi-factor Authentication** de gebruikers toegang niet blokkeert.
-
 -   Zorg ervoor dat het beleid voor **voorwaardelijke toegang** of het beleid voor **identiteits beveiliging** de gebruikers toegang niet blokkeert.
-
 -   Zorg ervoor dat de **contact gegevens** van de verificatie van een gebruiker up-to-date zijn om multi-factor Authentication of beleid voor voorwaardelijke toegang te kunnen afdwingen.
-
 -   Probeer ook de cookies van uw browser te wissen en opnieuw aan te melden.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Browser vereisten voor de vergadering voor het toegangs venster
+## <a name="problems-with-the-users-account"></a>Problemen met het account van de gebruiker
+Toegang tot mijn apps kan worden geblokkeerd vanwege een probleem met het account van de gebruiker. Hieronder vindt u enkele manieren waarop u problemen met gebruikers en hun account instellingen kunt oplossen en oplossen:
+-   [Controleren of een gebruikers account bestaat in Azure Active Directory](#check-if-a-user-account-exists-in-azure-active-directory)
+-   [De account status van een gebruiker controleren](#check-a-users-account-status)
+-   [Het wacht woord van een gebruiker opnieuw instellen](#reset-a-users-password)
+-   [Selfservice voor wachtwoordherstel inschakelen](#enable-self-service-password-reset)
+-   [De multi-factor Authentication-status van een gebruiker controleren](#check-a-users-multi-factor-authentication-status)
+-   [De contact gegevens voor de verificatie van een gebruiker controleren](#check-a-users-authentication-contact-info)
+-   [De groepslid maatschappen van een gebruiker controleren](#check-a-users-group-memberships)
+-   [De toegewezen licenties van een gebruiker controleren](#check-a-users-assigned-licenses)
+-   [Een licentie toewijzen aan een gebruiker](#assign-a-user-a-license)
 
-Het toegangs venster vereist een browser die Java script ondersteunt en waarvoor CSS is ingeschakeld. Als u eenmalige aanmelding (SSO) op basis van wacht woorden in het toegangs venster wilt gebruiken, moet de uitbrei ding van het toegangs paneel worden geïnstalleerd in de browser van de gebruiker. Deze uitbrei ding wordt automatisch gedownload wanneer een gebruiker een toepassing selecteert die is geconfigureerd voor SSO op basis van een wacht woord.
-
-Voor SSO op basis van een wacht woord kunnen de browsers van de eind gebruiker het volgende zijn:
-
--   Internet Explorer 8, 9, 10, 11, op Windows 7 of hoger
-
--   Micro soft Edge in Windows 10 jubileum Edition of hoger
-
--   Chrome--op Windows 7 of hoger en op MacOS X of hoger
-
--   Firefox 26,0 of hoger, op Windows XP SP2 of hoger, en op Mac OS X 10,6 of hoger
-
-## <a name="how-to-install-the-access-panel-browser-extension"></a>De browser uitbreiding van het toegangs venster installeren
-
-Volg de onderstaande stappen om de browser uitbreiding van het toegangs venster te installeren:
-
-1.  Open het [toegangs venster](https://myapps.microsoft.com) in een van de ondersteunde browsers en meld u aan als een **gebruiker** in uw Azure AD.
-
-2.  Klik op een **wacht woord-SSO-toepassing** in het toegangs venster.
-
-3.  Selecteer **nu installeren**bij de vraag of u de software wilt installeren.
-
-4.  Op basis van uw browser wordt u omgeleid naar de download koppeling. **Voeg** de uitbrei ding toe aan uw browser.
-
-5.  Als uw browser vraagt, selecteert u de extensie **inschakelen** of **toestaan** .
-
-6.  Nadat de installatie is voltooid, start u de browser sessie **opnieuw** .
-
-7.  Meld u aan bij het toegangs venster en controleer of u uw wacht woord-SSO-toepassingen kunt **starten** .
-
-U kunt de uitbrei ding voor Chrome en micro soft Edge ook downloaden via de onderstaande rechtstreekse koppelingen:
-
--   [Uitbrei ding Chrome toegangs paneel](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-
--   [Uitbrei ding toegang tot micro soft Edge-paneel](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
-
-## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Federatieve eenmalige aanmelding configureren voor een toepassing in de Azure AD-galerie
-
-Voor alle toepassingen in de Azure AD-galerie die is ingeschakeld met de Enter prise-functie voor eenmalige aanmelding, is een stapsgewijze zelf studie beschikbaar. U kunt toegang krijgen tot de [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) voor een gedetailleerde stapsgewijze uitleg.
-
-Als u een toepassing vanuit de Azure AD-galerie wilt configureren, moet u het volgende doen:
-
--   Een toepassing toevoegen vanuit de Azure AD-galerie
-
--   [De meta gegevens waarden van de toepassing configureren in azure AD (aanmelden op URL, id, antwoord-URL)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
-
--   [Gebruikers-id selecteren en gebruikers kenmerken toevoegen die naar de toepassing moeten worden verzonden](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
-
--   [Azure AD-meta gegevens en-certificaat ophalen](#download-the-azure-ad-metadata-or-certificate)
-
--   [Meta gegevens van Azure AD in de toepassing configureren (aanmeldings-URL, verlener, afmeldings-URL en certificaat)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
-
--   Gebruikers toewijzen aan een toepassing
-
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Een toepassing toevoegen vanuit de Azure AD-galerie
-
-Voer de volgende stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
-
-1.  Open de [Azure Portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **co-** beheerder
-
-2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
+### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Controleren of een gebruikers account bestaat in Azure Active Directory
+Voer de volgende stappen uit om te controleren of het account van een gebruiker aanwezig is:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
 3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5.  Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
-
-6.  Typ de naam van de toepassing in het tekstvak **Geef een naam** op in de sectie **toevoegen vanuit de galerie** .
-
-7.  Selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
-
-8.  Voordat u de toepassing toevoegt, kunt u de naam ervan wijzigen in het tekstvak **naam** .
-
-9.  Klik op de knop **toevoegen** om de toepassing toe te voegen.
-
-Na een korte periode kunt u het configuratie venster van de toepassing bekijken.
-
-### <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Eenmalige aanmelding configureren voor een toepassing vanuit de Azure AD-galerie
-
-Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor een toepassing:
-
-1. <span id="_Hlk477187909" class="anchor"><span id="_Hlk477001983" class="anchor"></span></span>Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren.
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Selecteer **op SAML gebaseerde aanmelding** in de **modus** vervolg keuzelijst.
-
-9. Voer de vereiste waarden in het **domein en de url's in.** U moet deze waarden ophalen van de leverancier van de toepassing.
-
-   1. De aanmeldings-URL is een vereiste waarde om de toepassing te configureren als door SP geïnitieerde SSO. Voor sommige toepassingen is de id ook een vereiste waarde.
-
-   2. De antwoord-URL is een vereiste waarde om de toepassing te configureren als een door IdP geïnitieerde SSO. Voor sommige toepassingen is de id ook een vereiste waarde.
-
-10. **Optioneel:** Klik op **Geavanceerde URL-instellingen weer geven** als u de niet-vereiste waarden wilt zien.
-
-11. Selecteer in de **gebruikers kenmerken**de unieke id voor uw gebruikers in de vervolg keuzelijst **gebruikers-id** .
-
-12. **Optioneel:** Klik op **alle andere gebruikers kenmerken weer geven en bewerken** om de kenmerken te bewerken die naar de toepassing in het SAML-token moeten worden verzonden wanneer gebruikers zich aanmelden.
-
-    Een kenmerk toevoegen:
-
-    1. Klik op **kenmerk toevoegen**. Voer de **naam** in en selecteer de **waarde** in de vervolg keuzelijst.
-
-    2. Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
-
-13. Klik **op &lt; toepassings naam &gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u de Url's van de meta gegevens en het certificaat dat vereist is voor de installatie van SSO met de toepassing.
-
-14. Klik op **Opslaan** om de configuratie op te slaan.
-
-15. Gebruikers toewijzen aan de toepassing.
-
-### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Gebruikers-id selecteren en gebruikers kenmerken toevoegen die naar de toepassing moeten worden verzonden
-
-Volg de onderstaande stappen om de gebruikers-id te selecteren of gebruikers kenmerken toe te voegen:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u hier wilt weer geven niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding hebt geconfigureerd.
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Selecteer in de sectie **gebruikers kenmerken** de unieke id voor uw gebruikers in de vervolg keuzelijst **gebruikers-id** . De geselecteerde optie moet overeenkomen met de verwachte waarde in de toepassing om de gebruiker te verifiëren.
-
-   >[!NOTE]
-   >Azure AD Selecteer de indeling voor het NameID-kenmerk (gebruikers-id) op basis van de geselecteerde waarde of de indeling die door de toepassing is aangevraagd in het SAML-AuthRequest. Ga naar het [SAML-protocol voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) via de sectie NameIDPolicy voor meer informatie.
-   >
-   >
-
-9. Om gebruikers kenmerken toe te voegen, klikt u op **alle andere gebruikers kenmerken weer geven en bewerken** om de kenmerken te bewerken die naar de toepassing in het SAML-token moeten worden verzonden wanneer gebruikers zich aanmelden.
-
-   Een kenmerk toevoegen:
-
-   1. Klik op **kenmerk toevoegen**. Voer de **naam** in en selecteer de **waarde** in de vervolg keuzelijst.
-
-   2. Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
-
-### <a name="download-the-azure-ad-metadata-or-certificate"></a>De meta gegevens of het certificaat van Azure AD downloaden
-
-Volg de onderstaande stappen om de meta gegevens van de toepassing of het certificaat te downloaden van Azure AD:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding hebt geconfigureerd.
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Ga naar de sectie **SAML-handtekening certificaat** en klik vervolgens op kolom waarde **downloaden** . Afhankelijk van wat de toepassing nodig heeft om eenmalige aanmelding te configureren, ziet u de optie voor het downloaden van de meta gegevens-XML of het certificaat.
-
-   Azure AD biedt geen URL om de meta gegevens op te halen. De meta gegevens kunnen alleen worden opgehaald als een XML-bestand.
-
-## <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie
-
-Als u een niet-galerie toepassing wilt configureren, moet u Azure AD Premium hebben en de toepassing biedt ondersteuning voor SAML 2,0. Ga voor meer informatie over Azure AD-versies naar [Azure ad-prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
-
--   De meta gegevens waarden van de toepassing configureren in azure AD (aanmelden op URL, id, antwoord-URL)
-
--   [Gebruikers-id selecteren en gebruikers kenmerken toevoegen die naar de toepassing moeten worden verzonden](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
-
--   [Azure AD-meta gegevens en-certificaat ophalen](#download-the-azure-ad-metadata-or-certificate)
-
--   Meta gegevens van Azure AD in de toepassing configureren (aanmeldings-URL, verlener, afmeldings-URL en certificaat)
-
-### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>De meta gegevens waarden van de toepassing configureren in azure AD (aanmelden op URL, id, antwoord-URL)
-
-Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor een toepassing die zich niet in de Azure AD-galerie bevindt:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
-
-6. Klik op **niet-galerie toepassing** in het gedeelte **uw eigen app toevoegen** .
-
-7. Voer de naam van de toepassing in het tekstvak **naam** in.
-
-8. Klik op de knop **toevoegen** om de toepassing toe te voegen.
-
-9. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-10. Selecteer op **SAML gebaseerde aanmelding** in de **modus** vervolg keuzelijst
-
-11. Voer de vereiste waarden in het **domein en de url's in.** U moet deze waarden ophalen van de leverancier van de toepassing.
-
-    1. Als u de toepassing wilt configureren als door IdP geïnitieerde SSO, voert u de antwoord-URL en de id in.
-
-    2. **Optioneel:** De aanmeldings-URL is een vereiste waarde om de toepassing te configureren als door SP geïnitieerde SSO.
-
-12. Selecteer in de **gebruikers kenmerken**de unieke id voor uw gebruikers in de vervolg keuzelijst **gebruikers-id** .
-
-13. **Optioneel:** Klik op **alle andere gebruikers kenmerken weer geven en bewerken** om de kenmerken te bewerken die naar de toepassing in het SAML-token moeten worden verzonden wanneer gebruikers zich aanmelden.
-
-    Een kenmerk toevoegen:
-
-    1. Klik op **kenmerk toevoegen**. Voer de **naam** in en selecteer de **waarde** in de vervolg keuzelijst.
-
-    2. Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
-
-14. Klik **op &lt; toepassings naam &gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u Azure AD-Url's en een certificaat vereist voor de toepassing.
-
-### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Gebruikers-id selecteren en gebruikers kenmerken toevoegen die naar de toepassing moeten worden verzonden
-
-Volg de onderstaande stappen om de gebruikers-id te selecteren of gebruikers kenmerken toe te voegen:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding hebt geconfigureerd.
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Selecteer in de sectie **gebruikers kenmerken** de unieke id voor uw gebruikers in de vervolg keuzelijst **gebruikers-id** . De geselecteerde optie moet overeenkomen met de verwachte waarde in de toepassing om de gebruiker te verifiëren.
-
-   >[!NOTE]
-   >Azure AD Selecteer de indeling voor het NameID-kenmerk (gebruikers-id) op basis van de geselecteerde waarde of de indeling die door de toepassing is aangevraagd in het SAML-AuthRequest. Ga naar het [SAML-protocol voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) via de sectie NameIDPolicy voor meer informatie.
-   >
-   >
-
-9. Om gebruikers kenmerken toe te voegen, klikt u op **alle andere gebruikers kenmerken weer geven en bewerken** om de kenmerken te bewerken die naar de toepassing in het SAML-token moeten worden verzonden wanneer gebruikers zich aanmelden.
-
-   Een kenmerk toevoegen:
-
-   1. Klik op **kenmerk toevoegen**. Voer de **naam** in en selecteer de **waarde** in de vervolg keuzelijst.
-
-   2 Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
-
-### <a name="download-the-azure-ad-metadata-or-certificate"></a>De meta gegevens of het certificaat van Azure AD downloaden
-
-Volg de onderstaande stappen om de meta gegevens van de toepassing of het certificaat te downloaden van Azure AD:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding hebt geconfigureerd.
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Ga naar de sectie **SAML-handtekening certificaat** en klik vervolgens op kolom waarde **downloaden** . Afhankelijk van wat de toepassing nodig heeft om eenmalige aanmelding te configureren, ziet u de optie voor het downloaden van de meta gegevens-XML of het certificaat.
-
-   Azure AD biedt geen URL om de meta gegevens op te halen. De meta gegevens kunnen alleen worden opgehaald als een XML-bestand.
-
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Eenmalige aanmelding met een wacht woord configureren voor een toepassing in de Azure AD-galerie
-
-Als u een toepassing vanuit de Azure AD-galerie wilt configureren, moet u het volgende doen:
-
--   Een toepassing toevoegen vanuit de Azure AD-galerie
-
--   De toepassing configureren voor eenmalige aanmelding met een wacht woord
-
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Een toepassing toevoegen vanuit de Azure AD-galerie
-
-Voer de volgende stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
-
-1.  Open de [Azure Portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **co-** beheerder
-
-2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Controleer de eigenschappen van het gebruikers object om er zeker van te zijn dat ze eruitzien zoals verwacht en er geen gegevens ontbreken.
+
+### <a name="check-a-users-account-status"></a>De account status van een gebruiker controleren
+Voer de volgende stappen uit om de account status van een gebruiker te controleren:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
 3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Selecteer een **profiel**.
+8.  Onder **instellingen** zorgt u ervoor dat **blok keren aanmelden** is ingesteld op **Nee**.
 
-4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5.  Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
-
-6.  Typ de naam van de toepassing in het tekstvak **Geef een naam** op in de sectie **toevoegen vanuit de galerie** .
-
-7.  Zoek en selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
-
-8.  Voordat u de toepassing toevoegt, kunt u de naam ervan wijzigen in het tekstvak **naam** .
-
-9.  Klik op de knop **toevoegen** om de toepassing toe te voegen.
-
-Na een korte periode kunt u het configuratie venster van de toepassing bekijken.
-
-### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing configureren voor eenmalige aanmelding met een wacht woord
-
-Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor een toepassing:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Selecteer de **aanmeldings modus op basis van wacht woord.**
-
-9. Gebruikers toewijzen aan de toepassing.
-
-10. Daarnaast kunt u ook referenties namens de gebruiker opgeven door de rijen van de gebruikers te selecteren en op **referenties bijwerken** te klikken en de gebruikers naam en het wacht woord namens de gebruikers in te voeren. Anders wordt gebruikers gevraagd de referenties zelf in te voeren bij het starten.
-
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Eenmalige aanmelding met een wacht woord configureren voor een toepassing buiten de galerie
-
-Als u een toepassing vanuit de Azure AD-galerie wilt configureren, moet u het volgende doen:
-
--   [Een niet-galerie toepassing toevoegen](#add-a-non-gallery-application)
-
--   [De toepassing configureren voor eenmalige aanmelding met een wacht woord](#configure-the-application-for-password-single-sign-on)
-
-### <a name="add-a-non-gallery-application"></a>Een niet-galerie toepassing toevoegen
-
-Voer de volgende stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
-
-1.  Open de [Azure Portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **co-** beheerder
-
-2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
+### <a name="reset-a-users-password"></a>Het wacht woord van een gebruiker opnieuw instellen
+Voer de volgende stappen uit om het wacht woord van een gebruiker opnieuw in te stellen:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
 3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Selecteer de knop **wacht woord opnieuw instellen** boven aan het deel venster van de gebruiker.
+8.  Selecteer de knop **wacht woord opnieuw instellen** in het deel venster **wacht woord opnieuw instellen** dat wordt weer gegeven.
+9.  Kopieer het **tijdelijke wacht woord** of **Voer een nieuw wacht woord** voor de gebruiker in.
+10. Dit nieuwe wacht woord aan de gebruiker door geven, moet dit wacht woord tijdens de volgende aanmelding worden gewijzigd in Azure Active Directory.
 
-4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
+### <a name="enable-self-service-password-reset"></a>Selfservice voor wachtwoordherstel inschakelen
+Voer de volgende implementatie stappen uit om selfservice voor wachtwoord herstel in te scha kelen:
+-   [Gebruikers in staat stellen hun Azure Active Directory wacht woorden opnieuw in te stellen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Gebruikers in staat stellen om hun Active Directory on-premises wacht woorden opnieuw in te stellen of te wijzigen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-5.  Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
-
-6.  Klik op **toepassing voor niet-galerie.**
-
-7.  Voer de naam van uw toepassing in het tekstvak **naam** in. Selecteer **toevoegen.**
-
-Na een korte periode kunt u het configuratie venster van de toepassing bekijken.
-
-### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing configureren voor eenmalige aanmelding met een wacht woord
-
-Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor een toepassing:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren.
-
-7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Selecteer de **aanmeldings modus op basis van wacht woord.**
-
-9. Voer de **aanmeldings-URL**in. Dit is de URL waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. Zorg ervoor dat de aanmeldings velden zichtbaar zijn op de URL.
-
-10. Gebruikers toewijzen aan de toepassing.
-
-11. Daarnaast kunt u ook referenties namens de gebruiker opgeven door de rijen van de gebruikers te selecteren en op **referenties bijwerken** te klikken en de gebruikers naam en het wacht woord namens de gebruikers in te voeren. Anders wordt gebruikers gevraagd de referenties zelf in te voeren bij het starten.
-
-## <a name="how-to-assign-a-user-to-an-application-directly"></a>Direct toewijzen van een gebruiker aan een toepassing
-
-Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing:
-
+### <a name="check-a-users-multi-factor-authentication-status"></a>De multi-factor Authentication-status van een gebruiker controleren
+Voer de volgende stappen uit om de multi-factor Authentication-status van een gebruiker te controleren:
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
+2. Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
 3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4. Selecteer **gebruikers en groepen** in het navigatie menu.
+5. Selecteer **alle gebruikers**.
+6. Selecteer de knop **multi-factor Authentication** boven aan het deel venster.
+7. Nadat de **multi-factor Authentication beheer Portal** is geladen, controleert u of u zich op het tabblad **gebruikers** bevindt.
+8. Zoek de gebruiker in de lijst met gebruikers door te zoeken, te filteren of te sorteren.
+9. Selecteer de gebruiker in de lijst met gebruikers en **Schakel**indien **gewenst multi-** Factor Authentication in, **uit**of af.
+   >[!NOTE]
+   >Als een gebruiker een **afgedwongen** status heeft, kunt u deze zo instellen dat ze tijdelijk worden **uitgeschakeld** om ze weer in hun account te laten staan. Zodra ze weer in zijn, kunt u de status wijzigen in **ingeschakeld** zodat ze hun contact gegevens opnieuw moeten registreren tijdens de volgende aanmelding. U kunt ook de stappen volgen in de [contact gegevens van een gebruiker controleren](#check-a-users-authentication-contact-info) om te controleren of deze gegevens voor hen in te stellen.
 
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
+### <a name="check-a-users-authentication-contact-info"></a>De contact gegevens voor de verificatie van een gebruiker controleren
+Voer de volgende stappen uit om de contact gegevens van een gebruiker te controleren die wordt gebruikt voor multi-factor Authentication, voorwaardelijke toegang, identiteits beveiliging en wachtwoord herstel:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Selecteer een **profiel**.
+8.  Schuif omlaag naar de **contact gegevens**van de verificatie.
+9.  **Controleer** de gegevens die voor de gebruiker zijn geregistreerd en werk deze indien nodig bij.
 
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+### <a name="check-a-users-group-memberships"></a>De groepslid maatschappen van een gebruiker controleren
+Voer de volgende stappen uit om de groepslid maatschappen van een gebruiker te controleren:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Selecteer **groepen** om te zien van welke groepen de gebruiker lid is.
 
+### <a name="check-a-users-assigned-licenses"></a>De toegewezen licenties van een gebruiker controleren
+Voer de volgende stappen uit om de toegewezen licenties van een gebruiker te controleren:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Selecteer **licenties** om te zien welke licenties de gebruiker momenteel heeft toegewezen.
+
+### <a name="assign-a-user-a-license"></a>Een licentie toewijzen aan een gebruiker 
+Voer de volgende stappen uit om een licentie aan een gebruiker toe te wijzen:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **alle gebruikers**.
+6.  **Zoek** naar de gebruiker die u wilt interesseren en **Selecteer de rij** die u wilt selecteren.
+7.  Selecteer **licenties** om te zien welke licenties de gebruiker momenteel heeft toegewezen.
+8.  Selecteer de knop **toewijzen** .
+9.  Selecteer **een of meer producten** uit de lijst met beschik bare producten.
+10. Selecteer **optioneel** het item **toewijzings opties** om producten nauw keurig toe te wijzen. Selecteer **OK**.
+11. Selecteer de knop **toewijzen** om deze licenties aan deze gebruiker toe te wijzen.
+
+## <a name="troubleshooting-deep-links"></a>Problemen met diepe koppelingen oplossen
+Diep gaande koppelingen of Url's voor gebruikers toegang zijn koppelingen die uw gebruikers kunnen gebruiken om rechtstreeks vanuit hun browser-URL-balken toegang te krijgen tot hun wacht woord-SSO-toepassingen. Als u naar deze koppeling navigeert, worden gebruikers automatisch aangemeld bij de toepassing zonder dat ze eerst naar mijn apps hoeven te gaan. De koppeling is dezelfde die gebruikers gebruiken om toegang te krijgen tot deze toepassingen vanuit het start programma voor Office 365-toepassingen.
+
+### <a name="checking-the-deep-link"></a>De diepe koppeling controleren
+
+Voer de volgende stappen uit om te controleren of u de juiste diepte koppeling hebt:
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+2. Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4. Selecteer **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
+5. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
    * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
+6. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+7. Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
+8. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+9. Selecteer **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
+10. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+    * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
+11. Selecteer de toepassing waarvoor u de diepe koppeling wilt controleren.
+12. Zoek het label **gebruikers toegangs-URL**. Uw diepte koppeling moet overeenkomen met deze URL.
 
-6. Selecteer in de lijst de toepassing waaraan u een gebruiker wilt toewijzen.
-
-7. Zodra de toepassing is geladen, klikt u op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
-
-8. Klik op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** om het deel venster **toewijzing toevoegen** te openen.
-
-9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
-
-10. Typ de **volledige naam** of het **e-mail adres** van de gebruiker die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
-
-11. Beweeg de muis aanwijzer over de **gebruiker** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast de foto of het logo van het profiel van de gebruiker om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
-
-12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
-
-13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
-
-14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
-
-15. Klik op de knop **toewijzen** om de toepassing aan de geselecteerde gebruikers toe te wijzen.
-
-Na een korte periode kunnen de gebruikers die u hebt geselecteerd deze toepassingen in het toegangs venster starten.
-
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor probleem oplossing niet het probleem oplossen
-
+## <a name="contact-support"></a>Contact opnemen met ondersteuning
 Open een ondersteunings ticket met de volgende informatie, indien beschikbaar:
-
 -   ID correlatie fout
-
 -   UPN (e-mail adres van gebruiker)
-
 -   TenantID
-
 -   Browsertype
-
 -   Tijd zone en tijd/tijds duur tijdens fout
-
 -   Fiddler traceringen
 
 ## <a name="next-steps"></a>Volgende stappen
-[Eenmalige aanmelding bieden voor uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md)
-
+- [Quickstartreeks over toepassingsbeheer](view-applications-portal.md)

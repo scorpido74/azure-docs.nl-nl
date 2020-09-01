@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281987"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070391"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -38,7 +38,7 @@ Zie de sectie voor beelden in dit artikel voor meer informatie.
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 - [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Geavanceerd
@@ -254,7 +254,7 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--van-tot** teken reeks optioneel de combi natie van bron doel opgeven. Bijvoorbeeld: `LocalBlob` , `BlobLocal` , `LocalBlobFS` .
 
-**--Help** Help bij kopiëren.
+**--Help**  Help bij kopiëren.
 
 **--include-after-** teken reeks bevatten alleen de bestanden die zijn gewijzigd op of na de opgegeven datum/tijd. De waarde moet de indeling ISO8601 hebben. Als er geen tijd zone is opgegeven, wordt ervan uitgegaan dat de waarde zich in de lokale tijd zone bevindt van de machine waarop AzCopy wordt uitgevoerd. bijvoorbeeld `2020-08-19T15:04:00Z` voor een UTC-tijd of `2020-08-19` voor middernacht (00:00) in de lokale tijd zone. Net als bij AzCopy 10,5 is deze vlag alleen van toepassing op bestanden, niet op mappen, zodat de mapeigenschappen niet worden gekopieerd wanneer deze vlag met of wordt gebruikt `--preserve-smb-info` `--preserve-smb-permissions` .
 
@@ -263,6 +263,8 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 **--include-** teken reeks bevat alleen deze paden bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: `myFolder;myFolder/subDirName/file.pdf` ).
 
 **--include-patroon** teken reeks bevatten alleen deze bestanden bij het kopiëren. Deze optie biedt ondersteuning voor joker tekens (*). Scheid bestanden met behulp van een `;` .
+
+**--lijst-van-versie** teken reeks geeft een bestand op waarin elke versie-id wordt weer gegeven op een afzonderlijke regel. Zorg ervoor dat de bron moet verwijzen naar een enkele Blob en dat alle versie-id's die zijn opgegeven in het bestand met deze vlag, alleen bij de bron-BLOB horen. AzCopy worden de opgegeven versies gedownload in de opgegeven doelmap. Zie [eerdere versies van een BLOB downloaden](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)voor meer informatie.
 
 **--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: info (alle aanvragen/antwoorden), waarschuwing (trage antwoorden), fout (alleen mislukte aanvragen) en geen (geen uitvoer Logboeken). (standaard `INFO` ). 
 
@@ -302,6 +304,6 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--vertrouwd-micro soft-achtervoegsels** teken reeks geeft aanvullende domein achtervoegsels aan waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaardwaarde is `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [azcopy](storage-ref-azcopy.md)

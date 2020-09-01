@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 029753ecb0afd0cdd02a2f4594a0708cbda06efc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c80269c949ec97a09584d736371ccd11879fd82b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828214"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069694"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgraden naar een V2-opslagaccount voor algemeen gebruik
 
@@ -47,7 +47,7 @@ Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam v
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met behulp van Azure CLI, moet u eerst de nieuwste versie van Azure CLI installeren. Zie [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie over het installeren van de CLI.
 

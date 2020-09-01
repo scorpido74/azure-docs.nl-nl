@@ -4,15 +4,15 @@ description: Gebruik de portal om een nieuwe of bestaande gegevens schijf te kop
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 82b4bd4444ae73b6a4631bae7efb8110de00f439
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a37ed39f3c663f9f77daa1ed8f6946403348edd0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757695"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072635"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -138,15 +138,17 @@ sudo mount /dev/sdc1 /datadrive
 Om ervoor te zorgen dat het station automatisch na het opnieuw opstarten opnieuw wordt gekoppeld, moet het worden toegevoegd aan het *bestand/etc/fstab* -bestand. Het wordt ook ten zeerste aanbevolen om de UUID (Universally Unique Identifier) in *bestand/etc/fstab* te gebruiken om te verwijzen naar het station in plaats van alleen de naam van het apparaat (zoals */dev/sdc1*). Als het besturingssysteem een schijffout ontdekt tijdens het opstarten, kunt u door de UUID te gebruiken voorkomen dat de verkeerde schijf wordt gekoppeld aan een bepaalde locatie. Resterende gegevensschijven worden dan toegewezen aan dezelfde apparaat-id's. Als u de UUID van het nieuwe station wilt zoeken, gebruikt u het hulpprogramma `blkid`:
 
 ```bash
-sudo -i blkid
+sudo blkid
 ```
 
 De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 
 ```bash
-/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
-/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
-/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+/dev/sda1: LABEL="cloudimg-rootfs" UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4" PARTUUID="1a1b1c1d-11aa-1234-1a1a1a1a1a1a"
+/dev/sda15: LABEL="UEFI" UUID="BCD7-96A6" TYPE="vfat" PARTUUID="1e1g1cg1h-11aa-1234-1u1u1a1a1u1u"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4" TYPE="ext4" PARTUUID="1a2b3c4d-01"
+/dev/sda14: PARTUUID="2e2g2cg2h-11aa-1234-1u1u1a1a1u1u"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs" PARTLABEL="xfspart" PARTUUID="c1c2c3c4-1234-cdef-asdf3456ghjk"
 ```
 
 > [!NOTE]
@@ -161,7 +163,7 @@ sudo nano /etc/fstab
 In dit voor beeld gebruikt u de UUID-waarde voor het `/dev/sdc1` apparaat dat is gemaakt in de vorige stappen en de koppel punt van `/datadrive` . Voeg de volgende regel toe aan het einde van het `/etc/fstab` bestand:
 
 ```bash
-UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail   1   2
 ```
 
 We hebben de nano editor gebruikt, dus wanneer u klaar bent met het bewerken van het bestand, gebruikt `Ctrl+O` u om het bestand te schrijven en `Ctrl+X` de editor af te sluiten.
@@ -204,7 +206,7 @@ Er zijn twee manieren om ondersteuning voor het verkleinen van de virtuele Linux
 * Gebruik de `discard` koppelings optie in *bestand/etc/fstab*, bijvoorbeeld:
 
     ```bash
-    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2
     ```
 * In sommige gevallen kan de `discard` optie invloed hebben op de prestaties. U kunt de `fstrim` opdracht ook hand matig uitvoeren vanaf de opdracht regel of deze toevoegen aan uw crontab om regel matig uit te voeren:
   

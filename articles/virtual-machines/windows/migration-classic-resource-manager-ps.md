@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: cf020dba240d87e2e7c1c291e3c15df9611395e8
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2bd3140ad8e0c8502c8760a5d9bdf426c828470c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507508"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072399"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Power shell
 
@@ -49,7 +50,7 @@ Hier volgen enkele aanbevolen procedures voor het bepalen van de migratie van Ia
 ## <a name="step-2-install-the-latest-version-of-powershell"></a>Stap 2: de nieuwste versie van Power Shell installeren
 Er zijn twee belang rijke opties voor het installeren van Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) of [Web platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI ontvangt maandelijkse updates. PowerShell Gallery updates doorlopend worden ontvangen. Dit artikel is gebaseerd op Azure PowerShell versie 2.1.0.
 
-Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor installatie-instructies.
+Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor de installatie-instructies.
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Stap 3: Zorg ervoor dat u een beheerder bent voor het abonnement
 Als u deze migratie wilt uitvoeren, moet u worden toegevoegd als een cobeheerder voor het abonnement in de [Azure Portal](https://portal.azure.com).

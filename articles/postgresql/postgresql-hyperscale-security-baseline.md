@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: a7014e6721cb6985ddff5ddaf773de4e85a048e0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563905"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071496"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige
 
@@ -299,7 +299,7 @@ U kunt ook logboeken opnemen in azure Sentinel voor verder onderzoek.
 
 **Verantwoordelijkheid**: momenteel niet beschikbaar
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -347,13 +347,13 @@ In sommige gevallen vereist toepassingen van derden een lokaal certificaat besta
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het besturings element grootschalige (Citus) (bijvoorbeeld Azure Portal). RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot het besturings element grootschalige (Citus) (bijvoorbeeld Azure Portal) te beheren. Azure RBAC heeft geen invloed op de gebruikers machtigingen binnen de data base.
 
 Als u de gebruikers bevoegdheden op database niveau wilt wijzigen, gebruikt u de standaard PostgreSQL-opdrachten met een hulp programma zoals PgAdmin of psql.
 
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 - [Gebruikers toegang configureren met SQL voor Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
@@ -742,7 +742,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
-**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
 
 - [U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests met door micro soft beheerde Cloud infrastructuur,-services en-toepassingen.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

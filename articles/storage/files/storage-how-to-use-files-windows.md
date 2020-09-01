@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905751"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071071"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -64,7 +65,7 @@ Dit script ophalen:
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Hierbij":::
 
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinding maken**.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
 

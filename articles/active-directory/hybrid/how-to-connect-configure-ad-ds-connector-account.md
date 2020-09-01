@@ -11,14 +11,15 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce6f0e5e6e958e72ddc04608c5f207fedb18daf9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360058"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072261"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: machtigingen voor het AD DS-Connector account configureren 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: De machtigingen van een AD DS Connector-account configureren 
 
 De Power shell-module met de naam [ADSyncConfig. psm1](reference-connect-adsyncconfig.md) is geïntroduceerd in Build 1.1.880.0 (uitgebracht in augustus 2018), die een verzameling cmdlets bevat waarmee u de juiste Active Directory machtigingen voor uw Azure AD Connect-implementatie kunt configureren. 
 
@@ -136,7 +137,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
  
 
-|Type |Name |Access |Van toepassing op| 
+|Type |Naam |Access |Van toepassing op| 
 |-----|-----|-----|-----|
 |Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende objecten van apparaat| 
 |Toestaan |AD DS Connector-account|Alle eigenschappen lezen |Onderliggend InetOrgPerson-objecten| 
@@ -162,7 +163,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan|AD DS Connector-account|Eigenschap lezen/schrijven|Onderliggende gebruikers objecten|
 
@@ -182,7 +183,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan |AD DS Connector-account |Directory wijzigingen repliceren |Alleen dit object (root van het domein)| 
 |Toestaan |AD DS Connector-account |Directory wijzigingen repliceren |Alleen dit object (root van het domein)| 
@@ -202,7 +203,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan |AD DS Connector-account |Wachtwoord opnieuw instellen |Onderliggende gebruikers objecten| 
 |Toestaan |AD DS Connector-account |Eigenschap Write lockoutTime |Onderliggende gebruikers objecten| 
@@ -222,7 +223,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan |AD DS Connector-account |Algemene lees-en schrijf bewerkingen |Alle kenmerken van de object type groep en subobjecten| 
 |Toestaan |AD DS Connector-account |Onderliggend object maken/verwijderen |Alle kenmerken van de object type groep en subobjecten| 
@@ -245,7 +246,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Met deze cmdlet worden de volgende machtigingen ingesteld:  
  
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan |AD DS Connector-account |Alle eigenschappen lezen/schrijven |Onderliggende gebruikers objecten| 
 |Toestaan |AD DS Connector-account |Alle eigenschappen lezen/schrijven |Onderliggend InetOrgPerson-objecten| 
@@ -267,7 +268,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende PublicFolder-objecten| 
 
@@ -292,7 +293,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
 |Toestaan |SYSTEEM |Volledig beheer |Dit object 
 |Toestaan |Ondernemingsadministrators |Volledig beheer |Dit object 

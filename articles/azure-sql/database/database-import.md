@@ -4,19 +4,19 @@ description: Maak een nieuwe data base in Azure SQL Database of Azure SQL Manage
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: migrate
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: a1e349d284d8f2c0c9c5194ac9f52534cd1ab973
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503239"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070041"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quick Start: een BACPAC-bestand importeren in een data base in Azure SQL Database of een beheerd exemplaar van Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -124,7 +124,7 @@ while ($importStatus.Status -eq "InProgress") {
 $importStatus
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik de opdracht [AZ-SQL-DB-import](/cli/azure/sql/db#az-sql-db-import) om een aanvraag voor het importeren van een Data Base naar Azure te verzenden. Afhankelijk van de grootte van de data base kan het enige tijd duren voordat de import bewerking is voltooid.
 

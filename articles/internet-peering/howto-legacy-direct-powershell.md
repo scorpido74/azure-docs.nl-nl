@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 803d2a09fb4114dae36dcb6147139c7b657501f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d3e7cdf11e1e1e033b4e72b9579d8c63b28e6c88
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700124"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071683"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>Een verouderde directe peering naar een Azure-resource converteren met behulp van Power shell
 
@@ -111,7 +112,7 @@ Type                 : Microsoft.Peering/peerings
 Tags                 : {}
 ```
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 U kunt gedetailleerde beschrijvingen van alle para meters verkrijgen door de volgende opdracht uit te voeren:
 
 ```powershell
