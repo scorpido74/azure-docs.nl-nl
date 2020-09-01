@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/28/2020
-ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055580"
+ms.locfileid: "89076511"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 
 - **Listener voor lezen/schrijven van failover-groep**
 
-  Een DNS CNAME-record die verwijst naar de URL van de huidige primaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de werk belasting lezen-schrijven kan transparant opnieuw verbinding maken met de primaire data base wanneer de primaire wijzigingen na een failover worden uitgevoerd. Wanneer de failovergroep is gemaakt op een server, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.database.windows.net` . Wanneer de failovergroep is gemaakt op een SQL-beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.database.windows.net` .
+  Een DNS CNAME-record die verwijst naar de URL van de huidige primaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de werk belasting lezen-schrijven kan transparant opnieuw verbinding maken met de primaire data base wanneer de primaire wijzigingen na een failover worden uitgevoerd. Wanneer de failovergroep is gemaakt op een server, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.database.windows.net` . Wanneer de failovergroep is gemaakt op een SQL-beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.<zone_id>.database.windows.net` .
 
 - **Listener voor alleen-lezen van failover-groep**
 
-  Een DNS CNAME-record die verwijst naar de alleen-lezen listener die verwijst naar de URL van de secundaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de alleen-lezen SQL-workload kan transparant worden verbonden met de secundaire met behulp van de opgegeven taakverdelings regels. Wanneer de failovergroep is gemaakt op een server, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.secondary.database.windows.net` . Wanneer de failovergroep is gemaakt op een SQL-beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.secondary.database.windows.net` .
+  Een DNS CNAME-record die verwijst naar de alleen-lezen listener die verwijst naar de URL van de secundaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de alleen-lezen SQL-workload kan transparant worden verbonden met de secundaire met behulp van de opgegeven taakverdelings regels. Wanneer de failovergroep is gemaakt op een server, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.secondary.database.windows.net` . Wanneer de failovergroep is gemaakt op een SQL-beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 - **Beleid voor automatische failover**
 
@@ -257,13 +257,13 @@ Bij het uitvoeren van OLTP-bewerkingen gebruikt u `<fog-name>.zone_id.database.w
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>Een alleen-lezen listener gebruiken om verbinding te maken met het secundaire exemplaar
 
-Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Als u rechtstreeks verbinding wilt maken met het geo-gerepliceerde secundair, gebruikt u `<fog-name>.zone_id.secondary.database.windows.net` als de server-URL en wordt de verbinding direct tot stand gebracht met het geo-gerepliceerde secundaire.
+Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Als u rechtstreeks verbinding wilt maken met het geo-gerepliceerde secundair, gebruikt u `<fog-name>.secondary.<zone_id>.database.windows.net` als de server-URL en wordt de verbinding direct tot stand gebracht met het geo-gerepliceerde secundaire.
 
 > [!NOTE]
 > In bepaalde service lagen ondersteunt SQL Database het gebruik van [alleen-lezen replica's](read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly` para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen replica op de primaire locatie of op de geo-gerepliceerde locatie.
 >
-> - Gebruik om verbinding te maken met een alleen-lezen replica op de primaire locatie `<fog-name>.zone_id.database.windows.net` .
-> - Gebruik om verbinding te maken met een alleen-lezen replica op de secundaire locatie `<fog-name>.secondary.zone_id.database.windows.net` .
+> - Gebruik om verbinding te maken met een alleen-lezen replica op de primaire locatie `<fog-name>.<zone_id>.database.windows.net` .
+> - Gebruik om verbinding te maken met een alleen-lezen replica op de secundaire locatie `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>Prestatie vermindering voorbereiden
 

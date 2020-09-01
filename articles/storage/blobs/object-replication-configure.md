@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566060"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076171"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs configureren (preview-versie)
 
@@ -24,6 +24,8 @@ Met object replicatie (preview) worden blok-blobs tussen een bron opslag account
 Wanneer u object replicatie configureert, maakt u een replicatie beleid dat het bron opslag account en het doel account opgeeft. Een replicatie beleid bevat een of meer regels die een bron container en een doel container opgeven en aangeven welke blok-blobs in de bron container worden gerepliceerd.
 
 In dit artikel wordt beschreven hoe u object replicatie configureert voor uw opslag account met behulp van de Azure Portal, Power shell of Azure CLI. U kunt ook een van de Azure Storage Resource provider-client bibliotheken gebruiken om object replicatie te configureren.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>Een replicatie beleid en-regels maken
 
@@ -37,7 +39,7 @@ Voordat u begint, moet u ervoor zorgen dat u hebt geregistreerd voor de volgende
 - [Versie beheer van BLOB (preview)](versioning-overview.md)
 - [Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voordat u object replicatie configureert in de Azure Portal, maakt u de bron-en doel containers in hun respectieve opslag accounts, als deze nog niet bestaan. Daarnaast is het inschakelen van BLOB-versie beheer en het wijzigen van de feed voor het bron account, en schakelt u BLOB-versie beheer in op het doel account.
 
@@ -158,7 +160,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -InputObject $destPolicy
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een replicatie beleid met Azure CLI wilt maken, moet u eerst de preview-extensie voor Azure Storage installeren.:
 
@@ -253,7 +255,7 @@ az storage account or-policy show \
 
 Als u een replicatie beleid en de bijbehorende regels wilt verwijderen, gebruikt u Azure Portal, Power shell of CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om een replicatie beleid te verwijderen in de Azure Portal:
 
@@ -278,7 +280,7 @@ Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -PolicyId $destPolicy.PolicyId
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een replicatie beleid wilt verwijderen, verwijdert u het beleid van zowel het bron account als het doel account. Als u het beleid verwijdert, worden ook alle bijbehorende regels verwijderd.
 

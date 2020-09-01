@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 383e135cad867ed8f345b39a6cace6fbbca8bfa0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005131"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076375"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Azure-beveiligings basislijn voor Data Lake Analytics
 
@@ -334,7 +334,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
-**Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure AD biedt op rollen gebaseerd toegangs beheer (RBAC) voor nauw keurige controle over de toegang van een client tot Data Lake Analytics-resources.
+**Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure RBAC (op rollen gebaseerd toegangs beheer) biedt een nauw keurige controle over de toegang van een client tot Data Lake Analytics-resources.
 
 * [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -404,7 +404,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: isolatie implementeren met behulp van afzonderlijke abonnementen, beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgeving, gegevens gevoeligheid. U kunt uw Data Lake Analytics beperken om het toegangs niveau te bepalen voor uw Data Lake Analytics resources die uw toepassingen en ondernemings omgevingen vereisen. Wanneer Firewall regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot uw Data Lake Analytics-resources. U kunt de toegang tot Azure Data Lake Analytics beheren via Azure AD RBAC.
+**Richt lijnen**: isolatie implementeren met behulp van afzonderlijke abonnementen, beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgeving, gegevens gevoeligheid. U kunt uw Data Lake Analytics beperken om het toegangs niveau te bepalen voor uw Data Lake Analytics resources die uw toepassingen en ondernemings omgevingen vereisen. Wanneer Firewall regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot uw Data Lake Analytics-resources. U kunt de toegang tot Azure Data Lake Analytics beheren via Azure RBAC.
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -456,11 +456,11 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik op rollen gebaseerd toegangs beheer (RBAC) om te bepalen hoe gebruikers met de service communiceren.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om te bepalen hoe gebruikers met de service communiceren.
 
-* [Access Control op basis van rollen beheren](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure RBAC beheren](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869453"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077004"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2
 
@@ -49,11 +49,13 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |Container zacht verwijderen|Preview|Preview|[Voorlopig verwijderen voor containers (preview-versie)](soft-delete-container-overview.md)|
 |BLOB zacht verwijderen|Nog niet ondersteund|Nog niet ondersteund|[Blobs voorlopig verwijderen](storage-blob-soft-delete.md)|
 |Blobfuse|Preview|Nog niet ondersteund|[Blob-opslag koppelen als een bestands systeem met blobfuse](storage-how-to-mount-container-linux.md)|
-|Feed wijzigen|Nog niet ondersteund|Nog niet ondersteund|[Ondersteuning voor feed wijzigen in Azure Blob-opslag](storage-blob-change-feed.md)|
 |Account-failover|Nog niet ondersteund|Nog niet ondersteund|[Herstel na nood gevallen en failover van accounts](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB-container-ACL|Nog niet ondersteund<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Nog niet ondersteund<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Container-ACL instellen](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Aangepaste domeinen|Nog niet ondersteund|Nog niet ondersteund|[Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)|
 |Versleutelings bereik|Nog niet ondersteund|Nog niet ondersteund|[Versleutelings bereiken maken en beheren (preview-versie)](encryption-scope-manage.md)|
+|Feed wijzigen|Nog niet ondersteund|Nog niet ondersteund|[Ondersteuning voor feed wijzigen in Azure Blob-opslag](storage-blob-change-feed.md)|
+|Objectreplicatie|Nog niet ondersteund|Nog niet ondersteund|[Object replicatie voor blok-blobs configureren (preview-versie)](object-replication-configure.md)|
+|BLOB-versie beheer|Nog niet ondersteund|Nog niet ondersteund|[BLOB-versie beheer inschakelen en beheren (preview)](versioning-enable.md)|
 
 <div id="diagnostic-logging"><sup>1</sup> voor Premium Block Blob Storage-accounts kunnen Diagnostische logboeken (klassiek) niet worden ingeschakeld met behulp van de Azure Portal. Schakel deze in met behulp van Power shell.</div><br>
 

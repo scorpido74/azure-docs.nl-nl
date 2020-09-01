@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193102"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077225"
 ---
 # <a name="security-control-secure-configuration"></a>Beveiligings beheer: beveiligde configuratie
 
@@ -22,7 +22,7 @@ De beveiligings configuratie van Azure-resources tot stand brengen, implementere
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7.1 | 5.1 | Klant |
+| 7.1 | 5,1 | Klant |
 
 Gebruik Azure Policy aliassen om aangepaste beleids regels te maken om de configuratie van uw Azure-resources te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities gebruiken.
 
@@ -42,7 +42,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7.2 | 5.1 | Klant |
+| 7.2 | 5,1 | Klant |
 
 Gebruik Azure Security Center aanbevelingen voor het onderhouden van beveiligings configuraties op alle reken resources.  Daarnaast kunt u aangepaste installatie kopieën van besturings systemen of de configuratie van Azure Automation status gebruiken om de beveiligings configuratie te bepalen van het besturings systeem dat door uw organisatie wordt vereist.
 
@@ -74,7 +74,7 @@ Gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afd
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7.4 | 5.2 | Gedeeld |
+| 7,4 | 5.2 | Gedeeld |
 
 Volg de aanbevelingen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op uw Azure Compute-resources.  Daarnaast kunt u Azure Resource Manager-sjablonen, aangepaste installatie kopieën van besturings systemen of de configuratie van Azure Automation status gebruiken om de beveiligings configuratie van het besturings systeem te onderhouden dat door uw organisatie wordt vereist.   De micro soft-sjablonen voor virtuele machines in combi natie met de Azure Automation desired state Configuration kunnen helpen bij de vergadering en het onderhouden van de beveiligings vereisten. 
 
@@ -96,7 +96,7 @@ Houd er ook rekening mee dat de installatie kopieën van virtuele machines van A
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,5 | 5.3 | Klant |
+| 7.5 | 5.3 | Klant |
 
 Gebruik Azure DevOps om uw code veilig op te slaan en te beheren, zoals aangepaste Azure-beleids regels, Azure Resource Manager sjablonen en desired state Configuration-scripts. Als u toegang wilt krijgen tot de resources die u beheert in azure DevOps, kunt u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligings groepen of groepen die zijn gedefinieerd in Azure Active Directory (Azure AD) als deze zijn geïntegreerd met Azure DevOps, of Active Directory als dit is geïntegreerd met TFS.
 
@@ -108,15 +108,15 @@ Gebruik Azure DevOps om uw code veilig op te slaan en te beheren, zoals aangepas
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,6 | 5.3 | Klant |
+| 7.6 | 5.3 | Klant |
 
-Gebruik op rollen gebaseerd toegangs beheer (RBAC) als u aangepaste installatie kopieën gebruikt om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen met verschillende gebruikers, service-principals of AD-groepen binnen uw organisatie.  Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.  
+Als u aangepaste installatie kopieën gebruikt, kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen met verschillende gebruikers, service-principals of AD-groepen binnen uw organisatie.  Voor container installatie kopieën slaat u ze op in Azure Container Registry en maakt u gebruik van Azure RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.  
 
-- [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-- [Wat is RBAC voor Container Registry?](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [Meer informatie over Azure RBAC voor Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 - [Overzicht van Galerie gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
@@ -146,7 +146,7 @@ Azure Automation status configuratie is een configuratie beheer service voor DSC
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,9 | 5,5 | Klant |
+| 7.9 | 5.5 | Klant |
 
 Gebruik Azure Security Center om basislijn scans voor uw Azure-resources uit te voeren.  Gebruik Azure Policy bovendien om een waarschuwing te krijgen en Azure-resource configuraties te controleren.
 
@@ -156,7 +156,7 @@ Gebruik Azure Security Center om basislijn scans voor uw Azure-resources uit te 
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,10 | 5,5 | Klant |
+| 7.10 | 5.5 | Klant |
 
 Gebruik Azure Security Center voor het uitvoeren van basislijn scans voor OS-en docker-instellingen voor containers.
 
@@ -180,7 +180,7 @@ Gebruik Managed Service Identity in combi natie met Azure Key Vault om het gehei
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,12 | 4.1 | Klant |
+| 7.12 | 4.1 | Klant |
 
 Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in azure AD. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
@@ -199,4 +199,4 @@ Referentie scanner implementeren om referenties in code te identificeren. Refere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie het volgende beveiligings beheer: beveiliging [tegen schadelijke software](security-control-malware-defense.md)
+- Zie het volgende beveiligings beheer: beveiliging  [tegen schadelijke software](security-control-malware-defense.md)

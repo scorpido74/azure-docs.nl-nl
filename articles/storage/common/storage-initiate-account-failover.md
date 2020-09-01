@@ -10,13 +10,13 @@ ms.date: 06/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01718b4f3d539f77f4496a7914b027335cc45618
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 74f4c30f7aa018502f3437fd4a577f8c2a9de491
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503273"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077939"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Failover van een opslag account initiëren
 
@@ -91,7 +91,7 @@ Voer de volgende opdracht uit om een account-failover te initiëren vanuit Power
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name>
 ```
 
-## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een account-failover te initiëren, voert u de volgende opdrachten uit:
 
@@ -114,7 +114,7 @@ Nadat u GRS voor uw opslag account opnieuw hebt ingeschakeld, begint micro soft 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Herstel na nood geval en failover van het opslag account](storage-disaster-recovery-guidance.md)
+- [Herstel na noodgeval en failover van opslagaccount](storage-disaster-recovery-guidance.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
 - [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)
 - [Zelfstudie: Een maximaal beschikbare toepassing bouwen met Blob-opslag](../blobs/storage-create-geo-redundant-storage.md)

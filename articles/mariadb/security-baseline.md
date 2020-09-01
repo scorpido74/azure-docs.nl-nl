@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 69930342a69613c3863443c993d80e02e1981a98
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366829"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077242"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-beveiligings basislijn voor Azure Database for MariaDB
 
@@ -34,11 +34,11 @@ U kunt ook Virtual Network Service-eind punten gebruiken om de netwerk toegang t
 
 U kunt uw Azure Database for MariaDB ook beveiligen met firewall regels. De server firewall voor komt dat de toegang tot uw database server wordt verhinderd totdat u opgeeft welke computers zijn gemachtigd. U configureert de firewall door firewallregels te maken die bereiken opgeven van acceptabele IP-adressen. U kunt Firewall regels maken op server niveau.
 
-Persoonlijke koppeling configureren voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+Persoonlijke koppeling configureren voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-VNet-service-eind punten en VNet-regels maken en beheren in Azure Database for MariaDB server:https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+VNet-service-eind punten en VNet-regels maken en beheren in Azure Database for MariaDB server: https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-Azure Database for MariaDB firewall regels configureren:https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+Azure Database for MariaDB firewall regels configureren: https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Azure Security Center bewaking**: Ja
 
@@ -48,9 +48,9 @@ Azure Database for MariaDB firewall regels configureren:https://docs.microsoft.c
 
 **Hulp**: wanneer uw Azure database for MariaDB-server is beveiligd met een persoonlijk eind punt, kunt u virtuele machines in hetzelfde virtuele netwerk implementeren. U kunt een netwerk beveiligings groep (NSG) gebruiken om het risico van gegevens exfiltration te verminderen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-Persoonlijke koppeling configureren voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+Persoonlijke koppeling configureren voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics inschakelen en gebruiken:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics inschakelen en gebruiken: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -72,9 +72,9 @@ NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watch
 
 Schakel DDoS Protection standaard in op de virtuele netwerken die zijn gekoppeld aan uw Azure Database for MariaDB-instanties om te beschermen tegen DDoS-aanvallen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
 
-Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+DDoS-beveiliging configureren: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
 
@@ -86,7 +86,7 @@ DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/m
 
 **Hulp**: wanneer uw Azure database for MariaDB-server is beveiligd met een persoonlijk eind punt, kunt u virtuele machines in hetzelfde virtuele netwerk implementeren. U kunt vervolgens een netwerk beveiligings groep (NSG) configureren om het risico van gegevens exfiltration te verminderen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics inschakelen en gebruiken:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics inschakelen en gebruiken: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -97,7 +97,7 @@ NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watch
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
 **Hulp**: geavanceerde bedreigingen beveiliging gebruiken voor Azure database for MariaDB. Geavanceerde bedreigingen beveiliging detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
-Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
 
 **Azure Security Center bewaking**: Ja
@@ -118,7 +118,7 @@ Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for
 **Richt lijnen**: voor bronnen die toegang nodig hebben tot uw Azure database for MariaDB-instanties, gebruikt u de tags voor het virtuele netwerk om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de servicetag naam op te geven (bijvoorbeeld SQL. Westus) in het juiste bron-of doel veld van een regel kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 Opmerking: Azure Database for MariaDB gebruikt het service label ' micro soft. SQL '.
 
-Meer informatie over het gebruik van service Tags: informatie over het https://docs.microsoft.com/azure/virtual-network/service-tags-overview gebruik van de service code voor Azure database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+Meer informatie over het gebruik van service Tags: informatie over het https://docs.microsoft.com/azure/virtual-network/service-tags-overview gebruik van de service code voor Azure database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -136,11 +136,11 @@ Meer informatie over het gebruik van service Tags: informatie over het https://d
 
 - De MariaDB-server moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy voor beelden voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/
+Azure Policy voor beelden voor netwerken: https://docs.microsoft.com/azure/governance/policy/samples/
 
-Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -155,7 +155,7 @@ Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op l
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -164,7 +164,7 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure database for MariaDB exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
-Gebeurtenissen in het activiteiten logboek van Azure bekijken en ophalen: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view waarschuwingen maken in azure monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Gebeurtenissen in het activiteiten logboek van Azure bekijken en ophalen: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view waarschuwingen maken in azure monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
@@ -188,9 +188,9 @@ Gebeurtenissen in het activiteiten logboek van Azure bekijken en ophalen: https:
 ### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
 **Richt lijnen**: Diagnostische instellingen en server logboeken en opname logboeken inschakelen voor het verzamelen van beveiligings gegevens die door uw Azure database for MariaDB-instanties zijn gegenereerd. In Azure Monitor kunt u Log Analytics werk ruimte (n) gebruiken om een query uit te voeren en een Analytics-account te gebruiken, en Azure Storage accounts voor lange termijn/archiverings opslag. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
-Server logboeken configureren en openen voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+Server logboeken configureren en openen voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Controle logboeken configureren en openen voor Azure Database for MariaDB: een https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal onboarding van Azure-Sentinel uitvoeren:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Controle logboeken configureren en openen voor Azure Database for MariaDB: een https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal onboarding van Azure-Sentinel uitvoeren: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -202,7 +202,7 @@ Controle logboeken configureren en openen voor Azure Database for MariaDB: een h
 
 **Hulp**: Schakel Diagnostische instellingen in op uw Azure database for MariaDB-instanties voor toegang tot controle-, beveiligings-en Diagnostische logboeken. Zorg ervoor dat u het MariaDB-controle logboek expliciet inschakelt. Activiteiten logboeken, die automatisch beschikbaar zijn, omvatten gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen. U kunt ook diagnostische instellingen van Azure-activiteiten logboek inschakelen en de logboeken naar dezelfde Log Analytics werk ruimte of hetzelfde opslag account sturen.
 
-Server logboeken configureren en openen voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs audit logboeken voor Azure database for MariaDB configureren en openen: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Diagnostische instellingen configureren voor het Azure-activiteiten logboek:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Server logboeken configureren en openen voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs audit logboeken voor Azure database for MariaDB configureren en openen: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Diagnostische instellingen configureren voor het Azure-activiteiten logboek: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -222,7 +222,7 @@ Server logboeken configureren en openen voor Azure Database for MariaDB: https:/
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
 
 **Richt lijnen**: in azure monitor voor de log Analytics werk ruimte die wordt gebruikt om uw Azure database for MariaDB logboeken te bewaren, stelt u de retentie periode in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
-De Bewaar parameters voor logboek registratie instellen voor Log Analytics-werk ruimten: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period bron logboeken opslaan in een Azure Storage-account:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+De Bewaar parameters voor logboek registratie instellen voor Log Analytics-werk ruimten: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period bron logboeken opslaan in een Azure Storage-account: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 
 
@@ -234,11 +234,11 @@ De Bewaar parameters voor logboek registratie instellen voor Log Analytics-werk 
 
 **Richt lijnen**: Logboeken analyseren en bewaken in uw MariaDB-instanties voor afwijkend gedrag. Gebruik de Log Analytics werk ruimte van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Voor meer informatie over de Log Analytics-werk ruimte:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Voor meer informatie over de Log Analytics-werk ruimte: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Aangepaste query's uitvoeren in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -250,13 +250,13 @@ Aangepaste query's uitvoeren in Azure Monitor:https://docs.microsoft.com/azure/a
 
 Daarnaast kunt u Server logboeken en diagnostische instellingen voor MariaDB inschakelen en logboeken naar een Log Analytics-werk ruimte verzenden. Onboarding van uw Log Analytics-werk ruimte naar Azure-Sentinel, omdat dit een via-oplossing (Security Orchestration Automated Response) biedt. Hiermee kunnen playbooks (geautomatiseerde oplossingen) worden gemaakt en gebruikt om beveiligings problemen op te lossen.
 
-Geavanceerde beveiliging tegen bedreigingen inschakelen voor MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen inschakelen voor MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Server logboeken configureren en openen voor MariDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+Server logboeken configureren en openen voor MariDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Controle logboeken voor MariaDB configureren en openen:https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+Controle logboeken voor MariaDB configureren en openen: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: Ja
 
@@ -294,9 +294,9 @@ Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Hulp**: behoud een inventaris van de gebruikers accounts met beheerders toegang tot het beheer vlak (Azure Portal/Azure Resource Manager) van uw MariaDB-instanties. Houd bovendien een inventarisatie bij van de beheerders accounts die toegang hebben tot het gegevens vlak van uw MariaDB-instanties. (Bij het maken van de MariaDB-server geeft u referenties op voor een beheerders gebruiker. Deze beheerder kan worden gebruikt om aanvullende MariaDB-gebruikers te maken.)
 
-Meer informatie over toegangs beheer voor MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
+Meer informatie over toegangs beheer voor MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Meer informatie over ingebouwde rollen van Azure voor Azure-abonnementen:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Meer informatie over ingebouwde rollen van Azure voor Azure-abonnementen: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Azure Security Center bewaking**: Ja
@@ -309,7 +309,7 @@ Meer informatie over ingebouwde rollen van Azure voor Azure-abonnementen:https:/
 
 Wanneer de MariaDB-resource zelf wordt gemaakt, dwingt Azure het maken van een gebruiker met beheerders rechten af met een sterk wacht woord. Als het MariaDB-exemplaar eenmaal is gemaakt, kunt u echter het eerste account voor de server beheerder gebruiken dat u hebt gemaakt om aanvullende gebruikers te maken en beheerders toegang te verlenen. Wanneer u deze accounts maakt, moet u een ander, sterk wacht woord configureren voor elk account.
 
-Aanvullende accounts maken voor MariaDB:https://docs.microsoft.com/azure/mariadb/howto-create-users
+Aanvullende accounts maken voor MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -320,7 +320,7 @@ Aanvullende accounts maken voor MariaDB:https://docs.microsoft.com/azure/mariadb
 
 **Richt lijnen**: Maak standaard procedures voor het gebruik van specifieke beheerders accounts die toegang hebben tot uw MariaDB-instanties. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te bewaken.
 
-Meer informatie over Azure Security Center identiteit en toegang:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Meer informatie over Azure Security Center identiteit en toegang: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -330,7 +330,7 @@ Meer informatie over Azure Security Center identiteit en toegang:https://docs.mi
 
 **Hulp**: de toegang tot MariaDB wordt bepaald door identiteiten die zijn opgeslagen in de data base en biedt geen ondersteuning voor SSO. De toegang tot het beheer vlak voor MariaDB is beschikbaar via REST API en ondersteunt SSO. Als u zich wilt verifiëren, stelt u de autorisatie-header voor uw aanvragen in op een JSON Web Token dat u hebt verkregen via Azure Active Directory.
 
-Meer informatie over Azure Database for MariaDB REST API:https://docs.microsoft.com/rest/api/mariadb/
+Meer informatie over Azure Database for MariaDB REST API: https://docs.microsoft.com/rest/api/mariadb/
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -340,9 +340,9 @@ Meer informatie over Azure Database for MariaDB REST API:https://docs.microsoft.
 
 **Richt lijnen**: Schakel Azure AD MFA in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identiteit en toegang bewaken in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center bewaking**: Ja
 
@@ -352,9 +352,9 @@ Identiteit en toegang bewaken in Azure Security Center:https://docs.microsoft.co
 
 **Richt lijnen**: gebruik paw's (privileged Access workstations) met MFA dat is geconfigureerd om Azure-resources aan te melden en te configureren.
 
-Meer informatie over privileged Access workstations:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Meer informatie over privileged Access workstations: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -366,11 +366,11 @@ MFA inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authe
 
 Daarnaast kunt u Azure AD Privileged Identity Management (PIM) gebruiken voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure AD-risico detecties om waarschuwingen en rapporten weer te geven over Risk ante gebruikers gedrag.
 
-Geavanceerde bedreigings beveiliging instellen voor MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Geavanceerde bedreigings beveiliging instellen voor MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Privileged Identity Management (PIM) implementeren:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management (PIM) implementeren: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Meer informatie over Azure AD-risico detectie:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Meer informatie over Azure AD-risico detectie: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center bewaking**: Ja
 
@@ -380,7 +380,7 @@ Meer informatie over Azure AD-risico detectie:https://docs.microsoft.com/azure/a
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's om de toegang tot Azure-resources zoals MariaDB te beperken.
 
-Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -392,7 +392,7 @@ Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-
 
 Azure AD-verificatie kan niet worden gebruikt voor directe toegang tot het MariaDB-gegevens vlak. Azure AD-referenties kunnen echter worden gebruikt voor beheer op het niveau van het beheer vlak (bijvoorbeeld de Azure Portal) om MariaDB-beheerders accounts te beheren.
 
-Beheerders wachtwoord voor MariaDB bijwerken:https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
+Beheerders wachtwoord voor MariaDB bijwerken: https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
 
 **Azure Security Center bewaking**: Ja
 
@@ -402,9 +402,9 @@ Beheerders wachtwoord voor MariaDB bijwerken:https://docs.microsoft.com/azure/ma
 
 **Hulp**: raadpleeg de Azure Active Directory-Logboeken om verouderde accounts te detecteren, die kunnen bestaan uit de MariaDB-beheerders rollen. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen efficiënt te beheren, toegang te krijgen tot bedrijfs toepassingen die kunnen worden gebruikt voor toegang tot MariaDB en roltoewijzingen. Gebruikers toegang moet regel matig worden gecontroleerd, bijvoorbeeld elke 90 dagen, om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-Meer informatie over Azure AD Reporting:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Meer informatie over Azure AD Reporting: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure Identity Access revisies gebruiken: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure Security Center bewaking**: Ja
 
@@ -414,11 +414,11 @@ Azure Identity Access revisies gebruiken:https://docs.microsoft.com/azure/active
 
 **Hulp**: Diagnostische instellingen inschakelen voor MariaDB en Azure Active Directory, waarbij alle logboeken worden verzonden naar een log Analytics-werk ruimte. Gewenste waarschuwingen configureren (zoals mislukte verificatie pogingen) binnen Log Analytics werk ruimte.
 
-Server logboeken configureren en openen voor MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+Server logboeken configureren en openen voor MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Controle logboeken voor MariaDB configureren en openen:https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+Controle logboeken voor MariaDB configureren en openen: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
-Azure-activiteiten logboeken integreren in Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-activiteiten logboeken integreren in Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -430,13 +430,13 @@ Azure-activiteiten logboeken integreren in Azure Monitor:https://docs.microsoft.
 
 Gebruik de functies voor identiteits beveiliging en risico detectie van Azure Active Directory om automatische reacties op gedetecteerde verdachte acties te configureren. U kunt automatische antwoorden via Azure Sentinel inschakelen voor het implementeren van de beveiligings reacties van uw organisatie.
 
-Geavanceerde beveiliging tegen bedreigingen inschakelen voor MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Geavanceerde beveiliging tegen bedreigingen inschakelen voor MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Risico beleid voor identiteits beveiliging configureren en inschakelen:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Risico beleid voor identiteits beveiliging configureren en inschakelen: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Hoe kan ik Risk ante aanmeldingen voor Azure AD bekijken: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure-Sentinel onboarden: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -446,13 +446,13 @@ Azure-Sentinel onboarden:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Richt lijnen**: niet van toepassing; Klanten-lockbox nog niet ondersteund voor Azure Database for MariaDB.
 
-Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -460,7 +460,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Hulp**: Tags gebruiken bij het volgen van Azure database for MariaDB instanties of gerelateerde resources die gevoelige informatie opslaan of verwerken.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -470,15 +470,15 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Gebruik een combi natie van persoonlijke koppelingen, service-eind punten en/of MariaDB firewall regels om netwerk toegang tot uw MariaDB-instanties te isoleren en te beperken.
 
-Aanvullende Azure-abonnementen maken:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Aanvullende Azure-abonnementen maken: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheergroepen maken:https://docs.microsoft.com/azure/governance/management-groups/create
+Beheergroepen maken: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Persoonlijke koppeling configureren voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+Persoonlijke koppeling configureren voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-Service-eind punten voor Azure Database for MariaDB configureren:https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+Service-eind punten voor Azure Database for MariaDB configureren: https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-Firewall regels configureren voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+Firewall regels configureren voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -490,9 +490,9 @@ Firewall regels configureren voor Azure Database for MariaDB:https://docs.micros
 
 Micro soft beheert de onderliggende infra structuur voor MariaDB en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-Het beperken van gegevens exfiltration voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+Het beperken van gegevens exfiltration voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -502,7 +502,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 **Hulp**: Azure database for MariaDB biedt ondersteuning voor het verbinden van uw Azure database for MariaDB server met client toepassingen die gebruikmaken van Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL). Het afdwingen van TLS-verbindingen tussen uw database server en uw client toepassingen helpt bij het beveiligen van ' man in het midden ' aanvallen door de gegevens stroom tussen de server en uw toepassing te versleutelen. Controleer in de Azure Portal of ' SSL-verbinding afdwingen ' is ingeschakeld voor al uw MariaDB-instanties.
 
-Versleuteling in transit configureren voor MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
+Versleuteling in transit configureren voor MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -514,7 +514,7 @@ Versleuteling in transit configureren voor MariaDB:https://docs.microsoft.com/az
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -522,11 +522,11 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure AD RBAC om de toegang tot de Azure-data base te beheren voor het MariaDB-beheer vlak (Azure Portal/Azure Resource Manager). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot de Azure-Data Base voor het MariaDB-beheer vlak (Azure Portal/Azure Resource Manager). Gebruik SQL-query's voor het maken van toegang tot gegevens vlak (binnen de data base zelf) en configureer gebruikers machtigingen.
 
-RBAC configureren in Azure:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Azure RBAC configureren: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-Gebruikers toegang configureren met SQL voor MariaDB:https://docs.microsoft.com/azure/mariadb/howto-create-users
+Gebruikers toegang configureren met SQL voor MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -538,7 +538,7 @@ Gebruikers toegang configureren met SQL voor MariaDB:https://docs.microsoft.com/
 
 Micro soft beheert de onderliggende infra structuur voor MariaDB en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Informatie over de beveiliging van klant gegevens in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -548,7 +548,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 **Hulp**: de Azure database for MariaDB-service gebruikt de door FIPS 140-2 gevalideerde cryptografische module voor opslag versleuteling van gegevens op rest. Gegevens, met inbegrip van back-ups, worden versleuteld op schijf, met uitzonde ring van tijdelijke bestanden die worden gemaakt tijdens het uitvoeren van query's. De service maakt gebruik van de AES 256-bits code ring opgenomen in azure Storage-versleuteling en de sleutels worden beheerd door het systeem. Opslagversleuteling is altijd actief en kan niet worden uitgeschakeld.
 
-Meer informatie over versleuteling op rest voor MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-security
+Meer informatie over versleuteling op rest voor MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-security
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -558,7 +558,7 @@ Meer informatie over versleuteling op rest voor MariaDB:https://docs.microsoft.c
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Azure database for MariaDB en andere essentiële of gerelateerde resources.
 
-Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -620,11 +620,11 @@ Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:https://docs
 
 **Hulp**: Azure resource Graph gebruiken om alle resources (inclusief Azure database for MariaDB server) in uw abonnement (en) te doorzoeken en te detecteren. Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
 
-Query's maken met Azure resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Uw Azure-abonnementen weer geven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -634,7 +634,7 @@ Meer informatie over Azure RBAC:https://docs.microsoft.com/azure/role-based-acce
 
 **Hulp**: Tags Toep assen op Azure database for MariaDB server en andere gerelateerde resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -644,11 +644,11 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure database for MariaDB server en gerelateerde resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-Aanvullende Azure-abonnementen maken:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Aanvullende Azure-abonnementen maken: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheergroepen maken:https://docs.microsoft.com/azure/governance/management-groups/create
+Beheergroepen maken: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -672,9 +672,9 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren van resources binnen een of meer abonnementen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -716,9 +716,9 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 - Toegestane brontypen
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
@@ -739,7 +739,7 @@ Een specifiek resource type weigeren met Azure Policy:https://docs.microsoft.com
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management. Dit kan ertoe leiden dat het maken en wijzigen van resources binnen een omgeving met hoge beveiliging, die Azure Database for MariaDB server die gevoelige informatie bevat, niet kan worden gewijzigd.
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 
@@ -774,9 +774,9 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 - Geografisch redundante back-up moet zijn ingeschakeld voor Azure Database for MariaDB
 
-Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -796,9 +796,9 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 
@@ -818,9 +818,9 @@ Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/poli
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Azure database for MariaDB servers en gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-Code opslaan in azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Code opslaan in azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -838,7 +838,7 @@ Documentatie voor Azure opslag plaatsen:https://docs.microsoft.com/azure/devops/
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforMariaDB ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -858,7 +858,7 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforMariaDB ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure Database for MariaDB instanties en gerelateerde bronnen.
 
-Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -878,11 +878,11 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 **Richt lijnen**: voor Azure virtual machines of webtoepassingen die worden uitgevoerd op Azure app service wordt gebruikt voor toegang tot uw Azure database for MariaDB servers, gebruikt u Managed Service Identity in combi natie met Azure Key Vault om het beheer van de server geheim te vereenvoudigen en te beveiligen. Zorg ervoor Key Vault zacht verwijderen is ingeschakeld.
 
-Integratie met door Azure beheerde identiteiten:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integratie met door Azure beheerde identiteiten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Een Key Vault maken:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Key Vault verificatie bieden met een beheerde identiteit:https://docs.microsoft.com/azure/key-vault/managed-identity 
+Key Vault verificatie bieden met een beheerde identiteit: https://docs.microsoft.com/azure/key-vault/managed-identity 
 
 
 
@@ -908,7 +908,7 @@ Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch 
 
 **Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault. 
 
-Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -958,9 +958,9 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 **Hulp**: Azure database for MariaDB volledige, differentiële en back-ups van transactie Logboeken.  Azure Database for MariaDB maakt automatisch server back-ups en slaat ze op in een door de gebruiker geconfigureerde lokaal redundante of geografisch redundante opslag. Back-ups kunnen worden gebruikt om de status van de server naar een bepaald tijdstip te herstellen. Backup en Restore zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit omdat ze uw gegevens beschermen tegen onbedoelde beschadiging of verwijdering.  De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
-Meer informatie over back-ups voor MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup
+Meer informatie over back-ups voor MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-Inzicht in de initiële configuratie van MariaDB:https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
+Inzicht in de initiële configuratie van MariaDB: https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
 
 
 
@@ -974,9 +974,9 @@ Inzicht in de initiële configuratie van MariaDB:https://docs.microsoft.com/azur
 
 Als Key Vault voor gegevens versleuteling op de client gebruikt voor gegevens die zijn opgeslagen op uw MariaDB-server, moet u regel matig automatische back-ups van uw sleutels maken.
 
-Meer informatie over back-ups voor MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup
+Meer informatie over back-ups voor MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-Back-ups maken van Key Vault sleutels:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Back-ups maken van Key Vault sleutels:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 
 **Azure Security Center bewaking**: Ja
@@ -989,7 +989,7 @@ Back-ups maken van Key Vault sleutels:https://docs.microsoft.com/powershell/modu
 
 De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
 
-Meer informatie over back-up en herstel in Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
+Meer informatie over back-up en herstel in Azure Database for MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1000,7 +1000,7 @@ Meer informatie over back-up en herstel in Azure Database for MariaDB:https://do
 
 **Hulp**: Azure database for MariaDB volledige, differentiële en back-ups van transactie Logboeken. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
-Meer informatie over back-up en herstel in Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup
+Meer informatie over back-up en herstel in Azure Database for MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
 
 **Azure Security Center bewaking**: Ja
@@ -1015,9 +1015,9 @@ Meer informatie over back-up en herstel in Azure Database for MariaDB:https://do
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-- Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
-- Micro soft Security Response Center anatomie van een incident:https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
-- De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten:https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
+- Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- Micro soft Security Response Center anatomie van een incident: https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
+- De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1029,9 +1029,9 @@ Meer informatie over back-up en herstel in Azure Database for MariaDB:https://do
 
 Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) met behulp van tags en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren, met name voor de verwerking van gevoelige gegevens.  Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
-- Beveiligings waarschuwingen in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+- Beveiligings waarschuwingen in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
-- Tags gebruiken om uw Azure-resources te organiseren:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- Tags gebruiken om uw Azure-resources te organiseren: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: Ja
 
@@ -1041,7 +1041,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem te testen op een reguliere uitgebracht om uw Azure-resources te beschermen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
 
-- Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+- Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1051,7 +1051,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-- De Azure Security Center Security-contact persoon instellen:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+- De Azure Security Center Security-contact persoon instellen: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Security Center bewaking**: Ja
 
@@ -1061,8 +1061,8 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om Risico's voor Azure-resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
 
-- Continue export configureren:https://docs.microsoft.com/azure/security-center/continuous-export
-- Waarschuwingen streamen naar Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+- Continue export configureren: https://docs.microsoft.com/azure/security-center/continuous-export
+- Waarschuwingen streamen naar Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1073,7 +1073,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen voor het beveiligen van uw Azure-resources.
     
 
-Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com/azure/security-center/workflow-automation
+Werk stroom automatisering en Logic Apps configureren: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1089,7 +1089,7 @@ Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen:  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 **Azure Security Center bewaking**: niet van toepassing

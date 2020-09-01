@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 97be10352d25daf9c60ce41fe1fc9e728513ba94
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210895"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076812"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-beveiligings basislijn voor Synapse Analytics
 
@@ -138,7 +138,7 @@ Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uit
 
 **Richt lijnen**: netwerk beveiligings configuraties voor resources die zijn gerelateerd aan uw SQL-groep definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities te gebruiken die zijn ontworpen voor Azure SQL database/server-netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
 
-Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door essentiële omgevings artefacten, zoals Azure resource management-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één blauw definitie te voorzien. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure resource management-sjablonen, Azure op rollen gebaseerd toegangs beheer (Azure RBAC) en beleid, in één blauw definitie te voorzien. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -504,7 +504,7 @@ Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in d
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -582,7 +582,7 @@ Daarnaast kunt u een beleid voor dynamische gegevens maskering (DDM) instellen i
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot Azure SQL-data bases in uw Synapse SQL-groep.
 
@@ -610,7 +610,7 @@ Autorisatie wordt beheerd door de databaserol lidmaatschappen en object machtigi
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
-**Richt lijnen**: transparent Data Encryption (TDE) helpt Azure Synapse SQL te beschermen tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. In Azure is de standaard instelling voor TDE dat de DEK wordt beveiligd door een ingebouwd server certificaat. U kunt de door de klant beheerde TDE ook gebruiken, zoals Bring Your Own Key (BYOK)-ondersteuning voor TDE. In dit scenario is de TDE-Protector die de DEK versleutelt, een door de klant beheerde asymmetrische sleutel, die wordt opgeslagen in een door de klant eigendom en beheerd Azure Key Vault (extern beheer systeem op basis van de cloud van Azure) en de sleutel kluis nooit verlaat.
+**Richt lijnen**: transparent Data Encryption (TDE) helpt Azure Synapse SQL te beschermen tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database uit, van bijbehorende back-ups en van transactielogboekbestanden, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. In Azure is de standaard instelling voor TDE dat de DEK wordt beveiligd door een ingebouwd server certificaat. U kunt de door de klant beheerde TDE ook gebruiken, zoals Bring Your Own Key (BYOK)-ondersteuning voor TDE. In dit scenario is de TDE-Protector die de DEK versleutelt, een door de klant beheerde asymmetrische sleutel, die wordt opgeslagen in een door de klant eigendom en beheerd Azure Key Vault (extern beheer systeem op basis van de cloud van Azure) en de sleutel kluis nooit verlaat.
 
 * [Informatie over door service beheerde transparante gegevens versleuteling](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal)
 

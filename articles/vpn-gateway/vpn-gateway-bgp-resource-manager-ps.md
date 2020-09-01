@@ -7,12 +7,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: f75147da49a602cb384a1c0283192214ae32967f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3cb2bc7046ba8e81fae9beeda6557964fa34e477
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082015"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078432"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP configureren op Azure VPN-gateways met behulp van Power shell
 Dit artikel begeleidt u stapsgewijs door de stappen voor het inschakelen van BGP op een cross-premises site-naar-site (S2S) VPN-verbinding en een VNet-naar-VNet-verbinding met behulp van het Resource Manager-implementatie model en Power shell.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b43635c637f10b6ace8a744ceb3046c4ce3b9bd4
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259157"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078075"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-beveiligings basislijn voor Container Instances
 
@@ -155,7 +155,7 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Richt lijnen**: u kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door belang rijke omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één definitie van een blauw druk te verpakken. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies. 
+**Richt lijnen**: u kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resources Manager-sjablonen, Azure RBAC-besturings elementen en beleids regels, in één definitie van blauw drukken. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies. 
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -557,9 +557,9 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure AD RBAC om de toegang tot Azure container instances-gegevens en-resources te beheren. 
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot Azure container instances gegevens en resources te beheren. 
 
-* [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -923,13 +923,13 @@ Gebruik een aangepaste of externe oplossing voor het patchen van container insta
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Richt lijnen**: container installatie kopieën opslaan in azure container Registry en gebruikmaken van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
+**Richt lijnen**: container installatie kopieën opslaan in azure container Registry en gebruikmaken van Azure RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
-* [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Meer informatie over Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Wat is RBAC voor Container Registry?](../container-registry/container-registry-roles.md)
+* [Meer informatie over Azure RBAC voor Container Registry](../container-registry/container-registry-roles.md)
 
-* [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC configureren](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -1109,7 +1109,7 @@ U kunt optioneel back-ups maken van container installatie kopieën door te impor
 
 **Verantwoordelijkheid**: klant
 
-## <a name="incident-response"></a>Incidentrespons
+## <a name="incident-response"></a>Reageren op incidenten
 
 *Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 

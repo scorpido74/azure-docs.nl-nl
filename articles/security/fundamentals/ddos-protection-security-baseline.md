@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: daff4d1e43f5cc27e52e8bf26f48f30147800ae8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 63c476e7ad8c7bab38ad4adfb6197b845106458c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839863"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077973"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-beveiligings basislijn voor Azure DDoS Protection Standard
 
@@ -262,11 +262,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Hulp**: als u wilt werken met Azure DDoS Protection-abonnementen, moet uw account worden toegewezen aan de rol netwerk bijdrager of aan een aangepaste rol waaraan specifieke acties zijn toegewezen.
 
-- [Toegangs beheer op basis van rollen beheren in Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md)
+- [Toegangs beheer op basis van rollen (Azure RBAC) beheren in Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

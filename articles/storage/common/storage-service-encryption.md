@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814447"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078194"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
@@ -46,7 +46,7 @@ De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage ve
 | Para meter voor sleutel beheer | Door Microsoft beheerde sleutels | Door klant beheerde sleutels | Door de klant verschafte sleutels |
 |--|--|--|--|
 | Bewerkingen voor versleuteling/ontsleuteling | Azure | Azure | Azure |
-| Azure Storage services ondersteund | Alles | Blob-opslag, Azure Files<sup>1, 2</sup> | Blob Storage |
+| Azure Storage services ondersteund | Alle | Blob-opslag, Azure Files<sup>1, 2</sup> | Blob Storage |
 | Sleutel opslag | Micro soft-sleutel archief | Azure Key Vault | Eigen sleutel archief van de klant |
 | Verantwoordelijkheid voor sleutel rotatie | Microsoft-peering | Klant | Klant |
 | Sleutel besturings element | Microsoft-peering | Klant | Klant |
@@ -69,6 +69,8 @@ Nadat u een versleutelings bereik hebt gemaakt, kunt u het versleutelings bereik
 
 > [!NOTE]
 > Versleutelings bereiken worden niet ondersteund met geografisch redundante opslag met lees toegang (RA-GRS) en accounts met geozone-redundante opslag (RA-GZRS) met lees toegang tijdens de preview-versie.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!IMPORTANT]
 > De preview-versie van het versleutelings bereik is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.

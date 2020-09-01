@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1cdb49f6865afa4101468dc35b4e416d999b63f5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285217"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078217"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -29,7 +29,7 @@ azcopy remove [resourceURL] [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 - [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
@@ -73,7 +73,6 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
-
 Eén bestand verwijderen uit een Blob Storage account met een hiërarchische naam ruimte (insluit/niet ondersteund):
 
 ```azcopy
@@ -96,13 +95,15 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--Force-alleen-lezen**   Wanneer u een Azure Files bestand of map verwijdert, dwingt u het verwijderen af, zelfs als het bestaande object het kenmerk alleen-lezen heeft.
 
-**--Help** Help voor verwijderen.
+**--Help**   Help voor verwijderen.
 
 **--include-** teken reeks bevat alleen deze paden bij het verwijderen. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad-voor voegsel gecontroleerd. Bijvoorbeeld: `myFolder;myFolder/subDirName/file.pdf`
 
 **--include-patroon** teken reeks alleen bestanden opnemen waarvan de naam overeenkomt met de patroon lijst. Bijvoorbeeld: * `.jpg` ;* `.pdf` ;`exactName`
 
-**--lijst-of-files** teken reeks definieert de locatie van een bestand, dat de lijst met bestanden en mappen bevat die moeten worden verwijderd. De relatieve paden moeten worden gescheiden door regel einden en de paden mogen geen URL-gecodeerd zijn.
+**--lijst-of-files** teken reeks definieert de locatie van een bestand, dat de lijst met bestanden en mappen bevat die moeten worden verwijderd. De relatieve paden moeten worden gescheiden door regel einden en de paden mogen geen URL-gecodeerd zijn. 
+
+**--lijst-van-versie** teken reeks geeft een bestand op waarin elke versie-id wordt weer gegeven op een afzonderlijke regel. Zorg ervoor dat de bron moet verwijzen naar een enkele Blob en dat alle versie-id's die zijn opgegeven in het bestand met deze vlag, alleen bij de bron-BLOB horen. Opgegeven versie-id's van de opgegeven BLOB worden verwijderd uit Azure Storage. 
 
 **--** teken reeks op logboek niveau Definieer het logboek bestand uitgebreider voor het logbestand. Beschik bare niveaus zijn: `INFO` (alle aanvragen/antwoorden), ( `WARNING` trage reacties), `ERROR` (alleen mislukte aanvragen) en `NONE` (geen uitvoer Logboeken). (standaard `INFO` ) (standaard `INFO` )
 
@@ -116,6 +117,6 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
 |--vertrouwd-micro soft-achtervoegsels teken reeks   |Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [azcopy](storage-ref-azcopy.md)

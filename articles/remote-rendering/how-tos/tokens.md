@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7e8e2f3f9dd49693faa26eaaab309fcad58f6f9f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687068"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076154"
 ---
 # <a name="get-service-access-tokens"></a>Tokens voor servicetoegang ophalen
 
@@ -44,7 +45,7 @@ Vervang *accountId* en *accountKey* door uw respectieve gegevens.
 |-----------|:-----------|:-----------|
 | 200 | AccessToken: teken reeks | Geslaagd |
 
-| Koptekst | Functie |
+| Koptekst | Doel |
 |--------|:------|
 | MS-CV | Deze waarde kan worden gebruikt om de aanroep binnen de service te traceren |
 

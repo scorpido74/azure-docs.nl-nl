@@ -3,12 +3,12 @@ title: Azure-beveiligings basislijn voor Azure DevTest Labs
 description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212301"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078041"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
 
@@ -159,7 +159,7 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
 **Hulp:** DevTest Labs maakt gebruik van de Azure AD-service voor identiteits beheer. Houd rekening met deze twee belang rijke aspecten wanneer u gebruikers toegang geeft tot een omgeving op basis van DevTest Labs:
 
-- **Resource beheer:** Het biedt toegang tot de Azure Portal om resources te beheren (Vm's te maken, omgevingen te maken, te starten, te stoppen, opnieuw op te starten, te verwijderen en artefacten toe te passen). Resource beheer wordt uitgevoerd in azure met behulp van op rollen gebaseerd toegangs beheer (RBAC). U wijst rollen toe aan gebruikers en stelt machtigingen voor de resource en toegangs niveau in.
+- **Resource beheer:** Het biedt toegang tot de Azure Portal om resources te beheren (Vm's te maken, omgevingen te maken, te starten, te stoppen, opnieuw op te starten, te verwijderen en artefacten toe te passen). Resource beheer wordt uitgevoerd in azure met behulp van Azure RBAC (op rollen gebaseerd toegangs beheer). U wijst rollen toe aan gebruikers en stelt machtigingen voor de resource en toegangs niveau in.
 - **Virtuele machines (netwerk niveau)**: in de standaard configuratie gebruikt vm's een lokaal beheerders account. Als er een domein beschikbaar is (Azure AD Domain Services, een on-premises domein of een domein in de Cloud), kunnen machines worden toegevoegd aan het domein. Gebruikers kunnen vervolgens hun domein identiteiten gebruiken met behulp van het samen voegen van het domein om verbinding te maken met de computers. 
 
 - [Referentie architectuur voor DevTest Labs](devtest-lab-reference-architecture.md#architecture)
@@ -258,7 +258,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid:** Gebruikers
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
@@ -315,9 +315,9 @@ Voor het onderliggende platform, dat wordt beheerd door micro soft, behandelt mi
 **Verantwoordelijkheid:** Gebruikers
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
-**Hulp:** Gebruik op rollen gebaseerd toegangs beheer (RBAC) voor Azure Active Directory (Azure AD) voor het beheren van de toegang tot Labs in Azure DevTest Labs.
+**Hulp:** Gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot Labs in Azure DevTest Labs.
 
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 - [Informatie over rollen in DevTest Labs](devtest-lab-add-devtest-user.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
@@ -638,12 +638,12 @@ Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepublice
 **Verantwoordelijkheid:** Gebruikers
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
-**Hulp:** Gebruik op rollen gebaseerd toegangs beheer (RBAC) als u aangepaste installatie kopieën gebruikt om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen naar specifieke Labs die dat nodig heeft. Voor container installatie kopieën slaat u ze op in Azure Container Registry en gebruikt u RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
+**Hulp:** Als u aangepaste installatie kopieën gebruikt, kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën. Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen naar specifieke Labs die dat nodig heeft. Voor container installatie kopieën kunt u deze opslaan in Azure Container Registry en Azure RBAC gebruiken om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
-- [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Meer informatie over Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure RBAC configureren](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [Een galerie met gedeelde installatie kopieën configureren voor een DevTest Labs](configure-shared-image-gallery.md)
-- [Wat is RBAC voor Container Registry?](../container-registry/container-registry-roles.md)
+- [Meer informatie over Azure RBAC voor Container Registry](../container-registry/container-registry-roles.md)
 
 **Azure Security Center bewaking:** Niet van toepassing
 

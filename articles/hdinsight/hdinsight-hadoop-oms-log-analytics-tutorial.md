@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli
+ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 531bbf40df4636ae62203d639deeeb9468c7bfe0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498188"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078347"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-logboeken gebruiken om HDInsight-clusters te bewaken
 
@@ -153,10 +153,10 @@ Azure monitor biedt ondersteuning voor het verzamelen en analyseren van prestati
 
 HDInsight ondersteunt cluster controle met Azure Monitor-logboeken door de volgende typen logboeken te importeren:
 
-* `log_gateway_audit_CL`-deze tabel bevat audit logboeken van cluster gateway knooppunten die geslaagde en mislukte aanmeldings pogingen tonen.
-* `log_auth_CL`-deze tabel bevat SSH-logboeken met geslaagde en mislukte aanmeldings pogingen.
-* `log_ambari_audit_CL`-deze tabel bevat audit logboeken van Ambari.
-* `log_ranger_audti_CL`-deze tabel bevat audit logboeken van Apache zwerver op ESP-clusters.
+* `log_gateway_audit_CL` -deze tabel bevat audit logboeken van cluster gateway knooppunten die geslaagde en mislukte aanmeldings pogingen tonen.
+* `log_auth_CL` -deze tabel bevat SSH-logboeken met geslaagde en mislukte aanmeldings pogingen.
+* `log_ambari_audit_CL` -deze tabel bevat audit logboeken van Ambari.
+* `log_ranger_audti_CL` -deze tabel bevat audit logboeken van Apache zwerver op ESP-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 

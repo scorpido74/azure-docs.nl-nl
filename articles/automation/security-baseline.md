@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6e5c7bbc850a71cd71d8f826c6a975f552374b7a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562681"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077718"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
@@ -146,7 +146,7 @@ Als u Hybrid Runbook Workers gebruikt die worden gehost op virtuele machines van
 
 **Richt lijnen**: standaard beveiligings configuraties definiëren en implementeren voor netwerk bronnen die worden gebruikt door Azure Automation met Azure Policy.
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één definitie van een blauw druk te verpakken. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resources Manager-sjablonen, Azure RBAC-besturings elementen en beleids regels, in één blauw definitie te voorzien. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
@@ -500,7 +500,7 @@ Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -570,11 +570,11 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: Azure AD RBAC gebruiken om de toegang tot Azure Automation resources te beheren met behulp van de ingebouwde roldefinities, toegangs rechten toewijzen aan gebruikers die toegang hebben tot uw Automation-resources met een mini maal privileged of ' just-genoeg '-toegangs model. Wanneer u Hybrid Runbook Workers gebruikt, moet u beheerde identiteiten voor die virtuele machines gebruiken om service-principals te vermijden, wanneer u de werk nemers met meerdere tenants of Hybrid Runbook gebruikt om te zorgen dat de RBAC-machtigingen op de juiste manier zijn afgestemd op de identiteit van de Runbook-werk nemers.
+**Richt lijnen**: gebruik Azure-functies voor op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot Azure Automation resources met behulp van de ingebouwde roldefinities, toegang toewijzen voor gebruikers die toegang hebben tot uw Automation-resources met een mini maal privileged of ' just-genoeg '-toegangs model. Wanneer u Hybrid Runbook Workers gebruikt, moet u beheerde identiteiten voor die virtuele machines gebruiken om service-principals te vermijden, wanneer u de werk nemers met meerdere tenants of Hybrid Runbook gebruikt om te zorgen dat de Azure RBAC-machtigingen op de juiste manier zijn afgestemd op de identiteit van de Runbook-werk nemers.
 
-* [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 * [Runbook-machtigingen voor een Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -968,9 +968,9 @@ Voor de meeste scenario's kan de micro soft-sjablonen voor virtuele machines die
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u ervoor zorgen dat u de toegang tot de aangepaste installatie kopie van het besturings systeem die zich in uw opslag account bevindt, goed beperkt zodat alleen gemachtigde gebruikers toegang hebben tot de installatie kopie.
 
-* [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Meer informatie over Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC configureren](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

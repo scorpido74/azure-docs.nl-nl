@@ -1,6 +1,6 @@
 ---
 title: Parquet geneste typen doorzoeken met behulp van SQL op aanvraag (preview)
-description: In dit artikel leert u hoe u een query kunt uitvoeren op Parquet-geneste typen.
+description: In dit artikel leert u hoe u een query kunt uitvoeren op geneste Parquet-typen met behulp van SQL on-demand (preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f58adf124634ce1b4326f0026718688f0eb1dc7b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489687"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076732"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op geneste typen in Parquet-en JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op geneste typen in Parquet-en JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Met deze query worden geneste Parquet-typen gelezen.
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Met de query worden geneste Parquet-typen gelezen.
 Geneste typen zijn complexe structuren die objecten of matrices vertegenwoordigen. Geneste typen kunnen worden opgeslagen in: 
-- [PARQUET](query-parquet-files.md) waar u meerdere complexe kolommen kunt hebben die matrices en objecten bevatten.
-- Hiërarchische [json-bestanden](query-json-files.md) waarin u complexe JSON-documenten kunt lezen als één kolom.
-- CosmosDB-verzameling waarbij elk document complexe geneste eigenschappen kan bevatten (momenteel in de open bare preview-fase).
+- [Parquet](query-parquet-files.md), waar u meerdere complexe kolommen kunt hebben die matrices en objecten bevatten.
+- Hiërarchische [json-bestanden](query-json-files.md), waar u een complex JSON-document als één kolom kunt lezen.
+- Azure Cosmos DB verzamelingen (momenteel in de open bare preview-fase), waarbij elk document complexe geneste eigenschappen kan bevatten.
 
-Synapse SQL on-demand formatteert alle geneste typen als JSON-objecten en matrices, zodat u [complexe objecten kunt uitpakken of wijzigen met behulp van JSON-functies](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) of [JSON-gegevens kan parseren met de openjson-functie](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Azure Synapse SQL on-demand formatteert alle geneste typen als JSON-objecten en matrices. U kunt [complexe objecten dus extra heren of wijzigen met behulp van JSON-functies](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) of JSON- [gegevens parseren met behulp van de openjson-functie](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
-Hieronder ziet u een voor beeld van een query waarmee scalaire en objecten waarden worden geëxtraheerd uit [het JSON-bestand COVID-19 open Research dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) met geneste objecten. 
+Hier volgt een voor beeld van een query waarmee scalaire en object waarden worden geëxtraheerd uit het JSON [-bestand COVID-19 open Research dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) dat geneste objecten bevat: 
 
 ```sql
 SELECT
@@ -42,18 +42,18 @@ FROM
     WITH ( doc varchar(MAX) ) AS docs;
 ```
 
-`JSON_VALUE`de functie retourneert een scalaire waarde uit het veld op het opgegeven pad. `JSON_QUERY`functie retourneert een object dat als JSON is opgemaakt vanuit het veld op het opgegeven pad.
+De `JSON_VALUE` functie retourneert een scalaire waarde uit het veld op het opgegeven pad. De `JSON_QUERY` functie retourneert een object dat als JSON is opgemaakt vanuit het veld op het opgegeven pad.
 
 > [!IMPORTANT]
-> In dit voor beeld wordt een bestand gebruikt van [COVID-19 open-gegevensset voor onderzoek](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/). Zie deze-licentie en de structuur van de gegevens op deze pagina.
+> In dit voor beeld wordt een bestand gebruikt uit de open COVID-19-Zoek gegevensset. [Bekijk het certificaat en de structuur van de gegevens hier](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron waarnaar wordt verwezen. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap is het maken van een Data Base waarin de gegevens bron wordt gemaakt. U initialiseert de objecten vervolgens door een [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op de data base. Het installatie script maakt de gegevens bronnen, referenties voor database bereik en externe bestands indelingen die worden gebruikt in de voor beelden.
 
 ## <a name="project-nested-or-repeated-data"></a>Geneste of herhaalde gegevens projecteren
 
-Het PARQUET-bestand kan meerdere kolommen met complexe typen bevatten. De waarden van deze kolommen zijn opgemaakt als JSON-tekst en geretourneerd als VARCHAR-kolom. Met de volgende query leest u het bestand *structExample. Parquet* en ziet u hoe u de waarden van de geneste kolommen kunt lezen: 
+Een Parquet-bestand kan meerdere kolommen met complexe typen bevatten. De waarden van deze kolommen zijn opgemaakt als JSON-tekst en geretourneerd als VARCHAR kolommen. Met de volgende query leest u het bestand structExample. Parquet en ziet u hoe u de waarden van de geneste kolommen kunt lezen: 
 
 ```sql
 SELECT
@@ -73,14 +73,14 @@ FROM
     ) AS [r];
 ```
 
-Met deze query wordt het volgende resultaat geretourneerd waarbij de inhoud van elk genest object als JSON-tekst wordt geretourneerd:
+Met deze query wordt het volgende resultaat geretourneerd. De inhoud van elk genest object wordt geretourneerd als JSON-tekst.
 
 | DateStruct    | TimeStruct    | TimestampStruct   | DecimalStruct | FloatStruct |
 | --- | --- | --- | --- | --- |
 |{"Datum": "2009-04-25"}| {"Tijd": "20:51:54.3598000"}|    {"Tijds tempel": "5501-04-08 12:13:57.4821000"}|    {"Decimaal": 11143412.25350}| {"Float": 0,5}|
 |{"Datum": "1916-04-29"}| {"Tijd": "00:16:04.6778000"}|    {"Tijds tempel": "1990-06-30 20:50:52.6828000"}|    {"Decimaal": 1963545.62800}|  {"Float":-2,125}|
 
-Met de volgende query wordt het bestand *justSimpleArray. Parquet* gelezen. Hiermee worden alle kolommen uit het Parquet-bestand, inclusief geneste of herhaalde gegevens, geprojecteerd.
+Met de volgende query wordt het bestand justSimpleArray. Parquet gelezen. Hiermee worden alle kolommen uit het Parquet-bestand, inclusief geneste en herhaalde gegevens, geprojecteerd.
 
 ```sql
 SELECT
@@ -102,7 +102,7 @@ Met deze query wordt het volgende resultaat geretourneerd:
 
 ## <a name="read-properties-from-nested-object-columns"></a>Eigenschappen van geneste object kolommen lezen
 
-`JSON_VALUE`met de functie kunt u waarden van een kolom die is opgemaakt als JSON-tekst retour neren:
+`JSON_VALUE`Met de functie kunt u waarden retour neren uit kolommen die zijn opgemaakt als JSON-tekst:
 
 ```sql
 SELECT
@@ -121,11 +121,11 @@ Het resultaat wordt weer gegeven in de volgende tabel:
 | --- | --- | --- | --- |
 | Aanvullende informatie een eco-epidemiolo... | Julien   | -Afbeelding S1: Phylogeny van... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-In tegens telling tot JSON-bestanden die in de meeste gevallen één kolom met een complex JSON-object retour neren. PARQUET-bestanden kunnen meerdere ingewikkelde zijn. U kunt de eigenschappen van een geneste kolom lezen met behulp `JSON_VALUE` van de functie voor elke kolom. `OPENROWSET`Hiermee kunt u rechtstreeks de paden van de geneste eigenschappen in `WITH` component opgeven. Paden kunnen worden ingesteld als een naam van de kolom of u kunt een [JSON-padexpressie](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) toevoegen na het kolom Type.
+In tegens telling tot JSON-bestanden, die in de meeste gevallen één kolom retour neren die een complex JSON-object bevat, kunnen Parquet-bestanden meerdere complexe kolommen hebben. U kunt de eigenschappen van geneste kolommen lezen met behulp `JSON_VALUE` van de functie voor elke kolom. `OPENROWSET` Hiermee kunt u de paden van de geneste eigenschappen in een `WITH` component rechtstreeks opgeven. U kunt de paden instellen als de naam van een kolom, maar u kunt ook een [JSON-padexpressie](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) toevoegen achter het kolom Type.
 
-Met de volgende query wordt het bestand *structExample. Parquet* gelezen en wordt weer gegeven hoe u de Opper vlakken van een geneste kolom laat zien. U hebt twee manieren om te verwijzen naar een geneste waarde:
-- Opgeven van de geneste waarde Path-expressie na type specificatie.
-- De naam van de kolom wordt opgemaakt als genest pad met behulp van '. ' om naar de velden te verwijzen.
+Met de volgende query wordt het bestand structExample. Parquet gelezen en wordt weer gegeven hoe u de Opper vlakken van een geneste kolom laat zien. Er zijn twee manieren om te verwijzen naar een geneste waarde:
+- Door de expressie pad naar geneste waarde op te geven na de type specificatie.
+- Door de kolom naam als een genest pad op te maken, gebruikt u '. ' om naar de velden te verwijzen.
 
 ```sql
 SELECT
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Elementen benaderen vanuit herhaalde kolommen
 
-De volgende query leest het bestand *justSimpleArray. Parquet* en gebruikt [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om een **scalair** element op te halen in een herhaalde kolom, zoals een matrix of kaart:
+De volgende query leest het bestand justSimpleArray. Parquet en gebruikt [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om een scalair element op te halen in een herhaalde kolom, zoals een matrix of kaart:
 
 ```sql
 SELECT
@@ -163,7 +163,7 @@ FROM
     ) AS [r];
 ```
 
-Het resultaat wordt weer gegeven in de volgende tabel:
+Dit is het resultaat:
 
 |SimpleArray    | FirstElement  | SecondElement | ThirdElement |
 | --- | --- | --- | --- |
@@ -172,7 +172,7 @@ Het resultaat wordt weer gegeven in de volgende tabel:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Onderliggende objecten openen vanuit complexe kolommen
 
-Met de volgende query wordt het bestand *mapExample. Parquet* gelezen en wordt [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om een **niet-scalair** element op te halen uit een herhaalde kolom, zoals een matrix of kaart:
+Met de volgende query wordt het bestand mapExample. Parquet gelezen en wordt [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om een niet-scalair element op te halen uit een herhaalde kolom, zoals een matrix of kaart:
 
 ```sql
 SELECT
@@ -186,7 +186,7 @@ FROM
     ) AS [r];
 ```
 
-U kunt ook expliciet verwijzen naar de kolommen die u wilt retour neren in de `WITH` component:
+U kunt ook expliciet verwijzen naar de kolommen die u wilt retour neren in een `WITH` component:
 
 ```sql
 SELECT DocId,
@@ -201,11 +201,11 @@ FROM
     WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
 ```
 
-De structuur `MapOfPersons` wordt geretourneerd als `VARCHAR` kolom en OPGEMAAKT als JSON-teken reeks.
+De structuur `MapOfPersons` wordt geretourneerd als een varchar-kolom en opgemaakt als een JSON-teken reeks.
 
 ## <a name="project-values-from-repeated-columns"></a>Waarden van herhaalde kolommen projecteren
 
-Als u een matrix met scalaire waarden (bijvoorbeeld `[1,2,3]` ) in sommige kolommen hebt, kunt u deze eenvoudig uitbreiden en aan de rij toevoegen met behulp van het volgende script:
+Als u een matrix met scalaire waarden (bijvoorbeeld `[1,2,3]` ) in sommige kolommen hebt, kunt u deze eenvoudig uitbreiden en samen voegen met de hoofd rij met behulp van dit script:
 
 ```sql
 SELECT

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005581"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078177"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows Virtual Desktop (klassieke) sessie-hosts schalen met behulp van Azure Automation
 
@@ -21,10 +21,6 @@ ms.locfileid: "88005581"
 U kunt de totale kosten voor het implementeren van virtuele Windows-Bureau bladen verlagen door uw virtuele machines (Vm's) te schalen. Dit betekent dat de virtuele machines van de host worden afgesloten en opnieuw worden toegewezen tijdens gebruiks uren en vervolgens weer worden ingeschakeld en opnieuw worden toegewezen tijdens piek uren.
 
 In dit artikel vindt u meer informatie over het hulp programma voor schalen dat is gebouwd met het Azure Automation-account en de Azure Logic-app, waarmee de Vm's van de virtuele machine in uw Windows-desktop omgeving automatisch worden geschaald. Voor meer informatie over het gebruik van het hulp programma schalen gaat u verder met [vereisten](#prerequisites).
-
-## <a name="report-issues"></a>Problemen melden
-
-Probleem rapporten voor het hulp programma voor schalen worden momenteel verwerkt op GitHub in plaats van Microsoft Ondersteuning. Als u problemen ondervindt met het hulp programma voor schalen, haalt u de benodigde gegevens op zoals beschreven in de sectie [rapportage problemen](#reporting-issues) en opent u een github-probleem met de naam ' 4a-WVD-scaling-logicapps ' op de [pagina RDS github](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).
 
 ## <a name="how-the-scaling-tool-works"></a>De werking van het hulp programma voor schalen
 
@@ -362,3 +358,7 @@ Als u hebt besloten om Log Analytics te gebruiken, kunt u in de **Logboeken** va
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>Problemen melden
+
+Probleem rapporten voor het hulp programma voor schalen worden momenteel verwerkt door Microsoft Ondersteuning. Wanneer u een probleem rapport maakt, moet u ervoor zorgen dat u de instructies in [rapportage problemen](#reporting-issues)volgt. Als u feedback hebt over het hulp programma of als u nieuwe functies wilt aanvragen, opent u een GitHub-probleem met de naam ' 4-WVD-scaling-tool ' op de [pagina RDS github](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool).

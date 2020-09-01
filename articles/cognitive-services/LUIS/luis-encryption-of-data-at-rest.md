@@ -1,20 +1,20 @@
 ---
 title: Language Understanding-service versleuteling van gegevens in rust
 titleSuffix: Azure Cognitive Services
-description: Language Understanding service versleuteling van gegevens in rust.
+description: Micro soft biedt door micro soft beheerde coderings sleutels en kunt u ook uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). Dit artikel heeft betrekking op gegevens versleuteling in rust voor Language Understanding (LUIS) en hoe u CMK kunt inschakelen en beheren.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052701"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078126"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Language Understanding-service versleuteling van gegevens in rust
 
@@ -22,15 +22,15 @@ Met de Language Understanding-service worden uw gegevens automatisch versleuteld
 
 ## <a name="about-cognitive-services-encryption"></a>Over Cognitive Services versleuteling
 
-Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om te kunnen profiteren van versleuteling.
+Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om van versleuteling te kunnen profiteren.
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
-Uw abonnement maakt standaard gebruik van door micro soft beheerde versleutelings sleutels. Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Door de klant beheerde sleutels (CMK) bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
+Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelingssleutels. Er is ook de mogelijkheid om uw abonnement te beheren met uw eigen sleutels, genaamd door de klant beheerde sleutels (CMK). CMK biedt meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Door de klant beheerde sleutels met Azure Key Vault
 
-Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
+Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
 U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
@@ -39,10 +39,6 @@ U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te sla
 Als u de mogelijkheid wilt aanvragen om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor de door de [klant beheerde sleutel](https://aka.ms/cogsvc-cmk)van de Luis-service in en verzendt u deze. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. De nieuwe SKU werkt hetzelfde als de F0-SKU die al beschikbaar is, met uitzonde ring van CMK. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
 
 ![Installatie kopie van LUIS-abonnement](../media/cognitive-services-encryption/luis-subscription.png)
-
-### <a name="regional-availability"></a>Regionale beschikbaarheid
-
-Door de klant beheerde sleutels zijn beschikbaar in alle [ontwerp regio's](luis-reference-regions.md). 
 
 ### <a name="limitations"></a>Beperkingen
 

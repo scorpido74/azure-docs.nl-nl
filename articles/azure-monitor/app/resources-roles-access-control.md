@@ -3,12 +3,13 @@ title: Resources, rollen en toegangs beheer in Azure-toepassing inzichten | Micr
 description: Eigen aren, mede werkers en lezers van de inzichten van uw organisatie.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926498"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076681"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
@@ -37,7 +38,7 @@ Eerst worden enkele definities:
 * [**Abonnement**](https://portal.azure.com) : als u Application Insights of andere Azure-resources wilt gebruiken, meldt u zich aan bij een Azure-abonnement. Elke resource groep behoort tot één Azure-abonnement, waar u uw prijs pakket kiest en als het een organisatie-abonnement is, kiest u de leden en hun toegangs machtigingen.
 * [**Microsoft-account**][account] : de gebruikers naam en het wacht woord waarmee u zich aanmeldt bij Microsoft Azure abonnementen, Xbox Live, Outlook.com en andere micro soft-Services.
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Toegang beheren in de resource groep
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Toegang beheren in de resource groep
 
 Het is belang rijk om te begrijpen dat naast de resource die u hebt gemaakt voor uw toepassing, ook afzonderlijke verborgen resources voor waarschuwingen en webtests worden weer gegeven. Ze zijn gekoppeld aan dezelfde [resource groep](#resource-group) als uw Application Insights-resource. Mogelijk hebt u ook andere Azure-Services in daar geplaatst, zoals websites of opslag.
 
@@ -101,7 +102,7 @@ Als de gebruiker die u wilt, niet in de adres lijst staat, kunt u iedereen uitno
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 
-* [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>Power shell-query voor het bepalen van het rollidmaatschap
 

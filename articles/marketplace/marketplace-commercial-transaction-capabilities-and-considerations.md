@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: d086f8f3a2f4939012691d5bd03cc92a50ac4613
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88704957"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078313"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -143,6 +143,8 @@ In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt
 |---------|---------|
 |Micro soft betaalt u 80% van uw licentie kosten <br> \* Micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \* $90,00 per maand    |
 |Micro soft bewaart 20% van de licentie kosten <br> \* Micro soft houdt 10% van de licentie kosten voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \* $10,00     |
+
+### <a name="reduced-service-fee"></a>Beperkte service kosten
 
 Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de [overeenkomst voor micro soft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560)) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de voor waarden worden voldaan ten minste vijf werk dagen voordat de maandelijkse kosten voor Marketplace-service voor de maand worden ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable-IaaS aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
 

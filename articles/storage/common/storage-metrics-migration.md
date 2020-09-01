@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422059"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078245"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Overstappen op metrische gegevens in Azure Monitor
 
-Azure Storage integreert de metrische gegevens nu in het Azure Monitor platform. Dit artikel helpt u bij het maken van de overgang.
+Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Als u gebruikmaakt van klassieke metrische gegevens, moet u overstappen op metrische gegevens in Azure Monitor vóór die datum. Dit artikel helpt u bij het maken van de overgang.
 
 ## <a name="steps-to-complete-the-transition"></a>Stappen voor het volt ooien van de overgang
 
@@ -63,8 +63,8 @@ Zie [metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure
 
 | Klassieke metriek | Metrische waarde in Azure Monitor |
 | ------------------- | ----------------- |
-| `Capacity`            | `BlobCapacity`met de dimensie `BlobType` gelijk aan `BlockBlob` of`PageBlob` |
-| `ObjectCount`        | `BlobCount`met de dimensie `BlobType` gelijk aan `BlockBlob` of`PageBlob` |
+| `Capacity`            | `BlobCapacity` met de dimensie `BlobType` gelijk aan `BlockBlob` of `PageBlob` |
+| `ObjectCount`        | `BlobCount` met de dimensie `BlobType` gelijk aan `BlockBlob` of `PageBlob` |
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
@@ -74,40 +74,40 @@ Zie [metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure
 
 | Klassieke metriek | Metrische waarde in Azure Monitor |
 | ------------------- | ----------------- |
-| `AnonymousAuthorizationError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `AuthorizationError` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousClientOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientOtherError` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousClientTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientTimeoutError` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousNetworkError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `NetworkError` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousServerOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerOtherError` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousServerTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerTimeoutError` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousSuccess` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `Success` en dimensie gelijk `Authentication` aan is`Anonymous` |
-| `AnonymousThrottlingError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError` en dimensie `Authentication` gelijk aan`Anonymous` |
-| `AuthorizationError` | Trans acties met de dimensie `ResponseType` gelijk aan`AuthorizationError` |
+| `AnonymousAuthorizationError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `AuthorizationError` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousClientOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientOtherError` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousClientTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientTimeoutError` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousNetworkError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `NetworkError` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousServerOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerOtherError` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousServerTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerTimeoutError` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousSuccess` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `Success` en dimensie gelijk `Authentication` aan is `Anonymous` |
+| `AnonymousThrottlingError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError` en dimensie `Authentication` gelijk aan `Anonymous` |
+| `AuthorizationError` | Trans acties met de dimensie `ResponseType` gelijk aan `AuthorizationError` |
 | `Availability` | `Availability` |
 | `AverageE2ELatency` | `SuccessE2ELatency` |
 | `AverageServerLatency` | `SuccessServerLatency` |
-| `ClientOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ClientOtherError` |
-| `ClientTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan`ClientTimeoutError` |
-| `NetworkError` | Trans acties met de dimensie `ResponseType` gelijk aan`NetworkError` |
-| `PercentAuthorizationError` | Trans acties met de dimensie `ResponseType` gelijk aan`AuthorizationError` |
-| `PercentClientOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ClientOtherError` |
-| `PercentNetworkError` | Trans acties met de dimensie `ResponseType` gelijk aan`NetworkError` |
-| `PercentServerOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ServerOtherError` |
-| `PercentSuccess` | Trans acties met de dimensie `ResponseType` gelijk aan`Success` |
-| `PercentThrottlingError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of is`ServerBusyError` |
-| `PercentTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan `ServerTimeoutError` of `ResponseType` gelijk aan`ClientTimeoutError` |
-| `SASAuthorizationError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `AuthorizationError` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASClientOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientOtherError` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASClientTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientTimeoutError` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASNetworkError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `NetworkError` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASServerOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerOtherError` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASServerTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerTimeoutError` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASSuccess` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `Success` en dimensie gelijk `Authentication` aan is`SAS` |
-| `SASThrottlingError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError` en dimensie `Authentication` gelijk aan`SAS` |
-| `ServerOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan`ServerOtherError` |
-| `ServerTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan`ServerTimeoutError` |
-| `Success` | Trans acties met de dimensie `ResponseType` gelijk aan`Success` |
-| `ThrottlingError` | `Transactions`met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of`ServerBusyError`|
+| `ClientOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientOtherError` |
+| `ClientTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientTimeoutError` |
+| `NetworkError` | Trans acties met de dimensie `ResponseType` gelijk aan `NetworkError` |
+| `PercentAuthorizationError` | Trans acties met de dimensie `ResponseType` gelijk aan `AuthorizationError` |
+| `PercentClientOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientOtherError` |
+| `PercentNetworkError` | Trans acties met de dimensie `ResponseType` gelijk aan `NetworkError` |
+| `PercentServerOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan `ServerOtherError` |
+| `PercentSuccess` | Trans acties met de dimensie `ResponseType` gelijk aan `Success` |
+| `PercentThrottlingError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of is `ServerBusyError` |
+| `PercentTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan `ServerTimeoutError` of `ResponseType` gelijk aan `ClientTimeoutError` |
+| `SASAuthorizationError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `AuthorizationError` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASClientOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientOtherError` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASClientTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ClientTimeoutError` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASNetworkError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `NetworkError` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASServerOtherError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerOtherError` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASServerTimeoutError` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `ServerTimeoutError` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASSuccess` | Trans acties waarbij de dimensie `ResponseType` gelijk aan `Success` en dimensie gelijk `Authentication` aan is `SAS` |
+| `SASThrottlingError` | Trans acties met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError` en dimensie `Authentication` gelijk aan `SAS` |
+| `ServerOtherError` | Trans acties met de dimensie `ResponseType` gelijk aan `ServerOtherError` |
+| `ServerTimeoutError` | Trans acties met de dimensie `ResponseType` gelijk aan `ServerTimeoutError` |
+| `Success` | Trans acties met de dimensie `ResponseType` gelijk aan `Success` |
+| `ThrottlingError` | `Transactions` met de dimensie `ResponseType` gelijk aan `ClientThrottlingError` of `ServerBusyError`|
 | `TotalBillableRequests` | `Transactions` |
 | `TotalEgress` | `Egress` |
 | `TotalIngress` | `Ingress` |

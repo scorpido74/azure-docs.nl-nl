@@ -1,20 +1,20 @@
 ---
 title: Custom Vision versleuteling van gegevens in rust
 titleSuffix: Azure Cognitive Services
-description: Custom Vision versleuteling van gegevens in rust.
+description: Micro soft biedt door micro soft beheerde coderings sleutels en kunt u ook uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). Dit artikel bevat informatie over gegevens versleuteling in rust voor Custom Vision en hoe u CMK inschakelt en beheert.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 85cf251db69d33f02e928eaea6a848f20ae7d923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 39257419f179bdce8c94f2ddb3a7cd8f5ac2d34f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310288"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077752"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision versleuteling van gegevens in rust
 
@@ -30,7 +30,7 @@ Met Azure Custom Vision worden uw gegevens automatisch versleuteld wanneer deze 
 Door de klant beheerde sleutels zijn momenteel beschikbaar in deze regio's:
 
 * US - zuid-centraal
-* VS - west 2
+* West US 2
 * VS - oost
 * VS (overheid) - Virginia
 

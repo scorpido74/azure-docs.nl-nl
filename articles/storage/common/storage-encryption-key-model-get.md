@@ -10,13 +10,13 @@ ms.date: 03/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5e3dba072179b57576b387bdabd624372988e975
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 11e08427067efa5e7bd33b8d08d84443444a190b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495026"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078262"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Bepalen welk Azure Storage versleutelings sleutel model wordt gebruikt voor het opslag account
 
@@ -33,7 +33,7 @@ Zie [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.m
 
 Gebruik een van de volgende benaderingen om te bepalen of een opslag account gebruikmaakt van door micro soft beheerde sleutels of door de klant beheerde sleutels voor versleuteling.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om het versleutelings model voor het opslag account te controleren met behulp van de Azure Portal:
 
@@ -60,7 +60,7 @@ $account.Encryption.KeySource
 
 Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage` , wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault` , wordt het account versleuteld met door de klant beheerde sleutels.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 Als u het versleutelings model voor het opslag account wilt controleren met behulp van Azure CLI, roept u de opdracht [AZ Storage account show](/cli/azure/storage/account#az-storage-account-show) aan en controleert u vervolgens de eigenschap sleutel **bron** voor het account.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b67397db3cc6de2a0e6658795ddf87ad355ad422
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008998"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078364"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure resource Graph-beveiligings basislijn voor Azure Security Bench Mark
 
@@ -41,13 +41,13 @@ Deze beveiligings basislijn is van toepassing op de richt lijnen [Azure Security
 
 *Zie [beveiligings beheer: gegevens beveiliging](../../../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik op rollen gebaseerd toegangs beheer (RBAC) om de toegang tot gegevens en resources te beheren. Als u Azure resource Graph wilt gebruiken, moet u ook de juiste toegang hebben tot de resources die u wilt doorzoeken. Deze toegang moet worden beperkt tot alleen-lezen en alleen worden verleend aan het vereiste personeel.
+**Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) om de toegang tot gegevens en resources te beheren. Als u Azure resource Graph wilt gebruiken, moet u ook de juiste toegang hebben tot de resources die u wilt doorzoeken. Deze toegang moet worden beperkt tot alleen-lezen en alleen worden verleend aan het vereiste personeel.
 
 * [Machtigingen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
-* [RBAC configureren in azure](../../../role-based-access-control/role-assignments-rest.md)
+* [Azure RBAC configureren](../../../role-based-access-control/role-assignments-rest.md)
 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar

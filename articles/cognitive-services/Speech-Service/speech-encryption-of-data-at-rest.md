@@ -1,20 +1,20 @@
 ---
 title: Spraak service versleuteling van gegevens in rust
 titleSuffix: Azure Cognitive Services
-description: Spraak service versleuteling van gegevens in rust.
+description: Micro soft biedt door micro soft beheerde coderings sleutels en kunt u ook uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). In dit artikel wordt Inge gaan op de gegevens versleuteling in rust voor de speech service.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b9b76b2eb5e9536561f73a92b6911a2f82122a1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198669"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078092"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Spraak service versleuteling van gegevens in rust
 
@@ -22,7 +22,7 @@ Met de spraak service worden uw gegevens automatisch versleuteld wanneer deze pe
 
 ## <a name="about-cognitive-services-encryption"></a>Over Cognitive Services versleuteling
 
-Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om te kunnen profiteren van versleuteling.
+Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om van versleuteling te kunnen profiteren.
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
