@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: 7515fe7b7e3d2a9d0f1e0497aa226ceb3e6be16c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083513"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961632"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Een Linux Python-app voor Azure App Service configureren
 
@@ -21,7 +21,7 @@ Met de implementatie-engine van App Service wordt automatisch een virtuele omgev
 In deze handleiding vindt u belangrijke concepten en instructies voor Python-ontwikkelaars die een ingebouwde Linux-container in App Service gebruiken. Als u Azure App Service nog nooit hebt gebruikt, moet u eerst de [Python-quickstart](quickstart-python.md) en de [zelfstudie Python met PostgreSQL](tutorial-python-postgresql-app.md) volgen.
 
 > [!NOTE]
-> Linux is momenteel de aanbevolen optie voor het uitvoeren van Python-apps in App Service. Zie [Python in de Windows-versie van App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service) voor informatie over de Windows-optie.
+> Linux is momenteel de aanbevolen optie voor het uitvoeren van Python-apps in App Service. Zie [Python in de Windows-versie van App Service](/visualstudio/python/managing-python-on-azure-app-service) voor informatie over de Windows-optie.
 >
 
 ## <a name="show-python-version"></a>Python-versie weergeven

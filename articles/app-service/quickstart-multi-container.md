@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 228e6f144a1d6e3d0fc4f8fd8cb35c6f4e989ee9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083665"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961419"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Een app met meerdere containers (preview) maken met behulp van een configuratie van Docker Compose
 
 > [!NOTE]
 > De functie voor meerdere containers is beschikbaar als preview.
 
-Met behulp van [Web App for Containers](overview.md#app-service-on-linux) kunt u op een flexibele manier Docker-installatiekopieën gebruiken. Deze quickstart laat zien hoe u een app met meerdere containers (preview-versie) implementeert in Web App for Containers in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) met behulp van een configuratie van Docker Compose.
+Met behulp van [Web App for Containers](overview.md#app-service-on-linux) kunt u op een flexibele manier Docker-installatiekopieën gebruiken. Deze quickstart laat zien hoe u een app met meerdere containers (preview-versie) implementeert in Web App for Containers in [Cloud Shell](../cloud-shell/overview.md) met behulp van een configuratie van Docker Compose.
 
 U gaat deze snelstart in Cloud Shell doen, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 of hoger). 
 

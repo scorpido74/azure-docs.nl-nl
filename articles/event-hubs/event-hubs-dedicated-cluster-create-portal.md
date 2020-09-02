@@ -3,12 +3,12 @@ title: Een toegewezen Event Hubs-cluster maken met behulp van de Azure-portal
 description: In deze quickstart leert u hoe u met de Azure-portal een Azure Event Hubs-cluster maakt.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2759d1e25519b69311c369f3f58239cc0889a9a7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323104"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927762"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Quickstart: Een toegewezen Event Hubs-cluster maken met behulp van de Azure-portal 
 Event Hubs-clusters bieden implementaties met één tenant voor klanten met de meest veeleisende streaming-behoeften. Deze aanbieding heeft een gegarandeerde SLA van 99,99% en is alleen beschikbaar voor de prijscategorie Dedicated. Een [Event Hubs-cluster](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde opnemen met gegarandeerde capaciteit en latentie van minder dan een seconde. Naamruimten en Event Hubs die in een cluster worden gemaakt, omvatten alle functies van de aanbieding voor Standard en meer, en hebben geen opnamelimieten. De Dedicated-aanbieding omvat ook de populaire functie [Event Hubs Capture](event-hubs-capture-overview.md), die gratis beschikbaar is, voor automatische batchverwerking en vastlegging van gegevensstromen in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md).
@@ -100,9 +100,9 @@ Als u de grootte van uw cluster wilt wijzigen nadat het is gemaakt, of als uw vo
 In dit artikel hebt u een Event Hubs-cluster gemaakt. Voor stapsgewijze instructies om gebeurtenissen van een Event Hub te verzenden en ontvangen, en om gebeurtenissen vast te leggen in Azure Storage of Azure Data Lake Store, bekijkt u de volgende zelfstudies:
 
 - Gebeurtenissen verzenden en ontvangen 
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 - [De Azure-portal gebruiken om Event Hubs Capture in te schakelen](event-hubs-capture-enable-through-portal.md)
 - [Azure Event Hubs voor Apache Kafka gebruiken](event-hubs-for-kafka-ecosystem-overview.md)

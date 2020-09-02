@@ -1,189 +1,178 @@
 ---
-title: 'Quickstart: Vastgelegde gegevens uit een Python-app lezen - Azure Event Hubs'
-description: 'Quickstart: Scripts die gebruikmaken van de Azure Python-SDK om de functie Event Hubs Capture te demonstreren.'
+title: Vastgelegde gegevens van Azure Event Hubs lezen vanuit een Python-app (nieuwste versie)
+description: In dit artikel leest u hoe u Python-code kunt schrijven om gegevens vast te leggen die naar een Event Hub worden verzonden en de vastgelegde gebeurtenisgegevens van een Azure-opslagaccount te lezen.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 364ca789f560dc8fdae099b09c77946bc4ad5005
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537221"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927864"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Quickstart: Stapsgewijze handleiding voor Event Hubs Capture: Python (azure-eventhub versie 1)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Gegevens van Event Hubs vastleggen in Azure Storage en deze lezen met behulp van Python (azure-eventhub versie 5)
 
-Capture is een functie van Azure Event Hubs. U kunt Capture gebruiken om automatisch de streaminggegevens in uw event hub te leveren aan een Azure Blob-opslagaccount van uw keuze. Deze functie maakt het eenvoudig om batchverwerking uit te voeren voor realtime streaminggegevens. In dit artikel wordt beschreven hoe u Event Hubs Capture gebruikt met Python. Zie [Gebeurtenissen vastleggen via Azure Event Hubs][Overview of Event Hubs Capture] voor meer informatie over Event Hubs Capture.
+U kunt een Event Hub zo configureren dat de gegevens die naar de Event Hub worden verzonden, worden vastgelegd in een Azure-opslagaccount of Azure Data Lake Storage Gen 1 of Gen 2. In dit artikel leest u hoe u Python-code kunt schrijven om gebeurtenissen te verzenden naar een Event Hub en de vastgelegde gegevens te lezen vanuit **Azure Blob Storage**. Zie [Overzicht van de functie Capture van Event Hubs](event-hubs-capture-overview.md) voor meer informatie over deze functie.
 
-In deze handleiding wordt gebruikgemaakt van de [Azure Python-SDK](https://azure.microsoft.com/develop/python/) om de functie Capture te demonstreren. Het programma *sender.py* verzendt gesimuleerde omgevingstelemetrie naar Event Hubs in de JSON-indeling. De event hub gebruikt de functie Capture om deze gegevens in batches naar Blob Storage te schrijven. De app *capturereader.py* leest deze blobs, maakt een bestand voor toevoegingen voor elk van uw apparaten en schrijft de gegevens naar *CSV*-bestanden op elk apparaat.
+In deze handleiding wordt gebruikgemaakt van de [Azure Python-SDK](https://azure.microsoft.com/develop/python/) om de functie Capture te demonstreren. De app *sender.py* verzendt gesimuleerde omgevingstelemetrie naar Event Hubs in JSON-indeling. De Event Hub gebruikt de functie Capture om deze gegevens in batches naar Blob Storage te schrijven. De app *capturereader.py* leest deze blobs en maakt een toe te voegen bestand voor elk apparaat. De app schrijft de gegevens vervolgens in CSV-bestanden.
 
-> [!WARNING]
-> Deze quickstart is voor versie 1 van de Azure Event Hubs Python-SDK. U wordt aangeraden om uw code te [migreren](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md) naar [versie 5 van de Python-SDK](get-started-capture-python-v2.md).
-
-In deze handleiding doet u het volgende: 
+In deze snelstart, gaat u het volgende doen: 
 
 > [!div class="checklist"]
-> * Een Azure Blob-opslagaccount en container maken in Azure Portal.
-> * Event Hubs Capture inschakelen en deze verwijzen naar uw opslagaccount.
-> * Gegevens naar uw event hub verzenden met behulp van een Python-script.
+> * Een Azure Blob-opslagaccount en -container maken in Azure Portal.
+> * Een Event Hubs-naamruimte maken behulp van Azure Portal.
+> * Een Event Hub maken waarvoor de functie Capture is ingeschakeld en deze koppelen aan uw opslagaccount.
+> * Gegevens naar uw Event Hub verzenden met behulp van een Python-script.
 > * Bestanden uit Event Hubs Capture lezen en verwerken met behulp van een ander Python-script.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Python 3.4 of hoger, waarbij `pip` is geïnstalleerd en bijgewerkt.
-  
-- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-  
-- Een actieve Event Hubs-naamruimte en event hub, gemaakt door de instructies te volgen in [Quickstart: Een event hub maken met behulp van Azure Portal](event-hubs-create.md). Noteer uw naamruimte en namen van event hubs voor later gebruik in deze handleiding. 
-  
-  > [!NOTE]
-  > Als u al over een opslagcontainer beschikt die u kunt gebruiken, kunt u Capture inschakelen en de opslagcontainer selecteren wanneer u de event hub maakt. 
-  > 
-  
-- Uw naam voor de sleutel voor gedeelde toegang van Event Hubs en de waarde van de primaire sleutel. Zoek of maak deze waarden onder **Beleid voor gedeelde toegang** op uw Event Hubs-pagina. De naam van de standaardtoegangssleutel is **RootManageSharedAccessKey**. Kopieer de naam van de toegangssleutel en de waarde voor de primaire sleutel voor later gebruik in deze handleiding. 
+- Python 2.7 en 3.5 of hoger, waarbij PIP is geïnstalleerd en bijgewerkt.  
+- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.  
+- Een actieve Azure Event Hubs-naamruimte en Event Hub.
+[Maak een Event Hubs-naamruimte en een Event Hub](event-hubs-create.md). Noteer de naam van de Event Hubs-naamruimte, de naam van de Event Hub en de primaire toegangssleutel voor de naamruimte. Zie [Een Event Hubs-verbindingsreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal) om een toegangssleutel op te halen. De naam van de standaardsleutel is *RootManageSharedAccessKey*. Voor deze quickstart hebt u alleen de primaire sleutel nodig. De verbindingsreeks hebt u niet nodig.  
+- Een Azure-opslagaccount, een blobcontainer in het opslagaccount en een verbindingsreeks naar het opslagaccount. Als u deze items niet hebt, gaat u als volgt te werk:  
+    1. [Een Azure-opslagaccount maken](../storage/common/storage-account-create.md?tabs=azure-portal)  
+    1. [Een blobcontainer in het opslagaccount maken](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
+    1. [De verbindingsreeks voor het opslagaccount ophalen](../storage/common/storage-configure-connection-string.md)
 
-## <a name="create-an-azure-blob-storage-account-and-container"></a>Een Azure Blob-opslagaccount en container maken
+    Zorg ervoor dat u de verbindingsreeks en de containernaam vastlegt voor later gebruik in deze quickstart.  
+- De functie Capture inschakelen voor de Event Hub. Volg hiervoor de instructies in [Event Hubs Capture inschakelen met behulp van Azure Portal](event-hubs-capture-enable-through-portal.md). Selecteer het opslagaccount en de blobcontainer die u in de vorige stap hebt gemaakt. U kunt de functie ook inschakelen wanneer u een Event Hub maakt.  
 
-Maak een opslagaccount en een container die u gebruikt voor het vastleggen. 
-
-1. Meld u aan bij de [Azure-portal][Azure portal].
-2. Selecteer in het linkernavigatievenster de optie **Opslagaccounts** en in het scherm **Opslagaccounts** de optie **Toevoegen**.
-3. Selecteer in het scherm voor het maken van een opslagaccount een abonnement en resourcegroep en geef het opslagaccount een naam. U kunt de andere selecties op de standaardinstelling laten staan. Selecteer **Controleren en maken**, controleer de instellingen en selecteer **Maken**. 
-   
-   ![Een opslagaccount maken][1]
-   
-4. Wanneer de implementatie is voltooid, selecteert u **Ga naar resource** en selecteert u in het scherm **Overzicht** van het opslagaccount de optie **Containers**.
-5. Selecteer in het scherm **Containers** de optie **+ Container**. 
-6. Geef in het scherm **Nieuwe container** de container een naam en selecteer vervolgens **OK**. Noteer de naam van de container voor later gebruik in de handleiding. 
-7. Selecteer in het linkernavigatievenster van het scherm **Containers** de optie **Toegangssleutels**. Kopieer de **naam van het opslagaccount** en de waarde voor **Sleutel** onder **key1** voor later gebruik in de handleiding.
- 
-## <a name="enable-event-hubs-capture"></a>Event Hubs Capture inschakelen
-
-1. Ga in Azure Portal naar uw event hub door de bijbehorende Event Hubs-naamruimte te selecteren in **Alle resources**, in het linkernavigatievenster de optie **Event hubs** te selecteren en vervolgens uw event hub te selecteren. 
-2. Selecteer in het scherm **Overzicht** voor de event hub de optie **Gebeurtenissen vastleggen**.
-3. Selecteer **Aan** in het scherm **Vastleggen**. Selecteer vervolgens onder **Azure Storage-container** de optie **Container selecteren**. 
-4. Selecteer in het scherm **Containers** de opslagcontainer die u wilt gebruiken en selecteer vervolgens **Selecteren**. 
-5. Selecteer in het scherm **Vastleggen** de optie **Wijzigingen opslaan**. 
-
-## <a name="create-a-python-script-to-send-events-to-event-hub"></a>Een Python-script maken om gebeurtenissen naar een event hub te verzenden
-Met dit script worden 200 gebeurtenissen naar uw event hub verzonden. De gebeurtenissen zijn eenvoudige omgevingsleesbewerkingen die in de JSON-indeling worden verzonden.
+## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Een Python-script maken om gebeurtenissen naar uw Event Hub te verzenden
+In deze sectie maakt u een Python-script waarmee 200 gebeurtenissen (10 apparaten x 20 gebeurtenissen) naar een Event Hub worden verzonden. Deze gebeurtenissen zijn een sample van een omgevingsmeting die wordt verzonden in JSON-indeling. 
 
 1. Open uw favoriete Python-editor, bijvoorbeeld [Visual Studio Code][Visual Studio Code].
-2. Maak een nieuw bestand met de naam *sender.py*. 
-3. Plak de volgende code in *sender.py*. Vervang \<namespace>, \<AccessKeyName>, \<primary key value> en \<eventhub> van de event hubs door uw eigen waarden.
+2. Maak een script met de naam *sender.py*. 
+3. Plak de volgende code in *sender.py*. 
    
-   ```python
-   import uuid
-   import datetime
-   import random
-   import json
-   from azure.servicebus.control_client import ServiceBusService
+    ```python
+    import time
+    import os
+    import uuid
+    import datetime
+    import random
+    import json
+    
+    from azure.eventhub import EventHubProducerClient, EventData
+    
+    # This script simulates the production of events for 10 devices.
+    devices = []
+    for x in range(0, 10):
+        devices.append(str(uuid.uuid4()))
+    
+    # Create a producer client to produce and publish events to the event hub.
+    producer = EventHubProducerClient.from_connection_string(conn_str="EVENT HUBS NAMESAPCE CONNECTION STRING", eventhub_name="EVENT HUB NAME")
+    
+    for y in range(0,20):    # For each device, produce 20 events. 
+        event_data_batch = producer.create_batch() # Create a batch. You will add events to the batch later. 
+        for dev in devices:
+            # Create a dummy reading.
+            reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
+            s = json.dumps(reading) # Convert the reading into a JSON string.
+            event_data_batch.add(EventData(s)) # Add event data to the batch.
+        producer.send_batch(event_data_batch) # Send the batch of events to the event hub.
+    
+    # Close the producer.    
+    producer.close()
+    ```
+4. Wijzig de volgende waarden in de scripts:  
+    * Vervang `EVENT HUBS NAMESPACE CONNECTION STRING` door de verbindingsreeks voor uw Event Hubs-naamruimte.  
+    * Vervang `EVENT HUB NAME` door de naam van uw Event Hub.  
+5. Voer het script uit om gebeurtenissen naar de Event Hub te verzenden.  
+6. In de Azure-portal kunt u controleren of de Event Hub de berichten heeft ontvangen. Schakel over naar de weergave **Berichten** in de sectie **Metrische gegevens**. U moet de pagina vernieuwen om de grafiek bij te werken. Het kan een paar seconden duren voordat op de pagina wordt weergegeven dat de berichten zijn ontvangen. 
+
+    [![Controleren of de Event Hub de berichten heeft ontvangen](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
+
+## <a name="create-a-python-script-to-read-your-capture-files"></a>Een Python-script maken om uw Capture-bestanden te lezen
+In dit voorbeeld worden de vastgelegde gegevens opgeslagen in Azure Blob-opslag. Met het script in deze sectie worden de vastgelegde gegevensbestanden van uw Azure-opslagaccount gelezen en worden CSV-bestanden gegenereerd die u eenvoudig kunt openen en weergeven. Er worden tien bestanden weergegeven in de huidige werkmap van de toepassing. Deze bestanden bevatten de omgevingsmetingen voor de tien apparaten. 
+
+1. Maak in uw Python-editor een script met de naam *capturereader.py*. Met dit script worden de vastgelegde bestanden gelezen en wordt voor elk apparaat een bestand gemaakt om uitsluitend de gegevens voor dat apparaat in te schrijven.
+2. Plak de volgende code in *capturereader.py*. 
    
-   sbs = ServiceBusService(service_namespace='<namespace>', shared_access_key_name='<AccessKeyName>', shared_access_key_value='<primary key value>')
-   devices = []
-   for x in range(0, 10):
-       devices.append(str(uuid.uuid4()))
+    ```python
+    import os
+    import string
+    import json
+    import uuid
+    import avro.schema
+    
+    from azure.storage.blob import ContainerClient, BlobClient
+    from avro.datafile import DataFileReader, DataFileWriter
+    from avro.io import DatumReader, DatumWriter
+    
+    
+    def processBlob2(filename):
+        reader = DataFileReader(open(filename, 'rb'), DatumReader())
+        dict = {}
+        for reading in reader:
+            parsed_json = json.loads(reading["Body"])
+            if not 'id' in parsed_json:
+                return
+            if not parsed_json['id'] in dict:
+                list = []
+                dict[parsed_json['id']] = list
+            else:
+                list = dict[parsed_json['id']]
+                list.append(parsed_json)
+        reader.close()
+        for device in dict.keys():
+            filename = os.getcwd() + '\\' + str(device) + '.csv'
+            deviceFile = open(filename, "a")
+            for r in dict[device]:
+                deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
+    
+    def startProcessing():
+        print('Processor started using path: ' + os.getcwd())
+        # Create a blob container client.
+        container = ContainerClient.from_connection_string("AZURE STORAGE CONNECTION STRING", container_name="BLOB CONTAINER NAME")
+        blob_list = container.list_blobs() # List all the blobs in the container.
+        for blob in blob_list:
+            # Content_length == 508 is an empty file, so process only content_length > 508 (skip empty files).        
+            if blob.size > 508:
+                print('Downloaded a non empty blob: ' + blob.name)
+                # Create a blob client for the blob.
+                blob_client = ContainerClient.get_blob_client(container, blob=blob.name)
+                # Construct a file name based on the blob name.
+                cleanName = str.replace(blob.name, '/', '_')
+                cleanName = os.getcwd() + '\\' + cleanName 
+                with open(cleanName, "wb+") as my_file: # Open the file to write. Create it if it doesn't exist. 
+                    my_file.write(blob_client.download_blob().readall()) # Write blob contents into the file.
+                processBlob2(cleanName) # Convert the file into a CSV file.
+                os.remove(cleanName) # Remove the original downloaded file.
+                # Delete the blob from the container after it's read.
+                container.delete_blob(blob.name)
+    
+    startProcessing()    
+    ```
+3. Vervang `AZURE STORAGE CONNECTION STRING` door de verbindingsreeks voor uw Azure-opslagaccount. De naam van de container die u in deze quickstart hebt gemaakt, is *Capture*. Als u een andere naam voor de container hebt gebruikt, vervangt u *capture* door de naam van de container in het opslagaccount. 
+
+## <a name="run-the-scripts"></a>De scripts uitvoeren
+1. Open een opdrachtprompt met Python in het pad en voer vervolgens de volgende opdrachten uit om pakketten te installeren die voor Python vereist zijn:
    
-   for y in range(0,20):
-       for dev in devices:
-           reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
-           s = json.dumps(reading)
-           sbs.send_event('<eventhub>', s)
-       print(y)
    ```
-4. Sla het bestand op.
-
-## <a name="create-a-python-script-to-read-capture-files"></a>Een Python-script maken om Capture-bestanden te lezen
-
-Met dit script worden de vastgelegde bestanden gelezen en wordt voor elk van uw apparaten een bestand gemaakt om uitsluitend de gegevens voor dat apparaat te schrijven.
-
-1. Maak in uw Python-editor een nieuw bestand met de naam *capturereader.py*. 
-2. Plak de volgende code in *capturereader.py*. Vervang de waarden door de waarden die u hebt opgeslagen voor de \<storageaccount>, \<storage account access key> en \<storagecontainer>.
-   
-   ```python
-   import os
-   import string
-   import json
-   import avro.schema
-   from avro.datafile import DataFileReader, DataFileWriter
-   from avro.io import DatumReader, DatumWriter
-   from azure.storage.blob import BlockBlobService
-   
-   def processBlob(filename):
-       reader = DataFileReader(open(filename, 'rb'), DatumReader())
-       dict = {}
-       for reading in reader:
-           parsed_json = json.loads(reading["Body"])
-           if not 'id' in parsed_json:
-               return
-           if not parsed_json['id'] in dict:
-               list = []
-               dict[parsed_json['id']] = list
-           else:
-               list = dict[parsed_json['id']]
-               list.append(parsed_json)
-       reader.close()
-       for device in dict.keys():
-           deviceFile = open(device + '.csv', "a")
-           for r in dict[device]:
-               deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
-   
-   def startProcessing(accountName, key, container):
-       print('Processor started using path: ' + os.getcwd())
-       block_blob_service = BlockBlobService(account_name=accountName, account_key=key)
-       generator = block_blob_service.list_blobs(container)
-       for blob in generator:
-           #content_length == 508 is an empty file, so only process content_length > 508 (skip empty files)
-           if blob.properties.content_length > 508:
-               print('Downloaded a non empty blob: ' + blob.name)
-               cleanName = str.replace(blob.name, '/', '_')
-               block_blob_service.get_blob_to_path(container, blob.name, cleanName)
-               processBlob(cleanName)
-               os.remove(cleanName)
-           block_blob_service.delete_blob(container, blob.name)
-   startProcessing('<storageaccount>', '<storage account access key>', '<storagecontainer>')
-   ```
-
-## <a name="run-the-python-scripts"></a>De Python-scripts uitvoeren
-
-1. Open een opdrachtprompt met Python in het pad en voer de volgende opdrachten uit om de pakketten te installeren die voor Python vereist zijn:
-   
-   ```cmd
-   pip install azure-storage
-   pip install azure-servicebus
+   pip install azure-storage-blob
+   pip install azure-eventhub
    pip install avro-python3
    ```
+2. Wijzig uw map in de map waarin u *sender.py* en *capturereader.py* hebt opgeslagen en voer de volgende opdracht uit:
    
-   Als u over een eerdere versie van `azure-storage` of `azure` beschikt, moet u mogelijk de optie `--upgrade` gebruiken.
-   
-   U moet mogelijk ook de volgende opdracht uitvoeren. Het is in de meeste systemen niet nodig om deze opdracht uit te voeren. 
-   
-   ```cmd
-   pip install cryptography
+   ```
+   python sender.py
    ```
    
-2. Voer de volgende opdracht uit vanuit de map waarin u *sender.py* en *capturereader.py* hebt opgeslagen:
+   Met deze opdracht wordt een nieuw Python-proces gestart om het verzendprogramma uit te voeren.
+3. Wacht enkele minuten tot de Capture is uitgevoerd en voer vervolgens de volgende opdracht uit in uw oorspronkelijke opdrachtvenster:
    
-   ```cmd
-   start python sender.py
    ```
-   
-   De opdracht start een nieuw Python-proces om het verzendprogramma uit te voeren.
-   
-3. Wanneer het vastleggen is voltooid, voert u de volgende opdracht uit:
-   
-   ```cmd
    python capturereader.py
    ```
 
-   Het Capture-verwerkingsprogramma downloadt alle niet-lege blobs uit de opslagaccountcontainer en schrijft de resultaten als *. CSV*-bestanden naar de lokale map. 
+   Deze Capture-processor maakt gebruik van de lokale map om alle blobs uit het opslagaccount en de container in te downloaden. Deze verwerkt alles wat niet leeg is en schrijft de resultaten als CSV-bestanden in de lokale map.
 
 ## <a name="next-steps"></a>Volgende stappen
+Bekijk [Python-voorbeelden in GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
 
-Voor meer informatie over Event Hubs kunt u de volgende artikelen lezen: 
-
-* [Overzicht van Event Hubs Capture][Overview of Event Hubs Capture]
-* [Voorbeeldtoepassingen die gebruikmaken van Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
-* [Event Hubs-overzicht][Event Hubs overview]
 
 [Azure portal]: https://portal.azure.com/
 [Overview of Event Hubs Capture]: event-hubs-capture-overview.md

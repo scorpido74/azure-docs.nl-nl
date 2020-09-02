@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962132"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050519"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Quickstart: Een chatruimte maken met behulp van SignalR Service
 
@@ -33,9 +34,13 @@ De code voor deze zelfstudie is beschikbaar als download in de [GitHub-opslagpla
 * Installeer de [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Download of kloon het [Azure SignalR-voorbeeld](https://github.com/aspnet/AzureSignalR-samples) in de GitHub-opslagplaats. 
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
+
 ## <a name="create-an-azure-signalr-resource"></a>Een Azure SignalR-resource maken
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="create-an-aspnet-core-web-app"></a>Een ASP.NET Core-web-app maken
 
@@ -49,6 +54,7 @@ In dit gedeelte gebruikt u de [opdrachtregelinterface (CLI) van .NET Core](https
     dotnet new mvc
     ```
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-secret-manager-to-the-project"></a>Secret Manager toevoegen aan het project
 
@@ -71,6 +77,8 @@ In dit gedeelte voegt u het [hulpprogramma Secret Manager](https://docs.microsof
     </ItemGroup>
     </Project>    
     ```
+    
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Azure SignalR toevoegen aan de web-app
 
@@ -225,6 +233,7 @@ In dit gedeelte voegt u een runtime-ontwikkelomgeving voor ASP.NET Core toe. Zie
     }
     ```
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
@@ -254,7 +263,7 @@ In dit gedeelte voegt u een runtime-ontwikkelomgeving voor ASP.NET Core toe. Zie
 
     ![Voorbeeld van een Azure SignalR-groeps-chat](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -279,7 +288,7 @@ U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de 
    
 Na enkele ogenblikken worden de resourcegroep en alle bijbehorende resources verwijderd.
 
-
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -288,4 +297,5 @@ In deze quickstart hebt u een nieuwe Azure SignalR Service-resource gemaakt. Ver
 > [!div class="nextstepaction"]
 > [Verificatie van Azure SignalR-service](./signalr-concept-authenticate-oauth.md)
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnetcore)
 

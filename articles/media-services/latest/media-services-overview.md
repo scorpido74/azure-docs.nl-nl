@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Een algemeen overzicht van Azure Media Services v3 met koppelingen naar quickstarts, zelfstudies en codevoorbeelden.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,17 +14,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000922"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267582"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt voor het creëren van videostreaming van broadcast-kwaliteit, het verbeteren van toegankelijkheid en distributie, het analyseren van inhoud en nog veel meer. Ongeacht of u een ontwikkelaar van apps, een callcenter, een overheidsinstelling of een entertainmentbedrijf bent, is Media Services het perfecte hulpmiddel bij het maken van apps die media-ervaringen van uitzonderlijke kwaliteit willen aanbieden aan grote doelgroepen, op alle populaire mobiele apparaten en in de meestgebruikte browsers van dit moment.
 

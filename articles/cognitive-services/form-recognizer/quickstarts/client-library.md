@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 9b6759fedab8d72b883698b9d04c0e2b7df2fdcc
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505394"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934346"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Quickstart: De clientbibliotheek van Form Recognizer gebruiken
 

@@ -3,7 +3,7 @@ title: Beheerde identiteiten configureren op Azure VM met behulp van REST - Azur
 description: Stapsgewijze instructies voor het configureren van door het systeem en door de gebruiker toegewezen beheerde identiteiten op een Azure VM met behulp van CURL om REST API-aanroepen te maken.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9db22c6876294c9ffba33eab3d27900bf294e886
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59f60a0167e7ac09b1fdfee87cc8412cdbe19053
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873837"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255950"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Beheerde identiteiten voor Azure-resources op een Azure VM configureren met behulp van REST API-aanroepen
 
@@ -37,8 +37,8 @@ In dit artikel leert u om met behulp van CURL het Azure Resource Manager REST-ei
 
 - Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md). **Let op dat u nagaat wat het [verschil is tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure Portal.
-- [Installeer de lokale Azure CLI-console](/cli/azure/install-azure-cli) als u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of een [Linux-distributie/-besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) gebruikt.
+- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](/windows/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure Portal.
+- [Installeer de lokale Azure CLI-console](/cli/azure/install-azure-cli) als u het [Windows-subsysteem voor Linux](/windows/wsl/about) of een [Linux-distributie/-besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) gebruikt.
 - Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure via `az login` met een account dat is gekoppeld aan het Azure-abonnement waarvoor u de door het systeem of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -49,7 +49,7 @@ In deze sectie leert u hoe u een door het systeem toegewezen beheerde identiteit
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Door het systeem toegewezen beheerde identiteit inschakelen tijdens het maken van een Azure-VM
 
-Als u een Azure-VM wilt maken met de door het systeem toegewezen beheerde identiteit, moet uw account beschikken over de roltoewijzing [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).  Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
+Als u een Azure-VM wilt maken met de door het systeem toegewezen beheerde identiteit, moet uw account beschikken over de roltoewijzing [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).  Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
 
 1. Maak met [az group create](/cli/azure/group/#az-group-create) een [resourcegroep](../../azure-resource-manager/management/overview.md#terminology) voor insluiting en implementatie van uw VM en de bijbehorende bronnen. U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
 
@@ -148,7 +148,7 @@ Als u een Azure-VM wilt maken met de door het systeem toegewezen beheerde identi
 
 ### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Door het systeem toegewezen beheerde identiteit inschakelen op een bestaande Azure VM
 
-Als u een door het systeem toegewezen beheerde identiteit wilt inschakelen op een VM die oorspronkelijk zonder deze identiteit werd ingericht, heeft uw account de roltoewijzing [Inzender van de virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) nodig.  Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
+Als u een door het systeem toegewezen beheerde identiteit wilt inschakelen op een VM die oorspronkelijk zonder deze identiteit werd ingericht, heeft uw account de roltoewijzing [Inzender van de virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nodig.  Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
 
 1. Haal een Bearer-toegangstoken op om in de volgende stap in de autorisatie-header te gebruiken voor het maken van uw VM met een door een systeem toegewezen beheerde identiteit.
 
@@ -258,7 +258,7 @@ Als u een door het systeem toegewezen beheerde identiteit wilt inschakelen op ee
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Door het systeem toegewezen beheerde identiteit van een Azure-VM uitschakelen
 
-Als u de door het systeem toegewezen beheerde identiteit op een VM wilt uitschakelen, moet uw account beschikken over de roltoewijzing [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).  Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
+Als u de door het systeem toegewezen beheerde identiteit op een VM wilt uitschakelen, moet uw account beschikken over de roltoewijzing [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).  Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
 
 1. Haal een Bearer-toegangstoken op om in de volgende stap in de autorisatie-header te gebruiken voor het maken van uw VM met een door een systeem toegewezen beheerde identiteit.
 
@@ -303,7 +303,7 @@ In deze sectie leert u hoe u een door de gebruiker toegewezen beheerde identitei
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Door de gebruiker toegewezen beheerde identiteit inschakelen tijdens het maken van een Azure VM
 
-Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, moet uw account beschikken over de roltoewijzingen [Inzender van de virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en [Operator van de beheerde identiteit](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
+Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, moet uw account beschikken over de roltoewijzingen [Inzender van de virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) en [Operator van de beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator). Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
 
 1. Haal een Bearer-toegangstoken op om in de volgende stap in de autorisatie-header te gebruiken voor het maken van uw VM met een door een systeem toegewezen beheerde identiteit.
 
@@ -490,7 +490,7 @@ Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, mo
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een bestaande VM van Azure
 
-Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, moet uw account beschikken over de roltoewijzingen [Inzender van de virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en [Operator van de beheerde identiteit](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
+Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, moet uw account beschikken over de roltoewijzingen [Inzender van de virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) en [Operator van de beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator). Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-directory.
 
 1. Haal een Bearer-toegangstoken op om in de volgende stap in de autorisatie-header te gebruiken voor het maken van uw VM met een door een systeem toegewezen beheerde identiteit.
 
@@ -660,7 +660,7 @@ Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, mo
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>De door de gebruiker toegewezen beheerde identiteit van een Azure VM verwijderen
 
-Als u de door de gebruiker toegewezen identiteit van een VM wilt verwijderen, moet uw account beschikken over de roltoewijzing [Inzender voor virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+Als u de door de gebruiker toegewezen identiteit van een VM wilt verwijderen, moet uw account beschikken over de roltoewijzing [Inzender voor virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 1. Haal een Bearer-toegangstoken op om in de volgende stap in de autorisatie-header te gebruiken voor het maken van uw VM met een door een systeem toegewezen beheerde identiteit.
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488202"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929785"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Quickstart: Gebruik Search Explorer om query's uit te voeren in de portal
 
 **Search Explorer** is een ingebouwd queryprogramma dat wordt gebruikt voor het uitvoeren van query's op een zoekindex in Azure Cognitive Search. Met dit hulpprogramma kunt u eenvoudig kennis opdoen van querysyntaxis, een query- of filterexpressie testen of het vernieuwen van gegevens controleren door na te gaan of er nieuwe inhoud in de index voorkomt.
 
-In deze quickstart wordt een bestaande index gebruikt om Search Explorer te demonstreren. Aanvragen worden geformuleerd met behulp van de [Search REST API](https://docs.microsoft.com/rest/api/searchservice/), waarbij antwoorden worden geretourneerd als JSON-documenten.
+In deze quickstart wordt een bestaande index gebruikt om Search Explorer te demonstreren. Aanvragen worden geformuleerd met behulp van de [Search REST API](/rest/api/searchservice/), waarbij antwoorden worden geretourneerd als JSON-documenten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -133,7 +133,7 @@ Voeg [ **$orderby**](search-query-odata-orderby.md) toe om resultaten niet allee
 
    ![Orderby-expressie](./media/search-explorer/search-explorer-example-ordery.png "De sorteervolgorde wijzigen")
 
-De expressie **$filter** en de expressie **$orderby** zijn beide een OData-constructie. Zie [OData-syntaxis filteren](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
+De expressie **$filter** en de expressie **$orderby** zijn beide een OData-constructie. Zie [OData-syntaxis filteren](/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
 
 <a name="start-search-explorer"></a>
 
@@ -147,7 +147,7 @@ In deze quickstart hebt u **Search Explorer** gebruikt om een query uit te voere
 
 + Query's in de natuurlijke taal, vergelijkbaar met wat u in een commerciële webbrowser invoert, zijn handig voor het testen van gebruikerstoepassingen. U kunt bijvoorbeeld in het geval van de ingebouwde realestate-voorbeeldindex Seattle appartementen lake washington invoeren en vervolgens Ctrl-F gebruiken om termen in de zoekresultaten te vinden. 
 
-+ Query- en filterexpressies worden opgesteld in een syntaxis die door Azure Cognitive Search wordt ondersteund. De standaardinstelling is een [eenvoudige syntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), maar u kunt desgewenst [volledige Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) gebruiken voor krachtigere query's. [Filterexpressies](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) hebben een OData-syntaxis.
++ Query- en filterexpressies worden opgesteld in een syntaxis die door Azure Cognitive Search wordt ondersteund. De standaardinstelling is een [eenvoudige syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search), maar u kunt desgewenst [volledige Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) gebruiken voor krachtigere query's. [Filterexpressies](/rest/api/searchservice/odata-expression-syntax-for-azure-search) hebben een OData-syntaxis.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -159,7 +159,7 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer wilt weten over querystructuren en -syntaxis, gebruikt u Postman of een soortgelijk hulpprogramma om query-expressies te maken die meer onderdelen van de API benutten. De [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) is vooral nuttig voor leer- en verkenningsdoeleinden.
+Als u meer wilt weten over querystructuren en -syntaxis, gebruikt u Postman of een soortgelijk hulpprogramma om query-expressies te maken die meer onderdelen van de API benutten. De [Search REST API](/rest/api/searchservice/) is vooral nuttig voor leer- en verkenningsdoeleinden.
 
 > [!div class="nextstepaction"]
 > [Een eenvoudige query maken in Postman](search-query-simple-examples.md)

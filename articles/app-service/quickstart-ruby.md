@@ -6,19 +6,19 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083585"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961327"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Een Ruby on Rails-app maken met App Service
 
-[Azure App Service in Linux](overview.md#app-service-on-linux) biedt een uiterst schaalbare webhostingservice met self-patchfunctie via het Linux-besturingssysteem. Deze quickstart laat zien hoe u een Ruby on Rails-app naar App Service in Linux implementeert met [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Azure App Service in Linux](overview.md#app-service-on-linux) biedt een uiterst schaalbare webhostingservice met self-patchfunctie via het Linux-besturingssysteem. Deze quickstart laat zien hoe u een Ruby on Rails-app naar App Service in Linux implementeert met [Cloud Shell](../cloud-shell/overview.md).
 
 > [!NOTE]
-> De Ruby-ontwikkelstack ondersteunt momenteel alleen Ruby on Rails. Als u een ander platform wilt gebruiken, zoals Sinatra, of als u een niet-ondersteunde Ruby-versie wilt gebruiken, [voert u deze uit in een aangepaste container](containers/quickstart-docker-go.md).
+> De Ruby-ontwikkelstack ondersteunt momenteel alleen Ruby on Rails. Als u een ander platform wilt gebruiken, zoals Sinatra, of als u een niet-ondersteunde Ruby-versie wilt gebruiken, [voert u deze uit in een aangepaste container](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 

@@ -12,12 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a79078977d25c55edfb4ad72bbd4602a073231f6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117886"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277932"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Quickstart: De lijst met toepassingen weergeven die gebruikmaken van uw Azure Active Directory-tenant (Azure AD) voor identiteitsbeheer
 
@@ -27,7 +27,7 @@ Ga aan de slag met Azure AD als uw IAM-systeem (identiteits- en toegangsbeheer) 
 
 Als u toepassingen wilt weergeven die zijn geregistreerd in uw Azure AD-Tenant, hebt u het volgende nodig:
 
-- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Een Azure-account. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 >[!IMPORTANT]
 >U kunt het beste een niet-productieomgeving gebruiken om de stappen in deze quickstart te testen.

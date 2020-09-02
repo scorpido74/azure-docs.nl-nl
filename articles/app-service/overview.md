@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: b6d8a73dd4f4e7c1a1e430b6f5ea494ed51d20c0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211701"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961479"
 ---
 # <a name="app-service-overview"></a>Overzicht van App Service
 
@@ -28,15 +28,15 @@ Hier volgen enkele belangrijke functies van App Service:
 * **Beheerde productieomgeving**: in App Service worden automatisch [patches gemaakt en het besturingssysteem en taalframeworks onderhouden](overview-patch-os-runtime.md). Besteed uw tijd aan het schrijven van geweldige apps en laat het platform aan Azure over.
 * **Containervorming en Docker**: converteer uw app voor Dockerize-uitvoering en host een aangepaste Windows- of Linux-container in App Service. Voer apps met meerdere containers uit met Docker Compose. Migreer uw Docker-vaardigheden rechtstreeks naar App Service.
 * **DevOps-optimalisatie**: stel [continue integratie en implementatie](deploy-continuous-deployment.md) in met Azure DevOps, GitHub, BitBucket, Docker Hub of Azure Container Registry. Verhoog updateniveaus via [test- en faseringsomgevingen](deploy-staging-slots.md). Beheer uw apps in App Service met [Azure PowerShell](/powershell/azure/) of de [platformoverschrijdende opdrachtregelinterface (CLI)](/cli/azure/install-azure-cli).
-* **Globale schaling met hoge beschikbaarheid**: u kunt handmatig of automatisch [omhoog](manage-scale-up.md) schalen of [uit](../monitoring-and-diagnostics/insights-how-to-scale.md)schalen. U kunt uw apps overal in de globale datacenterinfrastructuur van Microsoft hosten; de [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) van App Service belooft hoge beschikbaarheid.
+* **Globale schaling met hoge beschikbaarheid**: u kunt handmatig of automatisch [omhoog](manage-scale-up.md) schalen of [uit](../azure-monitor/platform/autoscale-get-started.md)schalen. U kunt uw apps overal in de globale datacenterinfrastructuur van Microsoft hosten; de [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) van App Service belooft hoge beschikbaarheid.
 * **Verbindingen met SaaS-platforms en on-premises gegevens**: u kunt kiezen uit meer dan 50 [connectors](../connectors/apis-list.md) voor bedrijfssystemen (zoals SAP), SaaS-services (zoals Salesforce) en internetservices (zoals Facebook). Toegang tot on-premises gegevens met [hybride verbindingen](app-service-hybrid-connections.md) en [Azure Virtual Networks](web-sites-integrate-with-vnet.md).
 * **Beveiliging en naleving**: App Service voldoet aan de vereisten van [ISO, SOC en PCI](https://www.microsoft.com/en-us/trustcenter). Verifieer gebruikers met [Azure Active Directory](configure-authentication-provider-aad.md), [Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md) of een [Microsoft-account](configure-authentication-provider-microsoft.md). Maak [IP-adresbeperkingen](app-service-ip-restrictions.md) en [ beheer service-identiteiten](overview-managed-identity.md).
 * **Toepassingssjablonen**: kies uit een uitgebreide lijst met toepassingssjablonen in [Microsoft Azure Marketplace](https://azure.microsoft.com/marketplace/), zoals WordPress, Joomla en Drupal.
 * **Integratie van Visual Studio en Visual Studio Code**: specifieke hulpprogramma's in Visual Studio en Visual Studio Code stroomlijnen het maken en implementeren van apps en het opsporen van fouten.
 * **API en mobiele functies**: App Service biedt direct CORS-ondersteuning voor RESTful-API-scenario's en vereenvoudigt scenario's met mobiele apps door verificatie, offline gegevenssynchronisatie en pushmeldingen in te schakelen.
-* **Serverloze code**: voer een codefragment of script op aanvraag uit zonder dat u expliciet infrastructuur hoeft in te richten of te beheren. En u betaalt slechts voor de rekentijd die feitelijk door de code wordt gebruikt (zie [Azure Functions](/azure/azure-functions/)).
+* **Serverloze code**: voer een codefragment of script op aanvraag uit zonder dat u expliciet infrastructuur hoeft in te richten of te beheren. En u betaalt slechts voor de rekentijd die feitelijk door de code wordt gebruikt (zie [Azure Functions](../azure-functions/index.yml)).
 
-Naast App Service biedt Azure nog andere services die kunnen worden gebruikt voor het hosten van websites en webtoepassingen. Voor de meeste scenario's is App Service de beste keuze.  Overweeg de [Azure Spring Cloud-service](/azure/spring-cloud/) of [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) voor een architectuur op basis van microservices.  Als u meer controle wilt over de virtuele machines waarop uw code wordt uitgevoerd, kunt u [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) overwegen. Zie [Vergelijking van Azure App Service, Virtual Machines, Service Fabric en Cloud Services](overview-compare.md) voor meer informatie over hoe u moet kiezen tussen deze Azure-services.
+Naast App Service biedt Azure nog andere services die kunnen worden gebruikt voor het hosten van websites en webtoepassingen. Voor de meeste scenario's is App Service de beste keuze.  Overweeg de [Azure Spring Cloud-service](../spring-cloud/index.yml) of [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) voor een architectuur op basis van microservices.  Als u meer controle wilt over de virtuele machines waarop uw code wordt uitgevoerd, kunt u [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) overwegen. Zie [Vergelijking van Azure App Service, Virtual Machines, Service Fabric en Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree) voor meer informatie over hoe u moet kiezen tussen deze Azure-services.
 
 ## <a name="app-service-on-linux"></a>App Service op Linux
 
@@ -44,7 +44,7 @@ App Service kan web-apps ook systeemeigen hosten op Linux voor ondersteunde toep
 
 ### <a name="built-in-languages-and-frameworks"></a>Ingebouwde talen en frameworks
 
-App Service op Linux ondersteunt een aantal taalspecifieke ingebouwde afbeeldingen. Implementeer gewoon uw code. Enkele ondersteunde talen: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core en Ruby. Voer [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) uit om de nieuwste talen en ondersteunde versies te zien. Als de runtime die uw toepassing nodig heeft, niet wordt ondersteund in de ingebouwde afbeeldingen, kunt u deze implementeren met een aangepaste container.
+App Service op Linux ondersteunt een aantal taalspecifieke ingebouwde afbeeldingen. Implementeer gewoon uw code. Enkele ondersteunde talen: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core en Ruby. Voer [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) uit om de nieuwste talen en ondersteunde versies te zien. Als de runtime die uw toepassing nodig heeft, niet wordt ondersteund in de ingebouwde afbeeldingen, kunt u deze implementeren met een aangepaste container.
 
 ### <a name="limitations"></a>Beperkingen
 

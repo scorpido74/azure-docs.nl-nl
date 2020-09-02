@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aa2357e31bf2fba97ae8547948cacdffc70cc741
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: e4141bc4887a166876d1fc4590b73f382abd0b95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705007"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936670"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Quickstart: Een Azure Cognitive Search-index maken in Python met behulp van Jupyter-notebooks
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)](./search-get-started-powershell.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Portal](search-get-started-portal.md)
 > 
 
-Bouw een Jupyter-notebook waarmee een Azure Cognitive Search-index wordt gemaakt en geladen en waarmee query's kunnen worden uitgevoerd met behulp van Python en de [REST API's van Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt stap voor stap uitgelegd hoe u een notebook maakt. Een andere optie is om [een voltooide Jupyter Python-notebook te downloaden en uit te voeren](https://github.com/Azure-Samples/azure-search-python-samples).
+Bouw een Jupyter-notebook waarmee een Azure Cognitive Search-index wordt gemaakt en geladen en waarmee query's kunnen worden uitgevoerd met behulp van Python en de [REST API's van Azure Cognitive Search](/rest/api/searchservice/). In dit artikel wordt stap voor stap uitgelegd hoe u een notebook maakt. Een andere optie is om [een voltooide Jupyter Python-notebook te downloaden en uit te voeren](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -93,7 +93,7 @@ In deze taak start u een Jupyter-notebook en controleert u of u verbinding kunt 
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-Er moet een index in de service aanwezig zijn voordat u gegevens laadt, tenzij u de portal gebruikt. Bij deze stap gebruiken we de [REST API Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) om een indexschema naar de service te pushen.
+Er moet een index in de service aanwezig zijn voordat u gegevens laadt, tenzij u de portal gebruikt. Bij deze stap gebruiken we de [REST API Index maken](/rest/api/searchservice/create-index) om een indexschema naar de service te pushen.
 
 De vereiste elementen van een index zijn een naam, een verzameling velden en een sleutel. Met de verzameling velden wordt de structuur van een *document* gedefinieerd. Elk veld is voorzien van een naam, type en kenmerken die bepalen hoe het veld wordt gebruikt (bijvoorbeeld of er op volledige tekst kan worden gezocht, of er filters kunnen worden toegepast en of het veld kan worden opgehaald in de zoekresultaten). In een index moet een van de velden van het type `Edm.String` worden ingesteld als de *sleutel* voor de documentidentiteit.
 
@@ -149,7 +149,7 @@ Deze index heeft de naam 'hotels-quickstart' en beschikt over de onderstaande ve
 
 ## <a name="2---load-documents"></a>2 - Documenten laden
 
-Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eindpunt van uw index. De REST API is [Documenten toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Documenten zijn afkomstig van [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) op GitHub.
+Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eindpunt van uw index. De REST API is [Documenten toevoegen, bijwerken of verwijderen](/rest/api/searchservice/addupdate-or-delete-documents). Documenten zijn afkomstig van [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) op GitHub.
 
 1. In een nieuwe cel geeft u vier documenten op die het indexschema bevestigen. Geef voor elk document een uploadactie op.
 
@@ -251,7 +251,7 @@ Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eind
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-Bij deze stap ziet u hoe u een query op een index uitvoert met behulp van de [REST API Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Bij deze stap ziet u hoe u een query op een index uitvoert met behulp van de [REST API Documenten zoeken](/rest/api/searchservice/search-documents).
 
 1. Geef in een cel een query-expressie op waarmee een lege zoekopdracht (search=*) wordt uitgevoerd en waardoor een niet-geclassificeerde lijst (zoekscore  = 1,0) met willekeurige documenten wordt geretourneerd. Standaard worden in Azure Cognitive Search 50 resultaten per keer geretourneerd. Volgens de structuur worden met deze query een gehele documentstructuur en waarden geretourneerd. Voeg $count=true toe om een telling van alle documenten in de resultaten te krijgen.
 

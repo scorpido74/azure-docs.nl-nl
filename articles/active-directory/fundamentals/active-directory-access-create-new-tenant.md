@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f658b5670c42ab03770a3082f8eca740f6869dc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797641"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318604"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Quickstart: Een nieuwe tenant maken in Azure Active Directory
 U kunt al uw administratieve taken uitvoeren met behulp van de portal van Azure Active Directory (Azure AD), met inbegrip van het maken van een nieuwe tenant voor uw organisatie. 
@@ -72,6 +72,6 @@ Als u deze app niet meer gebruikt, kunt u de tenant met de volgende stappen verw
 
 - Groepen en leden toevoegen, zie [Een basisgroep maken en leden toevoegen](active-directory-groups-create-azure-portal.md)
 
-- Meer informatie over [op rollen gebaseerde toegang met behulp van Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) en [voorwaardelijke toegang](../../role-based-access-control/conditional-access-azure-management.md) voor het beheren van de app en de toegang tot resources van uw organisatie.
+- Meer informatie over [op rollen gebaseerde toegang met behulp van Privileged Identity Management](../../role-based-access-control/best-practices.md) en [voorwaardelijke toegang](../../role-based-access-control/conditional-access-azure-management.md) voor het beheren van de app en de toegang tot resources van uw organisatie.
 
 - Informatie over Azure Active Directory, met inbegrip van [basisinformatie over licenties, terminologie en bijbehorende functies](active-directory-whatis.md).
