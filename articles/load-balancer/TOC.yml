@@ -47,8 +47,6 @@
       href: powershell-samples.md
 - name: Concepten
   items:
-    - name: Wat is nieuw?
-      href: whats-new.md
     - name: Onderdelen
       href: components.md
     - name: Concepten

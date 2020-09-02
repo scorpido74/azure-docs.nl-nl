@@ -38,9 +38,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: DB en servers
@@ -244,6 +241,9 @@
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: Opgeslagen procedures beheren
       href: reference-stored-procedures.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Implementatiesjablonen

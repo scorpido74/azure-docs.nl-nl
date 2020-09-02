@@ -31,7 +31,7 @@
         - name: Wat zijn Azure AD Connect en Connect Health?
           href: whatis-azure-ad-connect.md
         - name: De juiste verificatie kiezen
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: Tolerantie voor synchronisatie- en duplicatiekenmerken identificeren
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Synchronisatie van wachtwoord-hashes
@@ -339,7 +339,7 @@
     - name: Versiegeschiedenis van Pass-through-verificatie-agent in Azure AD
       href: reference-connect-pta-version-history.md
     - name: Geschiedenis van connectorversie
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: Accounts en machtigingen
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect FAQ

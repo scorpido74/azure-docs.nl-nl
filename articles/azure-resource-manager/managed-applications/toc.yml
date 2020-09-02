@@ -4,7 +4,7 @@
   items:
     - name: Over beheerde toepassingen
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Toepassingsdefinitie publiceren
@@ -25,9 +25,6 @@
       href: powershell-samples.md
     - name: Beheerde toepassingsoplossingen
       href: sample-projects.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Definitie-artefact weergeven
@@ -157,6 +154,9 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Azure-roadmap

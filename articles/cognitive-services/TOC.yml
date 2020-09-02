@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: Diagnostische logboeken
       href: diagnostic-logging.md
-- name: Voorbeelden
-  items:
-    - name: Ingebouwde modules voor Azure Policy
-      href: ./policy-samples.md
 - name: Beveiliging
   items:
     - name: Cognitive Services-beveiliging
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'Recept: Art Explorer'
           href: ./big-data/recipes/art-explorer.md
+- name: Naslaginformatie
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Azure-roadmap

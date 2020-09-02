@@ -116,9 +116,6 @@
       href: service-fabric-powershell-samples.md
     - name: Service Fabric-CLI
       href: samples-cli.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Uitleg over microservices
@@ -895,6 +892,9 @@
           href: service-fabric-service-model-schema-element-groups.md
     - name: Omgevingsvariabelen
       href: service-fabric-environment-variables-reference.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Azure-roadmap

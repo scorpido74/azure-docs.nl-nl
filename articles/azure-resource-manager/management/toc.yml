@@ -4,11 +4,6 @@
   items:
     - name: Wat is Resource Manager?
       href: overview.md
-- name: Voorbeelden
-  items:
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Abonnements- en servicebeperkingen
@@ -17,8 +12,6 @@
       href: resource-name-rules.md
     - name: Resource Manager en klassieke implementatie
       href: deployment-models.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: azure-resource-manager-security-controls.md
     - name: Resourceproviders per service
       href: azure-services-resource-providers.md
     - name: Resourcetypen van extensies
@@ -30,6 +23,8 @@
         - name: Besturingselementen voor beveiliging van Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Algemene Azure-beveiligingskenmerken
+          href: azure-resource-manager-security-controls.md
 - name: Procedures
   items:
     - name: Verplaatsen - resourcegroepen/abonnementen
@@ -172,6 +167,9 @@
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
       href: /python/api/overview/azure/resources?view=azure-python
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Azure-roadmap

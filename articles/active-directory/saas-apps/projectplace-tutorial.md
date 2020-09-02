@@ -1,176 +1,171 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Projectplace | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Projectplace.
+title: 'Zelfstudie: Azure Active Directory-integratie met Projectplace | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Projectplace.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 298059ca-b652-4577-916a-c31393d53d7a
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 179721075484c35c5ebbb3d936b83bc407b75a8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cbc65e64dfd18cdc16873a2d82aecadabeec4c28
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093526"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553509"
 ---
-# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Zelf studie: Projectplace integreren met Azure Active Directory
+# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Zelfstudie: Projectplace integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u Projectplace integreert met Azure Active Directory (Azure AD). Wanneer u Projectplace integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Projectplace kunt integreren met Azure Active Directory (Azure AD). Wanneer u Projectplace integreert met Azure AD, kunt u het volgende:
 
-* Controle in azure AD die toegang heeft tot Projectplace.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Projectplace met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD regelen wie toegang tot Projectplace heeft.
+* Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij Projectplace.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 * Gebruikers kunnen automatisch worden ingericht in Projectplace.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Projectplace-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* een Projectplace-abonnement waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Projectplace ondersteunt SSO die door **SP en IDP** is geïnitieerd en ondersteunt **just-in-time** -gebruikers inrichting.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. Projectplace ondersteunt met **SP en IDP** geïnitieerde eenmalige aanmelding en het **Just-In-Time** inrichten van gebruikers.
 
-## <a name="adding-projectplace-from-the-gallery"></a>Projectplace toevoegen uit de galerie
+## <a name="adding-projectplace-from-the-gallery"></a>Projectplace toevoegen vanuit de galerie
 
-Als u de integratie van Projectplace in azure AD wilt configureren, moet u Projectplace uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Projectplace te configureren in Azure AD, moet u Projectplace vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Projectplace** in het zoekvak.
-1. Selecteer **Projectplace** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Projectplace**.
+1. Selecteer **Projectplace** in het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO met Projectplace configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Projectplace.
+Configureer en test eenmalige aanmelding van Azure AD met Projectplace met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Projectplane.
 
-Als u Azure AD SSO wilt configureren en testen met Projectplace, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Projectplace te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Projectplace](#configure-projectplace)** om de SSO-instellingen aan de kant van de toepassing te configureren.
-3. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen met B. Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-5. **[Maak een Projectplace-test gebruiker](#create-projectplace-test-user)** voor het maken van een equivalent van B. Simon in Projectplace dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Projectplace](#configure-projectplace)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om eenmalige aanmelding van Azure AD te testen met B.Simon.
+4. **[Wijs de Azure AD-testgebruiker toe](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+5. **[Testgebruiker voor Projectplace maken](#create-projectplace-test-user)** : als u een tegenhanger van B.Simon in Projectplace wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Projectplace** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Projectplace** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, wordt de toepassing vooraf geconfigureerd in de sectie **basis configuratie van SAML** en zijn de benodigde url's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. In de sectie **Standaard SAML-configuratie** kunt u de toepassing configureren in de door **IDP** geïnitieerde modus. De toepassing is vooraf geconfigureerd en de benodigde URL's zijn vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ een URL in het tekstvak **URL voor aanmelding** :`https://service.projectplace.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://service.projectplace.com`
 
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , op **pictogram** kopiëren om de URL voor de **federatieve meta gegevens**van de app te kopiëren, conform uw vereiste en op te slaan in Klad blok.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u in het gedeelte **SAML-handtekeningcertificaat** op het **pictogram** kopiëren om de  **App-URL voor federatieve metagegevens** zoals vereist te kopiëren en deze op te slaan in Kladblok.
 
    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-1. Op de sectie **Projectplace instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **Projectplace instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="configure-projectplace"></a>Projectplace configureren
 
-Als u eenmalige aanmelding aan de **Projectplace** zijde wilt configureren, moet u de gekopieerde **app federatieve meta gegevens-Url** van de Azure Portal naar het [ondersteunings team van Projectplace](https://success.planview.com/Projectplace/Support)verzenden. Dit team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden correct is ingesteld.
+Om eenmalige aanmelding te configureren bij **Projectplace**, moet u de gekopieerde  **App-URL voor federatieve metagegevens** vanuit het Azure-portaal versturen naar het [ondersteuningsteam voor Projectplace](https://success.planview.com/Projectplace/Support). Zij zorgen ervoor dat de SAML SSO-verbinding aan beide kanten juist wordt ingesteld.
 
 >[!NOTE]
->De configuratie voor eenmalige aanmelding moet worden uitgevoerd door het [Projectplace-ondersteunings team](https://success.planview.com/Projectplace/Support). U ontvangt een melding zodra de configuratie is voltooid. 
+>De configuratie voor eenmalige aanmelding moet uitgevoerd worden door het [ondersteuningsteam voor Projectplace](https://success.planview.com/Projectplace/Support). U ontvangt een melding zodra de configuratie voltooid is. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B. Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B. Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Projectplace.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Projectplace.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Projectplace**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Projectplace** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B. Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-projectplace-test-user"></a>Projectplace-test gebruiker maken
+### <a name="create-projectplace-test-user"></a>Projectplace-testgebruiker maken
 
 >[!NOTE]
->U kunt deze stap overs Laan als u inrichten hebt ingeschakeld in Projectplace. U kunt het [ondersteunings team van Projectplace](https://success.planview.com/Projectplace/Support) vragen om provisoning in te scha kelen wanneer gebruikers tijdens de eerste aanmelding worden gemaakt in Projectplace.
+>U kunt deze stap overslaan als u inrichten heeft ingeschakeld in Projectplace. U kunt het [ondersteuningsteam voor Projectplace](https://success.planview.com/Projectplace/Support) vragen om inrichten in te schakelen. Wanneer dit gebeurd is, worden gebruikers in Projectplace aangemaakt bij de eerste aanmelding.
 
-Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Projectplace, moet u deze toevoegen aan Projectplace. U moet deze hand matig toevoegen.
+Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Projectplace, moet u ze toevoegen aan Projectplace. U moet ze handmatig toevoegen.
 
-**Voer de volgende stappen uit om een gebruikers account te maken:**
+**Voer deze stappen uit om een gebruikersaccount te maken:**
 
-1. Meld u als beheerder aan bij uw **Projectplace** -bedrijfs site.
+1. Meld u bij de bedrijfssite van **Projectplace** aan als beheerder.
 
-2. Ga naar **personen**en selecteer **leden**:
+2. Ga naar **Personen** en selecteer vervolgens **Leden**:
    
-    ![Ga naar personen en selecteer leden](./media/projectplace-tutorial/ic790228.png "People")
+    ![Ga naar Personen en selecteer vervolgens Leden](./media/projectplace-tutorial/ic790228.png "People")
 
-3. Selecteer **lid toevoegen**:
+3. Selecteer **Lid toevoegen**:
    
-    ![Lid toevoegen selecteren](./media/projectplace-tutorial/ic790232.png "Leden toevoegen")
+    ![Selecteer Lid toevoegen](./media/projectplace-tutorial/ic790232.png "Leden toevoegen")
 
-4. Voer de volgende stappen uit in de sectie **lid toevoegen** .
+4. Voer de volgende stappen uit in de sectie **Lid toevoegen**.
    
-    ![Sectie lid toevoegen](./media/projectplace-tutorial/ic790233.png "Nieuwe leden")
+    ![Sectie Lid toevoegen](./media/projectplace-tutorial/ic790233.png "Nieuwe leden")
    
-    1. Voer in het vak **nieuwe leden** het e-mail adres in van een geldig Azure ad-account dat u wilt toevoegen.
+    1. Voer in het vak **Nieuwe leden** het e-mailadres in van een geldig Azure AD-account dat u wilt toevoegen.
    
     1. Selecteer **Verzenden**.
 
-   Een e-mail met een koppeling om het account te bevestigen voordat deze actief wordt, wordt verzonden naar de eigenaar van het Azure AD-account.
+   Er wordt een e-mail met een koppeling om het account te bevestigen voordat het actief wordt verzonden naar de houder van het Azure AD-account.
 
 >[!NOTE]
->U kunt ook een ander hulp programma voor het maken van gebruikers accounts of API van Projectplace gebruiken om Azure AD-gebruikers accounts toe te voegen.
+>Voor het toevoegen van Azure AD-gebruikersaccounts kunt u gebruikmaken van elk ander hulpprogramma of elke andere API van Projectplace.
 
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel Projectplace in het toegangs venster selecteert, wordt u automatisch aangemeld bij de Projectplace waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Projectplace selecteert in het toegangsvenster, wordt u automatisch aangemeld bij Projectplace waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

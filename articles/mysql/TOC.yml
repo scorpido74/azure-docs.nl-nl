@@ -74,9 +74,6 @@
       href: sample-scripts-azure-cli.md
     - name: Groepsgewijze Java-verbinding
       href: sample-scripts-java-connection-pooling.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: DB en servers
@@ -332,6 +329,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Opgeslagen procedures beheren
       href: reference-stored-procedures.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Implementatiesjablonen

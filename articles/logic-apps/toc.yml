@@ -34,9 +34,6 @@
       href: /samples/browse/?products=azure-logic-apps
     - name: Resource Manager-quickstart-sjablonen
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Connectors voor Logic Apps
@@ -396,6 +393,9 @@
           href: logic-apps-track-integration-account-x12-tracking-schema.md
         - name: Aangepaste volgschema's
           href: logic-apps-track-integration-account-custom-tracking-schema.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn

@@ -161,7 +161,8 @@
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.cache/allversions
     - name: Ingebouwde modules voor Azure Policy
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Redis-opdrachten
       href: 'https://redis.io/commands#'
 - name: Resources

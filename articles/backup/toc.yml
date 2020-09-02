@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Back-ups van SAP HANA-databases beheren - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: Voorbeelden
-  items:
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Ondersteuningsmatrices
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Naleving

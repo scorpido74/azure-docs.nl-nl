@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST-voorbeelden
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Zoekopdracht in volledige tekst
@@ -496,6 +493,9 @@
           items:
             - name: Herkenning van benoemde entiteiten
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Ondersteuning van de Azure-community

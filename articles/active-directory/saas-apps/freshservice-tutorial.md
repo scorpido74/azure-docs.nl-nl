@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Freshservice | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Freshservice configureert.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b52ec552434f74c56333d1afe00cde2a285418
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9e53881d5b28b61cd220b14e02c411db53d19d36
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905394"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Freshservice
 
@@ -60,7 +56,7 @@ Om de integratie van Freshservice te configureren in Azure AD, moet u Freshservi
 1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak **Freshservice**.
 1. Selecteer **Freshservice** in de resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Freshservice
+## <a name="configure-and-test-azure-ad-sso-for-freshservice"></a>Eenmalige aanmelding van Azure AD voor Freshservice configureren en testen
 
 Configureer en test eenmalige aanmelding bij Azure AD met Freshservice met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Freshservice.
 
@@ -132,7 +128,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-freshservice-sso"></a>Eenmalige aanmelding configureren voor Freshservice
 
-1. Open een nieuw browservenster en meld u aan als beheerder bij de bedrijfssite van Freshservice.
+1. Als u de configuratie in Freshservice wilt automatiseren, moet u de **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
+
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
+
+1. Als u op **Freshservice instellen** klikt nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar de Freshservice-toepassing. Geef hier de beheerdersreferenties op om u aan te melden bij Freshservice. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
+
+    ![Instelling configureren](common/setup-sso.png)
+
+1. Als u Freshservice handmatig wilt instellen, meldt u zich als beheerder aan bij de Freshservice-bedrijfssite.
 
 1. Klik in het menu aan de linkerkant op **Admin** en selecteer **Helpdesk Security** bij **General Settings**.
 
