@@ -273,7 +273,9 @@
               href: msal-net-adfs-support.md
             - name: Migreren naar MSAL.NET
               href: msal-net-migration.md
-            - name: Xamarin-apps migreren met behulp van brokers naar MSAL.NET
+            - name: Een Xamarin Android-app migreren met broker naar MSAL.NET
+              href: msal-net-migration-android-broker.md
+            - name: Een Xamarin iOS-app migreren met broker naar MSAL.NET
               href: msal-net-migration-ios-broker.md
             - name: Overwegingen voor webbrowser
               href: msal-net-web-browsers.md

@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure IoT Hub?
       href: about-iot-hub.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Telemetrie verzenden
@@ -84,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: Connectiviteit van apparaten testen
       href: tutorial-connectivity.md
-- name: Voorbeelden
-  items:
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: TLS-ondersteuning
@@ -461,6 +456,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Buitengebruikstelling van functies en API
       items:
         - name: Controle van bewerkingen

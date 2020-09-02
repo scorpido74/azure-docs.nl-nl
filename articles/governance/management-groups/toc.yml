@@ -7,12 +7,25 @@
       href: ../azure-management.md
     - name: Beheergroepen
       href: ./overview.md
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: Een beheergroep maken - Portal
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: Een beheergroep maken - Azure CLI
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: Een beheergroep maken - Azure PowerShell
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: Een beheergroep maken - REST
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
 - name: Instructiegidsen
   expanded: true
   items:
-    - name: Beheergroepen maken
-      href: ./create.md
-    - name: Uw resources beheren
+    - name: Uw resourcehiërarchie beheren
       href: ./manage.md
     - name: Uw resourcehiërarchie beveiligen
       href: ./how-to/protect-resource-hierarchy.md

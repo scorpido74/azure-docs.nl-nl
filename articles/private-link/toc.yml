@@ -46,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: Privé-eindpunten beheren
       href: manage-private-endpoint.md
+    - name: Verkeer inspecteren met Azure Firewall
+      href: inspect-traffic-with-azure-firewall.md
     - name: Problemen oplossen
       items:
         - name: Verbindingsproblemen met privé-eindpunt oplossen

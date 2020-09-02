@@ -4,6 +4,10 @@
   items:
     - name: Wat is ExpressRoute?
       href: expressroute-introduction.md
+- name: Snelstart
+  items:
+    - name: Een ExpressRoute-circuit maken - ARM-sjabloon
+      href: quickstart-create-expressroute-vnet-template.md
 - name: Zelfstudies
   items:
     - name: Een circuit maken en wijzigen

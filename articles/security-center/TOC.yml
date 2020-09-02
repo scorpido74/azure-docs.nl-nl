@@ -107,12 +107,12 @@
           href: update-regulatory-compliance-packages.md
     - name: Uw VM's scannen op beveiligingsproblemen
       items:
-        - name: Overzicht van het scannen van beveiligingsproblemen
-          href: security-center-vulnerability-assessment-recommendations.md
-        - name: Geïntegreerde scanner voor beveiligingsproblemen voor VM's
-          href: built-in-vulnerability-assessment.md
-        - name: Externe scanners gebruiken
-          href: partner-vulnerability-assessment.md
+        - name: De geïntegreerde scanner voor beveiligingsproblemen implementeren in uw VM's
+          href: deploy-vulnerability-assessment-vm.md
+        - name: Een BYOL-beveiligingsoplossing implementeren in uw VM's
+          href: deploy-vulnerability-assessment-byol-vm.md
+        - name: Beveiligingsproblemen in uw VM's beoordelen en oplossen
+          href: remediate-vulnerability-findings-vm.md
     - name: Bedreigingsbeveiliging configureren en waarschuwingen afhandelen
       items:
         - name: Beveiligingswaarschuwingen beheren

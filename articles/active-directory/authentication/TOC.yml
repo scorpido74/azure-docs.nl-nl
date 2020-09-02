@@ -116,6 +116,10 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: Eenmalige aanmelding voor on-premises resources
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Veelgestelde vragen over hybride
+              href: howto-authentication-passwordless-faqs.md
+            - name: Problemen met hybride oplossen
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: Zonder wachtwoord aanmelden via telefoon
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello voor Bedrijven
@@ -209,7 +213,7 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Problemen oplossen
       items:
-        - name: Problemen oplossen met selfservice voor wachtwoordherstel
+        - name: SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: Veelgestelde vragen over selfservice voor wachtwoordherstel
           href: active-directory-passwords-faq.md

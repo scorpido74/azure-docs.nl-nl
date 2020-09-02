@@ -1,17 +1,20 @@
-- name: Documentatie over Traffic Manager
+- name: Documentatie voor Traffic Manager
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is Traffic Manager?
       href: traffic-manager-overview.md
-- name: Snelstartgids
+- name: Quickstarts
   items:
-    - name: Traffic Manager-profiel maken - portal
+    - name: Traffic Manager-profiel maken - Portal
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager-profiel maken - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: Traffic Manager-profiel maken - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
+    - name: Traffic Manager-profiel maken - ARM-sjabloon
+      href: quickstart-create-traffic-manager-profile-template.md
+  expanded: true
 - name: Zelfstudies
   items:
     - name: Verkeer routeren voor lage latentie
@@ -59,7 +62,7 @@
       href: traffic-manager-how-it-works.md
     - name: Veelgestelde vragen
       href: traffic-manager-FAQs.md
-- name: Procedures
+- name: Instructiegidsen
   items:
     - name: Prestatieroutering configureren in Traffic Manager
       href: traffic-manager-configure-performance-routing-method.md
@@ -132,7 +135,7 @@
     - name: Prijscalculator
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Servicelimieten
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits
     - name: Service-updates
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

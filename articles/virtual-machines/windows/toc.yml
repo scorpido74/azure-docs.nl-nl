@@ -141,9 +141,6 @@
           items:
             - name: Azure Monitor
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: Concepten
   items:
     - name: Installatiekopieën
@@ -657,6 +654,8 @@
           href: instance-metadata-service.md
         - name: Geneste virtualisatie inschakelen
           href: nested-virtualization.md
+        - name: Automatische patch-toepassing van VM-gast (preview)
+          href: automatic-vm-guest-patching.md
     - name: Platformonderhoud
       items:
         - name: Onderhoudsmeldingen
@@ -1045,6 +1044,9 @@
     - name: Resource Manager-sjabloon
       displayName: ARM
       href: /azure/templates/microsoft.compute/allversions
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: Resources
   items:
     - name: Q&A

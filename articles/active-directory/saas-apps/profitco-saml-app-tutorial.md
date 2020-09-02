@@ -1,146 +1,142 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Profit.co | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Profit.co.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Profit.co | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Profit.co.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 27f42934-c636-43dd-9c20-a3c6316f2763
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e39a797257b2f06f102a6b774f567b7b3060ccdd
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: 669ab403d738a12a7d4b3093fe50b9cf55a75510
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871330"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553492"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Profit.co
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Profit.co
 
-In deze zelf studie leert u hoe u Profit.co integreert met Azure Active Directory (Azure AD). Wanneer u Profit.co integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Profit.co integreert met Azure Active Directory (Azure AD). Wanneer u Profit.co integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot Profit.co.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Profit.co met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie, het Azure Portal.
+* In Azure AD regelen wie toegang tot Profit.co heeft.
+* Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Profit.co.
+* Uw accounts op een centrale locatie beheren, namelijk de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app (Software as a Service) met Azure AD.
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Profit.co-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Profit.co waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Profit.co ondersteunt door IDP geïnitieerde SSO.
+* Profit.co ondersteunt eenmalige aanmelding via IDP.
 
-* Nadat u Profit.co hebt geconfigureerd, kunt u sessie beheer afdwingen. Dit beveiligt exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u Profit.co hebt geconfigureerd, kunt u sessiebeheer afdwingen. Dit biedt realtime bescherming tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-profitco-from-the-gallery"></a>Profit.co toevoegen vanuit de galerie
 
-Als u de integratie van Profit.co in azure AD wilt configureren, moet u Profit.co uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Profit.co met Azure AD wilt configureren, voegt u Profit.co vanuit de galerie toe aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **profit.co** in het zoekvak.
-1. Selecteer **profit.co** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Profit.co** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **Profit.co** in het venster met resultaten en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Profit.co
+## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Profit.co
 
-Azure AD SSO met Profit.co configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een gekoppelde relatie instellen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Profit.co.
+Configureer en test eenmalige aanmelding van Azure AD met Profit.co met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Profit.co.
 
-Hier volgen de algemene stappen voor het configureren en testen van Azure AD SSO met Profit.co:
+Hier volgen de algemene stappen voor het configureren en testen van eenmalige aanmelding van Azure AD met Profit.co:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-1. **[Configureer profit.co SSO](#configure-profitco-sso)** voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een profit.co-test gebruiker](#create-a-profitco-test-user)** voor het maken van een equivalent van B. Simon in profit.co. Deze tegen hanger is gekoppeld aan de Azure AD-weer gave van de gebruiker.
-1. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij Profit.co configureren](#configure-profitco-sso)** : als u de instellingen voor eenmalige aanmelding voor de toepassing wilt configureren.
+    1. **[Een testgebruiker voor Profit.co maken](#create-a-profitco-test-user)** als tegenhanger van B.Simon in Profit.co. Deze tegenhanger is gekoppeld aan de Azure AD-voorstelling van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **profit.co** de sectie **beheren** . Selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** het potlood pictogram voor de basis- **SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Profit.co** de sectie **Beheren**. Selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
-   ![Scherm afbeelding van het instellen van eenmalige aanmelding met de SAML-pagina, waarbij het potlood pictogram is gemarkeerd](common/edit-urls.png)
+   ![Schermopname van de pagina Eenmalige aanmelding instellen met SAML, met het potloodpictogram gemarkeerd](common/edit-urls.png)
 
-1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en zijn de benodigde url's al vooraf ingevuld in Azure. Gebruikers moeten de configuratie opslaan door de knop **Opslaan** te selecteren.
+1. In de sectie **SAML-basisconfiguratie** is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld in Azure. De gebruiker moet de configuratie opslaan door **Opslaan** te selecteren.
 
-1. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de knop **kopiëren** . Hiermee wordt de **URL voor de federatieve meta gegevens** van de app gekopieerd en op uw computer opgeslagen.
+1. Ga naar de pagina **Eenmalige aanmelding met SAML instellen** en selecteer in de sectie **SAML-handtekeningcertificaat** de knop **Kopiëren**. Hiermee wordt de URL van de **App-URL voor federatieve metagegevens** gekopieerd en op uw computer opgeslagen.
 
-    ![Scherm opname van het SAML-handtekening certificaat, met de knop kopiëren gemarkeerd](common/copy-metadataurl.png)
+    ![Schermopname van het SAML-handtekeningcertificaat, met de kopieerknop gemarkeerd](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer **Azure Active Directory** > **gebruikers** > van**alle gebruikers**in het linkerdeel venster van de Azure Portal.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het veld **wacht woord** .
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde in het veld **Wachtwoord**.
    1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Profit.co.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Profit.co.
 
-1. Selecteer in het Azure Portal**alle toepassingen**in **bedrijfs toepassingen** > .
-1. Selecteer in de lijst toepassingen de optie **profit.co**.
-1. Zoek op de pagina overzicht van de app de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer **Profit.co** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
-   ![Scherm afbeelding van de sectie beheren met gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
+   ![Het gedeelte Beheren, met Gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer in het dialoog venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
+1. Selecteer **Gebruiker toevoegen**. Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![Scherm opname van de pagina gebruikers en groepen, met gemarkeerde gebruiker toevoegen](common/add-assign-user.png)
+    ![Schermopname van de pagina Gebruikers en groepen, met Gebruiker toevoegen gemarkeerd](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers. Kies vervolgens de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens de knop **selecteren** onder aan het scherm.
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** in de lijst met gebruikers **B.Simon**. Kies vervolgens onderaan het scherm de knop **Selecteren**.
+1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens onderaan het scherm de knop **Selecteren**.
 1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-## <a name="configure-profitco-sso"></a>Profit.co SSO configureren
+## <a name="configure-profitco-sso"></a>Eenmalige aanmelding voor Profit.co configureren
 
-Als u eenmalige aanmelding aan de Profit.co zijde wilt configureren, moet u de URL voor de federatieve meta gegevens van de app naar het [ondersteunings team van profit.co](mailto:support@profit.co)verzenden. Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
+Als u eenmalige aanmelding wilt configureren voor Profit.co, moet u de App-URL voor federatieve metagegevens verzenden naar het [ondersteuningsteam van Profit.co](mailto:support@profit.co). Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
 
-### <a name="create-a-profitco-test-user"></a>Een Profit.co-test gebruiker maken
+### <a name="create-a-profitco-test-user"></a>Een testgebruiker voor Profit.co maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in Profit.co. Werk samen met het [profit.co-ondersteunings team](mailto:support@profit.co) om de gebruikers toe te voegen aan het profit.co-platform. U kunt eenmalige aanmelding pas gebruiken als u gebruikers maakt en activeert.
+In deze sectie maakt u in Profit.co een gebruiker met de naam B.Simon. Neem contact op met het [ondersteuningsteam van Profit.co](mailto:support@profit.co) om de gebruikers toe te voegen aan het Profit.co-platform. U kunt eenmalige aanmelding pas gebruiken nadat u gebruikers hebt gemaakt en geactiveerd.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
-In deze sectie kunt u de configuratie van eenmalige aanmelding voor Azure AD testen met behulp van het toegangs venster.
+In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel Profit.co in het toegangs venster selecteert, wordt u automatisch aangemeld bij de Profit.co waarvoor u SSO hebt ingesteld. Zie [Inleiding tot het toegangs venster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie.
+Wanneer u in het toegangsvenster de tegel Profit.co selecteert, wordt u automatisch aangemeld bij het Profit.co-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Profit.co met Azure AD](https://aad.portal.azure.com/)
+- [Profit.co proberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Profit.co beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Profit.co beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

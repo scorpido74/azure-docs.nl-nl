@@ -111,9 +111,6 @@
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
-        - name: Ingebouwde modules voor Azure Policy
-          displayName: 'samples, policies, definitions'
-          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Concepten
       items:
         - name: Opslagaccounts
@@ -554,6 +551,9 @@
           href: /azure/templates/microsoft.storage/allversions
         - name: Bewakingsgegevens
           href: ../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Ingebouwde modules voor Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Resources
       items:
         - name: Azure-updates
@@ -713,12 +713,8 @@
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Procedures
       items:
-        - name: Maken
-          items:
-            - name: Een opslagaccount maken (algemeen gebruik v2)
-              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Een opslagaccount maken (blok-blob)
-              href: storage-blob-create-account-block-blob.md
+        - name: Create a storage account
+          href: create-data-lake-storage-account.md
         - name: Migreren
           items:
             - name: Migreren van Data Lake Storage Gen1
@@ -830,6 +826,9 @@
         - name: Resource Manager-sjabloon
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
+        - name: Ingebouwde modules voor Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Resources
       items:
         - name: Bekende problemen

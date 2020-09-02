@@ -4,6 +4,8 @@
   items:
     - name: Over servers met Azure Arc
       href: overview.md
+    - name: Wat is er nieuwe bij de Connected Machine-agent
+      href: agent-release-notes.md
 - name: Snelstartgidsen
   items:
     - name: Servers met Arc-agent inschakelen
@@ -14,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: Machine bewaken
       href: ./learn/tutorial-enable-vm-insights.md
-- name: Voorbeelden
-  items:
-    - name: Ingebouwde modules voor Azure Policy
-      items:
-        - name: Servers met ingeschakelde Arc
-          href: policy-samples.md
 - name: Concepten
   items:
     - name: Beveiliging
@@ -55,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Ingebouwde modules voor Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

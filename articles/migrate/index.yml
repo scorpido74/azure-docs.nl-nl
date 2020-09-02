@@ -3,19 +3,21 @@ title: Documentatie voor Azure Migrate
 summary: Zoek artikelen om u te helpen uw on-premises omgeving te detecteren, beoordelen en migreren met hulpprogramma's in de Azure Migrate-hub.
 metadata:
   title: Documentatie voor Azure Migrate
-  description: Meer informatie over hoe u de hulpprogramma's in de Azure Migrate-hub gebruikt om uw on-premises omgeving te detecteren, beoordelen en migreren naar Azure.
+  description: Ontdek Azure-migratiezelfstudies, -resources en hulpprogramma's om migratie te beoordelen. Meer informatie over hoe u de hulpprogramma's in de Azure Migrate-hub gebruikt om uw on-premises omgeving te detecteren, beoordelen en migreren naar Azure.
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
   ms.date: 07/08/2020
-  ms.openlocfilehash: a3c9be5e123892d5d1b8d8e4a0677eb520e34dc6
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.custom: seo-azure-migrate
+  keywords: azure migrate, azure migration, azure migrate assessment tool, azure migrate tool, azure migrate documentation, azure migration documentation
+  ms.openlocfilehash: b38df4b4a9c9cd0741e9bc4d69e42ebaf2feefb7
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86112660"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89228338"
 landingContent:
 - title: Over Azure Migrate
   linkLists:

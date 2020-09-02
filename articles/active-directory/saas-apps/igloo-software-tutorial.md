@@ -1,58 +1,54 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Igloo-software | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory-en Igloo-software.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Igloo Software | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Igloo Software.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb625c1-d3fc-4ae1-a304-6a6733a10e6e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 857869b73e76c76075ac9607b64ffbb9d7358b5b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100584"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545264"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Zelf studie: integratie Azure Active Directory met Igloo-software
+# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Igloo Software
 
-In deze zelf studie leert u hoe u Igloo-software integreert met Azure Active Directory (Azure AD).
-Het integreren van Igloo-software met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Igloo Software integreert met Azure AD (Active Directory).
+Igloo Software integreren met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Igloo-software.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor Igloo-software (eenmalige aanmelding) met hun Azure AD-accounts.
+* In Azure AD beheren wie toegang heeft tot Igloo Software.
+* Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Igloo Software (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Igloo-software wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Igloo Software wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding van Igloo-software
+* Een Igloo Software-abonnement waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Igloo-software ondersteunt door **SP** GEÏNITIEERDe SSO
-* Igloo-software ondersteunt **just-in-time** -gebruikers inrichting
+* Igloo Software biedt ondersteuning voor met **SP** geïnitieerde SSO
+* Igloo Software biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
 
-## <a name="adding-igloo-software-from-the-gallery"></a>Igloo-software toevoegen vanuit de galerie
+## <a name="adding-igloo-software-from-the-gallery"></a>Igloo Software toevoegen vanuit de galerie
 
-Als u de integratie van Igloo-software in azure AD wilt configureren, moet u Igloo-software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Igloo Software in Azure AD wilt configureren, moet u Igloo Software vanuit de galerie toevoegen aan de lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Igloo-software toe te voegen vanuit de galerie:**
+**Als u Igloo Software wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,31 +62,31 @@ Als u de integratie van Igloo-software in azure AD wilt configureren, moet u Igl
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Igloo software**in het zoekvak, selecteer **Igloo software** van result panel en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Igloo Software**, selecteer **Igloo Software** in het resultatenpaneel, en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Igloo-software in de lijst met resultaten](common/search-new-app.png)
+     ![Igloo Software in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Igloo-software op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Igloo-software tot stand worden gebracht.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met Igloo Software op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Igloo Software.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Igloo-software, moet u de volgende bouw stenen volt ooien:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Igloo Software te configureren en te testen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding van Igloo-software configureren](#configure-igloo-software-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Igloo-gebruikers test gebruiker](#create-igloo-software-test-user)** -om een equivalent van Julia Simon in Igloo-software te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding met Igloo Software configureren](#configure-igloo-software-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een Igloo Software-testgebruiker maken](#create-igloo-software-test-user)** : als u een equivalent van Britta Simon in Igloo Software wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Igloo-software:
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Igloo Software te configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina integratie van **Igloo-software** toepassing de optie **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Igloo Software** de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,22 +100,22 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Igloo-software domein en Url's](common/sp-identifier-reply.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Igloo Software](common/sp-identifier-reply.png)
 
-    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://<company name>.igloocommmunities.com`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<company name>.igloocommmunities.com`
 
     b. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<company name>.igloocommmunities.com/saml.digest`
 
     c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team](https://www.igloosoftware.com/services/support) van de Igloo-software om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [klantenondersteuningsteam van Igloo Software](https://www.igloosoftware.com/services/support) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer op de sectie **Igloo-software instellen** de gewenste URL ('s) volgens uw vereiste.
+6. Kopieer in de sectie **Igloo Software instellen** de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -129,57 +125,57 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-igloo-software-single-sign-on"></a>Eenmalige aanmelding voor Igloo-software configureren
+### <a name="configure-igloo-software-single-sign-on"></a>Eenmalige aanmelding met Igloo Software configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw Igloo-software-bedrijfs site.
+1. Meld u in een ander browservenster als beheerder aan bij de bedrijfssite van Igloo Software.
 
-2. Ga naar het **configuratie scherm**.
+2. Ga naar het **Configuratiescherm**.
 
      ![Configuratiescherm](./media/igloo-software-tutorial/ic799949.png "Configuratiescherm")
 
-3. Klik op het tabblad **lidmaatschap** op **aanmeldings instellingen**.
+3. Klik op het tabblad **Lidmaatschap** op **Aanmeldinstellingen**.
 
-    ![Aanmeldings instellingen](./media/igloo-software-tutorial/ic783968.png "Aanmeldings instellingen")
+    ![Aanmeldinstellingen](./media/igloo-software-tutorial/ic783968.png "Aanmeldinstellingen")
 
 4. Klik in de sectie SAML-configuratie op **SAML-verificatie configureren**.
 
     ![SAML-configuratie](./media/igloo-software-tutorial/ic783969.png "SAML-configuratie")
 
-5. Voer de volgende stappen uit in de sectie **algemene configuratie** :
+5. Voer in de sectie **Algemene configuratie** de volgende stappen uit:
 
     ![Algemene configuratie](./media/igloo-software-tutorial/ic783970.png "Algemene configuratie")
 
-    a. Typ in het tekstvak naam van de **verbinding** een aangepaste naam voor uw configuratie.
+    a. Typ in het tekstvak **Verbindingsnaam** een aangepaste naam voor de configuratie.
 
-    b. Plak in het tekstvak **IDP aanmeld-URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
+    b. Plak in het tekstvak **IdP-aanmeldings-URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    c. Plak in het tekstvak **Afmeldings-URL van IDP** de waarde van de **afmeldings-URL** die u van Azure Portal hebt gekopieerd.
+    c. Plak in het tekstvak **IdP-afmeldings-URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    d. Selecteer **antwoord afmelden en HTTP-type aanvragen** als **post**.
+    d. Selecteer **Afmeldingsantwoord en type aanvraag-HTTP** als **POST**.
 
-    e. Open uw met **base 64** versleutelde certificaat in Klad blok dat u hebt gedownload van Azure Portal, kopieer de inhoud ervan naar het klem bord en plak het in het tekstvak **openbaar certificaat** .
+    e. Open in Kladblok het met **base-64** gecodeerde certificaat dat u hebt gedownload in de Azure-portal, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **Openbaar certificaat**.
 
-6. Voer de volgende stappen uit in de **configuratie voor antwoorden en authenticatie**:
+6. Voer in de sectie **Antwoord en verificatieconfiguratie** de volgende stappen uit:
 
-    ![Configuratie van antwoorden en verificatie](./media/igloo-software-tutorial/IC783971.png "Configuratie van antwoorden en verificatie")
+    ![Antwoord en verificatieconfiguratie](./media/igloo-software-tutorial/IC783971.png "Antwoord en verificatieconfiguratie")
   
-    a. Selecteer **micro soft ADFS**als **ID-provider**.
+    a. Selecteer **Microsoft ADFS** als **Id-provider**.
 
-    b. Selecteer **e-mail adres**als **ID-type**. 
+    b. Selecteer **E-mailadres**als **id-type**. 
 
-    c. Typ **EmailAddress**in het tekstvak **e-mail kenmerk** .
+    c. Typ **e-mailadres** in het tekstvak **E-mailadreskenmerk**.
 
-    d. **Typ voor**naam in het tekstvak **voor het kenmerk First name** .
+    d. Typ **voornaam** in het tekstvak **Voornaamkenmerk**.
 
-    e. Typ in het tekstvak **Achternaam kenmerk** naam **.**
+    e. Typ **achternaam** in het tekstvak **Achternaamkenmerk**.
 
-7. Voer de volgende stappen uit om de configuratie te volt ooien:
+7. Voer de volgende stappen uit om de configuratie te voltooien:
 
-    ![Gebruikers maken bij aanmelden](./media/igloo-software-tutorial/IC783972.png "Gebruikers maken bij aanmelden") 
+    ![Gebruiker maken bij aanmelden](./media/igloo-software-tutorial/IC783972.png "Gebruiker maken bij aanmelden") 
 
-    a. Selecteer bij het **maken van een gebruiker bij aanmelden**de optie **een nieuwe gebruiker in uw site maken wanneer deze zich aanmeldt**.
+    a. Selecteer **Een nieuwe gebruiker maken in uw site wanneer deze zich aanmeldt** als **Gebruiker maken bij aanmelden**.
 
-    b. Als **aanmeldings instellingen**selecteert u de **knop SAML gebruiken op het scherm aanmelden**.
+    b. Selecteer **SAML-knop gebruiken op het scherm Aanmelden** als **Aanmeldinstellingen**.
 
     c. Klik op **Opslaan**.
 
@@ -191,7 +187,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -199,26 +195,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Igloo-software.
+In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Igloo Software.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Igloo software**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **Igloo Software**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Igloo software**.
+2. Selecteer **Igloo Software** in de lijst met toepassingen.
 
-    ![De koppeling naar de Igloo-software in de lijst met toepassingen](common/all-applications.png)
+    ![De Igloo Software-koppeling selecteren in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -228,28 +224,28 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-igloo-software-test-user"></a>Igloo software test gebruiker maken
+### <a name="create-igloo-software-test-user"></a>Een Igloo Software-testgebruiker maken
 
-Er is geen actie-item waarmee u gebruikers inrichten kunt configureren voor Igloo-software.  
+Er is geen actie-item voor u om gebruikersinrichting te configureren voor Igloo Software.  
 
-Wanneer een toegewezen gebruiker zich probeert aan te melden bij Igloo-software met behulp van het toegangs venster, controleert Igloo software of de gebruiker bestaat.  Als er nog geen gebruikers account beschikbaar is, wordt deze automatisch gemaakt door Igloo-software.
+Wanneer een toegewezen gebruiker zich via het toegangsvenster probeert aan te melden bij Igloo Software, wordt in Igloo Software gecontroleerd of de gebruiker bestaat.  Als er nog geen gebruikersaccount beschikbaar is, wordt dit automatisch gemaakt in Igloo Software.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Igloo software in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Igloo-software waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Igloo Software in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Igloo Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
