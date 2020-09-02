@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032283"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719211"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Oplossingen voor de detailhandel bouwen met Azure IoT Central
 
@@ -160,20 +160,20 @@ Voor de videoanalysetoepassing wordt een [Live Video Analytics](#live-video-anal
 
 De toepassingssjabloon omvat vier toepassingsdashboards:
 
-* **Installatie** biedt informatie over het ontwerp van de toepassing. Ook kunt u hier camera's toevoegen en verwijderen.
-* Met **Beheren** kunt u uw camera's beheren. U kunt bijvoorbeeld de camera's configureren, statusinformatie bekijken en camera's inschakelen.
-* **Echte camera's**: hier kunt u informatie van uw echte camera's bekijken, zoals het aantal waarnemingen en cameragebeurtenissen.
-* Met **Bewaken** kunt u gedetailleerde informatie van al uw camera's bekijken.
+* **Aan de slag** bevat koppelingen naar bronnen om u op weg te helpen met de toepassingssjabloon.
+* **Voorbeelddashboard** bevat een illustratie van de soorten informatie die u kunt weergeven met de verbonden camera's.
+* **(Voorbeeld) Real Camera Management** gebruikt gesimuleerde camera's om te laten zien hoe u uw camera's vanuit de toepassing kunt beheren.
+* **(Voorbeeld) Real Camera Monitor** gebruikt gesimuleerde camera's om te laten zien hoe u uw camera's vanuit de toepassing kunt bewaken.
 
 :::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videoanalyse: object- en bewegingsdetectie":::
 
 Zie [De architectuur van de videoanalysetoepassing](architecture-video-analytics.md) voor meer informatie over de architectuur van een oplossing.
 
-Zie de zelfstudie [Een videoanalysetoepassing maken in Azure IoT Central](tutorial-video-analytics-create-app.md) voor meer informatie over het implementeren van de oplossing.
+Zie de zelfstudie [Een videoanalysetoepassing maken in Azure IoT Central](tutorial-video-analytics-deploy.md) voor meer informatie over het implementeren van de oplossing.
 
 ### <a name="live-video-analytics"></a>Livevideoanalyse
 
-Livevideoanalyse biedt een platform voor het bouwen van intelligente videotoepassingen die de edge en de cloud overbruggen. Het platform biedt de mogelijkheid om live video vast te leggen, op te nemen en te analyseren. Bovendien kunnen de resultaten, zoals video en/of videoanalyses, worden gepubliceerd naar Azure-services. De Azure-services kunnen in de cloud of aan de rand worden uitgevoerd. U kunt het platform gebruiken om IoT-oplossingen te verbeteren met videoanalyse.
+[Livevideoanalyse](https://github.com/Azure/live-video-analytics) biedt een platform voor het bouwen van intelligente videotoepassingen die de edge en de cloud overbruggen. Het platform biedt de mogelijkheid om live video vast te leggen, op te nemen en te analyseren. Bovendien kunnen de resultaten, zoals video en/of videoanalyses, worden gepubliceerd naar Azure-services. De Azure-services kunnen in de cloud of aan de rand worden uitgevoerd. U kunt het platform gebruiken om IoT-oplossingen te verbeteren met videoanalyse.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -184,4 +184,5 @@ U begint als volgt met het maken van een oplossing voor de detailhandel:
 * [Een toepassingssjabloon voor een digitaal distributiecentrum implementeren en doorlopen](./tutorial-iot-central-digital-distribution-center.md).
 * [Een toepassingssjabloon voor slim voorraadbeheer implementeren en doorlopen](./tutorial-iot-central-smart-inventory-management.md).
 * [Een toepassingssjabloon voor een micro-uitvoeringscentrum implementeren en doorlopen](./tutorial-micro-fulfillment-center.md).
+* [Een toepassingssjabloon voor de videoanalysetoepassing implementeren en doorlopen](./tutorial-video-analytics-deploy.md).
 * Zie [Overzicht van IoT Central](../preview/overview-iot-central.md) voor meer informatie over IoT Central.

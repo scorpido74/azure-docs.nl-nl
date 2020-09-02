@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e64aa10d8ddadd367d04b2b480770a99f3ece1dc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054471"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826528"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Quickstart: Een back-up van een virtuele machine maken in Azure met een ARM-sjabloon
 
-[Azure Backup](backup-overview.md) maakt een back-up van zowel on-premises machines en apps als Azure-VM's. In dit artikel ontdekt u hoe u een back-up kunt maken van een Azure VM met een Azure Resource Manager-sjabloon (ARM-sjabloon) en Azure PowerShell. Deze quickstart is gericht op het implementeren van een ARM-sjabloon om een Recover Services-kluis te maken. Voor meer informatie over het ontwikkelen van ARM-sjablonen raadpleegt u de [documentatie voor Azure Resource Manager](../azure-resource-manager/index.yml) en de [sjabloonverwijzing](/azure/templates/microsoft.recoveryservices/allversions).
+[Azure Backup](backup-overview.md) maakt een back-up van zowel on-premises machines en apps als Azure-VM's. In dit artikel ontdekt u hoe u een back-up kunt maken van een Azure VM met een Azure Resource Manager-sjabloon (ARM-sjabloon) en Azure PowerShell. Deze quickstart is gericht op het implementeren van een ARM-sjabloon om een Recovery Services-kluis te maken. Voor meer informatie over het ontwikkelen van ARM-sjablonen raadpleegt u de [documentatie voor Azure Resource Manager](../azure-resource-manager/index.yml) en de [sjabloonverwijzing](/azure/templates/microsoft.recoveryservices/allversions).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -28,7 +28,7 @@ Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van A
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Met deze sjabloon kunt u een eenvoudige Windows-VM en Recovery Services-kluis implementeren waarvoor de DefaultPolicy is geconfigureerd ter bescherming.
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
+:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json":::
 
 De resources die in het sjabloon worden gedefinieerd zij:
 
@@ -47,7 +47,7 @@ Als u het sjabloon wilt implementeren, selecteert u **Probeer het** om de Azure 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$location = Read-Host -Prompt "Enter the location (for example, centralus)"
 $adminUsername = Read-Host -Prompt "Enter the administrator username for the virtual machine"
 $adminPassword = Read-Host -Prompt "Enter the administrator password for the virtual machine" -AsSecureString
 $dnsPrefix = Read-Host -Prompt "Enter the unique DNS Name for the Public IP used to access the virtual machine"

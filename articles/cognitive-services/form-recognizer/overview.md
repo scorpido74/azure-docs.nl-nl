@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836901"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723555"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -24,7 +24,7 @@ Azure Form Recognizer is een Cognitive Services-dienst die gebruikmaakt van mach
 
 Form Recognizer bestaat uit de volgende services:
 * **Aangepaste modellen**: sleutel-waardeparen en tabelgegevens uit formulieren extraheren. Deze modellen worden getraind met uw eigen gegevens, zodat ze zijn afgestemd op uw formulieren.
-* **Vooraf gecompileerd ontvangstbewijsmodel**: hiermee worden gegevens uit de Amerikaanse aankoopbewijzen geëxtraheerd met behulp van een vooraf samengesteld model.
+* **Vooraf samengestelde modellen**: gegevens ophalen uit unieke formuliertypen met vooraf samengestelde modellen. Op dit moment zijn er vooraf samengestelde modellen voor aankoopbewijzen en visitekaartjes in het Engels.
 * **Indelings-API**: hiermee worden tekst- en tabelstructuren uit documenten geëxtraheerd, samen met de bijbehorende begrenzingsvakcoördinaten.
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Wanneer u met gelabelde gegevens traint, leert het model onder supervisie om nut
 
 De Form Recognizer gebruikt de [indelings-API](#layout-api) voor meer informatie over de verwachte grootten en posities van gedrukte en handgeschreven tekstelementen. Vervolgens worden door de gebruiker opgegeven labels gebruikt voor het leren van de sleutel/waarde-koppelingen in de documenten. We raden u aan vijf handmatig gelabelde formulieren van hetzelfde type te gebruiken om aan de slag te gaan wanneer u een nieuw model traint, en zo nodig meer gelabelde gegevens toe te voegen om de nauwkeurigheid van het model te verbeteren.
 
-## <a name="prebuilt-receipt-model"></a>Vooraf samengesteld ontvangstbewijsmodel
+## <a name="prebuilt-models"></a>Vooraf gemaakte modellen
 
-Form Recognizer bevat ook een model voor het lezen van Engelse aankoopbewijzen uit de Verenigde Staten&mdash;het type dat wordt gebruikt door restaurants, tankstations, detailhandel, enzovoort ([voorbeeldontvangstbewijs](./media/contoso-receipt-small.png)). Met dit model extraheert u belangrijke informatie zoals de tijd en datum van de transactie, zakelijke informatie, bedragen van belastingen en totalen, enzovoort. Daarnaast wordt het vooraf samengestelde ontvangstbewijsmodel getraind om alle tekst op een ontvangstbewijs te herkennen en te retourneren.
+Form Recognizer bevat ook vooraf gemaakte modellen voor unieke formuliertypen.
+### <a name="prebuilt-receipt-model"></a>Vooraf samengesteld model voor aankoopbewijzen
+Het vooraf samengesteld model voor aankoopbewijzen wordt in Australië, Canada, het Verenigd Koninkrijk, India en de Verenigde Staten gebruikt voor het lezen van Engelse aankoopbewijzen&mdash;het type dat wordt gebruikt door restaurants, tankstations, winkels, enzovoort. Dit model haalt belangrijke informatie op, zoals de tijd en datum van de transactie, informatie over de verkoper, btw, regelitems, totalen, enzovoort. Daarnaast wordt het vooraf samengestelde ontvangstbewijsmodel getraind om alle tekst op een ontvangstbewijs te herkennen en te retourneren. 
+
+![voorbeeld van aankoopbewijs](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>Vooraf samengesteld model voor visitekaartjes
+Het vooraf samengesteld model voor visitekaartjes haalt informatie, zoals naam, functie, adres, e-mail, bedrijf en telefoonnummers van de persoon op uit visitekaartjes in het Engels. 
+
+![voorbeeld van visitekaartje](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>Indelings-API
 
@@ -90,7 +99,7 @@ Lees het [naslagmateriaal bij de REST API](https://westus2.dev.cognitive.microso
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>Vooraf samengesteld ontvangstbewijsmodel
+### <a name="prebuilt"></a>Vooraf samengesteld
 
 De invoervereisten voor het ontvangstbewijsmodel zijn iets anders.
 

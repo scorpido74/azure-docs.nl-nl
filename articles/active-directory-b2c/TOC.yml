@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: SSO-sessies
       href: session-overview.md
+    - name: Identiteitsbescherming en voorwaardelijke toegang
+      href: conditional-access-identity-protection-overview.md
 - name: Instructiegidsen
   items:
     - name: App-integratie
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: Zelf een wachtwoord opnieuw instellen configureren
               href: user-flow-self-service-password-reset.md
+        - name: Voorwaardelijke toegang toevoegen
+          href: conditional-access-user-flow.md
         - name: UX-aanpassing
           items:
             - name: De gebruikersinterface aanpassen
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: Pass Through van extern IdP-token
           href: idp-pass-through-user-flow.md
+    - name: Identiteitsbescherming en voorwaardelijke toegang
+      href: conditional-access-identity-protection-setup.md
     - name: Aangepast beleid
       items:
         - name: Beleid maken
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: Claimstransformatie
                       href: claims-transformation-technical-profile.md
+                    - name: Technisch profiel voor voorwaardelijke toegang
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: Uitgever van het JWT-token
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

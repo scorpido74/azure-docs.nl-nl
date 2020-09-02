@@ -1,5 +1,5 @@
 ---
-title: Een Synapse SQL-pool maken en bevragen met Azure PowerShell
+title: Een Synapse SQL-pool maken met Azure PowerShell
 description: Met een firewallregel op serverniveau en Azure PowerShell kunt u snel een Synapse SQL-pool maken.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,14 +11,14 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 21ca3968065df2575b101efa7735d56f87683938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e6683746e2a8f274f7260a3d5bb60e956d49d30a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211065"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751919"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Quickstart: Een Synapse SQL-pool maken en bevragen met Azure PowerShell
+# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>Quickstart: Een Synapse SQL-pool maken met Azure PowerShell
 
 Maak een Synapse SQL-pool (datawarehouse) in Azure Synapse Analytics met behulp van Azure PowerShell.
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu een SQL-pool gemaakt, een firewallregel gemaakt, deze verbonden met uw SQL-pool en enkele query's uitgevoerd. Ga voor meer informatie naar het artikel [Gegevens in een SQL-pool laden](load-data-from-azure-blob-storage-using-polybase.md).
+U hebt nu een SQL-pool gemaakt, een firewallregel gemaakt en deze verbonden met uw SQL-pool. Ga voor meer informatie naar het artikel [Gegevens in een SQL-pool laden](load-data-from-azure-blob-storage-using-polybase.md).

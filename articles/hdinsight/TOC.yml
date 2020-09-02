@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: LDAP-synchronisatie in Ranger en Apache Ambari
           href: ./domain-joined/ldap-sync.md
+        - name: Dubbele versleuteling-in-transit
+          href: ./domain-joined/encryption-in-transit.md
     - name: Instructiegidsen
       items:
         - name: Id-broker gebruiken voor referentiebeheer

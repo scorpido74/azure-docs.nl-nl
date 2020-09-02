@@ -4,18 +4,18 @@ description: Schakel privékoppelingen in voor uw beheerde schijven met de Azure
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135841"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815858"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal: de toegang voor importeren/exporteren voor beheerde schijven beperken met privékoppelingen
+# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal gebruiken om de toegang voor importeren/exporteren voor beheerde schijven te beperken met Private Link
 
 Ondersteuning van privékoppelingen voor beheerde schijven is momenteel beschikbaar als preview-versie. U kunt het exporteren en importeren van beheerde schijven beperken zodat dit alleen plaatsvindt in uw virtuele Azure-netwerk. U kunt een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en voor het lezen van de gegevens voor forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van uw on-premises te uploaden. Netwerkverkeer tussen clients in het virtuele netwerk en beheerde schijven gaat alleen over het virtuele netwerk en een persoonlijke koppeling in het fundamentele Microsoft-netwerk, waardoor de blootstelling naar het openbare internet wordt voorkomen.
 
@@ -100,5 +100,5 @@ U hebt nu de configuratie van persoonlijke koppelingen voltooid die u kunt gebru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Veelgestelde vragen over privékoppelingen](linux/faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Veelgestelde vragen over privékoppelingen](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Beheerde momentopnamen exporteren/kopiëren als VHD naar een opslagaccount in een andere regio met PowerShell](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)

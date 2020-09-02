@@ -30,10 +30,10 @@
     - name: Concepten
       expanded: false
       items:
+        - name: Prijzen van externe identiteiten
+          href: external-identities-pricing.md
         - name: Aanbevolen procedures voor B2B
           href: b2b-fundamentals.md
-        - name: B2B-licentieverlening
-          href: licensing-guidance.md
         - name: Extern delen B2B en Office 365
           href: o365-external-user.md
         - name: Uitnodiging inwisselen

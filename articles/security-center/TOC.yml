@@ -61,8 +61,6 @@
           href: security-center-recommendations.md
         - name: Overzicht van beveiligingsbeleid
           href: tutorial-security-policy.md
-        - name: Ingebouwd beveiligingsbeleid
-          href: security-center-policy-definitions.md
         - name: Aanbevelingen gebruiken om de beveiliging te verbeteren
           href: security-center-using-recommendations.md
         - name: Beveiligingsbasislijn
@@ -157,7 +155,7 @@
       href: asset-inventory.md
     - name: Integreren met andere hulpprogramma's en services
       items:
-        - name: Integreren met Windows Admin Center
+        - name: Uw Windows Admin Center-servers beschermen
           href: windows-admin-center-integration.md
         - name: Web-apps en API's van Azure App Service beveiligen
           href: security-center-app-services.md
@@ -211,6 +209,9 @@
       href: security-center-features-retirement-july2019.md
     - name: Evaluatie van eindpuntbeveiliging en aanbevelingen
       href: security-center-endpoint-protection.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn

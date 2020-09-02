@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: 61da81dd96078e0577e00be37fe27211a5b62154
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 840e7769e8a242314b10562684c942a2468ea5ad
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084404"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705143"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Quickstart: Een Azure Database for MySQL-server maken met behulp van Azure Portal
 
@@ -84,7 +84,7 @@ U kunt [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) of [MySQL
 
    >[!div class="mx-imgBorder"]
    > ![Volledige portalweergave van Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
-2. Voer deze opdracht uit in de Azure Cloud Shell-terminal. Vervang de waarden door uw servernaam en aanmeldings-id voor de gebruiker met beheerdersrechten. Voor de gebruikersnaam van de beheerder is @<servername> vereist, zoals hieronder wordt weergegeven voor Azure Database for MySQL  
+2. Voer deze opdracht uit in de Azure Cloud Shell-terminal. Vervang de waarden door uw servernaam en aanmeldings-id voor de gebruiker met beheerdersrechten. Voor de gebruikersnaam van de beheerder is @\<servername> vereist, zoals hieronder wordt weergegeven voor Azure Database for MySQL  
 
   ```azurecli-interactive
   mysql --host=mydemoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
@@ -100,7 +100,7 @@ U kunt [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) of [MySQL
   Type "az" to use Azure CLI
   Type "help" to learn about Cloud Shell
 
-  sunitha@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u admin@wpapp-mysqldbserver -p
+  user@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
   Enter password:
   Welcome to the MySQL monitor.  Commands end with ; or \g.
   Your MySQL connection id is 64796

@@ -70,7 +70,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -120,7 +120,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -399,6 +399,8 @@
                 - name: Uitvoer
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Dapr
+          href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid
           items:
             - name: Overzicht
@@ -432,6 +434,8 @@
             - name: Uitvoer
               href: functions-bindings-event-iot-output.md
               displayName: Azure IoT Hubs
+        - name: Kafka
+          href: 'https://github.com/azure/azure-functions-kafka-extension'
         - name: HTTP en webhooks
           items:
             - name: Overzicht
@@ -443,8 +447,6 @@
             - name: Uitvoer
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
@@ -460,6 +462,8 @@
             - name: Uitvoer
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
+        - name: RabbitMQ
+          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus

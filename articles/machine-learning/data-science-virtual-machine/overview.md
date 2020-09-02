@@ -1,7 +1,7 @@
 ---
-title: Wat is Azure Data Science Virtual Machine
+title: Wat is de Azure Data Science Virtual Machine?
 titleSuffix: Azure Data Science Virtual Machine
-description: "Overzicht van Azure Data Science Virtual Machine: een eenvoudige manier om virtuele machines te maken en te gebruiken op het Azure-Cloud platform met vooraf geïnstalleerde en geconfigureerde hulpprogram ma's en bibliotheken voor het uitvoeren van gegevens wetenschap en het ontwikkelen van intelligente toepassingen."
+description: "Overzicht van Azure Data Science Virtual Machine: een gebruiksvriendelijke virtuele machine op het Azure-cloudplatform met vooraf geïnstalleerde en geconfigureerde hulpprogramma's en bibliotheken voor het uitvoeren van datatechnologie."
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 ms.service: machine-learning
@@ -10,74 +10,87 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754977"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816334"
 ---
-# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wat is de Azure-Data Science Virtual Machine voor Linux en Windows?
+# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wat is de Azure Data Science Virtual Machine voor Linux en Windows?
 
-De Data Science Virtual Machine (DSVM) is een aangepaste VM-installatie kopie op het Azure-Cloud platform dat speciaal is gebouwd voor het uitvoeren van data Science. Er zijn veel populaire hulpprogram ma's voor gegevens wetenschap vooraf geïnstalleerd en vooraf geconfigureerd om intelligente toepassingen voor geavanceerde analyse te bouwen. 
+Data Science Virtual Machine (DSVM) is een aangepaste VM-installatiekopie op het Azure-cloudplatform, dat speciaal is gebouwd voor datatechnologie. DSVM bevat veel populaire datatechnologie- en andere hulpprogramma's die vooraf zijn geïnstalleerd en geconfigureerd opdat u snel intelligente toepassingen voor geavanceerde analyses kunt gaan bouwen.
 
 De DSVM is beschikbaar op:
 
-+ **Windows Server 2019**
-+ **Ubuntu 18,04 LTS**
-+ Windows Server 2016
-+ Ubuntu 16.04 LTS
++ Windows Server 2019
++ Ubuntu 18.04 LTS
 
-> [!NOTE]
-> Alle VM-hulpprogram ma's voor uitgebreid leren zijn gevouwen in de Data Science Virtual Machine. 
+## <a name="comparison-with-azure-machine-learning"></a>Vergelijking met Azure Machine Learning
 
-## <a name="why-choose-the-dsvm"></a>Waarom kiest u de DSVM?
+De DSVM is een aangepaste VM-installatiekopie voor Data Science, maar [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AzureML) is een end-to-end platform dat het volgende omvat:
 
-Het doel van de Data Science Virtual Machine is om gegevens specialisten van alle vaardigheids niveaus en allerlei branches te voorzien van een beschik bare, vooraf geconfigureerde data Science-omgeving met frictie. In plaats van zelf een vergelijk bare werk ruimte te implementeren, kunt u een DSVM inrichten. Met deze optie kunt u dagen of zelfs _weken_ besparen op de installatie-, configuratie-en pakket beheer processen. Nadat uw DSVM is toegewezen, kunt u meteen aan uw datatechnologieproject gaan werken.
++ Volledig beheerd rekenproces
+  + Rekeninstanties
+  + Rekenclusters voor gedistribueerde ML-taken
+  + Deductieclusters voor realtime scoren
++ Gegevensarchieven (bijvoorbeeld blob, ADLS Gen2, SQL DB)
++ Experimenten volgen
++ Modelbeheer
++ Notebooks
++ Omgevingen (Conda- en R-afhankelijkheden beheren)
++ Labels
++ Pijplijnen (end-to-end datatechnologiewerkstromen automatiseren)
 
-## <a name="sample-use-cases"></a>Voorbeeld Cases gebruiken
+### <a name="comparison-with-azureml-compute-instances"></a>Vergelijking met AzureML Compute-instanties
 
-Hieronder ziet u enkele veelvoorkomende gebruiks cases voor DSVM-klanten.
+[Azure Machine Learning Compute-instanties](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance) zijn een volledig geconfigureerde en __beheerde__ VM-installatiekopie, terwijl de DSVM een __niet-beheerde__ VM is.
 
-### <a name="moving-data-science-workloads-to-the-cloud"></a>Data Science-workloads verplaatsen naar de Cloud
+De belangrijkste verschillen tussen deze twee productaanbiedingen worden hieronder beschreven:
 
-De DSVM biedt een basislijn configuratie voor data Science-teams die hun lokale Desk tops willen vervangen door een beheerde Cloud Desktop, zodat alle gegevens wetenschappers van een team een consistente installatie hebben waarmee experimenten kunnen worden gecontroleerd en de samen werking kan worden bevorderd. De kosten worden ook verlaagd door de overhead van sysadmin te verminderen. Deze last reductie bespaart op de tijd die nodig is om software pakketten voor geavanceerde analyse te evalueren, te installeren en te onderhouden.
 
-### <a name="data-science-training-and-education"></a>Training en onderwijs voor datatechnologie
+|Functie |Datatechnologie<br>VM |AzureML<br>Rekenproces  | 
+|---------|---------|---------|
+| Volledig beheerd | Nee        | Ja        |
+|Taalondersteuning     |  Python, R, Julia, SQL, C#,<br> Java, Node.js, F#       | Python en R        |
+|Besturingssysteem     | Ubuntu<br>Windows         |    Ubuntu     |
+|Vooraf geconfigureerde GPU-optie     |  Ja       |    Ja     |
+|Optie voor omhoog schalen | Ja | Ja |
+|SSH-toegang    | Ja        |    Ja     |
+|RDP-toegang    | Ja        |     Nee    |
+|Ingebouwd<br>Gehoste notebooks     |   Nee<br>(hiervoor is aanvullende configuratie vereist)      |      Ja   |
+|Ingebouwde SSO     | Nee <br>(hiervoor is aanvullende configuratie vereist)         |    Ja     |
+|Ingebouwde samenwerking     | Nee         | Ja        |
+|Vooraf geïnstalleerde hulpprogramma's     |  Jupyter(lab), RStudio Server, VSCode,<br> Visual Studio, PyCharm, Juno,<br>Power BI Desktop, SQL Server Management Studio, <br>Microsoft Office 365, Apache Drill       |     Jupyter(lab)<br> RStudio Server   |
 
-Enter prise trainers en docenten die data Science branches leren, hebben meestal een installatie kopie van een virtuele machine. De installatie kopie zorgt ervoor dat studenten een consistente installatie hebben en dat de voor beelden werken zoals verwacht. 
+## <a name="sample-use-cases"></a>Voorbeelden van gebruikstoepassingen
 
-De DSVM maakt een omgeving op aanvraag met een consistente installatie die de uitdagingen voor de ondersteuning en incompatibiliteit vereenvoudigt. In gevallen waarin deze omgevingen vaak moeten worden gemaakt, met name voor kortere trainingen, levert dit veel voordelen op.
-
-### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Flexibele capaciteit op aanvraag voor grootschalige projecten
-
-Data Science hackathons trappen/wedstrijden of grootschalige gegevens modellering en-exploratie vereisen geschaalde hardware-capaciteit, meestal voor korte duur. De DSVM kan helpen de data Science-omgeving snel op aanvraag te repliceren, op scale-out servers die experimenten toestaan dat IT-bronnen met hoge prestaties kunnen worden uitgevoerd.
-
-### <a name="custom-compute-power-for-azure-notebooks"></a>Aangepaste reken kracht voor Azure Notebooks
-
-[Azure notebooks](../../notebooks/azure-notebooks-overview.md) is een gratis gehoste service voor het ontwikkelen, uitvoeren en delen van Jupyter-notebooks in de Cloud zonder installatie. De gratis service laag is beperkt tot 4 GB aan geheugen en 1 GB aan gegevens. 
-
-Als u alle limieten wilt vrijgeven, kunt u een notitieblok project koppelen aan een DSVM of een andere virtuele machine die wordt uitgevoerd op een Jupyter-server. Als u zich aanmeldt bij Azure Notebooks met een account met behulp van Azure Active Directory (zoals een bedrijfs account), worden in notitie blokken automatisch Dsvm weer gegeven in de abonnementen die aan dat account zijn gekoppeld. U kunt [een DSVM aan Azure notebooks koppelen](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) om de beschik bare reken kracht uit te breiden.
+Hieronder ziet u enkele veelvoorkomende gebruikstoepassingen voor DSVM-klanten.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Experimenten en evaluatie op korte termijn
 
-U kunt de DSVM gebruiken om nieuwe [hulp middelen](./tools-included.md)voor gegevens wetenschap te evalueren of te leren, met name door een aantal gepubliceerde voor [beelden en scenario's](./dsvm-samples-and-walkthroughs.md)te door lopen.
+U kunt de DSVM gebruiken om nieuwe [-hulpprogramma's voor datatechnologie te evalueren of te leren](./tools-included.md), met name door enkele van onze gepubliceerde [-voorbeelden en -instructies te door lopen](./dsvm-samples-and-walkthroughs.md).
+
+### <a name="deep-learning-with-gpus"></a>Deep learning met GPU's
+
+In de DSVM kunnen uw trainingsmodellen deep learning-algoritmen op hardware gebruiken die is gebaseerd op GPU's (grafische verwerkingseenheden). Door gebruik te maken van de VM-schaalmogelijkheden van het Azure-platform, helpt de DSVM u om op GPU gebaseerde hardware in de cloud te gebruiken op basis van uw behoeften. U kunt overschakelen naar een GPU-VM wanneer u grote modellen traint of snelle berekeningen nodig hebt en dezelfde besturingssysteemschijf moet behouden. U kunt kiezen uit een van de VM-SKU's met GPU-functionaliteit uit de N-serie met DSVM. Let wel: VM-SKU's met GPU-functionaliteit worden niet ondersteund in gratis Azure-accounts.
+
+De Windows-edities van DSVM worden geleverd met vooraf geïnstalleerde GPU-stuurprogramma's, frameworks en GPU-versies van frameworks voor deep learning. In de Linux-edities is deep learning voor GPU's ingeschakeld op de Ubuntu-DSVM's. 
+
+U kunt ook de Ubuntu- of Windows-edities van de DSVM implementeren op een virtuele machine van Azure die niet is gebaseerd op GPU's. In dit geval zullen alle deep learning frameworks terugvallen op de CPU-modus.
+
+[Meer informatie over beschikbare deep learning en AI-frameworks](dsvm-tools-deep-learning-frameworks.md).
+
+### <a name="data-science-training-and-education"></a>Training en onderwijs voor datatechnologie
+
+Bedrijfstrainers en docenten die datatechnologiecursussen geven verstrekken doorgaans een VM-installatiekopie. De installatiekopie zorgt ervoor dat studenten een consistente installatie hebben en dat de voorbeelden werken zoals verwacht.
+
+De DSVM maakt een omgeving op aanvraag met een consistente configuratie, waardoor zich minder problemen met ondersteuning en incompatibiliteit voordoen. In gevallen waarin deze omgevingen vaak moeten worden gemaakt, met name voor kortere trainingen, levert dit veel voordelen op.
 
 
-### <a name="deep-learning-with-gpus"></a>Dieper leren met Gpu's
+## <a name="whats-included-on-the-dsvm"></a>Wat is inbegrepen in de DSVM?
 
-In de DSVM kunnen uw trainings modellen diepe leer algoritmen gebruiken op hardware die is gebaseerd op Gpu's (graphics processing units). Door gebruik te maken van de VM-schaal mogelijkheden van het Azure-platform, helpt de DSVM u bij het gebruik van op GPU gebaseerde hardware in de Cloud op basis van uw behoeften. U kunt overschakelen naar een op GPU gebaseerde VM wanneer u grote modellen bijwerkt of wanneer u hoge snelheids berekeningen nodig hebt terwijl dezelfde besturingssysteem schijf wordt bewaard. U kunt een van de virtuele machines van de N-serie GPU die met DSVM zijn ingeschakeld, kiezen. Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor virtuele machines niet ondersteunen.
-
-De Windows-edities van de DSVM worden vooraf geïnstalleerd met GPU-Stuur Programma's, frameworks en GPU-versies van diepe leer frameworks. Op de Linux-editie is diep gaande leren op Gpu's ingeschakeld op de Ubuntu-Dsvm. 
-
-U kunt ook de Ubuntu-of Windows-edities van de DSVM implementeren op een virtuele machine van Azure die niet is gebaseerd op Gpu's. In dit geval worden alle diepe leer raamwerken terugvallen op de CPU-modus.
-
-Meer [informatie over beschik bare diep gaande lessen en AI-Frameworks](dsvm-tools-deep-learning-frameworks.md).
-
-<a name="included"></a>
-## <a name="whats-included-on-the-dsvm"></a>Wat is opgenomen in de DSVM?
-
-Bekijk [hier](tools-included.md)een volledige lijst met hulpprogram ma's voor de Windows-en Linux-DSVM.
+Bekijk [hier](tools-included.md) een volledige lijst met hulpprogramma's voor zowel de Windows- als de Linux-DSVM.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -85,8 +98,8 @@ Meer informatie vindt u in deze artikelen:
 
 + Windows:
   + [Een Windows-DSVM instellen](provision-vm.md)
-  + [Tien dingen die u kunt doen op een Windows-DSVM](vm-do-ten-things.md)
+  + [Datatechnologie op een Windows-DSVM](vm-do-ten-things.md)
 
 + Linux:
   + [Een Linux-DSVM instellen (Ubuntu)](dsvm-ubuntu-intro.md)
-  + [Data wetenschappen op een Linux-DSVM](linux-dsvm-walkthrough.md)
+  + [Datatechnologie op een Linux-DSVM](linux-dsvm-walkthrough.md)

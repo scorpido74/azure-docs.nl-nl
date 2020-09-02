@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: Snelstartgidsen
   items:
-    - name: Gegevensshare maken - Azure Portal
+    - name: Gegevens delen - Azure Portal
       href: share-your-data-portal.md
-    - name: Gegevensshare maken - ARM-sjabloon
+    - name: Gegevens delen - ARM-sjabloon
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Zelfstudies
@@ -39,6 +39,10 @@
   items:
     - name: Gegevens per bron delen en ontvangen
       items:
+        - name: Delen vanuit Azure Storage
+          href: how-to-share-from-storage.md
+        - name: Delen vanuit Azure SQL Database of Synapse Analytics
+          href: how-to-share-from-sql.md
         - name: Delen vanuit Azure Data Explorer
           href: /azure/data-explorer/data-share
           maintainContext: true
