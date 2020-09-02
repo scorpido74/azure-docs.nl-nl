@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420852"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917887"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in Node.js met behulp van REST API's
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -130,7 +130,7 @@ Vervang de waarde `[SERVICE_NAME]` door de naam van uw zoekservice. Vervang `[AD
 
 ## <a name="1---create-index"></a>1 - Index maken 
 
-Maak een bestand **hotels_quickstart_index.json**.  Met dit bestand wordt gedefinieerd hoe Azure Cognitive Search werkt met de documenten die u in de volgende stap gaat laden. Elk veld wordt geïdentificeerd door een `name` en beschikt over een opgegeven `type`. Elk veld beschikt ook over een reeks indexkenmerken waarmee wordt opgegeven of Azure Cognitive Search op basis van het veld kan zoeken, filteren en sorteren en facetten kan maken. De meeste velden zijn eenvoudige gegevenstypen, maar een aantal, zoals `AddressType`, is van een complex type waarmee u uitgebreide gegevensstructuren in uw index kunt maken.  U kunt meer lezen over [ondersteunde gegevenstypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) en [indexkenmerken](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes). 
+Maak een bestand **hotels_quickstart_index.json**.  Met dit bestand wordt gedefinieerd hoe Azure Cognitive Search werkt met de documenten die u in de volgende stap gaat laden. Elk veld wordt geïdentificeerd door een `name` en beschikt over een opgegeven `type`. Elk veld beschikt ook over een reeks indexkenmerken waarmee wordt opgegeven of Azure Cognitive Search op basis van het veld kan zoeken, filteren en sorteren en facetten kan maken. De meeste velden zijn eenvoudige gegevenstypen, maar een aantal, zoals `AddressType`, is van een complex type waarmee u uitgebreide gegevensstructuren in uw index kunt maken.  U kunt meer lezen over [ondersteunde gegevenstypen](/rest/api/searchservice/supported-data-types) en [indexkenmerken](./search-what-is-an-index.md#index-attributes). 
 
 Voeg het volgende toe aan **hotels_quickstart_index.json** of [download het bestand](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
@@ -610,7 +610,7 @@ Voer het programma opnieuw uit met `node index.js`. U ziet nu een iets andere re
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-Ga terug naar het tabblad **Indexen** in het **Overzicht** van uw zoekservice in Azure Portal. Uw index bevat nu vier documenten en er wordt enige opslagruimte verbruikt (het kan enige minuten duren voordat de onderliggende status van de index goed wordt weergegeven in de gebruikersinterface). Klik op de indexnaam om naar de **Search Explorer** te gaan. Op deze pagina kunt u experimenteren met gegevensquery's. Zoek in een querytekenreeks van `*&$count=true`; als het goed is, krijgt u al uw documenten en het aantal resultaten terug. Probeer de querytekenreeks `historic&highlight=Description&$filter=Rating gt 4`; als het goed is, krijgt u één document terug, met het woord 'historic' tussen `<em></em>`-tags. Lees meer over [het opstellen van een query in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-query-overview). 
+Ga terug naar het tabblad **Indexen** in het **Overzicht** van uw zoekservice in Azure Portal. Uw index bevat nu vier documenten en er wordt enige opslagruimte verbruikt (het kan enige minuten duren voordat de onderliggende status van de index goed wordt weergegeven in de gebruikersinterface). Klik op de indexnaam om naar de **Search Explorer** te gaan. Op deze pagina kunt u experimenteren met gegevensquery's. Zoek in een querytekenreeks van `*&$count=true`; als het goed is, krijgt u al uw documenten en het aantal resultaten terug. Probeer de querytekenreeks `historic&highlight=Description&$filter=Rating gt 4`; als het goed is, krijgt u één document terug, met het woord 'historic' tussen `<em></em>`-tags. Lees meer over [het opstellen van een query in Azure Cognitive Search](./search-query-overview.md). 
 
 Reproduceer deze query's in de code door **index.js** te openen en deze code bovenaan toe te voegen:
 

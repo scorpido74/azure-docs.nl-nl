@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873412"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228644"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Wat is bewaking van Azure Active Directory?
 
@@ -63,7 +63,7 @@ Het routeren van logboeken naar een Azure Event Hub biedt u de mogelijkheid deze
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>Logboeken verzenden naar logboeken van Azure Monitor
 
-[Logboeken van Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) vormen een oplossing waarin bewakingsgegevens uit verschillende bronnen worden samengevoegd. Met de bijbehorende querytaal en analyse-engine krijgt u meer inzicht in de werking van uw toepassingen en resources. Door Azure AD-activiteitenlogboeken naar logboeken van Azure Monitor te verzenden, kunt u verzamelde gegevens snel ophalen en controleren en eventuele waarschuwingen bekijken. Lees meer over [het verzenden van gegevens naar de logboeken van Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md).
+[Logboeken van Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) vormen een oplossing waarin bewakingsgegevens uit verschillende bronnen worden samengevoegd. Met de bijbehorende querytaal en analyse-engine krijgt u meer inzicht in de werking van uw toepassingen en resources. Door Azure AD-activiteitenlogboeken naar logboeken van Azure Monitor te verzenden, kunt u verzamelde gegevens snel ophalen en controleren en eventuele waarschuwingen bekijken. Lees meer over [het verzenden van gegevens naar de logboeken van Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md).
 
 U kunt ook de vooraf gemaakte weergaven voor Azure AD-activiteitenlogboeken installeren om veelvoorkomende scenario's met betrekking tot aanmeldingen en controlegebeurtenissen te bewaken. Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD installeert en gebruikt](howto-install-use-log-analytics-views.md).
 

@@ -7,15 +7,15 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
-ms.openlocfilehash: d03d904de68720874ea175c95244ba80c586df82
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/25/2020
+ms.openlocfilehash: 4eacc1c4e863ad1a278a4974bb0f6c101aafe7e0
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133812"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055372"
 ---
-## <a name="change-the-model-update-frequency"></a>Bijwerkfrequentie voor model wijzigen
+### <a name="change-the-model-update-frequency"></a>Bijwerkfrequentie voor model wijzigen
 
 Wijzig voor de Personalizer-resource, op de pagina **Configuratie** in Azure Portal, de **frequentie van de modelupdate** in tien seconden. Met deze korte duur wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke iteratie wordt gewijzigd.
 

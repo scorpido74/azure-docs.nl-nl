@@ -16,17 +16,17 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739716"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299861"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Quickstart: Benoemde locaties configureren in Azure Active Directory
 
 Met benoemde locaties, kunt u vertrouwde IP-adresbereiken in uw organisatie een label geven. Azure AD maakt gebruik van benoemde locaties voor:
-- Detecteren van fout-positieven in [risicodetecties](concept-risk-events.md). Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker.   
+- Detecteren van fout-positieven in [risicodetecties](../identity-protection/overview-identity-protection.md). Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker.   
 - Configureren van [Voorwaardelijke toegang op basis van locatie](../conditional-access/location-condition.md).
 
 In deze snelstartgids leert u hoe benoemde locaties in uw omgeving te configureren.
@@ -64,4 +64,4 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 Zie voor meer informatie:
 
 - [Locatie als voorwaarde in Voorwaardelijke toegang](../conditional-access/concept-conditional-access-conditions.md#locations).
-- [Rapport voor riskante aanmeldingen](concept-risky-sign-ins.md).  
+- [Rapport voor riskante aanmeldingen](../identity-protection/overview-identity-protection.md).

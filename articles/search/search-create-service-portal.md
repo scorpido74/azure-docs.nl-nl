@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554019"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927116"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -96,7 +96,7 @@ Azure Cognitive Search is beschikbaar in de meeste regio’s. De lijst met onder
 
  Als u AI-verrijking gebruikt, maakt u uw zoekservice in dezelfde regio als Cognitive Services. *Co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
 
- Klanten met BCDR-vereisten (bedrijfscontinuïteit en herstel na noodgevallen) moeten hun services in [regioparen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs) maken. Als u bijvoorbeeld werkzaam bent in Noord-Amerika, kiest u wellicht VS - oost en VS - west, of VS - noord-centraal en VS - zuid-centraal, voor elke service.
+ Klanten met BCDR-vereisten (bedrijfscontinuïteit en herstel na noodgevallen) moeten hun services in [regioparen](../best-practices-availability-paired-regions.md#azure-regional-pairs) maken. Als u bijvoorbeeld werkzaam bent in Noord-Amerika, kiest u wellicht VS - oost en VS - west, of VS - noord-centraal en VS - zuid-centraal, voor elke service.
 
 ### <a name="recommendations"></a>Aanbevelingen
 
@@ -160,7 +160,7 @@ De meeste klanten gebruiken maar één service die geconfigureerd is voor de cat
 
 Hoewel de meeste klanten slechts één service gebruiken, kan serviceredundantie nodig zijn als de volgende operationele vereisten gelden:
 
-+ [Bedrijfscontinuïteit en herstel na noodgevallen (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Azure Cognitive Search biedt geen onmiddellijke failover in geval van een storing.
++ [Bedrijfscontinuïteit en herstel na noodgevallen (BCDR)](../best-practices-availability-paired-regions.md). Azure Cognitive Search biedt geen onmiddellijke failover in geval van een storing.
 
 + Voor [multitenant-architecturen](search-modeling-multitenant-saas-applications.md) zijn soms twee of meer services nodig.
 

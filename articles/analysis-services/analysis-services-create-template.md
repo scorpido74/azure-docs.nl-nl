@@ -6,14 +6,14 @@ ms.author: owend
 tags: azure-resource-manager
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641905"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230769"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Quickstart: Een server maken - ARM-sjabloon
 
@@ -105,6 +105,5 @@ Write-Host "Press [ENTER] to continue..."
 
 In deze quickstart hebt u een ARM-sjabloon gebruikt om een nieuwe resourcegroep en een Azure Analysis Services-serverresource te maken. Nadat u een serverresource hebt gemaakt met behulp van de sjabloon, kunt u het volgende bekijken:
 
-- [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md)
-- [Een voorbeeldmodel toevoegen via de portal](analysis-services-create-sample-model.md)
-- [Serverbeheerder en gebruikersrollen configureren](tutorials/analysis-services-tutorial-roles.md)
+> [!div class="nextstepaction"]
+> [Snelstartgids: Een serverfirewall configureren - Portal](analysis-services-qs-firewall.md)   

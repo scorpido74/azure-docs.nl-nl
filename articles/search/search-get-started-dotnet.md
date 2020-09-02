@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922265"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020861"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Quickstart: Een zoekindex maken met behulp van de Azure.Search.Documents-clientbibliotheek.
 
-Gebruik de nieuwe [Azure.Search.Documents (versie 11)-clientbibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) om een .NET Core-consoletoepassing te maken in C# waarmee een zoekindex kan worden gemaakt, geladen en opgevraagd.
+Gebruik de nieuwe [Azure.Search.Documents (versie 11)-clientbibliotheek](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) om een .NET Core-consoletoepassing te maken in C# waarmee een zoekindex kan worden gemaakt, geladen en opgevraagd.
 
 [Download de broncode](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11) om te beginnen met een voltooid project of volg de stappen in dit artikel om uw eigen project te maken.
 
@@ -77,7 +78,7 @@ Nadat het project is gemaakt, voegt u de clientbibliotheek toe. Het [Azure.Searc
    using Azure.Search.Documents.Models;
    ```
 
-1. Twee clients maken: [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) maakt de index en [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) werkt met een bestaande index. Beide hebben het service-eindpunt en een beheerder-API-sleutel nodig voor verificatie van rechten voor maken/verwijderen.
+1. Twee clients maken: [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) maakt de index en [SearchClient](/dotnet/api/azure.search.documents.searchclient) werkt met een bestaande index. Beide hebben het service-eindpunt en een beheerder-API-sleutel nodig voor verificatie van rechten voor maken/verwijderen.
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +100,7 @@ Nadat het project is gemaakt, voegt u de clientbibliotheek toe. Het [Azure.Searc
 
 In deze quickstart wordt een index van hotels gemaakt die u met hotelgegevens laadt en waarop u query's uitvoert. In deze stap definieert u de velden in de index. Elke definitie bevat een naam, gegevenstype en kenmerken die bepalen hoe het veld wordt gebruikt.
 
-In dit voorbeeld worden synchrone methoden van de Azure.Search.Documents-bibliotheek gebruikt voor eenvoud en leesbaarheid. Voor productiescenario's moet u echter asynchrone methoden gebruiken om uw app op een schaalbare en responsieve manier te laten werken. U kunt bijvoorbeeld [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) gebruiken in plaats van [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex).
+In dit voorbeeld worden synchrone methoden van de Azure.Search.Documents-bibliotheek gebruikt voor eenvoud en leesbaarheid. Voor productiescenario's moet u echter asynchrone methoden gebruiken om uw app op een schaalbare en responsieve manier te laten werken. U kunt bijvoorbeeld [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) gebruiken in plaats van [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex).
 
 1. Voeg een lege klassedefinitie toe aan uw project: **Hotel.cs**
 
@@ -131,7 +132,7 @@ In dit voorbeeld worden synchrone methoden van de Azure.Search.Documents-bibliot
     }
     ```
 
-1. Geef in **Program.cs** de velden en kenmerken op. [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) en [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) worden gebruikt voor het maken van een index.
+1. Geef in **Program.cs** de velden en kenmerken op. [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) en [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) worden gebruikt voor het maken van een index.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +155,9 @@ In dit voorbeeld worden synchrone methoden van de Azure.Search.Documents-bibliot
 
 Door kenmerken in het veld wordt bepaald hoe het veld wordt gebruikt in een toepassing. Het `IsFilterable`-kenmerk moet bijvoorbeeld worden toegewezen aan elk veld dat een filterexpressie ondersteunt.
 
-In tegenstelling tot eerdere versies van de .NET SDK waarvoor [IsSearchable-](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) vereist is voor doorzoekbare tekenreeksvelden, kunt u [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) en [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) gebruiken om definities te stroomlijnen.
+In tegenstelling tot eerdere versies van de .NET SDK waarvoor [IsSearchable-](/dotnet/api/microsoft.azure.search.models.field.issearchable) vereist is voor doorzoekbare tekenreeksvelden, kunt u [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) en [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) gebruiken om definities te stroomlijnen.
 
-Net als bij de vorige versies zijn er nog andere kenmerken vereist voor de definitie zelf. Bijvoorbeeld [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [IsSortable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)en [IsFacetable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) moet expliciet worden voorzien van een kenmerk, zoals weergegeven in het bovenstaande voorbeeld. 
+Net als bij de vorige versies zijn er nog andere kenmerken vereist voor de definitie zelf. Bijvoorbeeld [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)en [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) moet expliciet worden voorzien van een kenmerk, zoals weergegeven in het bovenstaande voorbeeld. 
 
 <a name="load-documents"></a>
 
@@ -166,7 +167,7 @@ Azure Cognitive Search doorzoekt inhoud die in de service is opgeslagen. In deze
 
 In Azure Cognitive Search zijn documenten gegevensstructuren die zowel de invoer van indexeringen als de uitvoer van query's zijn. Als u de documenten hebt verkregen via een externe gegevensbron, bestaat de documentinvoer mogelijk uit rijen in een database, blobs in Blob Storage of JSON-documenten op een schijf. In dit voorbeeld nemen we de korte route en gaan we JSON-documenten voor vijf hotels in de code zelf insluiten. 
 
-Bij het uploaden van documenten moet u een [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-object gebruiken. Een IndexDocumentsBatch bevat een verzameling van [acties](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), die elk een document en een eigenschap bevat waarmee Azure Cognitive Search wordt aangestuurd om een actie uit te voeren ([uploaden, samenvoegen, verwijderen en mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Bij het uploaden van documenten moet u een [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-object gebruiken. Een IndexDocumentsBatch bevat een verzameling van [acties](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), die elk een document en een eigenschap bevat waarmee Azure Cognitive Search wordt aangestuurd om een actie uit te voeren ([uploaden, samenvoegen, verwijderen en mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
 1. Maak in **Program.cs**een matrix met documenten en indexacties, en geef de matrix vervolgens door aan `ndexDocumentsBatch`De onderstaande documenten voldoen aan de hotels-quickstart-v11-index, zoals gedefinieerd door de hotelklasse.
 
@@ -185,7 +186,7 @@ Bij het uploaden van documenten moet u een [IndexDocumentsBatch](https://docs.mi
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    Nadat u het [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-object hebt geïnitialiseerd, kunt u het naar de index sturen door [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) aan te roepen op uw [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)-object.
+    Nadat u het [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-object hebt geïnitialiseerd, kunt u het naar de index sturen door [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) aan te roepen op uw [SearchClient](/dotnet/api/azure.search.documents.searchclient)-object.
 
 1. Omdat dit een console-app is waarmee alle opdrachten opeenvolgend worden uitgevoerd, moet u een wachttijd van 2 seconden tussen indexeren en query's toevoegen.
 
@@ -201,9 +202,9 @@ Bij het uploaden van documenten moet u een [IndexDocumentsBatch](https://docs.mi
 
 U kunt queryresultaten ophalen zodra het eerste document wordt geïndexeerd, maar wacht met het daadwerkelijk testen van uw index totdat alle documenten zijn geïndexeerd.
 
-In deze sectie worden twee functies toegevoegd: querylogica en resultaten. Gebruik voor query's de methode [Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search). Deze methode gebruikt zoektekst (de querytekenreeks) en andere [opties](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions).
+In deze sectie worden twee functies toegevoegd: querylogica en resultaten. Gebruik voor query's de methode [Search](/dotnet/api/azure.search.documents.searchclient.search). Deze methode gebruikt zoektekst (de querytekenreeks) en andere [opties](/dotnet/api/azure.search.documents.searchoptions).
 
-De [SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1)-klasse vertegenwoordigt de resultaten.
+De [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1)-klasse vertegenwoordigt de resultaten.
 
 1. In **Program.cs** maakt u een WriteDocuments-methode waarmee zoekresultaten op de console worden afgedrukt.
 
@@ -267,17 +268,17 @@ Er zijn twee [manieren om termen in een query te vergelijken](search-query-overv
 
 + Een query naar volledige tekst zoekt naar een of meer termen in doorzoekbare velden in uw index. De eerste query zoekt naar volledige tekst. Zoeken naar volledige tekst produceert relevantiescores die worden gebruikt om de resultaten te rangschikken.
 
-+ Een filter is een Booleaanse uitdrukking die wordt geëvalueerd over [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)-velden in een index. Filterquery's bevatten waarden of sluiten ze uit. Daarom is er geen relevantiescore gekoppeld aan een filterquery. De laatste twee query's tonen het zoeken met filters.
++ Een filter is een Booleaanse uitdrukking die wordt geëvalueerd over [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)-velden in een index. Filterquery's bevatten waarden of sluiten ze uit. Daarom is er geen relevantiescore gekoppeld aan een filterquery. De laatste twee query's tonen het zoeken met filters.
 
 U kunt zoeken op volledige tekst en filters samen of afzonderlijk gebruiken.
 
-Zoekopdrachten en filters worden uitgevoerd met behulp van de methode [SearchClient.Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search). Een zoekquery kan worden doorgegeven in de `searchText`-tekenreeks, terwijl een filterexpressie kan worden doorgegeven in de eigenschap [Filter](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter) van de klasse [Search Options](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions). Als u wilt filteren zonder te zoeken, geeft u `"*"` door voor de `searchText`-parameter van de [Zoekmethode](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search). Om te zoeken zonder te filteren, stelt u de eigenschap `Filter` niet in of geeft u niet door aan een `SearchOptions`-instantie.
+Zoekopdrachten en filters worden uitgevoerd met behulp van de methode [SearchClient.Search](/dotnet/api/azure.search.documents.searchclient.search). Een zoekquery kan worden doorgegeven in de `searchText`-tekenreeks, terwijl een filterexpressie kan worden doorgegeven in de eigenschap [Filter](/dotnet/api/azure.search.documents.searchoptions.filter) van de klasse [Search Options](/dotnet/api/azure.search.documents.searchoptions). Als u wilt filteren zonder te zoeken, geeft u `"*"` door voor de `searchText`-parameter van de [Zoekmethode](/dotnet/api/azure.search.documents.searchclient.search). Om te zoeken zonder te filteren, stelt u de eigenschap `Filter` niet in of geeft u niet door aan een `SearchOptions`-instantie.
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 
 Druk op F5 om de app opnieuw te bouwen en het programma in zijn geheel uit te voeren. 
 
-De uitvoer bevat berichten van [Console.WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline), met toevoeging van query-informatie en -resultaten.
+De uitvoer bevat berichten van [Console.WriteLIne](/dotnet/api/system.console.writeline), met toevoeging van query-informatie en -resultaten.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -297,4 +298,4 @@ In deze C#-quickstart hebt u een reeks taken uitgevoerd om een index te maken, h
 Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 > [!div class="nextstepaction"]
-> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084004"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019375"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Quickstart: Onboarding van uw Azure Stack virtuele machines naar Security Center
 Nadat u uw Azure-abonnement hebt ingesloten, kunt u Security Center inschakelen om uw virtuele machines die op Azure Stack worden uitgevoerd te beschermen door de virtuele machine-extensie **Azure Monitor, update- en configuratiebeheer** toe te voegen van de Azure Stack Marketplace.
@@ -72,7 +72,7 @@ U moet nu de extensie van de virtuele machine **Azure Monitor, update- en config
 7. Wanneer u klaar bent met het opgeven van de benodigde configuratie-instellingen, klikt u op **OK**.
 8. Zodra de installatie van de extensie is voltooid, wordt de status weergegeven als **inrichting geslaagd**. Het kan een uur duren voordat de virtuele machine wordt weergegeven in de Security Center Portal.
 
-Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent voor Windows.
+Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent voor Windows.
 
 Zie [Probleemoplossing voor Linux-agent voor Log Analytics](../azure-monitor/platform/agent-linux-troubleshoot.md) voor meer informatie over het oplossen van problemen met agents in Linux.
 

@@ -8,17 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927450"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051063"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Wat is de Ink Recognizer-API?
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 De Ink Recognizer Cognitive Service biedt een REST API in de cloud voor het analyseren en herkennen van digitale inktinhoud. In tegenstelling tot services die gebruikmaken van Optical Character Recognition (OCR), vereist deze API digitale inktstreekgegevens als invoer. Digitale inktstreken zijn op tijd geordende sets van 2D-punten (X/Y-coördinaten) die de beweging van invoerhulpprogramma's als digitale pennen of vingers vertegenwoordigen. Vervolgens worden de vormen en handgeschreven inhoud van de invoer herkend en wordt een JSON-antwoord met alle herkende entiteiten geretourneerd.
 
