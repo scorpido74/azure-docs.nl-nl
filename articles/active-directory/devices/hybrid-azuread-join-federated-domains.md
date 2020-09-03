@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428581"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268431"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-deelname configureren voor federatieve domeinen
 
@@ -88,7 +88,7 @@ Vanaf Windows 10 1803 is het zo dat als de directe hybride Azure AD-koppeling mi
 
 Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt Microsoft u aan [WPAD (Web Proxy Auto-Discovery) te implementeren](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in staat te stellen apparaten te registreren met Azure AD. Zie [Troubleshooting automatic detection](/previous-versions/tn-archive/cc302643(v=technet.10)) (Problemen met automatische detectie oplossen) als u problemen ondervindt met het configureren en beheren van WPAD. 
 
-Als u WPAD niet gebruikt enproxy-instellingen op uw computer wilt configureren, kunt u dit doen vanaf Windows 10 1709. Zie [WinHTTP-instellingen configureren met behulp van een groepsbeleidsobject (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) voor meer informatie.
+Als u WPAD niet gebruikt enproxy-instellingen op uw computer wilt configureren, kunt u dit doen vanaf Windows 10 1709. Zie [WinHTTP-instellingen configureren met behulp van een groepsbeleidsobject (GPO)](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo) voor meer informatie.
 
 > [!NOTE]
 > Als u proxy-instellingen op uw computer configureert met behulp van WinHTTP-instellingen, kunnen computers die geen verbinding hebben met de geconfigureerde proxy, geen verbinding maken met internet.
@@ -193,7 +193,7 @@ Hier volgen drie manieren om de status van het apparaat te zoeken en te controle
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
 1. Ga naar de apparatenpagina met behulp van een [directe link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices) (Apparaat-id's beheren met de Azure-portal).
+2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](./device-management-azure-portal.md) (Apparaat-id's beheren met de Azure-portal).
 3. Als er **In behandeling** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling niet voltooid. In federatieve omgevingen kan dit alleen gebeuren als het registreren niet is gelukt en AAD Connect is geconfigureerd voor het synchroniseren van de apparaten.
 4. Als er een **datum/tijd** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling wel voltooid.
 
@@ -243,7 +243,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Als er problemen zijn met het voltooien van de hybride Azure AD-koppeling voor domein-gekoppelde Windows-apparaten, raadpleegt u:
 
-- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](./troubleshoot-device-dsregcmd.md)
 - [Problemen met hybride Azure AD-koppeling oplossen voor actuele Windows-apparaten](troubleshoot-hybrid-join-windows-current.md)
 - [Problemen met hybride Azure AD-koppeling oplossen voor downlevel Windows-apparaten](troubleshoot-hybrid-join-windows-legacy.md)
 

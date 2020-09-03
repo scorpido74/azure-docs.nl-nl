@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428469"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268414"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Zelfstudie: Hybride Azure Active Directory-deelname configureren voor beheerde domeinen
 
@@ -73,9 +73,9 @@ Voor hybride Azure AD-koppeling moeten apparaten toegang tot de volgende Microso
 > [!WARNING]
 > Als uw organisatie proxyservers gebruikt die SSL-verkeer onderscheppen voor scenario's zoals preventie van gegevensverlies of beperkingen voor Azure AD-tenants, moet u ervoor zorgen dat verkeer naar 'https://device.login.microsoftonline.com ' wordt uitgesloten van TLS break-and-inspect. Als u 'https://device.login.microsoftonline.com ' niet uitsluit, kan dit problemen geven met de verificatie van clientcertificaten, die op hun beurt weer problemen veroorzaken met apparaatregistratie en voorwaardelijke toegang op basis van apparaten.
 
-Als uw organisatie toegang tot internet via een uitgaande proxy vereist, kunt u [WPAD (Web Proxy Auto-Discovery) implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) gebruiken om Windows 10-computers in staat te stellen apparaten te registreren met Azure AD. Zie [Troubleshooting Automatic Detection](/previous-versions/tn-archive/cc302643(v=technet.10)) (Problemen met automatische detectie oplossen) als u problemen ondervindt met het configureren en beheren van WPAD. In Windows 10-apparaten vóór de 1709-update is WPAD de enige beschikbare optie voor het configureren van een proxy voor gebruik met hybride Azure AD-deelname. 
+Als uw organisatie toegang tot internet via een uitgaande proxy vereist, kunt u [WPAD (Web Proxy Auto-Discovery) implementeren](/previous-versions/tn-archive/cc995261(v=technet.10)) gebruiken om Windows 10-computers in staat te stellen apparaten te registreren met Azure AD. Zie [Troubleshooting Automatic Detection](/previous-versions/tn-archive/cc302643(v=technet.10)) (Problemen met automatische detectie oplossen) als u problemen ondervindt met het configureren en beheren van WPAD. In Windows 10-apparaten vóór de 1709-update is WPAD de enige beschikbare optie voor het configureren van een proxy voor gebruik met hybride Azure AD-deelname. 
 
-Als u WPAD niet gebruikt, kunt u WinHTTP-proxy-instellingen op uw computer configureren vanaf Windows 10 1709. Zie [WinHTTP Proxy Settings deployed by GPO](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) (WinHTTP-proxyinstellingen geïmplementeerd door GPO) voor meer informatie.
+Als u WPAD niet gebruikt, kunt u WinHTTP-proxy-instellingen op uw computer configureren vanaf Windows 10 1709. Zie [WinHTTP Proxy Settings deployed by GPO](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo) (WinHTTP-proxyinstellingen geïmplementeerd door GPO) voor meer informatie.
 
 > [!NOTE]
 > Als u proxy-instellingen op uw computer configureert met behulp van WinHTTP-instellingen, kunnen computers die geen verbinding hebben met de geconfigureerde proxy, geen verbinding maken met internet.
@@ -174,7 +174,7 @@ Hier volgen drie manieren om de status van het apparaat te zoeken en te controle
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
 1. Ga naar de apparatenpagina met behulp van een [directe link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices) (Apparaat-id's beheren met de Azure-portal).
+2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](./device-management-azure-portal.md) (Apparaat-id's beheren met de Azure-portal).
 3. Als er **In behandeling** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling niet voltooid.
 4. Als er een **datum/tijd** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling wel voltooid.
 
@@ -224,7 +224,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Als er problemen zijn met het voltooien van de hybride Azure AD-koppeling voor domein-gekoppelde Windows-apparaten, raadpleegt u:
 
-- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](./troubleshoot-device-dsregcmd.md)
 - [Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen](troubleshoot-hybrid-join-windows-current.md)
 - [Problemen oplossen met hybride Azure Active Directory-gekoppelde, downlevel apparaten](troubleshoot-hybrid-join-windows-legacy.md)
 

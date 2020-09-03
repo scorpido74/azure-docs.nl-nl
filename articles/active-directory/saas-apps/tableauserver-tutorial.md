@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546582"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999595"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Tableau Server
 
@@ -141,7 +141,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     b. Schakel het selectievakje in bij **SAML-verificatie inschakelen voor de server**.
 
-    c. Retour-URL Tableau Server: de URL waarmee Tableau Server-gebruikers toegang krijgen, zoals <http://tableau_server>. Het gebruik van `http://localhost` is niet aanbevolen. Het gebruik van een URL met een afsluitende slash (bijvoorbeeld `http://tableau_server/`) wordt niet ondersteund. Kopieer de **Retour-URL van Tableau Server** en plak deze in het tekstvak **URL voor aanmelden** in de sectie **Standaard SAML-configuratie** in Azure Portal
+    c. Retour-URL Tableau Server: de URL waarmee Tableau Server-gebruikers toegang krijgen, zoals `http://tableau_server`. Het gebruik van `http://localhost` is niet aanbevolen. Het gebruik van een URL met een afsluitende slash (bijvoorbeeld `http://tableau_server/`) wordt niet ondersteund. Kopieer de **Retour-URL van Tableau Server** en plak deze in het tekstvak **URL voor aanmelden** in de sectie **Standaard SAML-configuratie** in Azure Portal
 
     d. SAML-entiteit-id: de entiteit-id is een unieke aanduiding voor uw Tableau Server-installatie voor de IdP. U kunt de Tableau Server-URL hier opnieuw opgeven, maar dit hoeft niet uw Tableau Server-URL te zijn. Kopieer de **SAML-entiteit-id** en plak deze in het tekstvak **Id** in de sectie **Standaard SAML-configuratie** in Azure Portal
 

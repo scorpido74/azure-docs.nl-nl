@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078628"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962635"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service
 
-In dit artikel wordt beschreven hoe u de [aangepaste domein](app-service-web-tutorial-custom-domain.md) in uw [App Service-app](https://docs.microsoft.com/azure/app-service/) of [functie-app](https://docs.microsoft.com/azure/azure-functions/) kunt beveiligen door een certificaatbinding te maken. Wanneer u klaar bent, hebt u toegang tot uw App Service-app op het `https://` eindpunt voor uw aangepaste DNS-naam (bijvoorbeeld `https://www.contoso.com`). 
+In dit artikel wordt beschreven hoe u de [aangepaste domein](app-service-web-tutorial-custom-domain.md) in uw [App Service-app](./index.yml) of [functie-app](../azure-functions/index.yml) kunt beveiligen door een certificaatbinding te maken. Wanneer u klaar bent, hebt u toegang tot uw App Service-app op het `https://` eindpunt voor uw aangepaste DNS-naam (bijvoorbeeld `https://www.contoso.com`). 
 
 ![Web-app met aangepast TLS/SSL-certificaat](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 
 Voor het volgen van deze instructiegids:
 
-- [Een App Service-app maken](/azure/app-service/)
+- [Een App Service-app maken](./index.yml)
 - [Een domeinnaam toewijzen aan uw app](app-service-web-tutorial-custom-domain.md) of [een domeinnaam kopen en configureren in Azure](manage-custom-dns-buy-domain.md)
 - [Een persoonlijk certificaat toevoegen aan uw app](configure-ssl-certificate.md)
 
@@ -168,4 +168,4 @@ Taalspecifieke configuratiehandleidingen, zoals de handleiding [Node.js-configur
 ## <a name="more-resources"></a>Meer bronnen
 
 * [Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service](configure-ssl-certificate-in-code.md)
-* [Veelgestelde vragen: App Service-certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Veelgestelde vragen: App Service-certificaten](./faq-configuration-and-management.md)
