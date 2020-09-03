@@ -8,18 +8,19 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705891"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002859"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Zelfstudie: Door AI gegenereerde doorzoekbare inhoud van Azure-blobs met behulp van de .NET SDK
 
 Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kunt u met een [AI-verrijkingspijplijn](cognitive-search-concept-intro.md) informatie extraheren en nieuwe inhoud maken die nuttig is voor zoekopdrachten in volledige tekst of kennisanalyse. In deze C#-zelfstudie past u OCR (Optical Character Recognition) toe op afbeeldingen en voert u natuurlijke-taalverwerking uit om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
 
-In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
+In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Begin met toepassingsbestanden en installatiekopieën in Azure Blob Storage.
@@ -127,7 +128,7 @@ Open eerst Visual Studio en maak een nieuw Console App-project dat kan worden ui
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-De [.NET SDK van Azure Cognitive Search](https://docs.microsoft.com/dotnet/api/overview/azure/search) bestaat uit een aantal clientbibliotheken waarmee u uw indexen, gegevensbronnen, indexeerfuncties en vaardighedensets kunt beheren U kunt ook documenten uploaden en beheren en query's uitvoeren, zonder dat u zich hoeft bezig te houden met de details van HTTP en JSON. Deze clientbibliotheken worden allemaal gedistribueerd als NuGet-pakketten.
+De [.NET SDK van Azure Cognitive Search](/dotnet/api/overview/azure/search) bestaat uit een aantal clientbibliotheken waarmee u uw indexen, gegevensbronnen, indexeerfuncties en vaardighedensets kunt beheren U kunt ook documenten uploaden en beheren en query's uitvoeren, zonder dat u zich hoeft bezig te houden met de details van HTTP en JSON. Deze clientbibliotheken worden allemaal gedistribueerd als NuGet-pakketten.
 
 Voor dit project installeert u versie 9 of hoger van NuGet-pakket `Microsoft.Azure.Search`.
 
@@ -680,7 +681,7 @@ Voeg de volgende using-instructie toe om de dubbelzinnige verwijzing te corriger
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-Zie [Create Index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index maken (Azure Cognitive Search REST API)) voor meer informatie over het definiëren van een index.
+Zie [Create Index (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) (Index maken (Azure Cognitive Search REST API)) voor meer informatie over het definiëren van een index.
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Stap 4: Indexeerfunctie maken en uitvoeren
 
@@ -905,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties in deze oefening. Met behulp van een door komma's gescheiden lijst kunt meerdere velden retourneren via de eigenschap [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet).
+Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties in deze oefening. Met behulp van een door komma's gescheiden lijst kunt meerdere velden retourneren via de eigenschap [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet).
 
 <a name="reset"></a>
 

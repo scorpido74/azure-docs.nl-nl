@@ -3,7 +3,7 @@ title: 'Zelfstudie: HTTPS in een aangepast domein configureren voor Azure Front 
 description: In deze zelfstudie leert u hoe u HTTPS kunt in- en uitschakelen in uw configuratie van Azure Front Door voor een aangepast domein.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
-ms.author: sharadag
-ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.author: duau
+ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808759"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399801"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 

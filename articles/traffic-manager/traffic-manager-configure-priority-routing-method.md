@@ -3,20 +3,20 @@ title: 'Zelfstudie: De geprioriteerde verkeersrouteringsmethode configureren met
 description: In deze zelfstudie wordt uitgelegd hoe u de methode voor de routering van prioriteitsverkeer configureert in Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: 2c541f8318bd7e75de7526e6b7a9e3a32462782d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.author: duau
+ms.openlocfilehash: 404338c3e36216833d39c3551ae2dee0be304d24
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706746"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401007"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Zelfstudie: De geprioriteerde verkeersrouteringsmethode configureren in Traffic Manager
 

@@ -7,18 +7,18 @@ ms.author: msangapu
 keywords: azure-app-service, web-app, linux, windows, docker, container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212951"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958453"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Aangepaste software naar Azure App Service migreren met een aangepaste container
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md) biedt vooraf gedefinieerde toepassingsstacks in Windows, zoals ASP.NET of Node.js, die worden uitgevoerd in IIS. Met de vooraf geconfigureerde Windows-omgeving wordt het besturingssysteem vergrendeld voor beheerderstoegang, software-installaties, wijzigingen aan de Global Assembly Cache, enzovoort. (Zie [Functionaliteit van besturingssystemen in Azure App Service](operating-system-functionality.md).) Als u echter een aangepaste Windows-container in App Service (preview) gebruikt, kunt u besturingssysteemwijzigingen aanbrengen die uw app nodig heeft. Dit maakt het eenvoudig om een on-premises app te migreren waarvoor aangepaste besturingssysteem- en softwareconfiguraties vereist zijn. Dit zelfstudie laat zien hoe u een ASP.NET-app naar App Service migreert die aangepaste lettertypen gebruikt die zijn geïnstalleerd in de Windows-lettertypenbibliotheek. U implementeert een aangepaste geconfigureerde Windows-installatiekopie van Visual Studio naar [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) en voert deze vervolgens uit in de App-service.
+[Azure App Service](overview.md) biedt vooraf gedefinieerde toepassingsstacks in Windows, zoals ASP.NET of Node.js, die worden uitgevoerd in IIS. Met de vooraf geconfigureerde Windows-omgeving wordt het besturingssysteem vergrendeld voor beheerderstoegang, software-installaties, wijzigingen aan de Global Assembly Cache, enzovoort. (Zie [Functionaliteit van besturingssystemen in Azure App Service](operating-system-functionality.md).) Als u echter een aangepaste Windows-container in App Service (preview) gebruikt, kunt u besturingssysteemwijzigingen aanbrengen die uw app nodig heeft. Dit maakt het eenvoudig om een on-premises app te migreren waarvoor aangepaste besturingssysteem- en softwareconfiguraties vereist zijn. Dit zelfstudie laat zien hoe u een ASP.NET-app naar App Service migreert die aangepaste lettertypen gebruikt die zijn geïnstalleerd in de Windows-lettertypenbibliotheek. U implementeert een aangepaste geconfigureerde Windows-installatiekopie van Visual Studio naar [Azure Container Registry](../container-registry/index.yml) en voert deze vervolgens uit in de App-service.
 
 ![Toont de web-app die wordt uitgevoerd in een Windows-container.](media/tutorial-custom-container/app-running.png)
 
@@ -92,7 +92,7 @@ U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample**. Het is een 
 
 ## <a name="publish-to-azure-container-registry"></a>Publiceren naar Azure Container Registry
 
-[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) kan uw afbeeldingen opslaan voor containerimplementaties. U kunt App Service configureren voor het gebruik van installatiekopieën die worden gehost in Azure Container Registry.
+[Azure Container Registry](../container-registry/index.yml) kan uw afbeeldingen opslaan voor containerimplementaties. U kunt App Service configureren voor het gebruik van installatiekopieën die worden gehost in Azure Container Registry.
 
 ### <a name="open-publish-wizard"></a>Publicatie-wizard openen
 
@@ -439,7 +439,7 @@ Als u een container wilt implementeren in Azure App Service, maakt u eerst een w
     
     Raadpleeg de [Leesmij in de voorbeeldopslagplaats van GitHub](https://github.com/Azure-Samples/docker-django-webapp-linux) voor meer informatie over deze omgevingsvariabele.
 
-1. Schakel [beheerde identiteit](/azure/app-service/overview-managed-identity) in voor de web-app door de opdracht [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) te gebruiken:
+1. Schakel [beheerde identiteit](./overview-managed-identity.md) in voor de web-app door de opdracht [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) te gebruiken:
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -466,7 +466,7 @@ Als u een container wilt implementeren in Azure App Service, maakt u eerst een w
     - `<registry-name>` door de naam van het containerregister
     - `<subscription-id>` door de abonnements-id die is opgehaald uit de opdracht `az account show`
 
-Zie voor meer informatie over deze machtigingen [Op rollen gebaseerd toegangsbeheer in Azure](/azure/role-based-access-control/overview) en 
+Zie voor meer informatie over deze machtigingen [Op rollen gebaseerd toegangsbeheer in Azure](../role-based-access-control/overview.md) en 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>De installatiekopie implementeren en de app testen
 
