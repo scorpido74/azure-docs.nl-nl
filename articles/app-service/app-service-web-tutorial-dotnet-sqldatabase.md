@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: fd7f860eb6e18edeb2096c12102e74c7446d050f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213754"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962244"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Zelfstudie: Een ASP.NET-app implementeren in Azure met Azure SQL Database
 
@@ -199,7 +199,7 @@ Vouw uw verbinding uit > **Databases** >  **&lt;uw database >**  > **Tabellen**.
 
 U kunt de vertrouwde hulpprogramma's in Visual Studio gebruiken om uw database en app in Azure bij te werken. In deze stap kunt u met Code First Migrations in Entity Framework een wijziging aanbrengen in uw databaseschema en deze publiceren naar Azure.
 
-Zie voor meer informatie over het gebruik van Entity Framework Code First Migrations, [Aan de slag met Entity Framework 6 Code First met MVC 5](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+Zie voor meer informatie over het gebruik van Entity Framework Code First Migrations, [Aan de slag met Entity Framework 6 Code First met MVC 5](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 ### <a name="update-your-data-model"></a>Gegevensmodel bijwerken
 
@@ -419,4 +419,4 @@ Meer resources:
 Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 > [!div class="nextstepaction"]
-> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

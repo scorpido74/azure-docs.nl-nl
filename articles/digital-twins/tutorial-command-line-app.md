@@ -1,5 +1,5 @@
 ---
-title: De basisbeginselen verkennen met een voorbeeldclient-app
+title: 'Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app'
 titleSuffix: Azure Digital Twins
 description: Zelfstudie voor het verkennen van de Azure Digital Twins SDK's met behulp van een voorbeeldopdrachtregeltoepassing
 author: baanders
@@ -7,23 +7,24 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986268"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022510"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Azure Digital Twins verkennen met een voorbeeldclient-app
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Zelfstudie: Azure Digital Twins verkennen met een voorbeeldclient-app
 
 In deze zelfstudie wordt een voorbeeldtoepassing geïntroduceerd die een opdrachtregelclienttoepassing implementeert voor interactie met een Azure Digital Twins-instantie. De client-app is vergelijkbaar met degene die is geschreven in [*Zelfstudie: Een client-app coderen*](tutorial-code.md).
 
 U kunt dit voorbeeld gebruiken om essentiële Azure Digital Twins-acties uit te voeren, zoals het uploaden van modellen, het maken en wijzigen van tweelingen en het maken van relaties. U kunt ook de code van het voor beeld bekijken voor meer informatie over de Azure Digital Twins-API's, en oefenen met het implementeren van uw eigen opdrachten door het voorbeeldproject te wijzigen zoals u maar wilt.
 
 In deze zelfstudie gaat u...
-1. Een Azure Digital Twins-instantie instellen
-2. De voorbeeldopdrachtregel-app configureren om te interageren met de instantie
-3. De opdrachtregel-app gebruiken om Azure Digital Twins te verkennen, inclusief **modellen**, **digitale tweelingen**, **relaties** en **query's**
+> [!div class="checklist"]
+> * Een Azure Digital Twins-instantie instellen
+> * De voorbeeldopdrachtregel-app configureren om te interageren met de instantie
+> * De opdrachtregel-app gebruiken om Azure Digital Twins te verkennen, inclusief **modellen**, **digitale tweelingen**, **relaties** en **query's**
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -288,24 +289,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 Het project in deze zelfstudie vormt de basis voor de volgende zelfstudie, [*Zelfstudie: Een end-to-end-oplossing verbinden*](tutorial-end-to-end.md). Als u van plan bent door te gaan naar de volgende zelfstudie, kunt u de resources die u hier hebt ingesteld behouden en deze Azure Digital Twins-instantie en geconfigureerde voorbeeld-app blijven gebruiken.
 * In dit geval kunt u de voorbeeld-apps `DeleteAllTwins` en `DeleteAllModels` gebruiken om de tweelingen respectievelijk de modellen in uw instantie op te ruimen. Hiermee krijgt u een schone lei voor de volgende zelfstudie.
 
-Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen.
-
-Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-resources in een resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Hiermee verwijdert u de resourcegroep en het Azure Digital Twins-exemplaar.
-
-> [!IMPORTANT]
-> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
-
-Open een Azure Cloud Shell en voer de volgende opdracht uit om de resourcegroep en alles daarin te verwijderen.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Verwijder vervolgens de Azure Active Directory-app-registratie die u voor uw client-app hebt gemaakt met deze opdracht:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Verwijder ten slotte de voorbeeldprojectmap die u hebt gedownload naar uw lokale computer.
 
@@ -314,12 +298,5 @@ Verwijder ten slotte de voorbeeldprojectmap die u hebt gedownload naar uw lokale
 In deze zelfstudie bent u begonnen met Azure Digital Twins door het opzetten van een instantie en een clienttoepassing om met de instantie te interageren. U hebt de client-app gebruikt om Azure Digital Twins te verkennen, waarbij u modellen, digitale tweelingen en relaties hebt gemaakt. U hebt ook enkele query's op de oplossing uitgevoerd om een idee te krijgen van de vragen die Azure Digital Twins over een omgeving kan beantwoorden.
 
 Ga door naar de volgende zelfstudie om de voorbeeldopdrachtregel-app te gebruiken in combinatie met andere Azure-services om een op gegevens gebaseerd end-to-end scenario te voltooien:
-
 > [!div class="nextstepaction"]
 > [*Zelfstudie: Een end-to-end-oplossing verbinden*](tutorial-end-to-end.md)
-
-Of ga naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt:
-* [*Concepten: Aangepaste modellen*](concepts-models.md)
-
-U kunt ook dieper ingaan op de processen in deze zelfstudie door de instructieartikelen te lezen:
-* [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)

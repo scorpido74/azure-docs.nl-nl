@@ -8,18 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045447"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004252"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Zelfstudie: Azure SQL-gegevens indexeren met de .NET SDK
 
 Configureer een [indexeerfunctie](search-indexer-overview.md) om doorzoekbare gegevens op te halen uit Azure SQL-database en deze te verzenden naar een zoekindex in Azure Cognitive Search. 
 
-In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
+In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een gegevensbron maken dat verbinding maakt met Azure SQL Database
@@ -144,7 +145,7 @@ Een schema kan ook andere elementen bevatten, zoals scoreprofielen om een zoeksc
 
 Het hoofdprogramma bevat logica voor het maken van een client, een index, een gegevensbron en een indexeerfunctie. De code controleert op en verwijdert bestaande resources met dezelfde naam, waarbij ervan wordt uitgegaan dat u dit programma meerdere keren uitvoert.
 
-Het gegevensbronobject is geconfigureerd met instellingen die specifiek zijn voor Azure SQL Database-resources, waaronder [gedeeltelijke of incrementele indexering](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) voor het gebruik van de ingebouwde [functies voor het detecteren van veranderingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) van Azure SQL. De voorbeelddatabase voor hotels in Azure SQL heeft een kolom 'voorlopig verwijderen' met de naam **IsDeleted**. Als deze kolom is ingesteld op True in de database, verwijdert de indexeerfunctie het bijbehorende document uit de Azure Cognitive Search-index.
+Het gegevensbronobject is geconfigureerd met instellingen die specifiek zijn voor Azure SQL Database-resources, waaronder [gedeeltelijke of incrementele indexering](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) voor het gebruik van de ingebouwde [functies voor het detecteren van veranderingen](/sql/relational-databases/track-changes/about-change-tracking-sql-server) van Azure SQL. De voorbeelddatabase voor hotels in Azure SQL heeft een kolom 'voorlopig verwijderen' met de naam **IsDeleted**. Als deze kolom is ingesteld op True in de database, verwijdert de indexeerfunctie het bijbehorende document uit de Azure Cognitive Search-index.
 
   ```csharp
   Console.WriteLine("Creating data source...");

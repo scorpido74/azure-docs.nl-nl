@@ -4,12 +4,12 @@ description: Leer hoe u bedrijfsprocessen kunt aanroepen vanuit uw App Service-a
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212840"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962193"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelfstudie: E-mail verzenden en andere bedrijfsprocessen aanroepen vanuit App Service
 
@@ -84,7 +84,7 @@ Implementeer een app naar App Service met het taalframework van uw keuze. Zie hi
 1. Klik onderaan de Designer op **Nieuwe stap**, typ **Gmail** in het zoekvak voor acties en selecteer **E-mail verzenden (v2)** .
     
     > [!TIP]
-    > U kunt zoeken naar andere typen integraties, zoals SendGrid, MailChimp, Office 365 en Sales Force. Zie de [Logic Apps-documentatie](https://docs.microsoft.com/azure/logic-apps/) voor meer informatie.
+    > U kunt zoeken naar andere typen integraties, zoals SendGrid, MailChimp, Office 365 en Sales Force. Zie de [Logic Apps-documentatie](../logic-apps/index.yml) voor meer informatie.
 1. Selecteer **Aanmelden** in het dialoogvenster **Gmail** en meld u aan bij het Gmail-account van waaruit u het e-mailbericht wilt verzenden.
 
     ![Schermopname van het dialoogvenster Gmail dat u gebruikt om u aan te melden bij het Gmail-account van waaruit u e-mail wilt verzenden.](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ Klik op het tabblad van uw favoriete taal/framework hieronder om een voorbeeld t
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-In ASP.NET kunt u het HTTP-bericht verzenden met de klasse [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient). Bijvoorbeeld:
+In ASP.NET kunt u het HTTP-bericht verzenden met de klasse [System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient). Bijvoorbeeld:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een ASP.NET-app bouwe
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-In ASP.NET Core kunt u het HTTP-bericht verzenden met de klasse [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient). Bijvoorbeeld:
+In ASP.NET Core kunt u het HTTP-bericht verzenden met de klasse [System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient). Bijvoorbeeld:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Deze code is geschreven voor een eenvoudige demonstratie. Instantieer in de praktijk geen `HttpClient`-object voor elke aanvraag. Volg de richtlijnen in [Use IHttpClientFactory to implement resilient HTTP requests](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) (IHttpClientFactory gebruiken voor het implementeren van tolerante HTTP-aanvragen).
+> Deze code is geschreven voor een eenvoudige demonstratie. Instantieer in de praktijk geen `HttpClient`-object voor elke aanvraag. Volg de richtlijnen in [Use IHttpClientFactory to implement resilient HTTP requests](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) (IHttpClientFactory gebruiken voor het implementeren van tolerante HTTP-aanvragen).
 
 Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een ASP.NET Core- en SQL Database-app bouwen in Azure App Service](tutorial-dotnetcore-sqldb-app.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [actie Maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65), nadat het `Todo`-item is toegevoegd.
 

@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271259"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226204"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Zelfstudie: De wizard Log Analytics configureren
 
@@ -41,15 +41,15 @@ In deze zelfstudie leert u het volgende:
 
 Raak ermee vertrouwd met behulp van deze artikelen:
 
-- [Zelfstudie: Resourcelogboeken van een Azure-resource verzamelen en analyseren](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [Zelfstudie: Resourcelogboeken van een Azure-resource verzamelen en analyseren](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [Activiteitenlogboeken met Log Analytics integreren](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Activiteitenlogboeken met Log Analytics integreren](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Account voor noodtoegang beheren in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Account voor noodtoegang beheren in Azure AD](../users-groups-roles/directory-emergency-access.md)
 
-- [KQL-snelzoekgids](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [KQL-snelzoekgids](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure Monitor-werkmappen](../../azure-monitor/platform/workbooks-overview.md)
 
 
 
