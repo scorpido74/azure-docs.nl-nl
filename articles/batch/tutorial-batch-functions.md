@@ -5,13 +5,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
-ms.custom: mvc
-ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963849"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930091"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Zelfstudie: Een Batch-taak activeren met behulp van Azure Functions
 

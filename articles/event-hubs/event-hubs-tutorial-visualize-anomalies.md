@@ -3,12 +3,12 @@ title: Azure Event Hubs - Gegevensanomalieën binnen in realtime verzonden gebeu
 description: 'Zelfstudie: Gegevensanomalieën binnen in realtime naar Microsoft Azure Event Hubs verzonden gebeurtenissen visualiseren'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315616"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934052"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
 
@@ -308,7 +308,7 @@ Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna o
 
    ![Schermafbeelding van het opgeven van een gegevensset.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Selecteer **Kaart** als visualisatietype. Klik onder **Velden** op **Waarde toevoegen** en selecteer **fraudulentuses**.
+9. Selecteer **Kaart** als visualisatietype. Klik onder **Velden** op **Waarde toevoegen** en selecteer `fraudulentuses`.
 
    ![Schermafbeelding van het opgeven van visualisatietype en velden.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +329,9 @@ Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna o
 
 12. Selecteer onder **Type visualisatie** de optie **Lijndiagram**.
 
-13. Klik onder **As** op **Waarde toevoegen** en selecteer **windowend**. 
+13. Klik onder **As** op **Waarde toevoegen** en selecteer `windowend`. 
 
-14. Klik onder **Waarden** op **Waarde toevoegen** en selecteer **fraudulentuses**.
+14. Klik onder **Waarden** op **Waarde toevoegen** en selecteer `fraudulentuses`.
 
 15. Selecteer onder **Tijdvenster voor weergave** de laatste vijf minuten. Klik op **Volgende**.
 
@@ -378,6 +378,6 @@ In deze zelfstudie hebt u het volgende geleerd:
 Ga naar het volgende artikel voor meer informatie over Azure Event Hubs.
 
 > [!div class="nextstepaction"]
-> [Aan de slag met het verzenden van berichten naar Azure Event Hubs in .NET Standard](get-started-dotnet-standard-send-v2.md)
+> [Aan de slag met het verzenden van berichten naar Azure Event Hubs in .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
 [gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

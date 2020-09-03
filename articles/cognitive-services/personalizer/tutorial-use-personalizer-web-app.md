@@ -3,12 +3,13 @@ title: Web-app gebruiken - Personalizer
 description: Een C# .NET-web-app aanpassen met een Personalizer-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en contextfuncties.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446363"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935616"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Zelfstudie: Personalizer toevoegen aan een .NET-web-app
 

@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dfa105b7af146086da6b72dd55f6fe679832f44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845048"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936024"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelfstudie: Python en AI gebruiken voor het genereren van doorzoekbare inhoud van Azure-blobs
 
 Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kunt u met een [AI-verrijkingspijplijn](cognitive-search-concept-intro.md) informatie extraheren en nieuwe inhoud maken die nuttig is voor zoekopdrachten in volledige tekst of kennisanalyse. Hoewel een pijplijn installatiekopieën kan verwerken, wordt in deze Python-zelfstudie aandacht besteed aan tekst, het toepassen van taaldetectie en de verwerking van natuurlijke taal om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
 
-Deze zelfstudie maakt gebruik van Python en de [REST-API's zoeken](https://docs.microsoft.com/rest/api/searchservice/) om de volgende taken uit te voeren:
+Deze zelfstudie maakt gebruik van Python en de [REST-API's zoeken](/rest/api/searchservice/) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Begin met hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag.
@@ -163,7 +163,7 @@ In Azure Cognitive Search treedt AI-verwerking op tijdens het indexeren (of gege
 
 ### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
 
-Een [gegevensbron-object](https://docs.microsoft.com/rest/api/searchservice/create-data-source) biedt de BLOB-container de verbindingsreeks met de bestanden.
+Een [gegevensbron-object](/rest/api/searchservice/create-data-source) biedt de BLOB-container de verbindingsreeks met de bestanden.
 
 Vervang in het volgende script de tijdelijke aanduiding UW-BLOB-RESOURCE-VERBINDINGSREEKS door de verbindingsreeks voor de blob die u in de vorige stap hebt gemaakt. Vervang de tekst van de tijdelijke aanduiding voor de container. Voer vervolgens het script uit om een gegevensbron te maken met de naam `cogsrch-py-datasource`.
 
@@ -375,11 +375,11 @@ print(r.status_code)
 
 De aanvraag zou een 201-statuscode moeten retourneren om de succesvolle uitvoering te bevestigen.
 
-Zie [Create Index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index maken (Azure Cognitive Search REST API)) voor meer informatie over het definiëren van een index.
+Zie [Create Index (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) (Index maken (Azure Cognitive Search REST API)) voor meer informatie over het definiëren van een index.
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Stap 4: Indexeerfunctie maken en uitvoeren
 
-Een [Indexeerfunctie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) voert de pijplijn aan. De drie onderdelen die u tot nu toe hebt gemaakt (gegevensbron, vaardighedenset, index) zijn invoer naar een indexeerfunctie. Het maken van de indexeerfunctie op Azure Cognitive Search is de gebeurtenis die de volledige pijplijn in beweging zet. 
+Een [Indexeerfunctie](/rest/api/searchservice/create-indexer) voert de pijplijn aan. De drie onderdelen die u tot nu toe hebt gemaakt (gegevensbron, vaardighedenset, index) zijn invoer naar een indexeerfunctie. Het maken van de indexeerfunctie op Azure Cognitive Search is de gebeurtenis die de volledige pijplijn in beweging zet. 
 
 Als u deze objecten in een indexeerfunctie wilt combineren, moet u veldtoewijzingen definiëren.
 
@@ -512,7 +512,7 @@ De resultaten moeten er ongeveer uitzien als in het volgende voorbeeld. In de sc
 
 Herhaal dit voor aanvullende velden: `content`, `languageCode`, `keyPhrases` en `organizations` in deze oefening. U kunt meerdere velden retourneren via `$select` met behulp van een door komma's gescheiden lijst.
 
-U kunt GET of POST gebruiken, afhankelijk van de complexiteit en lengte van de queryreeks. Zie [Query using the REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Query's uitvoeren met de REST API) voor meer informatie.
+U kunt GET of POST gebruiken, afhankelijk van de complexiteit en lengte van de queryreeks. Zie [Query using the REST API](/rest/api/searchservice/search-documents) (Query's uitvoeren met de REST API) voor meer informatie.
 
 <a name="reset"></a>
 

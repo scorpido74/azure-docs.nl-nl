@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 72f6cee18664f63e36c38499e77f4c0ba7177c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386857"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050451"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Zelfstudie: Verificatie van Azure SignalR Service met Azure Functions
 
@@ -38,9 +38,13 @@ De volgende software is vereist voor het bouwen van deze zelfstudie.
   * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions): werk met Azure Functions in VS Code
   * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): webpagina's voor lokaal testen
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
+
 ## <a name="sign-into-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Ga naar [Azure Portal](https://portal.azure.com/) en meld u aan met uw referenties.
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-an-azure-signalr-service-instance"></a>Een exemplaar van de Azure SignalR Service maken
 
@@ -54,7 +58,7 @@ U gaat de Azure Functions-app lokaal bouwen en testen. De app heeft toegang tot 
 
 1. Voer de volgende informatie in.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Resourcenaam | Een unieke naam voor het SignalR Service-exemplaar |
     | Resourcegroep | Een nieuwe resourcegroep met een unieke naam maken |
@@ -66,7 +70,8 @@ U gaat de Azure Functions-app lokaal bouwen en testen. De app heeft toegang tot 
 1. Zodra het exemplaar is geïmplementeerd, opent u dit in de portal en zoekt u de bijbehorende Instellingen-pagina. Wijzig de Servicemodus-instelling in *Serverloos*.
 
     ![SignalR Service-modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
-
+    
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
 
 ## <a name="initialize-the-function-app"></a>Initaliseer de functie-app
 
@@ -131,7 +136,7 @@ Bij het lokaal uitvoeren van en opsporen van fouten in de Azure Functions-runtim
 
 1. Sla het bestand op.
 
-    
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Een functie maken om gebruikerstoegang tot SignalR Service te verifiëren
 
@@ -146,7 +151,7 @@ Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige ver
 
 1. Geef de volgende informatie op wanneer u daarom wordt gevraagd.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Map van de functie-app | Selecteer de hoofdprojectmap |
     | Template | HTTP-trigger |
@@ -194,6 +199,8 @@ Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige ver
     ```
 
     Deze functie gebruikt de SignalR-verbindingsgegevens van de invoerbinding en retourneert die aan de client in de hoofdtekst van het HTTP-antwoord. De SignalR-client gebruikt deze informatie om verbinding te maken met het SignalR Service-exemplaar.
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-send-chat-messages"></a>Een functie maken voor het verzenden van chatberichten
 
@@ -276,6 +283,8 @@ De web-app vereist ook een HTTP-API voor het verzenden van chatberichten. Maakt 
 
 1. Sla het bestand op.
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
+
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>De webinterface voor de chatclient maken en uitvoeren
 
 De gebruikersinterface van de chattoepassing is een eenvoudige paginatoepassing (SPA) die is gemaakt met het Vue JavaScript-framework. Deze wordt afzonderlijk gehost van de functie-app. Lokaal voert u de webinterface uit met de Live Server VS Code-extensie.
@@ -293,6 +302,8 @@ De gebruikersinterface van de chattoepassing is een eenvoudige paginatoepassing 
 1. Met **index.html** open start u Live Server door het opdrachtenpalet van VS Code te openen (`Ctrl-Shift-P`, Mac OS: `Cmd-Shift-P`) en selecteert u **Live Server: Openen met Live Server**. Live Server opent de toepassing in een browser.
 
 1. De toepassing wordt geopend. Typ een bericht in het chatvak en druk op Enter. Vernieuw de toepassing om nieuwe berichten te zien. Omdat er geen verificatie is geconfigureerd worden alle berichten verzonden als ‘anoniem’.
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
 
 ## <a name="deploy-to-azure-and-enable-authentication"></a>Implementeren naar Azure en verificatie inschakelen
 
@@ -490,9 +501,13 @@ Gefeliciteerd! U hebt een realtime serverloze chat-app geïmplementeerd!
 
 ![Demo](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u de in deze zelfstudie gemaakte resources wilt opschonen, verwijdert u de resourcegroep met Azure Portal.
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -500,3 +515,6 @@ In deze zelfstudie hebt u geleerd u hoe u Azure Functions gebruikt met de Azure 
 
 > [!div class="nextstepaction"]
 > [Realtime apps bouwen met Azure Functions](signalr-concept-azure-functions.md)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsauth)
+

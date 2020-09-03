@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/02/2020
-ms.openlocfilehash: 51422be944d514de398d4bfa424679e2f6d531b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534750"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924262"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Een kennisarchief maken met behulp van REST en Postman
 
@@ -36,7 +36,7 @@ Omdat de workload zo klein is, wordt achter de schermen gebruikgemaakt van Cogni
 
 1. [Download HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Dit zijn gegevens van hotelbeoordelingen die zijn opgeslagen in een CSV-bestand (oorsprong Kaggle.com). Ze bevatten 19 items met klantenfeedback over een hotel. 
 
-1. [Maak een Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [zoek een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage zowel voor de onbewerkte inhoud die u wilt importeren als het kennisarchief dat het eindresultaat vormt.
+1. [Maak een Azure Storage-account](../storage/common/storage-account-create.md?tabs=azure-portal) of [zoek een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage zowel voor de onbewerkte inhoud die u wilt importeren als het kennisarchief dat het eindresultaat vormt.
 
    Kies het accounttype **StorageV2 (algemeen gebruik V2)** .
 

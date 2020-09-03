@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559014"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929700"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Zelfstudie: JSON-blobs vanuit Azure Storage indexeren met behulp van REST
 
 Met Azure Cognitive Search kunnen JSON-documenten en matrices in Azure Blob Storage worden geïndexeerd met behulp van een [indexeerfunctie](search-indexer-overview.md) die weet hoe semi-gestructureerde gegevens moeten worden gelezen. Semi-gestructureerde gegevens bevatten labels of markeringen die inhoud in de gegevens scheiden. Hierin ligt ook het verschil tussen niet-gestructureerde gegevens en formeel gestructureerde gegevens. Niet-gestructureerde gegevens moeten als geheel worden geïndexeerd, gestructureerde gegevens zijn in overeenstemming met een gegevensmodel, zoals een relationele-databaseschema, en kunnen op veldbasis worden geïndexeerd.
 
-Deze zelfstudie maakt gebruik van Postman en de [REST API's zoeken](https://docs.microsoft.com/rest/api/searchservice/) om de volgende taken uit te voeren:
+Deze zelfstudie maakt gebruik van Postman en de [REST API's zoeken](/rest/api/searchservice/) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een Azure Cognitive Search-gegevensbron configureren voor een Azure-blobcontainer
@@ -31,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Storage](../storage/common/storage-account-create.md)
 + [Postman bureaublad-app](https://www.getpostman.com/)
 + [Maak](search-create-service-portal.md) of [vind een bestaande zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -72,7 +72,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 1. Klik op **Blobs**-service.
 
-1. [Maak een blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) waarin u voorbeeldgegevens gaat toevoegen. U kunt het niveau voor openbare toegang instellen op een van de geldige waarden.
+1. [Maak een blobcontainer](../storage/blobs/storage-quickstart-blobs-portal.md) waarin u voorbeeldgegevens gaat toevoegen. U kunt het niveau voor openbare toegang instellen op een van de geldige waarden.
 
 1. Nadat de container is gemaakt, opent u deze en selecteert u **Uploaden** op de opdrachtbalk.
 
@@ -116,7 +116,7 @@ Met behulp van URI's moet een API-versie worden opgegeven en elke aanroep moet *
 
 ## <a name="3---create-a-data-source"></a>3 - Een gegevensbron maken
 
-Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) wordt een Azure Cognitive Search-object gemaakt waarmee wordt aangegeven welke gegevens moeten worden geïndexeerd.
+Met de [Create Data Source-API](/rest/api/searchservice/create-data-source) wordt een Azure Cognitive Search-object gemaakt waarmee wordt aangegeven welke gegevens moeten worden geïndexeerd.
 
 1. Stel het eindpunt van deze aanroep in op `https://[service name].search.windows.net/datasources?api-version=2020-06-30`. Vervang `[service name]` door de naam van uw zoekservice. 
 
@@ -159,7 +159,7 @@ Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservic
 
 ## <a name="4---create-an-index"></a>4 - Een index maken
     
-De tweede aanroep is [Create Index-API](https://docs.microsoft.com/rest/api/searchservice/create-index), waarmee een Azure Cognitive Search-index wordt gemaakt waarin alle doorzoekbare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
+De tweede aanroep is [Create Index-API](/rest/api/searchservice/create-index), waarmee een Azure Cognitive Search-index wordt gemaakt waarin alle doorzoekbare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
 
 1. Stel het eindpunt van deze aanroep in op `https://[service name].search.windows.net/indexes?api-version=2020-06-30`. Vervang `[service name]` door de naam van uw zoekservice.
 
@@ -234,7 +234,7 @@ De tweede aanroep is [Create Index-API](https://docs.microsoft.com/rest/api/sear
 
 ## <a name="5---create-and-run-an-indexer"></a>5 - Een indexeerfunctie maken en uitvoeren
 
-Een indexeerfunctie maakt verbinding met de gegevensbron, importeert gegevens in de doelzoekindex en biedt optioneel een schema om het vernieuwen van de gegevens te automatiseren. De REST API is [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Een indexeerfunctie maakt verbinding met de gegevensbron, importeert gegevens in de doelzoekindex en biedt optioneel een schema om het vernieuwen van de gegevens te automatiseren. De REST API is [Create Indexer](/rest/api/searchservice/create-indexer).
 
 1. Stel de URI voor deze aanroep in op `https://[service name].search.windows.net/indexers?api-version=2020-06-30`. Vervang `[service name]` door de naam van uw zoekservice.
 

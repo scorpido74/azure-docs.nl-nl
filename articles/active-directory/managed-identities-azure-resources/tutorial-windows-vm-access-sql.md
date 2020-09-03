@@ -3,7 +3,7 @@ title: Zelfstudie`:` Een beheerde identiteit gebruiken voor toegang tot Azure SQ
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure SQL Database.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920373"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255746"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure SQL
 
@@ -44,7 +44,7 @@ Deze zelfstudie laat zien hoe u toegang krijgt tot Azure SQL Database met een do
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-Als u uw virtuele machine toegang wilt verlenen tot een database in Azure SQL Database, kunt u een bestaande [logische SQL-server](../../azure-sql/database/logical-servers.md) gebruiken of een nieuwe server maken. Voor het maken van een nieuwe server en database met behulp van Azure Portal, volgt u deze [Azure SQL-snelstart](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Er zijn ook snelstarts in de [documentatie over Azure SQL](https://docs.microsoft.com/azure/sql-database/) voor het gebruik van Azure CLI en Azure Powershell.
+Als u uw virtuele machine toegang wilt verlenen tot een database in Azure SQL Database, kunt u een bestaande [logische SQL-server](../../azure-sql/database/logical-servers.md) gebruiken of een nieuwe server maken. Voor het maken van een nieuwe server en database met behulp van Azure Portal, volgt u deze [Azure SQL-snelstart](../../azure-sql/database/single-database-create-quickstart.md). Er zijn ook snelstarts in de [documentatie over Azure SQL](/azure/sql-database/) voor het gebruik van Azure CLI en Azure Powershell.
 
 U moet twee stappen uitvoeren om uw virtuele machine toegang te verlenen tot een database:
 
@@ -53,7 +53,7 @@ U moet twee stappen uitvoeren om uw virtuele machine toegang te verlenen tot een
 
 ### <a name="enable-azure-ad-authentication"></a>Azure AD-verificatie inschakelen
 
-**[Azure AD-verificatie configureren](/azure/sql-database/sql-database-aad-authentication-configure):**
+**[Azure AD-verificatie configureren](../../azure-sql/database/authentication-aad-configure.md):**
 
 1. Selecteer **SQL-servers** in het linkernavigatievenster van Azure Portal.
 2. Klik op de SQL-server waarvoor Azure AD-verificatie moet worden ingeschakeld.
@@ -64,10 +64,10 @@ U moet twee stappen uitvoeren om uw virtuele machine toegang te verlenen tot een
 
 ### <a name="create-contained-user"></a>Ingesloten gebruiker maken
 
-In dit gedeelte wordt getoond hoe u een ingesloten gebruiker in de database maakt die staat voor de door de systeem toegewezen id van de VM. Voor deze stap hebt u [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) nodig. Voordat u begint, kan het ook handig zijn de volgende artikelen te lezen voor meer achtergrondinformatie over Azure AD-integratie:
+In dit gedeelte wordt getoond hoe u een ingesloten gebruiker in de database maakt die staat voor de door de systeem toegewezen id van de VM. Voor deze stap hebt u [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) nodig. Voordat u begint, kan het ook handig zijn de volgende artikelen te lezen voor meer achtergrondinformatie over Azure AD-integratie:
 
-- [Universele verificatie met SQL Database en Azure Synapse Analytics (SSMS-ondersteuning voor MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [Azure Active Directory-verificatie configureren en beheren met SQL Database of Azure Synapse Analytics](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Universele verificatie met SQL Database en Azure Synapse Analytics (SSMS-ondersteuning voor MFA)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [Azure Active Directory-verificatie configureren en beheren met SQL Database of Azure Synapse Analytics](../../azure-sql/database/authentication-aad-configure.md)
 
 Voor SQL DB zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-accounts, zoals gebruikers, groepen en service-principals (toepassingen), en VM-namen die voor een beheerde identiteit zijn ingeschakeld, voor wat betreft de weergavenamen uniek zijn gedefinieerd in AAD. In SQL DB wordt de AAD-weergavenaam gecontroleerd tijdens het maken van dergelijke gebruikers met T-SQL. Als de naam niet uniek is, kan er geen unieke AAD-weergavenaam voor een bepaald account worden aangevraagd.
 
@@ -208,4 +208,4 @@ Bekijk de waarde van `$DataSet.Tables[0]` om de resultaten van de query weer te 
 In deze zelfstudie hebt u geleerd om met een door het systeem toegewezen beheerde identiteit toegang te krijgen tot Azure SQL Database. Raadpleeg voor meer informatie over Azure SQL Database:
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)

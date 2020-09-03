@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503299"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936007"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelfstudie: REST en AI gebruiken voor het genereren van doorzoekbare inhoud van Azure-blobs
 
 Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kunt u met een [AI-verrijkingspijplijn](cognitive-search-concept-intro.md) informatie extraheren en nieuwe inhoud maken die nuttig is voor zoekopdrachten in volledige tekst of kennisanalyse. Hoewel een pijplijn installatiekopieën kan verwerken, wordt in deze REST-zelfstudie aandacht besteed aan tekst, het toepassen van taaldetectie en de verwerking van natuurlijke taal om nieuwe velden te maken die u in query's, facetten en filters kunt gebruiken.
 
-Deze zelfstudie maakt gebruik van Postman en de [REST API's zoeken](https://docs.microsoft.com/rest/api/searchservice/) om de volgende taken uit te voeren:
+Deze zelfstudie maakt gebruik van Postman en de [REST API's zoeken](/rest/api/searchservice/) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Begin met hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag.
@@ -135,7 +135,7 @@ In Azure Cognitive Search treedt AI-verwerking op tijdens het indexeren (of gege
 
 ### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
 
-Een [gegevensbron-object](https://docs.microsoft.com/rest/api/searchservice/create-data-source) biedt de BLOB-container de verbindingsreeks met de bestanden.
+Een [gegevensbron-object](/rest/api/searchservice/create-data-source) biedt de BLOB-container de verbindingsreeks met de bestanden.
 
 1. Gebruik **POST** en de volgende URL, waarbij u YOUR-SERVICE-NAME vervangt door de werkelijke naam van uw service.
 
@@ -165,7 +165,7 @@ Als u een 403- of 404-fout krijgt, controleert u de constructie van de aanvraag:
 
 ### <a name="step-2-create-a-skillset"></a>Stap 2: Een set vaardigheden maken
 
-Een [vaardighedensetobject](https://docs.microsoft.com/rest/api/searchservice/create-skillset) is een reeks verrijkingsstappen die op uw inhoud wordt toegepast. 
+Een [vaardighedensetobject](/rest/api/searchservice/create-skillset) is een reeks verrijkingsstappen die op uw inhoud wordt toegepast. 
 
 1. Gebruik **PUT** en de volgende URL, waarbij u YOUR-SERVICE-NAME vervangt door de werkelijke naam van uw service.
 
@@ -250,7 +250,7 @@ Een [vaardighedensetobject](https://docs.microsoft.com/rest/api/searchservice/cr
 
 ### <a name="step-3-create-an-index"></a>Stap 3: Een index maken
 
-Een [index](https://docs.microsoft.com/rest/api/searchservice/create-index) voorziet in het schema dat wordt gebruikt voor het maken van de fysieke expressie van uw inhoud in omgekeerde indexen en andere constructen in Azure Cognitive Search. Het grootste onderdeel van een index is de verzameling velden, waarbij gegevenstype en kenmerken de inhoud en het gedrag in Azure Cognitive Search bepalen.
+Een [index](/rest/api/searchservice/create-index) voorziet in het schema dat wordt gebruikt voor het maken van de fysieke expressie van uw inhoud in omgekeerde indexen en andere constructen in Azure Cognitive Search. Het grootste onderdeel van een index is de verzameling velden, waarbij gegevenstype en kenmerken de inhoud en het gedrag in Azure Cognitive Search bepalen.
 
 1. Gebruik **PUT** en de volgende URL, waarbij u YOUR-SERVICE-NAME vervangt door de werkelijke naam van uw service om de index een naam te geven.
 
@@ -334,7 +334,7 @@ Een [index](https://docs.microsoft.com/rest/api/searchservice/create-index) voor
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Stap 4: Indexeerfunctie maken en uitvoeren
 
-Een [Indexeerfunctie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) voert de pijplijn aan. De drie onderdelen die u tot nu toe hebt gemaakt (gegevensbron, vaardighedenset, index) zijn invoer naar een indexeerfunctie. Het maken van de indexeerfunctie op Azure Cognitive Search is de gebeurtenis die de volledige pijplijn in beweging zet. 
+Een [Indexeerfunctie](/rest/api/searchservice/create-indexer) voert de pijplijn aan. De drie onderdelen die u tot nu toe hebt gemaakt (gegevensbron, vaardighedenset, index) zijn invoer naar een indexeerfunctie. Het maken van de indexeerfunctie op Azure Cognitive Search is de gebeurtenis die de volledige pijplijn in beweging zet. 
 
 1. Gebruik **PUT** en de volgende URL, waarbij u YOUR-SERVICE-NAME vervangt door de werkelijke naam van uw service om de indexeerfunctie een naam te geven.
 
@@ -486,7 +486,7 @@ We zijn begonnen met blob-inhoud, waarbij het hele document is verpakt in één 
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-Deze query's illustreren een aantal manieren waarop u kunt werken met querysyntaxis en filters voor nieuwe velden die met behulp van cognitief zoeken zijn gemaakt. Zie [Voorbeelden in Documenten zoeken (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [Voorbeelden van query's met eenvoudige syntaxis](search-query-simple-examples.md)en [Voorbeelden van volledige Lucene-query's](search-query-lucene-examples.md)voor meer query voorbeelden.
+Deze query's illustreren een aantal manieren waarop u kunt werken met querysyntaxis en filters voor nieuwe velden die met behulp van cognitief zoeken zijn gemaakt. Zie [Voorbeelden in Documenten zoeken (Azure Cognitive Search REST API)](/rest/api/searchservice/search-documents#bkmk_examples), [Voorbeelden van query's met eenvoudige syntaxis](search-query-simple-examples.md)en [Voorbeelden van volledige Lucene-query's](search-query-lucene-examples.md)voor meer query voorbeelden.
 
 <a name="reset"></a>
 
