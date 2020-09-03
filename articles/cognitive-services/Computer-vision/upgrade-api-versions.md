@@ -1,7 +1,7 @@
 ---
 title: Upgraden naar v3.0 van de Computer Vision-API
 titleSuffix: Azure Cognitive Services
-description: Ontdek hoe u kunt upgraden van v2.0 en v2.1 naar v3.0 van de Computer Vision-API.
+description: Lees hoe u een upgrade uitvoert naar Computer Vision v3.0 Read API vanuit v2.0/v2.1.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16add0dce88d0f809dc291d3c9de33e1a853f257
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136570"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214180"
 ---
-# <a name="upgrade-to-v30-of-computer-vision-api-from-v20-and-v21"></a>Upgraden naar v3.0 van de Computer Vision-API vanaf v2.0 en v2.1
+# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>Upgraden naar Computer Vision v3.0 Read API vanuit v2.0/v2.1
 
-In deze gids wordt uitgelegd hoe u uw bestaande code wijzigt om te migreren van v2.0 of v2.1 van de Computer Vision-API naar v3.0 voor gebruikers van de REST API. 
+Deze handleiding laat zien hoe uw bestaande REST API-code van Computer Vision v 2.0 of v2.1 kunt bijwerken naar bewerkingen van Read v3.0. 
 
 ## <a name="upgrade-batch-read-file-to-read"></a>`Batch Read File` upgraden naar `Read`
 

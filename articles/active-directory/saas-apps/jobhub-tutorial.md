@@ -1,97 +1,92 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met JOBHUB | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en JOBHUB.
+title: 'Zelfstudie: Integratie van Azure Active Directory met JOBHUB | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en JOBHUB.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2162cab-c5d4-4207-ad59-b75b48c7f799
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc5f7bf299465b6af272c9b417a62f121b9a4d82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1623d4501a89e3614e694b57f6cae1eee28062da
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67164935"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547032"
 ---
-# <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Zelf studie: JOBHUB integreren met Azure Active Directory
+# <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Zelfstudie: JOBHUB integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u JOBHUB integreert met Azure Active Directory (Azure AD). Wanneer u JOBHUB integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u JOBHUB integreert met Azure Active Directory (Azure AD). Wanneer u JOBHUB integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot JOBHUB.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij JOBHUB met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie er toegang heeft tot JOBHUB.
+* Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij JOBHUB.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
-* JOBHUB-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) een gratis proefversie van één maand ontvangen.
+* Een abonnement op JOBHUB waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. JOBHUB ondersteunt door **SP** geïnitieerde SSO.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. JOBHUB ondersteunt met **SP** geïnitieerde eenmalige aanmelding.
 
-## <a name="adding-jobhub-from-the-gallery"></a>JOBHUB toevoegen uit de galerie
+## <a name="adding-jobhub-from-the-gallery"></a>JOBHUB toevoegen vanuit de galerie
 
-Als u de integratie van JOBHUB in azure AD wilt configureren, moet u JOBHUB uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van JOBHUB in Azure AD, moet u JOBHUB vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **JOBHUB** in het zoekvak.
-1. Selecteer **JOBHUB** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in het gedeelte **Toevoegen uit de galerie** **JOBHUB** in het zoekvak.
+1. Selecteer **JOBHUB** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureer en test Azure AD SSO met JOBHUB met behulp van een test gebruiker met de naam **Julia Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in JOBHUB.
+Configureer en test eenmalige aanmelding van Azure AD met JOBHUB met behulp van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in JOBHUB.
 
-Als u Azure AD SSO wilt configureren en testen met JOBHUB, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding voor JOBHUB met Azure AD te configureren en testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-2. **[JOBHUB SSO configureren](#configure-jobhub-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een JOBHUB-test gebruiker](#create-jobhub-test-user)** -om een equivalent van Julia Simon in JOBHUB te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor JOBHUB configureren](#configure-jobhub-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[JOBHUB-testgebruiker maken](#create-jobhub-test-user)** : als u een tegenhanger van Britta Simon in JOBHUB wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **JOBHUB** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/), op de integratiepagina van de toepassing **JOBHUB**, de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden: Typ in het tekstvak **URL voor aanmelding** een URL met behulp van het volgende patroon:`https://pasona.jobhub.jp/saml/init`
+1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:  In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://pasona.jobhub.jp/saml/init`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van JOBHUB](mailto:platform@pasonagroup.co.jp) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van JOBHUB](mailto:platform@pasonagroup.co.jp) om de waarde op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
     ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
 
-1. Kopieer de **vinger afdruk** in het gedeelte **SAML-handtekening certificaat** en sla het op uw computer op.
+1. Kopieer in de sectie **SAML-handtekeningcertificaat** de waarde voor **VINGERAFDRUK** en sla deze op de computer op.
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-1. Kopieer op de sectie **JOBHUB instellen** de gewenste URL ('s) volgens uw vereiste.
+1. In het gedeelte **JOBHUB instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -101,53 +96,53 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     c. Afmeldings-URL
 
-### <a name="configure-jobhub-sso"></a>JOBHUB SSO configureren
+### <a name="configure-jobhub-sso"></a>Eenmalige aanmelding voor JOBHUB configureren
 
-Als u eenmalige aanmelding wilt configureren op **JOBHUB** , moet u de **vingerafdruk waarde** en de juiste gekopieerde url's verzenden van Azure Portal naar [JOBHUB ondersteunings team](mailto:platform@pasonagroup.co.jp). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **JOBHUB** wilt configureren, moet u de **waarde voor de vingerafdruk** en de juiste, gekopieerde URL's vanuit Azure Portal naar het [ondersteuningsteam van JOBHUB](mailto:platform@pasonagroup.co.jp) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
+In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`Britta Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan JOBHUB.
+In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot JOBHUB.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **JOBHUB**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **JOBHUB** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-jobhub-test-user"></a>JOBHUB-test gebruiker maken
+### <a name="create-jobhub-test-user"></a>JOBHUB-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in JOBHUB. Werk samen met [JOBHUB-ondersteunings team](mailto:platform@pasonagroup.co.jp) om de gebruikers toe te voegen in het JOBHUB-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in JOBHUB. Werk met het  [ondersteuningsteam van JOBHUB](mailto:platform@pasonagroup.co.jp) om de gebruikers toe te voegen aan het JOBHUB-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel JOBHUB in het toegangs venster selecteert, wordt u automatisch aangemeld bij de JOBHUB waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de JOBHUB-tegel in het toegangsvenster selecteert, wordt u automatisch aangemeld bij de instantie van JOBHUB waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

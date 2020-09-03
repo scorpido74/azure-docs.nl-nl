@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033639"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750200"
 ---
 # <a name="durable-orchestrations"></a>Duurzame indelingen
 
@@ -51,7 +51,7 @@ Wanneer een indelingsfunctie meer werk heeft gekregen (bijvoorbeeld wanneer er e
 > De code van de orchestratorfunctie moet *deterministisch* zijn opdat het nieuwe afspeelpatroon correct en betrouwbaar kan functioneren. Zie het onderwerp [Codebeperkingen voor orchestratorfuncties](durable-functions-code-constraints.md) voor meer informatie.
 
 > [!NOTE]
-> Als een orchestratorfunctie logboekberichten verzendt, kan het gedrag van het opnieuw afspelen ertoe leiden dat er dubbele logboekberichten worden verzonden. Zie het onderwerp [Logboekregistratie](durable-functions-diagnostics.md#logging) voor meer informatie over waarom dit gedrag optreedt en hoe u dit kunt omzeilen.
+> Als een orchestratorfunctie logboekberichten verzendt, kan het gedrag van het opnieuw afspelen ertoe leiden dat er dubbele logboekberichten worden verzonden. Zie het onderwerp [Logboekregistratie](durable-functions-diagnostics.md#app-logging) voor meer informatie over waarom dit gedrag optreedt en hoe u dit kunt omzeilen.
 
 ## <a name="orchestration-history"></a>Indelingsgeschiedenis
 

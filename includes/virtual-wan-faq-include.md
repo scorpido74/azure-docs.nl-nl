@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7411b4c000569693335cb0438fe186b290750247
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88602512"
+ms.locfileid: "88604688"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
@@ -215,7 +215,7 @@ Het verkeer volgt het volgende patroon: vertakkingsapparaat->ISP->Microsoft-netw
 
 Ja. Een internetverbinding en een fysiek apparaat dat IPsec ondersteunt, bij voorkeur van onze geïntegreerde [Virtual WAN-partners](../articles/virtual-wan/virtual-wan-locations-partners.md). Optioneel kunt u de configuratie en verbinding met Azure vanaf het apparaat van voorkeur handmatig beheren.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hoe kan ik de standaardroute (0.0.0.0/0) in een verbinding inschakelen (VPN, ExpressRoute of Virtual Network):
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hoe schakel ik de standaardroute (0.0.0.0/0) in een verbinding in (VPN, ExpressRoute of Virtual Network)?
 
 In een virtuele hub kan een inmiddels bekende standaardroute worden doorgegeven naar een virtuele netwerk-/site-naar-site-VPN-/ExpressRoute-verbinding als de vlag voor de verbinding de status Ingeschakeld heeft. Deze vlag wordt weergegeven als de gebruiker een verbinding met een virtueel netwerk, een VPN-verbinding of een ExpressRoute aanpast. Deze vlag wordt standaard uitgeschakeld wanneer een site of een ExpressRoute-circuit met een hub wordt verbonden. De vlag is standaard ingeschakeld wanneer een virtuele netwerkverbinding wordt toegevoegd om een VNet te verbinden met een virtuele hub. De standaardroute is niet afkomstig van de Virtual WAN-hub. De standaardroute wordt doorgegeven als deze al bekend is bij de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als voor een andere verbonden site geforceerd tunnelen is ingeschakeld.
 
@@ -239,26 +239,27 @@ Wanneer meerdere ExpressRoute-circuits met een virtuele hub zijn verbonden, bied
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Is er een voorkeur van Virtual WAN voor ExpressRoute boven VPN voor verkeer dat Azure verlaat?
 
-Ja 
+Ja.
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Als een Virtual WAN-hub verbonden is met zowel een ExpressRoute-circuit als een VPN-site, wat zou dan de reden zijn dat er een voorkeur voor de route via de VPN-verbinding is boven ExpressRoute?
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Als een Virtual WAN-hub verbonden is met zowel een ExpressRoute-circuit als een VPN-site, wat zou dan de reden zijn dat er een voorkeur voor de route via de VPN-verbinding is boven ExpressRoute?
 
-Wanneer een ExpressRoute-circuit is verbonden met een virtuele hub, vormen de Microsoft-randrouters het eerste knooppunt voor communicatie tussen on-premises en Azure. Deze randrouters communiceren met de Virtual WAN ExpressRoute-gateways die op hun beurt routes bewaren van de virtuele hubrouter waarmee alle routes tussen gateways in Virtual WAN worden beheerd. De Microsoft-randrouters verwerken virtuele ExpressRoute-hubroutes met prioriteit hoger dan die voor routes die on-premises worden overgenomen. Als de VPN-verbinding het primaire medium voor de virtuele hub wordt om routes van over te nemen (bijvoorbeeld failover-scenario's tussen ExpressRoute en VPN), maar tenzij de VPN-site een langere padlengte heeft, blijft de virtuele hub van VPN overgenomen routes met ExpressRoute gateway delen, waardoor de Microsoft-randrouters de voorkeur geven aan VPN-routes via on-premises routes. 
+Wanneer een ExpressRoute-circuit is verbonden met een virtuele hub, vormen de Microsoft-randrouters het eerste knooppunt voor communicatie tussen on-premises en Azure. Deze randrouters communiceren met de Virtual WAN ExpressRoute-gateways die op hun beurt routes bewaren van de virtuele hubrouter waarmee alle routes tussen gateways in Virtual WAN worden beheerd. De Microsoft-randrouters verwerken virtuele ExpressRoute-hubroutes met prioriteit hoger dan die voor routes die on-premises worden overgenomen. Als de VPN-verbinding het primaire medium voor de virtuele hub wordt om routes van over te nemen (bijvoorbeeld failover-scenario's tussen ExpressRoute en VPN), maar tenzij de VPN-site een langere padlengte heeft, blijft de virtuele hub van VPN overgenomen routes met ExpressRoute gateway delen, waardoor de Microsoft-randrouters de voorkeur geven aan VPN-routes via on-premises routes.
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Wanneer twee hubs (hub 1 en 2) zijn verbonden en er een ExpressRoute-circuit als een strik met beide hubs is verbonden, wat is dan het pad voor een VNet dat is verbonden met hub 1 om een VNet te bereiken dat is aangesloten op hub 2?
 
-Het huidige gedrag is om de voo keur te geven aan het ExpressRoute-circuit boven hub-naar-hub voor VNet-naar-VNet-connectiviteit. Dit wordt echter niet aanbevolen in een virtuele WAN-installatie. Het virtuele WAN-team werkt aan een oplossing om de voorkeur voor hub-naar-hub via het ExpressRoute-pad in te schakelen. Het wordt aanbevolen meerdere ExpressRoute-circuits (verschillende providers) met één hub te verbinden en de hub-naar-hub-connectiviteit van Virtual WAN te gebruiken voor regio-overschrijdende verkeersstromen.
+Het huidige gedrag is om de voorkeur te geven aan het ExpressRoute-circuit boven hub-naar-hub voor VNet-naar-VNet-connectiviteit. Dit wordt echter niet aanbevolen in een virtuele WAN-installatie. Het virtuele WAN-team werkt aan een oplossing om de voorkeur voor hub-naar-hub via het ExpressRoute-pad in te schakelen. Het wordt aanbevolen meerdere ExpressRoute-circuits (verschillende providers) met één hub te verbinden en de hub-naar-hub-connectiviteit van Virtual WAN te gebruiken voor regio-overschrijdende verkeersstromen.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in Virtual WAN?
 
 IPv6 wordt niet ondersteund in Virtual WAN-hub en de bijbehorende gateways. Dit scenario wordt momenteel niet ondersteund als u een VNet hebt met IPv6-ondersteuning en u het VNet wilt verbinden met Virtual WAN.
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Wat is de aanbevolen API-versie die door scripts moet worden gebruikt om verschillende Virtual WAN-functionaliteit te automatiseren?
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Wat is de aanbevolen API-versie die door scripts moet worden gebruikt om verschillende Virtual WAN-functionaliteit te automatiseren?
 
 Er is minimaal de versie van 05-01-2020 (1 mei 2020) vereist. 
 
-### <a name="any-virtual-wan-limits"></a>Zijn er limieten voor Virtual WAN van toepassing?
-Limieten voor Virtual WAN: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits
+### <a name="are-there-any-virtual-wan-limits"></a>Zijn er limieten voor Virtual WAN van toepassing?
+
+Raadpleeg het gedeelte [Limieten voor Virtual WAN](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits) op de pagina Abonnements- en servicebeperkingen.
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Wat zijn de verschillen tussen de Virtual WAN-typen (Basic en Standard)?
 

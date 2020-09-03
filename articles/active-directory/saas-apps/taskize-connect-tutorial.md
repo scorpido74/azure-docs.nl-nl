@@ -1,169 +1,164 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Taskize Connect | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Taskize Connect.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Taskize Connect | Microsoft Docs'
+description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Taskize Connect kunt configureren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2c5d5e85-f10b-4ae7-ab8b-709c6cb03248
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40a6917938b5cdd2e3449977b4c6c6ed8280a7a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 291aa831279abdedb20196cd9af9ba49ac20d340
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75472329"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552047"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-taskize-connect"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Taskize Connect
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-taskize-connect"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Taskize Connect
 
-In deze zelf studie leert u hoe u Taskize kunt integreren met Azure Active Directory (Azure AD). Wanneer u Taskize-verbinding met Azure AD integreert, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Taskize Connect kunt integreren met Azure AD (Active Directory). Wanneer u Taskize Connect integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in azure AD die toegang heeft tot Taskize Connect.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Taskize om verbinding te maken met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie er toegang heeft tot Taskize Connect.
+* Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Taskize Connect.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Taskize Connected sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Taskize Connect waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 
 
-* Taskize Connect ondersteunt door **SP en IDP** GEÏNITIEERDe SSO
+* Taskize Connect ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-taskize-connect-from-the-gallery"></a>Taskize Connect toevoegen vanuit de galerie
 
-Als u de integratie van Taskize Connect wilt configureren in azure AD, moet u Taskize Connect toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Taskize Connect in Azure AD, moet u Taskize Connect vanuit de galerie aan uw lijst met beheerde SaaS-apps toevoegen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Taskize verbinding maken** in het zoekvak.
-1. Selecteer **Taskize verbinding maken** via het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** **Taskize Connect** in het zoekvak.
+1. Selecteer **Taskize Connect** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-taskize-connect"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Taskize Connect
+## <a name="configure-and-test-azure-ad-single-sign-on-for-taskize-connect"></a>Azure AD-eenmalige aanmelding configureren en testen voor Taskize Connect
 
-Azure AD SSO configureren en testen met Taskize Connect met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Taskize Connect.
+Configureer en test eenmalige aanmelding van Azure AD met Taskize Connect met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Taskize Connect.
 
-Als u Azure AD SSO wilt configureren en testen met Taskize Connect, voltooit u de volgende bouw stenen:
+Als u eenmalige aanmelding van Azure AD met Taskize Connect wilt configureren en testen, moet u de volgende procedures voltooien:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Taskize Connect SSO configureren](#configure-taskize-connect-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een Taskize-gebruiker](#create-taskize-connect-test-user)** voor het maken van een verbinding. Als u een tegen hanger wilt hebben van B. Simon in Taskize Connect dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding met Taskize Connect configureren](#configure-taskize-connect-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. **[Een testgebruiker voor Taskize Connect maken](#create-taskize-connect-test-user)** : als u een tegenhanger van B.Simon in Taskize Connect wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Taskize Connect** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Taskize Connect** naar de sectie **Beheren**, en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In het gedeelte **basis configuratie** van SAML is de toepassing vooraf geconfigureerd in de gestarte modus **IDP** en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. In de sectie  **SAML-basisconfiguratie**  is de toepassing vooraf geconfigureerd in de  **IDP** -geïnitieerde modus en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop  **Opslaan**  te klikken.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ een URL in het tekstvak **URL voor aanmelding** :`https://connect.taskize.com/connect/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://connect.taskize.com/connect/`
 
-1. Taskize Connect-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Taskize Connect verwacht de SAML-asserties in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan de configuratie van de SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-1. Daarnaast verwacht Taskize Connect Application nog enkele kenmerken die kunnen worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
+1. Bovendien verwacht Taskize Connect nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
     | Naam | Bronkenmerk|
     | ------------------- | -------------------- |    
     | urn:oid:0.9.2342.19200300.100.1.3 | user.userprincipalname |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer op de **Taskize-verbinding instellen** de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **Taskize Connect instellen** de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Taskize Connect.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Taskize Connect.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Taskize Connect**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Taskize Connect** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-taskize-connect-sso"></a>Taskize Connect SSO configureren
+## <a name="configure-taskize-connect-sso"></a>Eenmalige aanmelding configureren in Taskize Connect
 
-Als u eenmalige aanmelding wilt configureren op **Taskize Connect** Side, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Taskize Connect ondersteunings team](mailto:support@taskize.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren in **Taskize Connect**, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte, uit de Azure-portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Taskize Connect](mailto:support@taskize.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-taskize-connect-test-user"></a>Een test gebruiker voor Taskize-verbinding maken
+### <a name="create-taskize-connect-test-user"></a>Een testgebruiker voor Taskize Connect maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in Taskize Connect. Taskize Connect biedt ondersteuning voor Just-in-time-inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Er wordt een nieuwe gebruiker gemaakt tijdens een poging om toegang te krijgen tot Taskize Connect als deze nog niet bestaat.
+Het doel van deze sectie is het maken van een gebruiker met de naam B.Simon in Taskize Connect. Taskize Connect ondersteunt Just-In-Time-inrichting; deze optie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Er wordt een nieuwe gebruiker gemaakt als Taskize Connect wordt geopend en er nog geen gebruiker bestaat.
 
 >[!Note]
->Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van Taskize Connect](mailto:support@taskize.com).
+>Als u handmatig een gebruiker moet maken, neemt u contact op met  [het ondersteuningsteam van Taskize Connect](mailto:support@taskize.com).
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Taskize Connect in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Taskize-verbinding waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Taskize Connect klikt, wordt u automatisch aangemeld bij het exemplaar van Taskize Connect waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Taskize verbinding te maken met Azure AD](https://aad.portal.azure.com/)
+- [Taskize Connect uitproberen met Azure AD](https://aad.portal.azure.com/)
 

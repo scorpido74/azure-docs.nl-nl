@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504649"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245091"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Zelfstudie: Replicasets maken en gebruiken voor tolerantie of geolocatie in Azure Active Directory Domain Services (preview)
 
@@ -42,11 +42,11 @@ Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen no
     * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
     * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een met Azure Active Directory Domain Services beheerd domein dat is gemaakt met behulp van replicasets en is geconfigureerd in uw Azure AD-tenant.
+* Een met Azure Active Directory Domain Services beheerd domein dat is gemaakt met behulp van het Azure Resource Manager-implementatiemodel en is geconfigureerd in uw Azure AD-tenant.
     * [Maak en configureer zo nodig een door Azure Active Directory Domain Services beheerd domein][tutorial-create-instance].
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u een beheerd domein maakt dat replicasets gebruikt. Een bestaand beheerd domein dat is gemaakt vóór deze preview biedt geen ondersteuning voor replicasets. U moet ook minstens een *Enterprise* SKU gebruiken voor het beheerde domein. Indien nodig, kunt u [de SKU voor een beheerd domein wijzigen][howto-change-sku].
+    > Beheerde domeinen die zijn gemaakt met het klassieke implementatiemodel kunnen geen replicasets gebruiken. U moet ook minstens een *Enterprise* SKU gebruiken voor het beheerde domein. Indien nodig, kunt u [de SKU voor een beheerd domein wijzigen][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 

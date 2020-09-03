@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293370"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516687"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Zelfstudie: Azure AD-gebruikers maken met behulp van Azure AD-toepassingen
 
@@ -94,6 +94,8 @@ Voer het volgende script uit om deze vereiste machtiging te verlenen.
 
 > [!NOTE] 
 > Dit script moet worden uitgevoerd met een Azure AD `Global Administrator` of een `Privileged Roles Administrator`.
+>
+> In **openbare preview** kunt u de rol `Directory Readers` toewijzen aan een groep in Azure AD. De groepseigenaren kunnen de beheerde identiteit vervolgens toevoegen als lid van deze groep, waardoor het niet nodig is dat een `Global Administrator` of `Privileged Roles Administrator` de rol `Directory Readers` moet toewijzen. Zie [Rol Directory Readers in Azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md) voor meer informatie over deze functie.
 
 - Vervang `<TenantId>` door de `TenantId` die eerder is verkregen.
 - Vervang `<server name>` door de naam van de logische SQL-server. Als de servernaam `myserver.database.windows.net` is, vervangt u `<server name>` door `myserver`.
@@ -304,3 +306,4 @@ Zodra een service-principal is gemaakt in Azure AD, maakt u de gebruiker in SQL 
 - [Verificatie via Azure AD-service-principal bij SQL DB - codevoorbeeld](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Toepassings- en service-principal-objecten in Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Een Azure-service-principal maken met Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Rol Directory Readers in Azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052294"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506508"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-voorbeeldscripts
 
@@ -26,21 +26,21 @@ De [ARR-opslagplaats](https://github.com/Azure/azure-remote-rendering) bevat voo
 Als u de voorbeeldscripts wilt uitvoeren, hebt u een functionele installatie van [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) nodig.
 
 1. Installeer Azure PowerShell:
-    1. Open een PowerShell met beheerdersrechten
+    1. Open een PowerShell-venster met beheerdersrechten.
     1. Voer dit uit: `Install-Module -Name Az -AllowClobber`
 
 1. Als er fouten optreden bij het uitvoeren van scripts, controleert u of het [uitvoeringsbeleid](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) op de juiste wijze is ingesteld:
-    1. Open een PowerShell met beheerdersrechten
+    1. Open een PowerShell-venster met beheerdersrechten.
     1. Voer dit uit: `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Een Azure-opslagaccount voorbereiden](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Meld u aan bij het abonnement dat uw Azure Remote Rendering-account bevat:
-    1. Een Powershell openen
+    1. Open een Powershell-venster.
     1. Voer `Connect-AzAccount` uit en volg de aanwijzingen op het scherm.
 
-> [!NOTE]
-> Als uw organisatie meerdere abonnementen heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie bij Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > [!NOTE]
+    > Als uw organisatie meerdere abonnementen heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie bij Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 1. Download de map *Scripts* uit de [Azure Remote Rendering GithHub-opslagplaats](https://github.com/Azure/azure-remote-rendering).
 
@@ -86,9 +86,9 @@ Zie de [lijst met beschikbare regio's](../reference/regions.md) voor `region`.
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Deze structuur moet worden ingevuld als u **RenderingSession.ps1** wilt uitvoeren.
+Deze structuur moet worden ingevuld als u **RenderingSession.ps1** wilt uitvoeren:
 
-- **vmSize:** Hiermee wordt de grootte van de virtuele machine geselecteerd. Selecteer *standard* of *premium*. Schakel renderingsessies uit wanneer u deze niet meer nodig hebt.
+- **vmSize:** Hiermee wordt de grootte van de virtuele machine geselecteerd. Selecteer [*standard*](../reference/vm-sizes.md) of [*premium*](../reference/vm-sizes.md). Schakel renderingsessies uit wanneer u deze niet meer nodig hebt.
 - **maxLeaseTime:** De duur waarvoor u de virtuele machine wilt leasen. Deze wordt afgesloten wanneer de lease verloopt. De leasetijd kan later worden verlengd (zie hieronder).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Het gebruik van een gekoppeld opslagaccount is de voorkeursmanier voor het gebru
 .\Conversion.ps1
 ```
 
-1. Alle bestanden in de `assetConversionSettings.modelLocation` uploaden naar de invoerblobcontainer onder de opgegeven `inputFolderPath`
+1. Alle bestanden in de `assetConversionSettings.modelLocation` uploaden naar de invoerblobcontainer onder de opgegeven `inputFolderPath`.
 1. De [REST API voor modelconversie](../how-tos/conversion/conversion-rest-api.md) aanroepen om de [modelconversie](../how-tos/conversion/model-conversion.md) te starten
-1. De conversiestatus pollen totdat de conversie is geslaagd of mislukt
-1. Uitvoerdetails van de geconverteerde bestandslocatie (opslagaccount, uitvoercontainer en bestandspad in de container)
+1. De conversiestatus pollen totdat de conversie is geslaagd of mislukt.
+1. Uitvoerdetails van de geconverteerde bestandslocatie (opslagaccount, uitvoercontainer en bestandspad in de container).
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Toegang tot opslag via Shared Access Signatures
 
@@ -202,13 +202,13 @@ Het gebruik van een gekoppeld opslagaccount is de voorkeursmanier voor het gebru
 
 Hiermee wordt:
 
-1. Het lokale bestand van de `assetConversionSettings.localAssetDirectoryPath` geüpload naar de invoerblobcontainer
-1. Een SAS-URI gegenereerd voor de invoercontainer
-1. Een SAS-URI gegenereerd voor de uitvoercontainer
-1. De [REST API voor modelconversie](../how-tos/conversion/conversion-rest-api.md) aanroepen om de [modelconversie](../how-tos/conversion/model-conversion.md) te starten
-1. De conversiestatus pollen totdat de conversie is geslaagd of mislukt
-1. Uitvoerdetails van de geconverteerde bestandslocatie (opslagaccount, uitvoercontainer en bestandspad in de container)
-1. Een SAS-URI uitvoeren naar het geconverteerde model in de uitvoerblobcontainer
+1. Het lokale bestand van de `assetConversionSettings.localAssetDirectoryPath` geüpload naar de invoerblobcontainer.
+1. Een SAS-URI gegenereerd voor de invoercontainer.
+1. Een SAS-URI gegenereerd voor de uitvoercontainer.
+1. De [REST API voor modelconversie](../how-tos/conversion/conversion-rest-api.md) aanroepen om de [modelconversie](../how-tos/conversion/model-conversion.md) te starten.
+1. De conversiestatus pollen totdat de conversie is geslaagd of mislukt.
+1. Uitvoerdetails van de geconverteerde bestandslocatie (opslagaccount, uitvoercontainer en bestandspad in de container).
+1. Een SAS-URI uitvoeren naar het geconverteerde model in de uitvoerblobcontainer.
 
 ### <a name="additional-command-line-options"></a>Aanvullende opdrachtregelopties
 
@@ -249,7 +249,7 @@ U kunt bijvoorbeeld een aantal van de opgegeven opties als volgt combineren:
 
 Als u afzonderlijke stappen van het proces wilt uitvoeren, kunt u het volgende gebruiken:
 
-Alleen gegevens uit het opgegeven LocalAssetDirectoryPath uploaden
+Alleen gegevens uit het opgegeven LocalAssetDirectoryPath uploaden.
 
 ```PowerShell
 .\Conversion.ps1 -Upload

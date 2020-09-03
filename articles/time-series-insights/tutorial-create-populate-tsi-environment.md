@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020648"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245397"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Zelfstudie: Een Azure Time Series Insights Gen1-omgeving maken
 
@@ -37,13 +37,13 @@ Deze zelfstudie begeleidt u bij het maken van een Azure Time Series Insights-omg
 
 ## <a name="review-video"></a>Video bekijken
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Leer hoe u een Azure IoT-oplossingsverbetering kunt gebruiken om gegevens te genereren en aan de slag te gaan met Azure Time Series Insights. </br>
+Leer hoe u een Azure IoT-oplossingsverbetering kunt gebruiken om gegevens te genereren en aan de slag te gaan met Azure Time Series Insights.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>Overzicht
 
-In de Azure Time Series Insights-omgeving worden apparaatgegevens verzameld en opgeslagen. Eenmaal opgeslagen kunt u [Azure Time Series Insights Explorer](time-series-quickstart.md) en [Azure Time Series Insights Query API](/rest/api/time-series-insights/ga-query-api) gebruiken om query's op de gegevens uit te voeren en de gegevens te analyseren.
+In de Azure Time Series Insights-omgeving worden apparaatgegevens verzameld en opgeslagen. Eenmaal opgeslagen kunt u [Azure Time Series Insights Explorer](time-series-quickstart.md) en [Azure Time Series Insights Query API](/rest/api/time-series-insights/gen1-query-api) gebruiken om query's op de gegevens uit te voeren en de gegevens te analyseren.
 
 Azure IoT Hub is de gebeurtenisbron die door alle apparaten (gesimuleerd of fysiek) in de zelfstudie wordt gebruikt om veilig verbinding te maken en gegevens naar de Azure-cloud te verzenden.
 
@@ -98,7 +98,7 @@ Maak vervolgens een Azure Time Series Insights omgeving in uw Azure-abonnement.
 
    Parameter|Beschrijving
    ---|---
-   **Omgevingsnaam** | Kies een unieke naam voor de Azure Time Series Insights-omgeving. De namen worden gebruikt door de Azure Time Series Insights Explorer en de [query-API's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+   **Omgevingsnaam** | Kies een unieke naam voor de Azure Time Series Insights-omgeving. De namen worden gebruikt door de Azure Time Series Insights Explorer en de [query-API's](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query).
    **Abonnement** | Abonnementen zijn containers voor Azure-resources. Kies een abonnement voor het maken van de Azure Time Series Insights-omgeving.
    **Resourcegroep** | Een resourcegroep is een container voor Azure-resources. Kies een bestaande resourcegroep voor de Azure Time Series Insights-omgevingsresource of maak een nieuwe.
    **Locatie** | Kies een datacentrumregio voor uw Azure Time Series Insights-omgeving. Als u extra latentie wilt voorkomen, maakt u de Azure Time Series Insights-omgeving in dezelfde regio als andere IoT-resources.

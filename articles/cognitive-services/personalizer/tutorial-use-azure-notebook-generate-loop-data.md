@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876730"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509906"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelfstudie: Personalizer gebruiken in Azure Notebook
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>Nieuw leerbeleid valideren
 
-Ga terug naar het Azure-notebook en ga door met het uitvoeren van dezelfde lus, maar slechts voor 2.000 iteraties. Vernieuw de grafiek met metrische gegevens in Azure Portal regelmatig om het totale aantal aanroepen naar de service te bekijken. Wanneer u circa 4.000 aanroepen hebt, wordt er voor elke iteratie van de lus een Rank- en Reward-aanroep gedaan.
+Ga terug naar het Azure Notebooks-bestand en ga door met het uitvoeren van dezelfde lus, maar slechts voor 2.000 iteraties. Vernieuw de grafiek met metrische gegevens in Azure Portal regelmatig om het totale aantal aanroepen naar de service te bekijken. Wanneer u circa 4.000 aanroepen hebt, wordt er voor elke iteratie van de lus een Rank- en Reward-aanroep gedaan.
 
 ```python
 # max iterations

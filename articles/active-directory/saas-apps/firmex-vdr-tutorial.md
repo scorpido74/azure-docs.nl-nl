@@ -1,84 +1,80 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Firmex VDR | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Firmex VDR.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Firmex VDR | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Firmex VDR.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 670ff192-c23e-49e4-8fd1-516e02d8856c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdfb857d3a68081fda84aef33e6b5a4b4d1bce28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ab480dd8dae00cd48811473a7b335291fb6300eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76761236"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555014"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Firmex VDR
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Firmex VDR
 
-In deze zelf studie leert u hoe u Firmex VDR integreert met Azure Active Directory (Azure AD). Wanneer u Firmex VDR integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Firmex VDR integreert met Azure AD (Azure Active Directory). Wanneer u Firmex VDR integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot Firmex VDR.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Firmex VDR met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie er toegang heeft tot Firmex VDR.
+* Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Firmex VDR.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Firmex VDR-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Firmex VDR waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Firmex VDR ondersteunt **SP en IDP** GEÏNITIEERDe SSO
+* Firmex VDR ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 
-* Zodra u de Firmex hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u Firmex VDR hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-firmex-vdr-from-the-gallery"></a>Firmex VDR toevoegen vanuit de galerie
 
-Als u de integratie van Firmex VDR wilt configureren in azure AD, moet u Firmex VDR van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Firmex VDR in Azure AD, moet u Firmex VDR vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Firmex vdr** in het zoekvak.
-1. Selecteer **FIRMEX vdr** in het resultaten paneel en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** **Firmex VDR** in het zoekvak.
+1. Selecteer **Firmex VDR** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Firmex VDR
+## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Firmex VDR
 
-Azure AD SSO configureren en testen met Firmex VDR met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Firmex VDR.
+Configureer en test eenmalige aanmelding van Azure AD met Firmex VDR met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Firmex VDR.
 
-Als u Azure AD SSO wilt configureren en testen met Firmex VDR, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Firmex VDR te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[FIRMEX vdr SSO configureren](#configure-firmex-vdr-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak FIRMEX vdr test User](#create-firmex-vdr-test-user)** -als u een tegen hanger van B. Simon in Firmex vdr wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding configureren voor Firmex VDR](#configure-firmex-vdr-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    * **[Een testgebruiker voor Firmex VDR maken](#create-firmex-vdr-test-user)** : als u een equivalent van B.Simon in Firmex VDR wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Firmex vdr** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Firmex VDR** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
@@ -86,72 +82,72 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ in het tekstvak **URL voor aanmelding** de URL:`https://login.firmex.com`
+    In het tekstvak **Aanmeldings-URL** typt u de URL: `https://login.firmex.com`
 
 1. Klik op **Opslaan**.
 
-1. De Firmex VDR-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. In Firmex VDR worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
-1. Daarnaast verwacht Firmex VDR Application nog enkele kenmerken die kunnen worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Bovendien verwacht Firmex VDR nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
     | Naam | Bronkenmerk|
     | ------------ | --------- |
     | e-mail | user.mail |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden en vervolgens op te slaan op de computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste op de **FIRMEX vdr-** sectie.
+1. In de sectie **Firmex VDR instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Firmex VDR.
+In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmelding van Azure door haar toegang te verlenen tot Firmex VDR.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **FIRMEX vdr**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Firmex VDR** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-firmex-vdr-sso"></a>Firmex VDR SSO configureren
+## <a name="configure-firmex-vdr-sso"></a>Eenmalige aanmelding configureren voor Firmex VDR
 
 ### <a name="before-you-get-started"></a>Voordat u aan de slag gaat
 
 #### <a name="what-youll-need"></a>Wat u nodig hebt
 
 -   Een actief Firmex-abonnement
--   Azure AD als uw SSO-service
--   De IT-beheerder voor het configureren van SSO
--   Zodra SSO is ingeschakeld, moeten alle gebruikers van uw bedrijf zich aanmelden bij Firmex met SSO en geen aanmelding/wacht woord gebruiken.
+-   Azure AD als uw service voor eenmalige aanmelding
+-   De IT-beheerder voor het configureren van eenmalige aanmelding
+-   Zodra eenmalige aanmelding is ingeschakeld, moeten alle gebruikers van uw bedrijf zich aanmelden bij Firmex met eenmalige aanmelding en niet met behulp van een gebruikersnaam en wachtwoord.
 
 #### <a name="how-long-will-this-take"></a>Hoe lang duurt het?
 
-Het implementeren van SSO duurt enkele minuten. Er is bijna geen downtime tussen Firmex-ondersteuning voor eenmalige aanmelding voor uw site en de gebruikers van uw bedrijf verifiëren met SSO. Volg de onderstaande stappen.
+Het implementeren van eenmalige aanmelding duurt een paar minuten. Er zit bijna geen downtime tussen het inschakelen van eenmalige aanmelding door de support van Firmex voor uw site en het verifiëren van de gebruikers van uw bedrijf met eenmalige aanmelding. Volg gewoon de onderstaande stappen.
 
 ### <a name="step-1---identify-your-companys-domains"></a>Stap 1: de domeinen van uw bedrijf identificeren
 
@@ -162,54 +158,54 @@ Bijvoorbeeld:
 - @firmex.com
 - @firmex.ca
 
-### <a name="step-2---contact-firmex-support-with-your-domains"></a>Stap 2: contact opnemen met Firmex-ondersteuning voor uw domeinen
+### <a name="step-2---contact-firmex-support-with-your-domains"></a>Stap 2: contact opnemen met Firmex Support en uw domeinen doorgeven
 
-[Firmex-ondersteunings team](mailto:support@firmex.com) voor e-mail of bel 1888 688 4042 x. 11 om te praten met Firmex-ondersteuning. Geef uw domein gegevens door. Met de Firmex-ondersteuning worden de domeinen toegevoegd aan uw VDR als **geclaimde domeinen**. Uw beheerder moet nu SSO configureren.
+Stuur een e-mail naar het [Firmex Support Team](mailto:support@firmex.com) of bel 1888 688 4042 x.11 om te overleggen met Firmex Support. Geef uw domeingegevens door. Firmex Support zal de domeinen toevoegen aan uw VDR als **geclaimde domeinen**. Uw beheerder moet nu eenmalige aanmelding configureren.
 
-Waarschuwing: totdat de site beheerder de geclaimde domeinen heeft geconfigureerd, kunnen gebruikers van uw bedrijf zich niet aanmelden bij de VDR. Gebruikers zonder het bedrijf (gast gebruikers) kunnen zich nog steeds aanmelden met hun e-mail adres en wacht woord. De configuratie kan enkele minuten duren.
+Waarschuwing: Totdat uw sitebeheerder de geclaimde domeinen heeft geconfigureerd, kunnen gebruikers van uw bedrijf zich niet aanmelden bij de VDR. Gebruikers van buiten het bedrijf (gastgebruikers) kunnen zich nog steeds aanmelden met hun e-mailadres en wachtwoord. De configuratie duurt enkele minuten.
 
 ### <a name="step-3---configure-the-claimed-domains"></a>Stap 3: de geclaimde domeinen configureren
 
-1. Meld u aan bij Firmex als een site beheerder.
-1. Klik in de linkerbovenhoek op uw bedrijfs logo.
-1. Selecteer het tabblad **SSO** . Selecteer vervolgens **SSO-configuratie**. Klik op het domein dat u wilt configureren.
+1. Meld u aan bij Firmex als een sitebeheerder.
+1. Klik in de linkerbovenhoek op uw bedrijfslogo.
+1. Selecteer het tabblad **SSO**. Selecteer vervolgens **SSO Configuration**. Klik op het domein dat u wilt verifiëren.
 
     ![Geclaimde domeinen](./media/firmex-vdr-tutorial/edit-sso.png)  
 
-1. Laat uw IT-beheerder de volgende velden invullen. De velden moeten worden opgehaald uit uw ID-provider:  
+1. Laat uw IT-beheerder de volgende velden invullen. De velden moeten worden ingevuld voor uw id-provider:  
 
-    ![Configuratie van eenmalige aanmelding](./media/firmex-vdr-tutorial/SSO-config.png)
+    ![SSO Configuration](./media/firmex-vdr-tutorial/SSO-config.png)
 
-    a. Plak in het tekstvak **Entiteits-ID** de waarde van de **Azure ad-id** , die u hebt gekopieerd uit de Azure Portal.
+    a. Plak in het tekstvak **Entity ID** de waarde van **Azure AD-id** die u uit de Azure-portal hebt gekopieerd.
 
-    b. Plak in het tekstvak **ID-provider-URL** de waarde voor de AANMELDINGS- **URL** , die u hebt gekopieerd uit de Azure Portal.
+    b. Plak in het tekstvak **Identity Provider URL** de waarde van **Aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
 
-    c. **Certificaat voor open bare sleutel** : voor verificatie doeleinden kan een SAML-bericht digitaal worden ondertekend door de uitgever. Voor het controleren van de hand tekening van het bericht gebruikt de ontvanger van het bericht een open bare sleutel die bekend is bij de certificaat verlener. Op dezelfde manier moet een open bare versleutelings sleutel die deel uitmaakt van de uiteindelijke ontvanger, ook bekend zijn bij de certificaat verlener om een bericht te versleutelen. In beide situaties: ondertekening en versleuteling: vertrouwde open bare sleutels moeten vooraf worden gedeeld.  Dit is de **X509Certificate** van de **XML voor federatieve meta gegevens**
+    c. **Public Key Certificate**: voor verificatiedoeleinden kan een SAML-bericht digitaal worden ondertekend door de verlener. Om de handtekening van het bericht te controleren, gebruikt de ontvanger van het bericht een openbare sleutel die eigendom is van de verlener van het certificaat. Om een bericht te versleutelen, moet de verlener de openbare versleutelingssleutel weten die eigendom is van de uiteindelijke ontvanger. In beide situaties, ondertekening en versleuteling, moeten vertrouwde openbare sleutels vooraf worden gedeeld.  Dit is het **X509Certificate** uit **XML-bestand met federatieve metagegevens**.
 
-    d. Klik op **Opslaan** om de SSO-configuratie te volt ooien. Wijzigingen worden direct van kracht.
+    d. Klik op **Save** om de configuratie van eenmalige aanmelding te voltooien. De wijzigingen worden direct van kracht.
 
-1. Op dit moment is SSO ingeschakeld voor uw site.
+1. Eenmalige aanmelding is nu ingeschakeld voor uw site.
 
-### <a name="create-firmex-vdr-test-user"></a>Firmex VDR-test gebruiker maken
+### <a name="create-firmex-vdr-test-user"></a>Testgebruiker maken voor Firmex VDR
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in Firmex. Werk samen met [Firmex-ondersteunings team](mailto:support@firmex.com) om de gebruikers toe te voegen in het Firmex-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In dit gedeelte maakt u in Firmex VDR een gebruiker met de naam B.Simon. Werk samen met het [Firmex Support Team](mailto:support@firmex.com) om de gebruikers toe te voegen aan het Firmex-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Firmex VDR in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Firmex VDR waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Firmex VDR klikt, zou u automatisch moeten worden aangemeld bij de instantie van Firmex VDR waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Firmex VDR met Azure AD](https://aad.portal.azure.com/)
+- [Firmex VDR uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Firmex beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Firmex beveiligen met geavanceerde zichtbaarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076423"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510926"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Zelfstudie: Een Azure Remote Rendering-toepassing maken die commercieel gereed is
 
@@ -78,13 +78,13 @@ Ga voor meer informatie naar:
 
 Voor uw gebruikscase moet u mogelijk snel kunnen schakelen naar de weergave van een 3D-model na het opstarten van de toepassing. Bijvoorbeeld tijdens een belangrijke vergadering waarbij het van essentieel belang is dat alles van te voren actief en werkend is. Een ander voorbeeld is tijdens een CAD 3D-modelbeoordeling waar een snelle ontwerpiteratie tussen een CAD-toepassing en mixed reality de sleutel is tot efficiëntie.
 
-Voor Azure Remote Rendering zijn voorverwerkte 3D-modellen vereist; Azure heeft momenteel enkele minuten nodig om een VM te maken en een model voor rendering te laden. Om dit proces zo naadloos en snel mogelijk te laten verlopen, moeten de 3D-modelgegevens en de ARR-sessie op voorhand worden voorbereid.
+Voor Azure Remote Rendering zijn voorverwerkte 3D-modellen vereist; Azure heeft momenteel enkele minuten nodig om een sessie op te zetten en een model voor rendering te laden. Om dit proces zo naadloos en snel mogelijk te laten verlopen, moeten de 3D-modelgegevens en de ARR-sessie op voorhand worden voorbereid.
 
 De suggesties die hier worden gedeeld maken op dit moment geen deel uit van de standaard Azure Remote Rendering, maar u kunt ze zelf implementeren voor snellere opstarttijden.
 
 ### <a name="initiate-early"></a>Vroeg initiëren
 
-Voor een kortere opstarttijd kunt u het beste de VM zo vroeg mogelijk in de gebruikerswerkstroom maken en initialiseren. Een strategie is om de sessie te initialiseren zodra bekend is dat er een ARR-sessie nodig is. Dit is vaak het geval wanneer de gebruiker een 3D-model uploadt naar Azure Blob Storage voor gebruik met Azure Remote Rendering. In dit geval kunt u het maken van sessies en VM-initialisatie op hetzelfde moment starten als de upload van het 3D-model, zodat beide werkstromen parallel worden uitgevoerd.
+Voor een kortere opstarttijd kunt u de sessie het beste zo vroeg mogelijk in de gebruikerswerkstroom maken en initialiseren. Een strategie is om de sessie te initialiseren zodra bekend is dat er een ARR-sessie nodig is. Dit is vaak het geval wanneer de gebruiker een 3D-model uploadt naar Azure Blob Storage voor gebruik met Azure Remote Rendering. In dit geval kunt u het maken van sessies en initialisatie op hetzelfde moment starten als de upload van het 3D-model, zodat beide werkstromen parallel worden uitgevoerd.
 
 Dit proces kan verder worden gestroomlijnd door ervoor te zorgen dat de gekozen invoer- en uitvoercontainers van Azure Blob Storage zich in hetzelfde regionale datacentrum bevinden als de sessie van Azure Remote Rendering.
 
@@ -92,41 +92,41 @@ Dit proces kan verder worden gestroomlijnd door ervoor te zorgen dat de gekozen 
 
 Als u weet dat u in de toekomst behoefte heeft aan Azure Remote Rendering, kunt u een specifieke datum en tijd plannen om de sessie van Azure Remote Rendering op te starten.
 
-Deze optie kan worden aangeboden via een webportal waar zowel een 3D-model kan worden geüpload als een tijd kan worden gepland voor weergave in de toekomst. Dit zou ook een goede plaats zijn om te vragen naar andere renderingvoorkeuren, zoals Standard of Premium. Premium-rendering kan geschikt zijn als u een combinatie assets wilt tonen, waarbij de ideale grootte moeilijker automatisch te bepalen is of als er behoefte is om ervoor te zorgen dat de Azure-regio op dat specifieke moment over VM's beschikt.
+Deze optie kan worden aangeboden via een webportal waar zowel een 3D-model kan worden geüpload als een tijd kan worden gepland voor weergave in de toekomst. Dit zou ook een goede plaats zijn om te vragen naar andere renderingvoorkeuren, zoals [*Standard*](../../../reference/vm-sizes.md) of [*Premium*](../../../reference/vm-sizes.md). *Premium*-rendering kan geschikt zijn als u een combinatie assets wilt tonen, waarbij de ideale grootte moeilijker automatisch te bepalen is of als er behoefte is om ervoor te zorgen dat de Azure-regio op dat specifieke moment over VM's beschikt.
 
 ### <a name="session-pooling"></a>Sessies groeperen
 
 In de meest veeleisende situaties kan ook worden gekozen voor het groeperen van sessies, waarbij een of meer sessies te allen tijde zijn gemaakt en geïnitialiseerd. Zo maakt u een sessiegroep die direct kan worden gebruikt door een gebruiker die een dergelijke groep aanvraagt. Het nadeel van deze benadering is dat als de VM wordt geïnitialiseerd, de facturering voor de service wordt gestart. Het is misschien niet kosteneffectief om een sessiegroep continu te laten draaien, maar op basis van analyses kan het mogelijk zijn om piekbelastingen te voorspellen. Bovendien kan aan de hand van de bovenstaande planningsstrategie worden voorspeld wanneer de sessies nodig zullen zijn en kan de uitvoering van de sessiegroep op de pieken en dalen worden aangepast.
 
-Deze strategie helpt u ook bij het dynamischer optimaliseren van de keuze tussen Standard en Premium-sessies, omdat u veel sneller kunt schakelen tussen de twee typen binnen één gebruikerssessie, bijvoorbeeld wanneer een Premium-complexiteitsmodel eerst wordt weergegeven, gevolgd door een voorbeeld dat kan worden gebruikt in Standard. Als deze gebruikerssessies behoorlijk lang zijn, kan dit aanzienlijke kostenbesparingen opleveren.
+Deze strategie helpt u ook bij het dynamischer optimaliseren van de keuze tussen *Standard*- en *Premium*-sessies, omdat u veel sneller kunt schakelen tussen de twee typen binnen één gebruikerssessie, bijvoorbeeld wanneer een *Premium*-complexiteitsmodel eerst wordt weergegeven, gevolgd door een voorbeeld dat kan worden gebruikt in *Standard*. Als deze gebruikerssessies behoorlijk lang zijn, kan dit aanzienlijke kostenbesparingen opleveren.
 
 Zie voor meer informatie over Azure Remote Rendering-sessies:
 
 * [Remote Rendering-sessies](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
 
-## <a name="standard-vs-premium-vm-routing-strategies"></a>Standard versus Premium VM-routeringsstrategieën
+## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standard versus Premium VM-routeringsstrategieën
 
-Het selecteren van een Standard of Premium VM vormt een uitdaging bij het ontwerpen van uw gebruikerservaring en end-to-endsysteem. Hoewel het gebruik van alleen Premium-sessies een optie is, gebruiken Standard-sessies veel minder Azure Compute-resources en zijn ze voordeliger dan Premium. Dit biedt een sterke motivatie om waar mogelijk Standard-sessies te gebruiken en Premium alleen wanneer dat nodig is.
+Het selecteren van een *Standard*- of *Premium*-servergrootte vormt een uitdaging bij het ontwerpen van uw gebruikerservaring en end-to-endsysteem. Hoewel het gebruik van alleen *Premium*-sessies een optie is, gebruiken *Standard*-sessies veel minder Azure Compute-resources en zijn ze voordeliger dan *Premium*. Dit biedt een sterke motivatie om waar mogelijk *Standard*-sessies te gebruiken en *Premium* alleen wanneer dat nodig is.
 
 Hier delen we verschillende opties, van de minst tot de meest uitgebreide, om tegemoet te komen aan de wens om de sessiekeuzes te beheren.
 
 ### <a name="use-only-standard-or-premium"></a>Alleen Standard of Premium gebruiken
 
-Als u zeker weet dat uw behoeften *altijd* onder de drempelwaarde tussen Standard en Premium vallen, wordt uw beslissing aanzienlijk vereenvoudigd. Gewoon Standard gebruiken. Houd er echter rekening mee dat de impact op de gebruikerservaring aanzienlijk is als de som van de totale complexiteit van de geladen assets wordt afgewezen als te complex voor een Standard-sessie.
+Als u zeker weet dat uw behoeften *altijd* onder de drempelwaarde tussen *Standard* en *Premium* vallen, wordt uw beslissing aanzienlijk vereenvoudigd. Gewoon *Standard* gebruiken. Houd er echter rekening mee dat de impact op de gebruikerservaring aanzienlijk is als de som van de totale complexiteit van de geladen assets wordt afgewezen als te complex voor een *Standard*-sessie.
 
-Ook als u verwacht dat een groot deel van het gebruik de drempel tussen Standard en Premium zal overschrijden of als de kosten geen belangrijke factor zijn in uw use-case zijn, kunt u het simpel houden door altijd voor Premium te kiezen.
+Ook als u verwacht dat een groot deel van het gebruik de drempel tussen *Standard* en *Premium* zal overschrijden of als de kosten geen belangrijke factor zijn in uw use-case zijn, kunt u het simpel houden door altijd voor *Premium* te kiezen.
 
 ### <a name="ask-the-user"></a>Vraag de gebruiker
 
-Als u zowel Standard als Premium wilt ondersteunen, is de eenvoudigste manier om te bepalen welk type VM-sessie u wilt instantiëren de gebruiker te vragen wanneer hij 3D-assets selecteert om weer te geven. De uitdaging van deze benadering is dat de gebruiker de complexiteit moet begrijpen van de 3D-asset of zelfs meerdere assets die worden weergegeven. Dit wordt om die reden doorgaans niet aanbevolen. Als de gebruiker verkeerd selecteert en de optie Standard kiest, kan de resulterende gebruikerservaring op een ongelegen moment worden aangetast.
+Als u zowel *Standard* als *Premium* wilt ondersteunen, is de eenvoudigste manier om te bepalen welk type sessie u wilt instantiëren de gebruiker te vragen wanneer hij 3D-assets selecteert om weer te geven. De uitdaging van deze benadering is dat de gebruiker de complexiteit moet begrijpen van de 3D-asset of zelfs meerdere assets die worden weergegeven. Dit wordt om die reden doorgaans niet aanbevolen. Als de gebruiker verkeerd selecteert en de optie *Standard* kiest, kan de resulterende gebruikerservaring op een ongelegen moment worden aangetast.
 
 ### <a name="analyze-the-3d-model"></a>Het 3D-model analyseren
 
-Een andere relatief eenvoudige aanpak is het analyseren van de complexiteit van de geselecteerde 3D-assets. Als de complexiteit van het model onder de drempel voor Standard ligt, start u een Standard-sessie, anders een Premium-sessie. Hier is de uitdaging dat een enkele sessie uiteindelijk kan worden gebruikt om meerdere modellen te bekijken, waarvan sommige de complexiteitsdrempel van een Standard-sessie kunnen overschrijden, waardoor dezelfde sessie niet naadloos kan worden gebruikt voor een opeenvolging van verschillende 3D-assets.
+Een andere relatief eenvoudige aanpak is het analyseren van de complexiteit van de geselecteerde 3D-assets. Als de complexiteit van het model onder de drempel voor *Standard* ligt, start u een *Standard*-sessie, anders een *Premium*-sessie. Hier is de uitdaging dat een enkele sessie uiteindelijk kan worden gebruikt om meerdere modellen te bekijken, waarvan sommige de complexiteitsdrempel van een *Standard*-sessie kunnen overschrijden, waardoor dezelfde sessie niet naadloos kan worden gebruikt voor een opeenvolging van verschillende 3D-assets.
 
 ### <a name="automatic-switching"></a>Automatisch schakelen
 
-Automatisch schakelen tussen Standaard- en Premium-sessies kan zinvol zijn in een systeemontwerp dat ook sessiegroeperingen bevat. Deze strategie biedt meer optimalisatie van het resourcegebruik. Terwijl de gebruiker modellen laadt om te bekijken, wordt de complexiteit bepaald en wordt de juiste sessiegrootte aangevraagd bij de sessiegroeperingsservice.
+Automatisch schakelen tussen *Standard*- en *Premium*-sessies kan zinvol zijn in een systeemontwerp dat ook sessiegroeperingen bevat. Deze strategie biedt meer optimalisatie van het resourcegebruik. Terwijl de gebruiker modellen laadt om te bekijken, wordt de complexiteit bepaald en wordt de juiste sessiegrootte aangevraagd bij de sessiegroeperingsservice.
 
 ## <a name="working-with-networks"></a>Werken met netwerken
 
@@ -213,7 +213,7 @@ Bepaal aan de hand van de verwachte use-case de beste plaats of combinatie van p
 
 Als uw use-case gebruikspatronen heeft waarbij dezelfde 3D-asset meerdere keren kan worden geüpload, zal de back-end bijhouden welke modellen al zijn geconverteerd voor gebruik met ARR, zodat een model slechts één keer wordt voorverwerkt voor meerdere toekomstige selecties. Een voorbeeld van een ontwerpbeoordeling zou zijn dat een team toegang heeft tot een gemeenschappelijke originele 3D-asset. Van elk teamlid wordt verwacht dat hij of zij het model met behulp van ARR op een bepaald moment in zijn of haar werkstroom beoordeelt. Alleen de eerste weergave zou de voorverwerking in gang zetten. In de daaropvolgende weergaven zouden het bijbehorende naverwerkte bestand in de SAS-uitvoercontainer worden opgezocht.
 
-Afhankelijk van de use-case wilt u waarschijnlijk de juiste Azure Remote Rendering VM-grootte, Standard of Premium, bepalen en mogelijk aanhouden voor elke 3D-asset of assetgroep die samen in dezelfde sessie worden weergegeven.  
+Afhankelijk van de use-case wilt u waarschijnlijk de juiste Azure Remote Rendering servergrootte, *Standard* of *Premium*, bepalen en mogelijk aanhouden voor elke 3D-asset of assetgroep die samen in dezelfde sessie worden weergegeven.  
 
 ### <a name="on-device-model-selection-list"></a>Selectielijst voor modellen op apparaten
 

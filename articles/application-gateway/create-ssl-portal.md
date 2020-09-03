@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290118"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245737"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met Azure Portal
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+## <a name="prerequisites"></a>Vereisten
 
 Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
 
@@ -259,6 +259,10 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
     Uw beveiligde IIS-website wordt vervolgens weergegeven zoals in het volgende voorbeeld:
 
     ![Basis-URL testen in de toepassingsgateway](./media/create-ssl-portal/application-gateway-iistest.png)
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Verwijder de resourcegroep en alle gerelateerde resources als u deze niet meer nodig hebt. Selecteer hiervoor de resourcegroep en klik op **Resourcegroep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

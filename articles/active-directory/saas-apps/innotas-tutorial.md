@@ -1,58 +1,54 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Innotas | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Innotas.
+title: 'Zelfstudie: Azure Active Directory-integratie met Innotas | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Innotas.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: eb9e9c2c-4b09-4177-bbab-423fd657448e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 3671f948bb61a348492d89e9b4bf011400d1e986
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 67cc4e7d6d2ca4cbfd51e2be7f027e1557da8829
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100226"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550456"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-innotas"></a>Zelf studie: integratie Azure Active Directory met Innotas
+# <a name="tutorial-azure-active-directory-integration-with-innotas"></a>Zelfstudie: Azure Active Directory-integratie met Innotas
 
-In deze zelf studie leert u hoe u Innotas integreert met Azure Active Directory (Azure AD).
-Het integreren van Innotas met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Innotas integreert met Azure Active Directory (Azure AD).
+Innotas integreren met Azure AD heeft de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Innotas.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Innotas (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot Innotas.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Innotas (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Innotas wilt configureren, hebt u de volgende items nodig:
+U hebt het volgende nodig om Azure AD-integratie met Innotas te configureren:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement voor eenmalige aanmelding Innotas ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Een Innotas-abonnement waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Innotas ondersteunt door **SP** GEÏNITIEERDe SSO
-* Innotas ondersteunt **just-in-time** -gebruikers inrichting
+* Innotas ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* Innotas ondersteunt het **Just-In-Time** inrichten van gebruikers
 
-## <a name="adding-innotas-from-the-gallery"></a>Innotas toevoegen uit de galerie
+## <a name="adding-innotas-from-the-gallery"></a>Innotas toevoegen vanuit de galerie
 
-Als u de integratie van Innotas in azure AD wilt configureren, moet u Innotas uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Innotas in Azure AD wilt configureren, moet u Innotas vanuit de galerie toevoegen aan de lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Innotas toe te voegen uit de galerie:**
+**Voer de volgende stappen uit om Innotas toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,31 +62,31 @@ Als u de integratie van Innotas in azure AD wilt configureren, moet u Innotas ui
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Innotas**in het zoekvak, selecteer **Innotas** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Innotas** in het zoekvak, selecteer **Innotas** in het deelvenster met resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Innotas in de lijst met resultaten](common/search-new-app.png)
+     ![Innotas in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Innotas op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Innotas tot stand worden gebracht.
+In deze sectie gaat u eenmalige aanmelding van Azure Active Directory bij Innotas configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure Active Directory-gebruiker en de daaraan gerelateerde gebruiker in Innotas tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Innotas, moet u de volgende bouw stenen volt ooien:
+Voltooi de volgende stappen om eenmalige aanmelding bij Innotas met Azure AD te configureren en te testen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Innotas eenmalige aanmelding configureren](#configure-innotas-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Innotas-test gebruiker](#create-innotas-test-user)** -om een equivalent van Julia Simon in Innotas te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Innotas configureren](#configure-innotas-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Innotas-testgebruiker maken](#create-innotas-test-user)** : als u een equivalent van Britta Simon in Innotas wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Innotas:
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD bij Innotas te configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Innotas** Application Integration de optie **eenmalige aanmelding**.
+1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Innotas**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,18 +100,18 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Innotas domein en Url's](common/sp-signonurl.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Innotas](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<tenant-name>.Innotas.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenant-name>.Innotas.com`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Innotas](https://www.innotas.com/contact) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [Innotas-ondersteuningsteam](https://www.innotas.com/contact) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **Innotas instellen** de gewenste URL ('s) volgens uw vereiste.
+6. In het gedeelte **Innotas instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -125,9 +121,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-innotas-single-sign-on"></a>Eenmalige aanmelding voor Innotas configureren
+### <a name="configure-innotas-single-sign-on"></a>Eenmalige aanmelding bij Innotas configureren
 
-Als u eenmalige aanmelding wilt configureren op **Innotas** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Innotas ondersteunings team](https://www.innotas.com/contact). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **Innotas** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Azure-portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Innotas](https://www.innotas.com/contact). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -137,7 +133,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -145,25 +141,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Innotas.
+In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Innotas.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Innotas**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen**, **Alle toepassingen** en vervolgens **Innotas**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Innotas**.
+2. Selecteer **Innotas** in de lijst met toepassingen.
 
-    ![De koppeling Innotas in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar Innotas in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -173,26 +169,26 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-innotas-test-user"></a>Innotas-test gebruiker maken
+### <a name="create-innotas-test-user"></a>Innotas-testgebruiker maken
 
-Er is geen actie-item voor het configureren van de gebruikers inrichting voor Innotas. Wanneer een toegewezen gebruiker zich probeert aan te melden bij Innotas met behulp van het toegangs venster, controleert Innotas of de gebruiker bestaat. Als er nog geen gebruikers account beschikbaar is, wordt deze automatisch gemaakt door Innotas.
+U hoeft geen actie te ondernemen om gebruikersinrichting voor Innotas te configureren. Wanneer een toegewezen gebruiker zich via het toegangsvenster probeert aan te melden bij Innotas, controleert Innotas of de gebruiker bestaat. Als er nog geen gebruikersaccount beschikbaar is, wordt deze automatisch gemaakt door Innotas.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Innotas in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Innotas waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Innotas in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Innotas waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

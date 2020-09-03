@@ -1,58 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met ACLP | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ACLP.
+title: 'Zelfstudie: Integratie van Azure Active Directory met ACLP | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ACLP.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 35b392f1-8881-4af9-a9b0-63a15d02986e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 516e85fa4dca6c18bc83ee169e284c3c490ba74e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0c5538f0defa7d634fc6ab32436a7a5dfdbf13b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67165102"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538005"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-aclp"></a>Zelf studie: integratie Azure Active Directory met ACLP
+# <a name="tutorial-azure-active-directory-integration-with-aclp"></a>Zelfstudie: Integratie van Azure Active Directory met ACLP
 
-In deze zelf studie leert u hoe u ACLP integreert met Azure Active Directory (Azure AD).
-Het integreren van ACLP met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u ACLP kunt integreren met Azure Active Directory (Azure AD).
+ACLP integreren met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot ACLP.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij ACLP (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD bepalen wie toegang krijgt tot ACLP.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij ACLP (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met ACLP wilt configureren, hebt u de volgende items nodig:
+Voor het configureren van Azure AD-integratie met ACLP hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement voor eenmalige aanmelding ACLP ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Abonnement op ACLP waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* ACLP ondersteunt door **SP** GEÏNITIEERDe SSO
+* ACLP ondersteunt met **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-aclp-from-the-gallery"></a>ACLP toevoegen uit de galerie
+## <a name="adding-aclp-from-the-gallery"></a>ACLP toevoegen vanuit de galerie
 
-Als u de integratie van ACLP in azure AD wilt configureren, moet u ACLP uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ACLP wilt configureren in Azure AD moet u ACLP vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om ACLP toe te voegen uit de galerie:**
+**Voer de volgende stappen uit als u ACLP vanuit de galerie wilt toevoegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,31 +61,31 @@ Als u de integratie van ACLP in azure AD wilt configureren, moet u ACLP uit de g
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **ACLP**in het zoekvak, selecteer **ACLP** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **ACLP** in het zoekvak, selecteer **ACLP** in resultatenvenster en klik op **Toevoegen** om de toepassing toe te voegen.
 
-    ![ACLP in de lijst met resultaten](common/search-new-app.png)
+    ![ACLP in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met ACLP op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in ACLP tot stand worden gebracht.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met ACLP op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in ACLP tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met ACLP, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding van Azure AD wilt configureren en testen met ACLP, moet u de volgende stappen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[ACLP eenmalige aanmelding configureren](#configure-aclp-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een ACLP-test gebruiker](#create-aclp-test-user)** -om een equivalent van Julia Simon in ACLP te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[ACLP voor eenmalige aanmelding configureren](#configure-aclp-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[ACLP-testgebruiker maken](#create-aclp-test-user)** : als u een tegenhanger van Britta Simon wilt maken in ACLP die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met ACLP:
+Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met ADP wilt configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **ACLP** Application Integration de optie **eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor de integratie van de toepassing **ACLP** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,12 +99,12 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor ACLP domein en Url's](common/sp-signonurl.png)
+    ![Gegevens van domein en URL's voor eenmalige aanmelding bij ACLP](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://access.sans.org/go/<COMPANYNAME>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://access.sans.org/go/<COMPANYNAME>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van ACLP](mailto:mrichards@sans.org) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van ACLP](mailto:mrichards@sans.org) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
@@ -117,7 +112,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 ### <a name="configure-aclp-single-sign-on"></a>Eenmalige aanmelding voor ACLP configureren
 
-Als u eenmalige aanmelding wilt configureren op **ACLP** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [ACLP ondersteunings team](mailto:mrichards@sans.org). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **ACLP** wilt configureren, moet u de **App-URL voor federatieve metagegevens** naar het [ondersteuningsteam van ACLP](mailto:mrichards@sans.org) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -127,7 +122,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -135,25 +130,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan ACLP.
+In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding van Azure door haar toegang te geven tot ACLP.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **ACLP**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **ACLP**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **ACLP**.
+2. Selecteer **ACLP** in de lijst met toepassingen.
 
-    ![De koppeling ACLP in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar ACLP in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -163,26 +158,26 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-aclp-test-user"></a>ACLP-test gebruiker maken
+### <a name="create-aclp-test-user"></a>ACLP-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in ACLP. Werk samen met [ACLP-ondersteunings team](mailto:mrichards@sans.org) om de gebruikers toe te voegen in het ACLP-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u in ACLP een gebruiker maken met de naam Britta Simon. Werk samen met het  [ondersteuningsteam van ACLP](mailto:mrichards@sans.org) om de gebruikers toe te voegen aan het ACLP-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel ACLP in het toegangs venster klikt, moet u automatisch worden aangemeld bij de ACLP waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de ACLP-tegel klikt, wordt u automatisch aangemeld bij de instantie van ACLP waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

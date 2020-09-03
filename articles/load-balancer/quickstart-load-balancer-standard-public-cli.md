@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 08/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: c80b4e57c94737778d8e6f63804d95f4d1b35fb0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b437bfa205833594c9e76c6f0d8ff1923f51f117
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501794"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762705"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen met behulp van Azure CLI
 
@@ -52,129 +52,23 @@ Maak een resourcegroep maken met [az group create](https://docs.microsoft.com/cl
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Optie 1 (standaard): Een load balancer maken (Standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standaard-SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen. Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
 
-
-## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
-
-Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. 
-
-Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) om:
-
-* Maak een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP**.
-* In **myResourceGroupLB**.
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard
-```
-
-Als u een zonegebonden redundant openbaar IP-adres in Zone 1 wilt maken:
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard \
-    --zone 1
-```
-
-## <a name="create-standard-load-balancer"></a>Een Standard Load Balancer maken
-
-In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
-
-  * een front-end IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
-  * een back-end IP-pool waar de front-endpool het netwerkverkeer op de load balancer heen stuurt.
-  * Een statustest die de status van de back-end-VM-exemplaren vaststelt.
-  * Een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
-
-### <a name="create-the-load-balancer-resource"></a>De load balancer-resource maken
-
-Maak een openbare load balancer met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create):
-
-* Genaamd **myLoadBalancer**.
-* Een front-endgroep met de naam **myFrontEnd**.
-* Een back-endgroep met de naam MyBackendPool.
-* Gekoppeld met het openbare IP-adres **myPublicIP** dat u in de vorige stap hebt gemaakt. 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Standard \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>Statustest maken
-
-Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoor te zorgen dat deze netwerkverkeer kunnen verzenden. 
-
-Een virtuele machine met een mislukte test wordt verwijderd uit de load balancer. De virtuele machine wordt weer toegevoegd aan de load balancer wanneer de fout is opgelost.
-
-Gebruik een statustest met [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create):
-
-* Bewaakt de status van de virtuele machines.
-* Genaamd **myHealthProbe**.
-* Protocol **TCP**.
-* Bewaak **Poort 80**.
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
-
-Een Load balancer-regel definieert:
-
-* Front-end-IP-configuratie voor het binnenkomende verkeer.
-* De back-end-IP-adresgroep om verkeer te ontvangen.
-* De vereiste bron- en doelpoort. 
-
-Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) om een load balancer-regel te maken:
-
-* Naam: **myHTTPRule**
-* Luistert naar **Poort 80** in de front-endgroep **myFrontEnd**.
-* Verzenden van netwerkverkeer met taakverdeling naar de back-endadresgroep **myBackEndPool** via **Poort 80**. 
-* Statustest **myHealthProbe** gebruiken.
-* Protocol **TCP**.
-* Schakel SNAT (source network address translation) in met behulp van het front-end-IP-adres.
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe \
-    --disable-outbound-snat true 
-```
-
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u VM's implementeert en uw load balancer test, moet u de ondersteunende virtuele-netwerkresources maken.
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 Maak een Virtual Network met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt).
 
 * Met de naam **myVNet**.
-* Subnet met de naam myBackendSubnet.
+* Adresvoorvoegsel van **10.1.0.0/16**.
+* Subnet met de naam **myBackendSubnet**.
+* Subnetvoorvoegsel van **10.1.0.0/24**.
 * In de resourcegroep **myResourceGroupLB**.
 * Locatie **VS - Oost**.
 
@@ -183,7 +77,9 @@ Maak een Virtual Network met [az network vnet create](https://docs.microsoft.com
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
@@ -208,7 +104,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
 * Met de naam **myNSGRuleHTTP**.
 * In de netwerkbeveiligingsgroep die u in de vorige stap hebt gemaakt, **myNSG**.
 * In resourcegroep **myResourceGroupLB**.
-* Protocol **TCP**.
+* Protocol **(*)** .
 * Richting **Inkomend**.
 * Bron **(*)** .
 * Doel **(*)** .
@@ -221,7 +117,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -242,7 +138,6 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
-* Gekoppeld aan load balancer **myLoadBalancer** in **myBackEndPool**.
 
 ```azurecli-interactive
 
@@ -251,9 +146,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -261,8 +154,6 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 * In resourcegroep **myResourceGroupLB**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
-* In netwerkbeveiligingsgroep **myNSG**.
-* Gekoppeld aan load balancer **myLoadBalancer** in **myBackEndPool**.
 
 ```azurecli-interactive
   az network nic create \
@@ -270,9 +161,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -281,7 +170,6 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
-* Gekoppeld aan load balancer **myLoadBalancer** in **myBackEndPool**.
 
 ```azurecli-interactive
   az network nic create \
@@ -289,9 +177,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>Back-endservers maken
@@ -413,6 +299,161 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 ```
 Het kan enkele minuten duren om de VM's te implementeren.
 
+## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
+
+Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. 
+
+Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) om:
+
+* Maak een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP**.
+* In **myResourceGroupLB**.
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard
+```
+
+Als u een zonegebonden redundant openbaar IP-adres in Zone 1 wilt maken:
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard \
+    --zone 1
+```
+
+## <a name="create-standard-load-balancer"></a>Een Standard Load Balancer maken
+
+In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
+
+  * Een front-end-IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
+  * Een back-end-IP-pools waar de front-endpool het netwerkverkeer naartoe stuurt dat door de load balancer is verdeeld.
+  * Een statustest die de status van de back-end-VM-instanties vaststelt.
+  * Een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
+
+### <a name="create-the-load-balancer-resource"></a>De load balancer-resource maken
+
+Maak een openbare load balancer met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create):
+
+* Genaamd **myLoadBalancer**.
+* Een front-endgroep met de naam **myFrontEnd**.
+* Een back-endgroep met de naam MyBackendPool.
+* Gekoppeld met het openbare IP-adres **myPublicIP** dat u in de vorige stap hebt gemaakt. 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Standard \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>Statustest maken
+
+Met een statustest worden alle VM-instanties gecontroleerd om na te gaan of ze netwerkverkeer kunnen verzenden. 
+
+Een virtuele machine met een mislukte test wordt verwijderd uit de load balancer. De virtuele machine wordt weer toegevoegd aan de load balancer wanneer de fout is opgelost.
+
+Gebruik een statustest met [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create):
+
+* Bewaakt de status van de virtuele machines.
+* Met de naam **myHealthProbe**.
+* Protocol: **TCP**.
+* Controleert **poort 80**.
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
+
+Met een load balancer-regel wordt het volgende gedefinieerd:
+
+* De front-end-IP-configuratie voor het binnenkomende verkeer.
+* De back-end-IP-adresgroep voor het ontvangen van verkeer.
+* De vereiste bron- en doelpoort. 
+
+Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) om een load balancer-regel te maken:
+
+* Naam: **myHTTPRule**
+* Luistert aan **poort 80** in de front-endpool **myFrontEnd**.
+* Verzendt netwerkverkeer volgens taakverdeling naar de back-endadresgroep **myBackEndPool** via **poort 80**. 
+* Gebruikt statustest **myHealthProbe**.
+* Protocol: **TCP**.
+* Schakel SNAT (Source Network Address Translation) voor uitgaand verkeer in met behulp van het front-end-IP-adres.
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe \
+    --disable-outbound-snat true 
+```
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Virtuele machines toevoegen aan back-endpool van load balancer
+
+Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add):
+
+#### <a name="vm1"></a>VM1
+* In back-endadrespool **myBackEndPool**.
+* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan de netwerkinterface **myNicVM1** en **ipconfig1**.
+* Gekoppeld aan load balancer **myLoadBalancer**.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* In back-endadrespool **myBackEndPool**.
+* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan de netwerkinterface **myNicVM2** en **ipconfig1**.
+* Gekoppeld aan load balancer **myLoadBalancer**.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* In back-endadrespool **myBackEndPool**.
+* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan de netwerkinterface **myNicVM3** en **ipconfig1**.
+* Gekoppeld aan load balancer **myLoadBalancer**.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
 ## <a name="create-outbound-rule-configuration"></a>Configuratie voor uitgaande regel maken
 Uitgaande regels van load balancers configureren uitgaande SNAT voor virtuele machines in de back-endgroep. 
 
@@ -527,9 +568,9 @@ Maak een nieuwe uitgaande regel voor de uitgaande back-endgroep met [az network 
 * In resourcegroep **myResourceGroupLB**.
 * Gekoppeld aan load balancer **myLoadBalancer**
 * Gekoppeld aan front-end **myFrontEndOutbound**.
-* Protocol **Alle**.
-* Time-out voor inactiviteit **15**.
-* **10000** uitgaande poorten.
+* Protocol: **Alle**.
+* Time-out voor inactiviteit: **15**.
+* **10.000** uitgaande poorten.
 * Gekoppeld aan back-endgroep **myBackEndPoolOutbound**.
 
 ```azurecli-interactive
@@ -593,117 +634,23 @@ Voeg de virtuele machines aan de uitgaande groep toe met [az network nic ip-conf
    --lb-name myLoadBalancer
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Optie 2: Een load balancer (Basic SKU) maken](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basis-SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen. Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
 
-
-## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
-
-Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. 
-
-Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) om:
-
-* Maak een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP**.
-* In **myResourceGroupLB**.
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Basic
-```
-
-## <a name="create-basic-load-balancer"></a>Load balancer van het type Basic maken
-
-In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
-
-  * een front-end IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
-  * een back-end IP-pool waar de front-endpool het netwerkverkeer op de load balancer heen stuurt.
-  * Een statustest die de status van de back-end-VM-exemplaren vaststelt.
-  * Een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
-
-### <a name="create-the-load-balancer-resource"></a>De load balancer-resource maken
-
-Maak een openbare load balancer met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create):
-
-* Genaamd **myLoadBalancer**.
-* Een front-endgroep met de naam **myFrontEnd**.
-* Een back-endgroep met de naam MyBackendPool.
-* Gekoppeld met het openbare IP-adres **myPublicIP** dat u in de vorige stap hebt gemaakt. 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Basic \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>Statustest maken
-
-Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoor te zorgen dat deze netwerkverkeer kunnen verzenden. 
-
-Een virtuele machine met een mislukte test wordt verwijderd uit de load balancer. De virtuele machine wordt weer toegevoegd aan de load balancer wanneer de fout is opgelost.
-
-Gebruik een statustest met [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create):
-
-* Bewaakt de status van de virtuele machines.
-* Genaamd **myHealthProbe**.
-* Protocol **TCP**.
-* Bewaak **Poort 80**.
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
-
-Een Load balancer-regel definieert:
-
-* Front-end-IP-configuratie voor het binnenkomende verkeer.
-* De back-end-IP-adresgroep om verkeer te ontvangen.
-* De vereiste bron- en doelpoort. 
-
-Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) om een load balancer-regel te maken:
-
-* Naam: **myHTTPRule**
-* Luistert naar **Poort 80** in de front-endgroep **myFrontEnd**.
-* Verzenden van netwerkverkeer met taakverdeling naar de back-endadresgroep **myBackEndPool** via **Poort 80**. 
-* Statustest **myHealthProbe** gebruiken.
-* Protocol **TCP**.
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
-```
-
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u VM's implementeert en uw load balancer test, moet u de ondersteunende virtuele-netwerkresources maken.
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 Maak een Virtual Network met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt).
 
 * Met de naam **myVNet**.
-* Subnet met de naam myBackendSubnet.
+* Adresvoorvoegsel van **10.1.0.0/16**.
+* Subnet met de naam **myBackendSubnet**.
+* Subnetvoorvoegsel van **10.1.0.0/24**.
 * In de resourcegroep **myResourceGroupLB**.
 * Locatie **VS - Oost**.
 
@@ -712,7 +659,9 @@ Maak een Virtual Network met [az network vnet create](https://docs.microsoft.com
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
@@ -737,7 +686,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
 * Met de naam **myNSGRuleHTTP**.
 * In de netwerkbeveiligingsgroep die u in de vorige stap hebt gemaakt, **myNSG**.
 * In resourcegroep **myResourceGroupLB**.
-* Protocol **TCP**.
+* Protocol **(*)** .
 * Richting **Inkomend**.
 * Bron **(*)** .
 * Doel **(*)** .
@@ -750,7 +699,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -771,7 +720,6 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
-* Gekoppeld aan load balancer **myLoadBalancer** in **myBackEndPool**.
 
 ```azurecli-interactive
 
@@ -780,9 +728,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -791,17 +737,14 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
-* Gekoppeld aan load balancer **myLoadBalancer** in **myBackEndPool**.
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM2 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -810,17 +753,14 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
-* Gekoppeld aan load balancer **myLoadBalancer** in **myBackEndPool**.
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM3 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>Back-endservers maken
@@ -918,8 +858,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
     --generate-ssh-keys \
     --custom-data cloud-init.txt \
     --availability-set myAvSet \
-    --no-wait
-    
+    --no-wait 
 ```
 #### <a name="vm2"></a>VM2
 * Met de naam **myVM2**.
@@ -962,6 +901,151 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 ```
 Het kan enkele minuten duren om de VM's te implementeren.
 
+
+## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
+
+Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. 
+
+Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) om:
+
+* Maak een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP**.
+* In **myResourceGroupLB**.
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Basic
+```
+
+## <a name="create-basic-load-balancer"></a>Een eenvoudige load balancer maken
+
+In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
+
+  * Een front-end-IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
+  * Een back-end-IP-pools waar de front-endpool het netwerkverkeer naartoe stuurt dat door de load balancer is verdeeld.
+  * Een statustest die de status van de back-end-VM-instanties vaststelt.
+  * Een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
+
+### <a name="create-the-load-balancer-resource"></a>De load balancer-resource maken
+
+Maak een openbare load balancer met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create):
+
+* Genaamd **myLoadBalancer**.
+* Een front-endgroep met de naam **myFrontEnd**.
+* Een back-endgroep met de naam MyBackendPool.
+* Gekoppeld met het openbare IP-adres **myPublicIP** dat u in de vorige stap hebt gemaakt. 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Basic \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>Statustest maken
+
+Met een statustest worden alle VM-instanties gecontroleerd om na te gaan of ze netwerkverkeer kunnen verzenden. 
+
+Een virtuele machine met een mislukte test wordt verwijderd uit de load balancer. De virtuele machine wordt weer toegevoegd aan de load balancer wanneer de fout is opgelost.
+
+Gebruik een statustest met [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create):
+
+* Bewaakt de status van de virtuele machines.
+* Met de naam **myHealthProbe**.
+* Protocol: **TCP**.
+* Controleert **poort 80**.
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
+
+Met een load balancer-regel wordt het volgende gedefinieerd:
+
+* De front-end-IP-configuratie voor het binnenkomende verkeer.
+* De back-end-IP-adresgroep voor het ontvangen van verkeer.
+* De vereiste bron- en doelpoort. 
+
+Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) om een load balancer-regel te maken:
+
+* Naam: **myHTTPRule**
+* Luistert aan **poort 80** in de front-endpool **myFrontEnd**.
+* Verzendt netwerkverkeer volgens taakverdeling naar de back-endadresgroep **myBackEndPool** via **poort 80**. 
+* Gebruikt statustest **myHealthProbe**.
+* Protocol: **TCP**.
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe
+```
+
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Virtuele machines toevoegen aan back-endpool van load balancer
+
+Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add):
+
+
+#### <a name="vm1"></a>VM1
+* In back-endadrespool **myBackEndPool**.
+* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan de netwerkinterface **myNicVM1** en **ipconfig1**.
+* Gekoppeld aan load balancer **myLoadBalancer**.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* In back-endadrespool **myBackEndPool**.
+* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan de netwerkinterface **myNicVM2** en **ipconfig1**.
+* Gekoppeld aan load balancer **myLoadBalancer**.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* In back-endadrespool **myBackEndPool**.
+* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan de netwerkinterface **myNicVM3** en **ipconfig1**.
+* Gekoppeld aan load balancer **myLoadBalancer**.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 ---
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
@@ -993,7 +1077,7 @@ In deze quickstart hebt u
 
 * Een standaardversie van een openbare load balancer gemaakt
 * Virtuele machines gekoppeld. 
-* De regel en statustest voor het verkeer van de load balancer geconfigureerd.
+* De load balancer-verkeersregel en de statustest geconfigureerd.
 * De load balancer getest.
 
 Zie [Wat is Azure Load Balancer?](load-balancer-overview.md) en de [veelgestelde vragen over Load Balancer](load-balancer-faqs.md) voor meer informatie over Azure Load Balancer.

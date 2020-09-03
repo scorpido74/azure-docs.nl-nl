@@ -1,175 +1,170 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met de levens middelen | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de levens middelen.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Foodee | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Foodee.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7e28bd4a-5624-4c67-aebb-0856d97e82c5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16e7c7e676737df7e755aa4e602f8ceabd8a002f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a618e6018d07bfa316acd9bbcf9e4c6027a615ea
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72373187"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544137"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met de levens middelen
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Foodee
 
-In deze zelf studie leert u hoe u de levens middelen integreert met Azure Active Directory (Azure AD). Wanneer u de levens middelen integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Foodee integreert met Azure AD (Azure Active Directory). Wanneer u Foodee integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot de levens gebruiker.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij een levens gebruiker met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot Foodee.
+* Inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Foodee.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding (SSO) van het levensmiddelen abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Abonnement op Foodee waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* De levensmiddelen omgeving ondersteunt SSO die is geïnitieerd door **SP en IDP**
-* De levensmiddelen gebruiker ondersteunt **just-in-time** -gebruikers inrichting
+* Foodee ondersteunt met **SP en IDP** geïnitieerde eenmalige aanmelding
+* Foodee ondersteunt het **Just-In-Time** inrichten van gebruikers
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
 
-## <a name="adding-foodee-from-the-gallery"></a>Levens middelen toevoegen vanuit de galerie
+## <a name="adding-foodee-from-the-gallery"></a>Foodee toevoegen vanuit de galerie
 
-Als u de integratie van de levensmiddelen beheerder wilt configureren in azure AD, moet u de levens middelen van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Foodee in Azure AD moet u Foodee vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** de tekst **levens middelen** in het zoekvak.
-1. Selecteer in het deel venster met resultaten de optie **levens middelen** en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** **Foodee** in het zoekvak.
+1. Selecteer **Foodee** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-foodee"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor de levens middelen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-foodee"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Foodee
 
-Configureer en test Azure AD SSO met de levens middelen van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de betrokkene.
+Configureer en test eenmalige aanmelding van Azure AD met Foodee met behulp van een testgebruiker met de naam **B. Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Foodee.
 
-Als u Azure AD SSO met de levens middelen wilt configureren en testen, voert u de volgende bouw stenen uit:
+Voltooi de volgende stappen om eenmalige aanmelding voor Foodee met Azure AD te configureren en testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Eenmalige aanmelding met levens middelen configureren](#configure-foodee-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. Een test gebruiker voor de gebruikers van een **[gebruiks prijs maken](#create-foodee-test-user)** , zodat deze een soort is van B. Simon in de levens middelen die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij Foodee configureren](#configure-foodee-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. **[Een Foodee-testgebruiker maken](#create-foodee-test-user)** : als u een tegenhanger van B. Simon in Foodee wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina voor de integratie van de **levensmiddelen** toepassing de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Foodee**, de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    Typ in het tekstvak **antwoord-URL** een URL met het volgende patroon:`https://concierge.food.ee/sso/saml/<INSTANCENAME>/consume`
+    In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://concierge.food.ee/sso/saml/<INSTANCENAME>/consume`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://concierge.food.ee/sso/saml/<INSTANCENAME>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://concierge.food.ee/sso/saml/<INSTANCENAME>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het [ondersteunings team van de levensmiddelen client](mailto:dev@food.ee) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem voor deze waarden contact op met het [klantenondersteuningsteam van Foodee](mailto:dev@food.ee). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste voor de sectie ' **levensmiddelen groep instellen** '.
+1. In de sectie **Foodee instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de levens afdeling.
+In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Foodee.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **eten**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Foodee** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="configure-foodee-sso"></a>Eenmalige aanmelding voor de levens middelen configureren
+### <a name="configure-foodee-sso"></a>Eenmalige aanmelding voor Foodee configureren
 
-1. Als u de configuratie binnen de levens geautomatiseerd wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
+1. Als u de configuratie in Foodee wilt automatiseren, moet u de **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op de **levens groep instellen** en gaat u naar de toepassing van de Food. Geef de beheerders referenties op om u aan te melden bij de levens groep. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-4 geautomatiseerd.
+2. Als u op **Foodee instellen** klikt nadat u de extensie aan de browser hebt toegevoegd, wordt u doorgestuurd naar de Foodee-toepassing. Geef hier de beheerdersreferenties op om u aan te melden bij Foodee. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 en 4 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Instelling configureren](common/setup-sso.png)
 
-3. Als u de levens groep hand matig wilt installeren, opent u een nieuw webbrowser venster en meldt u zich aan bij de site van uw levensmiddelen bedrijf als beheerder en voert u de volgende stappen uit:
+3. Als u Foodee handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de Foodee-bedrijfssite. Voer hierna de volgende stappen uit:
 
-4. Klik in de rechter bovenhoek van de pagina op **profiel logo** en ga naar **eenmalige aanmelding** en voer de volgende stappen uit:
+4. Klik op het **profiellogo** in de rechterbovenhoek van de pagina, ga naar **Single Sign On** en voer de volgende stappen uit:
 
-   ![Configuratie van de Food](./media/foodee-tutorial/config01.png)
+   ![Configuratie van Foodee](./media/foodee-tutorial/config01.png)
 
-   1. Typ in het tekstvak **naam van IDP** de naam zoals bijvoorbeeld: Azure.
-   1. Open de federatieve meta gegevens-XML in Klad blok, kopieer de inhoud en plak deze in het tekstvak **XML-IDP voor meta gegevens** .
+   1. Typ de naam in het tekstvak **IDP NAME**, bijvoorbeeld ex:Azure.
+   1. Open het XML-bestand met federatieve metagegevens in Kladblok, kopieer de inhoud en plak deze in het tekstvak **IDP METADATA XML**.
    1. Klik op **Opslaan**.
 
-### <a name="create-foodee-test-user"></a>Test gebruiker voor een gebruikers-of gebruiks prijs maken
+### <a name="create-foodee-test-user"></a>Testgebruiker voor Foodee maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon in de levens afdeling gemaakt. De levens duur ondersteunt just-in-time-inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al aanwezig is in de levensmiddelen organisatie, wordt er een nieuwe gemaakt wanneer u probeert toegang te krijgen tot de gebruikers naam.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Foodee. Foodee ondersteunt Just-In-Time-inrichting; deze optie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Foodee bestaat, wordt er een nieuwe gemaakt wanneer u Foodee opent.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel levens groep in het toegangs venster klikt, moet u automatisch worden aangemeld bij de levens groep waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Foodee-tegel in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Foodee waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Gebruik de levens middelen van Azure AD](https://aad.portal.azure.com/)
+- [Foodee met Azure AD uitproberen](https://aad.portal.azure.com/)
 

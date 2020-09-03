@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
+ms.date: 08/11/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 76c936cb0c1a95ca1bf5919cbf2753fb6f050687
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971008"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185516"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>De Azure-SSIS-integratieruntime inrichten in Azure Data Factory
 
@@ -127,93 +127,99 @@ Voer op de pagina **Algemene instellingen** van het deelvenster **Installatie va
 
 ### <a name="deployment-settings-page"></a>Pagina Implementatie-instellingen
 
-Voer op de pagina **Implementatie-instellingen** van het deelvenster **Installatie van integratieruntime** de volgende stappen uit.
+Op de pagina **Implementatie-instellingen** van het deelvenster **Integratieruntime-instellingen** hebt u de mogelijkheid om SSISDB- en/of Azure-SSIS IR-pakketarchieven te maken.
 
-   1. Selecteer het selectievakje **SSIS-catalogus maken (SSISDB) die wordt gehost door Azure SQL Database server/beheerd exemplaar om uw projecten/pakketten/omgevingen/uitvoeringslogboeken op te slaan** om te kiezen of u uw pakketten wilt implementeren in SSISDB (projectimplementatiemodel). U hoeft geen SSISDB te maken als u uw pakketten wilt implementeren in het bestandssysteem, Azure Files of SQL Server-database (MSDB) die worden gehost door Azure SQL Managed Instance (pakketimplementatiemodel).
+#### <a name="creating-ssisdb"></a>SSISDB maken
+
+Schakel het selectievakje **SSIS-catalogus maken (SSISDB) die wordt gehost door Azure SQL Database server/beheerd exemplaar om uw projecten/pakketten/omgevingen/uitvoeringslogboeken op te slaan** op de pagina **Implementatie-instellingen** van het deelvenster **Integratieruntime-instellingen** in. Als u uw pakketten wilt implementeren in het bestandssysteem, Azure Files of SQL Server-database (MSDB) die worden gehost door Azure SQL Managed Instance (pakketimplementatiemodel), hoeft u geen SSISDB te maken en hoeft u ook het selectievakje niet in te schakelen.
+
+Schakel dit selectievakje in, ongeacht uw implementatiemodel, als u SQL Server Agent gehost door Azure SQL Managed Instance wilt gebruiken om uw pakketuitvoeringen te plannen, aangezien dit wordt ingeschakeld door SSISDB. Zie [SSIS-pakketuitvoeringen plannen via de agent voor Azure SQL Managed Instance](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) voor meer informatie.
    
-      Selecteer dit selectievakje ongeacht uw implementatiemodel om te kiezen of u SQL Server Agent gehost door Azure SQL Managed Instance wilt gebruiken om uw pakketuitvoeringen te plannen, aangezien dit wordt ingeschakeld door SSISDB. Zie [SSIS-pakketuitvoeringen plannen via de agent voor Azure SQL Managed Instance](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) voor meer informatie.
+Als u het selectievakje inschakelt, moet u de volgende stappen uitvoeren om uw eigen databaseserver in te stellen als host voor de SSISDB die we namens u maken en beheren.
+
+   ![Implementatie-instellingen voor SSISDB](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
    
-      Als u dit selectievakje inschakelt, moet u uw eigen databaseserver instellen om de SSISDB te hosten die we namens u maken en beheren.
+   1. Selecteer bij **Abonnement** het Azure-abonnement dat uw databaseserver heeft voor het hosten van SSISDB. 
 
-      ![Implementatie-instellingen voor SSISDB](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   1. Selecteer bij **Locatie** de locatie van uw databaseserver voor het hosten van SSISDB. We raden u aan dezelfde locatie van uw integratieruntime te selecteren.
+
+   1. Selecteer bij het **Eindpunt voor de Catalog-databaseserver** het eindpunt van uw databaseserver voor het hosten van SSISDB. 
    
-      1. Selecteer bij **Abonnement** het Azure-abonnement dat uw databaseserver heeft voor het hosten van SSISDB. 
+      Op basis van de geselecteerde databaseserver kan het SSISDB-exemplaar namens u worden gemaakt als een enkele database, als onderdeel van een elastische pool of in een beheerd exemplaar. Deze is toegankelijk in een openbaar netwerk of kan worden toegevoegd aan een virtueel netwerk. Zie [SQL Database en een beheerd exemplaar van SQL vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance) voor hulp bij het kiezen van het type databaseserver om SSISDB te hosten.   
 
-      1. Selecteer bij **Locatie** de locatie van uw databaseserver voor het hosten van SSISDB. We raden u aan dezelfde locatie van uw integratieruntime te selecteren.
+      Als u een Azure SQL Database-server met IP-firewall regels/service-eindpunten voor virtuele netwerken of een beheerd exemplaar met een privé-eindpunt selecteert om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf-hostende IR te configureren, moet u uw Azure-SSIS IR toevoegen aan een virtueel netwerk. Zie [Een Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) voor meer informatie.
 
-      1. Selecteer bij het **Eindpunt voor de Catalog-databaseserver** het eindpunt van uw databaseserver voor het hosten van SSISDB. 
+   1. Schakel het selectievakje **Azure Active Directory-verificatie gebruiken met de beheerde identiteit voor uw ADF** om de verificatiemethode voor uw databaseserver voor het hosten van SSISDB te kiezen. U kiest SQL-verificatie of Azure Active Directory-verificatie met de beheerde identiteit voor uw data factory.
+
+      Als u het selectievakje selecteert, moet u de beheerde identiteit voor uw data factory toevoegen aan een Azure Active Directory-groep met toegangsmachtigingen tot de databaseserver. Zie [Een Azure-SSIS IR met Azure Active Directory-verificatie maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) voor meer informatie.
    
-         Op basis van de geselecteerde databaseserver kan het SSISDB-exemplaar namens u worden gemaakt als een enkele database, als onderdeel van een elastische pool of in een beheerd exemplaar. Deze is toegankelijk in een openbaar netwerk of kan worden toegevoegd aan een virtueel netwerk. Zie [SQL Database en een beheerd exemplaar van SQL vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance) voor hulp bij het kiezen van het type databaseserver om SSISDB te hosten.   
+   1. Voer bij **Gebruikersnaam van beheerder** de gebruikersnaam voor SQL-verificatie voor uw databaseserver voor het hosten van SSISDB in. 
 
-         Als u een Azure SQL Database-server met IP-firewall regels/service-eindpunten voor virtuele netwerken of een beheerd exemplaar met een privé-eindpunt selecteert om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf-hostende IR te configureren, moet u uw Azure-SSIS IR toevoegen aan een virtueel netwerk. Zie [Een Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) voor meer informatie.
+   1. Voer bij **Beheerderswachtwoord** het wachtwoord voor SQL-verificatie voor uw databaseserver voor het hosten van SSISDB in. 
 
-      1. Selecteer het selectievakje **Azure Active Directory-verificatie gebruiken met de beheerde identiteit voor uw ADF** om de verificatiemethode voor uw databaseserver voor het hosten van SSISDB te kiezen. U kiest SQL-verificatie of Azure Active Directory-verificatie met de beheerde identiteit voor uw data factory.
+   1. Selecteer bij **Serverlaag catalogusdatabase** de servicelaag voor uw databaseserver voor het hosten van SSISDB. Selecteer de laag Basic, Standard of Premium of selecteer de naam van een elastische pool.
 
-         Als u het selectievakje selecteert, moet u de beheerde identiteit voor uw data factory toevoegen aan een Azure Active Directory-groep met toegangsmachtigingen tot de databaseserver. Zie [Een Azure-SSIS IR met Azure Active Directory-verificatie maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) voor meer informatie.
+Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende**.
+
+#### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR-pakketarchieven maken
+
+Schakel op de pagina **Implementatie-instellingen** van het deelvenster **Integratieruntime-instellingen** het selectievakje **Pakketarchieven maken om uw pakketten te beheren die zijn geïmplementeerd in het bestandssysteem/Azure Files/SQL Server-database (MSDB) en worden gehost door Azure SQL Managed Instance** in als u uw pakketten wilt beheren die zijn geïmplementeerd in MSDB, het bestandssysteem of Azure Files (pakketimplementatiemodel) met pakketarchieven van Azure-SSIS IR.
    
-      1. Voer bij **Gebruikersnaam van beheerder** de gebruikersnaam voor SQL-verificatie voor uw databaseserver voor het hosten van SSISDB in. 
-
-      1. Voer bij **Beheerderswachtwoord** het wachtwoord voor SQL-verificatie voor uw databaseserver voor het hosten van SSISDB in. 
-
-      1. Selecteer bij **Serverlaag catalogusdatabase** de servicelaag voor uw databaseserver voor het hosten van SSISDB. Selecteer de laag Basic, Standard of Premium of selecteer de naam van een elastische pool.
-
-   1. Selecteer het selectievakje **Pakketarchieven maken om uw pakketten te beheren die zijn geïmplementeerd in het bestandssysteem/Azure Files/SQL Server-database (MSDB) en worden gehost door Azure SQL Managed Instance** om te kiezen of u uw pakketten wilt beheren die zijn geïmplementeerd in MSDB, het bestandssysteem of Azure Files (pakketimplementatiemodel) met pakketarchieven van Azure-SSIS IR.
+Met pakketarchieven van Azure-SSIS IR kunt u pakketten importeren/exporteren/verwijderen/uitvoeren en de uitvoering van pakketten controleren of stoppen via SSMS, net zoals met de [verouderde SSIS-pakketarchieven](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). Zie [SSIS-pakketten beheren met pakketarchieven van Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) voor meer informatie.
    
-      Met pakketarchieven van Azure-SSIS IR kunt u pakketten importeren/exporteren/verwijderen/uitvoeren en de uitvoering van pakketten controleren of stoppen via SSMS, net zoals met de [verouderde SSIS-pakketarchieven](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). Zie [SSIS-pakketten beheren met pakketarchieven van Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) voor meer informatie.
+Als u dit selectievakje inschakelt, kunt u meerdere pakketarchieven toevoegen aan uw Azure-SSIS IR door **Nieuwe** te selecteren. Daarnaast kan één pakketarchief worden gedeeld door meerdere Azure-SSIS IR’s.
+
+![Implementatie-instellingen voor MSDB/bestandssysteem/Azure Files](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+
+Voltooi op de pagina **Pakketarchief toevoegen** de volgende stappen.
    
-      Als u dit selectievakje inschakelt, kunt u meerdere pakketarchieven toevoegen aan uw Azure-SSIS IR door **Nieuwe** te selecteren. Daarnaast kan één pakketarchief worden gedeeld door meerdere Azure-SSIS IR’s.
+   1. Voer de naam van uw pakketarchief in bij **Naam van pakketarchief**. 
 
-      ![Implementatie-instellingen voor MSDB/bestandssysteem/Azure Files](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+   1. Selecteer voor **Gekoppelde service voor pakketarchief** de bestaande gekoppelde service waarin de toegangsgegevens zijn opgeslagen voor het bestandssysteem/Azure Files/Azure SQL Managed Instance waarin uw pakketten zijn geïmplementeerd of maak een nieuwe door **Nieuwe** te selecteren. Voer in het deelvenster **Nieuwe gekoppelde service** de volgende stappen uit. 
 
-      Voltooi op de pagina **Pakketarchief toevoegen** de volgende stappen.
-   
-      1. Voer de naam van uw pakketarchief in bij **Naam van pakketarchief**. 
+      ![Implementatie-instellingen voor gekoppelde services](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
-      1. Selecteer voor **Gekoppelde service voor pakketarchief** de bestaande gekoppelde service waarin de toegangsgegevens zijn opgeslagen voor het bestandssysteem/Azure Files/Azure SQL Managed Instance waarin uw pakketten zijn geïmplementeerd of maak een nieuwe door **Nieuwe** te selecteren. Voer in het deelvenster **Nieuwe gekoppelde service** de volgende stappen uit. 
-
-         ![Implementatie-instellingen voor gekoppelde services](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
-
-         1. Voer bij **Naam** de naam van de gekoppelde service in. 
+      1. Voer bij **Naam** de naam van de gekoppelde service in. 
          
-         1. Voer bij **Beschrijving** de beschrijving van de gekoppelde service in. 
+      1. Voer bij **Beschrijving** de beschrijving van de gekoppelde service in. 
          
-         1. Voor **Type** selecteert u **Azure File Storage**, **Azure SQL Managed Instance** of **Bestandssysteem**.
+      1. Voor **Type** selecteert u **Azure File Storage**, **Azure SQL Managed Instance** of **Bestandssysteem**.
 
-         1. U kunt **Verbinding maken via integratieruntime** negeren omdat we altijd uw Azure-SSIS IR gebruiken om de toegangsgegevens voor pakketarchieven op te halen.
+      1. U kunt **Verbinding maken via integratieruntime** negeren omdat we altijd uw Azure-SSIS IR gebruiken om de toegangsgegevens voor pakketarchieven op te halen.
 
-         1. Als u **Azure File Storage** selecteert, voert u de volgende stappen uit. 
+      1. Als u **Azure File Storage** selecteert, voert u de volgende stappen uit. 
 
-            1. Selecteer bij **Accountselectiemethode** de optie **Van Azure-abonnement** of **Handmatig invoeren**.
+         1. Selecteer bij **Accountselectiemethode** de optie **Van Azure-abonnement** of **Handmatig invoeren**.
          
-            1. Als u **Van Azure-abonnement** hebt gekozen, selecteert u het relevante **Azure-abonnement**, **Naam van opslagaccount** en **Bestandsshare**.
+         1. Als u **Van Azure-abonnement** hebt gekozen, selecteert u het relevante **Azure-abonnement**, **Naam van opslagaccount** en **Bestandsshare**.
             
-            1. Als u **Handmatig invoeren** hebt gekozen, voert u `\\<storage account name>.file.core.windows.net\<file share name>` in bij **Host**, `Azure\<storage account name>` bij **Gebruikersnaam**en `<storage account key>` bij **Wachtwoord**, of u selecteert de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
+         1. Als u **Handmatig invoeren** hebt gekozen, voert u `\\<storage account name>.file.core.windows.net\<file share name>` in bij **Host**, `Azure\<storage account name>` bij **Gebruikersnaam**en `<storage account key>` bij **Wachtwoord**, of u selecteert de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
-         1. Als u **Azure SQL Managed Instance** hebt gekozen, voert u de volgende stappen uit. 
+      1. Als u **Azure SQL Managed Instance** hebt gekozen, voert u de volgende stappen uit. 
 
-            1. Selecteer **Verbindingsreeks** om deze handmatig in te voeren of uw **Azure Key Vault** waar het wachtwoord is opgeslagen als een geheim.
+         1. Selecteer **Verbindingsreeks** om deze handmatig in te voeren of uw **Azure Key Vault** waar het wachtwoord is opgeslagen als een geheim.
          
-            1. Als u **Verbindingsreeks** hebt gekozen, voert u de volgende stappen uit. 
+         1. Als u **Verbindingsreeks** hebt gekozen, voert u de volgende stappen uit. 
 
-               1. Bij **Fully Qualified Domain Name** voert u `<server name>.<dns prefix>.database.windows.net` of `<server name>.public.<dns prefix>.database.windows.net,3342` in als het privé-eindpunt of openbare eindpunt van uw Azure SQL Managed Instance. Als u het privé-eindpunt opgeeft, is **Verbinding testen** niet van toepassing, omdat de ADF-gebruikersinterface deze niet kan bereiken.
+            1. Bij **Fully Qualified Domain Name** voert u `<server name>.<dns prefix>.database.windows.net` of `<server name>.public.<dns prefix>.database.windows.net,3342` in als het privé-eindpunt of openbare eindpunt van uw Azure SQL Managed Instance. Als u het privé-eindpunt opgeeft, is **Verbinding testen** niet van toepassing, omdat de ADF-gebruikersinterface deze niet kan bereiken.
 
-               1. Voer bij **Name database** de invoer `msdb` in.
+            1. Voer bij **Name database** de invoer `msdb` in.
                
-               1. Selecteer **SQL-verificatie**, **Beheerde identiteit** of **Service-principal** bij **Verificatietype**.
+            1. Selecteer **SQL-verificatie**, **Beheerde identiteit** of **Service-principal** bij **Verificatietype**.
 
-               1. Als u **SQL-verificatie** hebt gekozen, voert u de relevante **Gebruikersnaam** en het **Wachtwoord** in of selecteer u de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
+            1. Als u **SQL-verificatie** hebt gekozen, voert u de relevante **Gebruikersnaam** en het **Wachtwoord** in of selecteer u de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
-               1. Als u **Beheerde identiteit** hebt gekozen, verleent u uw beheerde ADF-identiteit toegang tot uw Azure SQL Managed Instance.
+            1. Als u **Beheerde identiteit** hebt gekozen, verleent u uw beheerde ADF-identiteit toegang tot uw Azure SQL Managed Instance.
 
-               1. Als u **Service-principal** hebt gekozen, voert u de relevante **Service-principal-id** en de **Service-principal-sleutel** in of selecteert u uw **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
+            1. Als u **Service-principal** hebt gekozen, voert u de relevante **Service-principal-id** en de **Service-principal-sleutel** in of selecteert u uw **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
-         1. Als u **Bestandssysteem** hebt gekozen, voert u het UNC-pad in van de map waarin uw pakketten zijn geïmplementeerd voor **Host**, evenals de relevante **Gebruikersnaam** en het **Wachtwoord** of selecteert u de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
+      1. Als u **Bestandssysteem** hebt gekozen, voert u het UNC-pad in van de map waarin uw pakketten zijn geïmplementeerd voor **Host**, evenals de relevante **Gebruikersnaam** en het **Wachtwoord** of selecteert u de **Azure Key Vault** waar het wachtwoord is opgeslagen als geheim.
 
-         1. Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Maken**.
+      1. Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Maken**.
 
-      De toegevoegde pakketarchieven worden weergegeven op de pagina **Implementatie-instellingen**. Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen**.
+   1. De toegevoegde pakketarchieven worden weergegeven op de pagina **Implementatie-instellingen**. Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen**.
 
-   1. Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende**.
+Selecteer **Verbinding testen** wanneer dit van toepassing is en selecteer **Volgende**.
 
 ### <a name="advanced-settings-page"></a>De pagina Geavanceerde instellingen
 

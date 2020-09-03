@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439375"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271274"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Zelfstudie: Azure Machine Learning als een IoT Edge-module implementeren (preview)
 
@@ -49,7 +49,7 @@ Cloudresources:
 
 * Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een Azure Machine Learning-werkruimte. Volg de instructies in [Azure Portal gebruiken om aan de slag te gaan met Azure Machine Learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) om er een te maken en te leren hoe u deze kunt gebruiken.
-  * Noteer de naam van de werkruimte, de resourcegroep en de abonnements-id. Deze waarden zijn allemaal beschikbaar in het overzicht van de werkruimte in de Azure-portal. U gebruikt deze waarden later in de zelfstudie om een Azure-notebook aan uw werkruimteresources te koppelen.
+  * Noteer de naam van de werkruimte, de resourcegroep en de abonnements-id. Deze waarden zijn allemaal beschikbaar in het overzicht van de werkruimte in de Azure-portal. U gebruikt deze waarden later in de zelfstudie om een Azure Notebooks-bestand aan uw werkruimteresources te koppelen.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Een Azure Machine Learning-module maken en implementeren
 

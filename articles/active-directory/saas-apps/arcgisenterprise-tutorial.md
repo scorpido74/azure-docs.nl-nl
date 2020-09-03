@@ -2,26 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met ArcGIS Enterprise | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en ArcGIS Enterprise configureert.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905003"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Zelfstudie: Azure Active Directory-integratie met ArcGIS Enterprise
 
@@ -48,8 +43,6 @@ U hebt het volgende nodig om Azure AD-integratie met ArcGIS Enterprise te config
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
-
-
 
 * ArcGIS Enterprise biedt ondersteuning voor door **SP en IDP** geïnitieerde eenmalige aanmelding
 * ArcGIS Enterprise biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
@@ -132,21 +125,30 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Eenmalige aanmelding configureren voor ArcGIS Enterprise
 
-1. Meld u in een ander browservenster als beheerder aan bij de bedrijfssite van ArcGIS Enterprise.
+1. Als u de configuratie in ArcGIS Enterprise wilt automatiseren, moet u **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
 
-2. Selecteer **Organization >EDIT SETTINGS**.
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
+
+1. Als u op **ArcGIS Enterprise instellen** klikt nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar de ArcGIS Enterprise-toepassing. Geef hier de beheerdersreferenties op om u aan te melden bij ArcGIS Enterprise. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
+
+    ![Instelling configureren](common/setup-sso.png)
+
+1. Als u ArcGIS Enterprise handmatig wilt instellen, meldt u zich als beheerder aan bij de bedrijfssite van ArcGIS Enterprise.
+
+
+1. Selecteer **Organization >EDIT SETTINGS**.
 
     ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. Selecteer het tabblad **Security**.
+1. Selecteer het tabblad **Security**.
 
     ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. Blader omlaag naar de sectie **Enterprise Logins via SAML** en selecteer **SET ENTERPRISE LOGIN**.
+1. Blader omlaag naar de sectie **Enterprise Logins via SAML** en selecteer **SET ENTERPRISE LOGIN**.
 
     ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. Voer in de sectie **Set Identity Provider** de volgende stappen uit:
+1. Voer in de sectie **Set Identity Provider** de volgende stappen uit:
 
     ![Configuratie van ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure4.png)
 

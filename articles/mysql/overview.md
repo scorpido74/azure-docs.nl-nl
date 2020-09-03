@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206406"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763657"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Wat is Azure Database for MySQL?
 
@@ -37,6 +37,9 @@ Dit artikel bevat een inleiding tot de belangrijkste concepten en functies van A
 Zie de volgende artikelen voor een reeks Azure CLI-voorbeelden:
 
 - [Azure CLI-voorbeelden voor Azure Database for MySQL](sample-scripts-azure-cli.md)
+
+## <a name="automated-patching"></a>Automatisch patchen
+De service voert automatische patches uit van de onderliggende hardware, het besturingssysteem en de database-engine. De patches bestaan uit beveiligings- en software-updates voor de onderliggende hardware, het besturingssysteem en de database-engine. Voor de MySQL-engine worden kleine versie-upgrades automatisch uitgevoerd. Deze zijn onderdeel van de patchrelease. Wanneer de community een kleine versie uitbrengt, wordt deze automatisch geïntegreerd als onderdeel van de testcyclus voor de service. Het testen van de kleine versie wordt op een aantal canonieke werkbelastingen voor MySQL uitgevoerd. De kleine versies van de MySQL-engine die worden uitgebracht, worden op betrouwbaarheid (geen vastlopers), beschikbaarheid, beveiliging en prestaties geëvalueerd. Niet elke kleine versie wordt voor productie uitgebracht in de service, maar wordt wel geëvalueerd op basis van de ernst van de opgeloste fouten en de nieuwe incrementele waarde. De reden hiervoor is een juiste balans te vinden tussen een nieuwe incrementele waarde en het minimaliseren van het aantal variabelen in het systeem om stabiliteit te krijgen. Gebruikers hoeven zelf geen actie te ondernemen en er zijn geen configuratie-instellingen vereist voor patches. De frequentie waarbij patches worden uitgevoerd, wordt beheerd door de service op basis van de ernst van de nettolading. Over het algemeen volgt de service de maandelijkse releaseplanning, als onderdeel van de continue integratie en releases. Gebruikers kunnen zich abonneren op [meldingen voor gepland onderhoud](concepts-monitoring.md). Zij ontvangen dan 72 uur voorafgaand aan het geplande onderhoud een melding.
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Binnen een paar seconden prestaties en schaal aanpassen
 De Azure Database for MySQL-service biedt verschillende servicelagen: Basic, Algemeen gebruik en Geoptimaliseerd voor geheugen. Elke laag biedt verschillende prestaties en mogelijkheden voor lichte tot zware workloads van databases. U kunt uw eerste app op een kleine database bouwen voor een paar euro met maand en vervolgens de schaal ervan aanpassen om aan de vereisten van uw oplossing te voldoen. Doordat de schaalbaarheid dynamisch is, kan uw database op een transparante manier reageren op snel veranderende resourcevereisten. U betaalt alleen voor de resources die u nodig hebt op het moment dat u ze nodig hebt. Zie  [Prijscategorieën](concepts-service-tiers.md) voor meer informatie.

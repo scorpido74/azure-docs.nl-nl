@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met MobiControl | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en MobiControl.
+title: 'Zelfstudie: Integratie van Azure Active Directory met MobiControl | Microsoft Docs'
+description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en MobiControl configureert.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d656688f-245d-4d8f-b343-752d1656cd06
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a5ec603b65161f3b0b2d9c88224aef0004cc686a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a828b194d1e274183d581e0cdc2c5e894d6c0148
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67096906"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554682"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>Zelf studie: integratie Azure Active Directory met MobiControl
+# <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>Zelfstudie: Integratie van Azure Active Directory met MobiControl
 
-In deze zelf studie leert u hoe u MobiControl integreert met Azure Active Directory (Azure AD).
-Het integreren van MobiControl met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u MobiControl kunt integreren met Azure Active Directory (Azure AD).
+De integratie van MobiControl met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot MobiControl.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij MobiControl (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD bepalen wie er toegang heeft tot MobiControl.
+* U kunt instellen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij MobiControl (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met MobiControl wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie wilt configureren met MobileIron hebt u het volgende nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding MobiControl ingeschakeld
+* Een abonnement op MobiControl waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* MobiControl ondersteunt door **SP** GEÏNITIEERDe SSO
+* MobiControl ondersteunt met **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-mobicontrol-from-the-gallery"></a>MobiControl toevoegen uit de galerie
+## <a name="adding-mobicontrol-from-the-gallery"></a>MobiControl toevoegen vanuit de galerie
 
-Als u de integratie van MobiControl in azure AD wilt configureren, moet u MobiControl uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van MobiControl wilt configureren in Azure AD, moet u MobiControl vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om MobiControl toe te voegen uit de galerie:**
+**Voer de volgende stappen uit als u MobiControl vanuit de galerie wilt toevoegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van MobiControl in azure AD wilt configureren, moet u MobiCo
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **MobiControl**in het zoekvak, selecteer **MobiControl** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **MobiControl** in het zoekvak, selecteer **MobiControl** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![MobiControl in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met MobiControl op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in MobiControl tot stand worden gebracht.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met MobiControl op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in MobiControl tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met MobiControl, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding van Azure AD met MobiControl wilt configureren en testen, moet u de volgende stappen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[MobiControl eenmalige aanmelding configureren](#configure-mobicontrol-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een MobiControl-test gebruiker](#create-mobicontrol-test-user)** -om een equivalent van Julia Simon in MobiControl te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor MobiControl configureren](#configure-mobicontrol-single-sign-on)** : de instellingen voor eenmalige aanmelding aan de toepassingszijde configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker voor MobiControl maken](#create-mobicontrol-test-user)** : als u een tegenhanger van Britta Simon in MobiControl wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met MobiControl:
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configureren met MobiControl:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **MobiControl** Application Integration de optie **eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor de integratie van de toepassing **MobiControl** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,14 +99,14 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor MobiControl domein en Url's](common/sp-identifier.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding voor MobiControl](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.corp.soti.net/mobicontrol`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.mobicontrolcloud.com/mobicontrol`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.mobicontrolcloud.com/mobicontrol`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van MobiControl-clients](https://www.soti.net/about/contact-us/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [MobiControl-ondersteuningsteam](https://www.soti.net/about/contact-us/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
@@ -118,7 +114,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 ### <a name="configure-mobicontrol-single-sign-on"></a>Eenmalige aanmelding voor MobiControl configureren
 
-Als u eenmalige aanmelding wilt configureren op **MobiControl** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [MobiControl ondersteunings team](https://www.soti.net/about/contact-us/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de zijde van **MobiControl**, moet u de **App-URL voor federatieve metagegevens** naar het [ondersteuningsteam van MobiControl](https://www.soti.net/about/contact-us/) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -128,7 +124,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -136,25 +132,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan MobiControl.
+In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot MobiControl.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **MobiControl**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **MobiControl**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **MobiControl**.
+2. Selecteer **MobiControl** in de lijst met toepassingen.
 
-    ![De koppeling MobiControl in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar MobiControl in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -164,27 +160,27 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-mobicontrol-test-user"></a>MobiControl-test gebruiker maken
+### <a name="create-mobicontrol-test-user"></a>MobiControl-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in MobiControl. Werk samen met [MobiControl-ondersteunings team](https://www.soti.net/about/contact-us/) om de gebruikers toe te voegen in het MobiControl-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u in MobiControl een gebruiker maken met de naam Britta Simon. Werk met het  [ondersteuningsteam van MobiControl](https://www.soti.net/about/contact-us/) om de gebruikers toe te voegen aan het MobiControl-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel MobiControl in het toegangs venster klikt, moet u automatisch worden aangemeld bij de MobiControl waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de MobiControl-tegel klikt, wordt u automatisch aangemeld bij de instantie van MobiControl waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

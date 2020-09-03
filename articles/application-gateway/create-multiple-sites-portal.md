@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290149"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236184"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway maken en configureren waarmee meerdere websites worden gehost via Azure PortaI
 
@@ -33,9 +33,9 @@ In deze zelfstudie leert u het volgende:
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+## <a name="prerequisites"></a>Vereisten
 
-Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
@@ -237,7 +237,7 @@ Ga als volgt te werk om de resourcegroep te verwijderen:
 1. Selecteer **Resourcegroepen** in het linkermenu van de Azure-portal.
 2. Zoek en selecteer **myResourceGroupAG** in de lijst op de pagina **Resourcegroepen**.
 3. Selecteer **Resourcegroep verwijderen** op de **pagina van de resourcegroep**.
-4. Voer *myResourceGroupAG* in bij **TYP DE RESOURCEGROEPNAAM** en selecteer vervolgens **Verwijderen**
+4. Voer *myResourceGroupAG* in bij **TYP DE RESOURCEGROEPNAAM** en selecteer vervolgens **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

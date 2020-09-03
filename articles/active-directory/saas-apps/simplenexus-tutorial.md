@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met SimpleNexus | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SimpleNexus.
+title: 'Zelfstudie: Azure Active Directory-integratie met SimpleNexus | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en SimpleNexus.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 89821a05-88e2-4579-b144-0123b2b9cb95
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d368b6cd809ccf4e428974bf7c82c01bc5e035b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c745d15cd7a8f814bfa9ca4de42323cc4145d83e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233426"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542544"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Zelf studie: integratie Azure Active Directory met SimpleNexus
+# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Zelfstudie: Azure Active Directory-integratie met SimpleNexus
 
-In deze zelf studie leert u hoe u SimpleNexus integreert met Azure Active Directory (Azure AD).
-Het integreren van SimpleNexus met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u SimpleNexus kunt integreren met Azure Active Directory (Azure AD).
+De integratie van SimpleNexus met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot SimpleNexus.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij SimpleNexus (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot SimpleNexus.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij SimpleNexus (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met SimpleNexus wilt configureren, hebt u de volgende items nodig:
+U hebt de volgende items nodig om de integratie van Azure AD met SimpleNexus te configureren:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding SimpleNexus ingeschakeld
+* Een abonnement op SimpleNexus waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* SimpleNexus ondersteunt door **SP** GEÏNITIEERDe SSO
+* SimpleNexus biedt ondersteuning voor door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-simplenexus-from-the-gallery"></a>SimpleNexus toevoegen uit de galerie
+## <a name="adding-simplenexus-from-the-gallery"></a>SimpleNexus toevoegen vanuit de galerie
 
-Als u de integratie van SimpleNexus in azure AD wilt configureren, moet u SimpleNexus uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van SimpleNexus in Azure AD moet u SimpleNexus vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om SimpleNexus toe te voegen uit de galerie:**
+**Voer de volgende stappen uit om SimpleNexus vanuit de galerie toe te voegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van SimpleNexus in azure AD wilt configureren, moet u Simple
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **SimpleNexus**in het zoekvak, selecteer **SimpleNexus** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **SimpleNexus**, selecteer **SimpleNexus** in het deelvenster met resultaten en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
 
-     ![SimpleNexus in de lijst met resultaten](common/search-new-app.png)
+     ![SimpleNexus in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met SimpleNexus op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SimpleNexus tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD-eenmalige aanmelding met SimpleNexus op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in SimpleNexus tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met SimpleNexus, moet u de volgende bouw stenen volt ooien:
+U hebt de volgende bouwstenen nodig om eenmalige aanmelding van Azure AD met SimpleNexus te configureren en testen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[SimpleNexus eenmalige aanmelding configureren](#configure-simplenexus-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een SimpleNexus-test gebruiker](#create-simplenexus-test-user)** -om een equivalent van Julia Simon in SimpleNexus te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor SimpleNexus configureren](#configure-simplenexus-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor SimpleNexus maken](#create-simplenexus-test-user)** : als u een tegenhanger van Britta Simon in SimpleNexus wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met SimpleNexus:
+Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren voor SimpleNexus:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **SimpleNexus** Application Integration de optie **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **SimpleNexus** de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +99,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor SimpleNexus domein en Url's](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor SimpleNexus-domein en -URL's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://simplenexus.com/<companyname>_login`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://simplenexus.com/<companyname>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://simplenexus.com/<companyname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van SimpleNexus-clients](https://simplenexus.com/sn/contact-us/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteuningsteam van SimpleNexus](https://simplenexus.com/sn/contact-us/) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **SimpleNexus instellen** de gewenste URL ('s) volgens uw vereiste.
+6. In de sectie **SimpleNexus instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -128,7 +124,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 ### <a name="configure-simplenexus-single-sign-on"></a>Eenmalige aanmelding voor SimpleNexus configureren
 
-Als u eenmalige aanmelding wilt configureren op **SimpleNexus** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [SimpleNexus ondersteunings team](https://simplenexus.com/sn/contact-us/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **SimpleNexus** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste uit de Azure-portal gekopieerde URL's verzenden naar het [ondersteuningsteam van SimpleNexus](https://simplenexus.com/sn/contact-us/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -138,7 +134,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -146,26 +142,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan SimpleNexus.
+In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanmelding via Azure door haar toegang te geven tot SimpleNexus.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **SimpleNexus**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **SimpleNexus**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **SimpleNexus**.
+2. Selecteer **SimpleNexus** in de lijst met toepassingen.
 
-    ![De koppeling SimpleNexus in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar SimpleNexus in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -175,29 +171,29 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-simplenexus-test-user"></a>SimpleNexus-test gebruiker maken
+### <a name="create-simplenexus-test-user"></a>Testgebruiker voor SimpleNexus maken
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij SimpleNexus, moeten ze worden ingericht in SimpleNexus. In het geval van SimpleNexus is inrichting een hand matige taak uitgevoerd door de Tenant beheerder.
+Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij SimpleNexus, moeten ze in SimpleNexus worden ingericht. In het geval van SimpleNexus, moet het inrichten handmatig worden uitgevoerd door de tenantbeheerder.
 
 > [!NOTE]
-> U kunt alle andere hulpprogram ma's voor het maken van SimpleNexus-gebruikers accounts of Api's die worden geleverd door SimpleNexus, gebruiken om Azure AD-gebruikers accounts in te richten.
+> U kunt ook alle andere hulpprogramma's voor het maken van gebruikersaccounts of API's van SimpleNexus gebruiken om Azure AD-gebruikersaccounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SimpleNexus in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SimpleNexus waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SimpleNexus in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van SimpleNexus waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

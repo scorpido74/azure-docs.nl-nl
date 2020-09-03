@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met 8x8 | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en 8x8.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018589"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538651"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met 8x8
 
@@ -64,7 +60,7 @@ Voor het configureren van de integratie van 8x8 met Microsoft Azure Active Direc
 1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **8x8**.
 1. Selecteer **8x8** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>Eenmalige aanmelding van Azure AD configureren en testen voor 8x8
+## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>Eenmalige aanmelding via Azure AD voor 8x8 configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met 8x8 met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in 8x8.
 
@@ -139,7 +135,15 @@ Het volgende deel van de zelfstudie is afhankelijk van uw soort abonnement op 8x
 
 ### <a name="configure-8x8-configuration-manager"></a>8x8 Configuration Manager configureren
 
-1. Meld u aan bij 8x8 [Configuration Manager](https://vo-cm.8x8.com/).
+1. Als u de configuratie in 8x8 wilt automatiseren, moet u **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
+
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
+
+1. Als u op **8x8 instellen** klikt nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar de 8x8-toepassing. Geef hier de beheerdersreferenties op om u aan te melden bij 8x8. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
+
+    ![Instelling configureren](common/setup-sso.png)
+
+1. Als u 8X8 handmatig wilt instellen, meldt u zich als beheerder aan bij de [Configuration Manager](https://vo-cm.8x8.com/) van 8x8.
 
 1. Klik op de startpagina op **Identity Management**.
 

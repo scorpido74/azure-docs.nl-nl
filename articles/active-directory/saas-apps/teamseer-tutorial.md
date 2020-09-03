@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met TeamSeer | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TeamSeer.
+title: 'Zelfstudie: Azure Active Directory-integratie met TeamSeer | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en TeamSeer.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6ec4806f-fe0f-4ed7-8cfa-32d1c840433f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e505e4823db8c9f42bbff216f30326081110dcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67088970"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542493"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Zelf studie: integratie Azure Active Directory met TeamSeer
+# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Zelfstudie: Azure Active Directory-integratie met TeamSeer
 
-In deze zelf studie leert u hoe u TeamSeer integreert met Azure Active Directory (Azure AD).
-Het integreren van TeamSeer met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u TeamSeer kunt integreren met Azure Active Directory (Azure AD).
+De integratie van TeamSeer met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot TeamSeer.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij TeamSeer (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD regelen wie toegang heeft tot TeamSeer.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij TeamSeer (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met TeamSeer wilt configureren, hebt u de volgende items nodig:
+U hebt het volgende nodig om de Azure AD-integratie met TeamSeer te configureren:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement voor eenmalige aanmelding TeamSeer ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Een abonnement op TeamSeer waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* TeamSeer ondersteunt door **SP** GEÏNITIEERDe SSO
+* TeamSeer ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-teamseer-from-the-gallery"></a>TeamSeer toevoegen uit de galerie
+## <a name="adding-teamseer-from-the-gallery"></a>TeamSeer vanuit de galerie toevoegen
 
-Als u de integratie van TeamSeer in azure AD wilt configureren, moet u TeamSeer uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+U moet TeamSeer uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps om de integratie van TeamSeer in Azure AD te configureren.
 
-**Voer de volgende stappen uit om TeamSeer toe te voegen uit de galerie:**
+**Als u TeamSeer uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van TeamSeer in azure AD wilt configureren, moet u TeamSeer 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **TeamSeer**in het zoekvak, selecteer **TeamSeer** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **TeamSeer** in het zoekvak, selecteer **TeamSeer** in het resultaatdeelvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![TeamSeer in de lijst met resultaten](common/search-new-app.png)
+     ![TeamSeer in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met TeamSeer op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in TeamSeer tot stand worden gebracht.
+In deze sectie gaat u eenmalige aanmelding via Azure AD bij TeamSeer configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in TeamSeer tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met TeamSeer, moet u de volgende bouw stenen volt ooien:
+Voer het volgende uit om eenmalige aanmelding van Azure AD met TeamSeer te configureren en testen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[TeamSeer eenmalige aanmelding configureren](#configure-teamseer-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een TeamSeer-test gebruiker](#create-teamseer-test-user)** -om een equivalent van Julia Simon in TeamSeer te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding bij TeamSeer configureren](#configure-teamseer-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor TeamSeer maken](#create-teamseer-test-user)** : als u een tegenhanger van Britta Simon in EmpCenter wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met TeamSeer:
+Voer de volgende stappen uit als u eenmalige aanmelding via Azure AD wilt configureren met TeamSeer:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **TeamSeer** Application Integration de optie **eenmalige aanmelding**.
+1. Ga in de [Azure Portal](https://portal.azure.com/) naar de pagina met de integratie van de toepassing **TeamSeer** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +99,18 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor TeamSeer domein en Url's](common/sp-signonurl.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij TeamSeer](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://www.teamseer.com/<companyid>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.teamseer.com/<companyid>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam van TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer op de sectie **TeamSeer instellen** de gewenste URL ('s) volgens uw vereiste.
+6. Kopieer in het gedeelte **TeamSeer instellen** de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -124,37 +120,37 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-teamseer-single-sign-on"></a>Eenmalige aanmelding voor TeamSeer configureren
+### <a name="configure-teamseer-single-sign-on"></a>Eenmalige aanmelding bij TeamSeer configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw TeamSeer-bedrijfs site.
+1. Meld u in een ander browservenster als beheerder aan bij uw TeamSeer-bedrijfssite.
 
 1. Ga naar **HR-beheerder**.
 
     ![HR-beheerder](./media/teamseer-tutorial/ic789634.png "HR-beheerder")
 
-1. Klik op **instellen**.
+1. Klik op **Installatie**.
 
-    ![Instellen](./media/teamseer-tutorial/ic789635.png "Instellen")
+    ![Installatie](./media/teamseer-tutorial/ic789635.png "Instellen")
 
-1. Klik op **SAML-provider details instellen**.
+1. Klik op **Details van de SAML-provider instellen**.
 
     ![SAML-instellingen](./media/teamseer-tutorial/ic789636.png "SAML-instellingen")
 
-1. Voer de volgende stappen uit in de sectie Details van de SAML-provider:
+1. Voer de volgende stappen uit in de sectie details van de SAML-provider:
 
     ![SAML-instellingen](./media/teamseer-tutorial/ic789637.png "SAML-instellingen")
 
-    a. Plak in het tekstvak **URL** de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
+    a. Plak in het tekstvak **URL** de waarde van de **Aanmeldings-URL** die u uit Azure Portal hebt gekopieerd.
 
-    b. Open uw met base 64 versleutelde certificaat in Klad blok, kopieer de inhoud ervan naar het klem bord en plak het in het tekstvak **IDP open bare certificaat** .
+    b. Open uw base-64 gecodeerde certificaat in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze naar het tekstvak **Openbaar IdP-certificaat**.
 
-1. Voer de volgende stappen uit om de configuratie van de SAML-provider te volt ooien:
+1. Voer de volgende stappen uit om de configuratie van de SAML-provider te voltooien:
 
     ![SAML-instellingen](./media/teamseer-tutorial/ic789638.png "SAML-instellingen")
 
-    a. In de **test-e-mail adressen**typt u het e-mail adres van de gebruiker testen.
+    a. Typ bij **Test-e-mailadressen** het e-mailadres van de testgebruiker.
   
-    b. Typ de URL van de uitgever van de service provider in het tekstvak voor de **certificaat verlener** .
+    b. Typ de URL van de uitgever van de serviceprovider in het tekstvak **Uitgever**.
   
     c. Klik op **Opslaan**.
 
@@ -166,7 +162,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -174,26 +170,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan TeamSeer.
+In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot TeamSeer.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **TeamSeer**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **TeamSeer**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **TeamSeer**.
+2. Selecteer **TeamSeer** in de lijst met toepassingen.
 
-    ![De koppeling TeamSeer in de lijst met toepassingen](common/all-applications.png)
+    ![De link naar TeamSeer in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -203,47 +199,47 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-teamseer-test-user"></a>TeamSeer-test gebruiker maken
+### <a name="create-teamseer-test-user"></a>Een testgebruiker maken in TeamSeer
 
-Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij TeamSeer, moeten ze worden ingericht in ShiftPlanning. In het geval van TeamSeer is inrichting een hand matige taak.
+Om Azure AD-gebruikers zich te laten aanmelden bij TeamSeer, moeten ze worden ingericht in TeamSeer. In het geval van TeamSeer moet dit handmatig gebeuren.
 
-**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
+**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u als beheerder aan bij de **TeamSeer** -bedrijfs site.
+1. Meld u als beheerder aan bij de bedrijfssite van **TeamSeer**.
 
-1. Ga naar **gebruikers van \> de HR-beheerder** en klik vervolgens op **de wizard Nieuwe gebruiker uitvoeren**.
+1. Ga naar **HR-beheerder \> Gebruikers** en klik vervolgens op **de wizard Nieuwe gebruiker uitvoeren**.
 
     ![HR-beheerder](./media/teamseer-tutorial/ic789640.png "HR-beheerder")
 
-1. Voer de volgende stappen uit in de sectie **gebruikers Details** :
+1. Voer in de sectie **Gebruikersdetails** de volgende stappen uit:
 
-    ![Gebruikers Details](./media/teamseer-tutorial/ic789641.png "Gebruikers Details")
+    ![Gebruikersdetails](./media/teamseer-tutorial/ic789641.png "Gebruikersdetails")
 
-    a. Typ de **voor-en achternaam** **, de** **gebruikers naam (e-mail adres)** van een geldig Azure ad-account dat u wilt inrichten in de bijbehorende tekst vakken.
+    a. Typ in de betreffende tekstvakken de **Voornaam**, **Achternaam**, **Gebruikersnaam (e-mailadres)** van een geldig Azure AD-account dat u wilt inrichten.
   
     b. Klik op **Volgende**.
 
-1. Volg de instructies op het scherm voor het toevoegen van een nieuwe gebruiker en klik op **volt ooien**.
+1. Volg de instructies op het scherm voor het toevoegen van een nieuwe gebruiker en klik op **Voltooien**.
 
 > [!NOTE]
-> U kunt alle andere hulpprogram ma's voor het maken van TeamSeer-gebruikers accounts of Api's die worden geleverd door TeamSeer, gebruiken om Azure AD-gebruikers accounts in te richten.
+> U kunt ook alle andere hulpprogramma's voor het creëren van TeamSeer-gebruikersaccounts of API's van TeamSeer gebruiken om Azure AD-gebruikersaccounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel TeamSeer in het toegangs venster klikt, moet u automatisch worden aangemeld bij de TeamSeer waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel TeamSeer klikt, wordt u automatisch aangemeld bij de instantie van TeamSeer waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

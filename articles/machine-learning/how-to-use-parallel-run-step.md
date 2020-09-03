@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847701"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507111"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Meer informatie over hoe u asynchroon en parallel batchdeducties kunt uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning. ParallelRunStep biedt kant-en-klare parallelle mogelijkheden.
+Dit artikel laat u zien hoe u uw Azure Machine Learning-model parallel kunt uitvoeren om zo snel grote hoeveelheden gegevens te evalueren. 
 
-Met ParallelRunStep kunt u eenvoudig offline deducties omhoog schalen naar grote clusters van machines en terabytes gestructureerde of ongestructureerde gegevens met verbeterde productiviteit en lagere kosten.
+Deductie van grote gegevenssets of met complexe modellen kan tijdrovend zijn. Met de klasse `ParallelRunStep` kunt u parallelle verwerking uitvoeren, waardoor de algemene resultaten sneller worden verkregen. Zelfs als het uitvoeren van één evaluatie redelijk snel gaat, zijn er veel scenario's (objectdetectie, videoverwerking, verwerking van natuurlijke taal, enz.) waarvoor een groot aantal evaluaties vereist is. 
+
+Met `ParallelRunStep` kunt u batchdeducties eenvoudig schalen naar grote clusters van machines. Dergelijke clusters kunnen terabytes aan gestructureerde of ongestructureerde gegevens verwerken, met als voordelen verbeterde productiviteit en geoptimaliseerde kosten.
 
 In dit artikel komen de volgende taken aan bod:
 

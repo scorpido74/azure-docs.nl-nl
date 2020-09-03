@@ -5,14 +5,14 @@ keywords: app service, azure app service, domeintoewijzing, domeinnaam, bestaand
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543555"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190081"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelfstudie: Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -125,11 +125,11 @@ Als u een ander subdomein hebt dan `www`, vervangt u `www` door het subdomein (b
 
 #### <a name="create-the-cname-record"></a>Het CNAME-record maken
 
-Wijs een subdomein toe aan de standaarddomeinnaam van de app (`<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam is van de app). Als u een CNAME-toewijzing voor het subdomein `www` wilt maken, maakt u twee records:
+Wijs een subdomein toe aan de standaarddomeinnaam van de app (`<app-name>.azurewebsites.net`, waarbij `<app-name>` de naam is van de app). Als u een CNAME-toewijzing voor het subdomein `www` wilt maken, maakt u twee records:
 
 | Recordtype | Host | Waarde | Opmerkingen |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | De domeintoewijzing zelf. |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | De domeintoewijzing zelf. |
 | TXT | `asuid.www` | [De verificatie-id die u eerder hebt ontvangen](#get-domain-verification-id) | De TXT-record `asuid.<subdomain>` wordt geopend met App Service om te verifiëren dat u de eigenaar bent van het aangepaste domein. |
 
 Nadat u de CNAME en TXT-records hebt toegevoegd, lijkt de pagina met DNS-records op het volgende voorbeeld:
@@ -210,7 +210,7 @@ Als u een A-record wilt toewijzen aan een app, meestal aan het hoofddomein, maak
 > | Recordtype | Host | Waarde |
 > | - | - | - |
 > | A | `www` | IP-adres uit [Het IP-adres van de app kopiëren](#info) |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 Wanneer de records worden toegevoegd, lijkt de pagina met DNS-records op het volgende voorbeeld:
@@ -262,9 +262,14 @@ In het voorbeeld van de zelfstudie, wijst u een [wildcard-DNS-naam](https://en.w
 
 #### <a name="create-the-cname-record"></a>Het CNAME-record maken
 
-Voeg een CNAME-record toe om een wildcard-naam toe te wijzen aan de standaarddomeinnaam van de app (`<app_name>.azurewebsites.net`).
+Wijs een jokerteken-naam `*` toe aan de standaarddomeinnaam van de app (`<app-name>.azurewebsites.net`, waarbij `<app-name>` de naam is van de app). Maak twee records om de jokerteken-naam toe te wijzen:
 
-Voor het `*.contoso.com` domeinvoorbeeld zal het CNAME-record de naam `*` toewijzen naar `<app_name>.azurewebsites.net`.
+| Recordtype | Host | Waarde | Opmerkingen |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | De domeintoewijzing zelf. |
+| TXT | `asuid` | [De verificatie-id die u eerder hebt ontvangen](#get-domain-verification-id) | De TXT-record `asuid` wordt geopend met App Service om te verifiëren dat u de eigenaar bent van het aangepaste domein. |
+
+Voor het `*.contoso.com` domeinvoorbeeld zal het CNAME-record de naam `*` toewijzen naar `<app-name>.azurewebsites.net`.
 
 Wanneer de CNAME wordt toegevoegd, lijkt de pagina met DNS-records op het volgende voorbeeld:
 
@@ -272,7 +277,7 @@ Wanneer de CNAME wordt toegevoegd, lijkt de pagina met DNS-records op het volgen
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>De toewijzing van het CNAME-record in de app inschakelen
 
-U kunt nu elk subdomein dat overeenkomt met de wildcard-naam aan de app toevoegen (bijvoorbeeld `sub1.contoso.com` en `sub2.contoso.com` komen overeen met `*.contoso.com`).
+U kunt nu elk subdomein dat overeenkomt met de jokerteken-naam aan de app toevoegen (bijvoorbeeld: `sub1.contoso.com` en `sub2.contoso.com` komen beide overeen met `*.contoso.com`).
 
 Selecteer in het linkernavigatievenster van de app-pagina in de Azure portal **Aangepaste domeinen**.
 
@@ -342,7 +347,7 @@ De volgende opdracht voegt een geconfigureerde aangepaste DNS-naam toe aan een A
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ De volgende opdracht voegt een geconfigureerde aangepaste DNS-naam toe aan een A
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 Zie voor meer informatie [Een aangepast domein toewijzen aan een web-app](scripts/powershell-configure-custom-domain.md).

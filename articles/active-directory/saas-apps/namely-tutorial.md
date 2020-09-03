@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met te weten | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en te weten.
+title: 'Zelfstudie: Azure Active Directory-integratie met Namely | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Namely.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9541d5c4-4c82-4b5b-b01a-6a3f75a2b7a1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: a9ec54ce27b4d058938e688ec671709e09391cce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160363"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552465"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-namely"></a>Zelf studie: integratie Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-namely"></a>Zelfstudie: Azure Active Directory-integratie met Namely
 
-In deze zelf studie leert u hoe u kunt integreren met behulp van Azure Active Directory (Azure AD).
-Door te integreren met Azure AD beschikt u over de volgende voor delen:
+In deze zelfstudie leert u hoe u Namely kunt integreren met Azure Active Directory (Azure AD).
+Integratie van Namely met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot dat van te weten.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld met name (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure Active Directory bepalen wie er toegang heeft tot Namely.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij Namely (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met name wilt configureren, hebt u de volgende items nodig:
+Voor het configureren van Azure AD-integratie met Namely hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Dit abonnement is met name geschikt voor eenmalige aanmelding
+* Een abonnement op Namely waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Dat wil zeggen dat door **SP** GEÏNITIEERDe SSO wordt ondersteund
+* Namely ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-namely-from-the-gallery"></a>Te weten uit de galerie
+## <a name="adding-namely-from-the-gallery"></a>Namely toevoegen uit de galerie
 
-Als u de integratie van wilt configureren in azure AD, moet u deze van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Namely te configureren in Azure AD, moet u Namely uit de galerie toevoegen aan de lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om te worden toegevoegd uit de galerie:**
+**Voer de volgende stappen uit om Namely toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van wilt configureren in azure AD, moet u deze van de galeri
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak te **weten**, selecteer te **weten** uit resultaat paneel en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Namely**, selecteer **Namely** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Met name in de resultaten lijst](common/search-new-app.png)
+     ![Namely in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen, met name op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker worden ingesteld.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Namely op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Namely tot stand is gebracht.
 
-Om eenmalige aanmelding voor Azure AD te configureren en te testen, moet u de volgende bouw stenen volt ooien:
+Om Azure AD eenmalige aanmelding met Namely te configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. Configureren met behulp **[van eenmalige aanmelding](#configure-namely-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak gebruik](#create-namely-test-user)** van een andere test gebruiker: om een soort juliae Simon te hebben, dat wil zeggen dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Namely voor eenmalige aanmelding configureren](#configure-namely-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor Namely maken](#create-namely-test-user)** : als u een tegenhanger van Britta Simon in Namely wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren:
+Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt configureren voor Namely:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina te **weten** toepassings integratie de optie **eenmalige aanmelding**.
+1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Namely**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +99,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Domein-en URL-informatie voor eenmalige aanmelding](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor Namely-domein en -URL's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.namely.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<subdomain>.namely.com/saml/metadata`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<subdomain>.namely.com/saml/metadata`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team](https://www.namely.com/contact/) van de client om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [Namely-ondersteuningsteam](https://www.namely.com/contact/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer de gewenste URL ('s) volgens uw vereiste in het gedeelte **instellen** .
+6. In het gedeelte **Namely instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,11 +122,11 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-namely-single-sign-on"></a>Configureren, D.w.z. eenmalige aanmelding
+### <a name="configure-namely-single-sign-on"></a>Eenmalige aanmelding voor Namely configureren
 
-1. Meld u in een ander browser venster aan bij uw bedrijfs site als beheerder.
+1. Meld u in een ander browservenster als beheerder aan bij de bedrijfssite van Namely.
 
-2. Klik in de werk balk aan de bovenkant op **bedrijf**.
+2. Klik in de werkbalk bovenaan op **Bedrijf**.
    
     ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_06.png) 
 
@@ -142,15 +138,15 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
    
     ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_08.png) 
 
-5. Voer de volgende stappen uit op de pagina **SAML-instellingen** :
+5. Voer in het dialoogvenster **SAML Settings** de volgende stappen uit:
    
     ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Klik op **Enable SAML**. 
 
-    b. Plak de waarde van de **aanmeldings-URL**die u hebt gekopieerd van Azure Portal in het tekstvak id- **SSO-URL** .
+    b. Plak in het tekstvak **URL voor eenmalige aanmelding van identiteitsprovider** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
     
-    c. Open het gedownloade certificaat in Klad blok, kopieer de inhoud en plak het in het tekstvak **ID-provider certificaat** .
+    c. Open het gedownloade certificaat in Kladblok, kopieer de inhoud en plak deze in het tekstvak **Certificaat van identiteitsprovider**.
      
     d. Klik op **Opslaan**.
 
@@ -162,7 +158,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -170,26 +166,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen.
+In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Namely.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens te **weten**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **Namely**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen te **weten**.
+2. Selecteer **Namely** in de lijst met toepassingen.
 
-    ![De meest te koppelen koppeling in de lijst toepassingen](common/all-applications.png)
+    ![De Namely-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -199,39 +195,39 @@ In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-namely-test-user"></a>Maken, namelijk test gebruiker
+### <a name="create-namely-test-user"></a>Namely-testgebruiker maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam Julia Simon, namelijk.
+Het doel van dit gedeelte is het maken van een gebruiker met de naam Britta Simon in Namely.
 
-**Voer de volgende stappen uit om een gebruiker te maken met de naam Julia Simon, namelijk:**
+**Voer de volgende stappen uit om een gebruiker met de naam Britta Simon te maken in Namely:**
 
-1. Meld u aan bij uw bedrijfs site als beheerder.
+1. Meld u als beheerder aan bij de bedrijfssite van Namely.
 
-2. Klik in de werk balk bovenaan op **personen**.
+2. Klik in de werkbalk bovenaan op **Personen**.
    
     ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_10.png) 
 
-3. Klik op het tabblad **map** .
+3. Klik op het tabblad **Map**.
    
     ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_11.png) 
 
-4. Klik op **nieuwe persoon toevoegen**.
+4. Klik op **Nieuwe persoon toevoegen**.
 
     ![Eenmalige aanmelding configureren](./media/namely-tutorial/tutorial_namely_12.png)
 
-5. Voer de volgende stappen uit in het dialoog venster **nieuwe persoon toevoegen** :
+5. Voer de volgende stappen uit in het dialoogvenster **Nieuwe persoon toevoegen**:
 
-    a. Typ **Julia**in het tekstvak **voor de voor naam** .
+    a. In het vak **Voornaam** voert u **Britta** in.
 
-    b. Typ in het tekstvak **Achternaam** **Simon**.
+    b. In het vak **Achternaam** voert u **Simon** in.
 
-    c. Typ in het tekstvak **e-mail** het **e-mail adres** van BrittaSimon.
+    c. In het tekstvak **E-mail** voert u het **e-mailadres** van BrittaSimon in.
 
     d. Klik op **Opslaan**.
 
@@ -239,13 +235,13 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Julia Simon,
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de te gebruiken tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij het te weten waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Namely in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Namely waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

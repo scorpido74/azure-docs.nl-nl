@@ -1,17 +1,17 @@
 ---
-title: 'Zelfstudie: Een VM-schijf herstellen met Azure Backup'
+title: 'Zelfstudie: een VM herstellen met Azure CLI'
 description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Azure met Backup and Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289468"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141343"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Een schijf herstellen en een herstelde VM maken in Azure
+# <a name="restore-a-vm-with-azure-cli"></a>Een VM herstellen met Azure CLI
 
 Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante Recovery Services-kluizen. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of afzonderlijke bestanden herstellen. In dit artikel wordt uitgelegd hoe u een volledige VM herstelt met behulp van CLI. In deze zelfstudie leert u het volgende:
 
@@ -25,7 +25,7 @@ Zie [Back up and restore Azure VMs with PowerShell](backup-azure-vms-automation.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.18 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.18 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -101,7 +101,7 @@ Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de
     --restore-as-unmanaged-disk
     ```
 
-Hiermee worden beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount, en wordt niet gebruikgemaakt van de functie voor onmiddellijk herstellen. In toekomstige versies van CLI moet u verplicht de parameter target-resource-group of de parameter restore-as-unmanaged-disk opgeven.
+Hiermee worden beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount, en wordt niet gebruikgemaakt van de functie voor direct herstel. In toekomstige versies van CLI moet u verplicht de parameter target-resource-group of de parameter restore-as-unmanaged-disk opgeven.
 
 ### <a name="unmanaged-disks-restore"></a>Niet-beheerde schijven herstellen
 

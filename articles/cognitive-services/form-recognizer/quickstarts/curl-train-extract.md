@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d0bf5da3633ce8f34e34cbdf0cee12a94c128d72
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f4e26d74ff0922841d2ceb2ce4eb06b96c697a9f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517962"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719085"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Quickstart: Een Form Recognizer-model trainen en formuliergegevens extraheren met behulp van de REST API met cURL
 
@@ -39,15 +39,26 @@ Eerst hebt u een set trainingsgegevens in een Azure Storage-blob nodig. U moet m
 > [!NOTE]
 > U kunt via de functie met gelabelde gegevens handmatig enkele of al uw trainingsgegevens vooraf labelen. Dit is een complexer proces, maar resulteert in een beter getraind model. Zie de sectie [Trainen met labels](../overview.md#train-with-labels) van het overzicht voor meer informatie over deze functie.
 
+
+
 Als u een Form Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de API **[Aangepast model trainen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** aan door de volgende cURL-opdracht uit te voeren. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang `<Endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
 1. Vervang `<subscription key>` door de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
 1. Vervang `<SAS URL>` door de URL van de SAS (Shared Access Signature) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
 
-```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
-```
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
+    ```bash
+    curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
+    ```
+    # <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+    ```bash
+    curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.1/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
+    ```
+    
+    ---
+
+
 
 U ontvangt een `201 (Success)` antwoord met een **Locatie**-header. De waarde van deze header is de id van het nieuwe model dat wordt getraind.
 
@@ -59,9 +70,19 @@ Nadat u de trainbewerking hebt gestart, gebruikt u een nieuwe bewerking **[Aange
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 1. Vervang `<model ID>` door de model-id in de vorige stap.
 
+
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
+# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+```bash
+curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.1/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+```ce\": \""<SAS URL>"\"}"
+```
+    
+---
 
 U ontvangt een `200 (Success)`-antwoord met een JSON-hoofdtekst in de volgende indeling. Let op het veld `"status"`. Dit heeft de waarde `"ready"` zodra de training is voltooid. Als de training van het model niet is voltooid, moet u opnieuw een query uitvoeren op de service door de opdracht opnieuw uit te voeren. Een interval van één seconde of meer tussen oproepen wordt aanbevolen.
 
@@ -142,9 +163,19 @@ Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een documen
 1. Vervang `<SAS URL>` door een SAS-URL naar uw bestand in Azure Storage. Volg de stappen in de sectie Training, maar in plaats van een SAS-URL voor de hele blobcontainer op te halen, haalt u er een op voor het specifieke bestand dat u wilt analyseren.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
+# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+```bash
+```bash
+curl -v "https://<Endpoint>/formrecognizer/v2.1-preview.1/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
+```
+    
+---
+
+
 
 U ontvangt een `202 (Success)`-antwoord met een **Bewerking-Locatie**-header. De waarde van deze header bevat een resultaten-id die u gebruikt om de resultaten van de analysebewerking bij te houden. Sla deze resultaten-id op voor de volgende stap.
 
@@ -156,262 +187,297 @@ Gebruik de volgende API om de resultaten van de analysebewerking op te vragen.
 1. Vervang `<result ID>` door de id die u in de vorige sectie hebt gekregen.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
+# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+```bash
+curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+```
+    
+---
 
 U ontvangt een `200 (Success)`-antwoord met een JSON-hoofdtekst in de volgende indeling. De uitvoer is voor het gemak ingekort. U ziet het veld `"status"` onderaan. Dit heeft de waarde `"succeeded"` wanneer de analysebewerking is voltooid. Als de bewerking Analyse niet is voltooid, moet u opnieuw een query uitvoeren op de service door de opdracht opnieuw uit te voeren. Een interval van één seconde of meer tussen oproepen wordt aanbevolen.
 
 De hoofdkoppelingen en tabellen voor sleutel/waardeparen bevinden zich in het knooppunt `"pageResults"`. Als u ook extractie voor tekst zonder opmaak hebt opgegeven via de URL-parameter *includeTextDetails*, worden in het knooppunt `"readResults"` de inhoud en posities van alle tekst in het document weergegeven.
 
-```json
+Dit voorbeeld van een JSON-bestand is voor het gemak ingekort.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```JSON
 {
-  "analyzeResult":{
-    "readResults":[
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
       {
-        "page":1,
-        "width":8.5,
-        "height":11.0,
-        "angle":0,
-        "unit":"inch",
-        "lines":[
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
           {
-            "text":"Contoso",
-            "boundingBox":[
-              0.5278,
-              1.0597,
-              1.4569,
-              1.0597,
-              1.4569,
-              1.4347,
-              0.5278,
-              1.4347
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
             ],
-            "words":[
+            "words": [
               {
-                "text":"Contoso",
-                "boundingBox":[
-                  0.5278,
-                  1.0597,
-                  1.4569,
-                  1.0597,
-                  1.4569,
-                  1.4347,
-                  0.5278,
-                  1.4347
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
                 ]
               }
             ]
-          },
-          ...
-          {
-            "text":"PT",
-            "boundingBox":[
-              6.2181,
-              3.3528,
-              6.3944,
-              3.3528,
-              6.3944,
-              3.5417,
-              6.2181,
-              3.5417
-            ],
-            "words":[
-              {
-                "text":"PT",
-                "boundingBox":[
-                  6.2181,
-                  3.3528,
-                  6.3944,
-                  3.3528,
-                  6.3944,
-                  3.5417,
-                  6.2181,
-                  3.5417
-                ]
-              }
-            ]
-          }
+          }, 
+        ...
         ]
       }
     ],
-    "version":"2.0.0",
-    "errors":[
-
-    ],
-    "documentResults":[
-
-    ],
-    "pageResults":[
+    "pageResults": [
       {
-        "page":1,
-        "clusterId":1,
-        "keyValuePairs":[
+        "page": 1,
+        "keyValuePairs": [
           {
-            "key":{
-              "text":"Address:",
-              "boundingBox":[
-                0.7972,
-                1.5125,
-                1.3958,
-                1.5125,
-                1.3958,
-                1.6431,
-                0.7972,
-                1.6431
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
               ],
-              "elements":[
-                "#/readResults/0/lines/1/words/0"
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
               ]
             },
-            "value":{
-              "text":"1 Redmond way Suite 6000 Redmond, WA 99243",
-              "boundingBox":[
-                0.7972,
-                1.6764,
-                2.15,
-                1.6764,
-                2.15,
-                2.2181,
-                0.7972,
-                2.2181
-              ],
-              "elements":[
-                "#/readResults/0/lines/4/words/0",
-                "#/readResults/0/lines/4/words/1",
-                "#/readResults/0/lines/4/words/2",
-                "#/readResults/0/lines/4/words/3",
-                "#/readResults/0/lines/6/words/0",
-                "#/readResults/0/lines/6/words/1",
-                "#/readResults/0/lines/6/words/2",
-                "#/readResults/0/lines/8/words/0"
-              ]
-            },
-            "confidence":0.86
+            "confidence": 1
           },
-          {
-            "key":{
-              "text":"Invoice For:",
-              "boundingBox":[
-                4.3903,
-                1.5125,
-                5.1139,
-                1.5125,
-                5.1139,
-                1.6431,
-                4.3903,
-                1.6431
-              ],
-              "elements":[
-                "#/readResults/0/lines/2/words/0",
-                "#/readResults/0/lines/2/words/1"
-              ]
-            },
-            "value":{
-              "text":"Microsoft 1020 Enterprise Way Sunnayvale, CA 87659",
-              "boundingBox":[
-                5.1917,
-                1.4458,
-                6.6583,
-                1.4458,
-                6.6583,
-                2.0347,
-                5.1917,
-                2.0347
-              ],
-              "elements":[
-                "#/readResults/0/lines/3/words/0",
-                "#/readResults/0/lines/5/words/0",
-                "#/readResults/0/lines/5/words/1",
-                "#/readResults/0/lines/5/words/2",
-                "#/readResults/0/lines/7/words/0",
-                "#/readResults/0/lines/7/words/1",
-                "#/readResults/0/lines/7/words/2"
-              ]
-            },
-            "confidence":0.86
-          },
-          ...
+         ...
         ],
-        "tables":[
+        "tables": [
           {
-            "caption":null,
-            "rows":2,
-            "columns":5,
-            "cells":[
+            "rows": 4,
+            "columns": 5,
+            "cells": [
               {
-                "rowIndex":0,
-                "colIndex":0,
-                "header":true,
-                "text":"Invoice Number",
-                "boundingBox":[
-                  0.5347,
-                  2.8722,
-                  1.575,
-                  2.8722,
-                  1.575,
-                  3.0028,
-                  0.5347,
-                  3.0028
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
                 ],
-                "elements":[
-                  "#/readResults/0/lines/9/words/0",
-                  "#/readResults/0/lines/9/words/1"
-                ]
-              },
-              {
-                "rowIndex":0,
-                "colIndex":1,
-                "header":true,
-                "text":"Invoice Date",
-                "boundingBox":[
-                  1.9403,
-                  2.8722,
-                  2.7569,
-                  2.8722,
-                  2.7569,
-                  3.0028,
-                  1.9403,
-                  3.0028
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
                 ],
-                "elements":[
-                  "#/readResults/0/lines/10/words/0",
-                  "#/readResults/0/lines/10/words/1"
-                ]
-              },
-              {
-                "rowIndex":0,
-                "colIndex":2,
-                "header":true,
-                "text":"Invoice Due Date",
-                "boundingBox":[
-                  3.3403,
-                  2.8722,
-                  4.4583,
-                  2.8722,
-                  4.4583,
-                  3.0028,
-                  3.3403,
-                  3.0028
-                ],
-                "elements":[
-                  "#/readResults/0/lines/11/words/0",
-                  "#/readResults/0/lines/11/words/1",
-                  "#/readResults/0/lines/11/words/2"
-                ]
+                "isHeader": true,
+                "isFooter": false
               },
               ...
             ]
           }
-        ]
+        ], 
+        "clusterId": 0
       }
-    ]
-  },
-  "lastUpdatedDateTime":"2019-10-07T19:32:18+00:00",
-  "status":"succeeded",
-  "createdDateTime":"2019-10-07T19:32:15+00:00"
+    ],
+    "documentResults": [],
+    "errors": []
+  }
 }
-```
+```    
+# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T01:13:28Z",
+  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
+  "analyzeResult": {
+    "version": "2.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0444,
+              0.3613,
+              8.0917,
+              0.3613,
+              8.0917,
+              0.6718,
+              5.0444,
+              0.6718
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0444,
+                  0.3587,
+                  6.2264,
+                  0.3587,
+                  6.2264,
+                  0.708,
+                  5.0444,
+                  0.708
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3361,
+                  0.3635,
+                  8.0917,
+                  0.3635,
+                  8.0917,
+                  0.6396,
+                  6.3361,
+                  0.6396
+                ]
+              }
+            ]
+          }, 
+          ...
+        ] 
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9833,
+                1.0615,
+                7.3333,
+                1.0615,
+                7.3333,
+                1.1649,
+                6.9833,
+                1.1649
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "value": {
+              "text": "9/10/2020",
+              "boundingBox": [
+                7.3833,
+                1.0802,
+                7.925,
+                1.0802,
+                7.925,
+                1.174,
+                7.3833,
+                1.174
+              ],
+              "elements": [
+                "#/readResults/0/lines/3/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+          ...
+        ], 
+        "tables": [
+          {
+            "rows": 5,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6944,
+                  4.2779,
+                  1.5625,
+                  4.2779,
+                  1.5625,
+                  4.4005,
+                  0.6944,
+                  4.4005
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ], 
+    "documentResults": [],
+    "errors": []
+  }
+}
+``` 
+
+---
+
 
 ## <a name="improve-results"></a>Resultaten verbeteren
 

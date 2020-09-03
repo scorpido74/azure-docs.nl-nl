@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080759"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212815"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory
 
@@ -32,7 +31,7 @@ Deze zelfstudie:
 > * Voegt een toepassing toe aan uw Azure AD-tenant
 > * Controleert of een testgebruiker zich kan aanmelden bij de toepassing met behulp van een Azure AD-account
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
 
 Als u een on-premises toepassing wilt toevoegen aan Azure AD, hebt u het volgende nodig:
 
@@ -235,6 +234,10 @@ De aanmelding voor de toepassing testen:
 
 Zie [Problemen en foutberichten met Application Proxy oplossen](application-proxy-troubleshoot.md) voor het oplossen van problemen.
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Verwijder de resources die u in deze zelfstudie hebt gemaakt, als u ze niet meer nodig hebt.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u uw on-premises omgeving voorbereid om te werken met Application Proxy en hebt u vervolgens de Application Proxy-connector geïnstalleerd en geregistreerd. Vervolgens hebt u een toepassing toegevoegd aan uw Azure AD-tenant. U hebt ook gecontroleerd of een gebruiker zich kan aanmelden bij de toepassing met behulp van een Azure AD-account
@@ -250,4 +253,4 @@ U hebt het volgende gedaan:
 U kunt de toepassing nu gaan configureren voor eenmalige aanmelding. Gebruik de volgende koppeling om een methode voor eenmalige aanmelding te kiezen en om de zelfstudies voor eenmalige aanmelding te vinden.
 
 > [!div class="nextstepaction"]
-> [Eenmalige aanmelding configureren](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [Eenmalige aanmelding configureren](sso-options.md#choosing-a-single-sign-on-method)

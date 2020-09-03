@@ -1,59 +1,55 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Weekdone | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Weekdone.
+title: 'Zelfstudie: Integratie van Azure Active Directory met Weekdone | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Weekdone.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 34921f9a-5637-4420-ab4c-9beb34421909
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 43ade2035e6f831f9d665d2b53dabb3afb96f41d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 613509f59d759bfecc11bd16cdafcb5fc49413cc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087357"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523599"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Zelf studie: integratie Azure Active Directory met Weekdone
+# <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Zelfstudie: Integratie van Azure Active Directory met Weekdone
 
-In deze zelf studie leert u hoe u Weekdone integreert met Azure Active Directory (Azure AD).
-Het integreren van Weekdone met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Weekdone kunt integreren met Azure Active Directory (Azure AD).
+De integratie van Weekdone met Azure Active Directory biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Weekdone.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Weekdone (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD bepalen wie er toegang krijgt tot Weekdone.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Weekdone (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Weekdone wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD wilt integreren met Weekdone, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement voor eenmalige aanmelding Weekdone ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Een abonnement op Weekdone waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Weekdone ondersteunt SSO die door **SP** en **IDP** is geïnitieerd
+* Weekdone biedt ondersteuning voor met **SP** en **IDP** geïnitieerde eenmalige aanmelding
 
-* Weekdone ondersteunt **just-in-time** -gebruikers inrichting
+* Weekdone ondersteunt het **Just-In-Time** inrichten van gebruikers
 
-## <a name="adding-weekdone-from-the-gallery"></a>Weekdone toevoegen uit de galerie
+## <a name="adding-weekdone-from-the-gallery"></a>Weekdone toevoegen vanuit de galerie
 
-Als u de integratie van Weekdone in azure AD wilt configureren, moet u Weekdone uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Weekdone in Azure Active Directory, moet u Weekdone uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Weekdone toe te voegen uit de galerie:**
+**Voer de volgende stappen uit als u Weekdone vanuit de galerie wilt toevoegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +63,31 @@ Als u de integratie van Weekdone in azure AD wilt configureren, moet u Weekdone 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Weekdone**in het zoekvak, selecteer **Weekdone** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Weekdone** in het zoekvak, selecteer **Weekdone** in het venster met resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Weekdone in de lijst met resultaten](common/search-new-app.png)
+     ![Weekdone in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Weekdone op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Weekdone tot stand worden gebracht.
+In deze sectie gaat u eenmalige aanmelding bij Weekdone via Azure Active Directory configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Weekdone tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Weekdone, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding via Azure AD bij Weekdone wilt testen en configureren, dient u de volgende bouwstenen te voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Weekdone eenmalige aanmelding configureren](#configure-weekdone-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Weekdone-test gebruiker](#create-weekdone-test-user)** -om een equivalent van Julia Simon in Weekdone te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding bij Weekdone configureren](#configure-weekdone-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Weekdone-testgebruiker maken](#create-weekdone-test-user)** : als u een tegenhanger van Britta Simon in Weekdone wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Weekdone:
+Voer de volgende stappen uit als u eenmalige aanmelding via Azure Active Directory wilt configureren bij Weekdone:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Weekdone** Application Integration de optie **eenmalige aanmelding**.
+1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Weekdone**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,31 +99,31 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
+4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor Weekdone domein en Url's](common/idp-intiated.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Weekdone](common/idp-intiated.png)
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://weekdone.com/a/<tenant>/metadata`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://weekdone.com/a/<tenant>/metadata`
 
     > [!NOTE]
-    > Het meta gegevensbestand van weekdone kan met behulp van dezelfde URL worden opgehaald.
+    > Het bestand met metagegevens van Weekdone kan met behulp van dezelfde URL worden opgehaald.
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://weekdone.com/a/<tenantname>`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor Weekdone domein en Url's](common/metadata-upload-additional-signon.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Weekdone](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://weekdone.com/a/<tenantname>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://weekdone.com/a/<tenantname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team van Weekdone-clients](mailto:hello@weekdone.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteuningsteam van Weekdone](mailto:hello@weekdone.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-7. Kopieer op de sectie **Weekdone instellen** de gewenste URL ('s) volgens uw vereiste.
+7. In het gedeelte **Weekdone instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -137,9 +133,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-weekdone-single-sign-on"></a>Eenmalige aanmelding voor Weekdone configureren
+### <a name="configure-weekdone-single-sign-on"></a>Eenmalige aanmelding bij Weekdone configureren
 
-Als u eenmalige aanmelding wilt configureren op **Weekdone** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar [Weekdone ondersteunings team](mailto:hello@weekdone.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **Weekdone** wilt configureren, moet u het gedownloade **Certificaat (Base64)** en de correct van de Azure Portal gekopieerde URL's naar het [ondersteuningsteam van Weekdone](mailto:hello@weekdone.com) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -149,7 +145,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -157,25 +153,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Weekdone.
+In dit gedeelte stelt u Britta Simon in staat gebruik te maken van eenmalige aanmelding van Azure door haar toegang te geven tot Weekdone.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Weekdone**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Weekdone**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Weekdone**.
+2. Selecteer **Weekdone** in de lijst met toepassingen.
 
-    ![De koppeling Weekdone in de lijst met toepassingen](common/all-applications.png)
+    ![De link naar Weekdone in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -185,30 +181,30 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-weekdone-test-user"></a>Weekdone-test gebruiker maken
+### <a name="create-weekdone-test-user"></a>Een testgebruiker in Weekdone maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Weekdone. Weekdone biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Weekdone, wordt er een nieuwe gemaakt na verificatie.
+In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Weekdone. Weekdone biedt ondersteuning voor Just-In-Time-inrichting van gebruikers, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Weekdone bestaat, wordt er een nieuwe gemaakt nadat deze is geverifieerd.
 
 >[!NOTE]
->Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team van Weekdone-clients](mailto:hello@weekdone.com).
+>Als u handmatig een gebruiker moet maken, neemt u contact op met het [ondersteuningsteam van Weekdone](mailto:hello@weekdone.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Weekdone in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Weekdone waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Weekdone klikt, wordt u automatisch aangemeld bij de instantie van Weekdone waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

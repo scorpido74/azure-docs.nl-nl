@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512088"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258635"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Zelfstudie: Gegevens accepteren en ontvangen met Azure Data Share  
 
@@ -93,38 +93,35 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    In het veld **Ontvangen sharenaam** kunt u de standaardwaarde laten staan die is opgegeven door de gegevensprovider. U kunt er ook voor kiezen een nieuwe naam op te geven voor de ontvangen share. 
 
-   ![Data Share-doelaccount](./media/target-data-share.png "Data Share-doelaccount") 
-
-1. Zodra u akkoord bent gegaan met de gebruiksvoorwaarden en een locatie hebt opgegeven voor uw share, selecteert u *Accepteren en configureren*. Er wordt een shareabonnement gemaakt.
-
-   Voor delen op basis van momentopnamen wordt u in het volgende scherm gevraagd een doelopslagaccount te selecteren waarin uw gegevens worden gekopieerd. 
+   Zodra u akkoord bent gegaan met de gebruiksvoorwaarden en een Data Share-account hebt opgegeven voor het beheren van de ontvangen share, selecteert u **Accepteren en configureren**. Er wordt een shareabonnement gemaakt. 
 
    ![Opties voor accepteren](./media/accept-options.png "Opties voor accepteren") 
 
-   Als u de uitnodiging nu wilt accepteren maar uw doelgegevensarchief liever op een later tijdstip wilt configureren, selecteert u *Accepteren en later configureren*. Als u later wilt doorgaan met configureren van uw opslag, raadpleegt u de pagina [Toewijzingen voor gegevenssets configureren](how-to-configure-mapping.md) voor gedetailleerde stappen voor het hervatten van de configuratie van uw gegevensshare. 
-
-   Voor in-place delen raadpleegt u de pagina [Toewijzingen voor gegevenssets configureren](how-to-configure-mapping.md) voor gedetailleerde stappen voor het hervatten van de configuratie van uw gegevensshare. 
+   U ziet de ontvangen share nu in uw Data Share-account. 
 
    Als u de uitnodiging niet wilt accepteren, selecteert u *Weigeren*. 
 
-## <a name="configure-storage"></a>Opslag configureren
-1. Selecteer onder *Instellingen voor doelopslag* het abonnement, de resourcegroep en het opslagaccount waarin u de gegevens wilt ontvangen. 
+## <a name="configure-received-share"></a>Ontvangen share configureren
+Volg de onderstaande stappen om te configureren waar u gegevens wilt ontvangen.
 
-   ![Instellingen voor doelopslag](./media/target-storage-settings.png "Doelopslag") 
+1. Selecteer het tabblad **Gegevenssets**. Schakel het selectievakje in van de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **+ Toewijzen aan doel** om een doelgegevensarchief te kiezen. 
 
-1. Als u regelmatig een update van uw gegevens wilt ontvangen, moet u de instellingen voor momentopnamen inschakelen. Opmerking: u ziet alleen een planning voor instellingen voor momentopnamen als de gegevensprovider deze heeft opgenomen in de gegevensshare. 
+   ![Toewijzen aan doel](./media/dataset-map-target.png "Toewijzen aan doel") 
 
-   ![Instellingen voor momentopnamen](./media/snapshot-settings.png "Instellingen voor momentopnamen") 
+1. Selecteer het type doelgegevensarchief waarin u de gegevens wilt opslaan. Alle gegevensbestanden of tabellen in het doelgegevensarchief met hetzelfde pad en dezelfde naam worden overschreven. 
 
-1. Selecteer *Opslaan*. 
+   Selecteer voor in-place delen een gegevensarchief op de opgegeven locatie. De locatie is het Azure-datacenter waar het brongegevensarchief van de gegevensprovider zich bevindt. Zodra de gegevensset is toegewezen, kunt u de koppeling in het doelpad volgen om toegang te krijgen tot de gegevens.
 
-> [!IMPORTANT]
-> Als u op SQL gebaseerde gegevens ontvangt en deze gegevens wilt ontvangen in een op SQL gebaseerde bron, gaat u naar de instructiegids [Een toewijzing voor een gegevensset configureren](how-to-configure-mapping.md) voor informatie over het configureren van een SQL-server als doel voor uw gegevensset. 
+   ![Doelopslagaccount](./media/dataset-map-target-sql.png "Doelopslag") 
+
+1. Als u wilt delen met behulp van momentopnamen, en de gegevensprovider een schema heeft opgesteld voor het maken van momentopnamen om de gegevens regelmatig bij te werken, kunt u het schema voor het maken van momentopnamen ook inschakelen door het tabblad **Schema voor momentopnamen** te selecteren. Schakel het selectievakje naast het schema voor momentopnamen in en selecteer **+ Inschakelen**.
+
+   ![Schema voor momentopnamen inschakelen](./media/enable-snapshot-schedule.png "Schema voor momentopnamen inschakelen")
 
 ## <a name="trigger-a-snapshot"></a>Een momentopname activeren
 Deze stappen zijn alleen van toepassing bij delen op basis van momentopnamen.
 
-1. U kunt een momentopname activeren door **Momentopname activeren** te selecteren op het tabblad Ontvangen shares -> Details. Hier kunt u een volledige of incrementele momentopname van uw gegevens activeren. Als dit de eerste keer is dat u gegevens van uw gegevensprovider ontvangt, selecteert u volledig kopiëren. 
+1. U kunt een momentopname activeren door **Momentopname activeren** te selecteren op het tabblad **Details**. Hier kunt u een volledige of incrementele momentopname van uw gegevens activeren. Als dit de eerste keer is dat u gegevens van uw gegevensprovider ontvangt, selecteert u volledig kopiëren. 
 
    ![Momentopname activeren](./media/trigger-snapshot.png "Momentopname activeren") 
 
@@ -133,7 +130,7 @@ Deze stappen zijn alleen van toepassing bij delen op basis van momentopnamen.
    ![Gegevenssets van consumenten](./media/consumer-datasets.png "Toewijzing voor gegevenssets van consumenten") 
 
 ## <a name="view-history"></a>Geschiedenis weergeven
-Als u een geschiedenis van uw momentopnamen wilt bekijken, gaat u naar Ontvangen shares -> Geschiedenis. Hier vindt u een geschiedenis van alle momentopnamen die zijn gegenereerd voor de afgelopen 60 dagen. 
+Deze stap geldt alleen voor delen op basis van momentopnamen. Selecteer het tabblad **Geschiedenis** om de geschiedenis van uw momentopnamen weer te geven. Hier vindt u een geschiedenis van alle momentopnamen die zijn gegenereerd voor de afgelopen dertig dagen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare accepteert en ontvangt. Voor meer informatie over Azure Data Share-concepten gaat u naar [Concepten: Azure Data Share-terminologie](terminology.md).

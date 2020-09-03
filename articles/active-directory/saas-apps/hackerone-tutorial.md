@@ -1,29 +1,24 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met HackerOne | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met HackerOne | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en HackerOne.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120746"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544193"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Zelf studie: integratie Azure Active Directory met HackerOne
+# <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Zelfstudie: Azure Active Directory-integratie met HackerOne
 
 In deze zelfstudie leert u hoe u HackerOne kunt integreren met Azure Active Directory (Azure AD).
 De integratie van HackerOne met Azure Active Directory biedt de volgende voordelen:
@@ -33,7 +28,7 @@ De integratie van HackerOne met Azure Active Directory biedt de volgende voordel
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -78,12 +73,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Om eenmalige aanmelding met Azure Active Directory bij HackerOne te configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
 2. **[Eenmalige aanmelding voor HackerOne configureren](#configure-hackerone-single-sign-on)**: de instellingen voor eenmalige aanmelding aan de toepassingszijde configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 5. **[Testgebruiker voor HackerOne maken](#create-hackerone-test-user)**: als u een tegenhanger van Britta Simon in HackerOne wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -107,9 +102,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij HackerOne](common/sp-identifier.png)
 
-    a. Voer in het tekstvak **URL voor aanmelden** het volgende in:`https://hackerone.com/users/saml/sign_in?email=<configured domain>`
+    a. Voer in het tekstvak **Aanmeldings-URL** het volgende in: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
-    b. Voer in het tekstvak **id (Entiteits-ID)** het volgende in:`hackerone.com`
+    b. Voer in het tekstvak **Id (entiteits-id)** het volgende in: `hackerone.com`
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -143,9 +138,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
     a. Typ uw geregistreerde domein in het tekstvak **E-Maildomein**.
 
-    b. Plak in **URL voor eenmalige aanmelding** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
+    b. Plak in het tekstvak **Eenmalige aanmeldings-URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    c. Open het gedownloade **certificaat bestand** van Azure Portal in Klad blok, kopieer de inhoud ervan naar het klem bord en plak het in het tekstvak **x509-certificaat** .
+    c. Open het gedownloade **Certificaatbestand** vanuit de Azure-portal in Kladblok, kopieer de inhoud ervan naar het Klembord en plak het in het tekstvak **X509-certificaat**.
 
     d. Klik op **Opslaan**.
 
@@ -155,11 +150,11 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
     a. Klik op **Test uitvoeren**.
 
-6. Wanneer de test is voltooid en in het veld **status** de **status van de laatste test**wordt weer gegeven: geslaagd, selecteert u de knop **verificatie aanvragen** om in te dienen bij HackerOne voor goed keuring.
+6. Als de test juist is voltooid en **Laatste teststatus: geslaagd** wordt weergegeven in het veld **Status** , selecteert u de knop **Aanvraagverificatie** om het resultaat ter goedkeuring te verzenden naar HackerOne.
 
-    ![Verzenden naar HackerOne voor goed keuring](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+    ![Ter goedkeuring verzenden naar HackerOne](./media/hackerone-tutorial/tutorial-hackerone-006.png)
 
-7. Nadat HackerOne de instellingen heeft goedgekeurd, kunt u de knop **Gebruikers migreren** selecteren om SSO-verificatie voor alle gebruikers te vereisen.
+7. Nadat de instellingen zijn goedgekeurd door HackerOne, kunt u de knop **Gebruikers migreren** selecteren om verificatie via eenmalige aanmelding te vereisen voor alle gebruikers.
 
     ![SAML inschakelen](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
@@ -171,7 +166,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -179,14 +174,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
 
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -208,9 +203,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -228,6 +223,6 @@ Wanneer u in het toegangsvenster op de tegel HackerOne klikt, wordt u automatisc
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

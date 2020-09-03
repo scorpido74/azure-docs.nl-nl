@@ -4,15 +4,15 @@ description: Zelfstudie - informatie over het uitvoeren van Python-scripts als o
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 9b58aa06b67f01cf9ce0b30cef0326185124306c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853310"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185108"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Zelfstudie: Python-scripts uitvoeren via Azure Data Factory met behulp van Azure Batch
 
@@ -67,8 +67,7 @@ Hier maakt u blob-containers waarmee de invoer- en uitvoer bestanden voor de OCR
 1. Meld u aan bij Storage Explorer met uw Azure-referenties.
 1. Met het opslagaccount dat is gekoppeld aan uw Batch-account, maakt u twee blob-containers (één voor invoerbestanden, één voor uitvoerbestanden) door de stappen te volgen op [Een blob-container maken](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
     * In dit voorbeeld roepen we onze invoercontainer `input`en onze uitvoercontainer`output` aan.
-1. Upload `main.py` en [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) naar uw invoercontainer `input` met behulp van Storage Explorer door de stappen te volgen in [Blobs in een BLOB-container beheren](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)
-
+1. Upload [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) naar uw invoercontainer `input` met behulp van Storage Explorer door de stappen te volgen in [Blobs in een BLOB-container beheren](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container).
 
 ## <a name="develop-a-script-in-python"></a>Een script ontwikkelen in Python
 
