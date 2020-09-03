@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420631"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998523"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Zelfstudie: Zoekresultaten toevoegen met behulp van de .NET SDK
 
@@ -462,8 +462,8 @@ Als u resultaten wilt weergeven op basis van geografische afstand, zijn verschil
 
 4. Nu moet u deze concepten aan elkaar koppelen. Bij deze codefragmenten stopt onze zelfstudie echter. We laten het aan de lezer zelf om te oefenen met het bouwen van een kaart-app. Als u dit voorbeeld wilt uitbreiden, kunt u overwegen om een plaatsnaam in te voeren met een radius, of een punt op de kaart aan te wijzen en een radius te selecteren. Raadpleeg de volgende resources om deze opties verder te onderzoeken:
 
-* [Azure Maps-documentatie](https://docs.microsoft.com/azure/azure-maps/)
-* [Een adres vinden met behulp van de Azure Maps-zoekservice](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Azure Maps-documentatie](../azure-maps/index.yml)
+* [Een adres vinden met behulp van de Azure Maps-zoekservice](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Resultaten ordenen op basis van een scoreprofiel
 
@@ -959,7 +959,7 @@ Hier zijn drie voorbeelden van scoreprofielen. We gaan kijken hoe elk van deze v
 
 ### <a name="resources"></a>Resources
 
-Raadpleeg [Scoreprofielen toevoegen aan een Azure Cognitive Search-index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles) voor meer informatie.
+Raadpleeg [Scoreprofielen toevoegen aan een Azure Cognitive Search-index](/azure/search/index-add-scoring-profiles) voor meer informatie.
 
 ## <a name="takeaways"></a>Opgedane kennis
 
@@ -975,4 +975,4 @@ Houd rekening met de volgende opgedane kennis van dit project:
 
 U hebt deze reeks C#-zelfstudies voltooid. Als het goed is, hebt u waardevolle kennis opgedaan van de Azure Cognitive Search API’s.
 
-Voor verdere naslaginformatie en zelfstudies, kunt u naar [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) gaan, of een van de andere zelfstudies bekijken in de [Azure Cognitive Search-documentatie](https://docs.microsoft.com/azure/search/).
+Voor verdere naslaginformatie en zelfstudies, kunt u naar [Microsoft Learn](/learn/browse/?products=azure) gaan, of een van de andere zelfstudies bekijken in de [Azure Cognitive Search-documentatie](./index.yml).

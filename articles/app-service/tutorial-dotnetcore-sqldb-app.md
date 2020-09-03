@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 10182abb99788e4974e08c9bfc5c9c53df2a201b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 27b01a86d1bc44b5adb977f10339a0f2d56a64d4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212933"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958504"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service
 
@@ -63,7 +63,7 @@ git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
 cd dotnetcore-sqldb-tutorial
 ```
 
-Het voorbeeldproject bevat een eenvoudige CRUD-app (create-read-update-delete) die gebruikmaakt van [Entity Framework Core](https://docs.microsoft.com/ef/core/).
+Het voorbeeldproject bevat een eenvoudige CRUD-app (create-read-update-delete) die gebruikmaakt van [Entity Framework Core](/ef/core/).
 
 ### <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -126,7 +126,7 @@ Wanneer de logische SQL Database-server wordt gemaakt, toont de Azure CLI inform
 
 ### <a name="configure-a-server-firewall-rule"></a>Een serverfirewallregel configureren
 
-Maak een [firewallregel op Azure SQL Database-serverniveau](../sql-database/sql-database-firewall-configure.md) met de opdracht [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Als zowel het IP-beginadres als het IP-eindadres zijn ingesteld op 0.0.0.0, wordt de firewall alleen geopend voor andere Azure-resources. 
+Maak een [firewallregel op Azure SQL Database-serverniveau](../azure-sql/database/firewall-configure.md) met de opdracht [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Als zowel het IP-beginadres als het IP-eindadres zijn ingesteld op 0.0.0.0, wordt de firewall alleen geopend voor andere Azure-resources. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>Een database maken
 
-Maak een database met een [prestatieniveau van S0](../sql-database/sql-database-service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
+Maak een database met een [prestatieniveau van S0](../azure-sql/database/service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -459,12 +459,12 @@ Alle bestaande taakitems worden nog steeds weergegeven. Als u de ASP.NET Core-ap
 
 Terwijl uw ASP.NET Core-app wordt uitgevoerd in Azure App Service, kunt u de consolelogboeken doorsluizen naar de Cloud Shell. Op die manier krijgt u de dezelfde diagnostische berichten om toepassingsfouten op te sporen.
 
-Het voorbeeldproject volgt al de instructies in [ASP.NET Core-logboekregistratie in Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) met twee configuratiewijzigingen:
+Het voorbeeldproject volgt al de instructies in [ASP.NET Core-logboekregistratie in Azure](/aspnet/core/fundamentals/logging#azure-app-service-provider) met twee configuratiewijzigingen:
 
 - Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
 - Roept `loggerFactory.AddAzureWebAppDiagnostics()` in *Program.cs* aan.
 
-Om het [logboekniveau](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Error` in `Information`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
+Om het [logboekniveau](/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Error` in `Information`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
@@ -484,7 +484,7 @@ Nadat logboekstreaming is gestart, vernieuwt u de Azure-app in de browser om wat
 
 U kunt op elk gewenst moment `Ctrl`+`C` typen om te stoppen met logboekstreaming.
 
-Zie [Logboekregistratie in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging) voor meer informatie over het aanpassen van de ASP.NET Core-logboeken.
+Zie [Logboekregistratie in ASP.NET Core](/aspnet/core/fundamentals/logging) voor meer informatie over het aanpassen van de ASP.NET Core-logboeken.
 
 ## <a name="manage-your-azure-app"></a>Uw Azure-app beheren
 

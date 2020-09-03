@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428374"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268550"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -39,7 +39,7 @@ Als u een on-premises Active Directory-omgeving hebt en u uw domein-gekoppelde a
 
 In deze zelfstudie wordt ervan uitgegaan dat u bekend bent met:
 
-* [Inleiding tot apparaatbeheer in Azure Active Directory](../device-management-introduction.md)
+* [Inleiding tot apparaatbeheer in Azure Active Directory](./overview.md)
 * [De implementatie van uw hybride Azure Active Directory-deelname plannen](hybrid-azuread-join-plan.md)
 * [De hybride Azure AD-deelname van uw apparaten beheren](hybrid-azuread-join-control.md)
 
@@ -94,7 +94,7 @@ In de volgende tabel staat een overzicht van de stappen die vereist zijn voor uw
 
 Uw apparaten gebruiken een SCP-object (serviceverbindingspunt) tijdens de registratie om Azure AD-tenantgegevens te ontdekken. In uw on-premises instantie van Active Directory (AD) moet het SCP-object voor de hybride Azure AD-gekoppelde apparaten bestaan in de partitie voor de configuratienaamgevingscontext van de forest van de computer. Er is slechts één configuratienaamgevingscontext per forest. In een Active Directory-configuratie met meerdere forests moet het serviceverbindingspunt bestaan in alle forests die domein-gekoppelde computers bevatten.
 
-U kunt de cmdlet [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) gebruiken om de configuratienaamgevingscontext van uw forest op te halen.  
+U kunt de cmdlet [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) gebruiken om de configuratienaamgevingscontext van uw forest op te halen.  
 
 Voor een forest met de Active Directory-domeinnaam *fabrikam.com* is de configuratienaamgevingscontext:
 
@@ -167,7 +167,7 @@ Voor domeincontrollers waarop Windows Server 2008 of een eerdere versie wordt ui
 
 In het voorgaande script is `$verifiedDomain = "contoso.com"` een tijdelijke aanduiding. Vervang deze door een van uw geverifieerde domeinnamen in Azure AD. U moet eigenaar van het domein zijn om dit te kunnen gebruiken.
 
-Zie [Een aangepaste domeinnaam toevoegen aan Azure Active Directory](../active-directory-domains-add-azure-portal.md) voor meer informatie over geverifieerde domeinnamen.
+Zie [Een aangepaste domeinnaam toevoegen aan Azure Active Directory](../fundamentals/add-custom-domain.md) voor meer informatie over geverifieerde domeinnamen.
 
 Om een lijst met uw geverifieerde bedrijfsdomeinen op te halen, kunt u de cmdlet [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) gebruiken.
 
@@ -326,7 +326,7 @@ De claim `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` moet
 
 In de voorgaande claim is `<verified-domain-name>` een tijdelijke aanduiding. Vervang deze door een van uw geverifieerde domeinnamen in Azure AD. Gebruik bijvoorbeeld `Value = "http://contoso.com/adfs/services/trust/"`.
 
-Zie [Een aangepaste domeinnaam toevoegen aan Azure Active Directory](../active-directory-domains-add-azure-portal.md) voor meer informatie over geverifieerde domeinnamen.  
+Zie [Een aangepaste domeinnaam toevoegen aan Azure Active Directory](../fundamentals/add-custom-domain.md) voor meer informatie over geverifieerde domeinnamen.  
 
 Om een lijst met uw geverifieerde bedrijfsdomeinen op te halen, kunt u de cmdlet [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) gebruiken.
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Als er problemen zijn met het voltooien van de hybride Azure AD-koppeling voor domein-gekoppelde Windows-apparaten, raadpleegt u:
 
-- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](./troubleshoot-device-dsregcmd.md)
 - [Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen](troubleshoot-hybrid-join-windows-current.md)
 - [Problemen oplossen met hybride Azure Active Directory-gekoppelde, downlevel apparaten](troubleshoot-hybrid-join-windows-legacy.md)
 

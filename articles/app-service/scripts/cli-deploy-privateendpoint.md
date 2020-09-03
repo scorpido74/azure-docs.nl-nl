@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 566307581b49922b9d47936f64beea73715f63ba
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 08e1878adab680329a33bc44020b49dce38de4d6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034675"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959665"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Een App Service-app maken en een privé-eindpunt implementeren met behulp van Azure CLI
 
@@ -138,5 +138,5 @@ az network private-endpoint dns-zone-group create \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+- Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 - Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Leer hoe u met behulp van Azure Media Services video's kunt analyseren.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 07/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: e5c74f6356c8b07cfef923dfb5e12547aa4693ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053556"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265861"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Zelfstudie: Video's analyseren met Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Hoewel in deze zelfstudie de [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-voorbeelden worden gebruikt, zijn de algemene stappen hetzelfde voor de [REST API](/rest/api/media/liveevents), de [CLI-](/cli/azure/ams/live-event?view=azure-cli-latest) of andere ondersteunde [SDK's](media-services-apis-overview.md#sdks).

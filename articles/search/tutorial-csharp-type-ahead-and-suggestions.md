@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420597"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998438"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Zelfstudie: Automatisch aanvullen en suggesties toevoegen met de .NET SDK
 
@@ -145,7 +145,7 @@ Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven 
  
     !['Pa' typen wanneer fuzzy is ingesteld op waar](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    Indien u dat wenst, kunt u de [Lucene querysyntaxis in Azure Cognitive Search](https://docs.microsoft.com/azure/search/query-lucene-syntax) bekijken voor meer gedetailleerde informatie over de logica die gebruikt wordt bij fuzzy zoekopdrachten.
+    Indien u dat wenst, kunt u de [Lucene querysyntaxis in Azure Cognitive Search](./query-lucene-syntax.md) bekijken voor meer gedetailleerde informatie over de logica die gebruikt wordt bij fuzzy zoekopdrachten.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Markering toevoegen aan de suggesties
 
@@ -244,7 +244,7 @@ Een andere variatie, die lichtjes verschilt van suggesties, is automatisch aanvu
 
     Merk op dat we dezelfde functie *suggester*, met de naam 'sg', gebruiken bij automatisch aanvullen als bij suggesties (we proberen dus enkel de hotelnamen automatisch aan te vullen).
 
-    Er zijn verschillende **AutocompleteMode**-instellingen, en wij gebruiken **OneTermWithContext**. Bekijk [Autocomplete API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) voor een beschrijving van aanvullende opties.
+    Er zijn verschillende **AutocompleteMode**-instellingen, en wij gebruiken **OneTermWithContext**. Bekijk [Autocomplete API](/rest/api/searchservice/autocomplete) voor een beschrijving van aanvullende opties.
 
 4. Voer de app uit. Merk op dat alle opties die in de vervolgkeuzelijst worden weergegeven, enkele woorden zijn. Probeer woorden te typen die beginnen met 're'. Merk op dat er steeds minder opties zijn wanneer u meer letters typt.
 
@@ -464,5 +464,3 @@ In de volgende zelfstudie ziet u een andere manier om de gebruikerservaring te v
 
 > [!div class="nextstepaction"]
 > [C#-zelfstudie: Facetten gebruiken om beter te navigeren - Azure Cognitive Search](tutorial-csharp-facets.md)
-
-

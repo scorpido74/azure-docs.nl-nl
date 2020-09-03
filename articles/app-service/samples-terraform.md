@@ -9,12 +9,12 @@ author: ericgre
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 8b15b3c4444a6f26734b133f169cea7074956ae7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: f88ccd077c857826271484c9929b37f8c5d751fe
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042905"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962703"
 ---
 # <a name="terraform-samples-for-azure-app-service"></a>Terraform-voorbeelden voor Azure App Service
 
@@ -24,5 +24,5 @@ De volgende tabel bevat koppelingen naar Terraform-scripts:
 |-|-|
 |**App maken**||
 | [Twee apps maken en veilig verbinden met privé-eindpunt en VNet-integratie](./scripts/terraform-secure-backend-frontend.md )| Hiermee worden twee apps gemaakt en veilig verbonden met privé-eindpunt en VNet-integratie. |
-| [App Service inrichten en sitewisseling gebruiken om te implementeren](https://docs.microsoft.com/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| App Service-infrastructuur inrichten met Azure-implementatiesites |
+| [App Service inrichten en sitewisseling gebruiken om te implementeren](/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| App Service-infrastructuur inrichten met Azure-implementatiesites |
 | | |

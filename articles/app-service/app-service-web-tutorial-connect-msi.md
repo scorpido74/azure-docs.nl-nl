@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 882188c638c77fa0055f1c2d2e664d97a4fe9359
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213706"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962261"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -37,7 +37,7 @@ U leert het volgende:
 > * Verbinding maken met SQL Database vanuit Visual Studio met behulp van Azure AD-verificatie
 
 > [!NOTE]
->Azure AD-verificatie _verschilt_ van [Geïntegreerde Windows-verificatie](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) in on-premises Active Directory (AD DS). AD DS en Azure AD gebruiken totaal verschillende verificatieprotocollen. Zie [Documentatie voor Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) voor meer informatie.
+>Azure AD-verificatie _verschilt_ van [Geïntegreerde Windows-verificatie](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) in on-premises Active Directory (AD DS). AD DS en Azure AD gebruiken totaal verschillende verificatieprotocollen. Zie [Documentatie voor Azure AD Domain Services](../active-directory-domain-services/index.yml) voor meer informatie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -83,7 +83,7 @@ U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end
 
 ### <a name="macos-client"></a>macOS-client
 
-Visual Studio voor Mac is niet geïntegreerd met Azure AD-verificatie. De [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)-bibliotheek die u later gebruikt, kan echter gebruikmaken van tokens van Azure CLI. Als u de ontwikkeling en foutopsporing in Visual Studio wilt inschakelen, moet u eerst [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op uw lokale computer.
+Visual Studio voor Mac is niet geïntegreerd met Azure AD-verificatie. De [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)-bibliotheek die u later gebruikt, kan echter gebruikmaken van tokens van Azure CLI. Als u de ontwikkeling en foutopsporing in Visual Studio wilt inschakelen, moet u eerst [Azure CLI installeren](/cli/azure/install-azure-cli) op uw lokale computer.
 
 Als Azure CLI is geïnstalleerd op uw lokale computer, meldt u zich met de volgende opdracht aan bij Azure CLI met behulp van uw Azure AD-gebruiker:
 
