@@ -2,15 +2,17 @@
 title: Inhoud versleutelen met de Azure-portal
 description: In deze quickstart wordt uitgelegd hoe u versleuteling kunt configureren voor uw inhoud met behulp van Azure Media Services in de Azure-portal.
 ms.topic: quickstart
-ms.date: 06/08/2020
-ms.openlocfilehash: 6ff3c14039f9199053d3d43c6ce4488c2692b336
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.date: 08/31/2020
+ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988775"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263634"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Quickstart: De portal gebruiken om inhoud te versleutelen
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Met Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. 
  

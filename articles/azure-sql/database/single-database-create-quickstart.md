@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081584"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962686"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Quickstart: Een individuele database maken in Azure SQL Database
 
 In deze quickstart gebruikt u de Azure-portal, een PowerShell-script of een Azure CLI-script om één database in Azure SQL Database te maken. Voer daarna in de Azure Portal een query voor de database uit met de **Query-editor**.
 
-Een [individuele database](single-database-overview.md) is de snelste en eenvoudigste optie voor Azure SQL Database. U beheert een individuele database binnen een [server](logical-servers.md), die zich binnen een [Azure-resourcegroep](../../active-directory-b2c/overview.md) in een opgegeven Azure-regio bevindt. In deze quickstart maakt u een nieuwe resourcegroep en server voor de nieuwe database.
+Een [individuele database](single-database-overview.md) is de snelste en eenvoudigste optie voor Azure SQL Database. U beheert een individuele database binnen een [server](logical-servers.md), die zich binnen een [Azure-resourcegroep](../../azure-resource-manager/management/manage-resource-groups-portal.md) in een opgegeven Azure-regio bevindt. In deze quickstart maakt u een nieuwe resourcegroep en server voor de nieuwe database.
 
 U kunt een individuele database maken in de *ingerichte* of *serverloze* berekeningslaag. Aan een ingerichte database is vooraf een vaste hoeveelheid berekeningsresources, inclusief CPU en geheugen, toegewezen, en de database maakt gebruik van een van de volgende twee [aankoopmodellen](purchasing-models.md). In deze quickstart wordt een ingerichte database gemaakt met het aankoopmodel [op basis van vCore](service-tiers-vcore.md), maar u kunt ook een aankoopmodel [op basis van DTU](service-tiers-dtu.md) kiezen.
 

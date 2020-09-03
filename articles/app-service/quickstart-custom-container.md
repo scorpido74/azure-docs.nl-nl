@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212514"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961360"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Een aangepaste container uitvoeren in Azure
 
@@ -103,7 +103,7 @@ Maak een ASP.NET-web-app door de volgende stappen uit te voeren:
 
    ![Een web-app voor containers configureren](media/quickstart-custom-container/configure-web-app-continer.png)
 
-    Als u elders een aangepaste installatiekopie voor de webtoepassing hebt, bijvoorbeeld in [Azure Container Registry](/azure/container-registry/) of in een andere privéopslagplaats, kunt u deze hier configureren.
+    Als u elders een aangepaste installatiekopie voor de webtoepassing hebt, bijvoorbeeld in [Azure Container Registry](../container-registry/index.yml) of in een andere privéopslagplaats, kunt u deze hier configureren.
 
 1. Selecteer **Controleren en maken** en vervolgens **Maken**, en wacht tot de vereiste resources zijn gemaakt in Azure.
 
@@ -173,8 +173,8 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
 
 U mag ook een andere aangepaste Docker-installatiekopie gebruiken om de app uit te voeren. Kies echter wel de juiste [bovenliggende installatiekopie (basisinstallatiekopie)](https://docs.docker.com/develop/develop-images/baseimages/) voor het gewenste framework:
 
-- Als u .NET Framework-apps wilt implementeren, gebruikt u een bovenliggende installatiekopie op basis van de release Windows Server Core 2019 [LTSC (Long-Term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc). 
-- Als u .NET Core-apps wilt implementeren, gebruikt u een bovenliggende installatiekopie op basis van de release Windows Server Nano 1809 [SAC (Semi-Annual Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel). 
+- Als u .NET Framework-apps wilt implementeren, gebruikt u een bovenliggende installatiekopie op basis van de release Windows Server Core 2019 [LTSC (Long-Term Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc). 
+- Als u .NET Core-apps wilt implementeren, gebruikt u een bovenliggende installatiekopie op basis van de release Windows Server Nano 1809 [SAC (Semi-Annual Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel). 
 
 Het duurt enige tijd om een bovenliggende installatiekopie te downloaden tijdens het opstarten van de app. U kunt deze opstarttijd echter verminderen door een van de volgende bovenliggende installatiekopieën te gebruiken die al in cache zijn opgeslagen in Azure App Service:
 
@@ -188,7 +188,7 @@ Het duurt enige tijd om een bovenliggende installatiekopie te downloaden tijdens
 ::: zone-end  
 
 ::: zone pivot="container-linux"
-App Service op Linux biedt vooraf gedefinieerde toepassingsstacks op Linux met ondersteuning voor talen zoals .NET, PHP, Node.js en meer. U kunt een aangepaste Docker-installatiekopie ook gebruiken om uw web-app uit te voeren op een toepassingsstack die nog niet in Azure is gedefinieerd. In deze quickstart ziet u hoe u een installatiekopie van een [Azure Container Registry](/azure/container-registry) (ACR) implementeert in App Service.
+App Service op Linux biedt vooraf gedefinieerde toepassingsstacks op Linux met ondersteuning voor talen zoals .NET, PHP, Node.js en meer. U kunt een aangepaste Docker-installatiekopie ook gebruiken om uw web-app uit te voeren op een toepassingsstack die nog niet in Azure is gedefinieerd. In deze quickstart ziet u hoe u een installatiekopie van een [Azure Container Registry](../container-registry/index.yml) (ACR) implementeert in App Service.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -200,7 +200,7 @@ App Service op Linux biedt vooraf gedefinieerde toepassingsstacks op Linux met o
 
 ## <a name="create-an-image"></a>Een installatiekopie maken
 
-Voor het voltooien van deze quickstart hebt u een geschikte installatiekopie nodig van een web-app die is opgeslagen in een [Azure Container Registry](/azure/container-registry). Volg de instructies in [Quickstart: Een privécontainerregister maken met behulp van Azure Portal](/azure/container-registry/container-registry-get-started-portal), maar gebruik de installatiekopie van `mcr.microsoft.com/azuredocs/go` in plaats van de installatiekopie van `hello-world`. Ter referentie: de [-voorbeeld-Dockerfile vindt u in de opslagplaats met Azure-voorbeelden](https://github.com/Azure-Samples/go-docs-hello-world).
+Voor het voltooien van deze quickstart hebt u een geschikte installatiekopie nodig van een web-app die is opgeslagen in een [Azure Container Registry](../container-registry/index.yml). Volg de instructies in [Quickstart: Een privécontainerregister maken met behulp van Azure Portal](../container-registry/container-registry-get-started-portal.md), maar gebruik de installatiekopie van `mcr.microsoft.com/azuredocs/go` in plaats van de installatiekopie van `hello-world`. Ter referentie: de [-voorbeeld-Dockerfile vindt u in de opslagplaats met Azure-voorbeelden](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
 > Zorg ervoor dat u de optie **Gebruiker met beheerdersrechten** instelt op **Inschakelen** wanneer u het containerregister maakt. U kunt deze optie ook instellen in de sectie **Toegangssleutels** van de registerpagina in Azure Portal. Deze instelling is vereist voor toegang tot App Service.
@@ -261,4 +261,4 @@ Bekijk hierna de andere Azure-extensies.
 
 U kunt ze ook allemaal downloaden door het extensiepakket [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) te installeren.
 
-::: zone-end  
+::: zone-end

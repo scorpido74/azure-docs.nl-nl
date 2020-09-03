@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212677"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961530"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Quickstart: Een ASP.NET Core-web-app maken in Azure
 
@@ -59,8 +59,8 @@ Als u de web-app wilt publiceren, moet u eerst een nieuwe App Service maken en c
 
 Als onderdeel van het instellen van de App Service maakt u het volgende:
 
-- Een nieuwe [resource groep](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology) die alle Azure-resources voor de service bevat.
-- Een nieuw [Hostingabonnement](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) dat de locatie, grootte en functies opgeeft van de webserverfarm die als host fungeert voor de app.
+- Een nieuwe [resource groep](../azure-resource-manager/management/overview.md#terminology) die alle Azure-resources voor de service bevat.
+- Een nieuw [Hostingabonnement](./overview-hosting-plans.md) dat de locatie, grootte en functies opgeeft van de webserverfarm die als host fungeert voor de app.
 
 Volg deze stappen om de App Service te maken en uw web-app te publiceren:
 
@@ -160,7 +160,7 @@ Ga door met het volgende artikel om te leren hoe u een .NET Core-app maakt en de
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[App Service onder Linux](overview.md#app-service-on-linux) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze quickstart laat zien hoe u een [.NET Core](https://docs.microsoft.com/aspnet/core/)-app maakt in App Service on Linux. U maakt de app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) en gebruikt Git om de .NET Core-code in de app te implementeren.
+[App Service onder Linux](overview.md#app-service-on-linux) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze quickstart laat zien hoe u een [.NET Core](/aspnet/core/)-app maakt in App Service on Linux. U maakt de app via de [Azure CLI](/cli/azure/get-started-with-azure-cli) en gebruikt Git om de .NET Core-code in de app te implementeren.
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -322,4 +322,4 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 > [!div class="nextstepaction"]
 > [ASP.NET Core-app configureren](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

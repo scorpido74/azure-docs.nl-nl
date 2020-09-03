@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519759"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013738"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Quickstart: Windows-computers onboarden naar Azure Security Center
 Nadat u de onboarding van uw Azure-abonnementen hebt uitgevoerd, kunt u Security Center inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere clouds, door de Log Analytics-agent in te richten.
@@ -74,7 +74,7 @@ U dient nu het gedownloade bestand op de doelcomputer te installeren.
 
 Als u klaar bent wordt de **Log Analytics-agent** in het **Configuratiescherm** weergegeven. U kunt hier de configuratie controleren en verifiëren of de agent is verbonden.
 
-Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent.
+Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent.
 
 U kunt nu uw Azure-VM's en niet-Azure-computers op één plek bewaken. Onder **Compute** vindt u een overzicht van alle VM's en computers, plus aanbevelingen. Elke kolom vertegenwoordigt een reeks aanbevelingen. De kleur vertegenwoordigt de huidige beveiligingsstatus van de VM's of computers voor die aanbeveling. Security Center geeft ook detecties voor deze computers in beveiligingswaarschuwingen weer.
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5c07500ec432d176b2cf74aa95f0a1c943348f9f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481388"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229513"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Wat zijn Azure Active Directory-rapporten?
 
@@ -44,9 +44,9 @@ De rapportagearchitectuur is afhankelijk van twee belangrijke zaken:
 
 Met de beveiligingsrapporten kunt u de identiteiten van uw organisatie beschermen. Er zijn twee typen beveiligingsrapporten:
 
-- **Gebruikers voor wie wordt aangegeven dat ze risico lopen**: in het rapport [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) krijgt u een overzicht van gebruikersaccounts die mogelijk zijn aangetast.
+- **Gebruikers voor wie wordt aangegeven dat ze risico lopen**: in het rapport [Gebruikers voor wie wordt aangegeven dat ze risico lopen](../identity-protection/overview-identity-protection.md) krijgt u een overzicht van gebruikersaccounts die mogelijk zijn aangetast.
 
-- **Riskante aanmeldingen**: in het beveiligingsrapport [Riskante aanmeldingen](concept-risky-sign-ins.md) krijgt u een idee van aanmeldingspogingen die mogelijk zijn uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
+- **Riskante aanmeldingen**: in het beveiligingsrapport [Riskante aanmeldingen](../identity-protection/overview-identity-protection.md) krijgt u een idee van aanmeldingspogingen die mogelijk zijn uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot een beveiligingsrapport?  
 
@@ -81,7 +81,7 @@ De [audittrailrapporten](concept-audit-logs.md) bieden records van systeemactivi
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot audittrailrapporten?  
 
-Het audittrailrapport is beschikbaar voor functies waarvoor u licenties hebt. Als u een licentie voor een specifieke functie hebt, hebt u ook toegang tot de audittrailgegevens hiervan. U kunt een gedetailleerde functievergelijking van [verschillende typen licenties](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) bekijken op de pagina [Prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). Zie [Functies en mogelijkheden van Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad) voor meer informatie.
+Het audittrailrapport is beschikbaar voor functies waarvoor u licenties hebt. Als u een licentie voor een specifieke functie hebt, hebt u ook toegang tot de audittrailgegevens hiervan. U kunt een gedetailleerde functievergelijking van [verschillende typen licenties](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) bekijken op de pagina [Prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). Zie [Functies en mogelijkheden van Azure Active Directory](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad) voor meer informatie.
 
 ### <a name="sign-ins-report"></a>Aanmeldingenrapport
 
@@ -101,6 +101,6 @@ De rapportage van Azure AD biedt u naast de gebruikersinterface ook [toegang op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Rapport voor riskante aanmeldingen](concept-risky-sign-ins.md)
+- [Rapport voor riskante aanmeldingen](../identity-protection/overview-identity-protection.md)
 - [Rapport voor audittrails](concept-audit-logs.md)
 - [Rapport voor aanmeldlogboeken](concept-sign-ins.md)

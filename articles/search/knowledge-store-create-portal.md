@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924364"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Quickstart: Een Azure Cognitive Search-kennisarchief maken in het Azure-portal
 
@@ -31,7 +31,7 @@ Voordat u begint, moet u het volgende hebben:
 
 + Een Azure Cognitive Search-service. [Maak een service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in uw huidige abonnement. U kunt een gratis service voor deze quickstart gebruiken. 
 
-+ Een Azure Storage-account met [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/).
++ Een Azure Storage-account met [Blob-opslag](../storage/blobs/index.yml).
 
 > [!NOTE]
 > Deze quickstart maakt ook gebruik van [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. Omdat de workload zo klein is, wordt de gratis verwerking (maximaal 20 transacties) van Cognitive Services achter de schermen gebruikt. Dit betekent dat u deze oefening kunt doen zonder dat u een nieuwe Cognitive Services-resource moet aanmaken.
@@ -42,7 +42,7 @@ Volg deze stappen om een blobcontainer aan te maken in Azure Storage om heteroge
 
 1. [Download HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Dit zijn gegevens van hotelbeoordelingen die zijn opgeslagen in een CSV-bestand (oorsprong Kaggle.com). Ze bevatten 19 items met klantenfeedback over een hotel. 
 
-1. [Maak een Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [zoek een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage zowel voor de onbewerkte inhoud die u wilt importeren als het kennisarchief dat het eindresultaat vormt.
+1. [Maak een Azure Storage-account](../storage/common/storage-account-create.md?tabs=azure-portal) of [zoek een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage zowel voor de onbewerkte inhoud die u wilt importeren als het kennisarchief dat het eindresultaat vormt.
 
    + Kies het accounttype **StorageV2 (algemeen gebruik V2)** .
 

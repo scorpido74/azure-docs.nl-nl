@@ -3,12 +3,12 @@ title: Inleiding
 description: Meer informatie over de functies en voordelen van Azure VMware Solution voor het implementeren en beheren van VMware-workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752125"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005051"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>Wat is Azure VMware Solution Preview?
 
@@ -46,7 +46,7 @@ Regelmatige upgrades van de Azure VMware Solution-privécloud en VMware-software
 
 ## <a name="monitoring-your-private-cloud"></a>De privécloud bewaken
 
-U kunt [Logboeken in Azure Monitor](../azure-monitor/overview.md) gebruiken om logboeken te verzamelen op uw virtuele machines die worden uitgevoerd in de privécloud van uw Azure VMware Solution. U kunt [de MMA-agent downloaden en installeren](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) op virtuele Linux- en Windows-machines die worden uitgevoerd in uw Azure VMware Solution-privéclouds, met behulp van dezelfde query's die u op uw on-premises VM's uitvoert. U kunt dezelfde query's uitvoeren die normaal gesproken alleen op uw virtuele machines worden uitgevoerd. Zie [query's schrijven](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)voor meer informatie over het maken van query's.
+U kunt [Logboeken in Azure Monitor](../azure-monitor/overview.md) gebruiken om logboeken te verzamelen op uw virtuele machines die worden uitgevoerd in de privécloud van uw Azure VMware Solution. U kunt [de MMA-agent downloaden en installeren](../azure-monitor/platform/log-analytics-agent.md#installation-options) op virtuele Linux- en Windows-machines die worden uitgevoerd in uw Azure VMware Solution-privéclouds, met behulp van dezelfde query's die u op uw on-premises VM's uitvoert. U kunt dezelfde query's uitvoeren die normaal gesproken alleen op uw virtuele machines worden uitgevoerd. Zie [query's schrijven](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)voor meer informatie over het maken van query's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

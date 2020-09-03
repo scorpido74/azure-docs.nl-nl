@@ -3,7 +3,7 @@ title: Beheerde identiteiten configureren in virtuele Azure VMSS - Azure AD
 description: Stapsgewijze instructies voor het configureren van beheerde identiteiten voor Azure-resources op een virtuele-machineschaalset met behulp van Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924492"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262670"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met behulp van Azure Portal
 
@@ -37,7 +37,7 @@ In dit artikel leert u om met behulp van PowerShell de volgende beheerde identit
     > [!NOTE]
     > Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-map.
 
-    - [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) voor het inschakelen en verwijderen van een door het systeem toegewezen beheerde identiteit op een virtuele-machineschaalset.
+    - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het inschakelen en verwijderen van een door het systeem toegewezen beheerde identiteit op een virtuele-machineschaalset.
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 

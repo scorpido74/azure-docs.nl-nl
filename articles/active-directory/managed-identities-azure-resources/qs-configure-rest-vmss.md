@@ -3,7 +3,7 @@ title: Beheerde identiteiten configureren op een virtuele-machineschaalset met b
 description: Stapsgewijze instructies voor het configureren van door het systeem en de gebruiker toegewezen beheerde identiteiten op een Azure virtuele-machineschaalset met behulp van CURL om REST API-aanroepen te maken.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf514480f0ca247606ffbc50148556eeed007c8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 09a66f45fe3e20bedf5ff99ee924ac267b4fd869
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921500"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266796"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met behulp van REST API-aanroepen
 
@@ -42,11 +42,11 @@ In dit artikel leert u om met behulp van CURL het Azure Resource Manager REST-ei
     > [!NOTE]
     > Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-map.
 
-    - [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
-    - De rol van [inzender voor beheerde identiteit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
-    - De rol van [operator voor beheerde identiteit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen identiteit aan/uit een virtuele-machine schaalset.
-- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure Portal.
-- [Installeer de lokale Azure CLI-console](/cli/azure/install-azure-cli) als u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of een [Linux-distributie/-besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) gebruikt.
+    - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
+    - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
+    - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen identiteit aan/uit een virtuele-machine schaalset.
+- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](/windows/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure Portal.
+- [Installeer de lokale Azure CLI-console](/cli/azure/install-azure-cli) als u het [Windows-subsysteem voor Linux](/windows/wsl/about) of een [Linux-distributie/-besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) gebruikt.
 - Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure via `az login` met een account dat is gekoppeld aan het Azure-abonnement waarvoor u de door het systeem of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
 
 
