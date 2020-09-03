@@ -4,7 +4,7 @@
   items:
     - name: Over toepassingsgateways
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een toepassingsgateway maken - Portal
@@ -90,6 +90,8 @@
       href: application-gateway-web-app-overview.md
     - name: Ondersteuning voor WebSocket
       href: application-gateway-websocket.md
+    - name: Inzicht krijgen in prijzen
+      href: understanding-pricing.md
     - name: Veelgestelde vragen
       href: application-gateway-faq.md
 - name: Instructiegidsen

@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Wat is Cognitive Services?
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: Wat is er nieuw in Cognitive Services-documenten?
       href: whats-new-docs.md
     - name: Cognitive Services en machine learning

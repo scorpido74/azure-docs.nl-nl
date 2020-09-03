@@ -15,7 +15,7 @@
     - name: Een Attestation-beleid maken en ondertekenen
       href: author-sign-policy.md
     - name: Codevoorbeelden van SGX Attestation
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: Voorbeelden
   items:
     - name: Attestation-beleid

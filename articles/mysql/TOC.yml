@@ -114,6 +114,9 @@
           href: concepts-azure-ad-authentication.md
         - name: Dubbele infrastructuurversleuteling
           href: concepts-infrastructure-double-encryption.md
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Bedrijfscontinuïteit
