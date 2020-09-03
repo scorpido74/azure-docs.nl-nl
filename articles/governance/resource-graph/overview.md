@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Resource Graph
 description: Meer informatie over hoe u met de Azure Resource Graph-service complexe query's op schaal kunt uitvoeren op resources in abonnementen en tenants.
-ms.date: 07/25/2020
+ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541784"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798530"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
@@ -37,6 +37,9 @@ U kunt het volgende doen met Azure Resource Graph:
 
 - U hebt toegang tot de eigenschappen die door de resourceproviders worden geretourneerd zonder dat u elke resourceprovider afzonderlijk hoeft aan te roepen.
 - U kunt de laatste 14 dagen bekijken van de wijzigingsgeschiedenis van de resource om na te gaan welke eigenschappen zijn gewijzigd en wanneer. (preview)
+
+> [!NOTE]
+> Als _preview_-functie zijn er voor sommige `type`-objecten extra niet-Resource Manager-eigenschappen beschikbaar. Zie [Uitgebreide eigenschappen (preview)](./concepts/query-language.md#extended-properties) voor meer informatie.
 
 ## <a name="how-resource-graph-is-kept-current"></a>Hoe de Resource Graph actueel blijft
 

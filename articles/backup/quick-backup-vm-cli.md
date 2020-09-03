@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b263d5394d642301c5fc53e169186e4aea56ecab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2bd3487e58f204ba7ada9320b50d4b87538ae987
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497457"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826545"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Een back-up van een virtuele machine maken in Azure met de CLI
 
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Als u CLI gebruikt om back-ups in te schakelen voor meerdere VM's tegelijk, moet u ervoor zorgen dat aan één beleid niet meer dan 100 VM's zijn gekoppeld. Dit is een [aanbevolen best practice](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Op dit moment blokkeert de PS-client niet expliciet als er meer dan 100 VM's zijn, maar deze controle wordt in de toekomst toegevoegd.
+> Als u CLI gebruikt om back-ups in te schakelen voor meerdere VM's tegelijk, moet u ervoor zorgen dat aan één beleid niet meer dan 100 VM's zijn gekoppeld. Dit is een [aanbevolen best practice](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Op dit moment blokkeert de PowerShell-client niet expliciet als er meer dan 100 VM's zijn, maar deze controle wordt in de toekomst toegevoegd.
 
 ## <a name="start-a-backup-job"></a>Een back-uptaak starten
 

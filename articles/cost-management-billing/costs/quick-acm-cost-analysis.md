@@ -3,17 +3,18 @@ title: 'Quickstart: Azure-kosten verkennen met kostenanalyse'
 description: Deze snelstart helpt u kostenanalyse te gebruiken om de kosten van Azure voor uw bedrijf te verkennen en te analyseren.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560581"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718523"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -161,6 +162,10 @@ Er zijn momenten waarop u de gegevens wilt downloaden voor verdere analyse, deze
 
 Als u de volledige, niet-geaggregeerde gegevensset nodig hebt, kunt u deze downloaden vanuit het factureringsaccount. Ga vervolgens in de lijst met services in het linkerdeelvenster in de portal naar **Kostenbeheer en facturering**. Selecteer uw factureringsaccount, indien van toepassing. Ga naar **Gebruik + kosten** en selecteer vervolgens het pictogram **Downloaden** voor de gewenste factureringsperiode.
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+- Als u een aangepaste weergave voor kostenanalyse hebt vastgemaakt en deze niet meer nodig hebt, gaat u naar het dashboard waar u deze hebt vastgemaakt en verwijdert u deze.
+- Als u bestanden met gebruiksgegevens hebt gedownload en deze niet meer nodig hebt, zorg er dan voor dat u ze verwijdert.
 
 ## <a name="next-steps"></a>Volgende stappen
 

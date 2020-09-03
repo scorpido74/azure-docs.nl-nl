@@ -9,12 +9,12 @@ ms.author: mlearned
 description: In dit artikel vindt u een overzicht van Kubernetes met Azure Arc.
 keywords: Kubernetes, Arc, Azure, containers
 ms.custom: references_regions
-ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050061"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723721"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Wat is Kubernetes met Azure Arc Preview?
 
@@ -26,6 +26,18 @@ Kubernetes met Azure Arc biedt ondersteuning voor industriestandaard SSL om gege
  
 > [!NOTE]
 > Kubernetes met Azure Arc is beschikbaar als preview-versie. Dit wordt niet aanbevolen voor productieworkloads.
+
+## <a name="supported-kubernetes-distributions"></a>Ondersteunde Kubernetes-distributies
+
+Kubernetes met Azure Arc werkt met elk CNCF-gecertificeerd (Cloud Native Computing Foundation) Kubernetes-cluster zoals AKS-engine op Azure, AKS-engine op Azure Stack Hub, GKE, EKS en VMware vSphere.
+
+De functies van Kubernetes met Azure Arc zijn door het Arc-team getest op de volgende distributies:
+* RedHat OpenShift 4.3
+* Rancher RKE 1.0.8
+* Canonical Charmed Kubernetes 1.18
+* AKS-engine
+* AKS-engine op Azure Stack Hub
+* Cluster API Provider Azure
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's 
 
@@ -44,7 +56,7 @@ Kubernetes met Azure Arc biedt ondersteuning voor deze scenario’s:
 Kubernetes met Azure Arc wordt momenteel ondersteund in deze regio’s: 
 
 * VS - oost 
-* Europa -west 
+* Europa -west
 
 ## <a name="next-steps"></a>Volgende stappen
 

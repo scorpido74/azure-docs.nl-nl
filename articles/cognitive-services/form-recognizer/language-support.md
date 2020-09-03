@@ -1,7 +1,7 @@
 ---
-title: Taal ondersteuning-formulier herkenning (preview-versie)
+title: Taalondersteuning - Form Recognizer (Preview)
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de menselijke talen die beschikbaar zijn met de formulier Recognizer.
+description: Lees meer over de menselijke talen die beschikbaar zijn met Form Recognizer.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,15 +10,27 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 6223a45c9bc61d7349ec62fa8aa37f907b2cf3b7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 182cf54f58b4fbb8b80fb4ff9d7c1a9c1e353470
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538752"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723908"
 ---
-# <a name="language-support-for-form-recognizer"></a>Taal ondersteuning voor de formulier herkenning
+# <a name="language-support-for-form-recognizer"></a>Taalondersteuning voor Form Recognizer
 
-Dit artikel bevat een lijst met menselijke talen die worden ondersteund door de Form Recognizer-service (preview).
+In dit artikel staan de menselijke talen die door de service Form Recognizer (Preview) worden ondersteund.
 
-* Engels
+
+|Taal| Taalcode | Form Recognizer v2.0 | Openbare preview van Form Recognizer v2.1*|
+|:-----|:----:|:-----:|:---:|:---:|
+|Chinees (Vereenvoudigd) | `zh-Hans`| | ✔ |
+|Nederlands | `nl` | |✔ |
+|Engels | `en` |✔ |
+|Frans | `fr` | |✔ |
+|Duits | `de` | |✔ |
+|Italiaans | `it` | |✔ |
+|Portugees | `pt` | |✔ |
+|Spaans | `es` | |✔ |
+
+* De openbare preview van Form Recognizer v2.1 ondersteunt deze talen voor de bewerkingen `Analyze Layout` en `Train Custom Model` (_Trainen met labels_ en _Trainen zonder labels_). `Analyze Receipt` en `Analyze Business Card` worden alleen ondersteund in het Engels.

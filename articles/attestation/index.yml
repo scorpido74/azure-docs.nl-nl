@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Microsoft Azure Attestation (preview)
+summary: Informatie over hoe u Azure Attestation gebruikt
+metadata:
+  title: Documentatie voor Azure Attestation
+  description: Meer informatie over hoe u Azure Attestation gebruikt om sleutels te maken en te onderhouden waarmee u de resources, apps en oplossingen in de cloud kunt openen en versleutelen. Zelfstudies, API-verwijzingen en meer.
+  services: attestation
+  ms.service: attestation
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 07/20/2020
+  ms.openlocfilehash: 218a957bfc351dd40f9b101f44d1c6e090e92027
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89398117"
+landingContent:
+- title: Over Microsoft Azure Attestation
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Microsoft Azure Attestation?
+      url: overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: PowerShell-quickstart
+      url: quickstart-powershell.md
+    - text: Quickstart voor ARM-sjabloon
+      url: quickstart-template.md
+- title: Concepten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Basisbegrippen
+      url: basic-concepts.md
+    - text: Grammatica voor claimregel
+      url: claim-rule-grammar.md
+    - text: Claimsets
+      url: claim-sets.md
+    - text: Werkstroom
+      url: workflow.md
+- title: Zelfstudies
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een Attestation-beleid maken en ondertekenen
+      url: author-sign-policy.md
+    - text: Codevoorbeelden van SGX Attestation
+      url: /samples/browse/?expanded=azure&terms=attestation
+- title: Referenties
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Veelgestelde vragen
+      url: faq.md
+    - text: REST
+      url: /rest/api/attestation/
+    - text: Azure PowerShell
+      url: /powershell/module/az.attestation/?view=azps-4.3.0#attestation

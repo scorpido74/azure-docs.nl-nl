@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337650"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855631"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play Preview?
 
@@ -61,6 +61,10 @@ Als apparaatontwikkelaar kunt u een IoT-hardwareproduct ontwikkelen dat onderste
 
 > [!Important]
 > IoT Plug en Play-apparaten moeten gebruikmaken van MQTT of MQTT via WebSockets. Andere protocollen, zoals AMQP of HTTP, zijn niet geldig voor het implementeren van IoT Plug en Play-apparaten.
+
+## <a name="device-certification"></a>Apparaatcertificering
+
+Het [programma voor IoT Plug and Play-apparaatcertificering](howto-certify-device.md) verifieert dat een apparaat voldoet aan de IoT Plug and Play-certificeringsvereisten. U kunt een gecertificeerd apparaat toevoegen aan de openbare [catalogus Gecertificeerd voor Azure IoT-apparaten](https://aka.ms/devicecatalog).
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 

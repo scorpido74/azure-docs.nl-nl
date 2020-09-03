@@ -9,13 +9,17 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 480c1e991225f707b6497849b6e8d8b5c4124f21
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 46c94ec64cd0b82a191c63069a8619bb3dc62908
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505395"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864789"
 ---
+> [!IMPORTANT]
+> * De Form Recognizer-SDK richt zich momenteel op versie 2.0 van de Form Recognizer-service.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud. Zie de referentiedocumentatie hieronder. 
+
 [Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
 ## <a name="prerequisites"></a>Vereisten
@@ -23,16 +27,11 @@ ms.locfileid: "88505395"
 * Azure-abonnement: [Maak een gratis abonnement aan](https://azure.microsoft.com/free/cognitive-services).
 * Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
 * De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Zodra u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Een Form Recognizer-resource maken"  target="_blank">een Form Recognizer-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Form Recognizer-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
-
-### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor Form Recognizer maken
-
-[!INCLUDE [create resource](../create-resource.md)]
-
-### <a name="create-environment-variables"></a>Omgevingsvariabelen maken
-
-[!INCLUDE [environment-variables](../environment-variables.md)]
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
@@ -58,28 +57,55 @@ Build succeeded.
 ...
 ```
 
-Open vanuit de projectmap het bestand *Program.cs* in uw favoriete editor of IDE. Voeg de volgende `using`-instructies toe:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_using)]
-
-Voeg de volgende code toe aan de **Main**-methode. U gaat deze asynchrone taak later definiëren. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
 Installeer in de toepassingsmap de Form Recognizer-clientbibliotheek voor .NET met de volgende opdracht:
 
 ```console
-dotnet add package Azure.AI.FormRecognizer --version 1.0.0-preview.3
+dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-Als u de Visual Studio-IDE, gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
+> [!TIP]
+> Als u de Visual Studio-IDE, gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
 
+Open vanuit de projectmap het bestand *Program.cs* in uw favoriete editor of IDE. Voeg de volgende `using`-instructies toe:
 
-<!-- Objet model TBD -->
+```csharp
+using Azure;
+using Azure.AI.FormRecognizer;
+using Azure.AI.FormRecognizer.Models;
+using Azure.AI.FormRecognizer.Training;
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+```
 
+## <a name="object-model"></a>Objectmodel 
+
+Met Form Recognizer kunt u twee verschillende clienttypen maken. De eerste, `FormRecognizerClient`, wordt gebruikt om query's in de service uit te voeren op herkende formuliervelden en -inhoud. De tweede, `FormTrainingClient`, wordt gebruikt voor het maken en beheren van aangepaste modellen die u kunt gebruiken om de herkenning te verbeteren. 
+
+### <a name="formrecognizerclient"></a>FormRecognizerClient
+
+`FormRecognizerClient` biedt bewerkingen voor:
+
+ - Het herkennen van formuliervelden en -inhoud met aangepaste modellen die zijn getraind om uw aangepaste formulieren te herkennen.  Deze waarden worden geretourneerd in een verzameling `RecognizedForm`-objecten. Zie het voorbeeld [Aangepaste formulieren analyseren](#analyze-forms-with-a-custom-model).
+ - Het herkennen van formulierinhoud, waaronder tabellen, regels en woorden, zonder dat u een model hoeft te trainen.  Formulierinhoud wordt geretourneerd in een verzameling `FormPage`-objecten. Zie het voorbeeld [Formulierinhoud herkennen](#recognize-form-content).
+ - Het herkennen van algemene velden van Amerikaanse ontvangstbewijzen met behulp van een vooraf getraind ontvangstbewijsmodel in de Form Recognizer-service.  Deze velden en metagegevens worden geretourneerd in een verzameling `RecognizedForm`-objecten. Zie het voorbeeld [Ontvangstbewijzen herkennen](#recognize-receipts).
+
+### <a name="formtrainingclient"></a>FormTrainingClient
+
+`FormTrainingClient` biedt bewerkingen voor:
+
+- Het trainen van aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden.  Er wordt een `CustomFormModel` geretourneerd, dat aangeeft welke formuliertypen het model zal herkennen en welke velden het zal extraheren voor elk formuliertype.
+- Het trainen van aangepaste modellen om specifieke velden en waarden te herkennen die u opgeeft door uw aangepaste formulieren te labelen.  Er wordt een `CustomFormModel` geretourneerd, dat aangeeft welke velden het model zal extraheren, evenals de geschatte nauwkeurigheid van elk veld.
+- Het beheren van modellen die in uw account zijn gemaakt.
+- Het kopiëren van een aangepast model van de ene Form Recognizer-resource naar de andere.
+
+Zie de voorbeelden voor [Een model trainen](#train-a-custom-model) en [Aangepaste modellen beheren](#manage-custom-models).
+
+Denk eraan dat modellen ook kunnen worden getraind met een grafische gebruikersinterface zoals het [hulpprogramma voor het labelen van Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -95,54 +121,260 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de cli
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Onder de `Main`-methode definieert u de taak waarnaar wordt verwezen in `Main`. Hier gaat u twee clientobjecten verifiëren met behulp van de abonnementsvariabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential**-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
+Maak onder `Main()` een nieuwe methode met de naam `AuthenticateClient`. U zult deze in toekomstige taken gebruiken om uw aanvragen bij de Form Recognizer-service te verifiëren. Deze methode maakt gebruik van een `AzureKeyCredential`-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
+> [!IMPORTANT]
+> Ga naar Azure Portal. Als de Form Recognizer-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
+>
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Bijvoorbeeld [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
+```csharp
+static private FormRecognizerClient AuthenticateClient(){
+    string endpoint = "<replace-with-your-form-recognizer-endpoint-here>";
+    string apiKey = "<replace-with-your-form-recognizer-key-here>";
+    var credential = new AzureKeyCredential(apiKey);
+    var client = new FormRecognizerClient(new Uri(endpoint), credential);
+    return client;
+}
+```
 
-### <a name="call-client-specific-methods"></a>Clientspecifieke methodes aanroepen
+## <a name="assets-for-testing"></a>Assets voor testen 
 
-In het volgende codeblok worden de clientobjecten gebruikt voor het aanroepen van methodes voor elk van de hoofdtaken in de Form Recognizer-SDK. U gaat deze methodes later definiëren.
+De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
-U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens. 
+U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens.
 * Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
-* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL gebruiken van een document dat zich elders bevindt.
-* Gebruik bovenstaande methode ook om de URL te verkrijgen van een kopie van een ontvangstbewijs, of gebruik de meegeleverde URL van een voorbeeldkopie.
+* Gebruik het voorbeeldformulier en de ontvangstbewijsafbeeldingen die zijn opgenomen in de onderstaande voorbeelden. Ze zijn ook beschikbaar op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms). U kunt tevens de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. 
 
 > [!NOTE]
-> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre).
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_calls)]
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
 ## <a name="recognize-form-content"></a>Formulierinhoud herkennen
 
-U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
+U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen. De geretourneerde waarde is een verzameling **FormPage**-objecten: één voor elke pagina in het ingediende document. 
 
-Als u de inhoud van een bestand op een bepaalde URI wilt herkennen, gebruikt u de methode **StartRecognizeContentFromUrl**.
+Als u de inhoud van een bestand op een bepaalde URI wilt herkennen, gebruikt u de methode `StartRecognizeContentFromUri`.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+```csharp
+static async Task RecognizeContent(){
+    var invoiceUri = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf";
+    var recognizeClient =  AuthenticateClient();
+    FormPageCollection formPages = await recognizeClient
+        .StartRecognizeContentFromUri(new Uri(invoiceUri))
+        .WaitForCompletionAsync();
+    foreach (FormPage page in formPages)
+    {
+        Console.WriteLine($"Form Page {page.PageNumber} has {page.Lines.Count} lines.");
 
+        for (int i = 0; i < page.Lines.Count; i++)
+        {
+            FormLine line = page.Lines[i];
+            Console.WriteLine($"    Line {i} has {line.Words.Count} word{(line.Words.Count > 1 ? "s" : "")}, and text: '{line.Text}'.");
+        }
 
-De geretourneerde waarde is een verzameling **FormPage**-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-/waardeparen en tabelgegevens afgedrukt.
+        for (int i = 0; i < page.Tables.Count; i++)
+        {
+            FormTable table = page.Tables[i];
+            Console.WriteLine($"Table {i} has {table.RowCount} rows and {table.ColumnCount} columns.");
+            foreach (FormTableCell cell in table.Cells)
+            {
+                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex}) contains text: '{cell.Text}'.");
+            }
+        }
+    }
+}
+```
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_print)]
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
 
+```csharp
+static void Main(string[] args)
+{
+    var analyzeForm = RecognizeContent();
+    Task.WaitAll(analyzeForm);
+}
+```
+
+### <a name="output"></a>Uitvoer
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+```
 
 ## <a name="recognize-receipts"></a>Ontvangstbewijzen herkennen
 
-In deze sectie wordt beschreven hoe u veelvoorkomende velden in Amerikaanse ontvangstbewijzen kunt herkennen en extraheren met behulp van een vooraf getraind ontvangstbewijsmodel.
+In deze sectie wordt beschreven hoe u algemene velden in Amerikaanse ontvangstbewijzen kunt herkennen en uitpakken met behulp van een vooraf getraind ontvangstmodel.
 
-Om ontvangstbewijzen te herkennen vanuit een URI, gebruikt u de methode **StartRecognizeReceiptsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedReceipt**-objecten: één voor elke pagina in het ingediende document. Met de volgende code wordt een ontvangstbewijs op de opgegeven URI verwerkt en worden de belangrijkste velden en waarden op de console weergegeven.
+Om ontvangstbewijzen te herkennen vanuit een URI, gebruikt u de methode `StartRecognizeReceiptsFromUri`. De geretourneerde waarde is een verzameling `RecognizedReceipt`-objecten: één voor elke pagina in het ingediende document. Met de volgende code wordt een ontvangstbewijs op de opgegeven URI verwerkt en worden de belangrijkste velden en waarden op de console weergegeven.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
+```csharp
+static async Task RecognizeReceipts(){
+    var receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png";
+    var recognizeClient = AuthenticateClient();
+    RecognizedFormCollection receipts = await recognizeClient.StartRecognizeReceiptsFromUri(new Uri(receiptUrl)).WaitForCompletionAsync();
 
+    // To see the list of the supported fields returned by service and its corresponding types, consult:
+    // https://aka.ms/formrecognizer/receiptfields
 
-In het volgende codeblok worden de afzonderlijke items die op het ontvangstbewijs zijn gedetecteerd doorlopen en worden de details ervan naar de console afgedrukt.
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_item_print)]
+    foreach (RecognizedForm receipt in receipts)
+    {
+        FormField merchantNameField;
+        if (receipt.Fields.TryGetValue("MerchantName", out merchantNameField))
+        {
+            if (merchantNameField.Value.ValueType == FieldValueType.String)
+            {
+                string merchantName = merchantNameField.Value.AsString();
 
-Ten slotte wordt met het laatste codeblok de totale waarde van het ontvangstbewijs afgedrukt.
+                Console.WriteLine($"Merchant Name: '{merchantName}', with confidence {merchantNameField.Confidence}");
+            }
+        }
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_total_print)]
+        FormField transactionDateField;
+        if (receipt.Fields.TryGetValue("TransactionDate", out transactionDateField))
+        {
+            if (transactionDateField.Value.ValueType == FieldValueType.Date)
+            {
+                DateTime transactionDate = transactionDateField.Value.AsDate();
+
+                Console.WriteLine($"Transaction Date: '{transactionDate}', with confidence {transactionDateField.Confidence}");
+            }
+        }
+
+        FormField itemsField;
+        if (receipt.Fields.TryGetValue("Items", out itemsField))
+        {
+            if (itemsField.Value.ValueType == FieldValueType.List)
+            {
+                foreach (FormField itemField in itemsField.Value.AsList())
+                {
+                    Console.WriteLine("Item:");
+
+                    if (itemField.Value.ValueType == FieldValueType.Dictionary)
+                    {
+                        IReadOnlyDictionary<string, FormField> itemFields = itemField.Value.AsDictionary();
+
+                        FormField itemNameField;
+                        if (itemFields.TryGetValue("Name", out itemNameField))
+                        {
+                            if (itemNameField.Value.ValueType == FieldValueType.String)
+                            {
+                                string itemName = itemNameField.Value.AsString();
+
+                                Console.WriteLine($"    Name: '{itemName}', with confidence {itemNameField.Confidence}");
+                            }
+                        }
+
+                        FormField itemTotalPriceField;
+                        if (itemFields.TryGetValue("TotalPrice", out itemTotalPriceField))
+                        {
+                            if (itemTotalPriceField.Value.ValueType == FieldValueType.Float)
+                            {
+                                float itemTotalPrice = itemTotalPriceField.Value.AsFloat();
+
+                                Console.WriteLine($"    Total Price: '{itemTotalPrice}', with confidence {itemTotalPriceField.Confidence}");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        FormField totalField;
+        if (receipt.Fields.TryGetValue("Total", out totalField))
+        {
+            if (totalField.Value.ValueType == FieldValueType.Float)
+            {
+                float total = totalField.Value.AsFloat();
+
+                Console.WriteLine($"Total: '{total}', with confidence '{totalField.Confidence}'");
+            }
+        }
+    }
+}
+```
+
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
+
+```csharp
+static void Main(string[] args)
+{
+    var analyzeReceipts = RecognizeReceipts();
+    Task.WaitAll(analyzeReceipts);
+}
+```
+
+### <a name="output"></a>Uitvoer 
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+```
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
@@ -151,80 +383,489 @@ In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met ee
 > [!NOTE]
 > U kunt ook modellen trainen met een grafische gebruikersinterface, zoals het [voorbeeldhulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md).
 
+### <a name="authenticate-the-training-client"></a>De trainingsclient verifiëren
+
+Maak onder `AuthenticateClient` een nieuwe methode met de naam `AuthenticateTrainingClient`. U zult deze in toekomstige taken gebruiken om aangepaste modellen te trainen. Deze methode maakt gebruik van het `AzureKeyCredential`-object (zoals `AuthenticateClient`), zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
+
+```csharp
+static private FormTrainingClient AuthenticateTrainingClient()
+{
+    string endpoint = "https://formre-ga-sdk-testing.cognitiveservices.azure.com/";
+    string apiKey = "<replace-with-your-form-recognizer-key-here>";
+    var credential = new AzureKeyCredential(apiKey);
+    var trainingClient = new FormTrainingClient(new Uri(endpoint), credential);
+    return trainingClient;
+}
+```
+
 ### <a name="train-a-model-without-labels"></a>Een model trainen zonder labels
 
-Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder de trainingsdocumenten handmatig te labelen.
+Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder de trainingsdocumenten handmatig te labelen. Met de volgende methode wordt een model voor een bepaalde set documenten getraind en wordt de status van het model in de console weergegeven. Het geretourneerde `CustomFormModel`-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
-Met de volgende methode wordt een model voor een bepaalde set documenten getraind en wordt de status van het model in de console weergegeven. 
+```csharp
+static async Task TrainCustomModelNoLabels()
+{
+    var trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
+    var trainingClient = AuthenticateTrainingClient();
+    CustomFormModel model = await trainingClient
+        .StartTrainingAsync(new Uri(trainingDataUrl), useTrainingLabels: false)
+        .WaitForCompletionAsync();
+    Console.WriteLine($"Custom Model Info:");
+    Console.WriteLine($"    Model Id: {model.ModelId}");
+    Console.WriteLine($"    Model Status: {model.Status}");
+    Console.WriteLine($"    Training model started on: {model.TrainingStartedOn}");
+    Console.WriteLine($"    Training model completed on: {model.TrainingCompletedOn}");
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train)]
+    foreach (CustomFormSubmodel submodel in model.Submodels)
+    {
+        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
+        foreach (CustomFormModelField field in submodel.Fields.Values)
+        {
+            Console.Write($"    FieldName: {field.Name}");
+            if (field.Label != null)
+            {
+                Console.Write($", FieldLabel: {field.Label}");
+            }
+            Console.WriteLine("");
+        }
+    }
+}
+```
 
-Het geretourneerde **CustomFormModel**-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_response)]
+```csharp
+static void Main(string[] args)
+{
+    var trainCustomModel = TrainCustomModelNoLabels();
+    Task.WaitAll(trainCustomModel);
+}
+```
 
-Ten slotte retourneert deze methode de unieke id van het model.
+### <a name="output"></a>Uitvoer
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_return)]
+Dit antwoord is ingekort zodat het beter leesbaar is.
+
+```console
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    ...
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    ... 
+Custom Model Info:
+    Model Id: 95035721-f19d-40eb-8820-0c806b42798b
+    Model Status: Ready
+    Training model started on: 8/24/2020 6:36:44 PM +00:00
+    Training model completed on: 8/24/2020 6:36:50 PM +00:00
+Submodel Form Type: form-95035721-f19d-40eb-8820-0c806b42798b
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    ... 
+Custom Model Info:
+    Model Id: e7a1181b-1fb7-40be-bfbe-1ee154183633
+    Model Status: Ready
+    Training model started on: 8/24/2020 6:36:44 PM +00:00
+    Training model completed on: 8/24/2020 6:36:52 PM +00:00
+Submodel Form Type: form-0
+    FieldName: field-0, FieldLabel: Additional Notes:
+    FieldName: field-1, FieldLabel: Address:
+    FieldName: field-2, FieldLabel: Company Name:
+    FieldName: field-3, FieldLabel: Company Phone:
+    FieldName: field-4, FieldLabel: Dated As:
+    FieldName: field-5, FieldLabel: Details
+    FieldName: field-6, FieldLabel: Email:
+    FieldName: field-7, FieldLabel: Hero Limited
+    FieldName: field-8, FieldLabel: Name:
+    FieldName: field-9, FieldLabel: Phone:
+    ...
+```
 
 ### <a name="train-a-model-with-labels"></a>Een model trainen met labels
 
-U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale bestanden met labelinformatie ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen om deze labelbestanden te maken. Zodra u deze hebt, kunt u de methode **StartTrainingAsync** aanroepen met de parameter *uselabels* ingesteld op `true`.
+U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale bestanden met labelinformatie (`\<filename\>.pdf.labels.json`) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de methode `StartTrainingAsync` aanroepen met de parameter `uselabels` ingesteld op `true`. Het geretourneerde `CustomFormModel` geeft aan welke velden het model kan extraheren, samen met de geschatte nauwkeurigheid van elk veld. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels)]
+```csharp
+static async Task TrainCustomModelWithLabels()
+{
+    var trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
+    var trainingClient = AuthenticateTrainingClient();
 
-Het geretourneerde **CustomFormModel** geeft aan welke velden het model kan extraheren, samen met de geschatte nauwkeurigheid van elk veld. In het volgende codeblok wordt deze informatie op de console weergegeven.
+    CustomFormModel model = await trainingClient
+        .StartTrainingAsync(new Uri(trainingDataUrl), useTrainingLabels: true)
+        .WaitForCompletionAsync();
+    Console.WriteLine($"Custom Model Info:");
+    Console.WriteLine($"    Model Id: {model.ModelId}");
+    Console.WriteLine($"    Model Status: {model.Status}");
+    Console.WriteLine($"    Training model started on: {model.TrainingStartedOn}");
+    Console.WriteLine($"    Training model completed on: {model.TrainingCompletedOn}");
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels_response)]
+    foreach (CustomFormSubmodel submodel in model.Submodels)
+    {
+        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
+        foreach (CustomFormModelField field in submodel.Fields.Values)
+        {
+            Console.Write($"    FieldName: {field.Name}");
+            if (field.Label != null)
+            {
+                Console.Write($", FieldLabel: {field.Label}");
+            }
+            Console.WriteLine("");
+        }
+    }
+}
+```
+
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
+
+```csharp
+static void Main(string[] args)
+{
+    var trainCustomModel = TrainCustomModelNoLabels();
+    Task.WaitAll(trainCustomModel);
+}
+```
+
+### <a name="output"></a>Uitvoer
+
+Dit antwoord is ingekort zodat het beter leesbaar is.
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    ...
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    ... 
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+Custom Model Info:
+    Model Id: 63c013e3-1cab-43eb-84b0-f4b20cb9214c
+    Model Status: Ready
+    Training model started on: 8/24/2020 6:42:54 PM +00:00
+    Training model completed on: 8/24/2020 6:43:01 PM +00:00
+Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    FieldName: DatedAs
+    FieldName: Email
+    FieldName: Merchant
+    ... 
+```
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
 In deze sectie ziet u hoe u belangrijke/waardevolle informatie en andere inhoud uit uw aangepaste formuliertypen kunt ophalen met behulp van modellen die u hebt getraind met uw eigen formulieren.
 
 > [!IMPORTANT]
-> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode. Bekijk de sectie [Een model trainen](#train-a-model-without-labels).
+> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode.
 
-U gebruikt de methode **StartRecognizeCustomFormsFromUriRecognizeCustomFormsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedForm**-objecten: één voor elke pagina in het ingediende document.
+U gebruikt de methode `StartRecognizeCustomFormsFromUri`. De geretourneerde waarde is een verzameling `RecognizedForm`-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
+```csharp
+{
+    // Use the custom model ID returned in the previous example.
+    string modelId = "<modelId>";
+    var invoiceUri = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf";
+    var recognizeClient = AuthenticateClient();
 
-Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
+    RecognizedFormCollection forms = await recognizeClient
+    .StartRecognizeCustomFormsFromUri(modelId, new Uri(invoiceUri))
+    .WaitForCompletionAsync();
+    foreach (RecognizedForm form in forms)
+    {
+        Console.WriteLine($"Form of type: {form.FormType}");
+        foreach (FormField field in form.Fields.Values)
+        {
+            Console.WriteLine($"Field '{field.Name}: ");
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
+            if (field.LabelData != null)
+            {
+                Console.WriteLine($"    Label: '{field.LabelData.Text}");
+            }
 
-## <a name="manage-your-custom-models"></a>Uw aangepaste modellen beheren
+            Console.WriteLine($"    Value: '{field.ValueData.Text}");
+            Console.WriteLine($"    Confidence: '{field.Confidence}");
+        }
+    }
+}
+```
 
-In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Als voorbeeld worden met de volgende code alle modelbeheertaken in één methode uitgevoerd. Begin met het kopiëren van de onderstaande methodehandtekening:
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage)]
+```csharp
+static void Main(string[] args)
+{
+    var recognizeContentCustomModel = RecognizeContentCustomModel();
+    Task.WaitAll(recognizeContentCustomModel);
+}
+```
+
+### <a name="output"></a>Uitvoer
+
+Dit antwoord is ingekort zodat het beter leesbaar is.
+
+```console
+Custom Model Info:
+    Model Id: 9b0108ee-65c8-450e-b527-bb309d054fc4
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:00:31 PM +00:00
+    Training model completed on: 8/24/2020 7:00:32 PM +00:00
+Submodel Form Type: form-9b0108ee-65c8-450e-b527-bb309d054fc4
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    ...
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    ...
+
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    ...
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+Custom Model Info:
+    Model Id: dc115156-ce0e-4202-bbe4-7426e7bee756
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:00:31 PM +00:00
+    Training model completed on: 8/24/2020 7:00:41 PM +00:00
+Submodel Form Type: form-0
+    FieldName: field-0, FieldLabel: Additional Notes:
+    FieldName: field-1, FieldLabel: Address:
+    FieldName: field-2, FieldLabel: Company Name:
+    FieldName: field-3, FieldLabel: Company Phone:
+    FieldName: field-4, FieldLabel: Dated As:
+    ... 
+Form of type: custom:form
+Field 'Azure.AI.FormRecognizer.Models.FieldValue:
+    Value: '$56,651.49
+    Confidence: '0.249
+Field 'Azure.AI.FormRecognizer.Models.FieldValue:
+    Value: 'PT
+    Confidence: '0.245
+Field 'Azure.AI.FormRecognizer.Models.FieldValue:
+    Value: '99243
+    Confidence: '0.114
+   ...
+```
+
+## <a name="manage-custom-models"></a>Aangepaste modellen beheren
+
+In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. 
 
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resourceaccount controleren
 
 In het volgende codeblok wordt het aantal modellen gecontroleerd dat u in uw Form Recognizer-account hebt opgeslagen en wordt dit aantal vergeleken met de limiet voor het account.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_count)]
+```csharp
+static void CheckNumberOfModels()
+{
+    var trainingClient = AuthenticateTrainingClient();
+    AccountProperties accountProperties = trainingClient.GetAccountProperties();
+    Console.WriteLine($"Account has {accountProperties.CustomModelCount} models.");
+    Console.WriteLine($"It can have at most {accountProperties.CustomModelLimit} models.");
+}
+```
+
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
+
+```csharp
+static void Main(string[] args)
+{
+    CheckNumberOfModels();
+}
+```
+
+### <a name="output"></a>Uitvoer 
+
+```console
+Account has 20 models.
+It can have at most 5000 models.
+```
 
 ### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weergeven die momenteel zijn opgeslagen in het resource-account
 
 In het volgende codeblok worden de huidige modellen in uw account vermeld en worden de details ervan in de console weergegeven.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_list)]
+```csharp
+static void ListAllModels()
+{
+    var trainingClient = AuthenticateTrainingClient();
+
+    Pageable<CustomFormModelInfo> models = trainingClient.GetCustomModels();
+
+    foreach (CustomFormModelInfo modelInfo in models)
+    {
+        Console.WriteLine($"Custom Model Info:");
+        Console.WriteLine($"    Model Id: {modelInfo.ModelId}");
+        Console.WriteLine($"    Model Status: {modelInfo.Status}");
+        Console.WriteLine($"    Training model started on: {modelInfo.TrainingStartedOn}");
+        Console.WriteLine($"    Training model completed on: {modelInfo.TrainingCompletedOn}");
+    }   
+}
+```
+
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
+
+```csharp
+static void Main(string[] args)
+{
+    ListAllModels();
+}
+```
+
+### <a name="output"></a>Uitvoer 
+
+Dit antwoord is ingekort zodat het beter leesbaar is.
+
+```console
+Custom Model Info:
+    Model Id: 05932d5a-a2f8-4030-a2ef-4e5ed7112515
+    Model Status: Creating
+    Training model started on: 8/24/2020 7:35:02 PM +00:00
+    Training model completed on: 8/24/2020 7:35:02 PM +00:00
+Custom Model Info:
+    Model Id: 150828c4-2eb2-487e-a728-60d5d504bd16
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:33:25 PM +00:00
+    Training model completed on: 8/24/2020 7:33:27 PM +00:00
+Custom Model Info:
+    Model Id: 3303e9de-6cec-4dfb-9e68-36510a6ecbb2
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:29:27 PM +00:00
+    Training model completed on: 8/24/2020 7:29:36 PM +00:00
+```
 
 ### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de id van het model
 
 Het volgende codeblok traint een nieuw model (net zoals in de sectie [Een model trainen](#train-a-model-without-labels)) en haalt dan met behulp van zijn id een tweede verwijzing op.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_get)]
+```csharp
+static void GetModelById()
+{
+    // Use the custom model ID returned in the previous example.
+    string modelId = "<modelId>";
+    var trainingClient = AuthenticateTrainingClient();
+    CustomFormModel modelCopy = trainingClient.GetCustomModel(modelId);
+
+    Console.WriteLine($"Custom Model {modelCopy.ModelId} recognizes the following form types:");
+
+    foreach (CustomFormSubmodel submodel in modelCopy.Submodels)
+    {
+        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
+        foreach (CustomFormModelField field in submodel.Fields.Values)
+        {
+            Console.Write($"    FieldName: {field.Name}");
+            if (field.Label != null)
+            {
+                Console.Write($", FieldLabel: {field.Label}");
+            }
+            Console.WriteLine("");
+        }
+    }
+}    
+```
+
+Om deze methode uit te voeren, moet u deze aanroepen vanuit `Main`. 
+
+```csharp
+static void Main(string[] args)
+{
+    GetModelById();
+}
+```
+
+### <a name="output"></a>Uitvoer 
+
+Dit antwoord is ingekort zodat het beter leesbaar is.
+
+```console
+Custom Model Info:
+    Model Id: 150828c4-2eb2-487e-a728-60d5d504bd16
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:33:25 PM +00:00
+    Training model completed on: 8/24/2020 7:33:27 PM +00:00
+Submodel Form Type: form-150828c4-2eb2-487e-a728-60d5d504bd16
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    FieldName: DatedAs
+    FieldName: Email
+    FieldName: Merchant
+    FieldName: PhoneNumber
+    FieldName: PurchaseOrderNumber
+    FieldName: Quantity
+    FieldName: Signature
+    FieldName: Subtotal
+    FieldName: Tax
+    FieldName: Total
+    FieldName: VendorName
+    FieldName: Website
+...
+```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resourceaccount verwijderen
 
 U kunt een model ook uit uw account verwijderen door naar de id te verwijzen.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_delete)]
+```csharp
+static void DeleteModel()
+{
+    // Use the custom model ID returned in the previous example.
+    string modelId = "<modelId>";
+    var trainingClient = AuthenticateTrainingClient();
+    trainingClient.DeleteModel(modelId);
+} 
+```
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing op vanuit uw toepassingsmap met de opdracht `dotnet run`.
+U kunt met deze opdracht de toepassing op elk gewenst moment uitvoeren met een willekeurig aantal functies die u in deze quickstart hebt gezien:
 
 ```dotnet
 dotnet run

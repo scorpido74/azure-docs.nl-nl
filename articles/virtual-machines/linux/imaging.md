@@ -1,6 +1,6 @@
 ---
 title: Overzicht van het maken van Linux-installatiekopieën voor Azure
-description: Overzicht van hoe uw eigen Linux VM-installatiekopieën gebruikt of nieuwe installatiekopieën maakt voor gebruik in Azure.
+description: Hoe uw eigen Linux VM-installatiekopieën gebruikt of nieuwe installatiekopieën maakt voor gebruik in Azure.
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502177"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319539"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Eigen inux-installatiekopieën gebruiken en maken in Azure
 
@@ -25,7 +25,7 @@ In dit artikel bespreken we de beslissingen en vereisten van de installatiekopie
 ## <a name="difference-between-managed-disks-and-images"></a>Verschil tussen beheerde schijven en installatiekopieën
 
 
-Met Azure kunt u een VHD naar het platform brengen om te gebruiken als [Beheerde schijf](../windows/faq-for-disks.md#managed-disks) of gebruiken als bron voor een installatiekopie. 
+Met Azure kunt u een VHD naar het platform brengen om te gebruiken als [Beheerde schijf](../faq-for-disks.md#managed-disks) of gebruiken als bron voor een installatiekopie. 
 
 Azure Managed Disks zijn enkelvoudige VHD's. U kunt een bestaande VHD nemen en hiervan een beheerde schijf maken, of zelf een lege beheerde schijf maken. U kunt VM's maken op basis van beheerde schijven door de schijf aan de virtuele machine toe te voegen, maar u kunt alleen een VHD met één virtuele machine gebruiken. U kunt geen eigenschappen van besturingssystemen wijzigen. Azure probeert nu de virtuele machine in te schakelen en te starten met die schijf. 
 
@@ -46,7 +46,7 @@ Azure biedt twee hoofdafbeeldingstypen, gegeneraliseerd en gespecialiseerd. De t
 
 ### <a name="generalized-images"></a>Gegeneraliseerde installatiekopieën
 
-Een gegeneraliseerde installatiekopie is een installatiekopie waarvoor de installatie moet worden voltooid bij de eerste keer dat de computer wordt opgestart. Bij de eerste keer dat de computer wordt opgestart, kunt u bijvoorbeeld de hostnaam, beheergebruiker en andere VM-specifieke configuraties instellen. Dit is handig als u wilt dat de installatiekopie meerdere keren opnieuw wordt gebruikt en wanneer u parameters wilt doorgeven tijdens het maken. Als de gegeneraliseerde installatiekopie de Azure-agent bevat, worden de parameters door de agent verwerkt en krijgt platform een seintje dat de eerste configuratie is voltooid. Dit proces wordt **inrichting** genoemd. 
+Een gegeneraliseerde installatiekopie is een installatiekopie waarvoor de installatie moet worden voltooid bij de eerste keer dat de computer wordt opgestart. Bij de eerste keer dat de computer wordt opgestart, kunt u bijvoorbeeld de hostnaam, beheergebruiker en andere VM-specifieke configuraties instellen. Dit is handig als u wilt dat de installatiekopie meerdere keren opnieuw wordt gebruikt en wanneer u parameters wilt doorgeven tijdens het maken. Als de gegeneraliseerde installatiekopie de Azure-agent bevat, worden de parameters door de agent verwerkt en krijgt platform een seintje dat de eerste configuratie is voltooid. Dit proces wordt [inrichting](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning) genoemd. 
 
 Voor het inrichten is vereist dat een inrichtingsprogramma is opgenomen in de installatiekopie. Er zijn twee inrichtingsprogramma’s:
 - [Azure Linux Agent](../extensions/agent-linux.md)

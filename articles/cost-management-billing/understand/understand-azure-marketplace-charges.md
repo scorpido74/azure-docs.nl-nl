@@ -1,20 +1,21 @@
 ---
-title: Meer informatie over uw kosten voor externe services in Azure | Microsoft Docs
+title: Informatie over uw kosten voor externe services in Azure
 description: Meer informatie over facturering van kosten voor externe services, voorheen bekend als Marketplace, in Azure.
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 120f60698851bcdaf39f989b4d36c0436b716833
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8da85ec5781ff9575cf380092fea9e41d6af8786
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117862"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686119"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Inzicht in uw Azure-externe servicekosten
 Externe services worden gepubliceerd door softwareleveranciers van derden in Azure Marketplace. SendGrid is bijvoorbeeld een externe service die u in Azure kunt kopen, maar die niet is gepubliceerd door Microsoft. Sommige Microsoft-producten worden ook verkocht via Azure Marketplace.

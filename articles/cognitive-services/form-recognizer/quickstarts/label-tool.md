@@ -7,26 +7,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517911"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377809"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een Form Recognizer-model trainen met behulp van het voorbeeldhulpprogramma voor labelen
 
 In deze quickstart gebruikt u de REST API van Form Recognizer met het voorbeeldhulpprogramma voor labelen om een aangepast model te trainen met handmatig gelabelde gegevens. Zie de sectie [Trainen met labels](../overview.md#train-with-labels) van het overzicht voor meer informatie over deze functie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze quickstart hebt u het volgende nodig:
+U hebt het volgende nodig om deze quickstart te voltooien:
 
-- Een set van minimaal zes formulieren van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt voor deze quickstart een [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
+* Wanneer u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Een Form Recognizer-resource maken"  target="_blank">een Form Recognizer-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Form Recognizer API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* Een set van minimaal zes formulieren van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt voor deze quickstart een [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
@@ -52,14 +56,35 @@ U gebruikt de Docker-engine voor het uitvoeren van het voorbeeldhulpprogramma vo
    * [MacOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
+
+
+
+
 1. Haal de container voor het voorbeeldhulpprogramma voor labelen op met de opdracht `docker pull`.
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
+    # <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+    ```
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    ```
+
+    ---
+
 1. U bent nu klaar om de container met `docker run` uit te voeren.
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
+    # <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+    ```
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    ```
+
+    --- 
 
    Met deze opdracht wordt het voorbeeldhulpprogramma voor labelen beschikbaar gemaakt via een webbrowser. Ga naar `http://localhost:3000`.
 
@@ -97,7 +122,8 @@ Vul de velden in met de volgende waarden:
 * **Beschrijving**: de beschrijving van het project.
 * **SAS-URL**: de Shared Access Signature-URL (SAS-URL) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Stel de verlooptijd in op een tijdstip nadat u de service hebt gebruikt. Controleer of de machtigingen **Lezen** en **Schrijven**, **Verwijderen** en **Vermelden** zijn geselecteerd en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
 
-![Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen](../media/label-tool/connections.png)
+:::image type="content" source="../media/label-tool/connections.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
+
 
 ## <a name="create-a-new-project"></a>Een nieuw project maken
 
@@ -111,7 +137,7 @@ In het voorbeeldhulpprogramma voor labelen worden uw configuraties en instelling
 * **API-sleutel**: de abonnementssleutel van de Form Recognizer.
 * **Beschrijving**: optioneel: projectbeschrijving
 
-![Pagina met nieuw project in voorbeeldhulpprogramma voor labelen](../media/label-tool/new-project.png)
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Pagina met nieuw project in voorbeeldhulpprogramma voor labelen.":::
 
 ## <a name="label-your-forms"></a>Formulieren labelen
 
@@ -125,10 +151,15 @@ Wanneer u een project maakt of opent, wordt hoofdvenster van de tageditor geopen
 
 Klik in het linkerdeelvenster op **OCR uitvoeren op alle bestanden** om informatie over de tekstindeling voor een document op te halen. Er worden begrenzingsvakken rond elk tekstelement getekend.
 
+Er wordt ook weergegeven welke tabellen automatisch zijn geëxtraheerd. Klik op het tabel-/rasterpictogram aan de linkerkant van het document om de geëxtraheerde tabel te zien. Omdat de tabelinhoud automatisch wordt geëxtraheerd, zullen we de tabelinhoud in deze quickstart niet labelen maar zullen we vertrouwen op de geautomatiseerde extractie.
+
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Tabelvisualisatie in voorbeeldhulpprogramma voor labelen.":::
+
 ### <a name="apply-labels-to-text"></a>Labels op tekst toepassen
 
 Vervolgens maakt u tags (labels) en past u ze toe op de tekstelementen die u door het model wilt laten herkennen.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
 1. Gebruik eerst het deelvenster van de tageditor om de labels te maken die u wilt identificeren.
    1. Klik op **+** om een nieuw label te maken.
    1. Voer de naam van het label in.
@@ -146,7 +177,30 @@ Vervolgens maakt u tags (labels) en past u ze toe op de tekstelementen die u doo
     > * Gebruik de knoppen rechts van de **+** om uw labels te zoeken, een nieuwe naam te geven, opnieuw in te delen en te verwijderen.
     > * Als u een toegepast label wilt verwijderen zonder het label zelf te verwijderen, selecteert u de gemarkeerde rechthoek in de documentweergave en drukt u op de verwijdertoets.
 
-![Hoofdvenster van de editor van het voorbeeldhulpprogramma voor labelen](../media/label-tool/main-editor.png)
+
+# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1) 
+1. Gebruik eerst het deelvenster van de tageditor om de labels te maken die u wilt identificeren.
+   1. Klik op **+** om een nieuw label te maken.
+   1. Voer de naam van het label in.
+   1. Druk op Enter om het label op te slaan.
+1. Klik in de hoofdeditor op woorden in de gemarkeerde tekstelementen. In de _preview van v2.1_ kunt u ook klikken om _Selectiemarkeringen_ zoals keuzerondjes en selectievakjes te selecteren als sleutel-waardeparen. Form Recognizer identificeert of de selectiemarkering de waarde ‘ingeschakeld’ of ‘uitgeschakeld’ is.
+1. Klik op het label dat u wilt toepassen of druk op de bijbehorende toets op het toetsenbord. De numerieke toetsen zijn toegewezen als sneltoetsen voor de eerste tien labels. U kunt de volgorde van de labels wijzigen met behulp van de pijlen omhoog en omlaag in het tageditorvenster.
+    > [!Tip]
+    > Denk aan de volgende tips wanneer u labels voor uw formulieren gebruikt.
+    > * U kunt slechts één label per geselecteerd tekstelement toepassen.
+    > * Elk label kan slechts eenmaal per pagina worden toegepast. Als een waarde meerdere keren op hetzelfde formulier wordt weergegeven, maakt u voor elk exemplaar verschillende labels. Bijvoorbeeld: factuur 1, factuur 2, enzovoort.
+    > * Een label kan niet op meerdere pagina's worden toegepast.
+    > * De labelwaarden zijn zoals ze op het formulier worden weergegeven. Splits geen waarde in twee delen met twee verschillende labels. Zo moet bijvoorbeeld een adresveld met één label worden gelabeld, ook als het meerdere regels omvat.
+    > * Voeg geen sleutels aan de velden met labels toe, alleen de waarden.
+    > * Tabelgegevens moeten automatisch worden gedetecteerd en worden beschikbaar in het laatste JSON-uitvoerbestand. Als het model echter niet alle tabelgegevens detecteert, kunt u deze velden ook handmatig labelen. Label elke cel in de tabel met een ander label. Als uw formulieren tabellen met een wisselend aantal rijen bevatten, moet u ervoor zorgen dat u ten minste één formulier met de grootste mogelijke tabel labelt.
+    > * Gebruik de knoppen rechts van de **+** om uw labels te zoeken, een nieuwe naam te geven, opnieuw in te delen en te verwijderen.
+    > * Als u een toegepast label wilt verwijderen zonder het label zelf te verwijderen, selecteert u de gemarkeerde rechthoek in de documentweergave en drukt u op de verwijdertoets.
+
+
+---
+
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Hoofdvenster van de editor van het voorbeeldhulpprogramma voor labelen.":::
+
 
 Volg de bovenstaande stappen om ten minste vijf formulieren te labelen.
 
@@ -166,6 +220,7 @@ De volgende waardetypen en variaties worden momenteel ondersteund:
     * standaard, `dmy`, `mdy`, `ymd`
 * `time`
 * `integer`
+* `selectionMark` – _Nieuw in v2.1-preview.1!_
 
 > [!NOTE]
 > Zie de volgende regels voor de datumnotatie:
@@ -196,14 +251,31 @@ Klik in het linkerdeelvenster op het trainingspictogram om de pagina Training te
 * **Gemiddelde nauwkeurigheid**: de gemiddelde nauwkeurigheid van het model. U kunt de nauwkeurigheid van het model verbeteren door extra formulieren te labelen en opnieuw een training uit te voeren om een nieuw model te maken. We raden u aan te beginnen met het labelen van vijf formulieren en indien nodig meer formulieren toe te voegen.
 * De lijst met labels en de geschatte nauwkeurigheid per label.
 
-![trainingsweergave](../media/label-tool/train-screen.png)
+
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Trainingsweergave.":::
 
 Nadat de training is voltooid, bekijkt u de waarde **Gemiddelde nauwkeurigheid**. Als deze laag is, moet u meer invoerdocumenten toevoegen en de bovenstaande stappen herhalen. De documenten die u al hebt gelabeld, blijven in de projectindex.
 
 > [!TIP]
 > U kunt het trainingsproces ook uitvoeren met een REST API-aanroep. Zie [Trainen met labels met behulp van Python](./python-labeled-data.md) voor meer informatie over hoe u dit doet.
 
-## <a name="analyze-a-form"></a>Een formulier analyseren
+## <a name="compose-trained-models"></a>Getrainde modellen samenstellen
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+Deze functie is momenteel beschikbaar in de preview van v2.1. 
+
+# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1) 
+
+Met Model samenstellen kunt u maximaal 100 modellen met één model-id samenstellen. Wanneer u Analyseren aanroept met deze samengestelde model-id, zal Form Recognizer het formulier dat u hebt ingediend eerst classificeren door het aan het best overeenkomende model te koppelen, en vervolgens resultaten voor dat model retourneren. Dit is handig wanneer binnenkomende formulieren mogelijk tot één van meerdere sjablonen behoren.
+
+Om modellen samen te stellen in het voorbeeldhulpprogramma voor labelen, klikt u aan de linkerkant op het pictogram Model samenstellen (samenvoegingspijlen). Selecteer links de modellen die u wilt samenstellen. Modellen met het pijlenpictogram zijn al samengesteld. Klik op de knop Samenstellen. In het pop-upvenster geeft u uw nieuwe samengestelde model een naam en klikt u op ‘Samenstellen’. Wanneer de bewerking is voltooid, zou uw nieuwe samengestelde model in de lijst moeten worden weergegeven. 
+
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="UX-weergave van Model samenstellen.":::
+
+---
+
+## <a name="analyze-a-form"></a>Een formulier analyseren 
 
 Klik aan de linkerkant op het voorspellingspictogram (gloeilamp) om het model te testen. Upload een formulierdocument dat u niet in het trainingsproces hebt gebruikt. Klik vervolgens aan de rechterkant op de knop **Voorspellen** om voorspellingen voor sleutels of waarden voor het formulier op te halen. Er worden labels toegepast in begrenzingsvakken en de betrouwbaarheid van elk label wordt gerapporteerd.
 
@@ -228,7 +300,7 @@ Als u uw project wilt hervatten, moet u eerst een verbinding maken met dezelfde 
 
 ### <a name="resume-a-project"></a>Een project hervatten
 
-Ga ten slotte naar de hoofdpagina (huispictogram) en klik op Cloudproject openen. Selecteer vervolgens de verbinding met de Blob-opslag en selecteer het *VOTT-bestand* van het project. Alle projectinstellingen worden geladen omdat het beveiligingstoken aanwezig is.
+Ga ten slotte naar de hoofdpagina (huispictogram) en klik op Cloudproject openen. Selecteer vervolgens de Blob Storage-verbinding en selecteer het *.fott*-bestand van uw project. Alle projectinstellingen worden geladen omdat het beveiligingstoken aanwezig is.
 
 ## <a name="next-steps"></a>Volgende stappen
 

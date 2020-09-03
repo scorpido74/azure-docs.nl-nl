@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: a863d8ccc157272ab736201615fb079eaf7f5dbc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a93ec3157900a83e799f845e868546cbf5ef6ca9
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522824"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823860"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Ontvangstgegevens ophalen met behulp van de Form Recognizer REST API met Python
 
@@ -27,10 +27,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Voor het voltooien van deze quickstart hebt u het volgende nodig:
 - [Python](https://www.python.org/downloads/) moet geïnstalleerd zijn (als u het voorbeeld lokaal wilt uitvoeren).
-- Een URL voor een afbeelding van een ontvangstbewijs. U kunt voor deze quickstart een [voorbeeldafbeelding](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) gebruiken.
+- Een afbeelding van een ontvangtsbewijs. U kunt voor deze quickstart een [voorbeeldafbeelding](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) gebruiken.
 
 > [!NOTE]
-> In deze quickstart worden een extern ontvangstbewijs gebruikt dat worden geopend via URL. Als u in plaats daarvan lokale bestanden wilt gebruiken, raadpleegt u de [referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
+> In deze quickstart wordt een lokaal bestand gebruikt. Raadpleeg de [referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync) als u een afbeelding van een ontvangstbewijs wilt gebruiken die via URL wordt geopend.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
@@ -41,10 +41,12 @@ Voor het voltooien van deze quickstart hebt u het volgende nodig:
 Als u wilt beginnen met het analyseren van een ontvangstbewijs, roept u de **[Ontvangstbewijs analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** -API aan met het Python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang `<Endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
-1. Vervang `<your receipt URL>` door het URL-adres van een afbeelding van het ontvangstbewijs.
+1. Vervang `<path to your receipt>` door het pad naar het lokale formulierdocument.
 1. Vervang `<subscription key>` door de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
 
-    ```python
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -80,7 +82,54 @@ Als u wilt beginnen met het analyseren van een ontvangstbewijs, roept u de **[On
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+```
+    
+# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+```python
+    ########### Python Form Recognizer Async Receipt #############
+
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<Endpoint>"
+    apim_key = "<subscription key>"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
+    source = r"<path to your receipt>"
+    
+    headers = {
+        # Request headers
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    
+    params = {
+        "includeTextDetails": True
+        "locale": "en-US"
+    }
+    
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % resp.text)
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit()
+```
+
+> [!NOTE]
+> **Taalinvoer** 
+>
+> De 2.1-releasebewerking van Ontvangstbewijs analyseren heeft een optionele aanvraagparameter voor taal en landinstelling van het ontvangstbewijs. Ondersteunde landinstellingen zijn onder meer: en-AU, en-CA, en-GB, en-IN, en-US. 
+
+---
 
 1. Sla de code op in een bestand met de extensie .py. Bijvoorbeeld *form-recognizer-receipts.py*.
 1. Open een opdrachtpromptvenster.
@@ -88,13 +137,19 @@ Als u wilt beginnen met het analyseren van een ontvangstbewijs, roept u de **[On
 
 U ontvangt een `202 (Success)`-antwoord met een **Operation-Location**-header, die het script naar de console afdrukt. Deze header bevat een bewerkings-id die u kunt gebruiken om query's uit te voeren op de status van de asynchrone bewerking en de resultaten op te halen. In de volgende voorbeeldwaarde is de tekenreeks na `operations/` de bewerkings-id.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```console
 https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
+# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+---
 
 ## <a name="get-the-receipt-results"></a>De resultaten van het ontvangstbewijs ophalen
 
-Nadat u de **Analyze Receipt**-API hebt aangeroepen, roept u de **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** -API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg onder aan uw Python-script de volgende code toe. Dit maakt gebruik van de bewerkings-id-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regelmatige tussenpozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van één seconde of meer aan.
+Nadat u de **Analyze Receipt**-API hebt aangeroepen, roept u de **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** -API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg onder aan uw Python-script de volgende code toe. Dit maakt gebruik van de bewerkings-id-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regelmatige tussenpozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van minimaal één seconde aan.
 
 ```python
 n_tries = 10
@@ -128,13 +183,13 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-Met het script worden antwoorden naar de console afgedrukt totdat de **Analyze Receipt**-bewerking is voltooid. Vervolgens worden de geëxtraheerde tekstgegevens in JSON-indeling afgedrukt. Het veld `"recognitionResults"` bevat elke regel tekst die is geëxtraheerd uit het ontvangstbewijs, en het veld `"understandingResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van het ontvangstbewijs.
+Met het script worden antwoorden naar de console afgedrukt totdat de **Analyze Receipt**-bewerking is voltooid. Vervolgens worden de geëxtraheerde tekstgegevens in JSON-indeling afgedrukt. Het veld `"readResults"` bevat elke regel tekst die is geëxtraheerd uit het ontvangstbewijs, en het veld `"documentResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van het ontvangstbewijs.
 
 Bekijk de volgende afbeelding van het ontvangstbewijs en de bijbehorende JSON-uitvoer. De uitvoer is voor het gemak ingekort.
 
 ![Een ontvangstbewijs van Contoso Store](../media/contoso-allinone.jpg)
 
-Het knooppunt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knooppunt `"understandingResults"` bevat de ontvangstbewijswaarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfsadres, enzovoort.
+Het knooppunt `"readResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knooppunt `"documentResults"` bevat de ontvangstbewijswaarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfsadres, enzovoort.
 
 ```json
 { 

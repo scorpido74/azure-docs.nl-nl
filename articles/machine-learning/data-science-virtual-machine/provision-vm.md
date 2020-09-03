@@ -1,74 +1,73 @@
 ---
-title: 'Snelstartgids: een Windows-Data Science Virtual Machine maken'
+title: 'Quickstart: Een Windows Data Science Virtual Machine maken'
 titleSuffix: Azure Data Science Virtual Machine
-description: Configureer en maak een Data Science Virtual Machine in azure voor analyses en machine learning.
+description: Configureer en maak een Data Science Virtual Machine op Azure voor analyse en machine learning.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80281779"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816351"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Snelstartgids: de Data Science Virtual Machine instellen voor Windows
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Quickstart: De Data Science Virtual Machine instellen voor Windows
 
-Ga aan de slag met een Windows Server 2019-Data Science Virtual Machine.
+Aan de slag met een Windows Server 2019 Data Science Virtual Machine.
 
 ## <a name="prerequisite"></a>Vereiste
 
-Als u een Windows-Data Science Virtual Machine wilt maken, moet u een Azure-abonnement hebben. [Probeer Azure gratis](https://azure.com/free)uit.
-Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor virtuele machines niet ondersteunen.
+Voor het maken van een Windows Data Science Virtual Machine moet u over een Azure-abonnement beschikken. [Azure gratis uitproberen](https://azure.com/free).
+Gratis Azure-accounts bieden geen ondersteuning voor SKU’s voor virtuele machines met GPU.
 
 ## <a name="create-your-dsvm"></a>Uw DSVM maken
 
-Een DSVM-exemplaar maken:
+Ga als volgt te werk om een DSVM-exemplaar te maken:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) u wordt mogelijk gevraagd om u aan te melden bij uw Azure-account als u nog niet bent aangemeld.
-1. Zoek de vermelding van de virtuele machine door in ' data Science virtual machine ' te typen en Data Science Virtual Machine-Windows 2019 te selecteren.
+1. Ga naar de [Azure-portal](https://portal.azure.com). Als u nog niet bent aangemeld bij uw Azure-account, wordt u gevraagd om dit te doen.
+1. Zoek de vermelding van de virtuele machine door 'data science virtual machine' te typen en 'Data Science Virtual Machine - Windows 2019' te selecteren.
 
-1. Selecteer de knop **maken** onderaan.
+1. Selecteer de knop **Maken** onderaan.
 
-1. U moet worden omgeleid naar de Blade een virtuele machine maken.
+1. U wordt omgeleid naar de blade Een virtuele machine maken.
 
-1. Vul het tabblad **basis principes** in:
-      * **Abonnement**: als u meer dan één abonnement hebt, selecteert u de computer waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
-      * **Resource groep**: Maak een nieuwe groep of gebruik een bestaande.
-      * **Naam van de virtuele machine**: Voer de naam van de virtuele machine in. Dit wordt weer gegeven in uw Azure Portal.
-      * **Locatie**: Selecteer het Data Center dat het meest geschikt is. Voor de snelste netwerk toegang is het het Data Center dat het meren deel van uw gegevens heeft of zich het dichtst bij uw fysieke locatie bevindt. Meer informatie over [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Afbeelding**: behoud de standaard waarde.
-      * **Grootte**: dit moet automatisch worden ingevuld met een grootte die geschikt is voor algemene werk belastingen. Lees meer over [Windows VM-grootten in azure](../../virtual-machines/windows/sizes.md).
-      * **Gebruikers naam**: Voer de gebruikers naam van de beheerder in. Dit is de gebruikers naam die u gaat gebruiken om u aan te melden bij uw virtuele machine en hoeft niet hetzelfde te zijn als uw Azure-gebruikers naam.
-      * **Wacht woord**: Voer het wacht woord in dat u wilt gebruiken om u aan te melden bij de virtuele machine.    
-1. Selecteer **controleren + maken**.
-1. **Controleren en maken**
-   * Controleer of alle gegevens die u hebt ingevoerd juist zijn. 
+1. Vul het tabblad **Basis** in:
+      * **Abonnement**: Als u meer dan één abonnement hebt, selecteert u datgene waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
+      * **Resourcegroep**: Maak een nieuwe groep of gebruik een bestaande.
+      * **Naam van virtuele machine**: Voer de naam van de virtuele machine in. Dit is hoe het eruit zal zien in de Azure-portal.
+      * **Locatie**: Selecteer het geschiktste datacenter. Dit is het datacenter waarop de meeste van uw gegevens zijn opgeslagen of dat zich fysiek het dichtst bij u in de buurt bevindt, voor de snelste netwerktoegang. Meer informatie over [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Installatiekopie**: Laat de standaardwaarde staan.
+      * **Grootte**: Dit moet automatisch worden gevuld met een grootte die geschikt is voor algemene werkbelastingen. Lees meer over [Windows VM-grootten in Azure](../../virtual-machines/windows/sizes.md).
+      * **Gebruikersnaam**: Voer de gebruikersnaam van de beheerder in. Dit is de gebruikersnaam die u zult gebruiken om u aan te melden bij de virtuele machine, en hoeft niet hetzelfde te zijn als uw Azure-gebruikersnaam.
+      * **Wachtwoord**: Voer het wachtwoord in waarmee u zich gaat aanmelden bij de virtuele machine.    
+1. Selecteer **Controleren + maken**.
+1. **Beoordelen en maken**
+   * Controleer of alle informatie die u hebt ingevoerd, correct is. 
    * Selecteer **Maken**.
 
 
 > [!NOTE]
-> * U betaalt geen licentie kosten voor de software die vooraf is geladen op de virtuele machine. U betaalt de reken kosten voor de server grootte die u in de stap **grootte** hebt gekozen.
-> * Het inrichten duurt 10 tot 20 minuten. U kunt de status van uw virtuele machine weer geven op de Azure Portal.
+> * U betaalt geen licentiekosten voor de software, die vooraf is geladen op de virtuele machine. U betaalt wel de berekeningskosten voor de servergrootte die u in de stap **Grootte** hebt gekozen.
+> * De inrichting duurt 10 tot 20 minuten. U kunt de status van uw VM bekijken in de Azure-portal.
 
-## <a name="access-the-dsvm"></a>Toegang tot de DSVM
+## <a name="access-the-dsvm"></a>De DSVM openen
 
-Nadat de VM is gemaakt en ingericht, volgt u de stappen die worden weer gegeven om [verbinding te maken met uw virtuele machine op basis van Azure](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Gebruik de referenties van het beheerders account die u hebt geconfigureerd in de **basis** stappen voor het maken van een virtuele machine. 
+Nadat de VM is gemaakt en ingericht, volgt u de vermelde stappen om [verbinding te maken met uw Azure-gebaseerde virtuele machine](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Gebruik de beheerdersaccountreferenties die u hebt geconfigureerd in de stap **Basis** voor het maken van een virtuele machine. 
 
-U kunt nu beginnen met het gebruik van de hulpprogram ma's die zijn geïnstalleerd en geconfigureerd op de virtuele machine. Veel van de hulpprogram ma's zijn toegankelijk via tegels en bureaublad pictogrammen in het **Start** menu.
+U bent nu klaar om te beginnen met het gebruik van de hulpprogramma's die zijn geïnstalleerd en geconfigureerd op de VM. Veel van de hulpprogramma's kunnen worden geopend via tegels in het **Start**-menu en pictogrammen op het bureaublad.
 
-U kunt ook een DSVM aan Azure Notebooks koppelen om Jupyter-notebooks op de virtuele machine uit te voeren en de beperkingen van de gratis servicelaag over te slaan. Zie [notebook-projecten beheren en configureren](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects)voor meer informatie.
+U kunt een DSVM ook aan Azure Notebooks koppelen om Jupyter-notebooks op de VM uit te voeren en de beperkingen van de gratis servicelaag te omzeilen. Zie [Notebooks-projecten beheren en configureren](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects) voor meer informatie.
 
 <a name="tools"></a>
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de hulpprogram ma's op de DSVM door het menu **Start** te openen.
-* Meer informatie over de Azure Machine Learning door te lezen [Wat is Azure machine learning?](../overview-what-is-azure-ml.md) en [zelf studies](../index.yml)te proberen.
-* Lees het artikel [tien dingen die u op het data Science virtual machine kunt doen](https://aka.ms/dsvmtenthings).
-* Ga naar de [Azure AI Gallery](https://gallery.cortanaintelligence.com) voor voor beelden van machine learning en gegevens analyse die gebruikmaken van Azure machine learning en gerelateerde gegevens Services in Azure. Daarnaast hebt u in het menu **Start** en op het bureau blad van de virtuele machine een pictogram voor deze galerie gegeven.
+* Verken de hulpprogramma’s op de DSVM door het **Start**-menu te openen.
+* Ontdek meer over Azure Machine Learning door [Wat is Azure Machine Learning?](../overview-what-is-azure-ml.md) te lezen en [zelfstudies](../index.yml) uit te proberen.
+* Lees het artikel [Data Science met een Windows Data Science Virtual Machine in Azure](./vm-do-ten-things.md)
 

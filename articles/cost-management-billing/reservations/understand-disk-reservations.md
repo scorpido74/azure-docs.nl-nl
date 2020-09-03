@@ -4,20 +4,21 @@ description: Lees hoe korting op gereserveerde Azure-schijven wordt toegepast op
 author: roygara
 ms.author: rogarana
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cd89c3ddc3c58de02f1104109ce7f243c4d1e6fd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509462"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682447"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Meer informatie over het toepassen van reserveringskorting op Azure Disk Storage
 
 Nadat u gereserveerde Azure-schijfcapaciteit hebt gekocht, wordt een reserveringskorting automatisch toegepast op schijfresources die aan de voorwaarden van de reservering voldoen. De reserveringskorting wordt alleen toegepast op de schijf-SKU’s. Momentopnamen van schijven worden in rekening gebracht volgens betalen per gebruik-tarieven.
 
-Zie [Kosten besparen met Azure-schijfreservering](../../virtual-machines/linux/disks-reserved-capacity.md) voor meer informatie over Azure-schijfreserveringen. Zie [Prijzen van Azure Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor informatie over prijzen voor Azure-schijfreserveringen.
+Zie [Kosten besparen met Azure-schijfreservering](../../virtual-machines/disks-reserved-capacity.md) voor meer informatie over Azure-schijfreserveringen. Zie [Prijzen van Azure Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor informatie over prijzen voor Azure-schijfreserveringen.
 
 ## <a name="how-the-reservation-discount-is-applied"></a>Hoe de reserveringskorting wordt toegepast
 
@@ -53,6 +54,5 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Kosten verlagen met Azure-schijfreservering (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
-- [Kosten verlagen met Azure-schijfreservering (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
+- [Kosten verlagen met Azure-schijfreservering](../../virtual-machines/disks-reserved-capacity.md)
 - [Wat zijn Azure-reserveringen?](save-compute-costs-reservations.md)

@@ -75,15 +75,13 @@ De VMWare-bewaking oplossing verzamelt diverse metrische gegevens over prestatie
 
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld.
 
-| 
-    platform
-   | Log Analytics-agent voor Linux | SCOM-agent | Azure Storage | SCOM vereist? | SCOM-agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
+| platform | Log Analytics-agent voor Linux | SCOM-agent | Azure Storage | SCOM vereist? | SCOM-agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |om de 3 minuten |
 
 In de volgende tabel ziet u voor beelden van gegevens velden die door de VMWare-bewaking oplossing zijn verzameld:
 
-| veld naam | beschrijving |
+| veld naam | description |
 | --- | --- |
 | Device_s |VMware-opslag apparaten |
 | ESXIFailure_s |fout typen |
@@ -181,20 +179,20 @@ Er kunnen meerdere redenen zijn:
 
 * De ESXi-host pusht de gegevens niet goed naar de virtuele machine met omsagent. Voer de volgende stappen uit om te testen:
 
-  1. Als u wilt bevestigen, meldt u zich aan bij de ESXi-host met SSH en voert u de volgende opdracht uit:`nc -z ipaddressofVM 1514`
+  1. Als u wilt bevestigen, meldt u zich aan bij de ESXi-host met SSH en voert u de volgende opdracht uit: `nc -z ipaddressofVM 1514`
 
       Als dit niet lukt, zijn de vSphere-instellingen in de geavanceerde configuratie waarschijnlijk niet correct. Zie [syslog-verzameling configureren](#configure-syslog-collection) voor meer informatie over het instellen van de ESXi-host voor het door sturen van syslog.
-  1. Als de verbinding met de syslog-poort is geslaagd, maar u nog steeds geen gegevens ziet, laadt u de syslog op de ESXi-host opnieuw met behulp van SSH om de volgende opdracht uit te voeren:`esxcli system syslog reload`
+  1. Als de verbinding met de syslog-poort is geslaagd, maar u nog steeds geen gegevens ziet, laadt u de syslog op de ESXi-host opnieuw met behulp van SSH om de volgende opdracht uit te voeren: `esxcli system syslog reload`
 * De virtuele machine met Log Analytics agent is niet correct ingesteld. Voer de volgende stappen uit om dit te testen:
 
-  1. Log Analytics luistert naar poort 1514. Voer de volgende opdracht uit om te controleren of deze is geopend:`netstat -a | grep 1514`
+  1. Log Analytics luistert naar poort 1514. Voer de volgende opdracht uit om te controleren of deze is geopend: `netstat -a | grep 1514`
   1. U ziet dat de poort `1514/tcp` geopend is. Als dat niet het geval is, controleert u of de omsagent juist is geïnstalleerd. Als u de poort gegevens niet ziet, is de syslog-poort niet geopend op de VM.
 
-    a. Controleer of de Log Analytics agent wordt uitgevoerd met behulp van `ps -ef | grep oms` . Als de service niet wordt uitgevoerd, start u het proces door de opdracht uit te voeren`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Controleer of de Log Analytics agent wordt uitgevoerd met behulp van `ps -ef | grep oms` . Als de service niet wordt uitgevoerd, start u het proces door de opdracht uit te voeren `sudo /opt/microsoft/omsagent/bin/service_control start`
 
-     b. Open het bestand `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
+     b. Open het `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`-bestand.
 
-     c. Controleer of de juiste gebruikers-en groeps instelling geldig is, vergelijkbaar met:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Controleer of de juiste gebruikers-en groeps instelling geldig is, vergelijkbaar met: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
      d. Als het bestand niet bestaat of als de gebruikers-en groeps instelling onjuist zijn, moet u [een Linux-server voorbereiden](#prepare-a-linux-server).
 
