@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-javascript
 ms.date: 06/21/2019
-ms.openlocfilehash: ea15c0d810f0ce51a52bc883ee44a4a90391b1d3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 16eb4e516581a2190fdb0a4aa1fdb829597a0005
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420937"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073417"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Quickstart: Telemetrie vanaf een apparaat verzenden naar een IoT-hub en lezen met een back-endtoepassing (Node.js)
 
@@ -79,7 +79,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
     ```
 
     Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:

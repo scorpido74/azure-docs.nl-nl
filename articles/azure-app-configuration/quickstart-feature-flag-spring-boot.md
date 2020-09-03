@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121898"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019739"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Quickstart: Functievlaggen toevoegen aan een Spring Boot-app
 
@@ -97,7 +97,7 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
     ```
 
 > [!Note]
-> Er is een functiebeheerbibliotheek zonder webonderdelen die niet afhankelijk van Spring Web is. Raadpleeg de [documentatie](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) van GitHub voor verschillen.
+> Er is een functiebeheerbibliotheek zonder webonderdelen die niet afhankelijk van Spring Web is. Raadpleeg de [documentatie](https://github.com/microsoft/spring-cloud-azure) van GitHub voor verschillen.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een App Configuration-archief
 

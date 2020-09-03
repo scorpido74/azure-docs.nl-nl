@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083556"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935310"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quickstart: Een Azure Cognitive Search-index maken in de Azure-portal
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Neem even de tijd voor het bekijken van de indexdefinitieopties om duidelijk te 
 
 U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met de ingebouwde querypagina [**Search Explorer**](search-explorer.md). Deze pagina biedt een zoekvak waarmee u willekeurige queryreeksen kunt testen.
 
-**Search Explorer** kan alleen omgaan met [REST API-aanvragen](https://docs.microsoft.com/rest/api/searchservice/search-documents), maar er wordt syntaxis geaccepteerd voor [eenvoudige querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) en [volledige Lucene-queryparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), plus alle zoekparameters die beschikbaar zijn in bewerkingen voor [Search-document-REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples).
+**Search Explorer** kan alleen omgaan met [REST API-aanvragen](/rest/api/searchservice/search-documents), maar er wordt syntaxis geaccepteerd voor [eenvoudige querysyntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) en [volledige Lucene-queryparser](/rest/api/searchservice/lucene-query-syntax-in-azure-search), plus alle zoekparameters die beschikbaar zijn in bewerkingen voor [Search-document-REST API](/rest/api/searchservice/search-documents#bkmk_examples).
 
 > [!TIP]
 > De volgende stappen worden na 6 min 8 sec gedemonstreerd in de [Azure Cognitive Search-overzichtsvideo](https://channel9.msdn.com/Events/Connect/2016/138).
@@ -188,7 +188,7 @@ Filters zijn opgenomen in de zoekopdrachten wanneer u de parameter **$filter** t
 
 * De parameter **$filter** retourneert resultaten die voldoen aan de criteria die u hebt opgegeven. In dit geval: beoordelingen die hoger zijn dan 4.
 
-* Filtersyntaxis is een OData-constructie. Zie [OData-syntaxis filteren](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
+* Filtersyntaxis is een OData-constructie. Zie [OData-syntaxis filteren](/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a>De query facetteren
 
@@ -207,7 +207,7 @@ Facetfilters zijn opgenomen in zoekopdrachten. U kunt de facetparameter gebruike
 
 * Alleen filterbare velden kunnen als facet worden gebruikt. Alleen ophaalbare velden kunnen in de resultaten worden geretourneerd.
 
-* Het veld *Beoordeling* is een drijvendekommagetal met dubbele precisie en de groepering vindt plaats op basis van de nauwkeurige waarde. Zie [How to implement faceted navigation in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range) (Gefaceteerde navigatie implementeren in Azure Cognitive Search) voor meer informatie over het groeperen op basis van interval (zoals ‘beoordelingen met 3 sterren’, ‘beoordelingen met 4 sterren’, enz.).
+* Het veld *Beoordeling* is een drijvendekommagetal met dubbele precisie en de groepering vindt plaats op basis van de nauwkeurige waarde. Zie [How to implement faceted navigation in Azure Cognitive Search](./search-faceted-navigation.md#filter-based-on-a-range) (Gefaceteerde navigatie implementeren in Azure Cognitive Search) voor meer informatie over het groeperen op basis van interval (zoals ‘beoordelingen met 3 sterren’, ‘beoordelingen met 4 sterren’, enz.).
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Zoekresultaten markeren
@@ -240,11 +240,11 @@ Als **queryType** niet is opgegeven, wordt standaard de eenvoudige queryparser g
 
 Fuzzy zoekopdrachten en zoekopdrachten met jokertekens hebben implicaties voor zoekresultaten. Taalkundige analyse wordt niet uitgevoerd op deze queryindelingen. Bekijk in [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md#stage-2-lexical-analysis) de sectie over uitzonderingen op lexicale analyse voordat u fuzzy zoekopdrachten en zoekopdrachten met jokertekens gebruikt.
 
-Zie [Lucene-querysyntaxis in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) voor meer informatie over queryscenario's op basis van de volledige queryparser.
+Zie [Lucene-querysyntaxis in Azure Cognitive Search](/rest/api/searchservice/lucene-query-syntax-in-azure-search) voor meer informatie over queryscenario's op basis van de volledige queryparser.
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> Georuimtelijk zoeken uitproberen
 
-Georuimtelijk zoeken wordt ondersteund door het [gegevenstype edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor een veld met coördinaten. Geosearch is een type filter dat wordt opgegeven bij [Filter OData-syntaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+Georuimtelijk zoeken wordt ondersteund door het [gegevenstype edm.GeographyPoint](/rest/api/searchservice/supported-data-types) voor een veld met coördinaten. Geosearch is een type filter dat wordt opgegeven bij [Filter OData-syntaxis](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Voorbeeld (filters voor geografische coördinaten): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ Georuimtelijk zoeken is handig als uw zoektoepassing een functie 'in mijn buurt 
 
 Deze zelfstudie biedt een snelle introductie tot het gebruik van Azure Cognitive Search via Azure Portal.
 
-U hebt geleerd hoe u een zoekindex maakt met de wizard **Gegevens importeren**. U hebt geleerd over [indexeerfuncties](search-indexer-overview.md), en over de basiswerkstroom voor indexontwerp, waaronder [ondersteunde wijzigingen in een gepubliceerde index](https://docs.microsoft.com/rest/api/searchservice/update-index).
+U hebt geleerd hoe u een zoekindex maakt met de wizard **Gegevens importeren**. U hebt geleerd over [indexeerfuncties](search-indexer-overview.md), en over de basiswerkstroom voor indexontwerp, waaronder [ondersteunde wijzigingen in een gepubliceerde index](/rest/api/searchservice/update-index).
 
 Met behulp van de **Search Explorer** in de Azure Portal hebt u wat querysyntaxis geleerd via praktijkvoorbeelden die belangrijke mogelijkheden hebben gedemonstreerd, zoals filters, resultaatmarkering, fuzzy zoekopdrachten en op geografische locaties zoeken.
 
@@ -280,4 +280,4 @@ Een portalwizard gebruiken om een kant-en-klare web-app te genereren die in een 
 Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 > [!div class="nextstepaction"]
-> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -3,12 +3,12 @@ title: Wat is Azure Event Hubs? - een service voor de opname van Big Data | Micr
 description: Meer informatie over Azure Event Hubs, een big data-streamingservice die miljoenen gebeurtenissen per seconde opneemt.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522105"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927898"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — Een streamingplatform en service voor het opnemen van big data
 Azure Event Hubs is een streamingplatform en service voor het opnemen van big data. Het kan miljoenen gebeurtenissen per seconde ontvangen en verwerken. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen door gebruik te maken van een provider voor realtime analytische gegevens of batchverwerking/opslagadapters.
@@ -81,10 +81,10 @@ Event Hubs in Stack is beschikbaar tijdens de openbare preview. Zie het [overzic
 
 Zie de zelfstudies **Gebeurtenissen verzenden en ontvangen** om aan de slag te gaan met Event Hubs:
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (alleen verzenden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (alleen ontvangen)](event-hubs-storm-getstarted-receive.md)

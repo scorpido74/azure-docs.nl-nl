@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: b67480f2b6de37822d74162f46caa4d7e50dc193
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 544f200e749b1b125e8077ee65f20a06779fb13d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321782"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050570"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Quickstart: Java gebruiken om een chatruimte met Azure Functions en SignalR Service te maken
 
@@ -37,13 +37,21 @@ Met Azure SignalR Service kunt u eenvoudig realtime functionaliteit toevoegen aa
 > [!NOTE]
 > Deze quickstart kan worden uitgevoerd op macOS, Windows of Linux.
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
+
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
 Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>De Azure-functie-app configureren en uitvoeren
 
@@ -79,10 +87,15 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
     ```bash
     mvn azure-functions:run
     ```
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -90,3 +103,5 @@ In deze quickstart hebt u een serverloze, realtime toepassing gebouwd en uitgevo
 
 > [!div class="nextstepaction"]
 > [Uw eerste functie maken met Java en Maven](../azure-functions/functions-create-first-java-maven.md)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsjava)

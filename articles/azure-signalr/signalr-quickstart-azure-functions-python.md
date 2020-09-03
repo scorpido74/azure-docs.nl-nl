@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a044569c39ae2667c83ac881f1908b1d7b27cab
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d7d893d3de5541bf1108a9182dfee6ad995e061b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848363"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050604"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Quickstart: Een chatruimte maken met Azure Functions en SignalR Service met behulp van Python
 
@@ -31,13 +31,21 @@ Voor Azure Functions is [Python 3.6 of 3.7](https://www.python.org/downloads/) v
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
+
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
 Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>De Azure-functie-app configureren en uitvoeren
 
@@ -91,10 +99,16 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
     ```
 
     ![Functie-app uitvoeren](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
+    
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -102,3 +116,5 @@ In deze quickstart hebt u een serverloze, realtime toepassing in VS Code gebouwd
 
 > [!div class="nextstepaction"]
 > [Azure Functions met VS Code implementeren](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qspython)

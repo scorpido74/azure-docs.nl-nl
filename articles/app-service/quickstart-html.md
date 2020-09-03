@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: bd1e44aefed310826465dbf44dee1324f5a085b3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d624d332fa35bf458e9158e00aaf83ce495b9061
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083671"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961334"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Een statische HTML-web-app maken in Azure
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze snelstart ziet u hoe u een eenvoudige HTML+CSS-site naar Azure App Service implementeert. U gaat deze Quickstart in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) doen, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli).
+[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze snelstart ziet u hoe u een eenvoudige HTML+CSS-site naar Azure App Service implementeert. U gaat deze Quickstart in [Cloud Shell](../cloud-shell/overview.md) doen, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli).
 
 ![Startpagina van voorbeeld-app](media/quickstart-html/hello-world-in-browser-az.png)
 
@@ -58,7 +58,7 @@ Met de opdracht `az webapp up` worden de volgende acties uitgevoerd:
 
 - Er wordt een app met de opgegeven naam gemaakt.
 
-- Er worden via zip bestanden van de huidige werkmap naar de web-app [geïmplementeerd](https://docs.microsoft.com/azure/app-service/deploy-zip).
+- Er worden via zip bestanden van de huidige werkmap naar de web-app [geïmplementeerd](./deploy-zip.md).
 
 Het kan enkele minuten duren voor deze opdracht is uitgevoerd. De opdracht geeft informatie weer die lijkt op het volgende voorbeeld:
 

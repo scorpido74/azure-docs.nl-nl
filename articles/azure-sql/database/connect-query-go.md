@@ -12,12 +12,12 @@ author: David-Engel
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: e9a6c769451385f09706731fcb15de4197ecc063
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5248f43e2b0b1e347c6968678b7f05ba7efa9cf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231655"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299589"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Golang gebruiken om een query uit te voeren op een database in Azure SQL Database or Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -200,7 +200,8 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
            return -1, err
        }
 
-       tsql := "INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location); select convert(bigint, SCOPE_IDENTITY());"
+       tsql := "INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location); "
+       tsql += select isNull(SCOPE_IDENTITY(), -1);"
 
        stmt, err := db.Prepare(tsql)
        if err != nil {
