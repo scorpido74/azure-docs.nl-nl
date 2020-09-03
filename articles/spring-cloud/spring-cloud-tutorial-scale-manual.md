@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021185"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289814"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Zelfstudie: Een toepassing schalen in Azure Spring Cloud
 
@@ -27,7 +27,7 @@ Nadat u klaar bent, weet u hoe u snel handmatige wijzigingen kunt aanbrengen in 
 Als u deze procedures wilt volgen, hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
-* Een geïmplementeerd Azure Spring Cloud-service-exemplaar.  Volg de [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+* Een geïmplementeerd Azure Spring Cloud-service-exemplaar.  Volg de [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart.md) om aan de slag te gaan.
 * Er is al minstens één toepassing gemaakt in uw service-exemplaar.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Ga naar de pagina Schalen in de Azure-portal

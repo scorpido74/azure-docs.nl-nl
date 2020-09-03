@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833178"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961836"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Een Web Application Firewall (WAF) voor App Service Environment configureren
 ## <a name="overview"></a>Overzicht
 
-Web Application Firewalls (WAF) helpen met het beveiligen van uw webtoepassingen door inkomend webverkeer te inspecteren om SQL-injecties, Cross-Site Scripting, malware-uploads en DDoS-toepassingen en andere aanvallen te blokkeren. Ze inspecteren ook de antwoorden van de back-end-webservers om gegevensverlies te voorkomen (DLP). In combinatie met de isolatie en aanvullende schalen geleverd door App Service Environments, biedt dit een ideale omgeving om bedrijfskritieke webtoepassingen te hosten die bestand moeten zijn tegen schadelijke aanvragen en grote hoeveelheden verkeer. Azure biedt mogelijkheden met WAF met de [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Voor informatie over het integreren van uw App Service Environment met een toepassingsgateway, kunt u het document [Uw ILD ASE integreren met een Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) lezen.
+Web Application Firewalls (WAF) helpen met het beveiligen van uw webtoepassingen door inkomend webverkeer te inspecteren om SQL-injecties, Cross-Site Scripting, malware-uploads en DDoS-toepassingen en andere aanvallen te blokkeren. Ze inspecteren ook de antwoorden van de back-end-webservers om gegevensverlies te voorkomen (DLP). In combinatie met de isolatie en aanvullende schalen geleverd door App Service Environments, biedt dit een ideale omgeving om bedrijfskritieke webtoepassingen te hosten die bestand moeten zijn tegen schadelijke aanvragen en grote hoeveelheden verkeer. Azure biedt mogelijkheden met WAF met de [Application Gateway](../../application-gateway/overview.md).  Voor informatie over het integreren van uw App Service Environment met een toepassingsgateway, kunt u het document [Uw ILD ASE integreren met een Application Gateway](./integrate-with-application-gateway.md) lezen.
 
 Naast de Azure Application Gateway zijn er meerdere opties, zoals de [Barracuda WAF voor Azure](https://www.barracuda.com/programs/azure), beschikbaar in de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice). De rest van dit document richt zich op het integreren van uw App Service Environment met een Barracuda WAF-apparaat.
 
@@ -34,7 +34,7 @@ Voor dit document wordt de App Service Environment achter meerdere exemplaren me
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>Uw App Service Environment configureren
-Raadpleeg voor het configureren van een App Service Environment [onze documentatie](app-service-web-how-to-create-an-app-service-environment.md) over dit onderwerp. Als u een App Service Environment gemaakt hebt, kunt u in deze omgeving Web-apps, API-apps en [Mobiele apps](../../app-service-mobile/app-service-mobile-value-prop.md) maken die allemaal worden beveiligd achter de WAF die we in de volgende sectie configureren.
+Raadpleeg voor het configureren van een App Service Environment [onze documentatie](app-service-web-how-to-create-an-app-service-environment.md) over dit onderwerp. Als u een App Service Environment gemaakt hebt, kunt u in deze omgeving Web-apps, API-apps en [Mobiele apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) maken die allemaal worden beveiligd achter de WAF die we in de volgende sectie configureren.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Uw Barracuda WAF Cloud Service configureren
 Barracuda heeft een [gedetailleerd artikel](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) over het implementeren van de WAF op een virtuele machine in Azure. Maar omdat we redundantie willen en geen Single Point of Failure willen introduceren, dient u ten minste twee instanties van virtuele WAF-machines te implementeren in dezelfde cloudservice wanneer u deze instructies volgt.

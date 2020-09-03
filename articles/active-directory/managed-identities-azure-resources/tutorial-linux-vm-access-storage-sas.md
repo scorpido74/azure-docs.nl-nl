@@ -3,7 +3,7 @@ title: 'Zelfstudie: Toegang krijgen tot Azure Storage met een SAS-referentie –
 description: Deze zelfstudie laat zien hoe u een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM) gebruikt om toegang tot Azure Storage te krijgen met behulp van een SAS-referentie in plaats van een toegangssleutel voor een opslagaccount.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 04e265ea0128411eb483c84b1317051089a0550a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266301"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260234"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Zelfstudie: Toegang krijgen tot Azure Storage via SAS-referenties met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM)
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u referenties voor een gedeelde handtekening (SAS) ophaalt voor Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Een [service-SAS-referentie](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures), om precies te zijn. 
+Deze zelfstudie laat zien hoe u referenties voor een gedeelde handtekening (SAS) ophaalt voor Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Een [service-SAS-referentie](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures), om precies te zijn. 
 
 > [!NOTE]
 > De SAS-sleutel die in deze zelfstudie wordt gegenereerd, is niet beperkt tot/gebonden aan de virtuele machine.  
@@ -86,7 +86,7 @@ Azure Storage biedt geen systeemeigen ondersteuning voor Azure AD-verificatie.  
 
 Voor de rest van de zelfstudie werken we op de virtuele machine die we eerder hebben gemaakt.
 
-U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/install_guide) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
+U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](/windows/wsl/install-win10) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
 1. In Azure Portal navigeert u naar **Virtuele machines**, gaat u naar uw virtuele Linux-machine, klikt u vervolgens boven aan de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine. 
 2. Maak verbinding met uw virtuele machine via de SSH-client.  
@@ -152,7 +152,7 @@ Maak een voorbeeldblobbestand en upload het naar uw blobopslagcontainer. Op een 
 echo "This is a test file." > test.txt
 ```
 
-Voer de verificatie uit met de CLI-opdracht `az storage` met behulp van de SAS-referentie, en upload het bestand naar de blobcontainer. Voor deze stap moet u [de nieuwste versie van Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op de virtuele machine, als u dat nog niet gedaan hebt.
+Voer de verificatie uit met de CLI-opdracht `az storage` met behulp van de SAS-referentie, en upload het bestand naar de blobcontainer. Voor deze stap moet u [de nieuwste versie van Azure CLI installeren](/cli/azure/install-azure-cli) op de virtuele machine, als u dat nog niet gedaan hebt.
 
 ```azurecli-interactive
  az storage blob upload --container-name 
@@ -231,4 +231,4 @@ Reactie:
 In deze zelfstudie hebt u geleerd een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM) te gebruiken om toegang tot Azure Storage te krijgen met behulp van een SAS-referentie.  Zie voor meer informatie over Azure Storage SAS:
 
 > [!div class="nextstepaction"]
->[Shared Access Signatures (SAS) gebruiken](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+>[Shared Access Signatures (SAS) gebruiken](../../storage/common/storage-sas-overview.md)
