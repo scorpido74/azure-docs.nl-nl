@@ -3,12 +3,13 @@ title: Personalizer gebruiken in chatbot - Personalizer
 description: Pas een C# .NET-chatbot aan met een Personalizer-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en contextfuncties.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131664"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935650"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Zelfstudie: Personalizer gebruiken in een .NET-chatbot
 

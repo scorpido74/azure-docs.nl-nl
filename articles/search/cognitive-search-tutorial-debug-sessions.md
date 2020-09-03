@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290677"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935973"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Zelfstudie: Veranderingen in uw vaardighedenset diagnosticeren, herstellen en doorvoeren
 
@@ -39,7 +39,7 @@ In deze zelfstudie wordt gebruikgemaakt van Azure Cognitive Search- en Azure Sto
 
 * [Voorbeeldgegevens downloaden](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19), die bestaan uit 19 bestanden.
 
-* [Een Azure Storage-account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) zoeken. 
+* [Een Azure Storage-account maken](../storage/common/storage-account-create.md?tabs=azure-portal) of [een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) zoeken. 
 
    Kies dezelfde regio als Azure Cognitive Search om bandbreedtekosten te voorkomen.
    
@@ -258,5 +258,5 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over vaardighedensets](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets)
-> [Meer informatie over incrementele verrijking en caching](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> [Meer informatie over vaardighedensets](./cognitive-search-working-with-skillsets.md)
+> [Meer informatie over incrementele verrijking en caching](./cognitive-search-incremental-indexing-conceptual.md)

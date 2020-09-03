@@ -3,15 +3,16 @@ title: Voorbeelden van Resource Manager-sjablonen voor Azure App Service en Appl
 description: Voorbeelden van Azure Resource Manager-sjablonen voor het implementeren van een Azure App Service met een Application Insights-resource
 ms.subservice: application-insights
 ms.topic: sample
+ms.custom: devx-track-dotnet
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/06/2020
-ms.openlocfilehash: 20a03720233c276ddb71d53c97252643dce8d557
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 966dc0650d445a2181dc6a7d6ea1c57f223fd6f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927487"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934239"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>Voorbeelden van Resource Manager-sjablonen voor het maken van Azure App Service-web-apps en Application Insights-bewaking
 

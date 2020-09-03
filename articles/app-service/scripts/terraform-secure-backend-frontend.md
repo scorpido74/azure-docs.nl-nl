@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065434"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962227"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Twee web-apps maken en veilig verbinden met een privé-eindpunt en een VNet-integratie
 
-In dit artikel wordt een voorbeeld gegeven van het gebruik van een [privé-eindpunt](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) en een regionale [VNet-integratie](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) om twee web-apps (front-end en back-end) veilig te koppelen aan de hand van de volgende stappen:
+In dit artikel wordt een voorbeeld gegeven van het gebruik van een [privé-eindpunt](../networking/private-endpoint.md) en een regionale [VNet-integratie](../web-sites-integrate-with-vnet.md) om twee web-apps (front-end en back-end) veilig te koppelen aan de hand van de volgende stappen:
 - Implementeer een VNet.
 - Maak het eerste subnet voor de integratie.
 - Maak het tweede subnet voor het privé-eindpunt. U moet een specifieke parameter instellen om netwerkbeleid uit te schakelen.
 - Implementeer een App Service-abonnement van het type PremiumV2. Voor uw privé-eindpunt is de minimale prijscategorie nodig.
-- Maak de front-end-web-app met specifieke app-instellingen om de privé-DNS-zone te gebruiken. [Meer informatie](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)
+- Maak de front-end-web-app met specifieke app-instellingen om de privé-DNS-zone te gebruiken. [Meer informatie](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - Verbind de front-end-web-app met het integratiesubnet.
 - Maak de back-end-web-app.
 - Maak de DNS-privézone en geef deze de naam van de Private Link-zone voor web-apps: privatelink.azurewebsites.net.
@@ -31,7 +31,7 @@ In dit artikel wordt een voorbeeld gegeven van het gebruik van een [privé-eindp
 
 ## <a name="how-to-use-terraform-in-azure"></a>Terraform gebruiken in Azure
 
-Ga naar de [Azure-documentatie](https://docs.microsoft.com/azure/developer/terraform/) voor meer informatie over het gebruik van Terraform met Azure.
+Ga naar de [Azure-documentatie](/azure/developer/terraform/) voor meer informatie over het gebruik van Terraform met Azure.
 
 ## <a name="the-complete-terraform-file"></a>Het voltooide Terraform-bestand
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>Volgende stappen
 
 
-> [Meer informatie over het gebruik van Terraform in Azure](https://docs.microsoft.com/azure/developer/terraform/)
+> [Meer informatie over het gebruik van Terraform in Azure](/azure/developer/terraform/)

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 106427a6b26386e6ff881862f836e9108a27aa96
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082066"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959014"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Zelfstudie: Problemen met een App Service-app oplossen met behulp van Azure Monitor
 
@@ -18,9 +18,9 @@ ms.locfileid: "88082066"
 > Azure Monitor-integratie met App Service bevindt zich in de [preview-fase](https://aka.ms/appsvcblog-azmon).
 >
 
-In deze zelfstudie ziet u hoe u problemen met een [App Service](overview.md) oplost met behulp van [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview). De voorbeeld-app bevat code die is bedoeld om het geheugen uit te putten en HTTP 500-fouten te veroorzaken, zodat u het probleem kunt vaststellen en oplossen met behulp van Azure Monitor. Wanneer u klaar bent, hebt u een voorbeeld-app in App Service in Linux die is geïntegreerd met [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+In deze zelfstudie ziet u hoe u problemen met een [App Service](overview.md) oplost met behulp van [Azure Monitor](../azure-monitor/overview.md). De voorbeeld-app bevat code die is bedoeld om het geheugen uit te putten en HTTP 500-fouten te veroorzaken, zodat u het probleem kunt vaststellen en oplossen met behulp van Azure Monitor. Wanneer u klaar bent, hebt u een voorbeeld-app in App Service in Linux die is geïntegreerd met [Azure Monitor](../azure-monitor/overview.md).
 
-Met [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) worden de beschikbaarheid en prestaties van uw toepassing en services gemaximaliseerd door een uitgebreide oplossing te bieden waarmee u telemetriegegevens kunt verzamelen en analyseren, en op basis hiervan kunt handelen, zowel in de cloud als on-premises.
+Met [Azure Monitor](../azure-monitor/overview.md) worden de beschikbaarheid en prestaties van uw toepassing en services gemaximaliseerd door een uitgebreide oplossing te bieden waarmee u telemetriegegevens kunt verzamelen en analyseren, en op basis hiervan kunt handelen, zowel in de cloud als on-premises.
 
 In deze zelfstudie leert u het volgende:
 
@@ -38,7 +38,7 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 - [Azure-abonnement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure-CLI](/cli/azure/install-azure-cli)
 - [Git](https://git-scm.com/)
 
 ## <a name="create-azure-resources"></a>Azure-resources maken
@@ -73,12 +73,12 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 
 ### <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken
 
-Diagnostische instellingen kunnen worden gebruikt om metrische gegevens voor bepaalde Azure-Services te verzamelen in Azure Monitor-logboeken, voor analyse met andere bewakingsinformatie met behulp van logboekquery's. Voor deze zelfstudie schakelt u de webserverlogboeken en standaardlogboeken voor uitvoer/fouten in. Zie [Ondersteunde logboektypen](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) voor een volledige lijst met logboektypen en beschrijvingen.
+Diagnostische instellingen kunnen worden gebruikt om metrische gegevens voor bepaalde Azure-Services te verzamelen in Azure Monitor-logboeken, voor analyse met andere bewakingsinformatie met behulp van logboekquery's. Voor deze zelfstudie schakelt u de webserverlogboeken en standaardlogboeken voor uitvoer/fouten in. Zie [Ondersteunde logboektypen](./troubleshoot-diagnostic-logs.md#supported-log-types) voor een volledige lijst met logboektypen en beschrijvingen.
 
 U voert de volgende opdrachten uit om diagnostische instellingen te maken voor AppServiceConsoleLogs (standaardlogboeken voor uitvoer/fouten) en AppServiceHTTPLogs (webserverlogboeken). Vervang _\<app-name>_ en _\<workspace-name>_ door uw eigen waarden. 
 
 > [!NOTE]
-> De eerste twee opdrachten, `resourceID` en `workspaceID`, zijn variabelen die moeten worden gebruikt in de opdracht `az monitor diagnostic-settings create`. Zie [Diagnostische instellingen maken met behulp van Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) voor meer informatie over deze opdracht.
+> De eerste twee opdrachten, `resourceID` en `workspaceID`, zijn variabelen die moeten worden gebruikt in de opdracht `az monitor diagnostic-settings create`. Zie [Diagnostische instellingen maken met behulp van Azure CLI](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) voor meer informatie over deze opdracht.
 >
 
 ```bash
@@ -129,7 +129,7 @@ Selecteer in Azure Portal uw Log Analytics-werkruimte.
 
 ### <a name="log-queries"></a>Logboekquery's
 
-Met logboekquery's kunt u de waarde van de gegevens die in Azure Monitor-logboeken worden verzameld, volledig benutten. U gebruikt logboekquery's om de logboeken te identificeren in zowel AppServiceHTTPLogs als AppServiceConsoleLogs. Bekijk het [overzicht voor logboekquery’s](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) voor meer informatie over logboekquery's.
+Met logboekquery's kunt u de waarde van de gegevens die in Azure Monitor-logboeken worden verzameld, volledig benutten. U gebruikt logboekquery's om de logboeken te identificeren in zowel AppServiceHTTPLogs als AppServiceConsoleLogs. Bekijk het [overzicht voor logboekquery’s](../azure-monitor/log-query/log-query-overview.md) voor meer informatie over logboekquery's.
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs weergeven met logboekquery
 

@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422093"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258840"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Zelfstudie: End-to-end beveiliging van inhoud met behulp van Azure Active Directory
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In deze zelfstudie en het verstrekte spelervoorbeeld kunt u een end-to-end subsysteem voor mediabeveiliging instellen op Azure Media Services (AMS) en Azure Active Directory (AAD) voor het streamen van media-inhoud met alle door AMS ondersteunde DRM-/AES-128-streamingprotocollen, codecs en containerindelingen. Het voorbeeld is algemeen genoeg voor beveiligde toegang tot elke REST API die wordt beveiligd met OAuth 2 via Authorization Code Flow met Proof Key for Code Exchange (PKCE). (De licentieleveringsservice van Azure Media Services is er slechts een van.) Het werkt ook voor Microsoft Graph API en elke aangepaste REST API die is beveiligd met OAuth 2 via Authorization Code Flow. Dit is het aanvullende document bij de [voorbeeldcode](https://github.com/Azure-Samples/media-services-content-protection-azure-ad).
 
