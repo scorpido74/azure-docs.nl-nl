@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262205"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998455"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Zelfstudie: Indexeren vanuit meerdere gegevensbronnen met behulp van de .NET-SDK
 
@@ -21,7 +22,7 @@ Met Azure Cognitive Search kunt u gegevens uit meerdere gegevensbronnen importer
 
 In deze zelfstudie wordt beschreven hoe u hotelgegevens van een Azure Cosmos DB-gegevensbron indexeert en hoe u deze samenvoegt met hotelkamergegevens uit documenten uit de Azure-blobopslag. Het resultaat is een gecombineerde zoekindex voor hotels met complexe gegevenstypen.
 
-In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). In deze zelfstudie voert u de volgende taken uit:
+In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](/dotnet/api/overview/azure/search). In deze zelfstudie voert u de volgende taken uit:
 
 > [!div class="checklist"]
 > * Voorbeeldgegevens uploaden en gegevensbronnen maken
@@ -34,8 +35,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure Storage](../storage/common/storage-account-create.md)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [Maak](search-create-service-portal.md) of [vind een bestaande zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -80,7 +81,7 @@ In dit voorbeeld worden twee kleine gegevenssets gebruikt, waarin zeven fictieve
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com), ga naar uw Azure-opslagaccount, klik op **Blobs** en op **+ Container**.
 
-1. [Maak een blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) met de naam **hotel-rooms** om de JSON-voorbeeldbestanden voor hotelkamers op te slaan. U kunt het niveau voor openbare toegang instellen op een van de geldige waarden.
+1. [Maak een blobcontainer](../storage/blobs/storage-quickstart-blobs-portal.md) met de naam **hotel-rooms** om de JSON-voorbeeldbestanden voor hotelkamers op te slaan. U kunt het niveau voor openbare toegang instellen op een van de geldige waarden.
 
    ![Een blobcontainer maken](media/tutorial-multiple-data-sources/blob-add-container.png "Een blob-container maken")
 
@@ -171,7 +172,7 @@ Deze eenvoudige C#-/.NET-console-app voert de volgende taken uit:
 
 ### <a name="create-an-index"></a>Een index maken
 
-In dit voorbeeldprogramma wordt de .NET-SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Er wordt gebruikgemaakt van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder)-klasse om een indexstructuur te genereren op basis van een C#-gegevensmodelklasse.
+In dit voorbeeldprogramma wordt de .NET-SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Er wordt gebruikgemaakt van de [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)-klasse om een indexstructuur te genereren op basis van een C#-gegevensmodelklasse.
 
 Het gegevensmodel wordt gedefinieerd door de hotelklasse, die ook verwijzingen bevat naar de adres- en kamerklassen. Met FieldBuilder wordt ingezoomd op meerdere klassedefinities om een complexe gegevensstructuur te genereren voor de index. Tags voor metagegevens worden gebruikt voor het definiëren van de kenmerken van elk veld. Er kan bijvoorbeeld worden aangegeven of een veld doorzoekbaar of sorteerbaar is.
 
@@ -319,7 +320,7 @@ De JSON-blobs bevatten een sleutelveld met de naam **`Id`** in plaats van **`Hot
 
 Indexeerfuncties voor bloboplag kunnen parameters gebruiken die de te gebruiken parseermodus identificeren. De parseermodus verschilt voor blobs, afhankelijk van of ze één document of meerdere documenten in dezelfde blob vertegenwoordigen. In dit voorbeeld vertegenwoordigt elke blob een enkel indexdocument. In de code wordt dus de parameter `IndexingParameters.ParseJson()` gebruikt.
 
-Voor meer informatie over het parseren van parameters voor de indexeerfunctie voor JSON-blobs raadpleegt u [JSON-blobs indexeren](search-howto-index-json-blobs.md). Voor meer informatie over het opgeven van deze parameters met behulp van de .NET-SDK raadpleegt u de klasse [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions).
+Voor meer informatie over het parseren van parameters voor de indexeerfunctie voor JSON-blobs raadpleegt u [JSON-blobs indexeren](search-howto-index-json-blobs.md). Voor meer informatie over het opgeven van deze parameters met behulp van de .NET-SDK raadpleegt u de klasse [IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions).
 
 Het programma verwijdert alle bestaande indexeerfuncties met dezelfde naam voordat de nieuwe wordt gemaakt (mocht u dit voorbeeld meer dan eens willen uitvoeren).
 

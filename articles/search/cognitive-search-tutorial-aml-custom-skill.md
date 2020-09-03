@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245327"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924585"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Zelfstudie: Een aangepaste vaardigheid ontwerpen en implementeren met Azure Machine Learning 
 
-In deze zelfstudie gebruikt u de [gegevensset Hotelrecensies](https://www.kaggle.com/datafiniti/hotel-reviews) (gedistribueerd onder de Creative Commons-licentie [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) om met behulp van Azure Machine Learning een [aangepaste vaardigheid](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) te maken voor het extraheren van aspectgebaseerd sentiment uit de recensies. Op die manier kan positief en negatief sentiment in dezelfde recensie correct worden toegewezen aan geïdentificeerde entiteiten zoals personeel, kamer, lobby of zwembad.
+In deze zelfstudie gebruikt u de [gegevensset Hotelrecensies](https://www.kaggle.com/datafiniti/hotel-reviews) (gedistribueerd onder de Creative Commons-licentie [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) om met behulp van Azure Machine Learning een [aangepaste vaardigheid](./cognitive-search-aml-skill.md) te maken voor het extraheren van aspectgebaseerd sentiment uit de recensies. Op die manier kan positief en negatief sentiment in dezelfde recensie correct worden toegewezen aan geïdentificeerde entiteiten zoals personeel, kamer, lobby of zwembad.
 
 Om het model voor aspectgebaseerd sentiment te trainen in Azure Machine Learning, gebruikt u de [opslagplaats met NLP-recepten](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Het model wordt vervolgens als een eindpunt geïmplementeerd in een Azure Kubernetes-cluster. Na implementatie wordt het eindpunt als een AML-vaardigheid aan de verrijkingspijplijn toegevoegd voor gebruik door de Cognitive Search-service.
 
@@ -36,10 +36,10 @@ Er worden twee gegevenssets geboden. Als u het model zelf wilt trainen, hebt u h
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement – krijg een [gratis abonnement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Cognitive Search-service](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [Cognitive Services-resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Azure Machine Learning-werkruimte](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [Cognitive Search-service](./search-get-started-arm.md)
+* [Cognitive Services-resource](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Azure Storage-account](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Machine Learning-werkruimte](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Instellen
 
@@ -47,9 +47,9 @@ Er worden twee gegevenssets geboden. Als u het model zelf wilt trainen, hebt u h
 * Extraheer de inhoud als de download een ZIP-bestand is. Zorg ervoor dat de bestanden lezen-schrijven zijn.
 * Terwijl u de Azure-accounts en -services instelt, kopieert u de namen en sleutels naar een gemakkelijk toegankelijk tekstbestand. De namen en sleutels worden toegevoegd aan de eerste cel in het notebook waar variabelen voor toegang tot de Azure-services zijn gedefinieerd.
 * Als u niet bekend bent met Azure Machine Learning en de vereisten daarvan, is het raadzaam deze documenten te bekijken voordat u aan de slag gaat:
- * [Een ontwikkelingsomgeving voor Azure Machine Learning configureren](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [Azure Machine Learning-werkruimten maken en beheren in de Azure-portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * Wanneer u de ontwikkelingsomgeving voor Azure Machine Learning configureert, overweeg dan het [cloudgebaseerd rekenproces](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance) te gebruiken om snel en gemakkelijk aan de slag te gaan.
+ * [Een ontwikkelingsomgeving voor Azure Machine Learning configureren](../machine-learning/how-to-configure-environment.md)
+ * [Azure Machine Learning-werkruimten maken en beheren in de Azure-portal](../machine-learning/how-to-manage-workspace.md)
+ * Wanneer u de ontwikkelingsomgeving voor Azure Machine Learning configureert, overweeg dan het [cloudgebaseerd rekenproces](../machine-learning/how-to-configure-environment.md#compute-instance) te gebruiken om snel en gemakkelijk aan de slag te gaan.
 * Upload het gegevenssetbestand naar een container in het opslagaccount. Het grotere bestand is nodig als u de trainingsstap in het notebook wilt uitvoeren. Als u de trainingsstap liever overslaat, wordt het kleinere bestand aanbevolen.
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>Notebook openen en verbinding maken met Azure-services
@@ -68,9 +68,9 @@ Sectie 2 bevat zes cellen waarmee het GloVe Embeddings-bestand wordt gedownload 
 
 In sectie 3 van het notebook worden de modellen getraind die in sectie 2 zijn gemaakt, worden die modellen geregistreerd en worden ze als een eindpunt geïmplementeerd in een Azure Kubernetes-cluster. Als u niet bekend bent met Azure Kubernetes, is het zeer raadzaam de volgende artikelen te bekijken voordat u een deductiecluster probeert te maken:
 
-* [Overzicht van Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Quota’s, groottebeperkingen voor virtuele machines, en beschikbaarheid in regio’s in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Overzicht van Azure Kubernetes Service](../aks/intro-kubernetes.md)
+* [Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)](../aks/concepts-clusters-workloads.md)
+* [Quota’s, groottebeperkingen voor virtuele machines, en beschikbaarheid in regio’s in Azure Kubernetes Service (AKS)](../aks/quotas-skus-regions.md)
 
 Het maken en implementeren van de deductiecluster kan wel 30 minuten duren. Het wordt aanbevolen de webservice te testen voordat u doorgaat met de laatste stappen, uw vaardighedenset bij te werken en de indexeerfunctie uit te voeren.
 
@@ -108,5 +108,5 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Bekijk de web-API voor aangepaste vaardigheden](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api)
-> [Meer informatie over het toevoegen van aangepaste vaardigheden aan de verrijkingspijplijn](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [Bekijk de web-API voor aangepaste vaardigheden](./cognitive-search-custom-skill-web-api.md)
+> [Meer informatie over het toevoegen van aangepaste vaardigheden aan de verrijkingspijplijn](./cognitive-search-custom-skill-interface.md)

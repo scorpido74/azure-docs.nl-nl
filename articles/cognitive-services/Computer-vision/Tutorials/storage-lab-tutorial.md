@@ -10,16 +10,17 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: f350aae32909de2b9be4384d921f7507a158f6ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243850"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322327"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelfstudie: Computer Vision gebruiken voor het genereren van afbeeldingsmetagegevens te genereren in Azure Storage
 
-In deze zelfstudie leert u hoe u de Azure Computer Vision-service in een web-app integreert voor het genereren van metagegevens voor geüploade afbeeldingen. Dit is nuttig voor [DAM-scenario's (Digital Asset Management)](../Home.md#computer-vision-for-digital-asset-management), bijvoorbeeld wanneer een bedrijf snel beschrijvende bijschriften of doorzoekbare trefwoorden wil genereren voor al zijn afbeeldingen.
+In deze zelfstudie leert u hoe u de Azure Computer Vision-service in een web-app integreert voor het genereren van metagegevens voor geüploade afbeeldingen. Dit is nuttig voor [DAM-scenario's (Digital Asset Management)](../overview.md#computer-vision-for-digital-asset-management), bijvoorbeeld wanneer een bedrijf snel beschrijvende bijschriften of doorzoekbare trefwoorden wil genereren voor al zijn afbeeldingen.
 
 De volledige app-handleiding vindt u in het [Azure Storage- en Cognitive Services-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) op GitHub. In deze zelfstudie wordt alleen oefening 5 uit het lab behandeld. Misschien wilt u de volledige app maken door elke stap te volgen, maar als u alleen wilt leren hoe u Computer Vision kunt integreren in een bestaande web-app, leest u hier verder.
 
