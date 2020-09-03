@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ff56a3e9c15d6f4bf04765c30084a9ca68df0e73
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 017dabf16384e53d924ed69f36b64050fcacb5bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544754"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934783"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Zelfstudie: E-commerce-productafbeeldingen beheren met Azure Content Moderator
 
@@ -43,7 +44,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-a-review-team"></a>Een beoordelingsteam maken
 
-Zie de quickstart [Content Moderator proberen op internet](quick-start.md) om te lezen hoe u zich kunt aanmelden voor het [Content Moderator-controlehulpprogramma](https://contentmoderator.cognitive.microsoft.com/) en een beoordelingsteam kunt samenstellen. Noteer de waarde voor **Team Id** op de pagina **Create review team**.
+Zie de quickstart [Content Moderator proberen op internet](quick-start.md) om te lezen hoe u zich kunt aanmelden voor het beoordelingsprogramma [Content Moderator](https://contentmoderator.cognitive.microsoft.com/) en een beoordelingsteam kunt samenstellen. Noteer de waarde voor **Team Id** op de pagina **Create review team**.
 
 ## <a name="create-custom-moderation-tags"></a>Aangepaste controletags maken
 
