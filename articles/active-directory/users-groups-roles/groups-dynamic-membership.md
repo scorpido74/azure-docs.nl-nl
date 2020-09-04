@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213792"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797102"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschapsregels voor groepen in Azure Active Directory
 
@@ -178,7 +178,7 @@ De waarden die in een expressie worden gebruikt, kunnen bestaan uit verschillend
 
 * Tekenreeksen
 * Booleaans – true, false
-* Getallen
+* Cijfers
 * Matrices – nummermatrix, tekenreeksmatrix
 
 Wanneer u een waarde in een expressie opgeeft, is het belangrijk dat u de juiste syntaxis gebruikt om fouten te voorkomen. Enkele syntaxistips zijn:
@@ -213,7 +213,7 @@ Hier volgen enkele voorbeelden van goed samengestelde lidmaatschapsregels met me
 (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 ```
 
-### <a name="operator-precedence"></a>Bewerkingsvolgorde van operators
+### <a name="operator-precedence"></a>Operatorprioriteit
 
 Alle operators worden hieronder weergegeven in volgorde van prioriteit van hoog naar laag. Operators op dezelfde regel hebben dezelfde prioriteit:
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Extensie-eigenschappen en aangepaste extensie-eigenschappen
 
-Extensiekenmerken en aangepaste extensie-eigenschappen worden ondersteund als tekenreekseigenschappen in dynamische lidmaatschapsregels. [Extensiekenmerken](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) worden gesynchroniseerd vanaf de on-premises Windows Server AD en hebben de indeling ExtensionAttributeX, waarbij X gelijk is aan 1-15. Hier volgt een voorbeeld van een regel die waarin gebruik wordt gemaakt van een uitbreidingskenmerk als eigenschap:
+Extensiekenmerken en aangepaste extensie-eigenschappen worden ondersteund als tekenreekseigenschappen in dynamische lidmaatschapsregels. [Extensiekenmerken](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) worden gesynchroniseerd vanaf de on-premises Windows Server AD en hebben de indeling ExtensionAttributeX, waarbij X gelijk is aan 1-15. Hier volgt een voorbeeld van een regel die waarin gebruik wordt gemaakt van een uitbreidingskenmerk als eigenschap:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Aangepaste extensie-eigenschappen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) worden gesynchroniseerd vanuit de on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing, en hebben de indeling `user.extension_[GUID]_[Attribute]`, waarbij:
+[Aangepaste extensie-eigenschappen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) worden gesynchroniseerd vanuit de on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing, en hebben de indeling `user.extension_[GUID]_[Attribute]`, waarbij:
 
 * [GUID] de unieke id in Azure AD is voor de toepassing die de eigenschap heeft gemaakt in Azure AD
 * [Kenmerk] de naam is van de eigenschap die is gemaakt
@@ -393,7 +393,7 @@ De volgende apparaatkenmerken kunnen worden gebruikt.
  systemLabels | een tekenreeks die overeenkomt met de eigenschap van het Intune-apparaat voor het labelen van moderne werkplekapparaten | (device.systemLabels -contains "M365Managed")
 
 > [!Note]  
-> Voor de deviceOwnership bij het maken van dynamische groepen voor apparaten moet u de waarde instellen op Bedrijf. Op Intune wordt het apparaateigendom in plaats daarvan vertegenwoordigd als Bedrijf. Zie [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) voor meer informatie. 
+> Voor de deviceOwnership bij het maken van dynamische groepen voor apparaten moet u de waarde instellen op Bedrijf. Op Intune wordt het apparaateigendom in plaats daarvan vertegenwoordigd als Bedrijf. Zie [OwnerTypes](/intune/reports-ref-devices#ownertypes) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

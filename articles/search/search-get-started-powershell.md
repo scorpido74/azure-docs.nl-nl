@@ -9,23 +9,24 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f803532e7d08d0de21541cb5d1b52639b623bb90
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506002"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078296"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in PowerShell met behulp van REST API's
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > 
 
-In dit artikel laten we u zien hoe u een Azure Cognitive Search-index kunt maken, laden en er query's op kunt uitvoeren met PowerShell en de [REST API's van Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt uitgelegd hoe u PowerShell-opdrachten interactief uitvoert. U kunt ook een [PowerShell-script downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) waarmee dezelfde bewerkingen worden uitgevoerd.
+In dit artikel laten we u zien hoe u een Azure Cognitive Search-index kunt maken, laden en er query's op kunt uitvoeren met PowerShell en de [REST API's van Azure Cognitive Search](/rest/api/searchservice/). In dit artikel wordt uitgelegd hoe u PowerShell-opdrachten interactief uitvoert. U kunt ook een [PowerShell-script downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) waarmee dezelfde bewerkingen worden uitgevoerd.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -33,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De volgende services en hulpprogramma's zijn vereist voor deze quickstart. 
 
-+ [PowerShell 5.1 of hoger](https://github.com/PowerShell/PowerShell), met [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) voor sequentiële en interactieve stappen.
++ [PowerShell 5.1 of hoger](https://github.com/PowerShell/PowerShell), met [Invoke-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) voor sequentiële en interactieve stappen.
 
 + [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze quickstart gebruiken. 
 
@@ -85,7 +86,7 @@ Voor alle aanvragen is een API-sleutel vereist op elke aanvraag die naar uw serv
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-Er moet een index in de service aanwezig zijn voordat u gegevens laadt, tenzij u de portal gebruikt. In deze stap wordt de index gedefinieerd en gepusht naar de service. De API [REST API index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt gebruikt voor deze stap.
+Er moet een index in de service aanwezig zijn voordat u gegevens laadt, tenzij u de portal gebruikt. In deze stap wordt de index gedefinieerd en gepusht naar de service. De API [REST API index maken](/rest/api/searchservice/create-index) wordt gebruikt voor deze stap.
 
 De vereiste elementen van een index zijn een naam en een verzameling velden. Met de verzameling velden wordt de structuur van een *document* gedefinieerd. Elk veld is voorzien van een naam, type en kenmerken die bepalen hoe het wordt gebruikt (bijvoorbeeld of er op volledige tekst kan worden gezocht, of er filters kunnen worden toegepast en of het veld kan worden opgehaald in de zoekresultaten). In een index moet een van de velden van het type `Edm.String` worden ingesteld als de *sleutel* voor de documentidentiteit.
 
@@ -179,7 +180,7 @@ Deze index heeft de naam 'hotels-quickstart' en beschikt over de onderstaande ve
 
 ## <a name="2---load-documents"></a>2 - Documenten laden
 
-Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eindpunt van uw index. De REST API voor deze taak is [Documenten toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eindpunt van uw index. De REST API voor deze taak is [Documenten toevoegen, bijwerken of verwijderen](/rest/api/searchservice/addupdate-or-delete-documents).
 
 1. Plak dit voorbeeld in PowerShell om een **$body**-object te maken dat de documenten bevat die u wilt uploaden. 
 
@@ -281,7 +282,7 @@ Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eind
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    De resultaten moeten er ongeveer uitzien als in het volgende voorbeeld. Normaal gezien ziet u een [statuscode 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+    De resultaten moeten er ongeveer uitzien als in het volgende voorbeeld. Normaal gezien ziet u een [statuscode 201](/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -317,7 +318,7 @@ Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eind
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-Bij deze stap ziet u hoe u een query op een index uitvoert met behulp van de [API Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Bij deze stap ziet u hoe u een query op een index uitvoert met behulp van de [API Documenten zoeken](/rest/api/searchservice/search-documents).
 
 Zorg ervoor dat u enkele aanhalingstekens gebruikt bij het zoeken naar $urls. Queryreeksen bevatten **$** -tekens. Als de volledige reeks tussen enkele aanhalingstekens staat, hoeft u geen escape-teken te gebruiken.
 

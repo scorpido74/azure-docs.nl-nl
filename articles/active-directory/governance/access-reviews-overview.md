@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605000"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783668"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -81,7 +81,7 @@ Uw directory moet ten minste evenveel Azure AD Premium P2-licenties hebben als h
 
 Azure AD Premium P2-licenties zijn **niet** vereist voor Globale beheerders of Gebruikersbeheerders die toegangsbeoordelingen instellen, instellingen configureren of de beslissingen van de beoordelingen toepassen.
 
-Voor elke betaalde Azure AD Premium P2-licentie die u toewijst aan een van de gebruikers van uw eigen organisatie, kunt u Azure AD Business-to-Business (B2B) gebruiken om maximaal vijf gastgebruikers uit te nodigen (toegestane aantal externe gebruikers). Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../b2b/licensing-guidance.md) voor meer informatie.
+Voor elke betaalde Azure AD Premium P2-licentie die u toewijst aan een van de gebruikers van uw eigen organisatie, kunt u Azure AD Business-to-Business (B2B) gebruiken om maximaal vijf gastgebruikers uit te nodigen (toegestane aantal externe gebruikers). Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../external-identities/licensing-guidance.md) voor meer informatie.
 
 Zie [Licenties toewijzen en verwijderen met behulp van het Azure Active Directory-portal](../fundamentals/license-users-groups.md) voor meer informatie over licenties.
 

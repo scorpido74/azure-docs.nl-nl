@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590384"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648663"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Wat zijn schaalsets voor virtuele machines?
 Met behulp van schaalsets voor virtuele Azure-machines kunt u een groep VM's met gelijke taakverdeling maken en beheren. Het aantal VM-exemplaren kan automatisch toenemen of afnemen in reactie op vraag of een ingesteld schema. Schaalsets bieden een hoge beschikbaarheid voor uw toepassingen. Een ander voordeel is dat u vanaf één plek een groot aantal virtuele machines kunt beheren, configureren en bijwerken. Met schaalsets voor virtuele machines kunt u grootschalige services bouwen voor zaken zoals rekenkracht, big data en containerworkloads.
@@ -40,7 +40,7 @@ Schaalsets voor virtuele Azure-machines bieden beheermogelijkheden voor toepassi
 
 - **Werkt op grote schaal**
     - Schaalsets ondersteunen maximaal 1000 VM-exemplaren. Als u uw eigen aangepaste VM-installatiekopieën maakt en upload, is de limiet 600 VM-exemplaren.
-    - Gebruik [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) voor de beste prestaties met productieworkloads.
+    - Gebruik [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) voor de beste prestaties met productieworkloads.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Verschillen tussen virtuele machines en schaalsets

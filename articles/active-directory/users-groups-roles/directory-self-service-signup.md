@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192708"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795347"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Wat is de selfservice voor aanmelden voor Azure Active Directory?
 
@@ -64,7 +64,7 @@ Als de bovenstaande voorwaarden true zijn, wordt vervolgens een lid-gebruiker ge
 Zie voor meer informatie over Flow en PowerApps-proefabonnementen de volgende artikelen:
 
 * [Hoe kan ik voorkomen dat mijn bestaande gebruikers Power BI gaan gebruiken?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [Veelgestelde vragen over Flow in uw organisatie](https://docs.microsoft.com/flow/organization-q-and-a)
+* [Veelgestelde vragen over Flow in uw organisatie](/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Hoe werken de besturingselementen samen?
 Deze twee parameters kunnen samen worden gebruikt om nauwkeuriger beheer over de selfservice voor aanmelden te definiëren. Met de volgende opdracht staat u bijvoorbeeld toe dat gebruikers de selfservice voor aanmelden kunnen uitvoeren, maar alleen als die gebruikers al een account in Azure AD hebben (met andere woorden: gebruikers waarvoor eerst een via e-mail geverifieerd account moet worden gemaakt, kunnen de selfservice voor aanmelden niet uitvoeren):

@@ -1,18 +1,18 @@
 ---
 title: Wat is Azure Lighthouse?
 description: Met Azure Lighthouse kunnen serviceproviders beheerde services leveren voor hun klanten, met een grotere mate van automatisering en efficiëntie op schaal.
-ms.date: 08/12/2020
+ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: f65411c03725058e8aa6491245ffd94987efa6c9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163217"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660730"
 ---
 # <a name="what-is-azure-lighthouse"></a>Wat is Azure Lighthouse?
 
-Azure Lighthouse biedt een enkel bedieningspaneel om Azure-resources binnen verschillende tenants te bekijken en beheren, met hogere automatisering, op schaal en verbeterde governance. Met Azure Lighthouse kunnen serviceproviders beheerde services leveren met behulp van uitgebreide en krachtige beheerprogramma's die zijn ingebouwd in het Azure-platform. Deze aanbieding kan ook van pas komen voor zakelijke IT-organisaties die resources binnen meerdere tenants beheren.
+Met Azure Lighthouse kunt u meerdere tenants beheren, meer automatiseren en schalen en hebt u verbeterde governance in resources en tenants. Met Azure Lighthouse kunnen serviceproviders beheerde services leveren met behulp van uitgebreide en krachtige beheerprogramma's die zijn ingebouwd in het Azure-platform. Deze aanbieding kan ook van pas komen voor zakelijke IT-organisaties die resources binnen meerdere tenants beheren.
 
 ![Overzichtsdiagram van Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0d4c5a33f52799ea4da9c7c23fbace94e800660b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589466"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654341"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuele Linux-machines in Azure
 
@@ -71,7 +71,7 @@ Uw abonnement heeft een standaard [quotumlimiet](../../azure-resource-manager/ma
 
 Managed Disks beheert het maken/beheren van Azure Storage-accounts op de achtergrond en zorgt ervoor dat u zich geen zorgen hoeft te maken over de schaalbaarheidslimieten van het opslagaccount. U hoeft alleen de schijfgrootte en prestatielaag (Standard of Premium) op te geven en Azure maakt en beheert de schijf voor u. Ook als u schijven toevoegt of de virtuele machine omhoog of omlaag schaalt, hoeft u zich geen zorgen te maken over de gebruikte opslag. Als u nieuwe VM's gaat maken, [gebruik dan de Azure CLI 2.0](quick-create-cli.md) of Azure Portal om VM's te maken met een beheerd besturingssysteem en beheerde gegevensschijven. Als u VM's hebt met niet-beheerde schijven, kunt u [deze converteren om ze te ondersteunen met Managed Disks](convert-unmanaged-to-managed-disks.md).
 
-U kunt ook uw aangepaste installatiekopieën in één opslagaccount per Azure-regio beheren en deze gebruiken om honderden virtuele machines onder hetzelfde abonnement te maken. Voor meer informatie over Managed Disks raadpleegt u [Managed Disks Overview](../linux/managed-disks-overview.md) (Overzicht van Managed Disks).
+U kunt ook uw aangepaste installatiekopieën in één opslagaccount per Azure-regio beheren en deze gebruiken om honderden virtuele machines onder hetzelfde abonnement te maken. Voor meer informatie over Managed Disks raadpleegt u [Managed Disks Overview](../managed-disks-overview.md) (Overzicht van Managed Disks).
 
 ## <a name="distributions"></a>Distributies 
 Microsoft Azure ondersteunt de uitvoering van een aantal populaire Linux-distributies die worden geleverd en onderhouden door een aantal partners.  In de Microsoft Azure Marketplace vindt u onder meer distributies als Red Hat Enterprise, CentOS, SUSE Linux Enterprise, Debian, Ubuntu, CoreOS, RancherOS en FreeBSD. Microsoft werkt actief samen met diverse Linux-community's om nog meer varianten toe te voegen aan [de lijst met Linux-distributies die zijn goedgekeurd voor Azure](endorsed-distros.md).

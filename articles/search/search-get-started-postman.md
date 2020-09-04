@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510909"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929768"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in Postman met behulp van REST API's
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-In dit artikel wordt uitgelegd hoe u REST API-aanvragen interactief kunt formuleren met behulp van de [Azure Cognitive Search REST API's](https://docs.microsoft.com/rest/api/searchservice) en een API-client voor het verzenden en ontvangen van aanvragen. Met een API-client en deze instructies kunt u aanvragen verzenden en antwoorden bekijken voordat u code gaat schrijven.
+In dit artikel wordt uitgelegd hoe u REST API-aanvragen interactief kunt formuleren met behulp van de [Azure Cognitive Search REST API's](/rest/api/searchservice) en een API-client voor het verzenden en ontvangen van aanvragen. Met een API-client en deze instructies kunt u aanvragen verzenden en antwoorden bekijken voordat u code gaat schrijven.
 
 In het artikel wordt de toepassing Postman gebruikt. U kunt een [Postman-verzameling downloaden en importeren](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) als u liever vooraf gedefinieerde aanvragen gebruikt. 
 
@@ -74,7 +74,7 @@ Formuleer in Postman een aanvraag die vergelijkbaar is met de volgende schermopn
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-In Azure Cognitive Search maakt u doorgaans de index voordat u deze met gegevens laadt. De [REST API index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt gebruikt voor deze taak. 
+In Azure Cognitive Search maakt u doorgaans de index voordat u deze met gegevens laadt. De [REST API index maken](/rest/api/searchservice/create-index) wordt gebruikt voor deze taak. 
 
 De URL wordt uitgebreid met de indexnaam `hotels`.
 
@@ -128,7 +128,7 @@ Wanneer u deze aanvraag indient, krijgt u een HTTP 201-respons om aan te geven d
 
 ## <a name="2---load-documents"></a>2 - Documenten laden
 
-De index maken en de index vullen zijn afzonderlijke stappen. In Azure Cognitive Search bevat de index alle doorzoekbare gegevens. In dit scenario worden de gegevens als JSON-documenten verstrekt. De [REST API voor documenten toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) wordt voor deze taak gebruikt. 
+De index maken en de index vullen zijn afzonderlijke stappen. In Azure Cognitive Search bevat de index alle doorzoekbare gegevens. In dit scenario worden de gegevens als JSON-documenten verstrekt. De [REST API voor documenten toevoegen, bijwerken of verwijderen](/rest/api/searchservice/addupdate-or-delete-documents) wordt voor deze taak gebruikt. 
 
 De URL is uitgebreid met de verzamelingen `docs` en de bewerking `index`.
 
@@ -236,12 +236,12 @@ Over enkele seconden verschijnt er een HTTP 201-respons in de sessielijst. Dit g
 Als u een 207-respons ontvang, is minimaal één document niet geüpload. Als u een 404-respons ontvangt, bevat de header of het hoofdgedeelte van de aanvraag een syntaxisfout: controleer of u het eindpunt hebt gewijzigd zodat dit `/docs/index` bevat.
 
 > [!Tip]
-> Voor bepaalde gegevensbronnen kunt u de alternatieve methode *indexer* gebruiken die de indexering vereenvoudigt en de hoeveelheid code die is vereist vermindert. Zie [Indexeerbewerkingen](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) voor meer informatie.
+> Voor bepaalde gegevensbronnen kunt u de alternatieve methode *indexer* gebruiken die de indexering vereenvoudigt en de hoeveelheid code die is vereist vermindert. Zie [Indexeerbewerkingen](/rest/api/searchservice/indexer-operations) voor meer informatie.
 
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-Nu er een index en een documentenset zijn geladen, kunt u hier query's op uitvoeren met behulp van de instructie [REST API documenten doorzoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Nu er een index en een documentenset zijn geladen, kunt u hier query's op uitvoeren met behulp van de instructie [REST API documenten doorzoeken](/rest/api/searchservice/search-documents).
 
 De URL is uitgebreid met een query-expressie die is opgegeven met behulp van de zoekoperator.
 
@@ -278,7 +278,7 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 ```
 
 ## <a name="get-index-properties"></a>Indexeigenschappen ophalen
-U kunt ook [Statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) gebruiken om een query naar aantallen documenten en indexgrootte uit te voeren: 
+U kunt ook [Statistieken ophalen](/rest/api/searchservice/get-index-statistics) gebruiken om een query naar aantallen documenten en indexgrootte uit te voeren: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30

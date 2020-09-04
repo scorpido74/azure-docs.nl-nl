@@ -11,17 +11,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
-ms.date: 08/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604576"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291616"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel mediabronbestandsindelingen. Deze worden geleverd via verschillende streamingprotocollen, met of zonder inhoudsbeveiliging, om alle grote apparaten te bereiken (zoals iOS- en Android-apparaten). Deze clients werken met verschillende protocollen. Zo vereist iOS dat stromen worden geleverd in HLS-indeling (HTTP Live Streaming), en Android-apparaten ondersteunen zowel HLS als MPEG DASH.
 

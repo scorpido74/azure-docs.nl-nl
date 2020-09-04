@@ -6,12 +6,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 085eedf3a3ce09689a5a7b7d4c69d1aade42ffb3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185435"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077684"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Azure PowerShell gebruiken om een Service Bus-naamruimte en -wachtrij te maken
 In deze quickstart wordt beschreven hoe u een Service Bus-naamruimte en -wachtrij maakt met behulp van Azure PowerShell. Er wordt ook beschreven hoe u autorisatiereferenties ophaalt die een client-toepassing kan gebruiken voor het verzenden/ontvangen van berichten naar/van de wachtrij. 
@@ -27,7 +28,7 @@ In deze quickstart gebruikt u Azure Cloud Shell dat u kunt starten nadat u zich 
 
 
 ## <a name="provision-resources"></a>Resources inrichten
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Start Azure Cloud Shell door het pictogram te selecteren dat wordt weergegeven in de volgende afbeelding: 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell starten":::

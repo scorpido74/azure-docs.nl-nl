@@ -3,12 +3,12 @@ title: 'Azure-quickstart: Een event hub maken met behulp van de Azure-portal'
 description: In deze snelstart leert u hoe u een Azure event hub maakt met behulp van Azure Portal en vervolgens gebeurtenissen verzendt en ontvangt met behulp van .NET Standard SDK.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d01ef6711c7e57538abae301ae924fb6ff351
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 84cafcc86142cb9b97639c023971e7d290fc79fc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142550"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927881"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Quickstart: Een event hub maken met behulp van Azure Portal
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
@@ -20,8 +20,6 @@ In deze snelstart maakt u een Event Hub met behulp van de [Azure-portal](https:/
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 - Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-- [Visual Studio 2019](https://www.visualstudio.com/vs) of hoger.
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of hoger.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -94,10 +92,10 @@ Ga als volgt te werk om een Event Hub in de naamruimte te maken:
 
 In dit artikel hebt u een resourcegroep, een Event Hubs-naamruimte en een Event Hub gemaakt. Zie de zelfstudies **Gebeurtenissen verzenden en ontvangen** voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar of ontvangen van gebeurtenissen vanuit een Event Hub: 
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (alleen verzenden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (alleen ontvangen)](event-hubs-storm-getstarted-receive.md)
