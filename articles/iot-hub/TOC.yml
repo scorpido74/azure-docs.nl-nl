@@ -173,6 +173,8 @@
           href: iot-hub-devguide-glossary.md
     - name: Beveiliging
       items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Aanbevelingen
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: Fundamentele beveiliging

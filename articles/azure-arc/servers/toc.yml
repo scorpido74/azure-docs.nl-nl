@@ -23,6 +23,8 @@
         - name: Besturingselementen voor beveiliging van Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: Beveiligingsoverzicht
+          href: security-overview.md
 - name: Instructiegidsen
   items:
     - name: Verbinding maken met Azure Arc

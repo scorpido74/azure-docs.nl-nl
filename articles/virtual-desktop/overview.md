@@ -3,15 +3,15 @@ title: Wat is Windows Virtual Desktop? - Azure
 description: Een overzicht van Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002373"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661109"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop?
 
@@ -46,7 +46,7 @@ Met Windows Virtual Desktop kunt u een schaalbare en flexibele omgeving instelle
 
 De virtuele desktops implementeren en beheren:
 
-* Gebruik de interfaces van Windows Virtual Desktop PowerShell en REST om de hostgroepen te configureren, app-groepen te maken, gebruikers toe te wijzen en resources te publiceren.
+* Gebruik de interfaces van Azure Portal, Windows Virtual Desktop PowerShell en REST om de hostgroepen te configureren, app-groepen te maken, gebruikers toe te wijzen en resources te publiceren.
 * Publiceer volledige desktop- of individuele externe apps vanuit één hostgroep, maak individuele app-groepen voor verschillende sets van gebruikers of wijs gebruikers toe aan meerdere app-groepen om het aantal installatiekopieën te beperken.
 * Beheer uw omgeving en gebruik ingebouwde gedelegeerde toegang om rollen toe te wijzen en verzamel diagnostische gegevens om de verschillende configuratie- en gebruikersfouten te begrijpen.
 * Gebruik de nieuwe Diagnoseservice om problemen op te lossen.
@@ -61,7 +61,7 @@ U kunt ook gebruikers toewijzen en verbinden met uw virtuele desktops:
 
 Er zijn een aantal dingen die u nodig heeft om Windows Virtual Desktop in te stellen en uw gebruikers te verbinden met hun Windows-desktops en -toepassingen.
 
-We zijn van plan ondersteuning voor de volgende besturingssystemen toe te voegen, zorg er dus voor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) beschikt voor de gebruikers op basis van de desktop en apps die u wilt implementeren:
+We bieden ondersteuning voor de volgende besturingssystemen, zorg er dus voor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) beschikt voor de gebruikers op basis van de desktop en apps die u wilt implementeren:
 
 |OS|Vereiste licentie|
 |---|---|
@@ -71,11 +71,17 @@ We zijn van plan ondersteuning voor de volgende besturingssystemen toe te voegen
 
 Uw infrastructuur heeft de volgende zaken nodig om Windows Virtual Desktop te ondersteunen:
 
-* Een [Azure Active Directory](/azure/active-directory/)
-* Een Windows Server Active Directory die gesynchroniseerd is met Azure Active Directory. U kunt deze configureren met een van de volgende:
-  * Azure AD Connect (voor hybride organisaties)
-  * Azure AD Domain Services (voor hybride of cloudorganisaties)
-* Een Azure-abonnement met een virtueel netwerk dat de Windows Server Active Directory bevat of ermee is verbonden
+* Een [Azure Active Directory](/azure/active-directory/).
+* Een Windows Server Active Directory die gesynchroniseerd is met Azure Active Directory. U kunt dit configureren met behulp van Azure AD Connect (voor hybride organisaties) of Azure AD Domain Services (voor hybride organisaties of cloudorganisaties).
+  * Een Windows Server AD die met Azure Active Directory is gesynchroniseerd. De gebruiker wordt verkregen uit Windows Server AD en de virtuele machine van Windows Virtual Desktop wordt gekoppeld aan het Windows Server AD-domein.
+  * Een Windows Server AD die met Azure Active Directory is gesynchroniseerd. De gebruiker wordt verkregen uit Windows Server AD en de virtuele machine van Windows Virtual Desktop wordt gekoppeld aan het Azure AD Domain Services-domein.
+  * Een Azure AD Domain Services-domein. De gebruiker wordt verkregen uit Azure Active Directory en de virtuele machine van Windows Virtual Desktop wordt gekoppeld aan het Azure AD Domain Services-domein.
+* Een Azure-abonnement, dat een onderliggend element moet zijn van dezelfde Azure AD-tenant, met een virtueel netwerk dat de Windows Server Active Directory of een Azure AD DS-instantie bevat of ermee is verbonden.
+
+Gebruikersvereisten om verbinding te maken met Windows Virtual Desktop:
+
+* De gebruiker moet worden verkregen uit dezelfde Active Directory die met Azure AD is verbonden. Windows Virtual Desktop biedt geen ondersteuning voor B2B- of MSA-accounts.
+* De UPN die u gebruikt om u op Windows Virtual Desktop te abonneren, moet bestaan in het Active Directory-domein waaraan de virtuele machine is gekoppeld.
 
 De virtuele Azure-machines die u maakt voor Windows Virtual Desktop moeten:
 
@@ -91,7 +97,7 @@ Windows Virtual Desktop bestaat uit de Windows-desktops en -apps die u levert aa
 
 Zorg ervoor dat uw netwerk aan de volgende vereisten voldoet voor optimale prestaties:
 
-* De retourlatentie tussen het netwerk van de client en de Azure-regio waar de hostgroepen zijn geïmplementeerd, moeten minder dan 150 ms bedragen.
+* De retourlatentie tussen het netwerk van de client en de Azure-regio waar de hostgroepen zijn geïmplementeerd, moeten minder dan 150 ms bedragen. Gebruik de [ervaringsschatting](https://azure.microsoft.com/services/virtual-desktop/assessment) om de status van uw verbinding en de aanbevolen Azure-regio weer te geven.
 * Netwerkverkeer kan buiten de grenzen van het land/de regio stromen wanneer virtuele machines die desktops en apps hosten, verbinding maken met de beheerservice.
 * Voor optimale netwerkprestaties raden we aan dat de virtuele machines van de host van de sessie zich in dezelfde Azure-regio bevinden als de beheerservice.
 
@@ -111,7 +117,7 @@ De volgende Extern bureaublad-clients bieden ondersteuning voor Windows Virtual 
 > [!IMPORTANT]
 > Windows Virtual Desktop biedt momenteel geen ondersteuning voor de Extern bureaublad-client uit de Windows Store. Ondersteuning voor deze client wordt in een toekomstige versie toegevoegd.
 
-Zie de [Lijst met veilige URL's](safe-url-list.md) voor meer informatie over URL's die u moet deblokkeren om de Externe clients te gebruiken.
+Zie de [Lijst met veilige URL's](safe-url-list.md) voor meer informatie over URL's die u moet deblokkeren om de clients te gebruiken.
 
 ## <a name="supported-virtual-machine-os-images"></a>Ondersteunde installatiekopieën van besturingssystemen voor virtuele machines
 
@@ -130,10 +136,10 @@ De beschikbare opties voor automatisering en implementatie zijn afhankelijk van 
 
 |Besturingssysteem|Azure Image Gallery|Handmatige VM-implementatie|Integratie van Azure Resource Manager-sjabloon|Inrichting hostgroepen in Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 met meerdere sessies, versie 1903|Ja|Ja|Ja|Ja|
-|Windows 10 met meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|
-|Windows 10 Enterprise, versie 1903|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise, versie 1809|Ja|Ja|Nee|Nee|
+|Windows 10 Enterprise (voor meerdere sessies), versie 2004|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise (voor meerdere sessies), versie 1909|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise (voor meerdere sessies), versie 1903|Ja|Ja|Nee|Nee|
+|Windows 10 Enterprise (voor meerdere sessies), versie 1809|Ja|Ja|Nee|Nee|
 |Windows 7 Enterprise|Ja|Ja|Nee|Nee|
 |Windows Server 2019|Ja|Ja|Nee|Nee|
 |Windows Server 2016|Ja|Ja|Ja|Ja|

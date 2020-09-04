@@ -130,6 +130,7 @@
         - name: Reacties op waarschuwingen automatiseren
           href: workflow-automation.md
         - name: Waarschuwingen exporteren
+          displayName: continuous
           href: continuous-export.md
     - name: Beveiligingsaanbevelingen gebruiken om de beveiliging te verbeteren
       items:
@@ -150,6 +151,7 @@
         - name: Reacties op aanbevelingen automatiseren
           href: workflow-automation.md
         - name: Aanbevelingen exporteren
+          displayName: continuous
           href: continuous-export.md
     - name: Beheer uw resources met assetinventarissen
       href: asset-inventory.md

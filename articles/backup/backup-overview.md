@@ -4,12 +4,12 @@ description: Geeft een overzicht van de Azure Backup-service en hoe deze bijdraa
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: da4f9b4814e93a964105a7ed3ea4addaecd43864
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513520"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611225"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Wat is de Azure Backup-service?
 
@@ -19,7 +19,7 @@ De Azure Backup-service biedt eenvoudige, beveiligde en kosteneffectieve oplossi
 
 ## <a name="what-can-i-back-up"></a>Waarvan kan ik een back-up maken?
 
-- **On-premises**: Maak back-ups van bestanden, mappen, systeemstatus met behulp van de [Microsoft Azure Recovery Services-agent (MARS)](backup-support-matrix-mars-agent.md). Of gebruik de DPM- of Azure Backup Server-agent (MABS) voor bescherming van on-premises virtuele machines ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) en [VMWare](backup-azure-backup-server-vmware.md)) en andere [on-premises werkbelastingen](backup-mabs-protection-matrix.md)
+- **On-premises**: Maak back-ups van bestanden, mappen, systeemstatus met behulp van de [Microsoft Azure Recovery Services-agent (MARS)](backup-support-matrix-mars-agent.md). Of gebruik de DPM- of Azure Backup Server-agent (MABS) voor bescherming van on-premises virtuele machines ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) en [VMware](backup-azure-backup-server-vmware.md)) en andere [on-premises werkbelastingen](backup-mabs-protection-matrix.md)
 - **Virtuele Azure-machines** - [Maak back-ups van volledige virtuele machines op basis van Windows/Linux](backup-azure-vms-introduction.md) (met back-upextensies) of van bestanden, mappen en systeemstatus met behulp van de [MARS-agent](backup-azure-manage-mars.md).
 - **Azure Files-shares** - [Maak back-ups van Azure-bestandsshares in een opslagaccount](backup-afs.md)
 - **SQL Server op virtuele Azure-machines** -  [Maak back-ups van SQL Server-databases die worden uitgevoerd op virtuele Azure-machines](backup-azure-sql-database.md)

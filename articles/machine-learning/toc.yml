@@ -219,9 +219,10 @@
     - name: Compute-resources maken
       items:
         - name: Studio gebruiken
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-studio.md
         - name: De Python-SDK gebruiken
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-sdk.md
     - name: Uw omgeving instellen
       items:
@@ -477,9 +478,6 @@
         - name: Fouten in parallelle uitvoerstap opsporen en oplossen
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: Machine learning-pijplijnen doorlopen en ontwikkelen
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: Azure-pijplijnen voor CI/CD
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context

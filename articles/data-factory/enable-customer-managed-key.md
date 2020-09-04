@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 9caa4690fa6b9d6c473bb8863acdcbbe15a37fba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569356"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650571"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory versleutelen met door de klant beheerde sleutels
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory codeert data-at-rest, waaronder entiteitsdefinities, gegevens die zijn opgeslagen in de cache terwijl uitvoeringen bezig zijn en gegevens die zijn opgeslagen in cache voor Voorbeeld van gegevens. Standaard worden gegevens versleuteld met een willekeurig gegenereerde, door Microsoft beheerde sleutel die uniek is toegewezen aan uw data factory. Voor extra beveiligingsgaranties kunt u nu Bring Your Own Key (BYOK) inschakelen met de functie voor door de klant beheerde sleutels in Azure Data Factory. Wanneer u een door de klant beheerde sleutel opgeeft, gebruikt Data Factory __zowel__ de systeemsleutel van de fabriek als de CMK om klantgegevens te versleutelen. Wanneer een van deze ontbreekt, wordt toegang tot gegevens en factory geweigerd.
+Azure Data Factory codeert data-at-rest, waaronder entiteitsdefinities en gegevens die zijn opgeslagen in de cache terwijl uitvoeringen bezig zijn. Standaard worden gegevens versleuteld met een willekeurig gegenereerde, door Microsoft beheerde sleutel die uniek is toegewezen aan uw data factory. Voor extra beveiligingsgaranties kunt u nu Bring Your Own Key (BYOK) inschakelen met de functie voor door de klant beheerde sleutels in Azure Data Factory. Wanneer u een door de klant beheerde sleutel opgeeft, gebruikt Data Factory __zowel__ de systeemsleutel van de fabriek als de CMK om klantgegevens te versleutelen. Wanneer een van deze ontbreekt, wordt toegang tot gegevens en factory geweigerd.
 
 Azure Key Vault is vereist om door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. Key Vault en Data Factory moeten zich in dezelfde Azure Active Directory (Azure AD)-tenant en in dezelfde regio bevinden, maar ze kunnen wel in verschillende abonnementen zijn. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
 
@@ -76,7 +76,7 @@ U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de 
 
     ![Schermopname van Sleutel-URI ophalen uit Key Vault](media/enable-customer-managed-key/04-get-key-identifier.png)
 
-1. Start Azure Data Factory Portal en ga met de navigatiebalk aan de linkerkant naar de Data Factory-startpagina
+1. Start Azure Data Factory Portal en ga met de navigatiebalk aan de linkerkant naar de Data Factory-beheerportal
 
 1. Klik op het pictogram __Door de klant beheerde sleutel__
 

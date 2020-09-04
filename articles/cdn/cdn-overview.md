@@ -3,7 +3,7 @@ title: Wat is een netwerk voor contentlevering (CDN)? - Azure | Microsoft Docs
 description: Leer wat een netwerk voor contentlevering (CDN) is en hoe u het kunt gebruiken voor het leveren van inhoud met hoge bandbreedte.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260434"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783805"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Wat is een netwerk voor contentlevering in Azure?
-Een netwerk voor contentlevering (CDN) is een gedistribueerd netwerk van servers dat webinhoud efficiënt aan gebruikers kan leveren. In CDN's wordt gecachede inhoud opgeslagen op randservers in aanwezigheidspunt (POP)-locaties in de buurt van eindgebruikers om de latentie zo klein mogelijk te maken. 
+Een netwerk voor contentlevering (CDN) is een gedistribueerd netwerk van servers dat webinhoud efficiënt aan gebruikers kan leveren. In CDN's wordt in de cache opgeslagen inhoud opgeslagen op randservers in aanwezigheidspunt (POP)-locaties in de buurt van eindgebruikers om de latentie zo klein mogelijk te maken. 
 
 Azure Content Delivery Network (CDN) biedt ontwikkelaars een globale oplossing voor het snel leveren van inhoud met hoge bandbreedte door de inhoud op strategische, fysieke knooppunten in de hele wereld in de cache op te slaan. Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt met behulp van CDN POP's gebruikgemaakt van diverse netwerkoptimalisaties. Bijvoorbeeld optimalisatie van routes om Border Gateway Protocol (BGP) te omzeilen.
 
@@ -35,10 +35,10 @@ De voordelen van het gebruik van Azure CDN voor het leveren van websitemateriaal
 
 Zie [Azure CDN POP-locaties](cdn-pop-locations.md) om een lijst met de huidige CDN-knooppuntlocaties te bekijken.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 ![Overzicht van CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Een gebruiker (Alice) vraagt een bestand (ook wel een Asset genoemd) aan met behulp van een URL met een speciale domein naam, zoals de _ &lt;naam&gt;van het eind punt_. azureedge.net. Deze naam kan een hostnaam van een eindpunt of een aangepast domein zijn. De DNS stuurt de aanvraag door naar de best presterende POP-locatie, die meestal de POP is die zich geografisch gezien het dichtstbij de gebruiker bevindt.
+1. Een gebruiker (Alice) gebruikt een URL met een speciale domeinnaam, zoals _&lt;endpoint name&gt;_ .azureedge.net, om een bestand (ook wel een asset genoemd) aan te vragen. Deze naam kan een hostnaam van een eindpunt of een aangepast domein zijn. De DNS stuurt de aanvraag door naar de best presterende POP-locatie, die meestal de POP is die zich geografisch gezien het dichtstbij de gebruiker bevindt.
     
 2. Als het bestand niet beschikbaar is in het cachegeheugen van de randservers in de POP, vraagt de POP het bestand aan bij de oorspronkelijke server. De oorspronkelijke server kan een Azure-web-app, Azure Cloud-service, Azure Storage-account of een openbaar toegankelijke webserver zijn.
    
@@ -64,7 +64,7 @@ Zie [CDN-limieten](https://docs.microsoft.com/azure/azure-resource-manager/manag
 ## <a name="azure-cdn-features"></a>Functies van Azure CDN
 Azure CDN biedt de volgende belangrijke functies:
 
-- [Dynamische site versnelling](cdn-dynamic-site-acceleration.md)
+- [Dynamische siteversnelling](cdn-dynamic-site-acceleration.md)
 - [Regels voor CDN-caching](cdn-caching-rules.md)
 - [Ondersteuning voor aangepaste HTTPS-domeinen](cdn-custom-ssl.md)
 - [Diagnostische logboeken van Azure](cdn-azure-diagnostic-logs.md)

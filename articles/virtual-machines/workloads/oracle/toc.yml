@@ -28,8 +28,6 @@
       href: oracle-reference-architecture.md
     - name: Een Oracle-database ontwerpen
       href: oracle-design.md
-    - name: Back-upstrategie voor Oracle-databases
-      href: oracle-backup-recovery.md
     - name: Opties voor Oracle voor herstel na noodgevallen
       href: oracle-disaster-recovery.md
 - name: Instructiegidsen

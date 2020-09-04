@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135484"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641854"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eigenschappen configureren voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -47,7 +47,7 @@ Ga als volgt te werk om de eigenschappen van de toepassing bewerken:
 3. Neem even de tijd om de opties die beschikbaar zijn voor configuratie te bestuderen:
     - Met **Ingeschakeld voor gebruikers voor aanmelden?** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing, zich kunnen aanmelden.
     - Met **Gebruikerstoewijzing vereist?** wordt bepaald of gebruikers die niet zijn toegewezen aan de toepassing, zich kunnen aanmelden.
-    - Met **Zichtbaar voor gebruikers?** wordt bepaald of gebruikers die zijn toegewezen aan een app, deze kunnen zien in het [toegangsvenster](https://myapps.microsoft.com) en het startprogramma voor de Office 365-app. (Bekijk het manu in de linkerbovenhoek van een Office 365- of Microsoft 365-website.)
+    - Met **Zichtbaar voor gebruikers?** wordt bepaald of gebruikers die zijn toegewezen aan een app, deze kunnen zien in [Mijn apps](https://myapps.microsoft.com) en het startprogramma voor de Office 365-app. (Bekijk het manu in de linkerbovenhoek van een Office 365- of Microsoft 365-website.)
     
     > [!TIP]
     > U kunt gebruikers toewijzen in de sectie **Gebruikers en groepen** in het navigatiegedeelte.

@@ -93,6 +93,9 @@
     - name: De impact van een nieuw beleid evalueren
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Aanbevolen beleid
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: Naleving van regelgeving
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
