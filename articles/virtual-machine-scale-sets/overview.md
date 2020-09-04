@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075548"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590384"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Wat zijn schaalsets voor virtuele machines?
 Met behulp van schaalsets voor virtuele Azure-machines kunt u een groep VM's met gelijke taakverdeling maken en beheren. Het aantal VM-exemplaren kan automatisch toenemen of afnemen in reactie op vraag of een ingesteld schema. Schaalsets bieden een hoge beschikbaarheid voor uw toepassingen. Een ander voordeel is dat u vanaf één plek een groot aantal virtuele machines kunt beheren, configureren en bijwerken. Met schaalsets voor virtuele machines kunt u grootschalige services bouwen voor zaken zoals rekenkracht, big data en containerworkloads.
@@ -60,6 +60,10 @@ Er zijn geen extra kosten verbonden aan het gebruik van schaalsets. U betaalt al
 Gebruik [Azure Monitor voor VM's](../azure-monitor/insights/vminsights-overview.md). Deze tool heeft een eenvoudig voorbereidingsproces en automatiseert de verzameling van belangrijke prestatiemeteritems voor CPU, geheugen, schijf en netwerk uit de virtuele machines in uw schaalset. De tool bevat ook extra bewakingsmogelijkheden en vooraf gedefinieerde visualisaties waarmee u zich kunt concentreren op de beschikbaarheid en prestaties van uw schaalsets.
 
 Schakel bewaking in voor uw [toepassing voor de schaalset voor virtuele machines](../azure-monitor/app/azure-vm-vmss-apps.md) met Application Insights om gedetailleerde informatie te verzamelen over uw toepassing, waaronder paginaweergaven, toepassingsaanvragen en uitzonderingen. Controleer de beschikbaarheid van uw toepassing door een [beschikbaarheidstest ](../azure-monitor/app/monitor-web-app-availability.md) te configureren om gebruikersverkeer te simuleren.
+
+## <a name="singapore-data-residency"></a>Gegevenslocatie Singapore
+
+In Azure is de functie die het mogelijk maakt om klantgegevens in één regio op te slaan momenteel alleen beschikbaar in de regio Azië - zuidoost (Singapore) van het geografisch gebied Azië en Stille Oceaan. Voor alle andere regio's worden klantgegevens opgeslagen in Geo. Zie [Trust Center](https://azuredatacentermap.azurewebsites.net/) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt nu aan de slag door uw eerste schaalset voor virtuele machines te maken in Azure Portal.

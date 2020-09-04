@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Go - Azure Database for MySQL
+title: 'Quickstart: Verbinding maken met Go - Azure Database for MySQL'
 description: Deze snelstartgids bevat enkele voorbeelden van Go-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure-database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1a6942364e6f77c97c93903b25bffa130222cd59
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 154c41c6799bb251f30991fde05f6eacc5de57da
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869874"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185941"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: de taal Go gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: De programmeertaal Go gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
+
 In deze quickstart leest u hoe u op Windows-, Ubuntu Linux- en Apple macOS-platforms verbinding maakt met Azure Database for MySQL met behulp van code geschreven in de taal [Go](https://golang.org/). U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Go, maar geen ervaring hebt met het werken met Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten

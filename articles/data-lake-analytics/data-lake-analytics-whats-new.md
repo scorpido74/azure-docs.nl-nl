@@ -1,19 +1,17 @@
 ---
 title: Recente wijzigingen in Data Lake Analytics
 description: Dit artikel bevat een lijst met recente wijzigingen die zijn aangebracht in Data Lake Analytics. De lijst wordt steeds bijgewerkt.
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476313"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263177"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Wat is er nieuw in Data Lake Analytics?
 
@@ -35,14 +33,13 @@ Wanneer u de Azure Data Lake Analytics-taak vanuit een willekeurig hulpprogramma
 
 De runtime-versie wordt van tijd tot tijd bijgewerkt. En de vorige runtime blijft enige tijd beschikbaar. Wanneer een nieuwe bèta-versie gereed is voor preview, is deze hier ook beschikbaar.
 
-Hieronder volgen de momenteel beschikbare runtime-versies.
+> [!CAUTION]
+> - Als u een runtime kiest die verschilt van de standaardinstelling, kunt u uw U-SQL-taken onderbreken. Het wordt ten zeerste aanbevolen om deze niet-standaard versies niet te gebruiken voor productie, maar alleen voor het testen.
+> - De niet-standaard runtime-versie heeft een vaste levenscyclus. Deze verloopt automatisch.
 
-- release-20200124live_adl_16283022_2 --> **de huidige standaardversie**
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+De volgende versie is de huidige standaard runtime-versie.
+
+- release-20200124live_adl_16283022_2
 
 Raadpleeg [Problemen met U-SQL-runtime oplossen](runtime-troubleshoot.md) voor meer informatie over het oplossen van problemen met SQL-runtime-fouten.
 

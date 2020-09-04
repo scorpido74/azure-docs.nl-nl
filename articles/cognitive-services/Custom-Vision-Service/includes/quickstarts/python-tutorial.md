@@ -2,15 +2,15 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 14ea15734a1db71c03d4ebd0cc3b10dabfb9b2dc
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.date: 08/17/2020
+ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805346"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508520"
 ---
-In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-SDK met Python om een afbeeldingsclassificatiemodel te maken. Wanneer u het model hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de eindpunt-URL voor gepubliceerde voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Python-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-clientbibliotheek met Python om een afbeeldingsclassificatiemodel te bouwen. Wanneer u het model hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de eindpunt-URL voor gepubliceerde voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Python-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -18,9 +18,9 @@ In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-SDK m
 - [pip](https://pip.pypa.io/en/stable/installing/)-hulpprogramma
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
+## <a name="install-the-custom-vision-client-library"></a>De Custom Vision-clientbibliotheek installeren
 
-Als u de Custom Vision Service-SDK voor Python wilt installeren, voert u de volgende opdracht uit in PowerShell:
+Als u de Custom Vision Service-clientbibliotheek voor Python wilt installeren, voert u de volgende opdracht uit in PowerShell:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision

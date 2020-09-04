@@ -1,28 +1,24 @@
 ---
-title: 'Zelf studie: integratie met ClickUp-productiviteits platform Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met ClickUp Productivity Platform | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ClickUp Productivity Platform.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06853edd-e8da-4ad2-a4e6-5555d592cee5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: f497955b698d7ca390b40686e94d553a7cd5c948
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048759"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551809"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Zelf studie: integratie met ClickUp-productiviteits platform Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Zelfstudie: Azure Active Directory-integratie met ClickUp Productivity Platform
 
 In deze zelfstudie leert u hoe u ClickUp Productivity Platform integreert met Azure Active Directory (Azure AD).
 De integratie van ClickUp Productivity Platform met Azure AD biedt de volgende voordelen:
@@ -32,7 +28,7 @@ De integratie van ClickUp Productivity Platform met Azure AD biedt de volgende v
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -76,12 +72,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Als u eenmalige aanmelding van Azure AD wilt configureren en testen met ClickUp Productivity Platform, moet u de volgende procedures uitvoeren:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
 2. **[Eenmalige aanmelding voor ClickUp Productivity Platform configureren](#configure-clickup-productivity-platform-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 5. **[Een testgebruiker voor ClickUp Productivity Platform maken](#create-clickup-productivity-platform-test-user)**: als u een tegenhanger van Britta Simon in ClickUp Productivity Platform wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -107,7 +103,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD bij ClickUp Productiv
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://app.clickup.com/login/sso`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://api.clickup.com/v1/team/<team_id>/microsoft`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
     > De id-waarde is niet echt. Vervang deze waarde door de werkelijke id op de manier die verderop in deze zelfstudie wordt uitgelegd.
@@ -120,7 +116,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD bij ClickUp Productiv
 
 1. Meld u in een ander browservenster als beheerder aan bij de ClickUp Productivity Platform-tenant.
 
-2. Klik op het **gebruikers profiel**en selecteer vervolgens **instellingen**.
+2. Klik op het **Gebruikersprofiel** en selecteer **Instellingen**.
 
     ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure0.png)
 
@@ -150,7 +146,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -158,14 +154,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -187,9 +183,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -197,7 +193,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 1. Meld u in een ander browservenster als beheerder aan bij de ClickUp Productivity Platform-tenant.
 
-2. Klik op het **gebruikers profiel**en selecteer vervolgens **personen**.
+2. Klik op het **Gebruikersprofiel** en selecteer vervolgens **Personen**.
    
     ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/configure0.png)
 
@@ -208,7 +204,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
     ![Configuratie van ClickUp Productivity](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
-    > De gebruiker ontvangt de melding en moet de uitnodiging accepteren om het account te activeren.
+    > De gebruiker zal de melding ontvangen en moet de uitnodiging accepteren om het account te activeren.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -220,7 +216,7 @@ Wanneer u op de tegel ClickUp Productivity Platform klikt in het Toegangsvenster
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -10,16 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8289b21da5009459d2eb7ddc8d26b549f0920317
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083666"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182694"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Quickstart: Een Java web-app maken in Azure App Service
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze quickstart ziet u hoe u de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) met de [Maven-invoegtoepassing voor Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) gebruikt om een webarchiefbestand (WAR) voor Java te implementeren.
+
+> [!NOTE]
+> In dit artikel werken we alleen met Java-apps die verpakt zijn in WAR-bestanden. De invoegtoepassing biedt ook ondersteuning voor JAR-webtoepassingen. Ga naar [Een Java SE JAR-bestand implementeren in App Service in Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) om dit uit te proberen.
 
 > [!NOTE]
 > Dit kan ook worden gedaan met populaire IDE's zoals IntelliJ en Eclipse. Bekijk onze vergelijkbare documenten via [Quickstart: Azure-toolkit voor IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) of [Quickstart: Azure-toolkit voor Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app).
@@ -53,12 +56,12 @@ U kunt de onderstaande Maven-opdracht uitvoeren om de implementatie te configure
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows"  
+::: zone pivot="platform-windows" 
 U wordt gevraagd om het volgende te selecteren: 
 * **OS (standaardwaarde: `linux`)**
 * **Java Version (standaardwaarde: `1.8`)**
 * **Web Container (standaardwaarde: `tomcat 8.5`)** 
-
+ 
 Zorg dat u **`2`** invoert om in de eerste stap **Windows** als het besturingssysteem (OS) te kiezen. De andere configuraties kunt u op de standaardwaarde laten staan door op **Enter** te drukken. Druk ten slotte op **`Y`** bij de prompt **Confirm (Y/N)** om de configuratie te voltooien.
 
 Een voorbeeldproces ziet er als volgt uit:
@@ -137,6 +140,13 @@ Confirm (Y/N)? :
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"  
+
+U wordt gevraagd om het volgende te selecteren: 
+* **OS (standaardwaarde: `linux`)**
+* **Java Version (standaardwaarde: `Java 8`)**
+* **Web Container (standaardwaarde: `Tomcat 8.5`)** 
+
+Alle configuraties kunt u op de standaardwaarde laten staan door op **Enter** te drukken. Druk ten slotte op **`Y`** bij de prompt **Confirm (Y/N)** om de configuratie te voltooien.
 Een voorbeeldproces ziet er als volgt uit:
 
 ```cmd
@@ -174,16 +184,7 @@ Confirm (Y/N)? : Y
 ```
 ::: zone-end
 
-> [!NOTE]
-> In dit artikel werken we alleen met Java-apps die verpakt zijn in WAR-bestanden. De invoegtoepassing biedt ook ondersteuning voor JAR-webtoepassingen. Ga naar [Een Java SE JAR-bestand implementeren in App Service in Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) om dit uit te proberen.
-
-Open `pom.xml` om de bijgewerkte configuratie weer te geven.
-
-```bash
-code pom.xml
-```
-
-U kunt de configuraties voor App Service indien nodig rechtstreeks in uw pom-bestand wijzigen. Dit zijn een aantal algemene instellingen:
+U kunt de configuraties voor App Service indien nodig rechtstreeks in uw `pom.xml` wijzigen. Dit zijn een aantal algemene instellingen:
 
  Eigenschap | Vereist | Beschrijving | Versie
 ---|---|---|---
@@ -195,11 +196,8 @@ U kunt de configuraties voor App Service indien nodig rechtstreeks in uw pom-bes
 `<runtime>` | true | De configuratie van de runtime-omgeving. U kunt u de details [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) bekijken. | 0.1.0+
 `<deployment>` | true | De implementatieconfiguratie. U kunt de details [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) bekijken. | 0.1.0+
 
-::: zone pivot="platform-windows"
 Let op de waarden voor `<appName>` en `<resourceGroup>`(`helloworld-1590394316693` en `helloworld-1590394316693-rg` in de demo) aangezien deze later worden gebruikt.
-::: zone-end
-::: zone pivot="platform-linux"
-::: zone-end
+
 > [!div class="nextstepaction"]
 > [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=quickstart-java&step=config)
 
@@ -216,21 +214,11 @@ Implementeer vervolgens uw Java-app in Azure met de volgende opdracht:
 mvn package azure-webapp:deploy
 ```
 
-::: zone pivot="platform-windows"
 Zodra de implementatie is voltooid, is uw toepassing beschikbaar op `http://<appName>.azurewebsites.net/`(`http://helloworld-1590394316693.azurewebsites.net` in de demo). Open de URL met uw lokale webbrowser. U ziet dan het volgende als het goed is:
 
-![Voorbeeld-app uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Voorbeeld-app uitgevoerd in Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd in App Service on Windows.
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-::: zone-end
-::: zone pivot="platform-linux"
-Zodra de implementatie is voltooid, bladert u naar de geïmplementeerde toepassing met behulp van de volgende URL in uw webbrowser, bijvoorbeeld `http://<webapp>.azurewebsites.net`. 
-
-![Voorbeeld-app uitgevoerd in Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd in App Service on Linux.
+**Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd in App Service.
 
 > [!div class="nextstepaction"]
 > [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -244,19 +232,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 ```
 
 Het kan een minuut duren voordat deze opdracht is uitgevoerd.
-::: zone-end
-
-Zodra de implementatie is voltooid, is uw toepassing beschikbaar op `http://<appName>.azurewebsites.net/`(`http://helloworld-1590394316693.azurewebsites.net` in de demo). Open de URL met uw lokale webbrowser. U ziet dan het volgende als het goed is:
-
-![Voorbeeld-app uitgevoerd in Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd in App Service.
-
-> [!div class="nextstepaction"]
-> [Er is een fout opgetreden](https://www.research.net/r/javae2e?quickstart-java&step=deploy)
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

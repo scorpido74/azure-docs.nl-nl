@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375535"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226143"
 ---
 In deze Quick Start leert u hoe u de Speech Devices SDK voor Android kunt gebruiken om een spraakgestuurd product te maken of dit te gebruiken als [gesprektranscriptie](../conversation-transcription-service.md)apparaat.
 
-Voor deze hulplijn is een [Azure Cognitive Services-account](../get-started.md) met een Spraakservice-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze hulplijn is een [Azure Cognitive Services-account](../get-started.md) met een Spraakservice-resource vereist.
 
 De broncode voor de voorbeeldtoepassing is opgenomen in de Speech Devices SDK. Deze is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -31,7 +31,7 @@ Voordat u begint met het gebruik van de Speech Devices SDK, moet u het volgende 
 
 - Een [Azure-abonnementssleutel voor Spraakservice](../get-started.md) verkrijgen
 
-- Als u van plan bent om de gesprektranscriptie te gebruiken, moet u een [circulair microfoonapparaat gebruiken](../get-speech-devices-sdk.md) en deze functie is momenteel alleen beschikbaar voor en-US en zh-CN in de regio's centraalus en eastasia. U moet een spraaksleutel hebben in een van deze regio's om gesprektranscriptie te kunnen gebruiken.
+- Als u van plan bent om de gesprektranscriptie te gebruiken, moet u een [circulair microfoonapparaat gebruiken](../get-speech-devices-sdk.md); deze functie is momenteel alleen beschikbaar voor en-US en zh-CN in de regio's centraalus en eastasia. U moet een spraaksleutel hebben in een van deze regio's om gesprektranscriptie te kunnen gebruiken.
 
 - Als u van plan bent de Spraakservice te gebruiken om de intenties (of acties) te identificeren van uitingen van gebruikers, hebt u een [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)-abonnement nodig. Zie [Spraakintenties herkennen met LUIS, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp) voor meer informatie over LUIS en intentieherkenning.
 
@@ -126,7 +126,7 @@ Als u de Setup van de Development Kit wilt valideren, maakt en installeert u de 
 
    Als u een nieuw trefwoord wilt gebruiken, werkt u de volgende twee regels bij in `MainActivity.java`, en kopieert u het trefwoordpakket naar uw app. Als u bijvoorbeeld het trefwoord 'machine' uit het trefwoordpakket kws-machine.zip wilt gebruiken:
 
-   - Kopieer het trefwoordpakket naar de map C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\.
+   - Kopieer het trefwoordpakket naar de map C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\\".
    - Werk de `MainActivity.java` bij met het trefwoord en de pakketnaam:
 
      ```java

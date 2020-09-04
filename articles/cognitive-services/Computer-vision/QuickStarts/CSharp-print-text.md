@@ -1,29 +1,29 @@
 ---
-title: 'Quickstart: Gedrukte tekst extraheren (OCR) - REST, C#'
+title: 'Quickstart: Tekst extraheren met de OCR-bewerking uit de Computer Vision 2.0-REST API en C#'
 titleSuffix: Azure Cognitive Services
-description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met C#.
+description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de OCR-bewerking uit de Computer Vision 2.0-REST API met C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835388"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209178"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Quickstart: Gedrukte tekst extraheren (OCR) met behulp van de Computer Vision REST API en C#
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Quickstart: Tekst extraheren met de OCR-bewerking uit de Computer Vision 2.0-REST API en C#
 
-> [!NOTE]
-> Als u Engelstalige tekst extraheert, overweeg dan de nieuwe [leesbewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) te gebruiken. Er is een [quickstart voor C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) beschikbaar. 
+> [!IMPORTANT]
+> Als u tekst extraheert in het Engels, Nederlands, Frans, Duits, Italiaans, Portugees, Spaans of vereenvoudigd Chinees (preview), wordt aangeraden om de nieuwere [Leesbewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) te gebruiken. Er is een [quickstart voor C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) beschikbaar. 
 
-In deze quickstart gebruikt u optische tekenherkenning (OCR) om tekst uit een afbeelding te extraheren met behulp van de Computer Vision REST API. Met de functie [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u gedrukte tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
+In deze snelstart extraheert u gedrukte tekst uit een afbeelding met behulp van de functie [OCR-bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) in de Computer Vision-REST API. Met deze bewerking kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 
 ## <a name="prerequisites"></a>Vereisten
 

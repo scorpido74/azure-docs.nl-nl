@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565511"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509362"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Quickstart: Een model weergeven met Unity
 
@@ -84,7 +84,7 @@ Later willen we dit project implementeren op een HoloLens-apparaat en vanaf dat 
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Een sessie maken en het standaardmodel weergeven
 
-Druk op de knop **Afspelen** van Unity om de sessie te starten. Er wordt een overlay weergegeven met statustekst, onderaan de viewport in het deelvenster *Game*. De sessie zal verschillende statussen doorlopen. In de status **Wordt gestart** wordt de externe VM opgestart, hetgeen enkele minuten duurt. Wanneer dit is gelukt, gaat de status over naar **Gereed**. De sessie gaat vervolgens over in de status **Verbinding maken**, waarin wordt geprobeerd de renderingruntime op die VM te bereiken. Wanneer dit is gelukt, gaat het voorbeeld over naar de status **Verbonden**. Op dat moment wordt begonnen met het downloaden van het model voor rendering. Vanwege de grootte van het model kan het downloaden een paar minuten duren. Vervolgens wordt het extern gegenereerde model weergegeven.
+Druk op de knop **Afspelen** van Unity om de sessie te starten. Er wordt een overlay weergegeven met statustekst, onderaan de viewport in het deelvenster *Game*. De sessie zal verschillende statussen doorlopen. In de status **Wordt gestart** wordt de server opgestart, hetgeen enkele minuten duurt. Wanneer dit is gelukt, gaat de status over naar **Gereed**. De sessie gaat vervolgens over in de status **Verbinding maken**, waarin wordt geprobeerd de renderingruntime op die server te bereiken. Wanneer dit is gelukt, gaat het voorbeeld over naar de status **Verbonden**. Op dat moment wordt begonnen met het downloaden van het model voor rendering. Vanwege de grootte van het model kan het downloaden een paar minuten duren. Vervolgens wordt het extern gegenereerde model weergegeven.
 
 ![Uitvoer uit het voorbeeld](media/arr-sample-output.png)
 

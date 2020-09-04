@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met C++ - Azure Database for MySQL
+title: 'Quickstart: Verbinding maken met C++ - Azure Database for MySQL'
 description: Deze snelstartgids bevat een voorbeeld van C++-code dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6aa550a9c3f58fc7101e632bcd56800b27efc84e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871517"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185975"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
+# <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Connector/C++ gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
+
 In deze quickstart ziet u hoe u met behulp van een C++-toepassing verbinding maakt met een Azure Database for MySQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met C++, maar geen ervaring hebt met het werken met Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
+
 In deze quickstart worden de resources die in een van de volgende handleidingen zijn gemaakt, als uitgangspunt gebruikt:
 - [Een Azure-database voor een MySQL-server maken met behulp van Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Een Azure-database voor een MySQL-server maken met behulp van Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)

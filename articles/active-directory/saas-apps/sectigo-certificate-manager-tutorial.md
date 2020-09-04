@@ -1,140 +1,135 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Sectigo Certificate Manager | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Sectigo Certificate Manager | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Sectigo Certificate Manager.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62cd6987-3373-4b58-b1ff-589f4a3d70a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67588239"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543275"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Zelf studie: integratie Azure Active Directory met Sectigo Certificate Manager
+# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Zelfstudie: Azure Active Directory-integratie met Sectigo Certificate Manager
 
-In deze zelf studie leert u hoe u Sectigo Certificate Manager integreert met Azure Active Directory (Azure AD).
+In deze zelfstudie leert u hoe u Sectigo Certificate Manager integreert met Azure Active Directory (Azure AD).
 
-Het integreren van Sectigo-certificaat beheer met Azure AD biedt u de volgende voor delen:
+Integratie van Sectigo Certificate Manager met Azure AD biedt u de volgende voordelen:
 
-* U kunt Azure AD gebruiken om te bepalen wie toegang heeft tot Sectigo Certificate Manager.
-* Gebruikers kunnen automatisch worden aangemeld bij Sectigo Certificate Manager met hun Azure AD-accounts (eenmalige aanmelding).
+* U kunt in Azure AD beheren wie er toegang krijgt tot Sectigo Certificate Manager.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Sectigo Certificate Manager (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie [eenmalige aanmelding bij toepassingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van een SaaS-app (Software as a Service) met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Sectigo Certificate Manager wilt configureren, hebt u de volgende items nodig:
+Voor het configureren van de Azure AD-integratie met Sectigo Certificate Manager hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Sectigo Certificate Manager-abonnement waarvoor eenmalige aanmelding is ingeschakeld.
+* Een Azure AD-abonnement Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Een Sectigo Certificate Manager-abonnement waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u eenmalige aanmelding voor Azure AD in een test omgeving en integreert u Sectigo Certificate Manager met Azure AD.
+In deze zelfstudie configureert en test u in een testomgeving eenmalige aanmelding van Azure AD en integreert Sectigo Certificate Manager met Azure AD.
 
 Sectigo Certificate Manager ondersteunt de volgende functies:
 
-* **Met SP geïnitieerde eenmalige aanmelding**
+* **Door SP geïnitieerde eenmalige aanmelding**
 * **Door IDP geïnitieerde eenmalige aanmelding**
 
-## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Sectigo Certificate Manager toevoegen in de Azure Portal
+## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Sectigo Certificate Manager toevoegen in Azure Portal
 
-Als u Sectigo certificaat beheer wilt integreren met Azure AD, moet u Sectigo Certificate Manager toevoegen aan uw lijst met beheerde SaaS-apps.
+Om Sectigo Certificate Manager te integreren met Azure AD moet u Sectigo Certificate Manager toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer in het linkermenu **Azure Active Directory**.
+1. Selecteer de knop **Azure Active Directory** in het linkermenu.
 
-    ![De optie Azure Active Directory](common/select-azuread.png)
+    ![De optie voor Azure Active Directory](common/select-azuread.png)
 
-1. Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
-1. Selecteer **nieuwe toepassing**om een toepassing toe te voegen.
+1. Selecteer **Nieuwe toepassing** om een toepassing toe te voegen.
 
-    ![De optie nieuwe toepassing](common/add-new-app.png)
+    ![De optie Nieuwe toepassing](common/add-new-app.png)
 
-1. Voer in het zoekvak **Sectigo Certificate Manager**in. Selecteer in de zoek resultaten **Sectigo Certificate Manager**en selecteer vervolgens **toevoegen**.
+1. Voer in het zoekvak **Sectigo Certificate Manager** in. Selecteer in de zoekresultaten **Sectigo Certificate Manager** en selecteer **Toevoegen**.
 
-    ![Sectigo certificaat beheerder in de lijst met resultaten](common/search-new-app.png)
+    ![Sectigo Certificate Manager in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Sectigo Certificate Manager op basis van een test gebruiker met de naam **Julia Simon**. Als u eenmalige aanmelding wilt gebruiken, moet u een gekoppelde relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Sectigo Certificate Manager.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Sectigo Certificate Manager op basis van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als er een gekoppelde relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Sectigo Certificate Manager tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Sectigo Certificate Manager, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Sectigo Certificate Manager, moet u de volgende stappen uitvoeren:
 
 | Taak | Beschrijving |
 | --- | --- |
 | **[Azure AD configureren voor eenmalige aanmelding](#configure-azure-ad-single-sign-on)** | Hiermee kunnen uw gebruikers deze functie gebruiken. |
-| **[Eenmalige aanmelding van Sectigo Certificate Manager configureren](#configure-sectigo-certificate-manager-single-sign-on)** | Hiermee configureert u de instellingen voor eenmalige aanmelding in de toepassing. |
-| **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** | Test de eenmalige aanmelding van Azure AD voor een gebruiker met de naam Julia Simon. |
-| **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** | Hiermee kan Julia Simon de eenmalige aanmelding van Azure AD gebruiken. |
-| **[Een test gebruiker voor een Sectigo-certificaat beheerder maken](#create-a-sectigo-certificate-manager-test-user)** | Maakt een equivalent van Julia Simon in Sectigo Certificate Manager dat is gekoppeld aan de Azure AD-weer gave van de gebruiker. |
-| **[Eenmalige aanmelding testen](#test-single-sign-on)** | Verifieert of de configuratie werkt. |
+| **[Eenmalige aanmelding van Sectigo Certificate Manager configureren](#configure-sectigo-certificate-manager-single-sign-on)** | Configureert de instellingen voor eenmalige aanmelding in de toepassing. |
+| **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** | Test de eenmalige aanmelding van Azure AD voor een gebruiker met de naam Britta Simon. |
+| **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** | Stelt Britta Simon in om gebruik te maken van eenmalige aanmelding via Azure AD. |
+| **[Een testgebruiker maken voor Sectigo Certificate Manager](#create-a-sectigo-certificate-manager-test-user)** | Maakt een tegenhanger van Britta Simon in Sectigo Certificate Manager die is gekoppeld aan de Azure AD-representatie van de gebruiker. |
+| **[Eenmalige aanmelding testen](#test-single-sign-on)** | Controleert of de configuratie werkt. |
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
-In deze sectie configureert u eenmalige aanmelding voor Azure AD met Sectigo Certificate manager in de Azure Portal.
+In dit gedeelte configureert u eenmalige aanmelding van Azure AD met Sectigo Certificate Manager in Azure Portal.
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)in het deel venster **certificaat beheer** toepassing voor Sectigo de optie **eenmalige aanmelding**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) in het integratiedeelvenster voor de toepassing **Sectigo Certificate Manager** de optie **Eenmalige aanmelding**.
 
-    ![Optie voor eenmalige aanmelding configureren](common/select-sso.png)
+    ![De optie voor eenmalige aanmelding configureren](common/select-sso.png)
 
-1. Selecteer in het deel venster **eenmalige aanmelding selecteren** de optie **SAML** of **SAML/WS-** gegevensinvoermodus om eenmalige aanmelding in te scha kelen.
+1. Selecteer in het deelvenster **Een methode voor eenmalige aanmelding selecteren** de modus **SAML** of **SAML/WS-Fed** om eenmalige aanmelding in te schakelen.
 
     ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
 
-1. Selecteer in het deel venster **eenmalige aanmelding met SAML instellen** de optie **bewerken** (het potlood pictogram) om het deel venster **basis-SAML-configuratie** te openen.
+1. Selecteer in het deelvenster **Eenmalige aanmelding instellen met SAML** de optie **Bewerken** (het potloodpictogram) om het deelvenster **Standaard SAML-configuratie** te openen.
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer de volgende stappen uit in het deel venster **basis-SAML-configuratie** om de *modus IDP*te configureren:
+1. Voer in het deelvenster **Standaard SAML-configuratie** de volgende stappen uit om de *door IDP geïnitieerde modus* te configureren:
 
-    1. Voer in het vak **id** een van de volgende url's in:
-       * https:\//CERT-Manager.com/shibboleth
-       * https:\//hard.cert-Manager.com/shibboleth
+    1. Voer in het vak **Id** een van deze URL's in:
+       * https:\//cert-manager.com/shibboleth
+       * https:\//hard.cert-manager.com/shibboleth
 
-    1. Voer een van de volgende Url's in het vak **antwoord-URL** in:
-        * https:\//CERT-Manager.com/shibboleth.SSO/SAML2/post
-        * https:\//hard.cert-Manager.com/shibboleth.SSO/SAML2/post
+    1. Voer in het vak **Antwoord-URL** een van deze URL's in:
+        * https:\//cert-manager.com/Shibboleth.sso/SAML2/POST
+        * https:\//hard.cert-manager.com/Shibboleth.sso/SAML2/POST
 
-    1. Selecteer **extra Url's instellen**.
+    1. Selecteer **Extra URL's instellen**.
 
-    1. Voer een van de volgende Url's in het vak **Relay-status** in:
-       * https:\//CERT-Manager.com/Customer/SSLSupport/IDP
-       * https:\//hard.cert-Manager.com/Customer/SSLSupport/IDP
+    1. Voer in het vak **Relay-status** een van deze URL's in:
+       * https:\//cert-manager.com/customer/SSLSupport/idp
+       * https:\//hard.cert-manager.com/customer/SSLSupport/idp
 
-    ![Gegevens van het Sectigo-domein en Url's voor eenmalige aanmelding](common/idp-relay.png)
+    ![Gegevens van domein en URL's voor eenmalige aanmelding van Sectigo Certificaat Manager](common/idp-relay.png)
 
-1.  Voer de volgende stappen uit om de toepassing te configureren in de *modus door SP gestart*:
+1.  Voer de volgende stappen uit om de toepassing te configureren in *door SP geïnitieerde modus*:
 
-    * Voer een van de volgende Url's in het vak **URL voor aanmelden** in:
-      * https:\//CERT-Manager.com/shibboleth.SSO/login
-      * https:\//hard.cert-Manager.com/shibboleth.SSO/login
+    * Voer in het vak **Aanmeldings-URL** een van deze URL's in:
+      * https:\//cert-manager.com/Shibboleth.sso/Login
+      * https:\//hard.cert-manager.com/Shibboleth.sso/Login
 
-      ![Gegevens van het Sectigo-domein en Url's voor eenmalige aanmelding](common/both-signonurl.png)
+      ![Gegevens van domein en URL's voor eenmalige aanmelding van Sectigo Certificaat Manager](common/both-signonurl.png)
 
-1. Selecteer in het deel venster **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** de optie **down load** naast **certificaat (base64)**. Selecteer een download optie op basis van uw vereisten. Sla het certificaat op uw computer op.
+1. Selecteer in het deelvenster **Eenmalige aanmelding instellen met SAML** in de sectie **SAML-handtekeningcertificaat** de optie **Downloaden** naast **Certificaat (Base64)** . Selecteer een downloadoptie op basis van uw vereisten. Sla het certificaat op uw computer op.
 
-    ![De download optie voor het certificaat (base64)](common/certificatebase64.png)
+    ![De optie om het certificaat (Base64) te downloaden](common/certificatebase64.png)
 
-1. Kopieer in de sectie **Sectigo Certificate Manager instellen** de volgende url's op basis van uw vereisten:
+1. Kopieer de volgende URL's op basis van uw vereisten in het gedeelte **Sectigo Certificate Manager instellen**:
 
     * Aanmeldings-URL
     * Azure AD-id
@@ -144,73 +139,73 @@ In deze sectie configureert u eenmalige aanmelding voor Azure AD met Sectigo Cer
 
 ### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Eenmalige aanmelding van Sectigo Certificate Manager configureren
 
-Als u eenmalige aanmelding wilt configureren op de Sectigo certificaat beheerder, verzendt u het gedownloade certificaat bestand (base64) en de relevante Url's die u hebt gekopieerd van de Azure Portal naar het [ondersteunings team van het Sectigo Certificate Manager](https://sectigo.com/support). Het ondersteunings team van Sectigo Certificate Manager gebruikt de informatie die u ze stuurt om ervoor te zorgen dat de eenmalige SAML-verbinding op beide zijden correct is ingesteld.
+Verzend het gedownloade certificaatbestand (Base64) en de relevante URL's die u uit Azure Portal hebt gekopieerd naar het ondersteuningsteam van [Sectigo Certificate Manager](https://sectigo.com/support) als u eenmalige aanmelding wilt configureren aan de zijde van Sectigo Certificate Manager. Het ondersteuningsteam van Sectigo Certificate Manager gebruikt de informatie die u verzendt om ervoor te zorgen dat de SAML-verbinding voor eenmalige aanmelding aan beide zijden correct is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer **Azure Active Directory** > **gebruikers** > van**alle gebruikers**in de Azure Portal.
+1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
 
-    ![De opties gebruikers en alle gebruikers](common/users.png)
+    ![De opties Gebruikers en Alle gebruikers](common/users.png)
 
 1. Selecteer **Nieuwe gebruiker**.
 
-    ![De optie nieuwe gebruiker](common/new-user.png)
+    ![De optie Nieuwe gebruiker](common/new-user.png)
 
 1. Voer in het deelvenster **Gebruiker** de volgende stappen uit:
 
-    1. Voer in het vak **Naam****Britta Simon**in.
+    1. Voer in het vak **Naam** **Britta Simon**in.
   
-    1. Voer in het vak **gebruikers naam** **brittasimon\@\<uw-Company-domein> in.\< extensie\>**. Bijvoorbeeld **brittasimon\@contoso.com**.
+    1. Voer in het vak **Gebruikersnaam** **brittasimon\@\<your-company-domain> in.\<extension\>** . Bijvoorbeeld **brittasimon\@contoso.com**.
 
-    1. Schakel het selectie vakje **wacht woord weer geven** in. Noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+    1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
 
     1. Selecteer **Maken**.
 
-    ![Het deel venster gebruiker](common/user-properties.png)
+    ![Het deelvenster Gebruiker](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie verleent u Julia Simon toegang tot Sectigo Certificate Manager zodat ze de eenmalige aanmelding van Azure kan gebruiken.
+In deze sectie verleent u Britta Simon toegang tot Sectigo Certificate Manager zodat ze de eenmalige aanmelding van Azure kan gebruiken.
 
-1. Selecteer in de Azure Portal **bedrijfs toepassingen** > **alle toepassingen** > **Sectigo Certificate Manager**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** > **Alle toepassingen** > **Sectigo Certificate Manager**.
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
 1. Selecteer in de lijst toepassingen de optie **Sectigo Certificate Manager**.
 
-    ![Sectigo certificaat beheer in de lijst met toepassingen](common/all-applications.png)
+    ![Sectigo Certificate Manager in de lijst met toepassingen](common/all-applications.png)
 
 1. Selecteer **Gebruikers en groepen** in het menu.
 
-    ![De optie gebruikers en groepen](common/users-groups-blade.png)
+    ![De optie Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens **Gebruikers en groepen** in het deelvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het deel venster **gebruikers en groepen** de optie **Julia Simon** in de lijst met gebruikers. Kies **Selecteren**.
+1. Selecteer in het deelvenster **Gebruikers en groepen** de optie **Britta Simon** in de lijst met gebruikers. Kies **Selecteren**.
 
-1. Als u een rolnaam verwacht in de SAML-bewering, selecteert u in het deel venster **rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies **Selecteren**.
+1. Als u een rolwaarde in de SAML-assertie verwacht, selecteert u in het deelvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies **Selecteren**.
 
-1. Selecteer in het deel venster **toewijzing toevoegen** de optie **toewijzen**.
+1. Selecteer **Toewijzen** in het deelvenster **Toewijzing toevoegen**.
 
-### <a name="create-a-sectigo-certificate-manager-test-user"></a>Een test gebruiker voor een Sectigo-certificaat beheerder maken
+### <a name="create-a-sectigo-certificate-manager-test-user"></a>Een testgebruiker maken voor Sectigo Certificate Manager
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in Sectigo Certificate Manager. Werk met het [ondersteunings team van Sectigo Certificate Manager](https://sectigo.com/support) om de gebruiker toe te voegen in het platform voor het Sectigo-certificaat beheer. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in Sectigo Certificate Manager. Werk met het ondersteuningsteam van [Sectigo Certificate Manager](https://sectigo.com/support) samen om de gebruiker toe te voegen op het Sectigo Certificate Manager-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie test u de configuratie van eenmalige aanmelding voor Azure AD met behulp van de portal mijn apps.
+In dit gedeelte test u de configuratie voor eenmalige aanmelding met Azure AD met behulp van de portal Mijn apps.
 
-Wanneer u eenmalige aanmelding hebt ingesteld en u **Sectigo Certificate Manager** selecteert in de portal mijn apps, wordt u automatisch aangemeld bij Sectigo Certificate Manager. Zie [apps openen en gebruiken in de portal mijn apps](../user-help/my-apps-portal-end-user-access.md)voor meer informatie over de portal mijn apps.
+Als u eenmalige aanmelding hebt ingesteld en **Sectigo Certificate Manager** selecteert in de portal Mijn apps, wordt u automatisch aangemeld bij Sectigo Certificate Manager. Zie [Apps openen en gebruiken in de portal Mijn apps](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over de portal Mijn apps.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie:
+Lees voor meer informatie de volgende artikelen:
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

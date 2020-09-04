@@ -1,81 +1,81 @@
 ---
 title: Een Linux-VM maken en versleutelen met behulp van Azure Portal
-description: In deze Quick Start leert u hoe u de Azure Portal kunt gebruiken om een virtuele Linux-machine te maken en te versleutelen
+description: In deze quickstart leert u hoe u de Azure Portal gebruikt om een virtuele Linux-machine te maken en te versleutelen
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 6e32bfdf8c4b2dd7ce61393ab545770cafc73cf5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 563b9c03141357eeacf9a7d890c386faae52c6df
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792527"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510692"
 ---
-# <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Snelstartgids: een virtuele machine maken en versleutelen met de Azure Portal
+# <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Quickstart: Een virtuele machine maken en versleutelen met Azure Portal
 
-Virtuele Azure-machines (VM's)kunnen worden gemaakt via Azure Portal. De Azure-portal is een gebruikersinterface op basis van een browser voor het maken van VM's en alle verwante resources. In deze Quick Start gebruikt u de Azure Portal voor het implementeren van een virtuele Linux-machine (VM) met Ubuntu 18,04 LTS, het maken van een sleutel kluis voor de opslag van versleutelings sleutels en het versleutelen van de virtuele machine.
+Virtuele Azure-machines (VM's) kunnen gemaakt worden via Azure Portal. De Azure-portal is een gebruikersinterface op basis van een browser voor het maken van VM's en alle verwante resources. In deze quickstart gebruikt u Azure Portal om een virtuele Linux-machine (VM) op Ubuntu 18.04 LTS te implementeren, een sleutelkluis te maken voor de opslag van versleutelingssleutels en de VM te versleutelen.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
 1. Kies in de linkerbovenhoek van de Azure-portal **Een resource maken**.
-1. Op de nieuwe pagina, onder populair, selecteert u **Ubuntu Server 18,04 LTS**.
-1. Controleer op het tabblad **basis beginselen** onder **Project Details**of het juiste abonnement is geselecteerd.
-1. Voor **resource groep**selecteert u de resource groep die u hebt gemaakt bij het maken van uw sleutel kluis (bijvoorbeeld **myResourceGroup**).
-1. Voer *MyVM*in voor de naam van de **virtuele machine**.
-1. Selecteer voor **regio**dezelfde regio die u hebt gebruikt bij het maken van uw sleutel kluis (bijvoorbeeld **VS-Oost**).
-1. Zorg ervoor dat **Size** de grootte *standaard D2s v3*is.
-1. Selecteer **wacht woord**onder **Administrator-account**. Voer een gebruikers naam en wacht woord in.
+1. Selecteer op de pagina Nieuw onder Populair **Ubuntu Server 18.04 LTS**.
+1. Controleer op het tabblad Basisinformatie onder Projectgegevens of het juiste abonnement is geselecteerd.
+1. Selecteer voor Resourcegroep de optie **Nieuwe maken**. Voer *myResourceGroup* in als naam en selecteer **OK**.
+1. Bij **Naam van de virtuele machine** voert u *MyVM* in.
+1. Selecteer bij **Regio** *(VS) VS - oost*.
+1. Zorg ervoor dat de **Grootte** *Standard D2s v3* is.
+1. Selecteer *Wachtwoord* onder **Beheerdersaccount** als **Verificatietype**. Voer een gebruikersnaam en wachtwoord in.
 
-    :::image type="content" source="./media/disk-encryption/portal-qs-vm-creation.png" alt-text="Scherm ResourceGroup maken":::
-
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-linux-vm-creation.png" alt-text="Scherm voor het maken van Linux-VM's":::
 
     > [!WARNING]
-    > Het tabblad schijven bevat een veld versleutelings type onder **schijf opties**. Dit veld wordt gebruikt om versleutelings opties op te geven voor [Managed disks](managed-disks-overview.md) + CMK, niet voor Azure Disk Encryption. 
+    > Het tabblad 'Schijven' bevat een veld 'Type versleuteling' onder **Schijfopties**. Dit veld wordt gebruikt om versleutelingsopties op te geven voor [Managed Disks](managed-disks-overview.md) + CMK, en **niet** voor Azure Disk Encryption.
     >
-    > Om Verwar ring te voor komen, wordt u aangeraden het tabblad *schijven* helemaal over te slaan en deze zelf studie te volt ooien. 
+    > Om verwarring te voorkomen, raden we aan het tabblad *Schijven* helemaal over te slaan tijdens deze zelfstudie.
 
-1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u het nieuwe account een naam en selecteert u OK.
+1. Selecteer het tabblad 'Beheer' en controleer of u een Diagnostics-opslagaccount hebt. Als u geen opslagaccounts hebt, selecteert u *Nieuw maken*, geeft u het nieuwe account de naam *myStorageAccount* en selecteert u 'OK'
 
-    :::image type="content" source="./media/disk-encryption/portal-qs-vm-creation-storage.png" alt-text="Scherm ResourceGroup maken":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Scherm Resourcegroep maken":::
 
-1. Klik op ' bekijken + maken '.
+1. Klik op 'Beoordelen en maken'.
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
 
 Het duurt een paar minuten voor uw virtuele machine is ge√Ømplementeerd. Wanneer de implementatie is voltooid, gaat u verder naar de volgende sectie.
 
 ## <a name="encrypt-the-virtual-machine"></a>De virtuele machine versleutelen
 
-1. Wanneer de VM-implementatie is voltooid, selecteert **u naar resource**.
-1. Selecteer op de zijbalk links de optie **schijven**.
-1. Selecteer op het scherm schijven de optie **versleuteling**. 
+1. Nadat de VM-implementatie is voltooid, selecteert u **Ga naar resource**.
+1. Selecteer **Schijven** in de zijbalk links.
+1. Selecteer op de bovenste balk **Extra instellingen**.
+1. Onder **Versleutelingsinstellingen** > **Te versleutelen schijven** selecteert u **Besturingssysteem en gegevensschijven**.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-disks-to-encryption.png" alt-text="schijven en versleutelings selectie":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="selectie van schijven en versleuteling":::
 
-1. Kies op het scherm versleuteling onder **schijven die moeten worden versleuteld, het** **besturings systeem en de gegevens schijven**.
-1. Kies onder **versleutelings instellingen** **de optie Selecteer een sleutel kluis en sleutel voor versleuteling**.
-1. Selecteer **nieuwe maken**op het scherm **sleutel selecteren in azure Key Vault** .
+1. Kies **Selecteer een sleutelkluis en sleutel voor versleuteling** onder **Versleutelingsinstellingen**.
+1. Selecteer op het scherm **Sleutel selecteren in Azure Key Vault** de optie **Nieuwe maken**.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="schijven en versleutelings selectie":::
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="selectie van schijven en versleuteling":::
 
-1. Zorg ervoor dat in het scherm **sleutel kluis maken** de resource groep gelijk is aan die u hebt gebruikt om de virtuele machine te maken.
-1. Geef uw sleutel kluis een naam.  Elke sleutel kluis in azure moet een unieke naam hebben.
-1. Schakel op het tabblad **toegangs beleid** het selectie vakje **Azure Disk Encryption voor volume versleuteling** in.
+1. Selecteer **Klik om een sleutel te selecteren** links van **Sleutelkluis en sleutel**.
+1. Selecteer op het scherm **Sleutel selecteren in Azure Key Vault** onder het veld **Sleutelkluis** de optie **Nieuwe maken**.
+1. Zorg er op het scherm **Sleutelkluis maken** voor dat de resourcegroep *myResourceGroup* is en geef een naam op voor de sleutelkluis.  Elke sleutelkluis in Azure moet een unieke naam hebben.
+1. Schakel op het tabblad **Toegangsbeleid** het selectievakje **Azure Disk Encryption voor volumeversleuteling** in.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-enable.png" alt-text="schijven en versleutelings selectie":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="selectie van schijven en versleuteling":::
 
-1. Selecteer **controleren + maken**.  
-1. Nadat de sleutel kluis validatie heeft door gegeven, selecteert u **maken**. Hiermee keert u terug naar het scherm **sleutel selecteren in azure Key Vault** .
-1. Laat het **sleutel** veld leeg en kies **selecteren**.
-1. Klik boven aan het scherm voor versleuteling op **Opslaan**. Er wordt een waarschuwing weer gegeven dat de VM opnieuw moet worden opgestart. Klik op **Ja**.
+1. Selecteer **Controleren + maken**.  
+1. Selecteer **Maken** nadat de sleutelkluis is gevalideerd. Hierdoor komt u terug op het scherm **Sleutel selecteren in Azure Key Vault**.
+1. Laat het veld **Sleutel** leeg en kies **Selecteren**.
+1. Klik bovenaan het versleutelingsscherm op **Opslaan**. Er wordt een waarschuwing weergegeven dat de VM opnieuw moet worden opgestart. Klik op **Ja**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -83,7 +83,7 @@ Wanneer u de VM niet meer nodig hebt, kunt u de resourcegroep, de machine zelf √
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Key Vault gemaakt die is ingeschakeld voor versleutelings sleutels, een virtuele machine gemaakt en de virtuele machine ingeschakeld voor versleuteling.  
+In deze quickstart hebt u een sleutelkluis gemaakt waarvoor versleutelingssleutels werden ingeschakeld, een virtuele machine gemaakt en versleuteling ingeschakeld voor de virtuele machine.  
 
 > [!div class="nextstepaction"]
 > [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)

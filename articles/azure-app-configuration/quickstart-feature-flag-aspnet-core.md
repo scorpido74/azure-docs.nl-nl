@@ -3,15 +3,16 @@ title: 'Quickstart: functievlaggen toevoegen aan ASP.NET Core'
 description: U kunt functievlaggen toevoegen aan ASP.NET Core-apps en deze beheren met Azure App Configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760138"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235261"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Quickstart: functievlaggen toevoegen aan een ASP.NET Core-app
 
@@ -114,7 +115,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 
 1. Voeg een geheim met de naam **ConnectionStrings:AppConfig** toe aan Secret Manager.
 
-    Dit geheim bevat straks de verbindingsreeks voor toegang tot uw App Configuration-archief. Vervang de waarde voor `<your_connection_string>` in de volgende opdracht door de verbindingsreeks voor uw App Configuration-archief. U vindt de verbindingsreeks onder **Toegangssleutels** in Azure Portal.
+    Dit geheim bevat straks de verbindingsreeks voor toegang tot uw App Configuration-archief. Vervang de waarde voor `<your_connection_string>` in de volgende opdracht door de verbindingsreeks voor uw App Configuration-archief. U vindt de primaire verbindingsreeks met alleen-lezensleutel onder **Toegangssleutels** in Azure Portal.
 
     Deze opdracht moet worden uitgevoerd in de map met het bestand *.csproj*.
 
@@ -186,7 +187,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddSingleton(Configuration).AddFeatureManagement();
+        services.AddFeatureManagement();
     }
 
     ---

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835779"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565703"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Wat is Azure Static Web Apps Preview?
 
@@ -32,10 +32,10 @@ Met Static Web Apps worden statische activa gescheiden van een traditionele webs
 
 - **Webhosting** voor statische inhoud zoals HTML, CSS, JavaScript en afbeeldingen.
 - Ondersteuning voor **Geïntegreerde API** geboden in Azure Functions.
-- **Eigen GitHub-integratie** waarbij wijzigingen in de opslagplaats builds en implementaties activeren.
+- **Eersteklas GitHub-integratie** waarbij wijzigingen in de opslagplaats builds en implementaties activeren.
 - **Wereldwijd gedistribueerde** statische inhoud, waardoor inhoud zich dichter bij de gebruikers bevindt.
 - **Gratis SSL-certificaten** die automatisch worden verlengd.
-- **Aangepaste domeinen**\* om uw app merkaanpassingen te bieden.
+- **Aangepaste domeinen** om uw app merkaanpassingen te bieden.
 - **Naadloos beveiligingsmodel** met een omgekeerde proxy bij het aanroepen van API's, waarvoor geen CORS-configuratie is vereist.
 - **Integratie van verificatieproviders** met Azure Active Directory, Facebook, Google, GitHub en Twitter.
 - **Aanpasbare autorisatieroldefinitie** en toewijzingen.
@@ -44,11 +44,9 @@ Met Static Web Apps worden statische activa gescheiden van een traditionele webs
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Wat u kunt doen met Static Web Apps
 
-- **Moderne JavaScript-toepassingen bouwen** met frameworks en bibliotheken, zoals [Angular](getting-started.md#tabpanel_CeZOj-G++Q_angular), [React](getting-started.md#tabpanel_CeZOj-G++Q_react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) met een back-end van [Azure Functions](apis.md).
+- **Moderne JavaScript-toepassingen bouwen** met frameworks en bibliotheken, zoals [Angular](getting-started.md?tabs=angular), [React](getting-started.md?tabs=react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react) met een back-end van [Azure Functions](apis.md).
 - **Statische sites publiceren** met frameworks zoals [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md).
 - **Webtoepassingen implementeren** met frameworks zoals [Nuxt.js](deploy-nextjs.md) en [Nuxt.js](deploy-nuxtjs.md).
-
-\* Apex-domeinregistraties worden niet ondersteund tijdens de preview-fase.
 
 ## <a name="next-steps"></a>Volgende stappen
 

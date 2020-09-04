@@ -1,6 +1,6 @@
 ---
-title: Automatische SaaS-app-gebruikers inrichten in azure AD
-description: Een inleiding tot het gebruik van Azure AD voor het automatisch inrichten, het inrichten en voortdurend bijwerken van gebruikers accounts in meerdere SaaS-toepassingen van derden.
+title: Wat is geautomatiseerde gebruikersinrichting voor SaaS-toepassing in Azure AD
+description: Een inleiding tot het gebruik van Azure AD voor het automatisch inrichten, het ongedaan maken van een inrichting en het voortdurend bijwerken van gebruikersaccounts in diverse SaaS-toepassingen van derden.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,94 +11,91 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781087"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235397"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van toepassingen automatiseren met Azure AD
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Wat is geautomatiseerde gebruikersinrichting voor SaaS-toepassing in Azure AD?
 
-In Azure Active Directory (Azure AD) verwijst de inrichting van de term- **app** naar het automatisch maken van gebruikers-id's en-rollen in de Cloud toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen zoals [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Sales Force](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)en meer.
+In Azure Active Directory (Azure AD) verwijst de term **app-inrichting** naar het automatisch maken van gebruikersidentiteiten en -rollen in de cloud-toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikersidentiteiten omvat automatische inrichting het onderhoud en de verwijdering van gebruikersidentiteiten zoals gewijzigde status of rollen. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen als [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Sales Force](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) en meer.
 
-![Overzichts diagram van inrichting](./media/user-provisioning/provisioning-overview.png)
+![Overzichtsdiagram van inrichting](./media/user-provisioning/provisioning-overview.png)
 
 Met deze functie kunt u:
 
-- **Inrichting automatiseren**: automatisch nieuwe accounts maken in de juiste systemen voor nieuwe personen wanneer ze deel nemen aan uw team of organisatie.
-- Ongedaan maken van de **inrichting automatiseren:** Accounts automatisch uitschakelen in de juiste systemen wanneer mensen het team of de organisatie verlaten.
-- **Gegevens synchroniseren tussen systemen:** Zorg ervoor dat de identiteiten in uw apps en systemen up-to-date blijven op basis van wijzigingen in de map of uw personeels systeem.
-- **Inrichtings groepen:** Richt groepen in voor toepassingen die deze ondersteunen.
+- **Inrichting** automatiseren: Automatisch nieuwe accounts maken in de juiste systemen voor nieuwe personen wanneer ze deelnemen aan uw team of organisatie.
+- **Inrichting automatiseren:** Schakel accounts automatisch uit in de juiste systemen wanneer mensen het team of de organisatie verlaten.
+- **Gegevens synchroniseren tussen systemen:** Zorg ervoor dat de identiteiten in uw toepassingen en systemen up-to-date blijven op basis van wijzigingen in de map of uw HR-systeem.
+- **Groepen inrichten:** Richt groepen in voor toepassingen die deze ondersteunen.
 - **Toegang beheren:** Bewaak en controleer wie is ingericht in uw toepassingen.
-- **Naadloos implementeren in bruine veld scenario's:** Vergelijk bestaande identiteiten tussen systemen en sta eenvoudige integratie toe, zelfs wanneer gebruikers al bestaan in het doel systeem.
-- **Uitgebreide aanpassing gebruiken:** Profiteer van aanpas bare kenmerk toewijzingen waarmee wordt gedefinieerd welke gebruikers gegevens moeten stromen van het bron systeem naar het doel systeem.
-- **Ontvang waarschuwingen voor kritieke gebeurtenissen:** De inrichtings service biedt waarschuwingen voor kritieke gebeurtenissen en biedt Log Analytics integratie waarmee u aangepaste waarschuwingen kunt definiëren voor de behoeften van uw bedrijf.
+- **Naadloos implementeren in brownfield-scenario's:** Vergelijk bestaande identiteiten tussen systemen en sta eenvoudige integratie toe, zelfs wanneer gebruikers al bestaan in het doelsysteem.
+- **Uitgebreide aanpassing gebruiken:** Profiteer van aanpasbare toewijzingen van kenmerken, waarmee wordt gedefinieerd welke gebruikersgegevens van het bronsysteem naar het doelsysteem moeten stromen.
+- **Krijg waarschuwingen voor kritieke gebeurtenissen:** De inrichtingsservice geeft waarschuwingen voor kritieke gebeurtenissen en maakt integratie van Log Analytics mogelijk. Hiermee kunt u aangepaste waarschuwingen definiëren voor de behoeften van uw bedrijf.
 
-## <a name="benefits-of-automatic-provisioning"></a>Voor delen van automatische inrichting
+## <a name="benefits-of-automatic-provisioning"></a>Voordelen van automatische inrichting
 
-Naarmate het aantal toepassingen dat in moderne organisaties wordt gebruikt, blijft groeien, worden IT-beheerders op schaal gewerkt met toegangs beheer. Met standaarden zoals Security Assertion Markup Language (SAML) of Open ID Connect (OIDC) kunnen beheerders snel eenmalige aanmelding (SSO) instellen, maar in Access moeten gebruikers ook worden ingericht in de app. Bij veel beheerders betekent het inrichten dat elke week hand matig elk gebruikers account maakt of CSV-bestanden uploadt, maar deze processen zijn tijdrovend, duur en fout gevoelig. Oplossingen zoals SAML just-in-time (JIT) zijn goedgekeurd voor het automatiseren van het inrichten, maar ondernemingen hebben ook een oplossing nodig om gebruikers te deinrichten wanneer ze de organisatie verlaten of niet langer toegang tot bepaalde apps nodig hebben op basis van de wijziging van de rol.
+Naarmate het aantal toepassingen dat in moderne organisaties wordt gebruikt groeit, moeten IT-beheerders voor toegangsbeheer op schaal zorgen. Met standaarden zoals Security Assertion Markup Language (SAML) of Open ID Connect (OIDC) kunnen beheerders snel eenmalige aanmelding (SSO) instellen, maar om toegang te kunnen krijgen moeten gebruikers ook worden ingericht in de toepassing. Bij veel beheerders betekent het inrichten dat elke week handmatig elk gebruikersaccount wordt gemaakt of CSV-bestanden moeten worden geüpload, maar deze processen zijn tijdrovend, duur en foutgevoelig. Oplossingen zoals SAML just-in-time (JIT) worden gebruikt voor het automatiseren van het inrichten, maar ondernemingen hebben ook een oplossing nodig om de inrichting van gebruikers ongedaan te maken wanneer ze het bedrijf verlaten of niet langer toegang tot bepaalde apps nodig hebben vanwege een rolwijziging.
 
-Enkele veelvoorkomende motivaties voor het gebruik van automatische inrichting zijn onder andere:
+Enkele veelvoorkomende motivaties voor het gebruik van automatische inrichting zijn:
 
-- Maximale efficiëntie en nauw keurigheid van het inrichten van processen.
-- Besparen op kosten die zijn gekoppeld aan het hosten en onderhouden van aangepast ontwikkelde inrichtings oplossingen en scripts.
-- Beveilig uw organisatie door de identiteit van gebruikers direct te verwijderen uit Key SaaS-apps wanneer ze de organisatie verlaten.
-- Eenvoudig een groot aantal gebruikers importeren in een bepaalde SaaS-toepassing of-systeem.
-- Met één set beleids regels kunt u bepalen wie er is ingericht en wie zich kan aanmelden bij een app.
+- Maximale efficiëntie en nauwkeurigheid van inrichtingsprocessen.
+- Besparen op kosten die zijn gekoppeld aan het hosten en onderhouden van op maat gemaakte inrichtingsoplossingen en -scripts.
+- Beveiliging van uw organisatie door de identiteit van gebruikers direct te verwijderen uit belangrijke SaaS-apps wanneer ze de organisatie verlaten.
+- Eenvoudig een groot aantal gebruikers importeren in een bepaalde SaaS-toepassing of -systeem.
+- Beschikking over één set beleidsregels om te bepalen wie er wordt ingericht en wie zich kan aanmelden bij een app.
 
-Azure AD-gebruikers inrichten kan helpen bij het oplossen van deze uitdagingen. Voor meer informatie over hoe klanten Azure AD-gebruikers inrichten gebruiken, kunt u de [ASOS](https://aka.ms/asoscasestudy)-casestudy lezen. In de onderstaande video vindt u een overzicht van het inrichten van gebruikers in azure AD:
+Het inrichten van Azure AD-gebruikers kan helpen bij het oplossen van deze uitdagingen. Als u meer wilt weten over hoe klanten gebruikersinrichting van Azure AD gebruiken, kunt u de [Casestudy van ASOS lezen](https://aka.ms/asoscasestudy). In onderstaande video vindt u een overzicht van gebruikersinrichting in Azure AD:
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Welke toepassingen en systemen kan ik gebruiken met automatische gebruikers inrichting van Azure AD?
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Welke toepassingen en systemen kan ik gebruiken met automatische gebruikersinrichting van Azure AD?
 
-Azure AD bevat vooraf geïntegreerde ondersteuning voor veel populaire SaaS-apps en Human Resources-systemen en algemene ondersteuning voor apps die specifieke onderdelen van de [SCIM 2,0-standaard](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)implementeren.
+Azure AD bevat vooraf geïntegreerde ondersteuning voor veel populaire SaaS-toepassingen en HR-systemen en algemene ondersteuning voor apps die specifieke onderdelen van de [SCIM 2.0-standaard](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010) implementeren.
 
-* **Vooraf geïntegreerde toepassingen (Galerie SaaS-apps)**. U kunt alle toepassingen vinden waarvoor Azure AD een vooraf geïntegreerde inrichtings connector ondersteunt in de [lijst met zelf studies voor gebruikers inrichting](../saas-apps/tutorial-list.md). De vooraf geïntegreerde toepassingen die in de galerie worden weer gegeven, gebruiken doorgaans SCIM 2,0-based User Management-Api's voor het inrichten. 
+* **Vooraf geïntegreerde toepassingen (SaaS-toepassingen uit de galerie)** . U kunt alle toepassingen vinden waarvoor Azure AD een vooraf geïntegreerde inrichtingsconnector ondersteunt in de [lijst met zelfstudies voor het inrichten van gebruikers in toepassingen](../saas-apps/tutorial-list.md). De vooraf geïntegreerde toepassingen die in de galerie worden weergegeven, gebruiken doorgaans op SCIM 2.0 gebaseerde gebruikersbeheer-API’s voor het inrichten. 
 
-   ![Sales Force-logo](./media/user-provisioning/gallery-app-logos.png)
+   ![Logo van Salesforce](./media/user-provisioning/gallery-app-logos.png)
 
-   Als u een nieuwe toepassing wilt aanvragen voor inrichting, kunt u een [aanvraag indienen om uw toepassing te integreren in de app-galerie](../develop/howto-app-gallery-listing.md). Voor een aanvraag voor gebruikers inrichting moet de toepassing een SCIM-compatibel eind punt hebben. Vraag de leverancier van de toepassing de SCIM-standaard te volgen zodat de app snel kan worden geïmplementeerd op ons platform.
+   Als u een nieuwe toepassing wilt aanvragen voor inrichting, kunt u [een aanvraag indienen voor integratie van uw app met onze app-galerie](../azuread-dev/howto-app-gallery-listing.md). Voor een aanvraag voor gebruikersinrichting moet de toepassing een SCIM-compatibel eindpunt hebben. Vraag de leverancier van de toepassing de SCIM-standaard te volgen zodat de app snel kan worden geïmplementeerd op ons platform.
 
-* **Toepassingen die ondersteuning bieden voor SCIM 2,0**. Zie [een scim-eind punt bouwen en gebruikers inrichten configureren](use-scim-to-provision-users-and-groups.md)voor meer informatie over het algemeen verbinden van toepassingen die gebruikmaken van scim 2,0-api's voor gebruikers beheer.
+* **Toepassingen die ondersteuning bieden voor SCIM 2.0**. Zie [Een SCIM-eindpunt bouwen en gebruikersinrichting configureren](use-scim-to-provision-users-and-groups.md) voor meer informatie over het algemeen verbinden van toepassingen die gebruikmaken van SCIM 2.0-API’s voor gebruikersbeheer.
 
-## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Wat is systeem voor Cross-Domain Identity Management (SCIM)?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Wat is System for Cross-domain Identity Management (SCIM)?
 
-Apps bieden specifieke gebruikers-en groeps-Api's om het inrichten en ongedaan maken van de inrichting te automatiseren. Iedereen die probeert gebruikers te beheren in meer dan één app, vertelt u dat elke app probeert dezelfde eenvoudige acties uit te voeren, zoals het maken of bijwerken van gebruikers, het toevoegen van gebruikers aan groepen of het ongedaan maken van de inrichting van gebruikers. Al deze eenvoudige acties worden nog net zo eenvoudig geïmplementeerd, met behulp van verschillende eindpunt paden, verschillende methoden voor het opgeven van gebruikers gegevens en een ander schema om elk informatie-element weer te geven.
+Om te helpen bij het automatiseren van de inrichting of het ongedaan maken van de inrichting, maken apps gebruik van eigen gebruikers-API’s en groeps-API’s. Iedereen die wel eens heeft geprobeerd om gebruikers te beheren in meer dan één app, zal u echter vertellen dat elke app probeert dezelfde eenvoudige acties uit te voeren, zoals het maken of bijwerken van gebruikers, het toevoegen van gebruikers aan groepen of het ongedaan maken van de inrichting van gebruikers. Al deze eenvoudige acties worden net iets anders geïmplementeerd, met behulp van verschillende eindpuntpaden, verschillende methoden voor het opgeven van gebruikersgegevens en een ander schema om elk informatie-element weer te geven.
 
-Om deze uitdagingen aan te pakken, biedt de SCIM-specificatie een gemeen schappelijk gebruikers schema om gebruikers te helpen bij het verplaatsen naar, van en rond apps. SCIM wordt de facto-standaard voor het inrichten en, wanneer dit wordt gebruikt in combi natie met Federatie standaarden zoals SAML of OpenID Connect Connect, biedt beheerders een end-to-end, op standaarden gebaseerde oplossing voor toegangs beheer.
+Om deze uitdagingen aan te pakken, biedt de SCIM-specificatie een gemeenschappelijk gebruikersschema om gebruikers te helpen bij het verplaatsen van gebruikers in, uit of rondom toepassingen. SCIM wordt de standaard voor het inrichten en, wanneer het wordt gebruikt in combinatie met federatiestandaarden zoals SAML of OpenID Connect, biedt het beheerders een end-to-end, op standaarden gebaseerde oplossing voor toegangsbeheer.
 
-Zie [een scim-eind punt bouwen en gebruikers inrichten configureren](use-scim-to-provision-users-and-groups.md)voor gedetailleerde richt lijnen voor het ontwikkelen van een scim-eind punt om het inrichten en ongedaan maken van de inrichting van gebruikers en groepen naar een toepassing te automatiseren. Voor vooraf geïntegreerde toepassingen in de galerie (toegestane vertraging, Azure Databricks, sneeuw vlokken enz.) kunt u de documentatie voor ontwikkel aars overs Laan en de zelf studies gebruiken die [hier](../saas-apps/tutorial-list.md)worden beschreven.
+Zie [Een SCIM-eindpunt bouwen en gebruikersinrichting configureren](use-scim-to-provision-users-and-groups.md) voor gedetailleerde richtlijnen over het ontwikkelen van een SCIM-eindpunt voor het automatiseren van het inrichten en het ongedaan maken van de inrichting van gebruikers en groepen in een toepassing. Voor vooraf geïntegreerde toepassingen in de galerie (Slack, Azure Databricks, Snowflake, enz.) kunt u de documentatie voor ontwikkelaars overslaan en de zelfstudies gebruiken die u [hier](../saas-apps/tutorial-list.md) kunt vinden.
 
 ## <a name="manual-vs-automatic-provisioning"></a>Handmatige en automatische inrichting
 
-Toepassingen in de Azure AD-galerie ondersteunen een van de twee inrichtings modi:
+Toepassingen in de Azure AD-galerie ondersteunen een van de twee inrichtingsmodi:
 
-* **Hand matige** inrichting betekent dat er nog geen automatische Azure AD-inrichtings connector is voor de app. Gebruikers accounts moeten hand matig worden gemaakt, bijvoorbeeld door gebruikers rechtstreeks toe te voegen aan de beheer portal van de app of een werk blad met details van een gebruikers account te uploaden. Raadpleeg de documentatie van de app of neem contact op met de app-ontwikkelaar om te bepalen welke mechanismen beschikbaar zijn.
+* **Handmatige** inrichting houdt in dat er nog geen automatische Azure AD-inrichtingsconnector is voor de app. Gebruikersaccounts moeten handmatig worden gemaakt, bijvoorbeeld door gebruikers rechtstreeks toe te voegen aan de beheerportal van de app of een spreadsheet met gegevens van een gebruikersaccount te uploaden. Raadpleeg de documentatie van de app of neem contact op met de app-ontwikkelaar om te bepalen welke mechanismen beschikbaar zijn.
 
-* **Automatische** betekent dat een Azure AD-inrichtings connector is ontwikkeld voor deze toepassing. U moet de zelf studie voor Setup volgen om het inrichten in te stellen voor de toepassing. App-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md).
+* **Automatisch** houdt in dat er al een Azure AD-inrichtingsconnector is ontwikkeld voor deze toepassing. U moet de zelfstudie voor installatie volgen om het inrichten voor de toepassing in te stellen. App-zelfstudies vindt u in de [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md).
 
-In de Azure AD-galerie worden toepassingen die ondersteuning bieden voor automatische inrichting, aangeduid met een **inrichtings** pictogram. Schakel over naar de nieuwe preview-ervaring van de galerie om deze pictogrammen te zien (Klik in de banner boven aan de **pagina een toepassing toevoegen**op de koppeling die hier wordt weer gegeven **om de nieuwe en verbeterde app-galerie uit te proberen**).
+In de Azure AD-galerie worden toepassingen die ondersteuning bieden voor automatische inrichting aangeduid met een **Inrichting**-pictogram. Schakel over naar de nieuwe preview-ervaring van de galerie om deze pictogrammen weer te geven (in de banner bovenaan de pagina **Een toepassingspagina toevoegen** selecteert u de koppeling met **Klik hier om de nieuwe en verbeterde app-galerie uit te proberen**).
 
-![Inrichtings pictogram in de toepassings galerie](./media/user-provisioning/browse-gallery.png)
+![Inrichting-pictogram in de toepassingsgalerie](./media/user-provisioning/browse-gallery.png)
 
-De inrichtings modus die door een toepassing wordt ondersteund, wordt ook weer gegeven op het tabblad **inrichten** zodra u de toepassing aan uw **zakelijke apps**hebt toegevoegd.
+De inrichtingsmodus die door een toepassing wordt ondersteund, wordt ook weergegeven op het tabblad **Inrichting** zodra u de toepassing hebt toegevoegd aan uw **Enterprise-apps**.
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hoe kan ik automatische inrichting instellen voor een toepassing?
 
-Voor vooraf geïntegreerde toepassingen die in de galerie worden vermeld, is stapsgewijze instructies beschikbaar voor het instellen van automatische inrichting. Zie de [lijst met zelf studies voor geïntegreerde galerie-apps](../saas-apps/tutorial-list.md). De volgende video laat zien hoe u automatische gebruikers inrichting instelt voor Sales Force.
+Voor vooraf geïntegreerde toepassingen die in de galerie worden vermeld, zijn stapsgewijze instructies beschikbaar voor het instellen van automatische inrichting. Zie de [lijst met zelfstudies voor geïntegreerde galerie-apps](../saas-apps/tutorial-list.md). De volgende video laat zien hoe u automatische gebruikersinrichting instelt voor SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-Voor andere toepassingen die SCIM 2,0 ondersteunen, volgt u de stappen in het artikel [een scim-eind punt bouwen en gebruikers inrichten configureren](use-scim-to-provision-users-and-groups.md).
+Voor andere toepassingen die SCIM 2.0 ondersteunen, volgt u de stappen in het artikel [Een SCIM-eindpunt bouwen en gebruikersinrichting configureren](use-scim-to-provision-users-and-groups.md).
 
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="next-steps"></a>Volgende stappen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
-- [Kenmerk toewijzingen aanpassen voor het inrichten van gebruikers](customize-application-attributes.md)
-- [Expressies schrijven voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md)
-- [Filters voor het inrichten van gebruikers in bereik](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [Een SCIM-eind punt bouwen en gebruikers inrichten configureren](use-scim-to-provision-users-and-groups.md)
-- [Overzicht van Azure AD-synchronisatie-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Lijst met handleidingen voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
+- [Kenmerktoewijzingen aanpassen voor het inrichten van gebruikers](customize-application-attributes.md)
+- [Bereikfilters voor het inrichten van gebruikers](define-conditional-rules-for-provisioning-user-accounts.md)

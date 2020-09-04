@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507111"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651196"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -202,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>Uw deductiescript schrijven
 
 >[!Warning]
->De volgende code is slechts een voorbeeld dat gebruik wordt door het [voorbeeldnotebook](https://aka.ms/batch-inference-notebooks). U moet uw eigen script maken voor uw scenario.
+>De volgende code is slechts een voorbeeld dat gebruik wordt door het [voorbeeldnotebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run). U moet uw eigen script maken voor uw scenario.
 
 Het script *moet* twee functies bevatten:
 - `init()`: Gebruik deze functie voor een kostbare of algemene voorbereiding voor latere deductie. Gebruik het bijvoorbeeld om het model in een algemeen object te laden. Deze functie wordt slecht één keer aangeroepen, aan het begin van het proces.
@@ -214,7 +214,7 @@ Het script *moet* twee functies bevatten:
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -351,7 +351,7 @@ parallelrun_step = ParallelRunStep(
     allow_reuse=True
 )
 ```
-### <a name="create-and-run-the-pipeline"></a>de pijplijn maken en uitvoeren
+### <a name="create-and-run-the-pipeline"></a>De pijplijn maken en uitvoeren
 
 Voer nu de pijplijn uit. Maak eerst een [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)-object met behulp van uw werkruimtereferentie en de pijplijn die u hebt gemaakt. De `steps`-parameter is een matrix van stappen. In dit geval is er slechts één stap voor batchdeductie. Als u pijplijnen met meerdere stappen wilt bouwen, plaatst u de stappen in volgorde in deze matrix.
 
@@ -421,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [notebook voor batchdeductie](https://aka.ms/batch-inference-notebooks) om te zien hoe het volledige proces werkt. 
+Ga naar de [notebook voor batchdeductie](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run) om te zien hoe het volledige proces werkt. 
 
 Bekijk de [instructiegids](how-to-debug-parallel-run-step.md) voor hulp bij foutopsporing en probleemoplossing voor ParallelRunStep.
 

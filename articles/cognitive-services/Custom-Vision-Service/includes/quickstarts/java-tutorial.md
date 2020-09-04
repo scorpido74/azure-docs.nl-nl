@@ -3,15 +3,15 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: f4d4075fae22c22e249a6891185c7b7fc9a572de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: cd6388e6c6313ba84978d43d388855b114a4875d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374945"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508515"
 ---
-In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-SDK voor Java om een model voor afbeeldingsclassificatie te maken. Wanneer u het project hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Java-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-clientbibliotheek voor Java om een model voor afbeeldingsclassificatie te maken. Wanneer u het project hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Java-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -20,11 +20,11 @@ In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-SDK v
 - [Maven](https://maven.apache.org/) is geïnstalleerd
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>De Custom Vision-SDK en voorbeeldcode ophalen
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>De Custom Vision-clientbibliotheek en voorbeeldcode ophalen
 
 Als u een Java-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de Maven-pakketten van Custom Vision nodig. Deze pakketten zijn opgenomen in het voorbeeldproject dat u gaat downloaden, maar u kunt ze hier afzonderlijk openen.
 
-U vindt de Custom Vision-SDK in de centrale opslagplaats van Maven:
+U vindt de Custom Vision-clientbibliotheek in de centrale opslagplaats van Maven:
 
 - [Training-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Voorspelling-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)

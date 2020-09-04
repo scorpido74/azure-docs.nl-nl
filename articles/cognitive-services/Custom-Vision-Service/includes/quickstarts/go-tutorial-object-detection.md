@@ -2,30 +2,30 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 45dad7d7b176037087e37638db380294521a8e19
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.date: 08/17/2020
+ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134094"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511290"
 ---
-Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-SDK voor Go om een objectdetectiemodel te maken. Nadat u deze hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Go-toepassing te maken.
+Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-clientbibliotheek voor Go om een objectdetectiemodel te maken. Wanneer u het project hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde eindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Go-toepassing te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
+## <a name="install-the-custom-vision-client-library"></a>De Custom Vision-clientbibliotheek installeren
 
-Als u de Custom Vision Service-SDK voor Go wilt installeren, voert u de volgende opdracht uit in PowerShell:
+Als u de Custom Vision Service-clientbibliotheek voor Go wilt installeren, voert u de volgende opdracht uit in PowerShell:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-u kunt `dep`ook in uw opslag plaats uitvoeren:
+of, als u `dep` gebruikt, binnen de uitvoer van de opslagplaats:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -40,9 +40,9 @@ Maak een nieuw bestand met de naam *sample.go* in uw projectmap.
 
 ### <a name="create-the-custom-vision-service-project"></a>Het Custom Vision Service-project maken
 
-Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. U kunt ook uw eind punt-URL ophalen via de pagina instellingen van de website van Custom Vision.
+Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. U kunt ook uw eindpunt-URL ophalen via de pagina Instellingen van de Custom Vision-website.
 
-Raadpleeg de [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) -methode om andere opties op te geven wanneer u uw project maakt (Zie de hand leiding voor het [bouwen van een detector](../../get-started-build-detector.md) -webportal).
+Raadpleeg de methode [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) om andere opties op te geven wanneer u uw project maakt (uitgelegd in de webportalgids [Een detector maken](../../get-started-build-detector.md)).
 
 ```go
 import(
@@ -98,14 +98,14 @@ forkTag, _ := trainer.CreateTag(ctx, *project.ID, "fork", "A fork", string(train
 scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of scissors", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en coderen
+### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
 
-Wanneer u afbeeldingen in object detectie projecten labelt, moet u de regio van elk gelabeld object opgeven met behulp van genormaliseerde coördinaten.
+Als u afbeeldingen labelt in objectdetectieprojecten, dient u de regio van elk gelabeld object op te geven met behulp van genormaliseerde coördinaten.
 
 > [!NOTE]
-> Als u geen hulp programma voor klikken en slepen hebt om de coördinaten van regio's te markeren, kunt u de Web-UI gebruiken op [Customvision.ai](https://www.customvision.ai/). In dit voor beeld zijn de coördinaten al opgenomen.
+> Als u geen hulpprogramma voor klikken en slepen hebt om de coördinaten van regio's te markeren, kunt u de Web-UI op [Customvision.ai](https://www.customvision.ai/) gebruiken. In dit voorbeeld zijn de coördinaten al opgenomen.
 
-Als u de afbeeldingen, labels en regio's aan het project wilt toevoegen, voegt u de volgende code in nadat u het label hebt gemaakt. Houd er rekening mee dat in deze zelf studie de regio's in inline zijn vastgelegd. Door de regio's wordt het begrenzingsvak opgegeven in genormaliseerde coördinaten. De coördinaten worden gegeven in de volgorde links, boven, breedte, hoogte.
+Als u de afbeeldingen, labels en regio's aan het project wilt toevoegen, voegt u de volgende code in nadat u het label hebt gemaakt. In deze zelfstudie zijn de regio's inline vastgelegd in de code zelf. Door de regio's wordt het begrenzingsvak opgegeven in genormaliseerde coördinaten. De coördinaten worden gegeven in de volgorde links, boven, breedte, hoogte.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -154,7 +154,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Gebruik vervolgens deze koppeling van koppelingen om elke voorbeeld afbeelding te uploaden met de regio coördinaten (u kunt Maxi maal 64 installatie kopieën in één batch uploaden). Voeg de volgende code toe.
+Gebruik vervolgens deze kaart met koppelingen om elke voorbeeldafbeelding met de bijbehorende regiocoördinaten te uploaden (u kunt maximaal 64 afbeeldingen in één batch uploaden). Voeg de volgende code toe.
 
 > [!NOTE]
 > U moet het pad naar de afbeeldingen wijzigen, gebaseerd op waar u het project Cognitive Services Go-SDK-voorbeelden eerder hebt gedownload.
@@ -219,7 +219,7 @@ if (!*scissor_batch.IsBatchSuccessful) {
 
 ### <a name="train-the-project-and-publish"></a>Het project trainen en publiceren
 
-Deze code maakt de eerste iteratie van het Voorspellings model en publiceert die iteratie vervolgens naar het Voorspellings eindpunt. De naam die is opgegeven voor de gepubliceerde herhaling kan worden gebruikt voor het verzenden van voorspellings aanvragen. Er is geen iteratie beschikbaar in het Voorspellings eindpunt totdat het is gepubliceerd.
+Met deze code wordt de eerste iteratie van het voorspellingsmodel gemaakt en vervolgens wordt die iteratie gepubliceerd naar het voorspellingseindpunt. De naam die is opgegeven voor de gepubliceerde iteratie, kan worden gebruikt voor het verzenden van voorspellingsaanvragen. Er is geen iteratie beschikbaar in het Voorspellings eindpunt totdat het is gepubliceerd.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -236,7 +236,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>De gepubliceerde iteratie op het Voorspellings eindpunt ophalen en gebruiken
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>De gepubliceerde iteratie voor het voorspellingseindpunt ophalen en gebruiken
 
 Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspelling wilt ophalen, voegt u de volgende code toe aan het einde van het bestand:
 
@@ -276,7 +276,7 @@ De uitvoer van de toepassing moet in de console worden weergegeven. Vervolgens k
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu gezien hoe elke stap van de object detectie kan worden uitgevoerd in code. In dit voor beeld wordt één trainings iteratie uitgevoerd, maar vaak moet u het model meerdere keren trainen en testen om het nauw keuriger te maken. De volgende trainings handleiding behandelt de afbeeldings classificatie, maar de principes zijn vergelijkbaar met object detectie.
+U hebt nu gezien hoe elke stap van het objectdetectieproces in code kan worden uitgevoerd. Met dit voorbeeld wordt één trainingsiteratie uitgevoerd, maar vaak zult u uw model meerdere keren willen trainen en testen om het nauwkeuriger te maken. In de volgende trainingshandleiding wordt classificatie van afbeeldingen behandeld. De principes zijn soortgelijk aan die van objectdetectie.
 
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](../../test-your-model.md)

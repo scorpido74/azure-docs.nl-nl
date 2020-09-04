@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: vertalen van spraak naar spraak, java (Windows, Linux)-spraak service'
+title: 'Quickstart: Spraak-naar-spraak vertalen, Java (Windows, Linux) - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 8208f6bd4e41063f514d6008166bd64ce7b1cfca
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: e13d6c45c57eeb641f79ad50f4c7bcf6ffd1a685
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925952"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226242"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Een resource voor de Azure Speech-service maken](../../../../get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **bestand** > **nieuwe** > **klasse**.
+1. Om een nieuwe lege klasse aan uw Java-project toe te voegen, selecteert u **Bestand** > **Nieuw** > **Klasse**.
 
 1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam****Main** in.
 
@@ -134,15 +134,15 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld.
 
 1. Sla de wijzigingen in het project op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Druk op F11 of selecteer **Run** > **debug**uitvoeren.
+Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
 
-1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Duits). De spraak service verzendt vervolgens de gesynthesizerde audio en de tekst terug naar de toepassing om weer te geven.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de Speech-service, waar deze wordt vertaald en getranscribeerd in tekst (in dit geval in het Duits). De Speech-service zendt de gesynthetiseerde audio en de tekst vervolgens terug naar de toepassing voor weergave.
 
 ````
 Say something...

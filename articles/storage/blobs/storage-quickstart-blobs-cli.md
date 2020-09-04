@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eca67c4a5a942e6cd06f67cac868905da0e1f533
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535141"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520767"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Quickstart: Blobs maken, downloaden, uploaden en weergeven met Azure CLI
 
@@ -78,20 +78,28 @@ az storage account create \
 
 ## <a name="create-a-container"></a>Een container maken
 
-Blobs worden altijd naar een container geüpload. U kunt groepen blobs ordenen in containers net zoals u bestanden op uw computer in mappen ordent. Gebruik de opdracht [az storage container create](/cli/azure/storage/container) om een container te maken voor het opslaan van blobs. 
+Blobs worden altijd naar een container geüpload. U kunt groepen blobs ordenen in containers net zoals u bestanden op uw computer in mappen ordent. Gebruik de opdracht [az storage container create](/cli/azure/storage/container) om een container te maken voor het opslaan van blobs.
 
 In het volgende voorbeeld wordt uw Azure AD-account gebruikt om de bewerking voor het maken van de container te autoriseren. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Zelfs als u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevensbewerkingen uit te voeren voor het opslagaccount. Zie [Azure CLI gebruiken om een Azure-rol toe te wijzen voor toegang](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json) voor meer informatie over het toewijzen van Azure-rollen.  
-
-U kunt ook de sleutel voor het opslagaccount gebruiken om de bewerking voor het maken van de container te autoriseren. Zie [Toegang verlenen tot blob- of wachtrijgegevens met Azure CLI](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json) voor meer informatie over het autoriseren van gegevensbewerkingen met Azure CLI.
 
 Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```azurecli
+az ad signed-in-user show --query objectId -o tsv | az role assignment create \
+    --role "Storage Blob Data Contributor" \
+    --assignee @- \
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
+
 az storage container create \
     --account-name <storage-account> \
     --name <container> \
     --auth-mode login
 ```
+
+> [!IMPORTANT]
+> Het kan enkele minuten duren voordat Azure-roltoewijzingen worden doorgegeven.
+
+U kunt ook de sleutel voor het opslagaccount gebruiken om de bewerking voor het maken van de container te autoriseren. Zie [Toegang verlenen tot blob- of wachtrijgegevens met Azure CLI](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json) voor meer informatie over het autoriseren van gegevensbewerkingen met Azure CLI.
 
 ## <a name="upload-a-blob"></a>Een blob uploaden
 

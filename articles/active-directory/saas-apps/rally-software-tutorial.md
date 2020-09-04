@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met rally software | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en rally software.
+title: 'Zelfstudie: Azure Active Directory-integratie met Rally Software | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Rally Software.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ba25fade-e152-42dd-8377-a30bbc48c3ed
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de84d03c3e0e433dbe7bc24c47b1766b32ad7bc4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 542d330138885a997a0e4a335272492116686a65
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093181"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548880"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Zelf studie: integratie met rally software Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Zelfstudie: Azure Active Directory-integratie met Rally Software
 
-In deze zelf studie leert u hoe u rally software integreert met Azure Active Directory (Azure AD).
-Het integreren van rally software met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Rally Software kunt integreren met Azure Active Directory (Azure AD).
+De integratie van Rally Software met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot rally software.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij rally software (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang tot Rally Software heeft.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Rally Software (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met rally software wilt configureren, hebt u de volgende items nodig:
+Voor het configureren van Azure AD-integratie met Rally Software hebt u de volgende zaken nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding bij rally software
+* Een abonnement op Rally Software waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Rally software ondersteunt door **SP** GEÏNITIEERDe SSO
+* Rally Software biedt ondersteuning voor door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-rally-software-from-the-gallery"></a>Rally software toevoegen vanuit de galerie
+## <a name="adding-rally-software-from-the-gallery"></a>Rally Software toevoegen vanuit de galerie
 
-Als u de integratie van rally software in azure AD wilt configureren, moet u rally software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Rally Software met Azure AD moet u Rally Software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om rally software uit de galerie toe te voegen:**
+**Als u Rally Software vanuit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van rally software in azure AD wilt configureren, moet u ral
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **rally software**in het zoekvak, selecteer **rally software** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Rally Software** in het zoekvak, selecteer **Rally Software** in het resultatenvenster en klik op **Toevoegen** om de toepassing toe te voegen.
 
-     ![Rally software in de lijst met resultaten](common/search-new-app.png)
+     ![Rally Software in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met rally software op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de rally software tot stand worden gebracht.
+In deze sectie gaat u eenmalige aanmelding van Azure AD bij Rally Software configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Rally Software tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met rally software, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Rally Software, voert u de volgende stappen uit:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor de rally software configureren](#configure-rally-software-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. Een **[test gebruiker voor de rally software maken](#create-rally-software-test-user)** : een tegen hanger van Julia Simon in rally software die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding van Rally Software configureren](#configure-rally-software-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker voor Rally Software maken](#create-rally-software-test-user)** : als u in Rally Software een tegenhanger van B.Simon wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met rally software:
+Voor het configureren van eenmalige aanmelding van Azure AD met Rally Software moet u de volgende stappen uitvoeren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **bijeenkomst software** Application Integration de optie **eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de toepassingsintegratiepagina van **Rally Software** en selecteer **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +99,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor een rally software domein en Url's](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding bij Rally Software-domeinen en -URL's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenant-name>.rally.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<tenant-name>.rally.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<tenant-name>.rally.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van de rally software client](https://help.rallydev.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantondersteuningsteam van Rally Software](https://help.rallydev.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **rally software instellen** de gewenste URL ('s) volgens uw vereiste.
+6. In de sectie **Rally Software instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,25 +122,25 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-rally-software-single-sign-on"></a>Eenmalige aanmelding met rally software configureren
+### <a name="configure-rally-software-single-sign-on"></a>Eenmalige aanmelding van Rally Software configureren
 
-1. Meld u aan bij uw **rally software** Tenant.
+1. Meld u aan bij uw **Rally Software**-tenant.
 
-2. Klik in de werk balk bovenaan op **instellen**en selecteer vervolgens **abonnement**.
+2. Klik bovenaan in de werkbalk op **Installatie** en selecteer **Abonnement**.
    
     ![Abonnement](./media/rally-software-tutorial/ic769531.png "Abonnement")
 
-3. Klik op de **actie** knop. Selecteer **abonnement bewerken** in de rechter bovenhoek van de werk balk.
+3. Klik op de knop **Actie**. Selecteer **Abonnement bewerken** rechtsboven in de werkbalk.
 
-4. Voer de volgende stappen uit op de pagina **abonnement** en klik vervolgens op **Opslaan & sluiten**:
+4. Voer op de dialoogpagina **Abonnement** de volgende stappen uit en klik op **Opslaan en sluiten**:
    
     ![Verificatie](./media/rally-software-tutorial/ic769542.png "Verificatie")
    
-    a. Selecteer **rally-of SSO-verificatie** vanuit de vervolg keuzelijst authenticatie.
+    a. Selecteer **Rally- of SSO-verificatie** in de vervolgkeuzelijst Verificatie.
 
-    b. Plak in het tekstvak **ID-provider-URL** de waarde van de **Azure ad-id**die u van Azure Portal hebt gekopieerd. 
+    b. Plak de waarde van **Azure AD-id**, die u hebt gekopieerd uit Azure Portal, in het tekstvak **Identiteitsprovider-URL**. 
 
-    c. Plak in het tekstvak **SSO-afmelding** de waarde van de **afmeldings-URL**, die u van Azure Portal hebt gekopieerd.
+    c. Plak in het tekstvak **Afmeldings-URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -154,7 +150,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -162,25 +158,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanmelding van Azure door toegang te verlenen tot rally software.
+In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding van Azure door haar toegang te geven tot Rally Software.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **rally software**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Rally Software**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **rally software**.
+2. Selecteer **Rally Software** in de lijst met toepassingen.
 
-    ![De koppeling van de rally software in de lijst met toepassingen](common/all-applications.png)
+    ![De Rally Software-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -190,54 +186,54 @@ In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanme
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-rally-software-test-user"></a>Een test gebruiker voor een rally software maken
+### <a name="create-rally-software-test-user"></a>Een Rally Software-testgebruiker maken
 
-Als Azure AD-gebruikers zich kunnen aanmelden, moeten ze worden ingericht voor de toepassing van de rally software met behulp van hun Azure Active Directory gebruikers namen.
+Azure AD-gebruikers moeten worden ingericht voor de Rally Software-toepassing met hun Azure Active Directory-gebruikersnaam om zich te kunnen aanmelden.
 
-**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
+**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
 
-1. Meld u aan bij uw rally software Tenant.
+1. Meld u aan bij uw Rally Software-tenant.
 
-2. Ga naar **gebruikers \> instellen**en klik vervolgens op **+ nieuwe toevoegen**.
+2. Ga naar **\>-gebruikers instellen** en klik vervolgens op **+ Nieuwe toevoegen**.
    
     ![Gebruikers](./media/rally-software-tutorial/ic781039.png "Gebruikers")
 
-3. Typ de naam in het tekstvak nieuwe gebruiker en klik vervolgens op **toevoegen met details**.
+3. Typ in het tekstvak Nieuwe gebruiker de naam en klik vervolgens op **Toevoegen met details**.
 
 4. Voer in de sectie **Create User** de volgende stappen uit:
    
-    ![Gebruiker maken](./media/rally-software-tutorial/ic781040.png "Gebruiker maken")
+    ![Create User](./media/rally-software-tutorial/ic781040.png "Gebruiker maken")
 
-    a. Typ in het tekstvak **gebruikers naam** de naam van de gebruiker, zoals **Brittsimon**.
+    a. Typ de naam van de gebruiker in het tekstvak **Naam**, bijvoorbeeld **Brittsimon**.
    
-    b. Voer in het tekstvak **e-mail adres** het e- brittasimon@contoso.commail bericht van de gebruiker in.
+    b. Typ in het tekstvak **E-mailadres** het e-mailadres van de gebruiker, zoals brittasimon@contoso.com.
 
     c. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **Britta**.
 
-    d. Voer in het tekstvak **laatste naam** de achternaam van de gebruiker in, zoals **Simon**.
+    d. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, zoals **Simon**.
 
     e. Klik op **Opslaan en sluiten**.
 
    >[!NOTE]
-   >U kunt alle andere software voor het maken van gebruikers accounts of Api's die worden geleverd door rally software gebruiken om Azure AD-gebruikers accounts in te richten.
+   >U kunt ook alle andere hulpprogramma's voor het maken van gebruikersaccounts of API's van Rally Software gebruiken om Microsoft Azure AD-gebruikersaccounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel rally software in het toegangs venster klikt, moet u automatisch worden aangemeld bij de rally software waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Rally Software klikt, wordt u automatisch aangemeld bij de instantie van Rally Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

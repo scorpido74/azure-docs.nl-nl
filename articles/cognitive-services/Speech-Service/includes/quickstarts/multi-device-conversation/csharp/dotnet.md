@@ -7,24 +7,24 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 11f80a000f386e661f3eb3f0ffb4969701704c90
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671286"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226364"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Een resource voor de Azure-spraakservice maken](../../../../get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open **Program.cs**en vervang alle code hierin door de volgende code:
+1. Open **Program.cs** en vervang daarin alle code door de volgende code:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Voordat u aan de slag gaat, moet u het volgende doen:
     }
     ```
 
-1. Vervang in hetzelfde bestand de teken reeks `YourSubscriptionKey` door de code van uw cognitieve spraak abonnement.
+1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel van Cognitive Speech.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld.
 
-1. Kies in de menu balk de optie **bestand** > **Opslaan**.
+1. Kies in de menubalk **Bestand** > **Alles opslaan** om de wijzigingen op te slaan.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>De toepassing bouwen en uitvoeren om een nieuwe conversatie te maken
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>De toepassing compileren en uitvoeren om een nieuw gesprek te maken
 
-1. **Selecteer** > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. Selecteer in de menubalk **Build** > **Build Solution** om de toepassing te compileren. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
+1. Kies **Fouten opsporen** > **Foutopsporing starten** (of druk op **F5**) om de toepassing **helloworld** te starten.
 
-1. Zodra het `Started transcribing` bericht wordt weer gegeven, kunt u beginnen met spreken. U ziet dat de transcripties wordt weer gegeven terwijl u spreekt.
-    - Als u de conversatie code deelt met de andere en deze deel nemen aan het gesprek, ziet u ook hun transcripties.
+1. Zodra het bericht `Started transcribing` wordt weergegeven, kunt u beginnen met spreken. U ziet dat de transcripties worden weergegeven terwijl u spreekt.
+    - Als u de gesprekscode deelt met de anderen en zij ook aan het gesprek deelnemen, ziet u ook hun transcripties.
 
-1. Wanneer u klaar bent met spreken, drukt u op <kbd>CTRL + C</kbd> om audio-opname te stoppen en de conversatie te beëindigen.
+1. Als u klaar bent met spreken, drukt u op <kbd>Ctrl+C</kbd> om het vastleggen van audio te stoppen en het gesprek te beëindigen.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>De toepassing bouwen en uitvoeren om lid te worden van een bestaand gesprek
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>De toepassing compileren en uitvoeren om deel te nemen aan een bestaand gesprek
 
-1. Kopieer en plak de volgende functie in uw **Program.cs**:
+1. Kopieer de volgende functie en plak deze in uw **Program.cs**:
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
     }
     ```
 
-2. Vervang `CreateConversationAsync();` in uw `public static async Task Main(string[] args)` functie door:
+2. Vervang `CreateConversationAsync();` in uw functie `public static async Task Main(string[] args)` door:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Ga terug naar Visual Studio en vervang de teken `YourConversationId` reeks door de conversatie-id die u in de vorige stap hebt gemaakt.
+4. Ga terug naar Visual Studio en vervang de tekenreeks `YourConversationId` door de gespreks-id die u in de vorige stap hebt gemaakt.
 
-5. **Selecteer** > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+5. Selecteer in de menubalk **Build** > **Build Solution** om de toepassing te compileren. De code moet nu zonder fouten worden gecompileerd.
 
-6. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
+6. Kies **Fouten opsporen** > **Foutopsporing starten** (of druk op **F5**) om de toepassing **helloworld** te starten.
 
-7. Zodra het `Started transcribing` bericht wordt weer gegeven, kunt u beginnen met spreken. U ziet dat de transcripties wordt weer gegeven terwijl u spreekt.
-    - Als u teruggaat naar uw browser, ziet u dat uw transcripties eruitziet zoals u ook spreekt.
+7. Zodra het bericht `Started transcribing` wordt weergegeven, kunt u beginnen met spreken. U ziet dat de transcripties worden weergegeven terwijl u spreekt.
+    - Als u teruggaat naar uw browser, ziet u dat uw transcripties daar ook worden weergegeven terwijl u spreekt.
 
-8. Wanneer u klaar bent met spreken, drukt u op <kbd>CTRL + C</kbd> om audio-opname te stoppen en de conversatie te beëindigen.
+8. Als u klaar bent met spreken, drukt u op <kbd>Ctrl+C</kbd> om het vastleggen van audio te stoppen en het gesprek te beëindigen.
 
-9. Ga terug naar uw browser en sluit de conversatie af met de knop Afsluiten in de rechter bovenhoek.
+9. Ga terug naar uw browser en sluit het gesprek af met behulp van de afsluitknop in de rechterbovenhoek.
 
 ## <a name="next-steps"></a>Volgende stappen
 

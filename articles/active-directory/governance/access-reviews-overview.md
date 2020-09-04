@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88d795d0e05c62f07ff415364ced651ad8f4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034609"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605000"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -33,22 +34,26 @@ Deze video biedt een snel overzicht van toegangsbeoordelingen:
 
 ## <a name="why-are-access-reviews-important"></a>Waarom zijn toegangsbeoordelingen belangrijk?
 
-Met Azure AD kunt u intern samen werken binnen uw organisatie en met gebruikers van externe organisaties, zoals partners. Gebruikers kunnen lid worden van groepen, gasten uitnodigen, verbinding maken met apps in de cloud en op afstand werken vanaf hun zakelijke of persoonlijke apparaten. De inzetbaarheid van krachtige opties voor selfservice heeft ertoe geleid dat er betere mogelijkheden voor toegangsbeheer nodig zijn.
+Met Azure AD kunt u samenwerken met gebruikers binnen uw organisatie en met externe gebruikers. Gebruikers kunnen lid worden van groepen, gasten uitnodigen, verbinding maken met apps in de cloud en op afstand werken vanaf hun zakelijke of persoonlijke apparaten. De inzetbaarheid van krachtige zelfhulpopties heeft ertoe geleid dat er betere mogelijkheden voor toegangsbeheer nodig zijn.
 
-- Hoe zorgt u ervoor dat nieuwe medewerkers de juiste toegang hebben om productief te zijn?
-- Hoe zorgt u ervoor dat mensen die van team veranderen of het bedrijf verlaten hun oude toegangsrechten verliezen, met name wanneer het om gasten gaat?
-- Overmatige toegangsrechten kunnen bevindingen en inbreuken opleveren tijdens een audit. Ze wijzen op een gebrekkige toegangscontrole.
+- Hoe zorgt u ervoor dat nieuwe medewerkers de toegang hebben die nodig is om productief te zijn?
+- Hoe zorgt u ervoor dat mensen die van team veranderen of het bedrijf verlaten hun oude toegangsrechten verliezen?
+- Overmatige toegangsrechten kunnen leiden tot inbreuken.
+- Overmatige toegangsrechten kunnen ook bevindingen opleveren tijdens een audit waaruit een gebrekkige toegangscontrole blijkt.
 - U moet proactief samenwerken met eigenaars van resources om ervoor te zorgen dat ze regelmatig controleren wie toegang heeft tot hun resources.
 
-## <a name="when-to-use-access-reviews"></a>Wanneer toegangsbeoordelingen gebruiken?
+## <a name="when-should-you-use-access-reviews"></a>Wanneer moet u toegangsbeoordelingen gebruiken?
 
 - **Te veel gebruikers met een bevoorrechte rol:** Het is een goed idee om te controleren hoeveel gebruikers beheerderstoegang hebben, hoeveel er Globale beheerders zijn, en of er uitgenodigde gasten of partners zijn die niet zijn verwijderd na de toewijzing van een beheerstaak. U kunt de roltoewijzingsgebruikers opnieuw certificeren in [Azure AD-rollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json), zoals Globale beheerders, of [Azure-resourcerollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) zoals Gebruikerstoegangsbeheerder in de ervaring [Azure Active Directory Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md).
-- **Wanneer automatisering niet haalbaar is:** U kunt regels maken voor een dynamisch lidmaatschap van beveiligingsgroepen of Office 365-groepen, maar wat als de personeelsgegevens zich niet in Azure AD bevinden of als gebruikers nadat ze de groep hebben verlaten nog steeds toegang nodig hebben om hun vervanging te trainen? U kunt vervolgens een beoordeling maken voor die groep om ervoor te zorgen dat gebruikers die nog toegang nodig hebben, die ook behouden.
+- **Wanneer automatisering niet mogelijk is:** U kunt regels maken voor een dynamisch lidmaatschap van beveiligingsgroepen of Office 365-groepen, maar wat als de personeelsgegevens zich niet in Azure AD bevinden of als gebruikers nadat ze de groep hebben verlaten nog steeds toegang nodig hebben om hun vervanging te trainen? U kunt vervolgens een beoordeling maken voor die groep om ervoor te zorgen dat gebruikers die nog toegang nodig hebben, die ook behouden.
 - **Wanneer een groep gebruikt wordt voor een nieuw doeleinde:** Als u een groep heeft die wordt gesynchroniseerd met Azure AD of als u van plan bent de toepassing SalesForce in te schakelen voor iedereen in de groep van het verkoopteam, dan is het zinvol om de groepseigenaar te vragen het groepslidmaatschap te controleren voordat de groep wordt gebruikt voor inhoud in een andere risicogroep.
 - **Bedrijfskritieke gegevenstoegang:** voor bepaalde resources kan het nodig zijn om gebruikers buiten IT te vragen om zich regelmatig af te melden en een motivering te geven voor waarom ze toegang nodig hebben voor controledoeleinden.
 - **Om een uitzonderingslijst voor het beleid te onderhouden:** In een ideale wereld volgen alle gebruikers het toegangsbeleid om de toegang tot de resources van uw organisatie te beveiligen. Soms zijn er echter zakelijke cases die uitzonderingen vereisen. Als IT-beheerder kunt u deze taak beheren, het toezicht op beleidsuitzonderingen voorkomen en auditeurs bewijs aanleveren dat deze uitzonderingen regelmatig gecontroleerd worden.
-- **Groepseigenaren vragen om te bevestigen dat ze nog gasten in hun groepen nodig hebben:** Werknemerstoegang kan geautomatiseerd worden voor bepaalde on-premises IAM, maar niet voor uitgenodigde gasten. Als een groep gasten toegang verleent tot bedrijfsgevoelige inhoud, dan is het de verantwoordelijkheid van de groepseigenaar om te bevestigen dat de gasten nog steeds een legitieme zakelijke reden hebben voor hun toegang.
+- **Groepseigenaren vragen om te bevestigen dat ze nog gasten in hun groepen nodig hebben:** Werknemerstoegang kan worden geautomatiseerd voor bepaald on-premises identiteits- en toegangsbeheer (IAM), maar niet voor uitgenodigde gasten. Als een groep gasten toegang verleent tot bedrijfsgevoelige inhoud, dan is het de verantwoordelijkheid van de groepseigenaar om te bevestigen dat de gasten nog steeds een legitieme zakelijke reden hebben voor hun toegang.
 - **Regelmatig opnieuw controles uitvoeren:** U kunt toegangsbeoordeling van gebruikers regelmatig herhalen zoals elke week, elke maand, elk kwartaal of elk jaar. De beoordelaars worden bij aanvang van elke beoordelingsronde op de hoogte gebracht. Beoordelaars kunnen toegang goedkeuren of weigeren met behulp van een gebruiksvriendelijke interface en slimme aanbevelingen.
+
+>[!NOTE]
+>Zie [Create an access review of groups or applications](create-access-review.md) (Een toegangsbeoordeling maken van groepen of toepassingen) als u klaar bent voor het proberen van toegangsbeoordelingen
 
 ## <a name="where-do-you-create-reviews"></a>Waar kunt u controles doen?
 
@@ -61,56 +66,20 @@ Afhankelijk van wat u wilt controleren, maakt u uw toegangsbeoordelingen in Azur
 | Azure AD-rol | Opgegeven beoordelaars</br>Zelf controleren | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 | Azure-resourcerol | Opgegeven beoordelaars</br>Zelf controleren | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 
-
-## <a name="create-access-reviews"></a>Toegangsbeoordelingen maken
-
-Voer de volgende stappen uit om een toegangsbeoordeling te maken:
-
-1. Ga naar het [Azure-portal](https://portal.azure.com) om toegangsbeoordelingen te beheren en meld u aan als globale beheerder of gebruikersbeheerder.
-
-1. Zoek en selecteer de optie **Azure Active Directory**.
-
-      ![Zoekopdracht in de Azure-portal voor Azure Active Directory](media/access-reviews-overview/search-azure-active-directory.png)
-
-1. Selecteer **Identiteitsbeheer**.
-
-1. Klik op de pagina Aan de slag op de knop **Een toegangsbeoordeling maken**.
-
-   ![Startpagina toegangsbeoordelingen](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
-
-### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Toegangsbeoordeling maken voor een groep die kan worden toegewezen aan een Azure AD-rol
-Als u in de nieuwste versie van Access Reviews bent (uw beoordelaars worden standaard doorgeleid naar **Mijn toegang**), dan kan enkel de Globale beheerder toegangsbeoordelingen maken voor rol-toewijsbare groepen. Als u echter in een oudere versie van Access Reviews bent (uw beoordelaars worden standaard doorgeleid naar het **Toegangsvenster**), dan kunnen zowel de Globale beheerder en de Gebruikersbeheerder toegangsbeoordelingen maken voor rol-toewijsbare groepen.  
-
-De nieuwe ervaring wordt op 1 augustus 2020 naar alle klanten uitgerold, maar als u de upgrade eerder wilt uitvoeren, dan kunt u hier een aanvraag indienen - [Azure AD-toegangsbeoordelingen - nieuwe ervaring voor beoordelaars in registratie voor Mijn toegang](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
-
-[Meer informatie over de toewijzing van groepen aan Azure AD-rollen](https://go.microsoft.com/fwlink/?linkid=2103037).
-
-## <a name="learn-about-access-reviews"></a>Meer informatie over toegangsbeoordelingen
-
-Bekijk deze korte demo voor meer informatie over het maken en uitvoeren van toegangsbeoordelingen:
-
->[!VIDEO https://www.youtube.com/embed/6KB3TZ8Wi40]
-
-Als u klaar bent om toegangsbeoordelingen te implementeren in uw organisatie, volgt u deze stappen in de video om uw beheerders te onboarden, te trainen en uw eerste toegangsbeoordeling te maken!
-
->[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
-
 ## <a name="license-requirements"></a>Licentievereisten
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ### <a name="how-many-licenses-must-you-have"></a>Hoeveel licenties heeft u nodig?
 
-Zorg ervoor dat uw directory ten minste evenveel Azure AD Premium P2-licenties heeft als u werknemers heeft die de volgende taken uitvoeren:
+Uw directory moet ten minste evenveel Azure AD Premium P2-licenties hebben als het aantal werknemers die de volgende taken zullen uitvoeren:
 
 - Leden en gastgebruikers die zijn toegewezen als beoordelaars
 - Leden en gastgebruikers die een zelfbeoordeling uitvoeren
 - Groepseigenaren die een toegangsbeoordeling uitvoeren
 - Toepassingseigenaren die een toegangsbeoordeling uitvoeren
 
-Azure AD Premium P2-licenties zijn **niet** vereist voor de volgende taken:
-
-- Licenties zijn niet vereist voor Globale beheerders of Gebruikersbeheerders die toegangsbeoordelingen instellen, instellingen configureren of de beslissingen van de beoordelingen toepassen.
+Azure AD Premium P2-licenties zijn **niet** vereist voor Globale beheerders of Gebruikersbeheerders die toegangsbeoordelingen instellen, instellingen configureren of de beslissingen van de beoordelingen toepassen.
 
 Voor elke betaalde Azure AD Premium P2-licentie die u toewijst aan een van de gebruikers van uw eigen organisatie, kunt u Azure AD Business-to-Business (B2B) gebruiken om maximaal vijf gastgebruikers uit te nodigen (toegestane aantal externe gebruikers). Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../b2b/licensing-guidance.md) voor meer informatie.
 

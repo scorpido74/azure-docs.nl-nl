@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923829"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607217"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen via Azure Portal
 
@@ -36,14 +36,12 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Optie 1 (standaard): Een openbare load balancer maken (Standard-SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen.  Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
 
 In deze sectie maakt u een load balancer die taken van virtuele machines verdeelt. 
-
-U kunt een openbare load balancer of een interne load balancer maken. 
 
 Wanneer u een openbare load balancer maakt, maakt u een nieuw openbaar IP-adres dat als de front-end (standaard **LoadBalancerFrontend** genoemd) voor de load balancer wordt geconfigureerd.
 
@@ -156,9 +154,9 @@ In deze sectie doet u het volgende:
 
 In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
-1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtuele netwerk** of zoek in het zoekvak naar **Virtueel netwerk**.
+1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens in het tabblad **Basisinstellingen**:
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -169,7 +167,7 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
     | Naam             | Voer **myVNet** in                                    |
     | Regio           | Selecteer **Europa - west** |
 
-3. Selecteer het tabblad **IP-adressen** of selecteer de knop **Volgende: IP-adressen** onderaan de pagina.
+3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
 4. Voer op het tabblad **IP-adressen** deze gegevens in:
 
@@ -190,16 +188,16 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 8. Selecteer het tabblad **Beveiliging**.
 
-9. Selecteer onder **BastionHost** **Inschakelen**. Voer deze gegevens in:
+9. Selecteer onder **BastionHost** de optie **Inschakelen**. Voer deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
     | Bastion-naam | Voer **myBastionHost** in |
     | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
-    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** **myBastionIP** in. </br> Selecteer **OK**. |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK**. |
 
 
-8. Selecteer het tabblad **Controleren + maken** of selecteer de knop **Controleren + maken**.
+8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken**.
 
 9. Selecteer **Maken**.
 
@@ -317,14 +315,12 @@ Zie [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) voo
 
 8. Selecteer **Opslaan**.
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[Optie 2: Een openbare load balancer maken (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basis-SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen.  Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
 
 In deze sectie maakt u een load balancer die taken van virtuele machines verdeelt. 
-
-U kunt een openbare load balancer of een interne load balancer maken. 
 
 Wanneer u een openbare load balancer maakt, maakt u een nieuw openbaar IP-adres dat als de front-end (standaard **LoadBalancerFrontend** genoemd) voor de load balancer wordt geconfigureerd.
 
@@ -364,9 +360,9 @@ In deze sectie configureert u het volgende:
 
 In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
-1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtuele netwerk** of zoek in het zoekvak naar **Virtueel netwerk**.
+1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens in het tabblad **Basisinstellingen**:
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -377,7 +373,7 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
     | Naam             | Voer **myVNet** in                                    |
     | Regio           | Selecteer **Europa - west** |
 
-3. Selecteer het tabblad **IP-adressen** of selecteer de knop **Volgende: IP-adressen** onderaan de pagina.
+3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
 4. Voer op het tabblad **IP-adressen** deze gegevens in:
 
@@ -398,16 +394,16 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 8. Selecteer het tabblad **Beveiliging**.
 
-9. Selecteer onder **BastionHost** **Inschakelen**. Voer deze gegevens in:
+9. Selecteer onder **BastionHost** de optie **Inschakelen**. Voer deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
     | Bastion-naam | Voer **myBastionHost** in |
     | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
-    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** **myBastionIP** in. </br> Selecteer **OK**. |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK**. |
 
 
-8. Selecteer het tabblad **Controleren + maken** of selecteer de knop **Controleren + maken**.
+8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken**.
 
 9. Selecteer **Maken**.
 ### <a name="create-a-backend-pool"></a>Een back-endpool maken

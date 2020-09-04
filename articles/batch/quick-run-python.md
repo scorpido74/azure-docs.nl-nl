@@ -1,31 +1,33 @@
 ---
-title: De Python-API gebruiken om een Azure Batch-job uit te voeren
-description: Voer snel een Azure Batch-job en -taken uit met behulp van de Batch Python-clientbibliotheek. Meer informatie over de belangrijkste concepten van de Batch-service.
+title: 'Quickstart: de Python-API gebruiken om een Azure Batch-taak uit te voeren'
+description: In deze quickstart voert u een Azure Batch-voorbeeldtaak en -taken uit met behulp van de Batch Python-clientbibliotheek. Meer informatie over de belangrijkste concepten van de Batch-service.
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852562"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511011"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Quickstart: De Python-API gebruiken om een Azure Batch-job uit te voeren
 
-In deze quickstart gebruikt u de Python-API om een Azure Batch-job vanuit een app uit te voeren. Met de app worden invoergegevensbestanden geüpload naar Azure Storage en wordt vervolgens een *pool* met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt er een *job* gemaakt waarmee *taken* worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht.
+Ga aan de slag met Azure Batch door de Python-API te gebruiken om een Azure Batch-taak uit een app uit te voeren. Met de app worden invoergegevensbestanden geüpload naar Azure Storage en wordt vervolgens een pool met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt er een job gemaakt waarmee taken worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht.
 
-Hier krijgt u informatie over de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
+Nadat u deze quickstart hebt voltooid, begrijpt u de belangrijkste principes van de Azure Batch-service en bent u er klaar voor om Azure Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
 ![Overzicht van de Azure Batch-werkstroom](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Een **Azure Batch**-account en een gekoppeld **Azure Storage**-account. Gebruik [Azure Portal](quick-create-portal.md) of de [CLI](quick-create-cli.md) om deze accounts te maken.
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+
+- Een Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts.
+
 - [Python](https://python.org/downloads)-versie 2.7 of 3.3 of hoger, inclusief de [PIP](https://pip.pypa.io/en/stable/installing/)-pakketmanager
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -68,7 +70,7 @@ Als u de werking van de Batch-werkstroom wilt zien, voert u het volgende script 
 python python_quickstart_client.py
 ```
 
-Nadat het script is uitgevoerd, bekijkt u de code voor meer informatie over wat elk onderdeel van de toepassing doet. 
+Nadat het script is uitgevoerd, bekijkt u de code voor meer informatie over wat elk onderdeel van de toepassing doet.
 
 Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. De actieve uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` onderbroken terwijl de rekenknooppunten van de pool worden gestart. Taken worden in de wachtrij geplaatst om te worden uitgevoerd zodra het eerste rekenknooppunt actief is. Ga naar uw Batch-account in [ Azure Portal](https://portal.azure.com) om de pool, rekenknooppunten en taken in het Batch-account te controleren.
 
@@ -102,9 +104,9 @@ Wanneer u de toepassing uitvoert in de standaardconfiguratie, bedraagt de uitvoe
 
 Met de Python-app in deze snelstartgids worden de volgende bewerkingen uitgevoerd:
 
-* Er worden drie kleine tekstbestanden geüpload naar een blobcontainer in het Azure-opslagaccount. Deze bestanden bevatten invoergegevens voor verwerking met Batch-taken.
-* Er wordt een pool met twee rekenknooppunten gemaakt waarop Ubuntu 18.04 LTS wordt uitgevoerd.
-* Er wordt een Batch-taak gemaakt, plus drie taken die moeten worden uitgevoerd op de knooppunten. Met elke taak wordt een van de invoerbestanden verwerkt met behulp van een Bash-shell-opdrachtregel.
+- Er worden drie kleine tekstbestanden geüpload naar een blobcontainer in het Azure-opslagaccount. Deze bestanden bevatten invoergegevens voor verwerking met Batch-taken.
+- Er wordt een pool met twee rekenknooppunten gemaakt waarop Ubuntu 18.04 LTS wordt uitgevoerd.
+- Er wordt een Batch-taak gemaakt, plus drie taken die moeten worden uitgevoerd op de knooppunten. Met elke taak wordt een van de invoerbestanden verwerkt met behulp van een Bash-shell-opdrachtregel.
 * Er worden bestanden weergegeven die zijn geretourneerd met de taken.
 
 Bekijk het bestand `python_quickstart_client.py` en de volgende secties voor de details.
@@ -182,7 +184,7 @@ batch_service_client.job.add(job)
 
 De app gebruikt de [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter)-klasse om een lijst met taakobjecten te maken. Met elke taak wordt een `resource_files`-invoerobject verwerkt met behulp van een `command_line`-parameter. In het voorbeeld wordt met de opdrachtregel de opdracht `cat` voor de Bash-shell uitgevoerd om het tekstbestand weer te geven. Deze opdracht is een eenvoudig voorbeeld voor demonstratiedoeleinden. Wanneer u Batch gebruikt, geeft u uw app of script op de opdrachtregel op. Batch biedt een aantal manieren om apps en scripts te implementeren op rekenknooppunten.
 
-Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-methode. Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
+Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-methode. Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten.
 
 ```python
 tasks = list()

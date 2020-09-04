@@ -1,69 +1,69 @@
 ---
 title: Wat is Azure App Configuration?
-description: Een overzicht van de service Azure App Configuration.
+description: Lees een overzicht van de service Azure App Configuration. Begrijp waarom u App Configuration wilt gebruiken en leer hoe u dit kunt gebruiken.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523472"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587069"
 ---
 # <a name="what-is-azure-app-configuration"></a>Wat is Azure App Configuration?
 
-Azure-app-configuratie biedt een service voor het centraal beheren van toepassings instellingen en functie vlaggen. Moderne Program ma's, met name Program ma's die worden uitgevoerd in een Cloud, hebben doorgaans veel onderdelen die worden gedistribueerd. Het verspreiden van configuratie-instellingen over deze onderdelen kan leiden tot moeilijk oplosbare fouten tijdens de implementatie van een toepassing. Gebruik app-configuratie om alle instellingen voor uw toepassing op te slaan en de toegang op één locatie te beveiligen.
+Azure App Configuration biedt een service voor het centraal beheren van toepassingsinstellingen en functiemarkeringen. Moderne programma's, met name programma’s die in een cloud worden uitgevoerd, hebben doorgaans veel onderdelen die zijn gedistribueerd. Het verspreiden van configuratie-instellingen over deze onderdelen kan leiden tot moeilijk oplosbare fouten tijdens de implementatie van een toepassing. Gebruik App Configuration om alle instellingen voor uw toepassing op te slaan en de toegang ertoe beveiligen op één plek.
 
-## <a name="why-use-app-configuration"></a>Waarom app-configuratie gebruiken?
+## <a name="why-use-app-configuration"></a>Waarom App Configuration gebruiken?
 
-Cloudgebaseerde toepassingen worden vaak uitgevoerd op meerdere virtuele machines of containers in meerdere regio's en gebruiken meerdere externe services. Het maken van een robuuste en schaal bare toepassing in een gedistribueerde omgeving vormt een aanzienlijke uitdaging.
+Cloudgebaseerde toepassingen worden vaak uitgevoerd op meerdere virtuele machines of containers in meerdere regio's en gebruiken meerdere externe services. Het is een flinke uitdaging om een robuuste en schaalbare toepassing te maken in een gedistribueerde omgeving.
 
-Verschillende programmeer methodieken helpen ontwikkel aars bij het verg Roten van de complexiteit van het bouwen van toepassingen. In de app met [twaalf factoren](https://12factor.net/) worden bijvoorbeeld veel goed geteste architectuur patronen en best practices voor gebruik met Cloud toepassingen beschreven. Een belangrijke aanbeveling in deze handleiding is om de configuratie van de code te scheiden. De configuratie-instellingen van een toepassing moeten extern worden opgeslagen in het uitvoer bare bestand en worden gelezen vanuit de runtime-omgeving of een externe bron.
+Er zijn verschillende programmeermethoden om ontwikkelaars te helpen omgaan met de toenemende complexiteit van het bouwen van toepassingen. De [Twelve-Factor-app](https://12factor.net/) beschrijft bijvoorbeeld veel goed geteste architectonische patronen en best practices voor cloudtoepassingen. Een belangrijke aanbeveling in deze handleiding is om de configuratie van de code te scheiden. De configuratie-instellingen van een toepassing moeten extern van het bijbehorende uitvoerbare bestand worden gehouden en worden opgehaald uit de bijbehorende runtime-omgeving of een externe bron.
 
-Hoewel een toepassing gebruik kan maken van app-configuratie, zijn de volgende voor beelden de typen toepassing die het gebruik ervan kunnen doen:
+Hoewel elke toepassing gebruik kan maken van App Configuration, profiteren vooral de volgende soorten toepassingen ervan:
 
-* Micro Services op basis van de Azure Kubernetes-service, Azure Service Fabric of andere apps die zijn geïmplementeerd in een of meer geographs
-* Serverloze apps, die Azure Functions of andere op gebeurtenissen gebaseerde stateless Compute-apps bevatten
-* Pijp lijn voor continue implementatie
+* Microservices op basis van Azure Kubernetes Service, Service Fabric of andere apps in containers die worden geïmplementeerd in een of meer regio's
+* Serverloze apps, met inbegrip van Azure Functions of andere gebeurtenisgestuurde, staatloze compute-apps
+* Pijplijn voor doorlopende implementatie
 
 App Configuration biedt de volgende voordelen:
 
-* Een volledig beheerde service die binnen enkele minuten kan worden ingesteld
-* Flexibele sleutel representaties en toewijzingen
-* Labelen met labels
-* Herhaling van instellingen naar een bepaald tijdstip
-* Exclusieve gebruikers interface voor functie vlaggen beheer
-* Vergelijking van twee sets configuraties op aangepaste dimensies
-* Verbeterde beveiliging via door Azure beheerde identiteiten
-* Versleuteling van gevoelige informatie in rust en onderweg
-* Systeem eigen integratie met populaire Frameworks
+* Een volledig beheerde service die in enkele minuten kan worden ingesteld
+* Flexibele belangrijke weergaven en toewijzingen
+* Taggen met labels
+* Point-in-time-herhaling van instellingen
+* Exclusieve gebruikersinterface voor het beheer van functievlaggen
+* Vergelijking van twee sets met configuraties voor speciaal gedefinieerde dimensies
+* Verbeterde beveiliging met door Azure beheerde identiteiten
+* Versleuteling van gevoelige informatie in rust en tijdens overdrachten
+* Systeemeigen integratie met populaire frameworks
 
-App-configuratie complementen [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), die wordt gebruikt voor het opslaan van toepassings geheimen. Met app-configuratie kunt u de volgende scenario's eenvoudiger implementeren:
+App Configuration vormt een aanvulling op [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), dat wordt gebruikt om toepassingsgeheimen op te slaan. Met App Configuration kunt u de volgende scenario's eenvoudiger implementeren:
 
-* Beheer en distributie van hiërarchische configuratie gegevens voor verschillende omgevingen en geographs centraliseren
-* Toepassings instellingen dynamisch wijzigen zonder de nood zaak om een toepassing opnieuw te implementeren of opnieuw op te starten
-* Beschik baarheid van functies in realtime best uren
+* Centralisatie van het beheer en de distributie van hiërarchische configuratiegegevens voor verschillende omgevingen en regio’s
+* Dynamische wijziging van toepassingsinstellingen zonder dat een toepassing opnieuw hoeft te worden geïmplementeerd of gestart
+* Beschikbaarheid van besturingsfuncties in realtime
 
-## <a name="use-app-configuration"></a>App-configuratie gebruiken
+## <a name="use-app-configuration"></a>App Configuration gebruiken
 
-De eenvoudigste manier om een app-configuratie archief toe te voegen aan uw toepassing, is via een client bibliotheek van micro soft. De volgende methoden zijn beschikbaar om verbinding te maken met uw toepassing, afhankelijk van uw gekozen taal en Framework
+De eenvoudigste manier om een App Configuration-archief aan uw toepassing toe te voegen, is via een door Microsoft aangeboden clientbibliotheek. De volgende methoden zijn beschikbaar om verbinding te maken met uw toepassing, afhankelijk van uw gekozen taal en framework
 
 | Computertaal en framework | Verbinding maken |
 |---|---|
-| .NET Core en ASP.NET Core | App-configuratie provider voor .NET core |
-| .NET Framework en ASP.NET | App Configuration Builder voor .NET |
-| Java Spring | App-configuratie client voor lente-Cloud |
-| Andere | REST API app-configuratie |
+| .NET Core en ASP.NET Core | App Configuration-provider voor .NET Core |
+| .NET Framework en ASP.NET | App Configuration-ontwikkelaar voor .NET |
+| Java Spring | App Configuration-client voor Spring Cloud |
+| Andere | App Configuration-REST API |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids ASP.NET Core](./quickstart-aspnet-core-app.md)
-* [Snelstartgids voor .NET core](./quickstart-dotnet-core-app.md)
-* [Snelstartgids .NET Framework](./quickstart-dotnet-app.md)
-* [Snelstartgids Azure Functions](./quickstart-azure-functions-csharp.md)
+* [Snelstartgids voor ASP.NET Core](./quickstart-aspnet-core-app.md)
+* [Snelstartgids voor .NET Core](./quickstart-dotnet-core-app.md)
+* [Snelstartgids voor .NET Framework](./quickstart-dotnet-app.md)
+* [Snelstartgids voor Azure Functions](./quickstart-azure-functions-csharp.md)
 * [Snelstartgids voor Java Spring](./quickstart-java-spring-app.md)
-* [Quick start voor functie vlag ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)
-* [Snelstartgids voor Spring boot-functie](./quickstart-feature-flag-spring-boot.md)
+* [Snelstartgids voor de ASP.NET Core-functievlag](./quickstart-feature-flag-aspnet-core.md)
+* [Snelstartgids voor de Spring Boot-functievlag](./quickstart-feature-flag-spring-boot.md)

@@ -1,59 +1,55 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met PlanMyLeave | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en PlanMyLeave.
+title: 'Zelfstudie: Integratie van Azure Active Directory met PlanMyLeave | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en PlanMyLeave.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b0d31cbe-7ae2-488b-9cf3-4927391fa744
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d1192d3606dfbbf54a8177c2369a9cae8871d92b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 35a6fc789c4ed24c2f950ccfa89880088b698a20
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094400"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553747"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Zelf studie: integratie Azure Active Directory met PlanMyLeave
+# <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Zelfstudie: Azure Active Directory-integratie met PlanMyLeave
 
-In deze zelf studie leert u hoe u PlanMyLeave integreert met Azure Active Directory (Azure AD).
-Het integreren van PlanMyLeave met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u PlanMyLeave integreert met Azure Active Directory (Azure AD).
+De integratie van PlanMyLeave met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot PlanMyLeave.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij PlanMyLeave (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot PlanMyLeave.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij PlanMyLeave (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met PlanMyLeave wilt configureren, hebt u de volgende items nodig:
+Voor het configureren van Azure AD-integratie met PlanMyLeave hebt u de volgende zaken nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding PlanMyLeave ingeschakeld
+* Een PlanMyLeave-abonnement waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* PlanMyLeave ondersteunt door **SP** GEÏNITIEERDe SSO
+* PlanMyLeave biedt ondersteuning voor door **SP** geïnitieerde eenmalige aanmelding
 
-* PlanMyLeave ondersteunt **just-in-time** -gebruikers inrichting
+* PlanMyLeave biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
 
-## <a name="adding-planmyleave-from-the-gallery"></a>PlanMyLeave toevoegen uit de galerie
+## <a name="adding-planmyleave-from-the-gallery"></a>PlanMyLeave toevoegen vanuit de galerie
 
-Als u de integratie van PlanMyLeave in azure AD wilt configureren, moet u PlanMyLeave uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van PlanMyLeave in Azure AD, moet u PlanMyLeave vanuit de galerie aan uw lijst met beheerde SaaS-apps toevoegen.
 
-**Voer de volgende stappen uit om PlanMyLeave toe te voegen uit de galerie:**
+**Voer de volgende stappen uit om PlanMyLeave toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +63,31 @@ Als u de integratie van PlanMyLeave in azure AD wilt configureren, moet u PlanMy
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **PlanMyLeave**in het zoekvak, selecteer **PlanMyLeave** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **PlanMyLeave** in het zoekvak, selecteer **PlanMyLeave** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![PlanMyLeave in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met PlanMyLeave op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in PlanMyLeave tot stand worden gebracht.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met PlanMyLeave op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in PlanMyLeave tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met PlanMyLeave, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding met Azure AD bij PlanMyLeave wilt configureren en testen, voert u de volgende stappen uit:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[PlanMyLeave eenmalige aanmelding configureren](#configure-planmyleave-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een PlanMyLeave-test gebruiker](#create-planmyleave-test-user)** -om een equivalent van Julia Simon in PlanMyLeave te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[PlanMyLeave voor eenmalige aanmelding configureren](#configure-planmyleave-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker voor PlanMyLeave maken](#create-planmyleave-test-user)** : als u in PlanMyLeave een tegenhanger van Britta Simon wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met PlanMyLeave:
+Voor het configureren van eenmalige aanmelding van Azure AD met PlanMyLeave moet u de volgende stappen uitvoeren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **PlanMyLeave** Application Integration de optie **eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de toepassingsintegratiepagina van **PlanMyLeave**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,20 +101,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor PlanMyLeave domein en Url's](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding bij PlanMyLeave-domeinen en -URL's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<company-name>.planmyleave.com/Login.aspx`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<company-name>.planmyleave.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<company-name>.planmyleave.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van PlanMyLeave-clients](mailto:support@planmyleave.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantondersteuningsteam van PlanMyLeave](mailto:support@planmyleave.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **PlanMyLeave instellen** de gewenste URL ('s) volgens uw vereiste.
+6. Kopieer in de sectie **PlanMyLeave instellen** de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -128,27 +124,27 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-planmyleave-single-sign-on"></a>Eenmalige aanmelding voor PlanMyLeave configureren
+### <a name="configure-planmyleave-single-sign-on"></a>Eenmalige aanmelding van PlanMyLeave configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw PlanMyLeave-Tenant.
+1. Meld u in een ander browservenster aan als beheerder bij uw PlanMyLeave-bedrijfssite.
 
-2. Ga naar **systeem installatie**. Klik vervolgens in de sectie **beveiligings beheer** op instellingen van het **bedrijf** .
+2. Ga naar **Systeeminstallatie**. Klik vervolgens in de sectie **Beveiligingsbeheer** op **SAML-instellingen van het bedrijf**.
 
     ![Eenmalige aanmelding aan app-zijde configureren](./media/planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
-3. Klik in de sectie **SAML-instellingen** op pictogram editor.
+3. Klik in de sectie **SAML-instellingen** op het pictogram van het bewerkingsprogramma.
 
     ![Eenmalige aanmelding aan app-zijde configureren](./media/planmyleave-tutorial/tutorial_planmyleave_003.png)
 
-4. Voer de volgende stappen uit in de sectie **SAML-instellingen bijwerken** :
+4. Voer in de sectie **SAML-instellingen** de volgende stappen uit:
 
     ![Eenmalige aanmelding aan app-zijde configureren](./media/planmyleave-tutorial/tutorial_planmyleave_004.png)
 
     a.  Plak in het tekstvak **Aanmeldings-URL** de **aanmeldings-URL** die u in de Azure-portal hebt gekopieerd.
 
-    b.  Open de gedownloade meta gegevens, kopieer de waarde **X509Certificate** en plak deze in het tekstvak **certificaat** .
+    b.  Open de gedownloade metagegevens, kopieer de waarde **X509Certificate** en plak deze in het tekstvak **Certificaat**.
 
-    c. Stel '**is inschakelen**' in op '**Ja**'.
+    c. Stel **Is ingeschakeld** in op **Ja**.
 
     d. Klik op **Opslaan**. 
 
@@ -160,7 +156,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -168,26 +164,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan PlanMyLeave.
+In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding van Azure door haar toegang te geven tot PlanMyLeave.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **PlanMyLeave**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **PlanMyLeave**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **PlanMyLeave**.
+2. Selecteer **PlanMyLeave** in de lijst met toepassingen.
 
-    ![De koppeling PlanMyLeave in de lijst met toepassingen](common/all-applications.png)
+    ![De PlanMyLeave-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -197,30 +193,30 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-planmyleave-test-user"></a>PlanMyLeave-test gebruiker maken
+### <a name="create-planmyleave-test-user"></a>Een PlanMyLeave-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in PlanMyLeave. PlanMyLeave biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in PlanMyLeave, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in PlanMyLeave. PlanMyLeave biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker bestaat in PlanMyLeave, wordt na verificatie een nieuwe gemaakt.
 
 > [!NOTE]
-> Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team van PlanMyLeave](mailto:support@planmyleave.com).
+> Neem contact op met het [ondersteuningsteam voor PlanMyLeave](mailto:support@planmyleave.com) als u handmatig een gebruiker moet maken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel PlanMyLeave in het toegangs venster klikt, moet u automatisch worden aangemeld bij de PlanMyLeave waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel PlanMyLeave klikt, wordt u automatisch aangemeld bij de instantie van PlanMyLeave waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

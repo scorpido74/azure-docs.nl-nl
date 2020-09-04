@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038542"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226006"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Quickstart: Uw Azure-abonnement onboarden voor Security Center Standard
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en bedreigingsbeveiliging voor uw verschillende hybride cloudworkloads. De prijscategorie Gratis biedt beperkte beveiliging voor alleen uw Azure-resources, maar de prijscategorie Standard biedt deze mogelijkheden ook voor on-premises en andere clouds. Standard van Security Center helpt u beveiligingsproblemen te vinden en op te lossen, toegangs- en toepassingsbesturingselementen toe te passen om schadelijke activiteiten te blokkeren, bedreigingen te detecteren met behulp van analyses en gegevens en snel te reageren bij aanvallen. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
@@ -34,7 +34,8 @@ Als u een abonnement wilt upgraden naar de prijscategorie Standard, moet de rol 
 ## <a name="enable-your-azure-subscription"></a>Uw Azure-abonnement inschakelen
 
 1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
+
+1. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
 
    ![Overzicht van Security Center][2]
 
@@ -49,21 +50,25 @@ Binnen enkele minuten nadat u Security Center voor het eerst hebt gestart, ziet 
 
 Voltooi de stappen hieronder om naar de prijscategorie Standard te upgraden en de Log Analytics-agent te installeren om zo volledig van Security Center te profiteren.
 
-## <a name="upgrade-to-the-standard-pricing-tier"></a>Upgraden naar de prijscategorie Standard
-Voor de quickstarts en zelfstudies van Security Center moet u upgraden naar de prijscategorie Standard. Er is een gratis proefversie van Security Center Standard. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. 
 
-1. Selecteer in het hoofdmenu van Security Center de optie **Aan de slag**.
+## <a name="upgrade-to-the-standard-tier"></a>Upgraden naar de prijscategorie Standard
+
+Voor de snelstartgidsen en zelfstudies van Security Center moet u upgraden naar de prijscategorie Standard. Er is een gratis proefversie van Security Center Standard. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. 
+
+1. Selecteer **Aan de slag** in de zijbalk van Security Center.
  
-   ![Aan de slag][4]
+   ![Aan de slag](./media/security-center-get-started/get-started-upgrade-tab.png)
 
-2. Onder **Upgrade** vermeldt Security Center abonnementen en werkruimten die in aanmerking komen voor onboarding. 
-   - U kunt op het uitvouwbare **Uw proefversie toepassen** klikken om een lijst met alle abonnementen en werkruimten te bekijken met de status voor een proefversie.
-   -    U kunt abonnementen en werkruimten upgraden die niet in aanmerking komen voor een proefversie.
-   -    U kunt in aanmerking komende werkruimten en abonnementen selecteren om uw proefversie te beginnen.
-3. Klik op **Proefversie beginnen** om uw proefversie van de geselecteerde abonnementen te beginnen.
+    Op het tabblad **Upgrade** worden abonnementen en werkruimten vermeld die in aanmerking komen voor onboarding.
+
+1. Selecteer in de lijst **Werkruimten selecteren waarvoor de prijscategorie Standard moet worden ingeschakeld** de werkruimten waarvoor een upgrade moet worden uitgevoerd.
 
 
-  ![Beveiligingswaarschuwingen][9]
+    > [!TIP]
+    > Als u een werkruimte selecteert die in aanmerking komt voor een gratis proefversie, wordt in de volgende stap een proefversie gestart. Als de werkruimten niet in aanmerking komen voor een proefversie, wordt de upgrade uitgevoerd en worden er kosten in rekening gebracht.
+
+1. Selecteer **Upgraden** om de geselecteerde werkruimten te upgraden naar de prijscategorie Standard.
+
 
 ## <a name="automate-data-collection"></a>Gegevensverzameling automatiseren
 Security Center verzamelt gegevens van uw Azure-VM's en niet-Azure-computers om te controleren op beveiligingsproblemen en bedreigingen. De gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende configuraties en gebeurtenislogboeken met betrekking tot beveiliging van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Security Center maakt standaard een nieuwe werkruimte voor u.
@@ -73,9 +78,9 @@ Als automatisch inrichten is ingeschakeld, installeert Security Center de Log An
 Automatische inrichting van de Log Analytics-agent inschakelen:
 
 1. Selecteer in het hoofdmenu van Security Center de optie **Prijzen en instellingen**.
-2. Klik in de rij van het abonnement op het abonnement waarvoor u de instellingen wilt wijzigen.
-3. Stel in het tabblad **Gegevensverzameling** **Automatische inrichting** in op **Aan**.
-4. Selecteer **Opslaan**.
+1. Klik in de rij van het abonnement op het abonnement waarvoor u de instellingen wilt wijzigen.
+1. Stel in het tabblad **Gegevensverzameling** **Automatische inrichting** in op **Aan**.
+1. Selecteer **Opslaan**.
 ---
   ![Automatische inrichting inschakelen][6]
 

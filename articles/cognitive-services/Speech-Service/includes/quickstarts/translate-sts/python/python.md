@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Vertaal spraak-naar-spraak, python-Speech-Service'
+title: 'Quickstart: Spraak-naar-spraak vertalen, Python - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: 03042cef3e5b5fb4360223e3c804f1ed2e24c97f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 2c3ba2289899206a15ace88a29cfbfdfad0f9de5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925999"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226187"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=python)
+> * [Een resource voor de Azure Speech-service maken](../../../../get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -88,19 +88,19 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die aan uw abonnement is gekoppeld.
 
-1. Sla de wijzigingen op die u hebt `quickstart.py`aangebracht in.
+1. Sla de wijzigingen op die u in `quickstart.py` hebt aangebracht.
 
-## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
+## <a name="build-and-run-your-app"></a>De app bouwen en uitvoeren
 
-1. Voer het voor beeld uit vanaf de-console of in uw IDE:
+1. Voer het voorbeeld uit vanaf de console of in uw IDE:
 
    ```
    python quickstart.py
    ```
 
-1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Duits). De spraak service verzendt vervolgens de gesynthesizerde audio en de tekst terug naar de toepassing om weer te geven.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de Speech-service, waar deze wordt vertaald en getranscribeerd in tekst (in dit geval in het Duits). De Speech-service zendt de gesynthetiseerde audio en de tekst vervolgens terug naar de toepassing voor weergave.
 
    ```
    Say something...

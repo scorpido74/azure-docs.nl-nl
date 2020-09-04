@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c24989c73aa4343fea2b719a5b1e8c63c06af010
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d4c5a33f52799ea4da9c7c23fbace94e800660b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835626"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589466"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuele Linux-machines in Azure
 
@@ -51,6 +51,10 @@ In deze tabel staan enkele manieren om een lijst met beschikbare locaties te ver
 | Azure PowerShell |Gebruik de opdracht [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
 | REST-API |Gebruik de bewerking [Locaties vermelden](/rest/api/resources/subscriptions). |
 | Azure CLI |Gebruik de bewerking [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
+
+### <a name="singapore-data-residency"></a>Gegevenslocatie Singapore
+
+In Azure is de functie die het mogelijk maakt om klantgegevens in één regio op te slaan momenteel alleen beschikbaar in de regio Azië - zuidoost (Singapore) van het geografisch gebied Azië en Stille Oceaan. Voor alle andere regio's worden klantgegevens opgeslagen in Geo. Zie [Trust Center](https://azuredatacentermap.azurewebsites.net/) voor meer informatie.
 
 ## <a name="availability"></a>Beschikbaarheid
 Voor Azure is een toonaangevende serviceovereenkomst (SLA) van 99,9% aangekondigd voor één VM-instantie. Hiervoor geldt wel als voorwaarde dat de virtuele machine wordt geïmplementeerd met Premium-opslag voor alle schijven.  Als u wilt dat uw VM-implementatie in aanmerking komt voor de SLA van 99,95%, moet u bovendien een beschikbaarheidsset maken met ten minste twee VM's waarop uw workload wordt uitgevoerd. Dit zorgt ervoor dat uw VM's worden verdeeld over meerdere foutdomeinen in de Azure-datacenters en worden geïmplementeerd op hosts met verschillende onderhoudsvensters. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.

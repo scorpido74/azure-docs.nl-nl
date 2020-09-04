@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: spraak herkennen vanuit een microfoon, Java-service (Android)-spraak'
+title: 'Quickstart: Spraak herkennen vanaf een microfoon, Java (Android) - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: Leer gesproken tekst herkennen in Java onder Android met behulp van de Speech SDK
 services: cognitive-services
@@ -10,29 +10,29 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 2641464e52b80c59b6c6b5a123ad1605c1d41495
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275527"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226218"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+> * [Een resource voor de Azure Speech-service maken](../../../../get-started.md)
+> * [De ontwikkelomgeving instellen](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
+> * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
-## <a name="create-a-user-interface"></a>Een gebruikers interface maken
+## <a name="create-a-user-interface"></a>Een gebruikersinterface maken
 
-Nu gaan we een eenvoudige gebruikers interface voor de toepassing maken. Bewerk de lay-out voor de hoofdactiviteit, `activity_main.xml`. In eerste instantie bevat de lay-out een titel balk met de naam van uw toepassing en een TextView die de tekst ' Hallo wereld! ' bevat.
+Nu gaan we een eenvoudige gebruikersinterface maken voor de toepassing. Bewerk de lay-out voor de hoofdactiviteit, `activity_main.xml`. In eerste instantie bevat de indeling een titelbalk met de naam van uw toepassing en een TextView met daarin de tekst 'Hallo wereld!'.
 
-* Selecteer het element TextView. Wijzig het kenmerk ID in de rechterbovenhoek in `hello`.
+* Selecteer het TextView-element. Wijzig het kenmerk ID in de rechterbovenhoek in `hello`.
 
-* Sleep in het palet linksboven in het `activity_main.xml` venster een knop naar de lege ruimte boven de tekst.
+* Sleep vanuit het palet in de linkerbovenhoek van het venster `activity_main.xml` een knop naar de lege ruimte boven de tekst.
 
 * Ga naar de kenmerken van de knop aan de rechterkant en voer `onSpeechButtonClicked` in als de waarde voor het kenmerk `onClick`. We gaan een methode met deze naam schrijven om de knopgebeurtenis af te handelen. Wijzig het kenmerk ID in de rechterbovenhoek in `button`.
 
@@ -48,31 +48,31 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open het bronbestand `MainActivity.java`. Vervang alle code in dit bestand door het volgende:
+1. Open het bronbestand `MainActivity.java`. Vervang alle code in het bestand door de volgende code:
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/android/from-microphone/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * De methode `onCreate` omvat code die toestemming vraagt voor gebruik van de microfoon en internet, en initialiseert de binding met het native platform. Configuratie van bindingen voor het native platform hoeft maar één keer. Dit moet gebeuren in een vroeg stadium tijdens de initialisatie van de toepassing.
 
-   * De methode `onSpeechButtonClicked` is, zoals eerder gezegd, de methode voor het afhandelen van het klikken op de knop. Met een knop-Klik wordt spraak-naar-tekst transcriptie geactiveerd.
+   * De methode `onSpeechButtonClicked` is, zoals eerder gezegd, de methode voor het afhandelen van het klikken op de knop. Een klik op de knop betekent dat de spraak wordt omgezet in tekst.
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang ook de teken `YourServiceRegion` reeks door de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. Gebruik `westus` bijvoorbeeld voor het gratis proef abonnement.
+1. Vervang ook de tekenreeks `YourServiceRegion` door de **Regio-id** van de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-1. Sluit uw Android-apparaat aan op de ontwikkelmachine. Zorg ervoor dat u de [ontwikkel modus en USB-fout opsporing](https://developer.android.com/studio/debug/dev-options) hebt ingeschakeld op het apparaat.
+1. Sluit uw Android-apparaat aan op de ontwikkelmachine. Zorg ervoor dat u de [ontwikkelmodus en USB-foutopsporing](https://developer.android.com/studio/debug/dev-options) hebt ingeschakeld op het apparaat.
 
-1. Als u de toepassing wilt bouwen, selecteert u CTRL + F9 of selecteert u **Build** > **project maken** in de menu balk.
+1. Selecteer Ctrl + F9 om de toepassing te compileren, of selecteer **Build** > **Make Project** in de menubalk.
 
-1. Als u de toepassing wilt starten, selecteert u SHIFT + F10 of selecteert u**Run-app** **uitvoeren** > .
+1. Als u de toepassing wilt starten, selecteert u Shift+F10 of selecteert u **Run** > **Run 'app'** .
 
-1. Selecteer uw Android-apparaat in het venster implementatie doel dat wordt weer gegeven.
+1. Selecteer uw Android-apparaat in het venster Deployment Target dat wordt weergegeven.
 
    ![Schermafbeelding van het venster Select Deployment Target](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 
-Selecteer de knop in de toepassing voor het starten van een spraak herkennings sectie. De volgende 15 seconden aan Engels gesproken tekst wordt verzonden naar de Speech-service en getranscribeerd. Het resultaat wordt weergegeven in de Android-toepassing, en in het logcat-venster in Android Studio.
+Selecteer de knop in de toepassing om een sectie voor spraakherkenning te starten. De volgende 15 seconden aan Engels gesproken tekst wordt verzonden naar de Speech-service en getranscribeerd. Het resultaat wordt weergegeven in de Android-toepassing, en in het logcat-venster in Android Studio.
 
 ![Schermafbeelding van de Android-toepassing](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-gui-on-device.png)
 

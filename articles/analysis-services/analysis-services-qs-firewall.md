@@ -4,15 +4,15 @@ description: Deze quickstart helpt u een firewall te configureren voor uw Azure 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 48618815519fad31bff5d6a8d2d2edc82535f437
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697897"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192431"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Quickstart: Een serverfirewall configureren - Portal
 
@@ -22,8 +22,9 @@ Deze snelstart helpt u bij het configureren van een firewall voor uw Azure Analy
 
 - Een Azure Analysis Services-server in uw abonnement. Raadpleeg voor meer informatie [Snelstart: Een server maken - Portal](analysis-services-create-server.md) of [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md)
 - Een of meer IP-adresbereiken voor clientcomputers (indien nodig).
-- Sommige scenario’s waarbij Power BI Premium verbinding maakt met Azure Analysis Services, waaronder gegevens importeren (vernieuwen) en gepagineerde rapporten, worden momenteel niet ondersteund, zelfs niet wanneer Toegang toestaan is ingeschakeld in Power BI. Het meer algemene scenario voor het gebruik van Live Connect vanuit Power BI Premium wordt ondersteund. Alle Power BI Pro-scenario's worden ondersteund.
 
+> [!NOTE]
+> Gegevensimport (vernieuwen) en verbindingen voor gepagineerde rapporten vanuit Power BI Premium in Microsoft Cloud Duitsland worden momenteel niet ondersteund wanneer een firewall is ingeschakeld, zelfs wanneer de instelling Toegang vanaf Power BI toestaan is ingesteld op Aan.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal 
 
@@ -32,8 +33,8 @@ Deze snelstart helpt u bij het configureren van een firewall voor uw Azure Analy
 ## <a name="configure-a-firewall"></a>Een firewall configureren
 
 1. Klik op de server om de overzichtspagina te openen. 
-2. Klik in **INSTELLINGEN** > **Firewall** > **Firewall inschakelen** op **Aan**.
-3. Klik op **Aan** bij **Toegang toestaan vanuit Power BI** om toegang tot DirectQuery toe te staan vanuit Power BI-service.  
+2. Selecteer **Aan** in **INSTELLINGEN** > **Firewall** > **Firewall inschakelen**.
+3. Als u verbindingen vanuit Power BI en Power BI Premium wilt inschakelen, selecteert u **Aan** in **Toegang toestaan vanuit Power BI**.  
 4. (Optioneel) Geef een of meer IP-adresbereiken op. Typ een naam, begin- en eind-IP-adressen voor elk bereik. De naam van de firewallregel mag uit maximaal 128 tekens bestaan, en kan alleen hoofdletters, kleine letters, cijfers, onderstrepingstekens en afbreekstreepjes bevatten. Spaties en andere speciale tekens zijn niet toegestaan.
 5. Klik op **Opslaan**.
 

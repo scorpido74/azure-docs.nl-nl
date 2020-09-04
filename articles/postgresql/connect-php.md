@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met PHP-Azure Database for PostgreSQL-één server
-description: Deze Quick Start biedt een PHP-code voorbeeld dat u kunt gebruiken om verbinding te maken en gegevens op te vragen van Azure Database for PostgreSQL-één server.
+title: 'Quickstart: Verbinding maken met PHP - Azure Database for PostgreSQL - één server'
+description: Deze quickstart bevat een voorbeeld van PHP-code die u kunt gebruiken om verbinding te maken en gegevens op te vragen uit Azure Database for PostgreSQL - één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 000f3cd9598bc4bdffa896be47466d157c7df8c1
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74766375"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182711"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL-één server: PHP gebruiken om verbinding te maken en gegevens op te vragen
+# <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: PHP gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
+
 In deze snelstartgids ziet u hoe u met behulp van een [PHP](https://secure.php.net/manual/intro-whatis.php)-toepassing verbinding maakt met een Azure Database voor PostgreSQL. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van PHP en geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -39,13 +40,13 @@ Installeer PHP op uw eigen server of maak een Azure-[web-app](../app-service/ove
 - Schakel de **pgsql**-extensie in door het configuratiebestand php.ini te bewerken. Dit staat doorgaans in `/etc/php/7.0/mods-available/pgsql.ini`. Het configuratiebestand moet een regel bevatten met de tekst `extension=php_pgsql.so`. Als deze niet wordt weergegeven, voegt u de tekst toe en slaat u het bestand op. Als de tekst aanwezig is, maar met behulp van het voorvoegsel puntkomma als opmerking is gemarkeerd, haalt u de puntkomma weg zodat de tekst geen opmerking meer is.
 
 ### <a name="macos"></a>MacOS
-- [Php 7.1.4-versie](https://secure.php.net/downloads.php) downloaden
+- [PHP versie 7.1.4](https://secure.php.net/downloads.php) downloaden
 - PHP installeren en de [PHP-handleiding](https://secure.php.net/manual/install.macosx.php) bekijken voor verdere configuratie
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
@@ -54,7 +55,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 ## <a name="connect-and-create-a-table"></a>Verbinding maken en een tabel maken
 Gebruik de volgende code om een tabel te verbinden en te maken met de SQL-instructie **CREATE TABLE**, gevolgd door **INSERT INTO**-instructies om rijen in de tabel toe te voegen.
 
-De methode voor het aanroepen van code [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) om verbinding te maken met Azure database for PostgreSQL. Vervolgens wordt methode [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) een aantal keer aangeroepen om diverse opdrachten uit te voeren, en wordt [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) aangeroepen om de details te controleren telkens wanneer er een fout is opgetreden. Vervolgens wordt methode [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) aangeroepen om de verbinding te sluiten.
+In de code wordt methode [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) aangeroepen om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt methode [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) een aantal keer aangeroepen om diverse opdrachten uit te voeren, en wordt [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) aangeroepen om de details te controleren telkens wanneer er een fout is opgetreden. Vervolgens wordt methode [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) aangeroepen om de verbinding te sluiten.
 
 Vervang de parameters `$host`, `$database`, `$user` en `$password` door uw eigen waarden. 
 
@@ -112,7 +113,7 @@ Vervang de parameters `$host`, `$database`, `$user` en `$password` door uw eigen
 ## <a name="read-data"></a>Gegevens lezen
 Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **SELECT**. 
 
- De methode voor het aanroepen van code [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) om verbinding te maken met Azure database for PostgreSQL. Vervolgens wordt methode [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) aangeroepen om de SELECT-opdracht uit te voeren, waarbij de resultaten worden vastgehouden in een resultatenset, en wordt [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) uitgevoerd om de details te controleren als er een fout is opgetreden.  Om de resultatenset te lezen, wordt methode [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) in een lus aangeroepen, eenmaal per rij, en worden de rijgegevens opgehaald in een matrix `$row`, met één waarde per kolom in elke matrixpositie.  Methode [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php) wordt aangeroepen om de resultatenset vrij te geven. Vervolgens wordt methode [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) aangeroepen om de verbinding te sluiten.
+ In de code wordt methode [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) aangeroepen om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt methode [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) aangeroepen om de SELECT-opdracht uit te voeren, waarbij de resultaten worden vastgehouden in een resultatenset, en wordt [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) uitgevoerd om de details te controleren als er een fout is opgetreden.  Om de resultatenset te lezen, wordt methode [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) in een lus aangeroepen, eenmaal per rij, en worden de rijgegevens opgehaald in een matrix `$row`, met één waarde per kolom in elke matrixpositie.  Methode [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php) wordt aangeroepen om de resultatenset vrij te geven. Vervolgens wordt methode [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) aangeroepen om de verbinding te sluiten.
 
 Vervang de parameters `$host`, `$database`, `$user` en `$password` door uw eigen waarden. 
 
@@ -150,7 +151,7 @@ Vervang de parameters `$host`, `$database`, `$user` en `$password` door uw eigen
 ## <a name="update-data"></a>Gegevens bijwerken
 Gebruik de volgende code om verbinding te maken en de gegevens bij te werken met de SQL-instructie **UPDATE**.
 
-De methode voor het aanroepen van code [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) om verbinding te maken met Azure database for PostgreSQL. Vervolgens wordt methode [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) een aantal keer aangeroepen om een opdracht uit te voeren, en wordt [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) aangeroepen om de details te controleren als er een fout is opgetreden. Vervolgens wordt methode [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) aangeroepen om de verbinding te sluiten.
+In de code wordt methode [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) aangeroepen om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt methode [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) een aantal keer aangeroepen om een opdracht uit te voeren, en wordt [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) aangeroepen om de details te controleren als er een fout is opgetreden. Vervolgens wordt methode [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) aangeroepen om de verbinding te sluiten.
 
 Vervang de parameters `$host`, `$database`, `$user` en `$password` door uw eigen waarden. 
 

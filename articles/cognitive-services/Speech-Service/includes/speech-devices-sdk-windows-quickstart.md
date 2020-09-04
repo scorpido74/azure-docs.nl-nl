@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 259fc503b0de6c05196a7cb8096f828080705be8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375318"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226304"
 ---
 In deze quickstart leert u hoe u de Speech Devices SDK voor Windows kunt gebruiken om een spraakgestuurd product te maken of dit te gebruiken als apparaat voor [gesprektranscriptie](../conversation-transcription-service.md). Voor gesprektranscriptie wordt alleen de [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund. Voor andere soorten spraak gebruikt u lineaire microfoonmatrices die een microfoonmatrixgeometrie bieden. Deze wordt ondersteund.
 
 De toepassing wordt gebouwd met het Speech SDK-pakket en de Eclipse Java IDE (v4) op 64-bits Windows. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
-Voor deze gids is een [Azure Cognitive Services-account](../get-started.md) vereist met een Speech-serviceresource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze gids is een [Azure Cognitive Services-account](../get-started.md) vereist met een Speech-serviceresource.
 
 De broncode voor de [voorbeeldtoepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de Speech Devices SDK. Deze is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 

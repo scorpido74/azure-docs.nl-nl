@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 1327a2c621eca1cfadcf776ecd62f0899651f0bc
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807924"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510619"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Quickstart: Een virtuele Windows-machine maken en versleutelen met de Azure-portal
 
@@ -29,22 +29,23 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Kies in de linkerbovenhoek van de Azure-portal **Een resource maken**.
 1. Selecteer op de pagina Nieuw **Windows Server 2016 Datacenter** onder Populair.
-1. Zorg ervoor dat op het tabblad Basics onder Projectgegevens het juiste abonnement is geselecteerd, en kies **Nieuwe resourcegroep maken**. Voer *myResourceGroup* in als naam.
+1. Controleer op het tabblad Basisinformatie onder Projectgegevens of het juiste abonnement is geselecteerd.
+1. Selecteer voor Resourcegroep de optie **Nieuwe maken**. Voer *myResourceGroup* in als naam en selecteer **OK**.
 1. Bij **Naam van de virtuele machine** voert u *MyVM* in.
-1. Selecteer bij **Regio** dezelfde regio die u hierboven hebt gebruikt bij het maken van de sleutelkluis (bijvoorbeeld *US - oost*).
-1. Zorg ervoor dat de **Grootte** *Standard D2s v3* is.
+1. Selecteer bij **Regio** *(VS) VS - oost*.
+1. Controleer of de **Grootte** *Standard D2s v3* is.
 1. Selecteer **Wachtwoord** onder **Beheerdersaccount**. Voer een gebruikersnaam en wachtwoord in.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-windows-vm-creation.png" alt-text="Scherm Resourcegroep maken":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-windows-vm-creation.png" alt-text="Scherm voor het maken van Windows-VM's":::
 
     > [!WARNING]
-    > Het tabblad 'Schijven' bevat een veld 'Type versleuteling' onder **Schijfopties**. Dit veld wordt gebruikt om versleutelingsopties op te geven voor [Managed Disks](managed-disks-overview.md) + CMK, en niet voor Azure Disk Encryption. 
+    > Het tabblad 'Schijven' bevat een veld 'Type versleuteling' onder **Schijfopties**. Dit veld wordt gebruikt om versleutelingsopties op te geven voor [Managed Disks](managed-disks-overview.md) + CMK, en niet voor Azure Disk Encryption.
     >
-    > Om verwarring te voorkomen, raden we aan het tabblad *Schijven* helemaal over te slaan tijdens deze zelfstudie. 
+    > Om verwarring te voorkomen, raden we aan het tabblad *Schijven* helemaal over te slaan tijdens deze zelfstudie.
 
 1. Selecteer het tabblad 'Beheer' en controleer of u een Diagnostics-opslagaccount hebt. Als u geen opslagaccounts hebt, selecteert u 'Nieuw maken', geeft u het nieuwe account een naam en selecteert u 'OK'
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-vm-creation-storage.png" alt-text="Scherm Resourcegroep maken":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Scherm Resourcegroep maken":::
 
 1. Klik op 'Beoordelen en maken'.
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
@@ -55,27 +56,27 @@ Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer
 
 1. Nadat de VM-implementatie is voltooid, selecteert u **Ga naar resource**.
 1. Selecteer **Schijven** in de zijbalk links.
-1. Selecteer **Versleuteling**op het scherm Schijven. 
+1. Selecteer op de bovenste balk **Extra instellingen**.
+1. Onder **Versleutelingsinstellingen** > **Te versleutelen schijven** selecteert u **Besturingssysteem en gegevensschijven**.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-disks-to-encryption.png" alt-text="selectie van schijven en versleuteling":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="selectie van schijven en versleuteling":::
 
-1. Kies in het versleutelingsscherm onder **Te versleutelen schijven** op **Besturingssysteemschijf en gegevensschijven**.
 1. Kies **Selecteer een sleutelkluis en sleutel voor versleuteling** onder **Versleutelingsinstellingen**.
 1. Selecteer op het scherm **Sleutel selecteren in Azure Key Vault** de optie **Nieuwe maken**.
 
     :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="selectie van schijven en versleuteling":::
 
-1. Zorg ervoor dat op het scherm **Sleutelkluis maken** de resourcegroep dezelfde is als degene die u hebt gebruikt om de VM te maken.
-1. Geef uw sleutelkluis een naam.  Elke sleutelkluis in Azure moet een unieke naam hebben.
+1. Selecteer **Klik om een sleutel te selecteren** links van **Sleutelkluis en sleutel**.
+1. Selecteer op het scherm **Sleutel selecteren in Azure Key Vault** onder het veld **Sleutelkluis** de optie **Nieuwe maken**.
+1. Zorg er op het scherm **Sleutelkluis maken** voor dat de resourcegroep *myResourceGroup* is en geef een naam op voor de sleutelkluis.  Elke sleutelkluis in Azure moet een unieke naam hebben.
 1. Schakel op het tabblad **Toegangsbeleid** het selectievakje **Azure Disk Encryption voor volumeversleuteling** in.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-enable.png" alt-text="selectie van schijven en versleuteling":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="selectie van schijven en versleuteling":::
 
 1. Selecteer **Controleren + maken**.  
 1. Selecteer **Maken** nadat de sleutelkluis is gevalideerd. Hierdoor komt u terug op het scherm **Sleutel selecteren in Azure Key Vault**.
 1. Laat het veld **Sleutel** leeg en kies **Selecteren**.
 1. Klik bovenaan het versleutelingsscherm op **Opslaan**. Er wordt een waarschuwing weergegeven dat de VM opnieuw moet worden opgestart. Klik op **Ja**.
-
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met behulp van MySQL Workbench - Azure Database for MySQL
+title: 'Quickstart: Verbinding maken - MySQL Workbench - Azure Database for MySQL'
 description: Deze quickstart bevat de stappen voor het gebruik van MySQL Workbench om verbinding te maken met en gegevens op te vragen uit Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,19 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1e2dd26e2b954bebd7bac15991b2b5aef9def88d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870050"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185822"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench gebruiken om verbinding te maken met gegevens en er query's op uit te voeren
-In deze quickstart ziet u hoe u met behulp van een MySQL Workbench-toepassing verbinding maakt met een Azure Database for MySQL. 
+# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
+
+In deze quickstart ziet u hoe u met behulp van een MySQL Workbench-toepassing verbinding maakt met een Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
+
 In deze snelstartgids worden de resources die in een van deze handleidingen zijn gemaakt, als uitgangspunt gebruikt:
 - [Een Azure-database voor een MySQL-server maken met behulp van Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Een Azure-database voor een MySQL-server maken met behulp van Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499378"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272345"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
@@ -25,6 +25,7 @@ Durable Functions ondersteunt momenteel de volgende talen:
 * **JavaScript**: alleen ondersteund voor versie 2.x van de Azure Functions-runtime. Versie 1.7.0 of hoger van de Durable Functions-extensie vereist. 
 * **Python**: versie 1.8.5 of hoger van de Durable Functions-extensie vereist. 
 * **F#** : vooraf gecompileerde klassebibliotheken en F#-script. F#-script wordt alleen ondersteund voor versie 1.x van de Azure Functions-runtime.
+* **PowerShell**: ondersteuning voor Durable Functions is momenteel beschikbaar als openbare preview. Wordt alleen ondersteund voor versie 3.x van de Azure Functions-runtime en PowerShell 7. Versie 2.2.2 of hoger van de Durable Functions-extensie vereist. Alleen de volgende patronen worden momenteel ondersteund: [Functiekoppeling](#chaining), [uit-/inwaaieren](#fan-in-out) [asynchrone HTTP-API's](#async-http).
 
 Durable Functions heeft als doel alle [Azure Functions-talen](../supported-languages.md) te ondersteunen. Zie [Durable Functions issues list](https://github.com/Azure/azure-functions-durable-extension/issues) voor de laatste voortgangsstatus van de ondersteuning voor meer talen.
 
@@ -119,6 +120,19 @@ U kunt het `context`-object gebruiken om andere functies aan te roepen op naam, 
 > [!NOTE]
 > Het `context`-object in Python vertegenwoordigt de indelingscontext. Open de Azure Functions-context met behulp van de eigenschap `function_context` in de indelingscontext.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+U kunt de opdracht `Invoke-ActivityFunction` gebruiken om andere functies aan te roepen op naam, parameters door te geven en functie-uitvoer te retourneren. Steeds als de code `Invoke-ActivityFunction` aanroept zonder de schakeloptie `NoWait` controleert het Durable Functions-framework de voortgang van de huidige functie-instantie. Als het proces of de virtuele machine halverwege tijdens de uitvoering recycleert, dan begint de functie-instantie opnieuw vanaf de voorgaande `Invoke-ActivityFunction`-aanroep. Zie de volgende sectie, Patroon #2, voor meer informatie: Uitwaaieren/inwaaieren.
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Patroon #2: Uitwaaieren/inwaaieren
@@ -211,6 +225,30 @@ main = df.Orchestrator.create(orchestrator_function)
 Het uitwaaierwerk wordt verdeeld over meerdere instanties van de `F2`-functie. Het werk wordt opgevolgd met een dynamische takenlijst. `context.task_all`-API wordt aangeroepen om te wachten tot alle aangeroepen functies voltooid zijn. Vervolgens wordt de `F2`-functie-uitvoer samengevoegd uit de dynamische takenlijst en doorgegeven naar de `F3`-functie.
 
 Het automatisch plaatsen van controlepunten bij de `yield`-aanroep op `context.task_all` zorgt ervoor dat een reeds voltooide taak niet opnieuw moet worden opgestart bij een potentiële crash of reboot halverwege.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+Het uitwaaierwerk wordt verdeeld over meerdere instanties van de `F2`-functie. Let op het gebruik van de schakeloptie `NoWait` bij de aanroep van de `F2`-functie: met deze schakeloptie kan de orchestrator het aanroepen van `F2` voortzetten zonder dat de activiteit is voltooid. Het werk wordt opgevolgd met een dynamische takenlijst. De opdracht `Wait-ActivityFunction` wordt aangeroepen om te wachten tot alle aangeroepen functies voltooid zijn. Vervolgens wordt de `F2`-functie-uitvoer samengevoegd uit de dynamische takenlijst en doorgegeven naar de `F3`-functie.
+
+Het automatisch plaatsen van controlepunten bij de `Wait-ActivityFunction`-aanroep zorgt ervoor dat een reeds voltooide taak niet opnieuw moet worden opgestart bij een potentiële crash of reboot halverwege.
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Monitor wordt momenteel niet ondersteund in PowerShell.
+
 ---
 
 Wanneer een verzoek ontvangen is, wordt er een nieuwe indelingsinstantie gemaakt voor die taak-id. De instantie controleert een status tot er aan een voorwaarde is voldaan en de lus wordt afgesloten. Een duurzame timer controleert het polling-interval. Vervolgens kan er meer werk worden uitgevoerd of kan de indeling beëindigd worden. Wanneer `nextCheck` `expiryTime` overschrijdt eindigt de bewaking.
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 Roep `context.create_timer` aan om de duurzame timer te maken. De melding wordt ontvangen door `context.wait_for_external_event`. Vervolgens wordt `context.task_any` aangeroepen om te bepalen of er geëscaleerd wordt (time-out vindt eerst plaats) of dat de goedkeuring verwerkt wordt (de goedkeuring wordt ontvangen voor de time-out).
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Menselijke interactie wordt momenteel niet ondersteund in PowerShell.
+
 ---
 
 Een externe client kan de gebeurtenismelding afleveren aan een wachtende orchestrator-functie met behulp van de [ingebouwde HTTP API's](durable-functions-http-api.md#raise-event):
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Menselijke interactie wordt momenteel niet ondersteund in PowerShell.
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 Duurzame entiteiten worden momenteel niet ondersteund in Python.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Duurzame entiteiten worden momenteel niet ondersteund in PowerShell.
+
 ---
 
 Clients kunnen *bewerkingen* in de wachtrij plaatsen (ook bekend als 'signalering') voor een entiteitsfunctie met behulp van de [entiteitsclientbinding](durable-functions-bindings.md#entity-client).
@@ -622,6 +676,10 @@ module.exports = async function (context) {
 # <a name="python"></a>[Python](#tab/python)
 
 Duurzame entiteiten worden momenteel niet ondersteund in Python.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Duurzame entiteiten worden momenteel niet ondersteund in PowerShell.
 
 ---
 

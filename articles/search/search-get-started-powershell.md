@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: eb7dcc0956cd9ce214ad3894aa8cc2b99beed942
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519810"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506002"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in PowerShell met behulp van REST API's
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Er moet een index in de service aanwezig zijn voordat u gegevens laadt, tenzij u
 
 De vereiste elementen van een index zijn een naam en een verzameling velden. Met de verzameling velden wordt de structuur van een *document* gedefinieerd. Elk veld is voorzien van een naam, type en kenmerken die bepalen hoe het wordt gebruikt (bijvoorbeeld of er op volledige tekst kan worden gezocht, of er filters kunnen worden toegepast en of het veld kan worden opgehaald in de zoekresultaten). In een index moet een van de velden van het type `Edm.String` worden ingesteld als de *sleutel* voor de documentidentiteit.
 
-Deze index heeft de naam 'hotels-quickstart' en beschikt over de onderstaande velddefinities. Dit is een subset van de grotere [Hotels-index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) die in andere scenario's wordt gebruikt. We hebben de index voor deze quickstart ingekort.
+Deze index heeft de naam 'hotels-quickstart' en beschikt over de onderstaande velddefinities. Dit is een subset van de grotere [Hotels-index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) die in andere kennisartikelen wordt gebruikt. De velddefinities zijn in deze Quick Start afgekapt om het beknopt te houden.
 
 1. Plak dit voorbeeld in PowerShell om een **$body**-object te maken dat het indexschema bevat.
 
@@ -319,7 +319,7 @@ Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eind
 
 Bij deze stap ziet u hoe u een query op een index uitvoert met behulp van de [API Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Zorg ervoor dat u enkele aanhalingstekens gebruikt bij het zoeken naar $urls. Queryreeksen bevatten **$** tekens. Als de volledige reeks tussen enkele aanhalingstekens taak, hoeft u geen escape-teken te gebruiken.
+Zorg ervoor dat u enkele aanhalingstekens gebruikt bij het zoeken naar $urls. Queryreeksen bevatten **$** -tekens. Als de volledige reeks tussen enkele aanhalingstekens staat, hoeft u geen escape-teken te gebruiken.
 
 1. Stel het eindpunt in op de documentverzameling *hotels-quickstart* en voeg een parameter **zoeken** toe om in een querytekenreeks door te geven. 
   
@@ -378,7 +378,7 @@ Probeer een paar andere queryvoorbeelden uit om een idee te krijgen van de synta
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
-# Apply a filter to the index to find hotels rated 4 or highter
+# Apply a filter to the index to find hotels rated 4 or higher
 # Returns the HotelName and Rating. Two documents match.
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 

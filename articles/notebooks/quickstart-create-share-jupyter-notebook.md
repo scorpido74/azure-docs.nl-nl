@@ -1,21 +1,21 @@
 ---
-title: Een Jupyter-notebook maken en uitvoeren in Azure Notebooks Preview
-description: Snel een Jupyter-notebook maken en uitvoeren via Azure Notebooks Preview en dat notebook vervolgens delen met anderen
+title: Een Jupyter Notebook maken en uitvoeren in Azure Notebooks Preview
+description: Snel een Jupyter Notebook maken en uitvoeren via Azure Notebooks Preview en dat notebook vervolgens delen met anderen.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849396"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589330"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Quickstart: Een notebook maken en uitvoeren in Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-In deze quickstart gaat u een Jupyter-notebook maken en uitvoeren via Azure Notebooks en dat notebook vervolgens delen met anderen. Met Jupyter kunt u eenvoudig Markdown-tekst, uitvoerbare code, persistente gegevens, afbeeldingen en visualisaties combineren op één deelbaar canvas, het notebook. Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie.
+In deze quickstart gaat u een Jupyter Notebook maken en uitvoeren via Azure Notebooks en dat notebook vervolgens delen met anderen. Met Jupyter kunt u eenvoudig Markdown-tekst, uitvoerbare code, persistente gegevens, afbeeldingen en visualisaties combineren op één deelbaar canvas, het notebook. Azure Notebooks is een gratis gehoste service om Jupyter Notebooks te ontwikkelen en uit te voeren in de cloud, zonder installatie.
 
 ## <a name="prerequisites"></a>Vereisten
 Geen.
@@ -91,7 +91,7 @@ Geen.
 
 1. Selecteer het pictogram Opslaan om uw werk op te slaan:
 
-    ![Pictogram Opslaan op de werkbalk van een Jupyter-notebook](media/quickstarts/hello-results-save-icon.png)
+    ![Pictogram Opslaan op de werkbalk van Jupyter Notebook](media/quickstarts/hello-results-save-icon.png)
 
 1. Selecteer de menuopdracht **Bestand** > **Sluiten en stoppen** om de server te stoppen en het browservenster te sluiten.
 
@@ -106,4 +106,4 @@ Op de projectpagina kunt u ook het menu **Delen** gebruiken om een koppeling te 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: een Jupyter-notebook maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)
+> [Zelfstudie: Een Jupyter Notebook maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)

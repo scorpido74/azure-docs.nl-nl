@@ -3,12 +3,12 @@ title: 'Azure-quickstart: Een event hub maken met behulp van de Azure-portal'
 description: In deze snelstart leert u hoe u een Azure event hub maakt met behulp van Azure Portal en vervolgens gebeurtenissen verzendt en ontvangt met behulp van .NET Standard SDK.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: bc9190bba6b21e59f10f51bd0eb7da2426f6d1b4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 271d01ef6711c7e57538abae301ae924fb6ff351
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902113"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142550"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Quickstart: Een event hub maken met behulp van Azure Portal
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
@@ -28,51 +28,52 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 Een resourcegroep is een logische verzameling Azure-resources. Alle resources worden geïmplementeerd en beheerd in een resourcegroep. Een resourcegroep maken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Kik in het linkernavigatievenster op **Resourcegroepen**. Klik vervolgens op **Toevoegen**.
+1. Kik in het linkernavigatievenster op **Resourcegroepen**. Klik vervolgens op **Toevoegen**.
 
    ![Resourcegroepen - Knop Toevoegen](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
-2. Klik bij **Abonnement** op de naam van het Azure-abonnement waarin u de resourcegroep wilt maken.
-3. Typ een unieke **naam voor de resourcegroep**. Het systeem controleert onmiddellijk of de naam beschikbaar is in het momenteel geselecteerde Azure-abonnement.
-4. Selecteer een **regio** voor de resourcegroep.
-5. Selecteer **Controleren + maken**.
+1. Klik bij **Abonnement** op de naam van het Azure-abonnement waarin u de resourcegroep wilt maken.
+1. Typ een unieke **naam voor de resourcegroep**. Het systeem controleert onmiddellijk of de naam beschikbaar is in het momenteel geselecteerde Azure-abonnement.
+1. Selecteer een **regio** voor de resourcegroep.
+1. Selecteer **Controleren + maken**.
 
    ![Resourcegroep - Maken](./media/event-hubs-quickstart-portal/resource-groups2.png)
-6. Selecteer op de pagina **Controleren + maken** de optie **Maken**. 
+1. Selecteer op de pagina **Controleren + maken** de optie **Maken**. 
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 
 Een Event Hubs-naamruimte biedt een unieke scopingcontainer, waarnaar wordt verwezen met de volledig gekwalificeerde domeinnaam (FQDN), waarin u een of meer Event Hubs maakt. Ga als volgt te werk om een ​​naamruimte in uw resourcegroep te maken met behulp van de portal:
 
 1. Open de Azure-portal en klik op **Een resource maken** linksboven in het scherm.
-2. Selecteer **Alle services** in het menu aan de linkerkant en selecteer de **ster (`*`)** naast **Event Hubs** in de categorie **Analyse**. Controleer of **Event Hubs** is toegevoegd aan **FAVORIETEN** in het navigatiemenu aan de linkerkant. 
+1. Selecteer **Alle services** in het menu aan de linkerkant en selecteer de **ster (`*`)** naast **Event Hubs** in de categorie **Analyse**. Controleer of **Event Hubs** is toegevoegd aan **FAVORIETEN** in het navigatiemenu aan de linkerkant. 
     
    ![Zoeken naar Event Hubs](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
-3. Selecteer **Event Hubs** onder **FAVORIETEN** in het navigatiemenu links en selecteer **Toevoegen** op de werkbalk.
+1. Selecteer **Event Hubs** onder **FAVORIETEN** in het navigatiemenu links en selecteer **Toevoegen** op de werkbalk.
 
    ![Knop Toevoegen](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
-4. Voer op de pagina **Naamruimte maken** de volgende stappen uit:
-    1. Selecteer het **abonnement** waarin u de naamruimte wilt maken.
-    2. Selecteer de **resourcegroep** die u in de vorige stap hebt gemaakt. 
-    3. Voer een **naam** in voor de naamruimte. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
-    4. Selecteer een **locatie** voor de naamruimte.    
-    5. Kies de **prijscategorie** (Basic of Standard).  
-    6. Laat de instellingen voor **doorvoereenheden** ongewijzigd. Zie [Schaalbaarheid van Event Hubs](event-hubs-scalability.md#throughput-units) voor meer informatie over doorvoereenheden  
-    5. Selecteer **Controleren en maken** onderaan de pagina.
+1. Voer op de pagina **Naamruimte maken** de volgende stappen uit:  
+   1. Selecteer het **abonnement** waarin u de naamruimte wilt maken.  
+   1. Selecteer de **resourcegroep** die u in de vorige stap hebt gemaakt.   
+   1. Voer een **naam** in voor de naamruimte. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.  
+   1. Selecteer een **locatie** voor de naamruimte.      
+   1. Kies de **prijscategorie** (Basic of Standard).    
+   1. Laat de instellingen voor **doorvoereenheden** ongewijzigd. Zie [Schaalbaarheid van Event Hubs](event-hubs-scalability.md#throughput-units) voor meer informatie over doorvoereenheden.  
+   1. Selecteer **Controleren en maken** onderaan de pagina.
+      
+      ![Een Event Hub-naamruimte maken](./media/event-hubs-quickstart-portal/create-event-hub1.png)
+   1. Controleer de instellingen op de pagina **Controleren en maken**, en selecteer **Maken**. Wacht totdat de installatie is voltooid. 
+      
+      ![Pagina Controleren en maken](./media/event-hubs-quickstart-portal/review-create.png)
+      
+   1. Selecteer op de pagina **Implementatie** de optie **Ga naar resource** om naar de pagina voor uw naamruimte te gaan. 
+      
+      ![Implementatie voltooid - ga naar resource](./media/event-hubs-quickstart-portal/deployment-complete.png)  
+   1. Bevestig dat de pagina **Naamruimte van Event Hubs** lijkt op het volgende voorbeeld:   
+      
+      ![Startpagina voor de naamruimte](./media/event-hubs-quickstart-portal/namespace-home-page.png)       
 
-       ![Een Event Hub-naamruimte maken](./media/event-hubs-quickstart-portal/create-event-hub1.png)
-   6. Controleer de instellingen op de pagina **Controleren en maken**, en selecteer **Maken**. Wacht totdat de installatie is voltooid. 
-
-       ![Pagina Controleren en maken](./media/event-hubs-quickstart-portal/review-create.png)
-   7. Selecteer op de pagina **Implementatie** de optie **Ga naar resource** om naar de pagina voor uw naamruimte te gaan. 
-
-      ![Implementatie voltooid - ga naar resource](./media/event-hubs-quickstart-portal/deployment-complete.png)
-   8. Bevestig dat de pagina **Naamruimte van Event Hubs** lijkt op het volgende voorbeeld: 
-
-       ![Startpagina voor de naamruimte](./media/event-hubs-quickstart-portal/namespace-home-page.png)       
-
-       > [!NOTE]
-       > Azure Event Hubs biedt u een Kafka-eindpunt. Dit eindpunt biedt uw Event Hubs-naamruimte systeemeigen inzicht in [Apache Kafka](https://kafka.apache.org/intro)-berichtprotocol en API's. Met deze mogelijkheid kunt u met uw event hubs communiceren zoals u zou doen met Kafka-onderwerpen, zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html) en later. Zie [Event Hubs gebruiken uit Apache Kafka-toepassingen](event-hubs-for-kafka-ecosystem-overview.md) voor meer informatie.
+      > [!NOTE]
+      > Azure Event Hubs biedt u een Kafka-eindpunt. Dit eindpunt biedt uw Event Hubs-naamruimte systeemeigen inzicht in [Apache Kafka](https://kafka.apache.org/intro)-berichtprotocol en API's. Met deze mogelijkheid kunt u met uw event hubs communiceren zoals u zou doen met Kafka-onderwerpen, zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html) en later. Zie [Event Hubs gebruiken uit Apache Kafka-toepassingen](event-hubs-for-kafka-ecosystem-overview.md) voor meer informatie.
     
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
@@ -85,7 +86,7 @@ Ga als volgt te werk om een Event Hub in de naamruimte te maken:
 1. Typ een naam voor uw Event Hub en klik vervolgens op **Maken**.
    
     ![Event hub maken](./media/event-hubs-quickstart-portal/create-event-hub5.png)
-4. U kunt de status van het Event Hub-creatieproces bekijken in de waarschuwingen. Wanneer de Event Hub is gemaakt, wordt deze weergegeven in de lijst Event Hubs, zoals in de volgende afbeelding is te zien:
+1. U kunt de status van het Event Hub-creatieproces bekijken in de waarschuwingen. Wanneer de Event Hub is gemaakt, wordt deze weergegeven in de lijst Event Hubs, zoals in de volgende afbeelding is te zien:
 
     ![Event Hub gemaakt](./media/event-hubs-quickstart-portal/event-hub-created.png)
 

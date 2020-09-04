@@ -3,17 +3,17 @@ title: Interactie met IoT Plug en Play Preview-apparaat dat is verbonden met uw 
 description: Gebruik Node.js (.NET) om verbinding te maken met een IoT Plug en Play Preview-apparaat dat is verbonden met uw Azure IoT-oplossing.
 author: elhorton
 ms.author: elhorton
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 511a61fb1069ce10e94e24ecd3ba6d60470ca40f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424440"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184734"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Quickstart: Interactie met een IoT Plug en Play Preview-apparaat dat is verbonden met uw oplossing (Node.js)
 
@@ -33,12 +33,6 @@ Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcom
 node --version
 ```
 
-Installeer de [SDK van de Node-service met ondersteuning voor IoT Plug en Play](https://www.npmjs.com/package/azure-iot-digitaltwins-service) door de volgende opdracht uit te voeren:
-
-```cmd/sh
-npm i azure-iot-digitaltwins-service
-```
-
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 Voer de volgende opdracht uit om de _verbindingsreeks voor IoT Hub_ op te halen voor uw hub. Noteer deze verbindingsreeks voor later gebruik in deze quickstart:
@@ -53,15 +47,19 @@ Voer de volgende opdracht uit om de _apparaatverbindingsreeks_ op te halen voor 
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
 ```
 
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Kloon de SDK-opslagplaats met de voorbeeldcode
+
+De service-SDK is in preview, wat betekent dat u de voorbeelden moet klonen uit een [preview-branch van de Node-SDK](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh). Open een terminalvenster in een map naar keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats van de branch **pnp-preview-refresh** van de [Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) te klonen:
+
+```cmd/sh
+git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+```
+
 ## <a name="run-the-sample-device"></a>Het voorbeeldapparaat uitvoeren
 
 In deze quickstart gebruikt u als voorbeeld een thermostaat die in Node.js is geschreven als IoT Plug en Play-apparaat. Het voorbeeldapparaat uitvoeren:
 
-1. Open een terminalvenster in een map naar keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats van [Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) te klonen naar deze locatie:
-
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node
-    ```
+1. Open een terminalvenster en navigeer naar de lokale map met de Microsoft Azure IoT SDK voor Node.js-opslagplaats die u hebt gekloond vanuit GitHub.
 
 1. Dit terminalvenster wordt gebruikt als uw **apparaatterminal**. Ga naar de map van de gekloonde opslagplaats en navigeer naar de map */azure-iot-sdk-node/device/samples/pnp*. Installeer de afhankelijkheden door de volgende opdracht uit te voeren:
 
@@ -90,10 +88,10 @@ In deze quickstart gebruikt u een IoT-voorbeeldoplossing in C# om te communicere
 1. Open een ander terminalvenster om als **serviceterminal** te gebruiken. De service-SDK is in preview, wat betekent dat u de voorbeelden moet klonen uit een [preview-branch van de Node-SDK](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh):
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b public-preview-pnp
+    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     ```
 
-1. Ga naar de map van de gekloonde branch van de opslagplaats en ga naar de map */azure-iot-samples-node/digital-twins/samples/service/javascript*. Installeer de afhankelijkheden door de volgende opdracht uit te voeren:
+1. Ga naar de map van de gekloonde branch van de opslagplaats en ga naar de map */azure-iot-sdk-node/digital-twins/samples/service/javascript*. Installeer de afhankelijkheden door de volgende opdracht uit te voeren:
 
     ```cmd/sh
     npm install
@@ -144,14 +142,14 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
 
 ### <a name="update-a-writable-property"></a>Een schrijfbare eigenschap bijwerken
 
-1. Open het bestand *update_digital_twin_property.js* in de code-editor.
+1. Open het bestand *update_digital_twin.js* in de code-editor.
 
 1. Bekijk de voorbeeldcode. U kunt zien hoe u een JSON-patch maakt om de digitale dubbel van het apparaat bij te werken. In dit voorbeeld wordt de temperatuur van de thermostaat vervangen door de waarde 42:
 
     ```javascript
     const patch = [{
         op: 'add',
-        path: 'targetTemperature',
+        path: '/targetTemperature',
         value: '42'
       }]
     ```
@@ -159,43 +157,23 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
 1. Gebruik de volgende opdracht in de terminal **service** om het voorbeeld voor het bijwerken van de eigenschap uit te voeren:
 
     ```cmd/sh
-    node update_digital_twin_property.js
-    ```
-
-1. De uitvoer van de terminal **service** toont de bijgewerkte apparaatgegevens. Ga naar het onderdeel `thermostat1` om de nieuwe `targetTemperature`-waarde van 42 te bekijken:
-
-    ```json
-    "modelId": "dtmi:com:example:Thermostat;1",
-        "version": 12,
-        "properties": {
-            "desired": {
-                "targetTemperature": "42",
-                "$metadata": {
-                    "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                    "$lastUpdatedVersion": 5,
-                    "targetTemperature": {
-                        "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                        "$lastUpdatedVersion": 5
-                    }
-                },
-                "$version": 5
-            },
-            "reported": {
-                "serialNumber": "123abc",
-                "maxTempSinceLastReboot": 32.279942997143785,
-                "targetTemperature": {
-                    "value": "42",
-                    "ac": 200,
-                    "ad": "Successfully executed patch for targetTemperature",
-                    "av": 2
-                },
+    node update_digital_twin.js
     ```
 
 1. U kunt in de terminal **apparaat** zien dat het apparaat de update heeft ontvangen:
 
     ```cmd/sh
-    Received an update for targetTemperature: 42
+    The following properties will be updated for root interface:
+    {
+      targetTemperature: {
+        value: 42,
+        ac: 200,
+        ad: 'Successfully executed patch for targetTemperature',
+        av: 2
+      }
+    }
     updated the property
+    Properties have been reported for component
     ```
 
 1. Voer in de **serviceterminal** de volgende opdracht uit om te bevestigen dat de eigenschap is bijgewerkt:
@@ -207,15 +185,7 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
 1. In de uitvoer van de **serviceterminal**, in het antwoord van de digitale dubbel onder het onderdeel `thermostat1`, ziet u dat de bijgewerkte doeltemperatuur wordt vermeld. Het kan enige tijd duren voordat het apparaat de update heeft voltooid. Herhaal deze stap totdat het apparaat de update van de eigenschap heeft verwerkt:
 
     ```json
-    "$model": "dtmi:com:example:Thermostat;1",
-    "targetTemperature": {
-      "desiredValue": 42,
-      "desiredVersion": 4,
-      "ackVersion": 4,
-      "ackCode": 200,
-      "ackDescription": "Successfully executed patch for targetTemperature",
-      "lastUpdateTime": "2020-07-09T13:55:30.5062641Z"
-    }
+    targetTemperature: 42,
     ```
 
 ### <a name="invoke-a-command"></a>Een opdracht aanroepen
@@ -225,6 +195,8 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
 1. Ga naar de terminal **service**. Gebruik de volgende opdracht om het voorbeeld voor het aanroepen van de opdracht uit te voeren:
 
     ```cmd/sh
+    set IOTHUB_COMMAND_NAME=getMaxMinReport
+    set IOTHUB_COMMAND_PAYLOAD=commandpayload
     node invoke_command.js
     ```
 
@@ -245,7 +217,7 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
 1. U kunt in de terminal **apparaat** zien dat de opdracht is bevestigd:
 
     ```cmd/sh
-    MaxMinReport [object Object]
+    MaxMinReport commandpayload
     Response to method 'getMaxMinReport' sent successfully.
     ```
 

@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407303"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511291"
 ---
-Dit artikel biedt informatie om u op weg te helpen met de Custom Vision-SDK voor Node.js om een objectdetectiemodel te maken. Wanneer u het project hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde eindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken.
+Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-clientbibliotheek voor Node.js om een objectdetectiemodel te maken. Wanneer u het project hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde eindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -24,9 +24,9 @@ Dit artikel biedt informatie om u op weg te helpen met de Custom Vision-SDK voor
 [!INCLUDE [node-get-images](../../includes/node-get-images.md)]
 
 
-## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
+## <a name="install-the-custom-vision-client-library"></a>De Custom Vision-clientbibliotheek installeren
 
-Als u de Custom Vision Service SDK's voor Node.js wilt installeren in uw project, voert u de volgende opdrachten uit:
+Als u de Custom Vision Service-clientbibliotheken voor Node.js wilt installeren in uw project, voert u de volgende opdrachten uit:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

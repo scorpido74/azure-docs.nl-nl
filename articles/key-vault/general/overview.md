@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Key Vault - Azure Key Vault | Microsoft Docs
-description: Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief.
+description: Azure Key Vault is een archief met beveiligde geheimen dat zorgt voor het beheer van geheimen, sleutels en certificaten, volledig ondersteund door hardwarebeveiligingsmodules.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216320"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190547"
 ---
 # <a name="about-azure-key-vault"></a>Over Azure Key Vault
 

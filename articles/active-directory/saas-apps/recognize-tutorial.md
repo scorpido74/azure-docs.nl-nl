@@ -1,57 +1,53 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met recognize | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en het herkennen van.
+title: 'Zelfstudie: Azure Active Directory-integratie met Recognize | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Recognize.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cfad939e-c8f4-45a0-bd25-c4eb9701acaa
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943342"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548869"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Zelf studie: integratie Azure Active Directory met recognize
+# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Zelfstudie: Azure Active Directory-integratie met Recognize
 
-In deze zelf studie leert u hoe u kunt integreren met Azure Active Directory (Azure AD).
-Integratie herkennen met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Recognize integreert met Azure Active Directory (Azure AD).
+De integratie van Recognize met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft om te herkennen.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld om te herkennen (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD beheren wie toegang heeft tot Recognize.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Recognize (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met herkennen wilt configureren, hebt u de volgende items nodig:
+U hebt het volgende nodig om Azure AD-integratie met Recognize te configureren:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding herkennen
+* Een Recognize-abonnement waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Recognize ondersteunt door **SP** GEÏNITIEERDe SSO
+* Recognize ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-recognize-from-the-gallery"></a>Herkenning toevoegen vanuit de galerie
+## <a name="adding-recognize-from-the-gallery"></a>Recognize toevoegen vanuit de galerie
 
-Als u de integratie van recognize in azure AD wilt configureren, moet u herkennen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Recognize met Azure AD moet u Recognize uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u herkenning wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om Recognize vanuit de galerie toe te voegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +61,31 @@ Als u de integratie van recognize in azure AD wilt configureren, moet u herkenne
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak de tekst **Recognize**, selecteer **erkennen** van resultaten paneel en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Recognize**, selecteer **Recognize** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Herkennen in de lijst met resultaten](common/search-new-app.png)
+     ![Recognize in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met herkennen op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in recognize worden ingesteld.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD bij Recognize op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tot stand is gebracht tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Recognize.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met recognize, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding van Azure AD bij Recognize wilt configureren en testen, voert u de volgende stappen uit:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer eenmalige aanmelding herkennen](#configure-recognize-single-sign-on)** -om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak recognize test User](#create-recognize-test-user)** -als u een equivalent van Julia Simon in recognize wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Recognize configureren](#configure-recognize-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker voor Recognize maken](#create-recognize-test-user)** : als u in Recognize een tegenhanger van Britta Simon wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met recognize:
+Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD bij Recognize wilt configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie **herkennen** de optie **eenmalige aanmelding**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) op de pagina voor toepassingsintegratie van **Recognize** de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,7 +100,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
 
     >[!NOTE]
-    >U krijgt het **META gegevensbestand van de service provider** via de sectie **Configure single sign-on** van de zelf studie.
+    >U krijgt het **metagegevensbestand van de serviceprovider** via de sectie **Eenmalige aanmelding voor Recognize configureren** van de zelfstudie.
 
     a. Klik op **Metagegevensbestand uploaden**.
 
@@ -114,20 +110,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
 
-    c. Nadat het meta gegevensbestand is geüpload, wordt de **id** -waarde automatisch ingevuld in de basis configuratie sectie voor SAML.
+    c. Wanneer het metagegevensbestand is geüpload, wordt de waarde voor **Id** automatisch ingevuld in de sectie Standaard SAML-configuratie.
 
-    ![Informatie over het domein en Url's van eenmalige aanmelding herkennen](common/sp-identifier.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Recognize](common/sp-identifier.png)
 
-     Typ in het tekstvak **URL voor aanmelden** een URL met behulp van het volgende patroon:`https://recognizeapp.com/<your-domain>/saml/sso`
+     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://recognizeapp.com/<your-domain>/saml/sso`
 
     > [!Note]
-    > Als de **id** -waarde niet automatisch wordt ingevuld, krijgt u de id-waarde door de meta gegevens-URL van de service provider te openen in de sectie SSO-instellingen die later wordt beschreven in de sectie **Configure eenmalige aanmelding herkennen** van de zelf studie. De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team](mailto:support@recognizeapp.com) van de client om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Als de waarde voor **Id** niet automatisch wordt ingevuld, krijgt u de id-waarde door de URL voor de metagegevens van de serviceprovider te openen in de sectie Instellingen voor eenmalige aanmelding, die later wordt beschreven in de sectie **Eenmalige aanmelding voor Recognize configureren** van de zelfstudie. De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van Recognize](mailto:support@recognizeapp.com) om de waarde op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer op de sectie **instellen herkennen** de juiste URL ('s) conform uw vereiste.
+6. Kopieer in de sectie **Recognize instellen** de betreffende URL('s) naargelang uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -137,11 +133,11 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-recognize-single-sign-on"></a>Configureren van eenmalige aanmelding herkennen
+### <a name="configure-recognize-single-sign-on"></a>Eenmalige aanmelding voor Recognize configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw herkende Tenant.
+1. Meld u in een ander browservenster als beheerder aan bij de Recognize-tenant.
 
-2. Klik in de rechter bovenhoek op **menu**. Ga naar **bedrijfs beheerder**.
+2. Klik in de rechterbovenhoek op **Menu**. Ga naar **Bedrijfsbeheerder**.
    
     ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_000.png)
 
@@ -149,27 +145,27 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
    
     ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_001.png)
 
-4. Voer de volgende stappen uit in de sectie **SSO-instellingen** .
+4. Voer in de sectie **Instellingen voor eenmalige aanmelding** de volgende stappen uit.
    
     ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. Selecteer aan om SSO **in**te **scha kelen**.
+    a. Selecteer **AAN** voor **Eenmalige aanmelding inschakelen**.
 
-    b. Plak in het tekstvak **IDP entiteit-id** de waarde van de **Azure ad-id** die u van Azure Portal hebt gekopieerd.
+    b. Plak in het tekstvak **IDP-entiteits-id** de waarde van **Azure AD-id** die u hebt gekopieerd uit Azure Portal.
     
-    c. Plak in het tekstvak **URL voor SSO-doel** de waarde van de AANMELDINGS- **URL** die u hebt gekopieerd uit Azure Portal.
+    c. Plak in het tekstvak **Doel-URL voor eenmalige aanmelding** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
     
-    d. Plak in het tekstvak **URL van Slo-doel** de waarde van de **afmeldings-URL** die u van Azure Portal hebt gekopieerd. 
+    d. Plak in het tekstvak **Doel-URL voor eenmalige aanmelding** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit Azure Portal. 
     
-    e. Open het gedownloade **certificaat bestand (base64)** in Klad blok, kopieer de inhoud ervan naar het klem bord en plak het in het tekstvak **certificaat** .
+    e. Open het gedownloade bestand **Certificate(Base64)** in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze vervolgens in het tekstvak **Certificaat**.
     
-    f. Klik op de knop **instellingen opslaan** . 
+    f. Klik op de knop **Instellingen opslaan**. 
 
-5. Naast de sectie **SSO-instellingen** kopieert u de URL onder de meta gegevens-URL van de **service provider**.
+5. Kopieer naast de sectie **Instellingen voor eenmalige aanmelding** de URL onder **URL voor de metagegevens van de serviceprovider**.
    
     ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-6. Open de **meta gegevens-URL-koppeling** onder een lege browser om het meta gegevens document te downloaden. Kopieer vervolgens de waarde van EntityDescriptor (entityID) uit het bestand en plak deze in het tekstvak **id** in de **basis-SAML-configuratie** op Azure Portal.
+6. Open de **koppeling met de metagegevens-URL** in een lege browser om het document met metagegevens te downloaden. Kopieer vervolgens de EntityDescriptor-waarde (entityID) uit het bestand en plak deze in het tekstvak **Id** in **Standaard SAML-configuratie** in Azure Portal.
     
     ![Eenmalige aanmelding in de app configureren](./media/recognize-tutorial/tutorial_recognize_004.png)
 
@@ -181,7 +177,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -189,25 +185,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de herkenning.
+In dit gedeelte stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot Recognize.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **herkennen**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Recognize**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Recognize**.
+2. Selecteer **Recognize** in de lijst met toepassingen.
 
-    ![De koppeling herkennen in de lijst met toepassingen](common/all-applications.png)
+    ![De Recognize-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -217,47 +213,47 @@ In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-recognize-test-user"></a>Test gebruiker maken herkennen
+### <a name="create-recognize-test-user"></a>Een Recognize-testgebruiker maken
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij recognize, moeten ze worden ingericht in recognize. In het geval van herkennen is inrichting een hand matige taak.
+Als u gebruikers van Azure AD de mogelijkheid wilt bieden om zich aan te melden bij Recognize, moeten ze worden ingericht voor Recognize. In het geval van Recognize is inrichten een handmatige taak.
 
-Deze app biedt geen ondersteuning voor SCIM-inrichting, maar heeft een alternatieve gebruikers synchronisatie waarmee gebruikers worden ingericht. 
+Deze app biedt geen ondersteuning voor SCIM-inrichting, maar beschikt over een alternatieve gebruikerssynchronisatie waarmee gebruikers worden ingericht. 
 
-**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
+**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u als beheerder aan bij uw website voor het herkennen van uw bedrijf.
+1. Meld u als beheerder aan bij de Recognize-bedrijfssite.
 
-2. Klik in de rechter bovenhoek op **menu**. Ga naar **bedrijfs beheerder**.
+2. Klik in de rechterbovenhoek op **Menu**. Ga naar **Bedrijfsbeheerder**.
 
 3. Klik in het linkernavigatiedeelvenster op **Instellingen**.
 
-4. Voer de volgende stappen uit in de sectie **gebruikers synchronisatie** .
+4. Voer in de sectie **Gebruikerssynchronisatie** de volgende stappen uit.
    
     ![Nieuwe gebruiker](./media/recognize-tutorial/tutorial_recognize_005.png "Nieuwe gebruiker")
    
-    a. Selecteer **aan**als **synchronisatie is ingeschakeld**.
+    a. Selecteer **AAN** voor **Synchronisatie ingeschakeld**.
    
-    b. Selecteer bij **provider synchronisatie**de optie **micro soft/Office 365**.
+    b. Selecteer **Microsoft/Office 365** voor **Een synchronisatieprovider kiezen**.
    
-    c. Klik op **gebruikers synchronisatie uitvoeren**.
+    c. Klik op **Gebruikerssynchronisatie uitvoeren**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel herkennen in het toegangs venster klikt, wordt u automatisch aangemeld bij de herkenning waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Recognize-tegel in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de Recognize-instantie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

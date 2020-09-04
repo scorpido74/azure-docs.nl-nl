@@ -1,149 +1,149 @@
 ---
-title: 'Snelstartgids: Knowledge Base-QnA Maker maken, trainen en publiceren'
-description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base op basis van een eenvoudige Veelgestelde vragen pagina om vragen te beantwoorden QnA Maker.
+title: 'Quickstart: Een knowledge base maken, trainen en publiceren - QnA Maker'
+description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voorbeeld van het maken van een QnA Maker-knowledge base op basis van een eenvoudige webpagina met veelgestelde vragen om vragen te beantwoorden in QnA Maker.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340586"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540751"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstartgids: uw QnA Maker Knowledge Base maken, trainen en publiceren
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: Uw QnA Maker-knowledge base maken, trainen en publiceren
 
-U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base op basis van een eenvoudige Veelgestelde vragen pagina om vragen te beantwoorden QnA Maker.
+U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voorbeeld van het maken van een QnA Maker-knowledge base op basis van een eenvoudige webpagina met veelgestelde vragen om vragen te beantwoorden in QnA Maker.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-> * Een QnA Maker [resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die in de Azure Portal is gemaakt. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
+> * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+> * Een QnA Maker-[resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die in Azure Portal is gemaakt. Onthoud uw Azure Active Directory-id, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
-## <a name="create-your-first-qna-maker-knowledge-base"></a>Uw eerste QnA Maker Knowledge Base maken
+## <a name="create-your-first-qna-maker-knowledge-base"></a>Uw eerste QnA Maker-knowledge base maken
 
-1. Meld u aan bij de [QnAMaker.ai](https://QnAMaker.ai) -Portal met uw Azure-referenties.
+1. Meld u bij de [QnAMaker.ai](https://QnAMaker.ai)-portal met uw Azure-referenties.
 
-1. Selecteer in de portal QnA Maker **een Knowledge Base maken**.
+1. Selecteer **Een knowledge base maken** in de QnA Maker-portal.
 
-1. Sla **stap 1** over op de pagina **maken** als u uw QnA Maker-resource al hebt.
+1. Sla op de pagina **Maken** **Stap 1** over als u uw QnA Maker-resource al hebt.
 
-    Als u de resource nog niet hebt gemaakt, selecteert u **een QnA-service maken**. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
+    Selecteer **Een QnA-service maken** als u de resource nog niet hebt gemaakt. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Onthoud uw Azure Active Directory-id, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
-    Wanneer u klaar bent met het maken van de resource in de Azure Portal, keert u terug naar de QnA Maker Portal, vernieuwt u de browser pagina en gaat u verder met **stap 2**.
+    Ga terug naar de QnA Maker-portal, vernieuw de browserpagina en ga door naar **Stap 2** als u klaar bent met het maken van de resource in Azure Portal.
 
-1. Selecteer in **stap 3**uw Active Directory, abonnement, service (resource) en de taal voor alle Knowledge bases die in de service zijn gemaakt.
+1. Selecteer in **Stap 3** uw Active Directory, abonnement en service (resource), en de taal voor alle knowledge bases die in de service worden gemaakt.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Scherm opname van het selecteren van een QnA Maker service Knowledge Base":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Schermopname van het selecteren van een knowledge base in de QnA Maker-service":::
 
-1. In **stap 3**moet u de Knowledge Base het voor **beeld QnA KB**noemen.
+1. Geef uw knowledge base in **Stap 3** de naam **Mijn voorbeeld-QnA-KB**.
 
-1. Configureer in **stap 4**de instellingen met de volgende tabel:
+1. Configureer in **Stap 4** de instellingen met de volgende tabel:
 
     |Instelling|Waarde|
     |--|--|
-    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Ingeschakeld|
-    |**Standaard antwoord tekst**| `Quickstart - default answer not found.`|
+    |**Schakel uitpakken van meerdere paden in vanuit URL's, .pdf- of .docx-bestanden.**|Ingeschakeld|
+    |**Standaardantwoordtekst**| `Quickstart - default answer not found.`|
     |**+ URL toevoegen**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-Chat**|**Professionele** selecteren|
+    |**Chit-chat**|**Professional** selecteren|
 
-1. Selecteer in **stap 5** **de optie uw KB maken**.
+1. Selecteer in **stap 5**, **Uw KB maken**.
 
-    Het uitpakken van het proces duurt een paar minuten om het document te lezen en vragen en antwoorden te identificeren.
+    Tijdens het extractieproces, dat enige tijd duurt, wordt het document gelezen en worden de vragen en antwoorden geïdentificeerd.
 
-    Nadat QnA Maker de Knowledge Base hebt gemaakt, wordt de pagina **Knowledge Base** geopend. U kunt de inhoud van de Knowledge Base op deze pagina bewerken.
+    Nadat QnA Maker de knowledge base heeft gemaakt, wordt de pagina **Knowledge Base** geopend. U kunt de inhoud van de knowledge base op deze pagina bewerken.
 
-## <a name="add-a-new-question-and-answer-set"></a>Een nieuwe vraag en antwoord reeks toevoegen
+## <a name="add-a-new-question-and-answer-set"></a>Een nieuwe vraag-en-antwoordreeks toevoegen
 
-1. Selecteer in de QnA Maker-Portal op de pagina **bewerken** de optie **+ QnA paar toevoegen** in de context werkbalk.
+1. Selecteer in de QnA Maker-portal op de pagina **Bewerken** **+ Vraag-en-antwoordpaar toevoegen** in de contextwerkbalk.
 1. Voeg de volgende vraag toe:
 
     `How many Azure services are used by a knowledge base?`
 
-1. Het antwoord toevoegen dat is opgemaakt met de _prijs verlaging_:
+1. Voeg het antwoord toe in _markdown_-indeling:
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Voeg de vraag toe als tekst en het antwoord dat is opgemaakt met de prijs verlaging.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Voeg de vraag toe als tekst en het antwoord met markdown-indeling.":::
 
-    Het symbool voor de prijs verlaging, `*` dat wordt gebruikt voor opsommings tekens. De `\n` wordt gebruikt voor een nieuwe regel.
+    Het markdownsymbool, `*`, wordt gebruikt voor opsommingstekens. De `\n` wordt gebruikt voor een nieuwe regel.
 
-    Op de pagina **bewerken** wordt de prijs verlaging weer gegeven. Wanneer u het deel venster **testen** later gebruikt, ziet u dat de prijs correct wordt weer gegeven.
+    Op de pagina **Bewerken** wordt de markdown weer gegeven. Wanneer u later het deelvenster **Testen** gebruikt, ziet u dat de markdown goed wordt weergegeven.
 
 ## <a name="save-and-train"></a>Opslaan en trainen
 
-Selecteer in de rechter bovenhoek de optie **opslaan en trainen** om uw bewerkings-en Train QnA Maker op te slaan. Bewerkingen worden alleen bewaard als ze worden opgeslagen.
+Selecteer in de rechterbovenhoek **Save and train** (Opslaan en trainen) om de wijzigingen op te slaan en QnA Maker te trainen. Bewerkingen worden alleen bewaard als ze worden opgeslagen.
 
-## <a name="test-the-knowledge-base"></a>De Knowledge Base testen
+## <a name="test-the-knowledge-base"></a>De knowledge base testen
 
-1. Selecteer in de portal QnA Maker in de rechter bovenhoek de optie **testen** om te testen of de wijzigingen die u hebt aangebracht van kracht zijn geworden.
-1. Voer een voor beeld van een gebruikers query in het tekstvak in.
+1. Selecteer in de rechterbovenhoek van de QnA Maker-portal **Testen** om te testen of de wijzigingen worden toegepast.
+1. Voer in het tekstvak een voorbeeld van een gebruikersquery in.
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Voer een voor beeld van een gebruikers query in het tekstvak in.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Voer in het tekstvak een voorbeeld van een gebruikersquery in.":::
 
-1. Selecteer **Inspect** (Inspecteren) om het antwoord gedetailleerder te onderzoeken. Het venster test wordt gebruikt om uw wijzigingen in de Knowledge Base te testen voordat u uw kennis database publiceert.
+1. Selecteer **Inspect** (Inspecteren) om het antwoord gedetailleerder te onderzoeken. Het testvenster wordt gebruikt om uw wijzigingen in de knowledge base te testen voordat u uw knowledge base publiceert.
 
-1. Selecteer **testen** opnieuw om het **test** paneel te sluiten.
+1. Selecteer nogmaals **Testen** om het deelvenster **Testen** te sluiten.
 
 ## <a name="publish-the-knowledge-base"></a>De knowledge base publiceren
 
-Wanneer u een kennis database publiceert, wordt de inhoud van uw kennis basis verplaatst van de `test` index naar een `prod` index in azure Search.
+Wanneer u een knowledge base publiceert, wordt de inhoud van uw knowledge base verplaatst van de `test`-index naar een `prod`-index in Azure Search.
 
-![Scherm afbeelding van het verplaatsen van de inhoud van uw Knowledge Base](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
+![Schermafbeelding van het verplaatsen van de inhoud van uw knowledge base](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
-1. Selecteer in de QnA Maker Portal de optie **publiceren**. Selecteer vervolgens **Publish** (Publiceren) op de pagina om te bevestigen.
+1. Selecteer in de QnA Maker-portal **Publiceren**. Selecteer vervolgens **Publish** (Publiceren) op de pagina om te bevestigen.
 
     De QnA Maker-service is nu gepubliceerd. U kunt het eindpunt in uw toepassing of botcode gebruiken.
 
-    ![Scherm opname van geslaagde publicatie](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+    ![Schermopname van geslaagde publicatie](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
 
 ## <a name="create-a-bot"></a>Een bot maken
 
-Na het publiceren kunt u een bot maken op de pagina **publiceren** :
+Na het publiceren kunt u een bot maken op de pagina **Publiceren**:
 
-* U kunt snel een aantal botsingen maken, die allemaal verwijzen naar dezelfde Knowledge Base voor verschillende regio's of prijs plannen voor het individuele bots.
-* Als u slechts één bot wilt gebruiken voor de Knowledge Base, gebruikt u de **weer gave alles uw bots op de Azure Portal** koppeling om een lijst met uw huidige bots weer te geven.
+* U kunt snel een aantal bots maken, die allemaal verwijzen naar dezelfde knowledge base voor verschillende regio's of abonnementen voor de individuele bots.
+* Als u slechts één bot wilt gebruiken voor de knowledge base, gebruikt u de koppeling **Alle bots weergeven in Azure Portal** om een lijst met uw huidige bots weer te geven.
 
-Wanneer u wijzigingen aanbrengt in de Knowledge Base en opnieuw publiceert, hoeft u geen verdere actie te ondernemen met de bot. Het is al geconfigureerd voor gebruik met de Knowledge Base en werkt met alle toekomstige wijzigingen in de kennis database. Telkens wanneer u een kennis database publiceert, worden alle botsen die met de Knowledge Base zijn verbonden, automatisch bijgewerkt.
+Wanneer u wijzigingen aanbrengt in de knowledge base en deze opnieuw publiceert, hoeft u geen verdere actie te ondernemen voor de bot. Deze is al geconfigureerd voor gebruik van de knowledge base en kan overweg met alle toekomstige wijzigingen in de knowledge base. Steeds wanneer u een knowledge base publiceert, worden alle bots die met de knowledge base zijn verbonden, automatisch bijgewerkt.
 
-1. Selecteer in de QnA Maker Portal op de pagina **publiceren** de optie **bot maken**. Deze knop wordt alleen weer gegeven nadat u de Knowledge Base hebt gepubliceerd.
+1. Selecteer in de QnA Maker-portal op de pagina **Publiceren** de optie **Bot maken**. Deze knop wordt alleen weergegeven nadat u de knowledge base hebt gepubliceerd.
 
-    ![Scherm afbeelding van het maken van een bot](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+    ![Schermopname van het maken van een bot](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Er wordt een nieuw browser tabblad geopend voor de Azure Portal, met de pagina voor het maken van de Azure Bot Service. De Azure bot-service configureren. De bot en QnA Maker kunnen het web app service-abonnement delen, maar kunnen de web-app niet delen. Dit betekent dat de **app-naam** voor de bot afwijkt van de app-naam voor de QnA Maker-service.
+1. Er wordt een nieuw browsertabblad geopend voor Azure Portal, met daarin de pagina Maken van de Azure Bot Service. De Azure Bot Service configureren. De bot en QnA Maker kunnen het abonnement voor de web-appservice delen, maar ze kunnen de web-app niet delen. Dit betekent dat de **naam van de app** voor de bot anders moet zijn dan de naam van de app voor de QnA Maker-service.
 
     * **Wel doen**
-        * Bot-ingang wijzigen: als deze niet uniek is.
-        * Selecteer SDK-taal. Zodra de bot is gemaakt, kunt u de code downloaden naar uw lokale ontwikkel omgeving en het ontwikkelings proces voortzetten.
+        * Wijzig de gebruikersnaam van de bot als deze niet uniek is.
+        * Selecteer de SDK-taal. Nadat de bot is gemaakt, kunt u de code downloaden naar uw lokale ontwikkelomgeving en het ontwikkelingsproces voortzetten.
     * **Niet doen**
-        * Wijzig de volgende instellingen in de Azure Portal bij het maken van de bot. Ze zijn vooraf ingevuld voor uw bestaande Knowledge Base:
-           * QnA-verificatie sleutel
-           * App service-plan en-locatie
+        * Wijzig de volgende instellingen niet in Azure Portal als u de bot maakt. Deze zijn vooraf ingevuld voor uw bestaande knowledge base:
+           * QnA-verificatiesleutel
+           * App Service-plan en -locatie
 
 
-1. Nadat de bot is gemaakt, opent u de **bot service** -resource.
-1. Selecteer in het gedeelte **bot Management**de optie **testen in Web Chat**.
-1. Typ het volgende bij de chat prompt van **uw bericht**:
+1. Open de resource **Botservice** nadat de bot is gemaakt.
+1. Selecteer onder **Botbeheer** **Testen in webchat**.
+1. Voer in het chatbericht **Typ uw bericht** het volgende in:
 
     `Azure services?`
 
-    De chat-bot reageert met een antwoord van uw Knowledge Base.
+    De chatbot reageert met een antwoord uit uw knowledge base.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Voer een gebruikers query in op de Web Chat testen.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Voer een gebruikersquery in om de webchat testen.":::
 
 ## <a name="what-did-you-accomplish"></a>Wat hebt u gedaan?
 
-U hebt een nieuwe Knowledge Base gemaakt, een open bare URL toegevoegd aan de Knowledge Base, uw eigen QnA-paar toegevoegd, getraind, getest en de Knowledge Base gepubliceerd.
+U hebt een nieuwe knowledge base gemaakt, een openbare URL toegevoegd aan de knowledge base, uw eigen QnA-paar toegevoegd, getraind en getest, en de knowledge base gepubliceerd.
 
-Nadat u de Knowledge Base hebt gepubliceerd, hebt u een bot gemaakt en de bot getest.
+Nadat u de knowledge base hebt gepubliceerd, hebt u een bot gemaakt en de bot getest.
 
-Dit is in een paar minuten gedaan zonder dat u code hoeft te schrijven of de inhoud moet opschonen.
+Dit is in een paar minuten gedaan zonder dat u code hoeft te schrijven of de inhoud moest opschonen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u niet verdergaat met de volgende Snelstartgids, verwijdert u de QnA Maker-en bot Framework-resources in de Azure Portal.
+Verwijder de QnA Maker- en Bot-framework-resources in Azure Portal als u niet verdergaat met de volgende quickstart.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -152,7 +152,7 @@ Als u niet verdergaat met de volgende Snelstartgids, verwijdert u de QnA Maker-e
 
 Voor meer informatie:
 
-* [Indeling voor prijs verlaging in antwoorden](../reference-markdown-format.md)
-* QnA Maker [gegevens bronnen](../concepts/knowledge-base.md).
+* [Markdown-indeling in antwoorden](../reference-markdown-format.md)
+* QnA Maker-[gegevensbronnen](../concepts/knowledge-base.md).
 
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089495"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565907"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Quickstart: Uw eerste statische web-app bouwen
 
@@ -98,7 +98,7 @@ Nadat u zich hebt aangemeld bij GitHub, voert u de gegevens van de opslagplaats 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Knop Volgende Build":::
 
 > [!NOTE]
->  Als u geen opslagplaatsen ziet, moet u mogelijk Azure Static Web Apps autoriseren in GitHub. Ga naar de GitHub-opslagplaats en ga naar **Instellingen > Toepassingen > Geautoriseerde OAuth-apps**, selecteer **Azure Static Web Apps**en selecteer **Verlenen**. Voor organisatie-opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
+>  Als u geen opslagplaatsen ziet, moet u mogelijk Azure Static Web Apps autoriseren in GitHub. Blader naar de [startpagina van GitHub](https://github.com) en klik op de afbeelding van uw account om het vervolgkeuzemenu te openen. Klik op **Instellingen** en **Toepassingen > geautoriseerde OAuth-apps > Azure Static Web Apps** en selecteer **Toekennen**. Voor organisatie-opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
 
 ### <a name="build"></a>Build
 

@@ -1,20 +1,20 @@
 ---
-title: 'Quickstart: Objectdetectie maken met Custom Vision-SDK'
-description: 'Quickstart: Maak een project, voeg labels toe, upload afbeeldingen, train uw project en detecteer objecten met de Custom Vision-SDK.'
+title: 'Quickstart: Objectdetectie maken met Custom Vision-clientbibliotheek'
+description: 'Quickstart: Maak een project, voeg labels toe, upload afbeeldingen, train uw project en detecteer objecten met de Custom Vision-clientbibliotheek.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 9febd3a242834a930beae5130a33d230e9e83b6b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c6b40fe7abe0b7ad4b6993b55206eabc5b4681d0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875963"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511286"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>Quickstart: Een objectdetectieproject maken met Custom Vision-SDK
 

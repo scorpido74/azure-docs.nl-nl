@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
+ms.openlocfilehash: 0fc31fd397f8206f7c6f0509dd03495631dde609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339593"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165631"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Quickstart: Een ASP.NET-web-API aanroepen die wordt beveiligd door Microsoft-identiteitsplatform
 
@@ -80,15 +80,16 @@ Als u uw apps handmatig wilt registreren, moet u eerst het volgende doen:
 1. Open de oplossing in Visual Studio en open vervolgens het bestand **Web.config** in de hoofdmap van **TodoListService**-project.
 1. Vervang de waarde van parameter `ida:ClientId` door de **Client-id (Toepassings-id)** van de toepassing die u zojuist hebt geregistreerd in de portal voor toepassingsregistratie.
 
-### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Het nieuwe bereik toevoegen aan de app.config van de *TodoListClient*
+### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Het nieuwe bereik toevoegen aan de app.config van *TodoListClient*
 
-1. Open het bestand **app.config** dat zich bevindt in de hoofdmap van het project **TodoListClient** en plak **Toepassings-id** vanuit de toepassing die u zojuist hebt geregistreerd voor uw *TodoListService* onder parameter `TodoListServiceScope`, waarbij u de tekenreeks `{Enter the Application ID of your TodoListService from the app registration portal}`vervangt.
+* Open het bestand **app.config** dat zich bevindt in de hoofdmap van het project **TodoListClient** en plak **Toepassings-id** vanuit de toepassing die u zojuist hebt geregistreerd voor uw *TodoListService* onder parameter `TodoListServiceScope`, waarbij u de tekenreeks `{Enter the Application ID of your TodoListService from the app registration portal}`vervangt.
 
-   > Opmerking: Zorg ervoor dat het de volgende indeling gebruikt:
-   >
-   > `api://{TodoListService-Application-ID}/access_as_user`
-   >
-   >(waarbij {TodoListService-Application-ID} de GUID is die de toepassings-id voor uw TodoListService vertegenwoordigt).
+  > [!NOTE]
+  > Zorg ervoor dat het de volgende indeling gebruikt:
+  >
+  > `api://{TodoListService-Application-ID}/access_as_user`
+  >
+  >(waarbij {TodoListService-Application-ID} de GUID is die de toepassings-id voor uw TodoListService vertegenwoordigt).
 
 ## <a name="register-the-client-app-todolistclient"></a>De client-app registreren (TodoListClient)
 
@@ -102,15 +103,28 @@ In deze stap configureert u uw *TodoListClient*-project door een nieuwe toepassi
    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `NativeClient-DotNet-TodoListClient`.
    - Wijzig **Ondersteunde accounttypen** in **Accounts in een organisatieadreslijst**.
    - Selecteer **Registreren** om de toepassing te maken.
+   
+   > [!NOTE]
+   > In de **app.config** van het project *TodoListClient* is de standaardwaarde van `ida:Tenant` ingesteld op `common`.
+   >
+   > `common` betekent dat u zich kunt aanmelden met behulp van een werk- of schoolaccount of een persoonlijk Microsoft-account (omdat u **Accounts in elke organisatiedirectory** hebt geselecteerd).
+   >
+   > `organizations` betekent dat u zich kunt aanmelden met behulp van een werk- of schoolaccount.
+   >
+   > `consumers` betekent dat u zich kunt aanmelden met behulp van een persoonlijk Microsoft-account.
+   >
+   
 1. Selecteer op de pagina Overzicht van de app de sectie **Verificatie**.
-   - In de sectie **Omleidings-URI's** | **Voorgestelde omleidings-URI's voor openbare clients (mobiel, desktop)** raadpleegt u **https://login.microsoftonline.com/common/oauth2/nativeclient**
-   - Selecteer **Opslaan**.
+   1. Selecteer onder **Platformconfiguraties** de knop **Een platform toevoegen**.
+   1. Bij **Mobiele toepassingen en bureaubladtoepassingen** selecteert u **Mobiele toepassingen en bureaubladtoepassingen**.
+   1. Schakel bij **Omleidings-URI's** het selectievakje **https://login.microsoftonline.com/common/oauth2/nativeclient** in.
+   1. Selecteer **Configureren**.   
 1. Selecteer het gedeelte **API-machtigingen**
-   - Klik op de knop **Een machtiging toevoegen** en vervolgens
-   - Selecteer het tabblad **Mijn API's**.
-   - Selecteer in de lijst met API's de `AppModelv2-NativeClient-DotNet-TodoListService API` of de naam die u hebt ingevoerd voor de web-API.
-   - Schakel de machtiging **access_as_user** in als deze nog niet is ingeschakeld. Gebruik het zoekvak indien nodig.
-   - Selecteer de knop **Toestemmingen toevoegen**
+   1. Selecteer de knop **Een machtiging toevoegen**.
+   1. Selecteer het tabblad **Mijn API's**.
+   1. Selecteer in de lijst met API's de `AppModelv2-NativeClient-DotNet-TodoListService API` of de naam die u hebt ingevoerd voor de web-API.
+   1. Schakel de machtiging **access_as_user** in als deze nog niet is ingeschakeld. Gebruik het zoekvak indien nodig.
+   1. Selecteer de knop **Toestemmingen toevoegen**.
 
 ### <a name="configure-your-todolistclient-project"></a>Uw *TodoListClient*-project configureren
 

@@ -1,26 +1,26 @@
 ---
-title: 'Quickstart: Computer Vision 2.1 en 3.0 - Gedrukte en handgeschreven tekst extraheren - REST, C#'
+title: 'Quickstart: Tekst extraheren met de leesbewerking uit de Computer Vision 3.0-REST API en C#'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met C#.
+description: In deze snelstart past u OCR toe op een afbeelding met behulp van de leesbewerkingen in de Computer Vision 3.0-REST API en C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 52cba173f7d3fe4c4d65d538fac3ef850f0491e2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835405"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210150"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Quickstart: Gedrukte en handgeschreven tekst extraheren met behulp van de Computer Vision 3.0 REST API en C#
+# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Quickstart: Tekst extraheren met de leesbewerking uit de Computer Vision 3.0-REST API en C#
 
-In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren. 
+In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de nieuwe technologie die beschikbaar is in de Computer Vision 3.0-REST API. Met de nieuwe methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren. 
 
 > [!IMPORTANT]
 > De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115674"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604895"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
@@ -84,7 +84,8 @@ Wanneer een volledig nieuw Key Vault-certificaat wordt gemaakt, moet er een bele
 Op hoog niveau bevat certificaatbeleid de volgende informatie (de definities ervan zijn [hier](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0) te vinden):  
 
 -   Eigenschappen X509-certificaat: Bevat de onderwerpnaam, alternatieve onderwerpnamen en andere eigenschappen waarmee de aanvraag van een x509-certificaat wordt gemaakt.  
--   Sleuteleigenschappen: bevat sleuteltype, sleutellengte, exporteerbare en ReuseKeyOnRenewal-velden. Met deze velden wordt de sleutelkluis geïnstrueerd hoe een sleutel moet worden gegenereerd.  
+-   Sleuteleigenschappen: bevat sleuteltype, sleutellengte, exporteerbare en ReuseKeyOnRenewal-velden. Met deze velden wordt de sleutelkluis geïnstrueerd hoe een sleutel moet worden gegenereerd. 
+     - Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) vermeld) 
 -   Geheimeigenschappen: bevat geheimeigenschappen, zoals het inhoudstype van adresseerbare geheim om de geheime waarde te genereren, voor het ophalen van een certificaat als geheim.  
 -   Levensduuracties: bevat levensduuracties voor het KV-certificaat. Elke levensduuractie bevat:  
 

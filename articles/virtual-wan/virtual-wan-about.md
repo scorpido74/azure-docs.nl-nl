@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513142"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604694"
 ---
-# <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
+# <a name="what-is-azure-virtual-wan"></a>Wat is Azure Virtual WAN?
 
 Azure Virtual WAN is een netwerkservice die een groot aantal netwerk-, beveiligings- en routeringsfuncties samenbrengt om één operationele interface te bieden. Deze functies omvatten vertakkingsconnectiviteit (via connectiviteitsautomatisering van Virtual WAN Partner-apparaten zoals SD-WAN of VPN CPE), site-naar-site-VPN-connectiviteit, connectiviteit via VPN voor externe gebruikers (punt-naar-site), persoonlijke connectiviteit (ExpressRoute), intra-cloud-connectiviteit (transitieve connectiviteit voor virtuele netwerken), VPN-ExpressRoute-interconnectiviteit, routering, Azure Firewall en versleuteling voor persoonlijke connectiviteit. U hoeft niet al deze use cases te hebben om Virtual WAN te gaan gebruiken. U kunt gewoon aan de slag met slechts één use case en vervolgens uw netwerk aanpassen tijdens de ontwikkeling ervan.
 
@@ -98,15 +98,15 @@ De router kan vier routeringsstatussen hebben: Ingericht, Inrichten, Mislukt of 
 * De status **Geen** geeft aan dat de virtuele hub de router niet heeft ingericht. Dit kan gebeuren als het Virtual WAN van het type *Basic* is, of als de virtuele hub is geïmplementeerd voordat de service beschikbaar werd gemaakt.
 * De status **Mislukt** status geeft aan dat er een fout is opgetreden tijdens het instantiëren. Als u de router wilt instantiëren of opnieuw wilt instellen, kunt u de optie **Router opnieuw instellen** vinden door naar de overzichtspagina van de virtuele hub in de Azure Portal te navigeren.
 
-Elke virtuele-hub-router ondersteunt een geaggregeerde doorvoer van maximaal 50 Gbps. Connectiviteit tussen de virtueel-netwerkverbindingen gaat uit van een totaal van 2000 VM-werkbelastingen voor alle VNets in een virtueel WAN.
+Elke virtuele-hub-router ondersteunt een geaggregeerde doorvoer van maximaal 50 Gbps. In connectiviteit tussen de virtuele netwerkverbindingen wordt uitgegaan van een totaal van 2000 VM-werkbelastingen voor alle VNets die zijn verbonden met een virtuele hub.
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Transitconnectiviteit tussen VPN en ExpressRoute
 
-Virtual WAN maakt transitconnectiviteit tussen VPN en ExpressRoute mogelijk. Dit betekent dat sites met een VPN-verbinding of externe gebruikers kunnen communiceren met sites die verbonden zijn met ExpressRoute. Er is ook een impliciete veronderstelling dat de vlag **Vertakking-naar-vertakking** is ingeschakeld. Deze vlag is te vinden in de Azure Virtual WAN-instellingen in de Azure-portal. Alle routebeheer wordt verzorgd door de virtuele-hub-router, die ook transitconnectiviteit tussen virtuele netwerken mogelijk maakt.
+Virtual WAN maakt transitconnectiviteit tussen VPN en ExpressRoute mogelijk. Dit betekent dat sites met een VPN-verbinding of externe gebruikers kunnen communiceren met sites die verbonden zijn met ExpressRoute. Er is ook een impliciete aanname dat de **vertakking-tot-vertakkingvlag** is ingeschakeld en dat BGP wordt ondersteund in VPN- en ExpressRoute-verbindingen. Deze vlag is te vinden in de Azure Virtual WAN-instellingen in Azure Portal. Alle routebeheer wordt verzorgd door de virtuele-hub-router, die ook transitconnectiviteit tussen virtuele netwerken mogelijk maakt.
 
 ### <a name="custom-routing"></a><a name="routing"></a>Aangepaste routering
 
-Virtual WAN biedt geavanceerde routeringsverbeteringen. De mogelijkheid om aangepaste routetabellen in te stellen, virtuele netwerkroutering te optimaliseren met routekoppeling en -doorgifte, routeringstabellen te groeperen met labels en talloze netwerk- of routeringsscenario's voor gedeelde services te vereenvoudigen.
+Virtual WAN biedt geavanceerde routeringsverbeteringen. De mogelijkheid om aangepaste routetabellen in te stellen, virtuele netwerkroutering te optimaliseren met routekoppeling en -doorgifte, routeringstabellen te groeperen met labels en talloze routeringsscenario's voor virtuele netwerkapparaten (NVA) en gedeelde services te vereenvoudigen.
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Global VNet Peering
 
@@ -120,17 +120,21 @@ Azure Virtual WAN biedt de mogelijkheid uw ExpressRoute-verkeer te versleutelen.
 
 Zie het artikel [Virtual WAN-partners en -locaties](virtual-wan-locations-partners.md) voor informatie over de locatie.
 
-## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Routeringstabellen in Basic en Standard virtuele WAN's
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>Routeringstabellen voor Basic en Standard virtuele WAN's
 
-Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf bestaande routeringstabel is een routeringstabel die deze functies niet heeft. Als u al bestaande routes in Hub Routing hebt en u de nieuwe mogelijkheden wilt gebruiken, moet u rekening houden met het volgende:
+Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf bestaande routeringstabel is een routeringstabel die deze functies niet heeft. Als u al bestaande routes in hubroutering hebt en u de nieuwe mogelijkheden wilt gebruiken, moet u rekening houden met het volgende:
 
-* **Standard Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor routeringstabellen wilt gebruiken, moet u wachten tot de week van 17 augustus wanneer de implementatie in Azure is afgerond. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en probeer vervolgens nieuwe routetabellen te maken (beschikbaar in de sectie Routeringstabellen voor de hub in Azure Portal).
+* **Standard Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor routeringstabellen wilt gebruiken, moet u wachten tot de week van 17 augustus wanneer de implementatie in Azure is afgerond. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en maak vervolgens nieuwe routetabellen (beschikbaar in de sectie Routeringstabellen voor de hub in Azure Portal).
 
 * **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor routeringstabellen wilt gebruiken, moet u wachten tot de week van 17 augustus wanneer de implementatie in Azure is afgerond. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Veelgestelde vragen
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="view-the-latest-feature-updates"></a><a name="new"></a>De nieuwste onderdelenupdates weergeven
+
+Abonneer u op de RSS-feed en bekijk de nieuwste updates voor virtuele WAN-onderdelen op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN).
 
 ## <a name="next-steps"></a>Volgende stappen
 

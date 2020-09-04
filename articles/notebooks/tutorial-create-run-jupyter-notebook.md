@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: een Jupyter-notebook maken en uitvoeren - Azure Notebooks Preview'
-description: Leer hoe u in Azure Notebooks Preview een Jupyter-notebook kunt maken en uitvoeren dat het proces van lineaire regressie in de datawetenschap demonstreert.
+title: 'Zelfstudie: een Jupyter Notebook maken en uitvoeren - Azure Notebooks Preview'
+description: Leer hoe u in Azure Notebooks Preview een Jupyter Notebook kunt maken en uitvoeren dat het proces van lineaire regressie in de datawetenschap demonstreert.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846909"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589248"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Zelfstudie: een Jupyter-notebook maken en uitvoeren met Python
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Zelfstudie: een Jupyter Notebook maken en uitvoeren met Python
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-In deze zelfstudie wordt u begeleid bij het gebruik van Azure Notebooks om een compleet Jupyter-notebook te maken waarmee eenvoudige lineaire regressie wordt gedemonstreerd. In de loop van deze zelfstudie maakt u kennis met de gebruikersinterface van Jupyter-notebooks voor het maken van verschillende cellen, het uitvoeren van cellen en het presenteren van het notebook als een diavoorstelling.
+In deze zelfstudie wordt u begeleid bij het gebruik van Azure Notebooks om een compleet Jupyter Notebook te maken waarmee eenvoudige lineaire regressie wordt gedemonstreerd. In de loop van deze zelfstudie maakt u kennis met de gebruikersinterface van Jupyter Notebooks voor het maken van verschillende cellen, het uitvoeren van cellen en het presenteren van het notebook als een diavoorstelling.
 
 Het voltooide notebook is te vinden op [GitHub - Azure Notebooks Samples](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Deze zelfstudie begint echter met een nieuw project en een leeg notebook, zodat u het maken ervan stap voor stap kunt ervaren.
 
@@ -417,9 +417,9 @@ Als de codecellen in uw notebook niet werken zoals verwacht, kan uw code fouten 
 
 Gelukkig kunt u het *.ipynb*-bestand van het notebook downloaden en het openen in Visual Studio Code met behulp van de Python-extensie. De extensie importeert een notebook rechtstreeks als één codebestand, en bewaart uw Markdown-cellen in commentaar. Nadat u het notebook hebt geïmporteerd, kunt u de foutopsporing van Visual Studio Code gebruiken om uw code stap voor stap te doorlopen, onderbrekingspunten in te stellen, de status te onderzoeken, enzovoort. Nadat u de code hebt gecorrigeerd, exporteert u het *.ipynb*-bestand uit Visual Studio Code en uploadt u het weer in Azure Notebooks.
 
-Zie voor meer informatie [Debug a Jupyter notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) in de documentatie van Visual Studio Code.
+Zie voor meer informatie [Debug a Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) (Fouten opsporen in een Jupyter Notebook) in de documentatie van Visual Studio Code.
 
-Zie ook [Visual Studio Code - Jupyter support](https://code.visualstudio.com/docs/python/jupyter-support) voor meer functies van Visual Studio Code voor Jupyter-notebooks.
+Zie ook [Visual Studio Code - Jupyter support](https://code.visualstudio.com/docs/python/jupyter-support) (Visual Studio Code - Ondersteuning van Jupyter) voor meer functies van Visual Studio Code voor Jupyter-notebooks.
 
 ## <a name="next-steps"></a>Volgende stappen
 

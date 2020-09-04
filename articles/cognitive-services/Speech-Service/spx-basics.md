@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 5b516eb913bf9e7b8337a41483682e1201c58890
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759033"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590214"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Meer informatie over de basisbeginselen van de Speech CLI
 
@@ -25,7 +25,19 @@ In dit artikel leert u de basisgebruikspatronen van de Speech CLI, een opdrachtr
 
 ## <a name="basic-usage"></a>Basisgebruik
 
-In deze sectie ziet u enkele eenvoudige SPX-opdrachten die vaak nuttig zijn als u voor de eerste keer gaat testen en experimenteren. Voer de volgende opdracht uit om te beginnen met spraakherkenning met behulp van de standaardmicrofoon.
+In deze sectie ziet u enkele eenvoudige SPX-opdrachten die vaak nuttig zijn als u voor de eerste keer gaat testen en experimenteren. Begin met het bekijken van de Help die is ingebouwd in het hulpprogramma door de volgende opdracht uit te voeren.
+
+```shell
+spx
+```
+
+Kijk ook naar de helponderwerpen onder **Zie ook** rechts van de opdrachtparameters. U kunt ook onderwerpen doorzoeken op trefwoord. Voer bijvoorbeeld de volgende opdracht in om een lijst met Help-onderwerpen over Speech CLI-voorbeelden te bekijken:
+
+```shell
+spx help find --topics "examples"
+```
+
+Gebruik nu de spraak-service om de volgende opdracht uit te voeren om te beginnen met spraakherkenning met behulp van de standaardmicrofoon.
 
 ```shell
 spx recognize --microphone

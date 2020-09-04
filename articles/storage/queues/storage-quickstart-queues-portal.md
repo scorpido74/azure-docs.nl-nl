@@ -3,17 +3,17 @@ title: 'Quickstart: Azure Storage-wachtrijen maken in de portal'
 description: Gebruik de Azure-portal om een wachtrij te maken. Gebruik vervolgens de Azure-portal om een bericht toe te voegen, de berichteigenschappen te bekijken en het bericht uit de wachtrij te verwijderen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/06/2019
+ms.date: 08/13/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808974"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213491"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Quickstart: Een wachtrij maken en een bericht toevoegen met de Azure-portal
 
@@ -40,8 +40,8 @@ Als u een wachtrij wilt maken in de Azure-portal, volgt u deze stappen:
 Voeg vervolgens een bericht toe aan de nieuwe wachtrij. Een bericht kan maximaal 64 KB groot zijn.
 
 1. Selecteer de nieuwe wachtrij uit de lijst met wachtrijen in het opslagaccount.
-1. Selecteer de knop **+ Bericht toevoegen** om een bericht toe te voegen aan de wachtrij. Voer een bericht in het veld **Berichttekst** in. 
-1. Geef aan wanneer het bericht verloopt. Een bericht kan maximaal 7 dagen in de wachtrij blijven staan.
+1. Selecteer de knop **+ Bericht toevoegen** om een bericht toe te voegen aan de wachtrij. Voer een bericht in het veld **Berichttekst** in.
+1. Geef aan wanneer het bericht verloopt. Geldige waarden die kunnen worden ingevoerd in het veld **Verloopt over** liggen tussen 1 seconde en 7 dagen. Selecteer **Bericht verloopt nooit** om aan te geven dat een bericht in de wachtrij blijft staan totdat het expliciet wordt verwijderd.
 1. Geef aan of het bericht als Base64 moet worden gecodeerd. Codering van binaire gegevens wordt aanbevolen.
 1. Selecteer de knop **OK** om het bericht toe te voegen.
 

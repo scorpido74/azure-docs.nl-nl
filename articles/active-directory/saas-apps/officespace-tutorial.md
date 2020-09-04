@@ -1,109 +1,104 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met OfficeSpace-software | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory-en OfficeSpace-software.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met OfficeSpace Software | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en OfficeSpace Software.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 95d8413f-db98-4e2c-8097-9142ef1af823
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80712c7f59845287006c1699524573c6094498b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75561708"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554155"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met OfficeSpace-software
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met OfficeSpace Software
 
-In deze zelf studie leert u hoe u OfficeSpace-software integreert met Azure Active Directory (Azure AD). Wanneer u OfficeSpace-software integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u OfficeSpace Software kunt integreren met Azure Active Directory (Azure AD). Wanneer u OfficeSpace Software integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot OfficeSpace-software.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld voor OfficeSpace-software met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* U kunt in Azure AD beheren wie toegang tot OfficeSpace Software heeft.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij OfficeSpace Software.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* OfficeSpace-abonnement met eenmalige aanmelding (SSO) van de software.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een OfficeSpace Software-abonnement met eenmalige aanmelding ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* OfficeSpace-software ondersteunt door **SP** GEÏNITIEERDe SSO
-
-
-* OfficeSpace-software ondersteunt **just-in-time** -gebruikers inrichting
+* OfficeSpace Software biedt ondersteuning voor door **SP** geïnitieerde eenmalige aanmelding
 
 
-## <a name="adding-officespace-software-from-the-gallery"></a>OfficeSpace-software toevoegen vanuit de galerie
-
-Als u de integratie van OfficeSpace-software in azure AD wilt configureren, moet u OfficeSpace-software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
-
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **OfficeSpace-software** in het zoekvak.
-1. Selecteer **OfficeSpace software** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+* OfficeSpace Software biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor OfficeSpace-software
+## <a name="adding-officespace-software-from-the-gallery"></a>OfficeSpace Software uit de galerie toevoegen
 
-Configureer en test Azure AD SSO met OfficeSpace-software met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OfficeSpace-software.
+Voor het configureren van de integratie van OfficeSpace Software met Azure AD moet u OfficeSpace Software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-Als u Azure AD SSO wilt configureren en testen met OfficeSpace-software, voltooit u de volgende bouw stenen:
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** **OfficeSpace Software** in het zoekvak.
+1. Selecteer **OfficeSpace Software** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[OfficeSpace software SSO configureren](#configure-officespace-software-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een OfficeSpace-gebruikers test gebruiker](#create-officespace-software-test-user)** -om een equivalent van B. Simon in OfficeSpace-software te hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>Eenmalige aanmelding van Azure AD configureren en testen voor OfficeSpace Software
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Configureer en test eenmalige aanmelding van Azure AD met OfficeSpace Software met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OfficeSpace Software.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina integratie van **OfficeSpace-software** toepassing, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OfficeSpace Software te configureren en te testen:
+
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding van OfficeSpace Software configureren](#configure-officespace-software-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. **[Een testgebruiker voor OfficeSpace Software maken](#create-officespace-software-test-user)** : als u in OfficeSpace Software een tegenhanger van B.Simon wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
+
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
+
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
+
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **OfficeSpace Software**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `<company name>.officespacesoftware.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `<company name>.officespacesoftware.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team](mailto:support@officespacesoftware.com) van de OfficeSpace-software om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantondersteuningsteam van OfficeSpace Software](mailto:support@officespacesoftware.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. De OfficeSpace-software toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. OfficeSpace-software toepassing verwacht dat **nameidentifier** moet worden toegewezen aan **User. mail**, dus u moet de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
+1. In de OfficeSpace Software-toepassing worden de SAML-beweringen in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van de SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. In de OfficeSpace Software-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-1. Daarnaast verwacht OfficeSpace software toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
+1. Bovendien verwacht de OfficeSpace Software-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
     | Naam | Bronkenmerk|
     | ---------------| --------------- |
     | e-mail | user.mail |
-    | name | user.displayname |
+    | naam | user.displayname |
     | first_name | user.givenname |
     | last_name | user.surname |
 
@@ -111,49 +106,49 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
 
-1. Kopieer de waarde van de **vinger afdruk** in de sectie **SAML-handtekening certificaat** en sla deze op uw computer op.
+1. Kopieer in de sectie **SAML-handtekeningcertificaat** de **Vingerafdrukwaarde** en sla deze op de computer op.
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-1. Kopieer op de sectie **OfficeSpace-software instellen** de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **OfficeSpace Software instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan OfficeSpace-software.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot OfficeSpace Software.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **OfficeSpace software**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **OfficeSpace Software** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="configure-officespace-software-sso"></a>SSO van OfficeSpace-software configureren
+### <a name="configure-officespace-software-sso"></a>Eenmalige aanmelding van OfficeSpace Software configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw OfficeSpace-software-Tenant.
+1. Meld u in een ander browservenster als beheerder aan bij de OfficeSpace Software-tenant.
 
-2. Ga naar **instellingen** en klik op **connectors**.
+2. Ga naar **Instellingen** en klik op **Connectors**.
 
     ![Eenmalige aanmelding aan app-zijde configureren](./media/officespace-tutorial/tutorial_officespace_002.png)
 
@@ -165,34 +160,34 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![Eenmalige aanmelding aan app-zijde configureren](./media/officespace-tutorial/tutorial_officespace_004.png)
 
-    a. Plak in het tekstvak de URL van de **Afmeldings provider** de waarde van de **afmeldings-URL** die u van Azure Portal hebt gekopieerd.
+    a. Plak in het tekstvak **Afmeldings-URL van provider** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    b. Plak in het tekstvak **client IDP doel-URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
+    b. Plak in het tekstvak **Doel-URL voor client-idp** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    c. Plak de waarde van de **vinger afdruk** die u hebt gekopieerd van Azure Portal naar het TEKSTVAK **client IDP certificaat vinger afdruk** . 
+    c. Plak de waarde voor **Vingerafdruk** die u uit Azure Portal hebt gekopieerd in het tekstvak **Vingerafdruk van Client IDP-certificaat**. 
 
-    d. Klik op **instellingen opslaan**.
+    d. Klik op **Save Settings** (Instellingen opslaan).
 
-### <a name="create-officespace-software-test-user"></a>OfficeSpace software test gebruiker maken
+### <a name="create-officespace-software-test-user"></a>Een OfficeSpace Software-tekstgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in OfficeSpace-software. OfficeSpace-software ondersteunt just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al aanwezig is in de OfficeSpace-software, wordt er na verificatie een nieuwe gemaakt.
+In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in OfficeSpace Software. OfficeSpace Software biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in OfficeSpace Software bestaat, wordt na verificatie een nieuwe gemaakt.
 
 > [!NOTE]
-> Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team van OfficeSpace-software](mailto:support@officespacesoftware.com).
+> Als u handmatig een gebruiker wilt maken, moet u contact opnemen met het [ondersteuningsteam van OfficeSpace Software](mailto:support@officespacesoftware.com).
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel OfficeSpace software in het toegangs venster klikt, moet u automatisch worden aangemeld bij de OfficeSpace-software waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel OfficeSpace Software klikt, wordt u als automatisch aangemeld bij de instantie van OfficeSpace Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer OfficeSpace-software met Azure AD](https://aad.portal.azure.com/)
+- [OfficeSpace Software proberen met Azure AD](https://aad.portal.azure.com/)
 

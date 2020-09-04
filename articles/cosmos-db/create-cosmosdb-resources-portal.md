@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 08/05/2020
-ms.openlocfilehash: 31bdcd9994ebfcea77b25422997463cc6a9bfddc
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/19/2020
+ms.openlocfilehash: 821b2a36a40f828edf37ff1c2f3eab58b10b4162
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053504"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607589"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Quickstart: Een Azure Cosmos-account, -database, -container en -items maken vanuit de Azure-portal
 
@@ -53,6 +53,7 @@ Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-acco
     |Resourcegroep|Naam van de resourcegroep|Selecteer een resourcegroep of selecteer **Nieuwe maken** en voer vervolgens een unieke naam in voor de nieuwe resourcegroep. |
     |Accountnaam|Een unieke naam|Voer een naam in om uw Azure Cosmos-account te identificeren. Gebruik een unieke naam omdat *documents.azure.com* is toegevoegd aan de naam die u hebt opgegeven om uw URI te maken.<br><br>De naam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. De naam moet tussen de 3 en 31 tekens lang zijn.|
     |API|Het type account dat moet worden gemaakt|Selecteer **Core(SQL)** om een documentdatabase en query's aan te maken met SQL-syntaxis. <br><br>De API bepaalt het type te maken account. Azure Cosmos DB heeft vijf API's: Core (SQL) en MongoDB voor documentgegevens, Gremlin voor grafiekgegevens, Azure Table en Cassandra. Op dit moment moet u voor elke API een afzonderlijk account maken. <br><br>[Meer informatie over de SQL-API](introduction.md).|
+    |Capaciteitsmodus|Ingerichte doorvoer of serverloos|Selecteer **Ingerichte doorvoer** om een account te maken in de modus [Ingerichte doorvoer](set-throughput.md). Selecteer **Serverloos** om een account te maken in de modus [serverloos](serverless.md).<br><br>**Opmerking**: Serverloos is momenteel alleen beschikbaar voor Core (SQL) API-accounts.|
     |Korting voor gratis lagen toepassen|Toepassen of niet toepassen|Met de gratis laag van Azure Cosmos DB ontvangt u de eerste 400 RU/s en 5 GB aan opslagruimte gratis in een account. Meer informatie over de [gratis laag](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Locatie|De regio het dichtst bij uw gebruikers|Selecteer een geografische locatie waar u het Azure Cosmos DB-account wilt hosten. Gebruik de locatie die zich het dichtst bij uw gebruikers bevindt, zodat ze de snelst mogelijke toegang tot de gegevens hebben.|
     |Accounttype|Productie of niet-productie|Selecteer **Productie** als het account wordt gebruikt voor een productie-werkbelasting. Selecteer **Niet-productie** als het account wordt gebruikt voor niet-productie, zoals ontwikkeling, testing, QA of fasering. Dit is een resourcetag-instelling in Azure die de portal-ervaring afstemt, maar geen invloed heeft op het onderliggende Azure Cosmos DB-account. U kunt deze waarde op elk gewenst moment wijzigen.|
@@ -60,9 +61,14 @@ Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-acco
     |Schrijfbewerkingen in meerdere regio's|In- of uitschakelen|Dankzij de mogelijkheid voor schrijfbewerkingen in meerdere regio's kunt over de hele wereld profiteren van de ingerichte doorvoer voor uw databases en containers.|
     |Beschikbaarheidszones|In- of uitschakelen|Met beschikbaarheidszones kunt u de beschikbaarheid en tolerantie van uw toepassing verder verbeteren.|
 
-
 > [!NOTE]
 > U kunt per Azure-abonnement maximaal één gratis laag voor het Azure Cosmos DB-account hebben, en u moet zich aanmelden wanneer u het account maakt. Als u de optie voor het toepassen van de korting voor gratis lagen niet ziet, betekent dit dat er al een ander account in het abonnement is ingeschakeld met een gratis laag.
+
+> [!NOTE]
+> De volgende opties zijn niet beschikbaar als u **Serverloos** als **Capaciteitsmodus** selecteert:
+> - Korting voor gratis lagen toepassen
+> - Geografische redundantie
+> - Schrijven voor meerdere regio's
    
    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="De pagina Nieuw account voor Azure Cosmos DB":::
 
@@ -92,7 +98,7 @@ U kunt Data Explorer in de Azure-portal gebruiken om een database en een contain
     |Instelling|Voorgestelde waarde|Beschrijving
     |---|---|---|
     |**Database-id**|Takenlijst|Voer *Takenlijst* in als de naam voor de nieuwe database. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Schakel de optie **Doorvoer voor databases inrichten** in, zodat u de doorvoer die is ingericht voor de database, kunt delen in alle containers in de database. Met deze optie bespaart u bovendien op de kosten. |
-    |**Doorvoer**|400|Wijzig de doorvoer in 400 aanvraageenheden per seconde (RU/s). U kunt de doorvoer later opschalen als u de latentie wilt beperken.| 
+    |**Doorvoer**|400|Wijzig de doorvoer in 400 aanvraageenheden per seconde (RU/s). U kunt de doorvoer later opschalen als u de latentie wilt beperken.<br><br>**Opmerking**: Deze instelling is niet beschikbaar bij het maken van een nieuwe container in een serverloos account.| 
     |**Container-id**|Items|Voer *Items* in als de naam voor de nieuwe container. Voor id's van containers gelden dezelfde tekenvereisten als voor databasenamen.|
     |**Partitiesleutel**| /category| In het voorbeeld dat in dit artikel wordt beschreven, wordt */category* als de partitiesleutel gebruikt.|
 

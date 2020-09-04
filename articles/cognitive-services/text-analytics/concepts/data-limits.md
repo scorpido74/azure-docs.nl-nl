@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986811"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258285"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Gegevens- en frequentielimieten voor de Text Analytics-API
 <a name="data-limits"></a>
@@ -31,8 +31,8 @@ Lees dit artikel voor informatie over de limieten voor de grootte en de frequent
 
 | Limiet | Waarde |
 |------------------------|---------------|
-| Maximale grootte van één document | 5\.120 tekens, gemeten volgens [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
-| Maximale grootte van de hele aanvraag | 1 MB |
+| Maximale grootte van één document | 5\.120 tekens, gemeten volgens [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). Geldt ook voor de Text Analytics voor de statuscontainer. |
+| Maximale grootte van de hele aanvraag | 1 MB. Geldt ook voor de Text Analytics voor de statuscontainer. |
 
 Het maximumaantal documenten dat u in één aanvraag kunt verzenden, is afhankelijk van de API-versie en functie die u gebruikt.
 
@@ -48,7 +48,7 @@ De volgende limieten zijn in v3 van de API gewijzigd. Als u de onderstaande limi
 | Sleuteltermextractie | 10 |
 | Herkenning van benoemde entiteiten | 5 |
 | Entiteiten koppelen | 5 |
-
+| Text Analytics voor statuscontainer | 1000 |
 #### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 | Functie | Max. aantal documenten per aanvraag | 
@@ -63,7 +63,7 @@ De volgende limieten zijn in v3 van de API gewijzigd. Als u de onderstaande limi
 
 ## <a name="rate-limits"></a>Frequentielimieten
 
-Uw frequentielimiet hangt af van uw [prijscategorie](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Deze limieten gelden voor beide versies van de API.
+Uw frequentielimiet hangt af van uw [prijscategorie](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Deze limieten gelden voor beide versies van de API. Deze frequentielimieten zijn niet van toepassing op de Text Analytics voor de statuscontainer, die geen ingestelde frequentielimiet heeft.
 
 | Laag          | Aanvragen per seconde | Aanvragen per minuut |
 |---------------|---------------------|---------------------|

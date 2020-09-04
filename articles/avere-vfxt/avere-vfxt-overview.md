@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT for Azure
-description: Inleiding tot Avere vFXT for Azure, een cloud-cachelaag voor HPC
+description: Meer informatie over Avere vFXT for Azure, een cloudgebaseerde oplossing voor bestandssysteemcaching voor gegevensintensieve high performance computing-taken.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5095f05b0c9ce9061781c3558ca6c7091ef37aa5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229462"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270953"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure?
 

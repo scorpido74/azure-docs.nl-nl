@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1a89b311a524e6ef0d8e1fc8145f7e13d10bb6b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406029"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508519"
 ---
-In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-SDK met Node.js om een afbeeldingsclassificatiemodel te bouwen. Wanneer u het model hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de eindpunt-URL voor gepubliceerde voorspellingen ophalen, en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-clientbibliotheek met Node.js om een afbeeldingsclassificatiemodel te bouwen. Wanneer u het model hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de eindpunt-URL voor gepubliceerde voorspellingen ophalen, en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -19,9 +19,9 @@ In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-SDK m
 - [npm](https://www.npmjs.com/) geïnstalleerd.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
+## <a name="install-the-custom-vision-client-library"></a>De Custom Vision-clientbibliotheek installeren
 
-Als u de Custom Vision Service-SDK voor Node.js wilt installeren, voert u de volgende opdracht uit in PowerShell:
+Als u de Custom Vision Service-clientbibliotheek voor Node.js wilt installeren, voert u de volgende opdracht uit in PowerShell:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

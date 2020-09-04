@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019608"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509107"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Wat is Azure Active Directory Identity Protection?
+# <a name="what-is-identity-protection"></a>Wat is Identity Protection?
 
 Identity Protection is een hulpprogramma waarmee organisaties drie belangrijke taken kunnen uitvoeren:
 
@@ -68,6 +69,12 @@ Beheerders kunnen detecties bekijken en zo nodig handmatig actie ondernemen. Er 
 - Risicodetectie
 
 Meer informatie vindt u in het artikel [How To: Investigate risk](howto-identity-protection-investigate-risk.md) (Procedure: risico onderzoeken).
+
+### <a name="risk-levels"></a>Risiconiveaus
+
+Met Identity Protection wordt het risico gecategoriseerd in drie niveaus: laag, gemiddeld en hoog. 
+
+Microsoft biedt geen specifieke details over de manier waarop het risico wordt berekend, maar hoe hoger het niveau is, hoe betrouwbaarder het is dat de gebruiker of het aanmelden is gecompromitteerd. Een voorbeeld: één geval van onbekende aanmeldingseigenschappen voor een gebruiker kan minder bedreigend zijn dan gelekte referenties voor een andere gebruiker.
 
 ## <a name="exporting-risk-data"></a>Risicogegevens exporteren
 

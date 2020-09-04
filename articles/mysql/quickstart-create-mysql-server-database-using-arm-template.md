@@ -1,18 +1,18 @@
 ---
-title: Een Azure DB for MySQL maken met een ARM-sjabloon
-description: In dit artikel vindt u informatie over het maken van een Azure Database for MySQL-server met virtuele netwerkintegratie met behulp van een Azure Resource Manager sjabloon.
+title: 'Quickstart: Een Azure DB for MySQL maken - ARM-sjabloon'
+description: In deze quickstart vindt u informatie over het maken van een Azure Database for MySQL-server met virtuele netwerkintegratie met behulp van een Azure Resource Manager sjabloon.
 author: mgblythe
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 72ace8a94d16b79f756c83393db2b39a1c0df714
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed908c4711812302fffac2e1ce59d2196426b74c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134851"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185856"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Quickstart: Een ARM-sjabloon gebruiken om een Azure Database for MySQL te maken
 

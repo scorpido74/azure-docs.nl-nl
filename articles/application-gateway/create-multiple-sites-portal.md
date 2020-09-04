@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236184"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723993"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway maken en configureren waarmee meerdere websites worden gehost via Azure PortaI
 
@@ -78,7 +78,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 2. Kies **Nieuw maken** voor het **Openbaar IP-adres** en voer *myAGPublicIPAddress* in als naam voor het openbaar IP-adres en selecteer vervolgens **OK**. 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="VNet maken":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Nog een VNet maken":::
 
 3. Selecteer **Volgende: Back-ends**.
 
@@ -156,14 +156,14 @@ Als u back-enddoelen wilt toevoegen, doet u het volgende:
 
     - **Resourcegroep**: Selecteer **myResourceGroupAG** als naam van de resourcegroep.
     - **Naam van virtuele machine**: Voer *contosoVM* in als de naam voor de virtuele machine.
-    - **Gebruikersnaam**: Typ *azureuser* als gebruikersnaam van de beheerder.
-    - **Wachtwoord**: Typ *Azure123456!* als beheerderswachtwoord.
-4. Accepteer de overige standaardwaarden en klik op **Volgende: Schijven**.  
-5. Accepteer de standaardwaarden op het tabblad **Schijven** en selecteer **Volgende: Netwerken**.
-6. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de overige standaardwaarden en klik op **Volgende: Beheer**.<br>Toepassingsgateway kan communiceren met instanties die zich buiten het virtuele netwerk van de gateway bevinden, maar u moet ervoor zorgen dat er een IP-verbinding is.
-7. Op het tabblad **Beheer** stelt u **Diagnostische gegevens over opstarten** in op **Uit**. Accepteer de overige standaardwaarden en selecteer **Beoordelen en maken**.
-8. Controleer de instellingen op het tabblad **Beoordelen en maken**, corrigeer eventuele validatiefouten en selecteer vervolgens **Maken**.
-9. Wacht tot de virtuele machine is gemaakt voordat u verder gaat.
+    - **Gebruikersnaam**: Voer een naam in voor de gebruikersnaam van de beheerder.
+    - **Wachtwoord**: Voer een wachtwoord in voor de beheerder.
+1. Accepteer de overige standaardwaarden en klik op **Volgende: Schijven**.  
+2. Accepteer de standaardwaarden op het tabblad **Schijven** en selecteer **Volgende: Netwerken**.
+3. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de overige standaardwaarden en klik op **Volgende: Beheer**.<br>Toepassingsgateway kan communiceren met instanties die zich buiten het virtuele netwerk van de gateway bevinden, maar u moet ervoor zorgen dat er een IP-verbinding is.
+4. Op het tabblad **Beheer** stelt u **Diagnostische gegevens over opstarten** in op **Uit**. Accepteer de overige standaardwaarden en selecteer **Beoordelen en maken**.
+5. Controleer de instellingen op het tabblad **Beoordelen en maken**, corrigeer eventuele validatiefouten en selecteer vervolgens **Maken**.
+6. Wacht tot de virtuele machine is gemaakt voordat u verder gaat.
 
 ### <a name="install-iis-for-testing"></a>IIS installeren voor testen
 
@@ -173,7 +173,7 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
 
     ![Aangepaste extensie installeren](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. Voer de volgende opdracht uit om IIS op de virtuele machine te installeren: 
+2. Voer de volgende opdracht uit om IIS te installeren op de virtuele machine, waarbij uw resourcegroepregio word ingewisseld voor <location\>: 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -184,7 +184,7 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
       -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
+      -Location <location>
     ```
 
 3. Maak een tweede virtuele machine en installeer IIS aan de hand van de stappen die u zojuist hebt uitgevoerd. Gebruik *fabrikamVM* als naam voor de virtuele machine en voor de instelling **VMName** van de cmdlet **Set-AzVMExtension**.

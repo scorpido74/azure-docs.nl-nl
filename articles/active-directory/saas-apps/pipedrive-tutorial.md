@@ -1,209 +1,205 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met pipe drive | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en pipe drive.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Pipedrive | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Pipedrive.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3b97628d-9d0c-45ac-b8ef-7480cf7ec602
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 235169efdcd415df055885d325394c942a2a8d88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b3b2032d8cefe881e59fe339786877c4f03c9305
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79485648"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553781"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met pipe drive
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Pipedrive
 
-In deze zelf studie leert u hoe u pipe drive integreert met Azure Active Directory (Azure AD). Wanneer u pipe drive integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Pipedrive integreert met Azure AD (Azure Active Directory). Wanneer u Pipedrive integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot pipe drive.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij pipe drive met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD beheren wie toegang heeft tot Pipedrive.
+* Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Pipedrive.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Pipe drive-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een Pipedrive-abonnement waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Pipe drive ondersteunt SSO die door **SP en IDP** is geïnitieerd
-* Zodra u pipe drive SSO hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time worden beschermd. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Pipedrive biedt ondersteuning voor met **SP en IDP** geïnitieerde eenmalige aanmelding
+* Zodra u eenmalige aanmelding voor Pipedrive hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 
-## <a name="adding-pipedrive-from-the-gallery"></a>Pipe Drive toevoegen uit de galerie
+## <a name="adding-pipedrive-from-the-gallery"></a>Pipedrive toevoegen uit de galerie
 
-Als u de integratie van pipe drive in azure AD wilt configureren, moet u pipe drive uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Pipedrive in Azure AD wilt configureren, moet u Pipedrive vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **pipe drive** in het zoekvak.
-1. Selecteer **pipe drive** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Pipedrive**.
+1. Selecteer **Pipedrive** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor pipe drive
+## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Pipedrive
 
-Azure AD SSO met pipe drive configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in pipe drive.
+Configureer en test eenmalige aanmelding van Azure AD met Pipedrive met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Pipedrive.
 
-Als u Azure AD SSO wilt configureren en testen met pipe Drive, voltooit u de volgende bouw stenen:
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Pipedrive te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Pipe drive SSO configureren](#configure-pipedrive-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een pipe drive-test gebruiker](#create-pipedrive-test-user)** -om een equivalent van B. Simon in pipe drive te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij Pipedrive configureren](#configure-pipedrive-sso)** : om de instellingen voor eenmalige aanmelding aan de toepassingszijde te configureren.
+    * **[Een testgebruiker voor Pipedrive maken](#create-pipedrive-test-user)** :als u in Pipedrive een tegenhanger van B.Simon wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **pipe drive** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina voor **Pipedrive** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://<COMPANY-NAME>.pipedrive.com/sso/auth/samlp/metadata.xml`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<COMPANY-NAME>.pipedrive.com/sso/auth/samlp/metadata.xml`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<COMPANY-NAME>.pipedrive.com/sso/auth/samlp`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<COMPANY-NAME>.pipedrive.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<COMPANY-NAME>.pipedrive.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team van pipe drive-clients](mailto:support@pipedrive.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [clientondersteuningsteam van Pipedrive](mailto:support@pipedrive.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. De pipe drive-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. In de Pipedrive-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
-1. Daarnaast verwacht pipe drive toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Bovendien worden in de Pipedrive-toepassing nog enkele kenmerken verwacht die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
     | Naam | Bronkenmerk|
     | ------------ | --------- |
     | e-mail | user.mail |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan en de **URL van de app Federation meta gegevens** op uw computer te kopiëren.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **Certificaat (base64)** en selecteer **Downloaden** om het certificaat te downloaden. Sla het certificaat vervolgens op de computer op en kopieer de **URL van de App Federation-metagegevens** en sla deze ook op.
 
     ![De link om het certificaat te downloaden](./media/pipedrive-tutorial/certificate-data.png)
 
-1. Op de sectie **pipe drive instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **Pipedrive instellen** de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan pipe drive.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Pipedrive.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **pipe drive**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Pipedrive** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-pipedrive-sso"></a>Pipe drive SSO configureren
+## <a name="configure-pipedrive-sso"></a>Eenmalige aanmelding voor Pipedrive configureren
 
-1. Meld u in een ander browser venster aan bij de pipe Drive-website als beheerder.
+1. Meld u in een ander browservenster als beheerder aan bij de website van Pipedrive.
 
-1. Klik op **gebruikers profiel** en selecteer **instellingen**.
+1. Klik op **Gebruikersprofiel** en selecteer **Instellingen**.
 
-    ![Pipe drive-configuratie](./media/pipedrive-tutorial/configure1.png)
+    ![Pipedrive-configuratie](./media/pipedrive-tutorial/configure1.png)
 
-1. Schuif omlaag naar Security Center en selecteer **eenmalige aanmelding**.
+1. Blader omlaag naar beveiligingscentrum en selecteer **Eenmalige aanmelding**.
 
-    ![Pipe drive-configuratie](./media/pipedrive-tutorial/configure2.png)
+    ![Pipedrive-configuratie](./media/pipedrive-tutorial/configure2.png)
 
-1. Voer de volgende stappen uit in de sectie **SAML-configuratie voor pipe drive** :
+1. In het gedeelte **SAML-configuratie voor Pipedrive** voert u de volgende stappen uit:
 
-    ![Pipe drive-configuratie](./media/pipedrive-tutorial/configure3.png)
+    ![Pipedrive-configuratie](./media/pipedrive-tutorial/configure3.png)
 
-    a. Plak in het tekstvak **Uitgever** de URL-waarde van de **app Federation-meta gegevens** die u van de Azure Portal hebt gekopieerd.
+    a. Plak in het tekstvak **Verlener** de waarde van **App-URL voor federatieve metagegevens** die u uit Azure Portal hebt gekopieerd.
 
-    b. Plak in het tekstvak **URL voor eenmalige aanmelding (SSO)** de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
+    b. Plak in het tekstvak **Eenmalige aanmelding (SSO)-URL** de waarde van de **aanmeldings-URL** die u uit Azure Portal hebt gekopieerd.
 
-    c. Plak in het tekstvak **Single afmelden (SLO)-URL** de waarde voor de **afmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
+    c. Plak in het tekstvak **Eenmalige afmelding (SLO)-URL** de waarde van de **afmeldings-URL** die u uit Azure Portal hebt gekopieerd.
 
-    d. Open in het tekstvak **x. 509-certificaat** het gedownloade **certificaat bestand (Base64)** van Azure Portal in Klad blok en kopieer de inhoud ervan en plak het tekstvak **x. 509-certificaat** en sla de wijzigingen op.
+    d. Open in het tekstvak **x.509-certificaat** het gedownloade bestand **Certificaat (Base64)** van Azure Portal in Kladblok en kopieer de inhoud ervan en plak deze in het tekstvak **x.509-certificaat** en sla de wijzigingen op.
 
-### <a name="create-pipedrive-test-user"></a>Pipe drive-test gebruiker maken
+### <a name="create-pipedrive-test-user"></a>Een testgebruiker voor Pipedrive maken
 
-1. Meld u in een ander browser venster aan bij de pipe Drive-website als beheerder.
+1. Meld u in een ander browservenster als beheerder aan bij de website van Pipedrive.
 
-1. Schuif omlaag naar bedrijf en selecteer **gebruikers beheren**.
+1. Blader omlaag naar bedrijf en selecteer **gebruikers beheren**.
 
-    ![Pipe drive-configuratie](./media/pipedrive-tutorial/user1.png)
+    ![Pipedrive-configuratie](./media/pipedrive-tutorial/user1.png)
 
-1. Klik op **gebruikers toevoegen**.
+1. Klik op **Gebruikers toevoegen**.
     
-    ![Pipe drive-configuratie](./media/pipedrive-tutorial/user2.png)
+    ![Pipedrive-configuratie](./media/pipedrive-tutorial/user2.png)
 
-1. Voer de volgende stappen uit in de sectie **gebruikers beheren** :
+1. Voer in de sectie **Gebruikers beheren** de volgende stappen uit:
 
-    ![Pipe drive-configuratie](./media/pipedrive-tutorial/user3.png)
+    ![Pipedrive-configuratie](./media/pipedrive-tutorial/user3.png)
 
-    a. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker `B.Simon@contoso.com`in.
+    a. Voer in het tekstvak **E-mail** het e-mailadres van de gebruiker in, bijvoorbeeld `B.Simon@contoso.com`.
 
-    b. Voer in het tekstvak **voor de voor naam** de voor naam van de gebruiker in.
+    b. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in.
 
     c. Voer in het tekstvak **Achternaam** de achternaam van de gebruiker in.
 
-    d. Klik op **bevestigen en gebruikers uitnodigen**.
+    d. Klik op **Gebruikers bevestigen en uitnodigen**.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel pipe drive in het toegangs venster klikt, moet u automatisch worden aangemeld bij de pipe drive waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Pipedrive in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Pipedrive waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer pipe drive met Azure AD](https://aad.portal.azure.com/)
+- [Pipedrive met Azure AD proberen](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

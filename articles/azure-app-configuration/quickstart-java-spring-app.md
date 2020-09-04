@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: leren werken met Azure App Configuration'
-description: Een quickstart voor het gebruik van Azure App Configuration met Java Spring-apps.
+description: In deze quickstart maakt u een Java Spring-app met Azure App Configuration om opslag en beheer van toepassingsinstellingen gescheiden van uw code te centraliseren.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 93a2fd89e21dbf4edee29a27bd18f63f2b835aae
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121218"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586450"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Een Java Spring-app maken met Azure App Configuration
 

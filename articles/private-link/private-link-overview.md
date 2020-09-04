@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19e7a7972af55173f19d5784b2a6ac78ae14a0f0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124966"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168147"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure Private Link hebt u via een [privé-eindpunt](private-endpoint-overview.md) in uw virtuele netwerk toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en in Azure gehoste services van klanten of partners.
@@ -62,7 +62,7 @@ Azure Private Link biedt de volgende voordelen:
 |Azure Relay | Alle openbare regio's      |  | Preview <br/> [Meer informatie](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Alle openbare regio's<br/> Alle Government-regio's       |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | Alle openbare regio's      | Ondersteund met PremiumV2 Windows en Linux en Elastic Premium-functies  | Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | EAST US, WEST US 2, SOUTH CENTRAL US      |  | Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | EAST US, WEST US 2      |  | Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | Alle openbare regio's |  | Preview | |
 | Azure IoT Hub | Alle openbare regio's    |  | Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | EAST US, WEST US 2, SOUTH CENTRAL US      |  | Preview   <br/> [Meer informatie](https://aka.ms/asrs/privatelink)   |

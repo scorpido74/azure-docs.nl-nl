@@ -1,445 +1,125 @@
 ---
-title: Automatische VM-implementatie met Azure-app configuratie Quick Start
-description: In deze Quick start ziet u hoe u de Azure PowerShell-module en Azure Resource Manager sjablonen kunt gebruiken om een Azure-app configuratie archief te implementeren. Gebruik vervolgens de waarden in de Store om een virtuele machine te implementeren.
+title: 'Quickstart: automatische VM-implementatie met Azure App Configuration'
+description: In deze quickstart ziet u hoe u de Azure PowerShell-module en Azure Resource Manager-sjablonen kunt gebruiken om een Azure App Configuration-archief te implementeren. Gebruik vervolgens de waarden in het archief om een VM te implementeren.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 04/14/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82137549"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235176"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Snelstartgids: geautomatiseerde VM-implementatie met app-configuratie en Resource Manager-sjabloon
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Quickstart: Geautomatiseerde VM-implementatie met App Configuration en Resource Manager-sjabloon (ARM-sjabloon)
 
-De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources met behulp van PowerShell-cmdlets of -scripts. In deze Quick start ziet u hoe u Azure PowerShell en Azure Resource Manager sjablonen kunt gebruiken om een Azure-app configuratie archief te implementeren. Vervolgens leert u hoe u de sleutel waarden in de Store gebruikt om een virtuele machine te implementeren.
-
-U gebruikt de sjabloon vereiste om een app-configuratie archief te maken en vervolgens sleutel waarden toe te voegen aan de Store met behulp van de Azure Portal of Azure CLI. De primaire sjabloon verwijst naar bestaande sleutel-waarde configuraties uit een bestaande configuratie opslag. De opgehaalde waarden worden gebruikt voor het instellen van eigenschappen van de resources die zijn gemaakt door de sjabloon, zoals een virtuele machine in dit voor beeld.
+Meer informatie over het gebruik van Azure Resource Manager-sjablonen en Azure PowerShell voor het implementeren van een Azure App Configuration-archief, het toevoegen van sleutelwaarden aan het archief en het gebruik van de sleutelwaarden in het archief voor het implementeren van een Azure-resource, zoals een virtuele machine van Azure in dit voorbeeld.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="before-you-begin"></a>Voordat u begint
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account.](https://azure.microsoft.com/free/)
+## <a name="prerequisites"></a>Vereisten
 
-* Voor deze quickstart is de Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie op te zoeken die op uw lokale computer is geïnstalleerd. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+## <a name="review-the-templates"></a>De sjablonen controleren
 
-Meld u met de opdracht `Connect-AzAccount` aan bij uw Azure-abonnement en voer uw Azure-referenties in de pop-upbrowser in:
+De sjablonen die in deze snelstart worden gebruikt, komen uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Met de [eerste sjabloon](https://azure.microsoft.comresources/templates/101-app-configuration-store/) maakt u een App Configuration-archief:
 
-```azurepowershell-interactive
-# Connect to your Azure account
-Connect-AzAccount
-```
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 
-Als u meer dan één abonnement hebt, selecteert u het abonnement dat u voor deze Quick Start wilt gebruiken door de volgende cmdlets uit te voeren. Vergeet niet om te `<your subscription name>` vervangen door de naam van uw abonnement:
+Er is één Azure-resource gedefinieerd in de sjabloon:
 
-```azurepowershell-interactive
-# List all available subscriptions.
-Get-AzSubscription
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): een App Configuration-archief maken.
 
-# Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
-```
+Met de [tweede sjabloon](https://azure.microsoft.com/resources/templates/101-app-configuration/) wordt een virtuele machine gemaakt met behulp van de sleutelwaarden in het archief. Voor deze stap moet u sleutelwaarden toevoegen met behulp van de portal of Azure CLI.
 
-## <a name="create-a-resource-group"></a>Een resourcegroep maken
+:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
 
-Maak een Azure-resourcegroep met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+## <a name="deploy-the-templates"></a>De sjablonen implementeren
 
-```azurepowershell-interactive
-$resourceGroup = "StreamAnalyticsRG"
-$location = "WestUS2"
-New-AzResourceGroup `
-    -Name $resourceGroup `
-    -Location $location
-```
+### <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Een Azure-app-configuratie archief implementeren
+1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon wordt een resource voor een App Configuration-archief gemaakt.
 
-Voordat u sleutel waarden kunt Toep assen op de VM, moet u een bestaande Azure-app configuratie-archief hebben. In deze sectie wordt beschreven hoe u een Azure-app-configuratie archief implementeert met behulp van een Azure Resource Manager sjabloon. Als u al een app-configuratie-archief hebt, kunt u door gaan naar de volgende sectie van dit artikel. 
+    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-1. Kopieer de volgende JSON-code en plak deze in een nieuw bestand met de naam *vereisten. azuredeploy. json*.
+1. Typ of selecteer de volgende waarden.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "type": "string",
-        "metadata": {
-          "description": "Specifies the name of the app configuration store."
-        }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Specifies the Azure location where the app configuration store should be created."
-        }
-      },
-      "skuName": {
-        "type": "string",
-        "defaultValue": "standard",
-        "metadata": {
-          "description": "Specifies the SKU of the app configuration store."
-        }
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.AppConfiguration/configurationStores",
-        "name": "[parameters('configStoreName')]",
-        "apiVersion": "2019-10-01",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "[parameters('skuName')]"
-        }
-      }
-    ]
-   }
-   ```
+    - **abonnement**: selecteer het Azure-abonnement dat u hebt gebruikt om het App Configuration-archief te maken.
+    - **Resourcegroep**: selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken, tenzij u een bestaande resourcegroep wilt gebruiken.
+    - **Regio**: selecteer een locatie voor de resourcegroep.  Bijvoorbeeld **VS - Oost**.
+    - **Naam van het Configuration-archief**: voer een nieuwe naam in voor het App Configuration-archief.
+    - **Locatie**: geef de locatie op van het App Configuration-archief.  Gebruik de standaardwaarde.
+    - **SKU-naam**: geef de SKU-naam op van het App Configuration-archief. Gebruik de standaardwaarde.
 
-1. Kopieer de volgende JSON-code en plak deze in een nieuw bestand met de naam *vereisten. azuredeploy. para meters. json*. Vervang **Get-Unique** door een unieke naam voor uw configuratie opslag.
+1. Selecteer **Controleren + maken**.
+1. Controleer of **Validatie is geslaagd** wordt weergegeven op de pagina en selecteer vervolgens **Maken**.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "value": "GET-UNIQUE"
-      }
-    }
-   }
-   ```
+Noteer de naam van de resourcegroep en de naam van het App Configuration-archief.  U hebt deze waarden nodig wanneer u de virtuele machine gaat implementeren
+### <a name="add-vm-configuration-key-values"></a>Sleutelwaarden voor de VM-configuratie toevoegen
 
-1. Voer in het Power shell-venster de volgende opdracht uit om de Azure-app configuratie opslag te implementeren. Vergeet niet om de naam van de resource groep, het pad naar het sjabloon bestand en het pad naar de sjabloon parameter bestand te vervangen.
+Nadat u een App Configuration-archief hebt gemaakt, kunt u Azure Portal of Azure CLI gebruiken om sleutelwaarden toe te voegen aan het archief.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" `
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
-   ```
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en navigeer vervolgens naar het zojuist gemaakte App Configuration-archief.
+1. Selecteer **Configuratieverkenner** in het menu links.
+1. Selecteer **Maken** om de volgende sleutel-waardeparen toe te voegen:
 
-## <a name="add-vm-configuration-key-values"></a>VM-configuratie sleutel-waarden toevoegen
+   |Sleutel|Waarde|Label|
+   |-|-|-|
+   |windowsOsVersion|2019-Datacenter|sjabloon|
+   |diskSizeGB|1023|sjabloon|
 
-U kunt een app-configuratie archief maken met behulp van een Azure Resource Manager sjabloon, maar u moet sleutel waarden toevoegen met behulp van de Azure Portal of Azure CLI. In deze Quick Start voegt u sleutel waarden toe met behulp van de Azure Portal.
+   Laat **Inhoudstype** leeg.
 
-1. Zodra de implementatie is voltooid, gaat u naar de zojuist gemaakte app-configuratie Store in [Azure Portal](https://portal.azure.com).
+Raadpleeg [Werken met sleutelwaarden in een Azure App Configuration-archief](./scripts/cli-work-with-keys.md) voor meer informatie over Azure CLI.
 
-1. Selecteer **instellingen** > **toegangs sleutels**. Noteer de primaire alleen-lezen sleutel connection string. U gebruikt deze connection string later om uw toepassing zo te configureren dat deze communiceert met de app-configuratie die u hebt gemaakt.
+### <a name="deploy-vm-using-stored-key-values"></a>Een VM implementeren met behulp van gearchiveerde sleutelwaarden
 
-1. Selecteer Configuration **Explorer** > **maken** om de volgende sleutel-waardeparen toe te voegen:
-
-   |Sleutel|Waarde|
-   |-|-|
-   |windowsOsVersion|2019-Data Center|
-   |diskSizeGB|1023|
-  
-   Voer de *sjabloon* voor het **Label**in, maar behoud het **inhouds type** leeg.
-
-## <a name="deploy-vm-using-stored-key-values"></a>Een virtuele machine implementeren met behulp van opgeslagen sleutel waarden
-
-Nu u sleutel waarden aan de Store hebt toegevoegd, kunt u een virtuele machine implementeren met behulp van een Azure Resource Manager sjabloon. De sjabloon verwijst naar de sleutels **windowsOsVersion** en **diskSizeGB** die u hebt gemaakt.
+Nu u sleutelwaarden aan het archief hebt toegevoegd, kunt u een VM implementeren met behulp van een Azure Resource Manager-sjabloon. De sjabloon verwijst naar de sleutels **windowsOsVersion** en **diskSizeGB** die u hebt gemaakt.
 
 > [!WARNING]
-> ARM-sjablonen kunnen niet verwijzen naar sleutels in een app-configuratie archief waarvoor een persoonlijke koppeling is ingeschakeld.
+> ARM-sjablonen kunnen niet verwijzen naar sleutels in een App Configuration-archief waarvoor Private Link is ingeschakeld.
 
-1. Kopieer de volgende JSON-code en plak deze in een nieuw bestand met de naam *azuredeploy. json*of down load het bestand vanuit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)start-sjablonen.
+1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon maakt u een virtuele machine met behulp van opgeslagen sleutelwaarden in het App Configuration-archief.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Admin user name."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "appConfigStoreName": {
-            "type": "string",
-            "metadata": {
-                "description": "App configuration store name."
-            }
-        },
-        "appConfigStoreResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the resource group for the app config store."
-            }
-        },
-        "domainNameLabel": {
-            "type": "string",
-            "metadata": {
-                "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_D2_v3",
-            "metadata": {
-                "description": "Size of the VM"
-            }
-        },
-        "vmSkuKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM windows sku"
-            }
-        },
-        "diskSizeKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM disk size"
-            }
-        },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the storage account."
-            }
-        }
-    },
-    "variables": {
-        "nicName": "myVMNic",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet",
-        "subnetPrefix": "10.0.0.0/24",
-        "publicIPAddressName": "myPublicIP",
-        "vmName": "SimpleWinVM",
-        "virtualNetworkName": "MyVNET",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-        "appConfigRef": "[resourceId(parameters('appConfigStoreResourceGroup'), 'Microsoft.AppConfiguration/configurationStores', parameters('appConfigStoreName'))]",
-        "windowsOSVersionParameters": {
-            "key": "[parameters('vmSkuKey')]",
-            "label": "template"
-        },
-        "diskSizeGBParameters": {
-            "key": "[parameters('diskSizeKey')]",
-            "label": "template"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-        },
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('domainNameLabel')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('nicName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2018-10-01",
-            "name": "[variables('vmName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "osProfile": {
-                    "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "createOption": "FromImage"
-                    },
-                    "dataDisks": [
-                        {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
-                            "lun": 0,
-                            "createOption": "Empty"
-                        }
-                    ]
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
-                    }
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "hostname": {
-            "type": "string",
-            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-        }
-    }
-   }
-   ```
+    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
 
-1. Kopieer de volgende JSON-code en plak deze in een nieuw bestand met de naam *azuredeploy. para meters. json*of down load het bestand vanuit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)start-sjablonen.
+1. Typ of selecteer de volgende waarden.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminPassword": {
-        "value": "GEN-PASSWORD"
-      },
-      "appConfigStoreName":{
-        "value": "GEN-APPCONFIGSTORE-NAME"
-      },
-      "appConfigStoreResourceGroup": {
-         "value": "GEN-APPCONFIGSTORE-RESOURCEGROUP-NAME"
-      },
-      "vmSkuKey":{
-        "value": "GEN-APPCONFIGSTORE-WINDOWSOSVERSION"
-      },
-      "diskSizeKey" :{
-         "value": "GEN-APPCONFIGSTORE-DISKSIZEGB"
-      },
-      "adminUsername":{
-        "value": "GEN-UNIQUE"
-      },
-      "storageAccountName":{
-        "value": "GEN-UNIQUE"
-      },
-      "domainNameLabel":{
-        "value": "GEN-UNIQUE"
-      }
-    }
-   }
-   ```
+    - **abonnement**: selecteer het Azure-abonnement dat u hebt gebruikt om de virtuele machine te maken.
+    - **Resourcegroep**: geef dezelfde resourcegroep op als het App Configuration-archief of selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken.
+    - **Regio**: selecteer een locatie voor de resourcegroep.  Bijvoorbeeld **VS - Oost**.
+    - **Locatie**: geef de locatie van de virtuele machine op. gebruik de standaardwaarde.
+    - **Gebruikersnaam van beheerder**: geef een gebruikersnaam op voor de beheerder van de virtuele machine.
+    - **Beheerderswachtwoord**: geef een beheerderswachtwoord op voor de virtuele machine.
+    - **Label domeinnaam**: geef een unieke domeinnaam op.
+    - **Naam van het opslagaccount**: geef een unieke naam op voor een opslagaccount dat is gekoppeld aan de virtuele machine.
+    - **Resourcegroep van het App Configuration-archief**: geef de resourcegroep op die het App Configuration-archief bevat.
+    - **Naam van het App Configuration-archief**: geef de naam op van het Azure App Configuration-archief.
+    - **VM SKU-sleutel**: geef **windowsOsVersion** op.  Dit is de naam van de sleutelwaarde die u hebt toegevoegd aan het archief.
+    - **Sleutel schijfgrootte**: geef **diskSizeGB** op. Dit is de naam van de sleutelwaarde die u hebt toegevoegd aan het archief.
 
-   Vervang de parameter waarden in de sjabloon door de volgende waarden:
+1. Selecteer **Controleren + maken**.
+1. Controleer of **Validatie is geslaagd** wordt weergegeven op de pagina en selecteer vervolgens **Maken**.
 
-   |Parameter|Waarde|
-   |-|-|
-   |adminPassword|Een beheerders wachtwoord voor de virtuele machine.|
-   |appConfigStoreName|De naam van uw Azure-app-configuratie archief.|
-   |appConfigStoreResourceGroup|De resource groep die uw app-configuratie archief bevat.|
-   |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
-   |adminUsername|Een gebruikers naam voor de beheerder voor de virtuele machine.|
-   |storageAccountName|Een unieke naam voor een opslag account dat is gekoppeld aan de virtuele machine.|
-   |Domeinnaam label|Een unieke domein naam.|
+## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-1. Voer in het Power shell-venster de volgende opdracht uit om de virtuele machine te implementeren. Vergeet niet om de naam van de resource groep, het pad naar het sjabloon bestand en het pad naar de sjabloon parameter bestand te vervangen.
-
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>"
-       -TemplateFile "<path to azuredeploy.json>" `
-       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
-   ```
-
-Gefeliciteerd! U hebt een virtuele machine geïmplementeerd met configuraties die zijn opgeslagen in Azure-app configuratie.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en navigeer vervolgens naar de zojuist gemaakte virtuele machine.
+1. Selecteer **Overzicht** in het menu links en controleer of de **SKU** **2019-Datacenter** is.
+1. Selecteer **Schijven** in het menu links en controleer of de grootte van de gegevensschijf **2013** is.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resource groep, de app-configuratie opslag, de VM en alle gerelateerde resources. Als u van plan bent om het app-configuratie archief of de virtuele machine in de toekomst te gebruiken, kunt u het verwijderen overs Laan. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze quickstart zijn gemaakt door de volgende cmdlet uit te voeren:
+Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep, het App Configuration-archief en alle gerelateerde resources. Als u van plan bent om het App Configuration-archief of de virtuele machine in de toekomst te gebruiken, kunt u het verwijderen overslaan. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze quickstart zijn gemaakt door de volgende cmdlet uit te voeren:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup `
@@ -448,9 +128,9 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een virtuele machine geïmplementeerd met behulp van een Azure Resource Manager sjabloon en de sleutel waarden van Azure-app configuratie.
+In deze snelstart hebt u een virtuele machine geïmplementeerd met behulp van een Azure Resource Manager-sjabloon en de sleutelwaarden van Azure App Configuration.
 
-Ga door naar het volgende artikel voor meer informatie over het maken van andere toepassingen met Azure-app configuratie:
+Ga door naar het volgende artikel voor meer informatie over het maken van andere toepassingen met Azure App Configuration:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een ASP.NET Core-app maken met Azure-app configuratie](quickstart-aspnet-core-app.md)
+> [Quickstart: Een ASP.NET Core-app maken met Azure-app-configuratie](quickstart-aspnet-core-app.md)

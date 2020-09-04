@@ -1,150 +1,145 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met out Systems Azure AD | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de uitsysteemen van Azure AD.
+title: 'Zelfstudie: Azure Active Directory-integratie met OutSystems Azure AD | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en OutSystems Azure AD.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: cf6f99b7-0604-4db2-a72e-0d1a1d643a08
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f631a641ab63d33d27d1e4520a000b4b01132be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0d9c7014e3dfada1fb301c66c234ca18d4a89c65
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68478570"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554129"
 ---
-# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Zelf studie: verwerkings gegevens in azure AD integreren met Azure Active Directory
+# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Zelfstudie: OutSystems Azure AD integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u uitzonderings systemen kunt integreren met Azure AD met Azure Active Directory (Azure AD). Wanneer u uitstaande verwerkingen van Azure AD integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u OutSystems Azure AD kunt integreren met Azure Active Directory (Azure AD). Wanneer u OutSystems Azure AD met Azure AD integreert, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot Azure AD.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld voor Azure AD met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD beheren wie toegang heeft tot OutSystems Azure AD.
+* Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij OutSystems Azure AD.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Een abonnement op Azure AD eenmalige aanmelding (SSO) is ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op OutSystems Azure AD waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Uitstaande systemen Azure AD ondersteunt SSO van **SP en IDP** en ondersteunt **just-in-time** -gebruikers inrichting.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. OutSystems Azure AD ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding en **Just-In-Time**-inrichting van gebruikers.
 
-## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>Uitstaande uitsysteemen toevoegen aan Azure AD vanuit de galerie
+## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>OutSystems Azure AD toevoegen uit de galerie
 
-Als u de integratie van Azure AD wilt configureren in azure AD, moet u de uitnodigingen van Azure AD vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van OutSystems Azure AD moet u OutSystems Azure AD uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in het gedeelte **toevoegen vanuit de galerie** het type **Azure AD-outsysteems** in het zoekvak.
-1. Selecteer uitschakelingen van **Azure AD** uit het paneel resultaten en voeg de app vervolgens toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **OutSystems Azure AD**.
+1. Selecteer **OutSystems Azure AD** in de zoekresultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureer en test Azure AD SSO met een uitzonderings systeem van Azure AD met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de uitnodigingen van Azure AD.
+Configureer en test eenmalige aanmelding van Azure AD met OutSystems Azure AD met behulp van een testgebruiker met de naam **B. Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OutSystems Azure AD.
 
-Als u Azure AD SSO wilt configureren en testen met Azure AD, moet u de volgende bouw stenen volt ooien:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OutSystems Azure AD te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
-2. **[Verwerkingen van Azure AD configureren](#configure-outsystems-azure-ad)** om de SSO-instellingen aan de kant van de toepassing te configureren.
-3. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen met B. Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-5. **[Verwerkingen van Azure AD-test gebruikers maken](#create-outsystems-azure-ad-test-user)** om een soort tegen partij te krijgen van B. Simon in uitstaande Azure AD die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[OutSystems Azure AD configureren](#configure-outsystems-azure-ad)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om eenmalige aanmelding van Azure AD te testen met B.Simon.
+4. **[Wijs de Azure AD-testgebruiker toe](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+5. **[Een testgebruiker voor OutSystems Azure AD maken](#create-outsystems-azure-ad-test-user)** : als u in OutSystems Azure AD een tegenhanger van B. Simon wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina uitschakelingen van **Azure AD** -toepassings integratie, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **OutSystems Azure AD** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
+1. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`http://<YOURBASEURL>/IdP`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `http://<YOURBASEURL>/IdP`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YOURBASEURL>/IdP/SSO.aspx`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<YOURBASEURL>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<YOURBASEURL>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team](mailto:support@outsystems.com) van de client om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [clientondersteuningsteam van OutSystems Azure AD](mailto:support@outsystems.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden en vervolgens op te slaan op de computer.
 
    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste op de sectie uitgevallen **Azure AD instellen** .
+1. Kopieer in de sectie **OutSystems Azure AD instellen** de juiste URL('s) op basis van uw vereisten.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-outsystems-azure-ad"></a>Verwerkingen van Azure AD configureren
+### <a name="configure-outsystems-azure-ad"></a>OutSystems Azure AD configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant van de systemen, moet u het onderdeel [IDP-vervalsing](https://www.outsystems.com/forge/component-overview/599/idp) downloaden, zoals vermeld in de [instructies](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector). Nadat u het onderdeel hebt geïnstalleerd en de benodigde code wijzigingen hebt doorgevoerd, configureert u Azure AD door XML voor federatieve meta gegevens te downloaden van Azure Portal en uploads op IdP-onderdeel, volgens de volgende [instructies](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS).
+Om eenmalige aanmelding aan de zijde van OutSystems te configureren, moet u het onderdeel [IdP-forge](https://www.outsystems.com/forge/component-overview/599/idp) downloaden en configureren overeenkomstig de [instructies](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector). Nadat u de component hebt geïnstalleerd en de benodigde codewijzigingen hebt doorgevoerd, moet u Azure AD configureren door een XML-bestand met federatieve metagegevens te downloaden in Azure Portal en dit te uploaden naar het IdP-onderdeel in OutSystems. Volg daarbij de volgende [instructies](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS).
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B. Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B. Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Azure AD.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot OutSystems Azure AD.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie uitschakelingen van **Azure AD**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **OutSystems Azure AD** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B. Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-outsystems-azure-ad-test-user"></a>Verwerkingen van Azure AD-test gebruiker maken
+### <a name="create-outsystems-azure-ad-test-user"></a>Een OutSystems Azure AD-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon in Outsystems gemaakt. Outsystemen bieden ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet aanwezig is in de verwerkings systemen, wordt er na verificatie een nieuwe gemaakt.
+In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in OutSystems. OutSystems biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in OutSystems bestaat, wordt na verificatie een nieuwe gemaakt.
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel Azure AD-uitschakelingen in het toegangs venster selecteert, wordt u automatisch aangemeld bij de Azure AD-outsystemen waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel OutSystems Azure AD klikt, wordt u automatisch aangemeld bij de instantie van OutSystems Azure AD waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

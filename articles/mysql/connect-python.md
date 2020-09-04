@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Python - Azure Database for MySQL
+title: 'Quickstart: Verbinding maken met Python - Azure Database for MySQL'
 description: Deze snelstartgids bevat enkele voorbeelden van Python-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -11,14 +11,14 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8d417fdc604fa132e3ada5380b9e0a1f7326af04
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 32603514db76ceba4f1d9f8873c99b2e8a97eddf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843229"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185907"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen met Azure Database for MySQL
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
 In deze quickstart maakt u verbinding met een Azure Database for MySQL met behulp van Python. U gebruikt vervolgens SQL-instructies om gegevens op te vragen, in te voegen, bij te werken en te verwijderen in de database vanaf Mac-, Ubuntu Linux- en Windows-platforms. 
 

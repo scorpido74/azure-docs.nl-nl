@@ -2,7 +2,7 @@
 title: Dynamische pakketten in Azure Media Services v3
 titleSuffix: Azure Media Services
 description: Dit artikel geeft een overzicht van dynamische pakketten in Azure Media Services.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
-ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489772"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604576"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
 
@@ -80,8 +80,10 @@ Uw streaming-client kan de volgende Smooth Streaming-indelingen opgeven:
 
 De volgende stappen tonen een algemene Media Services-streaming-werkstroom waarbij dynamische pakketten worden gebruikt samen met de Standaard Encoder in Azure Media Services.
 
-1. Upload een invoerbestand zoals een QuickTime/MOV- of MXF-bestand. Dit bestand wordt ook wel het mezzanine- of bronbestand genoemd. Zie [indelingen die worden ondersteund door de Standard-encoder](media-encoder-standard-formats.md)voor een lijst met ondersteunde indelingen.
+1. [Upload een invoerbestand](job-input-from-http-how-to.md), zoals een MP4-, QuickTime-/MOV-bestand of andere ondersteunde bestandsindeling. Dit bestand wordt ook wel het mezzanine- of bronbestand genoemd. Zie [indelingen die worden ondersteund door de Standard-encoder](media-encoder-standard-formats.md)voor een lijst met ondersteunde indelingen.
 1. [Codeer](#encode-to-adaptive-bitrate-mp4s) uw mezzanine-bestand in een H.264/AAC MP4-set met adaptieve bitsnelheid.
+
+    Als u al gecodeerde bestanden hebt en alleen de bestanden wilt kopiëren en streamen, gebruikt u: De API’s [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) en [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio). Als gevolg daarvan zal een nieuw MP4-bestand met een streamingmanifest (.ism-bestand) worden gemaakt.
 1. Publiceer de uitvoer-asset die de MP4-set met adaptieve bitsnelheid bevat. U publiceert door het maken van een [streaming-locator](streaming-locators-concept.md).
 1. Bouw URL's die zijn gericht op verschillende indelingen (HLS, MPEG-DASH en Smooth Streaming). Het *streaming-eindpunt* zorgt voor het aanbieden van het juiste manifest en de juiste aanvragen voor al deze verschillende indelingen.
     

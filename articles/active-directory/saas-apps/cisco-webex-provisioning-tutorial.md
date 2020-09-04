@@ -1,49 +1,45 @@
 ---
-title: 'Zelf studie: Cisco WebEx configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Cisco WebEx.
+title: 'Zelfstudie: Cisco WebEx configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Ontdek hoe u Azure Active Directory configureert om gebruikersaccounts automatisch in te richten en de inrichting van gebruikersaccounts ongedaan te maken voor Cisco Webex.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 0075783c049e7f48645f768026dd9d5ec0ead821
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77058492"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551299"
 ---
-# <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Zelf studie: Cisco WebEx configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Zelfstudie: Cisco Webex configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is om te demonstreren welke stappen moeten worden uitgevoerd in Cisco WebEx en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers naar Cisco WebEx.
+Het doel van deze zelfstudie is het demonstreren van de stappen die moeten worden uitgevoerd in Cisco Webex en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en het ongedaan maken van de inrichting van gebruikers aan Cisco Webex.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebaseerd op de Azure AD-service voor het inrichten van gebruikers. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector is momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector is momenteel beschikbaar in preview. Zie voor meer informatie over de algemene Microsoft Azure-gebruiksvoorwaarden voor preview-functies [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-tenant.
-* [Een Cisco WebEx-Tenant](https://www.webex.com/pricing/index.html).
-* Een gebruikers account in Cisco WebEx met beheerders machtigingen.
+* [Een Cisco WebEx-tenant](https://www.webex.com/pricing/index.html).
+* Een gebruikersaccount in Cisco WebEx met beheerdersmachtigingen.
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Cisco Webex toevoegen vanuit de galerie
 
-Voordat u Cisco WebEx configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u Cisco WebEx vanuit de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Cisco Webex configureert voor het automatisch inrichten van gebruikers met Azure AD, moet Cisco Webex vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Als u Cisco WebEx wilt toevoegen vanuit de Azure AD-toepassings galerie, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om Cisco Webex toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -63,25 +59,25 @@ Voordat u Cisco WebEx configureert voor het automatisch inrichten van gebruikers
 
 ## <a name="assigning-users-to-cisco-webex"></a>Gebruikers toewijzen aan Cisco WebEx
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers, worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen gesynchroniseerd die zijn toegewezen aan een toepassing in Azure AD.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers in azure AD toegang nodig hebben tot Cisco WebEx. Als u deze gebruikers eenmaal hebt vastgesteld, kunt u deze toewijzen aan Cisco WebEx door de volgende instructies te volgen:
+Voordat u automatische inrichting van gebruikers configureert en inschakelt, moet u beslissen welke gebruikers in Azure AD toegang nodig hebben tot Cisco Webex. Eenmaal besloten, kunt u deze gebruikers aan Cisco Webex toewijzen door de instructies hier te volgen:
 
 * [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cisco-webex"></a>Belang rijke tips voor het toewijzen van gebruikers aan Cisco WebEx
+### <a name="important-tips-for-assigning-users-to-cisco-webex"></a>Belangrijke tips voor het toewijzen van gebruikers aan Cisco Webex
 
-* Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan Cisco WebEx om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers kunnen later worden toegewezen.
+* Het wordt aanbevolen om een enkele Azure AD-gebruiker toe te wijzen aan Cisco Webex om de configuratie van de automatische gebruikersinrichting te testen. Extra gebruikers kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Cisco WebEx, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Als u een gebruiker aan Cisco Webex toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-cisco-webex"></a>Automatische gebruikers inrichting configureren voor Cisco WebEx
+## <a name="configuring-automatic-user-provisioning-to-cisco-webex"></a>Automatische gebruikersinrichting voor Cisco WebEx configureren
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers in Cisco WebEx te maken, bij te werken en uit te scha kelen op basis van gebruikers toewijzingen in azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtingsservice om gebruikers en groepen in Cisco Webex te maken, bij te werken en uit te schakelen op basis van gebruikers- en groepstoewijzingen in Azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Cisco WebEx in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Automatische gebruikersinrichting configureren voor Cisco WebEx in Azure AD:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Cisco WebEx**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer **Cisco Webex**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -89,21 +85,21 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling Cisco Webex in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
     ![Cisco WebEx-inrichting](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Cisco WebEx-inrichting](common/provisioning-automatic.png)
 
-5. Voer in het gedeelte **beheerders referenties** de **Tenant-URL**en het **geheime token** van uw Cisco WebEx-account in.
+5. Voer in de sectie **Beheerdersreferenties** de **Tenant-URL** en het **geheime token** van uw Cisco Webex-account in.
 
     ![Cisco WebEx-inrichting](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  Voer in het veld **Tenant-URL** een waarde in de vorm van `https://api.ciscoweb.com/v1/scim/[OrgId]`in. Meld u `[OrgId]`aan bij uw [Cisco WebEx-besturings element](https://admin.webex.com/login)om het te verkrijgen. Klik linksonder op de naam van uw organisatie en kopieer de waarde van **organisatie-id**. 
+6.  Voer in het veld **Tenant-URL** een waarde in de vorm `https://api.ciscoweb.com/v1/scim/[OrgId]` in. Als u `[OrgId]` wilt verkrijgen, meldt u zich aan bij uw [Cisco Webex Control Hub](https://admin.webex.com/login). Klik linksonder op de naam van uw organisatie en kopieer de waarde uit **Organisatie-id**. 
 
-    * Als u de waarde voor een **geheim token**wilt ophalen, gaat u naar deze [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Meld u op de pagina Web-aanmelding die wordt weer gegeven aan met het volledige Cisco WebEx-beheerders account voor uw organisatie. Er wordt een fout pagina weer gegeven met de melding dat de site niet kan worden bereikt, maar dit is normaal.
+    * Als u de waarde voor het **geheime token** wilt ophalen, gaat u naar deze [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Meld u aan met het volledige Cisco Webex-beheerdersaccount voor uw organisatie via de aanmeldingspagina van Webex die wordt geopend. Er wordt een foutpagina weergegeven met de melding dat de site niet kan worden bereikt, maar dit is normaal.
 
         ![Cisco WebEx-inrichting](./media/cisco-webex-provisioning-tutorial/test.png)
  
@@ -111,52 +107,52 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
         
         ![Cisco WebEx-inrichting](./media/cisco-webex-provisioning-tutorial/test1.png)
 
-7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Cisco WebEx. Als de verbinding mislukt, zorg er dan voor dat uw Cisco WebEx-account beheerders machtigingen heeft en probeer het opnieuw.
+7. Klik bij het invullen van de velden die worden weergegeven in stap 5 op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Cisco WebEx. Als de verbinding mislukt, moet u controleren of uw Cisco Webex-account beheerdersmachtigingen heeft. Probeer het daarna opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
    
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+8. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en vink het vakje **Een e-mailmelding verzenden als een fout optreedt** aan.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 9. Klik op **Opslaan**.
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Cisco WebEx**.
+10. Selecteer in de sectie **Toewijzingen** de optie **Azure Active Directory-gebruikers synchroniseren met Cisco Webex**.
 
     ![Cisco WebEx-inrichting](./media/cisco-webex-provisioning-tutorial/usermapping.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Cisco WebEx in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Cisco WebEx voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer in de sectie **Kenmerktoewijzingen** de gebruikerskenmerken die vanuit Azure AD met Cisco Webex worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de gebruikersaccounts in Cisco Webex te vinden voor updatebewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
     ![Cisco WebEx-inrichting](./media/cisco-webex-provisioning-tutorial/usermappingattributes.png)
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+12. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Als u de Azure AD-inrichtings service voor Cisco WebEx wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+13. Wijzig **Inrichtingsstatus** naar **Aan** in de sectie **Instellingen** om de Azure AD-inrichtingsservice in te schakelen voor Cisco Webex.
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten voor Cisco WebEx door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+14. Definieer de gebruikers en/of groepen die u aan Cisco Webex wilt toevoegen door de gewenste waarden te kiezen in **Bereik** in de sectie **Instellingen** te kiezen.
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Cisco WebEx.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële synchronisatie duurt langer dan volgende synchronisaties, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt het gedeelte **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen te volgen naar het activiteitenrapport van de inrichting, waarin alle acties worden beschreven die door de Azure AD-inrichtingsservice op Cisco Webex worden uitgevoerd.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Connectorbeperkingen
 
-* Cisco WebEx bevindt zich momenteel in de EFT-fase (Early veld testing) van Cisco. Neem contact op met [het ondersteunings team van Cisco](https://www.webex.co.in/support/support-overview.html)voor meer informatie. 
-* Raadpleeg de Cisco [-documentatie voor](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub)meer informatie over de Cisco WebEx-configuratie.
+* Cisco WebEx bevindt zich momenteel in de EFT-fase (Early Field Testing) van Cisco. Neem voor meer informatie contact op met [Cisco's ondersteuningsteam](https://www.webex.co.in/support/support-overview.html). 
+* Raadpleeg [hier](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub) de Cisco-documentatie voor meer informatie over Cisco Webex-configuratie.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
