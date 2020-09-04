@@ -7,14 +7,14 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: e4364c3c5bcba1a04837f3f9e7a0576579211c72
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796592"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073179"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Beschikbaarheid en redundantie in Azure Key Vault
 
@@ -32,8 +32,6 @@ U moet rekening houden met enkele waarschuwingen:
 
 * In het geval van een failover van een regio kan het enkele minuten duren voordat een failover wordt uitgevoerd voor de service. Aanvragen die gedurende deze tijd worden ingediend vóór de failover, kunnen mislukken.
 * Tijdens de failover staat uw sleutelkluis in de modus alleen-lezen. Aanvragen die in deze modus worden ondersteund, zijn:
-  * Sleutelkluizen vermelden
-  * Eigenschappen van sleutelkluizen ophalen
   * Certificaten vermelden
   * Certificaten ophalen
   * Geheimen vermelden
