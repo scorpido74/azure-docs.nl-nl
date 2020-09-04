@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181155"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C: codevoorbeelden
@@ -40,16 +40,16 @@ In de volgende tabellen ziet u koppelingen naar voorbeelden voor toepassingen, w
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Een ASP.NET Core-webtoepassing waarmee een gebruiker wordt aangemeld via Azure AD B2C, een toegangstoken wordt verkregen met behulp van MSAL.NET en een API wordt aangeroepen. |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | Een Node.js-app die een snelle en eenvoudige manier biedt om een webtoepassing in te stellen met Express met behulp van OpenID Connect. |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | Een kleine Node.js Web-API voor Azure AD B2C die laat zien hoe u uw Web-API kunt beveiligen en een B2C-toegangstoken kunt accepteren met behulp van passport.js. |
-| [MS-Identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Laat zien hoe u B2C van micro soft Identity platform integreert met een python-webtoepassing.  |
+| [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Laat zien hoe u B2C van Microsoft Identity Platform integreert met een Python-webtoepassing.  |
 
 ## <a name="single-page-apps"></a>Apps met één pagina
 
 | Voorbeeld | Beschrijving |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Een toepassing met één pagina (SPA) waarmee een Web-API wordt aangeroepen. De verificatie wordt uitgevoerd met Azure AD B2C met behulp van MSAL. js. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Een toepassing met één pagina (SPA) waarmee een Web-API wordt aangeroepen. Verificatie wordt uitgevoerd met Azure AD B2C door gebruik te maken van MSAL.js. |
 
-## <a name="saml-test-application"></a>SAML-test toepassing
+## <a name="saml-test-application"></a>SAML-testtoepassing
 
 | Voorbeeld | Beschrijving |
 |--------| ----------- |
-| [SAML-SP-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | De SAML-test toepassing moet worden getest Azure AD B2C geconfigureerd om te fungeren als SAML-ID-provider. |
+| [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | De SAML-testtoepassing voor het testen van Azure AD B2C is geconfigureerd om te fungeren als SAML-id-provider. |

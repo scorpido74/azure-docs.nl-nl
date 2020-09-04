@@ -1,15 +1,15 @@
 ---
-title: Een HTTPS-eind punt toevoegen met Kestrel
+title: Een HTTPS-eindpunt toevoegen met behulp van Kestrel
 description: In deze zelfstudie leert u hoe u met behulp van Kestrel een HTTPS-eindpunt toevoegt aan een ASP.NET Core front-end webservice en hoe u de toepassing implementeert in een cluster.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: b9e1800d07d418ff385f2c5e7af112b170e3fd44
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780195"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997282"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -20,7 +20,7 @@ In deel drie van de serie leert u het volgende:
 > [!div class="checklist"]
 > * Een HTTPS-eindpunt in de service definiëren
 > * Kestrel configureren voor gebruik van HTTPS
-> * Het TLS/SSL-certificaat installeren op de externe cluster knooppunten
+> * Het TLS/SSL-certificaat installeren op de externe clusterknooppunten
 > * Netwerkservice toegang geven tot de persoonlijke sleutel van het certificaat
 > * Poort 443 openen in de Azure-load balancer
 > * De toepassing implementeren in een extern cluster
@@ -40,8 +40,8 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
-* [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 16,5 of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Installeer [Visual Studio 2019](https://www.visualstudio.com/) versie 16.5 of hoger met de workloads **Azure-ontwikkeling** en **ASP.NET en webontwikkeling**.
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Haal een certificaat op of maak een zelfondertekend ontwikkelingscertificaat.
@@ -153,7 +153,7 @@ serviceContext =>
 Voeg ook de volgende methode toe zodat Kestrel het certificaat kan vinden in het `Cert:\LocalMachine\My`-archief met behulp van het onderwerp.  
 
 Vervang '&lt;your_CN_value&gt;' door 'mytestcert' als u een zelfondertekend certificaat hebt gemaakt met de vorige PowerShell-opdracht, of gebruik de algemene naam van uw certificaat.
-Houd er rekening mee dat het in het geval van `localhost` een lokale implementatie de voor keur verdient om ' CN = localhost ' te gebruiken om verificatie-uitzonde ringen te voor komen.
+Houd er rekening mee dat in het geval van een lokale implementatie in `localhost` u beter CN = localhost kunt gebruiken om verificatie-uitzonderingen te voorkomen.
 
 ```csharp
 private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
@@ -186,12 +186,12 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 ```
 
-## <a name="grant-network-service-access-to-the-certificates-private-key"></a>NETWERK SERVICE toegang verlenen tot de persoonlijke sleutel van het certificaat
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>NETWORK SERVICE toegang verlenen tot de persoonlijke sleutel van het certificaat
 
-In de vorige stap hebt u het certificaat geïmporteerd in het `Cert:\LocalMachine\My`-archief op de ontwikkelcomputer.  Geef nu expliciet het account op dat de service uitvoert (standaard netwerk SERVICE) toegang tot de persoonlijke sleutel van het certificaat. U kunt deze stap hand matig uitvoeren (met het hulp programma certlm. msc), maar het is beter om automatisch een Power shell-script uit te voeren door [een opstart script te configureren](service-fabric-run-script-at-service-startup.md) in de **SetupEntryPoint** van het service manifest.
+In de vorige stap hebt u het certificaat geïmporteerd in het `Cert:\LocalMachine\My`-archief op de ontwikkelcomputer.  Nu verleent u het account waarvoor de service wordt uitgevoerd (standaard is dit NETWORK SERVICE) expliciet toegang tot de persoonlijke sleutel van het certificaat. U kunt deze stap handmatig uitvoeren (met het hulpprogramma certlm.msc), maar het is beter om automatisch een PowerShell-script uit te voeren door [een opstartscript te configureren](service-fabric-run-script-at-service-startup.md) in **SetupEntryPoint** van het servicemanifest.
 
 >[!NOTE]
-> Service Fabric ondersteunt het declareren van eindpunt certificaten via de vinger afdruk of de algemene onderwerpnaam. In dat geval wordt de binding door de runtime ingesteld en wordt de persoonlijke sleutel van het certificaat aan de identiteit die de service wordt uitgevoerd, in de toegangs beheer lijst. De runtime bewaakt ook het certificaat voor wijzigingen/vernieuwingen en bewaakt de bijbehorende persoonlijke sleutel dienovereenkomstig opnieuw.
+> Service Fabric ondersteunt het declareren van eindpuntcertificaten via de vingerafdruk of de algemene onderwerpnaam. In dat geval wordt de binding door de runtime ingesteld en wordt een vermelding gedefinieerd in de toegangscontrolelijst die de persoonlijke sleutel van het certificaat koppelt aan de identiteit waaronder de service wordt uitgevoerd. De runtime bewaakt ook het certificaat in geval van wijzigingen/vernieuwingen en definieert opnieuw de bijbehorende persoonlijke sleutel in de toegangscontrolelijst.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Het toegangspunt voor service-instellingen configureren
 
@@ -350,9 +350,9 @@ Vervolgens configureert u in de sectie VotingWebPkg **ServiceManifestImport** ee
 
 ## <a name="run-the-application-locally"></a>De toepassing lokaal uitvoeren
 
-Selecteer in Solution Explorer de toepassing **stem** en stel de eigenschap **Application URL** in op ' https:\//localhost: 443 '.
+Selecteer in Solution Explorer de toepassing **Voting** en stel de eigenschap **Toepassings-URL** in op https:\//localhost:443.
 
-Sla alle bestanden op en druk op F5 om de toepassing lokaal uit te voeren.  Nadat de toepassing is geïmplementeerd, wordt een webbrowser geopend met https:\//localhost: 443. Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
+Sla alle bestanden op en druk op F5 om de toepassing lokaal uit te voeren.  Nadat de toepassing is geïmplementeerd, wordt een webbrowser geopend met https:\//localhost:443. Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
 
 ![Stemtoepassing][image2]
 
@@ -360,13 +360,13 @@ Sla alle bestanden op en druk op F5 om de toepassing lokaal uit te voeren.  Nada
 
 Voordat u de toepassing in Azure implementeert, installeert u het certificaat in het `Cert:\LocalMachine\My`-archief alle externe clusterknooppunten.  Services kunnen worden verplaatst naar andere knooppunten van het cluster.  Wanneer de front-end webservice wordt gestart op een clusterknooppunt, zoekt het opstartscript naar het certificaat en worden er toegangsmachtigingen geconfigureerd.
 
-Exporteer als eerste het certificaat naar een PFX-bestand. Open de toepassing certlm. msc en navigeer naar **persoonlijke**>**certificaten**.  Klik met de rechtermuisknop op het certificaat *mytestcert* en selecteer **Alle taken**>**Exporteren**.
+Exporteer als eerste het certificaat naar een PFX-bestand. Open de toepassing certlm.msc en navigeer naar **Persoonlijk**>**Certificaten**.  Klik met de rechtermuisknop op het certificaat *mytestcert* en selecteer **Alle taken**>**Exporteren**.
 
 ![Certificaat exporteren][image4]
 
 Kies in de wizard Exporteren **Ja, de persoonlijke sleutel exporteren** en kies de indeling Personal Information Exchange (PFX).  Exporteer het bestand naar *C:\Users\sfuser\votingappcert.pfx*.
 
-Installeer vervolgens het certificaat op het externe cluster met behulp [van de volgende Power shell-scripts](./scripts/service-fabric-powershell-add-application-certificate.md).
+Installeer vervolgens het certificaat op het externe cluster met behulp van [deze meegeleverde PowerShell-scripts](./scripts/service-fabric-powershell-add-application-certificate.md).
 
 > [!Warning]
 > Een zelfondertekend certificaat volstaat voor ontwikkel- en testtoepassingen. Gebruik voor productietoepassingen in plaats van een zelfondertekend certificaat een certificaat van een [certificeringsinstantie (CA)](https://wikipedia.org/wiki/Certificate_authority).
@@ -396,7 +396,7 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
-## <a name="deploy-the-application-to-azure"></a>De toepassing implementeren in Azure
+## <a name="deploy-the-application-to-azure"></a>De app implementeren in Azure
 
 Sla alle bestanden op, schakel over van Fouten opsporen naar Uitbrengen en druk op F6 om opnieuw op te bouwen.  Klik in Solution Explorer met de rechtermuisknop op **Stemmen** en selecteer **Publiceren**. Selecteer het verbindingseindpunt van het cluster dat is gemaakt in [Een toepassing implementeren op een cluster](service-fabric-tutorial-deploy-app-to-party-cluster.md) of selecteer een ander cluster.  Klik op **Publiceren** om de toepassing naar het externe cluster te publiceren.
 
@@ -411,7 +411,7 @@ In dit deel van de zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een HTTPS-eindpunt in de service definiëren
 > * Kestrel configureren voor gebruik van HTTPS
-> * Het TLS/SSL-certificaat installeren op de externe cluster knooppunten
+> * Het TLS/SSL-certificaat installeren op de externe clusterknooppunten
 > * Netwerkservice toegang geven tot de persoonlijke sleutel van het certificaat
 > * Poort 443 openen in de Azure-load balancer
 > * De toepassing implementeren in een extern cluster

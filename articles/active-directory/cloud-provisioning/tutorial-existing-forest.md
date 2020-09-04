@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d369395cc06902f31bdf17b427ecbb9f71f42001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: eba35d6ffb4cbeb25d64d42adb2429636f1d56ce
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146833"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228471"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Een bestaande forest en een nieuwe forest integreren met enkele Azure AD-tenant
 
@@ -31,12 +31,12 @@ In dit scenario wordt een bestaande forest gesynchroniseerd met behulp van Azure
 ## <a name="prerequisites"></a>Vereisten
 ### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheercentrum
 
-1. Maak een alleen-cloud account voor globale beheerders in uw Azure AD-tenant. Op deze manier kunt u de configuratie van uw tenant beheren als uw on-premises services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een alleen-cloud account voor globale beheerders](../active-directory-users-create-azure-portal.md). Het voltooien van deze stap is van cruciaal belang om ervoor te zorgen dat de tenant niet wordt vergrendeld.
-2. Voeg een of meer [aangepaste domeinnamen](../active-directory-domains-add-azure-portal.md) toe aan uw Azure AD-tenant. Uw gebruikers kunnen zich aanmelden met een van deze domeinnamen.
+1. Maak een alleen-cloud account voor globale beheerders in uw Azure AD-tenant. Op deze manier kunt u de configuratie van uw tenant beheren als uw on-premises services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een alleen-cloud account voor globale beheerders](../fundamentals/add-users-azure-active-directory.md). Het voltooien van deze stap is van cruciaal belang om ervoor te zorgen dat de tenant niet wordt vergrendeld.
+2. Voeg een of meer [aangepaste domeinnamen](../fundamentals/add-custom-domain.md) toe aan uw Azure AD-tenant. Uw gebruikers kunnen zich aanmelden met een van deze domeinnamen.
 
 ### <a name="in-your-on-premises-environment"></a>In uw on-premises omgeving
 
-1. Geef een hostserver op die is toegevoegd aan het domein en waarop Windows Server 2012 R2 of hoger wordt uitgevoerd met minimaal 4 GB RAM en .NET 4.7.1 + runtime 
+1. Geef een hostserver op die is toegevoegd aan het domein en waarop Windows Server 2012 R2 of hoger wordt uitgevoerd met minimaal 4 GB RAM en .NET 4.7.1+-runtime 
 
 2. Als er een firewall is tussen uw servers en Azure AD, moet u de volgende items configureren:
    - Zorg ervoor dat agenten *uitgaande* aanvragen voor Azure AD via de volgende poorten kunnen maken:

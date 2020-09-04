@@ -1,26 +1,20 @@
 ---
 title: 'Zelfstudie: Azure-schijven beheren met de Azure CLI'
 description: In deze zelfstudie leert u hoe u Freeman Azure CLI gebruikt voor het maken en beheren van Azure-schijven voor virtuele machines
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 48d9c51c5d008bf652e782573c891cb0e0580f8c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831308"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757670"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Zelfstudie: Azure-schijven beheren met de Azure CLI
 
@@ -49,20 +43,20 @@ Voor de installatie van toepassingen en de opslag van gegevens kunnen extra gege
 
 ## <a name="vm-disk-types"></a>Typen VM-schijven
 
-Azure biedt twee typen schijven: Standard en Premium.
+Azure biedt twee typen schijven.
 
-### <a name="standard-disk"></a>Standard-schijf
+**Standard-schijven** - ondersteund door HDD's en bieden voordelige en hoogwaardige opslag. Standard-schijven zijn ideaal voor een kostenefficiënte werkbelasting voor ontwikkelen en testen.
 
-Standard Storage wordt ondersteund door HDD's en biedt voordelige en hoogwaardige opslag. Standard-schijven zijn ideaal voor een kostenefficiënte werkbelasting voor ontwikkelen en testen.
+**Premium-schijven** - ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. VM-grootten met een  **S** in de [groottenaam](../vm-naming-conventions.md), bieden doorgaans ondersteuning voor Premium Storage. VM's uit de DS-serie, DSv2-serie, GS-serie en FS-serie ondersteunen premium opslag. Wanneer u een schijfgrootte selecteert, wordt de waarde omhoog afgerond naar het volgende type. Als de schijfgrootte bijvoorbeeld groter is dan 64 GB maar kleiner dan 128 GB, is het schijftype P10. 
 
-### <a name="premium-disk"></a>Premium-schijf
+<br>
 
-Premium-schijven worden ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. Premium Storage ondersteunt virtuele machines uit de DS-serie, DSv2-serie GS-serie en FS-serie. Wanneer u een schijfgrootte selecteert, wordt de waarde omhoog afgerond naar het volgende type. Als de schijfgrootte bijvoorbeeld kleiner dan 128 GB is, is het schijftype P10. Als de schijfgrootte tussen 129 en 512 GB is, is het type een P20. Alles groter dan 512 GB is een P30.
 
-### <a name="premium-disk-performance"></a>Prestaties Premium-schijf
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan een hoger prestatieniveau worden bereikt door striping van meerdere gegevensschijven. Een virtuele machine van het type Standard_GS5 kan bijvoorbeeld maximaal 80.000 IOPS bereiken. Zie [Linux VM-grootten](../sizes.md) voor gedetailleerde informatie over het maximum aantal IOP's per VM.
+Wanneer u een Premium Storage-schijf inricht, bent u, in tegenstelling tot standaard opslag, verzekerd van de capaciteit, IOPS en doorvoer van die schijf. Als u bijvoorbeeld een P50-schijf maakt, richt Azure een schijf in met een opslagcapaciteit van 4.095 GB, 7.500 IOPS en een doorvoer van 250 MB/s. Uw toepassing kan alle of een deel van de capaciteit en prestaties gebruiken. Premium SSD-schijven zijn zodanig ontworpen dat er in de voorgaande tabel 99,9% van de tijd minder dan één milliseconde latentie en doel-IOPS en -doorvoer wordt beschreven.
+
+In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan een hoger prestatieniveau worden bereikt door striping van meerdere gegevensschijven. Er kunnen bijvoorbeeld 64 gegevensschijven worden gekoppeld aan Standard_GS5 VM. Als voor elk van deze schijven een P30-grootte wordt gebruikt, kan een maximum van 80.000 IOP's worden behaald. Zie [VM-typen en -grootten](../sizes.md) voor gedetailleerde informatie over het maximum aantal IOP's per VM.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
@@ -119,16 +113,17 @@ Maak een SSH-verbinding met de virtuele machine. Vervang het voorbeeld van een I
 ssh 10.101.10.10
 ```
 
-Partitioneer de schijf met `fdisk`.
+Partitioneer de schijf met `parted`.
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-Schrijf een bestandssysteem naar de partitie met behulp van de opdracht `mkfs`.
+Schrijf een bestandssysteem naar de partitie met behulp van de opdracht `mkfs`. Gebruik `partprobe` om het besturingssysteem bekend te maken met de wijziging.
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 Koppel de nieuwe schijf, zodat deze toegankelijk is in het besturingssysteem.
@@ -137,18 +132,19 @@ Koppel de nieuwe schijf, zodat deze toegankelijk is in het besturingssysteem.
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-De schijf kan nu worden geopend via het *datadrive*-koppelpunt. Dit kan worden gecontroleerd door de opdracht `df -h` uit te voeren.
+De schijf kan nu worden geopend via het `/datadrive`-koppelpunt. Dit kan worden gecontroleerd door de opdracht `df -h` uit te voeren.
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-De uitvoer geeft het nieuwe station weer dat is gekoppeld aan */datadrive*.
+De uitvoer geeft het nieuwe station weer dat is gekoppeld aan `/datadrive`.
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -164,11 +160,22 @@ De uitvoer geeft de UUID van het station weer, in dit geval `/dev/sdc1`.
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-Voeg een regel toe aan het bestand */etc/fstab* die vergelijkbaar is met de volgende.
+> [!NOTE]
+> Het onjuist bewerken van het bestand **/etc/fstab** kan leiden tot een systeem dat niet kan worden opgestart. Als u niet zeker weet wat u moet doen, raadpleegt u de documentatie van de distributie over het bewerken van dit bestand. U wordt ook aangeraden een back-up van het bestand /etc/fstab te maken voordat u het bewerkt.
+
+Open het bestand `/etc/fstab` als volgt in een teksteditor:
+
+```bash
+sudo nano /etc/fstab
+```
+
+Voeg een regel die lijkt op de volgende aan het bestand */etc/fstab* toe en vervang de UUID door uw eigen waarde.
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
 ```
+
+Wanneer u klaar bent met het bewerken van het bestand, gebruikt u `Ctrl+O` om het bestand te schrijven en `Ctrl+X` om de editor af te sluiten.
 
 Nu de schijf is geconfigureerd, sluit u de SSH-sessie.
 
@@ -182,7 +189,7 @@ Wanneer u een momentopname van de schijf maakt, maakt Azure een alleen-lezen en 
 
 ### <a name="create-snapshot"></a>Momentopname maken
 
-U hebt de id of naam van de schijf nodig om een momentopname van de schijf van een virtuele machine te kunnen maken. Gebruik de opdracht [az vm show](/cli/azure/vm#az-vm-show) om de schijf-id op te halen. In dit voorbeeld wordt de schijf-id opgeslagen in een variabele, zodat deze in een later stadium kan worden gebruikt.
+Voordat u een momentopname maakt, hebt u de id of naam van de schijf nodig. Gebruik [az vm show](/cli/azure/vm#az-vm-show) om de schijf-id aan te geven. In dit voorbeeld wordt de schijf-id opgeslagen in een variabele, zodat deze in een later stadium kan worden gebruikt.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -192,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Nu u de id van de schijf van de virtuele machine hebt, kunt u met de volgende opdracht een momentopname van de schijf maken.
+Nu u de id hebt, gebruikt u [az snapshot create](/cli/azure/snapshot#az-snapshot-create) om een momentopname van de schijf te maken.
 
 ```azurecli-interactive
 az snapshot create \
@@ -203,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Schijf maken op basis van een momentopname
 
-Deze momentopname kan vervolgens worden geconverteerd naar een schijf die kan worden gebruikt om de virtuele machine opnieuw te maken.
+Deze momentopname kan vervolgens met [az disk create](/cli/azure/disk#az-disk-create) worden geconverteerd naar een schijf die kan worden gebruikt om de virtuele machine opnieuw te maken.
 
 ```azurecli-interactive
 az disk create \
@@ -214,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Virtuele machine herstellen op basis van een momentopname
 
-Voor het herstellen van de virtuele machine dient u de bestaande virtuele machine te verwijderen.
+Voor het herstellen van de virtuele machine dient u de bestaande virtuele machine te verwijderen met [az vm delete](/cli/azure/vm#az-vm-delete).
 
 ```azurecli-interactive
 az vm delete \
@@ -236,7 +243,7 @@ az vm create \
 
 Alle gegevensschijven moeten opnieuw worden gekoppeld aan de virtuele machine.
 
-Zoek eerst de naam van de gegevensschijf op met de opdracht [az disk list](/cli/azure/disk#az-disk-list). In dit voorbeeld wordt de naam van de schijf in een variabele met de naam *datadisk* geplaatst, die in de volgende stap wordt gebruikt.
+Zoek de naam van de gegevensschijf met de opdracht [az disk list](/cli/azure/disk#az-disk-list). In dit voorbeeld wordt de naam van de schijf in een variabele met de naam `datadisk` geplaatst, die in de volgende stap wordt gebruikt.
 
 ```azurecli-interactive
 datadisk=$(az disk list \

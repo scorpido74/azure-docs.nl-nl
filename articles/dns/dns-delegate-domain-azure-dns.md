@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710130"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077990"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Zelfstudie: Uw domein hosten in Azure DNS
 
 U kunt Azure DNS gebruiken om uw DNS-domein te hosten en uw DNS-records te beheren. Door uw domeinen in Azure te hosten, kunt u uw DNS-records met dezelfde referenties, API's, hulpprogramma's en facturering beheren als voor uw andere Azure-services.
 
-Stel dat u het domein contoso.net koopt van een domeinnaamregistrar en vervolgens een zone met de naam contoso.net in Azure DNS maakt. Omdat u de eigenaar van het domein bent, zal uw registrar u de optie bieden om de adressen van NS-records (naamserver) te configureren voor uw domein. De registrar slaat deze NS-records op in de bovenliggende .net-zone. Internetgebruikers over de hele wereld worden daarna naar uw domein in de Azure DNS-zone omgeleid wanneer ze proberen DNS-records om te zetten in contoso.net.
+Stel dat u het domein contoso.net koopt van een domeinnaamregistrar en vervolgens een zone met de naam contoso.net in Azure DNS maakt. Omdat u de eigenaar van het domein bent, zal uw registrar u de optie bieden om de adressen van NS-records (naamserver) te configureren voor uw domein. De registrar slaat deze NS-records op in de bovenliggende .NET-zone. Internetgebruikers over de hele wereld worden daarna naar uw domein in de Azure DNS-zone omgeleid wanneer ze proberen DNS-records om te zetten in contoso.net.
 
 
 In deze zelfstudie leert u het volgende:
@@ -34,9 +34,9 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een domeinnaam beschikbaar hebben voor testen die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+U moet een domeinnaam beschikbaar hebben voor testen die u kunt hosten in Azure DNS. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.net, maar u moet uw eigen domeinnaam gebruiken.
+In dit voorbeeld verwijzen we naar het bovenliggende domein als **contoso.net**
 
 ## <a name="create-a-dns-zone"></a>Een DNS-zone maken
 
@@ -45,14 +45,19 @@ Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.net, maar
    ![DNS-zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. Selecteer **DNS-zone maken**.
-1. Voer op de pagina **DNS-zone maken** de volgende waarden in en selecteer **Maken**:
+1. Voer op de pagina **DNS-zone maken** de volgende waarden in en selecteer vervolgens **Maken**: bijvoorbeeld **contoso.net**
+      > [!NOTE] 
+      > Raadpleeg de [zelfstudie Een nieuwe onderliggende DNS-zone maken](./tutorial-public-dns-zones-child.md) als de nieuwe zone die u maakt, een onderliggende zone is (bijvoorbeeld bovenliggende zone = contoso.net, onderliggende zone = onderliggendezone.contoso.net)
 
-   | **Instelling** | **Waarde** | **Details** |
-   |---|---|---|
-   |**Naam**|[uw domeinnaam] |De domeinnaam die u hebt gekocht. In deze zelfstudie wordt contoso.net als voorbeeld gebruikt.|
-   |**Abonnement**|[Uw abonnement]|Selecteer een abonnement waarin u de zone wilt maken.|
-   |**Resourcegroep**|**Nieuwe maken:** contosoRG|Maak een resourcegroep. De naam van de resourcegroep moet uniek zijn binnen het abonnement dat u hebt geselecteerd.<br>De locatie van de resourcegroep heeft geen invloed op de DNS-zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.|
-   |**Locatie**|VS - oost||
+    | **Instelling** | **Waarde** | **Details** |
+    |--|--|--|
+    | **Projectdetails:**  |  |  |
+    | **Resourcegroep**    | ContosoRG | Maak een resourcegroep. De naam van de resourcegroep moet uniek zijn binnen het abonnement dat u hebt geselecteerd. De locatie van de resourcegroep heeft geen invloed op de DNS-zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven. |
+    | **Exemplaardetails:** |  |  |
+    | **Onderliggende zone**        | uitgeschakeld laten | Omdat deze zone **geen** [onderliggende zone](./tutorial-public-dns-zones-child.md) is, moet u dit selectievakje uitgeschakeld laten |
+    | **Name**              | contoso.net | Veld voor de naam van de bovenliggende zone      |
+    | **Locatie**          | VS - oost | Dit veld is gebaseerd op de locatie die is geselecteerd tijdens het maken van de resourcegroep  |
+    
 
 ## <a name="retrieve-name-servers"></a>Naamservers ophalen
 

@@ -93,10 +93,10 @@
       href: troubleshoot-how-to.md
 - name: Naslaginformatie
   items:
-    - name: HTTP-gegevenscontract
-      href: http-data-contract.md
-    - name: gRPC-gegevenscontract
-      href: grpc-data-contract.md
+    - name: HTTP-extensieprotocol
+      href: http-extension-protocol.md
+    - name: gRPC-extensieprotocol
+      href: grpc-extension-protocol.md
     - name: Schema voor interferentie van metagegevens
       href: inference-metadata-schema.md
     - name: Directe methoden

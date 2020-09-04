@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 653b3dedcf969c611afa4c81cc5268c43020a7e7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e96940960b6ee131068b77bca4818499377ea3dd
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517775"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723488"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een Form Recognizer-model met labels trainen met behulp van REST API en Python
 
@@ -30,7 +30,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 - Een set van minimaal zes formulieren van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt voor deze quickstart een [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account met een standaardprestatielaag.
 
 > [!NOTE]
-> In deze quickstart worden externe documenten gebruikt die worden geopend via URL. Als u in plaats daarvan lokale bestanden wilt gebruiken, raadpleegt u de [referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync).
+> In deze quickstart worden externe documenten gebruikt die worden geopend via URL. Raadpleeg de [referentiedocumentatie voor v2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) en de [referentiedocumentatie voor v2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/TrainCustomModelAsync) als u lokale bestanden wilt gebruiken.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
@@ -40,9 +40,9 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 Vervolgens moet u de vereiste invoergegevens instellen. De functie voor gelabelde gegevens heeft naast hetgeen u nodig hebt om een aangepast model zonder labels te trainen nog speciale invoervereisten.
 
-Zorg ervoor dat alle trainingsdocumenten dezelfde indeling hebben. Als u formulieren in meerdere indelingen hebt, kunt u deze indelen op basis van hun algemene indeling in submappen organiseren. Wanneer u traint, moet u de API instellen op een submap.
+Zorg ervoor dat alle trainingsdocumenten dezelfde indeling hebben. Als u formulieren in meerdere indelingen hebt, kunt u deze op basis van hun gemeenschappelijke indeling in submappen ordenen. Wanneer u traint, moet u de API instellen op een submap.
 
-Als u een model wilt trainen met behulp van gelabelde gegevens, hebt u de volgende bestanden nodig als invoer in de submap. Hieronder vindt u informatie over het maken van dit bestand.
+Als u een model wilt trainen met behulp van gelabelde gegevens, hebt u de volgende bestanden nodig als invoer in de submap. Hieronder vindt u informatie over het maken van deze bestanden.
 
 * **Bronformulieren**: de formulieren waaruit gegevens moeten worden opgehaald. Ondersteunde typen zijn JPEG, PNG, PDF of TIFF.
 * **OCR-indelingsbestanden**: dit zijn JSON-bestanden die de grootte en positie van alle leesbare tekst in elk bronformulier beschrijven. U gebruikt de indelings-API voor Form Recognizer om deze gegevens te genereren. 
@@ -69,6 +69,7 @@ U hebt OCR-resultaatbestanden nodig opdat de service de bijbehorende invoerbesta
 1. Roep de **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** -API aan met behulp van de bewerkings-id uit de vorige stap.
 1. Haal het antwoord op en schrijf de inhoud naar een bestand. Voor elk bronformulier moet aan het bijbehorende OCR-bestand de oorspronkelijke bestandsnaam zijn toegevoegd met `.ocr.json`. De OCR JSON-uitvoer moet de volgende indeling hebben. Zie het [OCR-voorbeeldbestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) voor een volledig voorbeeld. 
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0)
     ```json
     {
     "status": "succeeded",
@@ -116,7 +117,61 @@ U hebt OCR-resultaatbestanden nodig opdat de service de bijbehorende invoerbesta
                         ]
                     },
                     ...
-    ```
+    ```    
+    # <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1)
+    ```json
+    {
+    "status": "succeeded",
+    "createdDateTime": "2019-11-12T21:18:12Z",
+    "lastUpdatedDateTime": "2019-11-12T21:18:17Z",
+    "analyzeResult": {
+        "version": "2.1.0",
+        "readResults": [
+            {
+                "page": 1,
+                "language": "en",
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "language": "en",
+                        "boundingBox": [
+                            0.5384,
+                            1.1583,
+                            1.4466,
+                            1.1583,
+                            1.4466,
+                            1.3534,
+                            0.5384,
+                            1.3534
+                        ],
+                        "text": "Contoso",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5384,
+                                    1.1583,
+                                    1.4466,
+                                    1.1583,
+                                    1.4466,
+                                    1.3534,
+                                    0.5384,
+                                    1.3534
+                                ],
+                                "text": "Contoso",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
+    ```    
+
+
+    ---
+
+
 
 ### <a name="create-the-label-files"></a>De labelbestanden maken
 
@@ -200,9 +255,10 @@ Voor elk bronformulier moet aan het bijbehorende labelbestand de oorspronkelijke
 Als u een model met gelabelde gegevens wilt trainen, roept u de **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** -API aan door de volgende Python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang `<Endpoint>` door de URL van Form Recognizer-de resource.
-1. Vervang `<SAS URL>` door de URL van de SAS (Shared Access Signature) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang** ophalen. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+1. Vervang `<SAS URL>` door de URL van de SAS (Shared Access Signature) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
 1. Vervang `<Blob folder name>` door de naam van de map in de blobcontainer waarin de invoergegevens zich bevinden. Als uw gegevens zich in de hoofdmap bevinden, laat u dit veld leeg en verwijdert u het veld `"prefix"` uit de hoofdtekst van de HTTP-aanvraag.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
 import json
@@ -242,11 +298,56 @@ try:
 except Exception as e:
     print("POST model failed:\n%s" % str(e))
     quit() 
-```
+```    
+# <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1)    
+```python
+########### Python Form Recognizer Labeled Async Train #############
+import json
+import time
+from requests import get, post
 
-## <a name="get-training-results"></a>Trainingsresultaten verkrijgen
+# Endpoint URL
+endpoint = r"<Endpoint>"
+post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+source = r"<SAS URL>"
+prefix = "<Blob folder name>"
+includeSubFolders = False
+useLabelFile = True
 
-Nadat u de training hebt gestart, gebruikt u de geretourneerde id om de status van de bewerking te verkrijgen. Voeg onderaan uw Python-script de volgende code toe. Deze code gebruikt de id-waarde van de trainingsoproep in een nieuwe API-oproep. De trainingsbewerking is asynchroon. Dat betekent dat dit script de API regelmatig aanroept totdat de training de status Voltooid heeft. We raden een interval van minimaal één seconde aan.
+headers = {
+    # Request headers
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': '<subsription key>',
+}
+
+body =     {
+    "source": source,
+    "sourceFilter": {
+        "prefix": prefix,
+        "includeSubFolders": includeSubFolders
+    },
+    "useLabelFile": useLabelFile
+}
+
+try:
+    resp = post(url = post_url, json = body, headers = headers)
+    if resp.status_code != 201:
+        print("POST model failed (%s):\n%s" % (resp.status_code, json.dumps(resp.json())))
+        quit()
+    print("POST model succeeded:\n%s" % resp.headers)
+    get_url = resp.headers["location"]
+except Exception as e:
+    print("POST model failed:\n%s" % str(e))
+    quit() 
+```   
+
+---
+
+
+
+## <a name="get-training-results"></a>Trainingsresultaten ophalen
+
+Nadat u de trainbewerking hebt gestart, gebruikt u de geretourneerde id om de status van de bewerking te verkrijgen. Voeg onderaan uw Python-script de volgende code toe. Voor deze code wordt de id-waarde gebruikt van de trainingsoproep in een nieuwe API-oproep. De trainingsbewerking is asynchroon. Dat betekent dat dit script de API regelmatig aanroept totdat de training de status Voltooid heeft. We raden een interval van minimaal één seconde aan.
 
 ```python 
 n_tries = 15
@@ -350,199 +451,294 @@ Kopieer de waarde `"modelId"` voor gebruik in de volgende stappen.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Wanneer het proces is voltooid, ontvangt u een `202 (Success)`-antwoord met JSON-inhoud in de volgende indeling. Het antwoord is hier ingekort. De hoofd sleutel-/waardekoppelingen bevinden zich in het knooppunt `"documentResults"`. De resultaten van de Lay-out-API (de inhoud en posities van alle tekst in het document) bevinden zich in het knooppunt `"readResults"`.
+Wanneer het proces is voltooid, ontvangt u een `202 (Success)`-antwoord met JSON-inhoud in de volgende indeling. Het antwoord is hier ingekort. De hoofd sleutel-/waardekoppelingen bevinden zich in het knooppunt `"documentResults"`. Het knooppunt `"selectionMarks"` (in de preview van v2.1) toont elke selectiemarkering (selectievakje, keuzerondje) en of de status ervan 'ingeschakeld' of 'niet ingeschakeld' is. De resultaten van de Lay-out-API (de inhoud en posities van alle tekst in het document) bevinden zich in het knooppunt `"readResults"`.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 ```json
-{ 
-    "analyzeResult":{ 
-      "version":"2.0.0",
-      "readResults":[ 
-        { 
-          "page":1,
-          "language":"en",
-          "angle":0,
-          "width":8.5,
-          "height":11,
-          "unit":"inch",
-          "lines":[ 
-            { 
-              "language":"en",
-              "boundingBox":[ 
-                0.5375,
-                1.1349,
-                2.6064,
-                1.1349,
-                2.6064,
-                1.354,
-                0.5375,
-                1.354
-              ],
-              "text":"Contoso Suites",
-              "words":[ 
-                { 
-                  "boundingBox":[ 
-                    0.5375,
-                    1.1402,
-                    1.6595,
-                    1.1402,
-                    1.6595,
-                    1.354,
-                    0.5375,
-                    1.354
-                  ],
-                  "text":"Contoso",
-                  "confidence":1
-                },
-                { 
-                  "boundingBox":[ 
-                    1.758,
-                    1.1349,
-                    2.6064,
-                    1.1349,
-                    2.6064,
-                    1.3534,
-                    1.758,
-                    1.3534
-                  ],
-                  "text":"Suites",
-                  "confidence":1
-                }
-              ]
-            },
-            ...
-          ]
-        }
-      ],
-      "pageResults":[ 
-        { 
-          "page":1,
-          "tables":[ 
-            { 
-              "rows":2,
-              "columns":6,
-              "cells":[ 
-                { 
-                  "rowIndex":0,
-                  "columnIndex":0,
-                  "text":"Invoice Number",
-                  "boundingBox":[ 
-                    0.5075,
-                    2.8088,
-                    1.9061,
-                    2.8088,
-                    1.9061,
-                    3.3219,
-                    0.5075,
-                    3.3219
-                  ],
-                  "elements":[ 
-                    "#/readResults/0/lines/7/words/0",
-                    "#/readResults/0/lines/7/words/1"
-                  ]
-                },
-                { 
-                  "rowIndex":0,
-                  "columnIndex":1,
-                  "text":"Invoice Date",
-                  "boundingBox":[ 
-                    1.9061,
-                    2.8088,
-                    3.3074,
-                    2.8088,
-                    3.3074,
-                    3.3219,
-                    1.9061,
-                    3.3219
-                  ],
-                  "elements":[ 
-                    "#/readResults/0/lines/8/words/0",
-                    "#/readResults/0/lines/8/words/1"
-                  ]
-                },
-                ...        
-              ]
-            }
-          ]
-        }
-      ],
-      "documentResults":[ 
-        { 
-          "docType":"Analyze",
-          "pageRange":[ 
-            1,
-            1
-          ],
-          "fields":{ 
-            "total":{ 
-              "type":"string",
-              "valueString":"$22,123.24",
-              "text":"$22,123.24",
-              "boundingBox":[ 
-                5.29,
-                3.41,
-                5.9750000000000009,
-                3.41,
-                5.9750000000000009,
-                3.54,
-                5.29,
-                3.54
-              ],
-              "page":1,
-              "confidence":1,
-              "elements":[ 
-                "#/analyzeResult/readResults/0/lines/15/words/0"
-              ]
-            },
-            "invoice #":{ 
-              "type":"string",
-              "valueString":"7689302",
-              "text":"7689302",
-              "boundingBox":[ 
-                0.54,
-                3.41,
-                1.065,
-                3.41,
-                1.065,
-                3.515,
-                0.54,
-                3.515
-              ],
-              "page":1,
-              "confidence":1,
-              "elements":[ 
-                "#/analyzeResult/readResults/0/lines/12/words/0"
-              ]
-            },
-            "vat":{ 
-              "type":"string",
-              "valueString":"QR",
-              "text":"QR",
-              "boundingBox":[ 
-                6.2250000000000009,
-                3.41,
-                6.425,
-                3.41,
-                6.425,
-                3.52,
-                6.2250000000000009,
-                3.52
-              ],
-              "page":1,
-              "confidence":0.9839357733726502,
-              "elements":[ 
-                "#/analyzeResult/readResults/0/lines/16/words/0"
-              ]
-            },
-            ...
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T02:16:28Z",
+  "lastUpdatedDateTime": "2020-08-21T02:16:35Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "language": "en",
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "boundingBox": [
+              0.5826,
+              0.4411,
+              2.3387,
+              0.4411,
+              2.3387,
+              0.7969,
+              0.5826,
+              0.7969
+            ],
+            "text": "Contoso, Ltd.",
+            "words": [
+              {
+                "boundingBox": [
+                  0.5826,
+                  0.4411,
+                  1.744,
+                  0.4411,
+                  1.744,
+                  0.7969,
+                  0.5826,
+                  0.7969
+                ],
+                "text": "Contoso,",
+                "confidence": 1
+              },
+              {
+                "boundingBox": [
+                  1.8448,
+                  0.4446,
+                  2.3387,
+                  0.4446,
+                  2.3387,
+                  0.7631,
+                  1.8448,
+                  0.7631
+                ],
+                "text": "Ltd.",
+                "confidence": 1
+              }
+            ]
+          },
+          ...
+            ]
           }
+        ] 
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "tables": [
+          {
+            "rows": 5,
+            "columns": 5,
+            "cells": [
+              {
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "text": "Training Date",
+                "boundingBox": [
+                  0.5133,
+                  4.2167,
+                  1.7567,
+                  4.2167,
+                  1.7567,
+                  4.4492,
+                  0.5133,
+                  4.4492
+                ],
+                "elements": [
+                  "#/readResults/0/lines/14/words/0",
+                  "#/readResults/0/lines/14/words/1"
+                ]
+              },
+              ...
+            ]
+          },
+        ]
+      }
+    ],
+    "documentResults": [
+      {
+        "docType": "custom:form",
+        "pageRange": [
+          1,
+          1
+        ],
+        "fields": {
+          "Receipt No": {
+            "type": "string",
+            "valueString": "9876",
+            "text": "9876",
+            "page": 1,
+            "boundingBox": [
+              7.615,
+              1.245,
+              7.915,
+              1.245,
+              7.915,
+              1.35,
+              7.615,
+              1.35
+            ],
+            "confidence": 1,
+            "elements": [
+              "#/readResults/0/lines/3/words/3"
+            ]
+          },
+          ...
         }
-      ]
-    },
-    "status":"succeeded",
-    "createdDateTime":"2019-11-12T21:26:19+00:00",
-    "lastUpdatedDateTime":"2019-11-12T21:27:27.0488571+00:00"
+      }
+    ],
+    "errors": []
+  }
 }
 ```
+# <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1) 
+```json   
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T02:29:42Z",
+  "lastUpdatedDateTime": "2020-08-21T02:29:50Z",
+  "analyzeResult": {
+    "version": "2.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "boundingBox": [
+              0.5826,
+              0.4411,
+              2.3387,
+              0.4411,
+              2.3387,
+              0.7969,
+              0.5826,
+              0.7969
+            ],
+            "text": "Contoso, Ltd.",
+            "words": [
+              {
+                "boundingBox": [
+                  0.5826,
+                  0.4411,
+                  1.744,
+                  0.4411,
+                  1.744,
+                  0.7969,
+                  0.5826,
+                  0.7969
+                ],
+                "text": "Contoso,",
+                "confidence": 1
+              },
+              {
+                "boundingBox": [
+                  1.8448,
+                  0.4446,
+                  2.3387,
+                  0.4446,
+                  2.3387,
+                  0.7631,
+                  1.8448,
+                  0.7631
+                ],
+                "text": "Ltd.",
+                "confidence": 1
+              }
+            ]
+          },
+          ...
+        ], 
+        "selectionMarks": [
+          {
+            "boundingBox": [
+              3.9737,
+              3.7475,
+              4.1693,
+              3.7475,
+              4.1693,
+              3.9428,
+              3.9737,
+              3.9428
+            ],
+            ...
+        ] 
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "tables": [
+          {
+            "rows": 5,
+            "columns": 5,
+            "cells": [
+              {
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "text": "Training Date",
+                "boundingBox": [
+                  0.5133,
+                  4.2167,
+                  1.7567,
+                  4.2167,
+                  1.7567,
+                  4.4492,
+                  0.5133,
+                  4.4492
+                ],
+                "elements": [
+                  "#/readResults/0/lines/12/words/0",
+                  "#/readResults/0/lines/12/words/1"
+                ]
+              },
+              ...
+            ]
+          }
+        ] 
+      }
+    ], 
+    "documentResults": [
+      {
+        "docType": "custom:e1073364-4f3d-4797-8cc4-4bdbcd0dab6b",
+        "modelId": "e1073364-4f3d-4797-8cc4-4bdbcd0dab6b",
+        "pageRange": [
+          1,
+          1
+        ],
+        "fields": {
+          "ID #": {
+            "type": "string",
+            "valueString": "5554443",
+            "text": "5554443",
+            "page": 1,
+            "boundingBox": [
+              2.315,
+              2.43,
+              2.74,
+              2.43,
+              2.74,
+              2.515,
+              2.315,
+              2.515
+            ],
+            "confidence": 1,
+            "elements": [
+              "#/readResults/0/lines/8/words/1"
+            ]
+          },
+          ...
+        },
+        "docTypeConfidence": 1
+      }
+    ],
+    "errors": []
+  }
+}
+```
+
+---
+
 
 ## <a name="improve-results"></a>Resultaten verbeteren
 

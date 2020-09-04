@@ -1,5 +1,5 @@
 ---
-title: Grote hoeveel heden wille keurige gegevens downloaden uit Azure Storage | Microsoft Docs
+title: Grote hoeveelheden willekeurige gegevens downloaden uit Azure Storage | Microsoft Docs
 description: Informatie over het gebruik van de Azure SDK om grote hoeveelheden willekeurige gegevens uit een Azure Storage-account te downloaden
 author: roygara
 ms.service: storage
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 466a61fd27fd9eeb32d004af1ab6bb43503e6233
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75372088"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020725"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Grote hoeveelheden willekeurige gegevens downloaden uit Azure Storage
 
@@ -100,7 +101,7 @@ De volgende tabel toont de [BlobRequestOptions](/dotnet/api/microsoft.azure.stor
 
 |Eigenschap|Waarde|Beschrijving|
 |---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| waar| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd. |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Deze eigenschap bepaalt of een MD5-hash wordt berekend en opgeslagen.   |
 
 De taak `DownloadFilesAsync` wordt in het volgende voorbeeld weergegeven:

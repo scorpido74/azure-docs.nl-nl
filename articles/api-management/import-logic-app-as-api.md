@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82202771"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Een logische app als API importeren
 
-In dit artikel wordt uitgelegd hoe u een logische app als een API kunt importeren en de geïmporteerde API kunt testen.
+In dit artikel wordt uitgelegd hoe u een logische app als een API importeert en de geïmporteerde API vervolgens test.
 
 In dit artikel leert u het volgende:
 
@@ -33,31 +33,31 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
--   Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+-   Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 -   Zorg ervoor dat er een logische app in uw abonnement aanwezig is waarmee een HTTP-eindpunt zichtbaar wordt gemaakt. Raadpleeg [Werkstromen met HTTP-eindpunten activeren](../logic-apps/logic-apps-http-endpoint.md) voor meer informatie
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
-1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **api's** in het menu.
+1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **API's** in het menu.
 2. Selecteer **logische app** uit de lijst **Nieuwe API toevoegen**.
 
     ![Logische apps](./media/import-logic-app-as-api/logic-app-api.png)
 
-3. Klik op **Bladeren** om de lijst met Logic apps met de http-trigger in uw abonnement weer te geven. (Houd er rekening mee dat Logic Apps zonder HTTP-trigger niet wordt weer gegeven in de lijst.)
-4. Selecteer de app. API Management vindt de Swagger die is gekoppeld aan de geselecteerde app, haalt deze op en importeert deze.
-5. Voeg een achtervoegsel toe van de URL voor de API. Het achtervoegsel is een naam die deze specifieke API in dit API Management-exemplaar identificeert. Deze moet uniek zijn in dit API Management-exemplaar.
+3. Druk op **Bladeren** voor een overzicht van de logische apps met een HTTP-trigger in uw abonnement. (Houd er rekening mee dat logische apps zonder HTTP-trigger niet in de lijst voorkomen.)
+4. Selecteer de app. API Management zoekt de swagger die is gekoppeld aan de geselecteerde app, haalt deze op en importeert deze.
+5. Voeg een achtervoegsel toe van de URL voor de API. Het achtervoegsel is een naam die deze specifieke API in dit API Management-exemplaar identificeert. Het moet uniek zijn in dit API Management-exemplaar.
 6. Publiceer de API door deze aan een product te koppelen. In dit geval wordt het product _onbeperkt_ gebruikt. Als u wilt dat de API wordt gepubliceerd en beschikbaar is voor ontwikkelaars, kunt u deze toevoegen aan een product. U kunt dit doen tijdens het maken van de API of het later instellen.
 
-    Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. Als u de API Management instantie hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product.
+    Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. Als u het API Management-exemplaar hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product.
 
     Standaard wordt elk API Management-exemplaar geleverd met twee voorbeeldproducten:
 
     - **Starter**
     - **Onbeperkt**
 
-7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of deze later configureren door naar het tabblad **instellingen** te gaan. De instellingen worden beschreven in de zelf studie [uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api) .
+7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
 8. Selecteer **Maken**.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>De API testen in Azure Portal
@@ -85,4 +85,4 @@ Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is e
 
 > [!div class="nextstepaction"]
 >
-> [Een gepubliceerde API transformeren en beveiligen](transform-api.md)
+> [Een gepubliceerde API transformeren en beschermen](transform-api.md)

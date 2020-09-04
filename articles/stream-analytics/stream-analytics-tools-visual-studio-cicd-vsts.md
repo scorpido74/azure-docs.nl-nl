@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75354438"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure Pipelines
@@ -29,10 +29,10 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat u het volgende hebt voordat u begint:
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 * Installeer [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) en de workload **Azure-ontwikkeling** of **Gegevensopslag en verwerking**.
 * Maak een [Stream Analytics-project in Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
-* Maak een [Azure DevOps](https://visualstudio.microsoft.com/team-services/) -organisatie.
+* Maak een [Azure DevOps](https://visualstudio.microsoft.com/team-services/)-organisatie.
 
 ## <a name="configure-nuget-package-dependency"></a>Afhankelijkheid van NuGet-pakket configureren
 Om automatisch een build te kunnen maken en automatisch te implementeren op een willekeurige computer, moet u het NuGet-pakket `Microsoft.Azure.StreamAnalytics.CICD` gebruiken. Dit bevat de tools voor MSBuild, lokaal uitvoeren en implementatie die ondersteuning bieden voor het continue integratie- en implementatieproces van Stream Analytics Visual Studio-projecten. Zie [Stream Analytics CI/CD-hulpprogramma's](stream-analytics-tools-for-visual-studio-cicd.md) voor meer informatie.
@@ -60,7 +60,7 @@ Deel de bronbestanden van uw toepassing met een project in Azure DevOps zodat u 
 
    ![De knop Publish repository onder Push Git repo](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
-    Als u de opslagplaats pusht, wordt er een nieuw project voor uw organisatie gemaakt met dezelfde naam als de lokale opslagplaats. Als u de opslag plaats in een bestaand project wilt maken, klikt u op **Geavanceerd** naast naam van de **opslag plaats**en selecteert u een project. U kunt uw code in de browser weergeven door **See it on the web** te selecteren.
+    Als u de opslagplaats pusht, wordt er een nieuw project voor uw organisatie gemaakt met dezelfde naam als de lokale opslagplaats. Als u de opslagplaats in een bestaand project wilt maken, klikt u naast de **naam van de opslagplaats** op **Advanced** en selecteert u een teamproject. U kunt uw code in de browser weergeven door **See it on the web** te selecteren.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Continue levering configureren met Azure DevOps
 Een build-pijplijn van Azure Pipelines beschrijft een werkstroom die bestaat uit build-stappen die achtereenvolgens worden uitgevoerd. Meer informatie over [build-pijplijnen van Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). 
@@ -82,7 +82,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     
     ![Triggerstatus voor continue integratie inschakelen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
-4. Builds worden ook getriggerd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, moet u een release pijplijn definiëren die uw toepassing implementeert in een cluster. Klik met de rechtermuisknop op het beletselteken naast uw build-pijplijn en selecteer **Edit**.
+4. Builds worden ook getriggerd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds**.  Als u hebt gecontroleerd dat de build correct wordt uitgevoerd, moet u een release-pijplijn definiëren waarmee uw toepassing in een cluster wordt geïmplementeerd. Klik met de rechtermuisknop op het beletselteken naast uw build-pijplijn en selecteer **Edit**.
 
 5.  Voer in **Tasks** "Hosted" in als de **Agent queue**.
     

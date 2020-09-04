@@ -3,12 +3,12 @@ title: 'Zelfstudie: back-ups maken van SAP HANA-databases in virtuele Azure-mach
 description: In deze zelfstudie ontdekt u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611820"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757486"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelfstudie: Een back-up maken van SAP HANA-databases in een Azure-VM
 
@@ -125,7 +125,7 @@ In de uitvoer van de opdracht moet de sleutel {SID}{DBNAME} worden weergegeven e
 >[!NOTE]
 > Controleer of u over een unieke set SSFS-bestanden beschikt onder `/usr/sap/{SID}/home/.hdb/`. Als het goed is, bevat dit pad maar één map.
 
-## <a name="create-a-recovery-service-vault"></a>Een Recovery Service-kluis maken
+## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
 Een Recovery Service-kluis is een entiteit waarin de back-ups en herstelpunten worden opgeslagen die in de loop van de tijd zijn gemaakt. De Recovery Service-kluis bevat ook de beleidsregels voor back-up die aan de beveiligde virtuele machines zijn gekoppeld.
 
@@ -159,7 +159,7 @@ Een Recovery Services-kluis maken:
 
    ![Controleren + maken selecteren](./media/tutorial-backup-sap-hana-db/review-create.png)
 
-De Recovery Service-kluis is nu gemaakt.
+De Recovery Service-kluis wordt nu gemaakt.
 
 ## <a name="discover-the-databases"></a>De databases detecteren
 

@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: Azure Ultra Disks (preview) gebruiken
           href: use-ultra-disks.md
+        - name: CSI-opslagstuurprogramma's
+          items:
+            - name: CSI-opslagstuurprogramma's inschakelen (preview)
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI-stuurprogramma's (preview)
+              href: azure-disk-csi.md
+            - name: Azure Files CSI-stuurprogramma's (preview)
+              href: azure-files-csi.md
     - name: Netwerk configureren
       items:
         - name: Een bestaand virtueel netwerk maken of gebruiken
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: Integratie van Azure Active Directory inschakelen
           items:
-            - name: Door AKS beheerde AAD
+            - name: Met AKS beheerde Azure AD
               href: managed-aad.md
-            - name: AAD-integratie (verouderd)
+            - name: Azure AD-integratie (verouderd)
               href: azure-ad-integration-cli.md
         - name: Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
           href: manage-azure-rbac.md

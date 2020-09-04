@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een LUIS-sleutel maken'
+title: 'Quickstart: een LUIS-sleutel maken'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u een LUIS-toepassing maakt en een sleutel krijgt.
+description: In deze quickstart leert u hoe u een LUIS-toepassing maakt en een sleutel verkrijgt.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
 ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391601"
 ---
-# <a name="quickstart-getting-a-luis-endpoint-key"></a>Quick Start: een LUIS-eindpunt sleutel ophalen
+# <a name="quickstart-getting-a-luis-endpoint-key"></a>Quickstart: een LUIS-eindpuntsleutel ophalen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u de volgende items hebt voordat u met deze zelf studie begint:
+Zorg dat u over de volgende items beschikt voordat u met deze zelfstudie begint:
 
 * Een LUIS-account. U kunt een gratis account aanvragen via het [LUIS portal](https://www.luis.ai/home).
 
@@ -33,30 +33,30 @@ LUIS maakt gebruik van drie soorten sleutels:
 
 |Type sleutel|Doel|
 |--------|-------|
-|Ontwerpen|Hiermee kunt u LUIS-apps programmatisch maken en wijzigen|
+|Ontwerpen|Hiermee kunt u via programmacode LUIS-apps maken en wijzigen|
 |Starter|Hiermee kunt u uw LUIS-toepassing testen met alleen tekst|
-|Eindpunt |Hiermee wordt toegang tot een bepaalde LUIS-app geautoriseerd|
+|Eindpunt |Hiermee kunt u toegang verlenen tot een bepaalde LUIS-app|
 
-Voor deze zelf studie hebt u het type eindpunt sleutel nodig. In de zelf studie wordt gebruikgemaakt van de voor beeld-app Home Automation LUIS, die u kunt maken met [behulp van vooraf ontwikkelde Start Automation-apps](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) Als u zelf een LUIS-app hebt gemaakt, kunt u deze gebruiken in plaats daarvan.
+Voor deze zelfstudie hebt u het een sleutel van het type eindpunt nodig. In de zelfstudie wordt gebruikgemaakt van de voorbeeld-app Home Automation van LUIS. Deze app kunt u maken aan de hand van de instructies in de quickstart [ Een vooraf gemaakte Home Automation-app gebruiken](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app). Als u de beschikking hebt over een eigen LUIS-app, kunt u die ook gebruiken.
 
-Wanneer u een LUIS-app maakt, wordt door LUIS automatisch een start sleutel gegenereerd zodat u de app kunt testen met behulp van tekst query's. Met deze sleutel wordt de integratie van de spraak service niet ingeschakeld en werkt deze niet met deze zelf studie. Maak een LUIS-resource in het Azure-dash board en wijs deze toe aan de LUIS-app. U kunt de gratis versie van het abonnement gebruiken voor deze zelfstudie.
+Wanneer u een LUIS-app maakt, wordt er automatisch een starter-sleutel gegenereerd, zodat u de app kunt testen met tekstquery's. Deze sleutel zorgt er overigens niet voor dat de integratie van de Speech-service wordt ingeschakeld en werkt ook niet met deze zelfstudie. Maak een LUIS-resource in het Azure-dashboard en wijs deze toe aan de LUIS-app. U kunt de gratis versie van het abonnement gebruiken voor deze zelfstudie.
 
-Nadat u de LUIS-resource hebt gemaakt in het Azure-dash board, meldt u zich aan bij de [Luis-Portal](https://www.luis.ai/home), kiest u uw toepassing op de pagina **mijn apps** en gaat u naar de pagina **beheren** van de app. Ten slotte selecteert u de **toetsen en eind punten** in de zijbalk.
+Als u de LUIS-resource in het Azure-dashboard hebt gemaakt, meldt u zich aan bij de [LUIS-portal](https://www.luis.ai/home), kiest u uw toepassing op de pagina **My Apps** en gaat u naar de pagina **Manage** van de app. Ten slotte selecteert u **Keys and Endpoints** in de zijbalk.
 
 ![Instellingen voor sleutels en eindpunten in de LUIS-portal](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-endpoints-page.png)
 
-Op de pagina **sleutels en eindpunt instellingen** :
+Ga als volgt te werk op de pagina **Keys and Endpoints settings**:
 
-1. Schuif omlaag naar de sectie **resources en sleutels** en selecteer **resource toewijzen**.
-1. Breng in het dialoog venster **een sleutel toewijzen aan uw app** de volgende wijzigingen aan:
+1. Scrol omlaag naar het gedeelte **Resources and Keys** en selecteer **Assign resource**.
+1. In het dialoogvenster **Assign a key to your app** brengt u de volgende wijzigingen aan:
 
-   * Onder **Tenant**kiest u **micro soft**.
-   * Kies onder **abonnements naam**het Azure-abonnement met de Luis-resource die u wilt gebruiken.
-   * Kies onder **sleutel**de Luis-resource die u wilt gebruiken met de app.
+   * Onder **Tenant** kiest u **Microsoft**.
+   * Onder **Subscription Name** kiest u het Azure-abonnement met de LUIS-resource die u wilt gebruiken.
+   * Kies onder **Key** de LUIS-resource die u voor de app wilt gebruiken.
 
    Na korte tijd wordt het nieuwe abonnement weergegeven in de tabel onderaan de pagina.
 
-1. Selecteer het pictogram naast een sleutel om het naar het klem bord te kopiëren. (U kunt beide sleutels gebruiken.)
+1. Selecteer het pictogram naast een sleutel om deze naar het klembord te kopiëren. (U kunt beide sleutels gebruiken.)
 
 ![Abonnementssleutels voor LUIS-app](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 

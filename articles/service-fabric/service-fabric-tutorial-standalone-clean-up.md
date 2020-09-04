@@ -1,33 +1,33 @@
 ---
-title: Een zelfstandig cluster opschonen
-description: In deze zelf studie leert u hoe u AWS of Azure-resources opschoont in uw zelfstandige Service Fabric cluster.
+title: Zelfstandig cluster opschonen
+description: In deze zelfstudie leert u hoe u AWS- of Azure-resources kunt opschonen in uw zelfstandige Service Fabric-cluster.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75639017"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Zelfstudie: Zelfstandig cluster opschonen
 
-Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op AWS of Azure en hoe u een toepassing kunt installeren.
+Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze reeks zelfstudies maakt u een zelfstandig cluster dat in AWS of Azure wordt gehost. Vervolgens installeert u een toepassing in het cluster.
 
-Deze zelfstudie is deel vier een serie. In dit deel van de zelf studie ziet u hoe u de AWS-of Azure-resources opschoont die u hebt gemaakt om uw Service Fabric-cluster te hosten.
+Deze zelfstudie is deel vier een serie. In dit deel van de reeks wordt uitgelegd hoe u de AWS- of Azure-resources kunt opschonen die u hebt gemaakt voor het hosten van uw Service Fabric-cluster.
 
 In deel vier van de serie leert u het volgende:
 
 > [!div class="checklist"]
 > * Service Fabric-cluster opschonen
-> * Uw AWS-of Azure-resources opschonen
+> * Uw AWS- of Azure-resources opschonen
 
 ## <a name="clean-up-service-fabric-cluster"></a>Service Fabric-cluster opschonen
 
-1. RDP in de virtuele machine die u hebt gebruikt om Service Fabric te installeren.
+1. Ga met behulp van RDP naar de VM die u hebt gebruikt voor de installatie van Service Fabric.
 2. Open PowerShell.
 3. Ga naar de uitgepakte map uit de tweede zelfstudie.
 4. Voer de volgende opdracht uit om het Service Fabric-cluster te verwijderen:
@@ -36,7 +36,7 @@ In deel vier van de serie leert u het volgende:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. `Y` Wanneer u hierom wordt gevraagd, ziet de uitvoer er als volgt uit, met uw eigen IP-adressen die worden vervangen in:
+5. Voer `Y` in als dat wordt gevraagd. Als de opdracht is gelukt, ziet de uitvoer er als volgt uit, maar dan met uw eigen IP-adressen:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -54,14 +54,14 @@ In deel vier van de serie leert u het volgende:
 1. Meld u aan bij uw AWS-account.
 2. Ga naar de EC2-console.
 3. Selecteer de drie knooppunten die u hebt gemaakt in deel een van de zelfstudie.
-4. Klik op **actie** > -**exemplaar status** > **beëindigen**.
+4. Klik op **Actions** > **Instance State** > **Terminate**.
 
 ## <a name="clean-up-azure-resources"></a>Azure-resources opschonen
 
 1. Meld u aan bij Azure Portal.
-2. Ga naar de sectie **virtual machines** .
-3. Schakel de selectie vakjes in voor de drie knoop punten die u in deel één van de zelf studie hebt gemaakt.
-4. Klik op **verwijderen**.
+2. Ga naar de sectie **Virtual Machines**.
+3. Schakel de selectievakjes in bij de drie knooppunten die u hebt gemaakt in deel een van de zelfstudie.
+4. Klik op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

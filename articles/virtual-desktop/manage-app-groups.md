@@ -3,15 +3,15 @@ title: App-groepen voor het Windows Virtual Desktop-portal beheren - Azure
 description: Ontdek hoe u app-groepen voor Windows Virtual Desktop kunt beheren met het Azure-portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010086"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659480"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Zelfstudie: App-groepen beheren met het Azure-portal
 
@@ -34,11 +34,15 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
 
 2.  Zoek en selecteer **Windows Virtual Desktop**.
 
-3.  Selecteer **Toepassingsgroepen** in het menu aan de linkerkant van de pagina en selecteer vervolgens **+ Toevoegen**.
+3. U kunt een toepassingsgroep rechtstreeks toevoegen of u kunt deze toevoegen vanuit een bestaande hostgroep. Kies hieronder een optie:
 
-4. Selecteer in het tabblad **Basis** de abonnementsgroep en de resourcegroep waarvoor u de app-groep wilt maken. U kunt er ook voor kiezen om een nieuwe resourcegroep te maken in plaats van er een bestaande te selecteren.
+    - Selecteer **Toepassingsgroepen** in het menu aan de linkerkant van de pagina en selecteer vervolgens **+ Toevoegen**.
 
-5. Selecteer de hostgroep die gekoppeld zal worden aan de toepassingsgroep in de vervolgkeuzelijst naast **Hostgroep**.
+    - Selecteer **Hostgroepen** in het menu aan de linkerkant van het scherm, selecteer de naam van de hostgroep, selecteer **Toepassingsgroepen** in het menu aan de linkerkant en selecteer vervolgens **+ Toevoegen**. In dit geval is de hostgroep al geselecteerd op het tabblad Basisbeginselen.
+
+4. Selecteer in het tabblad **Basisbeginselen** de **abonnementsgroep** en de **resourcegroep** waarvoor u de app-groep wilt maken. U kunt er ook voor kiezen om een nieuwe resourcegroep te maken in plaats van er een bestaande te selecteren.
+
+5. Selecteer in de vervolgkeuzelijst de **hostgroep** die wordt gekoppeld aan de toepassingsgroep.
 
     >[!NOTE]
     >U moet de hostgroep selecteren die aan de toepassingsgroep is gekoppeld. App-groepen bevatten apps of bureaubladen die aangeleverd worden vanuit een sessiehost, en sessiehosts maken deel uit van hostgroepen. De app-groep moet gekoppeld zijn met een hostgroep tijdens het aanmaken.
@@ -46,41 +50,27 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
     > [!div class="mx-imgBorder"]
     > ![Een schermopname van het tabblad Basis in het Azure-portal.](media/basics-tab.png)
 
-6. Als u toepassingsgroepen wilt toevoegen aan uw hostgroep, selecteer dan **Hostgroepen** in het menu aan de linkerkant van het scherm.
-
-    Selecteer vervolgens de naam van de hostgroep waaraan u toepassingsgroepen wilt toevoegen.
-
-    Selecteer vervolgens **Toepassingsgroepen** in het menu aan de linkerkant van het scherm en selecteer vervolgens **+ Toevoegen**.
-
-    Selecteer ten slotte de abonnementsgroep en de resourcegroep waarin u de app-groep wilt maken. Selecteer de naam van een bestaande resourcegroep uit het vervolgkeuzemenu of selecteer **Nieuwe maken** om er een nieuwe te maken.
-
-      >[!NOTE]
-      >Wanneer u toepassingsgroepen aan uw hostgroep toevoegt, is de hostgroep die hoort bij de toepassingsgroep al geselecteerd, omdat u van daaruit bent genavigeerd.
-      >
-      > [!div class="mx-imgBorder"]
-      >![Een schermopname van het tabblad Basis waarin de hostgroep is geselecteerd.](media/host-pool-selected.png)
-
-7. Selecteer **RemoteApp** als type voor de toepassingsgroep en voer vervolgens een naam in voor uw RemoteApp.
+6. Selecteer **RemoteApp** onder **Type toepassingsgroep** en voer vervolgens een naam in voor uw RemoteApp.
 
       > [!div class="mx-imgBorder"]
       > ![Een schermopname van de velden van het type voor de toepassingsgroep. 'RemoteApp' is gemarkeerd.](media/remoteapp-button.png)
 
-8.  Selecteer het tabblad **Toewijzingen**.
+7.  Selecteer **Volgende: Tabblad Toewijzingen >** .
 
-9.  Als u afzonderlijke gebruikers of gebruikersgroepen wilt publiceren naar de app-groep, selecteer dan **+Azure AD-gebruikers of -gebruikersgroepen toevoegen**.
+8.  Als u afzonderlijke gebruikers of gebruikersgroepen wilt toewijzen aan de app-groep, selecteert u **+Azure AD-gebruikers of -gebruikersgroepen toevoegen**.
 
-10.  Selecteer het aantal gebruikers waaraan u de apps wilt toevoegen. U kunt één of meerdere gebruikers en gebruikersgroepen selecteren.
+9.  Selecteer de gebruikers die u toegang wilt geven tot de apps. U kunt één of meerdere gebruikers en gebruikersgroepen selecteren.
 
      > [!div class="mx-imgBorder"]
      > ![Een schermopname van het menu gebruikersselectie.](media/select-users.png)
 
-11.  Kies **Selecteren**.
+10.  Kies **Selecteren**.
 
-12.  Selecteer het tabblad **Toepassingen** en selecteer vervolgens **+Toepassingen toevoegen**.
+11.  Selecteer **Volgende: Toepassingen >** en selecteer vervolgens **+Toepassingen toevoegen**.
 
-13.  Een toepassing toevoegen vanuit het menu Start:
+12.  Een toepassing toevoegen vanuit het menu Start:
 
-      - Ga naar **Toepassingsbron** en selecteer **menu Start** in het vervolgkeuzemenu. Ga vervolgens naar **Toepassing** en kies de toepassing in het vervolgkeuzemenu.
+      - Selecteer onder **Toepassingsbron** de optie **menu Start** in het vervolgkeuzemenu. Kies vervolgens onder **Toepassing** de toepassing in het vervolgkeuzemenu.
 
      > [!div class="mx-imgBorder"]
      > ![Een schermopname van het scherm toepassing toevoegen waarin het menu Start is geselecteerd.](media/add-app-start.png)
@@ -89,11 +79,11 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
 
       - Laat de andere opties ongewijzigd en selecteer **Opslaan**.
 
-14. Een toepassing toevoegen vanaf een specifiek bestandspad:
+13.  Een toepassing toevoegen vanaf een specifiek bestandspad:
 
-      - Ga naar **Toepassingsbron** en selecteer **Bestandspad** in het vervolgkeuzemenu.
+      - Selecteer onder **Toepassingsbron** de optie **Bestandspad** in het vervolgkeuzemenu.
 
-      - Voer het pad naar de toepassing in bij de sessiehost, geregistreerd bij de gekoppelde hostgroep.
+      - Voer in **Toepassingspad** het pad in naar de toepassing op de sessiehost, geregistreerd bij de gekoppelde hostgroep.
 
       - Voer de toepassingsgegevens in bij de velden **Toepassingsnaam**, **Weergavenaam**, **Pad naar pictogram** en **Pictogramindex**.
 
@@ -102,11 +92,11 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
      > [!div class="mx-imgBorder"]
      > ![Een schermopname van de pagina toepassing toevoegen waarop het bestandspad is geselecteerd.](media/add-app-file.png)
 
-     Herhaal dit proces voor elke toepassing die u aan de toepassingsgroep wilt toevoegen.
+14.  Herhaal dit proces voor elke toepassing die u aan de toepassingsgroep wilt toevoegen.
 
-15.  Selecteer vervolgens het tabblad **Werkruimte**.
+15.  Selecteer vervolgens **Volgende: Werkruimte >** .
 
-16.  Als u de app-groep wilt registreren voor een werkruimte, ga dan naar **Toepassingsgroep registreren** en selecteer **Ja**. Als u de app-groep liever op een later tijdstip wilt registreren, selecteer dan **Nee**.
+16.  Als u de app-groep wilt registreren voor een werkruimte, selecteert u **Ja** voor **Toepassingsgroep registreren**. Als u de app-groep liever op een later tijdstip wilt registreren, selecteer dan **Nee**.
 
 17.  Als u **Ja**selecteert, dan kunt u een bestaande werkruimte selecteren om uw app-groep bij te registreren.
 
@@ -116,11 +106,11 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
      > [!div class="mx-imgBorder"]
      > ![Een schermopname van de pagina toepassingsgroep registreren voor een bestaande werkruimte. De hostgroep is vooraf geselecteerd.](media/register-existing.png)
 
-18. Als u tags wilt maken om uw werkruimte gemakkelijk te organiseren, selecteert u het tabblad **Tags** en voert u de namen voor uw tags in.
+18.  Als u tags wilt maken om uw werkruimte gemakkelijk te organiseren, selecteert u **Volgende: Tags >** en voert u de namen van de tags in.
 
-19. Als u klaar bent, selecteert u het tabblad **Beoordelen en maken**.
+19.  Selecteer als u klaar bent de optie **Beoordelen en maken**.
 
-20. Wacht even tot het validatieproces voltooid is. Wanneer dit voltooid is, selecteert u **Maken** om uw app-groep te implementeren.
+20.  Wacht even tot het validatieproces voltooid is. Wanneer dit voltooid is, selecteert u **Maken** om uw app-groep te implementeren.
 
 Het implementatieproces doet het volgende voor u:
 

@@ -1,6 +1,6 @@
 ---
-title: Apache HBase & Enterprise Security Package-Azure HDInsight
-description: 'Zelf studie: informatie over het configureren van Apache zwerver-beleids regels voor HBase in azure HDInsight met Enterprise Security Package.'
+title: Apache HBase en Enterprise Security Package - Azure HDInsight
+description: 'Zelfstudie: leer hoe u Apache Ranger-beleidsregels voor HBase configureert in Azure HDInsight met Enterprise Security Package.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73044644"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelf studie: Apache HBase-beleid in HDInsight configureren met Enterprise Security Package
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelfstudie: Apache HBase-beleidsregels configureren in HDInsight met Enterprise Security Package
 
 Leer hoe u Apache Ranger-beleidsregels configureert voor Apache HBase-clusters met ESP (Enterprise Security Package). ESP-clusters worden verbonden met een domein zodat gebruikers zich kunnen verifiëren met domeinreferenties. In deze zelfstudie maakt u twee Ranger-beleidsregels om de toegang tot verschillende kolomfamilies in een HBase-tabel te beperken.
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/).
+* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
 
 * Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -49,7 +49,7 @@ Ga naar [Een HDInsight-cluster maken met Enterprise Security Package](https://do
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>HBase-tabellen maken en voorbeeldgegevens importeren
 
-U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) gebruiken om HBase-tabellen te maken, gegevens in te voegen, en gegevens te doorzoeken. Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
+U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) gebruiken om HBase-tabellen te maken, gegevens in te voegen, en gegevens te doorzoeken. Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
 ### <a name="to-use-the-hbase-shell"></a>De HBase-shell gebruiken
 
@@ -89,26 +89,26 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens [Ap
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase shell-uitvoer](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    ![Uitvoer van de HDInsight Hadoop HBase-shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger-beleidsregels maken
 
 Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
-1. Open de **beheerinterface van Ranger**. Klik op ** \<clustername>_hbase** onder **hbase**.
+1. Open de **beheerinterface van Ranger**. Klik onder **HBase** op **\<ClusterName>_hbase**.
 
-   ![Gebruikers interface van HDInsight Apache zwerver-beheerder](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Beheerinterface voor HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. Op het scherm **List of Policies** worden alle Ranger-beleidsregels weergegeven die voor dit cluster zijn gemaakt. Er kan één vooraf geconfigureerd beleid worden weergegeven. Klik op **Nieuw beleid toevoegen**.
 
-    ![Apache zwerver HBase-beleids lijst](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Lijst met beleidsregels van Apache Ranger HBase](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. Voer in het scherm **Create Policy** de volgende waarden in:
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
    |Policy Name  |  sales_customers_name_contact   |
-   |HBase Table   |  Customers |
+   |HBase Table   |  Klanten |
    |HBase Column-family   |  Name, Contact |
    |HBase Column   |  * |
    |Select Group  | |
@@ -120,7 +120,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    * Gebruik `*` om nul of meer tekens aan te geven.
    * Gebruik `?` om één teken aan te geven.
 
-   ![Apache zwerver-beleid verkoop maken](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger - beleid maken: verkoop](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Als er niet automatisch een domeingebruiker wordt ingevuld bij **Select User**, wacht u even totdat Ranger is gesynchroniseerd met AAD.
@@ -132,14 +132,14 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
    |Policy Name  |  marketing_customers_contact   |
-   |HBase Table   |  Customers |
+   |HBase Table   |  Klanten |
    |HBase Column-family   |  Contactpersoon |
    |HBase Column   |  * |
    |Select Group  | |
    |Select User  | marketing_user1 |
    |Machtigingen  | Lezen |
 
-   ![Apache zwerver-beleid marketing maken](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger - beleid maken: marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. Klik op **Toevoegen** om het beleid op te slaan.
 
@@ -161,7 +161,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit sales_user1
    ```
 
-2. Open de HBase-shell en scan de `Customers`tabel.
+2. Open de HBase-shell en scan tabel `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -203,7 +203,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit marketing_user1
    ```
 
-1. Open de HBase-shell en scan de `Customers`tabel:
+1. Open de HBase-shell en scan tabel `Customers`:
 
     ```hbaseshell
     hbase shell
@@ -229,7 +229,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
 1. Bekijk de controlegebeurtenissen voor toegang vanuit de gebruikersinterface van Ranger.
 
-   ![Beleids controle van HDInsight zwerver-gebruikers interface](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Controle van beleid vanuit de HDInsight Ranger-gebruikersinterface](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -239,7 +239,7 @@ Als u deze toepassing verder niet meer gebruikt, verwijdert u het HBase-cluster 
 2. Typ **HDInsight** in het **Zoekvak** bovenaan. 
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt. 
-1. Klik op **verwijderen**. Klik op **Ja**.
+1. Klik op **Verwijderen**. Klik op **Ja**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

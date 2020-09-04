@@ -1,6 +1,6 @@
 ---
-title: Een nieuw type gateway apparaat definiëren in azure IoT Central | Microsoft Docs
-description: In deze zelf studie ziet u als een Builder hoe u een nieuw type IoT-gateway apparaat kunt definiëren in uw Azure IoT Central-toepassing.
+title: Een nieuw type gatewayapparaat definiëren in Azure IoT Central | Microsoft Docs
+description: Deze zelfstudie laat zien hoe u als bouwer een nieuw type gatewayapparaat kunt definiëren in uw Azure IoT Central-toepassing.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -10,206 +10,206 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81758127"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Een nieuw type IoT-gateway apparaat in uw Azure IoT Central-toepassing definiëren
+# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Een nieuw type IoT-gatewayapparaat definiëren in uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
-In deze zelf studie ziet u als een oplossings functie voor het gebruik van een sjabloon voor een gateway apparaat voor het definiëren van een gateway apparaat in uw IoT Central-toepassing. Vervolgens configureert u verschillende downstream-apparaten die verbinding maken met uw IoT Central-toepassing via het gateway apparaat. 
+Deze zelfstudie laat zien hoe u, als bouwer van oplossingen, een sjabloon voor een gatewayapparaat kunt gebruiken om een nieuw type gatewayapparaat te definiëren in uw IoT Central-toepassing. U configureert vervolgens een of meer downstreamapparaten die via een gatewayapparaat verbinding maken met uw IoT Central-toepassing. 
 
-In deze zelf studie maakt u een **Smart** -sjabloon voor het maken van een gateway apparaat. Een **Smart buil ding** gateway-apparaat heeft relaties met andere downstream-apparaten.
+In deze zelfstudie maakt u een sjabloon voor een **Smart Building**-gatewayapparaat. Een **Smart Building**-gatewayapparaat heeft relaties met andere downstreamapparaten.
 
-![Diagram van relatie tussen gateway apparaat en downstream-apparaten](./media/tutorial-define-gateway-device-type/gatewaypattern.png)
+![Diagram van de relatie tussen een gatewayapparaat en downstreamapparaten](./media/tutorial-define-gateway-device-type/gatewaypattern.png)
 
-Als u downstream-apparaten wilt laten communiceren met uw IoT Central-toepassing, kan een gateway apparaat ook:
+Een gatewayapparaat stelt downstreamapparaten in staat te communiceren met uw IoT Central- toepassing, en kan daarnaast het volgende doen:
 
-* Verzend een eigen telemetrie, zoals de Tempe ratuur.
-* Reageren op updates van Beschrijf bare eigenschappen die zijn gemaakt door een operator. Een operator kan bijvoorbeeld het verzend interval van de telemetrie wijzigen.
+* Eigen telemetrie verzenden, zoals temperatuur.
+* Reageren op updates van schrijfbare eigenschappen die zijn gemaakt via een operator. Een operator kan bijvoorbeeld het verzendinterval van de telemetrie wijzigen.
 * Reageren op opdrachten, zoals het opnieuw opstarten van het apparaat.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelf studie wilt volt ooien, moet u [een Azure IOT Central-toepassing maken](./quick-deploy-iot-central.md).
+U moet [Een Azure IoT Central-toepassing maken](./quick-deploy-iot-central.md) om deze zelfstudie te voltooien.
 
-## <a name="create-downstream-device-templates"></a>Downstream-apparaatklassen maken
+## <a name="create-downstream-device-templates"></a>Sjablonen voor downstreamapparaten maken
 
-In deze zelf studie wordt gebruikgemaakt van Apparaatbeheer voor een apparaat met een **S1-sensor** en een **RS40-sensor** apparaat om gesimuleerde downstream-apparaten te genereren.
+In deze zelfstudie wordt gebruikgemaakt van apparaatsjablonen voor een **S1 Sensor**-apparaat en een **RS40 Occupancy Sensor**-apparaat voor het genereren van gesimuleerde downstreamapparaten.
 
-Een sjabloon voor een apparaat maken voor een **S1-sensor** apparaat:
+Een apparaatsjabloon maken voor een **S1 Sensor**-apparaat:
 
-1. Selecteer **Apparaatbeheer**in het linkerdeel venster. Selecteer **+** vervolgens om het toevoegen van de sjabloon te starten.
+1. Selecteer in het linkerdeelvenster de optie **Apparaatsjablonen**. Selecteer vervolgens **+** om te beginnen met toevoegen van de sjabloon.
 
-1. Schuif omlaag totdat u de tegel voor het apparaat **S1-sensor** kunt zien. Selecteer de tegel en selecteer vervolgens **volgende: aanpassen**.
+1. Schuif omlaag totdat u de tegel voor het **S1 Sensor**-apparaat ziet. Selecteer de tegel en selecteer vervolgens **Volgende: Aanpassen**.
 
-1. Selecteer op de pagina **controleren** de optie **maken** om de sjabloon voor het apparaat toe te voegen aan uw toepassing. 
+1. Selecteer op de pagina **Controleren** de optie **Maken** om de apparaatsjabloon toe te voegen aan de toepassing. 
 
-Een sjabloon voor een apparaat maken voor een**RS40-sensor** apparaat:
+Een apparaatsjabloon maken voor een ***RS40 Occupancy Sensor**-apparaat:
 
-1. Selecteer **Apparaatbeheer**in het linkerdeel venster. Selecteer **+** vervolgens om het toevoegen van de sjabloon te starten.
+1. Selecteer in het linkerdeelvenster de optie **Apparaatsjablonen**. Selecteer vervolgens **+** om te beginnen met toevoegen van de sjabloon.
 
-1. Schuif omlaag totdat u de tegel voor het**RS40-sensor** apparaat kunt zien. Selecteer de tegel en selecteer vervolgens **volgende: aanpassen**.
+1. Schuif omlaag totdat u de tegel voor het ***RS40 Occupancy Sensor**-apparaat ziet. Selecteer de tegel en selecteer vervolgens **Volgende: Aanpassen**.
 
-1. Selecteer op de pagina **controleren** de optie **maken** om de sjabloon voor het apparaat toe te voegen aan uw toepassing. 
+1. Selecteer op de pagina **Controleren** de optie **Maken** om de apparaatsjabloon toe te voegen aan de toepassing. 
 
-U hebt nu Device-sjablonen voor de twee typen downstream-apparaten:
+U hebt nu apparaatsjablonen voor de twee typen downstreamapparaten:
 
-![Device-sjablonen voor downstream-apparaten](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
+![Apparaatsjablonen voor downstreamapparaten](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
 
 
 ## <a name="create-a-gateway-device-template"></a>Een gateway-apparaatsjabloon maken
 
-In deze zelf studie maakt u een nieuwe sjabloon voor een gateway apparaat. U kunt deze sjabloon later gebruiken om een gesimuleerd gateway apparaat in uw toepassing te maken.
+In deze zelfstudie maakt u een nieuwe apparaatsjabloon voor een gatewayapparaat. U gebruikt deze sjabloon later om een gesimuleerd gatewayapparaat in de toepassing te maken.
 
-Een nieuwe sjabloon voor gateway apparaten toevoegen aan uw toepassing:
+Een nieuwe sjabloon voor gatewayapparaten toevoegen aan de toepassing:
 
-1. Selecteer **Apparaatbeheer**in het linkerdeel venster. Selecteer **+** vervolgens om het toevoegen van de sjabloon te starten.
+1. Selecteer in het linkerdeelvenster de optie **Apparaatsjablonen**. Selecteer vervolgens **+** om te beginnen met toevoegen van de sjabloon.
 
-1. Selecteer op de pagina **sjabloon type selecteren** de tegel **IOT-apparaten** en selecteer vervolgens **volgende: aanpassen**.
+1. Selecteer op de pagina **Sjabloontype selecteren** de tegel **IoT-apparaat**, en selecteer vervolgens **Volgende: Aanpassen**.
 
-1. Selecteer op de pagina **apparaat aanpassen** het selectie vakje voor het **gateway apparaat** .
+1. Schakel op de pagina **Apparaat aanpassen** het selectievakje **Gatewayapparaat** in.
 
-1. Op de pagina **controleren** selecteert u **maken**. 
+1. Selecteer op de pagina **Beoordelen** de optie **Maken**. 
 
-1. Voer een **Smart-gateway apparaat** in als de naam van de sjabloon.
+1. Voer **Smart Building-gatewayapparaat** in als de sjabloonnaam.
 
-1. Selecteer op de pagina **een Mogelijkheidsprofiel maken** de **aangepaste** tegel.
+1. Selecteer op de pagina **Een mogelijkheidsprofiel maken** de tegel **Aangepast**.
 
-1. Selecteer **+** deze optie om een interface toe te voegen.  Kies de **apparaatgegevens** standaard interface.
+1. Selecteer **+** om een interface toe te voegen.  Kies de standaardinterface **Apparaatgegevens**.
 
 ### <a name="add-relationships"></a>Relaties toevoegen
 
-Vervolgens voegt u relaties toe aan de sjablonen voor de downstream-Apparaatinstellingen:
+Vervolgens voegt u relaties toe aan de sjablonen voor de sjablonen voor downstreamapparaten:
 
-1. Selecteer in de sjabloon **Smart buil ding gateway-apparaat** de optie **relaties**.
+1. Selecteer in de sjabloon **Smart Building-gatewayapparaat** de optie **Relaties**.
 
-1. Selecteer **+ relatie toevoegen**. Voer een **omgevings sensor** in als weergave naam en selecteer **S1-sensor** als doel.
+1. Selecteer **+ Relatie toevoegen**. Voer **Omgevingssensor** in als weergavenaam, en selecteer **S1 Sensor** als doel.
 
-1. Selecteer **+ relatie opnieuw toevoegen** . Voer een **bezettings sensor** in als weergave naam en selecteer **RS40 bezettings sensor** als doel.
+1. Selecteer opnieuw **+ Relatie toevoegen**. Voer **Aanwezigheidssensor** in als weergavenaam, en selecteer **RS40 Occupancy Sensor** als doel.
 
 1. Selecteer **Opslaan**.
 
-![Smart buil ding gateway-apparaat sjabloon, relaties weer geven](./media/tutorial-define-gateway-device-type/relationships.png)
+![De sjabloon Smart Building-gatewayapparaat, met Relaties weergegeven](./media/tutorial-define-gateway-device-type/relationships.png)
 
-### <a name="add-cloud-properties"></a>Cloud eigenschappen toevoegen
+### <a name="add-cloud-properties"></a>Cloudeigenschappen toevoegen
 
-Een sjabloon voor een gateway apparaat kan Cloud eigenschappen bevatten. Cloud eigenschappen bestaan alleen in de IoT Central-toepassing en worden nooit verzonden naar of ontvangen van een apparaat.
+Een sjabloon voor een gatewayapparaat kan cloudeigenschappen bevatten. Cloudeigenschappen bestaan alleen in de IoT Central-toepassing en worden nooit verzonden naar of ontvangen van een apparaat.
 
-Om Cloud eigenschappen toe te voegen aan de sjabloon **Smart buil ding gateway-apparaat** .
+Cloudeigenschappen toevoegen aan de sjabloon **Smart Building-gatewayapparaat**:
 
-1. Selecteer in de sjabloon **Smart buil ding gateway-apparaat** de optie **Cloud eigenschappen**.
+1. Selecteer in de sjabloon **Smart Building-gatewayapparaat** de optie **Cloudeigenschappen**.
 
-1.  Gebruik de informatie in de volgende tabel om twee Cloud eigenschappen toe te voegen aan de sjabloon voor het gateway-apparaat.
+1.  Gebruik de informatie in de volgende tabel om twee cloudeigenschappen toe te voegen aan de sjabloon voor het gatewayapparaat.
 
     | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
     | Laatste servicedatum | Geen          | Date   |
-    | Klant naam     | Geen          | Tekenreeks |
+    | Naam van klant     | Geen          | Tekenreeks |
 
 2. Selecteer **Opslaan**.
 
 ### <a name="create-views"></a>Weergaven maken
 
-Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over het omgevings sensor apparaat weer te geven voor een operator. Met uw aanpassingen kan de operator de omgevings sensor apparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weer gaven maken voor een operator die u kunt gebruiken om te communiceren met apparaten:
+Als bouwer kunt u de toepassing aanpassen om relevante informatie over het omgevingssensorapparaat weer te geven aan een operator. Dankzij uw aanpassingen kan de operator de omgevingssensorapparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weergaven maken die een operator kan gebruiken om met apparaten te werken:
 
-* Formulieren voor het weer geven en bewerken van apparaat-en Cloud eigenschappen.
-* Dash boards om apparaten te visualiseren.
+* Formulieren voor het weergeven en bewerken van apparaat- en cloudeigenschappen.
+* Dashboards om apparaten te visualiseren.
 
-De standaard weergaven genereren voor de sjabloon **Smart buil ding gateway-apparaat** :
+De standaardweergaven genereren voor de sjabloon **Smart Building-gatewayapparaat**:
 
-1. Selecteer in de sjabloon **Smart buil ding gateway-apparaat** de optie **weer gaven**.
+1. Selecteer in de sjabloon **Smart Building-gatewayapparaat** de optie **Weergaven**.
 
-1. Selecteer de tegel **Standaard weergaven genereren** en zorg ervoor dat alle opties zijn geselecteerd.
+1. Selecteer de tegel **Standaardweergaven genereren** en zorg ervoor dat alle opties zijn geselecteerd.
 
-1. Selecteer **standaard dashboard weergave (s) genereren**.
+1. Selecteer **Standaarddashboardweergave(n) genereren**.
 
-## <a name="publish-the-device-template"></a>De sjabloon voor het apparaat publiceren
+## <a name="publish-the-device-template"></a>De apparaatsjabloon publiceren
 
-Voordat u een gesimuleerd gateway apparaat kunt maken of een echt gateway apparaat verbindt, moet u de sjabloon voor het apparaat publiceren.
+Voordat u een gesimuleerd gatewayapparaat kunt maken of verbinding kunt maken met een echt gatewayapparaat, moet u de apparaatsjabloon publiceren.
 
-De sjabloon van het gateway-apparaat publiceren:
+De sjabloon van het gatewayapparaat publiceren:
 
-1. Selecteer de sjabloon **Smart buil ding gateway-apparaat** op de pagina met **Apparaatinstellingen** .
+1. Selecteer de sjabloon **Smart Building-gatewayapparaat** op de pagina **Apparaatsjablonen**.
 
-2. Selecteer **publiceren**.
+2. Selecteer **Publiceren**.
 
-3. Kies in het dialoog venster **een sjabloon voor het publiceren van een apparaat** de optie **publiceren**.
+3. Kies in het dialoogvenster **Een apparaatsjabloon publiceren** de optie **Publiceren**.
 
-Nadat een apparaat sjabloon is gepubliceerd, wordt deze weer gegeven op de pagina **apparaten** en aan de operator. U kunt in een sjabloon voor een gepubliceerd apparaat geen mogelijkheidsprofiel bewerken zonder een nieuwe versie te maken. U kunt echter updates voor de Cloud eigenschappen, aanpassingen en weer gaven maken in een sjabloon voor een gepubliceerd apparaat. Deze updates zorgen er niet voor dat er een nieuwe versie wordt gemaakt. Nadat u wijzigingen hebt aangebracht, selecteert u **publiceren** om deze wijzigingen naar uw operator te pushen.
+Nadat een apparaatsjabloon is gepubliceerd, is deze zichtbaar op de pagina **Apparaten** en voor de operator. U kunt in een gepubliceerde apparaatsjabloon geen apparaatondersteuningsprofiel bewerken zonder een nieuwe versie te maken. Maar u kunt de cloudeigenschappen, aanpassingen en weergaven in een gepubliceerde apparaatsjabloon wel bijwerken. Deze updates zorgen er niet voor dat een nieuwe versie wordt gemaakt. Nadat u wijzigingen hebt aangebracht, selecteert u **Publiceren** om de wijzigingen naar uw operator te pushen.
 
 ## <a name="create-the-simulated-devices"></a>De gesimuleerde apparaten maken
 
-Deze zelf studie maakt gebruik van gesimuleerde downstream-apparaten en een gesimuleerd gateway apparaat.
+In deze zelfstudie wordt gebruikgemaakt van gesimuleerde downstreamapparaten en een gesimuleerd gatewayapparaat.
 
-Een gesimuleerd gateway apparaat maken:
+Een gesimuleerd gatewayapparaat maken:
 
-1. Selecteer op de pagina **apparaten** de optie **Slim bouwen van gateway apparaat** in de lijst met apparaatprofielen.
+1. Selecteer op de pagina **Apparaten** het **Smart Building-gatewayapparaat** in de lijst met apparaatsjablonen.
 
-1. Selecteer **+** deze optie om een nieuw apparaat toe te voegen.
+1. Selecteer **+** om een nieuw apparaat toe te voegen.
 
-1. Behoud de gegenereerde **apparaat-id** en **apparaatnaam**. Zorg ervoor dat de **gesimuleerde** switch is **ingeschakeld**. Selecteer **Maken**.
+1. Laat de gegenereerde **apparaat-id** en **apparaatnaam** ongewijzigd. Zorg ervoor dat de schakeloptie **Gesimuleerd** op **Aan** staat. Selecteer **Maken**.
 
-Een gesimuleerde downstream-apparaten maken:
+Een gesimuleerd downstreamapparaat maken:
 
-1. Selecteer op de pagina **apparaten** **RS40 bezetting sensor** in de lijst met apparaatprofielen.
+1. Selecteer op de pagina **Apparaten** de **RS40 Occupancy Sensor** in de lijst met apparaatsjablonen.
 
-1. Selecteer **+** deze optie om een nieuw apparaat toe te voegen.
+1. Selecteer **+** om een nieuw apparaat toe te voegen.
 
-1. Behoud de gegenereerde **apparaat-id** en **apparaatnaam**. Zorg ervoor dat de **gesimuleerde** switch is **ingeschakeld**. Selecteer **Maken**.
+1. Laat de gegenereerde **apparaat-id** en **apparaatnaam** ongewijzigd. Zorg ervoor dat de schakeloptie **Gesimuleerd** op **Aan** staat. Selecteer **Maken**.
 
-1. Selecteer op de pagina **apparaten** **S1-sensor** in de lijst met apparaatprofielen.
+1. Selecteer op de pagina **Apparaten** de **S1 Sensor** in de lijst met apparaatsjablonen.
 
-1. Selecteer **+** deze optie om een nieuw apparaat toe te voegen.
+1. Selecteer **+** om een nieuw apparaat toe te voegen.
 
-1. Behoud de gegenereerde **apparaat-id** en **apparaatnaam**. Zorg ervoor dat de **gesimuleerde** switch is **ingeschakeld**. Selecteer **Maken**.
+1. Laat de gegenereerde **apparaat-id** en **apparaatnaam** ongewijzigd. Zorg ervoor dat de schakeloptie **Gesimuleerd** op **Aan** staat. Selecteer **Maken**.
 
 ![Gesimuleerde apparaten in uw toepassing](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 
-### <a name="add-downstream-device-relationships-to-a-gateway-device"></a>Downstream-apparaats relaties toevoegen aan een gateway apparaat
+### <a name="add-downstream-device-relationships-to-a-gateway-device"></a>Relaties tussen gesimuleerde apparaten en een gatewayapparaat toevoegen
 
-Nu u de gesimuleerde apparaten in uw toepassing hebt, kunt u de relaties tussen de downstream-apparaten en het gateway-apparaat maken:
+Nu u de gesimuleerde apparaten in uw toepassing hebt, kunt u relaties tot stand brengen tussen de downstreamapparaten en het gatewayapparaat:
 
-1. Selecteer op de pagina **apparaten** **S1-sensor** in de lijst met apparaatprofielen en selecteer vervolgens uw gesimuleerde **S1-sensor** apparaat.
+1. Selecteer op de pagina **Apparaten** de **S1 Sensor** in de lijst met apparaatsjablonen, en selecteer vervolgens uw gesimuleerde **S1 Sensor**-apparaat.
 
-1. Selecteer **verbinding maken met Gateway**.
+1. Selecteer **Verbinding maken met gateway**.
 
-1. Selecteer in het dialoog venster **verbinding maken met een gateway** de sjabloon **Slim bouwen van gateway-apparaat** en selecteer vervolgens het gesimuleerde exemplaar dat u eerder hebt gemaakt.
+1. Selecteer in het dialoogvenster **Verbinding maken met een gateway** de sjabloon **Smart Building-gatewayapparaat**. Selecteer vervolgens de gesimuleerde instantie die u eerder hebt gemaakt.
 
-1. Selecteer **lid worden**.
+1. Selecteer **Toevoegen**.
 
-1. Selecteer op de pagina **apparaten** de optie **RS40 bezetting sensor** in de lijst met apparaatprofielen en selecteer vervolgens het gesimuleerde **sensor** apparaat voor RS40.
+1. Selecteer op de pagina **Apparaten** de optie **RS40 Occupancy Sensor** in de lijst met apparaatsjablonen. Selecteer vervolgens uw gesimuleerde **RS40 Occupancy Sensor**-apparaat.
 
-1. Selecteer **verbinding maken met Gateway**.
+1. Selecteer **Verbinding maken met gateway**.
 
-1. Selecteer in het dialoog venster **verbinding maken met een gateway** de sjabloon **Slim bouwen van gateway-apparaat** en selecteer vervolgens het gesimuleerde exemplaar dat u eerder hebt gemaakt.
+1. Selecteer in het dialoogvenster **Verbinding maken met een gateway** de sjabloon **Smart Building-gatewayapparaat**. Selecteer vervolgens de gesimuleerde instantie die u eerder hebt gemaakt.
 
-1. Selecteer **lid worden**.
+1. Selecteer **Toevoegen**.
 
-Uw gesimuleerde downstream-apparaten zijn nu verbonden met uw gesimuleerde gateway apparaat. Als u naar de weer gave **downstream-apparaten** voor uw gateway apparaat navigeert, ziet u de verwante downstream-apparaten:
+Beide gesimuleerde downstreamapparaten zijn nu verbonden met het gesimuleerde gatewayapparaat. Als u naar de weergave **Downstreamapparaten** voor uw gatewayapparaat gaat, ziet u de gerelateerde downstreamapparaten:
 
-![Weer gave downstream-apparaten](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
+![Weergave Downstreamapparaten](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
-Selecteer een sjabloon voor het gateway-apparaat en het exemplaar van het gateway apparaat en selecteer **lid worden**.
+Selecteer een gatewayapparaatsjabloon en gatewayapparaatinstantie, en selecteer **Toevoegen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie heeft u het volgende geleerd:
 
-* Maak een nieuwe IoT-gateway als een sjabloon voor een apparaat.
-* Cloud eigenschappen maken.
+* Een nieuwe IoT-gateway maken als een apparaatsjabloon.
+* Cloudeigenschappen maken.
 * Aanpassingen maken.
-* Definieer een visualisatie voor de telemetrie van het apparaat.
+* Een visualisatie definiëren voor de telemetrie van het apparaat.
 * Relaties toevoegen.
-* De sjabloon van het apparaat publiceren.
+* Uw apparaatsjabloon publiceren.
 
 > [!NOTE]
-> Code generatie op basis van code wordt momenteel niet ondersteund voor gateway apparaten die zijn gemodelleerd in IoT Central.
+> Codegeneratie op basis van VS Code wordt momenteel niet ondersteund voor gatewayapparaten die zijn gemodelleerd in IoT Central.
 
-Als ontwikkelaar van een apparaat vindt u het volgende:
+Als apparaatontwikkelaar kunt u hierna het volgende leren:
 
 > [!div class="nextstepaction"]
-> [Een Azure IoT Edge apparaat toevoegen aan uw Azure IoT Central-toepassing](tutorial-add-edge-as-leaf-device.md)
+> [Een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-toepassing](tutorial-add-edge-as-leaf-device.md)

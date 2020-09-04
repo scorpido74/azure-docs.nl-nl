@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een alias record maken om te verwijzen naar een bron record in een zone'
+title: 'Zelfstudie: Een aliasrecord maken dat naar een resourcerecord in een zone verwijst'
 titleSuffix: Azure DNS
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze verwijst naar een resourcerecord in de zone.
 services: dns
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76939253"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Zelfstudie: Een aliasrecord maken dat naar een resourcerecord voor een zone verwijst
@@ -26,7 +26,7 @@ In deze zelfstudie leert u het volgende:
 > * De aliasrecord testen.
 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
@@ -57,8 +57,8 @@ Een aliasrecord maken dat verwijst naar een resourcerecord in de zone.
 
 ## <a name="test-the-alias-record"></a>Het aliasrecord testen
 
-1. Start uw favoriete nslookup-hulpprogramma. U kunt ook bladeren naar [https://network-tools.com/nslook](https://network-tools.com/nslook).
-2. Stel het querytype voor A-records in en zoek **test.\<uw domeinnaam\>**. Het antwoord is **10.10.10.10**.
+1. Start uw favoriete nslookup-hulpprogramma. U kunt ook naar [https://network-tools.com/nslook](https://network-tools.com/nslook) bladeren.
+2. Stel het querytype voor A-records in en zoek **test.\<your domain name\>** op. Het antwoord is **10.10.10.10**.
 3. Wijzig de A-record van de **server** in de Azure Portal naar **10.11.11.11**.
 4. Wacht een paar minuten en gebruik nslookup daarna opnieuw voor de **test**-record. Het antwoord is **10.11.11.11**.
 

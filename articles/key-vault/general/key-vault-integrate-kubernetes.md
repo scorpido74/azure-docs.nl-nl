@@ -1,19 +1,22 @@
 ---
 title: Azure Key Vault integreren met Kubernetes
 description: In deze zelfstudie gaat u geheimen openen en ophalen uit Azure Key Vault met behulp van het CSI-stuurprogramma (Secrets Store Container Storage Interface), om deze vervolgens te koppelen aan Kubernetes-pods.
-author: rkarlin
-ms.author: rkarlin
+author: ShaneBala-keyvault
+ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 06/04/2020
-ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 08/25/2020
+ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685881"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869181"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Zelfstudie: De Azure Key Vault-provider voor het stuurprogramma voor het Secrets Store CSI-stuurprogramma configureren en uitvoeren op Kubernetes
+
+> [!IMPORTANT]
+> CSI-stuurprogramma is een open-sourceproject dat niet wordt ondersteund door de technische ondersteuning van Azure. Meld alle feedback en problemen met betrekking tot Key Vault-integratie met het CSI-stuurprogramma via de GitHub-koppeling onderaan de pagina. Dit hulpprogramma is bedoeld voor gebruikers om zelf te installeren in clusters en om feedback te verzamelen van onze community.
 
 In deze zelfstudie gaat u geheimen openen en ophalen uit Azure Key Vault met behulp van het stuurprogramma Secrets Store CSI, en deze vervolgens koppelen aan Kubernetes-pods.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: één AD-forest integreren in azure met behulp van PTA'
+title: 'Zelfstudie:  Een enkele AD-forest integreren met Azure met behulp van PTA'
 description: Demonstreert hoe u een hybride identiteit instelt met behulp van pass-through-verificatie.
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66473005"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279139"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Zelf studie: een enkele AD-forest integreren met behulp van Pass-Through-verificatie (PTA)
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Zelfstudie:  Een enkele AD-forest integreren met pass-through-verificatie (PTA)
 
 ![Maken](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -26,9 +26,9 @@ De volgende zelfstudie begeleidt u bij het maken van een omgeving met een hybrid
 
 ## <a name="prerequisites"></a>Vereisten
 Dit zijn de vereisten voor het voltooien van deze zelfstudie
-- Een computer waarop [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) is geïnstalleerd.  Het wordt aangeraden dit te doen op een computer met [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) of [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+- Een computer waarop [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) is geïnstalleerd.  Het wordt aangeraden dit te doen op een computer met [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) of [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 - Een [Azure-abonnement](https://azure.microsoft.com/free)
-- - Een [externe netwerkadapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) waarmee de virtuele machine kan communiceren met internet.
+- - Een [externe netwerkadapter](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) waarmee de virtuele machine kan communiceren met internet.
 - Een exemplaar van Windows Server 2016
 - Een [aangepast domein](../../active-directory/fundamentals/add-custom-domain.md) dat kan worden geverifieerd
 
@@ -85,8 +85,8 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
 7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
-8. Selecteer **aangepast: alleen Windows installeren (Geavanceerd)**
-9. Klik op **volgende**
+8. Selecteer **Aangepast:  Alleen Windows installeren (geavanceerd)**
+9. Klik op **Volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.
 
 ## <a name="install-active-directory-prerequisites"></a>Vereisten voor de installatie van Active Directory Domain Services
@@ -184,12 +184,12 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ## <a name="create-an-azure-ad-tenant"></a>Een Azure Active Directory-tenant maken
 Nu moeten we een Azure Active Directory-tenant maken, zodat we onze gebruikers kunnen synchroniseren met de cloud.  Ga als volgt te werk om een nieuwe Azure Active Directory-tenant te maken.
 
-1. Meld u bij de [Azure Portal](https://portal.azure.com) aan met een account waaraan een Azure-abonnement is gekoppeld.
-2. Selecteer het **plusteken (+)** en zoek naar **Azure Active Directory**.
+1. Ga naar [Azure Portal](https://portal.azure.com) en meld u aan met een account met een Azure-abonnement.
+2. Selecteer het **plus-pictogram (+)** en zoek naar **Azure Active Directory**.
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
 ![Maken](media/tutorial-password-hash-sync/create1.png)</br>
-5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **maken**. Er wordt nu een map aangemaakt.
+5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Een globale beheerder maken in Azure Active Directory
@@ -198,7 +198,7 @@ De Microsoft Azure Active Directory-tenant is klaar en we gaan nu een globale be
 1.  Onder **Beheren**, selecteer **Gebruikers**.</br>
 ![Maken](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Selecteer **Alle gebruikers** en selecteer vervolgens **+ Nieuwe gebruiker**.
-3.  Geef een naam en gebruikersnaam op voor deze gebruiker. Dit is de globale beheerder voor de tenant. U moet ook de **Maprol** wijzigen naar **Globale beheerder.** U kunt ook het tijdelijke wachtwoord weergeven. Als u klaar bent, selecteert u **Maken**.</br>
+3.  Geef een naam en gebruikersnaam op voor deze gebruiker. Dit is de globale beheerder voor de tenant. U moet ook de **Maprol** wijzigen naar **Globale beheerder.** U kunt ook het tijdelijke wachtwoord weergeven. Selecteer **Maken** wanneer u klaar bent.</br>
 ![Maken](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Als de bewerkingen zijn voltooid, opent u een nieuwe webbrowser en meldt u zich met het nieuwe globale beheerdersaccount en het tijdelijke wachtwoord aan bij myapps.microsoft.com.
 5. Wijzig het wachtwoord voor de globale beheerder in iets dat u makkelijk kunt onthouden.
@@ -208,7 +208,7 @@ Nu dat we een tenant en een globale beheerder hebben, moeten we ons aangepast do
 
 1. Let op dat in de [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) de blade **Alle gebruikers** gesloten is.
 2. Selecteer aan de linkerkant **Namen van aangepaste domeinen**.
-3. Selecteer **aangepast domein toevoegen**.</br>
+3. Selecteer **Aangepast domein toevoegen**.</br>
 ![Aangepast](media/tutorial-federation/custom1.png)</br>
 4. Typ op de blade **Aangepaste-domeinnamen** de naam van uw aangepaste domein in het vak en selecteer vervolgens **Domein toevoegen**.
 5. Op het scherm van de naam van het aangepast domein ziet u de TXT- of de MX-gegevens.  Deze informatie moet worden toegevoegd aan de DNS-gegevens van de domeinregistrar onder het domein.  Daarom moet u naar uw domeinregistrar gaan en de TXT- of de MX-gegevens in de DNS-instellingen voor uw domein invoeren.  Hierdoor kan Azure uw domein verifiëren.  Azure heeft maximaal 24 uur nodig om dit te verifiëren.  Zie [Een aangepaste domeinnaam toevoegen](../../active-directory/fundamentals/add-custom-domain.md) voor meer informatie.</br>
@@ -223,7 +223,7 @@ We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, ne
 2. Ga naar **AzureADConnect.msi** en dubbelklik erop.
 3. Selecteer in het welkomstscherm het vakje waarmee u aangeeft akkoord te gaan met de licentievoorwaarden en klik op **Doorgaan**.  
 4. Klik in het scherm Express-instellingen op **Aanpassen**.  
-5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik op **installeren**.  
+5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik op **Install**.  
 6. Selecteer op het scherm aanmelden van gebruikers **Pass-through-verificatie** en **Eenmalige aanmelding inschakelen** en klik op **Volgende**.</br>
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. Voer in het scherm Verbinding maken met Azure Active Directory de gebruikersnaam en het wachtwoord van de globale beheerder, die eerder is gemaakt, in en klik op **Volgende**.
@@ -233,7 +233,7 @@ We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, ne
 5. Klik in het scherm Domein- en OE-filteren op **Volgende**.
 6. In het scherm voor het uniek identificeren uw gebruikers, klikt u op **volgende**.
 7. Klik in het scherm Gebruikers en apparaten filteren op **Volgende**.
-8. Klik in het scherm Optionele functies op **volgende**.
+8. Klik in het scherm Optionele functies op **Volgende**.
 9. Voer op de pagina van de referenties voor eenmalige aanmelding contoso\Administrator gebruikersnaam en wachtwoord in en klik op **Volgende.**
 10. Klik in het venster Gereed om te configureren op **Installeren**.
 11. Wanneer de installatie is voltooid, klikt u op **Afsluiten**.
@@ -251,7 +251,7 @@ We gaan nu controleren of de gebruikers die aanwezig waren in onze on-premises a
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
 
-1. Bladeren naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Blader naar [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik het wachtwoord waarmee de gebruiker zich on-premises aanmeldt.
    ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)
 

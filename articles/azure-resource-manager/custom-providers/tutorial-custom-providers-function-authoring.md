@@ -1,54 +1,54 @@
 ---
 title: Een RESTful-eindpunt maken
-description: In deze zelf studie wordt uitgelegd hoe u een REST-eind punt kunt ontwerpen voor aangepaste providers. U vindt hier informatie over het afhandelen van aanvragen en antwoorden op ondersteunde, resterende HTTP-methoden.
+description: In deze zelfstudie ziet u hoe u een RESTful-eindpunt kunt ontwerpen voor aangepaste providers. Het biedt details over het verwerken van aanvragen en antwoorden voor de ondersteunde RESTful HTTP-methoden.
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75650021"
 ---
-# <a name="author-a-restful-endpoint-for-custom-providers"></a>Een REST-eind punt ontwerpen voor aangepaste providers
+# <a name="author-a-restful-endpoint-for-custom-providers"></a>Een RESTful-eindpunt ontwerpen voor aangepaste providers
 
-Een aangepaste provider is een contract tussen Azure en een eind punt. Met aangepaste providers kunt u werk stromen aanpassen op Azure. In deze zelf studie leert u hoe u een aanstaand eind punt voor een aangepaste provider maakt. Als u niet bekend bent met aangepaste Azure-providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
+Een aangepaste provider is een contract tussen Azure en een eindpunt. Met aangepaste providers kunt u werkstromen in Azure aanpassen. In deze zelfstudie ziet u hoe u een aangepast RESTful-eindpunt kunt ontwerpen. Raadpleeg [het overzicht van aangepaste resourceproviders](overview.md) als u niet bekend bent met Azure Custom-providers.
 
 > [!NOTE]
-> In deze zelf studie wordt gebruikgemaakt van de zelf studie [Azure functions voor aangepaste Azure-providers instellen](./tutorial-custom-providers-function-setup.md). Enkele van de stappen in deze zelf studie werken alleen als er een Azure-functie-app is ingesteld voor gebruik met aangepaste providers.
+> Deze zelfstudie bouwt verder op de zelfstudie [Azure Functions instellen voor Azure Custom-providers](./tutorial-custom-providers-function-setup.md). Sommige stappen in deze zelfstudie werken alleen als er een Azure-functie-app is ingesteld voor gebruik met aangepaste providers.
 
 ## <a name="work-with-custom-actions-and-custom-resources"></a>Werken met aangepaste acties en aangepaste resources
 
-In deze zelf studie werkt u de functie-app bij om te werken als een REST-eind punt voor uw aangepaste provider. Resources en acties in azure zijn gemodelleerd na de volgende basis specificatie:
+In deze zelfstudie werkt u de functie-app bij zodat deze werkt als een RESTful-eindpunt voor uw aangepaste provider. Resources en acties in Azure zijn gemodelleerd volgens de volgende standaard-RESTful-specificatie:
 
-- **Put**: een nieuwe resource maken
-- **Get (instantie)**: een bestaande resource ophalen
-- **Verwijderen**: een bestaande resource verwijderen
-- **Bericht**: een actie activeren
-- **Get (verzameling)**: alle bestaande resources weer geven
+- **PUT**: Een nieuwe resource maken
+- **GET (instantie)** : Een bestaande resource ophalen
+- **DELETE**: Een bestaande resource verwijderen
+- **POST**: Een actie activeren
+- **GET (verzameling)** : Alle bestaande resources weergeven
 
- Voor deze zelf studie gebruikt u Azure-tabel opslag. Maar elke Data Base of opslag service kan werken.
+ Voor deze zelfstudie gebruikt u Azure-tabelopslag. Maar het werkt met elke database- of opslagservice.
 
 ## <a name="partition-custom-resources-in-storage"></a>Aangepaste resources in de opslag partitioneren
 
-Omdat u een REST-service maakt, moet u de gemaakte resources opslaan. Voor Azure Table-opslag moet u partitie-en rijgegevens genereren voor uw gegevens. Voor aangepaste providers moeten gegevens worden gepartitioneerd naar de aangepaste provider. Wanneer een binnenkomende aanvraag wordt verzonden naar de aangepaste provider, voegt de aangepaste provider de `x-ms-customproviders-requestpath` header toe aan uitgaande aanvragen aan het eind punt.
+Omdat u een RESTful-service maakt, moet u de gemaakte resources opslaan. Voor Azure-tabelopslag moet u partitie- en rijsleutels genereren voor uw gegevens. Voor aangepaste providers moeten gegevens worden gepartitioneerd voor de aangepaste provider. Wanneer een binnenkomende aanvraag wordt verzonden naar de aangepaste provider, voegt de aangepaste provider de header `x-ms-customproviders-requestpath` toe aan uitgaande aanvragen bij het eindpunt.
 
-In het volgende voor beeld `x-ms-customproviders-requestpath` ziet u een koptekst voor een aangepaste resource:
+In het volgende voorbeeld ziet u een header `x-ms-customproviders-requestpath` voor een aangepaste resource:
 
 ```
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{myResourceType}/{myResourceName}
 ```
 
-Op basis van de `x-ms-customproviders-requestpath` koptekst van het voor beeld kunt u de *PartitionKey* -en *rowKey* -para meters voor uw opslag maken, zoals wordt weer gegeven in de volgende tabel:
+Op basis van de header `x-ms-customproviders-requestpath` uit het voorbeeld kunt u de parameters *partitionKey* en *rowKey* voor uw opslag maken, zoals wordt weergegeven in de volgende tabel:
 
 Parameter | Template | Beschrijving
 ---|---|---
-*partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | De *partitionKey* para meter geeft u op hoe de gegevens worden gepartitioneerd. Doorgaans worden de gegevens gepartitioneerd door het exemplaar van de aangepaste provider.
-*rowKey* | `{myResourceType}:{myResourceName}` | De *rowKey* para meter geeft u de individuele id voor de gegevens op. Meestal is de id de naam van de resource.
+*partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | Met de parameter *partitionKey* wordt opgegeven hoe de gegevens worden gepartitioneerd. Meestal worden de gegevens gepartitioneerd met de instantie van de aangepaste provider.
+*rowKey* | `{myResourceType}:{myResourceName}` | Met de parameter *rowKey* wordt de afzonderlijke id voor de gegevens opgegeven. Meestal is de id de naam van de resource.
 
-U moet ook een nieuwe klasse maken om uw aangepaste resource te model leren. In deze zelf studie voegt u de volgende **CustomResource** -klasse toe aan uw functie-app:
+U moet ook een nieuwe klasse maken om de aangepaste resource te modelleren. In deze zelfstudie voegt u de volgende klasse **CustomResource** toe aan de functie-app:
 
 ```csharp
 // Custom Resource Table Entity
@@ -57,20 +57,20 @@ public class CustomResource : TableEntity
     public string Data { get; set; }
 }
 ```
-**CustomResource** is een eenvoudige, generieke klasse die invoer gegevens accepteert. Het is gebaseerd op **TableEntity**, die wordt gebruikt om gegevens op te slaan. De klasse **CustomResource** neemt twee eigenschappen over van **TableEntity**: **partitionKey** en **rowKey**.
+**CustomResource** is een eenvoudige, generieke klasse die alle invoergegevens accepteert. Deze klasse is gebaseerd op **TableEntity**, dat wordt gebruikt om gegevens op te slaan. De klasse **CustomResource** neemt twee eigenschappen over van **TableEntity**: **partitionKey** en **rowKey**.
 
-## <a name="support-custom-provider-restful-methods"></a>RESTERENDE methoden voor aangepaste provider ondersteunen
+## <a name="support-custom-provider-restful-methods"></a>RESTful-methoden voor aangepaste provider ondersteunen
 
 > [!NOTE]
-> Als u de code niet rechtstreeks vanuit deze zelf studie kopieert, moet de antwoord inhoud een geldige JSON zijn waarmee `Content-Type` de header `application/json`wordt ingesteld op.
+> Als u de code niet rechtstreeks vanuit deze zelfstudie kopieert, moet de inhoud van het antwoord een geldige JSON zijn waarmee de header `Content-Type` wordt ingesteld op `application/json`.
 
-Nu u het partitioneren van gegevens hebt ingesteld, maakt u de basis-en trigger methoden voor aangepaste resources en aangepaste acties. Omdat aangepaste providers als proxy's fungeren, moet het REST-eind punt de aanvraag en het antwoord model en verwerken. De volgende code fragmenten laten zien hoe u de eenvoudige, REST bewerkingen kunt afhandelen.
+Nu u het partitioneren van gegevens hebt ingesteld, maakt u de standaard-CRUD-methode en triggermethode voor aangepaste resources en aangepaste acties. Omdat aangepaste providers als proxy's fungeren, moet het RESTful-eindpunt de aanvraag en het antwoord modelleren en verwerken. De volgende codefragmenten laten zien hoe u de eenvoudige standaard-RESTful-bewerkingen kunt verwerken.
 
 ### <a name="trigger-a-custom-action"></a>Een aangepaste actie activeren
 
-Voor aangepaste providers wordt een aangepaste actie geactiveerd via POST-aanvragen. Een aangepaste actie kan optioneel een aanvraag tekst accepteren die een set invoer parameters bevat. De actie retourneert vervolgens een reactie die het resultaat van de actie signaleert en of deze is geslaagd of mislukt.
+Voor aangepaste providers wordt een aangepaste actie geactiveerd via POST-aanvragen. Een aangepaste actie kan optioneel een aanvraagtekst accepteren die een set invoerparameters bevat. De actie retourneert vervolgens een antwoord met het resultaat van de actie en of deze is geslaagd of mislukt.
 
-Voeg de volgende **TriggerCustomAction** -methode toe aan uw functie-app:
+Voeg de volgende methode **TriggerCustomAction** toe aan de functie-app:
 
 ```csharp
 /// <summary>
@@ -90,13 +90,13 @@ public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMes
 }
 ```
 
-De methode **TriggerCustomAction** accepteert een binnenkomende aanvraag en ECHO keert het antwoord terug met een status code.
+De methode **TriggerCustomAction** accepteert een binnenkomende aanvraag en weerkaatst simpelweg het antwoord met een statuscode.
 
 ### <a name="create-a-custom-resource"></a>Een aangepaste resource maken
 
-Voor aangepaste providers wordt een aangepaste resource gemaakt via PUT-aanvragen. De aangepaste provider accepteert een JSON-aanvraag tekst die een set eigenschappen voor de aangepaste resource bevat. Resources in azure volgen een REST model. U kunt dezelfde aanvraag-URL gebruiken om een resource te maken, op te halen of te verwijderen.
+Voor aangepaste providers wordt een aangepaste resource gemaakt via PUT-aanvragen. De aangepaste provider accepteert een JSON-aanvraagtekst met een set eigenschappen voor de aangepaste resource. Resources in Azure volgen een RESTful-model. U kunt dezelfde aanvraag-URL gebruiken om een resource te maken, op te halen of te verwijderen.
 
-Voeg de volgende **CreateCustomResource** -methode toe om nieuwe resources te maken:
+Voeg de volgende methode **CreateCustomResource** toe om nieuwe resources te maken:
 
 ```csharp
 /// <summary>
@@ -132,21 +132,21 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-Met de methode **CreateCustomResource** wordt de inkomende aanvraag bijgewerkt zodat de **id**, **naam**en het **type**van de Azure-specifieke velden worden meegenomen. Deze velden zijn eigenschappen op het hoogste niveau die door services in Azure worden gebruikt. Ze kunnen de aangepaste provider samen werken met andere services, zoals Azure Policy, Azure Resource Manager sjablonen en Azure-activiteiten logboek.
+Met de methode **CreateCustomResource** wordt de binnenkomende aanvraag bijgewerkt met de Azure-specifieke velden **id**, **naam** en **type**. Deze velden zijn eigenschappen op het hoogste niveau die worden gebruikt voor services in Azure. Ze zorgen ervoor dat de aangepaste provider kan samenwerken met andere services, zoals Azure Policy, Azure Resource Manager-sjablonen en Azure-activiteitenlogboek.
 
 Eigenschap | Voorbeeld | Beschrijving
 ---|---|---
-**naam** | {myCustomResourceName} | De naam van de aangepaste resource
-**voert** | Micro soft. CustomProviders/resourceProviders/{resourceTypeName} | De naam ruimte van het bron type
-**id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | De resource-ID
+**name** | {myCustomResourceName} | De naam van de aangepaste resource
+**type** | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | De naamruimte resource-type
+**id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | De resource-id
 
-Naast het toevoegen van de eigenschappen, hebt u het JSON-document ook opgeslagen in azure-tabel opslag.
+Naast het toevoegen van de eigenschappen hebt u het JSON-document ook opgeslagen in Azure-tabelopslag.
 
 ### <a name="retrieve-a-custom-resource"></a>Een aangepaste resource ophalen
 
-Voor aangepaste providers wordt een aangepaste resource opgehaald via GET-aanvragen. Een aangepaste provider accepteert *geen* JSON-aanvraag tekst. Voor GET-aanvragen gebruikt het eind punt `x-ms-customproviders-requestpath` de koptekst om de al gemaakte resource te retour neren.
+Voor aangepaste providers wordt een aangepaste resource opgehaald via GET-aanvragen. Een aangepaste provider accepteert een JSON-aanvraagtekst *niet*. Voor GET-aanvragen gebruikt het eindpunt de header `x-ms-customproviders-requestpath` om de al gemaakte resource te retourneren.
 
-Voeg de volgende **RetrieveCustomResource** -methode toe om bestaande resources op te halen:
+Voeg de volgende methode **RetrieveCustomResource** toe om bestaande resources op te halen:
 
 ```csharp
 /// <summary>
@@ -173,13 +173,13 @@ public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequest
 }
 ```
 
-In azure volgen resources een onderliggend model. De aanvraag-URL waarmee een resource wordt gemaakt, retourneert ook de resource als er een GET-aanvraag wordt uitgevoerd.
+Resources in Azure volgen een RESTful-model. De aanvraag-URL waarmee een resource wordt gemaakt, retourneert ook de resource als een GET-aanvraag wordt uitgevoerd.
 
 ### <a name="remove-a-custom-resource"></a>Een aangepaste resource verwijderen
 
-Voor aangepaste providers wordt een aangepaste resource verwijderd via VERWIJDERings aanvragen. Een aangepaste provider accepteert *geen* JSON-aanvraag tekst. Voor een Verwijder aanvraag gebruikt het eind punt de `x-ms-customproviders-requestpath` koptekst om de al gemaakte resource te verwijderen.
+Voor aangepaste providers wordt een aangepaste resource verwijderd via DELETE-aanvragen. Een aangepaste provider accepteert een JSON-aanvraagtekst *niet*. Voor DELETE-aanvragen gebruikt het eindpunt de header `x-ms-customproviders-requestpath` om de al gemaakte resource te verwijderen.
 
-Voeg de volgende **RemoveCustomResource** -methode toe om bestaande resources te verwijderen:
+Voeg de volgende methode **RemoveCustomResource** toe om bestaande resources te verwijderen:
 
 ```csharp
 /// <summary>
@@ -206,13 +206,13 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-In azure volgen resources een onderliggend model. De aanvraag-URL waarmee een resource wordt gemaakt, verwijdert ook de resource als er een aanvraag voor verwijderen wordt uitgevoerd.
+Resources in Azure volgen een RESTful-model. De aanvraag-URL waarmee een resource wordt gemaakt, verwijdert de resource ook als een DELETE-aanvraag wordt uitgevoerd.
 
-### <a name="list-all-custom-resources"></a>Alle aangepaste resources weer geven
+### <a name="list-all-custom-resources"></a>Alle aangepaste resources weergeven
 
-Voor aangepaste providers kunt u een lijst met bestaande aangepaste resources opsommen met behulp van verzameling GET-aanvragen. Een aangepaste provider accepteert *geen* JSON-aanvraag tekst. Voor een verzameling GET-aanvragen gebruikt het eind punt de `x-ms-customproviders-requestpath` koptekst om de al gemaakte resources op te sommen.
+Voor aangepaste providers kunt u een lijst met bestaande aangepaste resources opsommen met behulp van GET-verzamelaanvragen. Een aangepaste provider accepteert een JSON-aanvraagtekst *niet*. Voor een verzameling GET-aanvragen gebruikt het eindpunt de header `x-ms-customproviders-requestpath` om de al gemaakte resource op te sommen.
 
-Voeg de volgende **EnumerateAllCustomResources** -methode toe om de bestaande resources op te sommen:
+Voeg de volgende methode **EnumerateAllCustomResources** toe om de bestaande resources op te sommen:
 
 ```csharp
 /// <summary>
@@ -249,13 +249,13 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 ```
 
 > [!NOTE]
-> De syntaxis van de RowKey QueryComparisons. GreaterThan en QueryComparisons. LessThan is Azure Table Storage voor het uitvoeren van een ' startsWith-query voor teken reeksen.
+> De RowKey QueryComparisons.GreaterThan en QueryComparisons.LessThan vormen syntaxis voor Azure-tabelopslag voor het uitvoeren van een startswith-query voor tekenreeksen.
 
-Als u alle bestaande resources wilt weer geven, genereert u een Azure Table Storage-query die ervoor zorgt dat de resources bestaan onder uw aangepaste provider partitie. De query controleert vervolgens of de rij-sleutel met dezelfde `{myResourceType}` waarde begint.
+Als u alle bestaande resources wilt weergeven, genereert u een Azure-tabelopslagquery die ervoor zorgt dat de resources bestaan onder uw aangepaste providerpartitie. De query controleert vervolgens of de rij begint met dezelfde waarde `{myResourceType}`.
 
-## <a name="integrate-restful-operations"></a>REST-bewerkingen integreren
+## <a name="integrate-restful-operations"></a>RESTful-bewerkingen integreren
 
-Nadat alle resterende methoden zijn toegevoegd aan de functie-app, werkt u de methode Main **Run** bij die de functies aanroept voor het afhandelen van de verschillende rest-aanvragen:
+Nadat alle RESTful-methoden zijn toegevoegd aan de functie-app, werkt u de methode **Run** bij waarmee de functies worden aangeroepen voor het verwerken van de verschillende REST-aanvragen:
 
 ```csharp
 /// <summary>
@@ -338,11 +338,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 }
 ```
 
-De bijgewerkte **uitvoerings** methode bevat nu de *tableStorage* -invoer binding die u hebt toegevoegd voor Azure-tabel opslag. Het eerste deel van de methode leest de `x-ms-customproviders-requestpath` header en gebruikt de `Microsoft.Azure.Management.ResourceManager.Fluent` bibliotheek om de waarde te parseren als een resource-id. De `x-ms-customproviders-requestpath` header wordt verzonden door de aangepaste provider en geeft het pad op van de binnenkomende aanvraag.
+De bijgewerkte methode **Run** omvat nu de invoerbinding *tableStorage* die u hebt toegevoegd voor Azure-tabelopslag. Met het eerste deel van de methode wordt de header `x-ms-customproviders-requestpath` gelezen en de bibliotheek `Microsoft.Azure.Management.ResourceManager.Fluent` gebruikt om de waarde te parseren als een resource-id. De header `x-ms-customproviders-requestpath` wordt verzonden via de aangepaste provider en geeft het pad op van de binnenkomende aanvraag.
 
-Door de geparseerde Resource-ID te gebruiken, kunt u de **partitionKey** -en **rowKey** -waarden genereren voor de gegevens om aangepaste resources op te zoeken of op te slaan.
+Door de geparseerde resource-id te gebruiken kunt u de waarden **partitionKey** en **rowKey** genereren voor de gegevens, om aangepaste resources te zoeken of op te slaan.
 
-Nadat u de methoden en klassen hebt toegevoegd, moet u de methoden **die worden gebruikt** voor de functie-app bijwerken. Voeg de volgende code toe boven aan het C#-bestand:
+Nadat u de methoden en klassen hebt toegevoegd, moet u de **gebruiks**methoden bijwerken voor de functie-app. Voeg de volgende code toe bovenaan het C#-bestand:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -366,8 +366,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Als u op een wille keurig moment van deze zelf studie bent kwijt geraakt, kunt u het voor beeld van de volledige code vinden in de referentie van de [GEruste eind punt van de aangepaste provider](./reference-custom-providers-csharp-endpoint.md). Nadat u de functie-app hebt voltooid, slaat u de URL van de functie-app op. Het kan worden gebruikt om de functie-app in latere zelf studies te activeren.
+Als u op enig moment tijdens deze zelfstudie de draad kwijtraakt, kunt u het volledige codevoorbeeld vinden in de [referentie voor het C# RESTful-eindpunt van de aangepaste provider](./reference-custom-providers-csharp-endpoint.md). Nadat u de functie-app hebt voltooid, slaat u de URL van de functie-app op. Deze kan worden gebruikt om de functie-app in latere zelfstudies te activeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een REST-eind punt ontworpen om te werken met een Azure-eind punt voor een aangepaste provider. Ga voor meer informatie over het maken van een aangepaste provider naar de artikel [zelf studie: een aangepaste provider maken](./tutorial-custom-providers-create.md).
+In dit artikel hebt u een RESTful-eindpunt ontworpen om te werken met een eindpunt voor een Azure Custom-provider. Als u wilt leren hoe u een aangepaste provider maakt, gaat u naar het artikel [Zelfstudie: Een aangepaste provider maken](./tutorial-custom-providers-create.md).

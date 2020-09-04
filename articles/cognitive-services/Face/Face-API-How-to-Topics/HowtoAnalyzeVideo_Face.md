@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld: realtime video analyse-face'
+title: 'Voorbeeld: Video-analyse in realtime - Face'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de face-service om bijna realtime analyses uit te voeren op frames die zijn gemaakt met een live video stroom.
+description: Gebruik de Face-service om bijna in realtime een analyse uit te voeren van de frames die uit een livevideostream zijn gehaald.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9de803789b7ec11a971cf9a79a5c4665ac372cb4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986724"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928136"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Voorbeeld: video's in realtime analyseren
 
@@ -26,7 +27,7 @@ In deze handleiding wordt uitgelegd hoe u bijna in realtime een analyse kunt uit
 - Deze frames verzenden naar de API
 - De analyseresultaten verbruiken die worden geretourneerd door de API-aanroep
 
-Deze voor beelden zijn geschreven in C# en de code kunt u hier vinden op GitHub: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) .
+Deze voorbeelden zijn geschreven in C# en de code vindt u hier op GitHub: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 
 ## <a name="the-approach"></a>De benadering
 
@@ -138,11 +139,11 @@ while (true)
 
 ### <a name="getting-started"></a>Aan de slag
 
-Om uw app zo snel mogelijk aan de praat te krijgen, gebruikt u een flexibele implementatie van het hierboven beschreven systeem. Als u toegang wilt krijgen tot de code, gaat u naar [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis) .
+Om uw app zo snel mogelijk aan de praat te krijgen, gebruikt u een flexibele implementatie van het hierboven beschreven systeem. Ga voor toegang tot de code naar [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
 
 De bibliotheek bevat de klasse FrameGrabber, waarmee het hierboven beschreven systeem van producers en consumers wordt geïmplementeerd voor het verwerken van videoframes van een webcam. De gebruiker kan de exacte vorm van de API-aanroep opgeven. De klasse maakt tevens gebruik van gebeurtenissen om aan de aanroepende code door te geven wanneer er een nieuw frame is verkregen of een nieuw analyseresultaat beschikbaar is.
 
-Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. Er worden frames van de standaard webcam geplaatst en verzonden naar de gezichts service voor gezichts detectie.
+Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. De app legt frames van de standaardwebcam vast en verzendt deze naar de Face-service voor gezichtsherkenning.
 
 ```csharp
 using System;
@@ -201,13 +202,13 @@ In de meeste modi is er een zichtbare vertraging tussen de livevideo aan de link
 
 Als u met dit voorbeeld aan de slag wilt, volgt u deze stappen:
 
-1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Als u er al een hebt, kunt u door gaan naar de volgende stap.
-2. Maak resources voor Computer Vision en gezicht in de Azure Portal om uw sleutel en eind punt op te halen. Zorg ervoor dat u de gratis laag (F0) selecteert tijdens de installatie.
+1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Ga naar de volgende stap als u al een account hebt.
+2. Maak resources voor Computer Vision en Face in Azure Portal om uw sleutel en eindpunt op te halen. Zorg ervoor dat u tijdens de installatie de gratis laag (F0) selecteert.
    - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
-   - [Gezicht](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel en eind punt voor elke resource te verzamelen. 
-3. Kloon de [cognitieve-samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) github opslag plaats.
-4. Open het voor beeld in Visual Studio en bouw en voer de voorbeeld toepassingen uit:
-    - Voor BasicConsoleSample is de face-sleutel rechtstreeks vastgelegd in [BasicConsoleSample/Program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+   - [Face](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel en eindpunt te verzamelen voor elke resource. 
+3. Kloon de GitHub-opslagplaats [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+4. Open het voorbeeld in Visual Studio, bouw de voorbeeldtoepassingen en voer ze uit:
+    - Voor BasicConsoleSample is de Face-sleutel rechtstreeks in  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) in code vastgelegd.
     - Voor LiveCameraSample moeten de sleutels worden ingevoerd in het instellingenvenster van de app. De sleutels worden als gebruikersgegevens gehandhaafd tussen sessies.
         
 

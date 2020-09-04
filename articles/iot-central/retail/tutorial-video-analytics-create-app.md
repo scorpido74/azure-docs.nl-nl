@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037872"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762774"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Zelfstudie: Een toepassing ‘Videoanalyse: object- en bewegingsdetectie’ maken in Azure IoT Central
 
@@ -40,7 +40,7 @@ Voor het voltooien van deze zelfstudiereeks hebt u het volgende nodig:
 
 ## <a name="initial-setup"></a>Eerste configuratie
 
-In deze zelfstudies gaat u een aantal configuratiebestanden bijwerken en gebruiken. Eerste versies van deze bestanden zijn beschikbaar in de GitHub-opslagplaats [LVA-gateway](https://github.com/Azure/live-video-analytics). De opslagplaats bevat ook een kladblokbestand dat u kunt downloaden en gebruiken om configuratiewaarden vast te leggen van de services die u implementeert.
+In deze zelfstudies gaat u een aantal configuratiebestanden bijwerken en gebruiken. Eerste versies van deze bestanden zijn beschikbaar in de GitHub-opslagplaats [LVA-gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway). De opslagplaats bevat ook een kladblokbestand dat u kunt downloaden en gebruiken om configuratiewaarden vast te leggen van de services die u implementeert.
 
 Maak een map genaamd *lva-configuration* op uw lokale computer om exemplaren van deze bestanden op te slaan. Klik vervolgens met de rechtermuisknop op elk van de volgende koppelingen en kies **Opslaan als** om het bestand op te slaan in de map *lva-configuration*:
 
@@ -98,7 +98,7 @@ Een nieuwe Azure IoT Central-toepassing maken:
 
 Een nieuwe toepassing voor videoanalyse maken:
 
-1. Selecteer de toepassingssjabloon **Videoanalyse: object- en bewegingsdetectie**. Deze sjabloon bevat apparaatsjablonen voor de apparaten die in de zelfstudie worden gebruikt. De sjabloon biedt ook een operatordashboard om de video te bewaken.
+1. Selecteer de toepassingssjabloon **Videoanalyse: object- en bewegingsdetectie**. Deze sjabloon bevat apparaatsjablonen voor de apparaten die in de zelfstudie worden gebruikt. De sjabloon bevat voorbeelden van dashboards die operators kunnen gebruiken om taken uit te voeren, zoals het bewaken en beheren van camera's.
 
 1. Kies desgewenst een beschrijvende **Toepassingsnaam**. Deze toepassing is gebaseerd op een fictieve detailhandel genaamd Northwind Traders. In de zelfstudie wordt de **Toepassingsnaam** *Northwind Traders-videoanalyse* gebruikt.
 

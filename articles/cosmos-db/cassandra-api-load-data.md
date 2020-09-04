@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Java-app voor het laden van voorbeeld gegevens in een Cassandra-API tabel in Azure Cosmos DB'
+title: 'Zelfstudie: Java-app om voorbeeldgegevens te laden in een Cassandra-API-tabel in Azure Cosmos DB'
 description: Deze zelfstudie laat zien hoe u voorbeeldgegevens van een gebruiker laadt in een Cassandra-API-tabel in Azure Cosmos DB met behulp van een Java-toepassing.
 author: kanshiG
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 6a12db8e34421dd16c12d167896ef66b3377d524
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82853016"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Zelfstudie: Voorbeeldgegevens laden in een Cassandra-API-tabel in Azure Cosmos DB
@@ -25,11 +25,11 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Gegevens laden in een Cassandra-tabel
 > * De app uitvoeren
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Dit artikel maakt deel uit van een meerdelige zelfstudie. Voordat u met dit document begint, moet u [de Cassandra-API account, de spatie en de tabel maken](create-cassandra-api-account-java.md).   
+* Dit artikel maakt deel uit van een meerdelige zelfstudie. Voordat u met dit document begint, moet u eerst [de Cassandra-API-account, de keyspace en de tabel maken](create-cassandra-api-account-java.md).   
 
 ## <a name="load-data-into-the-table"></a>Gegevens laden in de tabel
 

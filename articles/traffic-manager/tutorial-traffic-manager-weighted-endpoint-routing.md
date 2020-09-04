@@ -1,23 +1,23 @@
 ---
-title: 'Zelf studie: verkeer routeren naar gewogen eind punten-Azure Traffic Manager'
+title: 'Zelfstudie: verkeer routeren naar gewogen eindpunten - Azure Traffic Manager'
 description: In dit artikel wordt beschreven hoe u verkeer routeert naar gewogen eindpunten met behulp van Traffic Manager.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: rohink
-ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.author: duau
+ms.openlocfilehash: 90ed68e36b47d46c47e78407fac3b5fd74924b57
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939486"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397080"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Zelfstudie: Verkeersroutering met gewogen eindpunten beheren met behulp van Traffic Manager
 
-In deze zelfstudie wordt beschreven hoe u Azure Traffic Manager gebruikt om de routering van gebruikersverkeer tussen eindpunten te beheren via de methode voor gewogen routering. Met deze routeringsmethode kunt u het gewicht toewijzen aan elk eindpunt in de profielconfiguratie van Traffic Manager. Gebruikersverkeer wordt vervolgens gerouteerd op basis van het gewicht dat is toegewezen aan elk eindpunt. Het gewicht is een geheel getal tussen 1 en 1.000. Hoe hoger het gewicht dat is toegewezen aan een eindpunt, hoe hoger de prioriteit van het eindpunt.
+In deze zelfstudie wordt beschreven hoe u Azure Traffic Manager gebruikt om de routering van gebruikersverkeer tussen eindpunten te beheren via de methode voor gewogen routering. Met deze routeringsmethode kunt u het gewicht toewijzen aan elk eindpunt in de profielconfiguratie van Traffic Manager. Gebruikersverkeer wordt vervolgens gerouteerd op basis van het gewicht dat is toegewezen aan elk eindpunt. Het gewicht is een geheel getal tussen 1 en 1000. Hoe hoger het gewicht dat is toegewezen aan een eindpunt, hoe hoger de prioriteit van het eindpunt.
 
 In deze zelfstudie leert u het volgende:
 
@@ -51,37 +51,37 @@ In dit gedeelte maakt u twee website-instanties die de twee service-eindpunten v
 
 #### <a name="create-vms-for-running-websites"></a>Virtuele machines maken voor het uitvoeren van websites
 
-In deze sectie maakt u twee virtuele machines (*myIISVMEastUS* en *myIISVMWestEurope*) in het vs-Oost en Europa-West Azure-regio's.
+In deze sectie maakt u twee VM's (*myIISVMEastUS* en *myIISVMWEurope*) in de Azure-regio's US - oost en EU - west.
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource** > **maken Compute** > **Windows Server 2019 Data Center**.
+1. Selecteer **Een resource maken** > **Compute** > **Datacenter met Windows Server 2019** in de linkerbovenhoek van Azure Portal.
 2. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
 
-   - **Abonnements** > **resource groep**: Selecteer **nieuwe maken** en typ vervolgens **myResourceGroupTM1**.
-   - **Details** > van de naam van de**virtuele machine**: Typ *myIISVMEastUS*.
-   - **Exemplaar Details** > **regio**: Selecteer **VS-Oost**.
-   - **Administrator Account** > **Gebruikers**naam van Administrator-account: Voer een door u gekozen gebruikernaam in.
-   - **Administrator Account** > **Wacht woord**voor beheerders account: Voer een wacht woord van uw keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Binnenkomende poort regels** > **open bare binnenkomende poorten**: Selecteer **geselecteerde poorten toestaan**.
-   - **Binnenkomende poort regels** > **Selecteer binnenkomende poorten**: Selecteer **RDP** en **http** in de vervolg keuzelijst.
+   - **Abonnement** > **Resourcegroep**: Selecteer **Nieuwe maken** en typ **myResourceGroupTM1**.
+   - **Instantiedetails** > **Naam van virtuele machine**: Typ *myIISVMEastUS*.
+   - **Instantiedetails** > **Regio**:  Selecteer **VS - oost**.
+   - **Administrator-account** > **Gebruikersnaam**:  Voer een gebruikersnaam naar keuze in.
+   - **Administrator-account** > **Wachtwoord**:  Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Regels voor binnenkomende poort** > **Openbare poorten voor inkomend verkeer**: Selecteer **Geselecteerde poorten toestaan**.
+   - **Regels voor binnenkomende poort** > **Binnenkomende poorten selecteren**: Selecteer **RDP** en **HTTP** in de vervolgkeuzelijst.
 
-3. Selecteer het tabblad **beheer** of selecteer **volgende: schijven**, vervolgens **volgende: netwerken**en vervolgens op **volgende: beheer**. Stel bij **Bewaking****Diagnostische gegevens over opstarten** in op **Uit**.
-4. Selecteer **controleren + maken**.
-5. Controleer de instellingen en klik vervolgens op **maken**.  
-6. Volg de stappen voor het maken van een tweede VM met de naam *myIISVMWestEurope*, met de naam van de **resource groep** *myResourceGroupTM2*, een **locatie** van *Europa-West*en alle andere instellingen hetzelfde als *myIISVMEastUS*.
+3. Selecteer het tabblad **Beheer** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken** en vervolgens **Volgende: Beheer**. Stel bij **Bewaking** **Diagnostische gegevens over opstarten** in op **Uit**.
+4. Selecteer **Controleren + maken**.
+5. Controleer de instellingen en klik op **Maken**.  
+6. Volg de stappen om een tweede VM te maken met de naam *myIISVMWestEurope*, een **resourcegroep** met de naam *myResourceGroupTM2*, met **locatie** *Europa - west* en met alle overige instellingen gelijk aan die voor *myIISVMEastUS*.
 7. Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappen voordat beide VM's zijn gemaakt.
 
 ![Een virtuele machine maken](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-webpage"></a>IIS installeren en de standaardwebpagina aanpassen
 
-In deze sectie installeert u de IIS-server op de twee Vm's myIISVMEastUS en myIISVMWestEurope, en werkt u vervolgens de standaard webpagina bij. De aangepaste webpagina geeft de naam weer van de virtuele machine waarmee u verbinding maakt als u de website in een webbrowser bezoekt.
+In deze sectie installeert u de IIS-server op de twee virtuele machines myIISVMEastUS en myIISVMWEurope en werkt u de standaardwebpagina bij. De aangepaste webpagina geeft de naam weer van de virtuele machine waarmee u verbinding maakt als u de website in een webbrowser bezoekt.
 
 1. Selecteer **Alle resources** in het menu aan de linkerkant. Selecteer in de lijst met resources **myIISVMEastUS** in de resourcegroep **myResourceGroupTM1**.
-2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken**. Selecteer in **verbinding maken met virtuele machine** **RDP-bestand downloaden**.
-3. Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer u hierom wordt gevraagd. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven tijdens het maken van de virtuele machine. Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken**. Selecteer in **Verbinding maken met virtuele machine** de optie **RDP-bestand downloaden**.
+3. Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer u hierom wordt gevraagd. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven tijdens het maken van de virtuele machine. Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM.
 4. Selecteer **OK**.
-5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als de waarschuwing wordt weer gegeven, selecteert u **Ja** of **door gaan** om door te gaan met de verbinding.
-6. Blader op het bureau blad van de server naar **beheer hulpprogramma's** > van Windows**Serverbeheer**.
+5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u de waarschuwing ontvangt, selecteert u **Ja** of **Doorgaan** om door te gaan met de verbinding.
+6. Ga op de serverdesktop naar **Windows Systeembeheer** > **Serverbeheer**.
 7. Open Windows PowerShell op VM1. Gebruik de volgende opdrachten om de IIS-server te installeren en het standaard htm-bestand bij te werken.
 
     ```powershell-interactive
@@ -98,7 +98,7 @@ In deze sectie installeert u de IIS-server op de twee Vm's myIISVMEastUS en myII
     ![IIS installeren en de webpagina aanpassen](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. Sluit de RDP-verbinding met **myIISVMEastUS**.
-9. Herhaal de stappen 1-8. Maak een RDP-verbinding met de VM- **myIISVMWestEurope** in de resource groep **myResourceGroupTM2** om IIS te installeren en de standaard webpagina aan te passen.
+9. Herhaal de stappen 1-8. Maak een RDP-verbinding met VM **myIISVMWestEurope** in resourcegroep **myResourceGroupTM2**, zodat u IIS kunt installeren en de standaardwebpagina kunt aanpassen.
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>DNS-namen voor virtuele machines configureren met behulp van IIS
 
@@ -107,35 +107,35 @@ Traffic Manager routeert gebruikersverkeer op basis van de DNS-naam van de servi
 1. Selecteer **Alle resources** in het menu aan de linkerkant. Selecteer in de lijst met resources **myIISVMEastUS** in de resourcegroep **myResourceGroupTM1**.
 2. Selecteer op de pagina **Overzicht** onder **DNS-naam** de optie **Configureren**.
 3. Voeg op de pagina **Configuratie** onder het label DNS-naam een unieke naam toe. Selecteer vervolgens **Opslaan**.
-4. Herhaal stap 1-3 voor de virtuele machine met de naam **myIISVMWestEurope** in de resource groep **myResourceGroupTM2** .
+4. Herhaal stap 1, 2 en 3 voor de VM met de naam **myIISVMWestEurope** in resourcegroep **myResourceGroupTM2**.
 
 ### <a name="create-a-test-vm"></a>Een test-VM maken
 
-In deze sectie maakt u een virtuele machine (*myVMEastUS* en *myVMWestEurope*) in elke Azure-regio (**VS-Oost** en **Europa-West**). U gebruikt deze Vm's om te testen hoe Traffic Manager verkeer stuurt naar het eind punt van de website met de hogere gewicht waarde.
+In deze sectie maakt u een VM (*myVMEastUS* en *myVMWestEurope*) in elke Azure-regio (**US - oost** en **EU - west**). U gaat deze VM's gebruiken om te testen hoe verkeer via Traffic Manager naar het website-eindpunt wordt gerouteerd waaraan het meeste gewicht is toegewezen.
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource** > **maken Compute** > **Windows Server 2019 Data Center**.
+1. Selecteer **Een resource maken** > **Compute** > **Datacenter met Windows Server 2019** in de linkerbovenhoek van Azure Portal.
 2. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
 
-   - **Abonnements** > **resource groep**: Selecteer **myResourceGroupTM1**.
-   - **Details** > van de naam van de**virtuele machine**: Typ *myVMEastUS*.
-   - **Exemplaar Details** > **regio**: Selecteer **VS-Oost**.
-   - **Administrator Account** > **Gebruikers**naam van Administrator-account: Voer een door u gekozen gebruikernaam in.
-   - **Administrator Account** > **Wacht woord**voor beheerders account: Voer een wacht woord van uw keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Binnenkomende poort regels** > **open bare binnenkomende poorten**: Selecteer **geselecteerde poorten toestaan**.
-   - **Binnenkomende poort regels** > **Selecteer binnenkomende poorten**: Selecteer **RDP** in de vervolg keuzelijst.
+   - **Abonnement** > **Resourcegroep**: Selecteer **myResourceGroupTM1**.
+   - **Instantiedetails** > **Naam van virtuele machine**: Typ *myVMEastUS*.
+   - **Instantiedetails** > **Regio**:  Selecteer **VS - oost**.
+   - **Administrator-account** > **Gebruikersnaam**:  Voer een gebruikersnaam naar keuze in.
+   - **Administrator-account** > **Wachtwoord**:  Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Regels voor binnenkomende poort** > **Openbare poorten voor inkomend verkeer**: Selecteer **Geselecteerde poorten toestaan**.
+   - **Regels voor binnenkomende poort** > **Binnenkomende poorten selecteren**: Selecteer **RDP** in de vervolgkeuzelijst.
 
-3. Selecteer het tabblad **beheer** of selecteer **volgende: schijven**, vervolgens **volgende: netwerken**en vervolgens op **volgende: beheer**. Stel bij **Bewaking****Diagnostische gegevens over opstarten** in op **Uit**.
-4. Selecteer **controleren + maken**.
-5. Controleer de instellingen en klik vervolgens op **maken**.  
-6. Volg de stappen voor het maken van een tweede VM met de naam *myVMWestEurope*, met de naam van de **resource groep** *myResourceGroupTM2*, een **locatie** van *Europa-West*en alle andere instellingen hetzelfde als *myVMEastUS*.
+3. Selecteer het tabblad **Beheer** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken** en vervolgens **Volgende: Beheer**. Stel bij **Bewaking** **Diagnostische gegevens over opstarten** in op **Uit**.
+4. Selecteer **Controleren + maken**.
+5. Controleer de instellingen en klik op **Maken**.  
+6. Volg de stappen om een tweede VM te maken met de naam *myVMWestEurope*, een **resourcegroep** met de naam *myResourceGroupTM2*, met **locatie** *EU - west* en met alle overige instellingen gelijk aan die voor *myVMEastUS*.
 7. Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappen voordat beide VM's zijn gemaakt.
 
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
 Maak een Traffic Manager-profiel op basis van de routeringsmethode **Gewogen**.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource** > **netwerk** > **Traffic Manager profiel** > **maken**.
-2. Typ of selecteer de volgende informatie in **Traffic Manager-profiel**. Accepteer de standaard waarden voor de overige instellingen en selecteer vervolgens **maken**.
+1. Selecteer links boven in het scherm de optie **Een resource maken** > **Netwerken** > **Traffic Manager-profiel** > **Maken**.
+2. Typ of selecteer de volgende informatie in **Traffic Manager-profiel**. Accepteer de standaardwaarden voor de overige instellingen en selecteer **Maken**.
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
@@ -149,7 +149,7 @@ Maak een Traffic Manager-profiel op basis van de routeringsmethode **Gewogen**.
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-eindpunten toevoegen
 
-Voeg de twee virtuele machines waarop de IIS-servers myIISVMEastUS en myIISVMWestEurope worden uitgevoerd, toe om gebruikers verkeer naar hen te routeren.
+Voeg de twee VM's toe waarop de IIS-servers myIISVMEastUS en myIISVMWestEurope worden uitgevoerd om gebruikersverkeer naar deze VM's te routeren.
 
 1. Zoek in de zoekbalk van de portal de naam van het Traffic Manager-profiel dat u in de vorige sectie hebt gemaakt. Selecteer het profiel in de resultaten die worden weergegeven.
 2. Selecteer in **Traffic Manager-profiel** in de sectie **Instellingen** de optie **Eindpunten** > **Toevoegen**.
@@ -164,7 +164,7 @@ Voeg de twee virtuele machines waarop de IIS-servers myIISVMEastUS en myIISVMWes
     |  Gewicht      | Voer **100** in.        |
     |        |           |
 
-4. Herhaal stap 2 en 3 om een ander eind punt met de naam **myWestEuropeEndpoint** toe te voegen voor het open bare IP-adres **myIISVMWestEurope-IP**. Dit adres is gekoppeld aan de IIS Server-VM met de naam myIISVMWestEurope. Voer voor **Gewicht****25** in.
+4. Herhaal stappen 2 en 3 om nog een eindpunt met de naam **myWestEuropeEndpoint** toe te voegen voor het openbare IP-adres **myIISVMWestEurope-ip**. Dit adres is gekoppeld aan de IIS-server-VM met de naam myIISVMWestEurope. Voer voor **Gewicht****25** in.
 5. Als beide eindpunten zijn toegevoegd, worden ze weergegeven in het Traffic Manager-profiel, samen met de controlestatus **Online**.
 
 ## <a name="test-the-traffic-manager-profile"></a>Het Traffic Manager-profiel testen
@@ -191,15 +191,15 @@ U kunt de DNS-naam van het Traffic Manager-profiel als volgt vaststellen:
 In dit gedeelte kunt u Traffic Manager in actie zien.
 
 1. Selecteer **Alle resources** in het menu aan de linkerkant. Selecteer in de lijst met resources **myVMEastUS** in de resourcegroep **myResourceGroupTM1**.
-2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken**. Selecteer in **verbinding maken met virtuele machine** **RDP-bestand downloaden**.
-3. Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer u hierom wordt gevraagd. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine. Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken**. Selecteer in **Verbinding maken met virtuele machine** de optie **RDP-bestand downloaden**.
+3. Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer u hierom wordt gevraagd. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine. Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM.
 4. Selecteer **OK**.
-5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als de waarschuwing wordt weer gegeven, selecteert u **Ja** of **door gaan** om door te gaan met de verbinding.
-6. Voer in een webbrowser op de VM myVMEastUS de DNS-naam van uw Traffic Manager-profiel in om uw website weer te geven. U wordt doorgestuurd naar de website die wordt gehost op de IIS-server myIISVMEastUS omdat hieraan een hoger gewicht van **100** is toegewezen. De myIISVMWestEurope van de IIS-server wordt toegewezen aan een lagere waarde **25**voor het gewicht van het eind punt.
+5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u de waarschuwing ontvangt, selecteert u **Ja** of **Doorgaan** om door te gaan met de verbinding.
+6. Voer in een webbrowser op de VM myVMEastUS de DNS-naam van uw Traffic Manager-profiel in om uw website weer te geven. U wordt doorgestuurd naar de website die wordt gehost op de IIS-server myIISVMEastUS omdat hieraan een hoger gewicht van **100** is toegewezen. Aan de IIS-server myIISVMWestEurope is een lagere eindpuntgewichtswaarde van toegewezen, namelijk **25**.
 
    ![Traffic Manager-profiel testen](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-7. Herhaal stap 1-6 op de VM-myVMWestEurope om de gewogen website reactie te bekijken.
+7. Herhaal stappen 1 tot en met 6 op de VM myVMWestEurope om de gewogen respons van de website te bekijken.
 
 ## <a name="delete-the-traffic-manager-profile"></a>Het Traffic Manager-profiel verwijderen
 

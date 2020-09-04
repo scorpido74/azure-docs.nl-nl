@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75768521"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Fouten opsporen in uw API's met behulp van de tracering van aanvragen
@@ -33,9 +33,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Leer de [terminologie van Azure API Management](api-management-terminology.md).
-+ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
++ Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Een aanroep traceren
 
@@ -49,10 +49,10 @@ In deze zelfstudie leert u het volgende:
 
    > [!NOTE]
    > * Als de Ocp-Apim-Subscription-Key niet automatisch wordt ingevuld, kunt u deze ophalen door naar het Ontwikkelaarsportal te gaan en de sleutels op de profielpagina weer te geven.
-   > * Als u een tracering wilt ophalen wanneer de APIM-traceer-HTTP-header wordt gebruikt, moet de instelling **tracering toestaan** voor de abonnements sleutel worden ingeschakeld. Als u de instelling **tracering toestaan** wilt configureren, selecteert u onder **API Management** in het linkermenu **abonnementen**.
-   >   ![Tracering toestaan in het deel venster abonnementen van API Management](media/api-management-howto-api-inspector/allowtracing.png)
+   > * Als u een trace wilt hebben wanneer de Ocp-Apim-Trace HTTP-header wordt gebruikt, moet de instelling **Traceren toestaan** voor de abonnementssleutel worden ingeschakeld. Als u de instelling **Traceren toestaan** wilt configureren, selecteert u in het linkermenu, onder **API Management**, de optie **Abonnementen**.
+   >   ![Tracering toestaan in het deelvenster Abonnementen van API Management](media/api-management-howto-api-inspector/allowtracing.png)
 
-6. Klik op **verzenden** om een API-aanroep te maken. 
+6. Klik op **Verzenden** om een API-aanroep te maken. 
 7. Wacht totdat de aanroep voltooid is. 
 8. Ga naar het tabblad **Traceren** in de **API-console**. U kunt klikken op een van de volgende koppelingen naar gedetailleerde traceringsinformatie: **inkomende**, **back-end**, **uitgaande**.
 

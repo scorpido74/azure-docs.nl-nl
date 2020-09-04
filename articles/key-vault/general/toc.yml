@@ -59,6 +59,9 @@
           href: security-baseline.md
         - name: Beveiligingsaanbevelingen voor Azure Key Vault
           href: security-recommendations.md
+        - name: Besturingselementen voor beveiliging van Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
     - name: Meldingen (preview)
       items:
         - name: Bewaken met Azure Event Grid (preview)
@@ -83,11 +86,15 @@
       items:
         - name: Verifiëren bij Key Vault
           href: authentication.md
-        - name: Een beheerde identiteit in App Service gebruiken
-          href: managed-identity.md
-        - name: Een toegangscontrolebeleid gebruiken
-          href: group-permissions-for-apps.md
-        - name: Op rollen gebaseerd toegangsbeheer van Azure gebruiken (preview)
+        - name: Een toegangsbeleid toewijzen
+          items:
+            - name: CLI
+              href: assign-access-policy-cli.md
+            - name: PowerShell
+              href: assign-access-policy-powershell.md
+            - name: Portal
+              href: assign-access-policy-portal.md
+        - name: 'Een Azure RBAC gebruiken om toegang tot sleutels, geheimen en certificaten te beheren (preview)'
           href: rbac-guide.md
         - name: Toegangsproblemen oplossen
           href: troubleshooting-access-issues.md

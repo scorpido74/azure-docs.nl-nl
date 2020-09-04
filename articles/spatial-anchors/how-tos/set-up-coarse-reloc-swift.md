@@ -1,6 +1,6 @@
 ---
-title: Grove Herlokalisatie in SWIFT
-description: Uitgebreide uitleg over het maken en vinden van ankers met ruwe Herlokalisatie in Swift.
+title: Coarse-relokalisatie in Swift
+description: Uitgebreide uitleg over het aanmaken en vinden van ankers met behulp van coarse-relokalisatie in Swift.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,32 +9,32 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76546160"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Ankers maken en vinden met ruwe Herlokalisatie in SWIFT
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Ankers maken en vinden met coarse-relokalisatie in Swift
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
-> * [Android java](set-up-coarse-reloc-java.md)
+> * [Android Java](set-up-coarse-reloc-java.md)
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Ruimtelijke ankers van Azure kunnen worden gekoppeld aan een apparaat, positionerings sensor gegevens met de ankers die u maakt. Deze gegevens kunnen ook worden gebruikt om snel te bepalen of er ankers zich in de buurt van uw apparaat bevinden. Zie [Grove relokalisatie](../concepts/coarse-reloc.md)voor meer informatie.
+Azure Spatial Anchors kunnen worden gekoppeld aan een apparaat, positioneringssensorgegevens met de ankers die u maakt. Deze gegevens kunnen ook worden gebruikt om snel te bepalen of er ankers zich in de buurt van uw apparaat bevinden. Zie [Coarse-relokalisatie](../concepts/coarse-reloc.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u over het volgende beschikt om deze hand leiding te volt ooien:
+Om deze zelfstudie te voltooien, moet u ervoor zorgen dat u:
 
-- Basis kennis van SWIFT.
-- Lees het [overzicht van ruimtelijke ankers in azure](../overview.md).
-- Een van de Quick starts van [5 minuten](../index.yml)is voltooid.
-- Lees de [instructies voor het maken en zoeken naar ankers](../create-locate-anchors-overview.md).
+- Basiskennis van Swift.
+- het [Overzicht Azure Spatial Anchors](../overview.md) hebt doorgelezen.
+- een van de [Quickstarts van 5 minuten](../index.yml) hebt voltooid.
+- Lees de [Instructies voor het maken en zoeken van ankers](../create-locate-anchors-overview.md).
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

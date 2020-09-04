@@ -1,5 +1,5 @@
 ---
-title: Een end-to-end-oplossing verbinden
+title: 'Zelfstudie: Een end-to-end-oplossing verbinden'
 titleSuffix: Azure Digital Twins
 description: Zelf studie voor het uitbouwen van een end-to-end Azure Digital Twins-oplossing op basis van apparaatgegevens.
 author: baanders
@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827316"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401772"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>Een end-to-end-oplossing bouwen
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>Zelfstudie: Een end-to-end-oplossing bouwen
 
 Om een volledige end-to-end oplossing op basis van live data uit uw omgeving op te zetten, kunt u uw Azure Digital Twins-instantie verbinden met andere Azure-services voor het beheer van apparaten en data.
 
 In deze zelfstudie gaat u...
-* Een Azure Digital Twins-instantie instellen
-* Het voorbeeldgebouwscenario leren kennen en de vooraf geschreven componenten instantiëren
-* Een [Azure Functions](../azure-functions/functions-overview.md)-app gebruiken om gesimuleerde telemetrie te routeren van een [IoT Hub](../iot-hub/about-iot-hub.md)-apparaat naar digitale-tweelingeigenschappen
-* Wijzigingen doorvoeren in de **tweelinggrafiek** door digitale-tweelingmeldingen te verwerken met Azure Functions, eindpunten en routes
+> [!div class="checklist"]
+> * Een Azure Digital Twins-instantie instellen
+> * Het voorbeeldgebouwscenario leren kennen en de vooraf geschreven componenten instantiëren
+> * Een [Azure Functions](../azure-functions/functions-overview.md)-app gebruiken om gesimuleerde telemetrie te routeren van een [IoT Hub](../iot-hub/about-iot-hub.md)-apparaat naar digitale-tweelingeigenschappen
+> * Wijzigingen doorvoeren in de **tweelinggrafiek** door digitale-tweelingmeldingen te verwerken met Azure Functions, eindpunten en routes
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -365,6 +366,8 @@ Sla de namen op die u aan uw gebeurtenisrasteronderwerp en uw Azure Digital Twin
 
 Maak vervolgens een Azure Digital Twins-route die gebeurtenissen verzendt naar het Azure Digital Twins-eindpunt dat u zojuist hebt gemaakt.
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 ```azurecli
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
@@ -433,7 +436,7 @@ Hier volgt een overzicht van het scenario dat u in deze zelfstudie hebt uitgebou
 
 Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen. 
 
-Met behulp van Azure Cloud Shell kunt u alle Azure-resources in een resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Hierdoor wordt de resourcegroep verwijderd; de Azure Digital Twins-instantie; de IoT-hub en de hubapparaatregistratie; het gebeurtenisrasteronderwerp en de bijbehorende abonnementen; en beide Azure Functions-app, inclusief bijbehorende resources zoals opslag.
+Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-resources in een resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Hierdoor wordt verwijderd: de resourcegroep, de Azure Digital Twins-instantie, de IoT-hub en de hubapparaatregistratie, het gebeurtenisrasteronderwerp en de bijbehorende abonnementen, en de Azure Functions-app, inclusief beide functies en bijbehorende resources zoals opslag.
 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
@@ -448,14 +451,13 @@ Verwijder vervolgens de Azure AD-app-registratie die u voor uw client-app hebt g
 az ad app delete --id <your-application-ID>
 ```
 
-Verwijder ten slotte de voorbeeldprojectmap die u hebt gedownload van uw lokale computer.
+Verwijder ten slotte de voorbeeldprojectmap die u hebt gedownload naar uw lokale computer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u een end-to-end scenario gemaakt dat laat zien hoe Azure Digital Twins wordt aangedreven door live apparaatgegevens.
 
 Ga vervolgens naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt:
-* [*Concepten: Aangepaste modellen*](concepts-models.md)
 
-Of ga dieper in op de processen in deze zelfstudie door de instructieartikelen te lezen:
-* [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*Concepten: Aangepaste modellen*](concepts-models.md)

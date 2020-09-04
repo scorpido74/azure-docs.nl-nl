@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een app voor het controleren van water kwaliteit maken met Azure IoT Central'
-description: 'Zelf studie: meer informatie over het maken van een toepassing voor het controleren van water kwaliteit met behulp van Azure IoT Central-toepassings sjablonen.'
+title: 'Zelfstudie: Een app voor het bewaken van de waterkwaliteit maken in Azure IoT Central'
+description: 'Zelfstudie: Lees hier hoe u met behulp van toepassingssjablonen van Azure IoT Central een app kunt maken om de waterkwaliteit te bewaken.'
 author: miriambrus
 ms.author: miriamb
 ms.date: 11/12/2019
@@ -9,251 +9,251 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82024469"
 ---
-# <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Zelf studie: een toepassing voor het controleren van water kwaliteit maken in azure IoT Central
+# <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Zelfstudie: Een toepassing voor het bewaken van de waterkwaliteit maken in Azure IoT Central
 
 
 
-In deze zelf studie wordt u begeleid bij het maken van een toepassing voor het controleren van water kwaliteit in azure IoT Central. U maakt de toepassing vanuit de sjabloon voor het controleren van de Azure IoT Central **water kwaliteit** -toepassing.
+In deze zelfstudie wordt uitgelegd hoe u in Azure IoT Central een toepassing maakt voor het bewaken van de waterkwaliteit. U maakt de toepassing met behulp van de toepassingssjabloon **Bewaking van waterkwaliteit** van Azure IoT Central.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Gebruik de **bewakings sjabloon water kwaliteit** om een toepassing voor het controleren van water kwaliteit te maken.
-> * Een operator dashboard verkennen en aanpassen.
-> * Een sjabloon voor bewaking van water kwaliteit verkennen.
-> * Verken gesimuleerde apparaten.
+> * De sjabloon **Bewaking van waterkwaliteit** gebruiken om een toepassing te maken voor het bewaken van de waterkwaliteit.
+> * Een dashboard voor gebruikers verkennen en aanpassen.
+> * Een apparaatsjabloon voor de bewaking van waterkwaliteit verkennen.
+> * Gesimuleerde apparaten verkennen.
 > * Regels verkennen en configureren.
 > * Taken configureren.
-> * De huis stijl van een toepassing aanpassen met behulp van wit labelen.
+> * De huisstijl van een toepassing aanpassen met behulp van whitelabeling.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We raden u aan een Azure-abonnement te hebben om deze zelf studie te volt ooien. Als u geen Azure-abonnement hebt, kunt u er een maken op de [Azure-aanmeldings pagina](https://aka.ms/createazuresubscription).
+Het is handig als u een Azure-abonnement hebt voordat u aan deze zelfstudie begint. Als u geen Azure-abonnement hebt, kunt u er een maken via de [Azure-registratiepagina](https://aka.ms/createazuresubscription).
 
-## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Een toepassing voor het controleren van water kwaliteit maken in azure IoT Central
+## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Een toepassing voor het bewaken van de waterkwaliteit maken in Azure IoT Central
 
-In deze sectie gebruikt u de bewakings sjabloon Azure IoT Central **water kwaliteit** om een toepassing voor water kwaliteit te maken.
+In dit gedeelte gebruikt u de sjabloon **Bewaking van waterkwaliteit** van Azure IoT Central om een toepassing te maken voor het bewaken van de waterkwaliteit.
 
-1. Ga naar de [Start pagina van Azure IOT Central](https://aka.ms/iotcentral).
+1. Ga naar de [startpagina van Azure IoT Central](https://aka.ms/iotcentral).
 
-    Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt voor toegang tot de app. Als dat niet het geval is, meldt u zich aan met een Microsoft-account:
+    Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt om toegang te krijgen tot dat abonnement. Meld u anders aan met een Microsoft-account:
 
-    ![Aanmelden bij uw organisatie account](./media/tutorial-waterqualitymonitoring/sign-in.png)
+    ![Aanmelden bij uw organisatieaccount](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-1. Selecteer **Build** in het meest linkse deel venster van Azure IOT Central en selecteer het tabblad **Government** . Het deel venster Government bevat verschillende sjablonen voor overheids toepassingen.
+1. Selecteer **Versie** aan de linkerkant van het venster van Azure IoT Central en selecteer het tabblad **Overheid**. Op het tabblad Overheid worden verschillende sjablonen voor overheidstoepassingen weergegeven.
 
-    ![Overheids toepassings sjablonen](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
+    ![Sjablonen voor overheidstoepassingen](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-1. Selecteer de toepassings sjabloon **water kwaliteit bewaken** . Deze toepassings sjabloon bevat een sjabloon voor water kwaliteit, gesimuleerde apparaten, een operator dashboard en vooraf geconfigureerde bewakings regels.
+1. Selecteer de toepassingssjabloon **Bewaking van waterkwaliteit**. Deze toepassingssjabloon bevat een sjabloon voor een apparaat voor het controleren van de waterkwaliteit, gesimuleerde apparaten, een dashboard voor gebruikers en vooraf geconfigureerde bewakingsregels.
 
-1. Selecteer **App maken**. Het deel venster **nieuwe toepassing** wordt geopend en toont de volgende elementen:
+1. Selecteer **App maken**. Het deelvenster **Nieuwe toepassing** wordt geopend met daarin de volgende elementen:
 
-    * **Toepassings naam**: de naam van de toepassing is standaard ingesteld op **water kwaliteit** , gevolgd door een unieke id-reeks die door Azure IOT Central wordt gegenereerd. Als u wilt, kunt u een weergave naam invoeren of de naam van de toepassing later wijzigen.
-    * **URL**: u kunt elke gewenste URL invoeren of de URL-waarde later wijzigen.
-    * Als u een Azure-abonnement hebt, voert u waarden in voor de **Directory**, het **Azure-abonnement**en de **regio**. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.
+    * **Toepassingsnaam**: De toepassing heeft standaard de naam **Bewaking van waterkwaliteit** gevolgd door een unieke id bestaande uit een tekenreeks die door Azure IoT Central wordt gegenereerd. Als u wilt, kunt u een weergavenaam invoeren of de naam van de toepassing later wijzigen.
+    * **URL**: U kunt elke gewenste URL invoeren of de URL-waarde later wijzigen.
+    * Als u een Azure-abonnement hebt, voert u waarden in voor **Map**, **Azure-abonnement** en **Locatie**. Als u geen abonnement hebt, kunt u een **gratis proefversie van zeven dagen** inschakelen en de vereiste contactgegevens invullen.
 
-    Zie de Snelstartgids [een toepassing maken](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) voor meer informatie over directory's en abonnementen.
+    Zie de quickstart [Create an Azure IoT Central application](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) (Een Azure IoT Central-toepassing maken) voor meer informatie over mappen en abonnementen.
 
-1. Selecteer de knop **maken** in het linkerbenedenhoek van de pagina.
+1. Selecteer linksonder op de pagina de knop **Maken**.
 
-    ![De Azure IoT Central-pagina Nieuw-toepassing](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+    ![De pagina Nieuwe toepassing in Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
-    ![De Azure IoT Central-facturerings gegevens voor nieuwe toepassingen](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
+    ![De pagina Factureringsgegevens in Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
-U hebt nu een toepassing voor water kwaliteit gemaakt met behulp van de sjabloon voor het controleren van de IoT Central **water kwaliteit** van Azure.
+U hebt nu een toepassing voor het bewaken van de waterkwaliteit gemaakt aan de hand van de sjabloon **Bewaking van waterkwaliteit** van Azure IoT Central.
 
 De nieuwe toepassing wordt geleverd met de volgende vooraf geconfigureerde onderdelen:
 
-* Operator dashboards
-* Bewakings sjablonen voor water kwaliteit
-* Bewakings apparaten voor gesimuleerde water kwaliteit
+* Dashboards voor gebruikers
+* Sjablonen voor apparaten voor de bewaking van de waterkwaliteit
+* Gesimuleerde apparaten voor de bewaking van de waterkwaliteit
 * Regels en taken
-* Huis stijl waarin gebruik wordt gemaakt van witte labels
+* Een huisstijl waarin whitelabeling wordt toegepast
 
 U kunt uw toepassing op elk gewenst moment wijzigen.
 
-Daarna kunt u de toepassing verkennen en enkele aanpassingen aanbrengen.
+We gaan nu de toepassing verkennen en enkele aanpassingen doorvoeren.
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Het operator dashboard verkennen en aanpassen
+## <a name="explore-and-customize-the-operator-dashboard"></a>Het dashboard voor gebruikers verkennen en aanpassen
 
-Nadat u de toepassing hebt gemaakt, wordt het deel venster **dash board voor hoogwaardige water kwaliteit** geopend.
+Nadat u de toepassing hebt gemaakt, wordt het venster **Wide World water quality dashboard** geopend.
 
-   ![Het dash board controle van water kwaliteit](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
+   ![Het dashboard voor het bewaken van de waterkwaliteit](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
 
-Als ontwerper kunt u weer gaven op het dash board maken en aanpassen voor gebruik door Opera tors. Maar voordat u wilt aanpassen, moet u eerst het dash board verkennen.
+Als ontwikkelaar kunt u in het dashboard weergaven maken en aanpassen voor de gebruikers van de toepassing. We gaan het dashboard echter eerst nader bekijken voordat u het gaat aanpassen.
 
-Alle gegevens die in het dash board worden weer gegeven, zijn gebaseerd op gesimuleerde apparaatgegevens, die in de volgende sectie worden besproken.
+Alle gegevens die in het dashboard worden weergegeven, zijn gebaseerd op gegevens van gesimuleerde apparaten. Dit komt in de volgende sectie aan de orde.
 
-Het dash board bevat de volgende soorten tegels:
+Het dashboard bevat de volgende soorten tegels:
 
-* **Tegel**: de eerste tegel in de linkerbovenhoek van het dash board is een afbeelding waarin het fictieve hulp programma met de naam Wide World wordt weer gegeven. U kunt de tegel aanpassen om uw eigen installatie kopie te gebruiken, of u kunt de tegel verwijderen.
+* **Tegel met afbeelding van Wide World Water Utility**: De eerste tegel in de linkerbovenhoek van het dashboard is een afbeelding waarin het fictieve nutsbedrijf met de naam Wide World wordt weergegeven. U kunt de tegel aanpassen met uw eigen afbeelding en u kunt de tegel ook verwijderen.
 
-* **Gemiddelde pH KPI-tegels**: KPI-tegels zoals **gemiddeld pH in de afgelopen 30 minuten** bevinden zich bovenaan het deel venster dash board. U kunt KPI-tegels aanpassen en deze instellen op een ander type en tijds bereik.
+* **Tegels met gemiddelden**: Bovenaan het dashboard staan KPI-tegels zoals **Gemiddelde pH, afgelopen 30 minuten**. U kunt de KPI-tegels aanpassen en elke tegel instellen op een ander type en ander tijdsbereik.
 
-* **Zone kaart water bewaking**: Azure IoT Central gebruikt Azure Maps, die u rechtstreeks in uw toepassing kunt instellen om de locatie van het apparaat weer te geven. U kunt ook locatie gegevens van uw toepassing toewijzen aan uw apparaat en vervolgens Azure Maps gebruiken om de gegevens op een kaart weer te geven. Beweeg de muis aanwijzer over de kaart en probeer de besturings elementen.
+* **Kaart van gebied voor bewaking van waterkwaliteit**: Azure IoT Central maakt gebruik van Azure Maps en u kunt rechtstreeks in uw toepassing instellen dat de locatie van het apparaat moet worden weergegeven. U kunt ook locatiegegevens vanuit uw toepassing toewijzen aan uw apparaat en vervolgens Azure Maps gebruiken om de gegevens op een kaart weer te geven. Beweeg de muisaanwijzer over de kaart en probeer de besturingselementen uit.
 
-* **Gemiddeld heatmap voor de pH-verdeling**: u kunt verschillende visualisatie diagrammen selecteren om de telemetrie van apparaten weer te geven op de manier die het meest geschikt is voor uw toepassing.
+* **Heatmap van gemiddelde pH-verdeling**: U kunt verschillende visualisatiediagrammen selecteren om telemetrie van apparaten weer te geven op de manier die het meest geschikt is voor uw toepassing.
 
-* **Lijn diagram van kritieke kwaliteits indicatoren**: u kunt de telemetrie van apparaten visualiseren als een lijn diagram gedurende een tijds bereik.  
+* **Lijndiagram met kritieke kwaliteitsindicatoren**: U kunt de telemetrie van apparaten visualiseren als een lijndiagram voor een bepaald tijdsbereik.  
 
-* **Staaf diagram voor de concentratie van chemische agents**: u kunt de telemetrie van apparaten visualiseren in een staaf diagram.
+* **Staafdiagram met de concentratie chemische stoffen**: U kunt de telemetrie van apparaten visualiseren in een staafdiagram.
 
-* **Actie knop**: het dash board bevat een tegel voor acties die een operator rechtstreeks vanuit het bewakings dashboard kan initiëren. Het opnieuw instellen van de eigenschappen van een apparaat is een voor beeld van dergelijke acties.
+* **Actieknop**: Het dashboard bevat een tegel voor acties die een gebruiker rechtstreeks vanuit het bewakingsdashboard kan initiëren. Het opnieuw instellen van de eigenschappen van een apparaat is een voorbeeld van een dergelijke actie.
 
-* **Tegels van eigenschappen lijst**: het dash board heeft meerdere eigenschappen tegels die drempel gegevens, informatie over Apparaatstatus en onderhouds informatie vertegenwoordigen.
+* **Tegels met eigenschappenlijsten**: Het dashboard bevat verschillende tegels met eigenschappen die drempelwaarden vertegenwoordigen, evenals statusinformatie voor apparaten en onderhoudsinformatie.
 
 ### <a name="customize-the-dashboard"></a>Het dashboard aanpassen
 
-Als bouwer kunt u weer gaven op het dash board aanpassen voor gebruik door Opera tors.
+Als ontwikkelaar kunt u weergaven van het dashboard aanpassen voor de gebruikers van de toepassing.
 
-1. Selecteer **bewerken** om het deel venster **dash board voor grote water kwaliteit** aan te passen. U kunt het dash board aanpassen door opdrachten te selecteren in het menu **bewerken** . Wanneer het dash board zich in de bewerkings modus bevindt, kunt u nieuwe tegels toevoegen of kunt u de bestaande bestanden configureren.
+1. Selecteer **Bewerken** om het deelvenster **Wide World water quality dashboard** aan te passen. U kunt het dashboard aanpassen door opdrachten te selecteren in het menu **Bewerken**. Zodra het dashboard in de bewerkingsmodus wordt weergegeven, kunt u nieuwe tegels toevoegen of de bestaande tegels aanpassen.
 
-    ![Uw dash board bewerken](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
+    ![Het dashboard bewerken](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
 
-1. Selecteer **+ Nieuw** om een nieuw dash board te maken dat u kunt configureren. U kunt meerdere Dash boards hebben en hiertussen scha kelen vanuit het menu dash board.
+1. Selecteer **+ Nieuw** om een nieuw dashboard te maken en dit te configureren. U kunt meerdere dashboards hebben en u kunt navigeren tussen dashboards via het dashboardmenu.
 
-## <a name="explore-a-water-quality-monitoring-device-template"></a>Een sjabloon voor het bewakings apparaat voor water kwaliteit verkennen
+## <a name="explore-a-water-quality-monitoring-device-template"></a>Een apparaatsjabloon voor de bewaking van waterkwaliteit verkennen
 
-Met een apparaatprofiel in azure IoT Central worden de mogelijkheden van een apparaat gedefinieerd. Beschik bare mogelijkheden zijn telemetrie, eigenschappen en opdrachten. Als ontwerper kunt u Device-sjablonen definiëren in azure IoT Central die de mogelijkheden van de verbonden apparaten vertegenwoordigen. U kunt ook gesimuleerde apparaten maken om de sjabloon en toepassing van uw apparaat te testen.
+Een apparaatsjabloon in Azure IoT Central definieert de mogelijkheden van een apparaat. Beschikbare mogelijkheden zijn telemetrie, eigenschappen en opdrachten. Als ontwikkelaar kunt u in Azure IoT Central apparaatsjablonen definiëren die de mogelijkheden vertegenwoordigen van de verbonden apparaten. U kunt ook gesimuleerde apparaten maken om uw apparaatsjabloon en toepassing te testen.
 
-De toepassing voor het controleren van water kwaliteit die u hebt gemaakt, wordt geleverd met een sjabloon voor bewaking van water kwaliteit.
+De toepassing voor de bewaking van de waterkwaliteit die u hebt gemaakt, bevat een apparaatsjabloon voor het bewaken van de waterkwaliteit.
 
-De sjabloon voor het apparaat weer geven:
+De apparaatsjabloon weergeven:
 
-1. Selecteer **Apparaatbeheer** in het linkerdeel venster van uw toepassing in azure IOT Central.
-1. Selecteer in de lijst met Apparaatinstellingen **water kwaliteit monitor**. De Device-sjabloon wordt geopend.
+1. Selecteer **Apparaatsjablonen** in het linkerdeelvenster van uw toepassing in Azure IoT Central.
+1. Selecteer **Water Quality Monitor** in de lijst met apparaatsjablonen. De apparaatsjabloon wordt geopend.
 
-    ![De sjabloon voor het apparaat](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
+    ![De apparaatsjabloon](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
-### <a name="customize-the-device-template"></a>De sjabloon voor het apparaat aanpassen
+### <a name="customize-the-device-template"></a>Het apparaatsjabloon aanpassen
 
-De volgende instellingen voor de apparaatinstellingen aanpassen:
+Oefen door de volgende instellingen voor de apparaatsjabloon aan te passen:
 
-1. Selecteer in het menu Apparaatbeheer de optie **aanpassen**.
-1. Ga naar het type **temperatuur** telemetrie.
-1. Wijzig de **weergave naam** waarde in **gemelde Tempe ratuur**.
-1. Wijzig de maat eenheid of stel de **minimum waarde** en de **maximum waarde**in.
+1. Selecteer **Aanpassen** in het menu van de apparaatsjabloon.
+1. Ga naar het telemetrietype **Temperature**.
+1. Wijzig de waarde van **Weergavenaam** in **Reported temperature**.
+1. U kunt ook de maateenheid wijzigen of de waarden voor **Minimumwaarde** en **Maximumwaarde** instellen.
 1. Selecteer **Opslaan**.
 
-#### <a name="add-a-cloud-property"></a>Een Cloud eigenschap toevoegen
+#### <a name="add-a-cloud-property"></a>Een cloudeigenschap toevoegen
 
-1. Selecteer in het menu Apparaatbeheer de optie **Cloud eigenschap**.
-1. Selecteer **+ eigenschap Cloud toevoegen**om een nieuwe Cloud eigenschap toe te voegen. In azure IoT Central kunt u een eigenschap toevoegen die relevant is voor een apparaat, maar die niet naar verwachting door het apparaat wordt verzonden. Een voor beeld van een dergelijke eigenschap is een waarschuwings drempel die specifiek is voor een installatie gebied, activa-informatie of onderhouds informatie.
+1. Selecteer **Cloudeigenschap** in het menu van de apparaatsjabloon.
+1. Als u een nieuwe cloudeigenschap wilt toevoegen, selecteert u **+ Cloudeigenschap toevoegen**. In Azure IoT Central kunt u een eigenschap toevoegen die relevant is voor een apparaat, maar die naar verwachting niet door het apparaat zal worden verzonden. Een voorbeeld van een dergelijke eigenschap is een waarschuwingsdrempel die specifiek is voor een installatiegebied, gegevens van een asset of onderhoudsinformatie.
 1. Selecteer **Opslaan**.
 
-### <a name="explore-views"></a>Weer gaven verkennen
+### <a name="explore-views"></a>Weergaven verkennen
 
-De sjabloon voor bewaking van water kwaliteit wordt geleverd met vooraf gedefinieerde weer gaven. De weer gaven bepalen hoe Opera tors de gegevens van het apparaat zien en Cloud eigenschappen instellen. Bekijk de weer gaven en voer wijzigingen door te voeren.
+De apparaatsjabloon voor het bewaken van de waterkwaliteit bevat vooraf gedefinieerde weergaven. De weergaven bepalen hoe gebruikers de gegevens van het apparaat zien, maar ook hoe ze cloudeigenschappen kunnen instellen. Bekijk de weergaven en oefen door wat wijzigingen aan te brengen.
 
-  ![Sjabloon weergaven voor apparaten](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
+  ![Weergave van apparaatsjabloon](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
 
-### <a name="publish-the-device-template"></a>De sjabloon voor het apparaat publiceren
+### <a name="publish-the-device-template"></a>De apparaatsjabloon publiceren
 
-Als u wijzigingen aanbrengt, selecteert u **publiceren** om de sjabloon te publiceren.
+Als u wijzigingen hebt aangebracht, vergeet dan niet om **Publiceren** te selecteren om de gewijzigde apparaatsjabloon te publiceren.
 
 ### <a name="create-a-new-device-template"></a>Een nieuwe apparaatsjabloon maken
 
-1. Selecteer **+ Nieuw** om een nieuwe sjabloon voor het apparaat te maken en volg het aanmaak proces.
-1. Maak een aangepaste apparaatprofiel of kies een sjabloon in de Azure IoT-apparaatinstantie.
+1. Selecteer **+ Nieuw** en volg het proces voor het maken van een nieuwe apparaatsjabloon.
+1. Maak een aangepaste apparaatsjabloon of kies een apparaatsjabloon uit de apparaatcatalogus van Azure IoT Central.
 
 ## <a name="explore-simulated-devices"></a>Gesimuleerde apparaten verkennen
 
-De toepassing voor het controleren van water kwaliteit die u hebt gemaakt op basis van de toepassings sjabloon heeft twee gesimuleerde apparaten. Deze apparaten zijn gekoppeld aan de sjabloon voor bewaking van water kwaliteit.
+De toepassing voor het bewaken van de waterkwaliteit die u hebt gemaakt op basis van de toepassingssjabloon bevat twee gesimuleerde apparaten. Deze apparaten zijn gekoppeld aan de apparaatsjabloon voor de bewaking van de waterkwaliteit.
 
-### <a name="view-the-devices"></a>De apparaten weer geven
+### <a name="view-the-devices"></a>De apparaten weergeven
 
-1. Selecteer **apparaten** in het meest linkse deel venster van uw toepassing.
+1. Selecteer **Apparaten** in het meest linkse deelvenster van uw toepassing.
 
    ![Apparaten](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
 
 1. Selecteer één gesimuleerd apparaat.
 
-    ![Apparaat 1 selecteren](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
+    ![Eén apparaat selecteren](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-1. Wijzig op het tabblad **Cloud eigenschappen** de drempel waarde voor **zuren (pH)** van **8** in **9**.
-1. Verken het tabblad **Apparaateigenschappen** en het tabblad **dash board** voor het apparaat.
+1. Wijzig op het tabblad **Cloudeigenschappen** de waarde voor **Acidity (pH) threshold** van **8** in **9**.
+1. Verken het tabblad **Apparaateigenschappen** en het tabblad **Apparaatdashboard**.
 
 > [!NOTE]
-> Alle tabbladen zijn geconfigureerd in de **weer gaven**van de apparaatinstellingen.
+> Alle tabbladen zijn geconfigureerd vanuit **apparaatsjabloonweergaven**.
 
 ### <a name="add-new-devices"></a>Nieuwe apparaten toevoegen
 
-Selecteer op het tabblad **apparaten** **+ Nieuw** om een nieuw apparaat toe te voegen.
+Selecteer **+ Nieuw** op het tabblad **Apparaten** om een nieuw apparaat toe te voegen.
 
 ## <a name="explore-and-configure-rules"></a>Regels verkennen en configureren
 
-In azure IoT Central kunt u regels maken die de telemetrie van apparaten automatisch bewaken. Deze regels activeren een actie wanneer aan een van de voor waarden wordt voldaan. Een mogelijke actie is het verzenden van e-mail meldingen. Andere mogelijkheden zijn onder andere een Microsoft Flow actie of een webhook-actie voor het verzenden van gegevens naar andere services.
+In Azure IoT Central kunt u regels maken om de telemetrie van apparaten automatisch te bewaken. Deze regels activeren een actie wanneer aan een van de voorwaarden wordt voldaan. Een voorbeeld van een actie is het verzenden van meldingen per e-mail. Andere mogelijkheden zijn een Microsoft Flow-actie of een webhookactie om gegevens naar andere services te verzenden.
 
-De toepassing voor het controleren van water kwaliteit die u hebt gemaakt heeft twee vooraf geconfigureerde regels.
+De toepassing voor het bewaken van de waterkwaliteit die u hebt gemaakt, heeft twee vooraf geconfigureerde regels.
 
-### <a name="view-rules"></a>Regels weer geven
+### <a name="view-rules"></a>Regels weergeven
 
-1. Selecteer **regels** in het meest linkse deel venster van uw toepassing.
+1. Selecteer **Regels** in het meest linkse deelvenster van uw toepassing.
 
    ![Regels](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
 
-1. Selecteer **hoge pH-waarschuwing**. Dit is een van de vooraf geconfigureerde regels in de toepassing.
+1. Selecteer **High pH alert**, een van de vooraf geconfigureerde regels in de toepassing.
 
-   ![De hoge pH-waarschuwings regel](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
+   ![De regel voor hoge pH](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
 
-   De **hoge pH-waarschuwings** regel is geconfigureerd om te controleren of de zuur voorwaarde (pH) groter is dan 8.
+   De regel **High pH alert** is geconfigureerd om te controleren of de zuurgraad (pH) hoger is dan 8.
 
-Voeg vervolgens een e-mail actie toe aan de regel:
+Voeg vervolgens een e-mailactie toe aan de regel:
 
-1. Selecteer **+ e-mail adres**.
-1. Voer in het vak **weergave naam** **hoge pH-waarschuwing**in.
-1. Voer in het vak **aan** het e-mail adres in dat is gekoppeld aan uw Azure IOT Central-account.
-1. Voer eventueel een opmerking in die u wilt toevoegen in de tekst van het e-mail bericht.
-1. Selecteer **gereed** om de actie te volt ooien.
+1. Selecteer **+ E-mailadres**.
+1. Voer in het vak **Weergavenaam** **High pH alert** in.
+1. Voer in het vak **Tot** het e-mailadres in dat is gekoppeld aan uw account van IoT Central.
+1. Voer eventueel een opmerking in die u wilt opnemen in de tekst van het e-mailbericht.
+1. Selecteer **Gereed** om de actie te voltooien.
 1. Selecteer **Opslaan** om de nieuwe regel op te slaan en te activeren.
 
-Binnen een paar minuten ontvangt u een e-mail wanneer aan de geconfigureerde voor waarde is voldaan.
+Binnen een paar minuten ontvangt u een e-mailbericht als aan de geconfigureerde voorwaarde is voldaan.
 
 > [!NOTE]
-> De toepassing verzendt een e-mail bericht telkens wanneer aan een voor waarde wordt voldaan. Selecteer **uitschakelen** voor een regel om te stoppen met het ontvangen van automatische e-mail van deze regel.
+> Telkens wanneer er aan een voorwaarde wordt voldaan, verzendt de toepassing een e-mail. Selecteer **Uitschakelen** voor een regel om geen automatische e-mails meer te ontvangen voor die regel.
   
-Als u een nieuwe regel wilt maken, selecteert u **regels** in het meest linkse deel venster van uw toepassing en selecteert u **+ Nieuw**.
+Als u een nieuwe regel wilt maken, selecteert u **Regels** in het meest linkse deelvenster van uw toepassing en selecteert u vervolgens **+ Nieuw**.
 
 ## <a name="configure-jobs"></a>Taken configureren
 
-Met Azure IoT Central Jobs kunt u updates voor apparaat-of Cloud eigenschappen op meerdere apparaten activeren. U kunt ook taken gebruiken om opdrachten op meerdere apparaten te activeren. De werk stroom wordt door Azure IoT Central geautomatiseerd.
+In Azure IoT Central kunt u met behulp van taken updates van apparaat- of cloudeigenschappen activeren op meerdere apparaten tegelijk. U kunt taken ook gebruiken om apparaatopdrachten op meerdere apparaten te activeren. Azure IoT Central zorgt ervoor dat deze werkstroom voor u wordt geautomatiseerd.
 
-1. Selecteer **taken** in het meest linkse deel venster van uw toepassing.
+1. Selecteer **Taken** in het meest linkse deelvenster van uw toepassing.
 1. Selecteer **+ Nieuw** en configureer een of meer taken.
 
 ## <a name="customize-your-application"></a>Uw toepassing aanpassen
 
-Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervaring in uw toepassing aan te passen.
+Als ontwikkelaar kunt u verschillende instellingen wijzigen om de gebruikerservaring in uw toepassing aan te passen.
 
-1. Selecteer **beheer** > **uw toepassing aanpassen**.
-1. Onder **toepassings logo**selecteert u **wijzigen** om de afbeelding te kiezen die u als logo wilt uploaden.
-1. Selecteer onder **browser pictogram** **wijzigen** om de afbeelding te kiezen die wordt weer gegeven op de tabbladen van de browser.
-1. Onder **browser kleuren**kunt u de standaard waarden vervangen door hexadecimale HTML-kleur codes.
-1. Selecteer **instellingen** om de waarde van het **thema**te wijzigen.
+1. Selecteer **Beheer** > **Uw toepassing aanpassen**.
+1. Selecteer **Wijzigen** onder **Impressumlogo** om de afbeelding te kiezen die u als het logo wilt uploaden.
+1. Selecteer **Wijzigen** onder **Browserpictogram** om de afbeelding te kiezen die wordt weergegeven op browsertabbladen.
+1. Onder de **Browserkleuren** kunt u de standaardwaarden vervangen door hexadecimale HTML-kleurcodes.
+1. Selecteer **Instellingen** om de waarde van **Thema**te wijzigen.
 
    ![Uw toepassing aanpassen](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
-### <a name="update-the-application-image"></a>De installatie kopie van de toepassing bijwerken
+### <a name="update-the-application-image"></a>De afbeelding voor de toepassing bijwerken
 
-1. Selecteer instellingen voor de **beheer** > **toepassing**.
+1. Selecteer **Beheer** > **Uw toepassing**.
 
-1. Gebruik de knop **afbeelding selecteren** om een afbeelding te kiezen die u als de installatie kopie van de toepassing wilt uploaden.
+1. Gebruik de knop **Afbeelding selecteren** om een afbeelding te kiezen die u wilt uploaden als de toepassingsafbeelding.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u uw toepassing niet wilt blijven gebruiken, verwijdert u de toepassing met de volgende stappen:
+Als u deze toepassing verder niet gaat gebruiken, verwijdert u de toepassing via de volgende stappen:
 
-1. Open het tabblad **beheer** in het meest linkse deel venster van uw toepassing.
-1. Selecteer **Toepassings instellingen** en selecteer de knop **verwijderen** .
+1. Open het tabblad **Beheer** in het meest linkse deelvenster van uw toepassing.
+1. Selecteer **Uw toepassing** en selecteer de knop **Verwijderen** onderaan de pagina.
 
     ![Uw toepassing verwijderen](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [concepten voor water kwaliteit](./concepts-waterqualitymonitoring-architecture.md).
+* Lees meer over de [concepten voor de bewaking van de waterkwaliteit](./concepts-waterqualitymonitoring-architecture.md).

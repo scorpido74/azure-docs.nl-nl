@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593373"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Zelfstudie: Een toepassing bijwerken in AKS (Azure Kubernetes Service)
 
 Nadat een toepassing is geïmplementeerd in Kubernetes, kunt u deze bijwerken door een nieuwe containerinstallatiekopie of versie van de installatiekopie op te geven. De update wordt gefaseerd, zodat telkens maar een deel van de implementatie wordt bijgewerkt. Dankzij deze gefaseerde update kan de toepassing tijdens de update worden uitgevoerd. Het biedt ook een terugdraaimechanisme als er een implementatiefout optreedt.
 
-In deze zelfstudie, deel zes van zeven, wordt de voorbeeldapp Azure Vote bijgewerkt. Procedures voor:
+In deze zelfstudie, deel zes van zeven, wordt de voorbeeldapp Azure Vote bijgewerkt. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * De code van de front-endtoepassing bijwerken
@@ -30,7 +30,7 @@ In eerdere zelfstudies is een toepassing verpakt in een containerinstallatiekopi
 
 Er is ook een toepassingsopslagplaats gekloond die de broncode van de toepassing bevat en een vooraf gemaakt Docker Compose-bestand dat in deze zelfstudie wordt gebruikt. Controleer of u een kloon van de opslagplaats hebt gemaakt en of u mappen in de gekloonde map hebt gewijzigd. Als u deze stappen niet hebt voltooid en deze zelfstudie wilt volgen, gaat u eerst naar [Zelfstudie 1: Containerinstallatiekopieën maken][aks-tutorial-prepare-app].
 
-Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="update-an-application"></a>Een toepassing bijwerken
 
@@ -85,7 +85,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 Gebruik nu [docker push][docker-push] om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de ACR-aanmeldingsserver.
 
 > [!NOTE]
-> Als u problemen ondervindt met het pushen van uw ACR-REGI ster, moet u ervoor zorgen dat u nog steeds bent aangemeld. Voer de opdracht [AZ ACR login][az-acr-login] uit met behulp van de naam van uw Azure container Registry die u hebt gemaakt in de stap [een Azure container Registry maken](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Bijvoorbeeld `az acr login --name <azure container registry name>`.
+> Als u problemen ondervindt met pushen naar het ACR-register, controleert u of u nog bent aangemeld. Voer de opdracht [az acr login][az-acr-login] uit door de naam van de Azure Container Registry te gebruiken die u in stap [Een Azure Container Registry maken](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) hebt gemaakt. Bijvoorbeeld `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

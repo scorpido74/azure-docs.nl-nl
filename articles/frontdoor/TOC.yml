@@ -1,11 +1,9 @@
-- name: Documentatie voor Azure Front Door
+- name: Documentatie voor Front Door
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is Azure Front Door?
       href: front-door-overview.md
-    - name: Wat is er nieuw in Azure Front Door?
-      href: front-door-whats-new.md
 - name: Snelstartgidsen
   expanded: true
   items:

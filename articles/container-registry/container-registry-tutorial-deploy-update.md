@@ -1,17 +1,17 @@
 ---
-title: Zelf studie-push-update naar geo-gerepliceerd REGI ster
-description: Push een bijgewerkte docker-installatie kopie naar uw Geo-gerepliceerd Azure container Registry en bekijk vervolgens de wijzigingen die automatisch zijn geïmplementeerd op Web-apps die in meerdere regio's worden uitgevoerd. Deel drie van een serie van drie.
+title: Zelfstudie- Een update van een register met geo-replicatie pushen
+description: Push een bijgewerkte Docker-installatiekopie naar uw Azure-containerregister met geo-replicatie. Vervolgens worden de wijzigingen automatisch geïmplementeerd in web-apps die in meerdere regio's worden uitgevoerd. Deel drie van een serie van drie.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74454687"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Zelf studie: een bijgewerkte container installatie kopie pushen naar een geo-gerepliceerd container register voor regionale web-app-implementaties
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Zelfstudie: een bijgewerkte containerinstallatiekopie naar een containerregister met geo-replicatie voor regionale web-app-implementaties pushen
 
 Dit is deel drie van een serie met drie zelfstudies. In de [vorige zelfstudie](container-registry-tutorial-deploy-app.md) is geo-replicatie geconfigureerd voor twee verschillende regionale web-app-implementaties. In deze zelfstudie past u eerst de app aan, maakt u daarna een nieuwe containerinstallatiekopie en pusht u deze vervolgens naar het geo-gerepliceerde register. Ten slotte kunt u deze wijziging, die automatisch wordt geïmplementeerd door Azure Container Registry-webhooks, in beide web-app-instanties weergeven.
 

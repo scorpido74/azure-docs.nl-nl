@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-een in-Store Analytics-toepassing maken in azure IoT Central
-description: In deze zelf studie ziet u hoe u een retail-toepassing in-Store Analytics maakt in IoT Central. U maakt deze en past deze toe en voegt sensor apparaten toe.
+title: 'Zelfstudie: een in-store analytics-toepassing maken in Azure IoT Central'
+description: In deze zelfstudie leert u hoe u een in-store analytics-toepassing voor de detailhandel maakt in IoT Central. U maakt de toepassing, past deze aan en voegt sensorapparaten toe.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -12,68 +12,68 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81000250"
 ---
-# <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
+# <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelfstudie: een in-store analytics-toepassing maken in Azure IoT Central
 
 
 
-In de zelf studie worden oplossingen bouwers weer gegeven voor het maken van een Azure IoT Central in de Store Analytics-toepassing. De voorbeeld toepassing is voor een Retail Store. Het is een oplossing voor de gemeen schappelijke bedrijfs behoefte om bezetting en omgevings omstandigheden te bewaken en aan te passen.
+In de zelfstudie leren bouwers van oplossingen hoe ze een in-store analytics-toepassing kunnen maken in Azure IoT Central. De voorbeeldtoepassing is voor een winkel. Het is een oplossing voor de algemene bedrijfsbehoefte van het bewaken van en het inspelen op aanwezigheids- en omgevingsomstandigheden.
 
-De voorbeeld toepassing die u bouwt, omvat drie echte apparaten: een Rigado Cascade 500-gateway en twee RuuviTag Sens oren. In de zelf studie ziet u ook hoe u de gesimuleerde bezetting sensor gebruikt die in de toepassings sjabloon is opgenomen voor test doeleinden. De Rigado C500-gateway fungeert als de communicatie hub in uw toepassing. De service communiceert met Sens oren in uw winkel en beheert de verbindingen met de Cloud. De RuuviTag is een omgevings sensor die telemetrie biedt, waaronder de Tempe ratuur, vochtigheid en druk. De gesimuleerde bezettings sensor biedt een manier om beweging en aanwezigheid bij te houden in de afhandelings gebieden van een Store. 
+De voorbeeldtoepassing die u bouwt, maakt gebruik van drie echte apparaten: een Rigado Cascade 500-gateway en twee RuuviTag-sensoren. In de zelfstudie ziet u ook hoe u de gesimuleerde aanwezigheidssensor die is opgenomen in de toepassingssjabloon gebruikt voor testdoeleinden. De Rigado C500-gateway fungeert als de communicatiehub in uw toepassing. De gateway communiceert met sensoren in uw winkel en beheert de verbindingen van de sensoren met de cloud. De RuuviTag is een omgevingssensor die telemetrie biedt, waaronder temperatuur, luchtvochtigheid en druk. De gesimuleerde aanwezigheidssensor biedt een manier om beweging en aanwezigheid te traceren in de kassagebieden van een winkel. 
 
-Deze zelf studie bevat instructies voor het verbinden van de Rigado-en RuuviTag-apparaten met uw toepassing. Als u een andere gateway en Sens oren hebt, kunt u nog steeds de stappen volgen om uw toepassing te bouwen. In de zelf studie ziet u ook hoe u gesimuleerde RuuviTag Sens oren maakt. Met de gesimuleerde Sens oren kunt u de toepassing bouwen als u geen echte apparaten hebt. 
+Deze zelfstudie bevat instructies voor het verbinden van de Rigado-gateway en RuuviTag-sensoren met uw toepassing. Als u een andere gateway en sensoren hebt, kunt u nog steeds de stappen volgen om uw toepassing te bouwen. In de zelfstudie ziet u ook hoe u gesimuleerde RuuviTag-sensoren maakt. Met de gesimuleerde sensoren kunt u de toepassing toch bouwen als u niet over echte apparaten beschikt. 
 
-In drie delen kunt u de oplossing voor het afhandelings-en voorwaarde bewakings systeem ontwikkelen:
+Het ontwikkelen van de oplossing voor het bewaken van de kassagebieden en omgeving bestaat uit drie delen:
 
-* De toepassing maken en apparaten verbinden om voor waarden te controleren
-* Het dash board aanpassen zodat Opera tors apparaten kunnen bewaken en beheren
-* Gegevens export configureren om winkel managers in staat te stellen analyses uit te voeren en inzichten te visualiseren
+* De toepassing maken en apparaten verbinden om omstandigheden te controleren
+* Het dashboard aanpassen zodat gebruikers apparaten kunnen bewaken en beheren
+* Gegevensexport configureren om winkelmanagers in staat te stellen analyses uit te voeren en inzichten te visualiseren
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * De Azure IoT Central **in-Store-analyse** sjabloon gebruiken om een Retail Store-toepassing te maken
-> * De toepassings instellingen aanpassen
-> * IoT-Device-sjablonen maken en aanpassen
+> * De sjabloon **In-Store Analytics: betaling** van Azure IoT Central gebruiken om een toepassing voor een winkel te maken
+> * De toepassingsinstellingen aanpassen
+> * IoT-apparaatsjablonen maken en aanpassen
 > * Apparaten verbinden met uw toepassing
-> * Regels en acties toevoegen om voor waarden te controleren
+> * Regels en acties toevoegen om omstandigheden te controleren
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze reeks zelf studies hebt u het volgende nodig:
-* U wordt aangeraden een Azure-abonnement te nemen. U kunt eventueel een gratis proef versie van 7 dagen gebruiken. Als u geen Azure-abonnement hebt, kunt u er een maken op de [Azure-aanmeldings pagina](https://aka.ms/createazuresubscription).
-* Toegang tot een gateway apparaat en twee omgevings sensors (u kunt eventueel gesimuleerde apparaten gebruiken zoals beschreven in de zelf studie)
-* Device-sjablonen voor de apparaten die u gebruikt (er worden sjablonen gegeven voor alle apparaten die in de zelf studie worden gebruikt)
+Voor het voltooien van deze zelfstudiereeks hebt u het volgende nodig:
+* Een Azure-abonnement wordt aanbevolen. U kunt eventueel een gratis proefversie van zeven dagen gebruiken. Als u geen Azure-abonnement hebt, kunt u er een maken via de [Azure-registratiepagina](https://aka.ms/createazuresubscription).
+* Toegang tot een gatewayapparaat en twee omgevingssensoren (u kunt eventueel gesimuleerde apparaten gebruiken zoals wordt beschreven in de zelfstudie)
+* Apparaatsjablonen voor de apparaten die u gebruikt (er zijn sjablonen beschikbaar voor alle apparaten die in de zelfstudie worden gebruikt)
 
 ## <a name="create-an-application"></a>Een app maken
-In deze sectie maakt u een nieuwe Azure IoT Central-toepassing op basis van een sjabloon. U gebruikt deze toepassing in de reeks zelf studies om een volledige oplossing te bouwen.
+In deze sectie maakt u een nieuwe Azure IoT Central-toepassing op basis van een sjabloon. U gebruikt deze toepassing in de rest van de zelfstudiereeks om een volledige oplossing te ontwikkelen.
 
 Een nieuwe Azure IoT Central-toepassing maken:
 
-1. Ga naar de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) .
+1. Navigeer naar de website [Azure IoT Central-toepassingsbeheer](https://aka.ms/iotcentral).
 
-1. Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt om het te openen. u kunt zich ook aanmelden met een Microsoft-account:
+1. Als u een Azure-abonnement hebt, meldt u zich aan met de referenties van dit abonnement. U kunt zich ook aanmelden met een Microsoft-account:
 
     ![Voer uw organisatieaccount in](./media/tutorial-in-store-analytics-create-app/sign-in.png)
 
 1. Als u wilt beginnen met het maken van een nieuwe Azure IoT Central-toepassing, selecteert u **Nieuwe toepassing**.
 
-1. Selecteer **detail handel**.  Op de pagina Retail worden verschillende sjablonen voor de retail toepassing weer gegeven.
+1. Selecteer **Detailhandel**.  De detailhandelspagina toont verschillende toepassingssjablonen voor detailhandels.
 
-Een nieuwe toepassing voor de afhandeling van in-Store-analyses maken:  
+Een nieuwe in-store analytics-toepassing voor afrekenen maken:  
 
-1. Selecteer de toepassings sjabloon **in de Store Analytics-uitchecken** . Deze sjabloon bevat sjablonen voor alle apparaten die in de zelf studie worden gebruikt, met uitzonde ring van RuuviTag Sens oren. De sjabloon biedt ook een operator dashboard voor het controleren van de afhandelings-en omgevings voorwaarden en de Apparaatstatus. 
+1. Selecteer de toepassingssjabloon **In-Store Analytics: betaling**. Deze sjabloon bevat apparaatsjablonen voor alle apparaten die in de zelfstudie worden gebruikt, behalve voor de RuuviTag-sensoren. De sjabloon biedt ook een gebruikersdashboard voor het bewaken van de afreken- en omgevingsomstandigheden, en de apparaatstatus. 
 
-1. U kunt desgewenst een beschrijvende **toepassings naam**kiezen. Deze toepassing is gebaseerd op een fictieve Retail Store met de naam contoso. In deze zelf studie wordt de naam van de **toepassing** *Contoso uitgecheckt*. De toepassings sjabloon is gebaseerd op het fictieve bedrijf North Wind. In deze zelf studie gebruikt u contoso voor meer informatie over het aanpassen van de toepassing.
+1. Kies desgewenst een beschrijvende **Toepassingsnaam**. Deze toepassing is gebaseerd op een fictieve winkel met de naam Contoso. In de zelfstudie wordt *Contoso checkout* gebruikt als de **toepassingsnaam**. De toepassingssjabloon is gebaseerd op het fictieve bedrijf Northwind. In deze zelfstudie gebruikt u Contoso om te leren hoe u de toepassing aanpast.
 
     > [!NOTE]
-    > Als u een beschrijvende **toepassings naam**gebruikt, moet u nog steeds een unieke waarde voor de **URL**van de toepassing gebruiken.
+    > Als u een beschrijvende **toepassingsnaam** gebruikt, moet u nog steeds een unieke waarde gebruiken voor **URL**.
 
-1. Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
+1. Als u een Azure-abonnement hebt, voert u uw *map, Azure-abonnement en locatie* in. Als u geen abonnement hebt, kunt u een **gratis proefversie van zeven dagen** inschakelen en de vereiste contactgegevens invullen.  
 
     Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
@@ -81,211 +81,211 @@ Een nieuwe toepassing voor de afhandeling van in-Store-analyses maken:
 
     ![Pagina Toepassing maken van Azure IoT Central](./media/tutorial-in-store-analytics-create-app/preview-application-template.png)
 
-    ![Facturerings gegevens van de toepassing Azure IoT Central maken](./media/tutorial-in-store-analytics-create-app/preview-application-template-billinginfo.png)
+    ![Factureringsgegevens voor maken van toepassing in Azure IoT Central](./media/tutorial-in-store-analytics-create-app/preview-application-template-billinginfo.png)
 
-## <a name="customize-application-settings"></a>Toepassings instellingen aanpassen
+## <a name="customize-application-settings"></a>Toepassingsinstellingen aanpassen
 
-Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervaring in uw toepassing aan te passen. In deze sectie selecteert u een vooraf gedefinieerd toepassings thema. U leert ook hoe u een aangepast thema maakt en hoe u de installatie kopie van de toepassing bijwerkt. Met een aangepast thema kunt u de kleuren van de toepassings browser, het browser pictogram en het toepassings logo dat wordt weer gegeven in het Impressum instellen.
+Als ontwikkelaar kunt u verschillende instellingen wijzigen om de gebruikerservaring in uw toepassing aan te passen. In dit gedeelte selecteert u een vooraf gedefinieerd toepassingsthema. U leert ook hoe u een aangepast thema maakt en hoe u de afbeelding van de toepassing bijwerkt. Met een aangepast thema kunt u de kleuren van de toepassingsbrowser instellen, evenals het browserpictogram en het toepassingslogo die worden weergegeven in het impressum.
 
-Een vooraf gedefinieerd toepassings thema selecteren:
+Een vooraf gedefinieerd toepassingsthema selecteren:
 
-1. Selecteer **instellingen** in het Impressum.
+1. Selecteer **Instellingen** in het impressum.
 
-    ![Toepassings instellingen van Azure IoT Central](./media/tutorial-in-store-analytics-create-app/settings-icon.png)
+    ![Instellingen voor IoT Central-toepassing](./media/tutorial-in-store-analytics-create-app/settings-icon.png)
 
-2. Selecteer een nieuw **thema**.
+2. Selecteer een nieuw thema in de vervolgkeuzelijst **Thema**.
 
 3. Selecteer **Opslaan**.
 
-In plaats van een vooraf gedefinieerd thema te gebruiken, kunt u een aangepast thema maken. Als u een aantal voorbeeld afbeeldingen wilt gebruiken om de toepassing aan te passen en de zelf studie te volt ooien, downloadt u de voor [beeld-installatie kopieën van Contoso](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail).
+In plaats van een vooraf gedefinieerd thema te gebruiken, kunt u ook een aangepast thema maken. Als u een aantal voorbeeldafbeeldingen wilt gebruiken om de toepassing aan te passen en de zelfstudie te volt ooien, downloadt u de [Contoso-voorbeeldafbeeldingen](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail).
 
 Een aangepast thema maken:
 
-1. Vouw het linkerdeel venster uit als dat nog niet is gebeurd.
+1. Vouw het linkerdeelvenster uit als dat nog niet is gebeurd.
 
-    ![Linkerdeel venster van Azure IoT Central](./media/tutorial-in-store-analytics-create-app/dashboard-expand.png)
+    ![Linkerdeelvenster van Azure IoT Central](./media/tutorial-in-store-analytics-create-app/dashboard-expand.png)
 
-1. Selecteer **beheer > uw toepassing**aan te passen.
+1. Selecteer **Beheer > Uw toepassing aanpassen**.
 
-1. Gebruik de knop **wijzigen** om een afbeelding te kiezen die u wilt uploaden als het **toepassings logo**. Geef eventueel een waarde op voor de **ALT-tekst**van het logo. 
+1. Gebruik de knop **Wijzigen** om een afbeelding te kiezen die u wilt uploaden als het **impressumlogo**. Geef desgewenst een waarde op voor **Alternatieve tekst van logo**. 
 
-1. Gebruik de knop **wijzigen** om een **browser pictogram** afbeelding te kiezen die wordt weer gegeven op de tabbladen van de browser.
+1. Gebruik de knop **Wijzigen** om een afbeelding voor het **browserpictogram** te kiezen dat op de tabbladen van de browser wordt weergegeven.
 
-1. U kunt eventueel de standaard **browser kleuren** vervangen door HTML-hexadecimale kleur codes toe te voegen. Voeg *#008575*toe voor de **koptekst**.  Voeg *#A1F3EA*toe voor het **accent**. 
+1. U kunt de **browserkleuren** eventueel vervangen door hexadecimale HTML-kleurcodes toe te voegen. Typ in het vak **Header** de waarde *#008575*.  Typ in het vak **Accent** de waarde *#A1F3EA*. 
 
 1. Selecteer **Opslaan**. 
 
-    ![Logo van Azure IoT Central aangepast](./media/tutorial-in-store-analytics-create-app/select-application-logo.png)
+    ![Aangepast logo van Azure IoT Central](./media/tutorial-in-store-analytics-create-app/select-application-logo.png)
 
-    Nadat u de app hebt opgeslagen, worden de browser kleuren, het logo in het Impressum en het browser pictogram bijgewerkt. 
+    Als u de wijzigingen hebt opgeslagen, worden de browserkleuren, het logo in het impressum en het browserpictogram bijgewerkt. 
 
-    ![Toepassings instellingen van Azure IoT Central bijgewerkt](./media/tutorial-in-store-analytics-create-app/saved-application-settings.png)
+    ![Bijgewerkte instellingen voor IoT Central-toepassing](./media/tutorial-in-store-analytics-create-app/saved-application-settings.png)
 
-De installatie kopie van de toepassing bijwerken:
+De afbeelding voor de toepassing bijwerken:
 
-1. Selecteer **beheer > toepassings instellingen**.
+1. Selecteer **Beheer > Toepassingsinstellingen**.
 
-1. Gebruik de knop **afbeelding selecteren** om een afbeelding te kiezen die u als de installatie kopie van de toepassing wilt uploaden. Deze afbeelding wordt weer gegeven op de tegel toepassing op de pagina **mijn apps** van de IOT Central toepassings beheer.
+1. Gebruik de knop **Afbeelding selecteren** om een afbeelding te kiezen die u wilt uploaden als de toepassingsafbeelding. Deze afbeelding wordt weergegeven op de tegel van de toepassing op de pagina **Mijn apps** van de beheersite van IoT Central.
 
 1. Selecteer **Opslaan**.
 
-1. Ga eventueel naar de weer gave **mijn apps** op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) . Op de tegel toepassing wordt de bijgewerkte installatie kopie van de toepassing weer gegeven.
+1. Ga eventueel naar de pagina **Mijn apps** van de [beheersite van IoT Central](https://aka.ms/iotcentral). Op de tegel van de toepassing wordt de bijgewerkte afbeelding van de toepassing weergegeven.
 
-    ![Installatie kopie van de toepassing Azure IoT Central aanpassen](./media/tutorial-in-store-analytics-create-app/customize-application-image.png)
+    ![Afbeelding van toepassing aanpassen in Azure IoT Central](./media/tutorial-in-store-analytics-create-app/customize-application-image.png)
 
-## <a name="create-device-templates"></a>Device-sjablonen maken
-Als ontwerper kunt u sjablonen voor apparaten maken waarmee u en de toepassings operators apparaten kunnen configureren en beheren. Als u een sjabloon maakt door een aangepaste sjabloon te maken, kunt u een sjabloon bestand importeren of door in de Azure IoT-apparaatprofiel een-sjablonen te importeren. Nadat u een sjabloon hebt gemaakt en aangepast, kunt u deze gebruiken om echte apparaten te verbinden met uw toepassing. Gebruik eventueel een apparaatprofiel om gesimuleerde apparaten te genereren voor het testen.
+## <a name="create-device-templates"></a>Apparaatsjablonen maken
+Als ontwerper kunt u apparaatsjablonen maken waarmee u en de gebruikers van de toepassing apparaten kunnen configureren en beheren. U kunt een sjabloon maken door een aangepaste sjabloon te maken, een bestaand sjabloonbestand importeren of door een sjabloon te importeren uit de apparaatcatalogus van Azure IoT. Nadat u een apparaatsjabloon hebt gemaakt en aangepast, kunt u deze gebruiken om echte apparaten te verbinden met uw toepassing. U kunt een apparaatsjabloon ook gebruiken om gesimuleerde apparaten te genereren voor testdoeleinden.
 
-De toepassings sjabloon **in de Store analyse-uitchecken** bevat Device-sjablonen voor verschillende apparaten.  Er zijn sjablonen voor twee van de drie apparaten die u in de toepassing gebruikt. Het RuuviTag is niet opgenomen in de toepassings sjabloon **in-Store Analytics-Checker** . In deze sectie voegt u een sjabloon voor RuuviTag Sens oren toe aan uw toepassing.
+De toepassingssjabloon **In-Store Analytics: betaling** bevat apparaatsjablonen voor verschillende apparaten.  Er zijn apparaatsjablonen voor twee van de drie apparaten die u in de toepassing gebruikt. De apparaatsjabloon voor de RuuviTag-sensoren is niet opgenomen in de toepassingssjabloon **In-Store Analytics: betaling**. In dit gedeelte voegt u een apparaatsjabloon voor de RuuviTag-sensoren toe aan uw toepassing.
 
-Een sjabloon voor RuuviTag-apparaten toevoegen aan uw toepassing:
+Een sjabloon voor RuuviTag-apparaten toevoegen aan de toepassing:
 
-1. Selecteer **Apparaatbeheer** in het linkerdeel venster.
+1. Selecteer **Apparaatsjablonen** in het linkerdeelvenster.
 
-1. Selecteer **+ Nieuw** om een nieuwe sjabloon voor het apparaat te maken.
+1. Selecteer **+ Nieuw** om een nieuwe apparaatsjabloon te maken.
 
-1. Zoek en selecteer de sjabloon **RuuviTag** sensor device in de Azure IOT-apparaatprofiel. 
+1. Zoek en selecteer de apparaatsjabloon voor de **RuuviTag**-sensor in de apparaatcatalogus van Azure IoT. 
 
-1. Selecteer **volgende: aanpassen**.
+1. Selecteer **Volgende: Aanpassen**.
 
-    ![Sjabloon voor Azure IoT Central-sensor RuuviTag](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![Sjabloon van Azure IoT Central voor RuuviTag-sensor](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
-1. Selecteer **Maken**. De toepassing voegt de RuuviTag-apparaatprofiel toe.
+1. Selecteer **Maken**. De toepassing voegt de RuuviTag-apparaatsjabloon toe.
 
-1. Selecteer **Apparaatbeheer** in het linkerdeel venster. De pagina bevat alle device-sjablonen die zijn opgenomen in de toepassings sjabloon en de RuuviTag die u zojuist hebt toegevoegd.
+1. Selecteer **Apparaatsjablonen** in het linkerdeelvenster. De pagina bevat alle apparaatsjablonen die in de toepassingssjabloon zijn opgenomen, plus de RuuviTag-apparaatsjabloon die u zojuist hebt toegevoegd.
 
-    ![Sjabloon voor Azure IoT Central-sensor RuuviTag](./media/tutorial-in-store-analytics-create-app/device-templates-list.png)
+    ![Apparaatsjabloon van Azure IoT Central voor RuuviTag-sensor](./media/tutorial-in-store-analytics-create-app/device-templates-list.png)
 
-## <a name="customize-device-templates"></a>Apparaatinstellingen aanpassen
-U kunt op drie manieren de sjablonen voor apparaten in uw toepassing aanpassen. Eerst past u de ingebouwde interface van het systeem aan op uw apparaten door de mogelijkheden van het apparaat te wijzigen. Met een temperatuur sensor kunt u bijvoorbeeld details wijzigen, zoals de weergave naam van de temperatuur interface, het gegevens type, de maat eenheden en de minimale en maximale hoeveelheid werk reeksen. 
+## <a name="customize-device-templates"></a>Apparaatsjablonen aanpassen
+U kunt de apparaatsjablonen in uw toepassing op drie manieren aanpassen. Zo kunt u de ingebouwde interfaces van apparaten aanpassen door de mogelijkheden van het apparaat te wijzigen. In het geval van een temperatuursensor kunt u bijvoorbeeld gegevens wijzigen zoals de weergavenaam van de temperatuurinterface, het gegevenstype, de maateenheden. en de minimale en maximale werkingsbereiken. 
 
-Ten tweede kunt u uw Apparaatinstellingen aanpassen door Cloud eigenschappen toe te voegen. Cloud eigenschappen maken geen deel uit van de ingebouwde mogelijkheden van het apparaat. Cloud eigenschappen zijn aangepaste gegevens die door uw Azure IoT Central-toepassing worden gemaakt, opgeslagen en gekoppeld aan uw apparaten. Een voor beeld van een Cloud eigenschap kan een berekende waarde zijn, of meta gegevens zoals een locatie die u wilt koppelen aan een set apparaten. 
+Een andere manier is het aanpassen van uw apparaatsjablonen door cloudeigenschappen toe te voegen. Cloudeigenschappen maken geen deel uit van de ingebouwde mogelijkheden van een apparaat. Cloudeigenschappen zijn aangepaste gegevens die door uw Azure IoT Central-toepassing worden gemaakt, opgeslagen en gekoppeld aan uw apparaten. Een voorbeeld van een cloudeigenschap is een berekende waarde of metagegevens zoals een locatie die u wilt koppelen aan een set apparaten. 
 
-Ten derde kunt u ook de apparaatinstellingen aanpassen door aangepaste weer gaven te maken. Weer gaven bieden Opera tors voor het visualiseren van telemetriegegevens en meta gegevens voor uw apparaten, zoals metrische gegevens over apparaten en status.
+De derde en laatste manier is het aanpassen van apparaatsjablonen door aangepaste weergaven te maken. Weergaven zijn een hulpmiddel voor gebruikers om telemetrie en metagegevens voor uw apparaten te visualiseren, zoals metrische gegevens van apparaten en hun status.
 
-Hier kunt u de eerste twee methoden gebruiken om de Device-sjabloon voor uw RuuviTag-Sens oren aan te passen. Meer informatie over het maken van weer gaven voor uw Sens oren vindt [u in de Snelstartgids een gesimuleerd apparaat toevoegen aan de IOT Central-toepassing](../core/quick-create-simulated-device.md) .
+Hier gaat u de eerste twee methoden gebruiken om de apparaatsjabloon voor de RuuviTag-sensoren aan te passen. Informatie over het maken van weergaven voor uw sensoren vindt u in de zelfstudie [Add a simulated device to your IoT Central application](../core/quick-create-simulated-device.md) (Een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing).
 
-De ingebouwde interfaces van de sjabloon voor het RuuviTag-apparaat aanpassen:
+De ingebouwde interfaces van de sjabloon voor RuuviTag-apparaten aanpassen:
 
-1. Selecteer **Apparaatbeheer** in het linkerdeel venster. 
+1. Selecteer **Apparaatsjablonen** in het linkerdeelvenster. 
 
-1. Selecteer de sjabloon voor RuuviTag Sens oren. 
+1. Selecteer de sjabloon voor RuuviTag-sensoren. 
 
-1. Verberg het linkerdeel venster. In de weer gave samen vatting van de sjabloon worden de mogelijkheden van het apparaat weer gegeven.
+1. Verberg het linkernavigatiegedeelte. Hier ziet u een samenvatting van de sjabloon met de kenmerken van het apparaat.
 
-    ![Weer gave samen vatting van Azure IoT Central RuuviTag-Apparaatbeheer](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-summary-view.png)
+    ![Samenvatting van apparaatsjabloon van Azure IoT Central voor RuuviTag-sensoren](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-summary-view.png)
 
-1. Selecteer **aanpassen** in het menu van de RuuviTag. 
+1. Selecteer **Aanpassen** in het menu van de sjabloon voor RuuviTag-apparaten. 
 
-1. Schuif in de lijst met mogelijkheden en zoek het `humidity` type telemetrie. Het is het rij-item met de Bewerk bare **weergave naam** waarde *vochtigheids graad*.
+1. Scrol in de lijst met mogelijkheden en zoek het type telemetrie `humidity` . Dit is het rij-item met de bewerkbare **weergavenaam** *humidity*.
 
-In de volgende stappen past u het `humidity` type telemetrie voor de RuuviTag Sens oren aan. Desgewenst kunt u enkele van de andere telemetrie-typen aanpassen.
+In de volgende stappen past u het type telemetrie `humidity` voor de RuuviTag-sensoren aan. Desgewenst kunt u ook enkele van de andere telemetrietypen aanpassen.
 
-Voor het `humidity` type telemetrie brengt u de volgende wijzigingen aan:
+Breng de volgende wijzigingen aan voor het type telemetrie `humidity`:
 
-1. Selecteer het besturings element **uitvouwen** om de schema Details voor de rij uit te vouwen.
+1. Selecteer het besturingselement **Uitvouwen** om de schemadetails voor de rij uit te vouwen.
 
-1. Werk de **weergave naam** waarde bij van *vochtigheid* in een aangepaste waarde, zoals *relatieve vochtigheid*.
+1. Wijzig de **weergavenaam** van *humidity* in een aangepaste waarde, zoals *Relative humidity*.
 
-1. Wijzig de optie **semantisch type** van *geen* in *vochtigheid*.  Stel eventueel schema waarden in voor het type telemetrie van de vochtigheid in de uitgevouwen schema weergave. Met schema-instellingen kunt u gedetailleerde validatie vereisten maken voor de gegevens die uw Sens oren volgen. U kunt bijvoorbeeld minimum-en maximum waarden voor het besturings bereik instellen voor een bepaalde interface.
+1. Wijzig de waarde voor **Semantisch type** van *Geen* in *Humidity*.  Stel eventueel schemawaarden in voor het type telemetrie Humidity in de uitgevouwen schemaweergave. Met behulp van schema-instellingen kunt u gedetailleerde validatievereisten definiëren voor de gegevens die door de sensoren worden gemeten. U kunt bijvoorbeeld minimum- en maximumwaarden instellen voor het werkingsbereik voor een bepaalde interface.
 
 1. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
-    ![Aanpassing van Azure IoT Central RuuviTag-Apparaatbeheer](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![Aanpassing van apparaatsjabloon van Azure IoT Central voor RuuviTag-sensoren](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
-Een Cloud eigenschap toevoegen aan een sjabloon voor een apparaat in uw toepassing:
+Een cloudeigenschap toevoegen aan een apparaatsjabloon in uw toepassing:
 
-1. Selecteer **Cloud eigenschappen** in het menu van de RuuviTag.
+1. Selecteer **Cloudeigenschappen** in het menu van de sjabloon voor RuuviTag-apparaten.
 
-1. Selecteer **Cloud eigenschap toevoegen**. 
+1. Selecteer **Een cloudeigenschap toevoegen**. 
 
 Geef de volgende waarden op om een aangepaste eigenschap te maken voor het opslaan van de locatie van elk apparaat:
 
-1. Voer de *locatie* van de waarde in voor de **weergave naam**. Deze waarde wordt automatisch gekopieerd naar het veld **naam** , een beschrijvende naam voor de eigenschap. U kunt de gekopieerde waarde gebruiken of wijzigen.
+1. Voer de waarde *Location* in voor **Weergavenaam**. Deze waarde wordt automatisch gekopieerd naar het veld **Naam** en vormt een beschrijvende naam voor de eigenschap. U kunt de gekopieerde waarde gebruiken of deze wijzigen.
 
-1. Selecteer *teken reeks* in de vervolg keuzelijst **schema** . Met een teken reeks type kunt u een locatie naam reeks koppelen aan elk apparaat op basis van de sjabloon. U kunt bijvoorbeeld een gebied in een archief koppelen aan elk apparaat. Desgewenst kunt u het **semantische type** van uw eigenschap instellen op *locatie*en wordt het **schema** automatisch ingesteld op *geopunt*. U kunt GPS-coördinaten koppelen aan een apparaat. 
+1. Selecteer *String* in de vervolgkeuzelijst **Schema**. Met dit type kunt u een locatienaam koppelen aan elk apparaat op basis van de sjabloon. U kunt zo bijvoorbeeld een gebied in een winkel koppelen aan elk apparaat. U kunt desgewenst de waarde voor **Semantisch type** van de eigenschap instellen op *Location*. Hierdoor **schema** automatisch ingesteld op *Geopoint*. U kunt dan GPS-coördinaten koppelen aan een apparaat. 
 
-1. Stel de **minimum lengte** in op *2*. 
+1. Stel **Minimumlengte** in op *2*. 
 
-1. Stel **spaties** in **op aan**.
+1. Stel **Spaties knippen** in op **Aan**.
 
-1. Selecteer **Opslaan** om uw aangepaste Cloud eigenschap op te slaan.
+1. Selecteer **Opslaan** om de aangepaste cloudeigenschap op te slaan.
 
-    ![Aanpassing van Azure IoT Central RuuviTag-Apparaatbeheer](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-cloud-property.png)
+    ![Aanpassing van apparaatsjabloon van Azure IoT Central voor RuuviTag-sensoren](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-cloud-property.png)
 
-1. Selecteer **publiceren**. 
+1. Selecteer **Publiceren**. 
 
-    Als u een apparaataccount publiceert, wordt het zichtbaar voor toepassings operators. Nadat u een sjabloon hebt gepubliceerd, kunt u deze gebruiken om gesimuleerde apparaten te genereren voor het testen of om echte apparaten te verbinden met uw toepassing. Als er al apparaten zijn verbonden met uw toepassing, wordt door het publiceren van een aangepaste sjabloon de wijzigingen naar de apparaten gepusht.
+    Als u een apparaatsjabloon publiceert, wordt deze zichtbaar voor gebruikers van de toepassing. Nadat u een sjabloon hebt gepubliceerd, kunt u deze gebruiken om gesimuleerde apparaten te genereren voor testdoeleinden of om echte apparaten te verbinden met uw toepassing. Als er al apparaten zijn verbonden met uw toepassing, heeft het publiceren van een aangepaste sjabloon tot gevolg dat de wijzigingen naar de apparaten worden gepusht.
 
 ## <a name="add-devices"></a>Apparaten toevoegen
-Nadat u-sjablonen voor apparaten hebt gemaakt en aangepast, is het tijd om apparaten toe te voegen. 
+Nadat u apparaatsjablonen hebt gemaakt en aangepast, is het tijd om apparaten toe te voegen. 
 
-Voor deze zelf studie gebruikt u de volgende set echte en gesimuleerde apparaten om de toepassing te bouwen:
+Voor deze zelfstudie gebruikt u de volgende set echte en gesimuleerde apparaten om de toepassing te bouwen:
 - Een echte Rigado C500-gateway
-- Twee echte RuuviTag Sens oren
-- Een gesimuleerde **bezetting** sensor. De gesimuleerde sensor is opgenomen in de toepassings sjabloon, dus u hoeft deze niet te maken. 
+- Twee echte RuuviTag-sensoren
+- Een gesimuleerde aanwezigheidssensor (**Occupancy**). De gesimuleerde sensor is opgenomen in de toepassingssjabloon, dus u hoeft die niet te maken. 
 
 > [!NOTE]
-> Als u geen echte apparaten hebt, kunt u deze zelf studie nog steeds volt ooien door gesimuleerde RuuviTag Sens oren te maken. De volgende instructies bevatten stappen voor het maken van een gesimuleerde RuuviTag. U hoeft geen gesimuleerde gateway te maken.
+> Als u geen echte apparaten hebt, kunt u deze zelfstudie voltooien door gesimuleerde RuuviTag-sensoren te maken. De volgende instructies bevatten stappen voor het maken van een gesimuleerde RuuviTag. U hoeft geen gesimuleerde gateway te maken.
 
-Volg de stappen in de volgende twee artikelen om een echte Rigado-gateway en RuuviTag Sens oren te verbinden. Wanneer u klaar bent, keert u terug naar deze zelf studie. Omdat u al Device-sjablonen in deze zelf studie hebt gemaakt, hoeft u deze niet opnieuw te maken in de volgende reeks richtingen.
+Volg de stappen in de volgende twee artikelen om een echte Rigado-gateway en echte RuuviTag-sensoren te verbinden. Als u daarmee klaar bent, keert u terug naar deze zelfstudie. Omdat u al apparaatsjablonen hebt gemaakt in deze zelfstudie, hoeft u deze niet opnieuw te maken in de volgende reeks instructies.
 
-- Zie [verbinding maken met een Rigado Cascade 500 met uw Azure IOT Central-toepassing](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met een Rigado-gateway.
-- Zie [een RuuviTag-sensor verbinden met uw Azure IOT Central-toepassing](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met RuuviTag Sens oren. U kunt deze instructies ook gebruiken om twee gesimuleerde Sens oren te maken, indien nodig.
+- Als u een Rigado-gateway wilt verbinden, raadpleegt u [Connect a Rigado Cascade 500 gateway device to your Azure IoT Central application](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) (Een Rigado Cascade 500-gateway verbinden met uw Azure IoT Central-toepassing).
+- Als u een RuuviTag-sensoren wilt verbinden, raadpleegt u [Connect a RuuviTag sensor to your Azure IoT Central application](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) (Een RuuviTag-sensor verbinden met uw Azure IoT Central-toepassing). U kunt deze instructies ook gebruiken om twee gesimuleerde sensoren te maken, indien nodig.
 
 ## <a name="add-rules-and-actions"></a>Regels en acties toevoegen
-Als onderdeel van het gebruik van Sens oren in uw Azure IoT Central-toepassing om voor waarden te bewaken, kunt u regels maken voor het uitvoeren van acties wanneer aan bepaalde voor waarden wordt voldaan. Een regel is gekoppeld aan een apparaatprofiel en een of meer apparaten en bevat voor waarden waaraan moet worden voldaan op basis van telemetrie van apparaten of gebeurtenissen. Een regel heeft ook een of meer gekoppelde acties. De acties omvatten mogelijk het verzenden van e-mail meldingen of het activeren van een webhook-actie voor het verzenden van gegevens naar andere services. De toepassings sjabloon **in de Store analyse-uitchecken** bevat enkele vooraf gedefinieerde regels voor de apparaten in de toepassing.
+Als onderdeel van het gebruik van sensoren in uw Azure IoT Central-toepassing om omstandigheden te bewaken, kunt u regels maken om acties uit te voeren wanneer aan bepaalde voorwaarden wordt voldaan. Een regel wordt gekoppeld aan een apparaatsjabloon en een of meer apparaten en bevat voorwaarden waaraan moet worden voldaan op basis van telemetrie van apparaten of gebeurtenissen. Een regel heeft ook een of meer gekoppelde acties. Voorbeelden van acties zijn het verzenden van meldingen per e-mail en het activeren van een webhookactie voor het verzenden van gegevens naar andere services. De toepassingssjabloon **In-Store Analytics: betaling** bevat enkele vooraf gedefinieerde regels voor de apparaten in de toepassing.
 
-In deze sectie maakt u een nieuwe regel waarmee het maximale relatieve vochtigheids niveau wordt gecontroleerd op basis van de telemetrie van de RuuviTag-sensor. U voegt een actie toe aan de regel, zodat de toepassing een e-mail verzendt als de vochtigheid het maximum overschrijdt. 
+In dit gedeelte maakt u een nieuwe regel waarmee het maximale relatieve luchtvochtigheidsniveau wordt gecontroleerd op basis van de telemetrie van de RuuviTag-sensor. U voegt een actie toe aan de regel, zodat bij overschrijding van de limiet een e-mail wordt verzonden door de toepassing. 
 
 Een regel maken: 
 
-1. Vouw het linkerdeel venster uit.
+1. Vouw het linkerdeelvenster uit.
 
-1. Selecteer **regels**.
+1. Selecteer **Regels**.
 
 1. Selecteer **+ Nieuw**.
 
-1. Voer *vochtigheids niveau* in als de naam van de regel. 
+1. Voer *Humidity level* in als de naam van de regel. 
 
-1. Kies het RuuviTag in **scopes**. De regel die u definieert, wordt toegepast op alle Sens oren op basis van die sjabloon. U kunt eventueel een filter maken waarmee de regel wordt toegepast op een gedefinieerde subset van de Sens oren. 
+1. Kies de sjabloon voor RuuviTag-sensoren bij **Apparaatsjabloon**. De regel die u definieert, wordt toegepast op alle sensoren die zijn gebaseerd op die sjabloon. U kunt eventueel ook een filter maken waarmee de regel alleen wordt toegepast op een gedefinieerde subset van de sensoren. 
 
-1. Kies `Relative humidity` als **telemetrie**. Het is de mogelijkheid van het apparaat dat u in een vorige stap hebt aangepast.
+1. Kies `Relative humidity` bij **Telemetrie**. Dit is de apparaatmogelijkheid die u in een vorige stap hebt aangepast.
 
-1. Kies `Is greater than` als de **operator**. 
+1. Kies `Is greater than` bij **Operator**. 
 
-1. Voer een typische lucht vochtigheid in voor uw omgeving als **waarde**. Voer bijvoorbeeld *65*in. U hebt een voor waarde ingesteld voor de regel die zich voordoet wanneer de relatieve vochtigheid in een RuuviTag echte of gesimuleerde sensor deze waarde overschrijdt. Mogelijk moet u de waarde naar boven of beneden aanpassen, afhankelijk van het normale vochtigheids bereik in uw omgeving.  
+1. Voer bij **Waarde** een bovenlimiet in voor het luchtvochtigheidsniveau voor uw omgeving. Geef bijvoorbeeld *65* op. U hebt een voorwaarde ingesteld voor de regel die zich voordoet wanneer de relatieve vochtigheid in een echte of gesimuleerde RuuviTag-sensor deze waarde overschrijdt. Mogelijk moet u de waarde naar boven of beneden bijstellen, afhankelijk van het normale luchtvochtigheidsbereik in uw omgeving.  
 
-   ![Regel voorwaarden voor Azure IoT Central toevoegen](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
+   ![Regelvoorwaarden toevoegen in Azure IoT Central](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
 
 Een actie toevoegen aan de regel:
 
-1. Selecteer **+ e-mail adres**. 
+1. Selecteer **+ E-mailadres**. 
 
-1. Voer de *melding hoge lucht vochtigheid* in als de beschrijvende **weergave naam** voor de actie. 
+1. Voer *High humidity notification* in voor **Weergavenaam**. 
 
-1. Voer het e-mail adres in dat is gekoppeld aan uw account in **tot**. Als u een andere e-mail gebruikt, moet het adres dat u gebruikt, zijn voor een gebruiker die aan de toepassing is toegevoegd. De gebruiker moet zich ook ten minste één keer aanmelden en uitschrijven.
+1. Voer in **Tot** het e-mailadres in dat is gekoppeld aan uw account. Als u een ander e-mailadres gebruikt, moet het adres zijn gekoppeld aan een gebruiker die aan de toepassing is toegevoegd. De gebruiker moet zich ook ten minste één keer aan- en afmelden.
 
-1. Voer eventueel een opmerking in die u wilt toevoegen in de tekst van het e-mail bericht.
+1. Voer eventueel een opmerking in die u als bericht wilt toevoegen aan het e-mailbericht.
 
-1. Selecteer **gereed** om de actie te volt ooien.
+1. Selecteer **Gereed** om de actie te voltooien.
 
-   ![Azure IoT Central acties toevoegen aan regels](./media/tutorial-in-store-analytics-create-app/rules-add-action.png)
+   ![Acties toevoegen aan regels in Azure IoT Central](./media/tutorial-in-store-analytics-create-app/rules-add-action.png)
 
 1. Selecteer **Opslaan** om de nieuwe regel op te slaan en te activeren. 
 
-    Binnen een paar minuten moet het opgegeven e-mail account beginnen met het ontvangen van e-mails. De toepassing verzendt een e-mail telkens wanneer een sensor aangeeft dat het vochtigheids niveau groter is dan de waarde in uw voor waarde.
+    Binnen een paar minuten moet het opgegeven e-mailaccount e-mails gaan ontvangen. De toepassing verstuurt een e-mail telkens wanneer een sensor aangeeft dat het vochtigheidsniveau hoger is dan de waarde in uw voorwaarde.
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie heeft u het volgende geleerd:
 
-* De Azure IoT Central **in-Store-analyse** sjabloon gebruiken om een Retail Store-toepassing te maken
-* De toepassings instellingen aanpassen
-* IoT-Device-sjablonen maken en aanpassen
+* De sjabloon **In-Store Analytics: betaling** van Azure IoT Central gebruiken om een toepassing voor een winkel te maken
+* De toepassingsinstellingen aanpassen
+* IoT-apparaatsjablonen maken en aanpassen
 * Apparaten verbinden met uw toepassing
-* Regels en acties toevoegen om voor waarden te controleren
+* Regels en acties toevoegen om omstandigheden te controleren
 
-Nu u een Azure IoT Central condition-bewakings toepassing hebt gemaakt, is dit de voorgestelde volgende stap:
+Nu u in Azure IoT Central een toepassing voor het bewaken van omstandigheden hebt gemaakt, is dit de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Het operator dashboard aanpassen](./tutorial-in-store-analytics-customize-dashboard.md)
+> [Het dashboard van de operator aanpassen](./tutorial-in-store-analytics-customize-dashboard.md)

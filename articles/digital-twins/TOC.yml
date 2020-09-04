@@ -82,6 +82,8 @@
       items:
         - name: Telemetrie opnemen vanuit IoT Hub
           href: how-to-ingest-iot-hub-data.md
+        - name: Apparaten automatisch beheren met DPS
+          href: how-to-provision-using-device-provisioning-service.md
         - name: Integreren met Logic Apps
           href: how-to-integrate-logic-apps.md
     - name: Uitvoer verbinden
@@ -183,7 +185,9 @@
         - name: DTDL-validatie (voorbeeld)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
         - name: Voorbeeld van DPS en IoT Hub-integratie
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
+        - name: Aangepaste Azure Digital Twins-swaggers
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
     - name: Azure-hulpprogramma's
       items:
         - name: Azure Cloud Shell

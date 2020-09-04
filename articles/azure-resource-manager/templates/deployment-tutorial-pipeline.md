@@ -1,15 +1,15 @@
 ---
 title: Continue integratie met Azure-pijplijnen
 description: Meer informatie over het continu bouwen, testen en implementeren van Azure Resource Manager-sjablonen.
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118916"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892674"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure-pijplijnen
 
@@ -175,8 +175,8 @@ Een pijplijn maken met een stap voor het implementeren van een sjabloon:
     * **Locatie**: Selecteer een locatie voor de resourcegroep, bijvoorbeeld **VS - centraal**.
     * **Sjabloonlocatie**: Selecteer **Gekoppelde artefact**. Dit betekent dat er rechtstreeks naar het sjabloonbestand wordt gezocht in de verbonden opslagplaats.
     * **Sjabloon**: Voer **CreateWebApp/azuredeploy.json** in. Als u de mapnaam en de bestandsnaam hebt gewijzigd, moet u deze waarde wijzigen.
-    * **Sjabloonparameters**: Laat dit veld leeg. U geeft de parameterwaarden op in de parameters voor het overschrijven van de sjabloon.
-    * **overrideParameters**: Voer **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** in. Vervang de projectnaam en de URL van de gekoppelde sjabloon. De URL van de gekoppelde sjabloon is wat u hebt geschreven aan het einde van [Een GitHub-opslagplaats maken](#create-a-github-repository).
+    * **Sjabloonparameters**: Laat dit veld leeg. U geeft de parameterwaarden op in de parameters voor het **Overschrijven van de sjabloon**.
+    * **Sjabloonparameters overschrijven**: Voer **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** in. Vervang de projectnaam en de URL van de gekoppelde sjabloon. De URL van de gekoppelde sjabloon is wat u hebt geschreven aan het einde van [Een GitHub-opslagplaats maken](#create-a-github-repository). Begint met **https://raw.githubusercontent.com** .
     * **Implementatiemodus**: Selecteer **Incrementeel**.
     * **Naam van implementatie**: Voer **DeployPipelineTemplate** in. U moet **Geavanceerd** selecteren om **Naam van implementatie** weer te geven.
 

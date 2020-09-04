@@ -1,120 +1,120 @@
 ---
-title: Blauw voor beeld van CAF-migratie landings zone implementeren
-description: Implementeer stappen voor het voor beeld van de CAF-migratie van de openings zone, inclusief blauw drukken artefact parameter Details.
+title: Het blauwdrukvoorbeeld voor de CAF-migratielandingszone implementeren
+description: Implementeer stappen voor het blauwdrukvoorbeeld voor de CAF-migratielandingszone, waaronder details van de parameters voor blauwdrukartefacten.
 ms.date: 05/06/2020
 ms.topic: sample
 ms.openlocfilehash: 109c9a2c4c5670d6f5a676498ae1010a4ab0e418
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82871177"
 ---
-# <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk voor Azure migrate-openings zone implementeren voor beeld van de blauw druk
+# <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Het Microsoft Cloud Adoption Framework voor het blauwdrukvoorbeeld voor de Azure-migratielandingszone implementeren
 
-De volgende stappen moeten worden uitgevoerd om de CAF-blauw druk voor de migratie van Azure blauw drukken te implementeren:
+Als u het blauwdrukvoorbeeld voor de CAF-migratielandingszone van Azure Blueprints wilt implementeren, moet u de volgende stappen uitvoeren:
 
 > [!div class="checklist1"]
-> - Aanbevolen om het voor beeld van de [CAF Foundation](../caf-foundation/index.md) -blauw druk te implementeren
+> - Het wordt aanbevolen het [CAF Foundation](../caf-foundation/index.md)-blauwdrukvoorbeeld te implementeren
 
 > [!div class="checklist2"]
-> - Een nieuwe blauw druk maken op basis van het voor beeld
-> - Uw kopie van het voor beeld markeren als **gepubliceerd**
-> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
+> - Een nieuwe blauwdruk maken op basis van het voorbeeld
+> - Uw kopie van het voorbeeld markeren als **Gepubliceerd**
+> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
+## <a name="create-blueprint-from-sample"></a>Een blauwdruk maken op basis van een voorbeeld
 
-Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
-
-1. Zoek het voor beeld van de **CAF-migratie landings zone** blauw onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
-
-1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
-   - **Naam blauw druk** Geef een naam op voor uw kopie van het voor beeld van de CAF-migratie landings zone.
-   - **Locatie van definitie** Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
-
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
-
-Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst naar de richt lijnen voor het migreren van CAF.
+Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgeving te maken op basis van het voorbeeld.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Op de pagina **Aan de slag** aan de linkerkant selecteert u de knop **Maken** onder _Een blauwdruk maken_.
 
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op, zoals ' eerste versie gepubliceerd vanuit het voor beeld van de CAF-migratie van de overgangs zone. ' Selecteer vervolgens **publiceren** onder aan de pagina.
+1. Zoek onder _Andere voorbeelden_ het blauwdrukvoorbeeld **CAF-migratielandingszone** en selecteer **Dit voorbeeld gebruiken**.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
+   - **Naam blauwdruk** Geef een naam op voor uw exemplaar van het blauwdrukvoorbeeld voor de CAF-migratielandingszone.
+   - **Definitielocatie** Gebruik het beletselteken en selecteer de beheergroep waarin u uw exemplaar van het voorbeeld wilt opslaan.
 
-Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
+
+1. Controleer de lijst met artefacten die samen het blauwdrukvoorbeeld vormen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
+
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is gemaakt in de **Concept**-modus en moet worden **Gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar door die aanpassing is het mogelijk dat de kopie niet meer is afgestemd op de richtlijnen van de CAF-migratielandingszone.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **Notities over wijzigingen** op, zoals Eerste gepubliceerde versie op basis van het blauwdrukvoorbeeld voor de CAF-migratielandingszone. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+
+Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden toegewezen aan een abonnement binnen de beheergroep waarin de kopie is opgeslagen. Dit is de stap waarin parameters worden opgegeven om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
+
+1. Selecteer **Blauwdruk toewijzen** boven aan de pagina Blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
 
    - Basisbeginselen
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
-       Wijzig indien nodig of sluit af.
-     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in.
+     - **Abonnementen**: Selecteer een of meer van de abonnementen in de beheergroep waarin u uw kopie van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt een toewijzing gemaakt voor elk abonnement waarvoor de ingevoerde parameters worden gebruikt.
+     - **Naam van toewijzing**: De naam wordt vooraf voor u ingevuld op basis van de naam van de blauwdruk.
+       Wijzig de naam als dat nodig is of gebruik de opgegeven naam.
+     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken.
      - Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren.
-       Zie [beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
-     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
+       Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+     - **Blauwdrukdefinitieversie**: Kies een **gepubliceerde** versie van uw kopie van het blauwdrukvoorbeeld.
     
-   - Toewijzing vergren delen
+   - Toewijzing vergrendelen
 
-     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor het vergrendelen van de blauwdruk voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Kies de standaard optie voor door het _systeem toegewezen_ beheerde identiteit of de optie door de _gebruiker toegewezen_ identiteit.
+     Kies de standaardoptie voor de _door het systeem toegewezen_ beheerde identiteit of de optie voor de _door de gebruiker toegewezen identiteit_.
 
    - Blauwdrukparameters
 
-     De para meters die in deze sectie zijn gedefinieerd, worden door veel van de artefacten in de definitie van de blauw druk gebruikt om consistentie te bieden.
+     De parameters die in deze sectie worden gedefinieerd, worden door veel van de artefacten in de definitie van de blauwdruk gebruikt om consistentie te bieden.
 
-       - **Organisatie**: Voer de naam van uw organisatie in, zoals contoso of Fabrikam, moet uniek zijn.
-       - **Azureregio**: Selecteer één Azure-regio voor de implementatie.
+       - **Organisatie**: Voer de naam van uw organisatie in, zoals Contoso of Fabrikam. De naam moet uniek zijn.
+       - **AzureRegion**: Selecteer één Azure-regio voor implementatie.
        
-   - Artefact parameters
+   - Artefactparameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
+     De parameters die in deze sectie worden gedefinieerd, zijn van toepassing op het artefact waaronder de parameter is gedefinieerd. Deze parameters zijn [dynamische parameters](../../concepts/parameters.md#dynamic-parameters), aangezien ze zijn gedefinieerd tijdens de toewijzing van de blauwdruk. Zie de [tabel met artefactparameters](#artifact-parameters-table) voor een volledige lijst met artefactparameters en hun beschrijvingen.
 
-1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer vijf minuten. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
+1. Zodra alle parameters zijn ingevoerd, selecteert u **Toewijzen** onder aan de pagina. De blauwdruktoewijzing wordt gemaakt en de implementatie van het artefact begint. De implementatie neemt circa vijf minuten in beslag. Open de blauwdruktoewijzing om de status van de implementatie te controleren.
 
 > [!WARNING]
-> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
+> De Azure Blueprints-service en de ingebouwde blauwdrukvoorbeelden zijn **gratis**. Azure-resources zijn [geprijsd per product](https://azure.microsoft.com/pricing/). Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voor het uitvoeren van resources die door dit blauwdrukvoorbeeld zijn geïmplementeerd.
 
-## <a name="artifact-parameters-table"></a>Tabel artefact parameters
+## <a name="artifact-parameters-table"></a>Tabel met artefactparameters
 
-De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
+In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
-|Artefact naam|Type artefact|Parameternaam|Beschrijving|
+|Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|VNET-landings zone implementeren|Resource Manager-sjabloon|IPAddress_Space|**Vergrendeld** : Geef het eerste twee octets-voor beeld op, 10,0|
-|Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|Object-ID van **vergrendelde** groep of gebruiker om machtigingen te verlenen voor in Key Vault|
-|Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_DataRetention|**Vergrendeld** : aantal dagen dat gegevens worden bewaard in log Analytics|
-|Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_Location|**Vergrendelde** regio die wordt gebruikt bij het maken van de werk ruimte|
-|Azure Migrate implementeren|Resource Manager-sjabloon|Azure_Migrate_Location|**Vergrendeld** : Selecteer de regio die u wilt implementeren Azure migrate|
+|vNET-landingszone implementeren|Resource Manager-sjabloon|IPAddress_Space|**Vergrendelde**: geef de eerste twee octetten op, bijvoorbeeld 10.0|
+|Key Vault implementeren|Resource Manager-sjabloon|KV-AccessPolicy|**Vergrendelde**: groeps-id of gebruikersobject-id om machtigingen te verlenen in Key Vault|
+|Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_DataRetention|**Vergrendelde**: aantal dagen dat gegevens worden bewaard in Log Analytics|
+|Log Analytics implementeren|Resource Manager-sjabloon|LogAnalytics_Location|**Vergrendelde**: regio die wordt gebruikt bij het tot stand brengen van de werkruimte|
+|Azure Migrate implementeren|Resource Manager-sjabloon|Azure_Migrate_Location|**Vergrendeld**: selecteer de regio om Azure Migrate te implementeren|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de stappen voor het implementeren van het voor beeld van de CAF-migratie van de start zone hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over de architectuur:
+Nu u de stappen voor het implementeren van het blauwdrukvoorbeeld voor de CAF-migratielandingszone hebt doorgenomen, raadpleegt u de volgende artikelen voor informatie over de architectuur:
 
 > [!div class="nextstepaction"]
-> [Blauw druk van CAF migratie van de zone-overzicht](./index.md)
+> [Blauwdruk voor CAF-migratielandingszone - overzicht](./index.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

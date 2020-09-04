@@ -1,6 +1,6 @@
 ---
-title: 'CLI: een app terugzetten vanuit een back-up'
-description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u een app terugzet vanuit een back-up.
+title: 'CLI: Een app terugzetten vanuit de back-up'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voorbeeld ziet u hoe u een app terugzet vanuit een back-up.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -9,12 +9,12 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8c3c0f4f57d21e5c07867a2c43ce3c3114f79a9b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: be6a0a5b700c4110acd4481b12130185c9878883
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80058856"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962760"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Een web-app terugzetten vanuit een back-up met CLI
 
@@ -34,7 +34,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -43,6 +43,6 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

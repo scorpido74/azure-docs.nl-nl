@@ -1,25 +1,25 @@
 ---
 title: Zelfstudie - vSphere-cluster implementeren in Azure
-description: Meer informatie over het implementeren van een vSphere-cluster in Azure met behulp van Azure VMware Solution (AVS)
+description: Meer informatie over het implementeren van een vSphere-cluster in Azure met behulp van Azure VMware Solution
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: 4f3b33ea401c62124ae5f8a4c881d86d2f19b40c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079414"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750489"
 ---
-# <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Zelfstudie: Een AVS-privécloud in Azure implementeren
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Zelfstudie: Een Azure VMware Solution-privécloud implementeren in Azure
 
-Met de Azure VMware-oplossing (AVS) hebt u de mogelijkheid om een vSphere-cluster in Azure te implementeren. De minimale initiële implementatie is drie hosts. Extra hosts kunnen een voor een worden toegevoegd, maximaal 16 hosts per cluster. 
+Met Azure VMware Solution kunt u een vSphere-cluster in Azure implementeren. De minimale initiële implementatie is drie hosts. Extra hosts kunnen een voor een worden toegevoegd, maximaal 16 hosts per cluster. 
 
-Omdat AVS u niet in staat stelt om uw privécloud met uw on-premises vCenter te beheren bij het starten, moet u aanvullende configuratie uitvoeren en verbinding maken met een lokaal vCenter-exemplaar, een virtueel netwerk en meer. Deze procedures en gerelateerde vereisten worden behandeld in deze zelfstudie.
+Met Azure VMware Solution kunt u bij het starten uw privécloud niet met uw on-premises vCenter beheren. Daarom moet u aanvullende configuratie uitvoeren en verbinding maken met een lokaal vCenter-exemplaar, een virtueel netwerk en meer. Deze procedures en gerelateerde vereisten worden behandeld in deze zelfstudie.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een AVS-privécloud maken
+> * Een Azure VMware Solution-privécloud maken
 > * Controleer of de privécloud is geïmplementeerd
 
 ## <a name="prerequisites"></a>Vereisten
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="register-the-resource-provider"></a>De resourceprovider registreren
 
-Als u AVS wilt gebruiken, moet u de resourceprovider eerst registreren bij uw abonnement.
+Als u Azure VMware Solution wilt gebruiken, moet u de resourceprovider eerst registreren bij uw abonnement.
 
 ```
 azurecli-interactive
@@ -42,7 +42,7 @@ Zie [Azure-resourceproviders en -typen](../azure-resource-manager/management/res
 
 ## <a name="create-a-private-cloud"></a>Een privécloud maken
 
-U kunt een privécloud maken met behulp van de [Azure-portal](#azure-portal) of door de [Azure CLI](#azure-cli) te gebruiken.
+U kunt een Azure VMware Solution-privécloud maken met behulp van [Azure Portal](#azure-portal) of door de [Azure CLI](#azure-cli) te gebruiken.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -57,14 +57,14 @@ U kunt een privécloud maken met behulp van de [Azure-portal](#azure-portal) of 
    | **Abonnement** | Het abonnement dat u wilt gebruiken voor de implementatie.|
    | **Resourcegroep** | De resourcegroep voor uw privécloud-resources. |
    | **Locatie** | Selecteer een locatie, zoals **VS-Oost**.|
-   | **Resourcenaam** | De naam van de privécloud van uw AVS. |
+   | **Resourcenaam** | De naam van uw Azure VMware Solution-privécloud. |
    | **SKU** | Selecteer de volgende SKU-waarde: AV36 |
    | **Hosts** | Dit is het aantal hosts dat aan het privécloudcluster moet worden toegevoegd. De standaardwaarde is 3, maar kan na de implementatie worden verhoogd of verlaagd.  |
    | **Beheerderswachtwoord van vCenter** | Voer een wachtwoord voor de cloudbeheerder in. |
    | **Manager-wachtwoord van NSX-T** | Voer een NSX-T-beheerderswachtwoord in. |
    | **Adres blokkeren** | Voer een IP-adresblok in voor het CIDR-netwerk voor de privécloud, zoals 10.175.0.0/22. |
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="een privécloud maken" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Voer op het tabblad Basisinstellingen waarden in voor de velden." border="true":::
 
 1. Als dit gereed is, selecteert u **Controleren + maken**. Controleer de ingevoerde gegevens in het volgende scherm. Als de gegevens juist zijn, selecteert u **Maken**.
 
@@ -73,11 +73,11 @@ U kunt een privécloud maken met behulp van de [Azure-portal](#azure-portal) of 
 
 1. Controleer of de implementatie is gelukt. Ga naar de resourcegroep die u hebt gemaakt en selecteer uw privécloud.  U ziet de status **Geslaagd** wanneer de implementatie is voltooid. 
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Controleer of de privécloud is geïmplementeerd" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Controleer of de implementatie is gelukt." border="true":::
 
 ### <a name="azure-cli"></a>Azure CLI
 
-U kunt in plaats van Azure Portal een privécloud maken en hiervoor de Azure CLI gebruiken met behulp van de Azure Cloud Shell. Het is een gratis interactieve shell met algemene Azure-hulpprogramma's die vooraf zijn geïnstalleerd en geconfigureerd voor gebruik met uw account. 
+U kunt ook een Azure VMware Solution-privécloud maken met de Azure CLI met behulp van de Azure Cloud Shell in plaats van met Azure Portal. Het is een gratis interactieve shell met algemene Azure-hulpprogramma's die vooraf zijn geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell openen
 
@@ -99,7 +99,7 @@ Geef een naam voor de resourcegroep op, een naam voor de privécloud, een locati
 | Eigenschap  | Beschrijving  |
 | --------- | ------------ |
 | **-g** (Naam van resourcegroep)     | De naam van de resourcegroep voor uw privécloud-resources.        |
-| **-n** (Naam van privécloud)     | De naam van de privécloud van uw AVS.        |
+| **-n** (Naam van privécloud)     | De naam van uw Azure VMware Solution-privécloud.        |
 | **--location**     | De locatie die voor uw privécloud wordt gebruikt.         |
 | **--cluster-size**     | De grootte van de cluster. De minimumwaarde is 3.         |
 | **--network-block**     | Het netwerkblok voor het CIDR IP-adres dat moet worden gebruikt voor uw privécloud. Het adresblok mag geen overlap vertonen met de in andere virtuele netwerken gebruikte adresblokken die zich in uw abonnement en on-premises netwerken bevinden.        |
@@ -112,7 +112,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-a-private-cloud-azure-portal"></a>Een privécloud verwijderen (Azure Portal)
 
-Als u een AVS-privécloud hebt die u niet meer nodig hebt, kunt u deze verwijderen. Wanneer u een privécloud verwijdert, worden alle clusters samen met al hun onderdelen verwijderd.
+Als u een Azure VMware Solution-privécloud hebt die u niet meer nodig hebt, kunt u deze verwijderen. Wanneer u een privécloud verwijdert, worden alle clusters samen met al hun onderdelen verwijderd.
 
 Als u dit wilt doen, gaat u naar uw privécloud in de Azure-portal en selecteert u **Verwijderen**. Bevestig op de pagina Bevestiging de naam van de privécloud en selecteer **Ja**.
 
@@ -124,7 +124,7 @@ Als u dit wilt doen, gaat u naar uw privécloud in de Azure-portal en selecteert
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Een AVS-privécloud maken
+> * Een Azure VMware Solution-privécloud maken
 > * Gecontroleerd of de privécloud is geïmplementeerd
 
 Ga door naar de volgende zelfstudie voor meer informatie over het maken van een virtueel netwerk voor gebruik met uw privécloud als onderdeel van het instellen van lokaal beheer voor uw particuliere cloudclusters.

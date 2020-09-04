@@ -1,18 +1,18 @@
 ---
 title: 'Zelfstudie: een voorbeeldmodel toevoegen - Azure Analysis Services | Microsoft Docs'
-description: In deze zelfstudieles leert u hoe u een eenvoudig voorbeeldmodel toevoegt in Azure Analysis Services.
+description: In deze zelfstudie leert u hoe u een eenvoudig voorbeeldmodel toevoegt in Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697517"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230888"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Zelfstudie: Een voorbeeldmodel toevoegen via de portal
 
@@ -24,7 +24,7 @@ In deze zelfstudie voegt u een voorbeeldmodeldatabase in tabelvorm van Adventure
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
@@ -45,7 +45,7 @@ Meld u aan bij de [portal](https://portal.azure.com/).
 
 2. Controleer in **Nieuw model** > **Een gegevensbron kiezen** of **Voorbeeldgegevens** is geselecteerd en klik vervolgens op **Toevoegen**.
 
-    ![Voorbeeldgegevens selecteren](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Nieuw model selecteren](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. Controleer in **Overzicht** of het `adventureworks`-voorbeeldmodel is toegevoegd.
 

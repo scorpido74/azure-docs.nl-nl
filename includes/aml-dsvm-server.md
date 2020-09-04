@@ -10,13 +10,13 @@ ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
 ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79486098"
 ---
-1. [Maak een Azure machine learning-werk ruimte](../articles/machine-learning/how-to-manage-workspace.md).
+1. [Een Azure Machine Learning-werkruimte maken](../articles/machine-learning/how-to-manage-workspace.md)
 
 1. Kloon [de GitHub-opslagplaats](https://aka.ms/aml-notebooks).
 
@@ -24,11 +24,11 @@ ms.locfileid: "79486098"
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Voeg een werkruimte configuratie bestand toe aan de gekloonde Directory met een van de volgende methoden:
+1. Voeg een configuratiebestand voor de werkruimte toe aan de gekloonde map met een van deze methoden:
 
-    * Selecteer in de [Azure Portal](https://ms.portal.azure.com)de optie **down load config. json** in het gedeelte **overzicht** van uw werk ruimte. 
+    * Selecteer in de [Azure Portal](https://ms.portal.azure.com)  **config.json downloaden** in het gedeelte **Overzicht** van uw werkruimte. 
 
-    ![Config. json downloaden](./media/aml-dsvm-server/download-config.png)
+    ![Config.json downloaden](./media/aml-dsvm-server/download-config.png)
 
     * Maak een nieuwe werkruimte met behulp van code in de notebook [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) in uw gekloonde map.
 

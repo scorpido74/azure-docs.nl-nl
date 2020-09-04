@@ -1,7 +1,7 @@
 ---
 title: Het kenmerk HeadPose gebruiken
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van het kenmerk HeadPose om automatisch de gezichts rechthoek te draaien of Head-gebaren te detecteren in een video-feed.
+description: Ontdek hoe u het HeadPose-kenmerk kunt gebruiken om de gezichtsrechthoek automatisch te draaien of hoofdbewegingen in een videofeed te detecteren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,26 +9,27 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 534846044770d66ec5171ad4f61de921d2d5d194
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fe9cc44542e97880b076d871dde82f5a02a58957
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169790"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928969"
 ---
 # <a name="use-the-headpose-attribute"></a>Het kenmerk HeadPose gebruiken
 
-In deze hand leiding ziet u hoe u het kenmerk HeadPose van een gedetecteerd gezicht kunt gebruiken om enkele belang rijke scenario's mogelijk te maken.
+In deze handleiding ziet u hoe u het kenmerk HeadPose van een gedetecteerd gezicht kunt gebruiken om enkele belangrijke scenario's mogelijk te maken.
 
-## <a name="rotate-the-face-rectangle"></a>De gezichts rechthoek draaien
+## <a name="rotate-the-face-rectangle"></a>De gezichtsrechthoek draaien
 
-De rechthoek met het gezicht, geretourneerd met elk gedetecteerd gezicht, markeert de locatie en grootte van het gezicht in de afbeelding. De rechthoek wordt standaard altijd uitgelijnd met de afbeelding (de zijden zijn verticaal en horizon taal); Dit kan inefficiënt zijn voor gehoekte gezichten met framing. In situaties waar u op een programmatische manier wilt bijsnijden in een afbeelding, is het beter om de rechthoek te draaien om bij te snijden.
+De gezichtsrechthoek, geretourneerd met elk gedetecteerd gezicht, markeert de locatie en grootte van het gezicht in de afbeelding. De rechthoek wordt standaard altijd uitgelijnd met de afbeelding (de zijden zijn verticaal en horizontaal); dit kan inefficiënt zijn voor het inkaderen van gezichten in een hoek. In situaties waar u op een programmatische manier gezichten wilt bijsnijden in een afbeelding, is het beter om de rechthoek te kunnen draaien om bij te snijden.
 
-De [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) -voor beeld-app gebruikt het kenmerk HeadPose om de gevonden gezichts rechthoeken te roteren.
+De voorbeeld-app [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) gebruikt het kenmerk HeadPose om de gedetecteerde gezichtsrechthoeken te draaien.
 
 ### <a name="explore-the-sample-code"></a>De voorbeeldcode verkennen
 
-U kunt de gezichts rechthoek via een programma draaien met het kenmerk HeadPose. Als u dit kenmerk opgeeft tijdens het detecteren van gezichten (Zie [gezichten detecteren](HowtoDetectFacesinImage.md)), kunt u het later alsnog een query uitvoeren. Met de volgende methode van de WPF-app [Cognitive Services gezicht](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) wordt een lijst met **DetectedFace** -objecten gebruikt en wordt een lijst met **[gezichts](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** objecten geretourneerd. **Hier volgt** een aangepaste klasse waarin gezichts gegevens worden opgeslagen, met inbegrip van de bijgewerkte rechthoek coördinaten. Nieuwe waarden worden berekend voor **boven**, **links**, **breedte**en **hoogte**en met een nieuw veld **FaceAngle** wordt de draai hoek opgegeven.
+U kunt de gezichtsrechthoek programmatisch draaien met het kenmerk HeadPose. Als u dit kenmerk opgeeft tijdens het detecteren van gezichten (zie [Gezichten detecteren](HowtoDetectFacesinImage.md)), dan kunt u er later alsnog een query op uitvoeren. Met de volgende methode van de [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF)-app wordt een lijst met **DetectedFace**-objecten gebruikt en wordt een lijst met **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** -objecten weergegeven. **Face** hier is een aangepaste klasse waarmee gezichtsgegevens worden opgeslagen, met inbegrip van de bijgewerkte rechthoekcoördinaten. Nieuwe waarden worden berekend voor **bovenkant**, **links**, **breedte** en **hoogte**, en een nieuw veld **FaceAngle** geeft de rotatie op.
 
 ```csharp
 /// <summary>
@@ -106,9 +107,9 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 }
 ```
 
-### <a name="display-the-updated-rectangle"></a>De bijgewerkte rechthoek weer geven
+### <a name="display-the-updated-rectangle"></a>De bijgewerkte rechthoek weergeven
 
-Hier kunt u de geretourneerde **gezichts** objecten in uw weer gave gebruiken. In de volgende regels van [FaceDetectionPage. xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) ziet u hoe de nieuwe rechthoek wordt weer gegeven op basis van deze gegevens:
+Hier kunt u de geretourneerde **Face**-objecten gebruiken in uw weergave. De volgende regels van [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) laten zien hoe de nieuwe rechthoek wordt weergegeven op basis van deze gegevens:
 
 ```xaml
  <DataTemplate>
@@ -120,17 +121,17 @@ Hier kunt u de geretourneerde **gezichts** objecten in uw weer gave gebruiken. I
 </DataTemplate>
 ```
 
-## <a name="detect-head-gestures"></a>Head-gebaren detecteren
+## <a name="detect-head-gestures"></a>Hoofdbewegingen detecteren
 
-U kunt Head-gebaren, zoals Nodding en HeadPose, detecteren door wijzigingen in realtime bij te houden. U kunt deze functie als een aangepaste detectorshim gebruiken.
+U kunt hoofdbewegingen, zoals knikken en hoofd schudden, detecteren door HeadPose-wijzigingen in realtime bij te houden. U kunt deze functie als een aangepaste aanwezigheidsdetector gebruiken.
 
-Detectie op basis van de aanwezigheid is de taak om te bepalen of een onderwerp een echte persoon is en geen afbeeldings-of video weergave. Een functie voor het aanwijzen van de printerkop kan worden gebruikt als een manier om de levens duur te controleren, met name in plaats van een afbeeldings representatie van een persoon.
+Detectie op basis van de aanwezigheid is de taak om te bepalen of een onderwerp een echte persoon is en geen afbeelding of videoweergave. Een detector voor hoofdbewegingen kan worden gebruikt als een manier om de aanwezigheid te controleren, met name in plaats van een afbeeldingsweergave van een persoon.
 
 > [!CAUTION]
-> Als u hoofd bewegingen in realtime wilt detecteren, moet u de Face-API op een hoog tempo aanroepen (meer dan één keer per seconde). Dit is niet mogelijk als u een gratis-laag abonnement hebt. Als u een abonnement op een betaalde laag hebt, moet u ervoor zorgen dat u de kosten hebt berekend voor het opsporen van snelle API-aanroepen voor de detectie van hoofd bewegingen.
+> Als u hoofdbewegingen in realtime wilt detecteren, moet u de Face-API op hoge snelheid aanroepen (meer dan één keer per seconde). Dit is niet mogelijk als u een gratis abonnement (f0) hebt. Als u een betaald abonnement hebt, moet u ervoor zorgen dat u de kosten hebt berekend voor het uitvoeren van snelle API-aanroepen voor de detectie van hoofdbewegingen.
 
-Bekijk het voor beeld van [Face HeadPose](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) op github voor een werk voorbeeld van de detectie van hoofd bewegingen.
+Zie het [Face HeadPose-voorbeeld](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) op GitHub voor een werkend voorbeeld van detectie van hoofdbewegingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Cognitive Services gezicht WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) -app op github voor een werkend voor beeld van geroteerde gezichts rechthoeken. Of Zie de voor [beeld-app face HeadPose](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) , die het kenmerk HeadPose in realtime bijhoudt om hoofd bewegingen te detecteren.
+Zie de [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF)-app op GitHub voor een werkend voorbeeld van gedraaide gezichtsrechthoeken. U kunt ook de [Face HeadPose-voorbeeld](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples)app bekijken, die het kenmerk HeadPose in realtime volgt om hoofdbewegingen te detecteren.

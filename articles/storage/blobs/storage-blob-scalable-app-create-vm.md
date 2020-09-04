@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine en een opslag account maken voor een schaal bare toepassing in azure
+title: Een VM en een opslagaccount maken voor een schaalbare toepassing in Azure
 description: Informatie over hoe u een VM implementeert die wordt gebruikt om een schaalbare toepassing uit te voeren met behulp van Azure Blob-opslag
 author: roygara
 ms.service: storage
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4b8c52b03cb6dec6096565e9eac26b7b2c4a30e4
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75372241"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073247"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Een virtuele machine en een opslagaccount maken voor een schaalbare toepassing
 

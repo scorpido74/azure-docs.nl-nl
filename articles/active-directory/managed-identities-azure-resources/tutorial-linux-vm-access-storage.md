@@ -1,9 +1,9 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage-Linux-Azure AD
+title: Zelfstudie`:` Een beheerde identiteit gebruiken voor toegang tot Azure Storage - Linux - Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Storage.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75971919"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263158"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Procedures voor:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Create a storage account
@@ -44,7 +44,7 @@ Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door he
 Als u de CLI-scriptvoorbeelden in deze zelfstudie wilt uitvoeren, hebt u twee opties:
 
 - Gebruik [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vanuit Azure Portal of via de knop **Uitproberen** in de rechterbovenhoek van elk codeblok.
-- [Installeer de nieuwste versie van CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 of later) als u liever een lokale CLI-console gebruikt.
+- [Installeer de nieuwste versie van CLI 2.0](/cli/azure/install-azure-cli) (2.0.23 of later) als u liever een lokale CLI-console gebruikt.
 
 ## <a name="create-a-storage-account"></a>Create a storage account 
 
@@ -55,7 +55,7 @@ In deze sectie maakt u een opslagaccount.
 3. Geef onder **Naam** een naam voor het opslagaccount op.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op **Resource Manager** en **Storage (algemeen gebruik v1)**. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -83,8 +83,8 @@ U kunt de beheerde identiteit van de virtuele machine gebruiken om de gegevens i
 
 1. Navigeer terug naar het zojuist gemaakte opslagaccount.  
 2. Klik op de koppeling **Toegangsbeheer (IAM)** in het linkerpaneel.  
-3. Klik op **+ roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor uw virtuele machine toe te voegen.
-4. Selecteer onder **rol**in de vervolg keuzelijst **Storage BLOB data Reader**. 
+3. Klik op **+ Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen.
+4. In de vervolgkeuzelijst onder **Rol** selecteert u **Gegevenslezer voor Storage Blob**. 
 5. In de volgende vervolgkeuzelijst, onder **Toegang toewijzen aan**, kiest u **Virtuele machine**.  
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op **Alle resourcegroepen**.  
 7. Kies onder **Selecteren** uw virtuele machine en klik vervolgens op **Opslaan**.
@@ -95,7 +95,7 @@ U kunt de beheerde identiteit van de virtuele machine gebruiken om de gegevens i
 
 Azure Storage biedt systeemeigen ondersteuning voor Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van een beheerde identiteit direct kunnen worden geaccepteerd. Dit maakt deel uit van de integratie van Azure Storage met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
-Om de volgende stappen te voltooien, moet u werken met de eerder gemaakte VM, en u hebt een SSH-client nodig om daar verbinding mee te maken. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
+Om de volgende stappen te voltooien, moet u werken met de eerder gemaakte VM, en u hebt een SSH-client nodig om daar verbinding mee te maken. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](/windows/wsl/about) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
 1. In Azure Portal navigeert u naar **Virtuele machines**, gaat u naar uw virtuele Linux-machine, klikt u vervolgens op de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine.
 2. **Maak verbinding** met de virtuele machine met de SSH-client van uw keuze. 
@@ -121,4 +121,4 @@ Om de volgende stappen te voltooien, moet u werken met de eerder gemaakte VM, en
 In deze zelfstudie hebt u geleerd een door het Linux-VM-systeem toegewezen beheerde identiteit in te schakelen om toegang tot Azure Storage te krijgen.  Zie voor meer informatie over Azure Storage:
 
 > [!div class="nextstepaction"]
-> [Azure Storage](/azure/storage/common/storage-introduction)
+> [Azure Storage](../../storage/common/storage-introduction.md)

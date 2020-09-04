@@ -5,24 +5,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cedd302453e75c037f17cc47d8e00a06d3f3a8cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49feedaa087a89b2dfc5d90c7230b7abf23ed1ba
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996789"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815737"
 ---
-Ga naar de Azure Portal en <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" Maak een nieuwe formulier Recognizer-resource " target="_blank"> een nieuwe formulier herkenner maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Geef in het deel venster **maken** de volgende informatie op:
+Ga naar Azure Portal en <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="Een nieuwe Form Recognizer-resource maken" target="_blank">maak een nieuwe Form Recognizer-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a>. Geef in het deelvenster **Maken** de volgende gegevens op:
 
 |    |    |
 |--|--|
-| **Naam** | Een beschrijvende naam voor uw resource. U kunt het beste een beschrijvende naam gebruiken, bijvoorbeeld *MyNameFormRecognizer*. |
+| **Naam** | Een beschrijvende naam voor de resource. U kunt het beste een beschrijvende naam gebruiken, bijvoorbeeld *MyNameFormRecognizer*. |
 | **Abonnement** | Selecteer het Azure-abonnement waaraan toegang is verleend. |
-| **Locatie** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie introduceren, maar hebben geen invloed op de runtime-Beschik baarheid van uw resource. |
-| **Prijscategorie** | De kosten van uw resource zijn afhankelijk van de prijs categorie die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
-| **Resourcegroep** | De [Azure-resource groep](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group) die uw resource bevat. U kunt een nieuwe groep maken of toevoegen aan een bestaande groep. |
+| **Locatie** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie veroorzaken, maar deze hebben geen invloed op de beschikbaarheid van de runtime van uw resource. |
+| **Prijscategorie** | De kosten van uw resource zijn afhankelijk van de prijscategorie die u kiest en van uw gebruik. Zie [Prijsopgaven](https://azure.microsoft.com/pricing/details/cognitive-services/) voor API's voor meer informatie.
+| **Resourcegroep** | De [Azure-resourcegroep](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group) die de resource bevat. U kunt een nieuwe groep maken of deze toevoegen aan een bestaande groep. |
 
 > [!NOTE]
-> Normaal gesp roken wanneer u een cognitieve service resource in de Azure Portal maakt, hebt u de mogelijkheid om een sleutel voor meerdere service abonnementen te maken (die wordt gebruikt voor meerdere cognitieve Services) of een abonnements sleutel van één service (die alleen wordt gebruikt met een specifieke cognitieve service). Omdat de formulier Recognizer echter een preview-versie is, is deze niet opgenomen in het abonnement voor meerdere services en kunt u het abonnement met één service niet maken, tenzij u de koppeling in het welkomst bericht gebruikt.
+> Wanneer u normaal gesproken een cognitieve-serviceresource in Azure Portal maakt, hebt u de mogelijkheid een abonnementssleutel voor meerdere services te maken (die voor meerdere cognitieve services wordt gebruikt) of een abonnementssleutel voor één service (die alleen voor een specifieke cognitieve service wordt gebruikt). Momenteel is Form Recognizer echter niet opgenomen in het abonnement voor meerdere services.
 
-Wanneer de resource voor de herkenner van het formulier is geïmplementeerd, zoekt en selecteert u deze in de lijst **alle resources** in de portal. Uw sleutel en eind punt bevinden zich op de pagina sleutel en eind punt van de resource, onder resource beheer. Sla beide op een tijdelijke locatie op voordat u verdergaat.
+Wanneer uw Form Recognizer-resource is geïmplementeerd, selecteert u deze in de portal in de lijst **Alle resources**. Uw sleutel en eindpunt vindt u op de pagina Sleutel en eindpunt van de resource, onder Resourcebeheer. Sla beide op een tijdelijke locatie op voordat u verdergaat.

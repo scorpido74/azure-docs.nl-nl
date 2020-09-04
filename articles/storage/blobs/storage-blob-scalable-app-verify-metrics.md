@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82692447"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Metrische gegevens over doorvoer en latentie voor een opslagaccount controleren
@@ -34,7 +34,7 @@ Kies Blob uit de vervolgkeuzelijst **SUBSERVICE**.
 
 Onder **Metrische gegevens** selecteert u een van de metrische gegevens die in de volgende tabel zijn gevonden:
 
-De volgende metrische gegevens geven u een idee van de latentie en de doorvoer van de toepassing. De metrische gegevens die u in de portal configureert, duren gemiddeld één minuut. Als een trans actie is voltooid in het midden van een minuut, worden de gegevens voor de minuut voor het gemiddelde gehalveerd. In de toepassing is de tijd voor de upload- en downloadbewerkingen vastgelegd, en u kon zien hoeveel tijd er werkelijk was om de bestanden te uploaden en downloaden. Deze informatie kan worden gebruikt in combinatie met de metrische gegevens in de portal voor een volledig begrip van de doorvoer.
+De volgende metrische gegevens geven u een idee van de latentie en de doorvoer van de toepassing. De metrische gegevens die u in de portal configureert, duren gemiddeld één minuut. Als een transactie is voltooid halverwege een minuut, wordt die minuut in tweeën gesplitst om het gemiddelde te bereiken. In de toepassing is de tijd voor de upload- en downloadbewerkingen vastgelegd, en u kon zien hoeveel tijd er werkelijk was om de bestanden te uploaden en downloaden. Deze informatie kan worden gebruikt in combinatie met de metrische gegevens in de portal voor een volledig begrip van de doorvoer.
 
 |Gegevens|Definitie|
 |---|---|
@@ -42,7 +42,7 @@ De volgende metrische gegevens geven u een idee van de latentie en de doorvoer v
 |**Geslaagde serverlatentie**|De gemiddelde tijd die nodig is om een aanvraag door Azure Storage te verwerken. Deze waarde bevat niet de netwerklatentie die is opgegeven in SuccessE2ELatency. |
 |**Transacties**|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. In het voorbeeld was de blokgrootte ingesteld op 100 MB. In dit geval wordt elk blok van 100 MB gezien als een transactie.|
 |**Inkomend verkeer**|De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. |
-|**Egress**|De hoeveelheid uitgaande gegevens. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer. |
+|**Uitgaand verkeer**|De hoeveelheid uitgaande gegevens. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer. |
 
 Selecteer **Afgelopen 24 uur (automatisch)** naast **Tijd**. Kies **Afgelopen uur** en **Minuut** voor **Tijdgranulatie** en klik vervolgens op **Toepassen**.
 

@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82203264"
 ---
 # <a name="add-an-api-manually"></a>Handmatig een API toevoegen
@@ -29,20 +29,20 @@ In dit artikel maken we een lege API en geven [httpbin.org](https://httpbin.org)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>Een API maken
 
-1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **api's** in het menu.
+1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **API's** in het menu.
 2. Selecteer **+ API toevoegen** in het linkermenu.
 3. Selecteer **Lege API** uit de lijst.  
     ![Lege API](media/add-api-manually/blank-api.png)  
-4. Voer de instellingen voor de API in. De instellingen worden beschreven in de zelf studie [uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api) .
+4. Voer de instellingen voor de API in. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
 5. Selecteer **Maken**.
 
-Op dit moment hebt u geen bewerkingen in API Management die worden toegewezen aan de bewerkingen in uw back-end-API. Als u een bewerking aanroept die wordt weer gegeven via de back-end, maar niet via de API Management, krijgt u een **404**.
+U hebt op dit moment geen bewerkingen in API Management die zijn toegewezen aan de bewerkingen in uw back-end-API. Als u een bewerking aanroept die beschikbaar is gesteld via de back-end maar niet via de API Management, krijgt u een **404**.
 
 >[!NOTE] 
 > Standaard zal de APIM geen bewerkingen blootstellen totdat u ze accepteert wanneer u een API toevoegt, zelfs als deze is verbonden met bepaalde back-endservice. Om een bewerking van uw back-end-service goed te keuren, maakt u een APIM-bewerking die is toegewezen aan de back-end-bewerking.

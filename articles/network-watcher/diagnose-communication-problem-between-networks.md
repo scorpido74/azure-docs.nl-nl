@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: communicatie problemen oplossen tussen netwerken met behulp van de Azure Portal'
+title: 'Zelfstudie: communicatieproblemen tussen netwerken onderzoeken met Azure Portal'
 titleSuffix: Azure Network Watcher
-description: In deze zelf studie leert u hoe u een communicatie probleem kunt vaststellen tussen een virtueel Azure-netwerk dat is verbonden met een on-premises of een ander virtueel netwerk, via een virtuele Azure-netwerk gateway, met behulp van de VPN-functie voor diagnostische gegevens van Network Watcher.
+description: In deze zelfstudie leert u hoe u de VPN-diagnosefunctie van Network Watcher gebruikt om via een gateway van een virtueel Azure-netwerk een communicatieprobleem te onderzoeken tussen een virtueel Azure-netwerk dat is verbonden met een on-premises netwerk of ander virtueel netwerk.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,10 +15,10 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76834678"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Zelfstudie: Communicatieproblemen tussen netwerken onderzoeken met Azure Portal
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het gebruik van diagnostische gegevens van VPN moet u een bestaande, actieve VPN-gateway hebben. Als u geen VPN-gateway hebt om te onderzoeken, kunt u er een implementeren met een [PowerShell-script](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). U kunt het PowerShell-script uitvoeren vanuit:
-- **Een lokale Power shell-installatie**: voor het script `Az` is de module Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u een upgrade moet uitvoeren, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+- **Een lokale installatie van PowerShell**: Voor dit script is de module Azure PowerShell `Az` vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u een upgrade moet uitvoeren, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 - **De Azure Cloud Shell**: in de [Azure Cloud Shell](https://shell.azure.com/powershell) is de meest recente versie van PowerShell geïnstalleerd en geconfigureerd en wordt u aangemeld bij Azure.
 
 Het script heeft ongeveer een uur nodig om een VPN-gateway te maken. In de overige stappen wordt ervan uitgegaan dat de gateway die u wilt onderzoeken de gateway is die door dit script is geïmplementeerd. Als u in plaats daarvan uw eigen gateway onderzoekt, zullen de resultaten anders zijn.

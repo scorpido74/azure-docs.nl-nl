@@ -1,17 +1,17 @@
 ---
 title: 'Zelfstudie: Delen buiten uw organisatie - Azure Data Share'
 description: 'Zelfstudie: Gegevens delen met klanten en partners met behulp van Azure Data Share'
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/28/2020
+ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511970"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259061"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Zelfstudie: Gegevens delen met Azure Data Share  
 
@@ -73,7 +73,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
-1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
+1. Selecteer de menuknop in de linkerbovenhoek van de portal, en selecteer vervolgens **Een resource maken** (+).
 
 1. Zoek naar *Data Share*.
 
@@ -83,17 +83,17 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Naam | *datashareacount* | Geef een naam op voor uw gegevensshare-account. |
     | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevensshare-account.|
     | Resourcegroep | *test-resource-group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
     | Locatie | *US - oost 2* | Geef een regio op voor uw gegevensshare-account.
+    | Naam | *datashareaccount* | Geef een naam op voor uw gegevensshare-account. |
     | | |
 
-1. Selecteer **Maken** om uw gegevensshare-account in te richten. Het inrichten van een nieuw gegevensshare-account duurt doorgaans 2 minuten of minder. 
+1. Selecteer **Beoordelen en maken** en vervolgens **Maken** om uw gegevensshare-account in te richten. Het inrichten van een nieuw gegevensshare-account duurt doorgaans 2 minuten of minder. 
 
 1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
 
-## <a name="create-a-data-share"></a>Een gegevensshare maken
+## <a name="create-a-share"></a>Een share maken
 
 1. Ga naar de overzichtspagina van uw gegevensshare.
 
@@ -103,15 +103,15 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
 1. Selecteer **Maken**.   
 
-1. Vul de details in voor uw gegevensshare. Geef een naam, type share, beschrijving van de share-inhoud en gebruiksvoorwaarden (optioneel) op. 
+1. Vul de details in voor uw share. Geef een naam, type share, beschrijving van de share-inhoud en gebruiksvoorwaarden (optioneel) op. 
 
     ![EnterShareDetails](./media/enter-share-details.png "Gegevens van share invoeren") 
 
-1. Selecteer **Doorgaan**
+1. Selecteer **Doorgaan**.
 
-1. Selecteer **Gegevenssets toevoegen** om gegevenssets aan uw gegevensshare toe te voegen. 
+1. Selecteer **Gegevenssets toevoegen** om gegevenssets toe te voegen aan de share. 
 
-    ![Gegevenssets](./media/datasets.png "Gegevenssets")
+    ![Gegevenssets toevoegen aan de share](./media/datasets.png "Gegevenssets")
 
 1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 
@@ -125,7 +125,7 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
     ![AddRecipients](./media/add-recipient.png "Ontvangers toevoegen") 
 
-1. Selecteer **Doorgaan**
+1. Selecteer **Doorgaan**.
 
 1. Als u het type share momentopname hebt geselecteerd, kunt u het momentopnameschema configureren om updates van uw gegevens naar uw gegevensgebruiker te sturen. 
 
@@ -133,9 +133,9 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
 1. Selecteer een begintijd en een herhalingsinterval. 
 
-1. Selecteer **Doorgaan**
+1. Selecteer **Doorgaan**.
 
-1. Controleer op het tabblad Beoordelen en maken de inhoud, instellingen, ontvangers en synchronisatie-instellingen van uw pakket. Selecteer **Maken**
+1. Controleer op het tabblad Beoordelen en maken de inhoud, instellingen, ontvangers en synchronisatie-instellingen van uw pakket. Selecteer **Maken**.
 
 Uw Azure-gegevensshare is nu gemaakt en de ontvanger van uw gegevensshare kan nu uw uitnodiging accepteren. 
 

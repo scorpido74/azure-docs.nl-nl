@@ -1,6 +1,6 @@
 ---
 title: Een nieuw Windows 10-apparaat aan Azure AD koppelen tijdens de eerste uitvoering | Microsoft Docs
-description: Hoe gebruikers Azure AD-deelname kunnen instellen tijdens de out-of-Box-ervaring.
+description: Hoe gebruikers Azure AD Join kunnen instellen tijdens de out-of-box-ervaring.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da37316724bf6ef166f08faa7208ad196000bb00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85253100"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Zelfstudie: Een nieuw Windows 10-apparaat aan Azure AD koppelen tijdens de eerste uitvoering
@@ -37,9 +37,9 @@ In deze zelfstudie leert u hoe u een apparaat aan Azure AD kunt koppelen tijdens
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om een Windows 10-apparaat te koppelen, moet de apparaatregistratieservice zodanig zijn geconfigureerd dat u apparaten kunt registreren. U moet niet alleen toestemming hebben om apparaten te koppelen in uw Azure AD-tenant, maar er moeten ook minder apparaten zijn geregistreerd dan het geconfigureerde maximum. Zie [Apparaatinstellingen configureren](device-management-azure-portal.md#configure-device-settings)voor meer informatie.
+Om een Windows 10-apparaat te koppelen, moet de apparaatregistratieservice zodanig zijn geconfigureerd dat u apparaten kunt registreren. U moet niet alleen toestemming hebben om apparaten te koppelen in uw Azure AD-tenant, maar er moeten ook minder apparaten zijn geregistreerd dan het geconfigureerde maximum. Zie [Apparaatinstellingen configureren](device-management-azure-portal.md#configure-device-settings) voor meer informatie.
 
-Als uw tenant is gefedereerd, MOET uw identiteitsprovider bovendien het WS-Fed en WS-Trust gebruikersnaam/wachtwoord-eindpunt ondersteunen. Dit kan versie 1.3 of 2005 zijn. Deze ondersteuning van het protocol is vereist om het apparaat lid te maken van Azure AD en zich met een wacht woord aan te melden bij het apparaat.
+Als uw tenant is gefedereerd, MOET uw identiteitsprovider bovendien het WS-Fed en WS-Trust gebruikersnaam/wachtwoord-eindpunt ondersteunen. Dit kan versie 1.3 of 2005 zijn. Deze protocolondersteuning is vereist om het apparaat aan Azure AD te koppelen en om u met een wachtwoord bij het apparaat aan te melden.
 
 ## <a name="joining-a-device"></a>Een apparaat koppelen
 
@@ -59,7 +59,7 @@ Als uw tenant is gefedereerd, MOET uw identiteitsprovider bovendien het WS-Fed e
 
     ![Scherm Aanmelden](./media/azuread-joined-devices-frx/03.png)
 
-1. Uw apparaat zoekt naar een overeenkomende Tenant in azure AD. Als u zich in een federatief domein bevindt, wordt u omgeleid naar uw on-premises STS-server (Secure Token Service), bijvoorbeeld Active Directory Federation Services (AD FS).
+1. Uw apparaat zoekt een overeenkomende tenant in Azure AD. Als u zich in een federatief domein bevindt, wordt u omgeleid naar uw on-premises STS-server (Secure Token Service), bijvoorbeeld Active Directory Federation Services (AD FS).
 1. Als u een gebruiker in een niet-federatief domein bent, voert u uw referenties rechtstreeks op de Azure AD-gehoste pagina in. 
 1. U wordt gevraagd om meervoudige verificatie. 
 1. Azure AD controleert of inschrijving voor mobiel apparaatbeheer vereist is.

@@ -6,24 +6,24 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593271"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassingen uitvoeren in AKS (Azure Kubernetes Service)
 
-Kubernetes biedt een gedistribueerd platform voor toepassingen in containers. U gaat uw eigen toepassingen en services implementeren in een Kubernetes-cluster, en u laat het cluster de beschikbaarheid en connectiviteit beheren. In deze zelfstudie, deel vier van zeven, wordt een voorbeeldtoepassing geïmplementeerd in een Kubernetes-cluster. Procedures voor:
+Kubernetes biedt een gedistribueerd platform voor toepassingen in containers. U gaat uw eigen toepassingen en services implementeren in een Kubernetes-cluster, en u laat het cluster de beschikbaarheid en connectiviteit beheren. In deze zelfstudie, deel vier van zeven, wordt een voorbeeldtoepassing geïmplementeerd in een Kubernetes-cluster. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Een Kubernetes-manifest bestand bijwerken
+> * Een Kubernetes-manifestbestand bijwerken
 > * Een toepassing in Kubernetes uitvoeren
 > * De toepassing testen
 
 In aanvullende zelfstudies wordt deze toepassing uitgebreid en bijgewerkt.
 
-In deze quickstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service-cluster (AKS)][kubernetes-concepts] voor meer informatie.
+In deze snelstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)][kubernetes-concepts] voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -31,7 +31,7 @@ In de vorige zelfstudies is een toepassing verpakt in een containerinstallatieko
 
 Om deze zelfstudie te voltooien hebt u het vooraf gemaakte Kubernetes-manifestbestand `azure-vote-all-in-one-redis.yaml` nodig. Dit bestand is met de broncode van de toepassing gedownload in een vorige zelfstudie. Controleer of u een kloon van de opslagplaats hebt gemaakt en of u mappen in de gekloonde opslagplaats hebt gewijzigd. Als u deze stappen niet hebt uitgevoerd en u deze zelfstudie wilt volgen, begint u met [Tutorial 1 – Create container images][aks-tutorial-prepare-app] (Zelfstudie 1: containerinstallatiekopieën maken).
 
-Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="update-the-manifest-file"></a>Het manifestbestand bijwerken
 
@@ -49,7 +49,7 @@ Het voorbeeldmanifestbestand van de Git-opslagplaats dat in de eerste zelfstudie
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Vervang *microsoft* door de naam van de ACR-aanmeldingsserver. De naam van de installatie kopie vindt u in regel 51 van het manifest bestand. In het volgende voorbeeld ziet u de standaardnaam van de installatiekopie:
+Vervang *microsoft* door de naam van de ACR-aanmeldingsserver. De naam van de installatiekopie vindt u op regel 51 van het manifestbestand. In het volgende voorbeeld ziet u de standaardnaam van de installatiekopie:
 
 ```yaml
 containers:
@@ -102,7 +102,7 @@ Eerst wordt het *Extern IP-adres* voor de service *azure-vote-front* weergegeven
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Zodra het *Extern IP-adres* is gewijzigd van *in behandeling* in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
+Zodra het *EXTERNAL-IP*-adres is gewijzigd van *in behandeling* in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
@@ -112,7 +112,7 @@ Open een webbrowser naar het externe IP-adres van uw service als u de toepassing
 
 ![Afbeelding van Kubernetes-cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Als de toepassing niet is geladen, kan dit zijn veroorzaakt door een autorisatieprobleem met het register van de installatiekopie. Als u de status van uw containers wilt bekijken, gebruikt u de opdracht `kubectl get pods`. Zie [verifiëren met Azure container Registry vanuit de Azure Kubernetes-service](cluster-container-registry-integration.md)als de container installatie kopieën niet kunnen worden opgehaald.
+Als de toepassing niet is geladen, kan dit zijn veroorzaakt door een autorisatieprobleem met het register van de installatiekopie. Als u de status van uw containers wilt bekijken, gebruikt u de opdracht `kubectl get pods`. Zie [Verifiëren bij Azure Container Registry vanuit Azure Kubernetes Service](cluster-container-registry-integration.md) als de containerinstallatiekopieën niet kunnen worden opgehaald.
 
 ## <a name="next-steps"></a>Volgende stappen
 

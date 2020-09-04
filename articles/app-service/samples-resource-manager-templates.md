@@ -4,15 +4,15 @@ description: Gebruik Azure Resource Manager-sjabloonvoorbeelden voor een aantal 
 author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
-ms.date: 01/04/2019
+ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517702"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891042"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager-sjablonen voor App Service
 
@@ -44,6 +44,7 @@ Zie [Microsoft.Web resource types](/azure/templates/microsoft.web/allversions) (
 | [App met een database in Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Hiermee worden een App Service-app en database in Azure SQL Database geïmplementeerd op serviceniveau Basic. |
 | [App met een Blobopslag-verbinding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Hiermee wordt een App Service-app geïmplementeerd met een verbindingsreeks voor Azure Blobopslag. Daarna kunt u Blobopslag gebruiken vanuit de app. |
 | [App met Azure Cache voor Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Hiermee wordt een App Service-app met een Azure Cache voor Redis geïmplementeerd. |
+| [App verbonden met een back-end-web-app](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| Hiermee worden twee web-apps geïmplementeerd (front-end en back-end) die veilig zijn verbonden met VNet-injectie en het privé-eindpunt. |
 |**App Service-omgeving**| **Beschrijving** |
 | [Create an App Service environment v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create)(Een App Service-omgeving v2 maken) | Hiermee wordt een App Service-omgeving v2 in uw virtuele netwerk gemaakt. |
 | [Create an App Service environment v2 with an ILB Address](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) (Een App Service-omgeving v2 met een ILB-adres (interne load balancer) maken) | Hiermee wordt een App Service-omgeving v2 in uw virtuele netwerk gemaakt met een privéadres voor de interne load balancer. |

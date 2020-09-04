@@ -1,9 +1,9 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure data Lake Store-Windows-Azure AD
+title: Zelfstudie`:` Een beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store - Windows - Azure AD
 description: Een zelfstudie die laat zien hoe u toegang krijgt tot Azure Data Lake Storage met een door het Windows-VM-systeem toegewezen beheerde identiteit.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d29edec6145ebc03218264532cae07b6afc9654c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75977885"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254199"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure Data Lake Store met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
+Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure Data Lake Store met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Uw virtuele machine toegang verlenen tot Azure Data Lake Storage
@@ -46,7 +46,7 @@ Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure Data Lake Store met
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-U kunt nu uw virtuele machine toegang tot bestanden en mappen in Azure Data Lake Storage verlenen.  Voor deze stap kunt u een bestaande Data Lake Storage gebruiken, of een nieuwe maken.  Als u een nieuwe Data Lake Storage wilt maken met behulp van Azure Portal, volgt u deze [snelstart voor Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). Er zijn ook snelstarts in de [documentatie over Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) voor het gebruik van Azure CLI en Azure Powershell.
+U kunt nu uw virtuele machine toegang tot bestanden en mappen in Azure Data Lake Storage verlenen.  Voor deze stap kunt u een bestaande Data Lake Storage gebruiken, of een nieuwe maken.  Als u een nieuwe Data Lake Storage wilt maken met behulp van Azure Portal, volgt u deze [snelstart voor Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md). Er zijn ook snelstarts in de [documentatie over Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md) voor het gebruik van Azure CLI en Azure Powershell.
 
 Maak een nieuwe map in uw Data Lake Storage, en verleen de door het systeem toegewezen identiteit van uw VM toestemming voor het lezen, schrijven en uitvoeren van bestanden in die map:
 
@@ -55,18 +55,18 @@ Maak een nieuwe map in uw Data Lake Storage, en verleen de door het systeem toeg
 3. Klik op **Data Explorer** in de opdrachtbalk.
 4. De hoofdmap van de Data Lake Storage is geselecteerd.  Klik op **Toegang** in de opdrachtbalk.
 5. Klik op **Add**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
-6. Klik op **Machtigingen selecteren**.  Selecteer **Lezen** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Alleen een toegangsmachtiging**.  Klik op **Ok**.  De machtiging wordt toegevoegd.
+6. Klik op **Machtigingen selecteren**.  Selecteer **Lezen** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Alleen een toegangsmachtiging**.  Klik op **OK**.  De machtiging wordt toegevoegd.
 7. Sluit de blade **Toegang**.
-8. Voor deze zelfstudie maakt u een nieuwe map.  Klik op **Nieuwe map** in de opdrachtbalk en geef een naam voor de nieuwe map op, bijvoorbeeld **TestFolder**.  Klik op **Ok**.
+8. Voor deze zelfstudie maakt u een nieuwe map.  Klik op **Nieuwe map** in de opdrachtbalk en geef een naam voor de nieuwe map op, bijvoorbeeld **TestFolder**.  Klik op **OK**.
 9. Klik op de map die u hebt gemaakt en klik vervolgens op **Toegang** in de opdrachtbalk.
 10. Klik, net zoals bij stap 5, op **Toevoegen**, voer de naam van uw virtuele machine in het veld **Selecteren** in, selecteer deze, en klik op **Selecteren**.
-11. Klik, net zoals bij stap 6, op **Machtigingen selecteren**, selecteer **Lezen**, **Schrijven** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Een vermelding van een toegangsmachtiging en een vermelding van een standaardmachtiging**.  Klik op **Ok**.  De machtiging wordt toegevoegd.
+11. Klik, net zoals bij stap 6, op **Machtigingen selecteren**, selecteer **Lezen**, **Schrijven** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Een vermelding van een toegangsmachtiging en een vermelding van een standaardmachtiging**.  Klik op **OK**.  De machtiging wordt toegevoegd.
 
-De door het systeem toegewezen beheerde identiteit van uw virtuele machine kan nu alle bewerkingen uitvoeren op bestanden in de map die u hebt gemaakt.  Lees dit artikel over [toegangsbeheer in Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control) voor meer informatie over het beheren van de toegang tot Data Lake Storage.
+De door het systeem toegewezen beheerde identiteit van uw virtuele machine kan nu alle bewerkingen uitvoeren op bestanden in de map die u hebt gemaakt.  Lees dit artikel over [toegangsbeheer in Data Lake Storage](../../data-lake-store/data-lake-store-access-control.md) voor meer informatie over het beheren van de toegang tot Data Lake Storage.
 
 ## <a name="access-data"></a>Toegang tot gegevens
 
-Azure Data Lake Storage biedt systeemeigen ondersteuning voor Azure Active Directory-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources kunnen worden geaccepteerd.  Om te verifiëren bij het bestandssysteem van Data Lake Storage verzendt u een toegangstoken dat door Azure AD is uitgegeven aan het eindpunt van uw Data Lake Storage-bestandssysteem, in een autorisatie-header in de indeling 'Bearer <WAARDE_VAN_TOEGANGSTOKEN>'.  Lees [Verificatie bij Data Lake Storage met Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory) voor meer informatie over ondersteuning voor Azure AD-verificatie in Data Lake Storage
+Azure Data Lake Storage biedt systeemeigen ondersteuning voor Azure Active Directory-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources kunnen worden geaccepteerd.  Om te verifiëren bij het bestandssysteem van Data Lake Storage verzendt u een toegangstoken dat door Azure AD is uitgegeven aan het eindpunt van uw Data Lake Storage-bestandssysteem, in een autorisatie-header in de indeling 'Bearer <WAARDE_VAN_TOEGANGSTOKEN>'.  Lees [Verificatie bij Data Lake Storage met Azure Active Directory](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md) voor meer informatie over ondersteuning voor Azure AD-verificatie in Data Lake Storage
 
 > [!NOTE]
 > Beheerde identiteiten voor Azure-resources worden nog niet ondersteund in de client-SDK's van het Data Lake Storage-bestandssysteem.  Deze zelfstudie wordt bijgewerkt zodra ondersteuning voor MSI wordt toegevoegd aan de SDK.
@@ -76,7 +76,7 @@ In deze zelfstudie gebruikt u PowerShell voor het maken van REST-aanvragen om te
 1. Navigeer in Azure Portal naar **Virtuele machines**, ga naar uw virtuele Windows-machine, en klik op de pagina **Overzicht** op **Verbinden**.
 2. Voer uw referenties (**gebruikersnaam** en **wachtwoord**) in die u hebt toegevoegd bij het maken van de virtuele Windows-machine. 
 3. Nu u een **Verbinding met extern bureaublad** met de virtuele machine hebt gemaakt, opent u **PowerShell** in de externe sessie. 
-4. Gebruik de cmdlet `Invoke-WebRequest` van Powershell om een aanvraag te versturen naar de lokale beheerde identiteiten om een toegangstoken voor Azure Data Lake Store op te halen voor het Azure-resources-eindpunt.  De resource-id voor Data Lake Store `https://datalake.azure.net/`is.  Voor Data Lake moet u een exact overeenkomende resource-id opgeven, met de schuine streep op het einde.
+4. Gebruik de cmdlet `Invoke-WebRequest` van Powershell om een aanvraag te versturen naar de lokale beheerde identiteiten om een toegangstoken voor Azure Data Lake Store op te halen voor het Azure-resources-eindpunt.  De resource-id voor Data Lake Storage is `https://datalake.azure.net/`.  Voor Data Lake moet u een exact overeenkomende resource-id opgeven, met de schuine streep op het einde.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -193,4 +193,4 @@ Met andere API's van het Data Lake Storage-bestandssysteem kunt u toevoegen aan 
 In deze zelfstudie hebt u geleerd hoe u toegang krijgt tot een Azure Data Lake Store met behulp van een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine. Zie voor meer informatie over Azure Data Lake Storage:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

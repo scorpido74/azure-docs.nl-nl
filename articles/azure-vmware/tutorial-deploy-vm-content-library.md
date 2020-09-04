@@ -1,16 +1,16 @@
 ---
-title: "Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution (AVS)"
-description: In deze zelfstudie over Azure VMware Solution (AVS) maakt u een inhoudsbibliotheek voor het implementeren van een virtuele machine in een AVS-privécloud.
+title: "Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution"
+description: In deze zelfstudie over Azure VMware Solution maakt u een inhoudsbibliotheek voor het implementeren van een virtuele machine in een Azure VMware Solution-privécloud.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612789"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750549"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution (AVS)
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution
 
 In een inhoudsbibliotheek wordt inhoud in de vorm van bibliotheekitems opgeslagen en beheerd. Eén bibliotheekitem bestaat uit een of meer bestanden die u gebruikt voor het implementeren van virtuele machines (VM's). 
  
@@ -22,7 +22,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie zijn een NSX-T-segment voor logische switches en een beheerde DHCP-service vereist.  Raadpleeg [Hoe beheert u DHCP in Azure VMware Solution (AVS)-preview](manage-dhcp.md) voor meer informatie.
+Voor het voltooien van deze zelfstudie zijn een NSX-T-segment voor logische switches en een beheerde DHCP-service vereist.  Raadpleeg [Hoe beheert u DHCP in Azure VMware Solution Preview](manage-dhcp.md) voor meer informatie.
 
 ## <a name="create-a-content-library"></a>Maak een inhoudsbibliotheek
 

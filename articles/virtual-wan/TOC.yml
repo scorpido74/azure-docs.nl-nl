@@ -4,16 +4,6 @@
   items:
     - name: Wat is Virtual WAN?
       href: virtual-wan-about.md
-    - name: Architectuur
-      items:
-        - name: Migreren naar Virtual WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: Wereldwijde architectuur voor doorvoernetwerk
-          href: virtual-wan-global-transit-network-architecture.md
-        - name: SD-WAN-connectiviteitsarchitectuur
-          href: sd-wan-connectivity-architecture.md
-        - name: Verbonden met China
-          href: interconnect-china.md
 - name: Zelfstudies
   items:
     - name: Een site-naar-site-verbinding maken
@@ -36,11 +26,21 @@
           href: virtual-wan-locations-partners.md
         - name: Automatiseringsrichtlijnen voor partners
           href: virtual-wan-configure-automation-providers.md
+    - name: Architectuur
+      items:
+        - name: Migreren naar Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Wereldwijde architectuur voor doorvoernetwerk
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN-connectiviteitsarchitectuur
+          href: sd-wan-connectivity-architecture.md
+        - name: Verbonden met China
+          href: interconnect-china.md
     - name: Routering
       items:
         - name: Over virtuele hub-routering
           href: about-virtual-hub-routing.md
-        - name: Scenario's
+        - name: Routeringsscenario's
           items:
             - name: Any-to-any
               href: scenario-any-to-any.md
@@ -154,8 +154,6 @@
   items:
     - name: Veelgestelde vragen
       href: virtual-wan-faq.md
-    - name: Aankondigingen bijwerken
-      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Abonnements- en servicebeperkingen

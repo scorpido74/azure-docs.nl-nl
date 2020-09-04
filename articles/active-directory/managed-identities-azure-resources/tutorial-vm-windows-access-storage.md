@@ -1,9 +1,9 @@
 ---
-title: Toegang tot Azure Storage via een door het Windows-VM-systeem toegewezen beheerde identiteit | Microsoft Docs
+title: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage | Microsoft Docs
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Storage.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75971964"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263175"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Procedures voor:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een blobcontainer in een opslagaccount maken
@@ -60,7 +60,7 @@ In deze sectie maakt u een opslagaccount.
 3. Geef onder **Naam** een naam voor het opslagaccount op.
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op **Resource Manager** en **Storage (algemeen gebruik v1)**.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -82,12 +82,12 @@ Voor bestanden is blobopslag nodig, dus moeten we een blobcontainer maken waarin
 
 ### <a name="grant-access"></a>Toegang verlenen
 
-In deze sectie wordt beschreven hoe u uw VM toegang verleent tot een Azure Storage-container. U kunt de door het systeem toegewezen beheerde identiteit van de virtuele machine gebruiken om de gegevens in de Azure Storage-blob op te halen.
+In deze sectie leert u hoe u uw VM toegang kunt verlenen tot een Azure Storage-container. U kunt de door het systeem toegewezen beheerde identiteit van de virtuele machine gebruiken om de gegevens in de Azure Storage-blob op te halen.
 
 1. Navigeer terug naar het zojuist gemaakte opslagaccount.
 2. Klik op de koppeling **Toegangsbeheer (IAM)** in het linkerpaneel.
-3. Klik op **+ roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor uw virtuele machine toe te voegen.
-4. Selecteer onder **rol**in de vervolg keuzelijst **Storage BLOB data Reader**.
+3. Klik op **+ Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen.
+4. In de vervolgkeuzelijst onder **Rol** selecteert u **Gegevenslezer voor Storage Blob**.
 5. In de volgende vervolgkeuzelijst, onder **Toegang toewijzen aan**, kiest u **Virtuele machine**.
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op **Alle resourcegroepen**.
 7. Kies onder **Selecteren** uw virtuele machine en klik vervolgens op **Opslaan**.
@@ -98,7 +98,7 @@ In deze sectie wordt beschreven hoe u uw VM toegang verleent tot een Azure Stora
 
 Azure Storage biedt systeemeigen ondersteuning voor Microsoft Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van een beheerde identiteit direct kunnen worden geaccepteerd. Dit maakt deel uit van de integratie van Azure Storage met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
-Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met Azure Storage met behulp van een toegangs token en het lezen van de inhoud van het bestand dat u eerder hebt gemaakt. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de beheerde identiteit van de virtuele machine. .NET Framework 4,6 of hoger is vereist voor het gebruik van de methode voor toegangs tokens. Vervang de waarde van `<URI to blob file>` dienovereenkomstig. U kunt deze waarde verkrijgen door te navigeren naar het bestand dat u hebt gemaakt en geüpload naar de blobopslag en de **URL** onder **Eigenschappen** op de pagina **Overzicht** te kopiëren.
+Hier volgt een voorbeeld van .NET-code voor het openen van een verbinding met Azure Storage met behulp van een toegangstoken en het lezen van de inhoud van het bestand dat u eerder hebt gemaakt. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de beheerde identiteit van de virtuele machine. .NET framework 4.6 of hoger is vereist voor het gebruik van de toegangsmethode met een toegangstoken. Vervang de waarde van `<URI to blob file>` dienovereenkomstig. U kunt deze waarde verkrijgen door te navigeren naar het bestand dat u hebt gemaakt en geüpload naar de blobopslag en de **URL** onder **Eigenschappen** op de pagina **Overzicht** te kopiëren.
 
 ```csharp
 using System;
@@ -184,4 +184,4 @@ Het antwoord bevat de inhoud van het bestand:
 In deze zelfstudie hebt u geleerd een door het Windows-VM-systeem toegewezen identiteit in te schakelen om toegang tot Azure Storage te krijgen.  Zie voor meer informatie over Azure Storage:
 
 > [!div class="nextstepaction"]
-> [Azure Storage](/azure/storage/common/storage-introduction)
+> [Azure Storage](../../storage/common/storage-introduction.md)

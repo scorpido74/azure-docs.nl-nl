@@ -4,12 +4,12 @@ description: Meer informatie over Hyper-V-VM's voorbereiden op evaluatie/migrati
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109617"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928918"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -38,6 +38,7 @@ De tabel bevat een overzicht van de taken die u moet uitvoeren in Azure. Volg de
 **Maak een Azure Migrate-project** | Een Azure Migrate-project voorziet in een centrale locatie voor het organiseren en beheren van evaluaties en migraties met Azure Migrate-tools, Microsoft-hulpprogramma's en producten van derden. | Uw Azure-account heeft Inzender- of Eigenaar-machtigingen nodig voor de resourcegroep waarin het project zich bevindt.
 **Apparaat registreren** | Azure Migrate maakt gebruik van een lichtgewicht Azure Migrate-apparaat om Hyper-V-VM’s te detecteren en te evalueren. [Meer informatie](migrate-appliance-architecture.md#appliance-registration). | Als u het apparaat wilt registreren, moet uw Azure-account Inzender- of Eigenaar-machtigingen voor het Azure-abonnement hebben.
 **Azure AD-app maken** | Bij het registreren van het apparaat maakt Azure Migrate een Azure Active Directory (Azure AD)-app die wordt gebruikt voor communicatie tussen de agents die op het apparaat worden uitgevoerd en Azure Migrate. | Uw Azure-account moet gemachtigd zijn om Azure AD-apps te maken.
+**Een sleutelkluis maken** | De sleutelkluis wordt gemaakt tijdens de apparaatregistratie, en wordt gebruikt om het certificaat te beheren dat tijdens de apparaatconfiguratie wordt gedownload.| Als u wilt toestaan dat Azure Migrate de sleutelkluis maakt, heeft uw Azure-account Inzender-machtigingen nodig voor de resourcegroep waarin het Azure Migrate-project zich bevindt.
 **Een VM maken**: | U hebt machtigingen nodig voor het maken van een virtuele machine in de resourcegroep en het virtuele netwerk, en voor het schrijven naar een beheerde Azure-schijf. | Uw Azure-account heeft de rol Inzender voor virtuele machines nodig.
 
 
@@ -81,6 +82,7 @@ De tenant/globale beheerder kan machtigingen als volgt verlenen:
 #### <a name="assign-application-developer-role"></a>Rol toepassingsontwikkelaar toewijzen
 
 Een tenant/globale beheerder kan de rol van Toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+
 
 ### <a name="assign-azure-account-permissions"></a>Machtigingen voor het Azure-account toewijzen
 
@@ -175,7 +177,7 @@ Voordat u het Azure Migrate-apparaat instelt en de evaluatie begint in de volgen
 2. [Beoordeel](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) de vereisten voor virtuele Hyper-V-machines die u naar Azure wilt migreren.
 3. U moet enkele wijzigingen doorvoeren aan virtuele machines voordat u ze naar Azure migreert.
     - Het is belangrijk dat u deze wijzigingen aanbrengt voordat u begint met de migratie. Als u de VM migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
-    - Bekijk de voor [Windows](prepare-for-migration.md#windows-machines) en [Linux](prepare-for-migration.md#linux-machines) vereiste wijzigingen.
+    - Controleer de voor [Windows](prepare-for-migration.md#windows-machines) en [Linux](prepare-for-migration.md#linux-machines) vereiste wijzigingen.
 
 
 

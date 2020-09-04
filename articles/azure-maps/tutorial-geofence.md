@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121235"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299300"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelfstudie: Een geofence instellen met behulp van Azure Maps
 
@@ -258,15 +258,15 @@ Volg de stappen hieronder om een gebeurtenisabonnement te maken voor Enter-gebeu
 
 5. Herhaal stap 1-4 voor het Logic App Exit-eindpunt dat u in de vorige sectie hebt gemaakt. Zorg ervoor dat u bij stap 3 `Geofence Exited` kiest als het gebeurtenistype.
 
-## <a name="use-search-geofence-get-api"></a>Search Geofence Get API gebruiken
+## <a name="use-spatial-geofence-get-api"></a>Spatial Geofence Get API gebruiken
 
-Nu gebruiken we de [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) om e-mailmeldingen te sturen naar de Operations Manager wanneer een apparaat de geofences binnenkomt of verlaat.
+Nu gebruiken we de [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) om e-mailmeldingen te sturen naar de Operations Manager wanneer een apparaat de geofences binnenkomt of verlaat.
 
 Elk apparaat heeft een `deviceId`. In deze zelfstudie volgen we één apparaat, waarvan de unieke ID `device_1` is.
 
 Voor de duidelijkheid laat het volgende diagram de vijf locaties van het apparaat in de loop der tijd zien, te beginnen bij de *Start*-locatie, ergens buiten de geofences. Voor deze zelfstudie wordt de *Start*-locatie niet gedefinieerd, omdat we geen query uitvoeren op het apparaat op die locatie.
 
-Wanneer we een query uitvoeren op [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) met een apparaatlocatie die aangeeft dat de geofence voor het eerst wordt binnengegaan of verlaten, roept de Event Grid het juiste Logic App-eindpunt aan om een e-mailbericht naar de Operations Manager te sturen.
+Wanneer we een query uitvoeren op [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) met een apparaatlocatie die aangeeft dat de geofence voor het eerst wordt binnengegaan of verlaten, roept de Event Grid het juiste Logic App-eindpunt aan om een e-mailbericht naar de Operations Manager te sturen.
 
 Elk van de volgende secties doet HTTP GET Geofencing API-aanvragen met behulp van de vijf verschillende locatiecoördinaten van de apparatuur.
 

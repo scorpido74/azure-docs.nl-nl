@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld: een app voor het verwerken van afbeeldingen in C verkennen #'
+title: 'Voorbeeld: Een app voor afbeeldingsverwerking ontdekken in C#'
 titleSuffix: Azure Cognitive Services
-description: Verken een eenvoudige Windows-app die gebruikmaakt van de Computer Vision-API in azure Cognitive Services. Voer OCR uit, maak miniaturen en werk met visuele kenmerken in een afbeelding.
+description: Ontdek een eenvoudige Windows-app die gebruikmaakt van de Computer Vision-API in Azure Cognitive Services. Voer OCR uit, maak miniaturen en werk met visuele kenmerken in een afbeelding.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
@@ -10,15 +10,15 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 4445fd893027f21adfcf6a273d1ba6360087ec49
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 522cf801e7c1bfdd3ed1f452c123a2db701c0c42
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983608"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936347"
 ---
-# <a name="sample-explore-an-image-processing-app-with-c"></a>Voor beeld: een app voor het verwerken van installatie kopieën verkennen met C #
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Voorbeeld: Een app voor afbeeldingsverwerking ontdekken met C#
 
 Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren, slim bijgesneden miniaturen maken, plus visuele kenmerken, inclusief gezichten, in een afbeelding detecteren, categoriseren, taggen en beschrijven. Met het onderstaande voorbeeld kunt u een afbeeldings-URL of een lokaal opgeslagen bestand verzenden voor analyse. U kunt dit open-sourcevoorbeeld gebruiken als een sjabloon voor het bouwen van uw eigen app voor Windows met behulp van de Computer Vision-API en Windows Presentation Foundation (WPF), een onderdeel van .NET Framework.
 
@@ -33,10 +33,10 @@ Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om opti
 Voordat u met de voorbeeld-app gaat werken, moet zijn voldaan aan de volgende vereisten:
 
 * U hebt [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) of hoger nodig.
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Azure-abonnement - [Maak een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="get-the-sample-app"></a>De voorbeeld-app downloaden
 
@@ -82,7 +82,7 @@ U kunt de voorbeeld-app uitvoeren om te zien hoe deze samenwerkt met u en de Com
 1. Wanneer de voorbeeld-app wordt weergegeven, kiest u **Subscription Key Management** in het navigatiedeelvenster om de pagina voor het beheren van abonnementssleutels weer te geven.
    ![Pagina Subscription Key Management](../Images/Vision_UI_Subscription.PNG)  
 1. Geef uw abonnementssleutel op in **Subscription Key**.
-1. Voer de eind punt-URL in het **eind punt**in.  
+1. Voer de eindpunt-URL in bij **Eindpunt**.  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Als u uw abonnementssleutel en eindpunt-URL niet opnieuw wilt invoeren wanneer u de voorbeeld-app later nogmaals uitvoert, kiest u **Save Setting** om de abonnementssleutel en de eindpunt-URL op te slaan op uw computer. Als u de eerder opgeslagen abonnementssleutel en eindpunt-URL wilt verwijderen, kiest u **Delete Setting**.
 
@@ -313,4 +313,4 @@ Wanneer u deze resources niet meer nodig hebt, verwijdert u de map waarin u de o
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aan de slag met face service](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Aan de slag met Face service](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

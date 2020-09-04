@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034399"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871204"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -54,7 +55,10 @@ Hier zijn enkele mogelijkheden van rechtenbeheer:
 - Niet-beheerders de mogelijkheid geven om toegangspakketten te maken. Deze toegangspakketten bevatten resources die gebruikers kunnen aanvragen en de gedelegeerde beheerders van de toegangspakketten kunnen beleidsregels bepalen over welke gebruikers toegang kunnen aanvragen, wie hun toegang moet goedkeuren en wanneer toegang verloopt.
 - Verbonden organisaties selecteren waarvan gebruikers toegang kunnen aanvragen.  Wanneer een gebruiker die zich nog niet in uw gebruikerslijst bevindt toegang vraagt, en die krijgt, wordt deze automatisch uitgenodigd voor uw gebruikerslijst en krijgt deze toegang toegewezen.  Wanneer hun toegang verloopt, en als ze geen andere toegewezen toegangspakketten hebben, dan kan hun B2B-account in uw gebruikerslijst automatisch verwijderd worden.
 
-U kunt aan de slag gaan met onze [zelfstudie om uw eerste toegangspakket te maken](entitlement-management-access-package-first.md). U kunt ook de [veelvoorkomende scenario's](entitlement-management-scenarios.md) lezen of video's bekijken, waaronder
+>[!NOTE]
+>Als u klaar bent om Rechtenbeheer uit te proberen, kunt u aan de slag gaan met onze [zelfstudie om uw eerste toegangspakket te maken](entitlement-management-access-package-first.md).
+
+U kunt ook de [veelvoorkomende scenario's](entitlement-management-scenarios.md) lezen of video's bekijken, waaronder
 
 - [Azure AD-rechtenbeheer implementeren in uw organisatie](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [Uw gebruik van Azure AD-rechtenbeheer bewaken en schalen](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -99,10 +103,10 @@ Het volgende diagram toont een voorbeeld van de verschillende elementen in recht
 
 ## <a name="when-should-i-use-access-packages"></a>Wanneer moet ik toegangspakketten gebruiken?
 
-Toegangspakketten vormen geen vervanging voor andere mechanismen om toegang toe te wijzen.  Ze zijn het meest geschikt in situaties zoals de volgende:
+Toegangspakketten vormen geen vervanging voor andere mechanismen om toegang toe te wijzen.  Ze zijn het meest geschikt in situaties zoals:
 
 - Werknemers hebben in de tijd beperkte toegang nodig voor een bepaalde taak.  U kunt bijvoorbeeld groepslicenties en een dynamische groep gebruiken om ervoor te zorgen dat alle werknemers een Exchange Online-postvak hebben, en daarnaast toegangspakketten gebruiken voor situaties waarbij werknemers aanvullende toegang nodig hebben, zoals om afdelingsspecifieke resources van een ander departement te lezen.
-- Toegang moet goedgekeurd worden door de manager van een werknemers of een ander aangewezen persoon.
+- Toegang die moet worden goedgekeurd door de manager van een werknemer of een andere aangewezen persoon.
 - Afdelingen willen hun eigen toegangsbeleid voor hun resources beheren zonder dat IT hierbij betrokken moet worden.  
 - Twee of meer organisaties werken samen aan een project. Bijgevolg moeten meerdere gebruikers van één organisatie via Azure AD B2B binnengebracht worden om de resources van een andere organisatie te bekijken.
 
@@ -149,7 +153,7 @@ Azure AD Premium P2-licenties zijn **niet** vereist voor de volgende taken:
 - Er zijn geen licenties vereist voor gebruikers die administratieve taken gedelegeerd krijgen, zoals een catalogusmaker, cataloguseigenaar en een beheerder van een toegangspakket.
 - Er zijn geen licenties vereist voor gasten die toegangspakketten **kunnen** aanvragen, maar dat **niet** doen.
 
-Voor elke betaalde Azure AD Premium P2-licentie die u voor uw leden (werknemers) aanschaft, kunt u Azure AD B2B gebruiken om maximaal vijf gastgebruikers uit te nodigen. Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../b2b/licensing-guidance.md) voor meer informatie.
+Voor elke betaalde Azure AD Premium P2-licentie die u voor uw leden (werknemers) aanschaft, kunt u Azure AD B2B gebruiken om maximaal vijf gastgebruikers uit te nodigen. Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../external-identities/licensing-guidance.md) voor meer informatie.
 
 Zie [Licenties toewijzen en verwijderen met behulp van het Azure Active Directory-portal](../fundamentals/license-users-groups.md) voor meer informatie over licenties.
 

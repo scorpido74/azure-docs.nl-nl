@@ -1,9 +1,9 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager-Windows-Azure AD
+title: Zelfstudie`:` Een beheerde identiteit gebruiken voor toegang tot Azure Resource Manager - Windows - Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het krijgen van toegang tot Azure Resource Manager met een door de gebruiker toegewezen beheerde identiteit op een Windows-VM.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,22 +13,22 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75977839"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255695"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Zelf studie: een door de gebruiker toegewezen beheerde identiteit op een Windows-VM gebruiken om toegang te krijgen tot Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Zelfstudie: Toegang krijgen tot Azure Resource Manager met een door de gebruiker toegewezen beheerde identiteit op een Windows-VM
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 In deze zelfstudie wordt uitgelegd hoe u een door de gebruiker toegewezen identiteit kunt maken, deze toewijzen aan een virtuele Windows-machine (VM) en die identiteit vervolgens gebruiken om toegang te krijgen tot de Azure Resource Manager-API. Beheerde service-identiteiten worden automatisch beheerd door Azure. Ze maken verificatie mogelijk voor services die Azure AD-verificatie ondersteunen, zonder dat er referenties in uw code hoeven te worden ingesloten. 
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een door de gebruiker toegewezen beheerde identiteit maken
@@ -43,11 +43,11 @@ Procedures voor:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Aanmelden bij Azure Portal](https://portal.azure.com)
+- [Meld u aan bij Azure Portal](https://portal.azure.com)
 
-- [Een virtuele Windows-machine maken](/azure/virtual-machines/windows/quick-create-portal)
+- [Een Windows-VM maken](../../virtual-machines/windows/quick-create-portal.md)
 
-- Om de stappen voor het maken van de vereiste resources en het rolbeheer in deze zelfstudie uit te voeren, moet uw account 'Eigenaar'-machtigingen hebben voor het juiste bereik (uw abonnement of resourcegroep). Voor hulp bij roltoewijzing gaat u naar [Op rollen gebaseerd toegangsbeheer gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](/azure/role-based-access-control/role-assignments-portal).
+- Om de stappen voor het maken van de vereiste resources en het rolbeheer in deze zelfstudie uit te voeren, moet uw account 'Eigenaar'-machtigingen hebben voor het juiste bereik (uw abonnement of resourcegroep). Voor hulp bij roltoewijzing gaat u naar [Op rollen gebaseerd toegangsbeheer gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](../../role-based-access-control/role-assignments-portal.md).
 - [Installeer de meest recente versie van de Azure PowerShell-module](/powershell/azure/install-az-ps). 
 - Voer `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 - Installeer de [nieuwste versie van PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
@@ -65,7 +65,7 @@ Voor een scenario dat is gebaseerd op een door de gebruiker toegewezen identitei
 
 ### <a name="create-identity"></a>Identiteit maken
 
-In deze sectie wordt uitgelegd hoe u een door de gebruiker toegewezen identiteit maakt. Een door de gebruiker toegewezen identiteit wordt als een zelfstandige Azure-resource gemaakt. Met de [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) wordt een identiteit gemaakt in uw Azure AD-tenant die kan worden toegewezen aan een of meer Azure-service-exemplaren.
+In deze sectie leert u hoe u een door een gebruiker toegewezen beheerde identiteit kunt maken. Een door de gebruiker toegewezen identiteit wordt als een zelfstandige Azure-resource gemaakt. Met de [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) wordt een identiteit gemaakt in uw Azure AD-tenant die kan worden toegewezen aan een of meer Azure-service-exemplaren.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -91,7 +91,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 
 ### <a name="assign-identity"></a>Identiteit toewijzen
 
-In deze sectie wordt beschreven hoe u de door de gebruiker toegewezen identiteit aan een Windows-VM toewijst. Een door de gebruiker toegewezen identiteit kan worden gebruikt door clients op meerdere Azure-resources. Gebruik de volgende opdrachten om de door de gebruiker toegewezen identiteit toe te wijzen aan één VM. Gebruik de eigenschap `Id` die in de vorige stap is geretourneerd voor de parameter `-IdentityID`.
+In deze sectie leert u hoe u de door de gebruiker toegewezen identiteit aan een Windows-VM kunt toewijzen Een door de gebruiker toegewezen identiteit kan worden gebruikt door clients op meerdere Azure-resources. Gebruik de volgende opdrachten om de door de gebruiker toegewezen identiteit toe te wijzen aan één VM. Gebruik de eigenschap `Id` die in de vorige stap is geretourneerd voor de parameter `-IdentityID`.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -100,7 +100,7 @@ Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -Iden
 
 ## <a name="grant-access"></a>Toegang verlenen 
 
-In deze sectie wordt beschreven hoe u uw door de gebruiker toegewezen identiteit toegang verleent aan een resource groep in Azure Resource Manager. Beheerde identiteiten voor Azure-resources biedt identiteiten die uw code kan gebruiken om toegangstokens aan te vragen voor verificatie bij resource-API's die Azure AD-verificatie ondersteunen. In deze zelfstudie krijgt uw code toegang tot de Azure Resource Manager-API. 
+In deze sectie leert u hoe u uw door de gebruiker toegewezen identiteit toegang kunt verlenen tot een resourcegroep in Azure Resource Manager. Beheerde identiteiten voor Azure-resources biedt identiteiten die uw code kan gebruiken om toegangstokens aan te vragen voor verificatie bij resource-API's die Azure AD-verificatie ondersteunen. In deze zelfstudie krijgt uw code toegang tot de Azure Resource Manager-API. 
 
 Voordat uw code toegang tot de API kan krijgen, moet u de identiteit toegang geven tot een resource in Azure Resource Manager. In dit geval is dat de resourcegroep waarin de VM zich bevindt. Werk de waarde voor `<SUBSCRIPTION ID>` bij overeenkomstig uw omgeving.
 
@@ -129,7 +129,7 @@ CanDelegate: False
 
 Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebben gemaakt.
 
-1. Meld u aan bij de Azure Portal op[https://portal.azure.com](https://portal.azure.com)
+1. Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
 
 2. Navigeer in Azure Portal naar **Virtuele machines**, ga naar de virtuele Windows-machine en klik op de pagina **Overzicht** op **Verbinden**.
 
@@ -137,7 +137,7 @@ Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebb
 
 4. Nu u een **Verbinding met extern bureaublad** met de virtuele machine hebt gemaakt, opent u **PowerShell** in de externe sessie.
 
-5. Dien met behulp van `Invoke-WebRequest` van Powershell een aanvraag in bij de lokale beheerde identiteiten om een toegangstoken voor Azure Resource Manager op te halen voor het Azure-resources-eindpunt.  De `client_id` waarde is de waarde die wordt geretourneerd bij het maken van de door de gebruiker toegewezen beheerde identiteit.
+5. Dien met behulp van `Invoke-WebRequest` van Powershell een aanvraag in bij de lokale beheerde identiteiten om een toegangstoken voor Azure Resource Manager op te halen voor het Azure-resources-eindpunt.  De waarde voor `client_id` is de waarde die wordt geretourneerd wanneer u de door de gebruiker toegewezen beheerde identiteit maakt.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -145,7 +145,7 @@ Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebb
     $ArmToken = $content.access_token
     ```
 
-### <a name="read-properties"></a>Eigenschappen lezen
+### <a name="read-properties"></a>Leeseigenschappen
 
 Gebruik het in de vorige stap opgehaalde toegangstoken om toegang te krijgen tot Azure Resource Manager en lees de eigenschappen van de resourcegroep waarvoor u uw door de gebruiker toegewezen identiteit toegang hebt verleend. Vervang `<SUBSCRIPTION ID>` door de abonnements-id van uw omgeving.
 
@@ -160,7 +160,7 @@ Het antwoord bevat de gegevens van de specifieke resourcegroep, vergelijkbaar me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een door de gebruiker toegewezen identiteit maakt en deze koppelt aan een virtuele Azure-machine om toegang te krijgen tot de Azure Resource Manager-API.  Zie voor meer informatie over Azure Resource Manager:
+In deze zelfstudie hebt u geleerd een door de gebruiker toegewezen identiteit te maken en deze te koppelen aan een virtuele machine in Azure voor toegang tot de Azure Resource Manager-API.  Zie voor meer informatie over Azure Resource Manager:
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

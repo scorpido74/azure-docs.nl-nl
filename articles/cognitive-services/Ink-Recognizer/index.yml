@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Documentatie voor Ink Recognizer-API
-summary: Leer de Ink Recognizer-API te gebruiken om digitale inktherkenning aan uw apps en services toe te voegen. De API is een cloudservice die machine learning gebruikt om handgeschreven tekst en tekeningen in een willekeurige context te herkennen.
+title: Documentatie voor Ink Recognizer-API (wordt buiten gebruik gesteld)
+summary: De preview van de Ink Recognizer-API is op 26 augustus 2020 beëindigd. Als u bestaande Ink Recognizer-resources hebt, kunt u die blijven gebruiken totdat de service volledig wordt beëindigd op 31 januari 2021. Leer de Ink Recognizer-API te gebruiken om digitale inktherkenning aan uw apps en services toe te voegen. De API is een cloudservice die machine learning gebruikt om handgeschreven tekst en tekeningen in een willekeurige context te herkennen.
 metadata:
   title: Ink Recognizer-API - zelfstudies, quickstarts, API-referentiemateriaal
   titleSuffix: Azure Cognitive Services
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2019
   ms.author: aahi
-  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0886171d074863009dd83163599c888db10e187
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415691"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89419585"
 landingContent:
 - title: Over de Ink Recognizer-API
   linkLists:

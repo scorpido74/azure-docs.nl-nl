@@ -1,9 +1,9 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure data Lake Store-Linux-Azure AD
+title: Zelfstudie`:` Een beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store - Linux - Azure AD
 description: Een zelfstudie die laat zien hoe u toegang krijgt tot Azure Data Lake Storage met een door het Linux-VM-systeem toegewezen beheerde identiteit.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0fe442741ae0b8fa817c9ea177ff244a413720e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d465419dfe36fd5dd67abdef22a6f54fba69a98e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75888512"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267459"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Zelfstudie: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In deze zelf studie leert u hoe u een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM) gebruikt om toegang te krijgen tot Azure Data Lake Store. Procedures voor: 
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Data Lake Store met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen: 
 
 In deze zelfstudie leert u het volgende:
 
@@ -40,7 +40,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-In deze sectie wordt beschreven hoe u uw VM toegang verleent tot bestanden en mappen in Azure Data Lake Store. Voor deze stap kunt u een bestaand Data Lake Storage-exemplaar gebruiken, of een nieuw exemplaar maken. Als u een Data Lake Storage wilt maken met behulp van Azure Portal, volgt u deze [snelstart voor Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). Er zijn ook snelstarts in de [documentatie over Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) voor het gebruik van Azure CLI en Azure Powershell.
+In deze sectie leert u hoe u uw VM toegang tot bestanden en mappen in Azure Data Lake Storage kunt verlenen. Voor deze stap kunt u een bestaand Data Lake Storage-exemplaar gebruiken, of een nieuw exemplaar maken. Als u een Data Lake Storage wilt maken met behulp van Azure Portal, volgt u deze [snelstart voor Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md). Er zijn ook snelstarts in de [documentatie over Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md) voor het gebruik van Azure CLI en Azure Powershell.
 
 Maak een nieuwe map in Data Lake Store, en verleen de door het systeem toegewezen beheerde identiteit voor de Linux-VM toestemming voor het lezen, schrijven en uitvoeren van bestanden in die map:
 
@@ -56,22 +56,22 @@ Maak een nieuwe map in Data Lake Store, en verleen de door het systeem toegeweze
 10. Selecteer **Toevoegen**, net als in stap 5. Voer in het vak **Selecteren** de naam van uw virtuele machine in. Selecteer uw virtuele machine in de zoekresultaten en klik op **Selecteren**.
 11. Selecteer **Machtigingen selecteren**, net als bij stap 6. Selecteer **Lezen**, **Schrijven** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Een toegangsmachtiging en een standaardmachtiging**. Selecteer **OK**.  De machtiging wordt toegevoegd.
 
-Beheerde identiteiten voor Azure-resources kunnen nu alle bewerkingen uitvoeren op bestanden in de map die u hebt gemaakt. Lees het artikel over [toegangsbeheer in Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control) voor meer informatie over het beheren van de toegang tot Data Lake Storage.
+Beheerde identiteiten voor Azure-resources kunnen nu alle bewerkingen uitvoeren op bestanden in de map die u hebt gemaakt. Lees het artikel over [toegangsbeheer in Data Lake Storage](../../data-lake-store/data-lake-store-access-control.md) voor meer informatie over het beheren van de toegang tot Data Lake Storage.
 
 ## <a name="get-an-access-token"></a>Een toegangstoken opvragen 
 
-In deze sectie wordt beschreven hoe u een toegangs token kunt verkrijgen en het Data Lake Store-bestands systeem aanroept. Azure Data Lake Storage biedt systeemeigen ondersteuning voor Azure Active Directory-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources kunnen worden geaccepteerd. Voor verificatie bij het bestandssysteem van Data Lake Storage verzendt u een door Azure AD uitgegeven toegangstoken naar het eindpunt van het Data Lake Storage-bestandssysteem. Het toegangstoken bevindt zich in een autorisatie-header met de notatie "Bearer \<ACCESS_TOKEN_VALUE\>".  Zie [Verificatie bij Data Lake Storage met Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory) voor meer informatie over ondersteuning voor Azure AD-verificatie in Data Lake Storage.
+In deze sectie leert u hoe u een toegangstoken kunt downloaden en het bestandssysteem van Data Lake Storage aanroepen. Azure Data Lake Storage biedt systeemeigen ondersteuning voor Azure Active Directory-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources kunnen worden geaccepteerd. Voor verificatie bij het bestandssysteem van Data Lake Storage verzendt u een door Azure AD uitgegeven toegangstoken naar het eindpunt van het Data Lake Storage-bestandssysteem. Het toegangstoken bevindt zich in een autorisatie-header met de notatie Bearer-token \<ACCESS_TOKEN_VALUE\>.  Zie [Verificatie bij Data Lake Storage met Azure Active Directory](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md) voor meer informatie over ondersteuning voor Azure AD-verificatie in Data Lake Storage.
 
 In deze zelfstudie gebruikt u cURL voor het maken van REST-aanvragen voor verificatie bij de REST-API van het Data Lake Storage-bestandssysteem.
 
 > [!NOTE]
 > Beheerde identiteiten voor Azure-resources worden nog niet ondersteund in de client-SDK's van het Data Lake Storage-bestandssysteem.
 
-U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) gebruiken. Als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client, raadpleegt u [SSH-sleutels gebruiken met Windows op Azure](../../virtual-machines/linux/ssh-from-windows.md) of [een open bare en persoonlijke SSH-sleutel paar maken en gebruiken voor Linux-vm's in azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
+U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](/windows/wsl/about) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
 1. Blader in de portal naar uw Linux-VM. Selecteer **Verbinden** in **Overzicht**.  
 2. Maak verbinding met de VM met behulp van de SSH-client van uw keuze. 
-3. Dien in het terminalvenster met behulp van cURL een aanvraag in bij het lokale eindpunt van beheerde identiteiten voor Azure-resources om een toegangstoken voor het Data Lake Storage-bestandssysteem op te halen. De resource-id voor Data Lake Store `https://datalake.azure.net/`is.  Het is belangrijk om de afsluitende slash in de resource-id op te nemen.
+3. Dien in het terminalvenster met behulp van cURL een aanvraag in bij het lokale eindpunt van beheerde identiteiten voor Azure-resources om een toegangstoken voor het Data Lake Storage-bestandssysteem op te halen. De resource-id voor Data Lake Storage is `https://datalake.azure.net/`.  Het is belangrijk om de afsluitende slash in de resource-id op te nemen.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -155,4 +155,4 @@ Met andere API's voor het Data Lake Storage-bestandssysteem kunt u toevoegen aan
 In deze zelfstudie hebt u geleerd een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM) te gebruiken om toegang tot een Azure Data Lake Store te krijgen. Zie voor meer informatie over Azure Data Lake Storage:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

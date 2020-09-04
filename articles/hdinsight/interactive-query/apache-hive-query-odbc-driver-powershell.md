@@ -1,88 +1,89 @@
 ---
-title: Query Apache Hive met ODBC-stuur programma & Power shell-Azure HDInsight
-description: Gebruik het micro soft Hive ODBC-stuur programma en Power shell om Apache Hive clusters in azure HDInsight op te vragen.
-keywords: Hive, Hive ODBC, Power shell
+title: Query's uitvoeren op Apache Hive met ODBC-stuurprogramma en PowerShell - Azure HDInsight
+description: Gebruik het Microsoft Hive ODBC-stuur programma en PowerShell om query's uit te voeren op Apache Hive-clusters in Azure HDInsight.
+keywords: hive,hive odbc,powershell
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73494325"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078568"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Zelf studie: query Apache Hive met ODBC en Power shell
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Zelfstudie: Query's uitvoeren op Apache Hive met ODBC en PowerShell
 
-Micro soft ODBC-stuur Programma's bieden een flexibele manier om te communiceren met verschillende soorten gegevens bronnen, met inbegrip van Apache Hive. U kunt code schrijven in script talen zoals Power shell die gebruikmaken van de ODBC-stuur Programma's om een verbinding met uw Hive-cluster te openen, een query van uw keuze door te geven en de resultaten weer te geven.
+Microsoft ODBC-stuurprogramma's bieden een flexibele manier om te communiceren met verschillende soorten gegevensbronnen, met inbegrip van Apache Hive. U kunt code schrijven in scripttalen zoals PowerShell die de ODBC-stuurprogramma's gebruiken om een verbinding met uw Hive-cluster te openen, een query van uw keuze door te geven en de resultaten weer te geven.
 
-In deze zelf studie voert u de volgende taken uit:
+In deze zelfstudie gaat u de volgende taken uitvoeren:
 
 > [!div class="checklist"]
-> * Down load en installeer het micro soft Hive ODBC-stuur programma
-> * Een Apache Hive ODBC-gegevens bron maken die aan uw cluster is gekoppeld
-> * Voorbeeld gegevens uit uw cluster opvragen met Power shell
+> * Het Microsoft Hive ODBC-stuurprogramma downloaden en installeren
+> * Een Apache Hive ODBC-gegevensbron maken die aan uw cluster is gekoppeld
+> * Query's uitvoeren op voorbeeldgegevens uit uw cluster met PowerShell
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u met deze zelfstudie begint, moet u beschikken over de volgende items:
 
-* Een interactief query cluster op HDInsight. Zie aan de [slag met Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)om een account te maken. Selecteer **interactieve query** als cluster type.
+* Een Interactive Query-cluster in HDInsight. Zie [Aan de slag met Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) om er een te maken. Selecteer **Interactieve query** als het clustertype.
 
-## <a name="install-microsoft-hive-odbc-driver"></a>Micro soft Hive ODBC-stuur programma installeren
+## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC-stuurprogramma installeren
 
-Down load en installeer het [micro soft Hive ODBC-stuur programma](https://www.microsoft.com/download/details.aspx?id=40886).
+Download en installeer het [Microsoft Hive ODBC-stuurprogramma](https://www.microsoft.com/download/details.aspx?id=40886).
 
-## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevens bron maken
+## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevensbron maken
 
-De volgende stappen laten zien hoe u een Apache Hive ODBC-gegevens bron maakt.
+De volgende stappen laten zien hoe u een Apache Hive ODBC-gegevensbron maakt.
 
-1. Navigeer vanuit Windows naar **Start** > **Windows-beheer hulpprogramma's** > **ODBC-gegevens bronnen (32-bits)/(64-bits)**.  Er wordt een venster **ODBC-gegevens bron beheer** geopend.
+1. Ga vanuit Windows naar **Start** > **Windows-beheertools** > **ODBC-gegevensbronnen (32-bits)/(64-bits)** .  Een venster **ODBC-gegevensbronbeheerder** wordt geopend.
 
-    ![OBDC-gegevens bron beheerder](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Een DSN configureren met behulp van ODBC-gegevens bron beheer")
+    ![ODBC-gegevensbronbeheerder](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Een DSN configureren met behulp van ODBC-gegevensbronbeheerder")
 
-1. Klik op het tabblad **gebruikers-DSN** op **toevoegen** om het venster **nieuwe gegevens bron maken** te openen.
+1. Op het tabblad **gebruikers-DSN** selecteert u **Toevoegen** om het venster **Nieuwe gegevensbron maken** te openen.
 
-1. Selecteer **micro soft Hive ODBC-stuur programma**en selecteer vervolgens **volt ooien** om het venster **micro soft Hive ODBC-stuur programma voor DSN-instellingen** te openen.
+1. Selecteer **Microsoft Hive ODBC-stuurprogramma** en selecteer vervolgens **Voltooien** om het venster **DSN-installatie van Microsoft Hive ODBC-stuurprogramma** te openen.
 
 1. Typ of selecteer de volgende waarden:
 
    | Eigenschap | Beschrijving |
    | --- | --- |
    |  Naam van de gegevensbron |Geef uw gegevensbron een naam |
-   |  Host (s) |Voer `CLUSTERNAME.azurehdinsight.net` in. Bijvoorbeeld: `myHDICluster.azurehdinsight.net` |
+   |  Host(s) |Voer `CLUSTERNAME.azurehdinsight.net` in. Bijvoorbeeld: `myHDICluster.azurehdinsight.net` |
    |  Poort |Gebruik **443**.|
-   |  Database |**Standaard instelling**gebruiken. |
-   |  Mechanisme |Selecteer de **Windows Azure HDInsight-service** |
-   |  Gebruikersnaam |Voer de gebruikers naam van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |
-   |  Wachtwoord |Voer het gebruikers wachtwoord voor het HDInsight-cluster in. Schakel het selectie vakje **wacht woord opslaan (versleuteld)** in.|
+   |  Database |Gebruik **standaard**. |
+   |  Mechanisme |Selecteer **Windows Azure HDInsight Service** |
+   |  Gebruikersnaam |Voer de gebruikersnaam van de HTTP-gebruiker van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |
+   |  Wachtwoord |Voer het gebruikerswachtwoord voor het HDInsight-cluster in. Schakel het selectievakje **Wachtwoord opslaan (versleuteld)** in.|
 
 1. Optioneel: Selecteer **Geavanceerde opties**.  
 
    | Parameter | Beschrijving |
    | --- | --- |
-   |  Systeem eigen query gebruiken |Wanneer deze is geselecteerd, probeert het ODBC-stuur programma geen TSQL te converteren naar HiveQL. Gebruik deze optie alleen als u 100% zeker weet dat u zuivere HiveQL-instructies verzendt. Wanneer u verbinding maakt met SQL Server of Azure SQL Database, moet u het selectie vakje uitgeschakeld laten. |
-   |  Opgehaalde rijen per blok |Bij het ophalen van een groot aantal records is het mogelijk dat deze para meter moet worden afgestemd om optimale prestaties te garanderen. |
-   |  Standaard lengte van een teken reeks kolom, binaire kolom lengte, decimale kolom schaal |De lengten en nauw keurigheid van het gegevens type kunnen van invloed zijn op hoe gegevens worden geretourneerd. Ze leiden ertoe dat onjuiste gegevens worden geretourneerd vanwege verlies van nauw keurigheid en afkap ping. |
+   |  Systeemeigen query gebruiken |Wanneer het ODBC-stuurprogramma is geselecteerd, probeert het NIET TSQL te converteren naar HiveQL. Gebruik deze optie alleen als u 100% zeker weet dat u zuivere HiveQL-instructies verzendt. Wanneer u verbinding maakt met SQL Server of Azure SQL Database, moet u het selectievakje uitgeschakeld laten. |
+   |  Opgehaalde rijen per blok |Bij het ophalen van een groot aantal records is het afstemmen van deze parameter mogelijk vereist om te zorgen voor optimale prestaties. |
+   |  Standaardlengte van een tekenreekskolom, binaire kolomlengte, decimale kolomschaal |De lengten en precisie van het gegevenstype kunnen van invloed zijn op hoe gegevens worden geretourneerd. Ze leiden ertoe dat onjuiste gegevens worden geretourneerd vanwege verlies van precisie en afbrekingen. |
 
-    ![Geavanceerde configuratie opties voor DSN](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Geavanceerde configuratie opties voor DSN")
+    ![Geavanceerde DSN-configuratieopties](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Geavanceerde DSN-configuratieopties")
 
-1. Selecteer **testen** om de gegevens bron te testen. Wanneer de gegevens bron op de juiste wijze is geconfigureerd, wordt in het test resultaat **geslaagd**weer gegeven.  
+1. Selecteer **Testen** om de gegevensbron te testen. Wanneer de gegevensbron op de juiste wijze is geconfigureerd, geven de testresultaten **GESLAAGD** weer.  
 
-1. Selecteer **OK** om het test venster te sluiten.  
+1. Selecteer **OK** om het testvenster te sluiten.  
 
-1. Selecteer **OK** om het venster **micro soft Hive ODBC-stuur programma DSN-instellingen** te sluiten.  
+1. Selecteer **OK** om het venster **DSN-installatie van Microsoft Hive ODBC-stuurprogramma** te sluiten.  
 
-1. Selecteer **OK** om het venster **ODBC-gegevens bron beheer** te sluiten.  
+1. Selecteer **OK** om het venster **ODBC-gegevensbronbeheerder** te sluiten.  
 
-## <a name="query-data-with-powershell"></a>Gegevens opvragen met Power shell
+## <a name="query-data-with-powershell"></a>Query's uitvoeren op gegevens met PowerShell
 
-Het volgende Power shell-script is een functie die door ODBC kan worden gebruikt om een Hive-cluster op te vragen.
+Het volgende PowerShell-script is een functie die door ODBC kan worden gebruikt om query's uit te voeren op een Hive-cluster.
 
 ```powershell
 function Get-ODBC-Data {
@@ -109,7 +110,7 @@ function Get-ODBC-Data {
 }
 ```
 
-In het volgende code fragment wordt de bovenstaande functie gebruikt om een query uit te voeren op het interactieve query cluster dat u aan het begin van de zelf studie hebt gemaakt. Vervang `DATASOURCENAME` door de **naam van de gegevens bron** die u hebt opgegeven in het scherm **micro soft Hive ODBC-stuur programma** voor het instellen van DSN. Wanneer u om referenties wordt gevraagd, voert u de gebruikers naam en het wacht woord in die u hebt opgegeven bij de **gebruikers naam** en het wacht woord voor **aanmelding** bij het cluster wanneer u het cluster hebt gemaakt.
+In het volgende codefragment wordt de bovenstaande functie gebruikt om een query uit te voeren op het Interactive Query-cluster dat u aan het begin van de zelfstudie hebt gemaakt. Vervang `DATASOURCENAME` door de **Gegevensbronnaam** die u hebt opgegeven in het scherm **DSN-installatie van Microsoft Hive ODBC-stuurprogramma**. Wanneer u om referenties wordt gevraagd, voert u de gebruikersnaam en het wachtwoord in die u hebt ingevoerd onder **Gebruikersnaam voor aanmelden bij cluster** en **Wachtwoord voor aanmelden bij cluster** toen u het cluster maakte.
 
 ```powershell
 
@@ -122,11 +123,11 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resource groep, het HDInsight-cluster en het opslag account. Als u dit wilt doen, selecteert u de resource groep waarin het cluster is gemaakt en klikt u op **verwijderen**.
+Verwijder de resourcegroep, het HDInsight-cluster en het opslagaccount wanneer u deze niet meer nodig hebt. Als u dit wilt doen, selecteert u de resourcegroep waarin het cluster is gemaakt en klikt u op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u het micro soft Hive ODBC-stuur programma en Power shell kunt gebruiken om gegevens op te halen uit uw Azure HDInsight Interactive query-cluster.
+In deze zelfstudie hebt u geleerd hoe u het Microsoft Hive ODBC-stuurprogramma en PowerShell kunt gebruiken om gegevens op te halen uit uw Azure HDInsight Interactive Query-cluster.
 
 > [!div class="nextstepaction"]
 > [Excel verbinden met Apache Hive met behulp van ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)

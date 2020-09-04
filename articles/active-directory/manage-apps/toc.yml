@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: Algemene scenario's voor app-beheer
       href: common-scenarios.md
+    - name: Apps weergeven in je tenant
+      href: application-types.md
+    - name: Gebruikers toewijzen aan apps
+      href: ways-users-get-assigned-to-applications.md
     - name: Integratie van een cloud-app plannen
       items:
         - name: Aan de slag met app-integratie
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: Beheerderstoestemming voor werkstroom configureren (preview)
           href: configure-admin-consent-workflow.md
-        - name: Een gebruiker of groep toewijzen aan een app
+        - name: Gebruikerstoewijzing voor een app beheren
           href: assign-user-or-group-access-portal.md
         - name: Verleende machtigingen voor apps controleren
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: Methoden om gebruikerstoegang aan een app te verwijderen
           href: methods-for-removing-user-access.md
-        - name: Toegang van een gebruiker of groep verwijderen
-          href: remove-user-or-group-access-portal.md
         - name: Een app voor een gebruiker verbergen
           href: hide-application-from-user-portal.md
         - name: Gebruikersaanmelding uitschakelen
@@ -203,11 +205,7 @@
     - name: Problemen oplossen
       items:
         - name: Problemen met apps toevoegen oplossen
-          items:
-            - name: Veelvoorkomende problemen - galerie-apps
-              href: adding-gallery-app-common-problems.md
-            - name: Veelvoorkomende problemen - niet-galerie-apps
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: Problemen met aanmelden van gebruikers oplossen
           items:
             - name: Onverwacht instemmingsprompt
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Veelvoorkomende problemen bij federatief configureren - niet-galerie-apps
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Problemen met vermelding en toewijzing van apps oplossen
-          items:
-            - name: De toepassingslijst voor uw tenant beheren
-              href: application-types.md
-            - name: Onverwachte gebruiker toegewezen
-              href: ways-users-get-assigned-to-applications.md
         - name: Problemen met on-premises apps oplossen
           items:
             - name: Probleemoplossing toepassingsproxy

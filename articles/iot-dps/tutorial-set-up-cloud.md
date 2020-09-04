@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-Cloud instellen voor Azure-IoT Hub Device Provisioning Service in Portal
-description: Deze zelf studie laat zien hoe u de cloud resources kunt instellen voor het inrichten van apparaten in het [Azure Portal](https://portal.azure.com) met behulp van de IOT hub Device PROVISIONING service (DPS)
+title: 'Zelfstudie: cloud instellen voor Azure IoT Hub Device Provisioning Service in de portal'
+description: In deze zelfstudie wordt beschreven hoe u de cloudresources voor apparaatinrichting in [Azure Portal](https://portal.azure.com) instelt met behulp van IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74976720"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Zelf studie: cloud resources configureren voor het inrichten van apparaten met de IoT Hub Device Provisioning Service
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Zelfstudie: Cloudresources configureren voor apparaatinrichting met de IoT Hub Device Provisioning Service
 
 In deze zelfstudie wordt beschreven hoe u de cloud instelt voor automatische apparaatinrichting met de IoT Hub Device Provisioning Service. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Azure Portal gebruiken voor het maken van een IoT Hub Device Provisioning Service en het ophalen van het id-bereik
-> * Een IoT Hub maken
+> * Een IoT-hub maken
 > * De IoT-hub koppelen aan de Device Provisioning Service
 > * Het toewijzingsbeleid instellen voor de Device Provisioning Service
 
@@ -47,18 +47,18 @@ Volg deze stappen om een nieuwe instantie van een Device Provisioning Service te
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Naam** | Een unieke naam | -- | 
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-   | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor meer informatie over regio's. |   
+   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
+   | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |   
 
    ![Basisinformatie over Device Provisioning Service invoeren op de portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klik op **maken**. Na enkele ogenblikken wordt de Device Provisioning Service-instantie gemaakt en de **overzichtspagina** weergegeven.
+5. Klik op **Create**. Na enkele ogenblikken wordt de Device Provisioning Service-instantie gemaakt en de **overzichtspagina** weergegeven.
 
 6. Kopieer op de **overzichtspagina** van het nieuwe service-exemplaar de waarde voor het **ID-bereik** zodat u deze later kunt gebruiken. Die waarde wordt gebruikt voor het identificeren van de registratie-id's en biedt de zekerheid dat de registratie-id uniek is.
 
 7. Kopieer ook de waarde van het **service-eindpunt** voor later gebruik. 
 
-## <a name="create-an-iot-hub"></a>Een IoT Hub maken
+## <a name="create-an-iot-hub"></a>Een IoT-hub maken
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -90,7 +90,7 @@ De volgende stap bestaat uit het koppelen van de Device Provisioning Service en 
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Het toewijzingsbeleid instellen voor de Device Provisioning Service
 
-Het toewijzings beleid is een IoT Hub Device Provisioning Service instelling die bepaalt hoe apparaten worden toegewezen aan een IoT-hub. Er worden drie soorten toewijzingsbeleid ondersteund: 
+Het toewijzingsbeleid is een instelling voor IoT Hub Device Provisioning Service die bepaalt hoe apparaten aan een IoT-hub worden toegewezen. Er worden drie soorten toewijzingsbeleid ondersteund: 
 
 1. **Laagste latentie**: apparaten worden ingericht voor een IoT-hub op basis van de hub met de laagste latentie voor het apparaat.
 
@@ -116,7 +116,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Azure Portal gebruiken voor het maken van een IoT Hub Device Provisioning Service en het ophalen van het id-bereik
-> * Een IoT Hub maken
+> * Een IoT-hub maken
 > * De IoT-hub koppelen aan de Device Provisioning Service
 > * Het toewijzingsbeleid instellen voor de Device Provisioning Service
 

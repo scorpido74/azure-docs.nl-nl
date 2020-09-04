@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een Azure Database for MariaDB ontwerpen Azure Portal'
+title: 'Zelfstudie: Een Azure Database for MariaDB ontwerpen - Azure Portal'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MariaDB-server en -database maakt en beheert via de Azure-portal.
 author: ajlam
 ms.author: andrela
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80063785"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Zelfstudie: een Azure Database for MariaDB-database ontwerpen met de Azure-portal
@@ -41,11 +41,11 @@ U maakt een Azure Database for MariaDB-server met een gedefinieerde set [reken- 
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
 
-2. **Data bases** > **Azure database for MariaDB**selecteren. U kunt ook **MariaDB** in het zoekvak typen om de service te vinden.
+2. Selecteer **Databases** > **Azure Database for MariaDB**. U kunt ook **MariaDB** in het zoekvak typen om de service te vinden.
 
    ![MySQL openen](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. Selecteer de tegel **Azure database for MariaDB** . Voer de vereiste informatie in of selecteer deze.
+3. Selecteer de tegel **Azure Database for MariaDB**. Voer de vereiste informatie in of selecteer deze.
 
    ![Formulier Maken](./media/tutorial-design-database-using-portal/2-create-form.png)
 
@@ -60,14 +60,14 @@ U maakt een Azure Database for MariaDB-server met een gedefinieerde set [reken- 
     Wachtwoord bevestigen | *uw keuze*| Bevestig het wachtwoord voor het beheerdersaccount.
     Locatie | *de regio het dichtst bij uw gebruikers*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
     Versie | *de nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt voor het gebruik van een andere versie).
-    Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer de **prijs categorie** > **Algemeen**. Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie** > **Algemeen gebruik**. Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
     
    ![Prijscategorie](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > Als **automatische groei** is ingeschakeld, verhoogt uw server de opslag wanneer u de toegewezen limiet nadert, zonder dat dit van invloed is op uw werk belasting.
+   > Als **automatische groei** voor uw server is ingeschakeld, hebt u meer opslagruimte als u de toewijzingslimiet nadert. Dit is niet van invloed op de workload.
 
-4. Klik op **Controleren + maken**. U kunt op de knop **meldingen** op de werk balk klikken om het implementatie proces te bewaken. De implementatie kan Maxi maal 20 minuten duren.
+4. Klik op **Controleren + maken**. Klik op de knop **Meldingen** op de werkbalk om het implementatieproces te volgen. De implementatie kan twintig minuten duren.
 
 ## <a name="configure-the-firewall"></a>De firewall configureren
 
@@ -93,7 +93,7 @@ Ga naar de Azure-portal om de volledig gekwalificeerde **servernaam** en de **aa
 
    ![Servereigenschappen](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-In ons voor beeld is de server naam **mydemoserver.mariadb.database.Azure.com** en de aanmeldings naam van de server beheerder is **myadmin\@mydemoserver**.
+In dit voorbeeld is de servernaam **mydemoserver.mariadb.database.azure.com**. De aanmeldingsnaam van de serverbeheerder is **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Verbinding maken met de server met behulp van mysql
 
@@ -107,7 +107,7 @@ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 
 ## <a name="create-a-blank-database"></a>Een lege database maken
 
-Wanneer u met de server bent verbonden, maakt u een lege data base waarmee u het volgende kunt gebruiken:
+Zodra u met de server bent verbonden, maakt u een lege database om mee te werken:
 
 ```sql
 CREATE DATABASE mysampledb;

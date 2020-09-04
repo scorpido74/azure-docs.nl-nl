@@ -1,9 +1,9 @@
 ---
-title: 'Zelf studie: een beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-Windows-Azure AD'
+title: 'Zelfstudie: een beheerde identiteit gebruiken voor toegang tot Cosmos DB - Windows - Azure AD'
 description: Een zelfstudie die u helpt bij het gebruiken van een door het systeem toegewezen beheerde identiteit op een Windows-VM voor toegang tot Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583073"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263059"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Procedures voor:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Cosmos DB-account maken
@@ -59,7 +59,7 @@ Maak een Cosmos DB-account als u er nog geen hebt. U kunt deze stap overslaan en
 3. Voer een **Id** in voor het Cosmos DB-account, die u later zult gebruiken.  
 4. **API** moet worden ingesteld op 'SQL'. De aanpak die in deze zelfstudie wordt beschreven, kan worden gebruikt met de andere beschikbare API-typen, maar de stappen in deze zelfstudie zijn voor de SQL-API.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.  Selecteer een **Locatie** waar Cosmos DB beschikbaar is.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
 ### <a name="create-a-collection"></a>Een verzameling maken 
 
@@ -70,9 +70,9 @@ Voeg vervolgens een gegevensverzameling toe in het Cosmos DB-account, waarop u l
 3. Geef de verzameling een database-ID en een verzameling-ID, selecteer een opslagcapaciteit, voer een partitiesleutel in, voer een doorvoerwaarde in en klik vervolgens op **OK**.  Voor deze zelfstudie volstaat het om ‘Test’ te gebruiken als database-ID en verzameling-ID en een vaste opslagcapaciteit en de laagste doorvoer (400 RU/s) te selecteren.  
 
 
-### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>Toegang verlenen tot de toegangs sleutels van het Cosmos DB-account
+### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>Toegang verlenen tot de toegangssleutels van het Cosmos DB-account
 
-In deze sectie wordt beschreven hoe u door Windows-VM-systeem toegewezen beheerde identiteits toegang verleent aan de toegangs sleutels van het Cosmos DB-account. Cosmos DB biedt geen systeemeigen ondersteuning voor Azure AD-verificatie. U kunt echter een door het systeem toegewezen beheerde identiteit gebruiken om een Cosmos DB-toegangssleutel op te halen uit Resource Manager, en die sleutel gebruiken om toegang tot Cosmos DB te krijgen. In deze stap verleent u de door het Windows-VM-systeem toegewezen beheerde identiteit toegang tot de sleutels voor het Cosmos DB-account.
+In deze sectie wordt beschreven hoe u de door het Windows-VM-systeem toegewezen beheerde identiteit toegang kunt geven tot de toegangssleutels van het Cosmos DB-account. Cosmos DB biedt geen systeemeigen ondersteuning voor Azure AD-verificatie. U kunt echter een door het systeem toegewezen beheerde identiteit gebruiken om een Cosmos DB-toegangssleutel op te halen uit Resource Manager, en die sleutel gebruiken om toegang tot Cosmos DB te krijgen. In deze stap verleent u de door het Windows-VM-systeem toegewezen beheerde identiteit toegang tot de sleutels voor het Cosmos DB-account.
 
 Werk de waarden voor `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` en `<COSMOS DB ACCOUNT NAME>` bij voor uw omgeving om de door het Windows-VM-systeem toegewezen beheerde identiteit met behulp van PowerShell toegang te geven tot het Cosmos DB-account in Azure Resource Manager. Cosmos DB ondersteunt twee granulariteitsniveaus bij het gebruik van toegangssleutels: lees-/schrijftoegang tot het account en alleen-lezen toegang tot het account.  Wijs de rol `DocumentDB Account Contributor` toe als u sleutels voor lezen/schrijven voor het account wilt krijgen, de rol `Cosmos DB Account Reader Role` als u alleen-lezensleutels voor het account wilt ophalen.  Voor deze zelfstudie moet u de `Cosmos DB Account Reader Role` toewijzen:
 
@@ -82,9 +82,9 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 ## <a name="access-data"></a>Toegang tot gegevens
 
-In deze sectie wordt beschreven hoe u Azure Resource Manager aanroept met behulp van een toegangs token voor de door het systeem toegewezen beheerde identiteit van Windows-machines. Voor de rest van de zelfstudie werken we op de virtuele machine die we eerder hebben gemaakt. 
+In deze sectie wordt beschreven hoe u Azure Resource Manager kunt aanroepen met een toegangstoken voor het door het Windows-VM-systeem toegewezen beheerde identiteit. Voor de rest van de zelfstudie werken we op de virtuele machine die we eerder hebben gemaakt. 
 
-U moet de nieuwste versie van [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) installeren op uw Windows-VM.
+Installeer de nieuwste versie van [Azure CLI](/cli/azure/install-azure-cli) op uw Windows-VM.
 
 
 
@@ -113,9 +113,9 @@ U moet de nieuwste versie van [Azure cli](https://docs.microsoft.com/cli/azure/i
    $ArmToken = $content.access_token
    ```
 
-### <a name="get-access-keys"></a>Toegangs sleutels ophalen 
+### <a name="get-access-keys"></a>Toegangssleutels ophalen 
 
-In deze sectie wordt beschreven hoe u toegangs sleutels van Azure Resource Manager kunt ophalen om Cosmos DB-aanroepen te maken. Gebruik nu PowerShell voor het aanroepen van Resource Manager met behulp van het toegangstoken dat in de vorige sectie is opgehaald, om de toegangssleutel voor het Cosmos DB-account op te halen. Wanneer we de toegangssleutel hebben, kunnen we query’s uitvoeren op de Cosmos DB. Vervang de parameterwaarden `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` en `<COSMOS DB ACCOUNT NAME>` door uw eigen waarden. Vervang de waarde `<ACCESS TOKEN>` door het toegangstoken dat u eerder hebt opgehaald.  Als u lees-/schrijfsleutels wilt ophalen, gebruikt u sleutelbewerkingstype `listKeys`.  Als u alleen-lezensleutels wilt ophalen, gebruikt u sleutelbewerkingstype `readonlykeys`:
+In deze sectie wordt beschreven hoe u toegangssleutels kunt ophalen uit Azure Resource Manager om Cosmos DB-aanroepen te kunnen uitvoeren. Gebruik nu PowerShell voor het aanroepen van Resource Manager met behulp van het toegangstoken dat in de vorige sectie is opgehaald, om de toegangssleutel voor het Cosmos DB-account op te halen. Wanneer we de toegangssleutel hebben, kunnen we query’s uitvoeren op de Cosmos DB. Vervang de parameterwaarden `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` en `<COSMOS DB ACCOUNT NAME>` door uw eigen waarden. Vervang de waarde `<ACCESS TOKEN>` door het toegangstoken dat u eerder hebt opgehaald.  Als u lees-/schrijfsleutels wilt ophalen, gebruikt u sleutelbewerkingstype `listKeys`.  Als u alleen-lezensleutels wilt ophalen, gebruikt u sleutelbewerkingstype `readonlykeys`:
 
 ```powershell
 Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
@@ -204,6 +204,4 @@ Deze CLI-opdracht retourneert details over de verzameling:
 In deze zelfstudie hebt u geleerd hoe u een door het Windows-VM-systeem toegewezen identiteit kunt gebruiken voor toegang tot Cosmos DB.  Zie voor meer informatie over Cosmos DB:
 
 > [!div class="nextstepaction"]
->[Overzicht van Azure Cosmos DB](/azure/cosmos-db/introduction)
-
-
+>[Overzicht van Azure Cosmos DB](../../cosmos-db/introduction.md)

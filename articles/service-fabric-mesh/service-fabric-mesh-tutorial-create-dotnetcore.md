@@ -1,17 +1,17 @@
 ---
-title: Een app met meerdere services maken, implementeren op Service Fabric net
+title: Een app voor meerdere service maken en implementeren naar Service Fabric Mesh
 description: In deze zelfstudie maakt u een Azure Service Fabric Mesh-toepassing voor meerdere services, bestaande uit een ASP.NET Core-website die communiceert met een back-endwebservice. U spoort de fouten in de toepassing lokaal op en publiceert de toepassing in Azure.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: e3a6ee382208119e46a816790c15ae47f16be57e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495188"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011206"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Zelfstudie: Een Service Fabric Mesh-toepassing met meerdere services bouwen, foutvrij maken, implementeren en upgraden
 
@@ -34,7 +34,7 @@ In deel 1 van de reeks leert u het volgende:
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
 > * Een Service Fabric Mesh-app maken in Visual Studio
-> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in de lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in uw lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Een Service Fabric Mesh-app implementeren](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Een Service Fabric Mesh-app bijwerken](service-fabric-mesh-tutorial-upgrade.md)
 > * [Service Fabric Mesh-bronnen opschonen](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -51,7 +51,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Een Service Fabric Mesh-project maken in Visual Studio
 
-Start Visual Studio en selecteer **bestand** > **New** > **project...**
+Voer Visual Studio uit en selecteer **File** > **New** > **Project...**
 
 In het dialoogvenster **New Project** typt u `mesh` in het vak **Search**. Selecteer de sjabloon **Service Fabric Mesh Application**. (Als u de sjabloon niet ziet, controleert u of u de Mesh-SDK en de previewversie van de hulpmiddelen van Visual Studio hebt geïnstalleerd, zoals beschreven in [set up your development environment](service-fabric-mesh-howto-setup-developer-environment-sdk.md) (uw ontwikkelomgeving instellen).)  
 
@@ -185,7 +185,7 @@ Vervolgens wordt het dialoogvenster **New ASP.NET Core Web Application** weergeg
 
 Omdat de back-endservice geen gebruikersinterface heeft, schakelt u het starten van de browser uit als de service wordt gestart. Klik in **Solution Explorer** met de rechtermuisknop op **ToDoService** en selecteer **Properties**. Selecteer in het eigenschappenvenster aan de linkerkant het tabblad **Debug** en schakel het selectievakje **Launch browser** in. Druk op **Ctrl+S** om de wijziging op te slaan.
 
-Omdat deze service de taakinformatie onderhoudt, voegt u een verwijzing aan de klassenbibliotheek Model toe. Klik in de Solution Explorer met de rechter muisknop op **ToDoService** en selecteer vervolgens referentie **toevoegen** > **...**. Het dialoog venster **referentie beheer** wordt weer gegeven.
+Omdat deze service de taakinformatie onderhoudt, voegt u een verwijzing aan de klassenbibliotheek Model toe. Klik in Solution Explorer met de rechtermuisknop op **ToDoService** en selecteer **Add** > **Reference...** . Het dialoogvenster **Reference Manager** wordt weergegeven.
 
 Schakel in **Reference Manager** het selectievakje in voor **Model** en klik op **OK**.
 
@@ -268,7 +268,7 @@ In deze zelfstudie wordt het toevoegen, verwijderen en dergelijke niet behandelt
 Nu de back-endservice is geïmplementeerd, codeert u de website waarop de bijbehorende taakitems worden weergegeven. De volgende stappen vinden plaats binnen het project **WebFrontEnd**.
 
 De webpagina waarop de taakitems worden weergegeven, heeft toegang nodig tot de klasse **ToDoItem** en de lijst.
-Voeg in de **Solution Explorer**een verwijzing naar het model project toe door met de rechter muisknop op **webfrontend** te klikken en verwijzing **toevoegen** > te selecteren **...** Het dialoog venster **referentie beheer** wordt weer gegeven.
+Voeg in **Solution Explorer** een verwijzing toe naar het modelproject door met de rechtermuisknop op **WebFrontEnd** te klikken en **Add** > **Reference...** te selecteren Het dialoogvenster **Reference Manager** wordt weergegeven.
 
 Schakel in **Reference Manager** het selectievakje in voor **Model** en klik op **OK**.
 
@@ -346,7 +346,7 @@ De URL bestaat uit de servicenaam en de poort. Al deze informatie is in het proj
 
 > [!IMPORTANT]
 > In de volgende stappen worden YAML-bestanden gewijzigd.
-> Gebruik spaties, geen tabs, om de variabelen in te springen in het bestand service.yaml. Doet u dit niet, dan wordt het bestand niet gecompileerd. Tijdens het maken van de omgevingsvariabelen kunnen tabs worden ingevoegd. Vervang de tabs door spaties. Hoewel u fouten zult zien in de uitvoer van de foutopsporing voor de **compilatie**, wordt de app nog steeds gestart, maar niet totdat u de tabs naar spaties hebt geconverteerd en de compilatie opnieuw hebt uitgevoerd. Om ervoor te zorgen dat er geen tabbladen in het bestand service. yaml staan, kunt u witruimte zichtbaar maken in de Visual Studio-editor met behulp van de**Geavanceerde**  > **weer gave** **bewerken**  > .
+> Gebruik spaties, geen tabs, om de variabelen in te springen in het bestand service.yaml. Doet u dit niet, dan wordt het bestand niet gecompileerd. Tijdens het maken van de omgevingsvariabelen kunnen tabs worden ingevoegd. Vervang de tabs door spaties. Hoewel u fouten zult zien in de uitvoer van de foutopsporing voor de **compilatie**, wordt de app nog steeds gestart, maar niet totdat u de tabs naar spaties hebt geconverteerd en de compilatie opnieuw hebt uitgevoerd. Om er zeker van te zijn dat er geen tabs meer in het bestand service.yaml aanwezig zijn, kunt u witruimtes zichtbaar maken in de editor van Visual Studio via **Edit**  > **Advanced**  > **View White Space**.
 > Houd er rekening mee dat service.yaml-bestanden worden verwerkt met de Engelse landinstellingen. Dus als u een decimaal scheidingsteken nodig hebt, moet u bijvoorbeeld een punt in plaats van een komma gebruiken.
 
 Ga in **Solution Explorer** naar het project **ToDoService** en open **Service Resources** > **service.yaml**.

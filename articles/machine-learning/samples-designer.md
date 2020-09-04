@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318824"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812934"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Voorbeeldpijplijnen en -gegevenssets voor de Azure Machine Learning-ontwerpfunctie (preview)
 
@@ -55,9 +55,9 @@ Zo gebruikt u een voorbeeld in de ontwerpfunctie:
 
 1. Nadat de pijplijn is uitgevoerd, kunt u de pijplijn controleren en de uitvoer voor elke module bekijken voor meer informatie. Gebruik de volgende stappen om module-uitvoer te bekijken:
 
-   1. Selecteer een module in het canvas.
+   1. Klik met de rechtermuisknop op de module in het canvas waarvan u de uitvoer wilt zien.
+   1. Selecteer **Visualiseren**.
 
-   1. In de deelvenster Details van de module, rechts van het canvas, selecteert u **Uitvoer en logboeken**. Selecteer het grafiekpictogram ![Visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om de resultaten van elke module te bekijken. 
 
    Gebruik de voorbeelden als uitgangspunt voor enkele van de meestvoorkomende machine learning-scenario’s.
 

@@ -1,26 +1,26 @@
 ---
-title: Zelf studie-installatie kopie bouwen in code door voeren
+title: 'Zelfstudie: installatiekopie bouwen na het doorvoeren van de code'
 description: In deze zelfstudie leert u hoe u een Azure Container Registry-taak configureert om builds van containerinstallatiekopieën automatisch te activeren in de cloud wanneer u broncode naar een Git-opslagplaats doorvoert.
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78402843"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Zelf studie: builds van container installatie kopieën in de Cloud automatiseren bij het door voeren van de bron code
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Zelfstudie: Builds van containerinstallatiekopieën in de cloud automatiseren bij het doorvoeren van broncode
 
-Naast een [snelle taak](container-registry-tutorial-quick-task.md)ondersteunt ACR-taken geautomatiseerde docker-container installatie kopieën in de Cloud wanneer u bron code doorvoert in een Git-opslag plaats. Ondersteunde Git-contexten voor ACR-taken zijn onder andere open bare of persoonlijke GitHub of Azure opslag plaatsen.
+Naast een [snelle taak](container-registry-tutorial-quick-task.md) ondersteunt ACR-taken geautomatiseerde builds van Docker-containerinstallatiekopieën in de cloud wanneer u broncode doorvoert in een Git-opslagplaats. Ondersteunde Git-contexten voor ACR-taken zijn onder andere openbare of privéopslagplaatsen in GitHub of Azure.
 
 > [!NOTE]
-> Op dit moment bieden ACR-taken geen ondersteuning voor commit-of pull-aanvraag triggers in GitHub Enter prise opslag plaatsen.
+> Op dit moment biedt ACR-taken geen ondersteuning voor de aanvraagtriggers commit of pull in GitHub Enterprise-opslagplaatsen.
 
-In deze zelf studie bouwt en pusht uw ACR-taak één container installatie kopie die is opgegeven in een Dockerfile wanneer u de bron code doorvoert in een Git-opslag plaats. Voor het maken van een [taak met meerdere stappen](container-registry-tasks-multi-step.md) die gebruikmaakt van een yaml-bestand voor het definiëren van stappen voor het bouwen, pushen en optioneel testen van meerdere containers op code doorvoer, raadpleegt [u zelf studie: een werk stroom voor meerdere stappen in de Cloud uitvoeren wanneer u de bron code doorvoert](container-registry-tutorial-multistep-task.md). Zie [reparatie van besturings systemen en Framework automatiseren met ACR-taken](container-registry-tasks-overview.md) voor een overzicht van ACR-taken
+In deze zelfstudie wordt met uw ACR-taak één containerinstallatiekopie gemaakt en gepusht, die is opgegeven in een Dockerfile als u broncode in een Git-opslagplaats doorvoert. Als u een [taak bestaande uit meerdere stappen](container-registry-tasks-multi-step.md) wilt maken waarbij een YAML-bestand wordt gebruikt om de stappen voor het bouwen, pushen en optioneel testen van meerdere containers wilt definiëren, raadpleegt u [Zelfstudie: een containerwerkstroom met meerdere stappen in de cloud uitvoeren bij het doorvoeren van broncode](container-registry-tutorial-multistep-task.md). Zie [Besturingssysteem- en frameworkpatching automatiseren met ACR-taken](container-registry-tasks-overview.md) voor een overzicht van ACR-taken
 
-In deze zelfstudie hebt u het volgende gedaan:
+In deze zelfstudie:
 
 > [!div class="checklist"]
 > * Een taak maken
@@ -32,7 +32,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u de stappen in de [vorige zelfstud
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u de Azure CLI lokaal wilt gebruiken, moet u Azure CLI versie **2.0.46** of hoger hebben geïnstalleerd en zijn aangemeld met [AZ login][az-login]. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren][azure-cli].
+Als u de Azure CLI lokaal wilt gebruiken, moet Azure CLI versie **2.0.46** of hoger zijn geïnstalleerd, en moet u zijn aangemeld met [az login][az-login]. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -40,7 +40,7 @@ Als u de Azure CLI lokaal wilt gebruiken, moet u Azure CLI versie **2.0.46** of 
 
 Nu u de stappen hebt voltooid die nodig zijn om ACR Tasks in te schakelen om toewijzingsstatus te lezen en webhooks te maken in een opslagplaats, kunt u een taak maken die een build van een containerinstallatiekopie activeert op doorvoeracties naar de opslagplaats.
 
-Vul eerst deze shell-omgevingsvariabelen met waarden die geschikt zijn voor uw omgeving. Hoewel deze stap strikt genomen niet vereist is, vereenvoudigt u hiermee de uitvoering van meerregelige Azure CLI-opdrachten in deze zelfstudie. Als u deze omgevings variabelen niet opgeeft, moet u elke waarde hand matig vervangen, overal waar deze in de voorbeeld opdrachten worden weer gegeven.
+Vul eerst deze shell-omgevingsvariabelen met waarden die geschikt zijn voor uw omgeving. Hoewel deze stap strikt genomen niet vereist is, vereenvoudigt u hiermee de uitvoering van meerregelige Azure CLI-opdrachten in deze zelfstudie. Als u deze omgevingsvariabelen niet invult, moet u elke bijbehorende waarde handmatig vervangen wanneer deze wordt weergegeven in de voorbeeldopdrachten.
 
 [![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
 
@@ -50,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Maak nu de taak door de volgende [AZ ACR taak Create][az-acr-task-create] opdracht uit te voeren:
+Maak nu de taak door de volgende [az acr task create][az-acr-task-create]-opdracht uit te voeren:
 
 ```azurecli-interactive
 az acr task create \

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554070"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Zelfstudie: Azure Active Directory-integratie met Palo Alto Networks - Admin UI
 
@@ -43,6 +43,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Palo Alto Networks - Admin UI ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 * Palo Alto Networks - Admin UI ondersteunt **just-in-time**-gebruikersinrichting
+* Zodra u Palo Alto Networks hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens in uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Palo Alto Networks - Admin UI toevoegen vanuit de galerie
 
@@ -55,8 +56,7 @@ Als u de integratie van Palo Alto Networks - Admin UI met Azure AD wilt configur
 1. Typ **Palo Alto Networks - Admin UI** in het zoekvak in de sectie **Toevoegen uit de galerie**.
 1. Selecteer **Palo Alto Networks - Admin UI** uit het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
-
+## <a name="configure-and-test-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren en testen
 In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Palo Alto Networks - Admin UI op basis van een testgebruiker met de naam **B.Simon**.
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Palo Alto Networks - Admin UI tot stand is gebracht.
 
@@ -116,6 +116,9 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Palo Alto 
     | gebruikersnaam | user.userprincipalname |
     | adminrole | customadmin |
     | | |
+
+    > [!NOTE]
+    > De waarde _adminrole_ moet gelijk zijn aan de rolnaam die is geconfigureerd in **Palo Alto Networks**, zoals vermeld in stap 9. 
 
     > [!NOTE]
     > Zie de volgende artikelen voor meer informatie over de kenmerken:
@@ -272,5 +275,3 @@ Wanneer u op de tegel van Palo Alto Networks - Admin UI klikt in het toegangsven
 - [Probeer Palo Alto Networks - Admin UI met Azure AD](https://aad.portal.azure.com/)
 
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Palo Alto Networks - Admin UI beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: e7e3a31663e6c166b912ba20166ba0f0f769008a
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "83006421"
 ---
 ## <a name="setting-up-the-library"></a>De bibliotheek instellen
 
-Roep `Start()` aan om uw sessie in staat te stellen omgevings gegevens te verwerken.
+Roep `Start()` aan om uw sessie in staat te stellen omgevingsgegevens te verwerken.
 
-Als u gebeurtenissen wilt afhandelen die door uw `delegate` sessie worden gegenereerd, stelt u de eigenschap van uw sessie in op een object, zoals uw weer gave. Dit object moet het `SSCCloudSpatialAnchorSessionDelegate` protocol implementeren.
+Als u gebeurtenissen wilt afhandelen die door de sessie worden gegenereerd, stelt u de eigenschap `delegate` van uw sessie in op een object, zoals uw weergave. Dit object moet het `SSCCloudSpatialAnchorSessionDelegate`-protocol implementeren.

@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "67175750"
 ---
-## <a name="set-expiration"></a>Verval datum instellen
+## <a name="set-expiration"></a>Vervaldatum instellen
 
-Het is ook mogelijk om uw anker zo te configureren dat deze in de toekomst automatisch op een bepaalde datum verloopt. Wanneer een anker verloopt, kan het niet meer worden gevonden of bijgewerkt. Verval datum kan alleen worden ingesteld als het anker is gemaakt. Het bijwerken van de verloop datum is niet mogelijk. U kunt de verval datum instellen voordat u deze opslaat in de Cloud.
+Het is ook mogelijk uw anker zodanig te configureren dat deze op een bepaalde datum verloopt. Wanneer een anker verloopt, kan het niet meer worden gelokaliseerd of bijgewerkt. De vervaldatum kan alleen worden ingesteld wanneer het anker wordt gemaakt. Het is niet mogelijk de vervaldatum daarna nog bij te werken. U kunt de vervaldatum dus instellen voordat u het anker opslaat in de cloud.

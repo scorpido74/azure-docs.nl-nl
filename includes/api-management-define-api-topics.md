@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: ace11adbaaeebd3101ac621f44408e27ba7d18ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "67849565"
 ---
 ## <a name="related-topics"></a>Verwante onderwerpen
 
-* [Beperkingen bij het importeren van API'S](../articles/api-management/api-management-api-import-restrictions.md)
+* [Beperkingen bij het importeren van API's](../articles/api-management/api-management-api-import-restrictions.md)
 * [Een OpenAPI-specificatie importeren](../articles/api-management/import-api-from-oas.md)
 * [Een SOAP-API importeren](../articles/api-management/import-soap-api.md)
 * [Een SOAP-API importeren en deze converteren naar REST](../articles/api-management/restify-soap-api.md)

@@ -5,12 +5,12 @@ ms.date: 09/18/2019
 ms.service: azure-spatial-anchors
 ms.topic: include
 ms.openlocfilehash: 574003a150ef294aa6a2ebc035fe48cf877dec66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76545199"
 ---
-## <a name="configure-the-cloud-spatial-anchor-session"></a>De in de Cloud beruimtelijke-anker sessie configureren
+## <a name="configure-the-cloud-spatial-anchor-session"></a>De sessie voor het ruimtelijk anker in de cloud configureren
 
-We nemen de configuratie van de ruimtelijk-anker sessie voor de Cloud vervolgens op. Op de eerste regel stellen we de sensor provider in voor de sessie. Vanaf nu wordt elk anker dat tijdens de sessie wordt gemaakt, gekoppeld aan een set sensor-aflezingen. Vervolgens maken we een voor waarde voor het zoeken naar criteria en initialiseert u deze op basis van de toepassings vereisten. Ten slotte geven we de sessie opdracht om sensor gegevens te gebruiken bij het zoeken naar ankers door een Watcher te maken op basis van ons bijna-criterium.
+De configuratie van de sessie voor het ruimtelijk anker in de cloud wordt later behandeld. Op de eerste regel wordt de sensorprovider voor de sessie ingesteld. Voortaan wordt elk anker dat tijdens de sessie wordt gemaakt, aan een reeks sensoraflezingen gekoppeld. Vervolgens worden voorwaarden voor het lokaliseren van nabije apparaten geïnstantieerd en vervolgens geïnitialiseerd zodat ze aan de toepassingsvereisten voldoen. Ten slotte krijgt de sessie de opdracht om sensorgegevens te gebruiken bij het lokaliseren van ankers door een watcher te maken op basis van de voorwaarden voor nabije apparaten.

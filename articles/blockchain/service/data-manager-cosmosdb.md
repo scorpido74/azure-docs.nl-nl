@@ -1,300 +1,300 @@
 ---
-title: Gebruik Block Chain Data Manager om Azure Cosmos DB-Azure Block Chain-service bij te werken
-description: Gebruik Block Chain Data Manager voor de Azure Block Chain-service om Block Chain-gegevens te verzenden naar Azure Cosmos DB
+title: Blockchain Data Manager gebruiken om Azure Cosmos DB-Azure Blockchain Service bij te werken
+description: Gebruik Blockchain Data Manager voor Azure Blockchain Service om blockchain-gegevens te verzenden naar Azure Cosmos DB
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "79533178"
 ---
-# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Zelf studie: Block Chain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB
+# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Zelfstudie: Blockchain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB
 
-In deze zelf studie gebruikt u Block Chain Data Manager voor de Azure Block Chain-service om Block Chain-transactie gegevens op te nemen in Azure Cosmos DB. Block Chain Data Manager legt, transformeert en levert Block Chain grootboek gegevens aan Azure Event Grid onderwerpen. Vanuit Azure Event Grid gebruikt u een Azure Logic app-connector om documenten te maken in een Azure Cosmos DB-Data Base. Wanneer u klaar bent met de zelf studie, kunt u Block Chain-transactie gegevens in Azure Cosmos DB Data Explorer verkennen.
+In deze zelfstudie gebruikt u Blockchain Data Manager voor de Azure Blockchain Service om blockchain-transactiegegevens op te nemen in Azure Cosmos DB. Blockchain Data Manager legt blockchain-grootboekgegevens vast in en transformeert en levert deze aan Azure Event Grid-onderwerpen. Vanuit Azure Event Grid gebruikt u een Azure Logic App-connector om documenten te maken in een Azure Cosmos DB-Database. Wanneer u klaar bent met de zelfstudie, kunt u blockchain-transactiegegevens in Azure Cosmos DB Data Explorer verkennen.
 
-[![Details van Block Chain-trans actie](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Details van Blockchain-transactie](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * Een Block Chain Data Manager-exemplaar maken
-> * Een Block Chain-toepassing toevoegen voor het decoderen van transactie-eigenschappen en-gebeurtenissen
-> * Een Azure Cosmos DB-account en-data base maken om transactie gegevens op te slaan
-> * Een Azure Logic-app maken om een Azure Event Grid onderwerp te koppelen aan Azure Cosmos DB
-> * Een trans actie naar een Block Chain-groot boek verzenden
-> * De gedecodeerde transactie gegevens in Azure Cosmos DB weer geven
+> * Een Blockchain Data Manager-exemplaar maken
+> * Een blockchain-toepassing toevoegen om transactiegegevens en -gebeurtenissen te decoderen
+> * Een Azure Cosmos DB-account en -database maken om transactiegegevens op te slaan
+> * Een Azure Logic App maken om een Azure Event Grid-onderwerp te koppelen aan Azure Cosmos DB
+> * Een transactie naar een Blockchain-grootboek verzenden
+> * De gedecodeerde transactiegegevens in Azure Cosmos DB weergeven
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
-* Volledige [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren [van Azure Block Chain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw Block Chain-ontwikkel omgeving.
-* Volledige [zelf studie: gebruik Visual Studio code om slimme contracten te maken, bouwen en implementeren](send-transaction.md). In de zelf studie wordt uitgelegd hoe u een voor beeld van een slim contract maakt.
-* Een [Event grid onderwerp](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) maken
-* Meer informatie over [gebeurtenis-handlers in azure Event grid](../../event-grid/event-handlers.md)
+* [Quickstart: Een blockchainlid maken met behulp van de Azure-portal](create-member.md) of [Quickstart: Een blockchainlid in Azure Blockchain Service maken met behulp van de Azure CLI voltooien](create-member-cli.md)
+* [Quickstart: Visual Studio Code gebruiken om verbinding te maken met een Azure Blockchain Service-consortiumnetwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren van de [Azure Blockchain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw blockchain-ontwikkelomgeving.
+* Voltooi de [Zelfstudie: Visual Studio Code gebruiken om slimme contracten te maken, bouwen en implementeren](send-transaction.md). In de zelfstudie wordt uitgelegd hoe u een voorbeeld van een slim contract maakt.
+* Een [Event Grid-onderwerp](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) maken
+* Meer informatie over [Gebeurtenis-handlers in Azure Event Grid](../../event-grid/event-handlers.md)
 
-## <a name="create-instance"></a>Exemplaar maken
+## <a name="create-instance"></a>Instantie maken
 
-Een Block Chain Data Manager-exemplaar maakt verbinding met een Azure Block Chain Service-transactie knooppunt en bewaakt deze. Een exemplaar legt alle onbewerkte blok keringen en ruwe transactie gegevens vast van het trans actie-knoop punt. Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. Wanneer u het exemplaar maakt, configureert u één uitgaande verbinding.
+Een Blockchain Data Manager-instantie maakt verbinding met een Azure Blockchain Service-transactieknooppunt en bewaakt dit. Een instantie legt alle onbewerkte blokkeringen en ruwe transactiegegevens vast van het transactieknooppunt. Een uitgaande verbinding verzendt blockchain-gegevens naar Azure Event Grid. Wanneer u de instantie maakt, configureert u één uitgaande verbinding.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Ga naar het lid van de Azure Block Chain-service dat u hebt gemaakt in de Snelstartgids voor vereisten [: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md). Selecteer **block chain data manager**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Ga naar het lid van Azure Blockchain Service dat u hebt gemaakt in de vereiste [Quickstart: Maak een blockchain-lid met behulp van de Azure Portal](create-member.md). Selecteer **Blockchain Data Manager**.
 1. Selecteer **Toevoegen**.
 
-    ![Block Chain Data Manager toevoegen](./media/data-manager-cosmosdb/add-instance.png)
+    ![Blockchain Data Manager toevoegen](./media/data-manager-cosmosdb/add-instance.png)
 
     Voer de volgende details in:
 
     Instelling | Voorbeeld | Beschrijving
     --------|---------|------------
-    Naam | mywatcher | Voer een unieke naam in voor een verbonden Block Chain Data Manager.
-    Transactie knooppunt | myblockchainmember | Kies het standaard transactie knooppunt van het lid van de Azure Block Chain-service dat u in de vereiste hebt gemaakt.
-    Verbindingsnaam | cosmosdb | Voer een unieke naam in voor de uitgaande verbinding waar Block Chain-transactie gegevens worden verzonden.
-    Event grid-eind punt | myTopic | Kies een event grid-onderwerp dat u in de vereiste hebt gemaakt. Opmerking: het block Chain Data Manager-exemplaar en het onderwerp Event grid moeten zich in hetzelfde abonnement bevindt.
+    Naam | mywatcher | Voer een unieke naam in voor een verbonden Blockchain Data Manager.
+    Transactieknooppunt | myblockchainmember | Kies het standaard transactieknooppunt van het lid van Azure Blockchain Service dat u in de vereiste hebt gemaakt.
+    Verbindingsnaam | cosmosdb | Voer een unieke naam in voor de uitgaande verbinding waarmee blockchain-transactiegegevens worden verzonden.
+    Event grid-eindpunt | myTopic | Kies een event grid-onderwerp dat u in de vereiste hebt gemaakt. Opmerking: De Blockchain Data Manager-instantie en het event grid-onderwerp moeten zich in hetzelfde abonnement bevinden.
 
 1. Selecteer **OK**.
 
-    Het duurt minder dan een minuut om een Block Chain Data Manager-exemplaar te maken. Nadat het exemplaar is geïmplementeerd, wordt het automatisch gestart. Een actief Block Chain Data Manager-exemplaar legt Block Chain-gebeurtenissen vast van het trans actie-knoop punt en verzendt gegevens naar Event grid.
+    Het duurt minder dan een minuut om een Blockchain Data Manager-instantie te maken. Nadat de instantie is geïmplementeerd, wordt deze automatisch gestart. Een actieve Blockchain Data Manager-instantie legt blockchain-gebeurtenissen vast vanuit het transactieknooppunt en verzendt gegevens naar het event grid.
 
 ## <a name="add-application"></a>Toepassing toevoegen
 
-Voeg de **helloblockchain** Block Chain-toepassing toe, zodat Block Chain Data Manager decodeert gebeurtenis en eigenschaps status. Block Chain Data Manager vereist het ABI en byte code-bestand van het Smart contract om de toepassing toe te voegen.
+Voeg de blockchain-toepassing **helloblockchain** toe, zodat Blockchain Data Manager de gebeurtenis- en eigenschapsstatus decodeert. Blockchain Data Manager vereist het ABI en bytecode-bestand van het slimme contract om de toepassing toe te voegen.
 
-### <a name="get-contract-abi-and-bytecode"></a>ABI en byte code van het contract ophalen
+### <a name="get-contract-abi-and-bytecode"></a>ABI en bytecode van het contract ophalen
 
-In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de [Azure Block Chain Development Kit voor Ethereum-extensie](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) gebruiken om de contract Abi naar het klem bord te kopiëren.
+In de ABI van het contract worden de slimme contractinterfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de [Azure Blockchain Development Kit voor Ethereum- extensie](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) gebruiken om de ABI van het contract naar het klembord te kopiëren.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het **helloblockchain** volheid-project uit dat u hebt gemaakt in de hand [leiding voor vereisten: gebruik Visual Studio code om slimme contracten te maken, te bouwen en te implementeren](send-transaction.md).
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Selecteer **contract Abi kopiëren**.
+1. Vouw in het deelvenster Visual Studio Code-verkenner de map **build/contracten** uit van het Solidity-project **helloblockchain** dat u hebt gemaakt in de [Zelfstudie Vereisten: Gebruik Visual Studio Code om slimme contracten te maken, bouwen en implementeren](send-transaction.md).
+1. Klik met de rechter muisknop op het JSON-bestand met metagegevens van het contract. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
+1. Selecteer **ABI van het contract kopiëren**.
 
-    ![Visual Studio code-deel venster met de selectie van het Kopieer contract ABI](./media/data-manager-cosmosdb/abi-devkit.png)
+    ![Visual Studio Code-deelvenster met de selectie ABI van het contract kopiëren](./media/data-manager-cosmosdb/abi-devkit.png)
 
-    Het contract ABI wordt gekopieerd naar het klem bord.
+    De ABI van het contract wordt gekopieerd naar het klembord.
 
-1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *Abi. json*. U gebruikt het bestand in een latere stap.
+1. Sla de **abi**-matrix op als een JSON-bestand. Bijvoorbeeld *abi.json*. U gebruikt dit bestand in een latere stap.
 
-Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U gebruikt de Azure Block Chain Development Kit-extensie om de byte code naar het klem bord te kopiëren.
+Voor Blockchain Data Manager is de geïmplementeerde bytecode voor het slimme contract vereist. De geïmplementeerde bytecode wijkt af van de bytecode van het slimme contract. U gebruikt de Azure Blockchain Development Kit-extensie om de bytecode naar het klembord te kopiëren.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Selecteer de **byte code van de kopieer actie**.
+1. Vouw in het deelvenster Visual Studio Code-verkenner de map **Build/contracten** van uw Solidity-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met metagegevens van het contract. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
+1. Selecteer **Bytecode van de transactie kopiëren**.
 
-    ![Deel venster Visual Studio met de optie byte code ring kopiëren](./media/data-manager-cosmosdb/bytecode-devkit.png)
+    ![Visual Studio Code-deelvenster met de selectie Bytecode van de transactie kopiëren](./media/data-manager-cosmosdb/bytecode-devkit.png)
 
-    De byte code wordt gekopieerd naar het klem bord.
+    De bytecode wordt gekopieerd naar het klem bord.
 
-1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. U gebruikt het bestand in een latere stap.
+1. Sla de **bytecode**-waarde op als een JSON-bestand. Bijvoorbeeld *bytecode.json*. U gebruikt dit bestand in een latere stap.
 
-In het volgende voor beeld ziet u de bestanden *Abi. json* en *byte code. json* die zijn geopend in de VS code-editor. Uw bestanden moeten er ongeveer als volgt uitzien.
+In het volgende voorbeeld ziet u *abi.json* en *bytecode.json*-bestanden in de VS Code-editor geopend. Uw bestanden moeten er vergelijkbaar uitzien.
 
-![Voor beeld van Abi. json en byte code. json-bestanden](./media/data-manager-cosmosdb/contract-files.png)
+![Voorbeeld van abi.json en bytecode. json-bestanden](./media/data-manager-cosmosdb/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Een contract-ABI en byte code-URL maken
+### <a name="create-contract-abi-and-bytecode-url"></a>ABI en bytecode-URL van het contract maken
 
-Block Chain Data Manager vereist dat de ABI-en byte code-bestanden van het contract toegankelijk zijn voor een URL wanneer u een toepassing toevoegt. U kunt een Azure Storage-account gebruiken om een privé toegankelijke URL op te geven.
+Blockchain Data Manager vereist dat de ABI- en bytecode-bestanden van het contract toegankelijk zijn voor een URL wanneer u een toepassing toevoegt. U kunt een Azure Storage-account gebruiken om een privé-toegankelijke URL op te geven.
 
 #### <a name="create-storage-account"></a>Een opslagaccount maken
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Contract bestanden uploaden
+#### <a name="upload-contract-files"></a>Contractbestanden uploaden
 
-1. Maak een nieuwe container voor het opslag account. Selecteer **Containers > container**.
+1. Maak een nieuwe container voor het opslagaccount. Selecteer **Containers > Container**.
 
-    ![Een opslag account container maken](./media/data-manager-cosmosdb/create-container.png)
+    ![Een container voor een opslagaccount maken](./media/data-manager-cosmosdb/create-container.png)
 
     | Instelling | Beschrijving |
     |---------|-------------|
-    | Naam  | Geef de container een naam. Bijvoorbeeld *smartcontract* |
-    | Openbaar toegangsniveau | Kies *privé (geen anonieme toegang)* |
+    | Naam  | Geef de container een naam. Bijvoorbeeld, *smartcontract* |
+    | Openbaar toegangsniveau | Kies *Privé (geen anonieme toegang)* |
 
 1. Selecteer **OK** om de container te maken.
-1. Selecteer de container en selecteer vervolgens **uploaden**.
-1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [contract Abi en byte code ophalen](#get-contract-abi-and-bytecode) .
+1. Selecteer de container en selecteer vervolgens **Uploaden**.
+1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [Contract ABI en bytecode ophalen](#get-contract-abi-and-bytecode).
 
-    ![BLOB uploaden](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Blob uploaden](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Selecteer **Uploaden**.
 
 #### <a name="generate-url"></a>URL genereren
 
-Genereer een gedeelde toegangs handtekening voor elke blob.
+Genereer een gedeelde toegangshandtekening voor elke blob.
 
-1. Selecteer de JSON-BLOB ABI.
-1. Selecteer **SAS genereren**
-1. Stel de gewenste verval datum voor toegangs handtekeningen in en selecteer vervolgens **BLOB-SAS-token en URL genereren**.
+1. Selecteer de ABI JSON-blob.
+1. Klik op **SAS genereren**
+1. Stel de gewenste vervaldatum voor toegangshandtekeningen in en selecteer vervolgens **Genereren van het blob-SAS-token en de URL**.
 
     ![SAS-token genereren](./media/data-manager-cosmosdb/generate-sas.png)
 
-1. Kopieer de **BLOB SAS-URL** en sla deze op in de volgende sectie.
-1. Herhaal de stappen voor het genereren van de [URL](#generate-url) voor de byte code-JSON-blob.
+1. Kopieer de **Blob-SAS-URL** en sla deze op in de volgende sectie.
+1. Herhaal de stappen [URL genereren](#generate-url) voor de bytecode-JSON-blob.
 
 ### <a name="add-helloblockchain-application-to-instance"></a>Helloblockchain-toepassing toevoegen aan instantie
 
-1. Selecteer uw Block Chain-Data Manager-exemplaar in de lijst met exemplaren.
-1. Selecteer **Block Chain-toepassingen**.
+1. Selecteer uw Blockchain Data Manager-instantie in de lijst met instanties.
+1. Selecteer **Blockchain-toepassingen**.
 1. Selecteer **Toevoegen**.
 
-    ![Een Block Chain-toepassing toevoegen](./media/data-manager-cosmosdb/add-application.png)
+    ![Een blockchain-toepassing toevoegen](./media/data-manager-cosmosdb/add-application.png)
 
-    Voer de naam van de Block Chain-toepassing en de ABI-en byte code-Url's van het slimme contract in.
+    Voer de naam van de blockchain-toepassing en de ABI- en bytecode-URL's van het slimme contract in.
 
     Instelling | Beschrijving
     --------|------------
-    Naam | Voer een unieke naam in voor de Block Chain-toepassing die u wilt bijhouden.
-    ABI contract | URL-pad naar het ABI-bestand van het contract. Zie [Create contract Abi en byte code URL](#create-contract-abi-and-bytecode-url)(Engelstalig) voor meer informatie.
-    Byte code van contract | URL-pad naar het byte code-bestand. Zie [Create contract Abi en byte code URL](#create-contract-abi-and-bytecode-url)(Engelstalig) voor meer informatie.
+    Naam | Voer een unieke naam in voor de blockchain-toepassing die u wilt bijhouden.
+    Contract-ABI | URL-pad naar het ABI-bestand van het contract. Zie [Contract-ABI en bytecode-URL maken](#create-contract-abi-and-bytecode-url)voor meer informatie.
+    Contract-bytecode | URL-pad naar het bytecode-bestand. Zie [Contract-ABI en bytecode-URL maken](#create-contract-abi-and-bytecode-url)voor meer informatie.
 
 1. Selecteer **OK**.
 
-    Zodra de toepassing is gemaakt, wordt de toepassing weer gegeven in de lijst met block Chain-toepassingen.
+    Zodra de toepassing is gemaakt, wordt de toepassing weergegeven in de lijst met blockchain-toepassingen.
 
-    ![Block Chain-toepassings lijst](./media/data-manager-cosmosdb/artifact-list.png)
+    ![Lijst van blockchain-toepassingen](./media/data-manager-cosmosdb/artifact-list.png)
 
-U kunt het Azure Storage-account verwijderen of gebruiken om meer Block Chain-toepassingen te configureren. Als u het Azure Storage account wilt verwijderen, kunt u de resource groep verwijderen. Als u de resourcegroep verwijdert, worden ook het bijbehorende opslagaccount en eventuele andere resources die zijn gekoppeld aan de resourcegroep, verwijderd.
+U kunt het Azure Storage-account verwijderen of het gebruiken om meer blockchain-toepassingen te configureren. Als u het Azure Storage-account wilt verwijderen, kunt u de resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook het bijbehorende opslagaccount en eventuele andere resources die zijn gekoppeld aan de resourcegroep, verwijderd.
 
 ## <a name="create-azure-cosmos-db"></a>Een Azure Cosmos DB-exemplaar maken
 
 [!INCLUDE [cosmos-db-create-storage-account](../../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a name="add-a-database-and-container"></a>Een Data Base en container toevoegen
+### <a name="add-a-database-and-container"></a>Een database en een container toevoegen
 
-U kunt de Data Explorer in de Azure Portal gebruiken om een Data Base en container te maken.
+U kunt Data Explorer in de Azure-portal gebruiken om een database en een container te maken.
 
-1. Selecteer **Data Explorer** in de linkernavigatiebalk op de pagina Azure Cosmos DB-account en selecteer vervolgens **nieuwe container**.
-1. Voer in het deel venster **container toevoegen** de instellingen voor de nieuwe container in.
+1. Selecteer **Data Explorer** op de linkernavigatiebalk op uw accountpagina van Azure Cosmos DB en selecteer **Nieuwe container**.
+1. Geef in het deelvenster **Container toevoegen** de instellingen voor de nieuwe container op.
 
-    ![Container instellingen toevoegen](./media/data-manager-cosmosdb/add-container.png)
+    ![Containerinstellingen toevoegen](./media/data-manager-cosmosdb/add-container.png)
 
     | Instelling | Beschrijving
     |---------|-------------|
-    | Database-id | Voer **Block chain-data** in als de naam voor de nieuwe data base. |
-    | Doorvoer | De door Voer bij **400** aanvraag eenheden per seconde (ru/s) behouden. U kunt de doorvoer later opschalen als u de latentie wilt beperken.|
-    | Container-id | Voer **berichten** in als de naam voor de nieuwe container. |
-    | Partitiesleutel | Gebruik **/MessageType** als partitie sleutel. |
+    | Database-id | Voer **blockchain-data** in als naam voor de nieuwe database. |
+    | Doorvoer | Laat de doorvoer op **400** aanvraageenheden per seconde (RU/s). U kunt de doorvoer later opschalen als u de latentie wilt beperken.|
+    | Container-id | Voer **Berichten** in als de naam voor de nieuwe container. |
+    | Partitiesleutel | Gebruik **/MessageType** als de partitiesleutel. |
 
-1. Selecteer **OK**. In de Data Explorer worden de nieuwe data base en de door u gemaakte container weer gegeven.
+1. Selecteer **OK**. In Data Explorer worden de nieuwe database en container weergegeven die u hebt gemaakt.
 
 ## <a name="create-logic-app"></a>Een logische app maken
 
-Azure Logic Apps helpt u bij het plannen en automatiseren van bedrijfs processen en werk stromen wanneer u systemen en services moet integreren. U kunt een logische app gebruiken om Event Grid te verbinden met Azure Cosmos DB.
+Azure Logic Apps helpt u bij het plannen en automatiseren van bedrijfsprocessen en werkstromen wanneer u systemen en services moet integreren. U kunt een logische app gebruiken om Event Grid te verbinden met Azure Cosmos DB.
 
 1. Selecteer in [Azure Portal](https://portal.azure.com)**Een resource maken** > **Integratie** > **Logische app**.
-1. Geef details op over het maken van uw logische app. Wanneer u klaar bent, selecteert u **maken**.
+1. Geef details op over waar u uw logische app moet maken. Selecteer **Maken** als u klaar bent.
 
-    Zie [automatische werk stromen maken met Azure Logic apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md)voor meer informatie over het maken van logische apps.
+    Zie [Automatische werkstromen maken met Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md) voor meer informatie over het maken van logische apps.
 
 1. Nadat Azure uw app heeft geïmplementeerd, selecteert u de resource van de logische app.
-1. Selecteer in de ontwerp functie voor Logic Apps onder **sjablonen**de optie **lege logische app**.
+1. Selecteer in de Logic Apps Designer onder **Sjablonen** **Lege logische app**.
 
-### <a name="add-event-grid-trigger"></a>Event Grid trigger toevoegen
+### <a name="add-event-grid-trigger"></a>Event Grid-trigger toevoegen
 
-Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert. Gebruik een Azure Event Grid trigger om Block Chain-transactie gegevens van Event Grid naar Cosmos DB te verzenden.
+Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert. Gebruik een Azure Event Grid-trigger om blockchain-transactiegegevens van Event Grid naar Cosmos DB te verzenden.
 
-1. Zoek en selecteer in de Logic Apps Designer de **Azure Event grid** -connector.
-1. Selecteer op het tabblad **Triggers** **Wanneer een resource gebeurtenis optreedt**.
-1. Een API-verbinding maken met uw Event Grid onderwerp.
+1. Zoek en selecteer in de Logic Apps Designer de **Azure Event Grid**-connector.
+1. Selecteer in het tabblad **Triggers** **Wanneer een resourcegebeurtenis optreedt**.
+1. Maak een API-verbinding met uw Event Grid-onderwerp.
 
-    ![Trigger instellingen voor gebeurtenis raster](./media/data-manager-cosmosdb/event-grid-trigger.png)
+    ![Event Grid-triggerinstellingen](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
     | Instelling | Beschrijving
     |---------|-------------|
-    | Abonnement | Kies het abonnement dat het Event Grid onderwerp bevat. |
-    | Resourcetype | Kies **micro soft. EventGrid. topics**. |
-    | Resourcenaam | Kies de naam van het Event Grid onderwerp waarin Block Chain Data Manager transactie gegevens berichten verzendt. |
+    | Abonnement | Kies het abonnement dat het Event Grid-onderwerp bevat. |
+    | Resourcetype | Kies **Microsoft.EventGrid.Topics**. |
+    | Resourcenaam | Kies de naam van het Event Grid-onderwerp waarin Blockchain Data Manager berichten over transactiegegevens verzendt. |
 
-### <a name="add-cosmos-db-action"></a>Cosmos DB actie toevoegen
+### <a name="add-cosmos-db-action"></a>Cosmos DB-actie toevoegen
 
-Voeg een actie toe om een document in Cosmos DB te maken voor elke trans actie. Gebruik het transactie bericht type als de partitie sleutel om de berichten te categoriseren.
+Voeg een actie toe om een document in Cosmos DB te maken voor elke transactie. Gebruik het transactiebericht-type als de partitiesleutel om de berichten te categoriseren.
 
 1. Selecteer **Nieuwe stap**.
-1. Zoek naar **Azure Cosmos DB**op **een actie kiezen**.
-1. Kies **Azure Cosmos DB > acties > document maken of bijwerken**.
-1. Een API-verbinding maken met uw Cosmos DB-Data Base.
+1. In **Kies een actie** zoekt u naar **Azure Cosmos DB**.
+1. Kies **Azure Cosmos DB > Acties > Document bijwerken**.
+1. Maak een API-verbinding met uw Cosmos DB-database.
 
-    ![Verbindings instellingen Cosmos DB](./media/data-manager-cosmosdb/cosmosdb-connection.png)
+    ![Cosmos DB-verbindingsinstellingen](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
     | Instelling | Beschrijving
     |---------|-------------|
-    | Verbindingsnaam | Kies het abonnement dat het Event Grid onderwerp bevat. |
-    | DocumentDB-account | Kies het DocumentDB-account dat u hebt gemaakt in de sectie [Azure Cosmos DB-account maken](#create-azure-cosmos-db) . |
+    | Verbindingsnaam | Kies het abonnement dat het Event Grid-onderwerp bevat. |
+    | DocumentDB-account | Kies het DocumentDB-account dat u hebt gemaakt in het gedeelte [Azure Cosmos DB-account maken](#create-azure-cosmos-db). |
 
-1. Voer de **Data Base-id** en de **verzamelings-id** in voor uw Azure Cosmos DB die u eerder hebt gemaakt in de sectie [een Data Base en container toevoegen](#add-a-database-and-container) .
+1. Voer de **Database-ID** en **Verzamelings-ID** in voor uw Azure Cosmos DB die u eerder hebt gemaakt in de sectie [Een database en container toevoegen](#add-a-database-and-container).
 
-1. Selecteer de **document** instelling. In de pop-out *dynamische inhoud toevoegen* selecteert u **expressie** en kopieert en plakt u de volgende expressie:
+1. Selecteer de instelling **Document**. Selecteer in de pop-out *Dynamische inhoud toevoegen* de optie **Expressie** en kopieer en plak de volgende expressie:
 
     ```
     addProperty(triggerBody()?['data'], 'id', utcNow())
     ```
 
-    Met de expressie wordt het gegevens gedeelte van het bericht opgehaald en wordt de ID ingesteld op een time stamp-waarde.
+    Met de expressie wordt het gegevensgedeelte van het bericht opgehaald en wordt de ID ingesteld op een timestamp-waarde.
 
-1. Selecteer **nieuwe para meter toevoegen** en kies **partitie sleutel waarde**.
-1. Stel de **partitie sleutel waarde** in `"@{triggerBody()['data']['MessageType']}"`op. De waarde moet tussen dubbele aanhalings tekens worden geplaatst.
+1. Selecteer **Nieuwe parameter toevoegen** en kies **Waarde partitiesleutel**.
+1. Stel de **Waarde voor de partitiesleutel** in op `"@{triggerBody()['data']['MessageType']}"`. De waarde moet tussen dubbele aanhalingstekens worden geplaatst.
 
-    ![Logic Apps Designer met Cosmos DB instellingen](./media/data-manager-cosmosdb/create-action.png)
+    ![Logic Apps Designer met Cosmos DB-instellingen](./media/data-manager-cosmosdb/create-action.png)
 
-    Met de waarde wordt de partitie sleutel ingesteld op het type transactie bericht.
+    Met de waarde wordt de partitiesleutel ingesteld op het type transactiebericht.
 
 1. Selecteer **Opslaan**.
 
-De logische app bewaakt het Event Grid onderwerp. Wanneer een nieuw transactie bericht wordt verzonden vanuit Block Chain Data Manager, maakt de logische app een document in Cosmos DB.
+De logische app bewaakt het Event Grid-onderwerp. Wanneer een nieuw transactiebericht wordt verzonden vanuit Blockchain Data Manager, maakt de logische app een document in Cosmos DB.
 
-## <a name="send-a-transaction"></a>Een trans actie verzenden
+## <a name="send-a-transaction"></a>Een transactie verzenden
 
-Vervolgens verzendt u een trans actie naar het block Chain-groot boek om te testen wat u hebt gemaakt. Gebruik de functie **SendRequest** van het **HelloBlockchain** -contract dat u hebt gemaakt in de hand [leiding voor vereisten: gebruik Visual Studio code om slimme contracten te maken, te bouwen en te implementeren](send-transaction.md).
+Vervolgens verzendt u een transactie naar het blockchain-grootboek om te testen wat u hebt gemaakt. Gebruik de **SendRequest**-functie van het **HelloBlockchain**-contract die u hebt gemaakt in de vereiste [Zelfstudie: Gebruik Visual Studio Code om slimme contracten te maken, bouwen en implementeren](send-transaction.md).
 
-1. Gebruik de Azure Block Chain Development Kit Smart contract-interactie pagina om de functie **SendRequest** aan te roepen. Klik met de rechter muisknop op **HelloBlockchain. Sol** en kies **pagina slimme contract interactie weer geven** in het menu.
+1. Gebruik de Azure Blockchain Development Kit-pagina voor interactie met slimme contracten om de **SendRequest**-functie via een transactie aan te roepen. Klik met de rechter muisknop op **HelloBlockchain.sol** en kies **Pagina voor de interactie van een Smart-contract weergeven** in het menu.
 
-    ![Kies pagina slimme contract interactie weer geven in het menu](./media/data-manager-cosmosdb/contract-interaction.png)
+    ![Pagina voor interactie met slimme contracten weergeven kiezen in het menu](./media/data-manager-cosmosdb/contract-interaction.png)
 
-1. Kies **SendRequest** -contract actie en voer **Hallo in, Block Chain!** voor de para meter **requestMessage** . Selecteer **uitvoeren** om de functie **SendRequest** via een trans actie aan te roepen.
+1. Kies de actie **SendRequest** voor het contract en voer **Hello, Blockchain!** in als de parameter **requestMessage**. Selecteer **Uitvoeren** om de functie **SendRequest** aan te roepen via een transactie.
 
     ![SendRequest-actie uitvoeren](./media/data-manager-cosmosdb/sendrequest-action.png)
 
-De functie SendRequest stelt de velden **RequestMessage** en **status** in. De huidige status voor **RequestMessage** is het argument dat u hebt door gegeven als **Hello, Block Chain**. De waarde van het **status** veld blijft **aanvraag**.
+Met de functie SendRequest worden de velden **RequestMessage** en **Status** ingesteld. De huidige status voor **RequestMessage** is het argument dat u hebt doorgegeven via **Hello, Blockchain**. De waarde van het veld **Status** blijft **Aanvraag**.
 
-## <a name="view-transaction-data"></a>Transactie gegevens weer geven
+## <a name="view-transaction-data"></a>Transactiegegevens weergeven
 
-Nu u de Block Chain-Data Manager hebt verbonden met Azure Cosmos DB, kunt u de Block Chain-transactie berichten bekijken in Cosmos DB Data Explorer.
+Nu u uw Blockchain Data Manager hebt verbonden met Azure Cosmos DB, kunt u de blockchain-transactieberichten bekijken in Cosmos DB Data Explorer.
 
-1. Ga naar de weer gave Cosmos DB Data Explorer. Bijvoorbeeld **cosmosdb-block chain > Data Explorer > Block Chain-Data >-berichten > items**.
+1. Ga naar de Cosmos DB Data Explorer-weergave. Bijvoorbeeld **cosmosdb-blockchain > Data Explorer > blockchain-gegevens > Berichten > items**.
 
     ![Cosmos DB Data Explorer](./media/data-manager-cosmosdb/data-explorer.png)
 
-    Data Explorer geeft een lijst van de Block Chain-gegevens berichten die zijn gemaakt in de Cosmos DB-Data Base.
+    Data Explorer geeft een lijst van de blockchain-gegevensberichten die zijn gemaakt in de Cosmos DB-database.
 
-1. Blader door de berichten door item-ID te selecteren en het bericht te zoeken met de overeenkomende trans actie-hash.
+1. Blader door de berichten door item-ID te selecteren en het bericht te zoeken met de overeenkomende transactie-hash.
 
-    [![Details van Block Chain-trans actie](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Details van Blockchain-transactie](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-    Het bericht van de onbewerkte trans actie bevat details over de trans actie. De informatie over de eigenschap is echter versleuteld.
+    Het bericht van de onbewerkte transactie bevat details over de transactie. De informatie over de eigenschap is echter versleuteld.
 
-    Omdat u het HelloBlockchain-slimme contract hebt toegevoegd aan het block Chain Data Manager-exemplaar, wordt er ook een **ContractProperties** -bericht type verzonden dat gedecodeerde eigenschaps informatie bevat.
+    Omdat u het HelloBlockchain-slimme contract hebt toegevoegd aan het Blockchain Data Manager-exemplaar, wordt er ook een **ContractProperties**-berichttype verzonden dat gedecodeerde eigenschapsinformatie bevat.
 
-1. Zoek het **ContractProperties** -bericht voor de trans actie. Dit moet het volgende bericht in de lijst zijn.
+1. Zoek het **ContractProperties**-bericht voor de transactie. Dit moet het volgende bericht in de lijst zijn.
 
-    [![Details van Block Chain-trans actie](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
+    [![Details van blockchain-transactie](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
 
-    De **DecodedProperties** -matrix bevat de eigenschappen van de trans actie.
+    De **DecodedProperties**-matrix bevat de eigenschappen van de transactie.
 
-Gefeliciteerd! U hebt een transactie bericht Verkenner gemaakt met behulp van Block Chain Data Manager en Azure Cosmos DB.
+Gefeliciteerd! U hebt een transactiebericht-verkenner gemaakt met behulp van Blockchain Data Manager en Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de resources en resource groepen die u voor deze zelf studie hebt gebruikt, verwijderen wanneer u deze niet meer nodig hebt. Een resource groep verwijderen:
+U kunt de resourcegroep en alle gerelateerde resources verwijderen wanneer u deze niet meer nodig hebt. Een resourcegroep verwijderen:
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
-1. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
+1. Ga in de Azure Portal naar **Resourcegroep** in het linkernavigatievenster en selecteer de resourcegroep die u wilt verwijderen.
+1. Selecteer **Resourcegroep verwijderen**. Controleer de verwijdering door de naam van de resourcegroep in te voeren en **Verwijderen** te selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het integreren met block Chain-grootten.
+Meer informatie over het integreren met blockchain-grootboeken.
 
 > [!div class="nextstepaction"]
-> [De Ethereum Block Chain-connector gebruiken met Azure Logic Apps](ethereum-logic-app.md)
+> [De Ethereum Blockchain-connector gebruiken met Azure Logic Apps](ethereum-logic-app.md)

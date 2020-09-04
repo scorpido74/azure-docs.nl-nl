@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert me
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611429"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762416"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
@@ -379,7 +379,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
 **Antwoord:** Op dit moment bieden we geen ondersteuning voor het importeren van evaluatieresultaten voor deze werkstroom. Als tijdelijke oplossing kunt u de evaluatie exporteren en vervolgens handmatig de VM-aanbeveling selecteren tijdens de stap Replicatie inschakelen.
   
 **Vraag:** Ik krijg de fout 'Kan BIOS-GUID niet ophalen' tijdens het detecteren van mijn AWS-VM's   
-**Antwoord:** Controleer ondersteunde besturingssystemen voor AWS-VM's.  
+**Antwoord:** Gebruik altijd de basisaanmelder voor verificatie en geen pseudo-gebruiker. Controleer ook ondersteunde besturingssystemen voor AWS-VM's.  
 
 **Vraag:** Er zit geen voortgang in mijn replicatiestatus    
 **Antwoord:** Controleer of het replicatieapparaat aan de vereisten voldoet. Controleer of u op de TCP-poort 9443 en HTTPS 443 van de replicatie-apparaat de vereiste poorten hebt ingeschakeld voor gegevensoverdracht. Controleer of er geen verouderde dubbele versies van het replicatieapparaat zijn verbonden met hetzelfde project.   

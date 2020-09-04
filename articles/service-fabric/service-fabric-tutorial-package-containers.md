@@ -1,5 +1,5 @@
 ---
-title: Containers inpakken en implementeren
+title: Containers verpakken en implementeren
 description: In deze zelfstudie leert u hoe u een Azure Service Fabric-toepassingsdefinitie kunt genereren met behulp van Yeoman en de toepassing verpakken.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252751"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Zelfstudie: Containers verpakken en implementeren als een Service Fabric-toepassing met behulp van Yeoman
@@ -60,7 +60,7 @@ Service Fabric biedt hulpprogramma's waarmee u vanuit de terminal toepassingen k
     ```
 2. Typ 'TestContainer' als naam voor uw toepassing
 3. Typ 'azurevotefront' als naam voor uw toepassingsservice.
-4. Geef het pad van de containerinstallatiekopie in de ACR voor de front-endopslagplaats op - bijvoorbeeld '\<acrName>.azurecr.io/azure-vote-front:v1'. Het veld \<acrName> moet gelijk zijn aan de waarde die is gebruikt in de vorige zelfstudie.
+4. Geef het pad van de containerinstallatiekopie in ACR op voor de front-endopslagplaats, bijvoorbeeld \<acrName>.azurecr.io/azure-vote-front:v1. Het veld \<acrName> moet gelijk zijn aan de waarde die is gebruikt in de vorige zelfstudie.
 5. Druk op Enter om de sectie Opdrachten leeg te laten.
 6. Geef 1 exemplaar op.
 
@@ -118,7 +118,7 @@ Meld u aan bij uw ACR-exemplaar. Gebruik de opdracht **az acr login** om de bewe
 az acr login --name <acrName>
 ```
 
-De opdracht retourneert een bericht dat de **aanmelding is** voltooid.
+De opdracht retourneert het bericht **Aanmelden geslaagd** wanneer deze is uitgevoerd.
 
 Voer vervolgens de volgende opdracht uit om het wachtwoord van uw containerregister op te halen. Dit wachtwoord wordt door Service Fabric gebruikt voor authenticatie bij ACR om de containerinstallatiekopieën op te halen.
 
@@ -272,15 +272,15 @@ Gebruik het installatiescript uit de **TestContainer**-directory om het toepassi
 ./install.sh
 ```
 
-Open een browser en ga naar Service Fabric Explorer op http:\//containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Vouw het knooppunt Toepassingen uit. U ziet dat er een vermelding is voor uw toepassingstype en nog een voor het exemplaar.
+Open een browser en ga naar Service Fabric Explorer op http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Vouw het knooppunt Toepassingen uit. U ziet dat er een vermelding is voor uw toepassingstype en nog een voor het exemplaar.
 
 ![Service Fabric Explorer][sfx]
 
-Als u verbinding wilt maken met de actieve toepassing, opent u een webbrowser en gaat u naar de cluster-URL, bijvoorbeeld\/http:/containertestcluster.eastus.cloudapp.Azure.com:80. U ziet nu de stemtoepassing in de webgebruikersinterface.
+U maakt verbinding met de actieve toepassing door een webbrowser te openen en naar de cluster-URL te gaan: bijvoorbeeld http:\//containertestcluster.eastus.cloudapp.azure.com:80. U ziet nu de stemtoepassing in de webgebruikersinterface.
 
 ![stemapp][votingapp]
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Gebruik het uninstall-script dat is opgegeven in de sjabloon om het toepassingsexemplaar te verwijderen uit het cluster en de registratie van het toepassingstype op te heffen. Het duurt enige tijd om het exemplaar te wissen met deze opdracht, en de opdracht ‘install.sh’ mag niet onmiddellijk na dit script worden uitgevoerd.
 

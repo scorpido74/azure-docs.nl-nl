@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850165"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639746"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelfstudie: Elektrische voertuigen routeren met behulp van Azure Notebooks (Python)
 
@@ -27,7 +27,7 @@ In deze zelfstudie leert u hoe u een bestuurder helpt van wie de accu van het el
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Jupyter Notebook maken en uitvoeren in [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) in de cloud.
+> * Maak een Jupyter Notebook-bestand en voer het uit in [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) in de cloud.
 > * REST API's van Azure Maps aanroepen in Python.
 > * Een bereik zoeken op basis van het verbruiksmodel van het elektrische voertuig.
 > * Zoeken naar laadstations voor elektrische voertuigen binnen het bereik, ofwel de isochroon.
@@ -45,9 +45,9 @@ U kunt de primaire abonnementssleutel voor uw account ophalen door de instructie
 
 Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
-## <a name="create-an-azure-notebook"></a>Een Azure Notebook maken
+## <a name="create-an-azure-notebooks-project"></a>Een Azure Notebooks-project maken
 
-Voor deze zelfstudie moet u een Azure Notebook-project maken en het Jupyter Notebook-bestand downloaden en uitvoeren. Het Notebook-bestand bevat Python-code waarmee het scenario in deze zelfstudie wordt geïmplementeerd. Voer de volgende stappen uit om een Azure Notebook-project te maken en het Jupyter Notebook-document te uploaden naar dat project:
+Voor deze zelfstudie moet u een Azure Notebooks-project maken en het Jupyter Notebook-bestand downloaden en uitvoeren. Het Jupyter Notebook-bestand bevat Python-code waarmee het scenario in deze zelfstudie wordt geïmplementeerd. Voer de volgende stappen uit om een Azure Notebooks-project te maken en het Jupyter Notebook-document te uploaden naar dat project:
 
 1. Ga naar [Azure Notebooks](https://notebooks.azure.com) en meld u aan. Zie voor meer informatie [Snelstart: Aanmelden en een gebruikers-id instellen](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. Selecteer bovenaan de openbare profielpagina **Mijn projecten**.
@@ -68,19 +68,19 @@ Voor deze zelfstudie moet u een Azure Notebook-project maken en het Jupyter Note
 
 1. Selecteer in de lijst met projecten op de pagina **Mijn projecten** uw project en selecteer vervolgens **Uploaden** om het Jupyter Notebook-documentbestand te uploaden. 
 
-    ![notebook uploaden](./media/tutorial-ev-routing/upload-notebook.png)
+    ![Jupyter Notebook uploaden](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. Upload het bestand vanaf uw computer en selecteer vervolgens **Gereed**.
 
 1. Nadat het uploaden is voltooid, wordt uw bestand weergegeven op uw projectpagina. Dubbelklik op het bestand om het te openen als een Jupyter Notebook.
 
-Probeer de functionaliteit die in het Notebook-bestand is geïmplementeerd te begrijpen. Voer de code in het Notebook-bestand cel voor cel uit. U kunt de code in elke cel uitvoeren door de knop **Uitvoeren** aan de bovenkant van de Notebook-app te selecteren.
+Probeer de functionaliteit te begrijpen die in het Jupyter Notebook-bestand is geïmplementeerd. Voer de code in het Jupyter Notebook-bestand cel voor cel uit. U kunt de code in elke cel uitvoeren door de knop **Uitvoeren** aan de bovenkant van de Jupyter Notebook-app te selecteren.
 
   ![De knop Uitvoeren](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Pakketten op projectniveau installeren
 
-U kunt de code in het Notebook uitvoeren door de volgende stappen uit te voeren om pakketten op projectniveau te installeren:
+Voer de volgende stappen uit om de code in het Jupyter Notebook uit te voeren om pakketten op projectniveau te installeren:
 
 1. Download het bestand [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) vanuit de [Jupyter Notebook-opslagplaats van Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) en upload het vervolgens naar uw project.
 1. Selecteer **Projectinstellingen** op het projectdashboard. 

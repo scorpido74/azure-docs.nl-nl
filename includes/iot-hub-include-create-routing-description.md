@@ -9,15 +9,15 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 3a5747912a18b8406cabd03c9823e3f6fe6898a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "72808873"
 ---
 <!-- description of message routing used in the Azure CLI, PowerShell, and RM routing articles.-->
 
-U gaat berichten naar andere resources doorsturen op basis van eigenschappen die door het gesimuleerde apparaat aan het bericht zijn gekoppeld. Berichten die niet aangepast zijn doorgestuurd, worden verzonden naar het standaardeindpunt (berichten/gebeurtenissen). In de volgende zelf studie stuurt u berichten naar de IoT Hub en bekijkt u de route naar de verschillende bestemmingen.
+U gaat berichten naar andere resources doorsturen op basis van eigenschappen die door het gesimuleerde apparaat aan het bericht zijn gekoppeld. Berichten die niet aangepast zijn doorgestuurd, worden verzonden naar het standaardeindpunt (berichten/gebeurtenissen). In de volgende zelfstudie stuurt u berichten naar IoT Hub en ziet u dat ze naar de verschillende bestemmingen worden gerouteerd.
 
 |Waarde |Resultaat|
 |------|------|
@@ -25,4 +25,4 @@ U gaat berichten naar andere resources doorsturen op basis van eigenschappen die
 |niveau = 'kritiek' |Schrijf naar een Service Bus-wachtrij. Een logische app haalt het bericht op uit de wachtrij en gebruikt Office 365 om het bericht via e-mail te versturen.|
 |standaardinstelling |Geef deze gegevens weer met Power BI.|
 
-De eerste stap is het instellen van het eind punt waarnaar de gegevens worden doorgestuurd. De tweede stap is het instellen van de bericht route die gebruikmaakt van dat eind punt. Nadat u de route ring hebt ingesteld, kunt u de eind punten en bericht routes weer geven in de portal.
+In de eerste stap bestaat uit het instellen van het eindpunt waarnaar de gegevens worden gerouteerd. In de tweede stap wordt de berichtroute ingesteld die van dat eindpunt gebruikmaakt. Nadat u de routering hebt ingesteld, kunt u de eindpunten en berichtroutes weergeven in de portal.

@@ -1,19 +1,19 @@
 ---
-title: 'Zelf studie: Azure Database for PostgreSQL-één server bewaken en afstemmen'
-description: In deze zelf studie wordt uitgelegd hoe u Azure Database for PostgreSQL-één server bewaken en afstemmen.
+title: 'Zelfstudie: Bewaken en afstemmen - Azure Database for PostgreSQL - één server'
+description: In deze zelfstudie maakt u stapsgewijs kennis met bewaking en afstemming in Azure Database for PostgreSQL - één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74774734"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Zelf studie: Azure Database for PostgreSQL-één server bewaken en afstemmen
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Zelfstudie: Bewaken en afstemmen van Azure Database for PostgreSQL - één server
 
 Azure Database for PostgreSQL bevat functies die u helpen om inzicht te krijgen in de prestaties van uw server en om deze te verbeteren. In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]

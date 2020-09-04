@@ -1,5 +1,5 @@
 ---
-title: Toegang tot PaaS-resources beperken-zelf studie-Azure Portal
+title: Toegang tot PaaS-resources beperken - zelfstudie - Azure Portal
 description: In deze zelfstudie leert u hoe u de toegang tot Azure resources, zoals Azure Storage en Azure SQL Database, met service-eindpunten voor een virtueel netwerk kunt begrenzen en beperken met behulp van de Azure-portal.
 services: virtual-network
 documentationcenter: virtual-network
@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74186375"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Zelfstudie: Netwerktoegang tot PaaS-resources beperken met service-eindpunten voor een virtueel netwerk met behulp van de Azure-portal
@@ -56,7 +56,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
    |Abonnement| Selecteer uw abonnement|
    |Resourcegroep | Selecteer **Nieuwe maken** en voer *myResourceGroup* in.|
    |Locatie| Selecteer **VS - oost** |
-   |Subnetnaam| Public|
+   |Subnetnaam| Openbaar|
    |Subnetadresbereik| 10.0.0.0/24|
    |DDoS-bescherming| Basic|
    |Service-eindpunten| Uitgeschakeld|
@@ -77,7 +77,7 @@ Service-eindpunten worden ingeschakeld per service, per subnet. Maak een subnet 
 
     |Instelling|Waarde|
     |----|----|
-    |Naam| Privé |
+    |Naam| Persoonlijk |
     |Adresbereik| 10.0.1.0/24|
     |Service-eindpunten| Selecteer **Microsoft.Storage** onder **Services**|
 
@@ -108,11 +108,11 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
     |----|----|
     |Bron| Selecteer **VirtualNetwork** |
     |Poortbereiken van bron| * |
-    |Doel | Selecteer een **service label**|
-    |Doelservicetag | **Opslag** selecteren|
+    |Doel | Selecteer **Servicetag**|
+    |Doelservicetag | Selecteer **Storage**|
     |Poortbereiken van doel| * |
-    |Protocol|Alle|
-    |Bewerking|Toestaan|
+    |Protocol|Elk|
+    |Actie|Toestaan|
     |Prioriteit|100|
     |Naam|Allow-Storage-All|
 
@@ -122,13 +122,13 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
     |----|----|
     |Bron| Selecteer **VirtualNetwork** |
     |Poortbereiken van bron| * |
-    |Doel | Selecteer een **service label**|
-    |Doelservicetag| **Internet** selecteren|
+    |Doel | Selecteer **Servicetag**|
+    |Doelservicetag| Selecteer **Internet**|
     |Poortbereiken van doel| * |
-    |Protocol|Alle|
-    |Bewerking|Weigeren|
+    |Protocol|Elk|
+    |Actie|Weigeren|
     |Prioriteit|110|
-    |Naam|Deny-Internet-All|
+    |Name|Deny-Internet-All|
 
 9. Selecteer onder **INSTELLINGEN****Inkomende beveiligingsregels**.
 10. Selecteer **+ Toevoegen**.
@@ -136,14 +136,14 @@ Standaard kunnen alle VM's in een subnet met alle resources communiceren. U kunt
 
     |Instelling|Waarde|
     |----|----|
-    |Bron| Alle |
+    |Bron| Elk |
     |Poortbereiken van bron| * |
     |Doel | Selecteer **VirtualNetwork**|
     |Poortbereiken van doel| 3389 |
-    |Protocol|Alle|
-    |Bewerking|Toestaan|
+    |Protocol|Elk|
+    |Actie|Toestaan|
     |Prioriteit|120|
-    |Naam|Allow-RDP-All|
+    |Name|Allow-RDP-All|
 
 12. Selecteer onder **INSTELLINGEN****Subnetten**.
 13. Selecteer **+ Koppelen**
@@ -158,12 +158,12 @@ De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn g
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Storage** en selecteer vervolgens **Opslagaccount - blob, bestand, tabel, wachtrij**.
-3. Voer de volgende informatie in of Selecteer deze, accepteer de resterende standaard waarden en selecteer vervolgens **maken**:
+3. Voer de volgende informatie in of selecteer deze, accepteer voor het overige de standaardwaarden en selecteer **Maken**:
 
     |Instelling|Waarde|
     |----|----|
     |Naam| Voer een naam die uniek is voor alle Azure locaties, 3 tot 24 tekens lang is en alleen cijfers en kleine letters bevat.|
-    |Soort account|StorageV2 (general purpose v2)|
+    |Soort account|StorageV2 (algemeen v2)|
     |Locatie| Selecteer **VS - oost** |
     |Replicatie| Lokaal redundante opslag (LRS)|
     |Abonnement| Selecteer uw abonnement|
@@ -176,7 +176,7 @@ De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn g
 
    ![Storage-account](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
-3. Selecteer ** + bestandsshare**.
+3. Selecteer  **+ bestandsshare**.
 4. Voer *mijn-bestandsshare* in onder **Naam** en selecteer **OK**.
 5. Sluit het vak **Bestandsservice**.
 
@@ -186,7 +186,7 @@ Standaard accepteren opslagaccounts netwerkverbindingen van clients in ieder net
 
 1. Selecteer onder **INSTELLINGEN** voor het opslagaccount **Firewalls en virtuele netwerken**.
 2. Selecteer **Geselecteerde netwerken**.
-3. Selecteer **+ bestaand virtueel netwerk toevoegen**.
+3. Selecteer **+Bestaand virtueel netwerk toevoegen**.
 4. Selecteer onder **Netwerken toevoegen** de volgende waarden en selecteer **Toevoegen**:
 
     |Instelling|Waarde|
@@ -213,7 +213,7 @@ Implementeer een VM in elk subnet om de netwerktoegang tot een opslagaccount te 
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en vervolgens **Windows Server 2016 Datacenter**.
-3. Voer de volgende informatie in of Selecteer deze en selecteer **OK**:
+3. Voer de volgende gegevens in of selecteer deze, en selecteer **OK**:
 
    |Instelling|Waarde|
    |----|----|
@@ -222,7 +222,7 @@ Implementeer een VM in elk subnet om de netwerktoegang tot een opslagaccount te 
    |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    |Abonnement| Selecteer uw abonnement.|
    |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-   |Locatie| Selecteer **VS Oost**.|
+   |Locatie| Selecteer **VS - oost**.|
 
    ![Basisinformatie invoeren over een virtuele machine](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
@@ -289,7 +289,7 @@ Het implementeren van de VM duurt een paar minuten. Ga niet door met de volgende
 
 5. Browse vanaf uw computer naar Azure [Portal](https://portal.azure.com).
 6. Voer de naam in van het opslagaccount dat u hebt gemaakt in het vak **Resources, services en documenten zoeken**. Wanneer de naam van uw opslagaccount wordt weergegeven in de zoekresultaten, selecteert u deze.
-7. Selecteer **bestanden**.
+7. Selecteer **Bestanden**.
 8. Het foutbericht uit de volgende afbeelding wordt weergegeven:
 
    ![Fout: Toegang geweigerd](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
@@ -302,7 +302,7 @@ Wanneer u deze niet langer nodig hebt, verwijdert u de resourcegroep en alle res
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in bij **Typ de naam van de resource groep:** en selecteer **verwijderen**.
+3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -311,4 +311,4 @@ In deze zelfstudie hebt u een service-eindpunt voor een subnet van een virtueel 
 Als u meerdere virtuele netwerken in uw account hebt, kunt u twee virtuele netwerken met elkaar verbinden zodat de resources in beide virtuele netwerken met elkaar kunnen communiceren. Ga verder met de volgende zelfstudie om te leren hoe u virtuele netwerken met elkaar kunt verbinden.
 
 > [!div class="nextstepaction"]
-> [Virtuele netwerken verbinden](./tutorial-connect-virtual-networks-portal.md)
+> [Virtuele netwerken met elkaar verbinden](./tutorial-connect-virtual-networks-portal.md)

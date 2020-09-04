@@ -3,15 +3,15 @@ title: Windows Virtual Desktop, hostgroep, Azure portal - Azure
 description: Een Windows Virtual Desktop-hostgroep maken met behulp van de Azure-portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002671"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755480"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -36,7 +36,7 @@ Ook moet u het volgende weten:
 - Waar de bron van de installatiekopie die u wilt gebruiken zich bevindt. Komt deze uit de Azure-galerie of is het een aangepaste installatiekopie?
 - Uw referenties voor domeindeelname.
 
-Zorg er ook voor dat u de resourceprovider Microsoft.DesktopVirtualization hebt geregistreerd. Ga naar **Abonnementen**, selecteer de naam van uw abonnement en vervolgens **Azure-resourceproviders** als u dit nog niet hebt gedaan.
+Zorg er ook voor dat u de resourceprovider Microsoft.DesktopVirtualization hebt geregistreerd. Ga, als u dit nog niet hebt gedaan, naar **Abonnementen**, selecteer de naam van uw abonnement en vervolgens **Resourceproviders**. Zoek naar DesktopVirtualization, selecteer Microsoft. DesktopVirtualization en selecteer vervolgens Registreren.
 
 Wanneer u een Windows Virtual Desktop-hostgroep maakt met de Azure Resource Manager-sjabloon, kunt u een virtuele machine maken vanuit de Azure-galerie, namelijk een beheerde installatiekopie of een niet-beheerde installatiekopie. Zie [Een Windows-VHD of -VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) en [Een beheerde installatiekopie van een gegeneraliseerde VM maken in Azure](../virtual-machines/windows/capture-image-resource.md) voor meer informatie over het maken van VM-installatiekopieën.
 
@@ -80,9 +80,9 @@ Ga als volgt te werk om te beginnen met het maken van uw nieuwe hostgroep:
        > [!div class="mx-imgBorder"]
        > ![Een schermopname van het veld Toewijzingstype met "Gegroepeerd" geselecteerd. De gebruiker beweegt de cursor over Breedte-eerst in het vervolgkeuzemenu voor gelijke taakverdeling.](media/pooled-assignment-type.png)
 
-10. Selecteer **Volgende: Details VM**.
+10. Selecteer **Volgende: Virtual Machines >** .
 
-11. Als u al virtuele machines hebt gemaakt en deze wilt gebruiken met de nieuwe hostgroep, selecteert u **Nee**. Als u nieuwe virtuele machines wilt maken en deze wilt registreren bij de nieuwe hostgroep, selecteert u **Ja**.
+11. Als u al virtuele machines hebt gemaakt en deze wilt gebruiken voor de nieuwe hostgroep, selecteert u **Nee** en vervolgens **Volgende: Werkruimte >** en ga naar de sectie [Werkruimtegegevens](#workspace-information). Als u nieuwe virtuele machines wilt maken en deze wilt registreren bij de nieuwe hostgroep, selecteert u **Ja**.
 
 Nu u het eerste deel hebt voltooid, gaan we verder met het volgende deel van het installatieproces waarin de virtuele machine wordt gemaakt.
 
@@ -92,26 +92,28 @@ Nu we het eerste deel hebben afgerond, moet u uw virtuele machine gaan instellen
 
 Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatieproces van de hostgroep:
 
-1. Kies onder Resourcegroep de resourcegroep waarin u de virtuele machines wilt maken. Dit kan een andere resourcegroep zijn dan die u hebt gebruikt voor de hostgroep.
+1. Kies onder **Resourcegroep** de resourcegroep waarin u de virtuele machines wilt maken. Dit kan een andere resourcegroep zijn dan die u hebt gebruikt voor de hostgroep.
 
-2. Kies de **Regio virtuele machine** waarin u de virtuele machines wilt maken. Deze kunnen hetzelfde zijn of verschillen van de regio die u hebt geselecteerd voor de hostgroep.
+2. Kies de **locatie van de virtuele machine** waarin u de virtuele machines wilt maken. Deze kunnen hetzelfde zijn of verschillen van de regio die u hebt geselecteerd voor de hostgroep.
 
-3. Kies vervolgens de grootte van de virtuele machine die u wilt maken. U kunt de standaardgrootte behouden of **Formaat wijzigen** selecteren om de grootte te wijzigen. Als u **Formaat wijzigen** selecteert, kiest u de grootte van de virtuele machine die geschikt is voor uw werkbelasting in het venster dat wordt weergegeven.
+3. Kies vervolgens de **grootte van de virtuele machine** die u wilt gebruiken. U kunt de standaardgrootte behouden of **Formaat wijzigen** selecteren om de grootte te wijzigen. Als u **Formaat wijzigen** selecteert, kiest u in het venster dat verschijnt de grootte van de virtuele machine die geschikt is voor de workload.
 
-4. Geef bij Aantal virtuele machines het aantal virtuele machines op dat u voor de hostgroep wilt maken.
+4. Geef bij **Aantal virtuele machines** het aantal virtuele machines op dat u voor de hostgroep wilt maken.
 
     >[!NOTE]
-    >Het installatieproces kan maximaal 400 VM's maken tijdens het instellen van uw hostgroep, en tijdens elk VM-installatieproces worden vier objecten in de resourcegroep gemaakt. Omdat tijdens het maken het quotum voor uw abonnement niet wordt gecontroleerd, moet u controleren of het aantal VM's dat u invoert binnen de limieten voor virtuele machines en API's van Azure voor uw resourcegroep en abonnement valt. U kunt meer VM's toevoegen als u klaar bent met het maken van de hostgroep.
+    >Het installatieproces kan maximaal 400 VM's maken tijdens het instellen van uw hostgroep, en tijdens elk VM-installatieproces worden vier objecten in de resourcegroep gemaakt. Tijdens het maken wordt het quotum voor uw abonnement niet gecontroleerd. Controleer daarom of het aantal VM's dat u invoert binnen de limieten voor virtuele machines en API's van Azure voor uw resourcegroep en abonnement valt. U kunt meer VM's toevoegen als u klaar bent met het maken van de hostgroep.
 
 5. Daarna geeft u een **Naamvoorvoegsel** op om de virtuele machines die door het installatieproces zijn gemaakt een naam te geven. Het achtervoegsel wordt `-` met getallen die beginnen bij 0.
 
-6. Kies vervolgens de installatiekopie die moet worden gebruikt om de virtuele machine te maken. U kunt kiezen tussen **Galerie** of **Opslagblob**.
+6. Kies vervolgens de installatiekopie die moet worden gebruikt om de virtuele machine te maken. U kunt kiezen tussen **Galerie** en **Opslagblob**.
 
     - Als u **Galerie** kiest, selecteert u een van de aanbevolen installatiekopieën in het vervolgkeuzemenu:
 
-      - Windows 10 Enterprise voor meerdere sessies, versie 1909 + Microsoft 365 Apps voor Enterprise – Gen 1
-      - Windows 10 Enterprise voor meerdere sessies, versie 1909 - Gen 1
-      - Windows Server 2019 Datacenter - Gen 1
+      - Windows 10 Enterprise voor meerdere sessies, versie 1909
+      - Windows 10 Enterprise voor meerdere sessies, versie 1909 + Microsoft 365 Apps
+      - Windows Server 2019 Datacenter
+      - Windows 10 Enterprise voor meerdere sessies, versie 2004
+      - Windows 10 Enterprise voor meerdere sessies, versie 2004 + Microsoft 365 Apps
 
      Als u de gewenste installatiekopie niet ziet, selecteert u **Door alle afbeeldingen en schijven bladeren**, waarmee u een andere afbeelding in uw galerie of een installatiekopie van Microsoft en andere uitgevers kunt selecteren.
 
@@ -127,7 +129,7 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
 
 7. Kies welk type besturingssysteemschijven u wilt gebruiken voor uw VM's: Standard - SSD, Premium - SSD of Standard-HDD.
 
-8. Onder Netwerk en beveiliging selecteert u het virtuele netwerk en het subnet waar u de virtuele machines die u maakt, wilt plaatsen. Zorg ervoor dat het virtuele netwerk verbinding kan maken met de domeincontroller omdat u de virtuele machines in het virtuele netwerk moet toevoegen aan het domein. Selecteer vervolgens of u wel of niet een openbaar IP-adres voor de virtuele machines wilt. U kunt het beste **Nee** selecteren, omdat een privé-IP-adres veiliger is.
+8. Onder Netwerk en beveiliging selecteert u het **virtuele netwerk** en het **subnet** waar u de virtuele machines die u maakt, wilt plaatsen. Zorg ervoor dat het virtuele netwerk verbinding kan maken met de domeincontroller omdat u de virtuele machines in het virtuele netwerk moet toevoegen aan het domein. Selecteer vervolgens of u wel of niet een openbaar IP-adres voor de virtuele machines wilt. U kunt het beste **Nee** selecteren, omdat een privé-IP-adres veiliger is.
 
 9. Selecteer het gewenste type beveiligingsgroep: **Basis**, **Geavanceerd**of **Geen**.
 
@@ -141,11 +143,11 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
 
     Als u **Geavanceerd** kiest, selecteert u een bestaande netwerkbeveiligingsgroep die u al hebt geconfigureerd.
 
-10. Selecteer daarna of u wilt dat de virtuele machines aan een specifiek domein en een specifieke organisatie-eenheid worden gekoppeld. Als u **Ja** kiest, geeft u het domein op dat u wilt toevoegen. U kunt ook een specifieke organisatie-eenheid toevoegen waarin u wilt dat de virtuele machines worden geplaatst.
+10. Selecteer daarna of u wilt dat de virtuele machines aan een specifiek domein en een specifieke organisatie-eenheid worden gekoppeld. Als u **Ja** kiest, geeft u het domein op dat u wilt toevoegen. U kunt eventueel een specifieke organisatie-eenheid toevoegen waarin u de virtuele machines wilt plaatsen. Als u **Nee** kiest, worden de virtuele machines gekoppeld aan het domein dat overeenkomt met het achtervoegsel van de **UPN van de AD-domeindeelname**.
 
 11. Voer onder Administrator-account de referenties in voor de Active Directory Domain-beheerder van het virtuele netwerk dat u hebt geselecteerd.
 
-12. Selecteer **Werkruimte**.
+12. Selecteer **Volgende: Werkruimte >** .
 
 Met deze optie kunt u de volgende fase voor het instellen van uw hostgroep starten: uw app-groep registreren bij een werkruimte.
 
@@ -161,7 +163,7 @@ Ga als volgt te werk om de bureaubladtoepassingsgroep te registreren bij een wer
 
 2. Kies vervolgens of u een nieuwe werkruimte wilt maken of een bestaande werkruimte wilt selecteren. De app-groep kan alleen worden geregistreerd bij werkruimten die op dezelfde locatie als de hostgroep zijn gemaakt.
 
-3. U kunt desgewenst **Labels** selecteren.
+3. Selecteer desgewenst **Volgende: Tags >** .
 
     Hier kunt u labels toevoegen, zodat u de objecten kunt groeperen met metagegevens waarmee u het voor uw beheerders gemakkelijker maakt.
 
@@ -175,7 +177,7 @@ Ga als volgt te werk om de bureaubladtoepassingsgroep te registreren bij een wer
      - Uw nieuwe hostgroep.
      - Een bureaublad-app-groep.
      - Een werkruimte, als u ervoor hebt gekozen om deze te maken.
-     - Als u ervoor hebt gekozen om de bureaublad-app-groep te registreren, is de registratie voltooid
+     - Als u ervoor hebt gekozen om de bureaublad-app-groep te registreren, is de registratie voltooid.
      - Virtuele machines, als u deze hebt gemaakt, die zijn gekoppeld aan het domein en die zijn geregistreerd bij de nieuwe hostgroep.
      - Een downloadkoppeling voor een Azure Resource Management-sjabloon op basis van uw configuratie.
 

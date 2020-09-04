@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037918"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719067"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Zelfstudie: Een Video Analytics-toepassingssjabloon voor object- en bewegingsdetectie bewaken en beheren
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-Ga naar het dashboard **Bewaken** in de toepassing. Klik vervolgens op een van de hyperlinks naar de vastgelegde objectdetectie op de tegel **Video voor deductiegebeurtenis**. De video wordt vertoond op een pagina die wordt weergegeven met de lokale videospeler:
+Ga naar het **camera-003**-apparaat en selecteer het tabblad **Dashboard**. Klik vervolgens op een van de hyperlinks naar de vastgelegde objectdetectie op de tegel **Video voor deductiegebeurtenis**. De video wordt vertoond op een pagina die wordt weergegeven met de lokale videospeler:
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videofragment":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>De gesimuleerde apparaten op het toepassingsdashboard wijzigen
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>De gesimuleerde apparaten op het toepassingsdashboard wijzigen
 
 De toepassingsdashboards zijn oorspronkelijk gevuld met telemetrie en eigenschappen die zijn gegenereerd op basis van de met IoT Central gesimuleerde apparaten. Voer deze stappen uit om de tegels te configureren in telemetrie van echte camera´s of de Live555-simulator:
 
-1. Ga naar het dashboard **Monitor van echte camera**.
+1. Ga naar de het dashboard van de **(voorbeeld) Real camera monitor**-toepassing.
 1. Selecteer **Bewerken**.
+1. Selecteer de tegel **Notitie** en verwijder deze.
+1. Wijzig de titel van het dashboard in *Real Camera Monitor*.
 1. Selecteer op de tegel **Aantal deducties** het pictogram Configureren.
 1. Selecteer in de sectie **Grafiek configureren** een of meer echte camera's in de apparaatgroep **LVA Edge Object Detector**.
 1. Selecteer het telemetrieveld voor `AI Inference Interface/Inference Count`.
 1. Selecteer **Update**.
-
-   
 
 1. Herhaal de stappen voor de volgende tegels:
     1. Het cirkeldiagram **Detectie** gebruikt het telemetrietype `AI Inference Interface/Inference/entity/tag/value`.

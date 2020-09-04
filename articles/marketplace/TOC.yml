@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: Transacties in de commerciële marketplace
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: Abonnementen en prijzen
+              href: plans-pricing.md
             - name: Persoonlijke aanbiedingen
               href: ./private-offers.md
             - name: Standaardcontract
               href: ./standard-contract.md
             - name: Gebruikskenmerken van klanten van Azure-partners
               href: ./azure-partner-customer-usage-attribution.md
+            - name: Ondersteunde landen en regio's
+              href: ./sell-from-countries.md
         - name: Publicatiehandleidingen op type aanbieding
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,8 +36,6 @@
               href: ./marketplace-solution-templates.md
             - name: Beheerde toepassingen voor Azure-apps
               href: ./marketplace-managed-apps.md
-            - name: SaaS-apps
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: Containers
               href: ./marketplace-containers.md
             - name: IoT Edge-modules
@@ -113,7 +115,7 @@
           items:
             - name: Een Azure Virtual Machine-aanbieding maken
               href: ./partner-center-portal/azure-vm-create-offer.md
-            - name: Een technische asset voor een Azure-VM maken
+            - name: Technische assets voor Azure-VM maken
               items:
                 - name: 'Certificering van virtuele machines: problemen en oplossingen'
                   href: ./partner-center-portal/vm-certification-issues-solutions.md
@@ -165,10 +167,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS-aanbiedingen
           items:
-            - name: Controlelijst voor SaaS-aanbieding maken
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: Een SaaS-aanbieding maken
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Een SaaS-aanbieding plannen
+              href: plan-saas-offer.md
             - name: Verificatie met Azure AD voor SaaS
               items:
                 - name: Overzicht van Azure AD en SaaS
@@ -177,6 +177,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: Landingspagina voor aanbiedingen voor gratis proefversies
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: SaaS-facturering naar gebruik
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: Een SaaS-aanbieding maken en publiceren
+              items:
+                - name: Een SaaS-aanbieding maken
+                  href: create-new-saas-offer.md
+                - name: Eigenschappen van SaaS-aanbieding configureren
+                  href: create-new-saas-offer-properties.md
+                - name: Vermelding van SaaS-aanbieding configureren
+                  href: create-new-saas-offer-listing.md
+                - name: Een previewdoelgroep toevoegen
+                  href: create-new-saas-offer-preview.md
+                - name: Technische informatie toevoegen
+                  href: create-new-saas-offer-technical.md
+                - name: Plannen maken
+                  href: create-new-saas-offer-plans.md
+                - name: Een SaaS-aanbieding testen en publiceren
+                  href: test-publish-saas-offer.md
+            - name: Uw SaaS-aanbieding in de handel brengen
+              href: create-new-saas-offer-marketing.md
             - name: SaaS-uitvoerings-API's
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +208,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS-uitvoerings-API's - Veelgestelde vragen
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS-facturering naar gebruik
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: Overzicht van leadbeheer
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +225,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Service voor Marketplace-meting
           items:
-            - name: Service voor anomaliedetectie
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: Verificatiestrategieën
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Service-API's voor Marketplace-meting
@@ -234,7 +250,7 @@
       href: review-publish-offer.md
     - name: Bestaande aanbiedingen bijwerken
       href: ./partner-center-portal/update-existing-offer.md
-    - name: Voordelen activeren
+    - name: Marketplace-beloningen activeren
       href: ./partner-center-portal/marketplace-rewards.md
     - name: Analytische gegevens voor Partnercentrum
       items:
@@ -304,3 +320,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Ondersteuningsopties
       href: ./partner-center-portal/support.md
+    - name: Resources
+      items:
+        - name: Ondersteunde HTML-tags
+          href: supported-html-tags.md

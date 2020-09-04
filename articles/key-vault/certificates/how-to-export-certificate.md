@@ -1,6 +1,6 @@
 ---
-title: Certificaat exporteren uit Azure Key Vault
-description: Certificaat exporteren uit Azure Key Vault
+title: Certificaten exporteren uit Azure Key Vault
+description: Meer informatie over het exporteren van certificaten uit Azure Key Vault.
 services: key-vault
 author: sebansal
 tags: azure-key-vault
@@ -10,34 +10,49 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: afab65b22d9487f30da458346bf143a557bec0d8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588889"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827508"
 ---
-# <a name="export-certificate-from-azure-key-vault"></a>Certificaat exporteren uit Azure Key Vault
+# <a name="export-certificates-from-azure-key-vault"></a>Certificaten exporteren uit Azure Key Vault
 
-Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren en beveiligde communicatie mogelijk maken voor toepassingen. Zie [Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) voor meer algemene informatie over certificaten
+Meer informatie over het exporteren van certificaten uit Azure Key Vault. U kunt certificaten exporteren met behulp van de Azure-CLI, Azure PowerShell of de Azure Portal. U kunt ook de Azure Portal gebruiken om Azure App Service-certificaten te exporteren.
 
-## <a name="about-azure-key-vault-certificate"></a>Informatie over Azure-sleutelkluiscertificaten
+## <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
-### <a name="composition-of-certificate"></a>Samenstelling van certificaat
-Wanneer er een Key Vault-certificaat wordt gemaakt, worden er ook een adresseerbare sleutel en een geheim gemaakt met dezelfde naam. Met de Key Vault sleutel kunnen sleutelbewerkingen worden uitgevoerd en met het Key Vault-geheim kan de certificaatwaarde als geheim worden opgehaald. Een Key Vault-certificaat bevat ook openbare metagegevens voor x509-certificaten. [Meer informatie](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)
+Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren. Er wordt ook beveiligde communicatie voor toepassingen ingeschakeld. Raadpleeg [Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) voor meer informatie.
 
-### <a name="exportable-or-non-exportable-keys"></a>Exporteerbare of niet-exporteerbare sleutels
-Wanneer een Key Vault-certificaat wordt gemaakt, kan het worden opgehaald uit het adresseerbare geheim met de privésleutel in een PFX- of PEM-indeling. Het beleid dat wordt gebruikt voor het maken van het certificaat moet aangeven dat de sleutel exporteerbaar is. Als het beleid aangeeft dat het niet kan worden geëxporteerd, is de privésleutel geen onderdeel van de waarde wanneer deze wordt opgehaald als geheim.
+### <a name="composition-of-a-certificate"></a>Samenstelling van een certificaat
 
-Er worden bij certificaten twee typen sleutels ondersteund: RSA- of RSA HSM. Exporteerbaar is alleen toegestaan met RSA, en wordt niet ondersteund door RSA HSM. [Meer informatie](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)
+Wanneer er een Key Vault-certificaat wordt gemaakt, worden er ook een adresseerbare *sleutel* en een *geheim* gemaakt met dezelfde naam. Met de Key Vault-sleutel kunnen sleutelbewerkingen worden uitgevoerd. Met het Key Vault-geheim kan zowel de certificaatwaarde als het geheim worden opgehaald. Een Key Vault-certificaat bevat ook openbare metagegevens voor x509-certificaten. Ga naar [Samenstelling van een certificaat](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) voor meer informatie.
 
-Opgeslagen certificaat in Azure Key Vault kan worden geëxporteerd met behulp van Azure CLI, PowerShell of de portal.
+### <a name="exportable-and-non-exportable-keys"></a>Exporteerbare en niet-exporteerbare sleutels
+
+Nadat een Key Vault-certificaat is gemaakt, kan het worden opgehaald uit het adresseerbare geheim met de privésleutel. Haal het certificaat op in PFX- of PEM-indeling.
+
+- **Exporteerbaar**: Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel exporteerbaar is.
+- **Niet-exporteerbaar**: Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel niet-exporteerbaar is. In dit geval maakt de persoonlijke sleutel geen deel uit van de waarde wanneer deze wordt opgehaald als geheim.
+
+Key Vault ondersteunt twee soorten sleutels:
+
+- **RSA**: Exporteerbaar
+- **HSM RSA**: Niet-exporteerbaar
+
+Raadpleeg [Over Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) voor meer informatie.
+
+## <a name="export-stored-certificates"></a>Opgeslagen certificaten exporteren
+
+U kunt opgeslagen certificaten exporteren in Azure Key Vault met behulp van de Azure-CLI, Azure PowerShell of de Azure Portal.
 
 > [!NOTE]
-> Het is belangrijk te weten dat u alleen het wachtwoord van een certificaat nodig hebt als u het in de sleutelkluis importeert. In Key Vault wordt het bijbehorende wachtwoord niet opgeslagen, dus wanneer u het certificaat exporteert, is het wachtwoord leeg.
+> U hoeft alleen een certificaatwachtwoord in te voeren wanneer u het certificaat in de sleutelkluis importeert. Key Vault slaat het gekoppelde wachtwoord niet op. Wanneer u het certificaat exporteert, is het wachtwoord leeg.
 
-## <a name="exporting-certificate-using-cli"></a>Certificaat importeren met behulp van de CLI
-Met de volgende opdracht kunt u het **openbare deel** van een Key Vault certificaat downloaden.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Gebruik de volgende opdracht in de Azure-CLI om het **openbare deel** van een Key Vault-certificaat te downloaden.
 
 ```azurecli
 az keyvault certificate download --file
@@ -48,11 +63,10 @@ az keyvault certificate download --file
                                  [--vault-name]
                                  [--version]
 ```
-[Kijk hier](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) voor voorbeelden en parameterdefinities
 
+Bekijk [voorbeelden en parameterdefinities](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) voor meer informatie.
 
-
-Als u het hele certificaat wilt downloaden, dus **zowel het openbare als het persoonlijke deel van de van de samenstelling**, kunt u dit doen door het certificaat als een geheim te downloaden.
+Als u het hele certificaat wilt downloaden, (zowel het openbare als het persoonlijke deel van de samenstelling), dan kunt u het certificaat als een geheim downloaden.
 
 ```azurecli
 az keyvault secret download –file {nameofcert.pfx}
@@ -63,12 +77,12 @@ az keyvault secret download –file {nameofcert.pfx}
                             [--vault-name]
                             [--version]
 ```
-[Kijk hier](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download) voor parameterdefinities
 
+Zie [parameterdefinities](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download) voor meer informatie.
 
-## <a name="exporting-certificate-using-powershell"></a>Certificaat exporteren met PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Met deze opdracht wordt het certificaat met de naam TestCert01 opgehaald uit de sleutelkluis met de naam ContosoKV01. Voer de volgende opdracht uit om het certificaat als PFX-bestand te downloaden. Met deze opdrachten krijgt u toegang tot SecretId en kunt u de inhoud opslaan als een PFX-bestand.
+Gebruik deze opdracht in Azure PowerShell om het certificaat de naam **TestCert01** te geven vanuit de sleutelkluis met de naam **ContosoKV01**. Voer de volgende opdracht uit om het certificaat als PFX-bestand te downloaden. Met deze opdrachten krijgt u toegang tot **SecretId** en kunt u de inhoud opslaan als een PFX-bestand.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
@@ -81,26 +95,25 @@ $protectedCertificateBytes = $certCollection.Export([System.Security.Cryptograph
 $pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
 [System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
 ```
-Hiermee wordt de hele keten met certificaten met een persoonlijke sleutel geëxporteerd. Dit certificaat wordt met een wachtwoord beveiligd.
-Raadpleeg [voorbeeld 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0) voor meer informatie over opdracht ```Get-AzKeyVaultCertificate``` en parameters
 
-## <a name="exporting-certificate-using-portal"></a>Certificaat exporteren met behulp van de portal
+Met deze opdracht wordt de hele keten met certificaten met een persoonlijke sleutel geëxporteerd. Het certificaat is beveiligd met een wachtwoord.
+Zie [Get-AzKeyVaultCertificate - Voorbeeld 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)voor meer informatie over de **Get-AzKeyVaultCertificate**-opdracht en para meters.
 
-Wanneer u in de blade Certificaat een certificaat maakt/importeert, ontvangt u in de portal de melding dat het certificaat is gemaakt. Wanneer u het certificaat selecteert, kunt u op de huidige versie klikken. U ziet dan de optie om te downloaden.
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
+Wanneer u op de Azure Portal een certificaat op de blade **Certificaat** maakt/importeert, ontvangt u een melding dat het certificaat is gemaakt. Selecteer het certificaat en de huidige versie om de optie om te downloaden te zien.
 
-Als u klikt op de knop “Downloaden in CER-indeling” of “Downloaden in PFX/PEM-indeling”, kunt u het certificaat downloaden.
-
+Als u het certificaat wilt downloaden, selecteert u **Downloaden in CER-indeling** of **Downloaden in PFX/PEM-indeling**.
 
 ![Certificaat downloaden](../media/certificates/quick-create-portal/current-version-shown.png)
 
+**Azure App Service-certificaten exporteren**
 
-## <a name="exporting-app-service-certificate-from-key-vault"></a>App Service Certificate exporteren vanuit de sleutelkluis
+Azure App Service-certificaten zijn een handige manier om SSL-certificaten aan te schaffen. U kunt deze toewijzen aan Azure-apps vanuit de portal. U kunt deze certificaten ook exporteren vanuit de portal als PFX-bestanden zodat ze elders gebruikt kunnen worden. Na het importeren bevinden de App Service-certificaten zich onder **geheimen**.
 
-Azure App Service-certificaten bieden een handige manier om SSL-certificaten aan te schaffen en deze rechtstreeks vanuit de portal aan Azure-apps toe te wijzen. Deze certificaten kunnen ook als PFX-bestanden vanuit de portal worden geëxporteerd, zodat ze elders kunnen worden gebruikt.
-Na het importeren kunnen de App Service-certificaten **zich onder geheimen bevinden**.
+Zie de stappen voor het [exporteren van Azure App Service-certificaten](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx) voor meer informatie.
 
-De stappen voor het exporteren van App Service-certificaten kunt u [hier lezen](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)
+---
 
 ## <a name="read-more"></a>Meer informatie
 * [Verschillende typen certificaatbestanden en -definities](https://docs.microsoft.com/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)

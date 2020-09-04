@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81254305"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Zelfstudie: regels voor Azure CDN-caching instellen
 
 > [!NOTE] 
-> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN van micro soft** -profielen moet u de [Standard Rules engine](cdn-standard-rules-engine-reference.md) gebruiken voor **Azure CDN Premium van Verizon** -profielen. u moet de [regel engine van Verizon Premium](cdn-rules-engine.md) gebruiken in de portal **beheren** voor vergelijk bare functionaliteit.
+> Regels voorcaching zijn alleen beschikbaar voor de profielen **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai**. Voor **Azure CDN van Microsoft**-profielen moet u de [standaardregelengine](cdn-standard-rules-engine-reference.md) gebruiken. Voor **Azure CDN Premium van Verizon**-profielen moet u de [Verizon Premium-regelengine](cdn-rules-engine.md) gebruiken in de portal **Beheren** voor vergelijkbare functionaliteit.
  
 
 In deze zelfstudie wordt beschreven hoe u regels voor Azure CDN-caching (Content Delivery Network) kunt gebruiken om het standaardgedrag van de cacheverlooptijd in te stellen of te wijzigen, zowel globaal als aangepast, zoals een URL-pad en bestandsextensie. Azure CDN biedt twee typen regels voor opslaan in cache:
@@ -96,7 +96,7 @@ In de voorgaande stappen hebt u regels voor opslaan in cache gemaakt. Als u deze
  
 4. Selecteer onder **Aangepaste regels voor opslaan in cache** het selectievakje naast de regel die u wilt verwijderen.
 
-5. Selecteer **verwijderen**.
+5. Selecteer **Verwijderen**.
 
 6. Selecteer **Opslaan** boven aan de pagina.
 

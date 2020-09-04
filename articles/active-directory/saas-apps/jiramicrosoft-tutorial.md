@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 08f5829eb624f13be44bba633f3188d8d9876058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547457"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891586"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Confluence SAML SSO by Microsoft
 
@@ -37,7 +37,7 @@ Gebruik uw Microsoft Azure Active Directory-account met JIRA Server van Atlassia
 Voor het configureren van Azure AD-integratie met JIRA SAML SSO by Microsoft hebt u het volgende nodig:
 
 - Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
-- JIRA Core and Software 6.4 tot 8.11.0 of JIRA Service Desk 3.0 tot 4.8.0 moeten zijn geïnstalleerd en geconfigureerd op een 64-bits versie van Windows
+- JIRA Core and Software 6.4 tot 8.11.0 of JIRA Service Desk 3.0 tot 4.11.1 moeten zijn geïnstalleerd en geconfigureerd op een 64-bits versie van Windows
 - JIRA-server is ingeschakeld voor HTTPS
 - In de volgende sectie kunt u zien wat de ondersteunde versies zijn van de JIRA-invoegtoepassing.
 - De JIRA-server is bereikbaar op internet vanaf de aanmeldingspagina van Azure AD voor verificatie en moet token uit Azure AD kunnen ontvangen
@@ -59,7 +59,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 ## <a name="supported-versions-of-jira"></a>Ondersteunde versies van JIRA
 
 * JIRA Core en Software: 6.4 tot 8.11.0
-* JIRA Service Desk 3.0.0 tot 4.8.0
+* JIRA Service Desk 3.0.0 tot 4.11.1
 * JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](jira52microsoft-tutorial.md)
 
 > [!NOTE]

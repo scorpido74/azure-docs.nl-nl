@@ -1,16 +1,16 @@
 ---
-title: 'Zelfstudie: Een NSX-T-netwerksegment maken in Azure VMware Solution (AVS)'
+title: 'Zelfstudie: Een NSX-T-netwerksegment maken in Azure VMware Solution'
 description: In deze zelfstudie hebt u de NSX-T-netwerksegmenten gemaakt die worden gebruikt voor VM's in vCenter
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: 5654fbb6a063d4dfeb541c20407f9a09dff1509f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cee65211cbef25ec029c68888bc8e6059f7c7896
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093586"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750458"
 ---
-# <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution-avs"></a>Zelfstudie: Een NSX-T-netwerksegment maken in Azure VMware Solution (AVS)
+# <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Zelfstudie: Een NSX-T-netwerksegment maken in Azure VMware Solution
 
 Netwerksegmenten die zijn gemaakt in NSX-T Manager worden gebruikt als netwerken voor virtuele machines (VM's) in vCenter. De VM's die in vCenter zijn gemaakt, worden geplaatst op de netwerksegmenten die zijn gemaakt in NSX-T en zijn zichtbaar in vCenter.
 
@@ -23,17 +23,17 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een AVS-privécloud met toegang tot de vCenter- en NSX-T Manager-beheerinterfaces nodig om deze zelfstudie te voltooien. Raadpleeg [Zelfstudie: Netwerken configureren voor uw VMware-privécloud in Azure](tutorial-configure-networking.md).
+U hebt een privécloud van Azure VMware Solution met toegang tot de vCenter- en NSX-T Manager-beheerinterfaces nodig om deze zelfstudie te voltooien. Raadpleeg [Zelfstudie: Netwerken configureren voor uw VMware-privécloud in Azure](tutorial-configure-networking.md).
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>Een netwerksegment inrichten in NSX-T
 
 1. Selecteer in vCenter **SDDC-Datacenter > Networks** voor uw privécloud. Zoals u kunt zien, zijn er nog geen netwerken.
 
-   :::image type="content" source="media/nsxt/vcenter-without-ls01.png" alt-text="Selecteer SDDC-Datacenter > Networks":::
+   :::image type="content" source="media/nsxt/vcenter-without-ls01.png" alt-text="Selecteer in vCenter SDDC-Datacenter > Networks voor uw privécloud. Zoals u kunt zien, zijn er nog geen netwerken.":::
 
 1. Selecteer in NSX-T Manager **Networking** voor uw privécloud.
 
-   :::image type="content" source="media/nsxt/nsxt-network-overview.png" alt-text="Selecteer Networking om naar de weergave NSX-T Manager Network Overview te gaan.":::
+   :::image type="content" source="media/nsxt/nsxt-network-overview.png" alt-text="Selecteer in NSX-T Manager Networking voor uw privécloud.":::
 
 1. Selecteer **Segments**.
 
@@ -41,7 +41,7 @@ U hebt een AVS-privécloud met toegang tot de vCenter- en NSX-T Manager-beheerin
 
 1. Selecteer op de overzichtspagina NSX-T Segments de optie**ADD SEGMENT**. Er worden als onderdeel van het inrichten van de privécloud drie segmenten gemaakt die kunnen worden gebruikt voor VM's.  U moet een nieuw netwerksegment voor dit doel toevoegen.
 
-   :::image type="content" source="media/nsxt/nsxt-segments-overview.png" alt-text="Selecteer op de overzichtspagina Network Segment de optie Add Segment.":::
+   :::image type="content" source="media/nsxt/nsxt-segments-overview.png" alt-text="Selecteer op de overzichtspagina van NSX-T Segments de optie ADD SEGMENT.":::
 
 1. Geef een naam voor het segment op, kies de vooraf geconfigureerde Tier1-gateway (TNTxx-T1) als **Connected Gateway**, laat **Type** ingesteld op Flexible, kies de vooraf geconfigureerde overlay **Transport Zone** (TNTxx-OVERLAY-TZ) en selecteer vervolgens Set Subnets. Alle andere standaardinstellingen in deze sectie en de **POORTEN** en **SEGMENTPROFIELEN** blijven ongewijzigd.
 
@@ -49,7 +49,7 @@ U hebt een AVS-privécloud met toegang tot de vCenter- en NSX-T Manager-beheerin
 
 1. Stel het IP-adres van de gateway in voor het nieuwe segment en selecteer vervolgens **TOEVOEGEN**. Het IP-adres dat u gebruikt, moet zich op een niet-overlappend RFC1918-adresblok bevinden, zodat u verbinding kunt maken met de VM's op het nieuwe segment.
 
-   :::image type="content" source="media/nsxt/nsxt-create-segment-gateway.png" alt-text="Gebruik de CIDR-notatie om het IP-gatewayadres voor het segment op te geven en selecteer TOEVOEGEN.":::
+   :::image type="content" source="media/nsxt/nsxt-create-segment-gateway.png" alt-text="Stel het IP-adres van de gateway in voor het nieuwe segment en selecteer ADD.":::
 
 1. Pas het nieuwe netwerksegment toe door **TOEPASSEN** te selecteren en de configuratie op te slaan met **OPSLAAN**.
 
@@ -71,7 +71,7 @@ U hebt een AVS-privécloud met toegang tot de vCenter- en NSX-T Manager-beheerin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u de NSX-T-netwerksegmenten gemaakt die worden gebruikt voor VM's in vCenter. U kunt nu [Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution (AVS)](tutorial-deploy-vm-content-library.md) gebruiken om een inhoudsbibliotheek in vCenter te maken en een VM in te richten op het netwerk dat u in deze zelfstudie hebt gemaakt.
+In deze zelfstudie hebt u de NSX-T-netwerksegmenten gemaakt die worden gebruikt voor VM's in vCenter. U kunt nu [Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution](tutorial-deploy-vm-content-library.md) gebruiken om een inhoudsbibliotheek in vCenter te maken en een VM in te richten op het netwerk dat u in deze zelfstudie hebt gemaakt.
 
 <!-- LINKS - external-->
 

@@ -4,12 +4,12 @@ description: Meer informatie over het voorbereiden van VMware-VM's op evaluatie/
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109572"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927303"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -36,8 +36,8 @@ De tabel bevat een overzicht van de taken die u moet uitvoeren in Azure. De inst
 --- | --- | ---
 **Maak een Azure Migrate-project** | Een Azure Migrate-project voorziet in een centrale locatie voor het organiseren en beheren van evaluaties en migraties met Azure Migrate-hulpprogramma's, Microsoft-hulpprogramma's en aanbiedingen van derden. | Uw Azure-account heeft inzender- of eigenaar-machtigingen nodig voor de resourcegroep waarin het project zich bevindt.
 **Apparaat registreren** | Azure Migrate gebruikt een lichtgewicht Azure Migrate-apparaat om VM's te detecteren, te evalueren met het hulpprogramma Server Assessment en om ze te migreren met behulp van migratie zonder agent met het hulpprogramma Server Migration. [Meer informatie](migrate-appliance-architecture.md#appliance-registration) over registratie. | Als u het apparaat wilt registreren, moet uw Azure-account inzender- of eigenaar-machtigingen voor het Azure-abonnement hebben.
-**Azure AD-apps maken** | Bij het registreren van een apparaat maakt Azure Migrate Azure AD-apps (Azure Active Directory). <br/><br/> - De eerste app wordt gebruikt voor communicatie tussen de agents die op het apparaat worden uitgevoerd en Azure Migrate. <br/><br/> - De tweede app wordt alleen gebruikt voor toegang tot KeyVault die is gemaakt in het abonnement van de gebruiker voor de migratie van VMware-VM's zonder agent.   | Uw Azure-account moet gemachtigd zijn om Azure AD-apps te maken.
-**Een sleutelkluis maken** | Als u VMware-VM's wilt migreren via migratie zonder agent, maakt Azure Migrate een sleutelkluis voor het beheren van toegangssleutels voor het replicatieaccount in uw abonnement. | Als u wilt toestaan dat Azure Migrate de sleutelkluis maakt, stelt u machtigingen (eigenaar, of inzender en beheerder van gebruikerstoegang) in voor de resourcegroep waarin het Azure Migrate-project zich bevindt.
+**Azure AD-apps maken** | Bij het registreren van een apparaat maakt Azure Migrate twee Azure AD-apps (Active Directory). <br/><br/> - De eerste app wordt gebruikt voor communicatie tussen de agents die op het apparaat worden uitgevoerd en Azure Migrate. <br/><br/> - De tweede app wordt alleen gebruikt voor toegang tot KeyVault die is gemaakt in het abonnement van de gebruiker voor de migratie van VMware-VM's zonder agent.   | Uw Azure-account moet [gemachtigd zijn](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps) om Azure AD-apps te maken.
+**Een sleutelkluis maken** | - De eerste sleutelkluis wordt gemaakt tijdens de apparaatregistratie, en wordt gebruikt om het certificaat te beheren dat tijdens de apparaatconfiguratie wordt gedownload. <br/><br/> Als u VMware-VM's wilt migreren via migratie zonder agent, maakt Azure Migrate nog een sleutelkluis voor het beheren van toegangssleutels voor het replicatieaccount in uw abonnement.| Als u wilt toestaan dat Azure Migrate de sleutelkluis maakt, stelt u machtigingen (eigenaar, of inzender en beheerder van gebruikerstoegang) in voor de resourcegroep waarin het Azure Migrate-project zich bevindt.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen voor het maken van een project
@@ -102,7 +102,7 @@ Ter voorbereiding op de VMware VM-evaluatie moet u het volgende doen:
 4. U moet enkele wijzigingen doorvoeren aan virtuele machines voordat u ze naar Azure migreert.
 
     - Voor sommige besturingssystemen worden deze wijzigingen automatisch door Azure Migrate aangebracht. 
-    - Het is belangrijk dat u deze wijzigingen aanbrengt voordat u begint met de migratie. Als u de virtuele machine migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
+    - Het is belangrijk dat u deze wijzigingen aanbrengt voordat u begint met de migratie. Als u de VM migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
     - Controleer de voor [Windows](prepare-for-migration.md#windows-machines) en [Linux](prepare-for-migration.md#linux-machines) vereiste wijzigingen.
 
 

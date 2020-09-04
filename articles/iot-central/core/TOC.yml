@@ -107,10 +107,10 @@
           href: howto-run-a-job.md
     - name: Transformeren
       items:
-        - name: Gegevens exporteren naar bestemmingen in Azure (verouderd)
-          href: howto-export-data.md
         - name: Gegevens exporteren naar cloudbestemmingen (preview)
-          href: howto-use-data-export.md
+          href: howto-export-data.md
+        - name: Gegevens exporteren naar cloudbestemmingen (verouderd)
+          href: howto-export-data-legacy.md
         - name: Webhooks voor regels maken
           href: howto-create-webhooks.md
         - name: Werkstromen gebruiken voor integratie met andere services

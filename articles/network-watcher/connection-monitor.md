@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-netwerk communicatie bewaken met behulp van de Azure Portal
-description: In deze zelf studie leert u hoe u netwerk communicatie bewaken tussen twee virtuele machines met de functionaliteit van de verbindings monitor van Azure Network Watcher.
+title: 'Zelfstudie: Netwerkcommunicatie bewaken met behulp van Azure Portal'
+description: Ontdek in deze zelfstudie hoe u de verbindingsmonitor-functie van Azure Network Watcher gebruikt om de netwerkcommunicatie tussen twee virtuele machines te bewaken.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -16,10 +16,10 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76834651"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Zelfstudie: Netwerkcommunicatie tussen twee virtuele machines bewaken met behulp van de Azure-portal
@@ -46,7 +46,7 @@ Maak twee virtuele machines.
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en selecteer vervolgens een besturingssysteem. In deze zelfstudie wordt **Windows Server 2016 Datacenter** gebruikt.
-3. Voer de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer **OK**:
+3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **OK**:
 
     |Instelling|Waarde|
     |---|---|
@@ -73,10 +73,10 @@ Voer de stappen in [De eerste virtuele machine maken](#create-the-first-vm) opni
 |Stap|Instelling|Waarde|
 |---|---|---|
 | 1 | Selecteer een versie van **Ubuntu Server** |                                                                         |
-| 3 | Naam                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Verificatietype                   | Plak uw openbare SSH-sleutel of selecteer **Wachtwoord** en voer een wachtwoord in. |
 | 3 | Resourcegroep                        | Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.                 |
-| 6 | Uitbreidingen                            | **Network Watcher-agent voor Linux**                                             |
+| 6 | Uitbreidingen                            | **Network Watcher Agent voor Linux**                                             |
 
 Het implementeren van de VM duurt een paar minuten. Wacht tot de VM is geïmplementeerd voordat u doorgaat met de resterende stappen.
 
@@ -149,7 +149,7 @@ Standaard staat Azure communicatie toe over alle poorten tussen virtuele machine
     | Instelling                 | Waarde          |
     | ---                     | ---            |
     | Poortbereiken van doel | 22             |
-    | Bewerking                  | Weigeren           |
+    | Actie                  | Weigeren           |
     | Prioriteit                | 100            |
     | Naam                    | DenySshInbound |
 
@@ -169,7 +169,7 @@ U kunt de resourcegroep en alle gerelateerde resources die deze bevat verwijdere
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in bij **Typ de naam van de resource groep:** en selecteer **verwijderen**.
+3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

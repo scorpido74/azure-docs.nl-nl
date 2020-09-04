@@ -1,7 +1,7 @@
 ---
-title: Video's in bijna realtime analyseren-Computer Vision
+title: Video's in bijna realtime analyseren - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Leer hoe u bijna realtime analyses kunt uitvoeren op frames die worden opgehaald uit een live video stroom met behulp van de Computer Vision-API.
+description: Leer hoe u met de Computer Vision-API in bijna realtime een analyse kunt uitvoeren voor frames die afkomstig zijn uit een livevideostream.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: c86b06ff46f1ddc8d22d2ab7ec4bc8620a8c862f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983507"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933168"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Video's in bijna realtime analyseren
 
-In dit artikel wordt beschreven hoe u bijna realtime analyses kunt uitvoeren op frames die worden opgehaald uit een live video stroom met behulp van de Computer Vision-API. De basis elementen van een dergelijke analyse zijn:
+In dit artikel leest u hoe u met de Computer Vision-API in bijna realtime een analyse kunt uitvoeren voor frames die afkomstig zijn uit een livevideostream. De basisstappen van een dergelijke analyse zijn:
 
-- Bezig met het ophalen van frames van een video bron.
-- Selecteren welke frames moeten worden geanalyseerd.
+- Frames verkrijgen uit een videobron.
+- Selecteren welke frames u wilt analyseren.
 - Deze frames verzenden naar de API.
-- Elk analyse resultaat dat wordt geretourneerd door de API-aanroep verbruikt.
+- Elk analyseresultaat verbruiken dat wordt geretourneerd via de API-aanroep.
 
-De voor beelden in dit artikel zijn geschreven in C#. Als u toegang wilt krijgen tot de code, gaat u naar de voorbeeld pagina van de [analyse van video frames](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) op github.
+De voorbeelden in dit artikel zijn geschreven in C#. Ga naar de pagina [Analysevoorbeeld van videoframe](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) in GitHub voor toegang tot de code.
 
-## <a name="approaches-to-running-near-real-time-analysis"></a>Benaderingen voor het uitvoeren van bijna realtime analyse
+## <a name="approaches-to-running-near-real-time-analysis"></a>Benaderingen voor het in bijna in realtime uitvoeren van een analyse
 
-U kunt het probleem met het uitvoeren van bijna realtime analyses op video stromen oplossen door verschillende benaderingen te gebruiken. In dit artikel vindt u een overzicht van drie deze items in toenemende niveaus van verfijning.
+Er zijn verschillende benaderingen om het probleem op te lossen voor het bijna in realtime analyseren van videostreams. In dit artikel vindt u een overzicht van drie van deze benaderingen, in een oplopend verfijningsniveau.
 
 ### <a name="design-an-infinite-loop"></a>Een oneindige lus ontwerpen
 
-Het eenvoudigste ontwerp voor bijna realtime analyse is een oneindige lus. In elke iteratie van deze lus haalt u een kader op, analyseert u het en gebruikt u vervolgens het resultaat:
+Het eenvoudigste ontwerp voor in bijna realtime analyse is een oneindige lus. In elke herhaling van deze lus haalt u een frame op, analyseert u dit frame en verbruikt u vervolgens het resultaat:
 
 ```csharp
 while (true)
@@ -49,11 +49,11 @@ while (true)
 }
 ```
 
-Als uw analyse bestaat uit een licht gewicht aan de client zijde, zou deze benadering geschikt zijn. Als de analyse echter plaatsvindt in de Cloud, betekent de resulterende latentie dat een API-aanroep enkele seconden kan duren. Gedurende deze tijd legt u geen installatie kopieën vast en maakt de thread in feite niets. De maximale frame frequentie wordt beperkt door de latentie van de API-aanroepen.
+Dit is een geschikte methode voor een lichtgewicht algoritme aan de clientzijde. Wanneer de analyse echter in de cloud plaatsvindt, betekent de resulterende latentie dat een API-aanroep enkele seconden kan duren. Gedurende deze tijd worden er geen afbeeldingen vastgelegd, en doet de thread in feite niets. De maximale framesnelheid wordt beperkt door de latentie van de API-aanroepen.
 
 ### <a name="allow-the-api-calls-to-run-in-parallel"></a>Toestaan dat de API-aanroepen parallel worden uitgevoerd
 
-Hoewel een eenvoudige lus met één thread duidelijk is voor een licht gewicht, aan de client zijde, komt dit niet goed met de latentie van een API-aanroep van de Cloud. De oplossing voor dit probleem is om de langlopende API-aanroep parallel te laten uitvoeren met het frame-innemen. In C# kunt u dit doen met behulp van parallelle uitvoering op basis van een taak. U kunt bijvoorbeeld de volgende code uitvoeren:
+Een eenvoudige lus met één thread is weliswaar geschikt voor een lichtgewicht algoritme aan de clientzijde, maar deze past minder goed bij de latentie van een API-aanroep in de cloud. Als u dit probleem wilt oplossen, staat u toe dat de langlopende API-aanroep parallel wordt uitgevoerd met het ophalen van frames. U kunt dit in C# doen met behulp van parallelle uitvoering op basis van een taak. U kunt bijvoorbeeld de volgende code uitvoeren:
 
 ```csharp
 while (true)
@@ -70,14 +70,14 @@ while (true)
 }
 ```
 
-Met deze methode start u elke analyse in een afzonderlijke taak. De taak kan op de achtergrond worden uitgevoerd terwijl u nieuwe frames gaat vastzetten. Met deze benadering wordt voor komen dat de hoofd thread wordt geblokkeerd terwijl u wacht tot een API-aanroep wordt geretourneerd. De aanpak kan echter bepaalde nadelen opleveren:
-* Het kost een aantal van de garanties dat de eenvoudige versie wordt verstrekt. Dat wil zeggen dat meerdere API-aanroepen parallel kunnen optreden en dat de resultaten in de verkeerde volg orde worden geretourneerd. 
-* Het kan ook ertoe leiden dat meerdere threads tegelijkertijd de functie ConsumeResult () kunnen invoeren, wat gevaarlijk kan zijn als de functie niet thread-veilig is. 
-* Ten slotte houdt deze eenvoudige code geen bijhouden van de taken die worden gemaakt, waardoor uitzonde ringen op de achtergrond verdwijnen. Daarom moet u een ' consument '-thread toevoegen die de analyse taken bijhoudt, uitzonde ringen veroorzaakt, langlopende taken beëindigt en ervoor zorgt dat de resultaten in de juiste volg orde worden verbruikt.
+Met deze methode start u elke analyse in een afzonderlijke taak. De taak kan op de achtergrond worden uitgevoerd terwijl u nieuwe frames blijft ophalen. Deze benadering voorkomt dat de hoofdthread wordt geblokkeerd terwijl u wacht op het retourneren van een API-aanroep. De methode kan echter bepaalde nadelen opleveren:
+* Het gaat ten koste van bepaalde garanties die de eenvoudige versie biedt. Er kunnen nu namelijk meerdere parallelle API-aanroepen plaatsvinden, en de resultaten kunnen in de verkeerde volgorde worden geretourneerd. 
+* Het kan ook tot gevolg hebben dat meerdere threads tegelijkertijd de functie ConsumeResult() gebruiken, wat gevaarlijk kan zijn als de functie niet thread-veilig is. 
+* Ten slotte houdt deze eenvoudige code niet bij welke taken worden gemaakt, waardoor uitzonderingen geruisloos verdwijnen. Daarom moet u een 'consumer'-thread toevoegen die de analysetaken volgt, uitzonderingen genereert, langlopende taken beëindigt en ervoor zorgt dat de resultaten in de juiste volgorde, één voor één, worden verbruikt.
 
-### <a name="design-a-producer-consumer-system"></a>Een systeem voor de consumenten producent ontwerpen
+### <a name="design-a-producer-consumer-system"></a>Een ‘producer-consumer'-systeem ontwerpen
 
-Voor uw laatste benadering, het ontwerpen van een ' producer-consumer '-systeem, bouwt u een producer-thread die lijkt op uw eerder vermelde oneindige lus. In plaats van de resultaten van de analyse te verbruiken zodra ze beschikbaar zijn, plaatst de producent de taken in een wachtrij gewoon om ze bij te houden.
+Voor de laatste benadering, het ontwerpen van een 'producer-consumer '-systeem, bouwt u een ‘producer'-thread die lijkt op de eerder vermelde oneindige lus. Echter in plaats van de analyseresultaten direct te verbruiken zodra deze beschikbaar zijn, plaatst de producer de taken in een wachtrij om ze bij te houden.
 
 ```csharp
 // Queue that will contain the API call tasks.
@@ -114,7 +114,7 @@ while (true)
 }
 ```
 
-U maakt ook een Consumer thread waarmee taken van de wachtrij worden uitgevoerd, wacht totdat ze zijn voltooid en het resultaat wordt weer gegeven of de uitzonde ring wordt gegenereerd. Met behulp van de wachtrij kunt u garanderen dat de resultaten per keer worden verbruikt, in de juiste volg orde, zonder de maximale frame snelheid van het systeem te beperken.
+U maakt ook een ‘consumer'-thread, die taken uit de wachtrij haalt, wacht tot ze zijn voltooid, en vervolgens het resultaat of de uitzondering die is gegenereerd, weergeeft. Met behulp van de wachtrij kunt u garanderen dat resultaten één voor één worden verbruikt, in de juiste volgorde, zonder dat er een limiet wordt afgedwongen voor de maximale framesnelheid van het systeem.
 
 ```csharp
 // Consumer thread.
@@ -140,15 +140,15 @@ while (true)
 
 ## <a name="implement-the-solution"></a>De oplossing implementeren
 
-### <a name="get-started-quickly"></a>Snel aan de slag
+### <a name="get-started-quickly"></a>Snel aan de slag gaan
 
-Om ervoor te zorgen dat uw app zo snel mogelijk op de juiste wijze kan worden uitgevoerd, is het systeem geïmplementeerd dat wordt beschreven in de vorige sectie. Het is bedoeld om flexibel genoeg te zijn om te voldoen aan veel scenario's, terwijl u ze eenvoudig kunt gebruiken. Als u toegang wilt krijgen tot de code, gaat u naar de voorbeeld pagina van de [analyse van video frames](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) op github.
+Het systeem dat in de vorige sectie is beschreven, is geïmplementeerd om u te helpen de app zo snel mogelijk actief en werkend te krijgen. Het is bedoeld om flexibel genoeg te zijn voor vele soorten scenario's, terwijl het eenvoudig te gebruiken blijft. Ga naar de pagina [Analysevoorbeeld van videoframe](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) in GitHub voor toegang tot de code.
 
-De bibliotheek bevat de `FrameGrabber` klasse, waarmee het eerder besproken productie systeem van de consument wordt geïmplementeerd om video frames van een webcam te verwerken. Gebruikers kunnen de exacte vorm van de API-aanroep opgeven en de klasse gebruikt gebeurtenissen om de aanroepende code te laten weten wanneer er een nieuw frame wordt verkregen of wanneer er een nieuw resultaat van de analyse beschikbaar is.
+De bibliotheek bevat de klasse `FrameGrabber`, waarmee het eerder beschreven ‘producer-consumer'-systeem wordt geïmplementeerd voor het verwerken van videoframes van een webcam. Gebruikers kunnen de exacte vorm van de API-aanroep opgeven. De klasse maakt gebruik van gebeurtenissen om aan de aanroepende code door te geven wanneer er een nieuw frame is verkregen, of wanneer een nieuw analyseresultaat beschikbaar is.
 
-Om enkele van de mogelijkheden te illustreren, hebben we twee voor beelden gegeven van apps die gebruikmaken van de-bibliotheek. 
+Ter illustratie van enkele van de mogelijkheden bieden we twee voorbeeld-apps die gebruikmaken van de bibliotheek. 
 
-De eerste voor beeld-app is een eenvoudige console-app die frames ophaalt van de standaard webcam en deze vervolgens verzendt naar de face-service voor gezichts detectie. Een vereenvoudigde versie van de app wordt in de volgende code gereproduceerd:
+De eerste voorbeeld-app is een eenvoudige console-app waarmee frames worden opgehaald van de standaardwebcam. Deze worden vervolgens voor gezichtsdetectie verzonden naar de Face-service. Een vereenvoudigde versie van de app wordt gereproduceerd in de volgende code:
 
 ```csharp
 using System;
@@ -218,34 +218,34 @@ namespace BasicConsoleSample
 }
 ```
 
-De tweede voor beeld-app is iets interessanter. Hiermee kunt u kiezen welke API moet worden aangeroepen op de video frames. Aan de linkerkant ziet u een voor beeld van de live video in de app. Aan de rechter kant wordt het meest recente API-resultaat op het bijbehorende frame bedekt.
+De tweede voorbeeld-app is iets interessanter. Hierin kunt u kiezen welke API moet worden aangeroepen voor de videoframes. Aan de linkerkant ziet u een voorbeeld van de livevideo in de app. Aan de rechterkant ziet u een overlapping van het meest recente API-resultaat in het bijbehorende frame.
 
-In de meeste modi is er een zicht bare vertraging tussen de live video aan de linkerkant en de gevisualiseerde analyse aan de rechter kant. Deze vertraging is de tijd die nodig is om de API-aanroep uit te voeren. Er bevindt zich een uitzonde ring in de modus ' EmotionsWithClientFaceDetect ', die de detectie van het gezicht lokaal uitvoert op de client computer met behulp van OpenCV voordat er installatie kopieën naar Azure Cognitive Services worden verzonden. 
+In de meeste modi is er een zichtbare vertraging tussen de livevideo aan de linkerkant en de gevisualiseerde analyse aan de rechterkant. Deze vertraging geeft de tijd aan die nodig is om de API-aanroep te maken. Een uitzondering vindt plaats in de modus EmotionsWithClientFaceDetect, waarin gezichtsdetectie lokaal wordt uitgevoerd op de clientcomputer met behulp van OpenCV, voordat afbeeldingen worden verzonden naar Cognitive Services. 
 
-Met deze methode kunt u het gedetecteerde gezicht direct visualiseren. U kunt de emoties later bijwerken nadat de API-aanroep is geretourneerd. Hiermee wordt de mogelijkheid van een hybride benadering gedemonstreerd. Dat wil zeggen dat er een eenvoudige verwerking kan worden uitgevoerd op de client en vervolgens Cognitive Services-API's kan worden gebruikt om deze verwerking uit te breiden met meer geavanceerde analyse wanneer dat nodig is.
+Met deze benadering kunt u het gedetecteerde gezicht onmiddellijk visualiseren. U kunt de emoties later bijwerken nadat de API-aanroep is geretourneerd. Hiermee wordt de mogelijkheid van een hybride benadering gedemonstreerd. Bepaalde eenvoudige verwerkingen kunnen dus worden uitgevoerd op de client, waarna de API's van Cognitive Services kunnen worden gebruikt om dit proces, waar nodig, te verbeteren met een meer geavanceerde analyse.
 
-![De LiveCameraSample-app waarin een afbeelding met tags wordt weer gegeven](../../Video/Images/FramebyFrame.jpg)
+![De LiveCameraSample-app waarin een afbeelding met tags wordt weergegeven](../../Video/Images/FramebyFrame.jpg)
 
-### <a name="integrate-the-samples-into-your-codebase"></a>De voor beelden in de code basis integreren
+### <a name="integrate-the-samples-into-your-codebase"></a>De voorbeelden integreren in de codebasis
 
-Ga als volgt te werk om aan de slag te gaan met dit voor beeld:
+Voer de volgende stappen uit om met dit voorbeeld aan de slag te gaan:
 
-1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Als u er al een hebt, kunt u door gaan naar de volgende stap.
-2. Maak resources voor Computer Vision en gezicht in de Azure Portal om uw sleutel en eind punt op te halen. Zorg ervoor dat u de gratis laag (F0) selecteert tijdens de installatie.
+1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Ga naar de volgende stap als u al een account hebt.
+2. Maak resources voor Computer Vision en Face in Azure Portal om uw sleutel en eindpunt op te halen. Zorg ervoor dat u tijdens de installatie de gratis laag (F0) selecteert.
    - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
-   - [Gezicht](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel en eind punt voor elke resource te verzamelen. 
-3. Kloon de [cognitieve-samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) github opslag plaats.
-4. Open het voor beeld in Visual Studio 2015 of hoger en bouw en voer de voorbeeld toepassingen uit:
-    - Voor BasicConsoleSample is de face-sleutel rechtstreeks vastgelegd in [BasicConsoleSample/Program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
-    - Voor LiveCameraSample voert u de sleutels in het deel venster **instellingen** van de app in. De sleutels worden opgeslagen in verschillende sessies als gebruikers gegevens.
+   - [Face](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel en eindpunt te verzamelen voor elke resource. 
+3. Kloon de GitHub-opslagplaats [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+4. Open het voorbeeld in Visual Studio 2015 of later, bouw de voorbeeldtoepassingen en voer ze uit:
+    - De Face-sleutel voor BasicConsoleSample is in code vastgelegd in [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - Voor LiveCameraSample voert u de sleutels in het deelvenster **Instellingen** van de app in. De sleutels worden als gebruikersgegevens gehandhaafd tussen sessies.
 
-Wanneer u klaar bent om de voor beelden te integreren, verwijst u naar de VideoFrameAnalyzer-bibliotheek van uw eigen projecten.
+Wanneer u klaar bent om de voorbeelden te integreren, verwijst u vanuit uw eigen projecten naar de bibliotheek VideoFrameAnalyzer.
 
-Met de mogelijkheden van de afbeeldings-, spraak-, video-en tekst-informatie over VideoFrameAnalyzer Azure Cognitive Services. Micro soft ontvangt de afbeeldingen, audio, video en andere gegevens die u uploadt (via deze app) en kan deze gebruiken voor de verbetering van de service. We vragen uw hulp bij het beschermen van de personen van wie uw app gegevens naar Azure Cognitive Services verzendt.
+De mogelijkheden voor afbeeldingen, spraak, video of tekstbegrip van VideoFrameAnalyzer maken gebruik van Azure Cognitive Services. Microsoft ontvangt de afbeeldingen, audio, video en andere gegevens die u uploadt (via deze app), en kan deze gebruiken met als doel de service te verbeteren. We vragen uw hulp bij het beschermen van de personen van wie uw app gegevens naar Azure Cognitive Services verzendt.
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u geleerd hoe u bijna realtime analyses kunt uitvoeren op live video streams met behulp van het gezichts-en Computer Vision Services. U hebt ook geleerd hoe u onze voorbeeld code kunt gebruiken om aan de slag te gaan.
+In dit artikel hebt u geleerd hoe u in bijna realtime een analyse kunt uitvoeren voor livevideostreams met behulp van de Face- en Computer Vision-services. U hebt ook geleerd hoe u onze voorbeeldcode kunt gebruiken om aan de slag te gaan.
 
-U kunt feedback en suggesties bieden in de [github-opslag plaats](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Ga naar onze [UserVoice-site](https://cognitive.uservoice.com/)om uitgebreidere API-feedback te bieden.
+U kunt feedback geven en suggesties doen in de [GitHub-opslagplaats](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Ga naar onze [UserVoice-site](https://cognitive.uservoice.com/) als u uitgebreidere API-feedback wilt geven.
 

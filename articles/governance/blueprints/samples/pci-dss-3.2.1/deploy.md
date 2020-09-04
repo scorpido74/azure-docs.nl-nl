@@ -1,111 +1,111 @@
 ---
-title: Een voor beeld van een PCI-DSS v 3.2.1-blauw versie implementeren
-description: Implementeer stappen voor het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1 blauw druk, inclusief blauw druk-artefact parameter Details.
-ms.date: 01/29/2020
+title: Het blauwdrukvoorbeeld voor PCI-DSS v3.2.1 implementeren
+description: Implementeer stappen voor het blauwdrukvoorbeeld voor Payment Card Industry Data Security Standard v3.2.1, inclusief de parametergegevens voor blauwdrukartefacten.
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: 9df9392430fd0496ffb5e635a6fc3e31ba708208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a7917f09e5e5ff898bd155f0961e5c9765b8d791
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76905552"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649207"
 ---
-# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Het voor beeld van een PCI-DSS v 3.2.1-blauw versie implementeren
+# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Het blauwdrukvoorbeeld voor PCI-DSS v3.2.1 implementeren
 
-De volgende stappen moeten worden uitgevoerd voor het implementeren van het Azure blauw druk-beeld voor de PCI-DSS v 3.2.1-proef versie:
+Als u het PCI-DSS v3.2.1-blauwdrukvoorbeeld van Azure Blueprints wilt implementeren, moet u de volgende stappen uitvoeren:
 
 > [!div class="checklist"]
-> - Een nieuwe blauw druk maken op basis van het voor beeld
-> - Uw kopie van het voor beeld markeren als **gepubliceerd**
-> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
+> - Een nieuwe blauwdruk maken op basis van het voorbeeld
+> - Uw kopie van het voorbeeld markeren als **Gepubliceerd**
+> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
+## <a name="create-blueprint-from-sample"></a>Een blauwdruk maken op basis van een voorbeeld
 
-Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
-
-1. Zoek het voor beeld van het **PCI-DSS v 3.2.1** -blauw druk onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
-
-1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
-
-   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van het PCI-DSS v 3.2.1-blauw druk.
-   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
-
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
-
-Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van de PCI-DSS v 3.2.1-standaard.
+Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgeving te maken op basis van het voorbeeld.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Op de pagina **Aan de slag** aan de linkerkant selecteert u de knop **Maken** onder _Een blauwdruk maken_.
 
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op zoals ' eerste versie gepubliceerd vanuit het PCI-DSS v 3.2.1-voor beeld. ' Selecteer vervolgens **publiceren** onder aan de pagina.
+1. Zoek onder _Andere voorbeelden_ het blauwdrukvoorbeeld **PCI-DSS v3.2.1** en selecteer **Dit voorbeeld gebruiken**.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
 
-Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+   - **Naam van blauwdruk**: Geef een naam op voor uw exemplaar van het PCI-DSS v3.2.1-blauwdrukvoorbeeld.
+   - **Definitielocatie**: Gebruik het weglatingsteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
+
+1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
+
+1. Controleer de lijst met artefacten die samen het blauwdrukvoorbeeld vormen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
+
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is gemaakt in de **Concept**-modus en moet worden **Gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. Het exemplaar van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar door die aanpassing is het mogelijk dat het exemplaar niet meer voldoet aan de PCI-DSS v3.2.1-standaard.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **Notities over wijzigingen** op, zoals Eerste gepubliceerde versie op basis van het PCI-DSS v3.2.1-blauwdrukvoorbeeld. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+
+Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden toegewezen aan een abonnement binnen de beheergroep waarin de kopie is opgeslagen. Dit is de stap waarin parameters worden opgegeven om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
+
+1. Selecteer **Blauwdruk toewijzen** boven aan de pagina Blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
 
    - Basisbeginselen
 
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
-       Wijzig indien nodig of sluit af.
-     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
-     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
+     - **Abonnementen**: Selecteer een of meer van de abonnementen in de beheergroep waarin u uw kopie van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt een toewijzing gemaakt voor elk abonnement waarvoor de ingevoerde parameters worden gebruikt.
+     - **Naam van toewijzing**: De naam wordt vooraf voor u ingevuld op basis van de naam van de blauwdruk.
+       Wijzig de naam als dat nodig is of gebruik de opgegeven naam.
+     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+     - **Blauwdrukdefinitieversie**: Kies een **gepubliceerde** versie van uw kopie van het blauwdrukvoorbeeld.
 
-   - Toewijzing vergren delen
+   - Toewijzing vergrendelen
 
-     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor het vergrendelen van de blauwdruk voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
+     Laat de optie voor de standaard door het _systeem toegewezen_ beheerde identiteit staan.
 
-   - Artefact parameters
+   - Artefactparameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
+     De parameters die in deze sectie worden gedefinieerd, zijn van toepassing op het artefact waaronder de parameter is gedefinieerd. Deze parameters zijn [dynamische parameters](../../concepts/parameters.md#dynamic-parameters), aangezien ze zijn gedefinieerd tijdens de toewijzing van de blauwdruk. Zie de [tabel met artefactparameters](#artifact-parameters-table) voor een volledige lijst met artefactparameters en hun beschrijvingen.
 
-1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer een uur. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
+1. Zodra alle parameters zijn ingevoerd, selecteert u **Toewijzen** onder aan de pagina. De blauwdruktoewijzing wordt gemaakt en de implementatie van het artefact begint. De implementatie duurt circa één uur. Open de blauwdruktoewijzing om de status van de implementatie te controleren.
 
 > [!WARNING]
-> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
+> De Azure Blueprints-service en de ingebouwde blauwdrukvoorbeelden zijn **gratis**. Azure-resources zijn [geprijsd per product](https://azure.microsoft.com/pricing/). Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voor het uitvoeren van resources die door dit blauwdrukvoorbeeld zijn geïmplementeerd.
 
-## <a name="artifact-parameters-table"></a>Tabel artefact parameters
+## <a name="artifact-parameters-table"></a>Tabel met artefactparameters
 
-De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
+In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
-|Artefact naam|Type artefact|Parameternaam|Beschrijving|
+|Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\] -controle PCI v 3.2.1:2018 bepaalt en implementeert specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen | Diagnostische instelling voor geselecteerde bron typen controleren. Standaard waarde is alle resources zijn geselecteerd| 
-|Toegestane locaties|Beleidstoewijzing|Lijst met toegestane locaties|Lijst met locaties van data centers die zijn toegestaan voor het implementeren van een resource in. Deze lijst kan worden aangepast aan de gewenste Azure-locaties wereld wijd. Selecteer de locaties die u wilt toestaan.| 
-|Toegestane locaties voor resource groepen|Beleidstoewijzing |Toegestane locatie |Met dit beleid kunt u de locaties beperken waarop uw organisatie resource groepen kan maken in. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen.| 
-|Controle op SQL-servers implementeren|Beleidstoewijzing|Bewaar dagen|Bewaren van gegevens in aantal dagen. De standaard waarde is 180, maar PCI vereist 365.| 
-|Controle op SQL-servers implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account|Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio).| 
+|\[Preview\] PCI v3.2.1:2018-controles en implementatie van specifieke VM-extensies controleren ter ondersteuning van de controlevereisten|Beleidstoewijzing|Lijst met resourcetypen | Controleer diagnostische instelling voor geselecteerde resourcetypen Standaardwaarde is: alle resources zijn geselecteerd| 
+|Toegestane locaties|Beleidstoewijzing|Lijst met toegestane locaties|Lijst met toegestane locaties van datacentra waarin resources kunnen worden geïmplementeerd. Deze lijst kan worden aangepast aan gewenste Azure-locaties overal ter wereld. Selecteer de locaties die u wilt toestaan.| 
+|Toegestane locaties voor resourcegroepen|Beleidstoewijzing |Toegestane locatie |Met dit beleid kunt u de locaties beperken waarin uw organisatie resourcegroepen kan maken. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen.| 
+|Controle op SQL-servers implementeren|Beleidstoewijzing|Retentieperiode in dagen|Gegevensretentie in aantal dagen. De standaardwaarde is 180, maar PCI vereist 365.| 
+|Controle op SQL-servers implementeren|Beleidstoewijzing|Naam resourcegroep voor opslagaccount|De controle schrijft databasegebeurtenissen naar een auditlogboek in uw Azure Storage-account (er wordt een opslagaccount aangemaakt in elke regio waarin een SQL-server wordt gemaakt die wordt gedeeld door alle servers in die regio).| 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de stappen voor het implementeren van het voor beeld van het PCI-DSS v 3.2.1-blauw punt hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over het overzicht en de beheer toewijzing:
+Nu u de stappen voor het implementeren van het PCI-DSS v3.2.1-blauwdrukvoorbeeld hebt bekeken, raadpleegt u de volgende artikelen voor informatie over het overzicht en de toewijzing van besturingselementen:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v 3.2.1 blauw druk-overzicht](./index.md)
-> [PCI-DSS v 3.2.1 blauw druk-besturings element toewijzing](./control-mapping.md)
+> [PCI-DSS v3.2.1-blauwdruk - Overzicht](./index.md)
+> [PCI-DSS v3.2.1-blauwdruk - Toewijzen van beheeropties](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

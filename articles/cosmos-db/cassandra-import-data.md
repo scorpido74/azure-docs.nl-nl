@@ -1,6 +1,6 @@
 ---
-title: Uw gegevens migreren naar een Cassandra-API-account in Azure Cosmos DB-zelf studie
-description: In deze zelf studie leert u hoe u de CQL Copy-& opdracht kunt gebruiken om gegevens te kopiëren van Apache Cassandra naar een Cassandra-API-account in Azure Cosmos DB
+title: gegevens migreren naar een Cassandra-API-account in Azure Cosmos DB - zelfstudie
+description: In deze zelfstudie leert u hoe u met de CQL-opdracht Copy en met Spark gegevens van Apache Cassandra kopieert naar een Cassandra-API-account in Azure Cosmos DB
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82858554"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Zelfstudie: Gegevens migreren naar een Cassandra-API-account in Azure Cosmos DB
@@ -28,7 +28,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Gegevens migreren met de cqlsh-opdracht COPY
 > * Gegevens migreren met Spark
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites-for-migration"></a>Vereisten voor migratie
 
@@ -66,7 +66,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 * **Doorvoer verhogen**: de duur van de gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u voor de tabellen hebt ingericht in Azure Cosmos DB. Verhoog de doorvoer voor de duur van de migratie. Met een hogere doorvoer voorkomt u frequentielimieten en kost migreren minder tijd. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Het is ook raadzaam om het Azure Cosmos-account in dezelfde regio te plaatsen als uw brondatabase. 
 
-* **TLS inschakelen:** Azure Cosmos DB voldoet aan strenge beveiligings vereisten en-standaarden. Zorg ervoor dat TLS wordt ingeschakeld wanneer u met uw account communiceert. Wanneer u CQL gebruikt met SSH, hebt u de mogelijkheid om TLS-gegevens op te geven.
+* **TLS inschakelen:** Voor Azure Cosmos DB gelden strenge beveiligingsvereisten en -normen. Schakel TLS in wanneer u uw account gebruikt. Wanneer u CQL gebruikt met SSH, hebt u een optie om TLS-gegevens op te geven.
 
 ## <a name="options-to-migrate-data"></a>Mogelijkheden voor migreren van gegevens
 

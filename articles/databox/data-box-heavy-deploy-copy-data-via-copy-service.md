@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: gegevens kopiëren naar Azure Data Box Heavy via Data Copy service'
-description: In deze zelf studie leert u hoe u gegevens kopieert naar uw Azure Data Box Heavy-apparaat via de Data Copy-service
+title: 'Zelfstudie: Gegevens kopiëren naar Azure Data Box Heavy via de gegevenskopieerservice'
+description: In deze zelfstudie leert u hoe u de gegevenskopieerservice gebruikt om gegevens naar uw Azure Data Box Heavy-apparaat te kopiëren
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77560217"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Zelf studie: de Data Copy-service gebruiken om gegevens te kopiëren naar Azure Data Box Heavy (preview-versie)
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Zelfstudie: De gegevenskopieerservice gebruiken om gegevens te kopiëren naar Azure Data Box Heavy (preview)
 
-In deze zelfstudie wordt beschreven hoe u gegevens opneemt met behulp van de gegevenskopieerservice, zonder gebruik te maken van een tussenliggende host. De service voor gegevens kopieën wordt lokaal uitgevoerd op Azure Data Box Heavy, maakt verbinding met uw network-attached storage apparaat (NAS) via SMB en kopieert gegevens naar Data Box Heavy.
+In deze zelfstudie wordt beschreven hoe u gegevens opneemt met behulp van de gegevenskopieerservice, zonder gebruik te maken van een tussenliggende host. De gegevenskopieerservice wordt lokaal uitgevoerd op Azure Data Box Heavy, maakt via SMB verbinding met uw NAS-apparaat (network-attached storage) en kopieert gegevens naar Data Box Heavy.
 
 De gegevenskopieerservice gebruiken:
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt deze zelf studie voltooid: [stel Azure data Box Heavy](data-box-heavy-deploy-set-up.md)in.
+1. U hebt deze zelfstudie voltooid: [Azure Data Box Heavy instellen](data-box-heavy-deploy-set-up.md).
 2. U hebt de Data Box Heavy ontvangen en de orderstatus in de portal is **Geleverd**.
 3. U hebt de referenties van het bron-NAS-apparaat waarmee u verbinding wilt maken om gegevens te kopiëren.
 4. U bent verbonden met een netwerk met hoge snelheid. Voor de snelste kopieersnelheden kunnen twee verbindingen van 40 GbE (één per knooppunt) naast elkaar worden gebruikt. Als u niet beschikt over een 40-GbE-verbinding, is het advies dat u ten minste twee verbindingen van 10 GbE (één per knooppunt) gebruikt. 
@@ -42,13 +42,13 @@ Zorg voordat u begint voor het volgende:
 
 Wanneer u bent verbonden met het NAS-apparaat, kunt u uw gegevens gaan kopiëren. Neem de volgende punten door voordat u gegevens gaat kopiëren:
 
-- Zorg er bij het kopiëren van gegevens voor dat de gegevens grootte voldoet aan de grootte limieten die zijn beschreven in het artikel [Azure Storage en data Box Heavy limieten](data-box-heavy-limits.md).
-- Als de gegevens die door Data Box Heavy worden geüpload, gelijktijdig worden geüpload door andere toepassingen buiten Data Box Heavy, kunnen upload taken en beschadigde gegevens beschadigd raken.
+- Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in het artikel [Limieten voor Azure-opslag en Data Box Heavy](data-box-heavy-limits.md).
+- Als de gegevens die door Data Box Heavy worden geüpload gelijktijdig door andere toepassingen buiten Data Box Heavy worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 - Als de gegevens worden gewijzigd terwijl deze door de kopieerservice worden gelezen, is het mogelijk dat er fouten optreden of gegevens beschadigd raken.
 
 U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevenskopieerservice:
 
-1. Ga in de lokale web-UI van uw data Box Heavy apparaat naar **Manage** > **gegevens**beheren.
+1. Ga in de lokale webgebruikersinterface van uw Data Box Heavy-apparaat naar **Beheren** > **Gegevens kopiëren**.
 2. Selecteer op de pagina **Gegevens kopiëren** de optie **Maken**.
 
     ![Maken selecteren op de pagina Gegevens kopiëren](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -59,13 +59,13 @@ U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevensko
     |-------------------------------|---------|
     |**Taaknaam**                       |Een unieke naam van maximaal 230 tekens voor de taak. De volgende tekens zijn niet toegestaan in de naam van de taak: \<, \>, \|, \?, \*, \\, \:, \/ en \\\.         |
     |**Bronlocatie**                |Geef het SMB-pad naar de gegevensbron op in de indeling: `\\<ServerIPAddress>\<ShareName>` of `\\<ServerName>\<ShareName>`.        |
-    |**Gebruikers**                       |Gebruikersnaam in de notatie `\\<DomainName><UserName>` voor toegang tot de gegevensbron. Als er verbinding wordt gemaakt met een lokale beheerder, moeten ze expliciete beveiligings machtigingen hebben. Klik met de rechter muisknop op de map, selecteer **Eigenschappen** en selecteer vervolgens **beveiliging**. Hiermee wordt de lokale beheerder toegevoegd op het tabblad **beveiliging** .       |
+    |**Gebruikersnaam**                       |Gebruikersnaam in de notatie `\\<DomainName><UserName>` voor toegang tot de gegevensbron. Wanneer een lokale beheerder verbinding maakt, moet hij expliciete beveiligingsmachtigingen hebben. Klik met de rechtermuisknop op de map, selecteer **Eigenschappen** en vervolgens **Beveiliging**. Hiermee wordt de lokale beheerder toegevoegd in het tabblad **Beveiliging**.       |
     |**Wachtwoord**                       |Wachtwoord voor toegang tot de gegevensbron.           |
     |**Doelopslagaccount**    |Selecteer in de lijst het doelopslagaccount waarnaar u de gegevens wilt uploaden.         |
-    |**Doeltype**       |Selecteer het type doel opslag in de lijst: **blok-BLOB**, **pagina-BLOB**of **Azure files**.        |
+    |**Doeltype**       |Selecteer het doelopslagtype in de lijst: **Blok-blob**, **pagina-blob** of **Azure Files**.        |
     |**Doelcontainer/-share**    |Voer de naam in van de container of share waarnaar u gegevens wilt uploaden in uw doelopslagaccount. De naam kan een sharenaam of een containernaam zijn. Gebruik bijvoorbeeld `myshare` of `mycontainer`. U kunt de naam ook invoeren in de indeling `sharename\directory_name` of `containername\virtual_directory_name`.        |
-    |**Bestanden kopiëren die overeenkomen met het patroon**    | U kunt het bestandsnaampatroon invoeren op de volgende twee manieren:<ul><li>**Joker teken expressies gebruiken:** Alleen `*` en `?` worden ondersteund in Joker teken expressies. De expressie `*.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. En zo komt `*.dl?` overeen met alle bestanden die de extensie `.dl` hebben of die beginnen met `.dl`, zoals `.dll`. En zo komt `*foo` overeen met alle bestanden waarvan de bestandsnaam eindigt op `foo`.<br>U kunt de expressie met jokertekens rechtstreeks invoeren in het veld. Standaard wordt de waarde die u in het veld invoert, beschouwd als een expressie met jokertekens.</li><li>**Reguliere expressies gebruiken:** Reguliere expressies op basis van POSIX worden ondersteund. De reguliere expressie `.*\.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. Voor reguliere expressies geeft u het `<pattern>` rechtstreeks op als `regex(<pattern>)`. Voor meer informatie over reguliere expressies gaat u naar [Regular expression language - a quick reference](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) (Reguliere expressies - een snelzoekgids).</li><ul>|
-    |**Bestandsoptimalisatie**              |Als deze functie is ingeschakeld, worden bestanden die kleiner zijn dan 1 MB tijdens de opname verpakt. Dit verpakken versnelt het kopiëren van gegevens voor kleine bestanden. Het bespaart ook aanzienlijk veel tijd wanneer het aantal bestanden veel groter is dan het aantal directory's.        |
+    |**Bestanden kopiëren die overeenkomen met het patroon**    | U kunt het bestandsnaampatroon invoeren op de volgende twee manieren:<ul><li>**Met jokertekenexpressies:** Alleen `*` en `?` worden ondersteund in expressies met jokertekens. De expressie `*.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. En zo komt `*.dl?` overeen met alle bestanden die de extensie `.dl` hebben of die beginnen met `.dl`, zoals `.dll`. En zo komt `*foo` overeen met alle bestanden waarvan de bestandsnaam eindigt op `foo`.<br>U kunt de expressie met jokertekens rechtstreeks invoeren in het veld. Standaard wordt de waarde die u in het veld invoert, beschouwd als een expressie met jokertekens.</li><li>**Met reguliere expressies:** Op POSIX gebaseerde reguliere expressies worden ondersteund. De reguliere expressie `.*\.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. Voor reguliere expressies geeft u het `<pattern>` rechtstreeks op als `regex(<pattern>)`. Voor meer informatie over reguliere expressies gaat u naar [Regular expression language - a quick reference](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) (Reguliere expressies - een snelzoekgids).</li><ul>|
+    |**Bestandsoptimalisatie**              |Als deze functie is ingeschakeld, worden bestanden die kleiner zijn dan 1 MB tijdens de opname verpakt. Dit verpakken versnelt het kopiëren van gegevens voor kleine bestanden. Het bespaart ook aanzienlijk veel tijd wanneer het aantal bestanden veel groter is dan het aantal directory’s.        |
  
 4. Selecteer **Starten**. De invoer wordt gevalideerd en als de validatie is geslaagd, wordt de taak gestart. Het kan enkele minuten duren voordat de taak start.
 
@@ -102,12 +102,12 @@ U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevensko
 
         ![Een mislukte taak opnieuw starten](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
-        Als er een fout optreedt en u de taak niet opnieuw kunt starten, downloadt u de foutenlogboeken en zoekt u de fout op in de logboekbestanden. Wanneer u het probleem hebt opgelost, maakt u een nieuwe taak om de bestanden te kopiëren. U kunt ook [de bestanden kopiëren via SMB](data-box-deploy-copy-data.md).
+        Als er een fout optreedt en u de taak niet opnieuw kunt starten, download dan de foutenlogboeken en zoek de fout op in de logboekbestanden. Wanneer u het probleem hebt opgelost, maakt u een nieuwe taak om de bestanden te kopiëren. U kunt ook [de bestanden kopiëren via SMB](data-box-deploy-copy-data.md).
     
     - In deze release kunt u een taak niet verwijderen.
     
     - U kunt een onbeperkt aantal taken maken, maar u kunt maximaal 10 taken tegelijkertijd uitvoeren.
-    - Als **Bestandsoptimalisatie** is ingeschakeld, worden kleine bestanden ingepakt bij opname om kopieerprestaties te verbeteren. In dergelijke gevallen wordt er een ingepakt bestand weergegeven (met een GUID als bestandsnaam). Verwijder dit bestand niet. Dit wordt uitgepakt tijdens het uploaden.
+    - Als **Bestandsoptimalisatie** is ingeschakeld, worden kleine bestanden ingepakt bij opname om kopieerprestaties te verbeteren. In dergelijke gevallen wordt er een ingepakte bestand weergegeven (met een GUID als bestandsnaam). Verwijder dit bestand niet. Dit wordt uitgepakt tijdens het uploaden.
 
 6. Terwijl de taak wordt uitgevoerd, ziet u het volgende op de pagina **Gegevens kopiëren**:
 
@@ -123,7 +123,7 @@ U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevensko
     - In de kolom **Bestanden** ziet u het aantal en de totale grootte van de bestanden die worden gekopieerd.
     - In de kolom **Verwerkt** ziet u het aantal en de totale grootte van de bestanden die worden verwerkt.
     - Selecteer in de kolom **Taakdetails** de optie **Weergeven** als u de taakdetails wilt bekijken.
-    - Als er fouten optreden tijdens het kopieerproces, wat wordt weergegeven in de kolom **# fouten**, gaat u naar de kolom **Foutenlogboek** en downloadt u de foutenlogboeken om het probleem op te lossen.
+    - Als er fouten optreden tijdens het kopieerproces, wat wordt weergegeven in de kolom **# fouten**, ga dan naar de kolom **Foutenlogboek** en download de foutenlogboeken om het probleem op te lossen.
 
 Wacht tot de kopieertaak is voltooid. Omdat een aantal fouten alleen wordt vastgelegd op de pagina **Verbinding maken en kopiëren**, moet u wachten tot de kopieertaak zonder fouten is voltooid voordat u verder gaat met de volgende stap.
 
@@ -134,17 +134,17 @@ Om de gegevensintegriteit te garanderen wordt een controlesom inline berekend te
 ![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-deploy-copy-data-via-copy-service/verify-used-space-dashboard.png)
 
 > [!IMPORTANT]
-> Herhaal dezelfde instructies voor het kopiëren van gegevens naar het tweede knoop punt op Data Box Heavy.
+> Herhaal dezelfde instructies om gegevens te kopiëren vanaf het tweede knooppunt in Data Box Heavy.
 
 Wanneer de kopieertaak is voltooid, kunt u **Voorbereiding voor verzending** selecteren.
 
 >[!NOTE]
-> **Voorbereiding voor verzending** kan niet worden uitgevoerd terwijl er Kopieer taken worden uitgevoerd.
+> **Voorbereiding voor verzending** kan niet worden uitgevoerd terwijl de kopieertaken worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de volgende zelf studie om te leren hoe u uw Data Box Heavy-apparaat kunt terugsturen naar micro soft.
+Ga naar de volgende zelfstudie om te lezen hoe u het Data Box Heavy-apparaat naar Microsoft verzendt.
 
 > [!div class="nextstepaction"]
-> [Uw Azure Data Box Heavy-apparaat naar micro soft verzenden](./data-box-heavy-deploy-picked-up.md)
+> [Uw Azure Data Box Heavy-apparaat naar Microsoft verzenden](./data-box-heavy-deploy-picked-up.md)
 

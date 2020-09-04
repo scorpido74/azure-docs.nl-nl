@@ -6,15 +6,15 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593157"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassing voorbereiden voor AKS (Azure Kubernetes Service)
 
-In deze zelfstudie, deel een van zeven, wordt een toepassing met meerdere containers voorbereid voor gebruik in Kubernetes. Bestaande ontwikkelprogramma's, zoals Docker Compose, worden gebruikt voor het lokaal bouwen en testen van een toepassing. Procedures voor:
+In deze zelfstudie, deel een van zeven, wordt een toepassing met meerdere containers voorbereid voor gebruik in Kubernetes. Bestaande ontwikkelprogramma's, zoals Docker Compose, worden gebruikt voor het lokaal bouwen en testen van een toepassing. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een voorbeeld van een toepassingsbron klonen vanuit GitHub
@@ -100,7 +100,7 @@ Stop en verwijder de containerexemplaren en -resources met de opdracht [docker-c
 docker-compose down
 ```
 
-Wanneer de lokale toepassing is verwijderd, hebt u een docker-installatie kopie die de Azure stem-toepassing, *Azure-stem*voor gebruik, bevat met de volgende zelf studie.
+Wanneer de lokale toepassing is verwijderd, hebt u een Docker-installatiekopie met de Azure Vote-toepassing, *azure-vote-front*, voor gebruik met de volgende zelfstudie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -125,7 +125,7 @@ Ga verder met de volgende zelfstudie voor informatie over het opslaan van contai
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[Git]: https://git-scm.com/downloads
+[git]: https://git-scm.com/downloads
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

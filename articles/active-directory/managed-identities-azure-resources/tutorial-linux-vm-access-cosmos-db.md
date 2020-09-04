@@ -1,9 +1,9 @@
 ---
-title: Zelf`:`studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-Linux-Azure AD
+title: Zelfstudie`:` Een beheerde identiteit gebruiken voor toegang tot Cosmos DB - Linux - Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2006c44d68d9570af0bfa410cc7fe908502d2ba5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78248286"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267986"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Procedures voor:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Cosmos DB-account maken
@@ -44,7 +44,7 @@ Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door 
 Als u de CLI-scriptvoorbeelden in deze zelfstudie wilt uitvoeren, hebt u twee opties:
 
 - Gebruik [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vanuit Azure Portal of via de knop **Uitproberen** in de rechterbovenhoek van elk codeblok.
-- [Installeer de nieuwste versie van CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 of later) als u liever een lokale CLI-console gebruikt.
+- [Installeer de nieuwste versie van CLI 2.0](/cli/azure/install-azure-cli) (2.0.23 of later) als u liever een lokale CLI-console gebruikt.
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB-account maken 
 
@@ -55,7 +55,7 @@ Maak een Cosmos DB-account als u er nog geen hebt. U kunt deze stap overslaan en
 3. Voer een **Id** in voor het Cosmos DB-account, die u later zult gebruiken.  
 4. **API** moet worden ingesteld op 'SQL'. De aanpak die in deze zelfstudie wordt beschreven, kan worden gebruikt met de andere beschikbare API-typen, maar de stappen in deze zelfstudie zijn voor de SQL-API.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.  Selecteer een **Locatie** waar Cosmos DB beschikbaar is.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Een verzameling maken in het Cosmos DB-account
 
@@ -67,7 +67,7 @@ Voeg vervolgens een gegevensverzameling toe in het Cosmos DB-account, waarop u l
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>De `principalID` van de door het systeem toegewezen beheerde identiteit voor de Linux-VM ophalen
 
-Om in de volgende sectie vanuit Resource Manager toegang te krijgen tot de toegangssleutels van het Cosmos DB-account, moet u de `principalID` van de door het systeem toegewezen beheerde identiteit van de Linux-VM ophalen.  Zorg ervoor dat u de `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resource groep waarin uw VM zich bevindt) `<VM NAME>` , en parameter waarden vervangt door uw eigen waarden.
+Om in de volgende sectie vanuit Resource Manager toegang te krijgen tot de toegangssleutels van het Cosmos DB-account, moet u de `principalID` van de door het systeem toegewezen beheerde identiteit van de Linux-VM ophalen.  Vervang de waarden van de parameters `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resourcegroep waar de VM zich bevindt) en `<VM NAME>` door uw eigen waarden.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
@@ -114,7 +114,7 @@ Het antwoord bevat de details voor de gemaakte roltoewijzing:
 
 Werk voor de rest van de zelfstudie op de eerder gemaakte virtuele machine.
 
-U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/install_guide) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
+U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](/windows/wsl/install-win10) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
 1. In Azure Portal navigeert u naar **Virtuele machines**, gaat u naar uw virtuele Linux-machine, klikt u vervolgens boven aan de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine. 
 2. Maak verbinding met uw virtuele machine via de SSH-client.  
@@ -228,5 +228,4 @@ Deze CLI-opdracht retourneert details over de verzameling:
 In deze zelfstudie hebt u geleerd een door het systeem toegewezen beheerde identiteit op een virtuele Linux-machine te gebruiken om toegang tot Cosmos DB te krijgen.  Zie voor meer informatie over Cosmos DB:
 
 > [!div class="nextstepaction"]
->[Overzicht van Azure Cosmos DB](/azure/cosmos-db/introduction)
-
+>[Overzicht van Azure Cosmos DB](../../cosmos-db/introduction.md)

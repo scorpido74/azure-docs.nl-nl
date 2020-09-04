@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69d346d554ee6f30e4ef578bacf358aaba722b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 528fe5dea533faf9447e03dd901568d783891ce9
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825171"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718931"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Zelfstudie: Azure-schijven beheren met Azure PowerShell
 
@@ -52,10 +52,11 @@ Azure biedt twee typen schijven.
 
 **Standard-schijven** - ondersteund door HDD's en bieden voordelige en hoogwaardige opslag. Standard-schijven zijn ideaal voor een kostenefficiënte werkbelasting voor ontwikkelen en testen.
 
-**Premium-schijven** - ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. Premium Storage ondersteunt virtuele machines uit de DS-serie, DSv2-serie GS-serie en FS-serie. Er zijn vijf typen Premium-schijven (P10, P20, P30, P40, P50); de grootte van de schijf bepaalt het schijftype. Wanneer u een selectie maakt, wordt de waarde van de schijfgrootte afgerond naar het volgende type. Als de grootte bijvoorbeeld kleiner is dan 128 GB is het schijftype P10, en tussen 129 en 512 GB is de schijf P20.
-
-### <a name="premium-disk-performance"></a>Prestaties Premium-schijf
+**Premium-schijven** - ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. VM-grootten met een  **S** in de [groottenaam](../vm-naming-conventions.md), ondersteunen doorgaans Premium Storage. VM's uit de DS-serie, DSv2-serie, GS-serie en FS-serie ondersteunen premium opslag. Wanneer u een schijfgrootte selecteert, wordt de waarde omhoog afgerond naar het volgende type. Als de schijfgrootte bijvoorbeeld groter dan 64 GB maar kleiner dan 128 GB is, dan is het schijftype P10. 
+<br>
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
+
+Wanneer u een premium opslag-schijf inricht, in tegenstelling tot standaard opslag, bent u verzekerd van de capaciteit, IOPS en doorvoer van die schijf. Als u bijvoorbeeld een P50-schijf maakt, dan richt Azure een opslagcapaciteit van 4.095 GB in, 7.500 IOPS en een doorvoer van 250 MB/s voor die schijf. Uw toepassing kan alle of een deel van de capaciteit en prestaties gebruiken. Premium-SSD-schijven zijn zodanig ontworpen dat er in de voorgaande tabel 99,9% van de tijd minder dan één milliseconde latentie en doel-IOPS en -doorvoer wordt beschreven.
 
 In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan een hoger prestatieniveau worden bereikt door striping van meerdere gegevensschijven. Er kunnen bijvoorbeeld 64 gegevensschijven worden gekoppeld aan Standard_GS5 VM. Als voor elk van deze schijven een P30-grootte wordt gebruikt, kan een maximum van 80.000 IOP's worden behaald. Zie [VM-typen en -grootten](../sizes.md) voor gedetailleerde informatie over het maximum aantal IOP's per VM.
 

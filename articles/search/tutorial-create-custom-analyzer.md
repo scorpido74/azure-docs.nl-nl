@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021882"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290307"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Zelfstudie: Een aangepaste analyse voor telefoonnummers maken
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021882"
 
 In sommige gevallen, zoals bij een veld met vrije tekst, kunt u door gewoon de juiste [taalanalyse](index-add-language-analyzers.md) te selecteren, de zoekresultaten verbeteren. Voor sommige scenario's, zoals het zorgvuldig zoeken naar telefoonnummers, URL's of e-mails, is het gebruik van aangepaste analyses vereist.
 
-In deze zelfstudie wordt gebruikgemaakt van Postman en [REST API's](https://docs.microsoft.com/rest/api/searchservice/) van Azure Cognitive Search om:
+In deze zelfstudie wordt gebruikgemaakt van Postman en [REST API's](/rest/api/searchservice/) van Azure Cognitive Search om:
 
 > [!div class="checklist"]
 > * Uit te leggen hoe analyses werken
@@ -225,7 +225,7 @@ U bent niet de enige die deze resultaten verwarrend vindt. In de volgende sectie
 
 ## <a name="4---debug-search-results"></a>4 - Fouten in zoekresultaten opsporen
 
-U kunt deze zoekresultaten alleen begrijpen als u weet hoe analyses werken. Hier kunnen we de standaardanalyse testen met behulp van de [Tekstanalyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) en vervolgens een analyse maken die aan onze eisen voldoet.
+U kunt deze zoekresultaten alleen begrijpen als u weet hoe analyses werken. Hier kunnen we de standaardanalyse testen met behulp van de [Tekstanalyse-API](/rest/api/searchservice/test-analyzer) en vervolgens een analyse maken die aan onze eisen voldoet.
 
 ### <a name="how-analyzers-work"></a>Hoe analyses werken
 
@@ -239,7 +239,7 @@ Analyses bestaan uit drie onderdelen:
 
 In het onderstaande diagram kunt u zien hoe deze drie onderdelen samenwerken om een zin te tokeniseren:
 
-  ![Diagram van analyseproces](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![Diagram van het analyseproces om een zin te tokeniseren](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 Deze tokens worden vervolgens opgeslagen in een omgekeerde index, waardoor snelle zoekopdrachten in volledige tekst mogelijk zijn.  Met een omgekeerde index kunt u zoeken in volledige tekst toestaan door alle unieke termen die zijn geëxtraheerd tijdens de lexicale analyse, toe te wijzen aan de documenten waarin ze voorkomen. In het onderstaande diagram ziet u een voorbeeld:
 
@@ -251,7 +251,7 @@ Elke zoekopdracht komt neer op het zoeken naar de termen die in de omgekeerde in
 1. De omgekeerde index wordt vervolgens gescand op documenten die overeenkomende termen bevatten.
 1. Ten slotte worden de opgehaalde documenten gerangschikt met behulp van het [vergelijkbaarheidsalgoritme](index-ranking-similarity.md).
 
-  ![Diagram van analyseproces](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![Diagram van het rangschikken van vergelijkbaarheid in het analyseproces](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 Als de querytermen niet overeenkomen met de termen in de omgekeerde index, worden er geen resultaten geretourneerd. Voor meer informatie over hoe query's werken, raadpleegt u dit artikel over [zoeken in volledige tekst](search-lucene-query-architecture.md).
 
@@ -260,7 +260,7 @@ Als de querytermen niet overeenkomen met de termen in de omgekeerde index, worde
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>Analyse testen met behulp van de Tekstanalyse-API
 
-Azure Cognitive Search biedt een [Tekstanalyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) waarmee u analyses kunt testen om inzicht te krijgen in de manier waarop deze tekst verwerken.
+Azure Cognitive Search biedt een [Tekstanalyse-API](/rest/api/searchservice/test-analyzer) waarmee u analyses kunt testen om inzicht te krijgen in de manier waarop deze tekst verwerken.
 
 De Tekstanalyse-API wordt aangeroepen met de volgende aanvraag:
 

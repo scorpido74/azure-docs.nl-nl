@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/15/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 27a254b664e2035cc66109f7a473a3e9ef4d730e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b20c97bf919073b01f564b59b3a55eccb7614005
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73612044"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89042814"
 ---
 <!-- This is the note explaining about the avro and json formats when routing to blob storage. -->
 > [!NOTE]
-> De gegevens kunnen naar Blob-opslag worden geschreven in de [Apache Avro](https://avro.apache.org/) -indeling, de standaard instelling of JSON (preview). 
+> De gegevens kunnen worden geschreven naar blob-opslag in de [Apache Avro](https://avro.apache.org/) -indeling (de standaardindeling) of in JSON (preview). 
 >    
-> De mogelijkheid om de JSON-indeling te coderen, is in de preview-fase van alle regio's waar IoT Hub beschikbaar is, met uitzonde ring van VS-Oost, VS-West en Europa-west. De coderings indeling kan alleen worden ingesteld op het moment dat het eind punt van de Blob-opslag is geconfigureerd. De indeling kan niet worden gewijzigd voor een eind punt dat al is ingesteld. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op JSON en de contentEncoding naar UTF-8 in de eigenschappen van het bericht systeem. 
+> De mogelijkheid om de JSON-indeling te coderen, bevindt zich in de previewfase in alle regio's waar IoT Hub beschikbaar is, met uitzondering van US - oost, US - west en EU - west. De coderingsindeling kan alleen worden ingesteld op het moment dat het eindpunt van de blob-opslag wordt geconfigureerd. De indeling kan niet worden gewijzigd voor een eindpunt dat al is ingesteld. Wanneer u de JSON-coderings gebruikt, moet u contentType instellen op JSON en contentEncoding op UTF-8 in de systeemeigenschappen van het bericht. 
 >
-> Voor meer informatie over het gebruik van een Blob Storage-eind punt raadpleegt [u de richt lijnen voor route ring naar opslag](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage).
+> Zie [richtlijnen voor routering naar opslag](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint) voor meer informatie over het gebruik van een eindpunt van de blob-opslag.
 >

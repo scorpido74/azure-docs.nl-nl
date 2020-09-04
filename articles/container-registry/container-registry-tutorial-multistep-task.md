@@ -1,28 +1,28 @@
 ---
-title: Zelf studie-ACR taak voor meerdere stappen
-description: In deze zelf studie leert u hoe u een Azure Container Registry taak kunt configureren om automatisch een werk stroom met meerdere stappen te activeren om container installatie kopieën in de cloud te bouwen, uit te voeren en te pushen wanneer u de bron code doorvoert in een Git-opslag plaats.
+title: 'Zelfstudie: ACR-taak met meerdere stappen'
+description: In deze zelfstudie leert u hoe u een Azure Container Registry-taak configureert om de werkstroom met meerdere stappen voor het maken, uitvoeren en pushen van containerinstallatiekopieën automatisch te activeren in de cloud wanneer u broncode naar een Git-opslagplaats doorvoert.
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78402301"
 ---
-# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Zelf studie: een container werk stroom met meerdere stappen in de Cloud uitvoeren bij het door voeren van de bron code
+# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Zelfstudie: Een containerwerkstroom met meerdere stappen in de cloud uitvoeren bij het doorvoeren van broncode
 
-Naast een [snelle taak](container-registry-tutorial-quick-task.md)ondersteunt ACR-taken meerdere stappen, op meerdere containers gebaseerde werk stromen die automatisch kunnen worden geactiveerd wanneer u bron code doorvoert in een Git-opslag plaats. 
+Naast een [snelle taak](container-registry-tutorial-quick-task.md) bieden ACR-taken ondersteuning voor werkstromen op basis van meerdere-stappen en meerdere containers die automatisch kunnen worden geactiveerd wanneer u broncode doorvoert in een Git-opslagplaats. 
 
-In deze zelf studie leert u hoe u voor beelden van YAML-bestanden kunt gebruiken om taken met meerdere stappen te definiëren die een of meer container installatie kopieën bouwen, uitvoeren en pushen naar een REGI ster wanneer u de bron code doorvoert. Zie [zelf studie: builds van container installatie kopieën automatiseren in de Cloud wanneer u bron code doorvoert](container-registry-tutorial-build-task.md)om een taak te maken die slechts één installatie kopie automatiseert die door de code wordt gemaakt. Zie voor een overzicht van ACR-taken het automatiseren van het [besturings systeem en Framework-patches met ACR-taken](container-registry-tasks-overview.md).
+In deze zelfstudie gebruikt u YAML-voorbeeldbestanden om taken met meerdere stappen te definiëren voor het maken, uitvoeren en pushen van een of meer containerinstallatiekopieën naar een register bij het doorvoeren van broncode. Als u een taak wilt maken waarmee slechts één build van een installatiekopie bij het doorvoeren van code wordt geautomatiseerd, raadpleegt u [Zelfstudie: Builds van containerinstallatiekopieën in de cloud automatiseren bij het doorvoeren van broncode](container-registry-tutorial-build-task.md). Zie [Besturingssysteem- en frameworkpatching automatiseren met ACR-taken](container-registry-tasks-overview.md) voor een overzicht van ACR-taken.
 
-In deze zelfstudie hebt u het volgende gedaan:
+In deze zelfstudie:
 
 > [!div class="checklist"]
 > * Een taak met meerdere stappen definiëren met behulp van een YAML-bestand
 > * Een taak maken
-> * Eventueel referenties toevoegen aan de taak om toegang tot een ander REGI ster mogelijk te maken
+> * Referenties aan de taak toevoegen om toegang tot een ander register mogelijk te maken (optioneel)
 > * De taak testen
 > * Taakstatus weergeven
 > * De taak activeren met een code-doorvoer
@@ -31,17 +31,17 @@ In deze zelfstudie wordt ervan uitgegaan dat u de stappen in de [vorige zelfstud
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u de Azure CLI lokaal wilt gebruiken, moet u Azure CLI versie **2.0.62** of hoger hebben geïnstalleerd en zijn aangemeld met [AZ login][az-login]. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren][azure-cli].
+Als u de Azure CLI lokaal wilt gebruiken, moet Azure CLI versie **2.0.62** of hoger zijn geïnstalleerd, en moet u zijn aangemeld met [az login][az-login]. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
 ## <a name="create-a-multi-step-task"></a>Een taak met meerdere stappen maken
 
-Nu u de stappen hebt voltooid die vereist zijn om ACR-taken in te scha kelen voor het lezen van de commit-status en het maken van webhooks in een opslag plaats, maakt u een taak met meerdere stappen die het bouwen, uitvoeren en het pushen van een container installatie kopie activeert.
+Nu u de stappen hebt voltooid die nodig zijn om ACR-taken in te schakelen om toewijzingsstatus te lezen en webhooks te maken in een opslagplaats, kunt u een taak met meerdere stappen maken voor het maken, uitvoeren en pushen van een containerinstallatiekopie.
 
 ### <a name="yaml-file"></a>YAML-bestand
 
-U definieert de stappen voor een taak met meerdere stappen in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Het eerste voor beeld van een taak met meerdere stappen voor deze zelf studie is `taskmulti.yaml`gedefinieerd in het bestand, dat zich in de hoofdmap van de GitHub opslag plaats bevindt die u hebt gekloond:
+U definieert de stappen voor een taak met meerdere stappen in een [YAML-bestand](container-registry-tasks-reference-yaml.md). Het eerste voorbeeld van een taak met meerdere stappen in deze zelfstudie is gedefinieerd in het bestand `taskmulti.yaml`, dat zich bevindt in de hoofdmap van de GitHub-opslagplaats die u hebt gekloond:
 
 ```yml
 version: v1.0.0
@@ -61,13 +61,13 @@ steps:
 
 Deze taak met meerdere stappen doet het volgende:
 
-1. Voert een `build` stap uit om een installatie kopie te maken van de Dockerfile in de werkmap. De afbeelding is gericht `Run.Registry`op het, het REGI ster waar de taak wordt uitgevoerd en is gelabeld met een unieke run-id voor ACR-taken. 
-1. Voert een `cmd` stap uit om de installatie kopie in een tijdelijke container uit te voeren. In dit voor beeld wordt een langlopende container op de achtergrond gestart en wordt de container-ID geretourneerd, waarna de container wordt gestopt. In een praktijk scenario kunt u stappen nemen om de actieve container te testen om te controleren of deze correct wordt uitgevoerd.
-1. In een `push` stap pusht de installatie kopie die is gebouwd voor het uitvoeren van het REGI ster.
+1. Er wordt een `build`-stap uitgevoerd om een installatiekopie te maken op basis van de Dockerfile in de werkmap. De installatiekopie wordt uitgevoerd op het doelregister, `Run.Registry`, en wordt getagd met een unieke run-id voor ACR-taken. 
+1. Er wordt een `cmd`-stap uitgevoerd om de installatiekopie uit te voeren in een tijdelijke container. In dit voorbeeld wordt een langlopende container op de achtergrond gestart en wordt de container-id geretourneerd, waarna de container wordt gestopt. In een praktijkscenario kunt u stappen voor het testen van de actieve container opnemen om te controleren of deze correct wordt uitgevoerd.
+1. In een `push`-stap pusht u de build van de installatiekopie naar het uitvoeringsregister.
 
-### <a name="task-command"></a>Taak opdracht
+### <a name="task-command"></a>Taakopdracht
 
-Vul eerst deze shell-omgevingsvariabelen met waarden die geschikt zijn voor uw omgeving. Hoewel deze stap strikt genomen niet vereist is, vereenvoudigt u hiermee de uitvoering van meerregelige Azure CLI-opdrachten in deze zelfstudie. Als u deze omgevings variabelen niet opgeeft, moet u elke waarde hand matig vervangen, overal waar deze in de voorbeeld opdrachten worden weer gegeven.
+Vul eerst deze shell-omgevingsvariabelen met waarden die geschikt zijn voor uw omgeving. Hoewel deze stap strikt genomen niet vereist is, vereenvoudigt u hiermee de uitvoering van meerregelige Azure CLI-opdrachten in deze zelfstudie. Als u deze omgevingsvariabelen niet invult, moet u elke bijbehorende waarde handmatig vervangen wanneer deze wordt weergegeven in de voorbeeldopdrachten.
 
 [![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
 
@@ -77,7 +77,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Maak nu de taak door de volgende [AZ ACR taak Create][az-acr-task-create] opdracht uit te voeren:
+Maak de taak nu door de volgende [az acr task create][az-acr-task-create]-opdracht uit te voeren:
 
 ```azurecli-interactive
 az acr task create \
@@ -88,7 +88,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Met deze taak geeft u op dat elke tijd code wordt doorgevoerd in de *hoofd* vertakking in `--context`de opslag plaats die wordt opgegeven door. ACR-taken voeren de taak met meerdere stappen uit vanuit de code in die vertakking. Het YAML-bestand dat `--file` is opgegeven door vanuit de hoofdmap van de opslag plaats definieert de stappen. 
+Deze taak geeft aan dat elke keer dat code wordt doorgevoerd naar de *master*-vertakking in de opslagplaats zoals is opgegeven door `--context`, ACR-taken dan de taak met meerdere stappen van de code in die vertakking uitvoert. De stappen worden gedefinieerd in het YAML-bestand dat is opgegeven door `--file` vanuit de hoofdmap van de opslagplaats. 
 
 De uitvoer van een geslaagde [az acr task create][az-acr-task-create]-opdracht is vergelijkbaar met het volgende:
 
@@ -147,15 +147,15 @@ De uitvoer van een geslaagde [az acr task create][az-acr-task-create]-opdracht i
 }
 ```
 
-## <a name="test-the-multi-step-workflow"></a>De werk stroom met meerdere stappen testen
+## <a name="test-the-multi-step-workflow"></a>De werkstroom met meerdere stappen testen
 
-Als u de taak met meerdere stappen wilt testen, moet u deze hand matig activeren door de opdracht [AZ ACR Task run uit][az-acr-task-run] te voeren:
+Als u de taak met meerdere stappen wilt testen, activeert u deze handmatig door de opdracht [az acr task run][az-acr-task-run] uit te voeren:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example1
 ```
 
-Met de opdracht `az acr task run` streamt u standaard de logboekuitvoer naar de console wanneer u de opdracht uitvoert. In de uitvoer ziet u de voortgang van het uitvoeren van elk van de taak stappen. De onderstaande uitvoer is versmald om de belangrijkste stappen weer te geven.
+Met de opdracht `az acr task run` streamt u standaard de logboekuitvoer naar de console wanneer u de opdracht uitvoert. In de uitvoer ziet u de voortgang van het uitvoeren van elke stap van de taak. De onderstaande uitvoer is ingekort om de belangrijkste stappen weer te geven.
 
 ```output
 Queued a run with ID: cf19
@@ -239,7 +239,7 @@ Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
 
-Zodra u een door Voer hebt gepusht naar uw opslag plaats, wordt de webhook die is gemaakt door ACR-taken geactiveerd en wordt de taak in Azure Container Registry. Geef de logboeken weer voor de taak die momenteel wordt uitgevoerd om de voortgang van de build te verifiëren en controleren:
+Zodra u een doorvoer naar de opslagplaats hebt gepusht, wordt de webhook die is gemaakt door ACR-taken geactiveerd en wordt de taak in Azure Container Registry in gang gezet. Geef de logboeken weer voor de taak die momenteel wordt uitgevoerd om de voortgang van de build te verifiëren en controleren:
 
 ```azurecli-interactive
 az acr task logs --registry $ACR_NAME
@@ -276,17 +276,17 @@ cf1a      example1   linux       Succeeded  Commit     2019-05-03T03:09:32Z  00:
 cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:00:21
 ```
 
-## <a name="create-a-multi-registry-multi-step-task"></a>Een taak met meerdere stappen maken
+## <a name="create-a-multi-registry-multi-step-task"></a>Een taak met meerdere stappen en registers maken
 
-ACR-taken zijn standaard gemachtigd om installatie kopieën te pushen of te halen uit het REGI ster waarin de taak wordt uitgevoerd. U kunt een taak met meerdere stappen uitvoeren die een of meer registers bedoelt naast het uitvoerings register. U moet bijvoorbeeld installatie kopieën in één REGI ster bouwen en installatie kopieën met andere Tags opslaan in een tweede REGI ster dat wordt geopend door een productie systeem. Dit voor beeld laat zien hoe u een dergelijke taak maakt en referenties voor een ander REGI ster opgeeft.
+ACR-taken zijn standaard gemachtigd om installatiekopieën te verzenden naar of op te halen uit het register waarin de taak wordt uitgevoerd (push/pull). U kunt ook een taak met meerdere stappen uitvoeren op een of meer andere registers dan het uitvoeringsregister. U wilt bijvoorbeeld een taak om builds van installatiekopieën te maken in een bepaald register en installatiekopieën met andere tags op te slaan in een tweede register dat wordt gebruikt in een productiesysteem. Dit voorbeeld laat zien hoe u een dergelijke taak maakt en referenties voor een ander register opgeeft.
 
-Als u nog geen tweede REGI ster hebt, maakt u er een voor dit voor beeld. Als u een register nodig hebt, zie dan de [vorige zelfstudie](container-registry-tutorial-quick-task.md) of [Snelstartgids: Een containerregister maken met de Azure CLI](container-registry-get-started-azure-cli.md).
+Als u nog geen tweede register hebt, maakt u er een voor dit voorbeeld. Als u een register nodig hebt, zie dan de [vorige zelfstudie](container-registry-tutorial-quick-task.md) of [Snelstartgids: Een containerregister maken met de Azure CLI](container-registry-get-started-azure-cli.md).
 
-Als u de taak wilt maken, hebt u de naam van de aanmeldings server van het REGI ster nodig. Dit is de vorm *mycontainerregistrydate.azurecr.io* (alle kleine letters). In dit voor beeld gebruikt u het tweede REGI ster om installatie kopieën op te slaan die zijn gelabeld op basis van build date.
+Als u de taak wilt maken, hebt u de naam van de aanmeldingsserver van het register nodig in de vorm *mycontainerregistrydate.azurecr.io* (allemaal kleine letters). In dit voorbeeld gebruikt u het tweede register voor het opslaan van installatiekopieën, getagd op builddatum.
 
 ### <a name="yaml-file"></a>YAML-bestand
 
-Het tweede voor beeld van een taak met meerdere stappen voor deze zelf studie is `taskmulti-multiregistry.yaml`gedefinieerd in het bestand, dat zich in de hoofdmap van de GitHub opslag plaats bevindt die u hebt gekloond:
+Het tweede voorbeeld van een taak met meerdere stappen in deze zelfstudie is gedefinieerd in het bestand `taskmulti-multiregistry.yaml`, dat zich bevindt in de hoofdmap van de GitHub-opslagplaats die u hebt gekloond:
 
 ```yml
 version: v1.0.0
@@ -308,15 +308,15 @@ steps:
 
 Deze taak met meerdere stappen doet het volgende:
 
-1. Voert twee `build` stappen uit om installatie kopieën te maken van de Dockerfile in de werkmap:
-    * De eerste streeft `Run.Registry`naar het, het REGI ster waar de taak wordt uitgevoerd en is gelabeld met de run-id van de ACR-taken. 
-    * De tweede streeft naar het REGI ster geïdentificeerd door `regDate`de waarde van, die u instelt bij het maken van de taak (of `values.yaml` door middel van `az acr task create`een extern bestand dat is door gegeven aan). Deze afbeelding is gelabeld met de uitvoerings datum.
-1. Voert een `cmd` stap uit om een van de gebouwde containers uit te voeren. In dit voor beeld wordt een langlopende container op de achtergrond gestart en wordt de container-ID geretourneerd, waarna de container wordt gestopt. In een praktijk scenario kunt u een actieve container testen om er zeker van te zijn dat deze correct wordt uitgevoerd.
-1. In een `push` stap pusht de installatie kopieën die zijn gebouwd, het eerste naar het Run Registry, het tweede naar het REGI ster geïdentificeerd `regDate`door.
+1. Er worden twee `build`-stappen uitgevoerd om installatiekopieën te maken op basis van de Dockerfile in de werkmap:
+    * De eerste stap wordt uitgevoerd op het doelregister, `Run.Registry`, en wordt getagd met de run-id voor ACR-taken. 
+    * De tweede stap wordt uitgevoerd op het register `regDate` dat u instelt bij het maken van de taak (of opgeeft via een extern bestand, `values.yaml`, dat wordt doorgegeven aan `az acr task create`). Deze installatiekopie wordt getagd met de uitvoeringsdatum.
+1. Hiermee wordt een `cmd`-stap uitgevoerd om een van de gemaakte containers uit te voeren. In dit voorbeeld wordt een langlopende container op de achtergrond gestart en wordt de container-id geretourneerd, waarna de container wordt gestopt. In een praktijkscenario kunt u een actieve container testen om te controleren of deze correct wordt uitgevoerd.
+1. Met een `push`-stap worden de twee gemaakte installatiekopieën gepusht: de eerste naar het uitvoeringsregister, de tweede naar het register dat is opgegeven met `regDate`.
 
-### <a name="task-command"></a>Taak opdracht
+### <a name="task-command"></a>Taakopdracht
 
-Maak de taak met behulp van de eerder gedefinieerde shell-omgevings variabelen door de volgende [AZ ACR taak Create][az-acr-task-create] opdracht uit te voeren. Vervang de naam van het REGI ster door voor *mycontainerregistrydate*.
+Maak de taak met behulp van de eerder gedefinieerde shell-omgevingsvariabelen door de volgende [az acr task create][az-acr-task-create]-opdracht uit te voeren. Vervang *mycontainerregistrydate* door de naam van uw register.
 
 ```azurecli-interactive
 az acr task create \
@@ -328,13 +328,13 @@ az acr task create \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
 
-### <a name="add-task-credential"></a>Taak referentie toevoegen
+### <a name="add-task-credential"></a>Taakreferentie toevoegen
 
-Als u installatie kopieën wilt pushen naar het REGI ster `regDate`dat wordt geïdentificeerd door de waarde van, gebruikt u de opdracht [AZ ACR Credential add][az-acr-task-credential-add] om aanmeldings referenties voor het REGI ster toe te voegen aan de taak.
+Als u installatiekopieën wilt pushen naar het register dat wordt aangeduid met de waarde van `regDate`, gebruikt u de opdracht [az acr task credential add][az-acr-task-credential-add] om aanmeldingsreferenties voor dat register toe te voegen aan de taak.
 
-Voor dit voor beeld raden we u aan een [Service-Principal](container-registry-auth-service-principal.md) te maken met toegang tot het REGI ster die is toegewezen aan de *AcrPush* -rol. Zie dit [Azure CLI-script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)voor het maken van de Service-Principal.
+Voor dit voorbeeld wordt u aangeraden een [service-principal](container-registry-auth-service-principal.md) te maken met toegang tot het register binnen het bereik van de rol *AcrPush*. Als u de service-principal wilt maken, raadpleegt u dit [Azure CLI-script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
 
-Geef de aanvraag-ID en het wacht woord van de `az acr task credential add` Service-Principal in de volgende opdracht:
+Geef de toepassings-id en het wacht woord van de service-principal op in de volgende `az acr task credential add`-opdracht:
 
 ```azurecli-interactive
 az acr task credential add --name example2 \
@@ -344,17 +344,17 @@ az acr task credential add --name example2 \
     --password <service-principal-password>
 ```
 
-De CLI retourneert de naam van de aanmeldings server voor het REGI ster die u hebt toegevoegd.
+De CLI retourneert de naam van de door u aanmeldingsserver van het register.
 
-### <a name="test-the-multi-step-workflow"></a>De werk stroom met meerdere stappen testen
+### <a name="test-the-multi-step-workflow"></a>De werkstroom met meerdere stappen testen
 
-Net als in het voor gaande voor beeld, kunt u de taak met meerdere stappen hand matig activeren door de opdracht [AZ ACR Task run uit][az-acr-task-run] te voeren. Als u de taak wilt activeren met een doorvoer bewerking voor de Git-opslag plaats, raadpleegt u de sectie [een build met een commit activeren](#trigger-a-build-with-a-commit).
+Als u de taak met meerdere stappen wilt testen, activeert u deze handmatig door de opdracht [az acr task run][az-acr-task-run] uit te voeren, net zoals in het vorige voorbeeld. Als u de taak met een doorvoer naar de Git-opslagplaats wilt activeren, raadpleegt u de sectie [Een build activeren met een doorvoer](#trigger-a-build-with-a-commit).
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-Met de opdracht `az acr task run` streamt u standaard de logboekuitvoer naar de console wanneer u de opdracht uitvoert. Net als voorheen toont de uitvoer de voortgang van het uitvoeren van elk van de taak stappen. De uitvoer wordt versmald om de belangrijkste stappen weer te geven.
+Met de opdracht `az acr task run` streamt u standaard de logboekuitvoer naar de console wanneer u de opdracht uitvoert. In de uitvoer ziet u, net als voorheen, de voortgang van het uitvoeren van elke stap van de taak. De uitvoer is ingekort om de belangrijkste stappen weer te geven.
 
 Uitvoer:
 
@@ -454,7 +454,7 @@ Run ID: cf1g was successful after 46s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u multi-step-taken op basis van meerdere containers kunt maken die automatisch worden geactiveerd wanneer u bron code doorvoert in een Git-opslag plaats. Zie de [ACR taken yaml-Naslag informatie](container-registry-tasks-reference-yaml.md)voor geavanceerde functies van taken met meerdere stappen, waaronder parallelle en afhankelijke uitvoering van stappen. Ga verder naar de volgende zelfstudie voor informatie over het maken van taken die builds activeren wanneer de basisinstallatiekopie van de containerinstallatiekopie wordt bijgewerkt.
+In deze zelfstudie hebt u geleerd hoe u taken met meerdere stappen en containers maakt die automatisch worden geactiveerd wanneer u broncode naar een Git-opslagplaats doorvoert. Zie de [YAML-referentie voor ACR-taken](container-registry-tasks-reference-yaml.md) voor geavanceerde functies van taken met meerdere stappen, waaronder parallelle en afhankelijke uitvoering van stappen. Ga verder naar de volgende zelfstudie voor informatie over het maken van taken die builds activeren wanneer de basisinstallatiekopie van de containerinstallatiekopie wordt bijgewerkt.
 
 > [!div class="nextstepaction"]
 > [Builds automatiseren op basis van installatiekopie-update](container-registry-tutorial-base-image-update.md)

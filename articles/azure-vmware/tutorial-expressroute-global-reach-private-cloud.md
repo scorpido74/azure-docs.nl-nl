@@ -1,18 +1,18 @@
 ---
 title: On-premises omgevingen peeren met een privécloud
-description: In deze zelfstudie over Azure VMware Solution (AVS) gaat u ExpressRoute Global Reach peeren met een privécloud in een AVS.
+description: In deze zelfstudie over Azure VMware Solution gaat u ExpressRoute Global Reach-peering met een privécloud in Azure VMware Solution gemaakt.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093598"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750443"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Zelfstudie: On-premises omgevingen peeren met een privécloud
 
-ExpressRoute Global Reach verbindt uw on-premises omgeving verbindt met uw privéclouds. De ExpressRoute-Global Reach-verbinding wordt tot stand gebracht tussen een ExpressRoute-circuit in de privécloud en een bestaande ExpressRoute-verbinding met uw on-premises omgevingen.  U krijgt instructies voor het configureren van ExpressRoute Global Reach met Azure CLI en PowerShell. Daarnaast hebben we de [CLI-opdrachten](../expressroute/expressroute-howto-set-global-reach-cli.md) uitgebreid met specifieke details en voorbeelden om u te helpen bij de configuratie van ExpressRoute Global Reach-peering tussen on-premises omgevingen en een privécloud van Azure VMware Solution (AVS).   
+ExpressRoute Global Reach verbindt uw on-premises omgeving verbindt met uw privéclouds. De ExpressRoute-Global Reach-verbinding wordt tot stand gebracht tussen een ExpressRoute-circuit in de privécloud en een bestaande ExpressRoute-verbinding met uw on-premises omgevingen.  U krijgt instructies voor het configureren van ExpressRoute Global Reach met Azure CLI en PowerShell. Daarnaast zijn de [CLI-opdrachten](../expressroute/expressroute-howto-set-global-reach-cli.md) uitgebreid met specifieke details en voorbeelden om u te helpen bij de configuratie van ExpressRoute Global Reach-peering tussen on-premises omgevingen en een privécloud van Azure VMware Solution.   
 
 Raadpleeg de documentatie over het [inschakelen van connectiviteit in verschillende Azure-abonnementen](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions) voordat u de connectiviteit tussen twee ExpressRoute-circuits inschakelt met behulp van ExpressRoute Global Reach.  Het ExpressRoute-circuit dat u gebruikt wanneer u [een netwerkverbinding tussen Azure en een privécloud configureert](tutorial-configure-networking.md), vereist dat u autorisatiesleutels maakt en gebruikt wanneer u peert met ExpressRoute-gateways of met andere ExpressRoute-circuits met behulp van Global Reach. U hebt al een autorisatiesleutel uit het ExpressRoute-circuit gebruikt en u gaat een tweede maken om te peeren met uw on-premises ExpressRoute-circuit.
 
@@ -33,11 +33,11 @@ Dit zijn de vereisten voor deze zelfstudie:
 - Een afzonderlijk, functionerend ExpressRoute-circuit dat wordt gebruikt om on-premises omgevingen te verbinden met Azure. Dit is _circuit 1_ vanuit het perspectief van de procedures voor peering.
 - Een/29 niet-overlappend [blok met netwerkadressen](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) voor de ExpressRoute Global Reach-peering.
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>Een ExpressRoute-autorisatiesleutel maken in de AVS-privécloud
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>Een ExpressRoute-autorisatiesleutel maken in de privécloud van Azure VMware Solution
 
 1. Selecteer in de privécloud **Overzicht**onder Beheren, selecteer **Connectiviteit > ExpressRoute > Een machtigingssleutel aanvragen**.
 
-   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Selecteer Connectiviteit > ExpressRoute > Een machtigingssleutel aanvragen om een nieuwe aanvraag te starten":::
+   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Selecteer Connectiviteit > ExpressRoute > Een machtigingssleutel aanvragen om een nieuwe aanvraag te starten.":::
 
 2. Voer de naam in voor de autorisatiesleutel en selecteer **Maken**. 
 

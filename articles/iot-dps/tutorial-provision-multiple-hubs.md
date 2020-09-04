@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: apparaten inrichten voor hubs met gelijke taak verdeling met behulp van Azure IoT Hub Device Provisioning Service'
-description: In deze zelf studie wordt gedemonstreerd hoe de Device Provisioning Service (DPS) automatische inrichting van het apparaat mogelijk maakt voor IoT-hubs met gelijke taak verdeling in azure Portal
+title: 'Zelfstudie: Apparaten inrichten op Azure IoT Hub Device Provisioning Service met gelijke taakverdeling'
+description: Deze zelfstudie laat zien hoe de Device Provisioning Service (DPS) automatische apparaatinrichting mogelijk maakt voor IoT-hubs met gelijke taakverdeling in Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74976737"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelf studie: apparaten inrichten voor IoT-hubs met gelijke taak verdeling
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelfstudie: Apparaten inrichten in IoT-hubs met gelijke taakverdeling
 
 In deze zelfstudie kunt u zien hoe u apparaten kunt inrichten voor meerdere IoT-hubs met gelijke taakverdeling met behulp van de Device Provisioning Service. In deze zelfstudie leert u het volgende:
 

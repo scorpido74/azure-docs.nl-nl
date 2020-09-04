@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: IoT Edge apparaat-Machine Learning configureren op Azure IoT Edge'
-description: In deze zelf studie configureert u een virtuele Azure-machine waarop Linux wordt uitgevoerd als een Azure IoT Edge apparaat dat als transparante gateway fungeert.
+title: 'Zelfstudie: IoT Edge apparaat configureren - machine learning in Azure IoT Edge'
+description: In deze zelfstudie configureert u een virtuele Azure-machine waarop Linux wordt uitgevoerd als een Azure IoT Edge-apparaat dat als een transparante gateway fungeert.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,77 +10,77 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81733010"
 ---
-# <a name="tutorial-configure-an-iot-edge-device"></a>Zelf studie: een IoT Edge apparaat configureren
+# <a name="tutorial-configure-an-iot-edge-device"></a>Zelfstudie: een IoT Edge-apparaat configureren
 
 > [!NOTE]
-> Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
+> Dit artikel maakt deel uit van een reeks voor een zelfstudie over het gebruik van Azure Machine Learning in IoT Edge. Als u rechtstreeks bij dit artikel bent terechtgekomen, wordt u aangeraden te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
 
-In dit artikel wordt een virtuele Azure-machine met Linux zodanig geconfigureerd dat deze een IoT Edge apparaat is dat als transparante gateway fungeert. Met een transparante gateway configuratie kunnen apparaten via de gateway verbinding maken met Azure IoT Hub zonder te weten dat de gateway bestaat. Op hetzelfde moment is een gebruiker met de apparaten in azure IoT Hub niet op de hoogte van het tussenliggende gateway apparaat. Uiteindelijk gaan we Edge-analyses toevoegen aan ons systeem door IoT Edge modules toe te voegen aan de transparante gateway.
+In dit artikel gaan we een virtuele Azure-machine waarop Linux wordt uitgevoerd, configureren als een IoT Edge-apparaat dat als een transparante gateway fungeert. Met een dergelijke configuratie kunnen apparaten via de gateway verbinding maken met Azure IoT Hub zonder dat ze van het bestaan van de gateway af weten. Een gebruiker die interactie heeft met de apparaten in Azure IoT Hub is evenmin op de hoogte van het tussenliggende gatewayapparaat. Als laatste gaan we edge-analytics toevoegen aan ons systeem door IoT Edge-modules toe te voegen aan de transparante gateway.
 
-De stappen in dit artikel worden doorgaans uitgevoerd door een Cloud ontwikkelaar.
+De stappen in dit artikel worden doorgaans uitgevoerd door een cloud-ontwikkelaar.
 
 ## <a name="create-certificates"></a>Certificaten maken
 
-Een apparaat kan alleen als gateway functioneren als er een veilige verbinding kan worden gemaakt met downstream-apparaten. Met Azure IoT Edge kunt u een open bare-sleutel infrastructuur (PKI) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream IoT-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het IoT Edge apparaat bevestigen. Zie voor meer informatie over hoe IoT Edge-apparaten certificaten gebruiken [Azure IOT Edge details van certificaat gebruik](iot-edge-certs.md).
+Een apparaat kan alleen als gateway functioneren als het op veilige manier verbinding kan maken met downstream apparaten. Met Azure IoT Edge kunt u een PKI (Public Key Infrastructure) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval geven we een downstream IoT-apparaat toestemming om verbinding te maken met een IoT Edge-apparaat dat als transparante gateway fungeert. Om een redelijke beveiliging te garanderen, moet het downstream apparaat de identiteit van het IoT Edge apparaat bevestigen. Zie [Understand how Azure IoT Edge uses certificates](iot-edge-certs.md) (Begrijpen hoe Azure IoT Edge certificaten gebruikt) voor meer informatie over hoe IoT Edge-apparaten certificaten gebruiken.
 
-In deze sectie maken we de zelfondertekende certificaten met behulp van een docker-installatie kopie die we vervolgens bouwen en uitvoeren. We hebben ervoor gekozen om een docker-installatie kopie te gebruiken om deze stap te volt ooien omdat het aantal stappen dat nodig is voor het maken van de certificaten op de Windows-ontwikkel computer aanzienlijk wordt gereduceerd. Zie [demo certificaten maken om IOT Edge-apparaatfuncties te testen](how-to-create-test-certificates.md) om te begrijpen wat er wordt geautomatiseerd met de docker-installatie kopie.
+In dit gedeelte maken we de zelfondertekende certificaten met behulp van een Docker-installatiekopie die we vervolgens compileren en uitvoeren. We hebben ervoor gekozen om een Docker-installatiekopie te gebruiken voor deze stap omdat het aantal stappen dat nodig is voor het maken van de certificaten op de Windows-ontwikkelcomputer hierdoor aanzienlijk wordt gereduceerd. Zie [Create demo certificates to test IoT Edge device features](how-to-create-test-certificates.md) (Democertificaten maken om de functies van IoT Edge-apparaten te testen) om te begrijpen wat er met de Docker-installatiekopie wordt geautomatiseerd.
 
 1. Meld u aan bij uw ontwikkel-VM.
 
-2. Maak een nieuwe map met het pad en de `c:\edgeCertificates`naam.
+2. Maak een nieuwe map met het pad en de naam `c:\edgeCertificates`.
 
-3. Als deze nog niet wordt uitgevoerd, start u **docker voor Windows** vanuit het menu Start van Windows.
+3. Start **Docker voor Windows** vanuit het menu Start van Windows als het programma nog niet is gestart.
 
 4. Open Visual Studio Code.
 
-5. Selecteer **bestand** > **openen map...** en kies **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates**.
+5. Selecteer **File** > **Open Folder...** en kies **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates**.
 
-6. Klik in het deel venster Explorer met de rechter muisknop op **dockerfile** en kies **installatie kopie maken**.
+6. Klik in het deelvenster Explorer met de rechtermuisknop op **dockerfile** en kies **Build Image**.
 
-7. Accepteer in het dialoog venster de standaard waarde voor de naam van de installatie kopie en de tag: **createcertificates: meest recent**.
+7. Accepteer in het dialoogvenster de standaardwaarde voor de naam en het label van de installatiekopie: **createcertificates:latest**.
 
-    ![Certificaten maken in Visual Studio code](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
+    ![Certificaten maken in Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
-8. Wacht tot de build is voltooid.
+8. Wacht tot de compilatie is voltooid.
 
     > [!NOTE]
-    > Mogelijk wordt er een waarschuwing weer gegeven over een ontbrekende open bare sleutel. Het is veilig om deze waarschuwing te negeren. Op dezelfde manier wordt een beveiligings waarschuwing weer gegeven waarin u de machtigingen voor uw installatie kopie kunt controleren/opnieuw instellen. deze installatie kopie kan veilig worden genegeerd.
+    > Mogelijk ziet u een waarschuwing over een ontbrekende openbare sleutel. U kunt deze waarschuwing negeren. Er wordt ook een beveiligingswaarschuwing weergegeven met het advies om de machtigingen voor de installatiekopie te controleren/opnieuw in te stellen. Dit advies kunt u in dit geval eveneens negeren.
 
-9. Voer in het venster Visual Studio code Terminal de container createcertificates uit.
+9. Voer in het terminalvenster van Visual Studio Code de container createcertificates uit.
 
     ```cmd
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker vraagt om toegang tot station **c:\\ ** . Selecteer **delen**.
+10. Docker vraagt om toegang tot het **c:\\** -station. Selecteer **Share it**.
 
-11. Geef uw referenties op wanneer u hierom wordt gevraagd.
+11. Voer uw referenties in wanneer hierom wordt gevraagd.
 
-12. Nadat de container is uitgevoerd, controleert u de volgende bestanden in **c:\\edgeCertificates**:
+12. Als de container is uitgevoerd, controleert u of de volgende bestanden aanwezig in **c:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\Certificaats\\Azure-IOT-test-only. root. ca. cert. pem
-    * c:\\edgeCertificates\\Certificaats\\New-Edge-Device-Full-chain. cert. pem
-    * c:\\edgeCertificates\\Certificaats\\New-Edge-device. cert. pem
-    * c:\\edgeCertificates\\Certificaats\\New-Edge-device. cert. pfx
-    * c:\\edgeCertificates\\privé\\New-Edge-device. key. pem
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
+    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Certificaten uploaden naar Azure Key Vault
 
-Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerdere apparaten, zullen we de certificaten uploaden naar Azure Key Vault. Zoals u kunt zien in de bovenstaande lijst, hebben we twee typen certificaat bestanden: PFX en PEM. De PFX wordt behandeld als Key Vault certificaten die worden geüpload naar Key Vault. De PEM-bestanden zijn tekst zonder opmaak en wij behandelen ze als Key Vault geheimen. We gebruiken de Key Vault gekoppeld aan de Azure Machine Learning-werk ruimte die we hebben gemaakt door de [Azure notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)uit te voeren.
+Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerdere apparaten, gaan we de certificaten uploaden naar Azure Key Vault. Zoals u kunt zien in de bovenstaande lijst, hebben we twee typen certificaatbestanden: PFX en PEM. De PFX-bestanden behandelen we als Key Vault-certificaten die worden geüpload naar Key Vault. De PEM-bestanden zijn tekst zonder opmaak en deze behandelen we als Key Vault-geheimen. We gebruiken de sleutelkluis die is gekoppeld aan de Azure Machine Learning-werkruimte die we hebben gemaakt door de [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) uit te voeren.
 
-1. Navigeer vanuit het [Azure Portal](https://portal.azure.com)naar uw Azure machine learning-werk ruimte.
+1. Ga in [Azure Portal](https://portal.azure.com) naar uw Azure Machine Learning-werkruimte.
 
-2. Ga naar de pagina overzicht van de werk ruimte Azure Machine Learning en zoek de naam van de **Key Vault**.
+2. Zoek op de pagina Overzicht van de werkruimte de naam van de **sleutelkluis**.
 
-    ![Sleutel kluis naam kopiëren](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
+    ![Naam van sleutelkluis kopiëren](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
-3. Upload de certificaten op de ontwikkel computer naar Key Vault. Vervang ** \<subscriptionId\> ** en **\> de sleutel kluisnaam door uw resource gegevens. \<**
+3. Upload de certificaten op de ontwikkelcomputer naar Key Vault. Vervang **\<subscriptionId\>** en **\<keyvaultname\>** door uw resourcegegevens.
 
     ```powershell
     c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
@@ -88,49 +88,49 @@ Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerde
 
 4. Meld u aan bij Azure als u hierom wordt gevraagd.
 
-5. Het script wordt gedurende enkele minuten uitgevoerd met uitvoer met daarin de nieuwe Key Vault vermeldingen.
+5. Het script wordt gedurende enkele minuten uitgevoerd en laat dan een lijst zien met daarin de nieuwe Key Vault-vermeldingen.
 
-    ![Key Vault script uitvoer](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
+    ![Uitvoer van Key Vault-script](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
 
 ## <a name="create-iot-edge-device"></a>Een IoT Edge-apparaat maken
 
-Als u een Azure IoT Edge apparaat wilt verbinden met een IoT-hub, maakt u eerst een identiteit voor het apparaat in de hub. We nemen de connection string van de apparaat-id in de Cloud en gebruiken deze om de runtime op het IoT Edge apparaat te configureren. Zodra een geconfigureerd apparaat verbinding maakt met de hub, kunnen we modules implementeren en berichten verzenden. We kunnen ook de configuratie van het fysieke IoT Edge apparaat wijzigen door de bijbehorende apparaat-id in IoT hub te wijzigen.
+Om een Azure IoT Edge-apparaat te verbinden met een IoT-hub, maken we eerst een identiteit voor het apparaat in de hub. We nemen de verbindingsreeks van de apparaat-id in de cloud en gebruiken die om de runtime op ons IoT Edge-apparaat te configureren. Zodra een geconfigureerd apparaat verbinding maakt met de hub, kunnen we modules implementeren en berichten verzenden. We kunnen ook de configuratie van het fysieke IoT Edge-apparaat wijzigen door de bijbehorende apparaat-id in IoT hub aan te passen.
 
-Voor deze zelf studie maken we de nieuwe apparaat-id met Visual Studio code. U kunt deze stappen ook uitvoeren met behulp van de [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)of [Azure cli](how-to-register-device.md#register-with-the-azure-cli).
+Voor deze zelfstudie maken we de nieuwe apparaat-id met behulp van Visual Studio Code. U kunt deze stappen ook uitvoeren met [Azure Portal](how-to-register-device.md#register-in-the-azure-portal) of de [Azure CLI](how-to-register-device.md#register-with-the-azure-cli).
 
-1. Open Visual Studio code op de ontwikkel computer.
+1. Open Visual Studio Code op uw ontwikkelcomputer.
 
-2. Vouw het **Azure-IOT hub** frame uit vanuit de weer gave Visual Studio code Explorer.
+2. Vouw in de Explorer van Visual Studio Code het frame **Azure IoT Hub** uit.
 
-3. Klik op het weglatings teken en selecteer **IOT edge apparaat maken**.
+3. Klik op het weglatingsteken en selecteer **Create IoT Edge Device**.
 
-4. Geef het apparaat een naam. Voor het gemak gebruiken we de naam **aaTurbofanEdgeDevice** zodat deze naar de bovenkant van de vermelde apparaten wordt gesorteerd.
+4. Geef het apparaat een naam. Voor het gemak gebruiken we de naam **aaTurbofanEdgeDevice** zodat het apparaat bovenaan de lijst met apparaten komt te staan.
 
-5. Het nieuwe apparaat wordt weer gegeven in de lijst met apparaten.
+5. Het nieuwe apparaat wordt weergegeven in de lijst met apparaten.
 
-    ![Nieuwe aaTurbofanEdgeDevice weer geven in VS code Explorer](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
+    ![Nieuw aaTurbofanEdgeDevice in Explorer van VS Code](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
 
 ## <a name="deploy-azure-virtual-machine"></a>Virtuele Azure-machine implementeren
 
-We gebruiken de [Azure IOT Edge op Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) -installatie kopie van de Azure Marketplace om ons IOT edge-apparaat voor deze zelf studie te maken. Met de Azure IoT Edge op de Ubuntu-installatie kopie worden de meest recente Azure IoT Edge runtime en de bijbehorende afhankelijkheden van het opstarten geïnstalleerd. We implementeren de virtuele machine met behulp van `Create-EdgeVM.ps1`een Power shell-script,; een resource manager-sjabloon `IoTEdgeVMTemplate.json`,; en een shell script, `install packages.sh`.
+We gebruiken de installatiekopie [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) van de Azure Marketplace om het IoT Edge-apparaat voor deze zelfstudie te maken. Met deze installatiekopie worden de meest recente Azure IoT Edge-runtime en de bijbehorende afhankelijkheden geïnstalleerd bij het opstarten. We implementeren de VM met behulp van een PowerShell-script, `Create-EdgeVM.ps1`, een Resource Manager-sjabloon, `IoTEdgeVMTemplate.json`, en een shell-script, `install packages.sh`.
 
 ### <a name="enable-programmatic-deployment"></a>Programmatische implementatie inschakelen
 
-Als u de installatie kopie van de Marketplace in een implementatie met een script wilt gebruiken, moet u de installatie kopie op een programmatische manier implementeren.
+Als u de installatiekopie van de Marketplace in een scriptimplementatie wilt gebruiken, moet u programmatische implementatie inschakelen voor de installatiekopie.
 
-1. Meld u aan bij Azure Portal.
+1. Meld u aan bij de Azure-portal.
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
-1. Voer in de zoek balk **Marketplace**in en selecteer deze.
+1. Typ **Marketplace** in het zoekvak en druk op Enter.
 
-1. Voer in de zoek balk voor Marketplace de optie **Azure IOT Edge in op Ubuntu**.
+1. Typ **Azure IoT Edge on Ubuntu** in het zoekvak van Marketplace en druk op Enter.
 
-1. Selecteer de Hyper link aan de **slag** om programmatisch te implementeren.
+1. Selecteer de hyperlink **Aan de slag** om programmatisch te implementeren.
 
-1. Selecteer de knop **inschakelen** en vervolgens **Opslaan**.
+1. Selecteer de knop **Inschakelen** en daarna de knop **Opslaan**.
 
-    ![Programmatische implementatie voor VM inschakelen](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
+    ![Programmatische implementatie inschakelen voor VM](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
 
 1. U ziet een melding dat de taak is voltooid.
 
@@ -138,7 +138,7 @@ Als u de installatie kopie van de Marketplace in een implementatie met een scrip
 
 Voer vervolgens het script uit om de virtuele machine voor uw IoT Edge-apparaat te maken.
 
-1. Open een Power shell-venster en navigeer naar de **EdgeVM** -map.
+1. Open een PowerShell-venster en ga naar de map **EdgeVM**.
 
     ```powershell
     cd c:\source\IoTEdgeAndMlSample\EdgeVM
@@ -150,50 +150,50 @@ Voer vervolgens het script uit om de virtuele machine voor uw IoT Edge-apparaat 
     .\Create-EdgeVm.ps1
     ```
 
-3. Wanneer u hierom wordt gevraagd, geeft u waarden op voor elke para meter. Voor het abonnement, de resource groep en de locatie raden we u aan om hetzelfde te gebruiken als voor alle resources in deze zelf studie.
+3. Geef waarden op voor elke parameter wanneer u hierom wordt gevraagd. Voor het abonnement, de resourcegroep en de locatie raden we aan om de waarden te gebruiken die u eerder hebt opgegeven voor de resources in deze zelfstudie.
 
-    * **Azure-abonnements-id**: gevonden in de Azure Portal
-    * **Naam van resource groep**: naam voor het onthouden van het groeperen van de resources voor deze zelf studie
-    * **Locatie**: Azure-locatie waar de virtuele machine wordt gemaakt. Bijvoorbeeld westus2 of northeurope. Zie alle [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie.
-    * **AdminUsername**: de naam voor het beheerders account dat u gebruikt om u aan te melden bij de virtuele machine
-    * **AdminPassword**: het wacht woord dat moet worden ingesteld voor de AdminUsername op de virtuele machine
+    * **Azure-abonnements-id**: u vindt de abonnements-id in Azure Portal.
+    * **Naam van resourcegroep**: een makkelijk te onthouden naam voor het groeperen van de resources voor deze zelfstudie.
+    * **Locatie**: kies een Azure-locatie waarin de virtuele machine wordt gemaakt, bijvoorbeeld west 2. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/) voor meer informatie.
+    * **AdminUsername**: de naam voor het beheerdersaccount dat u gebruikt om u aan te melden bij de virtuele machine.
+    * **AdminPassword**: het wachtwoord dat moet worden ingesteld voor de AdminUsername op de virtuele machine.
 
-4. Als u wilt dat het script de virtuele machine kan instellen, moet u zich aanmelden bij Azure met de referenties die zijn gekoppeld aan het Azure-abonnement dat u gebruikt.
+4. Als u wilt dat het script de VM kan instellen, moet u zich aanmelden bij Azure met de referenties die zijn gekoppeld aan het Azure-abonnement dat u gebruikt.
 
-5. Het script bevestigt de gegevens voor het maken van de virtuele machine. Selecteer **y** of **Enter** om door te gaan.
+5. U ziet een bericht dat met het script een VM wordt gemaakt. Druk op **y** of **Enter** om door te gaan.
 
-6. Het script wordt gedurende enkele minuten uitgevoerd, omdat de volgende stappen worden uitgevoerd:
+6. Het script wordt enkele minuten uitgevoerd terwijl de volgende stappen worden uitgevoerd:
 
-    * De resource groep maken als deze nog niet bestaat
+    * De resourcegroep maken als deze nog niet bestaat
     * De virtuele machine maken
-    * NSG-uitzonde ringen voor de VM toevoegen voor poort 22 (SSH), 5671 (AMQP), 5672 (AMPQ) en 443 (TLS)
-    * De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)installeren)
+    * NSG-uitzonderingen voor de VM toevoegen voor de poorten 22 (SSH), 5671 (AMQP), 5672 (AMPQ) en 443 (TLS)
+    * De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest) installeren
 
-7. Het script voert de SSH-connection string uit om verbinding te maken met de virtuele machine. Kopieer de connection string voor de volgende stap.
+7. Het script voert de SSH-verbindingsreeks uit die nodig is om verbinding te maken met de VM. Kopieer de verbindingsreeks voor de volgende stap.
 
-    ![SSH-connection string voor VM kopiëren](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
+    ![SSH-verbindingsreeks kopiëren voor VM](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
 ## <a name="connect-to-your-iot-edge-device"></a>Verbinding maken met uw IoT Edge-apparaat
 
-In de volgende secties wordt de virtuele machine van Azure geconfigureerd die we hebben gemaakt. De eerste stap is om verbinding te maken met de virtuele machine.
+In de volgende gedeelten gaan we de virtuele Azure-machine configureren die we hebben gemaakt. De eerste stap is met maken van verbinding met de virtuele machine.
 
-1. Open een opdracht prompt en plak de SSH-connection string die u hebt gekopieerd uit de script uitvoer. Voer uw eigen gegevens in voor gebruikers naam, achtervoegsel en regio volgens de waarden die u hebt opgegeven voor het Power shell-script in de vorige sectie.
+1. Open een opdrachtprompt en plak hier de SSH-verbindingsreeks die u hebt gekopieerd uit de scriptuitvoer. Voer uw eigen gegevens in voor de gebruikersnaam, het achtervoegsel en de regio, overeenkomstig de waarden die u hebt opgegeven voor het PowerShell-script in het vorige gedeelte.
 
     ```cmd
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Wanneer u wordt gevraagd om de authenticiteit van de host te valideren, typt u **Ja** en selecteert u **Enter**.
+2. Wanneer u wordt gevraagd om de authenticiteit van de host te valideren, typt u **yes** en drukt u op **Enter**.
 
-3. Geef uw wacht woord op wanneer u hierom wordt gevraagd.
+3. Geef uw wachtwoord op als dit wordt gevraagd.
 
-4. In Ubuntu wordt een welkomst bericht weer gegeven. vervolgens ziet u een `<username>@<machinename>:~$`prompt als.
+4. In Ubuntu wordt een welkomstbericht weergegeven en u ziet daarna een prompt zoals `<username>@<machinename>:~$`.
 
-## <a name="download-key-vault-certificates"></a>Key Vault certificaten downloaden
+## <a name="download-key-vault-certificates"></a>Key Vault-certificaten downloaden
 
-Eerder in dit artikel hebben we certificaten geüpload naar Key Vault om ze beschikbaar te maken voor het IoT Edge apparaat en het Leaf-apparaat. Het blad apparaat is een downstream-apparaat dat gebruikmaakt van het IoT Edge-apparaat als een gateway om te communiceren met IoT Hub.
+Eerder in dit artikel hebben we certificaten geüpload naar Key Vault om ze beschikbaar te maken voor het IoT Edge apparaat en het leaf-apparaat. Het leaf-apparaat is een downstream apparaat dat het IoT Edge-apparaat als een gateway gebruikt om te communiceren met IoT Hub.
 
-Verderop in de zelf studie wordt het blad apparaat behandeld. In deze sectie downloadt u de certificaten naar het IoT Edge-apparaat.
+Verderop in de zelfstudie vindt u meer informatie over het leaf-apparaat. In dit gedeelte downloadt u de certificaten naar het IoT Edge-apparaat.
 
 1. Meld u vanuit de SSH-sessie op de virtuele Linux-machine aan bij Azure met de Azure CLI.
 
@@ -201,9 +201,9 @@ Verderop in de zelf studie wordt het blad apparaat behandeld. In deze sectie dow
     az login
     ```
 
-1. U wordt gevraagd een browser te openen en een <https://microsoft.com/devicelogin> unieke code op te geven. U kunt deze stappen uitvoeren op uw lokale computer. Sluit het browser venster wanneer u klaar bent met verifiëren.
+1. U wordt gevraagd om een browser te openen en naar <https://microsoft.com/devicelogin> te gaan om daar een unieke code op te geven. U kunt deze stappen uitvoeren op uw lokale computer. Sluit het browservenster wanneer u klaar bent met verifiëren.
 
-1. Wanneer u bent geverifieerd, wordt de virtuele Linux-machine aangemeld en worden uw Azure-abonnementen weer geven.
+1. Wanneer u bent geverifieerd, wordt de Linux-VM aangemeld en worden uw Azure-abonnementen weergegeven.
 
 1. Stel het Azure-abonnement in dat u wilt gebruiken voor Azure CLI-opdrachten.
 
@@ -211,13 +211,13 @@ Verderop in de zelf studie wordt het blad apparaat behandeld. In deze sectie dow
     az account set --subscription <subscriptionId>
     ```
 
-1. Maak een map op de virtuele machine voor de certificaten.
+1. Maak een map op de VM voor de certificaten.
 
     ```bash
     sudo mkdir /edgeMlCertificates
     ```
 
-1. Down load de certificaten die u hebt opgeslagen in de sleutel kluis: New-Edge-Device-Full-chain. cert. pem, New-Edge-device. key. pem en Azure-IOT-test-only. root. ca. cert. pem
+1. Download de certificaten die u hebt opgeslagen in de sleutelkluis: new-edge-device-full-chain.cert.pem, new-edge-device.key.pem en azure-iot-test-only.root.ca.cert.pem
 
     ```azurecli
     key_vault_name="<key vault name>"
@@ -226,35 +226,35 @@ Verderop in de zelf studie wordt het blad apparaat behandeld. In deze sectie dow
     sudo az keyvault secret download --vault-name $key_vault_name --name azure-iot-test-only-root-ca-cert-pem -f /edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem
     ```
 
-## <a name="update-the-iot-edge-device-configuration"></a>De configuratie van de IoT Edge-apparaatconfiguratie bijwerken
+## <a name="update-the-iot-edge-device-configuration"></a>Configuratie van IoT Edge-apparaat bijwerken
 
-De IoT Edge runtime gebruikt het bestand `/etc/iotedge/config.yaml` om de configuratie te behouden. Er moeten drie stukjes gegevens worden bijgewerkt in dit bestand:
+De IoT Edge-runtime gebruikt het bestand `/etc/iotedge/config.yaml` om de configuratie persistent te maken. Er moeten drie gegevens worden bijgewerkt in dit bestand:
 
-* **Apparaat Connection String**: de Connection String van de identiteit van dit apparaat in IOT hub
-* **Certificaten:** de certificaten die moeten worden gebruikt voor verbindingen die zijn gemaakt met downstream-apparaten
-* **Hostnaam:** de Fully QUALIFIED domain name (FQDN) van de virtuele machine IOT edge apparaat.
+* **Verbindingsreeks voor apparaat**: de verbindingsreeks van de identiteit van dit apparaat in IoT Hub
+* **Certificaten:** de certificaten die moeten worden gebruikt voor verbindingen met downstream apparaten
+* **Hostnaam:** de FQDN (Fully Qualified Domain Name) van het VM IoT Edge-apparaat.
 
-De *Azure IOT Edge op de Ubuntu* -installatie kopie die is gebruikt voor het maken van de IOT Edge VM, wordt geleverd met een shell script dat config. yaml bijwerkt met de Connection String.
+De installatiekopie *Azure IoT Edge on Ubuntu* die we hebben gebruikt om de IoT Edge-VM te maken, bevat een shell-script waarmee het bestand config.yaml wordt bijgewerkt met de verbindingsreeks.
 
-1. Klik in Visual Studio code met de rechter muisknop op het apparaat IoT Edge en selecteer **apparaat verbindings reeks kopiëren**.
+1. Klik in Visual Studio Code met de rechtermuisknop op het IoT Edge-apparaat en selecteer vervolgens **Copy Device Connection String**.
 
-    ![connection string kopiëren uit Visual Studio code](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
+    ![Verbindingsreeks kopiëren uit Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
 
-2. Voer in uw SSH-sessie de opdracht uit om het bestand config. yaml bij te werken met uw apparaat connection string.
+2. Voer in de SSH-sessie de volgende opdracht uit om het bestand config.yaml bij te werken met de verbindingsreeks van uw apparaat.
 
     ```bash
     sudo /etc/iotedge/configedge.sh "<your_iothub_edge_device_connection_string>"
     ```
 
-Vervolgens worden de certificaten en de hostnaam bijgewerkt door de configuratie. yaml rechtstreeks te bewerken.
+Vervolgens gaan we de certificaten en de hostnaam bijwerken door het bestand config.yaml rechtstreeks te bewerken.
 
-1. Open het bestand config. yaml.
+1. Open het bestand config.yaml.
 
     ```bash
     sudo nano /etc/iotedge/config.yaml
     ```
 
-2. Werk de sectie certificaten van config. yaml bij door de voor waarde `#` te verwijderen en het pad zodanig in te stellen dat het bestand eruitziet als in het volgende voor beeld:
+2. Werk de sectie certificates van config.yaml bij door de `#` aan het begin te verwijderen en het pad zodanig in te stellen dat het bestand eruitziet als in het volgende voorbeeld:
 
     ```yaml
     certificates:
@@ -263,33 +263,33 @@ Vervolgens worden de certificaten en de hostnaam bijgewerkt door de configuratie
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    Zorg ervoor dat de regel **certificaten:** geen voor gaande witruimte heeft en dat alle geneste certificaten met twee spaties worden inge sprongen.
+    Zorg ervoor dat de regel **certificates:** geen voorloopspaties heeft en dat alle geneste certificaten met twee spaties worden ingesprongen.
 
-    Als u met de rechter muisknop op nano klikt, wordt de inhoud van het klem bord op de huidige cursor positie geplakt. Als u de teken reeks wilt vervangen, gebruikt u de pijlen voor het toetsen bord om te navigeren naar de teken reeks die u wilt vervangen, verwijdert u de teken reeks en klikt u met de rechter muisknop om uit de buffer te plakken.
+    Als u met de rechtermuisknop klikt in nano, wordt de inhoud van het klembord op de huidige cursorpositie geplakt. Als u de tekenreeks wilt vervangen, gebruikt u de pijlen op het toetsenbord om naar de tekenreeks te gaan die u wilt vervangen. Verwijder de tekenreeks en klik met de rechtermuisknop om de inhoud van de buffer te plakken.
 
-3. Ga in het Azure Portal naar de virtuele machine. Kopieer de DNS-naam (FQDN van de computer) uit de sectie **overzicht** .
+3. Navigeer in Azure Portal naar uw nieuwe virtuele machine. Kopieer de DNS-naam (FQDN van de computer) uit het gedeelte **Overzicht**.
 
-4. Plak de FQDN in de sectie hostname van het bestand config. yml. Zorg ervoor dat de naam alleen uit kleine letters bestaat.
+4. Plak de FQDN in de sectie hostname van het bestand config.yml. Zorg ervoor dat de naam alleen uit kleine letters bestaat.
 
     ```yaml
     hostname: '<machinename>.<region>.cloudapp.azure.com'
     ```
 
-5. Sla het bestand (`Ctrl + X`, `Y`, `Enter`) op en sluit het af.
+5. Sla het bestand op en sluit het vervolgens (`Ctrl + X`, `Y`, `Enter`).
 
-6. Start de iotedge-daemon opnieuw op.
+6. Start de iotedge-daemon opnieuw.
 
     ```bash
     sudo systemctl restart iotedge
     ```
 
-7. Controleer de status van de IoT Edge daemon (na de opdracht, typt u ': q ' om af te sluiten).
+7. Controleer de status van de IoT Edge-daemon (typ na de opdracht ':q' om af te sluiten).
 
     ```bash
     systemctl status iotedge
     ```
 
-8. Raadpleeg daemon-logboeken voor gedetailleerde informatie over de fout\[als\]er fouten worden weer geven (met een ' fout ') in de status.
+8. Als u fouten ziet (gekleurde tekst voorafgegaan door \[ERROR\]) in de status, raadpleegt u de daemon-logboeken voor gedetailleerde informatie over de fout.
 
     ```bash
     journalctl -u iotedge --no-pager --no-full
@@ -297,11 +297,11 @@ Vervolgens worden de certificaten en de hostnaam bijgewerkt door de configuratie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-We hebben zojuist een Azure-VM geconfigureerd als Azure IoT Edge transparante gateway. We zijn begonnen met het genereren van test certificaten die zijn geüpload naar Azure Key Vault. We hebben vervolgens een script en Resource Manager-sjabloon gebruikt om de virtuele machine te implementeren met de installatie kopie ' Ubuntu Server 16,04 LTS + Azure IoT Edge runtime ' van Azure Marketplace. Doordat we via SSH verbinding hebben gemaakt met de virtuele machine, hebben we in Azure en gedownloade certificaten van Key Vault aangemeld. Er zijn verschillende updates voor de configuratie van de IoT Edge runtime gemaakt door het bestand config. yaml bij te werken.
+We hebben een Azure-VM geconfigureerd als een transparante gateway van Azure IoT Edge. We hebben eerst testcertificaten gegenereerd die we daarna hebben geüpload naar Azure Key Vault. Vervolgens hebben we een script en een Resource Manager-sjabloon gebruikt om de VM te implementeren met de installatiekopie Ubuntu Server 16.04 LTS + Azure IoT Edge runtime van Azure Marketplace. Met de VM actief hebben we via SSH verbinding gemaakt, ons aangemeld bij Azure en certificaten gedownload uit Key Vault. De configuratie van de IoT Edge-runtime hebben we hier en daar aangepast door het bestand config.yaml bij te werken.
 
-Voor meer informatie, Zie [hoe een IOT edge apparaat kan worden gebruikt als gateway en hoe](iot-edge-as-gateway.md) u [een IOT edge apparaat kunt configureren dat als transparante gateway fungeert](how-to-create-transparent-gateway.md).
+Meer informatie kunt u vinden in [How an IoT Edge device can be used as a gateway](iot-edge-as-gateway.md) (Hoe een IoT Edge-apparaat kan worden gebruikt als een gateway) en [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md) (Een IoT Edge-apparaat configureren om te fungeren als een transparante gateway).
 
-Ga door naar het volgende artikel om IoT Edge-modules te bouwen.
+Ga verder naar het volgende artikel om IoT Edge-modules te maken.
 
 > [!div class="nextstepaction"]
 > [Aangepaste IoT Edge-modules maken en implementeren](tutorial-machine-learning-edge-06-custom-modules.md)

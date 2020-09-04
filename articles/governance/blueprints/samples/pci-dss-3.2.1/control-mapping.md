@@ -1,134 +1,134 @@
 ---
-title: Voorbeeld besturings elementen voor een PCI-DSS v 3.2.1-blauw druk
-description: Bepaal de toewijzing van het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1-blauw druk op Azure Policy en RBAC.
-ms.date: 01/29/2020
+title: Beheeropties van het blauwdrukvoorbeeld voor PCI-DSS v3.2.1
+description: Beheer de toewijzing van het blauwdrukvoorbeeld voor de Payment Card Industry Data Security Standard v3.2.1 aan Azure Policy en RBAC.
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76905647"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649224"
 ---
-# <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>De toewijzing van het voor beeld van het PCI-DSS v 3.2.1-blauw druk
+# <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Toewijzing van het blauwdrukvoorbeeld voor PCI-DSS v3.2.1 beheren
 
-Het volgende artikel bevat informatie over de manier waarop het Azure-blauw drukken van het PCI-DSS v 3.2.1-voor beeld wordt toegewezen aan de besturings elementen voor PCI-DSS v 3.2.1. Zie [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf)voor meer informatie over de besturings elementen.
+Het volgende artikel bevat informatie over de manier waarop het Azure Blueprints PCI-DSS v3.2.1-blauwdrukvoorbeeld wordt toegewezen aan de PCI-DSS v3.2.1-beheeropties. Zie [PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf) voor meer informatie over de beheeropties.
 
-De volgende toewijzingen zijn de **PCI-DSS v 3.2.1:2018** -besturings elementen. Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de ** \[preview\] -controle PCI v 3.2.1:2018-besturings elementen en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
+De volgende toewijzingen zijn voor de **PCI-DSS v3.2.1:2018**-beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**. Zoek en selecteer vervolgens het ingebouwde beleidsinitiatief **\[Preview\] PCI-DSS v3.2.1:2018-beheeropties controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten**.
 
 > [!IMPORTANT]
-> Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
+> Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md)-definities. Met deze beleidsregels kunt u de [compliance beoordelen](../../../policy/how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsregels zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de compliance standaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is compliance in Azure Policy slechts een gedeeltelijke weergave van uw algemene compliancestatus. De koppelingen tussen de beheeropties en Azure Policy definities voor dit blauwdrukvoorbeeld voor compliance kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
 
-## <a name="132-and-134-boundary-protection"></a>Grens beveiliging voor 1.3.2 en 1.3.4
+## <a name="132-and-134-boundary-protection"></a>1.3.2 en 1.3.4 Boundary Protection
 
-Deze blauw druk helpt u bij het beheren en best uren van netwerken door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee netwerk beveiligings groepen met strikte regels worden bewaakt. Het kan zijn dat te beperken regels mogelijk onbedoelde netwerk toegang toestaan en moeten worden gecontroleerd. Deze blauw druk wijst een Azure Policy definities toe waarmee onbeveiligde eind punten, toepassingen en opslag accounts worden bewaakt. Eind punten en toepassingen die niet zijn beveiligd door een firewall en opslag accounts met onbeperkte toegang, kunnen onbedoelde toegang tot gegevens in het informatie systeem toestaan.
+Met deze blauwdruk kunt u netwerken beheren door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen waarmee netwerkbeveiligingsgroepen met te ruime regels worden bewaakt. Regels die te ruim zijn, kunnen de oorzaak zijn van onbedoelde netwerktoegang en moeten worden gecontroleerd. Met deze blauwdruk worden ook Azure Policy-definities toegewezen waarmee onbeveiligde eindpunten, toepassingen en opslagaccounts worden bewaakt. Eindpunten en toepassingen die niet zijn beveiligd door een firewall, en opslagaccounts met onbeperkte toegang, kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem.
 
-- Onbeperkte netwerk toegang tot opslag accounts controleren
-- Toegang via Internet gericht eind punt moet worden beperkt
+- Onbeperkte netwerktoegang tot opslagaccounts controleren
+- Toegang via een eindpunt gericht op internet moet worden beperkt
 
-## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h en 6.5.3 cryptografische bescherming
+## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4.a, 4.1, 4.1.g, 4.1.h en 6.5.3 cryptografische beveiliging
 
-Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryptograph-besturings elementen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die specifieke cryptograph-besturings elementen afdwingen en het gebruik van zwakke cryptografische instellingen te controleren. Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maat regelen nemen om ervoor te zorgen dat bronnen worden geconfigureerd in overeenstemming met uw informatie beveiligings beleid. Met name de beleids regels die door deze blauw druk worden toegewezen, vereisen transparante gegevens versleuteling voor SQL-data bases. controleren op ontbrekende versleuteling voor opslag accounts en Automation-account variabelen. Er zijn ook beleids regels voor het controleren van onbeveiligde verbindingen met opslag accounts, functie-apps, WebApp, API Apps en Redis Cache en het controleren van niet-versleutelde Service Fabric communicatie.
+Met deze blauwdruk kunt u uw beleid afdwingen met het gebruik van cryptografische beheeropties door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsregels die door deze blauwdrukken worden toegewezen, vereisen transparante gegevensversleuteling voor SQL-databases, controleren op ontbrekende versleuteling voor opslagaccounts, en accountvariabelen voor automatisering. Er zijn ook beleidsregels voor het controleren van onbeveiligde verbindingen met opslagaccounts, functie-apps, WebApp, API Apps en Redis Cache en het controleren van niet-versleutelde Service Fabric-communicatie.
 
-- functie-app mag alleen toegankelijk zijn via HTTPS
+- Functie-app mag alleen toegankelijk zijn via HTTPS
 - Webtoepassing mag alleen toegankelijk zijn via HTTPS
-- De API-app mag alleen toegankelijk zijn via HTTPS
-- Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
-- Schijf versleuteling moet worden toegepast op virtuele machines
-- De variabelen van het Automation-account moeten worden versleuteld
-- Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
+- API-app mag alleen toegankelijk zijn via HTTPS
+- Transparent Data Encryption in SQL-databases moet zijn ingeschakeld
+- Schijfversleuteling moet worden toegepast op virtuele machines
+- Automation-accountvariabelen moeten worden versleuteld
+- Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
 - Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld
-- Voor Service Fabric clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign
-- Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
-- Transparante gegevens versleuteling van SQL DB implementeren
+- Voor Service Fabric-clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign
+- Transparent Data Encryption in SQL-databases moet zijn ingeschakeld
+- Transparante gegevensversleuteling in SQL DB implementeren
 
-## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 en 11.2.1 beveiligings problemen met scannen en systeem updates
+## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5.1, 6.2, 6.6 en 11.2.1 scannen op kwetsbaarheden en systeemupdates
 
-Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee ontbrekende systeem updates, besturingssysteem problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in azure Security Center worden bewaakt. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources.
+Met deze blauwdruk kunt u beveiligingsproblemen in informatiesystemen beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die controleren op ontbrekende systeemupdates, beveiligingsproblemen met het besturingssysteem, SQL en virtuele machines in Azure Security Center. Azure Security Center biedt rapportagemogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligingsstatus van geïmplementeerde Azure-resources.
 
-- Ontbrekende Endpoint Protection in Azure Security Center controleren
-- Standaard micro soft IaaSAntimalware-extensie voor Windows Server implementeren
-- Detectie van bedreigingen op SQL-servers implementeren
-- Er moeten systeemupdates op uw computers zijn geïnstalleerd
-- Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld
-- Beveiligings problemen voor uw SQL-data bases moeten worden hersteld
-- Beveiligings problemen moeten worden opgelost met een oplossing voor de evaluatie van de beveiligings lekken
+- Ontbrekende Endpoint Protection bewaken in Azure Security Center
+- Microsoft IaaSAntimalware-standaarduitbreiding voor Windows Server implementeren
+- Detectie van bedreigingen implementeren op SQL-servers
+- Er moeten systeemupdates op uw computers worden geïnstalleerd
+- Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
+- Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
+- Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 
-## <a name="711-712-and-713-separation-of-duties"></a>inspectie. 7.1.2 en 7.1.3 schei ding van taken
+## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2 en 7.1.3 Separation of Duties
 
-Als er slechts één eigenaar van een Azure-abonnement is, is er geen administratieve redundantie toegestaan. Als er te veel eigen aars van Azure-abonnementen zijn, kan het mogelijk zijn om een schending te doen van een inbreuk op een eigenaars account. Met deze blauw druk kunt u het juiste aantal eigen aars van Azure-abonnementen onderhouden door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die het aantal eigen aren voor Azure-abonnementen controleren. De machtigingen van eigenaar van het abonnement beheren kan u helpen bij het implementeren van de juiste schei ding van taken.
+Als er slechts één eigenaar van een Azure-abonnement is, is er geen administratieve redundantie toegestaan. Als er daarentegen te veel eigenaars van Azure-abonnementen zijn, is er een grotere kans op schendingen via een account van een gecompromitteerde eigenaar. Met deze blauwdruk kunt u het juiste aantal eigenaars van Azure-abonnementen bijhouden door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die het aantal eigenaren van Azure-abonnementen controleren. Met het beheer van eigenaarsmachtigingen voor abonnementen kunt u een juiste scheiding van taken implementeren.
 
-- Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen
-- Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement 
+- Er moet meer dan één eigenaar zijn toegewezen aan uw abonnement
+- Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement 
 
-## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a en 8.3.1. b beheer van privileged Access Rights
+## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2, 7.2.1, 8.3.1.a en 8.3.1.b Beheer van bevoegde toegangsrechten
 
-Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren door [Azure Policy](../../../policy/overview.md) definities toe te wijzen voor het controleren van externe accounts met de machtigingen eigenaar, schrijven en/of lezen en voor werknemers accounts met eigenaar en/of schrijf machtigingen waarvoor geen multi-factor Authentication is ingeschakeld. Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure-resources. Als u wilt weten waar aangepaste RBAC-regels worden geïmplementeerd, kunt u controleren of de juiste implementatie nodig is, omdat aangepaste RBAC-regels fout gevoelig zijn. Deze blauw druk wijst ook [Azure Policy](../../../policy/overview.md) definities toe om het gebruik van Azure Active Directory-verificatie voor SQL-servers te controleren. Het gebruik van Azure Active Directory verificatie vereenvoudigt het beheer van machtigingen en Centraliseer het identiteits beheer van database gebruikers en andere micro soft  
+Met deze blauwdruk kunt u rechten voor bevoegde toegang beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars-, schrijf en/of leesrechten en werknemersaccounts met eigenaars- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld. In Azure wordt op rollen gebaseerd toegangsbeheer (RBAC) geïmplementeerd om te beheren wie toegang heeft tot Azure-resources. Wanneer u weet waar aangepaste RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste RBAC-regels foutgevoelig zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk.  
 cloudservices moet worden gebruikt.
  
-- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met schrijf machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
-- MFA moet zijn ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement
-- MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
-- MFA moet zijn ingeschakeld voor accounts met lees machtigingen voor uw abonnement
-- Een Azure Active Directory beheerder moet worden ingericht voor SQL-servers
-- Gebruik van aangepaste RBAC-regels controleren
+- Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met schrijfmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met leesmachtigingen moeten worden verwijderd uit uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met schrijfmachtigingen voor uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met leesmachtigingen voor uw abonnement
+- Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
+- Het gebruik van aangepaste RBAC-regels controleren
 
-## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>versie 8.1.2-en 8.1.5-minimale bevoegdheid en beoordeling van gebruikers toegangs rechten
+## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 en 8.1.5 Least Privilege en controle van gebruikerstoegangsrechten
 
-Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van de Azure Portal kunt u controleren wie toegang heeft tot Azure-resources en de bijbehorende machtigingen. Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe aan de controle van accounts waarvoor een prioriteit moet worden gegeven, waaronder afgeschreven accounts en externe accounts met verhoogde machtigingen.
-
-- Afgeschafte accounts moeten worden verwijderd uit uw abonnement
-- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met schrijf machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
-
-## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 verwijderen of aanpassen van toegangs rechten
-
-Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bij het beheren van de toegang tot resources in Azure. Met behulp van Azure Active Directory en RBAC kunt u gebruikers rollen bijwerken om de wijzigingen in de organisatie te spie gelen. Zo nodig kunnen accounts worden geblokkeerd om zich aan te melden (of verwijderd), waardoor de toegangs rechten voor Azure-bronnen onmiddellijk worden verwijderd. Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe aan het controleren van afgeschreven accounts die moeten worden beschouwd voor verwijdering.
+In Azure wordt op rollen gebaseerde toegangsbeheer (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen voor het controleren van accounts die prioriteit moeten krijgen om te worden beoordeeld, waaronder afgeschreven accounts en externe accounts met verhoogde rechten.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
-- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met schrijfmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met leesmachtigingen moeten worden verwijderd uit uw abonnement
 
-## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3. a, b, 8.2.4. a, b en 8.2.5 verificatie op basis van wacht woorden
+## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 Verwijdering of aanpassing van toegangsrechten
 
-Deze blauw druk helpt u sterke wacht woorden af te dwingen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee Windows-vm's worden gecontroleerd die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van Vm's in strijd met het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle VM-gebruikers accounts voldoen aan het beleid.
+In Azure wordt op rollen gebaseerde toegangsbeheer (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van Azure Active Directory en RBAC kunt u gebruikersrollen bijwerken om wijzigingen in de organisatie weer te geven. Zo nodig kunnen accounts voor aanmelding worden geblokkeerd (of verwijderd), waardoor de toegangsrechten tot Azure-resources onmiddellijk worden verwijderd. Deze blauwdruk wijst [Azure Policy](../../../policy/overview.md)-definities toe voor het controleren van afgeschreven accounts die voor verwijdering moeten worden aangemerkt.
 
-- \[Preview\]: Windows-vm's controleren die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Voor\]beeld: vereisten implementeren voor het controleren van Windows-vm's die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Voor\]beeld: Windows-vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Preview\]: vereisten implementeren om Windows-vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Preview\]: Windows-vm's controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Voor\]beeld: vereisten implementeren voor het controleren van Windows-vm's die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- Afgeschafte accounts moeten worden verwijderd uit uw abonnement
+- Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
-## <a name="103-and-1054-audit-generation"></a>10,3 en 10.5.4-controle genereren
+## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3.a,b, 8.2.4.a,b en 8.2.5 Verificatie op basis van een wachtwoord
 
-Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden vastgelegd door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die logboek instellingen op Azure-resources controleren.
-Diagnostische logboeken bieden inzicht in bewerkingen die zijn uitgevoerd in azure-resources. Azure-logboeken zijn afhankelijk van gesynchroniseerde interne klokken voor het maken van een tijdgebonden record met gebeurtenissen in resources.
+Met deze blauwdruk kunt u sterke wachtwoorden afdwingen door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee Windows-VM's worden gecontroleerd die geen vereisten voor minimale sterkte en andere wachtwoordvereisten afdwingen. Wanneer u op de hoogte bent van VM's die in strijd zijn met het beleid voor wachtwoordsterkte, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat wachtwoorden voor alle gebruikersaccounts van de VM's voldoen aan dit beleid.
 
-- Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
+- \[Preview\]: Windows-VM's controleren waarvoor geen maximale wachtwoordduur van 70 dagen is ingesteld
+- \[Preview\]: Vereisten implementeren om Windows-VM's te controleren waarvoor geen maximale wachtwoordduur van 70 dagen is ingesteld
+- \[Preview\]: Windows-VM's controleren waarvoor de minimale wachtwoordlengte niet wordt beperkt tot 14 tekens
+- \[Preview\]: Vereisten implementeren om Windows-VM's te controleren waarvoor de minimale wachtwoordlengte niet wordt beperkt tot 14 tekens
+- \[Preview\]: Windows-VM's controleren waarvoor de voorgaande 24 wachtwoorden opnieuw kunnen worden gebruikt
+- \[Preview\]: Vereisten implementeren om Windows-VM's te controleren waarvoor de voorgaande 24 wachtwoorden opnieuw kunnen worden gebruikt
+
+## <a name="103-and-1054-audit-generation"></a>10.3 en 10.5.4 Controlegeneratie
+
+Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee u logboekinstellingen op Azure-resources kunt controleren.
+Diagnostische logboeken bieden inzicht in bewerkingen die zijn uitgevoerd in Azure-resources. Azure-logboeken zijn afhankelijk van gesynchroniseerde interne klokken voor het maken van een tijdgebonden record met gebeurtenissen in resources.
+
+- De controle moet zijn ingeschakeld in de instellingen voor geavanceerde gegevensbeveiliging in SQL Server
 - Diagnostische instelling voor controleren
-- Controle-instellingen op SQL server-niveau controleren
+- Instellingen voor controle op SQL-serverniveau controleren
 - Controle op SQL-servers implementeren
-- Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
+- Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 
-## <a name="1236-and-1237-information-security"></a>12.3.6 en 12.3.7 Information Security
+## <a name="1236-and-1237-information-security"></a>12.3.6 en 12.3.7 Informatiebeveiliging
 
-Deze blauw druk helpt u bij het beheren en bepalen van uw netwerk door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die de acceptabele netwerk locaties controleren en de goedgekeurde bedrijfs producten die voor de omgeving zijn toegestaan. Deze kunnen door elk bedrijf worden aangepast via de beleids parameters in elk van deze beleids regels.
+Met deze blauwdruk kunt u uw netwerk beheren en controleren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee de geaccepteerde netwerklocaties en de goedgekeurde bedrijfsproducten worden gecontroleerd die voor de omgeving zijn toegestaan. Deze kunnen door elk bedrijf worden aangepast via de beleidsparameters in elk van deze beleidsregels.
 
 - Toegestane locaties
-- Toegestane locaties voor resource groepen
+- Toegestane locaties voor resourcegroepen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de controle toewijzing van de PCI-DSS v 3.2.1-blauw druk hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over het overzicht en hoe u dit voor beeld implementeert:
+Nu u de toewijzing van beheeropties van PCI-DSS v3.2.1-blauwdruk hebt bekeken, kunt u naar de volgende artikelen gaan voor informatie over het overzicht en de implementatie van dit voorbeeld:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v 3.2.1 blauw druk-overzicht](./index.md)
-> [PCI-DSS v 3.2.1 blauw druk-implementatie stappen](./deploy.md)
+> [PCI-DSS v3.2.1-blauwdruk - Overzicht](./index.md)
+> [PCI-DSS v3.2.1-blauwdruk - Stappen implementeren](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

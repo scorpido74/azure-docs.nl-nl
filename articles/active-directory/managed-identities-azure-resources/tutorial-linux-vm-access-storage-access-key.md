@@ -1,9 +1,9 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage via de toegangs sleutel-Linux-Azure AD
+title: Zelfstudie`:` Toegang krijgen tot Azure Storage via toegangssleutel met beheerde identiteit - Linux - Azure Active Directory
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Storage.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/04/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4c00c723c23e2f0d962009d33a6abe1008c734a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273820"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266269"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage via een toegangssleutel
 
@@ -42,10 +42,10 @@ Als u nog geen opslagaccount hebt, maakt u er nu een.  U kunt deze stap ook over
 
 1. Klik op de knop **+/Nieuwe service maken** in de linkerbovenhoek van Azure Portal.
 2. Klik op **Opslag** en vervolgens op **Opslagaccount**. Het paneel Opslagaccount maken wordt weergegeven.
-3. Voer een **naam** in voor het opslag account dat u later gaat gebruiken.  
+3. Voer in **Naam** een naam voor het opslagaccount in. U gaat deze gegevens later gebruiken.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op Resource Manager en Algemeen gebruik. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -78,7 +78,7 @@ In deze stap verleent u de door het systeem toegewezen beheerde identiteit voor 
 
 Voor de rest van de zelfstudie werken we op de virtuele machine die we eerder hebben gemaakt.
 
-U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/install_guide) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
+U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](/windows/wsl/install-win10) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
 1. In Azure Portal navigeert u naar **Virtuele machines**, gaat u naar uw virtuele Linux-machine, klikt u vervolgens boven aan de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine. 
 2. Maak verbinding met uw virtuele machine via de SSH-client.  
@@ -127,7 +127,7 @@ Maak een voorbeeldblobbestand en upload het naar uw blobopslagcontainer. Op een 
 echo "This is a test file." > test.txt
 ```
 
-Voer de verificatie uit met de CLI-opdracht `az storage` met behulp van de toegangssleutel voor opslag, en upload het bestand naar de blobcontainer. Voor deze stap moet u [de nieuwste versie van Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op de virtuele machine, als u dat nog niet gedaan hebt.
+Voer de verificatie uit met de CLI-opdracht `az storage` met behulp van de toegangssleutel voor opslag, en upload het bestand naar de blobcontainer. Voor deze stap moet u [de nieuwste versie van Azure CLI installeren](/cli/azure/install-azure-cli) op de virtuele machine, als u dat nog niet gedaan hebt.
  
 
 ```azurecli-interactive
@@ -199,4 +199,4 @@ Reactie:
 In deze zelfstudie hebt u geleerd een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM) te gebruiken om toegang tot Azure Storage te krijgen met behulp van een toegangssleutel.  Zie voor meer informatie over Azure Storage-toegangssleutels:
 
 > [!div class="nextstepaction"]
->[De toegangssleutels van uw opslagaccount beheren](/azure/storage/common/storage-create-storage-account)
+>[De toegangssleutels van uw opslagaccount beheren](../../storage/common/storage-account-create.md)

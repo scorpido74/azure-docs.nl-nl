@@ -9,10 +9,10 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75552411"
 ---
 U moet aan de volgende vereisten voldoen om deze zelfstudie te voltooien:
@@ -21,7 +21,7 @@ U moet aan de volgende vereisten voldoen om deze zelfstudie te voltooien:
 
 **Docker**: in deze zelfstudie wordt ervan uitgegaan dat u een basiskennis hebt van Docker-kernconcepten zoals containers, containerinstallatiekopieën en eenvoudige `docker`-opdrachten. Zie het [Docker-overzicht][docker-get-started] voor een inleiding tot de basisprincipes van Docker en containers.
 
-**Docker**: om deze zelf studie te volt ooien, moet docker lokaal zijn geïnstalleerd. Docker biedt pakketten waarmee de Docker-omgeving op [MacOS][docker-mac], [Windows][docker-windows] en [Linux][docker-linux] kan worden geconfigureerd.
+**Docker**: Voor het voltooien van deze zelfstudie, hebt u een lokale installatie van Docker nodig. Docker biedt pakketten waarmee de Docker-omgeving op [MacOS][docker-mac], [Windows][docker-windows] en [Linux][docker-linux] kan worden geconfigureerd.
 
 > [!IMPORTANT]
 > Omdat de Docker-daemon niet is opgenomen in Azure Cloud Shell, *moeten* zowel Azure CLI als Docker Engine op uw *lokale computer* zijn geïnstalleerd om deze zelfstudie te voltooien. U kunt niet Azure Cloud Shell gebruiken voor deze zelfstudie.

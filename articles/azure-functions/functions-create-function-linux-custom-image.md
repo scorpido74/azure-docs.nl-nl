@@ -3,14 +3,14 @@ title: Een functie van Azure Functions maken in Linux met een aangepaste install
 description: Informatie over het maken van Azure Functions uitgevoerd op een aangepaste installatiekopie van Linux.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: efe1706f2ea97c3eadab8deade7e13123af17752
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225662"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146858"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met een aangepaste container
 
@@ -81,17 +81,19 @@ Voer in een lege map de volgende opdracht uit om het Functions-project te genere
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+De parameter `-DjavaVersion` laat de Functions-runtime weten welke versie van Java moet worden gebruikt. Gebruik `-DjavaVersion=11` als u wilt dat uw functies worden uitgevoerd in Java 11. Deze bevindt zich in de preview-fase. Wanneer u `-DjavaVersion` niet opgeeft, wordt Maven standaard ingesteld op Java 8. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie.
 
 U wordt door Maven gevraagd om de waarden die nodig zijn om het project op het moment van implementatie te kunnen genereren.   
 Geef de volgende waarden op als daarom wordt gevraagd:
@@ -106,8 +108,6 @@ Geef de volgende waarden op als daarom wordt gevraagd:
 Typ `Y` of druk op Enter om te bevestigen.
 
 Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_; in dit voorbeeld is dat `fabrikam-functions`. 
-
-Voor uitvoering op Java 11 in Azure, moet u de waarden in het bestand pom.xml wijzigen. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie.
 ::: zone-end
 Met de optie `--docker` wordt een `Dockerfile` voor het project gegenereerd. Hiermee wordt een geschikte aangepaste container gedefinieerd voor gebruik met Azure Functions en de geselecteerde runtime.
 
@@ -159,14 +159,6 @@ Gebruik **Ctrl**-**C** om de host te stoppen.
 ## <a name="build-the-container-image-and-test-locally"></a>De containerinstallatiekopie samenstellen en lokaal testen
 
 (Optioneel) Bekijk het *Dockerfile* in de hoofdmap van het project. Het Dockerfile beschrijft de omgeving die vereist is om de functie-app uit te voeren in Linux.  De complete lijst met ondersteunde basisinstallatiekopieën voor Azure Functions vindt u op [deze pagina over basisinstallatiekopieën van Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
-
-::: zone pivot="programming-language-java"  
-Als u met Java 11 (preview-versie) werkt, wijzigt u het buildargument `JAVA_VERSION` in het gegenereerde Dockerfile in het volgende: 
-
-```docker
-ARG JAVA_VERSION=11
-```
-::: zone-end
     
 Voer in de hoofdmap van het project de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) uit en geef een naam, `azurefunctionsimage` en een tag, `v1.0.0`, op. Vervang `<DOCKER_ID>` door de ID van uw Docker Hub-account. Met deze opdracht wordt de Docker-installatiekopie voor de container gebouwd.
 
@@ -311,17 +303,17 @@ Als de installatiekopie is geïmplementeerd in de functie-app in Azure, kunt u d
 
     1. Selecteer **Functies** in het navigatievenster aan de linkerkant en selecteer vervolgens de functie die u wilt controleren.
 
-        ![De opdracht Functie-URL ophalen in de Azure-portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+        ![De functie kiezen in de Azure-portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
     1. Selecteer **Functie-URL ophalen**.
 
-        ![De opdracht Functie-URL ophalen in de Azure-portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
+        ![De functie-URL ophalen in de Azure-portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
     
     1. Selecteer in het pop-upvenster **standaard (functietoets)** en kopieer de URL naar het klembord. De sleutel wordt gevormd door de tekenreeks volgend op `?code=`.
 
-        ![De opdracht Functie-URL ophalen in de Azure-portal](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+        ![De standaardtoegangssleutel voor de functie kiezen](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
 
 
     > [!NOTE]  

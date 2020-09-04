@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74184269"
 ---
-# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Een Internet Analyzer-test maken met CLI (preview)
+# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Een Internet Analyzer-test maken met behulp van CLI (Preview)
 
-Er zijn twee manieren om een Internet Analyzer-resource te maken: met behulp van de [Azure Portal](internet-analyzer-create-test-portal.md) of cli. Deze sectie helpt u bij het maken van een nieuwe Azure Internet Analyzer-resource met onze CLI-ervaring. 
+Er zijn twee manieren om een Internet Analyzer-resource te maken: met behulp van de [Azure Portal](internet-analyzer-create-test-portal.md) of met behulp van CLI. Dit gedeelte helpt u bij het maken van een nieuwe Azure Internet Analyzer-resource met onze CLI-ervaring. 
 
 
 > [!IMPORTANT]
@@ -25,36 +25,36 @@ Er zijn twee manieren om een Internet Analyzer-resource te maken: met behulp van
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-De open bare preview is beschikbaar voor gebruik wereld wijd. gegevens opslag is echter beperkt tot *US West 2* tijdens de preview-versie.
+De openbare preview is beschikbaar voor gebruik wereldwijd; gegevensopslag is tijdens de preview echter beperkt tot *VS - west 2*.
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
-* **Testen** : met een test vergelijkt u de prestaties van de eind gebruiker van twee Internet-eind punten (A en B) in de loop van de tijd.
-* **Profielen** : tests worden gemaakt onder een Internet Analyzer-profiel. Met profielen kunnen gerelateerde testen worden gegroepeerd; Eén profiel kan een of meer tests bevatten.
-* **Vooraf geconfigureerde eind punten** : we hebben eind punten ingesteld met verschillende configuraties (regio's, versnellings technologieën, enzovoort). U kunt elk van deze vooraf geconfigureerde eind punten in uw tests gebruiken.
-* **Score cards** : een score card biedt snelle en zinvolle samen vattingen van meet resultaten. Raadpleeg [uw Score Card interpreteren](internet-analyzer-scorecard.md).
-* **Tijd reeks** : een tijd reeks laat zien hoe een metriek na verloop van tijd verandert.
+* **Tests**: een test vergelijkt de prestaties van de eindgebruiker van twee interneteindpunten (A en B) in de loop van de tijd.
+* **Profielen**: tests worden gemaakt onder een Internet Analyzer-profiel. Met profielen kunnen gerelateerde testen worden gegroepeerd; één profiel kan een of meer tests bevatten.
+* **Vooraf geconfigureerde eindpunten**: we hebben eindpunten ingesteld met verschillende configuraties (regio's, versnellingstechnologieën, enzovoort). U kunt alle vooraf geconfigureerde eindpunten in uw tests gebruiken.
+* **Scorecards**: een scorecard biedt snelle en zinvolle samenvattingen van meetresultaten. Raadpleeg [Uw scorecard interpreteren](internet-analyzer-scorecard.md).
+* **Tijdreeks**: een tijdreeks laat zien hoe metrische gegevens in de loop van de tijd veranderen.
 
-## <a name="profile-and-test-creation"></a>Profiel en het maken van testen
-1. Toegang tot internet Analyzer preview verkrijgen door de **Hoe kan ik deel te nemen aan de preview-versie** van de [Veelgestelde vragen over Azure Internet Analyzer](internet-analyzer-faq.md).
-2. [Installeer de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-3. Voer de `login` opdracht uit om een CLI-sessie te starten:
+## <a name="profile-and-test-creation"></a>Maken van profiel en test
+1. Krijg toegang tot Internet Analyzer-preview door de instructies in **Hoe kan ik deelnemen aan de preview?** van de [Veelgestelde vragen over Azure Internet Analyzer](internet-analyzer-faq.md) te volgen.
+2. [Installeer de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+3. Voer de opdracht `login` uit om een CLI-sessie te starten:
     ```azurecli-interactive
     az login
     ```
 
-    Als de CLI uw standaard browser kan openen, wordt dit gedaan en wordt er een Azure-aanmeldings pagina geladen.
-    Als dat niet het geval is, https://aka.ms/devicelogin opent u een browser pagina op en voert u de autorisatie code in die wordt weer gegeven in uw Terminal.
+    Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een Azure-aanmeldingspagina geladen.
+    Als dat niet het geval is, opent u een browserpagina op https://aka.ms/devicelogin en voert u de autorisatiecode in die wordt weergegeven in uw terminal.
 
 4. Meldt u zich in de browser aan met uw accountreferenties.
 
-5. Selecteer uw abonnements-ID waaraan toegang tot de open bare preview van Internet Analyzer is verleend.
+5. Selecteer uw abonnements-id waaraan toegang tot de openbare preview van Internet Analyzer is verleend.
 
-    Nadat u zich hebt aangemeld, ziet u een lijst met abonnementen die zijn gekoppeld aan uw Azure-account. De abonnements gegevens met `isDefault: true` is het abonnement dat momenteel is geactiveerd na het aanmelden. Als u een ander abonnement wilt selecteren, gebruikt u de opdracht [AZ account set](https://docs.microsoft.com/cli/azure/account#az-account-set) met de abonnements-id om over te scha kelen. Zie [meerdere Azure-abonnementen gebruiken](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)voor meer informatie over het selecteren van abonnementen.
+    Nadat u zich hebt aangemeld, ziet u een lijst met abonnementen die zijn gekoppeld aan uw Azure-account. De abonnementsgegevens met `isDefault: true` zijn het abonnement dat momenteel is geactiveerd na aanmelden. Als u een ander abonnement wilt selecteren, gebruikt u de opdracht [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) met de abonnements-id waarnaar moet worden overgeschakeld. Zie [Meerdere Azure-abonnementen gebruiken](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) voor meer informatie over het selecteren van abonnementen.
 
     Er zijn ook manieren om u niet-interactief aan te melden. Deze manieren worden uitvoerig behandeld in [Aanmelden met Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-6. **[Optioneel]** Een nieuwe Azure-resource groep maken:
+6. **[Optioneel]** Een nieuwe Azure-resourcegroep maken:
     ```azurecli-interactive
     az group create --location eastus --name "MyInternetAnalyzerResourceGroup"
     ```
@@ -69,7 +69,7 @@ De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
     az internet-analyzer profile create --location eastus --resource-group "MyInternetAnalyzerResourceGroup" --name "MyInternetAnalyzerProfile" --enabled-state Enabled
     ```
 
-9. Alle vooraf geconfigureerde eind punten weer geven die beschikbaar zijn voor het zojuist gemaakte profiel:
+9. Vermeld alle vooraf geconfigureerde eindpunten die beschikbaar zijn voor het zojuist gemaakte profiel:
     ```azurecli-interactive
     az internet-analyzer preconfigured-endpoint list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
@@ -79,9 +79,9 @@ De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    In de bovenstaande opdracht wordt ervan uitgegaan dat zowel `www.contoso.com` als `www.microsoft.com` host fungeert voor de afbeelding van één pixel ([trans. gif](https://fpc.msedge.net/apc/trans.gif)) onder Aangepaste paden. Als een objectpad niet expliciet is opgegeven, wordt Internet Analyzer standaard `/apc/trans.gif` als objectpad gebruikt. Dit is de locatie waar de vooraf geconfigureerde eind punten de afbeelding met één pixel hosten. Houd er ook rekening mee dat het schema (https/http) niet hoeft te worden opgegeven. Internet-analyse ondersteunt alleen HTTPS-eind punten, dus HTTPS wordt aangenomen.
+    In de bovenstaande opdracht wordt ervan uitgegaan dat zowel `www.contoso.com` als `www.microsoft.com` als host fungeren voor de afbeelding van één pixel ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) onder aangepaste paden. Als een objectpad niet expliciet wordt opgegeven, gebruikt Internet Analyzer standaard `/apc/trans.gif` als het objectpad. Dit is de locatie waar de vooraf geconfigureerde eindpunten de afbeelding met één pixel hosten. Houd er ook rekening mee dat het schema (https/http) niet hoeft te worden opgegeven. Internet Analyzer ondersteunt alleen HTTPS-eindpunten, dus HTTPS wordt aangenomen.
 
-11. De nieuwe test moet worden weer gegeven onder het profiel Internet Analyzer:
+11. De nieuwe test moet worden weergegeven onder het Internet Analyzer-profiel:
     ```azurecli-interactive
     az internet-analyzer test list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
@@ -113,14 +113,14 @@ De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
     ]
     ````
 
-12. Om te beginnen met het genereren van metingen, moet het Java script-bestand waarnaar wordt geverwijst door de **scriptFileUri** van de test, worden inge sloten in uw webtoepassing. Specifieke instructies vindt u op de pagina [Internet Analyzer insluiten-client](internet-analyzer-embed-client.md) .
+12. Als u metingen wilt genereren, moet het JavaScript-bestand waarnaar wordt verwezen door de **scriptFileUri** van de test worden ingesloten in uw webtoepassing. Specifieke instructies vindt u op de pagina [Internet Analyzer-client insluiten](internet-analyzer-embed-client.md).
 
-13. U kunt de voortgang van de test controleren door de waarde van de ' status ' bij te houden:
+13. U kunt de voortgang van de test controleren door de waarde van de 'status' bij te houden:
     ```azurecli-interactive
     az internet-analyzer test show --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest"
     ```
 
-14. U kunt de verzamelde resultaten van de test controleren door tijds Erie of Score cards te genereren:
+14. U kunt de verzamelde resultaten van de test controleren door er tijdseries of scorecards voor te genereren:
     ```azurecli-interactive
     az internet-analyzer show-scorecard --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest" --aggregation-interval "Daily" --end-date-time-utc "2019-10-24T00:00:00"
     ```
@@ -132,6 +132,6 @@ De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Blader door de [Internet Analyzer cli-referentie](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) voor de volledige lijst met ondersteunde opdrachten en gebruiks voorbeelden.
+* Blader door de [Internet Analyzer CLI-referentie](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) voor een volledige lijst met ondersteunde opdrachten en gebruiksvoorbeelden.
 * Lees de [Veelgestelde vragen over Internet Analyzer](internet-analyzer-faq.md).
-* Meer informatie over het insluiten van de [Internet Analyzer-client](internet-analyzer-embed-client.md) en het maken van een [aangepast eind punt](internet-analyzer-custom-endpoint.md). 
+* Meer informatie over het insluiten van de [Internet Analyzer-client](internet-analyzer-embed-client.md) en het maken van een [aangepast eindpunt](internet-analyzer-custom-endpoint.md). 

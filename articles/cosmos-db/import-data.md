@@ -4,14 +4,14 @@ description: "Zelfstudie: Leer hoe u de open source Azure Cosmos DB-hulpprogramm
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118760"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255984"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Zelfstudie: Hulpprogramma voor gegevensmigratie gebruiken voor het migreren van uw gegevens naar Azure Cosmos DB
 
@@ -40,6 +40,9 @@ Voordat u de instructies in dit artikel volgt, moet u de volgende stappen uitvoe
 * **Doorvoer vergroten:** de duur van de gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u voor een afzonderlijke verzameling of een reeks verzamelingen instelt. Verhoog de doorvoer voor grotere gegevensmigraties. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Zie [prestatieniveaus](performance-levels.md) en [prijscategorieën](https://azure.microsoft.com/pricing/details/cosmos-db/) in Azure Cosmos DB voor meer informatie over het verhogen van de doorvoer in de Azure-portal.
 
 * **Azure Cosmos DB-resources maken:** voordat u gegevens gaat migreren, maakt u vooraf alle verzamelingen vanuit de Azure-portal. Als u wilt migreren naar een Azure Cosmos DB-account dat doorvoer op databaseniveau heeft, geeft u een partitiesleutel op wanneer u de Azure Cosmos-containers maakt.
+
+> [!IMPORTANT]
+> Als u er zeker van wilt zijn dat het hulpprogramma voor gegevensmigratie gebruikmaakt van TLS 1.2 (Transport Layer Security) bij het verbinding maken met uw Azure Cosmos-accounts, gebruikt u .NET Framework-versie 4.7 of volgt u de instructies in [dit artikel](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
 
 ## <a name="overview"></a><a id="Overviewl"></a>Overzicht
 

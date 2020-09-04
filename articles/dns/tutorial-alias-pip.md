@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een alias record voor Azure DNS maken om te verwijzen naar een openbaar IP-adres van Azure'
+title: 'Zelfstudie: een Azure DNS-aliasrecord maken, zodat deze naar een openbaar IP-adres in Azure verwijst'
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze naar een openbaar Azure-IP-adres verwijst.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80985436"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst 
@@ -20,12 +20,12 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een netwerkinfrastructuur maken.
-> * Maak een virtuele machine met een webserver met een openbaar IP-adres.
-> * Maak een alias record die verwijst naar het open bare IP-adres.
+> * Een virtuele webserver maken met een openbaar IP-adres.
+> * Een aliasrecord maken dat naar het openbare IP-adres verwijst.
 > * De aliasrecord testen.
 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
@@ -38,23 +38,23 @@ Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar
 Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevoegen.
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 2. Selecteer helemaal linksboven in de portal **Een resource maken**. Typ *resourcegroep* in het zoekvak en maak een resourcegroep met de naam **RG-DNS-Alias-pip**.
-3. Selecteer **een bron** > **Networking** > netwerk maken**virtueel netwerk**.
+3. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 4. Maak een virtueel netwerk met de naam **VNet-Server**. Plaats het in de resourcegroep **RG-DNS-Alias-pip** en geef het subnet de naam **SN-Web**.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Een virtuele webserver maken
-1. Selecteer **een resource** > maken**Windows Server 2016 VM**.
+1. Selecteer **Een resource maken** > **Windows Server 2016 VM**.
 2. Geef **Web-01** op als naam en plaats de virtuele machine in de resourcegroep **RG-DNS-Alias-TM**. Voer een gebruikersnaam en wachtwoord in en selecteer **OK**.
 3. Voor **Grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
-4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**. Voor open bare binnenkomende poorten selecteert u **http** > **https** > **RDP (3389)** en selecteert u **OK**.
+4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**. Selecteer voor openbare inkomende poorten **HTTP** > **HTTPS** > **RDP (3389)** en selecteer vervolgens **OK**.
 5. Op de pagina**Overzicht** selecteert u **Maken**.
 
-Deze procedure duurt een paar minuten. De virtuele machine heeft een gekoppelde NIC, die een eenvoudig, dynamisch openbaar IP-adres met de naam Web-01-IP wordt genoemd. Het open bare IP-adres wordt telkens gewijzigd wanneer de virtuele machine opnieuw wordt opgestart.
+Deze procedure duurt een paar minuten. Aan de virtuele machine is een NIC gekoppeld. Deze heeft een eenvoudig, dynamisch, openbaar IP-adres met de naam Web-01-ip. Het openbare IP-adres wordt telkens gewijzigd wanneer de virtuele machine opnieuw wordt opgestart.
 
 ### <a name="install-iis"></a>IIS installeren
 
 Installeren IIS op **Web01**.
 
-1. Maak verbinding met **Web-01**en meld u aan.
+1. Maak verbinding met **Web-01** en meld u aan.
 2. Selecteer op het dashboard **Serverbeheer** de optie **Functies en onderdelen toevoegen**.
 3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)**.
 4. Selecteer **Onderdelen toevoegen** en selecteer **Volgende**.

@@ -1,142 +1,142 @@
 ---
-title: 'Zelf studie: batch testen om problemen op te sporen-LUIS'
-description: In deze zelf studie wordt gedemonstreerd hoe u batch tests kunt gebruiken om de kwaliteit van uw Language Understanding-app (LUIS) te valideren.
+title: 'Zelfstudie: Batchgewijs testen om problemen op te sporen: LUIS'
+description: In deze zelfstudie wordt gedemonstreerd hoe u met batchgewijze testen de kwaliteit van uw Language Understanding-app (LUIS) kunt valideren.
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681628"
 ---
-# <a name="tutorial-batch-test-data-sets"></a>Zelf studie: gegevens sets batch testen
+# <a name="tutorial-batch-test-data-sets"></a>Zelfstudie: Gegevenssets batchgewijs testen
 
-In deze zelf studie wordt gedemonstreerd hoe u batch tests kunt gebruiken om de kwaliteit van uw Language Understanding-app (LUIS) te valideren.
+In deze zelfstudie wordt gedemonstreerd hoe u met batchgewijze testen de kwaliteit van uw Language Understanding-app (LUIS) kunt valideren.
 
-Met batch tests kunt u de actieve, getrainde model status valideren met een bekende set gelabelde uitingen en entiteiten. Voeg in het batch bestand met JSON-indeling de uitingen toe en stel de entiteits labels in die u in de utterance wilt voordicteerd.
+Met batchgewijze tests kunt u de actieve status van het getrainde model valideren met behulp van een bekende set gelabelde uitingen en entiteiten. Voeg de uitingen toe aan het batchbestand in JSON-indeling en stel de entiteitslabels in die u in de uiting wilt voorspellen.
 
-Vereisten voor batch tests:
+Vereisten voor batchgewijs testen:
 
-* Maxi maal 1000 uitingen per test.
-* Geen dubbele waarden.
-* Toegestane entiteits typen: alleen door machines geleerde entiteiten.
+* Maximaal 1000 uitingen per test.
+* Geen duplicaten.
+* Toegestane entiteitstypen: alleen ML-entiteiten.
 
-Wanneer u een andere app dan deze zelf *studie gebruikt, mag u* de voor beeld-uitingen al aan uw app toevoegen.
+Als u een andere app dan deze zelfstudie gebruikt, moet u *niet* de voorbeelduitingen gebruiken die al aan uw app zijn toegevoegd.
 
 **In deze zelfstudie leert u het volgende:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Voorbeeld-app importeren
-> * Een batch-test bestand maken
-> * Een batch test uitvoeren
-> * Test resultaten controleren
+> * Een batchtestbestand maken
+> * Een batchtest uitvoeren
+> * Testresultaten evalueren
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Voorbeeld-app importeren
 
-Importeer een app die een pizza-volg orde gebruikt, zoals `1 pepperoni pizza on thin crust` .
+Importeer een app voor het opnemen van een pizzabestelling, zoals `1 pepperoni pizza on thin crust`.
 
 1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) en sla het op.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
-1. Importeer de JSON in een nieuwe app en noem de app `Pizza app` .
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
+1. Importeer de JSON in een nieuwe app met de naam `Pizza app`.
 
 
-1. Selecteer **trainen** in de rechter bovenhoek van de navigatie om de app te trainen.
+1. Selecteer **Trainen** rechtsboven in de navigatiebalk om de app te trainen.
 
-## <a name="what-should-the-batch-file-utterances-include"></a>Wat moet het batch bestand uitingen bevatten
+## <a name="what-should-the-batch-file-utterances-include"></a>Welke uitingen moeten in het batchbestand worden opgenomen
 
-Het batch-bestand moet uitingen bevatten met machine learning-entiteiten op het hoogste niveau, met inbegrip van de begin-en eind positie. De uitingen mag geen deel uitmaken van de voor beelden die al in de app staan. Ze moeten uitingen zijn om te voors pellen voor intentie en entiteiten.
+Het batchbestand moet uitingen bevatten met gelabelde machine learning-entiteiten op het hoogste niveau, met inbegrip van de begin- en eindpositie. De uitingen mogen geen deel uitmaken van de voorbeelden die al in de app staan. Het moeten uitingen zijn die u positief wilt voorspellen voor de intentie en entiteiten.
 
-U kunt testen met behulp van intentie en/of entiteit scheiden of alle tests (Maxi maal 1000 uitingen) in hetzelfde bestand hebben.
+U kunt afzonderlijke tests uitvoeren op intentie en/of entiteit of alle tests (maximaal 1000 uitingen) in hetzelfde bestand hebben.
 
-## <a name="batch-file"></a>Batch bestand
+## <a name="batch-file"></a>Batchbestand
 
-De JSON van het voor beeld bevat een utterance met een gelabelde entiteit die illustreert hoe een test bestand eruitziet. In uw eigen tests moet u veel uitingen hebben met de juiste intentie en de machine learning-entiteit labelen.
+Het JSON-voorbeeldbestand bevat een uiting met een gelabelde entiteit om u een idee te geven hoe een testbestand eruitziet. Uw eigen tests moeten veel uitingen met de juiste intentie en gelabelde machine learning-entiteit bevatten.
 
-1. Maak `pizza-with-machine-learned-entity-test.json` een tekst editor of [down load](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) deze.
+1. Maak `pizza-with-machine-learned-entity-test.json` in een teksteditor of [download](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) het.
 
-2. Voeg in het batch bestand met JSON-indeling een utterance toe met de **intentie** die u in de test wilt voors pellen.
+2. Voeg aan het batchbestand in JSON-indeling een uiting toe met de **intentie** die moet worden voorspeld in de test.
 
    [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
 
 ## <a name="run-the-batch"></a>De batch uitvoeren
 
-1. Selecteer **test** in de bovenste navigatie balk.
+1. Selecteer **Test** in de bovenste navigatiebalk.
 
-2. Selecteer **batch test paneel** in het deel venster aan de rechter kant.
+2. Selecteer het **paneel Batchgewijs testen** in het paneel aan de rechterkant.
 
-3. Selecteer **gegevensset importeren**.
+3. Selecteer **Gegevensset importeren**.
 
     > [!div class="mx-imgBorder"]
-    > ![Scherm opname van de LUIS-app met de import gegevensset gemarkeerd](./media/luis-tutorial-batch-testing/import-dataset-button.png)
+    > ![Schermopname van LUIS-app met Gegevensset importeren gemarkeerd](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
-4. De bestands locatie van het `pizza-with-machine-learned-entity-test.json` bestand kiezen.
+4. Kies de bestandslocatie van het bestand `pizza-with-machine-learned-entity-test.json`.
 
-5. Geef de gegevensset een naam `pizza test` en selecteer **gereed**.
+5. Geef de gegevensset de naam `pizza test` en selecteer **Gereed**.
 
     > [!div class="mx-imgBorder"]
     > ![Bestand selecteren](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
-6. Selecteer de knop **Run**.
+6. Selecteer de knop **Run** (Uitvoeren).
 
-7. Selecteer **resultaten weer geven**.
+7. Selecteer **Resultaten weergeven**.
 
-8. Bekijk de resultaten in de grafiek en legenda.
+8. Evalueer de resultaten in de grafiek en legenda.
 
-## <a name="review-batch-results-for-intents"></a>Batch resultaten voor intenties controleren
+## <a name="review-batch-results-for-intents"></a>Batchresultaten voor intenties evalueren
 
-De test resultaten geven grafisch weer hoe de test uitingen is voor speld op basis van de actieve versie.
+In de testresultaten wordt grafisch weergegeven hoe de testuitingen zijn voorspeld voor de actieve versie.
 
-In de batch grafiek worden vier kwadranten met resultaten weer gegeven. Rechts van de grafiek is een filter. Het filter bevat intents en entiteiten. Wanneer u een [sectie van de grafiek](luis-concept-batch-test.md#batch-test-results) of een punt in de grafiek selecteert, worden de gekoppelde utterance (s) weer gegeven onder de grafiek.
+In de batchgrafiek worden vier kwadranten met resultaten weergegeven. Rechts van de grafiek ziet u een filter. Het filter bevat intenties en entiteiten. Wanneer u een [sectie van de grafiek](luis-concept-batch-test.md#batch-test-results) of een punt in de grafiek selecteert, worden de gekoppelde uitingen weergegeven onder de grafiek.
 
-Bij het aanwijzen van de grafiek kan een muis wiel de weer gave in de grafiek verg Roten of verkleinen. Dit is handig wanneer er veel punten in het diagram zijn geclusterd met elkaar.
+Bij het aanwijzen van de grafiek met de muisaanwijzer kunt u de weergave in de grafiek vergroten of verkleinen met een muiswiel. Dit is handig wanneer veel punten in het diagram zich dicht op elkaar bevinden.
 
-De grafiek is in vier kwadranten, waarbij twee van de secties rood worden weer gegeven.
+De grafiek is verdeeld in vier kwadranten, waarbij twee van de secties rood worden weergegeven.
 
-1. Selecteer de **ModifyOrder** intentie in de filter lijst.
-
-    > [!div class="mx-imgBorder"]
-    > ![ModifyOrder intentie selecteren in de filter lijst](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
-
-    De utterance wordt voor speld als een **echte, positieve** betekenis die de utterance met de positieve voor spelling in het batch-bestand heeft gevonden.
+1. Selecteer de intentie **ModifyOrder** in de filterlijst.
 
     > [!div class="mx-imgBorder"]
-    > ![Utterance komt overeen met de positieve voor spelling](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
+    > ![De intentie ModifyOrder selecteren in de filterlijst](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
 
-    Het groene vinkje in de lijst met filters geeft ook het succes van de test voor elk doel aan. Alle andere intenten worden weer gegeven met een 1/1 positieve score, omdat de utterance is getest op basis van elke intentie, als een negatieve test voor de intenties die niet worden vermeld in de batch-test.
-
-1. Selecteer het **bevestigings** doel. Deze intentie wordt niet vermeld in de batch test, zodat dit een negatieve test is van de utterance die wordt vermeld in de batch-test.
+    De uiting wordt voorspeld als een **terecht-positief**, wat betekent dat de uiting correct is gematcht met de positieve voorspelling die in het batchbestand is vermeld.
 
     > [!div class="mx-imgBorder"]
-    > ![Utterance is negatief gedicteerd voor niet-gelijsteerde intentie in batch bestand](./media/luis-tutorial-batch-testing/true-negative-intent.png)
+    > ![Uiting is correct gematcht met de betreffende positieve voorspelling](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
 
-    De negatieve test is geslaagd, zoals vermeld bij de groene tekst in het filter en het raster.
+    Het groene vinkje in de filterlijst geeft ook aan dat de test voor elke intentie is geslaagd. Alle andere intenties worden weergegeven met een positieve score van 1/1, omdat de uiting is getest op basis van elke intentie, als een negatieve test voor alle intenties die niet worden vermeld in de batchtest.
 
-## <a name="review-batch-test-results-for-entities"></a>Batch test resultaten voor entiteiten controleren
-
-De ModifyOrder-entiteit, als een machine-entiteit met subentiteiten, geeft weer of de entiteit op het hoogste niveau overeenkomt en geeft weer hoe de subentiteiten worden voor speld.
-
-1. Selecteer de entiteit **ModifyOrder** in de lijst Filter en selecteer vervolgens de cirkel in het raster.
-
-1. De voor spelling van de entiteit wordt onder de grafiek weer gegeven. De weer gave bevat ononderbroken lijnen voor voor spellingen die overeenkomen met de verwachting en stippel lijnen voor voor spellingen die niet overeenkomen met de verwachting.
+1. Selecteer de intentie **Bevestiging**. Deze intentie wordt niet vermeld in de batchtest. Dit is dus een negatieve test van de uiting die wordt vermeld in de batchtest.
 
     > [!div class="mx-imgBorder"]
-    > ![Bovenliggend item van entiteit is voor speld in batch bestand](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
+    > ![Uiting is correct negatief voorspeld voor niet-vermelde intentie in batchbestand](./media/luis-tutorial-batch-testing/true-negative-intent.png)
 
-## <a name="finding-errors-with-a-batch-test"></a>Fouten vinden met een batch test
+    De negatieve test is geslaagd, zoals aangegeven met de groene tekst in het filter, en het raster.
 
-In deze zelf studie hebt u geleerd hoe u een test uitvoert en de resultaten interpreteert. Het heeft geen betrekking op de test filosofie of hoe kan worden gereageerd op mislukte testen.
+## <a name="review-batch-test-results-for-entities"></a>Batchtestresultaten voor entiteiten evalueren
 
-* Zorg ervoor dat u zowel positieve als negatieve uitingen in uw test onderneemt, inclusief uitingen die mogelijk voor speld zijn voor een andere, maar verwante intentie.
-* Voor een mislukte uitingen voert u de volgende taken uit en voert u de tests opnieuw uit:
-    * Bekijk de huidige voor beelden voor intents en entiteiten, Controleer of de voor beeld-uitingen van de actieve versie juist zijn voor intentie en entiteit labeling.
-    * Functies toevoegen die uw app kunnen voors pellen en entiteiten
-    * Meer positieve voorbeeld uitingen toevoegen
-    * Het saldo van voor beeld-uitingen in intenties controleren
+De entiteit ModifyOrder, een machine learning-entiteit met subentiteiten, geeft weer of de entiteit op het hoogste niveau overeenkomt en hoe de subentiteiten worden voorspeld.
+
+1. Selecteer de entiteit **ModifyOrder** in de filterlijst en selecteer vervolgens de cirkel in het raster.
+
+1. De voorspelling van de entiteit wordt onder de grafiek weergegeven. De weergave bevat ononderbroken lijnen voor voorspellingen die overeenkomen met de verwachting en stippellijnen voor voorspellingen die niet overeenkomen met de verwachting.
+
+    > [!div class="mx-imgBorder"]
+    > ![Bovenliggende entiteit is correct voorspeld in batchbestand](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
+
+## <a name="finding-errors-with-a-batch-test"></a>Fouten opsporen met een batchtest
+
+In deze zelfstudie hebt u geleerd hoe u een test uitvoert en de resultaten interpreteert. Hierbij is niet besproken hoe u moet omgaan met mislukte testresultaten.
+
+* Zorg ervoor dat u zowel positieve als negatieve uitingen opneemt in uw test, met inbegrip van uitingen die kunnen zijn voorspeld voor een andere, maar wel gerelateerde intentie.
+* Voor mislukte uitingen moet u de volgende taken uitvoeren en vervolgens de tests opnieuw uitvoeren:
+    * De huidige voorbeelden voor intenties en entiteiten evalueren en de voorbeelduitingen van de actieve versie controleren op juistheid van labels voor intenties en entiteiten.
+    * Kenmerken toevoegen waarmee uw app intenties en entiteiten kan voorspellen
+    * Meer positieve voorbeelduitingen toevoegen
+    * Verdeling van voorbeelduitingen voor alle intenties controleren
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -144,7 +144,7 @@ In deze zelf studie hebt u geleerd hoe u een test uitvoert en de resultaten inte
 
 ## <a name="next-step"></a>Volgende stap
 
-De zelf studie heeft een batch test gebruikt om het huidige model te valideren.
+In de zelfstudie hebt u een batchtest gebruikt om het huidige model te valideren.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over patronen](luis-tutorial-pattern.md)

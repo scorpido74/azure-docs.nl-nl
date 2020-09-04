@@ -125,8 +125,12 @@
       maintainContext: true
 - name: Instructiegidsen
   items:
-    - name: Verplaatsen tussen regio's
-      href: move-across-regions.md
+    - name: Verplaatsen
+      items:
+        - name: Een naamruimte verplaatsen naar een andere regio
+          href: move-across-regions.md
+        - name: Een toegewezen cluster verplaatsen naar een andere regio
+          href: move-cluster-across-regions.md
     - name: Dynamisch partities toevoegen
       href: dynamically-add-partitions.md
     - name: Blob Storage gebruiken als controlepuntopslag in Azure Stack Hub

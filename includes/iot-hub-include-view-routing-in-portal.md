@@ -9,20 +9,20 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "67235293"
 ---
-Nu uw eind punten en bericht routes zijn ingesteld, kunt u hun configuratie bekijken in de portal. Meld u aan bij de [Azure Portal](https://portal.azure.com) en ga naar **resource groepen**. Selecteer vervolgens de resource groep en selecteer vervolgens uw hub (de naam van de hub begint `ContosoTestHub` met in deze zelf studie). U ziet het deel venster IoT Hub.
+Nu uw eindpunten en berichtroutes zijn ingesteld, kunt u de configuratie ervan in de portal bekijken. Meld u aan bij [Azure Portal](https://portal.azure.com) en ga naar **Resourcegroepen**. Selecteer vervolgens de resourcegroep en vervolgens uw hub (de naam van de hub begint in deze zelfstudie met `ContosoTestHub`). U ziet het IoT Hub-deelvenster.
 
-![Scherm Eigenschappen van IoT Hub](./media/iot-hub-include-view-routing-in-portal/01-show-hub-properties.png)
+![Scherm met eigenschappen van IoT Hub](./media/iot-hub-include-view-routing-in-portal/01-show-hub-properties.png)
 
-Selecteer in de opties voor de IoT Hub **bericht routering**. De routes die u hebt ingesteld, worden weer gegeven.
+Selecteer **Berichtroutering** in de opties voor IoT Hub. De routes die u hebt ingesteld, worden weergegeven.
 
-![De routes die u instelt](./media/iot-hub-include-view-routing-in-portal/02-show-message-routes.png)
+![De routes die u hebt ingesteld](./media/iot-hub-include-view-routing-in-portal/02-show-message-routes.png)
 
-Selecteer op het scherm **bericht routering** **aangepaste eind punten** om de eind punten weer te geven die u voor de routes hebt gedefinieerd.
+Selecteer in het scherm **Berichtroutering** de optie **Aangepaste eindpunten** om de eindpunten weer te geven die u voor de routes hebt gedefinieerd.
 
-![De eind punten die zijn ingesteld voor de routes](./media/iot-hub-include-view-routing-in-portal/03-show-routing-endpoints.png)
+![De eindpunten die voor de routes zijn ingesteld](./media/iot-hub-include-view-routing-in-portal/03-show-routing-endpoints.png)

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290286"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812981"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelfstudie: Prijzen voor auto's voorspellen met de ontwerpfunctie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -104,13 +104,7 @@ Er zijn diverse voorbeeldgegevenssets meegeleverd in de ontwerpfunctie waarmee u
 
 U kunt de gegevens visualiseren voor meer informatie over de gegevensset die u gebruikt.
 
-1. Selecteer de module **Automobile price data (Raw)** .
-
-1. In het deelvenster Details van de module aan de rechterkant van het canvas selecteert u **Uitvoer en logboeken**.
-
-1. Selecteer het grafiekpictogram om de gegevens te visualiseren.
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Alternatieve tekst hier.":::
+1. Klik met de rechtermuisknop **Automobile price data (Raw)** en selecteer **Visualiseren**.
 
 1. Selecteer de verschillende kolommen in het gegevensvenster om informatie over elke kolom weer te geven.
 
@@ -285,15 +279,13 @@ Nu uw pijplijn helemaal is ingesteld, kunt u een uitvoering van de pijplijn indi
     
     U kunt de uitvoeringsstatus en details rechtsboven in het canvas zien.
     
-    Als dit de eerste keer is dat u de pijplijn uitvoert, kan het maximaal 20 minuten duren voor uw pijplijn helemaal is uitgevoerd. De standaardrekeninstellingen hebben een minimale knooppuntgrootte van 0, wat betekent dat de ontwerpfunctie na inactiviteit resources moet toewijzen. Herhaalde pijplijnuitvoeringen kosten minder tijd, omdat de rekenresources al zijn toegewezen. Bovendien gebruikt de ontwerpfunctie in de cache opgeslagen resultaten voor elke module om de efficiëntie verder te verbeteren.
+    Als dit de eerste keer is dat u de pijplijn uitvoert, kan het maximaal 20 minuten duren voor uw pijplijn helemaal is uitgevoerd. De standaard rekeninstellingen hebben een minimale knooppuntgrootte van 0, wat betekent dat de ontwerpfunctie na inactiviteit resources moet toewijzen. Herhaalde pijplijnuitvoeringen kosten minder tijd, omdat de rekenresources al zijn toegewezen. Bovendien gebruikt de ontwerpfunctie in de cache opgeslagen resultaten voor elke module om de efficiëntie verder te verbeteren.
 
 ### <a name="view-scored-labels"></a>Gescoorde labels weergeven
 
 Nadat de uitvoering is voltooid, kunt u de resultaten van de pijplijnuitvoering weergeven. Kijk eerst naar de voorspellingen die door het regressiemodel zijn gegenereerd.
 
-1. Selecteer de module **Score Model** om de uitvoer weer te geven.
-
-1. In het deelvenster Details van de module aan de rechterkant van het canvas selecteert u **Uitvoer en logboeken** > grafiekpictogram ![het pictogram Visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om resultaten weer te geven.
+1. Klik met de rechtermuisknop op de module **Score Model** en selecteer **Visualiseren** om de uitvoer weer te geven.
 
     Hier ziet u de voorspelde prijzen en de daadwerkelijke prijzen van de testgegevens.
 
@@ -303,9 +295,7 @@ Nadat de uitvoering is voltooid, kunt u de resultaten van de pijplijnuitvoering 
 
 Gebruik **Evaluate Model** om te zien hoe goed het getrainde model heeft gepresteerd met de testgegevensset.
 
-1. Selecteer de module **Evaluate Model** om de uitvoer weer te geven.
-
-1. In het deelvenster Details van de module aan de rechterkant van het canvas selecteert u **Uitvoer en logboeken** > grafiekpictogram ![het pictogram Visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om resultaten weer te geven.
+1. Klik met de rechtermuisknop op de module **Evaluate Model** en selecteer **Visualiseren** om de uitvoer weer te geven.
 
 De volgende statistieken worden weergegeven voor uw model:
 
