@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Certificaten gebruiken met Batch
           href: batch-certificates.md
-    - name: Toepassingspakketten gebruiken
-      href: batch-application-packages.md
     - name: Bestanden en toepassingen kopiëren naar groepsknooppunten
       items:
         - name: Toepassingen en gegevens kopiëren naar groepsknooppunten

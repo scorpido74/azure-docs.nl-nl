@@ -94,6 +94,6 @@
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 'Blog over veiligheid, privacy en naleving met betrekking tot Azure'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/'

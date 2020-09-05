@@ -229,7 +229,7 @@
     - name: Roadmap naar gereedheid
       href: security-center-readiness-roadmap.md
     - name: 'Blog over veiligheid, privacy en naleving met betrekking tot Azure'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Azure Security Center op Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Video's

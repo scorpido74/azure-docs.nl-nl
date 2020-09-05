@@ -307,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU-quota
           href: quotas.md
-        - name: Gereserveerde instanties
-          items:
-            - name: Vooruitbetalen voor VM's
-              href: prepay-reserved-vm-instances.md
-            - name: Wat zijn Azure-reserveringen?
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: Flexibiliteit van de VM-instantiegrootte
-              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Benchmarkscores
           href: compute-benchmark-scores.md
     - name: Goedgekeurde distributies
