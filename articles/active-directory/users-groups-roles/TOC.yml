@@ -52,6 +52,8 @@
           href: users-sharing-accounts.md
         - name: Gebruikers aan beheerdersrollen toewijzen
           href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: Verbeteringen voor gebruikersbeheer
+          href: users-search-enhanced.md
         - name: Gebruikers bulksgewijs verwijderen
           href: users-bulk-delete.md
         - name: Een verwijderde gebruiker herstellen

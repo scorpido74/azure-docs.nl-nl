@@ -206,6 +206,10 @@
       items:
         - name: Problemen met apps toevoegen oplossen
           href: troubleshoot-adding-apps.md
+        - name: Problemen met eenmalige aanmelding op basis van wachtwoord
+          href: troubleshoot-password-based-sso.md
+        - name: Problemen met eenmalige aanmelding op basis van SAML oplossen
+          href: troubleshoot-saml-based-sso.md
         - name: Problemen met aanmelden van gebruikers oplossen
           items:
             - name: Onverwacht instemmingsprompt
@@ -224,14 +228,6 @@
               href: application-sign-in-problem-federated-sso-gallery.md
             - name: Probleem met zelfontwikkelde app
               href: application-sign-in-problem-custom-dev.md
-        - name: Problemen met eenmalige aanmelding oplossen
-          items:
-            - name: Problemen met eenmalige aanmelding op basis van wachtwoord
-              href: troubleshoot-password-based-sso.md
-            - name: Veelvoorkomende problemen bij federatief configureren - galerie-apps
-              href: configure-federated-single-sign-on-gallery-applications-problems.md
-            - name: Veelvoorkomende problemen bij federatief configureren - niet-galerie-apps
-              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
         - name: Problemen met on-premises apps oplossen
           items:
             - name: Probleemoplossing toepassingsproxy

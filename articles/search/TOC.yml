@@ -114,6 +114,8 @@
         - name: Besturingselementen voor beveiliging van Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Indexeerresources beveiligen
+          href: search-indexer-securing-resources.md
 - name: Instructiegidsen
   items:
     - name: Indexen en constructs maken
@@ -354,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: Filteren op gebruikersidentiteiten
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Uitgaande beveiliging (indexeerfuncties)
+          items:
+            - name: Toegang via een IP-bereik
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: Toegang via een vertrouwde service-uitzondering
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: Toegang via privé-eindpunten
+              href: search-indexer-howto-access-private.md
     - name: Beheren
       items:
         - name: Portal
@@ -392,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: Search 2020-06-30
+        - name: Zoek-API (stabiel)
           href: /rest/api/searchservice
-        - name: Search 2020-06-30-Preview
+        - name: Zoek-API (preview)
           href: /rest/api/searchservice/index-preview
-        - name: Management 2020-03-13
+        - name: Beheer-API (stabiel)
           href: /rest/api/searchmanagement
-        - name: Management 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Beheer-API (preview)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: API voor zoeken

@@ -55,6 +55,8 @@
           href: check-status-user-account-provisioning.md
         - name: Uw configuratie exporteren en importeren
           href: export-import-provisioning-configuration.md
+        - name: Inrichtingsrapporten
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Problemen met toepassingsinrichting oplossen
       items:
         - name: Bekende problemen

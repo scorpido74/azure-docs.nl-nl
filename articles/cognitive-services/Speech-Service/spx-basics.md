@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590214"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854887"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Meer informatie over de basisbeginselen van de Speech CLI
 
@@ -31,10 +31,18 @@ In deze sectie ziet u enkele eenvoudige SPX-opdrachten die vaak nuttig zijn als 
 spx
 ```
 
-Kijk ook naar de helponderwerpen onder **Zie ook** rechts van de opdrachtparameters. U kunt ook onderwerpen doorzoeken op trefwoord. Voer bijvoorbeeld de volgende opdracht in om een lijst met Help-onderwerpen over Speech CLI-voorbeelden te bekijken:
+Kijk ook naar de helponderwerpen onder **Zie:** rechts van de opdrachtparameters. U kunt deze opdrachten invoeren om gedetailleerde helpinformatie over subopdrachten te krijgen.
+
+U kunt helponderwerpen doorzoeken op trefwoord. Voer bijvoorbeeld de volgende opdracht in om een lijst met gebruiksvoorbeelden van de Spraak-CLI te bekijken:
 
 ```shell
 spx help find --topics "examples"
+```
+
+Voer de volgende opdracht in om de opties voor de opdracht 'herkennen' te bekijken:
+
+```shell
+spx help recognize
 ```
 
 Gebruik nu de spraak-service om de volgende opdracht uit te voeren om te beginnen met spraakherkenning met behulp van de standaardmicrofoon.

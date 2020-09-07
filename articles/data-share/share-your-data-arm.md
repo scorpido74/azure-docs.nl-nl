@@ -1,20 +1,20 @@
 ---
-title: 'Quickstart: Delen buiten uw organisatie - Azure Data Share'
-description: 'Quickstart: gegevens delen met klanten en partners met behulp van Azure Data Share en Resource Manager-sjabloon'
+title: Delen buiten uw eigen organisatie (ARM-sjabloon) - quickstart over Azure Data Share
+description: U vindt meer informatie over het delen van gegevens met klanten en partners met behulp van Azure Data Share en Resource Manager-sjabloon in deze quickstart.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575640"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654103"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>Zelfstudie: Gegevens delen met Azure Data Share- en Resource Manager-sjablonen
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Quickstart: Gegevens delen met Azure Data Share- en Resource Manager-sjablonen
 
 U leert hoe u een nieuwe Azure Data Share instelt vanuit een Azure-opslagaccount met behulp van de sjabloon Azure Resource Manager en hoe u uw gegevens deelt met klanten en partners buiten uw Azure-organisatie. Zie [Ondersteunde gegevensopslag in Azure Data Share](./supported-data-stores.md) voor een lijst met ondersteunde gegevensopslag.
 
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare maakt en ontvangers uitnodigt. Ga door naar de zelfstudie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md) voor meer informatie over hoe een gegevensgebruiker een gegevensshare kan accepteren en ontvangen.
+In deze quickstart hebt u geleerd hoe u een Azure-gegevensshare maakt en ontvangers uitnodigt. Ga door naar de zelfstudie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md) voor meer informatie over hoe een gegevensgebruiker een gegevensshare kan accepteren en ontvangen.

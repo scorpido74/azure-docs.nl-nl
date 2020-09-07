@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 408b507ff23a2a20c5ed6d2fc32fd5dbf5dbab5d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827508"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930890"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Certificaten exporteren uit Azure Key Vault
 
@@ -36,10 +36,7 @@ Nadat een Key Vault-certificaat is gemaakt, kan het worden opgehaald uit het adr
 - **Exporteerbaar**: Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel exporteerbaar is.
 - **Niet-exporteerbaar**: Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel niet-exporteerbaar is. In dit geval maakt de persoonlijke sleutel geen deel uit van de waarde wanneer deze wordt opgehaald als geheim.
 
-Key Vault ondersteunt twee soorten sleutels:
-
-- **RSA**: Exporteerbaar
-- **HSM RSA**: Niet-exporteerbaar
+Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
 
 Raadpleeg [Over Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) voor meer informatie.
 

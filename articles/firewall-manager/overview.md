@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590401"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855054"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Wat is Azure Firewall Manager?
 
@@ -86,7 +86,7 @@ Azure Firewall Manager heeft de volgende bekende problemen:
 |Verkeer tussen vertakkingen met filteren van privéverkeer ingeschakeld|Verkeer tussen vertakkingen wordt niet ondersteund als het filteren van privéverkeer is ingeschakeld. |Wordt onderzocht.<br><br>Beveilig geen privéverkeer als de connectiviteit tussen vertakkingen essentieel is.|
 |Alle beveiligde virtuele hubs die dezelfde virtuele WAN delen, moeten zich in dezelfde resourcegroep bevinden.|Dit gedrag wordt vandaag afgestemd met andere virtuele WAN-hubs.|Maak meerdere virtuele WAN's om ervoor te zorgen dat beveiligde virtuele hubs kunnen worden gemaakt in andere resourcegroepen.|
 |Het toevoegen van een bulk-IP-adres mislukt|De firewall van de beveiligde hub krijgt de status Mislukt als u meerdere openbare IP-adressen toevoegt.|Voeg de openbare IP-adressen in kleinere stappen toe. Voeg er bijvoorbeeld tien per keer toe.|
-|Toepassingsregels mislukken in een beveiligde hub waarin een aangepast DNS (preview) is geconfigureerd.|Een DNS-proxy/aangepast DNS (preview) werkt niet in scenario's waarin een NIC voor firewallbeheer is geconfigureerd. Dit betreft onder meer beveiligde hub-implementaties en situaties waarin geforceerde tunneling is ingeschakeld.|Een oplossing wordt onderzocht.|
+|Toepassingsregels mislukken in een beveiligde hub waarin een aangepast DNS (preview) is geconfigureerd.|Aangepaste DNS (preview-versie) werkt niet in beveiligde hub-implementaties en implementaties van virtuele hubnetwerken waarvoor geforceerde tunneling is ingeschakeld.|Een oplossing wordt onderzocht.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

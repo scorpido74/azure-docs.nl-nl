@@ -5,17 +5,17 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 09/18/2019
+ms.date: 08/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607104"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852933"
 ---
 # <a name="what-is-azure-expressroute"></a>Wat is Azure ExpressRoute?
-Met ExpressRoute kunt u uw on-premises netwerken uitbreiden naar de Microsoft Cloud via een privéverbinding van een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft-cloudservices, zoals Microsoft Azure en Office 365.
+Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een privéverbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft-cloudservices, zoals Microsoft Azure en Office 365.
 
 Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding. ExpressRoute-verbindingen gaan niet via het openbare internet. Daardoor zijn ExpressRoute-verbindingen betrouwbaarder en sneller, en hebben ze consistente wachttijden en betere beveiliging dan gewone verbindingen via internet. Zie [ExpressRoute connectivity models](expressroute-connectivity-models.md) (ExpressRoute-connectiviteitsmodellen) voor meer informatie over verbinding maken tussen uw netwerk en Microsoft met behulp van ExpressRoute.
 
@@ -111,6 +111,10 @@ U kunt een factureringsmodel selecteren dat voor u het meest geschikt is. Kies e
 
 ## <a name="faq"></a>Veelgestelde vragen
 Zie [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor veelgestelde vragen over ExpressRoute.
+
+## <a name="whats-new"></a><a name="new"></a>Wat is er nieuw?
+
+Abonneer u op de RSS-feed en bekijk de nieuwste updates voor ExpressRoute-functies op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute).
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [ExpressRoute-connectiviteitsmodellen](expressroute-connectivity-models.md).

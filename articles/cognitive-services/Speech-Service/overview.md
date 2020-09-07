@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 06/25/2020
+ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167739"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825348"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -24,7 +24,7 @@ De spraakservice combineert spraak-naar-tekst, tekst-naar-spraak en spraakomzett
 > [!IMPORTANT]
 > De spraakservice heeft de Bing Speech API en Translator Speech vervangen. Zie _Handleidingen > Migratie_ voor migratie-instructies.
 
-De volgende functies vormen samen de spraakservice. Gebruik de koppelingen in deze tabel voor meer informatie over veelvoorkomende gebruikssituaties voor elke functie of blader door de API-naslaginformatie.
+De volgende onderdelen maken deel uit van de spraakservice. Gebruik de koppelingen in deze tabel voor meer informatie over veelvoorkomende gebruikssituaties voor elke functie of blader door de API-naslaginformatie.
 
 | Service | Functie | Beschrijving | SDK | REST |
 |---------|---------|-------------|-----|------|
@@ -42,20 +42,61 @@ De volgende functies vormen samen de spraakservice. Gebruik de koppelingen in de
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="try-the-speech-service"></a>De spraakservice proberen
+## <a name="try-the-speech-service-for-free"></a>Speech Service gratis uitproberen
 
-We bieden quickstarts in de populairste programmeertalen waarin u in minder dan tien minuten code kunt uitvoeren. Deze tabel bevat de populairste quickstarts voor elke functie. Gebruik de linkernavigatiebalk om aanvullende talen en platformen te verkennen.
+Voor de volgende stappen hebt u zowel een Microsoft-account als een Azure-account nodig. Als u geen Microsoft-account hebt, kunt u zich gratis registreren bij het [Microsoft-accountportal](https://account.microsoft.com/account). Selecteer **Aanmelden met Microsoft** en klik als u wordt gevraagd om u aan te melden op **Een Microsoft-account maken**. Volg de stappen om uw nieuwe Microsoft-account te maken en te verifiëren.
 
-| Spraak-naar-tekst (SDK) | Tekst-naar-spraak (SDK) | Omzetting (SDK) |
-|----------------------|----------------------|-------------------|
-| [Spraak herkennen vanuit een audiobestand](quickstarts/speech-to-text-from-file.md) | [Spraaksynthese in een audiobestand](quickstarts/text-to-speech-audio-file.md) | [Spraak omzetten in tekst](quickstarts/translate-speech-to-text.md) |
-| [Spraak herkennen met een microfoon](quickstarts/speech-to-text-from-microphone.md) | [Spraaksynthese naar een luidspreker](quickstarts/text-to-speech.md) | [Spraak omzetten naar meerdere doeltalen](quickstarts/translate-speech-to-text-multiple-languages.md) |
-| [Spraak herkennen die is opgeslagen in blobopslag](quickstarts/from-blob.md) | [Asynchrone synthese voor audio in lange vorm](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Spraak naar spraak omzetten](quickstarts/translate-speech-to-speech.md) |
+Zodra u een Microsoft-account hebt, gaat u naar de [Azure-aanmeldingspagina](https://azure.microsoft.com/free/ai/), selecteert u **Gratis starten** en maakt u een nieuw Azure-account met behulp van een Microsoft-account.
 
 > [!NOTE]
-> Spraak-naar-tekst en tekst-naar-spraak hebben ook REST-eindpunten en bijbehorende quickstarts.
+> De spraakservice heeft twee servicecategorieën: gratis en abonnement, die verschillende beperkingen en voordelen hebben. Wanneer u zich aanmeldt voor een gratis Azure-account, krijgt u dit met $ 200 aan servicetegoed dat u kunt toepassen op een betaald abonnement op de spraakservice, dat maximaal 30 dagen geldig is.
+>
+> Als u de gratis prijscategorie van de spraakservice met een laag volume kiest, kunt u dit gratis abonnement ook houden nadat uw gratis proefperiode of servicetegoed is verlopen.
+>
+> Zie [Prijzen van Cognitive Services - spraakservice](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) voor meer informatie.
 
-Nadat u de spraakservice hebt gebruikt, kunt u de zelfstudies proberen waarin u leert om verschillende scenario's op te lossen.
+### <a name="create-the-azure-resource"></a>De Azure-resource maken
+
+Ga als volgt te werk om een spraakserviceresource (prijscategorie gratis of betaald) toe te voegen aan uw Azure-account:
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met behulp van uw Microsoft-account.
+
+1. Selecteer **Een resource maken** in de linkerbovenhoek van de portal. Als u **Een resource maken** niet ziet, kunt u dit altijd vinden door in de linkerbovenhoek van het scherm het samengevouwen menu te selecteren.
+
+1. Typ 'spraak' in het zoekvak in het venster **Nieuw** en druk op Enter.
+
+1. Selecteer **spraak** in de zoekresultaten.
+
+   ![zoekresultaten voor spraak](media/index/speech-search.png)
+
+1. Selecteer **Maken** en voer vervolgens de volgende handelingen uit:
+
+   - Geef een unieke naam op voor uw nieuwe resource. De naam helpt u om onderscheid te maken tussen meerdere abonnementen die aan dezelfde service zijn gekoppeld.
+   - Kies het Azure-abonnement waaraan de nieuwe resource wordt gekoppeld om te bepalen hoe de kosten worden gefactureerd.
+   - Kies de [regio](regions.md) waarin de resource wordt gebruikt.
+   - Kies gratis (F0) of betaald (S0) als prijscategorie. Selecteer **Volledige prijsgegevens weergeven** voor volledige informatie over prijzen en quota voor gebruik voor elke prijscategorie.
+   - Maak een nieuwe resourcegroep voor dit spraakabonnement of wijs het abonnement toe aan een bestaande resourcegroep. Met resourcegroepen kunt u de verschillende Azure-abonnementen ordenen.
+   - Selecteer **Maken**. Hiermee gaat u naar het implementatieoverzicht en worden berichten over de voortgang van de implementatie weergegeven.
+
+> [!NOTE]
+> U kunt een onbeperkt aantal abonnementen voor de prijscategorie Standard maken in een of meer regio's. U kunt echter slechts één abonnement voor de gratis prijscategorie maken. Modelimplementaties in de gratis prijscategorie die gedurende 7 dagen niet worden gebruikt, worden automatisch uit bedrijf genomen.
+
+Het kan even duren voordat u uw nieuwe spraakresource is geïmplementeerd. Zodra de implementatie is voltooid, selecteert u **Ga naar resource** en selecteert u in het navigatievenster links **Sleutels** om uw abonnementssleutels voor de spraakservice weer te geven. Elk abonnement heeft twee sleutels. U kunt beide sleutels gebruiken in uw toepassing. Als u snel een sleutel naar de code-editor of een andere locatie wilt kopiëren/plakken, selecteert u de kopieerknop naast elke sleutel en schakelt u over naar Windows om de inhoud van het klembord op de gewenste locatie te plakken.
+
+> [!IMPORTANT]
+> Deze abonnementssleutels worden gebruikt om toegang te krijgen tot de API van Cognitive Services. Deel uw sleutels niet. Sla ze veilig op, bijvoorbeeld met behulp van Azure Key Vault. We raden u ook aan om deze sleutels regelmatig opnieuw te genereren. Er is slechts één sleutel nodig om een API-aanroep te maken. Wanneer u de eerste sleutel opnieuw genereert, kunt u de tweede sleutel gebruiken voor verdere toegang tot de service.
+
+## <a name="complete-a-quickstart"></a>Een quickstart volgen
+
+We bieden quickstarts in de populairste programmeertalen, die zijn ontworpen om u de basisontwerppatronen te leren en waarmee u in minder dan tien minuten code kunt uitvoeren. Zie de volgende lijst voor de quickstart voor elke functie.
+
+* [Quickstart voor spraak-naar-tekst](speech-to-text-basics.md)
+* [Quickstart voor tekst-naar-spraak](get-started-text-to-speech.md)
+* [Quickstart over spraakomzetting](speech-translation-basics.md)
+* [Quickstart over intentieherkenning](quickstarts/intent-recognition.md)
+* [Quickstart over sprekerherkenning](speaker-recognition-basics.md)
+
+Nu u een begin hebt gemaakt met de spraakservice, kunt u onze zelfstudies proberen waarin u leert om verschillende scenario's op te lossen.
 
 - [Zelfstudie: Intenties van gesproken inhoud herkennen met de Speech SDK en LUIS, C#](how-to-recognize-intents-from-speech-csharp.md)
 - [Zelfstudie: Spraak inschakelen voor uw bot met de Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
@@ -74,6 +115,8 @@ Voorbeeldcode is beschikbaar op GitHub voor de spraakservice. Deze voorbeelden h
 
 De spraakservice kan goed worden gebruikt met ingebouwde modellen, maar mogelijk wilt u de toepassing verder aanpassen en afstemmen op uw product of omgeving. Aanpassingsopties variëren van het afstemmen van akoestische modellen tot unieke spraakstijlen voor uw merk.
 
+Andere producten bieden spraakmodellen die zijn afgestemd op specifieke doeleinden als gezondheidszorg of verzekeringen, maar zijn ook voor iedereen beschikbaar. Aanpassing in Azure Speech wordt onderdeel van *uw unieke* concurrentievoordeel dat niet beschikbaar is voor een andere gebruiker of klant. Met andere woorden, uw modellen zijn privé en aangepast, uitsluitend afgestemd op uw gebruikstoepassing.
+
 | Speech Service | Platform | Beschrijving |
 | -------------- | -------- | ----------- |
 | Spraak naar tekst | [Aangepaste spraak](https://aka.ms/customspeech) | Pas de modellen voor spraakherkenning aan uw behoeften en beschikbare gegevens aan. Neem belemmeringen voor spraakherkenning weg, zoals spreekstijl, vocabulaire en achtergrondgeluiden. |
@@ -90,4 +133,5 @@ De spraakservice kan goed worden gebruikt met ingebouwde modellen, maar mogelijk
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verkrijg gratis een spraakserviceabonnementssleutel](get-started.md)
+> [Aan de slag met spraak-naar-tekst](speech-to-text-basics.md)
+> [Aan de slag met tekst-naar-spraak](get-started-text-to-speech.md)

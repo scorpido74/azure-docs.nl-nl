@@ -64,7 +64,7 @@
   items:
     - name: Gegevensafwijkingen visualiseren in Event Hubs-gegevensstromen
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: Vastgelegde gegevens opslaan in een SQL Data Warehouse
+    - name: Vastgelegde gegevens opslaan in Azure Synapse Analytics
       href: store-captured-data-data-warehouse.md
     - name: Apache Kafka voor Event Hubs-gebeurtenissen verwerken met behulp van Stream Analytics
       href: event-hubs-kafka-stream-analytics.md

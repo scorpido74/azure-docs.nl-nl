@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: Instructiegidsen
   items:
-    - name: Ontwikkelen
-      items:
-        - name: De API's en SDK's gebruiken
-          href: how-to-use-apis-sdks.md
-        - name: Aangepaste SDK's maken met AutoRest
-          href: how-to-create-custom-sdks.md
     - name: Implementeren
       items:
         - name: De Azure Digital Twins-CLI gebruiken
@@ -78,6 +72,14 @@
           href: how-to-create-azure-function.md
         - name: Query uitvoeren op de tweelinggrafiek
           href: how-to-query-graph.md
+    - name: Client-apps ontwikkelen
+      items:
+        - name: De API's en SDK's gebruiken
+          href: how-to-use-apis-sdks.md
+        - name: Aangepaste SDK's maken met AutoRest
+          href: how-to-create-custom-sdks.md
+        - name: Integreren met Azure SignalR Service
+          href: how-to-integrate-azure-signalr.md
     - name: Invoer verbinden
       items:
         - name: Telemetrie opnemen vanuit IoT Hub
@@ -188,6 +190,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
         - name: Aangepaste Azure Digital Twins-swaggers
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: Voorbeeld van SignalR-integratie
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Azure-hulpprogramma's
       items:
         - name: Azure Cloud Shell
