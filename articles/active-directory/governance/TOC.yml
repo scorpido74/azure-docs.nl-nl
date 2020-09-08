@@ -31,6 +31,8 @@
           href: manage-user-access-with-access-reviews.md
         - name: Gebruikers beheren die geen voorwaardelijke toegang hebben
           href: conditional-access-exclusion.md
+    - name: Gebruikers van externe organisaties beoordelen en verwijderen
+      href: access-reviews-external-users.md
 - name: Instructiegidsen
   expanded: true
   items:

@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: Zelfstudies
   items:
+    - name: Een apparaat met meerdere onderdelen verbinden (C)
+      href: tutorial-multiple-components-c.md
     - name: Een apparaat met meerdere onderdelen verbinden (C#)
       href: tutorial-multiple-components-csharp.md
     - name: Een apparaat met meerdere onderdelen verbinden (Java)
