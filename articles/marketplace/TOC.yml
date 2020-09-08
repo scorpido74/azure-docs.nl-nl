@@ -42,7 +42,7 @@
               href: ./iot-edge-module.md
             - name: Adviesservices
               href: ./consulting-services.md
-            - name: 'Office 365, Dynamics 365 en Power BI'
+            - name: 'Microsoft 365, Dynamics 365 en Power BI'
               href: ./appsource-offer-publishing-guide.md
             - name: Verificatie met Azure AD inschakelen
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -60,7 +60,7 @@
             - name: Providers van cloudoplossingen
               href: ./cloud-solution-providers.md
             - name: Gids voor onboarding van Connect-programma
-              href: ./cloud-partner-portal/business-applications-isv-program.md
+              href: ./business-applications-isv-program.md
         - name: Kies uw marketplace-voordelen
           href: ./gtm-your-marketplace-benefits.md
           items:

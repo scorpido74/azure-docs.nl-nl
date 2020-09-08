@@ -36,6 +36,8 @@
   items:
     - name: Een Synapse-werkruimte maken met de Azure Portal
       href: quickstart-create-workspace.md
+    - name: Implementeren met een sjabloon
+      href: quickstart-deployment-template-workspaces.md
     - name: Een Synapse-werkruimte maken met de Azure CLI
       href: quickstart-create-workspace-cli.md
     - name: Synapse Studio gebruiken
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Prestaties van Apache Spark
               href: ./spark/apache-spark-performance.md
+            - name: Prestatieoptimalisatie voor Apache Spark met behulp van Hyperspace-indexen
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Gedrag van Apache Spark bij automatisch schalen
               href: ./spark/apache-spark-autoscale.md
         - name: Ontwikkeling
