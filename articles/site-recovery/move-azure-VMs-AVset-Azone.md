@@ -1,18 +1,18 @@
 ---
 title: VM's verplaatsen naar een Azure-regio met beschikbaarheidszones met Azure Site Recovery
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86135469"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425469"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Virtuele Azure-machines verplaatsen naar beschikbaarheidszones
 Beschikbaarheidszones in Azure beschermen uw toepassingen en gegevens tegen storingen in datacentra. Elke beschikbaarheidszone bestaat uit een of meer datacentra die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen van het datacentrum. Met beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (VM's). Beschikbaarheidszones worden ondersteund in geselecteerde regio's, zoals vermeld in [Regio's die ondersteuning bieden voor beschikbaarheidszones](../availability-zones/az-region.md).

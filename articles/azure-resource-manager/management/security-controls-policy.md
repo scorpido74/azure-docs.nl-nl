@@ -1,18 +1,18 @@
 ---
 title: Controles voor naleving van Azure Policy-regelgeving voor Azure Resource Manager
 description: Een overzicht van de beschikbare controles voor naleving van Azure Policy-regelgeving voor Azure Resource Manager. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van de naleving van uw Azure-resources.
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 64b5ee4bc5d145685e37687249b34ce5d3e7adac
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1921760467ed3494814fb7342a57b5a6278e5600
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172434"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485089"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>Controles voor naleving van Azure Policy-regelgeving voor Azure Resource Manager
 

@@ -2,13 +2,13 @@
 title: Zelfstudie - vSphere-cluster implementeren in Azure
 description: Meer informatie over het implementeren van een vSphere-cluster in Azure met behulp van Azure VMware Solution
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/07/2020
+ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750489"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512358"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Zelfstudie: Een Azure VMware Solution-privécloud implementeren in Azure
 
@@ -30,14 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="register-the-resource-provider"></a>De resourceprovider registreren
 
-Als u Azure VMware Solution wilt gebruiken, moet u de resourceprovider eerst registreren bij uw abonnement.
-
-```
-azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-Zie [Azure-resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
+[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="create-a-private-cloud"></a>Een privécloud maken
@@ -46,34 +39,7 @@ U kunt een Azure VMware Solution-privécloud maken met behulp van [Azure Portal]
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-
-1. Selecteer **Een nieuwe resource maken**. Typ in het tekstvak **Marketplace doorzoeken** `Azure VMware Solution` en selecteer **Azure VMware Solution** uit de lijst. Selecteer **Maken** in het venster **Azure VMware Solution**
-
-1. Voer op het tabblad **Basisinstellingen** waarden in voor de velden. De volgende tabel geeft de eigenschappen weer voor de velden.
-
-   | Veld   | Waarde  |
-   | ---| --- |
-   | **Abonnement** | Het abonnement dat u wilt gebruiken voor de implementatie.|
-   | **Resourcegroep** | De resourcegroep voor uw privécloud-resources. |
-   | **Locatie** | Selecteer een locatie, zoals **VS-Oost**.|
-   | **Resourcenaam** | De naam van uw Azure VMware Solution-privécloud. |
-   | **SKU** | Selecteer de volgende SKU-waarde: AV36 |
-   | **Hosts** | Dit is het aantal hosts dat aan het privécloudcluster moet worden toegevoegd. De standaardwaarde is 3, maar kan na de implementatie worden verhoogd of verlaagd.  |
-   | **Beheerderswachtwoord van vCenter** | Voer een wachtwoord voor de cloudbeheerder in. |
-   | **Manager-wachtwoord van NSX-T** | Voer een NSX-T-beheerderswachtwoord in. |
-   | **Adres blokkeren** | Voer een IP-adresblok in voor het CIDR-netwerk voor de privécloud, zoals 10.175.0.0/22. |
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Voer op het tabblad Basisinstellingen waarden in voor de velden." border="true":::
-
-1. Als dit gereed is, selecteert u **Controleren + maken**. Controleer de ingevoerde gegevens in het volgende scherm. Als de gegevens juist zijn, selecteert u **Maken**.
-
-   > [!NOTE]
-   > Deze stap duurt ongeveer twee uur. 
-
-1. Controleer of de implementatie is gelukt. Ga naar de resourcegroep die u hebt gemaakt en selecteer uw privécloud.  U ziet de status **Geslaagd** wanneer de implementatie is voltooid. 
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Controleer of de implementatie is gelukt." border="true":::
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

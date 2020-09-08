@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: b0b1914755ff0435318ab970aa6dc6e5e039d581
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 684f37ba3186a719aa9ce730ac07ca4ad42f113d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855682"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458056"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Resource Manager-voorbeeldsjablonen voor Log Analytics-werkruimten in Azure Monitor
 Dit artikel bevat [Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/template-syntax.md) die dienen als voorbeeld voor het maken en configureren van Log Analytics-werkruimten in Azure Monitor. Elk voorbeeld bevat een sjabloonbestand en een parameterbestand met voorbeeldwaarden voor het sjabloon.
@@ -21,8 +21,9 @@ Dit artikel bevat [Azure Resource Manager-sjablonen](../../azure-resource-manage
 
 ## <a name="template-references"></a>Sjabloonverwijzingen
 
-- [Microsoft.OperationalInsights workspaces](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces) 
-- [Microsoft.OperationalInsights workspaces/dataSources](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces/datasources)
+- [Microsoft.OperationalInsights workspaces](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces
+) 
+- [Microsoft.OperationalInsights workspaces/dataSources](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces/datasources)
 
 ## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
 Met het volgende voorbeeld wordt een nieuwe lege Log Analytics-werkruimte gemaakt.

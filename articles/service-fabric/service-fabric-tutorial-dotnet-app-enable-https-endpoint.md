@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u met behulp van Kestrel een HTTPS-e
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997282"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441524"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -238,7 +238,7 @@ Open *VotingWeb/PackageRoot/ServiceManifest.xml* vanuit Solution Explorer.  Voeg
 
 Als u PowerShell wilt uitvoeren vanaf het eindpunt **SetupEntryPoint**, kunt u PowerShell.exe uitvoeren in een batchbestand dat naar een PowerShell-bestand verwijst. Voeg eerst het batchbestand aan het serviceproject toe.  Klik in Solution Explorer met de rechtermuisknop op **VotingWeb**, selecteer **Toevoegen**->**Nieuw item** en voeg een nieuw bestand toe met de naam 'Setup.bat'.  Bewerk het *Setup.bat*-bestand en voeg de volgende opdracht toe:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 

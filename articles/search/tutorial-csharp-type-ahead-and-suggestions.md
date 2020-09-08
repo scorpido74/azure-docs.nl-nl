@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1afeca4f627236c5172dd07a44751015c16d2f58
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998438"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462017"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Zelfstudie: Automatisch aanvullen en suggesties toevoegen met de .NET SDK
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 
 Deze zelfstudie maakt deel uit van een reeks en is gebaseerd op het pagineringsproject dat u in de [C#-zelfstudie hebt gemaakt: Zoekresultaten pagineren: Azure Cognitive Search](tutorial-csharp-paging.md).
 
-U kunt ook de oplossing voor deze specifieke zelfstudie downloaden en uitvoeren: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
+U kunt ook de oplossing voor deze specifieke zelfstudie downloaden en uitvoeren: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Suggesties toevoegen
 
