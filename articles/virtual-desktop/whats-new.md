@@ -3,16 +3,17 @@ title: Nieuwe functies in Windows Virtual Desktop - Azure
 description: Nieuwe functies en productupdates voor Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 09/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: references_regions
+ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003531"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319811"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Nieuwe functies in Windows Virtual Desktop
 
@@ -24,6 +25,31 @@ Windows Virtual Desktop wordt regelmatig bijgewerkt. In dit artikel vindt u meer
 - Opgeloste fouten
 
 Dit artikel wordt maandelijks bijgewerkt. Controleer hier regelmatig of er nieuwe updates beschikbaar zijn.
+
+## <a name="august-2020"></a>Augustus 2020
+
+Dit is gewijzigd in augustus 2020:
+
+- De prestaties zijn verbeterd om de latentie van de verbinding in de volgende Azure-regio's te verminderen: 
+
+    - Verenigd Koninkrijk
+    - Frankrijk
+    - Noorwegen
+    - Zuid-Korea
+
+   U kunt de [Experience Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) gebruiken om een algemeen beeld te krijgen van de manier waarop deze wijzigingen van invloed zijn op uw gebruikers.
+
+- De Microsoft Store Extern bureaublad-client (v10.2.1522+) is nu overal beschikbaar. Deze versie van de Microsoft Store Extern bureaublad-client is compatibel met Windows Virtual Desktop. Daarnaast hebben we vernieuwde UI-stromen geïntroduceerd voor een betere gebruikerservaring. Deze update bevat een fluent-ontwerp, lichte en donkere modi en veel andere interessante wijzigingen. We hebben de client ook herschreven om dezelfde onderliggende RDP-Engine (Remote Desktop Protocol) te gebruiken als iOS-, Mac OS-en Android-clients. Zo kunnen we nieuwe functies sneller leveren op alle platforms. [Download de client](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab) en probeer het uit!
+
+- Er is een probleem opgelost in de Teams- bureaublad-client (versie 1.3.00.21759), waarbij de client alleen de UTC-tijdzone toonde in de chat, kanalen en agenda. De bijgewerkte client toont nu de tijdzone van de externe sessie.
+
+- Azure Advisor maakt nu deel uit van Windows Virtual Desktop. Wanneer u via de Azure-portal toegang hebt tot Windows Virtual Desktop, ziet u aanbevelingen voor het optimaliseren van uw Windows Virtual Desktop-omgeving. Zie [Azure Advisor](azure-advisor.md) voor meer informatie.
+
+- Azure CLI ondersteunt nu Windows Virtual Desktop (`az desktopvirtualization`) om u te helpen bij het automatiseren van Windows Virtual Destkop-implementaties. Bekijk [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) voor een lijst met extensie-opdrachten.
+
+- We hebben onze implementatiesjablonen bijgewerkt zodat ze volledig compatibel zijn met de Azure Resource Manager-interfaces voor Windows Virtual Desktop. U kunt de sjablonen vinden op [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
+
+- De Windows Virtual Desktop US Gov-portal is nu beschikbaar als openbare preview. Zie [onze aankondiging](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/) voor meer informatie.
 
 ## <a name="july-2020"></a>Juli 2020  
 
@@ -105,9 +131,7 @@ We hebben enkele verbeteringen aangebracht in Microsoft Teams voor Windows Virtu
 
 Lees [onze blogpost](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/) voor meer informatie.
 
-## <a name="next-steps"></a>Volgende stappen
-
-Lees meer over toekomstige plannen in de [roadmap voor Microsoft 365 Windows Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+## <a name="client-updates"></a>Clientupdates
 
 Bekijk deze artikelen voor meer informatie over updates voor onze clients voor Windows Virtual Desktop en Extern bureaublad-services:
 
@@ -116,3 +140,8 @@ Bekijk deze artikelen voor meer informatie over updates voor onze clients voor W
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="next-steps"></a>Volgende stappen
+
+Lees meer over toekomstige plannen in de [roadmap voor Microsoft 365 Windows Virtual Desktop](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+

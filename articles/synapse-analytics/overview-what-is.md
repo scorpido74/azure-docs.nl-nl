@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496044"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180776"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Wat is Azure Synapse Analytics (preview van werkruimten)?
 
@@ -24,7 +24,7 @@ De zakelijke analyses van vandaag moeten op grote schaal worden uitgevoerd op el
 
 Oplossingen zoals dit zijn moeilijk te bouwen, te configureren, te beveiligen en te onderhouden, waardoor het snel extraheren van intelligent inzicht wordt vertraagd.
 
-**Azure Synapse** is een geïntegreerde analyse-service die sneller inzicht biedt van alle gegevens op elke schaal, in alle datawarehouses en analyse-systemen voor big data. Het combineert het beste van de **SQL**- technologieën die worden gebruikt in zakelijke datawarehousing, **Spark**-technologieën die worden gebruikt in big data-analyses en **Pijplijnen** om verplaatsing van activiteiten en gegevens te organiseren.
+**Azure Synapse** is een geïntegreerde analyse-service die sneller inzicht biedt van alle gegevens op elke schaal, in alle datawarehouses en analyse-systemen voor big data. Het combineert het beste van de **SQL**-technologieën die worden gebruikt in zakelijke datawarehousing, **Spark**-technologieën die worden gebruikt in big data-analyses en **Pijplijnen** voor gegevensintegratie en ETL/ELT.
 
 Azure Synapse wordt geleverd met een web-eigen **Studio**-gebruikerservaring die één ervaring en model biedt voor beheer, bewaking, codering en beveiliging.
 
@@ -59,13 +59,13 @@ Azure Synapse verwijdert de traditionele technologische barrières tussen het ge
 * SQL en Spark kunnen Parquet-, CSV-, TSV- en JSON-bestanden die zijn opgeslagen in de data lake rechtstreeks verkennen en analyseren.
 * Snel schaalbare belasting en verwijderen van belasting voor gegevens die worden verzonden tussen SQL-en Spark-databases
 
-### <a name="built-in-orchestration-via-pipelines"></a>Ingebouwde indeling via pijplijnen
+### <a name="built-in-data-integration-via-pipelines"></a>Ingebouwde gegevensintegratie via pijplijnen
 
-Azure Synapse is ingebouwd met dezelfde gegevensintegratie-engine en ervaring als Azure Data Factory, zodat u uitgebreide gegevenspijplijnen kunt maken zonder een afzonderlijke indelingsengine te gebruiken.
+Azure Synapse is ingebouwd met dezelfde gegevensintegratie-engine en ervaring als Azure Data Factory, zodat u uitgebreide ETL-pijplijnen op schaal kunt maken zonder Synapse Analytics te verlaten.
 
-* Gegevens verplaatsen tussen Azure Synapse en meer dan 90 on-premises gegevensbronnen
-* Notebooks, pijplijnen, Spark-taken, SQL-scripts, opgeslagen procedures indelen
+* Gegevens opnemen uit meer dan 90 gegevensbronnen
 * Code-Free ETL met gegevensstroomactiviteiten
+* Notebooks, Spark-taken, opgeslagen procedures, SQL-scripts en meer indelen
 
 ### <a name="unified-management-monitoring-and-security"></a>Uniform beheer, bewaking en beveiliging
 

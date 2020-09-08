@@ -9,18 +9,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650108"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145889"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
 In dit artikel wordt aandacht besteed aan Azure Machine Learning, een cloudomgeving die u kunt gebruiken voor het trainen, implementeren, automatiseren, beheren en volgen van ML-modellen. 
 
-Azure Machine Learning kan worden gebruikt voor elk type machine learning, van klassieke ML tot deep learning, onder supervisie en zonder supervisie. Ongeacht of u liever in Python of R schrijft of opties voor geen of weinig code wilt gebruiken, zoals de [ontwerpfunctie](tutorial-designer-automobile-price-train-score.md), kunt u in een werkruimte van Azure Machine Learning zeer nauwkeurige machine learning en deep learning-modellen bouwen, trainen en volgen. 
+Azure Machine Learning kan worden gebruikt voor elk type machine learning, van klassieke ML tot deep learning, onder supervisie en zonder supervisie. Ongeacht of u liever in Python of R schrijft met de SDK of opties voor geen of weinig code wilt gebruiken in [de studio](#build-ml-models-in-the-studio), kunt u in een werkruimte van Azure Machine Learning machine learning en deep learning-modellen bouwen, trainen en volgen. 
 
 U kunt modellen eerst op uw lokale computer trainen en vervolgens opschalen naar de cloud. 
 
@@ -63,27 +63,31 @@ U kunt zelfs [MLflow gebruiken om metrische gegevens bij te houden en modellen t
 
 Begin met het trainen van modellen op uw lokale machine met behulp van de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python-SDK</a> of <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R-SDK</a> van Azure Machine Learning. Vervolgens kunt u uitschalen naar de cloud. 
 
-Dankzij de vele beschikbare [rekendoelen](how-to-set-up-training-targets.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
+Dankzij de vele beschikbare [rekendoelen](how-to-create-attach-compute-sdk.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
 
 U kunt de SDK ook gebruiken voor het [automatiseren van het trainen en afstemmen van modellen](tutorial-auto-train-models.md).
 
-## <a name="build-ml-models-with-no-code-tools"></a>ML-modellen bouwen met hulpprogramma's zonder code
+## <a name="build-ml-models-in-the-studio"></a>ML-modellen bouwen in de studio
 
-Voor de training en implementatie van modellen met geen of weinig code kunt u het volgende proberen:
+[Azure Machine Learning Studio](https://www.ml.azure.com) is een webportal in Azure Machine Learning voor opties met weinig code en zonder code voor het trainen van modellen, implementatie en asset-management. De studio kan worden geïntegreerd met de Azure Machine Learning SDK voor een naadloze ervaring. Zie [Wat is Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) voor meer informatie.
 
 + **Azure Machine Learning-ontwerpfunctie (preview)**
 
-  Gebruik de ontwerpfunctie voor het voorbereiden van gegevens voor machine learning-modellen zonder code te schrijven, evenals voor het trainen, testen, implementeren, beheren en volgen van de modellen. U hoeft niets te programmeren. U hoeft gegevenssets en modules alleen visueel met elkaar te verbinden om een model op te zetten. Probeer de [zelfstudie over de ontwerpfunctie](tutorial-designer-automobile-price-train-score.md).
+  Gebruik [de ontwerpfunctie](concept-designer.md) om Machine Learning-modellen te trainen en implementeren zonder code te schrijven. Volg de [zelfstudie over ontwerpen](tutorial-designer-automobile-price-train-score.md) om aan de slag te gaan. 
 
-  Meer informatie vindt u in [het overzichtsartikel over de ontwerpfunctie van Azure Machine Learning](concept-designer.md). 
+  ![Bewegende GIF van de interface voor slepen en neerzetten in Azure Machine Learning Designer](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Voorbeeld van ontwerpfunctie van Azure Machine Learning](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **Experimenten bijhouden**
 
-+ **Gebruikersinterface voor geautomatiseerde machine learning**
+  Meer informatie over het [bijhouden en visualiseren van experimenten voor datatechnologie](tutorial-first-experiment-automated-ml.md) in de studio. 
 
-  Leer hoe u [geautomatiseerde ML-experimenten](tutorial-first-experiment-automated-ml.md) maakt in de gebruiksvriendelijke interface. 
+    ![Details van de uitvoering in Azure Machine Learning Studio](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Navigatievenster van Azure Machine Learning Studio](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **En nog veel meer...**
+
+  Ga naar Azure Machine Learning Studio op [ml.azure.com](https://www.ml.azure.com). 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: Implementatie- en levenscyclusbeheer
 Wanneer u het juiste model hebt, kunt u dit eenvoudig gebruiken in een webservice, op een IoT-apparaat of in Power BI. Zie het artikel [Hoe implementeren en waar](how-to-deploy-and-where.md) voor meer informatie.

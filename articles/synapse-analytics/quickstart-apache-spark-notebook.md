@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Een Apache Spark voor Azure Synapse Analytics-notebook maken'
-description: In deze quickstart leert u hoe u met de webhulpprogramma's een Apache Spark-pool (preview) maakt in Azure Synapse Analytics en hoe u een Spark SQL-query uitvoert.
+title: "Quickstart: Een Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's"
+description: In deze quickstart leert u hoe u met de webhulpprogramma's een Apache Spark-pool maakt in Azure Synapse Analytics en hoe u een Spark SQL-query uitvoert.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496244"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049805"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's
 

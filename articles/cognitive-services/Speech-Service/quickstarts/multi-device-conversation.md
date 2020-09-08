@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: uitwisseling van meerdere apparaten-spraak service'
+title: 'Quickstart: Gesprek via meerdere apparaten - Speech-service'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u clients kunt maken en koppelen aan een uitwisseling met meerdere apparaten met behulp van de spraak-SDK.
+description: In deze quickstart leert u hoe u clients kunt maken en koppelen aan een gesprek via meerdere apparaten met behulp van de Speech-SDK.
 services: cognitive-services
 author: ralphe
 manager: cpoulain
@@ -11,14 +11,15 @@ ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: ralphe
 zone_pivot_groups: programming-languages-set-nine
-ms.openlocfilehash: 1b3995c60d8518be0bdc66f7758d1993a92606fc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e71c6959ca62fb19ed74ba4fa679f4edfb710725
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391584"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925883"
 ---
-# <a name="quickstart-multi-device-conversation"></a>Snelstartgids: uitwisseling van meerdere apparaten
+# <a name="quickstart-multi-device-conversation"></a>Quickstart: Gesprek via meerdere apparaten
 
 [!INCLUDE [Header](../includes/quickstarts/multi-device-conversation/header.md)]
 

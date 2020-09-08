@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687396"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294404"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Problemen met toegang tot Azure EA Portal oplossen
 
@@ -32,7 +32,7 @@ U kunt Azure EA Portal gebruiken om toegang te verlenen aan gebruikers met versc
 - Werk- of schoolaccount (meerdere tenants): voor organisaties die Active Directory met federatie hebben ingesteld voor de cloud en waarbij accounts verdeeld zijn over meerdere tenants.
 - Gemengd account: hiermee kunt u gebruikers met een Microsoft-account en/of met een werk- of schoolaccount toevoegen.
 
-Het eerste werk- of schoolaccount dat aan de inschrijving wordt toegevoegd, bepaalt welk domein wordt gebruikt: het _standaard_domein of het _hoofd_domein. Als u een werk- of schoolaccount aan een andere tenant wilt toevoegen, moet u het verificatieniveau van de inschrijving veranderen in verificatie voor meerdere tenants.
+Het eerste werk- of schoolaccount dat aan de inschrijving wordt toegevoegd, bepaalt het _standaard_domein. Als u een werk- of schoolaccount aan een andere tenant wilt toevoegen, moet u het verificatieniveau van de inschrijving veranderen in verificatie voor meerdere tenants.
 
 Het verificatieniveau bijwerken:
 

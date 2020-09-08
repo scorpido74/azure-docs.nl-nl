@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6eacaf2ec75c485dbdd7e66a73cdd36787da6126
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2b305b1ffc5c72780f903c7798fbce24c630baba
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752995"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321839"
 ---
 <a name="HOLTop"></a>
 
@@ -78,13 +78,13 @@ Voeg vervolgens een klassedefinitie toe voor **ComputerVisionQuickstarts**.
 
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Deze quickstart maakt gebruik van de Gradle-afhankelijkheidsmanager. U vindt de clientbibliotheek en informatie voor andere afhankelijkheidsbeheerders in de [Maven Central Repository](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
+Deze quickstart maakt gebruik van de Gradle-afhankelijkheidsmanager. U vindt de clientbibliotheek en informatie voor andere afhankelijkheidsbeheerders in de [Maven Central Repository](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision).
 
 Voeg in het bestand *build.gradle.kts* de Computer Vision-clientbibliotheek toe als afhankelijkheid.
 
 ```kotlin
 dependencies {
-    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.2-beta")
+    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.4-beta")
 }
 ```
 
@@ -204,26 +204,47 @@ Met de volgende code wordt informatie over het type afbeelding afgedrukt&mdash;,
 
 ## <a name="read-printed-and-handwritten-text"></a>Afgedrukte en handgeschreven tekst lezen
 
-Computer Vision kan zichtbare tekst in een afbeelding lezen en deze converteren naar een tekenstroom.
+Computer Vision kan zichtbare tekst in een afbeelding lezen en deze converteren naar een tekenstroom. In deze sectie wordt een methode gedefinieerd, `ReadFromFile`, die een lokaal bestandspad gebruikt en de tekst van de afbeelding naar de console verzendt.
 
 > [!NOTE]
 > U kunt ook tekst lezen in een externe afbeelding met behulp van de bijbehorende URL. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) voor scenario's met betrekking tot externe afbeeldingen.
 
-### <a name="call-the-recognize-api"></a>De Recognizer-API aanroepen
+### <a name="set-up-test-image"></a>Testafbeelding instellen
 
-Gebruik eerst de volgende code om de methode **recognizePrintedTextInStream** aan te roepen voor de gegeven afbeelding. Wanneer u deze code aan uw project toevoegt, moet u de waarde van `localTextImagePath` vervangen door het pad naar uw lokale afbeelding. U kunt een [voorbeeldafbeelding](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) downloaden en deze hier gebruiken.
+Maak een map **resources/** in de map **src/main/** van uw project en voeg een afbeelding toe waarvan u de tekst wilt lezen. U kunt een [voorbeeldafbeelding](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) downloaden en deze hier gebruiken.
+
+Voeg vervolgens de volgende methodedefinitie toe aan uw **ComputerVisionQuickstarts**-klasse. Wijzig, indien nodig, de waarde van de `localFilePath` zodat deze overeenkomt met het afbeeldingsbestand. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_setup)]
+
+### <a name="call-the-read-api"></a>De Read-API aanroepen
+
+Voeg vervolgens de volgende code toe om de methode **readInStreamWithServiceResponseAsync** voor de gegeven afbeelding aan te roepen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>Recognizer-resultaten afdrukken
 
-Met het volgende codeblok wordt de geretourneerde tekst verwerkt en geparseerd, waarna het eerste woord van elke regel wordt afgedrukt. U kunt deze code gebruiken om snel inzicht te krijgen in de structuur van een **OcrResult**-exemplaar.
+Met het volgende codeblok wordt de bewerkings-ID opgehaald uit het antwoord van de aanroep Lezen. Deze ID wordt in combinatie met een helper-methode gebruikt om de leesresultaten naar de console te verzenden. 
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_response)]
 
-Sluit als laatste het try/catch-blok en de methodedefinitie.
+Sluit het try/catch-blok en de methodedefinitie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
+
+### <a name="get-read-results"></a>Leesresultaten ophalen
+
+Voeg vervolgens een definitie voor de help-methode toe. Deze methode gebruikt de bewerkings-ID uit de vorige stap om een query uit te voeren op de Leesbewerking en om OCR-resultaten op te halen wanneer deze beschikbaar zijn.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_call)]
+
+De rest van de methode parseert de OCR-resultaten en verzendt deze naar de console.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_print)]
+
+Voeg tenslotte de andere gebruikte help-methode toe, waarmee de bewerkings-ID uit het eerste antwoord wordt geëxtraheerd.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -253,5 +274,5 @@ In deze quickstart hebt u geleerd hoe u de Computer Vision Java-bibliotheek kunt
 > [!div class="nextstepaction"]
 >[Referentie voor de Computer Vision (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
 
-* [Wat is Computer Vision?](../../Home.md)
+* [Wat is Computer Vision?](../../overview.md)
 * De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).

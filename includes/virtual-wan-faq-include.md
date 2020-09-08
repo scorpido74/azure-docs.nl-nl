@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604688"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304119"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
@@ -249,9 +249,12 @@ Wanneer een ExpressRoute-circuit is verbonden met een virtuele hub, vormen de Mi
 
 Het huidige gedrag is om de voorkeur te geven aan het ExpressRoute-circuit boven hub-naar-hub voor VNet-naar-VNet-connectiviteit. Dit wordt echter niet aanbevolen in een virtuele WAN-installatie. Het virtuele WAN-team werkt aan een oplossing om de voorkeur voor hub-naar-hub via het ExpressRoute-pad in te schakelen. Het wordt aanbevolen meerdere ExpressRoute-circuits (verschillende providers) met één hub te verbinden en de hub-naar-hub-connectiviteit van Virtual WAN te gebruiken voor regio-overschrijdende verkeersstromen.
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Kunnen hubs worden gemaakt in een andere resourcegroep in Virtual WAN?
+Ja. Deze optie is momenteel alleen beschikbaar via PowerShell. De Virtual WAN-portal vereist dat de hubs zich in dezelfde resourcegroep bevinden als de Virtual WAN-resource zelf.
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in Virtual WAN?
 
-IPv6 wordt niet ondersteund in Virtual WAN-hub en de bijbehorende gateways. Dit scenario wordt momenteel niet ondersteund als u een VNet hebt met IPv6-ondersteuning en u het VNet wilt verbinden met Virtual WAN.
+IPv6 wordt niet ondersteund in Virtual WAN-hub en de bijbehorende gateways. Dit scenario wordt momenteel niet ondersteund als u een VNet hebt met IPv4- en IPv6-ondersteuning en u het VNet wilt verbinden met Virtual WAN. 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Wat is de aanbevolen API-versie die door scripts moet worden gebruikt om verschillende Virtual WAN-functionaliteit te automatiseren?
 

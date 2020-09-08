@@ -6,14 +6,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file
-ms.date: 07/30/2020
-ms.openlocfilehash: fdae79912e6fe3bf2f7d55b7405cb7883e484c47
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/25/2020
+ms.openlocfilehash: f0e7e0909de80ead7b300a4d396bf3eb84515745
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602241"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055373"
 ---
 [Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
@@ -21,22 +21,15 @@ ms.locfileid: "88602241"
 
 * Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Zodra u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="Een Personalizer-resource maken"  target="_blank">een Personalizer-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Personalizer-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
-## <a name="using-this-quickstart"></a>Het gebruik van deze quickstart
+## <a name="setting-up"></a>Instellen
 
-Er zijn verschillende stappen voor het gebruik van deze quickstart:
+[!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-* Maak een Personalizer-resource in Azure Portal
-* Wijzig voor de Personalizer-resource, op de pagina **Configuratie** in Azure Portal, de frequentie van de modelupdate in een zeer korte interval
-* Maak in een code-editor een codebestand en bewerk het codebestand
-* Installeer de SDK vanaf de opdrachtregel of terminal
-* Voer het codebestand uit vanaf de opdrachtregel of terminal
-
-[!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
-
-[!INCLUDE [!Change model frequency](change-model-frequency.md)]
-
-## <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
+### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
 Maak een nieuwe .NET Core-toepassing in uw favoriete editor of IDE.
 
@@ -62,7 +55,7 @@ Build succeeded.
 ...
 ```
 
-## <a name="install-the-sdk"></a>De SDK installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
 Installeer in de toepassingsmap de Personalizer-clientbibliotheek voor .NET met de volgende opdracht:
 
@@ -70,7 +63,18 @@ Installeer in de toepassingsmap de Personalizer-clientbibliotheek voor .NET met 
 dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.0-preview
 ```
 
-Als u de Visual Studio-IDE, gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
+> [!TIP]
+> Als u de Visual Studio-IDE, gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
+
+Open vanuit de projectmap bestand `Program.cs` in uw favoriete editor of IDE. Voeg het volgende toe met behulp van de instructies:
+
+```csharp
+using Microsoft.Azure.CognitiveServices.Personalizer;
+using Microsoft.Azure.CognitiveServices.Personalizer.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+```
 
 ## <a name="object-model"></a>Objectmodel
 
@@ -86,45 +90,124 @@ Het bepalen van de beloningsscore in deze quickstart is triviaal. In een product
 
 Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Personalizer-clientbibliotheek voor .NET:
 
-* [Personalizer-client maken](#create-a-personalizer-client)
+* [Personalizer-client maken](#authenticate-the-client)
 * [Positie API](#request-the-best-action)
 * [Beloning API](#send-a-reward)
 
-## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open vanuit de projectmap het bestand **Program.cs** in uw favoriete editor of IDE. Vervang de bestaande `using`-code door de volgende `using`-instructies:
+## <a name="authenticate-the-client"></a>De client verifiëren
 
-[!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=Dependencies)]
+In deze sectie doet u twee dingen:
+* Uw sleutel en eindpunt opgeven
+* Personalizer-client maken
 
-## <a name="add-personalizer-resource-information"></a>Informatie over Personalizer-resource toevoegen
+Voeg eerst de volgende regels toe aan de klasse Programma. Denk erom dat u de sleutel en het eindpunt van uw Personalizer-resource toevoegt.
 
-Bewerk in de **Programma**-klasse de sleutel- en eindpuntvariabelen boven aan het codebestand bij voor de Azure-sleutel en het Azure-eindpunt van uw resource. 
+[!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
-[!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=classVariables)]
+```csharp
+private static readonly string ApiKey = "REPLACE-WITH-YOUR-PERSONALIZER-KEY";
+private static readonly string ServiceEndpoint = "https://REPLACE-WITH-YOUR-PERSONALIZER-RESOURCE-NAME.cognitiveservices.azure.com";
+```
 
-## <a name="create-a-personalizer-client"></a>Personalizer-client maken
+Voeg vervolgens een methode aan uw programma toe om een nieuwe Personalizer-client te maken.
 
-Maak vervolgens een methode voor het retourneren van een Personalizer-client. De parameter voor de methode is `PERSONALIZER_RESOURCE_ENDPOINT` en de ApiKey is `PERSONALIZER_RESOURCE_KEY`.
+```csharp
+static PersonalizerClient InitializePersonalizerClient(string url)
+{
+    PersonalizerClient client = new PersonalizerClient(
+        new ApiKeyServiceClientCredentials(ApiKey)) { Endpoint = url };
 
-[!code-csharp[Create the Personalizer client](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=authorization)]
+    return client;
+}
+```
 
 ## <a name="get-food-items-as-rankable-actions"></a>Levensmiddelen ophalen als te rangschikken acties
 
 Acties vertegenwoordigen de inhoudskeuzes waaruit Personalizer het beste inhoudsitem moet selecteren. Voeg de volgende methoden aan de klasse Programma toe om de reeks acties en hun functies te representeren. 
 
-[!code-csharp[Food items as actions](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createAction)]
+```csharp
+static IList<RankableAction> GetActions()
+{
+    IList<RankableAction> actions = new List<RankableAction>
+    {
+        new RankableAction
+        {
+            Id = "pasta",
+            Features =
+            new List<object>() { new { taste = "salty", spiceLevel = "medium" }, new { nutritionLevel = 5, cuisine = "italian" } }
+        },
+
+        new RankableAction
+        {
+            Id = "ice cream",
+            Features =
+            new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionalLevel = 2 } }
+        },
+
+        new RankableAction
+        {
+            Id = "juice",
+            Features =
+            new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionLevel = 5 }, new { drink = true } }
+        },
+
+        new RankableAction
+        {
+            Id = "salad",
+            Features =
+            new List<object>() { new { taste = "salty", spiceLevel = "low" }, new { nutritionLevel = 8 } }
+        }
+    };
+
+    return actions;
+}
+```
 
 ## <a name="get-user-preferences-for-context"></a>Gebruikersvoorkeuren voor context ophalen
 
 Voeg de volgende methoden aan de klasse Programma toe om vanaf de opdrachtregel de invoer van een gebruiker op te halen voor het tijdstip van de dag en de huidige voedselvoorkeur. Deze worden als contextkenmerken gebruikt.
 
-[!code-csharp[Present time out day preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTimeOfDay)]
+```csharp
+static string GetUsersTimeOfDay()
+{
+    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
 
-[!code-csharp[Present food taste preference to the user](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=createUserFeatureTastePreference)]
+    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
+    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
+        timeIndex = 1;
+    }
+
+    return timeOfDayFeatures[timeIndex - 1];
+}
+```
+
+```csharp
+static string GetUsersTastePreference()
+{
+    string[] tasteFeatures = new string[] { "salty", "sweet" };
+
+    Console.WriteLine("\nWhat type of food would you prefer (enter number)? 1. salty 2. sweet");
+    if (!int.TryParse(GetKey(), out int tasteIndex) || tasteIndex < 1 || tasteIndex > tasteFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + tasteFeatures[0] + ".");
+        tasteIndex = 1;
+    }
+
+    return tasteFeatures[tasteIndex - 1];
+}
+```
 
 Beide methoden maken gebruik van de methode `GetKey` om de vanaf de opdrachtregel selectie van de gebruiker te lezen.
 
-[!code-csharp[Read user's choice from the command line](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=readCommandLine)]
+```csharp
+private static string GetKey()
+{
+    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
+}
+```
 
 ## <a name="create-the-learning-loop"></a>De leerlus maken
 
@@ -132,7 +215,69 @@ De Personalizer-leerlus is een cyclus van [Positie](#request-the-best-action)- e
 
 Met de volgende code wordt herhaaldelijk vanaf de opdrachtregel de cyclus voor het vragen naar de voorkeuren van de gebruiker doorlopen. Deze gegevens worden naar Personalizer gestuurd om de beste actie te selecteren, waarbij de selectie aan de klant in een lijst wordt gepresenteerd om een keuze te kunnen maken. Vervolgens wordt er een beloningsscore naar Personalizer verzonden waarmee wordt aangegeven hoe goed de service de selectie heeft uitgevoerd.
 
-[!code-csharp[Learning loop](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=mainLoop)]
+```csharp
+static void Main(string[] args)
+{
+    int iteration = 1;
+    bool runLoop = true;
+
+    IList<RankableAction> actions = GetActions();
+
+    PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
+
+    do
+    {
+        Console.WriteLine("\nIteration: " + iteration++);
+
+        string timeOfDayFeature = GetUsersTimeOfDay();
+        string tasteFeature = GetUsersTastePreference();
+
+        IList<object> currentContext = new List<object>() {
+            new { time = timeOfDayFeature },
+            new { taste = tasteFeature }
+        };
+
+        IList<string> excludeActions = new List<string> { "juice" };
+
+        string eventId = Guid.NewGuid().ToString();
+
+        var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+        RankResponse response = client.Rank(request);
+
+        Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
+
+        float reward = 0.0f;
+        string answer = GetKey();
+
+        if (answer == "Y")
+        {
+            reward = 1;
+            Console.WriteLine("\nGreat! Enjoy your food.");
+        }
+        else if (answer == "N")
+        {
+            reward = 0;
+            Console.WriteLine("\nYou didn't like the recommended food choice.");
+        }
+        else
+        {
+            Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
+        }
+
+        Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+        foreach (var rankedResponse in response.Ranking)
+        {
+            Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
+        }
+
+        client.Reward(response.EventId, new RewardRequest(reward));
+
+        Console.WriteLine("\nPress q to break, any other key to continue:");
+        runLoop = !(GetKey() == "Q");
+
+    } while (runLoop);
+}
+```
 
 Voeg de volgende methoden toe, waarmee [de inhoudskeuzes worden opgehaald](#get-food-items-as-rankable-actions), voordat u het codebestand uitvoert:
 
@@ -147,7 +292,22 @@ Als u de Positie-aanvraag wilt voltooien, wordt naar de voorkeuren van de gebrui
 
 Deze quickstart bevat eenvoudige contextkenmerken over het tijdstip van de dag en de voedselvoorkeur van de gebruiker. In productiesystemen kan het bepalen en [evalueren](../concept-feature-evaluation.md) van [acties en kenmerken](../concepts-features.md) een ingewikkelde zaak zijn.
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=rank)]
+```csharp
+string timeOfDayFeature = GetUsersTimeOfDay();
+string tasteFeature = GetUsersTastePreference();
+
+IList<object> currentContext = new List<object>() {
+    new { time = timeOfDayFeature },
+    new { taste = tasteFeature }
+};
+
+IList<string> excludeActions = new List<string> { "juice" };
+
+string eventId = Guid.NewGuid().ToString();
+
+var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+RankResponse response = client.Rank(request);
+```
 
 ## <a name="send-a-reward"></a>Een beloning verzenden
 
@@ -155,7 +315,34 @@ Om ervoor te zorgen dat de beloningsscore de Beloning-aanvraag instuurt, haalt h
 
 In deze quickstart wordt een eenvoudig getal, een 0 of een 1, aan een beloningsscore toegewezen. In productiesystemen kan het bepalen van wanneer en wat er naar de [Beloning](../concept-rewards.md)-oproep moet worden gezonden een ingewikkelde zaak zijn, afhankelijk van uw specifieke behoeften.
 
-[!code-csharp[The Personalizer learning loop ranks the request.](~/cognitive-services-quickstart-code/dotnet/Personalizer/Program.cs?name=reward)]
+```csharp
+float reward = 0.0f;
+string answer = GetKey();
+
+if (answer == "Y")
+{
+    reward = 1;
+    Console.WriteLine("\nGreat! Enjoy your food.");
+}
+else if (answer == "N")
+{
+    reward = 0;
+    Console.WriteLine("\nYou didn't like the recommended food choice.");
+}
+else
+{
+    Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
+}
+
+Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+foreach (var rankedResponse in response.Ranking)
+{
+    Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
+}
+
+// Send the reward for the action based on user response.
+client.Reward(response.EventId, new RewardRequest(reward));
+```
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 

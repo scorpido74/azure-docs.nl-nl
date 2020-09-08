@@ -3,17 +3,17 @@ title: AWS-integratie met Azure Cost Management instellen
 description: Dit artikel begeleidt u bij het instellen en configureren van AWS voor de integratie van kosten- en gebruiksrapporten met Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 639d63df060a680e8c135a9be054ac412d1ca8dd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266070"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS-integratie van kosten- en gebruiksrapporten instellen en configureren
 
@@ -71,7 +71,6 @@ Gebruik de wizard Een nieuwe rol maken:
 5. Voer **432263259397** in **account-ID** in.
 6. In **Opties** selecteert u **externe ID vereisen (aanbevolen procedure wanneer een derde partij deze rol gaat gebruiken)** .
 7. Voer in **Externe id** de externe id in die een gedeelde wachtwoordcodecode is tussen de rol AWS en Azure Cost Management. Dezelfde externe ID wordt ook gebruikt op de pagina **Nieuwe connector** in Cost Management. Microsoft raadt u aan om een beleid voor sterke wachtwoordcodes te gebruiken bij het invoeren van de externe id.
-
     > [!NOTE]
     > Wijzig de selectie van **MFA vereisen** niet. Deze moet leeg blijven.
 8. Selecteer **Volgende: Permissions**.
@@ -148,23 +147,23 @@ De JSON van het beleid moet eruitzien als in het volgende voorbeeld. Vervang _bu
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Een nieuwe AWS-connector instellen in Azure
+## <a name="set-up-a-new-connector-for-aws-in-azure"></a>Een nieuwe connector voor AWS instellen in Azure
 
 Gebruik de volgende informatie om een AWS-connector te maken en te beginnen met het bewaken van uw AWS-kosten:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar **Kostenbeheer en facturering** > **Kostenbeheer**.
-3. Onder **Instellingen** selecteert u **Cloud-connectors (preview)** .  
-    ![Voorbeeld van de instelling Cloud-connectors (preview))](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
-4. Selecteer **+toevoegen** bovenaan de pagina om een connector te maken.
-5. Voer op de pagina **Een AWS-connector maken** in **Weergavenaam**een naam in voor uw connector.  
-    ![Voorbeeld van de pagina voor het maken van een AWS-connector](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. Selecteer desgewenst de standaardbeheergroep. Alle gedetecteerde gekoppelde accounts worden opgeslagen. U kunt dit later instellen.
-7. Selecteer in de sectie **Facturering** de optie **Automatisch de 1% op de algemene beschikbaarheid in rekening brengen** als u wilt zorgen voor een doorlopende bewerking wanneer de preview-periode verloopt. Als u de automatische optie selecteert, moet u een factureringsabonnement selecteren.
-8. Voor **Role ARN** voert u de waarde in die u hebt gebruikt bij het instellen van de functie in AWS.
-9. Voor **Externe id** voert u de waarde in die u hebt gebruikt bij het instellen van de rol in AWS.
-10. Voer voor **Rapportnaam** de naam in die u hebt gemaakt in AWS.
-11. Selecteer **Volgende**, en selecteer vervolgens **Maken**.
+3. Onder **Instellingen** selecteert u **Connectors voor AWS**.  
+4. Selecteer **+toevoegen** bovenaan de pagina om een connector te maken.  
+    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="Voorbeeld met de instelling van Connectors voor AWS" :::
+1. Voer op de pagina **Connector maken** in **Weergavenaam** een naam in voor uw connector.  
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="Voorbeeld van de pagina voor het maken van een AWS-connector" :::
+1. Selecteer desgewenst de standaardbeheergroep. Alle gedetecteerde gekoppelde accounts worden opgeslagen. U kunt dit later instellen.
+1. Stel in de sectie **Facturering** de optie **Automatisch verlengen** in op **Aan** als u deze connector wilt blijven gebruiken. Als u de automatische optie selecteert, moet u een factureringsabonnement selecteren.
+1. Voor **Role ARN** voert u de waarde in die u hebt gebruikt bij het instellen van de functie in AWS.
+1. Voor **Externe id** voert u de waarde in die u hebt gebruikt bij het instellen van de rol in AWS.
+1. Voer voor **Rapportnaam** de naam in die u hebt gemaakt in AWS.
+1. Selecteer **Volgende**, en selecteer vervolgens **Maken**.
 
 Het kan enkele uren duren voordat de nieuwe AWS-scopes, het geconsolideerde AWS-account, de gekoppelde AWS-accounts en de bijbehorende kostengegevens worden weergegeven.
 
@@ -178,16 +177,19 @@ Het toewijzen van connectormachtigingen aan gebruikers nadat detectie plaatsvind
 - Controleer of er nieuwe scopes zijn toegevoegd aan de bereik-kiezer. Selecteer **Vernieuwen** om de meest recente gegevens weer te geven.
 - Selecteer op de pagina **Cloudconnectors** de connector en selecteer **Ga naar de factureringsrekening** om het gekoppelde account aan beheergroepen toe te wijzen.
 
-## <a name="manage-cloud-connectors"></a>Cloudconnectors beheren
+> [!NOTE]
+> Beheergroepen worden momenteel niet ondersteund voor klanten met een Microsoft-klantovereenkomst (MCA). MCA-klanten kunnen de connector maken en hun AWS-gegevens weergeven. MCA-klanten kunnen hun Azure-kosten en AWS-kosten echter niet samen weergeven onder een beheergroep.
 
-Wanneer u een connector selecteert op de pagina **Cloudconnectors**, kunt u het volgende doen:
+## <a name="manage-aws-connectors"></a>AWS-connectors beheren
+
+Wanneer u een connector selecteert op de pagina **Connectors voor AWS**, kunt u het volgende doen:
 
 - Selecteer **Ga naar de factureringsrekening** om informatie weer te geven voor het geconsolideerde AWS-account.
 - Selecteer **Toegangsbeheer** om de roltoewijzing voor de connector te beheren.
 - Selecteer **Bewerken** om de connector bij te werken. U kunt het AWS-accountnummer niet wijzigen omdat het wordt weergegeven in de rol-ARN. U kunt echter wel een nieuwe connector maken.
 - Selecteer **Controleren** om de verificatietest opnieuw uit te voeren om ervoor te zorgen dat Cost Management gegevens kan verzamelen met behulp van de connectorinstellingen.
 
-![Voorbeeld van een lijst met gemaakte AWS-connectors](./media/aws-integration-setup-configure/list-aws-connectors.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="Voorbeeldgegevens van AWS-connector" :::
 
 ## <a name="set-up-azure-management-groups"></a>Azure-beheergroepen instellen
 
@@ -197,9 +199,9 @@ Als u kosten wilt scheiden, kunt u een beheergroep maken die alleen gekoppelde A
 
 ## <a name="set-up-an-aws-consolidated-account"></a>Een geconsolideerd AWS-account instellen
 
-Het geconsolideerde AWS-account combineert facturering en betaling voor meerdere AWS-accounts. Het fungeert ook als een gekoppeld AWS-account.
+Het geconsolideerde AWS-account combineert facturering en betaling voor meerdere AWS-accounts. Het fungeert ook als een gekoppeld AWS-account. U kunt de detailgegevens voor uw geconsolideerd AWS-account weergeven met behulp van de link op de pagina AWS-connector. 
 
-![Voorbeeld van details voor een geconsolideerd AWS-account](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="Voorbeeld van details voor een geconsolideerd AWS-account" :::
 
 Op de pagina kunt u het volgende doen:
 
@@ -221,7 +223,7 @@ Vanaf deze pagina kunt u het volgende doen:
 - **Update** selecteren om de koppeling van een gekoppeld AWS-account met een beheergroep bij te werken.
 - **Toegangsbeheer** selecteren om een roltoewijzing voor het bereik in te stellen.
 
-![Voorbeeld van de pagina Gekoppeld AWS-account](./media/aws-integration-setup-configure/aws-linked-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="Voorbeeld van de pagina Gekoppeld AWS-account" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>Machtigingen voor een gekoppeld AWS-account
 

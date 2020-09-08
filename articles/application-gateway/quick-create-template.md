@@ -1,20 +1,20 @@
 ---
 title: 'Quickstart: Webverkeer omleiden met behulp van een Resource Manager-sjabloon'
 titleSuffix: Azure Application Gateway
-description: Leer hoe u een Resource Manager-sjabloon kunt gebruiken om een Azure-toepassingsgateway te maken om webverkeer om te leiden naar virtuele machines in een back-endpool.
+description: In deze quickstart leert u hoe u een Resource Manager-sjabloon kunt gebruiken om een Azure-toepassingsgateway te maken om webverkeer om te leiden naar virtuele machines in een back-endpool.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705942"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961683"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - ARM-sjabloon
 

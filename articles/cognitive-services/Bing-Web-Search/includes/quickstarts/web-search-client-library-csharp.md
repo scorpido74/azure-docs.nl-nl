@@ -1,5 +1,5 @@
 ---
-title: Quick start voor Bing Web Search C#-client bibliotheek
+title: Quickstart voor Bing Web Search-clientbibliotheek voor C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,16 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925774"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931081"
 ---
-De Bing Web Search-client bibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw C#-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
+Met de Bing Web Search-clientbibliotheek kunt u Bing Web Search eenvoudig integreren in uw C#-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
-Wilt u de code nu zien? Voor beelden voor de [Bing Search-client bibliotheken voor .net](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) zijn beschikbaar op github.
+Wilt u de code nu zien? Voorbeelden voor de [Bing Search-clientbibliotheken voor .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) zijn beschikbaar op GitHub.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u verdergaat met deze snelstart moet u beschikken over:
@@ -33,9 +34,9 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 ## <a name="create-a-project-and-install-dependencies"></a>Een project maken en afhankelijkheden installeren
 
 > [!TIP]
-> Haal de nieuwste code op als een Visual Studio-oplossing van [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> Haal de nieuwste code als Visual Studio-oplossing op uit [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-De eerste stap bestaat uit het maken van een nieuw consoleproject. Als u hulp nodig hebt bij het instellen van een console project, raadpleegt u [Hallo wereld--uw eerste programma (programmeer handleiding voor C#)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
+De eerste stap bestaat uit het maken van een nieuw consoleproject. Als u hulp nodig hebt bij het opzetten van een consoleproject, raadpleegt u [Hello World: uw eerste programma (C#-programmeerhandleiding)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
 
 Met het [Web Search SDK-pakket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) wordt ook het volgende geïnstalleerd:
 
@@ -57,7 +58,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Een projectopzet maken
 
-Wanneer u het nieuwe consoleproject hebt gemaakt, moeten er een naamruimte en klasse voor uw toepassing zijn gemaakt. Uw programma moet er als volgt uitzien:
+Wanneer u het nieuwe consoleproject hebt gemaakt, moeten er een naamruimte en klasse voor uw toepassing zijn gemaakt. Uw programma moet eruitzien als dit voorbeeld:
 
 ```csharp
 namespace WebSearchSDK

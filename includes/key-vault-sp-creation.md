@@ -4,14 +4,14 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: d669874040b04af089b4d57333869fe34066720e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6dbdebb1a9fc31e225349cc7fca8366e8b8ed004
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842035"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378543"
 ---
-De eenvoudigste manier om een cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Een door App Service beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault](/azure/key-vault/general/managed-identity) voor meer informatie. 
+De eenvoudigste manier om een cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Verificatie bij Azure Key Vault](/azure/key-vault/general/authentication) voor meer informatie.
 
 In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie http://&lt;mijn-unieke-service-principal-naam&gt;.
 

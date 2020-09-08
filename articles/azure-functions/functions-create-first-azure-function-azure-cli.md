@@ -3,14 +3,14 @@ title: Een functie in Azure maken die reageert op HTTP-aanvragen
 description: Ontdek hoe u een functie maakt vanaf de opdrachtregel en vervolgens het lokale project publiceert op serverloze hosting in Azure Functions.
 ms.date: 03/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d63ae61dbaf969c021b0f1744e716068de88e4f8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547372"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145549"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quickstart: Een functie in Azure maken die reageert op HTTP-aanvragen
 
@@ -82,7 +82,7 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-Voer in een lege map de volgende opdracht uit om het Functions-project te genereren op basis van een [Maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html). Gebruik `-DjavaVersion=11` als u een Java 11-functie wilt implementeren. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. 
+Voer in een lege map de volgende opdracht uit om het Functions-project te genereren op basis van een [Maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html). Gebruik `-DjavaVersion=11` als u uw functies wilt uitvoeren in Java 11. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. 
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash

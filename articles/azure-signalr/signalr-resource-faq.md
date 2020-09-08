@@ -4,14 +4,15 @@ description: Snelle toegang tot veelgestelde vragen over de Azure SignalR Servic
 author: sffamily
 ms.service: signalr
 ms.topic: overview
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9aa510a055cb76b30508cb98a25cd9c919eb117d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192288"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928306"
 ---
 # <a name="azure-signalr-service-faq"></a>Veelgestelde vragen over Azure SignalR Service
 
@@ -78,8 +79,8 @@ We hebben in de blade Overzicht van Azure SignalR Service-resources al het juist
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Wat is de betekenis van de servicemodus `Default`/`Serverless`/`Classic`? Hoe kan ik kiezen?
 
 Modi:
-* Voor de `Default`-modus is de hubserver **vereist**. Als er geen serververbinding beschikbaar is voor de hub, mislukken de pogingen van de client om verbinding te maken met deze hub.
-* In de `Serverless`-modus is **GEEN** serververbinding toegestaan, dat wil zeggen dat alle serververbindingen worden geweigerd en alle clients actief moeten zijn in de serverloze modus.
+* Voor de `Default`-modus is de hubserver *vereist*. In deze modus wordt het clientverkeer met Azure SignalR gerouteerd naar de gekoppelde verbindingen van de centrale server. Er wordt met Azure SignalR gecontroleerd op een verbonden centrale server. Als er geen verbonden centrale server wordt gevonden, worden de binnenkomende clientverbindingen geweigerd met Azure SignalR. U kunt in deze modus ook **Beheer API** gebruiken om de verbonden clients rechtstreeks te beheren via Azure SignalR.
+* In de modus `Serverless` zijn *geen* serververbindingen toegestaan, dat wil zeggen dat alle serververbindingen worden geweigerd. Alle clients moeten actief zijn in de serverloze modus. Clients maken verbinding met de Azure-SignalR en gebruiken meestal serverloze technologieën, zoals **Azure Functions** voor het afhandelen van hublogica. Bekijk een [eenvoudig voorbeeld](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) waarin wordt gebruikmaakt van de modus Serverloos van Azure SignalR.
 * De `Classic`-modus is een gemengde status. Als een hub een serververbinding heeft, wordt de nieuwe client doorgestuurd naar de hub-server. Als dat niet het geval is, zal de client de serverloze modus activeren.
 
   Dit kan een probleem veroorzaken. Stel dat alle serververbindingen korte tijd worden verbroken: dan zullen sommige clients de serverloze modus zullen gebruiken in plaats van door te verwijzen naar de hub-server.

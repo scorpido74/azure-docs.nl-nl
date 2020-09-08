@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496749"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292534"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Quickstart: Een demo-app maken in de portal (Azure Cognitive Search)
 
@@ -61,7 +61,7 @@ De wizard biedt een basisindeling voor weergegeven zoekresultaten die ruimte bev
 
 1. Kies bij Beschrijving een veld dat details biedt waarmee iemand kan bepalen of er moet worden geklikt op het desbetreffende document.
 
-   ![gegevensbronpagina voor samplegegevens](media/search-create-app-portal/configure-results.png)
+   ![resultaten voor voorbeeldgegevens configureren](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Een zijbalk toevoegen
 
@@ -111,4 +111,4 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 Hoewel de standaard-app nuttig is voor de eerste verkenning en kleine taken, kunt u de concepten en werkstroom beter begrijpen als u de API's vroegtijdig bekijkt:
 
 > [!div class="nextstepaction"]
-> [Een index maken met behulp van de .NET-SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Een index maken met behulp van de .NET-SDK](./search-get-started-dotnet.md)

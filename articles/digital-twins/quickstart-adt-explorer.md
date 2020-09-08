@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893910"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055461"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Een voorbeeld van een Azure Digital Twins-scenario verkennen met behulp van ADT Explorer
 
@@ -26,6 +26,10 @@ De quickstart bevat de volgende hoofdstappen:
 1. Vooraf gemaakte modellen en graafgegevens uploaden om het voorbeeldscenario samen te stellen
 1. De gemaakte scenariograaf verkennen
 1. Wijzigingen aanbrengen in de graaf
+
+De voorbeeldgraaf waarmee u gaat werken, vertegenwoordigt een gebouw met twee verdiepingen en twee kamers. De graaf ziet er als volgt uit:
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden.":::
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -98,7 +102,7 @@ Klik bovenaan het venster op de knop *Sign in* (Aanmelden) om ADT Explorer zo te
 Voer de belangrijke informatie in die u eerder hebt verzameld in de sectie [Prerequisites](#prerequisites) (Vereisten):
 * (Client-)id van de app
 * (Tenant-)id van de map
-* ADT-URL, in de indeling *https://<instance host name>*
+* URL van ADT, in de indeling *https://{hostnaam van exemplaar}*
 
 >[!NOTE]
 > U kunt deze informatie op elk gewenst moment opnieuw bekijken/bewerken door hetzelfde pictogram te selecteren om het aanmeldingsvenster weer te openen. De waarden die u hebt doorgegeven, blijven bewaard.
@@ -170,7 +174,7 @@ Klik in het vak *GRAPH VIEW* (GRAAFWEERGAVE) op het pictogram *Import Graph* (Gr
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="In het vak Graph View (Grafiekweergave) is een pictogram gemarkeerd. Het laat een pijl zien die naar een wolk (de cloud) wijst." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-Ga in het bestandskeuzevak naar de map *client/examples* en kies het spreadsheetbestand _**buildingScenario.xlsx**_. Dit bestand bevat een beschrijving van de voorbeeldgraaf. Klik op OK.
+Ga in het bestandsselectievak naar de map *Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp* en kies het spreadsheetbestand _**buildingScenario.xlsx**_. Dit bestand bevat een beschrijving van de voorbeeldgraaf. Klik op OK.
 
 Na een paar seconden opent ADT Explorer een *Import*-weergave met een preview van de graaf die wordt geladen.
 

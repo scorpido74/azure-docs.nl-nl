@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d00fa5cf475eb2311bfa4b6f7dbe7dba70d080fd
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: db5b28ae0bffa16b17cb63471b8d5ba6b5ac94ed
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642330"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146569"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Quickstart: Een functie maken in Azure met behulp van Visual Studio Code
 
@@ -52,35 +52,35 @@ Voordat u aan de slag kunt gaan, moet u beschikken over de volgende vereisten:
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), vereist door Windows voor NPM. Alleen [Active LTS en Maintenance LTS-versies](https://nodejs.org/about/releases/). Gebruik de opdracht `node --version` om uw versie te controleren.
     Niet vereist voor lokale ontwikkeling in macOS en Linux.   
-::: zone-end  
+::: zone-end   
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), Active LTS en Maintenance LTS-versies (10.14.1 aanbevolen). Gebruik de opdracht `node --version` om uw versie te controleren.
-::: zone-end 
++ [Node.js](https://nodejs.org/), Active LTS en Maintenance LTS-versies (10.14.1 aanbevolen). Gebruik de opdracht `node --version` om uw versie te controleren.  
+::: zone-end  
 ::: zone pivot="programming-language-python"
 + [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/) worden ondersteund door Azure Functions (x64).
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ De [.NET Core SDK 3.1](https://www.microsoft.com/net/download)  
++ Zowel [.NET Core 3.1](https://www.microsoft.com/net/download) als [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)  
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 + [Java Developer Kit](https://aka.ms/azure-jdks), versie 8.
 
 + [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 ::: zone-end  
-+ [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
++ [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).    
 ::: zone pivot="programming-language-csharp"  
 + De [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) voor Visual Studio Code.  
 ::: zone-end  
-::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"  
 + De [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor Visual Studio Code.  
 ::: zone-end  
-::: zone pivot="programming-language-powershell"
-+ De [PowerShell-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
+::: zone pivot="programming-language-powershell"  
++ De [PowerShell-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
 ::: zone-end  
-::: zone pivot="programming-language-java"  
-+ Het [Java-uitbreidingspakket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone pivot="programming-language-java"   
++ Het [Java-uitbreidingspakket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
 ::: zone-end  
 
 + De [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio Code. 
@@ -120,6 +120,8 @@ In deze sectie gebruikt u Visual Studio Code om een lokaal Azure Functions-proje
 
     ::: zone pivot="programming-language-java"  
     + **Selecteer een taal voor uw functieproject**: Kies `Java`.
+
+    + **Een versie van Java selecteren**: Kies `Java 8` of `Java 11 (preview)`, waarmee uw functies in Azure worden uitgevoerd. Kies een Java-versie die u lokaal hebt geverifieerd.
 
     + **Geef een groeps-id op**: Kies `com.function`.
 

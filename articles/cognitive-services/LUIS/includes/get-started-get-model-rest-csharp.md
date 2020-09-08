@@ -1,5 +1,5 @@
 ---
-title: 'Model met REST-aanroep in C ophalen #'
+title: Model ophalen met REST-aanroep in C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,18 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 3b79785da683956bd9c698e8994168e70f77ad6c
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c03e403db7157a0b009278f0e343799e179e34c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416365"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931387"
 ---
-[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/LanguageUnderstanding/csharp-model-with-rest/Program.cs)
+[Referentiedocumentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [Voorbeeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/LanguageUnderstanding/csharp-model-with-rest/Program.cs)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [.NET Core 3,1](https://dotnet.microsoft.com/download)
+* [.NET Core 3.1](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>JSON-bestand met voorbeeldutterances
@@ -30,15 +31,15 @@ ms.locfileid: "84416365"
 
 [!INCLUDE [Create pizza app](get-started-get-model-create-pizza-app.md)]
 
-## <a name="change-model-programmatically"></a>Model via een programma wijzigen
+## <a name="change-model-programmatically"></a>Model programmatisch wijzigen
 
-1. Maak een nieuwe console toepassing met als doel de C#-taal, met de naam van het project en de map van `csharp-model-with-rest` .
+1. Maak een nieuwe consoletoepassing die op de C#-taal is gericht, met een project- en mapnaam van `csharp-model-with-rest`.
 
     ```console
     dotnet new console -lang C# -n csharp-model-with-rest
     ```
 
-1. Ga naar de `csharp-model-with-rest` map die u hebt gemaakt en installeer de vereiste afhankelijkheden met de volgende opdrachten:
+1. Ga naar de `csharp-model-with-rest`-map die u hebt gemaakt en installeer de vereiste afhankelijkheden met deze opdrachten:
 
     ```console
     cd csharp-model-with-rest
@@ -50,15 +51,15 @@ ms.locfileid: "84416365"
 
     [!code-csharp[Code snippet](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/csharp-model-with-rest/Program.cs)]
 
-1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
+1. Vervang de waarden die beginnen met `YOUR-` door uw eigen waarden.
 
-    |Informatie|Functie|
+    |Informatie|Doel|
     |--|--|
-    |`YOUR-APP-ID`| De ID van uw LUIS-app. |
-    |`YOUR-AUTHORING-KEY`|De bewerkings sleutel voor uw 32-teken.|
-    |`YOUR-AUTHORING-ENDPOINT`| Het eind punt van de ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
+    |`YOUR-APP-ID`| De id van uw LUIS-app. |
+    |`YOUR-AUTHORING-KEY`|Uw ontwerpsleutel van 32 tekens.|
+    |`YOUR-AUTHORING-ENDPOINT`| Het eindpunt van uw ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U heeft uw resourcenaam ingesteld toen u de resource aanmaakte.|
 
-    Toegewezen sleutels en resources zijn zichtbaar in de LUIS-Portal in de sectie beheren op de pagina **Azure-resources** . De App-ID is beschikbaar in hetzelfde gedeelte beheren op de pagina **Toepassings instellingen** .
+    Toegewezen sleutels en resources zijn zichtbaar in het LUIS-portaal in de sectie Beheren op de pagina **Azure-resources**. De App-ID is beschikbaar in hetzelfde gedeelte Beheren op de pagina **Toepassingsinstellingen**.
 
 1. Bouw de consoletoepassing.
 
@@ -72,7 +73,7 @@ ms.locfileid: "84416365"
     dotnet run
     ```
 
-1. Het ontwerp antwoord controleren:
+1. Het creatieantwoord controleren:
 
     ```console
     Added utterances.
@@ -159,7 +160,7 @@ ms.locfileid: "84416365"
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u de projectmap uit het bestands systeem.
+Wanneer u klaar bent met deze quickstart, verwijdert u de projectmap uit het bestandssysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

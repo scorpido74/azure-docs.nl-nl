@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b31f22f9a3909df308fdcfa994833887828f2539
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f1f044eb3af35019eaf010e118bc4a5814269e9e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876356"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378544"
 ---
 # <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>Quickstart: Azure Key Vault-clientbibliotheek met geheimen voor Python
 
@@ -27,7 +27,7 @@ Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen
 - Taken voor TLS/SSL-certificaten vereenvoudigen en automatiseren.
 - FIPS 140-2 level 2-gevalideerde HSM's gebruiken.
 
-[API-referentiedocumentatie](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault/)
+[API-referentiedocumentatie](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault-secrets/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -73,7 +73,7 @@ pip install azure.identity
 
 Met de Azure Key Vault-clientbibliotheek voor Python kunt u sleutels en gerelateerde assets, zoals certificaten en geheimen, beheren. In de onderstaande codevoorbeelden ziet u hoe u een client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
 
-De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+De voorbeeld-app waarin vergelijkbare bewerkingen worden getoond als in dit artikel, evenals andere Key Vault functies, is beschikbaar op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets/samples).
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -99,7 +99,7 @@ client = SecretClient(vault_url=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>Een geheim opslaan
 
-Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutelkluis plaatsen met behulp van de client.SetSecret-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync). Hiervoor is een naam vereist voor het geheim. In dit voorbeeld gebruiken we mySecret.  
+Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutelkluis plaatsen met behulp van de [methode set_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-). Hiervoor is een naam vereist voor het geheim. In dit voorbeeld gebruiken we 'mySecret'.  
 
 ```python
 client.set_secret(secretName, secretValue)
@@ -113,7 +113,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>Een geheim ophalen
 
-U kunt nu de eerder ingestelde waarde ophalen met de [methode client.GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+U kunt nu de eerder ingestelde waarde ophalen met de [methode get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-).
 
 ```python
 retrieved_secret = client.get_secret(secretName)
@@ -123,10 +123,10 @@ Uw geheim wordt nu opgeslagen als `retrieved_secret.value`.
 
 ### <a name="delete-a-secret"></a>Een geheim verwijderen
 
-Ten slotte gaan we het geheim uit uw sleutelkluis verwijderen met de [methode client.DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Ten slotte gaan we het geheim uit uw sleutelkluis verwijderen met de [methode begin_delete_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-).
 
 ```python
-client.delete_secret(secretName)
+client.begin_delete_secret(secretName)
 ```
 
 U kunt controleren of het geheim is verdwenen met de opdracht [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show):
@@ -183,7 +183,7 @@ retrieved_secret = client.get_secret(secretName)
 print(f"Your secret is '{retrieved_secret.value}'.")
 print(f"Deleting your secret from {keyVaultName} ...")
 
-client.delete_secret(secretName)
+client.begin_delete_secret(secretName)
 
 print(" done.")
 ```
@@ -192,6 +192,6 @@ print(" done.")
 
 In deze quickstart hebt u een sleutelkluis gemaakt, een geheim opgeslagen en dat geheim opgehaald. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
-- Lees een [Overzicht van Azure Key Vault](../general/overview.md)
-- Zie de [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
-- Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)
+- [Overzicht van Azure Key Vault](../general/overview.md)
+- [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
+- [Best practices voor Azure Key Vault](../general/best-practices.md)

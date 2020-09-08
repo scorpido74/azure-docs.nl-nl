@@ -1,6 +1,6 @@
 ---
-title: Wat is identiteits inrichting met Azure AD? | Microsoft Docs
-description: Hierin wordt een overzicht gegeven van het inrichten van identiteiten.
+title: Wat is identiteitsinrichting met Azure AD? | Microsoft Docs
+description: Geeft een overzicht van identiteitsinrichting.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,58 +11,58 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76712554"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228236"
 ---
 # <a name="what-is-identity-provisioning"></a>Wat is identiteitsinrichting?
 
-Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers moeten on-premises en in de Cloud toegang hebben tot toepassingen. Er moet sprake zijn van een enkele identiteit in deze verschillende toepassingen (on-premises en in de Cloud).
+Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers hebben zowel on-premises als in de cloud toegang tot toepassingen nodig. Er moet een enkele identiteit zijn in deze verschillende toepassingen (on-premises en in de cloud).
 
-Inrichting is het proces van het maken van een object op basis van bepaalde voor waarden, waarbij het object up-to-date wordt gehouden en het object wordt verwijderd wanneer niet langer aan de voor waarden wordt voldaan. Wanneer een nieuwe gebruiker bijvoorbeeld lid wordt van uw organisatie, wordt die gebruiker in het HR-systeem ingevoerd.  Op dat moment kan het inrichten van een bijbehorend gebruikers account in de Cloud, in Active Directory en verschillende toepassingen waartoe de gebruiker toegang nodig heeft, maken.  Op deze manier kan de gebruiker aan de slag gaan met het werken en toegang hebben tot de toepassingen en systemen die ze nodig hebben op dag één. 
+Inrichting is het proces van het maken van een object op basis van bepaalde voorwaarden, waarbij het object up-to-date wordt gehouden en wordt verwijderd wanneer niet langer aan de voorwaarden wordt voldaan. Wanneer een nieuwe gebruiker bijvoorbeeld toetreedt tot uw organisatie, wordt deze gebruiker ingevoerd in het HR-systeem.  Op dat moment kan met inrichting een bijbehorend gebruikersaccount worden gemaakt in de cloud, Active Directory, en verschillende toepassingen waartoe de gebruiker toegang nodig heeft.  Dit stelt de gebruiker meteen de eerste dag al in staat om aan de slag te gaan, en de benodigde toepassingen en systemen te gebruiken. 
 
-![Cloud inrichting](media/what-is-provisioning/cloud1.png)
+![cloudinrichting](media/what-is-provisioning/cloud1.png)
 
-Met betrekking tot Azure Active Directory kan inrichten worden uitgesplitst in de volgende belang rijke scenario's.  
+Met betrekking tot Azure Active Directory kan inrichting worden uitgesplitst in de volgende belangrijke scenario's.  
 
-- **[HR-inrichting inrichten](#hr-driven-provisioning)**  
+- **[Inrichting op basis van HR](#hr-driven-provisioning)**  
 - **[App-inrichting](#app-provisioning)**  
 - **[Directory-inrichting](#directory-provisioning)** 
 
-## <a name="hr-driven-provisioning"></a>HR-inrichting inrichten
+## <a name="hr-driven-provisioning"></a>Inrichting op basis van HR
 
-![Cloud inrichting](media/what-is-provisioning/cloud2.png)
+![cloudinrichting](media/what-is-provisioning/cloud2.png)
 
-Het inrichten van een uur naar de Cloud bestaat uit het maken van objecten (gebruikers, rollen, groepen enzovoort) op basis van de informatie in uw HR-systeem.  
+Bij inrichting van HR in de cloud moeten objecten (gebruikers, rollen, groepen, enzovoort) worden gemaakt op basis van de informatie die aanwezig is in uw HR-systeem.  
 
-Het meest voorkomende scenario zou zijn, wanneer een nieuwe werk nemer aan uw bedrijf deelneemt, ze worden ingevoerd in het HR-systeem.  Als dit het geval is, worden ze ingericht in de Cloud.  In dit geval Azure AD.  Het inrichten van HR kan betrekking hebben op de volgende scenario's. 
+Het meest voorkomende scenario is wanneer een nieuwe werknemer toetreedt tot uw bedrijf en deze wordt ingevoerd in het HR-systeem.  Als dit het geval is, wordt deze persoon ingericht in de cloud.  In dit geval Azure AD.  Inrichting vanuit HR kan voorkomen in de volgende scenario's. 
 
-- **Nieuwe werk nemers inhuren** : wanneer een nieuwe werk nemer wordt toegevoegd aan de Cloud, wordt automatisch een gebruikers account gemaakt in Active Directory, Azure Active Directory en optioneel Office 365 en andere SaaS-toepassingen die worden ondersteund door Azure AD, met een terugschrijf bewerking van het e-mail adres naar de Cloud.
-- **Updates van werknemers kenmerken en-profielen** : wanneer een werknemers record wordt bijgewerkt in de Cloud (zoals hun naam, titel of Manager), wordt het gebruikers account automatisch bijgewerkt in Active Directory, Azure Active Directory en optioneel Office 365 en andere SaaS-toepassingen die worden ondersteund door Azure AD.
-- **Beëindiging van werk nemers** : wanneer een werk nemer in de Cloud wordt beëindigd, wordt het gebruikers account automatisch uitgeschakeld in Active Directory, Azure Active Directory en optioneel Office 365 en andere SaaS-toepassingen die worden ondersteund door Azure AD.
-- Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in de Cloud HR opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Office 365 en andere SaaS-toepassingen die worden ondersteund door Azure AD.
+- **Nieuwe medewerkers aannemen**: wanneer een nieuwe werknemer wordt toegevoegd aan HR in de cloud, wordt automatisch een gebruikersaccount gemaakt in Active Directory, Azure Active Directory, en optioneel in Office 365 en andere SaaS-toepassingen die worden ondersteund in Azure AD, met een terugschrijfbewerking van het e-mailadres naar HR in de cloud.
+- **Updates van kenmerken en profielen van werknemers**: wanneer de record van een werknemer wordt bijgewerkt in de cloud (zoals naam, functie of manager), wordt het gebruikersaccount automatisch bijgewerkt in Active Directory, Azure Active Directory, en optioneel in Office 365 en andere SaaS-toepassingen die worden ondersteund in Azure AD.
+- **Ontslagen van werknemers**: wanneer een werknemer wordt verwijderd uit HR in de cloud, wordt het bijbehorende gebruikersaccount automatisch uitgeschakeld in Active Directory, Azure Active Directory, en optioneel in Office 365 en andere SaaS-toepassingen die worden ondersteund in Azure AD.
+- **Werknemers weer in dienst nemen**: wanneer een werknemer opnieuw wordt toegevoegd in HR in de cloud, kan het oude gebruikersaccount automatisch opnieuw worden geactiveerd of ingericht (afhankelijk van wat uw voorkeur heeft) in Active Directory, Azure Active Directory, en optioneel in Office 365 en andere SaaS-toepassingen die worden ondersteund in Azure AD.
 
 
 ## <a name="app-provisioning"></a>App-inrichting
 
-![Cloud inrichting](media/what-is-provisioning/cloud3.png)
+![cloudinrichting](media/what-is-provisioning/cloud3.png)
 
-In Azure Active Directory (Azure AD) verwijst de inrichting van de term **[app](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** naar het automatisch maken van gebruikers-id's en-rollen in de Cloud toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen zoals [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Sales Force](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)en meer.
+In Azure AD (Active Directory) verwijst de term **[app-inrichting](../app-provisioning/user-provisioning.md)** naar het automatisch maken van gebruikersidentiteiten en -rollen in de cloud-toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikersidentiteiten omvat automatische inrichting het onderhoud en de verwijdering van gebruikersidentiteiten, zoals gewijzigde status of rollen. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen als [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Sales Force](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) en meer.
 
 ## <a name="directory-provisioning"></a>Directory-inrichting
 
-![Cloud inrichting](media/what-is-provisioning/cloud4.png)
+![cloudinrichting](media/what-is-provisioning/cloud4.png)
 
 On-premises inrichting omvat het inrichten van on-premises bronnen (zoals Active Directory) naar Azure AD.  
 
-Het meest voorkomende scenario zou zijn wanneer een gebruiker in Active Directory (AD) is ingericht in azure AD.
+Het meest voorkomende scenario is wanneer een gebruiker in AD (Active Directory) wordt ingericht in Azure AD.
 
-Dit is bereikt door Azure AD Connect synchronisatie, Azure AD Connect Cloud inrichting en Microsoft Identity Manager. 
+Dit wordt gedaan via Azure AD Connect-synchronisatie, Azure AD Connect-cloudinrichting en Microsoft Identity Manager. 
  
 ## <a name="next-steps"></a>Volgende stappen 
 
 - [Wat is Azure AD Connect-cloudinrichting?](what-is-cloud-provisioning.md)
-- [Cloud inrichting installeren](how-to-install.md)
+- [Cloudinrichting installeren](how-to-install.md)

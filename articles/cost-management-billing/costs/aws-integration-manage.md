@@ -3,18 +3,18 @@ title: AWS-kosten en -gebruik beheren in Azure Cost Management
 description: In dit artikel leert u hoe u kostenanalyse en budgetten kunt gebruiken in Cost Management om uw AWS-kosten en -gebruik te beheren.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4d6a961388c9794a7584e8529dac75d068f91ed4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685014"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266175"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>AWS-kosten en -gebruik beheren in Azure
 
@@ -36,17 +36,18 @@ In de volgende secties wordt beschreven hoe u de bereiken gebruikt, zodat u de k
 
 ### <a name="view-aws-linked-accounts-under-a-management-group"></a>Gekoppelde AWS-accounts in een beheergroep bekijken
 
-Het weergeven van kosten met behulp van het bereik van een beheergroep is de enige manier om geaggregeerde kosten te zien die afkomstig zijn uit verschillende abonnementen en gekoppelde accounts. Als u een beheergroep gebruikt, krijgt u een weergave voor de gehele cloud.
+Het weergeven van kosten met behulp van het bereik van een beheergroep is de enige manier om geaggregeerde kosten te zien die afkomstig zijn uit verschillende Azure-abonnementen en gekoppelde AWS-accounts. Het gebruik van een beheergroep biedt u de mogelijkheid om samengevoegde cloudkosten van Azure en AWS te bekijken.
 
 Gebruik in Kostenanalyse de bereikkiezer om de beheergroep met de gekoppelde AWS-accounts te selecteren. Hier ziet u een voorbeeld van een afbeelding in de Azure-portal:
 
-![Voorbeeld van de weergave Bereik selecteren](./media/aws-integration-manage/select-scope01.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope01.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde accounts onder een beheergroep" :::
 
 Hier volgt een voorbeeld van de kosten van de beheergroep in Kostenanalyse, gegroepeerd op provider (Azure en AWS).
 
-![Voorbeeld van de kosten voor Azure en AWS voor een kwartaal in Kostenanalyse](./media/aws-integration-manage/cost-analysis-aws-azure.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Voorbeeld van de kosten voor Azure en AWS voor een kwartaal in Kostenanalyse" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+
+> [!NOTE]
+> Beheergroepen worden momenteel niet ondersteund voor klanten met een Microsoft-klantovereenkomst (MCA). MCA-klanten kunnen de connector maken en hun AWS-gegevens weergeven. MCA-klanten kunnen hun Azure-kosten en AWS-kosten echter niet samen weergeven onder een beheergroep.
 
 ### <a name="view-aws-linked-account-costs"></a>Kosten van gekoppelde AWS-accounts weergeven
 
@@ -54,21 +55,17 @@ Als u de kosten van gekoppelde AWS-accounts wilt weergeven, opent u de bereikkie
 
 Hier ziet u een voorbeeld waarin het bereik van gekoppelde AWS-accounts wordt geselecteerd.
 
-![Voorbeeld van de weergave Bereik selecteren](./media/aws-integration-manage/select-scope02.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Voorbeeld van de bereikkiezer met gekoppelde AWS-accounts" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>Kosten van geconsolideerde AWS-accounts weergeven
 
 Als u de kosten voor geconsolideerde AWS-accounts wilt bekijken, opent u de bereikkiezer en selecteert u het geconsolideerde AWS-account. Hier ziet u een voorbeeld waarin het bereik van een geconsolideerd AWS-account wordt geselecteerd.
 
-![Voorbeeld van de weergave Bereik selecteren](./media/aws-integration-manage/select-scope03.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Voorbeeld van de bereikkiezer met geconsolideerde accounts" :::
 
 Dit bereik biedt een geaggregeerde weergave van alle gekoppelde AWS-accounts die aan het geconsolideerde AWS-account zijn gekoppeld. Hier ziet u een voorbeeld van de kosten voor een geconsolideerd AWS-account, gegroepeerd op servicenaam.
 
-![Voorbeeld van geconsolideerde AWS-kosten in Kostenanalyse](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Voorbeeld van geconsolideerde AWS-kosten in Kostenanalyse" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimensies beschikbaar voor filteren en groeperen
 
@@ -77,19 +74,19 @@ In de volgende tabel worden de dimensies beschreven die beschikbaar zijn voor gr
 | Dimensie | Amazon CUR-kop | Bereiken | Opmerkingen |
 | --- | --- | --- | --- |
 | Beschikbaarheidszone | lineitem/AvailabilityZone | Alle |   |
-| Locatie | product/Region | Alle |   |
+| Locatie | product/Region | Alles |   |
 | Meter |   | Alle |   |
 | Metercategorie | lineItem/ProductCode | Alle |   |
 | Subcategorie van de meter | lineitem/UsageType | Alle |   |
 | Bewerking | lineItem/Operation | Alle |   |
 | Resource | lineItem/ResourceId | Alle |   |
-| Resourcetype | product/instanceType | Alle | Als product/instanceType null is, wordt lineItem/UsageType gebruikt. |
-| ResourceGuid | N.v.t. | Alle | GUID van Azure-meter. |
-| Servicenaam | product/ProductName | Alle | Als product/ProductName null is, wordt lineItem/ProductCode gebruikt. |
+| Resourcetype | product/instanceType | Alles | Als product/instanceType null is, wordt lineItem/UsageType gebruikt. |
+| ResourceGuid | N.v.t. | Alles | GUID van Azure-meter. |
+| Servicenaam | product/ProductName | Alles | Als product/ProductName null is, wordt lineItem/ProductCode gebruikt. |
 | Servicelaag |   |   |   |
 | Abonnements-id | lineItem/UsageAccountId | Geconsolideerd account en beheergroep |   |
 | Abonnementsnaam | N.v.t. | Geconsolideerd account en beheergroep | Accountnamen worden verzameld met behulp van de AWS-API's voor organisaties. |
-| Label | resourceTags/\* | Alle | Het voorvoegsel _user:_ wordt verwijderd uit door de gebruiker gedefinieerde labels om cloudtags toe te staan. Het voorvoegsel _aws:_ blijft intact. |
+| Label | resourceTags | Alles | Het voorvoegsel _user:_ wordt verwijderd uit door de gebruiker gedefinieerde labels om cloudtags toe te staan. Het voorvoegsel _aws:_ blijft intact. |
 | Factureringsaccount-id | bill/PayerAccountId | Beheergroep |   |
 | Naam van factureringsaccount | N.v.t. | Beheergroep | Accountnamen worden verzameld met behulp van de AWS-API's voor organisaties. |
 | Provider | N.v.t. | Beheergroep | AWS of Azure. |
@@ -98,7 +95,7 @@ In de volgende tabel worden de dimensies beschreven die beschikbaar zijn voor gr
 
 Gebruik budgetten om kosten proactief te beheren en aansprakelijkheid in uw organisatie te bevorderen. Budgetten worden ingesteld op de bereiken van geconsolideerde AWS-accounts en gekoppelde AWS-accounts. Hier volgt een voorbeeld van budgetten voor een geconsolideerd AWS-account die worden weergegeven in Cost Management:
 
-![Voorbeeld van budgetten voor een geconsolideerd AWS-account](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Voorbeeld van budgetten voor een geconsolideerd AWS-account" :::
 
 ## <a name="aws-data-collection-process"></a>Proces voor verzamelen van AWS-gegevens
 
@@ -110,15 +107,15 @@ Nadat de AWS-connector is ingesteld, worden de processen van het verzamelen en d
 
 ## <a name="aws-integration-pricing"></a>Prijzen voor AWS-integratie
 
-Elke AWS-connector krijgt 90 gratis proefdagen. Tijdens de openbare preview worden er geen kosten in rekening gebracht.
+Elke AWS-connector krijgt 90 gratis proefdagen.
 
 De catalogusprijs is 1% van de maandelijkse kosten van AWS. Elke maand worden er kosten in rekening gebracht op basis van de gefactureerde kosten van de vorige maand.
 
-Het gebruik van AWS-API's kan extra kosten met zich mee brengen.
+Het gebruik van AWS-API's kan extra kosten met zich mee brengen in AWS.
 
 ## <a name="aws-integration-limitations"></a>Beperkingen voor AWS-integratie
 
-- Cost Management biedt geen ondersteuning voor kostenrapporten die meerdere valutatypen bevatten. Er wordt een foutbericht weergegeven als u een bereik met meerdere valuta's selecteert.
+- Budgetten in Cost Management bieden geen ondersteuning voor beheergroepen met meerdere valuta's. Er wordt geen budgetevaluatie weergegeven voor beheergroepen met meerdere valuta's. Als u een beheergroep met meerdere valuta's selecteert bij het maken van een budget, wordt een foutbericht weergegeven.
 - Cloudconnectors bieden geen ondersteuning voor AWS GovCloud (US), AWS Gov of AWS China.
 - In Cost Management worden alleen _gebruikskosten_ van AWS weergegeven. Belastingen, ondersteuning, restituties, RI, tegoeden of andere kostensoorten worden nog niet ondersteund.
 

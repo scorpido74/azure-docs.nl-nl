@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658369"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269638"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Quickstart: Gegevens delen met Azure Data Share in Azure Portal
 
@@ -47,7 +47,7 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
 1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
 
-## <a name="create-a-data-share"></a>Een gegevensshare maken
+## <a name="create-a-share"></a>Een share maken
 
 1. Ga naar de overzichtspagina van uw gegevensshare.
 
@@ -57,15 +57,15 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
 1. Selecteer **Maken**.
 
-1. Vul de details in voor uw gegevensshare. Geef een naam, type share, beschrijving van de share-inhoud en gebruiksvoorwaarden (optioneel) op. 
+1. Vul de details in voor uw share. Geef een naam, type share, beschrijving van de share-inhoud en gebruiksvoorwaarden (optioneel) op. 
 
    ![EnterShareDetails](./media/enter-share-details.png "Gegevens van share invoeren") 
 
 1. Selecteer **Doorgaan**.
 
-1. Selecteer **Gegevenssets toevoegen** om gegevenssets aan uw gegevensshare toe te voegen. 
+1. Selecteer **Gegevenssets toevoegen** om gegevenssets toe te voegen aan de share. 
 
-   ![Gegevenssets](./media/datasets.png "Gegevenssets")
+   ![Gegevenssets toevoegen aan de share](./media/datasets.png "Gegevenssets")
 
 1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 

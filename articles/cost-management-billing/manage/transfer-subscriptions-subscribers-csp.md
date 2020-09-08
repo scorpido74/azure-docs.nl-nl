@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686602"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997571"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Overdracht van Azure-abonnementen tussen abonnees en CSP's
 
@@ -24,6 +24,9 @@ Dit artikel bevat de algemene stappen voor het overdragen van Azure-abonnementen
 CSP-partners voor directe facturering die zijn gecertificeerd als een [Azure Expert MSP (Managed Services provider)](https://partner.microsoft.com/membership/azure-expert-msp) kunnen een aanvraag indienen voor de overdracht van Azure-abonnementen voor hun klanten die een directe EA (Enterprise Agreement) hebben. Abonnementsoverdrachten zijn alleen toegestaan voor klanten die een Microsoft-klantovereenkomst (MCA) hebben geaccepteerd en een Azure-abonnement hebben gekocht.
 
 Wanneer de aanvraag is goedgekeurd, kan de CSP een gecombineerde factuur aanbieden aan klanten. Zie [Eigendom van facturering van Azure-abonnementen krijgen voor uw MPA-account](mpa-request-ownership.md) voor meer informatie over CSP's die abonnementen willen overdragen.
+
+>[!IMPORTANT]
+> Nadat een EA-abonnement is overgedragen naar een CSP-partner, worden alle quota die eerder zijn toegepast op het EA-abonnement, opnieuw ingesteld op de standaardwaarde. Als er na de overdracht van het abonnement een hoger quotum vereist is, laat u uw CSP-provider een aanvraag voor een [quotumverhoging](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests) indienen. 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>Andere abonnementsoverdrachten naar een CSP-partner
 

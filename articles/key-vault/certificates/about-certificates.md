@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604895"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923684"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
@@ -44,7 +44,8 @@ Wanneer een Key Vault-certificaat wordt gemaakt, kan het worden opgehaald uit he
 
 De adresseerbare sleutel wordt relevanter bij niet-exporteerbare KV-certificaten. De adresseerbare bewerkingen voor de KV-sleutel worden toegewezen uit het veld *keyusage* van het KV-certificaatbeleid dat wordt gebruikt om het KV-certificaat te maken.  
 
-Er worden bij certificaten twee typen sleutels ondersteund: *RSA-* of *RSA HSM*. Exporteerbaar is alleen toegestaan met RSA, en wordt niet ondersteund door RSA HSM.  
+ - Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
+
 
 ## <a name="certificate-attributes-and-tags"></a>Certificaatkenmerken en -tags
 

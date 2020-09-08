@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808232"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300116"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Een toepassing verwijderen uit uw Azure Active Directory-tenant (Azure AD)
 
@@ -30,6 +30,7 @@ Als u een toepassing wilt verwijderen uit uw Azure AD-tenant, hebt u het volgend
 - Optioneel: Voltooiing van [Uw apps weergeven](view-applications-portal.md).
 - Optioneel: Voltooiing van [Een app toevoegen](add-application-portal.md).
 - Optioneel: Voltooiing van [Een app configureren](add-application-portal-configure.md).
+- Optioneel: Voltooiing van [Gebruikers toewijzen aan een app](add-application-portal-assign-users.md).
 - Optioneel: Voltooiing van [Eenmalige aanmelding instellen](add-application-portal-setup-sso.md).
 
 >[!IMPORTANT]

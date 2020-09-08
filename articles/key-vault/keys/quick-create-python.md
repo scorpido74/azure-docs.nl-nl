@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: c590fea274900f580a5c8415f6b04c2f9108f74f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18ba00b39d8ffd703eb31b95d373e5b89e51c59b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876934"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376822"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Quickstart: Azure Key Vault-sleutelclientbibliotheek voor Python
 
@@ -68,7 +68,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-De eenvoudigste manier om een .NET-cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Use an App Service managed identity to access Azure Key Vault](../general/managed-identity.md) (Een door App Service beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault) voor meer informatie. 
+De eenvoudigste manier om een cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Verificatie bij Azure Key Vault](../general/authentication.md) voor meer informatie. 
 
 In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie http://&lt;mijn-unieke-service-principal-naam&gt;.
 
@@ -235,6 +235,6 @@ print(" done.")
 
 In deze quickstart hebt u een sleutelkluis gemaakt, een sleutel opgeslagen en die sleutel opgehaald. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
-- Lees een [Overzicht van Azure Key Vault](../general/overview.md)
-- Zie de [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
-- Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)
+- [Overzicht van Azure Key Vault](../general/overview.md)
+- [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
+- [Best practices voor Azure Key Vault](../general/best-practices.md)

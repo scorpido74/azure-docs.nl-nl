@@ -1,32 +1,37 @@
 ---
-title: 'Quickstart: Computer Vision-clientbibliotheek | Microsoft Docs'
+title: 'Quickstart: Computer Vision-clientbibliotheek'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze quickstart om uw toepassingen te verbinden met de Computer Vision-API van Azure Cognitive Services.
+description: Informatie over het gebruik van Azure Computer Vision in uw toepassing via een systeemeigen clientbibliotheek in de taal van uw keuze.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 08/31/2020
 ms.author: pafarley
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom:
+- devx-track-python
+- devx-track-javascript
+- devx-track-csharp
+- cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 699f2c3b16346a88bdd5828c32dc64225a712e05
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+keywords: computer vision, computer vision-service
+ms.openlocfilehash: 87ff6a03f45fe61b44712166966a1fe3851ffb41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852035"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321838"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Quickstart: De Computer Vision-clientbibliotheek gebruiken
 
-Aan de slag met de Computer Vision-clientbibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. Computer Vision geeft u toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie.
+Aan de slag met de Computer Vision-clientbibliotheek. De Computer Vision-service geeft u toegang tot AI-algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie over de bijbehorende visuele kenmerken. Volg deze stappen om een pakket in uw toepassing te installeren en de voorbeeldcode voor basistaken te proberen.
 
 Gebruik de Computer Vision-clientbibliotheek voor het volgende:
 
 * Een afbeelding analyseren op tags, tekstbeschrijvingen, gezichten, inhoud voor volwassenen, en meer.
-* Afgedrukte en handgeschreven tekst herkennen met de Batch Read-API.
+* Afgedrukte en handgeschreven tekst lezen met de Read-API.
 
 ::: zone pivot="programming-language-csharp"
 

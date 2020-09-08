@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
+ms.custom: include file, devx-track-javascript, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: e52aba2fe6189c8964fd6525581b0bd6ee6def48
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: b961bb0598a1f6e9cdc7b4df27af50e7af1d9d81
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246369"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323059"
 ---
 Gebruik de LUIS-clienbibliotheken (Language Understanding) voor Node.js voor het volgende:
 
 * Een app maken
-* Een intentie, een entiteit die via machine learning is verkregen, met een voorbeelduiting toevoegen
+* Voeg een intentie toe, een entiteit die via machine learning verkregen is, met een voorbeelduiting
 * App trainen en publiceren
 * Runtime queryvoorspelling
 
@@ -43,13 +43,13 @@ Gebruik de LUIS-clienbibliotheken (Language Understanding) voor Node.js voor het
     mkdir quickstart-sdk && cd quickstart-sdk
     ```
 
-1. Initialiseer de map als een JavaScript-toepassing door een `package.json`-bestand te maken. 
+1. Initialiseer de map als een JavaScript-toepassing door een `package.json`-bestand te maken.
 
     ```console
     npm init -y
     ```
 
-1. Maak een bestand met de naam `index.js` voor uw JavaScript-code. 
+1. Maak een bestand met de naam `index.js` voor uw JavaScript-code.
 
     ```console
     touch index.js
@@ -61,7 +61,7 @@ Installeer de afhankelijkheden in de toepassingsmap met de volgende opdrachten, 
 
 ```console
 npm install @azure/ms-rest-js
-npm install @azure/cognitiveservices-luis-authoring 
+npm install @azure/cognitiveservices-luis-authoring
 npm install @azure/cognitiveservices-luis-runtime
 ```
 
@@ -91,6 +91,8 @@ Uw `package.json` moet er als volgt uitzien:
 
 De creatieclient van Language Understanding (LUIS) is een [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest)-object dat wordt geverifieerd bij Azure, dat de creatiesleutel bevat.
 
+## <a name="code-examples-for-authoring"></a>Codevoorbeelden voor creatie
+
 Als de client is gemaakt, gebruikt u deze client voor toegang tot de functionaliteit, waaronder:
 
 * Apps: [toevoegen](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#add-applicationcreateobject--msrest-requestoptionsbase-), [verwijderen](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-), [publiceren](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-)
@@ -105,6 +107,8 @@ Als de client is gemaakt, gebruikt u deze client voor toegang tot de functionali
 
 De creatieclient van Language Understanding (LUIS) is een [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest)-object dat wordt geverifieerd bij Azure, dat de creatiesleutel bevat.
 
+## <a name="code-examples-for-prediction-runtime"></a>Codevoorbeelden voor voorspellingsruntime
+
 Als de client is gemaakt, gebruikt u deze client voor toegang tot de functionaliteit, waaronder:
 
 * [Voorspellings](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-) per `staging` of `production`-sleuf
@@ -118,16 +122,16 @@ Open het `index.js`-bestand in uw voorkeurseditor of IDE-naam en voeg de volgend
 
 [!code-javascript[Add NPM libraries to code file](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=Dependencies)]
 
-## <a name="add-boilerplate-code"></a>Standaardcode toevoegen 
+## <a name="add-boilerplate-code"></a>Standaardcode toevoegen
 
-1. Voeg de `quickstart`-methode en de aanroep toe. Deze methode bevat de meeste resterende code. Deze methode wordt op het einde van het bestand aangeroepen. 
+1. Voeg de `quickstart`-methode en de aanroep toe. Deze methode bevat de meeste resterende code. Deze methode wordt op het einde van het bestand aangeroepen.
 
     ```javascript
     const quickstart = async () => {
-    
+
         // add calls here
-    
-    
+
+
     }
     quickstart()
         .then(result => console.log("Done"))
@@ -136,9 +140,11 @@ Open het `index.js`-bestand in uw voorkeurseditor of IDE-naam en voeg de volgend
             })
     ```
 
-1. Voeg de resterende code toe in de quickstart-methode tenzij anders opgegeven. 
+1. Voeg de resterende code toe in de quickstart-methode tenzij die anders opgegeven.
 
 ## <a name="create-variables-for-the-app"></a>Variabelen maken voor de app
+
+Maak twee sets variabelen: de eerste set wijzigt u, de tweede set laat u zoals wordt weergegeven in het codevoorbeeld. 
 
 1. Maak variabelen om uw ontwerpsleutel en resourcenamen op te slaan.
 
@@ -152,7 +158,7 @@ Open het `index.js`-bestand in uw voorkeurseditor of IDE-naam en voeg de volgend
 
 Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest)-object met uw sleutel en gebruik het met uw eindpunt om een [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest)-object te maken.
 
-[!code-javascript[Create LUIS authoring client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
+[!code-javascript[Authenticate the client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>Een LUIS-app maken
 
@@ -160,7 +166,7 @@ Een LUIS-app bevat de intenties, entiteiten en voorbeelduitingen van het model v
 
 Maak een [add](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest)-methode van het [AppsOperation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest)-object om de app te maken. De naam en taalcultuur zijn vereiste eigenschappen.
 
-[!code-javascript[Create LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
+[!code-javascript[Create a LUIS app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
 
 
 ## <a name="create-intent-for-the-app"></a>Intentie voor de app maken
@@ -170,7 +176,7 @@ Gebruik de methode [model. add_intent](https://docs.microsoft.com/javascript/api
 
 De waarde `intentName` wordt in code vastgelegd in `OrderPizzaIntent` als onderdeel van de variabelen in de sectie [Variabelen maken voor de app](#create-variables-for-the-app).
 
-[!code-javascript[Create intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
+[!code-javascript[Create intent for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>Entiteiten voor de app maken
 
@@ -180,9 +186,9 @@ Het is belangrijk te weten dat entiteiten niet met een intentie zijn gemarkeerd.
 
 Methoden voor het maken van entiteiten maken deel uit van de klasse [Model](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest). Elk entiteitstype heeft een eigen gegevenstransformatieobjectmodel.
 
-Met de code voor het maken van een entiteit wordt een machine learning-entiteit gemaakt met subentiteiten en functies toegepast op de `Quantity`-subentiteiten.
+De code voor het maken van een entiteit maakt een machine learning-entiteit met subentiteiten en functies toegepast op de `Quantity`-subentiteiten.
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Met de code voor het maken van een entiteit wordt een machine learning-entiteit gemaakt met subentiteiten en functies toegepast op de 'Quantity'-subentiteiten.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Gedeeltelijke schermopname van de portal met de gemaakte entiteit, een machine learning-entiteit met subentiteiten en functies toegepast op de 'Quantity'-subentiteiten.":::
 
 [!code-javascript[Create entities for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddEntities)]
 
@@ -196,11 +202,11 @@ De app heeft voorbeelden van uitingen nodig om de intentie van een uiting te kun
 
 Voeg voorbeelduitingen toe door een lijst met [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest)-objecten te maken, één object voor elke voorbeelduiting. Elk voorbeeld moet alle entiteiten markeren met een woordenlijst met naam-/waardeparen met de naam en de waarde van de entiteit. De waarde van de entiteit moet exact zo zijn als deze wordt weergegeven in de tekst van de voorbeelduiting.
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="De waarde van de entiteit moet exact zo zijn als deze wordt weergegeven in de tekst van de voorbeelduiting.":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Gedeeltelijke schermopname van de gelabelde voorbeelduiting in de portal. ":::
 
 Roep [examples.add](https://docs.microsoft.com//javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#add-string--string--examplelabelobject--models-examplesaddoptionalparams-) aan met de app-id, versie-id en het voorbeeld.
 
-[!code-javascript[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
+[!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>De app trainen
 
@@ -210,9 +216,9 @@ Voor de methode [train.trainVersion](https://docs.microsoft.com/javascript/api/@
 
 Een heel klein model, kan heel snel worden getraind, zoals deze quickstart laat zien. Voor toepassingen op productieniveau moet het trainen van de app een pollingaanroep naar de methode [get_status](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#getstatus-string--string--msrest-requestoptionsbase-) omvatten om te bepalen of de training is geslaagd. De respons is een lijst met [ModelTrainingInfo](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/modeltraininginfo?view=azure-node-latest)-objecten met een afzonderlijke status voor elk object. De training is pas voltooid als alle objecten zijn geslaagd.
 
-[!code-javascript[Train the app's version](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
+[!code-javascript[Train the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>Een Language Understanding-app publiceren
+## <a name="publish-app-to-production-slot"></a>App publiceren naar productiesite
 
 Publiceer de LUIS-app met behulp van de methode [app.publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-). Hiermee wordt de huidige getrainde versie gepubliceerd naar de opgegeven sleuf op het eindpunt. Uw clienttoepassing gebruikt dit eindpunt om uitingen van gebruikers te verzenden voor het voorspellen van intenties en het extraheren van entiteiten.
 
@@ -225,7 +231,7 @@ Gebruik een msRest.ApiKeyCredentials-object met uw sleutel en gebruik het met uw
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-javascript [Create LUIS runtime client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
+[!code-javascript [Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>Voorspelling uit runtime ophalen
 
@@ -233,7 +239,7 @@ Voeg de volgende code toe om de aanvraag aan de voorspellingsruntime te maken. D
 
 De **[luisRuntimeClient.prediction.getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** -methode heeft verschillende parameters nodig, zoals de app-id, de naam van de sleuf en het voorspellingsaanvraagobject, om aan de aanvraag te voldoen. De andere opties, zoals verbose, show all intents en log, zijn optioneel.
 
-[!code-javascript [Get prediction based on query](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
+[!code-javascript [Get prediction from runtime](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 

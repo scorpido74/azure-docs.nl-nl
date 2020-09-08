@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461a424f23161e1567c6b32a38db0225efc56b1e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 040cc2dfa48f24fff4c7dda2cb6010efb01e9b86
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808385"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300133"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eenmalige aanmelding (SSO) instellen voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -32,6 +32,7 @@ Als u SSO wilt instellen voor een toepassing die u hebt toegevoegd aan uw Azure 
 - Optioneel: Voltooiing van [Uw apps weergeven](view-applications-portal.md).
 - Optioneel: Voltooiing van [Een app toevoegen](add-application-portal.md).
 - Optioneel: Voltooiing van [Een app configureren](add-application-portal-configure.md).
+- Optioneel: Voltooiing van [Gebruikers toewijzen aan een app](add-application-portal-assign-users.md).
 
 
 >[!IMPORTANT]

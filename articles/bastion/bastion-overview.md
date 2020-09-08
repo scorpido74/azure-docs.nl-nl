@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 01/31/2020
+ms.date: 09/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270339"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291871"
 ---
 # <a name="what-is-azure-bastion"></a>Wat is Azure Bastion?
 
@@ -26,7 +26,7 @@ De Azure Bastion-implementatie vindt plaats per virtueel netwerk, niet per abonn
 
 RDP en SSH zijn twee van de fundamentele middelen waarmee u verbinding kunt maken met uw werkbelastingen die worden uitgevoerd in Azure. Het beschikbaar maken van RDP-/SSH-poorten via internet is niet gewenst en wordt gezien als een aanzienlijke bedreiging. Dit komt vaak door kwetsbaarheden in protocollen. Om deze dreiging te beheersen, kunt u Bastion-hosts (ook wel jump-servers genoemd) aan de openbare kant van uw perimeternetwerk implementeren. Bastion-hostservers zijn ontworpen en geconfigureerd om aanvallen te weerstaan. Bastion-servers bieden ook RDP- en SSH-connectiviteit voor de werkbelastingen achter Bastion en dieper in het netwerk.
 
-![architectuur](./media/bastion-overview/architecture.png)
+![Azure Bastion-architectuur](./media/bastion-overview/architecture.png)
 
 In deze afbeelding ziet u de architectuur van een Azure Bastion-implementatie. In dit diagram:
 
@@ -46,6 +46,10 @@ De volgende functies zijn beschikbaar:
 * **Geen gedoe met het beheren van NSG's:** Azure Bastion is een volledig beheerde PaaS-service voor platformen van Azure die intern is beveiligd om u te voorzien van beveiligde RDP-/SSH-connectiviteit. U hoeft geen NSG's toe te passen op het Azure Bastion-subnet. Omdat Azure Bastion verbinding maakt met uw virtuele machines via een particulier IP-adres, kunt u uw NSG's zo configureren dat RDP/SSH alleen van Azure Bastion wordt toegestaan. Hiermee kunt u eenvoudig NSG’s beheren op de momenten waarop u een veilige verbinding met uw virtuele machines moet maken.
 * **Bescherming tegen het scannen van poorten:** Omdat u uw virtuele machines niet aan het openbare internet hoeft bloot te stellen, worden uw virtuele machines beschermd tegen poortscans door malafide en kwaadwillende gebruikers buiten uw virtuele netwerk.
 * **Bescherming tegen zero day-aanvallen. Beveiliging op slechts één plek:** Azure Bastion is een volledig door een platform beheerde PaaS-service. Omdat deze zich in de omgeving van uw virtuele netwerk bevindt, hoeft u zich geen zorgen te maken over de beveiliging van elke virtuele machine in uw virtuele netwerk. Het Azure-platform beschermt tegen zero day-aanvallen door de Azure Bastion te beveiligen en altijd up-to-date te houden.
+
+## <a name="whats-new"></a><a name="new"></a>Wat is er nieuw?
+
+Abonneer u op de RSS-feed en bekijk de nieuwste updates voor Azure Bastion-onderdelen op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion).
 
 ## <a name="faq"></a>Veelgestelde vragen
 

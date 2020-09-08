@@ -10,23 +10,22 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 7130ed2965e2df0d366635f6ce84c822c1359b59
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182694"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378165"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Quickstart: Een Java web-app maken in Azure App Service
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze quickstart ziet u hoe u de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) met de [Maven-invoegtoepassing voor Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) gebruikt om een webarchiefbestand (WAR) voor Java te implementeren.
+[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze quickstart ziet u hoe u [Azure CLI](/cli/azure/get-started-with-azure-cli) met de [Maven-invoegtoepassing voor Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) wordt gebruikt om een JAR-bestand of WAR-bestand te implementeren. Gebruik de tabbladen om te schakelen tussen de instructies voor Java SE en Tomcat.
 
-> [!NOTE]
-> In dit artikel werken we alleen met Java-apps die verpakt zijn in WAR-bestanden. De invoegtoepassing biedt ook ondersteuning voor JAR-webtoepassingen. Ga naar [Een Java SE JAR-bestand implementeren in App Service in Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) om dit uit te proberen.
 
 > [!NOTE]
 > Dit kan ook worden gedaan met populaire IDE's zoals IntelliJ en Eclipse. Bekijk onze vergelijkbare documenten via [Quickstart: Azure-toolkit voor IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) of [Quickstart: Azure-toolkit voor Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app).
->
+
+
 ![Voorbeeld-app uitgevoerd in Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,6 +33,22 @@ ms.locfileid: "88182694"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-java-app"></a>Een Java-app maken
+
+# <a name="java-se"></a>[Java SE](#tab/javase)
+
+Kloon het voorbeeldproject [Spring Boot Getting Started](https://github.com/spring-guides/gs-spring-boot).
+
+```bash
+git clone https://github.com/spring-guides/gs-spring-boot
+```
+
+Ga naar de map met het voltooide project.
+
+```bash
+cd gs-spring-boot/complete
+```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 Voer de volgende Maven opdracht uit in de Cloud Shell-prompt om een ​​nieuwe app met de naam `helloworld` te maken:
 
@@ -47,146 +62,140 @@ Wijzig vervolgens uw werkmap in de projectmap:
 cd helloworld
 ```
 
+---
+
 ## <a name="configure-the-maven-plugin"></a>De Maven-invoegtoepassing configureren
 
-Bij het implementeren naar Azure App Service kunnen uw Azure-referenties automatisch worden opgehaald van de Azure CLI. Als Azure CLI niet is geïnstalleerd, wordt u door de Maven-invoegtoepassing aangemeld met OAuth of apparaataanmelding. Raadpleeg indien nodig de details van [verificatie met Maven-invoegtoepassingen](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
+Bij het implementatieproces naar Azure App Service worden uw Azure-referenties automatisch opgehaald uit Azure CLI. Als Azure CLI niet lokaal is geïnstalleerd, wordt de verificatie met de Maven-invoegtoepassing uitgevoerd via OAuth of apparaataanmelding. Zie [verificatie met Maven-invoegtoepassingen](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) voor meer informatie.
 
-U kunt de onderstaande Maven-opdracht uitvoeren om de implementatie te configureren.
+Voer de onderstaande Maven-opdracht uit om de implementatie te configureren. Met deze opdracht kunt u het App Service-besturingssysteem, de Java-versie en de Tomcat-versie instellen.
+
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows" 
-U wordt gevraagd om het volgende te selecteren: 
-* **OS (standaardwaarde: `linux`)**
-* **Java Version (standaardwaarde: `1.8`)**
-* **Web Container (standaardwaarde: `tomcat 8.5`)** 
- 
-Zorg dat u **`2`** invoert om in de eerste stap **Windows** als het besturingssysteem (OS) te kiezen. De andere configuraties kunt u op de standaardwaarde laten staan door op **Enter** te drukken. Druk ten slotte op **`Y`** bij de prompt **Confirm (Y/N)** om de configuratie te voltooien.
+::: zone pivot="platform-windows"
 
-Een voorbeeldproces ziet er als volgt uit:
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-```console
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use: 2
-Define value for javaVersion(Default: 1.8): 
-1. 1.7
-2. 1.7.0_191_ZULU
-3. 1.7.0_51
-4. 1.7.0_71
-5. 1.7.0_80
-6. 1.8 [*]
-7. 1.8.0_102
-8. 1.8.0_111
-9. 1.8.0_144
-10. 1.8.0_172
-11. 1.8.0_172_ZULU
-12. 1.8.0_181
-13. 1.8.0_181_ZULU
-14. 1.8.0_202
-15. 1.8.0_202_ZULU
-16. 1.8.0_25
-17. 1.8.0_60
-18. 1.8.0_73
-19. 1.8.0_92
-20. 11
-21. 11.0.2_ZULU
-Enter index to use:
-Define value for webContainer(Default: tomcat 8.5): 
-1. jetty 9.1
-2. jetty 9.1.0.20131115
-3. jetty 9.3
-4. jetty 9.3.13.20161014
-5. tomcat 7.0
-6. tomcat 7.0.50
-7. tomcat 7.0.62
-8. tomcat 8.0
-9. tomcat 8.0.23
-10. tomcat 8.5 [*]
-11. tomcat 8.5.20
-12. tomcat 8.5.31
-13. tomcat 8.5.34
-14. tomcat 8.5.37
-15. tomcat 8.5.6
-16. tomcat 9.0
-17. tomcat 9.0.0
-18. tomcat 9.0.12
-19. tomcat 9.0.14
-20. tomcat 9.0.8
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1590394316693
-ResourceGroup : helloworld-1590394316693-rg
-Region : westeurope
-PricingTier : PremiumV2_P1v2
-OS : Windows
-Java : 1.8
-WebContainer : tomcat 8.5
-Deploy to slot : false
-Confirm (Y/N)? :
-[INFO] Saving configuration to pom.
-```
+1. Wanneer u hierom wordt gevraagd, selecteert u **Windows** door `2` in te voeren.
+2. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
+3. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
+
+    Het samenvattingsoverzicht ziet er ongeveer uit zoals het fragment hieronder.
+
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007390755
+    ResourceGroup : spring-boot-1599007390755-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : java 8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 41.118 s
+    [INFO] Finished at: 2020-09-01T17:43:45-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. Wanneer u hierom wordt gevraagd, selecteert u **Windows** door `2` in te voeren.
+1. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
+1. Gebruik de standaardwebcontainer, Tomcat 8.5, door op de ENTER-toets te drukken.
+1. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
+
+    Het samenvattingsoverzicht ziet er ongeveer uit zoals het fragment hieronder.
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003152123
+    ResourceGroup : helloworld-1599003152123-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : tomcat 8.5
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 03:03 min
+    [INFO] Finished at: 2020-09-01T16:35:30-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
-::: zone pivot="platform-linux"  
+::: zone pivot="platform-linux"
 
-U wordt gevraagd om het volgende te selecteren: 
-* **OS (standaardwaarde: `linux`)**
-* **Java Version (standaardwaarde: `Java 8`)**
-* **Web Container (standaardwaarde: `Tomcat 8.5`)** 
+### <a name="java-se"></a>[Java SE](#tab/javase)
 
-Alle configuraties kunt u op de standaardwaarde laten staan door op **Enter** te drukken. Druk ten slotte op **`Y`** bij de prompt **Confirm (Y/N)** om de configuratie te voltooien.
-Een voorbeeldproces ziet er als volgt uit:
+1. Wanneer u hierom wordt gevraagd, selecteert u **Linux-** door op de ENTER-toets te drukken.
+2. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
+3. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
 
-```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use:
-Define value for javaVersion(Default: jre8):
-1. Java 11
-2. Java 8 [*]
-Enter index to use:
-Define value for runtimeStack(Default: TOMCAT 8.5):
-1. TOMCAT 9.0
-2. TOMCAT 8.5 [*]
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1558400876966
-ResourceGroup : helloworld-1558400876966-rg
-Region : westeurope
-PricingTier : Premium_P1V2
-OS : Linux
-RuntimeStack : TOMCAT 8.5-jre8
-Deploy to slot : false
-Confirm (Y/N)? : Y
-```
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007116351
+    ResourceGroup : spring-boot-1599007116351-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : JAVA 8-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 20.925 s
+    [INFO] Finished at: 2020-09-01T17:38:51-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. Wanneer u hierom wordt gevraagd, selecteert u **Linux-** door op de ENTER-toets te drukken.
+1. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
+1. Gebruik de standaardwebcontainer, Tomcat 8.5, door op de ENTER-toets te drukken.
+1. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003744223
+    ResourceGroup : helloworld-1599003744223-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : TOMCAT 8.5-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 50.785 s
+    [INFO] Finished at: 2020-09-01T16:43:09-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
 
 U kunt de configuraties voor App Service indien nodig rechtstreeks in uw `pom.xml` wijzigen. Dit zijn een aantal algemene instellingen:
 
- Eigenschap | Vereist | Beschrijving | Versie
+Eigenschap | Vereist | Beschrijving | Versie
 ---|---|---|---
 `<schemaVersion>` | false | Geef de versie van het configuratieschema op. Ondersteunde waarden zijn: `v1` of `v2`. | 1.5.2
 `<resourceGroup>` | true | Azure-resourcegroep voor uw web-app. | 0.1.0+
@@ -203,12 +212,13 @@ Let op de waarden voor `<appName>` en `<resourceGroup>`(`helloworld-159039431669
 
 ## <a name="deploy-the-app"></a>De app implementeren
 
-Bij het implementeren naar Azure App Service worden accountreferenties uit de Azure CLI gebruikt. [Meld u aan met Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u doorgaat.
+Bij het implementeren naar App Services met de Maven-invoegtoepassing worden de accountreferenties uit Azure CLI gebruikt. [Meld u aan met Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u doorgaat.
 
 ```azurecli
 az login
 ```
-Implementeer vervolgens uw Java-app in Azure met de volgende opdracht:
+
+Implementeer vervolgens uw Java-app in Azure met de volgende opdracht.
 
 ```bash
 mvn package azure-webapp:deploy
@@ -235,13 +245,13 @@ Het kan een minuut duren voordat deze opdracht is uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Verbinding maken met Azure SQL Database met Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Verbinding maken met Azure SQL Database met Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met Azure DB voor MySQL met Java](/azure/mysql/connect-java)
+> [Verbinding maken met Azure DB voor MySQL met Java](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met Azure DB voor PostgreSQL met Java](/azure/postgresql/connect-java)
+> [Verbinding maken met Azure DB voor PostgreSQL met Java](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Resources voor Azure voor Java-ontwikkelaars](/java/azure/)
@@ -250,7 +260,7 @@ Het kan een minuut duren voordat deze opdracht is uitgevoerd.
 > [Java-app configureren](configure-language-java.md)
 
 > [!div class="nextstepaction"]
-> [CI/CD met Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)
+> [CI/CD met Jenkins](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
 
 > [!div class="nextstepaction"]
 > [Aangepast domein toewijzen](app-service-web-tutorial-custom-domain.md)

@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Een Azure-firewall en IP-groepen maken - Resource Manager-sjabloon'
-description: Ontdek hoe u met een Azure Resource Manager-sjabloon (AMR-sjabloon) een Azure-firewall en IP-groepen maakt.
+description: In deze quickstart leert u hoe u met een Azure Resource Manager-sjabloon (ARM-sjabloon) een Azure-firewall en IP-groepen maakt.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/06/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 97d1c14a61e98f98e45e25668841cee1ad9ce0d1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705466"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079129"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Quickstart: Een Azure-firewall en IP-groepen maken - ARM-sjabloon
 

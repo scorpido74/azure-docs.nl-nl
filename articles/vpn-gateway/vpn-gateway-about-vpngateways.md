@@ -6,20 +6,19 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855617"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015387"
 ---
 # <a name="what-is-vpn-gateway"></a>Wat is VPN Gateway?
 
 Een VPN-gateway is een speciaal soort virtueel-netwerkgateway die wordt gebruikt om versleuteld verkeer te verzenden tussen een virtueel Azure-netwerk en een on-premises locatie via het openbare internet. U kunt een VPN-gateway ook gebruiken om versleuteld verkeer tussen virtuele Azure-netwerken te verzenden via het Microsoft-netwerk. Elk virtueel netwerk kan slechts één VPN-gateway hebben. U kunt echter meerdere verbindingen met dezelfde VPN-gateway maken. Wanneer u meerdere verbindingen naar dezelfde VPN-gateway hebt gemaakt, delen alle VPN-tunnels de bandbreedte die voor de gateway beschikbaar is.
-
-VPN-gateways kunnen in Azure-beschikbaarheidszones worden geïmplementeerd. Dit zorgt voor tolerantie, schaalbaarheid en hogere beschikbaarheid voor virtuele netwerkgateways. Door gateways in Azure-beschikbaarheidszones te implementeren, worden gateways binnen een regio fysiek en logisch van elkaar gescheiden, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen storingen op zoneniveau. Zie [Zone-redundante virtuele netwerkgateways in Azure-beschikbaarheidszones](about-zone-redundant-vnet-gateways.md).
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Wat is een virtuele netwerkgateway?
 
@@ -33,9 +32,15 @@ Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren. Wa
 
 Een VPN-gatewayverbinding is afhankelijk van meerdere resources die zijn geconfigureerd met specifieke instellingen. De meeste resources kunnen afzonderlijk worden geconfigureerd, hoewel sommige resources in een bepaalde volgorde moeten worden geconfigureerd.
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>Ontwerp: Diagrammen over de verbindingstopologie
+### <a name="design"></a><a name="diagrams"></a>Ontwerp
 
-Het is belangrijk te weten dat er verschillende configuraties beschikbaar zijn voor VPN-gatewayverbindingen. U moet bepalen welke configuratie het beste aansluit bij uw behoeften. Punt-naar-site-, site-naar-site-en naast elkaar bestaande ExpressRoute/site-naar-site-verbindingen hebben bijvoorbeeld allemaal verschillende instructies en configuratievereisten. Zie [Ontwerp](design.md) voor meer informatie over diagrammen voor ontwerp- en verbindingstopologie.
+Het is belangrijk te weten dat er verschillende configuraties beschikbaar zijn voor VPN-gatewayverbindingen. U moet bepalen welke configuratie het beste aansluit bij uw behoeften. Punt-naar-site-, site-naar-site-en naast elkaar bestaande ExpressRoute/site-naar-site-verbindingen hebben bijvoorbeeld allemaal verschillende instructies en configuratievereisten. Zie [Ontwerp](design.md) voor meer informatie over het ontwerpen en weergeven van verbindingstopologiediagrammen.
+
+### <a name="planning-table"></a><a name="planningtable"></a>Tabel plannen
+
+De volgende tabel kan u helpen bij het kiezen van de beste connectiviteitsoptie voor uw oplossing.
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>Instellingen
 
@@ -44,12 +49,6 @@ De instellingen die u voor elke resource hebt gekozen, zijn essentieel om een ge
 ### <a name="deployment-tools"></a><a name="tools"></a>Implementatiehulpmiddelen
 
 U kunt beginnen met het maken en configureren van resources met een configuratiehulpprogramma, zoals Azure Portal. U kunt later besluiten over te schakelen naar een ander hulpprogramma, zoals PowerShell, om aanvullende resources te configureren, of om desgewenst bestaande resources te wijzigen. Op dit moment is het niet mogelijk om elke resource en resource-instelling in Azure Portal te configureren. De instructies in de artikelen voor elke verbindingstopologie geven aan of een specifiek confihuratiehulpprogramma nodig is.
-
-### <a name="planning-table"></a><a name="planningtable"></a>Tabel plannen
-
-De volgende tabel kan u helpen bij het kiezen van de beste connectiviteitsoptie voor uw oplossing.
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Gateway-SKU's
 
@@ -61,6 +60,10 @@ Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op.
 ### <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Gateway-SKU's per tunnel, verbinding en doorvoer
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
+
+## <a name="availability-zones"></a><a name="availability"></a>Beschikbaarheidszones
+
+VPN-gateways kunnen in Azure-beschikbaarheidszones worden geïmplementeerd. Dit zorgt voor tolerantie, schaalbaarheid en hogere beschikbaarheid voor virtuele netwerkgateways. Door gateways in Azure-beschikbaarheidszones te implementeren, worden gateways binnen een regio fysiek en logisch van elkaar gescheiden, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen storingen op zoneniveau. Zie [Zone-redundante virtuele netwerkgateways in Azure-beschikbaarheidszones](about-zone-redundant-vnet-gateways.md).
 
 ## <a name="pricing"></a><a name="pricing"></a>Prijzen
 

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 182cf54f58b4fbb8b80fb4ff9d7c1a9c1e353470
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1554722308675a44a9c144059cc9886996fa3166
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723908"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918431"
 ---
 # <a name="language-support-for-form-recognizer"></a>Taalondersteuning voor Form Recognizer
 
@@ -26,11 +26,11 @@ In dit artikel staan de menselijke talen die door de service Form Recognizer (Pr
 |:-----|:----:|:-----:|:---:|:---:|
 |Chinees (Vereenvoudigd) | `zh-Hans`| | ✔ |
 |Nederlands | `nl` | |✔ |
-|Engels | `en` |✔ |
+|Engels (gedrukt en handgeschreven) | `en` |✔ |
 |Frans | `fr` | |✔ |
 |Duits | `de` | |✔ |
 |Italiaans | `it` | |✔ |
 |Portugees | `pt` | |✔ |
 |Spaans | `es` | |✔ |
 
-* De openbare preview van Form Recognizer v2.1 ondersteunt deze talen voor de bewerkingen `Analyze Layout` en `Train Custom Model` (_Trainen met labels_ en _Trainen zonder labels_). `Analyze Receipt` en `Analyze Business Card` worden alleen ondersteund in het Engels.
+* Openbare preview van Form Recognizer v2.1 ondersteunt deze talen voor Indeling en Aangepast. Vooraf ontwikkelde ontvangstbewijzen en vooraf ontwikkelde visitekaartjes worden alleen ondersteund in het Engels.

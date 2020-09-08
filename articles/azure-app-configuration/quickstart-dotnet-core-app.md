@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5925d80f23052324e5512908241ed573c681d835
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 57202752a965ad0405a04b2eba4cdf42070c94bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590248"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319488"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Quickstart: Een .NET Core-app maken met App Configuration
 
@@ -44,7 +44,7 @@ U gebruikt de [opdrachtregelinterface (CLI) van .NET Core](https://docs.microsof
 
 1. Maak een nieuwe map voor uw project.
 
-2. Voer in de nieuwe map de volgende opdracht uit om een nieuw console-app-project van ASP.NET Core te maken:
+2. Voer in de nieuwe map de volgende opdracht uit om een nieuw console-app-project van NET Core te maken:
 
     ```dotnetcli
     dotnet new console

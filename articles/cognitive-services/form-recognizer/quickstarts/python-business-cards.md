@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823901"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934324"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Visitekaartjesgegevens extraheren met behulp van de Form Recognizer REST API met Python
 
@@ -25,7 +25,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze quickstart hebt u het volgende nodig:
+U hebt het volgende nodig om deze quickstart te voltooien:
 - [Python](https://www.python.org/downloads/) moet zijn geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
 - Een afbeelding van een visitekaartje. U kunt voor deze quickstart een [voorbeeldafbeelding](../media/business-card-english.jpg) gebruiken.
 
@@ -38,33 +38,35 @@ Voor het voltooien van deze quickstart hebt u het volgende nodig:
 
 ## <a name="analyze-a-business-card"></a>Een visitekaartje analyseren
 
-Als u wilt beginnen met het analyseren van een visitekaartje, roept u de **[Visitekaartje analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** -API aan met het Python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u wilt beginnen met het analyseren van een visitekaartje, roept u de **[Visitekaartje analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** -API aan met het Python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
-1. Vervang `<path to your business card>` door het pad naar het lokale formulierdocument.
+1. Vervang `<endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
+1. Vervang `<path to your business card>` door het lokale pad naar de afbeelding of PDF van uw visitekaartje.
 1. Vervang `<subscription key>` door de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang `<file type>` door 'image/jpeg', 'image/png', 'application/pdf' of 'image/tiff'.
 
     ```python
-    ########### Python Form Recognizer Async Business cards #############
+    ########### Python Form Recognizer Async Business Cards #############
 
     import json
     import time
     from requests import get, post
     
     # Endpoint URL
-    endpoint = r"<Endpoint>"
+    endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
     post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
+    content_type = "<file type>"
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': content_type,
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     
     params = {
-        "includeTextDetails": True
+        "includeTextDetails": True  # True to output all recognized text
     }
     
     with open(source, "rb") as f:
@@ -86,15 +88,15 @@ Als u wilt beginnen met het analyseren van een visitekaartje, roept u de **[Visi
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-businesscards.py`.
 
-U ontvangt een `202 (Success)`-antwoord met een **Operation-Location**-header, die het script naar de console afdrukt. Deze header bevat een bewerkings-id die u kunt gebruiken om query's uit te voeren op de status van de asynchrone bewerking en de resultaten op te halen. In de volgende voorbeeldwaarde is de tekenreeks na `operations/` de bewerkings-id.
+U ontvangt een `202 (Success)`-antwoord met een **Operation-Location**-header, die het script naar de console afdrukt. Deze header bevat een resultaat-id die u kunt gebruiken om query's uit te voeren op de status van de langdurige bewerking en de resultaten op te halen. In de volgende voorbeeldwaarde is de tekenreeks na `operations/` de resultaat-id.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>De visitekaartjesresultaten ophalen
 
-Nadat u de **Visitekaartje analyseren**-API hebt aangeroepen, roept u de **[Resultaat van Visitekaartje analyseren ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** -API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg onder aan uw Python-script de volgende code toe. Dit maakt gebruik van de bewerkings-id-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regelmatige tussenpozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van minimaal één seconde aan.
+Nadat u de **Visitekaartje analyseren**-API hebt aangeroepen, roept u de **[Resultaat van Visitekaartje analyseren ophalen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** -API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg onderaan uw Python-script de volgende code toe. Dit maakt gebruik van de resultaat-id-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regelmatige tussenpozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van minimaal één seconde aan.
 
 ```python
 n_tries = 10
@@ -129,7 +131,7 @@ while n_try < n_tries:
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 ![Een visitekaartje van het Contoso-bedrijf](../media/business-card-english.jpg)
 
-In dit voorbeeld wordt de JSON-uitvoer weergegeven die Form Recognizer retourneert. Dit voorbeeld is ingekort zodat het beter leesbaar is.
+In dit voorbeeld wordt de JSON-uitvoer weergegeven die Form Recognizer retourneert. De uitvoer is ingekort zodat deze beter leesbaar is.
 
 ```json
 {
@@ -243,7 +245,7 @@ In dit voorbeeld wordt de JSON-uitvoer weergegeven die Form Recognizer retournee
 }
 ```
 
-Met het script worden antwoorden naar de console afgedrukt totdat de **Visitekaartje analyseren**-bewerking is voltooid. Het knooppunt `"readResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knooppunt `"documentResults"` bevat de visitekaartjeswaarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel-waardeparen zoals bedrijfsnaam, voornaam, achternaam, telefoonnummer enzovoort.
+Met het script worden antwoorden naar de console afgedrukt totdat de **Visitekaartje analyseren**-bewerking is voltooid. Het knooppunt `"readResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knooppunt `"documentResults"` bevat de visitekaartjeswaarden die het model heeft gedetecteerd. Hier vindt u nuttige contactgegevens zoals bedrijfsnaam, voornaam, achternaam, telefoonnummer, enzovoort.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -251,4 +253,4 @@ Met het script worden antwoorden naar de console afgedrukt totdat de **Visitekaa
 In deze quickstart hebt u de Form Recognizer REST API met Python gebruikt om de inhoud van een visitekaartje te extraheren. Raadpleeg hierna de referentiedocumentatie om de Form Recognizer API verder te verkennen.
 
 > [!div class="nextstepaction"]
-> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API-referentiedocumentatie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

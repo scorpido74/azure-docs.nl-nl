@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Virtuele hub beveiligen met Azure Firewall Manager - Resource Manager-sjabloon'
-description: Meer informatie over het beveiligen van uw virtuele hub met Azure Firewall Manager.
+description: In deze quickstart leert u hoe u uw virtuele hub kunt beveiligen met Azure Firewall Manager.
 services: firewall-manager
 author: vhorne
-ms.service: firewall
+ms.service: firewall-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705755"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075338"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Quickstart: Uw virtuele hub beveiligen met Azure Firewall Manager - ARM-sjabloon
 

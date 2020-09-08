@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de Bing Automatische suggesties-client bibliotheek gebruiken'
+title: 'Quickstart: De clientbibliotheek voor Bing Automatische suggesties gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De automatische suggestie-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
+description: De Automatische suggesties-API biedt clientbibliotheken aan waarmee u eenvoudig zoekmogelijkheden in uw toepassingen kunt integreren. Gebruik deze quickstart om zoekaanvragen te sturen en resultaten terug te krijgen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,15 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: aahi
-ms.openlocfilehash: ea8054c74d90253a0311d05ba63d1d1e6a6ab648
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 30043f10deeeae66b07ee9502745c657fac1f72d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887548"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931858"
 ---
-# <a name="quickstart-use-the-bing-autosuggest-client-library"></a>Snelstartgids: de Bing Automatische suggesties-client bibliotheek gebruiken
+# <a name="quickstart-use-the-bing-autosuggest-client-library"></a>Quickstart: De clientbibliotheek voor Bing Automatische suggesties gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

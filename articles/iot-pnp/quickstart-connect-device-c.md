@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352615"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959286"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Quickstart: Een voorbeeld van een IoT Plug and Play Preview-apparaattoepassing die in Linux of Windows wordt uitgevoerd, verbinden met IoT Hub (C)
 
@@ -117,7 +117,10 @@ U gebruikt de SDK van het apparaat om de opgenomen voorbeeldcode te maken:
 
 U kunt als volgt de voorbeeldtoepassing in de SDK uitvoeren waarmee een IoT Plug en Play-apparaat wordt gesimuleerd en telemetrie van het apparaat wordt verzonden naar uw IoT-hub:
 
-Maak een omgevingsvariabele genaamd **IOTHUB_DEVICE_CONNECTION_STRING** om de apparaatverbindingsreeks op te slaan die u eerder hebt genoteerd.
+Maak twee omgevingsvariabelen om het voorbeeld te configureren voor het gebruik van een verbindingsreeks om verbinding te maken met uw IoT-hub:
+
+- **IOTHUB_DEVICE_SECURITY_TYPE** met de waarde `"connectionString"`
+- **IOTHUB_DEVICE_CONNECTION_STRING** om de apparaatverbindingsreeks op te slaan die u eerder hebt genoteerd.
 
 Navigeer vanuit de map _cmake_ naar de map met het uitvoerbare bestand en voer het uit:
 
