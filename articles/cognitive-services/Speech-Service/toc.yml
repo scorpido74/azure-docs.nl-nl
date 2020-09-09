@@ -16,24 +16,14 @@
   items:
     - name: Documentatie over spraak naar tekst
       href: index-speech-to-text.yml
-    - name: Overzicht
-      items:
-        - name: Wat is spraak-naar-tekst?
-          href: speech-to-text.md
-        - name: Basisbeginselen van spraakherkenning
-          href: speech-to-text-basics.md
-    - name: Snelstartgidsen
-      items:
-        - name: Spraak herkennen met microfooninvoer
-          href: quickstarts/speech-to-text-from-microphone.md
-        - name: Spraak herkennen vanuit een audiobestand
-          href: quickstarts/speech-to-text-from-file.md
-        - name: Spraak herkennen die is opgeslagen in blobopslag
-          href: quickstarts/from-blob.md
-        - name: Een model testen met audiobestanden in Speech Studio
-          href: quickstarts/speech-studio-test-model.md
+    - name: Overzicht van spraak-naar-tekst
+      href: speech-to-text.md
+    - name: Quickstart voor spraak-naar-tekst
+      href: get-started-speech-to-text.md
     - name: Instructiegidsen
       items:
+        - name: Spraak herkennen die is opgeslagen in blobopslag
+          href: quickstarts/from-blob.md
         - name: Spraakherkenningsmodus kiezen
           href: how-to-choose-recognition-mode.md
         - name: Brontaal voor spraakherkenning wijzigen
@@ -57,6 +47,8 @@
           href: tutorial-tenant-model.md
     - name: Aanpassing
       items:
+        - name: Een model testen met audiobestanden in Speech Studio
+          href: quickstarts/speech-studio-test-model.md
         - name: Gegevens voorbereiden voor Custom Speech
           href: how-to-custom-speech-test-and-train.md
         - name: Custom Speech-gegevens controleren
@@ -75,33 +67,29 @@
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Naslaginformatie
       items:
-        - name: Speech-SDK API's
-          items:
-            - name: C++
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/cppref'
-            - name: C#
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/csharpref'
-            - name: Java
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
-              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javascriptref'
-            - name: Objective-C
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/objectivecref'
-            - name: Python
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/pythonref'
-            - name: Releaseopmerkingen
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-              href: releasenotes.md
-        - name: REST-API’s
-          items:
-            - name: REST API voor spraak-naar-tekst
-              href: rest-speech-to-text.md
+        - name: C++
+          displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/cppref'
+        - name: C#
+          displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/csharpref'
+        - name: Java
+          displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javaref'
+        - name: Javascript
+          displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javascriptref'
+        - name: Objective-C
+          displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/objectivecref'
+        - name: Python
+          displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/pythonref'
+        - name: Releaseopmerkingen
+          displayName: 'release notes,updates,what''s new,what is new,changes'
+          href: releasenotes.md
+        - name: REST API voor spraak-naar-tekst
+          href: rest-speech-to-text.md
     - name: Resources
       items:
         - name: Taalondersteuning

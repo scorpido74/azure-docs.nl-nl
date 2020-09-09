@@ -4,15 +4,15 @@ description: Hierin wordt Azure HPC Cache beschreven, een versnellingsoplossing 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053676"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611742"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
@@ -65,11 +65,11 @@ De functie [door klant beheerde sleutels](customer-keys.md) wordt alleen in deze
 * VS (overheid) - Arizona
 * VS (overheid) - Virginia
 
-## <a name="service-availability"></a>Beschikbaarheid van de service
+<!-- ## Service availability
 
-U moet toegang aanvragen voor elk abonnement dat u wilt gebruiken voor Azure HPC Cache. Door deze beperking wordt servicekwaliteit beter gegarandeerd.
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache) in te vullen. Nadat uw abonnement is toegevoegd aan de toegangslijst kunt u caches maken.
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
 ## <a name="next-steps"></a>Volgende stappen
 

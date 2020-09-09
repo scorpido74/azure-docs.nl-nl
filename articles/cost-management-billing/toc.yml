@@ -4,7 +4,7 @@
   items:
     - name: Wat is Kostenbeheer en facturering?
       href: cost-management-billing-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Beginnen met analyseren van kosten
@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: Factureringsaccounts voor Microsoft-partnerovereenkomst
           href: understand/mpa-overview.md
+        - name: Abonnementen uitwisselen tussen partners (preview)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: Instructiegidsen
   items:
     - name: Kostenbeheer en facturering configureren

@@ -1,13 +1,11 @@
 ---
-ms.openlocfilehash: 38d96ccb9f2c7b24e57b1096996df1ea760aca37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690995"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566898"
 ---
-## <a name="generate-and-deploy-the-deployment-manifest"></a>Het implementatiemanifest genereren en implementeren
-
 Het implementatiemanifest geeft aan welke modules op een edge-apparaat worden geïmplementeerd. Ook bevat het de configuratie-instellingen voor deze modules. 
 
 Volg deze stappen om het manifest te genereren op basis van het sjabloonbestand en het vervolgens te implementeren op het edge-apparaat.

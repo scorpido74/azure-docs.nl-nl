@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dce42f1b8bfe58e4d147ba1c982cb770590dfa92
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1a9dc47888110836239c59f6a7542f71f753dd3a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845116"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568180"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Quickstart: Blobs beheren met Python v12 SDK
 
@@ -82,10 +82,10 @@ Ga als volgt te werk vanuit de projectmap:
 
     ```python
     import os, uuid
-    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
     try:
-        print("Azure Blob storage v12 - Python quickstart sample")
+        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
         # Quick start code goes here
     except Exception as ex:
         print('Exception:')
@@ -292,5 +292,5 @@ Als u voorbeeld-apps voor Blob-opslag wilt zien, ga dan naar:
 > [!div class="nextstepaction"]
 > [Azure Blob SDK v12 Python-voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* Zie de [Azure Storage-clientbibliotheken voor Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) voor meer informatie.
+* Zie de [Azure Storage-clientbibliotheken voor Python](/azure/developer/python/sdk/storage/overview) voor meer informatie.
 * Ga naar [Azure voor Python-ontwikkelaars](/azure/python/) voor zelfstudies, voorbeelden, quickstarts en andere documentatie.

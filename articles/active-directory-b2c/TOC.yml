@@ -69,6 +69,8 @@
           href: tokens-overview.md
         - name: Toegangstoken aanvragen
           href: access-tokens.md
+    - name: Beleidssleutels
+      href: policy-keys-overview.md
     - name: Gebruikersstroom en beleid
       items:
         - name: Gebruikersstromen

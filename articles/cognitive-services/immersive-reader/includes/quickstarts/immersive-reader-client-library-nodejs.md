@@ -3,19 +3,19 @@ title: Quickstart voor de Node.js-clientbibliotheek voor Insluitende lezer
 titleSuffix: Azure Cognitive Services
 description: In deze quickstart maakt u een nieuwe web-app en voegt u de API-functionaliteit voor de Insluitende lezer toe.
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
-ms.author: pasta
+ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 91adff9a8330defb6c2b9f1e915c46886649fed3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbef435bc7cf0bf146009859044bcabe3c0f55ee
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602344"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505380"
 ---
 De [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
 

@@ -136,7 +136,11 @@
       items:
         - name: Aanbevelingen doorvoeren
           href: security-center-remediate-recommendations.md
+        - name: Onjuiste configuraties voorkomen met afdwingen/weigeren
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: Beveiligingspostuur verbeteren
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: Verwijzingenlijst met aanbevelingen
           href: recommendations-reference.md

@@ -77,3 +77,11 @@
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: Gegevensretentie en opschoning
+          items:
+            - name: Overzicht van gegevensretentie
+              href: data-retention-overview.md
+            - name: Gegevensretentie in- of uitschakelen
+              href: data-retention-enable-disable.md
+            - name: Gegevensretentie opschonen
+              href: data-retention-cleanup.md

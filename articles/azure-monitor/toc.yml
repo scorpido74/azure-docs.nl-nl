@@ -566,6 +566,8 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management-verbindingen
               href: platform/itsmc-connections.md
+            - name: Integratie voor beveiligde export
+              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager-web-app maken
               href: platform/itsmc-service-manager-script.md
             - name: Synchronisatieproblemen met ServiceNow ITSM oplossen
@@ -720,6 +722,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
+        - name: OpenTelemetry
+          items:
+            - name: Veelgestelde vragen
+              href: faq.md#opentelemetry
         - name: Een resource maken (klassiek)
           href: app/create-new-resource.md
         - name: Een resource maken (op basis van een werkruimte)
@@ -1010,6 +1016,8 @@
           href: insights/container-insights-health.md
         - name: GPU-prestaties bewaken
           href: insights/container-insights-gpu-monitoring.md
+        - name: Implementaties en HPA's bewaken
+          href: insights/container-insights-deployment-hpa-metrics.md
         - name: Livegegevens weergeven
           items:
             - name: Overzicht van livegegevens (preview)
