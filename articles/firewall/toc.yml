@@ -4,14 +4,6 @@
   items:
     - name: Wat is Azure Firewall?
       href: overview.md
-- name: Zelfstudies
-  items:
-    - name: Implementeren en configureren
-      href: tutorial-firewall-deploy-portal.md
-    - name: In hybride netwerk implementeren
-      href: tutorial-hybrid-portal.md
-    - name: Inkomend verkeer filteren met DNAT
-      href: tutorial-firewall-dnat.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -24,6 +16,14 @@
     - name: Implementeren met Beschikbaarheidszones - ARM-sjabloon
       displayName: Resource Manager
       href: deploy-template.md
+- name: Zelfstudies
+  items:
+    - name: Implementeren en configureren
+      href: tutorial-firewall-deploy-portal.md
+    - name: In hybride netwerk implementeren
+      href: tutorial-hybrid-portal.md
+    - name: Inkomend verkeer filteren met DNAT
+      href: tutorial-firewall-dnat.md
 - name: Voorbeelden
   items:
     - name: Azure PowerShell
