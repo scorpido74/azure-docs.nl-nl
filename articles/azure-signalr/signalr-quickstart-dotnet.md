@@ -1,44 +1,51 @@
 ---
-title: Ontwikkelen met ASP.NET-Azure signalerings service
-description: Een Snelstartgids voor het gebruik van de Azure signalerings service voor het maken van een chat room met ASP.NET Framework.
+title: Ontwikkelen met ASP.NET - de Azure SignalR Service
+description: Een quickstart waarin u leert hoe u met de Azure SignalR Service een chatruimte maakt met het ASP.NET-framework.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74158171"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050532"
 ---
-# <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Snelstartgids: een chat ruimte maken met ASP.NET en de signaal service
+# <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Quickstart: Een chatruimte maken met ASP.NET en SignalR Service
 
-De Azure signalerings service is gebaseerd op de [Signa lering voor ASP.NET Core 2,0](https://docs.microsoft.com/aspnet/core/signalr/introduction), wat **niet** 100% compatibel is met ASP.net-Signa lering. De Azure signalerings service heeft het ASP.NET signalerings gegevens protocol opnieuw geïmplementeerd op basis van de nieuwste ASP.NET Core technologieën. Wanneer u de Azure signalerings service gebruikt voor ASP.NET-Signa lering, worden sommige functies van de ASP.NET-Signa lering niet meer ondersteund, bijvoorbeeld Azure-Signa lering voert geen berichten opnieuw af wanneer de client opnieuw verbinding maakt. Daarnaast worden de permanente frame transport en JSONP niet ondersteund. Er zijn enkele code wijzigingen en de juiste versie van de afhankelijke bibliotheken nodig om ervoor te zorgen dat de ASP.NET-seingevings toepassing werkt met de seingevings service. 
+Azure SignalR Service is gebaseerd op [SignalR voor ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction). Dit is **niet** 100% compatibel met ASP.NET SignalR. Met Azure SignalR Service wordt het ASP.NET SignalR-gegevensprotocol opnieuw geïmplementeerd op basis van de meest recente ASP.NET Core-technologieën. Wanneer u Azure SignalR Service gebruikt voor ASP.NET SignalR, worden een aantal ASP.NET SignalR-functies niet langer ondersteund; met Azure SignalR worden berichten bijvoorbeeld niet opnieuw afgespeeld wanneer de client weer verbinding maakt. Ook worden Forever Frame-transport en JSONP niet ondersteund. Een aantal codewijzigingen en de juiste versie van afhankelijke bibliotheken zijn benodigd om ervoor te zorgen dat de ASP.NET SignalR-toepassing werkt met SignalR Service. 
 
-Raadpleeg het [document versie verschillen](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) voor een volledige lijst met functie vergelijking tussen ASP.net signalr en ASP.net core signalr.
+Raadpleeg het [document met versieverschillen](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) voor een complete lijst met functievergelijkingen tussen ASP.NET SignalR en ASP.NET Core SignalR.
 
-In deze Quick Start leert u hoe u aan de slag kunt gaan met de ASP.NET en de Azure signalerings service voor een soort gelijke [Chat Room-toepassing](./signalr-quickstart-dotnet-core.md).
+In deze quickstart leert u hoe u aan de slag kunt gaan met ASP.NET en Azure SignalR Service voor een vergelijkbare [Chatroom-toepassing](./signalr-quickstart-dotnet-core.md).
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 ## <a name="prerequisites"></a>Vereisten
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.NET-4.6.1](https://www.microsoft.com/net/download/windows)
-* [ASP.NET-signaalsterkte 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
+* [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
+* [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-account.
+Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com/).
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-De *serverloze* modus wordt niet ondersteund voor ASP.net-seingevings toepassingen. Gebruik altijd *standaard* of *klassiek* voor het exemplaar van de Azure signalerings service.
+De modus *Serverloos* wordt niet ondersteund voor ASP.NET SignalR-toepassingen. Gebruik altijd *Standaard* of *Klassiek* voor het Azure SignalR Service-exemplaar.
 
-U kunt ook Azure-resources maken die worden gebruikt in deze Quick start met [een signalerings service script maken](scripts/signalr-cli-create-service.md).
+U kunt de Azure-resources die in deze quickstart worden gebruikt ook maken met [Een SignalR Service-script maken](scripts/signalr-cli-create-service.md).
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
@@ -52,17 +59,19 @@ Terwijl de service wordt geïmplementeerd, gaan we met code werken. Kloon de [vo
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-## <a name="configure-and-run-chat-room-web-app"></a>Web-app voor chat room configureren en uitvoeren
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
 
-1. Start Visual Studio en open de oplossing in de map *ASPNET-samples/ChatRoom/* van de gekloonde opslag plaats.
+## <a name="configure-and-run-chat-room-web-app"></a>Chatroom-web-app
 
-1. Zoek en selecteer het exemplaar dat u hebt gemaakt in de browser waar de Azure Portal is geopend.
+1. Start Visual Studio en open de oplossing in de map *aspnet-samples/ChatRoom/* van de gekloonde opslagplaats.
+
+1. Zoek en selecteer het exemplaar dat u hebt gemaakt in de browser waarin Azure Portal is geopend.
 
 1. Selecteer **Sleutels** om de verbindingsreeksen voor het service-exemplaar van SignalR weer te geven.
 
 1. Selecteer en kopieer de primaire verbindingsreeks.
 
-1. Stel nu de connection string in het bestand Web. config.
+1. Stel nu in het web.config-bestand de verbindingsreeks in.
 
     ```xml
     <configuration>
@@ -73,7 +82,7 @@ Terwijl de service wordt geïmplementeerd, gaan we met code werken. Kloon de [vo
     </configuration>
     ```
 
-1. In *Startup.cs*, in plaats van `MapSignalR()`aanroepen, moet u `MapAzureSignalR({your_applicationName})` Connection String aanroepen en door geven om ervoor te zorgen dat de toepassing verbinding maakt met de service in plaats van de signaal code zelf te hosten. Vervang `{YourApplicationName}` door de naam van uw toepassing. Deze naam is een unieke naam om deze toepassing te onderscheiden van uw andere toepassingen. U kunt gebruiken `this.GetType().FullName` als de-waarde.
+1. In *Startup.cs* moet u niet `MapSignalR()` maar `MapAzureSignalR({your_applicationName})` aanroepen en de verbindingsreeks doorgeven om de toepassing verbinding te laten maken met de service in plaats van SignalR zelf te hosten. Vervang `{YourApplicationName}` door de naam van uw toepassing. Deze naam is een unieke naam waarmee u deze toepassing kunt onderscheiden van uw andere toepassingen. U kunt `this.GetType().FullName` als de waarde gebruiken.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -83,18 +92,20 @@ Terwijl de service wordt geïmplementeerd, gaan we met code werken. Kloon de [vo
     }
     ```
 
-    U moet ook verwijzen naar de Service-SDK voordat u deze Api's kunt gebruiken. Open de **Hulpprogram ma's | NuGet-pakket beheer | Package Manager-console** en voert u de volgende opdracht uit:
+    U moet ook verwijzen naar de service-SDK voordat u deze API's gebruikt. Open **Extra > NuGet-pakketbeheer > Package Manager-console** en voer de volgende opdracht uit:
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
     ```
 
-    Met uitzonde ring van deze wijzigingen blijft alles hetzelfde, maar u kunt nog steeds de hub-interface gebruiken waarmee u al bekend bent om bedrijfs logica te schrijven.
+    Met uitzondering van deze wijzigingen blijft de rest onveranderd; u kunt gebruik blijven maken van de hubinterface die u al kent om bedrijfslogica te schrijven.
 
     > [!NOTE]
-    > In de implementatie wordt een `/signalr/negotiate` eind punt weer gegeven voor onderhandelingen door de Azure signalerings Service-SDK. Er wordt een speciaal onderhandelings antwoord geretourneerd wanneer clients proberen verbinding te maken en clients om te leiden naar een service-eind punt dat is gedefinieerd in de connection string.
+    > In de implementatie wordt een eindpunt `/signalr/negotiate` weergegeven voor onderhandeling door de Azure SignalR Service-SDK. Er wordt een speciaal onderhandelingsantwoord geretourneerd wanneer clients verbinding proberen te maken en clients proberen door te sturen naar het service-eindpunt dat in de verbindingsreeks is gedefinieerd.
 
-1. Druk op **F5** om het project uit te voeren in de foutopsporingsmodus. U kunt zien dat de toepassing lokaal wordt uitgevoerd. In plaats van een seingevings runtime op zichzelf te hosten, wordt nu verbinding gemaakt met de Azure signalerings service.
+1. Druk op **F5** om het project uit te voeren in de foutopsporingsmodus. U kunt zien dat de toepassing lokaal wordt uitgevoerd. In plaats van een SignalR-runtime door de toepassing zelf te laten hosten, wordt nu verbinding gemaakt met de Azure SignalR Service.
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -105,18 +116,23 @@ Terwijl de service wordt geïmplementeerd, gaan we met code werken. Kloon de [vo
 > 
 > 
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...**. In de instructies voor deze snelstart is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor deze snelstart is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
    
 ![Verwijderen](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een nieuwe Azure signalering service-resource gemaakt en gebruikt met een ASP.NET-Web-app. Vervolgens leert u hoe u in realtime toepassingen kunt ontwikkelen met behulp van de Azure signalerings service met ASP.NET Core.
+In deze quickstart hebt u een nieuwe Azure SignalR Service-resource gemaakt en deze gebruikt voor een ASP.NET-web-app. Hierna leert u hoe u realtime toepassingen ontwikkelt met behulp van Azure SignalR Service met ASP.NET Core.
 
 > [!div class="nextstepaction"]
-> [Azure signalerings service met ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+> [Azure SignalR Service met ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qsnet)
+

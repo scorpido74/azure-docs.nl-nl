@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een Azure DNS zone en record-Azure PowerShell maken'
+title: 'Quickstart: Een Azure DNS-zone en -record maken - Azure PowerShell'
 titleSuffix: Azure DNS
 description: Informatie over het maken van een DNS-zone en -record in Azure DNS. Dit is een stapsgewijze snelstartgids voor het maken en beheren van uw eerste DNS-zone en -record met behulp van Azure PowerShell.
 services: dns
@@ -8,12 +8,13 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: e33f6fdba1a15032d76b94804d610e292f663d59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 120cb86e1bacfefdd9242d8fa766b391983e9c81
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76937165"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069460"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Snelstart: Een Azure DNS-zone en -record maken met behulp van Azure PowerShell
 
@@ -39,7 +40,7 @@ New-AzResourceGroup -name MyResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-zone"></a>Een DNS-zone maken
 
-Een DNS-zone wordt gemaakt met de cmdlet `New-AzDnsZone`. In het volgende voor beeld wordt een DNS-zone met de naam *contoso. xyz* gemaakt in de resource groep met de naam *MyResourceGroup*. Gebruik het voorbeeld om een DNS-zone te maken door de waarden te vervangen door uw eigen waarden.
+Een DNS-zone wordt gemaakt met de cmdlet `New-AzDnsZone`. In het volgende voorbeeld wordt een DNS-zone gemaakt met de naam *contoso.xyz* in de resourcegroep *MyResourceGroup*. Gebruik het voorbeeld om een DNS-zone te maken door de waarden te vervangen door uw eigen waarden.
 
 ```powershell
 New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
@@ -47,7 +48,7 @@ New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 
 ## <a name="create-a-dns-record"></a>Een DNS-record maken
 
-U kunt recordsets maken met behulp van de cmdlet `New-AzDnsRecordSet`. In het volgende voor beeld wordt een record met de relatieve naam ' www ' in de DNS-zone ' contoso. XYZ ' gemaakt in de resource groep ' MyResourceGroup '. De volledig gekwalificeerde naam van de recordset is ' www. contoso. XYZ '. Het record type is ' A ', met IP-adres ' 10.10.10.10 ', en de TTL is 3600 seconden.
+U kunt recordsets maken met behulp van de cmdlet `New-AzDnsRecordSet`. In het volgende voorbeeld wordt een record gemaakt met de relatieve naam 'www' in de DNS-zone 'contoso.xyz' in resourcegroep 'MyResourceGroup'. De volledig gekwalificeerde naam van de recordset is 'www.contoso.xyz'. Het recordtype is 'A', met IP-adres '10.10.10.10' en de TTL is 3600 seconden.
 
 ```powershell
 New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
@@ -67,13 +68,13 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
 **DNS-naamomzetting testen:**
 
-1. Voer de volgende cmdlet uit om de lijst met naam servers voor uw zone op te halen:
+1. Voer de volgende cmdlet uit om de lijst met naamservers voor uw zone op te halen:
 
    ```azurepowershell
    Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
    ```
 
-1. Kopieer een van de naam server namen uit de uitvoer van de vorige stap.
+1. Kopieer een van de naamservernamen uit de uitvoer van de vorige stap.
 
 1. Open een opdrachtprompt en voer de volgende opdracht uit:
 
@@ -91,7 +92,7 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-De hostnaam **www\.. xyz** wordt omgezet in **10.10.10.10**, net zoals u deze hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
+De hostnaam **www\.contoso.xyz** wordt overeenkomstig uw configuratie omgezet in **10.10.10.10**. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 
 ## <a name="delete-all-resources"></a>Alle resources verwijderen
 

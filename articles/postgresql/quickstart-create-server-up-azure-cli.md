@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496573"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300014"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Quickstart: Een Azure CLI-opdracht, az postgres up (preview), gebruiken om een Azure Database for PostgreSQL te maken - Eén server
 
@@ -75,7 +75,7 @@ admin-password | Door het systeem gegenereerd | Het wachtwoord van het beheerder
 
 Zodra uw server is gemaakt, zijn de volgende instellingen beschikbaar:
 
-- De firewallregel 'devbox' wordt gemaakt. De Azure CLI probeert het IP-adres te detecteren van de machine van waaruit de `az postgres up`-opdracht wordt uitgevoerd en plaatst dat IP-adres op de acceptatielijst.
+- De firewallregel 'devbox' wordt gemaakt. De Azure CLI probeert het IP-adres te detecteren van de machine van waaruit de `az postgres up`-opdracht wordt uitgevoerd en staat dat IP-adres toe.
 - Toegang tot Azure-services toestaan is ingesteld op AAN. Met deze instelling wordt de firewall van de server geconfigureerd om verbindingen van alle Azure-resources te accepteren, inclusief resources die niet onderdeel zijn van uw abonnement.
 - De lege database 'sampledb' wordt gemaakt
 - De nieuwe gebruiker 'root', met privileges ingesteld op 'sampledb', wordt gemaakt

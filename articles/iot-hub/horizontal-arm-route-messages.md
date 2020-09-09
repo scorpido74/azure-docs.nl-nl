@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: fd2742744ef4f2f616e772c8f387887e113b132a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88861694"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462663"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Quickstart: Een Azure IoT Hub en een opslagaccount implementeren met een ARM-sjabloon
 
@@ -32,8 +32,8 @@ De sjabloon die in deze quickstart wordt gebruikt, wordt `101-iothub-auto-route-
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
 Er worden twee Azure-resources gedefinieerd in de sjabloon: 
-* [Microsoft.Devices/Iothubs](/azure/templates/microsoft.iothubs)
-* [Microsoft.Storage/](/azure/templates/microsoft.storage)
+* [Microsoft.Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
+* [Microsoft.Storage/](/azure/templates/microsoft.storage/allversions)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>De sjabloon implementeren en de voorbeeld-app uitvoeren
 
@@ -46,7 +46,7 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
 
     [![Implementeren in Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Download de [IoT C#-voorbeelden](https://Azure-Samples/azure-iot-samples-csharp) en pak ze uit.
+1. Download de [IoT C#-voorbeelden](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/) en pak ze uit.
 
 1. Open een opdrachtvenster en ga naar de map waarin u de IoT C#-voorbeelden hebt uitgepakt. Zoek de map met het bestand arm-read-write.csproj. In dit opdrachtvenster maakt u de omgevingsvariabelen. Meld u aan bij de [Azure Portal](https://portal.azure.com ) om de sleutels op te halen. Selecteer **Resourcegroepen** en selecteer vervolgens de resourcegroep die u voor deze quickstart hebt gemaakt.
 

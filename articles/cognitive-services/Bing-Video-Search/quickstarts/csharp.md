@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en C#-Bing Video Search"
+title: 'Quickstart: Video’s zoeken met de REST API en C# - Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om met C# zoekaanvragen voor video's te verzenden naar de REST-API van Bing Video's zoeken.
 services: cognitive-services
@@ -10,29 +10,30 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: d9d69d4550a5cd4a162795261b7ab3d8b59b7297
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c69fec46a6d1c8b177e5602ae24a6cbf0654dc20
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848937"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929207"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en C #
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Quickstart: Video's zoeken met de REST-API van Bing Video's zoeken en C#
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige C#-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige C#-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) met extra foutafhandeling, functies en codeaantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 * Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Het [JSON.net](https://www.newtonsoft.com/json) -Framework, beschikbaar als een NuGet-pakket.
-* Als u Linux/MacOS gebruikt, kunt u deze toepassing uitvoeren met behulp van [mono](https://www.mono-project.com/).
+* Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket.
+* Als u Linux/MacOS gebruikt, kunt u deze toepassing uitvoeren met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe console-oplossing in Visual Studio. Voeg vervolgens de volgende naam ruimten toe aan het hoofd code bestand:
+1. Maak een nieuwe console-oplossing in Visual Studio. Voeg vervolgens de volgende naamruimten toe aan het hoofdcodebestand:
 
     ```csharp
     using System;
@@ -42,7 +43,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     using System.Collections.Generic;
     ```
 
-2. Voeg variabelen voor uw abonnementssleutel, eindpunt en zoekterm toe. Voor de `uriBase` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Voeg variabelen voor uw abonnementssleutel, eindpunt en zoekterm toe. Voor de `uriBase`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in Azure Portal.
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -64,11 +65,11 @@ struct SearchResult
 
 ## <a name="create-and-handle-a-video-search-request"></a>Een zoekopdracht voor video maken en verwerken
 
-1. Maak een methode `BingVideoSearch` met de naam om de aanroep naar de API uit te voeren en stel het retour type in op de `SearchResult` struct die u eerder hebt gemaakt. 
+1. Maak een methode met de naam `BingVideoSearch` om de API aan te roepen en stel het retourtype in op de eerder gemaakte `SearchResult`-struct. 
 
-   Voeg code toe aan deze methode in de volgende stappen.
+   Voeg in de volgende stappen code toe aan deze methode.
 
-1. Stel de URI voor de zoekopdracht samen. Maak de zoek term `toSearch` op voordat u deze toevoegt aan de teken reeks.
+1. Stel de URI voor de zoekopdracht samen. Maak de zoekterm `toSearch` op voordat u deze aan de tekenreeks toevoegt.
 
     ```csharp    
     static SearchResult BingVideoSearch(string toSearch){
@@ -77,7 +78,7 @@ struct SearchResult
     //...
     ```
 
-2. Voer de webaanvraag uit door uw sleutel toe te voegen aan de `Ocp-Acpim-Subscription-Key`-header en een `HttpWebResponse`-object te gebruiken voor het opslaan van het API-antwoord. Gebruik vervolgens een `StreamReader` om de JSON-teken reeks op te halen.
+2. Voer de webaanvraag uit door uw sleutel toe te voegen aan de `Ocp-Acpim-Subscription-Key`-header en een `HttpWebResponse`-object te gebruiken voor het opslaan van het API-antwoord. Gebruik vervolgens een `StreamReader` om de JSON-tekenreeks op te halen.
 
     ```csharp
     //...
@@ -90,7 +91,7 @@ struct SearchResult
 
 ## <a name="process-the-result"></a>Het resultaat verwerken
 
-1. Maak het zoekresultaatobject en extraheer de Bing-HTTP-headers. Vervolgens wordt het `searchResult` object geretourneerd. 
+1. Maak het zoekresultaatobject en extraheer de Bing-HTTP-headers. Retourneer vervolgens het `searchResult`-object. 
 
     ```csharp
     var searchResult = new SearchResult();
@@ -106,7 +107,7 @@ struct SearchResult
     return searchResult;
     ```
 
-2. Het antwoord afdrukken.
+2. Druk het antwoord af.
 
     ```csharp
     Console.WriteLine(result.jsonResult);
@@ -225,7 +226,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md).
 
 ## <a name="see-also"></a>Zie ook 
 

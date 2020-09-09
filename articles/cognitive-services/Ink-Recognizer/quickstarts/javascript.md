@@ -1,24 +1,26 @@
 ---
 title: 'Quickstart: Digitaal handschrift herkennen met de Ink Recognizer-REST API en Node.js'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Ink Recognizer-API om digitale pennenstreken te herkennen in deze quickstart.
+description: Gebruik de Ink Recognizer-API en JavaScript om digitale pennenstreken te herkennen in deze quickstart.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 59cd4711ec3604779e57434af72460534b378af4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b8d8464fb9defb64c039ef9026812de89436091c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407044"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050898"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Quickstart: Digitale inkt herkennen met de Ink Recognizer-REST API en JavaScript
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Gebruik deze quickstart om te beginnen met de Ink Recognizer-API te gebruiken voor digitale pennenstreken. Met deze JavaScript-toepassing wordt een API-aanvraag met gegevens over de pennenstreken met JSON-indeling verstuurd en het antwoord weergegeven.
 

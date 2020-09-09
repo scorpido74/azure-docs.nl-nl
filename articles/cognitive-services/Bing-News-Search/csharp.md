@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met C#-Bing News Search REST API'
+title: 'Quickstart: Nieuws zoeken met C# - REST API voor Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,33 +10,33 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: a3f5e915aa68761ca9fbb99b7955adb32e4c99cf
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.custom: seodec2018, devx-track-csharp
+ms.openlocfilehash: 36e4889100a1902b77791f5a437b539bee1ea84f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869970"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922171"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Quick Start: zoeken naar nieuws met C# en het Bing News Search REST API
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Quickstart: Nieuws zoeken met C# en de REST API van Bing Nieuws zoeken
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige C#-toepassing wordt een zoek opdracht voor nieuws verzonden naar de API en wordt het JSON-antwoord weer gegeven. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Nieuws zoeken-API te maken. Deze eenvoudige C#-toepassing stuurt een nieuwszoekquery naar de API en geeft het JSON-antwoord weer. 
 
-Hoewel deze toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing is geschreven in C#, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 De volledige code voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Het [JSON.net](https://www.newtonsoft.com/json) -Framework, beschikbaar als een NuGet-pakket.
-* Als u Linux/MacOS gebruikt, kunt u deze toepassing uitvoeren met behulp van [mono](https://www.mono-project.com/).
+* Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket.
+* Als u Linux/MacOS gebruikt, kunt u deze toepassing uitvoeren met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe C#-console-oplossing in Visual Studio. Voeg vervolgens de volgende naam ruimten toe aan het hoofd code bestand:
+1. Maak een nieuwe C#-console-oplossing in Visual Studio. Voeg vervolgens de volgende naamruimten toe aan het hoofdcodebestand:
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ De volledige code voor dit voorbeeld is te vinden op [GitHub](https://github.com
     using System.Collections.Generic;
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
     ```csharp
     const string accessKey = "enter key here";
@@ -56,7 +56,7 @@ De volledige code voor dit voorbeeld is te vinden op [GitHub](https://github.com
    
 ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Een struct maken om de reactie van Bing Nieuws zoeken op te maken
 
-Definieer een `SearchResult` struct die de zoek resultaten van het nieuws en de informatie over de JSON-header bevat.
+Definieer een `SearchResult`-struct om de nieuwszoekresultaten en JSON-headerinformatie op te nemen.
 
 ```csharp
 struct SearchResult
@@ -68,11 +68,11 @@ struct SearchResult
 
 ## <a name="create-and-handle-a-news-search-request"></a>Een zoekopdracht voor nieuws maken en verwerken
 
-1. Maak een methode `BingNewsSearch()` met de naam om de API aan te roepen en stel het retour type in op de `SearchResult` struct die u eerder hebt gemaakt. 
+1. Maak een methode met de naam `BingNewsSearch()` om de API aan te roepen en stel het retourtype in op de eerder gemaakte `SearchResult`-struct. 
 
-   Voeg code toe aan deze methode in de volgende stappen.
+   Voeg in de volgende stappen code toe aan deze methode.
 
-1. Stel de URI voor de zoekopdracht samen. De `toSearch` Zoek term moet zijn geformatteerd voordat deze wordt toegevoegd aan de teken reeks.
+1. Stel de URI voor de zoekopdracht samen. Houd er rekening mee dat de zoekterm `toSearch` moet zijn opgemaakt voordat deze aan de tekenreeks wordt toegevoegd.
 
     ```csharp
     static SearchResult BingNewsSearch(string toSearch){
@@ -90,7 +90,7 @@ struct SearchResult
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
     ```
 
-1. Maak het zoekresultaatobject en extraheer de Bing-HTTP-headers. Retour neer `searchResult` .
+1. Maak het zoekresultaatobject en extraheer de Bing-HTTP-headers. Retourneer vervolgens `searchResult`.
 
     ```csharp
     // Create the result object for return
@@ -111,7 +111,7 @@ struct SearchResult
 
 ## <a name="process-the-response"></a>Het antwoord verwerken
 
-Roep in de hoofdmethode `BingNewsSearch()` aan en sla het geretourneerde antwoord op. Deserialisatie van de JSON naar een object waar u de waarden van het antwoord kunt weer geven.
+Roep in de hoofdmethode `BingNewsSearch()` aan en sla het geretourneerde antwoord op. Deserialiseer vervolgens het JSON-antwoord naar een object waarin u de waarden van het antwoord kunt weergeven.
 
 ```csharp
 SearchResult result = BingNewsSearch(searchTerm);

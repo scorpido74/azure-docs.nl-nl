@@ -1,44 +1,53 @@
 ---
-title: 'Windows signalerings service serverloze Snelstartgids-C #'
-description: Een snelstart waarin u leert hoe u Azure SignalR Service en Azure Functions gebruikt om een chatruimte te maken.
+title: Quickstart voor de serverloze Azure SignalR Service - C#
+description: Een quickstart waarin u leert hoe u de service Azure SignalR en Azure Functions gebruikt om een chatruimte te maken.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65595391"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050638"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Quick Start: een chat ruimte met Azure Functions en de signaal service maken met C\#
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Quickstart: Een chatruimte maken met Azure Functions en SignalR Service met behulp van C\#
 
-Met Azure SignalR Service kunt u eenvoudig realtime functionaliteit toevoegen aan uw toepassing. Azure Functions is een serverloos platform waarmee u code kunt uitvoeren zonder een infrastructuur te beheren. In deze snelstart leert u hoe u SignalR Service en Functions gebruikt om een serverloze, realtime chattoepassing te bouwen.
+Met de service Azure SignalR kunt u eenvoudig realtimefunctionaliteit toevoegen aan een toepassing. Azure Functions is een serverloos platform waarmee u code kunt uitvoeren zonder een infrastructuur te beheren. In deze quickstart leert u hoe u de service SignalR en Functions gebruikt om een serverloze, realtimechattoepassing te bouwen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als Visual Studio 2019 nog niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+Als u Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u het downloaden en de **gratis** [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/) gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
 
-U kunt deze zelf studie ook uitvoeren op de opdracht regel (macOS, Windows of Linux) met behulp van de [Azure functions core tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), de [.net core SDK](https://dotnet.microsoft.com/download)en uw favoriete code-editor.
+U kunt deze zelfstudie ook uitvoeren op de opdrachtregel (macOS, Windows of Linux) met behulp van de [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), de [.NET Core SDK](https://dotnet.microsoft.com/download) en uw favoriete code-editor.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
 Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-## <a name="configure-and-run-the-azure-function-app"></a>De Azure Functions-app uitvoeren
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
 
-1. Start Visual Studio (of een andere code-editor) en open de oplossing in de map *src/chat/csharp* van de gekloonde opslag plaats.
+## <a name="configure-and-run-the-azure-function-app"></a>De Azure-functie-app configureren en uitvoeren
 
-1. Controleer in de browser waarin de Azure Portal is geopend of het SignalR Service-exemplaar dat u eerder hebt geïmplementeerd, is gemaakt. Daarvoor typt u de naam ervan in het zoekvak bovenaan de portal. Selecteer het exemplaar om het te openen.
+1. Start Visual Studio (of een andere code-editor) en open de oplossing in de map *src/chat/csharp* van de gekloonde opslagplaats.
+
+1. Controleer in de browser waarin de Azure-portal is geopend, of het service-exemplaar van SignalR dat u eerder hebt geïmplementeerd, is gemaakt. Hiervoor typt u de naam van het exemplaar in het zoekvak boven in de portal. Selecteer het exemplaar om het te openen.
 
     ![Het service-exemplaar van SignalR zoeken](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
@@ -48,32 +57,39 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 1. Terug in Visual Studio wijzigt u in Solution Explorer de naam van *local.settings.sample.json* in *local.settings.json*.
 
-1. In **local.settings.json** plakt u de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
+1. Plak in **local.settings.json** de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
 
-1. Open **Functions.cs**. Deze functie-app bevat twee HTTP-geactiveerde functies:
+1. Open **Functions.cs**. Deze functie-app bevat twee met HTTP geactiveerde functies:
 
     - **GetSignalRInfo**: gebruikt de invoergegevensbinding *SignalRConnectionInfo* om geldige verbindingsgegevens te genereren en te retourneren.
     - **SendMessage**: ontvangt een chatbericht in de aanvraagbody en gebruikt de uitvoergegevensbinding *SignalR* om het bericht uit te zenden naar alle verbonden clienttoepassingen.
 
-1. Gebruik een van de volgende opties om de Azure-functie-app lokaal te starten.
+1. Gebruik een van de volgende opties om de Azure Functie-app lokaal te starten.
 
-    - **Visual Studio**: Selecteer in het menu *fout opsporing* de optie *fout opsporing starten* om de toepassing uit te voeren.
+    - **Visual Studio**: Selecteer in het menu *Fouten opsporen* de optie *Foutopsporing starten* om de toepassing uit te voeren.
 
         ![Fouten in de toepassing opsporen](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
 
-    - **Opdracht regel**: Voer de volgende opdracht uit om de functie-host te starten.
+    - **Opdrachtregel**: Voer de volgende opdracht uit om de functiehost te starten.
 
         ```bash
         func start
         ```
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een realtime serverloze toepassing gemaakt en uitgevoerd in Visual Studio. Nu volgt meer informatie over het ontwikkelen en implementeren van Azure Functions met behulp van Visual Studio Code.
+In deze quickstart hebt u een serverloze, realtimetoepassing in Visual Studio Code gebouwd en uitgevoerd. Nu volgt meer informatie over het ontwikkelen en implementeren van Azure Functions met behulp van Visual Studio Code.
 
 > [!div class="nextstepaction"]
 > [Azure Functions ontwikkelen met Visual Studio](../azure-functions/functions-develop-vs.md)
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)

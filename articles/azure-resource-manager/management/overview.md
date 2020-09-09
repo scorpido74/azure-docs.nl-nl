@@ -2,13 +2,14 @@
 title: Overzicht van Azure Resource Manager
 description: Hierin wordt beschreven hoe u Azure Resource Manager kunt gebruiken voor implementatie, beheer, en beheer van toegang tot resources in Azure.
 ms.topic: overview
-ms.date: 04/21/2020
-ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/01/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087024"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293945"
 ---
 # <a name="what-is-azure-resource-manager"></a>Wat is Azure Resource Manager?
 
@@ -70,23 +71,31 @@ Er zijn een aantal belangrijke factoren waarmee u rekening moet houden bij het d
 
 * Alle resources in uw groep moeten dezelfde levenscyclus hebben. U implementeert ze samen, werkt ze samen bij en verwijdert ze samen. Als een bepaalde resource, zoals een server, onderdeel moet zijn van een andere implementatiecyclus, moet deze in een andere resourcegroep worden geplaatst.
 
-* Elke resource kan in slechte één resourcegroep voorkomen.
-
-* Sommige resources kunnen buiten een resourcegroep bestaan. Deze resources worden geïmplementeerd in het [abonnement](../templates/deploy-to-subscription.md), de [beheergroep](../templates/deploy-to-management-group.md) of de [tenant](../templates/deploy-to-tenant.md). In deze bereiken worden alleen specifieke resourcetypen ondersteund.
+* Elke resource kan maar in één resourcegroep voorkomen.
 
 * U kunt een resource op elk gewenst moment toevoegen aan of verwijderen uit een resourcegroep.
 
 * U kunt een resource van de ene naar de andere resourcegroep verplaatsen. Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](move-resource-group-and-subscription.md).
 
-* Een resourcegroep kan resources uit verschillende regio’s bevatten.
+* De resources in een resourcegroep kunnen zich in andere regio's bevinden dan de resource groep.
 
-* Een resourcegroep kan worden gebruikt voor het bepalen van de mate van toegangsbeheer voor beheertaken.
+* Als u een resourcegroep maakt, moet u voor die resourcegroep een locatie opgeven. U vraagt zich misschien af: 'Waarom heeft een resourcegroep een locatie nodig? En als de resources andere locaties kunnen hebben dan de resourcegroep, wat is dan het nut van een locatie voor de resourcegroep?' De resourcegroep slaat metagegevens op over de resources. Als u een locatie voor de resourcegroep opgeeft, geeft u op waar deze metagegevens worden opgeslagen. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
 
-* Een resource kan communiceren met resources in andere resourcegroepen. Deze interactie is gebruikelijk wanneer er een relatie bestaat tussen de twee resources, maar deze niet dezelfde levenscyclus delen (bijvoorbeeld web-apps die verbinding maken met een database).
+   Als de regio van de resourcegroep tijdelijk niet beschikbaar is, kunt u resources in de resourcegroep niet bijwerken, omdat de metagegevens niet beschikbaar zijn. De resources in andere regio's werken nog steeds zoals verwacht, maar u kunt ze niet bijwerken. Zie [Betrouwbare Azure-toepassingen ontwerpen](/azure/architecture/checklist/resiliency-per-service) voor meer informatie over het bouwen van betrouwbare toepassingen.
 
-Als u een resourcegroep maakt, moet u voor die resourcegroep een locatie opgeven. U vraagt zich misschien af: 'Waarom heeft een resourcegroep een locatie nodig? En als de resources andere locaties kunnen hebben dan de resourcegroep, wat is dan het nut van een locatie voor de resourcegroep?' De resourcegroep slaat metagegevens op over de resources. Als u een locatie voor de resourcegroep opgeeft, geeft u op waar deze metagegevens worden opgeslagen. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
+* Een resourcegroep kan worden gebruikt voor het bepalen van de mate van toegangsbeheer voor beheertaken. Als u een resourcegroep wilt beheren, kunt u [Azure-beleidsregels](../../governance/policy/overview.md), [RBAC-rollen](../../role-based-access-control/role-assignments-portal.md)of [resourcevergrendelingen](lock-resources.md) toewijzen.
 
-Als de regio van de resourcegroep tijdelijk niet beschikbaar is, kunt u resources in de resourcegroep niet bijwerken, omdat de metagegevens niet beschikbaar zijn. De resources in andere regio's werken nog steeds zoals verwacht, maar u kunt ze niet bijwerken. Zie [Betrouwbare Azure-toepassingen ontwerpen](/azure/architecture/checklist/resiliency-per-service) voor meer informatie over het bouwen van betrouwbare toepassingen.
+* U kunt [tags toepassen](tag-resources.md) op een resourcegroep. De resources in de resourcegroep nemen deze tags niet over.
+
+* Een resource kan verbinding maken met resources in andere resourcegroepen. Dit scenario is gebruikelijk wanneer de twee resources gerelateerd zijn, maar niet dezelfde levenscyclus hebben. U kunt bijvoorbeeld een web-app hebben die verbinding maakt met een database in een andere resourcegroep.
+
+* Wanneer u een resourcegroep verwijdert, worden ook alle resources in de resourcegroep verwijderd. Zie [Azure Resource Manager-resourcegroep en het verwijderen van resources](delete-resource-group.md)voor meer informatie over hoe Azure Resource Manager deze verwijdert.
+
+* U kunt maximaal 800 exemplaren van een resourcetype implementeren in elke resourcegroep. Sommige resourcetypen worden [uitgesloten van de limiet van 800 exemplaren](resources-without-resource-group-limit.md).
+
+* Sommige resources kunnen buiten een resourcegroep bestaan. Deze resources worden geïmplementeerd in het [abonnement](../templates/deploy-to-subscription.md), de [beheergroep](../templates/deploy-to-management-group.md) of de [tenant](../templates/deploy-to-tenant.md). In deze bereiken worden alleen specifieke resourcetypen ondersteund.
+
+* Als u een resourcegroep wilt maken, kunt u de [Portal](manage-resource-groups-portal.md#create-resource-groups), [PowerShell](manage-resource-groups-powershell.md#create-resource-groups), [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)of een [Azure Resource Manager-sjabloon (ARM) gebruiken](../templates/deploy-to-subscription.md#resource-groups).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Tolerantie van Azure Resource Manager
 

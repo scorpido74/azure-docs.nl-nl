@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: een Azure Analysis Services-server maken met behulp van PowerShell | Microsoft Docs'
-description: Leer hoe u een Azure Analysis Services-server maakt met behulp van PowerShell
+description: In deze quickstart wordt beschreven hoe u een Azure Analysis Services-server maakt met behulp van PowerShell
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.custom: references_regions
-ms.openlocfilehash: 375d72c8de0aa16d2c10da701fb9670a9c87b79f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: references_regions , devx-track-azurepowershell
+ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015456"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229324"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Quickstart: Een server maken - PowerShell
 
@@ -74,5 +74,3 @@ In deze snelstart hebt u geleerd hoe u een server in uw Azure-abonnement maakt m
 
 > [!div class="nextstepaction"]
 > [Snelstartgids: Een serverfirewall configureren - Portal](analysis-services-qs-firewall.md)      
-> [!div class="nextstepaction"]
-> [Zelfstudie: Een voorbeeldmodel toevoegen aan uw server](analysis-services-create-sample-model.md)

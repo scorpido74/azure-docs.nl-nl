@@ -1,8 +1,8 @@
 ---
-title: 'Quick Start: een profiel maken voor een hoge Beschik baarheid van toepassingen-Azure PowerShell-Azure Traffic Manager'
-description: In dit Quick Start-artikel wordt beschreven hoe u een Traffic Manager profiel maakt om een Maxi maal beschik bare webtoepassing te bouwen.
+title: 'Quickstart: een profiel maken voor toepassingen met hoge beschikbaarheid - Azure PowerShell - Azure Traffic Manager'
+description: In dit quickstartartikel wordt beschreven hoe u een Traffic Manager-profiel maakt voor het bouwen van een webtoepassing met hoge beschikbaarheid.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
-ms.author: rohink
-ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 08/25/2020
+ms.author: duau
+ms.openlocfilehash: f3ecdfb03a6e6d1aab355edf7c370b29240e0543
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934819"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929513"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Snelstartgids: een Traffic Manager profiel maken voor een Maxi maal beschik bare webtoepassing met behulp van Azure PowerShell
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Quickstart: Een Traffic Manager-profiel maken voor webtoepassingen met hoge beschikbaarheid met behulp van Azure PowerShell
 
 In deze quickstart wordt beschreven hoe u een Traffic Manager-profiel maakt die hoge beschikbaarheid van uw webtoepassing biedt.
 
-In deze Quick Start maakt u twee exemplaren van een webtoepassing. Ze worden elk in een andere Azure-regio uitgevoerd. U maakt een Traffic Manager-profiel op basis van [eindpuntprioriteit](traffic-manager-routing-methods.md#priority-traffic-routing-method). het profiel stuurt gebruikersverkeer door naar de primaire site waar de webtoepassing wordt uitgevoerd. Traffic Manager bewaakt de webtoepassing continu. Als de primaire site niet beschikbaar is, biedt Traffic Manager automatische failover voor de back-upsite.
+In deze quickstart maakt u twee exemplaren van een webtoepassing. Ze worden elk in een andere Azure-regio uitgevoerd. U maakt een Traffic Manager-profiel op basis van [eindpuntprioriteit](traffic-manager-routing-methods.md#priority-traffic-routing-method). het profiel stuurt gebruikersverkeer door naar de primaire site waar de webtoepassing wordt uitgevoerd. Traffic Manager bewaakt de webtoepassing continu. Als de primaire site niet beschikbaar is, biedt Traffic Manager automatische failover voor de back-upsite.
 
 Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 Als u PowerShell lokaal wilt installeren en gebruiken, is voor dit artikel versie 5.4.1 of hoger van de Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Maak een resource groep met behulp van [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
+Maak een resourcegroep met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
 ```azurepowershell-interactive
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name MyResourceGroup -Location $Location1
 
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
-Maak een Traffic Manager profiel met behulp van [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) waarmee gebruikers verkeer wordt omgeleid op basis van de eindpunt prioriteit.
+Maak een Traffic Manager-profiel met behulp van [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) waarmee gebruikersverkeer wordt doorgestuurd op basis van eindpuntprioriteit.
 
 ```azurepowershell-interactive
 
@@ -65,12 +65,12 @@ New-AzTrafficManagerProfile `
 -MonitorPort 80
 ```
 
-## <a name="create-web-apps"></a>Web Apps maken
+## <a name="create-web-apps"></a>Web-apps maken
 
-Voor deze Quick Start hebt u twee exemplaren van een webtoepassing nodig die in twee verschillende Azure-regio's zijn geïmplementeerd (VS-*West* en *VS-Oost*). Elk exemplaar dient als primair en failover-eindpunt voor Traffic Manager.
+Voor deze quickstart moeten twee exemplaren van een webtoepassing worden geïmplementeerd in twee verschillende Azure-regio's (*US - west* en *US - oost*). Elk exemplaar dient als primair en failover-eindpunt voor Traffic Manager.
 
-### <a name="create-web-app-service-plans"></a>Web App Service-abonnementen maken
-Maak Web app service-plannen met behulp van [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) voor de twee exemplaren van de webtoepassing die u in twee verschillende Azure-regio's gaat implementeren.
+### <a name="create-web-app-service-plans"></a>Web App Service-plannen maken
+Maak Web App Service-plannen met [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) voor de twee exemplaren van de webtoepassing die u in twee verschillende Azure-regio's gaat implementeren.
 
 ```azurepowershell-interactive
 
@@ -85,8 +85,8 @@ New-AzAppservicePlan -Name "$App1Name-Plan" -ResourceGroupName MyResourceGroup -
 New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
 
 ```
-### <a name="create-a-web-app-in-the-app-service-plan"></a>Een web-app maken in het App Service plan
-Maak twee exemplaren van de webtoepassing met behulp van [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) in de app service-abonnementen in de Azure-regio *VS-West* en *VS-Oost* .
+### <a name="create-a-web-app-in-the-app-service-plan"></a>Een web-app maken in het App Service-plan
+Maak twee exemplaren van de webtoepassing met [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) in de App Service-plannen in de Azure-regio's *US - west* en *US - oost*.
 
 ```azurepowershell-interactive
 $App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
@@ -95,9 +95,9 @@ $App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-eindpunten toevoegen
-Voeg de twee Web Apps als Traffic Manager eind punten met behulp van [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) toe aan het Traffic Manager profiel als volgt:
-- Voeg de web-app die zich bevindt in de Azure-regio *West* , toe als het primaire eind punt om alle gebruikers verkeer te routeren. 
-- Voeg de web-app die zich bevindt in de regio *VS-Oost* Azure als het eind punt voor de failover toe. Als het primaire eindpunt niet beschikbaar is, wordt het verkeer automatisch naar het failover-eindpunt gerouteerd.
+Voeg de twee web-apps als volgt als Traffic Manager-eindpunten aan het Traffic Manager-profiel toe met behulp van [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint):
+- Voeg de web-app toe die zich in de Azure-regio *US - west* bevindt als primair eindpunt om alle gebruikersverkeer te routeren. 
+- Voeg de web-app toe die zich in de Azure-regio *US - oost* bevindt als het failovereindpunt. Als het primaire eindpunt niet beschikbaar is, wordt het verkeer automatisch naar het failover-eindpunt gerouteerd.
 
 ```azurepowershell-interactive
 New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `
@@ -121,21 +121,21 @@ In deze sectie controleert u de domeinnaam van uw Traffic Manager-profiel. Teven
 
 ### <a name="determine-the-dns-name"></a>DNS-naam bepalen
 
-Bepaal de DNS-naam van het Traffic Manager profiel met [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile).
+Bepaal de DNS-naam van het Traffic Manager-profiel met behulp van [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile).
 
 ```azurepowershell-interactive
 Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 -ResourceGroupName MyResourceGroup
 ```
 
-Kopieer de waarde **RelativeDnsName** . De DNS-naam van uw Traffic Manager profiel is *http://<* relativednsname *>. trafficmanager.net*. 
+Kopieer de waarde **RelativeDnsName**. De DNS-naam van uw Traffic Manager-profiel is *http://<* relativednsname *>.trafficmanager.net*. 
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager in werking zien
-1. Voer in een webbrowser de DNS-naam van uw Traffic Manager-profiel (*http://<* relativednsname *>. trafficmanager.net*) in om de standaard website van uw web-app weer te geven.
+1. Voer in een webbrowser de DNS-naam van het Traffic Manager-profiel (*http://<* relativednsname *>.trafficmanager.net*) in om de standaardwebsite van uw web-app te bekijken.
 
     > [!NOTE]
     > In dit quickstartscenario worden alle aanvragen gerouteerd naar het primaire eindpunt. Het is ingesteld op **Priority 1**.
-2. Als u Traffic Manager failover in actie wilt weer geven, schakelt u de primaire site uit met [Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint).
+2. Als u een Traffic Manager-failover in actie wilt bekijken, schakelt u de primaire site uit met behulp van [Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint).
 
    ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name $App1Name-$Location1 `
@@ -144,12 +144,12 @@ Kopieer de waarde **RelativeDnsName** . De DNS-naam van uw Traffic Manager profi
     -ResourceGroupName MyResourceGroup `
     -Force
    ```
-3. Kopieer de DNS-naam van uw Traffic Manager profiel (*http://<* relativednsname *>. trafficmanager.net*) om de website in een nieuwe webbrowser sessie weer te geven.
+3. Kopieer de DNS-naam van het Traffic Manager-profiel (*http://<* relativednsname *>.trafficmanager.net*) om de website in een nieuwe webbrowsersessie te bekijken.
 4. Controleer of de web-app nog beschikbaar is.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent, verwijdert u de resource groepen, webtoepassingen en alle gerelateerde resources met [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
+Verwijder met [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) de resourcegroepen, de webtoepassingen en alle gerelateerde resources als u klaar bent.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
@@ -157,7 +157,7 @@ Remove-AzResourceGroup -Name MyResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Traffic Manager profiel gemaakt dat hoge Beschik baarheid biedt voor uw webtoepassing. Voor meer informatie over het routeren van verkeer gaat u door naar de zelfstudies voor Traffic Manager.
+In deze quickstart hebt u een Traffic Manager-profiel gemaakt die een hoge beschikbaarheid van uw webtoepassing biedt. Voor meer informatie over het routeren van verkeer gaat u door naar de zelfstudies voor Traffic Manager.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager tutorials](tutorial-traffic-manager-improve-website-response.md) (Traffic Manager-zelfstudies)

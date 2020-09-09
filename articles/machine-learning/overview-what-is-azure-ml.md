@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145889"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462459"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -69,7 +69,7 @@ U kunt de SDK ook gebruiken voor het [automatiseren van het trainen en afstemmen
 
 ## <a name="build-ml-models-in-the-studio"></a>ML-modellen bouwen in de studio
 
-[Azure Machine Learning Studio](https://www.ml.azure.com) is een webportal in Azure Machine Learning voor opties met weinig code en zonder code voor het trainen van modellen, implementatie en asset-management. De studio kan worden geïntegreerd met de Azure Machine Learning SDK voor een naadloze ervaring. Zie [Wat is Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) voor meer informatie.
+[Azure Machine Learning Studio](https://studio.azureml.net) is een webportal in Azure Machine Learning voor opties met weinig code en zonder code voor het trainen van modellen, implementatie en asset-management. De studio kan worden geïntegreerd met de Azure Machine Learning SDK voor een naadloze ervaring. Zie [Wat is Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) voor meer informatie.
 
 + **Azure Machine Learning-ontwerpfunctie (preview)**
 
@@ -86,7 +86,7 @@ U kunt de SDK ook gebruiken voor het [automatiseren van het trainen en afstemmen
 
 + **En nog veel meer...**
 
-  Ga naar Azure Machine Learning Studio op [ml.azure.com](https://www.ml.azure.com). 
+  Ga naar Azure Machine Learning Studio op [ml.azure.com](https://studio.azureml.net). 
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: Implementatie- en levenscyclusbeheer

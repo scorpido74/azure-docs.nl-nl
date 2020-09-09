@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795895"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376380"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Beheer van beheereenheden in Azure Active Directory (preview)
 
@@ -27,7 +27,7 @@ In dit artikel worden beheereenheden in Azure Active Directory (Azure AD) beschr
 
 Met beheereenheden kunt u beheerdersmachtigingen verlenen die zijn beperkt tot een afdeling, een regio of een ander door u gedefinieerd segment van uw organisatie. U kunt beheereenheden gebruiken om machtigingen te delegeren aan regionale beheerders of om een beleid op een gedetailleerd niveau in te stellen. Beheerders van gebruikersaccounts kunnen bijvoorbeeld profielgegevens bijwerken, wachtwoorden opnieuw instellen en licenties toewijzen voor uitsluitend gebruikers die in hun beheereenheid zijn opgenomen.
 
- Wanneer u bijvoorbeeld de rol [Helpdeskbeheerder](directory-assign-admin-roles.md#helpdesk-administrator) delegeert aan regionale ondersteuningsspecialisten, is dat beperkt tot het beheren van uitsluitend de gebruikers in de regio die ze ondersteunen.
+Wanneer u bijvoorbeeld de rol [Helpdeskbeheerder](directory-assign-admin-roles.md#helpdesk-administrator) delegeert aan regionale ondersteuningsspecialisten, is dat beperkt tot het beheren van uitsluitend de gebruikers in de regio die ze ondersteunen.
 
 ## <a name="deployment-scenario"></a>Implementatiescenario
 
@@ -54,7 +54,7 @@ In deze preview-versie kunt u beheereenheden beheren met behulp van Azure Portal
 
 Beheereenheden kunnen worden gebruikt voor het logisch groeperen van Azure AD-resources. Het kan bijvoorbeeld voor een organisatie waarvan de IT-afdeling over de hele wereld is verspreid zinvol zijn om beheereenheden te maken waarmee deze geografische grenzen worden gedefinieerd. In een ander scenario waarin een multinationale organisatie verschillende suborganisaties heeft die semi-autonoom hun activiteiten uitvoeren, kan voor elke suborganisatie een beheereenheid worden gebruikt.
 
-De criteria voor het maken van beheereenheden worden bepaald door de unieke vereisten van een organisatie. Beheereenheden zijn een veelgebruikte manier om structuur aan te brengen in M365-services. We raden u aan om bij het voorbereiden van uw beheereenheden rekening te houden met het gebruik ervan in M365-services. U kunt beheereenheden optimaal benutten wanneer u veelgebruikte resources in M365 kunt koppelen in een beheereenheid.
+De criteria voor het maken van beheereenheden worden bepaald door de unieke vereisten van een organisatie. Beheereenheden zijn een veelgebruikte manier om structuur aan te brengen in Microsoft 365-services. Het wordt aanbevolen om bij het voorbereiden van uw beheereenheden rekening te houden met het gebruik ervan in Microsoft 365-services. U kunt beheereenheden optimaal benutten wanneer u veelgebruikte resources in Microsoft 365 kunt koppelen in een beheereenheid.
 
 Het maken van beheereenheden in de organisatie doorloopt doorgaans de volgende fasen:
 
@@ -64,7 +64,7 @@ Het maken van beheereenheden in de organisatie doorloopt doorgaans de volgende f
 
 ## <a name="currently-supported-scenarios"></a>Scenario's die momenteel worden ondersteund
 
-Globale beheerders of beheerders voor bevoorrechte rollen kunnen de Azure AD-portal gebruiken om beheereenheden te maken, gebruikers als leden van beheereenheden toe te voegen en vervolgens IT-medewerkers toe te wijzen aan beheerdersrollen voor specifieke beheereenheden. De beheerders van een specifieke beheereenheid kunnen vervolgens de Office 365-portal gebruiken voor het basisbeheer van gebruikers in hun beheereenheden.
+Globale beheerders of beheerders voor bevoorrechte rollen kunnen de Azure AD-portal gebruiken om beheereenheden te maken, gebruikers als leden van beheereenheden toe te voegen en vervolgens IT-medewerkers toe te wijzen aan beheerdersrollen voor specifieke beheereenheden. De beheerders van een specifieke beheereenheid kunnen vervolgens het Microsoft 365-beheercentrum gebruiken voor het basisbeheer van gebruikers in hun beheereenheden.
 
 Daarnaast kunnen groepen worden toegevoegd als leden van de beheereenheid en een groepsbeheerder voor een specifieke beheereenheid kan ze beheren met PowerShell, Microsoft Graph en de Azure AD-portal.
 
@@ -99,7 +99,7 @@ beheer van groepslicenties voor een specifieke beheereenheid   |    Ondersteund 
 >
 > Beheerders met het bereik van een beheereenheid kunnen geen dynamische groepslidmaatschapsregels beheren.
 
-Het bereik van beheereenheden is alleen van toepassing op beheermachtigingen. Ze verhinderen niet dat leden of beheerders hun [standaardgebruikersmachtigingen](../fundamentals/users-default-permissions.md) gebruiken om door andere gebruikers, groepen of resources buiten de beheereenheid te bladeren. In de Office 365-portal worden gebruikers buiten de beheereenheden van een beheerder met een bereik eruit gefilterd, maar u kunt door andere gebruikers bladeren in de Azure AD-portal, PowerShell en andere Microsoft-services.
+Het bereik van beheereenheden is alleen van toepassing op beheermachtigingen. Ze verhinderen niet dat leden of beheerders hun [standaardgebruikersmachtigingen](../fundamentals/users-default-permissions.md) gebruiken om door andere gebruikers, groepen of resources buiten de beheereenheid te bladeren. In het Microsoft 365-beheercentrum worden gebruikers buiten de beheereenheden van een beheerder met een bereik eruit gefilterd, maar u kunt door andere gebruikers bladeren in de Azure AD-portal, PowerShell en andere Microsoft-services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

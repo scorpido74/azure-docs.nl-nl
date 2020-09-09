@@ -1,106 +1,126 @@
 ---
 title: Wat is Personalizer?
-description: Personaler is een API-service in de Cloud waarmee u de beste ervaring kunt kiezen die aan uw gebruikers wordt weer gegeven, en leer vanuit hun realtime gedrag.
+description: Personalizer is een cloudservice waarmee u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun realtime gedrag.
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.date: 08/27/2020
+ms.custom: cog-serv-seo-aug-2020
+keywords: personalizer, Azure personalizer, machine learning
+ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586215"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055614"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+Azure Personalizer is een cloudservice waarmee u voor uw toepassingen het beste inhoudsitem kunt selecteren om voor uw gebruikers weer te geven. U kunt de Personalizer-service gebruiken om te bepalen welk product aan gebruikers moet worden voorgesteld of om de optimale positie voor een advertentie te bepalen. Nadat de inhoud aan de gebruiker is weergegeven, wordt het gedrag van de gebruiker in realtime bewaakt en stuurt het systeem een score terug naar de Personalizer-service. Dit garandeert continue verbetering van het machine learning-model en het vermogen van Personalizer om het beste inhoudsitem te selecteren op basis van de contextinformatie die het ontvangt.
 
-Azure Personaler is een API-service in de cloud die uw client toepassing helpt bij het kiezen van het beste afzonderlijke _inhouds_ item om elke gebruiker weer te geven. De service selecteert het beste item, van inhouds items, op basis van collectieve real-time informatie die u over inhoud en context verstrekt.
+> [!TIP]
+> Inhoud bestaat uit verschillende informatie-eenheden, zoals tekst, afbeeldingen, URL's, e-mailadressen of andere items die u wilt selecteren van en wilt weergeven aan uw gebruikers.
 
-Nadat u het inhouds item aan uw gebruiker hebt gepresenteerd, controleert uw systeem het gebruikers gedrag en meldt het een belonings Score terug naar Personaler om de mogelijkheid om de beste inhoud te selecteren op basis van de context informatie die wordt ontvangen, te verbeteren.
-
-**Inhoud** kan elke gegevens eenheid zijn, zoals tekst, afbeeldingen, url's of e-mail berichten die u wilt selecteren om aan uw gebruiker weer te geven.
+Voordat u aan de slag gaat, kunt u [Personalizer proberen met deze interactieve demo](https://personalizationdemo.azurewebsites.net/).
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
 -->
 
-## <a name="how-does-personalizer-select-the-best-content-item"></a>Hoe selecteert u het beste inhouds item in persoonlijke instellingen?
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Hoe selecteert Personalizer het beste inhoudsitem?
 
-Persoonlijkere training maakt gebruik van **educatief leren** om het beste item (_actie_) te selecteren op basis van collectief gedrag en belonings scores voor alle gebruikers. Acties zijn de inhouds items, zoals nieuws artikelen, specifieke films of producten waaruit u kunt kiezen.
+Personalizer gebruikt **bekrachtigend leren** om het beste item (_actie_) te selecteren op basis van gezamenlijk gedrag en scores toe te kennen aan alle gebruikers. Acties zijn de inhoudsitems, zoals nieuwsartikelen, specifieke films of producten.
 
-De **classificatie** oproep neemt het actie-item samen met de functies van de actie en context functies om het bovenste actie-item te selecteren:
+Met de **Positie**-aanroep wordt het actie-item in combinatie met de functies van de actie en contextfuncties gebruikt om het bovenste actie-item te selecteren:
 
-* **Acties met functies** -inhouds items met specifieke functies voor elk item
-* **Context functies** : functies van uw gebruikers, hun context of hun omgeving bij het gebruik van uw app
+* **Acties met functies**: inhoudsitems met specifieke functies voor elk item
+* **Contextfuncties**: functies van uw gebruikers, hun context of hun omgeving wanneer ze uw app gebruiken
 
-De classificatie oproep retourneert de ID van het inhouds item, de __actie__die moet worden weer gegeven voor de gebruiker in het veld **Actie-id beloning** .
-De __actie__ die wordt weer gegeven voor de gebruiker, wordt gekozen met machine learning modellen, waarbij wordt geprobeerd de totale hoeveelheid beloningen in de loop van de tijd te maximaliseren.
+Met de Positie-aanroep wordt de id van elk inhoudsitem, __actie__, geretourneerd om in het veld **Beloningsactie-id** aan de gebruiker te tonen.
 
-Enkele voorbeeld scenario's zijn:
+De __actie__ die aan de gebruiker wordt weergegeven, wordt gekozen aan de hand van machine learning-modellen die de totale hoeveelheid beloningen over een bepaalde periode proberen te maximaliseren.
 
-|Type inhoud|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
+### <a name="sample-scenarios"></a>Voorbeeldscenario's
+
+Bekijk een aantal scenario's waarin Personalizer kan worden gebruikt om de beste inhoud te selecteren om aan een gebruiker weer te geven.
+
+|Inhoudstype|Acties (met functies)|Contextfuncties|Geretourneerde beloningsactie-id<br>(deze inhoud weergeven)|
 |--|--|--|--|
-|Nieuws lijst|a. `The president...`(National, politiek, [tekst])<br>b. `Premier League ...`(globaal, sport, [tekst, afbeelding, video])<br> c. `Hurricane in the ...`(regionaal, weer, [tekst, afbeelding]|Nieuws van apparaten lezen<br>Maand of seizoen<br>|één`The president...`|
-|Lijst met films|1. `Star Wars` (1977, [actie, Adventure, fictief], George Lucas)<br>2. `Hoop Dreams` (1994, [documentaire, sport], Stefan Jeroen<br>3. `Casablanca` (1942, [Romaans, drama, War], Michael Curtiz)|De film van het apparaat wordt bekeken<br>scherm grootte<br>Type gebruiker<br>|3D.`Casablanca`|
-|Lijst met producten|i. `Product A`(3 kg, $ $ $ $, lever in 24 uur)<br>ii. `Product B`(20 kg, $ $, 2 weken verzen ding met douane)<br>iii. `Product C`(3 kg, $ $ $, levering in 48 uur)|Het apparaat wordt in het winkel lezen<br>Bestedings categorie van gebruiker<br>Maand of seizoen|ii. `Product B`|
+|Nieuwslijst|a. `The president...` (binnenlands nieuws, politiek, [tekst])<br>b. `Premier League ...` (wereldnieuws, sport, [tekst, afbeelding, video])<br> c. `Hurricane in the ...` (regionaal nieuws, weer, [tekst, afbeelding]|Het apparaat waarvan het nieuws wordt afgelezen<br>Maand of seizoen<br>|een `The president...`|
+|Lijst met films|1. `Star Wars` (1977, [actie, avontuur, fantasy], George Lucas)<br>2. `Hoop Dreams` (1994, [documentaire, sport], Steve James<br>3. `Casablanca` (1942, [romantiek, drama, oorlog], Michael Curtiz)|Het apparaat waarop de film wordt bekeken<br>schermgrootte<br>Type gebruiker<br>|3. `Casablanca`|
+|Lijst met producten|i. `Product A` (3 kg, $$$$, bezorgen binnen 24 uur)<br>ii. `Product B` (20 kg, $$, verzending binnen 2 weken met douane)<br>iii. `Product C` (3 kg, $$$, bezorgen binnen 48 uur)|Apparaat waarop de gebruiker onlinewinkels bezoekt<br>Uitgavecategorie van gebruiker<br>Maand of seizoen|ii. `Product B`|
 
-Persoonlijkere training gebruikt versterking van een enkele best mogelijke actie, ook wel _Actie-id_genoemd, op basis van een combi natie van:
-* Getraind model-gegevens over de Personaler service ontvangen
-* Actuele gegevensspecifieke acties met functies en context functies
+Personalizer gebruikt bekrachtigend leren om de beste actie te selecteren. Dit wordt ook wel de _beloningsactie-id_ genoemd. Voor het machine learning-model wordt het volgende gebruikt: 
 
-## <a name="when-to-call-personalizer"></a>Wanneer moet u een persoonlijker gesprek doen
+* Een getraind model: eerder ontvangen informatie van de Personalizer-service die wordt gebruikt om het machine learning-model te verbeteren
+* Huidige gegevens: specifieke acties met functies en contextfuncties
 
-De **rangs** - [API](https://go.microsoft.com/fwlink/?linkid=2092082) van personaler wordt _elke keer_ dat u inhoud in realtime presenteert opgeroepen. Dit wordt aangeduid als een **gebeurtenis**met een _gebeurtenis-id_.
+## <a name="when-to-use-personalizer"></a>Wanneer kan ik Personalizer gebruiken
 
-De **belonings** - [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) van personaler kan in realtime worden aangeroepen of uitgesteld zodat deze beter aansluit bij uw infra structuur. U bepaalt de belonings Score op basis van uw bedrijfs behoeften. De belonings Score ligt tussen 0 en 1. Dit kan een enkele waarde zijn, zoals 1 voor goed, en 0 voor slecht, of een getal dat is geproduceerd door een algoritme dat u maakt, gezien uw bedrijfs doelstellingen en-metrische gegevens.
+De **Positie**-[API](https://go.microsoft.com/fwlink/?linkid=2092082) van Personalizer wordt steeds aangeroepen wanneer in uw toepassing inhoud wordt getoond. Dit wordt een **gebeurtenis** genoemd, voorzien van een _gebeurtenis-id_.
 
-## <a name="personalizer-content-requirements"></a>Vereisten voor persoonlijke inhoud
+De **belonings**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) van Personalizer kan in real time worden aangeroepen of later, zodat het beter bij uw infrastructuur past. U bepaalt de beloningsscore op basis van uw zakelijke behoeften. De beloningsscore ligt tussen 0 en 1. Dat kan één waarde zijn, zoals 1 voor goed en 0 voor slecht, of een getal dat wordt geproduceerd door een algoritme dat u maakt voor uw bedrijfsdoelen en metrische gegevens.
 
-Persoonlijker gebruiken wanneer inhoud:
+## <a name="content-requirements"></a>Inhoudsvereisten
 
-* Heeft een beperkte set items (Maxi maal ~ 50) waaruit kan worden geselecteerd. Als u een grotere lijst hebt, [gebruikt u een aanbevelings engine](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) om de lijst omlaag te brengen tot 50 items.
-* Bevat informatie over de inhoud die u wilt geclassificeerd: _acties met functies_ en _context functies_.
-* Heeft ten minste ongeveer 1 KB/dag aan inhoud gerelateerde gebeurtenissen die persoonlijk kunnen worden toegepast. Als het vereiste minimum verkeer niet door Personaler wordt ontvangen, neemt de service meer tijd in beslag om het afzonderlijke beste inhouds item te bepalen.
+Gebruik Personalizer wanneer uw inhoud:
 
-Omdat persoonlijke gegevens in bijna realtime worden gebruikt om het afzonderlijke beste inhouds item te retour neren, is de service niet:
-* Gebruikers profiel gegevens persistent maken en beheren
-* Voor keuren of geschiedenis van afzonderlijke gebruikers vastleggen
-* Gereinigde en gelabelde inhoud vereisen
+* Een beperkte set items (maximaal 50) bevat waaruit u een selectie kunt maken. [Gebruik een aanbevelingsengine](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) om de lijst in te korten tot 50 items als u een grotere lijst hebt.
+* Informatie bevat waarmee de inhoud die u wilt classificeren, wordt beschreven: _acties met functies_ en _contextfuncties_.
+* Minimaal 1000 aan inhoud gerelateerde gebeurtenissen per dag nodig heeft om Personalizer te activeren. Als Personalizer niet de minimaal vereiste hoeveelheid verkeer ontvangt, duurt het langer om met de service het beste inhoudsitem te bepalen.
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Personalisatie ontwerpen en implementeren voor uw client toepassing
+Omdat voor Personalizer collectieve gegevens in bijna realtime worden gebruikt om het beste inhoudsitem te retourneren, wordt het volgende niet uitgevoerd met de service:
+* Gebruikersprofielgegevens bewaren en beheren
+* De voorkeuren of geschiedenis van afzonderlijke gebruikers aan logboeken toevoegen
+* Opgeschoonde en gelabelde inhoud vereisen
 
-1. [Ontwerp](concepts-features.md) en plan inhoud, **_acties_** en **_context_**. Bepaal het belonings algoritme voor de **_belonings_** Score.
-1. Elke [personaler-resource](how-to-settings.md) die u maakt, wordt beschouwd als één Learning-lus. De lus ontvangt zowel de rang-als belonings aanroepen voor die inhoud of gebruikers ervaring.
+## <a name="how-to-design-for-and-implement-personalizer"></a>Ontwerpen voor Personalizer en Personalizer implementeren
+
+1. [Ontwerp](concepts-features.md) en plan voor inhoud, **_acties_** en **_context_**. Bepaal het beloningsalgoritme voor de **_beloningsscore_**.
+1. Elke [Personalizer-resource](how-to-settings.md) die u maakt, wordt als één leerlus beschouwd. De lus ontvangt zowel de Positie- als de Beloningsaanroep voor die inhoud of gebruikerservaring.
 
     |Resourcetype| Doel|
     |--|--|
-    |[Leerling-modus](concept-apprentice-mode.md)`E0`|Train het Personaler-model zonder dat dit van invloed is op uw bestaande toepassing en implementeer vervolgens naar het online leer gedrag in een productie omgeving|
-    |Standaard`S0`|Online Leer gedrag in een productie omgeving|
-    |Macro's`F0`| Online Leer gedrag uitproberen in een niet-productie omgeving|
+    |[Leerlingmodus](concept-apprentice-mode.md) `E0`|Train het Personalizer-model zonder dat dit gevolgen heeft voor uw bestaande toepassing. Implementeer vervolgens het onlineleergedrag naar een productieomgeving|
+    |Standard, `S0`|Onlineleergedrag in een productieomgeving|
+    |Gratis, `F0`| Onlineleergedrag proberen in een niet-productieomgeving|
 
-1. Persoonlijker toevoegen aan uw toepassing, website of systeem:
-    1. Voeg een **classificatie** oproep toe aan personaler in uw toepassing, website of systeem om het beste, één _inhouds_ item te bepalen voordat de inhoud wordt weer gegeven aan de gebruiker.
-    1. Het beste, één _inhouds_ item weer geven, wat de geretourneerde _Actie-id_is voor de gebruiker.
-    1. _Bedrijfs logica_ Toep assen op verzamelde informatie over de manier waarop de gebruiker zich heeft gereageerd, om de **belonings** score te bepalen, zoals:
+1. Voeg Personalizer toe aan uw toepassing, website of systeem:
+    1. Voeg een **Positie**-aanroep toe aan Personalizer in uw toepassing, website of systeem om het beste _inhoudsitem_ te bepalen voordat de gebruiker de inhoud te zien krijgt.
+    1. Toon gebruikers het beste _inhoudsitem_. Dit item is de geretourneerde _beloningsactie-id_.
+    1. Pas _bedrijfslogica_ toe op verzamelde informatie over het gedrag van de gebruiker om de **beloningsscore** te bepalen, zoals:
 
-    |Gedrag|Berekende belonings Score|
+    |Gedrag|Berekende beloningsscore|
     |--|--|
-    |Gebruiker heeft het beste, één _inhouds_ item geselecteerd (actie-id beloning)|**1**|
-    |Door gebruiker geselecteerde andere inhoud|**0**|
-    |De gebruiker is tijdelijk gepauzeerd en er wordt niet meer geschuifd, voordat u het beste, één _inhouds_ item selecteert (actie-id beloning)|**0,5**|
+    |De gebruiker heeft het beste _inhoudsitem_ (beloningsactie-id) geselecteerd|**1**|
+    |De gebruiker heeft andere inhoud geselecteerd|**0**|
+    |De gebruiker heeft zijn of haar acties gepauzeerd en doelloos rondgekeken voordat hij of zij het beste _inhoudsitem_ (beloningsactie-id) selecteerde|**0,5**|
 
-    1. Een **belonings oproep toevoegen** die een belonings score tussen 0 en 1 verzendt
-        * Direct na het weer geven van uw inhoud
-        * Of ergens later in een offline systeem
-    1. [Evalueer uw lus](concepts-offline-evaluation.md) met een offline-evaluatie na een gebruiks periode. Met een offline-evaluatie kunt u de effectiviteit van de Personaler service testen en beoordelen zonder uw code te wijzigen of de gebruikers ervaring te beïnvloeden.
+    1. Een **beloningsaanroep** toevoegen om een beloningsscore tussen 0 en 1 te verzenden
+        * Direct na weergave van uw inhoud
+        * Of op een later moment in een offlinesysteem
+    1. [Evalueer uw lus](concepts-offline-evaluation.md) met een offline-evaluatie na een bepaalde gebruiksperiode. Met een offline-evaluatie kunt u de effectiviteit van de Personalizer-service testen en beoordelen zonder uw code te hoeven wijzigen of de gebruikerservaring aan te tasten.
+
+## <a name="complete-a-quickstart"></a>Een quickstart volgen
+
+We bieden quickstarts over C#, JavaScript en Python. Elke quickstart is ontworpen om u de basisontwerppatronen te leren en waarmee u in minder dan tien minuten code kunt uitvoeren. 
+
+* [Snelstart: De Personalizer-clientbibliotheek gebruiken](sdk-learning-loop.md)
+
+Nu u de kans hebt gehad om met de Personalizer-service aan de slag te gaan, kunt u onze zelfstudies proberen en leren hoe u Personalizer in webtoepassingen, chatbots of een Azure Notebook gebruikt.
+
+* [Zelfstudie: Personalizer gebruiken in een .NET-web-app](tutorial-use-personalizer-web-app.md)
+* [Zelfstudie: Personalizer gebruiken in een .NET-chatbot](tutorial-use-personalizer-chat-bot.md)
+* [Zelfstudie: Personalizer gebruiken in een Azure Notebook](tutorial-use-azure-notebook-generate-loop-data.md)
+
+## <a name="reference"></a>Naslaginformatie 
+
+* [Personalizer C#/.NET-SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Personalizer Go-SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Personalizer JavaScript-SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Personalizer Python-SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [REST-API's](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-
-* [Hoe Personalizer werkt](how-personalizer-works.md)
-* [Wat is versterking van het onderwijs?](concepts-reinforcement-learning.md)
-* [Meer informatie over de functies en acties voor de rang aanvraag](concepts-features.md)
-* [Meer informatie over het bepalen van de score voor de belonings aanvraag](concept-rewards.md)
-* [Snelstarts](sdk-learning-loop.md)
-* [Zelfstudie](tutorial-use-azure-notebook-generate-loop-data.md)
-* [De interactieve demo gebruiken](https://personalizationdemo.azurewebsites.net/)
+> [!div class="nextstepaction"]
+> [Zo werkt Personalizer](how-personalizer-works.md)
+> [Wat is bekrachtigend leren?](concepts-reinforcement-learning.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: bb75405a1cd1e282023936673aa73be25556e0af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c42009f5e02180dc5e4c5e3e4b43f00277d7bf58
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529349"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177841"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -63,39 +63,36 @@ Azure Security Center helpt u bij het verbeteren van de beveiligingsstatus. Dit 
 
 Voor een goede beveiliging moet u natuurlijk weten of de workloads veilig zijn en deze hierop controleren. Hiervoor past u een beveiligingsbeleid toe dat op uw organisatie is afgestemd. Omdat het Azure-beleidsbeheer wordt overkoepeld door alle beleidsregels in Security Center, beschikt u over alle mogelijkheden en de flexibiliteit van een**beleidsoplossing van wereldklasse**. U kunt in Security Center uw beleid zo instellen dat dit wordt uitgevoerd in beheergroepen, in verschillende abonnementen en zelfs voor een hele tenant.
 
-![Dashboard van Security Center](media/security-center-intro/sc-dashboard.png)
+:::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="Pagina voor beleidsbeheer":::
 
 Met Security Center kunt u **schaduw-IT-abonnementen identificeren**. Wanneer u in uw dashboard abonnementen ziet met het label **valt niet onder beleid**, weet u meteen wanneer er recent gemaakte abonnementen zijn en kunt u ervoor zorgen dat deze onder uw beleid vallen en door Azure Security Center worden beveiligd.
 
-![Beleidsdashboard van Security Center](media/security-center-intro/sc-policy-dashboard.png)
-
-Door de geavanceerde controlemogelijkheden in Security Center kunt u ook **de naleving en het beheer in de loop van de tijd bijhouden en beheren**. De **algehele naleving** biedt u een maatstaf met betrekking tot de mate waarin uw abonnementen het beleid naleven dat aan uw workload is gekoppeld. 
-
-![Security Center-beleid in de loop van de tijd](media/security-center-intro/sc-policy-time.png)
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Beleidsdashboard van Security Center":::
 
 ### <a name="continuous-assessments"></a>Doorlopende beoordelingen
 
 Security Center detecteert doorlopend nieuwe resources die voor uw workloads worden geïmplementeerd en beoordeelt of deze zijn geconfigureerd volgens de best practices voor de beveiliging. Als dit niet het geval is, worden ze gemarkeerd en ontvangt u een lijst met prioriteit die aanbevelingen bevat voor de problemen die moeten worden opgelost zodat uw machines kunnen worden beveiligd.
 
+Om u te laten zien hoe belangrijk elke aanbeveling is voor uw algehele beveiligingspositie, groepeert Security Center de aanbevelingen in beveiligingsbeheeropties en voegt het een **beveiligingsscore** toe aan elke beheeroptie. Dit is van cruciaal belang bij **het stellen van prioriteiten bij uw beveiligingswerkzaamheden**.
+
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center-beveiligingsscore":::
+
+### <a name="network-map"></a>Netwerkoverzicht
+
 Een van de meest efficiënte hulpprogramma's waarover Security Center beschikt voor het doorlopend controleren van de beveiligingsstatus van uw netwerk is het **netwerkoverzicht**. In het overzicht kunt u de topologie van uw workloads bekijken, zodat u kunt zien of elk knooppunt goed is geconfigureerd. U kunt bekijken hoe uw knooppunten zijn verbonden, zodat u ongewenste verbindingen kunt blokkeren die een aanvaller in staat kunnen stellen om in uw netwerk in te breken.
 
-![Security Center-netwerkoverzicht](media/security-center-intro/sc-net-map.png)
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center-netwerkoverzicht":::
 
-Security Center maakt het beperken van beveiligingswaarschuwingen eenvoudiger door een **beveiligingsscore** toe te voegen. De beveiligingsscores worden nu gekoppeld aan elke aanbeveling die u ontvangt, zodat u weet hoe belangrijk elke aanbeveling is voor uw algehele beveiligingsstatus. Dit is van cruciaal belang bij **het stellen van prioriteiten bij uw beveiligingswerkzaamheden**.
-
-![Security Center-beveiligingsscore](media/security-center-intro/sc-secure-score.png)
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>De beveiliging optimaliseren en verbeteren door aanbevolen beheeropties te configureren
 
 De kracht van Azure Security Center ligt in de aanbevelingen die het geeft. De aanbevelingen zijn afgestemd op de specifieke beveiligingsproblemen die in uw workloads worden aangetroffen. Security Center doet voor u het beveiligingsbeheer; niet alleen door uw beveiligingsproblemen op te sporen, maar ook door u van specifieke instructies te voorzien om deze problemen op te lossen.
 
-![Security Center-aanbevelingen](media/security-center-intro/sc-recommendations.png)
-
 Security Center stelt u op deze manier niet alleen in staat om het beveiligingsbeleid in te stellen, maar ook om veilige configuratienormen toe te passen voor uw resources.
 
 Met de aanbevelingen kunt u de kwetsbaarheid voor aanvallen verminderen voor al uw resources. Dit geldt voor onder andere Azure-VM's, andere servers dan Azure-servers en Azure PaaS-services, zoals SQL- en Azure Storage-accounts. Hierbij wordt elk type resource anders beoordeeld en kent elk type eigen normen.
 
-![Voorbeeld van een Security Center-aanbeveling](media/security-center-intro/sc-recommendation-example.png)
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Voorbeeld van een Security Center-aanbeveling":::
 
 ## <a name="protect-against-threats"></a>Beveiligen tegen bedreigingen
 
@@ -103,9 +100,7 @@ Met de beveiliging tegen bedreigingen van Security Center kunt u bedreigingen de
 
 De beveiliging tegen bedreigingen van Security Center bevat een complete analyse van de aanvalsketen, waarbij automatisch waarschuwingen in uw omgeving aan elkaar worden gerelateerd op basis van de cyberaanvalsketenanalyse, zodat u een beter inzicht hebt in de hele geschiedenis van een aanval; waar deze is gestart en welke impact deze had op uw resources.
 
-
-
-![Aanbevelingen voor aanvallen in Security Center](media/security-center-intro/sc-attack-recommendation.png)
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Beveiligingswaarschuwingen":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integratie met Microsoft Defender Advanced Threat Protection
 
@@ -120,8 +115,6 @@ Security Center helpt u bij het detecteren van bedreigingen voor Azure PaaS-serv
 ### <a name="block-brute-force-attacks"></a>Beveiligingsaanvallen blokkeren
 
 Security Center zorgt ervoor dat u minder wordt blootgesteld aan beveiligingsaanvallen. Door de toegang tot poorten van virtuele machines te beperken met Just-In-Time-toegang tot VM's, kunt u de beveiliging van uw netwerk verbeteren door onnodige toegang te voorkomen. U kunt beleid voor beveiligde toegang instellen voor de geselecteerde poorten, voor alleen geautoriseerde gebruikers, toegestane bron-IP-adresbereiken of IP-adressen en voor een beperkt tijdbestek.
-
-![Security Center en beveiligingsaanvallen](media/security-center-intro/sc-brute-force.png)
 
 ### <a name="protect-data-services"></a>Gegevensservices beveiligen
 

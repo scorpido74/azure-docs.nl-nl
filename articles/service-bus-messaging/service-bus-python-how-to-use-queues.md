@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852477"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458558"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Quickstart: Azure Service Bus-wachtrijen gebruiken met Python
 
@@ -81,7 +81,7 @@ Zie [Service Bus-quota][Service Bus quotas] voor meer informatie over quota.
 De wachtrijclient ontvangt berichten van een wachtrij met behulp van de methode `get_receiver` in het object **ServiceBusClient**. Met het volgende codevoorbeeld wordt een wachtrijclient gemaakt en wordt een bericht ontvangen van de wachtrij `taskqueue`. Vervang `<connectionstring>` door de waarde voor de primaire verbindingstekenreeks voor Service Bus. 
 
 ```python
-from azure.servicebus import QueueClient, Message
+from azure.servicebus import QueueClient
 
 # Create the QueueClient
 queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")

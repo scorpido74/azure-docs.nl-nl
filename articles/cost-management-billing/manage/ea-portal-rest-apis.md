@@ -3,17 +3,17 @@ title: REST API's in Azure Enterprise
 description: In dit artikel worden de REST API's beschreven die u kunt gebruiken bij de inschrijving van uw Azure-onderneming.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 09/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d9ea567f3285ad773007a69a651e406eb2c94821
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687430"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442493"
 ---
 # <a name="azure-enterprise-rest-apis"></a>REST API's in Azure Enterprise
 

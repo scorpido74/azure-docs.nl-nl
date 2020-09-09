@@ -1,22 +1,23 @@
 ---
 title: Een virtuele Windows-machine maken en versleutelen met behulp van Azure PowerShell
-description: In deze Quick Start leert u hoe u Azure PowerShell kunt gebruiken om een virtuele Windows-machine te maken en te versleutelen.
+description: In deze quickstart leert u hoe u Azure PowerShell gebruikt om een virtuele Windows-machine te maken en te versleutelen
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 6f564a9a4f13136bbe7e28a3600ca71892c82439
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a50b62a7c6064672dfbf7d609b6053d7be6fdb77
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82081588"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079486"
 ---
-# <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>Snelstartgids: een virtuele Windows-machine maken en versleutelen in azure met Power shell
+# <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>Quickstart: Een virtuele Windows-machine maken en versleutelen in Azure met PowerShell
 
-De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze Quick start ziet u hoe u de Azure PowerShell-module kunt gebruiken om een virtuele Windows-machine (VM) te maken, een Key Vault te maken voor de opslag van versleutelings sleutels en de virtuele machine te versleutelen. 
+De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze quickstart ziet u hoe u de module Azure PowerShell kunt gebruiken om een virtuele Windows-machine (VM) te maken, een sleutelkluis te maken voor de opslag van versleutelingssleutels en de virtuele machine te versleutelen. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -31,7 +32,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-Maak een virtuele Azure-machine met [New-AzVM](/powershell/module/az.compute/new-azvm). U moet referenties opgeven voor de cmdlet. 
+Maak een virtuele Azure-machine met [New-AzVM](/powershell/module/az.compute/new-azvm). U moet referenties naar de cmdlet opgeven. 
 
 ```powershell
 $cred = Get-Credential 
@@ -41,12 +42,12 @@ New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image 
 
 Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. 
 
-## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Een Key Vault maken die is geconfigureerd voor versleutelings sleutels
+## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Een sleutelkluis maken die is geconfigureerd voor versleutelingssleutels
 
-De versleutelings sleutel van Azure Disk Encryption wordt opgeslagen in een Azure Key Vault. Maak een Key Vault met [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault). Gebruik de para meter-EnabledForDiskEncryption om de Key Vault in te scha kelen om versleutelings sleutels op te slaan.
+De versleutelingssleutel van Azure Disk Encryption wordt opgeslagen in een Azure-sleutelkluis. Maak een sleutelkluis met [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault). Gebruik de parameter -EnabledForDiskEncryption om de sleutelkluis in te schakelen voor het opslaan van versleutelingssleutels.
 
 > [!Important]
-> Elk Key Vault moet een unieke naam hebben. In het volgende voor beeld wordt een Key Vault gemaakt met de naam *myKV*, maar u moet iets anders een naam hebben.
+> Elke sleutelkluis moet een unieke naam hebben. In het volgende voorbeeld wordt een sleutelkluis gemaakt met de naam *myKV*, maar u moet deze een andere naam geven.
 
 ```powershell
 New-AzKeyvault -name MyKV -ResourceGroupName myResourceGroup -Location EastUS -EnabledForDiskEncryption
@@ -54,9 +55,9 @@ New-AzKeyvault -name MyKV -ResourceGroupName myResourceGroup -Location EastUS -E
 
 ## <a name="encrypt-the-virtual-machine"></a>De virtuele machine versleutelen
 
-Versleutel uw virtuele machine met [set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
+Versleutel uw VM met [Set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
 
-Set-AzVmDiskEncryptionExtension vereist sommige waarden van uw Key Vault-object. U kunt deze waarden verkrijgen door de unieke naam van uw sleutel kluis door te geven aan [Get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault).
+Voor Set-AzVmDiskEncryptionExtension zijn bepaalde waarden uit uw sleutelkluisobject nodig. U kunt deze waarden ophalen door de unieke naam van uw sleutelkluis door te geven aan [Get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault).
 
 ```powershell
 $KeyVault = Get-AzKeyVault -VaultName MyKV -ResourceGroupName MyResourceGroup
@@ -72,13 +73,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK
 ```
 
-U kunt het versleutelings proces controleren door [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus)uit te voeren.
+U kunt het versleutelingsproces controleren door [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus)uit te voeren.
 
 ```powershell
 Get-AzVmDiskEncryptionStatus -VMName MyVM -ResourceGroupName MyResourceGroup
 ```
 
-Wanneer versleuteling is ingeschakeld, wordt het volgende weer gegeven in de geretourneerde uitvoer:
+Wanneer versleuteling is ingeschakeld, ziet u het volgende in de geretourneerde uitvoer:
 
 ```
 OsVolumeEncrypted          : Encrypted
@@ -97,7 +98,7 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een virtuele machine gemaakt, een Key Vault gemaakt die is ingeschakeld voor versleutelings sleutels en de VM versleuteld.  Ga naar het volgende artikel voor meer informatie over de vereisten voor Azure Disk Encryption voor IaaS-VM's.
+In deze quickstart hebt u een virtuele machine gemaakt, een sleutelkluis gemaakt die is ingeschakeld voor versleutelingssleutels en de VM versleuteld.  Ga naar het volgende artikel voor meer informatie over de vereisten voor Azure Disk Encryption voor IaaS-VM's.
 
 > [!div class="nextstepaction"]
 > [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)

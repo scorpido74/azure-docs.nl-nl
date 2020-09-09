@@ -1,23 +1,26 @@
 ---
 title: 'Quickstart: Digitaal handschrift herkennen met de Ink Recognizer-REST API en C#'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart zie u hoe u de Ink Recognizer-API kunt gebruiken om digitale pennenstreken te herkennen.
+description: In deze quickstart zie u hoe u de Ink Recognizer-API en C# kunt gebruiken om digitale pennenstreken te herkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986071"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051590"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Quickstart: Digitaal handschrift herkennen met de Ink Recognizer-REST API en C#
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Gebruik deze quickstart om te beginnen met digitale pennenstreken naar de Ink Recognizer-API te verzenden. Met deze C#-toepassing wordt een API-aanvraag met gegevens over de pennenstreken met JSON-indeling verstuurd en het antwoord ontvangen.
 

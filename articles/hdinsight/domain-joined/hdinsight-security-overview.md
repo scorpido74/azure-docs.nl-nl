@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367101"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292976"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van bedrijfsbeveiliging in Azure HDInsight
 
@@ -59,7 +59,7 @@ De beheerder kan alle toegang tot de HDInsight-clusterresources en -gegevens bek
 
 Het beveiligen van gegevens is belangrijk voor het voldoen aan de beveiligings- en nalevingsvereisten van de organisatie. U moet niet alleen de toegang van onbevoegde werknemers tot gegevens beperken, maar u moet deze gegevens ook versleutelen.
 
-Azure Storage en Data Lake Storage Gen1/Gen2 bieden ondersteuning voor transparante [versleuteling van data-at-rest](../../storage/common/storage-service-encryption.md) aan de serverzijde. Beveiligde HDInsight-clusters werken naadloos samen met deze versleuteling van data-at-rest aan de serverzijde.
+HDInsight biedt ondersteuning voor versleuteling van data-at-rest met zowel via het platform als [door de klant beheerde sleutels](../disk-encryption.md). Versleuteling van data-in-transit wordt verwerkt met zowel TLS als IPSec. Zie [Versleuteling-in-transit voor Azure HDInsight](encryption-in-transit.md) voor meer informatie.
 
 ### <a name="compliance"></a>Naleving
 
@@ -79,7 +79,7 @@ De volgende tabel bevat koppelingen naar resources voor elk type beveiligingsopl
 |  | De eigenschap [Beveiligde overdracht vereist](../../storage/common/storage-require-secure-transfer.md) bij opslagaccounts inschakelen. | Klant |
 |  | [Firewalls en virtuele netwerken voor Azure Storage](../../storage/common/storage-network-security.md) configureren | Klant |
 |  | [Service-eindpunten voor virtueel netwerk van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) configureren voor Cosmos DB en [Azure SQL-database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Klant |
-|  | Ervoor zorgen dat [TLS-versleuteling](../../storage/common/storage-security-tls.md) is ingeschakeld voor gegevens die onderweg zijn. | Klant |
+|  | Controleer of de functie voor [Versleuteling-in-transit](./encryption-in-transit.md) is ingeschakeld om TLS en IPSec te gebruiken voor communicatie binnen het cluster. | Klant |
 |  | [Door de klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) configureren voor Azure Storage-versleuteling | Klant |
 |  | Toegang tot uw gegevens beheren via Azure-ondersteuning met behulp van [Klanten-lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Klant |
 | Beveiliging van toepassingen en middleware | Integratie uitvoeren met AAD-DS en [verificatie configureren](apache-domain-joined-configure-using-azure-adds.md) | Klant |

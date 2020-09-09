@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420325"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299198"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
@@ -74,6 +74,10 @@ Basis Load Balancer is standaard open voor internet. Daarnaast slaat Load Balanc
 Ga naar de pagina [Prijzen voor Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/) voor prijsinformatie over Standard Load Balancer.
 Basic Load Balancer wordt gratis aangeboden.
 Zie [SLA voor Load Balancer](https://aka.ms/lbsla). Basic Load Balancer heeft geen SLA.
+
+## <a name="whats-new"></a>Wat is nieuw?
+
+Abonneer u op de RSS-feed en bekijk de nieuwste updates voor Azure Load Balancer-functies op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Een Basic Load Balancer upgraden](upgrade-basic-standard.md) voor informatie over het upgraden van Basic Load Balancer naar Standard Load Balancer.

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Speech SDK voor C# (Xamarin) platform Setup-Speech Service'
+title: 'Quickstart: Speech-SDK voor het C# (Xamarin)-platform instellen - Speech-service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform voor C#-Xamarin in te stellen met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform in te stellen voor het gebruik van C# Xamarin met de Speech-service-SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: f8ba4ef590b3becd9259230246555d6c74b0078b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0920c4e98527640875a236bbea8693bfa8ab0942
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925019"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926643"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin), een open-source platform voor het bouwen van moderne en beste toepassingen voor IOS, Android en Windows met .net. Als u alleen de naam van het pakket wilt gebruiken om aan de slag te `Install-Package Microsoft.CognitiveServices.Speech` gaan, voert u uit in de NuGet-console.
+In deze handleiding leest u hoe u de [Speech-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin), een opensource-platform voor het bouwen van moderne en prestatiegerichte toepassingen voor iOS, Android en Windows met .NET. Als u enkel de pakketnaam nodig hebt om zelf aan de slag te gaan, voer dan `Install-Package Microsoft.CognitiveServices.Speech` uit in de NuGet-console.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -27,13 +28,13 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Een Visual Studio-project maken en de spraak-SDK installeren
+## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Een Visual Studio-project maken en de Speech-SDK installeren
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-xamarin-create-proj.md)]
 
-De Speech SDK is nu geïnstalleerd. U kunt nu het project HelloWorld verwijderen of opnieuw gebruiken dat u in de vorige stappen hebt gemaakt.
+De Speech-SDK wordt nu geïnstalleerd. U kunt het 'helloworld'-project dat u in de vorige stappen hebt gemaakt, nu verwijderen of opnieuw gebruiken.
 
-U kunt nu door gaan naar de [volgende stappen](#next-steps) .
+U kunt nu verdergaan met [Volgende stappen](#next-steps) hieronder.
 
 ## <a name="next-steps"></a>Volgende stappen
 

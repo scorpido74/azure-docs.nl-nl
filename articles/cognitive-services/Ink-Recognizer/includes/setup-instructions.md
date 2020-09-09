@@ -4,22 +4,22 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/20/2019
-ms.openlocfilehash: c202ba1d7363af9791daa801f0c447c49a80859b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
-ms.translationtype: MT
+ms.openlocfilehash: 9d46b304d598b4830cf325909f77eea6b68af757
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378479"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303981"
 ---
 >[!NOTE]
-> Eind punten voor resources die zijn gemaakt na 1 juli 2019 gebruik de aangepaste indeling voor subdomeinen die hieronder wordt weer gegeven. Zie [aangepaste subdomein namen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)voor meer informatie en een volledige lijst met regionale eind punten. 
+> Voor eindpunten voor resources die zijn gemaakt na 1 juli 2019 wordt de aangepaste indeling voor subdomeinen gebruikt die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten. 
 
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor inkt Recognizer met behulp van de [Azure Portal](../../cognitive-services-apis-create-account.md).
+Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Ink Recognizer met behulp van [Azure Portal](../../cognitive-services-apis-create-account.md).
 
-Nadat u een resource hebt gemaakt, haalt u uw eind punt en de sleutel op door uw resource te openen op het [Azure Portal](https://ms.portal.azure.com#blade/HubsExtension/BrowseResourceGroupBlade)en op **Quick Start**te klikken.
+Nadat u een resource hebt gemaakt, haalt u uw eindpunt en sleutel op door uw resource te openen in [Azure Portal](https://ms.portal.azure.com#blade/HubsExtension/BrowseResourceGroupBlade) en op **Quickstart** te klikken.
 
-Twee [omgevings variabelen](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)maken:
+Maak twee [omgevingsvariabelen](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource):
 
-* `INK_RECOGNITION_SUBSCRIPTION_KEY`-Het eind punt voor uw resource. Dit ziet er als volgt uit: <br> `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `INK_RECOGNITION_SUBSCRIPTION_KEY`: de abonnementssleutel voor het verifiëren van uw aanvragen. 
 
-* `INK_RECOGNITION_ENDPOINT`-De abonnements sleutel voor het verifiëren van uw aanvragen.   
+* `INK_RECOGNITION_ENDPOINT`: het eindpunt voor uw resource. Dit zal er als volgt uitzien: <br> `https://<your-custom-subdomain>.api.cognitive.microsoft.com`   

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ed94b44972ffc8c53ce96c0240f11ad44535531b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120521"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434602"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een JavaScript SPA
 
@@ -151,7 +151,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Javascript-t
 Het project uitvoeren met een webserver met behulp van [Node.js](https://nodejs.org/en/download/):
 
 1. Voer de volgende opdracht uit vanuit de projectmap om de server te starten:
-    ```batch
+    ```cmd
     npm install
     npm start
     ```
@@ -179,7 +179,7 @@ De MSAL-bibliotheek meldt gebruikers aan en verzoekt dat tokens worden gebruikt 
 
 Als Node.js is geïnstalleerd, kunt u de nieuwste versie downloaden via Node.js Package Manager (npm):
 
-```batch
+```cmd
 npm install msal
 ```
 

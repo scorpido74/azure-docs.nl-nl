@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een query naar de API in C# verzenden met Bing Local Business Search'
+title: 'Quickstart: een query naar de API verzenden in C# - Bing Local Business Search'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service.
+description: Gebruik deze quickstart om aanvragen te verzenden naar de Bing Local Business Search-API, een Azure Cognitive Service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,29 +10,30 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 812061bf161a33e4151b7b23265196895e039414
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611234"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925144"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Snelstartgids: een query naar de Bing Local Business Search-API in C verzenden #
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Quickstart: Een query verzenden naar de Bing Local Business Search-API in C#
 
-Gebruik deze Quick Start om te leren hoe u aanvragen verzendt naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
+Gebruik deze quickstart om te leren hoe u aanvragen verzendt naar de Bing Local Business Search-API, een Azure Cognitive Service. Hoewel deze eenvoudige toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met elke programmeertaal die HTTP-aanvragen kan doen en JSON kan parseren.
 
-In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor een zoek query.
+In deze voorbeeldtoepassing worden lokale antwoordgegevens opgehaald uit de API voor een zoekquery.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Alle edities van [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
+* Een versie van [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Een Bing Search-resource maken"  target="_blank">maakt u een Bing Search-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
 
 ## <a name="create-the-request"></a>De aanvraag maken 
 
-Met de volgende code maakt u een `WebRequest` , stelt de kop van de toegangs sleutel in en voegt een query reeks voor het *restaurant in Bellevue*.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
+Met de volgende code wordt een `WebRequest` gemaakt, de koptekst van de toegangssleutel ingesteld en een query-tekenreeks toegevoegd voor *restaurant in Bellevue*.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
 
 ```csharp
     // Replace the accessKey string value with your valid access key.
@@ -54,8 +55,8 @@ Met de volgende code maakt u een `WebRequest` , stelt de kop van de toegangs sle
 
 ## <a name="run-the-complete-application"></a>De volledige toepassing uitvoeren
 
-De volgende code maakt gebruik van de Bing lokale Business Search-API om gelokaliseerde Zoek resultaten te retour neren van de Bing zoek machine. U kunt deze code gebruiken door de volgende stappen uit te voeren:
-1. Maak een nieuwe console oplossing in Visual Studio (de Community Edition is voldoende).
+In de volgende code wordt de Bing Local Business Search-API gebruikt om gelokaliseerde zoekresultaten te retourneren van het Bing-zoekprogramma. Volg de volgende stappen om deze code te gebruiken:
+1. Maak een nieuwe consoleoplossing in Visual Studio (de Community Edition volstaat).
 2. Vervang Program.cs door de code hieronder.
 3. Vervang de waarde `accessKey` door een geldige toegangssleutel voor uw abonnement.
 4. Voer het programma uit.
@@ -209,6 +210,6 @@ namespace localSearch
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](local-search-java-quickstart.md)
-- [Zoeken in lokale zakelijke Node.js Snelstartgids](local-search-node-quickstart.md)
-- [Snelstartgids voor lokale zakelijke Zoek opdrachten python](local-search-python-quickstart.md)
+- [Quickstart over Bing Local Business Search met Java](local-search-java-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met Node.js](local-search-node-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met Python](local-search-python-quickstart.md)

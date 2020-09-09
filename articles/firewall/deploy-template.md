@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Een Azure Firewall maken met beschikbaarheidszones - Resource Manager-sjabloon'
-description: 'Azure Firewall implementeren met behulp van een sjabloon. Het virtuele netwerk heeft één VNet met drie subnetten. Er worden twee virtuele Windows Server-machines geïmplementeerd: een jumpbox en een server.'
+description: 'In deze quickstart gaat u Azure Firewall implementeren met behulp van een sjabloon. Het virtuele netwerk heeft één VNet met drie subnetten. Er worden twee virtuele Windows Server-machines geïmplementeerd: een jumpbox en een server.'
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: c8b4102968e4b6b633216e29d5e993a1c98fa1c6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705126"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071717"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Quickstart: Azure Firewall met beschikbaarheidszones implementeren - ARM-sjabloon
 

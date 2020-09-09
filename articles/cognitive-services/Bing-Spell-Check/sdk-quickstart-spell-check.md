@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: spelling controleren met de Bing Spellingcontrole SDK voor C #'
+title: 'Quickstart: Spellingcontrole met de Bing Spellingcontrole-SDK voor C#'
 titleSuffix: Azure Cognitive Services
-description: Aan de slag met de Bing Spellingcontrole-REST-API om de spelling en grammatica te controleren.
+description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,24 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1e05ca9b63bda3373afb8a090118953d89ad8f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273533"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934222"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole SDK voor C #
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-SDK voor C#
 
-Gebruik deze quickstart om te beginnen met de Bing Spellingcontrole-SDK voor C#. Hoewel de Bing Spellingcontrole een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
+Gebruik deze quickstart om te beginnen met de Bing Spellingcontrole-SDK voor C#. Hoewel de Bing Spellingcontrole een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
 
 ## <a name="application-dependencies"></a>Afhankelijkheden van de toepassing
 
 * Een versie van [Visual Studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
 * [NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck) voor de Bing Spellingcontrole
 
-Als u de Bing Spellingcontrole SDK wilt toevoegen aan uw project, selecteert u **NuGet-pakketten beheren** in **Solution Explorer** in Visual Studio. Voeg het pakket `Microsoft.Azure.CognitiveServices.Language.SpellCheck` toe. Dit pakket installeert ook de volgende afhankelijkheden:
+Als u de Bing Spellingcontrole-SDK wilt toevoegen aan uw project, selecteert u **NuGet-pakketten beheren** vanuit **Solution Explorer** in Visual Studio. Voeg het pakket `Microsoft.Azure.CognitiveServices.Language.SpellCheck` toe. Dit pakket installeert ook de volgende afhankelijkheden:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -81,7 +82,7 @@ Als u de Bing Spellingcontrole SDK wilt toevoegen aan uw project, selecteert u *
     }
     ```
 
-3. De eerste voorgestelde correctie ophalen, indien aanwezig. De Score van het voor stel en het voorgestelde woord afdrukken. 
+3. Neem de eerste voorgestelde correctie, indien er een is. Druk de suggestiescore en het voorgestelde woord af. 
 
     ```csharp
     var suggestions = firstspellCheckResult.Suggestions;
@@ -96,7 +97,7 @@ Als u de Bing Spellingcontrole SDK wilt toevoegen aan uw project, selecteert u *
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Uw project bouwen en uitvoeren. Als u Visual Studio gebruikt, drukt u op **F5** om fouten in het bestand op te sporen.
+Bouw uw project en voer het uit. Als u Visual Studio gebruikt, drukt u op **F5** om fouten in het bestand op te sporen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -104,4 +105,4 @@ Uw project bouwen en uitvoeren. Als u Visual Studio gebruikt, drukt u op **F5** 
 > [Een web-app met één pagina maken](tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](overview.md)
-- [Naslag Gids voor de C#-SDK Bing Spellingcontrole](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Spellingcontrole C# SDK Reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

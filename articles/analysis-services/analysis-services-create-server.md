@@ -1,18 +1,18 @@
 ---
 title: 'Quickstart: Een Analysis Services-server maken in de Azure-portal | Microsoft Docs'
-description: Leer hoe u snel een Azure Analysis Services-serverexemplaar maakt met behulp van de Azure-portal.
+description: In deze quickstart wordt beschreven hoe u een Azure Analysis Services-serverinstantie maakt met behulp van Azure Portal.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697481"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230777"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Quickstart: Een server maken - portal
 
@@ -59,5 +59,3 @@ In deze snelstart hebt u geleerd hoe u een server maakt in uw Azure-abonnement. 
 
 > [!div class="nextstepaction"]
 > [Snelstartgids: Een serverfirewall configureren - Portal](analysis-services-qs-firewall.md)   
-> [!div class="nextstepaction"]
-> [Zelfstudie: Een voorbeeldmodel toevoegen aan uw server](analysis-services-create-sample-model.md)

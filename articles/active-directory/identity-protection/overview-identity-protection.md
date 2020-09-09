@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815178"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437697"
 ---
 # <a name="what-is-identity-protection"></a>Wat is Identity Protection?
 
@@ -102,17 +102,17 @@ Beheerders met voorwaardelijke toegang kunnen ook beleidsregels maken met aanmel
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Mogelijkheid | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free- / Office 365-apps |
+| Mogelijkheid | Details  | Azure AD Free- / Office 365-apps | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risicobeleid | Beleid voor gebruikersrisico's (via Identity Protection) | Ja | Nee | Nee |
-| Risicobeleid | Beleid voor aanmeldingsrisico's (via Identity Protection of voorwaardelijke toegang) | Ja | Nee | Nee |
-| Beveiligingsrapporten | Overzicht | Ja | Nee | Nee |
-| Beveiligingsrapporten | Riskante gebruikers | Volledige toegang | Beperkte informatie | Beperkte informatie |
-| Beveiligingsrapporten | Riskante aanmeldingen | Volledige toegang | Beperkte informatie | Beperkte informatie |
-| Beveiligingsrapporten | Risicodetectie | Volledige toegang | Beperkte informatie | Nee |
-| Meldingen | Waarschuwingen bij gebruikers die risico lopen | Ja | Nee | Nee |
-| Meldingen | Wekelijkse samenvatting | Ja | Nee | Nee |
-| | MFA-registratiebeleid | Ja | Nee | Nee |
+| Risicobeleid | Beleid voor gebruikersrisico's (via Identity Protection)  | Nee | Nee |Ja | 
+| Risicobeleid | Beleid voor aanmeldingsrisico's (via Identity Protection of voorwaardelijke toegang)  | Nee |  Nee |Ja |
+| Beveiligingsrapporten | Overzicht |  Nee | Nee |Ja |
+| Beveiligingsrapporten | Riskante gebruikers  | Beperkte informatie | Beperkte informatie | Volledige toegang|
+| Beveiligingsrapporten | Riskante aanmeldingen  | Beperkte informatie | Beperkte informatie | Volledige toegang|
+| Beveiligingsrapporten | Risicodetectie   | Nee | Beperkte informatie| Volledige toegang|
+| Meldingen | Waarschuwingen bij gebruikers die risico lopen  | Nee | Nee |Ja |
+| Meldingen | Wekelijkse samenvatting| Nee | Nee | Ja | 
+| | MFA-registratiebeleid | Nee | Nee | Ja |
 
 ## <a name="next-steps"></a>Volgende stappen
 

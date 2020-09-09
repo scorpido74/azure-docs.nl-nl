@@ -1,20 +1,20 @@
 ---
 title: 'Quickstart: Webverkeer omleiden via de portal'
 titleSuffix: Azure Application Gateway
-description: Lees hoe u Azure-portal kunt gebruiken om een Azure Application Gateway te maken die webverkeer omleidt naar virtuele machines in een back-endpool.
+description: In deze quickstart leest u hoe u Azure Portal gebruikt om een Azure Application Gateway te maken die webverkeer doorstuurt naar virtuele machines in een back-endpool.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/21/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6415657d68e10b63e357f3c1353bb66fc9c8262
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779434"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961955"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure Portal
 
@@ -209,8 +209,8 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
 
 Het is niet nodig IIS te installeren om de toepassingsgateway te maken, maar u hebt het in deze snelstartgids geïnstalleerd om te controleren of het maken van de toepassingsgateway in Azure is geslaagd. Gebruik IIS om de toepassingsgateway te testen:
 
-1. Zoek het openbare IP-adres voor de toepassingsgateway in de pagina **Overzicht**.![Noteer het openbare IP-adres van de toepassingsgateway](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) Of selecteer **alle bronnen**, voer in het zoekvak *myAGPublicIPAddress* in en selecteer het dan in de zoekresultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
-2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser om dat IP-adres te bekijken.
+1. Zoek het openbare IP-adres voor de toepassingsgateway op de bijbehorende pagina **Overzicht**.![Noteer het openbare IP-adres van de toepassingsgateway](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png). Of selecteer **Alle bronnen**, voer in het zoekvak *myAGPublicIPAddress* in en selecteer het adres vervolgens in de zoekresultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
+2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser om het IP-adres te bekijken.
 3. Controleer het antwoord. Een geldig antwoord verifieert dat de toepassingsgateway is gemaakt en verbinding kan maken met de back-end.
 
    ![Toepassingsgateway testen](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)

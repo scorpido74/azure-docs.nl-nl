@@ -4,41 +4,32 @@ description: Meer informatie over nieuwe en recente updates in de Azure Migrate-
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556934"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927167"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe functies in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) helpt u bij het detecteren, evalueren en migreren van on-premises servers, apps en gegevens naar de Microsoft Azure-cloud. In dit artikel vindt u een overzicht van nieuwe releases en functies in Azure Migrate.
+
+## <a name="update-august-2020"></a>Update (augustus 2020)
+
+- Verbeterde onboardingervaring waarbij een Azure Migrate-projectsleutel wordt gegenereerd op basis van de portal en wordt gebruikt om de apparaatregistratie te voltooien.
+- Optie om ofwel OVA/VHD-bestanden of de installatiescripts te downloaden uit de portal om respectievelijk de VMware- en Hyper-V-apparaten in te stellen.
+- Vernieuwd apparaatconfiguratiebeheer met uitgebreide gebruikerservaring.
+- Ondersteuning voor meerdere referenties voor detectie van virtuele Hyper-V-machines.
+- Verbeterde zoek-, sorteer en filtermogelijkheden voor toegevoegde referenties en detectiebronnen.
+- Opties voor invoer van één item, invoer van meerdere items en het importeren van CSV-bestanden voor gebruikers om detectiebronnen toe te voegen voor Hyper-V-hosts/clusters en fysieke servers.
+- Uitgebreide foutervaring met statusupdates voor validatie- en detectiebewerkingen voor elke toegevoegde bron in de tabel. 
 
 ## <a name="update-june-2020"></a>Update (juni 2020)
 
 - Evaluaties voor het migreren van on-premises VMware VM's naar [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) wordt nu ondersteund. [Meer informatie](how-to-create-azure-vmware-solution-assessment.md)
 - Ondersteuning voor meerdere referenties op een apparaat voor detectie van fysieke servers.
 - Ondersteuning voor het toestaan van Azure-aanmelding vanaf een apparaat voor tenants, waarbij een tenantbeperking is geconfigureerd.
-- Nieuwe Azure Migrate-apparaatversies, zoals hieronder vermeld.
-
-### <a name="azure-public-cloud"></a>Openbare Azure-cloud
-
-**Scenario** | **Downloaden** | **SHA256**
---- | --- | ---
-Hyper-V (8,93 GB) | [Nieuwste versie](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10,9 GB) | [Nieuwste versie](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-Physical (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Government
-
-**Scenario** | **Downloaden** | **SHA256**
---- | --- | ---
-Hyper-V (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-Physical (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>Update (april 2020)

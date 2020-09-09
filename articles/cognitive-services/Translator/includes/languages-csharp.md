@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a69c0b7f204fb07e6d4ec94e8a2cecb0a404735
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586850"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921360"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -43,9 +44,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="get-endpoint-information-from-an-environment-variable"></a>Eindpunt gegevens ophalen van een omgevings variabele
+## <a name="get-endpoint-information-from-an-environment-variable"></a>Informatie over een eindpunt ophalen uit een omgevingsvariabele
 
-Voeg de volgende regels toe aan de `Program` klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan de `Program`-klasse. Met deze regels worden uw abonnementssleutel en eindpunt gelezen uit omgevingsvariabelen en wordt een fout gegenereerd als u eventuele problemen ondervindt.
 
 ```csharp
 private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
@@ -62,7 +63,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Een functie maken om een lijst met talen te verkrijgen
 
-Maak in de `Program` -klasse een functie met de naam `GetLanguages` . Deze klasse bevat de code die wordt gebruikt om de resource Languages aan te roepen en het resultaat weer te geven op de console.
+Maak in de `Program`-klasse een functie met de naam `GetLanguages`. Deze klasse bevat de code die wordt gebruikt om de resource Languages aan te roepen en het resultaat weer te geven op de console.
 
 ```csharp
 static void GetLanguages()
@@ -119,9 +120,9 @@ Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services-abonnement voor meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraagparameters toevoegen. [Meer informatie over verificatie met het abonnement voor meerdere services](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-Als u het antwoord wilt afdrukken met ' mooie afdruk ' (opmaak voor het antwoord), voegt u deze functie toe aan de klasse Program:
+Voor het afdrukken van het antwoord met 'Pretty Print' (opmaak voor het antwoord) voegt u deze functie toe aan uw Programma-klasse:
 
 ```csharp
 static string PrettyPrint(string s)
@@ -241,7 +242,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator kunt doen.
 
 > [!div class="nextstepaction"]
-> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

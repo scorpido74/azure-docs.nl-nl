@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488950"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300031"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Quickstart: Een cognitieve vaardighedenset van Azure Cognitive Search maken in de Azure-portal
 
@@ -29,7 +29,7 @@ Voordat u begint, moet u het volgende hebben:
 
 + Een Azure Cognitive Search-service. [Maak een service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in uw huidige abonnement. U kunt een gratis service voor deze quickstart gebruiken. 
 
-+ Een Azure Storage-account met [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/).
++ Een Azure Storage-account met [Blob-opslag](../storage/blobs/index.yml).
 
 > [!NOTE]
 > Deze quickstart maakt ook gebruik van [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. Omdat de workload zo klein is, wordt de gratis verwerking (maximaal 20 transacties) van Cognitive Services achter de schermen gebruikt. Dit betekent dat u deze oefening kunt doen zonder dat u een nieuwe Cognitive Services-resource moet aanmaken.
@@ -40,7 +40,7 @@ Volg deze stappen om een blobcontainer in te stellen in Azure Storage om heterog
 
 1. [Download de voorbeeldgegevens](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) die bestaan uit een kleine set van verschillende typen bestanden. Pak de bestanden uit.
 
-1. [Een Azure Storage-account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) zoeken. 
+1. [Een Azure Storage-account maken](../storage/common/storage-account-create.md?tabs=azure-portal) of [een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) zoeken. 
 
    + Kies dezelfde regio als Azure Cognitive Search om bandbreedtekosten te voorkomen. 
 
@@ -76,7 +76,7 @@ Configureer vervolgens AI-verrijking om OCR, afbeeldingsanalyse en verwerking va
 
 1. Voor deze quickstart gebruiken we de **gratis** Cognitive Services-resource. De voorbeeldgegevens bestaan uit 14 bestanden. De gratis service-eenheid van 20 transacties op Cognitive Services is dus voldoende voor deze quickstart. 
 
-   ![Cognitive Services toevoegen](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Cognitive Services koppelen: basisservice koppelen](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 1. Vouw **Verrijkingen toevoegen** uit en maak vier selecties. 
 
@@ -86,7 +86,7 @@ Configureer vervolgens AI-verrijking om OCR, afbeeldingsanalyse en verwerking va
 
    Kies vaardigheden voor entiteitsherkenning (personen, organisaties en locaties) en afbeeldingsanalyse.
 
-   ![Cognitive Services toevoegen](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Cognitive Services koppelen: services voor vaardighedenset selecteren](media/cognitive-search-quickstart-blob/skillset.png)
 
    Ga door naar de volgende pagina.
 
@@ -169,7 +169,7 @@ Een ander belangrijk concept is dat vaardigheden werken via inhoudstypen, en wan
 
 Uitvoer wordt naar een zoekindex geleid, en er is een toewijzing tussen naam/waarde-paren die zijn gemaakt tijdens het indexeren, en afzonderlijke velden in uw index. Intern stelt de portal [aantekeningen](cognitive-search-concept-annotations-syntax.md) in en definieert een [set vaardigheden](cognitive-search-defining-skillset.md), waarmee de volgorde van bewerkingen en de algemene stroom wordt bepaald. Deze stappen zijn verborgen in de portal, maar wanneer u begint met het schrijven van code worden deze concepten belangrijk.
 
-Ten slotte hebt u geleerd dat inhoud kan worden gecontroleerd door de index te doorzoeken. Azure Cognitive Search biedt eigenlijk een doorzoekbare index, waarin u query's kunt uitvoeren met behulp van de [eenvoudige](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) of [volledig uitgebreide querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Een index met verrijkte velden werkt zoals elke andere index. Als u standaardanalyse of [aangepaste analyse](search-analyzers.md), [scoreprofielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [synoniemen](search-synonyms.md), [meervoudige filters](search-filters-facets.md), geografisch zoeken of een andere functie van Azure Cognitive Search wilt opnemen, kunt u dat gewoon doen.
+Ten slotte hebt u geleerd dat inhoud kan worden gecontroleerd door de index te doorzoeken. Azure Cognitive Search biedt eigenlijk een doorzoekbare index, waarin u query's kunt uitvoeren met behulp van de [eenvoudige](/rest/api/searchservice/simple-query-syntax-in-azure-search) of [volledig uitgebreide querysyntaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search). Een index met verrijkte velden werkt zoals elke andere index. Als u standaardanalyse of [aangepaste analyse](search-analyzers.md), [scoreprofielen](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [synoniemen](search-synonyms.md), [meervoudige filters](search-filters-facets.md), geografisch zoeken of een andere functie van Azure Cognitive Search wilt opnemen, kunt u dat gewoon doen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

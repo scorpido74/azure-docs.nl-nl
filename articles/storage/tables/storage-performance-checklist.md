@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008672"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458329"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Controlelijst voor prestaties en schaalbaarheid van Table-opslag
 
@@ -197,7 +197,7 @@ In deze sectie worden verschillende snelle configuratie-instellingen weergegeven
 
 Vanaf Storage-serviceversie 2013-08-15 ondersteunt de Table service het gebruik van JSON in plaats van de op XML gebaseerde AtomPub-indeling voor het overdragen van tabelgegevens. Het gebruik van JSON kan de payloadgrootte tot wel 75% verminderen en kan de prestaties van uw toepassing aanzienlijk verbeteren.
 
-Zie voor meer informatie het bericht [Microsoft Azure-tabellen: Kennismaking met JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) en [Payload-indeling voor Table service-bewerkingen](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Zie voor meer informatie het bericht [Microsoft Azure-tabellen: Kennismaking met JSON](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) en [Payload-indeling voor Table service-bewerkingen](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 ### <a name="disable-nagle"></a>Nagle uitschakelen
 

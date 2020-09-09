@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 40f820a32c7848b5370cb664d706e9f20928bc5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495336"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296478"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Quickstart: Een Azure Database for MySQL maken met behulp van de eenvoudige Azure CLI-opdracht az mysql up (preview-versie)
 
@@ -75,7 +75,7 @@ admin-password | Door het systeem gegenereerd | Het wachtwoord van het beheerder
 
 Zodra uw server is gemaakt, zijn de volgende instellingen beschikbaar:
 
-- De firewallregel 'devbox' wordt gemaakt. De Azure CLI probeert het IP-adres te detecteren van de machine van waaruit de `az mysql up`-opdracht wordt uitgevoerd en plaatst dat IP-adres op de acceptatielijst.
+- De firewallregel 'devbox' wordt gemaakt. De Azure CLI probeert het IP-adres te detecteren van de machine van waaruit de `az mysql up`-opdracht wordt uitgevoerd en staat dat IP-adres toe.
 - Toegang tot Azure-services toestaan is ingesteld op AAN. Met deze instelling wordt de firewall van de server geconfigureerd om verbindingen van alle Azure-resources te accepteren, inclusief resources die niet onderdeel zijn van uw abonnement.
 - De parameter voor `wait_timeout` is ingesteld op 8 uur
 - De lege database 'sampledb' wordt gemaakt

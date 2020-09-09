@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77242ab35416fb24a3a815e7137280e5f3698c30
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0c74c3709848e4296f07844278b076fdc7ffa9bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586609"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921403"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -32,11 +33,11 @@ Daarna moet u Json.Net installeren. Voer vanuit de map van het project het volge
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
-## <a name="select-the-c-language-version"></a>De versie van de C#-taal selecteren
+## <a name="select-the-c-language-version"></a>De C#-taalversie selecteren
 
-Voor deze Quick start is C# 7,1 of hoger vereist. Er zijn een aantal manieren om de C#-versie voor uw project te wijzigen. In deze hand leiding wordt uitgelegd hoe u het bestand kunt aanpassen `translate-sample.csproj` . Voor alle beschik bare opties, zoals het wijzigen van de taal in Visual Studio, raadpleegt [u de taal versie van C# selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
+Voor deze snelstart is C# 7.1 of hoger vereist. Er zijn een aantal manieren om de C#-versie voor uw project te wijzigen. In deze handleiding laten we u zien hoe u het `translate-sample.csproj`-bestand kunt aanpassen. Zie [De C#-taalversie selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version) voor alle beschikbare opties, zoals het wijzigen van de taal in Visual Studio.
 
-Open het project en open het `translate-sample.csproj` . Zorg ervoor dat `LangVersion` is ingesteld op 7,1 of hoger. Als er geen eigenschaps groep voor de taal versie is, voegt u deze regels toe:
+Open uw project en open vervolgens `translate-sample.csproj`. Zorg ervoor dat `LangVersion` is ingesteld op 7.1 of hoger. Als er geen eigenschapsgroep bestaat voor de taalversie, voegt u deze regels toe:
 
 ```xml
 <PropertyGroup>
@@ -59,7 +60,7 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>Klassen maken voor het JSON-antwoord
 
-We gaan nu een set klassen maken die worden gebruikt bij het deserialiseren van het JSON-antwoord dat door de vertaler wordt geretourneerd.
+Hierna maken we een reeks met klassen die worden gebruikt wanneer het JSON-antwoord dat door de Vertaler wordt geretourneerd, wordt gedeserialiseerd.
 
 ```csharp
 /// <summary>
@@ -105,9 +106,9 @@ public class SentenceLength
 }
 ```
 
-## <a name="get-subscription-information-from-environment-variables"></a>Abonnements gegevens ophalen van omgevings variabelen
+## <a name="get-subscription-information-from-environment-variables"></a>Abonnementsgegevens ophalen uit de omgevingsvariabelen
 
-Voeg de volgende regels toe aan de `Program` klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan de `Program`-klasse. Met deze regels worden uw abonnementssleutel en eindpunt gelezen uit omgevingsvariabelen en wordt een fout gegenereerd als u eventuele problemen ondervindt.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -132,7 +133,7 @@ static Program()
 
 ## <a name="create-a-function-to-translate-text"></a>Een functie maken om tekst te vertalen
 
-Maak in de `Program` -klasse een asynchrone functie met de naam `TranslateTextRequest()` . Deze functie heeft vier argumenten: `subscriptionKey` , `host` , en `route` `inputText` .
+Maak in de `Program`-klasse een asynchrone functie met de naam `TranslateTextRequest()`. Deze functie gebruikt vier argumenten: `subscriptionKey`, `host`, `route` en `inputText`.
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
@@ -146,9 +147,9 @@ static public async Task TranslateTextRequest(string subscriptionKey, string end
 }
 ```
 
-## <a name="serialize-the-translation-request"></a>De Vertaal aanvraag serialiseren
+## <a name="serialize-the-translation-request"></a>De vertaalaanvraag serialiseren
 
-Vervolgens moet u het JSON-object maken en serialiseren dat de tekst bevat die u wilt vertalen. Denk eraan dat u meer dan één object in de kunt door geven `body` .
+Vervolgens moet u het JSON-object maken en serialiseren dat de tekst bevat die u wilt vertalen. Onthoud dat u meerdere objecten kunt doorgeven in de `body`.
 
 ```csharp
 object[] body = new object[] { new { Text = inputText } };
@@ -176,7 +177,7 @@ In `HttpRequestMessage` doet u het volgende:
 * De aanvraagbody (geserialiseerd JSON-object) invoegen
 * Vereiste headers toevoegen
 * Een asynchrone aanvraag maken
-* Het antwoord afdrukken met de klassen die u eerder hebt gemaakt
+* Het antwoord afdrukken met behulp van de klassen die u eerder hebt gemaakt
 
 Voeg deze code toe aan `HttpRequestMessage`:
 
@@ -208,11 +209,11 @@ foreach (TranslationResult o in deserializedOutput)
 }
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services-abonnement voor meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraagparameters toevoegen. [Meer informatie over verificatie met het abonnement voor meerdere services](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-In de laatste stap roept u `TranslateTextRequest()` aan in de functie `Main`. In dit voor beeld vertalen we naar Duits ( `de` ), Italiaans (), `it` Japans ( `ja` ) en Thai ( `th` ). Zoek `static void Main(string[] args)` en vervang deze door de volgende code:
+In de laatste stap roept u `TranslateTextRequest()` aan in de functie `Main`. In dit voorbeeld vertalen we tekst naar het Duits (`de`), Italiaans (`it`), Japans (`ja`) en Thai (`th`). Zoek `static void Main(string[] args)` en vervang deze door deze code:
 
 ```csharp
 static async Task Main(string[] args)
@@ -232,7 +233,7 @@ static async Task Main(string[] args)
 }
 ```
 
-U ziet dat in `Main` , u declareert, `subscriptionKey` `endpoint` en `route` . Daarnaast vraagt u de gebruiker om invoer met `Console.Readline()` en wijst u de waarde toe aan `textToTranslate` .
+U ziet dat u in `Main` `subscriptionKey`, `endpoint` en `route` declareert. Daarnaast vraagt u de gebruiker om invoer met `Console.Readline()` en wijst u de waarde toe aan `textToTranslate`.
 
 ## <a name="run-the-sample-app"></a>De voorbeeld-app uitvoeren
 
@@ -244,7 +245,7 @@ dotnet run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+Nadat u het voorbeeld hebt uitgevoerd, wordt het volgende uitgevoerd naar de terminal:
 
 ```bash
 Detected input language: en
@@ -256,7 +257,7 @@ Translated to ja: ハローワールド！
 Translated to th: หวัดดีชาวโลก!
 ```
 
-Dit bericht is gebaseerd op de onbewerkte JSON, die er als volgt uitziet:
+Dit bericht is opgebouwd uit de onbewerkte JSON. Dit ziet er als volgt uit:
 
 ```json
 [
@@ -293,7 +294,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator kunt doen.
 
 > [!div class="nextstepaction"]
-> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

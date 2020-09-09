@@ -1,6 +1,6 @@
 ---
-title: Wat is een hybride identiteit met Azure Active Directory?
-description: Hybride identiteiten hebben een gemeen schappelijke gebruikers identiteit voor verificatie en autorisatie zowel on-premises als in de Cloud.
+title: Wat is hybride identiteit met Azure Active Directory?
+description: Hybride identiteit betekent dat er een gemeenschappelijke gebruikersidentiteit is voor verificatie en autorisatie, zowel on-premises als in de cloud.
 keywords: inleiding tot Azure AD Connect, overzicht Azure AD Connect, wat is Azure AD Connect, Active Directory installeren
 services: active-directory
 author: billmath
@@ -13,22 +13,22 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68779852"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278646"
 ---
-# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Wat is een hybride identiteit met Azure Active Directory?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Wat is hybride identiteit met Azure Active Directory?
 
-Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers hebben zowel on-premises als in de cloud toegang tot deze toepassingen nodig. Het beheer van gebruikers zowel on-premises als in de Cloud vormt een uitdagende scenario. 
+Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers hebben zowel on-premises als in de cloud toegang tot deze toepassingen nodig. Het is een uitdaging om gebruikers zowel on-premises als in de cloud te beheren. 
 
-De identiteitsoplossingen van Microsoft kunnen zowel on-premises als in de cloud worden gebruikt.  Met deze oplossingen wordt een algemene gebruikersidentiteit gemaakt voor verificatie en autorisatie voor alle resources, ongeacht de locatie. We noemen deze **hybride identiteit**.
+De identiteitsoplossingen van Microsoft kunnen zowel on-premises als in de cloud worden gebruikt.  Met deze oplossingen wordt een algemene gebruikersidentiteit gemaakt voor verificatie en autorisatie voor alle resources, ongeacht de locatie. We noemen dit **hybride identiteit**.
 
-Met hybride identiteit aan Azure AD en hybride identiteits beheer worden deze scenario's mogelijk.
+Met hybride identiteit naar Azure AD en hybride identiteitsbeheer worden deze scenario's mogelijk.
 
-Voor een hybride identiteit met Azure AD kan een van de drie verificatie methoden worden gebruikt, afhankelijk van uw scenario's.   Deze methoden zijn: 
+Voor het verwezenlijken van hybride identiteit met Azure AD kan, afhankelijk van uw scenario's, gebruik worden gemaakt van drie verificatiemethoden.   Deze methoden zijn: 
 
 - **[Synchronisatie van wachtwoord-hashes (PHS)](whatis-phs.md)**  
 - **[Pass-through-verificatie (PTA)](how-to-connect-pta.md)**  
@@ -36,7 +36,7 @@ Voor een hybride identiteit met Azure AD kan een van de drie verificatie methode
 
 Met deze verificatiemethoden is tevens [eenmalige aanmelding](how-to-connect-sso.md) mogelijk.  Met eenmalige aanmelding worden gebruikers aangemeld als hun bedrijfsapparaten zijn verbonden met het bedrijfsnetwerk.
 
-Zie [Selecteer de juiste verificatiemethode voor uw Azure Active Directory-oplossing voor hybride identiteit](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) voor meer informatie. 
+Zie [Selecteer de juiste verificatiemethode voor uw Azure Active Directory-oplossing voor hybride identiteit](./choose-ad-authn.md) voor meer informatie. 
 
 ## <a name="common-scenarios-and-recommendations"></a>Veelvoorkomende scenario's en aanbevelingen 
 
@@ -60,10 +60,10 @@ Hieronder volgen enkele veelvoorkomende hybride identiteits- en beheerscenario's
 > 
 > <sup>3</sup> Federatieve eenmalige aanmelding met AD FS.  
 >  
-> <sup>4</sup> AD FS kan worden geïntegreerd met uw Enterprise PKI om aanmelding met certificaten toe te staan. Deze certificaten kunnen voorlopige certificaten zijn die worden geïmplementeerd via vertrouwde inrichtingskanalen, zoals MDM-, GPO- of smartcardcertificaten (waaronder PIV/CAC-kaarten) of Hello voor Bedrijven (cert-trust). Zie [dit blog](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/) (Engelstalig) voor meer informatie over ondersteuning voor smartcardverificatie. 
+> <sup>4</sup> AD FS kan worden geïntegreerd met uw Enterprise PKI om aanmelding met certificaten toe te staan. Deze certificaten kunnen voorlopige certificaten zijn die worden geïmplementeerd via vertrouwde inrichtingskanalen, zoals MDM-, GPO- of smartcardcertificaten (waaronder PIV/CAC-kaarten) of Hello voor Bedrijven (cert-trust). Zie [dit blog](/archive/blogs/samueld/adfs-certauth-aad-o365) (Engelstalig) voor meer informatie over ondersteuning voor smartcardverificatie. 
 > 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Licentie vereisten voor het gebruik van Azure AD Connect
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Licentievereisten voor het gebruik van Azure AD Connect
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
@@ -73,5 +73,4 @@ Hieronder volgen enkele veelvoorkomende hybride identiteits- en beheerscenario's
 - [Wat is synchronisatie van wachtwoord-hashes (PHS)?](whatis-phs.md) 
 - [Wat is pass-through-verificatie (PTA)?](how-to-connect-pta.md) 
 - [Wat is federatie?](whatis-fed.md) 
-- [Wat is eenmalige aanmelding?](how-to-connect-sso.md) 
-
+- [Wat is eenmalige aanmelding?](how-to-connect-sso.md)

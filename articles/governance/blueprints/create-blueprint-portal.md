@@ -1,14 +1,14 @@
 ---
 title: 'Quickstart: Een blauwdruk maken in de portal'
 description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren via Azure Portal.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045209"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051519"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Een blauwdruk definiëren en toewijzen in de portal
 
@@ -61,7 +61,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
    1. Wijzig **Type** in **Ingebouwd**. Voer bij **Zoeken** een **tag** in.
 
-   1. Klik buiten het veld **Zoeken** om de filtering weer te geven. Selecteer **Tag met bijbehorende standaardwaarde toevoegen aan resourcegroepen**.
+   1. Wijzig de focus van **Zoeken**, zodat wordt gefilterd. Selecteer **Tag met bijbehorende standaardwaarde toevoegen aan resourcegroepen**.
 
    1. Selecteer **Toevoegen** om dit artefact toe te voegen aan de blauwdruk.
 

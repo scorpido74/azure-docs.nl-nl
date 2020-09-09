@@ -1,20 +1,20 @@
 ---
 title: 'Quickstart: Webverkeer omleiden met behulp van CLI'
 titleSuffix: Azure Application Gateway
-description: Lees hoe u de Azure CLI gebruikt om een Azure-toepassingsgateway te maken die webverkeer omleidt naar virtuele machines in een back-endpool.
+description: In deze quickstart leest u hoe u Azure CLI gebruikt om een Azure Application Gateway te maken die webverkeer doorstuurt naar virtuele machines in een back-endpool.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b6b2077a71870d619c023b0d66c37ebc043aa3f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499123"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961734"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure CLI
 
@@ -24,12 +24,14 @@ De toepassingsgateway stuurt webverkeer van toepassingen naar specifieke resourc
 
 U kunt deze quickstart ook uitvoeren met [Azure PowerShell](quick-create-powershell.md) of [Azure Portal](quick-create-portal.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Azure CLI versie 2.0.4 of hoger](/cli/azure/install-azure-cli) (als u Azure CLI lokaal uitvoert).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
