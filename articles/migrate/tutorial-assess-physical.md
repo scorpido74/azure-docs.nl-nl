@@ -3,12 +3,12 @@ title: Fysieke servers beoordelen voor migratie naar Azure met Azure Migrate-ser
 description: 'Beschrijft hoe u met behulp van de service Azure Migrate: Serverevaluatie on-premises fysieke servers kunt detecteren en evalueren voor migratie naar Azure.'
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 21ffc425ff7d04bbb1bc0c3a550133ae5374b1e9
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 25bd5241700d5950eb032a6c932470871e79945f
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950099"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514115"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Fysieke servers evalueren met Azure Migrate: serverevaluatie
 
@@ -115,13 +115,13 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
         **Scenario** | **Downloaden*** | **Hash-waarde**
         --- | --- | ---
-        Fysiek (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140334) | 6de88e229c2b4836d16ce03fdfac93b5c27274945577bd8a359d598cf3777b24
+        Fysiek (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
 
     - Voor Azure Government:
 
         **Scenario** | **Downloaden*** | **Hash-waarde**
         --- | --- | ---
-        Fysiek (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140338) | 5a4715a9d10e81a5f38192b7d1c6ac0919ae3998afbf2e933c99bafae6bef80e
+        Fysiek (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatiescript uitvoeren
 

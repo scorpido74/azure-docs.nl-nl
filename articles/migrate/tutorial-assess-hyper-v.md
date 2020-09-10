@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: eae7e2d371ed8156debe9ae24cf0744bd6273943
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 57d91f14b8f3a9f58373cbd43561a03a8546fd8f
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950269"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514489"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V-VM's beoordelen met Azure Migrate-serverevaluatie
 
@@ -116,7 +116,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
         **Scenario*** | **Downloaden** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140424) |  8025f315e41c01ebdb4ffb1de87982ae6cc4ea7c4cce612612c7e90a44e79b44
+        Hyper-V (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
 
 
 ### <a name="create-the-appliance-vm"></a>Het VM-apparaat maken
