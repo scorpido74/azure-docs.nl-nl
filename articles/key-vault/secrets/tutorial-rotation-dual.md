@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: bf4864e0c6342cbd4729d5b99479eb2ef1a2c48c
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542192"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378216"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met twee sets verificatiereferenties automatiseren
 
-De beste manier om te verifiëren bij Azure-services is met behulp van een [beheerde identiteit](../general/managed-identity.md), maar in enkele gevallen is dat niet mogelijk. In dergelijke gevallen worden toegangssleutels of wachtwoorden gebruikt. Toegangssleutels en wachtwoorden moeten regelmatig worden gerouleerd.
+De beste manier om te verifiëren bij Azure-services is met behulp van een [beheerde identiteit](../general/authentication.md), maar in enkele gevallen is dat niet mogelijk. In dergelijke gevallen worden toegangssleutels of wachtwoorden gebruikt. Toegangssleutels en wachtwoorden moeten regelmatig worden gerouleerd.
 
 In deze zelfstudie leert u hoe u de periodieke roulatie van geheimen voor databases en services die gebruikmaken van twee sets verificatiereferenties kunt automatiseren. Deze zelfstudie laat met name zien hoe Azure Storage-accountsleutels die in Azure Key Vault als geheimen zijn opgeslagen worden gerouleerd met behulp van een functie die wordt geactiveerd door een melding van Azure Event Grid. :
 
@@ -91,7 +91,7 @@ Deze onderdelen en configuratie zijn vereist voor de roulatiefunctie van functie
 1. Selecteer **Beoordelen en maken**.
 1. Selecteer **Maken**
 
-   ![Beoordelen en maken](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![Het eerste opslagaccount controleren en maken](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 Nadat u de voorgaande stappen hebt voltooid, hebt u een opslagaccount, een serverfarm en een functie-app. Wanneer de implementatie is voltooid, ziet u het volgende scherm: ![Implementatie voltooid](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -136,13 +136,13 @@ U kunt de gegevens van het geheim weergeven met behulp van de onderstaande opdra
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-U ziet dat `CredentialId` is bijgewerkt in een andere `keyName` en dat `value` opnieuw is gegenereerd ![Geheim weergeven](../media/secrets/rotation-dual/dual-rotation-4.png)
+U ziet dat `CredentialId` is bijgewerkt om `keyName` af te wisselen, en dat `value` opnieuw wordt gegenereerd ![Uitvoer van ‘az keyvault secret show’ voor het eerste opslagaccount](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Toegangssleutels ophalen voor het valideren van de waarde
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Lijst met toegangssleutels](../media/secrets/rotation-dual/dual-rotation-5.png)
+![Uitvoer van ‘az storage account keys list’ voor het eerste opslagaccount](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>Extra opslagaccounts toevoegen voor roulatie
 
@@ -164,7 +164,7 @@ Voor het toevoegen van extra sleutels voor het opslagaccount voor roulatie aan e
 1. Selecteer **Beoordelen en maken**.
 1. Selecteer **Maken**
 
-   ![Beoordelen en maken](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![Het tweede opslagaccount controleren en maken](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Nog een toegangssleutel voor het opslagaccount toevoegen aan Key Vault
 
@@ -190,13 +190,13 @@ Geef de gegevens van het geheim weer met behulp van de onderstaande opdracht:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-U ziet dat `CredentialId` is bijgewerkt in een andere `keyName` en dat `value` opnieuw is gegenereerd ![Geheim weergeven](../media/secrets/rotation-dual/dual-rotation-8.png)
+U ziet dat `CredentialId` is bijgewerkt om `keyName` af te wisselen, en dat `value` opnieuw wordt gegenereerd ![Uitvoer van ‘az keyvault secret show’ voor het tweede opslagaccount](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Toegangssleutels ophalen voor het valideren van de waarde
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Lijst met toegangssleutels](../media/secrets/rotation-dual/dual-rotation-9.png)
+![Uitvoer van ‘az storage account keys list’ voor het tweede opslagaccount](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Beschikbare Key Vault-roulatiefuncties voor dubbele referenties
 

@@ -3,13 +3,13 @@ title: 'Zelfstudie: Back-ups maken van meerdere Azure VM’s met behulp van Powe
 description: In deze zelfstudie wordt uitgebreid ingegaan op het maken van back-ups van meerdere Azure-VM´s in een Recovery Services-kluis.
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513214"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181728"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Back-ups maken van Azure-VM's met behulp van PowerShell
 

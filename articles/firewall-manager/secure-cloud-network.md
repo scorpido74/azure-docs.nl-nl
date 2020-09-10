@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420818"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079112"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Zelfstudie: Uw virtuele hub beveiligen met Azure Firewall Manager
 
@@ -32,6 +32,10 @@ In deze zelfstudie leert u het volgende:
 > * De servers implementeren
 > * Een firewallbeleid maken en uw hub beveiligen
 > * De firewall testen
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Een hub-en-spoke-architectuur maken
 
@@ -270,6 +274,10 @@ Test nu de netwerkregel.
 
 Nu u hebt geverifieerd dat de regel voor het firewallnetwerk werken:
 * U kunt een extern bureaublad verbinden met een server die zich in een ander virtueel netwerk bevindt.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Wanneer u klaar bent met het testen van de firewallresources, verwijdert u de resourcegroep **fw-manager** om alle firewallgerelateerde resources te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

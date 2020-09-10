@@ -3,15 +3,15 @@ title: Windows Virtual Desktop, hostgroep, Azure portal - Azure
 description: Een Windows Virtual Desktop-hostgroep maken met behulp van de Azure-portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755480"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322582"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -47,6 +47,8 @@ Als u nog geen Azure-abonnement hebt, moet u [een account maken](https://azure.m
 Ga als volgt te werk om te beginnen met het maken van uw nieuwe hostgroep:
 
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
+   
+   >![OPMERKING] Als u zich aanmeldt bij de Amerikaanse overheidsportal, gaat u in plaats daarvan naar [https://portal.azure.us/](https://portal.azure.us/).
 
 2. Voer **Windows Virtual Desktop** op de zoekbalk in en selecteer **Windows Virtual Desktop** onder Services.
 
@@ -72,7 +74,7 @@ Ga als volgt te werk om te beginnen met het maken van uw nieuwe hostgroep:
       > [!div class="mx-imgBorder"]
       > ![Een schermopname van het vervolgkeuzemenu bij het veld Toewijzingstype. De gebruiker heeft Automatisch geselecteerd.](media/assignment-type-field.png)
 
-9. Als u **Gegroepeerd** kiest, voert u de volgende gegevens in:
+9.  Als u **Gegroepeerd** kiest, voert u de volgende gegevens in:
 
      - Voor **Maximale sessielimiet** voert u het maximum aantal gebruikers in voor wie u gelijke taakverdeling voor één sessiehost wilt.
      - Kies voor **Algoritme voor taakverdeling** de optie breedte-eerst of diepte-eerst, op basis van uw gebruikspatroon.
@@ -129,9 +131,11 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
 
 7. Kies welk type besturingssysteemschijven u wilt gebruiken voor uw VM's: Standard - SSD, Premium - SSD of Standard-HDD.
 
-8. Onder Netwerk en beveiliging selecteert u het **virtuele netwerk** en het **subnet** waar u de virtuele machines die u maakt, wilt plaatsen. Zorg ervoor dat het virtuele netwerk verbinding kan maken met de domeincontroller omdat u de virtuele machines in het virtuele netwerk moet toevoegen aan het domein. Selecteer vervolgens of u wel of niet een openbaar IP-adres voor de virtuele machines wilt. U kunt het beste **Nee** selecteren, omdat een privé-IP-adres veiliger is.
+8. Onder Netwerk en beveiliging selecteert u het **virtuele netwerk** en het **subnet** waar u de virtuele machines die u maakt, wilt plaatsen. Zorg ervoor dat het virtuele netwerk verbinding kan maken met de domeincontroller omdat u de virtuele machines in het virtuele netwerk moet toevoegen aan het domein. De DNS-servers van het virtuele netwerk dat u hebt geselecteerd, moeten worden geconfigureerd om het IP-adres van de domeincontroller te gebruiken.
 
-9. Selecteer het gewenste type beveiligingsgroep: **Basis**, **Geavanceerd**of **Geen**.
+9. Selecteer vervolgens of u een openbaar IP-adres voor de virtuele machines wilt. U kunt het beste **Nee** selecteren, omdat een privé-IP-adres veiliger is.
+
+10. Selecteer het gewenste type beveiligingsgroep: **Basis**, **Geavanceerd**of **Geen**.
 
     Als u **Basis** selecteert, moet u selecteren of u een binnenkomende poort wilt openen. Als u **Ja** selecteert, maakt u een keuze uit de lijst met standaardpoorten om binnenkomende verbindingen naar toe te staan.
 
@@ -143,11 +147,13 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
 
     Als u **Geavanceerd** kiest, selecteert u een bestaande netwerkbeveiligingsgroep die u al hebt geconfigureerd.
 
-10. Selecteer daarna of u wilt dat de virtuele machines aan een specifiek domein en een specifieke organisatie-eenheid worden gekoppeld. Als u **Ja** kiest, geeft u het domein op dat u wilt toevoegen. U kunt eventueel een specifieke organisatie-eenheid toevoegen waarin u de virtuele machines wilt plaatsen. Als u **Nee** kiest, worden de virtuele machines gekoppeld aan het domein dat overeenkomt met het achtervoegsel van de **UPN van de AD-domeindeelname**.
+11. Selecteer daarna of u wilt dat de virtuele machines aan een specifiek domein en een specifieke organisatie-eenheid worden gekoppeld. Als u **Ja** kiest, geeft u het domein op dat u wilt toevoegen. U kunt eventueel een specifieke organisatie-eenheid toevoegen waarin u de virtuele machines wilt plaatsen. Als u **Nee** kiest, worden de virtuele machines gekoppeld aan het domein dat overeenkomt met het achtervoegsel van de **UPN van de AD-domeindeelname**.
 
-11. Voer onder Administrator-account de referenties in voor de Active Directory Domain-beheerder van het virtuele netwerk dat u hebt geselecteerd.
+  - Zorg er bij het specificeren van een OE voor dat u het volledige pad (Distinguished Name) zonder aanhalingstekens gebruikt.
 
-12. Selecteer **Volgende: Werkruimte >** .
+12. Voer onder Administrator-account de referenties in voor de Active Directory Domain-beheerder van het virtuele netwerk dat u hebt geselecteerd. Voor dit account kan geen Multi-Factor Authentication (MFA) zijn ingeschakeld. Wanneer u lid wordt van een Azure Active Directory Domain Services-domein (Azure AD DS), moet het account deel uitmaken van de Azure AD DC-beheerdersgroep en moet het accountwachtwoord werken in Azure AD DS.
+
+13. Selecteer **Volgende: Werkruimte >** .
 
 Met deze optie kunt u de volgende fase voor het instellen van uw hostgroep starten: uw app-groep registreren bij een werkruimte.
 

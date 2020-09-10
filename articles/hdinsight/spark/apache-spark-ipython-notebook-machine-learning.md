@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873922"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230922"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Zelfstudie: een Apache Spark-toepassing voor machine learning bouwen in Azure HDInsight
 
@@ -41,7 +41,7 @@ De toepassing gebruikt de voorbeeldgegevens uit **HVAC.csv**. Dit bestand is sta
 
 Deze toepassing gebruikt een [ML-pijplijn](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) van Spark om een documentclassificatie uit te voeren. ML-pijplijnen bieden een uniforme set algemene API's die zijn gebaseerd op DataFrames. Met de DataFrames kunnen gebruikers praktische pijplijnen voor machine learning maken en afstemmen. In de pijplijn splitst u het document op in woorden, converteert u de woorden naar een numerieke functievector en bouwt u ten slotte een voorspellend model met behulp van de functievectoren en labels. Voer de volgende stappen uit om de toepassing te maken.
 
-1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [Een Jupyter-notebook maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook) voor de instructies.
+1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [Een Jupyter Notebook-bestand maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file) voor de instructies.
 
 1. Importeer de typen die nodig zijn voor dit scenario. Plak het volgende codefragment in een lege cel en druk op **Shift+Enter**.
 

@@ -4,12 +4,12 @@ description: Leer hoe u voorbereidingen treft voor evaluatie/migratie van fysiek
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420784"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927371"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voorbereiden op evaluatie en migratie van fysieke servers naar Azure
 
@@ -40,6 +40,7 @@ Stel Azure in om te werken met Azure Migrate.
 **Maak een Azure Migrate-project** | Uw Azure-account heeft Inzender- of Eigenaarsmachtigingen nodig om een project te maken. 
 **Resourceproviders registreren (alleen voor evaluatie)** | Azure Migrate maakt gebruik van een lichtgewicht Azure Migrate-apparaat om machines te detecteren en te evalueren met Azure Migrate:Server Assessment.<br/><br/> Tijdens de registratie van het apparaat worden resourceproviders geregistreerd bij het abonnement dat is gekozen in het apparaat. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Als u de resourceproviders wilt registreren, hebt u de rol Inzender of Eigenaar nodig voor het abonnement.
 **Een Azure AD-app maken (alleen voor evaluatie)** | Bij het registreren van het apparaat maakt Azure Migrate een Azure AD-app (Azure Active Directory) die wordt gebruikt voor communicatie tussen de agents die op het apparaat worden uitgevoerd, met de services die worden uitgevoerd op Azure. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> U hebt machtigingen nodig voor het maken van Azure AD-apps (beschikbaar in de Toepassingsontwikkelaar).
+**Een sleutelkluis maken** | De sleutelkluis wordt gemaakt tijdens de apparaatregistratie, en wordt gebruikt om het certificaat te beheren dat tijdens de apparaatconfiguratie wordt gedownload.<br/><br/>Als u wilt toestaan dat Azure Migrate de sleutelkluis maakt, heeft uw Azure-account Inzender-machtigingen nodig voor de resourcegroep waarin het Azure Migrate-project zich bevindt.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen voor het maken van een project 
@@ -154,7 +155,7 @@ Controleer de vereisten voor migratie van fysieke servers.
     - Controleer de vereiste [Azure-URL's](migrate-appliance.md#url-access) voor het replicatieapparaat voor toegang tot openbare clouds en overheidsclouds.
     - Controleer de toegangsvereisten [port] (migrate-replication-appliance.md#port-access) voor het replicatieapparaat.
 3. U moet enkele wijzigingen doorvoeren aan virtuele machines voordat u ze naar Azure migreert.
-    - Het is belangrijk dat u deze wijzigingen aanbrengt voordat u begint met de migratie. Als u de virtuele machine migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
+    - Het is belangrijk dat u deze wijzigingen aanbrengt voordat u begint met de migratie. Als u de VM migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
     - Controleer de voor [Windows](prepare-for-migration.md#windows-machines) en [Linux](prepare-for-migration.md#linux-machines) vereiste wijzigingen.
 
 

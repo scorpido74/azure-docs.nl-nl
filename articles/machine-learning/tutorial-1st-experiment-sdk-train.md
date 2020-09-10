@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
-ms.date: 02/10/2020
+ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852698"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854932"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML-model trainen
 
@@ -43,21 +43,24 @@ In dit deel van de zelfstudie voert u de code uit in het voorbeeld van de Jupyte
 
 1. Open **tutorial-1st-experiment-sdk-train.ipynb** in uw map, zoals is aangegeven in [deel één](tutorial-1st-experiment-sdk-setup.md#open).
 
-
-> [!Warning]
-> Maak **niet** een *nieuwe* notebook in de Jupyter-interface! *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* van de notebook bevat **alle code en gegevens die nodig zijn** voor deze zelfstudie.
+Maak **niet** een *nieuwe* notebook in de Jupyter-interface! *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* van de notebook bevat **alle code en gegevens die nodig zijn** voor deze zelfstudie.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Werkruimte verbinden en experiment maken
 
-> [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als die u ziet in de notebook.  
->
-> Schakel nu over naar de Jupyter-notebook als u wilt meelezen tijdens het uitvoeren van de code. 
-> Als u één codecel in een notebook wilt uitvoeren, klikt u op de codecel en drukt u op **Shift + Enter**. U kunt ook de hele notebook uitvoeren door **Alle uitvoeren** te kiezen op de bovenste werkbalk.
+<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
 
-Importeer de `Workspace`-klasse en laad uw abonnementsgegevens vanuit het bestand `config.json` met behulp van de functie `from_config().`. Hiermee wordt standaard gezocht naar het JSON-bestand in de huidige map, maar u kunt ook een padparameter opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")`. Op een notebookserver in de cloud bevindt het bestand zich automatisch in de hoofdmap.
+> [!TIP]
+> Inhoud van _tutorial-1st-experiment-sdk-train.ipynb_. Schakel nu over naar de Jupyter-notebook als u wilt meelezen tijdens het uitvoeren van de code. Als u één codecel in een notebook wilt uitvoeren, klikt u op de codecel en drukt u op **Shift + Enter**. U kunt ook de hele notebook uitvoeren door **Alle uitvoeren** te kiezen op de bovenste werkbalk.
 
-Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatietoken in.
+
+Importeer de `Workspace`-klasse en laad uw abonnementsgegevens vanuit het bestand `config.json` met behulp van de functie `from_config().`. Hiermee wordt standaard gezocht naar het JSON-bestand in de huidige map, maar u kunt ook een padparameter opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")`. Als u deze notebook uitvoert op een cloudnotebookserver in uw werkruimte, bevindt het bestand zich automatisch in de hoofdmap.
+
+Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatietoken in. Als u meer dan één tenant hebt gekoppeld aan uw gebruiker, moet u bovendien de volgende regels toevoegen:
+```
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
+```
 
 ```python
 from azureml.core import Workspace
@@ -105,16 +108,16 @@ alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for alpha in alphas:
     run = experiment.start_logging()
     run.log("alpha_value", alpha)
-
+    
     model = Ridge(alpha=alpha)
     model.fit(X=X_train, y=y_train)
     y_pred = model.predict(X=X_test)
     rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
     run.log("rmse", rmse)
-
+    
     model_name = "model_alpha_" + str(alpha) + ".pkl"
     filename = "outputs/" + model_name
-
+    
     joblib.dump(value=model, filename=filename)
     run.upload_file(name=model_name, path_or_stream=filename)
     run.complete()
@@ -162,7 +165,7 @@ for run in experiment.get_runs():
     # each logged metric becomes a key in this returned dict
     run_rmse = run_metrics["rmse"]
     run_id = run_details["runId"]
-
+    
     if minimum_rmse is None:
         minimum_rmse = run_rmse
         minimum_rmse_runid = run_id
@@ -172,15 +175,15 @@ for run in experiment.get_runs():
             minimum_rmse_runid = run_id
 
 print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))
+print("Best run_id rmse: " + str(minimum_rmse))    
 ```
-
 ```output
 Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
 Best run_id rmse: 57.234760283951765
 ```
 
 Gebruik de id van de beste uitvoering om de afzonderlijke uitvoering op te halen met behulp van de `Run`-constructor samen met het experimentobject. Roep vervolgens `get_file_names()` aan om alle bestanden te zien die via deze uitvoering kunnen worden gedownload. In dit geval hebt u slechts één bestand geüpload voor elke uitvoering tijdens de training.
+
 
 ```python
 from azureml.core import Run
@@ -194,9 +197,11 @@ print(best_run.get_file_names())
 
 Roep `download()` aan voor het uitvoeringsobject, waarbij u de naam opgeeft van het modelbestand dat u wilt downloaden. Standaard wordt door deze functie gedownload naar de huidige map.
 
+
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
 ```
+<!-- nbend -->
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

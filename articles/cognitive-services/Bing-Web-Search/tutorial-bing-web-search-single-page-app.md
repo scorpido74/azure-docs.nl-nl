@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405531"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300048"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
 
@@ -443,7 +443,7 @@ Met beveiligingsbeleid voor de browser, zoals Cross-Origin Resource Sharing (COR
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de abonnementssleutel voor de Bing Zoeken-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag via een CORS-proxy doen. Het antwoord van dit type proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de lijst met toegestane items en beschikbaar gemaakt voor JavaScript.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag via een CORS-proxy doen. Het antwoord van dit type proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden gefilterd en beschikbaar gemaakt voor JavaScript.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de voorbeeld-app toegang krijgt tot de client-id-header. Voer deze opdracht uit:
 

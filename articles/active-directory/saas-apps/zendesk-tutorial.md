@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546055"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815003"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Zendesk
 
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van Zendesk in Azure AD moet u Zendesk u
 1. Typ in de sectie **Toevoegen uit de galerie** **Zendesk** in het zoekvak.
 1. Selecteer **Zendesk** in het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>Eenmalige aanmelding via Azure AD configureren en testen voor Zendesk
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Eenmalige aanmelding van Azure AD voor Zendesk configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met Zendesk met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Zendesk.
 
@@ -149,50 +149,29 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Als u Zendesk handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de Zendesk-bedrijfssite. Voer daarna de volgende stappen uit:
 
-1. Klik op **Admin**.
+1. Klik in het **Zendesk Admin Center** op **Beveiligingsinstellingen** in het tabblad **Beveiliging**.
 
-1. Klik in het linkernavigatievenster op **Settings** en vervolgens op **Security**.
+    ![Beveiliging](./media/zendesk-tutorial/settings.png "Beveiliging")
 
-1. Voer op de pagina **Security** de volgende stappen uit:
+1. Ga naar de pagina **Eenmalige aanmelding** en klik op **Bewerken** in de **SAML**.
 
-    ![Beveiliging](./media/zendesk-tutorial/ic773089.png "Beveiliging")
+    ![Beveiliging](./media/zendesk-tutorial/saml-sso.png "Beveiliging")
 
-    ![Eenmalige aanmelding](./media/zendesk-tutorial/ic773090.png "Eenmalige aanmelding")
+1. Voer deze stappen uit op de **Eenmalige aanmelding**-pagina.
 
-    a. Klik op het tabblad **Admin & Agents**.
+    ![Eenmalige aanmelding](./media/zendesk-tutorial/saml-configuration.png "Eenmalige aanmelding")
 
-    b. Selecteer **Single sign-on (SSO) and SAML** en selecteer vervolgens **SAML**.
+    a. Plak in het tekstvak **SAML SSO URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    c. Plak in het tekstvak **SAML SSO URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
+    b. Plak in het tekstvak **Certificate Fingerprint** de waarde van **Vingerafdruk** die u hebt gekopieerd uit de Azure-portal.
 
-    d. Plak in het tekstvak **Remote Logout URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
+    c. Plak in het tekstvak **Remote Logout URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    e. Plak in het tekstvak **Certificate Fingerprint** de waarde van **Vingerafdruk** die u hebt gekopieerd uit de Azure-portal.
-
-    f. Klik op **Opslaan**.
+    d. Klik op **Opslaan**.
 
 ### <a name="create-zendesk-test-user"></a>Een testgebruiker maken in Zendesk
 
 Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon in Zendesk. Zendesk ondersteunt het automatisch inrichten van gebruikers, wat standaard is ingeschakeld. U kunt [hier](Zendesk-provisioning-tutorial.md) meer informatie vinden over het configureren van het automatisch inrichten van gebruikers.
-
-**Als u de gebruiker handmatig moet maken, voert u de volgende stappen uit:**
-
-> [!NOTE]
-> **Eindgebruikers**accounts worden automatisch ingericht bij het aanmelden. **Agent**- en **beheerders**accounts moeten handmatig worden ingericht in **Zendesk** voordat u zich aanmeldt.
-
-1. Meld u aan bij uw **Zendesk**-tenant.
-
-2. Selecteer het tabblad **Customer List**.
-
-3. Selecteer het tabblad **User** en klik op **Add**.
-
-    ![Gebruiker toevoegen](./media/zendesk-tutorial/ic773632.png "Gebruiker toevoegen")
-4. Typ in **Name** en **Email** de naam en het e-mailadres van een bestaand Azure AD-account dat u wilt inrichten en klik op **Save**.
-
-    ![Nieuwe gebruiker](./media/zendesk-tutorial/ic773633.png "Nieuwe gebruiker")
-
-> [!NOTE]
-> U kunt ook alle andere hulpprogramma's voor het creëren van Zendesk-gebruikersaccounts of API's van Zendesk gebruiken om Azure AD-gebruikersaccounts in te richten.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

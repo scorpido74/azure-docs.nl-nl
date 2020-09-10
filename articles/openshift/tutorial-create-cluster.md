@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587732"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300167"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster maken
 
@@ -23,6 +23,8 @@ In deze zelfstudie, deel een van drie, bereidt u uw omgeving voor op het maken v
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+
+Azure Red Hat OpenShift vereist minimaal 40 kernen om een OpenShift-cluster te maken en uit te voeren. Het standaardquotum voor Azure-resources voor een nieuw Azure-abonnement voldoet niet aan deze vereiste. Als u een verhoging van de resourcelimiet wilt aanvragen, raadpleegt u [Standaardquotum: limieten verhogen per VM-reeks](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
 ### <a name="verify-your-permissions"></a>Uw machtigingen controleren
 
@@ -87,12 +89,15 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
 1. **Maak een resourcegroep.**
 
     Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met de opdracht [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create).
+    
+> [!NOTE]
+> Azure Red Hat OpenShift is niet in alle regio’s beschikbaar waarin een Azure-resource kan worden gemaakt. Zie [Beschikbare regio's](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) voor informatie over waar Azure Red Hat OpenShift wordt ondersteund.
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
     ```
 
-    In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
+    The following example output shows the resource group created successfully:
 
     ```json
     {

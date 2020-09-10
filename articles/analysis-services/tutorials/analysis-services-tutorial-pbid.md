@@ -1,18 +1,18 @@
 ---
 title: 'Zelfstudie: Azure Analysis Services verbinden met Power BI Desktop | Microsoft Docs'
 author: minewiskan
-description: Informatie over het ophalen van een Analysis Services-servernaam uit Azure Portal en vervolgens verbinding maken met de server met behulp van Power BI Desktop.
+description: In deze zelfstudie leert u meer over het ophalen van een Analysis Services-servernaam uit Azure Portal en hoe u vervolgens verbinding maakt met de server met behulp van Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73572323"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229307"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Zelfstudie: Verbinden met Power BI Desktop
 

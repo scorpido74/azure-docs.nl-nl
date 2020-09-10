@@ -8,39 +8,17 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: b4d48dcc8f09ae8e2ec3bb198f8864de1c945682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093539"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255015"
 ---
 # <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
 
 In deze zelfstudie leert u hoe u een Synapse-werkruimte, een SQL-pool en een Apache Spark-pool maakt. 
-
-## <a name="prepare-a-storage-account"></a>Een opslagaccount voorbereiden
-
-1. Open de [Azure Portal](https://portal.azure.com).
-1. Maak een nieuw opslagaccount met de volgende instellingen:
-
-    |Tabblad|Instelling | Voorgestelde waarde | Beschrijving |
-    |---|---|---|---|
-    |Basisbeginselen|**Naam van opslagaccount**| U kunt een willekeurige naam opgeven.| In dit document gebruiken we de naam **contosolake**.|
-    |Basisbeginselen|**Type account**| **StorageV2** ||
-    |Basisbeginselen|**Locatie**|Kies een willekeurige locatie.| We raden u aan uw Azure Synapse Analytics-werkruimte en Azure Data Lake Storage Gen2-account in dezelfde regio te bewaren.|
-    |Geavanceerd|**Data Lake Storage Gen2**|**Ingeschakeld**| Azure Synapse werkt alleen met opslagaccounts waarvoor deze instelling is ingeschakeld.|
-    |||||
-
-1. Nadat u het opslagaccount hebt gemaakt, selecteert u **Toegangsbeheer (IAM)** in het linkerdeelvenster. Wijs vervolgens de volgende rollen toe of zorg ervoor dat deze al zijn toegewezen:
-    * Wijs uzelf toe aan de rol **Eigenaar**.
-    * Wijs uzelf toe aan de rol **Eigenaar van opslagblobgegevens**.
-1. Selecteer in het navigatievenster links de optie **Containers** en maak een container.
-1. U kunt de container een willekeurige naam geven. In dit document noemen we de container **users**.
-1. Accepteer de standaardinstelling **Openbaar toegangsniveau** en selecteer vervolgens **Maken**.
-
-In de volgende stap configureert u de Azure Synapse-werkruimte voor het gebruik van dit opslagaccount als primair opslagaccount en de container voor het opslaan van werkruimtegegevens. In de werkruimte worden gegevens opgeslagen in Apache Spark-tabellen. Het slaat Apache Spark-toepassingslogboeken op in een map met de naam **/synapse/workspacename**.
 
 ## <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
 
@@ -53,20 +31,14 @@ In de volgende stap configureert u de Azure Synapse-werkruimte voor het gebruik 
     |Basisbeginselen|**Werkruimtenaam**|U kunt deze werkruimte elke gewenste naam geven.| In dit document gebruiken we **myworkspace**.|
     |Basisbeginselen|**Regio**|Maak deze gelijk aan de regio van het opslagaccount.|
 
-1. Selecteer onder **Data Lake Storage Gen 2 selecteren** het account en de container die u eerder hebt gemaakt.
+1. U hebt een ADLSGEN2-account nodig om een werkruimte te maken. Het meest eenvoudige is om een nieuw account te maken. Als u een bestaand account opnieuw wilt gebruiken, moet u een aantal extra configuratiestappen uitvoeren. 
+1. OPTIE 1 Een nieuw ADLSGEN2-account maken 
+    1. Klik bij **Data Lake Storage Gen 2 selecteren** op **Nieuwe maken** en noem dit **contosolake**.
+    1. Klik bij **Data Lake Storage Gen 2 selecteren** op **Bestandssysteem** en noem dit **users**.
+1. OPTIE 2 Raadpleeg de instructies in **Een opslagaccount voorbereiden** onderaan dit document.
+1. De Azure Synapse-werkruimte gebruikt dit opslagaccount als primair opslagaccount en de container als opslag voor werkruimtegegevens. In de werkruimte worden gegevens opgeslagen in Apache Spark-tabellen. Het slaat Apache Spark-toepassingslogboeken op in een map met de naam **/synapse/workspacename**.
 1. Selecteer **Beoordelen en maken** > **Maken**. Uw werkruimte is binnen een paar minuten klaar.
 
-## <a name="verify-access-to-the-storage-account"></a>De toegang tot het opslagaccount controleren
-
-Beheerde identiteiten voor uw Azure Synapse-werkruimte hebben mogelijk al toegang tot het opslagaccount. Voer de volgende stappen uit om dat te controleren:
-
-1. Open de [Azure-portal](https://portal.azure.com) en open het primaire opslagaccount dat u hebt gekozen voor uw werkruimte.
-1. Selecteer **Toegangsbeheer (IAM)** in het linkerdeelvenster.
-1. Wijs vervolgens de volgende rollen toe of controleer of ze al zijn toegewezen. We gebruiken dezelfde naam voor de werkruimte-id en de werkruimtenaam.
-    * Wijs voor de rol **Bijdrager voor opslagblobgegevens** in het opslagaccount **myworkspace** toe als werkruimte-id.
-    * Wijs **myworkspace** als werkruimtenaam toe.
-
-1. Selecteer **Opslaan**.
 
 ## <a name="open-synapse-studio"></a>Synapse Studio openen
 
@@ -121,6 +93,38 @@ In tegenstelling tot de andere soorten pools is facturering voor SQL on-demand g
 
 * SQL on-demand heeft ook zijn eigen SQL on-demand-databases die onafhankelijk van elke SQL on-demand-pool bestaan.
 * Een werkruimte heeft altijd precies één SQL on-demand-pool met de naam **SQL on-demand**.
+
+## <a name="prepare-a-storage-account"></a>Een opslagaccount voorbereiden
+
+1. Open de [Azure Portal](https://portal.azure.com).
+1. Maak een nieuw opslagaccount met de volgende instellingen:
+
+    |Tabblad|Instelling | Voorgestelde waarde | Beschrijving |
+    |---|---|---|---|
+    |Basisbeginselen|**Naam van opslagaccount**| U kunt een willekeurige naam opgeven.| In dit document gebruiken we de naam **contosolake**.|
+    |Basisbeginselen|**Type account**| **StorageV2** ||
+    |Basisbeginselen|**Locatie**|Kies een willekeurige locatie.| We raden u aan uw Azure Synapse Analytics-werkruimte en Azure Data Lake Storage Gen2-account in dezelfde regio te bewaren.|
+    |Geavanceerd|**Data Lake Storage Gen2**|**Ingeschakeld**| Azure Synapse werkt alleen met opslagaccounts waarvoor deze instelling is ingeschakeld.|
+    |||||
+
+1. Nadat u het opslagaccount hebt gemaakt, selecteert u **Toegangsbeheer (IAM)** in het linkerdeelvenster. Wijs vervolgens de volgende rollen toe of zorg ervoor dat deze al zijn toegewezen:
+    * Wijs uzelf toe aan de rol **Eigenaar**.
+    * Wijs uzelf toe aan de rol **Eigenaar van opslagblobgegevens**.
+1. Selecteer in het navigatievenster links de optie **Containers** en maak een container.
+1. U kunt de container een willekeurige naam geven. In dit document noemen we de container **users**.
+1. Accepteer de standaardinstelling **Openbaar toegangsniveau** en selecteer vervolgens **Maken**.
+
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>De toegang tot het opslagaccount vanuit uw werkruimte configureren
+
+Beheerde identiteiten voor uw Azure Synapse-werkruimte hebben mogelijk al toegang tot het opslagaccount. Voer de volgende stappen uit om dat te controleren:
+
+1. Open de [Azure-portal](https://portal.azure.com) en open het primaire opslagaccount dat u hebt gekozen voor uw werkruimte.
+1. Selecteer **Toegangsbeheer (IAM)** in het linkerdeelvenster.
+1. Wijs vervolgens de volgende rollen toe of controleer of ze al zijn toegewezen. We gebruiken dezelfde naam voor de werkruimte-id en de werkruimtenaam.
+    * Wijs voor de rol **Bijdrager voor opslagblobgegevens** in het opslagaccount **myworkspace** toe als werkruimte-id.
+    * Wijs **myworkspace** als werkruimtenaam toe.
+
+1. Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

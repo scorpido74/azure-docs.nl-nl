@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546301"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296818"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Zelfstudie: Azure Active Directory-integratie met XaitPorter
 
@@ -112,7 +112,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-6. Geef het **IP-adres** of de **app-URL voor federatieve metagegevens** aan het [SmartRecruiters-ondersteuningsteam](https://www.smartrecruiters.com/about-us/contact-us/), zodat XaitPorter ervoor kan zorgen dat het IP-adres bereikbaar is vanaf uw XaitPorter-exemplaar door deze op een goedgekeurde lijst te plaatsen. 
+6. Geef het **IP-adres** of de **app-URL voor federatieve metagegevens** aan het [SmartRecruiters-ondersteuningsteam](https://www.smartrecruiters.com/about-us/contact-us/), zodat XaitPorter ervoor kan zorgen dat het IP-adres bereikbaar is vanaf de XaitPorter-instantie door deze op een goedgekeurde lijst te plaatsen. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Eenmalige aanmelding voor XaitPorter configureren
 
@@ -213,4 +213,3 @@ Wanneer u in het toegangsvenster op de tegel XaitPorter klikt, zou u automatisch
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84141242"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933015"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Procedure: Sentiment detecteren met behulp van de Text Analytics API
 
@@ -40,7 +40,7 @@ Sentimentanalyse ondersteunt een breed scala aan talen, met meer in preview-vers
 
 In Sentimentanalyse v3 worden sentimentlabels toegepast op tekst, die worden geretourneerd op zins- en documentniveau. Elk label heeft ook een betrouwbaarheidsscore. 
 
-De labels zijn `positive`, `negative` en `neutral`. Op documentniveau kan ook het sentimentlabel `mixed` worden geretourneerd. Het sentiment van het document wordt hieronder bepaald:
+De labels zijn *positief*, *negatief* en *neutraal*. Op documentniveau kan ook het *gemengde* sentimentlabel worden geretourneerd. Het sentiment van het document wordt hieronder bepaald:
 
 | Sentiment in zin                                                                            | Geretourneerd documentlabel |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ De labels zijn `positive`, `negative` en `neutral`. Op documentniveau kan ook he
 | Het document bevat ten minste één `negative` zin en ten minste één `positive` zin.    | `mixed`                 |
 | Alle zinnen in het document zijn `neutral`.                                                  | `neutral`               |
 
-Betrouwbaarheidsscores kunnen variëren van 1 tot 0. Scores die dichter bij 1 liggen, geven een hogere betrouwbaarheid in de classificatie van het label aan. Lagere scores geven een lagere betrouwbaarheid aan. Het totaal van de betrouwbaarheidsscores van alle documenten of zinnen is 1.
+Betrouwbaarheidsscores kunnen variëren van 1 tot 0. Scores die dichter bij 1 liggen, geven een hogere betrouwbaarheid in de classificatie van het label aan. Lagere scores geven een lagere betrouwbaarheid aan. Voor elk document of elke zin zijn de voorspelde scores behorende bij de labels (positief, negatief en neutraal) opgeteld 1.
 
 ### <a name="opinion-mining"></a>Meninganalyse
 

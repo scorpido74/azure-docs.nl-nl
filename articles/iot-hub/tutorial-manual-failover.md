@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252569"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013942"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Zelfstudie: Handmatige failover uitvoeren voor een IoT-hub
 
@@ -30,6 +30,8 @@ In deze zelfstudie voert u de volgende taken uit:
 > * De hub uitgevoerd zien worden in de secundaire locatie.
 > * Een failback uitvoeren om de bewerkingen van de IoT-hub in de primaire locatie terug te plaatsen. 
 > * Bevestigen dat de hub op de juiste locatie wordt uitgevoerd.
+
+Zie [Herstel na noodgevallen in verschillende regio’s](iot-hub-ha-dr.md#cross-region-dr) voor meer informatie over handmatige failovers en door Microsoft geïnitieerde failovers met IoT Hub.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -83,7 +85,7 @@ Er kunnen maximaal twee failovers en twee failbacks per dag voor een IoT-hub wor
 
    De tijd die nodig is om de handmatige failover uit te voeren is evenredig met het aantal apparaten die voor uw hub zijn geregistreerd. Als u bijvoorbeeld 100.000 apparaten hebt, dan kan het vijftien minuten duren, maar als u vijf miljoen apparaten hebt, dan kan het minstens een uur duren.
 
-   ![Schermafbeelding met het deelvenster Handmatige failover](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![Schermopname met het bevestigingsvenster Handmatige failover](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    Terwijl een handmatig failoverproces wordt uitgevoerd, wordt een banner weergegeven met de mededeling dat een handmatige failover in behandeling is. 
 

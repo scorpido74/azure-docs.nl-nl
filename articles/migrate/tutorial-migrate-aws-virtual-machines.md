@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert me
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762416"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048530"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
@@ -20,6 +20,7 @@ In deze zelfstudie ziet u hoe u AWS-VM’s (Amazon Web Services) ontdekt, beoord
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
+>
 > * Controleer de vereisten voor migratie.
 > * Zo bereidt u Azure-resources voor met Azure Migrate: Server Migration. Stel machtigingen in voor uw Azure-account en -resources om met Azure Migrate te werken.
 > * Bereid AWS EC2-instanties voor op migratie.
@@ -57,7 +58,7 @@ We raden u aan om een evaluatie uit te voeren, maar het uitvoeren van een evalua
 
 ## <a name="prerequisites"></a>Vereisten 
 
-- Zorg ervoor dat de AWS-VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Voor het doel van de migratie worden AWS-VM's behandeld als fysieke machines. Bekijk de [ondersteunde besturingssystemen](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor de migratiewerkstroom voor fysieke servers. U wordt aangeraden een testmigratie (testfailover) uit te voeren om te controleren of de virtuele machine werken zoals verwacht, voordat u doorgaat met de daadwerkelijke migratie.
+- Zorg ervoor dat de AWS-VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Voor het doel van de migratie worden AWS-VM's behandeld als fysieke machines. Bekijk de [ondersteunde besturingssystemen en kernelversies](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor de migratiewerkstroom voor fysieke servers. U kunt standaardopdrachten zoals *hostnamectl* of *uname -a* gebruiken om de OS- en kernelversies voor uw Linux-VM's te controleren.  U wordt aangeraden een testmigratie (testfailover) uit te voeren om te controleren of de virtuele machine werken zoals verwacht, voordat u doorgaat met de daadwerkelijke migratie.
 - Zorg ervoor dat de AWS-VM's voldoen aan de [ondersteunde configuraties](./migrate-support-matrix-physical-migration.md#physical-server-requirements) voor migratie naar Azure.
 - Controleer of de AWS-VM's die u naar Azure repliceert, voldoen aan de [VM-vereisten voor Azure](./migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 - U moet enkele wijzigingen doorvoeren in de virtuele machines voordat u ze naar Azure migreert.
@@ -252,7 +253,7 @@ Er moet een Mobility-serviceagent zijn geïnstalleerd op de bron-AWS-VM's die mo
 4. Selecteer in **Processerver** de naam van het replicatieapparaat. 
 5. Selecteer bij **Gastreferenties** het dummy-account dat eerder is gemaakt tijdens het [configureren van het installatieprogramma voor de replicatiefunctie](#download-the-replication-appliance-installer) om de Mobility-service handmatig te installeren (push-installatie wordt niet ondersteund). Klik vervolgens op **Volgende: Virtuele machines**.   
  
-    ![VM's repliceren](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Instellingen repliceren](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. Houd bij **Virtuele machines** in **Migratie-instellingen importeren uit een evaluatie?** de standaardinstelling **Nee, ik geef de migratie-instellingen handmatig op** aan.
 7. Controleer elke virtuele machine die u wilt migreren. Klik vervolgens op **Volgende: Doelinstellingen**.
 
@@ -381,11 +382,23 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
 **Vraag:** Ik krijg de fout 'Kan BIOS-GUID niet ophalen' tijdens het detecteren van mijn AWS-VM's   
 **Antwoord:** Gebruik altijd de basisaanmelder voor verificatie en geen pseudo-gebruiker. Controleer ook ondersteunde besturingssystemen voor AWS-VM's.  
 
-**Vraag:** Er zit geen voortgang in mijn replicatiestatus    
+**Vraag:** Er zit geen voortgang in mijn replicatiestatus   
 **Antwoord:** Controleer of het replicatieapparaat aan de vereisten voldoet. Controleer of u op de TCP-poort 9443 en HTTPS 443 van de replicatie-apparaat de vereiste poorten hebt ingeschakeld voor gegevensoverdracht. Controleer of er geen verouderde dubbele versies van het replicatieapparaat zijn verbonden met hetzelfde project.   
 
 **Vraag:** Ik kan geen AWS-instanties detecteren met Azure Migrate als gevolg van een HTTP-statuscode 504 van de externe Windows-beheerservice    
-**Antwoord:** Controleer de vereisten van het Azure Migrate-apparaat en de URL-toegangsbehoeften. Zorg ervoor dat er geen proxyinstellingen zijn die de registratie van het apparaat blokkeren.   
+**Antwoord:** Controleer de vereisten van het Azure Migrate-apparaat en de URL-toegangsbehoeften. Zorg ervoor dat er geen proxyinstellingen zijn die de registratie van het apparaat blokkeren.
+
+**Vraag:** Moet ik wijzigingen aanbrengen voordat ik mijn AWS-VM's naar Azure migreer?   
+**Antwoord:** Mogelijk moet u deze wijzigingen aanbrengen voordat u uw EC2-VM's naar Azure migreert:
+
+- Als u cloud-init gebruikt voor uw VM-inrichting, wilt u misschien cloud-init op de virtuele machine uitschakelen voordat u deze naar Azure repliceert. De inrichtingsstappen die worden door cloud-init op de VM uitgevoerd, kunnen AWS-specifiek zijn en zijn niet geldig na de migratie naar Azure. 
+- Als de VM een PV-VM is (para-gevirtualiseerd) en niet een HVM-VM, kunt u deze mogelijk niet zomaar uitvoeren op Azure, omdat para-gevirtualiseerde VM's een aangepaste opstartvolgorde in AWS gebruiken. U kunt dit mogelijk oplossen door PV-stuurprogramma's te verwijderen voordat u een migratie naar Azure uitvoert.  
+- We raden u altijd aan een testmigratie uit te voeren vóór de definitieve migratie.  
+
+
+**Vraag:** Kan ik AWS-VM's met het Amazon Linux-besturingssysteem migreren  
+**Antwoord:** VM's met Amazon Linux kunnen niet ongewijzigd worden gemigreerd, aangezien Amazon Linux OS alleen wordt ondersteund op AWS.
+Om workloads die op Amazon Linux draaien te migreren, kunt u een CentOS/RHEL VM in Azure opstarten en de workload die op de AWS Linux-machine draait migreren met een relevante workload-migratiebenadering. Afhankelijk van de werkbelasting kunnen er bijvoorbeeld werkbelastingspecifieke tools zijn om de migratie te ondersteunen, zoals databases of implementatietools in het geval van webservers.
 
 ## <a name="next-steps"></a>Volgende stappen
 

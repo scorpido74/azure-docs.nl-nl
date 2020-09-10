@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829676"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856017"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Aangepaste KPI-dashboards maken met behulp van Azure Application Insights
 
@@ -40,6 +40,9 @@ Vereisten voor het voltooien van deze zelfstudie:
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-new-dashboard"></a>Een nieuw dashboard maken
+> [!WARNING]
+> Als u uw Application Insights-resource naar een andere resourcegroep of ander abonnement verplaatst, moet u het dashboard handmatig bijwerken door de oude tegels te verwijderen en nieuwe tegels vast te maken vanuit dezelfde Application Insights-resource op een nieuwe locatie. 
+
 Een dashboard kan resources uit meerdere toepassingen, resourcegroepen en abonnementen bevatten.  Begin deze zelfstudie met het maken van een nieuw dashboard voor uw toepassing.  
 
 1. Selecteer in het dashboarddeelvenster de optie **Nieuw dashboard**.

@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118879"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051288"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelfstudie: Een ASP.NET Core MVC-webtoepassing ontwikkelen met Azure Cosmos DB met behulp van de .NET SDK
 
@@ -116,36 +117,19 @@ Azure Cosmos DB gebruikt JSON om gegevens te verplaatsen en op te slaan. U kunt 
 
 ### <a name="add-views"></a><a name="add-views"></a>Weergaven toevoegen
 
-Vervolgens gaat u de volgende drie weergaven maken.
+Nu gaan we de volgende weergaven toevoegen.
 
-* Een weergave voor een lijst met items toevoegen
-* Een weergave voor nieuwe items toevoegen
-* Een weergave voor het bewerken van items toevoegen
+* Een weergave voor het maken van items
+* Een weergave voor het verwijderen van items
+* Een weergave voor het ophalen van itemdetails
+* Een weergave voor het bewerken van items
+* Een weergave voor het vermelden van alle items
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>Een weergave voor een lijst met items toevoegen
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Weergave voor het maken van items
 
 1. Klik met de rechtermuisknop in **Solution Explorer** op de map **Views** en selecteer **Toevoegen** > **Nieuw map**. Geef een naam op voor de map *Item*.
 
 1. Klik met de rechtermuisknop op de lege map **Item** en selecteer vervolgens **Toevoegen** > **Weergave**.
-
-1. Geef de volgende waarden op in **MVC-weergave toevoegen**:
-
-   * Voer *Index*in **Naam weergeven**.
-   * Selecteer **Lijst**in **Sjabloon**.
-   * Selecteer in **Modelklasse** de optie **Item(todo.Models)** .
-   * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
-
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Schermopname van het dialoogvenster MVC-weergave toevoegen":::
-
-1. Zodra u deze waarden hebt toegevoegd, klikt u op **Toevoegen** en wordt er een nieuwe sjabloonweergave in Visual Studio gemaakt.
-
-Als u klaar bent, opent Visual Studio het bestand *cshtml* dat wordt gemaakt. U kunt dat bestand sluiten in Visual Studio. We komen er later naar terug.
-
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>Een weergave voor nieuwe items toevoegen
-
-Maak een nieuwe weergave om items te maken, vergelijkbaar met hoe u een weergave hebt gemaakt voor het weergeven van items, door de volgende stappen te volgen:
-
-1. Klik in **Solution Explorer** met de rechtermuisknop opnieuw op de map **Item** en selecteer **Toevoegen** > **Weergave**.
 
 1. Breng de volgende wijzigingen aan in **MVC-weergave toevoegen**:
 
@@ -155,9 +139,44 @@ Maak een nieuwe weergave om items te maken, vergelijkbaar met hoe u een weergave
    * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
    * Selecteer **Toevoegen**.
 
-#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Een weergave voor het bewerken van items toevoegen
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Schermopname van het dialoogvenster MVC-weergave toevoegen":::
 
-En tot slot voegt u een weergave voor het bewerken van items toe met de volgende stappen:
+1. Vervolgens selecteert u **Toevoegen** en laat u Visual Studio een nieuwe sjabloonweergave maken. Vervang de code in het gegenereerde bestand door de volgende inhoud:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
+
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Weergave voor het verwijderen van items
+
+1. Klik vanuit de **Solution Explorer** met de rechtermuisknop opnieuw op de map **Item** en selecteer **Toevoegen** > **Weergave**.
+
+1. Breng de volgende wijzigingen aan in **MVC-weergave toevoegen**:
+
+   * Typ in het vak **Weergavenaam**: *Verwijderen*.
+   * Selecteer in het vak **Sjabloon** de optie **Verwijderen**.
+   * Selecteer in het vak **Modelklasse** de optie **Item (todo.Models)** .
+   * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
+   * Selecteer **Toevoegen**.
+
+1. Vervolgens selecteert u **Toevoegen** en laat u Visual Studio een nieuwe sjabloonweergave maken. Vervang de code in het gegenereerde bestand door de volgende inhoud:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Weergave voor het ophalen van itemdetails
+
+1. Klik in **Solution Explorer** met de rechtermuisknop opnieuw op de map **Item** en selecteer **Toevoegen** > **Weergave**.
+
+1. Geef de volgende waarden op in **MVC-weergave toevoegen**:
+
+   * Voer in **Weergavenaam** in: *Details*.
+   * Selecteer in **Sjabloon** de optie **Details**.
+   * Selecteer in **Modelklasse** de optie **Item(todo.Models)** .
+   * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
+
+1. Vervolgens selecteert u **Toevoegen** en laat u Visual Studio een nieuwe sjabloonweergave maken. Vervang de code in het gegenereerde bestand door de volgende inhoud:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
+
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Een weergave voor het bewerken van items toevoegen
 
 1. Klik vanuit de **Solution Explorer** met de rechtermuisknop opnieuw op de map **Item** en selecteer **Toevoegen** > **Weergave**.
 
@@ -169,7 +188,29 @@ En tot slot voegt u een weergave voor het bewerken van items toe met de volgende
    * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
    * Selecteer **Toevoegen**.
 
-Zodra u deze stappen hebt voltooid, sluit u alle *cshtml*-documenten in Visual Studio. U keert later naar deze weergaven terug.
+1. Vervolgens selecteert u **Toevoegen** en laat u Visual Studio een nieuwe sjabloonweergave maken. Vervang de code in het gegenereerde bestand door de volgende inhoud:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>Weergave voor het vermelden van alle items
+
+En tot slot voert u de volgende stappen uit om een weergave toe te voegen om alle items op te halen:
+
+1. Klik vanuit de **Solution Explorer** met de rechtermuisknop opnieuw op de map **Item** en selecteer **Toevoegen** > **Weergave**.
+
+1. Breng de volgende wijzigingen aan in **MVC-weergave toevoegen**:
+
+   * In het vak **Weergavenaam** typt u *Index*.
+   * Selecteer in het vak **Sjabloon** de optie **Lijst**.
+   * Selecteer in het vak **Modelklasse** de optie **Item (todo.Models)** .
+   * Selecteer **Een indelingspagina gebruiken** en voer *~/Views/Shared/_Layout. cshtml* in.
+   * Selecteer **Toevoegen**.
+
+1. Vervolgens selecteert u **Toevoegen** en laat u Visual Studio een nieuwe sjabloonweergave maken. Vervang de code in het gegenereerde bestand door de volgende inhoud:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+Zodra u deze stappen hebt voltooid, sluit u alle *cshtml*-documenten in Visual Studio.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Services declareren en initialiseren
 

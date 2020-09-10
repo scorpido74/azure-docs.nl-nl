@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071167"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299223"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Zelfstudie: Spring Cloud-resources bewaken met behulp van waarschuwingen en actiegroepen
 
@@ -24,7 +24,7 @@ Er zijn twee stappen voor het instellen van een waarschuwingspijplijn:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De procedures in deze zelfstudie werken met een geïmplementeerd Azure Spring Cloud-exemplaar en moeten voldoen aan de vereisten voor Azure Spring.  Volg een [snelstart](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+De procedures in deze zelfstudie werken met een geïmplementeerd Azure Spring Cloud-exemplaar en moeten voldoen aan de vereisten voor Azure Spring.  Volg een [snelstart](spring-cloud-quickstart.md) om aan de slag te gaan.
 
 Met de volgende procedures worden**Actiegroep** en **Waarschuwing** gestart vanaf de optie **Waarschuwingen** in het linkernavigatievenster van een Spring Cloud-exemplaar. (De procedure kan ook worden gestart op de pagina **Monitor - Overzicht** in de Azure-portal.) 
 
@@ -76,11 +76,11 @@ Als u een **waarschuwing** wilt configureren, gaat u terug naar de pagina **Waar
 
 1. Selecteer een voorwaarde. In dit voorbeeld wordt gebruikgemaakt van **Systeem-CPU-gebruik in procenten**.
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-1.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. Schuif omlaag in het deelvenster **Signaallogica configureren** om de te bewaken **Drempelwaarde** in te stellen.
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-2.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. Klik op **Gereed**.
 
@@ -88,7 +88,7 @@ Zie [Opties voor metrische gegevens in gebruikersportal ](spring-cloud-concept-m
 
  Klik onder **ACTIES** op **Actiegroep selecteren**. Selecteer in het deelvenster **ACTIES** de eerder gedefinieerde **Actiegroep**.
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-3.png) 
+   ![Schermopname van nieuwe waarschuwingsregel in de portal 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. Schuif omlaag en geef onder **WAARSCHUWINGSDETAILS** een naam op voor de waarschuwingsregel.
 
@@ -96,15 +96,15 @@ Zie [Opties voor metrische gegevens in gebruikersportal ](spring-cloud-concept-m
 
 1. Klik op **Waarschuwingsregel maken**.
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-4.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal 5](media/alerts-action-groups/alerts-3-4.png)
 
 Controleer of de nieuwe waarschuwingsregel is ingeschakeld.
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-4.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal 6](media/alerts-action-groups/alerts-4.png)
 
 Een regel kan ook worden gemaakt op de pagina **Metrische gegevens**:
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-5.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

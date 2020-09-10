@@ -96,7 +96,7 @@
         - name: Netwerkbeveiligingsgroepen
           items:
             - name: Overzicht
-              href: security-overview.md
+              href: network-security-groups-overview.md
             - name: Uitleg
               href: network-security-group-how-it-works.md
         - name: Toepassingsbeveiligingsgroepen

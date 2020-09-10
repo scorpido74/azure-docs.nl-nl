@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374198"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290324"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Een bestaand aangepast domein toewijzen aan Azure Spring Cloud
 Domain Name Service (DNS) is een techniek voor het opslaan van namen van netwerkknooppunten in een netwerk. In deze zelfstudie wordt een domein, zoals www.contoso.com, gekoppeld met behulp van een CNAME-record. Het aangepaste domein wordt beveiligd met een certificaat en laat zien hoe u Transport Layer Security (TLS) afdwingt, ook wel bekend als Secure Sockets Layer (SSL). 
@@ -20,7 +20,7 @@ Domain Name Service (DNS) is een techniek voor het opslaan van namen van netwerk
 Certificaten versleutelen webverkeer. Deze TLS/SSL-certificaten kunnen worden opgeslagen in Azure Key Vault. 
 
 ## <a name="prerequisites"></a>Vereisten
-* Een toepassing die is geïmplementeerd in Azure Spring Cloud (Zie [Snelstart: Start een bestaande Azure Spring Cloud-toepassing met behulp van het Azure- portal](spring-cloud-quickstart-launch-app-portal.md)of gebruik een bestaande app).
+* Een toepassing die is geïmplementeerd in Azure Spring Cloud (Zie [Snelstart: Start een bestaande Azure Spring Cloud-toepassing met behulp van het Azure- portal](spring-cloud-quickstart.md)of gebruik een bestaande app).
 * Een domeinnaam met toegang hebt tot het DNS-register voor uw domeinprovider zoals GoDaddy.
 * Een persoonlijk certificaat (dat wil zeggen uw zelfondertekende certificaat) van een externe provider. Het certificaat moet overeenkomen met het domein.
 * Een geïmplementeerd exemplaar van [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
@@ -145,7 +145,7 @@ Selecteer in de tabel aangepast domein **SSL-binding toevoegen** zoals in de vor
 1. Selecteer uw **Certificaat** of importeer het.
 1. Klik op **Opslaan**.
 
-    ![SSL-binding toevoegen](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![SSL-binding toevoegen 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 U kunt ook de Azure CLI gebruiken om **SSL- binding toe te voegen**:
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 Nadat u een SSL-binding hebt toegevoegd, is de status van het domein beveiligd: **In orde**. 
 
-![SSL-binding toevoegen](./media/custom-dns-tutorial/secured-domain-state.png)
+![SSL-binding toevoegen 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>HTTPS afdwingen
 Standaard kan iedereen nog steeds toegang krijgen tot uw app met behulp van HTTP, maar u kunt alle HTTP-aanvragen omleiden naar de HTTPS-poort.
 
 Selecteer in het linkernavigatievenster van de app-pagina **Aangepaste domein**. Stel vervolgens op **Alleen HTTPS**, in op *Waar*.
 
-![SSL-binding toevoegen](./media/custom-dns-tutorial/enforce-http.png)
+![SSL-binding toevoegen 3](./media/custom-dns-tutorial/enforce-http.png)
 
 U kunt ook de Azure CLI gebruiken om HTTPS af te dwingen:
 ```

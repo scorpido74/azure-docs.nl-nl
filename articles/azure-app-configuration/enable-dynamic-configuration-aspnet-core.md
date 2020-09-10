@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585012"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300286"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelfstudie: Dynamische configuratie in een ASP.NET Core-app gebruiken
 
@@ -53,13 +53,11 @@ Volg eerst [Een ASP.NET Core-app maken met App Configuration](./quickstart-aspne
 Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te signaleren wanneer de configuratie is gewijzigd. Uw app controleert de Sentinel-sleutel op wijzigingen. Wanneer een wijziging wordt gedetecteerd, vernieuwt u alle configuratiewaarden. Deze benadering vermindert het totale aantal aanvragen dat door uw app naar de App Configuration wordt gedaan in vergelijking met het bewaken van alle sleutels voor wijzigingen.
 
 1. Selecteer in de Azure Portal **Configuratieverkenner> Maken > Sleutelwaarde**.
-
 1. Voer bij **Sleutel** *TestApp:Settings:Sentinel* in. Voer 1 in bij **Waarde**. Laat **Label** en **Inhoudstype** leeg.
-
 1. Selecteer **Toepassen**.
 
-    > [!NOTE]
-    > Als u geen Sentinel-sleutel gebruikt, moet u elke sleutel die u wilt bekijken handmatig registreren.
+> [!NOTE]
+> Als u geen Sentinel-sleutel gebruikt, moet u elke sleutel die u wilt bekijken, handmatig registreren.
 
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 
@@ -162,9 +160,8 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te signaler
     }
     ```
     ---
-
-    > [!TIP]
-    > Zie  [Optiepatronen in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1) voor meer informatie over het optiepatroon bij het lezen van configuratiewaarden.
+    > [!Tip]
+    > Zie  [Optiepatronen in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1) voor meer informatie over het optiepatroon bij het lezen van configuratiewaarden.
 
 4. Werk de methode `Configure` bij, waarbij de middleware `UseAzureAppConfiguration` wordt toegevoegd zodat de configuratie-instellingen die voor vernieuwing zijn geregistreerd, kunnen worden bijgewerkt terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
 
@@ -316,15 +313,15 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te signaler
 
 1. Compileer de app met behulp van de .NET Core CLI door de volgende opdracht uit te voeren in de opdrachtshell:
 
-```console
+    ```console
         dotnet build
-```
+    ```
 
 1. Nadat het bouwen is voltooid, voert u de volgende opdracht uit om de web-app lokaal uit te voeren:
 
-```console
+    ```console
         dotnet run
-```
+    ```
 
 1. Open een browservenster en ga naar de URL die wordt weergegeven in de `dotnet run`-uitvoer.
 

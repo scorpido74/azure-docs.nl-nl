@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056360"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015982"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Zelfstudie: Een machine learning-model maken met R (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,8 @@ In deze zelfstudie gebruikt u de Azure Machine Learning R SDK (preview) voor het
 In deze zelfstudie voert u de volgende taken uit:
 > [!div class="checklist"]
 > * Een Azure Machine Learning-werkruimte maken
-> * Een notebook-map klonen met de bestanden die nodig zijn om deze zelfstudie uit te voeren in uw werkruimte
 > * RStudio openen vanuit uw werkruimte
+> * https://github.com/Azure/azureml-sdk-for-r klonen met de bestanden die nodig zijn om deze zelfstudie uit te voeren in uw werkruimte
 > * Gegevens laden en voorbereiden voor training
 > * Gegevens uploaden naar een gegevensarchief, zodat deze beschikbaar zijn voor training op afstand
 > * Een rekenresource maken om het model op afstand te trainen
@@ -53,33 +53,11 @@ U maakt een werkruimte via de Azure-portal, een webconsole om uw Azure-resources
 > Noteer uw **werkruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u uw experiment op de juiste plek maakt. 
 
 
-## <a name="clone-a-notebook-folder"></a><a name="azure"></a>Een notebook-map klonen
-
-In dit voorbeeld wordt de cloudnotebook-server in uw werkruimte gebruikt voor een installatieloze en vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) als u liever controle over uw omgeving, pakketten en afhankelijkheden hebt.
-
-U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het experiment in Azure Machine Learning Studio, een geconsolideerde interface met hulpmiddelen voor machine learning waar gegevenswetenschappers, ongeacht hun vaardigheidsniveaus, scenario's kunnen uitvoeren.
-
-1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
-
-1. Selecteer uw abonnement en de werkruimte die u heeft gemaakt.
-
-1. Selecteer **Notebooks** aan de linkerkant.
-
-1. Open de map **Samples**.
-
-1. Open de map **R**.
-
-1. Open de map met een versienummer.  Dit nummer geeft de huidige release van de R SDK aan.
-
-1. Selecteer **...** rechts van de map **vignettes** en selecteer vervolgens **Klonen**.
-
-    ![Map klonen](media/tutorial-1st-r-experiment/clone-folder.png)
-
-1. Er wordt een lijst met mappen weergegeven, met de verschillende gebruikers die toegang hebben tot de werkruimte.  Selecteer uw map om de map **vignettes** daar te klonen.
-
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio openen
 
-Gebruik RStudio in een rekeninstantie of op een Notebook-VM om deze zelfstudie uit te voeren.  
+In dit voorbeeld wordt een rekenproces in uw werkruimte gebruikt voor een installatieloze en vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) als u liever controle over uw omgeving, pakketten en afhankelijkheden op uw eigen computer hebt.
+
+Gebruik RStudio in een Azure ML-rekenproces om deze zelfstudie uit te voeren.  
 
 1. Selecteer **Compute** aan de linkerkant.
 
@@ -87,10 +65,19 @@ Gebruik RStudio in een rekeninstantie of op een Notebook-VM om deze zelfstudie u
 
 1. Als de rekenresource wordt uitgevoerd, gebruikt u de koppeling **RStudio** om RStudio te openen.
 
-1. In RStudio vindt u de map *vignettes* een paar niveaus onder *Users* in het gedeelte **Files** rechtsonder.  Selecteer onder *vignettes*de map *train-and-deploy-to-aci* om de bestanden te vinden die u nodig hebt in deze zelfstudie.
+
+## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>De voorbeeldvignetten klonen 
+
+Kloon de https://github.com/azure/azureml-sdk-for-r GitHub-opslagplaats voor een kopie van de vignetbestanden die u in deze zelfstudie zult uitvoeren.
+
+1. Navigeer in RStudio naar het tabblad Terminal en ga naar de map waar u de opslagplaats wilt klonen.
+
+1. Voer in de terminal ‘git clone https://github.com/Azure/azureml-sdk-for-r.git ‘ uit om de opslagplaats te klonen.
+
+1. Navigeer in RStudio naar de map *vignettes* van de gekloonde map *azureml-sdk-for-r*.  Selecteer onder *vignettes* het bestand *train-and-deploy-first-model.Rmd* om het vignet te vinden dat in deze zelfstudie wordt gebruikt. De aanvullende bestanden die voor het vignet worden gebruikt, bevinden zich in de submap *train-and-deploy-first-model*. Zodra u het vignet hebt geopend, stelt u de werkmap in op de locatie van het bestand via **Session > Set Working Directory > To Source File Location** (Sessie > Werkmap instellen > Op locatie van bronbestand). 
 
 > [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als die u ziet in het bestand *train-and-deploy-to-aci.Rmd*. Als u ervaring hebt met RMarkdown, kunt u ook de code uit dat bestand gebruiken.  Of u kunt de codefragmenten uit dat bestand of vanuit dit artikel kopiëren/plakken in een R-script of op de opdrachtregel.  
+> De rest van dit artikel bevat dezelfde inhoud als die u ziet in het bestand *train-and-deploy-first-model.Rmd*. Als u ervaring hebt met RMarkdown, kunt u ook de code uit dat bestand gebruiken.  Of u kunt de codefragmenten uit dat bestand of vanuit dit artikel kopiëren/plakken in een R-script of op de opdrachtregel. 
 
 
 ## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
@@ -197,7 +184,7 @@ Voor deze zelfstudie past u een logistiek regressiemodel toe op de geüploade ge
 * De taak verzenden
 
 ### <a name="prepare-the-training-script"></a>Het trainingsscript voorbereiden
-In de map met de zelfstudie staat ook een trainingsscript met de naam `accidents.R`. Let op de volgende details **in het trainingsscript** die zijn opgenomen om Azure Machine Learning in te zetten voor training:
+In de map *train-and-deploy-first-model* staat een trainingsscript met de naam `accidents.R`. Let op de volgende details **in het trainingsscript** die zijn opgenomen om Azure Machine Learning in te zetten voor training:
 
 * Het trainingsscript accepteert het argument `-d` om de map met de trainingsgegevens te vinden. Als u de taak definieert en later verzendt, verwijst u naar het gegevensarchief met dit argument. Azure ML koppelt de opslagmap aan het externe cluster voor de trainingstaak.
 * Het trainingsscript registreert de uiteindelijke nauwkeurigheid als een meetwaarde voor de uitvoeringsrecord in Azure ML met behulp van `log_metric_to_run()`. De Azure ML SDK biedt een set logboekregistratie-API's voor het vastleggen van verschillende metrische gegevens tijdens trainingsruns. Deze metrische gegevens worden vastgelegd en blijven beschikbaar via de uitvoeringsrecord van het experiment. De metrische gegevens kunnen vervolgens op ieder gewenst moment worden geopend of weergegeven op de pagina met uitvoeringsdetails in [Studio](https://ml.azure.com). Raadpleeg de [naslaginformatie](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) voor de volledige set met methoden voor logboekregistratie`log_*()`.
@@ -216,7 +203,7 @@ Als u de estimator wilt maken, definieert u het volgende:
 * Eventuele omgevingsafhankelijkheden die vereist zijn voor de training. De standaard-Docker-installatiekopie die voor de training is gebouwd, bevat al de drie pakketten (`caret`, `e1071`en `optparse`) die nodig zijn in het trainingsscript.  U hoeft dus geen aanvullende gegevens op te geven. Als u R-pakketten gebruikt die niet standaard zijn opgenomen, gebruikt u de parameter `cran_packages` van de estimator om extra CRAN-pakketten toe te voegen. Raadpleeg de naslaginformatie voor [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) voor de volledige set met opties die u kunt configureren.
 
 ```R
-est <- estimator(source_directory = ".",
+est <- estimator(source_directory = "train-and-deploy-first-model",
                  entry_script = "accidents.R",
                  script_params = list("--data_folder" = ds$path(target_path)),
                  compute_target = compute_target
@@ -331,6 +318,7 @@ U hebt nu alles wat u nodig hebt om een **inference config** te maken voor het i
 ```R
 inference_config <- inference_config(
   entry_script = "accident_predict.R",
+  source_directory = "train-and-deploy-first-model",
   environment = r_env)
 ```
 

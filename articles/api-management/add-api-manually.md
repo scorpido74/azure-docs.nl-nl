@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82203264"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295258"
 ---
 # <a name="add-an-api-manually"></a>Handmatig een API toevoegen
 
@@ -45,7 +45,7 @@ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-s
 U hebt op dit moment geen bewerkingen in API Management die zijn toegewezen aan de bewerkingen in uw back-end-API. Als u een bewerking aanroept die beschikbaar is gesteld via de back-end maar niet via de API Management, krijgt u een **404**.
 
 >[!NOTE] 
-> Standaard zal de APIM geen bewerkingen blootstellen totdat u ze accepteert wanneer u een API toevoegt, zelfs als deze is verbonden met bepaalde back-endservice. Om een bewerking van uw back-end-service goed te keuren, maakt u een APIM-bewerking die is toegewezen aan de back-end-bewerking.
+> Wanneer u een API toevoegt, zal APIM, zelfs als deze is verbonden met een back-endservice, standaard geen bewerkingen tonen totdat u deze toestaat. Om een werking van uw back-end-service mogelijk te maken, maakt u een APIM-bewerking die is toegewezen aan de back-end-bewerking.
 
 ## <a name="add-and-test-an-operation"></a>Toevoegen en testen van een bewerking
 

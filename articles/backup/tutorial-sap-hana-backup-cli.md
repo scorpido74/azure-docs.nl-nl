@@ -4,12 +4,12 @@ description: In deze zelfstudie ontdekt u hoe u een back-up maakt van SAP HANA-d
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762399"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007567"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: Back-ups maken van SAP HANA-databases in een virtuele Azure-machine met behulp van Azure CLI
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-De cmdlet [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) vermeldt alle back-uptaken (gepland of on-demand) die zijn uitgevoerd of die momenteel worden uitgevoerd op de beveiligde database, naast andere bewerkingen zoals registreren, back-ups configureren, back-upgegevens verwijderen, enzovoort.
+De cmdlet [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) vermeldt alle back-uptaken (gepland of on-demand) die zijn uitgevoerd of die momenteel worden uitgevoerd op de beveiligde database, naast andere bewerkingen zoals registreren, back-ups configureren en het verwijderen van back-upgegevens.
 
 >[!NOTE]
 >Azure Backup past de tijd niet automatisch aan de zomertijd aan wanneer u een back-up van een SAP HANA-database maakt die op een virtuele Azure-machine wordt uitgevoerd.

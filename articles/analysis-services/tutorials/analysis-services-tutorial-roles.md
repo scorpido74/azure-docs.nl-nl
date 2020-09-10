@@ -1,18 +1,18 @@
 ---
 title: Zelfstudie - Azure Analysis Services-rollen configureren | Microsoft Docs
-description: Meer informatie over het configureren van Azure Analysis Services-beheerders- en -gebruikersrollen met behulp van de Azure-portal of SQL Server Management Studio.
+description: In deze zelfstudie krijgt u meer informatie over het configureren van beheerders- en gebruikersrollen in Azure Analysis Services, met behulp van de Azure-portal of SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016386"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229358"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder en gebruikersrollen configureren
 
@@ -63,7 +63,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
 
 3. In **Objectverkenner** vouwt u de weergave uit om serverobjecten te zien. Klik met de rechtermuisknop om servereigenschappen te bekijken.
    
-    ![Verbinding maken in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
+    ![Objectverkenner in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Een gebruikersaccount toevoegen aan de rol van serverbeheerder
 

@@ -1,0 +1,83 @@
+---
+title: Zelfstudie voor het verbinding maken met, configureren en activeren van Azure Stack Edge-apparaat met GPU in Azure Portal | Microsoft Docs
+description: In de zelfstudie voor het implementeren van Azure Stack Edge GPU krijgt u instructie om uw fysieke apparaat te verbinden, in te stellen en te activeren.
+services: databox
+author: alkohli
+ms.service: databox
+ms.subservice: edge
+ms.topic: tutorial
+ms.date: 08/29/2020
+ms.author: alkohli
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
+ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.translationtype: HT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262716"
+---
+# <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Zelfstudie: Verbinding maken met Azure Stack Edge met GPU
+
+In deze zelfstudie wordt beschreven hoe u verbinding met uw Azure Stack Edge-apparaat kunt maken met een onboard GPU door de lokale webgebruikersinterface te gebruiken.
+
+Het verbindingsproces kan ongeveer vijf minuten duren.
+
+In deze zelfstudie komen deze onderwerpen aan bod:
+
+> [!div class="checklist"]
+>
+> * Vereisten
+> * Verbinding maken met een fysiek apparaat
+
+
+## <a name="prerequisites"></a>Vereisten
+
+Zorg dat aan deze voorwaarden wordt voldaan voordat u uw Azure Stack Edge-apparaat met GPU configureert en instelt:
+
+* U hebt het fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge installeren](azure-stack-edge-gpu-deploy-install.md).
+
+
+## <a name="connect-to-the-local-web-ui-setup"></a>Verbinding maken met de lokale gebruikersinterface instellen
+
+1. Configureer de Ethernet-adapter op de computer die u wilt verbinden met het Azure Stack Edge-apparaat met het statische IP-adres 192.168.100.5 en het subnet 255.255.255.0.
+
+2. Verbind de computer met poort 1 op het apparaat. Gebruik de volgende afbeelding om poort 1 op uw apparaat te vinden.
+
+    ![Achterpaneel van een bekabeld apparaat](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
+
+    Het achterpaneel van het apparaat kan er iets anders uitzien, afhankelijk van welk model u hebt ontvangen.
+
+
+3. Open een browservenster en krijg toegang tot de lokale gebruikersinterface van het apparaat op `https://192.168.100.10`.  
+    Deze actie kan enkele minuten duren nadat u het apparaat hebt ingeschakeld.
+
+    U ziet nu een foutmelding of waarschuwing waarin wordt aangegeven dat er een probleem is met het beveiligingscertificaat van de website. 
+   
+    ![Foutbericht van beveiligingscertificaat voor website](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
+
+4. Selecteer **Doorgaan naar deze webpagina**.  
+    Deze stappen kunnen variëren, afhankelijk van de browser die u gebruikt.
+
+5. Meld u aan bij de webgebruikersinterface van uw apparaat. Het standaardapparaatwachtwoord is *Wachtwoord1*. 
+   
+    ![Aanmeldingspagina van het Azure Stack Edge-apparaat](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+
+6. Wijzig het beheerderswachtwoord voor het apparaat als u daarom wordt gevraagd.  
+    Het nieuwe wachtwoord moet tussen 8 en 16 tekens bevatten. Het wachtwoord moet drie van de volgende tekens bevatten: kleine letters, hoofdletters, cijfers en speciale tekens.
+
+U bent nu op de pagina **Overzicht** van uw apparaat. De volgende stap is het configureren van de netwerkinstellingen voor het apparaat.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+In deze zelfstudie hebt u het volgende geleerd:
+
+> [!div class="checklist"]
+> * Vereisten
+> * Verbinding maken met een fysiek apparaat
+
+
+Als u wilt weten hoe u netwerkinstellingen op uw Azure Stack Edge-apparaat configureert, raadpleegt u:
+
+> [!div class="nextstepaction"]
+> [Netwerk configureren](./azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)

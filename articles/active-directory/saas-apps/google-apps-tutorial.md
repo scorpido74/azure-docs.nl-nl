@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551515"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017508"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Google Cloud (G Suite) Connector
 
@@ -225,15 +225,18 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     b. Plak in het veld **URL van aanmeldingspagina** in Google Cloud (G Suite) Connector de waarde van **Aanmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    c. Plak in het veld **URL van afmeldingspagina** in Google Cloud (G Suite) Connector de waarde van **Afmeldings-URL** die u hebt gekopieerd in de Azure-portal.
+    c. Plak in het veld **URL van afmeldingspagina** in Google Cloud (G Suite) Connector de waarde van **Aanmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    d. Plak in het veld **URL voor wachtwoord wijzigen** in Google Cloud (G Suite) Connector de waarde van **URL voor wachtwoord wijzigen** die u hebt gekopieerd in de Azure-portal.
+    > [!NOTE]
+    > Google Cloud (G suite) is gebaseerd op het SAML-afmeldingsprotocol. Daarom moet in het veld **URL van afmeldingspagina** de SAML-afmeldings-URL (dat is de afmeldings-URL) worden gebruikt als dezelfde waarde.
 
-    e. Upload in Google Cloud (G Suite) Connector voor **Verificatiecertificaat** het certificaat dat u hebt gedownload in de Azure-portal.
+    d. Upload in Google Cloud (G Suite) Connector voor **Verificatiecertificaat** het certificaat dat u hebt gedownload in de Azure-portal.   
 
-    f. Schakel de optie **Een domeinspecifieke uitgever gebruiken** optie in/uit volgens de opmerking in de bovenstaande sectie **Standaard SAML-configuratie** in Azure AD.
+    e. Schakel de optie **Een domeinspecifieke uitgever gebruiken** optie in/uit volgens de opmerking in de bovenstaande sectie **Standaard SAML-configuratie** in Azure AD.
 
-    g. Klik op **Wijzigingen opslaan**.
+    f. Plak in het veld **URL voor wachtwoord wijzigen** in Google Cloud (G Suite) Connector de waarde van **URL voor wachtwoord wijzigen** die u hebt gekopieerd in de Azure-portal.
+
+    g. Klik op **Opslaan**.
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Testgebruiker voor Google Cloud (G Suite) Connector maken
 

@@ -1,14 +1,14 @@
 ---
 title: 'Zelfstudie: Blauwdrukvoorbeeld voor een nieuwe omgeving'
 description: In deze zelfstudie gebruikt u een blauwdrukvoorbeeld om een blauwdrukdefinitie te maken waarmee twee resourcegroepen worden ingesteld, en wordt voor elk hiervan een roltoewijzing geconfigureerd.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80677092"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048729"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelfstudie: Een omgeving maken op basis van een blauwdrukvoorbeeld
 
@@ -122,7 +122,7 @@ Met de blauwdruktoewijzing worden de artefacten gemaakt en bijgehouden die zijn 
 
 1. Selecteer aan de linkerkant de pagina **Toegewezen blauwdrukken**. Gebruik de filters om de blauwdruktoewijzing _Assignment-two-rgs-with-role-assignments_ te zoeken, en selecteer deze.
 
-   Op deze pagina ziet u dat de toewijzing is geslaagd en kunt u de lijst met gemaakte resources bekijken samen met de bijbehorende blauwdrukvergrendelingsstatus. Als de toewijzing wordt bijgewerkt, bevat de vervolgkeuzelijst **Toewijzingsbewerking** details over de implementatie van elke definitieversie. U kunt op elke vermelde resource klikken. De eigenschappenpagina van de desbetreffende resource wordt dan geopend.
+   Op deze pagina ziet u dat de toewijzing is geslaagd en kunt u de lijst met gemaakte resources bekijken samen met de bijbehorende blauwdrukvergrendelingsstatus. Als de toewijzing wordt bijgewerkt, bevat de vervolgkeuzelijst **Toewijzingsbewerking** details over de implementatie van elke definitieversie. U kunt elke vermelde resource selecteren. De eigenschappenpagina van de desbetreffende resource wordt dan geopend.
 
 1. Selecteer de resourcegroep **ProductionRG**.
 

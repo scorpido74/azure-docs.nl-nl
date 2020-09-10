@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718846"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399970"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Zelfstudie: Gebruikers in staat stellen hun account te ontgrendelen of wachtwoorden opnieuw in te stellen met self-service voor wachtwoordherstel voor Azure Active Directory
 
@@ -37,7 +37,8 @@ In deze zelfstudie leert u het volgende:
 
 Voor het voltooien van deze zelfstudie hebt u de volgende resources en machtigingen nodig:
 
-* Een werkende Azure AD-tenant waarop minimaal een Azure AD Premium P1- of -proeflicentie is ingeschakeld.
+* Een werkende Azure AD-tenant met minstens een gratis licentie of proeflicentie voor Azure AD. In de gratis laag werkt SSPR alleen voor cloudgebruikers in Azure AD.
+    * Voor latere zelfstudies in deze reeks is een Azure AD Premium P1-licentie of een proeflicentie vereist voor on-premises terugschrijven van wachtwoorden.
     * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
 * Een account met de bevoegdheden van een *globale beheerder*.
 * Een niet-beheerder met een wachtwoord dat u kent, zoals *testuser*. In deze zelfstudie test u SSPR voor eindgebruikers met behulp van dit account.

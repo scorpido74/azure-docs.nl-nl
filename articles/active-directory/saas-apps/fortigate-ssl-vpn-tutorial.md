@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b679028a0d99d20497ad1f4e7d870c39b76a136
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ecb53d661b1171f9c1b18d37d0bb35952645ba7e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88657034"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met FortiGate SSL VPN
 
@@ -67,8 +67,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met FortiGate S
     1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
     1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[Eenmalige aanmelding voor FortiGate SSL VPN configureren](#configure-fortigate-ssl-vpn-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
-    1. **[Een FortiGate SSL VPN-testgebruiker maken](#create-fortigate-ssl-vpn-test-user)** : als u een equivalent van B.Simon in FortiGate SSL VPN wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
+    1. **Een FortiGate SSL VPN-testgebruiker maken**: als u een equivalent van B.Simon in FortiGate SSL VPN wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-single-sign-on)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
@@ -142,28 +142,119 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
+### <a name="create-a-security-group-for-the-test-user"></a>Maak een beveiligingsgroep voor de testgebruiker
+
+In dit gedeelte maakt u een beveiligingsgroep in Azure Active Directory voor de testgebruiker. Deze beveiligingsgroep zal door FortiGate worden gebruikt om de gebruiker netwerktoegang te verlenen via de VPN.
+
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** en selecteer vervolgens **Groepen**.
+1. Selecteer bovenaan het scherm **Nieuwe groep**.
+1. Volg in **Eigenschappen van nieuwe groep** de volgende stappen:
+   1. Selecteer in het veld **Groepstype** de optie **Beveiliging**.
+   1. Voer in het veld **Naam**`FortiGateAccess` in.
+   1. In het veld **Groepsbeschrijving** voer `Group for granting FortiGate VPN access` in.
+   1. Selecteer **Nee** voor de **Azure AD-rollen kunnen worden toegewezen aan de groep (Preview)** -instellingen.
+   1. Selecteer in het veld **Lidmaatschapstype** de optie **Toegewezen**.
+   1. Selecteer onder **Leden** de optie **Geen leden geselecteerd**.
+   1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+   1. Selecteer **Maken**.
+1. Als u eenmaal bent teruggekeerd naar de blade **Groups** in Azure Active Directory, zoekt u de **FortiGate Access**-groep en noteert u het **Object-ID** voor later gebruik.
+
 ## <a name="configure-fortigate-ssl-vpn-sso"></a>Eenmalige aanmelding voor FortiGate SSL VPN configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **FortiGate SSL VPN**-zijde, volgt u [dit](https://aka.ms/AA9avum) document.
+### <a name="upload-the-base64-saml-certificate-to-the-fortigate-appliance"></a>Upload het Base64 SAML-certificaat naar het FortiGate-apparaat
 
-> [!NOTE]
-> Raadpleeg [deze](https://docs.fortinet.com/document/fortigate/6.4.0/new-features/558169/saml-sp-for-vpn-authentication) koppeling voor meer informatie over het configureren van FortiGate SSL VPN.
+Nadat u de SAML-configuratie van de FortiGate-app in uw tenant heeft voltooid, heeft u het met Base64 gecodeerde SAML-certificaat gedownload. Dit moet worden geüpload naar het FortiGate-apparaat:
 
-### <a name="create-fortigate-ssl-vpn-test-user"></a>FortiGate SSL VPN-testgebruiker maken
+1. Log in op het beheerportaal van uw FortiGate-apparaat.
+1. Klik op **System** in het menu aan de linkerkant.
+1. Klik onder **System** op **Certificates**.
+1. Klik op **Importeer** -> **extern certificaat**.
+1. Blader naar het certificaat dat u hebt gedownload uit de implementatie van de FortiGate-app in de Azure-tenant, selecteer het certificaat en klik op **OK**.
 
-In dit gedeelte maakt u in FortiGate SSL VPN een gebruiker met de naam B.Simon. Werk met het  [FortiGate SSL VPN-ondersteuningsteam](mailto:tac_amer@fortinet.com) om de gebruikers toe te voegen in het FortiGate SSL VPN-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+Nadat het certificaat is geüpload, noteert u de naam onder **Systeem** > **Certificaten** > **Extern certificaat**. Het wordt standaard REMOTE_Cert_ **N** genoemd, waarbij **N** een geheel getal is.
 
-## <a name="test-sso"></a>Eenmalige aanmelding testen 
+### <a name="perform-fortigate-command-line-configuration"></a>Voer de FortiGate-opdrachtregelconfiguratie uit
+
+Voor de volgende stappen moet de uitlog-URL van Azure zijn geconfigureerd. Deze URL bevat een vraagteken (?). Er zijn speciale stappen nodig om dit teken met succes in te dienen. De stappen kunnen niet worden uitgevoerd vanuit de FortiGate CLI Console. Breng in plaats daarvan een SSH-sessie tot stand met het FortiGate-apparaat met behulp van een tool zoals PuTTY. Als uw FortiGate-apparaat een virtuele machine van Azure is, kunt u de volgende stappen uitvoeren vanaf de seriële console van de virtuele Azure-machine.
+
+Om deze stappen uit te voeren, heeft u de eerder geregistreerde waarden nodig:
+
+- Entiteits-id
+- Antwoord-URL
+- Afmeldings-URL
+- URL voor aanmelden bij Azure
+- Azure AD-id
+- URL voor afmelden bij Azure
+- Base64 SAML-certificaatnaam (REMOTE_Cert_N)
+
+1. Breng een SSH-sessie tot stand met uw FortiGate-apparaat en log in met een FortiGate-beheerdersaccount.
+1. Voer de volgende opdrachten uit:
+
+   ```console
+    config user saml
+    edit azure
+    set entity-id <Entity ID>
+    set single-sign-on-url <Reply URL>
+    set single-logout-url <Logout URL>
+    set idp-single-sign-on-url <Azure Login URL>
+    set idp-entity-id <Azure AD Identifier>
+    set idp-single-logout-url <Azure Logout URL>
+    set idp-cert <Base64 SAML Certificate Name>
+    set user-name username
+    set group-name group
+    end
+
+   ```
+
+   > [!NOTE]
+   > De **Azure-afmeldings-URL** bevat een `?`-teken. U moet een speciale toetsenreeks invoeren om de URL correct op te geven naar de seriële FortiGate-console. De URL is meestal `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`.
+   >
+   > Voer `set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation` in om de Azure-afmeldings-URL in de seriële console in te voeren
+   > 
+   > PlSelecteer vervolgens CTRL + V en plak de rest van de URL om de regel te voltooien: `set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`.
+
+### <a name="configure-fortigate-for-group-matching"></a>Configureer FortiGate voor het matchen van groepen
+
+In dit gedeelte configureert u FortiGate om de object-id te herkennen van de beveiligingsgroep waarin de testgebruiker zich bevindt. Hierdoor kan FortiGate toegangsbeslissingen nemen op basis van dit groepslidmaatschap.
+
+Om deze stappen uit te voeren, heeft u de object-id nodig van de eerder gemaakte **FortiGateAccess**-beveiligingsgroep
+
+1. Breng een SSH-sessie tot stand op uw FortiGate Appliance en log in met een FortiGate Administrator-account.
+1. Voer de volgende opdrachten uit:
+
+   ```
+    config user group
+    edit FortiGateAccess
+    set member azure
+    config match
+    edit 1
+    set server-name azure
+    set group-name <Object Id>
+    next
+    end
+    next
+    end
+   ```
+
+### <a name="create-fortigate-vpn-portals-and-firewall-policy"></a>Maak FortiGate VPN-portals en firewallbeleid
+
+In dit gedeelte configureert u FortiGate VPN-portals en firewallbeleid die toegang verlenen tot de beveiligingsgroep, **FortiGateAccess** die hierboven is gemaakt.
+
+Werk samen met het  [FortiGate-ondersteuningsteam](mailto:tac_amer@fortinet.com) om de VPN-portals en het firewallbeleid toe te voegen aan het FortiGate VPN-platform. Deze stappen moeten zijn voltooid voordat u eenmalige aanmelding gebruikt.
+
+## <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel FortiGate SSL VPN klikt, wordt u als het goed is automatisch aangemeld bij de instantie van FortiGate SSL VPN waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
+Microsoft en FortiGate raden u aan de Fortinet VPN-client, FortiClient, te gebruiken voor de beste eindgebruikerservaring.
+
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

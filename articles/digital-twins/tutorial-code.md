@@ -1,5 +1,5 @@
 ---
-title: Een client-app coderen
+title: 'Zelfstudie: Een client-app coderen'
 titleSuffix: Azure Digital Twins
 description: Zelfstudie voor het schrijven van de minimale code voor een client-app, met behulp van de .NET ( C# ) SDK.
 author: baanders
@@ -7,16 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723466"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923701"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>Coderen met de Azure Digital Twins-API's
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Zelfstudie: Coderen met de Azure Digital Twins-API's
 
 Het is gebruikelijk dat ontwikkelaars die met Azure Digital Twins werken, een clienttoepassing schrijven voor interactie met hun exemplaar van de Azure Digital Twins-service. Deze zelfstudie voor ontwikkelaars biedt een inleiding op het programmeren van de Azure Digital Twins-service, met behulp van de [Azure IoT Digital Twins-clientbibliotheek voor .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). U wordt stap voor stap begeleid bij het schrijven van een C# console-client-app, vanaf het begin.
+
+> [!div class="checklist"]
+> * Project instellen
+> * Aan de slag met projectcode   
+> * Codevoorbeeld voltooien
+> * Resources opschonen
+> * Volgende stappen
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,7 +55,7 @@ Voeg vervolgens twee vereiste afhankelijkheden toe voor het werken met Azure Dig
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity
 ```
 
 De eerste afhankelijkheid is de [Azure IoT Digital-clientbibliotheek voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). De tweede afhankelijkheid biedt hulpprogramma's voor de verificatie bij Azure.
@@ -419,7 +426,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
@@ -532,24 +538,7 @@ namespace minimal
  
 Het exemplaar dat in deze zelfstudie wordt gebruikt, kan opnieuw worden gebruikt in de volgende zelfstudie, [*Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app*](tutorial-command-line-app.md). Als u van plan bent om door te gaan naar de volgende zelfstudie, kunt u het Azure Digital Twins-exemplaar dat u hier instelt, behouden.
  
-Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen.
-
-Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-resources in een resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Hiermee verwijdert u de resourcegroep en het Azure Digital Twins-exemplaar.
-
-> [!IMPORTANT]
-> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
-
-Open een Azure Cloud Shell en voer de volgende opdracht uit om de resourcegroep en alles daarin te verwijderen.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Verwijder vervolgens de Azure Active Directory-app-registratie die u voor uw client-app hebt gemaakt met deze opdracht:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Verwijder ten slotte de projectmap die u hebt gemaakt op uw lokale machine.
 
@@ -561,7 +550,3 @@ Ga verder met de volgende zelfstudie om de dingen te bekijken die u kunt doen me
 
 > [!div class="nextstepaction"]
 > [*Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app*](tutorial-command-line-app.md)
-
-U kunt ook de code uitbreiden die u in deze zelfstudie hebt geschreven door meer beheerbewerkingen te leren in de artikelen met procedures of door te kijken naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt.
-* [*Instructies: Aangepaste modellen beheren*](how-to-manage-model.md)
-* [*Concepten: Aangepaste modellen*](concepts-models.md)

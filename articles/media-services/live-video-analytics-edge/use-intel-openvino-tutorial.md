@@ -4,12 +4,12 @@ description: In deze zelfstudie gebruikt u een AI-modelserver van Intel om de li
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 2268300f711a939ed808d1f39bbde1653e8832c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212335"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950252"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Zelfstudie: Live video analyseren met OpenVINO™ Model Server – AI Extension van Intel 
 
@@ -53,7 +53,7 @@ In deze zelfstudie leert u het volgende:
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>Over OpenVINO™ Model Server – AI Extension van Intel
 De Intel®-distributie van de [OpenVINO™-toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (open visuele deductie en optimalisatie van neurale netwerken) is een gratis softwareset waarmee ontwikkelaars en gegevenswetenschappers Computer Vision-workloads kunnen versnellen, deductie en implementaties van deep learning kunnen stroomlijnen en eenvoudige, heterogene uitvoering mogelijk kunnen maken op Intel®-platforms van rand naar cloud. De set bevat de Intel® Deep Learning Deployment Toolkit met modeloptimalisatie en deductieprogramma, en de opslagplaats [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo), die meer dan 40 geoptimaliseerde, vooraf getrainde modellen bevat.
 
-Als u complexe, hoogwaardige analyseoplossingen voor live videoanalyse wilt maken, moet u de module Live Video Analytics op IoT Edge koppelen aan een krachtige deductie-engine die de schaal aan de rand kan benutten. In deze zelfstudie worden deductieaanvragen verzonden naar de [OpenVINO™ Model Server – AI Extension van Intel](https://aka.ms/lva-intel-ovms), een Edge-module die is ontworpen om te werken met Live Video Analytics op IoT Edge. Deze deductieservermodule bevat de OpenVINO™ Model Server (OVMS), een deductieserver die wordt aangedreven door de OpenVINO™-toolkit, die geoptimaliseerd is voor Computer Vision-workloads en die is ontwikkeld voor Intel-architecturen. Er is een uitbreiding toegevoegd aan OVMS voor een eenvoudige uitwisseling van videoframes en deductieresultaten tussen de deductieserver en Live Video Analytics-module op IoT Edge, zodat u elk door OpenVINO ondersteund model kunt uitvoeren (u kunt de deductieservermodule aanpassen door de code [hier](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper) aan te passen). U kunt verder kiezen uit de vele versnellingsmechanismen van Intel-hardware. Dit zijn onder andere CPU's (Atom, Core, Xeon), FPGA's en VPU’s.
+Als u complexe, hoogwaardige analyseoplossingen voor live videoanalyse wilt maken, moet u de module Live Video Analytics op IoT Edge koppelen aan een krachtige deductie-engine die de schaal aan de rand kan benutten. In deze zelfstudie worden deductieaanvragen verzonden naar de [OpenVINO™ Model Server – AI Extension van Intel](https://aka.ms/lva-intel-ovms), een Edge-module die is ontworpen om te werken met Live Video Analytics op IoT Edge. Deze deductieservermodule bevat de OpenVINO™ Model Server (OVMS), een deductieserver die wordt aangedreven door de OpenVINO™-toolkit, die geoptimaliseerd is voor Computer Vision-workloads en die is ontwikkeld voor Intel®-architecturen. Er is een uitbreiding toegevoegd aan OVMS voor een eenvoudige uitwisseling van videoframes en deductieresultaten tussen de deductieserver en Live Video Analytics-module op IoT Edge, zodat u elk voor OpenVINO™-toolkit ondersteund model kunt uitvoeren (u kunt de deductieservermodule aanpassen door de [code](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper) aan te passen). U kunt verder kiezen uit de vele versnellingsmechanismen van Intel®-hardware. Dit zijn onder andere CPU's (Atom, Core, Xeon), FPGA's en VPU’s.
 
 In de eerste versie van deze deductieserver hebt u toegang tot de volgende [modellen](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models):
 

@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u met behulp van Azure CLI back-ups 
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757350"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007295"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: SAP HANA-databases op een Azure-VM beheren met Azure CLI
 
@@ -119,7 +119,7 @@ U kunt de beveiliging van een SAP HANA-database op een aantal manieren stoppen:
 
 Houd rekening met het volgende als u ervoor kiest de herstelpunten intact te laten:
 
-* Alle herstelpunten blijven voor onbepaalde tijd intact; alle verwijderbewerkingen stoppen bij het stoppen van de beveiliging met behoud van gegevens.
+* Alle herstelpunten blijven voor onbepaalde tijd intact en alle verwijderbewerkingen zullen stoppen bij het stoppen van de beveiliging met behoud van gegevens.
 * Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag.
 * Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups.
 

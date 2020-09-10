@@ -10,16 +10,17 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541416"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378012"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met één set verificatiereferenties automatiseren
 
-De beste manier om te verifiëren bij Azure-services is met behulp van een [beheerde identiteit](../general/managed-identity.md), maar in enkele gevallen is dat niet mogelijk. In dergelijke gevallen worden toegangssleutels of geheimen gebruikt. U moet toegangssleutels of geheimen regelmatig rouleren.
+De beste manier om te verifiëren bij Azure-services is met behulp van een [beheerde identiteit](../general/authentication.md), maar in enkele gevallen is dat niet mogelijk. In dergelijke gevallen worden toegangssleutels of geheimen gebruikt. U moet toegangssleutels of geheimen regelmatig rouleren.
 
 In deze zelfstudie leert u hoe u de periodieke roulatie van geheimen voor databases en services die gebruikmaken van één set verificatiereferenties kunt automatiseren. Deze zelfstudie laat met name zien hoe SQL Server-wachtwoorden die in Azure Key Vault zijn opgeslagen, worden gerouleerd met behulp van een functie die wordt geactiveerd door een melding van Azure Event Grid:
 
@@ -112,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-Zie [Een functie-app maken vanuit Azure Portal](../../azure-functions/functions-create-function-app-portal.md) en [Key Vault-verificatie bieden met een beheerde identiteit](../general/managed-identity.md) voor informatie over het maken van een functie-app en het gebruik van beheerde identiteit voor toegang tot Key Vault.
+Zie [Een functie-app maken vanuit de Azure-portal](/azure/azure-functions/functions-create-function-app-portal), [Beheerde identiteit gebruiken voor App Service en Azure Functions](/azure/app-service/overview-managed-identity) en [Key Vault-toegangsbeleid toewijzen met behulp van de Azure-portal](../general/assign-access-policy-portal.md) voor informatie over het maken van een functie-app en het gebruik van beheerde identiteit voor toegang tot Key Vault.
 
 ### <a name="rotation-function"></a>Roulatiefunctie
 De in de vorige stap geïmplementeerde functie gebruikt een gebeurtenis om de roulatie van een geheim te activeren door Key Vault en de SQL database bij te werken. 

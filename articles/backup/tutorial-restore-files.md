@@ -4,12 +4,12 @@ description: Informatie over hoe u herstelacties op bestandsniveau uitvoert op e
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: e74fd14c0f33c8633165029a18582b80810184a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8adb114685379112aee20ab600d37bc25ce700e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003505"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007618"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Bestanden herstellen naar een virtuele machine in Azure
 
@@ -23,7 +23,7 @@ Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.18 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om CLI lokaal te installeren en gebruiken, moet u Azure CLI versie 2.0.18 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,7 +77,7 @@ Als u per ongeluk een bestand verwijdert of er wijzigingen in aanbrengt, kunt u 
 
 Als u uw bestanden wilt herstellen, biedt Azure Backup een op uw VM uit te voeren script waarmee uw herstelpunt als een lokale schijf wordt verbonden. U kunt door de bestanden op deze lokale schijf bladeren, bestanden naar de VM zelf herstellen en vervolgens de verbinding met het herstelpunt verbreken. Azure Backup blijft back-ups maken van uw gegevens op basis van het toegewezen beleid voor planning en retentie.
 
-1. Als u de herstelpunten voor uw VM in een lijst wilt opnemen, gebruikt u [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). In dit voorbeeld wordt het meest recente herstelpunt geselecteerd voor de virtuele machine met de naam *myVM*, die wordt beveiligd in *myRecoveryServicesVault*:
+1. Als u de herstelpunten voor uw VM in een lijst wilt opnemen, gebruikt u [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). In dit voorbeeld wordt het meest recente herstelpunt geselecteerd voor de VM met de naam *myVM*, die wordt beveiligd in *myRecoveryServicesVault*:
 
     ```azurecli-interactive
     az backup recoverypoint list \
