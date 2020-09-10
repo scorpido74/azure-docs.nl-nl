@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506508"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075270"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-voorbeeldscripts
 
@@ -20,6 +21,9 @@ Azure Remote Rendering bevat de volgende twee REST API's:
 - [REST API voor sessies](../how-tos/session-rest-api.md)
 
 De [ARR-opslagplaats](https://github.com/Azure/azure-remote-rendering) bevat voorbeeldscripts in de map *Scripts* voor het werken met de REST API's van de service. In dit artikel wordt het gebruik hiervan beschreven.
+
+> [!CAUTION]
+Als REST API-functies te vaak worden aangeroepen, wordt de server trager en wordt er uiteindelijk een fout geretourneerd. De HTTP-foutcode-id is in dit geval 429 ('Te veel aanvragen'). Als vuistregel moet er een vertraging van **5-10 seconden tussen opeenvolgende aanroepen** in acht worden genomen.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -1,7 +1,7 @@
 ---
-title: DRM-versleuteling en licentie bezorgings service Azure Media Services
+title: Digital Rights Management-versleuteling en licentielevering van Azure Media Services
 titleSuffix: Azure Media Services
-description: Informatie over het gebruik van dynamische DRM-versleuteling en licentie leverings service om stromen te leveren die zijn versleuteld met de micro soft PlayReady-, Google Widevine-of Apple FairPlay-licenties.
+description: Leer hoe u Digital Rights Management-service voor dynamische versleuteling en licentielevering kunt gebruiken voor het leveren van streams die zijn versleuteld met licenties van Microsoft PlayReady, Google Widevine of Apple FairPlay.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,42 +11,42 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 97011222593d249461719e3492dd5b54fb63baff
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
-ms.translationtype: MT
+ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267136"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289353"
 ---
-# <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Zelf studie: DRM dynamische versleuteling en licentie leverings service gebruiken
+# <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Zelfstudie: Het gebruik van de Digital Rights Management-service voor dynamische versleuteling en licentielevering
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Hoewel in deze zelfstudie de [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-voorbeelden worden gebruikt, zijn de algemene stappen hetzelfde voor de [REST API](/rest/api/media/liveevents), de [CLI-](/cli/azure/ams/live-event?view=azure-cli-latest) of andere ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
-U kunt Azure Media Services gebruiken voor het leveren van streams die zijn versleuteld met licenties van Microsoft PlayReady, Google Widevine of Apple FairPlay. Zie [Content Protection with dynamic Encryption](content-protection-overview.md)(Engelstalig) voor gedetailleerde uitleg.
+U kunt Azure Media Services gebruiken voor het leveren van streams die zijn versleuteld met licenties van Microsoft PlayReady, Google Widevine of Apple FairPlay. Zie [Inhoudsbeveiliging met dynamische versleuteling](content-protection-overview.md) voor een gedetailleerde uitleg.
 
-Media Services biedt ook een service voor het leveren van PlayReady-, Widevine-en FairPlay DRM-licenties. Wanneer een gebruiker door DRM beveiligde inhoud aanvraagt, vraagt de Player-app een licentie aan bij de Media Services License-Service. Als de app voor de speler is geautoriseerd, wordt door de Media Services License-Service een licentie aan de speler verleend. Een licentie bevat de ontsleutelingssleutel die kan worden gebruikt door de clientspeler om de inhoud te ontsleutelen en te streamen.
+Media Services voorziet bovendien in een service voor het leveren van licenties van PlayReady, Widevine en FairPlay. Wanneer een gebruiker door DRM beveiligde inhoud aanvraagt, wordt met de speler-app een licentie aangevraagd bij de licentieservice van Media Services. Als de speler-app is geautoriseerd, ontvangt deze een licentie van de licentieservice van Media Services. Een licentie bevat de ontsleutelingssleutel die kan worden gebruikt door de clientspeler om de inhoud te ontsleutelen en te streamen.
 
 Dit artikel is gebaseerd op het voorbeeld waarbij [DRM wordt gebruikt voor de versleuteling](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM).
 
 In het voorbeeld in dit artikel wordt het volgende resultaat bereikt:
 
-![AMS met met DRM beveiligde video in Azure Media Player](./media/protect-with-drm/ams_player.png)
+![AMS met DRM beveiligde video in Azure Media Player](./media/protect-with-drm/ams_player.png)
 
 In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
-> * Een coderings transformatie maken.
+> * Een coderingstransformatie kunt maken.
 > * De ondertekeningssleutel instellen die wordt gebruik om uw token te verifiëren.
-> * Stel vereisten in voor het beleid voor inhouds sleutels.
-> * Maak een StreamingLocator met het opgegeven streaming-beleid.
-> * Maak een URL die wordt gebruikt om uw bestand af te spelen.
+> * Vereisten kunt instellen voor het beleid voor inhoudssleutels.
+> * Een StreamingLocator kunt maken met het opgegeven streamingbeleid.
+> * Een URL maakt die wordt gebruikt om uw bestand af te spelen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -55,11 +55,11 @@ In deze zelfstudie ontdekt u hoe u:
 Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 
 * Lees het artikel [Content protection overview](content-protection-overview.md) (Overzicht inhoudsbeveiliging).
-* Bekijk het [ontwerp multi-DRM-inhouds beschermings systeem met toegangs beheer](design-multi-drm-system-with-access-control.md).
+* Lees [Inhoudsbeveiligingssysteem met multi-DRM met toegangsbeheer ontwerpen](design-multi-drm-system-with-access-control.md).
 * Installeer Visual Studio Code of Visual Studio.
 * Maak een nieuw Media Services-account zoals beschreven in deze [snelstart](./create-account-howto.md).
 * Zorg dat u referenties hebt die nodig zijn om Media Services-API's te kunnen gebruiken via [toegangs-API's](./access-api-howto.md)
-* Stel de juiste waarden in het configuratie bestand van de app in (appsettings.jsaan).
+* Stel de juiste waarden in in het configuratiebestand van de app (appsettings.json).
 
 ## <a name="download-code"></a>Code downloaden
 
@@ -72,11 +72,11 @@ Kloon met de volgende opdracht een GitHub-opslagplaats met het volledige .NET-vo
 Het voorbeeld 'Versleutelen met DRM' bevindt zich in de map [EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM).
 
 > [!NOTE]
-> In het voor beeld worden elke keer dat u de app uitvoert, unieke bronnen gemaakt. Normaal gesp roken gebruikt u bestaande resources als trans formaties en beleids regels (als de bestaande resource vereiste configuraties heeft).
+> Met het voorbeeld worden unieke resources gemaakt telkens wanneer u de app uitvoert. Normaal gesproken gebruikt u bestaande resources, zoals transformaties en beleidsregels opnieuw (mits de bestaande resource over de vereiste configuraties beschikt).
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>Starten met het gebruik van Media Services API's met .NET SDK
 
-Maak een **AzureMediaServicesClient** -object om Media Services-api's met .net te gebruiken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de code die u aan het begin van het artikel hebt gekloond, wordt met de functie **GetCredentialsAsync** het object ServiceClientCredentials gemaakt op basis van de referenties die zijn opgegeven in het lokale configuratiebestand.
+Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaServicesClient**-object maken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de code die u aan het begin van het artikel hebt gekloond, wordt met de functie **GetCredentialsAsync** het object ServiceClientCredentials gemaakt op basis van de referenties die zijn opgegeven in het lokale configuratiebestand.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CreateMediaServicesClient)]
 
@@ -88,7 +88,7 @@ In de [uitvoerasset](assets-concept.md) wordt het resultaat van de coderingstaak
 
 ## <a name="get-or-create-an-encoding-transform"></a>Een coderingstransformatie verkrijgen of maken
 
-Bij het maken van een nieuw [transformatie](transforms-jobs-concept.md)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste para meter is een `transformOutput` object, zoals in de onderstaande code wordt weer gegeven. Elke transformatie-uitvoer bevat een **voorinstelling**. Voorinstelling bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste TransformOutput. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming** . De voor instelling codeert de invoer video in een automatisch gegenereerde bitrate-ladder (paren voor de omzetting van de bitsnelheid) op basis van de invoer resolutie en bitrate, en produceert ISO MP4-bestanden met H. 264 video-en AAC-audio die overeenkomt met elke combi natie van de verlaagings oplossing. 
+Bij het maken van een nieuw [transformatie](transforms-jobs-concept.md)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste parameter is een `transformOutput`-object, zoals weergegeven in de onderstaande code. Elke transformatie-uitvoer bevat een **voorinstelling**. Voorinstelling bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste TransformOutput. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming** . De voorinstelling codeert de invoervideo in een automatisch gegenereerde bitrate-ladder (bitrate-resolutieparen) op basis van de invoerresolutie en bitsnelheid en produceert ISO MP4-bestanden met H.264-video en AAC-audio die overeenkomen met elk bitrate-resolutiepaar. 
 
 Voordat u een nieuwe **transformatie** gaat maken, moet u eerst controleren of er al een bestaat. Dit doet u met de methode **Ophalen**, zoals weergegeven in de volgende code.  In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
 
@@ -98,7 +98,7 @@ Voordat u een nieuwe **transformatie** gaat maken, moet u eerst controleren of e
 
 Zoals eerder vermeld, is het **transformatie**-object het recept en is de [taak](transforms-jobs-concept.md) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer.
 
-In deze zelf studie maken we de invoer van de taak op basis van een bestand dat rechtstreeks vanuit een [https-bron-URL](job-input-from-http-how-to.md)wordt opgenomen.
+In deze zelfstudie maakt u invoer voor de taak op basis van een bestand dat rechtstreeks vanuit een [HTTPs bron-URL](job-input-from-http-how-to.md) is opgenomen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#SubmitJob)]
 
@@ -110,19 +110,19 @@ De **taak** doorloopt meestal de volgende statussen: **Gepland**, **In de wachtr
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-content-key-policy"></a>Een inhouds sleutel beleid maken
+## <a name="create-a-content-key-policy"></a>Beleid voor inhoudssleutels maken
 
-Een inhoudssleutel biedt veilige toegang tot uw assets. U moet een beleid voor [inhouds sleutels](content-key-policy-concept.md) maken wanneer u uw inhoud versleutelt met een DRM. Het beleid configureert hoe de inhouds sleutel wordt geleverd aan de eind clients. De inhouds sleutel is gekoppeld aan een streaming-Locator. Media Services verzorgt ook de sleutelleveringsservice waarmee versleutelingssleutels en -licenties aan gemachtigde gebruikers worden geleverd.
+Een inhoudssleutel biedt veilige toegang tot uw assets. U moet een [beleid voor inhoudssleutels](content-key-policy-concept.md) maken wanneer u uw inhoud versleutelt met een DRM. Het beleid configureert hoe de inhoudssleutel wordt geleverd aan eindclients. De inhoudssleutel is gekoppeld aan een StreamingLocator. Media Services verzorgt ook de sleutelleveringsservice waarmee versleutelingssleutels en -licenties aan gemachtigde gebruikers worden geleverd.
 
-U moet de vereisten (beperkingen) instellen voor het beleid voor de **inhouds sleutel** waaraan moet worden voldaan om sleutels te kunnen leveren met de opgegeven configuratie. In dit voorbeeld worden de volgende configuraties en vereisten ingesteld:
+U moet de vereisten (beperkingen) instellen voor **inhoudssleutelbeleid** waaraan moet worden voldaan voor het leveren van sleutels met de opgegeven configuratie. In dit voorbeeld worden de volgende configuraties en vereisten ingesteld:
 
-* Configuration
+* Configuratie
 
-    De licenties van [PlayReady](playready-license-template-overview.md) en [Widevine](widevine-license-template-overview.md) zijn geconfigureerd om te kunnen worden geleverd door de Media Services-service voor het leveren van licenties. Hoewel deze voor beeld-app de [Fairplay](fairplay-license-overview.md) -licentie niet configureert, bevat deze een methode die u kunt gebruiken om Fairplay te configureren. U kunt de FairPlay-configuratie als een andere optie toevoegen.
+    De licenties van [PlayReady](playready-license-template-overview.md) en [Widevine](widevine-license-template-overview.md) zijn geconfigureerd om te kunnen worden geleverd door de Media Services-service voor het leveren van licenties. Hoewel met deze voorbeeld-app de licentie van [FairPlay](fairplay-license-overview.md) niet wordt geconfigureerd, bevat deze een methode waarmee u FairPlay kunt configureren. U kunt het configureren van FairPlay als een andere optie toevoegen.
 
 * Beperking
 
-    De App stelt een JSON Web Token (JWT)-token type beperking voor het beleid in.
+    Door de app wordt voor het beleid een beperking voor tokens van het type JWT (JSON Web Token) ingesteld.
 
 Wanneer een stream wordt aangevraagd door een speler, maakt Media Services gebruik van de opgegeven sleutel om uw inhoud dynamisch te versleutelen. Voor het ontsleutelen van de stream, wordt door de speler de sleutel van de sleutelleveringsservice aangevraagd. De service evalueert het door u opgegeven beleid voor de inhoudssleutel om te bepalen of de gebruiker is gemachtigd om de sleutel op te halen.
 
@@ -130,35 +130,35 @@ Wanneer een stream wordt aangevraagd door een speler, maakt Media Services gebru
 
 ## <a name="create-a-streaming-locator"></a>Een streaming-locator maken
 
-Nadat de codering is voltooid en het inhoudssleutelbeleid is ingesteld, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U maakt de video beschikbaar in twee stappen:
+Nadat de codering is voltooid en het inhoudssleutelbeleid is ingesteld, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U maakt de video in twee stappen beschikbaar:
 
-1. Maak een [streaming-Locator](streaming-locators-concept.md).
+1. Een [streaminglocator](streaming-locators-concept.md) maken.
 2. De streaming-URL's bouwen die clients kunnen gebruiken.
 
-Het proces voor het maken van de **streaming-Locator** wordt publicatie genoemd. De **streaming-Locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt. De laatste keer dat deze wordt verwijderd, tenzij u de optionele begin-en eind tijden configureert.
+Het proces voor het maken van de **streaminglocator** wordt publiceren genoemd. Standaard is de **streaminglocator** direct geldig nadat u de API-aanroepen hebt gemaakt. De streaminglocator blijft geldig totdat deze wordt verwijderd, tenzij u de optionele begin- en eindtijden configureert.
 
-Wanneer u een **streaming-Locator**maakt, moet u de gewenste gegevens opgeven `StreamingPolicyName` . In deze zelf studie gebruiken we een van de vooraf gedefinieerde streaming-beleids regels, waarmee wordt aangegeven Azure Media Services hoe de inhoud voor streaming moet worden gepubliceerd. In dit voorbeeld stellen we StreamingLocator.StreamingPolicyName in op het beleid Predefined_MultiDrmCencStreaming. De sleutels PlayReady en Widevine worden toegepast en de sleutel wordt door gegeven aan de Play-client op basis van de geconfigureerde DRM-licenties. Als u wilt dat uw stream ook met CBCS (FairPlay) wordt versleuteld, gebruikt u Predefined_MultiDrmStreaming.
+Bij het maken van een **streaminglocator** moet u de gewenste `StreamingPolicyName` opgeven. In deze zelfstudie gebruiken we een vooraf gedefinieerd Streaming-beleid. Dit wordt door Azure Media Services gebruikt om te bepalen hoe de inhoud voor streaming moet worden gepubliceerd. In dit voorbeeld stellen we StreamingLocator.StreamingPolicyName in op het beleid Predefined_MultiDrmCencStreaming. Er worden dan PlayReady- en Widevine-versleutelingen toegepast, en de sleutel wordt aan de afspeelclient geleverd op basis van de geconfigureerde DRM-licenties. Als u wilt dat uw stream ook met CBCS (FairPlay) wordt versleuteld, gebruikt u Predefined_MultiDrmStreaming.
 
 > [!IMPORTANT]
-> Wanneer u een aangepast [streamingbeleid](streaming-policy-concept.md) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal StreamingPolicy-vermeldingen. Het is niet mogelijk om voor elke StreamingLocator een nieuwe StreamingPolicy te maken.
+> Wanneer u een aangepast [streamingbeleid](streaming-policy-concept.md) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal StreamingPolicy-vermeldingen. U dient geen nieuw StreamingPolicy voor elke StreamingLocator te maken.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CreateStreamingLocator)]
 
 ## <a name="get-a-test-token"></a>Een test-token ophalen
 
-In deze zelfstudie geven we voor het inhoudssleutelbeleid op dat het een tokenbeperking heeft. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services ondersteunt tokens in de [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) -indelingen en dat is wat we configureren in het voor beeld.
+In deze zelfstudie geven we voor het inhoudssleutelbeleid op dat het een tokenbeperking heeft. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services biedt ondersteuning voor tokens in de [JWT-indelingen](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) en dat is wat we in het voorbeeld gaan configureren.
 
-De ContentKeyIdentifierClaim wordt in de ContentKeyPolicy gebruikt, wat inhoudt dat de token die aan de sleutelleveringsservice wordt gepresenteerd, de identificatie van de ContentKey moet bevatten. In het voor beeld geven we geen inhouds sleutel op bij het maken van de streaming-Locator. het systeem creëert een wille keurige voor ons. Om het test token te genereren, moeten we de ContentKeyId ophalen om de ContentKeyIdentifierClaim-claim in te stellen.
+De ContentKeyIdentifierClaim wordt in de ContentKeyPolicy gebruikt, wat inhoudt dat de token die aan de sleutelleveringsservice wordt gepresenteerd, de identificatie van de ContentKey moet bevatten. In het voorbeeld wordt geen inhoudssleutel opgegeven bij het maken van de streaminglocator. Het systeem maakt een willekeurige aan. Om de testtoken te kunnen maken, moet de ContentKeyId de claim ContentKeyIdentifierClaim kunnen invoegen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetToken)]
 
-## <a name="build-a-streaming-url"></a>Een streaming-URL bouwen
+## <a name="build-a-streaming-url"></a>Een streaming-URL samenstellen
 
-Nu de [StreamingLocator](/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen. Als u een URL wilt maken, moet u de hostnaam van de [StreamingEndpoint](/rest/api/media/streamingendpoints) en het pad van de **streaming-Locator** samen voegen. In dit voorbeeld wordt het *standaard***streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard***streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
+Nu de [StreamingLocator](/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen. Als u de URL wilt samenstellen, moet u de hostnaam van het [StreamingEndpoint](/rest/api/media/streamingendpoints) en het pad van de **streaminglocator** samenvoegen. In dit voorbeeld wordt het *standaard***streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard***streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
-Wanneer u de app uitvoert, wordt het volgende scherm weer gegeven:
+Wanneer u de app uitvoert, wordt het volgende scherm weergegeven:
 
 ![Beschermen met drm](./media/protect-with-drm/playready_encrypted_url.png)
 
@@ -166,7 +166,7 @@ U kunt een browser openen en de resulterende URL erin plakken om de demopagina v
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Resources in uw Media Services-account opschonen
 
-Over het algemeen moet u alles opschonen behalve objecten die u wilt hergebruiken (meestal gebruikt u trans formaties, StreamingLocators, enzovoort). Als u wilt dat uw account na het experiment is opgeschoond, moet u de resources verwijderen die u niet van plan bent opnieuw te gebruiken. Met het volgende codevoorbeeld worden de taak, de gemaakte assets en het beleid voor inhoudssleutels verwijderd:
+Over het algemeen moet u alles opschonen, behalve objecten die u van plan bent opnieuw te gebruiken (meestal gebruikt u transformaties, StreamingLocators) enzovoorts opnieuw. Als u wilt dat uw account na het experiment is opgeschoond, moet u de resources verwijderen die u niet van plan bent opnieuw te gebruiken. Met het volgende codevoorbeeld worden de taak, de gemaakte assets en het beleid voor inhoudssleutels verwijderd:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 

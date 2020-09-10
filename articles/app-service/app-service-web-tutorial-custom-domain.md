@@ -5,14 +5,14 @@ keywords: app service, azure app service, domeintoewijzing, domeinnaam, bestaand
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4a2c65e2685dada6412adf8c8ad9c63f472b91e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190081"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962278"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelfstudie: Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 Vereisten voor het voltooien van deze zelfstudie:
 
-* [Maak een App Service-app](/azure/app-service/), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
+* [Maak een App Service-app](./index.yml), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 * Koop een domeinnaam en controleer of u toegang hebt tot het DNS-register voor uw domeinprovider (zoals GoDaddy).
 
   Als u bijvoorbeeld DNS-vermeldingen voor `contoso.com` en `www.contoso.com` wilt toevoegen, moet u de DNS-instellingen voor het hoofddomein van `contoso.com` kunnen configureren.
@@ -138,38 +138,34 @@ Nadat u de CNAME en TXT-records hebt toegevoegd, lijkt de pagina met DNS-records
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>De toewijzing van het CNAME-record in Azure inschakelen
 
-Selecteer in het linkernavigatievenster van de app-pagina in de Azure portal **Aangepaste domeinen**.
+1. Selecteer in het linkernavigatievenster van de app-pagina in de Azure portal **Aangepaste domeinen**.
 
-![Menu voor aangepaste domeinen](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Menu voor aangepaste domeinen](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Voeg op de pagina **Aangepaste domeinen** van de app de volledig gekwalificeerde aangepaste DNS-naam (`www.contoso.com`) toe aan de lijst.
+1. Voeg op de pagina **Aangepaste domeinen** van de app de volledig gekwalificeerde aangepaste DNS-naam (`www.contoso.com`) toe aan de lijst.
 
-Selecteer het pictogram **+** naast **Aangepast domein toevoegen**.
+1. Selecteer **Aangepast domein toevoegen**.
 
-![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Typ de volledig gekwalificeerde domeinnaam in waarvoor u een CNAME-record zoals `www.contoso.com` heeft toegevoegd.
+1. Typ de volledig gekwalificeerde domeinnaam in waarvoor u een CNAME-record zoals `www.contoso.com` heeft toegevoegd.
 
-Selecteer **Valideren**.
+1. Selecteer **Valideren**. De pagina **Aangepast domein toevoegen** wordt weergegeven.
 
-De pagina **Aangepast domein toevoegen** wordt weergegeven.
+1. Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **CNAME (www\.example.com of elk subdomein)** . Selecteer **Aangepast domein toevoegen**.
 
-Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **CNAME (www\.example.com of elk subdomein)** .
+    ![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Selecteer **Aangepast domein toevoegen**.
+    Het kan even duren voor het nieuwe aangepaste domein wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
 
-![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Het kan even duren voor het nieuwe aangepaste domein wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
+    > [!NOTE]
+    > Als uw aangepaste domein een waarschuwingslabel heeft, betekent dit dat het domein nog niet is verbonden aan een TLS/SSL-certificaat. Alle HTTP-aanvragen vanuit een browser naar het aangepaste domein retourneren een fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md) om een TLS-binding toe te voegen.
 
-![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+    Als u een stap hebt gemist of eerder ergens een typefout hebt gemaakt, ziet u een verificatie-foutmelding aan de onderkant van de pagina.
 
-> [!NOTE]
-> Als het aangepaste domein het label **Niet veilig** heeft, betekent dit dat het domein nog niet is verbonden aan een TLS/SSL-certificaat. Alle HTTP-aanvragen vanuit een browser naar het aangepaste domein retourneren een fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md) om een TLS-binding toe te voegen.
-
-Als u een stap hebt gemist of eerder ergens een typefout hebt gemaakt, ziet u een verificatie-foutmelding aan de onderkant van de pagina.
-
-![Verificatiefout](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
+    ![Verificatiefout](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a" aria-hidden="true"></a>
 
@@ -223,33 +219,29 @@ Wanneer de records worden toegevoegd, lijkt de pagina met DNS-records op het vol
 
 Voeg op de pagina **Aangepaste domeinen** van de app in de Azure portal de volledig gekwalificeerde aangepaste DNS-naam (bijvoorbeeld `contoso.com`) toe aan de lijst.
 
-Selecteer het pictogram **+** naast **Aangepast domein toevoegen**.
+1. Selecteer **Aangepast domein toevoegen**.
 
-![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Typ de volledig gekwalificeerde domeinnaam in waarvoor u een A-record zoals `contoso.com` heeft toegevoegd.
+1. Typ de volledig gekwalificeerde domeinnaam in waarvoor u een A-record zoals `contoso.com` heeft toegevoegd. 
 
-Selecteer **Valideren**.
+1. Selecteer **Valideren**. De pagina **Aangepast domein toevoegen** wordt weergegeven.
 
-De pagina **Aangepast domein toevoegen** wordt weergegeven.
+1. Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **A-record (voorbeeld.com)** . Selecteer **Aangepast domein toevoegen**.
 
-Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **A-record (voorbeeld.com)** .
+    ![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Selecteer **Aangepast domein toevoegen**.
+    Het kan even duren voor het nieuwe aangepaste domein wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
 
-![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+    ![A-record toegevoegd](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
-Het kan even duren voor het nieuwe aangepaste domein wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
-
-![A-record toegevoegd](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
-
-> [!NOTE]
-> Als het aangepaste domein het label **Niet veilig** heeft, betekent dit dat het domein nog niet is verbonden aan een TLS/SSL-certificaat. Alle HTTP-aanvragen vanuit een browser naar het aangepaste domein retourneren een fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md) om een TLS-binding toe te voegen.
-
-Als u een stap hebt gemist of eerder ergens een typefout hebt gemaakt, ziet u een verificatie-foutmelding aan de onderkant van de pagina.
-
-![Verificatiefout](./media/app-service-web-tutorial-custom-domain/verification-error.png)
-
+    > [!NOTE]
+    > Als uw aangepaste domein een waarschuwingslabel heeft, betekent dit dat het domein nog niet is verbonden aan een TLS/SSL-certificaat. Alle HTTP-aanvragen vanuit een browser naar het aangepaste domein retourneren een fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md) om een TLS-binding toe te voegen.
+    
+    Als u een stap hebt gemist of eerder ergens een typefout hebt gemaakt, ziet u een verificatie-foutmelding aan de onderkant van de pagina.
+    
+    ![Verificatiefout](./media/app-service-web-tutorial-custom-domain/verification-error.png)
+    
 <a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Een wildcard-domein toewijzen
@@ -277,35 +269,33 @@ Wanneer de CNAME wordt toegevoegd, lijkt de pagina met DNS-records op het volgen
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>De toewijzing van het CNAME-record in de app inschakelen
 
-U kunt nu elk subdomein dat overeenkomt met de jokerteken-naam aan de app toevoegen (bijvoorbeeld: `sub1.contoso.com` en `sub2.contoso.com` komen beide overeen met `*.contoso.com`).
+U kunt nu elk subdomein dat overeenkomt met de jokerteken-naam aan de app toevoegen (bijvoorbeeld: `sub1.contoso.com`, `sub2.contoso.com` en `*.contoso.com` komen allen overeen met `*.contoso.com`).
 
-Selecteer in het linkernavigatievenster van de app-pagina in de Azure portal **Aangepaste domeinen**.
+1. Selecteer in het linkernavigatievenster van de app-pagina in de Azure portal **Aangepaste domeinen**.
 
-![Menu voor aangepaste domeinen](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Menu voor aangepaste domeinen](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Selecteer het pictogram **+** naast **Aangepast domein toevoegen**.
+1. Selecteer **Aangepast domein toevoegen**.
 
-![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Typ een FQDN-naam die overeenkomt met het wildcard-domein (bijvoorbeeld `sub1.contoso.com`), en selecteer vervolgens **Valideren**.
+1. Typ een FQDN-naam die overeenkomt met het wildcard-domein (bijvoorbeeld `sub1.contoso.com`), en selecteer vervolgens **Valideren**.
 
-De knop **Aangepast domein toevoegen** wordt geactiveerd.
+    De knop **Aangepast domein toevoegen** wordt geactiveerd.
 
-Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **CNAME-record (www\.example.com of elk subdomein)** .
+1. Zorg ervoor dat **Hostnaam recordtype** is ingesteld op **CNAME-record (www\.example.com of elk subdomein)** . Selecteer **Aangepast domein toevoegen**.
 
-Selecteer **Aangepast domein toevoegen**.
+    ![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-![DNS-naam toevoegen aan de app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+    Het kan even duren voor het nieuwe aangepaste domein wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
 
-Het kan even duren voor het nieuwe aangepaste domein wordt weergegeven op de pagina **Aangepaste domeinen** van de app. Vernieuw de browser voor om de gegevens bij te werken.
+1. Selecteer opnieuw het pictogram **+** om een ander aangepast domein toe te voegen dat overeenkomt met het wildcard-domein. Bijvoorbeeld: voeg `sub2.contoso.com` toe.
 
-Selecteer opnieuw het pictogram **+** om een ander aangepast domein toe te voegen dat overeenkomt met het wildcard-domein. Bijvoorbeeld: voeg `sub2.contoso.com` toe.
+    ![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
 
-![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
-
-> [!NOTE]
-> Als het aangepaste domein het label **Niet veilig** heeft, betekent dit dat het domein nog niet is verbonden aan een TLS/SSL-certificaat. Alle HTTP-aanvragen vanuit een browser naar het aangepaste domein retourneren een fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md) om een TLS-binding toe te voegen.
-
+    > [!NOTE]
+    > Als uw aangepaste domein een waarschuwingslabel heeft, betekent dit dat het domein nog niet is verbonden aan een TLS/SSL-certificaat. Alle HTTP-aanvragen vanuit een browser naar het aangepaste domein retourneren een fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md) om een TLS-binding toe te voegen.
+    
 ## <a name="test-in-browser"></a>Testen in browser
 
 Blader naar de DNS-namen die u eerder hebt geconfigureerd (bijvoorbeeld `contoso.com`, `www.contoso.com`, `sub1.contoso.com`, en `sub2.contoso.com`).

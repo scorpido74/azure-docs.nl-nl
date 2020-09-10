@@ -4,12 +4,12 @@ description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141343"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890665"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Een VM herstellen met Azure CLI
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Een VM-schijf herstellen
 
 > [!IMPORTANT]
-> Het wordt sterk aanbevolen om Az CLI-versie 2.0.74 of hoger te gebruiken om alle voordelen van een snel herstel te kunnen gebruiken, waaronder het herstellen van beheerde schijven. De gebruiker kan het beste altijd de meest recente versie gebruiken.
+> Het wordt sterk aanbevolen om Az CLI-versie 2.0.74 of hoger te gebruiken om alle voordelen van een snel herstel te kunnen gebruiken, waaronder het herstellen van beheerde schijven. Het is het beste als u altijd de meest recente versie gebruikt.
 
 ### <a name="managed-disk-restore"></a>Herstellen van beheerde schijven
 
@@ -88,7 +88,7 @@ Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de
     ```
 
     > [!WARNING]
-    > Als de doelresourcegroep niet is opgegeven, worden de beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount. Dit heeft aanzienlijke gevolgen voor de hersteltijd, omdat de tijd die nodig is om de schijven te herstellen, alleen afhankelijk is van het opgegeven opslagaccount. Klanten kunnen alleen hun voordeel doen met direct herstellen wanneer de parameter target-resource-group is opgegeven. Als het de bedoeling is dat beheerde schijven worden hersteld als niet-beheerd, geeft u de parameter target-resource-group niet op, en geeft u in plaats hiervan de parameter restore-as-unmanaged-disk, zoals hieronder wordt weergegeven. Deze parameter is beschikbaar vanaf Az-versie 3.4.0.
+    > Als **target-resource-group** niet is opgegeven, worden de beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount. Dit heeft aanzienlijke gevolgen voor de hersteltijd, omdat de tijd die nodig is om de schijven te herstellen, alleen afhankelijk is van het opgegeven opslagaccount. U kunt alleen profiteren van direct herstellen wanneer de parameter target-resource-group is opgegeven. Als het de bedoeling is dat beheerde schijven worden hersteld als niet-beheerd, geeft u de parameter **target-resource-group** niet op, en geeft u in plaats hiervan de parameter **restore-as-unmanaged-disk** op, zoals hieronder wordt weergegeven. Deze parameter is beschikbaar vanaf Az-versie 3.4.0.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,11 +101,11 @@ Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de
     --restore-as-unmanaged-disk
     ```
 
-Hiermee worden beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount, en wordt niet gebruikgemaakt van de functie voor direct herstel. In toekomstige versies van CLI moet u verplicht de parameter target-resource-group of de parameter restore-as-unmanaged-disk opgeven.
+Hiermee worden beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount, en wordt niet gebruikgemaakt van de functie voor direct herstel. In toekomstige versies van CLI moet u verplicht de parameter **target-resource-group** of de parameter **restore-as-unmanaged-disk** opgeven.
 
 ### <a name="unmanaged-disks-restore"></a>Niet-beheerde schijven herstellen
 
-Als de VM waarvan een back-up is gemaakt, niet-beheerde schijven bevat, en als het de bedoeling is dat schijven worden hersteld vanaf het herstelpunt, geeft u eerst een Azure-opslagaccount op. Dit opslagaccount wordt gebruikt om de VM-configuratie en de implementatiesjabloon op te slaan die later kunnen worden gebruikt om de VM te implementeren vanaf de herstelde schijven. Standaard worden de niet-beheerde schijven hersteld in de oorspronkelijke opslagaccounts. Als de gebruiker alle niet-beheerde schijven wil herstellen op één locatie, kan het opgegeven opslagaccount ook worden gebruikt als faseringslocatie voor deze schijven.
+Als de VM waarvan een back-up is gemaakt, niet-beheerde schijven bevat, en als het de bedoeling is dat schijven worden hersteld vanaf het herstelpunt, geeft u eerst een Azure-opslagaccount op. Dit opslagaccount wordt gebruikt om de VM-configuratie en de implementatiesjabloon op te slaan die later kunnen worden gebruikt om de VM te implementeren vanaf de herstelde schijven. Standaard worden de niet-beheerde schijven hersteld in de oorspronkelijke opslagaccounts. Als u alle niet-beheerde schijven wilt herstellen op één locatie, kan het opgegeven opslagaccount ook worden gebruikt als faseringslocatie voor deze schijven.
 
 In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
 

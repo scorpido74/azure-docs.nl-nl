@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9cc8c1e9406f6b92a445cd52a4ad26e71d83ef5a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 34321ac9baf3d3cb43dace33b574cb582c2d72a0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263781"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378947"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Clientbibliotheken voor Azure Key Vault
 
-De clientbibliotheken voor Azure Key Vault bieden programmatische toegang tot Key Vault-functionaliteit vanuit diverse talen, waaronder .NET, Python, Java en Javascript.
+De clientbibliotheken voor Azure Key Vault bieden programmatische toegang tot Key Vault-functionaliteit vanuit diverse talen, waaronder .NET, Python, Java en JavaScript.
 
 ## <a name="client-libraries-per-language-and-object"></a>Clientbibliotheken per taal en object
 
@@ -34,4 +34,4 @@ Elke SDK heeft afzonderlijke clientbibliotheken voor geheimen, sleutels en certi
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie de [gids voor Azure Key Vault-ontwikkelaars](developers-guide.md) (vooralsnog Engelstalig).
-- Lees meer over [beheerde identiteiten voor Azure Key Vault](managed-identity.md).
+- Meer informatie over het [verifiëren bij Key Vault](authentication.md)

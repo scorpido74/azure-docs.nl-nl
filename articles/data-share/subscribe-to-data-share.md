@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258635"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268890"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Zelfstudie: Gegevens accepteren en ontvangen met Azure Data Share  
 
@@ -38,7 +38,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 * Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.  
 
-### <a name="receive-data-into-a-sql-based-source"></a>Gegevens ontvangen in een op SQL gebaseerde bron:
+### <a name="receive-data-into-a-sql-based-target"></a>Gegevens ontvangen in een op SQL gebaseerd doel:
 
 * Machtiging om naar databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
 * Machtiging voor de beheerde identiteit van de Data Share-resource voor toegang tot Azure SQL Database of Azure SQL Data Warehouse. U kunt dit doen via de volgende stappen: 
@@ -78,7 +78,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    Als u de uitnodiging rechtstreeks vanuit de Azure-portal wilt openen, gaat u in de Azure-portal naar **Data Share-uitnodigingen**. Hiermee kunt u de lijst met Data Share-uitnodigingen openen.
 
-   ![Uitnodigingen](./media/invitations.png "Lijst met uitnodigingen") 
+   ![Lijst met uitnodigingen](./media/invitations.png "Lijst met uitnodigingen") 
 
 1. Selecteer de share die u wilt bekijken. 
 

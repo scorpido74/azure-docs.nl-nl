@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: eae7e2d371ed8156debe9ae24cf0744bd6273943
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86114241"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950269"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V-VM's beoordelen met Azure Migrate-serverevaluatie
 
@@ -75,15 +75,23 @@ Azure Migrate-serverevaluatie maakt gebruik van een lichtgewicht Azure Migrate-a
 
 Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gemaakt met Azure Migrate-serverevaluatie, configureert u het voor de eerste keer en registreert u het bij het Azure Migrate-project.
 
+### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate-projectsleutel genereren
+
+1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** selecteert u **Detecteren**.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met Hyper-V**.
+3. In **1: Azure Migrate-projectsleutel genereren** geeft u een naam op voor het Azure Migrate-apparaat dat u voor de detectie van Hyper-V-VM's wilt instellen. De naam moet alfanumeriek zijn en 14 tekens of minder bevatten.
+1. Klik op **Sleutel genereren** om de vereiste Azure-resources te gaan maken. Sluit de pagina Computers detecteren niet tijdens het maken van resources.
+1. Nadat de Azure-resources zijn gemaakt, wordt er een **Azure Migrate-projectsleutel** gegenereerd.
+1. Kopieer de sleutel, omdat u deze nodig hebt om de registratie van het apparaat tijdens de configuratie te voltooien.
+
 ### <a name="download-the-vhd"></a>De VHD downloaden
 
-Download het zip-bestand met de VHD-sjabloon voor het apparaat.
+In **2: Azure Migrate-apparaat downloaden**, selecteert u het VHD-bestand en klikt u op **Downloaden**. 
 
-1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
-2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met Hyper-V**.
-3. Klik op **Downloaden** om het VHD-bestand te downloaden.
+   ![Selecties voor Computers detecteren](./media/tutorial-assess-hyper-v/servers-discover.png)
 
-    ![VM downloaden](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
+
+   ![Selecties voor Sleutel genereren](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
 
 ### <a name="verify-security"></a>Beveiliging controleren
@@ -102,13 +110,13 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
         **Scenario** | **Downloaden** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,93 GB) | [Nieuwste versie](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (10.4 GB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - Voor Azure Government:
 
         **Scenario*** | **Downloaden** | **SHA256**
         --- | --- | ---
-        Hyper-V (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+        Hyper-V (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140424) |  8025f315e41c01ebdb4ffb1de87982ae6cc4ea7c4cce612612c7e90a44e79b44
 
 
 ### <a name="create-the-appliance-vm"></a>Het VM-apparaat maken
@@ -151,25 +159,27 @@ Het apparaat voor de eerste keer instellen.
 3. Open een browser op een computer die verbinding kan maken met de VM en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
 
    U kunt de app ook openen vanaf het bureaublad van het apparaat door te klikken op de snelkoppeling naar de app.
+1. Accepteer de **licentievoorwaarden** en lees de informatie van derden.
 1. Ga als volgt te werk in de web-app > **Vereisten instellen**:
-    - **Licentie**: Accepteer de licentievoorwaarden en lees de informatie van derden.
     - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine een proxy gebruikt:
-      - Klik op **Proxyinstellingen** en geef het proxyadres en de controlepoort op in het formulier http://ProxyIPAddress of http://ProxyFQDN.
+      - Klik op **Proxy instellen** en geef het proxyadres (in het formulier http://ProxyIPAddress of http://ProxyFQDN) ) en de controlepoort op.
       - Geef referenties op als de proxy verificatie nodig heeft.
       - Alleen HTTP-proxy wordt ondersteund.
+      - Als u proxydetails hebt toegevoegd of de proxy en/of de verificatie hebt uitgeschakeld, klikt u op **Opslaan** om de connectiviteitscontrole opnieuw te activeren.
     - **Tijdsynchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet zijn gesynchroniseerd met internettijd voor VM zodat detectie goed werkt.
-    - **Updates installeren**: Azure Migrate-serverevaluatie controleert of de meest recente updates zijn geïnstalleerd op het apparaat.
+    - **Updates installeren**: Azure Migrate-serverevaluatie controleert of de meest recente updates op het apparaat zijn geïnstalleerd. Na de controle kunt u op **Apparaatservices weergeven** om de status en versies te bekijken van de onderdelen die op het apparaat worden uitgevoerd.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Klik op **Aanmelden**. Als dit niet wordt weergegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
-2. Meld u aan met uw Azure-referenties op het nieuwe tabblad.
-    - Meld u aan met uw gebruikersnaam en wachtwoord.
-    - Aanmelden met een pincode wordt niet ondersteund.
-3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
-4. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
-5. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
-6. Klik op **Registreren**.
+1. Plak de **Azure Migrate-projectsleutel** die u in de portal hebt gekopieerd. Als u de sleutel niet hebt, gaat u naar **Serverevaluatie > Detecteren > Bestaande apparaten beheren**, selecteert u de naam van het apparaat die u hebt ingevoerd op het moment dat de sleutel werd gegenereerd en kopieert u de bijbehorende sleutel.
+1. Klik op **Aanmelden**. Er wordt een Azure-aanmeldingsprompt geopend in een nieuw browsertabblad. Als dit niet wordt weergegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+1. Meld u op het nieuwe tabblad aan met de gebruikersnaam en het wachtwoord van Azure.
+   
+   Aanmelden met een pincode wordt niet ondersteund.
+3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app. 
+4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ](tutorial-prepare-hyper-v.md#prepare-azure) heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
+1. Nadat het apparaat is geregistreerd, kunt u de registratiedetails zien door op **Details weergeven** te klikken.
+
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Referenties voor SMB-VHD's delegeren
@@ -201,16 +211,27 @@ U kunt dit ook doen in de editor voor Lokaal groepsbeleid op het apparaat:
 
 Maak vanaf het apparaat verbinding met Hyper-V-hosts of -clusters en start de VM-detectie.
 
-1. Geef in **Gebruikersnaam** en **Wachtwoord** de accountreferenties op die door het apparaat worden gebruikt om VM's te detecteren. Geef een beschrijvende naam op voor de referenties en klik op **Details opslaan**.
-2. Klik op **Host toevoegen** en geef de gegevens van de Hyper-V-host/het cluster.
-3. Klik op **Valideren**. Na validatie wordt het aantal VM's weergegeven dat op elke host/elk cluster kan worden gedetecteerd.
-    - Als de validatie mislukt voor een host, raadpleegt u de fout door te klikken op het pictogram in de kolom **Status**. Los problemen op en valideer opnieuw.
-    - Als u hosts of clusters wilt verwijderen, selecteert u > **Verwijderen**.
+1. In **Stap 1: Geef referenties voor de Hyper-V-host op**, klik op **Referenties toevoegen** om een beschrijvende naam voor de referenties op te geven, voeg een **gebruikersnaam** en een **wachtwoord** toe voor een Hyper-V-host/-cluster die door het apparaat wordt gebruikt voor het detecteren van VM's. Klik op **Opslaan**.
+1. Als u meerdere referenties tegelijk wilt toevoegen, klikt u op **Meer toevoegen** om meer referenties op te slaan en toe te voegen. Er worden meerdere referenties ondersteund voor detectie van virtuele Hyper-V-machines.
+1. In **Stap 2: Geef de gegevens voor de Hyper-V-host of het Hyper-V-cluster op**, klik op **Detectiebron toevoegen** om het **IP-adres of de FQDN** van de Hyper-V-host of het Hyper-V-cluster op te geven en tevens de beschrijvende naam voor de referenties waarmee verbinding wordt gemaakt met de host of het cluster.
+1. U kunt **één item per keer toevoegen** of **meerdere items in één keer toevoegen**. Er is ook een optie om de gegevens van een Hyper-V-host/-cluster op te geven via **CSV importeren**.
+
+    ![Selecties voor het toevoegen van de detectiebron](./media/tutorial-assess-hyper-v/add-discovery-source-hyperv.png)
+
+    - Als u kiest voor **Eén item toevoegen**, moet u een beschrijvende naam opgeven voor referenties en tevens het **IP-adres of de FQDN** van de Hyper-V-host of het -cluster. Klik vervolgens op **Opslaan**.
+    - Als u kiest voor **Meerdere items toevoegen** _(standaard geselecteerd)_ , kunt u meerdere records tegelijk toevoegen door het **IP-adres of de FQDN** van de Hyper-V-host of het -cluster met de beschrijvende naam voor referenties in het tekstvak op te geven. **Controleer** de toegevoegde records en klik op **Opslaan**.
+    - Als u **CSV importeren** kiest, kunt u een CSV-sjabloonbestand downloaden, het bestand vullen met het **IP-adres of de FQDN** van de Hyper-V-host of het -cluster, en een beschrijvende naam voor referenties. Vervolgens importeert u het bestand in het apparaat, **controleert u** de records in het bestand en klikt u op **Opslaan**.
+
+1. Wanneer u op Opslaan klikt, wordt de verbinding met de toegevoegde Hyper-V-hosts/-clusters gevalideerd en wordt de **validatiestatus** in de tabel voor elke host of elk cluster weergegeven.
+    - Voor gevalideerde hosts/clusters kunt u meer details weergeven door op het IP-adres of de FQDN te klikken.
+    - Als de validatie voor een host mislukt, bekijkt u de fout door in de kolom Status van de tabel op **Validatie mislukt** te klikken. Los het probleem op en valideer opnieuw.
+    - Als u hosts of clusters wilt verwijderen, klikt u op **Verwijderen**.
     - U kunt een specifieke host niet verwijderen uit een cluster. U kunt alleen het hele cluster verwijderen.
     - U kunt een cluster toevoegen, zelfs als er problemen zijn met specifieke hosts in het cluster.
-4. Klik na validatie op **Opslaan en detectie starten** om het detectieproces te starten.
+1. Voordat u de detectie start, kunt u de connectiviteit van hosts of clusters altijd **opnieuw valideren**.
+1. Klik op **Detectie starten** om met VM-detectie vanaf de gevalideerde hosts/clusters te beginnen. Nadat de detectie is gestart, kunt u de detectiestatus controleren voor elke host of elk cluster in de tabel.
 
-De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per host voordat de metagegevens van de gedetecteerde servers worden weergegeven in de Azure-portal.
+De detectie wordt gestart. Het duurt ongeveer twee minuten per host voordat de metagegevens van de gedetecteerde servers worden weergegeven in de Azure-portal.
 
 ### <a name="verify-vms-in-the-portal"></a>VM's verifiëren in de portal
 

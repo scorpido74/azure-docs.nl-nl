@@ -3,21 +3,21 @@ title: Azure Front Door | Microsoft Docs
 description: In dit artikel vindt u een overzicht van Azure Front Door. U kunt hier zien of het de juiste keuze is voor het uitvoeren van taakverdeling voor gebruikersverkeer voor uw toepassing.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
-ms.author: sharadag
-ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322292"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378182"
 ---
 # <a name="what-is-azure-front-door"></a>Wat is Azure Front Door?
 Met Azure Front Door kunt u de internationale routering van uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en snelle wereldwijde failover voor hoge beschikbaarheid. Met Front Door kunt u uw internationale (multiregionale) klant- en bedrijfstoepassingen transformeren in robuuste, hoogwaardige, gepersonaliseerde moderne toepassingen, API's en inhoud die een wereldwijd bereik hebben met Azure.
@@ -81,6 +81,10 @@ Het HTTP-/2-protocol maakt full-duplex-communicatie tussen toepassingback-ends e
 ## <a name="pricing"></a>Prijzen
 
 Zie [Prijzen van Front Door](https://azure.microsoft.com/pricing/details/frontdoor/) voor informatie over de prijzen.
+
+## <a name="whats-new"></a>Wat is nieuw?
+
+Abonneer u op de RSS-feed en bekijk de nieuwste updates voor Azure Load Balancer-functies op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door).
 
 ## <a name="next-steps"></a>Volgende stappen
 

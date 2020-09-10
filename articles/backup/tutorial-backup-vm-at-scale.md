@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u een Recovery Services-kluis maakt,
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263415"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180572"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal gebruiken voor het maken van een back-up van meerdere virtuele machines
 
@@ -53,7 +53,7 @@ De Recovery Services-kluis bevat de back-upgegevens en het back-upbeleid dat wor
 
     ![Waarden van de Recovery Services-kluis](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-    Een Recovery Services-kluis moet zich op dezelfde locatie bevinden als de virtuele machines die worden beveiligd. Als u virtuele machines in meerdere regio's hebt, moet u in elke regio een Recovery Services-kluis maken. In deze zelfstudie maakt u een Recovery Services-kluis in *Europa - west* omdat daar *myVM* (de virtuele machine die is gemaakt met de snelstartgids) is gemaakt.
+    Een Recovery Services-kluis moet zich op dezelfde locatie bevinden als de virtuele machines die worden beveiligd. Als u virtuele machines in meerdere regio's hebt, moet u in elke regio een Recovery Services-kluis maken. In deze zelfstudie maakt u een Recovery Services-kluis in *Europa - west* omdat daar *myVM* (de virtuele machine die is gemaakt met de quickstart) is gemaakt.
 
 1. Wanneer u klaar bent om de Recovery Services-kluis te maken, selecteert u **Maken**.
 
@@ -136,7 +136,7 @@ Ga als volgt te werk om een on-demand back-uptaak uit te voeren:
 
 1. Selecteer in het contextmenu **Nu back-up maken**.
 
-    ![Contextmenu](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Contextmenu: selecteer Nu back-up maken](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Het menu Nu back-up maken wordt geopend.
 
@@ -166,7 +166,7 @@ Als u door wilt gaan met andere zelfstudies, verwijdert u de resources die u in 
 
 1. Selecteer in de lijst **Back-upitems** het weglatingsteken om het contextmenu te openen.
 
-    ![Contextmenu](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![Open in het menu Back-upitems het contextmenu](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. Selecteer in het contextmenu de optie **Back-up stoppen** om het menu Back-up stoppen te openen.
 
