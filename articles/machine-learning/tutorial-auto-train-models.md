@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: efe2f062cc75fb05484fe810a3ae16c07e93339b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120844"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651752"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Geautomatiseerde machine learning gebruiken om taxitarieven te voorspellen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Werkruimte configureren
 
-Maak een werkruimte-object van de bestaande werkruimte. Een [Werkruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resourcegegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()` leest het bestand **config.json** en laadt de verificatiegegevens in een object met de naam `ws`. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
+Maak een werkruimte-object van de bestaande werkruimte. Een [Werkruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) is een klasse die uw Azure-abonnement en resourcegegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()` leest het bestand **config.json** en laadt de verificatiegegevens in een object met de naam `ws`. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>De resultaten verkennen
 
-Bekijk de resultaten van de automatische training met een [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Met de widget kunt u een grafiek en tabel van alle afzonderlijke uitvoeringsiteraties bekijken, samen met metrische nauwkeurigheidsgegevens en metagegevens van de training. Daarnaast kunt u met behulp van de vervolgkeuzelijst filteren op andere metrische nauwkeurigheidsgegevens dan de eerste metrische gegevens.
+Bekijk de resultaten van de automatische training met een [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Met de widget kunt u een grafiek en tabel van alle afzonderlijke uitvoeringsiteraties bekijken, samen met metrische nauwkeurigheidsgegevens en metagegevens van de training. Daarnaast kunt u met behulp van de vervolgkeuzelijst filteren op andere metrische nauwkeurigheidsgegevens dan de eerste metrische gegevens.
 
 ```python
 from azureml.widgets import RunDetails

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551299"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647980"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Zelfstudie: Cisco Webex configureren voor automatische gebruikersinrichting
 
@@ -97,7 +97,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Cisco WebEx-inrichting](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  Voer in het veld **Tenant-URL** een waarde in de vorm `https://api.ciscoweb.com/v1/scim/[OrgId]` in. Als u `[OrgId]` wilt verkrijgen, meldt u zich aan bij uw [Cisco Webex Control Hub](https://admin.webex.com/login). Klik linksonder op de naam van uw organisatie en kopieer de waarde uit **Organisatie-id**. 
+6.  Voer in het veld **Tenant-URL** een waarde in de vorm `https://api.ciscospark.com/v1/scim/[OrgId]` in. Als u `[OrgId]` wilt verkrijgen, meldt u zich aan bij uw [Cisco Webex Control Hub](https://admin.webex.com/login). Klik linksonder op de naam van uw organisatie en kopieer de waarde uit **Organisatie-id**. 
 
     * Als u de waarde voor het **geheime token** wilt ophalen, gaat u naar deze [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Meld u aan met het volledige Cisco Webex-beheerdersaccount voor uw organisatie via de aanmeldingspagina van Webex die wordt geopend. Er wordt een foutpagina weergegeven met de melding dat de site niet kan worden bereikt, maar dit is normaal.
 

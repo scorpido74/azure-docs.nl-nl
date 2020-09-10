@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651196"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647221"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>Een rekendoel maken
 
-In Azure Machine Learning verwijst *Berekening* (of *Rekendoel*) naar de computers of clusters die de rekenstappen in uw machine learning-pijplijn uitvoeren. Voer de volgende code uit om een op CPU gebaseerd [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)-doel te maken.
+In Azure Machine Learning verwijst *Berekening* (of *Rekendoel*) naar de computers of clusters die de rekenstappen in uw machine learning-pijplijn uitvoeren. Voer de volgende code uit om een op CPU gebaseerd [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true)-doel te maken.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>De gegevensinvoerwaarden maken
 
-De invoerwaarden voor batchdeductie zijn de gegevens die u wilt partitioneren voor parallelle verwerking. Een pijplijn voor batchdeductie aanvaardt gegevensinvoer via [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py).
+De invoerwaarden voor batchdeductie zijn de gegevens die u wilt partitioneren voor parallelle verwerking. Een pijplijn voor batchdeductie aanvaardt gegevensinvoer via [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true).
 
-`Dataset` is voor het doorzoeken, transformeren en beheren van gegevens in Azure Machine Learning. Er zijn twee typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In dit voorbeeld gebruikt u `FileDataset` als de invoerwaarden. Met `FileDataset` kunt u de bestanden downloaden of koppelen aan uw berekening. Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron. Als u transformaties voor deelverzamelingen hebt toegepast op de gegevensset, dan worden deze ook opgeslagen in de gegevensset. De gegevens blijven bewaard op de bestaande locatie, dus maakt u geen extra opslagkosten.
+`Dataset` is voor het doorzoeken, transformeren en beheren van gegevens in Azure Machine Learning. Er zijn twee typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) en [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true). In dit voorbeeld gebruikt u `FileDataset` als de invoerwaarden. Met `FileDataset` kunt u de bestanden downloaden of koppelen aan uw berekening. Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron. Als u transformaties voor deelverzamelingen hebt toegepast op de gegevensset, dan worden deze ook opgeslagen in de gegevensset. De gegevens blijven bewaard op de bestaande locatie, dus maakt u geen extra opslagkosten.
 
 Zie [Gegevenssets maken en openen (preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) voor meer informatie over Azure Machine Learning-gegevenssets.
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-Als u dynamische gegevensinvoer wilt gebruiken bij het uitvoeren van de batchdeductie, dan kunt u de invoerwaarden `Dataset` definiëren als een [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py). Elke keer dat u een pijplijnuitvoering van een batchdeductie indient, kunt u de gegevensset met invoerwaarden opgeven.
+Als u dynamische gegevensinvoer wilt gebruiken bij het uitvoeren van de batchdeductie, dan kunt u de invoerwaarden `Dataset` definiëren als een [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true). Elke keer dat u een pijplijnuitvoering van een batchdeductie indient, kunt u de gegevensset met invoerwaarden opgeven.
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>De uitvoer maken
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)-objecten worden gebruikt voor het overzetten van tussenliggende gegevens tussen stappen in de pijplijn. In dit voorbeeld gebruikt u dit voor de uitvoer van de deductie.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true)-objecten worden gebruikt voor het overzetten van tussenliggende gegevens tussen stappen in de pijplijn. In dit voorbeeld gebruikt u dit voor de uitvoer van de deductie.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>De pijplijn maken en uitvoeren
 
-Voer nu de pijplijn uit. Maak eerst een [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)-object met behulp van uw werkruimtereferentie en de pijplijn die u hebt gemaakt. De `steps`-parameter is een matrix van stappen. In dit geval is er slechts één stap voor batchdeductie. Als u pijplijnen met meerdere stappen wilt bouwen, plaatst u de stappen in volgorde in deze matrix.
+Voer nu de pijplijn uit. Maak eerst een [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true)-object met behulp van uw werkruimtereferentie en de pijplijn die u hebt gemaakt. De `steps`-parameter is een matrix van stappen. In dit geval is er slechts één stap voor batchdeductie. Als u pijplijnen met meerdere stappen wilt bouwen, plaatst u de stappen in volgorde in deze matrix.
 
 Gebruik vervolgens de functie `Experiment.submit()` om de pijplijn te verzenden voor uitvoering.
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 Het kan lang duren voor een batchdeductietaak voltooid is. Dit voorbeeld controleert de voortgang met een Jypiter-widget. U kunt de voortgang van de taak ook controleren met behulp van:
 
 * Azure Machine Learning Studio. 
-* Console-uitvoer van het [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py)-object.
+* Console-uitvoer van het [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true)-object.
 
 ```python
 from azureml.widgets import RunDetails
