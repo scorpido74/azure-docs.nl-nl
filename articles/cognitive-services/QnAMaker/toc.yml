@@ -24,6 +24,8 @@
   items:
     - name: Integreren met Power Virtual Agent
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: Een FAQ-bot maken met Azure Bot Service
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
     - name: Testen met batchbestand
       href: Quickstarts/batch-testing.md
 - name: Concepten
@@ -91,7 +93,7 @@
         - name: Migreren naar een nieuwe knowledge base
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Testen
+        - name: Knowledge Base testen
           href: How-To/test-knowledge-base.md
     - name: QnA-paren beheren
       items:

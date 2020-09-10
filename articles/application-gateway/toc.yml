@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: Onderdelen van Application Gateway
           href: application-gateway-components.md
-        - name: Configuratieoverzicht
-          href: configuration-overview.md
+        - name: Configuratie
+          items:
+            - name: Overzicht
+              href: configuration-overview.md
+            - name: Infrastructuur
+              href: configuration-infrastructure.md
+            - name: Front-end-IP-adres
+              href: configuration-front-end-ip.md
+            - name: Listeners
+              href: configuration-listeners.md
+            - name: Routeringsregels aanvragen
+              href: configuration-request-routing-rules.md
+            - name: HTTP-instellingen
+              href: configuration-http-settings.md
     - name: Ondersteuning voor intensief verkeer
       href: high-traffic-support.md
     - name: SKU voor automatisch schalen v2

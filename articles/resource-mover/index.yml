@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Resource Mover
+summary: Verplaats Azure-resources tussen Azure-regio's in de Azure Resource Mover-hub.
+metadata:
+  title: Documentatie over Azure Resource Manager
+  description: Zoek zelfstudies en informatie over het verplaatsen van resources tussen Azure-regio's.
+  ms.service: resource-move
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 09/09/2020
+  keywords: azure resource mover, azure regions, move across regions
+  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
+  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89652129"
+landingContent:
+- title: Over Azure Resource Mover
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Resource Mover?
+      url: ./overview.md
+    - text: Selecteer een hulpprogramma om resources te verplaatsen
+      url: ./select-move-tool.md
+    - text: Veelgestelde vragen
+      url: ./common-questions.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Virtuele Azure-machines verplaatsen naar een andere regio
+      url: ./tutorial-move-region-virtual-machines.md
+    - text: Azure SQL-databases en elastische pools verplaatsen naar een andere regio
+      url: ./tutorial-move-region-sql.md
+- title: Meer informatie
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Meer informatie over het verplaatsingsproces
+      url: ./about-move-process.md
+    - text: Ondersteuningsmatrix raadplegen om Azure-VM's te verplaatsen
+      url: ./support-matrix-move-region-azure-vm.md
+    - text: Ondersteuningsmatrix raadplegen om Azure SQL-resources te verplaatsen
+      url: ./support-matrix-move-region-sql.md

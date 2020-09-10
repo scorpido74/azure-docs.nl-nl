@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d5a8555b2bd57dc024318464e38f042469beb4b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015982"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458668"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Zelfstudie: Een machine learning-model maken met R (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Kloon de https://github.com/azure/azureml-sdk-for-r GitHub-opslagplaats voor een
 
 1. Navigeer in RStudio naar het tabblad Terminal en ga naar de map waar u de opslagplaats wilt klonen.
 
-1. Voer in de terminal ‘git clone https://github.com/Azure/azureml-sdk-for-r.git ‘ uit om de opslagplaats te klonen.
+1. Voer in de terminal ‘git clone https://github.com/Azure/azureml-sdk-for-r ‘ uit om de opslagplaats te klonen.
 
 1. Navigeer in RStudio naar de map *vignettes* van de gekloonde map *azureml-sdk-for-r*.  Selecteer onder *vignettes* het bestand *train-and-deploy-first-model.Rmd* om het vignet te vinden dat in deze zelfstudie wordt gebruikt. De aanvullende bestanden die voor het vignet worden gebruikt, bevinden zich in de submap *train-and-deploy-first-model*. Zodra u het vignet hebt geopend, stelt u de werkmap in op de locatie van het bestand via **Session > Set Working Directory > To Source File Location** (Sessie > Werkmap instellen > Op locatie van bronbestand). 
 

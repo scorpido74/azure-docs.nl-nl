@@ -9,8 +9,8 @@
     - name: Gebruikers toevoegen aan Azure AD
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: Licenties toewijzen aan gebruikers
-      href: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-    - name: Machtiging verlenen voor onbeperkte app-registraties
+      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Onbeperkte app-registraties maken
       href: roles-quickstart-app-registration-limits.md
     - name: Verlooptijd van groepen instellen
       href: groups-quickstart-expiration.md
@@ -175,6 +175,8 @@
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Aangepaste rollen toewijzen in PowerShell
               href: roles-assign-powershell.md
+            - name: Aangepaste rollen voor Enterprise-apps
+              href: custom-enterprise-apps.md
             - name: Aangepaste rolmachtigingen
               href: roles-custom-available-permissions.md
             - name: App-beheerdersmachtigingen delegeren

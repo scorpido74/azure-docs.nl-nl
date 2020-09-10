@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
-  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+  ms.openlocfilehash: f6893522b66f20dd26905084e5b09d303cbfd5b3
+  ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88690286"
+  ms.lasthandoff: 09/09/2020
+  ms.locfileid: "89612771"
 landingContent:
 - title: Over het Microsoft Identity Platform
   linkLists:
@@ -120,6 +120,14 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 'Quickstart: Een app registreren (herschrijven)'
+      url: quickstart-register-app.md
+    - text: 'Quickstart: Een web-API beschikbaar maken (herschrijven)'
+      url: quickstart-configure-app-expose-web-apis.md
+    - text: 'Quickstart: Een web-API openen (herschrijven)'
+      url: quickstart-configure-app-access-web-apis.md
+    - text: Een brokered Xamarin Android-app migreren naar MSAL.NET
+      url: msal-net-migration-android-broker.md
     - text: Fouten en uitzonderingen verwerken - Android
       url: msal-android-handling-exceptions.md
     - text: Kenmerken van directory-schema-extensies in claims

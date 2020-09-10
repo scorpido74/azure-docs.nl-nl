@@ -1,4 +1,4 @@
-- name: Documentatie over DNS
+- name: Documentatie voor DNS
   href: index.yml
 - name: Overzicht
   items:
@@ -17,6 +17,8 @@
           href: dns-getstarted-powershell.md
         - name: Een openbare zone maken - CLI
           href: dns-getstarted-cli.md
+        - name: Een openbare zone maken - ARM-sjabloon
+          href: dns-get-started-template.md
     - name: Privé-DNS
       items:
         - name: Een privézone maken - portal
