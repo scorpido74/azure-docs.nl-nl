@@ -213,8 +213,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Problemen oplossen
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: Selfservice voor wachtwoordherstel (SSPR)
+          href: troubleshoot-sspr.md
+        - name: SSPR write-back
+          href: troubleshoot-sspr-writeback.md
         - name: Veelgestelde vragen over selfservice voor wachtwoordherstel
           href: active-directory-passwords-faq.md
         - name: Veelgestelde vragen over MFA

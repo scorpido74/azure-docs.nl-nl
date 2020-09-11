@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Visualisaties
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Tekst
+              href: platform/workbooks-text-visualizations.md
+            - name: Grafiek
+              href: platform/workbooks-chart-visualizations.md
+            - name: Raster
+              href: platform/workbooks-grid-visualizations.md
+            - name: Tegel
+              href: platform/workbooks-tile-visualizations.md
+            - name: Boomstructuur
+              href: platform/workbooks-tree-visualizations.md
+            - name: Graph
+              href: platform/workbooks-graph-visualizations.md
+            - name: Samengesteld staafdiagram
+              href: platform/workbooks-composite-bar.md
         - name: Gegevensbronnen
           href: platform/workbooks-data-sources.md
         - name: Parameters

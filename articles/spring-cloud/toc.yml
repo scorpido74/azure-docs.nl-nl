@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Uw eerste app lanceren
@@ -67,6 +67,8 @@
   items:
     - name: Een Java Spring-app voorbereiden voor implementatie
       href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: Java-app starten vanuit de broncode
+      href: spring-cloud-howto-launch-from-source.md
     - name: Een configuratieserver instellen
       href: spring-cloud-tutorial-config-server.md
     - name: Serviceregistratie inschakelen

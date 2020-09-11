@@ -4,7 +4,7 @@
   items:
     - name: Wat is voorwaardelijke toegang?
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Vereisen dat de gebruiksvoorwaarden worden geaccepteerd
       href: require-tou.md
@@ -52,8 +52,8 @@
   items:
     - name: De implementatie van voorwaardelijke toegang plannen
       href: plan-conditional-access.md
-    - name: Aanbevolen procedures
-      href: best-practices.md
+    - name: API's voor voorwaardelijke toegang
+      href: howto-conditional-access-apis.md
     - name: Algemeen beleid voor voorwaardelijke toegang
       items:
         - name: Verouderde verificatie blokkeren
@@ -92,6 +92,8 @@
       href: terms-of-use.md
     - name: Aanmeldingsfrequentie en besturingselementen voor browserpersistentie
       href: howto-conditional-access-session-lifetime.md
+    - name: Aanbevolen procedures
+      href: best-practices.md
     - name: Problemen oplossen
       items:
         - name: Problemen met aanmelden oplossen

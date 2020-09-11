@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Virtuele machine maken - Azure CLI
       href: quick-create-cli.md
@@ -325,6 +325,8 @@
           href: disk-encryption.md
         - name: Disk Storage-reservering
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Prestaties van virtuele machine en schijf
+          href: disk-performance-linux.md
         - name: Ontwerpen voor hoge prestaties
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Disk Bursting

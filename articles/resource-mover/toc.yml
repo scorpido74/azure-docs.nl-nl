@@ -24,8 +24,22 @@
       href: support-matrix-move-region-sql.md
 - name: Handleidingen
   items:
-    - name: Resources verwijderen uit een verplaatste verzameling
-      href: remove-move-resources.md
+    - name: Verplaatsen tussen regio's
+      items:
+        - name: Tussen regio's verplaatsen met PowerShell
+          href: move-region-powershell.md
+        - name: Virtuele Azure-machines verplaatsen naar beschikbaarheidszones
+          href: move-region-availability-zone.md
+        - name: Verplaatsen tussen regio's (vanuit resourcegroep)
+          href: move-region-within-resource-group.md
+    - name: Regioverplaatsingen beheren
+      items:
+        - name: Doelinstellingen voor een regioverplaatsing bewerken
+          href: modify-target-settings.md
+        - name: Resources verwijderen uit een verplaatste regioverzameling
+          href: remove-move-resources.md
+        - name: Resources beheren die zijn gemaakt in het regioverplaatsingsproces
+          href: manage-resources-created-move-process.md
 - name: Resources
   items:
     - name: Migratie in het Cloud Adoption Framework

@@ -151,6 +151,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: Werkstroom van een klassieke VM-architectuur
           href: cloud-services-workflow-process.md
+        - name: Ondersteuning voor resourcestatus voor Cloud Services
+          href: resource-health-for-cloud-services.md
         - name: Veelgestelde vragen over Cloud Services
           items:
             - name: Veelgestelde vragen over beschikbaarheid van toepassingen en services

@@ -30,6 +30,8 @@
         - name: Publicatiehandleidingen op type aanbieding
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: Een SaaS-aanbieding plannen
+              href: ./plan-saas-offer.md
             - name: Virtuele machines
               href: ./marketplace-virtual-machines.md
             - name: Oplossingssjablonen voor Azure-apps
