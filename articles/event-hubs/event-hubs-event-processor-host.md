@@ -4,12 +4,12 @@ description: In dit artikel wordt de Event processor host in azure Event Hubs be
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010457"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319498"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
@@ -87,6 +87,8 @@ Vervolgens instantiërt u een [EventProcessorHost](/dotnet/api/microsoft.azure.e
 
 Tot slot registreren consumenten het [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar met de Event hubs-service. Bij het registreren van een gebeurtenis processor klasse met een instantie van EventProcessorHost wordt de verwerking van gebeurtenissen gestart. Registratie geeft de Event Hubs-service de opdracht te verwachten dat gebeurtenissen van sommige van de partities door de Consumer-app worden gebruikt en dat de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -implementatie code moet worden aangeroepen wanneer de gebeurtenissen worden gepusht. 
 
+> [!NOTE]
+> De consumerGroupName is hoofdletter gevoelig.  Wijzigingen in de consumerGroupName kunnen leiden tot het lezen van alle partities vanaf het begin van de stroom.
 
 ### <a name="example"></a>Voorbeeld
 

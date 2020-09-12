@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696028"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319437"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Bron logboek registratie voor een netwerk beveiligings groep
 
@@ -24,7 +24,7 @@ Een netwerk beveiligings groep (NSG) bevat regels voor het toestaan of weigeren 
 Wanneer u logboek registratie voor een NSG inschakelt, kunt u de volgende typen bron logboek gegevens verzamelen:
 
 * **Gebeurtenis:** Vermeldingen worden vastgelegd waarvoor NSG-regels worden toegepast op Vm's, op basis van een MAC-adres.
-* **Regel teller:** Bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan. De status voor deze regels wordt elke 60 seconden verzameld.
+* **Regel teller:** Bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan. De status voor deze regels wordt elke 300 seconden verzameld.
 
 Resource logboeken zijn alleen beschikbaar voor Nsg's die zijn geïmplementeerd via het Azure Resource Manager-implementatie model. Het is niet mogelijk om bron logboek registratie in te scha kelen voor Nsg's die zijn geïmplementeerd via het klassieke implementatie model. Zie [Wat is Azure-implementatie modellen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)? voor een beter inzicht in de twee modellen.
 
@@ -201,8 +201,8 @@ Zie [overzicht van Azure-platform logboeken](../azure-monitor/platform/platform-
 - **Azure monitor logboeken**: u kunt de [analyse oplossing voor netwerk beveiligings groepen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) gebruiken voor uitgebreid inzicht. De oplossing biedt visualisaties voor NSG-regels waarmee verkeer, per MAC-adres, van de netwerk interface in een virtuele machine wordt toegestaan of geweigerd.
 - **Azure Storage account**: gegevens worden geschreven naar een PT1H.jsbestand. U kunt het volgende vinden:
-  - Gebeurtenis logboek in het volgende pad:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Logboek regel items in het volgende pad:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Gebeurtenis logboek in het volgende pad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Logboek regel items in het volgende pad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Volgende stappen
 

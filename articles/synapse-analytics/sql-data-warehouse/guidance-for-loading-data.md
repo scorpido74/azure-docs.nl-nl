@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201630"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441218"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Aanbevolen procedures voor het laden van gegevens met behulp van de Synapse SQL-pool
 
@@ -175,6 +175,6 @@ Er hoeven geen andere wijzigingen te worden aangebracht aan onderliggende extern
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [ontwerp ELT voor SQL Data Warehouse voor](design-elt-data-loading.md)meer informatie over de instructie copy of poly Base bij het ontwerpen van een uitpak-, laad-en transformatie proces (ELT).
+- Zie [ontwerp ELT voor Azure Synapse Analytics voor](design-elt-data-loading.md)meer informatie over de instructie copy of poly Base bij het ontwerpen van een proces voor extract, Load en Transform (ELT).
 - Voor het laden van een zelf studie [gebruikt u de instructie Copy om gegevens van Azure Blob-opslag te laden naar Synapse SQL](load-data-from-azure-blob-storage-using-polybase.md).
 - Zie [Uw workload controleren met DMV's](sql-data-warehouse-manage-monitor.md) voor het controleren van het laden van gegevens.

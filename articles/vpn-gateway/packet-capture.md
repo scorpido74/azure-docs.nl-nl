@@ -1,36 +1,36 @@
 ---
-title: 'Azure VPN Gateway: pakket opnames configureren'
-description: Meer informatie over de functionaliteit voor het vastleggen van pakketten die u kunt gebruiken op VPN-gateways.
+title: 'Azure VPN Gateway: pakket opname configureren'
+description: Meer informatie over de functionaliteit voor het vastleggen van pakketten die u kunt gebruiken op VPN-gateways om de oorzaak van een probleem te beperken.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2019
+ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3ba3046367ceece6bf0ddf157451025c79977324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077204"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441592"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>Pakket opnames voor VPN-gateways configureren
+# <a name="configure-packet-capture-for-vpn-gateways"></a>Pakket opname voor VPN-gateways configureren
 
-Problemen met betrekking tot connectiviteit en prestaties zijn vaak complex en nemen veel tijd in beslag en moeiteloos de oorzaak van het probleem beperken. De mogelijkheid om pakketten vast te leggen helpt aanzienlijk minder tijd te beperken bij het beperken van het bereik van het probleem naar bepaalde delen van het netwerk, zoals of het probleem zich aan de kant van het netwerk, de Azure-zijde van het netwerk of ergens anders bevindt. Zodra het probleem is verkort, is het veel efficiënter om fouten op te sporen en de herstel actie te ondernemen.
+Problemen met de connectiviteit en prestaties zijn vaak complex. Het kan aanzienlijk tijd en moeite duren om de oorzaak van het probleem te beperken. Pakket opname kan u helpen het bereik van een probleem te beperken tot bepaalde delen van het netwerk. Hiermee kunt u bepalen of het probleem zich aan de kant van het netwerk, de Azure-zijde van het netwerk of ergens anders bevindt. Nadat u het probleem hebt verkort, is het efficiënter om fouten op te sporen en de herstel actie te ondernemen.
 
-Er zijn een aantal algemeen beschik bare hulpprogram ma's voor het vastleggen van pakketten. Het verkrijgen van relevante pakket opnames met deze hulpprogram ma's kan lastig zijn, vooral bij het werken met scenario's met een hoog volume verkeer. Filter functies die worden geboden door een pakket opname van een VPN-gateway worden een belang rijke onderscheid. U kunt een VPN-gateway pakket vastleggen, naast de algemeen beschik bare hulpprogram ma's voor pakket opname.
+Er zijn een aantal algemeen beschik bare hulpprogram ma's voor pakket opname. Het verkrijgen van relevante pakket opnames met deze hulpprogram ma's kan lastig zijn, met name bij scenario's met een groot aantal verkeer. De filter functies die worden geboden door Azure VPN Gateway pakket vastleggen, zijn een belang rijke onderscheid. U kunt VPN Gateway pakket opname samen met algemeen beschik bare hulpprogram ma's voor pakket opname gebruiken.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Filter mogelijkheden voor het vastleggen van VPN-gateway pakketten
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Filter mogelijkheden voor het vastleggen van pakket VPN Gateway
 
-VPN-gateway pakket opnames kunnen worden uitgevoerd op de gateway of op een specifieke verbinding, afhankelijk van de behoeften van de klant. U kunt ook pakket opnames op meerdere tunnels tegelijk uitvoeren. U kunt één of twee richtings verkeer, IKE-en ESP-verkeer en interne pakketten samen met filteren op een VPN-gateway vastleggen.
+U kunt VPN Gateway pakket opname uitvoeren op de gateway of op een specifieke verbinding, afhankelijk van uw behoeften. U kunt ook pakket opname op meerdere tunnels tegelijk uitvoeren. U kunt in één richting of bidirectionele verkeer, IKE-en ESP-verkeer, en binnenste pakketten samen met filteren op een VPN-gateway vastleggen.
 
-Het gebruik van een filter met vijf Tuples (bron-subnet, doel-subnet, bron poort, doel poort, Protocol) en TCP-vlaggen (SYN, ACK, FIN, URG, PSH, RST) is handig bij het isoleren van problemen op een groot volume verkeer.
+Het is handig om een vijf-tuple filter (bron subnet, doel-subnet, bron poort, doel poort, Protocol) en TCP-vlaggen (SYN, ACK, FIN, URG, PSH, RST) te gebruiken wanneer u problemen isoleert met veel volume verkeer.
 
-Hieronder ziet u een voor beeld van een JSON-en JSON-schema met uitleg van elke eigenschap. Houd ook rekening met enkele beperkingen tijdens het uitvoeren van de pakket opnames:
-- In het schema wordt filter weer gegeven als een matrix, maar op dit moment kan slechts één filter tegelijk worden gebruikt.
-- Meerdere pakket opnames op de gateway tegelijk zijn niet toegestaan.
-- Meerdere pakket opnames op dezelfde verbinding op hetzelfde moment zijn niet toegestaan. U kunt pakket opnames op verschillende verbindingen tegelijk uitvoeren.
-- U kunt Maxi maal vijf pakket opnames per gateway tegelijk uitvoeren. Deze pakket opnames kunnen bestaan uit een combi natie van pakket opname voor de hele gateway of het vastleggen van pakketten per verbinding.
+De volgende voor beelden van JSON en een JSON-schema geven uitleg over elke eigenschap. Hier volgen enkele beperkingen die u moet onthouden wanneer u pakket opnames uitvoert:
+- In het schema dat hier wordt weer gegeven, is het filter een matrix, maar op dit moment kan slechts één filter tegelijkertijd worden gebruikt.
+- Het is niet mogelijk om meerdere pakket opnames voor de gateway tegelijk uit te voeren.
+- Het is niet mogelijk om meerdere pakket opnames op één verbinding tegelijk uit te voeren. U kunt meerdere pakket opnames op verschillende verbindingen tegelijk uitvoeren.
+- U kunt Maxi maal vijf pakket opnames per gateway tegelijk uitvoeren. Deze pakket opnames kunnen bestaan uit een combi natie van pakket opnames voor de hele gateway en pakket opnames per verbinding.
 
 ### <a name="example-json"></a>Voor beeld JSON
 ```JSON-interactive
@@ -316,9 +316,9 @@ Hieronder ziet u een voor beeld van een JSON-en JSON-schema met uitleg van elke 
 }
 ```
 
-## <a name="setup-packet-capture-using-powershell"></a>Pakket opname instellen met Power shell
+## <a name="set-up-packet-capture-by-using-powershell"></a>Pakket opname instellen met behulp van Power shell
 
-Zie de onderstaande voor beelden voor Power shell-opdrachten om pakket opnames te starten en te stoppen. Zie dit Power shell- [document](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)voor meer informatie over de parameter opties.
+In de volgende voor beelden ziet u Power shell-opdrachten die pakket opnames starten en stoppen. Zie [Dit Power shell-document](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)voor meer informatie over de parameter opties.
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Pakket opname starten voor een VPN-gateway
 
@@ -326,7 +326,7 @@ Zie de onderstaande voor beelden voor Power shell-opdrachten om pakket opnames t
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Optionele para meter **-tekstmap** kunnen worden gebruikt om filter toe te passen.
+U kunt de optionele para meter gebruiken `-FilterData` om een filter toe te passen.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Pakket opname stoppen voor een VPN-gateway
 
@@ -340,7 +340,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Optionele para meter **-tekstmap** kunnen worden gebruikt om filter toe te passen.
+U kunt de optionele para meter gebruiken `-FilterData` om een filter toe te passen.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Pakket opname stoppen op een VPN-gateway verbinding
 
@@ -350,10 +350,11 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>Belangrijkste overwegingen
 
-- Het uitvoeren van pakket opnames kan invloed hebben op de prestaties. Vergeet niet om het opnemen van het pakket te stoppen wanneer dit niet nodig is.
-- De voorgestelde minimale pakket opname duur is 600 seconden. Een kortere duur van de pakket opname biedt mogelijk geen volledige gegevens als gevolg van het synchroniseren van problemen tussen meerdere onderdelen op het pad.
+- Het uitvoeren van pakket opname kan invloed hebben op de prestaties. Vergeet niet om de pakket opname te stoppen wanneer u deze niet nodig hebt.
+- De voorgestelde minimale pakket opname duur is 600 seconden. Vanwege synchronisatie problemen tussen meerdere onderdelen op het pad, bieden kortere pakket opnames mogelijk geen volledige gegevens.
 - Gegevens bestanden voor pakket opname worden gegenereerd in de PCAP-indeling. Gebruik wireshark of andere algemeen beschik bare toepassingen om PCAP-bestanden te openen.
+- Pakket opnames worden niet ondersteund op op beleid gebaseerde gateways.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [about VPN gateway](vpn-gateway-about-vpngateways.md) voor meer informatie over VPN gateway
+Zie [Wat is VPN gateway?](vpn-gateway-about-vpngateways.md)voor meer informatie over VPN gateway.

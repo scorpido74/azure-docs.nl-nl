@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981432"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440827"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen1
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 ondersteunt de mogelijkheid om een firewall in te scha ke
 
 ![Firewall instellingen in Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Firewall instellingen in Data Lake Storage Gen1")
 
-Zodra de firewall is ingeschakeld, hebben alleen Azure-Services, zoals HDInsight, Data Factory, SQL Data Warehouse enzovoort, toegang tot Data Lake Storage Gen1. Als gevolg van de interne Network Address Translation die door Azure worden gebruikt, biedt de Data Lake Storage Gen1 firewall geen ondersteuning voor het beperken van specifieke services via IP en is deze alleen bedoeld voor beperkingen van eind punten buiten Azure, zoals on-premises.
+Zodra de firewall is ingeschakeld, hebben alleen Azure-Services, zoals HDInsight, Data Factory, Azure Synapse Analytics (voorheen SQL Data Warehouse), etc. toegang tot Data Lake Storage Gen1. Als gevolg van de interne Network Address Translation die door Azure worden gebruikt, biedt de Data Lake Storage Gen1 firewall geen ondersteuning voor het beperken van specifieke services via IP en is deze alleen bedoeld voor beperkingen van eind punten buiten Azure, zoals on-premises.
 
 ## <a name="performance-and-scale-considerations"></a>Overwegingen voor prestaties en schalen
 

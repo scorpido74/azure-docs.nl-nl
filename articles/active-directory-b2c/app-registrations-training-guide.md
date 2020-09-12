@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9b493e862ed70bbeab9ac509c79003a535366d0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116549"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433905"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>De nieuwe App-registraties ervaring voor Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ U kunt de nieuwe ervaring bereiken door te navigeren naar **app-registraties** i
 De Azure AD B2C App-registraties-ervaring is gebaseerd op de [ervaring](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) voor het registreren van algemene apps voor elke Azure AD-Tenant, maar is afgestemd op Azure AD B2C-tenants.
 
 ## <a name="whats-not-changing"></a>Wat wordt er niet gewijzigd?
-- Uw toepassingen en gerelateerde configuraties kunnen worden gevonden in de nieuwe ervaring. U hoeft de toepassingen niet opnieuw te registreren, en gebruikers van uw toepassingen hoeven zich niet opnieuw aan te melden. 
+- Uw toepassingen en gerelateerde configuraties kunnen worden gevonden in de nieuwe ervaring. U hoeft de toepassingen niet opnieuw te registreren, en gebruikers van uw toepassingen hoeven zich niet opnieuw aan te melden.
 
 > [!NOTE]
 > Als u alle eerder gemaakte toepassingen wilt weer geven, gaat u naar de Blade **app-registraties** en selecteert u het tabblad **alle toepassingen** . Hiermee worden apps weer gegeven die zijn gemaakt in de verouderde ervaring, de nieuwe ervaring en de toepassingen die zijn gemaakt in de Azure AD-service.
@@ -43,7 +43,7 @@ De Azure AD B2C App-registraties-ervaring is gebaseerd op de [ervaring](https://
 
 -   Bij het registreren van **gecombineerde apps** kunt u snel een app registreren, of het nu gaat om een klant gerichte app of een app voor toegang tot Microsoft Graph.
 
-- Met het deel venster **eind punten** kunt u snel de relevante eind punten voor uw scenario identificeren, zoals OpenID Connect Connect-configuratie, SAML-meta gegevens, Microsoft Graph-API en [OAuth 2,0-gebruikers stroom eind punten](tokens-overview.md#endpoints). 
+- Met het deel venster **eind punten** kunt u snel de relevante eind punten voor uw scenario identificeren, zoals OpenID Connect Connect-configuratie, SAML-meta gegevens, Microsoft Graph-API en [OAuth 2,0-gebruikers stroom eind punten](tokens-overview.md#endpoints).
 
 - **API-machtigingen** en bieden **een API** voor uitgebreidere scope-, machtigings-en toestemming beheer. U kunt nu ook MS Graph en Azure AD Graph-machtigingen toewijzen aan een app.
 
@@ -57,7 +57,7 @@ In de nieuwe ervaring selecteert u een type ondersteunings account uit de volgen
 - Accounts in elke organisatie Directory (een Azure AD-Directory – multi tenant).
 - Accounts in een organisatorische Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C.
 
-Als u meer wilt weten over de verschillende typen accounts, selecteert u **Help mij kiezen** tijdens het maken. 
+Als u meer wilt weten over de verschillende typen accounts, selecteert u **Help mij kiezen** tijdens het maken.
 
 In de verouderde ervaring werden apps altijd gemaakt als klant gerichte toepassingen. Voor deze apps wordt het account type ingesteld op **accounts in een organisatorische Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C**.
 > [!NOTE]
@@ -68,9 +68,9 @@ U kunt deze optie ook gebruiken om Azure AD B2C als een SAML-service provider te
 ## <a name="applications-for-devops-scenarios"></a>Toepassingen voor DevOps-scenario's
 U kunt de andere account typen gebruiken om een app te maken voor het beheren van uw DevOps-scenario's, zoals het gebruik van Microsoft Graph voor het uploaden van identiteits experience Framework-beleids regels of het inrichten van gebruikers. Meer informatie [over hoe u een Microsoft Graph-toepassing registreert om Azure AD B2C resources te beheren](microsoft-graph-get-started.md).
 
-U ziet mogelijk niet alle Microsoft Graph machtigingen, omdat veel van deze machtigingen niet van toepassing zijn op gebruikers van Azure B2C Consumer. [Meer informatie over het beheren van gebruikers met behulp van Microsoft Graph](manage-user-accounts-graph-api.md).  
+U ziet mogelijk niet alle Microsoft Graph machtigingen, omdat veel van deze machtigingen niet van toepassing zijn op gebruikers van Azure B2C Consumer. [Meer informatie over het beheren van gebruikers met behulp van Microsoft Graph](manage-user-accounts-graph-api.md).
 
-## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Beheerders toestemming en offline_access + OpenID Connect-bereiken  
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Beheerders toestemming en offline_access + OpenID Connect-bereiken
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
 Het bereik van de **OpenID Connect** is nodig zodat Azure AD B2C gebruikers in een app kunnen ondertekenen. Het **offline_access** bereik is vereist voor het uitgeven van vernieuwings tokens voor een gebruiker. Deze bereiken zijn eerder toegevoegd en de beheerder heeft standaard toestemming gegeven. U kunt nu eenvoudig machtigingen voor deze bereiken toevoegen tijdens het maken van het proces door ervoor te zorgen dat de optie **verlenende beheerder toestemming geeft voor OpenID Connect en offline_access machtigingen** is geselecteerd. Anders kunnen de Microsoft Graph machtigingen worden toegevoegd met beheerders toestemming in de instellingen voor **API-machtigingen** voor een bestaande app.
@@ -78,11 +78,11 @@ Het bereik van de **OpenID Connect** is nodig zodat Azure AD B2C gebruikers in e
 Meer informatie over [machtigingen en toestemming](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformen/authenticatie: antwoord-Url's/omleidings-Uri's
-In de verouderde ervaring zijn de verschillende platform typen beheerd onder **Eigenschappen** als antwoord-url's voor web-apps/api's en omleidings-URI voor native clients. ' Native clients ' zijn ook bekend als ' open bare clients ' en bevatten apps voor iOS-, macOS-, Android-en andere typen mobiele en desktop toepassingen. 
+In de verouderde ervaring zijn de verschillende platform typen beheerd onder **Eigenschappen** als antwoord-url's voor web-apps/api's en omleidings-URI voor native clients. ' Native clients ' zijn ook bekend als ' open bare clients ' en bevatten apps voor iOS-, macOS-, Android-en andere typen mobiele en desktop toepassingen.
 
-In de nieuwe ervaring worden antwoord-Url's en omleidings-Uri's beide aangeduid als omleidings-Uri's. Dit vindt u in de sectie **verificatie** van een app. App-registraties zijn niet beperkt tot een web-app of een systeem eigen toepassing. U kunt dezelfde app-registratie voor al deze platform typen gebruiken door de respectieve omleidings-Uri's te registreren. 
+In de nieuwe ervaring worden antwoord-Url's en omleidings-Uri's beide aangeduid als omleidings-Uri's. Dit vindt u in de sectie **verificatie** van een app. App-registraties zijn niet beperkt tot een web-app of een systeem eigen toepassing. U kunt dezelfde app-registratie voor al deze platform typen gebruiken door de respectieve omleidings-Uri's te registreren.
 
-Omleidings-Uri's moeten worden gekoppeld aan een app-type, hetzij Web ofwel openbaar (mobiel en desktop). [Meer informatie over omleidings-Uri's](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Omleidings-Uri's moeten worden gekoppeld aan een app-type, hetzij Web ofwel openbaar (mobiel en desktop). [Meer informatie over omleidings-Uri's](../active-directory/develop/quickstart-register-app.md#add-a-redirect-uri)
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 

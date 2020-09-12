@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193679"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441048"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Azure Data Lake Storage Gen1 gebruiken voor big data vereisten
 
@@ -130,5 +130,5 @@ U kunt een combi natie van Services gebruiken om visuele weer gaven te maken van
 
 ![Gegevens visualiseren in Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Gegevens visualiseren in Data Lake Storage Gen1")
 
-* U kunt beginnen met [Azure Data Factory om gegevens te verplaatsen van data Lake Storage gen1 naar Azure SQL Data Warehouse](../data-factory/copy-activity-overview.md)
-* Daarna kunt u [Power bi integreren met Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) om een visuele weer gave van de gegevens te maken.
+* U kunt beginnen met [Azure Data Factory om gegevens te verplaatsen van data Lake Storage gen1 naar Azure Synapse Analytics (voorheen SQL Data Warehouse)](../data-factory/copy-activity-overview.md)
+* Daarna kunt u [Power bi integreren met Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) om een visuele weer gave van de gegevens te maken.

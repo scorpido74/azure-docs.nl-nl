@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796405"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434109"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Gekoppelde services in Azure Data Factory
 
@@ -32,7 +32,7 @@ Als u niet bekend bent met Data Factory, raadpleegt u [Introduction to Azure Dat
 
 ## <a name="overview"></a>Overzicht
 
-Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijp lijn** is een logische groep **activiteiten** die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens te kopiëren van SQL Server naar Azure Blob-opslag. Vervolgens kunt u een Hive-activiteit gebruiken waarmee een Hive-script op een Azure HDInsight-cluster wordt uitgevoerd om gegevens uit de Blob-opslag te verwerken om uitvoer gegevens te produceren. Ten slotte kunt u een tweede Kopieer activiteit gebruiken om de uitvoer gegevens te kopiëren naar Azure SQL Data Warehouse, op welke business intelligence (BI) Reporting-oplossingen zijn gebouwd. Voor meer informatie over pijp lijnen en activiteiten raadpleegt u [pijp lijnen en activiteiten](concepts-pipelines-activities.md) in azure Data Factory.
+Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijp lijn** is een logische groep **activiteiten** die samen een taak uitvoeren. De activiteiten in een pijplijn bepalen acties die moeten worden uitgevoerd op uw gegevens. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens te kopiëren van SQL Server naar Azure Blob-opslag. Vervolgens kunt u een Hive-activiteit gebruiken waarmee een Hive-script op een Azure HDInsight-cluster wordt uitgevoerd om gegevens uit de Blob-opslag te verwerken om uitvoer gegevens te produceren. Ten slotte kunt u een tweede Kopieer activiteit gebruiken om de uitvoer gegevens te kopiëren naar Azure Synapse Analytics (voorheen SQL Data Warehouse), op voor waarde dat de oplossingen voor de rapportage van business intelligence (BI) zijn gebouwd. Voor meer informatie over pijp lijnen en activiteiten raadpleegt u [pijp lijnen en activiteiten](concepts-pipelines-activities.md) in azure Data Factory.
 
 Nu is een **gegevensset** een benoemde weer gave van gegevens waarmee u de gegevens die u in uw **activiteiten** wilt gebruiken als invoer en uitvoer, eenvoudigweg wijst of ernaar verwijst.
 
@@ -68,9 +68,9 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
 Eigenschap | Beschrijving | Vereist |
 -------- | ----------- | -------- |
-naam | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
-type | Het type van de gekoppelde service. Bijvoorbeeld: AzureBlobStorage (Data Store) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Ja |
-typeProperties | De type-eigenschappen verschillen voor elke gegevens opslag of compute. <br/><br/> Zie het [overzichts](copy-activity-overview.md#supported-data-stores-and-formats) artikel van de connector voor de ondersteunde typen gegevens opslag en de type-eigenschappen ervan. Navigeer naar het gegevens archief connector artikel voor meer informatie over type-eigenschappen die specifiek zijn voor een gegevens archief. <br/><br/> Zie [gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde reken typen en de bijbehorende type-eigenschappen. | Ja |
+naam | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Yes |
+type | Het type van de gekoppelde service. Bijvoorbeeld: AzureBlobStorage (Data Store) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Yes |
+typeProperties | De type-eigenschappen verschillen voor elke gegevens opslag of compute. <br/><br/> Zie het [overzichts](copy-activity-overview.md#supported-data-stores-and-formats) artikel van de connector voor de ondersteunde typen gegevens opslag en de type-eigenschappen ervan. Navigeer naar het gegevens archief connector artikel voor meer informatie over type-eigenschappen die specifiek zijn voor een gegevens archief. <br/><br/> Zie [gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde reken typen en de bijbehorende type-eigenschappen. | Yes |
 connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | No
 
 ## <a name="linked-service-example"></a>Voor beeld van gekoppelde service

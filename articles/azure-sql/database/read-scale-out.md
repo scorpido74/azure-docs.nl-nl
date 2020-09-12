@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 09/03/2020
+ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135892"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442187"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Alleen-lezen replica's gebruiken om werk belastingen met alleen-lezen query's te offloaden
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Als onderdeel van een [architectuur met hoge Beschik baarheid](high-availability-sla.md#premium-and-business-critical-service-tier-availability)wordt elke Data Base en elk beheerd exemplaar in de service tier Premium en bedrijfskritiek automatisch ingericht met een primaire replica met het kenmerk alleen-lezen en alleen secundaire alleen-lezen replica's. De secundaire replica's worden ingericht met dezelfde reken grootte als de primaire replica. Met de functie voor het *lezen van scale-out* kunt u alleen-lezen workloads offloaden met behulp van de reken capaciteit van een van de alleen-lezen replica's, in plaats van deze op te starten in de replica lezen-schrijven. Op deze manier kunnen bepaalde alleen-lezen workloads worden geïsoleerd van de werk belastingen voor lezen en schrijven. Dit heeft geen invloed op de prestaties. De functie is bedoeld voor de toepassingen die logisch gescheiden alleen-lezen werk belastingen bevatten, zoals analyses. In de service lagen Premium en Bedrijfskritiek kunnen toepassingen prestatie voordelen krijgen met behulp van deze extra capaciteit zonder extra kosten.
+Als onderdeel van een [architectuur met hoge Beschik baarheid](high-availability-sla.md#premium-and-business-critical-service-tier-availability)wordt elke afzonderlijke Data Base, elastische pool-data base en een beheerd exemplaar in de Premium-en bedrijfskritiek-servicelaag automatisch ingericht met een primaire replica met het kenmerk alleen-lezen en enkele secundaire alleen-lezen replica's. De secundaire replica's worden ingericht met dezelfde reken grootte als de primaire replica. Met de functie voor het *lezen van scale-out* kunt u alleen-lezen workloads offloaden met behulp van de reken capaciteit van een van de alleen-lezen replica's, in plaats van deze op te starten in de replica lezen-schrijven. Op deze manier kunnen bepaalde alleen-lezen workloads worden geïsoleerd van de werk belastingen voor lezen en schrijven. Dit heeft geen invloed op de prestaties. De functie is bedoeld voor de toepassingen die logisch gescheiden alleen-lezen werk belastingen bevatten, zoals analyses. In de service lagen Premium en Bedrijfskritiek kunnen toepassingen prestatie voordelen krijgen met behulp van deze extra capaciteit zonder extra kosten.
 
 De functie *scale-out lezen* is ook beschikbaar in de grootschalige, wanneer ten minste één secundaire replica is gemaakt. Meerdere secundaire replica's kunnen worden gebruikt voor werk belastingen met alleen-lezen taak verdeling waarvoor meer resources nodig zijn dan beschikbaar zijn op één secundaire replica.
 
@@ -45,7 +45,7 @@ Als u er zeker van wilt zijn dat de toepassing verbinding maakt met de primaire 
 
 ## <a name="data-consistency"></a>Gegevensconsistentie
 
-Een van de voor delen van replica's is dat de replica's altijd in de transactionele consistente status zijn, maar op verschillende tijdstippen kan er sprake zijn van een kleine latentie tussen verschillende replica's. Uitschaal baarheid lezen ondersteunt consistentie op sessie niveau. Als de alleen-lezen sessie opnieuw verbinding maakt nadat een verbindings fout is veroorzaakt doordat de replica niet beschikbaar is, kan deze worden omgeleid naar een replica die niet 100% up-to-date is met de replica met het kenmerk lezen-schrijven. Als een toepassing gegevens schrijft met behulp van een lees-en schrijf sessie en deze onmiddellijk leest met behulp van een alleen-lezen sessie, is het mogelijk dat de meest recente updates niet direct zichtbaar zijn op de replica. De latentie wordt veroorzaakt door een bewerking voor opnieuw uitvoeren van een asynchroon transactie logboek.
+Een van de voor delen van replica's is dat de replica's altijd in de transactionele consistente status zijn, maar op verschillende tijdstippen kan er sprake zijn van een kleine latentie tussen verschillende replica's. Uitschaal baarheid lezen ondersteunt consistentie op sessie niveau. Als de alleen-lezen sessie opnieuw verbinding maakt nadat een verbindings fout is veroorzaakt doordat de replica niet beschikbaar is, kan deze worden omgeleid naar een replica die niet 100% up-to-date is met de replica met het kenmerk lezen-schrijven. Als een toepassing gegevens schrijft met behulp van een sessie voor lezen-schrijven en de gegevens onmiddellijk leest met behulp van een sessie voor alleen-lezen, is het evenzo mogelijk dat de meest recente updates niet direct zichtbaar zijn op de replica. De latentie wordt veroorzaakt door een redo-bewerking voor het transactielogboek die asynchroon wordt uitgevoerd.
 
 > [!NOTE]
 > Replicatie latenties in de regio zijn laag en deze situatie is zeldzaam. Zie [controle en probleem oplossing alleen-lezen replica](#monitoring-and-troubleshooting-read-only-replicas)om replicatie latentie te controleren.
@@ -85,13 +85,13 @@ Wanneer er verbinding wordt gemaakt met een alleen-lezen replica, zien dynamisch
 
 Veelgebruikte weer gaven zijn:
 
-| Name | Functie |
+| Naam | Doel |
 |:---|:---|
-|[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Voorziet in de metrische gegevens van het resource gebruik voor het afgelopen uur, inclusief CPU, data IO en logboek schrijf gebruik in verhouding tot service doelstelling limieten.|
-|[sys. dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Biedt geaggregeerde wacht statistieken voor het exemplaar van de data base-engine. |
+|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Voorziet in de metrische gegevens van het resource gebruik voor het afgelopen uur, inclusief CPU, data IO en logboek schrijf gebruik in verhouding tot service doelstelling limieten.|
+|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Biedt geaggregeerde wacht statistieken voor het exemplaar van de data base-engine. |
 |[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Biedt status-en synchronisatie statistieken voor de replica. De grootte van de wachtrij opnieuw uitvoeren en het aantal opnieuw uitvoeren fungeert als indicator van de gegevens latentie op de alleen-lezen replica. |
 |[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Biedt prestatie meter items voor de data base-engine.|
-|[sys. dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Biedt uitvoerings statistieken per query, zoals het aantal uitvoeringen, de gebruikte CPU-tijd, enzovoort.|
+|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Biedt uitvoerings statistieken per query, zoals het aantal uitvoeringen, de gebruikte CPU-tijd, enzovoort.|
 |[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Biedt query abonnementen in de cache. |
 |[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Geeft query tekst voor een query plan in de cache.|
 |[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Biedt real-time query voortgang terwijl query's worden uitgevoerd.|
@@ -166,7 +166,7 @@ Als u het lezen van uitschalen voor een bestaande data base opnieuw wilt inschak
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 Als u een Data Base met lees uitschalen wilt maken of de instelling voor een bestaande Data Base wilt wijzigen, gebruikt u de volgende methode waarbij de `readScale` eigenschap is ingesteld op `Enabled` of `Disabled` , zoals in de volgende voorbeeld aanvraag.
 

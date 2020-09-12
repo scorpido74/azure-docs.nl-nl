@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814413"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319233"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link voor Azure Cosmos DB: Use cases voor bijna realtime analyses
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link voor Azure Cosmos DB: Toepassingsscenario’s voor bijna realtime-analyse
 
 De [Azure Synapse-koppeling](synapse-link.md) voor Azure Cosmos DB is een native HTAP-functie (hybride transactionele) van de Cloud waarmee u bijna realtime analyses kunt uitvoeren via operationele gegevens. Synapse-koppeling maakt een strakkere integratie tussen Azure Cosmos DB en Azure Synapse Analytics.
 
@@ -86,7 +86,7 @@ Hier volgt een architectuur die gebruikmaakt van de HTAP-mogelijkheden in de clo
 
 Synapse-koppeling voor Azure Cosmos DB use cases:
 
-* **Voorspellende pijp lijn voorbereiden & trainen:** De historische operationele gegevens van IoT-apparaat-Sens oren kunnen worden gebruikt om voorspellende modellen, zoals afwijkende Detectors, te trainen. Deze afwijkende detectoren worden vervolgens vervolgens weer op de rand voor realtime-bewaking geïnstalleerd. Met een dergelijke waardevolle gebruiks-lus kan de voorspellende modellen continu worden getraind.
+* **Voorspellende pijp lijn voorbereiden & trainen:** De historische operationele gegevens van IoT-apparaat-Sens oren kunnen worden gebruikt om voorspellende modellen, zoals afwijkende Detectors, te trainen. Deze afwijkingsdetectoren worden vervolgens weer op de rand geïnstalleerd voor realtime-bewaking. Met een dergelijke waardevolle gebruiks-lus kan de voorspellende modellen continu worden getraind.
 
 * **Operationele rapportage:** Met de groei van digitale dubbele initiatieven verzamelen bedrijven grote hoeveel heden operationele gegevens van een groot aantal Sens oren om een digitale kopie van elke machine te bouwen. Deze gegevens bevoegdheden BI moet inzicht hebben in trends op historische gegevens en in realtime toepassingen via recente, dynamische gegevens.
 
@@ -134,7 +134,7 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Azure Synapse-koppeling voor Azure Cosmos DB](synapse-link.md) 
 
-* [Azure Cosmos DB-analytische archief](analytical-store-introduction.md)
+* [Analytische opslag van Azure Cosmos DB](analytical-store-introduction.md)
 
 * [Werken met de Azure Synapse-koppeling voor Azure Cosmos DB](configure-synapse-link.md)
 
@@ -142,4 +142,4 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Apache Spark in Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [SQL serverloos/op aanvraag in azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Ondersteuning voor SQL serverloze runtime in azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)

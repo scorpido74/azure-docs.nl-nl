@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254216"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319289"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Een niet-beschik bare-gastenboek toepassing met redis implementeren op een Kubernetes-cluster dat is ingeschakeld op Azure Stack Edge GPU
 
@@ -57,7 +57,7 @@ Voordat u de stateless toepassing kunt implementeren, moet u ervoor zorgen dat u
       - Ga in de lokale gebruikers interface van uw Azure Stack edge-apparaat naar **overzicht** en noteer het Kubernetes-software nummer. 
       - Controleer deze twee versies op compatibiliteit van de toewijzing die is opgenomen in de ondersteunde Kubernetes-versie <!--insert link-->.
 
-1. U hebt een [GitOps-configuratie die u kunt gebruiken om een implementatie van Azure Arc uit te voeren](https://github.com/kagoyal/dbehaikudemo). U gebruikt de volgende `yaml` bestanden om te implementeren op uw Azure stack edge-apparaat.
+1. U hebt een [GitOps-configuratie die u kunt gebruiken om een implementatie van Azure Arc uit te voeren](https://github.com/kagoyal/dbehaikudemo). In dit voor beeld gebruikt u de volgende `yaml` bestanden om te implementeren op uw Azure stack edge-apparaat.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -132,7 +132,7 @@ De implementatie via de GitOps-configuratie maakt een `demotestguestbook` naam r
     [10.128.44.240]: PS>
     ```  
 
-1. In dit voor beeld is de frontend-service geïmplementeerd als type: LoadBalancer. U moet het IP-adres van deze service vinden om het gastenboek weer te geven. Voer de volgende opdracht uit:
+1. In dit voor beeld is de frontend-service geïmplementeerd als type: LoadBalancer. U moet het IP-adres van deze service vinden om het gastenboek weer te geven. Voer de volgende opdracht uit.
 
     `kubectl get service -n <your-namespace>`
     

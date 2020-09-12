@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631476"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440895"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS gebruiken op AKS
 
@@ -91,7 +91,8 @@ alertmanager-config  1     20s
 NOTES:
 To verify that openfaas has started, run:
 
-  kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
+```console
+kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
 Er wordt een openbaar IP-adres gemaakt voor toegang tot de OpenFaaS-gateway. Gebruik de opdracht [kubectl Get service][kubectl-get] om dit IP-adres op te halen. Het kan een minuut duren voordat het IP-adres is toegewezen aan de service.

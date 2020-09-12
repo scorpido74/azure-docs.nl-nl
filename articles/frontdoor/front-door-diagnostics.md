@@ -3,20 +3,20 @@ title: Metrische gegevens en logboeken bewaken in azure front-deur | Microsoft D
 description: In dit artikel worden de verschillende metrische gegevens en toegangs logboeken beschreven die door Azure front-deur worden ondersteund
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: sharadag
-ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056428"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399749"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrische gegevens en logboeken bewaken in azure front deur
 
@@ -38,7 +38,7 @@ Metrische gegevens zijn een functie voor bepaalde Azure-resources waarmee u pres
 | BackendRequestCount | Aantal back-aanvragen | Aantal | Http status</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat van de voor deur naar de back-end wordt verzonden. |
 | BackendRequestLatency | Latentie van back-upaanvraag | Milliseconden | Back-end | De tijd die wordt berekend vanaf het moment dat de aanvraag door de voor deur naar de back-end is verzonden tot de voor deur de laatste reactie byte van de back-end heeft ontvangen. |
 | BackendHealthPercentage | Back-status percentage | Percentage | Back-end</br>Hosts | Het percentage geslaagde status tests van front-deur naar back-end. |
-| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Aantal | PolicyName</br>RuleName</br>Bewerking | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
+| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Aantal | PolicyName</br>RuleName</br>Actie | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Activiteiten logboeken
 
@@ -99,8 +99,8 @@ De voor deur bevat momenteel Diagnostische logboeken (batched per uur). Diagnost
 
 | Scenario's | Aantal logboek vermeldingen | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Routerings regel zonder caching ingeschakeld | 1 | POP-code van rand | Back-end waar de aanvraag is doorgestuurd | Niet waar | CONFIG_NOCACHE |
-| Routerings regel met caching ingeschakeld. Cache treffer aan de rand POP | 1 | POP-code van rand | Leeg | Niet waar | BEZOCHT |
+| Routerings regel zonder caching ingeschakeld | 1 | POP-code van rand | Back-end waar de aanvraag is doorgestuurd | False | CONFIG_NOCACHE |
+| Routerings regel met caching ingeschakeld. Cache treffer aan de rand POP | 1 | POP-code van rand | Leeg | False | BEZOCHT |
 | Routerings regel met caching ingeschakeld. Geen geheugen meer in de POP-context, maar cache is aanwezig in de POP van de bovenliggende cache | 2 | 1. POP-code van rand</br>2. POP-code van bovenliggende cache | 1. POP-hostnaam van bovenliggende cache</br>2. empty | 1. True</br>2. onwaar | 1. MIS</br>2. PARTIAL_HIT |
 | Routerings regel met caching ingeschakeld. Cache-missers aan de rand en de bovenliggende cache POP | 2 | 1. POP-code van rand</br>2. POP-code van bovenliggende cache | 1. POP-hostnaam van bovenliggende cache</br>2. back-end waarmee cache kan worden gevuld | 1. True</br>2. onwaar | 1. MIS</br>2. MIS |
 

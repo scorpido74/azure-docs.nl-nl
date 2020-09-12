@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84048803"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437442"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Bekijk SaaS Analytics met Azure SQL Database, Azure Synapse Analytics, Data Factory en Power BI
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In deze zelf studie gaat u een end-to-end-analyse scenario door lopen. In het scenario ziet u hoe analyse via Tenant gegevens software leveranciers kan stimuleren om slimme beslissingen te nemen. Met behulp van gegevens die zijn geëxtraheerd uit elke Tenant database, gebruikt u Analytics om inzicht te krijgen in het gedrag van de Tenant, inclusief het gebruik van de Wingtip tickets SaaS-toepassing. Dit scenario bestaat uit drie stappen:
 
-1. Gegevens uit elke Tenant database **extra heren** in een analytische opslag, in dit geval een SQL Data Warehouse.
+1. Gegevens uit elke Tenant database **extra heren** in een analyse archief, in dit geval een SQL-groep.
 2. **Optimaliseer de geëxtraheerde gegevens** voor analyse verwerking.
 3. Gebruik hulpprogram ma's voor **bedrijfs informatie** om nuttige inzichten uit te tekenen, waarmee u besluit vorming kunt doen.
 
@@ -45,7 +45,7 @@ SaaS-toepassingen bevatten een mogelijk grote hoeveelheid Tenant gegevens in de 
 
 Het is eenvoudig om toegang te krijgen tot de gegevens voor alle tenants wanneer alle gegevens zich in slechts één data base met meerdere tenants bevinden. Access is echter ingewik kelder wanneer ze worden gedistribueerd op schaal in duizenden data bases. Een manier om de complexiteit te beheersenen is het extra heren van de gegevens naar een Analytics-Data Base of een Data Warehouse voor query's.
 
-Deze zelf studie bevat een end-to-end-analyse scenario voor de Wingtip tickets-toepassing. First, [Azure Data Factory (ADF)](../../data-factory/introduction.md) wordt gebruikt als het Orchestration-hulp programma voor het uitpakken van kaarten verkoop en gerelateerde gegevens uit elke Tenant database. Deze gegevens worden in een analyse archief geladen in faserings tabellen. Het analyse archief kan een SQL Database of een SQL Data Warehouse zijn. In deze zelf studie wordt [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) gebruikt als het Analytics-archief.
+Deze zelf studie bevat een end-to-end-analyse scenario voor de Wingtip tickets-toepassing. First, [Azure Data Factory (ADF)](../../data-factory/introduction.md) wordt gebruikt als het Orchestration-hulp programma voor het uitpakken van kaarten verkoop en gerelateerde gegevens uit elke Tenant database. Deze gegevens worden in een analyse archief geladen in faserings tabellen. Het analyse archief kan een SQL Database of een SQL-groep zijn. In deze zelf studie wordt [Azure Synapse Analytics (voorheen SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) gebruikt als het Analytics Store.
 
 Vervolgens worden de geëxtraheerde gegevens getransformeerd en geladen in een set [ster-schema](https://www.wikipedia.org/wiki/Star_schema) tabellen. De tabellen bestaan uit een centrale feiten tabel plus gerelateerde dimensie tabellen:
 
@@ -83,11 +83,11 @@ In deze zelf studie worden de verkoop gegevens van Analytics over ticket verkend
     - **$DemoScenario**  =  **1** koop tickets voor gebeurtenissen op alle locaties
 2. Druk op **F5** om het script uit te voeren en een ticket-inkoop geschiedenis te maken voor alle locaties. Met 20 tenants genereert het script tien duizenden tickets en kan dit 10 minuten of langer duren.
 
-### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>SQL Data Warehouse, Data Factory en Blob Storage implementeren
+### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Azure Synapse Analytics, Data Factory en Blob Storage implementeren
 
-In de Wingtip tickets-app worden de transactionele gegevens van de tenants gedistribueerd over veel data bases. Azure Data Factory (ADF) wordt gebruikt om de extract, Load en Transform (ELT) van deze gegevens in het Data Warehouse te organiseren. Voor het laden van gegevens naar SQL Data Warehouse meest efficiënte, laadt ADF gegevens naar tussenliggende BLOB-bestanden en gebruikt [poly base](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) om de gegevens in het Data Warehouse te laden.
+In de Wingtip tickets-app worden de transactionele gegevens van de tenants gedistribueerd over veel data bases. Azure Data Factory (ADF) wordt gebruikt om de extract, Load en Transform (ELT) van deze gegevens in het Data Warehouse te organiseren. Als u gegevens in azure Synapse Analytics (voorheen SQL Data Warehouse) het meest efficiënt wilt laden, haalt ADF gegevens op in tussenliggende BLOB-bestanden en gebruikt [poly base](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) voor het laden van de gegevens in het Data Warehouse.
 
-In deze stap implementeert u de extra resources die worden gebruikt in de zelf studie: een SQL Data Warehouse met de naam _tenantanalytics_, een Azure Data Factory _met \<user\> _de naam dbtodwload en een Azure Storage-account met de naam _wingtipstaging \<user\> _. Het opslag account wordt gebruikt voor het tijdelijk vasthouden van geëxtraheerde gegevens bestanden als blobs voordat ze in het Data Warehouse worden geladen. Met deze stap wordt ook het Data Warehouse-schema geïmplementeerd en worden de ADF-pijp lijnen gedefinieerd waarmee het ELT-proces wordt georganiseerd.
+In deze stap implementeert u de extra resources die worden gebruikt in de zelf studie: een SQL-pool met de naam _tenantanalytics_, een Azure Data Factory met de naam _ \<user\> dbtodwload_en een Azure Storage-account met de naam _wingtipstaging \<user\> _. Het opslag account wordt gebruikt voor het tijdelijk vasthouden van geëxtraheerde gegevens bestanden als blobs voordat ze in het Data Warehouse worden geladen. Met deze stap wordt ook het Data Warehouse-schema geïmplementeerd en worden de ADF-pijp lijnen gedefinieerd waarmee het ELT-proces wordt georganiseerd.
 
 1. Open in Power shell ISE *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* en stel het volgende in:
     - **$DemoScenario**  =  **2** Tenant-Analytics-Data Warehouse, Blob-opslag en Data Factory implementeren
@@ -159,7 +159,7 @@ De drie geneste pijp lijnen zijn: SQLDBToDW, DBCopy en TableCopy.
 
 **Pijp lijn 3-TableCopy** gebruikt rij-versie nummers in SQL database (_rowversion_) om rijen te identificeren die zijn gewijzigd of bijgewerkt. Deze activiteit zoekt naar de begin-en eind versie van de rij voor het extra heren van rijen uit de bron tabellen. De **CopyTracker** -tabel die is opgeslagen in elke Tenant database, houdt de laatste rij bij die is geëxtraheerd uit elke bron tabel in elke uitvoering. Nieuwe of gewijzigde rijen worden gekopieerd naar de bijbehorende faserings tabellen in het Data Warehouse: **raw_Tickets**, **raw_Customers**, **raw_Venues**en **raw_Events**. Ten slotte wordt de laatste rij-versie opgeslagen in de **CopyTracker** -tabel die moet worden gebruikt als de eerste rij-versie voor de volgende extractie.
 
-Er zijn ook drie para meters gekoppelde services die de data factory koppelen aan de SQL-bron database, het doel SQL Data Warehouse en de tussenliggende Blob-opslag. Klik op het tabblad **Auteur** op **verbindingen** om de gekoppelde services te verkennen, zoals wordt weer gegeven in de volgende afbeelding:
+Er zijn ook drie para meters gekoppelde services die de data factory koppelen aan de SQL-bron database, de doel-SQL-groep en de tussenliggende Blob-opslag. Klik op het tabblad **Auteur** op **verbindingen** om de gekoppelde services te verkennen, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 
@@ -167,7 +167,7 @@ Met betrekking tot de drie gekoppelde services zijn er drie gegevens sets die ve
   
 ### <a name="data-warehouse-pattern-overview"></a>Overzicht van het Data Warehouse-patroon
 
-Azure Synapse (voorheen Azure SQL Data Warehouse) wordt gebruikt als de analyse opslag voor het uitvoeren van aggregatie op de gegevens van de Tenant. In dit voor beeld wordt poly base gebruikt voor het laden van gegevens in het Data Warehouse. Onbewerkte gegevens worden in faserings tabellen geladen die een identiteits kolom hebben voor het bijhouden van rijen die zijn getransformeerd naar de ster-schema tabellen. De volgende afbeelding toont het laad patroon: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (voorheen SQL Data Warehouse) wordt gebruikt als de analyse opslag voor het uitvoeren van aggregatie op de gegevens van de Tenant. In dit voor beeld wordt poly base gebruikt voor het laden van gegevens in het Data Warehouse. Onbewerkte gegevens worden in faserings tabellen geladen die een identiteits kolom hebben voor het bijhouden van rijen die zijn getransformeerd naar de ster-schema tabellen. De volgende afbeelding toont het laad patroon: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 Langzaam veranderende dimensie (SCD) type 1 dimensie tabellen worden gebruikt in dit voor beeld. Elke dimensie heeft een surrogaat sleutel die is gedefinieerd met behulp van een identiteits kolom. Als best practice is de datum dimensie tabel vooraf ingevuld om tijd te besparen. Voor de andere dimensie tabellen, een CREATE TABLE als selecteren... (CTAS) wordt gebruikt voor het maken van een tijdelijke tabel die de bestaande gewijzigde en niet-gewijzigde rijen bevat, samen met de surrogaat sleutels. Dit wordt gedaan met IDENTITY_INSERT = op. Nieuwe rijen worden vervolgens ingevoegd in de tabel met IDENTITY_INSERT = uit. Voor een gemakkelijk terugdraaien wordt de naam van de bestaande dimensie tabel gewijzigd en wordt de naam van de tijdelijke tabel gewijzigd in de nieuwe dimensie tabel. Voor elke uitvoering wordt de oude dimensie tabel verwijderd.
 
@@ -208,7 +208,7 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 
     ![aanmelden bij Power bi](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 
-5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinden**.  
+5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinding maken**.  
 
     ![data base-aanmelden](./media/saas-tenancy-tenant-analytics-adf/databaseSignIn.PNG)
 

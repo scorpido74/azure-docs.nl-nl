@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068723"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436847"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Procedure: optionele claims voor uw app opgeven
 
@@ -130,7 +130,7 @@ U kunt optionele claims voor uw toepassing configureren via de gebruikers interf
 
 **Optionele claims configureren via de gebruikers interface:**
 
-[![Laat zien hoe u optionele claims configureert met de gebruikers interface](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![Optionele claims configureren in de gebruikers interface](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. Selecteer in de sectie **beheren** de optie **token configuratie**.
 1. Selecteer **optionele claim toevoegen**.
@@ -238,9 +238,9 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren
 1. Selecteer in de sectie **beheren** de optie **token configuratie**
 1. Claim voor het **toevoegen van groepen** selecteren
-1. Selecteer de groeps typen die moeten worden geretourneerd (**alle groepen**, **beveiligings groep**of **DirectoryRole**). De optie **alle groepen** omvat **beveiligings groep**, **DirectoryRole**en **DistributionList**
+1. Selecteer de groeps typen die moeten worden geretourneerd (**beveiligings groepen**, of **Directory rollen**, **alle groepen**en/of **groepen die zijn toegewezen aan de toepassing**). De **groepen die zijn toegewezen aan de toepassings** optie omvatten alleen groepen die zijn toegewezen aan de toepassing. De optie **alle groepen** omvat **beveiligings groep**, **DirectoryRole**en **DistributionList**, maar niet **voor groepen die zijn toegewezen aan de toepassing**. 
 1. Optioneel: Selecteer de specifieke eigenschappen van het token type om de claim waarde van de groep zodanig te wijzigen dat deze lokale groeps kenmerken bevat of om het claim type te wijzigen in een rol
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan**
 
 **Groepen optionele claims configureren via het toepassings manifest:**
 
@@ -256,6 +256,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
    - ' All ' (deze optie omvat beveiligings groep, DirectoryRole en DistributionList)
    - Beveiligings groep
    - "DirectoryRole"
+   - "Variabele applicationgroup" (deze optie omvat alleen groepen die zijn toegewezen aan de toepassing)
 
    Bijvoorbeeld:
 
@@ -307,7 +308,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 
     **Configuratie van de gebruikers interface:**
 
-    [![Laat zien hoe u optionele claims configureert met de gebruikers interface](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![Optionele claims configureren](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **Vermelding van het toepassings manifest:**
 
@@ -328,7 +329,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 
     **Configuratie van de gebruikers interface:**
 
-    [![Laat zien hoe u optionele claims configureert met de gebruikers interface](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![Optionele claims in het manifest](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **Vermelding van het toepassings manifest:**
 
@@ -394,7 +395,7 @@ In het onderstaande voor beeld gebruikt u de gebruikers interface voor **token c
 
 1. Selecteer **optionele claim toevoegen**, selecteer het **SAML** -token type, selecteer **Extn. skypeID** in de lijst met claims (alleen van toepassing als u een Azure AD-gebruikers object hebt gemaakt met de naam skypeID) en selecteer vervolgens **toevoegen**.
 
-    [![Laat zien hoe u optionele claims configureert met de gebruikers interface](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![Optionele claims voor SAML-token](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Manifest configuratie:**
 

@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212035"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434228"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -126,7 +126,7 @@ Gegevens stromen zijn geprijsd op VCore. Dit betekent dat zowel de cluster groot
 
 ### <a name="time-to-live"></a>Time To Live
 
-Elke gegevens stroom activiteit draait standaard naar een nieuw cluster op basis van de IR-configuratie. De opstart tijd van het cluster duurt enkele minuten en de gegevens verwerking kan pas worden gestart als deze is voltooid. Als uw pijp lijnen meerdere **sequentiële** gegevens stromen bevatten, kunt u een TTL-waarde (time to Live) inschakelen. Als u een time to Live-waarde opgeeft, blijft een cluster actief gedurende een bepaalde periode nadat de uitvoering is voltooid. Als een nieuwe taak begint met het gebruik van de IR tijdens de TTL-tijd, wordt het bestaande cluster opnieuw gebruikt en wordt de opstart tijd in seconden in plaats van minuten. Nadat de tweede taak is voltooid, blijft het cluster weer actief gedurende de TTL-tijd.
+Elke gegevens stroom activiteit draait standaard naar een nieuw cluster op basis van de IR-configuratie. De opstart tijd van het cluster duurt enkele minuten en de gegevens verwerking kan pas worden gestart als deze is voltooid. Als uw pijp lijnen meerdere **sequentiële** gegevens stromen bevatten, kunt u een TTL-waarde (time to Live) inschakelen. Als u een time to Live-waarde opgeeft, blijft een cluster actief gedurende een bepaalde periode nadat de uitvoering is voltooid. Als een nieuwe taak begint met het gebruik van de IR tijdens de TTL-tijd, wordt het bestaande cluster opnieuw gebruikt en wordt de opstart tijd aanzienlijk verminderd. Nadat de tweede taak is voltooid, blijft het cluster weer actief gedurende de TTL-tijd.
 
 Er kan slechts één taak tegelijk worden uitgevoerd op één cluster. Als er een cluster beschikbaar is, maar twee gegevens stromen start, wordt er slechts één gebruikt voor het Live cluster. Met de tweede taak wordt een eigen geïsoleerd cluster gedraaid.
 

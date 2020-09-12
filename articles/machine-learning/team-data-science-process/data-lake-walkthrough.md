@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48e6d8870baad60c79cf392894db8b71003bb875
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b45cc87c525ab66a3807f71901728e60d086ea74
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276952"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440402"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Schaal bare gegevens wetenschap met Azure Data Lake: een end-to-end-procedure
 In dit scenario ziet u hoe u Azure Data Lake kunt gebruiken om gegevens te verkennen en binaire classificatie taken uit te voeren op basis van een steek proef van de NYC taxi en de ritbedrag-gegevensset om te voors pellen of een tip wordt betaald door een tarief. U wordt begeleid bij de stappen van het [team data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, van data acquisition to model training en vervolgens naar de implementatie van een webservice die het model publiceert.
@@ -34,7 +34,7 @@ Deze technologieën worden in dit scenario gebruikt.
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 De [Microsoft Azure-data Lake](https://azure.microsoft.com/solutions/data-lake/) biedt alle mogelijkheden die nodig zijn om gegevens wetenschappers eenvoudig te maken voor het opslaan van gegevens van elke grootte, vorm en snelheid, en voor het uitvoeren van gegevens verwerking, geavanceerde analyses en machine learning modellen met een hoge schaal baarheid op een rendabele manier.   U betaalt per taak, alleen wanneer er daad werkelijk gegevens worden verwerkt. Azure Data Lake Analytics bevat U-SQL, een taal die de declaratieve aard van SQL combineert met de uitdrukkings kracht van C# om schaal bare gedistribueerde query mogelijkheden te bieden. Hiermee kunt u ongestructureerde gegevens verwerken door schema toe te passen op lezen, aangepaste logica en door de gebruiker gedefinieerde functies (Udf's) in te voeren en uitbreid baarheid te bieden om nauw keurige controle te krijgen over de uitvoering op schaal. Zie [Visual Studio blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)(Engelstalig) voor meer informatie over het ontwerp van filosofie achter U-SQL.
 
-Data Lake Analytics is ook een belang rijk onderdeel van Cortana Analytics Suite en werkt met Azure SQL Data Warehouse, Power BI en Data Factory. Deze combi natie biedt een volledige Cloud big data en een geavanceerd analyse platform.
+Data Lake Analytics is ook een belang rijk onderdeel van Cortana Analytics Suite en werkt met Azure Synapse Analytics, Power BI en Data Factory. Deze combi natie biedt een volledige Cloud big data en een geavanceerd analyse platform.
 
 In dit scenario wordt beschreven hoe u de vereiste onderdelen en resources installeert die nodig zijn voor het uitvoeren van taken voor het proces van gegevens wetenschap. Vervolgens worden de gegevens verwerkings stappen beschreven met U-SQL en wordt geconcludeerd door te laten zien hoe u python en Hive kunt gebruiken met Azure Machine Learning Studio (klassiek) om voorspellende modellen te bouwen en te implementeren.
 
@@ -181,7 +181,7 @@ FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyct
 USING Extractors.Csv();
 ```
 
-Omdat er kopteksten zijn in de eerste rij, moet u de kopteksten verwijderen en de kolom typen wijzigen in de gewenste waarden. U kunt de verwerkte gegevens opslaan op Azure Data Lake Storage met behulp van **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ of naar een Azure Blob Storage-account met **wasb://container_name \@ blob_storage_account_name. blob. core. windows. net/blob_name**.
+Omdat er kopteksten zijn in de eerste rij, moet u de kopteksten verwijderen en de kolom typen wijzigen in de gewenste waarden. U kunt de verwerkte gegevens opslaan op Azure Data Lake Storage met behulp van **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ of naar een Azure Blob Storage-account met  **wasb://container_name \@ blob_storage_account_name. blob. core. windows. net/blob_name**.
 
 ```sql
 // change data types
@@ -587,7 +587,7 @@ Hier bouwt u een binair classificatie model om te voors pellen of een reis wordt
   Y_train_pred = logit_fit.predict(X_train)
   ```
 
-    ![C1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
+    ![c1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
 
 * Gegevensset voor het testen van scores
 
@@ -613,14 +613,14 @@ Hier bouwt u een binair classificatie model om te voors pellen of een reis wordt
   print metrics.confusion_matrix(Y_test,Y_test_pred)
   ```
 
-    ![vind](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
+    ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web Service-API maken en deze gebruiken in python
 U wilt het machine learning model operationeel maken nadat het is gemaakt. Het model voor binaire logistiek wordt hier als voor beeld gebruikt. Zorg ervoor dat de scikit-leer versie op uw lokale computer 0.15.1 is (Azure Machine Learning Studio al ten minste op deze versie).
 
 * Zoek uw werkruimte referenties van Azure Machine Learning Studio (klassieke) instellingen. Klik in azure machine learning Studio op **instellingen**  -->  **naam**  -->  **autorisatie tokens**.
 
-    ![stand](./media/data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
   ```output
   workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -660,7 +660,7 @@ U wilt het machine learning model operationeel maken nadat het is gemaakt. Het m
   NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
   ```
 
-    ![C4](./media/data-lake-walkthrough/c4-call-API.PNG)
+    ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>Optie 2: modellen rechtstreeks in Azure Machine Learning maken en implementeren
 Azure Machine Learning Studio (klassiek) kunnen gegevens rechtstreeks vanuit Azure Data Lake Storage lezen en vervolgens worden gebruikt om modellen te maken en te implementeren. Deze benadering maakt gebruik van een Hive-tabel die verwijst naar de Azure Data Lake Storage. Er moet een afzonderlijk Azure HDInsight-cluster worden ingericht voor de Hive-tabel. 
@@ -756,7 +756,7 @@ Door deze procedure uit te voeren, hebt u een Data Science-omgeving gemaakt voor
 ## <a name="whats-next"></a>Volgende stappen
 Het leer traject voor het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) bevat koppelingen naar onderwerpen waarin elke stap in het geavanceerde analyse proces wordt beschreven. Er zijn een aantal instructies op de pagina met procedures voor [team data Science proces](walkthroughs.md) waarin wordt uitgelegd hoe u resources en services gebruikt in verschillende Predictive Analytics scenario's:
 
-* [Het proces van de team data Science in actie: met behulp van SQL Data Warehouse](sqldw-walkthrough.md)
+* [Het proces van de team data Science in actie: Azure Synapse Analytics gebruiken](sqldw-walkthrough.md)
 * [Het proces van de team data Science in actie: HDInsight Hadoop-clusters gebruiken](hive-walkthrough.md)
 * [Het team data Science process: met behulp van SQL Server](sql-walkthrough.md)
 * [Overzicht van het data Science-proces met behulp van Spark in azure HDInsight](spark-overview.md)

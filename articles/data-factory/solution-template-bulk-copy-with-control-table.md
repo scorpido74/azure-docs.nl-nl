@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629079"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441065"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Bulksgewijs kopiëren van een Data Base met een controle tabel
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Als u gegevens wilt kopiëren van een Data Warehouse in Oracle Server, Netezza, Teradata of SQL Server naar Azure SQL Data Warehouse, moet u enorme hoeveel heden gegevens uit meerdere tabellen laden. Normaal gesp roken moeten de gegevens in elke tabel worden gepartitioneerd, zodat u rijen met meerdere threads parallel vanuit één tabel kunt laden. In dit artikel wordt een sjabloon beschreven voor gebruik in deze scenario's.
+Als u gegevens van een Data Warehouse in Oracle Server, Netezza, Teradata of SQL Server naar Azure Synapse Analytics (voorheen SQL Data Warehouse) wilt kopiëren, moet u enorme hoeveel heden gegevens uit meerdere tabellen laden. Normaal gesp roken moeten de gegevens in elke tabel worden gepartitioneerd, zodat u rijen met meerdere threads parallel vanuit één tabel kunt laden. In dit artikel wordt een sjabloon beschreven voor gebruik in deze scenario's.
 
- >! Opmerking: als u gegevens wilt kopiëren van een klein aantal tabellen met relatief klein gegevens volume naar SQL Data Warehouse, is het efficiënter om het [Azure Data Factory gegevens kopiëren tool](copy-data-tool.md)te gebruiken. De sjabloon die in dit artikel wordt beschreven, is meer dan u nodig hebt voor dat scenario.
+ >! Opmerking Als u gegevens wilt kopiëren van een klein aantal tabellen met relatief klein gegevens volume naar Azure Synapse Analytics, is het efficiënter om de [Azure Data Factory gegevens kopiëren tool](copy-data-tool.md)te gebruiken. De sjabloon die in dit artikel wordt beschreven, is meer dan u nodig hebt voor dat scenario.
 
 ## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
 
@@ -44,7 +44,7 @@ De sjabloon definieert de volgende para meters:
 - *Data_Destination_Container* is het pad naar de hoofdmap waarnaar de gegevens worden gekopieerd in uw doel archief. 
 - *Data_Destination_Directory* het mappad is in de hoofdmap waar de gegevens naar het doel archief worden gekopieerd. 
 
-De laatste drie para meters, waarmee het pad in uw doel archief wordt gedefinieerd, zijn alleen zichtbaar als de bestemming die u kiest, opslag ruimte op basis van bestanden is. Als u ' Azure Synapse Analytics (voorheen SQL DW) ' als doel archief kiest, zijn deze para meters niet vereist. Maar de tabel namen en het schema in SQL Data Warehouse moeten gelijk zijn aan die in de bron database.
+De laatste drie para meters, waarmee het pad in uw doel archief wordt gedefinieerd, zijn alleen zichtbaar als de bestemming die u kiest, opslag ruimte op basis van bestanden is. Als u ' Azure Synapse Analytics (voorheen SQL DW) ' als doel archief kiest, zijn deze para meters niet vereist. Maar de tabel namen en het schema in azure Synapse Analytics moeten gelijk zijn aan die in de bron database.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
@@ -94,7 +94,7 @@ De laatste drie para meters, waarmee het pad in uw doel archief wordt gedefiniee
 
     ![Bekijk het resultaat](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Beschrijving Als u de gegevens bestemming ' Azure Synapse Analytics (voorheen SQL DW) ' hebt gekozen, moet u een verbinding met Azure Blob Storage voor fase ring invoeren, zoals vereist door SQL Data Warehouse poly base. Met de sjabloon wordt automatisch een pad naar een container gegenereerd voor de Blob-opslag. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
+9. Beschrijving Als u de gegevens bestemming ' Azure Synapse Analytics (voorheen SQL DW) ' hebt gekozen, moet u een verbinding met Azure Blob Storage voor fase ring invoeren, zoals vereist door Azure Synapse Analytics poly base. Met de sjabloon wordt automatisch een pad naar een container gegenereerd voor de Blob-opslag. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
     
     ![Poly base-instelling](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

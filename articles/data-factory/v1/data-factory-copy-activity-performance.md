@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196110"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441082"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Copy Activity performance and tuning guide (Gids voor prestaties en configuratie van Activiteit kopiëren)
 
@@ -32,7 +32,7 @@ Azure Data Factory Copy-activiteit levert een eersteklas, veilige, betrouw bare 
 
 Azure biedt een reeks hoogwaardige oplossingen voor gegevens opslag en Data Warehouse, en kopieer activiteiten bieden een zeer geoptimaliseerde ervaring voor het laden van gegevens die eenvoudig te configureren en instellen is. Met slechts één Kopieer activiteit kunt u het volgende doen:
 
-* Gegevens laden in **Azure SQL Data Warehouse** van **1,2 Gbps**. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Gegevens laden in **Azure Synapse Analytics** op **1,2 Gbps**. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics (voorheen SQL Data Warehouse) onder de vijf tien minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 * Gegevens laden in **Azure Blob-opslag** op **1,0 Gbps**
 * Gegevens laden in **Azure data Lake Store** op **1,0 Gbps**
 
@@ -183,9 +183,9 @@ Het is **belang rijk** te weten dat u wordt gefactureerd op basis van de totale 
 ## <a name="staged-copy"></a>Gefaseerde kopie
 Wanneer u gegevens uit een brongegevens archief naar een Sink-gegevens archief kopieert, kunt u ervoor kiezen om Blob-opslag te gebruiken als een tijdelijke faserings opslag. Fase ring is met name handig in de volgende gevallen:
 
-1. **U wilt gegevens uit verschillende gegevens archieven opnemen in SQL Data Warehouse via Poly base**. SQL Data Warehouse gebruikt poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in SQL Data Warehouse te laden. De bron gegevens moeten echter in Blob Storage zijn en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob-opslag, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het laden van gegevens in SQL Data Warehouse. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)voor meer informatie. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+1. **U wilt gegevens uit verschillende gegevens archieven opnemen in azure Synapse Analytics via Poly base**. Azure Synapse Analytics maakt gebruik van poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in azure Synapse Analytics te laden. De bron gegevens moeten echter in Blob Storage zijn en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob-opslag, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het laden van gegevens in azure Synapse Analytics. Zie [poly Base gebruiken om gegevens te laden in azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics)voor meer informatie. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 2. **Soms duurt het even om een hybride gegevens verplaatsing uit te voeren (dat wil zeggen, kopiëren tussen een on-premises gegevens opslag en een gegevens archief in de Cloud) via een trage netwerk verbinding**. U kunt de prestaties verbeteren door de gegevens on-premises te comprimeren, zodat het minder tijd kost om gegevens te verplaatsen naar de faserings gegevens opslag in de Cloud. Vervolgens kunt u de gegevens in het faserings archief decomprimeren voordat u deze laadt in de doel gegevens opslag.
-3. **U wilt geen andere poorten dan poort 80 en poort 443 in uw firewall openen vanwege een bedrijfs beleid**. Wanneer u bijvoorbeeld gegevens kopieert van een on-premises gegevens archief naar een Azure SQL Database sink of een Azure SQL Data Warehouse-sink, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario maakt u gebruik van de gateway om eerst gegevens te kopiëren naar een staging-opslag kopie van een Blob Storage via HTTP of HTTPS op poort 443. Laad vervolgens de gegevens in SQL Database of SQL Data Warehouse vanuit het faseren van de Blob-opslag. In deze stroom hoeft u poort 1433 niet in te scha kelen.
+3. **U wilt geen andere poorten dan poort 80 en poort 443 in uw firewall openen vanwege een bedrijfs beleid**. Wanneer u bijvoorbeeld gegevens kopieert van een on-premises gegevens archief naar een Azure SQL Database sink of een Azure Synapse Analytics-sink, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario maakt u gebruik van de gateway om eerst gegevens te kopiëren naar een staging-opslag kopie van een Blob Storage via HTTP of HTTPS op poort 443. Vervolgens laadt u de gegevens in SQL Database of Azure Synapse Analytics vanuit de fase van het maken van Blob-opslag. In deze stroom hoeft u poort 1433 niet in te scha kelen.
 
 ### <a name="how-staged-copy-works"></a>Hoe gefaseerd kopiëren werkt
 Wanneer u de faserings functie activeert, worden de gegevens eerst van de brongegevens opslag gekopieerd naar de staging-gegevens opslag (neem uw eigen op). Vervolgens worden de gegevens uit de staging-gegevens opslag naar de Sink-gegevens opslag gekopieerd. Data Factory beheert automatisch de twee fase stroom voor u. Data Factory verwijdert ook tijdelijke gegevens uit de staging-opslag nadat de gegevens verplaatsing is voltooid.
@@ -208,7 +208,7 @@ Configureer de instelling **enableStaging** in de Kopieer activiteit om op te ge
 | Eigenschap | Beschrijving | Standaardwaarde | Vereist |
 | --- | --- | --- | --- |
 | **enableStaging** |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |False |No |
-| **linkedServiceName** |Geef de naam op van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt geen opslag gebruiken met een Shared Access Signature voor het laden van gegevens naar SQL Data Warehouse via Poly base. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
+| **linkedServiceName** |Geef de naam op van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt geen opslag gebruiken met een Shared Access Signature om gegevens te laden in azure Synapse Analytics via Poly base. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
 | **programmapad** |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |No |
 | **enableCompression** |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |False |No |
 
@@ -262,12 +262,12 @@ U wordt aangeraden deze stappen uit te voeren om de prestaties van uw Data Facto
      * [Eenheden voor gegevens verplaatsing in de Cloud](#cloud-data-movement-units)
      * [Gefaseerde kopie](#staged-copy)
      * [Schaal baarheid Data Management Gateway](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Data Management Gateway](#considerations-for-data-management-gateway)
+   * [Gegevensbeheergateway](#considerations-for-data-management-gateway)
    * [Bron](#considerations-for-the-source)
    * [Sink](#considerations-for-the-sink)
    * [Serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization)
    * [Compressie](#considerations-for-compression)
-   * [Kolom toewijzing](#considerations-for-column-mapping)
+   * [Toewijzen van kolommen](#considerations-for-column-mapping)
    * [Andere overwegingen](#other-considerations)
 3. **Breid de configuratie uit naar uw volledige gegevensset**. Wanneer u tevreden bent met de resultaten en prestaties van de uitvoering, kunt u de actieve periode van de definitie en pijp lijn uitvouwen om uw hele gegevensset te behandelen.
 
@@ -282,7 +282,7 @@ Zorg ervoor dat de onderliggende gegevens opslag niet wordt overspoeld door ande
 
 Zie voor micro soft-gegevens archieven [onderwerpen bewaken en afstemmen](#performance-reference) die specifiek zijn voor gegevens opslag en Help u inzicht krijgen in de prestatie kenmerken van het gegevens archief, de reactie tijden minimaliseren en de door Voer maximaliseren.
 
-Als u gegevens kopieert van Blob-opslag naar SQL Data Warehouse, kunt u overwegen **poly base** te gebruiken om de prestaties te verbeteren. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Als u gegevens kopieert van Blob-opslag naar Azure Synapse Analytics, kunt u gebruikmaken van **poly base** om de prestaties te verbeteren. Zie [poly Base gebruiken om gegevens te laden in azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) voor meer informatie. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Gegevens archieven op basis van bestanden
 *(Inclusief Blob Storage, Data Lake Store, Amazon S3, on-premises bestands systemen en on-premises HDFS)*
@@ -292,7 +292,7 @@ Als u gegevens kopieert van Blob-opslag naar SQL Data Warehouse, kunt u overwege
 * Zie de sectie [overwegingen voor Data Management Gateway](#considerations-for-data-management-gateway) voor het scenario voor een **on-premises bestands systeem** , waarin **Data Management Gateway** is vereist.
 
 ### <a name="relational-data-stores"></a>Relationele gegevens archieven
-*(Bevat SQL Database; SQL Data Warehouse; Amazon RedShift; SQL Server data bases; en Oracle-, MySQL-, DB2-, Teradata-, Sybase-en PostgreSQL-data bases, enzovoort.)*
+*(Bevat SQL Database; Azure Synapse Analytics; Amazon RedShift; SQL Server data bases; en Oracle-, MySQL-, DB2-, Teradata-, Sybase-en PostgreSQL-data bases, enzovoort.)*
 
 * **Gegevens patroon**: uw tabel schema is van invloed op de door Voer van de Kopieer activiteit. Een grote Rijgrootte biedt betere prestaties dan een kleine Rijgrootte, om dezelfde hoeveelheid gegevens te kopiëren. De reden hiervoor is dat de data base efficiënter minder batches met gegevens kan ophalen die minder rijen bevatten.
 * **Query of opgeslagen procedure**: Optimaliseer de logica van de query of opgeslagen procedure die u opgeeft in de bron van de Kopieer activiteit om gegevens efficiënter op te halen.
@@ -304,7 +304,7 @@ Zorg ervoor dat de onderliggende gegevens opslag niet wordt overspoeld door ande
 
 Raadpleeg voor micro soft-gegevens archieven [onderwerpen over het bewaken en afstemmen](#performance-reference) die specifiek zijn voor gegevens archieven. Deze onderwerpen kunnen u helpen bij het begrijpen van de prestatie kenmerken van het gegevens archief en het minimaliseren van de reactie tijden en het maximaliseren van de door voer.
 
-Als u gegevens kopieert van **Blob-opslag** naar **SQL Data Warehouse**, kunt u overwegen **poly base** te gebruiken om de prestaties te verbeteren. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Als u gegevens kopieert van **Blob-opslag** naar **Azure Synapse Analytics**, kunt u gebruikmaken van **poly base** om de prestaties te verbeteren. Zie [poly Base gebruiken om gegevens te laden in azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) voor meer informatie. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Gegevens archieven op basis van bestanden
 *(Inclusief Blob Storage, Data Lake Store, Amazon S3, on-premises bestands systemen en on-premises HDFS)*
@@ -315,7 +315,7 @@ Als u gegevens kopieert van **Blob-opslag** naar **SQL Data Warehouse**, kunt u 
 * Zie de sectie [overwegingen voor Data Management Gateway](#considerations-for-data-management-gateway) voor **on-premises scenario's voor bestands systemen** waarvoor het gebruik van **Data Management Gateway**is vereist.
 
 ### <a name="relational-data-stores"></a>Relationele gegevens archieven
-*(Inclusief SQL Database, SQL Data Warehouse, SQL Server data bases en Oracle-data bases)*
+*(Omvat SQL Database, Azure Synapse Analytics, SQL Server data bases en Oracle-data bases)*
 
 * **Kopieer gedrag**: afhankelijk van de eigenschappen die u hebt ingesteld voor **sqlSink**, schrijven de Kopieer activiteit gegevens op verschillende manieren naar de doel database.
   * De service voor gegevens verplaatsing maakt standaard gebruik van de API voor bulksgewijs kopiëren om gegevens in de toevoeg modus toe te voegen. Dit biedt de beste prestaties.
@@ -413,13 +413,13 @@ In dit geval kan bzip2 gegevens compressie de volledige pijp lijn vertragen. Als
 
 ![Scenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Naslaginformatie
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 
 * Azure Blob-opslag: [schaal baarheid en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md) en de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../../storage/blobs/storage-performance-checklist.md).
 * Azure-tabel opslag: [schaal baarheid en prestatie doelen voor](../../storage/tables/scalability-targets.md) de [controle lijst voor tabel opslag en prestaties en schaal baarheid voor tabel opslag](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: u kunt [de prestaties bewaken](../../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren
-* Azure SQL Data Warehouse: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's); Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure Synapse Analytics: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's); Zie [reken kracht beheren in azure Synapse Analytics (overzicht)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [prestatie niveaus in azure Cosmos DB](../../cosmos-db/performance-levels.md)
 * On-premises SQL Server: [prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx)
 * On-premises Bestands server: [prestaties afstemmen voor bestands servers](https://msdn.microsoft.com/library/dn567661.aspx)

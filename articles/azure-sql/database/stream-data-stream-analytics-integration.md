@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869861"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437068"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Gegevens streamen naar Azure SQL Database met behulp van Azure Stream Analytics-integratie (preview)
 
@@ -31,7 +31,7 @@ Gebruikers kunnen nu direct vanuit een data base in Azure SQL Database gegevens 
 - Extra gebruiks gemak met voorbeeld gegevens: binnenkomende gegevens van de bron van de gebeurtenissen (Event hub/IoT Hub) in de context van de geselecteerde tabel bekijken
 
 > [!IMPORTANT]
-> Een Azure Stream Analytics-taak kan worden uitgevoerd naar Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Zie [uitvoer](../../stream-analytics/sql-database-output.md)voor meer informatie.
+> Een Azure Stream Analytics-taak kan worden uitgevoerd naar Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics (voorheen SQL Data Warehouse). Zie [uitvoer](../../stream-analytics/stream-analytics-define-outputs.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 

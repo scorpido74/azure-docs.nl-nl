@@ -1,6 +1,6 @@
 ---
 title: SQL Server opgeslagen procedure-activiteit
-description: Meer informatie over het gebruik van de SQL Server opgeslagen procedure activiteit om een opgeslagen procedure in een Azure SQL Database of Azure SQL Data Warehouse van een Data Factory pijp lijn aan te roepen.
+description: Meer informatie over hoe u de SQL Server opgeslagen procedure activiteit kunt gebruiken om een opgeslagen procedure in een Azure SQL Database of Azure Synapse-analyse vanuit een Data Factory-pijp lijn aan te roepen.
 services: data-factory
 documentationcenter: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319081"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441694"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server opgeslagen procedure-activiteit
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -41,13 +41,13 @@ U gebruikt gegevens transformatie activiteiten in een Data Factory- [pijp lijn](
 U kunt de opgeslagen procedure activiteit gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven in uw onderneming of op een virtuele machine van Azure (VM):
 
 - Azure SQL Database
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)
 - SQL Server-Data Base. Als u SQL Server gebruikt, installeert u Data Management Gateway op dezelfde computer die als host fungeert voor de data base of op een afzonderlijke computer die toegang heeft tot de data base. Data Management Gateway is een onderdeel dat gegevens bronnen on-premises/op Azure VM met Cloud Services op een veilige en beheerde manier verbindt. Zie [Data Management Gateway](data-factory-data-management-gateway.md) artikel voor meer informatie.
 
 > [!IMPORTANT]
-> Bij het kopiëren van gegevens naar Azure SQL Database of SQL Server, kunt u de **SqlSink** in Kopieer activiteit configureren om een opgeslagen procedure aan te roepen met behulp van de eigenschap **sqlWriterStoredProcedureName** . Zie voor meer informatie [opgeslagen procedure aanroepen vanuit Kopieer activiteit](data-factory-invoke-stored-procedure-from-copy-activity.md). Zie voor meer informatie over de eigenschap de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Het aanroepen van een opgeslagen procedure bij het kopiëren van gegevens naar een Azure SQL Data Warehouse met behulp van een Kopieer activiteit, wordt niet ondersteund. Maar u kunt de opgeslagen procedure activiteit gebruiken om een opgeslagen procedure in een SQL Data Warehouse aan te roepen.
+> Bij het kopiëren van gegevens naar Azure SQL Database of SQL Server, kunt u de **SqlSink** in Kopieer activiteit configureren om een opgeslagen procedure aan te roepen met behulp van de eigenschap **sqlWriterStoredProcedureName** . Zie voor meer informatie [opgeslagen procedure aanroepen vanuit Kopieer activiteit](data-factory-invoke-stored-procedure-from-copy-activity.md). Zie voor meer informatie over de eigenschap de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Het aanroepen van een opgeslagen procedure bij het kopiëren van gegevens naar Azure Synapse Analytics met behulp van een Kopieer activiteit wordt niet ondersteund. Maar u kunt de opgeslagen procedure-activiteit gebruiken om een opgeslagen procedure in azure Synapse Analytics aan te roepen.
 >
-> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure SQL Data Warehouse, kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) voor meer informatie
+> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure Synapse Analytics kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie voor meer informatie de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 In de volgende procedure wordt gebruikgemaakt van de opgeslagen procedure-activiteit in een pijp lijn om een opgeslagen procedure in Azure SQL Database aan te roepen.
 
@@ -70,7 +70,7 @@ In de volgende procedure wordt gebruikgemaakt van de opgeslagen procedure-activi
     
     ![Voorbeeldgegevens](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    In dit voor beeld bevindt de opgeslagen procedure zich in een Azure SQL Database. Als de opgeslagen procedure zich in een Azure SQL Data Warehouse-en SQL Server-Data Base bevindt, is de benadering vergelijkbaar. Voor een SQL Server-Data Base moet u een [Data Management Gateway](data-factory-data-management-gateway.md)installeren.
+    In dit voor beeld bevindt de opgeslagen procedure zich in een Azure SQL Database. Als de opgeslagen procedure zich in azure Synapse Analytics en SQL Server Data Base bevindt, is de benadering vergelijkbaar. Voor een SQL Server-Data Base moet u een [Data Management Gateway](data-factory-data-management-gateway.md)installeren.
 2. Maak de volgende **opgeslagen procedure** waarmee gegevens worden ingevoegd in de **sampletable**.
 
     ```SQL
@@ -90,10 +90,10 @@ In de volgende procedure wordt gebruikgemaakt van de opgeslagen procedure-activi
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **Nieuw** in het menu links, klik op **Intelligence en analytische**gegevens en klik op **Data Factory**.
 
-    ![Nieuwe data factory](media/data-factory-stored-proc-activity/new-data-factory.png)
+    ![Nieuw data factory 1](media/data-factory-stored-proc-activity/new-data-factory.png)
 3. Voer op de Blade **nieuw Data Factory** **SProcDF** in als naam. Azure Data Factory namen zijn **wereld wijd uniek**. U moet de naam van de data factory met uw naam als voor voegsel instellen, zodat de fabriek kan worden gemaakt.
 
-   ![Nieuwe data factory](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
+   ![Nieuw data factory 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. Selecteer uw **Azure-abonnement**.
 5. Voer een van de volgende stappen uit voor de **resource groep**:
    1. Klik op **Nieuw maken** en voer een naam in voor de resource groep.
@@ -111,7 +111,7 @@ Nadat u de data factory hebt gemaakt, maakt u een gekoppelde Azure SQL-service w
 1. Klik op de Blade **Data Factory** op **ontwerpen en implementeren** voor **SProcDF** om de Data Factory editor te starten.
 2. Klik op **Nieuw gegevens archief** op de opdracht balk en kies **Azure SQL database**. U ziet het JSON-script voor het maken van een gekoppelde Azure SQL-service in de editor.
 
-   ![Nieuwe gegevens opslag](media/data-factory-stored-proc-activity/new-data-store.png)
+   ![Nieuwe gegevens opslag 1](media/data-factory-stored-proc-activity/new-data-store.png)
 3. Breng de volgende wijzigingen aan in het JSON-script:
 
    1. Vervang door `<servername>` de naam van uw server.
@@ -119,17 +119,17 @@ Nadat u de data factory hebt gemaakt, maakt u een gekoppelde Azure SQL-service w
    3. Vervang door `<username@servername>` het gebruikers account dat toegang heeft tot de data base.
    4. Vervang door `<password>` het wacht woord voor het gebruikers account.
 
-      ![Nieuwe gegevens opslag](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
+      ![Nieuwe gegevens opslag 2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
 4. Klik op **implementeren** op de opdracht balk om de gekoppelde service te implementeren. Controleer of de AzureSqlLinkedService in de structuur weergave aan de linkerkant wordt weer gegeven.
 
-    ![structuur weergave met gekoppelde service](media/data-factory-stored-proc-activity/tree-view.png)
+    ![structuur weergave met gekoppelde service 1](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>Een uitvoergegevensset maken
-U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure activiteit, zelfs als de opgeslagen procedure geen gegevens produceert. Dat komt doordat het de uitvoer gegevensset is die de planning van de activiteit bewaart (hoe vaak de activiteit wordt uitgevoerd-per uur, dagelijks, enzovoort). De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of een Azure SQL Data Warehouse of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door een andere activiteit (het[koppelen van activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) in de pijp lijn) door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset** zijn (een gegevensset die verwijst naar een tabel die geen uitvoer van de opgeslagen procedure bevat). Deze dummy-gegevensset wordt alleen gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit.
+U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure activiteit, zelfs als de opgeslagen procedure geen gegevens produceert. Dat komt doordat het de uitvoer gegevensset is die de planning van de activiteit bewaart (hoe vaak de activiteit wordt uitgevoerd-per uur, dagelijks, enzovoort). De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of Azure Synapse Analytics of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door een andere activiteit (het[koppelen van activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) in de pijp lijn) door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset** zijn (een gegevensset die verwijst naar een tabel die geen uitvoer van de opgeslagen procedure bevat). Deze dummy-gegevensset wordt alleen gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit.
 
 1. Klik op **... Meer** op de werk balk, klikt u op **nieuwe gegevensset**en klikt u op **Azure SQL**. **Nieuwe gegevensset** op de opdracht balk en selecteer **Azure SQL**.
 
-    ![structuur weergave met gekoppelde service](media/data-factory-stored-proc-activity/new-dataset.png)
+    ![structuur weergave met gekoppelde service 2](media/data-factory-stored-proc-activity/new-dataset.png)
 2. Kopieer/plak het volgende JSON-script in de JSON-editor.
 
     ```JSON
@@ -200,13 +200,13 @@ Let op de volgende eigenschappen:
 ### <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 1. Klik op **X** om de blades van de Data Factory-editor te sluiten en om terug te keren naar de Data Factory-blade. Klik op **Diagram**.
 
-    ![diagram tegel](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. In de **diagram weergave**ziet u een overzicht van de pijp lijnen en gegevens sets die in deze zelf studie worden gebruikt.
+    ![diagram tegel 1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+2. In de **diagramweergave** ziet u een overzicht van de pijplijnen en gegevenssets die voor deze zelfstudie worden gebruikt.
 
-    ![diagram tegel](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    ![diagram tegel 2](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. Dubbel klik in de diagram weergave op de gegevensset `sprocsampleout` . U ziet de segmenten met de status gereed. Er moeten vijf segmenten zijn omdat er een segment wordt geproduceerd voor elk uur tussen de begin-en eind tijd van de JSON.
 
-    ![diagram tegel](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    ![diagram Tegel 3](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. Wanneer een segment de status **gereed** heeft, voert u een query uit op `select * from sampletable` de-data base om te controleren of de gegevens in de tabel zijn ingevoegd door de opgeslagen procedure.
 
    ![Uitvoergegevens](./media/data-factory-stored-proc-activity/output.png)
@@ -277,7 +277,7 @@ Op dezelfde manier geeft u de uitvoer gegevensset van de opgeslagen procedure ac
 > [!IMPORTANT]
 > Bij het kopiëren van gegevens naar Azure SQL Database of SQL Server, kunt u de **SqlSink** in Kopieer activiteit configureren om een opgeslagen procedure aan te roepen met behulp van de eigenschap **sqlWriterStoredProcedureName** . Zie voor meer informatie [opgeslagen procedure aanroepen vanuit Kopieer activiteit](data-factory-invoke-stored-procedure-from-copy-activity.md). Voor meer informatie over de eigenschap raadpleegt u de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 > 
-> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure SQL Data Warehouse, kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) voor meer informatie
+> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure Synapse Analytics kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie voor meer informatie de volgende connector artikelen: [Azure SQL database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 ## <a name="json-format"></a>JSON-indeling
 Dit is de JSON-indeling voor het definiëren van een opgeslagen procedure activiteit:
@@ -309,8 +309,8 @@ In de volgende tabel worden deze JSON-eigenschappen beschreven:
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
 | type | Moet worden ingesteld op: **SqlServerStoredProcedure** | Yes |
 | invoer | Optioneel. Als u een invoer-gegevensset opgeeft, moet deze beschikbaar zijn (in de status gereed) voor het uitvoeren van de opgeslagen procedure activiteit. De invoer gegevensset kan niet worden gebruikt in de opgeslagen procedure als een para meter. Het wordt alleen gebruikt voor het controleren van de afhankelijkheid voordat de opgeslagen procedure activiteit wordt gestart. |No |
-| uitvoer | U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure-activiteit. Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). <br/><br/>De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of een Azure SQL Data Warehouse of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. <br/><br/>De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door een andere activiteit (het[koppelen van activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) in de pijp lijn) door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. <br/><br/>In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit. |Yes |
-| storedProcedureName |Geef de naam op van de opgeslagen procedure in Azure SQL Database, Azure SQL Data Warehouse of SQL Server die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Yes |
+| uitvoer | U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure-activiteit. Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). <br/><br/>De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of Azure Synapse Analytics of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. <br/><br/>De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door een andere activiteit (het[koppelen van activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) in de pijp lijn) door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. <br/><br/>In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit. |Yes |
+| storedProcedureName |Geef de naam op van de opgeslagen procedure in Azure SQL Database, Azure Synapse Analytics of SQL Server die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Yes |
 | storedProcedureParameters |Geef waarden op voor opgeslagen procedure parameters. Als u null moet door geven voor een para meter, gebruikt u de syntaxis: "param1": Null (alle kleine letters). Raadpleeg het volgende voor beeld voor meer informatie over het gebruik van deze eigenschap. |No |
 
 ## <a name="passing-a-static-value"></a>Een statische waarde door geven

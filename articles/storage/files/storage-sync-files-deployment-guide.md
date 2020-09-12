@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226040"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441473"
 ---
-# <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
+# <a name="deploy-azure-file-sync"></a>Azure File Sync implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
 
 We raden u ten zeerste [aan de planning voor een Azure files-implementatie](storage-files-planning.md) te lezen en te [plannen voor een Azure file sync-implementatie](storage-sync-files-planning.md) voordat u de stappen in dit artikel uitvoert.
@@ -404,6 +404,9 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ## <a name="create-a-server-endpoint"></a>Servereindpunt maken
 Een servereindpunt representeert een bepaalde locatie op een geregistreerde server, bijvoorbeeld een map op een servervolume. Een server eindpunt moet een pad op een geregistreerde server zijn (in plaats van een gekoppelde share). Als u Cloud lagen wilt gebruiken, moet het pad zich op een niet-systeem volume bevinden. Network Attached Storage (NAS) wordt niet ondersteund.
 
+> [!NOTE]
+> Het wijzigen van het pad of de stationsletter nadat u een server eindpunt op een volume hebt ingesteld, wordt niet ondersteund. Zorg ervoor dat u een laatste pad op de geregistreerde server gebruikt.
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Als u een server eindpunt wilt toevoegen, gaat u naar de zojuist gemaakte synchronisatie groep en selecteert u vervolgens **Server eindpunt toevoegen**.
 
@@ -571,7 +574,7 @@ Als u de planning echter zodanig wijzigt dat er een beschik bare moment opname i
 
 Het standaard maximum aantal VSS-moment opnamen per volume (64) en het standaard schema dat u wilt nemen, resulteert in een maximum van 45 dagen van vorige versies waarvan een informatie medewerker kan herstellen, afhankelijk van het aantal VSS-moment opnamen dat u op uw volume kunt opslaan.
 
-Als Max. 64 VSS-moment opnamen per volume niet de juiste instelling voor u zijn. u kunt [deze waarde wijzigen via een register sleutel](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Als Max. 64 VSS-moment opnamen per volume niet de juiste instelling voor u zijn, kunt u [deze waarde wijzigen via een register sleutel](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Om de nieuwe limiet van kracht te laten worden, moet u de cmdlet opnieuw uitvoeren om de compatibiliteit van eerdere versies in te scha kelen op elk volume waarop deze eerder was ingeschakeld, met de vlag-Force om het nieuwe maximum aantal VSS-moment opnamen per volume in rekening te brengen. Dit leidt tot een nieuw berekend aantal compatibele dagen. Houd er rekening mee dat deze wijziging alleen van kracht wordt op nieuwe gelaagde bestanden en eventuele aanpassingen van de VSS-planning die u hebt aangebracht, worden overschreven.
 
 <a id="proactive-recall"></a>

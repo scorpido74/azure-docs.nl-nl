@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707290"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441626"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Herhaal bare kopie in Azure Data Factory
 
@@ -104,7 +104,7 @@ De Kopieer activiteit heeft het opschoon script uitgevoerd om de bijbehorende ge
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanisme 2: sliceIdentifierColumnName gebruiken
 > [!IMPORTANT]
-> SliceIdentifierColumnName wordt momenteel niet ondersteund voor Azure SQL Data Warehouse. 
+> SliceIdentifierColumnName wordt momenteel niet ondersteund voor Azure Synapse Analytics (voorheen SQL Data Warehouse). 
 
 Het tweede mechanisme om Herhaal baarheid te bereiken, is door een toegewezen kolom (sliceIdentifierColumnName) te hebben in de doel tabel. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en het doel gesynchroniseerd blijven. Deze aanpak werkt als er flexibiliteit is bij het wijzigen of definiëren van het doel-SQL-tabel schema. 
 
@@ -151,5 +151,5 @@ Net als bij mechanisme 1 worden met de Kopieer activiteit automatisch de gegeven
 Bekijk de volgende connector artikelen voor volledige JSON-voor beelden: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

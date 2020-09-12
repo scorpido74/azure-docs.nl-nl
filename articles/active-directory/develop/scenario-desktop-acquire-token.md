@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141292"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440929"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -38,7 +38,7 @@ De Web-API wordt gedefinieerd door de `scopes` . Ongeacht de ervaring die u in u
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
-                                            // if the app manages is at most one account  
+                                            // if the app manages is at most one account
 try
 {
  result = await app.AcquireTokenSilent(scopes, account)
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Verplichte para meters
 
-`AcquireTokenInteractive` heeft slechts één verplichte para meter, ``scopes`` die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunnen de vereiste bereiken worden gevonden in de API-verwijzing van elke Microsoft Graph-API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Zie [Microsoft Graph permissions Reference](/graph/permissions-reference)(Engelstalig) voor meer informatie.
+`AcquireTokenInteractive` heeft slechts één verplichte para meter, ``scopes`` die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunnen de vereiste bereiken worden gevonden in de API-verwijzing van elke Microsoft Graph-API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Raadpleeg [Microsoft Graph-machtigingen](/graph/permissions-reference) voor meer informatie.
 
 Op Android moet u ook de bovenliggende activiteit opgeven met behulp van `.WithParentActivityOrWindow` , zoals wordt weer gegeven, zodat het token wordt teruggestuurd naar de bovenliggende activiteit na de interactie. Als u deze niet opgeeft, wordt er een uitzonde ring gegenereerd bij het aanroepen van `.ExecuteAsync()` .
 
@@ -370,7 +370,7 @@ if accounts:
 if not result:
     result = app.acquire_token_by_authorization_code(
          request.args['code'],
-         scopes=config["scope"])    
+         scopes=config["scope"])
 
 ```
 
@@ -433,7 +433,7 @@ Als u zich wilt aanmelden voor een domein gebruiker op een domein of Azure AD-co
   - Of de Tenant beheerder moet eerder toestemming hebben gegeven voor alle gebruikers in de Tenant om de toepassing te gebruiken.
   - Met andere woorden:
     - U bent als ontwikkelaar geselecteerd voor de **toekennings** knop in de Azure Portal.
-    - Of een Tenant beheerder heeft de knop **toestemming geven/ingetrokken beheerder voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de registratie voor de toepassing. Zie [machtigingen voor toegang tot Web-Api's toevoegen](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
+    - Of een Tenant beheerder heeft de knop **toestemming geven/ingetrokken beheerder voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de registratie voor de toepassing. Zie [machtigingen toevoegen voor toegang tot uw web-API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)voor meer informatie.
     - Of u hebt een manier gegeven waarop gebruikers toestemming kunnen geven voor de toepassing. Zie [aanvragen van individuele gebruikers toestemming](./v2-permissions-and-consent.md#requesting-individual-user-consent)voor meer informatie.
     - Of u hebt een manier gegeven waarop de Tenant beheerder toestemming kan geven voor de toepassing. Zie toestemming van de [beheerder](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)voor meer informatie.
 
@@ -978,7 +978,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
         // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
-    }         
+    }
 }
 
 private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043509"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437391"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-app met één Tenant
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ SaaS-toepassingen met meerdere tenants hebben doorgaans een grote hoeveelheid Te
 
 Het is eenvoudig om toegang te krijgen tot gegevens voor alle tenants wanneer alle gegevens zich in slechts één multi tenant-data base bevinden. Maar de toegang is complexer wanneer deze op schaal wordt gedistribueerd over mogelijk duizenden data bases. Een manier om de complexiteit te beheersen en om de impact van analyse query's op transactionele gegevens te minimaliseren, is het extra heren van gegevens in een Data Base die is ontworpen voor analyse, of Data Warehouse.
 
-In deze zelf studie wordt een volledig analyse scenario voor Wingtip tickets SaaS-toepassing weer gegeven. Eerst worden *elastische taken* gebruikt om gegevens uit elke Tenant database op te halen en te laden in faserings tabellen in een analytische opslag. Het analyse archief kan een SQL Database of een SQL Data Warehouse zijn. Voor grootschalige gegevens extractie wordt [Azure Data Factory](../../data-factory/introduction.md) aanbevolen.
+In deze zelf studie wordt een volledig analyse scenario voor Wingtip tickets SaaS-toepassing weer gegeven. Eerst worden *elastische taken* gebruikt om gegevens uit elke Tenant database op te halen en te laden in faserings tabellen in een analytische opslag. Het analyse archief kan een SQL Database of een SQL-groep zijn. Voor grootschalige gegevens extractie wordt [Azure Data Factory](../../data-factory/introduction.md) aanbevolen.
 
 Vervolgens worden de geaggregeerde gegevens omgezet in een set [ster-schema](https://www.wikipedia.org/wiki/Star_schema) tabellen. De tabellen bestaan uit een centrale feiten tabel plus gerelateerde dimensie tabellen.  Voor Wingtip-tickets:
 
@@ -175,7 +175,7 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinden**.  
+5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinding maken**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

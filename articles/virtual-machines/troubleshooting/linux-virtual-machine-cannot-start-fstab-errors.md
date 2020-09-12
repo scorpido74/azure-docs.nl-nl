@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509049"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441660"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Problemen met het starten van Linux VM oplossen vanwege fstab-fouten
 
@@ -107,7 +107,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
 ### <a name="using-single-user-mode"></a>Modus voor één gebruiker gebruiken
 
 1. Maak verbinding met [de seriële console](./serial-console-linux.md).
-2. Seriële console gebruiken om de [modus voor één](../linux/serial-console-grub-single-user-mode.md) gebruiker in de modus voor één gebruiker in te voeren
+2. Seriële console gebruiken om de [modus voor één](serial-console-grub-single-user-mode.md) gebruiker in de modus voor één gebruiker in te voeren
 3. Zodra de VM is opgestart in de modus voor één gebruiker. Gebruik uw favoriete tekst editor om het fstab-bestand te openen. 
 
    ```
@@ -119,7 +119,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
    > [!Note]
    > * De velden op elke regel worden gescheiden door tabs of spaties. Lege regels worden genegeerd. Regels met een hekje (#) als het eerste teken zijn opmerkingen. Commentaar regels kunnen in het fstab-bestand blijven, maar ze worden niet verwerkt. We raden u aan om fstab regels te controleren die u niet weet in plaats van de regels te verwijderen.
    > * Als de virtuele machine moet worden hersteld en gestart, moeten de bestandssysteem partities de enige vereiste partities zijn. De virtuele machine kan toepassings fouten ondervinden over extra opmerkingen met een opmerking. De virtuele machine moet echter worden gestart zonder de extra partities. U kunt later opmerkingen toevoegen aan alle opmerkingen regels.
-   > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * Als u de UUID van het bestands systeem wilt bepalen, voert u de opdracht blkid uit. Voer de man blkid opdracht uit voor meer informatie over de syntaxis.
    > * De niet-werkende optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer het bestands systeem niet aanwezig is bij het opstarten. We raden u aan de optie niet in het fstab-bestand te gebruiken om het opstarten van de computer te laten door gaan nadat er fouten zijn opgetreden in partities die niet vereist zijn voor het starten van de VM.
 
@@ -172,7 +172,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
    > [!Note]
    > * De velden op elke regel worden gescheiden door tabs of spaties. Lege regels worden genegeerd. Regels met een hekje (#) als het eerste teken zijn opmerkingen. Commentaar regels kunnen in het fstab-bestand blijven, maar ze worden niet verwerkt. We raden u aan om fstab regels te controleren die u niet weet in plaats van de regels te verwijderen.
    > * Als de virtuele machine moet worden hersteld en gestart, moeten de bestandssysteem partities de enige vereiste partities zijn. De virtuele machine kan toepassings fouten ondervinden over extra opmerkingen met een opmerking. De virtuele machine moet echter worden gestart zonder de extra partities. U kunt later opmerkingen toevoegen aan alle opmerkingen regels.
-   > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * Als u de UUID van het bestands systeem wilt bepalen, voert u de opdracht blkid uit. Voer de man blkid opdracht uit voor meer informatie over de syntaxis.
    > * De niet-werkende optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer het bestands systeem niet aanwezig is bij het opstarten. We raden u aan de optie niet in het fstab-bestand te gebruiken om het opstarten van de computer te laten door gaan nadat er fouten zijn opgetreden in partities die niet vereist zijn voor het starten van de VM.
 
@@ -216,7 +216,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
    > [!Note]
    > * De velden op elke regel worden gescheiden door tabs of spaties. Lege regels worden genegeerd. Regels met een hekje (#) als het eerste teken zijn opmerkingen. Commentaar regels kunnen in het fstab-bestand blijven, maar ze worden niet verwerkt. We raden u aan om fstab regels te controleren die u niet weet in plaats van de regels te verwijderen.
    > * Als de virtuele machine moet worden hersteld en gestart, moeten de bestandssysteem partities de enige vereiste partities zijn. De virtuele machine kan toepassings fouten ondervinden over extra opmerkingen met een opmerking. De virtuele machine moet echter worden gestart zonder de extra partities. U kunt later opmerkingen toevoegen aan alle opmerkingen regels.
-   > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
    > * Als u de UUID van het bestands systeem wilt bepalen, voert u de opdracht blkid uit. Voer de man blkid opdracht uit voor meer informatie over de syntaxis. U ziet dat de schijf die u wilt herstellen, nu is gekoppeld op een nieuwe virtuele machine. Hoewel de UUID consistent moeten zijn, verschillen de partitie-Id's van de apparaten (bijvoorbeeld '/dev/sda1 ') op deze VM. De bestandssysteem partities van de oorspronkelijke beschadigde virtuele machine die zich op een niet-systeem-VHD bevinden, zijn niet beschikbaar voor de Recovery-VM [met behulp van CLI-opdrachten](./troubleshoot-recovery-disks-linux.md).
    > * De niet-werkende optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer het bestands systeem niet aanwezig is bij het opstarten. We raden u aan de optie niet in het fstab-bestand te gebruiken om het opstarten van de computer te laten door gaan nadat er fouten zijn opgetreden in partities die niet vereist zijn voor het starten van de VM.
 
@@ -235,7 +235,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
 13. Nadat u de virtuele machine opnieuw hebt gemaakt en u er verbinding mee kunt maken via SSH, voert u de volgende acties uit:
     * Bekijk de fstab-regels die tijdens het herstel zijn gewijzigd of waarvoor een opmerking is opgetreden.
     * Zorg ervoor dat u de UUID gebruikt en dat u de optie geen juiste hebt.
-    * Test eventuele wijzigingen in fstab voordat u de virtuele machine opnieuw opstart. Gebruik hiervoor de volgende opdracht:``$ sudo mount -a``
+    * Test eventuele wijzigingen in fstab voordat u de virtuele machine opnieuw opstart. Gebruik hiervoor de volgende opdracht: ``$ sudo mount -a``
     * Maak een extra kopie van het gecorrigeerde fstab-bestand voor gebruik in toekomstige herstel scenario's.
 
 ## <a name="next-steps"></a>Volgende stappen

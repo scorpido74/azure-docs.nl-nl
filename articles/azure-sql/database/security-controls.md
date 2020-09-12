@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eec032ad56d00778627fc147761f61c03ba8bafd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668420"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442085"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>Beveiligings controles voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Verificatie| Yes | Azure Active Directory (Azure AD) |
 | Autorisatie| Yes | Geen |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Notities |
 |---|---|--|
@@ -69,7 +69,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Beveiligings beheer | Ja/Nee | Notities|
 |---|---|--|
 | Preventieve: evaluatie van beveiligings problemen | Yes | Zie [SQL-evaluatie service voor beveiligings problemen helpt u bij het identificeren van een database kwets](sql-vulnerability-assessment.md)baarheid. |
-| Preventief: gegevens detectie en-classificatie  | Yes | Zie [Azure SQL database en SQL Data Warehouse gegevens detectie & classificatie](data-discovery-and-classification-overview.md). |
+| Preventief: gegevens detectie en-classificatie  | Yes | Zie [Azure SQL database en de classificatie van Azure Synapse Analytics-gegevens detectie &](data-discovery-and-classification-overview.md). |
 | Detectie: detectie van bedreigingen | Yes | Zie [Advanced Threat Protection voor Azure SQL database](threat-detection-overview.md). |
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,6 +1,6 @@
 ---
 title: Data Management Gateway voor Data Factory
-description: Stel een gegevens gateway in om gegevens te verplaatsen tussen on-premises en de Cloud. Gebruik Data Management Gateway in Azure Data Factory om uw gegevens te verplaatsen.
+description: Gebruik Data Management Gateway in Azure Data Factory om uw gegevens te verplaatsen.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087075"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441116"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
 > [!NOTE]
@@ -121,7 +121,7 @@ Als u een gateway wilt maken in de portal en de sleutel wilt ophalen op de pagin
     ![Download koppeling in de portal](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
 4. Klik op de pagina **configureren** op **sleutel opnieuw maken**. Klik op Ja in het waarschuwings bericht nadat u het zorgvuldig hebt gelezen.
 
-    ![Sleutel opnieuw maken](media/data-factory-data-management-gateway/recreate-key-button.png)
+    ![Knop sleutel opnieuw maken](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Klik op de knop kopiëren naast de sleutel. De sleutel wordt gekopieerd naar het klem bord.
 
     ![Sleutel kopiëren](media/data-factory-data-management-gateway/copy-gateway-key.png)
@@ -140,7 +140,7 @@ Er zijn twee firewalls die u moet overwegen: **bedrijfs firewall** die wordt uit
 
 Op het niveau van de bedrijfs firewall moet u de volgende domeinen en uitgaande poorten configureren:
 
-| Domeinnamen | Poorten | Description |
+| Domeinnamen | Poorten | Beschrijving |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Wordt gebruikt voor communicatie met de back-end van de service voor gegevens verplaatsing |
 | *.core.windows.net |443 |Gebruikt voor gefaseerde kopie met behulp van Azure-Blob (indien geconfigureerd)|
@@ -150,15 +150,15 @@ Op het niveau van de bedrijfs firewall moet u de volgende domeinen en uitgaande 
 Op het niveau van Windows Firewall worden deze uitgaande poorten normaal gesp roken ingeschakeld. Als dat niet het geval is, kunt u de domeinen en poorten dienovereenkomstig configureren op de gateway computer.
 
 > [!NOTE]
-> 1. Op basis van uw bron/sinks moet u mogelijk extra domeinen en uitgaande poorten in uw bedrijfs-white list of Windows Firewall.
-> 2. Voor sommige Cloud databases (bijvoorbeeld [Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)enzovoort), moet u het IP-adres van de gateway computer mogelijk white list in de firewall configuratie.
+> 1. Op basis van uw bron/sinks moet u mogelijk extra domeinen en uitgaande poorten in uw bedrijfs-of Windows-Firewall toestaan.
+> 2. Voor sommige Cloud databases (bijvoorbeeld [Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)enzovoort), moet u het IP-adres van de gateway computer in de firewall configuratie mogelijk toestaan.
 >
 >
 
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Gegevens uit een brongegevens archief naar een Sink-gegevens archief kopiëren
 Zorg ervoor dat de firewall regels correct zijn ingeschakeld op de firewall van het bedrijf, Windows Firewall op de gateway computer en het gegevens archief zelf. Als u deze regels inschakelt, kan de gateway verbinding maken met zowel de bron-als de sink. Schakel regels in voor elk gegevens archief dat is betrokken bij de Kopieer bewerking.
 
-Als u bijvoorbeeld wilt kopiëren van **een on-premises gegevens archief naar een Azure SQL database sink of een Azure SQL Data Warehouse Sink**, voert u de volgende stappen uit:
+Als u bijvoorbeeld wilt kopiëren van **een on-premises gegevens archief naar een Azure SQL database sink of een Azure Synapse Analytics-Sink (voorheen SQL Data Warehouse)**, voert u de volgende stappen uit:
 
 * Uitgaande **TCP** -communicatie toestaan op poort **1433** voor zowel Windows Firewall als bedrijfs firewall.
 * Configureer de firewall instellingen van de logische SQL-Server om het IP-adres van de gateway computer toe te voegen aan de lijst met toegestane IP-adressen.
@@ -175,7 +175,7 @@ Als uw bedrijfs netwerk omgeving gebruikmaakt van een proxy server voor toegang 
 
 De gateway maakt gebruik van de proxy server om verbinding te maken met de Cloud service. Klik op de koppeling **wijzigen** tijdens de eerste installatie. U ziet het dialoog venster **proxy-instelling** .
 
-![Proxy instellen met behulp van Configuration Manager](media/data-factory-data-management-gateway/SetProxySettings.png)
+![Proxy instellen met behulp van Configuration Manager 1](media/data-factory-data-management-gateway/SetProxySettings.png)
 
 Er zijn drie configuratie opties:
 
@@ -194,7 +194,7 @@ Nadat de registratie van de gateway is voltooid, gebruikt u Data Management Gate
 
 U kunt de HTTP-proxy bekijken en bijwerken met behulp van Configuration Manager-hulp programma.
 
-![Proxy instellen met behulp van Configuration Manager](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+![Proxy instellen met behulp van Configuration Manager 2](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
 
 > [!NOTE]
 > Als u een proxy server met NTLM-verificatie instelt, wordt de host-service van de gateway uitgevoerd onder het domein account. Als u het wacht woord voor het domein account later wijzigt, vergeet dan niet om de configuratie-instellingen voor de service bij te werken en deze vervolgens dienovereenkomstig opnieuw op te starten. Vanwege deze vereiste raden we u aan een speciaal domein account te gebruiken voor toegang tot de proxy server waarvoor u het wacht woord regel matig niet hoeft bij te werken.
@@ -233,13 +233,13 @@ Als u de instelling **systeem proxy gebruiken** voor de http-proxy selecteert, g
 > [!IMPORTANT]
 > Vergeet niet om **zowel** diahost.exe.config als diawp.exe.config bij te werken.
 
-Naast deze punten moet u er ook voor zorgen dat Microsoft Azure zich in de white list van uw bedrijf bevindt. U kunt de lijst met geldige IP-adressen van Microsoft Azure downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=41653).
+Naast deze punten moet u er ook voor zorgen dat Microsoft Azure zich in de lijst met toegestane bedrijfs namen bevindt. U kunt de lijst met geldige IP-adressen van Microsoft Azure downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mogelijke symptomen voor problemen met de firewall en de proxy server
 Als er fouten optreden die vergelijkbaar zijn met de volgende, wordt waarschijnlijk een onjuiste configuratie van de firewall of proxy server gegeven, waardoor de gateway geen verbinding kan maken met Data Factory om zichzelf te verifiëren. Raadpleeg de vorige sectie om te controleren of uw firewall en proxy server correct zijn geconfigureerd.
 
 1. Wanneer u de gateway probeert te registreren, wordt het volgende fout bericht weer gegeven: "kan de gateway sleutel niet registreren. Voordat u probeert de gateway sleutel opnieuw te registreren, controleert u of de Data Management Gateway is verbonden en of de Data Management Gateway host-service is gestart.
-2. Wanneer u Configuration Manager opent, ziet u de status ' losgekoppelded ' of ' verbinding maken '. Bij het weer geven van Windows-gebeurtenis logboeken, onder Logboeken >-logboeken van toepassingen en services > Data Management Gateway, worden fout berichten weer gegeven, zoals de volgende fout:`Unable to connect to the remote server`
+2. Wanneer u Configuration Manager opent, ziet u de status ' losgekoppelded ' of ' verbinding maken '. Bij het weer geven van Windows-gebeurtenis logboeken, onder Logboeken >-logboeken van toepassingen en services > Data Management Gateway, worden fout berichten weer gegeven, zoals de volgende fout: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Open poort 8050 voor referentie versleuteling
@@ -425,7 +425,7 @@ In deze sectie worden de stappen beschreven voor het verplaatsen van de Gateway-
     ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. Klik op de pagina **configureren** in de portal op **sleutel opnieuw maken** op de opdracht balk en klik op **Ja** voor het waarschuwings bericht. Klik op de **knop kopiëren** naast de sleutel tekst die de sleutel naar het klem bord kopieert. De gateway op de oude computer werkt niet meer nadat u de sleutel opnieuw hebt gemaakt.
 
-    ![Sleutel opnieuw maken](./media/data-factory-data-management-gateway/RecreateKey.png)
+    ![Sleutel 2 opnieuw maken](./media/data-factory-data-management-gateway/RecreateKey.png)
 7. Plak de **sleutel** in het tekstvak op de pagina **REGI Steren** van de **Data Management Gateway Configuration Manager** op uw computer. Beschrijving Klik op **Gateway sleutel weer geven** selectie vakje om de sleutel tekst weer te geven.
 
     ![Sleutel kopiëren en registreren](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)

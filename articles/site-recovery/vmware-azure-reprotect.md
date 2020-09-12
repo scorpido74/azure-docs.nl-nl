@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292780"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441490"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Opnieuw beveiligen van Azure naar on-premises
 
@@ -46,6 +46,9 @@ Schakel replicatie in. U kunt specifieke Vm's of een herstel plan opnieuw beveil
 
 - Als u een herstel plan opnieuw beveiligt, moet u de waarden voor elke beveiligde machine opgeven.
 - Als Vm's deel uitmaken van een replicatie groep voor consistentie tussen meerdere VM'S, kunnen ze alleen opnieuw worden beveiligd met een herstel plan. Vm's in een replicatie groep moeten dezelfde hoofddoel server gebruiken
+
+>[!NOTE]
+>De hoeveelheid gegevens die vanuit Azure wordt verzonden naar de Erstwhile-bron tijdens het opnieuw beveiligen, kan iets zijn tussen 0 bytes en de som van de schijf grootte voor alle beveiligde machines en kan niet worden berekend.
 
 ### <a name="before-you-start"></a>Voordat u begint
 

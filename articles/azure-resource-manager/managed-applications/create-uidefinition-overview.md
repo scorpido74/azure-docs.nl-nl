@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210960"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319561"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. json voor het maken van beheerde Azure-toepassingen
 
@@ -25,6 +25,7 @@ De sjabloon is als volgt
     "version": "0.1.2-preview",
     "parameters": {
         "config": {
+            "isWizard": false,
             "basics": { }
         },
         "basics": [ ],
@@ -35,7 +36,7 @@ De sjabloon is als volgt
 }
 ```
 
-Een CreateUiDefinition bevat altijd drie eigenschappen: 
+A `CreateUiDefinition` bevat altijd drie eigenschappen:
 
 * afhandelingsprocedure
 * versie
@@ -43,41 +44,19 @@ Een CreateUiDefinition bevat altijd drie eigenschappen:
 
 De handler moet altijd zijn `Microsoft.Azure.CreateUIDef` en de meest recente ondersteunde versie is `0.1.2-preview` .
 
-Het schema van de eigenschap para meters is afhankelijk van de combi natie van de opgegeven handler en versie. Voor beheerde toepassingen zijn de ondersteunde eigenschappen `basics` ,, `steps` `outputs` en `config` . De eigenschappen van de basis beginselen en de stappen bevatten de [elementen](create-uidefinition-elements.md) , zoals tekst vakken en vervolg keuzelijsten, die moeten worden weer gegeven in de Azure Portal. De eigenschap outputs wordt gebruikt om de uitvoer waarden van de opgegeven elementen toe te wijzen aan de para meters van de Azure Resource Manager sjabloon. U gebruikt `config` deze alleen wanneer u het standaard gedrag van de stap wilt negeren `basics` .
+Het schema van de eigenschap para meters is afhankelijk van de combi natie van de opgegeven handler en versie. Voor beheerde toepassingen zijn de ondersteunde eigenschappen `config` ,, `basics` `steps` en `outputs` . U gebruikt `config` deze alleen wanneer u het standaard gedrag van de stap wilt negeren `basics` . De eigenschappen van de basis beginselen en de stappen bevatten de [elementen](create-uidefinition-elements.md) , zoals tekst vakken en vervolg keuzelijsten, die moeten worden weer gegeven in de Azure Portal. De eigenschap outputs wordt gebruikt om de uitvoer waarden van de opgegeven elementen toe te wijzen aan de para meters van de Azure Resource Manager sjabloon.
 
 Inclusief `$schema` wordt aanbevolen, maar is optioneel. Indien opgegeven, moet de waarde voor `version` overeenkomen met de versie in de `$schema` URI.
 
 U kunt een JSON-editor gebruiken om uw createUiDefinition te maken en deze vervolgens te testen in de [createUiDefinition-sandbox](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) om deze te bekijken. Zie [uw portal-interface testen voor Azure Managed Applications](test-createuidefinition.md)voor meer informatie over de sandbox.
 
-## <a name="basics"></a>Basisinstellingen
-
-De stap **basis beginselen** is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Met de stappen in de basis beginselen kunnen gebruikers standaard het abonnement, de resource groep en de locatie voor de implementatie kiezen.
-
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basis principes standaard":::
-
-U kunt in deze sectie meer elementen toevoegen. Voeg, indien mogelijk, elementen toe die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster-of beheerders referenties.
-
-In het volgende voor beeld wordt een tekstvak weer gegeven dat is toegevoegd aan de standaard elementen.
-
-```json
-"basics": [
-    {
-        "name": "textBox1",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Textbox on basics",
-        "defaultValue": "my text value",
-        "toolTip": "",
-        "visible": true
-    }
-]
-```
-
 ## <a name="config"></a>Configureren
 
-U geeft het configuratie-element op wanneer u het standaard gedrag voor de basis stappen wilt onderdrukken. In het volgende voor beeld ziet u de beschik bare eigenschappen.
+De `config` eigenschap is optioneel. Gebruik deze optie om het standaard gedrag van de stap basis beginselen te onderdrukken of om uw interface in te stellen als stapsgewijze wizard. Als `config` wordt gebruikt, is dit de eerste eigenschap in de sectie **createUiDefinition.jsin** het bestand `parameters` . In het volgende voor beeld ziet u de beschik bare eigenschappen.
 
 ```json
 "config": {
+    "isWizard": false,
     "basics": {
         "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
         "subscription": {
@@ -124,15 +103,50 @@ U geeft het configuratie-element op wanneer u het standaard gedrag voor de basis
 },
 ```
 
-`description`Geef voor een teken reeks met kortings functionaliteit op waarmee uw resource wordt beschreven. Opmaak van meerdere regels en koppelingen worden ondersteund.
+### <a name="wizard"></a>Wizard
 
-Geef voor de `location` Eigenschappen op voor het locatie besturings element dat u wilt overschrijven. Alle eigenschappen die niet worden overschreven, worden ingesteld op hun standaard waarden. `resourceTypes` Hiermee wordt een matrix met teken reeksen geaccepteerd die volledige namen van resource typen bevatten. De locatie opties zijn beperkt tot alleen regio's die ondersteuning bieden voor de resource typen.  `allowedValues`   Hiermee wordt een matrix met de teken reeksen van regio's geaccepteerd. In de vervolg keuzelijst worden alleen de regio's weer gegeven.U kunt zowel `allowedValues`   als instellen  `resourceTypes` . Het resultaat is het snij punt van beide lijsten. De `visible` eigenschap kan ten slotte worden gebruikt om de vervolg keuzelijst locatie voorwaardelijk of volledig uit te scha kelen.  
+Met de `isWizard` eigenschap kunt u een geslaagde validatie van elke stap vereisen voordat u verdergaat met de volgende stap. Als de `isWizard` eigenschap niet is opgegeven, is de standaard waarde **False**en is de stap-voor-stap validatie niet vereist.
+
+Als `isWizard` is ingeschakeld, ingesteld op **True**, het tabblad **basissen** is beschikbaar en alle andere tabbladen zijn uitgeschakeld. Wanneer de knop **volgende** is geselecteerd, wordt het pictogram van het tabblad aangegeven als de validatie van een tabblad is geslaagd of mislukt. Nadat de vereiste velden van een tabblad zijn voltooid en gevalideerd, kunt u met de knop **volgende** naar het volgende tabblad navigeren. Wanneer alle tabbladen validatie geven, gaat u naar de pagina **controleren en maken** en selecteert u de knop **maken** om de implementatie te starten.
+
+:::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Wizard tabblad":::
+
+### <a name="override-basics"></a>Basis principes negeren
+
+Met de basis principes van configuratie kunt u de stappen in de basis beginselen aanpassen.
+
+`description`Geef voor een teken reeks met kortings functionaliteit op waarmee uw resource wordt beschreven. Opmaak van meerdere regels en koppelingen worden ondersteund.
 
 `subscription`Met de `resourceGroup` elementen en kunt u aanvullende validaties opgeven. De syntaxis voor het opgeven van validaties is identiek aan de aangepaste validatie voor het [tekstvak](microsoft-common-textbox.md). U kunt ook `permission` validaties opgeven voor het abonnement of de resource groep.  
 
 Het besturings element voor abonnementen accepteert een lijst met naam ruimten van de resource provider. U kunt bijvoorbeeld **micro soft. Compute**opgeven. Er wordt een fout bericht weer gegeven wanneer de gebruiker een abonnement selecteert dat geen ondersteuning biedt voor de resource provider. De fout treedt op wanneer de resource provider niet is geregistreerd bij dat abonnement en de gebruiker geen machtiging heeft om de resource provider te registreren.  
 
 Voor het besturings element voor de resource groep is een optie voor `allowExisting` . Wanneer `true` kunnen de gebruikers resource groepen selecteren die al resources hebben. Deze vlag is het meest van toepassing op oplossings sjablonen, waarbij gebruikers standaard gedrag verplichten om een nieuwe of lege resource groep te selecteren. In de meeste andere scenario's is het niet nodig om deze eigenschap op te geven.  
+
+Geef voor de `location` Eigenschappen op voor het locatie besturings element dat u wilt overschrijven. Alle eigenschappen die niet worden overschreven, worden ingesteld op hun standaard waarden. `resourceTypes` Hiermee wordt een matrix met teken reeksen geaccepteerd die volledige namen van resource typen bevatten. De locatie opties zijn beperkt tot alleen regio's die ondersteuning bieden voor de resource typen.  `allowedValues`   Hiermee wordt een matrix met de teken reeksen van regio's geaccepteerd. In de vervolg keuzelijst worden alleen de regio's weer gegeven.U kunt zowel `allowedValues`   als instellen  `resourceTypes` . Het resultaat is het snij punt van beide lijsten. De `visible` eigenschap kan ten slotte worden gebruikt om de vervolg keuzelijst locatie voorwaardelijk of volledig uit te scha kelen.  
+
+## <a name="basics"></a>Basisbeginselen
+
+De stap **basis beginselen** is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Met de stappen in de basis beginselen kunnen gebruikers standaard het abonnement, de resource groep en de locatie voor de implementatie kiezen.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basis principes standaard":::
+
+U kunt in deze sectie meer elementen toevoegen. Voeg, indien mogelijk, elementen toe die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster-of beheerders referenties.
+
+In het volgende voor beeld wordt een tekstvak weer gegeven dat is toegevoegd aan de standaard elementen.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
 
 ## <a name="steps"></a>Stappen
 

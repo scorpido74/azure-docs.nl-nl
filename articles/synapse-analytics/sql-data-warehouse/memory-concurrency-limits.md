@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210658"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441677"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Geheugen-en gelijktijdigheids limieten voor Azure Synapse Analytics
 
@@ -55,7 +55,7 @@ Het maximale service niveau is DW30000c, met 60 Compute-knoop punten en één di
 
 Met de introductie van [werkbelasting groepen](sql-data-warehouse-workload-isolation.md)is het concept van gelijktijdigheids sleuven niet langer van toepassing.  Resources per aanvraag worden toegewezen op basis van een percentage en opgegeven in de definitie van de werkbelasting groep.  Zelfs met het verwijderen van gelijktijdigheids sleuven, zijn er echter mini maal vereiste resources per query op basis van het service niveau.  In de onderstaande tabel is de minimale hoeveelheid resources gedefinieerd die is vereist per query op service niveaus en de bijbehorende gelijktijdigheid die kan worden behaald.
 
-|Service niveau|Maximum aantal gelijktijdige query's|Min% ondersteund voor REQUEST_MIN_RESOURCE_GRANT_PERCENT|
+|Serviceniveau|Maximum aantal gelijktijdige query's|Min% ondersteund voor REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12,5%|
@@ -83,7 +83,7 @@ Om ervoor te zorgen dat elke query voldoende bronnen heeft om efficiënt uit te 
 
 In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijktijdigheids sleuven voor elke [statische resource klasse](resource-classes-for-workload-management.md).  
 
-| Service niveau | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door staticrc10 | Sleuven die worden gebruikt door staticrc20 | Sleuven die worden gebruikt door staticrc30 | Sleuven die worden gebruikt door staticrc40 | Sleuven die worden gebruikt door staticrc50 | Sleuven die worden gebruikt door bron staticrc60 | Sleuven die worden gebruikt door staticrc70 | Sleuven die worden gebruikt door staticrc80 |
+| Serviceniveau | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door staticrc10 | Sleuven die worden gebruikt door staticrc20 | Sleuven die worden gebruikt door staticrc30 | Sleuven die worden gebruikt door staticrc40 | Sleuven die worden gebruikt door staticrc50 | Sleuven die worden gebruikt door bron staticrc60 | Sleuven die worden gebruikt door staticrc70 | Sleuven die worden gebruikt door staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -106,7 +106,7 @@ In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijkti
 
 In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijktijdigheids sleuven voor elke [dynamische resource klasse](resource-classes-for-workload-management.md). Dynamische resource klassen gebruiken een geheugen toewijzing van 3-10-22-70 voor kleine, middel grote-xlarge resource klassen in alle service niveaus.
 
-| Service niveau | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door smallrc | Sleuven die worden gebruikt door mediumrc | Sleuven die worden gebruikt door largerc | Sleuven die worden gebruikt door xlargerc |
+| Serviceniveau | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door smallrc | Sleuven die worden gebruikt door mediumrc | Sleuven die worden gebruikt door largerc | Sleuven die worden gebruikt door xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
@@ -125,7 +125,7 @@ In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijkti
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-Als er niet voldoende gelijktijdigheids sleuven beschikbaar zijn om de uitvoering van query's te starten, worden query's in de wachtrij geplaatst en uitgevoerd op basis van belang.  Als er sprake is van een gelijkwaardige prioriteit, worden query's uitgevoerd op basis van de eerste in.  Wanneer een query is voltooid en het aantal query's en sleuven onder de limiet valt, worden in SQL Data Warehouse query's in de wachtrij geplaatst.
+Als er niet voldoende gelijktijdigheids sleuven beschikbaar zijn om de uitvoering van query's te starten, worden query's in de wachtrij geplaatst en uitgevoerd op basis van belang.  Als er sprake is van een gelijkwaardige prioriteit, worden query's uitgevoerd op basis van de eerste in.  Wanneer een query is voltooid en het aantal query's en sleuven onder de limiet valt, worden in azure Synapse Analytics query's in de wachtrij geplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen
 

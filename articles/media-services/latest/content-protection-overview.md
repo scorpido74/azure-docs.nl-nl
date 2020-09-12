@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 81ec96d244c36c0328134b415465d632ef6c1dd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267918"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401381"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
 
@@ -156,6 +156,10 @@ Het Smooth Streaming-Protocol ondersteunt de volgende container indelingen en ve
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PIFF 1,1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> Ondersteuning voor PIFF 1,1 wordt geboden als een achterwaarts compatibele oplossing voor slimme TV (Samsung, LG) waarmee de vroege versie van Silverlight van Common Encryption is geïmplementeerd. U wordt aangeraden alleen de PIFF-indeling te gebruiken waar dat nodig is voor ondersteuning van legacey Samsung of LG Smart Tv's die worden verzonden tussen 2009-2015 en die de PIFF 1,1-versie van PlayReady-versleuteling ondersteunen. 
 
 ### <a name="browsers"></a>Browsers
 
@@ -264,7 +268,7 @@ Ga naar het artikel van de [Azure Media Services-community](media-services-commu
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Beveiligen met AES-versleuteling](protect-with-aes128.md)
-* [Beveiligen met DRM](protect-with-drm.md)
+* [Beschermen met DRM](protect-with-drm.md)
 * [Multi-DRM-inhouds beschermings systeem ontwerpen met toegangs beheer](design-multi-drm-system-with-access-control.md)
 * [Versleuteling van opslag side](storage-account-concept.md#storage-side-encryption)
 * [Veelgestelde vragen](frequently-asked-questions.md)

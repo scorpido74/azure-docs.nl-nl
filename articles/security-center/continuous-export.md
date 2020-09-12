@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612381"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433926"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
 
@@ -36,12 +36,12 @@ Met deze hulpprogram ma's kunt u het volgende doen:
 |Release status:|Algemeen beschikbaar|
 |Koers|Gratis laag|
 |Vereiste rollen en machtigingen:|**Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)<br>Moet ook schrijf machtigingen hebben voor de doel resource|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) China gov (naar Event hub), andere gov|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>Een continue export instellen
+## <a name="set-up-a-continuous-export"></a>Een continue export instellen
 
 De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics werk ruimte of Azure Event Hubs in te stellen.
 
@@ -55,12 +55,24 @@ De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics 
 
 1. Selecteer het gegevens type dat u wilt exporteren en kies uit de filters voor elk type (bijvoorbeeld alleen waarschuwingen met hoge Ernst exporteren).
 
+1. Als uw selectie een van deze vier aanbevelingen bevat, kunt u desgewenst de evaluaties van beveiligings problemen samen voegen:
+
+    - De conclusies van de evaluatie van beveiligings problemen voor uw SQL-data bases moeten worden hersteld
+    - De resultaten van evaluatie van beveiligings problemen op uw SQL-servers op computers moeten worden hersteld (preview-versie)
+    - Beveiligings problemen in Azure Container Registry installatie kopieën moeten worden hersteld (aangedreven door Qualys)
+    - Beveiligings problemen in uw virtuele machines moeten worden hersteld
+
+    Schakel de optie **beveiligings resultaten bevatten** in om de resultaten op te vragen met deze aanbevelingen.
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Beveiligings resultaten toevoegen in-/uitschakelen configuratie voor continue export" :::
+
+
 1. Kies in het gebied export doel de locatie waar u de gegevens wilt opslaan. Gegevens kunnen worden opgeslagen in een doel voor een ander abonnement (bijvoorbeeld op een centraal Event hub-exemplaar of een centrale Log Analytics-werk ruimte).
 
 1. Selecteer **Opslaan**.
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>Continue export instellen via de REST API
+## <a name="set-up-continuous-export-via-the-rest-api"></a>Continue export instellen via de REST API
 
 De functie continue export kan worden geconfigureerd en beheerd via de API voor Azure Security Center [Automation](https://docs.microsoft.com/rest/api/securitycenter/automations). Gebruik deze API om Automation voor het exporteren naar een van de volgende mogelijke bestemmingen te maken of bij te werken:
 
@@ -83,7 +95,7 @@ Meer informatie over de automatiserings-API vindt u in de [documentatie van rest
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>SIEM-integratie configureren via Azure Event Hubs
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>SIEM-integratie configureren via Azure Event Hubs
 
 Azure Event Hubs is een geweldige oplossing voor het programmatisch gebruiken van streaming-gegevens. Voor Azure Security Center waarschuwingen en aanbevelingen is het de aanbevolen manier om te integreren met een SIEM van derden.
 

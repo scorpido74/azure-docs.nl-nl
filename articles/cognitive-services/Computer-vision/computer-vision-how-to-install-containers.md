@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13d483507092892187bc13dd23bfa51ed516c890
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545638"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441150"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
 
@@ -55,6 +55,7 @@ De **hostcomputer** is de computer waarop de docker-container wordt uitgevoerd. 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+
 > [!WARNING]
 > De hostcomputer is *vereist* voor de ondersteuning van AVX2. De container werkt *niet* correct zonder ondersteuning voor AVX2.
 
@@ -68,14 +69,14 @@ Er zijn container installatie kopieën voor lezen beschikbaar.
 
 | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |-----------|------------|
-| Lezen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Lezen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
 
 Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden.
 
 ### <a name="docker-pull-for-the-read-container"></a>Docker-pull voor de Lees container
 
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -186,13 +187,16 @@ De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk vi
 }
 ```
 
+> [!IMPORTANT]
+> Als u meerdere Lees containers achter een load balancer implementeert, bijvoorbeeld onder docker opstellen of Kubernetes, moet u een externe cache hebben. Omdat de verwerkings container en de container voor GET-aanvragen mogelijk niet hetzelfde zijn, worden de resultaten door een externe cache opgeslagen en gedeeld in containers. Zie [Computer Vision docker-containers configureren](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)voor meer informatie over de cache-instellingen.
+
 ### <a name="synchronous-read"></a>Synchrone Lees bewerking
 
 U kunt de `POST /vision/v2.0/read/core/Analyze` bewerking gebruiken om een afbeelding synchroon te lezen. Wanneer de afbeelding volledig is gelezen en vervolgens alleen de API retourneert een JSON-antwoord. De enige uitzonde ring hierop is als er een fout optreedt. Als er een fout optreedt, wordt de volgende JSON geretourneerd:
 
 ```json
 {
-    status: "Failed"
+    "status": "Failed"
 }
 ```
 
@@ -283,7 +287,7 @@ In dit artikel hebt u concepten en werk stromen geleerd om Computer Vision conta
 ## <a name="next-steps"></a>Volgende stappen
 
 * Containers voor configuratie-instellingen [configureren](computer-vision-resource-container-config.md) controleren
-* Bekijk [Computer Vision overzicht](Home.md) voor meer informatie over het herkennen van gedrukte en handgeschreven tekst
+* Bekijk [Computer Vision overzicht](overview.md) voor meer informatie over het herkennen van gedrukte en handgeschreven tekst
 * Raadpleeg de [Computer Vision-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over de methoden die door de container worden ondersteund.
 * Raadpleeg Veelgestelde [vragen (FAQ)](FAQ.md) voor het oplossen van problemen met betrekking tot de functionaliteit van computer vision.
 * Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken

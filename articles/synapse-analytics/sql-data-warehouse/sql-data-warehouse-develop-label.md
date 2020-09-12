@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213428"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459144"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Labels gebruiken voor instrument query's in de SQL-groep Synapse
 
 In dit artikel vindt u tips voor het ontwikkelen van oplossingen met behulp van labels voor instrument query's in de SQL-groep.
 
-Tips voor het gebruik van labels voor instrument query's in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+Tips voor het gebruik van labels voor instrument query's in azure Synapse Analytics voor het ontwikkelen van oplossingen.
 
 ## <a name="what-are-labels"></a>Wat zijn labels?
 

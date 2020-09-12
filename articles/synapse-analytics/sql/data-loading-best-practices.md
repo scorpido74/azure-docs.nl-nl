@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486813"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459297"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Best practices voor het laden van gegevens voor datawarehousing
 
@@ -144,6 +144,6 @@ Er hoeven geen andere wijzigingen te worden aangebracht aan onderliggende extern
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over PolyBase en het ontwerpen van een Extract, Load en Transform (ELT)-proces [ELT ontwerpen voor SQL Data Warehouse](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-- Gebruik voor het laden van een zelfstudie [PolyBase om gegevens te laden uit Azure blob-opslag naar Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- Zie [ontwerp ELT voor Azure Synapse Analytics voor](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie over poly base en het ontwerpen van een uitpak-, laad-en transformatie proces.
+- Gebruik poly Base voor het laden van [gegevens uit Azure Blob-opslag naar Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een zelf studie die u kunt laden.
 - Zie [Uw workload controleren met DMV's](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor het controleren van het laden van gegevens.

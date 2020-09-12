@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290107"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441167"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 In dit artikel vindt u meer informatie over:
 
-- Opties voor het configureren van Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) om gebruikers in staat te stellen beheer taken uit te voeren en toegang te krijgen tot de gegevens die zijn opgeslagen in deze data bases.
+- Opties voor het configureren van Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics (voorheen SQL Data Warehouse) om gebruikers in staat te stellen beheer taken uit te voeren en toegang te krijgen tot de gegevens die zijn opgeslagen in deze data bases.
 - De configuratie van toegang en autorisatie na het maken van een nieuwe server.
 - Aanmeldingen en gebruikers accounts toevoegen aan de hoofd database en gebruikers accounts en vervolgens deze accounts beheer machtigingen verlenen.
 - Het toevoegen van gebruikers accounts in gebruikers databases, hetzij gekoppeld aan aanmeldingen of als opgenomen gebruikers accounts.
@@ -48,8 +48,8 @@ Wanneer een gebruiker probeert verbinding te maken met een Data Base, bieden ze 
 
 **Aanmeldingen en gebruikers**: een gebruikers account in een Data Base kan worden gekoppeld aan een aanmelding die is opgeslagen in de hoofd database of kan een gebruikers naam zijn die is opgeslagen in een afzonderlijke data base.
 
-- Een **aanmelding** is een afzonderlijk account in de hoofd database, waaraan een gebruikers account in een of meer data bases kan worden gekoppeld. Bij een aanmelding worden de referentie gegevens voor het gebruikers account bij de aanmelding opgeslagen.
-- Een **gebruikers account** is een afzonderlijk account in een Data Base die mogelijk wel, maar niet is gekoppeld aan een aanmelding. Met een gebruikers account dat niet is gekoppeld aan een aanmelding, worden de referentie gegevens opgeslagen met het gebruikers account.
+- Een **aanmelding** is een afzonderlijk account in de hoofd database, waaraan een gebruikers account in een of meer data bases kan worden gekoppeld. Bij een aanmelding worden de aanmeldingsgegevens voor het gebruikersaccount bij de aanmelding opgeslagen.
+- Een **gebruikers account** is een afzonderlijk account in een Data Base die mogelijk wel, maar niet is gekoppeld aan een aanmelding. Bij een gebruikersaccount dat niet is gekoppeld aan een aanmelding, worden de aanmeldingsgegevens opgeslagen met het gebruikersaccount.
 
 [**Autorisatie**](security-overview.md#authorization) voor toegang tot gegevens en het uitvoeren van verschillende acties wordt beheerd met behulp van database rollen en expliciete machtigingen. Autorisatie verwijst naar de machtigingen die zijn toegewezen aan een gebruiker en bepaalt wat die gebruiker mag doen. Autorisatie wordt beheerd door de databaserol [lidmaatschappen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) en [object machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)van uw gebruikers account. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen.
 
@@ -94,7 +94,7 @@ Op dit punt wordt de server of het beheerde exemplaar alleen geconfigureerd voor
   - Voeg het gebruikers account toe aan de `dbmanager` , de `loginmanager` rol of beide in de- `master` Data Base met behulp van de instructie [ALTER Role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) (voor Azure Synapse gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
-  > `dbmanager`en `loginmanager` rollen zijn **niet** van toepassing op IMPLEMENTATIEs van SQL-beheerde exemplaren.
+  > `dbmanager` en `loginmanager` rollen zijn **niet** van toepassing op IMPLEMENTATIEs van SQL-beheerde exemplaren.
 
   Leden van deze [speciale Master database rollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) voor Azure SQL database hebben toestemming voor het maken en beheren van data bases of voor het maken en beheren van aanmeldingen. In data bases die zijn gemaakt door een gebruiker die lid is van de `dbmanager` rol, wordt het lid toegewezen aan de `db_owner` vaste databaserol en kan die data base worden aangemeld en beheerd met behulp van het `dbo` gebruikers account. Deze rollen hebben geen expliciete machtigingen buiten de hoofd database.
 

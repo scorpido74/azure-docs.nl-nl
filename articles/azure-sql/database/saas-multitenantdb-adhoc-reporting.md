@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 098ac343885db3e267dcefb3785f5abd55d17ee2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042642"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441031"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Ad hoc Analytics-query's uitvoeren in meerdere data bases (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ SaaS-toepassingen kunnen de grote hoeveelheid Tenant gegevens die centraal worde
 
 U kunt gemakkelijk toegang tot deze gegevens krijgen in een database met meerdere tenants, maar dit is niet zo gemakkelijk als de gegevens op schaal zijn verdeeld over misschien wel duizenden databases. Een aanpak is het gebruik van [elastische query's](elastic-query-overview.md), waarmee u query's kunt uitvoeren op een gedistribueerde set data bases met een gemeen schappelijk schema. Deze data bases kunnen worden gedistribueerd over verschillende resource groepen en-abonnementen. Maar een veelvoorkomende aanmelding moet toegang hebben tot gegevens uit de data bases ophalen. Elastische Query's maken gebruik van één *Head* -Data Base waarin externe tabellen worden gedefinieerd die spie gelen tabellen of weer gaven in de gedistribueerde (Tenant) data bases. Query's die naar deze hoofddatabase worden verzonden, worden gecompileerd tot een gedistribueerd queryplan, waarbij delen van de query, wanneer nodig, naar de onderliggende tenantdatabases worden gepusht. Elastische Query's gebruiken de Shard-toewijzing in de catalogus database om de locatie van alle Tenant databases te bepalen. Setup en query zijn eenvoudig te gebruiken met behulp van standaard [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)en ondersteunen ad-hoc query's van hulpprogram ma's zoals Power bi en Excel.
 
-Door query's over de Tenant databases te distribueren, biedt elastische query's onmiddellijk inzicht in live productie gegevens. Omdat elastische Query's echter gegevens uit mogelijk veel data bases ophaalt, kan de query latentie soms hoger zijn dan voor gelijkwaardige query's die worden verzonden naar één multi tenant-data base. Zorg ervoor dat u query's ontwerpt om de geretourneerde gegevens te minimaliseren. Elastische Query's zijn vaak het meest geschikt voor het uitvoeren van query's in kleine hoeveel heden gegevens in realtime, in plaats van het maken van vaak gebruikte of complexe analyse query's of-rapporten. Als query's niet goed werken, kijkt u naar het [uitvoerings plan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) om te zien welk gedeelte van de query naar de externe data base is gepusht. En beoordelen hoeveel gegevens er worden geretourneerd. Query's waarvoor complexe analytische verwerking is vereist, kunnen beter worden bediend door de geëxtraheerde Tenant gegevens op te slaan in een Data Base die is geoptimaliseerd voor analyse query's. SQL Database en SQL Data Warehouse kunnen de Analytics-Data Base hosten.
+Door query's over de Tenant databases te distribueren, biedt elastische query's onmiddellijk inzicht in live productie gegevens. Omdat elastische Query's echter gegevens uit mogelijk veel data bases ophaalt, kan de query latentie soms hoger zijn dan voor gelijkwaardige query's die worden verzonden naar één multi tenant-data base. Zorg ervoor dat u query's ontwerpt om de geretourneerde gegevens te minimaliseren. Elastische Query's zijn vaak het meest geschikt voor het uitvoeren van query's in kleine hoeveel heden gegevens in realtime, in plaats van het maken van vaak gebruikte of complexe analyse query's of-rapporten. Als query's niet goed werken, kijkt u naar het [uitvoerings plan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) om te zien welk gedeelte van de query naar de externe data base is gepusht. En beoordelen hoeveel gegevens er worden geretourneerd. Query's waarvoor complexe analytische verwerking is vereist, kunnen beter worden bediend door de geëxtraheerde Tenant gegevens op te slaan in een Data Base die is geoptimaliseerd voor analyse query's. SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse) kunnen de Analytics-Data Base hosten.
 
 Dit patroon voor analyses wordt uitgelegd in de [zelf studie over Tenant analyse](saas-multitenantdb-tenant-analytics.md).
 

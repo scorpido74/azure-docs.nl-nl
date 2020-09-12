@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553104"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441096"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -136,9 +136,8 @@ Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamesp
  
 De resultaten weer geven in CSV:
 ```powershell
-$errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
-    C:\results.csv -Encoding utf8
+$validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>Bestandssysteem compatibiliteit
@@ -148,7 +147,7 @@ Alleen NTFS-volumes worden ondersteund. ReFS, FAT, FAT32 en andere bestands syst
 
 De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies: 
 
-| Functie | Ondersteuningsstatus | Opmerkingen |
+| Functie | Ondersteuningsstatus | Notities |
 |---------|----------------|-------|
 | ACL’s (toegangsbeheerlijsten) | Volledig ondersteund | Discretionaire toegangs beheer lijsten voor Windows-stijlen worden bewaard door Azure File Sync en worden afgedwongen door Windows Server op server-eind punten. U kunt ook Acl's afdwingen wanneer u de Azure-bestands share rechtstreeks koppelt, maar hiervoor is echter wel extra configuratie vereist. Zie de [sectie identiteit](#identity) voor meer informatie. |
 | Vaste koppelingen | Overgeslagen | |
@@ -307,8 +306,8 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Azië | Azië - oost | `eastasia` |
 | Openbaar | Azië | Azië - zuidoost | `southeastasia` |
 | Openbaar | Australië | Australië - oost | `australiaeast` |
-| Openbaar | Australië | Australia Southeast | `australiasoutheast` |
-| Openbaar | Brazilië | Brazil South | `brazilsouth` |
+| Openbaar | Australië | Australië - zuidoost | `australiasoutheast` |
+| Openbaar | Brazilië | Brazilië - zuid | `brazilsouth` |
 | Openbaar | Canada | Canada - midden | `canadacentral` |
 | Openbaar | Canada | Canada - oost | `canadaeast` |
 | Openbaar | Europa | Europa - noord | `northeurope` |
@@ -317,24 +316,24 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Frankrijk | Frankrijk-zuid * | `francesouth` |
 | Openbaar | India | India - centraal | `centralindia` |
 | Openbaar | India | India - zuid | `southindia` |
-| Openbaar | Japan | Japan East | `japaneast` |
+| Openbaar | Japan | Japan - oost | `japaneast` |
 | Openbaar | Japan | Japan - west | `japanwest` |
 | Openbaar | Korea | Korea - centraal | `koreacentral` |
 | Openbaar | Korea | Korea - zuid | `koreasouth` |
 | Openbaar | Zuid-Afrika | Zuid-Afrika - noord | `southafricanorth` |
 | Openbaar | Zuid-Afrika | Zuid-Afrika-west * | `southafricawest` |
 | Openbaar | VAE | UAE-centraal * | `uaecentral` |
-| Openbaar | VAE | UAE - noord | `uaenorth` |
+| Openbaar | VAE | VAE - noord | `uaenorth` |
 | Openbaar | VK | Verenigd Koninkrijk Zuid | `uksouth` |
 | Openbaar | VK | Verenigd Koninkrijk West | `ukwest` |
-| Openbaar | VS | Central US | `centralus` |
+| Openbaar | VS | VS - centraal | `centralus` |
 | Openbaar | VS | VS - oost | `eastus` |
 | Openbaar | VS | VS - oost 2 | `eastus2` |
 | Openbaar | VS | VS - noord-centraal | `northcentralus` |
-| Openbaar | VS | South Central US | `southcentralus` |
+| Openbaar | VS | VS - zuid-centraal | `southcentralus` |
 | Openbaar | VS | VS - west-centraal | `westcentralus` |
 | Openbaar | VS | VS - west | `westus` |
-| Openbaar | VS | West US 2 | `westus2` |
+| Openbaar | VS | VS - west 2 | `westus2` |
 | US Gov | VS | VS (overheid) - Arizona | `usgovarizona` |
 | US Gov | VS | VS (overheid) - Texas | `usgovtexas` |
 | US Gov | VS | VS (overheid) - Virginia | `usgovvirginia` |

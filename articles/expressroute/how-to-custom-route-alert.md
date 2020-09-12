@@ -2,17 +2,17 @@
 title: 'ExpressRoute: aangepaste waarschuwingen configureren voor aangekondigde routes'
 description: In dit artikel wordt beschreven hoe u Azure Automation en Logic Apps kunt gebruiken om het aantal routes te bewaken dat is geadverteerd van de ExpressRoute-gateway naar on-premises netwerken om te voor komen dat de limieten voor de 200-routes worden bereikt.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.author: cherylmc
-ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738478"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401721"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
 
@@ -257,7 +257,7 @@ Wanneer u het Power shell-script uitvoert, wordt een lijst met waarden verzameld
 
 * Waarschuwings bericht voor een uitgebreide beschrijving van de status (OK, waarschuwing, waarschuwing)
 
-Het Power shell-script converteert de verzamelde gegevens naar een JSON-uitvoer. Het runbook maakt gebruik van de Power shell [-cmdlet write-output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?) als uitvoer stroom voor het communiceren van informatie naar de client.
+Het Power shell-script converteert de verzamelde gegevens naar een JSON-uitvoer. Het runbook maakt gebruik van de Power shell [-cmdlet write-output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  als uitvoer stroom voor het communiceren van informatie naar de client.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. het runbook valideren
 
@@ -431,7 +431,7 @@ Logic Apps biedt veel e-mailconnectors. In dit voor beeld voegen we een Outlook-
 
 1. Selecteer **Office 365 Outlook**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="Een e-mailbericht versturen":::
+   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="E-mail verzenden":::
 
 2. Selecteer in de lijst **acties** de optie **een E-mail verzenden (v2)**.
 

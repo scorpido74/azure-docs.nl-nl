@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: ee384d6095ccbf25225a435fe8afe4281c5d62df
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 9d130c2a2db9ccead7180b6248398a84fcb34c3f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921395"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441235"
 ---
 # <a name="using-sql-script-in-azure-synapse-studio-preview"></a>SQL-script gebruiken in azure Synapse Studio (preview-versie)
 
@@ -25,37 +25,33 @@ Er zijn verschillende manieren om de ontwerp ervaring in SQL-script te starten. 
 
 1. Selecteer in het menu ontwikkelen het pictogram **' + '** en kies **SQL-script**.
 
-    ![newsqlscript](media/author-sql-script/newsqlscript.png)
+![nieuw SQL-script](media/author-sql-script/newsqlscript.png)
 
 2. Kies in het menu **acties** de optie **Nieuw SQL-script**.
-    
-    ![newsqlscript2actions](media/author-sql-script/newsqlscript2actions.png)
+> [!div class="mx-imgBorder"]
+> ![nieuwe SQL-script 2-acties](media/author-sql-script/newsqlscript2actions.png)
 
-U kunt eventueel ook het volgende doen: 
+U kunt ook: 
 
-3. Kies **importeren** in het menu **acties** onder SQL-scripts ontwikkelen en selecteer een bestaand SQL-script uit uw lokale opslag.
- 
-    ![newsqlscript3actions](media/author-sql-script/newsqlscript3actions.png)
+3. Kies **importeren** in het menu **acties** onder SQL-scripts ontwikkelen. Selecteer een bestaand SQL-script uit uw lokale opslag.
+![nieuwe SQL script 3-acties](media/author-sql-script/newsqlscript3actions.png)
 
 ## <a name="create-your-sql-script"></a>Een SQL-script maken
 
-1. Kies een naam voor uw SQL-script door de knop **Eigenschappen** te selecteren en de standaard naam te vervangen die aan het SQL-script is toegewezen.
-  
-    ![newsqlscriptrename](media/author-sql-script/newsqlscriptrename.png)
+1. Kies een naam voor uw SQL-script door de knop **Eigenschappen** te selecteren en de standaard naam te vervangen die aan het SQL-script is toegewezen. 
+![nieuwe SQL-script naam wijzigen](media/author-sql-script/newsqlscriptrename.png)
 
-2. Kies de specifieke SQL-groep of de SQL op aanvraag in de vervolg keuzelijst **verbinding maken met** . Of kies, indien nodig, de data base uit **Data Base gebruiken**.
- 
-    ![newsqlchoosepool](media/author-sql-script/newsqlchoosepool.png)
+2. Kies de specifieke SQL-groep of de SQL op aanvraag in de vervolg keuzelijst **verbinding maken met** . Of kies, indien nodig, de data base uit **Data Base gebruiken**. 
+![nieuwe SQL-groep kiezen](media/author-sql-script/newsqlchoosepool.png)
 
 3. Begin met het ontwerpen van uw SQL-script met behulp van de IntelliSense-functie.
-
-    ![newsqlintellisense](media/author-sql-script/newsqlintellisense.png)
+![nieuwe SQL IntelliSense](media/author-sql-script/newsqlintellisense.png)
 
 ## <a name="run-your-sql-script"></a>Uw SQL-script uitvoeren
 
 Selecteer de knop uitvoeren om het SQL-script **uit** te voeren. De resultaten worden standaard weer gegeven in een tabel.
 
-![newsqlscriptresultstable](media/author-sql-script/newsqlscriptresultstable.png)
+![tabel met nieuwe SQL-script resultaten](media/author-sql-script/newsqlscriptresultstable.png)
 
 ## <a name="export-your-results"></a>Uw resultaten exporteren
 
@@ -63,13 +59,13 @@ U kunt de resultaten exporteren naar uw lokale opslag in verschillende indelinge
 
 U kunt de resultaten van het SQL-script ook visualiseren in een grafiek door de knop **grafiek** te selecteren. Selecteer de kolom grafiek type en **categorie**. U kunt de grafiek exporteren naar een afbeelding door **Opslaan als afbeelding**te selecteren. 
 
-![newsqlscriptresultschart](media/author-sql-script/newsqlscriptresultschart.png)
+![grafiek met nieuwe SQL-script resultaten](media/author-sql-script/newsqlscriptresultschart.png)
 
 ## <a name="explore-data-from-a-parquet-file"></a>Gegevens uit een Parquet-bestand verkennen
 
 U kunt Parquet-bestanden in een opslag account verkennen met behulp van SQL script om de inhoud van het bestand te bekijken.
 
-![newscriptsqlodparquet](media/author-sql-script/newscriptsqlodparquet.png)
+![nieuw script sqlod Parquet](media/author-sql-script/newscriptsqlodparquet.png)
 
 ## <a name="sql-tables-external-tables-views"></a>SQL-tabellen, externe tabellen, weer gaven
 
@@ -82,7 +78,7 @@ Als u het menu **acties** onder gegevens selecteert, kunt u verschillende acties
  
 Verken de beschik bare penbeweging door met de rechter muisknop te klikken op de knoop punten van SQL-groep en SQL op aanvraag.
  
-![newscriptdatabase](media/author-sql-script/newscriptdatabase.png)
+![nieuwe script database](media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

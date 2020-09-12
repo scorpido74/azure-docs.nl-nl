@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541716"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442102"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Dit document bevat richt lijnen voor het oplossen van algemene beveiligings vere
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Implementatie aanbiedingen die niet worden behandeld in deze hand leiding
 
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)
 - Azure SQL-Vm's (IaaS)
 - SQL Server
 
@@ -47,7 +47,7 @@ De beoogde doel groepen voor deze hand leiding zijn klanten die vragen hebben ov
 - Privacybeleid
 - Beveiligings technici
 
-### <a name="using-this-guide"></a><a id="using"></a>Deze hand leiding gebruiken
+### <a name="using-this-guide"></a><a id="using"></a> Deze hand leiding gebruiken
 
 Dit document is bedoeld als een aanvulling op onze bestaande [Azure SQL database Security](security-overview.md) -documentatie.
 
@@ -255,7 +255,7 @@ De volgende aanbevolen procedures zijn optioneel, maar leiden tot betere beheers
 - Maak en gebruik aangepaste rollen met de exacte machtigingen die nodig zijn. Typische rollen die in de praktijk worden gebruikt:
   - Beveiligings implementatie
   - Beheerder
-  - Developer
+  - Ontwikkelaar
   - Ondersteunings personeel
   - Accountant
   - Geautomatiseerde processen
@@ -501,7 +501,7 @@ Best practices voor het voor komen van client computers en-toepassingen met beke
 
 **Implementeren**:
 
-- Zorg ervoor dat client computers die verbinding maken met Azure SQL Database en SQL Managed instance gebruikmaken van [Transport Layer Security (TLS)](security-overview.md#transport-layer-security-encryption-in-transit).
+- Zorg ervoor dat client computers die verbinding maken met Azure SQL Database en SQL Managed instance gebruikmaken van  [Transport Layer Security (TLS)](security-overview.md#transport-layer-security-encryption-in-transit).
 
 **Aanbevolen procedures**:
 
@@ -742,7 +742,7 @@ Bewaak wie gevoelige gegevens opent en query's vastlegt op gevoelige gegevens in
 
 **Implementeren**:
 
-- Gebruik de SQL-controle en de gegevens classificatie in combi natie.
+- Gebruik een combinatie van SQL Audit en de gegevensclassificatie.
   - In uw [SQL database controle](../../azure-sql/database/auditing-overview.md) logboek kunt u de toegang tot gevoelige gegevens bijhouden. U kunt ook informatie weer geven zoals de gegevens die zijn geopend, evenals het gevoeligheids label. Zie [gegevens detectie en-classificatie](data-discovery-and-classification-overview.md) en [toegang tot gevoelige gegevens controleren](data-discovery-and-classification-overview.md#audit-sensitive-data)voor meer informatie.
 
 **Aanbevolen procedures**:

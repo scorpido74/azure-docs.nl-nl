@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956386"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441201"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weer gaven
 
@@ -35,8 +35,8 @@ De meeste vereisten voor een standaard weergave zijn nog steeds van toepassing o
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Definitie weergeven                 | Opgeslagen in SQL-groep.              | Opgeslagen in SQL-groep.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in SQL-groep tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
-|Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
-|Snelheid om weergave gegevens op te halen uit complexe query's     | Trage                                         | Hoog  
+|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
+|Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
 |Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
@@ -52,7 +52,7 @@ Een goed ontworpen gerealiseerde weer gave biedt de volgende voor delen:
 
 De gerealiseerde weer gaven die in de SQL-groep zijn geïmplementeerd, bieden ook de volgende extra voor delen:
 
-Vergelijken met andere data warehouse-providers, bieden de gerealiseerde weer gaven die in Azure SQL Data Warehouse worden geïmplementeerd ook de volgende extra voor delen:
+Vergelijken met andere data warehouse-providers, bieden de gerealiseerde weer gaven die in azure Synapse Analytics worden geïmplementeerd ook de volgende extra voor delen:
 
 - Automatische en synchrone gegevens vernieuwing met gegevens wijzigingen in basis tabellen. Er is geen gebruikers actie vereist.
 - Ondersteuning voor uitgebreide statistische functies. Zie [gerealiseerde weer gave maken als Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

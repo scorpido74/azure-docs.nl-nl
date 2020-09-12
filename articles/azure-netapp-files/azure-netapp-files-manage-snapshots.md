@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950337"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459063"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
-Azure NetApp Files ondersteunt het maken van moment opnamen op aanvraag en het gebruik van momentopname beleid om het automatisch maken van moment opnamen te plannen.  U kunt een moment opname ook herstellen naar een nieuw volume.  
+Azure NetApp Files ondersteunt het maken van moment opnamen op aanvraag en het gebruik van momentopname beleid om het automatisch maken van moment opnamen te plannen.  U kunt een moment opname ook herstellen naar een nieuw volume of een enkel bestand herstellen met behulp van een-client.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Een moment opname op aanvraag maken voor een volume
 
@@ -165,7 +165,62 @@ Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume.
     Het nieuwe volume gebruikt hetzelfde protocol dat door de moment opname wordt gebruikt.   
     Het nieuwe volume waarnaar de moment opname wordt teruggezet, wordt weer gegeven op de Blade volumes.
 
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>Een bestand herstellen vanuit een moment opname met een client
+
+Als u [de volledige moment opname niet wilt herstellen naar een volume](#restore-a-snapshot-to-a-new-volume), hebt u de optie om een bestand te herstellen vanuit een moment opname met behulp van een client waaraan het volume is gekoppeld.  
+
+Het gekoppelde volume bevat een map met moment opnamen met  `.snapshot` de naam (in NFS-clients) of `~snapshot` (in SMB-clients) die toegankelijk is voor de client. De map met moment opnamen bevat submappen die overeenkomen met de moment opnamen van het volume. Elke submap bevat de bestanden van de moment opname. Als u per ongeluk een bestand verwijdert of overschrijft, kunt u het bestand herstellen naar de bovenliggende map voor lezen/schrijven door het bestand te kopiëren van een submap voor een moment opname naar de map lezen/schrijven. 
+
+Als u het selectie vakje pad naar moment opname verbergen hebt geselecteerd tijdens het maken van het volume, wordt de map met moment opnamen verborgen. U kunt de status van het pad naar de moment opname verbergen van het volume bekijken door het volume te selecteren. U kunt de optie pad naar moment opname verbergen bewerken door te klikken op **bewerken** op de pagina van het volume.  
+
+![Opties voor volume momentopname bewerken](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Een bestand herstellen met behulp van een Linux NFS-client 
+
+1. Gebruik de `ls` Linux-opdracht om het bestand weer te geven dat u wilt herstellen vanuit de `.snapshot` map. 
+
+    Bijvoorbeeld:
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. Gebruik de `cp` opdracht om het bestand te kopiëren naar de bovenliggende map.  
+
+    Bijvoorbeeld: 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Een bestand herstellen met behulp van een Windows-client 
+
+1. Als de `~snapshot` map van het volume verborgen is, geeft u [verborgen items](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10) in de bovenliggende map weer om weer te geven `~snapshot` .
+
+    ![Verborgen items weergeven](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. Ga naar de submap in `~snapshot` om het bestand te vinden dat u wilt herstellen.  Klik met de rechter muisknop op het bestand. Selecteer **Kopiëren**.  
+
+    ![Bestand kopiëren om te herstellen](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. Ga terug naar de bovenliggende map. Klik met de rechter muisknop in de bovenliggende map en selecteer `Paste` om het bestand in de map te plakken.
+
+    ![Bestand plakken om te herstellen](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. U kunt ook met de rechter muisknop op de bovenliggende map klikken, **Eigenschappen**selecteren, klikken op het tabblad **vorige versies** om de lijst met moment opnamen weer te geven en vervolgens **herstellen** selecteren om een bestand te herstellen.  
+
+    ![Eigenschappen vorige versies](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Informatie over de opslaghiërarchie van Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Video over Azure NetApp Files-moment opnamen 101](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

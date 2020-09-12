@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135523"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459518"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
@@ -97,7 +97,7 @@ Leden van de community kunnen beheer oplossingen verzenden naar Azure Quick Star
 
    U moet [de Azure cli installeren](/cli/azure/install-azure-cli) voordat u de CLI-verwijzings opdrachten uitvoert.  Als u wilt, kunt u ook Azure Cloud Shell gebruiken om de stappen in dit artikel uit te voeren.  Azure Cloud Shell is een interactieve shell-omgeving die u via uw browser gebruikt.  Start Cloud Shell met een van de volgende methoden:
 
-   - Open Cloud Shell door naar te gaan[https://shell.azure.com](https://shell.azure.com)
+   - Open Cloud Shell door naar te gaan [https://shell.azure.com](https://shell.azure.com)
 
    - Selecteer de knop **Cloud shell** in de menu balk in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com)
 
@@ -109,18 +109,18 @@ Leden van de community kunnen beheer oplossingen verzenden naar Azure Quick Star
     az login
     ```
 
-1. De extensie `log-analytics` installeren
+1. De extensie `log-analytics-solution` installeren
 
-   De `log-analytics` opdracht is een experimentele uitbrei ding van de Azure cli-kern. Meer informatie over extensie Verwijzingen in [use extension with Azure cli](/cli/azure/azure-cli-extensions-overview?).
+   De `log-analytics-solution` opdracht is een experimentele uitbrei ding van de Azure cli-kern. Meer informatie over extensie Verwijzingen in [use extension with Azure cli](/cli/azure/azure-cli-extensions-overview?).
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    De volgende waarschuwing wordt verwacht.
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Een oplossing met Azure CLI installeren
@@ -159,7 +159,6 @@ Voor alle bewakings oplossingen is een [log Analytics-werk ruimte](../platform/m
 
 * Bij elke installatie van een oplossing kan slechts één Log Analytics-werk ruimte en één Automation-account worden gebruikt. U kunt de oplossing afzonderlijk in meerdere werk ruimten installeren.
 * Als voor een oplossing een Automation-account is vereist, moet de Log Analytics-werk ruimte en het Automation-account aan elkaar zijn gekoppeld. Een Log Analytics-werk ruimte kan alleen worden gekoppeld aan een Automation-account en een Automation-account kan alleen worden gekoppeld aan een Log Analytics-werk ruimte.
-* Als u een koppeling wilt maken, moeten de Log Analytics-werk ruimte en het Automation-account zich in hetzelfde abonnement bevinden, maar ze kunnen zich in verschillende resource groepen bevinden die in dezelfde regio zijn geïmplementeerd. De uitzonde ring is een werk ruimte in de regio VS-Oost en Automation-account in VS-Oost 2.
 
 Wanneer u een oplossing installeert via de Azure Marketplace, wordt u gevraagd naar een werk ruimte en een Automation-account. De koppeling tussen deze wordt gemaakt als ze nog niet zijn gekoppeld.
 

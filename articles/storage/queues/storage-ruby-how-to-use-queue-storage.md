@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: ac47747f7789b23801900804522681e5a4b10e5a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078696"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459603"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Queue Storage gebruiken met Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Volgende stappen
 Nu u de basis principes van wachtrij opslag hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslag taken.
 
-* Ga naar de blog van het [Azure Storage-team](https://blogs.msdn.com/b/windowsazurestorage/)
+* Ga naar de blog van het [Azure Storage-team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * Ga naar de [Azure SDK voor ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) -opslag plaats op github
 
 Voor een vergelijking tussen de Azure Queue-service die in dit artikel wordt besproken en Azure Service Bus wachtrijen die worden beschreven in het artikel [over het gebruik van service bus wachtrijen](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) , raadpleegt u [Azure-wacht rijen en service bus wacht rijen-vergeleken en daarentegen](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
