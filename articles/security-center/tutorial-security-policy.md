@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519351"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277660"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
@@ -40,7 +40,7 @@ Security Center biedt de volgende opties voor het werken met beveiligings beleid
 * **Nalevings beleid voor regelgeving toevoegen** : het nalevings Dashboard van de Security Center is de status van alle evaluaties in uw omgeving in de context van een bepaalde standaard of regelgeving (zoals Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020). Zie voor meer informatie [uw reglementaire naleving verbeteren](security-center-compliance-dashboard.md).
 
 
-## <a name="managing-your-security-policies"></a>Uw beveiligings beleid beheren
+## <a name="manage-your-security-policies"></a>Uw beveiligings beleid beheren
 
 Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Security Center:
 
@@ -54,7 +54,7 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
 
 1. De pagina beveiligings beleid voor het abonnement of de beheer groep wordt weer gegeven. Het beschik bare en toegewezen beleid wordt weer gegeven.
 
-   ![scherm beleid](./media/tutorial-security-policy/security-policy-page.png)
+   ![pagina beleid](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > Als er naast het standaard beleid een label "MG inherited" is, betekent dit dat het beleid is toegewezen aan een beheer groep en dat is overgenomen door het abonnement dat u bekijkt.
@@ -111,11 +111,11 @@ Zie [beveiligings aanbevelingen beheren](security-center-recommendations.md)voor
 
 1. Selecteer **effectief beleid weer geven**.
 
-   ![beleid uitschakelen](./media/tutorial-security-policy/view-effective-policy.png)
+   ![beleid weer geven](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. Selecteer het toegewezen beleid.
 
-   ![beleid uitschakelen](./media/tutorial-security-policy/security-policy.png)
+   ![beleid selecteren](./media/tutorial-security-policy/security-policy.png)
 
 1. Zoek in de sectie **para meters** naar het beleid dat de aanbeveling aanroept die u wilt uitschakelen, en selecteer in de vervolg keuzelijst de optie **uitgeschakeld**
 

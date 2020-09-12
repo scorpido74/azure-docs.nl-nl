@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177615"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276266"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health bewerkingen
 In dit onderwerp worden de verschillende bewerkingen beschreven die u kunt uitvoeren met behulp van Azure Active Directory (Azure AD) Connect Health.
@@ -167,7 +167,7 @@ U kunt een gebruiker of een groep die is toegevoegd aan Azure AD Connect Health 
 [//]: # (Sectie einde van RBAC)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health (Engelstalig)](./whatis-azure-ad-connect.md)
 * [Installatie van Azure AD Connect Health-Agent](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health gebruiken voor synchronisatie](how-to-connect-health-sync.md)

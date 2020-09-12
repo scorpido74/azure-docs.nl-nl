@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269145"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295543"
 ---
 # <a name="input-metadata"></a>Invoermetagegevens
 
@@ -47,13 +47,13 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | --- | --- | 
 | **VideoTracks**|Elk fysiek-activa bestand kan nul of meer video tracks bevatten die Interleaved zijn in een geschikte container indeling. Zie [VideoTracks](#videotracks)voor meer informatie. |
 | **AudioTracks**|Elk fysiek-activa bestand kan nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Zie [AudioTracks](#audiotracks) voor meer informatie. |
-| **Metagegevensarchiefmethode**  |Meta gegevens van Asset file worden weer gegeven als key\value-teken reeksen. <br />Bijvoorbeeld: `<Metadata key="language" value="eng" />` |
+| **Metagegevens**  |Meta gegevens van Asset file worden weer gegeven als key\value-teken reeksen. <br />Bijvoorbeeld: `<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>Andere onderliggende elementen
 
 | Naam | Beschrijving |
 | --- | --- |
-| **Name**<br />Vereist |Bestands naam van het activum. <br /><br />Voorbeeld: `"Name": "Ignite-short.mp4"` |
+| **Naam**<br />Vereist |Bestands naam van het activum. <br /><br />Voorbeeld: `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />Vereist |De URL waar het invoer element zich bevindt. Gebruik het `Uri` veld in plaats van id om de input-Asset bij te horen waarvan het uitvoer element deel uitmaakt.|
 | **Grootte**<br />Vereist |Grootte van het activa bestand in bytes.  <br /><br />Voorbeeld: `"Size": 75739259`|
 | **Duur**<br />Vereist |Duur van het afspelen van inhoud. <br /><br />Bijvoorbeeld: `"Duration": "PT1M10.304S"`. |
@@ -80,7 +80,7 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | **Snelheid**<br />Vereist |Gemeten video frame frequentie in. 3F-indeling. <br /><br />Voorbeeld: `"FrameRate": 29.970`|
 | **Bitsnelheid** |De gemiddelde bitsnelheid van video in bits per seconde, zoals berekend op basis van het activa bestand. Alleen de nettolading van de elementaire stream wordt geteld en de verpakkings overhead is niet opgenomen. <br /><br />Voorbeeld: `"Bitrate": 8421583`|
 | **HasBFrames** |Video track van het aantal B-frames. <br /><br />Voorbeeld: `"HasBFrames": 2`|
-| **Metagegevensarchiefmethode** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens. <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
+| **Metagegevens** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens. <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
 | **Id**<br />Vereist |Op nul gebaseerde index van dit audio-of video spoor.<br /><br /> Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. <br /><br />Voorbeeld: `"Id": 2`|
 | **Videocodec** |Video track-codec teken reeks. <br /><br />Voorbeeld: `"Codec": "h264"`|
 | **CodecLongName** |De lange naam van de audio-of video track-codec. <br /><br />Voorbeeld: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
@@ -99,7 +99,7 @@ Bevat een verzameling AssetFile-elementen voor de coderings taak.
 | **Kanalen**<br />Vereist |Aantal (0 of meer) audio kanalen. <br /><br />Voorbeeld: `"Channels": 2`|
 | **SamplingRate**<br />Vereist |Audio sampling frequentie in samples/sec of Hz. <br /><br />Voorbeeld: `"SamplingRate": 48000`|
 | **Bitsnelheid** |De gemiddelde bitsnelheid van audio in bits per seconde, zoals berekend op basis van het Asset-bestand. Alleen de nettolading van de elementaire stream wordt geteld en de pakket belasting is niet inbegrepen in dit aantal. <br /><br />Voorbeeld: `"Bitrate": 192080`|
-| **Metagegevensarchiefmethode** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens.  <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
+| **Metagegevens** |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens.  <br />Bekijk het volledige voor beeld aan het einde van het artikel. |
 | **Id**<br />Vereist |Op nul gebaseerde index van dit audio-of video spoor.<br /><br /> Dit is niet noodzakelijkerwijs het TrackID dat wordt gebruikt in een MP4-bestand. <br /><br />Voorbeeld: `"Id": 1`|
 | **Videocodec** |Video track-codec teken reeks. <br /><br />Voorbeeld: `"Codec": "aac"`|
 | **CodecLongName** |De lange naam van de audio-of video track-codec. <br /><br />Voorbeeld: `"CodecLongName": "AAC (Advanced Audio Coding)"`|

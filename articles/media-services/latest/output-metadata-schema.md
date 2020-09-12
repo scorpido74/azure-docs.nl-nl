@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267201"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289366"
 ---
 # <a name="output-metadata"></a>Uitvoermetagegevens
 
@@ -41,7 +41,7 @@ Verzameling van AssetFile-vermeldingen voor de coderings taak.
 | **Bronnen** |Verzameling van invoer/bron media bestanden, die zijn verwerkt om deze AssetFile te maken.<br />Voorbeeld: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. <br />Zie [VideoTracks](#videotracks). |
 | **AudioTracks**|Elk fysiek AssetFile kan in de waarde nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Dit is de verzameling van al deze audio sporen.<br /> Zie [AudioTracks](#audiotracks)voor meer informatie. |
-| **Name**<br />Vereist |De bestands naam voor het Media-activum. <br /><br />Voorbeeld: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Naam**<br />Vereist |De bestands naam voor het Media-activum. <br /><br />Voorbeeld: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
 | **Grootte**<br />Vereist |Grootte van het activa bestand in bytes. <br /><br />Voorbeeld: `"Size": 32414631`|
 | **Duur**<br />Vereist |Duur van het afspelen van inhoud. Zie de [iso8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling voor meer informatie. <br /><br />Voorbeeld: `"Duration": "PT1M10.315S"`|
 

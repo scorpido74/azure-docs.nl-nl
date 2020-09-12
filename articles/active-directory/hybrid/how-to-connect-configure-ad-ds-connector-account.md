@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ce6f0e5e6e958e72ddc04608c5f207fedb18daf9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072261"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279292"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: De machtigingen van een AD DS Connector-account configureren 
 
@@ -39,12 +39,12 @@ De volgende tabel bevat een overzicht van de vereiste machtigingen voor AD-objec
 | Wachtwoord-hash-synchronisatie |<li>Directory wijzigingen repliceren</li>  <li>Wijzigingen in Directory repliceren |
 | Hybride implementatie van Exchange |Lees-en schrijf machtigingen voor de kenmerken die worden beschreven in [hybride write-back van Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contact personen. |
 | Open bare map voor Exchange-e-mail |Lees machtigingen voor de kenmerken die in de [open bare map voor Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor open bare mappen worden beschreven. | 
-| Wachtwoord terugschrijven |Lees-en schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
+| Wachtwoord terugschrijven |Lees-en schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/tutorial-enable-sspr-writeback.md) voor gebruikers. |
 | Apparaat terugschrijven |Lees-en schrijf machtigingen voor apparaatklassen en containers die worden beschreven in [write-back van apparaat](how-to-connect-device-writeback.md). |
 | Groep terugschrijven |Lezen, maken, bijwerken en verwijderen van groeps objecten voor gesynchroniseerde **Office 365-groepen**.|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>De ADSyncConfig Power shell-module gebruiken 
-De ADSyncConfig-module vereist de [Remote Server Administration Tools (RSAT) voor AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) omdat deze afhankelijk is van de AD DS Power shell-module en-hulpprogram ma's. Als u RSAT voor AD DS wilt installeren, opent u een Windows Power shell-venster met ' uitvoeren als Administrator ' en voert u de volgende handelingen uit: 
+De ADSyncConfig-module vereist de [Remote Server Administration Tools (RSAT) voor AD DS](/windows-server/remote/remote-server-administration-tools) omdat deze afhankelijk is van de AD DS Power shell-module en-hulpprogram ma's. Als u RSAT voor AD DS wilt installeren, opent u een Windows Power shell-venster met ' uitvoeren als Administrator ' en voert u de volgende handelingen uit: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
@@ -311,4 +311,3 @@ Met deze cmdlet worden de volgende machtigingen ingesteld:
 - [Snelle installatie](how-to-connect-install-express.md)
 - [Aangepaste installatie](how-to-connect-install-custom.md)
 - [ADSyncConfig-verwijzing](reference-connect-adsyncconfig.md)
-

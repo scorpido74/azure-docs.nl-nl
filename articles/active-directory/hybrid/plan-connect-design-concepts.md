@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698594"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279649"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: ontwerp concepten
 Het doel van dit document is het beschrijven van gebieden die tijdens het implementatie ontwerp van Azure AD Connect moeten worden beschouwd. Dit document is een grondige kennis van bepaalde gebieden en deze concepten worden ook kort beschreven in andere documenten.
@@ -165,7 +165,7 @@ Als het kenmerk tijdens de analyse is geconfigureerd voor een of meer objecten i
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Gevolgen voor AD FS of Federatie configuratie van derden
 Als u Azure AD Connect gebruikt voor het beheren van on-premises AD FS-implementatie, werkt de Azure AD Connect de claim regels automatisch bij om hetzelfde AD-kenmerk als source Anchor te gebruiken. Dit zorgt ervoor dat de door ADFS gegenereerde ImmutableID-claim consistent is met de source Anchor-waarden die zijn geëxporteerd naar Azure AD.
 
-Als u AD FS buiten Azure AD Connect beheert of als u Federatie servers van derden gebruikt voor verificatie, moet u de claim regels voor ImmutableID-claim hand matig bijwerken zodat deze consistent zijn met de source Anchor-waarden die zijn geëxporteerd naar Azure AD, zoals beschreven in de sectie artikel [wijzigen AD FS claim regels](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). De wizard retourneert de volgende waarschuwing nadat de installatie is voltooid:
+Als u AD FS buiten Azure AD Connect beheert of als u Federatie servers van derden gebruikt voor verificatie, moet u de claim regels voor ImmutableID-claim hand matig bijwerken zodat deze consistent zijn met de source Anchor-waarden die zijn geëxporteerd naar Azure AD, zoals beschreven in de sectie artikel [wijzigen AD FS claim regels](./how-to-connect-fed-management.md#modclaims). De wizard retourneert de volgende waarschuwing nadat de installatie is voltooid:
 
 ![Federatie configuratie van derden](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
@@ -193,7 +193,7 @@ John is een gebruiker in contoso.com. U wilt dat John de on-premises UPN John \@
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Niet-routeerbaar bare on-premises domeinen en UPN voor Azure AD
 Sommige organisaties hebben niet-routeerbaare domeinen, zoals contoso. local of eenvoudige domeinen met één label, zoals contoso. U kunt een niet-routeerbaar domein niet verifiëren in azure AD. Azure AD Connect kan alleen worden gesynchroniseerd met een geverifieerd domein in azure AD. Wanneer u een Azure AD-Directory maakt, wordt er een routeerbaar domein gemaakt dat het standaard domein voor uw Azure AD wordt, bijvoorbeeld contoso.onmicrosoft.com. Daarom is het nood zakelijk om een ander routeerbaar domein te controleren in een scenario voor het geval dat u niet wilt synchroniseren met het standaard domein onmicrosoft.com.
 
-Lees [uw aangepaste domein naam toevoegen aan Azure Active Directory](../active-directory-domains-add-azure-portal.md) voor meer informatie over het toevoegen en verifiëren van domeinen.
+Lees [uw aangepaste domein naam toevoegen aan Azure Active Directory](../fundamentals/add-custom-domain.md) voor meer informatie over het toevoegen en verifiëren van domeinen.
 
 Azure AD Connect detecteert of u in een niet-routeerbaar domein omgeving werkt en vervolgens op de juiste wijze waarschuwt voor snelle instellingen. Als u in een niet-routeerbaar domein werkt, is het waarschijnlijk dat de UPN, van de gebruikers, niet-Routeer bare achtervoegsels bevat. Als u bijvoorbeeld onder contoso. local werkt Azure AD Connect, wordt u geadviseerd om aangepaste instellingen te gebruiken, in plaats van snelle instellingen te gebruiken. Met aangepaste instellingen kunt u het kenmerk opgeven dat moet worden gebruikt als UPN om zich aan te melden bij Azure nadat de gebruikers zijn gesynchroniseerd met Azure AD.
 

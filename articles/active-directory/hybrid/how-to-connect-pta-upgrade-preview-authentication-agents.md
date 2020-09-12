@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358137"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279479"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Pass-Through-verificatie Azure Active Directory: Preview-verificatie agenten bijwerken
 
@@ -60,7 +60,7 @@ Als u de versies van uw verificatie agenten wilt controleren, volgt u deze instr
 
 Voordat u een upgrade uitvoert, moet u ervoor zorgen dat u over de volgende items beschikt:
 
-1. **Alleen een globale beheerders account voor de Cloud maken**: Voer geen upgrade uit zonder alleen-Cloud account voor globale beheerders die moet worden gebruikt in nood situaties waarbij uw Pass Through-verificatie agenten niet goed werken. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Deze stap is kritiek en zorgt ervoor dat u uw Tenant niet hebt vergrendeld.
+1. **Alleen een globale beheerders account voor de Cloud maken**: Voer geen upgrade uit zonder alleen-Cloud account voor globale beheerders die moet worden gebruikt in nood situaties waarbij uw Pass Through-verificatie agenten niet goed werken. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../fundamentals/add-users-azure-active-directory.md). Deze stap is kritiek en zorgt ervoor dat u uw Tenant niet hebt vergrendeld.
 2.  **Hoge Beschik baarheid garanderen**: als dit nog niet is gedaan, installeert u een tweede zelfstandige verificatie-agent om hoge Beschik baarheid te bieden voor aanmeldings aanvragen, met behulp van deze [instructies](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>De verificatie agent op uw Azure AD Connect-server bijwerken

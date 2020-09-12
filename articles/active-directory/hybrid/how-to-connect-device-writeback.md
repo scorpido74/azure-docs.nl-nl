@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447090"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279258"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: write-back van apparaat inschakelen
 > [!NOTE]
@@ -31,10 +31,10 @@ ms.locfileid: "87447090"
 
 De volgende documentatie bevat informatie over het inschakelen van de functie voor het terugschrijven van apparaten in Azure AD Connect. Write-back van apparaat wordt gebruikt in de volgende scenario's:
 
-* [Windows hello voor bedrijven inschakelen met behulp van hybride certificaat vertrouwens implementatie](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* [Windows hello voor bedrijven inschakelen met behulp van hybride certificaat vertrouwens implementatie](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Schakel voorwaardelijke toegang op basis van apparaten in op AD FS (2012 R2 of hoger) beveiligde toepassingen (Relying Party-vertrouwens relaties).
 
-Dit biedt extra beveiliging en zekerheid dat toegang tot toepassingen alleen wordt verleend aan vertrouwde apparaten. Zie [Risico's beheren met voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) en [on-premises voorwaardelijke toegang instellen met behulp van Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md)voor meer informatie over voorwaardelijke toegang.
+Dit biedt extra beveiliging en zekerheid dat toegang tot toepassingen alleen wordt verleend aan vertrouwde apparaten. Zie [Risico's beheren met voorwaardelijke toegang](../conditional-access/overview.md) en [on-premises voorwaardelijke toegang instellen met behulp van Azure Active Directory Device Registration](../devices/overview.md)voor meer informatie over voorwaardelijke toegang.
 
 > [!IMPORTANT]
 > <li>Apparaten moeten zich in hetzelfde forest bevinden als de gebruikers. Omdat apparaten moeten worden teruggeschreven naar één forest, ondersteunt deze functie momenteel geen implementatie met meerdere gebruikers forests.</li>
@@ -83,7 +83,7 @@ Write-back van apparaat moet nu goed werken. Houd er rekening mee dat het Maxi m
    ![Lijst met geregistreerde apparaten van Active Directory-beheer centrum](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Voorwaardelijke toegang inschakelen
-Gedetailleerde instructies voor het inschakelen van dit scenario zijn beschikbaar in het [instellen van on-premises voorwaardelijke toegang met behulp van Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Gedetailleerde instructies voor het inschakelen van dit scenario zijn beschikbaar in het [instellen van on-premises voorwaardelijke toegang met behulp van Azure Active Directory Device Registration](../devices/overview.md).
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Het selectie vakje terugschrijven is nog steeds uitgeschakeld
@@ -126,9 +126,8 @@ Controleer de configuratie in Active Directory:
 ![Problemen oplossen, machtigingen controleren bij configuratie van apparaatregistratie](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>Aanvullende informatie
-* [Risico's beheren met voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)
-* [On-premises voorwaardelijke toegang instellen met behulp van Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Risico's beheren met voorwaardelijke toegang](../conditional-access/overview.md)
+* [On-premises voorwaardelijke toegang instellen met behulp van Azure Active Directory Device Registration](../devices/overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
-

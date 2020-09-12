@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73664413"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278080"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Basislijnen vergelijken met behulp van bewaking bestandsintegriteit (FIM)
 
@@ -41,7 +41,7 @@ De standaard instellingen van de FIM-register onderdelen bieden een handige mani
 >[!NOTE]
 > Recursieve controles zijn alleen van toepassing op aanbevolen beveiligings componenten en niet op aangepaste register paden.  
 
-## <a name="adding-a-custom-registry-check"></a>Een aangepaste register controle toevoegen
+## <a name="add-a-custom-registry-check"></a>Een aangepaste register controle toevoegen
 
 FIM-basis lijnen worden gestart door kenmerken te identificeren van een bekende goede status voor het besturings systeem en de ondersteunende toepassing.  In dit voor beeld richten we zich op de wachtwoord beleids configuraties voor Windows Server 2008 en hoger.
 
@@ -73,14 +73,14 @@ FIM-basis lijnen worden gestart door kenmerken te identificeren van een bekende 
 
       ![FIM inschakelen in een REGI ster](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Wijzigingen bijhouden in Windows-bestanden
+## <a name="track-changes-to-windows-files"></a>Wijzigingen in Windows-bestanden bijhouden
 
 1. In het venster **Windows-bestand toevoegen voor wijzigingen bijhouden** , in het tekstvak **pad invoeren** , voert u de map in die de bestanden bevat die u wilt bijhouden. In het voor beeld in de volgende afbeelding bevindt **Contoso web app** zich in de D:\ station in de mapstructuur van de **ContosWebApp** .  
 1. Maak een aangepaste vermelding voor een Windows-bestand door een naam op te geven van de instellings klasse, recursie in te scha kelen en de bovenste map met een Joker teken (*) op te geven.
 
     ![FIM inschakelen voor een bestand](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Wijzigings gegevens ophalen
+## <a name="retrieve-change-data"></a>Wijzigings gegevens ophalen
 
 Bewakings gegevens voor bestands integriteit bevinden zich in de Azure Log Analytics/ConfigurationChange-tabelset.  
 

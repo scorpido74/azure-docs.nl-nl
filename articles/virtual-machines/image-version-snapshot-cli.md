@@ -1,6 +1,6 @@
 ---
-title: 'CLI: een installatie kopie maken van een moment opname of VHD in een galerie met gedeelde afbeeldingen'
-description: Meer informatie over het maken van een installatie kopie van een moment opname of VHD in een galerie met gedeelde afbeeldingen met behulp van de Azure CLI.
+title: 'CLI: een installatie kopie maken van een moment opname of een beheerde schijf in een galerie met gedeelde afbeeldingen'
+description: Meer informatie over het maken van een installatie kopie van een moment opname of een beheerde schijf in een galerie met gedeelde afbeeldingen met behulp van de Azure CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502874"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297090"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Een installatie kopie maken van een VHD of moment opname in een galerie met gedeelde afbeeldingen met behulp van de Azure CLI
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Een installatie kopie maken van een beheerde schijf of moment opname in een galerie met gedeelde afbeeldingen met behulp van de Azure CLI
 
-Als u een bestaande moment opname of VHD hebt die u wilt migreren naar een gedeelde installatie kopie galerie, kunt u rechtstreeks vanuit de VHD of de moment opname een installatie kopie van een gedeelde installatie kopie maken. Nadat u de nieuwe installatie kopie hebt getest, kunt u de bron-VHD of-moment opname verwijderen. U kunt ook een installatie kopie maken op basis van een VHD of een moment opname in een galerie met gedeelde afbeeldingen met behulp van de [Azure PowerShell](image-version-snapshot-powershell.md).
+Als u een bestaande moment opname of beheerde schijf hebt die u wilt migreren naar een gedeelde installatie kopie galerie, kunt u rechtstreeks vanuit de beheerde schijf of moment opname een installatie kopie van een gedeelde installatie kopie maken. Nadat u de nieuwe installatie kopie hebt getest, kunt u de door de bron beheerde schijf of moment opname verwijderen. U kunt ook een installatie kopie maken van een beheerde schijf of moment opname in een galerie met gedeelde afbeeldingen met behulp van de [Azure PowerShell](image-version-snapshot-powershell.md).
 
 Afbeeldingen in een afbeeldings galerie hebben twee onderdelen, die we in dit voor beeld gaan maken:
 - Een **definitie van een installatie kopie** bevat informatie over de installatie kopie en vereisten voor het gebruik ervan. Dit omvat of de installatie kopie Windows of Linux, gespecialiseerde of gegeneraliseerde, release opmerkingen en minimale en maximale geheugen vereisten zijn. Het is een definitie van een type installatie kopie. 
@@ -27,13 +27,13 @@ Afbeeldingen in een afbeeldings galerie hebben twee onderdelen, die we in dit vo
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet een moment opname of VHD hebben om dit artikel te volt ooien. 
+U moet een moment opname of beheerde schijf hebben om dit artikel te volt ooien. 
 
 Als u een gegevens schijf wilt toevoegen, mag de grootte van de gegevens schijf niet groter zijn dan 1 TB.
 
 Wanneer u dit artikel doorwerkt, vervangt u de resource namen waar nodig.
 
-## <a name="find-the-snapshot-or-vhd"></a>De moment opname of VHD zoeken 
+## <a name="find-the-snapshot-or-managed-disk"></a>De moment opname of Managed Disk zoeken 
 
 U kunt een lijst weer geven met moment opnamen die beschikbaar zijn in een resource groep met behulp van [AZ snap shot List](/cli/azure/snapshot#az-snapshot-list). 
 
@@ -41,13 +41,13 @@ U kunt een lijst weer geven met moment opnamen die beschikbaar zijn in een resou
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-U kunt ook een VHD gebruiken in plaats van een moment opname. Gebruik [AZ Disk List](/cli/azure/disk#az-disk-list)om een VHD op te halen. 
+U kunt ook een beheerde schijf gebruiken in plaats van een moment opname. Gebruik [AZ Disk List](/cli/azure/disk#az-disk-list)om een beheerde schijf te verkrijgen. 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
 ```
 
-Nadat u de ID van de moment opname of VHD hebt gemaakt en deze aan een variabele met de naam hebt toegewezen, kunt u deze `$source` later gebruiken.
+Wanneer u de ID van de moment opname of de beheerde schijf hebt en deze toewijst aan een variabele met de naam die u `$source` later kunt gebruiken.
 
 U kunt hetzelfde proces gebruiken voor het ophalen van alle gegevens schijven die u wilt toevoegen aan uw installatie kopie. Wijs ze toe aan variabelen en gebruik deze variabelen later wanneer u de versie van de installatie kopie maakt.
 
@@ -67,13 +67,13 @@ az sig list -o table
 
 Definities van installatiekopieën maken een logische groepering voor installatiekopieën. Ze worden gebruikt om informatie over de installatie kopie te beheren. Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. 
 
-Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. In dit voor beeld gaan we ervan uit dat de moment opname of VHD afkomstig is van een virtuele machine die in gebruik is en niet is gegeneraliseerd. Als de VHD of moment opname is gemaakt van een gegeneraliseerd besturings systeem (na het uitvoeren van Sysprep voor Windows of [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` voor Linux), wijzigt u vervolgens de `-OsState` to `generalized` . 
+Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. In dit voor beeld gaan we ervan uit dat de moment opname of beheerde schijf afkomstig is van een virtuele machine die in gebruik is en niet is gegeneraliseerd. Als de beheerde schijf of moment opname is gemaakt van een gegeneraliseerd besturings systeem (na het uitvoeren van Sysprep voor Windows of [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` voor Linux), wijzigt u vervolgens de `-OsState` to `generalized` . 
 
 Zie [Installatiekopiedefinities](./linux/shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
 Een installatiekopiedefinitie in de galerie maken met [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-In dit voorbeeld heeft de definitie van de installatiekopie de naam *myImageDefinition* en is deze voor een [gespecialiseerde](./linux/shared-image-galleries.md#generalized-and-specialized-images) installatiekopie van een Linux-besturingssysteem. Als u een definitie voor installatie kopieën wilt maken met een Windows-besturings systeem, gebruikt u `--os-type Windows` . 
+In dit voorbeeld heeft de definitie van de installatiekopie de naam *myImageDefinition* en is deze voor een [gespecialiseerde](./linux/shared-image-galleries.md#generalized-and-specialized-images) installatiekopie van een Linux-besturingssysteem. Als u een definitie wilt maken voor installatiekopieën met een Windows-besturingssysteem, gebruikt u `--os-type Windows`. 
 
 In dit voor beeld heeft de galerie de naam *myGallery*, het bevindt zich in de resource groep *myGalleryRG* en de naam van de definitie van de installatie kopie *mImageDefinition*.
 
@@ -99,9 +99,9 @@ Maak een installatie kopie versie met behulp van [AZ image galerie Create-Image-
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
-In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan 1 replica maken in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost 2* met zone-redundante opslag. Wanneer u doel regio's voor replicatie kiest, moet u er ook voor kiezen om de *bron* regio van de VHD of moment opname op te nemen als een doel voor replicatie.
+In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan 1 replica maken in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost 2* met zone-redundante opslag. Wanneer u doel regio's voor replicatie kiest, moet u er ook voor kiezen om de *bron* regio van de beheerde schijf of moment opname op te nemen als een doel voor replicatie.
 
-Geef de ID van de moment opname of VHD op in de `--os-snapshot` para meter.
+Geef de ID van de moment opname of de beheerde schijf in de `--os-snapshot` para meter door.
 
 
 ```azurecli-interactive 

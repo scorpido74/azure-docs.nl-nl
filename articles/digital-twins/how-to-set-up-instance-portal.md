@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 300a11c36b11230d2bd75534f152a0a5955743ed
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181783"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280023"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -162,5 +162,9 @@ Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk hoe u uw client toepassing verbindt met uw exemplaar door de verificatie code van de client-app te schrijven:
+Test afzonderlijke REST API-aanroepen voor uw exemplaar met behulp van de Azure Digital Apparaatdubbels CLI-opdrachten: 
+* [AZ DT-referentie](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
+
+U kunt ook zien hoe u uw client toepassing verbindt met uw instantie door de verificatie code van de client-app te schrijven:
 * [*Instructies: app-verificatie code schrijven*](how-to-authenticate-client.md)

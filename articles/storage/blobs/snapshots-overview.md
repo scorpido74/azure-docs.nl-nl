@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230329"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295394"
 ---
 # <a name="blob-snapshots"></a>BLOB-moment opnamen
 
@@ -90,25 +90,25 @@ De volgende scenario's laten zien hoe kosten worden toegerekend voor een blok-Bl
 
 In scenario 1 is de basis-BLOB niet bijgewerkt nadat de moment opname is gemaakt, dus worden er alleen kosten in rekening gebracht voor unieke blokken 1, 2 en 3.
 
-![Diagram 1 met facturering voor unieke blokken in basis-Blob en moment opname](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![Diagram 1 met facturering voor unieke blokken in basis-Blob en moment opname.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>Scenario 2
 
 In scenario 2 is de basis-BLOB bijgewerkt, maar niet de moment opname. Blok 3 is bijgewerkt en hoewel het dezelfde gegevens en dezelfde ID bevat, is dit niet hetzelfde als blok 3 in de moment opname. Als gevolg hiervan wordt het account in rekening gebracht voor vier blokken.
 
-![Diagram 2 voor het factureren van unieke blokken in de basis-Blob en-moment opname](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![Diagram 2 toont facturering voor unieke blokken in basis-Blob en moment opname.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>Scenario 3
 
 In scenario 3 is de basis-BLOB bijgewerkt, maar niet de moment opname. Blok 3 is vervangen door blok 4 in de basis-blob, maar de moment opname komt nog steeds overeen met blok 3. Als gevolg hiervan wordt het account in rekening gebracht voor vier blokken.
 
-![Diagram 3 voor het factureren van unieke blokken in de basis-Blob en-moment opname](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![Diagram 3 toont facturering voor unieke blokken in basis-Blob en moment opname.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>Scenario 4
 
 In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke blokken.
 
-![Diagram 4 voor het factureren van unieke blokken in de basis-Blob en-moment opname](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![Diagram 4 wordt weer gegeven voor de facturering van unieke blokken in de basis-Blob en de moment opname.](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > Vermijd het aanroepen van methoden waarbij de gehele BLOB wordt overschreven. in plaats daarvan worden afzonderlijke blokken bijgewerkt zodat de kosten laag blijven.
@@ -128,6 +128,10 @@ In de volgende tabel wordt het facturerings gedrag voor een BLOB of moment opnam
 | Een moment opname | De moment opname in de nieuwe laag en de basis-Blob in de oorspronkelijke laag, plus eventuele unieke blokken in andere moment opnamen. <sup>1</sup> |
 
 <sup>1</sup> Als er andere eerdere versies of moment opnamen zijn die niet zijn verplaatst uit de oorspronkelijke laag, worden deze versies of moment opnamen in rekening gebracht op basis van het aantal unieke blokken dat ze bevatten, zoals wordt beschreven in [Facturering wanneer de BLOB-laag niet expliciet is ingesteld](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+In het volgende diagram ziet u hoe objecten worden gefactureerd wanneer een blob met moment opnamen wordt verplaatst naar een andere laag.
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="Diagram waarin wordt getoond hoe objecten worden gefactureerd wanneer een blob met moment opnamen expliciet wordt gelaagd.":::
 
 Het expliciet instellen van de laag voor een blob, versie of moment opname kan niet ongedaan worden gemaakt. Als u een BLOB naar een nieuwe laag verplaatst en vervolgens weer naar de oorspronkelijke laag verplaatst, worden er kosten in rekening gebracht voor de volledige lengte van de inhoud van het object, zelfs als er blokken met andere objecten in de oorspronkelijke laag worden gedeeld.
 

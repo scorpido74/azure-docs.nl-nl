@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355995"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275899"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: problemen met LocalDB met een limiet van 10 GB oplossen
 Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. U kunt de standaard SQL Server 2012 Express LocalDB gebruiken die samen met Azure AD Connect is geïnstalleerd, maar ook uw eigen volledige SQL. Voor SQL Server Express geldt een limiet van 10 GB. Wanneer u LocalDB gebruikt en deze limiet is bereikt, kan de Azure AD Connect-synchronisatieservice niet langer starten of goed synchroniseren. In dit artikel worden de herstel stappen beschreven.
@@ -55,7 +55,7 @@ Bepaal eerst of de synchronisatie service nog steeds actief is:
 5. Als deze niet actief is, probeert u de service te starten. Als de service met succes wordt gestart, slaat u [de database stap kleiner](#shrink-the-database) en gaat u naar de stap [Run Data History-gegevens verwijderen](#delete-run-history-data) . Ga anders verder met [de stap data base verkleinen](#shrink-the-database) .
 
 ### <a name="shrink-the-database"></a>De data base verkleinen
-Gebruik de verkleinings bewerking om voldoende DB-ruimte vrij te maken om de synchronisatie service te starten. Hiermee wordt DB-ruimte vrijgemaakt door spaties in de data base te verwijderen. Deze stap is het beste omdat u niet zeker weet dat u altijd ruimte kunt herstellen. Lees dit artikel [een Data Base verkleinen](https://msdn.microsoft.com/library/ms189035.aspx)voor meer informatie over de verkleinings bewerking.
+Gebruik de verkleinings bewerking om voldoende DB-ruimte vrij te maken om de synchronisatie service te starten. Hiermee wordt DB-ruimte vrijgemaakt door spaties in de data base te verwijderen. Deze stap is het beste omdat u niet zeker weet dat u altijd ruimte kunt herstellen. Lees dit artikel [een Data Base verkleinen](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)voor meer informatie over de verkleinings bewerking.
 
 > [!IMPORTANT]
 > Sla deze stap over als u de synchronisatie service kunt uitvoeren. Het wordt afgeraden de SQL-Data Base te verkleinen omdat deze kan leiden tot slechte prestaties vanwege een verhoogde fragmentatie.
@@ -100,8 +100,8 @@ Deze stap is het verminderen van de kans op problemen met de limiet van 10 GB na
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>Lange termijn oplossing: migreren naar volledige SQL
 In het algemeen is het probleem indicatief dat de grootte van 10 GB-data base niet langer voldoende is voor Azure AD Connect om uw on-premises Active Directory te synchroniseren met Azure AD. Het is raadzaam om over te scha kelen naar het gebruik van de volledige versie van SQL Server. U kunt de LocalDB van een bestaande Azure AD Connect-implementatie niet rechtstreeks vervangen door de database van de volledige versie van SQL. In plaats daarvan implementeert u een nieuwe Azure AD Connect-server met de volledige SQL. U doet er verstandig aan een swingmigratie uit te voeren, waarbij de nieuwe Azure AD Connect-server (met SQL-database) wordt geïmplementeerd als testserver, naast de bestaande Azure AD Connect-server (met LocalDB). 
-* Zie het artikel [Aangepaste installatie van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom) voor instructies over het configureren van externe SQL met Azure AD Connect.
-* Zie het artikel [Azure AD Connect: Upgrade from a previous version to the latest](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration) (Azure AD Connect: upgraden van een vorige naar de meest recente versie) voor instructies over swingmigratie voor een Azure AD Connect-upgrade.
+* Zie het artikel [Aangepaste installatie van Azure AD Connect](./how-to-connect-install-custom.md) voor instructies over het configureren van externe SQL met Azure AD Connect.
+* Zie het artikel [Azure AD Connect: Upgrade from a previous version to the latest](./how-to-upgrade-previous-version.md#swing-migration) (Azure AD Connect: upgraden van een vorige naar de meest recente versie) voor instructies over swingmigratie voor een Azure AD Connect-upgrade.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

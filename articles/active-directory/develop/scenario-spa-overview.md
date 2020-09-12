@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885171"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291944"
 ---
 # <a name="scenario-single-page-application"></a>Scenario: toepassing met één pagina
 
@@ -35,11 +35,17 @@ U kunt uw eerste toepassing maken met behulp van de Java script SPA Quick Start:
 
 ## <a name="overview"></a>Overzicht
 
-Veel moderne webtoepassingen zijn gebouwd als toepassingen met één pagina aan de client zijde. Ontwikkel aars schrijven ze met Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, Vue.js en React.js. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde. 
+Veel moderne webtoepassingen zijn gebouwd als toepassingen met één pagina aan de client zijde. Ontwikkel aars schrijven ze met Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, vue en reageren. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde. 
 
-Met het micro soft Identity-platform kunnen toepassingen met één pagina worden aangemeld en tokens worden opgehaald voor toegang tot back-end-services of Web-Api's met behulp van de [impliciete OAuth 2,0-stroom](./v2-oauth2-implicit-grant-flow.md). Met de impliciete stroom kan de toepassing ID-tokens ophalen die de geverifieerde gebruiker vertegenwoordigen en ook toegangs tokens hebben die nodig zijn om beveiligde Api's aan te roepen.
+Het micro soft Identity-platform biedt **twee** opties voor het inschakelen van toepassingen met één pagina voor het aanmelden van gebruikers en het ophalen van tokens voor toegang tot back-end-services of Web-api's:
 
-![Toepassingen met één pagina](./media/scenarios/spa-app.svg)
+- [OAuth 2,0-autorisatie code stroom (met PKCE)](./v2-oauth2-auth-code-flow.md). Met de autorisatie code stroom kan de toepassing een autorisatie code voor **id-** tokens uitwisselen die de geverifieerde gebruikers-en **toegangs** tokens vertegenwoordigen die nodig zijn om beveiligde api's aan te roepen. Daarnaast worden **vernieuwings** tokens geretourneerd die lange termijn toegang bieden tot bronnen namens gebruikers zonder dat hiervoor interactie met die gebruikers nodig is. Dit is de **Aanbevolen** methode.
+
+![Toepassingen met één pagina-auth](./media/scenarios/spa-app-auth.svg)
+
+- [OAuth 2,0-impliciete stroom](./v2-oauth2-implicit-grant-flow.md). Met de impliciete toekennings stroom kan de toepassing **id-** en **toegangs** tokens ophalen. In tegens telling tot de autorisatie code stroom retourneert impliciete toekennings stroom geen **vernieuwings token**.
+
+![Toepassingen met één pagina-impliciet](./media/scenarios/spa-app.svg)
 
 In deze verificatie stroom zijn geen toepassings scenario's opgenomen die gebruikmaken van platformoverschrijdende java script frameworks zoals elektroden en reageren op systeem eigen. Ze vereisen verdere mogelijkheden voor interactie met de systeem eigen platformen.
 
@@ -47,9 +53,9 @@ In deze verificatie stroom zijn geen toepassings scenario's opgenomen die gebrui
 
 U hebt het volgende nodig om dit scenario voor uw toepassing in te scha kelen:
 
-* Registratie van toepassingen met Azure Active Directory (Azure AD). Deze registratie omvat het inschakelen van de impliciete stroom en het instellen van een omleidings-URI waarmee tokens worden geretourneerd.
-* Toepassings configuratie met de geregistreerde toepassings eigenschappen, zoals de toepassings-ID.
-* Micro soft Authentication Library (MSAL) gebruiken om de verificatie stroom uit te voeren en tokens te verkrijgen.
+* Registratie van toepassingen met Azure Active Directory (Azure AD). De registratie stappen verschillen tussen de impliciete overdrachts stroom en de autorisatie code stroom.
+* Toepassings configuratie met de eigenschappen van de geregistreerde toepassing, zoals de toepassings-ID.
+* Micro soft-verificatie bibliotheek voor Java script (MSAL.js) gebruiken om de verificatie stroom uit te voeren en tokens te verkrijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

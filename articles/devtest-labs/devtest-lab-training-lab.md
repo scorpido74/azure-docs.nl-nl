@@ -3,12 +3,12 @@ title: Azure DevTest Labs voor training gebruiken | Microsoft Docs
 description: In dit artikel vindt u gedetailleerde stappen die u kunt volgen om een lab in te stellen voor training in Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2de9550c62f04286a4f9ad42238bfefb9846477
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484142"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294846"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Azure DevTest Labs gebruiken voor training
 Azure DevTest Labs kunnen worden gebruikt voor het implementeren van veel belang rijke scenario's naast dev/test. Een van deze scenario's is het instellen van een Lab voor training. Met Azure DevTest Labs kunt u een lab maken waarin u aangepaste sjablonen kunt opgeven die elke getrainde kan gebruiken om identieke en geïsoleerde omgevingen te maken voor training. U kunt beleids regels Toep assen om ervoor te zorgen dat de trainings omgevingen alleen beschikbaar zijn voor elke getrainde wanneer ze deze nodig hebben en voldoende resources bevatten, zoals virtuele machines, die vereist zijn voor de training. Ten slotte kunt u het lab eenvoudig delen met trainees, dat ze met één klik kunnen openen.
@@ -44,7 +44,7 @@ In dit artikel vindt u informatie over diverse Azure DevTest Labs functies die k
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u installatie kopieën van Azure Marketplace kunt white list. u kunt alleen de installatie kopieën die u voor de training wilt selecteren beschikbaar maken. |
+   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u installatie kopieën van Azure Marketplace kunt toestaan. u kunt alleen de installatie kopieën die u voor de training wilt selecteren beschikbaar maken. |
    | [Een aangepaste installatiekopie maken](devtest-lab-create-template.md) |Maak een aangepaste installatie kopie door de software die u nodig hebt voor de training vooraf te installeren, zodat trainees snel een virtuele machine kan maken met behulp van de aangepaste installatie kopie. |
 3. **Herbruikbare sjablonen voor trainings machines maken** 
    
@@ -91,4 +91,3 @@ In dit artikel vindt u informatie over diverse Azure DevTest Labs functies die k
    | [Een lab maken met een resource manager-sjabloon](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Maak Labs in Azure DevTest Labs met behulp van Resource Manager-sjablonen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

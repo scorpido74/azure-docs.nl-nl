@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077928"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292721"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen of toepassingen in azure AD-toegangs beoordelingen bekijken
 
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe u uw eigen toegang tot een groep of een toep
 De eerste stap voor het uitvoeren van een toegangs beoordeling is het zoeken en openen van de toegangs beoordeling.
 
 >[!IMPORTANT]
-> Er kunnen vertragingen optreden bij het ontvangen van e-mail en het kan tot 24 uur duren. White list azure-noreply@microsoft.com om ervoor te zorgen dat u alle e-mail berichten ontvangt.
+> Er kunnen vertragingen optreden bij het ontvangen van e-mail en het kan tot 24 uur duren. Voeg azure-noreply@microsoft.com aan de lijst met veilige geadresseerden toe om ervoor te zorgen dat u alle e-mail berichten ontvangt.
 
 1. Zoek naar een e-mail bericht van micro soft waarin u wordt gevraagd de toegang te controleren. Hier volgt een voor beeld van een e-mail bericht om uw toegang tot een groep te controleren.
 
@@ -106,7 +106,7 @@ U kunt de nieuwe ervaring proberen met de bijgewerkte gebruikers interface in mi
 ### <a name="email"></a>E-mail
 
 >[!IMPORTANT]
-> Er kunnen vertragingen optreden bij het ontvangen van e-mail en het kan tot 24 uur duren. White list azure-noreply@microsoft.com om ervoor te zorgen dat u alle e-mail berichten ontvangt.
+> Er kunnen vertragingen optreden bij het ontvangen van e-mail en het kan tot 24 uur duren. Voeg azure-noreply@microsoft.com aan de lijst met veilige geadresseerden toe om ervoor te zorgen dat u alle e-mail berichten ontvangt.
 
 1. Zoek naar een e-mail bericht van micro soft waarin u wordt gevraagd de toegang te controleren. Hieronder ziet u een voor beeld van een e-mail bericht:
 
@@ -123,7 +123,7 @@ U kunt de nieuwe ervaring proberen met de bijgewerkte gebruikers interface in mi
 
 U kunt de openstaande toegangs beoordelingen ook weer geven met behulp van uw browser om mijn toegang te openen.
 
-1. Meld u aan bij mijn toegang ophttps://myaccess.microsoft.com/
+1. Meld u aan bij mijn toegang op https://myaccess.microsoft.com/
 
 2. Selecteer **toegangs beoordelingen** in het menu op de balk aan de linkerkant om een lijst weer te geven met openstaande toegangs beoordelingen die aan u zijn toegewezen.
 
@@ -165,4 +165,4 @@ U kunt de openstaande toegangs beoordelingen ook weer geven met behulp van uw br
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een toegangs beoordeling van groepen of toepassingen volt ooien](complete-access-review.md)
+- [Een toegangsbeoordeling van groepen of toepassingen voltooien](complete-access-review.md)

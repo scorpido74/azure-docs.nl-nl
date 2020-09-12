@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357831"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278595"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Gebruikersprivacy en naadloze eenmalige aanmelding van Azure AD
 
@@ -64,7 +64,7 @@ Zie [dit artikel](reference-connect-user-privacy.md)voor meer informatie over ge
 
 ### <a name="note-about-domain-controller-logs"></a>Opmerking over de logboeken van de domein controller
 
-Als controle logboek registratie is ingeschakeld, kan dit product beveiligings logboeken genereren voor uw domein controllers. Lees dit [artikel](https://technet.microsoft.com/library/dd277403.aspx)voor meer informatie over het configureren van controle beleid.
+Als controle logboek registratie is ingeschakeld, kan dit product beveiligings logboeken genereren voor uw domein controllers. Lees dit [artikel](/previous-versions/tn-archive/dd277403(v=technet.10))voor meer informatie over het configureren van controle beleid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

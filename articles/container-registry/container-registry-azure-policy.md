@@ -3,16 +3,16 @@ title: Naleving met behulp van Azure Policy
 description: Ingebouwde beleids regels toewijzen in Azure Policy om de naleving van uw Azure-container registers te controleren
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c56616bcc411063d0ebfda28ba1e6fdf44c7fb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791891"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291009"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Controle van de naleving van Azure-container registers met behulp van Azure Policy
 
-[Azure Policy](../governance/policy/overview.md) is een service in azure die u gebruikt om beleids regels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en effecten afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en service level agreements in uw bedrijf.
+[Azure Policy](../governance/policy/overview.md) is een service in azure die u gebruikt om beleids regels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en gedrag afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en Service Level Agreements in uw bedrijf.
 
 In dit artikel worden ingebouwde beleids regels voor Azure Container Registry geïntroduceerd. Gebruik deze beleids regels om nieuwe en bestaande registers te controleren op naleving.
 
@@ -22,7 +22,7 @@ Er worden geen kosten in rekening gebracht voor het gebruik van Azure Policy.
 
 De volgende ingebouwde beleids definities zijn specifiek voor Azure Container Registry:
 
-[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
+[!INCLUDE [azure-policy-reference-policies-container-registry](../../includes/policy/reference/bycat/policies-container-registry.md)]
 
 Zie ook de ingebouwde Network Policy Definition: [container Registry moet een service-eind punt voor een virtueel netwerk gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 

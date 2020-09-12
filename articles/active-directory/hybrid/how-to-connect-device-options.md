@@ -16,12 +16,12 @@ ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedf1419a763fe0b0f528bee6e1b48e435ec0e2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d8cc39174f6392b0c532948305fa713535f0c9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360024"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279224"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect: opties voor apparaten
 
@@ -45,6 +45,5 @@ De volgende documentatie bevat informatie over de verschillende beschik bare opt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Hybride Azure AD-deelname configureren](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Hybride Azure AD-deelname configureren](../devices/hybrid-azuread-join-plan.md)
 * [Write-back van apparaat configureren/uitschakelen](how-to-connect-device-writeback.md)
-

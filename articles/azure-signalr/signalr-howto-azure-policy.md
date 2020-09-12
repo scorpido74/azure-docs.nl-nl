@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 1e0b6fbcacf13296d1d219da82d1b6f4c74ad7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85132003"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295013"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>Controleer de naleving van Azure signalerings service bronnen met behulp van Azure Policy
 
-[Azure Policy](../governance/policy/overview.md) is een service in azure die u gebruikt om beleids regels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en effecten afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en service level agreements in uw bedrijf.
+[Azure Policy](../governance/policy/overview.md) is een service in azure die u gebruikt om beleids regels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en gedrag afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en Service Level Agreements in uw bedrijf.
 
 In dit artikel worden ingebouwde beleids regels (preview-versie) geïntroduceerd voor de Azure signalerings service. Gebruik dit beleid om nieuwe en bestaande signalerings bronnen te controleren op naleving.
 
@@ -25,7 +25,7 @@ Er worden geen kosten in rekening gebracht voor het gebruik van Azure Policy.
 
 De volgende ingebouwde beleids definities zijn specifiek voor de Azure signalerings service:
 
-[!INCLUDE [azure-policy-samples-policies-signalr](../../includes/policy/samples/bycat/policies-signalr.md)]
+[!INCLUDE [azure-policy-reference-policies-signalr](../../includes/policy/reference/bycat/policies-signalr.md)]
 
 ## <a name="assign-policy-definitions"></a>Beleids definities toewijzen
 

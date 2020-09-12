@@ -17,19 +17,19 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385089"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278034"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Het wacht woord voor het ADSync-service account wijzigen
 Als u het wacht woord voor het ADSync-service account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het ADSync-service account opnieuw hebt geïnitialiseerd. 
 
 Azure AD Connect, als onderdeel van de synchronisatie Services, gebruikt een versleutelings sleutel voor het opslaan van de wacht woorden van het AD DS Connector-account en het ADSync-service account.  Deze accounts worden versleuteld voordat ze worden opgeslagen in de-data base. 
 
-De versleutelings sleutel die wordt gebruikt, is beveiligd met [Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI beveiligt de versleutelings sleutel met behulp van het **ADSync-service account**. 
+De versleutelings sleutel die wordt gebruikt, is beveiligd met [Windows Data Protection (DPAPI)](/previous-versions/ms995355(v=msdn.10)). DPAPI beveiligt de versleutelings sleutel met behulp van het **ADSync-service account**. 
 
 Als u het wacht woord van het service account wilt wijzigen, kunt u de procedures in [de versleutelings sleutel voor het ADSync-service account afbreken](#abandoning-the-adsync-service-account-encryption-key) om dit te bereiken.  Deze procedures moeten ook worden gebruikt als u de versleutelings sleutel om de een of andere reden moet afbreken.
 
@@ -84,9 +84,9 @@ De bestaande versleutelings sleutel afbreken zodat de nieuwe versleutelings sleu
 
 2. Een nieuwe Power shell-sessie starten.
 
-3. Navigeer naar map:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
+3. Navigeer naar map: `'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
-4. Voer de volgende opdracht uit:`./miiskmu.exe /a`
+4. Voer de volgende opdracht uit: `./miiskmu.exe /a`
 
 ![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 

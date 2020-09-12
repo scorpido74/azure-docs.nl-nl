@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816487"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291922"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -149,7 +149,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-Als u een schijf versleuteling wilt opgeven die is ingesteld op voor een installatie kopie versie, gebruikt u  [AZ afbeeldingen galerie Create-Image-version](/cli/azure/sig/image-version#az-sig-image-version-create) met de `--target-region-encryption` para meter. De notatie voor `--target-region-encryption` is een door spaties gescheiden lijst met sleutels voor het versleutelen van het besturings systeem en de gegevens schijven. Dit ziet er als volgt uit: `<encryption set for the OS disk>,<Lun number of the data disk>, <encryption set for the data disk>, <Lun number for the second data disk>, <encryption set for the second data disk>`. 
+Als u een schijf versleuteling wilt opgeven die is ingesteld op voor een installatie kopie versie, gebruikt u  [AZ afbeeldingen galerie Create-Image-version](/cli/azure/sig/image-version#az-sig-image-version-create) met de `--target-region-encryption` para meter. De notatie voor `--target-region-encryption` is een door komma's gescheiden lijst met sleutels voor het versleutelen van het besturings systeem en de gegevens schijven. Dit ziet er als volgt uit: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>`. 
 
 Als de bron voor de besturingssysteem schijf een beheerde schijf of virtuele machine is, gebruikt `--managed-image` u om de bron voor de versie van de installatie kopie op te geven. In dit voor beeld is de bron een beheerde installatie kopie met een besturingssysteem schijf en een gegevens schijf op LUN 0. De besturingssysteem schijf wordt versleuteld met DiskEncryptionSet1 en de gegevens schijf wordt versleuteld met DiskEncryptionSet2.
 

@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cc3bc176798efda46f03c80fe9cce2edd7daf6b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262631"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291546"
 ---
 # <a name="filters"></a>Filters
 
@@ -79,7 +79,7 @@ Bij het filteren van eigenschaps voorwaarden worden spoor typen, waarden (beschr
 |**Bitsnelheid**|Gebruik de bitsnelheid van het nummer voor het filteren.<br/><br/>De aanbevolen waarde is een aantal bitrates, in bits per seconde. Bijvoorbeeld ' 0-2427000 '.<br/><br/>Opmerking: Hoewel u een specifieke bitsnelheid kunt gebruiken, zoals 250000 (bits per seconde), wordt deze methode niet aanbevolen, omdat de exacte bitsnelheid van het ene naar het andere activum kunnen variëren.|
 |**FourCC**|Gebruik de FourCC-waarde van het nummer voor filteren.<br/><br/>De waarde is het eerste element van de indeling codecs, zoals opgegeven in [RFC 6381](https://tools.ietf.org/html/rfc6381). Momenteel worden de volgende codecs ondersteund: <br/>For video: "avc1", "hev1", "hvc1"<br/>Voor audio: "mp4a", "EC-3"<br/><br/>Als u de FourCC-waarden voor sporen in een Asset wilt bepalen, kunt u het manifest bestand ophalen en onderzoeken.|
 |**Taal**|De taal van het nummer gebruiken voor het filteren.<br/><br/>De waarde is het label van een taal die u wilt toevoegen, zoals opgegeven in RFC 5646. Bijvoorbeeld ' en '.|
-|**Name**|Gebruik de naam van het nummer voor filteren.|
+|**Naam**|Gebruik de naam van het nummer voor filteren.|
 |**Type**|Het type van het nummer gebruiken voor filteren.<br/><br/>De volgende waarden zijn toegestaan: "video", "audio" of "text".|
 
 ### <a name="example"></a>Voorbeeld

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182374"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276198"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD Connect Health
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Directory (Azure AD) Connect Health. Deze veelgestelde vragen worden behandeld in het gebruik van de service, waaronder het facturerings model, de mogelijkheden, beperkingen en ondersteuning.
@@ -70,10 +70,10 @@ Azure AD Connect Health wordt niet ondersteund in de Duitse Cloud, met uitzonde 
 
 | Rollen | Functies | Ondersteund in de Duitse Cloud |
 | ------ | --------------- | --- |
-| Connect Health voor synchronisatie | Bewaking/inzichten/waarschuwingen/analyse | Nee |
-|  | Synchronisatie fout rapport | Ja |
-| Connect Health voor ADFS | Bewaking/inzichten/waarschuwingen/analyse | Nee |
-| Status van verbinding maken voor toevoegen | Bewaking/inzichten/waarschuwingen/analyse | Nee |
+| Connect Health voor synchronisatie | Bewaking/inzichten/waarschuwingen/analyse | No |
+|  | Synchronisatie fout rapport | Yes |
+| Connect Health voor ADFS | Bewaking/inzichten/waarschuwingen/analyse | No |
+| Status van verbinding maken voor toevoegen | Bewaking/inzichten/waarschuwingen/analyse | No |
 
 Om ervoor te zorgen dat de verbindings status van de agent wordt gesynchroniseerd, moet u de vereisten voor de [installatie](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) dienovereenkomstig configureren.
 
@@ -190,18 +190,18 @@ CheckForMS17-010
 
 **V: Waarom worden de Power shell <i>-cmdlet Get-MsolDirSyncProvisioningError</i> minder synchronisatie fouten weer gegeven in het resultaat?**
 
-<i>Get-MsolDirSyncProvisioningError</i> retourneert alleen DirSync-inrichtings fouten. Naast de status van de Connect Health-Portal worden ook andere synchronisatie fout typen weer gegeven, zoals export fouten. Dit is consistent met Azure AD Connect Delta resultaat. Lees meer over [Azure AD Connect synchronisatie fouten](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+<i>Get-MsolDirSyncProvisioningError</i> retourneert alleen DirSync-inrichtings fouten. Naast de status van de Connect Health-Portal worden ook andere synchronisatie fout typen weer gegeven, zoals export fouten. Dit is consistent met Azure AD Connect Delta resultaat. Lees meer over [Azure AD Connect synchronisatie fouten](./tshoot-connect-sync-errors.md).
 
 **V: Waarom worden er geen ADFS-controles gegenereerd?**
 
-Gebruik de Power shell-cmdlet <i>Get-AdfsProperties-audit level</i> om te controleren of de controle logboeken niet zijn uitgeschakeld. Lees meer over [AD FS-controle logboeken](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Als er geavanceerde controle-instellingen zijn gepusht naar de ADFS-server, worden wijzigingen met auditpol.exe overschreven (gebeurtenis als de toepassing is gegenereerd, is niet geconfigureerd). In dit geval stelt u het lokale beveiligings beleid in op het vastleggen van gegenereerde fouten en geslaagde toepassingen.
+Gebruik de Power shell-cmdlet <i>Get-AdfsProperties-audit level</i> om te controleren of de controle logboeken niet zijn uitgeschakeld. Lees meer over [AD FS-controle logboeken](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Als er geavanceerde controle-instellingen zijn gepusht naar de ADFS-server, worden wijzigingen met auditpol.exe overschreven (gebeurtenis als de toepassing is gegenereerd, is niet geconfigureerd). In dit geval stelt u het lokale beveiligings beleid in op het vastleggen van gegenereerde fouten en geslaagde toepassingen.
 
 **V: wanneer wordt het agent certificaat automatisch vernieuwd voordat het verloopt?**
 De agent certificering wordt automatisch verlengd **6 maanden** voor de verval datum. Als deze niet wordt vernieuwd, zorgt u ervoor dat de netwerk verbinding van de agent stabiel is. Het probleem kan ook worden opgelost door de agent services opnieuw te starten of naar de nieuwste versie bij te werken.
 
 
 ## <a name="related-links"></a>Verwante koppelingen
-* [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health (Engelstalig)](./whatis-azure-ad-connect.md)
 * [Installatie van Azure AD Connect Health-Agent](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health bewerkingen](how-to-connect-health-operations.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)

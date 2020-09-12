@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849875"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280176"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Pass-Through-verificatie Azure Active Directory: Quick Start
 
@@ -33,7 +33,7 @@ Met Pass-Through-verificatie van Azure Active Directory (Azure AD) kunnen uw geb
 >Als u migreert van AD FS (of andere Federatie technologieën) naar Pass-Through-verificatie, raden we u ten zeerste aan de gedetailleerde implementatie handleiding te volgen die u [hier](https://aka.ms/adfstoPTADPDownload)hebt gepubliceerd.
 
 >[!NOTE]
->Als u Pass-Through-verificatie met de Azure Government Cloud implementeert, Bekijk dan de [overwegingen voor hybride identiteiten voor Azure Government](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+>Als u Pass-Through-verificatie met de Azure Government Cloud implementeert, Bekijk dan de [overwegingen voor hybride identiteiten voor Azure Government](./reference-connect-government-cloud.md).
 
 Volg deze instructies voor het implementeren van Pass-Through-verificatie voor uw Tenant:
 
@@ -42,12 +42,12 @@ Volg deze instructies voor het implementeren van Pass-Through-verificatie voor u
 Zorg ervoor dat aan de volgende vereisten is voldaan.
 
 >[!IMPORTANT]
->Uit veiligheids oogpunt moeten beheerders de server waarop de PTA-agent wordt uitgevoerd, behandelen alsof het een domein controller is.  De PTA-agent servers moeten worden gehard over dezelfde regels als beschreven in [domein controllers beveiligen tegen aanvallen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)
+>Uit veiligheids oogpunt moeten beheerders de server waarop de PTA-agent wordt uitgevoerd, behandelen alsof het een domein controller is.  De PTA-agent servers moeten worden gehard over dezelfde regels als beschreven in [domein controllers beveiligen tegen aanvallen](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)
 
-### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheer centrum
+### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheercentrum
 
-1. Maak een alleen-Cloud account voor globale beheerders op uw Azure AD-Tenant. Op deze manier kunt u de configuratie van uw Tenant beheren als uw on-premises Services mislukken of niet meer beschikbaar zijn. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Het volt ooien van deze stap is van cruciaal belang om ervoor te zorgen dat de Tenant niet wordt vergrendeld.
-2. Voeg een of meer [aangepaste domein namen](../active-directory-domains-add-azure-portal.md) toe aan uw Azure AD-Tenant. Uw gebruikers kunnen zich aanmelden met een van deze domein namen.
+1. Maak een alleen-cloud account voor globale beheerders in uw Azure AD-tenant. Op deze manier kunt u de configuratie van uw tenant beheren als uw on-premises services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een alleen-cloud account voor globale beheerders](../fundamentals/add-users-azure-active-directory.md). Het voltooien van deze stap is van cruciaal belang om ervoor te zorgen dat de tenant niet wordt vergrendeld.
+2. Voeg een of meer [aangepaste domeinnamen](../fundamentals/add-custom-domain.md) toe aan uw Azure AD-tenant. Uw gebruikers kunnen zich aanmelden met een van deze domeinnamen.
 
 ### <a name="in-your-on-premises-environment"></a>In uw on-premises omgeving
 
@@ -55,26 +55,26 @@ Zorg ervoor dat aan de volgende vereisten is voldaan.
 2. Installeer de [meest recente versie van Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) op de server die in de voor gaande stap is geïdentificeerd. Als u Azure AD Connect al hebt uitgevoerd, controleert u of de versie 1.1.750.0 of hoger is.
 
     >[!NOTE]
-    >Azure AD Connect versies 1.1.557.0, 1.1.558.0, 1.1.561.0 en 1.1.614.0 hebben een probleem met de synchronisatie van wacht woord-hashes. Als u _niet_ van plan bent om wachtwoord hash synchronisatie te gebruiken in combi natie met Pass-Through-verificatie, lees dan de opmerkingen bij de [Azure AD Connect-release](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
+    >Azure AD Connect versies 1.1.557.0, 1.1.558.0, 1.1.561.0 en 1.1.614.0 hebben een probleem met de synchronisatie van wacht woord-hashes. Als u _niet_ van plan bent om wachtwoord hash synchronisatie te gebruiken in combi natie met Pass-Through-verificatie, lees dan de opmerkingen bij de [Azure AD Connect-release](./reference-connect-version-history.md).
 
 3. Een of meer extra servers identificeren (waarop Windows Server 2012 R2 of hoger wordt uitgevoerd, met TLS 1,2 ingeschakeld), waar u zelfstandige verificatie agenten kunt uitvoeren. Deze extra servers zijn nodig om te zorgen voor een hoge Beschik baarheid van aanvragen om u aan te melden. Voeg de servers toe aan hetzelfde Active Directory forest als de gebruikers waarvan u de wacht woorden die u wilt valideren.
 
     >[!IMPORTANT]
-    >In productie omgevingen wordt aangeraden dat er mini maal drie verificatie agenten worden uitgevoerd op uw Tenant. Er is een systeem limiet van 40-verificatie agenten per Tenant. En als best practice alle servers met verificatie agenten behandelen als laag 0-systemen (Zie [naslag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+    >In productie omgevingen wordt aangeraden dat er mini maal drie verificatie agenten worden uitgevoerd op uw Tenant. Er is een systeem limiet van 40-verificatie agenten per Tenant. En als best practice alle servers met verificatie agenten behandelen als laag 0-systemen (Zie [naslag](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 4. Als er een firewall is tussen uw servers en Azure AD, moet u de volgende items configureren:
    - Zorg ervoor dat verificatie agenten *uitgaande* aanvragen kunnen indienen bij Azure AD via de volgende poorten:
 
      | Poortnummer | Hoe dat wordt gebruikt |
      | --- | --- |
-     | **80** | Hiermee worden de certificaatintrekkingslijsten (Crl's) gedownload tijdens het valideren van het TLS/SSL-certificaat |
-     | **443** | Hiermee wordt alle uitgaande communicatie met de service verwerkt |
-     | **8080** (optioneel) | Verificatie agenten rapporteren hun status elke tien minuten via poort 8080 als poort 443 niet beschikbaar is. Deze status wordt weer gegeven in de Azure AD-Portal. Poort 8080 wordt _niet_ gebruikt voor gebruikers aanmeldingen. |
+     | **80** | Downloadt de certificaatintrekkingslijsten (CRL's) tijdens het valideren van het TLS-/SSL-certificaat |
+     | **443** | Verwerkt alle uitgaande communicatie met de service |
+     | **8080** (optioneel) | Verificatie agenten rapporteren hun status elke tien minuten via poort 8080 als poort 443 niet beschikbaar is. Deze status wordt weergegeven in de Azure AD-portal. Poort 8080 wordt _niet_ gebruikt voor gebruikers aanmeldingen. |
      
-     Als uw firewall regels afdwingt op basis van de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als een netwerk service worden uitgevoerd.
-   - Als uw firewall of Proxy DNS-White List toestaat, voegt u verbindingen toe aan ** \* . msappproxy.net** en ** \* . servicebus.Windows.net**. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
-   - Uw verificatie agenten hebben toegang tot **login.Windows.net** en **login.microsoftonline.com** nodig voor de eerste registratie. Open ook uw firewall voor deze Url's.
-   - Voor validatie van het certificaat kunt u de volgende Url's blok keren: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**en **www \. Microsoft.com:80**. Omdat deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, is het mogelijk dat deze Url's al worden gedeblokkeerd.
+     Als met uw firewall regels worden afgedwongen op basis van de herkomst van gebruikers, opent u deze poorten voor verkeer dat afkomstig is van Windows-services die als een netwerkservice worden uitgevoerd.
+   - Als uw firewall of Proxy DNS-White List toestaat, voegt u verbindingen toe aan ** \* . msappproxy.net** en ** \* . servicebus.Windows.net**. Als dat niet het geval is, moet u toegang toestaan tot de [IP-adresbereiken van Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653), die elke week worden bijgewerkt.
+   - Uw verificatie agenten hebben toegang tot **login.Windows.net** en **login.microsoftonline.com** nodig voor de eerste registratie. Open uw firewall ook voor deze URL's.
+   - Voor certificaatvalidatie deblokkeert u de volgende URL's: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** en **www\.microsoft.com:80**. Omdat deze URL's worden gebruikt voor certificaatvalidatie met andere Microsoft-producten, is het mogelijk dat u deze URL's al hebt gedeblokkeerd.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government Cloud vereiste
 Voordat u Pass-Through-verificatie inschakelt via Azure AD Connect met stap 2, downloadt u de meest recente versie van de PTA-agent van de Azure Portal.  U moet ervoor zorgen dat de agent versie **1.5.1742.0.** of hoger.  Zie [upgrade-verificatie agenten](how-to-connect-pta-upgrade-preview-authentication-agents.md) om uw agent te controleren
@@ -120,7 +120,7 @@ In deze fase kunnen gebruikers van alle beheerde domeinen in uw Tenant zich aanm
 Als u Pass-Through-verificatie wilt implementeren in een productie omgeving, moet u extra zelfstandige verificatie agenten installeren. Installeer deze verificatie-agent (s) op server (s) _die niet worden_ uitgevoerd Azure AD Connect. Deze configuratie biedt een hoge Beschik baarheid voor aanmeldings aanvragen van gebruikers.
 
 >[!IMPORTANT]
->In productie omgevingen wordt aangeraden dat er mini maal drie verificatie agenten worden uitgevoerd op uw Tenant. Er is een systeem limiet van 40-verificatie agenten per Tenant. En als best practice alle servers met verificatie agenten behandelen als laag 0-systemen (Zie [naslag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+>In productie omgevingen wordt aangeraden dat er mini maal drie verificatie agenten worden uitgevoerd op uw Tenant. Er is een systeem limiet van 40-verificatie agenten per Tenant. En als best practice alle servers met verificatie agenten behandelen als laag 0-systemen (Zie [naslag](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Het installeren van meerdere Pass-Through-verificatie agenten garandeert een hoge Beschik baarheid, maar geen deterministische taak verdeling tussen de verificatie agenten. Als u wilt weten hoeveel verificatie agenten u nodig hebt voor uw Tenant, moet u rekening houden met de piek en de gemiddelde belasting van aanmeldings aanvragen die u verwacht te zien in uw Tenant. Als referentie kan één verificatie agent 300 tot 400 authenticaties per seconde afhandelen op een standaard 4-core CPU, 16 GB RAM-server.
 

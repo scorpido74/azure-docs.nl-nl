@@ -2,13 +2,13 @@
 title: Parameterbestand maken
 description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/01/2020
+ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179620"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276640"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Een Resource Manager-parameterbestand maken
 
@@ -147,6 +147,8 @@ Bekijk ten slotte de toegestane waarden en eventuele beperkingen, zoals de maxim
   }
 }
 ```
+
+Het parameter bestand kan alleen waarden bevatten voor para meters die in de sjabloon zijn gedefinieerd. Als uw parameter bestand extra para meters bevat die niet overeenkomen met de para meters in de sjabloon, wordt een fout bericht weer gegeven.
 
 ## <a name="parameter-type-formats"></a>Parametertype-indelingen
 

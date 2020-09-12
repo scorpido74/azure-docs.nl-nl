@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071428"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280159"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
@@ -29,7 +29,7 @@ In dit artikel vindt u veelgestelde vragen over de Pass-Through-verificatie van 
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Welke van de methoden om u aan te melden bij Azure AD, Pass Through-verificatie, wachtwoord hash-synchronisatie en Active Directory Federation Services (AD FS), moet ik kiezen?
 
-Raadpleeg [deze hand leiding](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) voor een vergelijking van de verschillende aanmeldings methoden van Azure AD en het kiezen van de juiste aanmeldings methode voor uw organisatie.
+Raadpleeg [deze hand leiding](./choose-ad-authn.md) voor een vergelijking van de verschillende aanmeldings methoden van Azure AD en het kiezen van de juiste aanmeldings methode voor uw organisatie.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Is de Pass-Through-verificatie een gratis functie?
 
@@ -39,7 +39,7 @@ Pass-Through-verificatie is een gratis functie. U hebt geen betaalde versies van
 
 Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaar van Azure AD.
 
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Werkt [voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) met Pass-Through-verificatie?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Werkt [voorwaardelijke toegang](../conditional-access/overview.md) met Pass-Through-verificatie?
 
 Ja. Alle mogelijkheden voor voorwaardelijke toegang, inclusief Azure Multi-Factor Authentication, werken met Pass Through-verificatie.
 
@@ -148,7 +148,7 @@ Nee, dit scenario wordt _niet_ ondersteund.
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Waarom heb ik een globale beheerders account voor de Cloud nodig om Pass-Through-verificatie in te scha kelen?
 
-Het is raadzaam Pass-Through-verificatie in of uit te scha kelen met behulp van een alleen-Cloud account voor globale beheerders. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Op deze manier zorgt u ervoor dat uw Tenant niet wordt vergrendeld.
+Het is raadzaam Pass-Through-verificatie in of uit te scha kelen met behulp van een alleen-Cloud account voor globale beheerders. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../fundamentals/add-users-azure-active-directory.md). Op deze manier zorgt u ervoor dat uw Tenant niet wordt vergrendeld.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Hoe kan ik Pass-Through-verificatie uitschakelen?
 
@@ -184,4 +184,3 @@ Tenants die zijn gemaakt na 15 juni 2015, hebben het standaard gedrag om UPN-wij
 - [Grondige beveiliging](how-to-connect-pta-security-deep-dive.md): krijg uitgebreide technische informatie over de functie Pass-Through-verificatie.
 - [Naadloze SSO van Azure AD](how-to-connect-sso.md): meer informatie over deze complementaire functie.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): gebruik het Azure Active Directory-forum om nieuwe functie aanvragen te verwerken.
-

@@ -1,15 +1,15 @@
 ---
 title: Resource providers en resource typen
-description: Hierin worden de resource providers beschreven die ondersteuning bieden voor Resource Manager, hun schema's en beschik bare API-versies en de regio's die de resources kunnen hosten.
+description: Hierin worden de resource providers beschreven die Azure Resource Manager ondersteunen. Hierin worden de schema's, beschik bare API-versies en de regio's beschreven die als host kunnen fungeren voor de resources.
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 581b653c6d4769f7777b0ca56f136d25443c1ae4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500007"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278867"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-resourceproviders en -typen
 
@@ -30,6 +30,16 @@ U kunt deze stappen uitvoeren via de Azure Portal, Azure PowerShell of Azure CLI
 
 Zie [resource providers voor Azure-Services](azure-services-resource-providers.md)voor een lijst waarin resource providers worden toegewezen aan Azure-Services.
 
+## <a name="register-resource-provider"></a>Resourceprovider registreren
+
+Voordat u een resource provider gebruikt, moet u de resource provider registreren voor uw Azure-abonnement. Met deze stap configureert u uw abonnement om te werken met de resource provider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren.
+
+In dit artikel leest u hoe u de registratie status van een resource provider kunt controleren en waar nodig kunt registreren. U moet gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. De machtiging is opgenomen in de rollen Inzender en eigenaar.
+
+De toepassings code mag het maken van resources voor een resource provider die zich in de **registratie** status bevindt, niet blok keren. Wanneer u de resource provider registreert, wordt de bewerking afzonderlijk voor elke ondersteunde regio uitgevoerd. Voor het maken van resources in een regio moet de registratie alleen worden uitgevoerd in die regio. Door de resource provider niet te blok keren in de registratie status, kan uw toepassing veel sneller worden uitgevoerd dan het wachten op alle regio's.
+
+U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
+
 ## <a name="azure-portal"></a>Azure Portal
 
 Als u alle resource providers en de registratie status voor uw abonnement wilt weer geven:
@@ -45,9 +55,7 @@ Als u alle resource providers en de registratie status voor uw abonnement wilt w
 
     ![resource providers weer geven](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Als u een resource provider wilt registreren, selecteert u **registreren**. In de vorige scherm afbeelding is de koppeling **registreren** gemarkeerd voor **micro soft. blauw druk**.
-
-    U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
+6. Als u een resource provider wilt registreren, selecteert u **registreren**. In de vorige scherm afbeelding is de koppeling **registreren** gemarkeerd voor **micro soft. blauw druk**.
 
 Informatie weer geven voor een bepaalde resource provider:
 
@@ -65,7 +73,7 @@ Informatie weer geven voor een bepaalde resource provider:
 
     ![Resource type selecteren](./media/resource-providers-and-types/select-resource-type.png)
 
-6. Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Daarnaast kunnen er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken. In resource Explorer worden geldige locaties voor het bron type weer gegeven.
+6. Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Het is ook mogelijk dat er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken. In resource Explorer worden geldige locaties voor het bron type weer gegeven.
 
     ![Locaties weer geven](./media/resource-providers-and-types/show-locations.png)
 
@@ -95,7 +103,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
+Als u een resource provider wilt registreren, gebruikt u:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -109,8 +117,6 @@ RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
-
-U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
 
 Als u informatie wilt weer geven voor een bepaalde resource provider, gebruikt u:
 
@@ -162,7 +168,7 @@ Hiermee wordt het volgende geretourneerd:
 2015-07-01
 ```
 
-Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Daarnaast kunnen er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken.
+Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Het is ook mogelijk dat er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken.
 
 Als u de ondersteunde locaties voor een resource type wilt ophalen, gebruikt u.
 
@@ -200,15 +206,13 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
+Als u een resource provider wilt registreren, gebruikt u:
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
 Retourneert een bericht dat de registratie is doorlopend.
-
-U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
 
 Als u informatie wilt weer geven voor een bepaalde resource provider, gebruikt u:
 
@@ -266,7 +270,7 @@ Result
 2015-07-01
 ```
 
-Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Daarnaast kunnen er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken.
+Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Het is ook mogelijk dat er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken.
 
 Als u de ondersteunde locaties voor een resource type wilt ophalen, gebruikt u.
 

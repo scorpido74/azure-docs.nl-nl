@@ -14,18 +14,18 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74213081"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279394"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies en cloudMsExchUserHoldPolicies
 In het volgende referentie document worden deze kenmerken beschreven die worden gebruikt door Exchange en de juiste manier om de standaard synchronisatie regels te bewerken.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Wat zijn msExchUserHoldPolicies en cloudMsExchUserHoldPolicies?
-Er zijn twee soorten [bewaringen](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) beschikbaar voor een Exchange-Server: in-place bewaring. Als er een afwachting is ingeschakeld, worden alle items in de wachtrij geplaatst.  Een in-place bewaring wordt gebruikt om alleen die items te bewaren die voldoen aan de criteria van een zoek opdracht die u hebt gedefinieerd met behulp van de in-place eDiscovery-tool.
+Er zijn twee soorten [bewaringen](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) beschikbaar voor een Exchange-Server: in-place bewaring. Als er een afwachting is ingeschakeld, worden alle items in de wachtrij geplaatst.  Een in-place bewaring wordt gebruikt om alleen die items te bewaren die voldoen aan de criteria van een zoek opdracht die u hebt gedefinieerd met behulp van de in-place eDiscovery-tool.
 
 Met de MsExchUserHoldPolcies-en cloudMsExchUserHoldPolicies-kenmerken kunnen lokale AD-en Azure AD-locaties bepalen welke gebruikers zich in een wacht ruimte bevinden, afhankelijk van of ze on-premises Exchange of Exchange Online gebruiken.
 

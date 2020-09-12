@@ -1,7 +1,7 @@
 ---
 title: Transactionele replicatie
 titleSuffix: Azure SQL Managed Instance
-description: Meer informatie over het gebruik van SQL Server transactionele replicatie met Azure SQL Managed instance.
+description: Meer informatie over het gebruik van SQL Server transactionele replicatie met Azure SQL Managed instance (preview).
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920119"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290511"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transactionele replicatie met Azure SQL Managed instance
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transactionele replicatie met Azure SQL Managed instance (preview-versie)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Transactionele replicatie is een functie van Azure SQL Managed instance en SQL Server waarmee u gegevens kunt repliceren uit een tabel in Azure SQL Managed instance of een SQL Server-exemplaar naar tabellen die zijn geplaatst op externe data bases. Met deze functie kunt u meerdere tabellen in verschillende data bases synchroniseren. 
 
-Transactionele replicatie is momenteel beschikbaar als open bare Preview voor SQL Managed instance. 
+Transactionele replicatie is momenteel beschikbaar als openbare preview-versie voor SQL Managed Instance. 
 
 ## <a name="overview"></a>Overzicht
 
@@ -74,8 +74,8 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja |
-| [**Momentopname**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
+| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes |
+| [**Momentopname**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
 | [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|

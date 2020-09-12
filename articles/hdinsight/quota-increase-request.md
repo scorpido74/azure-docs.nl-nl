@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079612"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291664"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Quota aanvragen verhogen voor Azure HDInsight
 
@@ -62,10 +62,10 @@ Voer de volgende stappen uit om een quotum verhoging aan te vragen:
     ![Details van probleem](./media/quota-increase-request/problem-details.png)
 
 1. Selecteer **volgende: controleren + >>maken **.
-1. Selecteer op het tabblad **controleren en maken** de optie **maken**.
+1. Selecteer op het tabblad **Beoordelen en maken** de optie **Maken**.
 
 > [!NOTE]  
-> Als u het HDInsight core-quotum moet verhogen in een privé gebied, [dient u een white list-aanvraag](https://aka.ms/canaryintwhitelist)in.
+> Als u het HDInsight core-quotum moet verhogen in een privé gebied, [dient u een goedgekeurde lijst aanvraag](https://aka.ms/canaryintwhitelist)in te dienen.
 
 U kunt [contact opnemen met de ondersteuning om een quotum verhoging aan te vragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 

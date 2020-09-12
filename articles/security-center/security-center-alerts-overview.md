@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519604"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278136"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
@@ -23,7 +23,7 @@ In Azure Security Center zijn er diverse waarschuwingen voor veel verschillende 
 
 Beveiligings waarschuwingen worden geactiveerd door geavanceerde detecties en zijn alleen beschikbaar in de laag standaard van Azure Security Center. Er is een gratis proefversie beschikbaar. U kunt de pagina **prijzen &-instellingen** bijwerken. Meer informatie over [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="responding-to-todays-threats"></a>Reageren op bedreigingen <a name="respond-threats"> </a> van vandaag
+## <a name="respond-to-todays-threats"></a>Reageer op de bedreigingen <a name="respond-threats"> </a> van vandaag
 
 De bedreigingen zijn de afgelopen 20 jaar aanzienlijk veranderd. In het verleden moesten bedrijven meestal zich richten op een website met individuele aanvallers die meestal geïnteresseerd zijn in de weer gave ' wat ze zouden kunnen doen '. De huidige aanvallers zijn veel geavanceerder en georganiseerd. Ze hebben vaak specifieke financiële en strategische doelstellingen. Ook hebben ze meer middelen beschikbaar, omdat ze mogelijk worden gefinancierd door staten of de georganiseerde misdaad.
 

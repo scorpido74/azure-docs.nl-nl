@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537177"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89288964"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -70,8 +70,8 @@ Zie de volgende tabel voor de uitgaande poorten die u moet openen om deze protoc
 | HTTP, HTTPS | 80, 443 |  |
 | Kafka | 9093 | Zie [Event hubs gebruiken in Kafka-toepassingen](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Welke IP-adressen moet ik white list?
-Ga als volgt te werk om de juiste IP-adressen voor uw verbindingen te zoeken naar een witte lijst:
+### <a name="what-ip-addresses-do-i-need-to-allow"></a>Welke IP-adressen moet ik toestaan?
+Ga als volgt te werk om de juiste IP-adressen te zoeken die u wilt toevoegen aan de lijst toegestaan voor uw verbindingen:
 
 1. Voer de volgende opdracht uit vanaf een opdracht prompt: 
 

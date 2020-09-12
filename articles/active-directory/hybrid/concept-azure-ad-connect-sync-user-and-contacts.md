@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245483"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279309"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: informatie over gebruikers, groepen en contact personen
 Er zijn verschillende redenen waarom u meerdere Active Directory forests zou hebben en er verschillende implementatie topologieën zijn. Algemene modellen bevatten een account-resource-implementatie en algemene sync'ed-forests na een fusie & overname. Maar zelfs als er zuivere modellen zijn, zijn hybride modellen ook gebruikelijk. De standaard configuratie in Azure AD Connect-synchronisatie gaat niet uit van een bepaald model, maar afhankelijk van de manier waarop gebruikers overeenkomst in de installatie handleiding is geselecteerd, kan verschillende gedragingen worden waargenomen.
@@ -39,9 +39,9 @@ Belang rijke punten waar u rekening mee moet houden bij het synchroniseren van g
 
 * Azure AD Connect ingebouwde beveiligings groepen uit te sluiten van Directory synchronisatie.
 
-* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [primaire groepslid maatschappen](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) naar Azure AD.
+* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [primaire groepslid maatschappen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) naar Azure AD.
 
-* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [dynamische distributie groepslid maatschappen](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) naar Azure AD.
+* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [dynamische distributie groepslid maatschappen](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019) naar Azure AD.
 
 * Een Active Directory groep als een e-mail groep synchroniseren met Azure AD:
 
@@ -76,4 +76,3 @@ Wanneer een object naar Azure AD is geëxporteerd, mag het source Anchor niet me
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Azure AD Connect synchronisatie: synchronisatie opties aanpassen](how-to-connect-sync-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
-

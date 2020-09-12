@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691476"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276759"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -54,7 +54,7 @@ Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen t
 |Koers|Standaardlaag|
 |Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
 |Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 
@@ -76,7 +76,7 @@ Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elem
     - **Aanbevolen** : groepen computers waarop dezelfde toepassingen consistent worden uitgevoerd en waarvoor geen acceptatie lijst is geconfigureerd. We raden u aan om besturings elementen voor adaptieve toepassingen voor deze groepen in te scha kelen.
     
       > [!TIP]
-      > Als u een groeps naam met het voor voegsel ' REVIEWGROUP ' ziet, bevat deze machines met een gedeeltelijk consistente lijst met toepassingen. Security Center geen patroon ziet, maar u wordt aangeraden deze groep te controleren om te zien of _u_ hand matig een aantal regels voor adaptieve toepassings besturings elementen kunt definiëren zoals beschreven in [de regel voor het aanpassen van een groep met adaptieve toepassings besturings elementen bewerken](#editing-a-groups-adaptive-application-controls-rule).
+      > Als u een groeps naam met het voor voegsel ' REVIEWGROUP ' ziet, bevat deze machines met een gedeeltelijk consistente lijst met toepassingen. Security Center geen patroon ziet, maar u wordt aangeraden deze groep te controleren om te zien of _u_ hand matig een aantal regels voor adaptieve toepassings besturings elementen kunt definiëren zoals beschreven in [de regel voor het aanpassen van een groep met adaptieve toepassings besturings elementen bewerken](#edit-a-groups-adaptive-application-controls-rule).
       >
       > U kunt computers ook van deze groep naar andere groepen verplaatsen, zoals beschreven in [een machine verplaatsen van de ene groep naar een andere](#move-a-machine-from-one-group-to-another).
 
@@ -115,7 +115,7 @@ Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elem
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>De regel voor de besturings elementen voor adaptieve toepassingen van een groep bewerken
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>De regel voor de besturings elementen voor adaptieve toepassingen van een groep bewerken
 
 U kunt ervoor kiezen om de acceptatie lijst voor een groep machines te bewerken vanwege bekende wijzigingen in uw organisatie. 
 
@@ -150,7 +150,7 @@ De regels voor een groep machines bewerken:
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reageren op de ' Allowlist-regels in uw adaptief toepassings beheer beleid moeten worden bijgewerkt ' aanbeveling
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reageren op ' Allowlist-regels in uw adaptief toepassings beheer beleid moeten worden bijgewerkt ' aanbeveling
 
 U ziet deze aanbeveling wanneer de machine learning van Security Center mogelijk legitiem gedrag identificeert dat niet eerder is toegestaan. De aanbeveling stelt nieuwe regels voor uw bestaande definities voor om het aantal foutieve positieve waarschuwingen te verminderen.
 
@@ -167,7 +167,7 @@ De problemen oplossen:
 
 
 
-## <a name="auditing-alerts-and-violations"></a>Waarschuwingen en schendingen controleren
+## <a name="audit-alerts-and-violations"></a>Waarschuwingen en schendingen controleren
 
 1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
 
@@ -199,7 +199,7 @@ Wanneer u een machine van de ene naar de andere groep verplaatst, wordt het toep
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>Besturings elementen voor toepassingen beheren via de REST API 
+## <a name="manage-application-controls-via-the-rest-api"></a>Besturings elementen voor toepassingen beheren via de REST API 
 
 Als u de besturings elementen voor adaptieve toepassingen programmatisch wilt beheren, gebruikt u onze REST API. 
 

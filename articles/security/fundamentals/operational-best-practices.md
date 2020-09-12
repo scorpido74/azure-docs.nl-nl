@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423147"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279496"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -116,7 +116,7 @@ Met de beveiligde Score, die is gebaseerd op de besturings elementen Center voor
 **Details**: Volg de [beveiligings aanbevelingen](../../security-center/security-center-recommendations.md) in Security Center starten, met de items met de hoogste prioriteit.
 
 **Aanbevolen procedure**: Integreer Security Center waarschuwingen in uw Siem-oplossing (Security Information and Event Management).   
-**Details**: de meeste organisaties met een Siem gebruiken deze als centraal-Clearinghouse voor beveiligings waarschuwingen waarvoor een analisten reactie is vereist. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center worden gepubliceerd in het Azure-activiteiten logboek, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijp lijn voor de route ring van uw bewakings gegevens in een SIEM-hulp programma. Zie [beveiligings waarschuwingen en aanbevelingen exporteren](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) voor instructies... Als u Azure Sentinel gebruikt, raadpleegt u [verbinding maken Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Details**: de meeste organisaties met een Siem gebruiken deze als centraal-Clearinghouse voor beveiligings waarschuwingen waarvoor een analisten reactie is vereist. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center worden gepubliceerd in het Azure-activiteiten logboek, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijp lijn voor de route ring van uw bewakings gegevens in een SIEM-hulp programma. Zie [beveiligings waarschuwingen en aanbevelingen exporteren](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) voor instructies... Als u Azure Sentinel gebruikt, raadpleegt u [verbinding maken Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Best Practice**: Azure-logboeken integreren met uw Siem.   
 **Details**: gebruik [Azure monitor om gegevens te verzamelen en te exporteren](/azure/azure-monitor/overview#integrate-and-export-data). Deze procedure is essentieel voor het inschakelen van het onderzoek van beveiligings incidenten en het online bewaren van Logboeken is beperkt. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.
@@ -149,7 +149,7 @@ Gebruik de volgende best practices voor DevOps om ervoor te zorgen dat uw ondern
 U kunt [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) gebruiken om uw toepassingen in te richten met behulp van een declaratieve sjabloon. U kunt in één enkele sjabloon meerdere services plus de bijbehorende afhankelijkheden implementeren. U gebruikt dezelfde sjabloon om uw toepassing herhaaldelijk te implementeren in elke fase van de levens cyclus van de toepassing.
 
 **Aanbevolen procedure**: automatisch bouwen en implementeren in azure web apps of Cloud Services.  
-**Details**: u kunt uw Azure DevOps projects zo configureren dat deze [automatisch wordt gebouwd en geïmplementeerd](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) in azure web apps of Cloud Services. Azure DevOps implementeert de binaire bestanden automatisch na het maken van een build naar Azure na elke code inchecken. Het proces voor het bouwen van pakketten is gelijk aan de pakket opdracht in Visual Studio en de publicatie stappen zijn gelijk aan de opdracht publiceren in Visual Studio.
+**Details**: u kunt uw Azure DevOps projects zo configureren dat deze  [automatisch wordt gebouwd en geïmplementeerd](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) in azure web apps of Cloud Services. Azure DevOps implementeert de binaire bestanden automatisch na het maken van een build naar Azure na elke code inchecken. Het proces voor het bouwen van pakketten is gelijk aan de pakket opdracht in Visual Studio en de publicatie stappen zijn gelijk aan de opdracht publiceren in Visual Studio.
 
 **Best Practice**: release beheer automatiseren.  
 **Details**: [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) is een oplossing voor het automatiseren van de implementatie met meerdere fasen en het beheer van het release proces. Maak beheerde pijp lijnen voor continue implementatie om snel, eenvoudig en vaak te worden vrijgegeven. Met Azure-pijp lijnen kunt u uw release proces automatiseren en kunt u vooraf gedefinieerde goedkeurings werk stromen hebben. Implementeer on-premises en naar de Cloud, breid en pas ze indien nodig aan.
@@ -226,4 +226,4 @@ Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-an
 
 De volgende resources zijn beschikbaar om meer algemene informatie te geven over Azure-beveiliging en gerelateerde micro soft-Services:
 * [Blog van het Azure-beveiligings team](https://blogs.msdn.microsoft.com/azuresecurity/) : voor actuele informatie over de nieuwste Azure-beveiliging
-* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail worden verzonden naarsecure@microsoft.com
+* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail worden verzonden naar secure@microsoft.com

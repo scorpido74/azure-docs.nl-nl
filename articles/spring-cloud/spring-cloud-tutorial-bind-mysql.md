@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ef202bb3ba82b48aca75c7f934aecb3f5fbe0a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 0287bc8a11c359acce5fbf12d3a51e99a9f5420e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070766"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297141"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Een Azure Database for MySQL-exemplaar verbinden met uw Azure Spring Cloud-toepassing 
 
@@ -24,7 +24,7 @@ Met Azure Spring Cloud kunt u bepaalde Azure-services automatisch met uw toepass
 * Een Azure Database for MySQL-account
 * Azure CLI
 
-Als u geen geïmplementeerd exemplaar van Azure Spring Cloud hebt, volgt u de instructies in [Quickstart: Een Azure Spring Cloud-toepassing starten met behulp van de Azure-portal](spring-cloud-quickstart-launch-app-portal.md) om uw eerste Spring Cloud-toepassing te implementeren.
+Als u geen geïmplementeerd exemplaar van Azure Spring Cloud hebt, volgt u de instructies in [Quickstart: Een Azure Spring Cloud-toepassing starten met behulp van de Azure-portal](spring-cloud-quickstart.md) om uw eerste Spring Cloud-toepassing te implementeren.
 
 ## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>Uw toepassing verbinden met uw Azure Database for MySQL-exemplaar
 

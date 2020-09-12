@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 19c5c5280b8ff4fb997366375b4300958d694d6c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184052"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293656"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Veelgestelde vragen over de Bing Afbeeldingen zoeken-API
 
@@ -35,7 +35,7 @@ Het is vooral belang rijk dat u de client-ID persistent maakt en de volgende aan
 
 Wanneer u echter de Bing Afbeeldingen zoeken-API aanroept vanuit Java script, kunnen de ingebouwde beveiligings functies (CORS) van uw browser ertoe leiden dat u geen toegang hebt tot de waarden van deze headers.
 
-Als u toegang wilt krijgen tot de headers, kunt u de Bing Afbeeldingen zoeken-API aanvraag indienen via een CORS-proxy. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de whitelist en beschikbaar gemaakt voor JavaScript.
+Als u toegang wilt krijgen tot de headers, kunt u de Bing Afbeeldingen zoeken-API aanvraag indienen via een CORS-proxy. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers filtert en deze beschikbaar maakt voor Java script.
 
 Het is eenvoudig om een CORS-proxy te installeren zodat onze [zelf studie-app](tutorial-bing-image-search-single-page-app.md) toegang kan krijgen tot de optionele client headers. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht in een opdrachtprompt in.
 

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381158"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278391"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Vereisten voor adreslijst synchronisatie bepalen
 Synchronisatie is alles over het bieden van gebruikers een identiteit in de Cloud op basis van hun on-premises identiteit. Ongeacht of ze een gesynchroniseerd account voor verificatie of Federated Authentication gebruiken, moeten de gebruikers nog steeds een identiteit in de Cloud hebben.  Deze identiteit moet regel matig worden onderhouden en bijgewerkt.  De updates kunnen veel formulieren aannemen, van wijzigingen in de naam van het wacht woord.  
@@ -64,7 +64,7 @@ U moet ook de Directory synchronisatie van de beveiligings vereisten en beperkin
   * Kunt u de vereiste firewall poorten openen ter ondersteuning van synchronisatie?
 * Hebt u een plan voor nood herstel voor de synchronisatie server?
 * Hebt u een account met de juiste machtigingen voor alle forests waarmee u wilt synchroniseren?
-  * Als uw bedrijf niet het antwoord op deze vraag kent, raadpleegt u de sectie Machtigingen voor wachtwoord synchronisatie in het artikel [Installeer de Azure Active Directory Sync-Service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) en bepaalt u of u al een account met deze machtigingen hebt of dat u er een hebt gemaakt.
+  * Als uw bedrijf niet het antwoord op deze vraag kent, raadpleegt u de sectie Machtigingen voor wachtwoord synchronisatie in het artikel [Installeer de Azure Active Directory Sync-Service](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) en bepaalt u of u al een account met deze machtigingen hebt of dat u er een hebt gemaakt.
 * Als u Multi-forest Sync is, kan de synchronisatie server elk forest ophalen?
 
 > [!NOTE]
@@ -77,4 +77,3 @@ U moet ook de Directory synchronisatie van de beveiligings vereisten en beperkin
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
-

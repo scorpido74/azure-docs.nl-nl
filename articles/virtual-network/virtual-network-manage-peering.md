@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416499"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290171"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -126,16 +126,17 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
   - *Gestart:* Wanneer u de peering maakt voor het tweede virtuele netwerk vanuit het eerste virtuele netwerk, wordt de status van de peering *geïnitieerd*. 
   - *Verbonden:* Wanneer u de peering van het tweede virtuele netwerk naar het eerste virtuele netwerk maakt, is de peering-status *verbonden*. Als u de status van de peering voor het eerste virtuele netwerk bekijkt, ziet u dat de status is gewijzigd van *geactiveerd* in *verbonden*. De peering wordt pas tot stand gebracht als de peering-status voor beide peering van virtuele netwerken is *verbonden*.
 - Bij het koppelen van een virtueel netwerk dat is gemaakt via Resource Manager met een virtueel netwerk dat is gemaakt via het klassieke implementatie model, configureert u alleen een peering voor het virtuele netwerk dat is geïmplementeerd via Resource Manager. U kunt peering niet configureren voor een virtueel netwerk (klassiek) of tussen twee virtuele netwerken die zijn geïmplementeerd via het klassieke implementatie model. Wanneer u de peering van het virtuele netwerk (Resource Manager) naar het virtuele netwerk (klassiek) maakt, wordt de status van de peering *bijgewerkt*en worden er vervolgens binnenkort wijzigingen in *verbonden*.
-- Er wordt een peering tot stand gebracht tussen twee virtuele netwerken. Peerings zijn niet transitief. Als u peerings maakt tussen:
-  - VirtualNetwork1 & VirtualNetwork2
-  - VirtualNetwork2 & VirtualNetwork3
+- Er wordt een peering tot stand gebracht tussen twee virtuele netwerken. Peerings op zichzelf zijn niet transitief. Als u peerings maakt tussen:
+  - VirtualNetwork1 & VirtualNetwork2-VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3-VirtualNetwork2 & VirtualNetwork3
 
-  Er is geen peering tussen VirtualNetwork1 en VirtualNetwork3 via VirtualNetwork2. Als u een virtuele netwerk peering tussen VirtualNetwork1 en VirtualNetwork3 wilt maken, moet u een peering maken tussen VirtualNetwork1 en VirtualNetwork3.
+
+  Er is geen peering tussen VirtualNetwork1 en VirtualNetwork3 via VirtualNetwork2. Als u een virtuele netwerk peering tussen VirtualNetwork1 en VirtualNetwork3 wilt maken, moet u een peering maken tussen VirtualNetwork1 en VirtualNetwork3. Er is geen peering tussen VirtualNetwork1 en VirtualNetwork3 via VirtualNetwork2. Als u wilt dat VirtualNetwork1 en VirtualNetwork3 rechtstreeks communiceren, moet u een expliciete peering maken tussen VirtualNetwork1 en VirtualNetwork3 of door lopen van een NVA in het hub-netwerk.  
 - U kunt geen namen omzetten in gekoppelde virtuele netwerken met behulp van de standaard naam omzetting van Azure. Als u namen in andere virtuele netwerken wilt omzetten, moet u [Azure DNS gebruiken voor particuliere domeinen](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of een aangepaste DNS-server. Zie [naam omzetting met uw eigen DNS-server](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)voor meer informatie over het instellen van uw eigen DNS-server.
 - Resources in gekoppelde virtuele netwerken in dezelfde regio kunnen met elkaar communiceren met dezelfde band breedte en latentie alsof ze zich in hetzelfde virtuele netwerk bevinden. De grootte van elke virtuele machine heeft echter een eigen maximale netwerk bandbreedte. Zie grootten van virtuele machines voor [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over de maximale netwerk bandbreedte voor verschillende groottes van virtuele machines.
 - Een virtueel netwerk kan worden gekoppeld aan een ander virtueel netwerk en ook worden verbonden met een ander virtueel netwerk met een virtuele Azure-netwerk gateway. Wanneer virtuele netwerken zijn verbonden via peering en een gateway, loopt verkeer tussen de virtuele netwerken via de peering-configuratie, in plaats van de gateway.
 - Punt-naar-site-VPN-clients moeten opnieuw worden gedownload nadat de peering van het virtuele netwerk is geconfigureerd om ervoor te zorgen dat de nieuwe routes naar de client worden gedownload.
-- Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een virtueel netwerk-peering. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie.
+- Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een virtueel netwerk-peering. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/virtual-network)voor meer informatie.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -146,7 +147,7 @@ De accounts die u gebruikt om te werken met de peering van het virtuele netwerk 
 
 Als uw account niet is toegewezen aan een van de vorige rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Bewerking                                                          | Naam |
+| Actie                                                          | Naam |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vereist voor het maken van een peering van een virtueel netwerk A naar een virtueel netwerk B. virtueel netwerk A moet een virtueel netwerk zijn (Resource Manager)          |
 | Micro soft. Network/virtualNetworks/peer/Action                   | Vereist voor het maken van een peering van een virtueel netwerk B (Resource Manager) naar een virtueel netwerk                                                       |

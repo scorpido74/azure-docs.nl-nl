@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 065c6661ffc9f618a5dfd32a9f45d26569a56003
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559569"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278170"
 ---
 # <a name="using-custom-security-policies"></a>Aangepaste beveiligings beleidsregels gebruiken
 
@@ -40,7 +40,7 @@ Zoals beschreven in [de Azure Policy-documentatie](https://docs.microsoft.com/az
 
     [![Klik op een aangepast initiatief toevoegen](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
-    De volgende pagina wordt weer gegeven:
+    De volgende pagina wordt geopend:
 
     ![Een beleid maken of toevoegen](media/custom-security-policies/create-or-add-custom-policy.png)
 
@@ -69,7 +69,7 @@ Zoals beschreven in [de Azure Policy-documentatie](https://docs.microsoft.com/az
 
     [![Aangepaste aanbevelingen](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>Uw aangepaste aanbevelingen verbeteren met gedetailleerde informatie
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Verbeter uw aangepaste aanbevelingen met gedetailleerde informatie
 
 De ingebouwde aanbevelingen die bij Azure Security Center worden geleverd, bevatten details zoals Ernst niveaus en herstel instructies. Als u dit type informatie wilt toevoegen aan uw aangepaste aanbevelingen zodat deze wordt weer gegeven in de Azure Portal of waar u toegang tot uw aanbevelingen hebt, moet u de REST API gebruiken. 
 

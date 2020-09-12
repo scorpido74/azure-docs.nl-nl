@@ -3,14 +3,14 @@ title: Resource groepen beheren-Azure PowerShell
 description: Gebruik Azure PowerShell om uw resource groepen te beheren via Azure Resource Manager. Laat zien hoe u resource groepen kunt maken, weer geven en verwijderen.
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9519b9a5dec898a0905310de02ef9fad3d282a65
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827073"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290528"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager resource groepen beheren met Azure PowerShell
 
@@ -31,15 +31,10 @@ De resourcegroep slaat metagegevens op over de resources. Als u een locatie voor
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
-Met het volgende Power shell-script maakt u een resource groep en wordt vervolgens de resource groep weer gegeven.
+Met het volgende Power shell-script maakt u een resource groep.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-Get-AzResourceGroup -Name $resourceGroupName
+New-AzResourceGroup -Name demoResourceGroup -Location westus
 ```
 
 ## <a name="list-resource-groups"></a>Resource groepen weer geven

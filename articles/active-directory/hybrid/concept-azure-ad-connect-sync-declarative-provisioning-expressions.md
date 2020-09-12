@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245508"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280210"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: uitleg over declaratieve inrichtings expressies
 Azure AD Connect synchronisatie bouwt voort op declaratieve inrichting die voor het eerst is geïntroduceerd in Forefront Identity Manager 2010. U kunt hiermee uw volledige bedrijfs logica voor identiteits integratie implementeren zonder dat u gecompileerde code hoeft te schrijven.
 
 Een essentieel onderdeel van declaratieve inrichting is de expressie taal die wordt gebruikt in kenmerk stromen. De gebruikte taal is een subset van micro soft® Visual Basic® for Applications (VBA). Deze taal wordt gebruikt in Microsoft Office en gebruikers die ervaring hebben met VBScript, zullen deze ook herkennen. De taal van de declaratieve inrichtings expressie wordt alleen gebruikt voor functies en is geen gestructureerde taal. Er zijn geen methoden of instructies. Functies worden in plaats daarvan genest om programma stroom te expresseren.
 
-Zie voor meer informatie [Welkom bij de naslag informatie over Visual Basic for Applications taal voor Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Zie voor meer informatie [Welkom bij de naslag informatie over Visual Basic for Applications taal voor Office 2013](/office/vba/api/overview/language-reference).
 
 De kenmerken zijn sterk getypeerd. Een functie accepteert alleen kenmerken van het juiste type. Het is ook hoofdletter gevoelig. De functie namen en kenmerk namen moeten de juiste behuizing hebben of er wordt een fout gegenereerd.
 
@@ -83,9 +83,9 @@ Opera tors worden van links naar rechts geëvalueerd en hebben dezelfde evaluati
 De functies kunnen worden toegepast op kenmerken met één waarde en meerdere waarden. Voor kenmerken met meerdere waarden wordt de functie voor elke waarde gebruikt en wordt dezelfde functie op elke waarde toegepast.
 
 Bijvoorbeeld:  
-`Trim([proxyAddresses])`Maak een afgesneden van elke waarde in het kenmerk proxyAddress attribuut.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Voor elke waarde met een @-sign moet u het domein vervangen door @contoso.com .  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Zoek naar het SIP-adres en verwijder deze uit de waarden.
+`Trim([proxyAddresses])` Maak een afgesneden van elke waarde in het kenmerk proxyAddress attribuut.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` Voor elke waarde met een @-sign moet u het domein vervangen door @contoso.com .  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Zoek naar het SIP-adres en verwijder deze uit de waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het configuratie model vindt u in [informatie over declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md).
@@ -100,4 +100,3 @@ Bijvoorbeeld:
 **Onderwerpen met naslaginformatie**
 
 * [Azure AD Connect Sync: Naslag informatie over functies](reference-connect-sync-functions-reference.md)
-

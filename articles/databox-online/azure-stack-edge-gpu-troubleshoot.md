@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268319"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290120"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Problemen met uw Azure Stack Edge GPU-apparaat oplossen 
 
@@ -140,7 +140,7 @@ De fouten lijsten worden samengesteld uit geïdentificeerde scenario's en kunnen
 
 Hier vindt u de fouten die kunnen worden weer gegeven tijdens de configuratie van Azure Resource Manager om toegang te krijgen tot uw apparaat. 
 
-| **Probleem/fouten** |  **Afsluiting** | 
+| **Probleem/fouten** |  **Oplossing** | 
 |------------|-----------------|
 |Algemene problemen|<li>[Controleer of het edge-apparaat juist is geconfigureerd](#verify-the-device-is-configured-properly).<li> [Controleren of de client correct is geconfigureerd](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: er is een fout opgetreden tijdens het verzenden van de aanvraag.<br>Op regel: 1 teken: 1<br>+ Add-AzureRmEnvironment-name Az3-ARMEndpoint " https://management.dbe ...|Deze fout betekent dat uw Azure Stack edge-apparaat niet bereikbaar is of niet juist is geconfigureerd. Controleer of het edge-apparaat en de-client correct zijn geconfigureerd. Zie de rij met **algemene problemen** in deze tabel voor hulp.|
@@ -184,17 +184,17 @@ Hier vindt u de fouten die kunnen worden weer gegeven tijdens de configuratie va
 
 Hier vindt u de fouten met betrekking tot Blob Storage op Azure Stack EDGE/Data Box Gateway apparaat.
 
-| **Probleem/fouten** |  **Afsluiting** | 
+| **Probleem/fouten** |  **Oplossing** | 
 |--------------------|-----------------|
 |Kan geen onderliggende resources ophalen. De waarde voor een van de HTTP-headers heeft niet de juiste indeling.| Selecteer in het menu **bewerken** de optie **doel-Azure stack-api's**. Start Azure Storage Explorer vervolgens opnieuw.|
 |getaddrinfo ENOTFOUND <accountname> . blob. <serialnumber> . microsoftdatabox.com|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op dit pad: `C:\Windows\System32\drivers\etc\hosts` in Windows of `/etc/hosts` op Linux.|
 |Kan geen onderliggende resources ophalen.<br> Details: zelfondertekend certificaat |Importeer het SSL-certificaat voor uw apparaat in Azure Storage Explorer: <ol><li>Down load het certificaat van de Azure Portal. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.</li><li>Selecteer in het menu **bewerken** de optie SSL-certificaten en selecteer vervolgens **certificaten importeren**.</li></ol>|
-|De AzCopy-opdracht lijkt een minuut vast te lopen voordat deze fout wordt weer gegeven:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `C:\Windows\System32\drivers\etc\hosts` .|
-|De AzCopy-opdracht lijkt een minuut vast te lopen voordat deze fout wordt weer gegeven:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
-|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `/etc/hosts` .|
-|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven:<br>`Error parsing source location… The SSL connection could not be established`. |Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
-|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `/etc/hosts` .|
-|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven: `Error parsing source location… The SSL connection could not be established` .|Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
+|De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `C:\Windows\System32\drivers\etc\hosts` .|
+|De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
+|De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `/etc/hosts` .|
+|De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven:<br>`Error parsing source location… The SSL connection could not be established`. |Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
+|De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `/etc/hosts` .|
+|De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven: `Error parsing source location… The SSL connection could not be established` .|Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
 |De waarde voor een van de HTTP-headers heeft niet de juiste indeling.|De geïnstalleerde versie van de Microsoft Azure Storage-bibliotheek voor python wordt niet ondersteund door Data Box. Zie Azure Data Box vereisten voor Blob Storage voor ondersteunde versies.|
 |… [SSL: CERTIFICATE_VERIFY_FAILED]...| Voordat u python uitvoert, stelt u de omgevings variabele REQUESTS_CA_BUNDLE in op het pad van het met base64 gecodeerde SSL-certificaat bestand (Zie How to [down load the Certificate](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Bijvoorbeeld:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>U kunt het certificaat ook toevoegen aan het certificaat archief van het systeem en deze omgevings variabele vervolgens instellen op het pad van dat archief. Bijvoorbeeld op Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Er is een time-out opgestaan.|Meld u aan bij de Azure Stack rand en controleer of deze is ontgrendeld. Telkens wanneer het apparaat opnieuw wordt opgestart, blijft het vergrendeld totdat iemand zich aanmeldt.|

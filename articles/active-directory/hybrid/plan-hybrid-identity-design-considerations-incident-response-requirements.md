@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109282"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278408"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Vereisten voor respons op incidenten bepalen voor uw hybride identiteits oplossing
-Voor grote of middel groot organisaties is het mogelijk dat er een reactie op een [beveiligings incident](https://technet.microsoft.com/library/cc700825.aspx) plaatsvindt ter ondersteuning van het onderhouds plan op het niveau van incidenten. Het identiteits beheersysteem is een belang rijk onderdeel van het proces voor reactie op incidenten, omdat het kan worden gebruikt om te helpen identificeren wie een specifieke actie heeft uitgevoerd op het doel. De hybride identiteits oplossing moet kunnen voorzien in bewakings-en rapportage mogelijkheden die kunnen worden gebruikt om maat regelen te nemen om een mogelijke bedreiging te identificeren en te verhelpen. In een typisch antwoord plan voor incidenten hebt u de volgende fasen als onderdeel van het plan:
+Voor grote of middel groot organisaties is het mogelijk dat er een reactie op een [beveiligings incident](/previous-versions/tn-archive/cc700825(v=technet.10)) plaatsvindt ter ondersteuning van het onderhouds plan op het niveau van incidenten. Het identiteits beheersysteem is een belang rijk onderdeel van het proces voor reactie op incidenten, omdat het kan worden gebruikt om te helpen identificeren wie een specifieke actie heeft uitgevoerd op het doel. De hybride identiteits oplossing moet kunnen voorzien in bewakings-en rapportage mogelijkheden die kunnen worden gebruikt om maat regelen te nemen om een mogelijke bedreiging te identificeren en te verhelpen. In een typisch antwoord plan voor incidenten hebt u de volgende fasen als onderdeel van het plan:
 
 1. Eerste beoordeling.
 2. Incident communicatie.
@@ -69,4 +69,3 @@ Tijdens beschadigings controle en risico reductie-fase is het belang rijk om sne
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
-

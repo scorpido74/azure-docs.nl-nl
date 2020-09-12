@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359140"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278731"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>De Azure AD Connect synchronisatie met Azure AD Connect Health bewaken
 De volgende documentatie is specifiek voor het bewaken van Azure AD Connect-synchronisatie met Azure AD Connect Health.  Zie [Using Azure AD Connect Health with AD FS](how-to-connect-health-adfs.md) (Engelstalig) voor informatie over het controleren van AD FS met Azure AD Connect Health. Zie ook [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md) voor informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
@@ -116,7 +116,7 @@ In het specifieke scenario met synchronisatiefout door dubbel kenmerk waarbij ee
 ## <a name="related-links"></a>Verwante koppelingen
 * [Probleemoplossings fouten tijdens de synchronisatie](tshoot-connect-sync-errors.md)
 * [Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) (Tolerantie van Dubbel-kenmerk)
-* [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health (Engelstalig)](./whatis-azure-ad-connect.md)
 * [De Azure AD Connect Health-agent installeren](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health Operations (Engelstalig)](how-to-connect-health-operations.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)

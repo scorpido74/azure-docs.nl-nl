@@ -15,12 +15,12 @@ ms.date: 09/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714fe5d1bdaddac2873194ab066f304e72bdde67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a655f355bb77d937f4daff2f8987769416ebd8c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358868"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279666"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Aan de slag met Azure AD Connect met expresinstellingen
 **Expresinstellingen** van Azure AD Connect worden gebruikt wanneer u een singleforesttopologie hebt en [synchronisatie van wachtwoord-hash](how-to-connect-password-hash-synchronization.md) voor verificatie. **Expresinstellingen** is de standaardoptie en wordt gebruikt voor het meest geïmplementeerde scenario. U bent slechts enkele snelle klikken verwijderd van uitbreiding van uw on-premises directory naar de cloud.
@@ -42,13 +42,13 @@ In de sectie met [video's](#videos) kunt u zien hoe deze stappen in de praktijk 
    Zie [Connectiviteitsproblemen oplossen](tshoot-connect-connectivity.md) als u een foutbericht krijgt en u problemen hebt met de connectiviteit.
 6. Voer in het scherm Verbinding maken met Azure AD de gebruikersnaam en het wachtwoord in voor een enterprisebeheerdersaccount. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\administrator of fabrikam.com\administrator. Klik op **Volgende**.  
    ![Verbinding maken met AD DS](./media/how-to-connect-install-express/connectad.png)
-7. De pagina [**Configuratie van aanmelding bij Azure AD**](plan-connect-user-signin.md#azure-ad-sign-in-configuration) wordt alleen weergegeven als u de [domeinen niet hebt geverifieerd](../active-directory-domains-add-azure-portal.md) bij de [vereisten](how-to-connect-install-prerequisites.md).
+7. De pagina [**Configuratie van aanmelding bij Azure AD**](plan-connect-user-signin.md#azure-ad-sign-in-configuration) wordt alleen weergegeven als u de [domeinen niet hebt geverifieerd](../fundamentals/add-custom-domain.md) bij de [vereisten](how-to-connect-install-prerequisites.md).
    ![Niet-geverifieerde domeinen](./media/how-to-connect-install-express/unverifieddomain.png)  
    Als deze pagina wordt weergegeven, controleert u elk domein dat is gemarkeerd met **Niet toegevoegd** en **Niet geverifieerd**. Zorg ervoor dat de domeinen die u gebruikt in Azure AD zijn geverifieerd. Klik op het symbool Vernieuwen wanneer u uw domeinen hebt geverifieerd.
 8. Klik in het venster Gereed om te configureren op **Installeren**.
    * Optioneel kunt u op de pagina Gereed voor configuratie het vakje **Start het synchronisatieproces zodra de configuratie is voltooid** uitschakelen. Schakel dit selectievakje uit als u een aanvullende configuratie wilt uitvoeren, zoals [filteren](how-to-connect-sync-configure-filtering.md). Als u deze optie uitschakelt, wordt de synchronisatie geconfigureerd met de wizard, maar blijft de planner uitgeschakeld. Deze wordt niet uitgevoerd tenzij u deze handmatig inschakelt door de [installatiewizard opnieuw uit te voeren](how-to-connect-installation-wizard.md).
    * Als u het selectievakje **Start het synchronisatieproces zodra de configuratie is voltooid** ingeschakeld laat, wordt er onmiddellijk een volledige synchronisatie van alle gebruikers, groepen en contactpersonen in Azure AD geactiveerd.
-   * Als u Exchange hebt ingeschakeld in uw on-premises Active Directory, hebt u ook een optie voor het inschakelen van [**Hybride implementatie voor Exchange**](https://technet.microsoft.com/library/jj200581.aspx). Schakel deze optie in als u van plan bent Exchange-postvakken tegelijkertijd in de cloud en on-premises te gebruiken.
+   * Als u Exchange hebt ingeschakeld in uw on-premises Active Directory, hebt u ook een optie voor het inschakelen van [**Hybride implementatie voor Exchange**](/exchange/exchange-hybrid). Schakel deze optie in als u van plan bent Exchange-postvakken tegelijkertijd in de cloud en on-premises te gebruiken.
      ![Klaar voor het configureren van Azure AD Connect](./media/how-to-connect-install-express/readytoconfigure.png)
 9. Wanneer de installatie is voltooid, klikt u op **Afsluiten**.
 10. Nadat de installatie is voltooid, dient u zich af te melden en weer aan te melden voordat u de Synchronization Service Manager of Synchronization Rule Editor gaat gebruiken.

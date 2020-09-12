@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267602"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296648"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrische gegevens en Diagnostische logboeken via Azure Monitor bewaken
 
@@ -44,7 +44,7 @@ Media Services biedt ondersteuning voor het bewaken van metrische gegevens voor 
 
 U kunt de metrische gegevens van het volgende account bewaken.
 
-|Naam van meetwaarde|Weergavenaam|Description|
+|Naam van meetwaarde|Weergavenaam|Beschrijving|
 |---|---|---|
 |AssetCount|Aantal assets|Assets in uw account.|
 |AssetQuota|Activa quotum|Activa quota in uw account.|
@@ -62,7 +62,7 @@ U moet ook [rekening quota's en limieten](limits-quotas-constraints.md)bekijken.
 
 De volgende Media Services gegevens [stromen voor streaming-eind punten](/rest/api/media/streamingendpoints) worden ondersteund:
 
-|Naam van meetwaarde|Weergavenaam|Description|
+|Naam van meetwaarde|Weergavenaam|Beschrijving|
 |---|---|---|
 |Aanvragen|Aanvragen|Geeft het totale aantal HTTP-aanvragen dat door het streaming-eind punt wordt geleverd.|
 |Uitgaand verkeer|Uitgaand verkeer|Totaal aantal uitgaande bytes per minuut per streaming-eind punt.|

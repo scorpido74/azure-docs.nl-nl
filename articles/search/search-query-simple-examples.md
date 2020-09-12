@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918023"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294863"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Een eenvoudige query maken in azure Cognitive Search
 
@@ -37,13 +37,13 @@ Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgev
 
 Nadat u de aanvraag header hebt opgegeven, kunt u deze opnieuw gebruiken voor alle query's in dit artikel, zodat alleen de teken reeks **Search =** wordt uitgewisseld. 
 
-  ![De aanvraagheader voor Postman](media/search-query-lucene-examples/postman-header.png)
+  ![Para meters ingesteld op de aanvraag header van postman](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>De aanvraag-URL instellen
 
 Request is een GET-opdracht die wordt gekoppeld aan een URL met het Azure Cognitive Search-eind punt en de zoek teken reeks.
 
-  ![De aanvraagheader voor Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![OPHALEN van header van Postman-aanvraag](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL-samen stelling heeft de volgende elementen:
 

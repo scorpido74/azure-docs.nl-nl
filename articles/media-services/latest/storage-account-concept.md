@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 120bd403d84f9912bd309f965f3b69306fabcc24
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291191"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-accounts
 
@@ -47,7 +47,7 @@ In Media Services v3 worden de opslag-Api's gebruikt voor het uploaden van besta
 
 Ter bescherming van uw assets op rest moeten de activa worden versleuteld door de versleuteling van de opslag side. In de volgende tabel ziet u hoe de opslag side-versleuteling werkt in Media Services V3:
 
-|Versleutelings optie|Description|Media Services v3|
+|Versleutelings optie|Beschrijving|Media Services v3|
 |---|---|---|
 |Opslag versleuteling Media Services| AES-256-versleuteling, sleutel beheerd door Media Services. |Niet ondersteund. <sup>(1)</sup>|
 |[Versleuteling van de opslag service voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund.|

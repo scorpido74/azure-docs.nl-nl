@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265368"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291531"
 ---
 # <a name="media-services-live-event-error-codes"></a>Fout codes voor Live-gebeurtenissen Media Services
 
@@ -30,7 +30,7 @@ In de tabellen in deze sectie worden de fout codes voor [Live-gebeurtenissen](li
 
 Wanneer u zich abonneert op de [Event grid](../../event-grid/index.yml) gebeurtenissen voor een live gebeurtenis, ziet u mogelijk een van de volgende fouten van de [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)  -gebeurtenis.
 
-| Resultaatcode | Description |
+| Resultaatcode | Beschrijving |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Onjuiste opname-URL |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | IP encoder is niet aanwezig in de lijst met toegestane IP-adressen |
@@ -48,7 +48,7 @@ Wanneer u zich abonneert op de [Event grid](../../event-grid/index.yml) gebeurte
 
 Mogelijk wordt een van de volgende fouten weer geven in de [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) -gebeurtenis.
 
-|Resultaatcode|Description|
+|Resultaatcode|Beschrijving|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|Er is een time-out opgetreden voor RTMP-sessie na inactiviteit van de toegestane tijds limiet.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|De tijds tempel van de video-of audio-FLVTag is ongeldig vanuit het RTMP-coderings programma.|

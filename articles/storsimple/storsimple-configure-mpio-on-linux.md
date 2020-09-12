@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183629"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294710"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>MPIO configureren op een StorSimple-host met CentOS
 In dit artikel worden de stappen beschreven die nodig zijn voor het configureren van MPIO (multipath-i/o) op de CentOS 6,6-hostserver. De hostserver is verbonden met uw Microsoft Azure StorSimple-apparaat voor hoge Beschik baarheid via iSCSI-initia tors. Hierin wordt de automatische detectie van multipath-apparaten en de specifieke installatie van alleen voor StorSimple-volumes beschreven.
@@ -352,7 +352,7 @@ Het is ook een goed idee om te controleren of u bepaalde schijven daad werkelijk
 
 * Gebruik de volgende opdracht om de SCSI-bus opnieuw te scannen:
   
-    `$ rescan-scsi-bus.sh`(onderdeel van sg3_utils pakket)
+    `$ rescan-scsi-bus.sh` (onderdeel van sg3_utils pakket)
 * Typ de volgende opdrachten:
   
     `$ dmesg | grep sd*`
@@ -377,9 +377,9 @@ Herhaal deze opdracht voor alle verbonden netwerk interfaces op het iSCSI-doel, 
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-V. Ik weet niet zeker of mijn apparaat white list is.
+V. Ik weet niet of mijn apparaat is toegestaan.
 
-A. Als u wilt controleren of uw apparaat white list is, gebruikt u de volgende interactieve opdracht:
+A. Gebruik de volgende procedure voor het oplossen van problemen met de interactieve opdracht om te controleren of het apparaat is toegestaan:
 
 ```console
 multipathd -k
@@ -441,7 +441,7 @@ Ga voor meer informatie naar [probleem oplossing voor meerdere paden](https://ac
 | &nbsp; |`chkconfig multipathd on` </br> OF </br> `mpathconf -with_chkconfig y` |Multipath daemon inschakelen om te starten op het moment van opstarten |
 | &nbsp; |`multipathd -k` |De interactieve console starten voor het oplossen van problemen |
 | &nbsp; |`multipath -l` |Meerdere paden en apparaten weer geven |
-| &nbsp; |`mpathconf --enable` |Maak een voor beeld van een bestand mulitpath. conf in`/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |Maak een voor beeld van een bestand mulitpath. conf in `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -449,4 +449,3 @@ Tijdens het configureren van MPIO op een Linux-host moet u mogelijk ook de volge
 
 * [MPIO instellen op CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux-trainings gids](http://linux-training.be/linuxsys.pdf)
-

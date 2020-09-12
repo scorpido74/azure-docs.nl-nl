@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358239"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280142"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Uitgebreide kennis van Pass-Through-verificatie Azure Active Directory
 
@@ -38,14 +38,14 @@ De besproken onderwerpen zijn onder andere:
 Dit zijn de belangrijkste beveiligings aspecten van deze functie:
 - Het is gebouwd op een beveiligde multi-tenant architectuur die het aanmelden van aanmeldings aanvragen tussen tenants biedt.
 - On-premises wacht woorden worden nooit in een wille keurige vorm opgeslagen in de Cloud.
-- On-premises verificatie agenten die Luis teren naar en reageren op aanvragen voor wachtwoord validatie maken alleen uitgaande verbindingen vanuit uw netwerk. Er is geen vereiste om deze verificatie agenten te installeren in een perimeter netwerk (DMZ). Behandel als best practice alle servers met verificatie-agents als laag 0-systemen (Zie [naslag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+- On-premises verificatie agenten die Luis teren naar en reageren op aanvragen voor wachtwoord validatie maken alleen uitgaande verbindingen vanuit uw netwerk. Er is geen vereiste om deze verificatie agenten te installeren in een perimeter netwerk (DMZ). Behandel als best practice alle servers met verificatie-agents als laag 0-systemen (Zie [naslag](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Alleen standaard poorten (80 en 443) worden gebruikt voor uitgaande communicatie van de verificatie agenten naar Azure AD. U hoeft geen binnenkomende poorten te openen in uw firewall. 
   - Poort 443 wordt gebruikt voor alle geverifieerde uitgaande communicatie.
   - Poort 80 wordt alleen gebruikt voor het downloaden van de certificaatintrekkingslijsten (Crl's) om ervoor te zorgen dat geen van de certificaten die door deze functie worden gebruikt, zijn ingetrokken.
   - Zie [Azure Active Directory Pass-Through-verificatie: Quick](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)start voor de volledige lijst met netwerk vereisten.
 - Wacht woorden die gebruikers opgeven tijdens het aanmelden, worden versleuteld in de Cloud voordat de on-premises verificatie agenten deze accepteren voor validatie op basis van Active Directory.
 - Het HTTPS-kanaal tussen Azure AD en de on-premises verificatie agent wordt beveiligd met wederzijdse verificatie.
-- Beveiligt uw gebruikers accounts door naadloos samen te werken met [beleid voor voorwaardelijke toegang van Azure AD](../active-directory-conditional-access-azure-portal.md), inclusief multi-factor Authentication (MFA), het [blok keren van verouderde verificatie](../conditional-access/concept-conditional-access-conditions.md) en het filteren van aanvallen op basis van [Brute Force-wacht woorden](../authentication/howto-password-smart-lockout.md).
+- Beveiligt uw gebruikers accounts door naadloos samen te werken met [beleid voor voorwaardelijke toegang van Azure AD](../conditional-access/overview.md), inclusief multi-factor Authentication (MFA), het [blok keren van verouderde verificatie](../conditional-access/concept-conditional-access-conditions.md) en het filteren van aanvallen op basis van [Brute Force-wacht woorden](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Betrokken onderdelen
 
@@ -59,8 +59,8 @@ Zie het [vertrouwens centrum](https://azure.microsoft.com/support/trust-center/)
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Installatie en registratie van de verificatie agenten
 
 Verificatie agenten worden geïnstalleerd en geregistreerd bij Azure AD wanneer u:
-   - [Pass-Through-verificatie inschakelen via Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
-   - [Meer verificatie agenten toevoegen om te zorgen voor een hoge Beschik baarheid van aanmeldings aanvragen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
+   - [Pass-Through-verificatie inschakelen via Azure AD Connect](./how-to-connect-pta-quick-start.md#step-2-enable-the-feature)
+   - [Meer verificatie agenten toevoegen om te zorgen voor een hoge Beschik baarheid van aanmeldings aanvragen](./how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) 
    
 Het ophalen van een verificatie-agent omvat drie hoofd fasen:
 
@@ -73,11 +73,11 @@ In de volgende secties worden deze fasen uitvoerig besproken.
 ### <a name="authentication-agent-installation"></a>Verificatie agent installeren
 
 Alleen globale beheerders kunnen een verificatie agent (met behulp van Azure AD Connect of zelfstandig) installeren op een on-premises server. De installatie voegt twee nieuwe vermeldingen toe **Control Panel**aan de  >  lijst**Program**ma's  >  **en onderdelen** van het configuratie scherm:
-- De verificatie agent-toepassing zelf. Deze toepassing wordt uitgevoerd met [netwerk](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) toegangs rechten.
-- De updater-toepassing die wordt gebruikt om de verificatie agent automatisch bij te werken. Deze toepassing wordt uitgevoerd met [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) -bevoegdheden.
+- De verificatie agent-toepassing zelf. Deze toepassing wordt uitgevoerd met [netwerk](/windows/win32/services/networkservice-account) toegangs rechten.
+- De updater-toepassing die wordt gebruikt om de verificatie agent automatisch bij te werken. Deze toepassing wordt uitgevoerd met [LocalSystem](/windows/win32/services/localsystem-account) -bevoegdheden.
 
 >[!IMPORTANT]
->Uit veiligheids oogpunt moeten beheerders de server waarop de PTA-agent wordt uitgevoerd, behandelen alsof het een domein controller is.  De PTA-agent servers moeten worden gehard over dezelfde regels als beschreven in [domein controllers beveiligen tegen aanvallen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)
+>Uit veiligheids oogpunt moeten beheerders de server waarop de PTA-agent wordt uitgevoerd, behandelen alsof het een domein controller is.  De PTA-agent servers moeten worden gehard over dezelfde regels als beschreven in [domein controllers beveiligen tegen aanvallen](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)
 
 ### <a name="authentication-agent-registration"></a>Registratie van verificatie agent
 
@@ -107,7 +107,7 @@ De verificatie agenten gebruiken de volgende stappen om zich te registreren bij 
     -  Geen van de andere Azure AD-Services gebruiken deze certificerings instantie.
     - Het onderwerp (Distinguished name of DN) van het certificaat wordt ingesteld op uw Tenant-ID. Deze DN is een unieke GUID waarmee uw Tenant wordt geïdentificeerd. Dit DN-bereik is het certificaat alleen voor gebruik met uw Tenant.
 6. In azure AD wordt de open bare sleutel van de verificatie agent opgeslagen in een data base in Azure SQL Database, waartoe alleen Azure AD toegang heeft.
-7. Het certificaat (uitgegeven in stap 5) wordt opgeslagen op de on-premises server in het Windows-certificaat archief (met name op de [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) locatie). Het wordt gebruikt door de verificatie agent en de updater toepassingen.
+7. Het certificaat (uitgegeven in stap 5) wordt opgeslagen op de on-premises server in het Windows-certificaat archief (met name op de [CERT_SYSTEM_STORE_LOCAL_MACHINE](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_LOCAL_MACHINE) locatie). Het wordt gebruikt door de verificatie agent en de updater toepassingen.
 
 ### <a name="authentication-agent-initialization"></a>Initialisatie van verificatie agent
 
@@ -144,7 +144,7 @@ Pass Through-verificatie verwerkt een aanmeldings aanvraag van een gebruiker als
 8. Azure AD STS plaatst de aanvraag voor wachtwoord validatie, die bestaat uit de gebruikers naam en het versleutelde wacht woord, naar de Service Bus wachtrij die specifiek is voor uw Tenant.
 9. Omdat de geïnitialiseerde verificatie agenten permanent zijn verbonden met de Service Bus wachtrij, haalt een van de beschik bare verificatie agenten de aanvraag voor wachtwoord validatie op.
 10. De verificatie agent zoekt de versleutelde wachtwoord waarde die specifiek is voor de open bare sleutel met behulp van een id en ontsleutelt deze met behulp van de bijbehorende persoonlijke sleutel.
-11. De verificatie agent probeert de gebruikers naam en het wacht woord te valideren voor on-premises Active Directory met behulp van de [Win32-LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) waarbij de para meter **dwLogonType** is ingesteld op **LOGON32_LOGON_NETWORK**. 
+11. De verificatie agent probeert de gebruikers naam en het wacht woord te valideren voor on-premises Active Directory met behulp van de [Win32-LogonUser-API](/windows/win32/api/winbase/nf-winbase-logonusera) waarbij de para meter **dwLogonType** is ingesteld op **LOGON32_LOGON_NETWORK**. 
     - Deze API is dezelfde API die wordt gebruikt door Active Directory Federation Services (AD FS) voor het aanmelden van gebruikers in een federatief aanmeldings scenario.
     - Deze API is afhankelijk van het standaard oplossings proces in Windows Server om de domein controller te vinden.
 12. De verificatie agent ontvangt het resultaat van Active Directory, zoals geslaagd, gebruikers naam of wacht woord is onjuist of het wacht woord is verlopen.
@@ -179,7 +179,7 @@ De vertrouwens relatie van een verificatie agent met Azure AD vernieuwen:
     - Gebruik de Azure AD-basis certificerings instantie om het certificaat te ondertekenen.
     - Stel het onderwerp (DN-naam of DN) van het certificaat in op uw Tenant-ID, een GUID waarmee uw Tenant uniek wordt geïdentificeerd. Het DN-bereik van het certificaat is alleen voor uw Tenant.
 6. In azure AD wordt de nieuwe open bare sleutel van de verificatie agent opgeslagen in een data base in Azure SQL Database waartoe alleen toegang is. Ook wordt de oude open bare sleutel die is gekoppeld aan de verificatie agent, ongeldig gemaakt.
-7. Het nieuwe certificaat (uitgegeven in stap 5) wordt vervolgens opgeslagen op de server in het Windows-certificaat archief (met name op de [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) locatie).
+7. Het nieuwe certificaat (uitgegeven in stap 5) wordt vervolgens opgeslagen op de server in het Windows-certificaat archief (met name op de [CERT_SYSTEM_STORE_CURRENT_USER](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_CURRENT_USER) locatie).
     - Omdat de procedure voor het vernieuwen van de vertrouwens relatie niet-interactief plaatsvindt (zonder de aanwezigheid van de globale beheerder), heeft de verificatie agent geen toegang meer om het bestaande certificaat op de CERT_SYSTEM_STORE_LOCAL_MACHINE locatie bij te werken. 
     
    > [!NOTE]
@@ -190,7 +190,7 @@ De vertrouwens relatie van een verificatie agent met Azure AD vernieuwen:
 
 De updater-toepassing werkt de verificatie agent automatisch bij wanneer een nieuwe versie (met fout correcties of prestatie verbeteringen) wordt uitgebracht. De updater-toepassing verwerkt geen aanvragen voor wachtwoord validatie voor uw Tenant.
 
-Azure AD fungeert als host voor de nieuwe versie van de software als een ondertekend **Windows Installer pakket (MSI)**. Het MSI-bestand is ondertekend met behulp van [micro soft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) met SHA256 als Digest-algoritme. 
+Azure AD fungeert als host voor de nieuwe versie van de software als een ondertekend **Windows Installer pakket (MSI)**. Het MSI-bestand is ondertekend met behulp van [micro soft Authenticode](/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms537359(v=vs.85)) met SHA256 als Digest-algoritme. 
 
 ![Automatisch bijwerken](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
@@ -203,7 +203,7 @@ Een verificatie agent automatisch bijwerken:
 4. De updater voert het MSI-bestand uit. Deze actie omvat de volgende stappen:
 
    > [!NOTE]
-   > De updater wordt uitgevoerd met [lokale systeem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) bevoegdheden.
+   > De updater wordt uitgevoerd met [lokale systeem](/windows/win32/services/localsystem-account) bevoegdheden.
 
     - Stopt de verificatie Agent-service
     - Installeert de nieuwe versie van de verificatie agent op de server

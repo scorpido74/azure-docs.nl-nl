@@ -3,15 +3,15 @@ title: Resource groepen beheren-Azure CLI
 description: Gebruik Azure CLI voor het beheren van uw resource groepen via Azure Resource Manager. Laat zien hoe u resource groepen kunt maken, weer geven en verwijderen.
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c64e7166d154d8f37af7a64777e2c36181b7195b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827109"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290494"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-resource groepen beheren met behulp van Azure CLI
 
@@ -32,14 +32,10 @@ De resourcegroep slaat metagegevens op over de resources. Als u een locatie voor
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
-Met het volgende CLI-script maakt u een resource groep en wordt vervolgens de resource groep weer gegeven.
+Met de volgende CLI-opdracht maakt u een resource groep.
 
 ```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-echo "Enter the location (i.e. centralus):" &&
-read location &&
-az group create --name $resourceGroupName --location $location
+az group create --name demoResourceGroup --location westus
 ```
 
 ## <a name="list-resource-groups"></a>Resource groepen weer geven

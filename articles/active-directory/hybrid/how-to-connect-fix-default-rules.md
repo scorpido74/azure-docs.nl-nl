@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359752"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279938"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Aangepaste standaard regels in Azure AD Connect herstellen
 
@@ -89,7 +89,7 @@ Laat het **bereik filter** leeg. Dit betekent dat de regel van toepassing is op 
 
 Bewaar **regels voor samen voegen** leeg. Dit betekent dat deze regel de samenvoegings voorwaarde gebruikt die is gedefinieerd in de standaard regel standaard. Dit is een andere reden om de standaard regel standaard niet uit te scha kelen of te verwijderen. Als er geen deelname voorwaarde is, loopt het kenmerk niet over. 
 
-Voeg de juiste trans formaties voor uw kenmerk toe. U kunt een constante toewijzen om een constante waarde stroom te maken naar uw doel kenmerk. U kunt directe toewijzing tussen het bron-of doel kenmerk gebruiken. U kunt ook een expressie gebruiken voor het kenmerk. Hier volgen diverse [expressie functies](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) die u kunt gebruiken.
+Voeg de juiste trans formaties voor uw kenmerk toe. U kunt een constante toewijzen om een constante waarde stroom te maken naar uw doel kenmerk. U kunt directe toewijzing tussen het bron-of doel kenmerk gebruiken. U kunt ook een expressie gebruiken voor het kenmerk. Hier volgen diverse [expressie functies](./reference-connect-sync-functions-reference.md) die u kunt gebruiken.
 
 #### <a name="add-an-outbound-sync-rule"></a>Een uitgaande synchronisatie regel toevoegen
 Als u het kenmerk aan de doel directory wilt koppelen, moet u een uitgaande regel maken. Dit betekent dat de bron het omgekeerde is en dat het doel het verbonden systeem is. Als u een uitgaande regel wilt maken, start u de **Editor voor synchronisatie regels**, wijzigt u de **richting** in **uitgaand**en selecteert u **nieuwe regel toevoegen**. 
@@ -102,7 +102,7 @@ Net als bij de regel voor binnenkomende verbindingen kunt u uw eigen naamgevings
 
 Bewaar het **bereik filter** en de **regels voor samen voegen** leeg. Vul de trans formatie in als constante, direct of expressie. 
 
-U weet nu hoe u een nieuw kenmerk voor een gebruikers object stroom kunt maken van Active Directory naar Azure Active Directory. U kunt deze stappen gebruiken om elk kenmerk van elk object toe te wijzen aan de bron en het doel. Zie [Aangepaste synchronisatie regels maken](how-to-connect-create-custom-sync-rule.md) en voor [bereiding voor het inrichten van gebruikers](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)voor meer informatie.
+U weet nu hoe u een nieuw kenmerk voor een gebruikers object stroom kunt maken van Active Directory naar Azure Active Directory. U kunt deze stappen gebruiken om elk kenmerk van elk object toe te wijzen aan de bron en het doel. Zie [Aangepaste synchronisatie regels maken](how-to-connect-create-custom-sync-rule.md) en voor [bereiding voor het inrichten van gebruikers](/office365/enterprise/prepare-for-directory-synchronization)voor meer informatie.
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>De waarde van een bestaand kenmerk overschrijven
 Mogelijk wilt u de waarde overschrijven van een kenmerk dat al is toegewezen. Als u bijvoorbeeld altijd een null-waarde wilt instellen op een kenmerk in azure AD, hoeft u alleen maar een regel voor binnenkomende verbindingen te maken. Maak de constante waarde, `AuthoritativeNull` , stroom naar het doel kenmerk. 
@@ -194,6 +194,3 @@ Als u uw regels wilt herstellen om ze terug te zetten naar de standaard instelli
 - [Hardware en vereisten](how-to-connect-install-prerequisites.md) 
 - [Snelle instellingen](how-to-connect-install-express.md)
 - [Aangepaste instellingen](how-to-connect-install-custom.md)
-
-
-

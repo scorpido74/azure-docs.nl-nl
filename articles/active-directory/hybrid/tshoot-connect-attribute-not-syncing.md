@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a16e989a6da8daa4a290c7eaa4363eef09c9749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356335"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276028"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Problemen oplossen met een kenmerk dat niet wordt gesynchroniseerd in Azure AD Connect
 
@@ -80,13 +80,13 @@ Voordat u problemen met het synchroniseren van kenmerken kunt onderzoeken, moet 
 * Op dezelfde manier kunt u het **Azure Active Directory Connector Space** -object weer geven en de **Preview-versie** voor het weer geven van de kenmerk stroom van een **omgekeerde** naar de **connector ruimte** en vice versa. zo kunt u onderzoeken waarom een kenmerk niet is gesynchroniseerd.
 
 ## <a name="recommended-documents"></a>**Aanbevolen documenten**
-* [Azure AD Connect synchronisatie: technische concepten](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect synchronisatie: uitleg van de architectuur](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect Sync: uitleg over declaratieve inrichting](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect Sync: uitleg over declaratieve inrichtings expressies](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect Sync: informatie over gebruikers, groepen en contact personen](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect Sync: schaduw kenmerken](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect synchronisatie: technische concepten](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect synchronisatie: uitleg van de architectuur](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect Sync: uitleg over declaratieve inrichting](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect Sync: uitleg over declaratieve inrichtings expressies](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect Sync: informatie over gebruikers, groepen en contact personen](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect Sync: schaduw kenmerken](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

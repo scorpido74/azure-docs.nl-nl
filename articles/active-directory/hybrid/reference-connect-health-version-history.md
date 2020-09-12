@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182340"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279411"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Versiegeschiedenis van status Azure AD Connect
 Het Azure Active Directory team werkt Azure AD Connect Health regel matig bij met nieuwe functies en functionaliteit. In dit artikel vindt u een overzicht van de versies en functies die zijn uitgebracht.  
@@ -30,7 +30,7 @@ Het Azure Active Directory team werkt Azure AD Connect Health regel matig bij me
 > Connect Health-Agents worden automatisch bijgewerkt wanneer er een nieuwe versie wordt uitgebracht. Zorg ervoor dat de instellingen voor automatisch bijwerken zijn ingeschakeld in Azure Portal.
 >
 
-Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connect-installatie. Meer informatie over het Azure AD Connect van de [release geschiedenis](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) voor functie feedback, stemmen bij [verbindings status van gebruikers Voice Channel](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
+Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connect-installatie. Meer informatie over het Azure AD Connect van de [release geschiedenis](./reference-connect-version-history.md) voor functie feedback, stemmen bij [verbindings status van gebruikers Voice Channel](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
 ## <a name="april-2020"></a>April 2020
 **Agent update**
@@ -149,7 +149,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
   1. Verbeteringen van agent beschikbaarheid 
   2. Oplossingen voor fouten en algemene verbeteringen
 
-## <a name="december-2017"></a>December 2017
+## <a name="december-2017"></a>december 2017
 **Agent update:**
 
 * Azure AD Connect Health Agent voor AD DS (versie 3.0.145.0)
@@ -260,4 +260,4 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
 * Een eenvoudigere agent implementatie met behulp van de referenties van de globale beheerder van Azure AD.  
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [het bewaken van uw on-premises infra structuur voor identiteiten en synchronisatie Services in de Cloud](whatis-hybrid-identity-health.md).
+Meer informatie over [het bewaken van uw on-premises infra structuur voor identiteiten en synchronisatie Services in de Cloud](./whatis-azure-ad-connect.md).

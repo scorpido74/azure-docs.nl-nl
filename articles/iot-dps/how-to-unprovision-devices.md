@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974833"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294387"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>De inrichting van apparaten die eerder automatisch zijn ingericht, ongedaan maken 
 
@@ -57,22 +57,10 @@ Als u een lijst met apparaten wilt zien die zijn ingericht via een registratie g
 Bij inschrijvings groepen zijn er twee scenario's waarin u rekening moet houden:
 
 - Voor het ongedaan maken van de inrichting van alle apparaten die zijn ingericht via een registratie groep:
-  1. De registratie groep uitschakelen om het handtekening certificaat op de zwarte lijst te zetten. 
+  1. Schakel de registratie groep uit om het handtekening certificaat niet toe te staan. 
   2. Gebruik de lijst met ingerichte apparaten voor die registratie groep om elk apparaat uit te scha kelen of te verwijderen uit het identiteits register van de desbetreffende IoT-hub. 
   3. Nadat u alle apparaten hebt uitgeschakeld of verwijderd uit hun respectieve IoT-hubs, kunt u eventueel de registratie groep verwijderen. Houd er rekening mee dat, als u de registratie groep verwijdert en er een inschrijvings groep is ingeschakeld voor een handtekening certificaat dat hoger is dan de certificaat keten van een of meer van de apparaten, dan kunnen die apparaten opnieuw worden inge schreven. 
 
 - De inrichting van één apparaat uit een registratie groep ongedaan maken:
   1. Een uitgeschakelde individuele inschrijving maken voor het blad (apparaat) certificaat. Hiermee trekt u de toegang tot de inrichtings service voor dat apparaat in, terwijl er nog steeds toegang wordt verlenen voor andere apparaten die het handtekening certificaat van de registratie groep in hun keten hebben. Verwijder de uitgeschakelde individuele inschrijving niet voor het apparaat. Hierdoor kan het apparaat opnieuw worden inge schreven via de registratie groep. 
   2. Gebruik de lijst met ingerichte apparaten voor die registratie groep om de IoT-hub te vinden waarmee het apparaat is ingericht en om het uit te scha kelen of te verwijderen uit het id-REGI ster van de hub. 
-  
-  
-
-
-
-
-
-
-
-
-
-

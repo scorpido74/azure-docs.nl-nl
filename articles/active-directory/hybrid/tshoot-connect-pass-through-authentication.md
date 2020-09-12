@@ -16,19 +16,19 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446985"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275920"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
 
 Dit artikel helpt u bij het vinden van probleemoplossings informatie over veelvoorkomende problemen met Azure AD Pass-Through-verificatie.
 
 >[!IMPORTANT]
->Als u problemen ondervindt bij het aanmelden van gebruikers met Pass-Through-verificatie, schakelt u de functie niet uit of verwijdert u Pass-Through-verificatie agenten zonder alleen een globale beheerders account voor de cloud om terug te vallen. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Deze stap is kritiek en zorgt ervoor dat u uw Tenant niet hebt vergrendeld.
+>Als u problemen ondervindt bij het aanmelden van gebruikers met Pass-Through-verificatie, schakelt u de functie niet uit of verwijdert u Pass-Through-verificatie agenten zonder alleen een globale beheerders account voor de cloud om terug te vallen. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../fundamentals/add-users-azure-active-directory.md). Deze stap is kritiek en zorgt ervoor dat u uw Tenant niet hebt vergrendeld.
 
 ## <a name="general-issues"></a>Algemene problemen
 
@@ -72,10 +72,10 @@ U kunt controleren of dit het probleem is door eerst te testen of de Pass-Throug
  ``` 
 4. Wanneer u wordt gevraagd om referenties in te voeren, voert u dezelfde gebruikers naam en hetzelfde wacht woord in als voor aanmelding bij ( https://login.microsoftonline.com) .
 
-Als u dezelfde gebruikers naam en hetzelfde wacht woord krijgt, betekent dit dat de Pass-Through-verificatie agent correct werkt en het probleem mogelijk is dat de on-premises UPN niet routeerbaar is. Zie de [alternatieve aanmeldings-id configureren]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)voor meer informatie.
+Als u dezelfde gebruikers naam en hetzelfde wacht woord krijgt, betekent dit dat de Pass-Through-verificatie agent correct werkt en het probleem mogelijk is dat de on-premises UPN niet routeerbaar is. Zie de [alternatieve aanmeldings-id configureren]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)voor meer informatie.
 
 > [!IMPORTANT]
-> Als de Azure AD Connect server geen lid is van een domein, wordt een vereiste in [Azure AD Connect:](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites)vereisten, het ongeldige probleem met de gebruikers naam en het wacht woord.
+> Als de Azure AD Connect server geen lid is van een domein, wordt een vereiste in [Azure AD Connect:](./how-to-connect-install-prerequisites.md#installation-prerequisites)vereisten, het ongeldige probleem met de gebruikers naam en het wacht woord.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Redenen voor aanmeldings fout op het Azure Active Directory-beheer centrum (vereiste Premium-licentie)
 
@@ -98,7 +98,7 @@ Navigeer naar **Azure Active Directory**  ->  **-aanmeldingen** in het [Azure Ac
 | 80011 | Verificatieagent kan ontsleutelingssleutel hier ophalen. | Als het probleem zich voortdurend reproduceert, installeert en registreert u een nieuwe verificatie agent. En verwijder de huidige versie.
 
 >[!IMPORTANT]
->Pass-Through-verificatie agenten verifiëren Azure AD-gebruikers door hun gebruikers namen en wacht woorden te valideren op Active Directory door de [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)aan te roepen. Als u dus de instelling aanmelden op in Active Directory hebt ingesteld om de toegang tot het werk station te beperken, moet u servers die fungeren als host voor Pass-Through-verificatie agenten ook toevoegen aan de lijst met servers waarop zich moet aanmelden. Als u dit niet doet, worden uw gebruikers geblokkeerd om zich aan te melden bij Azure AD.
+>Pass-Through-verificatie agenten verifiëren Azure AD-gebruikers door hun gebruikers namen en wacht woorden te valideren op Active Directory door de [Win32 LogonUser-API](/windows/win32/api/winbase/nf-winbase-logonusera)aan te roepen. Als u dus de instelling aanmelden op in Active Directory hebt ingesteld om de toegang tot het werk station te beperken, moet u servers die fungeren als host voor Pass-Through-verificatie agenten ook toevoegen aan de lijst met servers waarop zich moet aanmelden. Als u dit niet doet, worden uw gebruikers geblokkeerd om zich aan te melden bij Azure AD.
 
 ## <a name="authentication-agent-installation-issues"></a>Installatie problemen met verificatie agent
 

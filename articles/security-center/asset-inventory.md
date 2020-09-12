@@ -40,7 +40,7 @@ De mogelijkheden voor het beheer van middelen voor dit hulp programma zijn aanzi
 |Release status:|Preview|
 |Koers|Gratis|
 |Vereiste rollen en machtigingen:|Alle gebruikers|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 

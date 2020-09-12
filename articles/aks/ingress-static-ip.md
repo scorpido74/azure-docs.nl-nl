@@ -5,12 +5,12 @@ description: Meer informatie over het installeren en configureren van een NGINX 
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: dbab9df3acf7de801a4e75502863fff698232458
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852559"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290545"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken met een statisch openbaar IP-adres in azure Kubernetes service (AKS)
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Met de bovenstaande opdrachten maakt u een IP-adres dat wordt verwijderd als u uw AKS-cluster verwijdert. U kunt ook een IP-adres maken in een andere resource groep die onafhankelijk van uw AKS-cluster kan worden beheerd. Als u een IP-adres in een andere resource groep maakt, moet u ervoor zorgen dat de service-principal die wordt gebruikt door het AKS-cluster, gedelegeerde machtigingen heeft voor de andere resource groep, zoals *Network contributor*.
+> Met de bovenstaande opdrachten maakt u een IP-adres dat wordt verwijderd als u uw AKS-cluster verwijdert. U kunt ook een IP-adres maken in een andere resource groep die onafhankelijk van uw AKS-cluster kan worden beheerd. Als u een IP-adres in een andere resource groep maakt, moet u ervoor zorgen dat de service-principal die wordt gebruikt door het AKS-cluster, gedelegeerde machtigingen heeft voor de andere resource groep, zoals *Network contributor*. Zie [een statisch openbaar IP-adres en DNS-label gebruiken met de AKS-Load Balancer][aks-static-ip]voor meer informatie.
 
 Implementeer nu het *nginx-ingress-* grafiek met helm. Voor toegevoegde redundantie worden er twee replica's van de NGINX-ingangscontrollers geïmplementeerd met de parameter `--set controller.replicaCount`. Om volledig te profiteren van het uitvoeren van replica's van de ingangs controller, moet u ervoor zorgen dat er meer dan één knoop punt in uw AKS-cluster is.
 
@@ -483,3 +483,4 @@ U kunt ook het volgende doen:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-static-ip]: static-ip.md

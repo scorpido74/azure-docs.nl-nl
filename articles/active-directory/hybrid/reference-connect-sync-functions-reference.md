@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550176"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279768"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Naslag informatie over functies
 In Azure AD Connect worden functies gebruikt voor het bewerken van een kenmerk waarde tijdens de synchronisatie.  
@@ -117,14 +117,14 @@ De functies met de typen **mvbin**, **mvstr**en **mvref** kunnen alleen worden g
   * [Aantal](#count)
   * [Item](#item)
   * [ItemOrNull](#itemornull)
-  * [Toevoegen](#join)
+  * [Join](#join)
   * [RemoveDuplicates](#removeduplicates)
   * [Delen](#split)
 * **Programma stroom**
   * [Fout](#error)
   * [IIF](#iif)
   * [Selecteren](#select)
-  * [/Tijdnotatie](#switch)
+  * [Switch](#switch)
   * [Positie](#where)
   * [Met](#with)
 * **Tekst**
@@ -426,9 +426,9 @@ De functie CGuid converteert de teken reeks representatie van een GUID naar de b
 De functie contains vindt een teken reeks in een kenmerk met meerdere waarden
 
 **Syntaxis**  
-`num Contains (mvstring attribute, str search)`-hoofdletter gevoelig  
+`num Contains (mvstring attribute, str search)` -hoofdletter gevoelig  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`-hoofdletter gevoelig
+`num Contains (mvref attribute, str search)` -hoofdletter gevoelig
 
 * kenmerk: het kenmerk met meerdere waarden waarnaar moet worden gezocht.
 * Search: teken reeks die moet worden gevonden in het kenmerk.
@@ -450,7 +450,7 @@ Als het kenmerk proxyAddresses een primair e-mail adres heeft (aangeduid met hoo
 De functie ConvertFromBase64 converteert de opgegeven base64-gecodeerde waarde naar een reguliere teken reeks.
 
 **Syntaxis**  
-`str ConvertFromBase64(str source)`-gaat ervan uit dat Unicode voor coderen  
+`str ConvertFromBase64(str source)` -gaat ervan uit dat Unicode voor coderen  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Bron: base64-gecodeerde teken reeks  
@@ -509,7 +509,7 @@ De uitvoer indeling van deze functie wordt gebruikt door Azure Active Directory 
 Retourneert 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Aantal
 **Beschrijving:**  
 De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
 
@@ -660,7 +660,7 @@ De functie FormatDateTime wordt gebruikt om een datum/tijd te Format teren in ee
 * indeling: een teken reeks waarmee de indeling wordt aangegeven waarnaar moet worden geconverteerd.
 
 **Opmerkingen**  
-De mogelijke waarden voor de indeling vindt u hier: [aangepaste datum-en tijd notaties voor de functie Format](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+De mogelijke waarden voor de indeling vindt u hier: [aangepaste datum-en tijd notaties voor de functie Format](/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Voorbeeld:**  
 
@@ -671,7 +671,7 @@ Resulteert in "2007-12-25".
 Kan resulteren in "20140905081453.0 Z"
 
 ---
-### <a name="guid"></a>GUID
+### <a name="guid"></a>Guid
 **Beschrijving:**  
 De functie-GUID genereert een nieuwe wille keurige GUID
 
@@ -1014,7 +1014,7 @@ Retourneert "HN do".
 Retourneert "Splinter"
 
 ---
-### <a name="now"></a>Now
+### <a name="now"></a>Stel nu
 **Beschrijving:**  
 De functie Now retourneert een datum/tijd op basis van de datum en tijd van de computer.
 

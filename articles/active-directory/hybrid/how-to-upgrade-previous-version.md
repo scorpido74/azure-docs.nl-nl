@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356624"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277201"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: upgraden van een vorige naar de meest recente versie
 In dit onderwerp worden de verschillende methoden beschreven die u kunt gebruiken om uw Azure Active Directory (Azure AD) Connect-installatie te upgraden naar de nieuwste versie. We raden u aan uw huidige versie van Azure AD Connect te gebruiken. U kunt ook de stappen in de sectie [Swing Migration](#swing-migration) gebruiken wanneer u een substantiële configuratie wijziging aanbrengt.
@@ -54,7 +54,7 @@ Als u wijzigingen hebt aangebracht in de out-of-Box-synchronisatie regels, worde
 
 Tijdens in-place upgrade zijn mogelijk wijzigingen aangebracht die vereisen dat specifieke synchronisatie activiteiten (inclusief volledige import stap en volledige synchronisatie stap) worden uitgevoerd nadat de upgrade is voltooid. Als u dergelijke activiteiten wilt uitstellen, raadpleegt u de sectie de [volledige synchronisatie uitstellen na de upgrade](#how-to-defer-full-synchronization-after-upgrade).
 
-Als u Azure AD Connect met een niet-standaard connector (bijvoorbeeld algemene LDAP-connector en algemene SQL-connector) gebruikt, moet u de bijbehorende connector configuratie in de [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) na in-place upgrade vernieuwen. Raadpleeg voor meer informatie over het vernieuwen van de connector configuratie de sectie artikel [release connector versie geschiedenis-probleem oplossing](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Als u de configuratie niet vernieuwt, zullen de stappen voor importeren en exporteren niet goed werken voor de connector. U ontvangt de volgende fout in het gebeurtenis logboek van de toepassing met het bericht *assembly-versie in Aad connector Configuration ("X.X.xxx. X ') is vroeger dan de werkelijke versie (' X.X.XXX. X ') van ' C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll '.*
+Als u Azure AD Connect met een niet-standaard connector (bijvoorbeeld algemene LDAP-connector en algemene SQL-connector) gebruikt, moet u de bijbehorende connector configuratie in de [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) na in-place upgrade vernieuwen. Raadpleeg voor meer informatie over het vernieuwen van de connector configuratie de sectie artikel [release connector versie geschiedenis-probleem oplossing](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting). Als u de configuratie niet vernieuwt, zullen de stappen voor importeren en exporteren niet goed werken voor de connector. U ontvangt de volgende fout in het gebeurtenis logboek van de toepassing met het bericht *assembly-versie in Aad connector Configuration ("X.X.xxx. X ') is vroeger dan de werkelijke versie (' X.X.XXX. X ') van ' C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll '.*
 
 ## <a name="swing-migration"></a>Swingmigratie
 Als u een complexe implementatie of veel objecten hebt, is het wellicht niet praktisch om een in-place upgrade uit te voeren op het live-systeem. Voor sommige klanten kan dit proces meerdere dagen duren, en gedurende deze periode worden er geen wijzigingen in de Delta verwerkt. U kunt deze methode ook gebruiken wanneer u van plan bent om belang rijke wijzigingen aan te brengen in de configuratie en u deze wilt uitproberen voordat ze naar de cloud worden gepusht.
@@ -108,7 +108,7 @@ Er zijn mogelijk situaties waarin u niet wilt dat deze onderdrukkingen onmiddell
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. Nadat de upgrade is voltooid, voert u de volgende cmdlet uit om erachter te komen welke onderdrukkingen zijn toegevoegd:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. Nadat de upgrade is voltooid, voert u de volgende cmdlet uit om erachter te komen welke onderdrukkingen zijn toegevoegd: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > De onderdrukkingen zijn specifiek voor een connector. In het volgende voor beeld zijn de stap volledige import en volledige synchronisatie toegevoegd aan zowel de on-premises AD-connector als de Azure AD-connector.
@@ -117,7 +117,7 @@ Er zijn mogelijk situaties waarin u niet wilt dat deze onderdrukkingen onmiddell
 
 3. Noteer de bestaande onderdrukkingen die zijn toegevoegd.
    
-4. Voer de volgende cmdlet uit om de onderdrukkingen voor zowel volledige import als volledige synchronisatie van een wille keurige connector te verwijderen:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Voer de volgende cmdlet uit om de onderdrukkingen voor zowel volledige import als volledige synchronisatie van een wille keurige connector te verwijderen: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Als u de onderdrukkingen op alle connectors wilt verwijderen, voert u het volgende Power shell-script uit:
 
@@ -128,12 +128,12 @@ Er zijn mogelijk situaties waarin u niet wilt dat deze onderdrukkingen onmiddell
    }
    ```
 
-5. Voer de volgende cmdlet uit om de scheduler te hervatten:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Voer de volgende cmdlet uit om de scheduler te hervatten: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Vergeet niet om de vereiste synchronisatie stappen zo snel mogelijk uit te voeren. U kunt deze stappen hand matig uitvoeren met de Synchronization Service Manager of de onderdrukkingen opnieuw toevoegen met behulp van de cmdlet Set-ADSyncSchedulerConnectorOverride.
 
-Voer de volgende cmdlet uit om de onderdrukkingen voor zowel volledige import als volledige synchronisatie van een wille keurige connector toe te voegen:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Voer de volgende cmdlet uit om de onderdrukkingen voor zowel volledige import als volledige synchronisatie van een wille keurige connector toe te voegen:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 De volgende sectie bevat probleemoplossingen en informatie die u kunt gebruiken als u een probleem ondervindt bij het upgraden van Azure AD Connect.
@@ -144,7 +144,7 @@ Wanneer u Azure AD Connect van een vorige versie bijwerkt, kan aan het begin van
 
 ![Fout](./media/how-to-upgrade-previous-version/error1.png)
 
-Deze fout treedt op omdat de Azure Active Directory connector met id, b891884f-051e-4a83-95af-2544101c9083, niet bestaat in de huidige Azure AD Connect configuratie. Als u wilt controleren of dit het geval is, opent u een Power shell-venster, voert u de cmdlet uit`Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+Deze fout treedt op omdat de Azure Active Directory connector met id, b891884f-051e-4a83-95af-2544101c9083, niet bestaat in de huidige Azure AD Connect configuratie. Als u wilt controleren of dit het geval is, opent u een Power shell-venster, voert u de cmdlet uit `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083

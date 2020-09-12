@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053216"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278578"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
@@ -25,7 +25,7 @@ Met gefaseerde implementatie kunt u groepen gebruikers selectief testen met Clou
 -  U gebruikt Smart Cards voor verificatie. 
 -  Uw huidige server biedt bepaalde alleen-Federatie functies.
 
-Voordat u deze functie probeert te gebruiken, raden we u aan onze hand leiding te bekijken over het kiezen van de juiste verificatie methode. Zie de tabel ' Compare Methods ' in de [juiste verificatie methode kiezen voor uw Azure Active Directory hybride identiteits oplossing](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods)voor meer informatie.
+Voordat u deze functie probeert te gebruiken, raden we u aan onze hand leiding te bekijken over het kiezen van de juiste verificatie methode. Zie de tabel ' Compare Methods ' in de [juiste verificatie methode kiezen voor uw Azure Active Directory hybride identiteits oplossing](./choose-ad-authn.md#comparing-methods)voor meer informatie.
 
 Bekijk voor een overzicht van de functie ' Azure Active Directory: wat is gefaseerde implementatie? ' hardware
 
@@ -91,7 +91,7 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
 
 Als u het aanmelden voor *wachtwoord hash-synchronisatie* wilt testen met behulp van gefaseerde implementatie, volgt u de voor bereide instructies in de volgende sectie.
 
-Voor informatie over welke Power shell-cmdlets moeten worden gebruikt, raadpleegt u [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Voor informatie over welke Power shell-cmdlets moeten worden gebruikt, raadpleegt u [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Vooraf werken voor wachtwoord-hash-synchronisatie
 
@@ -225,7 +225,7 @@ Aanmelden met *naadloze SSO*testen:
 
 1. Zorg ervoor dat de aanmelding correct wordt weer gegeven in het [rapport met aanmeld activiteiten van Azure AD](../reports-monitoring/concept-sign-ins.md) door te filteren met de userPrincipalName.
 
-   Volg de instructies in [AD FS probleem oplossing: gebeurtenissen en logboek registratie](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)voor het bijhouden van gebruikers aanmeldingen die zich nog steeds voordoen op Active Directory Federation Services (AD FS) voor geselecteerde gebruikers met gefaseerde implementatie. Raadpleeg de documentatie van leveranciers over hoe u dit kunt controleren op Federatie providers van derden.
+   Volg de instructies in [AD FS probleem oplossing: gebeurtenissen en logboek registratie](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)voor het bijhouden van gebruikers aanmeldingen die zich nog steeds voordoen op Active Directory Federation Services (AD FS) voor geselecteerde gebruikers met gefaseerde implementatie. Raadpleeg de documentatie van leveranciers over hoe u dit kunt controleren op Federatie providers van derden.
 
 ## <a name="remove-a-user-from-staged-rollout"></a>Een gebruiker verwijderen uit de gefaseerde implementatie
 
@@ -243,7 +243,7 @@ A: Nee, deze functie is ontworpen voor de migratie van federatieve naar Cloud au
 
 **V: kan ik Power shell gebruiken voor het uitvoeren van een gefaseerde implementatie?**
 
-A: Ja. Zie [Preview van Azure AD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)voor meer informatie over het gebruik van Power shell om gefaseerde implementatie uit te voeren.
+A: Ja. Zie [Preview van Azure AD](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)voor meer informatie over het gebruik van Power shell om gefaseerde implementatie uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

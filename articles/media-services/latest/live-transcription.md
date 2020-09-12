@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264960"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291412"
 ---
 # <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
 
@@ -39,10 +39,10 @@ Live transcriptie is beschikbaar in de volgende regio's:
 - Europa -west
 - Europa - noord
 - VS - oost
-- Central US
+- VS - centraal
 - VS - zuid-centraal
-- US - west 2
-- Brazil South
+- VS - west 2
+- Brazilië - zuid
 
 Dit is de lijst met beschik bare talen die kunnen worden getranscribeerd. Gebruik de taal code in de API.
 

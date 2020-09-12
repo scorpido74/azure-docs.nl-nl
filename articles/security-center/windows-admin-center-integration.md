@@ -1,21 +1,21 @@
 ---
-title: Windows-beheer centrum integreren met Azure Security Center | Microsoft Docs
+title: Windows-beheer centrum-servers beveiligen met Azure Security Center
 description: In dit artikel wordt uitgelegd hoe u Azure Security Center integreert met Windows-beheer centrum
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076351"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277490"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center integreren met Windows-beheer centrum
+# <a name="protect-windows-admin-center-resources-with-security-center"></a>Windows-beheer centrum-resources beveiligen met Security Center
 
 Windows-beheer centrum is een beheer programma voor uw Windows-servers. Het is één locatie voor systeem beheerders om toegang te krijgen tot het meren deel van de meest gebruikte beheer hulpprogramma's. Vanuit het Windows-beheer centrum kunt u uw on-premises servers rechtstreeks op de Azure Security Center. U kunt vervolgens een samen vatting van uw beveiligings aanbevelingen en waarschuwingen rechtstreeks bekijken in de Windows-beheer centrum-ervaring.
 
@@ -31,7 +31,7 @@ Wanneer u een server uit het Windows-beheer centrum hebt geboardd naar Azure Sec
 
 Door deze twee hulpprogram ma's te combi neren, wordt Security Center uw enige glas venster om al uw beveiligings gegevens weer te geven, ongeacht de bron: uw Windows-beheer centrum beheert on-premises servers, uw Vm's en eventuele extra PaaS-workloads.
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Onboarding van door Windows-beheer centrum beheerde servers in Security Center
+## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Onboarding van door Windows-beheer centrum beheerde servers in Security Center
 
 1. Selecteer een van uw servers in het Windows-beheer centrum en selecteer in het deel venster **extra** de extensie Azure Security Center:
 
@@ -54,16 +54,16 @@ Door deze twee hulpprogram ma's te combi neren, wordt Security Center uw enige g
     > Het kan enige tijd duren voordat de aanbevelingen worden weer gegeven. Afhankelijk van uw server activiteit *worden er mogelijk geen waarschuwingen weer* gegeven. Als u test waarschuwingen wilt genereren om te testen of uw waarschuwingen correct werken, volgt u de instructies in [de procedure voor waarschuwings validatie](security-center-alert-validation.md).
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Beveiligings aanbevelingen en-waarschuwingen weer geven in het Windows-beheer centrum
+## <a name="view-security-recommendations-and-alerts-in-windows-admin-center"></a>Aanbevelingen en waarschuwingen voor beveiliging in het Windows-beheer centrum weer geven
 
 Als u dit hebt gedaan, kunt u uw waarschuwingen en aanbevelingen rechtstreeks bekijken in het gedeelte Azure Security Center van het Windows-beheer centrum. Klik op een aanbeveling of een waarschuwing om deze weer te geven in de Azure Portal. Daar vindt u aanvullende informatie en leert u hoe u problemen kunt oplossen.
 
 [![Aanbevelingen en waarschuwingen Security Center zoals weer gegeven in het Windows-beheer centrum](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Beveiligings aanbevelingen en waarschuwingen weer geven voor beheerde servers in het Windows-beheer centrum in Security Center
+## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Aanbevelingen en waarschuwingen voor beveiliging voor door Windows-beheer centrum beheerde servers in Security Center weer geven
 Van Azure Security Center:
 
-* Als u beveiligings aanbevelingen voor al uw Windows-beheer centrum servers wilt weer geven, opent u **compute & apps** en klikt u op het tabblad **vm's en computers** . filter de lijst op resource ' server ', zoals hier wordt weer gegeven:
+* Als u beveiligings aanbevelingen voor al uw Windows-beheer centrum servers wilt weer geven, opent u **compute & apps** en klikt u op het tabblad **vm's en computers** . De lijst filteren op resource "server", zoals hier wordt weer gegeven:
 
     [![Beveiligings aanbevelingen voor door Windows-beheer centrum beheerde servers weer geven](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
 

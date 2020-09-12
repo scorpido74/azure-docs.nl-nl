@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3aa8d691eb62b94c5784d8a6efc35b53a3762d7f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921134"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294115"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Aanvragen verzenden naar de Automatische suggestie-API voor Bing.
 
@@ -23,7 +23,7 @@ Als uw toepassing query's verstuurt naar een van de API's van Bing Search, kunt 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Automatische suggestie-API voor Bing-eind punt
 
-Het **Automatische suggestie-API voor Bing** bevat één eind punt, waarmee een lijst met voorgestelde query's uit een gedeeltelijke zoek term wordt geretourneerd.
+Het **Automatische suggestie-API voor Bing**  bevat één eind punt, waarmee een lijst met voorgestelde query's uit een gedeeltelijke zoek term wordt geretourneerd.
 
 Als u aanbevolen query's wilt ontvangen met behulp van de Bing API, verzendt `GET` u een aanvraag naar het volgende eind punt. Gebruik de para meters headers en URL om verdere specificaties te definiëren.
 
@@ -64,7 +64,7 @@ Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosug
 > [!NOTE]
 > Wanneer u de Automatische suggestie-API voor Bing aanroept vanuit Java script, kan de ingebouwde beveiligings functies van uw browser ertoe leiden dat u de waarden van deze headers niet kunt openen.
 
-U kunt dit oplossen door de Automatische suggestie-API voor Bing aanvraag via een CORS-proxy te maken. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de whitelist en beschikbaar gemaakt voor JavaScript.
+U kunt dit oplossen door de Automatische suggestie-API voor Bing aanvraag via een CORS-proxy te maken. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers filtert en deze beschikbaar maakt voor Java script.
 
 Het is eenvoudig om een CORS-proxy te installeren zodat onze [zelf studie-app](../tutorials/autosuggest.md) toegang kan krijgen tot de optionele client headers. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht in een opdrachtprompt in.
 

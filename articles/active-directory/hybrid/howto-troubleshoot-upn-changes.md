@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608514"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279785"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Wijzigingen in de principal-naam van gebruikers plannen en oplossen in Azure Active Directory
 
@@ -57,9 +57,9 @@ Bsimon@contoso.comomBritta.Simon@contoso.com
 
     Als een persoon bijvoorbeeld afdelingen heeft gewijzigd, kunt u het domein wijzigen: 
 
-   * Britta.Simon@contoso.comAanBritta.Simon@contosolabs.com <br>
+   * Britta.Simon@contoso.com Aan Britta.Simon@contosolabs.com <br>
      of<br>
-    * Britta.Simon@corp.contoso.comAanBritta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.com Aan Britta.Simon@labs.contoso.com 
 
 U wordt aangeraden de UPN van gebruikers elke keer dat het primaire e-mail adres wordt bijgewerkt, te wijzigen.
 
@@ -71,14 +71,14 @@ In Active Directory is het standaard UPN-achtervoegsel de DNS-naam van het domei
 
 username@contoso.com
 
- U kunt echter [meer UPN-achtervoegsels toevoegen](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) met behulp van Active Directory domeinen en vertrouwens relaties. 
+ U kunt echter [meer UPN-achtervoegsels toevoegen](../fundamentals/add-custom-domain.md) met behulp van Active Directory domeinen en vertrouwens relaties. 
 
 U kunt bijvoorbeeld labs.contoso.com toevoegen en de Upn's en het e-mail adres van de gebruikers laten zien. Ze worden vervolgens
 
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> Als u [het achtervoegsel in Active Directory wijzigt](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), moet u ervoor zorgen dat er een overeenkomende aangepaste domein naam is [toegevoegd en geverifieerd in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain). 
+> Als u [het achtervoegsel in Active Directory wijzigt](../fundamentals/add-custom-domain.md), moet u ervoor zorgen dat er een overeenkomende aangepaste domein naam is [toegevoegd en geverifieerd in azure AD](../fundamentals/add-custom-domain.md). 
 
 ![Een scherm opname van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -101,7 +101,7 @@ Als de waarde van het kenmerk userPrincipalName niet overeenkomt met een geverif
 
 ### <a name="roll-out-bulk-upn-changes"></a>Bulk wijzigingen in de UPN uitrollen
 
-Volg de [Aanbevolen procedures voor een pilot](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) voor bulk wijzigingen in de UPN. Ook hebt u een getest rollback-plan voor het terugdraaien van Upn's als u problemen ondervindt die niet snel kunnen worden opgelost. Als uw test eenmaal wordt uitgevoerd, kunt u beginnen met het richten op kleine verzamelingen gebruikers met verschillende organisatie rollen en hun specifieke sets apps of apparaten.
+Volg de [Aanbevolen procedures voor een pilot](../fundamentals/active-directory-deployment-plans.md) voor bulk wijzigingen in de UPN. Ook hebt u een getest rollback-plan voor het terugdraaien van Upn's als u problemen ondervindt die niet snel kunnen worden opgelost. Als uw test eenmaal wordt uitgevoerd, kunt u beginnen met het richten op kleine verzamelingen gebruikers met verschillende organisatie rollen en hun specifieke sets apps of apparaten.
 
 Door deze eerste subset van gebruikers te passeren, krijgt u een goed idee van wat gebruikers moeten verwachten als onderdeel van de wijziging. Neem deze informatie op over de communicatie van uw gebruikers.
 
@@ -111,38 +111,38 @@ In de volgende secties worden mogelijke bekende problemen en tijdelijke oplossin
 
 ## <a name="apps-known-issues-and-workarounds"></a>Bekende problemen en tijdelijke oplossingen voor apps
 
-[Software as a Service (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) en LOB-toepassingen (line-of-Business) zijn vaak afhankelijk van upn's om gebruikers te vinden en gebruikers profiel gegevens op te slaan, inclusief rollen. Toepassingen die gebruikmaken [van just-in-time-inrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) voor het maken van een gebruikers profiel wanneer gebruikers zich voor de eerste keer aanmelden bij de app, kunnen worden beïnvloed door UPN-wijzigingen.
+[Software as a Service (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) en LOB-toepassingen (line-of-Business) zijn vaak afhankelijk van upn's om gebruikers te vinden en gebruikers profiel gegevens op te slaan, inclusief rollen. Toepassingen die gebruikmaken [van just-in-time-inrichting](../app-provisioning/user-provisioning.md) voor het maken van een gebruikers profiel wanneer gebruikers zich voor de eerste keer aanmelden bij de app, kunnen worden beïnvloed door UPN-wijzigingen.
 
 **Bekend probleem**<br>
-Het wijzigen van de UPN van een gebruiker kan de relatie tussen de Azure AD-gebruiker en het gebruikers profiel dat is gemaakt op de toepassing, verstoren. Als de toepassing [just-in-time-inrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)gebruikt, kan er een gloed nieuw gebruikers profiel worden gemaakt. Hiervoor moet de toepassings beheerder hand matige wijzigingen aanbrengen om deze relatie op te lossen.
+Het wijzigen van de UPN van een gebruiker kan de relatie tussen de Azure AD-gebruiker en het gebruikers profiel dat is gemaakt op de toepassing, verstoren. Als de toepassing  [just-in-time-inrichting](../app-provisioning/user-provisioning.md)gebruikt, kan er een gloed nieuw gebruikers profiel worden gemaakt. Hiervoor moet de toepassings beheerder hand matige wijzigingen aanbrengen om deze relatie op te lossen.
 
 **Tijdelijke oplossing**<br>
-Met [Azure AD Automated User Provisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) kunt u automatisch uw gebruikers identiteiten maken, onderhouden en verwijderen in ondersteunde Cloud toepassingen. Door automatische gebruikers inrichting in uw toepassingen te configureren, worden de Upn's voor de toepassingen automatisch bijgewerkt. Test de toepassingen als onderdeel van de progressieve implementatie om te valideren dat ze niet worden beïnvloed door UPN-wijzigingen.
-Als u een ontwikkelaar bent, kunt u [scim-ondersteuning toevoegen aan uw toepassing](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) om automatische gebruikers inrichting van Azure Active Directory in te scha kelen. 
+Met [Azure AD Automated User Provisioning](../app-provisioning/user-provisioning.md) kunt u automatisch uw gebruikers identiteiten maken, onderhouden en verwijderen in ondersteunde Cloud toepassingen. Door automatische gebruikers inrichting in uw toepassingen te configureren, worden de Upn's voor de toepassingen automatisch bijgewerkt. Test de toepassingen als onderdeel van de progressieve implementatie om te valideren dat ze niet worden beïnvloed door UPN-wijzigingen.
+Als u een ontwikkelaar bent, kunt u [scim-ondersteuning toevoegen aan uw toepassing](../app-provisioning/use-scim-to-provision-users-and-groups.md) om automatische gebruikers inrichting van Azure Active Directory in te scha kelen. 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>Bekende problemen en tijdelijke oplossingen voor beheerde apparaten
 
-Door [uw apparaten naar Azure ad te brengen](https://docs.microsoft.com/azure/active-directory/devices/overview), maximaliseert u de productiviteit van uw gebruikers via eenmalige aanmelding (SSO) in uw Cloud en on-premises resources.
+Door [uw apparaten naar Azure ad te brengen](../devices/overview.md), maximaliseert u de productiviteit van uw gebruikers via eenmalige aanmelding (SSO) in uw Cloud en on-premises resources.
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
-Aan Azure [ad gekoppelde](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join) apparaten worden rechtstreeks toegevoegd aan Azure AD en kunnen gebruikers zich aanmelden bij het apparaat met behulp van de identiteit van de organisatie.
+Aan Azure [ad gekoppelde](../devices/concept-azure-ad-join.md) apparaten worden rechtstreeks toegevoegd aan Azure AD en kunnen gebruikers zich aanmelden bij het apparaat met behulp van de identiteit van de organisatie.
 
 **Bekende problemen** <br>
 Gebruikers kunnen problemen ondervinden met eenmalige aanmelding met toepassingen die afhankelijk zijn van Azure AD voor verificatie.
 
-**Afsluiting** <br>
+**Oplossing** <br>
 De problemen die in deze sectie worden vermeld, zijn vastgesteld op de Windows 10-update van 2020 (2004).
 
 **Tijdelijke oplossing** <br>
-Sta voldoende tijd toe om de UPN-wijziging te synchroniseren met Azure AD. Nadat u hebt gecontroleerd of de nieuwe UPN wordt weer gegeven in de Azure AD-Portal, vraagt u de gebruiker om zich aan te melden met de nieuwe UPN. U kunt ook controleren via [Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Nadat u zich hebt aangemeld met de nieuwe UPN, kunnen er nog steeds verwijzingen naar de oude UPN worden weer gegeven op de Windows-instelling ' toegang tot werk of school '.
+Sta voldoende tijd toe om de UPN-wijziging te synchroniseren met Azure AD. Nadat u hebt gecontroleerd of de nieuwe UPN wordt weer gegeven in de Azure AD-Portal, vraagt u de gebruiker om zich aan te melden met de nieuwe UPN. U kunt ook controleren via [Power shell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Nadat u zich hebt aangemeld met de nieuwe UPN, kunnen er nog steeds verwijzingen naar de oude UPN worden weer gegeven op de Windows-instelling ' toegang tot werk of school '.
 
 ![Scherm opname van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/other-user.png)
 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
+### <a name="hybrid-azure-ad-joined-devices"></a>Apparaten die zijn toegevoegd aan hybride Azure AD
 
-[Hybride Azure AD](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid) -apparaten worden toegevoegd aan Active Directory en Azure AD. U kunt hybride deelname aan Azure AD implementeren als uw omgeving een on-premises Active Directory footprint heeft en u ook wilt profiteren van de mogelijkheden van Azure AD.
+[Hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md) -apparaten worden toegevoegd aan Active Directory en Azure AD. U kunt hybride deelname aan Azure AD implementeren als uw omgeving een on-premises Active Directory footprint heeft en u ook wilt profiteren van de mogelijkheden van Azure AD.
 
 **Bekende problemen** 
 
@@ -154,7 +154,7 @@ Daarnaast wordt het volgende bericht weer gegeven, waarbij het na één minuut o
 
 "Uw PC wordt over één minuut automatisch opnieuw opgestart. Er is een probleem opgetreden in Windows en opnieuw moet worden opgestart. Sluit dit bericht nu en sla uw werk op.
 
-**Afsluiting** <br>
+**Oplossing** <br>
 De problemen die in deze sectie worden vermeld, zijn vastgesteld op de Windows 10-update van 2020 (2004).
 
 **Tijdelijke oplossing** 
@@ -163,18 +163,18 @@ Het apparaat moet worden ontkoppeld van Azure AD en opnieuw worden gestart. Nada
 
 **dsregcmd /leave**
 
-Als de gebruiker wordt gebruikt, moet deze [opnieuw worden inge schreven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) voor Windows hello voor bedrijven. Windows 7-en 8,1-apparaten worden niet beïnvloed door dit probleem nadat UPN-wijzigingen zijn aangebracht.
+Als de gebruiker wordt gebruikt, moet deze [opnieuw worden inge schreven](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) voor Windows hello voor bedrijven. Windows 7-en 8,1-apparaten worden niet beïnvloed door dit probleem nadat UPN-wijzigingen zijn aangebracht.
 
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Bekende problemen en tijdelijke oplossingen Microsoft Authenticator
 
-Uw organisatie vereist mogelijk het gebruik van de [Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview) om u aan te melden en toegang te krijgen tot bedrijfs toepassingen en-gegevens. Hoewel een gebruikers naam in de app kan worden weer gegeven, is het account niet ingesteld om te functioneren als verificatie methode totdat de gebruiker het registratie proces heeft voltooid.
+Uw organisatie vereist mogelijk het gebruik van de [Microsoft Authenticator-app](../user-help/user-help-auth-app-overview.md) om u aan te melden en toegang te krijgen tot bedrijfs toepassingen en-gegevens. Hoewel een gebruikers naam in de app kan worden weer gegeven, is het account niet ingesteld om te functioneren als verificatie methode totdat de gebruiker het registratie proces heeft voltooid.
 
-De [Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview) heeft vier belang rijke functies:
+De [Microsoft Authenticator-app](../user-help/user-help-auth-app-overview.md) heeft vier belang rijke functies:
 
 * Multi-factor Authentication via een push melding of verificatie code
 
-* Fungeren als een verificatie Broker op iOS-en Android-apparaten om eenmalige aanmelding te bieden voor toepassingen die gebruikmaken van [brokered-verificatie](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth)
+* Fungeren als een verificatie Broker op iOS-en Android-apparaten om eenmalige aanmelding te bieden voor toepassingen die gebruikmaken van [brokered-verificatie](../develop/brokered-auth.md)
 
 * Apparaatregistratie (ook bekend als Workplace Join) voor Azure AD. Dit is een vereiste voor andere functies, zoals Intune-app-beveiliging en inschrijving/beheer van het apparaat.
 
@@ -182,11 +182,11 @@ De [Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directo
 
 ### <a name="multi-factor-authentication-with-android-devices"></a>Multi-Factor Authentication met Android-apparaten
 
-De Microsoft Authenticator-app biedt een out-of-band-verificatie optie. In plaats van een geautomatiseerde telefoon oproep of SMS-bericht naar de gebruiker tijdens het aanmelden te plaatsen, pusht [multi-factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) een melding naar de Microsoft Authenticator-app op de smartphone of Tablet van de gebruiker. De gebruiker tikt alleen op goed keuren (of voert een pincode of biometrische in en tikt op "verifiëren") in de app om de aanmelding te volt ooien.
+De Microsoft Authenticator-app biedt een out-of-band-verificatie optie. In plaats van een geautomatiseerde telefoon oproep of SMS-bericht naar de gebruiker tijdens het aanmelden te plaatsen, pusht [multi-factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) een melding naar de Microsoft Authenticator-app op de smartphone of Tablet van de gebruiker. De gebruiker tikt alleen op goed keuren (of voert een pincode of biometrische in en tikt op "verifiëren") in de app om de aanmelding te volt ooien.
 
 **Bekende problemen** 
 
-Wanneer u de UPN van een gebruiker wijzigt, wordt de oude UPN nog steeds weer gegeven in het gebruikers account en kan er geen melding worden ontvangen. [Verificatie codes](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) blijven werken.
+Wanneer u de UPN van een gebruiker wijzigt, wordt de oude UPN nog steeds weer gegeven in het gebruikers account en kan er geen melding worden ontvangen. [Verificatie codes](../user-help/user-help-auth-app-faq.md) blijven werken.
 
 **Tijdelijke oplossing**
 
@@ -202,7 +202,7 @@ Op Android-en iOS-brokers als Microsoft Authenticator inschakelen:
 
 * Verificatie van de toepassings-id: wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven en wordt deze door de Broker gecontroleerd.
 
-Daarnaast kunnen toepassingen deel nemen aan meer geavanceerde functies, zoals [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/), en worden [Microsoft intune scenario's](https://docs.microsoft.com/azure/active-directory/develop/msal-net-use-brokers-with-xamarin-apps)ondersteund.
+Daarnaast kunnen toepassingen deel nemen aan meer geavanceerde functies, zoals [voorwaardelijke toegang](../conditional-access/index.yml), en worden [Microsoft intune scenario's](../develop/msal-net-use-brokers-with-xamarin-apps.md)ondersteund.
 
 **Bekende problemen**<br>
 Er wordt een gebruiker weer gegeven met meer interactieve verificatie prompts voor nieuwe toepassingen die gebruikmaken van de door Broker ondersteunde aanmelding omdat de login_hint door gegeven door de toepassing en de UPN die is opgeslagen op de Broker.
@@ -240,17 +240,17 @@ De gebruiker moet de vervolg keuzelijst selecteren op het account dat is ingesch
 Wanneer meerdere gebruikers op dezelfde sleutel zijn geregistreerd, toont het aanmeldings scherm een pagina voor het selecteren van accounts waarop de oude UPN wordt weer gegeven. Aanmeldingen met behulp van beveiligings sleutels worden niet beïnvloed door UPN-wijzigingen.  
 
 **Tijdelijke oplossing**<br>
-Als gebruikers verwijzingen naar oude Upn's wilt verwijderen, moeten ze [de beveiligings sleutel opnieuw instellen en opnieuw registreren](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues).
+Als gebruikers verwijzingen naar oude Upn's wilt verwijderen, moeten ze [de beveiligings sleutel opnieuw instellen en opnieuw registreren](../authentication/howto-authentication-passwordless-security-key.md#known-issues).
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>Bekende problemen met OneDrive en tijdelijke oplossingen
 
-OneDrive-gebruikers zijn bekend om problemen te ondervinden na het wijzigen van UPN. Zie [hoe UPN-wijzigingen van invloed zijn op de onedrive-URL en onedrive-functies](https://docs.microsoft.com/onedrive/upn-changes)voor meer informatie.
+OneDrive-gebruikers zijn bekend om problemen te ondervinden na het wijzigen van UPN. Zie [hoe UPN-wijzigingen van invloed zijn op de onedrive-URL en onedrive-functies](/onedrive/upn-changes)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk deze bronnen:
-* [Azure AD Connect: ontwerp concepten](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts)
+* [Azure AD Connect: ontwerp concepten](./plan-connect-design-concepts.md)
 
-* [Populatie van Azure AD UserPrincipalName](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-userprincipalname)
+* [Populatie van Azure AD UserPrincipalName](./plan-connect-userprincipalname.md)
 
-* [Tokens van micro soft Identity platform ID](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
+* [Tokens van micro soft Identity platform ID](../develop/id-tokens.md)

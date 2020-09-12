@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: pull-geheim, Aro, open Shift, Red Hat
-ms.openlocfilehash: 3351052db63f095bfca5f0b91f26e1013319c582
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097220"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294744"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Uw Red Hat pull-geheim toevoegen of bijwerken op een Azure Red Hat open Shift 4-cluster
 
-In deze hand leiding wordt beschreven hoe u uw Red Hat pull-geheim toevoegt of bijwerkt voor een bestaand Azure Red Hat open Shift 4. x-cluster.
+In deze hand leiding wordt beschreven hoe u uw Red Hat pull-geheim toevoegt of bijwerkt voor een bestaand Azure Red Hat open Shift (ARO) 4. x-cluster.
 
 Als u voor de eerste keer een cluster maakt, kunt u uw pull-geheim toevoegen wanneer u uw cluster maakt. Zie [een Azure Red Hat open Shift 4-cluster maken](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional)voor meer informatie over het maken van een Aro-cluster met een Red Hat pull-geheim.
 
@@ -29,13 +29,13 @@ Wanneer u een ARO-cluster maakt zonder een Red Hat pull-geheim toe te voegen, wo
 
 In deze sectie wordt uitgelegd hoe u het pull-geheim bijwerkt met aanvullende waarden van uw Red Hat pull Secret.
 
-1. Haal het geheim op met de naam `pull-secret` in de open Shift-config-naam ruimte en sla het op in een afzonderlijk bestand door de volgende opdracht uit te voeren: 
+1. Haal het geheim op met de naam `pull-secret` in de `openshift-config` naam ruimte en sla het op in een afzonderlijk bestand door de volgende opdracht uit te voeren: 
 
     ```console
     oc get secrets pull-secret -n openshift-config -o template='{{index .data ".dockerconfigjson"}}' | base64 -d > pull-secret.json
     ```
 
-    De uitvoer moet er ongeveer als volgt uitzien (Houd er rekening mee dat de werkelijke geheime waarde is verwijderd):
+    De uitvoer moet er ongeveer als volgt uitzien. (Houd er rekening mee dat de werkelijke geheime waarde is verwijderd.)
 
     ```json
     {
@@ -47,7 +47,7 @@ In deze sectie wordt uitgelegd hoe u het pull-geheim bijwerkt met aanvullende wa
     }
     ```
 
-2. Navigeer naar uw [Red Hat open Shift cluster manager-Portal](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) en klik op **pull Secret downloaden.** Uw Red Hat pull-geheim ziet er als volgt uit (Houd er rekening mee dat de werkelijke geheime waarden zijn verwijderd):
+2. Ga naar uw [Red Hat open Shift cluster manager-Portal](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) en selecteer **pull Secret downloaden**. Uw Red Hat pull-geheim ziet er als volgt uit. (Houd er rekening mee dat de feitelijke geheime waarden zijn verwijderd.)
 
     ```json
     {
@@ -75,7 +75,7 @@ In deze sectie wordt uitgelegd hoe u het pull-geheim bijwerkt met aanvullende wa
 3. Bewerk het pull-geheim bestand dat u hebt ontvangen van het cluster door toe te voegen aan de vermeldingen in uw Red Hat pull Secret. 
 
     > [!IMPORTANT]
-    > Met inbegrip `cloud.openshift.com` van de vermelding van uw Red Hat pull-geheim zorgt u ervoor dat uw cluster begint met het verzenden van telemetriegegevens naar Red Hat. Neem deze sectie alleen op als u telemetriegegevens wilt verzenden. Als dat niet het geval is, moet u de volgende sectie verlaten.
+    > Met inbegrip `cloud.openshift.com` van de vermelding van uw Red Hat pull-geheim kan uw cluster het verzenden van telemetriegegevens naar Red Hat starten. Neem deze sectie alleen op als u telemetriegegevens wilt verzenden. Als dat niet het geval is, moet u de volgende sectie verlaten.    
     > ```json
     > {
     >         "cloud.openshift.com": {
@@ -86,13 +86,14 @@ In deze sectie wordt uitgelegd hoe u het pull-geheim bijwerkt met aanvullende wa
 
     > [!CAUTION]
     > Verwijder of wijzig u de `arosvc.azurecr.io` vermelding niet vanuit uw pull-geheim. Deze sectie is nodig om het cluster goed te laten functioneren.
+
     ```json
     "arosvc.azurecr.io": {
                 "auth": "<my-aroscv.azurecr.io-secret>"
             }
     ```
 
-    Het uiteindelijke bestand moet er als volgt uitzien (Houd er rekening mee dat de werkelijke geheime waarden zijn verwijderd):
+    Het uiteindelijke bestand moet er als volgt uitzien. (Houd er rekening mee dat de feitelijke geheime waarden zijn verwijderd.)
 
     ```json
     {
@@ -121,25 +122,26 @@ In deze sectie wordt uitgelegd hoe u het pull-geheim bijwerkt met aanvullende wa
     ```
 
 4. Zorg ervoor dat het bestand een geldige JSON is. Er zijn veel manieren om uw JSON te valideren. In het volgende voor beeld wordt JQ gebruikt:
+
     ```json
     cat pull-secret.json | jq
     ```
 
     > [!NOTE]
-    > Als er een fout optreedt in het bestand, kan dit worden weer gegeven `parse error` .
+    > Als er een fout optreedt in het bestand, wordt het weer gegeven als `parse error` .
 
 ## <a name="add-your-pull-secret-to-your-cluster"></a>Uw pull-geheim aan uw cluster toevoegen
 
-Voer de volgende opdracht uit om uw pull-geheim bij te werken:
+Voer de volgende opdracht uit om uw pull-geheim bij te werken.
 
 > [!NOTE]
-> Als u deze opdracht uitvoert, worden uw cluster knooppunten één voor één opnieuw gestart tijdens het bijwerken. 
+> Als u deze opdracht uitvoert, worden de cluster knooppunten één voor één opnieuw opgestart terwijl ze worden bijgewerkt. 
 
 ```console
 oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=./pull-secret.json
 ```
 
-Zodra het geheim is ingesteld, bent u klaar om Red Hat Certified-Opera tors in te scha kelen.
+Nadat het geheim is ingesteld, bent u klaar om Red Hat Certified-Opera tors in te scha kelen.
 
 ### <a name="modify-the-configuration-files"></a>De configuratie bestanden wijzigen
 
@@ -151,9 +153,9 @@ Wijzig eerst het configuratie bestand van de voor beelden-operator. Vervolgens k
 oc edit configs.samples.operator.openshift.io/cluster -o yaml
 ```
 
-Wijzig de `spec.architectures.managementState` waarden en `status.architecture.managementState` van `Removed` in `Managed` . 
+Wijzig de `spec.architectures.managementState` `status.architecture.managementState` waarden en van `Removed` in `Managed` . 
 
-In het volgende YAML-fragment worden alleen de relevante secties van het bewerkte yaml-bestand weer gegeven.
+In het volgende YAML-fragment worden alleen de relevante secties van het bewerkte YAML-bestand weer gegeven:
 
 ```yaml
 apiVersion: samples.operator.openshift.io/v1
@@ -181,9 +183,9 @@ Voer vervolgens de volgende opdracht uit om het configuratie bestand van de oper
 oc edit operatorhub cluster -o yaml
 ```
 
-Wijzig de `Spec.Sources.Disabled` en `Status.Sources.Disabled` waarden van `true` naar `false` voor alle bronnen die u wilt inschakelen.
+Wijzig de `Spec.Sources.Disabled` `Status.Sources.Disabled` waarden en van `true` in `false` voor alle bronnen die u wilt inschakelen.
 
-In het volgende YAML-fragment worden alleen de relevante secties van het bewerkte yaml-bestand weer gegeven.
+In het volgende YAML-fragment worden alleen de relevante secties van het bewerkte YAML-bestand weer gegeven:
 
 ```yaml
 Name:         cluster

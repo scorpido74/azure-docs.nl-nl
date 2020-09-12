@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269118"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279700"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
 
@@ -53,7 +53,7 @@ De Microsoft Azure Linux-agent (waagent) beheert Linux & FreeBSD-inrichting en V
 * **VM-extensie**
   
   * Het inbrengen van het onderdeel dat is geschreven door micro soft en partners in Linux VM (IaaS) om software-en configuratie automatisering in te scha kelen
-  * VM-extensie referentie-implementatie op[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * VM-extensie referentie-implementatie op [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Communicatie
 De informatiestroom van het platform naar de agent vindt plaats via twee kanalen:
@@ -93,6 +93,9 @@ De Linux-agent is afhankelijk van sommige systeem pakketten om goed te kunnen fu
 * Hulpprogramma's voor netwerk: ip-route
 * Kernelondersteuning voor het koppelen van UDF-bestandssysteem.
 
+Zorg ervoor dat uw virtuele machine toegang heeft tot het IP-adres 168.63.129.16. Zie [Wat is IP-adres 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)? voor meer informatie.
+
+
 ## <a name="installation"></a>Installatie
 Installatie met behulp van een RPM-of een DEB-pakket uit de opslag plaats van uw distributie pakket is de voorkeurs methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](../linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
 
@@ -124,7 +127,7 @@ Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](http
 * daemon: Voer waagent uit als een daemon om de interactie met het platform te beheren. Dit argument is opgegeven voor waagent in het waagent init-script.
 * starten: Voer waagent uit als achtergrond proces
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Hieronder ziet u een voor beeld van een configuratie bestand:
 
 ```config

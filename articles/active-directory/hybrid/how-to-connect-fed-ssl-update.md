@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359582"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279904"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Het TLS/SSL-certificaat voor een Active Directory Federation Services-farm (AD FS) bijwerken
 
@@ -34,7 +34,7 @@ U kunt de gehele bewerking van het TLS/SSL-certificaat voor de AD FS-Farm voor a
 
 
 >[!NOTE]
->Zie certificaten die worden [gebruikt door AD FS](https://technet.microsoft.com/library/cc730660.aspx)voor meer informatie over certificaten die worden gebruikt door AD FS.
+>Zie certificaten die worden [gebruikt door AD FS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11))voor meer informatie over certificaten die worden gebruikt door AD FS.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -71,7 +71,7 @@ Nadat u het certificaat hebt opgegeven, wordt Azure AD Connect een aantal vereis
 -   De onderwerpnaam/alternatieve onderwerpnaam voor het certificaat is hetzelfde als de naam van de Federation-service of het is een Joker certificaat.
 -   Het certificaat is langer dan 30 dagen geldig.
 -   De certificaat vertrouwens keten is geldig.
--   Het certificaat is beveiligd met een wacht woord.
+-   Het certificaat is beveiligd met een wachtwoord.
 
 ## <a name="step-3-select-servers-for-the-update"></a>Stap 3: servers selecteren voor de update
 
@@ -107,6 +107,5 @@ Nadat u de configuratie hebt voltooid, wordt in Azure AD Connect het bericht wee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD Connect en Federatie](how-to-connect-fed-whatis.md)
+- [Azure AD Connect en federatie](how-to-connect-fed-whatis.md)
 - [Active Directory Federation Services beheer en aanpassingen met Azure AD Connect](how-to-connect-fed-management.md)
-

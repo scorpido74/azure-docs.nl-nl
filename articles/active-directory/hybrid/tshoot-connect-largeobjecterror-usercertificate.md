@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356165"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275773"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: afhandelings LargeObject-fouten veroorzaakt door userCertificate-kenmerk
 
@@ -30,28 +30,28 @@ Azure AD dwingt een maximum limiet van **15** certificaat waarden af voor het ke
 
 >*' Het ingerichte object is te groot. Snijd het aantal kenmerk waarden voor dit object bij. De bewerking wordt opnieuw uitgevoerd tijdens de volgende synchronisatie cyclus... "*
 
-De LargeObject-fout kan worden veroorzaakt door andere AD-kenmerken. Om te bevestigen dat dit inderdaad wordt veroorzaakt door het kenmerk userCertificate, moet u controleren of het object zich in een on-premises AD bevindt of in de [Synchronization Service Manager omgekeerde zoek opdracht](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
+De LargeObject-fout kan worden veroorzaakt door andere AD-kenmerken. Om te bevestigen dat dit inderdaad wordt veroorzaakt door het kenmerk userCertificate, moet u controleren of het object zich in een on-premises AD bevindt of in de [Synchronization Service Manager omgekeerde zoek opdracht](./how-to-connect-sync-service-manager-ui-mvsearch.md).
 
 Gebruik een van de volgende methoden om de lijst met objecten in uw Tenant te verkrijgen met LargeObject-fouten:
 
- * Als uw Tenant is ingeschakeld voor Azure AD Connect Health synchronisatie, kunt u het [rapport synchronisatie fout](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) raadplegen.
+ * Als uw Tenant is ingeschakeld voor Azure AD Connect Health synchronisatie, kunt u het [rapport synchronisatie fout](./how-to-connect-health-sync.md) raadplegen.
  
  * De e-mail melding voor Directory synchronisatie fouten die aan het einde van elke synchronisatie cyclus wordt verzonden, bevat de lijst met objecten met LargeObject-fouten. 
- * Op het [tabblad Synchronization Service Manager bewerkingen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) wordt de lijst met objecten met LargeObject-fouten weer gegeven als u op de laatste export naar Azure AD-bewerking klikt.
+ * Op het [tabblad Synchronization Service Manager bewerkingen](./how-to-connect-sync-service-manager-ui-operations.md) wordt de lijst met objecten met LargeObject-fouten weer gegeven als u op de laatste export naar Azure AD-bewerking klikt.
  
 ## <a name="mitigation-options"></a>Opties voor risico beperking
 Totdat de LargeObject-fout is opgelost, kunnen andere kenmerk wijzigingen naar hetzelfde object niet worden geëxporteerd naar Azure AD. U kunt de volgende opties overwegen om de fout op te lossen:
 
- * Upgrade Azure AD Connect om 1.1.524.0 of After te bouwen. In Azure AD Connect build 1.1.524.0 zijn de out-of-Box-synchronisatie regels bijgewerkt om geen kenmerken userCertificate en userSMIMECertificate te exporteren als de kenmerken meer dan 15 waarden hebben. Raadpleeg voor meer informatie over het upgraden van Azure AD Connect artikel [Azure AD Connect: een upgrade van een eerdere versie naar de laatste](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Upgrade Azure AD Connect om 1.1.524.0 of After te bouwen. In Azure AD Connect build 1.1.524.0 zijn de out-of-Box-synchronisatie regels bijgewerkt om geen kenmerken userCertificate en userSMIMECertificate te exporteren als de kenmerken meer dan 15 waarden hebben. Raadpleeg voor meer informatie over het upgraden van Azure AD Connect artikel [Azure AD Connect: een upgrade van een eerdere versie naar de laatste](./how-to-upgrade-previous-version.md).
 
  * Implementeer een **uitgaande synchronisatie regel** in azure AD Connect die een **Null-waarde exporteert in plaats van de werkelijke waarden voor objecten met meer dan 15 certificaat waarden**. Deze optie is geschikt als u geen van de certificaat waarden nodig hebt om te exporteren naar Azure AD voor objecten met meer dan 15 waarden. Voor meer informatie over het implementeren van deze synchronisatie regel raadpleegt u de volgende sectie [implementeren van de synchronisatie regel voor het beperken van het exporteren van het kenmerk userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
  * Verminder het aantal certificaat waarden voor het on-premises AD-object (15 of minder) door waarden te verwijderen die niet meer in gebruik zijn door uw organisatie. Dit is geschikt als de kenmerken aanzienlijk worden veroorzaakt door verlopen of ongebruikte certificaten. U kunt het [Power shell-script dat hier beschikbaar is](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) , gebruiken om verlopen certificaten in uw on-PREMISes ad te vinden, te maken en te verwijderen. Voordat u de certificaten verwijdert, is het raadzaam om te controleren of de Administrators van de open bare-sleutel infrastructuur in uw organisatie.
 
  * Configureer Azure AD Connect om het kenmerk userCertificate uit te sluiten van export naar Azure AD. Over het algemeen wordt deze optie niet aanbevolen omdat het kenmerk door micro soft Online Services kan worden gebruikt om specifieke scenario's mogelijk te maken. Met name:
-    * Het kenmerk userCertificate voor het gebruikers object wordt gebruikt door Exchange Online-en Outlook-clients voor het ondertekenen van berichten en versleuteling. Raadpleeg artikel [S/MIME voor bericht ondertekening en versleuteling voor](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx)meer informatie over deze functie.
+    * Het kenmerk userCertificate voor het gebruikers object wordt gebruikt door Exchange Online-en Outlook-clients voor het ondertekenen van berichten en versleuteling. Raadpleeg artikel [S/MIME voor bericht ondertekening en versleuteling voor](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption?view=o365-worldwide)meer informatie over deze functie.
 
-    * Het kenmerk userCertificate van het computer object wordt door Azure AD gebruikt om Windows 10 on-premises domein apparaten toe te staan om verbinding te maken met Azure AD. Voor meer informatie over deze functie raadpleegt u het artikel [verbinding maken tussen domein apparaten en Azure AD voor Windows 10-ervaringen](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
+    * Het kenmerk userCertificate van het computer object wordt door Azure AD gebruikt om Windows 10 on-premises domein apparaten toe te staan om verbinding te maken met Azure AD. Voor meer informatie over deze functie raadpleegt u het artikel [verbinding maken tussen domein apparaten en Azure AD voor Windows 10-ervaringen](../devices/hybrid-azuread-join-plan.md).
 
 ## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>De implementatie regel voor het beperken van het exporteren van het kenmerk userCertificate wordt geïmplementeerd
 Als u de LargeObject-fout wilt oplossen die wordt veroorzaakt door het kenmerk userCertificate, kunt u een uitgaande synchronisatie regel implementeren in Azure AD Connect die een null-waarde exporteert in **plaats van de werkelijke waarden voor objecten met meer dan 15 certificaat waarden**. In deze sectie worden de stappen beschreven die nodig zijn voor het implementeren van de synchronisatie regel voor **gebruikers** objecten. De stappen kunnen worden aangepast voor **contact** -en **computer** objecten.
@@ -74,7 +74,7 @@ De stappen kunnen als volgt worden samenvatten:
 Zorg ervoor dat er geen synchronisatie plaatsvindt terwijl u zich in het midden van de implementatie van een nieuwe synchronisatie regel bevindt om te voor komen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD. De ingebouwde synchronisatie planner uitschakelen:
 1. Start Power shell-sessie op de Azure AD Connect-server.
 
-2. Geplande synchronisatie uitschakelen door cmdlet uit te voeren:`Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Geplande synchronisatie uitschakelen door cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
 > De bovenstaande stappen zijn alleen van toepassing op nieuwere versies (1.1. xxx. x) van Azure AD Connect met de ingebouwde scheduler. Als u oudere versies (1.0. xxx. x) gebruikt van Azure AD Connect die gebruikmaken van Windows taak planner, of als u uw eigen aangepaste scheduler (niet common) gebruikt om periodieke synchronisatie te activeren, moet u ze dienovereenkomstig uitschakelen.
@@ -117,12 +117,12 @@ De nieuwe synchronisatie regel moet hetzelfde **bereik filter** hebben en een **
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld *' uit tot Aad – Custom override voor userCertificate '* |
-    | Description | *Geef een beschrijving op* | Bijvoorbeeld, *als het kenmerk userCertificate meer dan 15 waarden heeft, wordt Null geëxporteerd. "* |
+    | Naam | *Geef een naam op* | Bijvoorbeeld *' uit tot Aad – Custom override voor userCertificate '* |
+    | Beschrijving | *Geef een beschrijving op* | Bijvoorbeeld, *als het kenmerk userCertificate meer dan 15 waarden heeft, wordt Null geëxporteerd. "* |
     | Verbonden systeem | *De Azure AD-connector selecteren* |
     | Type verbonden systeem object | **gebruiker** | |
     | Omgekeerd object type | **gelaedeerde** | |
-    | Koppelings type | **Toevoegen** | |
+    | Koppelings type | **Join** | |
     | Prioriteit | *Kies een getal tussen 1-99* | Het gekozen nummer mag niet worden gebruikt door een bestaande synchronisatie regel en heeft een lagere waarde (en dus hogere prioriteit) dan de bestaande synchronisatie regel. |
 
 3. Ga naar het tabblad **bereik filteren** en implementeer hetzelfde bereik filter de bestaande synchronisatie regel gebruikt.
@@ -133,7 +133,7 @@ De nieuwe synchronisatie regel moet hetzelfde **bereik filter** hebben en een **
     | --- | --- |
     | Stroomtype |**Expression** |
     | Doel kenmerk |**userCertificate** |
-    | Bronkenmerk |*Gebruik de volgende expressie*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Bronkenmerk |*Gebruik de volgende expressie*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. Klik op de knop **toevoegen** om de synchronisatie regel te maken.
 
@@ -176,11 +176,10 @@ De wijzigingen exporteren naar Azure AD:
 ### <a name="step-8-re-enable-sync-scheduler"></a>Stap 8. Synchronisatie planner opnieuw inschakelen
 Nu het probleem is opgelost, moet u de ingebouwde synchronisatie planner opnieuw inschakelen:
 1. Power shell-sessie starten.
-2. Geplande synchronisatie opnieuw inschakelen door cmdlet uit te voeren:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Geplande synchronisatie opnieuw inschakelen door cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
 > De bovenstaande stappen zijn alleen van toepassing op nieuwere versies (1.1. xxx. x) van Azure AD Connect met de ingebouwde scheduler. Als u oudere versies (1.0. xxx. x) gebruikt van Azure AD Connect die gebruikmaken van Windows taak planner, of als u uw eigen aangepaste scheduler (niet common) gebruikt om periodieke synchronisatie te activeren, moet u ze dienovereenkomstig uitschakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
-

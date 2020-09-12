@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60455761"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279564"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Privacy en Azure AD Connect van gebruiker 
 
@@ -43,7 +43,7 @@ Een Azure AD Connect-synchronisatie server slaat de volgende privacygegevens van
 
 Azure AD Connect klanten moeten de volgende richt lijnen gebruiken bij het verwijderen van gebruikers gegevens:
 1.  Verwijder de inhoud van de map die de Azure AD Connect installatie logboek bestanden regel matig bevat, ten minste elke 48 uur
-2.  Dit product kan ook gebeurtenis logboeken maken.  Raadpleeg de [documentatie](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx)voor meer informatie over Logboeken voor gebeurtenis Logboeken.
+2.  Dit product kan ook gebeurtenis logboeken maken.  Raadpleeg de [documentatie](/windows/win32/wes/windows-event-log)voor meer informatie over Logboeken voor gebeurtenis Logboeken.
 
 Gegevens over een persoon worden automatisch uit de Azure AD Connect-Data Base verwijderd wanneer de gegevens van die persoon worden verwijderd uit het bron systeem waarvan ze afkomstig zijn. Een specifieke actie van beheerders moet AVG compatibel zijn.  Het is echter wel vereist dat de Azure AD Connect gegevens ten minste elke twee dagen worden gesynchroniseerd met uw gegevens bron.
 

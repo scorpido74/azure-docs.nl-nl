@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080178"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276181"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Overwegingen voor hybride identiteit voor de Azure Government Cloud
 
@@ -25,7 +25,7 @@ In dit artikel worden overwegingen beschreven voor het integreren van een hybrid
 > [!NOTE]
 > Als u een on-premises Microsoft Azure Active Directory-omgeving (Azure AD) wilt integreren met de Azure Government Cloud, moet u een upgrade uitvoeren naar de nieuwste versie van [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
 
-Raadpleeg de [documentatie](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)voor een volledige lijst van Verenigde Staten overheids-eind punten.
+Raadpleeg de [documentatie](/office365/enterprise/office-365-u-s-government-dod-endpoints)voor een volledige lijst van Verenigde Staten overheids-eind punten.
 
 ## <a name="azure-ad-pass-through-authentication"></a>Pass-Through-verificatie van Azure AD
 

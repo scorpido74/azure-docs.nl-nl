@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762358"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291293"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Een instantie van een Spring Cloud Config Server instellen voor uw service
 
@@ -22,7 +22,7 @@ Spring Cloud Config biedt ondersteuning aan server- en clientzijde voor een geë
 
 ## <a name="prerequisites"></a>Vereisten
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
-* Een reeds ingerichte en actieve Azure Spring Cloud-service. Als u een Azure Spring Cloud-service wilt instellen en opstarten, bekijk dan [Quickstart: Een Java Spring-toepassing starten met behulp van de Azure CLI](spring-cloud-quickstart-launch-app-cli.md).
+* Een reeds ingerichte en actieve Azure Spring Cloud-service. Als u een Azure Spring Cloud-service wilt instellen en opstarten, bekijk dan [Quickstart: Een Java Spring-toepassing starten met behulp van de Azure CLI](spring-cloud-quickstart.md).
 
 ## <a name="restriction"></a>Beperking
 
@@ -216,7 +216,7 @@ Azure lente Cloud kan toegang krijgen tot Git-opslag plaatsen die openbaar zijn,
 
 1. Selecteer de service die u wilt configureren.
 
-1. Selecteer in het linkerdeel venster van de service pagina onder **instellingen**het tabblad **Configuratie server** . Configureer de opslag plaats die u eerder hebt gemaakt:
+1. Selecteer in het linkerdeel venster van de service pagina onder **instellingen**het tabblad **Configuratie server** . Configureer de opslag plaats die we eerder hebben gemaakt:
    - Voeg de URL van de opslag plaats toe die u in de vorige sectie hebt opgeslagen
    - Klik op `Authentication` en selecteer `HTTP Basic`
    - De __gebruikers naam__ is de gebruikers naam die is opgeslagen in de vorige sectie

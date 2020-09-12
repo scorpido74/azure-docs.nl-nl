@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358120"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279513"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Gebruikersprivacy en Pass-through-verificatie van Azure Active Directory
 
@@ -67,7 +67,7 @@ Zie [dit artikel](reference-connect-user-privacy.md)voor meer informatie over ge
 
 ### <a name="delete-authentication-agent-event-logs"></a>Gebeurtenis logboeken voor de verificatie agent verwijderen
 
-Dit product kan ook **Windows-gebeurtenis logboeken**maken. Lees [dit artikel](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx)voor meer informatie.
+Dit product kan ook **Windows-gebeurtenis logboeken**maken. Lees [dit artikel](/windows/win32/wes/windows-event-log)voor meer informatie.
 
 Als u logboeken wilt weer geven die betrekking hebben op de Pass-Through-verificatie agent, opent u de **Logboeken** -toepassing op de server en controleert u onder **Application and service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om dit script te plannen om om de 48 uur uit te voe
  
 ### <a name="note-about-domain-controller-logs"></a>Opmerking over de logboeken van de domein controller
 
-Als controle logboek registratie is ingeschakeld, kan dit product beveiligings logboeken genereren voor uw domein controllers. Lees dit [artikel](https://technet.microsoft.com/library/dd277403.aspx)voor meer informatie over het configureren van controle beleid.
+Als controle logboek registratie is ingeschakeld, kan dit product beveiligings logboeken genereren voor uw domein controllers. Lees dit [artikel](/previous-versions/tn-archive/dd277403(v=technet.10))voor meer informatie over het configureren van controle beleid.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Het privacybeleid van micro soft op vertrouwens centrum bekijken](https://www.microsoft.com/trustcenter)
