@@ -3,16 +3,16 @@ title: Een Dynamics 365 Business Central-aanbieding maken-micro soft Commercial 
 description: Meer informatie over de stappen en overwegingen voor het maken van een nieuwe Dynamics 365 Business Central-aanbieding in micro soft Commercial Marketplace in Partner Center. U kunt uw aanbieding aanbieden of verkopen in azure Marketplace of via het programma Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817048"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646860"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -280,7 +280,7 @@ Wanneer u klaar bent met het instellen van uw test drive, selecteert u **concept
 
 Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we uw aanbieding kunnen valideren. Deze informatie wordt niet weer gegeven aan klanten of gepubliceerd op Marketplace.
 
-### <a name="target-release"></a>Doel release
+### <a name="target-release"></a>Doelrelease
 
 Geef aan welke release van micro soft Dynamics business Central uw oplossingen doelen: **Current**, **Next Major**of **Next minor**. Met deze informatie kunnen we uw oplossing op de juiste manier testen.
 

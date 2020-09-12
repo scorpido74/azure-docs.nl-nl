@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0354010297942c3b9e18dc6f556cb0afa075ff5f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114911"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649105"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus voor gedeeld apparaat voor iOS-apparaten
 
@@ -61,7 +61,7 @@ Het apparaat moet worden geconfigureerd voor de ondersteuning van de modus gedee
     - **Type**: omleiden
     - **Extensie-id**: com. micro soft. azureauthenticator. ssoextension
     - **Team-ID**: SGGM6D27TK
-    - **Url's**:https://login.microsoftonline.com
+    - **Url's**: https://login.microsoftonline.com
     - Aanvullende gegevens die moeten worden geconfigureerd:
       - Sleutel: sharedDeviceMode
       - Type: Booleaans
@@ -157,7 +157,7 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 }];
 ```
 
-### <a name="globally-sign-in-a-user"></a>Wereld wijd aanmelden bij een gebruiker
+### <a name="globally-sign-in-a-user"></a>Globaal aanmelden als een gebruiker
 
 Wanneer een apparaat is geconfigureerd als een gedeeld apparaat, kan uw toepassing de API aanroepen `acquireTokenWithParameters:completionBlock:` om het account aan te melden. Het account is wereld wijd beschikbaar voor alle apps die in aanmerking komen op het apparaat na de eerste app-ondertekening in het account.
 
@@ -171,7 +171,7 @@ parameters.loginHint = self.loginHintTextField.text;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-### <a name="globally-sign-out-a-user"></a>Een gebruiker wereld wijd afmelden
+### <a name="globally-sign-out-a-user"></a>Globaal afmelden als een gebruiker
 
 Met de volgende code wordt het aangemelde account verwijderd en worden de tokens in de cache gewist van niet alleen de app, maar ook van het apparaat dat zich in de modus gedeelde apparaten bevindt. Dit betekent echter niet dat de *gegevens* van uw toepassing worden gewist. U moet de gegevens uit uw toepassing wissen, maar ook de gegevens in de cache wissen die uw toepassing kan worden weer gegeven voor de gebruiker.
 

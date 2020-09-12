@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd3cc6c5220e2e84cbbd30b29b8034f53c813f1e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 04ea73825d6ffe2282a8d5564bfb6bb965a8190e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008692"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649148"
 ---
 # <a name="linux-support"></a>Linux Support
 
-U hebt toegang tot de virtuele bureau blad-resources van Windows vanaf uw Linux-apparaten met de volgende ondersteunde clients, die door onze thin client-partners van Linux worden geboden. We werken samen met een aantal partners om ondersteunde Windows virtual desktop-clients in te scha kelen op meer Linux-gebaseerde besturings systemen en apparaten. Als u ondersteuning voor Windows virtueel bureau blad wilt bieden op een Linux-platform dat hier niet wordt vermeld, laat het ons weten op onze [UserVoice-pagina](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
+U hebt toegang tot de virtuele bureau blad-resources van Windows vanaf uw Linux-apparaten met de volgende ondersteunde clients, die door onze thin client-partners van Linux worden geboden. We werken samen met een aantal partners om ondersteunde Windows virtual desktop-clients in te scha kelen op meer Linux-gebaseerde besturings systemen en apparaten. Als u ondersteuning voor het virtuele bureau blad van Windows nodig hebt op een Linux-platform dat hier niet wordt vermeld, laat het ons weten op onze [UserVoice-pagina](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
 
 ## <a name="connect-with-your-linux-device"></a>Verbinding maken met uw Linux-apparaat
 
@@ -24,30 +24,7 @@ De volgende partners hebben goedgekeurde Windows virtual desktop-clients voor Li
 |Partner|Documentatie voor partners|Partner ondersteuning|
 |:------|:--------------------|:--------------|
 |![IGEL-logo](./media/partners/igel.png)|[Documentatie voor IGEL-client](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-ondersteuning](https://www.igel.com/support/)|
-
-## <a name="what-is-the-linux-sdk"></a>Wat is de Linux SDK?
-
-Linux thin client-partners kunnen gebruikmaken van de virtuele bureau blad Linux SDK Api's van Windows om bron feeds op te halen, verbinding te maken met de sessies van een bureau blad of externe toepassingen en veel van de omleidingen te gebruiken die onze clients van de eerste partij ondersteunen. De SDK is compatibel met de meeste besturings systemen op basis van Ubuntu 18,04 of hoger.
-
-### <a name="feature-support"></a>Functie ondersteuning
-
-De SDK ondersteunt meerdere verbindingen met Desktop-en externe toepassings sessies. De volgende omleidingen worden ondersteund:
-
-| Omleiding       | Ondersteund |
-| :---------------- | :-------: |
-| Toetsenbord          | &#10004;  |
-| Muis             | &#10004;  |
-| Audio in          | &#10004;  |
-| Audio-out         | &#10004;  |
-| Klem bord (tekst)  | &#10004;  |
-| Klem bord (afbeelding) | &#10004;  |
-| Klem bord (bestand)  | &#10004;  |
-| Cards         | &#10004;  |
-| Station/map      | &#10004;  |
-
-De SDK biedt ook ondersteuning voor meerdere monitor configuraties, op voor waarde dat de monitors die u voor uw sessie selecteert, aaneengesloten zijn.
-
-Dit document wordt bijgewerkt tijdens het toevoegen van ondersteuning voor nieuwe functies en omleidingen. Ga naar onze [UserVoice-pagina](https://go.microsoft.com/fwlink/?linkid=2116523)als u nieuwe functies en andere verbeteringen wilt Voorst Ellen.
+|![Stratodesk-logo](./media/partners/stratodesk.png)|[Documentatie voor Stratodesk-client](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-ondersteuning](https://www.stratodesk.com/support-3/)|
 
 ## <a name="next-steps"></a>Volgende stappen
 

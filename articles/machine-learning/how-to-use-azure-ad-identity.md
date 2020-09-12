@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319470"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647337"
 ---
-# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identiteit gebruiken met uw machine learning-webservice in de Azure Kubernetes-service
+# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identiteit gebruiken met uw Machine Learning-webservice in Azure Kubernetes Service
 
 In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aan uw geïmplementeerde machine learning model in de Azure Kubernetes-service. Met het [pod Identity](https://github.com/Azure/aad-pod-identity) project van Aad kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Aad met behulp van een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) en Kubernetes primitieven. Zo kunt u uw webservices veilig toegang geven tot uw Azure-resources zonder dat u referenties hoeft in te sluiten of tokens rechtstreeks in uw script hoeft te beheren `score.py` . In dit artikel worden de stappen beschreven voor het maken en installeren van een Azure-identiteit in uw Azure Kubernetes service-cluster en het toewijzen van de identiteit aan uw geïmplementeerde webservice.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
+- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
 - Toegang tot uw AKS-cluster met behulp van de `kubectl` opdracht. Zie [verbinding maken met het cluster](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster) voor meer informatie.
 
@@ -153,7 +153,7 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> In dit voor beeld wordt het DefaultAzureCredential gebruikt. Als u uw identiteits toegang wilt verlenen met behulp van een specifiek toegangs beleid, raadpleegt [u deel 4: Haal het geheim op uit Azure Key Vault](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python).
+> In dit voor beeld wordt het DefaultAzureCredential gebruikt. Zie [een Key Vault toegangs beleid toewijzen met behulp van de Azure-cli](/azure/key-vault/general/assign-access-policy-cli)als u uw identiteit toegang wilt verlenen met behulp van een specifiek toegangs beleid.
 
 ### <a name="access-blob-from-your-web-service"></a>Toegang tot BLOB vanuit uw webservice
 

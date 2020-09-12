@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079656"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425531"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -156,7 +156,8 @@ De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigensc
   - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` . In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet deze `[field('name')]` of `[field('fullName')]` voor een onderliggende resource zijn.
+    In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
 - **ResourceGroupName** (optioneel)
   - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
   - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
@@ -277,7 +278,7 @@ De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigensc
   - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` .
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet deze `[field('name')]` of `[field('fullName')]` voor een onderliggende resource zijn.
 - **ResourceGroupName** (optioneel)
   - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
   - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.

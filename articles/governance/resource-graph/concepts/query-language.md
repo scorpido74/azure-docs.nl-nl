@@ -3,12 +3,12 @@ title: Inzicht krijgen in de querytaal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
 ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 65304ca1241b2c8a1f9541580e7ee8434dd5b6eb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798547"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426398"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -32,6 +32,7 @@ Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgesl
 |ResourceContainers |Bevat een abonnement (in Preview-- `Microsoft.Resources/subscriptions` ) en resource groep ( `Microsoft.Resources/subscriptions/resourcegroups` )-resource typen en-gegevens. |
 |AdvisorResources |Bevat resources met _betrekking_ tot `Microsoft.Advisor` . |
 |AlertsManagementResources |Bevat resources met _betrekking_ tot `Microsoft.AlertsManagement` . |
+|GuestConfigurationResources |Bevat resources met _betrekking_ tot `Microsoft.GuestConfiguration` . |
 |HealthResources |Bevat resources met _betrekking_ tot `Microsoft.ResourceHealth` . |
 |MaintenanceResources |Bevat resources met _betrekking_ tot `Microsoft.Maintenance` . |
 |SecurityResources |Bevat resources met _betrekking_ tot `Microsoft.Security` . |
@@ -120,7 +121,7 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 
 |KQL |Voorbeeld query resource grafiek |Notities |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[Sleutel kluizen tellen](../samples/starter.md#count-keyvaults) | |
+|[aantal](/azure/kusto/query/countoperator) |[Sleutel kluizen tellen](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[Afzonderlijke waarden voor een specifieke alias tonen](../samples/starter.md#distinct-alias-values) | |
 |[uitbreidbaar](/azure/kusto/query/extendoperator) |[Virtuele machines tellen op type besturingssysteem](../samples/starter.md#count-os) | |
 |[Jointypen](/azure/kusto/query/joinoperator) |[Sleutel kluis met de naam van het abonnement](../samples/advanced.md#join) |Ondersteunde jointypen: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). De limiet van 3 `join` in één query. Aangepaste deelname strategieën, zoals broadcast toevoegen, zijn niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
@@ -142,7 +143,7 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 Het bereik van de abonnementen waaruit resources worden geretourneerd door een query is afhankelijk van de methode voor toegang tot de resource grafiek. Azure CLI en Azure PowerShell vullen de lijst met abonnementen die in de aanvraag moeten worden meegenomen op basis van de context van de geautoriseerde gebruiker. De lijst met abonnementen kan hand matig worden gedefinieerd voor elk met de **abonnementen** en **abonnements** parameters.
 In REST API en alle andere Sdk's moet de lijst met abonnementen waaruit resources moeten worden opgenomen, expliciet worden gedefinieerd als onderdeel van de aanvraag.
 
-Als **Preview**voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als er geen beheer groep of abonnements lijst is gedefinieerd, is het query bereik alle bronnen waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep. Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId` kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
+Als **Preview**voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als er geen beheer groep of abonnements lijst is gedefinieerd, is het query bereik alle resources, waaronder [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) gedelegeerde resources, waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep. Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId` kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
 
 Voor beeld: een query uitvoeren op alle resources binnen de hiërarchie van de beheer groep met de naam ' My-beheer groep ' met ID ' myMG '.
 

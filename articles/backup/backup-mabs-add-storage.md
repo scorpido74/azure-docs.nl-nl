@@ -3,12 +3,12 @@ title: Modern Backup Storage gebruiken met Azure Backup Server
 description: Meer informatie over de nieuwe functies in Azure Backup Server. In dit artikel wordt beschreven hoe u de installatie van de back-upserver bijwerkt.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825865"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378233"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
 
@@ -105,7 +105,7 @@ Het bijwerken van beveiligingsgroepen voor het gebruik van Modern Backup Storage
 
    ![Beveiliging van lid stoppen](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. Bekijk in het dialoog venster **verwijderen uit groep** de gebruikte schijf ruimte en de beschik bare vrije ruimte voor de opslag groep. Standaard worden de herstelpunten op de schijf gelaten, zodat ze verlopen volgens het bijbehorende bewaarbeleid. Klik op **OK**.
+2. Bekijk in het dialoog venster **verwijderen uit groep** de gebruikte schijf ruimte en de beschik bare vrije ruimte voor de opslag groep. Standaard worden de herstelpunten op de schijf gelaten, zodat ze verlopen volgens het bijbehorende bewaarbeleid. Selecteer **OK**.
 
    Als u de gebruikte schijf ruimte onmiddellijk wilt retour neren naar de groep met beschik bare opslag, schakelt u het selectie vakje **replica op schijf verwijderen** in om de back-upgegevens (en herstel punten) te verwijderen die aan dat lid zijn gekoppeld.
 

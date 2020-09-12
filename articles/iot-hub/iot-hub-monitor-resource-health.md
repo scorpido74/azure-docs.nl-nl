@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022136"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438395"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>De status van Azure IoT Hub bewaken en snel problemen vaststellen
 
@@ -61,7 +61,7 @@ De categorie verbindingen houdt het apparaat Connect en verbreekt gebeurtenissen
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -426,7 +426,7 @@ In de `properties` sectie bevat dit logboek extra informatie over berichten binn
 
 #### <a name="configurations"></a>Configuraties
 
-In IoT Hub configuratie logboeken worden gebeurtenissen en fouten bijgehouden voor de functie voor het automatisch instellen van Apparaatbeheer.
+In IoT Hub configuratie logboeken worden gebeurtenissen en fouten bijgehouden voor de functie automatisch Apparaatbeheer instellen.
 
 ```json
 {
@@ -470,6 +470,42 @@ De categorie Device streams traceert aanvraag-antwoord interacties die naar afzo
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK-versie
+
+Sommige bewerkingen retour neren een `sdkVersion` eigenschap in het `properties` object. Wanneer een apparaat of back-end-app een van de Azure IoT-Sdk's gebruikt, bevat deze eigenschap informatie over de SDK die wordt gebruikt, de SDK-versie en het platform waarop de SDK wordt uitgevoerd. In het volgende voor beeld ziet u de eigenschap die wordt `sdkVersion` verzonden voor een `deviceConnect` bewerking wanneer u de SDK voor Node.js apparaten gebruikt: `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"` . Hier volgt een voor beeld van de waarde die is verzonden voor de .NET (C#) SDK: `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"` .
+
+In de volgende tabel ziet u de SDK-naam die wordt gebruikt voor verschillende Azure IoT-Sdk's:
+
+| SDK-naam in eigenschap sdkVersion | Taal |
+|----------|----------|
+| .NET | .NET (C#) |
+| micro soft. Azure. devices | .NET (C#) Service SDK |
+| micro soft. Azure. devices. client | .NET (C#)-apparaat-SDK |
+| iothubclient | C of python v1 (afgeschaft) apparaat-SDK |
+| iothubserviceclient | C of python v1 (afgeschaft) Service-SDK |
+| Azure-IOT-Device-iothub-py | Python-apparaat-SDK |
+| azure-iot-device | SDK van Node.js apparaat |
+| azure-iothub | Node.js Service-SDK |
+| com. micro soft. Azure. iothub-Java-client | Java-apparaat-SDK |
+| com. micro soft. Azure. iothub. service. SDK | Java Service-SDK |
+| com. Microsoft. Azure. SDK. IOT. IOT-apparaat-client | Java-apparaat-SDK |
+| com. Microsoft. Azure. SDK. IOT. IOT-service-client | Java Service-SDK |
+| C | Embedded C |
+| C + (OSSimplified = Azure RTO'S) | Azure RTOS |
+
+U kunt de eigenschap SDK-versie extra heren wanneer u query's uitvoert op Diagnostische logboeken. Met de volgende query worden de eigenschappen van de SDK-versie (en de apparaat-ID) geëxtraheerd uit de eigenschappen die door de gebeurtenissen van de verbinding worden geretourneerd. Deze twee eigenschappen worden naar de resultaten geschreven, samen met de tijd van de gebeurtenis en de resource-ID van de IoT-hub waarmee het apparaat verbinding maakt.
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Logboeken van Azure Event Hubs lezen

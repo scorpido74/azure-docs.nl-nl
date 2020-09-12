@@ -6,18 +6,18 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1404f5201ff5f543e34c6a4c8e5713cab3a4c51b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2eaf1470e2d861ecfc1c1bc96f6040a1c3e0a644
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033475"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425225"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Een zone-redundante virtuele netwerk gateway maken in Azure-beschikbaarheidszones
 
-U kunt VPN-en ExpressRoute-gateways implementeren in Azure-beschikbaarheidszones. Dit zorgt in een virtuele netwerkgateway voor tolerantie, schaalbaarheid en hoge beschikbaarheid. Gateways fysiek en logisch implementeren in Azure-beschikbaarheidszones scheidt gateways binnen een regio, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen fouten op zoneniveau. Zie [info over zone-redundante virtuele netwerk gateways](about-zone-redundant-vnet-gateways.md) en [over Azure-beschikbaarheidszones](../availability-zones/az-overview.md)voor meer informatie.
+U kunt VPN-en ExpressRoute-gateways implementeren in Azure-beschikbaarheidszones. Dit zorgt voor tolerantie, schaalbaarheid en hogere beschikbaarheid voor virtuele netwerkgateways. Door gateways in Azure-beschikbaarheidszones te implementeren, worden gateways binnen een regio fysiek en logisch van elkaar gescheiden, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen storingen op zoneniveau. Zie  [info over zone-redundante virtuele netwerk gateways](about-zone-redundant-vnet-gateways.md) en [over Azure-beschikbaarheidszones](../availability-zones/az-overview.md)voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

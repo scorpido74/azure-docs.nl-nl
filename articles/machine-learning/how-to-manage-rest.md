@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846697"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649407"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
+Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
 
 In dit artikel leert u het volgende:
 
@@ -279,7 +279,7 @@ Als u een run binnen een experiment wilt starten, hebt u een zip-map met uw trai
 print("Hello, REST!")
 ```
 
-Sla dit volgende fragment **op alsdefinition.jsop**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
+Sla dit volgende fragment ** op alsdefinition.jsop**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
 
 ```json
 {

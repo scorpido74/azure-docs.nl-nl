@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306397"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649431"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpreteer van modellen in Azure Machine Learning (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Het inschakelen van de mogelijkheid om een machine learning model uit te leggen,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretiteit met Azure Machine Learning
 
-De interpretatieve klassen worden beschikbaar gesteld via meerdere SDK-pakketten: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
+De interpretatieve klassen worden beschikbaar gesteld via meerdere SDK-pakketten: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
 
 * `azureml.interpret`, het hoofd pakket, dat functionaliteiten bevat die door micro soft worden ondersteund.
 
@@ -69,7 +69,7 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 
 ## <a name="supported-interpretability-techniques"></a>Ondersteunde technieken voor interpretatie
 
- `azureml-interpret`maakt gebruik van de technieken voor interpretaties die zijn ontwikkeld in [interprete-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het interpreteren van modellen en helpen bij het uitleggen van blackbox AI-systemen. [Interpreteren: Community](https://github.com/interpretml/interpret-community/) fungeert als host voor de ondersteunde uitlegers van deze SDK en ondersteunt momenteel de volgende methoden voor interpretatie:
+ `azureml-interpret` maakt gebruik van de technieken voor interpretaties die zijn ontwikkeld in [interprete-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het interpreteren van modellen en helpen bij het uitleggen van blackbox AI-systemen. [Interpreteren: Community](https://github.com/interpretml/interpret-community/) fungeert als host voor de ondersteunde uitlegers van deze SDK en ondersteunt momenteel de volgende methoden voor interpretatie:
 
 |Geïnterpreteerde techniek|Beschrijving|Type|
 |--|--|--------------------|
@@ -90,7 +90,7 @@ Naast de methoden voor het interpreteren die hierboven worden beschreven, onders
 * LinearExplainer voor lineaire modellen
 * KernelExplainer voor alle andere modellen
 
-`TabularExplainer`heeft ook aanzienlijke verbeteringen aangebracht in de functie en prestaties ten opzichte van de directe SHAP-uitleg:
+`TabularExplainer` heeft ook aanzienlijke verbeteringen aangebracht in de functie en prestaties ten opzichte van de directe SHAP-uitleg:
 
 * **Samen vatting van de initialisatie-gegevensset**. In gevallen waarin de snelheid van uitleg het belangrijkst is, vatten we de initialisatie-gegevensset samen en genereren ze een kleine set representatieve voor beelden, waardoor de generatie van de belang rijke waarden van de algemene en afzonderlijke onderdelen wordt versneld.
 * **Bemonstert u de set evaluatie gegevens**. Als de gebruiker een grote set evaluatie voorbeelden heeft door gegeven, maar niet alle moet worden geëvalueerd, kan de para meter sample worden ingesteld op True om de berekening van de algehele model verklaringen te versnellen.
@@ -121,4 +121,4 @@ U kunt uitleg op afstand uitvoeren op Azure Machine Learning Compute en de uitle
 
 - Zie de [procedure](how-to-machine-learning-interpretability-aml.md) voor het inschakelen van de functie voor interpretering voor model training zowel lokaal als op Azure machine learning externe Compute-resources. 
 - Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) voor aanvullende scenario's. 
-- Zie Interpreting [-Text](https://github.com/interpretml/interpret-text), een gerelateerde open source-opslag plaats om te interpreteren [-Community](https://github.com/interpretml/interpret-community/), voor de interpretatieve technieken voor NLP, als u geïnteresseerd bent in de interpretatie van tekst scenario's. `azureml.interpret`het pakket biedt momenteel geen ondersteuning voor deze technieken, maar u kunt aan de slag met een [voorbeeld notitieblok in tekst classificatie](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).
+- Zie Interpreting [-Text](https://github.com/interpretml/interpret-text), een gerelateerde open source-opslag plaats om te interpreteren [-Community](https://github.com/interpretml/interpret-community/), voor de interpretatieve technieken voor NLP, als u geïnteresseerd bent in de interpretatie van tekst scenario's. `azureml.interpret` het pakket biedt momenteel geen ondersteuning voor deze technieken, maar u kunt aan de slag met een [voorbeeld notitieblok in tekst classificatie](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).

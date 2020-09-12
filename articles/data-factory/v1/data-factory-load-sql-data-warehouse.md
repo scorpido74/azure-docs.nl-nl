@@ -1,6 +1,6 @@
 ---
-title: Terabytes aan gegevens in SQL Data Warehouse laden
-description: Laat zien hoe 1 TB aan gegevens binnen 15 minuten in Azure SQL Data Warehouse kan worden geladen met Azure Data Factory
+title: Terabytes aan gegevens laden in azure Synapse Analytics
+description: Laat zien hoe 1 TB aan gegevens binnen 15 minuten in azure Synapse Analytics kan worden geladen met Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,33 +12,33 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3b5ce0cba68d4374d6a0403af28ec3f03920acf6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537595"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442476"
 ---
-# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB onder 15 minuten aan Azure SQL Data Warehouse laden met Data Factory
+# <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>1 TB in azure Synapse Analytics onder 15 minuten laden met Data Factory
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens kopiëren naar of van Azure SQL data warehouse met behulp van Data Factory](../connector-azure-sql-data-warehouse.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens kopiëren naar of van Azure Synapse Analytics (voorheen SQL Data Warehouse) met behulp van Data Factory](../connector-azure-sql-data-warehouse.md).
 
 
-[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een op de cloud gebaseerde, scale-out data base waarmee grote hoeveel heden gegevens kunnen worden verwerkt, zowel relationele als niet-relationeel.  SQL Data Warehouse is gebouwd op een enorm parallelle verwerkings architectuur (MPP) en is geoptimaliseerd voor bedrijfsdata Warehouse-workloads.  De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
+[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een schaal bare Cloud database die grote hoeveel heden gegevens kan verwerken, zowel relationele als niet-relationeel.  Azure Synapse Analytics is gebaseerd op de MPP-architectuur (enorm parallel processing) en is geoptimaliseerd voor bedrijfsdata Warehouse-workloads.  De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
 
-Aan de slag met Azure SQL Data Warehouse is nu eenvoudiger dan ooit gebruik te maken van **Azure Data Factory**.  Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud, die kan worden gebruikt voor het vullen van een SQL Data Warehouse met de gegevens van uw bestaande systeem en het besparen van uw kost bare tijd bij het evalueren van SQL Data Warehouse en het bouwen van uw analyse oplossingen. Hier volgen de belangrijkste voor delen van het laden van gegevens in Azure SQL Data Warehouse met behulp van Azure Data Factory:
+Aan de slag met Azure Synapse Analytics is nu nog eenvoudiger dan ooit gebruik te maken van **Azure Data Factory**.  Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud, die kan worden gebruikt voor het vullen van Azure Synapse Analytics met de gegevens van uw bestaande systeem en het besparen van uw kost bare tijd bij het evalueren van Azure Synapse Analytics en het bouwen van uw analyse oplossingen. Hier volgen de belangrijkste voor delen van het laden van gegevens in azure Synapse Analytics met behulp van Azure Data Factory:
 
 * **Eenvoudig in te stellen**: 5-stap intuïtieve wizard zonder scripting vereist.
 * **Ondersteuning voor uitgebreide gegevens opslag**: ingebouwde ondersteuning voor een uitgebreide set on-premises en cloud-gebaseerde gegevens archieven.
 * **Beveiligd en compatibel**: gegevens worden overgebracht via https of ExpressRoute, en wereld wijde service-aanwezigheid zorgt ervoor dat uw gegevens nooit de geografische grens verlaten
-* **Ongeëvenaarde prestaties met poly base** – het gebruik van poly Base is de meest efficiënte manier om gegevens naar Azure SQL Data Warehouse te verplaatsen. Met behulp van de functie voor het maken van een staging-BLOB kunt u hoge laad snelheden realiseren van alle typen gegevens opslag, behalve voor Azure Blob Storage, die standaard door poly Base wordt ondersteund.
+* **Ongeëvenaarde prestaties met poly base** – het gebruik van poly Base is de meest efficiënte manier om gegevens te verplaatsen naar Azure Synapse Analytics. Met behulp van de functie voor het maken van een staging-BLOB kunt u hoge laad snelheden realiseren van alle typen gegevens opslag, behalve voor Azure Blob Storage, die standaard door poly Base wordt ondersteund.
 
-Dit artikel laat u zien hoe u met behulp van Data Factory wizard kopiëren 1 TB gegevens vanaf Azure Blob Storage in Azure SQL Data Warehouse binnen 15 minuten kunt laden, bij een door Voer van meer dan 1,2 GBps.
+Dit artikel laat u zien hoe u met behulp van Data Factory wizard kopiëren 1 TB gegevens van Azure Blob Storage in azure Synapse Analytics in minder dan 15 minuten kunt laden bij een door Voer van meer dan 1,2 GBps.
 
-In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegevens naar Azure SQL Data Warehouse met behulp van de wizard kopiëren.
+In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegevens naar Azure Synapse Analytics met behulp van de wizard kopiëren.
 
 > [!NOTE]
->  Zie voor algemene informatie over de mogelijkheden van Data Factory bij het verplaatsen van gegevens naar/van Azure SQL Data Warehouse [gegevens verplaatsen naar en van Azure SQL data warehouse met behulp van Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) -artikel.
+>  Zie voor algemene informatie over de mogelijkheden van Data Factory bij het verplaatsen van gegevens naar/van Azure Synapse Analytics [gegevens verplaatsen van en naar Azure Synapse Analytics met behulp van Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) artikel.
 >
 > U kunt ook pijp lijnen maken met behulp van Visual Studio, Power shell, enzovoort. Zie [zelf studie: gegevens kopiëren van Azure Blob naar Azure SQL database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor een snelle walkthrough met stapsgewijze instructies voor het gebruik van de Kopieer activiteit in azure Data Factory.  
 >
@@ -54,18 +54,18 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
     Kopieer nu de gegenereerde bestanden naar Azure Blob.  Raadpleeg voor meer informatie over het [verplaatsen van gegevens naar en van een on-premises bestands systeem met behulp van Azure Data Factory](data-factory-onprem-file-system-connector.md) om dat te doen met behulp van ADF copy.    
-* Azure SQL Data Warehouse: in dit experiment worden gegevens geladen in Azure SQL Data Warehouse gemaakt met 6.000 Dwu's
+* Azure Synapse Analytics: in dit experiment worden gegevens in azure Synapse Analytics geladen die zijn gemaakt met 6.000 Dwu's
 
-    Raadpleeg [een Azure SQL Data Warehouse maken](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) voor gedetailleerde instructies voor het maken van een SQL Data Warehouse-data base.  Om de best mogelijke laad prestaties te verkrijgen in SQL Data Warehouse met poly Base, kiezen we het maximum aantal data warehouse-eenheden (Dwu's) dat is toegestaan in de instelling prestaties, namelijk 6.000 Dwu's.
+    Raadpleeg [een Azure Synapse Analytics maken](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) voor gedetailleerde instructies over het maken van een Azure Synapse Analytics-Data Base.  Als u de best mogelijke laad prestaties in azure Synapse Analytics wilt krijgen met poly Base, kiest u het maximum aantal data warehouse-eenheden (Dwu's) dat is toegestaan in de instelling prestaties, namelijk 6.000 Dwu's.
 
   > [!NOTE]
-  > Bij het laden van Azure Blob, worden de prestaties van het laden van gegevens rechtstreeks in verhouding staan tot het aantal Dwu's dat u configureert op de SQL Data Warehouse:
+  > Bij het laden vanuit Azure Blob, worden de prestaties van het laden van gegevens rechtstreeks in verhouding staan tot het aantal Dwu's dat u configureert voor Azure Synapse Analytics:
   >
-  > Het laden van 1 TB in 1.000 DWU SQL Data Warehouse duurt 87 minuten (~ 200 MBps door Voer) bij het laden van 1 TB in 2.000 DWU SQL Data Warehouse langer dan 46 minuten (~ 380 MBps door Voer) het laden van 1 TB in 6.000 DWU SQL Data Warehouse 14 minuten duren (~ 1,2 GBps door Voer)
+  > Het laden van 1 TB in 1.000 DWU Azure Synapse Analytics duurt 87 minuten (~ 200 MBps door Voer) bij het laden van 1 TB in 2.000 DWU Azure Synapse Analytics langer dan 46 minuten (~ 380 MBps door Voer) het laden van 1 TB in 6.000 DWU Azure Synapse Analytics neemt 14 minuten in beslag (~ 1,2 GBps door Voer)
   >
   >
 
-    Als u een SQL Data Warehouse met 6.000 Dwu's wilt maken, moet u de schuif regelaar prestaties helemaal naar rechts verplaatsen:
+    Als u een Synapse SQL-groep met 6.000 Dwu's wilt maken, moet u de schuif regelaar prestaties helemaal naar rechts verplaatsen:
 
     ![Schuif regelaar prestaties](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -77,10 +77,10 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
 
     ![Dialoog venster schalen](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    In dit experiment worden gegevens geladen in Azure SQL Data Warehouse met behulp van de `xlargerc` resource klasse.
+    In dit experiment worden gegevens in azure Synapse Analytics geladen met behulp van de `xlargerc` resource klasse.
 
-    Voor een optimale door voer moet kopiëren worden uitgevoerd met behulp van een SQL Data Warehouse gebruiker die behoort tot een `xlargerc` resource klasse.  Meer informatie over hoe u dit doet door [een voor beeld van een gebruikers resource klasse te wijzigen](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
-* Maak een doel tabel schema in Azure SQL Data Warehouse data base door de volgende DDL-instructie uit te voeren:
+    Voor een optimale door voer moet kopiëren worden uitgevoerd met behulp van een Azure Synapse Analytics-gebruiker die deel uitmaakt van een `xlargerc` resource klasse.  Meer informatie over hoe u dit doet door [een voor beeld van een gebruikers resource klasse te wijzigen](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
+* Maak een doel tabel schema in de Azure Synapse Analytics-Data Base door de volgende DDL-instructie uit te voeren:
 
     ```SQL  
     CREATE TABLE [dbo].[lineitem]
@@ -165,13 +165,13 @@ In deze sectie worden de stappen beschreven voor het configureren van de bron: A
     ![Wizard kopiëren: instellingen voor bestands indeling](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>Stap 3: bestemming configureren
-In deze sectie wordt beschreven hoe u de tabel Destination: `lineitem` in de Azure SQL Data Warehouse-data base configureert.
+In deze sectie wordt beschreven hoe u de bestemming configureert: `lineitem` tabel in de Azure Synapse Analytics-Data Base.
 
-1. Kies **Azure SQL Data Warehouse** als doel archief en klik op **volgende**.
+1. Kies **Azure Synapse Analytics** als doel archief en klik op **volgende**.
 
     ![Wizard kopiëren-doel gegevens archief selecteren](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Vul de verbindings gegevens voor de Azure SQL Data Warehouse in.  Zorg ervoor dat u de gebruiker opgeeft die lid is van de rol `xlargerc` (Zie de sectie **vereisten** voor gedetailleerde instructies) en klik op **volgende**.
+2. Vul de verbindings gegevens in voor Azure Synapse Analytics.  Zorg ervoor dat u de gebruiker opgeeft die lid is van de rol `xlargerc` (Zie de sectie **vereisten** voor gedetailleerde instructies) en klik op **volgende**.
 
     ![Wizard kopiëren: de verbindings gegevens voor de bestemming](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -190,27 +190,27 @@ In deze sectie wordt beschreven hoe u de tabel Destination: `lineitem` in de Azu
 ## <a name="step-5-deploy-and-monitor-load-results"></a>Stap 5: laad resultaten implementeren en bewaken
 1. Klik op de knop **volt ooien** om te implementeren.
 
-    ![Wizard kopiëren-overzichts pagina](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![Wizard kopiëren-overzichts pagina 1](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
 2. Nadat de implementatie is voltooid, klikt `Click here to monitor copy pipeline` u om de voortgang van de Kopieer bewerking te controleren. Selecteer de Kopieer pijplijn die u hebt gemaakt in de lijst **activiteit Windows** .
 
-    ![Wizard kopiëren-overzichts pagina](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    ![Wizard kopiëren-overzichts pagina 2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
     U kunt de details van de Kopieer uitvoering bekijken in het **activiteiten venster Verkenner** in het rechterdeel venster, met inbegrip van het gegevens volume gelezen van de bron en geschreven in doel, duur en de gemiddelde door Voer voor de uitvoering.
 
-    Zoals u kunt zien in de volgende scherm afbeelding, is het kopiëren van 1 TB van Azure Blob Storage naar SQL Data Warehouse 14 minuten geduurd, waardoor de door Voer van 1,22 GBps effectief is.
+    Zoals u kunt zien in de volgende scherm afbeelding, duurde het kopiëren van 1 TB van Azure Blob Storage naar Azure Synapse Analytics 14 minuten, waardoor de door Voer van 1,22 GBps effectief wordt bereikt.
 
     ![Wizard kopiëren-geslaagd dialoog venster](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Hier volgen enkele aanbevolen procedures voor het uitvoeren van uw Azure SQL Data Warehouse-Data Base:
+Hier volgen enkele aanbevolen procedures voor het uitvoeren van uw Azure Synapse Analytics-Data Base:
 
 * Gebruik een grotere resource klasse wanneer u deze in een geclusterde column Store-INDEX laadt.
 * Voor efficiëntere samen voegingen kunt u het gebruik van hash-distributie door een kolom selecteren in plaats van de standaard round robin distributie.
 * Voor snellere laad snelheden kunt u de opslag ruimte gebruiken voor tijdelijke gegevens.
-* Maak statistieken nadat u de Azure SQL Data Warehouse hebt geladen.
+* Maak statistieken nadat u klaar bent met het laden van Azure Synapse Analytics.
 
-Zie [Aanbevolen procedures voor Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) voor meer informatie.
+Zie [Aanbevolen procedures voor Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Wizard Data Factory kopiëren](data-factory-copy-wizard.md) : in dit artikel vindt u informatie over de wizard kopiëren.

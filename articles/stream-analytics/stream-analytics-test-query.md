@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04d86b0ef8202c1c544524dd2a7331d521245f12
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043952"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612163"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Een Azure Stream Analytics-taak testen in de portal
 
@@ -96,6 +96,21 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
    ![Geselecteerde uitvoer Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
 10. Nadat u de resultaten hebt gecontroleerd die in de browser worden weer gegeven, kunt u de taak **starten** .
+
+## <a name="limitations"></a>Beperkingen
+
+1.  Tijd beleid wordt niet ondersteund bij het testen van de portal:
+
+   * Out-of-order: alle binnenkomende gebeurtenissen worden gerangschikt.
+   * Late aankomst: er is geen gebeurtenis voor een latere aankomst, omdat Stream Analytics alleen bestaande gegevens voor testen kan gebruiken.
+   
+2.  C# UDF wordt niet ondersteund.
+
+3.  Alle tests worden uitgevoerd met een taak die één streaming-eenheid heeft.
+
+4.  De time-outwaarde is één minuut. Een query met een venster grootte van meer dan één minuut kan dus geen gegevens ophalen.
+
+5.  Machine learning wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een IOT-oplossing bouwen met behulp van stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): deze zelf studie helpt u bij het bouwen van een end-to-end oplossing met een gegevens generator waarmee verkeer wordt gesimuleerd op een telefoon stand.

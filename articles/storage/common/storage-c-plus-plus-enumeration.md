@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ae42bb29d1273e4f0f9c25803e8cc97b56ad95
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514456"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462408"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-resources in C++ weergeven
 
@@ -200,5 +200,5 @@ Zie de volgende bronnen voor meer informatie over Azure Storage en de client bib
 * [Table Storage gebruiken vanuit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Queue Storage gebruiken met C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage-client bibliotheek voor C++ API-documentatie.](https://azure.github.io/azure-storage-cpp/)
-* [Blog van Azure Storage team](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog van het Azure Storage-team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [Documentatie over Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

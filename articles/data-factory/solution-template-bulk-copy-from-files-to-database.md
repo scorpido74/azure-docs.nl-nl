@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 468bd838237e076aacb9dee0ccacfdcc1ea940af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629113"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442709"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Bulkgewijs kopiëren van bestanden naar database
 
@@ -55,7 +55,7 @@ De sjabloon definieert de volgende twee para meters:
     ![De pijp lijn controleren](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Als u **Azure Synapse Analytics (voorheen SQL DW)** hebt gekozen als de gegevens bestemming in **stap 2** hierboven, moet u een verbinding met Azure Blob Storage voor fase ring invoeren, zoals vereist door SQL Data Warehouse poly base. Zoals in de volgende scherm afbeelding wordt weer gegeven, genereert de sjabloon *automatisch een opslagpad* voor uw Blob Storage. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
+    > Als u **Azure Synapse Analytics (voorheen SQL DW)** hebt gekozen als de gegevens bestemming in **stap 2** hierboven, moet u een verbinding met Azure Blob Storage voor fase ring opgeven, zoals vereist door Azure Synapse Analytics (voorheen SQL Data Warehouse) poly base. Zoals in de volgende scherm afbeelding wordt weer gegeven, genereert de sjabloon *automatisch een opslagpad* voor uw Blob Storage. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
         
     ![Poly base-instelling](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

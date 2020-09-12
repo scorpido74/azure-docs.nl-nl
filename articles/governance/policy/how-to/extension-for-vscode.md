@@ -3,12 +3,12 @@ title: Azure Policy-extensie voor Visual Studio code
 description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van Azure Resource Manager aliassen.
 ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970753"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648336"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
 
@@ -52,7 +52,7 @@ Voor een nationale Cloud gebruiker voert u de volgende stappen uit om eerst de A
 
 1. Selecteer de cloud in de lijst:
 
-   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Standaard Azure-Cloud aanmelding instellen voor Visual Studio code" border="false":::
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Scherm opname van het selecteren van de Azure-Cloud aanmelding voor Visual Studio-code." border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>Verbinding maken met een Azure-account
 
@@ -64,13 +64,13 @@ Als u resources en lookup-aliassen wilt evalueren, moet u verbinding maken met u
 
      Selecteer in de Azure Policy-extensie **Aanmelden bij Azure**.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Azure Cloud Sign in voor Visual Studio code van Azure Policy-extensie" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Scherm opname van Visual Studio code en het pictogram voor de uitbrei ding van de Azure Policy." border="false":::
 
    - Opdracht palet
 
      Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Meld**u aan.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Azure Cloud Sign in voor Visual Studio code vanuit het opdracht palet" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Scherm opname van de Azure Cloud-aanmeld opties voor Visual Studio code vanuit het opdracht palet." border="false":::
 
 1. Volg de instructies voor aanmelden om u aan te melden bij Azure. Nadat u verbinding hebt gemaakt, wordt de naam van uw Azure-account weer gegeven op de status balk onder aan het venster Visual Studio code.
 
@@ -125,7 +125,7 @@ Wanneer een resource is geselecteerd, hetzij via de Zoek interface, hetzij door 
 
 Zodra een resource is geopend, wordt met de muis aanwijzer over de naam van de Resource Manager-eigenschap of de waarde de Azure Policy alias weer gegeven als er een bestaat. In dit voor beeld is de resource een `Microsoft.Compute/virtualMachines` resource type en de eigenschap **Properties. StorageProfile. imageReference. offer.** Met de muis aanwijzer worden de overeenkomende aliassen weer gegeven.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Met de Azure Policy-extensie wordt de eigenschaps alias van een resource manager weer gegeven" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Scherm afbeelding van de uitbrei ding van de Azure Policy voor Visual Studio code die een eigenschap aanwijst om de alias namen weer te geven." border="false":::
 
 > [!NOTE]
 > De VS Code-extensie geeft alleen de eigenschappen van de Resource Manager-modus weer en geeft geen eigenschappen van de [Resource Provider-modu ](../concepts/definition-structure.md#mode) weer.

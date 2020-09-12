@@ -3,16 +3,16 @@ title: Een Azure-toepassings aanbieding maken-micro soft Commercial Marketplace
 description: Meer informatie over de stappen en overwegingen voor het maken van een nieuwe Azure-toepassings aanbieding in de portal voor commerciële Marketplace in het partner centrum. U kunt uw Azure-toepassings aanbieding aanbieden of verkopen in azure Marketplace of via het programma Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815659"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646937"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -50,7 +50,7 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 
 * Voor beelden
 
-    * [Azure CLI](../../managed-applications/cli-samples.md)
+    * [Azure-CLI](../../managed-applications/cli-samples.md)
     * [Azure PowerShell](../../managed-applications/powershell-samples.md)
     * [Beheerde toepassingsoplossingen](../../managed-applications/sample-projects.md)
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797539"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565461"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Een groep toevoegen aan of verwijderen uit een andere groep met behulp van Azure Active Directory
 Dit artikel helpt u bij het toevoegen en verwijderen van een groep uit een andere groep met behulp van Azure Active Directory.
@@ -30,7 +30,7 @@ Dit artikel helpt u bij het toevoegen en verwijderen van een groep uit een ander
 U kunt een bestaande beveiligings groep toevoegen aan een andere bestaande beveiligings groep (ook wel geneste groepen genoemd), een leden groep (subgroep) en een bovenliggende groep maken. De leden groep neemt de kenmerken en eigenschappen van de bovenliggende groep over en bespaart u configuratie tijd.
 
 >[!Important]
->We bieden momenteel geen ondersteuning voor:<ul><li>Groepen toevoegen aan een groep die is gesynchroniseerd met on-premises Active Directory.</li><li>Beveiligings groepen toevoegen aan Office 365-groepen.</li><li>Office 365-groepen toevoegen aan beveiligings groepen of andere Office 365-groepen.</li><li>Apps toewijzen aan geneste groepen.</li><li>Licenties Toep assen op geneste groepen.</li><li>Distributie groepen toevoegen in geneste scenario's.</li></ul>
+>We bieden momenteel geen ondersteuning voor:<ul><li>Groepen toevoegen aan een groep die is gesynchroniseerd met on-premises Active Directory.</li><li>Beveiligings groepen worden toegevoegd aan Microsoft 365 groepen.</li><li>Microsoft 365 groepen toevoegen aan beveiligings groepen of andere Microsoft 365 groepen.</li><li>Apps toewijzen aan geneste groepen.</li><li>Licenties Toep assen op geneste groepen.</li><li>Distributie groepen toevoegen in geneste scenario's.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Een groep toevoegen als lid van een andere groep
 

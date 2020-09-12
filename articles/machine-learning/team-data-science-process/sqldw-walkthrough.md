@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845694"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440198"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Het proces van de team data Science in actie: Azure Synapse Analytics gebruiken
 In deze zelf studie leert u hoe u een machine learning model bouwt en implementeert met behulp van Azure Synapse Analytics voor een openbaar beschik bare gegevensset, de NYC-gegevensset voor de [taxi](https://www.andresmh.com/nyctaxitrips/) Het binaire classificatie model heeft voor speld, ongeacht of er een tip voor een reis wordt betaald.  Modellen bevatten een multi klasse-classificatie (ongeacht of er sprake is van een tip) en regressie (de verdeling van de fooien die worden betaald).
@@ -91,14 +91,14 @@ Voer de volgende stappen uit om uw Azure data Science-omgeving in te stellen.
   * **Container naam** (die u wilt dat de gegevens worden opgeslagen in de Azure Blob-opslag)
 
 **Richt uw Azure Synapse Analytics-exemplaar in.**
-Volg de documentatie op [een Azure SQL data warehouse in het Azure portal maken en een query uitvoeren](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) om een Azure Synapse Analytics-exemplaar in te richten. Zorg ervoor dat u een notatie maakt voor de volgende Azure Synapse Analytics-referenties die in latere stappen zullen worden gebruikt.
+Volg de documentatie op [een Azure Synapse Analytics maken en query's uitvoeren in de Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) om een Azure Synapse Analytics-exemplaar in te richten. Zorg ervoor dat u een notatie maakt voor de volgende Azure Synapse Analytics-referenties die in latere stappen zullen worden gebruikt.
 
 * **Server naam**: \<server Name> . database.Windows.net
 * **SQLDW-naam (data base)**
 * **Gebruikersnaam**
 * **Wachtwoord**
 
-**Installeer Visual Studio en SQL Server Data Tools.** Zie aan de slag [met Visual Studio 2019 voor SQL Data Warehouse voor](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)instructies.
+**Installeer Visual Studio en SQL Server Data Tools.** Zie aan de slag [met Visual Studio 2019 voor Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)voor instructies.
 
 **Maak verbinding met uw Azure Synapse Analytics met Visual Studio.** Zie stap 1 & 2 in [verbinding maken met SQL Analytics in azure Synapse Analytics](../../synapse-analytics/sql/connect-overview.md)voor instructies.
 
@@ -655,7 +655,7 @@ Als u al een Azure Machine Learning-werk ruimte hebt ingesteld, kunt u de IPytho
 
 Als u de voor beeld-IPython-notebook of het python-script bestand wilt uitvoeren, zijn de volgende python-pakketten nodig. Als u de IPython Notebook-Service gebruikt, zijn deze pakketten vooraf geïnstalleerd.
 
-- pandas
+- Pandas
 - numpy
 - matplotlib
 - pyodbc
@@ -966,7 +966,7 @@ In deze oefening hebben we de gegevens in azure Synapse Analytics al bekeken en 
 
     ![Gegevens importeren in azure ML][17]
 2. Selecteer **Azure SQL database** als **gegevens bron** in het deel venster **Eigenschappen** .
-3. Voer de naam van de data base-DNS in het veld **database server naam** in. Formatteer`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Voer de naam van de data base-DNS in het veld **database server naam** in. Formatteer `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Voer de **database naam** in het bijbehorende veld in.
 5. Voer de *SQL-gebruikers naam* in de naam van de **Server gebruikers account**en het *wacht woord* in het **wacht woord van de server gebruikers account**in.
 7. Plak in het tekst gebied **database query** bewerken de query waarmee de benodigde database velden worden geëxtraheerd (met inbegrip van berekende velden zoals de labels) en druk op voor beelden van de gegevens naar de gewenste steekproef grootte.
@@ -1012,7 +1012,7 @@ Om te samen vatting wat we in deze walkthrough zelf studie hebben gedaan, hebt u
 ### <a name="license-information"></a>Licentie gegevens
 Deze voorbeeld walkthrough en de bijbehorende scripts en IPython-Notebook (s) worden door micro soft gedeeld onder de MIT-licentie. Controleer het LICENSE.txt-bestand in de map van de voorbeeld code op GitHub voor meer informatie.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 - [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)
 - [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [Onderzoek en statistieken voor NYCe taxi en limousine-Commissie](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

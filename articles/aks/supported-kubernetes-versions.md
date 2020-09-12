@@ -3,19 +3,19 @@ title: Ondersteunde Kubernetes-versies in Azure Kubernetes Service
 description: Meer informatie over het ondersteunings beleid voor Kubernetes-versies en de levens cyclus van clusters in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144614"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565365"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in AKS (Azure Kubernetes Service)
 
-De Kubernetes-Community brengt ongeveer elke drie maanden secundaire versies uit. Deze releases bevatten nieuwe functies en verbeteringen. Patch releases zijn vaker (soms wekelijks) en zijn alleen bedoeld voor essentiële probleem oplossingen in een secundaire versie. Deze patches bevatten oplossingen voor beveiligings problemen of grote fouten.
+De Kubernetes-Community brengt ongeveer elke drie maanden secundaire versies uit. Onlangs heeft de Kubernetes-community [het ondersteunings venster voor elke versie van 9 maanden naar 12 maanden verhoogd, te](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)beginnen met versie 1,19. Deze releases bevatten nieuwe functies en verbeteringen. Patch releases zijn vaker (soms wekelijks) en zijn bedoeld voor essentiële probleem oplossingen binnen een secundaire versie. Deze patches bevatten oplossingen voor beveiligings problemen of grote fouten.
 
 ## <a name="kubernetes-versions"></a>Kubernetes-versies
 
@@ -41,8 +41,8 @@ Gebruikers moeten zich richten op het uitvoeren van de meest recente patch versi
 
 AKS definieert een algemeen beschik bare versie, als een versie die is ingeschakeld in alle SLO-of SLA-metingen en wanneer deze beschikbaar zijn in alle regio's. AKS ondersteunt drie GA secundaire versies van Kubernetes:
 
-* De meest recente GA secundaire versie die is uitgebracht in AKS (waarnaar wordt verwezen als N). 
-* Twee vorige secundaire versies. 
+* De meest recente GA secundaire versie die is uitgebracht in AKS (waarnaar wordt verwezen als N).
+* Twee vorige secundaire versies.
 * Elke ondersteunde secundaire versie ondersteunt ook Maxi maal twee (2) stabiele patches.
 * AKS kan ook ondersteuning bieden voor Preview-versies, die expliciet worden gelabeld en onderworpen aan de voor waarden van de [Preview][preview-terms]-versie.
 
@@ -143,6 +143,10 @@ Zie [hier](https://en.wikipedia.org/wiki/Kubernetes#History)voor de eerdere rele
 \* Bevestiging van release datum van de upstream in behandeling.
 
 ## <a name="faq"></a>Veelgestelde vragen
+
+**Hoe vaak moet ik verwachten dat Kubernetes-versies worden bijgewerkt om ondersteuning te blijven bieden?**
+
+De open source-community met Kubernetes 1,19 biedt [uitgebreide ondersteuning voor één jaar](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS door voeren om patches en ondersteuning in te scha kelen die overeenkomen met de upstream-toezeg gingen, ten minste. Dit betekent dat u met AKS-clusters op 1,19 een upgrade kunt uitvoeren van Mini maal één keer per jaar om op een ondersteunde versie te blijven. Voor versies op 1,18 of lager blijft het ondersteunings venster een periode van 9 maanden waarvoor een upgrade eenmaal per 9 maanden vereist is om op een ondersteunde versie te blijven. Het is raadzaam om regel matig nieuwe versies te testen en te upgraden naar nieuwere versies om de laatste stabiele verbeteringen in Kubernetes vast te leggen.
 
 **Wat gebeurt er wanneer een gebruiker een Kubernetes-cluster upgradet met een secundaire versie die niet wordt ondersteund?**
 

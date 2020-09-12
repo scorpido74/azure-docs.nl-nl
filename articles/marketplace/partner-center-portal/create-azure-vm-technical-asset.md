@@ -3,16 +3,16 @@ title: Technische assets van virtuele Azure-machines maken
 description: Meer informatie over het maken en configureren van technische assets voor een virtuele machine (VM)-aanbieding voor Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 496cd4aeb96ca1849e950331658014d91dc6d6ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143876"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646801"
 ---
 # <a name="create-azure-virtual-machine-technical-assets"></a>Technische assets van virtuele Azure-machines maken
 
@@ -170,7 +170,7 @@ In deze sectie wordt beschreven hoe u een Azure-VM kunt verg Roten of verkleinen
 
 De volgende regels zijn voor beperkingen op de besturingssysteem schijf grootte. Wanneer u een aanvraag indient, moet u ervoor zorgen dat de schijf grootte van het besturings systeem binnen de limiet voor Linux of Windows valt.
 
-| Besturingssysteem | Aanbevolen grootte voor VHD |
+| OS | Aanbevolen grootte voor VHD |
 | --- | --- |
 | Linux | 30 tot 1023 GB |
 | Windows | 30 tot 250 GB |

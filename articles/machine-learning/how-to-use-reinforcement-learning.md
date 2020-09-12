@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 97119f3ec370894183c4aee44ff8a5bd6e5ea93b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650822"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647141"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
 
@@ -49,8 +49,8 @@ Voer deze code uit in een van de volgende omgevingen. U wordt aangeraden om Azur
  
  - Uw eigen Jupyter Notebook-server
 
-    - Installeer de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-    - Installeer de [Azure machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Installeer de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+    - Installeer de [Azure machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true): `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Maak een [configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
     - Voer de [installatie notitieblok](https://aka.ms/azure-rl-env-setup) van het virtuele netwerk uit om de netwerk poorten te openen die worden gebruikt voor Distributed versterking learning.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Een studie experiment voor versterking maken
 
-Maak een [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) om uw leer proces voor versterking te volgen. In Azure Machine Learning zijn experimenten logische verzamelingen van gerelateerde experimenten om uitvoerings logboeken, geschiedenis, uitvoer en meer te organiseren.
+Maak een [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) om uw leer proces voor versterking te volgen. In Azure Machine Learning zijn experimenten logische verzamelingen van gerelateerde experimenten om uitvoerings logboeken, geschiedenis, uitvoer en meer te organiseren.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Een Estimator voor versterking leren maken
 
-In deze sectie leert u hoe u [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) kunt gebruiken om een trainings taak naar Azure machine learning te verzenden.
+In deze sectie leert u hoe u [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) kunt gebruiken om een trainings taak naar Azure machine learning te verzenden.
 
 Azure Machine Learning maakt gebruik van Estimator-klassen voor het inkapselen van configuratie-informatie over de uitvoering. Zo kunt u eenvoudig opgeven hoe u een script uitvoering wilt configureren. Zie [modellen trainen met schattingen](how-to-train-ml-models.md)voor meer informatie over het Estimator-patroon van Azure machine learning.
 
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Een run verzenden
 
-Met [uitvoeren](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) wordt de uitvoerings geschiedenis van taken in uitvoering of volt ooien verwerkt. 
+Met [uitvoeren](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) wordt de uitvoerings geschiedenis van taken in uitvoering of volt ooien verwerkt. 
 
 ```python
 run = exp.submit(config=rl_estimator)

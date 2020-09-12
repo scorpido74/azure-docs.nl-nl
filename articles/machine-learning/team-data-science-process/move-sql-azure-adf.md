@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092419"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440015"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Gegevens verplaatsen van een SQL Server Data Base naar SQL Database met Azure Data Factory
 
@@ -60,12 +60,12 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 >
 >
 
-## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>De gegevens uploaden naar uw SQL Server-exemplaar
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a> De gegevens uploaden naar uw SQL Server-exemplaar
 We gebruiken de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/) om het migratie proces te demonstreren. De NYC taxi-gegevensset is beschikbaar, zoals vermeld in dat bericht, op Azure Blob Storage [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). De gegevens hebben twee bestanden, het trip_data.csv bestand, dat reis Details bevat en het trip_far.csv bestand, dat details bevat van het tarief dat voor elke reis is betaald. Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
 
 U kunt de procedure die u hier hebt opgegeven, aanpassen aan een set eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload).
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Een Azure Data Factory maken
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Een Azure Data Factory maken
 De instructies voor het maken van een nieuwe Azure Data Factory en een resource groep in de [Azure Portal](https://portal.azure.com/) worden door gegeven [een Azure Data Factory maken](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Noem het nieuwe ADF-exemplaar *adfdsp* en geef de resource groep de naam *adfdsprg*.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime installeren en configureren
@@ -232,7 +232,7 @@ Met behulp van de tabel definities die eerder zijn opgegeven, wordt de pijplijn 
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
+        "description" : "This pipeline has two activities: the first one copies data from SQL Server to Azure Blob, and the second one copies from Azure Blob to Azure Database Table",
         "activities":
         [
             {

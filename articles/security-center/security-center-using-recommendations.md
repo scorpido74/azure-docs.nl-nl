@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783228"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569047"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center-aanbevelingen gebruiken om de beveiliging te verbeteren
+
 U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 
 
 Security Center doorlopende scans wordt automatisch uitgevoerd om de beveiligings status van uw Azure-resources te analyseren. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde beveiligings controles leiden. Security Center worden aanbevelingen binnen 24 uur bijgewerkt, met de volgende uitzonde ringen:
@@ -66,6 +67,11 @@ Als onderdeel van hun dagelijkse bewakings activiteiten houdt Jeff zich aan bij 
 6. Jeroen heeft talloze Internet gerichte Vm's en omdat hun poorten worden weer gegeven, is het een goed moment dat een aanvaller controle kan krijgen over de servers. Jeff kiest voor het gebruik [**van just-in-time-VM-toegang**](security-center-just-in-time.md).
 
 Jeff gaat door met de aanbevelingen met hoge prioriteit en normale prioriteit en maakt beslissingen bij de implementatie. Voor elke aanbeveling bekijkt Jeff de gedetailleerde informatie die wordt verstrekt door Security Center om te begrijpen welke resources worden beïnvloed, wat de invloed heeft op de gevolgen van de veilige Score, wat elke aanbeveling betekent en stappen voor herstel voor het oplossen van elk probleem.
+
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>Aanbevelingen afdwingen om onjuiste configuraties van beveiliging te voor komen
+
+Om ervoor te zorgen dat gebruikers geen resources maken die een negatieve invloed hebben op de Score van Jeff, configureren ze de opties afdwingen en weigeren voor de aanbevelingen die het belangrijkst voor hen zijn. Meer informatie over het [voor komen van onjuiste configuraties met het afdwingen/weigeren van aanbevelingen](prevent-misconfigurations.md).
+
 
 ## <a name="conclusion"></a>Conclusie
 Als u aanbevelingen in Security Center bewaken, kunt u beveiligings problemen elimineren voordat een aanval plaatsvindt. Wanneer u aanbevelingen herstelt, worden uw beveiligde Score en de beveiligings postuur van uw workloads verbeterd. Security Center detecteert automatisch nieuwe resources die u implementeert, beoordeelt deze tegen uw beveiligings beleid en biedt nieuwe aanbevelingen voor het beveiligen ervan.

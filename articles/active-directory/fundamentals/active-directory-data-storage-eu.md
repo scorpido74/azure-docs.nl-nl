@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 874df2cc17e291cb6811ca07d01237f01b523860
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799097"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565035"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identiteits gegevens opslag voor Europese klanten in Azure Active Directory
-Identiteits gegevens worden opgeslagen door Azure AD op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Office 365 en Azure. Voor informatie over waar uw identiteits gegevens worden opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum gebruiken.
+Identiteits gegevens worden opgeslagen door Azure AD op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Microsoft 365 en Azure. Voor informatie over waar uw identiteits gegevens worden opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum gebruiken.
 
 Voor klanten die een adres in Europa hebben geleverd, houdt Azure AD de meeste identiteits gegevens binnen de Europese data centers. Dit document bevat informatie over alle gegevens die buiten Europa door Azure AD Services zijn opgeslagen.
 
@@ -30,11 +30,11 @@ Voor klanten die een adres in Europa hebben geleverd, houdt Azure AD de meeste i
 - Push meldingen met behulp van de Microsoft Authenticator-app, afkomstig van Amerikaanse data centers. Daarnaast kunnen specifieke services van apparaten ook worden afgespeeld en deze services zijn mogelijk buiten Europa.
 - OATH-codes worden altijd gevalideerd in de Verenigde Staten. 
 
-Voor meer informatie over welke gebruikers gegevens worden verzameld door Azure Multi-Factor Authentication-server (MFA-server) en Azure MFA in de Cloud, Zie [azure multi-factor Authentication gebruikers gegevens verzamelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+Voor meer informatie over welke gebruikers gegevens worden verzameld door Azure Multi-Factor Authentication-server (MFA-server) en Azure MFA in de Cloud, Zie [azure multi-factor Authentication gebruikers gegevens verzamelen](../authentication/howto-mfa-reporting-datacollection.md).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Azure AD B2C-beleids configuratie gegevens en sleutel containers worden opgeslagen in de data centers van de VS. Deze bevatten geen persoonlijke gegevens van de gebruiker. Zie voor meer informatie over configuraties voor beleid het artikel [Azure Active Directory B2C: ingebouwde beleidsregels](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies).
+Azure AD B2C-beleids configuratie gegevens en sleutel containers worden opgeslagen in de data centers van de VS. Deze bevatten geen persoonlijke gegevens van de gebruiker. Zie voor meer informatie over configuraties voor beleid het artikel [Azure Active Directory B2C: ingebouwde beleidsregels](../../active-directory-b2c/user-flow-overview.md).
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -50,7 +50,7 @@ Azure Active Directory Domain Services slaat gebruikersgegevens op dezelfde loca
 - Lijst met goedgekeurde federatieve domeinen voor toepassing
 - Open bare sleutel voor token ondertekening van toepassing 
 
-Zie het artikel [Federation: Exchange 2013 Help](https://docs.microsoft.com/exchange/federation-exchange-2013-help) voor meer informatie over Federatie in micro soft Exchange Server.
+Zie het artikel [Federation: Exchange 2013 Help](/exchange/federation-exchange-2013-help) voor meer informatie over Federatie in micro soft Exchange Server.
 
 
 ## <a name="other-considerations"></a>Andere overwegingen
@@ -61,12 +61,12 @@ Zie de sectie [Waar bevinden uw gegevens zich?](https://www.microsoft.com/trustc
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen voor meer informatie over de functies en functionaliteit die hierboven worden beschreven:
-- [Wat is Multi-Factor Authentication?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
+- [Wat is Multi-Factor Authentication?](../authentication/concept-mfa-howitworks.md)
 
-- [Self-service voor wachtwoord herstel van Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
+- [Self-service voor wachtwoord herstel van Azure AD](../authentication/concept-sspr-howitworks.md)
 
-- [Wat is Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+- [Wat is Azure Active Directory B2C?](../../active-directory-b2c/overview.md)
 
-- [Wat is Azure AD B2B-samenwerking?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- [Wat is Azure AD B2B-samenwerking?](../external-identities/what-is-b2b.md)
 
-- [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)
+- [Azure Active Directory (AD) Domain Services](../../active-directory-domain-services/overview.md)

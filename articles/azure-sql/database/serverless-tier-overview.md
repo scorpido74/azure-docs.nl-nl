@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121354"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565086"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,11 +114,12 @@ Automatische onderbreking wordt geactiveerd als aan de duur van de automatische 
 
 Er is een optie voor het uitschakelen van de functie voor het indien gewenst van AutoActiveren.
 
-De volgende functies bieden geen ondersteuning voor automatische onderbrekingen, maar ondersteunen automatisch schalen.  Dat wil zeggen, als een van de volgende functies wordt gebruikt, de data base online blijft, ongeacht de duur van de data base-inactiviteit:
+De volgende functies bieden geen ondersteuning voor automatische onderbrekingen, maar ondersteunen automatisch schalen.  Als een van de volgende functies wordt gebruikt, moet u automatisch onderbreken uitschakelen en blijft de data base online, ongeacht de duur van de inactiviteit van de Data Base:
 
 - Geo-replicatie (actieve groepen met geo-replicatie en automatische failover).
 - Lange termijn retentie van back-ups (LTR).
 - De gesynchroniseerde data base die wordt gebruikt in SQL Data Sync.  In tegens telling tot synchronisatie databases ondersteunen de data bases van hubs en leden automatische onderbrekingen.
+- DNS-aliasing
 - De taak database die wordt gebruikt in elastische taken (preview).
 
 Autopauzeren wordt tijdelijk voor komen tijdens de implementatie van sommige service-updates waarvoor de data base online is.  In dergelijke gevallen wordt automatisch onderbreken opnieuw toegestaan zodra de service-update is voltooid.
@@ -132,7 +133,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controles|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
 |Evaluatie van beveiligingsproblemen|Ad hoc-scans en periodieke scans als deze functie is ingeschakeld|

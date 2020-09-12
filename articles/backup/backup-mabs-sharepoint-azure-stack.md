@@ -3,12 +3,12 @@ title: Een back-up maken van een share point-Farm op Azure Stack
 description: Gebruik Azure Backup Server om een back-up te maken van uw share point-gegevens en deze te herstellen op Azure Stack. In dit artikel vindt u informatie over het configureren van uw share point-Farm zodat gewenste gegevens kunnen worden opgeslagen in Azure. U kunt beveiligde share point-gegevens herstellen vanaf schijf of Azure.
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 7319cf064ab2bab20e4140f8a208be843df7fa71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017966"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378318"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Een back-up maken van een share point-Farm op Azure Stack
 
@@ -76,7 +76,7 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
         Nadat ConfigureSharePoint.exe is uitgevoerd, moet u het opnieuw uitvoeren als er een wijziging is in de referenties van de share point-farm beheerder.
 
-1. Als u een beveiligings groep wilt maken, klikt u op **beveiligings**  >  **acties**  >  **beveiligings groep maken** om de wizard **nieuwe beveiligings groep maken** in de MABS-console te openen.
+1. Als u een beveiligings groep wilt maken, selecteert u **beveiligings**  >  **acties**  >  **beveiligings groep maken** om de wizard **nieuwe beveiligings groep maken** in de MABS-console te openen.
 
 1. In **type beveiligings groep**selecteren selecteert u **servers**.
 
@@ -104,7 +104,7 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
 1. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offlineback-up uitvoeren (offline-seeding). Voor offlineback-ups wordt gebruikgemaakt van de functie Azure Import. [Meer informatie](./backup-azure-backup-import-export.md).
 
-1. Controleer uw instellingen op de pagina  **samen vatting** . Nadat u op **groep maken**hebt geklikt, vindt de initiële replicatie van de gegevens plaats. Wanneer deze is voltooid, wordt de status van de beveiligings groep weer gegeven op **OK** op de pagina **status** . Back-up vindt plaats in overeenstemming met de beveiligingsgroepsinstellingen.
+1. Controleer uw instellingen op de pagina  **samen vatting** . Nadat u **groep maken**hebt geselecteerd, vindt de initiële replicatie van de gegevens plaats. Wanneer deze is voltooid, wordt de status van de beveiligings groep weer gegeven op **OK** op de pagina **status** . Back-up vindt plaats in overeenstemming met de beveiligingsgroepsinstellingen.
 
 ## <a name="monitoring"></a>Bewaking
 
@@ -116,17 +116,17 @@ Nadat de beveiligings groep is gemaakt, vindt de eerste replicatie plaats en MAB
 
 ### <a name="set-up-monitoring-notifications"></a>Controlemeldingen instellen
 
-1. Klik in de MABS Administrator-console op **bewakings**  >  **actie**  >  **Opties**.
+1. Selecteer in de MABS Administrator-console **bewaking**  >  **actie**  >  **Opties**.
 
-2. Klik op **SMTP-server** en typ de servernaam, de poort en het e-mailadres waarvan de meldingen worden verzonden. Het adres moet geldig zijn.
+2. Selecteer **SMTP-server**, typ de server naam, de poort en het e-mail adres waarvan de meldingen worden verzonden. Het adres moet geldig zijn.
 
 3. In **geverifieerde SMTP-server**typt u een gebruikers naam en wacht woord. De gebruikers naam en het wacht woord moeten de domein accountnaam zijn van de persoon waarvan het ' van '-adres wordt beschreven in de vorige stap. Anders mislukt de levering van de melding.
 
-4. Als u de SMTP-server instellingen wilt testen, klikt u op **test bericht verzenden**, typt u het e-mail adres waarnaar u het test bericht wilt verzenden en klikt u vervolgens op **OK**. Klik op **Opties**  >  **meldingen** en selecteer het type waarschuwingen waarover ontvangers meldingen willen ontvangen. In **ontvangers** typt u het e-mail adres van elke geadresseerde aan wie u wilt dat MABS kopieën van de meldingen verzendt.
+4. Als u de SMTP-server instellingen wilt testen, selecteert u **test bericht verzenden**, typt u het e-mail adres waarnaar u het test bericht wilt verzenden en selecteert u vervolgens **OK**. Selecteer **Opties**  >  **meldingen** en selecteer het type waarschuwingen waarover ontvangers meldingen willen ontvangen. In **ontvangers** typt u het e-mail adres van elke geadresseerde aan wie u wilt dat MABS kopieën van de meldingen verzendt.
 
 ### <a name="publish-operations-manager-alerts"></a>Waarschuwingen voor Operations Manager publiceren
 
-1. Klik in de MABS Administrator-console op **bewakings**  >  **actie**  >  **Opties**  >  **waarschuwing**publiceren  >  **actieve waarschuwingen publiceren**
+1. Selecteer in de MABS Administrator-console **bewakings**  >  **actie**  >  **Opties**  >  **waarschuwing**publiceren  >  **publiceren actieve waarschuwingen**
 
 2. Nadat u **waarschuwingen publiceren**hebt ingeschakeld, worden alle bestaande MABS-waarschuwingen waarvoor een gebruikers actie is vereist, gepubliceerd naar het gebeurtenis logboek van de **MABS-waarschuwingen** . De Operations Manager-agent die op de MABS-server is geïnstalleerd, publiceert deze waarschuwingen vervolgens naar de Operations Manager en blijft de console bijwerken wanneer er nieuwe waarschuwingen worden gegenereerd.
 
@@ -148,10 +148,10 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 5. U kunt ook bladeren door verschillende herstel punten en een Data Base of een item selecteren dat u wilt herstellen. Selecteer **datum > herstel tijd**en selecteer vervolgens de juiste **Data Base > share point-Farm > herstel punt > item**.
 
     ![MABS share point Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen** om de **wizard herstellen**te openen. Klik op **Volgende**.
+6. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen** om de **wizard herstellen**te openen. Selecteer **Volgende**.
 
     ![Selectie voor herstel controleren](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Selecteer het type herstel dat u wilt uitvoeren en klik vervolgens op **volgende**.
+7. Selecteer het type herstel dat u wilt uitvoeren en selecteer vervolgens **volgende**.
 
     ![Herstel type](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -172,7 +172,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
     MABS koppelt de inhouds database die als host fungeert voor het share point-item aan het tijdelijke SQL Server-exemplaar. Vanuit de inhouds database wordt het item hersteld en geplaatst op de locatie van het staging-bestand op MABS. Het herstelde item op de faserings locatie moet nu worden geëxporteerd naar de faserings locatie in de share point-farm.
 
     ![Staging-Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Selecteer **herstel opties opgeven**en pas beveiligings instellingen toe op de share point-Farm of pas de beveiligings instellingen van het herstel punt toe. Klik op **Volgende**.
+10. Selecteer **herstel opties opgeven**en pas beveiligings instellingen toe op de share point-Farm of pas de beveiligings instellingen van het herstel punt toe. Selecteer **Volgende**.
 
     ![Herstel opties](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -180,7 +180,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
     > U kunt ervoor kiezen het netwerk bandbreedte gebruik te beperken. Dit beperkt de gevolgen voor de productie server tijdens productie-uren.
     >
     >
-11. Controleer de samenvattings informatie en klik vervolgens op **herstellen** om het bestand te herstellen.
+11. Controleer de samenvattings informatie en selecteer vervolgens **herstellen** om te beginnen met het herstellen van het bestand.
 
     ![Samen vatting van herstel](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. Selecteer nu het tabblad **controle** in de **MABS-beheer console** om de **status** van het herstel weer te geven.
@@ -203,7 +203,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
    > Omdat de share point-Farm is beveiligd voor lange termijn retentie in azure, is er geen catalogus informatie (meta gegevens) beschikbaar op de MABS-server. Wanneer een tijdgebonden share point-inhouds database moet worden hersteld, moet u de share point-Farm opnieuw catalogiseren.
    >
    >
-3. Klik op **opnieuw catalogiseren**.
+3. Selecteer **opnieuw catalogiseren**.
 
     ![MABS share point Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -211,10 +211,10 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 
     ![MABS share point Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Klik op **Sluiten**.
+    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Selecteer **Close** (Sluiten).
 
     ![MABS share point Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Klik op het share point-object dat wordt weer gegeven op het tabblad MABS- **herstel** om de structuur van de inhouds database op te halen. Klik met de rechter muisknop op het item en klik vervolgens op **herstellen**.
+4. Selecteer het share point-object dat wordt weer gegeven op het tabblad MABS- **herstel** om de structuur van de inhouds database op te halen. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen**.
 
     ![MABS share point Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Volg op dit punt de herstel stappen eerder in dit artikel om een share point-inhouds database van schijf te herstellen.
@@ -249,7 +249,7 @@ De volgende procedure maakt gebruik van het voor beeld van een server farm met t
 
 1. Wijzig op *server2*bij een opdracht prompt de Directory in `_MABS installation location_\bin\` en voer **ConfigureSharepoint**uit. Zie [Configure Backup](#configure-backup)(Engelstalig) voor meer informatie over ConfigureSharePoint.
 
-1. Selecteer de beveiligings groep waartoe de server farm behoort en klik vervolgens op **beveiligings groep wijzigen**.
+1. Selecteer de beveiligings groep waartoe de server farm behoort en selecteer vervolgens **beveiligings groep wijzigen**.
 
 1. Vouw in de wizard groep wijzigen op de pagina **groeps leden selecteren** *server2* uit en selecteer de server farm en voltooi vervolgens de wizard.
 

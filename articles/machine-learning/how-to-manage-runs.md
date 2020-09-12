@@ -12,17 +12,17 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dba64761d5df9bcf27cc903f84750a767478000a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6d0d626fe0720500b436aea73d6df7c8bb08e004
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846680"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649393"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning cli](reference-azure-machine-learning-cli.md)en [Azure machine learning Studio](https://ml.azure.com) bieden verschillende methoden om uw uitvoeringen te controleren, te organiseren en te beheren voor training en experimenten.
+De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), [Machine Learning cli](reference-azure-machine-learning-cli.md)en [Azure machine learning Studio](https://ml.azure.com) bieden verschillende methoden om uw uitvoeringen te controleren, te organiseren en te beheren voor training en experimenten.
 
 In dit artikel vindt u voor beelden van de volgende taken:
 
@@ -39,7 +39,7 @@ U hebt de volgende items nodig:
 
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
-* De Azure Machine Learning SDK voor python (versie 1.0.21 of hoger). Zie [de SDK installeren of bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)om de nieuwste versie van de SDK te installeren of bij te werken.
+* De Azure Machine Learning SDK voor python (versie 1.0.21 of hoger). Zie [de SDK installeren of bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)om de nieuwste versie van de SDK te installeren of bij te werken.
 
     Als u uw versie van de Azure Machine Learning SDK wilt controleren, gebruikt u de volgende code:
 
@@ -53,7 +53,7 @@ U hebt de volgende items nodig:
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Stel uw experiment in door de klassen [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)en [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) te importeren vanuit het pakket [azureml. core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) .
+Stel uw experiment in door de klassen [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true), [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true), [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)en [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) te importeren vanuit het pakket [azureml. core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py&preserve-view=true) .
 
 ```python
 import azureml.core
@@ -64,7 +64,7 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-Start een run en het bijbehorende logboek registratie proces met de- [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) methode.
+Start een run en het bijbehorende logboek registratie proces met de- [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) methode.
 
 ```python
 notebook_run = exp.start_logging()
@@ -102,7 +102,7 @@ Gebruik de volgende stappen om een uitvoering van uw experiment te starten:
     > [!TIP]
     > De `az ml folder attach` opdracht heeft een `.azureml` submap gemaakt die twee voor beelden van runconfig-bestanden bevat.
     >
-    > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
+    > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
     >
     > Zie voor meer voor beelden van runconfig-bestanden [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
 
@@ -122,19 +122,19 @@ Gebruik de volgende stappen om een pijplijn uitvoering te starten in de ontwerp 
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-De status ophalen van een run met de- [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) methode.
+De status ophalen van een run met de- [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=trueget-status--) methode.
 
 ```python
 print(notebook_run.get_status())
 ```
 
-Als u de uitvoerings-ID, uitvoerings tijd en aanvullende details over de uitvoering wilt ophalen, gebruikt u de- [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) methode.
+Als u de uitvoerings-ID, uitvoerings tijd en aanvullende details over de uitvoering wilt ophalen, gebruikt u de- [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueget-details--) methode.
 
 ```python
 print(notebook_run.get_details())
 ```
 
-Wanneer de uitvoering is voltooid, gebruikt u de [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) methode om deze te markeren als voltooid.
+Wanneer de uitvoering is voltooid, gebruikt u de [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) methode om deze te markeren als voltooid.
 
 ```python
 notebook_run.complete()
@@ -195,7 +195,7 @@ Als u een fout melding krijgt of als de uitvoering te lang duurt om te volt ooie
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Als u een uitvoering met de SDK wilt annuleren, gebruikt u de [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) volgende methode:
+Als u een uitvoering met de SDK wilt annuleren, gebruikt u de [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecancel--) volgende methode:
 
 ```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -242,7 +242,7 @@ Onderliggende uitvoeringen maken om gerelateerde uitvoeringen samen te voegen, z
 > [!NOTE]
 > Onderliggende uitvoeringen kunnen alleen worden gemaakt met de SDK.
 
-In dit code voorbeeld wordt het `hello_with_children.py` script gebruikt voor het maken van een batch van vijf onderliggende uitgevoerd vanuit een ingediende uitvoering met behulp van de [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) methode:
+In dit code voorbeeld wordt het `hello_with_children.py` script gebruikt voor het maken van een batch van vijf onderliggende uitgevoerd vanuit een ingediende uitvoering met behulp van de [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truechild-run-name-none--run-id-none--outputs-none-) methode:
 
 ```python
 !more hello_with_children.py
@@ -261,7 +261,7 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > Als ze buiten het bereik worden verplaatst, worden onderliggende uitvoeringen automatisch gemarkeerd als voltooid.
 
-Als u veel onderliggende items efficiënt wilt maken, gebruikt u de- [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) methode. Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
+Als u veel onderliggende items efficiënt wilt maken, gebruikt u de- [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) methode. Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
 
 ### <a name="submit-child-runs"></a>Onderliggende uitvoeringen verzenden
 
@@ -269,7 +269,7 @@ Onderliggende uitvoeringen kunnen ook worden verzonden vanuit een bovenliggende 
 
 Mogelijk wilt u dat uw kind een andere uitvoerings configuratie gebruikt dan de bovenliggende run. U kunt bijvoorbeeld een minder krachtige, op CPU gebaseerde configuratie voor het bovenliggende knoop punt gebruiken, terwijl u op GPU gebaseerde configuraties voor uw kinderen gebruikt. Een andere gang bare wens is om elke onderliggende andere argumenten en gegevens door te geven. Als u een onderliggende uitvoering wilt aanpassen, geeft `RunConfiguration` u een object door aan de constructor van het onderliggende item `ScriptRunConfig` . Dit code voorbeeld, dat deel uitmaakt van het script van het bovenliggende `ScriptRunConfig` object:
 
-- Hiermee wordt een `RunConfiguration` benoemde Compute-resource opgehaald`"gpu-compute"`
+- Hiermee wordt een `RunConfiguration` benoemde Compute-resource opgehaald `"gpu-compute"`
 - Herhaalt de verschillende argument waarden die moeten worden door gegeven aan de onderliggende `ScriptRunConfig` objecten
 - Hiermee wordt een nieuwe onderliggende run gemaakt en verzonden met behulp van de aangepaste Compute-resource en het argument
 - Blokken totdat alle onderliggende bewerkingen zijn voltooid
@@ -299,7 +299,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Gebruik de-methode om veel onderliggende uitvoeringen met identieke configuraties, argumenten en invoer op efficiënte wijze te maken [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) . Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
+Gebruik de-methode om veel onderliggende uitvoeringen met identieke configuraties, argumenten en invoer op efficiënte wijze te maken [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) . Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
 
 Binnen een onderliggende run kunt u de bovenliggende run-ID bekijken:
 
@@ -311,7 +311,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Query's uitvoeren op onderliggende items
 
-Gebruik de-methode om een query uit te voeren op de onderliggende uitvoeringen van een specifiek bovenliggend element [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . ``recursive = True``Met het argument kunt u een geneste structuur van onderliggende items en grandchildren opvragen.
+Gebruik de-methode om een query uit te voeren op de onderliggende uitvoeringen van een specifiek bovenliggend element [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=trueget-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . ``recursive = True``Met het argument kunt u een geneste structuur van onderliggende items en grandchildren opvragen.
 
 ```python
 print(parent_run.get_children())
@@ -325,7 +325,7 @@ In Azure Machine Learning kunt u eigenschappen en tags gebruiken om uw uitvoerin
 
 #### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Als u Doorzoek bare meta gegevens aan uw uitvoeringen wilt toevoegen, gebruikt u de- [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) methode. Met de volgende code wordt de eigenschap bijvoorbeeld toegevoegd `"author"` aan de uitvoeren:
+Als u Doorzoek bare meta gegevens aan uw uitvoeringen wilt toevoegen, gebruikt u de- [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=trueadd-properties-properties-) methode. Met de volgende code wordt de eigenschap bijvoorbeeld toegevoegd `"author"` aan de uitvoeren:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
@@ -341,7 +341,7 @@ except Exception as e:
     print(e)
 ```
 
-In tegens telling tot eigenschappen zijn Tags onveranderbaar. Gebruik de-methode om Doorzoek bare en nuttige informatie voor gebruikers van uw experiment toe te voegen [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) .
+In tegens telling tot eigenschappen zijn Tags onveranderbaar. Gebruik de-methode om Doorzoek bare en nuttige informatie voor gebruikers van uw experiment toe te voegen [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truetag-key--value-none-) .
 
 ```Python
 local_script_run.tag("quality", "great run")

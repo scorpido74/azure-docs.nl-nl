@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086837"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439007"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Wizard Azure Data Factory kopiëren
 > [!NOTE]
@@ -49,7 +49,7 @@ U kunt een voor beeld van een deel van de gegevens uit de geselecteerde gegevens
 Het schema van invoer gegevens komt mogelijk niet overeen met het schema van de uitvoer gegevens in sommige gevallen. In dit scenario moet u kolommen uit het bron schema toewijzen aan kolommen uit het doel schema.
 
 > [!TIP]
-> Wanneer u gegevens van SQL Server of Azure SQL Database naar Azure SQL Data Warehouse kopieert en de tabel niet bestaat in het doel archief, Data Factory ondersteuning voor het automatisch maken van tabellen met het schema van de bron. Meer informatie over [het verplaatsen van gegevens van en naar Azure SQL data warehouse met behulp van Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+> Bij het kopiëren van gegevens uit SQL Server of Azure SQL Database naar Azure Synapse Analytics (voorheen SQL Data Warehouse), als de tabel niet bestaat in het doel archief, Data Factory ondersteuning voor het automatisch maken van tabellen met het schema van de bron. Meer informatie over [het verplaatsen van gegevens van en naar Azure Synapse Analytics met behulp van Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 >
 
 Gebruik een vervolg keuzelijst om een kolom uit het bron schema te selecteren die u wilt toewijzen aan een kolom in het doel schema. De wizard kopiëren probeert het patroon voor de kolom toewijzing te begrijpen. Hiermee wordt hetzelfde patroon op de rest van de kolommen toegepast, zodat u niet elke kolom afzonderlijk hoeft te selecteren om de schema toewijzing te volt ooien. Als u wilt, kunt u deze toewijzingen negeren door de kolommen één voor één toe te wijzen met behulp van de vervolg keuzelijsten. Het patroon wordt nauw keuriger naarmate u meer kolommen toewijst. Met de wizard kopiëren wordt het patroon continu bijgewerkt en uiteindelijk het juiste patroon bereikt voor de kolom toewijzing die u wilt bereiken.     

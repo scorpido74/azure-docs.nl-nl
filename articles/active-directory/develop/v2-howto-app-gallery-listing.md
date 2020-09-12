@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891858"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439741"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uw app publiceren in de app-galerie van Azure AD
 
@@ -33,7 +33,7 @@ Enkele voor delen van het toevoegen van uw app aan de Azure AD-galerie zijn:
 
 Daarnaast zijn er veel voor delen wanneer uw klanten Azure AD als id-provider voor uw app gebruiken. Dit zijn onder andere:
 
-- Bieden van eenmalige aanmelding voor uw gebruikers. Met eenmalige aanmelding vermindert u de ondersteunings kosten door het voor uw klanten gemakkelijker te maken om eenmalige aanmelding te bieden. Als eenmalige aanmelding is ingeschakeld, hebben de IT-beheerders van uw klanten geen informatie over het configureren van uw toepassing voor gebruik in hun organisatie. Zie [Wat is eenmalige aanmelding?](../manage-apps/what-is-single-sign-on.md)voor meer informatie over eenmalige aanmelding.
+- Bieden van eenmalige aanmelding voor uw gebruikers. Met eenmalige aanmelding vermindert u de ondersteunings kosten door het voor uw klanten gemakkelijker te maken om eenmalige aanmelding te bieden. Als eenmalige aanmelding is ingeschakeld, hebben de IT-beheerders van uw klanten geen informatie over het configureren van uw toepassing voor gebruik in hun organisatie. Zie [Wat is eenmalige aanmelding?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over eenmalige aanmelding.
 - Uw app kan worden gedetecteerd in de galerie met Microsoft 365 apps, het start programma voor Microsoft 365 apps en in micro soft Search op Office.com. 
 - Geïntegreerd app-beheer. Zie [Wat is toepassings beheer?](../manage-apps/what-is-application-management.md)voor meer informatie over app-beheer in azure AD.
 - Uw app kan de [Graph API](https://docs.microsoft.com/graph/) gebruiken om toegang te krijgen tot de gegevens die de gebruikers productiviteit in het micro soft-ecosysteem bewaart.
@@ -278,5 +278,5 @@ De Microsoft Partner Network biedt directe toegang tot exclusieve resources, Pro
 
 
 ## <a name="next-steps"></a>Volgende stappen
-
-Zie [verificatie scenario's voor Azure AD](authentication-flows-app-scenarios.md)voor meer informatie over het bouwen van toepassingen die ondersteuning bieden voor Azure AD-aanmeldingen.
+* [Een SCIM-eind punt bouwen en gebruikers inrichten configureren](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Verificatie scenario's voor Azure AD](authentication-flows-app-scenarios.md)

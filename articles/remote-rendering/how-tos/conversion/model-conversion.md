@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808613"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506658"
 ---
 # <a name="convert-models"></a>Modellen converteren
 
@@ -21,9 +21,9 @@ Na de conversie kan een model worden geladen vanuit een Azure Storage-account.
 
 De conversie service ondersteunt de volgende indelingen:
 
-- **FBX** (versie 2011 en hoger)
+- **FBX**  (versie 2011 en hoger)
 - **GLTF** (versie 2. x)
-- **GLB** (versie 2. x)
+- **GLB**  (versie 2. x)
 
 Er zijn kleine verschillen tussen de indelingen met betrekking tot de conversie van materiaal eigenschappen, zoals vermeld in hoofdstuk [toewijzing van modellen voor model indelingen](../../reference/material-mapping.md).
 
@@ -58,4 +58,5 @@ Zie [dit hoofd stuk](configure-model-conversion.md)voor de verschillende convers
 - [Azure Blob Storage gebruiken voor modelconversie](blob-storage.md)
 - [De model conversie REST API](conversion-rest-api.md)
 - [De model conversie configureren](configure-model-conversion.md)
+- [Bestanden indelen voor conversie](layout-files-for-conversion.md)
 - [Materiaaltoewijzing voor modelindelingen](../../reference/material-mapping.md)

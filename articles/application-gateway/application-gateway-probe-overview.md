@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: b613e89fbe29074160d83a96d2cd13505244994a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f0e5a153efe26640e54f386600f07c7b3d4711d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186708"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649056"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
@@ -98,7 +98,7 @@ U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de
 
 Daarnaast kan uitgaande internet connectiviteit niet worden geblokkeerd en moet binnenkomend verkeer dat afkomstig is van het label **AzureLoadBalancer** , worden toegestaan.
 
-Zie [Overzicht van Application Gateway-configuratie](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet) voor meer informatie.
+Zie [Overzicht van Application Gateway-configuratie](configuration-infrastructure.md#network-security-groups) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nadat u hebt gebruikgemaakt van Application Gateway status controle, kunt u een [aangepaste Health probe](application-gateway-create-probe-portal.md) in de Azure portal of een [aangepaste status test](application-gateway-create-probe-ps.md) configureren met behulp van power shell en het Azure Resource Manager-implementatie model.

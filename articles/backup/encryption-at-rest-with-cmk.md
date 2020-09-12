@@ -3,12 +3,12 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022408"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378284"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
@@ -66,7 +66,7 @@ Azure Backup maakt gebruik van door het systeem toegewezen beheerde identiteit o
 
     ![Identiteits instellingen](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. Wijzig de **status** in **on** en klik op **Opslaan**.
+1. Wijzig de **status** in **op aan** en selecteer **Opslaan**.
 
 1. Er wordt een object-ID gegenereerd. Dit is de door het systeem toegewezen beheerde identiteit van de kluis.
 
@@ -82,13 +82,13 @@ U moet nu toestaan dat de Recovery Services kluis toegang heeft tot de Azure Key
 
     ![Sleutel machtigingen toewijzen](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. Ga naar **Select Principal** en zoek in het zoekvak naar uw kluis met behulp van de naam of beheerde identiteit. Zodra deze wordt weer gegeven, selecteert u de kluis en klikt u onder aan het deel venster op **selecteren** .
+1. Ga naar **Select Principal** en zoek in het zoekvak naar uw kluis met behulp van de naam of beheerde identiteit. Zodra deze wordt weer gegeven, selecteert u de kluis en kiest **u selecteren** onder aan het deel venster.
 
     ![Principal selecteren](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. Als u klaar bent, klikt u op **toevoegen** om het nieuwe toegangs beleid toe te voegen.
+1. Wanneer u klaar bent, selecteert u **toevoegen** om het nieuwe toegangs beleid toe te voegen.
 
-1. Klik op **Opslaan** om de wijzigingen in het toegangs beleid van de Azure Key Vault op te slaan.
+1. Selecteer **Opslaan** om de wijzigingen op te slaan in het toegangs beleid van de Azure Key Vault.
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Zacht verwijderen inschakelen en beveiliging opschonen op de Azure Key Vault
 
@@ -148,7 +148,7 @@ De sleutel toewijzen:
 
     ![Versleutelingsinstellingen](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. Klik op **Update** onder **versleutelings instellingen**.
+1. Selecteer **Update** onder **versleutelings instellingen**.
 
 1. Selecteer in het deel venster versleutelings instellingen de optie **uw eigen sleutel gebruiken** en ga door met het opgeven van de sleutel op een van de volgende manieren. **Zorg ervoor dat de sleutel die u wilt gebruiken een RSA 2048-sleutel is die de status ingeschakeld heeft.**
 
@@ -160,7 +160,7 @@ De sleutel toewijzen:
 
         ![Selecteer een sleutel in de sleutel kluis](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Klik op **Opslaan**.
+1. Selecteer **Opslaan**.
 
 1. **Voortgang van de update van de versleutelings sleutel bijhouden:** U kunt de voortgang van de sleutel toewijzing volgen met behulp van het **activiteiten logboek** in de Recovery Services kluis. De status moet binnenkort worden gewijzigd in **geslaagd**. In uw kluis worden nu alle gegevens met de opgegeven sleutel als KEK versleuteld.
 

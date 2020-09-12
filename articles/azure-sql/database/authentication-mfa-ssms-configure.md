@@ -1,5 +1,5 @@
 ---
-title: Multi-Factor Authentication instellen
+title: Multi-factor Authentication configureren
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Meer informatie over het gebruik van multi-factor Authentication met SSMS voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics.
 services: sql-database
@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018280"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442646"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Dit artikel laat u zien hoe u Azure Active Directory (Azure AD) multi-factor Authentication (MFA) kunt gebruiken met SQL Server Management Studio (SSMS). Azure AD MFA kan worden gebruikt bij het verbinden van SSMS of SqlPackage.exe op [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md) en [azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie voor een overzicht van multi-factor Authentication [universele verificatie met SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).
+Dit artikel laat u zien hoe u Azure Active Directory (Azure AD) multi-factor Authentication (MFA) kunt gebruiken met SQL Server Management Studio (SSMS). Azure AD MFA kan worden gebruikt bij het verbinden van SSMS of SqlPackage.exe op [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md) en [azure Synapse Analytics (voorheen SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie voor een overzicht van multi-factor Authentication [universele verificatie met SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> Data bases in Azure SQL Database, Azure SQL Managed instance en Azure Synapse (voorheen Azure SQL Data Warehouse) worden gezamenlijk genoemd in de rest van dit artikel als data bases en de server verwijst naar de [Server](logical-servers.md) die als host fungeert voor de data bases voor Azure SQL database en Azure Synapse.
+> Data bases in Azure SQL Database, Azure SQL Managed instance en Azure Synapse (voorheen SQL Data Warehouse) worden gezamenlijk genoemd in de rest van dit artikel als data bases en de server verwijst naar de [Server](logical-servers.md) die als host fungeert voor de data bases voor Azure SQL database en Azure Synapse.
 
 ## <a name="configuration-steps"></a>Configuratiestappen
 
@@ -52,7 +52,7 @@ De volgende stappen laten zien hoe u verbinding maakt met behulp van de nieuwste
 
    ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. Selecteer **Opties** en geef de Data Base op in het dialoog venster **Opties** . (Als de verbonden gebruiker een gast gebruiker is (dat wil zeggen joe@outlook.com ), moet u het selectie vakje inschakelt en de huidige AD-domein naam of Tenant-id toevoegen als onderdeel van de opties. Zie [universele verificatie met SQL database en SQL Data Warehouse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md). Klik vervolgens op **Verbinden**.  
+4. Selecteer **Opties** en geef de Data Base op in het dialoog venster **Opties** . (Als de verbonden gebruiker een gast gebruiker is (dat wil zeggen joe@outlook.com ), moet u het selectie vakje inschakelt en de huidige AD-domein naam of Tenant-id toevoegen als onderdeel van de opties. Zie [universele verificatie met SQL database en Azure Synapse Analytics (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md). Klik vervolgens op **Verbinden**.  
 5. Wanneer het dialoog venster **Aanmelden bij uw account** wordt weer gegeven, geeft u het account en het wacht woord op van uw Azure Active Directory identiteit. Er is geen wacht woord vereist als een gebruiker deel uitmaakt van een domein dat is federatief met Azure AD.
 
    ![2mfa-aanmelden](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

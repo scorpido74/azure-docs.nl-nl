@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 85e95dc4138fd638c8db9f5c98a7064153c7ef17
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181643"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461830"
 ---
 # <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Een Azure Stack Edge GPU-apparaat beheren via Windows Power shell
 
@@ -22,7 +22,7 @@ Met Azure Stack EDGE-oplossing kunt u gegevens verwerken en via het netwerk verz
 In dit artikel wordt uitgelegd hoe u verbinding kunt maken met de Power shell-interface van het apparaat en de taken die u met deze interface kunt uitvoeren. 
 
 
-## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de Power shell-interface
+## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de PowerShell-interface
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -30,24 +30,24 @@ In dit artikel wordt uitgelegd hoe u verbinding kunt maken met de Power shell-in
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>Certificaat uploaden
+<!--## Upload certificate
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-U kunt ook IoT Edge certificaten uploaden om een beveiligde verbinding in te scha kelen tussen uw IoT Edge apparaat en de downstream-apparaten waarmee verbinding kan worden gemaakt. Er zijn drie IoT Edge certificaten (*PEM* -indeling) die u moet installeren:
+You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
 
-- Basis-CA-certificaat of de eigenaar-CA
-- CA-certificaat van apparaat
-- Certificaat van de apparaats sleutel
+- Root CA certificate or the owner CA
+- Device CA certificate
+- Device key certificate
 
-In het volgende voor beeld ziet u het gebruik van deze cmdlet om IoT Edge certificaten te installeren:
+The following example shows the usage of this cmdlet to install IoT Edge certificates:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Wanneer u deze cmdlet uitvoert, wordt u gevraagd het wacht woord voor de netwerk share op te geven.
+When you run this cmdlet, you will be prompted to provide the password for the network share.
 
-Ga voor meer informatie over certificaten naar [Azure IOT Edge certificaten](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) of [Installeer certificaten op een gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
+For more information on certificates, go to [Azure IoT Edge certificates](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) or [Install certificates on a gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).-->
 
 ## <a name="view-device-information"></a>Apparaatgegevens weer geven
  
@@ -121,18 +121,45 @@ Als de compute-functie op uw apparaat is geconfigureerd, kunt u de reken logboek
     - `FullLogCollection`: Met deze para meter zorgt u ervoor dat in het logboek pakket alle reken logboeken worden opgenomen. Het logboek pakket bevat standaard slechts een subset van de logboeken.
 
 
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes pod en service-subnetten wijzigen
+
+Kubernetes op uw Azure Stack edge-apparaat gebruikt standaard subnetten 172.27.0.0/16 en 172.28.0.0/16 voor respectievelijk pod en service. Als deze subnetten al worden gebruikt in uw netwerk, kunt u de `Set-HcsKubeClusterNetworkInfo` cmdlet uitvoeren om deze subnetten te wijzigen.
+
+U wilt deze configuratie uitvoeren voordat u Compute configureert vanaf de Azure Portal, terwijl het Kubernetes-cluster in deze stap wordt gemaakt.
+
+1. Maak verbinding met de Power shell-interface van het apparaat.
+1. Voer de volgende handelingen uit vanuit de Power shell-interface van het apparaat:
+
+    `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
+
+    Vervang de <subnet details> door het subnet-bereik dat u wilt gebruiken. 
+
+1. Wanneer u deze opdracht hebt uitgevoerd, kunt u de `Get-HcsKubeClusterNetworkInfo` opdracht gebruiken om te controleren of de Pod en de service-subnetten zijn gewijzigd.
+
+Hier volgt een voor beeld van de uitvoer van deze opdracht.
+
+```powershell
+[10.100.10.10]: PS>Set-HcsKubeClusterNetworkInfo -PodSubnet 10.96.0.1/16 -ServiceSubnet 10.97.0.1/16
+[10.100.10.10]: PS>Get-HcsKubeClusterNetworkInfo
+
+Id                                   PodSubnet    ServiceSubnet
+--                                   ---------    -------------
+6dbf23c3-f146-4d57-bdfc-76cad714cfd1 10.96.0.1/16 10.97.0.1/16
+[10.100.10.10]: PS>
+```
+
 
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>Fout opsporing voor Kubernetes-problemen met betrekking tot IoT Edge
 
-Wanneer het Kubernetes-cluster wordt gemaakt, wordt er ook een standaard gebruiker `aseuser` gemaakt die aan een systeem naam ruimte is gekoppeld `iotedge` . U kunt deze gebruikers-en systeem naam ruimte gebruiken om problemen met de IoT Edge op te sporen.  
+<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
 
-### <a name="create-config-file-for-system-namespace"></a>Het configuratie bestand voor de systeem naam ruimte maken
+<!--### Create config file for system namespace
 
-Om problemen op te lossen, moet u eerst het `config` bestand maken dat overeenkomt `iotedge` met de naam ruimte met `aseuser` .
+To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
 
-Voer de `Get-HcsKubernetesUserConfig -AseUser` opdracht uit en sla de uitvoer op als `config` bestand (geen bestands extensie). Sla het bestand op in de `.kube` map van uw gebruikers profiel op de lokale computer.
+Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
 
-Hier volgt een voor beeld van de uitvoer van de `Get-HcsKubernetesUserConfig` opdracht.
+Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
 
 ```PowerShell
 [10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
@@ -158,11 +185,67 @@ users:
 
 [10.100.10.10]: PS>
 ```
+-->
+
+Op een Azure Stack edge-apparaat waarop de compute-rol is geconfigureerd, kunt u problemen oplossen of het apparaat bewaken met behulp van twee verschillende sets opdrachten.
+
+- `iotedge`Opdrachten gebruiken. Deze opdrachten zijn beschikbaar voor basis bewerkingen voor uw apparaat.
+- `kubectl`Opdrachten gebruiken. Deze opdrachten zijn beschikbaar voor een uitgebreide set bewerkingen voor uw apparaat.
+
+Als u een van de bovenstaande opdrachten wilt uitvoeren, moet u [verbinding maken met de Power shell-interface](#connect-to-the-powershell-interface).
+
+### <a name="use-iotedge-commands"></a>`iotedge`Opdrachten gebruiken
+
+[Maak verbinding met de Power shell-interface](#connect-to-the-powershell-interface) en gebruik de functie om een lijst met beschik bare opdrachten weer te geven `iotedge` .
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                           
+Usage: iotedge COMMAND
+
+Commands:
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+De volgende tabel bevat een korte beschrijving van de opdrachten die beschikbaar zijn voor `iotedge` :
+
+|command  |Beschrijving |
+|---------|---------|
+|`list`     | Modules in lijst weergeven         |
+|`logs`     | De logboeken van een module ophalen        |
+|`restart`     | Een module stoppen en opnieuw starten         |
+
+
+Gebruik de opdracht om een lijst weer te geven met alle modules die op het apparaat worden uitgevoerd `iotedge list` .
+
+Hier volgt een voor beeld van de uitvoer van deze opdracht. Met deze opdracht worden alle modules, de bijbehorende configuratie en de externe IP-adressen weer gegeven die aan de modules zijn gekoppeld. U kunt bijvoorbeeld toegang krijgen tot de **webserver** -app op `https://10.128.44.244` . 
+
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME                   STATUS  DESCRIPTION CONFIG                                             EXTERNAL-IP
+----                   ------  ----------- ------                                             -----
+gettingstartedwithgpus Running Up 10 days  mcr.microsoft.com/intelligentedge/solutions:latest
+iotedged               Running Up 10 days  azureiotedge/azureiotedge-iotedged:0.1.0-beta10    <none>
+edgehub                Running Up 10 days  mcr.microsoft.com/azureiotedge-hub:1.0             10.128.44.243
+edgeagent              Running Up 10 days  azureiotedge/azureiotedge-agent:0.1.0-beta10
+webserverapp           Running Up 10 days  nginx:stable                                       10.128.44.244
+
+[10.100.10.10]: PS>
+```
+
+
+### <a name="use-kubectl-commands"></a>Kubectl-opdrachten gebruiken
 
 Op een Azure Stack edge-apparaat waarop de compute-rol is geconfigureerd, `kubectl` zijn alle opdrachten beschikbaar voor het controleren of oplossen van problemen met modules. Voer `kubectl --help` uit vanuit het opdracht venster om een lijst met beschik bare opdrachten weer te geven.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
+
 kubectl controls the Kubernetes cluster manager.
 
 Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
@@ -187,7 +270,7 @@ C:\Users\myuser>
 Voor een uitgebreide lijst met `kubectl` opdrachten gaat u naar [ `kubectl` materiaal](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
 
-### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Het IP-adres van de service of module die buiten het Kubernetes-cluster wordt weer gegeven, ophalen
+#### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Het IP-adres van de service of module die buiten het Kubernetes-cluster wordt weer gegeven, ophalen
 
 Voer de volgende opdracht uit om het IP-adres van een taakverdelings service of modules te verkrijgen die buiten de Kubernetes worden weer gegeven:
 
@@ -197,39 +280,53 @@ Hieronder ziet u een voor beeld van de uitvoer van alle services of modules die 
 
 
 ```powershell
-C:\Users\user>kubectl get svc -n iotedge
+[10.100.10.10]: PS>kubectl get svc -n iotedge
 NAME           TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                                       AGE
 edgehub        LoadBalancer   10.103.52.225   10.128.44.243   443:31987/TCP,5671:32336/TCP,8883:30618/TCP   34h
 iotedged       ClusterIP      10.107.236.20   <none>          35000/TCP,35001/TCP                           3d8h
 webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP                                16h
 
-C:\Users\user>
+[10.100.10.10]: PS>
 ```
 Het IP-adres in de externe IP-kolom komt overeen met het externe eind punt voor de service of de module. U kunt ook [het externe IP-adres in het Kubernetes-dash board ophalen](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules).
 
 
-### <a name="to-check-if-module-deployed-successfully"></a>Controleren of de module is geïmplementeerd
+#### <a name="to-check-if-module-deployed-successfully"></a>Controleren of de module is geïmplementeerd
 
-Compute-modules zijn containers waarvoor een bedrijfs logica is geïmplementeerd. Er kunnen meerdere containers worden uitgevoerd op een Kubernetes-pod. Als u wilt controleren of een compute-module is geïmplementeerd, voert u de `get pods` opdracht uit en controleert u of de container (overeenkomend met de module Compute) wordt uitgevoerd.
+Compute-modules zijn containers waarvoor een bedrijfs logica is geïmplementeerd. Er kunnen meerdere containers worden uitgevoerd op een Kubernetes-pod. 
+
+Als u wilt controleren of een compute-module is geïmplementeerd, maakt u verbinding met de Power shell-interface van het apparaat.
+Voer de `get pods` opdracht uit en controleer of de container (die overeenkomt met de module Compute) wordt uitgevoerd.
 
 Voer de volgende opdracht uit om de lijst met alle bereiken in een specifieke naam ruimte weer te geven:
 
 `get pods -n <namespace>`
 
+Voer de volgende opdracht uit om de modules te controleren die via IoT Edge zijn geïmplementeerd:
+
+`get pods -n iotedge`
+
 Hieronder ziet u een voor beeld van een uitvoer van alle peulen die in de `iotedge` naam ruimte worden uitgevoerd.
 
 ```
-C:\Users\myuser>kubectl get pods -n iotedge
+[10.100.10.10]: PS>kubectl get pods -n iotedge
 NAME                        READY   STATUS    RESTARTS   AGE
 edgeagent-cf6d4ffd4-q5l2k   2/2     Running   0          20h
 edgehub-8c9dc8788-2mvwv     2/2     Running   0          56m
 filemove-66c49984b7-h8lxc   2/2     Running   0          56m
 iotedged-675d7f4b5f-9nml4   1/1     Running   0          20h
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
 De status **status geeft aan dat** alle peulen in de naam ruimte worden uitgevoerd en de kant-en- **klare** is het aantal containers dat is geïmplementeerd in een pod. In het voor gaande voor beeld wordt alle peulen uitgevoerd en zijn alle modules die in elk van de peulen zijn geïmplementeerd, actief. 
+
+Als u de modules wilt controleren die zijn geïmplementeerd via Azure Arc, voert u de volgende opdracht uit:
+
+`get pods -n azure-arc`
+
+U kunt ook [verbinding maken met het Kubernetes-dash board om IOT Edge of Azure Arc-implementaties te bekijken](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#view-module-status).
+
 
 Voor een uitgebreidere uitvoer van een specifieke pod voor een bepaalde naam ruimte kunt u de volgende opdracht uitvoeren:
 
@@ -238,7 +335,7 @@ Voor een uitgebreidere uitvoer van een specifieke pod voor een bepaalde naam rui
 De voorbeeld uitvoer wordt hier weer gegeven.
 
 ```
-C:\Users\myuser>kubectl describe pod filemove-66c49984b7 -n iotedge
+[10.100.10.10]: PS>kubectl describe pod filemove-66c49984b7 -n iotedge
 Name:           filemove-66c49984b7-h8lxc
 Namespace:      iotedge
 Priority:       0
@@ -295,12 +392,12 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:          <none>
 
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
-### <a name="to-get-container-logs"></a>Container logboeken ophalen
+#### <a name="to-get-container-logs"></a>Container logboeken ophalen
 
-Als u de logboeken voor een module wilt ophalen, voert u de volgende opdracht uit:
+Als u de logboeken voor een module wilt ophalen, voert u de volgende opdracht uit vanuit de Power shell-interface van het apparaat:
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
@@ -309,7 +406,7 @@ Omdat met `all-containers` de vlag alle logboeken voor alle containers worden ge
 Hier volgt een voor beeld van een uitvoer. 
 
 ```
-C:\Users\myuser>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
+[10.100.10.10]: PS>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
 DEBUG 2020-05-14T20:40:42Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
@@ -325,8 +422,10 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 05/14/2020 19:46:45: Info: Initializing with input: /home/input, output: /home/output, protocol: Amqp.
 05/14/2020 19:46:45: Info: IoT Hub module client initialized.
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
+
+
 
 ## <a name="exit-the-remote-session"></a>De externe sessie afsluiten
 
@@ -334,4 +433,4 @@ Als u de externe Power shell-sessie wilt afsluiten, sluit u het Power shell-vens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure stack Edge](azure-stack-edge-gpu-deploy-prep.md) implementeren in azure Portal.
+- [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) in de Azure-portal implementeren.

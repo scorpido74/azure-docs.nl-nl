@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d5210a3788f7bb054492c2d83c595c26fa3c4f42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265708"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461711"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Implementeer Vm's op uw Azure Stack Edge GPU-apparaat via Azure PowerShell
 
@@ -21,11 +21,11 @@ ms.locfileid: "89265708"
 
 In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack edge-apparaat maakt en beheert met behulp van Azure PowerShell.
 
-## <a name="vm-deployment-workflow"></a>Werk stroom VM-implementatie
+## <a name="vm-deployment-workflow"></a>VM-implementatiewerkstroom
 
-De implementatie werk stroom wordt geïllustreerd in het volgende diagram.
+De implementatiewerkstroom wordt afgebeeld in het volgende diagram.
 
-![Werk stroom VM-implementatie](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![VM-implementatiewerkstroom](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -71,7 +71,7 @@ Dit abonnement wordt gebruikt om de virtuele machines te implementeren.
     > [!NOTE]
     > De resource providers zijn vooraf geregistreerd en kunnen niet worden gewijzigd of gewijzigd.
     
-    Hieronder ziet u een voor beeld van uitvoer:
+    Hieronder ziet u een voorbeeld van de uitvoer:
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -178,7 +178,7 @@ key1 /IjVJN+sSf7FMKiiPLlDm8mc9P4wtcmhhbnCa7...
 key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 ```
 
-## <a name="add-blob-uri-to-hosts-file"></a>BLOB-URI toevoegen aan het hosts-bestand
+## <a name="add-blob-uri-to-hosts-file"></a>Blob-URI toevoegen aan het hosts-bestand
 
 U hebt de BLOB-URI in het hosts-bestand al toegevoegd voor de client die u gebruikt om verbinding te maken met de Blob-opslag in de sectie [hostbestand wijzigen voor naam omzetting van het eind punt](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Dit was de vermelding voor de BLOB-URI:
 
@@ -219,9 +219,9 @@ Een beheerde schijf maken op basis van de geüploade VHD.
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-Hieronder ziet u een voor beeld van uitvoer: 
-
-$DiskConfig = New-AzureRmDiskConfig-location DBELocal-CreateOption import-SourceUri http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd 
+Hieronder ziet u een voorbeeld van de uitvoer: 
+<code>
+$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
 ```powershell
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
@@ -251,7 +251,7 @@ Location           : DBELocal
 Tags               : {}
 ```
 
-## <a name="create-a-vm-image-from-the-image-managed-disk"></a>Een VM-installatie kopie maken op basis van de image Managed Disk
+## <a name="create-a-vm-image-from-the-image-managed-disk"></a>Een VM-installatiekopie maken op basis van de installatiekopie van de beheerde schijf
 
 Gebruik de volgende opdracht om een VM-installatie kopie te maken op basis van de beheerde schijf. Vervang de waarden binnen \< \> door de namen die u kiest.
 
@@ -283,7 +283,7 @@ Location             : dbelocal
 Tags                 : {}
 ```
 
-## <a name="create-vm-with-previously-created-resources"></a>Een virtuele machine maken met eerder gemaakte resources
+## <a name="create-vm-with-previously-created-resources"></a>Een VM maken met eerder gemaakte resources
 
 U moet één virtueel netwerk maken en een virtuele netwerk interface koppelen voordat u de virtuele machine maakt en implementeert.
 
@@ -408,24 +408,39 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 
 ## <a name="connect-to-a-vm"></a>Verbinding maken met een VM
 
-Maak verbinding met de virtuele machine met het privé-IP-adres dat u hebt door gegeven tijdens het maken van de virtuele machine.
+Afhankelijk van of u een Windows-of een Linux-VM hebt gemaakt, kunnen de stappen om verbinding te maken verschillend zijn.
 
-Open een SSH-sessie om verbinding te maken met het IP-adres.
+### <a name="connect-to-linux-vm"></a>Verbinding maken met een virtuele Linux-machine
+
+Volg deze stappen om verbinding te maken met een virtuele Linux-machine.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+### <a name="connect-to-windows-vm"></a>Verbinding maken met Windows VM
+
+Volg deze stappen om verbinding te maken met een virtuele Windows-machine.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+
+<!--Connect to the VM using the private IP that you passed during the VM creation.
+
+Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-Wanneer u hierom wordt gevraagd, geeft u het wacht woord op dat u hebt gebruikt bij het maken van de virtuele machine.
+When prompted, provide the password that you used when creating the VM.
 
-Als u de SSH-sleutel moet opgeven, gebruikt u deze opdracht.
+If you need to provide the SSH key, use this command.
 
-SSH-i c:/gebruikers/beheerder/. ssh/id_rsa Administrator@5.5.41.236
+ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
-Als u een openbaar IP-adres hebt gebruikt tijdens het maken van de virtuele machine, kunt u dat IP gebruiken om verbinding te maken met de virtuele machine. Om het open bare IP-adres op te halen: 
+If you used a public IP address during VM creation, you can use that IP to connect to the VM. To get the public IP: 
 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Het open bare IP-adres is in dit geval hetzelfde als het privé-IP-adres dat u tijdens het maken van de virtuele netwerk interface hebt door gegeven.
+The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
 
 
 ## <a name="manage-vm"></a>Virtuele machine beheren

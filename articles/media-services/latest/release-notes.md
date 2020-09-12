@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267496"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425633"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -38,13 +38,25 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 >
 > Zie voor meer informatie: [de Azure Portal beperkingen voor Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+
+## <a name="august-2020"></a>Augustus 2020
+
+### <a name="dynamic-encryption"></a>Dynamische versleuteling
+Ondersteuning voor de verouderde (PIFF 1,1) versleuteling van de oudere PlayReady-bestands indeling is nu beschikbaar in de dynamische Pakketset. Dit biedt ondersteuning voor verouderde slimme TV-sets van Samsung en LG waarmee de vroege concepten van de Common Encryption Standard (CENC) die door micro soft zijn gepubliceerd, zijn geïmplementeerd.  De PIFF 1,1-indeling wordt ook wel bekend als de versleutelings indeling die eerder werd ondersteund door de Silverlight-client bibliotheek. Het enige use-case scenario voor deze versleutelings indeling is het doel van de verouderde Smart TV-markt als er een niet-trivial aantal Smart TV-apparaten in sommige regio's aanwezig zijn die alleen Smooth Streaming ondersteunen met PIFF 1,1-versleuteling. 
+
+Als u de nieuwe ondersteuning voor PIFF 1,1-versleuteling wilt gebruiken, wijzigt u de versleutelings waarde in ' piff ' in het URL-pad van de streaming-Locator. Zie [Content Protection-overzicht](content-protection-overview.md) voor meer informatie.
+Bijvoorbeeld: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> Ondersteuning voor PIFF 1,1 wordt geboden als een achterwaarts compatibele oplossing voor slimme TV (Samsung, LG) waarmee de vroege versie van Silverlight van Common Encryption is geïmplementeerd. U wordt aangeraden alleen de PIFF-indeling te gebruiken wanneer dit nodig is voor de ondersteuning van oudere Samsung-en LG Smart Tv's die worden verzonden tussen 2009-2015 en die de PIFF 1,1-versie van PlayReady-versleuteling ondersteunen. 
+
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="live-transcriptions"></a>Live-transcripties
 
 Live transcripties ondersteunt nu 19 talen en 8 regio's.
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Uw inhoud beveiligen met Media Services en Azure AD
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Uw inhoud beveiligen met Media Services en Azure AD
 
 We hebben een zelf studie gepubliceerd met de naam [end-to-end inhouds beveiliging met behulp van Azure AD](./azure-ad-content-protection.md).
 

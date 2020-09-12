@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889716"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378386"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
 
@@ -39,14 +39,14 @@ Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-d
 Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de Exchange-Server:
 
 1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents >** in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
+2. Installeer de agent op de Exchange-Server door **beheer > agents** te selecteren > in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
 
-1. Klik in de DPM Administrator-console op **beveiliging**en klik vervolgens op **Nieuw** op het lint met hulp middelen om de wizard **nieuwe beveiligings groep maken** te openen.
-2. Klik in het **welkomst** scherm van de wizard op **volgende**.
-3. Selecteer op het scherm **type beveiligings groep selecteren** de optie **servers** en klik op **volgende**.
-4. Selecteer de Exchange Server-Data Base die u wilt beveiligen en klik op **volgende**.
+1. Selecteer in het DPM Administrator-console de optie **beveiliging**en selecteer vervolgens **Nieuw** op het lint met hulp middelen om de wizard **nieuwe beveiligings groep maken** te openen.
+2. Selecteer **volgende**in het **welkomst** scherm van de wizard.
+3. Selecteer op het scherm **type beveiligings groep selecteren** de optie **servers** en selecteer **volgende**.
+4. Selecteer de Exchange Server-Data Base die u wilt beveiligen en selecteer **volgende**.
 
    > [!NOTE]
    > Als u Exchange 2013 wilt beveiligen, controleert u de [vereisten voor exchange 2013](/system-center/dpm/back-up-exchange).
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
 
    * Ik wil kortetermijnbeveiliging met schijf.
    * Ik wil online beveiliging.
-6. Klik op **Volgende**.
+6. Selecteer **Volgende**.
 7. Selecteer de optie **Eseutil uitvoeren om gegevens integriteit te controleren** als u de integriteit van de Exchange server-data bases wilt controleren.
 
     Nadat u deze optie hebt geselecteerd, wordt er een consistentie controle van de back-up uitgevoerd op de DPM-server om te voor komen dat het I/O-verkeer dat wordt gegenereerd door de opdracht **Eseutil** uit te voeren op de Exchange-Server.
@@ -72,21 +72,21 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
    > ![Eseutil-fout](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Klik op **Volgende**.
-9. Selecteer de Data Base voor **back-up kopiëren**en klik vervolgens op **volgende**.
+8. Selecteer **Volgende**.
+9. Selecteer de Data Base voor **back-up kopiëren**en selecteer vervolgens **volgende**.
 
    > [!NOTE]
    > Als u geen volledige back-up voor ten minste één DAG kopie van een Data Base selecteert, worden de logboeken niet afgekapt.
    >
    >
-10. Configureer de doel stellingen voor **back-up op korte termijn**en klik vervolgens op **volgende**.
-11. Controleer de beschik bare schijf ruimte en klik vervolgens op **volgende**.
-12. Selecteer het tijdstip waarop de DPM-server de initiële replicatie maakt en klik vervolgens op **volgende**.
-13. Selecteer de opties voor consistentie controle en klik vervolgens op **volgende**.
-14. Kies de data base waarvan u een back-up wilt maken naar Azure en klik vervolgens op **volgende**. Bijvoorbeeld:
+10. Configureer de doel stellingen voor **back-up op korte termijn**en selecteer **volgende**.
+11. Controleer de beschik bare schijf ruimte en selecteer **volgende**.
+12. Selecteer het tijdstip waarop de DPM-server de initiële replicatie maakt, en selecteer vervolgens **volgende**.
+13. Selecteer de opties voor consistentie controle en selecteer **volgende**.
+14. Kies de data base waarvan u een back-up wilt maken naar Azure en selecteer **volgende**. Bijvoorbeeld:
 
     ![Gegevens voor online beveiliging opgeven](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definieer het schema voor **Azure backup**en klik vervolgens op **volgende**. Bijvoorbeeld:
+15. Definieer het schema voor **Azure backup**en selecteer vervolgens **volgende**. Bijvoorbeeld:
 
     ![Online back-upschema opgeven](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -94,21 +94,21 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
     > Houd er rekening mee dat online herstel punten zijn gebaseerd op snelle volledige herstel punten. Daarom moet u het online herstel punt plannen na het tijdstip dat is opgegeven voor het snelle volledige herstel punt.
     >
     >
-16. Configureer het Bewaar beleid voor **Azure backup**en klik vervolgens op **volgende**.
-17. Kies een optie voor online replicatie en klik op **volgende**.
+16. Configureer het Bewaar beleid voor **Azure backup**en selecteer vervolgens **volgende**.
+17. Kies een optie voor online replicatie en selecteer **volgende**.
 
     Als u een grote data base hebt, kan het enige tijd duren voordat de eerste back-up via het netwerk is gemaakt. Als u dit probleem wilt voor komen, kunt u een offline back-up maken.  
 
     ![Online Bewaar beleid opgeven](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
-18. Bevestig de instellingen en klik vervolgens op **groep maken**.
-19. Klik op **Sluiten**.
+18. Bevestig de instellingen en selecteer vervolgens **groep maken**.
+19. Selecteer **Close** (Sluiten).
 
 ## <a name="recover-the-exchange-database"></a>De Exchange-data base herstellen
 
-1. Als u een Exchange-Data Base wilt herstellen, klikt u in het DPM Administrator-console op **herstel** .
+1. Als u een Exchange-Data Base wilt herstellen, selecteert u **herstel** in het DPM Administrator-console.
 2. Zoek de Exchange-data base die u wilt herstellen.
 3. Selecteer een online herstel punt in de vervolg keuzelijst *herstel tijd* .
-4. Klik op **herstellen** om de **wizard herstellen**te starten.
+4. Selecteer **herstellen** om de **wizard herstellen**te starten.
 
 Voor online herstel punten zijn er vijf herstel typen:
 

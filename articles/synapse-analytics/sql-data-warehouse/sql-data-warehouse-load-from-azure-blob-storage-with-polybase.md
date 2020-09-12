@@ -1,5 +1,5 @@
 ---
-title: Retail-gegevens van Contoso laden in een Synapse SQL-Data Warehouse
+title: Retail-gegevens van Contoso laden in Synapse SQL
 description: Gebruik poly base-en T-SQL-opdrachten om twee tabellen uit de Retail gegevens van Contoso in Synapse SQL te laden.
 services: synapse-analytics
 author: kevinvngo
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213309"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461694"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>Retail-gegevens van Contoso laden in Synapse SQL 
 
-In deze zelf studie leert u hoe u poly base-en T-SQL-opdrachten gebruikt om twee tabellen uit de Retail gegevens van Contoso te laden in een Synapse SQL-Data Warehouse.
+In deze zelf studie leert u hoe u poly base-en T-SQL-opdrachten gebruikt om twee tabellen uit de Retail gegevens van Contoso te laden in Synapse SQL.
 
 In deze zelfstudie gaat u:
 
@@ -30,11 +30,11 @@ In deze zelfstudie gaat u:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u deze zelf studie wilt uitvoeren, hebt u een Azure-account nodig dat al een Synapse SQL-Data Warehouse heeft. Als u geen data warehouse hebt ingericht, raadpleegt u [een Data Warehouse maken en firewall regel op server niveau instellen](create-data-warehouse-portal.md).
+Als u deze zelf studie wilt uitvoeren, hebt u een Azure-account nodig dat al een Synapse-SQL heeft. Als u geen data warehouse hebt ingericht, raadpleegt u [een Data Warehouse maken en firewall regel op server niveau instellen](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>De gegevens bron configureren
 
-Poly base maakt gebruik van externe T-SQL-objecten om de locatie en kenmerken van de externe gegevens te definiëren. De definities voor externe objecten worden opgeslagen in uw Synapse SQL-Data Warehouse. De gegevens worden extern opgeslagen.
+Poly base maakt gebruik van externe T-SQL-objecten om de locatie en kenmerken van de externe gegevens te definiëren. De definities voor externe objecten worden opgeslagen in Synapse SQL. De gegevens worden extern opgeslagen.
 
 ## <a name="create-a-credential"></a>Een referentie maken
 
@@ -122,7 +122,7 @@ GO
 
 Voer het volgende script uit om de externe tabellen DimProduct en FactOnlineSales te maken. U hoeft hier geen kolom namen en gegevens typen te definiëren en deze te binden aan de locatie en indeling van de Azure Blob-opslag bestanden. De definitie wordt opgeslagen in het Data Warehouse en de gegevens bevinden zich nog in de Azure Storage Blob.
 
-De **locatie** parameter is de map onder de hoofdmap in de Azure Storage blob. Elke tabel bevindt zich in een andere map.
+De  **locatie** parameter is de map onder de hoofdmap in de Azure Storage blob. Elke tabel bevindt zich in een andere map.
 
 ```sql
 --DimProduct
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Column Store-compressie optimaliseren
 
-De tabel wordt standaard opgeslagen in de Synapse SQL data warehouse als een geclusterde column store-index. Nadat het laden is voltooid, zijn sommige gegevens rijen mogelijk niet gecomprimeerd naar de column Store.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [Column Store-indexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie.
+Synapse SQL slaat de tabel standaard op als een geclusterde column store-index. Nadat het laden is voltooid, zijn sommige gegevens rijen mogelijk niet gecomprimeerd naar de column Store.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [Column Store-indexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie.
 
 Als u de query prestaties en column Store-compressie wilt optimaliseren na een laad opdracht, bouwt u de tabel opnieuw op om ervoor te zorgen dat de column store-index alle rijen kan comprimeren.
 
@@ -340,7 +340,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 
 ## <a name="achievement-unlocked"></a>Prestaties vergren delen.
 
-U hebt open bare gegevens in uw data warehouse geladen. Fantastische taak!
+U hebt open bare gegevens in uw data warehouse geladen. Helemaal goed!
 
 U kunt nu een query uitvoeren op de tabellen om uw gegevens te verkennen. Voer de volgende query uit om de totale verkoop per merk te vinden:
 

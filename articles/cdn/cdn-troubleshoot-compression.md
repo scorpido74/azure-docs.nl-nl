@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192527"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433667"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problemen met CDN-bestandscompressie oplossen
 Dit artikel helpt u bij het oplossen van problemen met [CDN-bestands compressie](cdn-improve-performance.md).
@@ -111,8 +111,8 @@ Controleer met behulp van de ontwikkel hulpprogramma's van uw browser de antwoor
 
 Om in aanmerking te komen voor compressie, moet een bestand voldoen aan de volgende grootte vereisten:
 
-* Groter dan 128 bytes.
-* Kleiner dan 1 MB.
+* Groter dan 128 bytes (content-length: 128)
+* Kleiner dan 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>De aanvraag op de oorspronkelijke server controleren voor een **via** -header
 De **via** http-header geeft aan op welke webserver de aanvraag wordt door gegeven door een proxy server.  Micro soft IIS-webservers comprimeren standaard geen reacties wanneer de aanvraag een **via** -header bevat.  Voer de volgende handelingen uit om dit gedrag te negeren:

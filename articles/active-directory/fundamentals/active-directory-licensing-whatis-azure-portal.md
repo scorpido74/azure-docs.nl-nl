@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce0d543f11a1dcc61616d8a386176272ab44aee
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797267"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565052"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?
 
-Voor betaalde Microsoft-cloudservices, zoals Office 365, Enterprise Mobility + Security, Dynamics 365 en andere vergelijkbare producten, zijn licenties vereist. Deze licenties worden toegewezen aan elke gebruiker die toegang tot deze services nodig heeft. Om licenties te beheren gebruiken beheerders een van de beheerportals (Office of Azure) en PowerShell-cmdlets. Azure AD (Azure Active Directory) is de onderliggende infrastructuur die ondersteuning biedt voor identiteitsbeheer in alle Microsoft-cloudservices. In Azure AD wordt informatie opgeslagen over de statussen van licentietoewijzingen voor gebruikers.
+Betaalde micro soft-Cloud Services, zoals Microsoft 365, Enterprise Mobility + Security, Dynamics 365 en andere vergelijk bare producten, vereisen licenties. Deze licenties worden toegewezen aan elke gebruiker die toegang tot deze services nodig heeft. Om licenties te beheren gebruiken beheerders een van de beheerportals (Office of Azure) en PowerShell-cmdlets. Azure AD (Azure Active Directory) is de onderliggende infrastructuur die ondersteuning biedt voor identiteitsbeheer in alle Microsoft-cloudservices. In Azure AD wordt informatie opgeslagen over de statussen van licentietoewijzingen voor gebruikers.
 
 Tot nu toe konden licenties alleen worden toegewezen op het niveau van de individuele gebruiker, wat grootschalig beheer moeilijk maakt. Als u bijvoorbeeld gebruikerslicenties wilt toevoegen of verwijderen op basis van wijzigingen in de organisatie, zoals wanneer gebruikers toetreden tot de organisatie of tot een afdeling of deze verlaten, moet een beheerder vaak een complex PowerShell-script schrijven. Met dit script worden afzonderlijke aanroepen naar de cloudservice gemaakt.
 
@@ -45,9 +45,9 @@ Dit zijn de belangrijkste functies van licenties op basis van groepen:
 
 - Licenties kunnen worden toegewezen aan elke beveiligingsgroep in Azure AD. Beveiligings groepen kunnen worden gesynchroniseerd vanuit on-premises met behulp van Azure AD Connect. U kunt beveiligingsgroepen ook rechtstreeks in Azure AD maken (ook wel groepen met het kenmerk Alleen-cloud genoemd), of automatisch via de functie voor dynamische Azure AD-groepen.
 
-- Wanneer een productlicentie is toegewezen aan een groep, kan de beheerder een of meer serviceplannen in het product uitschakelen. Normaal gesp roken wordt deze toewijzing uitgevoerd wanneer de organisatie nog niet klaar is om te beginnen met het gebruik van een service die is opgenomen in een product. Zo kan de beheerder, bijvoorbeeld, Office 365 toewijzen aan een afdeling, maar de Yammer-service tijdelijk uitschakelen.
+- Wanneer een productlicentie is toegewezen aan een groep, kan de beheerder een of meer serviceplannen in het product uitschakelen. Normaal gesp roken wordt deze toewijzing uitgevoerd wanneer de organisatie nog niet klaar is om te beginnen met het gebruik van een service die is opgenomen in een product. De beheerder kan bijvoorbeeld Microsoft 365 toewijzen aan een afdeling, maar de Yammer-service tijdelijk uitschakelen.
 
-- Alle Microsoft-cloudservices waarvoor licenties op gebruikersniveau zijn vereist, worden ondersteund. Deze ondersteuning omvat alle Office 365-producten, Enterprise Mobility + Security en Dynamics 365.
+- Alle Microsoft-cloudservices waarvoor licenties op gebruikersniveau zijn vereist, worden ondersteund. Deze ondersteuning omvat alle Microsoft 365 producten, Enterprise Mobility + Security en Dynamics 365.
 
 - Op groep gebaseerde licentie verlening is momenteel alleen beschikbaar via de [Azure Portal](https://portal.azure.com). Als u voornamelijk andere beheer portals gebruikt voor gebruikers-en groeps beheer, zoals het [Microsoft 365-beheer centrum](https://admin.microsoft.com), kunt u dit gewoon voortzetten. U moet Azure Portal wel gebruiken om licenties op groepsniveau te beheren.
 

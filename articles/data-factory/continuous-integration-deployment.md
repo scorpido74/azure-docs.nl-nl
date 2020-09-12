@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229545"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461881"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -638,6 +638,8 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en een CI/CD-pij
 -   **Integration Runtimes en delen**. Integration Runtimes veranderen niet vaak en zijn vergelijkbaar in alle fasen van uw CI/CD. Data Factory verwacht dat u dezelfde naam en hetzelfde type Integration runtime in alle fasen van CI/CD hebt. Als u integratie-Runtimes in alle fasen wilt delen, kunt u overwegen een ternaire fabriek alleen te gebruiken om de gedeelde integratie-runtime te bevatten. U kunt deze gedeelde Factory in al uw omgevingen gebruiken als het type gekoppelde integratie runtime.
 
 -   **Key Vault**. Wanneer u gekoppelde services gebruikt waarvan de verbindings gegevens zijn opgeslagen in Azure Key Vault, wordt aanbevolen om afzonderlijke sleutel kluizen voor verschillende omgevingen te houden. U kunt ook afzonderlijke machtigings niveaus configureren voor elke sleutel kluis. Het is bijvoorbeeld mogelijk dat uw team leden geen machtigingen voor productie geheimen mogen hebben. Als u deze aanpak volgt, wordt u aangeraden dezelfde geheime namen in alle fasen te houden. Als u dezelfde geheime namen behoudt, hoeft u niet elk connection string te para metersen in de CI/CD-omgevingen, omdat de naam van de sleutel kluis een afzonderlijke para meter is.
+
+-  **Resource naamgeving** Doen met ARM-sjabloon beperking, kunnen problemen in de implementatie optreden als uw resources spaties in de naam bevatten. Het Azure Data Factory Team raadt aan om ' _ ' of '-' tekens te gebruiken in plaats van ruimten voor resources. Zo zou ' Pipeline_1 ' een voor keurige naam zijn via ' pijp lijn 1 '.
 
 ## <a name="unsupported-features"></a>Niet-ondersteunde functies
 

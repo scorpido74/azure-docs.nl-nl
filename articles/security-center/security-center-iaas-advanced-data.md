@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: de5346387336acb5a4b13457d3a163f529c51b89
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566264"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438684"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-machines (preview-versie)
 
@@ -65,7 +65,7 @@ Beide worden hieronder beschreven.
 
     - Als u **een niet-standaard werk ruimte**gebruikt, selecteert u de relevante **werk ruimte** (Voer indien nodig de naam van de werk ruimte in het filter in):
 
-        ![titel](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
+        ![title](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
 
 1. Schakel de optie voor **SQL-servers op computers (preview)** in op ingeschakeld. 
@@ -109,7 +109,7 @@ U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks
     In elke weer gave worden de beveiligings controles gesorteerd op **Ernst**. Klik op een specifieke beveiligings controle om het deel venster Details te bekijken met een **Beschrijving**, het probleem te **verhelpen** en andere gerelateerde informatie, zoals **impact** of **Bench Mark**.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-machines-alerts"></a>Waarschuwingen voor Advanced Threat Protection voor SQL-servers op computers
-Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om SQL-machines te openen of misbruik te maken. Deze gebeurtenissen kunnen waarschuwingen activeren die worden weer gegeven in de [sectie waarschuwingen voor SQL database en SQL Data Warehouse van de pagina waarschuwings referentie](alerts-reference.md#alerts-sql-db-and-warehouse).
+Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om SQL-machines te openen of misbruik te maken. Deze gebeurtenissen kunnen waarschuwingen activeren die worden weer gegeven in de [sectie waarschuwingen voor SQL database en Azure Synapse Analytics (voorheen SQL Data Warehouse) van de pagina met waarschuwingen](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 
 
@@ -131,7 +131,7 @@ Beveiligings waarschuwingen zijn beschikbaar op de pagina waarschuwingen van Sec
 
 Zie het volgende artikel voor verwante materialen:
 
-- [Beveiligings waarschuwingen voor SQL Database en SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [Beveiligings waarschuwingen voor SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [E-mail meldingen instellen voor beveiligings waarschuwingen](security-center-provide-security-contact-details.md)
 - [Meer informatie over Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Geavanceerde gegevens beveiligings pakket van Azure Security Center](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

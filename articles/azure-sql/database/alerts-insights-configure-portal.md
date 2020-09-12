@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7457ad5870e31d682f8727901795c9d6d73f06
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553497"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442663"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Waarschuwingen maken voor Azure SQL Database en Azure Synapse Analytics met behulp van de Azure Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "85553497"
 
 ## <a name="overview"></a>Overzicht
 
-Dit artikel laat u zien hoe u waarschuwingen instelt voor data bases in Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met behulp van de Azure Portal. Waarschuwingen kunnen u een e-mail sturen of een webhook aanroepen wanneer bepaalde metrische gegevens (zoals de grootte van de data base of het CPU-gebruik) de drempel waarde hebben bereikt.
+Dit artikel laat u zien hoe u waarschuwingen instelt voor data bases in Azure SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse) met behulp van de Azure Portal. Waarschuwingen kunnen u een e-mail sturen of een webhook aanroepen wanneer bepaalde metrische gegevens (zoals de grootte van de data base of het CPU-gebruik) de drempel waarde hebben bereikt.
 
 > [!NOTE]
 > Zie [Create Alerts for Azure SQL Managed instance](../managed-instance/alerts-create.md)(Engelstalig) voor Azure SQL Managed instance-specifieke instructies.

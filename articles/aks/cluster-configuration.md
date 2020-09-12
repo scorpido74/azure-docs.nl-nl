@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752098"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433446"
 ---
 # <a name="configure-an-aks-cluster"></a>Een AKS-cluster configureren
 
@@ -218,7 +218,7 @@ az extension update --name aks-preview
 ### <a name="use-gen2-vms-on-new-clusters-preview"></a>Gen2 Vm's gebruiken in nieuwe clusters (preview-versie)
 Configureer het cluster voor het gebruik van Gen2 Vm's voor de geselecteerde SKU wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` vlag om Gen2 in te stellen als de VM-generatie op een nieuw cluster.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -227,7 +227,7 @@ Als u een normaal cluster wilt maken met virtuele machines van de eerste generat
 ### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Gen2 Vm's gebruiken op bestaande clusters (preview-versie)
 Configureer een nieuwe knooppunt groep om Gen2 Vm's te gebruiken. Gebruik de `--aks-custom-headers` vlag om Gen2 in te stellen als de VM-generatie voor die knooppunt groep.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -276,7 +276,7 @@ az extension update --name aks-preview
 
 Configureer het cluster voor het gebruik van tijdelijke besturingssysteem schijven wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` markering om kortstondig besturings systeem in te stellen als het schijf type van het besturings systeem voor het nieuwe cluster.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -285,7 +285,7 @@ Als u een normaal cluster wilt maken met behulp van besturingssysteem schijven d
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Kortstondige besturings systeem op bestaande clusters gebruiken (preview-versie)
 Configureer een nieuwe knooppunt groep om tijdelijke besturingssysteem schijven te gebruiken. Gebruik de `--aks-custom-headers` vlag om in te stellen als het schijf type van het besturings systeem voor die knooppunt groep.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 

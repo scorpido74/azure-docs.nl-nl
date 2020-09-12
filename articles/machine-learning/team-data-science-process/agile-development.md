@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722098"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440283"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Flexibele ontwikkeling van data Science-projecten
 
@@ -51,7 +51,7 @@ Hier vindt u de definities voor de typen werk items:
   
 - **Taak**: taken zijn toegewezen werk items die moeten worden uitgevoerd om een specifiek gebruikers verhaal te volt ooien. Zo kunnen de taken in het artikel gegevens van de gebruiker worden *opgehaald* :
   - SQL Server referenties ophalen
-  - Gegevens uploaden naar SQL Data Warehouse
+  - Gegevens uploaden naar Azure Synapse Analytics
   
 - **Bug**: bugs zijn problemen in bestaande code of documenten die moeten worden opgelost om een taak te volt ooien. Als fouten worden veroorzaakt door ontbrekende werk items, kunnen ze escaleren naar gebruikers verhalen of taken. 
 
@@ -158,9 +158,9 @@ Gegevens wetenschappers kunnen meer vertrouwd zijn met een flexibel sjabloon waa
    
 1. Volg dezelfde stappen om de namen van **functies** te wijzigen in *TDSP-fasen*en voeg de volgende nieuwe typen werk items toe:
    
-   - *Zakelijke inzichten*
+   - *Inzicht in het bedrijf*
    - *Gegevens ophalen*
-   - *Modellen maken*
+   - *Modelleren*
    - *Implementatie*
    
 1. Onder **achterstand**voor de behoefte wijzigt u de naam van **artikelen** in *subfases van TDSP*, voegt u het nieuwe werk item type *TDSP subfase*toe en stelt u het type standaard werk item in op **TDSP subfase**.

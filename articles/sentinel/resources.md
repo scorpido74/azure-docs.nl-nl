@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77585268"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461728"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nuttige bronnen voor het werken met Azure Sentinel
 
@@ -28,7 +28,7 @@ ms.locfileid: "77585268"
 
 Dit artikel bevat een lijst met bronnen die u kunnen helpen om meer informatie te krijgen over het werken met Azure Sentinel.
 
-Azure Logic Apps-connectors:<https://docs.microsoft.com/connectors/>
+Azure Logic Apps-connectors: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Controle en rapportage
@@ -40,8 +40,8 @@ De volgende ondersteunde bewerkingen kunnen worden gecontroleerd.
 |----|----|
 |Werkmap maken of bijwerken  |Micro soft. Insights/werkmappen|
 |Werkmap verwijderen    |Micro soft. Insights/werkmappen|
-|Werk stroom instellen   |Micro soft. Logic/werk stromen|
-|Werk stroom verwijderen    |Micro soft. Logic/werk stromen|
+|Werk stroom instellen   |Microsoft.Logic/workflows|
+|Werk stroom verwijderen    |Microsoft.Logic/workflows|
 |Opgeslagen zoek opdracht maken    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
 |Opgeslagen zoek opdracht verwijderen    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
 |Waarschuwings regels bijwerken |Micro soft. SecurityInsights/alertRules|
@@ -82,4 +82,4 @@ Bekijk Azure Sentinel-blog berichten van de [TechCommunity](https://techcommunit
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u een lijst met resources die handig zijn wanneer u met Azure Sentinel werkt. U vindt aanvullende informatie over de beveiliging en naleving van Azure in de [Microsoft Azure beveiligings-en nalevings blog](https://blogs.msdn.com/b/azuresecurity/).
+In dit document hebt u een lijst met resources die handig zijn wanneer u met Azure Sentinel werkt. U vindt aanvullende informatie over de beveiliging en naleving van Azure in de [Microsoft Azure beveiligings-en nalevings blog](https://docs.microsoft.com/archive/blogs/azuresecurity/).

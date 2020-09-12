@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285625"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612318"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Aanbevolen procedures voor cluster configuratie (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,26 +35,23 @@ Gebruik één NIC per server (cluster knooppunt) en één subnet. Azure-netwerke
 
 Hoewel een cluster met twee knoop punten werkt zonder [quorum bron](/windows-server/storage/storage-spaces/understand-quorum), zijn klanten strikt verplicht een quorum bron te gebruiken voor productie-ondersteuning. Cluster validatie geeft geen cluster zonder quorum resource door. 
 
-Technisch gesp roken kan een cluster met drie knoop punten een verlies van één knoop punt belopen (tot twee nodes) zonder een quorum resource. Maar nadat het cluster tot twee knoop punten is gedalen, is er een risico dat wordt uitgevoerd naar: 
+Technisch gesp roken kan een cluster met drie knoop punten een verlies van één knoop punt belopen (tot twee nodes) zonder een quorum resource. Maar nadat het cluster is gedalen op twee knoop punten, is er een risico dat de geclusterde bronnen offline gaan in het geval van een verlies of communicatie fout om te voor komen dat een scenario voor Split wordt gespleten.
 
-- **Partitie in ruimte** (splits hersenen): de cluster knooppunten worden gescheiden op het netwerk vanwege het probleem met de server, de NIC of de switch. 
-- **Partition in time** (Amnesia): een knoop punt wordt toegevoegd aan of opnieuw lid van het cluster en probeert het eigendom van de cluster groep of een cluster functie niet op de juiste wijze te claimen. 
-
-De quorum bron beveiligt het cluster op basis van een van deze problemen. 
+Als u een quorum bron configureert, kan het cluster online met slechts één knoop punt online gaan.
 
 De volgende tabel bevat de beschik bare quorum opties in de volg orde die wordt aanbevolen voor gebruik met een virtuele Azure-machine, waarbij de schijfwitness de voorkeurs keuze is: 
 
 
 ||[Schijfwitness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Cloudwitness](/windows-server/failover-clustering/deploy-cloud-witness)  |[Bestandsshare-witness](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Ondersteund besturings systeem**| Alle |Windows Server 2016 +| Windows Server 2012 +|
+|**Ondersteund besturings systeem**| Alles |Windows Server 2016 +| Alles|
 
 
 
 
 ### <a name="disk-witness"></a>Schijfwitness
 
-Een schijfwitness is een kleine geclusterde schijf in het cluster beschik bare opslag groep. Deze schijf is Maxi maal beschikbaar en kan een failover tussen knoop punten uitvoeren. Het bevat een kopie van de cluster database, met een standaard grootte van meestal minder dan 1 GB. De schijfwitness is de voorkeurs quorum optie voor een Azure-VM, omdat de partitie in tijd probleem kan worden opgelost, in tegens telling tot de cloudwitness en de bestandssharewitness van de bestands share. 
+Een schijfwitness is een kleine geclusterde schijf in het cluster beschik bare opslag groep. Deze schijf is Maxi maal beschikbaar en kan een failover tussen knoop punten uitvoeren. Het bevat een kopie van de cluster database, met een standaard grootte van meestal minder dan 1 GB. De schijfwitness is de voorkeurs quorum optie voor elk cluster dat gebruikmaakt van gedeelde Azure-schijven (of een oplossing voor gedeelde schijven, zoals gedeeld SCSI-, iSCSI-of Fibre Channel-SAN).  Een geclusterd gedeeld volume kan niet worden gebruikt als schijfwitness.
 
 Een gedeelde Azure-schijf configureren als de schijfwitness. 
 
@@ -95,8 +92,8 @@ De volgende tabel vergelijkt de HADR-verbindings ondersteuning:
 
 | |**Naam van virtueel netwerk (VNN)**  |**Gedistribueerde netwerknaam (DNN)**  |
 |---------|---------|---------|
-|**Minimale versie van het besturingssysteem**| Windows Server 2012 | Windows Server 2016|
-|**Minimale SQL Server versie** |SQL Server 2012 |SQL Server 2019 CU2|
+|**Minimale versie van het besturingssysteem**| Alles | Alles |
+|**Minimale SQL Server versie** |Alles |SQL Server 2019 CU2|
 |**Ondersteunde HADR-oplossing** | Failover-clusterexemplaar <br/> Beschikbaarheidsgroep | Failover-clusterexemplaar|
 
 
@@ -108,9 +105,9 @@ Er is een lichte vertraging bij de failover wanneer u de load balancer gebruikt,
 
 Leer hoe u [Azure Load Balancer kunt configureren voor een FCI](hadr-vnn-azure-load-balancer-configure.md)om aan de slag te gaan. 
 
-**Ondersteund besturings systeem**: Windows Server 2012 en hoger   
-**Ondersteunde SQL-versie**: SQL Server 2012 en hoger   
-**Ondersteunde HADR-oplossing**: failover-cluster exemplaar en beschikbaarheids groep 
+**Ondersteund besturings systeem**: alle   
+**Ondersteunde SQL-versie**: alle   
+**Ondersteunde HADR-oplossing**: failover-cluster exemplaar en beschikbaarheids groep   
 
 
 ### <a name="distributed-network-name-dnn"></a>Gedistribueerde netwerknaam (DNN)
@@ -138,9 +135,10 @@ Als u aan de slag wilt gaan, leert u hoe u [een DNN-resource kunt configureren v
 Houd rekening met de volgende beperkingen wanneer u werkt met FCI-of beschikbaarheids groepen en SQL Server op Azure Virtual Machines. 
 
 ### <a name="msdtc"></a>MSDTC 
-Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
 
-In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 of eerder omdat:
+Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op SQL Server-vm's die gebruikmaken van gedeelde Azure-schijven. 
+
+In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 of eerder met geclusterde gedeelde volumes, omdat:
 
 - De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-bron maakt, wordt er geen gedeelde opslag weer gegeven die beschikbaar is voor gebruik, zelfs als de opslag ruimte beschikbaar is. Dit probleem is opgelost in Windows Server 2019.
 - Met de basis load balancer worden geen RPC-poorten afgehandeld.

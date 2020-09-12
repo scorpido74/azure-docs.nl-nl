@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012482"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440351"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Gegevens platforms die worden ondersteund op de Data Science Virtual Machine
 
@@ -53,7 +53,7 @@ Als u SQL Server Management Studio wilt uitvoeren, kunt u zoeken op ' SQL Server
 
 Standaard wordt de database server met het standaard exemplaar van de data base automatisch uitgevoerd. U kunt hulpprogram ma's zoals SQL Server Management Studio op de virtuele machine gebruiken om lokaal toegang te krijgen tot de SQL Server-Data Base. Lokale beheerders accounts hebben beheerders toegang tot de data base.
 
-Daarnaast wordt de DSVM geleverd met ODBC-en JDBC-Stuur Programma's om te praten met SQL Server, Azure SQL-data bases en Azure SQL Data Warehouse vanuit toepassingen die in meerdere talen zijn geschreven, met inbegrip van python en Machine Learning Server.
+Daarnaast wordt de DSVM geleverd met ODBC-en JDBC-Stuur Programma's om te praten met SQL Server, Azure SQL-data bases en Azure Synapse Analytics van toepassingen die in meerdere talen zijn geschreven, waaronder python en Machine Learning Server.
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM? 
 

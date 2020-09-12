@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869198"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378368"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -142,7 +142,7 @@ Voor meer informatie over het implementeren van deze functie raadpleegt u [behee
 
 ## <a name="properties-source"></a>Eigenschappen: Bron
 
-De opbouw functie voor installatie kopieën biedt momenteel alleen ondersteuning voor hyper-v-afbeeldingen en-Vm's van het i/of de `source` sectie bevat informatie over de bron installatie kopie die wordt gebruikt door de opbouw functie voor afbeeldingen
+De `source` sectie bevat informatie over de bron installatie kopie die wordt gebruikt door de opbouw functie voor afbeeldingen. De opbouw functie voor installatie kopieën ondersteunt momenteel alleen systeem eigen ondersteuning voor het maken van Hyper-V-generatie (gen1) 1 installatie kopieën in de Azure Shared Image Gallery (SIG) of een beheerde installatie kopie. Als u Gen2-installatie kopieën wilt maken, moet u een Gen2-bron installatie kopie gebruiken en distribueren naar VHD. Daarna moet u een beheerde installatie kopie maken van de VHD en deze in de SIG injecteren als een Gen2-installatie kopie.
 
 Voor de API is een source type vereist dat de bron voor de build van de installatie kopie definieert. momenteel zijn er drie typen:
 - PlatformImage: er is aangegeven dat de bron afbeelding een Marketplace-installatie kopie is.
@@ -571,7 +571,7 @@ Voordat u naar de galerie met installatie kopieën kunt distribueren, moet u een
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {

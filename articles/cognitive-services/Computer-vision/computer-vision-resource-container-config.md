@@ -11,27 +11,36 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 765001ae7380ff2e99e6b390930b94302ce506bf
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879306"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433684"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision docker-containers configureren
 
-U configureert de runtime-omgeving van de Computer Vision-container `docker run` met behulp van de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de facturerings instellingen. 
+U configureert de runtime-omgeving van de Computer Vision-container met behulp van de `docker run` opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de facturerings instellingen. 
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-configuration-setting)instellingen [`Billing`](#billing-configuration-setting), en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](computer-vision-how-to-install-containers.md)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
+> De [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting) instellingen, en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders wordt de container niet gestart. Zie [facturering](computer-vision-how-to-install-containers.md)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
+
+De container heeft ook de volgende container-specifieke configuratie-instellingen:
+
+|Vereist|Instelling|Doel|
+|--|--|--|
+|No|ReadEngineConfig:ResultExpirationPeriod|Verloop tijd van resultaat in uren. De standaard waarde is 48 uur. De instelling geeft aan wanneer het systeem herkennings resultaten moet wissen. Als `resultExpirationPeriod=1` het systeem bijvoorbeeld het herkennings resultaat 1 uur na het proces wist. Als het `resultExpirationPeriod=0` systeem het herkennings resultaat verwijdert nadat het resultaat is opgehaald.|
+|No|Cache: redis|Hiermee wordt redis-opslag voor het opslaan van resultaten ingeschakeld. Een cache is *vereist* als meerdere Lees containers achter een Load Balancer worden geplaatst.|
+|No|Wachtrij: RabbitMQ|Hiermee schakelt u RabbitMQ in voor het verzenden van taken. De instelling is handig wanneer meerdere Lees containers achter een load balancer worden geplaatst.|
+|No|Opslag::D ocumentStore:: MongoDB|Hiermee wordt MongoDB ingeschakeld voor permanente resultaat opslag.|
 
 ## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
-Met `ApiKey` deze instelling geeft u `Cognitive Services` de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven [`Billing`](#billing-configuration-setting) voor de configuratie-instelling.
+`ApiKey`Met deze instelling geeft u de Azure- `Cognitive Services` resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven voor de [`Billing`](#billing-configuration-setting) configuratie-instelling.
 
 Deze instelling bevindt zich op de volgende locatie:
 
@@ -43,11 +52,11 @@ Deze instelling bevindt zich op de volgende locatie:
 
 ## <a name="billing-configuration-setting"></a>Instelling facturerings configuratie
 
-Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
+Met deze `Billing` instelling geeft u de eindpunt-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
 
 Deze instelling bevindt zich op de volgende locatie:
 
-* Azure Portal: **Cognitive Services** overzicht, met het label`Endpoint`
+* Azure Portal: **Cognitive Services** overzicht, met het label `Endpoint`
 
 Vergeet niet om de `vision/v1.0` route ring toe te voegen aan de URI van het eind punt, zoals wordt weer gegeven in de volgende tabel. 
 
@@ -86,22 +95,22 @@ De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhank
 
 ## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren
 
-De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt.  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](computer-vision-how-to-install-containers.md#stop-the-container) .
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u-opdrachten schrijft en gebruikt `docker run` .  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](computer-vision-how-to-install-containers.md#stop-the-container) .
 
-* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash `\`,, als een regel voortzettings teken. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. 
+* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash, `\` , als een regel voortzettings teken. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. 
 * **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 
 Vervang {_argument_name_} door uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde | Notatie of voor beeld |
 |-------------|-------|---|
-| **{API_KEY}** | De eindpunt sleutel van de `Computer Vision` resource op de pagina `Computer Vision` Azure-sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `Computer Vision` op de pagina overzicht van Azure.| Zie [vereiste para meters](computer-vision-how-to-install-containers.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
+| **{API_KEY}** | De eindpunt sleutel van de `Computer Vision` resource op de pagina Azure- `Computer Vision` sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar op de `Computer Vision` pagina overzicht van Azure.| Zie [vereiste para meters](computer-vision-how-to-install-containers.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](computer-vision-how-to-install-containers.md#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](computer-vision-how-to-install-containers.md#billing)voor meer informatie.
 > De ApiKey-waarde is de **sleutel** van de `Cognitive Services` pagina Azure-resource sleutels.
 
 ## <a name="container-docker-examples"></a>Voor beelden van container docker
