@@ -3,14 +3,14 @@ title: Werk belastingen uitvoeren op rendabele virtuele machines met lage priori
 description: Meer informatie over het inrichten van Vm's met lage prioriteit om de kosten van Azure Batch workloads te verminderen.
 author: mscurrell
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816691"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568452"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Virtuele machines met lage prioriteit met Batch gebruiken
 
@@ -18,7 +18,7 @@ Azure Batch biedt virtuele machines met lage prioriteit (Vm's) om de kosten van 
 
 Vm's met lage prioriteit profiteren van de overschot capaciteit in Azure. Wanneer u virtuele machines met lage prioriteit in uw Pools opgeeft, kunt Azure Batch dit overschot gebruiken, indien beschikbaar.
 
-Het saldo voor het gebruik van virtuele machines met lage prioriteit is dat deze Vm's mogelijk niet kunnen worden toegewezen of op elk gewenst moment kunnen worden gebruikt, afhankelijk van de beschik bare capaciteit. Daarom zijn virtuele machines met lage prioriteit het meest geschikt voor bepaalde typen werk belastingen. Gebruik virtuele machines met lage prioriteit voor werk belastingen voor batch en asynchrone verwerking waarbij de voltooiings tijd van de taak flexibel is en het werk wordt gedistribueerd over meerdere Vm's.
+Het afwegings niveau voor het gebruik van virtuele machines met lage prioriteit is dat deze Vm's niet altijd beschikbaar zijn om te worden toegewezen, of dat ze op elk gewenst moment kunnen worden voor rang, afhankelijk van de beschik bare capaciteit. Daarom zijn virtuele machines met lage prioriteit het meest geschikt voor bepaalde typen werk belastingen. Gebruik virtuele machines met lage prioriteit voor werk belastingen voor batch en asynchrone verwerking waarbij de voltooiings tijd van de taak flexibel is en het werk wordt gedistribueerd over meerdere Vm's.
 
 Vm's met lage prioriteit worden aangeboden tegen een aanzienlijk gereduceerde prijs vergeleken met toegewezen Vm's. Zie [batch-prijzen](https://azure.microsoft.com/pricing/details/batch/)voor meer informatie over prijzen.
 
@@ -123,7 +123,7 @@ Groeps knooppunten hebben een eigenschap om aan te geven of het knoop punt een t
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Wanneer een of meer knoop punten in een groep zijn voor rang, worden deze knoop punten nog steeds door een bewerking met een lijst knooppunt in de groep geretourneerd. Het huidige aantal knoop punten met een lage prioriteit blijft ongewijzigd, maar de status van deze knoop punten is ingesteld op de status **afgebroken** . Batch probeert vervangings-Vm's te vinden en, als dit is gelukt, worden de knoop punten **gemaakt** en vervolgens **gestart** voordat ze beschikbaar zijn voor taak uitvoering, net als bij nieuwe knoop punten.
+Voor virtuele-machine configuratie groepen, wanneer een of meer knoop punten zijn voor rang, worden deze knoop punten nog steeds door een bewerking met een lijst knooppunt in de groep geretourneerd. Het huidige aantal knoop punten met een lage prioriteit blijft ongewijzigd, maar de status van deze knoop punten is ingesteld op de status **afgebroken** . Batch probeert vervangings-Vm's te vinden en, als dit is gelukt, worden de knoop punten **gemaakt** en vervolgens **gestart** voordat ze beschikbaar zijn voor taak uitvoering, net als bij nieuwe knoop punten.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Een groep met virtuele machines met lage prioriteit schalen
 
@@ -155,10 +155,11 @@ Voor taken en taken is weinig extra configuratie vereist voor knoop punten met e
 
 ## <a name="handling-preemption"></a>Verwerking van voor rang
 
-Vm's kunnen af en toe worden afgebroken; Wanneer er wordt gevolgd met voor rang, voert batch het volgende uit:
+Vm's kunnen af en toe worden afgebroken. Als dit het geval is, worden de taken die worden uitgevoerd op de knoop punten van de node-Vm's, opnieuw in de wachtrij geplaatst en opnieuw uitgevoerd.
+
+Voor virtuele-machine configuratie groepen voert batch ook de volgende handelingen uit:
 
 -   De status van de virtuele machines voor de bewerkings-Vm's zijn bijgewerkt naar **vervallen**.
--   Als er taken worden uitgevoerd op de node-Vm's van het knoop punt, worden deze taken opnieuw in de wachtrij geplaatst en opnieuw uitgevoerd.
 -   De virtuele machine wordt daad werkelijk verwijderd, waardoor alle gegevens die lokaal op de virtuele machine zijn opgeslagen, verloren gaan.
 -   De groep probeert voortdurend het doel aantal knoop punten met lage prioriteit te bereiken dat beschikbaar is. Als er een vervangende capaciteit wordt gevonden, worden de Id's van de knoop punten bewaard, maar ze worden opnieuw geïnitialiseerd, waarna de status wordt **gemaakt** en **gestart** voordat ze beschikbaar zijn voor taak planning.
 -   Voorrangs tellingen zijn beschikbaar als een metrische waarde in het Azure Portal.
@@ -168,7 +169,7 @@ Vm's kunnen af en toe worden afgebroken; Wanneer er wordt gevolgd met voor rang,
 Er zijn nieuwe metrische gegevens beschikbaar in de [Azure Portal](https://portal.azure.com) voor knoop punten met een lage prioriteit. Deze metrische gegevens zijn:
 
 - Aantal knoop punten met een lage prioriteit
-- Aantal kernen met lage prioriteit 
+- Aantal kernen met lage prioriteit
 - Aantal knoop punten in herhaling
 
 U kunt als volgt de metrische gegevens weer geven in de Azure Portal:
@@ -177,10 +178,10 @@ U kunt als volgt de metrische gegevens weer geven in de Azure Portal:
 2. Selecteer **metrische gegevens** in de sectie **bewaking** .
 3. Selecteer de gewenste metrische gegevens in de lijst **beschik bare metrische gegevens** .
 
-![Metrische gegevens voor knoop punten met een lage prioriteit](media/batch-low-pri-vms/low-pri-metrics.png)
+![Scherm opname van de metrische selectie voor knoop punten met een lage prioriteit.](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
-* Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
-* Begin met het plannen van de overstap van Vm's met lage prioriteit om virtuele machines te plaatsen. Als u virtuele machines met lage prioriteit gebruikt met configuratie groepen voor de **Cloud service** , moet u de **configuratie van de virtuele machine configureren** .
+- Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
+- Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
+- Begin met het plannen van de overstap van Vm's met lage prioriteit om virtuele machines te plaatsen. Als u virtuele machines met lage prioriteit gebruikt met configuratie groepen voor de **Cloud service** , moet u de **configuratie van de virtuele machine configureren** .

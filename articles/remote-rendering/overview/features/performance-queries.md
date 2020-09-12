@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7212157bb7ef541ac1eb1753f46ea6ad434c2ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd255896d57d6bda60ec8874430fa994eae69f40
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013364"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613641"
 ---
 # <a name="server-side-performance-queries"></a>Prestatiequery's aan serverzijde
 
@@ -172,6 +172,11 @@ Met de bovenstaande code wordt het tekst label gevuld met de volgende tekst:
 `GetStatsString`Met de API wordt een teken reeks van alle waarden opgemaakt, maar elke enkele waarde kan ook via een programma worden opgevraagd vanuit het `ARRServiceStats` exemplaar.
 
 Er zijn ook varianten van de leden, waarmee de waarden in de loop van de tijd worden geaggregeerd. Zie leden met achtervoegsel `*Avg` , `*Max` of `*Total` . Het lid `FramesUsedForAverage` geeft aan hoeveel frames er voor deze aggregatie zijn gebruikt.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# RemoteManager. QueryServerPerformanceAssessmentAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
+* [C++ RemoteManager:: QueryServerPerformanceAssessmentAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>Volgende stappen
 

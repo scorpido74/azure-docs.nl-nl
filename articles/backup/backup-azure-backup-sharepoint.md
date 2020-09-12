@@ -3,12 +3,12 @@ title: Een back-up maken van een share point-Farm naar Azure met DPM
 description: Dit artikel bevat een overzicht van DPM/Azure Backup Server-beveiliging van een share point-Farm naar Azure
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a667626fb53920150a4b5a16759228aacbfae75d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032881"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375241"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Een back-up maken van een share point-Farm naar Azure met DPM
 
@@ -53,7 +53,7 @@ Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint?view
    > Omdat de share point-Farm is beveiligd voor lange termijn retentie in azure, is er geen catalogus informatie (meta gegevens) beschikbaar op de DPM-server. Wanneer een tijdgebonden share point-inhouds database moet worden hersteld, moet u de share point-Farm opnieuw catalogiseren.
    >
    >
-3. Klik op **opnieuw catalogiseren**.
+3. Selecteer **opnieuw catalogiseren**.
 
     ![DPM share point-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -61,10 +61,10 @@ Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint?view
 
     ![DPM share point-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Klik op **Sluiten**.
+    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Selecteer **Close** (Sluiten).
 
     ![DPM share point-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Klik op het share point-object dat wordt weer gegeven op het tabblad DPM **Recovery** om de structuur van de inhouds database op te halen. Klik met de rechter muisknop op het item en klik vervolgens op **herstellen**.
+4. Selecteer het share point-object dat wordt weer gegeven op het tabblad DPM- **herstel** om de structuur van de inhouds database op te halen. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen**.
 
     ![DPM share point-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Volg op dit punt de herstel stappen eerder in dit artikel om een share point-inhouds database van schijf te herstellen.

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: memildin
-ms.openlocfilehash: d9229137c999157d2cea112ebb5e6e8b169eed96
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192775"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375258"
 ---
 # <a name="workflow-automation"></a>Werk stroom automatisering
 
@@ -33,7 +33,7 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 |Release status:|Algemeen beschikbaar|
 |Koers|Gratis laag|
 |Vereiste rollen en machtigingen:|De rol of **eigenaar** van de **beveiligings beheerder** voor de resource groep<br>Moet ook schrijf machtigingen hebben voor de doel resource<br><br>Als u met Azure Logic Apps werk stromen wilt werken, moet u ook over de volgende Logic Apps-rollen/-machtigingen beschikken:<br> - De machtigingen voor de [logische app-operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )<br> - De Inzender machtigingen van de [logische app](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps<br>Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) China gov, andere gov|
 |||
 
 

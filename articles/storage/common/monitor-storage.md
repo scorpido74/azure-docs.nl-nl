@@ -1,5 +1,5 @@
 ---
-title: Azure Storage bewaken | Microsoft Docs
+title: Bewakings Azure Storage | Microsoft Docs
 description: Meer informatie over het bewaken van de prestaties en beschik baarheid van Azure Storage. Bewaak Azure Storage gegevens, meer informatie over de configuratie en het analyseren van metrische gegevens en logbestanden.
 author: normesta
 services: storage
@@ -9,14 +9,14 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020147"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500416"
 ---
-# <a name="monitor-azure-storage"></a>Azure Storage bewaken
+# <a name="monitoring-azure-storage"></a>Bewakings Azure Storage
 
 Wanneer u essentiële toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze bronnen controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure Storage en hoe u de functies van Azure Monitor kunt gebruiken om waarschuwingen voor deze gegevens te analyseren.
 
@@ -30,7 +30,7 @@ De **overzichts** pagina in de Azure portal voor elke opslag resource bevat een 
 ## <a name="what-is-azure-monitor"></a>Wat is Azure Monitor?
 Azure Storage maakt bewakings gegevens door gebruik te maken van [Azure monitor](../../azure-monitor/overview.md). Dit is een volledige stack monitoring-service in Azure. Azure Monitor biedt een volledige set functies voor het bewaken van uw Azure-resources en-resources in andere Clouds en on-premises. 
 
-Zie [Azure-resources bewaken met Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md)voor meer informatie over Azure monitor. In het artikel worden de volgende onderwerpen beschreven:
+Begin met het artikel [bewaking van Azure-resources met Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) waarin het volgende wordt beschreven:
 
 - Wat is Azure Monitor?
 - Kosten die zijn gekoppeld aan bewaking
@@ -40,7 +40,7 @@ Zie [Azure-resources bewaken met Azure monitor](../../azure-monitor/insights/mon
 
 In de volgende secties vindt u een beschrijving van de specifieke gegevens die zijn verzameld uit Azure Storage. Voor beelden laten zien hoe u gegevens verzameling kunt configureren en deze gegevens kunt analyseren met Azure-hulpprogram ma's.
 
-## <a name="monitor-data-from-azure-storage"></a>Gegevens van Azure Storage controleren
+## <a name="monitoring-data-from-azure-storage"></a>Gegevens van Azure Storage bewaken
 
 Azure Storage worden dezelfde soorten bewakings gegevens verzameld als andere Azure-resources, die worden beschreven in [gegevens van Azure-resources bewaken](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). Zie [Azure Storage monitoring data Reference](monitor-storage-reference.md)(Engelstalig) voor meer informatie over de logboeken en metrische gegevens die door Azure Storage zijn gemaakt.
 
@@ -90,7 +90,7 @@ U moet ook de categorieën van bewerkingen opgeven waarvoor u logboeken wilt ver
 | StorageWrite | Schrijf bewerkingen op objecten. |
 | StorageDelete | Bewerkingen op objecten verwijderen. |
 
-## <a name="analyze-metric-data"></a>Metrische gegevens analyseren
+## <a name="analyzing-metric-data"></a>Metrische gegevens analyseren
 
 U kunt metrische gegevens analyseren voor Azure Storage met metrische gegevens uit andere Azure-Services met behulp van Metrics Explorer. Open Metrics Explorer door **metrische gegevens** te kiezen in het menu **Azure monitor** . Zie aan de slag [met Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md)voor meer informatie over het gebruik van dit hulp programma. 
 
@@ -115,7 +115,7 @@ Alle metrische gegevens voor Azure Storage bevinden zich in deze naam ruimten:
 Zie [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)voor een lijst met alle Azure monitor metrische gegevens over ondersteuning, waaronder Azure Storage.
 
 
-### <a name="access-metrics"></a>Toegangs gegevens
+### <a name="accessing-metrics"></a>Toegang tot metrische gegevens
 
 > [!TIP]
 > Als u voor beelden van Azure CLI of .NET wilt bekijken, kiest u de overeenkomstige tabbladen die hier worden vermeld.
@@ -133,7 +133,7 @@ In dit voor beeld vervangt u de `<resource-ID>` tijdelijke aanduiding door de re
    Get-AzMetricDefinition -ResourceId $resourceId
 ```
 
-#### <a name="read-metric-values"></a>Metrische waarden lezen
+#### <a name="reading-metric-values"></a>Meet waarden lezen
 
 U kunt metrische waarden op account niveau van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, lezen. Gebruik de cmdlet [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) .
 
@@ -142,7 +142,7 @@ U kunt metrische waarden op account niveau van uw opslag account of de afzonderl
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>De metrische definitie op account niveau weer geven
 
@@ -203,7 +203,7 @@ In het volgende voor beeld ziet u hoe u een metrische definitie kunt weer geven 
 
 ```
 
-#### <a name="read-account-level-metric-values"></a>Metrische waarden op account niveau lezen
+#### <a name="reading-account-level-metric-values"></a>Meet waarden op account niveau lezen
 
 In het volgende voor beeld ziet u hoe u gegevens kunt lezen `UsedCapacity` op account niveau:
 
@@ -249,7 +249,7 @@ In het volgende voor beeld ziet u hoe u gegevens kunt lezen `UsedCapacity` op ac
 
 ```
 
-#### <a name="read-multidimensional-metric-values"></a>Metrische waarden voor meerdere dimensies lezen
+#### <a name="reading-multidimensional-metric-values"></a>Metrische waarden voor meerdere dimensies lezen
 
 Voor multidimensionale metrieken moet u meta gegevens filters definiëren als u metrische gegevens voor specifieke dimensie waarden wilt lezen.
 
@@ -304,7 +304,7 @@ In het volgende voor beeld ziet u hoe u metrische gegevens kunt lezen over de me
 
 ---
 
-## <a name="analyze-log-data"></a>Logboekgegevens analyseren
+## <a name="analyzing-log-data"></a>Logboek gegevens analyseren
 
 U kunt bron Logboeken openen als een BLOB in een opslag account, als gebeurtenis gegevens of via logboek analyse query's.
 
@@ -313,7 +313,7 @@ Zie [Azure Storage monitoring data Reference](monitor-storage-reference.md)(Enge
 > [!NOTE]
 > Azure Storage-Logboeken in Azure Monitor bevinden zich in de open bare preview en is beschikbaar voor preview-tests in alle open bare Cloud regio's. Zie [Deze pagina](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)als u zich wilt inschrijven voor de preview-versie. Met deze preview-versie kunt u logboeken maken voor blobs (waaronder Azure Data Lake Storage Gen2), bestanden, wacht rijen, tabellen, Premium Storage-accounts in versie 1 voor algemeen gebruik en voor algemeen gebruik v2-opslag accounts. Klassieke opslag accounts worden niet ondersteund.
 
-### <a name="access-logs-in-a-storage-account"></a>Logboeken openen in een opslag account
+### <a name="accessing-logs-in-a-storage-account"></a>Logboeken openen in een opslag account
 
 Logboeken worden weer gegeven als blobs die zijn opgeslagen in een container in het doel-opslag account. Gegevens worden verzameld en opgeslagen in één BLOB als een door een regel gescheiden JSON-nettolading. De naam van de BLOB volgt deze naamgevings Conventie:
 
@@ -323,7 +323,7 @@ Hier volgt een voorbeeld:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="access-logs-in-an-event-hub"></a>Toegang tot logboeken in een Event Hub
+### <a name="accessing-logs-in-an-event-hub"></a>Logboeken openen in een Event Hub
 
 Logboeken die naar een Event Hub worden verzonden, worden niet als een bestand opgeslagen, maar u kunt controleren of de Event Hub de logboek gegevens hebben ontvangen. Ga in het Azure Portal naar uw Event Hub en controleer of het aantal **inkomende berichten** groter is dan nul. 
 
@@ -331,7 +331,7 @@ Logboeken die naar een Event Hub worden verzonden, worden niet als een bestand o
 
 U kunt logboek gegevens die naar uw Event Hub worden verzonden, openen en lezen met behulp van beveiligings informatie en hulpprogram ma's voor gebeurtenis beheer en controle. Zie [Wat kan ik doen met de bewakings gegevens die worden verzonden naar mijn Event hub?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)voor meer informatie.
 
-### <a name="access-logs-in-a-log-analytics-workspace"></a>Logboeken openen in een Log Analytics-werk ruimte
+### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Logboeken openen in een Log Analytics-werk ruimte
 
 U kunt logboeken die zijn verzonden naar een Log Analytics-werk ruimte openen met behulp van Azure Monitor-logboek query's.
 

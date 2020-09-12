@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0fb50e01e86c00ac863352118eb36f7470251435
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855144"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489150"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Query's uitvoeren op gegevens uit Azure Time Series Insights Gen2
 
@@ -73,4 +73,4 @@ Deze Api's zijn beschikbaar in beide winkels (warm en koud) in onze opslag oplos
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over verschillende variabelen die kunnen worden gedefinieerd in het [Time Series-model](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm).
-* Meer informatie over het opvragen van gegevens uit de [Azure time series INSIGHTS TSI-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* Meer informatie over het opvragen van gegevens uit de [Azure time series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

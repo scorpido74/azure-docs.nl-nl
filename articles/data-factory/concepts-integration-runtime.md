@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407690"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485716"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -143,7 +143,7 @@ Als u ervoor kiest om de Azure IR automatisch oplossen te gebruiken in het open 
   - Wanneer u gegevens kopieert naar Sales Force waarvan de regio niet kan worden gedetecteerd, wordt de Kopieer activiteit uitgevoerd op IR in VS-Oost.
 
   >[!TIP] 
-  >Als u strikte gegevensnalevingsvereisten hebt en u ervoor moet zorgen moet dat gegevens een bepaalde geografie niet verlaten, kunt u expliciet een Azure IR maken in een bepaalde regio en de gekoppelde service naar deze IR laten wijzen met behulp van de eigenschap ConnectVia. Als u bijvoorbeeld gegevens uit Blob in VK - zuid naar SQL DW in VK - zuid wilt kopiëren en u ervoor wilt zorgen dat de gegevens het UK niet verlaten, maakt u een Azure IR en koppelt u beide gekoppelde services aan deze IR.
+  >Als u strikte gegevensnalevingsvereisten hebt en u ervoor moet zorgen moet dat gegevens een bepaalde geografie niet verlaten, kunt u expliciet een Azure IR maken in een bepaalde regio en de gekoppelde service naar deze IR laten wijzen met behulp van de eigenschap ConnectVia. Als u bijvoorbeeld gegevens wilt kopiëren van BLOB in UK-zuid naar Azure Synapse Analytics in UK-zuid en wilt ervoor zorgen dat gegevens niet in het VK worden gelaten, maakt u een Azure IR in UK-zuid en koppelt u beide gekoppelde services aan deze IR.
 
 - Voor het uitvoeren van opzoek-GetMetadata/het verwijderen van de activiteit (ook wel pijplijn activiteiten genoemd), het verzenden van trans formatie-activiteiten (ook wel externe activiteiten genoemd) en het maken van bewerkingen (verbinding testen, bladeren in mappen lijst en tabel lijst, preview-gegevens), ADF gebruikt de IR in de regio data factory.
 
@@ -201,5 +201,5 @@ Gegevens stroom activiteiten worden uitgevoerd op de Azure Integration runtime d
 Zie de volgende artikelen:
 
 - [Azure Integration runtime maken](create-azure-integration-runtime.md)
-- [Een zelf-hostende integratieruntime maken](create-self-hosted-integration-runtime.md)
+- [Zelf-hostende Integration runtime maken](create-self-hosted-integration-runtime.md)
 - [Maak een Azure SSIS Integration runtime](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 

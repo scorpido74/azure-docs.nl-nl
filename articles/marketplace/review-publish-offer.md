@@ -8,60 +8,51 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: 53e5331ab36d5466bd5cdb495ac505dae29e57bf
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375874"
 ---
-# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Bekijk en publiceer een aanbieding naar de commerciële Marketplace
+# <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Een aanbieding bekijken en publiceren naar de commerciële Marketplace
 
-In dit artikel leest u hoe u partner Center kunt gebruiken om uw aanbieding te verzenden, een voor beeld van uw aanbieding te bekijken en deze vervolgens te publiceren naar micro soft Commercial Marketplace. We laten ook zien hoe u uw publicatie status kunt controleren zoals deze wordt door de publicatie stappen. U moet al een aanbieding hebben gemaakt die u wilt publiceren.
+Dit artikel laat u zien hoe u met partner Center uw aanbieding voor publicatie kunt verzenden, een voor beeld van uw aanbieding kunt bekijken en deze vervolgens kunt publiceren naar de commerciële Marketplace. We laten ook zien hoe u uw publicatie status kunt controleren zoals deze wordt door de publicatie stappen. U moet al een aanbieding hebben gemaakt die u wilt publiceren.
 
-## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Ga naar uw aanbieding in de commerciële Marketplace
+## <a name="offer-status"></a>Status van aanbieding
 
-1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het navigatie menu de optie **commerciële Marketplace**-  >  **overzicht**.
-3. Op het tabblad **overzicht** , onder **aanbiedingen**, wordt een van de volgende status indicatoren weer gegeven in de kolom **status** voor elke aanbieding.
+U kunt de status van uw aanbieding bekijken op het tabblad **overzicht** van het dash board commerciële Marketplace in [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Een van de volgende status indicatoren wordt weer gegeven in de kolom **status** voor elke aanbieding.
 
-    | Status | Beschrijving |
-    | ------------ | ------------- |
-    | Concept | Het aanbod is gemaakt maar wordt niet gepubliceerd. |
-    | Publicatie wordt uitgevoerd | De aanbieding werkt via het publicatie proces. |
-    | Aandacht vereist | Er is een kritiek probleem gedetecteerd tijdens de certificering of tijdens een andere publicatie fase. |
-    | Preview | We hebben de aanbieding gecertificeerd, die nu een definitieve verificatie van de uitgever afwacht. Selecteer **Live gaan** om de aanbieding Live te publiceren. |
-    | Live | De aanbieding is live op Marketplace en kan worden gezien en verworven door klanten. |
-    | Verkopen in behandeling voor stoppen | Publisher heeft ' stoppen met verkopen ' op een aanbieding of plan geselecteerd, maar de actie is nog niet voltooid. |
-    | Niet beschikbaar in Marketplace | Een eerder gepubliceerde aanbieding in Marketplace is verwijderd. |
-    |||
+| Status | Beschrijving |
+| ------------ | ------------- |
+| Concept | Het aanbod is gemaakt maar wordt niet gepubliceerd. |
+| Publicatie wordt uitgevoerd | De aanbieding werkt via het publicatie proces. |
+| Aandacht vereist | Er is een kritiek probleem gedetecteerd tijdens de certificering of tijdens een andere publicatie fase. |
+| Preview | We hebben de aanbieding gecertificeerd, die nu een definitieve verificatie van de uitgever afwacht. Selecteer **Live gaan** om de aanbieding Live te publiceren. |
+| Live | De aanbieding is live op Marketplace en kan worden gezien en verworven door klanten. |
+| Verkopen in behandeling voor stoppen | Publisher heeft ' stoppen met verkopen ' op een aanbieding of plan geselecteerd, maar de actie is nog niet voltooid. |
+| Niet beschikbaar in Marketplace | Een eerder gepubliceerde aanbieding in Marketplace is verwijderd. |
+|||
 
-4. Selecteer in de kolom **aanbiedings alias** de aanbieding die u wilt bekijken en publiceren.
+## <a name="validation-and-publishing-steps"></a>Validatie-en publicatie stappen
 
-## <a name="submit-your-offer-to-preview"></a>Verzend uw aanbieding naar Preview
-
-1. Als u uw aanbieding wilt verzenden naar Preview, selecteert u in de rechter bovenhoek van de Portal de optie **controleren en publiceren** . De pagina **controleren en publiceren** wordt weer gegeven.
-1. Zorg ervoor dat de kolom **status** voor elke pagina **is voltooid**. De drie mogelijke statussen zijn als volgt:
+Wanneer u klaar bent om een aanbieding voor publicatie in te dienen, selecteert u in de rechter bovenhoek van de Portal de optie **controleren en publiceren** . Op de pagina **controleren en publiceren** ziet u de status van elke pagina voor uw aanbieding. Dit kan een van de volgende zijn:
 
    - **Niet gestart** : de pagina is niet volledig.
    - **Onvolledig** : in de pagina ontbreekt de vereiste informatie of fouten die moeten worden opgelost. U moet terug naar de pagina gaan en deze bijwerken.
    - **Voltooid** : de pagina is voltooid. Alle vereiste gegevens zijn opgegeven en er zijn geen fouten.
 
-1. Als een van de pagina's een andere status dan **voltooid**heeft, selecteert u in de kolom **pagina** de pagina naam, corrigeert u het probleem, slaat u de pagina op en selecteert u vervolgens opnieuw **controleren en publiceren** om terug te gaan naar deze pagina.
-1. Nadat alle pagina's zijn voltooid, geeft u in het vak **notities voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest. Geef aanvullende notities op die nuttig zijn voor het leren van uw app.
-1. Selecteer **publiceren**om de aanbieding voor publicatie in te dienen. De pagina **overzicht van aanbieding** wordt weer gegeven en de publicatie status wordt weer gegeven.
+Als een van de pagina's een andere status heeft dan **voltooid**, moet u het probleem op die pagina corrigeren en vervolgens terugkeren naar de pagina **controleren en publiceren** om te bevestigen dat de status nu als **voltooid**wordt weer gegeven. Voor sommige aanbiedings typen moet worden getest. Als dit het geval is, ziet u een **Opmerking voor het certificerings** veld waarin u test instructies moet geven aan het certificerings team en eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
 
-## <a name="validation-and-publishing-steps"></a>Validatie-en publicatie stappen
-
-Nadat u **publiceren**hebt geselecteerd, worden de validatie-en publicatie processen in volg orde voortgezet. In deze tabel ziet u het meest voorkomende publicatie proces:
+Nadat alle pagina's zijn voltooid en u toepasselijke test notities hebt ingevoerd, selecteert u **publiceren** om de validatie-en publicatie processen te starten. De fasen en de algehele volg orde kunnen variëren, afhankelijk van het type aanbieding dat u publiceert. De volgende tabel bevat een mogelijke publicatie stroom. Elke fase wordt gedetailleerd beschreven in de volgende secties.
 
 | Fase | Wat gebeurt er? |
 | ------------ | ------------- | ------------- |
-| Automatische validatie | We verwerken een reeks geautomatiseerde validaties. |
-| Certificering | We voeren hand matige validaties uit. |
-| Voor beeld maken | De aanbiedings pagina voor de preview-versie van uw aanbieding is beschikbaar voor iedereen met de preview-koppeling. Als uw aanbieding wordt verkocht via micro soft (transactable), kan alleen de doel groep die u hebt opgegeven op de pagina **voor beeld van de doel groep** van uw aanbieding kopen en toegang krijgen tot de aanbieding voor testen. |
-| Uitgever afmelden | We sturen u een e-mail met een aanvraag voor u om uw aanbieding te bekijken en goed te keuren. |
-| Publiceren | We voeren een reeks stappen uit om te controleren of de preview-aanbieding Live is gepubliceerd naar de commerciële Marketplace. |
+| [Automatische validatie](#automated-validation-phase) | We verwerken een reeks geautomatiseerde validaties. |
+| [Certificering](#certification-phase) | We voeren hand matige validaties uit. |
+| [Voor beeld maken](#preview-creation-phase) | De aanbiedings pagina voor de preview-versie van uw aanbieding is beschikbaar voor iedereen met de preview-koppeling. Als uw aanbieding wordt verkocht via micro soft (transactable), kan alleen de doel groep die u hebt opgegeven op de pagina **voor beeld van de doel groep** van uw aanbieding kopen en toegang krijgen tot de aanbieding voor testen. |
+| [Uitgever afmelden](#publisher-sign-off-phase) | We sturen u een e-mail met een aanvraag voor u om uw aanbieding te bekijken en goed te keuren. |
+| [Publiceren](#publish-phase) | We voeren een reeks stappen uit om te controleren of de preview-aanbieding Live is gepubliceerd naar de commerciële Marketplace. |
 |||
 
 ## <a name="automated-validation-phase"></a>Automatische validatie fase
@@ -102,7 +93,7 @@ Elk aanbiedings type controleert een reeks vereiste criteria voor basis geschikt
 
 #### <a name="content-validation"></a>Validatie van inhoud
 
-De gegevens die u hebt ingevoerd tijdens het maken van uw aanbieding, worden gecontroleerd op kwaliteit en relevantie. Met deze controles worden uw vermeldingen voor de details van Marketplace-vermelding, prijzen, Beschik baarheid, bijbehorende plannen, enzovoort gecontroleerd. Om te voldoen aan de vermeldings criteria van Azure Marketplace en Microsoft AppSource, zullen we valideren dat uw aanbieding de volgende bevat:
+De gegevens die u hebt ingevoerd tijdens het maken van uw aanbieding, worden gecontroleerd op kwaliteit en relevantie. Met deze controles worden uw vermeldingen voor de details van Marketplace-vermelding, prijzen, Beschik baarheid, bijbehorende plannen, enzovoort gecontroleerd. Om te voldoen aan de vermeldings criteria van Microsoft AppSource en Azure Marketplace, zullen we valideren dat uw aanbieding de volgende bevat:
 
 - Een titel die de aanbieding nauw keurig beschrijft
 - Goed geschreven beschrijvingen die een uitgebreid overzicht en toegevoegde waarde bieden
@@ -128,7 +119,7 @@ Als uw aanbieding een van de aanbiedingen, technische of beleids controles mislu
 
 Dit rapport bevat beschrijvingen van alle beleids regels die zijn mislukt, samen met controle notities. Bekijk dit e-mail rapport, Los eventuele problemen op, breng updates voor uw aanbieding waar nodig aan en verzend de aanbieding opnieuw via de [Portal voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in het partner centrum. U kunt de aanbieding zo vaak als nodig opnieuw verzenden totdat de certificering is door gegeven.
 
-## <a name="preview-creation-phase"></a>Fase voor het maken van een preview
+## <a name="preview-creation-phase"></a>Fase voor preview-versie maken
 
 Tijdens het maken van de preview-fase maken we een versie van uw aanbieding die alleen toegankelijk is voor de doel groep die u hebt opgegeven op de pagina **voor beeld van de doel groep** van uw aanbieding, indien van toepassing. De preview-versie van uw aanbieding is niet beschikbaar voor iedereen buiten het publiek van de preview-periode tot u de Live-aanbieding publiceert.
 
@@ -141,21 +132,18 @@ Wanneer de aanbieding klaar is om te worden gecontroleerd en u bent afgemeld, st
 
 De volgende scherm afbeelding toont de pagina **overzicht van aanbieding** voor een SaaS-aanbieding. De validatie stappen die u op deze pagina ziet, variëren afhankelijk van het type aanbieding en de selecties die u hebt gemaakt tijdens het maken van de aanbieding.
 
-![Illustreert de pagina overzicht van aanbieding voor een aanbieding in partner centrum. De knop Go Live en de preview-koppelingen worden weer gegeven.](./partner-center-portal/media/publish-status-publisher-signoff.png)
+![Illustreert de pagina overzicht van aanbieding voor een aanbieding in partner centrum. De knop Go Live en de preview-koppelingen worden weer gegeven.](./media/publish-status-publisher-signoff.png)
 
-### <a name="to-preview-your-offer-and-sign-off"></a>Een voor beeld van uw aanbieding bekijken en u afmelden
+### <a name="previewing-and-approving-your-offer"></a>Uw aanbieding bekijken en goed keuren
 
-1. Op de **overzichts** pagina van de aanbieding kunt u een voor beeld van uw aanbieding weer geven door de koppeling te selecteren onder de knop **Go Live** .
+> [!IMPORTANT]
+> Als u de end-to-end aankoop-en configuratie stroom wilt valideren, koopt u uw aanbieding terwijl deze in preview is. Informeer micro soft eerst met een [ondersteunings ticket](https://aka.ms/marketplacesupport) om ervoor te zorgen dat er geen kosten worden verwerkt.
 
-   > [!NOTE]
-   > Er is een koppeling naar de preview-versie van AppSource, de preview van Azure Marketplace, of beide, afhankelijk van de opties die u hebt gekozen bij het maken van uw aanbieding. Als u ervoor kiest om uw aanbieding via micro soft te verkopen, kan iedereen die is toegevoegd aan de preview-doel groep de aanschaf en implementatie van uw aanbieding testen om ervoor te zorgen dat deze aan uw vereisten voldoet tijdens deze fase.
+Op de **overzichts** pagina van de aanbieding ziet u een voor beeld van koppelingen onder de knop **Go Live** . Er is een koppeling naar de preview-versie van AppSource, de preview van Azure Marketplace, of beide, afhankelijk van de opties die u hebt gekozen bij het maken van uw aanbieding. Als u ervoor kiest om uw aanbieding via micro soft te verkopen, kan iedereen die is toegevoegd aan de preview-doel groep de aanschaf en implementatie van uw aanbieding testen om ervoor te zorgen dat deze aan uw vereisten voldoet tijdens deze fase.
 
-1. Als u wijzigingen wilt aanbrengen nadat u een voor beeld van de aanbieding hebt bekeken, kunt u deze bewerken en opnieuw verzenden om een nieuwe preview te publiceren. Zie [een bestaande aanbieding in de commerciële Marketplace bijwerken](./partner-center-portal/update-existing-offer.md)voor meer informatie.
+Nadat u uw Preview hebt goedgekeurd, selecteert u **Live** om uw aanbieding Live naar de commerciële Marketplace te publiceren. 
 
-1. Nadat u uw Preview hebt goedgekeurd, kunt u uw aanbieding Live publiceren naar de commerciële Marketplace door **Go Live**te selecteren.
-
-   > [!TIP]
-   > Als uw aanbieding al Live is en beschikbaar is voor het publiek in de Marketplace, worden de updates die u aanbrengt pas live als u **Live go**selecteert.
+Als u wijzigingen wilt aanbrengen nadat u een voor beeld van de aanbieding hebt bekeken, kunt u uw publicatie aanvraag bewerken en opnieuw verzenden. Als uw aanbieding al Live is en beschikbaar is voor het publiek in de Marketplace, worden de updates die u aanbrengt pas Live wanneer u **Go*selecteert. Zie [een bestaande aanbieding bijwerken in de commerciële Marketplace](./partner-center-portal/update-existing-offer.md) voor meer informatie.
 
 ## <a name="publish-phase"></a>Publicatie fase
 
@@ -183,10 +171,6 @@ Nu u ervoor hebt gekozen om live te gaan met uw aanbieding, waardoor deze beschi
 
 Nadat deze validatie controles zijn voltooid, is uw aanbieding Live in de Marketplace.
 
-### <a name="reporting-usage-of-preview-and-other-internal-usage"></a>Het gebruik van een preview-versie en ander intern gebruik rapporteren
+## <a name="next-steps"></a>Volgende stappen
 
-Als u de end-to-end aankoop-en configuratie stroom wilt valideren, koopt u uw aanbieding terwijl deze in preview is. Informeer micro soft eerst met een [ondersteunings ticket](https://aka.ms/marketplacesupport) om ervoor te zorgen dat er geen kosten worden verwerkt.
-
-## <a name="next-step"></a>Volgende stap
-
-[Toegang krijgen tot analytische rapporten voor de commerciële Marketplace in het partner centrum](./partner-center-portal/analytics.md)
+[Toegang krijgen tot analytische rapporten voor de commerciële Marketplace in het partner centrum](partner-center-portal/analytics.md)

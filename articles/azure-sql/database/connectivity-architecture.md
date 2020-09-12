@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705738"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489575"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database-en Azure Synapse Analytics-connectiviteits architectuur
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Frankrijk - centraal       | 40.79.137.0, 40.79.129.1 |
 | Duitsland - centraal      | 51.4.144.100       |
 | Duitsland-noord Oost   | 51.5.144.179       |
+| Duitsland - west-centraal | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
 | India - centraal        | 104.211.96.159     |
 | India - zuid          | 104.211.224.146    |
 | India - west           | 104.211.160.80     |
@@ -112,7 +113,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Zwitserland - noord    | 51.107.56.0, 51.107.57.0 |
 | Zwitserland - west     | 51.107.152.0, 51.107.153.0 |
 | UAE - centraal          | 20.37.72.64        |
-| UAE - noord            | 65.52.248.0        |
+| VAE - noord            | 65.52.248.0        |
 | Verenigd Koninkrijk Zuid             | 51.140.184.11, 51.105.64.0 |
 | Verenigd Koninkrijk West              | 51.141.8.11        |
 | VS - west-centraal      | 13.78.145.25, 13.78.248.43        |

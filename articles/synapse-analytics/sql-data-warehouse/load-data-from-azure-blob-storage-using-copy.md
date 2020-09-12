@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261834"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442978"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
@@ -48,7 +48,7 @@ Een Azure SQL-pool wordt gemaakt met een gedefinieerde set [compute-resources](m
 
 Volg deze stappen om een lege database te maken.
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** .
+1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
 2. Selecteer **data bases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw** .
 
@@ -76,7 +76,7 @@ Volg deze stappen om een lege database te maken.
 
     ![server maken](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Selecteer **Selecteren**.
+5. Kies **Selecteren**.
 
 6. Selecteer **prestatie niveau** om op te geven of het Data Warehouse gen1 of Gen2 is en het aantal data warehouse-eenheden.
 
@@ -98,7 +98,7 @@ Volg deze stappen om een lege database te maken.
 Een firewall op server niveau die voor komt dat externe toepassingen en hulpprogram ma's verbinding maken met de server of data bases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
-> SQL Database Warehouse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 1433 openstelt.
+> Azure Synapse Analytics communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 1433 openstelt.
 
 1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu aan de linkerkant en selecteert u vervolgens **mySampleDatabase** op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie.
 

@@ -14,21 +14,21 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274f603fa0d7a48b99a7caed5d465d44bc68e9ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019961"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660969"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Een SAML 2.0-id-provider (IdP) gebruiken voor eenmalige aanmelding
 
-Dit document bevat informatie over het gebruik van een id-provider die voldoet aan de SAML 2,0-standaard die voldoet aan de voor keur voor de provider van de voorkeurs beveiligings token service (STS). Dit scenario is handig als u al een gebruikers lijst en een wacht woord hebt opgeslagen op locatie die toegankelijk zijn via SAML 2,0. Deze bestaande gebruikers lijst kan worden gebruikt voor aanmelding bij Office 365 en andere met Azure AD beveiligde bronnen. Het SAML 2,0 SP-Lite-profiel is gebaseerd op de algemeen gebruikte Security Assertion Markup Language (SAML) federatieve identiteits norm om een aanmeldings-en kenmerk uitwisselings raamwerk te bieden.
+Dit document bevat informatie over het gebruik van een id-provider die voldoet aan de SAML 2,0-standaard die voldoet aan de voor keur voor de provider van de voorkeurs beveiligings token service (STS). Dit scenario is handig als u al een gebruikers lijst en een wacht woord hebt opgeslagen op locatie die toegankelijk zijn via SAML 2,0. Deze bestaande gebruikers lijst kan worden gebruikt voor aanmelding bij Microsoft 365 en andere met Azure AD beveiligde bronnen. Het SAML 2,0 SP-Lite-profiel is gebaseerd op de algemeen gebruikte Security Assertion Markup Language (SAML) federatieve identiteits norm om een aanmeldings-en kenmerk uitwisselings raamwerk te bieden.
 
 >[!NOTE]
 >Zie de [lijst met compatibiliteits problemen met Azure AD Federation](how-to-connect-fed-compatibility.md) voor een lijst met id van derden die zijn getest voor gebruik met Azure AD.
 
-Micro soft biedt ondersteuning voor deze aanmeldings ervaring als de integratie van een micro soft-Cloud service, zoals Office 365, met uw correct geconfigureerde SAML 2,0 op profiel gebaseerde IdP. SAML 2,0-id-providers zijn producten van derden en daarom biedt micro soft geen ondersteuning voor de aanbevolen procedures voor implementatie, configuratie en probleem oplossing. Als de app is geconfigureerd, kan de integratie met de SAML 2,0-ID-provider worden getest op de juiste configuratie met behulp van het hulp programma micro soft Connectivity Analyzer. dit wordt hieronder nader beschreven. Vraag de organisatie die deze heeft geleverd voor meer informatie over uw SAML 2,0 SP-Lite-ID-provider.
+Micro soft biedt ondersteuning voor deze aanmeldings ervaring als de integratie van een micro soft-Cloud service, zoals Microsoft 365, met uw op de juiste manier geconfigureerde SAML 2,0-IdP. SAML 2,0-id-providers zijn producten van derden en daarom biedt micro soft geen ondersteuning voor de aanbevolen procedures voor implementatie, configuratie en probleem oplossing. Als de app is geconfigureerd, kan de integratie met de SAML 2,0-ID-provider worden getest op de juiste configuratie met behulp van het hulp programma micro soft Connectivity Analyzer. dit wordt hieronder nader beschreven. Vraag de organisatie die deze heeft geleverd voor meer informatie over uw SAML 2,0 SP-Lite-ID-provider.
 
 > [!IMPORTANT]
 > Er is slechts een beperkt aantal clients beschikbaar in dit aanmeldings scenario met SAML 2,0-id-providers, waaronder:
@@ -44,12 +44,12 @@ Micro soft biedt ondersteuning voor deze aanmeldings ervaring als de integratie 
 Alle andere clients zijn niet beschikbaar in dit aanmeldings scenario met uw SAML 2,0-ID-provider. Bijvoorbeeld, de Lync 2010-bureaubladclient kan zich niet aanmelden bij de service met uw SAML 2,0-ID-provider die is geconfigureerd voor eenmalige aanmelding.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Vereisten voor Azure AD SAML 2,0-protocollen
-Dit document bevat gedetailleerde vereisten voor het protocol en de bericht indeling die uw SAML 2,0-ID-provider moet implementeren om te communiceren met Azure AD om aanmelding in te scha kelen op een of meer micro soft-Cloud Services (zoals Office 365). De SAML 2,0 Relying Party (SP-STS) voor een micro soft-Cloud service die in dit scenario wordt gebruikt, is Azure AD.
+Dit document bevat gedetailleerde vereisten voor het protocol en de bericht indeling die uw SAML 2,0-ID-provider moet implementeren om te communiceren met Azure AD om aanmelden op een of meer micro soft-Cloud Services (zoals Microsoft 365) in te scha kelen. De SAML 2,0 Relying Party (SP-STS) voor een micro soft-Cloud service die in dit scenario wordt gebruikt, is Azure AD.
 
 Het is raadzaam om ervoor te zorgen dat uw SAML 2,0-ID-provider uitvoer berichten net zo vergelijkbaar zijn als de gegeven voorbeeld traceringen. Gebruik waar mogelijk specifieke kenmerk waarden van de opgegeven Azure AD-meta gegevens. Wanneer u tevreden bent met uw uitvoer berichten, kunt u met de micro soft Connectivity Analyzer testen zoals hieronder wordt beschreven.
 
 De meta gegevens van Azure AD kunnen worden gedownload via deze URL: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml) .
-Voor klanten in China die gebruikmaken van het China-specifiek exemplaar van Office 365, moet het volgende Federatie-eind punt worden gebruikt: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml) .
+Voor klanten in China die gebruikmaken van het China-specifiek exemplaar van Microsoft 365, moet het volgende Federatie-eind punt worden gebruikt: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml) .
 
 ## <a name="saml-protocol-requirements"></a>Vereisten voor het SAML-Protocol
 In deze sectie wordt beschreven hoe de aanvraag-en antwoord bericht paren samen worden geplaatst, zodat u uw berichten op de juiste wijze kunt Format teren.
@@ -63,9 +63,9 @@ In het SAML-antwoord bericht bevat het handtekening knooppunt informatie over de
 2.  Het algoritme RSA-SHA1 moet worden gebruikt als de DigestMethod. Andere algoritmen voor digitale hand tekeningen worden niet geaccepteerd.
    `<ds:DigestMethod Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>`
 3.  U kunt ook het XML-document ondertekenen. 
-4.  Het transformatie algoritme moet overeenkomen met de waarden in het volgende voor beeld:`<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+4.  Het transformatie algoritme moet overeenkomen met de waarden in het volgende voor beeld:    `<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
        <ds:Transform Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.  Het SignatureMethod-algoritme moet overeenkomen met het volgende voor beeld:`<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+9.  Het SignatureMethod-algoritme moet overeenkomen met het volgende voor beeld:   `<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>Ondersteunde bindingen
 Bindingen zijn de Trans Port-gerelateerde communicatie parameters die vereist zijn. De volgende vereisten zijn van toepassing op de bindingen
@@ -80,7 +80,7 @@ In deze tabel worden de vereisten voor specifieke kenmerken in het SAML 2,0-beri
 |Kenmerk|Beschrijving|
 | ----- | ----- |
 |Meid|De waarde van deze bevestiging moet gelijk zijn aan de ImmutableID van de Azure AD-gebruiker. Het kan Maxi maal 64 alfanumerieke tekens bevatten. Niet-HTML-veilige tekens moeten worden gecodeerd, bijvoorbeeld een "+"-teken als ". 2B".|
-|IDPEmail|De User Principal Name (UPN) wordt weer gegeven in het SAML-antwoord als een element met de naam IDPEmail de UserPrincipalName (UPN) van de gebruiker in azure AD/Office 365. De UPN heeft de indeling van het e-mail adres. UPN-waarde in Windows Office 365 (Azure Active Directory).|
+|IDPEmail|De User Principal Name (UPN) wordt weer gegeven in het SAML-antwoord als een element met de naam IDPEmail de UserPrincipalName (UPN) van de gebruiker in azure AD/Microsoft 365. De UPN heeft de indeling van het e-mail adres. UPN-waarde in Windows Microsoft 365 (Azure Active Directory).|
 |Verlener|Moet een URI zijn van de ID-provider. Gebruik de certificaat verlener niet uit de voorbeeld berichten. Als u meerdere domeinen op het hoogste niveau in uw Azure AD-tenants hebt, moet de uitgever overeenkomen met de opgegeven URI-instelling die per domein is geconfigureerd.|
 
 >[!IMPORTANT]
@@ -103,7 +103,7 @@ Hier volgt een voor beeld van een aanvraag bericht dat vanuit Azure AD wordt ver
     </samlp:AuthnRequest>
 ```
 
-Hier volgt een voor beeld van een antwoord bericht dat wordt verzonden vanuit de voor beeld-ID-provider van SAML 2,0-compatibel naar Azure AD/Office 365.
+Hier volgt een voor beeld van een antwoord bericht dat wordt verzonden vanuit de voor beeld-ID-provider van SAML 2,0-compatibel naar Azure AD/Microsoft 365.
 
 ```xml
     <samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -159,7 +159,7 @@ Hier volgt een voor beeld van een antwoord bericht dat wordt verzonden vanuit de
 ```
 
 ## <a name="configure-your-saml-20-compliant-identity-provider"></a>Uw ID-provider voor SAML 2,0 compliant configureren
-Deze sectie bevat richt lijnen voor het configureren van uw SAML 2,0-ID-provider voor het communiceren met Azure AD om eenmalige aanmelding toegang tot een of meer micro soft-Cloud Services (zoals Office 365) met het SAML 2,0-protocol mogelijk te maken. De SAML 2,0-Relying Party voor een micro soft-Cloud service die in dit scenario wordt gebruikt, is Azure AD.
+Deze sectie bevat richt lijnen voor het configureren van uw SAML 2,0-ID-provider voor het communiceren met Azure AD om eenmalige aanmelding toegang te bieden tot een of meer micro soft-Cloud Services (zoals Microsoft 365) met behulp van het SAML 2,0-protocol. De SAML 2,0-Relying Party voor een micro soft-Cloud service die in dit scenario wordt gebruikt, is Azure AD.
 
 ## <a name="add-azure-ad-metadata"></a>Azure AD-meta gegevens toevoegen
 Uw SAML 2,0-ID-provider moet voldoen aan informatie over de Azure AD-Relying Party. Azure AD publiceert meta gegevens op https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml .
@@ -178,7 +178,7 @@ U moet de communicatie tussen uw SAML 2,0-ID-provider en Azure AD inschakelen. D
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Windows Power Shell installeren voor aanmelding met SAML 2,0-ID-provider
 Nadat u uw SAML 2,0-ID-provider voor gebruik met Azure AD-aanmelding hebt geconfigureerd, is de volgende stap het downloaden en installeren van de Azure Active Directory-module voor Windows Power shell. Na de installatie kunt u deze cmdlets gebruiken om uw Azure AD-domeinen als federatieve domeinen te configureren.
 
-De Azure Active Directory-module voor Windows Power shell is een down load voor het beheren van uw organisatie gegevens in azure AD. Met deze module wordt een set cmdlets geïnstalleerd in Windows Power shell. u voert deze cmdlets uit om eenmalige aanmelding in te stellen voor Azure AD en vervolgens naar alle Cloud Services waarop u bent geabonneerd. Voor instructies over het downloaden en installeren van de-cmdlets raadpleegt u[https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
+De Azure Active Directory-module voor Windows Power shell is een down load voor het beheren van uw organisatie gegevens in azure AD. Met deze module wordt een set cmdlets geïnstalleerd in Windows Power shell. u voert deze cmdlets uit om eenmalige aanmelding in te stellen voor Azure AD en vervolgens naar alle Cloud Services waarop u bent geabonneerd. Zie [/previous-versions/Azure/jj151815 (v = Azure. 100)](/previous-versions/azure/jj151815(v=azure.100)) voor instructies voor het downloaden en installeren van de cmdlets.
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Een vertrouwens relatie instellen tussen uw SAML-ID-provider en Azure AD
 Voordat u een Federatie configureert in een Azure AD-domein, moet er een aangepast domein zijn geconfigureerd. U kunt het standaard domein dat door micro soft wordt verschaft niet dewaarderen. Het standaard domein van micro soft eindigt met ' onmicrosoft.com '.
@@ -200,7 +200,7 @@ De volgende procedure helpt u bij het converteren van een bestaand standaard dom
     Connect-MsolService
     ```
     
-2. Configureer uw gewenste Office 365-domein om Federatie te gebruiken met SAML 2,0:
+2. Configureer uw gewenste Microsoft 365 domein om Federatie te gebruiken met SAML 2,0:
 
     ```powershell
     $dom = "contoso.com" 
@@ -238,19 +238,19 @@ De volgende procedure helpt u bij het converteren van een bestaand standaard dom
     </IDPSSODescriptor>
     ``` 
 
-Zie voor meer informatie over ' set-MsolDomainAuthentication ': [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) .
+Zie voor meer informatie over ' set-MsolDomainAuthentication ': [/previous-versions/Azure/dn194112 (v = Azure. 100)](/previous-versions/azure/dn194112(v=azure.100)).
 
 >[!NOTE]
 >U moet `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` alleen gebruiken als u een ECP-extensie voor uw ID-provider hebt ingesteld. Exchange Online-clients, met uitzonde ring van Outlook Web Application (OWA), zijn afhankelijk van een op POST gebaseerd actief eind punt. Als uw SAML 2,0 STS een actief eind punt implementeert dat vergelijkbaar is met de ECP-implementatie van shibboleth van een actief eind punt, is het mogelijk dat deze uitgebreide clients met de Exchange Online-service communiceren.
 
-Zodra Federatie is geconfigureerd, kunt u terugschakelen naar ' niet-federatief ' (of ' beheerd '), maar deze wijziging duurt Maxi maal twee uur om te volt ooien en er moeten nieuwe, wille keurige wacht woorden worden toegewezen aan elke gebruiker in de Cloud. In sommige gevallen kan het nodig zijn om terug te gaan naar ' beheerd ' om een fout in uw instellingen te herstellen. Zie voor meer informatie over domein conversie: [https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) .
+Zodra Federatie is geconfigureerd, kunt u terugschakelen naar ' niet-federatief ' (of ' beheerd '), maar deze wijziging duurt Maxi maal twee uur om te volt ooien en er moeten nieuwe, wille keurige wacht woorden worden toegewezen aan elke gebruiker in de Cloud. In sommige gevallen kan het nodig zijn om terug te gaan naar ' beheerd ' om een fout in uw instellingen te herstellen. Zie voor meer informatie over domein conversie: [/previous-versions/Azure/dn194122 (v = Azure. 100)](/previous-versions/azure/dn194122(v=azure.100)).
 
-## <a name="provision-user-principals-to-azure-ad--office-365"></a>Gebruikers principals inrichten voor Azure AD/Office 365
-Voordat u uw gebruikers kunt verifiëren voor Office 365, moet u Azure AD inrichten met gebruikers-principals die overeenkomen met de bewering in de SAML 2,0-claim. Als deze gebruikers-principals niet vooraf bekend zijn bij Azure AD, kunnen ze niet worden gebruikt voor federatieve aanmelding. Azure AD Connect of Windows Power shell kan worden gebruikt om gebruikers-principals in te richten.
+## <a name="provision-user-principals-to-azure-ad--microsoft-365"></a>Gebruikers principals inrichten voor Azure AD/Microsoft 365
+Voordat u uw gebruikers kunt verifiëren voor Microsoft 365, moet u Azure AD inrichten met gebruikers principals die overeenkomen met de bewering in de SAML 2,0-claim. Als deze gebruikers-principals niet vooraf bekend zijn bij Azure AD, kunnen ze niet worden gebruikt voor federatieve aanmelding. Azure AD Connect of Windows Power shell kan worden gebruikt om gebruikers-principals in te richten.
 
 Azure AD Connect kan worden gebruikt om principals in uw domeinen in uw Azure AD-Directory in te richten op de on-premises Active Directory. Zie [uw on-premises Directory's integreren met Azure Active Directory](whatis-hybrid-identity.md)voor meer gedetailleerde informatie.
 
-Windows Power shell kan ook worden gebruikt om nieuwe gebruikers toe te voegen aan Azure AD en wijzigingen te synchroniseren vanuit de on-premises Directory. Als u de Windows Power shell-cmdlets wilt gebruiken, moet u de [Azure Active Directory-modules](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)downloaden.
+Windows Power shell kan ook worden gebruikt om nieuwe gebruikers toe te voegen aan Azure AD en wijzigingen te synchroniseren vanuit de on-premises Directory. Als u de Windows Power shell-cmdlets wilt gebruiken, moet u de [Azure Active Directory-modules](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)downloaden.
 
 In deze procedure wordt uitgelegd hoe u één gebruiker toevoegt aan Azure AD.
 
@@ -270,7 +270,7 @@ In deze procedure wordt uitgelegd hoe u één gebruiker toevoegt aan Azure AD.
       -UsageLocation "US" 
     ```
 
-Voor meer informatie over de afhandeling van ' New-MsolUser ',[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
+Voor meer informatie over de afhandeling van ' New-MsolUser ', [/previous-versions/Azure/dn194096 (v = Azure. 100)](/previous-versions/azure/dn194096(v=azure.100))
 
 >[!NOTE]
 >De waarde ' UserPrinciplName ' moet overeenkomen met de waarde die u wilt verzenden voor ' IDPEmail ' in uw SAML 2,0-claim en de waarde ' ImmutableID ' moet overeenkomen met de waarde die is verzonden in de bevestiging ' NameID '.
@@ -283,7 +283,7 @@ Lees, voordat u eenmalige aanmelding verifieert en beheert (ook wel identiteits 
 2.  U hebt uw SAML 2,0-ID-provider geconfigureerd
 3.  Windows Power Shell installeren voor eenmalige aanmelding met SAML 2,0-ID-provider
 4.  Een vertrouwens relatie instellen tussen de SAML 2,0-ID-provider en Azure AD
-5.  Een bekende test gebruiker-principal is ingericht voor Azure Active Directory (Office 365) via Windows Power shell of Azure AD Connect.
+5.  Een bekende test gebruiker-principal is ingericht voor Azure Active Directory (Microsoft 365) via Windows Power shell of Azure AD Connect.
 6.  Configureer adreslijst synchronisatie met behulp van [Azure AD Connect](whatis-hybrid-identity.md).
 
 Na het instellen van eenmalige aanmelding met uw ID-provider op basis van SAML 2,0 SP-lite, moet u controleren of deze goed werkt.

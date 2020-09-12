@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 08/31/2020
+ms.openlocfilehash: 9564611ee37c2aa2f104bbb14096a3b2f45fb7cd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855104"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485366"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-gebeurtenis bronnen
 
@@ -64,7 +64,7 @@ Het gebruik van de streaming-pijp lijn voor het importeren van historische gegev
 
 ## <a name="event-source-timestamp"></a>Tijds tempel gebeurtenis bron
 
-Wanneer u een gebeurtenis bron configureert, wordt u gevraagd om een time stamp-ID-eigenschap op te geven. De eigenschap time stamp wordt gebruikt om gebeurtenissen gedurende een periode bij te houden. Dit is de tijd die wordt gebruikt als de $event. $ts in de [query-api's](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) en voor het uitzetten van reeksen in de Azure time series Insights TSI-Verkenner. Als er geen eigenschap wordt gegeven tijdens de aanmaak tijd, of als de tijds tempel eigenschap ontbreekt in een gebeurtenis, worden de IoT Hub van de gebeurtenis of de gebeurtenissen hubs in de wachtrij gezet als standaard waarde gebruikt. Eigenschaps waarden van tijds tempels worden opgeslagen in UTC.
+Wanneer u een gebeurtenis bron configureert, wordt u gevraagd om een time stamp-ID-eigenschap op te geven. De eigenschap time stamp wordt gebruikt om gebeurtenissen gedurende een periode bij te houden. Dit is de tijd die wordt gebruikt als de $event. $ts in de [query-api's](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) en voor het uitzetten van reeksen in de Azure time series Insights Verkenner. Als er geen eigenschap wordt gegeven tijdens de aanmaak tijd, of als de tijds tempel eigenschap ontbreekt in een gebeurtenis, worden de IoT Hub van de gebeurtenis of de gebeurtenissen hubs in de wachtrij gezet als standaard waarde gebruikt. Eigenschaps waarden van tijds tempels worden opgeslagen in UTC.
 
 Over het algemeen kunnen gebruikers ervoor kiezen de tijds tempel eigenschap aan te passen en de tijd te gebruiken waarop de sensor of tag de Lees bewerking heeft gegenereerd, in plaats van de standaard hub in de wachtrij te gebruiken. Dit is met name nodig wanneer apparaten een onherstelbaar connectiviteits verlies hebben en een batch van vertraagde berichten wordt doorgestuurd naar Azure Time Series Insights-Gen2.
 

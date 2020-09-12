@@ -1,6 +1,6 @@
 ---
-title: SQL Database DAC-pakketten gebruiken-Azure SQL Edge (preview)
-description: Meer informatie over het gebruik van dacpacs in Azure SQL Edge (preview)
+title: SQL Database DACPAC-en BACPAC-pakketten gebruiken-Azure SQL Edge (preview)
+description: Meer informatie over het gebruik van dacpacs en bacpacs in Azure SQL Edge (preview)
 keywords: SQL-Edge, sqlpackage
 services: sql-edge
 ms.service: sql-edge
@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 52c8e9586d8ee53cdaac28cb1c48d2927d82c2ed
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233286"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462755"
 ---
-# <a name="sql-database-dac-packages-in-sql-edge"></a>SQL Database DAC-pakketten in SQL-rand
+# <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>DACPAC-en BACPAC-pakketten in SQL-rand SQL Database
 
 Azure SQL Edge (preview) is een geoptimaliseerde relationele data base-engine die is afgestemd op IoT-en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server biedt Azure SQL Edge ingebouwde streaming-mogelijkheden voor realtime analyse en complexe gebeurtenis verwerking.
 
-Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waarmee u een [SQL database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. SQL Database dacpacs kan worden geïmplementeerd op SQL Edge met behulp van de para meter SqlPackage die wordt weer gegeven via de `module twin's desired properties` optie van de SQL Edge-module:
+Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waarmee u een [SQL database DACPAC-en BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. SQL Database dacpacs kan worden geïmplementeerd op SQL Edge met behulp van de para meter SqlPackage die wordt weer gegeven via de `module twin's desired properties` optie van de SQL Edge-module:
 
 ```json
 {
@@ -34,16 +34,18 @@ Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waar
 
 |Veld | Beschrijving |
 |------|-------------|
-| SqlPackage | Azure Blob-opslag-URI voor het *. zip-bestand dat de SQL Database DAC-pakket bevat.
+| SqlPackage | Azure Blob-opslag-URI voor het *zip* -bestand dat de SQL database DAC-of BACPAC-pakket bevat. Het zip-bestand kan zowel meerdere DAC-pakketten als Bacpac-bestanden bevatten.
 | ASAJobInfo | Azure Blob-opslag-URI voor de ASA Edge-taak.
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>Een SQL Database DAC-pakket gebruiken met SQL Edge
 
-Voer de volgende stappen uit om een SQL Database DAC-pakket (*. dacpac) met SQL Edge te gebruiken:
+Als u een SQL Database DAC `(*.dacpac)` -pakket of een BACPAC `(*.bacpac)` -bestand met SQL Edge wilt gebruiken, volgt u deze stappen:
 
-1. Een SQL Database DAC-pakket maken of extra heren. Zie [een DAC extra heren uit een Data Base](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) voor informatie over het genereren van een DAC-pakket voor een bestaande SQL Server-Data Base.
+1. Een DAC-pakket maken/extra heren of een Bacpac-bestand exporteren met behulp van het hieronder vermelde mechanisme. 
+    - Een SQL Database DAC-pakket maken of extra heren. Zie [een DAC extra heren uit een Data Base](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) voor informatie over het genereren van een DAC-pakket voor een bestaande SQL Server-Data Base.
+    - Een geïmplementeerd DAC-pakket of een Data Base exporteren. Zie [een gegevenslaag toepassing exporteren](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) voor meer informatie over het genereren van een Bacpac-bestand voor een bestaande SQL Server-Data Base.
 
-2. Zip-dacpac en upload het naar een Azure Blob Storage-account. Zie [blobs uploaden, downloaden en weer geven met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)voor meer informatie over het uploaden van bestanden naar Azure Blob-opslag.
+2. Zip het `*.dacpac` of het `*.bacpac` bestand en upload het naar een Azure Blob Storage-account. Zie [blobs uploaden, downloaden en weer geven met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)voor meer informatie over het uploaden van bestanden naar Azure Blob-opslag.
 
 3. Genereer een Shared Access Signature voor het zip-bestand met behulp van de Azure Portal. Zie [Toegang delegeren met Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md)voor meer informatie.
 
@@ -68,7 +70,7 @@ Voer de volgende stappen uit om een SQL Database DAC-pakket (*. dacpac) met SQL 
             {
                 "properties.desired":
                 {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac",
+                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac and/or the bacpac files",
                 }
             }
         ```
@@ -79,9 +81,9 @@ Voer de volgende stappen uit om een SQL Database DAC-pakket (*. dacpac) met SQL 
 
     9. Selecteer op de pagina **modules instellen** de optie **volgende** en vervolgens **verzenden**.
 
-5. Na het bijwerken van de module wordt het DAC-pakket bestand gedownload, uitgepakt en geïmplementeerd op basis van het SQL Edge-exemplaar.
+5. Na het bijwerken van de module wordt het pakket bestand gedownload, uitgepakt en geïmplementeerd op basis van het SQL Edge-exemplaar.
 
-Op elke keer dat de Azure SQL Edge-container opnieuw wordt opgestart, wordt het *. dacpac-bestands pakket gedownload en geëvalueerd op wijzigingen. Als er een nieuwe versie van het dacpac-bestand wordt aangetroffen, worden de wijzigingen geïmplementeerd in de data base in SQL-rand.
+Op elke keer dat de Azure SQL Edge-container opnieuw `*.dacpac` wordt opgestart, wordt het bestands pakket gedownload en geëvalueerd op wijzigingen. Als er een nieuwe versie van het dacpac-bestand wordt aangetroffen, worden de wijzigingen geïmplementeerd in de data base in SQL-rand. Bacpac-bestanden 
 
 ## <a name="next-steps"></a>Volgende stappen
 

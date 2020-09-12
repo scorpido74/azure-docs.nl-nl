@@ -1,5 +1,5 @@
 ---
-title: Gegevens laden in azure Synapse Analytics
+title: Gegevens laden in Azure Synapse Analytics
 description: Azure Data Factory gebruiken om gegevens te kopiÃ«ren naar Azure Synapse Analytics
 services: data-factory
 ms.author: jingwang
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c90590ac4c47f6ac8d51273fecfb653dfe056b1d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251986"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485767"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Gegevens laden in azure Synapse Analytics met behulp van Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure Synapse Analytics (voorheen SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een op de cloud gebaseerde scale-out data base waarmee grote hoeveel heden gegevens, zowel relationele als niet-relationeel, kunnen worden verwerkt. Azure Synapse Analytics is gebaseerd op de MPP-architectuur (enorm parallelle verwerking) die is geoptimaliseerd voor bedrijfsdata Warehouse-workloads. De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
+[Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een scale-out-data base op basis van de cloud die kan verwerken van enorme hoeveel heden gegevens, zowel relationele als niet-relationeel. Azure Synapse Analytics is gebaseerd op de MPP-architectuur (enorm parallelle verwerking) die is geoptimaliseerd voor bedrijfsdata Warehouse-workloads. De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
 
 Het is nu eenvoudiger dan ooit om aan de slag te gaan met Azure Synapse Analytics wanneer u Azure Data Factory gebruikt. Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud. U kunt de service gebruiken om een Azure Synapse-analyse te vullen met gegevens van uw bestaande systeem en tijd te besparen bij het bouwen van uw analyse oplossingen.
 
@@ -54,7 +54,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopiÃ
     * **Naam**: Voer *LoadSQLDWDemo* in als naam. De naam van uw data factory moet * wereld wijd uniek zijn. Als het fout bericht ' Data Factory-naam ' LoadSQLDWDemo ' is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de data factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
-    * **Versie**: Selecteer **v2**.
+    * **Versie**: Selecteer **V2**.
     * **Locatie**: Selecteer de locatie voor de Data Factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven die door data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden. Deze gegevens archieven bevatten Azure Data Lake Store, Azure Storage, Azure SQL Database, enzovoort.
 
 3. Selecteer **Maken**.
@@ -64,7 +64,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopiÃ
 
    Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
-## <a name="load-data-into-azure-synapse-analytics"></a>Gegevens laden in azure Synapse Analytics
+## <a name="load-data-into-azure-synapse-analytics"></a>Gegevens laden in Azure Synapse Analytics
 
 1. Selecteer op de pagina **Aan de slag** de tegel **Gegevens kopiÃ«ren** om het hulpprogramma Gegevens kopiÃ«ren te openen.
 
@@ -102,13 +102,13 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopiÃ
 
     a. Klik op **+ Nieuwe verbinding maken** om een verbinding toe te voegen
 
-    b. Selecteer **Azure Synapse Analytics (voorheen SQL DW)** in de galerie en selecteer **door gaan**. U kunt ' SQL ' in het zoekvak typen om de connectors te filteren.
+    b. Selecteer **Azure Synapse Analytics (voorheen SQL Data Warehouse)** in de galerie en selecteer **door gaan**. U kunt ' SQL ' in het zoekvak typen om de connectors te filteren.
 
-    ![Azure SQL DW selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+    ![Azure Synapse Analytics selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **verbinding testen** om de instellingen te valideren en selecteer vervolgens **maken**.
 
-    ![Azure SQL DW configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+    ![Azure Synapse Analytics configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Selecteer de zojuist gemaakte gekoppelde service als sink. Klik vervolgens op **Volgende**.
 

@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: peering configureren: klassiek'
 description: Dit artikel begeleidt u stapsgewijs door de procedure voor het maken en inrichten van de persoonlijke, openbare en Microsoft-peering van een ExpressRoute-circuit. In dit artikel leest u hoe u de status controleert en peerings voor uw circuit bijwerkt of verwijdert.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: cherylmc
-ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736234"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395550"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Peering maken en wijzigen voor een ExpressRoute-circuit (klassiek)
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "84736234"
 > * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video-open bare peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-routing-classic.md)
+> * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het maken en beheren van peering/routerings configuratie voor een ExpressRoute-circuit met behulp van Power shell en het klassieke implementatie model. In de volgende stappen ziet u ook hoe u de status van een peering voor een ExpressRoute-circuit controleert en peerings bijwerkt of verwijdert en de inrichting ervan ongedaan maakt. U kunt een, twee of alle drie peerings (Azure private, Azure Public en micro soft) configureren voor een ExpressRoute-circuit. U kunt peerings configureren in elke gewenste volgorde. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. 

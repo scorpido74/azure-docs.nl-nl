@@ -4,12 +4,12 @@ description: Meer informatie over ondersteuning voor de migratie van fysieke ser
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051131"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535445"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Ondersteunings matrix voor de migratie van fysieke servers
 
@@ -45,7 +45,7 @@ De tabel bevat een overzicht van de ondersteuning voor fysieke servers die u wil
 **Mobility-service** | De Mobility Service-agent moet zijn geïnstalleerd op elke computer die u wilt migreren.
 **UEFI-opstart** | De gemigreerde machine in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM van Azure. Alleen server met Windows Server 2012 en hoger wordt ondersteund.<br/><br/> De besturingssysteem schijf moet Maxi maal vier partities hebben en volumes moeten worden geformatteerd met NTFS.
 **UEFI-beveiligd opstarten**         | Niet ondersteund voor migratie.
-**Doel schijf** | Machines kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
+**Doel schijf** | Machines kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, standaard SSD, Premium SSD) in Azure.
 **Schijfgrootte** | 2 TB besturingssysteem schijf; 8 TB voor gegevens schijven.
 **Schijf limieten** |  Maxi maal 63 schijven per computer.
 **Versleutelde schijven/volumes** |  Machines met versleutelde schijven/volumes worden niet ondersteund voor migratie.

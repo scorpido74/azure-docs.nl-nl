@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 72706a67e1798662ea0f40fa7843c32d8267e0d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320184"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646069"
 ---
 # <a name="collect-data-from-models-in-production"></a>Gegevens verzamelen van modellen in productie
 
@@ -67,11 +67,11 @@ Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 - U hebt een AKS-cluster nodig. Voor informatie over hoe u een maakt en implementeert, raadpleegt [u hoe u implementeert en waar](how-to-deploy-and-where.md).
 
-- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
 
-U kunt [gegevens verzameling](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py) inschakelen, ongeacht het model dat u via Azure machine learning of andere hulpprogram ma's implementeert.
+U kunt [gegevens verzameling](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) inschakelen, ongeacht het model dat u via Azure machine learning of andere hulpprogram ma's implementeert.
 
 Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
 
@@ -149,7 +149,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>Model gegevens analyseren met behulp van Power BI
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a> Model gegevens analyseren met behulp van Power BI
 
 1. Down load en open [Power bi Desktop](https://www.powerbi.com).
 
@@ -185,7 +185,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 1. Begin met het bouwen van uw aangepaste rapporten in uw model gegevens.
 
-### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>Model gegevens analyseren met behulp van Azure Databricks
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Model gegevens analyseren met behulp van Azure Databricks
 
 1. Maak een [Azure Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 

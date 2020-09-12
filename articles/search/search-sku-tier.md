@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922800"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661090"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -39,7 +39,7 @@ De meeste functies zijn beschikbaar op elke laag, inclusief gratis, maar bron-in
 
 De lagen worden onderscheiden door:
 
-+ Aantal indexen en Indexeer functies dat u kunt maken
++ Aantal indexen en Indexeer functies (maximum aantal)
 + Grootte en snelheid van partities (fysieke opslag)
 
 De laag die u selecteert, bepaalt het factureer bare percentage. De volgende scherm afbeelding van Azure Portal toont de beschik bare lagen, minus prijzen (die u kunt vinden in de portal en op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/search/). **Gratis**, **basis**en **standaard** zijn de meest voorkomende lagen.

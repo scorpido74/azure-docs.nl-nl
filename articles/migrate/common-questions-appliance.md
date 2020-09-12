@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050672"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514540"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -21,7 +21,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het Azure Migrate 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Wat is het Azure Migrate apparaat?
 
-Het Azure Migrate apparaat is een licht gewicht apparaat dat het Azure Migrate: Server Assessment Tool gebruikt om on-premises servers te detecteren en te evalueren. De Azure Migrate: het hulp programma voor server migratie gebruikt ook het apparaat voor de migratie van on-premises VMware-Vm's zonder agent.
+Het Azure Migrate apparaat is een licht gewicht apparaat dat het Azure Migrate: Server Assessment Tool gebruikt om fysieke of virtuele servers te detecteren en te beoordelen van on-premises of een andere cloud. De Azure Migrate: het hulp programma voor server migratie gebruikt ook het apparaat voor de migratie van on-premises VMware-Vm's zonder agent.
 
 Hier vindt u meer informatie over het Azure Migrate-apparaat:
 
@@ -35,13 +35,14 @@ Meer [informatie](migrate-appliance.md) over het apparaat.
 
 Het apparaat kan als volgt worden geïmplementeerd:
 
-- Een sjabloon gebruiken voor VMware-Vm's en Hyper-V-Vm's (eicellen-sjabloon voor VMware of VHD voor Hyper-V).
-- Als u geen sjabloon wilt gebruiken of als u zich in Azure Government bevindt, kunt u het apparaat voor VMware of Hyper-V implementeren met behulp van een Power shell-script.
-- Voor fysieke servers implementeert u het apparaat altijd met behulp van een script.
+- Een sjabloon gebruiken voor de detectie van virtuele VMware-machines (. Bestand eicellen) en virtuele Hyper-V-machines (. VHD-bestand) om een nieuwe virtuele machine te maken die als host fungeert voor het apparaat.
+- Als u geen sjabloon wilt gebruiken, kunt u het apparaat op een bestaande fysieke of virtuele machine implementeren voor detectie van virtuele VMware-machines of Hyper-V-machines met behulp van een Power shell-installatie script, dat kan worden gedownload in een zip-bestand vanuit de portal.
+- Voor fysieke of virtuele servers van on-premises of een wille keurige Cloud implementeert u het apparaat altijd met behulp van een script op een bestaande server.
+- Voor Azure Government kunnen alle drie apparaten alleen worden geïmplementeerd met het Power shell-installatie script.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hoe maakt het apparaat verbinding met Azure?
 
-Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute.
+Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute. Zorg ervoor dat deze [url's](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) white list zijn voor het apparaat om verbinding te maken met Azure.
 
 - Als u Azure ExpressRoute wilt gebruiken voor Azure Migrate replicatie verkeer, is micro soft-peering of een bestaande open bare peering vereist (open bare peering is afgeschaft voor nieuwe gemaakte aanmaak bewerkingen).
 - Replicatie via Azure ExpressRoute met (alleen) persoonlijke peering is ingeschakeld, wordt niet ondersteund.
@@ -66,6 +67,7 @@ Raadpleeg de volgende artikelen voor informatie over gegevens die het Azure Migr
 
 - **VMware-VM**: [Controleer](migrate-appliance.md#collected-data---vmware) de verzamelde gegevens.
 - **Hyper-V VM**: [Controleer](migrate-appliance.md#collected-data---hyper-v) de verzamelde gegevens.
+- **Fysieke of virtuele servers**:[Controleer](migrate-appliance.md#collected-data---physical) verzamelde gegevens.
 
 ## <a name="how-is-data-stored"></a>Hoe worden gegevens opgeslagen?
 
@@ -107,8 +109,7 @@ Aan een project kunnen meerdere apparaten zijn gekoppeld. Een apparaat kan echte
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kan de Azure Migrate apparaat/replicatie apparaat verbinding maken met dezelfde vCenter?
 
-Ja. U kunt zowel het Azure Migrate apparaat (gebruikt voor de distributie en de VMware-migratie zonder agent) toevoegen aan dezelfde vCenter-Server (gebruikt voor de migratie van virtuele VMware-machines op basis van een agent).
-
+Ja. U kunt zowel het Azure Migrate apparaat (gebruikt voor de distributie en de VMware-migratie zonder agent) toevoegen aan dezelfde vCenter-Server (gebruikt voor de migratie van virtuele VMware-machines op basis van een agent). Maar zorg ervoor dat u niet beide apparaten instelt op dezelfde VM en die momenteel niet worden ondersteund.
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hoeveel Vm's of servers kan ik vinden met een apparaat?
 
@@ -124,7 +125,9 @@ Als u echter de resource groep verwijdert, worden ook andere geregistreerde appa
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Kan ik het apparaat met een ander abonnement of project gebruiken?
 
-Nadat u het apparaat hebt gebruikt om de detectie te initiëren, kunt u het apparaat niet opnieuw configureren voor gebruik met een ander Azure-abonnement en kunt u dit niet gebruiken in een ander Azure Migrate project. U kunt ook geen Vm's detecteren op een ander exemplaar van vCenter Server. Stel een nieuw apparaat in voor deze taken.
+Als u het apparaat met een ander abonnement of project wilt gebruiken, moet u het bestaande apparaat opnieuw configureren door het Power shell-installatie script uit te voeren voor het specifieke scenario (VMware/Hyper-V/fysiek) op de apparaats machine. Met het script worden de bestaande onderdelen en instellingen van het apparaat opgeruimd voor het implementeren van een nieuw apparaat. Zorg ervoor dat u de browser cache wist voordat u begint met het gebruik van de zojuist geïmplementeerde configuratie Manager voor het apparaat.
+
+U kunt ook een bestaande Azure Migrate project sleutel niet opnieuw gebruiken op een opnieuw geconfigureerd apparaat. Zorg ervoor dat u een nieuwe sleutel van het gewenste abonnement/project genereert om de registratie van het apparaat te volt ooien.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Kan ik het apparaat instellen op een virtuele Azure-machine?
 

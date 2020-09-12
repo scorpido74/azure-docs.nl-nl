@@ -3,12 +3,12 @@ title: SAP HANA data bases herstellen op virtuele Azure-machines
 description: In dit artikel vindt u informatie over het herstellen van SAP HANA-data bases die worden uitgevoerd op Azure Virtual Machines.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006309"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375309"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA data bases herstellen op virtuele Azure-machines
 
@@ -28,29 +28,29 @@ Azure Backup kan SAP HANA-databases die op virtuele Azure-machines worden uitgev
 
 Let op het volgende voordat u een Data Base herstelt:
 
-* U kunt de data base alleen herstellen naar een SAP HANA exemplaar dat zich in dezelfde regio bevindt
+* U kunt de data base alleen herstellen naar een SAP HANA exemplaar dat zich in dezelfde regio bevindt.
 
-* Het doelexemplaar moet zijn geregistreerd bij dezelfde kluis als de bron
+* Het doel exemplaar moet zijn geregistreerd bij dezelfde kluis als de bron.
 
 * Azure Backup kan niet twee verschillende SAP HANA-exemplaren op dezelfde VM herkennen. Het terugzetten van gegevens van het ene naar het andere exemplaar op dezelfde VM is niet mogelijk.
 
 * Om ervoor te zorgen dat het doel SAP HANA exemplaar gereed is voor herstel, controleert u de status van de **back-up** :
 
-  1. Open de kluis waarin het doel SAP HANA exemplaar is geregistreerd
+  1. Open de kluis waarin het doel SAP HANA exemplaar is geregistreerd.
 
-  1. Kies **back-up** in het kluis dashboard, onder **aan**de slag
+  1. Kies **back-up**in het kluis dashboard, onder **aan**de slag.
 
       ![Back-up in het kluis dashboard](media/sap-hana-db-restore/getting-started-backup.png)
 
-  1. Klik in **back-up**, onder **waarvan wilt u een back-up maken?** Kies **SAP Hana in azure VM**
+  1. In **back-up**, onder **waarvan wilt u een back-up maken?** Kies **SAP Hana in azure VM**.
 
       ![SAP HANA kiezen in een Azure-VM](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. Klik onder **Db's detecteren in vm's**op **Details weer geven**
+  1. Selecteer **Details weer geven**onder **Db's detecteren in vm's**.
 
       ![Details weergeven](media/sap-hana-db-restore/view-details.png)
 
-  1. De voor **bereiding van de back-up** van de doel-VM controleren
+  1. Bekijk de **back-upgereedheids** van de doel-VM.
 
       ![Beveiligde servers](media/sap-hana-db-restore/protected-servers.png)
 
@@ -138,7 +138,7 @@ Als u de back-upgegevens wilt herstellen als bestanden in plaats van een Data Ba
 
     * Back-upbestanden van database
     * Catalogusbestanden
-    * JSON-meta gegevensbestanden (voor elk van de betrokken back-upbestanden)
+    * JSON-metagegevensbestanden (voor elk back-upbestand dat betrokken is)
 
     Normaal gesproken maakt een netwerksharepad of pad van een gekoppelde Azure-bestandsshare indien opgegeven als doelpad toegang tot deze bestanden door andere computers in hetzelfde netwerk of met dezelfde Azure-bestandsshare die eraan is gekoppeld eenvoudiger.
 

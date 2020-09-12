@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: klassieke VNets migreren naar Resource Manager'
 description: Op deze pagina wordt beschreven hoe u ExpressRoute-gekoppelde virtuele netwerken naar Resource Manager migreert nadat u het circuit hebt verplaatst.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 10a2da903ecd59abb7930f9f20c5c905748891cb
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: duau
+ms.openlocfilehash: ac6fe619fc1c65b9ced18227d08cde50997eb7d7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509889"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395261"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute-gekoppelde virtuele netwerken migreren van klassiek naar Resource Manager
 
