@@ -1,10 +1,10 @@
 ---
 title: Gegevens bronnen verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over hoe u verbinding maakt met gegevens bronnen zoals micro soft Threat Protection, Microsoft 365 en Office 365, Azure AD, ATP en Cloud App Security aan Azure Sentinel.
+description: Informatie over het verbinden van gegevens bronnen zoals Microsoft 365 Defender (voorheen micro soft Threat Protection), Microsoft 365 en Office 365, Azure AD, ATP en Cloud App Security aan Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,32 +13,31 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555511"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659626"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
-Zodra u Azure Sentinel hebt ingeschakeld, moet u eerst verbinding maken met uw gegevens bronnen. Azure Sentinel wordt geleverd met een aantal connectors voor micro soft-oplossingen, die beschikbaar zijn in de doos en die realtime-integratie bieden, waaronder oplossingen voor micro soft Threat Protection, Microsoft 365 sources (inclusief Office 365), Azure AD, Azure ATP, Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook de gemeen schappelijke gebeurtenis indeling (CEF), syslog of REST-API gebruiken om uw gegevens bronnen met Azure Sentinel te verbinden.
+Zodra u Azure Sentinel hebt ingeschakeld, moet u eerst verbinding maken met uw gegevens bronnen. Azure Sentinel wordt geleverd met een aantal connectors voor micro soft-oplossingen, die beschikbaar zijn in de doos en die realtime-integratie bieden, waaronder Microsoft 365 Defender-oplossingen (voorheen micro soft Threat Protection), Microsoft 365 bronnen (waaronder Office 365), Azure AD, micro soft Defender voor identiteit (voorheen Azure ATP), Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format (CEF), Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden.
 
 1. Selecteer in het menu **Data connectors**. Op deze pagina kunt u de volledige lijst met connectors zien die door Azure Sentinel worden geboden en hun status. Selecteer de connector die u wilt verbinden en selecteer de **pagina connector openen**. 
 
-   ![Gegevensverzamelaars](./media/collect-data/collect-data-page.png)
+   ![Galerie data connectors](./media/collect-data/collect-data-page.png)
 
 1. Controleer op de pagina specifieke connector of u aan alle vereisten hebt voldaan en volg de instructies voor het verbinden van de gegevens met Azure Sentinel. Het kan enige tijd duren voordat de logboeken worden gesynchroniseerd met Azure Sentinel. Nadat u verbinding hebt gemaakt, ziet u een samen vatting van de gegevens in de grafiek **ontvangen gegevens** en de connectiviteits status van de gegevens typen.
 
-   ![Verzamelaars koppelen](./media/collect-data/opened-connector-page.png)
+   ![Gegevens connectors configureren](./media/collect-data/opened-connector-page.png)
   
 1. Klik op het tabblad **volgende stappen** om een lijst van out-of-the-Box-inhoud weer te geven. Azure Sentinel levert voor het specifieke gegevens type.
 
-   ![Gegevensverzamelaars](./media/collect-data/data-insights.png)
+   ![Volgende stappen voor connectors](./media/collect-data/data-insights.png)
  
-
 ## <a name="data-connection-methods"></a>Gegevensverbindingsmethoden
 
 De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel:
@@ -48,13 +47,13 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
     - [Azure-activiteit](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) -audit logboeken en aanmeldings logboeken
     - [Azure AD-identiteitsbeveiliging](connect-azure-ad-Identity-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Micro soft Defender voor identiteit](connect-azure-atp.md) (voorheen Azure Advanced Threat Protection)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
+    - [Azure Defender](connect-azure-security-center.md) (voorheen Azure Security Center)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Domeinnaamserver](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Micro soft Defender voor eind punt](connect-microsoft-defender-advanced-threat-protection.md) (voorheen micro soft Defender Advanced Threat Protection)
     - [Microsoft Web Application Firewall](connect-microsoft-waf.md)
     - [Windows Firewall](connect-windows-firewall.md)
     - [Windows-beveiligingsgebeurtenissen](connect-windows-security-events.md)
@@ -135,8 +134,8 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 | WireData | [Bedradings gegevens verbinden](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Windows Firewall verbinden](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Verbinding maken met Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Verbinding maken met Azure ATP](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [Verbinding maken met Azure Security Center](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [Verbinding maken met micro soft Defender voor identiteit](connect-azure-atp.md) (voorheen Azure ATP) | &#10003; | |
+| ASC SecurityAlert  | [Verbinding maken met Azure Defender](connect-azure-security-center.md) (voorheen Azure Security Center)  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security verbinden](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Voor-en naactiviteit (gebeurtenis) | [Verbinding maken](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-gebeurtenissen verbinden](../azure-monitor/platform/data-sources-windows-events.md) <br> [De ophaal-parser ophalen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | De garbagecollection-verzameling wordt niet standaard op virtuele machines geïnstalleerd. [Zie voor](https://docs.microsoft.com/sysinternals/downloads/sysmon)meer informatie over het installeren van de opschoon agent. |

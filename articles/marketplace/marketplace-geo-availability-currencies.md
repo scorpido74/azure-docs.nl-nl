@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826766"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651003"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
@@ -57,7 +57,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Kroatië                             | HR        | EUR          |
 | Curaçao                             | WAARNAAR        | USD          |
 | Cyprus                              | CY        | EUR          |
-| Tsjechische Republiek                      | CZ        | EUR          |
+| Czechia                      | CZ        | EUR          |
 | Denemarken                             | DK        | DKK          |
 | Dominicaanse Republiek                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
@@ -99,7 +99,6 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Litouwen                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
 | Macau SAR                           | MO        | USD          |
-| Noord-Macedonië                     | MK        | USD          |
 | Maleisië                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |
@@ -115,6 +114,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Nieuw-Zeeland                         | NZ        | NZD          |
 | Nicaragua                           | NI        | USD          |
 | Nigeria                             | NG        | USD          |
+| Noord-Macedonië                     | MK        | USD          |
 | Noorwegen                              | NO        | NOK          |
 | Oman                                | OM        | USD          |
 | Pakistan                            | PK        | USD          |
@@ -166,7 +166,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
+\* Voor klanten in Brazilië gebruikt de commcercial Marketplace via Cloud Solution Providers (CSP) USD.
 
 \** Alleen vrije en BYOL VM-installatie kopieën.
 
@@ -177,14 +177,16 @@ Voor alle betaalde aanbiedings typen hebt u de mogelijkheid om prijzen in USD in
 Als u de prijs wilt aanpassen voordat u publiceert, exporteert u het werk blad prijzen, wijzigt u het en uploadt u het met de wijzigingen.
 
 > [!NOTE]
-> Nadat een prijs voor een markt in uw abonnement is gepubliceerd, kunt u deze later niet meer wijzigen. Om ervoor te zorgen dat de prijzen goed zijn voordat u ze publiceert, exporteert u het werk blad prijzen en bekijkt u de prijzen op elke markt.
+> Nadat een prijs voor een markt in uw abonnement is gepubliceerd, kan deze niet meer worden gewijzigd. Om ervoor te zorgen dat de prijzen goed zijn voordat u ze publiceert, exporteert u het werk blad prijzen en bekijkt u de prijzen op elke markt.
 
 De prijs van een aanbieding wordt altijd weer gegeven aan klanten in hun lokale valuta. De prijs die u in Partner Center selecteert, wordt omgezet in de lokale valuta van klanten, op basis van de wissel koers op het moment dat u de prijs hebt opgeslagen in het partner centrum. De prijs die wordt weer gegeven voor klanten in de online winkels, wordt niet gewijzigd, tenzij u uw aanbieding opnieuw publiceert.
 
 Micro soft ontvangt betalingen van klanten in hun lokale valuta en betaalt u in uw lokale valuta. Micro soft converteert de lokale valuta van de klant naar uw lokale valuta met de wissel koers van de aankoop datum.
 
 > [!NOTE]
-> Micro soft converteert prijzen voor aanbiedingen met behulp van de micro soft schatkist koers.
+> Micro soft converteert prijzen voor aanbiedingen met behulp van de wissel koersen van micro soft.
+
+[![De valuta conversie stroom.](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
 
 ## <a name="retrieving-currency-information-by-api"></a>De valuta gegevens worden opgehaald door de API
 
@@ -194,7 +196,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het invoeren van prijz
 
 - [Een Azure-toepassingsaanbieding maken](partner-center-portal/create-new-azure-apps-offer.md)
 - [Een Azure-container aanbieding maken](partner-center-portal/create-azure-container-offer.md)
-- [Een Azure Virtual Machine-aanbieding maken](partner-center-portal/azure-vm-create-offer.md)
+- [Een Azure virtual machine-aanbieding maken](partner-center-portal/azure-vm-create-offer.md)
 - [Een adviesservice-aanbieding maken](partner-center-portal/create-consulting-service-offer.md)
 - [Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Een Dynamics 365 for Operations-aanbieding maken](partner-center-portal/create-new-operations-offer.md)

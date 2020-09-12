@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323023"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019526"
 ---
 # <a name="upload-files-with-iot-hub"></a>Bestanden uploaden met IoT Hub
 
@@ -28,6 +28,8 @@ In plaats van berichten te brokeren via IoT Hub zichzelf, IoT Hub in plaats daar
 Voordat u een bestand uploadt naar IoT Hub van een apparaat, moet u uw hub configureren door [een Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) -account aan het te koppelen.
 
 Uw apparaat kan vervolgens [een upload initialiseren](iot-hub-devguide-file-upload.md#initialize-a-file-upload) en vervolgens [IOT hub waarschuwen](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) wanneer het uploaden is voltooid. Wanneer een apparaat aangeeft IoT Hub dat het uploaden is voltooid, kan de service een [meldings bericht](iot-hub-devguide-file-upload.md#file-upload-notifications)genereren.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>Wanneer gebruikt u dit?
 

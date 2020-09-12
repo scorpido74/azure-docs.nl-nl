@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256676"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014630"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -34,13 +34,13 @@ Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiliging
 
 Voor meer informatie zie: 
 
-* [Beheerders groepen beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Beheerders groepen beveiligen](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Ingebouwde Administrator-accounts beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [Ingebouwde Administrator-accounts beveiligen](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Beveiligings verbetering en-ondersteuning door kwets baarheid te verminderen](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Beveiligings verbetering en-ondersteuning door kwets baarheid te verminderen](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [De Active Directory kwets baarheid verminderen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [De Active Directory kwets baarheid verminderen](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **V: de installatie werkt als de Azure Active Directory (Azure AD) globale beheerder met twee ledige verificatie (twee ledige) is ingeschakeld?**  
 Vanaf de builds van februari 2016 wordt dit scenario ondersteund.
@@ -139,10 +139,10 @@ Nee, Azure AD Connect biedt geen ondersteuning voor een zuivere IPv6-omgeving.
 Nee, het gebruik van Azure AD Connect via NAT wordt niet ondersteund. 
 
 ## <a name="federation"></a>Federatie
-**V: wat moet ik doen als ik een e-mail bericht ontvang waarin wordt gevraagd mijn Office 365-certificaat te vernieuwen?**  
+**V: wat moet ik doen als ik een e-mail bericht ontvang waarin wordt gevraagd mijn Microsoft 365-certificaat te vernieuwen?**  
 Zie [certificaten vernieuwen](how-to-connect-fed-o365-certs.md)voor meer informatie over het vernieuwen van het certificaat.
 
-**V: Ik heb ' automatisch update Relying Party ' ingesteld voor Office 365 Relying Party. Moet ik actie ondernemen wanneer mijn token handtekening certificaat automatisch wordt doorgevoerd?**  
+**V: Ik heb Relying Party automatisch bijwerken ingesteld voor de Microsoft 365 Relying Party. Moet ik actie ondernemen wanneer mijn token handtekening certificaat automatisch wordt doorgevoerd?**  
 Gebruik de richt lijnen die worden beschreven in het artikel [certificaten vernieuwen](how-to-connect-fed-o365-certs.md).
 
 ## <a name="environment"></a>Omgeving
@@ -152,17 +152,17 @@ Nee. Als u de server naam wijzigt, kan de synchronisatie-engine geen verbinding 
 **V: worden NGC-synchronisatie regels (Next generatie Cryptographic) ondersteund op een computer met FIPS-functionaliteit?**  
 Nee.  Dit wordt niet ondersteund.
 
-**V. als ik een gesynchroniseerd apparaat heb uitgeschakeld (bijvoorbeeld: HAADJ) in het Azure Portal, waarom wordt het opnieuw ingeschakeld?**<br>
+**Nils. Als ik een gesynchroniseerd apparaat heb uitgeschakeld (bijvoorbeeld: HAADJ) in het Azure Portal, waarom wordt het opnieuw ingeschakeld?**<br>
 Gesynchroniseerde apparaten kunnen worden gemaakt of gemasterd op locatie. Als een gesynchroniseerd apparaat op locatie is ingeschakeld, wordt het mogelijk opnieuw ingeschakeld in het Azure Portal, zelfs als dit eerder is uitgeschakeld door een beheerder. Als u een gesynchroniseerd apparaat wilt uitschakelen, gebruikt u de on-premises Active Directory om het computer account uit te scha kelen.
 
-**V. als ik de aanmelding van een gebruiker op het Office 365-of Azure AD-Portal blok keer voor gesynchroniseerde gebruikers, waarom wordt de blok kering opgeheven bij het aanmelden.**<br>
+**Nils. Als ik de aanmelding van gebruikers op de Microsoft 365 of de Azure AD-Portal blok keren voor gesynchroniseerde gebruikers, waarom wordt de blok kering opgeheven bij het aanmelden.**<br>
 Gesynchroniseerde gebruikers kunnen worden gemaakt of gemasterd op locatie. Als het account is ingeschakeld op locatie, kan het de blok kering opheffen van het aanmeldings blok dat door de beheerder is geplaatst.
 
 ## <a name="identity-data"></a>Identiteits gegevens
 **V: Waarom komt het kenmerk userPrincipalName (UPN) in azure AD niet overeen met de on-premises UPN?**  
 Zie de volgende artikelen voor meer informatie:
 
-* [Gebruikers namen in Office 365, Azure of intune komen niet overeen met de on-premises UPN of alternatieve aanmeldings-ID](https://support.microsoft.com/kb/2523192)
+* [Gebruikers namen in Microsoft 365, Azure of intune komen niet overeen met de on-premises UPN of alternatieve aanmeldings-ID](https://support.microsoft.com/kb/2523192)
 * [Wijzigingen worden niet gesynchroniseerd met het Azure Active Directory Sync-hulp programma nadat u de UPN van een gebruikers account hebt gewijzigd om een ander federatief domein te gebruiken](https://support.microsoft.com/kb/2669550)
 
 U kunt Azure AD ook zo configureren dat de synchronisatie-engine de UPN kan bijwerken, zoals wordt beschreven in [Azure AD Connect-synchronisatie service-functies](how-to-connect-syncservice-features.md).
@@ -253,19 +253,19 @@ Ja, de automatische upgrade werkt ook Azure AD Connect Health.
 Ja, u kunt een Azure AD Connect-server die zich in de faserings modus bevindt, automatisch bijwerken.
 
 **V: als de automatische upgrade mislukt en mijn Azure AD Connect-server niet start, wat moet ik doen?**  
-In zeldzame gevallen wordt de Azure AD Connect-service niet gestart nadat u de upgrade hebt uitgevoerd. In dergelijke gevallen wordt het probleem doorgaans opgelost door de server opnieuw op te starten. Als de Azure AD Connect-service nog steeds niet wordt gestart, opent u een ondersteunings ticket. Zie [een service aanvraag maken om contact op te nemen met de ondersteuning van Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)voor meer informatie. 
+In zeldzame gevallen wordt de Azure AD Connect-service niet gestart nadat u de upgrade hebt uitgevoerd. In dergelijke gevallen wordt het probleem doorgaans opgelost door de server opnieuw op te starten. Als de Azure AD Connect-service nog steeds niet wordt gestart, opent u een ondersteunings ticket. Zie [een service aanvraag maken om contact op te nemen met Microsoft 365 ondersteuning](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)voor meer informatie. 
 
 **V: Ik weet niet wat de Risico's zijn wanneer ik een upgrade naar een nieuwere versie van Azure AD Connect. Kunt u mij bellen om me te helpen met de upgrade?**  
-Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Connect, opent u een ondersteunings ticket bij [een service aanvraag maken om contact op te nemen met de ondersteuning van Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
+Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Connect, opent u een ondersteunings ticket bij [een service aanvraag maken om contact op te nemen met Microsoft 365 ondersteuning](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support).
 
 ## <a name="operational-best-practice"></a>Operationele best practice    
 Hieronder vindt u enkele aanbevolen procedures voor het synchroniseren van de Windows Server-Active Directory en Azure Active Directory.
 
-**Multi-factor Authentication Toep assen voor alle gesynchroniseerde accounts** Azure Multi-Factor Authentication helpt bij het beschermen van de toegang tot gegevens en toepassingen, terwijl u eenvoudiger bent voor gebruikers. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en sterke verificatie te bieden met behulp van een bereik aan gebruiks vriendelijke verificatie methoden. Gebruikers kunnen of kunnen niet worden aangevraagd voor MFA op basis van configuratie beslissingen die een beheerder doet. U kunt hier meer lezen over MFA:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Multi-factor Authentication Toep assen voor alle gesynchroniseerde accounts** Azure Multi-Factor Authentication helpt bij het beschermen van de toegang tot gegevens en toepassingen, terwijl u eenvoudiger bent voor gebruikers. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en sterke verificatie te bieden met behulp van een bereik aan gebruiks vriendelijke verificatie methoden. Gebruikers kunnen of kunnen niet worden aangevraagd voor MFA op basis van configuratie beslissingen die een beheerder doet. U kunt hier meer lezen over MFA: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
-**Volg de Azure AD Connect server-beveiligings richtlijnen** De Azure AD Connect-server bevat essentiële identiteits gegevens en moet worden behandeld als een onderdeel van laag 0 zoals beschreven in het model van de [Active Directory-administratieve laag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Raadpleeg ook onze [richt lijnen voor het beveiligen van uw AADConnect-server](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server).
+**Volg de Azure AD Connect server-beveiligings richtlijnen** De Azure AD Connect-server bevat essentiële identiteits gegevens en moet worden behandeld als een onderdeel van laag 0 zoals beschreven in het model van de [Active Directory-administratieve laag](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Raadpleeg ook onze [richt lijnen voor het beveiligen van uw AADConnect-server](./how-to-connect-install-prerequisites.md#azure-ad-connect-server).
 
-**PHS inschakelen voor de detectie van gelekte referenties** Met wachtwoord hash-synchronisatie wordt ook [gelekte referentie detectie](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) voor uw hybride accounts ingeschakeld. Micro soft werkt samen met Darken voor webonderzoekers en politie instanties om openbaar beschik bare gebruikers naam-en wachtwoord paren te vinden. Als een van deze paren overeenkomt met die van uw gebruikers, wordt het gekoppelde account verplaatst naar een hoog risico. 
+**PHS inschakelen voor de detectie van gelekte referenties** Met wachtwoord hash-synchronisatie wordt ook [gelekte referentie detectie](../identity-protection/concept-identity-protection-risks.md) voor uw hybride accounts ingeschakeld. Microsoft werkt samen met wetshandhavers en onderzoekers die het 'dark web' bestuderen om openbaar beschikbare gebruikersnaam/wachtwoord-paren te vinden. Als een van deze paren overeenkomt met die van uw gebruikers, wordt het gekoppelde account verplaatst naar een hoog risico. 
 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
@@ -275,11 +275,11 @@ Hieronder vindt u enkele aanbevolen procedures voor het synchroniseren van de Wi
 
 * Zoek in de KB naar technische oplossingen voor veelvoorkomende problemen met de ondersteuning voor Azure AD Connect.
 
-[Micro soft Q&een vraag pagina voor Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Micro soft Q&een vraag pagina voor Azure Active Directory](/answers/topics/azure-active-directory.html)
 
-* Zoek technische vragen en antwoorden of vraag uw eigen vragen door naar [de Azure AD-Community](https://docs.microsoft.com/answers/topics/azure-active-directory.html)te gaan.
+* Zoek technische vragen en antwoorden of vraag uw eigen vragen door naar [de Azure AD-Community](/answers/topics/azure-active-directory.html)te gaan.
 
-[Ondersteuning voor Azure AD vragen](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[Ondersteuning voor Azure AD vragen](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
 **V: Waarom worden gebeurtenissen 6311 en 6401 weer gegeven na fouten in de synchronisatie stap?**
 

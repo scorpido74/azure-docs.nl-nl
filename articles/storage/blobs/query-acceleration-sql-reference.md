@@ -1,28 +1,25 @@
 ---
-title: Naslag informatie over SQL-taal voor query versnelling (preview-versie)
+title: Naslag informatie over SQL-taal voor query versnelling
 titleSuffix: Azure Storage
 description: Meer informatie over het gebruik van de SQL-syntaxis voor query versnelling.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193408"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659560"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>Naslag informatie over SQL-taal voor query versnelling (preview-versie)
+# <a name="query-acceleration-sql-language-reference"></a>Naslag informatie over SQL-taal voor query versnelling
 
 Query versnelling ondersteunt een ANSI SQL-achtige taal voor het uitdrukken van query's via blob-inhoud.  De query versnelling SQL dialect is een subset van ANSI SQL, met een beperkte set ondersteunde gegevens typen, Opera Tors, enzovoort, maar wordt ook uitgebreid naar ANSI SQL om query's te ondersteunen in hiërarchische, semi-gestructureerde gegevens indelingen, zoals JSON. 
-
-> [!NOTE]
-> De functie voor het versnellen van query's bevindt zich in de open bare preview en is beschikbaar in de regio's Canada-centraal en Frankrijk-centraal. Zie het artikel [bekende problemen](data-lake-storage-known-issues.md) voor een overzicht van de beperkingen. Zie [dit formulier](https://aka.ms/adls/qa-preview-signup)als u zich wilt inschrijven voor de preview-versie. 
 
 ## <a name="select-syntax"></a>Syntaxis selecteren
 
@@ -58,7 +55,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="data-types"></a>Gegevenstypen
 
-|Gegevenstype|Description|
+|Gegevenstype|Beschrijving|
 |---------|-------------------------------------------|
 |INT      |64-bits geheel getal met teken.                     |
 |FLOAT    |64-bits (Double-Precision) drijvende komma.|
@@ -66,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |Neem|Een punt in de tijd.                           |
 |True  |Waar of onwaar.                             |
 
-Bij het lezen van waarden uit gegevens in CSV-indeling, worden alle waarden als teken reeksen gelezen.  Teken reeks waarden kunnen worden geconverteerd naar andere typen met behulp van CAST-expressies.  Waarden kunnen impliciet worden geconverteerd naar andere typen, afhankelijk van de context. Zie [gegevens type prioriteit (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017)voor meer informatie.
+Bij het lezen van waarden uit gegevens in CSV-indeling, worden alle waarden als teken reeksen gelezen.  Teken reeks waarden kunnen worden geconverteerd naar andere typen met behulp van CAST-expressies.  Waarden kunnen impliciet worden geconverteerd naar andere typen, afhankelijk van de context. Zie [gegevens type prioriteit (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)voor meer informatie.
 
 ## <a name="expressions"></a>Expressies
 
@@ -80,15 +77,36 @@ In gegevens in CSV-indeling kunnen velden ook worden verwezen met een rang telwo
 
 De volgende standaard SQL-Opera tors worden ondersteund:
 
-``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
+|Operator|Beschrijving|
+|--|--|
+|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |Vergelijkt de gelijkheid van twee expressies (een vergelijkings operator).|
+|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Test of een expressie niet gelijk is aan een andere expressie (een vergelijkings operator).|
+|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Vergelijkt twee expressies voor niet gelijk aan (een vergelijkings operator).|
+|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |Vergelijkt twee expressies voor minder dan (een vergelijkings operator).|
+|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Vergelijkt twee expressies voor kleiner dan of gelijk aan (een vergelijkings operator).|
+|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |Vergelijkt twee expressies voor groter dan (een vergelijkings operator). |
+|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Vergelijkt twee expressies voor groter dan of gelijk aan (een vergelijkings operator).|
+|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |Telt twee getallen op. Met deze toevoeging reken kundige operator kan ook een getal, in dagen, worden toegevoegd aan een datum.|
+|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |Trekt twee getallen af (een reken kundige operator voor aftrekken). |
+|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Deelt een getal met een andere waarde (een reken kundige delen-operator).|
+|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |Vermenigvuldigt twee expressies (een reken kundige operator voor vermenigvuldigen).|
+|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Retourneert de rest van een getal gedeeld door een ander nummer.|
+|[MAAR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Hiermee wordt een bitsgewijze logische en-bewerking uitgevoerd tussen twee waarden met gehele getallen.|
+|[OF](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Hiermee wordt een bitsgewijze logische of-bewerking uitgevoerd tussen twee opgegeven waarden met gehele getallen die worden omgezet naar binaire expressies binnen Transact-SQL-instructies.|
+|[TEN](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Een Boole-invoer wordt genegeerd.|
+|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Zet een expressie van één gegevenstype om in een ander type.|
+|[VERDEELD](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Hiermee geeft u een bereik op om te testen.|
+|[Naast](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Hiermee wordt bepaald of een opgegeven waarde overeenkomt met een wille keurige waarde in een subquery of een lijst.|
+|[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Retourneert een null-waarde als de twee opgegeven expressies gelijk zijn.|
+|[Voeg](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Evalueert de argumenten in volg orde en retourneert de huidige waarde van de eerste expressie die in eerste instantie niet wordt geëvalueerd als NULL.|
 
-Als gegevens typen aan de linkerkant en rechts van een operator verschillend zijn, wordt automatische conversie uitgevoerd volgens de hier opgegeven regels: [gegevens type prioriteit (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Als gegevens typen aan de linkerkant en rechts van een operator verschillend zijn, wordt automatische conversie uitgevoerd volgens de hier opgegeven regels: [gegevens type prioriteit (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 De SQL-taal van de query versnelling ondersteunt slechts een zeer kleine subset van de gegevens typen die in dat artikel worden besproken.  Zie de sectie [gegevens typen](#data-types) van dit artikel.
 
 ### <a name="casts"></a>Cast conversies
 
-De SQL-taal van de query versnelling ondersteunt de CAST-operator, volgens de regels: [gegevens type conversie (data base-engine)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+De SQL-taal van de query versnelling ondersteunt de CAST-operator, volgens de regels: [gegevens type conversie (data base-engine)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine).  
 
 De SQL-taal van de query versnelling ondersteunt slechts een kleine subset van de gegevens typen die in dat artikel worden besproken.  Zie de sectie [gegevens typen](#data-types) van dit artikel.
 
@@ -96,7 +114,16 @@ De SQL-taal van de query versnelling ondersteunt slechts een kleine subset van d
 
 De SQL-taal voor de query versnelling ondersteunt de volgende standaard SQL-teken reeks functies:
 
-``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
+|Functie|Beschrijving|
+|--|--|
+|CHAR_LENGTH    | Retourneert de lengte in tekens van de teken reeks expressie als de teken reeks expressie van het gegevens type character is; anders retourneert de lengte in bytes van de teken reeks expressie (het kleinste gehele getal niet kleiner dan het aantal bits gedeeld door 8). (Deze functie is hetzelfde als de functie CHARACTER_LENGTH.)|
+|CHARACTER_LENGTH    |Retourneert de lengte in tekens van de teken reeks expressie als de teken reeks expressie van het gegevens type character is; anders retourneert de lengte in bytes van de teken reeks expressie (het kleinste gehele getal niet kleiner dan het aantal bits gedeeld door 8). (Deze functie is hetzelfde als de CHAR_LENGTH functie|
+|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Retourneert een teken expressie na het omzetten van hoofd letters in kleine letters.|
+|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |Retourneert een teken expressie met kleine teken gegevens die worden omgezet in hoofd letters.|
+|[SUBTEKENREEKS](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Retourneert een deel van een teken-, binaire-, tekst-of afbeeldings expressie in SQL Server.|
+|[INTERNE](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Hiermee verwijdert u de spatie tekens (32) of andere opgegeven tekens vanaf het begin en het einde van een teken reeks.|
+|WITRUIMTE    |Beschrijving|
+|Volg    |Beschrijving|
 
 Hier volgen enkele voor beelden:
 
@@ -108,16 +135,6 @@ Hier volgen enkele voor beelden:
 |UPPER|``SELECT UPPER('AbCdEfG') from BlobStorage``|``ABCDEFG``|
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
-
-De functie [like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) helpt u bij het zoeken naar een patroon. Hier volgen enkele voor beelden van het gebruik van de functie [like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) om de gegevens reeks te doorzoeken ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
-
-|Query’s uitvoeren|Voorbeeld|
-|--|--|
-|``SELECT _1, _2, _3 from BlobStorage where _2 LIKE 'a%'``|``abc,abd,cd\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a[bcd]c``|``abc,abd,cd\n``|
-|``SELECT _1 from BlobStorage where _2 LIKE '[^xyz]%'``|``abc\ntest\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a_``|``abc,abd,cd\n``|
-|``SELECT _2,_3 from BlobStorage where _3 LIKE '[g-h]_![[a-j]' Escape '!'``|``xc%d^e,gh[i\n``|
 
 ### <a name="date-functions"></a>Datumfuncties
 
@@ -133,14 +150,12 @@ De SQL-taal voor de query versnelling ondersteunt jaar, maand, dag, uur, minuut 
 
 Voorbeelden:
 
-```sql
-DATE_ADD(datepart, quantity, timestamp)
-DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+' ' SQL DATE_ADD (date part, Quantity, Time Stamp) DATE_ADD (' minute ', 1, CAST (' 2017-01-02T03:04:05.006 Z ' AS Time Stamp)
 ```
 
-#### <a name="date_diff-function"></a>Functie DATE_DIFF
+#### DATE_DIFF function
 
-De SQL-taal voor de query versnelling ondersteunt jaar, maand, dag, uur, minuut en seconde voor de ``DATE_DIFF`` functie.
+The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -180,7 +195,7 @@ In deze tabel worden teken reeksen beschreven die u kunt gebruiken om de uitvoer
 |MMMM             |Volledige maand – mei                      |
 |d                |Dag van de maand (1-31)                  |
 |dd               |Nul opgevulde dag van de maand (01-31)     |
-|a                |AM of PM                             |
+|een                |AM of PM                             |
 |h                |Uur van de dag (1-12)                   |
 |hh               |Dag van nul opgevulde uren (01-12)     |
 |H                |Uur van de dag (0-23)                   |
@@ -220,12 +235,12 @@ Een SELECT-instructie kan een of meer projectie-expressies of één statistische
 
 |Expressie|Beschrijving|
 |--|--|
-|[AANTAL ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Retourneert het aantal records dat overeenkomt met de predicaat expressie.|
-|[AANTAL (expressie)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Retourneert het aantal records waarvoor een expressie niet null is.|
-|[GEMIDDELD (expressie)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |Retourneert het gemiddelde van de waarden van de expressie die niet gelijk zijn aan nul.|
-|[MIN (expressie)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |Retourneert de minimale niet-null-waarde van een expressie.|
-|[Max (expressie](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |Retourneert de maximum waarde van een expressie die niet null is.|
-|[SUM (expressie)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |Retourneert de som van alle waarden in de expressie die niet gelijk zijn aan nul.|
+|[AANTAL ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Retourneert het aantal records dat overeenkomt met de predicaat expressie.|
+|[AANTAL (expressie)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Retourneert het aantal records waarvoor een expressie niet null is.|
+|[GEMIDDELD (expressie)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |Retourneert het gemiddelde van de waarden van de expressie die niet gelijk zijn aan nul.|
+|[MIN (expressie)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |Retourneert de minimale niet-null-waarde van een expressie.|
+|[MAX (expressie](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |Retourneert de maximum waarde van een expressie die niet null is.|
+|[SUM (expressie)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |Retourneert de som van alle waarden in de expressie die niet gelijk zijn aan nul.|
 
 ### <a name="missing"></a>ONGELDIGE
 
@@ -321,8 +336,8 @@ In de meeste gevallen is de grootte van elke batch iets hoger dan het getal dat 
 >[!NOTE]
 > De split_size moet mini maal 10 MB (10485760) zijn.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Azure Data Lake Storage-query versnelling (preview-versie)](data-lake-storage-query-acceleration.md)
-- [Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling (preview-versie)](data-lake-storage-query-acceleration-how-to.md)
+- [Azure Data Lake Storage-query versnelling](data-lake-storage-query-acceleration.md)
+- [Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling](data-lake-storage-query-acceleration-how-to.md)
 

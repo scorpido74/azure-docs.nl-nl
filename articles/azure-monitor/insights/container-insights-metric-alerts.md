@@ -3,12 +3,12 @@ title: Metrische waarschuwingen van Azure Monitor voor containers | Microsoft Do
 description: In dit artikel worden de aanbevolen metrische waarschuwingen weer gegeven die beschikbaar zijn via Azure Monitor voor containers in de open bare preview.
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563361"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019883"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Aanbevolen metrische waarschuwingen (preview) van Azure Monitor voor containers
 
@@ -106,7 +106,7 @@ Volg deze stappen om de metrische waarschuwingen in Azure Monitor van de Azure P
 
 In deze sectie wordt beschreven hoe u Azure Monitor voor de metrische waarschuwing voor containers (preview) inschakelt vanuit de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Toegang tot de Azure Monitor voor de functie waarschuwing voor metrische gegevens van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal.
 
@@ -144,7 +144,7 @@ De basis stappen zijn als volgt:
 
 2. Als u een aangepaste sjabloon via de portal wilt implementeren, selecteert u **een resource maken** op basis van de [Azure Portal](https://portal.azure.com).
 
-3. Zoek naar een **sjabloon**en selecteer vervolgens **sjabloon**. inhoudsdistributiepad.
+3. Zoek naar een **sjabloon**en selecteer vervolgens **Sjabloonimlementatie**.
 
 4. Selecteer **Maken**.
 

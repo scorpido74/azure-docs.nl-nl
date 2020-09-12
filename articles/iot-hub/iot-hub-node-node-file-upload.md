@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 469aed46fee5fd01ee0604f266de3d14f8b0fe40
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 65155d9f78cc82eb797c4b655adeeeabb24a8e33
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420750"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019509"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (Node.js)
 
@@ -44,6 +44,8 @@ Aan het einde van deze zelf studie voert u twee Node.js-console-apps uit:
 
 > [!NOTE]
 > IoT Hub ondersteunt veel platformen en talen (waaronder C, .NET, java script, python en Java) via Azure IoT-apparaat-Sdk's. Raadpleeg het [Azure IoT-ontwikkelaars centrum] voor stapsgewijze instructies voor het verbinden van uw apparaat met Azure IoT Hub.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

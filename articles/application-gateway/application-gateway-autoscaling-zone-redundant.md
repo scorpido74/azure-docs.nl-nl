@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273198"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649743"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -34,7 +34,7 @@ De nieuwe v2-SKU bevat de volgende verbeteringen:
 
 ![Diagram van de zone voor automatisch schalen.](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 De Standard_v2-en WAF_v2 SKU is beschikbaar in de volgende regio's: Noord-Centraal VS, Zuid-Centraal VS, VS-West, VS-West 2, VS-Oost, VS-Oost 2, centraal VS, Europa-noord, Europa-west, Zuidoost-Azië, Frankrijk-centraal, UK-west, Japan-Oost, Japan-West, Australië-Oost, Australië-Zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Azië-oost, Korea-centraal, Korea-Zuid , UK-zuid, Centraal-India, West-India, India-zuid.
 
@@ -47,87 +47,7 @@ Met de v2-SKU wordt het prijs model aangestuurd door verbruik en niet meer gekop
 
 Elke capaciteits eenheid bestaat uit Maxi maal: 1 reken eenheid, 2500 permanente verbindingen en door Voer van 2,22-Mbps.
 
-Richt lijnen voor reken eenheden:
-
-- **Standard_v2** -elke reken eenheid kan ongeveer 50 verbindingen per seconde met een RSA 2048-bits sleutel TLS-certificaat zijn.
-- **WAF_v2** -elke Compute-eenheid kan ongeveer 10 gelijktijdige aanvragen per seconde ondersteunen voor 70-30% mix van verkeer met 70% aanvragen van minder dan 2 KB Get/post en resterend. WAF-prestaties worden op dit moment niet beïnvloed door de antwoord grootte.
-
-> [!NOTE]
-> Elk exemplaar kan op dit moment ongeveer 10 capaciteits eenheden ondersteunen.
-> Het aantal aanvragen dat een Compute-eenheid kan verwerken, is afhankelijk van verschillende criteria, zoals de sleutel grootte van TLS-certificaten, het algoritme voor sleutel uitwisseling, het opnieuw schrijven van kopteksten en in het geval van WAF binnenkomende aanvraag grootte. U wordt aangeraden om toepassings tests uit te voeren om de aanvraag snelheid per Compute-eenheid te bepalen. Zowel de capaciteits eenheid als de reken eenheid worden beschikbaar gesteld als metrische waarde voordat facturering wordt gestart.
-
-In de volgende tabel ziet u voor beelden van prijzen en zijn alleen bedoeld ter illustratie.
-
-**Prijzen in VS Oost**:
-
-|              SKU-naam                             | Vaste prijs ($/uur)  | Eenheids prijs van capaciteit ($/CU-hr)   |
-| ------------------------------------------------- | ------------------- | ------------------------------- |
-| Standard_v2                                       |    0,20             | 0,0080                          |
-| WAF_v2                                            |    0.36             | 0,0144                          |
-
-Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/application-gateway/)voor meer informatie over prijzen. 
-
-**Voorbeeld 1**
-
-Een Application Gateway Standard_v2 is ingericht zonder automatisch te schalen in hand matige schaal modus met vaste capaciteit van vijf exemplaren.
-
-Vaste prijs = 744 (uren) * $0,20 = $148,8 <br>
-Capaciteits eenheden = 744 (uur) * 10 capaciteits eenheid per instantie * 5 exemplaren * $0,008 per capaciteits eenheid uur = $297,6
-
-Totale prijs = $148,8 + $297,6 = $446,4
-
-**Voorbeeld 2**
-
-Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van nul instanties en gedurende deze tijd 25 nieuwe TLS-verbindingen per seconde, gemiddelde van 8,88-Mbps-gegevens overdracht. Als er verbinding is met de korte levens duur, is uw prijs:
-
-Vaste prijs = 744 (uren) * $0,20 = $148,8
-
-Eenheids prijs van capaciteit = 744 (uur) * Max (25/50 reken eenheid voor verbindingen per seconde, 8.88/2.22 capaciteits eenheid voor door Voer) * $0,008 = 744 * 4 * 0,008 = $23,81
-
-Totale prijs = $148.8 + 23.81 = $172,61
-
-Zoals u kunt zien, wordt u alleen gefactureerd voor vier capaciteits eenheden, niet voor het hele exemplaar. 
-
-> [!NOTE]
-> De functie Max retourneert de grootste waarde in een paar waarden.
-
-
-**Voorbeeld 3**
-
-Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van vijf exemplaren. Ervan uitgaande dat er geen verkeer is en er geen verbinding is, is uw prijs:
-
-Vaste prijs = 744 (uren) * $0,20 = $148,8
-
-Eenheids prijs van capaciteit = 744 (uur) * Max (0/50 reken eenheid voor verbindingen per seconde, 0/2.22 capaciteits eenheid voor door Voer) * $0,008 = 744 * 50 * 0,008 = $297,60
-
-Totale prijs = $148.80 + 297.60 = $446,4
-
-In dit geval wordt u gefactureerd voor het geheel van de vijf instanties, zelfs als er geen verkeer is.
-
-**Voor beeld 4**
-
-Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van vijf instanties, maar deze keer is een gemiddelde van 125-Mbps-gegevens overdracht en 25 TLS-verbindingen per seconde. Ervan uitgaande dat er geen verkeer is en er geen verbinding is, is uw prijs:
-
-Vaste prijs = 744 (uren) * $0,20 = $148,8
-
-Eenheids prijs van capaciteit = 744 (uur) * Max (25/50 reken eenheid voor verbindingen per seconde, 125/2.22-capaciteits eenheid voor door Voer) * $0,008 = 744 * 57 * 0,008 = $339,26
-
-Totale prijs = $148.80 + 339.26 = $488,06
-
-In dit geval wordt u gefactureerd voor de Maxi maal vijf instanties, plus zeven capaciteits eenheden (7/10 van een exemplaar).  
-
-**Voorbeeld 5**
-
-Een Application Gateway WAF_v2 is ingericht voor een maand. Gedurende deze periode ontvangt het 25 nieuwe TLS-verbindingen per seconde, gemiddelde van 8,88-Mbps-gegevens overdracht en heeft 80 aanvragen per seconde. Als er een korte levens duur is en de berekening van de reken eenheid voor de toepassing 10 RPS per reken eenheid ondersteunt, is uw prijs:
-
-Vaste prijs = 744 (uren) * $0,36 = $267,84
-
-Prijs per capaciteits eenheid = 744 (uur) * Max (maximale reken eenheid (25/50 voor verbindingen/sec, 80/10 WAF RPS), 8.88/2.22 capaciteits eenheid voor door Voer) * $0,0144 = 744 * 8 * 0,0144 = $85,71
-
-Totale prijs = $267,84 + $85,71 = $353,55
-
-> [!NOTE]
-> De functie Max retourneert de grootste waarde in een paar waarden.
+Zie voor meer informatie [over prijzen](understanding-pricing.md).
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Application Gateway en WAF v2 schalen
 
@@ -180,7 +100,7 @@ In deze sectie worden de functies en beperkingen beschreven van de v2-SKU die ve
 |--|--|
 |Verificatie certificaat|Niet ondersteund.<br>Zie [overzicht van end-to-end-TLS met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie.|
 |Standard_v2 en standaard Application Gateway op hetzelfde subnet mengen|Niet ondersteund|
-|Door de gebruiker gedefinieerde route (UDR) op Application Gateway subnet|Ondersteund (specifieke scenario's). In de preview-versie.<br> Zie [Application Gateway configuratie-overzicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie over ondersteunde scenario's.|
+|Door de gebruiker gedefinieerde route (UDR) op Application Gateway subnet|Ondersteund (specifieke scenario's). In de preview-versie.<br> Zie [Application Gateway configuratie-overzicht](configuration-infrastructure.md#supported-user-defined-routes)voor meer informatie over ondersteunde scenario's.|
 |NSG voor binnenkomend poort bereik| -65200 tot 65535 voor Standard_v2 SKU<br>-65503 tot 65534 voor standaard-SKU.<br>Raadpleeg de [Veelgestelde vragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)voor meer informatie.|
 |Prestatie Logboeken in azure Diagnostics|Niet ondersteund.<br>De metrische gegevens van Azure moeten worden gebruikt.|
 |Billing|De facturering is gepland om te beginnen op 1 juli 2019.|

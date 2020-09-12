@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381175"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014800"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory-synchronisatie en Azure Active Directory-synchronisatie upgraden
-Azure AD Connect is de beste manier om verbinding te maken met uw on-premises directory met Azure AD en Office 365. Dit is een uitstekende tijd om bij te werken naar Azure AD Connect van Windows Azure Active Directory Sync (DirSync) of Azure AD Sync omdat deze hulpprogram ma's nu zijn afgeschaft en niet langer worden ondersteund vanaf 13 april 2017.
+Azure AD Connect is de beste manier om verbinding te maken met uw on-premises Directory met Azure AD en Microsoft 365. Dit is een uitstekende tijd om bij te werken naar Azure AD Connect van Windows Azure Active Directory Sync (DirSync) of Azure AD Sync omdat deze hulpprogram ma's nu zijn afgeschaft en niet langer worden ondersteund vanaf 13 april 2017.
 
-De twee hulpprogram ma's voor het synchroniseren van identiteiten die zijn afgeschaft, worden aangeboden voor klanten met één forest (DirSync) en voor meerdere forests en andere geavanceerde klanten (Azure AD Sync). Deze oudere hulpprogram ma's zijn vervangen door één oplossing die beschikbaar is voor alle scenario's: Azure AD Connect. Het biedt nieuwe functionaliteit, verbeteringen van functies en ondersteuning voor nieuwe scenario's. We raden u ten zeerste aan om een upgrade uit te voeren naar Azure AD Connect om uw on-premises identiteits gegevens te kunnen blijven synchroniseren met Azure AD en Office 365. Micro soft garandeert niet dat deze oudere versies na 31 december 2017 kunnen worden uitgevoerd.
+De twee hulpprogram ma's voor het synchroniseren van identiteiten die zijn afgeschaft, worden aangeboden voor klanten met één forest (DirSync) en voor meerdere forests en andere geavanceerde klanten (Azure AD Sync). Deze oudere hulpprogram ma's zijn vervangen door één oplossing die beschikbaar is voor alle scenario's: Azure AD Connect. Het biedt nieuwe functionaliteit, verbeteringen van functies en ondersteuning voor nieuwe scenario's. Om uw on-premises identiteits gegevens te kunnen blijven synchroniseren met Azure AD en Microsoft 365, raden wij u ten zeerste aan om een upgrade uit te voeren naar Azure AD Connect. Micro soft garandeert niet dat deze oudere versies na 31 december 2017 kunnen worden uitgevoerd.
 
 De laatste versie van DirSync is uitgebracht in juli 2014 en de laatste release van Azure AD Sync is uitgebracht in mei 2015.
 
@@ -56,7 +56,7 @@ Als u wilt zien hoe u een in-place upgrade van DirSync naar Azure AD Connect kun
 >
 
 ## <a name="faq"></a>Veelgestelde vragen
-**V: Ik heb een e-mail melding ontvangen van het Azure-team en/of een bericht van het Office 365-berichten centrum, maar ik gebruik Connect.**  
+**V: Ik heb een e-mail melding ontvangen van het Azure-team en/of een bericht uit het Microsoft 365 berichten centrum, maar ik gebruik Connect.**  
 De melding werd ook naar klanten verzonden met behulp van Azure AD Connect met een buildnummer 1,0. \* . 0 (met een bèta versie van 1,1). Micro soft raadt klanten aan om actueel te blijven met Azure AD Connect releases. Met de functie voor [automatische upgrades](how-to-connect-install-automatic-upgrade.md) die in 1,1 is geïntroduceerd, kunt u op eenvoudige wijze altijd een recente versie van Azure AD Connect installeren.
 
 **V: zal DirSync/Azure AD Sync niet meer werken op 13 april 2017?**  

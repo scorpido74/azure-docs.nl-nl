@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799562"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657941"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
@@ -43,12 +43,13 @@ Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
 
 Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw gegevens. Raadpleeg de onderstaande voorbeeld koppelingen voor gedetailleerde voor beelden van elk type visualisatie:
 
-* [Tekst](workbooks-visualizations.md#text)
-* [Grafieken](workbooks-visualizations.md#charts)
-* [Rasters](workbooks-visualizations.md#grids)
-* [Tegels](workbooks-visualizations.md#tiles)
-* [Mapstructuren](workbooks-visualizations.md#trees)
-* [Grafieken](workbooks-visualizations.md#graphs)
+* [Tekst](workbooks-text-visualizations.md)
+* [Grafieken](workbooks-chart-visualizations.md)
+* [Rasters](workbooks-grid-visualizations.md)
+* [Pagina's](workbooks-tile-visualizations.md)
+* [Mapstructuren](workbooks-tree-visualizations.md)
+* [Grafieken](workbooks-graph-visualizations.md)
+* [Samengesteld staafdiagram](workbooks-composite-bar.md)
 
 ![Voor beelden van werkmap visualisaties](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +87,9 @@ In het geval van deze bepaalde werkmap is de ervaring interactief. U kunt het ab
 
 ### <a name="editing-mode"></a>Bewerkings modus
 
-Als u wilt weten hoe deze werkmap sjabloon samen wordt geplaatst, moet u de bewerkings modus **wijzigen door bewerken**te selecteren. 
+Als u wilt weten hoe deze werkmap sjabloon samen wordt geplaatst, moet u de bewerkings modus **wijzigen door bewerken**te selecteren.
 
-![Scherm opname van sjabloon voor toepassings fout analyse](./media/workbooks-overview/edit.png)
+![Scherm afbeelding van de knop bewerken in werkmappen.](./media/workbooks-overview/edit.png)
 
 Wanneer u overschakelt naar de bewerkings modus, ziet u dat er een aantal **bewerkings** vakken worden weer gegeven aan de rechter kant die overeenkomt met elk afzonderlijk aspect van uw werkmap.
 

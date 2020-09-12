@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889937"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660004"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
@@ -92,4 +92,4 @@ Vereiste Url's voor de Azure Government regio's.
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zelfstudie: Azure Firewall implementeren en configureren met Azure Portal](../firewall/tutorial-firewall-deploy-portal.md)
-* [Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen](how-to-enable-virtual-network.md)
+* [Azure ML-experiment- en deductietaken beveiligen binnen een Azure Virtual Network](how-to-network-security-overview.md)

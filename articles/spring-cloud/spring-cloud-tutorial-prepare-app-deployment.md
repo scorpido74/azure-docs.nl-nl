@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260320"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014936"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
 In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
-Voordat u dit voor beeld uitvoert, kunt u de [eenvoudige Snelstartgids](spring-cloud-quickstart.md)proberen.
+Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) proberen.
 
 Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
 * [Uw eerste app starten](spring-cloud-quickstart.md)
@@ -128,9 +128,9 @@ De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor u
 
 Spring boot-versie | Lente-Cloud versie | Azure lente cloud client starter-versie
 ---|---|---
-2.1 | Greenwich. RELEASE | 2.1.2
-2.2 | Hoxton.SR8 | Niet nodig
-2.3 | Hoxton.SR8 | Niet nodig
+2.1. x | Greenwich. RELEASE | 2.1.2
+2.2. x | Hoxton.SR8 | Niet nodig
+2.3. x | Hoxton.SR8 | Niet nodig
 
 Neem de volgende dependenciy op in uw pom.xml-bestand als u een Spring boot 2,1 gebruikt.
 

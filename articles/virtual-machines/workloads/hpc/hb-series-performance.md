@@ -1,122 +1,63 @@
 ---
-title: Prestaties van de VM-grootte van de HB-serie-Azure Virtual Machines | Microsoft Docs
+title: Prestaties van VM-grootte van HB-serie
 description: Meer informatie over prestatie test resultaten voor VM-grootten van de HB-serie in Azure.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/09/2020
 ms.author: amverma
-ms.openlocfilehash: 4745fda5417ea937c367a116f999070bd62cf8cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077404"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016279"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>Grootte van virtuele machines uit de HB-serie
 
 Er zijn verschillende prestatie tests uitgevoerd op HB-serie-grootten. Hier volgen enkele van de resultaten van deze prestatie tests.
 
-
 | Workload                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| Triad STREAMen                                    | ~ 260 GB/s (32-33 GB/s per CCX)  |
-| High-Performance Linpackuitvoer (HPL)                  | ~ 1.000 GigaFLOPS (Rpeak), ~ 860 GigaFLOPS (Rmax) |
-| Band breedte & RDMA-latentie                        | 2.35 usec, 96,5 GB/s   |
-| FIO op lokale NVMe-SSD                           | ~ 1,7 GB/s Lees bewerkingen, ~ 1,0 GB/s      |  
-| IOR op 4 * Azure Premium-SSD (P30 Managed Disks, RAID0) * *  | ~ 725 MB/s Lees bewerkingen, ~ 780 MB/schrijf bewerkingen   |
+| Triad STREAMen                                    | 260 GB/s (32-33 GB/s per CCX)  |
+| High-Performance Linpackuitvoer (HPL)                  | 1.000 GigaFLOPS (Rpeak), 860 GigaFLOPS (Rmax) |
+| Band breedte & RDMA-latentie                        | 1,27 micro seconden, 99,1 GB/s   |
+| FIO op lokale NVMe-SSD                           | 1,7 GB/s Lees bewerkingen, 1,0 GB/s      |  
+| IOR op 4 * Azure Premium-SSD (P30 Managed Disks, RAID0) * *  | 725 MB/s Lees bewerkingen, 780 MB/schrijf bewerkingen   |
 
 
+## <a name="mpi-latency"></a>MPI-latentie
 
-## <a name="infiniband-send-latency"></a>InfiniBand-verzend latentie
-Mellanox perftest.
+MPI-latentie test van de OSU microbench Mark-suite wordt uitgevoerd. Voorbeeld scripts bevinden zich op [github](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
+
+```bash
+./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
+```
+
+:::image type="content" source="./media/latency-hb.png" alt-text="MPI-latentie op Azure HB.":::
+
+## <a name="mpi-bandwidth"></a>MPI-band breedte
+
+De MPI-bandbreedte test van de OSU microbench Mark-suite wordt uitgevoerd. Voorbeeld scripts bevinden zich op [github](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)
+
+```bash
+./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
+```
+
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI-band breedte op Azure HB.":::
+
+
+## <a name="mellanox-perftest"></a>Mellanox perftest
+
+Het [Mellanox perftest-pakket](https://community.mellanox.com/s/article/perftest-package) heeft veel InfiniBand-tests zoals latentie (ib_send_lat) en band breedte (ib_send_bw). Hieronder vindt u een voor beeld van een opdracht.
 
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-
-|  #bytes         | #iterations     | t_min [micro seconde]     | t_max [micro seconde]     | t_typical [micro seconde] | t_avg [micro seconde]     | t_stdev [micro seconde]   |
-|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| 2               | 1000            | 2,35            | 12,63           | 2,38            | 2,42            | 0,33            |
-| 4               | 1000            | 2,35            | 18,53           | 2,38            | 2,4             | 0,21            |
-| 8               | 1000            | 2,36            | 6,06            | 2,39            | 2,41            | 0.22            |
-| 16              | 1000            | 2,36            | 6,05            | 2,39            | 2,41            | 0,21            |
-| 32              | 1000            | 2,37            | 18,93           | 2,4             | 2,42            | 0,25            |
-| 64              | 1000            | 2,39            | 17,98           | 2,43            | 2.45            | 0,18            |
-| 128             | 1000            | 2,44            | 19,4            | 2,76            | 2,65            | 0,29            |
-| 256             | 1000            | 3,06            | 18,31           | 3.1             | 3,12            | 0,27            |
-| 512             | 1000            | 3.15            | 7,89            | 3.2             | 3.23            | 0,31            |
-| 1024            | 1000            | 3,27            | 17,62           | 3,31            | 3,33            | 0.22            |
-| 2048            | 1000            | 3,48            | 7,94            | 3,52            | 3,55            | 0,26            |
-| 4096            | 1000            | 3,91            | 7,7             | 3,96            | 3,98            | 0,21            |
-
-
-## <a name="osu-mpi-latency-test"></a>OSU MPI-latentie test
-
-OSU MPI-latentie test v 5.4.3.
-
-```azure-cli
-./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
-```
-
-
-| #bytes  | Latentie [micro seconde] (MPICH 3,3 + CH4) | Latentie [micro seconde] (OpenMPI 4.0.0) | Latentie [micro seconde] (MVAPICH2 2,3) | Latentie [micro seconde] (Intel MPI 2019) |
-|------|----------|----------|----------|----------|
-| 2    | 2,44     | 2.52     | 2,84     | 2,76     |
-| 4    | 2,44     | 2,53     | 2,84     | 2,76     |
-| 8    | 2,44     | 2,53     | 2,83     | 2,76     |
-| 16   | 2.45     | 2,53     | 2,87     | 2,77     |
-| 32   | 2,62     | 2,69     | 2,89     | 2,78     |
-| 64   | 2,72     | 2,79     | 2,93     | 2,85     |
-| 128  | 2,76     | 2,88     | 3,06     | 2,91     |
-| 256  | 3,53     | 3,65     | 3.73     | 3,57     |
-| 512  | 3,68     | 3,78     | 3,81     | 3,70     |
-| 1024 | 3,86     | 3,97     | 3,95     | 3,93     |
-| 2048 | 4,12     | 4,5      | 4,24     | 4,22     |
-| 4096 | 4,79     | 5,28     | 6,33     | 4,91     |
-
-
-## <a name="mpi-bandwidth"></a>MPI-band breedte
-
-OSU MPI-bandbreedte test v 5.4.3.
-
-```azure-cli
-./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
-```
-
-| #Size            | Band breedte (MB/s) | Band breedte (GB/s) |
-|------------------|------------------|------------------|
-| 2                | 4,03             | 0,03             |
-| 4                | 8,2              | 0,07             |
-| 8                | 16,15            | 0.13             |
-| 16               | 32,33            | 0,26             |
-| 32               | 64,36            | 0,51             |
-| 64               | 126,29           | 1.01             |
-| 128              | 234,14           | 1,87             |
-| 256              | 486,89           | 3,90             |
-| 512              | 874,24           | 6,99             |
-| 1024             | 1538,47          | 12,31            |
-| 2048             | 2743,98          | 21,95            |
-| 4096             | 4194,69          | 33,56            |
-| 8192             | 5657,67          | 45,26            |
-| 16384            | 7618,96          | 60,95            |
-| 32768            | 10333,76         | 82,67            |
-| 65536            | 11171,06         | 89,37            |
-| 131072           | 11539,64         | 92,32            |
-| 262144           | 11768,43         | 94,15            |
-| 524288           | 11908,59         | 95,27            |
-| 1048576          | 12012,8          | 96,10            |
-| 2097152          | 12049,38         | 96,40            |
-| 4194304          | 12061,33         | 96,49            |
-
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [High-Performance Computing](/azure/architecture/topics/high-performance-computing/) in Azure.
+- Meer informatie over de meest recente aankondigingen en enkele HPC-voor beelden (High Performance Computing) en resultaten van de [Azure Compute tech-community blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) in azure](/azure/architecture/topics/high-performance-computing/)voor een architectuur weergave op een hoger niveau voor het uitvoeren van HPC-workloads.

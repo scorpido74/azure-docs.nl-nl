@@ -1,22 +1,22 @@
 ---
-title: Wat is risico? Azure AD Identity Protection
+title: Wat is risico? Azure AD-identiteitsbeveiliging
 description: Risico's in Azure AD Identity Protection uitleggen
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/10/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047102"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016398"
 ---
 # <a name="what-is-risk"></a>Wat is risico?
 
@@ -29,6 +29,8 @@ Identiteits beveiliging biedt organisaties toegang tot krachtige bronnen om snel
 ## <a name="risk-types-and-detection"></a>Risico typen en detectie
 
 Er zijn twee soorten risico **gebruiker** en **aanmelding** , en twee typen detectie of berekeningen in **realtime** en **offline**.
+
+Realtime detecties kunnen vijf tot tien minuten niet worden weer gegeven in rapportage. Offline detecties worden mogelijk niet binnen twee tot vier uur weer gegeven in rapportage.
 
 ### <a name="user-risk"></a>Gebruikersrisico
 
@@ -56,7 +58,7 @@ Deze Risico's kunnen in realtime worden berekend of offline worden berekend met 
 | Door beheerder bevestigde gebruiker geknoeid | Offline | Deze detectie geeft aan dat een beheerder in de gebruikers interface van Risk ante gebruikers de gebruiker heeft geknoeid, of met behulp van de riskyUsers-API. Als u wilt zien welke beheerder deze gebruiker heeft bevestigd, controleert u de risico geschiedenis van de gebruiker (via de gebruikers interface of API). |
 | Schadelijk IP-adres | Offline | Met deze detectie wordt de aanmelding aangegeven vanaf een schadelijk IP-adres. Een IP-adres wordt beschouwd als schadelijk op basis van hoge fout frequenties vanwege ongeldige referenties die zijn ontvangen van het IP-adres of andere IP-reputatie bronnen. |
 | Verdachte regels voor het bewerken van postvak in | Offline | Deze detectie wordt gedetecteerd door [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Deze detectie profileert uw omgeving en activeert waarschuwingen wanneer verdachte regels die berichten of mappen verwijderen of verplaatsen worden ingesteld op het postvak in van een gebruiker. Deze detectie kan erop wijzen dat het account van de gebruiker is aangetast, dat berichten opzettelijk worden verborgen en dat het postvak wordt gebruikt voor het distribueren van spam of malware in uw organisatie. |
-| Wachtwoord spuit | Offline | Een aanval met een wacht woord is het geval wanneer meerdere gebruikers namen worden aangevallen met veelvoorkomende wacht woorden in een geïntegreerde brute kracht om onbevoegde toegang te krijgen. Deze risico detectie wordt geactiveerd wanneer een wachtwoord sproei-aanval is uitgevoerd. |
+| Wachtwoordspray | Offline | Een aanval met een wacht woord is het geval wanneer meerdere gebruikers namen worden aangevallen met veelvoorkomende wacht woorden in een geïntegreerde brute kracht om onbevoegde toegang te krijgen. Deze risico detectie wordt geactiveerd wanneer een wachtwoord sproei-aanval is uitgevoerd. |
 | Onmogelijk traject | Offline | Deze detectie wordt gedetecteerd door [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Deze detectie identificeert twee gebruikers activiteiten (is een of meerdere sessies) die afkomstig zijn van geografisch gelegen locaties binnen een tijds periode die korter is dan de tijd die de gebruiker nodig heeft om te reizen van de eerste locatie naar de tweede, wat aangeeft dat een andere gebruiker dezelfde referenties gebruikt. |
 
 ### <a name="other-risk-detections"></a>Andere risico detecties
@@ -67,11 +69,11 @@ Deze Risico's kunnen in realtime worden berekend of offline worden berekend met 
 
 ## <a name="common-questions"></a>Veelgestelde vragen
 
-### <a name="risk-levels"></a>Risico niveaus
+### <a name="risk-levels"></a>Risiconiveaus
 
-Identiteits beveiliging categoriseert het risico in drie lagen: laag, gemiddeld en hoog. 
+Met Identity Protection wordt het risico gecategoriseerd in drie niveaus: laag, gemiddeld en hoog. 
 
-Micro soft biedt geen specifieke details over de manier waarop Risico's worden berekend, maar op elk niveau is er meer betrouw baarheid dat de gebruiker of het aanmelden is aangetast. Een voor beeld: een exemplaar van onbekende aanmeldings eigenschappen voor een gebruiker is mogelijk niet zo onveilig als gelekte referenties voor een andere gebruiker.
+Microsoft biedt geen specifieke details over de manier waarop het risico wordt berekend, maar hoe hoger het niveau is, hoe betrouwbaarder het is dat de gebruiker of het aanmelden is gecompromitteerd. Een voorbeeld: één geval van onbekende aanmeldingseigenschappen voor een gebruiker kan minder bedreigend zijn dan gelekte referenties voor een andere gebruiker.
 
 ### <a name="leaked-credentials"></a>Gelekte referenties
 

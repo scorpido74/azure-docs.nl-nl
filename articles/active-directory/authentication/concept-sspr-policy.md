@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194066"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005017"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Wachtwoord beleid en account beperkingen in Azure Active Directory
 
@@ -43,13 +43,13 @@ De volgende tabel bevat een overzicht van de beleids regels voor de gebruikers n
 
 Een wachtwoord beleid wordt toegepast op alle gebruikers accounts die rechtstreeks in azure AD worden gemaakt en beheerd. Dit wachtwoord beleid kan niet worden gewijzigd, maar u kunt [aangepaste verboden wacht woorden configureren voor Azure AD-wachtwoord beveiliging](tutorial-configure-custom-password-protection.md).
 
-Het wachtwoord beleid is niet van toepassing op gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS-omgeving met behulp van Azure AD Connect.
+Het wachtwoord beleid is niet van toepassing op gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met behulp van Azure AD Connect, tenzij u EnforceCloudPasswordPolicyForPasswordSyncedUsers inschakelt.
 
 De volgende opties voor wachtwoord beleid zijn gedefinieerd:
 
 | Eigenschap | Vereisten |
 | --- | --- |
-| Toegestane tekens |<ul><li>A – Z</li><li>a-z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \`~ " ( ) ;</li> <li>lege ruimte</li></ul> |
+| Toegestane tekens |<ul><li>A – Z</li><li>a-z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \` ~ " ( ) ;</li> <li>lege ruimte</li></ul> |
 | Tekens niet toegestaan | Unicode-tekens. |
 | Wachtwoord beperkingen |<ul><li>Mini maal acht tekens en Maxi maal 256 tekens.</li><li>Vereist drie van de volgende vier:<ul><li>Kleine letters.</li><li>Hoofd letters.</li><li>Getallen (0-9).</li><li>Symbolen (Zie de vorige wachtwoord beperkingen).</li></ul></li></ul> |
 | Geldigheids duur van wacht woord (maximale wachtwoord duur) |<ul><li>Standaard waarde: **90** dagen.</li><li>De waarde kan worden geconfigureerd met behulp `Set-MsolPasswordPolicy` van de-cmdlet uit de Azure Active Directory-module voor Windows Power shell.</li></ul> |
@@ -82,7 +82,7 @@ Voor het twee-poort beleid zijn twee soorten verificatie gegevens vereist, zoals
   * Beheerder voor naleving
   * Toepassings beheerder
   * Beveiligingsbeheerder
-  * Beheerder van geprivilegieerde rol
+  * Beheerder voor bevoorrechte rollen
   * Intune-beheerder
   * Service beheerder van de toepassings proxy
   * Dynamics 365-beheerder

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7d29408c126844615666a4ab217027b6ae1d037d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254624"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659960"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren vanuit Azure Marketplace op Azure Stack Edge GPU-apparaat
 
@@ -33,9 +33,7 @@ De GPU-voorbeeld module in dit artikel bevat PyTorch-en tensor flow-benchmark co
 Voordat u begint, controleert u of u over het volgende beschikt:
 
 - U hebt toegang tot een met GPU ingeschakelde 1-knoop punt Azure Stack edge-apparaat. Dit apparaat wordt geactiveerd met een resource in Azure. 
-- U hebt Compute geconfigureerd op dit apparaat. 
-    - Volg de stappen in [zelf studie: Configure Compute op uw Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md).
-    - Zorg dat u 
+- U hebt Compute geconfigureerd op dit apparaat. Volg de stappen in [zelf studie: Configure Compute op uw Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md).
 - De volgende ontwikkel bronnen op een Windows-client:
     - [Visual Studio Code](https://code.visualstudio.com/)  
     - [Azure IOT Edge-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).   

@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355910"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016262"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problemen met Azure Active Directory naadloze eenmalige aanmelding oplossen
 
@@ -29,7 +29,7 @@ In dit artikel vindt u informatie over het oplossen van problemen met de naadloz
 - In enkele gevallen kan het inschakelen van naadloze SSO tot wel 30 minuten duren.
 - Als u naadloze SSO op uw Tenant uitschakelt en weer inschakelt, krijgen gebruikers niet de mogelijkheid tot eenmalige aanmelding te zien, en zijn de in de cache geplaatste Kerberos-tickets, die doorgaans 10 uur geldig zijn, verlopen.
 - Als naadloze SSO is geslaagd, is de gebruiker niet in staat om aangemeld te **blijven**selecteren. Vanwege dit gedrag werken [share point-en OneDrive-toewijzings scenario's](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) niet.
-- Office 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Andere versies worden niet ondersteund. op deze versies voeren gebruikers hun gebruikers namen in, maar geen wacht woorden, om zich aan te melden. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
+- Microsoft 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Andere versies worden niet ondersteund. op deze versies voeren gebruikers hun gebruikers namen in, maar geen wacht woorden, om zich aan te melden. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
 - Naadloze SSO werkt niet in de modus voor persoonlijke navigatie op Firefox.
 - Naadloze SSO werkt niet in Internet Explorer wanneer de uitgebreide beveiligde modus is ingeschakeld.
 - Naadloze SSO werkt niet op mobiele browsers op iOS en Android.
@@ -74,9 +74,9 @@ Blader naar **Azure Active Directory**  >  **aanmeldingen** in het [Azure Active
 Gebruik de volgende controle lijst om problemen met naadloze SSO op te lossen:
 
 - Zorg ervoor dat de functie naadloze SSO is ingeschakeld in Azure AD Connect. Als u de functie niet kunt inschakelen (bijvoorbeeld vanwege een geblokkeerde poort), moet u ervoor zorgen dat u beschikt over alle [vereiste onderdelen](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) .
-- Als u [Azure AD-deelname](../active-directory-azureadjoin-overview.md) en naadloze SSO hebt ingeschakeld voor uw Tenant, moet u ervoor zorgen dat het probleem niet is met Azure AD-deelname. SSO van Azure AD join heeft voor rang op naadloze SSO als het apparaat is geregistreerd bij Azure AD en lid is van een domein. Met SSO van Azure AD-deelname ziet de gebruiker een aanmeldings tegel met de tekst ' verbonden met Windows '.
+- Als u [Azure AD-deelname](../devices/overview.md) en naadloze SSO hebt ingeschakeld voor uw Tenant, moet u ervoor zorgen dat het probleem niet is met Azure AD-deelname. SSO van Azure AD join heeft voor rang op naadloze SSO als het apparaat is geregistreerd bij Azure AD en lid is van een domein. Met SSO van Azure AD-deelname ziet de gebruiker een aanmeldings tegel met de tekst ' verbonden met Windows '.
 - Zorg ervoor dat de Azure AD-URL ( `https://autologon.microsoftazuread-sso.com` ) deel uitmaakt van de intranet zone-instellingen van de gebruiker.
-- Zorg ervoor dat het bedrijfs apparaat is gekoppeld aan het Active Directory domein. Het apparaat hoeft _geen_ lid te zijn van [Azure AD](../active-directory-azureadjoin-overview.md) voor naadloze SSO.
+- Zorg ervoor dat het bedrijfs apparaat is gekoppeld aan het Active Directory domein. Het apparaat hoeft _geen_ lid te zijn van [Azure AD](../devices/overview.md) voor naadloze SSO.
 - Zorg ervoor dat de gebruiker is aangemeld bij het apparaat via een Active Directory domein account.
 - Zorg ervoor dat het account van de gebruiker afkomstig is van een Active Directory-forest waar naadloze SSO is ingesteld.
 - Zorg ervoor dat het apparaat is verbonden met het bedrijfs netwerk.
@@ -106,7 +106,7 @@ Als u het probleem niet kunt oplossen, kunt u de functie hand matig opnieuw inst
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Stap 1: de naadloze SSO Power shell-module importeren
 
-1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Down load en installeer eerst [Azure AD Power shell](/powershell/azure/active-directory/overview).
 2. Blader naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Importeer de naadloze SSO Power shell-module met behulp van deze opdracht: `Import-Module .\AzureADSSO.psd1` .
 

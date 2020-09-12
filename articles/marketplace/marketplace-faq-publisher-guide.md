@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607325"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007754"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -46,7 +46,7 @@ Bekijk voor meer informatie de video op [Waarom u verkoop via Marketplace](https
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Zijn er kosten verbonden aan de micro soft Commercial Marketplace?
 
-Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP-](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) gemotiveerd aanbiedingen.
+Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP gemotiveerd-](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) aanbiedingen en voor betaalde SaaS-aanbiedingen op AppSource die zijn gekoppeld aan een micro soft teams-app of ten minste twee Microsoft 365-invoeg toepassingen (Excel, Power Point, Word, Outlook en share point).
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hoe kan ik u zich aanmelden voor een uitgever in de micro soft Commercial Marketplace?
 
@@ -320,7 +320,7 @@ Hier volgen enkele bronnen om aan de slag te gaan:
 Deze resources worden aangeraden:
 
 - Zie [Microsoft AppSource en Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)om lid te worden van de micro soft-partner-community.
-- Meer informatie over en deel nemen aan het [micro soft Commercial Marketplace-programma voor insiders](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders).
+- Meer informatie over en deel nemen aan het [micro soft Commercial Marketplace-programma voor insiders](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743).
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Waar kan ik meer informatie vinden over Partner Center?
 

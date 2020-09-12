@@ -2,19 +2,15 @@
 title: Schema's in Azure Automation beheren
 description: In dit artikel leest u hoe u een planning maakt en gebruikt in Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/04/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187350"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004609"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Schema's in Azure Automation beheren
 
@@ -28,17 +24,17 @@ Als u een runbook in Azure Automation wilt plannen om op een opgegeven tijdstip 
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>Power shell-cmdlets die worden gebruikt voor toegang tot schema's
 
-Met de cmdlets in de volgende tabel worden Automation-schema's gemaakt en beheerd met Power shell. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules). 
+Met de cmdlets in de volgende tabel worden Automation-schema's gemaakt en beheerd met Power shell. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules).
 
 | Cmdlets | Beschrijving |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Hiermee wordt een planning opgehaald. |
-| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Hiermee worden geplande runbooks opgehaald. |
-| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Hiermee maakt u een nieuw schema. |
-| [REGI ster-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hiermee wordt een runbook gekoppeld aan een schema. |
-| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Hiermee verwijdert u een schema. |
-| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Hiermee stelt u de eigenschappen voor een bestaande planning. |
-| [Registratie ongedaan maken-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hiermee wordt een runbook ontkoppeld van een schema. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Hiermee wordt een planning opgehaald. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Hiermee worden geplande runbooks opgehaald. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) |Hiermee maakt u een nieuw schema. |
+| [REGI ster-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) |Hiermee wordt een runbook gekoppeld aan een schema. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule) |Hiermee verwijdert u een schema. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) |Hiermee stelt u de eigenschappen voor een bestaande planning. |
+| [Registratie ongedaan maken-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook) |Hiermee wordt een runbook ontkoppeld van een schema. |
 
 ## <a name="create-a-schedule"></a>Een planning maken
 
@@ -49,23 +45,33 @@ U kunt een nieuw schema maken voor uw runbooks in de Azure Portal of met Power s
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>Een nieuw schema maken in de Azure Portal
 
-1. Selecteer in de Azure Portal, vanuit uw Automation-account, de optie **schema's** onder de sectie **gedeelde resources** aan de linkerkant.
-1. Selecteer boven aan de pagina **een planning toevoegen** .
-1. Voer in het deel venster **Nieuw schema** een naam in en Voer desgewenst een beschrijving in voor de nieuwe planning.
-1. Selecteer of de planning één keer of volgens een terugkerende planning wordt uitgevoerd door een **keer** of **terugkerend**te selecteren. Als u **eenmaal**selecteert, geeft u een begin tijd op en selecteert u **maken**. Als u **terugkerend**selecteert, geeft u een begin tijd op. Voor **herhalen elke**, selecteert u hoe vaak het runbook moet worden herhaald. Selecteren per uur, dag, week of maand.
-    1. Als u **week**selecteert, worden de dagen van de week weer gegeven waaruit u kunt kiezen. Selecteer zoveel dagen als u wilt. De eerste uitvoering van uw planning gebeurt op de eerste dag die na de begin tijd is geselecteerd. Als u bijvoorbeeld een weekend planning wilt kiezen, selecteert u zaterdag en zondag.
-    
-       ![Terugkerende weekend planning instellen](../media/schedules/week-end-weekly-recurrence.png)
+1. Vanuit uw Automation-account selecteert u in het linkerdeel venster de optie **schema's** onder **gedeelde resources**.
+2. Selecteer op de pagina **schema's** de optie **een schema toevoegen**.
+3. Voer op de pagina **Nieuw schema** een naam in en Voer desgewenst een beschrijving in voor de nieuwe planning.
 
-    2. Als u **maand**selecteert, krijgt u verschillende opties. Voor de optie voor **maandelijkse exemplaren** selecteert u **maand dagen** of **week dagen**. Als u **maand dagen**selecteert, wordt er een kalender weer gegeven zodat u zoveel dagen kunt kiezen als u wilt. Als u een datum kiest zoals de 31e die niet voor komt in de huidige maand, wordt het schema niet uitgevoerd. Als u wilt dat het schema op de laatste dag wordt uitgevoerd, selecteert u **Ja** onder **uitvoeren op de laatste dag van de maand**. Als u **week dagen**selecteert, wordt **elke optie herhalen** weer gegeven. Kies **eerste**, **tweede**, **derde**, **vierde**of **laatste**. Kies ten slotte een dag om te herhalen.
+    >[!NOTE]
+    >Automation-schema's bieden momenteel geen ondersteuning voor het gebruik van speciale tekens in de naam van de planning.
+    >
 
-       ![Maandelijks plannen op de eerste, vijftiende en laatste dag van de maand](../media/schedules/monthly-first-fifteenth-last.png)
+4. Selecteer of het schema één keer of volgens een terugkerende planning wordt uitgevoerd door **één keer** of **herhaaldelijk**te selecteren. Als u **eenmaal**selecteert, geeft u een begin tijd op en selecteert u **maken**. Als u **terugkerend**selecteert, geeft u een begin tijd op. Voor **herhalen elke**, selecteert u hoe vaak het runbook moet worden herhaald. Selecteren per uur, dag, week of maand.
 
-1. Wanneer u klaar bent, selecteert u **maken**.
+    * Als u **week**selecteert, worden de dagen van de week weer gegeven waaruit u kunt kiezen. Selecteer zoveel dagen als u wilt. De eerste uitvoering van uw planning gebeurt op de eerste dag die na de begin tijd is geselecteerd. Als u bijvoorbeeld een weekend planning wilt kiezen, selecteert u zaterdag en zondag.
+
+    ![Terugkerende weekend planning instellen](../media/schedules/week-end-weekly-recurrence.png)
+
+    * Als u **maand**selecteert, krijgt u verschillende opties. Voor de optie voor **maandelijkse exemplaren** selecteert u **maand dagen** of **week dagen**. Als u **maand dagen**selecteert, wordt er een kalender weer gegeven zodat u zoveel dagen kunt kiezen als u wilt. Als u een datum kiest zoals de 31e die niet voor komt in de huidige maand, wordt het schema niet uitgevoerd. Als u wilt dat het schema op de laatste dag wordt uitgevoerd, selecteert u **Ja** onder **uitvoeren op de laatste dag van de maand**. Als u **week dagen**selecteert, wordt **elke optie herhalen** weer gegeven. Kies **eerste**, **tweede**, **derde**, **vierde**of **laatste**. Kies ten slotte een dag om te herhalen.
+
+    ![Maandelijks plannen op de eerste, vijftiende en laatste dag van de maand](../media/schedules/monthly-first-fifteenth-last.png)
+
+5. Wanneer u klaar bent, selecteert u **maken**.
 
 ### <a name="create-a-new-schedule-with-powershell"></a>Een nieuw schema maken met Power shell
 
-Gebruik de cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) om planningen te maken. U geeft de begin tijd voor de planning op en de frequentie die moet worden uitgevoerd. In de volgende voor beelden ziet u hoe u veel verschillende plannings scenario's maakt.
+Gebruik de cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) om planningen te maken. U geeft de begin tijd voor de planning op en de frequentie die moet worden uitgevoerd. In de volgende voor beelden ziet u hoe u veel verschillende plannings scenario's maakt.
+
+>[!NOTE]
+>Automation-schema's bieden momenteel geen ondersteuning voor het gebruik van speciale tekens in de naam van de planning.
+>
 
 #### <a name="create-a-one-time-schedule"></a>Een eenmalige planning maken
 
@@ -128,7 +134,7 @@ Een runbook kan worden gekoppeld aan meerdere planningen en er kunnen meerdere r
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>Een planning aan een runbook koppelen met Power shell
 
-Gebruik de cmdlet [REGI ster-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) om een schema te koppelen. U kunt waarden voor de parameters van het runbook opgeven met de parameter Parameters . Zie [starten van een Runbook in azure Automation](../start-runbooks.md)voor meer informatie over het opgeven van parameter waarden.
+Gebruik de cmdlet [REGI ster-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) om een schema te koppelen. U kunt waarden voor de parameters van het runbook opgeven met de parameter Parameters . Zie [starten van een Runbook in azure Automation](../start-runbooks.md)voor meer informatie over het opgeven van parameter waarden.
 In het volgende voor beeld ziet u hoe u een schema aan een runbook koppelt met behulp van een Azure Resource Manager-cmdlet met para meters.
 
 ```azurepowershell-interactive
@@ -155,7 +161,7 @@ Wanneer u een planning uitschakelt, wordt elk runbook dat is gekoppeld aan het s
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>Een planning uit de Azure Portal uitschakelen
 
-1. Selecteer in uw Automation-account **schema's** onder **gedeelde resources**.
+1. Selecteer in uw Automation-account in het linkerdeel venster de optie **schema's** onder **gedeelde resources**.
 1. Selecteer de naam van een planning om het deel venster Details te openen.
 1. Wijzig **ingeschakeld** in **Nee**.
 
@@ -164,7 +170,7 @@ Wanneer u een planning uitschakelt, wordt elk runbook dat is gekoppeld aan het s
 
 ### <a name="disable-a-schedule-with-powershell"></a>Een planning uitschakelen met Power shell
 
-Gebruik de cmdlet [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) om de eigenschappen van een bestaande planning te wijzigen. Als u het schema wilt uitschakelen, geeft u False op voor de `IsEnabled` para meter.
+Gebruik de cmdlet [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) om de eigenschappen van een bestaande planning te wijzigen. Als u het schema wilt uitschakelen, geeft u False op voor de `IsEnabled` para meter.
 
 In het volgende voor beeld ziet u hoe u een planning voor een runbook kunt uitschakelen met behulp van een Azure Resource Manager-cmdlet.
 
@@ -181,13 +187,13 @@ Wanneer u klaar bent om uw planningen te verwijderen, kunt u de Azure Portal of 
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>Een schema verwijderen met de Azure Portal
 
-1. Selecteer in uw Automation-account **schema's** onder **gedeelde resources**.
-2. Klik op de naam van een planning om het deel venster Details te openen.
+1. Selecteer in uw Automation-account in het linkerdeel venster de optie **schema's** onder **gedeelde resources**.
+2. Selecteer de naam van een planning om het deel venster Details te openen.
 3. Klik op **Verwijderen**.
 
 ### <a name="remove-a-schedule-with-powershell"></a>Een schema verwijderen met Power shell
 
-U kunt de `Remove-AzAutomationSchedule` cmdlet gebruiken zoals hieronder wordt weer gegeven om een bestaand schema te verwijderen. 
+U kunt de `Remove-AzAutomationSchedule` cmdlet gebruiken zoals hieronder wordt weer gegeven om een bestaand schema te verwijderen.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"

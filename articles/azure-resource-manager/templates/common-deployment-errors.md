@@ -3,13 +3,13 @@ title: Veelvoorkomende implementatiefouten oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer u resources implementeert in azure met behulp van Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 08/07/2020
-ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/09/2020
+ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008165"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650944"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
@@ -25,7 +25,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | AccountPropertyCannotBeSet | Controleer de beschik bare eigenschappen van het opslag account. | [Storage accounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Het cluster of de regio heeft geen resources beschikbaar of kan de aangevraagde VM-grootte niet ondersteunen. Voer de aanvraag op een later tijdstip opnieuw uit of vraag een andere VM-grootte aan. | [Problemen met inrichten en toewijzen voor Linux](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md), [inrichting en toewijzing van problemen voor Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) en het [oplossen van toewijzings fouten](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Wacht tot de gelijktijdige bewerking is voltooid. | |
-| AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](error-register-resource-provider.md) |
+| AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](error-register-resource-provider.md) |
 | BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
 | Conflict | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
 | DeploymentActiveAndUneditable | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
@@ -75,7 +75,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | StorageAccountNotFound | Controleer het abonnement, de resource groep en de naam van het opslag account dat u wilt gebruiken. | |
 | SubnetsNotInSameVnet | Een virtuele machine kan slechts één virtueel netwerk hebben. Zorg er bij het implementeren van verschillende Nic's voor dat deze deel uitmaken van hetzelfde virtuele netwerk. | [Meerdere Nic's](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotFound | Er kan geen toegang worden verkregen tot een opgegeven abonnement voor de implementatie. Het kan zijn dat de abonnements-ID onjuist is. de gebruiker die de sjabloon implementeert, beschikt niet over de vereiste machtigingen om te implementeren voor het abonnement of de abonnements-ID heeft de verkeerde indeling. Wanneer u geneste implementaties gebruikt voor het [implementeren van verschillende bereiken](cross-scope-deployment.md), geeft u de GUID voor het abonnement op. | |
-| SubscriptionNotRegistered | Bij het implementeren van netwerk bronnen wordt de resource provider micro soft. Network automatisch geregistreerd in het abonnement. Soms wordt de automatische registratie niet op tijd voltooid. U kunt deze fout voor komen door de resource provider micro soft. Network te registreren vóór de implementatie. | [Registratie oplossen](error-register-resource-provider.md) |
+| SubscriptionNotRegistered | Bij het implementeren van een resource moet de resource provider zijn geregistreerd voor uw abonnement. Wanneer u een Azure Resource Manager sjabloon voor implementatie gebruikt, wordt de resource provider automatisch geregistreerd in het abonnement. Soms wordt de automatische registratie niet op tijd voltooid. U kunt deze fout voor komen door de resource provider te registreren vóór de implementatie. | [Registratie oplossen](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Verwijder overbodige afhankelijkheden. | [Circulaire afhankelijkheden oplossen](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | Verminder het aantal resource groepen voor één implementatie. | [Implementatie op meerdere scopes](cross-scope-deployment.md) |
 

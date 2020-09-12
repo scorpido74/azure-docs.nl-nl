@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: b9e33ba8d9610067cb9e844477ec273391fbdb0b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751720"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650869"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Virtueel netwerk apparaat configureren in azure HDInsight
 
@@ -55,6 +55,7 @@ U kunt eventueel een of meer van de volgende service-eind punten inschakelen, wa
 | security.ubuntu.com:80                                                |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
+| microsoft.com:80                                                      |
 
 ## <a name="next-steps"></a>Volgende stappen
 

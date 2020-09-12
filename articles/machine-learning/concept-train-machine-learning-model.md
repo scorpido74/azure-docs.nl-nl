@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144835"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651015"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -42,13 +42,13 @@ Elk van deze trainings methoden kan gebruikmaken van verschillende soorten reken
 
 Met de Azure Machine Learning SDK voor python kunt u machine learning werk stromen maken en uitvoeren met Azure Machine Learning. U kunt met de service communiceren vanuit een interactieve python-sessie, Jupyter-notebooks, Visual Studio code of een andere IDE.
 
-* [Wat is de Azure Machine Learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [De SDK installeren/bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Wat is de Azure Machine Learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [De SDK installeren/bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Een ontwikkelingsomgeving voor Azure Machine Learning configureren](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Configuratie uitvoeren
 
-Een algemene trainings taak met Azure Machine Learning kan worden gedefinieerd met behulp van de [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py). De uitvoerings configuratie wordt vervolgens gebruikt, samen met uw trainings script (s) voor het trainen van een model op een compute-doel.
+Een algemene trainings taak met Azure Machine Learning kan worden gedefinieerd met behulp van de [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true). De uitvoerings configuratie wordt vervolgens gebruikt, samen met uw trainings script (s) voor het trainen van een model op een compute-doel.
 
 U kunt beginnen met het uitvoeren van een configuratie voor uw lokale computer en overschakelen naar een op de cloud gebaseerd reken doel als dat nodig is. Wanneer u het berekenings doel wijzigt, wijzigt u alleen de configuratie van de uitvoering die u gebruikt. Een uitvoering registreert ook informatie over de trainings taak, zoals de invoer, uitvoer en Logboeken.
 
@@ -57,7 +57,7 @@ U kunt beginnen met het uitvoeren van een configuratie voor uw lokale computer e
 * [Voor beelden: Jupyter Notebook voor beelden van trainings modellen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
 * [Procedure: Compute-doelen voor model training gebruiken](how-to-set-up-training-targets.md)
 
-### <a name="automated-machine-learning"></a>Geautomatiseerde Machine Learning
+### <a name="automated-machine-learning"></a>Geautomatiseerde machine learning
 
 Definieer de herhalingen, afstemming-instellingen, parametrisatie en andere instellingen. Tijdens de training probeert Azure Machine Learning verschillende algoritmen en para meters parallel. De training stopt zodra de door u opgegeven afsluit criteria zijn gevonden. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen.
 

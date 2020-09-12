@@ -1,6 +1,6 @@
 ---
 title: Uw organisaties beheren via de portal van mijn account-Azure AD
-description: Hoe u organisaties die zijn verbonden met uw werk-of school account kunt weer geven en verlaten via de pagina organisaties van de portal van mijn account.
+description: Het weer geven en verlaten van organisaties waartoe u toegang hebt vanaf de pagina organisaties van de portal mijn account.
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798173"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005068"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Uw verbonden organisaties beheren via de pagina organisaties
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Organisaties beheren waartoe u toegang hebt in de portal van mijn account
 
-De pagina **organisaties** van de portal van **Mijn account** helpt u bij het beheren van de organisaties (doorgaans de naam van uw organisatie) die is verbonden met uw werk-of school account. Er zijn twee soorten organisaties die worden weer gegeven op de pagina **organisaties** :
+De pagina **organisaties** van de portal van **Mijn account** helpt u bij het beheren van de organisaties (doorgaans de naam van uw organisatie) waartoe u toegang hebt. Er zijn twee soorten organisaties die worden weer gegeven op de pagina **organisaties** :
 
 - **Thuis organisatie.** Uw thuis organisatie is de organisatie die eigenaar is van uw werk-of school account. U kunt uw thuis organisatie niet verlaten.
 
@@ -30,7 +30,7 @@ De pagina **organisaties** van de portal van **Mijn account** helpt u bij het be
 - **Andere organisaties.** De andere organisaties zijn een groep waarbij u zich eerder hebt aangemeld met uw werk-of school account. U kunt deze organisaties op elk gewenst moment verlaten.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](../users-groups-roles/index.yml).
+>Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die worden geopend door een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Uw organisaties weer geven
 
@@ -44,7 +44,7 @@ De pagina **organisaties** van de portal van **Mijn account** helpt u bij het be
 
     ![Pagina organisaties](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Controleer uw andere gekoppelde organisaties en zorg ervoor dat u alle organisaties herkent die zijn verbonden met uw account.
+4. Controleer uw andere organisaties en zorg ervoor dat u alle organisaties herkent waartoe u toegang hebt.
 
 ## <a name="leave-an-organization"></a>Een organisatie verlaten
 

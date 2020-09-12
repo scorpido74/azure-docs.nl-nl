@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/04/2019
-ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735433"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650972"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Klanten-lockbox voor Microsoft Azure
 
@@ -25,6 +25,49 @@ Klanten-lockbox voor Microsoft Azure biedt klanten een interface om aanvragen vo
 In dit artikel wordt beschreven hoe Klanten-lockbox aanvragen worden gestart, bijgehouden en opgeslagen voor latere beoordelingen en controles.
 
 Klanten-lockbox is nu algemeen beschikbaar en is momenteel ingeschakeld voor toegang tot virtuele machines met extern bureau blad.
+
+## <a name="supported-services-and-scenarios-in-preview"></a>Ondersteunde services en scenario's in Preview
+
+De volgende services zijn nu beschikbaar als preview-versie voor Klanten-lockbox:
+
+- API Management
+- Azure App Service
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Synapse Analytics
+- Cognitive Services
+- Container Registry
+- Azure Data Factory
+- Azure Database for PostgreSQL
+- Azure Kubernetes Service
+- Azure Data Box
+- HDInsight
+- Functions
+- Azure Storage
+- Azure SQL Database
+- Azure Data Explorer
+- Virtuele machines (nu ook de toegang tot geheugen dumps en beheerde schijven best rijken)
+- Azure-abonnements overdrachten
+
+Als u Klanten-lockbox wilt inschakelen voor deze preview-aanbiedingen voor uw organisatie, kunt u zich registreren voor [klanten-lockbox voor de open bare preview van Azure](https://aka.ms/customerlockbox/insiderprogram).
+
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Ondersteunde services en scenario's in algemene Beschik baarheid
+
+De volgende services en scenario's zijn momenteel in algemene Beschik baarheid voor Klanten-lockbox.
+
+### <a name="remote-desktop-access-to-virtual-machines"></a>Externe toegang tot virtuele machines met extern bureau blad
+
+Klanten-lockbox is momenteel ingeschakeld voor toegangs aanvragen van extern bureau blad op virtuele machines. De volgende werk belastingen worden ondersteund:
+- Platform as a Service (PaaS)-Azure Cloud Services (webrol en werk rollen)
+- Infrastructure as a Service (IaaS)-Windows en Linux (alleen Azure Resource Manager)
+- Schaalset voor virtuele machines-Windows en Linux
+
+> [!NOTE]
+> Klassieke IaaS-instanties worden niet ondersteund door Klanten-lockbox. Als u werk belastingen hebt die worden uitgevoerd op klassieke IaaS-instanties, raden we u aan om ze te migreren van het klassieke naar het Resource Manager-implementatie model. Zie voor instructies de door [het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+
+#### <a name="detailed-audit-logs"></a>Gedetailleerde audit logboeken
+
+Voor scenario's waarbij toegang tot extern bureau blad is vereist, kunt u Windows-gebeurtenis Logboeken gebruiken om de acties te bekijken die door de micro soft-Engineer worden uitgevoerd. Overweeg het gebruik van Azure Security Center om uw gebeurtenis logboeken te verzamelen en de gegevens naar uw werk ruimte te kopiëren voor analyse. Zie [gegevens verzameling in azure Security Center](../../security-center/security-center-enable-data-collection.md)voor meer informatie.
 
 ## <a name="workflow"></a>Werkstroom
 
@@ -91,40 +134,9 @@ Bijvoorbeeld:
 
 ![Azure Klanten-lockbox-activiteiten logboeken](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>Ondersteunde services en scenario's in algemene Beschik baarheid
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Integratie met Azure Security-benchmark Klanten-lockbox
 
-De volgende services en scenario's zijn momenteel in algemene Beschik baarheid voor Klanten-lockbox.
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>Externe toegang tot virtuele machines met extern bureau blad
-
-Klanten-lockbox is momenteel ingeschakeld voor toegangs aanvragen van extern bureau blad op virtuele machines. De volgende werk belastingen worden ondersteund:
-- Platform as a Service (PaaS)-Azure Cloud Services (webrol en werk rollen)
-- Infrastructure as a Service (IaaS)-Windows en Linux (alleen Azure Resource Manager)
-- Schaalset voor virtuele machines-Windows en Linux
-
-> [!NOTE]
-> Klassieke IaaS-instanties worden niet ondersteund door Klanten-lockbox. Als u werk belastingen hebt die worden uitgevoerd op klassieke IaaS-instanties, raden we u aan om ze te migreren van het klassieke naar het Resource Manager-implementatie model. Zie voor instructies de door [het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
-
-#### <a name="detailed-audit-logs"></a>Gedetailleerde audit logboeken
-
-Voor scenario's waarbij toegang tot extern bureau blad is vereist, kunt u Windows-gebeurtenis Logboeken gebruiken om de acties te bekijken die door de micro soft-Engineer worden uitgevoerd. Overweeg het gebruik van Azure Security Center om uw gebeurtenis logboeken te verzamelen en de gegevens naar uw werk ruimte te kopiëren voor analyse. Zie [gegevens verzameling in azure Security Center](../../security-center/security-center-enable-data-collection.md)voor meer informatie.
-
-## <a name="supported-services-and-scenarios-in-preview"></a>Ondersteunde services en scenario's in Preview
-
-De volgende services zijn nu beschikbaar als preview-versie voor Klanten-lockbox:
-
-- Azure Storage
-
-- Azure SQL Database
-
-- Azure Data Explorer
-
-- Virtuele machines (nu ook de toegang tot geheugen dumps en beheerde schijven best rijken)
-
-- Azure-abonnements overdrachten
-
-Als u Klanten-lockbox wilt inschakelen voor deze preview-aanbiedingen voor uw organisatie, kunt u zich registreren voor [klanten-lockbox voor de open bare preview van Azure](https://aka.ms/customerlockbox/insiderprogram).
-
+We hebben een nieuw basislijn besturings element ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) geïntroduceerd in azure Security Bench mark dat klanten-lockbox toepas baarheid dekt. Klanten kunnen nu benchmarks gebruiken om Klanten-lockbox toepasselijkheid van een service te controleren.
 
 ## <a name="exclusions"></a>Uitsluitingen
 

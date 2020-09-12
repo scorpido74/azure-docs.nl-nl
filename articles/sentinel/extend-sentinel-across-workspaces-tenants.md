@@ -1,6 +1,6 @@
 ---
 title: Azure-Sentinel uitbreiden in werk ruimten en tenants | Microsoft Docs
-description: Werken met meerdere tenants voor Azure Sentinel voor MSSP-service providers.
+description: Hoe u de analyse mogelijkheden van Azure Sentinel uitbreidt in werk ruimten en tenants.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9e0fe46e0a7382c0adcfa1f1f781f282e9e77942
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519010"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019322"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure-Sentinel uitbreiden in werkruimten en tenants
 
@@ -94,6 +94,13 @@ Een functie kan ook een vaak gebruikte samen voeging vereenvoudigen. U kunt bijv
 
 U kunt vervolgens een query op beide werk ruimten schrijven door te beginnen met `unionSecurityEvent | where ...` .
 
+#### <a name="scheduled-alerts"></a>Geplande waarschuwingen
+
+Query's in meerdere werk ruimten kunnen nu worden opgenomen in geplande waarschuwingen in analyse regels, afhankelijk van de volgende beperkingen:
+
+- Maxi maal 10 werk ruimten kunnen worden opgenomen in één query.
+- Azure Sentinel moet worden geïmplementeerd op elke werk ruimte waarnaar wordt verwezen in de query.
+
 > [!NOTE] 
 > Het uitvoeren van query's in meerdere werk ruimten in dezelfde query kan van invloed zijn op de prestaties en wordt daarom alleen aanbevolen als de logica deze functionaliteit vereist.
 
@@ -121,13 +128,6 @@ Met de functie voor het zoeken in meerdere werk ruimten kunt u met behulp van de
 Als u meerdere Azure-Sentinel-werk ruimten wilt configureren en beheren, moet u het gebruik van de Azure Sentinel Management API automatiseren. Zie voor meer informatie over het automatiseren van de implementatie van Azure Sentinel-resources, waaronder waarschuwings regels, jacht-query's, werkmappen en playbooks, [uitbrei ding van Azure Sentinel: api's, integratie en beheer automatisering](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
 
 Zie ook [Azure Sentinel implementeren en beheren als code](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) en [Azure Lighthouse combi neren met de DevOps-mogelijkheden van Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) voor een geconsolideerde, door de Community gestuurde methodologie voor het beheren van Azure Sentinel als code en voor het implementeren en configureren van bronnen vanuit een persoonlijke github-opslag plaats. 
-
-
-## <a name="whats-not-supported-across-workspaces"></a>Wat wordt niet ondersteund in verschillende werk ruimten?
-
-De volgende functies worden niet ondersteund in werk ruimten:
-
-- Een geplande waarschuwings regel kan niet worden uitgevoerd in verschillende werk ruimten met behulp van een query in meerdere werk ruimten.
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Werk ruimten beheren via tenants met behulp van Azure Lighthouse
 

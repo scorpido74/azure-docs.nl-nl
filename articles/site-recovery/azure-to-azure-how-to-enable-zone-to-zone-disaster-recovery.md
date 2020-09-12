@@ -5,18 +5,18 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021644"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007788"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Herstel na nood geval voor Azure VM tussen beschikbaarheids zones inschakelen
 
-In dit artikel wordt beschreven hoe u virtuele Azure-machines kunt repliceren, failover en failback van één beschikbaarheids zone naar een andere in dezelfde Azure-regio.
+In dit artikel wordt beschreven hoe u virtuele Azure-machines vanuit de ene beschikbaarheids zone naar een andere repliceert in dezelfde Azure-regio.
 
 >[!NOTE]
 >
@@ -26,6 +26,8 @@ In dit artikel wordt beschreven hoe u virtuele Azure-machines kunt repliceren, f
 Site Recovery-service draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen door uw zakelijke apps tijdens geplande en ongeplande uitval te laten werken. Het is de aanbevolen optie voor nood herstel om ervoor te zorgen dat uw toepassingen actief blijven als er regionale storingen optreden.
 
 Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone heeft een of meer data centers. 
+
+Als u Vm's wilt verplaatsen naar een beschikbaarheids zone in een andere regio, [raadpleegt u dit artikel](../resource-mover/move-region-availability-zone.md).
 
 ## <a name="using-availability-zones-for-disaster-recovery"></a>Beschikbaarheidszones gebruiken voor herstel na nood gevallen 
 
@@ -37,7 +39,7 @@ In sommige gevallen kan Beschikbaarheidszones echter worden gebruikt voor herste
 
 - Veel andere klanten hebben gecompliceerde netwerk infrastructuur en willen deze niet opnieuw maken in een secundaire regio vanwege de bijbehorende kosten en complexiteit. Zone-naar-zone herstel na nood gevallen vermindert de complexiteit omdat deze gebruikmaakt van redundante netwerk concepten over Beschikbaarheidszones een veel eenvoudiger configuratie maken. Deze klanten geven de voor keur aan het gemak en kunnen ook Beschikbaarheidszones gebruiken voor herstel na nood gevallen.
 
-- In sommige regio's die niet beschikken over een gepaard gebied binnen dezelfde rechts bevoegdheid (bijvoorbeeld Zuidoost-Azië), kan de zone naar zone herstel na nood gevallen worden gebruikt als de niet-conforme oplossing voor herstel na een hoger niveau, omdat uw toepassingen en gegevens geen nationale grenzen hebben. 
+- In sommige regio's die niet beschikken over een gepaard gebied binnen dezelfde rechts bevoegdheid (bijvoorbeeld Zuidoost-Azië), kan de zone naar zone herstel na nood gevallen worden uitgevoerd als de niet-conforme oplossing voor herstel na een hoger niveau, omdat uw toepassingen en gegevens niet over nationale grenzen worden verplaatst. 
 
 - Voor een zone-naar-zone-herstel na nood geval wordt de replicatie van gegevens op korte afstanden in vergelijking met Azure tot Azure-herstel na nood gevallen gereduceerd en daarom ziet u mogelijk een lagere latentie en dus lagere RPO.
 
@@ -69,8 +71,8 @@ Voordat u de zone implementeert naar zone herstel na nood gevallen voor uw virtu
 |---------|---------|
 |Klassieke VM's   |     Niet ondersteund    |
 |ARM-Vm's    |    Ondersteund    |
-|Azure Disk Encryption v1 (dubbele Pass, met AAD)     |     Ondersteund |
-|Azure Disk Encryption v2 (eenmalige Pass, zonder AAD)    |    Ondersteund    |
+|Azure Disk Encryption v1 (dubbele Pass, met Azure Active Directory (Azure AD))     |     Ondersteund   |
+|Azure Disk Encryption v2 (eenmalige Pass, zonder Azure AD)    |    Ondersteund    |
 |Onbeheerde schijven    |    Niet ondersteund    |
 |Managed Disks    |    Ondersteund    |
 |Door klant beheerde sleutels    |    Ondersteund    |
@@ -82,13 +84,13 @@ Voordat u de zone implementeert naar zone herstel na nood gevallen voor uw virtu
 
 ### <a name="log-in"></a>Aanmelden
 
-Meld u aan bij de Azure Portal.
+Meld u aan bij Azure Portal.
 
 ### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>Replicatie inschakelen voor de virtuele zonegebonden-machine van Azure
 
 1. Selecteer virtuele machines in het menu Azure Portal of zoek en selecteer virtuele machines op een wille keurige pagina. Selecteer de virtuele machine die u wilt repliceren. Voor een zone-naar-zone-herstel na nood gevallen moet deze virtuele machine zich al in een beschikbaarheids zone bevinden.
 
-2. In bewerkingen selecteert u herstel na nood gevallen.
+2. Selecteer in Bewerkingen de optie Herstel na noodgeval.
 
 3. Zoals hieronder wordt weer gegeven, selecteert u op het tabblad basis beginselen ja voor herstel na nood geval tussen Beschikbaarheidszones?
 
@@ -119,7 +121,7 @@ Het team van de Site Recovery-team en het Azure Capacity Management-abonnement v
 Zone-naar-zone herstel na nood gevallen ondersteunt dezelfde besturings systemen als Azure voor herstel na nood gevallen. Raadpleeg [hier](./azure-to-azure-support-matrix.md)de ondersteunings matrix.
 
 **5. zijn de bron-en doel resource groepen hetzelfde?**
-Nee, u moet een failover naar een andere resource groep.
+Nee, u moet een failover uitvoeren naar een andere resource groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

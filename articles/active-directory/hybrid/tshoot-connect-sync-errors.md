@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca2600101c302cee1da4d22a3f098436ecb71e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bd779c26cd523bbf33fa1be6c87f21b4415c152
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355893"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016415"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Probleemoplossings fouten tijdens de synchronisatie
 Er kunnen fouten optreden bij het synchroniseren van identiteits gegevens van Windows Server Active Directory (AD DS) naar Azure Active Directory (Azure AD). In dit artikel vindt u een overzicht van de verschillende typen synchronisatie fouten, een aantal van de mogelijke scenario's die deze fouten veroorzaken en mogelijke manieren om de fouten op te lossen. Dit artikel bevat de veelvoorkomende fout typen en is mogelijk niet van belang voor alle mogelijke fouten.
@@ -41,7 +41,7 @@ Fouten tijdens het exporteren naar Azure AD geven aan dat de bewerking voor het 
 
 ## <a name="data-mismatch-errors"></a>Fouten met niet-overeenkomende gegevens
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 * Wanneer de Azure AD Connect \( sync-engine \) Azure Active Directory om objecten toe te voegen of bij te werken, komt Azure AD overeen met het **Source Anchor** -kenmerk voor het kenmerk **IMMUTABLEID** van objecten in azure AD. Deze overeenkomst wordt een **harde overeenkomst**genoemd.
 * Als Azure AD geen object **vindt** dat overeenkomt met het kenmerk **immutableId** met het kenmerk **Source Anchor** van het inkomende object, moet u, voordat u een nieuw object inricht, de proxyAddresses-en userPrincipalName-kenmerken gebruiken om een overeenkomst te vinden. Dit komt overeen met een **zachte overeenkomst**. De zachte overeenkomst is ontworpen om te voldoen aan objecten die al aanwezig zijn in azure AD (die zijn gebrond in azure AD) met de nieuwe objecten die worden toegevoegd/bijgewerkt tijdens de synchronisatie die dezelfde entiteit (gebruikers, groepen) op locatie vertegenwoordigen.
 * **InvalidSoftMatch** -fout treedt op wanneer de harde overeenkomst geen overeenkomend object vindt **en** er zachte overeenkomsten zijn gevonden die overeenkomen met een gevonden object, maar dat object heeft een andere waarde van *immutableId* dan de *Source Anchor*van het binnenkomende object, waardoor wordt voorgesteld dat het overeenkomende object is gesynchroniseerd met een ander object van on-premises Active Directory.
@@ -75,19 +75,19 @@ Met Azure Active Directory schema kunnen twee of meer objecten niet dezelfde waa
 2. De **userPrincipalName** van Bob Smith is ingesteld als **Bobs \@ contoso.com**.
 3. **"abcdefghijklmnopqrstuv = ="** is de **Source Anchor** die wordt berekend door Azure AD Connect met de **ObjectGUID** van Bob smith van on-premises Active Directory. Dit is de **immutableId** voor Bob Smith in azure Active Directory.
 4. Bob heeft ook de volgende waarden voor het kenmerk **proxyAddresses** :
-   * SMTPbobs@contoso.com
-   * SMTPbob.smith@contoso.com
+   * SMTP bobs@contoso.com
+   * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
 5. Een nieuwe gebruiker, **Bob Taylor**, wordt toegevoegd aan de on-premises Active Directory.
 6. De **userPrincipalName** van de Robert van Taylor is ingesteld als **bobt \@ contoso.com**.
 7. **"abcdefghijkl0123456789 = =" "** is de **Source Anchor** die wordt berekend door Azure AD Connect gebruik van de **ObjectGUID** van Dirk Taylor van on-premises Active Directory. Bob Taylor-object is nog niet gesynchroniseerd met Azure Active Directory.
 8. Bob Taylor heeft de volgende waarden voor het kenmerk proxyAddresses
-   * SMTPbobt@contoso.com
-   * SMTPbob.taylor@contoso.com
+   * SMTP bobt@contoso.com
+   * SMTP bob.taylor@contoso.com
    * **SMTP: Bob \@ contoso.com**
 9. Tijdens het synchroniseren herkent Azure AD Connect de toevoeging van Bob Taylor in on-premises Active Directory en vraag Azure AD om dezelfde wijziging aan te brengen.
 10. In azure AD wordt eerst een harde overeenkomst uitgevoerd. Dat wil zeggen dat er wordt gezocht naar een object met de immutableId gelijk is aan "abcdefghijkl0123456789 = =". Harde overeenkomsten mislukken omdat er geen ander object in azure AD is dat immutableId.
-11. Er wordt geprobeerd om met Azure AD door te gaan met Bob Taylor. Dat wil zeggen dat er wordt gezocht naar een object met proxyAddresses dat gelijk is aan de drie waarden, waaronder SMTP:bob@contoso.com
+11. Er wordt geprobeerd om met Azure AD door te gaan met Bob Taylor. Dat wil zeggen dat er wordt gezocht naar een object met proxyAddresses dat gelijk is aan de drie waarden, waaronder SMTP: bob@contoso.com
 12. In azure AD wordt het object van Bob Smith gevonden dat overeenkomt met de criteria voor zachte overeenkomsten. Maar dit object heeft de waarde immutableId = "abcdefghijklmnopqrstuv = =". Hiermee wordt aangegeven dat dit object van on-premises is gesynchroniseerd vanuit een ander object Active Directory. Azure AD kan deze objecten dus niet zacht vinden en resulteert in een **InvalidSoftMatch** -synchronisatie fout.
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>InvalidSoftMatch-fout oplossen
@@ -106,17 +106,17 @@ Synchronisatie van fouten rapporten binnen Azure AD Connect Health voor synchron
 >
 
 #### <a name="related-articles"></a>Gerelateerde artikelen
-* [Dubbele of ongeldige kenmerken voor komen Directory synchronisatie in Office 365](https://support.microsoft.com/kb/2647098)
+* [Door dubbele of ongeldige kenmerken kan Directory synchronisatie in Microsoft 365 niet worden toegestaan](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 Wanneer Azure AD probeert een zachte overeenkomst met twee objecten te zoeken, is het mogelijk dat twee objecten van verschillende "object type" (zoals gebruiker, groep, contact enz.) dezelfde waarden hebben voor de kenmerken die worden gebruikt om de zachte overeenkomst uit te voeren. Als duplicatie van deze kenmerken is niet toegestaan in azure AD, kan de bewerking de synchronisatie fout ' ObjectTypeMismatch ' veroorzaken.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Voorbeeld Scenario's voor ObjectTypeMismatch-fout
-* Er wordt een beveiligings groep met e-mail functionaliteit gemaakt in Office 365. Beheerder voegt een nieuwe gebruiker of contact persoon toe aan on-premises AD (die nog niet is gesynchroniseerd met Azure AD) met dezelfde waarde voor het kenmerk ProxyAddresses als die van de Office 365-groep.
+* Er wordt een beveiligings groep met e-mail functionaliteit gemaakt in Microsoft 365. Beheerder voegt een nieuwe gebruiker of contact persoon toe aan on-premises AD (die nog niet is gesynchroniseerd met Azure AD) met dezelfde waarde voor het kenmerk ProxyAddresses als die van de Microsoft 365 groep.
 
 #### <a name="example-case"></a>Voorbeeld case
-1. Beheerder maakt een nieuwe beveiligings groep voor e-mail in Office 365 voor de belasting afdeling en biedt een e-mail adres als tax@contoso.com . Aan deze groep is de kenmerk waarde ProxyAddresses van **SMTP toegewezen: belasting \@ contoso.com**
+1. Beheerder maakt een nieuwe beveiligings groep voor e-mail in Microsoft 365 voor de belasting afdeling en biedt een e-mail adres als tax@contoso.com . Aan deze groep is de kenmerk waarde ProxyAddresses van **SMTP toegewezen: belasting \@ contoso.com**
 2. Er wordt een nieuwe gebruiker toegevoegd aan Contoso.com en er wordt een account gemaakt voor de gebruiker op locatie met de proxyAddress attribuut als **SMTP: belasting \@ contoso.com**
 3. Als Azure AD Connect het nieuwe gebruikers account synchroniseert, wordt de fout ' ObjectTypeMismatch ' weer geven.
 
@@ -130,7 +130,7 @@ De meest voorkomende reden voor de ObjectTypeMismatch-fout is dat twee objecten 
 
 ## <a name="duplicate-attributes"></a>Dubbele kenmerken
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 Met Azure Active Directory schema kunnen twee of meer objecten niet dezelfde waarde hebben als de volgende kenmerken. Elk object in azure AD wordt gedwongen een unieke waarde van deze kenmerken te hebben op een bepaald exemplaar.
 
 * ProxyAddresses
@@ -145,12 +145,12 @@ Als Azure AD Connect probeert een nieuw object toe te voegen of een bestaand obj
 1. **Bob Smith** is een gesynchroniseerde gebruiker in azure Active Directory van on-premises Active Directory contoso.com
 2. De **userPrincipalName** van Bob Smith on premises is ingesteld als **Bobs \@ contoso.com**.
 3. Bob heeft ook de volgende waarden voor het kenmerk **proxyAddresses** :
-   * SMTPbobs@contoso.com
-   * SMTPbob.smith@contoso.com
+   * SMTP bobs@contoso.com
+   * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
 4. Een nieuwe gebruiker, **Bob Taylor**, wordt toegevoegd aan de on-premises Active Directory.
 5. De **userPrincipalName** van de Robert van Taylor is ingesteld als **bobt \@ contoso.com**.
-6. **Bob Taylor** heeft de volgende waarden voor het kenmerk **proxyAddresses** . SMTP: bobt@contoso.com II. SMTPbob.taylor@contoso.com
+6. **Bob Taylor** heeft de volgende waarden voor het kenmerk **proxyAddresses** . SMTP: bobt@contoso.com II. SMTP bob.taylor@contoso.com
 7. Bob Taylor-object is gesynchroniseerd met Azure AD.
 8. De beheerder heeft besloten het kenmerk **proxyAddresses** van Bob Taylor bij te werken met de volgende waarde: i. **SMTP: Bob \@ contoso.com**
 9. Azure AD probeert het object Bob Taylor bij te werken in azure AD met de bovenstaande waarde, maar deze bewerking mislukt omdat de ProxyAddresses-waarde al is toegewezen aan Bob smid, wat resulteert in ' AttributeValueMustBeUnique-fout.
@@ -164,11 +164,11 @@ De meest voorkomende reden voor de AttributeValueMustBeUnique-fout is dat twee o
 4. Als u de wijziging in de on-premises AD hebt aangebracht, laat Azure AD Connect de wijziging synchroniseren om de fout vast te krijgen.
 
 #### <a name="related-articles"></a>Gerelateerde artikelen
--[Dubbele of ongeldige kenmerken voor komen Directory synchronisatie in Office 365](https://support.microsoft.com/kb/2647098)
+-[Door dubbele of ongeldige kenmerken kan Directory synchronisatie in Microsoft 365 niet worden toegestaan](https://support.microsoft.com/kb/2647098)
 
 ## <a name="data-validation-failures"></a>Gegevens validatie fouten
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 Azure Active Directory dwingt verschillende beperkingen voor de gegevens zelf af voordat deze gegevens naar de Directory kunnen worden geschreven. Deze beperkingen zijn om ervoor te zorgen dat eind gebruikers de best mogelijke ervaringen krijgen bij het gebruik van de toepassingen die afhankelijk zijn van deze gegevens.
 
 #### <a name="scenarios"></a>Scenario's
@@ -179,32 +179,32 @@ b. Het kenmerk UserPrincipalName volgt niet de vereiste indeling.
 a. Zorg ervoor dat het kenmerk userPrincipalName ondersteunde tekens en de vereiste indeling heeft.
 
 #### <a name="related-articles"></a>Gerelateerde artikelen
-* [Voorbereiden voor het inrichten van gebruikers via Directory synchronisatie naar Office 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+* [Voorbereiden om gebruikers in te richten via Directory synchronisatie naar Microsoft 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 Dit resulteert in een **' FederatedDomainChangeError** -synchronisatie fout wanneer het achtervoegsel van de userPrincipalName van een gebruiker wordt gewijzigd van een federatief domein naar een ander federatief domein.
 
 #### <a name="scenarios"></a>Scenario's
 Voor een gesynchroniseerde gebruiker is het UserPrincipalName-achtervoegsel gewijzigd van een federatief domein naar een ander federatief domein on-premises. Bijvoorbeeld: *userPrincipalName = robert \@ contoso.com* is gewijzigd in *userPrincipalName = Bob \@ fabrikam.com*.
 
 #### <a name="example"></a>Voorbeeld
-1. Bob Smit, een account voor Contoso.com, wordt toegevoegd als een nieuwe gebruiker in Active Directory met de UserPrincipalNamebob@contoso.com
-2. Bob gaat naar een andere divisie van Contoso.com met de naam Fabrikam.com en de UserPrincipalName wordt gewijzigd inbob@fabrikam.com
+1. Bob Smit, een account voor Contoso.com, wordt toegevoegd als een nieuwe gebruiker in Active Directory met de UserPrincipalName bob@contoso.com
+2. Bob gaat naar een andere divisie van Contoso.com met de naam Fabrikam.com en de UserPrincipalName wordt gewijzigd in bob@fabrikam.com
 3. Zowel contoso.com-als fabrikam.com-domeinen zijn federatieve domeinen met Azure Active Directory.
 4. De userPrincipalName van Bob wordt niet bijgewerkt en resulteert in een ' FederatedDomainChangeError-synchronisatie fout.
 
-#### <a name="how-to-fix"></a>Hoe oplossen?
+#### <a name="how-to-fix"></a>Problemen oplossen
 Als het UserPrincipalName-achtervoegsel van een gebruiker is bijgewerkt van bob@**contoso.com** naar Bob \@ **fabrikam.com**, waarbij zowel **contoso.com** als **fabrikam.com** **federatieve domeinen**zijn, voert u de volgende stappen uit om de synchronisatie fout op te lossen
 
-1. Werk de UserPrincipalName van de gebruiker in azure AD bij van bob@contoso.com naar bob@contoso.onmicrosoft.com . U kunt de volgende Power shell-opdracht gebruiken met de Azure AD Power shell-module:`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+1. Werk de UserPrincipalName van de gebruiker in azure AD bij van bob@contoso.com naar bob@contoso.onmicrosoft.com . U kunt de volgende Power shell-opdracht gebruiken met de Azure AD Power shell-module: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. De volgende synchronisatie cyclus toestaan om de synchronisatie te proberen. Deze synchronisatie wordt uitgevoerd en de UserPrincipalName van Bob wordt bijgewerkt naar de verwachte tijd bob@fabrikam.com .
 
 #### <a name="related-articles"></a>Gerelateerde artikelen
 * [Wijzigingen worden niet gesynchroniseerd met het Azure Active Directory Sync-hulp programma nadat u de UPN van een gebruikers account hebt gewijzigd om een ander federatief domein te gebruiken](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 Wanneer een kenmerk de toegestane maximale grootte, de lengte limiet of de limiet overschrijdt die is ingesteld door Azure Active Directory schema, resulteert de synchronisatie bewerking in de synchronisatie fout **LargeObject** of **ExceededAllowedLength** . Deze fout treedt doorgaans op voor de volgende kenmerken
 
 * userCertificate
@@ -218,12 +218,12 @@ Wanneer een kenmerk de toegestane maximale grootte, de lengte limiet of de limie
 3. Bob-thumbnailPhoto ingesteld in Active Directory is te groot om te worden gesynchroniseerd in azure AD.
 4. Tijdens automatische populatie van het kenmerk ProxyAddresses in Active Directory heeft een object te veel ProxyAddresses toegewezen.
 
-### <a name="how-to-fix"></a>Hoe oplossen?
+### <a name="how-to-fix"></a>Problemen oplossen
 1. Zorg ervoor dat het kenmerk dat de fout veroorzaakt binnen de toegestane beperking valt.
 
 ## <a name="existing-admin-role-conflict"></a>Bestaande strijdige beheerdersrol
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 Er wordt een bestaand beheerdersrol- **conflict** opgetreden op een gebruikers object tijdens de synchronisatie wanneer dat gebruikers object:
 
 - beheerders machtigingen en
@@ -234,7 +234,7 @@ Azure AD Connect is niet toegestaan om te laten overeenkomen met een gebruikers 
 ![Bestaande beheerder](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>Hoe oplossen?
+### <a name="how-to-fix"></a>Problemen oplossen
 Ga als volgt te werk om dit probleem op te lossen:
 
 1. Verwijder het Azure AD-account (eigenaar) van alle beheerders rollen. 
@@ -246,5 +246,5 @@ Ga als volgt te werk om dit probleem op te lossen:
 >U kunt de beheerdersrol opnieuw toewijzen aan het bestaande gebruikers object nadat de tijdelijke overeenkomst tussen het on-premises gebruikers object en het Azure AD-gebruikers object is voltooid.
 
 ## <a name="related-links"></a>Verwante koppelingen
-* [Active Directory-objecten zoeken in Active Directory-beheercentrum](https://technet.microsoft.com/library/dd560661.aspx)
-* [Azure Active Directory voor een object opvragen met Azure Active Directory Power shell](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+* [Active Directory-objecten zoeken in Active Directory-beheercentrum](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560661(v=ws.10))
+* [Azure Active Directory voor een object opvragen met Azure Active Directory Power shell](/previous-versions/azure/jj151815(v=azure.100))

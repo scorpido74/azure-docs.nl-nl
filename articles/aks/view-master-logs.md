@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen en weer geven van de logboeken
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048275"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004864"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Logboeken van Kubernetes-hoofdknooppunten inschakelen en controleren in AKS (Azure Kubernetes Service)
 
@@ -69,42 +69,43 @@ pod/nginx created
 
 Het kan enkele minuten duren voordat de diagnostische logboeken zijn ingeschakeld en worden weer gegeven. Ga in het Azure Portal naar uw AKS-cluster en selecteer **Logboeken** aan de linkerkant. Sluit het venster *voorbeeld query's* als dit wordt weer gegeven.
 
-
 Kies **Logboeken**aan de linkerkant. Als u de *uitvoeren-audit* logboeken wilt weer geven, voert u de volgende query in het tekstvak in:
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
 ```
 
 Veel logboeken worden waarschijnlijk geretourneerd. Als u de query wilt verkleinen om de logboeken te bekijken over de NGINX pod die u in de vorige stap hebt gemaakt, voegt u een extra *where* -instructie toe om naar *NGINX* te zoeken, zoals wordt weer gegeven in de volgende voorbeeld query:
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| where log_s contains "nginx"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
+| where Name contains "nginx"
 ```
-
-Als u aanvullende logboeken wilt weer geven, kunt u de query voor de *categorie* naam bijwerken naar *uitvoeren-Controller-Manager* of *uitvoeren-scheduler*, afhankelijk van de aanvullende logboeken die u inschakelt. Aanvullende *where* -instructies kunnen vervolgens worden gebruikt om de gebeurtenissen te verfijnen die u zoekt.
 
 Zie [verzamelde gegevens weer geven of analyseren met][analyze-log-analytics]logboek registratie van log Analytics voor meer informatie over het opvragen en filteren van uw logboek gegevens.
 
 ## <a name="log-event-schema"></a>Logboek gebeurtenis schema
 
-De volgende tabel bevat informatie over het schema dat wordt gebruikt voor elke gebeurtenis om de logboek gegevens te analyseren:
+AKS registreert de volgende gebeurtenissen:
 
-| Veldnaam               | Beschrijving |
-|--------------------------|-------------|
-| *resourceId*             | Azure-resource die het logboek heeft geproduceerd |
-| *time*                   | Tijds tempel van het moment waarop het logboek is geüpload |
-| *category*               | Naam van container/onderdeel voor het genereren van het logboek |
-| *operationName*          | Altijd *micro soft. container service/managedClusters/diagnosticLogs/lezen* |
-| *Eigenschappen. log*         | Volledige tekst van het logboek van het onderdeel |
-| *Eigenschappen. Stream*      | *stderr* of *stdout* |
-| *Eigenschappen. pod*         | De naam van de pod waaruit het logboek afkomstig is |
-| *Properties. containerID* | ID van de docker-container waarvan dit logboek afkomstig is |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [Hartslag][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Prestatie][log-schema-perf]
 
 ## <a name="log-roles"></a>Logboek rollen
 
@@ -131,3 +132,19 @@ In dit artikel hebt u geleerd hoe u de logboeken voor de Kubernetes-hoofd onderd
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

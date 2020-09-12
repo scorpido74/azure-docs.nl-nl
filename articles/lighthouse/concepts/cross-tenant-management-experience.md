@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 08/12/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 38e7d349d8b77b53a19fdf360bd6db454907d4f9
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146909"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007805"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -64,7 +64,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 [Azure backup](../../backup/index.yml):
 
-- Back-up en herstel van gegevens in de tenants van de klant
+- Back-ups maken van klant gegevens en deze herstellen [van on-premises workloads, Azure-vm's, Azure-bestands shares en meer](../..//backup/backup-overview.md#what-can-i-back-up)
 - Gebruik de [back-upverkenner](../../backup/monitor-azure-backup-with-backup-explorer.md) voor het weer geven van operationele gegevens van back-upitems (inclusief Azure-resources die nog niet zijn geconfigureerd voor back-up) en controle-informatie (taken en waarschuwingen) voor gedelegeerde abonnementen. Backup Explorer is momenteel alleen beschikbaar voor Azure VM-gegevens.
 - Gebruik [back-uprapporten](../../backup/configure-reports.md) over gedelegeerde abonnementen om historische trends bij te houden, het verbruik van back-ups te analyseren en back-ups te controleren en te herstellen.
 

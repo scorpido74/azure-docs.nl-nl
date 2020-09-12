@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-javascript
 - devx-track-csharp
-ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e1de8b5c35c2f62c65b2bdd4751df86127010ad
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017682"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015123"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -361,7 +361,12 @@ Ondersteunde certificaten zijn onder andere:
 
 Een apparaat kan een X. 509-certificaat of een beveiligings token voor verificatie gebruiken, maar niet beide.
 
-Zie voor meer informatie over verificatie met behulp van certificerings instantie [verificatie van apparaten met behulp van X. 509 CA-certificaten](iot-hub-x509ca-overview.md).
+De volgende functionaliteit wordt niet ondersteund voor apparaten die gebruikmaken van X. 509 CA-verificatie:
+
+* HTTPS, MQTT over websockets en AMQP over websockets-protocollen.
+* Uploads van bestanden (alle protocollen).
+
+Zie voor meer informatie over verificatie met behulp van certificerings instantie [verificatie van apparaten met behulp van X. 509 CA-certificaten](iot-hub-x509ca-overview.md). Voor informatie over het uploaden en verifiëren van een certificerings instantie met uw IoT-hub raadpleegt u [X. 509-beveiliging instellen in uw Azure IOT hub](iot-hub-security-x509-get-started.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Een X. 509-certificaat voor een apparaat registreren
 
@@ -443,7 +448,7 @@ In de volgende onderwerpen vindt u meer informatie over het beheren van de toega
 
 De volgende tabel bevat de machtigingen die u kunt gebruiken om de toegang tot uw IoT-hub te beheren.
 
-| Machtiging | Opmerkingen |
+| Machtiging | Notities |
 | --- | --- |
 | **RegistryRead** |Hiermee wordt lees toegang verleend aan het identiteits register. Zie [identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie. <br/>Deze machtiging wordt gebruikt door de Cloud Services van de back-end. |
 | **RegistryReadWrite** |Hiermee wordt lees-en schrijf toegang verleend aan het identiteits register. Zie [identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie. <br/>Deze machtiging wordt gebruikt door de Cloud Services van de back-end. |
