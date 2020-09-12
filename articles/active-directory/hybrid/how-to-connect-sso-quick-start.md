@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115748"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658741"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
@@ -40,7 +40,7 @@ Zorg ervoor dat aan de volgende vereisten is voldaan:
    - Als uw firewall of proxy toestaat, voegt u de verbindingen toe aan de lijst met toegestane ** \* Msappproxy.net** -url's via poort 443. Als dat niet het geval is, moet u toegang toestaan tot de [IP-adresbereiken van Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653), die elke week worden bijgewerkt. Deze vereiste is alleen van toepassing wanneer u de functie inschakelt. Het is niet vereist voor de werkelijke gebruikers aanmeldingen.
 
     >[!NOTE]
-    >Azure AD Connect versies 1.1.557.0, 1.1.558.0, 1.1.561.0 en 1.1.614.0 hebben een probleem met de synchronisatie van wacht woord-hashes. Als u de synchronisatie van wacht woord-hash _niet_ wilt gebruiken in combi natie met Pass-Through-verificatie, raadpleegt u de opmerkingen bij de [Azure AD Connect-release](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) voor meer informatie.
+    >Azure AD Connect versies 1.1.557.0, 1.1.558.0, 1.1.561.0 en 1.1.614.0 hebben een probleem met de synchronisatie van wacht woord-hashes. Als u de synchronisatie van wacht woord-hash _niet_ wilt gebruiken in combi natie met Pass-Through-verificatie, raadpleegt u de opmerkingen bij de [Azure AD Connect-release](./reference-connect-version-history.md) voor meer informatie.
 
 * **Een ondersteunde Azure AD Connect topologie gebruiken**: Zorg ervoor dat u een van de ondersteunde topologieën van Azure AD Connect gebruikt die [hier](plan-connect-topologies.md)worden beschreven.
 
@@ -51,9 +51,9 @@ Zorg ervoor dat aan de volgende vereisten is voldaan:
     * U synchroniseert met Azure AD via Azure AD Connect.
     * Bevat gebruikers die u wilt inschakelen voor naadloze eenmalige aanmelding.
     
-* **Moderne verificatie inschakelen**: u moet [moderne authenticatie](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) inschakelen voor uw Tenant om deze functie te kunnen gebruiken.
+* **Moderne verificatie inschakelen**: u moet [moderne authenticatie](/office365/enterprise/modern-auth-for-office-2013-and-2016) inschakelen voor uw Tenant om deze functie te kunnen gebruiken.
 
-* **Gebruik de nieuwste versies van Office 365-clients**: voor een stille aanmelding met Office 365-clients (Outlook, Word, Excel en anderen) moeten uw gebruikers gebruikmaken van versie 16.0.8730. xxxx of hoger.
+* **Gebruik de nieuwste versies van Microsoft 365-clients**: voor een stille aanmelding met Microsoft 365-clients (Outlook, Word, Excel en anderen) moeten uw gebruikers gebruikmaken van versie 16.0.8730. xxxx of hoger.
 
 ## <a name="step-2-enable-the-feature"></a>Stap 2: de functie inschakelen
 
@@ -132,7 +132,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 
      Het resultaat ziet er als volgt uit:
 
-     Waardenaam:`https://autologon.microsoftazuread-sso.com`
+     Waardenaam: `https://autologon.microsoftazuread-sso.com`
   
      Waarde (gegevens): 1
 
@@ -187,11 +187,11 @@ Zorg ervoor dat de computer waarop het macOS wordt uitgevoerd, is gekoppeld aan 
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Micro soft Edge op basis van chroom (alle platformen)
 
-Als u de [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) of de [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) -beleids instellingen in uw omgeving hebt overschreven, moet u ook de URL () van Azure AD toevoegen `https://autologon.microsoftazuread-sso.com` .
+Als u de [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) of de [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) -beleids instellingen in uw omgeving hebt overschreven, moet u ook de URL () van Azure AD toevoegen `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Micro soft Edge op basis van chroom (macOS en andere niet-Windows-platforms)
 
-Voor micro soft Edge op basis van chroom op macOS en andere niet-Windows-platforms, raadpleegt u [de micro soft Edge op basis van de lijst met chroom beleid](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) voor informatie over het toevoegen van de Azure AD-URL voor geïntegreerde verificatie voor uw acceptatie lijst.
+Voor micro soft Edge op basis van chroom op macOS en andere niet-Windows-platforms, raadpleegt u [de micro soft Edge op basis van de lijst met chroom beleid](/DeployEdge/microsoft-edge-policies#authserverallowlist) voor informatie over het toevoegen van de Azure AD-URL voor geïntegreerde verificatie voor uw acceptatie lijst.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle platformen)
 
@@ -211,7 +211,7 @@ Naadloze SSO werkt niet in de modus voor persoonlijke navigatie in Firefox en mi
 
 Als u de functie voor een specifieke gebruiker wilt testen, moet u ervoor zorgen dat alle volgende voor waarden aanwezig zijn:
   - De gebruiker meldt zich aan bij een bedrijfs apparaat.
-  - Het apparaat is toegevoegd aan uw Active Directory domein. Het apparaat hoeft _geen_ lid te zijn van [Azure AD](../active-directory-azureadjoin-overview.md).
+  - Het apparaat is toegevoegd aan uw Active Directory domein. Het apparaat hoeft _geen_ lid te zijn van [Azure AD](../devices/overview.md).
   - Het apparaat heeft een directe verbinding met uw domein controller (DC), hetzij op het bekabelde of draadloze netwerk van het bedrijf, hetzij via een RAS-verbinding, zoals een VPN-verbinding.
   - U hebt [de functie](#step-3-roll-out-the-feature) door Groepsbeleid naar deze gebruiker samengevouwen.
 

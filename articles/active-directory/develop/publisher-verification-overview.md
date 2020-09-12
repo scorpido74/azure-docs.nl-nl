@@ -1,6 +1,6 @@
 ---
 title: Overzicht van uitgever verificatie-micro soft Identity-platform | Azure
-description: Biedt een overzicht van het Publisher-verificatie programma (preview) voor het micro soft Identity-platform. Een lijst met de voor delen, programma vereisten en veelgestelde vragen. Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een Microsoft Partner Network account dat het verificatie proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing.
+description: Hierin wordt een overzicht gegeven van het Publisher-verificatie programma voor het micro soft Identity-platform. Een lijst met de voor delen, programma vereisten en veelgestelde vragen. Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een Microsoft Partner Network account dat het verificatie proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068470"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005788"
 ---
-# <a name="publisher-verification-preview"></a>Verificatie van uitgever (preview)
+# <a name="publisher-verification"></a>Uitgever verificatie
 
-De verificatie van de uitgever (preview) helpt beheerders en eind gebruikers inzicht te krijgen in de echtheid van toepassings ontwikkelaars die integreren met het micro soft Identity-platform. Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing. 
+Verificatie van de uitgever helpt beheerders en eind gebruikers begrijpen van de echtheid van toepassings ontwikkelaars die integreren met het micro soft Identity-platform. Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing. 
 
 Een ' geverifieerde ' badge wordt weer gegeven op de Azure AD-toestemming prompt en andere schermen: ![ toestemming vragen](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -38,7 +38,7 @@ Verificatie van de uitgever biedt de volgende voor delen:
 - **Verbeterde risico beoordeling**: de micro soft-detecties voor toestemmings aanvragen voor ' Risk ante ' bevatten uitgevers verificatie als signaal. 
 
 ## <a name="requirements"></a>Vereisten
-Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-partners al zijn voltooid. Dat zijn: 
+Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-partners al zijn voltooid. Dit zijn: 
 
 -  Een MPN-ID voor een geldig [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid. Dit MPN-account moet het [globale account van de partner (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) voor uw organisatie zijn. 
 

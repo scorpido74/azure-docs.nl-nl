@@ -1,40 +1,36 @@
 ---
-title: Beleid voor commerciële Marketplace en voor waarden | Azure
-description: Het beleid en de voor waarden van micro soft Commercial Marketplace zijn van toepassing op alle uitgevers en aanbiedingen in de Microsoft Azure Marketplace.
+title: Beleid en voor waarden voor commerciële Marketplace, Azure Marketplace
+description: Het beleid en de voor waarden van micro soft Commercial Marketplace zijn van toepassing op alle uitgevers en aanbiedingen in azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 06/26/2020
-ms.openlocfilehash: ffa6762d03b0ef189edf9887cfdf0fdd8788ef2d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/09/2020
+ms.openlocfilehash: cd936307eaacc7b2a46bac23c8fcfc9e2769135c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121041"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006717"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Beleidsregels en voorwaarden voor de commerciële marketplace
 
 >[!Note]
->"Micro soft Commercial Marketplace" houdt in het bezit of geëxploiteerde platform van micro soft, met de naam, waarmee aanbiedingen kunnen worden aangeboden aan of aangeschaft door klanten. Tenzij anders vermeld, bevat de commerciële Marketplace de Microsoft Azure Marketplace en Microsoft AppSource.
+>"Micro soft Commercial Marketplace" houdt in het bezit of geëxploiteerde platform van micro soft, met de naam, waarmee aanbiedingen kunnen worden aangeboden aan of aangeschaft door klanten. Tenzij anders vermeld, omvat de commerciële Marketplace Microsoft AppSource en Azure Marketplace.
 
-Hartelijk dank voor uw interesse in het publiceren van aanbiedingen op de commerciële Marketplace. We streven ernaar om samen met u een uitgebreide bron van cloud oplossingen en een line-of-Business-aanbieding te maken, waardoor klanten over de hele wereld worden geholpen en u uw bedrijf kunt bouwen.
+Hartelijk dank voor uw interesse in het publiceren van aanbiedingen op de commerciële Marketplace. We streven ernaar samen te werken met u om een uitgebreide bron van cloud oplossingen en een verzameling bedrijfs aanbiedingen te maken die klanten wereld wijd verlichten en u helpen bij het bouwen van uw bedrijf.
 
-Aanbiedingen op Marketplace moeten voldoen aan ons beleid en de voor waarden. We werken deze beleids regels en voor waarden van tijd tot tijd bij, zodat u een goede klant ervaring kunt garanderen en partners een kans kunt geven om te slagen. Als u feedback hebt over ons beleid of de voor waarden, laat het ons weten door commentaar te geven op de [Azure Marketplace en Microsoft AppSource forum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+Aanbiedingen op de commerciële Marketplace moeten voldoen aan het beleid en de voor waarden. Deze worden van tijd tot tijd bijgewerkt om een goede klant ervaring te garanderen en onze partners te helpen slagen. Zie [Microsoft AppSource en Azure Marketplace-forum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)als u feedback wilt geven over ons beleid of de voor waarden.
 
 ## <a name="policies-and-terms"></a>Beleidsregels en voorwaarden
 
 * [Commercial marketplace certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies) (Beleid voor certificering van Commerciële Marketplace)
 
-* [Deelname beleid](https://docs.microsoft.com/legal/marketplace/participation-policy)
-
 * [Beleid voor classificatie en beoordeling](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
 
 * [Voorwaarden voor Azure Marketplace](https://docs.microsoft.com/legal/marketplace/terms)
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="next-step"></a>Volgende stap
 
 Ga naar de pagina [publicatie gids voor commerciële Marketplace](./marketplace-publishers-guide.md) .
-
----

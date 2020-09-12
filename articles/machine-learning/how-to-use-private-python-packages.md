@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2af6749565a7fefd2892b82bcd5dff203eccdedc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958147"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661210"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Gebruik persoonlijke Python-pakketten met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,12 +31,12 @@ De persoonlijke pakketten worden gebruikt via de [omgevings](https://docs.micros
 
 ## <a name="prerequisites"></a>Vereisten
 
- * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+ * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Klein aantal pakketten gebruiken voor ontwikkelen en testen
 
-Gebruik de statische methode voor een klein aantal privé-pakketten voor één werk ruimte [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) . Met deze aanpak kunt u snel een persoonlijk pakket toevoegen aan de werk ruimte en is het goed geschikt voor ontwikkelings-en test doeleinden.
+Gebruik de statische methode voor een klein aantal privé-pakketten voor één werk ruimte [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) . Met deze aanpak kunt u snel een persoonlijk pakket toevoegen aan de werk ruimte en is het goed geschikt voor ontwikkelings-en test doeleinden.
 
 Wijs het pad naar het bestand naar een lokaal wiel bestand en voer de ```add_private_pip_wheel``` opdracht uit. De opdracht retourneert een URL die wordt gebruikt om de locatie van het pakket in uw werk ruimte bij te houden. Leg de opslag-URL vast en geef deze de `add_pip_package()` methode door.
 
@@ -58,7 +58,7 @@ Deze benadering maakt gebruik van een persoonlijk toegangs token voor verificati
 
  1. [Maak een persoonlijk toegangs token (Pat)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat) voor uw Azure DevOps-exemplaar. Stel het bereik van het token in op __verpakt > lezen__. 
 
- 2. Voeg de URL van Azure DevOps en PAT als werkruimte eigenschappen toe met behulp van de [werk ruimte. set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-) methode.
+ 2. Voeg de URL van Azure DevOps en PAT als werkruimte eigenschappen toe met behulp van de [werk ruimte. set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) methode.
 
      ```python
     from azureml.core import Workspace
@@ -91,16 +91,10 @@ De omgeving is nu klaar om te worden gebruikt in trainings runs of implementatie
 
 U kunt pakketten gebruiken van een Azure-opslag account in de firewall van uw organisatie. Het opslag account kan een serie pakketten of een interne mirror van openbaar beschik bare pakketten bevatten.
 
-Een dergelijke persoonlijke opslag instellen:
+Zie [een Azure machine learning-werk ruimte en gekoppelde resources beveiligen](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)voor informatie over het instellen van dergelijke persoonlijke opslag. U moet ook [de Azure container Registry (ACR) achter het VNet plaatsen](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
-1. [Plaats de werk ruimte in een virtueel netwerk (VNet)](how-to-enable-virtual-network.md).
-1. Maak een opslag account en [sta open bare toegang niet toe](https://docs.microsoft.com/azure/storage/common/storage-network-security).
-1. Plaats de Python-pakketten die u wilt gebruiken in een container in het opslag account 
-1. [Toegang tot het opslag account via de werk ruimte VNet toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
-1. [Plaats de Azure container Registry (ACR) voor de werk ruimte achter het VNet](how-to-enable-virtual-network.md#azure-container-registry).
-
-    > [!IMPORTANT]
-    > U moet deze stap volt ooien om modellen te kunnen trainen of implementeren met behulp van de opslag plaats van een persoonlijk pakket.
+> [!IMPORTANT]
+> U moet deze stap volt ooien om modellen te kunnen trainen of implementeren met behulp van de opslag plaats van een persoonlijk pakket.
 
 Nadat u deze configuraties hebt voltooid, kunt u naar de pakketten in de Azure Machine Learning omgevings definitie verwijzen met de volledige URL in Azure Blob-opslag.
 

@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect-AD FS beheer en aanpassing | Microsoft Docs
 description: AD FS beheer met Azure AD Connect en aanpassing van de aanmeldings ervaring van gebruikers AD FS met Azure AD Connect en Power shell.
-keywords: AD FS, ADFS, AD FS beheer, AAD Connect, Connect, aanmelden, AD FS aanpassing, herstel vertrouwen, O365, Federatie, Relying Party
+keywords: AD FS, ADFS, AD FS beheer, AAD Connect, Connect, aanmelden, AD FS aanpassing, herstel vertrouwen, M365, Federatie, Relying Party
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830924"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661259"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect
 In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) kunt beheren en aanpassen met behulp van Azure Active Directory (Azure AD) Connect. Het bevat ook andere veelvoorkomende AD FS taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD F
 | Onderwerp | Wat het betreft |
 |:--- |:--- |
 | **AD FS beheren** | |
-| [De vertrouwens relatie herstellen](#repairthetrust) |De federatieve vertrouwens relatie met Office 365 herstellen. |
+| [De vertrouwens relatie herstellen](#repairthetrust) |De Federatie vertrouwensrelatie met Microsoft 365 herstellen. |
 | [Communiceren met Azure AD met een alternatieve aanmeldings-ID](#alternateid) | Federatie configureren met alternatieve aanmeldings-ID  |
 | [Een AD FS-server toevoegen](#addadfsserver) |Een AD FS-farm uitbreiden met een extra AD FS-server. |
 | [Een AD FS Web Application proxy-server toevoegen](#addwapserver) |Een AD FS-farm uitbreiden met een extra WAP-server (Web Application proxy). |
@@ -85,7 +85,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
     Als u de configuratie wilt corrigeren in geval van ontbrekende KB, installeert u de vereiste [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) en herstelt u de vertrouwens relatie met [Aad en AD FS-vertrouwens relatie](#repairthetrust).
 
 > [!NOTE]
-> Lees de [alternatieve aanmeldings-id configureren](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) voor meer informatie over alternateID en stappen om deze hand matig te configureren
+> Lees de [alternatieve aanmeldings-id configureren](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) voor meer informatie over alternateID en stappen om deze hand matig te configureren
 
 ## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>Een AD FS-server toevoegen 
 
@@ -174,7 +174,7 @@ Het is eenvoudig om een domein toe te voegen voor federatief met Azure AD met be
 
    ![Azure AD-domein](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Nadat u het domein hebt gekozen, biedt de wizard u de juiste informatie over verdere acties die de wizard zal ondernemen en de impact van de configuratie. Als u in sommige gevallen een domein selecteert dat nog niet is geverifieerd in azure AD, biedt de wizard u informatie om u te helpen bij het verifiëren van het domein. Zie [uw aangepaste domein naam toevoegen aan Azure Active Directory](../active-directory-domains-add-azure-portal.md) voor meer informatie.
+    Nadat u het domein hebt gekozen, biedt de wizard u de juiste informatie over verdere acties die de wizard zal ondernemen en de impact van de configuratie. Als u in sommige gevallen een domein selecteert dat nog niet is geverifieerd in azure AD, biedt de wizard u informatie om u te helpen bij het verifiëren van het domein. Zie [uw aangepaste domein naam toevoegen aan Azure Active Directory](../fundamentals/add-custom-domain.md) voor meer informatie.
 
 5. Klik op **Volgende**. Op de pagina **gereed voor configuratie ziet u** de lijst met acties die Azure AD Connect worden uitgevoerd. Klik op **installeren** om de configuratie te volt ooien.
 
@@ -207,7 +207,7 @@ Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requi
 ```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FS claim regels wijzigen 
-AD FS ondersteunt een uitgebreide claim taal die u kunt gebruiken om aangepaste claim regels te maken. Zie [de rol van de taal van de claim regel](https://technet.microsoft.com/library/dd807118.aspx)voor meer informatie.
+AD FS ondersteunt een uitgebreide claim taal die u kunt gebruiken om aangepaste claim regels te maken. Zie [de rol van de taal van de claim regel](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807118(v=ws.11))voor meer informatie.
 
 In de volgende secties wordt beschreven hoe u aangepaste regels kunt schrijven voor bepaalde scenario's die betrekking hebben op Azure AD en AD FS federatie.
 

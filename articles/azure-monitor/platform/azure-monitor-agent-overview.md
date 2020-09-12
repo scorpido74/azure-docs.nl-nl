@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705772"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005221"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Overzicht van Azure Monitor-agent (preview)
 De Azure Monitor-agent (AMA) verzamelt bewakings gegevens van het gast besturingssysteem van virtuele machines en levert deze aan Azure Monitor. In deze artikelen vindt u een overzicht van de Azure Monitor-agent, inclusief hoe u deze kunt installeren en hoe u gegevens verzameling kunt configureren.
@@ -88,12 +88,12 @@ De volgende besturings systemen worden momenteel ondersteund door de Azure Monit
   - CentOS 6<sup>,</sup>7
   - Debian 9, 10
   - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>, 7, 8</sup>
+  - RHEL 6<sup>,</sup>7
   - SLES 11, 12, 15
   - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup> Voor deze distributies om syslog-gegevens te verzenden, moet u rsyslog verwijderen en syslog-ng installeren.
+> <sup>1</sup> Voor deze distributies om syslog-gegevens te verzenden, moet u de rsyslog-service één keer opnieuw opstarten nadat de agent is geïnstalleerd.
 
 
 ## <a name="security"></a>Beveiliging
@@ -107,7 +107,7 @@ De Azure Monitor-agent wordt geïmplementeerd als een [Azure VM-extensie](../../
 |:---|:---|:---|
 | Publisher | Micro soft. Azure. monitor  | Micro soft. Azure. monitor |
 | Type      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 1.5 |
+| TypeHandlerVersion  | 1,0 | 1.5 |
 
 Installeer de Azure Monitor agent met behulp van een van de methoden om virtuele-machine agents te installeren, inclusief het volgende met behulp van Power shell of CLI. U kunt de agent ook installeren en gegevens verzameling configureren op virtuele machines in uw Azure-abonnement met behulp van de portal met de procedure die wordt beschreven in [gegevens verzameling configureren voor de Azure monitor-agent (preview)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ca1a1bd1f07bf30fd7e5cd57b617a823120e85ea
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104228"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017367"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor collectieve verkoop in Partnercentrum
 
@@ -20,7 +20,7 @@ Het is volledig optioneel om informatie op het tabblad samen verkopen op te geve
 
 De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige aanbiedings typen. Ondersteuning voor aanvullende aanbiedings typen wordt na verloop van tijd beschikbaar gesteld.
 
-| **Aanbiedings type** | **Pagina voor co-sell beschikbaar in partner centrum** |
+| **Type aanbieding** | **Pagina voor co-sell beschikbaar in partner centrum** |
 |    -----------------------    |    -----------------------------  |
 | Software as a Service (SaaS) |      Nu verkrijgbaar      |
 | Dynamics 365 voor klant betrokkenheid & PowerApps      |     Nu verkrijgbaar      |
@@ -62,7 +62,7 @@ U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding. Voor elk
 
 ## <a name="documents"></a>Documenten
 
-U kunt onderpand bieden voor micro soft om te gebruiken voor het evalueren van de behoeften van uw klanten.
+U hebt de mogelijkheid om liquide documenten op te geven die micro soft gebruikt om meer te weten te komen over uw aanbieding en de geschiktheid voor uw klant behoeften te evalueren. Alle documenten die in de onderstaande tabel staan, zijn optioneel.
 
 | **Documenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
@@ -79,14 +79,14 @@ U kunt onderpand bieden voor micro soft om te gebruiken voor het evalueren van d
 
 Met uw contact gegevens kunnen micro soft verkoop teams en Channel wederverkopers vragen om aanvullende informatie van de juiste resource in uw organisatie. Contact gegevens zijn beschikbaar voor alle verkoop teams van micro soft. Als u ervoor kiest om uw aanbieding beschikbaar te stellen in het CSP-programma, is deze contact informatie ook beschikbaar voor Channel-wederverkopers.
 
-Dit document bevat richt lijnen voor de verschillende rollen voor partners en hoe u er een kunt kiezen. U kunt uw contact personen opgeven door de CSV-sjabloon te downloaden van het partner centrum, elke rij in te vullen met informatie over de contact persoon en dit CSV-bestand te importeren. Als u een CSV-bestand importeert, worden de bestaande contact personen overschreven.
+U kunt uw contact personen opgeven door de CSV-sjabloon te downloaden van het partner centrum, elke rij in te vullen met informatie over de contact persoon en dit CSV-bestand te importeren. Als u een CSV-bestand importeert, worden de bestaande contact personen overschreven.
 
 U kunt ook uw bestaande lijst met contact personen van een aanbieding exporteren en vervolgens wijzigingen aanbrengen in dat bestand.
 
 * *Naam (vereist)*: de naam van de contact persoon.
 * *E-mail adres (vereist)*: het e-mail adres van de contact persoon.
 * *Taak titel (vereist)*: functie titel.
-* *Rol (vereist)*: gebruik een van de volgende rollen in dit veld in de sjabloon.
+* *Rol (vereist)*: gebruik een van de volgende rollen.
 
     | **Role**    | **Beschrijving**  |
     | :------------------- | :-------------------|
