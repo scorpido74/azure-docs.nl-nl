@@ -3,12 +3,12 @@ title: Azure Migrate-apparaatarchitectuur
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919740"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514561"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate-apparaatarchitectuur
 
@@ -62,15 +62,15 @@ Gegevens die door de client worden verzameld voor alle implementatie scenario's,
 
 ## <a name="discovery-and-collection-process"></a>Detectie-en verzamelings proces
 
-![Architectuur](./media/migrate-appliance-architecture/architecture.png)
+![Architectuur](./media/migrate-appliance-architecture/architecture1.png)
 
 Het apparaat communiceert met vCenter-servers en Hyper-V-hosts/cluster met behulp van het volgende proces.
 
 1. **Detectie starten**:
-    - Wanneer u de detectie op het Hyper-V-apparaat start, communiceert deze met de Hyper-V-hosts op WinRM-poorten 5985 (HTTP) en 5986 (HTTPS).
+    - Wanneer u de detectie op het Hyper-V-apparaat start, communiceert deze met de Hyper-V-hosts op WinRM-poort 5985 (HTTP).
     - Wanneer u detectie op het VMware-apparaat start, communiceert het met de vCenter-Server op TCP-poort 443 standaard. Als de vCenter-Server op een andere poort luistert, kunt u deze configureren in de Web-App van het apparaat.
 2. **Meta gegevens en prestatie gegevens verzamelen**:
-    - Het apparaat maakt gebruik van een Common Information Model (CIM) om Hyper-V VM-gegevens te verzamelen van de Hyper-V-host op de poorten 5985 en 5986.
+    - Het apparaat maakt gebruik van een Common Information Model (CIM) om Hyper-V VM-gegevens te verzamelen van de Hyper-V-host op poort 5985.
     - Het apparaat communiceert standaard met poort 443 om VMware-VM-gegevens van de vCenter Server te verzamelen.
 3. **Gegevens verzenden**: het apparaat verzendt de verzamelde gegevens naar Azure migrate server-evaluatie en Azure migrate server migratie via SSL-poort 443. Het apparaat kan verbinding maken met Azure via internet of u kunt ExpressRoute gebruiken met open bare/micro soft-peering.
     - Het apparaat verzamelt gegevens over realtime gebruik voor prestatie gegevens.
@@ -81,17 +81,12 @@ Het apparaat communiceert met vCenter-servers en Hyper-V-hosts/cluster met behul
     - Voor server migratie begint het apparaat met het verzamelen van VM-gegevens en repliceert het naar Azure.
 4. **Beoordelen en migreren**: u kunt nu evaluaties maken op basis van de meta gegevens die worden verzameld door het apparaat met behulp van Azure migrate server-evaluatie. Daarnaast kunt u ook beginnen met het migreren van virtuele VMware-machines met Azure Migrate server migratie om replicatie zonder agents te organiseren.
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>Toestel-upgrades
 
 Het apparaat wordt bijgewerkt wanneer de Azure Migrate agents die op het apparaat worden uitgevoerd, worden bijgewerkt. Dit gebeurt automatisch omdat automatisch bijwerken standaard is ingeschakeld op het apparaat. U kunt deze standaard instelling wijzigen om de agents hand matig bij te werken.
 
 U schakelt automatisch bijwerken uit in het REGI ster door de HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance ' auto update ' in te stellen op 0 (DWORD).
 
- 
 
 ## <a name="next-steps"></a>Volgende stappen
 

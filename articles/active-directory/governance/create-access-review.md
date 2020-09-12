@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/06/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783651"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505092"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -100,22 +100,31 @@ Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor me
 
 1. Als u wilt opgeven wat er gebeurt nadat een controle is voltooid, vouwt u de sectie **bij voltooiings instellingen** uit.
 
-    ![Instellingen voor een toegangs beoordeling maken-bij voltooiing](./media/create-access-review/upon-completion-settings.png)
+    ![Instellingen voor een toegangs beoordeling maken-bij voltooiing](./media/create-access-review/upon-completion-settings-new.png)
 
-1. Als u de toegang voor geweigerde gebruikers automatisch wilt verwijderen, stelt u **automatisch Toep assen resultaten in op resource** om in te **scha kelen**. Als u de resultaten hand matig wilt Toep assen wanneer de controle is voltooid, stelt u de switch in op **uitschakelen**.
+2. Als u de toegang voor geweigerde gebruikers automatisch wilt verwijderen, stelt u **automatisch Toep assen resultaten in op resource** om in te **scha kelen**. Als u de resultaten hand matig wilt Toep assen wanneer de controle is voltooid, stelt u de switch in op **uitschakelen**.
 
-1. Gebruik de lijst als **revisor niet reageert** om op te geven wat er gebeurt voor gebruikers die niet worden gecontroleerd door de revisor binnen de beoordelings periode. Deze instelling heeft geen invloed op gebruikers die hand matig door de controleurs zijn gecontroleerd. Als de laatste beslissing van de revisor weigert, wordt de toegang van de gebruiker verwijderd.
+3. Gebruik de lijst **als revisoren niet reageren** om op te geven wat er gebeurt voor gebruikers die niet worden gecontroleerd door de revisor binnen de beoordelings periode. Deze instelling heeft geen invloed op gebruikers die hand matig door de controleurs zijn gecontroleerd. Als de laatste beslissing van de revisor weigert, wordt de toegang van de gebruiker verwijderd.
 
     - **Geen wijziging** -gebruikers toegang ongewijzigd laten
     - **Toegang verwijderen** -de toegang van de gebruiker verwijderen
     - **Toegang goed keuren** : de toegang van de gebruiker goed keuren
     - **Aanbevelingen doen** : de aanbeveling van het systeem voor het weigeren of goed keuren van de permanente toegang van de gebruiker
 
+4. Evaluatie Gebruik de actie om toe te passen op geweigerde gebruikers om op te geven wat er gebeurt met gast gebruikers als ze worden geweigerd.
+    - Met de **optie 1** wordt geweigerde toegang van de gebruiker tot de groep of toepassing die wordt gecontroleerd, verwijderd, maar kunnen ze zich nog wel aanmelden bij de Tenant. 
+    - **Optie 2** blokkeert de geweigerde gebruikers om zich aan te melden bij de Tenant, ongeacht of ze toegang hebben tot andere resources. Als er een fout is opgetreden of als een beheerder de toegang tot het account opnieuw inschakelt, kan dit binnen 30 dagen na het uitschakelen van de gebruiker. Als er geen actie is uitgevoerd op de uitgeschakelde gebruikers, worden deze verwijderd uit de Tenant.
+
+Voor meer informatie over best practices voor het verwijderen van gast gebruikers die geen toegang meer hebben tot resources in uw organisatie, leest u het artikel [Azure AD Identity governance gebruiken om externe gebruikers te controleren en te verwijderen die niet meer toegang hebben tot de resource.](access-reviews-external-users.md)
+
+>[!NOTE]
+> De actie die moet worden toegepast op geweigerde gebruikers werkt alleen als u eerder een beoordeling voor gast gebruikers hebt **gemaakt (zie een of meer toegangs beoordelingen maken** sectie stap 8)
+
 ### <a name="advanced-settings"></a>Geavanceerde instellingen
 
 1. Als u aanvullende instellingen wilt opgeven, vouwt u de sectie **Geavanceerde instellingen** uit.
 
-    ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings-preview.png)
+    ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Stel **aanbevelingen weer geven** in om de controleurs **weer te geven** op basis van de toegangs gegevens van de gebruiker.
 
@@ -149,7 +158,7 @@ Als gasten als revisoren zijn toegewezen en ze de uitnodiging niet hebben geacce
 |NotStarted | De controle is gemaakt, de gebruikers detectie wacht op starten. |
 |Initialiseren   | Gebruikers detectie wordt uitgevoerd om alle gebruikers te identificeren die deel uitmaken van de beoordeling. |
 |Starten | De beoordeling wordt gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. |
-|Wordt uitgevoerd | De beoordeling is gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. Revisoren kunnen beslissingen verzenden tot de verval datum. |
+|InProgress | De beoordeling is gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. Revisoren kunnen beslissingen verzenden tot de verval datum. |
 |Invullen | De beoordeling wordt voltooid en e-mail berichten worden verzonden naar de eigenaar van de beoordeling. |
 |Automatisch controleren | Beoordeling bevindt zich in een systeem revisie fase. Het systeem is bezig met het vastleggen van beslissingen voor gebruikers die niet zijn gecontroleerd op basis van aanbevelingen of vooraf geconfigureerde beslissingen. |
 |Automatisch gecontroleerd | Er zijn beslissingen vastgelegd door het systeem voor alle gebruikers die niet zijn gecontroleerd. Beoordeling is gereed om verder te gaan met het **Toep assen van de toepassing** als automatisch Toep assen is ingeschakeld. |

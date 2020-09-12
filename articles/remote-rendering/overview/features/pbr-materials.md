@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021310"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613676"
 ---
 # <a name="pbr-materials"></a>PBR-materialen
 
@@ -55,7 +55,7 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
   Als er zowel een waarde voor metaaliteit als een koppeling naar een metaliteit is opgegeven, is de uiteindelijke waarde het product van de twee.
 
-  ![metaal en ruw](./media/metalness-roughness.png)
+  ![De bol wordt gerenderd met verschillende waarden voor de metaal-en ruwheid](./media/metalness-roughness.png)
 
   In de bovenstaande afbeelding ziet de bol in de rechter benedenhoek eruit als een echt metaal materiaal, de linkerbenedenhoek ziet eruit als keramisch of plastic. De albedo-kleur wordt ook gewijzigd op basis van de fysieke eigenschappen. Met een grotere groveheid verliest het materiaal de reflectie scherpte.
 
@@ -63,13 +63,13 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
 * **occlusionMap** en **aoScale:** [omgevings bedekking](https://en.wikipedia.org/wiki/Ambient_occlusion) maken objecten met crevices er realistischer uit door scha duwen aan occluded gebieden toe te voegen. Bedekking-waarde `0.0` is van tot `1.0` , waarbij ' donker ' `0.0` (occluded) en `1.0` betekent dat er geen occlusions is. Als een 2D-structuur wordt gegeven als een bedekking-kaart, wordt het effect ingeschakeld en fungeert *aoScale* als een vermenigvuldiger.
 
-  ![Bedekking-kaart](./media/boom-box-ao2.gif)
+  ![Een object dat wordt weer gegeven met en zonder omgevings bedekking](./media/boom-box-ao2.gif)
 
 * **transparant:** Voor PBR-materialen is er slechts één transparantie-instelling: deze is ingeschakeld of niet. De dekking wordt gedefinieerd door het Alfa kanaal van de albedo kleur. Wanneer deze functie is ingeschakeld, wordt een complexere rendering-pijp lijn opgeroepen om semi-transparante Opper vlakken te tekenen. Met de externe rendering van Azure wordt de oit ( [nabestel onafhankelijke transparantie](https://en.wikipedia.org/wiki/Order-independent_transparency) ) geïmplementeerd.
 
   Transparante geometrie is duur om weer te geven. Als u alleen gaten in een Opper vlak nodig hebt, bijvoorbeeld voor de bladeren van een structuur, is het beter om in plaats daarvan alpha-knipsels te gebruiken.
 
-  ![Transparantie ](./media/transparency.png) in de bovenstaande afbeelding ziet u hoe de meest rechtse sfeer volledig transparant is, maar de reflectie nog steeds zichtbaar is.
+  ![In de bovenstaande afbeelding is de weer gave van een bol met nul tot volledige transparantie ](./media/transparency.png) duidelijk, hoe de meest rechtse sfeer volledig transparant is, maar de reflectie is nog steeds zichtbaar.
 
   > [!IMPORTANT]
   > Als materialen moeten worden overgeschakeld van dekkend naar transparant tijdens runtime, moet de renderer gebruikmaken van de rendermethode *TileBasedComposition* [rendering mode](../../concepts/rendering-modes.md). Deze beperking is niet van toepassing op materialen die worden geconverteerd als transparante materialen om te beginnen met.
@@ -80,6 +80,13 @@ Azure remote rendering maakt gebruik van de Torrance micro facet BRDF met GGX ND
 
  Een alternatief voor het in azure externe rendering geplaatste PBR *-* model is het *onspiegelde Glossiness PBR-* model. Dit model kan een breder scala aan materialen vertegenwoordigen. Het is echter duurder en werkt normaal gesp roken niet goed voor real-time cases.
 Het is niet altijd mogelijk om van *reflecterende Glossiness* te converteren *naar een* onscherpheid als er paren zijn *(diffuus, reflecterend)* die niet kunnen worden geconverteerd naar *(BaseColor, metaaling)*. De conversie in de andere richting is eenvoudiger en nauw keuriger, omdat alle paren *(BaseColor, metaaling)* overeenkomen met de goed gedefinieerde paren *(diffuus, reflecterend)* .
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# PbrMaterial-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ PbrMaterial-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Volgende stappen
 

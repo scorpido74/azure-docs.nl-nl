@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022143"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613650"
 ---
 # <a name="scene-lighting"></a>Afbeeldingsbelichting
 
@@ -69,6 +69,17 @@ Er zijn geen aanvullende eigenschappen.
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 
 Licht bronnen hebben veel invloed op de rendering van prestaties. Gebruik deze zorgvuldig en alleen als dit door de toepassing wordt vereist. Een statische globale belichtings voorwaarde, met inbegrip van een statische richtings onderdeel, kan worden behaald met een [aangepast lucht patroon](sky.md), zonder dat er extra kosten voor rendering zijn.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# LightComponentBase-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>Volgende stappen
 

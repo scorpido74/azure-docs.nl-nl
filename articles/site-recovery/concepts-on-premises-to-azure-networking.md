@@ -1,18 +1,18 @@
 ---
 title: Verbinding maken met een on-premises failover van Azure Vm's met Azure Site Recovery
 description: Hierin wordt beschreven hoe u verbinding maakt met virtuele Azure-machines na een failover van on-premises naar Azure met Azure Site Recovery
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
-ms.author: mayg
-ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770489"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568775"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Verbinding maken met virtuele Azure-machines na een failover van on-premises 
 
@@ -96,19 +96,19 @@ Voor het bewaren van IP-adressen zijn de volgende stappen vereist:
 
 ### <a name="failover-example"></a>Voor beeld van failover
 
-Laten we eens naar een voorbeeld kijken.
+We bekijken een voorbeeld.
 
 - De fictieve onderneming Woodgrove Bank fungeert als host voor hun zakelijke apps on-premises, die hun mobiele apps in Azure.
 - Ze maken verbinding vanaf on-premises met Azure via site-naar-site-VPN. 
 - Woodgrove maakt gebruik van Site Recovery om on-premises machines te repliceren naar Azure.
 - De on-premises apps gebruiken hardcoded IP-adressen, zodat ze dezelfde IP-adressen in azure willen behouden.
 - On-premises de computers waarop de apps worden uitgevoerd, worden uitgevoerd in drie subnetten:
-    - 192.168.1.0/24.
+    - 192.168.1.0/24
     - 192.168.2.0/24
     - 192.168.3.0/24
 - Hun apps die worden uitgevoerd in azure, bevinden zich in het Azure VNet **Azure-netwerk** in twee subnetten:
-- 172.16.1.0/24
-- 172.16.2.0/24.
+    - 172.16.1.0/24
+    - 172.16.2.0/24
 
 Als u de adressen wilt behouden, gaat u als volgt te werk.
 

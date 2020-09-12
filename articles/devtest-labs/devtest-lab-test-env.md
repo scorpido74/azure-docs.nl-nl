@@ -3,12 +3,12 @@ title: Azure DevTest Labs gebruiken voor VM-en PaaS-test omgevingen | Microsoft 
 description: Meer informatie over het gebruik van Azure DevTest Labs voor scenario's voor de VM-en PaaS-test omgeving.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272892"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299827"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Azure DevTest Labs gebruiken voor test omgevingen van de VM en de PaaS
 
@@ -46,7 +46,7 @@ In dit artikel vindt u informatie over de verschillende Azure DevTest Labs-funct
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u Azure Marketplace-installatie kopieën kunt white list, zodat u alleen de gewenste installatie kopieën voor de testers beschikbaar maakt.|
+   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u installatie kopieën van Azure Marketplace kunt toestaan, zodat alleen de gewenste installatie kopieën voor de testers kunnen worden geselecteerd.|
    | [Een aangepaste installatiekopie maken](devtest-lab-create-template.md) |Maak een aangepaste installatie kopie door de software die u nodig hebt, vooraf te installeren, zodat testers snel een virtuele machine kunnen maken met behulp van de aangepaste installatie kopie.|
    | [Meer informatie over image Factory](./devtest-lab-faq.md#blog-post) |Bekijk een video met een beschrijving van het instellen en gebruiken van een image Factory.|
 

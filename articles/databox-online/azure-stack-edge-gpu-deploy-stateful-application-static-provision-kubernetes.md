@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254369"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462714"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Gebruik kubectl om een Kubernetes stateful-toepassing uit te voeren met een PersistentVolume op uw Azure Stack edge-apparaat
 
@@ -55,7 +55,10 @@ U bent klaar om een stateful toepassing te implementeren op uw Azure Stack edge-
 
 ## <a name="provision-a-static-pv"></a>Een statisch HW inrichten
 
-Als u een PV statisch wilt inrichten, moet u een share op het apparaat maken. Volg deze stappen om een HW te richten op uw SMB-of NFS-share. 
+Als u een PV statisch wilt inrichten, moet u een share op het apparaat maken. Volg deze stappen om een HW te richten op uw SMB-share. 
+
+> [!NOTE]
+> Het specifieke voor beeld dat in dit artikel wordt gebruikt, werkt niet met NFS-shares. Over het algemeen kunnen NFS-shares op uw Azure Stack edge-apparaat worden ingericht met niet-database toepassingen.
 
 1. Kies of u een Edge-share of een Edge-lokale share wilt maken. Volg de instructies in [een share toevoegen](azure-stack-edge-manage-shares.md#add-a-share) om een share te maken. Zorg ervoor dat u het selectie vakje inschakelt voor **het gebruik van de share met Edge Compute**.
 
@@ -71,7 +74,7 @@ Als u een PV statisch wilt inrichten, moet u een share op het apparaat maken. Vo
 
         ![Bestaande lokale share koppelen voor hw](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. Noteer de share naam. Wanneer deze share wordt gemaakt, wordt er automatisch een permanent volume object gemaakt in het Kubernetes-cluster dat overeenkomt met de SMB-of NFS-share die u hebt gemaakt. 
+1. Noteer de share naam. Wanneer deze share wordt gemaakt, wordt er automatisch een object met persistent volume gemaakt in het Kubernetes-cluster dat overeenkomt met de SMB-share die u hebt gemaakt. 
 
 ## <a name="deploy-mysql"></a>MySQL implementeren
 
@@ -147,7 +150,7 @@ U kunt nu een stateful toepassing uitvoeren door een Kubernetes-implementatie te
               claimName: mysql-pv-claim
     ```
     
-2. Kopieer en sla het `mysql-pv.yml` bestand op in dezelfde map waarin u het hebt opgeslagen `mysql-deployment.yml` . Als u de SMB-of NFS-share wilt gebruiken die u eerder hebt gemaakt met `kubectl` , stelt u het `volumeName` veld in het PVC-object in op de naam van de share. 
+2. Kopieer en sla het `mysql-pv.yml` bestand op in dezelfde map waarin u het hebt opgeslagen `mysql-deployment.yml` . Als u de SMB-share wilt gebruiken die u eerder hebt gemaakt met `kubectl` , stelt u het `volumeName` veld in het PVC-object in op de naam van de share. 
 
     > [!NOTE] 
     > Zorg ervoor dat de YAML-bestanden de juiste inspringing hebben. U kunt controleren met [yaml pluis](http://www.yamllint.com/) om te valideren en vervolgens op te slaan.
@@ -158,8 +161,8 @@ U kunt nu een stateful toepassing uitvoeren door een Kubernetes-implementatie te
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ U kunt nu een stateful toepassing uitvoeren door een Kubernetes-implementatie te
 
 ## <a name="verify-mysql-is-running"></a>Controleren of MySQL wordt uitgevoerd
 
-In het voor gaande YAML-bestand wordt een service gemaakt waarmee een pod in het cluster toegang kan krijgen tot de data base. Met de service optie clusterIP: none kan de DNS-naam van de service rechtstreeks worden omgezet naar het IP-adres van de pod. Dit is optimaal wanneer u slechts één pod achter een service hebt en u niet van plan bent om het aantal peulen te verhogen.
 
 Als u een opdracht wilt uitvoeren op een container in een pod met MySQL, typt u:
 

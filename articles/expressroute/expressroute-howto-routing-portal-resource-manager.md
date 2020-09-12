@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: peering configureren'
 description: In dit artikel worden de stappen beschreven voor het maken en inrichten van ExpressRoute persoonlijke en micro soft-peering. In dit artikel wordt ook gedemonstreerd hoe u de status van een circuit controleert, bijwerkt of verwijdert.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: 6bcbe2bd038a3e27df86b281c51cf0a151c5b5af
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: duau
+ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542905"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395720"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Peering voor een ExpressRoute-circuit maken en wijzigen
 
@@ -25,7 +25,7 @@ Dit artikel helpt u bij het maken en beheren van routerings configuratie voor ee
 > * [Open bare peering](about-public-peering.md)
 > * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-routing-classic.md)
+> * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
 U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Voor meer informatie over routerings domeinen en peerings, Zie [ExpressRoute-routerings domeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.

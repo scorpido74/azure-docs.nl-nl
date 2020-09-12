@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013585"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613728"
 ---
 # <a name="debug-rendering"></a>Debug Rendering
 
@@ -74,6 +74,10 @@ De gegeven effecten geven echter geen gedetailleerde introspectie in de status v
 
 * Het inschakelen van de tekst-overlays is niet alleen mogelijk als er geen prestatie overhead optreedt.
 * Het inschakelen van de draad model modus heeft een niet-trivial prestatie overhead, maar kan variëren afhankelijk van de scène. Voor complexe scènes kan deze modus ertoe leiden dat de frame frequentie onder het doel 60-Hz wordt geplaatst.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C++ RemoteManager::D ebugRenderingSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>Volgende stappen
 

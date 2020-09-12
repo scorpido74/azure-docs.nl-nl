@@ -1,29 +1,26 @@
 ---
-title: Wijzigings feed in Azure Blob Storage verwerken (preview) | Microsoft Docs
+title: Wijzigings feed verwerken in Azure Blob Storage | Microsoft Docs
 description: Meer informatie over het verwerken van Logboeken voor wijzigings invoer in een .NET-client toepassing
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018957"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568248"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Wijzigings feed in Azure Blob Storage verwerken (preview-versie)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Wijzigings feed in Azure Blob Storage verwerken
 
 Change feed biedt transactie logboeken van alle wijzigingen die plaatsvinden in de blobs en de BLOB-meta gegevens in uw opslag account. In dit artikel leest u hoe u wijzigingen in feeds kunt lezen met behulp van de processor bibliotheek voor het wijzigen van de blob.
 
-Zie [Change feed in Azure Blob Storage (preview)](storage-blob-change-feed.md)voor meer informatie over de feed voor wijzigingen.
-
-> [!NOTE]
-> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in een beperkt aantal regio's. Zie [ondersteuning voor feeds wijzigen in Azure Blob Storage](storage-blob-change-feed.md)voor meer informatie over deze functie, samen met bekende problemen en beperkingen. De processor bibliotheek van de wijzigings feed kan nu worden gewijzigd en wanneer deze bibliotheek algemeen beschikbaar wordt.
+Zie [Change feed in Azure Blob Storage](storage-blob-change-feed.md)voor meer informatie over de wijzigings feed.
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>De processor bibliotheek voor het wijzigen van de BLOB-feed ophalen
 
@@ -219,4 +216,4 @@ De start tijd die u opgeeft, wordt naar beneden afgerond op het dichtstbijzijnde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over feeds voor wijzigings Logboeken. Zie [Change feed in Azure Blob Storage (preview-versie)](storage-blob-change-feed.md)
+Meer informatie over feeds voor wijzigings Logboeken. Zie [Change feed in Azure Blob Storage](storage-blob-change-feed.md)

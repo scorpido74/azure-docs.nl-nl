@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305088"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568657"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Versies en geschiedenis van configuratie schema's voor Windows Azure Diagnostics extension (WAD)
 Dit artikel bevat de versie geschiedenis van de [wad-schema versies (Azure Diagnostics extension for Windows)](diagnostics-extension-overview.md) die als onderdeel van de Microsoft Azure SDK worden geleverd.  
@@ -21,18 +21,18 @@ Dit artikel bevat de versie geschiedenis van de [wad-schema versies (Azure Diagn
 
 |Azure SDK-versie | Uitbrei ding van diagnostische gegevens | Model|  
 |------------------|-------------------------------|------|  
-|1.x               |1.0                            |invoeg toepassing|  
-|2,0-2,4         |1.0                            |invoeg toepassing|  
-|2.5               |1.2                            |switch|  
+|1.x               |1,0                            |invoeg toepassing|  
+|2,0-2,4         |1,0                            |invoeg toepassing|  
+|2,5               |1.2                            |switch|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
-|2,8               |1.5                            |"|  
+|2.8               |1.5                            |"|  
 |2.9               |1.6                            |"|
-|2,96              |1.7                            |"|
+|2,96              |1,7                            |"|
 |2,96              |1.8                            |"|
 |2,96              |1.8.1                          |"|
-|2,96              |1.9                            |"|
-|2,96              |1,11                           |"|
+|2,96              |1,9                            |"|
+|2,96              |1.11                           |"|
 
 
  Azure Diagnostics versie 1,0 eerst verzonden in een invoeg toepassings model, wat betekent dat wanneer u de Azure SDK installeert, u beschikt over de versie van Azure Diagnostics.  
@@ -160,7 +160,7 @@ Het sinks-element is toegevoegd en de mogelijkheid om diagnostische gegevens naa
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 en diagnostische uitbrei ding 1,3
 Voor Cloud service projecten in Visual Studio zijn de volgende wijzigingen aangebracht. (Deze wijzigingen zijn ook van toepassing op latere versies van de Azure SDK.)
 
-* De lokale emulator biedt nu ondersteuning voor diagnostische gegevens. Met deze wijziging kunt u Diagnostische gegevens verzamelen en ervoor zorgen dat uw toepassing de juiste traceringen maakt tijdens het ontwikkelen en testen in Visual Studio. Met de connection string `UseDevelopmentStorage=true` wordt het verzamelen van diagnostische gegevens ingeschakeld terwijl u uw Cloud service project in Visual Studio uitvoert met behulp van de Azure-opslag emulator. Alle diagnostische gegevens worden verzameld in het opslag account (Development Storage).
+* De lokale emulator biedt nu ondersteuning voor diagnostische gegevens. Met deze wijziging kunt u Diagnostische gegevens verzamelen en ervoor zorgen dat uw toepassing de juiste traceringen maakt tijdens het ontwikkelen en testen in Visual Studio. Met de connection string `UseDevelopmentStorage=true` wordt het verzamelen van diagnostische gegevens ingeschakeld terwijl u uw Cloud service project in Visual Studio uitvoert met behulp van de Azure Storage-emulator. Alle diagnostische gegevens worden verzameld in het opslag account (Development Storage).
 * Het opslag account voor diagnostische gegevens connection string (micro soft. WindowsAzure. plugins. Diagnostics. Connections Tring) wordt eenmaal in het service configuratie bestand (. cscfg) opgeslagen. In azure SDK 2,5 is het opslag account voor diagnostische gegevens opgegeven in het bestand Diagnostics. wadcfgx.
 
 Er zijn enkele belang rijke verschillen tussen de manier waarop de connection string in azure SDK 2,4 en eerder heeft gewerkt en hoe deze werkt in azure SDK 2,6 of hoger.

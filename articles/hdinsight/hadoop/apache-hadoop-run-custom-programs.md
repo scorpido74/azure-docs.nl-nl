@@ -1,19 +1,19 @@
 ---
 title: Aangepaste MapReduce-Program ma's uitvoeren-Azure HDInsight
 description: Wanneer en hoe u aangepaste Apache MapReduce-Program ma's uitvoert op Azure HDInsight-clusters.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 8751a54393f310c1d5a77ccbfdb553ee3643f74a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1dcc2a944fc527e4cbc8c7c1072503377ecb5798
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080105"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505264"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Aangepaste MapReduce-programma's uitvoeren
 
@@ -56,7 +56,7 @@ De meest voorkomende MapReduce-Program ma's zijn geschreven in Java en gecompile
 
     Vervang CLUSTERNAME door de naam van het cluster. Als u een wacht woord hebt gebruikt om het SSH-account te beveiligen, wordt u gevraagd het wacht woord in te voeren. Als u een certificaat hebt gebruikt, moet u mogelijk de `-i` para meter gebruiken om het bestand met de persoonlijke sleutel op te geven.
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

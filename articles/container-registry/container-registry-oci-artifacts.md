@@ -4,14 +4,14 @@ description: Open container Initiative-artefacten pushen en pullen met behulp va
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371049"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485000"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Een OCI-artefact pushen en ophalen met behulp van een Azure container Registry
 
@@ -54,7 +54,7 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`maakt gebruik van de docker-client om een Azure Active Directory-token in het bestand in te stellen `docker.config` . De docker-client moet zijn geïnstalleerd en worden uitgevoerd om de afzonderlijke verificatie stroom te volt ooien.
+> `az acr login` maakt gebruik van de docker-client om een Azure Active Directory-token in het bestand in te stellen `docker.config` . De docker-client moet zijn geïnstalleerd en worden uitgevoerd om de afzonderlijke verificatie stroom te volt ooien.
 
 ## <a name="push-an-artifact"></a>Een artefact pushen
 
@@ -148,6 +148,36 @@ Als u het artefact uit uw Azure container Registry wilt verwijderen, gebruikt u 
 az acr repository delete \
     --name myregistry \
     --image samples/artifact:1.0
+```
+
+## <a name="example-build-docker-image-from-oci-artifact"></a>Voor beeld: docker-installatie kopie bouwen vanuit OCI-artefact
+
+De bron code en binaire bestanden voor het bouwen van een container installatie kopie kunnen worden opgeslagen als OCI-artefacten in een Azure container Registry. U kunt verwijzen naar een bron artefact als de opbouw context voor een [ACR-taak](container-registry-tasks-overview.md). In dit voor beeld ziet u hoe u een Dockerfile opslaat als een OCI-artefact en vervolgens naar het artefact verwijst om een container installatie kopie te bouwen.
+
+Maak bijvoorbeeld een Dockerfile met één regel:
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+Meld u aan bij het doel container register.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Een nieuw OCI-artefact maken en pushen naar het doel register met behulp van de `oras push` opdracht. In dit voor beeld wordt het standaard media type voor het artefact ingesteld.
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+Voer de opdracht [AZ ACR build](/cli/azure/acr#az-acr-build) uit om de Hello-World-installatie kopie te bouwen met de nieuwe artefact als build-context:
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

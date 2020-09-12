@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114656"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468535"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Cloud Shell implementeren in een virtueel Azure-netwerk
 > [!NOTE]
@@ -52,7 +52,7 @@ Binnen het geselecteerde virtuele netwerk moet een toegewezen subnet worden gebr
 Een netwerk profiel is een netwerk configuratie sjabloon voor Azure-resources waarmee bepaalde netwerk eigenschappen voor de bron worden opgegeven.
 
 ### <a name="azure-relay"></a>Azure Relay
-Een [Azure relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) staat twee eind punten toe die niet rechtstreeks bereikbaar zijn om te communiceren. In dit geval wordt deze gebruikt om de browser van de beheerder in staat te stellen te communiceren met de container in het particuliere netwerk.
+Een [Azure relay](../azure-relay/relay-what-is-it.md) staat twee eind punten toe die niet rechtstreeks bereikbaar zijn om te communiceren. In dit geval wordt deze gebruikt om de browser van de beheerder in staat te stellen te communiceren met de container in het particuliere netwerk.
 
 Het Azure Relay exemplaar dat voor Cloud Shell wordt gebruikt, kan worden geconfigureerd om te bepalen welke netwerken toegang hebben tot container bronnen: 
 - Toegankelijk via het open bare Internet: in deze configuratie biedt Cloud Shell een manier om andere interne resources van buiten te halen. 
@@ -66,7 +66,7 @@ Zoals in de standaard Cloud Shell, is een opslag account vereist tijdens het geb
 
 * Tijdens de preview worden minder regio's ondersteund voor Cloud Shell in een virtueel netwerk. Dit is momenteel beperkt tot: Westus en WestCentralUS.
 
-* [Azure relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) is geen gratis service, Bekijk hun [prijzen](https://azure.microsoft.com/pricing/details/service-bus/). In het Cloud Shell scenario wordt één hybride verbinding voor elke beheerder gebruikt wanneer ze Cloud Shell gebruiken. De verbinding wordt automatisch afgesloten nadat de Cloud Shell sessie is voltooid.
+* [Azure relay](../azure-relay/relay-what-is-it.md) is geen gratis service, Bekijk hun [prijzen](https://azure.microsoft.com/pricing/details/service-bus/). In het Cloud Shell scenario wordt één hybride verbinding voor elke beheerder gebruikt wanneer ze Cloud Shell gebruiken. De verbinding wordt automatisch afgesloten nadat de Cloud Shell sessie is voltooid.
 
 ## <a name="register-the-resource-provider"></a>De resourceprovider registreren
 
@@ -114,4 +114,4 @@ Verbinding maken met Cloud Shell, wordt u gevraagd om de eerste keer dat de sess
 ![Illustreert de Cloud Shell instellingen voor de eerste ervaring van de geïsoleerde VNET.](media/private-vnet/vnet-settings.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+[Meer informatie over Azure Virtual Networks](../virtual-network/virtual-networks-overview.md)

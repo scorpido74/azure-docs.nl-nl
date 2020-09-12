@@ -3,12 +3,12 @@ title: Media Graph-concept-Azure
 description: Met een media grafiek kunt u definiëren waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Dit artikel bevat een gedetailleerde beschrijving van het concept van media Graph.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048416"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567929"
 ---
 # <a name="media-graph"></a>Mediagrafiek
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048416"
 
 Met een media grafiek kunt u definiëren waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. U kunt dit doen door onderdelen of knoop punten op de gewenste manier te koppelen. In het onderstaande diagram ziet u een grafische weer gave van een media grafiek.  
 
-![Een grafische weer gave van een media grafiek](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="Mediagrafiek":::
 
 Live video Analytics op IoT Edge ondersteunt verschillende soorten bronnen, processors en Sinks.
 
@@ -39,7 +40,8 @@ De waarden voor de para meters in de topologie worden opgegeven wanneer u grafie
 
 De levens cyclus van Graph-topologieën en grafiek exemplaren wordt weer gegeven in het volgende status diagram.
 
-![Grafiek topologie en de levens cyclus van Graph-instanties](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Grafiek topologie en de levens cyclus van Graph-instanties":::
 
 U begint met [het maken van een grafiek topologie](direct-methods.md#graphtopologyset). Vervolgens maakt u voor elke live video-feed die u met deze topologie wilt verwerken, [een exemplaar van Graph](direct-methods.md#graphinstanceset). 
 
@@ -86,13 +88,13 @@ Met het knoop punt bewegings detectie processor kunt u bewegingen in live video 
 
 Met het knoop punt filter voor frame snelheid kunt u frames uit de inkomende video stroom met een opgegeven snelheid bemonsteren. Op deze manier kunt u het aantal frames dat wordt verzonden naar onderdelen met een lagere stroom (zoals een HTTP extension-processor knooppunt) beperken voor verdere verwerking.
 
-#### <a name="http-extension-processor"></a>HTTP-extensie processor
+#### <a name="http-extension-processor"></a>HTTP-extensieprocessor
 
-Met het knoop punt voor de HTTP-extensie processor kunt u uw eigen IoT Edge-module verbinden met een media grafiek. Met dit knoop punt worden video frames gedecodeerd als invoer en worden deze frames doorgestuurd naar een HTTP REST-eind punt dat wordt weer gegeven door uw module. Dit knoop punt kan, indien nodig, worden geverifieerd met het REST-eind punt. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het REST-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of BMP.
+Met het knoop punt voor de HTTP-extensie processor kunt u uw eigen IoT Edge-module verbinden met een media grafiek. Met dit knoop punt worden video frames gedecodeerd als invoer en worden deze frames doorgestuurd naar een HTTP REST-eind punt dat wordt weer gegeven door uw module. Dit knoop punt kan, indien nodig, worden geverifieerd met het REST-eind punt. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het REST-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of BMP. Meer informatie over de processor [vindt u hier](media-graph-extension-concept.md#http-extension-processor).
 
-#### <a name="grpc-extension-processor"></a>gRPC-extensie processor
+#### <a name="grpc-extension-processor"></a>gRPC-extensieprocessor
 
-Het gRPC extension-processor knooppunt gebruikt gedecodeerde video frames als invoer en stuurt deze frames door naar een [gRPC](terminology.md#grpc) -eind punt dat door uw module wordt weer gegeven. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het gRPC-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of bmp.
+Het gRPC extension-processor knooppunt gebruikt gedecodeerde video frames als invoer en stuurt deze frames door naar een [gRPC](terminology.md#grpc) -eind punt dat door uw module wordt weer gegeven. Het knoop punt ondersteunt het overdragen van gegevens met behulp van [gedeeld geheugen](https://en.wikipedia.org/wiki/Shared_memory) of het rechtstreeks insluiten van inhoud in de hoofd tekst van gRPC-berichten. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het gRPC-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of bmp. Meer informatie over de processor [vindt u hier](media-graph-extension-concept.md#grpc-extension-processor).
 
 #### <a name="signal-gate-processor"></a>Signal Gate-processor  
 

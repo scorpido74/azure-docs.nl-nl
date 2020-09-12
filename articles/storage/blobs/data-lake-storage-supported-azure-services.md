@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b185b6e7706b2049f2821400db9d810588000419
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c3a5f3a984c95af400c9e0c1543e3c1883290668
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848210"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442953"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-Services die ondersteuning bieden voor Azure Data Lake Storage Gen2
 
@@ -29,9 +29,9 @@ Deze tabel geeft een lijst van de Azure-Services die u kunt gebruiken met Azure 
 |Azure-service |Ondersteunings niveau |Azure AD |Gedeelde sleutel| Verwante artikelen: |
 |---------------|-------------------|---|---|---|
 |Azure Data Factory|Algemeen beschikbaar|Ja|Ja|[Gegevens laden in Azure Data Lake Storage Gen2 met Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Databricks|Algemeen beschikbaar|Ja|Ja|[Gebruiken met Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md) <br>[Zelfstudie: Gegevens extraheren, transformeren en laden met Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse) <br>[Zelf studie: toegang tot Data Lake Storage Gen2 gegevens met Azure Databricks met Spark](data-lake-storage-use-databricks-spark.md)|
+|Azure Databricks|Algemeen beschikbaar|Ja|Ja|[Gebruiken met Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md) <br>[Zelfstudie: Gegevens extraheren, transformeren en laden met behulp van Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse) <br>[Zelf studie: toegang tot Data Lake Storage Gen2 gegevens met Azure Databricks met Spark](data-lake-storage-use-databricks-spark.md)|
 |Azure Event Hub|Algemeen beschikbaar|Nee|Ja|[Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
-|Azure Event Grid|Algemeen beschikbaar|Ja|Ja|[Zelf studie: het data Lake Capture-patroon implementeren om een Databricks Delta tabel bij te werken](data-lake-storage-events.md)|
+|Azure Event Grid|Algemeen beschikbaar|Ja|Ja|[Zelfstudie: Het Data Lake Capture-patroon implementeren om een Databricks Delta-tabel bij te werken](data-lake-storage-events.md)|
 |Azure Logic Apps|Algemeen beschikbaar|Nee|Ja|[Overzicht - Wat is Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
 |Azure Machine Learning|Algemeen beschikbaar|Ja|Ja|[Toegang tot gegevens in azure Storage-services](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)|
 |Azure Stream Analytics|Algemeen beschikbaar|Ja|Ja|[Snelstart: Een Stream Analytics-taak maken via Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Uitgaand naar Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
@@ -44,7 +44,6 @@ Deze tabel geeft een lijst van de Azure-Services die u kunt gebruiken met Azure 
 |Azure Data Explorer|Algemeen beschikbaar|Ja|Ja|[Query's uitvoeren op gegevens in Azure Data Lake met behulp van Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|Preview|Ja|Ja|[Index-en zoek Azure Data Lake Storage Gen2 documenten (preview-versie)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure Content Delivery Network|Nog niet ondersteund|Niet van toepassing|Niet van toepassing|[Index-en zoek Azure Data Lake Storage Gen2 documenten (preview-versie)](https://docs.microsoft.com/azure/cdn/cdn-overview)|
-
 
 ## <a name="see-also"></a>Zie ook
 

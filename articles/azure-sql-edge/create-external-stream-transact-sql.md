@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321731"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489541"
 ---
 # <a name="create-external-stream-transact-sql"></a>EXTERNE STREAM maken (Transact-SQL)
 
@@ -26,9 +26,9 @@ Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als inv
 
 | Gegevens bron type | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | Y | Y | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
-| SQL Database | N | Y | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
-| Kafka | Y | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Kafka-ondersteuning is niet beschikbaar voor de ARM64-versie van Azure SQL Edge.|
+| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
+| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
+| Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Kafka-ondersteuning is niet beschikbaar voor de ARM64-versie van Azure SQL Edge.|
 
 
 
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Het maximum aantal gebeurtenissen dat is verzonden naar de functie per aanroep voor Azure function: de standaard waarde is 100. Voor SQL Database vertegenwoordigt dit het maximum aantal records dat wordt verzonden met elke bulksgewijze insert-trans actie. de standaard waarde is 10.000. 
     - Is van toepassing op alle op SQL gebaseerde uitvoer 
-  - STAGING_AREA: extern gegevens bron object voor het Blob Storage van het faserings gebied voor gegevens opname met hoge door Voer in SQL Data Warehouse 
+  - STAGING_AREA: extern gegevens bron object voor het Blob Storage van het faserings gebied voor gegevens opname met hoge door Voer in azure Synapse Analytics 
     - Gereserveerd voor toekomstig gebruik. Is niet van toepassing op Azure SQL Edge.
 
 
@@ -245,7 +245,7 @@ WITH
 ); 
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [EXTERNE stroom wijzigen (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [EXTERNE stroom verwijderen (Transact-SQL)](drop-external-stream-transact-sql.md) 

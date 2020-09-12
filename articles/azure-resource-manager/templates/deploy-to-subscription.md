@@ -2,13 +2,13 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002776"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468637"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -54,7 +54,7 @@ Gebruik voor het beheren van uw abonnement:
 
 * [budgetten](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [tags](/azure/templates/microsoft.resources/tags)
+* [Koptags](/azure/templates/microsoft.resources/tags)
 
 Andere ondersteunde typen zijn:
 
@@ -115,7 +115,7 @@ Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implement
 
 ## <a name="deployment-scopes"></a>Implementatie bereiken
 
-Wanneer u naar een abonnement implementeert, kunt u het abonnement of alle resource groepen binnen het abonnement richten. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+Wanneer u naar een abonnement implementeert, kunt u een abonnement en alle resource groepen binnen het abonnement richten. U kunt niet implementeren in een abonnement dat verschilt van het doel abonnement. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
 
 Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op het abonnement.
 
@@ -145,7 +145,7 @@ Als u een resource groep in het abonnement wilt richten, voegt u een geneste imp
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,19 @@ Als u een resource groep in het abonnement wilt richten, voegt u een geneste imp
 }
 ```
 
+In dit artikel vindt u sjablonen die laten zien hoe u resources implementeert in verschillende bereiken. Zie [resource groep en-resources maken](#create-resource-group-and-resources)voor een sjabloon waarmee u een resource groep maakt en een opslag account implementeert. Voor een sjabloon waarmee een resource groep wordt gemaakt, wordt er een vergren deling op toegepast en wordt er een rol toegewezen aan de resource groep. Zie [toegangs beheer](#access-control)voor meer informatie.
+
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 
 Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtspunten bij het gebruik van sjabloon functies:
 
 * De functie [resourceGroup ()](template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
 * De functies [Reference ()](template-functions-resource.md#reference) en [List ()](template-functions-resource.md#list) worden ondersteund.
-* Gebruik de functie [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) om de resource-id op te halen voor resources die worden geïmplementeerd op abonnements niveau.
+* Gebruik [resourceId ()](template-functions-resource.md#resourceid) niet om de resource-id op te halen voor resources die zijn geïmplementeerd op abonnements niveau.
 
-  Als u bijvoorbeeld de resource-ID voor een beleids definitie wilt ophalen, gebruikt u:
+  Gebruik in plaats daarvan de functie [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) .
+
+  Als u bijvoorbeeld de resource-ID wilt ophalen voor een beleids definitie die is geïmplementeerd op een abonnement, gebruikt u:
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -420,7 +424,7 @@ U kunt een beleids definitie [definiëren](../../governance/policy/concepts/defi
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]

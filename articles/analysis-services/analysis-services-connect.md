@@ -4,16 +4,16 @@ description: Meer informatie over hoe u verbinding kunt maken met en gegevens ku
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506771"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489014"
 ---
 # <a name="connecting-to-servers"></a>Verbinding maken met servers
 
@@ -76,6 +76,24 @@ Gebruik het Windows-account dat het huidige proces uitvoert.
 ## <a name="connect-using-an-odc-file"></a>Verbinding maken via een. ODC-bestand
 
 Met oudere versies van Excel kunnen gebruikers verbinding maken met een Azure Analysis Services server met behulp van een ODC-bestand (Office Data Connection). Zie [een ODC-bestand (Office Data Connection) maken](analysis-services-odc.md)voor meer informatie.
+
+## <a name="connect-as-a-linked-server-from-sql-server"></a>Verbinding maken als een gekoppelde server van SQL Server
+
+SQL Server kunt verbinding maken met een Azure Analysis Services resource als een [gekoppelde server](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) door MSOLAP op te geven als de gegevens bron provider. Voordat u een gekoppelde server verbinding configureert, moet u ervoor zorgen dat u de meest recente [Msolap-client bibliotheek](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (provider) installeert. 
+
+Voor gekoppelde server verbindingen met Azure Analysis Services moet de MSOLAP-provider worden geïnstantieerd buiten het SQL Server proces. Zorg ervoor dat bij het configureren van de opties voor de gekoppelde server de optie inschakeling **toestaan** **niet is geselecteerd**.
+
+Als inschakeling **toestaan** is geselecteerd en de provider wordt geïnstantieerd in het SQL Server proces, wordt de volgende fout geretourneerd:
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

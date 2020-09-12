@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e53d8bf8f7cb024b468983f596d3d1bd5c91ee7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1596dd8c03ba546c47429183e5d237579f1634f1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007298"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442919"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Office installeren op een master-VHD-installatiekopie
 
@@ -56,7 +56,7 @@ Dit is de XML-voorbeeld configuratie:
 
 Het Office Deployment Tool bevat setup.exe. Als u Office wilt installeren, voert u de volgende opdracht uit op de opdracht regel:
 
-```batch
+```cmd
 Setup.exe /configure configuration.xml
 ```
 
@@ -90,7 +90,7 @@ Met het volgende XML-voor beeld wordt de maandelijkse versie van het Enter prise
 
 Na de installatie van Office kunt u het standaard gedrag van Office bijwerken. Voer de volgende opdrachten afzonderlijk of in een batch-bestand uit om het gedrag bij te werken.
 
-```batch
+```cmd
 rem Mount the default user registry hive
 reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
 rem Must be executed with default registry hive mounted.
@@ -117,41 +117,41 @@ U kunt als volgt OneDrive installeren in de modus per computer:
 
 1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of [ \\ \\ UNC]-locatie (File://UNC) is nauw keurig.
 
-2. Down load OneDriveSetup.exe naar uw gefaseerde locatie met deze koppeling:<https://aka.ms/OneDriveWVD-Installer>
+2. Down load OneDriveSetup.exe naar uw gefaseerde locatie met deze koppeling: <https://aka.ms/OneDriveWVD-Installer>
 
 3. Als u Office hebt geïnstalleerd met OneDrive door niets **\<ExcludeApp ID="OneDrive" /\>** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
 
-    ```batch
+    ```cmd
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
 4. Voer deze opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid om de register waarde **AllUsersInstall** in te stellen:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
 5. Voer deze opdracht uit om OneDrive te installeren in de modus per computer:
 
-    ```batch
+    ```cmd
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. Voer deze opdracht uit om OneDrive te configureren om te beginnen bij het aanmelden voor alle gebruikers:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. Schakel **gebruikers account op de achtergrond configureren** uit door de volgende opdracht uit te voeren.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
 8. Omleiden en verplaatsen van Windows bekende mappen naar OneDrive door de volgende opdracht uit te voeren.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 

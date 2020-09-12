@@ -1,19 +1,19 @@
 ---
 title: Cluster grootten schalen-Azure HDInsight
 description: Een Apache Hadoop cluster elastisch schalen zodat dit overeenkomt met uw werk belasting in azure HDInsight
-author: ashishthaps
+author: hrasheed-msft
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44cfc5b651bdd5dc0d7abee575bd964ad0b603d0
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006447"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505009"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -34,7 +34,7 @@ Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
+|[Azure-CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Klassieke versie van Azure-CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure-portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
 
@@ -111,9 +111,9 @@ De impact van het wijzigen van het aantal gegevens knooppunten varieert voor elk
 
     Nadat u hebt geschaald naar `N` werk knooppunten, worden de volgende configuraties automatisch door HDInsight ingesteld en wordt de Hive opnieuw gestart.
 
-  * Maximum aantal gelijktijdige Query's:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
-  * Aantal knoop punten dat wordt gebruikt door de LLAP van de component:`num_llap_nodes  = N`
-  * Aantal knoop punten voor het uitvoeren van de Hive LLAP-daemon:`num_llap_nodes_for_llap_daemons = N`
+  * Maximum aantal gelijktijdige Query's: `hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Aantal knoop punten dat wordt gebruikt door de LLAP van de component: `num_llap_nodes  = N`
+  * Aantal knoop punten voor het uitvoeren van de Hive LLAP-daemon: `num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Een cluster veilig omlaag schalen
 
@@ -254,7 +254,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 Regio servers worden automatisch binnen enkele minuten na het volt ooien van een schaal bewerking gebalanceerd. Voer de volgende stappen uit om regio servers hand matig te verdelen:
 
-1. Maak verbinding met het HDInsight-cluster via SSH. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
+1. Maak verbinding met het HDInsight-cluster via SSH. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
 2. Start de HBase-shell:
 

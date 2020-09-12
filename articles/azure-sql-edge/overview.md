@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642466"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489524"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Wat is Azure SQL Edge (preview)?
 
@@ -67,7 +67,7 @@ Azure SQL Edge maakt het ontwikkelen en onderhouden van toepassingen eenvoudiger
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) : een gratis, Download bare client toepassing voor het beheren van een SQL-infra structuur, van SQL Server tot SQL database.
 - [SQL Server Data tools in Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt/) : een gratis, Download bare client toepassing voor het ontwikkelen van SQL Server relationele data bases, SQL-data bases, integratie Services-pakketten, Analysis Services gegevens modellen en Reporting Services-rapporten.
 - [Azure Data Studio](/sql/azure-data-studio/what-is/) : een gratis, Download bare, data base tool voor meerdere platforms voor data Professional met behulp van de micro soft-familie van on-premises en Cloud gegevens platformen in Windows, MacOS en Linux.
-- [Visual Studio code](https://code.visualstudio.com/docs) : een gratis, Download bare, open-source code-editor voor Windows, MacOS en Linux. Het ondersteunt extensies, waaronder de [MSSQL-extensie](https://aka.ms/mssql-marketplace) voor het uitvoeren van query's Microsoft SQL Server, Azure SQL Database en Azure SQL Data Warehouse.
+- [Visual Studio code](https://code.visualstudio.com/docs) : een gratis, Download bare, open-source code-editor voor Windows, MacOS en Linux. Het ondersteunt extensies, waaronder de [MSSQL-extensie](https://aka.ms/mssql-marketplace) voor het uitvoeren van query's Microsoft SQL Server, Azure SQL database en Azure Synapse Analytics.
 
 
 ## <a name="next-steps"></a>Volgende stappen

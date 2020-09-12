@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710147"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443021"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens verplaatsen van Amazon Redshift met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -63,10 +63,10 @@ De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn 
 | --- | --- | --- |
 | **type** |Deze eigenschap moet worden ingesteld op **AmazonRedshift**. |Yes |
 | **naam** |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Yes |
-| **poort** |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 5439) |
+| **Importeer** |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 5439) |
 | **enddatabase** |De naam van de Amazon Redshift-data base. |Yes |
-| **gebruikers** |De naam van de gebruiker die toegang heeft tot de data base. |Yes |
-| **wachtwoord** |Het wacht woord voor het gebruikers account. |Yes |
+| **gebruikersnaam** |De naam van de gebruiker die toegang heeft tot de data base. |Yes |
+| **password** |Het wacht woord voor het gebruikers account. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
@@ -101,13 +101,13 @@ U kunt ook het type **RelationalSource** gebruiken, dat Amazon Redshift bevat, m
 
 De opdracht Amazon Redshift [**UNload**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) verwijdert de resultaten van een query naar een of meer bestanden in Amazon S3. Deze opdracht wordt aanbevolen door Amazon voor het kopiëren van grote gegevens sets van RedShift.
 
-**Voor beeld: gegevens kopiëren van Amazon Redshift naar Azure SQL Data Warehouse**
+**Voor beeld: gegevens kopiëren van Amazon Redshift naar Azure Synapse Analytics (voorheen SQL Data Warehouse)**
 
-In dit voor beeld worden gegevens van Amazon Redshift naar Azure SQL Data Warehouse gekopieerd. In het voor beeld worden de opdracht Redshift **Unload** , Copyed data en micro soft poly base gebruikt.
+In dit voor beeld worden gegevens van Amazon Redshift naar Azure Synapse Analytics gekopieerd. In het voor beeld worden de opdracht Redshift **Unload** , Copyed data en micro soft poly base gebruikt.
 
-Voor deze voorbeeld use-case worden met de Kopieer activiteit eerst de gegevens uit Amazon Redshift naar Amazon S3 verwijderd, zoals geconfigureerd in de **redshiftUnloadSettings** -optie. Vervolgens worden de gegevens gekopieerd van Amazon S3 naar Azure Blob-opslag, zoals opgegeven in de optie **stagingSettings** . Ten slotte laadt poly base de gegevens in SQL Data Warehouse. Alle tijdelijke notaties worden verwerkt door de Kopieer activiteit.
+Voor deze voorbeeld use-case worden met de Kopieer activiteit eerst de gegevens uit Amazon Redshift naar Amazon S3 verwijderd, zoals geconfigureerd in de  **redshiftUnloadSettings** -optie. Vervolgens worden de gegevens gekopieerd van Amazon S3 naar Azure Blob-opslag, zoals opgegeven in de optie **stagingSettings** . Ten slotte laadt poly base de gegevens in azure Synapse Analytics. Alle tijdelijke notaties worden verwerkt door de Kopieer activiteit.
 
-![Werk stroom kopiëren van Amazon Redshift naar SQL Data Warehouse](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Werk stroom kopiëren van Amazon Redshift naar Azure Synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -332,14 +332,14 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
 | BIGINT |Int64 |
-| KOMMA |Decimal |
-| REAL |Enkelvoudig |
+| KOMMA |Decimaal |
+| REAL |Enkel |
 | DUBBELE PRECISIE |Dubbel |
 | True |Tekenreeks |
 | CHAR |Tekenreeks |
 | VARCHAR |Tekenreeks |
-| DATE |DateTime |
-| Neem |DateTime |
+| DATE |Datum/Tijd |
+| Neem |Datum/Tijd |
 | TEXT |Tekenreeks |
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen

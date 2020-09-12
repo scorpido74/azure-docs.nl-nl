@@ -4,13 +4,13 @@ description: Meer informatie over het maken van een cluster dat knoop punten dis
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 08/13/2020
-ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/04/2020
+ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871408"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489133"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
 
@@ -38,7 +38,7 @@ AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de vo
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
 * Europa -west
-* West US 2
+* VS - west 2
 
 De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met beschikbaarheids zones:
 
@@ -150,7 +150,8 @@ Name:       aks-nodepool1-28993262-vmss000004
 We hebben nu twee extra knoop punten in zones 1 en 2. U kunt een toepassing implementeren die bestaat uit drie replica's. NGINX wordt als voor beeld gebruikt:
 
 ```console
-kubectl run nginx --image=nginx --replicas=3
+kubectl create deployment nginx --image=nginx
+kubectl scale deployment nginx --replicas=3
 ```
 
 Door knoop punten weer te geven waarop uw peulen worden uitgevoerd, ziet u dat er peulen worden uitgevoerd op de knoop punten die overeenkomen met drie verschillende beschikbaarheids zones. Met de opdracht `kubectl describe pod | grep -e "^Name:" -e "^Node:"` in een bash-shell zou u bijvoorbeeld een uitvoer zien die er ongeveer als volgt uitziet:

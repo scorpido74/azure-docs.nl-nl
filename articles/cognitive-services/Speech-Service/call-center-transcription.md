@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636123"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462731"
 ---
 # <a name="speech-service-for-telephony-data"></a>Spraak service voor telefoon gegevens
 
@@ -60,7 +60,7 @@ Het is niet ongebruikelijk dat er 35 procent van een ondersteunings oproep wordt
 
 ### <a name="translation"></a>Omzetting
 
-Sommige bedrijven experimenteren met het bieden van vertaalde transcripten van ondersteunings gesprekken van vreemde talen zodat bezorg managers de wereld wijde ervaring van hun klanten kunnen begrijpen. Onze [Vertaal](translation.md) mogelijkheden zijn niet meer zo. We kunnen audio-naar-audio-of audio-naar-tekst omzetten voor een groot aantal land instellingen.
+Sommige bedrijven experimenteren met het bieden van vertaalde transcripten van ondersteunings gesprekken van vreemde talen zodat bezorg managers de wereld wijde ervaring van hun klanten kunnen begrijpen. Onze [Vertaal](/azure/cognitive-services/speech-service/speech-translation) mogelijkheden zijn niet meer zo. We kunnen audio-naar-audio-of audio-naar-tekst omzetten voor een groot aantal land instellingen.
 
 ### <a name="text-to-speech"></a>Text to Speech
 
@@ -70,7 +70,7 @@ Onze end-to-end-latentie is aanzienlijk laag voor de verschillende technologieë
 
 Onze nieuwe stemmen worden ook niet onderscheiden van mensen stemmen. U kunt onze stemmen gebruiken om uw bot unieke persoonlijkheid te geven.
 
-### <a name="search"></a>Zoeken
+### <a name="search"></a>Search
 
 Een andere nietmachine van analyses is het identificeren van interacties waar een bepaalde gebeurtenis of ervaring heeft plaatsgevonden. Dit gebeurt meestal met een van de twee benaderingen; een ad-hoc-zoek opdracht waarbij de gebruiker simpelweg een woord groep en het systeem reageert, of een meer gestructureerde query waarbij een analist een set logische instructies kan maken die een scenario in een aanroep identificeert en vervolgens elke aanroep kan worden geïndexeerd op basis van die set query's. Een goed Zoek voorbeeld is de alomtegenwoordige-nalevings verklaring "deze oproep moet worden geregistreerd voor kwaliteits doeleinden... ". Veel bedrijven willen er zeker van zijn dat hun agents deze disclaimer aan klanten leveren voordat de aanroep daad werkelijk wordt geregistreerd. De meeste analyse systemen hebben de mogelijkheid om de gedragingen te trenden die worden gevonden door query-en zoek algoritmen, en deze rapportage van trends is uiteindelijk een van de belangrijkste functies van een Analytics-systeem. Met de functie [cognitieve Services](https://azure.microsoft.com/services/cognitive-services/directory/search/) kunt u uw end-to-end-oplossing aanzienlijk verbeteren met indexerings-en zoek mogelijkheden.
 
@@ -103,7 +103,7 @@ Intern gebruiken we de bovenstaande technologieën om micro soft-klant gesprekke
 
 Sommige bedrijven zijn verplicht om gesp rekken in realtime te transcriberen. Realtime-transcriptie kunnen worden gebruikt om belang rijke woorden en triggers te identificeren voor inhoud en resources die relevant zijn voor de conversatie, voor het bewaken van sentiment, het verbeteren van de toegankelijkheid of het bieden van vertalingen voor klanten en agents die geen systeem eigen sprekers zijn.
 
-Voor scenario's waarvoor realtime-transcriptie zijn vereist, kunt u het beste de [Speech SDK](speech-sdk.md)gebruiken. Op dit moment is spraak-naar-tekst beschikbaar in [meer dan 20 talen](language-support.md)en is de SDK beschikbaar in C++, C#, Java, Python, node. js, objectief-C en Java script. Voor beelden zijn beschikbaar in elke taal op [github](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Zie [release opmerkingen](releasenotes.md)voor het laatste nieuws en de meest recente updates.
+Voor scenario's waarvoor realtime-transcriptie zijn vereist, kunt u het beste de [Speech SDK](speech-sdk.md)gebruiken. Op dit moment is spraak-naar-tekst beschikbaar in [meer dan 20 talen](language-support.md)en is de SDK beschikbaar in C++, C#, Java, Python, Node.js, objectief-C en Java script. Voor beelden zijn beschikbaar in elke taal op [github](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Zie [release opmerkingen](releasenotes.md)voor het laatste nieuws en de meest recente updates.
 
 Intern gebruiken we de bovenstaande technologieën om in realtime micro soft-klant gesprekken te analyseren wanneer deze zich voordoen, zoals in het volgende diagram wordt geïllustreerd.
 
@@ -119,7 +119,7 @@ Een ander scenario is directe integratie met behulp van SIP (Session Initiation 
 
 ## <a name="customize-existing-experiences"></a>Bestaande ervaringen aanpassen
 
- De speech-service werkt goed met ingebouwde modellen. Het is echter mogelijk dat u de ervaring voor uw product of omgeving verder wilt aanpassen en afstemmen. Aanpassings opties variëren van het verfijnen van akoestische modellen tot unieke spraak lettertypen voor uw merk. Nadat u een aangepast model hebt gemaakt, kunt u het gebruiken met een van de functies van de speech-service in realtime of in batch modus.
+ De speech-service werkt goed met ingebouwde modellen. Het is echter mogelijk dat u de ervaring voor uw product of omgeving verder wilt aanpassen en afstemmen. Aanpassingsopties variëren van het afstemmen van akoestische modellen tot unieke spraakstijlen voor uw merk. Nadat u een aangepast model hebt gemaakt, kunt u het gebruiken met een van de functies van de speech-service in realtime of in batch modus.
 
 | Speech Service | Model | Beschrijving |
 | -------------- | ----- | ----------- |
@@ -130,21 +130,21 @@ Een ander scenario is directe integratie met behulp van SIP (Session Initiation 
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-De voorbeeld code is beschikbaar op GitHub voor elk van de functies van de spraak service. Deze voor beelden hebben betrekking op veelvoorkomende scenario's, zoals het lezen van audio van een bestand of stream, continue en eenmalige herkenning en het werken met aangepaste modellen. Gebruik deze koppelingen om SDK-en REST-voor beelden weer te geven:
+De voorbeeld code is beschikbaar op GitHub voor elk van de functies van de spraak service. Deze voorbeelden hebben betrekking op veelvoorkomende scenario's, zoals het lezen van audio van een bestand of stream, continue en eenmalige herkenning en het werken met aangepaste modellen. Gebruik de volgende koppelingen om SDK- en REST-voorbeelden te bekijken:
 
 - [Voor beelden van spraak-naar-tekst-en spraak omzetting (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Voor beelden van batch transcriptie (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
-- [Voor beelden van tekst naar spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Voorbeelden van batchtranscriptie (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Voorbeelden van tekst-naar-spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 - [Speech-SDK](speech-sdk-reference.md)
 - [Speech Devices SDK](speech-devices-sdk.md)
-- [REST API: spraak naar tekst](rest-speech-to-text.md)
-- [REST API: tekst-naar-spraak](rest-text-to-speech.md)
-- [REST API: batch transcriptie en-aanpassing](https://westus.cris.ai/swagger/ui/index)
+- [REST API: Spraak-naar-tekst](rest-speech-to-text.md)
+- [REST API: Tekst-naar-spraak](rest-text-to-speech.md)
+- [REST API: Batchtranscriptie en aanpassing](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+> [Verkrijg gratis een spraakserviceabonnementssleutel](get-started.md)

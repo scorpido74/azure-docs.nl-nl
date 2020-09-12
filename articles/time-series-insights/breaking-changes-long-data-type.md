@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856107"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489031"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Ondersteuning toevoegen voor lang gegevens type in Azure Time Series Insights Gen2
 
@@ -33,7 +33,7 @@ Als u een van de volgende situaties ondervindt, moet u de aanbevolen wijzigingen
 
 Als een van de aanvragen op u van toepassing is, brengt u wijzigingen aan in uw model. Werk de time series-expressie (TSX) bij in de definitie van de variabele met de aanbevolen wijzigingen. Update beide:
 
-- Azure Time Series Insights TSI-Verkenner
+- Azure Time Series Insights Explorer
 - Elke aangepaste client die gebruikmaakt van onze Api's
 
 Afhankelijk van uw IoT-oplossing en beperkingen, hebt u mogelijk niet de zicht baarheid van de gegevens die naar uw Azure Time Series Insights Gen2-omgeving worden verzonden. Als u niet zeker weet of uw gegevens alleen integraal of zowel integraal als niet-integraal zijn, hebt u een aantal opties:

@@ -1,19 +1,19 @@
 ---
 title: Backup &-replicatie voor Apache HBase, Phoenix-Azure HDInsight
 description: Back-ups en replicatie instellen voor Apache HBase en Apache Phoenix in azure HDInsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705721"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505026"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Back-up en replicatie instellen voor Apache HBase en Apache Phoenix op HDInsight
 
@@ -167,7 +167,7 @@ Nadat u de IP-adressen voor alle ZooKeeper-knoop punten in uw quorum hebt verzam
 
 `<destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>`
 
-In ons voor beeld:
+In ons voorbeeld:
 
 `<destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure`
 

@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 9beb617ed8626b1fda1c9db98d626ca70ee01755
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042914"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569132"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Aanbevelingen oplossen in Azure Security Center
 
 Aanbevelingen bieden suggesties voor een betere beveiliging van uw resources. U implementeert een aanbeveling door de herstels tappen te volgen die worden beschreven in de aanbeveling.
 
-## <a name="remediation-steps"></a>Herstels tappen<a name="remediation-steps"></a>
+## <a name="remediation-steps"></a>Herstels tappen <a name="remediation-steps"></a>
 
 Nadat u alle aanbevelingen hebt bekeken, moet u bepalen welke u het eerst wilt herstellen. U wordt aangeraden de effect op een [beveiligde Score](security-center-recommendations.md#monitor-recommendations) te gebruiken om te helpen bepalen wat u eerst moet doen.
 
@@ -65,34 +65,10 @@ Voor het implementeren van herstel met snelle oplossingen:
 
 1. Zodra dit is voltooid, wordt een melding weer gegeven dat u wordt geïnformeerd als het herstel is geslaagd.
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Snel herstel logboek registratie in het activiteiten logboek<a name="activity-log"></a>
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Snel herstel logboek registratie in het activiteiten logboek <a name="activity-log"></a>
 
 Voor de herstel bewerking wordt gebruikgemaakt van een sjabloon implementatie of REST PATCH-API-aanroep om de configuratie van de bron toe te passen. Deze bewerkingen worden geregistreerd in het [Azure-activiteiten logboek](../azure-resource-manager/management/view-activity-logs.md).
 
-
-## <a name="recommendations-with-quick-fix-remediation"></a>Aanbevelingen met snel herstel
-
-|Aanbeveling|Implicatie|
-|---|---|
-|Controleren op SQL Database moet zijn ingeschakeld|Met deze actie wordt SQL-controle op deze servers en de bijbehorende data bases ingeschakeld. <br>**Opmerking**: <ul><li>Voor elke regio van de geselecteerde SQL Database wordt een opslag account voor het opslaan van audit logboeken gemaakt en gedeeld door alle servers in die regio.</li><li>Verwijder of wijzig de naam van de resource groep of de opslag accounts niet om de juiste controle te garanderen.</li></ul>|
-|Advanced Data Security moet zijn ingeschakeld voor SQL Managed Instance|Met deze actie wordt SQL Advanced Data Security (ADS) ingeschakeld voor de geselecteerde SQL Managed instances. <br>**Opmerking**: <ul><li>Voor elke regio en resource groep van het geselecteerde SQL Managed instance wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li> ADS wordt in rekening gebracht op $15 per SQL Managed instance.</li></ul>|
-|Evaluatie van beveiligingsproblemen moet zijn ingeschakeld voor SQL Managed Instance|Met deze actie wordt SQL-evaluatie van beveiligings problemen voor het geselecteerde exemplaar van SQL beheerd. <br>**Opmerking**:<ul><li>Evaluatie van SQL-beveiligings problemen maakt deel uit van het SQL Advanced Data Security-pakket (ADS). Als ADS niet al is ingeschakeld, wordt deze automatisch ingeschakeld op het beheerde exemplaar.</li><li>Voor elke regio en resource groep van het geselecteerde SQL Managed instance wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>ADS wordt in rekening gebracht op $15 per SQL Database.</li></ul>||
-|Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL Database|Met deze actie wordt Geavanceerd gegevens beveiliging (ADS) ingeschakeld op deze geselecteerde servers en de bijbehorende data bases. <br>**Opmerking**:<ul><li>Voor elke regio en resource groep van de geselecteerde SQL Database wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle servers in die regio. <</li><li>ADS wordt in rekening gebracht op $15 per SQL Database.</li></ul>||
-|De evaluatie van beveiligings problemen moet worden ingeschakeld op uw SQL Database|Met deze actie wordt SQL-evaluatie van beveiligings problemen op deze geselecteerde servers en de bijbehorende data bases ingeschakeld. <br>**Opmerking**:<ul><li>Evaluatie van SQL-beveiligings problemen maakt deel uit van het SQL Advanced Data Security-pakket (ADS). Als ADS al niet is ingeschakeld, wordt deze automatisch ingeschakeld op de SQL Database.</li><li>Voor elke regio en resource groep van de geselecteerde SQL Database wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>ADS wordt in rekening gebracht op $15 per SQL Database.</li></ul>||
-|Transparent Data Encryption op SQL Database moet zijn ingeschakeld|Met deze actie wordt SQL Database Transparent Data Encryption (TDE) ingeschakeld voor de geselecteerde data bases. <br>**Opmerking**: standaard worden door service beheerde TDe-sleutels gebruikt.
-|Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld|Met deze actie wordt de beveiliging van uw opslag account bijgewerkt zodat alleen aanvragen voor beveiligde verbindingen worden toegestaan. (HTTPS). <br>**Opmerking**:<ul><li>Aanvragen die gebruikmaken van HTTP, worden geweigerd.</li><li>Wanneer u de service Azure files gebruikt, mislukt de verbinding zonder versleuteling, inclusief scenario's met SMB 2,1, SMB 3,0 zonder versleuteling en enkele van de Linux SMB-client. Meer informatie.</li></ul>|
-|Webtoepassing mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
-|Functie-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
-|API-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
-|Externe foutopsporing moet worden uitgeschakeld voor webtoepassing|Met deze actie wordt externe fout opsporing uitgeschakeld.|
-|Externe foutopsporing moet worden uitgeschakeld voor functie-app|Met deze actie wordt externe fout opsporing uitgeschakeld.|
-|Externe foutopsporing moet worden uitgeschakeld voor API-app|Met deze actie wordt externe fout opsporing uitgeschakeld.|
-|CORS mag er niet toe leiden dat elke resource toegang tot uw webtoepassing heeft|Deze actie blokkeert andere domeinen om toegang te krijgen tot uw webtoepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld toegestane oorsprong in (gescheiden door komma's). <br>**Opmerking**: als u het veld leeg laat, worden alle cross-Origin-aanroepen geblokkeerd. de titel van het parameter veld: toegestane oorsprongen|
-|CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw functie-app|Deze actie blokkeert andere domeinen om toegang te krijgen tot uw functie toepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld toegestane oorsprong in (gescheiden door komma's). <br>**Opmerking**: als u het veld leeg laat, worden alle cross-Origin-aanroepen geblokkeerd. de titel van het parameter veld: toegestane oorsprongen|
-|Gebruik van CORS mag er niet toe leiden dat elke resource toegang tot uw API-app heeft|Deze actie blokkeert andere domeinen om toegang te krijgen tot uw API-toepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld toegestane oorsprong in (gescheiden door komma's). <br>**Opmerking**: als u het veld leeg laat, worden alle cross-Origin-aanroepen geblokkeerd. de titel van het parameter veld: toegestane oorsprongen|
-|Monitoring agent moet zijn ingeschakeld op uw virtuele machines|Met deze actie wordt een bewakings agent op de geselecteerde virtuele machines geïnstalleerd. Selecteer een werk ruimte voor de agent die u wilt rapporteren.<ul><li>Als uw update beleid is ingesteld op automatisch, wordt het geïmplementeerd op nieuwe bestaande exemplaren.</li><li>Als uw update beleid is ingesteld op hand matig en u de agent wilt installeren op bestaande exemplaren, schakelt u de optie selectie vakje in. [Meer informatie](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
-|Diagnostische logboeken in Key Vault moeten zijn ingeschakeld|Met deze actie worden Diagnostische logboeken ingeschakeld op sleutel kluizen. Diagnostische logboeken en metrische gegevens worden opgeslagen in de geselecteerde werk ruimte.|
-|Diagnostische logboeken in service bus moeten worden ingeschakeld|Met deze actie worden Diagnostische logboeken ingeschakeld op de service bus. Diagnostische logboeken en metrische gegevens worden opgeslagen in de geselecteerde werk ruimte.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

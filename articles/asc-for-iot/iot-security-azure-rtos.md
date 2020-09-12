@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor Azure RTO'S
-description: Meer informatie over ondersteuning van Azure RTO'S in de Azure Security Center voor IoT-service.
+title: Overzicht van de beveiligings module voor Azure RTO'S
+description: Meer informatie over de beveiligings module voor Azure RTO'S-ondersteuning en-implementatie als onderdeel van de Azure Security Center voor IoT-service.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/15/2020
+ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: af4579d25b94fc12f67cfc91d0f6a5af4b35c810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bcf98f503b0f0c8bf76435d9884297d5f53d65e6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096696"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514472"
 ---
-# <a name="azure-security-center-for-iot-security-solution-for-azure-rtos"></a>Azure Security Center voor IoT-beveiligings oplossing voor Azure RTO'S 
+# <a name="overview-security-module-for-azure-rtos-preview"></a>Overzicht: beveiligings module voor Azure RTO'S (preview)
 
-De beveiligings module Azure Security Center voor IoT biedt een uitgebreide beveiligings oplossing voor Azure RTO'S-apparaten. Azure RTO'S wordt geleverd met een ingebouwde beveiligings module die algemene bedreigingen op real-time besturingssysteem apparaten dekt. 
+De Azure Security Center voor IoT RTO'S Security module biedt een uitgebreide beveiligings oplossing voor Azure RTO'S-apparaten. Azure RTO'S wordt nu geleverd met de ingebouwde Azure IoT-beveiligings module en biedt dekking voor veelvoorkomende bedreigingen en mogelijke schadelijke activiteiten op real-time besturings systemen. 
 
 ![Azure Security Center voor IoT Azure RTO'S](./media/architecture/azure-rtos-security-monitoring.png)
 
 
-Azure Security Center voor IoT-beveiligings module met Azure RTO'S-ondersteuning biedt de volgende functies: 
+De beveiligings module voor Azure RTO'S biedt de volgende functies: 
 - Detectie van schadelijke netwerk activiteiten
 - Aangepaste waarschuwing op basis van het gedrag van het apparaat basis lijnen
 - Beveiligings hygiëne van het apparaat verbeteren
@@ -43,20 +43,18 @@ Basis lijnen maakt het mogelijk om apparaten te clusteren in beveiligings groepe
 
 ### <a name="improve-your-device-security-hygiene"></a>Verbeter de beveiligings hygiëne van uw apparaat
 
-Door gebruik te maken van de aanbevolen infrastructuur Azure Security Center voor IoT, kunt u kennis en inzichten krijgen over problemen in uw omgeving die van invloed zijn op de beveiligings postuur van uw apparaten. Slechte IoT-postuur kunnen toestaan dat mogelijke aanvallen slagen als deze ongewijzigd blijven, omdat de beveiliging altijd wordt gemeten door de zwakkere koppeling binnen een organisatie. 
+Door gebruik te maken van de aanbevolen infrastructuur Azure Security Center voor IoT, kunt u kennis en inzichten krijgen over problemen in uw omgeving die van invloed zijn op de beveiligings postuur van uw apparaten. Zwakke IoT Device Security-postuur kunnen toestaan dat mogelijke aanvallen slagen als deze ongewijzigd blijven, omdat de beveiliging altijd wordt gemeten door de zwakkere koppeling binnen een organisatie. 
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Aan de slag met het beveiligen van Azure RTO'S-apparaten
 
-- Azure Security Center voor IoT-beveiligings module voor Azure RTO'S is beschikbaar als gratis down load voor uw apparaten. De Azure Security Center voor IoT-Cloud service is beschikbaar met een proef versie van 30 dagen per Azure-abonnement. Down load de [Azure Security Center voor IOT Security module voor Azure rto's](https://github.com/azure-rtos/iot-security-module-preview) om aan de slag te gaan. 
+De beveiligings module voor Azure RTO'S is beschikbaar als gratis down load voor uw apparaten. De Azure Security Center voor IoT-Cloud service is beschikbaar met een proef versie van 30 dagen per Azure-abonnement. Down load de [beveiligings module voor Azure rto's](https://github.com/azure-rtos/iot-security-module-preview) om aan de slag te gaan. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over Azure Security Center voor IoT Azure RTO'S-ondersteuning. Raadpleeg de volgende artikelen voor meer informatie over hoe u aan de slag kunt gaan en uw beveiligings oplossing in IoT Hub kunt inschakelen:
+In dit artikel hebt u geleerd over de beveiligings module voor de Azure RTO'S-service. Raadpleeg de volgende artikelen voor meer informatie over de beveiligings module en aan de slag:
 
-- [Servicevereisten](service-prerequisites.md)
-- [Aan de slag](getting-started.md)
-- [De oplossing configureren](quickstart-configure-your-solution.md)
-- [Beveiliging in IoT Hub inschakelen](quickstart-onboard-iot-hub.md)
-- [Veelgestelde vragen over Azure Security Center voor IoT](resources-frequently-asked-questions.md)
-- [Beveiligingswaarschuwingen in Azure Security Center for IoT](concept-security-alerts.md)
+- [Concepten van Azure RTO'S IoT Security module](concept-rtos-security-module.md)
+- [Snelstartgids: Azure RTO'S IoT Security module](quickstart-azure-rtos-security-module.md)
+
+

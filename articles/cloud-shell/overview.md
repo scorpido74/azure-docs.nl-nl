@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286655"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468654"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Overzicht van Azure Cloud Shell
 
@@ -33,7 +33,7 @@ U kunt op drie manieren toegang krijgen tot de Cloud Shell:
 
     ![Pictogram voor het starten van de Cloud Shell van de Azure Portal](media/overview/portal-launch-icon.png)
 
-- **Code fragmenten**: op [docs.Microsoft.com](https://docs.microsoft.com) en [Microsoft Learn](https://docs.microsoft.com/learn/), selecteert u de knop **try it** die wordt weer gegeven met Azure CLI en Azure PowerShell code fragmenten:
+- **Code fragmenten**: op [docs.Microsoft.com]() en [Microsoft Learn](/learn/), selecteert u de knop **try it** die wordt weer gegeven met Azure CLI en Azure PowerShell code fragmenten:
 
     ```azurecli-interactive
     az account show
@@ -87,8 +87,8 @@ Cloud Shell is een flexibel hulp programma dat kan worden gebruikt vanuit:
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Documentatie voor Azure CLI](https://docs.microsoft.com/cli/azure)
-* [Documentatie voor Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
+* [Documentatie voor Azure CLI](/cli/azure)
+* [Documentatie voor Azure PowerShell](/powershell/azure/)
 * [Mobiele Azure-app](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio code Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -111,7 +111,7 @@ Lees meer voor meer informatie over het koppelen van een [Nieuw of bestaand opsl
 * Cloud Shell blijft $HOME met behulp van een installatie kopie van 5 GB die is opgeslagen in uw bestands share
 * Machtigingen worden ingesteld als een reguliere Linux-gebruiker in bash
 
-Meer informatie over functies in [bash in Cloud shell](features.md) en [power shell in Cloud shell](features-powershell.md).
+Meer informatie over functies in [bash in Cloud shell](features.md) en [power shell in Cloud shell](./features.md).
 
 ## <a name="pricing"></a>Prijzen
 

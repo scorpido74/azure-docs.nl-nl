@@ -6,24 +6,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/30/2020
-ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.date: 09/04/2020
+ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705874"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484864"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
 De publicatie optie die u kiest voor uw aanbieding is rechtstreeks gerelateerd aan de vereisten voor de geschiktheid en commerciële Marketplace GTM-voor delen. Belang rijker is dat de selectie van de publicatie optie en het type aanbieding bepaalt hoe gebruikers met uw commerciële Marketplace-aanbieding zullen werken.
 
-Als u uw aanbieding wilt configureren, moet u de volgende belang rijke commerciële Marketplace-concepten kennen: de publicatie opties, aanbiedings typen en configuratie, en aanroepen naar actie die bepalen hoe en waar uw aanbieding wordt weer gegeven in de online winkels voor commerciële Marketplace.
+Als u uw aanbieding wilt configureren, moet u de volgende belang rijke commerciële Marketplace-concepten kennen: de publicatie opties, aanbiedings typen en configuratie, en opties voor de aanbieding die bepalen hoe en waar uw aanbieding wordt weer gegeven in de online winkels voor commerciële Marketplace.
 
 In dit artikel leert u het volgende:
 
 - Bepaal de juiste online winkel voor uw oplossing.
-- Welke publicatie opties en aanroepen-to-actie-bewerkingen zijn beschikbaar in elke online winkel.
+- Welke opties voor publiceren en weer geven zijn beschikbaar in elke online winkel.
 - Welke aanbiedings typen beschikbaar zijn voor elke publicatie optie.
 
 ## <a name="commercial-marketplace-publishing-options"></a>Publicatie opties voor commerciële Marketplace
@@ -53,30 +53,30 @@ De beschik bare aanbiedings opties bieden een gedifferentieerde klant betrokkenh
 
 | **Publicatie optie**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen om verbinding te maken met de klant via de **contact persoon die mij** aanroept. |
-| **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanroep-to-action die wordt gebruikt voor de optie voor het publiceren van de proef versie, is een **gratis proef versie** of een **test station**. |
-| **BYOL** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De aanroep-to-Action wordt **nu ontvangen**.
-| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De aanroep-to-Action wordt **nu ontvangen**.|
+| **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen verbinding te maken met de klant via de aanbiedings opties voor **contact opnemen** . |
+| **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanbiedings opties die worden gebruikt voor de optie voor het publiceren van de proef versie zijn een **gratis proef versie** of een **test station**. |
+| **BYOL** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden**.
+| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De optie aanbieding is **nu downloaden**.|
 
 > [!Note]
 > Wanneer u de optie voor het publiceren van Transact gebruikt, is het belang rijk om inzicht te krijgen in de overwegingen met betrekking tot prijzen, facturering, facturering en betaling voordat u een aanbiedings type selecteert en uw aanbieding maakt. Raadpleeg het artikel [Commercial Marketplace Transact-mogelijkheden](./marketplace-commercial-transaction-capabilities-and-considerations.md)voor meer informatie.
 
 ## <a name="selecting-an-online-store"></a>Een online winkel selecteren
 
-Elke online winkel fungeert als unieke klant vereisten en streeft naar specifieke doel groepen. Uw aanbiedings type, de Transact-mogelijkheden en de categorie bepalen waar uw aanbieding wordt gepubliceerd. Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van de doel groep:
+Elke online winkel heeft verschillende klant vereisten voor zakelijke en IT-oplossingen. Uw aanbiedings type, de Transact-mogelijkheden en de categorie bepalen waar uw aanbieding wordt gepubliceerd. Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van het type oplossing dat u publiceert:
 
-**Microsoft AppSource** streeft naar zakelijke gebruikers die op zoek zijn naar line-of-Business-of Industry-oplossingen en advies Services voor Dynamics 365, Microsoft 365 en Power platform.
+**Microsoft AppSource** biedt zakelijke oplossingen, zoals industriële oplossingen en advies Services, voor Dynamics 365, Microsoft 365 en het energie platform.
 
-**Azure Marketplace** streeft ernaar IT-professionals en ontwikkel aars die op zoek zijn naar oplossingen die zijn gebouwd voor of op Azure, evenals advies services die hun gebruik van Azure versnellen.
+**Azure Marketplace** biedt IT-oplossingen die zijn gebouwd voor of op Azure en advies services die het gebruik van Azure van uw klanten versnellen.
 
-Selecteer de categorie en subcategorie die het beste aansluiten bij uw doel groep. Een Web Application Firewall moet bijvoorbeeld worden gepubliceerd op Azure Marketplace, onder de categorie beveiliging, omdat IT-professionals het beoogde publiek zijn. Een contract beheer-app moet in plaats daarvan worden gepubliceerd naar AppSource onder de categorie verkoop, aangezien de beoogde doel groep zakelijke gebruikers is. Als u de onjuiste categorie of subcategorie selecteert, wordt uw aanbieding naar de verkeerde online winkel gepubliceerd.
+Selecteer de categorie en subcategorie die het beste aansluiten bij uw oplossings type. Een Web Application Firewall is bijvoorbeeld een IT-oplossing die moet worden gepubliceerd naar Azure Marketplace, onder de categorie beveiliging. Een contract beheer-app is een bedrijfs oplossing die op AppSource onder de verkoop categorie moet worden gepubliceerd. Als u de onjuiste categorie of subcategorie selecteert, wordt uw aanbieding naar de verkeerde online winkel gepubliceerd.
 
 ### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Publiceren naar beide online winkels (alleen voor SaaS-aanbiedingen)
 
-SaaS-aanbiedingen kunnen worden gepubliceerd in azure Marketplace of AppSource. Als uw SaaS-aanbieding is bedoeld *voor een* technisch publiek (Azure Marketplace) en een bedrijfs doel (AppSource), selecteert u een categorie en/of een subcategorie die van toepassing is op elke online winkel. Aanbiedingen die naar beide online winkels worden gepubliceerd, moeten een toegevoegde waarde hebben die uitbreidt naar IT-professionals *en* zakelijke gebruikers.
+SaaS-aanbiedingen kunnen worden gepubliceerd in azure Marketplace of AppSource. Als uw SaaS-aanbieding *zowel* een IT-oplossing (Azure Marketplace) als een bedrijfs oplossing (AppSource) is, selecteert u een categorie en/of een subcategorie die van toepassing is op elke online winkel. Aanbiedingen die naar beide online winkels worden gepubliceerd, moeten een waarde hebben die is opgenomen als een IT-oplossing *en* een bedrijfs oplossing.
 
 > [!IMPORTANT]
-> SaaS-aanbiedingen met facturering via data limiet zijn beschikbaar via Azure Marketplace en de Azure Portal. SaaS-aanbiedingen met alleen persoonlijke abonnementen zijn beschikbaar via de Azure Portal.
+> SaaS-aanbiedingen met [facturering via data limiet](partner-center-portal/saas-metered-billing.md) zijn beschikbaar via Azure Marketplace en de Azure Portal. SaaS-aanbiedingen met alleen persoonlijke abonnementen zijn beschikbaar via de Azure Portal.
 
 | Factuur met data limiet | Openbaar abonnement | Persoonlijk abonnement | Beschikbaar in: |
 |---|---|---|---|
@@ -91,15 +91,13 @@ Zo wordt een aanbieding met een facturerings regeling en een privé-abonnement a
 
 ### <a name="categories"></a>Categorieën
 
-Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van de doel groep. Selecteer de categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en de beoogde doel groep. U kunt het volgende selecteren:
+Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van het oplossings type. Selecteer de categorieën en subcategorieën die het beste aansluiten bij uw oplossing. U kunt het volgende selecteren:
 
-- Ten minste één en Maxi maal twee categorieën. U hebt de optie om een primaire en een secundaire categorie te kiezen.
+- Ten minste één en Maxi maal twee categorieën. U kunt een primaire en een secundaire categorie kiezen.
 - Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als u geen subcategorie selecteert, kan uw aanbieding nog steeds worden gedetecteerd onder de geselecteerde categorie.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zodra u een publicatie optie hebt geselecteerd, kunt u [het aanbiedings type selecteren](./publisher-guide-by-offer-type.md) dat wordt gebruikt om uw aanbieding te presen teren.
-- Bekijk de geschiktheids vereisten in de sectie publicatie opties per aanbiedings type om de selectie en configuratie van uw aanbieding te volt ooien.
-- Bekijk de publicatie patronen in de online winkel voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.
+- Nadat u hebt besloten over een publicatie optie, bekijkt u de [publicatie handleiding per aanbiedings type](./publisher-guide-by-offer-type.md).

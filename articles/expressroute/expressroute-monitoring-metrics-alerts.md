@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: bewaking, metrische gegevens en waarschuwingen'
 description: Meer informatie over Azure ExpressRoute-bewaking, metrische gegevens en waarschuwingen met behulp van Azure Monitor, de ene stop-shop voor alle metrische gegevens, waarschuwingen en Diagnostische logboeken in Azure.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
-ms.author: cherylmc
-ms.openlocfilehash: 6f3bd5392457f05caa8704e7e1de5b4155b28794
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.author: duau
+ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871332"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395431"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -42,8 +42,8 @@ Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U ku
 |GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Global Reach|
 |AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
 |LineProtocol|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
-|RxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
 >

@@ -12,16 +12,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089699"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569081"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
 Azure Security Center integreert met [micro soft Defender Advanced Threat Protection (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) om uitgebreide functionaliteit voor het detecteren en beantwoorden van eind punten te bieden.
+
+
+## <a name="availability"></a>Beschikbaarheid
+
+|Aspect|Details|
+|----|:----|
+|Release status:|**Algemene beschikbaarheid**|
+|Koers|Standaardlaag|
+|Ondersteunde machines:|![Yes](./media/icons/yes-icon.png) Azure-machines met Windows<br>![Yes](./media/icons/yes-icon.png) Azure-Arc-machines met Windows|
+|Vereiste rollen en machtigingen:|De integratie: **beveiligings beheerder** of **eigenaar** inschakelen/uitschakelen<br>MDATP-waarschuwingen weer geven in Security Center: **beveiligings lezer**, **lezer**, **Inzender voor resource groep**, **eigenaar van resource groep**, **beveiligings beheerder**, **abonnements eigenaar**of **mede werker** van het abonnement|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds.<br>![No](./media/icons/no-icon.png) GCC-klanten die werk belastingen uitvoeren in open bare Azure-Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
+|||
+
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Micro soft Defender ATP-functies in Security Center
 
@@ -55,7 +68,7 @@ Wanneer u Azure Security Center gebruikt voor het bewaken van servers, wordt aut
 Na de configuratie kunt u de locatie waar uw gegevens worden opgeslagen, niet meer wijzigen. Als u uw gegevens naar een andere locatie wilt verplaatsen, neemt u contact op met Microsoft Ondersteuning om de Tenant opnieuw in te stellen.
 
 
-## <a name="onboarding-servers-to-security-center"></a>Onboarding uitvoeren van servers voor Security Center 
+## <a name="onboard-servers-to-security-center"></a>Servers onboarden naar Security Center 
 
 Als u servers wilt Security Center, klikt u op **Ga naar Azure Security Center voor** onboarding-servers van de micro soft Defender ATP server-onboarding.
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997520"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613696"
 ---
 # <a name="outline-rendering"></a>Contourweergave
 
@@ -29,7 +29,7 @@ Class `OutlineSettings` bevat de instellingen met betrekking tot algemene overzi
 | `PulseRateHz`    | float   | De snelheid waarmee de overzichts trillingen per seconde|
 | `PulseIntensity` | float   | De intensiteit van het contour Pulse-effect. Moet tussen 0,0 en geen Pulse en 1,0 voor Full Pulse zijn. Met intensiteit wordt impliciet de minimale dekking van het overzicht ingesteld als `MinOpacity = 1.0 - PulseIntensity` . |
 
-![Geeft een overzicht ](./media/outlines.png) van het effect van het wijzigen van de `color` para meter van geel (links) naar magenta (midden) en `pulseIntensity` van 0 tot 0,8 (rechts).
+![Een object wordt drie keer gerenderd met verschillende overzichts parameters ](./media/outlines.png) het effect van het wijzigen van de `color` para meter van geel (links) naar magenta (midden) en `pulseIntensity` van 0 tot 0,8 (rechts).
 
 ## <a name="example"></a>Voorbeeld
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>Prestaties
 
 Het weer geven van overzichten kan een grote invloed hebben op de weergave prestaties. Deze impact is afhankelijk van de ruimte-relatie tussen geselecteerde en niet-geselecteerde objecten voor een bepaald frame.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# RemoteManager. OutlineSettings eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C++ RemoteManager:: OutlineSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>Volgende stappen
 

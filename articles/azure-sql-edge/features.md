@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/13/2020
-ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/03/2020
+ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539207"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462697"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Ondersteunde functies van de Azure SQL-rand (preview-versie) 
 
@@ -67,8 +67,8 @@ De volgende lijst bevat de SQL Server 2019 in Linux-functies die momenteel niet 
 | Gebied | Niet-ondersteunde functie of service |
 |-----|-----|
 | **Database ontwerp** | In-Memory OLTP, en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
-| &nbsp; | `HierarchyID`gegevens type en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
-| &nbsp; | `Spatial`gegevens type en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
+| &nbsp; | `HierarchyID` gegevens type en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
+| &nbsp; | `Spatial` gegevens type en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
 | &nbsp; | Stretch DB en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
 | &nbsp; | Volledige-tekst indexen en zoek acties, en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven.|
 | &nbsp; | `FileTable`, `FILESTREAM` en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven.|
@@ -89,10 +89,14 @@ De volgende lijst bevat de SQL Server 2019 in Linux-functies die momenteel niet 
 | &nbsp; | CLR: afhankelijke datum-en tijd catalogus weergaven, functies en query componenten. |
 | &nbsp; | Extensie van de buffer groep. |
 | &nbsp; | Data base mail. |
+| &nbsp; | Service Broker |
+| &nbsp; | Beheer op basis van beleid |
+| &nbsp; | Management-Data Warehouse |
+| &nbsp; | Inge sloten data bases |
 | **SQL Server Agent** |  Subsystemen: CmdExec, Power shell, Queue Reader, SSIS, SSAS en SSRS. |
 | &nbsp; | Berichten. |
 | &nbsp; | Beheerde back-up. |
-| **Hoge Beschik baarheid** | AlwaysOn-beschikbaarheids groepen.  |
+| **Hoge beschikbaarheid** | AlwaysOn-beschikbaarheids groepen.  |
 | &nbsp; | Basis beschikbaarheids groepen. |
 | &nbsp; | Altijd op het failover-cluster exemplaar. |
 | &nbsp; | Database spiegeling. |

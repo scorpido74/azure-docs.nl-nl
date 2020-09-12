@@ -1,24 +1,24 @@
 ---
 title: Publicatie handleiding voor Microsoft AppSource aanbieden
-description: Stapsgewijze hand leiding en het publiceren van controle lijsten voor het publiceren van apps naar Microsoft AppSource voor Office 365, Dynamics 365, Power apps en Power BI.
+description: Stapsgewijze hand leiding en publicatie van controle lijsten voor het publiceren van apps naar Microsoft AppSource voor Microsoft 365, Dynamics 365, Power apps en Power BI.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: c0052b515d87ecb744783d57942d2557fc1db913
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110280"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484813"
 ---
-# <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>Bied de publicatie handleiding voor Office 365, Dynamics 365, Power apps en Power BI
+# <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Bied de publicatie handleiding voor Microsoft 365, Dynamics 365, Power apps en Power BI
 
-Microsoft AppSource omvat aanbiedingen waarmee u Office 365, Dynamics 365, Power apps en Power BI kunt bouwen of uitbreiden. Elk van deze producten heeft specifieke documentatie om u te helpen bij het publicatie proces. 
+Microsoft AppSource omvat aanbiedingen die Microsoft 365, Dynamics 365, Power apps en Power BI bouwen of uitbreiden. Elk van deze producten heeft specifieke documentatie om u te helpen bij het publicatie proces. 
 
-AppSource heeft betaalde, lijst en proef abonnementen, met de aanroepen naar actie *nu downloaden*, *contact met mij opnemen*en *nu proberen*.
+AppSource heeft betaalde, lijst en proef abonnementen, met de aanbiedings opties *nu downloaden*, *Neem contact met mij op*en *Probeer het nu*.
 
 ## <a name="product-specific-guides"></a>Productspecifieke hand leidingen
 
@@ -26,7 +26,7 @@ Zie de volgende tabel voor koppelingen naar het publiceren van processen en rich
 
 | Product    | Richt lijnen voor publicatie  |
 | :------------------- | :-------------------|
-| Office 365 | Bekijk het [publicatie proces en de richt lijnen](/office/dev/store/submit-to-appsource-via-partner-center). |
+| Microsoft 365 | Bekijk het [publicatie proces en de richt lijnen](/office/dev/store/submit-to-appsource-via-partner-center). |
 | Dynamics 365 Business Central | Zie [een nieuwe Dynamics 365 Business Central-aanbieding maken](./partner-center-portal/create-new-business-central-offer.md)voor het publiceren van een aanbieding in Partner Center. |
 | Dynamics 365 for Finance and Operations | Wanneer u een Enter prise-editie bouwt, moet u het [publicatie proces en de richt lijnen](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)bekijken.<br/>Voor het publiceren van een aanbieding in het partner Centrum raadpleegt u [een nieuw Dynamics 365-aanbod voor bewerkingen maken](./partner-center-portal/create-new-operations-offer.md).  |
 | Dynamics 365 for Customer Engagement | Bekijk het [publicatie proces en de richt lijnen](/dynamics365/customer-engagement/developer/publish-app-appsource).<br/>Voor het publiceren van een aanbieding in Partner Center raadpleegt u [een nieuw Dynamics 365 maken voor klant betrokkenheid & Power apps-aanbieding](./partner-center-portal/create-new-customer-engagement-offer.md).  |

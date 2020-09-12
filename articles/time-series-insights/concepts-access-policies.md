@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5e8cb5e062db5c66fc093bf67c97caba15f407a3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856119"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489116"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
 
@@ -24,7 +24,7 @@ In dit artikel worden de twee soorten Azure Time Series Insights toegangs beleid
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Aanmelden bij Azure Time Series Insights
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Zoek uw Azure Time Series Insights omgeving door `Time Series Insights environments` in het **zoekvak** te typen. Selecteer `Time Series Insights environments` in de zoek resultaten.
 1. Selecteer uw Azure Time Series Insights omgeving in de lijst.
 
@@ -124,4 +124,4 @@ Volg deze stappen om gast toegang tot een Azure Time Series Insights omgeving to
 
 * Lees [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md) voor de stappen voor het registreren van Azure Active Directory-apps.
 
-* Bekijk [uw omgeving in de Azure time series INSIGHTS TSI-Explorer](./time-series-insights-update-explorer.md).
+* Bekijk [uw omgeving in de Azure time series Insights Explorer](./time-series-insights-update-explorer.md).

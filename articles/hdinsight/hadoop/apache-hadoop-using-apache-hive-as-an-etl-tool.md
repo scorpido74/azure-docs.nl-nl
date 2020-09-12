@@ -1,19 +1,19 @@
 ---
 title: Apache Hive als ETL-hulp programma gebruiken-Azure HDInsight
 description: Gebruik Apache Hive om ETL-gegevens in azure HDInsight uit te pakken, te transformeren en te laden.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 1627fccb49f0ddbf7a3a0a42f5a483059101dae2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9b9dcd683915c17ae6909ebb88927d275e9a5896
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076059"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505281"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive gebruiken als een hulp programma voor uitpakken, transformeren en laden (ETL)
 
@@ -69,7 +69,7 @@ Gegevens bronnen zijn meestal externe gegevens die kunnen worden vergeleken met 
 U kunt Hive gebruiken om gegevens naar verschillende soorten doelen uit te voeren, waaronder:
 
 * Een relationele data base, zoals SQL Server of Azure SQL Database.
-* Een Data Warehouse, zoals Azure SQL Data Warehouse.
+* Een Data Warehouse, zoals Azure Synapse Analytics.
 * Er.
 * Azure Table-en Blob-opslag.
 * Toepassingen of services waarvoor gegevens moeten worden verwerkt in specifieke indelingen of als bestanden die specifieke typen gegevens structuur bevatten.
@@ -79,9 +79,9 @@ U kunt Hive gebruiken om gegevens naar verschillende soorten doelen uit te voere
 
 Het ETL-model wordt doorgaans gebruikt wanneer u het volgende wilt doen:
 
-`*`Laad stroom gegevens of grote volumes met semi-gestructureerde of ongestructureerde gegevens uit externe bronnen in een bestaand data base-of informatie systeem.
-`*`Reinig, Transformeer en valideer de gegevens voordat u deze laadt, mogelijk door meer dan één trans formatie door middel van het cluster te gebruiken.
-`*`Genereer rapporten en visualisaties die regel matig worden bijgewerkt. Als het rapport bijvoorbeeld te lang duurt om te genereren gedurende de dag, kunt u het rapport plannen om 's nachts uit te voeren. Als u automatisch een Hive-query wilt uitvoeren, kunt u [Azure Logic apps](../../logic-apps/logic-apps-overview.md) en Power shell gebruiken.
+`*` Laad stroom gegevens of grote volumes met semi-gestructureerde of ongestructureerde gegevens uit externe bronnen in een bestaand data base-of informatie systeem.
+`*` Reinig, Transformeer en valideer de gegevens voordat u deze laadt, mogelijk door meer dan één trans formatie door middel van het cluster te gebruiken.
+`*` Genereer rapporten en visualisaties die regel matig worden bijgewerkt. Als het rapport bijvoorbeeld te lang duurt om te genereren gedurende de dag, kunt u het rapport plannen om 's nachts uit te voeren. Als u automatisch een Hive-query wilt uitvoeren, kunt u [Azure Logic apps](../../logic-apps/logic-apps-overview.md) en Power shell gebruiken.
 
 Als het doel voor de gegevens geen data base is, kunt u een bestand genereren in de juiste indeling in de query, bijvoorbeeld een CSV. Dit bestand kan vervolgens worden geïmporteerd in Excel of Power BI.
 

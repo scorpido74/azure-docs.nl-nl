@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726959"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485034"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Gegevens stroom activiteit in Azure Data Factory
 
@@ -56,12 +56,12 @@ Gebruik de activiteit gegevens stroom om gegevens te transformeren en te verplaa
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-stroom | De verwijzing naar de gegevens stroom die wordt uitgevoerd | DataFlowReference | Yes
+gegevensstroom | De verwijzing naar de gegevens stroom die wordt uitgevoerd | DataFlowReference | Yes
 integrationRuntime | De compute-omgeving waarop de gegevens stroom wordt uitgevoerd. Als deze niet is opgegeven, wordt Azure Integration runtime automatisch opgelost. | IntegrationRuntimeReference | No
 compute. coreCount | Het aantal kern geheugens dat in het Spark-cluster wordt gebruikt. Kan alleen worden opgegeven als Azure Integration runtime automatisch wordt opgelost | 8, 16, 32, 48, 80, 144, 272 | No
 compute. computeType | Het type berekening dat in het Spark-cluster wordt gebruikt. Kan alleen worden opgegeven als Azure Integration runtime automatisch wordt opgelost | "Algemeen", "ComputeOptimized", "MemoryOptimized" | No
-staging. linkedService | Als u een SQL DW-bron of-sink gebruikt, wordt het opslag account dat wordt gebruikt voor poly base staging | Linkedservicereference is | Alleen als de gegevens stroom leest of schrijft naar een SQL DW
-staging. folderPath | Als u een SQL DW-bron of-sink gebruikt, wordt het mappad in het Blob Storage-account dat wordt gebruikt voor poly base staging | Tekenreeks | Alleen als de gegevens stroom leest of schrijft naar een SQL DW
+staging. linkedService | Als u een Azure Synapse Analytics-bron of-sink gebruikt, wordt het opslag account dat wordt gebruikt voor poly base staging | Linkedservicereference is | Alleen als de gegevens stroom leest of schrijft naar een Azure Synapse-analyse
+staging. folderPath | Als u een Azure Synapse Analytics-bron of-sink gebruikt, wordt het mappad in het Blob Storage-account dat wordt gebruikt voor poly base staging | Tekenreeks | Alleen als de gegevens stroom leest of schrijft naar Azure Synapse Analytics
 
 ![Gegevens stroom uitvoeren](media/data-flow/activity-data-flow.png "Gegevens stroom uitvoeren")
 
@@ -86,7 +86,7 @@ Voor de uitvoering van pijp lijnen is het cluster een taak cluster, dat enkele m
 
 ### <a name="polybase"></a>PolyBase
 
-Als u een Azure SQL Data Warehouse als sink of bron gebruikt, moet u een faserings locatie voor het laden van poly base-batches kiezen. Met poly Base kan batch in bulk worden geladen in plaats van de gegevensrij per rij te laden. Poly base verlaagt drastisch de laad tijd in de SQL DW.
+Als u een Azure Synapse Analytics (voorheen SQL Data Warehouse) als sink of bron gebruikt, moet u een faserings locatie voor het laden van poly base-batches kiezen. Met poly Base kan batch in bulk worden geladen in plaats van de gegevensrij per rij te laden. Poly base verlaagt drastisch de laad tijd in azure Synapse Analytics.
 
 ## <a name="parameterizing-data-flows"></a>Parameterizing-gegevens stromen
 

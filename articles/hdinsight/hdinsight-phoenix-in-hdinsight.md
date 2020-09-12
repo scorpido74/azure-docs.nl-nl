@@ -1,19 +1,19 @@
 ---
 title: Apache Phoenix in HDInsight-Azure HDInsight
 description: Overzicht van Apache Phoenix
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 14591f334801329e78000a007783c3d6c4c3b5ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082536"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504329"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in azure HDInsight
 
@@ -134,7 +134,7 @@ An HDInsight HBase-cluster bevat de [Ambari-gebruikers interface](hdinsight-hado
 
     ![Ambari Phoenix SQL-configuratie sectie](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Apache Phoenix gebruiken met HBase-clusters op basis van Linux in HDInsight](hbase/apache-hbase-query-with-phoenix.md)
 

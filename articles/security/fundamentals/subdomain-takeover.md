@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: e378ffe00be9215c692a832e232fac7e866ab3c9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890821"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514608"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -27,27 +27,33 @@ In dit artikel wordt de veelvoorkomende bedreiging van de beveiliging van subdom
 
 ## <a name="what-is-subdomain-takeover"></a>Wat is een subdomein-overname?
 
-De overname van subdomeinen is een veelvoorkomende bedreiging van hoge urgentie voor organisaties die regel matig veel resources maken en verwijderen. Een overname van een subdomein kan optreden wanneer u een DNS-record hebt die naar een niet-ingerichte Azure-resource verwijst. Dergelijke DNS-records worden ook wel ' Dangling DNS-vermeldingen genoemd. CNAME-records zijn met name gevoelig voor deze bedreiging.
+De overname van subdomeinen is een veelvoorkomende bedreiging van hoge urgentie voor organisaties die regel matig veel resources maken en verwijderen. Een overname van een subdomein kan optreden wanneer u een [DNS-record](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) hebt die naar een niet-ingerichte Azure-resource verwijst. Dergelijke DNS-records worden ook wel ' Dangling DNS-vermeldingen genoemd. CNAME-records zijn met name gevoelig voor deze bedreiging. Met de overname van subdomeinen kunnen kwaadwillende actoren verkeer dat is bedoeld voor het domein van een organisatie, omleiden naar een site die schadelijke activiteiten uitvoert.
 
 Een veelvoorkomend scenario voor een overname van subdomeinen:
 
-1. Er wordt een website gemaakt. 
+1. **ZELF**
 
-    In dit voor beeld `app-contogreat-dev-001.azurewebsites.net` .
+    1. U richt een Azure-resource in met een Fully Qualified Domain Name (FQDN) van `app-contogreat-dev-001.azurewebsites.net` .
 
-1. Een CNAME-vermelding wordt toegevoegd aan de DNS die verwijst naar de website. 
+    1. U wijst een CNAME-record in uw DNS-zone toe met het subdomein `greatapp.contoso.com` dat verkeer naar uw Azure-resource routeert.
 
-    In dit voor beeld is de volgende beschrijvende naam gemaakt: `greatapp.contoso.com` .
+1. **INRICHTING**
 
-1. Na een paar maanden is de site niet meer nodig, zodat deze wordt verwijderd **zonder** de bijbehorende DNS-vermelding te verwijderen. 
+    1. De Azure-resource wordt niet meer ingericht of verwijderd nadat deze niet meer nodig is. 
+    
+        Op dit moment `greatapp.contoso.com` *moet* de CNAME-record worden verwijderd uit de DNS-zone. Als de CNAME-record niet wordt verwijderd, wordt deze geadverteerd als een actief domein, maar stuurt het geen verkeer naar een actieve Azure-resource. Dit is de definitie van een DNS-record met ' Dangling '.
 
-    De CNAME DNS-vermelding is nu ' Dangling '.
+    1. Het subdomein Dangling `greatapp.contoso.com` is nu kwetsbaar en kan worden overgenomen door te worden toegewezen aan de resource van een ander Azure-abonnement.
 
-1. Bijna onmiddellijk nadat de site is verwijderd, detecteert een bedreigings actor de ontbrekende site en maakt hij of zij een eigen website op `app-contogreat-dev-001.azurewebsites.net` .
+1. **OVERNEMEN**
 
-    Het verkeer dat bestemd is voor `greatapp.contoso.com` gaat naar de Azure-site van de Threat actor en de bedreigings actor in het beheer van de inhoud die wordt weer gegeven. 
+    1. Met behulp van algemeen beschik bare methoden en hulpprogram ma's detecteert een bedreigings actor het subdomein Dangling.  
 
-    De Dangling DNS is misbruikt en het subdomein ' GreatApp ' van Contoso is het slacht offer van de overname van het subdomein. 
+    1. De bedreigings actor richt zich op een Azure-resource met dezelfde FQDN van de resource die u eerder hebt beheerd. In dit voor beeld `app-contogreat-dev-001.azurewebsites.net` .
+
+    1. Verkeer dat wordt verzonden naar het subdomein `myapp.contoso.com` , wordt nu doorgestuurd naar de bron van de schadelijke actor waar ze de inhoud beheren.
+
+
 
 ![Subdomein-overname van een website die niet wordt ingericht](./media/subdomain-takeover/subdomain-takeover.png)
 
@@ -57,23 +63,91 @@ Een veelvoorkomend scenario voor een overname van subdomeinen:
 
 Wanneer een DNS-record verwijst naar een resource die niet beschikbaar is, moet de record zelf uit de DNS-zone worden verwijderd. Als deze niet is verwijderd, is dit een Dangling DNS-record en maakt u de mogelijkheid voor de overname van subdomeinen.
 
-Dangling DNS-vermeldingen maken het mogelijk om de bijbehorende DNS-naam in te stellen voor het hosten van een schadelijke website of service. Kwaadwillende pagina's en services op het subdomein van een organisatie kunnen resulteren in:
+Dangling DNS-vermeldingen maken het mogelijk om de bijbehorende DNS-naam in te stellen voor het hosten van een schadelijke website of service. Schadelijke pagina's en services op het subdomein van een organisatie kunnen het volgende veroorzaken:
 
 - **Verlies van de controle over de inhoud van het subdomein** -negatief druk over het onvermogen van uw organisatie om de inhoud ervan te beveiligen, evenals het merk beschadiging en het verlies van vertrouwen.
 
 - Het **verzamelen van cookies van onvermoede bezoekers** : het is gebruikelijk voor web apps om sessie cookies beschikbaar te maken voor subdomeinen (*. contoso.com), waardoor elk subdomein er toegang toe heeft. Threat actors kunnen subdomein overname gebruiken om een authentiek ogende pagina samen te stellen, het niet vermoeden van gebruikers om deze te bezoeken en hun cookies te verzamelen (zelfs beveiligde cookies). Een veelvoorkomende, niet-algemene manier is dat met behulp van SSL-certificaten uw site en de cookies van uw gebruikers worden beschermd vanuit een overname. Een bedreigings actor kan echter gebruikmaken van het gehackte subdomein om toe te passen en een geldig SSL-certificaat te ontvangen. Geldige SSL-certificaten geven hen toegang tot beveiligde cookies en kunnen de waargenomen rechtmatigheid van de schadelijke site verder verg Roten.
 
-- **Phishing campagnes** : authentiek-Zoek subdomeinen kunnen worden gebruikt in phishing-campagnes. Dit geldt voor schadelijke sites en ook voor MX-records waarmee de Threat actor e-mails kan ontvangen die zijn geadresseerd aan een legitiem subdomein van een bekend veilig merk.
+- **Phishing campagnes** : authentiek-Zoek subdomeinen kunnen worden gebruikt in phishing-campagnes. Dit geldt voor schadelijke sites en voor MX-records waarmee de bedreigings actor e-mails kan ontvangen die zijn geadresseerd aan een rechtmatig subdomein van een bekend veilig merk.
 
-- **Verdere Risico's** : schadelijke sites kunnen worden gebruikt voor het escaleren van andere klassieke aanvallen, zoals XSS, csrf, CORS bypass en meer.
+- **Verdere Risico's** : schadelijke sites kunnen worden gebruikt om te escaleren naar andere klassieke aanvallen, zoals XSS, csrf, CORS bypass en meer.
 
 
 
-## <a name="preventing-dangling-dns-entries"></a>Dangling DNS-vermeldingen voor komen
+## <a name="identify-dangling-dns-entries"></a>Dangling DNS-vermeldingen identificeren
+
+Gebruik de GitHub van micro soft gehoste Power shell-hulpprogram ma's [' Get-DanglingDnsRecords '](https://aka.ms/DanglingDNSDomains)om DNS-vermeldingen binnen uw organisatie te identificeren die mogelijk Dangling zijn.
+
+Met dit hulp programma kunnen Azure-klanten alle domeinen weer geven met een CNAME dat is gekoppeld aan een bestaande Azure-resource die is gemaakt op hun abonnementen of tenants.
+
+Als uw CNAME-gegevens zich in andere DNS-services bevinden en naar Azure-resources verwijzen, geeft u de CNAME-namen op in een invoer bestand voor het hulp programma.
+
+Het hulp programma ondersteunt de Azure-resources die in de volgende tabel worden weer gegeven. Het hulp programma extraheert of gaat als invoer, alle CNAME-gegevens van de Tenant.
+
+
+| Service                   | Type                                        | FQDNproperty                               | Voorbeeld                         |
+|---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
+| Azure Front Door          | micro soft. Network/frontdoors                | Properties. cName                           | `abc.azurefd.net`               |
+| Azure Blob Storage        | micro soft. Storage/Storage accounts           | Properties. primaire. blob           | `abc. blob.core.windows.net`    |
+| Azure CDN                 | micro soft. CDN/profielen/eind punten            | Properties. hostName                        | `abc.azureedge.net`             |
+| Openbare IP-adressen       | micro soft. Network/publicipaddresses         | Eigenschappen. dnsSettings. FQDN                | `abc.EastUs.cloudapp.azure.com` |
+| Azure Traffic Manager     | micro soft. Network/trafficmanagerprofiles    | Properties. dnsConfig. FQDN                  | `abc.trafficmanager.net`        |
+| Azure Container Instance  | micro soft. containerinstance/containergroups | Eigenschappen. ipAddress. FQDN                  | `abc.EastUs.azurecontainer.io`  |
+| Azure API Management      | micro soft. apimanagement/service             | Properties. hostnameConfigurations. hostName | `abc.azure-api.net`             |
+| Azure App Service         | micro soft. web/sites                         | Eigenschappen. defaultHostName                 | `abc.azurewebsites.net`         |
+| Azure App Service-sleuven | micro soft. web/sites/sleuven                   | Eigenschappen. defaultHostName                 | `abc-def.azurewebsites.net`     |
+
+
+
+### <a name="prerequisites"></a>Vereisten
+
+Voer de query uit als een gebruiker met:
+
+- ten minste toegang op lezerniveau tot de Azure-abonnementen
+- Lees toegang tot Azure-resource grafiek
+
+Als u een globale beheerder van de Tenant van uw organisatie bent, kunt u uw account verhogen om toegang te hebben tot al het abonnement van uw organisatie met behulp van de richt lijnen in [toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+
+
+> [!TIP]
+> Azure resource Graph heeft beperkingen en paginerings limieten waarmee u rekening moet houden als u een grote Azure-omgeving hebt. [Meer informatie](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) over het werken met grote Azure-resource gegevens sets. 
+> 
+> Het hulp programma gebruikt abonnements batches om deze beperkingen te voor komen.
+
+### <a name="run-the-script"></a>Het script uitvoeren
+
+Er zijn twee versies van het script, beide hebben dezelfde invoer parameters en produceren vergelijk bare uitvoer:
+
+|Script  |Informatie  |
+|---------|---------|
+|**Get-DanglingDnsRecordsPsCore.ps1**    |Parallelle modus wordt alleen ondersteund in Power shell versie 7 en hoger. anders wordt de seriële modus uitgevoerd.|
+|**Get-DanglingDnsRecordsPsDesktop.ps1** |Alleen ondersteund in Power shell desktop/versie lager dan 6, omdat dit script gebruikmaakt van [Windows-werk stroom](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview).|
+
+Meer informatie en down load de Power shell-scripts van GitHub: https://aka.ms/DanglingDNSDomains .
+
+## <a name="remediate-dangling-dns-entries"></a>Dangling DNS-vermeldingen herstellen 
+
+Controleer uw DNS-zones en Identificeer CNAME-records die zijn Dangling of worden overgenomen. Als er subdomeinen worden gevonden die moeten worden Dangling of worden overgenomen, verwijdert u de kwets bare subdomeinen en vermindert u de Risico's met de volgende stappen:
+
+1. Verwijder in uw DNS-zone alle CNAME-records die verwijzen naar FQDN-namen van resources die niet meer zijn ingericht.
+
+1. Als u wilt dat verkeer wordt gerouteerd naar resources in uw besturings element, moet u aanvullende resources inrichten met de FQDN-namen die zijn opgegeven in de CNAME-records van de Dangling-subdomeinen.
+
+1. Controleer de toepassings code op verwijzingen naar specifieke subdomeinen en werk eventuele onjuiste of verouderde subdomein verwijzingen bij.
+
+1. Onderzoek of er inbreuk is opgetreden en Onderneem actie te ondernemen volgens de procedures van de reactie op incidenten van uw organisatie. Tips en aanbevolen procedures voor het onderzoeken van dit probleem vindt u hieronder.
+
+    Als uw toepassings logica zodanig is dat geheimen zoals OAuth-referenties zijn verzonden naar het Dangling-subdomein, of als er privacy gevoelige informatie is verzonden naar de Dangling-subdomeinen, zijn deze gegevens mogelijk blootgesteld aan derden.
+
+1. Begrijp waarom de CNAME-record niet is verwijderd uit de DNS-zone toen de inrichting van de resource werd opgeheven en onderneem stappen om ervoor te zorgen dat DNS-records correct worden bijgewerkt wanneer Azure-resources in de toekomst worden verwijderd.
+
+
+## <a name="prevent-dangling-dns-entries"></a>Dangling DNS-vermeldingen voor komen
 
 Zorg ervoor dat uw organisatie de processen heeft geïmplementeerd om te voor komen dat DNS-vermeldingen voor Dangling en de resulterende subdomeinen van het beveiligings programma een belang rijk onderdeel van zijn.
 
-De preventieve maat regelen die voor u beschikbaar zijn, worden hieronder weer gegeven.
+Sommige functies van Azure Services bieden ondersteuning bij het maken van preventieve maat regelen en worden hieronder beschreven. Andere methoden om dit probleem te voor komen, moeten worden vastgesteld door de aanbevolen procedures van uw organisatie of door de standaard-werk procedures.
 
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias records gebruiken
@@ -121,110 +195,6 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
         - U bent eigenaar van de resources die zijn gericht op uw DNS-subdomeinen.
 
     - Onderhoud van een service catalogus van uw Azure Fully Qualified Domain Name (FQDN)-eind punten en de eigen aren van de toepassing. Als u uw service catalogus wilt maken, voert u het volgende Azure resource Graph-query script uit. Dit script projecteert de FQDN-eindpunt gegevens van de resources waartoe u toegang hebt en voert deze uit in een CSV-bestand. Als u toegang hebt tot alle abonnementen voor uw Tenant, beschouwt het script al deze abonnementen, zoals wordt weer gegeven in het volgende voorbeeld script. Als u de resultaten wilt beperken tot een specifieke set abonnementen, bewerkt u het script zoals wordt weer gegeven.
-
-        >[!IMPORTANT]
-        > **Machtigingen** : Voer de query uit als een gebruiker die toegang heeft tot al uw Azure-abonnementen. 
-        >
-        > **Beperkingen** : Azure-resource grafiek heeft beperkingen en limieten voor wissel geheugens die u moet overwegen als u een grote Azure-omgeving hebt. [Meer informatie](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) over het werken met grote Azure-resource gegevens sets. Het volgende voorbeeld script maakt gebruik van abonnements batches om deze beperkingen te voor komen.
-
-        ```powershell
-        
-            # Fetch the full array of subscription IDs.
-            $subscriptions = Get-AzSubscription
-
-            $subscriptionIds = $subscriptions.Id
-                    # Output file path and names
-                    $date = get-date
-                    $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
-                    $fdate #log to console
-                    $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
-                    $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
-                    $fpath = $rpath + $rname
-                    $fpath #This is the output file of FQDN report.
-
-            # queries
-            $allTypesFqdnsQuery = "where type in ('microsoft.network/frontdoors',
-                                    'microsoft.storage/storageaccounts',
-                                    'microsoft.cdn/profiles/endpoints',
-                                    'microsoft.network/publicipaddresses',
-                                    'microsoft.network/trafficmanagerprofiles',
-                                    'microsoft.containerinstance/containergroups',
-                                    'microsoft.web/sites',
-                                    'microsoft.web/sites/slots')
-                        | extend FQDN = case(
-                            type =~ 'microsoft.network/frontdoors', properties['cName'],
-                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
-                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
-                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
-                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
-                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
-                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
-                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
-                            '')
-                        | project id, type, name, FQDN
-                        | where isnotempty(FQDN)";
-
-            $apiManagementFqdnsQuery = "where type =~ 'microsoft.apimanagement/service'
-                        | project id, type, name,
-                            gatewayUrl=parse_url(tostring(properties['gatewayUrl'])).Host,
-                            portalUrl =parse_url(tostring(properties['portalUrl'])).Host,
-                            developerPortalUrl = parse_url(tostring(properties['developerPortalUrl'])).Host,
-                            managementApiUrl = parse_url(tostring(properties['managementApiUrl'])).Host,
-                            gatewayRegionalUrl = parse_url(tostring(properties['gatewayRegionalUrl'])).Host,
-                            scmUrl = parse_url(tostring(properties['scmUrl'])).Host,
-                            additionaLocs = properties['additionalLocations']
-                        | mvexpand additionaLocs
-                        | extend additionalPropRegionalUrl = tostring(parse_url(tostring(additionaLocs['gatewayRegionalUrl'])).Host)
-                        | project id, type, name, FQDN = pack_array(gatewayUrl, portalUrl, developerPortalUrl, managementApiUrl, gatewayRegionalUrl, scmUrl,             
-                            additionalPropRegionalUrl)
-                        | mvexpand FQDN
-                        | where isnotempty(FQDN)";
-
-            $queries = @($allTypesFqdnsQuery, $apiManagementFqdnsQuery);
-
-            # Paging helper cursor
-            $Skip = 0;
-            $First = 1000;
-
-            # If you have large number of subscriptions, process them in batches of 2,000.
-            $counter = [PSCustomObject] @{ Value = 0 }
-            $batchSize = 2000
-            $response = @()
-
-            # Group the subscriptions into batches.
-            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
-
-            foreach($query in $queries)
-            {
-                # Run the query for each subscription batch with paging.
-                foreach ($batch in $subscriptionsBatch)
-                { 
-                    $Skip = 0; #Reset after each batch.
-
-                    $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
-                    else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
-                    $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
-                }
-            }
-
-            # View the completed results of the query on all subscriptions
-            $response | Export-Csv -Path $fpath -Append  
-
-        ```
-
-        Lijst met typen en de `FQDNProperty` waarden die zijn opgegeven in de voor gaande resource grafiek query:
-
-        |Resourcenaam  | `<ResourceType>`  | `<FQDNproperty>`  |
-        |---------|---------|---------|
-        |Azure Front Door|micro soft. Network/frontdoors|Properties. cName|
-        |Azure Blob Storage|micro soft. Storage/Storage accounts|Properties. primaire. blob|
-        |Azure CDN|micro soft. CDN/profielen/eind punten|Properties. hostName|
-        |Openbare IP-adressen|micro soft. Network/publicipaddresses|Eigenschappen. dnsSettings. FQDN|
-        |Azure Traffic Manager|micro soft. Network/trafficmanagerprofiles|Properties. dnsConfig. FQDN|
-        |Azure Container Instance|micro soft. containerinstance/containergroups|Eigenschappen. ipAddress. FQDN|
-        |Azure API Management|micro soft. apimanagement/service|Properties. hostnameConfigurations. hostName|
-        |Azure App Service|micro soft. web/sites|Eigenschappen. defaultHostName|
-        |Azure App Service-sleuven|micro soft. web/sites/sleuven|Eigenschappen. defaultHostName|
 
 
 - **Procedures voor herstel maken:**

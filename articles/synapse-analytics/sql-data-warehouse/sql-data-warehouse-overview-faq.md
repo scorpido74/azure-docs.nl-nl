@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482527"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462646"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
@@ -27,7 +27,7 @@ A. Azure Synapse is een analyse service waarmee gegevens opslag en Big data-anal
 
 V. Wat is er gebeurd met Azure SQL Data Warehouse?
 
-A. Azure Synapse is Azure SQL Data Warehouse (SQL DW) ontwikkeld. We hebben hetzelfde toonaangevende data warehouse gebruikt voor een geheel nieuw niveau van prestaties en mogelijkheden. U kunt door gaan met het uitvoeren van uw bestaande Data Warehouse-workloads in productie met Azure Synapse. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)? voor meer informatie.
+A. Azure Synapse wordt Azure SQL Data Warehouse ontwikkeld. We hebben hetzelfde toonaangevende data warehouse gebruikt voor een geheel nieuw niveau van prestaties en mogelijkheden. U kunt door gaan met het uitvoeren van uw bestaande Data Warehouse-workloads in productie met Azure Synapse. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) voor meer informatie.
 
 V. Wat is Synapse SQL-groep?
 
@@ -75,7 +75,7 @@ A. [Ondersteunings tickets](sql-data-warehouse-get-started-create-support-ticket
 
 V. Welke gegevens typen worden ondersteund?
 
-A. Zie [gegevens typen](sql-data-warehouse-tables-data-types.md).
+A. Zie  [gegevens typen](sql-data-warehouse-tables-data-types.md).
 
 V. Welke tabel functies worden ondersteund?
 

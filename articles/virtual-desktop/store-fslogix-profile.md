@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009406"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568690"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows
 
@@ -29,7 +29,7 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 |Platform service|Ja, Azure-systeem eigen oplossing|Ja, Azure-systeem eigen oplossing|Nee, zelf beheerd|
 |Regionale beschikbaarheid|Alle regio's|[Regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alle regio's|
 |Redundantie|Lokaal redundante/zone-redundant/geo-redundant|Lokaal redundant|Lokaal redundante/zone-redundant/geo-redundant|
-|Lagen en prestaties|Standard<br>Premium<br>Maxi maal 100.000 IOPS per share met 5 GBps per share op ongeveer 3 MS latentie|Standard<br>Premium<br>Laag<br>Tot 320k (16 KB) IOPS met 4,5 GBps per volume bij ongeveer 1 MS-latentie|Standard-HDD: Maxi maal 500 IOPS per schijf limieten<br>Standard-SSD: Maxi maal 4.000 IOPS per schijf limieten<br>Premium-SSD: Maxi maal 20.000 IOPS per schijf limieten<br>Premium-schijven voor Opslagruimten Direct worden aanbevolen|
+|Lagen en prestaties|Standard<br>Premium<br>Maxi maal 100.000 IOPS per share met 5 GBps per share op ongeveer 3 MS latentie|Standard<br>Premium<br>Ultra<br>Tot 320k (16 KB) IOPS met 4,5 GBps per volume bij ongeveer 1 MS-latentie|Standard-HDD: Maxi maal 500 IOPS per schijf limieten<br>Standard-SSD: Maxi maal 4.000 IOPS per schijf limieten<br>Premium-SSD: Maxi maal 20.000 IOPS per schijf limieten<br>Premium-schijven voor Opslagruimten Direct worden aanbevolen|
 |Capaciteit|100 TiB per share|100 TiB per volume, Maxi maal 12,5 PiB per abonnement|Maxi maal 32 TiB per schijf|
 |Vereiste infra structuur|Minimale share grootte van 1 GiB|Minimale capaciteits pool 4 TiB, minimale volume grootte 100 GiB|Twee Vm's op Azure IaaS (+ Cloudwitness) of ten minste drie Vm's zonder en kosten voor schijven|
 |Protocollen|SMB 2.1/3. en REST|NFSv3, NFSv 4.1 (preview), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -51,7 +51,7 @@ Zie de tabel in [FSLogix-profiel containers en Azure files](fslogix-containers-a
 
 Als u klaar bent om uw eigen FSLogix-profiel containers te maken, kunt u aan de slag met een van deze zelf studies:
 
-- [Aan de slag met FSLogix-profiel containers op Azure Files in Windows virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
+- [Aan de slag met FSLogix-profiel containers op Azure Files in Windows virtueel bureau blad](create-file-share.md)
 - [Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp-bestanden](create-fslogix-profile-container.md)
 - De instructies [voor het implementeren van een met twee knoop punten opslagruimten direct scale-out Bestands server voor UPD-opslag in azure](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) , zijn ook van toepassing wanneer u een FSLogix-profiel container gebruikt in plaats van een gebruikers profiel schijf
 
