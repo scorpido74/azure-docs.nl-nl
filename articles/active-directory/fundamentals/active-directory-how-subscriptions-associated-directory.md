@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd095939009c39c48456d330f975303f06a841a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267527"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426092"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
 
@@ -26,18 +26,18 @@ Een Azure-abonnement heeft een vertrouwens relatie met Azure Active Directory (A
 
 Meerdere abonnementen kunnen dezelfde Azure AD-Directory vertrouwen. Elk abonnement kan slechts één map vertrouwen.
 
-Als uw abonnement is verlopen, hebt u geen toegang meer tot alle andere resources die zijn gekoppeld aan het abonnement. De Azure AD-Directory blijft echter aanwezig in Azure. U kunt de Directory koppelen en beheren met een ander Azure-abonnement.
+Een of meer Azure-abonnementen kunnen een vertrouwens relatie tot stand brengen met een exemplaar van Azure Active Directory (Azure AD) om beveiligings-principals en apparaten te verifiëren en te autoriseren voor Azure-Services.  Wanneer een abonnement is verlopen, blijft het vertrouwde exemplaar van de Azure AD-service behouden, maar de beveiligings-principals verliezen geen toegang meer tot Azure-resources.
 
-Wanneer een gebruiker zich aanmeldt voor een micro soft-Cloud service, wordt standaard een Azure AD-Tenant gemaakt en wordt de gebruiker lid van de rol globale beheerder gemaakt. Wanneer u een abonnement aan een bestaande map toevoegt, bent u niet toegewezen aan de rol van globale beheerder.
+Wanneer een gebruiker zich aanmeldt voor een micro soft-Cloud service, wordt er een nieuwe Azure AD-Tenant gemaakt en wordt de gebruiker lid van de rol globale beheerder gemaakt. Wanneer een eigenaar van een abonnement echter een abonnement neemt op een bestaande Tenant, wordt de eigenaar niet toegewezen aan de rol van globale beheerder.
 
 Al uw gebruikers hebben één *basis* Directory voor verificatie. Uw gebruikers kunnen ook gasten zijn in andere directory's. U kunt zowel de Home-als de gast mappen voor elke gebruiker in azure AD bekijken.
 
 > [!Important]
-> Wanneer u een abonnement aan een andere map koppelt, verliezen gebruikers die rollen hebben die zijn toegewezen met behulp [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) hun toegang. Klassieke abonnementsbeheerders, waaronder de servicebeheerder en co-beheerders, verliezen ook hun toegang.
+> Wanneer u een abonnement aan een andere Directory koppelt, gaan gebruikers die rollen hebben die zijn toegewezen met behulp [van Azure op rollen gebaseerd toegangs beheer](../../role-based-access-control/role-assignments-portal.md) hun toegang kwijt. Klassieke abonnementsbeheerders, waaronder de servicebeheerder en co-beheerders, verliezen ook hun toegang.
 >
 > Beleidstoewijzingen worden verwijderd uit een abonnement wanneer het abonnement wordt gekoppeld aan een andere Active Directory.
 >
-> Door uw Azure Kubernetes service-cluster (AKS) naar een ander abonnement te verplaatsen of het cluster eigenaar-abonnement te verplaatsen naar een nieuwe Tenant, wordt de functionaliteit van het cluster verloren gegaan vanwege verloren Roltoewijzingen en de rechten van de Service-Principal. Zie [Azure Kubernetes service (AKS) (Engelstalig)](https://docs.microsoft.com/azure/aks/)voor meer informatie over AKS.
+> Door uw Azure Kubernetes service-cluster (AKS) naar een ander abonnement te verplaatsen of het cluster eigenaar-abonnement te verplaatsen naar een nieuwe Tenant, wordt de functionaliteit van het cluster verloren gegaan vanwege verloren Roltoewijzingen en de rechten van de Service-Principal. Zie [Azure Kubernetes service (AKS) (Engelstalig)](../../aks/index.yml)voor meer informatie over AKS.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -55,7 +55,7 @@ Voordat u uw abonnement kunt koppelen of toevoegen, moet u de volgende taken uit
 - Meld u aan met een account dat:
 
   - Beschikt over [een roltoewijzing](../../role-based-access-control/built-in-roles.md#owner) voor het abonnement. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het toewijzen van de rol van eigenaar.
-  - Bestaat zowel in de huidige map als in de nieuwe map. De huidige map is gekoppeld aan het abonnement. U koppelt de nieuwe map aan het abonnement. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../b2b/add-users-administrator.md)voor meer informatie over het verkrijgen van toegang tot een andere map.
+  - Bestaat zowel in de huidige map als in de nieuwe map. De huidige map is gekoppeld aan het abonnement. U koppelt de nieuwe map aan het abonnement. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../external-identities/add-users-administrator.md)voor meer informatie over het verkrijgen van toegang tot een andere map.
 
 - Zorg ervoor dat u geen gebruik maakt van een Azure Cloud service provider (CSP)-abonnement (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), een intern micro soft-abonnement (MS-AZR-0015P) of een Microsoft Imagine-abonnement (MS-AZR-0144P).
 
@@ -81,7 +81,7 @@ Voer de volgende stappen uit om een bestaand abonnement aan uw Azure AD-adres li
 
    Het kan enkele uren duren voordat alles goed wordt weer gegeven. Als het te lang lijkt te duren, controleert u het **filter voor algemeen abonnement**. Zorg ervoor dat het verplaatste abonnement niet is verborgen. Mogelijk moet u zich afmelden bij de Azure Portal en u opnieuw aanmelden om de nieuwe map te zien.
 
-Het wijzigen van de abonnements Directory is een bewerking op service niveau. Dit heeft geen invloed op het eigendom van het abonnement. De account beheerder kan de service beheerder nog steeds wijzigen vanuit het [account centrum](https://account.azure.com/subscriptions). Als u de oorspronkelijke map wilt verwijderen, moet u het eigendom van het abonnement overdragen aan een nieuwe account beheerder. Zie [eigendom van een Azure-abonnement overdragen aan een ander account](../../cost-management-billing/manage/billing-subscription-transfer.md)voor meer informatie over het overdragen van het eigendom van de facturering.
+Het wijzigen van de abonnements Directory is een bewerking op service niveau. Dit heeft geen invloed op het eigendom van het abonnement. Als u de oorspronkelijke map wilt verwijderen, moet u het eigendom van het abonnement overdragen aan een nieuwe account beheerder. Zie [eigendom van een Azure-abonnement overdragen aan een ander account](../../cost-management-billing/manage/billing-subscription-transfer.md)voor meer informatie over het overdragen van het eigendom van de facturering.
 
 ## <a name="post-association-steps"></a>Stappen na de koppeling
 

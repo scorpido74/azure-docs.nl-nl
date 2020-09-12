@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 213fec9e7d9da56d34f79fee7e677b0e6bbd7a63
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176047"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303967"
 ---
 ## <a name="update-resources"></a>Resources bijwerken
 
 Er zijn enkele beperkingen ten aanzien van wat er kan worden bijgewerkt. De volgende items kunnen worden bijgewerkt: 
 
 Galerie met gedeelde afbeeldingen:
-- Description
+- Beschrijving
 
 Definitie van installatie kopie:
 - Aanbevolen Vcpu's
 - Aanbevolen geheugen
-- Description
+- Beschrijving
 - Einde van de levens duur
 
 Versie van installatie kopie:
@@ -65,6 +65,28 @@ az sig image-version update \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
    --add publishingProfile.targetRegions  name=eastus
+```
+
+In dit voor beeld ziet u hoe u [AZ sig image-version update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) gebruikt om deze versie van de installatie kopie uit te sluiten van gebruik als de *nieuwste* afbeelding.
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=true
+```
+
+In dit voor beeld ziet u hoe u [AZ sig image-version update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) gebruikt voor het toevoegen van deze installatie kopie versie die wordt overwogen voor de *nieuwste* afbeelding.
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=false
 ```
 
 ## <a name="delete-resources"></a>Resources verwijderen

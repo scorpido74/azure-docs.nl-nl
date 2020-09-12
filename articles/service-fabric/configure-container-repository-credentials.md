@@ -4,12 +4,12 @@ description: Opslagplaats referenties configureren voor het downloaden van insta
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934979"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421421"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Opslagplaats referenties voor uw toepassing configureren om container installatie kopieën te downloaden
 
@@ -83,6 +83,10 @@ Hier volgt een voor beeld van wat kan worden toegevoegd `Hosting` in de sectie i
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
+          },
+          {
+        "name": "DefaultMSIEndpointForTokenAuthentication",
+        "value": "URI"
           }
         ]
       },
@@ -117,6 +121,25 @@ Service Fabric ondersteunt het gebruik van tokens als referenties voor het downl
 
     > [!NOTE]
     > Als de vlag `UseDefaultRepositoryCredentials` is ingesteld op True `UseTokenAuthenticationCredentials` , treedt er een fout op tijdens de implementatie.
+
+### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>Token referenties gebruiken buiten Azure Global Cloud
+
+Wanneer u register referenties op basis van tokens gebruikt, Service Fabric een token uit naam van de virtuele machine ophalen die aan ACR wordt gepresenteerd. Service Fabric vraagt standaard een token waarvan het publiek het globale Azure-Cloud eindpunt is. Als u implementeert naar een andere Cloud instantie, zoals Azure Duitsland, of Azure Government, moet u de standaard waarde van de para meter overschrijven `DefaultMSIEndpointForTokenAuthentication` . Als u niet in een speciale omgeving implementeert, moet u deze para meter niet overschrijven. Als dat het geval is, vervangt u de standaard waarde, die
+
+```
+http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
+```
+
+met het juiste resource-eind punt voor uw omgeving. Bijvoorbeeld: voor [Azure Duitsland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)is de onderdrukking 
+
+```json
+{
+    "name": "DefaultMSIEndpointForTokenAuthentication",
+    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
+}
+```
+
+[Meer informatie over het ophalen van tokens voor virtuele-machine schaal sets](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token).
 
 ## <a name="next-steps"></a>Volgende stappen
 

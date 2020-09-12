@@ -10,22 +10,25 @@ ms.topic: conceptual
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
-ms.date: 09/25/2018
-ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 09/02/2020
+ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985496"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421302"
 ---
-# <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Big data analyse in realtime versnellen met behulp van de Spark-connector 
+# <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Big data analyse in realtime versnellen met behulp van de Spark-connector
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+
+> [!NOTE]
+> Vanaf sep 2020 wordt deze connector niet actief onderhouden. [Apache Spark connector voor SQL Server en Azure SQL](https://docs.microsoft.com/sql/connect/spark/connector) is nu wel beschikbaar, met ondersteuning voor python-en R-bindingen, een gebruiks vriendelijke interface voor het bulksgewijs invoegen van gegevens en vele andere verbeteringen. We raden u ten zeerste aan de nieuwe connector te evalueren en gebruiken in plaats van deze. De informatie over de oude connector (deze pagina) wordt alleen voor archiverings doeleinden bewaard.
 
 De Spark-connector maakt data bases in Azure SQL Database, Azure SQL Managed instance en SQL Server om te fungeren als invoer gegevens bron of uitvoer gegevens filter voor Spark-taken. U kunt hiermee realtime transactionele gegevens gebruiken in big data Analytics en de resultaten voor ad-hoc-query's of-rapporten behouden. Vergeleken met de ingebouwde JDBC-connector biedt deze connector de mogelijkheid om gegevens bulksgewijs in te voegen in uw data base. Hiermee kan leverde rij-voor-rij worden ingevoegd met 10x voor snellere prestaties van 20x. De Spark-connector ondersteunt Azure Active Directory-verificatie (Azure AD) om verbinding te maken met Azure SQL Database en Azure SQL Managed instance, zodat u verbinding kunt maken tussen uw data base en Azure Databricks met uw Azure AD-account. Het biedt vergelijk bare interfaces met de ingebouwde JDBC-connector. Het is eenvoudig om uw bestaande Spark-taken te migreren om deze nieuwe connector te gebruiken.
 
 ## <a name="download-and-build-a-spark-connector"></a>Een Spark-connector downloaden en bouwen
 
-Om aan de slag te gaan, downloadt u de Spark-connector vanuit de [Azure-sqldb-Spark-opslag plaats](https://github.com/Azure/azure-sqldb-spark) op github.
+De GitHub-opslag plaats voor de oude connector die eerder aan deze pagina is gekoppeld, wordt niet actief onderhouden. In plaats daarvan raden we u ten zeerste aan de [nieuwe connector](https://github.com/microsoft/sql-spark-connector)te evalueren en te gebruiken.
 
 ### <a name="official-supported-versions"></a>Officiële ondersteunde versies
 
@@ -33,7 +36,7 @@ Om aan de slag te gaan, downloadt u de Spark-connector vanuit de [Azure-sqldb-Sp
 | :-----------------------------------  | :----------------------- |
 | Apache Spark                          | 2.0.2 of hoger           |
 | Scala                                 | 2,10 of hoger            |
-| Microsoft JDBC-stuurprogramma voor SQL Server  | 6,2 of hoger             |
+| Micro soft JDBC-stuur programma voor SQL Server  | 6,2 of hoger             |
 | Microsoft SQL Server                  | SQL Server 2008 of hoger |
 | Azure SQL Database                    | Ondersteund                |
 | Azure SQL Managed Instance            | Ondersteund                |

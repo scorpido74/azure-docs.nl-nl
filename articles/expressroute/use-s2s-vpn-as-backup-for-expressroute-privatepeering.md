@@ -2,17 +2,17 @@
 title: S2S VPN gebruiken als back-up voor Azure ExpressRoute privé-peering | Microsoft Docs
 description: Deze pagina bevat architectuur aanbevelingen voor het maken van back-ups van Azure ExpressRoute private-peering met S2S VPN.
 services: networking
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: rambala
-ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: duau
+ms.openlocfilehash: 0ab74a14c16b7ea1d587cfcc82eea689e2f98c83
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393017"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>S2S VPN gebruiken als back-up voor ExpressRoute-persoonlijke peering
 

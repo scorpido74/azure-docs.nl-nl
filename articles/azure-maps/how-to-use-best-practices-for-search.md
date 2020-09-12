@@ -3,41 +3,39 @@ title: Aanbevolen procedures voor het Azure Maps van Search Service | Microsoft 
 description: Meer informatie over het Toep assen van de aanbevolen procedures voor het gebruik van de Search Service van Microsoft Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064263"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400701"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Aanbevolen procedures voor het Azure Maps van Search Service
 
 Azure Maps [Search service](https://docs.microsoft.com/rest/api/maps/search) bevat api's die verschillende mogelijkheden bieden om ontwikkel aars te helpen bij het zoeken naar adressen, plaatsen, bedrijfs vermeldingen op naam of categorie en andere geografische informatie. Met[fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kunnen gebruikers bijvoorbeeld zoeken naar een adres of een POI.
 
 In dit artikel wordt uitgelegd hoe u geluids procedures toepast wanneer u gegevens aanroept vanuit Azure Maps Search Service. U leert het volgende:
-
-* Query's bouwen om relevante overeenkomsten te retour neren
-* Zoek resultaten beperken
-* Meer informatie over de verschillen tussen resultaat typen
-* Lees de adres structuur voor zoeken en antwoorden
+> [!div class="checklist"]
+> * Query's bouwen om relevante overeenkomsten te retour neren
+> * Zoek resultaten beperken
+> * Meer informatie over de verschillen tussen resultaat typen
+> * Lees de adres structuur voor zoeken en antwoorden
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u aanroepen naar de Azure Maps-service-Api's wilt maken, hebt u een Azure Maps account en een sleutel nodig. Zie [een account maken](quick-demo-map-app.md#create-an-azure-maps-account) en [een primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)voor meer informatie. 
+1. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel.
 
-Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
-
-> [!TIP]
-> Als u een query wilt uitvoeren op Search Service, kunt u de [app postman](https://www.getpostman.com/apps) gebruiken om rest API-aanroepen te maken. U kunt ook een wille keurige API-ontwikkel omgeving gebruiken.
+In dit artikel wordt gebruikgemaakt van de [postman-app](https://www.postman.com/downloads/) om rest-aanroepen te bouwen, maar u kunt elke API-ontwikkel omgeving kiezen.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Aanbevolen procedures voor het geocoderen van adressen
 
-Wanneer u zoekt naar een volledig of gedeeltelijk adres met behulp van Azure Maps Search Service, leest de API tref woorden uit uw zoek opdracht. Vervolgens worden de lengte-en breedte coördinaten van het adres geretourneerd. Dit proces wordt *geocodering*genoemd. 
+Wanneer u zoekt naar een volledig of gedeeltelijk adres met behulp van Azure Maps Search Service, leest de API tref woorden uit uw zoek opdracht. Vervolgens worden de lengte-en breedte coördinaten van het adres geretourneerd. Dit proces wordt *geocodering*genoemd.
 
 De mogelijkheid tot Geocode in een land/regio is afhankelijk van de beschik baarheid van weggegevens en de nauw keurigheid van de geocoderings service. Zie [geocoderings dekking](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)voor meer informatie over Azure Maps mogelijkheden voor geocodering per land of regio.
 
@@ -79,9 +77,9 @@ U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.
 
 #### <a name="usage-examples"></a>Gebruiksvoorbeelden
 
-* `idxSet=POI`-Alleen naar Poi's zoeken. 
+* `idxSet=POI` -Alleen naar Poi's zoeken. 
 
-* `idxSet=PAD,Addr`-Alleen zoeken naar adressen. `PAD`geeft het adres van het punt aan en `Addr` geeft het adres bereik aan.
+* `idxSet=PAD,Addr` -Alleen zoeken naar adressen. `PAD` geeft het adres van het punt aan en `Addr` geeft het adres bereik aan.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Reverse-Geocode en filter voor het entiteits type Geografie
 
@@ -95,7 +93,7 @@ De resulterende reactie bevat de geografie-ID en het entiteits type dat overeenk
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```JSON
 {
@@ -147,7 +145,7 @@ In de volgende voorbeeld query wordt de service Search Address opgevraagd voor *
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```JSON
 {
@@ -496,7 +494,7 @@ We gaan een zoek aanvraag voor een [POI categorie](https://docs.microsoft.com/re
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```JSON
 {
@@ -777,7 +775,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Kruis straat**: snij punten. Kruis straten vertegenwoordigen verbindings lijnen waarbij twee straten INTERSECT.
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Laten we eens kijken naar de structuur van de reactie. In het antwoord dat volgt, zijn de typen resultaat objecten verschillend. Als u zorgvuldig zoekt, ziet u drie typen resultaat objecten:
 

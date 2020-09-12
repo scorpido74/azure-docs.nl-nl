@@ -4,12 +4,12 @@ description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499990"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425990"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en-beheer hiërarchie te organiseren
 
@@ -579,7 +579,7 @@ Labels die worden toegepast op de resource groep of het abonnement, worden niet 
 
 U kunt tags gebruiken om uw factureringsgegevens te groeperen. Als u bijvoorbeeld meerdere VM's voor verschillende organisaties uitvoert, kunt u de tags gebruiken om het gebruiker te groeperen op basis van de kostenplaats. U kunt ook tags gebruiken om de kosten te categoriseren op basis van de runtimeomgeving, zoals de facturering van het gebruik voor VM's die worden uitgevoerd in de productieomgeving.
 
-U kunt informatie over Tags ophalen via de [Azure resource usage-en rate-api's](../../cost-management-billing/manage/usage-rate-card-overview.md) of het bestand met door komma's gescheiden waarden (CSV). U downloadt het gebruiks bestand van de [Azure-Accountcentrum](https://account.azure.com/Subscriptions) of Azure Portal. Zie uw Azure-factuur [en dagelijks gebruiks gegevens downloaden of weer geven](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**bij het downloaden van het gebruiks bestand van de Azure-Accountcentrum. Voor services die Tags ondersteunen met facturering, worden de tags weer gegeven in de kolom **Tags** .
+U kunt informatie over Tags ophalen via de [Azure resource usage-en rate-api's](../../cost-management-billing/manage/usage-rate-card-overview.md) of het bestand met door komma's gescheiden waarden (CSV). U downloadt het gebruiks bestand van de Azure Portal. Zie uw Azure-factuur [en dagelijks gebruiks gegevens downloaden of weer geven](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**bij het downloaden van het gebruiks bestand van de Azure-Accountcentrum. Voor services die Tags ondersteunen met facturering, worden de tags weer gegeven in de kolom **Tags** .
 
 Zie voor REST API bewerkingen de [Naslag informatie voor Azure billing rest API](/rest/api/billing/).
 
@@ -591,7 +591,7 @@ Voor tags gelden de volgende beperkingen:
 * Elke resource, resource groep en elk abonnement kan Maxi maal 50 label naam/waarde-paren hebben. Als u meer tags wilt Toep assen dan het Maxi maal toegestane aantal, gebruikt u een JSON-teken reeks voor de waarde van de tag. De JSON-tekenreeks kan veel waarden bevatten die worden toegepast op een enkele tagnaam. Een resource groep of-abonnement kan een groot aantal resources bevatten die elk een 50-tag met de naam/waarde-paren hebben.
 * De tagnaam is beperkt tot 512 tekens en de tagwaarde is beperkt tot 256 tekens. Voor opslagaccounts is de tagnaam beperkt tot 128 tekens en de tagwaarde beperkt tot 256 tekens.
 * Labels kunnen niet worden toegepast op klassieke resources, zoals Cloud Services.
-* Label namen mogen niet de volgende tekens bevatten: `<` , `>` , `%` , `&` , `\` , `?` ,`/`
+* Label namen mogen niet de volgende tekens bevatten: `<` , `>` , `%` , `&` , `\` , `?` , `/`
 
    > [!NOTE]
    > Op dit moment staat Azure DNS-zones en Traffic Manager services ook niet toe dat spaties in het label worden gebruikt.

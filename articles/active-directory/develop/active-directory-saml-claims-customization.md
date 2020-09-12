@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552829"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421455"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -88,11 +88,11 @@ U kunt ook een constante (statische) waarde toewijzen aan claims die u in azure 
 
 1. Voer de constante waarde zonder aanhalings tekens in het **bron kenmerk** in volgens uw organisatie en klik op **Opslaan**.
 
-    ![Open de sectie gebruikers kenmerken & claims in de Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![De sectie kenmerken van org & in het Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. De constante waarde wordt hieronder weer gegeven.
 
-    ![Open de sectie gebruikers kenmerken & claims in de Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Kenmerken bewerken & sectie claims in de Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Speciale claim transformaties
 
@@ -121,7 +121,7 @@ Een trans formatie Toep assen op een gebruikers kenmerk:
 2. Selecteer de functie in de vervolg keuzelijst transformeren. Afhankelijk van de functie die u hebt geselecteerd, moet u para meters en een constante waarde opgeven om in de trans formatie te evalueren. Raadpleeg de onderstaande tabel voor meer informatie over de beschik bare functies.
 3. Als u meerdere trans formatie wilt Toep assen, klikt u op **trans formatie toevoegen**. U kunt Maxi maal twee trans formatie op een claim Toep assen. U kunt bijvoorbeeld eerst het e-mail voorvoegsel van de toevoegen `user.mail` . Vervolgens maakt u de reeks hoofd letters.
 
-   ![De NameID-waarde (naam-id) bewerken](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![Meervoudige trans formatie van claims](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 U kunt de volgende functies gebruiken om claims te transformeren.
 
@@ -129,8 +129,8 @@ U kunt de volgende functies gebruiken om claims te transformeren.
 |----------|-------------|
 | **ExtractMailPrefix()** | Hiermee verwijdert u het domein achtervoegsel uit het e-mail adres of de user principal name. Hiermee wordt alleen het eerste deel van de gebruikers naam geëxtraheerd dat wordt door gegeven (bijvoorbeeld ' joe_smith ' in plaats van joe_smith@contoso.com ). |
 | **Samen voegen ()** | Hiermee maakt u een nieuwe waarde door twee kenmerken samen te voegen. U kunt desgewenst een scheidings teken tussen de twee kenmerken gebruiken. Voor NameID-claim transformatie is de koppeling beperkt tot een geverifieerd domein. Als de geselecteerde gebruikers-id een domein heeft, wordt de gebruikers naam geëxtraheerd om het geselecteerde geverifieerde domein toe te voegen. Als u bijvoorbeeld het e-mail adres ( joe_smith@contoso.com ) als de waarde van de gebruikers-ID selecteert en contoso.onmicrosoft.com selecteert als het geverifieerde domein, resulteert dit in joe_smith@contoso.onmicrosoft.com . |
-| **ToLower()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar kleine letters. |
-| **ToUpper()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar hoofd letters. |
+| **ToLowercase()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar kleine letters. |
+| **ToUppercase()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar hoofd letters. |
 | **Contains ()** | Voert een kenmerk of constante uit als de invoer overeenkomt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarbij de waarde het e-mail adres van de gebruiker is als deze het domein bevat @contoso.com , moet u anders de User Principal name uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: gebruiker. e-mail adres<br/>*Waarde*: " @contoso.com "<br/>Para meter 2 (uitvoer): gebruiker. e-mail adres<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. userPrincipalName |
 | **EndWith()** | Voert een kenmerk of constante uit als de invoer eindigt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemer-ID van de gebruiker is als de werk nemer-ID eindigt op ' 000 ', moet u anders een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: User. EmployeeID<br/>*Waarde*: 000<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
 | **StartWith()** | Voert een kenmerk of constante uit als de invoer begint met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemers-ID van de gebruiker is als het land/de regio begint met ' VS ', moet u anders een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: gebruiker. land<br/>*Waarde*: "US"<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |

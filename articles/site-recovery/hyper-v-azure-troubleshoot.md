@@ -2,18 +2,18 @@
 title: Problemen met herstel na nood gevallen voor Hyper-V oplossen met Azure Site Recovery
 description: Hierin wordt beschreven hoe u problemen met nood herstel kunt oplossen met Hyper-V naar Azure-replicatie met behulp van Azure Site Recovery
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132447"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426119"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problemen oplossen met replicatie en failover voor Hyper-V naar Azure
 
@@ -85,7 +85,7 @@ Beperkingen voor netwerk bandbreedte kunnen van invloed zijn op replicatie. Prob
 
 ## <a name="app-consistent-snapshot-issues"></a>Problemen met app-consistente moment opnamen
 
-Een app-consistente moment opname is een tijdgebonden moment opname van de toepassings gegevens in de virtuele machine. Volume Shadow Copy Service (VSS) zorgt ervoor dat apps op de virtuele machine een consistente status hebben wanneer de moment opname wordt gemaakt.  In deze sectie vindt u enkele veelvoorkomende problemen die u kunt voordoen.
+Een app-consistente momentopname is een momentopname van de toepassingsgegevens in de VM op een bepaald tijdstip. Volume Shadow Copy Service (VSS) zorgt ervoor dat apps op de virtuele machine een consistente status hebben wanneer de moment opname wordt gemaakt.  In deze sectie vindt u enkele veelvoorkomende problemen die u kunt voordoen.
 
 ### <a name="vss-failing-inside-the-vm"></a>VSS in de virtuele machine mislukt
 

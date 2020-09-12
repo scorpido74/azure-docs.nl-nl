@@ -3,7 +3,7 @@ title: Azure Traffic Manager-profielen beheren | Microsoft Docs
 description: Dit artikel helpt u bij het maken, uitschakelen, inschakelen en verwijderen van een Azure Traffic Manager-profiel.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: rohink
-ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711575"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392881"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Een Azure Traffic Manager-profiel beheren
 
@@ -30,7 +30,7 @@ U kunt via Azure Portal een Traffic Manager-profiel maken. Zodra u het profiel h
 ### <a name="to-create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich registreren voor een [gratis proefversie van één maand](https://azure.microsoft.com/free/). 
-2. Klik op **een resource maken**  >  **netwerk**  >  **Traffic Manager profiel**  >  **maken**.
+2. Klik op **Een resource maken** > **Netwerken** > **Traffic Manager-profiel** > **Maken**.
 4. Vul het volgende in bij **Traffic Manager-profiel maken**:
     1. In **Naam** geeft u een naam op voor het profiel. Deze naam moet uniek zijn binnen de zone trafficmanager.net. De naam wordt gebruikt voor de DNS-naam `<name>`, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.
     2. In **Routeringsmethode** selecteert u de routeringsmethode **Prioriteit**.

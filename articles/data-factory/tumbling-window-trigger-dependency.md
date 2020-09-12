@@ -2,21 +2,21 @@
 title: Afhankelijkheden voor tumblingvenstertriggers-venster maken
 description: Meer informatie over het maken van afhankelijkheden voor een tumblingvenstertriggers-venster trigger in Azure Data Factory.
 services: data-factory
-ms.author: daperlov
-author: djpmsft
-manager: anandsub
+ms.author: chez
+author: chez-charlie
+manager: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2019
-ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82870036"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421785"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Een afhankelijkheid voor een tumblingvenstertrigger maken
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,7 @@ Bekijk de volgende video voor een demonstratie van het maken van afhankelijke pi
 
 Als u afhankelijkheid wilt maken voor een trigger, selecteert u **trigger > geavanceerd > nieuw**en kiest u vervolgens de trigger die afhankelijk is van de juiste offset en grootte. Selecteer **volt ooien** en publiceer de Data Factory wijzigingen voordat de afhankelijkheden van kracht worden.
 
-![Afhankelijkheid maken](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Afhankelijkheid maken")
+![Afhankelijkheid maken](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Afhankelijkheid maken")
 
 ## <a name="tumbling-window-dependency-properties"></a>Eigenschappen van afhankelijkheids venster tumblingvenstertriggers
 
@@ -133,41 +133,53 @@ Hieronder ziet u een aantal voor beelden van scenario's en het gebruik van eigen
 
 ### <a name="dependency-offset"></a>Offset van afhankelijkheid
 
-![Offset-voor beeld](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Offset-voor beeld")
+![Offset-voor beeld](media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png "Offset-voor beeld")
 
 ### <a name="dependency-size"></a>Grootte van afhankelijkheid
 
-![Voor beeld van grootte](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Voor beeld van grootte")
+![Voor beeld van grootte](media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png "Voor beeld van grootte")
 
 ### <a name="self-dependency"></a>Zelf afhankelijkheid
 
-![Zelf afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Zelf afhankelijkheid")
+![Zelf afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png "Zelf afhankelijkheid")
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>Afhankelijkheid van een andere tumblingvenstertriggers-venster trigger
 
 Een dagelijkse telemetrie-verwerkings taak, afhankelijk van een andere dagelijkse taak waarmee de uitvoer van de laatste zeven dagen wordt geaggregeerd en die zeven dagen worden gegenereerd:
 
-![Voor beeld van afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Voor beeld van afhankelijkheid")
+![Voor beeld van afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png "Voor beeld van afhankelijkheid")
 
 ### <a name="dependency-on-itself"></a>Afhankelijkheid op zichzelf
 
 Een dagelijkse taak zonder hiaten in de uitvoer stromen van de taak:
 
-![Voor beeld van Self-afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Voor beeld van Self-afhankelijkheid")
+![Voor beeld van Self-afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png "Voor beeld van Self-afhankelijkheid")
 
 ## <a name="monitor-dependencies"></a>Afhankelijkheden controleren
 
-U kunt de afhankelijkheids keten en de bijbehorende Vensters bewaken vanaf de controle pagina voor het uitvoeren van triggers. Navigeer naar **bewaking > trigger uitvoeringen**. In de kolom acties kunt u de trigger opnieuw uitvoeren of de afhankelijkheden ervan weer geven.
+U kunt de afhankelijkheids keten en de bijbehorende Vensters bewaken vanaf de controle pagina voor het uitvoeren van triggers. Navigeer naar  **bewaking > trigger uitvoeringen**. Als een trigger voor een Tumblingvenstertriggers-venster afhankelijkheden heeft, wordt in de trigger naam een Hyper Link naar de weer gave afhankelijkheids controle vermeld.  
 
-![Triggeruitvoeringen controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Triggeruitvoeringen controleren")
+![Triggeruitvoeringen controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "Trigger uitvoeringen bewaken-volledig in tumblingvenstertriggers venster afhankelijkheids weergave")
 
-Als u op trigger afhankelijkheden weer geven klikt, ziet u de status van de afhankelijkheden. Als een van de afhankelijkheids triggers mislukt, moet u deze opnieuw uitvoeren om de afhankelijke trigger uit te voeren. Een trigger voor een tumblingvenstertriggers-venster wacht op afhankelijkheden voor zeven dagen voordat een time-out optreedt.
+Klik op de naam van de trigger om de afhankelijkheden van de trigger weer te geven. Rechterdeel venster bevat gedetailleerde informatie over het uitvoeren van triggers, zoals RunID, venster tijd, status, enzovoort.
 
-![Afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Afhankelijkheden controleren")
+![Lijst weergave afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png "Lijst weergave afhankelijkheden controleren")
+
+U kunt de status van de afhankelijkheden en Windows voor elke afhankelijke trigger bekijken. Als een van de afhankelijkheden is mislukt, moet u deze opnieuw uitvoeren om de afhankelijke trigger uit te voeren.
+
+Een trigger voor een tumblingvenstertriggers-venster wacht op afhankelijkheden voor _zeven dagen_ voordat een time-out optreedt. Na zeven dagen mislukt de uitvoering van de trigger.
 
 Als u een visueel element wilt weer geven, selecteert u de Gantt-weer gave.
 
-![Afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Afhankelijkheden controleren")
+![Controle van afhankelijkheden Gantt-diagram](media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png "Bewaken van afhankelijkheden van de Gantt-diagram weergave")
+
+In transparante vakken worden de afhankelijkheids Vensters voor elke vervolg keuzelijst met stroom afhankelijke weer gegeven, terwijl effen gekleurde vakken hierboven afzonderlijke venster uitvoeringen weer geven. Hier volgen enkele tips voor het interpreteren van de Gantt-diagram weergave:
+
+* Transparant vak wordt blauw weer gegeven wanneer afhankelijke Vensters de status in behandeling of actief hebben
+* Wanneer alle Windows is geslaagd voor een afhankelijke trigger, wordt het transparante vakje groen
+* Transparant vak wordt rood weer gegeven wanneer een deel van een afhankelijk venster mislukt. Zoek naar een effen rood vak om de uitvoering van het fout venster te identificeren
+
+Als u een venster opnieuw wilt uitvoeren in de weer gave Gantt-diagram, selecteert u het vak effen kleuren voor het venster en verschijnt een actie paneel met details en de opties voor opnieuw uitvoeren
 
 ## <a name="next-steps"></a>Volgende stappen
 

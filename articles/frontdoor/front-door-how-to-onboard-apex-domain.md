@@ -2,17 +2,17 @@
 title: Een root-of Apex-domein onboarden naar een bestaande front-deur-Azure Portal
 description: Meer informatie over het voorbereiden van een root-of Apex-domein naar een bestaande front-deur met behulp van de Azure Portal.
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 05267ad43f6e7f89ec50b1765d2475a02fae1702
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743589"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399572"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding van een basis- of hoofddomein op uw Front door
 Azure front-deur gebruikt CNAME-records om het domein eigendom te valideren voor de onboarding van aangepaste domeinen. Bovendien geeft front deur niet het frontend-IP-adres weer dat is gekoppeld aan uw front deur-profiel. u kunt uw Apex-domein niet toewijzen aan een IP-adres als het doel is om het in te stellen op Azure front deur.
@@ -62,7 +62,7 @@ In dit artikel leert u het volgende:
 ## <a name="enable-https-on-your-custom-domain"></a>HTTPS inschakelen voor uw aangepaste domein
 
 1. Klik op het aangepaste domein dat is toegevoegd en klik onder de sectie HTTPS van het **aangepaste domein**, wijzig de status in **ingeschakeld**.
-2. Selecteer het **type certificaat beheer** om _mijn eigen certificaat te gebruiken_.
+2. Selecteer het  **type certificaat beheer** om _mijn eigen certificaat te gebruiken_.
 
 > [!WARNING]
 > Het beheer type van de front-deur wordt momenteel niet ondersteund voor Apex-of hoofd domeinen. De enige optie die beschikbaar is om HTTPS in te scha kelen op een Apex of hoofd domein voor de voor deur, gebruikt uw eigen aangepaste TLS/SSL-certificaat dat wordt gehost op Azure Key Vault.

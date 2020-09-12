@@ -3,20 +3,20 @@ title: Voor deur van Azure, veelgestelde vragen
 description: Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure front deur
 services: frontdoor
 documentationcenter: ''
-author: sohamnchatterjee
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
-ms.author: sohamnc
-ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.author: duau
+ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760410"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399732"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -92,8 +92,8 @@ Als u uw toepassing wilt vergren delen om alleen verkeer van uw specifieke voor 
 - Configureer IP-Acl's voor voor uw back-ends om verkeer te accepteren van de back-end-IP-adres ruimte van de Azure front deur en alleen de infrastructuur services van Azure. Raadpleeg de onderstaande IP-gegevens voor Acl's voor van uw back-end:
  
     - Raadpleeg de sectie *AzureFrontDoor. back-end* in [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor het IPv4-back-end-IP-adres bereik van de front deur of u kunt ook de service label *AzureFrontDoor. back-end* gebruiken in uw [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules).
-    - De **IPv6** -back-end van de front-ends tijdens de dekking van de servicetag wordt niet weer gegeven in het JSON-bestand van het Azure IP-bereik. Als u op zoek bent naar een expliciet IPv6-adres bereik, is dit momenteel beperkt tot`2a01:111:2050::/44`
-    - De [basis infrastructuur services](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP-adressen: `168.63.129.16` en`169.254.169.254`
+    - De **IPv6** -back-end van de front-ends tijdens de dekking van de servicetag wordt niet weer gegeven in het JSON-bestand van het Azure IP-bereik. Als u op zoek bent naar een expliciet IPv6-adres bereik, is dit momenteel beperkt tot `2a01:111:2050::/44`
+    - De [basis infrastructuur services](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP-adressen: `168.63.129.16` en `169.254.169.254`
 
     > [!WARNING]
     > De backend-back-end van de voor deur kan later worden gewijzigd, maar we zorgen ervoor dat voordat dat gebeurt, dat we hebben geïntegreerd met [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519). U wordt aangeraden om u te abonneren op [Azure IP-bereiken en service Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor eventuele wijzigingen of updates.
@@ -123,7 +123,7 @@ Opmerking: aangepaste TLS/SSL-certificaat updates nemen ongeveer 30 minuten in b
 Eventuele updates van routes of back-end-Pools, enzovoort, zijn naadloos en veroorzaken geen downtime (als de nieuwe configuratie juist is). Certificaat updates zijn ook atomisch en veroorzaken geen storingen, tenzij u overschakelt van ' AFD Managed ' naar ' uw eigen certificaat gebruiken ' of andersom.
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Kan de taak verdeling van de voor deur van Azure voor de voor grond zijn of verkeer binnen een virtueel netwerk routeren?
 

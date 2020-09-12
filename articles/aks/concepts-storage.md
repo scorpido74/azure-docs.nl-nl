@@ -3,13 +3,13 @@ title: Concepten-opslag in azure Kubernetes Services (AKS)
 description: Meer informatie over opslag in azure Kubernetes service (AKS), inclusief volumes, permanente volumes, opslag klassen en claims
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406959"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421149"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opslag opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -32,8 +32,6 @@ Traditionele volumes voor het opslaan en ophalen van gegevens worden gemaakt als
 
 - *Azure-schijven* kunnen worden gebruikt om een Kubernetes *DataDisk* -resource te maken. Schijven kunnen gebruikmaken van Azure Premium Storage, ondersteund door Ssd's met hoge prestaties of Azure Standard-opslag, ondersteund door gewone Hdd's. Voor de meeste werk belastingen voor productie en ontwikkeling gebruikt u Premium Storage. Azure-schijven zijn gekoppeld als *ReadWriteOnce*, dus zijn alleen beschikbaar voor één pod. Gebruik Azure Files voor opslag volumes die gelijktijdig toegankelijk zijn voor meerdere peulen.
 - *Azure files* kan worden gebruikt om een SMB 3,0-share die wordt ondersteund door een Azure Storage-account, te koppelen aan het gehele volume. Met bestanden kunt u gegevens delen op meerdere knoop punten en een Peul. Bestanden kunnen Azure Standard-opslag gebruiken die wordt ondersteund door gewone Hdd's of Azure Premium Storage, ondersteund door Ssd's met hoge prestaties.
-> [!NOTE] 
-> Azure Files Premium-opslag wordt ondersteund in AKS-clusters met Kubernetes 1,13 of hoger.
 
 In Kubernetes kunnen volumes meer vormen dan alleen een traditionele schijf waar informatie kan worden opgeslagen en opgehaald. Kubernetes-volumes kunnen ook worden gebruikt als een manier om gegevens in een pod te injecteren voor gebruik door de containers. Veelvoorkomende aanvullende volume typen in Kubernetes zijn onder andere:
 
@@ -55,12 +53,18 @@ Een PersistentVolume kan *statisch* worden gemaakt door een cluster beheerder of
 
 Als u verschillende opslag lagen wilt definiëren, zoals Premium en Standard, kunt u een *StorageClass*maken. De StorageClass definieert ook de *reclaimPolicy*. Deze reclaimPolicy bepaalt het gedrag van de onderliggende Azure Storage-Resource wanneer de Pod wordt verwijderd en het permanente volume mogelijk niet meer nodig is. De onderliggende opslag resource kan worden verwijderd of blijvend worden gebruikt met een toekomstige pod.
 
-In AKS worden vier initiële StorageClasses gemaakt:
+In AKS worden vier initialen `StorageClasses` voor het cluster gemaakt met behulp van de modules voor opslag in de boom structuur:
 
-- *default* : maakt gebruik van Azure StandardSSD-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
-- *Managed-Premium* : maakt gebruik van Azure Premium Storage voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
-- *azurefile* : maakt gebruik van Azure Standard-opslag om een Azure-bestands share te maken. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
-- *azurefile-Premium* : maakt gebruik van Azure Premium Storage om een Azure-bestands share te maken. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- `default` -Gebruikt Azure StandardSSD-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim zorgt ervoor dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat deze gebruikt, wordt verwijderd.
+- `managed-premium` -Maakt gebruik van Azure Premium Storage voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen zorgt ervoor dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- `azurefile` -Maakt gebruik van Azure Standard-opslag om een Azure-bestands share te maken. Het beleid voor opnieuw claim zorgt ervoor dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- `azurefile-premium` -Maakt gebruik van Azure Premium Storage voor het maken van een Azure-bestands share. Het beleid voor opnieuw claim zorgt ervoor dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+
+Voor clusters die gebruikmaken van de nieuwe container Storage interface (CSI) externe invoeg toepassingen (preview), worden de volgende aanvullende extra `StorageClasses` gemaakt:
+- `managed-csi` -Gebruikt Azure StandardSSD lokaal redundante opslag (LRS) voor het maken van een beheerde schijf. Het beleid voor opnieuw claim zorgt ervoor dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat deze gebruikt, wordt verwijderd. De opslag klasse configureert ook de permanente volumes die kunnen worden uitgebreid. u hoeft alleen de permanente volume claim te bewerken met de nieuwe grootte.
+- `managed-csi-premium` -Maakt gebruik van Azure Premium lokaal redundante opslag (LRS) voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen zorgt ervoor dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd. Op deze opslag klasse kunnen permanente volumes ook worden uitgevouwen.
+- `azurefile-csi` -Maakt gebruik van Azure Standard-opslag om een Azure-bestands share te maken. Het beleid voor opnieuw claim zorgt ervoor dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- `azurefile-csi-premium` -Maakt gebruik van Azure Premium Storage voor het maken van een Azure-bestands share. Het beleid voor opnieuw claim zorgt ervoor dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
 
 Als er geen StorageClass is opgegeven voor een permanent volume, wordt de standaard StorageClass gebruikt. Wees voorzichtig bij het aanvragen van permanente volumes, zodat ze de juiste opslag gebruiken die u nodig hebt. U kunt een StorageClass maken voor extra behoeften met `kubectl` . In het volgende voor beeld wordt Premium Managed Disks gebruikt en wordt aangegeven dat de onderliggende Azure-schijf *behouden moet blijven* wanneer de Pod wordt verwijderd:
 

@@ -3,20 +3,20 @@ title: Protocol ondersteuning voor HTTP-headers in azure front-deur | Microsoft 
 description: In dit artikel worden de HTTP-header protocollen beschreven die front-deur ondersteunt.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.author: duau
+ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799120"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399511"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protocol ondersteuning voor HTTP-headers in azure front-deur
 Dit artikel bevat een overzicht van het protocol dat front-deur ondersteunt met delen van het aanroepende pad (zie afbeelding). De volgende secties bevatten meer informatie over HTTP-headers die worden ondersteund door de voor deur.

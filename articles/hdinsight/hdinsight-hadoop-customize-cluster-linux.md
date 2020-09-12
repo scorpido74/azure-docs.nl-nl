@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/02/2020
+ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006668"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400854"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -66,13 +66,15 @@ Een script actie is een bash script dat wordt uitgevoerd op de knoop punten in e
 
     Persistente script acties moeten een unieke naam hebben. Persistente scripts worden gebruikt om nieuwe worker-knoop punten die aan het cluster worden toegevoegd, aan te passen via schaal bewerkingen. Een persistent script kan ook wijzigingen Toep assen op een ander type knoop punt wanneer er schaal bewerkingen worden uitgevoerd. Een voor beeld is een hoofd knooppunt.
 
-    `Ad hoc`scripts zijn niet persistent. Script acties die worden gebruikt tijdens het maken van het cluster, worden automatisch bewaard. Ze worden niet toegepast op worker-knoop punten die zijn toegevoegd aan het cluster nadat het script is uitgevoerd. Vervolgens kunt u een script promo veren `ad hoc` naar een persistent script of een persistent script naar een `ad hoc` script verlagen. Scripts die niet worden bewaard, zelfs niet als u er specifiek voor hebt aangegeven dat ze moeten zijn.
+    `Ad hoc` scripts zijn niet persistent. Script acties die worden gebruikt tijdens het maken van het cluster, worden automatisch bewaard. Ze worden niet toegepast op worker-knoop punten die zijn toegevoegd aan het cluster nadat het script is uitgevoerd. Vervolgens kunt u een script promo veren `ad hoc` naar een persistent script of een persistent script naar een `ad hoc` script verlagen. Scripts die niet worden bewaard, zelfs niet als u er specifiek voor hebt aangegeven dat ze moeten zijn.
 
 * Kan para meters accepteren die door het script worden gebruikt tijdens de uitvoering.
 
 * Uitvoeren met bevoegdheden op hoofd niveau op de cluster knooppunten.
 
 * Kan worden gebruikt via de Azure Portal, Azure PowerShell, Azure CLI of HDInsight .NET SDK.
+
+* Script acties waarmee service bestanden op de virtuele machine worden verwijderd of gewijzigd, kunnen van invloed zijn op de service status en beschik baarheid.
 
 Het cluster houdt een geschiedenis bij van alle scripts die zijn uitgevoerd. De geschiedenis helpt u bij het vinden van de ID van een script voor promotie-of degradatie bewerkingen.
 
@@ -322,7 +324,7 @@ In het volgende voorbeeld script ziet u hoe u de-cmdlets gebruikt om een script 
 | Opdracht | Beschrijving |
 | --- | --- |
 | [`az hdinsight script-action delete`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |Hiermee verwijdert u een opgegeven persistente script actie van het cluster. Met deze opdracht worden de acties die door een script worden uitgevoerd, niet ongedaan gemaakt, wordt alleen de persistente vlag verwijderd.|
-|[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|Script acties uitvoeren op het opgegeven HDInsight-cluster.|
+|[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|Scriptacties uitvoeren op het opgegeven HDInsight-cluster.|
 | [`az hdinsight script-action list`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list) |Een lijst met alle persistente script acties voor het opgegeven cluster. |
 |[`az hdinsight script-action list-execution-history`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list-execution-history)|Een lijst met alle scripts voor de uitvoerings geschiedenis van het opgegeven cluster.|
 |[`az hdinsight script-action promote`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-promote)|Het verhogen van de opgegeven ad-hoc script uitvoer naar een persistent script.|
@@ -330,7 +332,7 @@ In het volgende voorbeeld script ziet u hoe u de-cmdlets gebruikt om een script 
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK
 
-Zie [een script actie Toep assen op een op Linux gebaseerd HDInsight-cluster](https://github.com/Azure-Samples/hdinsight-dotnet-script-action)voor een voor beeld van het gebruik van de .NET SDK voor het ophalen van de script geschiedenis van een cluster, het promo veren of verlagen van scripts.
+Zie [ een script actie Toep assen op een op Linux gebaseerd HDInsight-cluster](https://github.com/Azure-Samples/hdinsight-dotnet-script-action)voor een voor beeld van het gebruik van de .NET SDK voor het ophalen van de script geschiedenis van een cluster, het promo veren of verlagen van scripts.
 
 > [!NOTE]  
 > In dit voor beeld wordt ook gedemonstreerd hoe u een HDInsight-toepassing installeert met behulp van de .NET-SDK.

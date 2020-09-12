@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554902"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89303976"
 ---
 Met gestandaardiseerde installatie kopieën van virtuele machines kunnen organisaties migreren naar de Cloud en zorgen voor consistentie in de implementaties. Installatie kopieën bevatten doorgaans vooraf gedefinieerde beveiligings-en configuratie-instellingen en de benodigde software. Voor het instellen van uw eigen Imaging-pijp lijn zijn tijd, infra structuur en configuratie vereist, maar met Azure VM Image Builder kunt u een eenvoudige configuratie bieden waarmee uw installatie kopie wordt beschreven, verzonden naar de service en de installatie kopie wordt gebouwd en gedistribueerd.
  
@@ -41,7 +41,7 @@ De Azure Image Builder-service is beschikbaar voor een preview in deze regio's. 
 - VS - west
 - VS - west 2
 - Europa - noord
-- Europa - west
+- Europa -west
 
 ## <a name="os-support"></a>Ondersteuning voor besturings systeem
 AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieën:
@@ -57,7 +57,7 @@ AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieë
 
 Ondersteuning voor RHEL Iso's wordt niet meer ondersteund.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 
 ![Conceptuele tekening van Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -100,7 +100,7 @@ Met de opbouw functie voor installatie kopieën wordt een VM gemaakt met behulp 
 De installatie kopie wordt door Azure Image Builder gedistribueerd naar de gekozen regio's. Dit kan leiden tot uitstaande netwerk kosten.
 
 ## <a name="hyper-v-generation"></a>Hyper-V generatie
-Image Builder momenteel biedt ondersteuning voor Hyper-V-generatie 1-installatie kopieën en virtuele machines.
+De opbouw functie voor installatie kopieën ondersteunt momenteel alleen systeem eigen ondersteuning voor het maken van Hyper-V-generatie (gen1) 1 installatie kopieën in de Azure Shared Image Gallery (SIG) of een beheerde installatie kopie. Als u Gen2-installatie kopieën wilt maken, moet u een Gen2-bron installatie kopie gebruiken en distribueren naar VHD. Daarna moet u een beheerde installatie kopie maken van de VHD en deze in de SIG injecteren als een Gen2-installatie kopie.
  
 ## <a name="next-steps"></a>Volgende stappen 
  

@@ -3,13 +3,13 @@ title: Ondersteunde services en schema's voor Azure-resourcelogboeken
 description: Meer informatie over de ondersteunde services en het gebeurtenis schema voor Azure-resource Logboeken.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/15/2020
-ms.openlocfilehash: acd661467e90b4915daa2f3eb31f34fd350dc9f5
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/01/2020
+ms.openlocfilehash: d0f78b858da51838aacd9e3be9b0a069918710a7
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226460"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421914"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Algemeen en specifiek service schema voor Azure-resource logboeken
 
@@ -49,7 +49,7 @@ Het schema voor resource logboeken varieert afhankelijk van de categorie resourc
 | Service | & documenten voor schema |
 | --- | --- |
 | Azure Active Directory | [Overzicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), schema voor [audit logboeken](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) en [aanmeldingen](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
-| Analysis Services | https://docs.microsoft.com/azure/analysis-services/analysis-services-logging |
+| Analysis Services | [Azure Analysis Services-diagnostische logboek registratie instellen](../../analysis-services/analysis-services-logging.md) |
 | API Management | [API Management bron logboeken](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | Toepassingsgateways |[Logboek registratie voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log Analytics voor Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
@@ -64,8 +64,8 @@ Het schema voor resource logboeken varieert afhankelijk van de categorie resourc
 | Azure Data Explorer | [Azure Data Explorer-logboeken](/azure/data-explorer/using-diagnostic-logs) |
 | Azure Database for MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure Databricks | [Registratie in diagnoselogboek in Azure Databricks](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
-| Digital Twins | [Diagnostische gegevens Digital Apparaatdubbels instellen](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
+| Azure Databricks | [Registratie in diagnoselogboek in Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Digital Twins | [Diagnostische gegevens over Azure Digital Apparaatdubbels instellen](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-logboeken](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Het schema is niet beschikbaar. |
 | Azure Firewall | Het schema is niet beschikbaar. |
