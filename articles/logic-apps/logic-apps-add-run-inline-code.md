@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420121"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658166"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Code fragmenten toevoegen en uitvoeren met inline code in Azure Logic Apps
 
@@ -29,7 +29,7 @@ Als u een stukje code in uw logische app wilt uitvoeren, kunt u de ingebouwde **
 
 Met deze actie wordt het code fragment uitgevoerd en wordt de uitvoer van het fragment geretourneerd als een token met de naam **Result**, dat u in de volgende acties in uw logische app kunt gebruiken. Voor andere scenario's waarin u een functie voor uw code wilt maken, probeert u [een Azure-functie te maken en](../logic-apps/logic-apps-azure-functions.md) aan te roepen in uw logische app.
 
-In dit artikel wordt de logische app geactiveerd wanneer een nieuwe e-mail binnenkomt in een Office 365 Outlook-account. Het code fragment extraheert en retourneert alle e-mail adressen die worden weer gegeven in de hoofd tekst van de e-mail.
+In dit artikel wordt de logische app geactiveerd wanneer een nieuwe e-mail binnenkomt in een werk-of school account. Het code fragment extraheert en retourneert alle e-mail adressen die worden weer gegeven in de hoofd tekst van de e-mail.
 
 ![Voor beeld-overzicht](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
@@ -129,7 +129,7 @@ Het `workflowContext` object heeft deze structuur, die de `actions` `trigger` su
 
 Deze tabel bevat meer informatie over deze subeigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |----------|------|-------|
 | `actions` | Object verzameling | Resultaat objecten van acties die worden uitgevoerd voordat uw code fragment wordt uitgevoerd. Elk object heeft een *sleutel/waarde-* paar waarbij de sleutel de naam van een actie is en de waarde komt overeen met het aanroepen van de [functie Actions ()](../logic-apps/workflow-definition-language-functions-reference.md#actions) met `@actions('<action-name>')` . De naam van de actie gebruikt dezelfde actie naam die wordt gebruikt in de onderliggende werk stroom definitie, waardoor spaties ("") in de naam van de actie worden vervangen door onderstrepings tekens (_). Dit object biedt toegang tot actie-eigenschaps waarden van het huidige werk stroom exemplaar dat wordt uitgevoerd. |
 | `trigger` | Object | Resultaat object van de trigger en komt overeen met het aanroepen van de [trigger ()-functie](../logic-apps/workflow-definition-language-functions-reference.md#trigger). Dit object biedt toegang tot trigger eigenschaps waarden van het huidige werk stroom exemplaar dat wordt uitgevoerd. |

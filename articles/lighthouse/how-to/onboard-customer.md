@@ -3,12 +3,12 @@ title: Een klant onboarden in Azure Lighthouse
 description: Meer informatie over hoe u een klant kunt opsturen naar Azure Lighthouse, zodat de resources toegankelijk zijn en kunnen worden beheerd via uw eigen Tenant met behulp van Azure delegated resource management.
 ms.date: 08/20/2020
 ms.topic: how-to
-ms.openlocfilehash: db6a819c72f1ef46f542ed47cad6caae23c0d191
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719050"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483793"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Een klant onboarden in Azure Lighthouse
 
@@ -19,7 +19,7 @@ In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan onboar
 
 U kunt het onboarding-proces voor meerdere klanten herhalen. Wanneer een gebruiker met de juiste machtigingen zich aanmeldt bij uw beheer Tenant, kan die gebruiker worden toegestaan tussen de klant-pacht bereiken om beheer bewerkingen uit te voeren, zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
 
-Als u de gevolgen voor klant afspraken wilt bijhouden en de herkenning wilt ontvangen, koppelt u uw Microsoft Partner Network-ID (MPN) aan ten minste één gebruikers account dat toegang heeft tot elk van de kant-en-Board abonnementen. U moet deze koppeling uitvoeren in de Tenant van de service provider. Ter vereenvoudiging raden we u aan een Service-Principal-account te maken in uw Tenant die is gekoppeld aan uw MPN-ID, en de IT-lezer toegang te geven tot elke klant die u uitschakelt. Zie  [een partner-id koppelen aan uw Azure-accounts](../../cost-management-billing/manage/link-partner-id.md)voor meer informatie.
+Als u de gevolgen voor klant afspraken wilt bijhouden en de herkenning wilt ontvangen, koppelt u uw Microsoft Partner Network-ID (MPN) aan ten minste één gebruikers account dat toegang heeft tot elk van de kant-en-Board abonnementen. U moet deze koppeling uitvoeren in de Tenant van de service provider. We raden u aan een Service-Principal-account te maken in uw Tenant die is gekoppeld aan uw MPN-ID, waarna die Service-Principal elke keer dat u een klant opneemt. Zie [uw partner-id koppelen om het tegoed van de partner in te scha kelen op gedelegeerde resources](partner-earned-credit.md)voor meer informatie.
 
 > [!NOTE]
 > Klanten kunnen ook worden vrijgemaakt naar Azure Lighthouse wanneer ze een beheerde service aanbieding (openbaar of privé) aanschaffen die u [naar Azure Marketplace publiceert](publish-managed-services-offers.md). U kunt ook het voorbereidings proces gebruiken dat hier wordt beschreven, naast aanbiedingen die naar Azure Marketplace worden gepubliceerd.

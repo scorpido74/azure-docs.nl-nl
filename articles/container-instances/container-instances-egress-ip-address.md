@@ -3,14 +3,12 @@ title: Statisch uitgaand IP-adres configureren
 description: Azure firewall en door de gebruiker gedefinieerde routes configureren voor Azure Container Instances workloads die gebruikmaken van het open bare IP-adres van de firewall voor binnenkomend en uitgaand verkeer
 ms.topic: article
 ms.date: 07/16/2020
-author: dlepow
-ms.author: danlep
-ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023701"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566565"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Eén openbaar IP-adres configureren voor uitgaand en binnenkomend verkeer naar een container groep
 

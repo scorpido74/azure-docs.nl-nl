@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056519"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460317"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -82,7 +82,7 @@ AKS heeft HA-besturings plannen die verticaal schalen op basis van het aantal ke
     - https://github.com/helm/helm/issues/4543
 - **[Is intern verkeer tussen knoop punten geblokkeerd?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
-## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Ik ontvang `TCP timeouts` , zoals`dial tcp <Node_IP>:10250: i/o timeout`
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Ik ontvang `TCP timeouts` , zoals `dial tcp <Node_IP>:10250: i/o timeout`
 
 Deze time-outs kunnen betrekking hebben op het interne verkeer tussen knoop punten die worden geblokkeerd. Controleer of dit verkeer niet wordt geblokkeerd, bijvoorbeeld door [netwerk beveiligings groepen](concepts-security.md#azure-network-security-groups) op het subnet voor de knoop punten van uw cluster.
 
@@ -98,13 +98,17 @@ De reden voor de waarschuwingen is dat RBAC is ingeschakeld voor het cluster en 
 
 Zorg ervoor dat de poorten 22, 9000 en 1194 zijn geopend om verbinding te maken met de API-server. Controleer of de `tunnelfront` of `aks-link` pod wordt uitgevoerd in de *uitvoeren-systeem* naam ruimte met behulp van de `kubectl get pods --namespace kube-system` opdracht. Als dat niet het geval is, dwingt u het verwijderen van de pod af en wordt de computer opnieuw opgestart.
 
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Ik krijg `"tls: client offered only unsupported versions"` Mijn client bij het maken van verbinding met de AKS-API. Wat moet ik doen?
+
+De mini maal ondersteunde TLS-versie in AKS is TLS 1,2.
+
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Ik probeer een upgrade uit te voeren of te schalen en `"Changing property 'imageReference' is not allowed"` Er wordt een fout bericht weer. Dit probleem Hoe kan ik oplossen?
 
 Mogelijk krijgt u deze fout omdat u de tags in de agent knooppunten in het AKS-cluster hebt gewijzigd. Het wijzigen of verwijderen van tags en andere eigenschappen van resources in de MC_ *-resource groep kan leiden tot onverwachte resultaten. Als u de resources onder de groep MC_ * in het AKS-cluster wijzigt, wordt de serviceniveau doelstelling (SLO) verbroken.
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Er worden fouten weer ontvangen dat mijn cluster de status Mislukt heeft en het bijwerken of schalen werkt pas nadat het is opgelost
 
-*Deze probleemoplossings hulp wordt omgeleid vanhttps://aka.ms/aks-cluster-failed*
+*Deze probleemoplossings hulp wordt omgeleid van https://aka.ms/aks-cluster-failed*
 
 Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen invoeren. Volg de onderstaande stappen om de status van het cluster fout op te lossen voordat u de eerder mislukte bewerking opnieuw probeert uit te voeren:
 
@@ -115,7 +119,7 @@ Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen inv
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Er wordt een fout opgetreden bij het upgraden of schalen van de status die mijn cluster wordt bijgewerkt of waarvoor een upgrade is mislukt
 
-*Deze probleemoplossings hulp wordt omgeleid vanhttps://aka.ms/aks-pending-upgrade*
+*Deze probleemoplossings hulp wordt omgeleid van https://aka.ms/aks-pending-upgrade*
 
  U kunt niet tegelijkertijd een cluster of knooppunt groep upgraden en schalen. Elk bewerkings type moet in plaats daarvan op de doel resource worden voltooid vóór de volgende aanvraag voor die zelfde resource. Als gevolg hiervan zijn bewerkingen beperkt wanneer actieve upgrade of schaal bewerkingen worden uitgevoerd of geprobeerd. 
 
@@ -176,9 +180,9 @@ Gebruik de volgende tijdelijke oplossingen voor dit probleem:
 * Als u automatiserings scripts gebruikt, voegt u vertragingen toe tussen het maken van service-principals en het maken van AKS-clusters.
 * Als u Azure Portal gebruikt, keert u terug naar de cluster instellingen tijdens het maken en voert u de validatie pagina na een paar minuten opnieuw uit.
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>Ik krijg het `"AADSTS7000215: Invalid client secret is provided."` gebruik van AKS-API. Wat moet ik doen?
 
-
-
+Dit wordt meestal veroorzaakt door het vervallen van de referenties van de Service-Principal. [Werk de referenties voor een AKS-cluster bij.](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Ik ontvang fouten na het beperken van het uitgaande verkeer
 
@@ -220,7 +224,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | Kubernetes-versie | Vaste versie |
 |--|:--:|
 | 1,10 | 1.10.2 of hoger |
-| 1,11 | 1.11.0 of hoger |
+| 1.11 | 1.11.0 of hoger |
 | 1,12 en hoger | N.v.t. |
 
 

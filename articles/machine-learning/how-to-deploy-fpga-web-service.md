@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a5f56beb179f7c72fe66c7423999201f3460b143
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648782"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646299"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 
@@ -78,7 +78,7 @@ De **PBS-serie van Azure-vm's** bevat Intel Arria 10 fpga's. Het wordt weer gege
 
 ## <a name="deploy-models-on-fpgas"></a>Modellen implementeren op Fpga's
 
-U kunt een model als een webservice implementeren op Fpga's met [Azure Machine Learning modellen met hardwareversnelling](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py). Het gebruik van Fpga's biedt een dering van ultra lage latentie, zelfs met één batch grootte. Defactorion of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor de voor spelling, meestal op productie gegevens.
+U kunt een model als een webservice implementeren op Fpga's met [Azure Machine Learning modellen met hardwareversnelling](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true). Het gebruik van Fpga's biedt een dering van ultra lage latentie, zelfs met één batch grootte. Defactorion of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor de voor spelling, meestal op productie gegevens.
 
 Het implementeren van een model voor een FPGA bestaat uit de volgende stappen:
 
@@ -121,7 +121,7 @@ In dit voor beeld maakt u een tensor flow-grafiek om de invoer installatie kopie
     ```
 ### <a name="1-define-the-tensorflow-model"></a>1. het tensor flow-model definiëren
 
-Gebruik de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) om een service definitie te maken. Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken automatisch in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
+Gebruik de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) om een service definitie te maken. Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken automatisch in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
 
 1. Azure Machine Learning werk ruimte laden
 

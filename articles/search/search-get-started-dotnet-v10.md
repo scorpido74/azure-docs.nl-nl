@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002433"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462085"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Snelstartgids: een zoek index maken met behulp van de client bibliotheek micro soft. Azure. Search V10 toevoegen
 
@@ -27,7 +27,7 @@ Voor nieuwe oplossingen raden wij u aan de nieuwe Azure.Search.Documents-bibliot
 
 Maak een .NET core-console toepassing in C# die een Azure Cognitive Search-index maakt, laadt en opvraagt met behulp van Visual Studio en de [micro soft. Azure. Search-client bibliotheken](/dotnet/api/overview/azure/search/client10?view=azure-dotnet). 
 
-In dit artikel wordt uitgelegd hoe u de toepassing maakt. U kunt ook [de volledige toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10).
+In dit artikel wordt uitgelegd hoe u de toepassing maakt. U kunt ook [de volledige toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10).
 
 > [!NOTE]
 > In de demo code in dit artikel wordt gebruikgemaakt van de synchrone methoden van de Azure Cognitive Search versie 10 .NET SDK voor eenvoud. Voor productiescenario's wordt u echter aangeraden de asynchrone methoden in uw eigen toepassingen te gebruiken, zodat ze schaalbaar en responsief blijven. U kunt bijvoorbeeld `CreateAsync` en `DeleteAsync` gebruiken in plaats van `Create` en `Delete`.
@@ -107,9 +107,9 @@ Deze stap is vereist om zinvolle uitvoer te maken in de console. Wanneer u de re
 
 1. Voeg twee lege klassedefinities toe aan uw project: Address.Methods.cs, Hotel.Methods.cs
 
-1. In Address.Methods.cs overschrijft u de standaardinhoud met de volgende code, [regels 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
+1. In Address.Methods.cs overschrijft u de standaardinhoud met de volgende code, [regels 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. In Hotel.Methods.cs kopieert u [regels 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
+1. In Hotel.Methods.cs kopieert u [regels 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1 - Index maken
 

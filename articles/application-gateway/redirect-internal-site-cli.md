@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0730148a3da41d0d72961ea521577fa370b183d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806803"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596087"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Een toepassings gateway met interne omleiding maken met behulp van Azure CLI
 
@@ -21,14 +21,13 @@ U kunt de Azure CLI gebruiken voor het configureren van [omleiding van webverkee
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken
-> * Listeners en omleidings regel toevoegen
-> * Een schaalset voor virtuele machines maken met de back-end-groep
-> * Een CNAME-record in uw domein maken
+* Het netwerk instellen
+* Een toepassingsgateway maken
+* Listeners en omleidings regel toevoegen
+* Een schaalset voor virtuele machines maken met de back-end-groep
+* Een CNAME-record in uw domein maken
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +35,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -46,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken 
 
-Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). U kunt vervolgens het subnet met de naam *myBackendSubnet* toevoegen dat nodig is voor de back-end-groep van servers met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres *myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
+Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). U kunt vervolgens het subnet met de naam *myBackendSubnet* toevoegen dat nodig is voor de back-end-groep van servers met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres*myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -160,7 +159,7 @@ az network application-gateway rule delete \
   --resource-group myResourceGroupAG
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
+## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
 In dit voor beeld maakt u een schaalset voor virtuele machines die ondersteuning biedt voor de back-end-groep die u hebt gemaakt. De schaalset die u maakt, heeft de naam *myvmss* en bevat twee exemplaren van virtuele machines waarop u NGINX installeert.
 

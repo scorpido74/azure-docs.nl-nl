@@ -2,19 +2,19 @@
 title: Azure Automation Updatebeheer inschakelen vanuit het Automation-account
 description: In dit artikel leest u hoe u Updatebeheer kunt inschakelen vanuit een Automation-account.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 930861c61843c5963c83d8fa6dc1efdce20853f4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450245"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669510"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Updatebeheer inschakelen vanaf een Automation-account
 
-In dit artikel wordt beschreven hoe u uw Automation-account kunt gebruiken om de [updatebeheer](update-mgmt-overview.md) -functie voor vm's in uw omgeving in te scha kelen. Om Azure VM's in te schakelen op schaal, moet u een bestaande VM inschakelen met behulp van Updatebeheer.
+In dit artikel wordt beschreven hoe u uw Automation-account kunt gebruiken om de [updatebeheer](update-mgmt-overview.md) -functie voor vm's in uw omgeving in te scha kelen, inclusief computers of servers die zijn geregistreerd met [servers met Azure Arc-functionaliteit](../../azure-arc/servers/overview.md) (preview). Als u Azure-Vm's op schaal wilt inschakelen, moet u een bestaande Azure VM inschakelen met behulp van Updatebeheer.
 
 > [!NOTE]
 > Bij het inschakelen van Updatebeheer worden slechts bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte aan een Automation-account. Zie [Regio's toewijzen voor Automation-account en Log Analytics-werkruimte](../how-to/region-mappings.md) voor een lijst van alle ondersteunde toewijzingsparen.
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u uw Automation-account kunt gebruiken om de
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](../index.yml) voor het beheren van computers.
-* Een [virtuele machine](../../virtual-machines/windows/quick-create-portal.md).
+* Een [virtuele machine van Azure](../../virtual-machines/windows/quick-create-portal.md)of een VM of server die is geregistreerd bij servers met Arc-functionaliteit (preview). Voor niet-Azure-Vm's of-servers moet de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md) voor Windows of Linux geïnstalleerd zijn en worden gerapporteerd aan de werk ruimte die is gekoppeld aan het Automation-account updatebeheer is ingeschakeld in. De agent kan worden geïnstalleerd op servers met Arc-functionaliteit door de [azure log Analytics VM-extensie](../../azure-arc/servers/manage-vm-extensions.md) te implementeren met Azure Arc.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -65,16 +65,21 @@ Hand matig geïnstalleerde computers of machines die al aan uw werk ruimte rappo
 
     ![Opgeslagen Zoek opdrachten](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Als u Updatebeheer voor alle beschik bare computers wilt inschakelen, selecteert u op de pagina computers beheren de optie **inschakelen op alle beschik bare computers** . Met deze actie wordt het besturings element uitgeschakeld om computers afzonderlijk toe te voegen. Met deze taak worden alle namen van de computers die rapporteren aan de werk ruimte toegevoegd aan de computer groep opgeslagen Zoek query. Als u deze actie selecteert, wordt de knop **machines beheren** uitgeschakeld.
+3. Als u Updatebeheer wilt inschakelen voor alle beschik bare computers die rapporteren aan de werk ruimte, selecteert u **inschakelen op alle beschik bare computers** op de pagina machines beheren. Met deze actie wordt het besturings element uitgeschakeld om computers afzonderlijk toe te voegen. Met deze taak worden alle namen van de computers die rapporteren aan de werk ruimte toegevoegd aan de computer groep opgeslagen Zoek query `MicrosoftDefaultComputerGroup` . Als u deze actie selecteert, wordt de knop **machines beheren** uitgeschakeld.
 
-4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie worden de opgeslagen Zoek opdrachten en Scope configuraties uit de werk ruimte verwijderd en wordt de functie geopend voor alle Azure-en niet-Azure-computers die rapporteren aan de werk ruimte. Als u deze actie selecteert, wordt de knop **machines beheren** permanent uitgeschakeld, omdat er nog geen scope configuratie is.
+4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie wordt de opgeslagen Zoek-en Scope configuratie verwijderd uit de werk ruimte en kan de functie alle Azure-en niet-Azure-machines die momenteel of in de toekomst zijn opgenomen, rapporteren aan de werk ruimte. Als u deze actie selecteert, wordt de knop **machines beheren** permanent uitgeschakeld, omdat er geen scope configuratie beschikbaar is.
 
-5. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek opdrachten opnieuw toe te voegen. Zie [limiet updatebeheer-implementatie bereik](update-mgmt-scope-configuration.md)voor meer informatie.
+    > [!NOTE]
+    > Omdat met deze optie de opgeslagen Zoek opdrachten en Scope configuraties worden verwijderd binnen Log Analytics, is het belang rijk dat verwijderings vergrendelingen worden verwijderd uit de werk ruimte Log Analytics voordat u deze optie selecteert. Als dat niet het geval is, kan de optie de configuraties niet verwijderen en moet u ze hand matig verwijderen.
+
+5. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek query opnieuw toe te voegen. Zie [limiet updatebeheer-implementatie bereik](update-mgmt-scope-configuration.md)voor meer informatie.
 
 6. Als u de functie wilt inschakelen voor een of meer computers, selecteert u **inschakelen op geselecteerde computers** en selecteert u naast elke machine **toevoegen** . Met deze taak worden de geselecteerde computer namen toegevoegd aan de computer groep opgeslagen Zoek query voor de functie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [updates en patches voor uw virtuele machines beheren](update-mgmt-manage-updates-for-vm.md)voor meer informatie over het gebruik van updatebeheer voor vm's.
+
+* Zie [vm's verwijderen uit updatebeheer](update-mgmt-remove-vms.md)als u geen vm's of servers meer wilt beheren met updatebeheer.
 
 * Zie [Problemen met Updatebeheer oplossen](../troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.

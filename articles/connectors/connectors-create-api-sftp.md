@@ -1,21 +1,22 @@
 ---
-title: Verbinding maken met het SFTP-account
-description: Automatiseer taken en processen voor het bewaken, maken, beheren, verzenden en ontvangen van bestanden voor een SFTP-server via SSH met behulp van Azure Logic Apps
+title: Verbinding maken met het SFTP-account (afgeschaft)
+description: Taken en processen automatiseren voor het bewaken, maken, beheren, verzenden en ontvangen van bestanden voor een SFTP-server met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789270"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651415"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van Azure Logic Apps
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>SFTP-bestanden in Azure Logic Apps bewaken, maken en beheren
 
 > [!IMPORTANT]
 > Gebruik de [SFTP-SSH-connector](../connectors/connectors-sftp-ssh.md) als de SFTP-connector is afgeschaft. U kunt geen SFTP-triggers en acties meer selecteren in de ontwerp functie voor logische apps.
@@ -55,7 +56,7 @@ De SFTP-connector verwerkt alleen bestanden van *50 MB of kleiner* en biedt geen
 
 SFTP-triggers werken door het SFTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 
-| SFTP-client | Bewerking |
+| SFTP-client | Actie |
 |-------------|--------|
 | WinSCP | Ga naar **Opties**  >  **voor keuren**  >  **overdracht**  >  **bewerken**  >  **behouden tijds tempel**  >  **uitschakelen** |
 | FileZilla | Ga naar de **overdrachts**  >  **tijds tempels van overgebrachte bestanden**  >  **uitschakelen** |
@@ -113,10 +114,6 @@ Deze trigger start een werk stroom voor logische apps wanneer een bestand wordt 
 ### <a name="sftp-action-get-content"></a>SFTP-actie: inhoud ophalen
 
 Met deze actie wordt de inhoud van een bestand op een SFTP-server opgehaald. U kunt bijvoorbeeld de trigger uit het vorige voor beeld toevoegen en een voor waarde waaraan de inhoud van het bestand moet worden voldaan. Als de voor waarde waar is, kan de actie die de inhoud ophaalt worden uitgevoerd.
-
-## <a name="connector-reference"></a>Connector-verwijzing
-
-Raadpleeg de [referentie pagina](/connectors/sftpconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 

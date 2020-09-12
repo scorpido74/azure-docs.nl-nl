@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691391"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462578"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Een beheer hulpprogramma voor virtueel bureau blad (klassiek) van Windows met een Azure Resource Manager-sjabloon implementeren
 
@@ -98,7 +98,7 @@ Nadat u toestemming hebt gegeven voor de organisatie of voor een opgegeven gebru
 
 Volg deze instructies om het hulp programma te starten:
 
-1. Selecteer de Azure-app Services-resource met de naam die u in de sjabloon hebt gegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld. bijvoorbeeld  <https://rdmimgmtweb-210520190304.azurewebsites.net> .
+1. Selecteer de Azure-app Services-resource met de naam die u in de sjabloon hebt gegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld. bijvoorbeeld  `https://rdmimgmtweb-210520190304.azurewebsites.net` .
 2. Meld u aan met de referenties van uw Windows-virtueel bureau blad.
 3. Wanneer u wordt gevraagd om een Tenant groep te kiezen, selecteert u **standaard Tenant groep** in de vervolg keuzelijst.
 4. Wanneer u **standaard Tenant groep**selecteert, wordt er een menu aan de linkerkant van het venster weer gegeven. Zoek in dit menu de naam van uw Tenant groep en selecteer deze.

@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc21dc67dd6c686eedf307660a8d8b7afd60db71
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 879844efdc5c2b40f69ee5f79305d4dfa596fd27
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075847"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460725"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Een verwijderde SQL-groep herstellen met behulp van Azure Synapse Analytics
 
@@ -77,7 +77,7 @@ $RestoredDatabase.status
 
     ![Verwijderde data bases](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-01.png)
 
-4. Selecteer de verwijderde SQL Data Warehouse die u wilt herstellen.
+4. Selecteer de verwijderde Azure Synapse Analytics die u wilt herstellen.
 
     ![Verwijderde databases selecteren](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-11.png)
 

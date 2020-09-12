@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080689"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487297"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights gen1 Explorer
 
 In dit artikel worden de functies en opties beschreven voor de [Web-app](https://insights.timeseries.azure.com/)Azure time series Insights gen1 Explorer. De Azure Time Series Insights Explorer demonstreert de krachtige functies voor gegevens visualisatie die door de service worden geboden en kunnen worden geopend in uw eigen omgeving.
 
-Azure Time Series Insights is een volledig beheerde service voor analyse, opslag en visualisatie die het eenvoudig maakt om miljarden IoT-gebeurtenissen tegelijkertijd te verkennen en te analyseren. Het biedt u een wereld wijde weer gave van uw gegevens, waarmee u uw IoT-oplossing snel kunt valideren en dure uitval tijd kunt vermijden voor bedrijfskritische apparaten. U kunt verborgen trends ontdekken, afwijkings afwijkingen en hoofd oorzaken van analyses in vrijwel realtime uitvoeren. 
+Azure Time Series Insights is een volledig beheerde service voor analyse, opslag en visualisatie die het eenvoudig maakt om miljarden IoT-gebeurtenissen tegelijkertijd te verkennen en te analyseren. Het biedt u een wereld wijde weer gave van uw gegevens, waarmee u uw IoT-oplossing snel kunt valideren en dure uitval tijd kunt vermijden voor bedrijfskritische apparaten. U kunt verborgen trends ontdekken, afwijkings afwijkingen en hoofd oorzaken van analyses in vrijwel realtime uitvoeren.
 
 > [!TIP]
 > Lees de [Azure time series Insights Snelstartgids](time-series-quickstart.md)voor een rond leiding door de demonstratie omgeving.
@@ -41,7 +41,7 @@ Azure Time Series Insights is een volledig beheerde service voor analyse, opslag
 
 Voordat u Azure Time Series Insights Explorer kunt gebruiken, moet u het volgende doen:
 
-- Een Azure Time Series Insights omgeving maken. Lees voor meer informatie [hoe u aan de slag gaat met Azure time series Insights](./time-series-insights-get-started.md).
+- Een Azure Time Series Insights-omgeving maken. Lees voor meer informatie [hoe u aan de slag gaat met Azure time series Insights](./time-series-insights-get-started.md).
 - [Bied toegang](time-series-insights-data-access.md) tot uw account in de omgeving.
 - Voeg een [IOT-hub](time-series-insights-how-to-add-an-event-source-iothub.md) of [Event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) gebeurtenis bron toe.
 
@@ -71,10 +71,10 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Azure Ti
 
       - **Predikaat**: gebruik het predicaat om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door te selecteren of te klikken, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde typen operanden zijn onder andere:
 
-         |Bewerking  |Ondersteunde typen  |Opmerkingen  |
+         |Bewerking  |Ondersteunde typen  |Notities  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**, **DateTime**, **time span**       |         |
-         |**=**, **!=**,**<>**     | **Teken reeks**, **BOOL**, **Double**, **DateTime**, **time span**, **Null**        |         |
+         |**=**, **!=**, **<>**     | **Teken reeks**, **BOOL**, **Double**, **DateTime**, **time span**, **Null**        |         |
          |**Naast**     | **Teken reeks**, **BOOL**, **Double**, **DateTime**, **time span**, **Null**        |  Alle operanden moeten van hetzelfde type zijn of **Null** -constante zijn.        |
          |**BIEDT**     | **Tekenreeks**        |  Aan de rechter kant zijn alleen letterlijke teken reeksen van constanten toegestaan. Lege teken reeks en **Null** zijn niet toegestaan.       |
 
@@ -108,7 +108,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Azure Ti
 
 1. Gebruik de **heatmap** om snel unieke of afwijkende gegevens reeksen in een bepaalde query op te sporen. Er kan slechts één zoek term worden gevisualiseerd als een heatmap.
 
-    [![Gen1 Explorer heatmap grafieken](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Time Series Insights Explorer heatmap-grafiek ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Wanneer u gebeurtenissen bekijkt door te selecteren of met de rechter muisknop te klikken, wordt het deel venster **gebeurtenissen** beschikbaar gesteld. Hier kunt u al uw onbewerkte gebeurtenissen controleren en uw gebeurtenissen exporteren als JSON-of CSV-bestanden. Azure Time Series Insights worden alle onbewerkte gegevens opgeslagen.
 

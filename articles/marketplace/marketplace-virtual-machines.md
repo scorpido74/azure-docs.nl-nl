@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 04/15/2020
-ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 09/04/2020
+ms.openlocfilehash: cc6b040731cbeb7271d7a7c0de1c32fa2d007013
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837341"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484185"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Publicatie handleiding voor aanbiedingen van virtuele machines
 
 Het publiceren van installatie kopieën van virtuele machines (VM) is een van de belangrijkste manieren om een oplossing naar Azure Marketplace te publiceren. Gebruik deze hand leiding om inzicht te krijgen in de vereisten voor dit type aanbieding. 
 
-Aanbiedingen voor virtuele machines zijn transactie aanbiedingen die via Azure Marketplace worden geïmplementeerd en gefactureerd. Het aanroepen van een actie die een gebruiker ziet, is *nu downloaden*.
+Aanbiedingen voor virtuele machines zijn transactie aanbiedingen die via Azure Marketplace worden geïmplementeerd en gefactureerd. De optie voor de vermelding die een gebruiker ziet, is *nu downloaden*.
 
 ## <a name="free-trial"></a>Gratis proefversie 
 

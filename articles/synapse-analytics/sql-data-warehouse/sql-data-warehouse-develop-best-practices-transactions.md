@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb6dbde941d5a2f399aba55eec415c879e74384
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213496"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461202"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Trans acties in Synapse SQL optimaliseren
 
@@ -69,7 +69,7 @@ CTAS en invoegen... Selecteer beide bewerkingen voor bulksgewijs laden. Beide wo
 
 | Primaire index | Scenario voor laden | Modus logboek registratie |
 | --- | --- | --- |
-| Heap |Alle |**Minimaal** |
+| Heap |Elk |**Minimaal** |
 | Geclusterde index |Lege doel tabel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |Volledig |
@@ -419,4 +419,4 @@ Het beste scenario is om trans acties voor het wijzigen van de vlucht gegevens t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [trans acties in Synapse SQL](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatie niveaus en transactionele limieten.  Zie [SQL Data Warehouse aanbevolen procedures](sql-data-warehouse-best-practices.md)voor een overzicht van andere aanbevolen procedures.
+Zie [trans acties in Synapse SQL](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatie niveaus en transactionele limieten.  Zie [Aanbevolen procedures voor Azure Synapse Analytics](sql-data-warehouse-best-practices.md)voor een overzicht van andere aanbevolen procedures.

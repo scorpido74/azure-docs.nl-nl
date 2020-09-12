@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146773"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651263"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -110,7 +110,7 @@ Zie voor beelden van configuraties uitvoeren [een compute-doel gebruiken om uw m
 
 ### <a name="estimators"></a>Schattingen
 
-Om model training met populaire Frameworks mogelijk te maken, kunt u met de klasse Estimator eenvoudig uitvoer configuraties bouwen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) maken en gebruiken om trainings scripts te verzenden die gebruikmaken van een door u gekozen trainings raamwerk (zoals scikit-leren).
+Om model training met populaire Frameworks mogelijk te maken, kunt u met de klasse Estimator eenvoudig uitvoer configuraties bouwen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) maken en gebruiken om trainings scripts te verzenden die gebruikmaken van een door u gekozen trainings raamwerk (zoals scikit-leren).
 
 Zie voor meer informatie over schattingen [Train ml-modellen met schattingen](how-to-train-ml-models.md).
 
@@ -123,7 +123,9 @@ Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die
 
 ### <a name="logging"></a>Logboekregistratie
 
-Wanneer u uw oplossing ontwikkelt, gebruikt u de Azure Machine Learning python-SDK in uw python-script om wille keurige gegevens te registreren. Na de uitvoering voert u een query uit op de metrische gegevens om te bepalen of de uitvoering het model heeft geproduceerd dat u wilt implementeren.
+Azure Machine Learning registreert automatisch standaard waarden voor de uitvoering. U kunt echter ook [de python-SDK gebruiken om wille keurige metrieken te registreren](how-to-track-experiments.md).
+
+Er zijn meerdere manieren om uw logboeken weer te geven: uitvoerings status van bewaking in realtime of resultaten weer geven na voltooiing. Zie voor meer informatie [monitors en weer geven van ml run logs](how-to-monitor-view-training-logs.md).
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Als u automatisch schalen hebt ingeschakeld, wordt uw implementatie automatisch 
 
 Voor een voor beeld van het implementeren van een model als een webservice raadpleegt u [een installatie kopie classificatie model implementeren in azure container instances](tutorial-deploy-models-with-aml.md).
 
+#### <a name="real-time-endpoints"></a>Realtime-eind punten
+
+Wanneer u een getraind model in de ontwerp functie (preview-versie) implementeert, kunt u [het model als een real-time-eind punt implementeren](tutorial-designer-automobile-price-deploy.md). Een real-time eind punt ontvangt doorgaans één aanvraag via het REST-eind punt en retourneert een voor spelling in realtime. Dit is in tegens telling tot batch verwerking, waarbij meerdere waarden tegelijk worden verwerkt en de resultaten worden opgeslagen na voltooiing naar een gegevens opslag.
+
+#### <a name="pipeline-endpoints"></a>Pijplijneindpunten
+
+Met pijplijn eindpunten kunt u uw [ml-pijp lijnen](#ml-pipelines) via een rest-eind punt aanroepen. Met pijplijn eindpunten kunt u uw pijplijn werk stromen automatiseren.
+
+Een pijplijn eindpunt is een verzameling gepubliceerde pijp lijnen. Met deze logische organisatie kunt u meerdere pijp lijnen beheren en aanroepen met behulp van hetzelfde eind punt. Elke gepubliceerde pijp lijn in een pijp lijn-eind punt heeft een versie nummer. U kunt een standaard pijplijn selecteren voor het eind punt of een versie opgeven in de REST-aanroep.
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT-module-eind punten
 
 Een geïmplementeerd IoT-module-eind punt is een docker-container die uw model en het bijbehorende script of de gekoppelde toepassing en eventuele extra afhankelijkheden bevat. U implementeert deze modules met behulp van Azure IoT Edge op edge-apparaten.
@@ -212,12 +225,13 @@ U kunt de stappen van de pijp lijn herbruikbaresen en uitvoeren zonder de vorige
 
 ### <a name="studio"></a>Studio
 
-[Azure machine learning Studio](https://ml.azure.com) biedt een webweergave van alle artefacten in uw werk ruimte.  U kunt de resultaten en Details van uw gegevens sets, experimenten, pijp lijnen, modellen en eind punten weer geven.  U kunt ook reken resources en gegevens bronnen beheren in de Studio.
+[Azure machine learning Studio](overview-what-is-machine-learning-studio.md) biedt een webweergave van alle artefacten in uw werk ruimte.  U kunt de resultaten en Details van uw gegevens sets, experimenten, pijp lijnen, modellen en eind punten weer geven.  U kunt ook reken resources en gegevens bronnen beheren in de Studio.
 
-Studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken van Azure Machine Learning:
+De studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken van Azure Machine Learning:
 
 + [Azure machine learning Designer (preview)](concept-designer.md) om werk stroom stappen uit te voeren zonder code te schrijven
 + Webervaring voor [automatische machine learning](concept-automated-ml.md)
++ [Azure machine learning notitie blokken](how-to-run-jupyter-notebooks.md) om uw eigen code te schrijven en uit te voeren in geïntegreerde Jupyter-notebook servers.
 + [Gegevens label projecten](how-to-create-labeling-projects.md) voor het maken, beheren en bewaken van projecten voor het labelen van uw gegevens
 
 ### <a name="programming-tools"></a>Programmeer hulpprogramma's
@@ -226,7 +240,7 @@ Studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken van
 > De hulpprogram ma's die zijn gemarkeerd (preview) zijn momenteel beschikbaar als open bare preview.
 > De preview-versie wordt aangeboden zonder Service Level Agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-+  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview).
 + Gebruik [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) voor Automation.
 + De [Many Models Solution Accelerator](https://aka.ms/many-models) (preview) heeft Azure Machine Learning als basis en stelt u in staat om honderden, of zelfs duizenden machine Learning-modellen, te trainen, te gebruiken en te beheren.

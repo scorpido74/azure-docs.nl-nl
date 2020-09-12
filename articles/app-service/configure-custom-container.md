@@ -3,12 +3,12 @@ title: Een aangepaste Linux-container configureren
 description: Meer informatie over het configureren van een aangepaste Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 2f26f1b041b2d369b68aeb11755c8e8053862b16
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9a27abe5457cf8adf2963db545c629134ae53709
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082955"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566973"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Een aangepaste Linux-container voor Azure App Service configureren
 
@@ -54,7 +54,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 SSH maakt veilige communicatie tussen een container en een client mogelijk. Als u een aangepaste container SSH wilt ondersteunen, moet u deze toevoegen aan de Dockerfile zelf.
 
 > [!TIP]
-> Alle ingebouwde Linux-containers hebben de SSH-instructies toegevoegd aan hun afbeeldings opslagplaatsen. U kunt de volgende instructies door lopen met de [opslag plaatsNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) om te zien hoe deze er wordt ingeschakeld.
+> Alle ingebouwde Linux-containers hebben de SSH-instructies toegevoegd aan hun afbeeldings opslagplaatsen. U kunt de volgende instructies door lopen met de [ opslag plaatsNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) om te zien hoe deze er wordt ingeschakeld.
 
 - Gebruik de instructie [Run](https://docs.docker.com/engine/reference/builder/#run) om de SSH-server te installeren en stel het wacht woord voor het hoofd account in op `"Docker!"` . Voor een installatie kopie op basis van [Alpine Linux](https://hub.docker.com/_/alpine)hebt u bijvoorbeeld de volgende opdrachten nodig:
 
@@ -88,7 +88,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
     /usr/sbin/sshd
     ```
 
-    Voor een voor beeld ziet u hoe de standaard [containerNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) de SSH-server start.
+    Voor een voor beeld ziet u hoe de standaard [ containerNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) de SSH-server start.
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
@@ -147,6 +147,7 @@ Meerdere containers zijn momenteel beschikbaar als preview-versie. De volgende A
 
 - Verificatie / autorisatie
 - Beheerde identiteiten
+- CORS
 
 ### <a name="docker-compose-options"></a>Opties voor docker opstellen
 

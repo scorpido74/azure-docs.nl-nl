@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006292"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506624"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -274,6 +274,35 @@ Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de inhoud van h
 
 Hiermee wordt bevestigd dat de beveiliging is ingeschakeld voor de virtuele machine en de eerste back-up wordt geactiveerd volgens het beleids schema.
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>Schijven uitsluiten in back-ups van Azure VM
+
+Azure Backup biedt ook een manier om een back-up te maken van een subset schijven in azure VM. Meer informatie vindt u [hier](selective-disk-backup-restore.md). Als u tijdens het inschakelen van de beveiliging een selectief aantal schijven wilt maken, moet het volgende code fragment de [hoofd tekst](#example-request-body)van de aanvraag zijn tijdens het inschakelen van de beveiliging.
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+De lijst met schijven waarvan een back-up moet worden gemaakt, vindt u in de sectie uitgebreide eigenschappen van de hoofd tekst van de aanvraag.
+
+|Eigenschap  |Waarde  |
+|---------|---------|
+|diskLunList     | De lijst schijf LUN bevat een lijst met *lun's van gegevens schijven*. **Er wordt altijd een back-up van de besturingssysteem schijf gemaakt en deze hoeft niet te worden vermeld**.        |
+|IsInclusionList     | Moet **waar** zijn voor de lun's die moeten worden opgenomen tijdens het maken van een back-up. Als de waarde **False**is, worden de bovengenoemde lun's uitgesloten.         |
+
+Als de nood zaak echter alleen een back-up van de besturingssysteem schijf maakt, moeten _alle_ gegevens schijven worden uitgesloten. Een eenvoudige manier om te zeggen dat er geen gegevens schijven moeten worden opgenomen. De schijf LUN-lijst is dus leeg en de **IsInclusionList** is **waar**. U kunt ook zien wat de eenvoudigste manier is om een subset te selecteren: een paar schijven moet altijd worden uitgesloten of een paar schijven moeten altijd worden opgenomen. Kies de LUN-lijst en de waarde van de Booleaanse variabele dienovereenkomstig.
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Een back-up op aanvraag activeren voor een beveiligde Azure VM
 
 Zodra een virtuele machine van Azure is geconfigureerd voor back-up, worden er back-ups gemaakt volgens het beleids schema. U kunt wachten op de eerste geplande back-up of op elk gewenst moment een back-up op aanvraag activeren. Retentie voor back-ups op aanvraag is gescheiden van de Bewaar termijn van het back-upbeleid en kan worden opgegeven voor een bepaalde datum/tijd. Als u niets opgeeft, wordt ervan uitgegaan dat deze 30 dagen na de dag van de trigger voor back-up op aanvraag is.
@@ -389,7 +418,7 @@ Omdat de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoal
 
 Als u het beleid wilt wijzigen waarmee de virtuele machine wordt beveiligd, kunt u dezelfde indeling gebruiken als voor het inschakelen van de [beveiliging](#enabling-protection-for-the-azure-vm). Geef de nieuwe beleids-ID op in [de hoofd tekst van de aanvraag](#example-request-body) en verzend de aanvraag. Bijvoorbeeld: als u het beleid van testVM van Defaultpolicy bij wilt wijzigen in ProdPolicy, geeft u de ID ' ProdPolicy ' op in de aanvraag tekst.
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ Als u het beleid wilt wijzigen waarmee de virtuele machine wordt beveiligd, kunt
 ```
 
 Het antwoord heeft dezelfde indeling als vermeld voor het [inschakelen van beveiliging](#responses-to-create-protected-item-operation)
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>Schijven uitsluiten tijdens Azure VM-beveiliging
+
+Als er al een back-up van de virtuele machine van Azure wordt gemaakt, kunt u de lijst met schijven opgeven waarvan u een back-up wilt maken of die moet worden uitgesloten door het beveiligings beleid te wijzigen. De aanvraag alleen voorbereiden in dezelfde indeling als [schijven uitsluiten tijdens het inschakelen van de beveiliging](#excluding-disks-in-azure-vm-backup)
+
+> [!IMPORTANT]
+> De bovenstaande hoofd tekst van de aanvraag is altijd de laatste kopie van de gegevens schijven die moeten worden uitgesloten of opgenomen. Hiermee wordt de vorige configuratie niet *toegevoegd* . Bijvoorbeeld: als u de beveiliging voor het eerst bijwerkt als ' gegevens schijf 1 uitsluiten ' en vervolgens herhalen met ' gegevens schijf 2 uitsluiten ', *wordt alleen gegevens schijf 2 uitgesloten* in de volgende back-ups en gegevens schijf 1 worden opgenomen. Dit is altijd de laatste lijst die wordt opgenomen/uitgesloten in de volgende back-ups.
+
+Als u de huidige lijst met schijven die zijn uitgesloten of opgenomen, wilt ophalen, moet u de informatie over beveiligde items ophalen, zoals [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/get)wordt vermeld. In het antwoord wordt de lijst met gegevens schijf-Lun's verstrekt en wordt aangegeven of deze zijn opgenomen of uitgesloten.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Beveiliging stoppen, maar bestaande gegevens behouden
 

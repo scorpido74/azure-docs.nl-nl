@@ -14,19 +14,19 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1359acfb768f7ac2fa3527afd041595d313249d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d1dedfcd4a93446b615d84e86666059fd210c18
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669236"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485750"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Gebruik sjablonen van Azure Quick Start om een beschikbaarheids groep te configureren voor SQL Server op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt beschreven hoe u de Azure Quick Start-sjablonen gebruikt voor het gedeeltelijk automatiseren van de implementatie van een AlwaysOn-beschikbaarheids groep configuratie voor SQL Server virtuele machines (Vm's) in Azure. In dit proces worden twee Azure Quick Start-sjablonen gebruikt: 
 
-   | Template | Description |
+   | Template | Beschrijving |
    | --- | --- |
    | [101-SQL-VM-AG-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Hiermee wordt het Windows-failovercluster gemaakt en worden de SQL Server Vm's eraan gekoppeld. |
    | [101-SQL-VM-aglistener-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Hiermee maakt u de beschikbaarheids groep-listener en configureert u de interne load balancer. Deze sjabloon kan alleen worden gebruikt als het Windows-failovercluster is gemaakt met de sjabloon **101-SQL-VM-AG-Setup** . |
@@ -49,7 +49,7 @@ De volgende machtigingen zijn nodig voor het configureren van de always on-besch
 - Het domein gebruikers account dat SQL Server beheert. 
 
 
-## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>Stap 1: het failovercluster maken en SQL Server Vm's toevoegen aan het cluster met behulp van een Quick Start-sjabloon 
+## <a name="create-cluster"></a>Cluster maken
 Nadat uw SQL Server Vm's zijn geregistreerd bij de resource provider van de SQL-VM, kunt u uw SQL Server-Vm's toevoegen aan *SqlVirtualMachineGroups*. Met deze bron worden de meta gegevens van het Windows-failovercluster gedefinieerd. Meta gegevens bevatten de versie, editie, Fully Qualified Domain Name, Active Directory accounts voor het beheren van zowel het cluster als SQL Server en het opslag account als de cloudwitness. 
 
 Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups* Boots trapt de Windows failover cluster-service om het cluster te maken en voegt vervolgens deze SQL Server vm's toe aan dat cluster. Deze stap is geautomatiseerd met de sjabloon **101-SQL-VM-AG-Setup** Quick Start. U kunt het implementeren met behulp van de volgende stappen:
@@ -83,13 +83,25 @@ Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups
 > De referenties die tijdens de sjabloon implementatie worden gegeven, worden alleen opgeslagen voor de duur van de implementatie. Nadat de implementatie is voltooid, worden deze wacht woorden verwijderd. U wordt gevraagd deze weer te geven als u meer SQL Server Vm's aan het cluster toevoegt. 
 
 
-## <a name="step-2-manually-create-the-availability-group"></a>Stap 2: de beschikbaarheids groep hand matig maken 
+
+## <a name="validate-cluster"></a>Cluster valideren 
+
+Voor een failovercluster dat door micro soft wordt ondersteund, moet de cluster validatie worden door gegeven. Maak verbinding met de virtuele machine met behulp van uw voorkeurs methode, zoals Remote Desktop Protocol (RDP) en valideer of uw cluster valideert voordat u verder gaat. Als u dit niet doet, wordt de status van het cluster niet ondersteund. 
+
+U kunt het cluster valideren met behulp van Failoverclusterbeheer (FCM) of de volgende Power shell-opdracht:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
+
+
+## <a name="create-availability-group"></a>Beschikbaarheids groep maken 
 Maak de beschikbaarheids groep hand matig zoals u dat gewoonlijk zou doen met behulp van [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [Power shell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)of [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
 >[!IMPORTANT]
-> Maak op dit moment *geen* listener, omdat de sjabloon **101-SQL-VM-aglistener-Setup** Quick Start in stap 4 automatisch wordt uitgevoerd. 
+> Maak op dit moment *geen* listener, omdat de sjabloon **101-SQL-VM-aglistener-Setup**  Quick Start in stap 4 automatisch wordt uitgevoerd. 
 
-## <a name="step-3-manually-create-the-internal-load-balancer"></a>Stap 3: de interne load balancer hand matig maken
+## <a name="create-load-balancer"></a>Load balancer maken
 Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Azure Load Balancer vereist. De interne load balancer biedt een ' zwevend ' IP-adres voor de beschikbaarheids groep-listener die snellere failover en opnieuw verbinden mogelijk maakt. Als de SQL Server Vm's in een beschikbaarheids groep deel uitmaken van dezelfde beschikbaarheidsset, kunt u een basis load balancer gebruiken. Anders moet u een standaard load balancer gebruiken. 
 
 > [!IMPORTANT]
@@ -122,9 +134,9 @@ U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de
 >[!IMPORTANT]
 > De open bare IP-resource voor elke SQL Server virtuele machine moet een standaard-SKU hebben om compatibel te zijn met de standaard load balancer. Als u de SKU van de open bare IP-resource van de virtuele machine wilt bepalen, gaat u naar de **resource groep**, selecteert u de resource voor het **open bare IP-adres** voor de SQL Server virtuele machine en zoekt u de waarde onder **SKU** in het deel venster **overzicht** . 
 
-## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>Stap 4: de listener voor de beschikbaarheids groep maken en de interne load balancer configureren met behulp van de Quick Start-sjabloon
+## <a name="create-listener"></a>Listener maken 
 
-Maak de listener voor de beschikbaarheids groep en configureer de interne load balancer automatisch met behulp van de sjabloon **101-SQL-VM-aglistener-Setup** Quick Start. De sjabloon richt zich op de resource micro soft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Met de sjabloon **101-SQL-VM-aglistener-** start Quick Start, via de resource provider van de SQL-VM, worden de volgende acties uitgevoerd:
+Maak de listener voor de beschikbaarheids groep en configureer de interne load balancer automatisch met behulp van de sjabloon **101-SQL-VM-aglistener-Setup**  Quick Start. De sjabloon richt zich op de resource micro soft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Met de sjabloon  **101-SQL-VM-aglistener-** start Quick Start, via de resource provider van de SQL-VM, worden de volgende acties uitgevoerd:
 
 - Hiermee maakt u een nieuwe frontend-IP-bron (op basis van de IP-adres waarde die tijdens de implementatie is gegeven) voor de listener. 
 - Hiermee configureert u de netwerk instellingen voor het cluster en de interne load balancer. 
@@ -159,9 +171,9 @@ Ga als volgt te werk om de interne load balancer te configureren en de beschikba
 1. Als u uw implementatie wilt bewaken, selecteert u de implementatie in het pictogram **meldingen** Bell in het bovenste navigatie vaandel of gaat u naar de **resource groep** in de Azure Portal. Selecteer **implementaties** onder **instellingen**en kies de implementatie van **micro soft. Temp late** . 
 
 >[!NOTE]
->Als uw implementatie halverwege kan worden uitgevoerd, moet u [de zojuist gemaakte listener](#remove-the-availability-group-listener) hand matig verwijderen met behulp van Power shell voordat u de **101-SQL-VM-aglistener-Setup** Quick Start-sjabloon opnieuw implementeert. 
+>Als uw implementatie halverwege kan worden uitgevoerd, moet u [de zojuist gemaakte listener](#remove-listener) hand matig verwijderen met behulp van Power shell voordat u de **101-SQL-VM-aglistener-Setup** Quick Start-sjabloon opnieuw implementeert. 
 
-## <a name="remove-the-availability-group-listener"></a>De listener voor de beschikbaarheids groep verwijderen
+## <a name="remove-listener"></a>Listener verwijderen
 Als u later de beschikbaarheids groep wilt verwijderen dat de sjabloon is geconfigureerd, moet u de resource provider van de SQL-VM door lopen. Omdat de listener is geregistreerd via de resource provider van de SQL-VM, kunt u deze alleen verwijderen via SQL Server Management Studio onvoldoende. 
 
 U kunt de methode het beste verwijderen via de resource provider van de SQL-VM met behulp van het volgende code fragment in Power shell. Hiermee verwijdert u de meta gegevens van de beschikbaarheids groep van de resource provider van de SQL-VM. Ook wordt de listener fysiek uit de beschikbaarheids groep verwijderd. 
@@ -175,19 +187,15 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>Algemene fouten
 In deze sectie worden enkele bekende problemen en mogelijke oplossingen besproken. 
 
-### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>De beschikbaarheids groep-listener voor de beschikbaarheids groep \<AG-Name> bestaat al
-De geselecteerde beschikbaarheids groep die wordt gebruikt in de Azure Quick Start-sjabloon voor de beschikbaarheids groep-listener bevat al een listener. Het bevindt zich fysiek binnen de beschikbaarheids groep of de meta gegevens blijven binnen de resource provider van de SQL-VM. Verwijder de listener met behulp van [Power shell](#remove-the-availability-group-listener) voordat u de sjabloon **101-SQL-VM-aglistener-Setup** Snelstartgids opnieuw implementeert. 
+De **beschikbaarheids groep-listener voor de beschikbaarheids groep \<AG-Name> bestaat al** de geselecteerde beschikbaarheids groep die wordt gebruikt in de Azure Quick Start-sjabloon voor de listener van de beschikbaarheids groep bevat al een listener. Het bevindt zich fysiek binnen de beschikbaarheids groep of de meta gegevens blijven binnen de resource provider van de SQL-VM. Verwijder de listener met behulp van [Power shell](#remove-listener) voordat u de sjabloon **101-SQL-VM-aglistener-Setup** Snelstartgids opnieuw implementeert. 
 
-### <a name="connection-only-works-from-primary-replica"></a>De verbinding werkt alleen vanuit de primaire replica
-Dit gedrag is waarschijnlijk van een mislukte **101-SQL-VM-aglistener-installatie** sjabloon implementatie die de configuratie van de interne Load Balancer met een inconsistente status heeft verlaten. Controleer of de back-endadresgroep een lijst met beschikbaarheids sets bevat en of er regels bestaan voor de status test en voor de regels voor de taak verdeling. Als er iets ontbreekt, is de configuratie van de interne load balancer een inconsistente status. 
+De **verbinding werkt alleen vanuit de primaire replica** Dit gedrag is waarschijnlijk van een mislukte **101-SQL-VM-aglistener-installatie** sjabloon implementatie die de configuratie van de interne Load Balancer met een inconsistente status heeft verlaten. Controleer of de back-endadresgroep een lijst met beschikbaarheids sets bevat en of er regels bestaan voor de status test en voor de regels voor de taak verdeling. Als er iets ontbreekt, is de configuratie van de interne load balancer een inconsistente status. 
 
-U kunt dit probleem oplossen door de listener te verwijderen met behulp van [Power shell](#remove-the-availability-group-listener), de interne Load Balancer te verwijderen via de Azure Portal en opnieuw te beginnen bij stap 3. 
+U kunt dit probleem oplossen door de listener te verwijderen met behulp van [Power shell](#remove-listener), de interne Load Balancer te verwijderen via de Azure Portal en opnieuw te beginnen bij stap 3. 
 
-### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>Alleen-onjuiste aanvraag virtuele-machine lijst kan worden bijgewerkt
-Deze fout kan optreden wanneer u de sjabloon **101-SQL-VM-aglistener-Setup** implementeert als de listener is verwijderd via SQL Server Management Studio (SSMS), maar niet is verwijderd uit de resource provider van de SQL-VM. Als u de listener via SSMS verwijdert, worden de meta gegevens van de listener niet verwijderd uit de resource provider van de SQL-VM. De listener moet worden verwijderd van de resource provider via [Power shell](#remove-the-availability-group-listener). 
+**Alleen-onjuiste aanvraag virtuele-machine lijst kan worden bijgewerkt** Deze fout kan optreden wanneer u de sjabloon **101-SQL-VM-aglistener-Setup** implementeert als de listener is verwijderd via SQL Server Management Studio (SSMS), maar niet is verwijderd uit de resource provider van de SQL-VM. Als u de listener via SSMS verwijdert, worden de meta gegevens van de listener niet verwijderd uit de resource provider van de SQL-VM. De listener moet worden verwijderd van de resource provider via [Power shell](#remove-listener). 
 
-### <a name="domain-account-does-not-exist"></a>Het domein account bestaat niet
-Deze fout kan twee oorzaken hebben. Ofwel het opgegeven domein account bestaat niet of de [UPN-gegevens (User Principal Name)](/windows/desktop/ad/naming-properties#userprincipalname) ontbreken. De sjabloon **101-SQL-VM-AG-Setup** verwacht een domein account in het UPN-formulier (dat wil zeggen user@domain.com ), maar sommige domein accounts ontbreken mogelijk. Dit gebeurt meestal wanneer een lokale gebruiker is gemigreerd als het eerste domein beheerders account wanneer de server is gepromoveerd naar een domein controller of wanneer een gebruiker is gemaakt via Power shell. 
+Het **domein account bestaat niet** Deze fout kan twee oorzaken hebben. Ofwel het opgegeven domein account bestaat niet of de [UPN-gegevens (User Principal Name)](/windows/desktop/ad/naming-properties#userprincipalname) ontbreken. De sjabloon **101-SQL-VM-AG-Setup** verwacht een domein account in het UPN-formulier (dat wil zeggen user@domain.com ), maar sommige domein accounts ontbreken mogelijk. Dit gebeurt meestal wanneer een lokale gebruiker is gemigreerd als het eerste domein beheerders account wanneer de server is gepromoveerd naar een domein controller of wanneer een gebruiker is gemaakt via Power shell. 
 
 Controleer of het account bestaat. Als dat het geval is, wordt u mogelijk in de tweede situatie uitgevoerd. Ga als volgt te werk om het probleem op te lossen:
 
@@ -202,7 +210,6 @@ Controleer of het account bestaat. Als dat het geval is, wordt u mogelijk in de 
 6. Selecteer **Toep assen** om uw wijzigingen op te slaan en sluit het dialoog venster door **OK**te selecteren. 
 
 Nadat u deze wijzigingen hebt aangebracht, kunt u de Azure Quick Start-sjabloon nog één keer implementeren. 
-
 
 
 ## <a name="next-steps"></a>Volgende stappen

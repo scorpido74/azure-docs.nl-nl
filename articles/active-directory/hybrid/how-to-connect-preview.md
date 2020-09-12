@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7305fe8ee96697c5c8b2172e32a2a97e5bd6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358426"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657094"
 ---
 # <a name="more-details-about-features-in-preview"></a>Meer informatie over functies in Preview
 In dit onderwerp wordt beschreven hoe u functies kunt gebruiken die momenteel als preview-versie beschikbaar zijn.
 
 ## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
 
-We hebben een nieuw eind punt (API) voor Azure AD Connect geïmplementeerd, waarmee de prestaties van de synchronisatie service-bewerkingen voor Azure Active Directory worden verbeterd. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt biedt ook ondersteuning voor het synchroniseren van groepen met Maxi maal 250.000-leden. Met dit eind punt kunt u ook Unified groups van O365, zonder maximale lidmaatschaps limiet, naar uw on-premises Active Directory schrijven wanneer u groeps terugschrijven hebt ingeschakeld.   Zie [Azure AD Connect Sync v2-eind punt-API (open bare preview)](how-to-connect-sync-endpoint-api-v2.md)voor meer informatie.
+We hebben een nieuw eind punt (API) voor Azure AD Connect geïmplementeerd, waarmee de prestaties van de synchronisatie service-bewerkingen voor Azure Active Directory worden verbeterd. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt biedt ook ondersteuning voor het synchroniseren van groepen met Maxi maal 250.000-leden. Met dit eind punt kunt u ook een back-up maken van Microsoft 365 Unified groups, zonder maximale lidmaatschaps limiet, naar uw on-premises Active Directory, wanneer u groeps terugschrijven hebt ingeschakeld. Zie [Azure AD Connect Sync v2-eind punt-API (open bare preview)](how-to-connect-sync-endpoint-api-v2.md)voor meer informatie.
 
 ## <a name="user-writeback"></a>Gebruikers terugschrijven
 > [!IMPORTANT]

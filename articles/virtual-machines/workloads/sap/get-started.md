@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075950"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567075"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -62,23 +62,17 @@ In deze sectie van de documentatie worden verschillende aspecten van SAP HANA be
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver geïmplementeerd op virtuele machines van Azure
 In deze sectie vindt u de plannings-en implementatie documentatie voor SAP NetWeaver, SAP LaMa en Business One in Azure. De documentatie is gericht op de basis beginselen en het gebruik van niet-HANA-data bases met een SAP-werk belasting op Azure. De documenten en artikelen voor hoge Beschik baarheid zijn ook de basis voor SAP HANA hoge Beschik baarheid in azure
 
-Zie voor informatie over hoge Beschik baarheid van een SAP-werk belasting op Azure:
-
-- [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver](./sap-high-availability-guide-start.md)
-
+## <a name="sap-netweaver-and-s4hana-high-availability"></a>SAP NetWeaver en S/4HANA hoge Beschik baarheid
+Een hoge Beschik baarheid van SAP Application Layer en DBMS wordt beschreven in de details die beginnen met het document [Azure virtual machines hoge Beschik baarheid voor SAP NetWeaver](./sap-high-availability-guide-start.md)
 
 
-Zie voor informatie over de integratie tussen Azure Active Directory (Azure AD) en SAP-services en eenmalige aanmelding:
 
-- [Zelf studie: integratie Azure Active Directory met SAP-Cloud voor klant](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelf studie: integratie met SAP Cloud platform identiteits verificatie Azure Active Directory](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelfstudie: Azure Active Directory-integratie met SAP Cloud Platform](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelfstudie: Azure Active Directory-integratie met SAP NetWeaver](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelfstudie: Azure Active Directory-integratie met SAP Business ByDesign](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelfstudie: Azure Active Directory-integratie met SAP HANA](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Uw S/4HANA-omgeving: Fiori launchpad SAML eenmalige aanmelding met Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
+## <a name="integrate-azure-ad-with-sap-services"></a>Azure AD integreren met SAP-services
+In deze sectie vindt u informatie over het configureren van SSO met de meeste SAP SaaS-en PaaS-Services, NetWeaver en Fiori 
 
-Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
+
+
+## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>Documentatie over de integratie van Azure-Services in SAP-onderdelen
 
 - [SAP HANA gebruiken in Power BI Desktop](/power-bi/desktop-sap-hana)
 - [DirectQuery en SAP HANA](/power-bi/desktop-directquery-sap-hana)
@@ -88,6 +82,9 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 09/08/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SLES](./sap-hana-high-availability.md) om stonith definities te verduidelijken
+- 09/03/2020: Wijzig in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) om aan te passen aan een minimale 2 IOPS per capaciteit van 1 GB met een ultra schijf
+- 09/02/2020: Wijzig in [beschik bare sku's voor HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) voor meer doorzichtigheid in wat sku's Hana gecertificeerd zijn
 - 08/28/2020: wijziging in [ha voor SAP NW op Azure vm's op SLES met ANF](./high-availability-guide-suse-netapp-files.md) om type fouten op te lossen
 - 08/25/2020: wijziging in [ha-hand leiding voor SAP ASCS/SCS met wsfc en gedeelde schijf](./sap-high-availability-guide-wsfc-shared-disk.md), een [Azure-infra structuur voorbereiden voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-high-availability-infrastructure-wsfc-shared-disk.md) en [SAP NW ha installeren met wsfc en gedeelde schijf](./sap-high-availability-guide-wsfc-shared-disk.md) om de optie te gebruiken voor het gebruik van een gedeelde Azure-schijf en document SAP ERS2-architectuur
 - 08/25/2020: release van een [multi-sid ha-hand leiding voor SAP ASCS/SCS met WSFC-en Azure gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
@@ -110,19 +107,19 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 - 06/22/2020: Voeg installatie stappen voor nieuwe VM-extensie voor SAP toe aan de [implementatie handleiding](deployment-guide.md)
 - 06/16/2020: wijziging in [open bare-eindpunt connectiviteit voor vm's met behulp van Azure Standard ILB in SAP ha-scenario's](./high-availability-guide-standard-load-balancer-outbound-connections.md) om een koppeling toe te voegen aan SuSE open bare Cloud Infrastructure 101-documentatie 
 - 06/10/2020: nieuwe HLI-Sku's toevoegen aan [beschik bare sku's voor HLI](./hana-available-skus.md) en [SAP Hana (grote exemplaren) opslag architectuur](./hana-storage-architecture.md)
-- 05/21/2020: wijziging in het [instellen van pacemaker op sles in azure](./high-availability-guide-suse-pacemaker.md) en het [instellen van pacemaker op RHEL in azure](./high-availability-guide-rhel-pacemaker.md) om een koppeling toe te voegen aan [open bare-eindpunt connectiviteit voor Vm's met behulp van Azure Standard ILB in SAP ha-scenario's](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
-- 05/19/2020: belang rijk bericht toevoegen dat geen hoofd volume groep mag gebruiken bij gebruik van LVM voor HANA-gerelateerde volumes in [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md)
-- 05/19/2020: een nieuw ondersteund besturings systeem voor HANA grote instantie type II toevoegen in [compatibele besturings systemen voor Hana grote instanties](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance)
-- 05/12/2020: wijziging in [open bare-eindpunt connectiviteit voor vm's met behulp van Azure Standard ILB in SAP ha-scenario's](./high-availability-guide-standard-load-balancer-outbound-connections.md) om koppelingen bij te werken en informatie toe te voegen voor de firewall configuratie van een derde partij
-- 05/11/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SLES](./sap-hana-high-availability.md) om resource persistentie in te stellen op 0 voor de netcat-resource, omdat dit leidt tot meer gestroomlijnde failover 
-- 05/05/2020: wijzigingen in [Azure virtual machines planning en implementatie van SAP NetWeaver](./planning-guide.md) om aan te duiden dat Gen2-implementaties beschikbaar zijn voor Mv1 VM-familie
-- 04/24/2020: wijzigingen in [SAP Hana uitschalen met stand-by-knoop punt op virtuele machines van Azure met ANF op SLES](./sap-hana-scale-out-standby-netapp-files-suse.md), in [SAP Hana uitschalen met het stand-by-knoop punt op Azure vm's met ANF op RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), [hoge Beschik baarheid voor SAP net-Weaver](./high-availability-guide-suse-netapp-files.md) op Azure Vm's op SLES met ANF en [hoge Beschik baarheid voor SAP](./high-availability-guide-rhel-netapp-files.md) NetWeaver op Azure vm's op RHEL met ANF
-- 04/22/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SLES](./sap-hana-high-availability.md) om meta kenmerk `is-managed` uit de instructies te verwijderen, omdat het een conflict veroorzaakt met het plaatsen van het cluster in of uit de onderhouds modus
-- 04/21/2020: SQL Azure DB toegevoegd als ondersteund DBMS voor SAP (Hybris) commerce platform 1811 en hoger in artikelen [wat SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md) en [SAP-certificeringen en-configuraties die worden uitgevoerd op Microsoft Azure](./sap-certifications.md)
-- 04/16/2020: SAP HANA als ondersteund DBMS voor SAP (Hybris) commerce platform in artikelen toegevoegd [wat SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md) en [SAP-certificeringen en-configuraties die worden uitgevoerd op Microsoft Azure](./sap-certifications.md)
-- 04/13/2020: correct naar exacte SAP ASE-release nummers in [SAP ASE Azure virtual machines DBMS-implementatie voor SAP-workload](./dbms_guide_sapase.md)
-- 04/07/2020: wijziging in instellen van [pacemaker op sles in azure](./high-availability-guide-suse-pacemaker.md) om de Cloud-netconfig-Azure-instructies te verduidelijken
-- 04/06/2020: wijzigingen in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) en in [SAP Hana uitschalen met stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md) om verwijzingen naar NetApp [tr-4435](https://www.netapp.com/us/media/tr-4746.pdf) te verwijderen (vervangen door [tr-4746](https://www.netapp.com/us/media/tr-4746.pdf))
+- Mei 21 2020: wijzigen in instellen van [pacemaker op sles in azure](./high-availability-guide-suse-pacemaker.md) en [PACEMAKER instellen op RHEL in azure](./high-availability-guide-rhel-pacemaker.md) om een koppeling toe te voegen aan [open bare-eindpunt connectiviteit voor Vm's met behulp van Azure Standard ILB in SAP ha-scenario's](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
+- Mei 19 2020: een belang rijk bericht toevoegen dat geen hoofd volume groep gebruikt bij het gebruik van LVM voor HANA-gerelateerde volumes in [SAP Hana opslag configuraties voor de virtuele Azure-machine](./hana-vm-operations-storage.md)
+- Mei 19 2020: toevoegen van een nieuw ondersteund besturings systeem voor HANA grote instantie type II in [compatibele besturings systemen voor Hana grote instanties](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance)
+- Mei 12 2020: wijziging in de [connectiviteit van open bare eind punten voor vm's met behulp van Azure Standard ILB in SAP ha-scenario's](./high-availability-guide-standard-load-balancer-outbound-connections.md) om koppelingen bij te werken en informatie toe te voegen voor Firewall configuratie van een derde partij
+- Mei 11 2020: Wijzig in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SLES](./sap-hana-high-availability.md) om de resource persistentie in te stellen op 0 voor de netcat-resource, omdat dit leidt tot meer gestroomlijnde failover 
+- Mei 05 2020: wijzigingen in [Azure virtual machines planning en implementatie van SAP NetWeaver](./planning-guide.md) om aan te duiden dat Gen2-implementaties beschikbaar zijn voor Mv1 VM-familie
+- 24 2020 april: wijzigingen in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met ANF op SLES](./sap-hana-scale-out-standby-netapp-files-suse.md), in [SAP Hana uitschalen met het stand-by-knoop punt op Azure vm's met ANF op RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), [hoge Beschik baarheid voor SAP NetWeaver](./high-availability-guide-suse-netapp-files.md) op Azure Vm's op SLES met ANF en [hoge Beschik baarheid voor SAP](./high-availability-guide-rhel-netapp-files.md) NetWeaver op Azure vm's in RHEL met ANF
+- 22 2020 april: Wijzig in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SLES](./sap-hana-high-availability.md) om meta kenmerk `is-managed` uit de instructies te verwijderen, omdat het een conflict veroorzaakt met het plaatsen van het cluster in of uit de onderhouds modus
+- 21 2020 april: SQL Azure DB toegevoegd als ondersteund DBMS voor SAP (Hybris) commerce platform 1811 en hoger in artikelen [wat SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md) en [SAP-certificeringen en-configuraties die worden uitgevoerd op Microsoft Azure](./sap-certifications.md)
+- 16 2020 april: SAP HANA als ondersteund DBMS voor SAP (Hybris) commerce platform in artikelen toegevoegd [wat SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md) en [SAP-certificeringen en-configuraties die worden uitgevoerd op Microsoft Azure](./sap-certifications.md)
+- 13 2020 april: corrigeren op exacte SAP ASE-release nummers in [SAP ASE Azure virtual machines DBMS-implementatie voor SAP-workload](./dbms_guide_sapase.md)
+- 07 2020 april: wijzigen in instellen van [pacemaker op sles in azure](./high-availability-guide-suse-pacemaker.md) om Cloud-netconfig-Azure-instructies te verduidelijken
+- 06 2020 april: wijzigingen in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) en in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md) om verwijzingen naar NetApp [tr-4435](https://www.netapp.com/us/media/tr-4746.pdf) te verwijderen (vervangen door [tr-4746](https://www.netapp.com/us/media/tr-4746.pdf))
 - 31 maart 2020: wijziging in [hoge Beschik baarheid van SAP Hana op Azure-vm's op SLES](./sap-hana-high-availability.md) en [hoge Beschik baarheid van SAP Hana op Azure vm's op RHEL](./sap-hana-high-availability-rhel.md) om instructies toe te voegen hoe Stripe-grootte moet worden opgegeven bij het maken van striped volumes
 - 27 maart 2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES met ANF for SAP-toepassingen](./high-availability-guide-suse-netapp-files.md) om de opties voor het bestands systeem te koppelen aan NetApp TR-4746 (de optie synchronisatie koppelen verwijderen)
 - 26 maart 2020: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's in de SLES-hand leiding voor multi-sid](./high-availability-guide-suse-multi-sid.md) om referentie toe te voegen aan NetApp TR-4746

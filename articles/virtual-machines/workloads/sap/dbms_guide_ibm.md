@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649609"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461958"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
 
@@ -56,7 +56,8 @@ Raadpleeg SAP Note [1928533]voor informatie over ondersteunde SAP-producten en t
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 Raadpleeg het artikel [Azure Storage typen voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) voor een overzicht van Azure Storage-typen voor SAP-werk belasting. alle database bestanden moeten worden opgeslagen op gekoppelde schijven van Azure Block Storage (Windows: NFFS, Linux: xfs, ext4 of ext3). Elk type netwerk station of externe shares zoals de volgende Azure-Services worden **niet** ondersteund voor database bestanden: 
 
-* [Microsoft Azure-bestands service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure-bestands service](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Door gebruik te maken van schijven op basis van de BLOB-opslag of Managed Disks van Azure-pagina's, zijn de instructies [voor de implementatie van azure virtual machines DBMS voor SAP-workload](dbms_guide_general.md) ook van toepassing op implementaties met de DB2-DBMS.
@@ -71,7 +72,7 @@ U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en 
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met behulp van de para meter `-LogicalSectorSizeDefault` . Voor meer informatie raadpleegt u <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Voor de schijven met de Db2-opslag paden voor uw `sapdata` en `saptmp` mappen, moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met behulp van de para meter `-LogicalSectorSizeDefault` . Voor meer informatie raadpleegt u <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Voor virtuele machines uit de M-serie van Azure kan de latentie die in de transactie Logboeken wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor de Db2-transactie Logboeken. Details kunnen worden gelezen in het document [Write Accelerator](../../how-to-enable-write-accelerator.md).
 
@@ -175,7 +176,7 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn van toepassing zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) voor implementaties van vm's met de IBM-data base.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

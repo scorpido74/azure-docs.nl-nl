@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998069"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461507"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning gegevens sets maken op basis van Azure open gegevens sets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,7 +111,7 @@ U kunt ook Azure Machine Learning gegevens sets maken op basis van Azure open ge
 
     ![Gegevensset kiezen](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de **open bare feest dagen** de periode tot één jaar en de land code naar alleen de Verenigde Staten. Zie de [catalogus Azure open data sets](https://azure.microsoft.com/services/op[en-datasets/catalog/) voor gegevens details, zoals veld beschrijvingen en datumbereiken. Selecteer **Maken**.
+1. Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de **open bare feest dagen** de periode tot één jaar en de land code naar alleen de Verenigde Staten. Zie de [catalogus Azure open data sets](https://azure.microsoft.com/services/open-datasets/catalog) voor gegevens details, zoals veld beschrijvingen en datumbereiken. Selecteer **Maken**.
 
     ![Gegevensset-para meters instellen en gegevensset maken](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

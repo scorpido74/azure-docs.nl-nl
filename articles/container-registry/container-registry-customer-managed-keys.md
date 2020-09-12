@@ -2,14 +2,14 @@
 title: Versleuteling-at-rest met een door de klant beheerde sleutel
 description: Meer informatie over het versleutelen van uw Azure container Registry en het versleutelen van uw Premium-REGI ster met een door de klant beheerde sleutel die is opgeslagen in Azure Key Vault
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/26/2020
 ms.custom: ''
-ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225883"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487229"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>REGI ster versleutelen met een door de klant beheerde sleutel
 
@@ -22,10 +22,14 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 
 ## <a name="things-to-know"></a>Dingen die u moet weten
 
-* U kunt momenteel alleen een door de klant beheerde sleutel inschakelen wanneer u een REGI ster maakt.
-* Nadat u een door de klant beheerde sleutel in een REGI ster hebt ingeschakeld, kunt u deze niet uitschakelen.
+* U kunt momenteel alleen een door de klant beheerde sleutel inschakelen wanneer u een REGI ster maakt. Wanneer u de sleutel inschakelt, configureert u een door de *gebruiker toegewezen* beheerde identiteit voor toegang tot de sleutel kluis.
+* Nadat u versleuteling hebt ingeschakeld met een door de klant beheerde sleutel in een REGI ster, kunt u de versleuteling niet uitschakelen.  
 * [Inhouds vertrouwen](container-registry-content-trust.md) wordt momenteel niet ondersteund in een REGI ster dat is versleuteld met een door de klant beheerde sleutel.
 * In een REGI ster dat is versleuteld met een door de klant beheerde sleutel, worden logboeken voor [ACR-taken](container-registry-tasks-overview.md) alleen 24 uur bewaard. Als u logboeken gedurende een langere periode wilt bewaren, raadpleegt u richt lijnen voor het [exporteren en opslaan van Logboeken](container-registry-tasks-logs.md#alternative-log-storage)voor het uitvoeren van taken.
+
+
+> [!NOTE]
+> Als de toegang tot uw Azure-sleutel kluis is beperkt met een virtueel netwerk met een [Key Vault firewall](../key-vault/general/network-security.md), zijn er extra configuratie stappen nodig. Nadat u het REGI ster hebt gemaakt en de door de klant beheerde sleutel hebt ingeschakeld, stelt u toegang tot de sleutel in met de door het *systeem toegewezen* beheerde identiteit van het REGI ster en configureert u het REGI ster om de Key Vault firewall over te slaan. Volg de stappen in dit artikel eerst om versleuteling in te scha kelen met een door de klant beheerde sleutel en raadpleeg vervolgens de richt lijnen voor [geavanceerde scenario: Key Vault firewall](#advanced-scenario-key-vault-firewall) verderop in dit artikel.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -372,7 +376,7 @@ Nadat u een door de klant beheerde sleutel in een REGI ster hebt ingeschakeld, k
 
 ## <a name="rotate-key"></a>Toets draaien
 
-Roteer een door de klant beheerde sleutel die wordt gebruikt voor register versleuteling naar uw nalevings beleid. Maak een nieuwe sleutel of werk een sleutel versie bij en werk vervolgens het REGI ster bij om gegevens te versleutelen met behulp van de sleutel. U kunt deze stappen uitvoeren met behulp van de Azure CLI of in de portal.
+Een door de klant beheerde sleutel die wordt gebruikt voor register versleuteling, draaien volgens uw nalevings beleid. Maak een nieuwe sleutel of werk een sleutel versie bij en werk vervolgens het REGI ster bij om gegevens te versleutelen met behulp van de sleutel. U kunt deze stappen uitvoeren met behulp van de Azure CLI of in de portal.
 
 Wanneer u een sleutel draait, geeft u meestal dezelfde identiteit op die wordt gebruikt bij het maken van het REGI ster. U kunt desgewenst een nieuwe door de gebruiker toegewezen identiteit configureren voor sleutel toegang of de door het systeem toegewezen identiteit van het REGI ster inschakelen en opgeven.
 
@@ -439,9 +443,15 @@ az keyvault delete-policy \
 
 Als u de sleutel intrekt, wordt de toegang tot alle register gegevens geblokkeerd omdat het REGI ster geen toegang kan krijgen tot de versleutelings sleutel. Als de toegang tot de sleutel is ingeschakeld of de verwijderde sleutel is hersteld, wordt de sleutel door het REGI ster gekozen, zodat u opnieuw toegang tot de versleutelde register gegevens kunt krijgen.
 
-## <a name="advanced-scenarios"></a>Geavanceerde scenario's
+## <a name="advanced-scenario-key-vault-firewall"></a>Geavanceerd scenario: Key Vault firewall
 
-### <a name="system-assigned-identity"></a>Door het systeem toegewezen identiteit
+Als uw Azure-sleutel kluis is geïmplementeerd in een virtueel netwerk met een Key Vault firewall, moet u de volgende aanvullende stappen uitvoeren nadat u door de klant beheerde sleutel versleuteling in uw REGI ster hebt ingeschakeld.
+
+1. Register versleuteling configureren om de door het systeem toegewezen identiteit van het REGI ster te gebruiken
+1. Het REGI ster inschakelen om de Key Vault firewall over te slaan
+1. De door de klant beheerde sleutel draaien
+
+### <a name="configure-system-assigned-identity"></a>Door het systeem toegewezen identiteit configureren
 
 U kunt de door het systeem toegewezen beheerde identiteit van een REGI ster configureren voor toegang tot de sleutel kluis voor versleutelings sleutels. Als u niet bekend bent met de verschillende beheerde identiteiten voor Azure-resources, raadpleegt u het [overzicht](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -466,14 +476,18 @@ De versleutelings instellingen van het REGI ster bijwerken voor het gebruik van 
 1. Selecteer onder **instellingen**de optie **versleutelings**  >  **sleutel wijzigen**.
 1. In **identiteit**selecteert u **systeem toegewezen**en selecteert u **Opslaan**.
 
-### <a name="key-vault-firewall"></a>Key Vault firewall
+### <a name="enable-key-vault-bypass"></a>Schakel overs laan voor sleutel kluis
 
-Als uw Azure-sleutel kluis is geïmplementeerd in een virtueel netwerk met een Key Vault firewall, voert u de volgende stappen uit:
+Om toegang te krijgen tot een sleutel kluis die is geconfigureerd met een Key Vault firewall, moet het REGI ster de firewall omzeilen. Configureer de sleutel kluis om toegang door elke [vertrouwde service](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)toe te staan. Azure Container Registry is een van de vertrouwde services.
 
-1. Register versleuteling configureren om de door het systeem toegewezen identiteit van het REGI ster te gebruiken. Zie de voor gaande sectie.
-2. Configureer de sleutel kluis om toegang door elke [vertrouwde service](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)toe te staan.
+1. Navigeer in de portal naar uw sleutel kluis.
+1. Selecteer **instellingen**  >  **netwerken**.
+1. De instellingen van het virtuele netwerk bevestigen, bijwerken of toevoegen. Zie [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/general/network-security.md)voor gedetailleerde stappen.
+1. In **micro soft-vertrouwde services toestaan deze firewall te omzeilen**, selecteert u **Ja**. 
 
-Zie [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/general/network-security.md)voor gedetailleerde stappen.
+### <a name="rotate-the-customer-managed-key"></a>De door de klant beheerde sleutel draaien
+
+Nadat u de voor gaande stappen hebt voltooid, roteert u de sleutel naar een nieuwe sleutel in de sleutel kluis achter een firewall. Zie voor stappen de [toets](#rotate-key) in dit artikel draaien voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

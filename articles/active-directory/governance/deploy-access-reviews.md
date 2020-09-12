@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011341"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461031"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
 
@@ -93,7 +93,7 @@ Voor toegangs beoordelingen neemt u waarschijnlijk vertegenwoordigers uit de vol
 
 * **IT-beheer** beheert uw IT-infra structuur en beheert uw Cloud investeringen en SaaS-apps (Software as a Service). Dit team doet het volgende:
 
-   * Bekijk de bevoegde toegang tot de infra structuur en apps, waaronder Office 365 en Azure AD.
+   * Bekijk de bevoegde toegang tot de infra structuur en apps, waaronder Microsoft 365 en Azure AD.
 
    * Toegangs beoordelingen plannen en uitvoeren voor groepen die worden gebruikt voor het onderhouden van uitzonderings lijsten of IT-pilot projecten, om actuele toegangs lijsten te onderhouden.
 
@@ -180,7 +180,7 @@ Typische doelen voor controle zijn onder andere:
 
 * [Toepassingen die zijn geïntegreerd met Azure AD voor eenmalige aanmelding](../manage-apps/what-is-application-management.md) (zoals SaaS, line-of-Business).
 
-* Groepslid [maatschap](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (gesynchroniseerd met Azure AD of gemaakt in azure AD of Office 365, inclusief micro soft teams).
+* Groepslid [maatschap](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (gesynchroniseerd met Azure AD of gemaakt in azure ad of Microsoft 365, inclusief micro soft teams).
 
 * [Toegangs pakket](/azure/active-directory/governance/entitlement-management-overview) waarmee resources (groepen, apps en sites) in één pakket worden gegroepeerd om de toegang te beheren.
 
@@ -192,10 +192,10 @@ De administratieve rol die vereist is voor het maken, beheren of lezen van een t
 
 | Resourcetype| Toegangs beoordelingen maken en beheren (makers)| Resultaten van de toegangs beoordeling lezen |
 | - | - | -|
-| Groep of toepassing| Globale beheerder <p>Gebruikers beheerder| Makers en beveiligings beheerder |
-| Geprivilegieerde rollen in azure AD| Globale beheerder <p>Beheerder van geprivilegieerde rol| makers <p>Beveiligingslezer<p>Beveiligingsbeheer |
-| Geprivilegieerde rollen in azure (resources)| Globale beheerder<p>Gebruikers beheerder<p>Resource-eigenaar| makers |
-| Toegangs pakket| Globale beheerder<p>Maker van het toegangs pakket| Alleen globale beheerder |
+| Groep of toepassing| Hoofdbeheerder <p>Gebruikers beheerder| Makers en beveiligings beheerder |
+| Geprivilegieerde rollen in azure AD| Hoofdbeheerder <p>Beheerder van geprivilegieerde rol| makers <p>Beveiligingslezer<p>Beveiligingsbeheer |
+| Geprivilegieerde rollen in azure (resources)| Hoofdbeheerder<p>Gebruikers beheerder<p>Resource-eigenaar| makers |
+| Toegangs pakket| Hoofdbeheerder<p>Maker van het toegangs pakket| Alleen globale beheerder |
 
 
 Zie [machtigingen voor beheerdersrol in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie.
@@ -304,7 +304,7 @@ Open het tabblad levenscyclus om omlaag te schuiven naar toegangs Beoordelingen.
 
 ## <a name="plan-access-reviews-for-groups"></a>Toegangs Beoordelingen voor groepen plannen
 
-Naast de toegangs pakketten is het lidmaatschap van de groep de meest efficiënte manier om toegang te beheren. U wordt aangeraden toegang tot resources toe te wijzen via [beveiligings groepen of Office 365-groepen](../fundamentals/active-directory-manage-groups.md), en die gebruikers worden toegevoegd aan deze groepen om toegang te krijgen.
+Naast de toegangs pakketten is het lidmaatschap van de groep de meest efficiënte manier om toegang te beheren. U wordt aangeraden toegang tot resources toe te wijzen via [beveiligings groepen of Microsoft 365 groepen](../fundamentals/active-directory-manage-groups.md), en die gebruikers worden toegevoegd aan deze groepen om toegang te krijgen.
 
 Aan één groep kan toegang worden verleend tot alle relevante resources. U kunt de groep toegang verlenen tot afzonderlijke resources of een toegangs pakket waarmee toepassingen en andere resources worden gegroepeerd. Met deze methode kunt u de toegang tot de groep controleren in plaats van de toegang van een persoon tot elke toepassing. 
 
@@ -322,9 +322,9 @@ Groepslid maatschap kan worden gecontroleerd door:
 
 We raden aan dat groeps eigenaren het lidmaatschap bekijken, omdat ze het beste zijn gevestigd om te weten wie toegang nodig heeft. Eigendom van groepen wijkt af van het type groep:
 
-Groepen die zijn gemaakt in Office 365 en Azure AD, hebben een of meer goed gedefinieerde eigen aren. In de meeste gevallen maken deze eigen aren perfecte revisoren voor hun eigen groepen, wanneer ze weten wie er toegang moet hebben. 
+Groepen die zijn gemaakt in Microsoft 365 en Azure AD hebben een of meer goed gedefinieerde eigen aren. In de meeste gevallen maken deze eigen aren perfecte revisoren voor hun eigen groepen, wanneer ze weten wie er toegang moet hebben. 
 
-Micro soft-teams gebruiken bijvoorbeeld Office 365-groepen als het onderliggende autorisatie model om gebruikers toegang te verlenen tot resources in share point, Exchange, OneNote of andere services van Office 365. De maker van het team wordt automatisch eigenaar en moet verantwoordelijk zijn voor het samen stellen van het lidmaatschap van die groep. 
+Micro soft-teams gebruiken bijvoorbeeld Microsoft 365 groepen als het onderliggende autorisatie model om gebruikers toegang te verlenen tot resources in share point, Exchange, OneNote of andere Microsoft 365 Services. De maker van het team wordt automatisch eigenaar en moet verantwoordelijk zijn voor het samen stellen van het lidmaatschap van die groep. 
 
 Groepen die hand matig zijn gemaakt in de Azure AD-portal of via scripting via Microsoft Graph, hebben mogelijk niet noodzakelijkerwijs eigen aars gedefinieerd. We raden u aan deze te definiëren via de Azure AD-Portal in de sectie eigen aren van de groep of via Graph.
 
@@ -393,7 +393,7 @@ Toegangs beoordelingen kunnen gelden voor de leden van een groep of voor gebruik
 
 Met toegangs beoordelingen kunnen revisoren worden verklaard of gebruikers nog steeds een rol moeten hebben. Net als bij toegangs Beoordelingen voor toegangs pakketten worden Beoordelingen voor Azure AD-rollen en Azure-resources geïntegreerd in de gebruikers ervaring van de PIM-beheerder. We raden u aan om regel matig de volgende roltoewijzingen te controleren:
 
-* Globale beheerder
+* Hoofdbeheerder
 
 * Gebruikers beheerder
 
@@ -403,7 +403,7 @@ Met toegangs beoordelingen kunnen revisoren worden verklaard of gebruikers nog s
 
 * Beveiligingsbeheer
 
-* Alle Office 365-en Dynamics-Service beheer rollen
+* Alle Microsoft 365-en Dynamics-Service beheer rollen
 
 Hier geselecteerde rollen zijn onder andere permanente en in aanmerking komende rol. 
 

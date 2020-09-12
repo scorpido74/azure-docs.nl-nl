@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 0c1baa96c9093e02c54fb70949d1de0ddbda1bcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c65f143552aa14f9e309b68f484f9c0695e8dbd
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804329"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596056"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure PowerShell
 
@@ -20,12 +20,11 @@ U kunt de Azure PowerShell gebruiken om een [toepassings gateway](overview.md) t
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een zelfondertekend certificaat maken
-> * Een netwerk instellen
-> * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener-en omleidings regel toevoegen
-> * Een virtuele-machineschaalset maken met de standaard back-endgroep
+* Een zelfondertekend certificaat maken
+* Een netwerk instellen
+* Een toepassingsgateway maken met behulp van het certificaat
+* Een listener-en omleidings regel toevoegen
+* Een virtuele-machineschaalset maken met de standaard back-endgroep
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 

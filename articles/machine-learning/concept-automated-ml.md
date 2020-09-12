@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652097"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658555"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -204,9 +204,9 @@ Het bouwen van een model __voor elk exemplaar of individu__ in de volgende scena
 
 ## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
 
-Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
+Azure Machine Learning biedt twee ervaring voor het werken met automatische ML:
 
-* Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+* Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 
 
 * Voor klanten met een beperkte of geen code ervaring Azure Machine Learning Studio op [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,9 +289,9 @@ Artikelen bevatten aanvullende details over de functionaliteit die AutoML biedt.
 
 Bekijk gedetailleerde code voorbeelden en gebruik cases in de [github-notebook opslagplaats voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)-voor beelden.
 
-### <a name="python-sdk-reference"></a>Naslaginformagtie over de Python-SDK 
+### <a name="python-sdk-reference"></a>Naslaginformagtie over de Python-SDK
 
-Verdiep uw expertise over SDK-ontwerp patronen en klassen specificaties met de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)van de AutoML-klasse. 
+Verdiep uw expertise over SDK-ontwerp patronen en klassen specificaties met de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)van de AutoML-klasse. 
 
 > [!Note]
 > Geautomatiseerde machine learning mogelijkheden zijn ook beschikbaar in andere micro soft-oplossingen, zoals [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) en [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

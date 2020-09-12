@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: HT
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518467"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658370"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Veelgestelde vragen over het inrichten van Clouds Azure Active Directory Connect
 
@@ -74,7 +74,7 @@ Wanneer u de configuratie verwijdert, worden de gesynchroniseerde objecten in az
 
 **V: wat betekent het dat Exchange hybride niet wordt ondersteund?**
 
-Met de functie Hybride implementatie voor Exchange kunnen on-premises en in Office 365 meerdere Exchange-postbussen naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set kenmerken vanuit Azure AD naar uw on-premises directory.  De Cloud Provisioning agent synchroniseert deze kenmerken momenteel niet terug in uw on-premises Directory en wordt daarom niet ondersteund als vervanging voor Azure AD Connect.
+Met de functie voor hybride implementatie van Exchange kunnen Exchange-post vakken zowel on-premises als in Microsoft 365 naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set kenmerken vanuit Azure AD naar uw on-premises directory.  De Cloud Provisioning agent synchroniseert deze kenmerken momenteel niet terug in uw on-premises Directory en wordt daarom niet ondersteund als vervanging voor Azure AD Connect.
 
 **V: kan ik de inrichtings agent voor de Cloud installeren op Windows Server Core?**
 

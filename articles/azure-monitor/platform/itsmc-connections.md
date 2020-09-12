@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 57a981f4967bc58ca39067f94abdcf64d764ab87
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035022"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536188"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT-servicebeheerconnector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](./itsmc-overview.md)voor meer informatie over ITSMC.
@@ -39,7 +39,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 - De Service Manager-webtoepassing (Web-app) wordt geïmplementeerd en geconfigureerd. [Hier](#create-and-deploy-service-manager-web-app-service)vindt u informatie over de web-app.
 - Hybride verbinding is gemaakt en geconfigureerd. Meer informatie: [de hybride verbinding configureren](#configure-the-hybrid-connection).
 - Ondersteunde versies van Service Manager: 2012 R2 of 2016.
-- Gebruikersrol: [Geavanceerde operator](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
+- Gebruikersrol:  [Geavanceerde operator](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
 
 ### <a name="connection-procedure"></a>Verbindings procedure
 
@@ -64,7 +64,7 @@ Gebruik de volgende procedure om uw System Center Service Manager-exemplaar te v
 | **Verbindingsnaam**   | Typ een naam voor het System Center Service Manager-exemplaar dat u wilt verbinden met ITSMC.  U kunt deze naam later gebruiken bij het configureren van werk items in dit exemplaar/gedetailleerde log Analytics weer geven. |
 | **Partner type**   | Selecteer **System Center Service Manager**. |
 | **Server-URL**   | Typ de URL van de Service Manager web-app. [Hier](#create-and-deploy-service-manager-web-app-service)vindt u meer informatie over Service Manager web-app.
-| **Client-id**   | Typ de client-ID die u hebt gegenereerd (met behulp van het automatische script) voor de verificatie van de web-app. Meer informatie over het geautomatiseerde script vindt u [hier.](./itsmc-service-manager-script.md)|
+| **Client-ID**   | Typ de client-ID die u hebt gegenereerd (met behulp van het automatische script) voor de verificatie van de web-app. Meer informatie over het geautomatiseerde script vindt u [hier.](./itsmc-service-manager-script.md)|
 | **Clientgeheim**   | Typ het client geheim dat voor deze ID wordt gegenereerd.   |
 | **Gegevens synchroniseren**   | Selecteer de Service Manager werk items die u wilt synchroniseren via ITSMC.  Deze werk items worden geïmporteerd in Log Analytics. **Opties:**  Incidenten, wijzigings aanvragen.|
 | **Bereik voor gegevens synchronisatie** | Typ het aantal voorbije dagen waaruit u de gegevens wilt. **Maximum limiet**: 120 dagen. |
@@ -234,7 +234,7 @@ Gebruik de volgende procedure om een ServiceNow-verbinding te maken:
 | **Gebruikersnaam**   | Typ de gebruikers naam voor integratie die u hebt gemaakt in de ServiceNow-app om de verbinding met ITSMC te ondersteunen. Meer informatie: [Maak een gebruikersrol](#create-integration-user-role-in-servicenow-app)voor de ServiceNow-app.|
 | **Wachtwoord**   | Typ het wacht woord dat is gekoppeld aan deze gebruikers naam. **Opmerking**: de gebruikers naam en het wacht woord worden alleen gebruikt voor het genereren van verificatie tokens en worden nergens opgeslagen in de ITSMC-service.  |
 | **Server-URL**   | Typ de URL van het ServiceNow-exemplaar dat u wilt verbinden met ITSMC. De URL moet verwijzen naar een ondersteunde SaaS-versie met achtervoegsel '. servicenow.com '.|
-| **Client-id**   | Typ de client-ID die u wilt gebruiken voor OAuth2-verificatie, die u eerder hebt gegenereerd.  Meer informatie over het genereren van client-ID en geheim: [OAuth Setup](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+| **Client-ID**   | Typ de client-ID die u wilt gebruiken voor OAuth2-verificatie, die u eerder hebt gegenereerd.  Meer informatie over het genereren van client-ID en geheim:   [OAuth Setup](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Clientgeheim**   | Typ het client geheim dat voor deze ID wordt gegenereerd.   |
 | **Bereik voor gegevens synchronisatie**   | Selecteer de ServiceNow-werk items die u wilt synchroniseren met Azure Log Analytics via de ITSMC.  De geselecteerde waarden worden in log Analytics geïmporteerd.   **Opties:**  Incidenten en wijzigings aanvragen.|
 | **Gegevens synchroniseren** | Typ het aantal voorbije dagen waaruit u de gegevens wilt. **Maximum limiet**: 120 dagen. |
@@ -265,7 +265,7 @@ Gebruiker de volgende procedure:
 2. Na de installatie gaat u naar de linkernavigatiebalk van het ServiceNow-exemplaar, zoekt u naar micro soft OMS integrator en selecteert u deze.  
 3. Klik op **controle lijst voor installatie**.
 
-   De status wordt weer gegeven als **niet voltooid** als de gebruikersrol nog moet worden gemaakt.
+   De status wordt weer gegeven als  **niet voltooid** als de gebruikersrol nog moet worden gemaakt.
 
 4. Voer in de tekst vakken naast **integratie gebruiker maken**de gebruikers naam in voor de gebruiker die verbinding kan maken met ITSMC in Azure.
 5. Voer het wacht woord voor deze gebruiker in en klik op **OK**.  
@@ -298,6 +298,10 @@ Zodra de gebruiker is gemaakt, wordt de status van de controle **lijst voor inst
 
 De volgende secties bevatten informatie over het aansluiten van uw Provance-product op ITSMC in Azure.
 
+> [!NOTE]
+> 
+> Met ingang van 1-okt-2020 Provance ITSM-integratie met Azure-waarschuwing wordt niet langer ingeschakeld voor nieuwe klanten. Nieuwe ITSM-verbindingen worden niet ondersteund. 
+> Bestaande ITSM-verbindingen worden ondersteund.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -333,7 +337,7 @@ Gebruik de volgende procedure om een Provance-verbinding te maken:
 | **Gebruikersnaam**   | Typ de gebruikers naam waarmee verbinding kan worden gemaakt met ITSMC.    |
 | **Wachtwoord**   | Typ het wacht woord dat is gekoppeld aan deze gebruikers naam. **Opmerking:** Gebruikers naam en wacht woord worden alleen gebruikt voor het genereren van verificatie tokens en worden nergens opgeslagen in de ITSMC-service. _|
 | **Server-URL**   | Typ de URL van uw Provance-exemplaar dat u wilt verbinden met ITSMC. |
-| **Client-id**   | Typ de client-ID voor het verifiëren van deze verbinding die u hebt gegenereerd in uw Provance-exemplaar.  Zie [Active Directory-verificatie configureren](../../app-service/configure-authentication-provider-aad.md)voor meer informatie over de client-id. |
+| **Client-ID**   | Typ de client-ID voor het verifiëren van deze verbinding die u hebt gegenereerd in uw Provance-exemplaar.  Zie [Active Directory-verificatie configureren](../../app-service/configure-authentication-provider-aad.md)voor meer informatie over de client-id. |
 | **Bereik voor gegevens synchronisatie**   | Selecteer de Provance-werk items die u wilt synchroniseren met Azure Log Analytics via ITSMC.  Deze werk items worden geïmporteerd in log Analytics.   **Opties:**   Incidenten, wijzigings aanvragen.|
 | **Gegevens synchroniseren** | Typ het aantal voorbije dagen waaruit u de gegevens wilt. **Maximum limiet**: 120 dagen. |
 | **Een nieuw configuratie-item maken in de ITSM-oplossing** | Selecteer deze optie als u de configuratie-items wilt maken in het ITSM-product. Wanneer dit is ingeschakeld, maakt ITSMC het betrokken CIs als configuratie-items (in het geval van een niet-bestaand CIs) in het ondersteunde ITSM-systeem. **Standaard**: uitgeschakeld.|
@@ -352,6 +356,11 @@ Meer informatie: [ITSM-werk items maken op basis van Azure-waarschuwingen](./its
 
 De volgende secties bevatten informatie over het aansluiten van uw Cher well-product op ITSMC in Azure.
 
+> [!NOTE]
+> 
+> Met ingang van 1-okt-2020 Cher well ITSM-integratie met Azure-waarschuwing wordt niet langer ingeschakeld voor nieuwe klanten. Nieuwe ITSM-verbindingen worden niet ondersteund. 
+> Bestaande ITSM-verbindingen worden ondersteund.
+
 ### <a name="prerequisites"></a>Vereisten
 
 Zorg ervoor dat aan de volgende vereisten wordt voldaan:
@@ -362,7 +371,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
 ### <a name="connection-procedure"></a>Verbindings procedure
 
-Gebruik de volgende procedure om een Provance-verbinding te maken:
+Gebruik de volgende procedure om een Cher well-verbinding te maken:
 
 1. Ga in Azure Portal naar **alle resources** en zoek naar **Service Desk (YourWorkspaceName)**
 
@@ -384,7 +393,7 @@ Gebruik de volgende procedure om een Provance-verbinding te maken:
 | **Gebruikersnaam**   | Typ de Cher well-gebruikers naam die verbinding kan maken met ITSMC. |
 | **Wachtwoord**   | Typ het wacht woord dat is gekoppeld aan deze gebruikers naam. **Opmerking:** Gebruikers naam en wacht woord worden alleen gebruikt voor het genereren van verificatie tokens en worden nergens opgeslagen in de ITSMC-service.|
 | **Server-URL**   | Typ de URL van uw Cher well-exemplaar dat u wilt verbinden met ITSMC. |
-| **Client-id**   | Typ de client-ID voor het verifiëren van deze verbinding die u hebt gegenereerd in uw Cher well-exemplaar.   |
+| **Client-ID**   | Typ de client-ID voor het verifiëren van deze verbinding die u hebt gegenereerd in uw Cher well-exemplaar.   |
 | **Bereik voor gegevens synchronisatie**   | Selecteer de Cher well-werk items die u wilt synchroniseren via ITSMC.  Deze werk items worden geïmporteerd in log Analytics.   **Opties:**  Incidenten, wijzigings aanvragen. |
 | **Gegevens synchroniseren** | Typ het aantal voorbije dagen waaruit u de gegevens wilt. **Maximum limiet**: 120 dagen. |
 | **Een nieuw configuratie-item maken in de ITSM-oplossing** | Selecteer deze optie als u de configuratie-items wilt maken in het ITSM-product. Wanneer dit is ingeschakeld, maakt ITSMC het betrokken CIs als configuratie-items (in het geval van een niet-bestaand CIs) in het ondersteunde ITSM-systeem. **Standaard**: uitgeschakeld. |

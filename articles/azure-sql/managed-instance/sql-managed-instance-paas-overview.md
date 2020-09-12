@@ -11,17 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d8bf3f087592a7d629a247b1c10721237699fdc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590061"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613525"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL Managed instance is de intelligente, schaal bare Cloud database service die de ruime SQL Server data base-engine compatibiliteit combineert met alle voor delen van een volledig beheerd en groen wordende platform als een service. SQL Managed instance heeft bijna 100% compatibel met de nieuwste data base-engine van SQL Server (Enter prise Edition), waarbij een [VNet-implementatie (native Virtual Network](../../virtual-network/virtual-networks-overview.md) ) wordt geboden waarmee veelvoorkomende beveiligings problemen worden opgelost en een [bedrijfs model](https://azure.microsoft.com/pricing/details/sql-database/) kan worden gebruikt voor bestaande SQL Server klanten. Met SQL Managed instance kunnen bestaande SQL Server klanten hun on-premises toepassingen naar de Cloud tillen en naar een andere data base verplaatsen met minimale toepassings-en database wijzigingen. Tegelijkertijd behoudt SQL Managed instance alle PaaS-mogelijkheden (automatische patches en versie-updates, [geautomatiseerde back-ups](../database/automated-backups-overview.md), [hoge Beschik baarheid](../database/high-availability-sla.md)) waarmee de overhead en TCO van het beheer drastisch worden verminderd.
+
+Als u geen ervaring hebt met Azure SQL Managed instance, raadpleegt u de video over *Azure SQL Managed instance* van onze diep gaande [Azure SQL-video reeks](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
 
 > [!IMPORTANT]
 > Zie [ondersteunde regio's](resource-limits.md#supported-regions)voor een lijst met REGIO'S waar SQL Managed Instance momenteel beschikbaar is.
@@ -41,7 +44,7 @@ SQL Managed instance combineert de beste functies die beschikbaar zijn in Azure 
 
 | **PaaS-voor delen** | **Bedrijfscontinuïteit** |
 | --- | --- |
-|Geen hardware kopen en beheren <br>Geen beheer overhead voor het beheren van de onderliggende infra structuur <br>Snelle inrichting en service schalen <br>Automatische patching en versie-upgrade <br>Integratie met andere PaaS-gegevens Services |SLA voor 99,99% uptime  <br>Ingebouwde [hoge Beschik baarheid](../database/high-availability-sla.md) <br>Gegevens die worden beveiligd met [automatische back-ups](../database/automated-backups-overview.md) <br>Door de klant Configureer bare Bewaar periode voor back-ups <br>Door de gebruiker geïnitieerde [back-ups](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Herstel mogelijkheid voor tijdgebonden data bases](../database/recovery-using-backups.md#point-in-time-restore) |
+|Geen hardware kopen en beheren <br>Geen beheer overhead voor het beheren van de onderliggende infra structuur <br>Snelle inrichting en service schalen <br>Automatische patching en versie-upgrade <br>Integratie met andere PaaS-gegevens Services |SLA voor 99,99% uptime  <br>Ingebouwde [hoge Beschik baarheid](../database/high-availability-sla.md) <br>Gegevens die worden beveiligd met [automatische back-ups](../database/automated-backups-overview.md) <br>Door de klant Configureer bare Bewaar periode voor back-ups <br>Door de gebruiker geïnitieerde [back-ups](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>[Herstel mogelijkheid voor tijdgebonden data bases](../database/recovery-using-backups.md#point-in-time-restore) |
 |**Beveiliging en naleving** | **Beheer**|
 |Geïsoleerde omgeving ([VNet-integratie](connectivity-architecture-overview.md), single tenant service, specifieke reken kracht en opslag) <br>[TDE (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory-verificatie (Azure AD)](../database/authentication-aad-overview.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan nalevings normen hetzelfde als Azure SQL Database <br>[SQL-controle](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure Portal functionaliteit voor het hand matig inrichten en schalen van services <br>Data Migration Service
 
@@ -53,15 +56,15 @@ De belangrijkste functies van SQL Managed instance worden weer gegeven in de vol
 |Functie | Beschrijving|
 |---|---|
 | Versie/build van SQL Server | SQL Server data base-engine (laatste stabiel) |
-| Beheerde geautomatiseerde back-ups | Ja |
-| Ingebouwde instantie-en database controle en-metrische gegevens | Ja |
-| Automatische software patching | Ja |
-| De nieuwste functies van de data base-engine | Ja |
+| Beheerde geautomatiseerde back-ups | Yes |
+| Ingebouwde instantie-en database controle en-metrische gegevens | Yes |
+| Automatische software patching | Yes |
+| De nieuwste functies van de data base-engine | Yes |
 | Aantal gegevens bestanden (rijen) per data base | Meerdere |
 | Aantal logboek bestanden (logboek) per data base | 1 |
-| VNet-Azure Resource Manager-implementatie | Ja |
-| VNet-klassiek implementatie model | Nee |
-| Portal ondersteuning | Ja|
+| VNet-Azure Resource Manager-implementatie | Yes |
+| VNet-klassiek implementatie model | No |
+| Portal ondersteuning | Yes|
 | SSIS (ingebouwde integratie service) | No-SSIS maakt deel uit van [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | SSAS (ingebouwde Analysis Service) | Nee-SSAS is afzonderlijke [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Ingebouwde Reporting service (SSRS) | Geen gebruik [Power bi gepagineerde rapporten](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een virtuele machine van Azure. SQL Managed instance kan geen SSRS als service uitvoeren, maar kan [SSRS-catalogus databases](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) hosten voor een rapport server die is geïnstalleerd op een virtuele Azure-machine met behulp van SQL Server-verificatie. |
@@ -182,7 +185,7 @@ SQL Managed instance streeft naar gebruikers scenario's met massale data base-mi
 
 ### <a name="backup-and-restore"></a>Back-ups en herstellen  
 
-De migratie benadering maakt gebruik van SQL-back-ups naar Azure Blob-opslag. Back-ups die zijn opgeslagen in een Azure Storage-BLOB kunnen rechtstreeks worden hersteld in een beheerd exemplaar met behulp van de [T-SQL-opdracht herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
+De migratie benadering maakt gebruik van SQL-back-ups naar Azure Blob-opslag. Back-ups die zijn opgeslagen in een Azure Storage-BLOB kunnen rechtstreeks worden hersteld in een beheerd exemplaar met behulp van de [T-SQL-opdracht herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Zie [een back-upbestand herstellen naar een beheerd exemplaar](restore-sample-database-quickstart.md)voor een Snelstartgids waarin wordt getoond hoe u de Wide World Importers herstelt: standaard back-upbestand voor data base. In deze Quick start ziet u dat u een back-upbestand moet uploaden naar Azure Blob-opslag en het kunt beveiligen met behulp van een SAS-sleutel (Shared Access Signature).
 - Zie [systeem eigen herstel van URL](migrate-to-instance-from-sql-server.md#native-restore-from-url)voor meer informatie over het terugzetten van URL.
@@ -202,7 +205,7 @@ SQL Managed instance ondersteunt achterwaartse compatibiliteit voor SQL Server 2
   
 Het volgende diagram geeft een overzicht van surface area compatibiliteit in SQL Managed instance:  
 
-![Migratie](./media/sql-managed-instance-paas-overview/migration.png)
+![surface area compatibiliteit](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>De belangrijkste verschillen tussen SQL Server on-premises en SQL Managed instance
 

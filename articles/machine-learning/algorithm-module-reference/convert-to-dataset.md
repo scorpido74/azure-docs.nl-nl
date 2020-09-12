@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456587"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646253"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
 
@@ -35,13 +35,13 @@ U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebru
 
 2. Verbind het met een wille keurige module die een gegevensset uitvoert.   
 
-    Zolang de gegevens [in tabel vorm](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)zijn, kunt u deze converteren naar een gegevensset. Dit geldt ook voor gegevens die zijn geladen via gegevens [importeren](import-data.md), gegevens die zijn gemaakt via [gegevens hand matig invoeren](enter-data-manually.md)of data sets die zijn getransformeerd via [trans formatie Toep assen](apply-transformation.md).
+    Zolang de gegevens [in tabel vorm](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)zijn, kunt u deze converteren naar een gegevensset. Dit geldt ook voor gegevens die zijn geladen via gegevens [importeren](import-data.md), gegevens die zijn gemaakt via [gegevens hand matig invoeren](enter-data-manually.md)of data sets die zijn getransformeerd via [trans formatie Toep assen](apply-transformation.md).
 
 3.  Geef in de vervolg keuzelijst **actie** aan of u de gegevens wilt opschonen voordat u de gegevensset opslaat:  
   
     - **Geen**: gebruik de gegevens als.  
   
-    - **SetMissingValue**: Stel een specifieke waarde in op een ontbrekende waarde in de gegevensset. De standaard aanduiding is het vraag teken (?), maar u kunt de aangepaste optie voor **ontbrekende waarden** gebruiken om een andere waarde op te geven. Als u bijvoorbeeld een **taxi** voor een **aangepaste ontbrekende waarde**invoert, worden alle exemplaren van de **taxi** in de gegevensset gewijzigd in de ontbrekende waarde.
+    - **SetMissingValue**: Stel een specifieke waarde in op een ontbrekende waarde in de gegevensset. De standaard aanduiding is het vraag teken (?), maar u kunt de aangepaste optie voor  **ontbrekende waarden** gebruiken om een andere waarde op te geven. Als u bijvoorbeeld een **taxi** voor een **aangepaste ontbrekende waarde**invoert, worden alle exemplaren van de **taxi** in de gegevensset gewijzigd in de ontbrekende waarde.
   
     - **ReplaceValues**: gebruik deze optie om een enkele exacte waarde op te geven die moet worden vervangen door een andere exacte waarde. U kunt ontbrekende waarden of aangepaste waarden vervangen door de **Vervang** methode in te stellen:
 

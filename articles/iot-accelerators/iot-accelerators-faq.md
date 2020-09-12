@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75647710"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462544"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Veelgestelde vragen over IoT-oplossingsversnellers
 
@@ -101,7 +101,7 @@ Op dit moment kunt u geen oplossings versneller maken met een [Microsoft Azure v
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hoe kan ik een Azure AD-Tenant verwijderen?
 
-Zie het blog bericht over het [verwijderen van een Azure AD-Tenant met](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)de bespreking van het weblog boek van Eric golpe.
+Zie het blog bericht over het [verwijderen van een Azure AD-Tenant met](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)de bespreking van het weblog boek van Eric golpe.
 
 ### <a name="next-steps"></a>Volgende stappen
 

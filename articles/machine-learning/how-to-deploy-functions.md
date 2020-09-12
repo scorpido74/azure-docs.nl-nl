@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff327372a0ec22ca6291615ca64f01a4aa5807be
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325794"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646218"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,9 +37,9 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
     > [!IMPORTANT]
     > In de code fragmenten in dit artikel wordt ervan uitgegaan dat u de volgende variabelen hebt ingesteld:
     >
-    > * `ws`-Uw Azure Machine Learning-werk ruimte.
-    > * `model`-Het geregistreerde model dat wordt geïmplementeerd.
-    > * `inference_config`-De configuratie voor het afwachten van het model.
+    > * `ws` -Uw Azure Machine Learning-werk ruimte.
+    > * `model` -Het geregistreerde model dat wordt geïmplementeerd.
+    > * `inference_config` -De configuratie voor het afwachten van het model.
     >
     > Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
@@ -63,7 +63,7 @@ Zie [Score code definiëren](https://docs.microsoft.com/azure/machine-learning/h
 Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De deductieconfiguratie verwijst naar het invoerscript en andere afhankelijkheden.
 
 > [!IMPORTANT]
-> Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure Functions, moet u een [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) object gebruiken. Houd er rekening mee dat als u een aangepaste omgeving definieert, de standaard waarden van azureml en versie >= 1.0.45 als een PIP-afhankelijkheid worden toegevoegd. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
+> Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure Functions, moet u een [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) object gebruiken. Houd er rekening mee dat als u een aangepaste omgeving definieert, de standaard waarden van azureml en versie >= 1.0.45 als een PIP-afhankelijkheid worden toegevoegd. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure Functions, gebruikt u [azureml. contrib. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) of de specifieke pakket functie voor de trigger die u wilt gebruiken. Het volgende code fragment laat zien hoe u een nieuw pakket maakt met een BLOB-trigger uit het model en de configuratie voor afleiden:
+Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure Functions, gebruikt u [azureml. contrib. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) of de specifieke pakket functie voor de trigger die u wilt gebruiken. Het volgende code fragment laat zien hoe u een nieuw pakket maakt met een BLOB-trigger uit het model en de configuratie voor afleiden:
 
 > [!NOTE]
 > In het code fragment wordt ervan uitgegaan dat het `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
@@ -184,7 +184,7 @@ Wanneer `show_output=True` wordt de uitvoer van het docker-bouw proces weer gege
     ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
-    Neem deze connection string op om te voorzien in de functie-app. We zullen het later gebruiken wanneer we vragen om`<triggerConnectionString>`
+    Neem deze connection string op om te voorzien in de functie-app. We zullen het later gebruiken wanneer we vragen om `<triggerConnectionString>`
 
 1. Maak de containers voor de invoer en uitvoer in het opslag account. Vervang door `<triggerConnectionString>` de Connection String die u eerder hebt geretourneerd:
 
@@ -301,4 +301,4 @@ Zie voor meer informatie over het gebruik van BLOB-triggers het artikel [een fun
 * Meer informatie over Blob Storage activeert [Azure Blob-opslag bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [Implementeer uw model naar Azure app service](how-to-deploy-app-service.md).
 * [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-* [Naslaginformatie voor API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)
+* [Naslaginformatie voor API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)

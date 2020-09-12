@@ -4,17 +4,17 @@ description: Meer informatie over het beheren van pod-toelatingen met behulp van
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 3c8ec61666942fc74dcb64c03c0e3f06986e8c37
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: bec9c7b4be5c3c3e334a8e3cb3a8b2e0a7130de3
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987270"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669299"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
 > [!WARNING]
-> **De functie die in dit document wordt beschreven, Pod-beveiligings beleid (preview), is ingesteld voor afschaffing en is na 15 oktober 2020 niet langer beschikbaar** [voor Azure Policy voor AKS](use-pod-security-on-azure-policy.md).
+> **De functie die in dit document wordt beschreven, Pod-beveiligings beleid (preview), wordt ingesteld voor afschaffing en is niet meer beschikbaar na 1 februari 2021, wat de** voor keur heeft van [Azure Policy voor AKS](use-pod-security-on-azure-policy.md). De datum van afschaffing is verlengd vanaf de vorige datum van 15 oktober 2020.
 >
 > Nadat pod-beveiligings beleid (preview) is afgeschaft, moet u de functie op alle bestaande clusters uitschakelen met behulp van de afgeschafte functie om toekomstige cluster upgrades uit te voeren en de ondersteuning van Azure te blijven gebruiken.
 >

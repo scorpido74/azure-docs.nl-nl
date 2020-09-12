@@ -3,13 +3,12 @@ title: Resource logboeken verzamelen & analyseren
 description: Meer informatie over het verzenden van resource logboeken en gebeurtenis gegevens van container groepen in Azure Container Instances naar Azure Monitor-logboeken
 ms.topic: article
 ms.date: 07/13/2020
-ms.author: danlep
-ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524009"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566667"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
 
@@ -107,7 +106,7 @@ De logboeken van de container groep in de `ContainerInstanceLog_CL` tabel weer g
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Onder **Algemeen**selecteert u **Logboeken**  
-1. Typ de volgende query:`ContainerInstanceLog_CL | limit 50`
+1. Typ de volgende query: `ContainerInstanceLog_CL | limit 50`
 1. Selecteer **uitvoeren**
 
 U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst geen resultaten ziet, wacht u een paar minuten en selecteert u vervolgens de knop **uitvoeren** om de query opnieuw uit te voeren. Logboek vermeldingen worden standaard weer gegeven in **tabel** indeling. U kunt vervolgens een rij uitbreiden om de inhoud van een afzonderlijke logboekvermelding te zien.
@@ -120,7 +119,7 @@ U kunt ook gebeurtenissen weer geven voor container instanties in de Azure Porta
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Onder **Algemeen**selecteert u **Logboeken**  
-1. Typ de volgende query:`ContainerEvent_CL | limit 50`
+1. Typ de volgende query: `ContainerEvent_CL | limit 50`
 1. Selecteer **uitvoeren**
 
 U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst geen resultaten ziet, wacht u een paar minuten en selecteert u vervolgens de knop **uitvoeren** om de query opnieuw uit te voeren. Vermeldingen worden standaard weer gegeven in **tabel** indeling. U kunt vervolgens een rij uitbreiden om de inhoud van een afzonderlijke vermelding weer te geven.

@@ -3,12 +3,12 @@ title: Een bestaande toewijzing bijwerken vanuit de portal
 description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauw druk-toewijzing vanuit de portal in azure-blauw drukken.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051420"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651378"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
 
@@ -26,17 +26,17 @@ Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zi
 
 1. Selecteer in de lijst met blauw drukken de toewijzing van de blauw druk. Gebruik vervolgens de knop **toewijzing bijwerken** of klik met de rechter muisknop op de blauw druk toewijzing en selecteer **Update toewijzing**.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Een bestaande blauw druk-toewijzing bijwerken" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Scherm afbeelding van de toewijzings pagina blauw drukken met de knop Update toewijzing gemarkeerd." border="false":::
 
 1. De pagina **blauw drukken toewijzen** wordt vooraf gevuld met alle waarden van de oorspronkelijke toewijzing. U kunt de definitie van de **blauw druk**, de **vergrendelings toewijzings** status en de dynamische para meters van de definitie van de blauw druk wijzigen. Selecteer **toewijzen** wanneer u klaar bent met het maken van wijzigingen.
 
 1. Bekijk op de pagina bijgewerkte toewijzings Details de nieuwe status. In dit voor beeld hebben we **vergren deling** toegevoegd aan de toewijzing.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Er is een bestaande blauw druk-toewijzing bijgewerkt-vergrendelings modus gewijzigd" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Scherm opname van een bijgewerkte blauw druk-toewijzing waarin de vergrendelings modus is gewijzigd." border="false":::
 
 1. Bekijk details over andere **toewijzings bewerkingen** met behulp van de vervolg keuzelijst. De tabel met **beheerde resources** die worden bijgewerkt op basis van de geselecteerde toewijzings bewerking.
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Toewijzings bewerkingen van een blauw druk toewijzen" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Scherm afbeelding van een bijgewerkte blauw druk-toewijzing met de toewijzings bewerkingen en hun status." border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Regels voor het bijwerken van toewijzingen
 

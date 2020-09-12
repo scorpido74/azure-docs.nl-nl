@@ -2,17 +2,17 @@
 title: Over Azure ExpressRoute direct
 description: Meer informatie over de belangrijkste functies van Azure ExpressRoute direct en informatie die nodig is voor het onboarden van ExpressRoute direct, zoals beschik bare Sku's en technische vereisten.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jaredro
-ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192355"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566395"
 ---
 # <a name="about-expressroute-direct"></a>Over ExpressRoute Direct
 
@@ -44,7 +44,7 @@ Voordat u ExpressRoute direct gebruikt, moet u uw abonnement eerst registreren. 
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute directe circuits
 
-Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Microsoft Azure, en Office 365.
+Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Microsoft Azure, en Microsoft 365.
 
 Elke peering-locatie heeft toegang tot het wereld wijde netwerk van micro soft en heeft standaard toegang tot elke regio in een geopolitieke zone en heeft toegang tot alle wereld wijde regio's met een Premium-circuit.  
 

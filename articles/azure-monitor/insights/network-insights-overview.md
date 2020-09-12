@@ -1,20 +1,20 @@
 ---
 title: Azure Monitor voor netwerken (preview-versie)
-description: Een kort overzicht van Azure Monitor voor het netwerk, dat een uitgebreide weer gave van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen biedt zonder enige configuratie.
+description: Een kort overzicht van Azure Monitor voor het netwerk dat een uitgebreide weer gave van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen biedt zonder enige configuratie.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 080952752dc5abfd7cf61ae1c5b00b539af58b99
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128672"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646563"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
-Azure Monitor voor netwerk biedt een uitgebreid overzicht van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen zonder enige configuratie. De geavanceerde zoek functie helpt u bij het identificeren van bron afhankelijkheden, het inschakelen van scenario's zoals het identificeren van resources die als host fungeren voor uw website door eenvoudigweg te zoeken naar gehoste website naam.
+Azure Monitor voor netwerk biedt een uitgebreid overzicht van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen zonder enige configuratie. De geavanceerde zoek functie helpt bij het identificeren van bron afhankelijkheden die scenario's zoals het identificeren van resources die als host fungeren voor uw website door te zoeken naar de naam van de gehoste website.
 
 De **overzichts** pagina Azure monitor voor netwerken biedt een probleemloze manier om de inventaris van uw netwerk bronnen samen met de resource status en-waarschuwingen te visualiseren. Het is onderverdeeld in vier functionele gebieden:
 
@@ -30,7 +30,7 @@ De weer gave resource status en waarschuwingen kan worden aangepast met filters 
 
 Het zoekvak kan worden gebruikt om te zoeken naar resources en gekoppelde resources. Een openbaar IP-adres is bijvoorbeeld gekoppeld aan een Application Gateway. Als u zoekt naar de open bare Ip's DNS-naam, worden zowel het open bare IP-adres als de bijbehorende Application Gateway geïdentificeerd.
 
-![Zoeken](media/network-insights-overview/search.png)
+![Search](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Resource Health en metrische gegevens
@@ -52,11 +52,11 @@ De weer gave **afhankelijkheid** helpt bij het configureren van de configuratie 
 
 ![Application Gateway weer gave](media/network-insights-overview/application-gateway.png)
 
-De **afhankelijkheids** weergave voor Application Gateway biedt een vereenvoudigde weer gave van de manier waarop de front-end ip's zijn verbonden met de listeners, de regels en de back-end-pool. De verbindings randen worden in kleur gecodeerd en bieden aanvullende informatie op basis van de status van de back-end-pool. De weer gave biedt ook een gedetailleerde weer gave van Application Gateway metrische gegevens en metrische gegevens voor alle gerelateerde back-end-groepen, zoals VMSS-en VM-exemplaren.
+De **afhankelijkheids** weergave voor Application Gateway biedt een vereenvoudigde weer gave van de manier waarop de front-end ip's zijn verbonden met de listeners, de regels en de back-end-pool. De verbindings randen worden in kleur gecodeerd en bieden aanvullende informatie op basis van de status van de back-end-pool. De weer gave biedt ook een gedetailleerde weer gave van Application Gateway metrische gegevens en metrische gegevens voor alle gerelateerde back-end-groepen, zoals schaal sets voor virtuele machines en instanties van virtuele machines.
 
 ![Afhankelijkheids weergave](media/network-insights-overview/dependency-view.png)
 
-Met de afhankelijkheids grafiek kunt u eenvoudig navigeren naar configuratie-instellingen. Klik met de rechter muisknop op een back-end-groep voor toegang tot andere functionaliteit. Als de back-end-pool bijvoorbeeld een virtuele machine is, hebt u rechtstreeks toegang tot VM Insights en kunt u problemen met Network Watcher verbinding oplossen om verbindings problemen te identificeren.
+Met de afhankelijkheids grafiek kunt u eenvoudig navigeren naar configuratie-instellingen. Klik met de rechter muisknop op een back-end-pool voor toegang tot andere functionaliteit. Als de back-end-pool bijvoorbeeld een virtuele machine is, hebt u rechtstreeks toegang tot de inzichten van de virtuele machine en de Network Watcher verbinding om verbindings problemen op te lossen en te identificeren.
 
 ![Menu van afhankelijkheids weergave](media/network-insights-overview/dependency-view-menu.png)
 
@@ -66,7 +66,7 @@ De zoek-en filter balk in de afhankelijkheids weergave bieden een probleemloze m
 
 Verschillende filters bieden hulp om te beperken tot een specifiek pad en de status. Selecteer bijvoorbeeld alleen *slechte* status van de vervolg keuzelijst **status** om alle randen weer te geven waar *de status slecht is.*
 
-Klik op **gedetailleerde metrische weer gave** om een vooraf geconfigureerde werkmap te starten met gedetailleerde metrische gegevens voor de toepassings gateway, alle bronnen van de back-endadresgroep en front-end ip's. 
+Klik op **gedetailleerde metrische weer gave** om een vooraf geconfigureerde werkmap te openen met gedetailleerde metrische gegevens voor de toepassings gateway, alle bronnen van de back-endadresgroep en front-end ip's. 
 
 ## <a name="next-steps"></a>Volgende stappen 
 

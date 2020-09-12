@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e9e67dc0da7f81f73d8237769e7aea90f9bc1585
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833416"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461320"
 ---
 # <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -170,7 +170,7 @@ Na de eerste configuratie en toepassing van aanbevelingen voor Security Center, 
 
 In het Security Center-overzicht ziet u beknopte informatie over de beveiliging van alle Azure-resources en van eventuele niet-Azure-resources die u hebt gekoppeld. In het onderstaande voorbeeld ziet u een omgeving waarin heel wat problemen moeten worden opgelost:
 
-![dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
+![Dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
 
 > [!NOTE]
 > Security Center heeft geen invloed op uw normale operationele procedures. Het bewaakt uw implementaties passief en doet aanbevelingen op grond van het beveiligingsbeleid dat u hebt ingeschakeld.
@@ -237,4 +237,4 @@ In dit document hebt u kunnen lezen hoe u een planning kunt maken voor het overs
 * [Beveiligings status controleren in azure Security Center](security-center-monitoring.md) : informatie over het bewaken van de status van uw Azure-resources.
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
 * [Azure Security Center FAQ](faq-general.md) : vind Veelgestelde vragen over het gebruik van de service.
-* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over de beveiliging en naleving van Azure.
+* [Azure-beveiligings blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) : vind blog berichten over de beveiliging en naleving van Azure.

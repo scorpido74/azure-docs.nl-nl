@@ -3,12 +3,12 @@ title: Niet-compatibele resources herstellen
 description: Deze hand leiding helpt u bij het herstellen van resources die niet compatibel zijn met beleids regels in Azure Policy.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958742"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651363"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Niet-compatibele resources herstellen met Azure Policy
 
@@ -19,7 +19,7 @@ Resources die niet compatibel zijn met een **deployIfNotExists** -of **Modify** 
 Als Azure Policy de sjabloon uitvoert in de **deployIfNotExists** -beleids definitie, wordt een [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)gebruikt.
 Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit ontbrekende rollen heeft, wordt deze fout weer gegeven tijdens het toewijzen van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. De _locatie_ van de beheerde identiteit heeft geen invloed op de werking van Azure Policy.
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Beheerde identiteit: er ontbreekt een rol" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Scherm opname van een deployIfNotExists-beleid waarvoor een gedefinieerde machtiging voor de beheerde identiteit ontbreekt." border="false":::
 
 > [!IMPORTANT]
 > Als een resource die is gewijzigd door **deployIfNotExists** of **Modify** zich buiten het bereik van de beleids toewijzing bevindt of als de sjabloon eigenschappen voor bronnen buiten het bereik van de beleids toewijzing heeft geopend, moet de beheerde identiteit van de toewijzing [hand matig worden verleend voor toegang](#manually-configure-the-managed-identity) of kan de herstel implementatie niet worden uitgevoerd.
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>Gedefinieerde rollen toekennen via de portal
 
-Er zijn twee manieren om de beheerde identiteit van een toewijzing toe te kennen aan de gedefinieerde rollen met behulp van de portal, met behulp van **toegangs beheer (IAM)** of door de toewijzing van beleid of initiatief te bewerken en te klikken op **Opslaan**.
+Er zijn twee manieren om de beheerde identiteit van een toewijzing toe te kennen aan de gedefinieerde rollen met behulp van de portal, met behulp van **toegangs beheer (IAM)** of door het beleid of initiatief toewijzing te bewerken en **Opslaan**te selecteren.
 
 Voer de volgende stappen uit om een rol toe te voegen aan de beheerde identiteit van de toewijzing:
 
-1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
+1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina.
 
-1. Zoek de toewijzing met een beheerde identiteit en klik op de naam.
+1. Zoek de toewijzing met een beheerde identiteit en selecteer de naam.
 
 1. Zoek de eigenschap van de **toewijzings-id** op de pagina bewerken. De toewijzings-ID zal er ongeveer als volgt uitzien:
 
@@ -110,10 +110,10 @@ Voer de volgende stappen uit om een rol toe te voegen aan de beheerde identiteit
 
 1. Ga naar de resource of de bovenliggende container van de resources (resource groep, abonnement, beheer groep) waarvoor de functie definitie hand matig moet worden toegevoegd.
 
-1. Klik op de koppeling **toegangs beheer (IAM)** op de pagina Resources en klik op **+ roltoewijzing toevoegen** boven aan de pagina toegangs beheer.
+1. Selecteer de koppeling **toegangs beheer (IAM)** op de pagina Resources en selecteer vervolgens **+ roltoewijzing toevoegen** boven aan de pagina toegangs beheer.
 
 1. Selecteer de juiste rol die overeenkomt met een **roleDefinitionIds** van de beleids definitie.
-   Zorg ervoor **dat de toewijzing** van de gebruiker, groep of toepassing van Azure AD is ingesteld op de standaard waarde. Plak of typ in het vak **selecteren** het gedeelte van de resource-id voor de toewijzing dat eerder is gevonden. Zodra de zoek opdracht is voltooid, klikt u op het object met dezelfde naam om ID te selecteren en klikt u op **Opslaan**.
+   Zorg ervoor **dat de toewijzing** van de gebruiker, groep of toepassing van Azure AD is ingesteld op de standaard waarde. Plak of typ in het vak **selecteren** het gedeelte van de resource-id voor de toewijzing dat eerder is gevonden. Zodra de zoek opdracht is voltooid, selecteert u het object met dezelfde naam om ID te selecteren en selecteert u **Opslaan**.
 
 ## <a name="create-a-remediation-task"></a>Een herstel taak maken
 
@@ -123,32 +123,32 @@ Tijdens de evaluatie bepaalt de beleids toewijzing met **deployIfNotExists** -of
 
 Voer de volgende stappen uit om een **herstel taak**te maken:
 
-1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
+1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Beleid zoeken in alle services" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Scherm opname van het zoeken naar beleid in alle services." border="false":::
 
 1. Selecteer aan de linkerkant van de Azure Policy pagina **herstel** .
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Herstel selecteren op de pagina beleid" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Scherm afbeelding van het knoop punt voor herstel op de pagina beleid." border="false":::
 
-1. Alle **deployIfNotExists** -en **Modify** -beleids toewijzingen met niet-compatibele resources zijn opgenomen in het **beleid voor het herstellen** van het tabblad en de gegevens tabel. Klik op een beleid met resources die niet compatibel zijn. De pagina **nieuwe herstel taak** wordt geopend.
+1. Alle **deployIfNotExists** -en **Modify** -beleids toewijzingen met niet-compatibele resources zijn opgenomen in het **beleid voor het herstellen** van het tabblad en de gegevens tabel. Selecteer een beleid met resources die niet compatibel zijn. De pagina **nieuwe herstel taak** wordt geopend.
 
    > [!NOTE]
-   > Een andere manier om de **herstel taak** pagina te openen, is door te zoeken en te klikken op het beleid op de pagina **naleving** en vervolgens op de knop **herstel taak maken** te klikken.
+   > Een andere manier om de **herstel taak** pagina te openen, is door het beleid te zoeken en te selecteren op de pagina **naleving** en vervolgens de knop **herstel taak maken** te selecteren.
 
 1. Filter op de pagina **nieuwe herstel taak** de bronnen die u wilt herstellen met behulp van het **bereik** beletsel tekens om onderliggende resources te kiezen van waar het beleid is toegewezen (inclusief de afzonderlijke resource objecten). U kunt ook de vervolg keuzelijst **locaties** gebruiken om de resources verder te filteren. Alleen de resources die in de tabel worden weer gegeven, worden hersteld.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Herstellen: Selecteer welke resources moeten worden hersteld" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Scherm afbeelding van het knoop punt herstellen en het raster van de resources om het probleem te verhelpen." border="false":::
 
-1. Start de herstel taak zodra de resources zijn gefilterd door op **herstellen**te klikken. De pagina beleids naleving wordt geopend op het tabblad **herstel taken** om de status van de voortgang van de taken weer te geven. Implementaties die zijn gemaakt door de herstel taak worden meteen gestart.
+1. Start de herstel taak zodra de resources zijn gefilterd door **herstellen**te selecteren. De pagina beleids naleving wordt geopend op het tabblad **herstel taken** om de status van de voortgang van de taken weer te geven. Implementaties die zijn gemaakt door de herstel taak worden meteen gestart.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Herstellen-voortgang van herstel taken" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Scherm afbeelding van het tabblad herstel taken en de voortgang van bestaande herstel taken." border="false":::
 
-1. Klik op de **herstel taak** op de pagina beleids naleving om meer informatie over de voortgang weer te geven. Het filter dat wordt gebruikt voor de taak wordt weer gegeven samen met een lijst met de resources die worden hersteld.
+1. Selecteer op de pagina **herstel** op basis van de beleids naleving om meer informatie over de voortgang weer te geven. Het filter dat wordt gebruikt voor de taak wordt weer gegeven samen met een lijst met de resources die worden hersteld.
 
 1. Klik op de pagina **herstel taak** met de rechter muisknop op een resource om de implementatie van de herstel taak of de resource weer te geven. Klik aan het einde van de rij op **gerelateerde gebeurtenissen** om details, zoals een fout bericht, weer te geven.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Context menu voor herstellen van resource taak" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Scherm afbeelding van het context menu voor een resource op het tabblad herstel taak." border="false":::
 
 Resources die worden geïmplementeerd via een **herstel taak** , worden toegevoegd aan het tabblad **geïmplementeerde resources** op de pagina naleving van beleid.
 

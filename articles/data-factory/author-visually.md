@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 05/15/2020
-ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343107"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567113"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visueel ontwerpen in Azure Data Factory
 
@@ -39,9 +39,17 @@ De standaard ervaring voor het ontwerpen van visuele elementen werkt rechtstreek
 
 Voor resources op het hoogste niveau, zoals pijp lijnen, gegevens sets en data stromen, kunnen eigenschappen op hoog niveau worden bewerkt in het deel venster Eigenschappen aan de rechter kant van het canvas. Het deel venster Eigenschappen bevat eigenschappen zoals naam, beschrijving, aantekeningen en andere eigenschappen op hoog niveau. Subbronnen, zoals pijplijn activiteiten en gegevens stroom transformaties, worden bewerkt met behulp van het deel venster aan de onderkant van het canvas. 
 
-![Canvas ontwerpen](media/author-visually/properties-pane.png)
+![Deelvenster Eigenschappen](media/author-visually/properties-pane.png)
 
 Het deel venster Eigenschappen wordt alleen standaard geopend bij het maken van resources. Als u deze wilt bewerken, klikt u op het deel venster Eigenschappen in de rechter bovenhoek van het canvas.
+
+### <a name="related-resources"></a>Gerelateerde resources
+
+In het deel venster Eigenschappen kunt u zien welke resources afhankelijk zijn van de geselecteerde resource door het tabblad **verwant** te selecteren. Een resource die verwijst naar de huidige resource, wordt hier weer gegeven.
+
+![Gerelateerde resources](media/author-visually/related-resources.png)
+
+In de bovenstaande afbeelding gebruiken bijvoorbeeld één pijp lijn en twee gegevens stromen de gegevensset die momenteel is geselecteerd.
 
 ## <a name="management-hub"></a>Beheerhub
 

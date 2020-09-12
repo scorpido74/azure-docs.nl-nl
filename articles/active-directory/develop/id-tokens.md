@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795239"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646591"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -85,6 +85,8 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 |`unique_name` | Tekenreeks | Biedt een voor mensen leesbare waarde waarmee het onderwerp van het token wordt geïdentificeerd. Deze waarde is uniek op een bepaald moment, maar als e-mail berichten en andere id's opnieuw kunnen worden gebruikt, kan deze waarde opnieuw worden weer gegeven op andere accounts en moet daarom alleen worden gebruikt voor weergave doeleinden. Alleen uitgegeven in v 1.0 `id_tokens` . |
 |`uti` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Moet worden genegeerd. |
 |`ver` | Teken reeks, ofwel 1,0 of 2,0 | Hiermee wordt de versie van de id_token. |
+|`hasgroups`|Booleaans|Indien aanwezig, altijd waar, die aangeeft dat de gebruiker zich in ten minste één groep bevindt. Wordt gebruikt in plaats van de groeps claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de Microsoft Graph-API moet gebruiken om de groepen van de gebruiker te bepalen `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` .|
+|`groups:src1`|JSON-object | Voor token aanvragen die geen beperkte lengte hebben (Zie `hasgroups` hierboven), maar nog steeds te groot zijn voor het token, wordt een koppeling naar de lijst met volledige groepen voor de gebruiker opgenomen. Voor JWTs als een gedistribueerde claim voor SAML als een nieuwe claim in plaats van de `groups` claim. <br><br>**Voor beeld-JWT-waarde**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Zie voor meer informatie [Groups overschrijding claim](#groups-overage-claim).|
 
 > [!NOTE]
 > De id_token v 1.0 en v 2.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. De versie is gebaseerd op het eind punt van waaruit het is aangevraagd. Hoewel bestaande toepassingen waarschijnlijk gebruikmaken van het Azure AD-eind punt, moeten nieuwe toepassingen het eind punt van het micro soft Identity-platform ' v 2.0 ' gebruiken.
@@ -102,6 +104,26 @@ Als u gegevens op de juiste manier per gebruiker wilt opslaan, kunt u `sub` of `
 > Gebruik niet de `idp` claim om informatie over een gebruiker op te slaan in een poging om gebruikers te correleren tussen tenants.  Deze functie werkt niet, omdat de `oid` en `sub` claims voor een gebruiker door een Tenant worden gewijzigd, om ervoor te zorgen dat toepassingen geen gebruikers kunnen traceren tussen tenants.  
 >
 > Gast scenario's, waarbij een gebruiker zich in één Tenant bevindt en zich in een andere persoon verifieert, dient de gebruiker te behandelen alsof ze een gloed nieuwe gebruiker van de service zijn.  Uw documenten en bevoegdheden in de contoso-Tenant mogen niet worden toegepast in de fabrikam-Tenant. Dit is belang rijk om te voor komen dat gegevens per ongeluk worden gelekt via tenants.
+
+### <a name="groups-overage-claim"></a>Claim van groepen overschrijding
+Om ervoor te zorgen dat de token grootte niet groter is dan de grootte limieten voor HTTP-headers, beperkt Azure AD het aantal object-Id's dat in de claim wordt opgenomen `groups` . Als een gebruiker lid is van meer groepen dan de limiet van overschrijding (150 voor SAML-tokens, 200 voor JWT-tokens), levert Azure AD de groeps claim niet in het token. In plaats daarvan bevat het een overschrijding-claim in het token dat aangeeft dat de toepassing een query moet uitvoeren op de Microsoft Graph-API om het groepslid maatschap van de gebruiker op te halen.
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+ }
+```
 
 ## <a name="validating-an-id_token"></a>Een id_token valideren
 

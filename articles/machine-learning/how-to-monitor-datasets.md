@@ -11,19 +11,19 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 270e93302a90c458ccbdfdc4d2ced8f0d3c263af
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4b2b435be2a39b6e31a7f44fa6acbe7e1bc9c2c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319674"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661668"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevens drift (preview) detecteren in gegevens sets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!IMPORTANT]
 > Het detecteren van gegevens drift in gegevens sets is momenteel beschikbaar als open bare preview.
-> De preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> De preview-versie wordt aangeboden zonder Service Level Agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Meer informatie over het bewaken van gegevens drift en het instellen van waarschuwingen wanneer de drift hoog is.  
 
@@ -46,7 +46,7 @@ U kunt metrische gegevens over data drift weer geven met de python-SDK of in Azu
 U hebt het volgende nodig om de monitors voor de gegevensset te maken en te gebruiken:
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
-* De [Azure machine learning SDK voor python is geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), waaronder het pakket met de azureml-gegevens sets.
+* De [Azure machine learning SDK voor python is geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), waaronder het pakket met de azureml-gegevens sets.
 * Gestructureerde (tabellaire) gegevens met een tijds tempel die is opgegeven in het bestandspad, de bestands naam of de kolom in de gegevens.
 
 ## <a name="what-is-data-drift"></a>Wat is gegevens drift?
@@ -105,7 +105,7 @@ De eigenschappen van de doel-dataset moeten worden `timeseries` ingesteld op de 
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python-SDK
 
-De [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) methode class definieert de time stamp-kolom voor de gegevensset.
+De [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)  methode class definieert de time stamp-kolom voor de gegevensset.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -132,7 +132,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Voor een volledig voor beeld van het gebruik `timeseries` van de eigenschappen van gegevens sets raadpleegt u het [voor beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) of de SDK-documentatie voor [gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+Voor een volledig voor beeld van het gebruik `timeseries` van de eigenschappen van gegevens sets raadpleegt u het [voor beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) of de SDK-documentatie voor [gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
@@ -208,7 +208,7 @@ monitor = monitor.enable_schedule()
 
 Zie voor een volledig voor beeld van het instellen van een `timeseries` gegevensset en gegevens drift een [voor beeld](https://aka.ms/datadrift-notebook)van een notebook.
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a>Azure Machine Learning Studio
+### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 Als u waarschuwingen wilt instellen op uw gegevenssetcontrole, moet de werk ruimte die de gegevensset bevat waarvoor u een monitor wilt maken, beschikken over de mogelijkheden van ENTER prise Edition.
@@ -229,14 +229,14 @@ Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**t
 
     | Instelling | Beschrijving | Tips | Veranderlijk | 
     | ------- | ----------- | ---- | ------- |
-    | Naam | De naam van de monitor van de gegevensset. | | Nee |
-    | Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk zijn. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Ja | 
-    | Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Ja | 
-    | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Ja | 
-    | Frequency | De frequentie die wordt gebruikt om de pijplijn taak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Bij elke uitvoering worden de gegevens in de doel gegevensset vergeleken op basis van de frequentie: <li>Dagelijks: de meest recente volledige dag in de doel gegevensset vergelijken met de basis lijn <li>Wekelijks: de meest recente volledige week (maandag-zondag) in de doel gegevensset vergelijken met de basis lijn <li>Maandelijks: de meest recente volledige maand in de doel gegevensset vergelijken met de basis lijn | Nee | 
-    | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | Nee | 
-    | E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
-    | Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja |
+    | Naam | De naam van de monitor van de gegevensset. | | No |
+    | Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk zijn. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Yes | 
+    | Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Yes | 
+    | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Yes | 
+    | Frequency | De frequentie die wordt gebruikt om de pijplijn taak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Bij elke uitvoering worden de gegevens in de doel gegevensset vergeleken op basis van de frequentie: <li>Dagelijks: de meest recente volledige dag in de doel gegevensset vergelijken met de basis lijn <li>Wekelijks: de meest recente volledige week (maandag-zondag) in de doel gegevensset vergelijken met de basis lijn <li>Maandelijks: de meest recente volledige maand in de doel gegevensset vergelijken met de basis lijn | No | 
+    | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | No | 
+    | E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Yes | 
+    | Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Yes |
 
 Nadat de wizard is voltooid, wordt de resulterende gegevensset-monitor weer gegeven in de lijst. Selecteer deze optie om naar de pagina met details van de monitor te gaan.
 
@@ -319,7 +319,7 @@ De metrische gegevens van de gegevensset-monitor worden opgeslagen als `customMe
 
 Nadat u metrische gegevens hebt geïdentificeerd om waarschuwings regels in te stellen, maakt u een nieuwe waarschuwings regel:
 
-![Nieuwe waarschuwings regel](./media/how-to-monitor-datasets/alert-rule.png)
+![Nieuwe waarschuwingsregel](./media/how-to-monitor-datasets/alert-rule.png)
 
 U kunt een bestaande actie groep gebruiken of een nieuwe maken om de actie te definiëren die moet worden uitgevoerd wanneer aan de voor waarden van de set wordt voldaan:
 

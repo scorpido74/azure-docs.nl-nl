@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655865"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596109"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
 
@@ -83,7 +83,7 @@ Gebruik de volgende stappen om een zelf-hostende IR te maken met behulp van Azur
     
        ![De Integration Runtime registreren](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
-    1. Selecteer op de pagina **nieuw Integration runtime (zelf-hostend) knoop punt** **volt ooien**.
+    1. Selecteer **Voltooien** op de pagina **Nieuw knooppunt voor Integration Runtime (zelf-hostend)** .
 
 1. Nadat de zelf-hostende Integration runtime is geregistreerd, ziet u het volgende venster:
 
@@ -320,6 +320,7 @@ Op het niveau van de bedrijfs firewall moet u de volgende domeinen en uitgaande 
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
+
 Op het niveau van Windows Firewall of op computer niveau worden deze uitgaande poorten normaal gesp roken ingeschakeld. Als dat niet het geval is, kunt u de domeinen en poorten configureren op een zelf-hostende Integration runtime-computer.
 
 > [!NOTE]
@@ -331,13 +332,13 @@ Op het niveau van Windows Firewall of op computer niveau worden deze uitgaande p
 
 Zorg ervoor dat u firewall regels correct inschakelt op de firewall van het bedrijf, Windows Firewall van de zelf-hostende Integration runtime-computer en het gegevens archief zelf. Door deze regels in te scha kelen, kan de zelf-hostende Integration runtime verbinding maken met zowel de bron-als de sink. Schakel regels in voor elk gegevens archief dat is betrokken bij de Kopieer bewerking.
 
-Als u bijvoorbeeld van een on-premises gegevens archief wilt kopiëren naar een SQL Database sink of een Azure SQL Data Warehouse-sink, voert u de volgende stappen uit:
+Als u bijvoorbeeld vanuit een on-premises gegevens archief wilt kopiëren naar een SQL Database sink of een Azure Synapse Analytics-Sink (voorheen SQL Data Warehouse), voert u de volgende stappen uit:
 
 1. Uitgaande TCP-communicatie toestaan op poort 1433 voor zowel Windows Firewall als de firewall van het bedrijf.
 1. Configureer de firewall instellingen van de SQL Database om het IP-adres van de zelf-hostende Integration runtime-machine toe te voegen aan de lijst met toegestane IP-adressen.
 
 > [!NOTE]
-> Als uw firewall geen uitgaande poort 1433 toestaat, is de zelf-hostende Integration runtime niet rechtstreeks toegang tot de SQL database. In dit geval kunt u een [gefaseerde kopie](copy-activity-performance.md) van SQL Database en SQL Data Warehouse gebruiken. In dit scenario hebt u alleen HTTPS (poort 443) nodig voor het verplaatsen van gegevens.
+> Als uw firewall geen uitgaande poort 1433 toestaat, is de zelf-hostende Integration runtime niet rechtstreeks toegang tot de SQL database. In dit geval kunt u een [gefaseerde kopie](copy-activity-performance.md) van SQL database en Azure Synapse Analytics gebruiken. In dit scenario hebt u alleen HTTPS (poort 443) nodig voor het verplaatsen van gegevens.
 
 ## <a name="proxy-server-considerations"></a>Overwegingen voor de proxy server
 

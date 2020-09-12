@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bce5e14db133ad55a2035c0c8074486ed1b8a6ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039021"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460504"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
@@ -37,7 +37,7 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Er ontbreken Azure AD-gebruikers in Visual Studio object Explorer           | Dit is een bekend probleem.  Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Zie [verificatie voor Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met Synapse SQL-pool. |
-| Hand matige scripting, met behulp van de wizard scripting of het maken van verbinding via SSMS is traag, reageert niet of levert fouten op | Zorg ervoor dat gebruikers zijn gemaakt in de hoofd database. In script opties moet u er ook voor zorgen dat de engine Edition is ingesteld als ' Microsoft Azure SQL Data Warehouse Edition ' en het type engine is ' Microsoft Azure SQL Database '. |
+| Hand matige scripting, met behulp van de wizard scripting of het maken van verbinding via SSMS is traag, reageert niet of levert fouten op | Zorg ervoor dat gebruikers zijn gemaakt in de hoofd database. In script opties moet u er ook voor zorgen dat de engine Edition is ingesteld op ' Microsoft Azure Synapse Analytics Edition ' en Engine type is ' Microsoft Azure SQL Database '. |
 | Genereren van scripts mislukt in SSMS                               | Het genereren van een script voor de SQL-groep Synapse mislukt als de optie script voor afhankelijke objecten genereren is ingesteld op ' True '. Als tijdelijke oplossing moeten gebruikers hand matig naar **Hulpprogram ma's > opties->SQL Server-objectverkenner-> script genereren voor afhankelijke opties en ingesteld op ONWAAR** |
 
 ## <a name="performance"></a>Prestaties
@@ -58,7 +58,7 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: de bewerking kan niet worden uitgevoerd omdat de server het toegestane quotum van de data base-transactie eenheid van 45000 zou overschrijden. | Verminder de [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) van de data base die u probeert te maken of [vraag een quotum toename](sql-data-warehouse-get-started-create-support-ticket.md)aan. |
 | Ruimte gebruik onderzoeken                              | Zie [tabel grootten](sql-data-warehouse-tables-overview.md#table-size-queries) om inzicht te krijgen in het ruimte gebruik van uw systeem. |
-| Hulp bij het beheren van tabellen                                    | Zie het artikel [overzicht](sql-data-warehouse-tables-overview.md) voor meer informatie over het beheren van tabellen.  Dit artikel bevat ook koppelingen naar gedetailleerde onderwerpen, zoals [tabel gegevens typen](sql-data-warehouse-tables-data-types.md), [het distribueren van een tabel](sql-data-warehouse-tables-distribute.md), [het indexeren](sql-data-warehouse-tables-index.md)van een tabel, het [partitioneren van een](sql-data-warehouse-tables-partition.md)tabel, het [onderhouden van tabel statistieken](sql-data-warehouse-tables-statistics.md) en [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md). |
+| Hulp bij het beheren van tabellen                                    | Zie het artikel [overzicht](sql-data-warehouse-tables-overview.md) voor meer informatie over het beheren van tabellen.  Dit artikel bevat ook koppelingen naar gedetailleerde onderwerpen, zoals [tabel gegevens typen](sql-data-warehouse-tables-data-types.md), [het distribueren van een tabel](sql-data-warehouse-tables-distribute.md), [het indexeren](sql-data-warehouse-tables-index.md)van een tabel, het  [partitioneren van een](sql-data-warehouse-tables-partition.md)tabel, het [onderhouden van tabel statistieken](sql-data-warehouse-tables-statistics.md) en [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md). |
 | De voortgangs balk voor transparent Data Encryption (TDE) wordt niet bijgewerkt in de Azure Portal | U kunt de status van TDE bekijken via [Power shell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
 ## <a name="differences-from-sql-database"></a>Verschillen van SQL Database

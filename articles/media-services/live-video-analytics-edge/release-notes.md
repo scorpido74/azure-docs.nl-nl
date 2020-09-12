@@ -3,12 +3,12 @@ title: Live video Analytics op IoT Edge opmerkingen bij de release-Azure
 description: Dit onderwerp bevat opmerkingen bij de release van live video Analytics over IoT Edge releases, verbeteringen, fout oplossingen en bekende problemen.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 23c2362d46a0b9bfe2fc2fbe31e00d0a42f80cfa
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: feab7755dea69a932fe40df59e0dd35f3f826553
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055444"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645814"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Opmerkingen bij de release van live video op IoT Edge
 
@@ -32,7 +32,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 > [!NOTE]
 > In de Quick starts en zelf studies maakt de implementatie manifesten gebruik van een tag van 1 (live-video-Analytics: 1). Als u dergelijke manifesten opnieuw implementeert, moet de module worden bijgewerkt op uw rand > apparaten.
 
-## <a name="new-features"></a>Nieuwe functies 
+### <a name="new-features"></a>Nieuwe functies 
 
 * U kunt nu prestaties van inhouds overdrachten voor hoge gegevens krijgen tussen live video Analytics op IoT Edge en uw aangepaste extensie met behulp van gRPC Framework. Bekijk [Dit](analyze-live-video-use-your-grpc-model-quickstart.md) om aan de slag te gaan.
 * Grotere regionale implementatie van live video analyses en alleen de Cloud service is bijgewerkt.  
@@ -40,7 +40,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 * De [instelling](https://aka.ms/lva-edge/setup-resources-for-samples) voor snel starten is bijgewerkt en er wordt ondersteuning geboden voor nieuwe regio's.
     * Er is geen actie aanroepen voor iedereen die al een systeem heeft ingesteld
 
-## <a name="bug-fixes"></a>Opgeloste fouten 
+### <a name="bug-fixes"></a>Opgeloste fouten 
 
 * Het gebruik van een afgeschafte Azure-extensie verwijderen in het script instellen
 

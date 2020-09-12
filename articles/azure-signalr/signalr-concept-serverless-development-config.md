@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928561"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513934"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Ontwikkeling en configuratie van Azure Functions met Azure SignalR Service
 
@@ -51,7 +51,9 @@ Zie [app service-verificatie gebruiken](#using-app-service-authentication)voor m
 
 Gebruik de binding van de *signaal trigger* om berichten te verwerken die zijn verzonden vanuit de signalerings service. U kunt worden geactiveerd wanneer clients berichten verzenden of clients een verbinding maken of de verbinding verbreken.
 
-Zie voor meer informatie de referentie voor de [ *signaal/trigger* binding](../azure-functions/functions-bindings-signalr-service-trigger.md)
+Zie voor meer informatie de referentie voor het activeren van de [ *signaal/trigger* binding](../azure-functions/functions-bindings-signalr-service-trigger.md).
+
+U moet ook uw functie-eind punt configureren als upstream, zodat de service de functie wordt geactiveerd wanneer er een bericht van de client is. Raadpleeg dit [document](concept-upstream.md)voor meer informatie over het configureren van een upstream.
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Berichten verzenden en groepslid maatschap beheren
 
@@ -69,7 +71,7 @@ Signa lering heeft een concept van ' hubs '. Elke client verbinding en elk beric
 
 Het model op basis van klassen is specifiek voor C#. Met model op basis van klasse kan een consistente programmeer ervaring aan de server zijde worden gesignaleerd. Het bevat de volgende functies.
 
-* Minder configuratie werkt: de klassenaam wordt gebruikt als `HubName` , de naam van de methode wordt gebruikt als `Event` en de `Category` wordt automatisch bepaald volgens de naam van de methode.
+* Minder configuratie werk: de klassenaam wordt gebruikt als `HubName` , de naam van de methode wordt gebruikt als `Event` en de `Category` wordt automatisch bepaald volgens de naam van de methode.
 * Automatische parameter binding: noch het `ParameterNames` kenmerk `[SignalRParameter]` is niet nodig. Para meters zijn automatisch gebonden aan argumenten van de Azure function-methode in de juiste volg orde.
 * Handige uitvoer en onderhandelings ervaring.
 
@@ -105,11 +107,11 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-Alle functies die gebruikmaken van een op klassen gebaseerd model moeten de methode van klasse zijn die overneemt van **ServerlessHub**. De naam van de klasse `SignalRTestHub` in het voor beeld is de naam van de hub.
+Alle functies die gebruikmaken van op klassen gebaseerd model moeten de methode van klasse zijn die overneemt van **ServerlessHub**. De naam van de klasse `SignalRTestHub` in het voor beeld is de naam van de hub.
 
 ### <a name="define-hub-method"></a>Hub-methode definiëren
 
-Alle hub-methoden **moeten**  een `[SignalRTrigger]` kenmerk hebben en **moeten** constructor zonder para meters gebruiken. Vervolgens wordt de **methode naam** beschouwd als parameter **gebeurtenis**.
+Alle hub-methoden **moeten** een argument van worden voorzien van het `InvocationContext` `[SignalRTrigger]` kenmerk, en constructor zonder para meters gebruiken. Vervolgens wordt de **methode naam** beschouwd als parameter **gebeurtenis**.
 
 Standaard, `category=messages` behalve de naam van de methode is een van de volgende namen:
 
@@ -202,7 +204,11 @@ Raadpleeg de documentatie voor uw taal voor meer informatie over het gebruik van
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Berichten verzenden van een client naar de service
 
-Hoewel de Signa lering-SDK toestaat dat client toepassingen back-end-logica aanroepen in een Signalr hub, wordt deze functionaliteit nog niet ondersteund wanneer u de seingevings service gebruikt met Azure Functions. HTTP-aanvragen gebruiken om Azure Functions aan te roepen.
+Als u een [upstream](concept-upstream.md) hebt geconfigureerd voor uw signalerings bron, kunt u berichten van de client naar uw Azure functions verzenden met behulp van een seingevings client. Hier volgt een voor beeld in Java script:
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Azure Functions configuratie
 

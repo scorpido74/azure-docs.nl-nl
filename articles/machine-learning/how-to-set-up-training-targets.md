@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ca76ec5bef1d908ca3cea6ce0f58b1205c1676ca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144087"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661563"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>Een trainings uitvoering naar een reken doel verzenden
 
@@ -31,7 +31,7 @@ Het enige wat u hoeft te doen, is het definiëren van de omgeving voor elk reken
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
-* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md), `ws`
 * Een reken doel, `my_compute_target` .  Een compute-doel maken met:
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
@@ -39,11 +39,11 @@ Het enige wat u hoeft te doen, is het definiëren van de omgeving voor elk reken
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Wat is een script voor het uitvoeren van een configuratie?
 
-U verzendt uw trainings experiment met een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) -object.  Dit object bevat:
+U verzendt uw trainings experiment met een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) -object.  Dit object bevat:
 
 * **source_directory**: de bron directory die uw trainings script bevat
 * **script**: het trainings script identificeren
-* **run_config**: de [configuratie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)van de uitvoering, die op zijn beurt bepaalt waar de training plaatsvindt. In de `run_config` kunt u het berekenings doel en de omgeving opgeven die moeten worden gebruikt bij het uitvoeren van het trainings script.  
+* **run_config**: de [configuratie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)van de uitvoering, die op zijn beurt bepaalt waar de training plaatsvindt. In de `run_config` kunt u het berekenings doel en de omgeving opgeven die moeten worden gebruikt bij het uitvoeren van het trainings script.  
 
 ## <a name="whats-an-environment"></a>Wat is een omgeving?
 
@@ -167,7 +167,7 @@ Bekijk deze notebooks voor voor beelden van training met verschillende Compute-d
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zelf studie: een model trainen](tutorial-train-models-with-aml.md) maakt gebruik van een beheerd Compute-doel om een model te trainen.
-* Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
+* Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen. weer geven = Azure-ml-py&pres Erve-View = True)
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
-* Bekijk de [RunConfiguration class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-referentie.
+* Bekijk de [RunConfiguration class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK-referentie.
 * [Azure Machine Learning gebruiken met virtuele netwerken van Azure](how-to-enable-virtual-network.md)

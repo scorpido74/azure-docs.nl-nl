@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: circuits en peering'
 description: Op deze pagina vindt u een overzicht van ExpressRoute-circuits en routerings domeinen/peering.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537017"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566497"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-circuits en peering
 
@@ -54,7 +54,7 @@ U kunt meer dan één virtueel netwerk verbinden met het privé-peering domein. 
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Connectiviteit met micro soft onlineservices (Office 365 en Azure PaaS Services) vindt plaats via micro soft-peering. We scha kelen bidirectionele connectiviteit tussen uw WAN-en micro soft-Cloud Services via het micro soft peering-routerings domein. U moet verbinding maken met micro soft-Cloud Services alleen via open bare IP-adressen die eigendom zijn van u of uw connectiviteits provider en u moet voldoen aan alle gedefinieerde regels. Zie de pagina met ExpressRoute- [vereisten](expressroute-prerequisites.md) voor meer informatie.
+Connectiviteit met micro soft onlineservices (Microsoft 365 en Azure PaaS Services) vindt plaats via micro soft-peering. We scha kelen bidirectionele connectiviteit tussen uw WAN-en micro soft-Cloud Services via het micro soft peering-routerings domein. U moet verbinding maken met micro soft-Cloud Services alleen via open bare IP-adressen die eigendom zijn van u of uw connectiviteits provider en u moet voldoen aan alle gedefinieerde regels. Zie de pagina met ExpressRoute- [vereisten](expressroute-prerequisites.md) voor meer informatie.
 
 Raadpleeg de [pagina met veelgestelde vragen](expressroute-faqs.md) voor meer informatie over ondersteunde services, kosten en configuratie details. Zie de pagina [ExpressRoute locations](expressroute-locations.md) voor informatie over de lijst met connectiviteits providers die ondersteuning bieden voor micro soft-peering.
 

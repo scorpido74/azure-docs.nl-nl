@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263466"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594148"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problemen met gegevens stromen in Azure Data Factory oplossen
 
@@ -45,6 +45,8 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 - **Bericht**: er is een time-out opgetreden voor de broadcast. Zorg ervoor dat de stroom van de uitzending gegevens binnen 60 seconden produceert in debug-uitvoeringen en 300 seconden bij uitvoering
 - **Oorzaken**: Broadcast heeft een standaard time-out van 60 seconden in debug-uitvoeringen en 300 seconden in de uitvoering van taken. De stroom die is gekozen voor de broadcast lijkt groot te zijn voor het produceren van gegevens binnen deze limiet.
 - **Aanbeveling**: Controleer het tabblad optimaliseren op uw gegevensstroom transformaties voor samen voegen, bestaan en opzoeken. De standaard optie voor broadcast is ' auto '. Als deze optie is ingesteld, of als u de linker-of rechter kant hand matig instelt op broadcast onder ' fixed ', kunt u een grotere Azure Integration Runtime configuratie instellen of uitschakeling uitschakelen. De aanbevolen benadering voor de beste prestaties in gegevens stromen is om te voor komen dat Spark met ' auto ' wordt uitgezonden en een geoptimaliseerd voor geheugen gebruikt Azure IR.
+
+Als u de gegevens stroom uitvoert tijdens het uitvoeren van een debug-test uitvoering van een debug-pijp lijn, kunt u deze voor waarde vaker gebruiken. Dit komt doordat ADF de time-out van de uitzending beperkt tot 60 seconden om een snellere probleemoplossings ervaring te hand haven. Als u wilt uitbreiden naar de time-out van 300 seconden vanuit een geactiveerde uitvoering, kunt u de optie fout opsporing > activiteit gebruiken gebruiken om de Azure IR die is gedefinieerd in de pipeline-activiteit gegevens stroom uitvoeren.
 
 ### <a name="error-code-df-executor-conversion"></a>Fout code: DF-uitvoeringen-conversie
 

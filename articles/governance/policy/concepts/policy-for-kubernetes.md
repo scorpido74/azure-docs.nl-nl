@@ -3,12 +3,12 @@ title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509872"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645587"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -57,13 +57,13 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
      1. Registreer de resource providers **micro soft. container service** en **micro soft. PolicyInsights** . Zie [resource providers en-typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)voor instructies.
 
-     1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
+     1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Beleid zoeken in alle services" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Scherm opname van het zoeken naar beleid in alle services." border="false":::
 
      1. Selecteer **deel nemen** aan de linkerkant van de pagina Azure Policy.
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Word lid van het beleid voor AKS preview" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Scherm afbeelding van het knoop punt ' samen voegen met voor beeld ' op de pagina beleid." border="false":::
 
      1. Selecteer de rij van het abonnement dat u wilt toevoegen aan de preview.
 
@@ -120,17 +120,17 @@ Zodra de bovenstaande vereiste stappen zijn voltooid, installeert u de Azure Pol
 
 - Azure Portal
 
-  1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
+  1. Start de AKS-service in de Azure Portal door **alle services**te selecteren en vervolgens op **Kubernetes-Services**te zoeken en te selecteren.
 
   1. Selecteer een van uw AKS-clusters.
 
   1. Selecteer **beleid (preview-versie)** aan de linkerkant van de Kubernetes-service pagina.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Beleids definities van het AKS-cluster" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Scherm afbeelding van het knoop punt beleids regels (preview-versie) op de pagina Kubernetes-service." border="false":::
 
   1. Selecteer op de hoofd pagina de knop **invoeg toepassing inschakelen** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="De Azure Policy voor de invoeg toepassing voor AKS inschakelen":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Scherm opname van de knop add-on inschakelen op de pagina ' onboarding to Azure Policy for Azure Kubernetes Services (A K S).":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, geb
 
 - Azure Portal
 
-  1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
+  1. Start de AKS-service in de Azure Portal door **alle services**te selecteren en vervolgens op **Kubernetes-Services**te zoeken en te selecteren.
 
   1. Selecteer uw AKS-cluster waarvoor u de invoeg toepassing Azure Policy wilt uitschakelen.
 
   1. Selecteer **beleid (preview-versie)** aan de linkerkant van de Kubernetes-service pagina.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Beleids definities van het AKS-cluster" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Scherm afbeelding van het knoop punt beleids regels (preview-versie) op de pagina Kubernetes-service." border="false":::
 
   1. Op de hoofd pagina selecteert u de knop **invoeg toepassing uitschakelen** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="De Azure Policy voor de invoeg toepassing AKS uitschakelen" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Scherm opname van de knop add-on uitschakelen op de pagina ' onboarding to Azure Policy for Azure Kubernetes Services (A K S)." border="false":::
 
 - Azure CLI
 

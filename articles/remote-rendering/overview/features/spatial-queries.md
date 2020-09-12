@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b378fe3f01e6ef1d54a89341bbac3a26b9d6b33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a80681a641757d71288dfaee4c779121030a9db
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013143"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613599"
 ---
 # <a name="spatial-queries"></a>Ruimtelijke query's
 
@@ -112,6 +112,11 @@ Een treffer heeft de volgende eigenschappen:
 * ** `HitPosition` :** De positie waar de Ray het object kruist.
 * ** `HitNormal` :** De wereld wijde ruimte van het net op de positie van het snij punt.
 * ** `DistanceToHit` :** De afstand tussen de Ray-begin positie en de treffer.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# RemoteManager. RayCastQueryAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.raycastqueryasync)
+* [C++ RemoteManager:: RayCastQueryAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#raycastqueryasync)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708838"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658723"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Wat is een Azure SQL Managed instance-groep (preview)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,6 +79,7 @@ Er bestaan verschillende resourcebeperkingen met betrekking tot exemplaarpools e
 - Naast limieten op exemplaar niveau zijn er ook twee limieten opgelegd *voor het niveau van de instantie groep*:
   - Totale opslag grootte per pool (8 TB).
   - Totaal aantal data bases per pool (100).
+- AAD-beheerder kan niet worden ingesteld voor de instanties die in de exemplaar groep worden geïmplementeerd. Daarom kan AAD-verificatie niet worden gebruikt.
 
 De totale opslag toewijzing en het aantal data bases voor alle exemplaren moeten kleiner zijn dan of gelijk zijn aan de limieten die worden weer gegeven door exemplaar groepen.
 

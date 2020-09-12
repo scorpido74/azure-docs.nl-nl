@@ -1,6 +1,6 @@
 ---
 title: Quick start voor realtimeplatform
-description: Ga snel aan de slag met Realtimeplatform en Azure SQL Data Warehouse.
+description: Ga snel aan de slag met Realtimeplatform en Azure Synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208549"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485971"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Installatie handleiding voor Azure SQL DW Marketplace-realtimeplatform
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Installatie handleiding voor realtimeplatform Azure Synapse Analytics Marketplace
 
-In deze Quick Start wordt ervan uitgegaan dat u al een reeds bestaand exemplaar van SQL Data Warehouse hebt.
+In deze Quick Start wordt ervan uitgegaan dat u al een reeds bestaand exemplaar van Azure Synapse Analytics hebt.
 
-Zoek naar Realtimeplatform in azure Marketplace en selecteer de optie Realtimeplatform voor gegevens integratie met SQL Data Warehouse (klaargezet) 
+Zoek naar Realtimeplatform in azure Marketplace en selecteer de optie Realtimeplatform voor gegevens integratie met Azure Synapse Analytics (klaargezet) 
 
 ![Realtimeplatform installeren][install]
 
@@ -32,7 +32,7 @@ Configureer de Realtimeplatform-VM met de opgegeven eigenschappen en noteer de R
 
 Zodra de implementatie is geïmplementeerd, klikt \<VM Name> u op masternode in de Azure Portal, klikt u op verbinding maken en kopieert u de aanmelding met een lokaal VM-account 
 
-![Realtimeplatform verbinden met SQL Data Warehouse][connect]
+![Verbinding maken tussen Realtimeplatform en Azure Synapse Analytics][connect]
 
 Down load het sqljdbc42. jar van <https://www.microsoft.com/en-us/download/details.aspx?id=54671> op uw lokale computer. 
 

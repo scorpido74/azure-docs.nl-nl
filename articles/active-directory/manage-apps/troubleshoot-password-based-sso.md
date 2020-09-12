@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met eenmalige aanmelding op basis van wacht woorden in azure AD
-description: Problemen oplossen met een Azure AD-app die is geconfigureerd voor eenmalige aanmelding op basis van wacht woorden.
+title: Problemen oplossen met eenmalige aanmelding op basis van wacht woorden in Azure Active Directory
+description: Los problemen op met een Azure AD-app die is geconfigureerd voor eenmalige aanmelding op basis van wacht woorden.
 author: kenwith
 manager: celestedg
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 436fbdde1283bd8406e631fd37b559bfe11e234e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051943"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460351"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Problemen oplossen met eenmalige aanmelding op basis van wacht woorden in azure AD
 
@@ -87,7 +87,7 @@ Over het algemeen kunt u de optie hand matig gebruiken als het vastleggen van au
 ### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Aanmeldings velden automatisch vastleggen voor een app
 
 Voer de volgende stappen uit om eenmalige aanmelding op basis van een wacht woord te configureren met behulp van automatische registratie van het registratie veld:
-1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
+1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 3. Typ **Azure Active Directory** in het vak Zoek opdracht filteren en selecteer vervolgens **Azure Active Directory**.
 4. Selecteer **bedrijfs toepassingen** in het navigatie deel venster van Azure AD.
@@ -106,7 +106,7 @@ Voer de volgende stappen uit om eenmalige aanmelding op basis van een wacht woor
 Als u hand matig aanmeldings velden wilt vastleggen, moet de browser extensie mijn apps zijn geïnstalleerd. Uw browser kan ook niet worden uitgevoerd in de modus *InPrivate*, *incognito*of *Private* .
 
 Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren voor een app door gebruik te maken van hand matige registratie van het registratie veld:
-1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
+1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 3. Typ **Azure Active Directory** in het vak Zoek opdracht filteren en selecteer vervolgens **Azure Active Directory**.
 4. Selecteer **bedrijfs toepassingen** in het navigatie deel venster van Azure AD.

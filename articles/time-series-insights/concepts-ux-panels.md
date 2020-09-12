@@ -1,5 +1,5 @@
 ---
-title: Gegevens visualiseren in de TSI Explorer-Azure Time Series Insights Gen2 | Microsoft Docs
+title: Gegevens visualiseren in de Time Series Insights Explorer-Azure Time Series Insights Gen2 | Microsoft Docs
 description: Meer informatie over de functies en opties die beschikbaar zijn in de Azure Time Series Insights Explorer.
 author: deepakpalled
 ms.author: dpalled
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227046"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488164"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -47,7 +47,7 @@ De Azure Time Series Insights Explorer bestaat uit de volgende zeven elementen:
 
 ## <a name="1-environment-panel"></a>1. Omgevings paneel
 
-In het deel venster omgeving worden alle Azure Time Series Insights Gen2 omgevingen weer gegeven waartoe u toegang hebt. De lijst bevat de Gen2-omgevingen en de gen 1-omgevingen. Selecteer gewoon de omgeving die u wilt gebruiken om daar onmiddellijk mee te maken.
+In het deel venster omgeving worden alle Azure Time Series Insights Gen2 omgevingen weer gegeven waartoe u toegang hebt. De lijst bevat Gen2-omgevingen en gen1-omgevingen. Selecteer gewoon de omgeving die u wilt gebruiken om daar onmiddellijk mee te maken.
 
 1. Selecteer de vervolg keuze pijl naast de weer gegeven omgeving.
 
@@ -200,11 +200,11 @@ Azure Time Series Insights Explorer ondersteunt twee Thema's:
 
   [![Geselecteerd donker thema](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>Besturings elementen van de generatie 1-omgeving
+## <a name="gen1-environment-controls"></a>Besturings elementen voor gen1 omgeving
 
 ### <a name="gen2-terms-panel"></a>Gen2-termen paneel
 
-Deze sectie is alleen van toepassing op bestaande omgevingen van de 1 generatie die de Explorer in de bijgewerkte gebruikers interface proberen te gebruiken. U kunt het product product en Gen2 van generatie 1 in combi natie gebruiken. We hebben een aantal functies van de bestaande gebruikers interface aan de bijgewerkte Explorer toegevoegd, maar u kunt de volledige UI-ervaring voor een generatie 1-omgeving in de nieuwe Azure Time Series Insights Explorer krijgen.
+Deze sectie is alleen van toepassing op bestaande gen1-omgevingen die proberen om de Explorer in de bijgewerkte gebruikers interface te gebruiken. U kunt het product van de gen1 product en het Gen2 in combi natie gebruiken. We hebben een aantal functies van de bestaande gebruikers interface aan de bijgewerkte Explorer toegevoegd, maar u kunt de volledige UI-ervaring voor een gen1-omgeving in de nieuwe Azure Time Series Insights Explorer krijgen.
 
 In plaats van de hiërarchie wordt het deel venster Azure Time Series Insights Gen2-voor waarden weer gegeven. In het deel venster voor waarden kunt u query's definiëren in uw omgeving. Gebruik deze functie om ook gegevens te filteren op basis van een predikaat.
 
@@ -214,7 +214,7 @@ In het deel venster Editor voor Azure Time Series Insights termen van Gen2 worde
 
 **Waar**: gebruik de component WHERE om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door een operand te selecteren, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde typen operanden zijn onder andere:
 
-| Bewerking    | Ondersteunde typen    | Opmerkingen |
+| Bewerking    | Ondersteunde typen    | Notities |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double, DateTime, time span | |
 | `=`, `!=`, `<>` | Teken reeks, BOOL, double, DateTime, time span, NULL |

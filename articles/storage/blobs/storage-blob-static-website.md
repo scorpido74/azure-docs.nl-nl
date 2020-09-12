@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432510"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486855"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
-U kunt statische inhoud (HTML-, CSS-, java script-en afbeeldings bestanden) rechtstreeks vanuit een opslag container met de naam *$Web*verwerken. Door uw inhoud in Azure Storage te hosten, kunt u serverloze architecturen gebruiken die [Azure functions](/azure/azure-functions/functions-overview) en andere PaaS-Services (platform as a Service) bevatten.
+U kunt statische inhoud (HTML-, CSS-, java script-en afbeeldings bestanden) rechtstreeks vanuit een opslag container met de naam *$Web*verwerken. Door uw inhoud in Azure Storage te hosten, kunt u serverloze architecturen gebruiken die [Azure functions](/azure/azure-functions/functions-overview) en andere PaaS-Services (platform as a Service) bevatten. Azure Storage statische website-hosting is een uitstekende optie in gevallen waarin u geen webserver nodig hebt om inhoud te renderen.
+
+[App service statische web apps](https://azure.microsoft.com/services/app-service/static/) is een geweldig alternatief voor het Azure Storage van statische website-hosting en is ook geschikt in gevallen waarin u geen webserver nodig hebt om inhoud te renderen. App Service statische Web Apps bieden u een volledig beheerde werk stroom voor continue integratie en doorlopende levering (CI/CD) van GitHub-bron tot wereld wijde implementatie.
+
+Als u een webserver nodig hebt om inhoud weer te geven, kunt u [Azure app service](https://azure.microsoft.com/services/app-service/)gebruiken.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> Als uw site afhankelijk is van code aan de server zijde, gebruikt u [Azure app service](/azure/app-service/overview) in plaats daarvan.
-Zorg ervoor dat u een standaard-opslag account voor algemeen gebruik maakt. Statische websites zijn niet beschikbaar in een ander type opslag account.
+> Zorg ervoor dat u een standaardopslagaccount van het type v2 voor algemeen gebruik maakt. Statische websites zijn niet beschikbaar in een ander type opslagaccount.
 
 ## <a name="setting-up-a-static-website"></a>Instellen van een statische website
 
@@ -104,6 +107,11 @@ Het is niet mogelijk om headers als onderdeel van de functie statische website t
 
 Als u headers wilt gebruiken voor het beheren van de cache, raadpleegt u [beheer Azure CDN caching met cache regels](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
 
+## <a name="multi-region-website-hosting"></a>Hosting van websites met meerdere regio's
+
+Als u van plan bent om een website in meerdere locaties te hosten, raden we u aan om een [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) te gebruiken voor regionale caching. Gebruik de [voor deur van Azure](https://docs.microsoft.com/azure/frontdoor/) als u in elke regio verschillende inhoud wilt aanbieden. Het biedt ook mogelijkheden voor failover. [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) wordt niet aanbevolen als u van plan bent een aangepast domein te gebruiken. Problemen kunnen zich voordoen als gevolg van de manier waarop Azure Storage aangepaste domein namen verifieert.
+
+
 ## <a name="pricing"></a>Prijzen
 
 U kunt statische website-hosting gratis inschakelen. U wordt alleen gefactureerd voor de Blob-opslag die uw site gebruikt en de operationele kosten. Bekijk de [pagina met prijzen voor azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over de prijzen voor Azure Blob Storage.
@@ -117,7 +125,7 @@ Zie [metrische gegevens inschakelen op de pagina's van een statische website](st
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een statische website hosten in Azure Storage](storage-blob-static-website-how-to.md)
-* [Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)
+* [Een aangepast domein toewijzen aan een Azure Blob Storage-eindpunt](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Uw eerste serverloze web-app bouwen](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

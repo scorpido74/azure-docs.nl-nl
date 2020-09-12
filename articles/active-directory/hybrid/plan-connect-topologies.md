@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509077"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658510"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologieën voor Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Sync als de oplossing voor sleutel integratie. Dit artikel bevat zowel ondersteunde als niet-ondersteunde configuraties.
@@ -117,15 +117,15 @@ In een account-resource forest-topologie hebt u een of meer *account* -forests m
 
 In dit scenario vertrouwt een (of meer) resource forest alle account forests. De resource-forest heeft doorgaans een uitgebreid Active Directory schema met Exchange en Lync. Alle Exchange-en Lync-Services, samen met andere gedeelde services, bevinden zich in dit forest. Gebruikers hebben een uitgeschakeld gebruikers account in dit forest en het postvak is gekoppeld aan het account-forest.
 
-## <a name="office-365-and-topology-considerations"></a>Aandachtspunten voor Office 365 en-topologie
-Voor sommige Office 365-werk belastingen gelden bepaalde beperkingen voor ondersteunde topologieën:
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 en topologie overwegingen
+Sommige Microsoft 365 werk belastingen hebben bepaalde beperkingen op ondersteunde topologieën:
 
 | Workload | Beperkingen |
 | --------- | --------- |
-| Exchange Online | Zie [hybride implementaties met meerdere Active Directory-forests](https://technet.microsoft.com/library/jj873754.aspx)voor meer informatie over hybride topologieën die door Exchange Online worden ondersteund. |
-| Skype voor bedrijven | Wanneer u meerdere on-premises forests gebruikt, wordt alleen de topologie van het account-resource forest ondersteund. Zie voor meer informatie [milieu vereisten voor Skype voor bedrijven Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Exchange Online | Zie [hybride implementaties met meerdere Active Directory-forests](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)voor meer informatie over hybride topologieën die door Exchange Online worden ondersteund. |
+| Skype voor Bedrijven | Wanneer u meerdere on-premises forests gebruikt, wordt alleen de topologie van het account-resource forest ondersteund. Zie voor meer informatie [milieu vereisten voor Skype voor bedrijven Server 2015](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements). |
 
-Als u een grotere organisatie bent, kunt u het beste de [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) -functie gebruiken. Hiermee kunt u definiëren in welke Data Center-regio de resources van de gebruiker zich bevinden.
+Als u een grotere organisatie bent, kunt u overwegen om de [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) -functie te gebruiken. Hiermee kunt u definiëren in welke Data Center-regio de resources van de gebruiker zich bevinden.
 
 ## <a name="staging-server"></a>Staging-server
 ![Faserings server in een topologie](./media/plan-connect-topologies/MultiForestStaging.png)
@@ -165,7 +165,7 @@ Deze topologie heeft de volgende beperkingen op andere ondersteunde scenario's:
 * Windows 10-apparaten kunnen worden gekoppeld aan één Azure AD-Tenant.
 * De optie voor eenmalige aanmelding (SSO) voor wachtwoord hash-synchronisatie en Pass Through-verificatie kan worden gebruikt met slechts één Azure AD-Tenant.
 
-De vereiste voor een wederzijds exclusieve verzameling objecten is ook van toepassing op write-back. Sommige write-functies worden niet ondersteund met deze topologie omdat ze uitgaan van één on-premises configuratie. Deze functies omvatten onder andere:
+De vereiste voor een wederzijds exclusieve verzameling objecten is ook van toepassing op write-back. Sommige write-functies worden niet ondersteund met deze topologie omdat ze uitgaan van één on-premises configuratie. Het gaat om de volgende functies:
 
 * Terugschrijven van groep met standaard configuratie.
 * Write-back van apparaat.

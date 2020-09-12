@@ -16,15 +16,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359345"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660833"
 ---
 # <a name="risky-ip-report-public-preview"></a>Risk ante IP-rapport (open bare preview)
-AD FS-klanten kunnen eindpunten voor wachtwoordverificatie op internet beschikbaar maken om verificatieservices te bieden aan eindgebruikers zodat ze toegang hebben tot SaaS-toepassingen zoals Office 365. In dat geval kunnen criminelen aanmeldpogingen uitvoeren op uw AD FS-systeem om het wachtwoord van een eindgebruiker te achterhalen en toegang te krijgen tot toepassingsresources. AD FS biedt de extranetfunctionaliteit voor accountvergrendeling om dergelijke aanvallen te voorkomen vanaf AD FS in Windows Server 2012 R2. Als u een lagere versie gebruikt, raden we u ten zeerste aan uw AD FS-systeem naar Windows Server 2016 te upgraden. <br />
+AD FS klanten kunnen wacht woord verificatie-eind punten beschikbaar stellen aan Internet om verificatie services te bieden aan eind gebruikers die toegang hebben tot SaaS-toepassingen, zoals Microsoft 365. In dat geval kunnen criminelen aanmeldpogingen uitvoeren op uw AD FS-systeem om het wachtwoord van een eindgebruiker te achterhalen en toegang te krijgen tot toepassingsresources. AD FS biedt de extranetfunctionaliteit voor accountvergrendeling om dergelijke aanvallen te voorkomen vanaf AD FS in Windows Server 2012 R2. Als u een lagere versie gebruikt, raden we u ten zeerste aan uw AD FS-systeem naar Windows Server 2016 te upgraden. <br />
 
 Daarnaast is het mogelijk dat vanaf één IP-adres meerdere aanmeldpogingen voor meerdere gebruikers worden uitgevoerd. In dit soort gevallen is het aantal pogingen per gebruiker mogelijk lager dan de drempel voor beveiliging met accountvergrendeling in AD FS. Azure AD Connect Health biedt nu het rapport Riskant IP-adres dat deze gebeurtenis detecteert en beheerders hierover waarschuwt. De belangrijkste voordelen van dit rapport zijn: 
 - Detectie van IP-adressen die een drempel voor mislukte aanmeldingen op basis van wachtwoord overschrijden
@@ -35,13 +35,13 @@ Daarnaast is het mogelijk dat vanaf één IP-adres meerdere aanmeldpogingen voor
 
 > [!NOTE]
 > Om dit rapport te gebruiken, moet u controles voor AD FS hebben ingeschakeld. Ga voor meer informatie naar [Controles voor AD FS inschakelen](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Voor toegang tot de preview-versie is een machtiging als Globale beheerder of [Beveiligingslezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) vereist.  
+> Voor toegang tot de preview-versie is een machtiging als Globale beheerder of [Beveiligingslezer](../../role-based-access-control/built-in-roles.md#security-reader) vereist.  
 > 
 
 ## <a name="what-is-in-the-report"></a>Wat is er in het rapport?
 De mislukte aanmeldings activiteit client-IP-adressen worden geaggregeerd via Web Application proxy-servers. Elk item in het rapport Riskant IP-adres toont verzamelde informatie over mislukte AD FS-aanmeldactiviteiten die de aangewezen drempelwaarde overschrijden. Het biedt de volgende informatie: ![Azure AD Connect Health-portal](./media/how-to-connect-health-adfs/report4a.png)
 
-| Rapportitem | Description |
+| Rapportitem | Beschrijving |
 | ------- | ----------- |
 | Tijdstempel | Geeft het tijdstempel weer op basis van de lokale tijd in Azure Portal wanneer de detectieperiode start.<br /> Alle gebeurtenissen per dag worden gegenereerd om 24:00 uur UTC-tijd. <br />Bij gebeurtenissen per uur is het tijdstempel afgerond naar het begin van het uur. U vindt de begintijd van de eerste activiteit vanaf firstAuditTimestamp in het geëxporteerde bestand. |
 | Triggertype | Geeft het type tijdvenster voor detectie weer. De triggertypen voor aggregatie zijn per uur of per dag. Dit is handig voor het detecteren van een beveiligingsaanval met hoge frequentie en een trage beveiligingsaanval waarbij het aantal pogingen over de dag is verdeeld. |
@@ -68,7 +68,7 @@ Load balancer verzamelt mislukte aanmeldactiviteiten en bereikt de drempelwaarde
 ## <a name="download-risky-ip-report"></a>Risk ante IP-rapport downloaden 
 Met behulp van de functie **Downloaden** kan de volledige lijst met riskante IP-adressen van de afgelopen 30 dagen worden geëxporteerd vanuit de Connect Health-portal. De export bevat alle mislukte AD FS-aanmeldactiviteiten in elke detectieperiode, zodat u de filters na het exporteren kunt aanpassen. De export geeft naast de gemarkeerde aggregaties in de portal ook meer informatie over mislukte aanmeldactiviteiten per IP-adres weer:
 
-|  Rapportitem  |  Description  | 
+|  Rapportitem  |  Beschrijving  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Geeft de eerste tijdstempel weer voor de start van de mislukte activiteiten tijdens de detectieperiode.  | 
 | lastAuditTimestamp | Geeft de laatste tijdstempel weer voor het einde van de mislukte activiteiten tijdens de detectieperiode.  | 
@@ -83,7 +83,7 @@ De drempelwaarde voor waarschuwingen kan via de drempelwaarde-instellingen worde
 
 ![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/report4d.png)
 
-| Drempelwaarde-item | Description |
+| Drempelwaarde-item | Beschrijving |
 | --- | --- |
 | (Slechte U/P + vergrendeling van het extranet) / dag  | Ingestelde drempelwaarde per **dag** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal onjuiste wachtwoordpogingen plus het aantal extranetvergrendelingen is overschreden. |
 | (Slechte U/P + vergrendeling van het extranet) / uur | Ingestelde drempelwaarde per **uur** voor het rapporteren van de activiteit en het activeren van een melding wanneer het aantal onjuiste wachtwoordpogingen plus het aantal extranetvergrendelingen is overschreden. |
@@ -99,7 +99,7 @@ De drempelwaarde voor waarschuwingen kan via de drempelwaarde-instellingen worde
 
 ## <a name="faq"></a>Veelgestelde vragen
 **Waarom zie ik privé-IP-adresbereiken in het rapport?**  <br />
-Privé-IP-adressen (<i>10.x.x.x, 172.x.x.x en 192.168.x.x</i>) en de Exchange-IP-adressen worden eruit gefilterd en als waar gemarkeerd in de lijst met toegestane IP-adressen. Als u privé-IP-adresbereiken ziet, is het zeer waarschijnlijk dat de externe load balancer het client-IP-adres niet verzendt wanneer deze de aanvraag naar de proxyserver van de webtoepassing doorstuurt.
+Privé-IP-adressen (<i>10. x. x. x, 172. x. x. x & 192.168. x. x</i>) en Exchange-IP-adressen worden gefilterd en als waar gemarkeerd in de lijst met goedgekeurde IP. Als u privé-IP-adresbereiken ziet, is het zeer waarschijnlijk dat de externe load balancer het client-IP-adres niet verzendt wanneer deze de aanvraag naar de proxyserver van de webtoepassing doorstuurt.
 
 **Waarom krijg ik load balancer IP-adressen in het rapport te zien?**  <br />
 Als u load balancer IP-adressen ziet, is het zeer waarschijnlijk dat uw externe load balancer het client-IP-adres niet verzendt wanneer deze de aanvraag naar de proxyserver van de webtoepassing doorstuurt. Configureer de load balancer op een juiste manier om het client-IP-adres door te schakelen. 
@@ -113,9 +113,9 @@ Voeg geïdentificeerde schadelijke IP-adressen toe aan de firewall of blokkeer d
 - Controles zijn niet ingeschakeld in AD FS-farms.
 
 **Waarom krijg ik geen toegang tot het rapport?**  <br />
-Voor toegang is een machtiging als Globale beheerder of [Beveiligingslezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) vereist. Neem contact op met uw globale beheerder om toegang te krijgen.
+Voor toegang is een machtiging als Globale beheerder of [Beveiligingslezer](../../role-based-access-control/built-in-roles.md#security-reader) vereist. Neem contact op met uw globale beheerder om toegang te krijgen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health (Engelstalig)](./whatis-azure-ad-connect.md)
 * [De Azure AD Connect Health-agent installeren](how-to-connect-health-agent-install.md)

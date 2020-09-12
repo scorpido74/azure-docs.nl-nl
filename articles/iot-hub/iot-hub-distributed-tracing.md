@@ -11,12 +11,14 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732565"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462033"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -247,10 +249,10 @@ Voor het bijwerken van de configuratie van de gedistribueerde tracerings samplin
 }
 ```
 
-| Elementnaam | Vereist | Type | Description |
+| Elementnaam | Vereist | Type | Beschrijving |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Yes | Geheel getal | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1`is ingeschakeld en `2` is uit. |
-| `sampling_rate` | Yes | Geheel getal | Deze waarde is een percentage. Alleen waarden van `0` tot `100` (inclusief) zijn toegestaan.  |
+| `sampling_mode` | Ja | Geheel getal | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1` is ingeschakeld en `2` is uit. |
+| `sampling_rate` | Ja | Geheel getal | Deze waarde is een percentage. Alleen waarden van `0` tot `100` (inclusief) zijn toegestaan.  |
 
 ## <a name="query-and-visualize"></a>Query's uitvoeren en visualiseren
 
@@ -307,10 +309,10 @@ Als de functie voor gedistribueerde tracering voor IoT Hub is ingeschakeld, volg
 
 1. Er wordt een bericht gegenereerd op het IoT-apparaat.
 1. Het IoT-apparaat beslist (met de hulp van de Cloud) dat dit bericht moet worden toegewezen aan een tracerings context.
-1. De SDK voegt een `tracestate` toe aan de eigenschap van de bericht toepassing die de tijds tempel voor het maken van het bericht bevat.
+1. De SDK voegt een `tracestate` toe aan de bericht eigenschap met de tijds tempel voor het maken van het bericht.
 1. Het IoT-apparaat verzendt het bericht naar IoT Hub.
 1. Het bericht arriveert bij de IoT hub-gateway.
-1. IoT Hub zoekt naar de `tracestate` in de eigenschappen van de Message-toepassing en controleert of het de juiste indeling heeft.
+1. IoT Hub zoekt naar de `tracestate` in de bericht eigenschappen en controleert of het de juiste indeling heeft.
 1. Als dit het geval is, genereert IoT Hub een wereld wijd uniek `trace-id` voor het bericht, een `span-id` voor de ' hop ' en worden ze door gegeven aan Azure monitor Diagnostische logboeken onder de bewerking `DiagnosticIoTHubD2C` .
 1. Zodra de bericht verwerking is voltooid, wordt er door IoT Hub een andere gegenereerd `span-id` en wordt deze samen met de bestaande `trace-id` onder de bewerking geregistreerd `DiagnosticIoTHubIngress` .
 1. Als route ring is ingeschakeld voor het bericht, wordt het door IoT Hub naar het aangepaste eind punt geschreven en wordt er een andere logboek registratie `span-id` met dezelfde `trace-id` categorie `DiagnosticIoTHubEgress` .

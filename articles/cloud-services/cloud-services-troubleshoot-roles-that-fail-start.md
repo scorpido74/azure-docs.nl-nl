@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71122735"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460113"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problemen met Cloud service rollen oplossen die niet worden gestart
 Hier volgen enkele veelvoorkomende problemen en oplossingen met betrekking tot Azure Cloud Services-rollen die niet worden gestart.
@@ -124,4 +124,4 @@ Wanneer u hebt gecontroleerd of alle fouten zijn gecorrigeerd, kunt u de service
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk meer [artikelen over probleem oplossing](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) voor Cloud Services.
 
-Voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens raadpleegt u [de blog serie van Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens raadpleegt u [de blog serie van Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357746"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658359"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory naadloze eenmalige aanmelding
 
@@ -53,13 +53,13 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 
 - De aanmeldings naam van de gebruiker kan de on-premises standaard gebruikersnaam ( `userPrincipalName` ) zijn of een ander kenmerk dat is geconfigureerd in azure AD Connect ( `Alternate ID` ). Beide use-cases werken omdat bij naadloze SSO de `securityIdentifier` claim in het Kerberos-ticket wordt gebruikt om het bijbehorende gebruikers object in azure AD op te zoeken.
 - Naadloze SSO is een functie van opportunistisch. Als de gebruiker om welke reden dan ook niet kan worden uitgevoerd, gaat de aanmeldings procedure voor gebruikers terug naar het normale gedrag, dat wil zeggen dat de gebruiker het wacht woord moet invoeren op de aanmeldings pagina.
-- Als een toepassing (bijvoorbeeld `https://myapps.microsoft.com/contoso.com` ) een `domain_hint` (OpenID Connect Connect) of `whr` (SAML)-para meter-identificatie van uw Tenant of `login_hint` para meter-identificatie van de gebruiker doorstuurt, worden gebruikers in de AANMELDINGS aanvraag van Azure AD automatisch aangemeld zonder dat ze gebruikers namen of wacht woorden hoeven in te voeren.
+- Als een toepassing (bijvoorbeeld  `https://myapps.microsoft.com/contoso.com` ) een `domain_hint` (OpenID Connect Connect) of `whr` (SAML)-para meter-identificatie van uw Tenant of `login_hint` para meter-identificatie van de gebruiker doorstuurt, worden gebruikers in de AANMELDINGS aanvraag van Azure AD automatisch aangemeld zonder dat ze gebruikers namen of wacht woorden hoeven in te voeren.
 - Gebruikers krijgen ook de mogelijkheid om zich aan te melden als een toepassing (bijvoorbeeld `https://contoso.sharepoint.com` ) aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen, `https://login.microsoftonline.com/contoso.com/<..>` of `https://login.microsoftonline.com/<tenant_ID>/<..>` -in plaats van het gemeen schappelijke eind punt van Azure AD `https://login.microsoftonline.com/common/<...>` .
 - Afmelden wordt ondersteund. Hiermee kunnen gebruikers een ander Azure AD-account kiezen om zich aan te melden met, in plaats van dat automatisch wordt aangemeld met naadloze SSO.
-- Office 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
+- Microsoft 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
 - Het kan worden ingeschakeld via Azure AD Connect.
 - Het is een gratis functie en u hebt geen betaalde versies van Azure AD nodig om deze te gebruiken.
-- Het wordt ondersteund op webbrowsers en Office-clients die [moderne authenticatie](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) ondersteunen op platforms en browsers die geschikt zijn voor Kerberos-verificatie:
+- Het wordt ondersteund op webbrowsers en Office-clients die [moderne authenticatie](/office365/enterprise/modern-auth-for-office-2013-and-2016) ondersteunen op platforms en browsers die geschikt zijn voor Kerberos-verificatie:
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
@@ -88,4 +88,3 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 - [**Veelgestelde vragen**](how-to-connect-sso-faq.md) : antwoorden op veelgestelde vragen.
 - [**Problemen oplossen**](tshoot-connect-sso.md) : informatie over het oplossen van veelvoorkomende problemen met de functie.
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -voor het indienen van nieuwe functie aanvragen.
-

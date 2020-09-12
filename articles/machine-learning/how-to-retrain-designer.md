@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319623"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661626"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ In dit artikel wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van 
 
 ### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 
-De pijp lijn die in dit artikel wordt gebruikt, is een gewijzigde versie van voor [Beeld 3: inkomen voor spelling](samples-designer.md#classification). De pijp lijn gebruikt de module [gegevens importeren](algorithm-module-reference/import-data.md) in plaats van de voor beeld-gegevensset om te laten zien hoe u modellen traint met uw eigen gegevens.
+De pijp lijn die in dit artikel wordt gebruikt, is een gewijzigde versie van de voor [Spelling](samples-designer.md#classification) van een voorbeeld pijplijn voor een pijp lijn in de ontwerp-start pagina. De pijp lijn gebruikt de module [gegevens importeren](algorithm-module-reference/import-data.md) in plaats van de voor beeld-gegevensset om te laten zien hoe u modellen traint met uw eigen gegevens.
 
 ![Scherm opname van de aangepaste voorbeeld pijplijn met een vak waarin de module import data is gemarkeerd](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -83,7 +83,8 @@ De ontwerp functie slaat alle pijplijn uitvoer, inclusief getrainde modellen, op
 1. U kunt uw model vinden in **andere uitvoer** samen met uitvoerings Logboeken.
 1. U kunt ook het pictogram **uitvoer weer geven** selecteren. Hier kunt u de instructie in het dialoog venster volgen om rechtstreeks naar uw gegevens opslag te gaan. 
 
-![Scherm afbeelding die laat zien hoe het getrainde model kan worden gedownload](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm afbeelding die laat zien hoe het getrainde model kan worden gedownload](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Een trainings pijplijn publiceren
 
@@ -101,9 +102,9 @@ Publiceer een pijp lijn naar een pijp lijn-eind punt om uw pijp lijnen in de toe
 
 Nu u een gepubliceerde trainings pijplijn hebt, kunt u deze gebruiken om uw model op nieuwe gegevens te trainen. U kunt vanuit de studio-werk ruimte of via een programma uitvoeringen vanuit een pijplijn eindpunt verzenden.
 
-### <a name="submit-runs-by-using-the-designer"></a>Uitvoeringen verzenden met behulp van de ontwerp functie
+### <a name="submit-runs-by-using-the-studio-portal"></a>Uitvoeringen verzenden met behulp van de Studio Portal
 
-Voer de volgende stappen uit om een uit te voeren hulp programma voor het uitvoeren van een verwerkings punt uit de ontwerp functie te verzenden:
+Voer de volgende stappen uit om een hulp programma voor het uitvoeren van een geparametriseerde pijp lijn te verzenden vanuit de Studio portal:
 
 1. Ga naar de pagina **eind punten** in uw studio-werk ruimte.
 1. Selecteer het tabblad **pijplijn eindpunten** . Selecteer vervolgens het eind punt van de pijp lijn.

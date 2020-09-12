@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/09/2020
+ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795878"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613483"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Opzoek activiteit in Azure Data Factory
 
@@ -29,7 +29,9 @@ Met opzoek activiteit wordt de inhoud van een configuratie bestand of-tabel gele
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-De volgende gegevens bronnen worden ondersteund voor opzoek activiteiten. Het grootste aantal rijen dat kan worden geretourneerd door de opzoek activiteit is 5.000, Maxi maal 2 MB groot. Momenteel is de langste duur voor de opzoek activiteit vóór een time-out van één uur.
+De volgende gegevens bronnen worden ondersteund voor opzoek activiteiten. 
+
+De opzoek activiteit kan Maxi maal 5000 rijen opleveren. Als de resultatenset meer records bevat, worden de eerste 5000 rijen geretourneerd. De uitvoer van de opzoek activiteit ondersteunt Maxi maal 2 MB. de activiteit kan mislukken als de grootte de limiet overschrijdt. Momenteel is de langste duur voor de opzoek activiteit vóór een time-out van één uur.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -56,9 +58,9 @@ De volgende gegevens bronnen worden ondersteund voor opzoek activiteiten. Het gr
 
 Naam | Beschrijving | Type | Vereist?
 ---- | ----------- | ---- | --------
-sets | Bevat de referentie voor de gegevensset voor de zoek actie. Details ophalen uit de sectie **Eigenschappen van gegevensset** in elk bijbehorend connector artikel. | Sleutel/waarde-paar | Ja
-source | Bevat eigenschappen van een gegevensset, hetzelfde als de bron van de Kopieer activiteit. Details ophalen uit de sectie **Eigenschappen van Kopieer activiteit** in elk bijbehorende connector-artikel. | Sleutel/waarde-paar | Ja
-firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Boolean | Nee. De standaardwaarde is `true`.
+sets | Bevat de referentie voor de gegevensset voor de zoek actie. Details ophalen uit de sectie **Eigenschappen van gegevensset** in elk bijbehorend connector artikel. | Sleutel/waarde-paar | Yes
+source | Bevat eigenschappen van een gegevensset, hetzelfde als de bron van de Kopieer activiteit. Details ophalen uit de sectie **Eigenschappen van Kopieer activiteit** in elk bijbehorende connector-artikel. | Sleutel/waarde-paar | Yes
+firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Booleaans | Nee. De standaardwaarde is `true`.
 
 > [!NOTE]
 > 

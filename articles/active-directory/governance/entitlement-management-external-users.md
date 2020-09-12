@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783855"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460861"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
@@ -105,7 +105,7 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>De instellingen voor het delen van Microsoft 365 groepen controleren
 
-- Als u Microsoft 365 groepen in uw toegangs pakketten wilt toevoegen voor externe gebruikers, moet u ervoor zorgen dat de **gebruikers nieuwe gasten toevoegen aan de organisatie** zijn ingesteld **op aan om toegang** tot de gast toe te staan. Zie voor meer informatie [gast toegang beheren voor Microsoft 365 groepen](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Als u Microsoft 365 groepen in uw toegangs pakketten wilt toevoegen voor externe gebruikers, moet u ervoor zorgen dat de **gebruikers nieuwe gasten toevoegen aan de organisatie** zijn ingesteld **op aan om toegang** tot de gast toe te staan. Zie voor meer informatie [gast toegang beheren voor Microsoft 365 groepen](/Microsoft 365/admin/create-groups/manage-guest-access-in-groups?view=Microsoft 365-worldwide#manage-groups-guest-access).
 
 - Als u wilt dat externe gebruikers toegang hebben tot de share point online-site en de resources die zijn gekoppeld aan een Microsoft 365 groep, moet u het extern delen van share point Online inschakelen. Zie [extern delen in-of uitschakelen](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
 

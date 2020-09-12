@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236094"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646552"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -105,7 +105,7 @@ Eén subnet biedt geen ondersteuning voor zowel v2-als v1 Application Gateway-Sk
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Ondersteunt Application Gateway V2 door de gebruiker gedefinieerde routes (UDR)?
 
-Ja, maar alleen specifieke scenario's. Zie [Overzicht van Application Gateway-configuratie](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet) voor meer informatie.
+Ja, maar alleen specifieke scenario's. Zie [Application Gateway Infrastructure Configuration](configuration-infrastructure.md#supported-user-defined-routes)(Engelstalig) voor meer informatie.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Ondersteunt Application Gateway x-doorgestuurd-voor kopteksten?
 
@@ -136,7 +136,7 @@ Nee. Application Gateway v2 biedt nog geen ondersteuning voor proxy aanvragen me
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Ondersteunt Application Gateway kenmerk SameSite-cookie?
 Ja, de [V80-update](https://chromiumdash.appspot.com/schedule) van de [chroom browser](https://www.chromium.org/Home) heeft een mandaat geïntroduceerd op http-cookies zonder SameSite kenmerk dat moet worden behandeld als SameSite = slordig. Dit betekent dat de Application Gateway affiniteits cookie niet wordt verzonden door de browser in een context van een derde partij. 
 
-Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd*. Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-overview.md#cookie-based-affinity) voor meer informatie.
+Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd*. Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-http-settings.md#cookie-based-affinity) voor meer informatie.
 
 ## <a name="performance"></a>Prestaties
 
@@ -186,7 +186,7 @@ Zie [netwerk beveiligings groepen in het Application Gateway subnet](https://doc
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Ondersteunt het subnet van de toepassings gateway door de gebruiker gedefinieerde routes?
 
-Zie door [de gebruiker gedefinieerde routes die worden ondersteund in het Application Gateway subnet](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet).
+Zie door [de gebruiker gedefinieerde routes die worden ondersteund in het Application Gateway subnet](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Wat zijn de limieten voor Application Gateway? Kan ik deze limieten verhogen?
 
@@ -404,7 +404,7 @@ Op dit moment kan slechts één exemplaar van de ingangs controller aan een Appl
 
 ### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Waarom werkt mijn AKS-cluster met kubenet niet met AGIC?
 
-AGIC probeert de resource van de route tabel automatisch te koppelen aan het subnet van de Application Gateway, maar kan niet worden uitgevoerd vanwege een gebrek aan machtigingen van de AGIC. Als de route tabel niet kan worden gekoppeld aan het subnet Application Gateway, wordt er een fout weer gegeven in de AGIC-Logboeken. in dat geval moet u de route tabel die door het AKS-cluster is gemaakt, hand matig koppelen aan het subnet van de Application Gateway. Zie de instructies [hier](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie.
+AGIC probeert de resource van de route tabel automatisch te koppelen aan het subnet van de Application Gateway, maar kan niet worden uitgevoerd vanwege een gebrek aan machtigingen van de AGIC. Als de route tabel niet kan worden gekoppeld aan het subnet Application Gateway, wordt er een fout weer gegeven in de AGIC-Logboeken. in dat geval moet u de route tabel die door het AKS-cluster is gemaakt, hand matig koppelen aan het subnet van de Application Gateway. Zie Ondersteunde door de [gebruiker gedefinieerde routes](configuration-infrastructure.md#supported-user-defined-routes)voor meer informatie.
 
 ### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Kan ik mijn AKS-cluster en Application Gateway in afzonderlijke virtuele netwerken koppelen? 
 

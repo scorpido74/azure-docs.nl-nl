@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949776"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647494"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
@@ -46,6 +46,7 @@ Systeem knooppunt groepen hebben de volgende beperkingen:
 * Systeem knooppunt groepen vereisen een VM-SKU van ten minste 2 Vcpu's en 4 GB geheugen.
 * Systeem knooppunt groepen moeten ten minste 30 peul ondersteunen, zoals wordt beschreven door de [formule minimale en maximale waarde voor peulen][maximum-pods].
 * Voor spot knooppunt Pools zijn gebruikers knooppunt Pools vereist.
+* Het toevoegen van een extra groep van het systeem knooppunt of het wijzigen van de groep van knoop punten is een systeem knooppunt groep zal *niet* automatisch het systeem van de peul verplaatsen. Systeem-peul kan worden uitgevoerd op dezelfde knooppunt groep, zelfs als u het wijzigt in een groep van gebruikers knooppunten. Als u een groep knoop punten verwijdert of uitschaalt die ouder is dan een systeem knooppunt groep, worden deze systemen van het gehele systeem opnieuw geïmplementeerd met de voorkeurs planning naar de nieuwe groep systeem knooppunten.
 
 U kunt de volgende bewerkingen uitvoeren met knooppunt groepen:
 

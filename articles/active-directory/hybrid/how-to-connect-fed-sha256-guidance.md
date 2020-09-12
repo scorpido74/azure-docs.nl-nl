@@ -1,7 +1,7 @@
 ---
-title: Hash-algoritme voor hand tekening wijzigen voor Office 365 Relying Party Trust-Azure
-description: Deze pagina bevat richt lijnen voor het wijzigen van het SHA-algoritme voor federatieve vertrouwens relatie met Office 365
-keywords: SHA1, SHA256, O365, Federatie, aadconnect, ADFS, AD FS, SHA wijzigen, federatieve vertrouwens relatie Relying Party vertrouwen
+title: Hash-algoritme voor hand tekening wijzigen voor Microsoft 365 Relying Party Trust-Azure
+description: Deze pagina bevat richt lijnen voor het wijzigen van het SHA-algoritme voor federatieve vertrouwens relaties met Microsoft 365.
+keywords: SHA1, SHA256, M365, Federatie, aadconnect, ADFS, AD FS, SHA wijzigen, federatieve vertrouwens relatie Relying Party vertrouwen
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,14 +17,14 @@ ms.topic: how-to
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db4327f77d466ee66ef7fdbdaa60ef7ebd51f2d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bf9347d4d14e6583febd4ffaf0447e912133b80
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359655"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660923"
 ---
-# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Hash-algoritme voor hand tekening wijzigen voor Office 365 Relying Party-vertrouwens relatie
+# <a name="change-signature-hash-algorithm-for-microsoft-365-relying-party-trust"></a>Hash-algoritme voor hand tekening voor Microsoft 365 Relying Party vertrouwen wijzigen
 ## <a name="overview"></a>Overzicht
 Met Active Directory Federation Services (AD FS) worden de tokens van Microsoft Azure Active Directory ondertekend om te controleren of er niet kan worden geknoeid. Deze hand tekening kan worden gebaseerd op SHA1 of SHA256. Azure Active Directory ondersteunt nu tokens die zijn ondertekend met een SHA256-algoritme, en wij raden u aan het algoritme voor token-ondertekening in te stellen op SHA256 voor het hoogste beveiligings niveau. In dit artikel worden de stappen beschreven die nodig zijn om het algoritme voor token-ondertekening in te stellen op het niveau van veiligere SHA256.
 
@@ -32,12 +32,12 @@ Met Active Directory Federation Services (AD FS) worden de tokens van Microsoft 
 >Micro soft adviseert het gebruik van SHA256 als algoritme voor het ondertekenen van tokens, omdat het veiliger is dan SHA1, maar SHA1 nog steeds een ondersteunde optie blijft.
 
 ## <a name="change-the-token-signing-algorithm"></a>Het algoritme voor token-ondertekening wijzigen
-Nadat u de handtekening algoritme hebt ingesteld met een van de twee onderstaande processen, worden de tokens voor Office 365 Relying Party Trust met SHA256 door AD FS ondertekend. U hoeft geen extra configuratie wijzigingen aan te brengen en deze wijziging heeft geen invloed op de mogelijkheid om toegang te krijgen tot Office 365 of andere Azure AD-toepassingen.
+Nadat u de handtekening algoritme hebt ingesteld met een van de twee onderstaande processen, worden de tokens in AD FS ondertekend voor Microsoft 365 Relying Party vertrouwens relatie met SHA256. U hoeft geen extra configuratie wijzigingen aan te brengen en deze wijziging heeft geen invloed op de mogelijkheid om toegang te krijgen tot Microsoft 365 of andere Azure AD-toepassingen.
 
 ### <a name="ad-fs-management-console"></a>AD FS-beheer console
 1. Open de AD FS-beheer console op de primaire AD FS-server.
 2. Vouw het knoop punt AD FS uit en klik op **vertrouwens relaties met relying party's**.
-3. Klik met de rechter muisknop op de vertrouwens relatie van Office 365/Azure Relying Party en selecteer **Eigenschappen**.
+3. Klik met de rechter muisknop op de vertrouwens relatie van Microsoft 365/Azure Relying Party en selecteer **Eigenschappen**.
 4. Selecteer het tabblad **Geavanceerd** en selecteer de Secure Hash Algorithm sha256.
 5. Klik op **OK**.
 
@@ -50,5 +50,5 @@ Nadat u de handtekening algoritme hebt ingesteld met een van de twee onderstaand
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'https://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>Ook lezen
-* [Office 365-vertrouwens relatie met Azure AD Connect herstellen](how-to-connect-fed-management.md#repairthetrust)
+* [Microsoft 365 vertrouwen met Azure AD Connect herstellen](how-to-connect-fed-management.md#repairthetrust)
 

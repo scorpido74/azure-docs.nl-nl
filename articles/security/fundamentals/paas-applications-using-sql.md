@@ -1,6 +1,6 @@
 ---
 title: PaaS-data bases beveiligen in azure | Microsoft Docs
-description: 'Meer informatie over Azure SQL Database en SQL Data Warehouse aanbevolen beveiligings procedures voor het beveiligen van uw PaaS-webtoepassingen en mobiele toepassingen. '
+description: 'Meer informatie over de aanbevolen procedures voor de beveiliging van Azure SQL Database en Azure Synapse Analytics voor het beveiligen van uw PaaS-web-en mobiele toepassingen. '
 services: security
 documentationcenter: na
 author: techlake
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 9c821a8898b61517dd5d6c872c8516bad6db6968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012956"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462527"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Aanbevolen procedures voor het beveiligen van PaaS-data bases in azure
 
-In dit artikel bespreken we een verzameling [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md) en [SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) aanbevolen beveiligings procedures voor het beveiligen van uw PaaS-web en mobiele toepassingen (platform-as-a-Service). Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten, zoals uzelf.
+In dit artikel bespreken we een verzameling [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md) en de aanbevolen procedures voor [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) voor het beveiligen van uw PaaS-web en mobiele toepassingen (platform-as-a-Service). Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten, zoals uzelf.
 
-Azure SQL Database en SQL Data Warehouse bieden een relationele database service voor uw op internet gebaseerde toepassingen. Laten we eens kijken naar de services die uw toepassingen en gegevens helpen beschermen bij het gebruik van Azure SQL Database en SQL Data Warehouse in een PaaS-implementatie:
+Azure SQL Database en Azure Synapse Analytics bieden een relationele database service voor uw op internet gebaseerde toepassingen. Laten we kijken naar de services die uw toepassingen en gegevens helpen beschermen bij het gebruik van Azure SQL Database en Azure Synapse Analytics in een PaaS-implementatie:
 
 - Verificatie Azure Active Directory (in plaats van SQL Server-verificatie)
 - Azure SQL-firewall
@@ -40,7 +40,7 @@ Azure SQL Database kunnen worden geconfigureerd voor het gebruik van een van de 
 
 - **Azure Active Directory-verificatie** maakt gebruik van identiteiten die worden beheerd door Azure Active Directory en wordt ondersteund voor beheerde en geïntegreerde domeinen. Als u Azure Active Directory-verificatie wilt gebruiken, moet u een andere server beheerder maken met de naam ' Azure AD-beheerder ', waarmee Azure AD-gebruikers en-groepen kunnen worden beheerd. Deze beheerder kan ook alle bewerkingen uitvoeren die reguliere serverbeheerders kunnen uitvoeren.
 
-[Azure Active Directory-verificatie](../../active-directory/develop/authentication-scenarios.md) is een mechanisme om verbinding te maken met Azure SQL Database en SQL data warehouse met behulp van identiteiten in azure Active Directory (AD). Azure AD biedt een alternatief voor SQL Server verificatie, zodat u de verspreiding van gebruikers identiteiten op database servers kunt stoppen. Met Azure AD-verificatie kunt u de identiteiten van database gebruikers en andere micro soft-services centraal beheren op één centrale locatie. Centraal identiteitsbeheer biedt één plek voor het beheren van databasegebruikers en vereenvoudigt het machtigingenbeheer.  
+[Azure Active Directory-verificatie](../../active-directory/develop/authentication-scenarios.md) is een mechanisme om verbinding te maken met Azure SQL database en Azure Synapse Analytics met behulp van identiteiten in azure Active Directory (AD). Azure AD biedt een alternatief voor SQL Server verificatie, zodat u de verspreiding van gebruikers identiteiten op database servers kunt stoppen. Met Azure AD-verificatie kunt u de identiteiten van database gebruikers en andere micro soft-services centraal beheren op één centrale locatie. Centraal identiteitsbeheer biedt één plek voor het beheren van databasegebruikers en vereenvoudigt het machtigingenbeheer.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Voor delen van het gebruik van Azure AD in plaats van SQL-verificatie
 
@@ -50,12 +50,12 @@ Azure SQL Database kunnen worden geconfigureerd voor het gebruik van een van de 
 - Gebruikt Inge sloten database gebruikers voor het verifiëren van identiteiten op database niveau.
 - Biedt ondersteuning voor verificatie op basis van tokens voor toepassingen die verbinding maken met SQL Database.
 - Ondersteunt domein Federatie met Active Directory Federation Services (ADFS) of systeem eigen gebruikers-en wachtwoord verificatie voor een lokale Azure AD zonder domein synchronisatie.
-- Ondersteunt verbindingen van SQL Server Management Studio die gebruikmaken van Active Directory universele verificatie, waaronder [multi-factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA omvat robuuste verificatie met een scala aan gebruikersvriendelijke verificatieopties, waaronder telefoonoproepen, sms-berichten, smartcards met pincode of melding in mobiele app. Zie voor meer informatie [universele verificatie met SQL database en SQL Data Warehouse](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- Ondersteunt verbindingen van SQL Server Management Studio die gebruikmaken van Active Directory universele verificatie, waaronder [multi-factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication). MFA omvat robuuste verificatie met een scala aan gebruikersvriendelijke verificatieopties, waaronder telefoonoproepen, sms-berichten, smartcards met pincode of melding in mobiele app. Zie voor meer informatie [universele verificatie met SQL database en Azure Synapse Analytics](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Zie voor meer informatie over Azure AD-verificatie:
 
-- [Gebruik Azure Active Directory verificatie voor verificatie met SQL Database, een beheerd exemplaar of SQL Data Warehouse](../../azure-sql/database/authentication-aad-overview.md)
-- [Verificatie met Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [Azure Active Directory verificatie gebruiken voor verificatie met SQL Database, een beheerd exemplaar of Azure Synapse Analytics](../../azure-sql/database/authentication-aad-overview.md)
+- [Verificatie voor Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [Ondersteuning voor verificatie op basis van tokens voor Azure SQL Database met Azure AD-verificatie](../../azure-sql/database/authentication-aad-overview.md)
 
 > [!NOTE]
@@ -69,12 +69,12 @@ SQL Database standaard IP-adres beperkingen van de bron bieden toegang vanaf elk
 
 Zie voor meer informatie over Azure SQL-firewall en IP-beperkingen:
 
-- [Toegangs beheer Azure SQL Database en SQL Data Warehouse](../../azure-sql/database/logins-create-manage.md)
-- [Firewall-regels voor Azure SQL Database en SQL Data Warehouse](../../azure-sql/database/firewall-configure.md)
+- [Access Control van Azure SQL Database en Azure Synapse Analytics](../../azure-sql/database/logins-create-manage.md)
+- [Firewall regels voor Azure SQL Database en Azure Synapse Analytics](../../azure-sql/database/firewall-configure.md)
 
 ## <a name="encrypt-data-at-rest"></a>Data-at-rest versleutelen
 
-[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) is standaard ingeschakeld. TDE versleutelt transparante SQL Server, Azure SQL Database en Azure SQL Data Warehouse gegevens en logboek bestanden. TDE beschermt tegen inbreuk op directe toegang tot de bestanden of de back-up. Zo kunt u gegevens in rust versleutelen zonder dat u bestaande toepassingen hoeft te wijzigen. TDE moet altijd blijven ingeschakeld. Hierdoor wordt een aanvaller echter niet gestopt met het normale toegangs traject. TDE biedt de mogelijkheid om te voldoen aan de vele wetten, voor schriften en richt lijnen die in verschillende branches zijn gevestigd.
+[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) is standaard ingeschakeld. TDE versleutelt transparante SQL Server, Azure SQL Database en Azure Synapse Analytics-gegevens en-logboek bestanden. TDE beschermt tegen inbreuk op directe toegang tot de bestanden of de back-up. Zo kunt u gegevens in rust versleutelen zonder dat u bestaande toepassingen hoeft te wijzigen. TDE moet altijd blijven ingeschakeld. Hierdoor wordt een aanvaller echter niet gestopt met het normale toegangs traject. TDE biedt de mogelijkheid om te voldoen aan de vele wetten, voor schriften en richt lijnen die in verschillende branches zijn gevestigd.
 
 Azure SQL beheert belang rijke problemen met betrekking tot TDE. Net als bij TDE moet u on-premises speciale aandacht best rijken om te zorgen voor herstel baarheid en bij het verplaatsen van data bases. In meer geavanceerde scenario's kunnen de sleutels expliciet worden beheerd in Azure Key Vault via Extensible Key Management. Zie [TDe inschakelen op SQL Server met EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm). Dit maakt ook Bring Your Own Key (BYOK) mogelijk via de BYOK-functie van Azure-sleutel kluizen.
 
@@ -86,7 +86,7 @@ U kunt extra voorzorgsmaatregelen gebruiken om de data base te beveiligen, zoals
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een verzameling van SQL Database en SQL Data Warehouse aanbevolen beveiligings procedures geïntroduceerd voor het beveiligen van uw PaaS-webtoepassingen en mobiele toepassingen. Zie voor meer informatie over het beveiligen van uw PaaS-implementaties:
+In dit artikel hebt u een verzameling van SQL Database en de best practices voor beveiliging van Azure Synapse Analytics geïntroduceerd voor het beveiligen van uw PaaS-web-en mobiele toepassingen. Zie voor meer informatie over het beveiligen van uw PaaS-implementaties:
 
 - [PaaS-implementaties beveiligen](paas-deployments.md)
 - [PaaS-webtoepassingen en mobiele toepassingen beveiligen met Azure-app Services](paas-applications-using-app-services.md)

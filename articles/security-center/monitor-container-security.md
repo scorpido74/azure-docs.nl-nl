@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ec06fc23b147eb3e4a5922242aa922063f4172c
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038611"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514149"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>De beveiliging van uw containers bewaken
 
 Op deze pagina wordt uitgelegd hoe u de beveiligings functies van de container kunt gebruiken die worden beschreven in het [artikel Container Security](container-security.md) in het gedeelte concepten.
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Uw ARM-gebaseerde container registers scannen op beveiligings problemen 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>Uw ARM-gebaseerde container registers scannen op beveiligings problemen 
 
 1. Beveiligings scans van uw Azure Container Registry-installatie kopieën inschakelen:
 
@@ -30,13 +30,13 @@ Op deze pagina wordt uitgelegd hoe u de beveiligings functies van de container k
 
         Security Center is nu gereed voor het scannen van afbeeldingen die naar het REGI ster worden gepusht. 
 
-        >[!NOTE]
-        >Deze functie wordt per afbeelding in rekening gebracht.
+      >[!NOTE]
+      >Deze functie wordt per afbeelding in rekening gebracht.
 
 
 1. U kunt de scan van een afbeelding activeren door deze naar uw REGI ster te pushen. 
 
-    Wanneer de scan is voltooid (doorgaans na ongeveer 2 minuten, maar Maxi maal 15 minuten kan zijn), zijn er conclusies beschikbaar als Security Center aanbevelingen als volgt:
+    Wanneer de scan is voltooid (doorgaans na ongeveer 2 minuten, maar Maxi maal 15 minuten kan zijn), zijn bevindingen als Security Center aanbevelingen beschikbaar.
 
 1. Ga naar de pagina **aanbevelingen** om de resultaten weer te geven. Als er problemen zijn gevonden, wordt de volgende aanbeveling weer gegeven:
 
@@ -86,7 +86,7 @@ Op deze pagina wordt uitgelegd hoe u de beveiligings functies van de container k
     1. Wanneer u zeker weet dat de bijgewerkte installatie kopie is gepusht en gescand en niet meer wordt weer gegeven in de aanbeveling, verwijdert u de kwets bare afbeelding "oud" uit het REGI ster.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>De docker-hosts van uw containers beveiligen
+## <a name="harden-your-containers-docker-hosts"></a>Docker-hosts van uw containers beveiligen
 
 Security Center bewaakt voortdurend de configuratie van uw docker-hosts en genereert beveiligings aanbevelingen die de industrie normen weer spie gelen.
 

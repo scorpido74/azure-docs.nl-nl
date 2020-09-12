@@ -1,6 +1,6 @@
 ---
 title: Resources voor het ontwikkelen van een Synapse SQL-groep in azure Synapse Analytics
-description: Ontwikkel concepten, ontwerp beslissingen, aanbevelingen en coderings technieken voor SQL Data Warehouse.
+description: Ontwikkel concepten, ontwerp beslissingen, aanbevelingen en coderings technieken voor Azure Synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211490"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460606"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Ontwerp beslissingen en coderings technieken voor een Synapse SQL-groep in azure Synapse Analytics 
  In dit artikel vindt u aanvullende bronnen om u te helpen beter inzicht te krijgen in belang rijke beslissingen, aanbevelingen en coderings technieken voor een SQL-groep in azure Synapse.
@@ -38,7 +38,7 @@ De volgende artikelen bevatten specifieke coderings technieken, tips en aanbevel
 
 * [opgeslagen procedures](sql-data-warehouse-develop-stored-procedures.md)
 * [Labels](sql-data-warehouse-develop-label.md)
-* [Weergaven](sql-data-warehouse-develop-views.md)
+* [Weergaven](performance-tuning-materialized-views.md)
 * [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)
 * [dynamische SQL](sql-data-warehouse-develop-dynamic-sql.md)
 * [lussen](sql-data-warehouse-develop-loops.md)

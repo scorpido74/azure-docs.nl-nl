@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044240"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613416"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI
 
@@ -155,7 +155,7 @@ Met Azure Resource Manager kunt u de implementatie van uw Stream Analytics taak 
 
 ## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>De Stream Analytics-taak toegang geven tot uw Power BI-werk ruimte
 
-Nu de Stream Analytics-taak is gemaakt, kan deze toegang krijgen tot een Power BI-werk ruimte.
+Nu de Stream Analytics-taak is gemaakt, kan deze toegang krijgen tot een Power BI-werk ruimte. Zodra u de toegang tot uw taak hebt gegeven, moet u enkele minuten wachten totdat de identiteit is door gegeven.
 
 ### <a name="use-the-power-bi-ui"></a>De Power BI-gebruikers interface gebruiken
 

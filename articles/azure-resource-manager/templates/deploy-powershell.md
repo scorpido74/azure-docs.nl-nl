@@ -2,13 +2,13 @@
 title: Resources implementeren met Power shell en sjabloon
 description: Gebruik Azure Resource Manager en Azure PowerShell om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 64993b526b67430266a8b3e85e3bcc233a3e28a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: ef2ff71430f0dcaca660666bb9a6c015c923da3f
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079516"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536069"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Resources implementeren met ARM-sjablonen en Azure PowerShell
 
@@ -121,6 +121,30 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u niet wilt dat uw sjabloon openbaar toegankelijk is, kunt u deze beveiligen door deze op te slaan in een persoonlijke opslag container. Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md). Als u een zelf studie wilt door lopen, raadpleegt u [zelf studie: Azure Key Vault integreren in arm-sjabloon implementatie](template-tutorial-use-key-vault.md).
+
+## <a name="deploy-template-spec"></a>Sjabloonspecificatie implementeren
+
+In plaats van een lokale of externe sjabloon te implementeren, kunt u een [sjabloon specificatie](template-specs.md)maken. De sjabloon specificatie is een resource in uw Azure-abonnement die een ARM-sjabloon bevat. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer (RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
+
+In de volgende voor beelden ziet u hoe u een sjabloon specificatie maakt en implementeert. Deze opdrachten zijn alleen beschikbaar als u zich hebt [geregistreerd voor de preview-versie](https://aka.ms/templateSpecOnboarding).
+
+Eerst maakt u de sjabloon specificatie door de ARM-sjabloon op te geven.
+
+```azurepowershell
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateJsonFile ./mainTemplate.json
+```
+
+Vervolgens krijgt u de ID voor sjabloon specificatie en implementeert u deze.
+
+```azurepowershell
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName demoRG `
+  -TemplateSpecId $id
+```
+
+Zie [Azure Resource Manager-sjabloon specificaties (preview-versie)](template-specs.md)voor meer informatie.
 
 ## <a name="preview-changes"></a>Preview-wijzigingen
 

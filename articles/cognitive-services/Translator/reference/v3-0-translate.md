@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903983"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566599"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: vertalen
 
@@ -43,7 +43,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
     <td><em>Vereiste para meter</em>.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn <code>3.0</code> .</td>
   </tr>
   <tr>
-    <td>in</td>
+    <td>in op</td>
     <td><em>Vereiste para meter</em>.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de <a href="./v3-0-languages.md">ondersteunde talen</a> zijn die in het <code>translation</code> bereik zijn opgenomen. Gebruik bijvoorbeeld <code>to=de</code> om naar Duits te vertalen.<br/>Het is mogelijk om naar meerdere talen tegelijk te vertalen door de para meter in de query teken reeks te herhalen. Gebruik bijvoorbeeld <code>to=de&to=it</code> om te vertalen naar Duits en Italiaans.</td>
   </tr>
 </table>
@@ -95,7 +95,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat. Mogelijke waarden zijn: <code>true</code> (standaard) of <code>false</code> .<br/><br/><code>allowFallback=false</code>Hiermee geeft u op dat de vertaling alleen systeem getraind moet gebruiken voor het <code>category</code> opgegeven door de aanvraag. Als voor een vertaling voor taal X naar taal Y een koppeling is vereist via een draai taal E, moeten alle systemen in de keten (X->E en E->Y) aangepast zijn en dezelfde categorie hebben. Als er geen systeem met de specifieke categorie wordt gevonden, wordt door de aanvraag een 400-status code geretourneerd. <code>allowFallback=true</code>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat.
+    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat. Mogelijke waarden zijn: <code>true</code> (standaard) of <code>false</code> .<br/><br/><code>allowFallback=false</code> Hiermee geeft u op dat de vertaling alleen systeem getraind moet gebruiken voor het <code>category</code> opgegeven door de aanvraag. Als voor een vertaling voor taal X naar taal Y een koppeling is vereist via een draai taal E, moeten alle systemen in de keten (X->E en E->Y) aangepast zijn en dezelfde categorie hebben. Als er geen systeem met de specifieke categorie wordt gevonden, wordt door de aanvraag een 400-status code geretourneerd. <code>allowFallback=true</code> Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat.
 </td>
   </tr>
 </table> 
@@ -114,7 +114,7 @@ Aanvraag headers zijn onder andere:
     <td>De <em>vereiste aanvraag header</em>.<br/>Hiermee geeft u het inhouds type van de payload op.<br/> De geaccepteerde waarde is <code>application/json; charset=UTF-8</code> .</td>
   </tr>
   <tr>
-    <td>Content-length</td>
+    <td>Content-Length</td>
     <td>De <em>vereiste aanvraag header</em>.<br/>De lengte van de aanvraag tekst.</td>
   </tr>
   <tr>
@@ -174,7 +174,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
     Grenzen van zinnen worden alleen opgenomen wanneer de aanvraag parameter `includeSentenceLength` is `true` .
 
-  * `sourceText`: Een object met een enkele teken reeks eigenschap met `text` de naam, die de invoer tekst in het standaard script van de bron taal levert. `sourceText`de eigenschap is alleen beschikbaar wanneer de invoer wordt uitgedrukt in een script dat niet het gebruikelijke script is voor de taal. Als de invoer bijvoorbeeld Arabisch is geschreven in Latijns schrift, `sourceText.text` zou de Arabische tekst in het Arabische script worden omgezet.
+  * `sourceText`: Een object met een enkele teken reeks eigenschap met `text` de naam, die de invoer tekst in het standaard script van de bron taal levert. `sourceText` de eigenschap is alleen beschikbaar wanneer de invoer wordt uitgedrukt in een script dat niet het gebruikelijke script is voor de taal. Als de invoer bijvoorbeeld Arabisch is geschreven in Latijns schrift, `sourceText.text` zou de Arabische tekst in het Arabische script worden omgezet.
 
 Voor beeld van JSON-antwoorden vindt u in de sectie [voor beelden](#examples) .
 
@@ -280,7 +280,7 @@ De antwoord tekst is:
     }
 ]
 ```
-Het antwoord is vergelijkbaar met het antwoord van het vorige voor beeld. Omdat automatische taal detectie is aangevraagd, bevat het antwoord ook informatie over de taal die is gedetecteerd voor de invoer tekst. 
+Het antwoord is vergelijkbaar met het antwoord van het vorige voor beeld. Omdat automatische taal detectie is aangevraagd, bevat het antwoord ook informatie over de taal die is gedetecteerd voor de invoer tekst. De automatische taal detectie werkt beter met meer invoer tekst.
 
 ### <a name="translate-with-transliteration"></a>Vertalen met vele
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225679"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594353"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Data Factory (preview-versie)
 
@@ -59,7 +59,7 @@ Persoonlijk eind punt maakt gebruik van een privé-IP-adres in de beheerde Virtu
 > Het wordt aanbevolen dat u beheerde persoonlijke eind punten maakt om verbinding te maken met al uw Azure-gegevens bronnen. 
  
 > [!WARNING]
-> Als voor een PaaS-gegevens archief (BLOB, ADLS Gen2, SQL DW) een persoonlijk eind punt is gemaakt, en zelfs als het toegang tot alle netwerken toestaat, zou ADF alleen toegang kunnen krijgen met een beheerd privé-eind punt. Zorg ervoor dat u in dergelijke scenario's een persoonlijk eind punt maakt. 
+> Als er voor een PaaS-gegevens archief (BLOB, ADLS Gen2, Azure Synapse Analytics) al een persoonlijk eind punt is gemaakt, en zelfs als deze toegang toestaat vanuit alle netwerken, zou ADF alleen toegang kunnen krijgen met een beheerd privé-eind punt. Zorg ervoor dat u in dergelijke scenario's een persoonlijk eind punt maakt. 
 
 Een VPN-verbinding wordt gemaakt met de status ' in behandeling ' wanneer u een beheerd privé-eind punt maakt in Azure Data Factory. Er wordt een goedkeuringswerkstroom geïnitieerd. De eigenaar van de privékoppelingsresource is verantwoordelijk voor het goedkeuren of afwijzen van de verbinding.
 
@@ -83,6 +83,23 @@ De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via e
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Persoonlijke koppelings service van Azure
+- Azure Search
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+
+### <a name="supported-regions"></a>Ondersteunde regio's
+- VS - oost
+- VS - oost 2
+- VS - west-centraal
+- West US 2
+- South Central US
+- Central US
+- Europa - noord
+- Europa -west
+- Verenigd Koninkrijk Zuid
+- Azië - zuidoost
+- Australië - oost
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Uitgaande communicatie via het open bare eind punt van de Virtual Network voor ADF beheerd
 - Alleen poort 443 wordt geopend voor uitgaande communicatie.

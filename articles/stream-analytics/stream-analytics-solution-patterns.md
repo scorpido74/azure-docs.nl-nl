@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903320"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461541"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-oplossingspatronen
 
@@ -102,7 +102,7 @@ De meeste data wetenschappen-en analyse activiteiten worden nog offline uitgevoe
 
 ## <a name="use-reference-data-for-enrichment"></a>Referentie gegevens gebruiken voor verrijking
 
-Gegevens verrijking is vaak een vereiste voor ETL-engines. Azure Stream Analytics ondersteunt gegevens verrijking met [referentie gegevens](stream-analytics-use-reference-data.md) van zowel SQL database als Azure Blob-opslag. Gegevens verrijking kunnen worden uitgevoerd voor de aanvoer van gegevens in zowel Azure Data Lake als SQL Data Warehouse.
+Gegevens verrijking is vaak een vereiste voor ETL-engines. Azure Stream Analytics ondersteunt gegevens verrijking met [referentie gegevens](stream-analytics-use-reference-data.md) van zowel SQL database als Azure Blob-opslag. Gegevens verrijking kan worden uitgevoerd voor de aanvoer van gegevens in zowel Azure Data Lake als Azure Synapse Analytics.
 
 
 ![ASA offline analyse met gegevens verrijking](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
@@ -115,7 +115,7 @@ Als u het offline analyse patroon combineert met het bijna realtime toepassings 
 
 ## <a name="how-to-monitor-asa-jobs"></a>ASA-taken bewaken
 
-Een Azure Stream Analytics taak kan 24/7 worden uitgevoerd om binnenkomende gebeurtenissen in realtime continu te verwerken. De gegarandeerde uptime is van cruciaal belang voor de status van de volledige toepassing. Hoewel Stream Analytics de enige streaming Analytics-service in de branche is die een [gegarandeerde Beschik baarheid van 99,9%](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)biedt, is er mogelijk nog steeds een zekere mate van tijd. Stream Analytics heeft gedurende de jaren metrische gegevens, logboeken en taak statussen geïntroduceerd om de status van de taken weer te geven. Deze zijn allemaal zichtbaar via Azure Monitor-service en kunnen verder worden geëxporteerd naar OMS. Zie [informatie over stream Analytics taak bewaking en het controleren van query's](stream-analytics-monitoring.md)voor meer informatie.
+Een Azure Stream Analytics taak kan 24/7 worden uitgevoerd om binnenkomende gebeurtenissen in realtime continu te verwerken. De gegarandeerde uptime is van cruciaal belang voor de status van de volledige toepassing. Hoewel Stream Analytics de enige streaming Analytics-service in de branche is die een  [gegarandeerde Beschik baarheid van 99,9%](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)biedt, is er mogelijk nog steeds een zekere mate van tijd. Stream Analytics heeft gedurende de jaren metrische gegevens, logboeken en taak statussen geïntroduceerd om de status van de taken weer te geven. Deze zijn allemaal zichtbaar via Azure Monitor-service en kunnen verder worden geëxporteerd naar OMS. Zie [informatie over stream Analytics taak bewaking en het controleren van query's](stream-analytics-monitoring.md)voor meer informatie.
 
 ![ASA-bewaking](media/stream-analytics-solution-patterns/monitoring.png)
 

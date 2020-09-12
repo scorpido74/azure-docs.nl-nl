@@ -3,12 +3,12 @@ title: Continue video-opname-Azure
 description: Continue video-opname (CVR) verwijst naar het proces van het continu vastleggen van de video van een video bron. In dit onderwerp wordt beschreven wat CVR is.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043314"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566688"
 ---
 # <a name="continuous-video-recording"></a>Continue video-opname  
 
@@ -21,7 +21,8 @@ ms.locfileid: "87043314"
 
 Continue video-opname (CVR) verwijst naar het proces van het continu vastleggen van de video van een video bron. Live video Analytics op IoT Edge ondersteunt het opnemen van video continu, 24 uur per dag, vanaf een CCTV-camera via een [Media grafiek](media-graph-concept.md) die bestaat uit een RTSP-bron knooppunt en een Asset Sink-knoop punt. In het onderstaande diagram ziet u een grafische weer gave van een dergelijk media diagram. De JSON-weer gave van de [grafiek topologie](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) van een dergelijke media grafiek vindt u [hier](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
 
-![Continue video-opname](./media/continuous-video-recording/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Continue video-opname":::
 
 De bovenstaande media grafiek kan worden uitgevoerd op een edge-apparaat, met de Asset Sink video opnemen in een Azure Media Services- [Asset](terminology.md#asset). De video wordt geregistreerd zolang de media grafiek de status geactiveerd heeft. Omdat video wordt vastgelegd als een Asset, kan deze worden afgespeeld met de bestaande streaming-mogelijkheden van Media Services. Zie [afspelen van opgenomen inhoud](video-playback-concept.md) voor meer informatie.
 
@@ -30,10 +31,11 @@ De bovenstaande media grafiek kan worden uitgevoerd op een edge-apparaat, met de
 Live video Analytics op IoT Edge ondersteunt het gebruik van minder dan perfecte netwerk omstandigheden, waarbij het edge-apparaat af en toe verbinding met de cloud kan verliezen of een daling in de beschik bare band breedte kan ondervinden. Als u dit wilt doen, wordt de video van de bron lokaal geregistreerd in een cache en wordt deze regel matig automatisch gesynchroniseerd met de Asset. Als u de JSON van de [grafiek topologie](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset/topology.json)bekijkt, ziet u dat de volgende eigenschappen zijn gedefinieerd:
 
 ```
-    "segmentLength": "PT30S",
-    "localMediaCacheMaximumSizeMiB": "2048",
-    "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
+"segmentLength": "PT30S",
+"localMediaCacheMaximumSizeMiB": "2048",
+"localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
+
 De laatste twee eigenschappen zijn relevant voor een flexibele opname (beide zijn ook de vereiste eigenschappen voor een Asset Sink-knoop punt). De eigenschap localMediaCachePath geeft aan dat de Asset-Sink dat mappad gebruikt om media gegevens in de cache op te slaan voordat ze naar de Asset worden geüpload. U kunt [Dit](../../iot-edge/how-to-access-host-storage-from-module.md) artikel raadplegen om te begrijpen hoe de Edge-module gebruik kan maken van de lokale opslag van uw apparaat. De eigenschap localMediaCacheMaximumSizeMiB definieert hoeveel schijf ruimte de Asset-Sink als cache kan gebruiken (1 MiB = 1024 * 1024 bytes). 
 
 Als uw Edge-module de connectiviteit gedurende een lange periode verliest en de inhoud die in de cachemap is opgeslagen, de localMediaCacheMaximumSizeMiB-waarde bereikt, worden de gegevens uit de cache verwijderd, beginnend bij de oudste gegevens. Als het apparaat bijvoorbeeld verbinding heeft met 10AM en de cache de maximum limiet bereikt bij 18:00 uur, begint de Asset Sink met het verwijderen van gegevens die zijn geregistreerd bij 10AM. 
@@ -48,15 +50,13 @@ Zoals hierboven beschreven, neemt het knoop punt Asset Sink video op naar een lo
 
 De eigenschap segmentLength zorgt ervoor dat de Edge-module Maxi maal eenmaal per segmentLength seconden video uploadt. Deze eigenschap heeft een minimum waarde van 30 seconden (ook de standaard instelling) en kan worden verhoogd met een interval van 30 seconden tot een maximum van vijf minuten.
 
->[!NOTE]
->Raadpleeg [Dit](playback-recordings-how-to.md) artikel voor het effect dat segmentLength op het afspelen heeft.
+> [!NOTE]
+> Zie het artikel over het [afspelen van opnamen](playback-recordings-how-to.md) voor het effect dat segmentLength op het afspelen heeft.
 
-
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Video-opname op basis van gebeurtenissen](event-based-video-recording-concept.md)
 * [Afspelen van opgenomen inhoud](video-playback-concept.md)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

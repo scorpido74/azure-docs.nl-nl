@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871391"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484292"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Een actieve DNS-naam migreren naar Azure App Service
 
@@ -40,7 +40,7 @@ Wanneer u ten slotte uw aangepaste DNS-naam migreert van de oude-site naar de Ap
 
 ### <a name="get-domain-verification-id"></a>Verificatie-id van domein ophalen
 
-De domein verificatie-ID voor uw app ophalen door de stappen te volgen in de [domein verificatie-id ophalen](app-service-web-tutorial-custom-domain.md#get-domain-verification-id).
+De domein verificatie-ID voor uw app ophalen door de stappen te volgen in de [domein verificatie-id ophalen](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id).
 
 ### <a name="create-domain-verification-record"></a>Domein verificatie record maken
 
@@ -48,9 +48,9 @@ Voeg een TXT-record toe voor domein verificatie om het domein eigendom te contro
 
 | Voor beeld van DNS-record | TXT-host | TXT-waarde |
 | - | - | - |
-| \@ basis | _asuid_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| www (sub) | _asuid. www_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| \* vervanging | _asuid_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \@ basis | _asuid_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| www (sub) | _asuid. www_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \* vervanging | _asuid_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
 
 Noteer op de pagina DNS-records het record type van de DNS-naam die u wilt migreren. App Service ondersteunt toewijzingen van CNAME-en A-records.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085868"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462561"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Gegevens uploaden voor Apache Hadoop-taken in HDInsight
 
@@ -68,7 +68,7 @@ of
 
 `wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
-Zie voor een lijst met andere Hadoop-opdrachten die met bestanden werken[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Zie voor een lijst met andere Hadoop-opdrachten die met bestanden werken [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > In Apache HBase-clusters is de standaard blok grootte die wordt gebruikt voor het schrijven van gegevens 256 KB. Dit werkt prima wanneer u HBase-Api's of REST-Api's gebruikt, met behulp `hadoop` van de of- `hdfs dfs` opdrachten voor het schrijven van gegevens die groter zijn dan ~ 12 GB. Dit resulteert in een fout. Zie voor meer informatie [opslag uitzondering voor schrijven op BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
@@ -80,7 +80,7 @@ Er zijn ook verschillende toepassingen die een grafische interface bieden voor h
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Micro soft Visual Studio Tools voor HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Azure-opslagverkenner](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [CloudBerry Explorer voor Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
@@ -88,7 +88,7 @@ Er zijn ook verschillende toepassingen die een grafische interface bieden voor h
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Azure Storage koppelen als lokale station
 
-Zie [Azure Storage koppelen als lokale schijf](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Zie [Azure Storage koppelen als lokale schijf](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Uploaden met Services
 

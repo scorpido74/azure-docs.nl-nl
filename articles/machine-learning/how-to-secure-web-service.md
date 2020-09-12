@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0afb7906e102e4f0fb49245949b08618da1693ec
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f2d874925cdad05ec7979575c9b87608da542927
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265674"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661430"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS gebruiken om een webservice te beveiligen via Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -78,12 +78,12 @@ Als u de service wilt implementeren (of opnieuw wilt implementeren) met TLS inge
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Implementeren op AKS en veld-Programmeer bare poort matrix (FPGA)
 
   > [!NOTE]
-  > De informatie in deze sectie is ook van toepassing wanneer u een beveiligde webservice voor de ontwerp functie implementeert. Als u niet bekend bent met het gebruik van de python-SDK, raadpleegt u [Wat is de Azure machine learning SDK voor python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+  > De informatie in deze sectie is ook van toepassing wanneer u een beveiligde webservice voor de ontwerp functie implementeert. Als u niet bekend bent met het gebruik van de python-SDK, raadpleegt u [Wat is de Azure machine learning SDK voor python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 
 Wanneer u implementeert in AKS, kunt u een nieuw AKS-cluster maken of een bestaande toevoegen. Zie [een model implementeren in een Azure Kubernetes-service cluster](how-to-deploy-azure-kubernetes-service.md)voor meer informatie over het maken of koppelen van een cluster.
   
--  Als u een nieuw cluster maakt, gebruikt u **[AksCompute. provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**.
-- Als u een bestaand cluster koppelt, gebruikt u **[AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**. Beide retour neren een configuratie object dat een **enable_ssl** methode heeft.
+-  Als u een nieuw cluster maakt, gebruikt u **[AksCompute. provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**.
+- Als u een bestaand cluster koppelt, gebruikt u **[AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**. Beide retour neren een configuratie object dat een **enable_ssl** methode heeft.
 
 De **enable_ssl** -methode kan gebruikmaken van een certificaat dat door micro soft wordt verschaft of een certificaat dat u aanschaft.
 
@@ -130,7 +130,7 @@ De **enable_ssl** -methode kan gebruikmaken van een certificaat dat door micro s
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-Zie [AksProvisioningConfiguration. enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) en [AksAttachConfiguration. enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)voor meer informatie over *enable_ssl*.
+Zie [AksProvisioningConfiguration. enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) en [AksAttachConfiguration. enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)voor meer informatie over *enable_ssl*.
 
 ### <a name="deploy-on-azure-container-instances"></a>Implementeren op Azure Container Instances
 
@@ -200,8 +200,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 Zie voor meer informatie de volgende naslag documenten:
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
-* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py&preserve-view=true)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py&preserve-view=true)
 
 ### <a name="update-custom-certificate"></a>Aangepast certificaat bijwerken
 
@@ -240,8 +240,8 @@ Als het certificaat oorspronkelijk is gegenereerd door een certificerings instan
 
 Zie voor meer informatie de volgende naslag documenten:
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
-* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py&preserve-view=true)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py&preserve-view=true)
 
 ## <a name="disable-tls"></a>TLS uitschakelen
 
@@ -264,4 +264,4 @@ aks_target.update(update_config)
 ## <a name="next-steps"></a>Volgende stappen
 Leer hoe u het volgende doet:
 + [Een machine learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-+ [Veilig experimenten en demijnen uitvoeren in een virtueel Azure-netwerk](how-to-enable-virtual-network.md)
++ [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)

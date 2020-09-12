@@ -3,12 +3,12 @@ title: Veelvoorkomende fouten oplossen
 description: Meer informatie over het oplossen van problemen met het maken, toewijzen en verwijderen van blauw drukken, zoals beleids schendingen en Blue para meter-functies.
 ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557518"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651328"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
@@ -22,9 +22,9 @@ Veel fouten worden veroorzaakt door het toewijzen van een blauw druk aan een ber
 
 1. Selecteer **toegewezen blauw drukken** op de pagina aan de linkerkant en gebruik het zoekvak om de opdrachten in de blauw druk te filteren om de mislukte toewijzing te vinden. U kunt ook de tabel met toewijzingen sorteren op de kolom **inrichtings status** om alle mislukte toewijzingen weer te geven die samen zijn gegroepeerd.
 
-1. Klik met de rechter muisknop op de blauw druk met de status _mislukt_ of klik met de linkermuisknop en selecteer **toewijzings details weer geven**.
+1. Selecteer de blauw druk met de status _mislukt_ of klik met de rechter muisknop en selecteer **toewijzings details weer geven**.
 
-1. Een rode banner waarschuwing dat de toewijzing is mislukt, bevindt zich bovenaan de pagina voor de toewijzing van blauw drukken. Klik ergens op de banner voor meer informatie.
+1. Een rode banner waarschuwing dat de toewijzing is mislukt, bevindt zich bovenaan de pagina voor de toewijzing van blauw drukken. Selecteer een wille keurige locatie op de banner voor meer informatie.
 
 Het is gebruikelijk dat de fout wordt veroorzaakt door een artefact en niet de blauw druk als geheel. Als een artefact een Key Vault maakt en Azure Policy voor komt dat Key Vault wordt gemaakt, mislukt de volledige toewijzing.
 

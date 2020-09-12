@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804592"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594285"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Een toepassings gateway met externe omleiding maken met behulp van Azure PowerShell
 
@@ -21,10 +21,9 @@ U kunt Azure Power shell gebruiken voor het configureren van het [omleiden van w
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een listener-en omleidings regel maken
-> * Een toepassingsgateway maken
+* Het netwerk instellen
+* Een listener-en omleidings regel maken
+* Een toepassingsgateway maken
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 

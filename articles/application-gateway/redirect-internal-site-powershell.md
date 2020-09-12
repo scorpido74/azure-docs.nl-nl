@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: ab1cedf324c0391ce54773202b030b519c3e4766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804264"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594302"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Een toepassings gateway met een interne omleiding maken met behulp van Azure PowerShell
 
@@ -21,12 +21,11 @@ U kunt Azure Power shell gebruiken voor het configureren van het [omleiden van w
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken
-> * Listeners en omleidings regel toevoegen
-> * Een schaalset voor virtuele machines maken met de back-end-groep
-> * Een CNAME-record in uw domein maken
+* Het netwerk instellen
+* Een toepassingsgateway maken
+* Listeners en omleidings regel toevoegen
+* Een schaalset voor virtuele machines maken met de back-end-groep
+* Een CNAME-record in uw domein maken
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 

@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: asymmetrische route ring'
 description: In dit artikel worden problemen met asymmetrische routering besproken die u kunt tegenkomen in een netwerk met meerdere koppelingen naar een bestemming.
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: osamam
-ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072145"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566531"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrische routering met meerdere netwerkpaden
 In dit artikel wordt uitgelegd hoe uitgaand en binnenkomend netwerkverkeer verschillende routes kan nemen wanneer er meerdere paden beschikbaar zijn tussen netwerkbron en -bestemming.
@@ -64,5 +64,5 @@ Een andere oplossing voor problemen met asymmetrische routering is het gebruik v
 ![Brongebaseerde NAT-netwerkconfiguratie](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Detectie van asymmetrische routering
-Traceroute is de beste manier om ervoor te zorgen dat uw netwerkverkeer via het verwachte pad loopt. Als u verwacht dat verkeer van de on-premises SMTP-server naar Microsoft via het internetpad gaat, dan loopt de verwachte traceroute van de SMTP-server naar Office 365. Zo wordt gevalideerd of het verkeer inderdaad uw netwerk verlaat richting internet en niet richting ExpressRoute.
+Traceroute is de beste manier om ervoor te zorgen dat uw netwerkverkeer via het verwachte pad loopt. Als u verkeer van uw on-premises SMTP-server naar micro soft verwacht om het Internet pad te halen, is de verwachte traceroute van de SMTP-server naar Microsoft 365. Zo wordt gevalideerd of het verkeer inderdaad uw netwerk verlaat richting internet en niet richting ExpressRoute.
 

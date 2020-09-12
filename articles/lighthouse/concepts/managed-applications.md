@@ -3,12 +3,12 @@ title: Azure Lighthouse en door Azure beheerde toepassingen
 description: Krijg inzicht in de manier waarop Azure Lighthouse en door Azure beheerde toepassingen verschillende scenario's kunnen ondersteunen en hoe ze samen kunnen worden gebruikt.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163421"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483844"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse en door Azure beheerde toepassingen
 
@@ -23,7 +23,7 @@ Zowel door Azure beheerde toepassingen als Azure Lighthouse werken door een serv
 
 Met [Azure Lighthouse](../overview.md)kan een service provider een breed scala aan beheer taken rechtstreeks uitvoeren op het abonnement van een klant (of de resource groep). Deze toegang wordt bereikt door middel van een logische projectie, waardoor service providers zich kunnen aanmelden bij hun eigen Tenant en toegang hebben tot resources die deel uitmaken van de Tenant van de klant. De klant kan bepalen welke abonnementen of resource groepen u wilt delegeren aan de service provider. de klant houdt volledige toegang tot deze resources. Ze kunnen de toegang tot de service provider ook op elk gewenst moment verwijderen.
 
-Als u Azure Lighthouse wilt gebruiken, zijn klanten onboarding voor [Azure-gedelegeerd resource beheer](azure-delegated-resource-management.md) door [arm-sjablonen te implementeren](../how-to/onboard-customer.md) of via een [beheerde service aanbieding in azure Marketplace](managed-services-offers.md). U kunt uw impact op klant afspraken bijhouden door [uw partner-id te koppelen](../../cost-management-billing/manage/link-partner-id.md).
+Als u Azure Lighthouse wilt gebruiken, zijn klanten onboarding voor [Azure-gedelegeerd resource beheer](azure-delegated-resource-management.md) door [arm-sjablonen te implementeren](../how-to/onboard-customer.md) of via een [beheerde service aanbieding in azure Marketplace](managed-services-offers.md). U kunt uw impact op klant afspraken volgen en het tegoed van de partner ontvangen door [uw partner-id te koppelen](../how-to/partner-earned-credit.md).
 
 Azure Lighthouse wordt doorgaans gebruikt wanneer een service provider beheer taken voor een klant voortdurend uitvoert.
 

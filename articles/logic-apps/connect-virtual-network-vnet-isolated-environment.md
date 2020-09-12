@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 624668ad80d72933d6dd1e67fcac799fd210d659
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/10/2020
+ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816657"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647548"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -44,7 +44,14 @@ U kunt ook een ISE maken met behulp van de voor [beeld-Azure Resource Manager Qu
   > [!IMPORTANT]
   > Logic apps, ingebouwde triggers, ingebouwde acties en connectors die worden uitgevoerd in uw ISE, gebruiken een prijs plan dat verschilt van het prijs plan op basis van verbruik. Zie het [Logic apps-prijs model](../logic-apps/logic-apps-pricing.md#fixed-pricing)voor meer informatie over de prijzen en facturerings werkzaamheden voor ISEs. Zie [Logic apps prijzen](../logic-apps/logic-apps-pricing.md)voor prijs tarieven.
 
-* Een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Het virtuele netwerk moet vier *lege* subnetten hebben, die vereist zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. U kunt de subnetten vooraf maken of u kunt wachten totdat u uw ISE maakt, zodat u subnetten tegelijk kunt maken. Controleer echter de vereisten voor het [subnet](#create-subnet)voordat u uw subnets maakt.
+* Een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Het virtuele netwerk moet vier *lege* subnetten hebben, die vereist zijn voor het maken en implementeren van resources in uw ISE en die worden gebruikt door deze interne en verborgen onderdelen:
+
+  * Logic Apps compute
+  * Interne App Service Environment (connectors)
+  * Interne API Management (connectors)
+  * Interne redis voor caching en prestaties
+  
+  U kunt de subnetten vooraf maken of u kunt wachten totdat u uw ISE maakt, zodat u subnetten tegelijk kunt maken. Controleer echter de vereisten voor het [subnet](#create-subnet)voordat u uw subnets maakt.
 
   > [!IMPORTANT]
   >
@@ -183,13 +190,13 @@ Als u geen toegang voor deze afhankelijkheden toestaat, mislukt uw ISE-implement
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Azure-subscription-name*> | Het Azure-abonnement dat u wilt gebruiken voor uw omgeving |
    | **Resourcegroep** | Ja | <*Naam-van-Azure-resourcegroep*> | Een nieuwe of bestaande Azure-resource groep waar u uw omgeving wilt maken |
-   | **Naam van de integratie service omgeving** | Ja | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ) en punten () kan bevatten `.` . |
+   | **Naam van de integratie service omgeving** | Yes | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ) en punten () kan bevatten `.` . |
    | **Locatie** | Ja | <*Azure-Data Center-regio*> | De Azure Data Center-regio waar u uw omgeving kunt implementeren |
-   | **SKU** | Ja | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk**: deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
-   | **Extra capaciteit** | Premium: <br>Ja <p><p>Developer <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)om capaciteit toe te voegen na het maken. |
-   | **Toegangs eindpunt** | Ja | **Intern** of **extern** | Het type toegangs eindpunten dat moet worden gebruikt voor uw ISE. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. <p><p>Uw selectie is ook van invloed op de manier waarop u invoer en uitvoer kunt weer geven en openen in de geschiedenis van de logische app-uitvoeringen. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. <p><p>**Belang rijk**: u kunt het toegangs eindpunt alleen selecteren tijdens het maken van de ISE en deze optie later niet wijzigen. |
+   | **SKU** | Yes | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk**: deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
+   | **Extra capaciteit** | Premium: <br>Yes <p><p>Developer <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)om capaciteit toe te voegen na het maken. |
+   | **Toegangs eindpunt** | Yes | **Intern** of **extern** | Het type toegangs eindpunten dat moet worden gebruikt voor uw ISE. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. <p><p>Uw selectie is ook van invloed op de manier waarop u invoer en uitvoer kunt weer geven en openen in de geschiedenis van de logische app-uitvoeringen. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. <p><p>**Belang rijk**: u kunt het toegangs eindpunt alleen selecteren tijdens het maken van de ISE en deze optie later niet wijzigen. |
    | **Virtueel netwerk** | Ja | <*Azure-virtueel-netwerk-naam*> | Het virtuele Azure-netwerk waar u uw omgeving wilt injecteren zodat logische apps in die omgeving toegang hebben tot uw virtuele netwerk. Als u nog geen netwerk hebt, [maakt u eerst een virtueel netwerk van Azure](../virtual-network/quick-create-portal.md). <p><p>**Belang rijk**: u kunt deze injectie *alleen* uitvoeren wanneer u uw ISE maakt. |
-   | **Subnetten** | Ja | <*subnet-Resource-lijst*> | Een ISE vereist vier *lege* subnetten, die vereist zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. <p>**Belang rijk**: Zorg ervoor dat u [de vereisten van het subnet controleert voordat u doorgaat met deze stappen voor het maken van uw subnetten](#create-subnet). |
+   | **Subnetten** | Yes | <*subnet-Resource-lijst*> | Een ISE vereist vier *lege* subnetten, die vereist zijn voor het maken en implementeren van resources in uw ISE en worden gebruikt door interne Logic apps onderdelen, zoals connectors en caching voor prestaties. <p>**Belang rijk**: Zorg ervoor dat u [de vereisten van het subnet controleert voordat u doorgaat met deze stappen voor het maken van uw subnetten](#create-subnet). |
    |||||
 
    <a name="create-subnet"></a>

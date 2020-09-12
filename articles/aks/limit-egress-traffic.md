@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003167"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594256"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -280,7 +280,7 @@ Richt een virtueel netwerk in met twee afzonderlijke subnetten, één voor het c
 
 Maak een resource groep om alle resources te bewaren.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +294,7 @@ Maak een virtueel netwerk met twee subnetten om het AKS-cluster en het Azure Fir
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +321,12 @@ Azure Firewall binnenkomende en uitgaande regels moeten worden geconfigureerd. H
 
 Maak een open bare IP-resource van een standaard-SKU die wordt gebruikt als het front-Azure Firewall front-end-adres.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Registreer de preview cli-extensie om een Azure Firewall te maken.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +341,7 @@ Het eerder gemaakte IP-adres kan nu worden toegewezen aan de firewall-frontend.
 > Het kan enkele minuten duren voordat het open bare IP-adres is ingesteld op de Azure Firewall.
 > Als u gebruik wilt maken van FQDN op netwerk regels waarvoor een DNS-proxy is ingeschakeld, wordt de firewall ingeschakeld op poort 53 en worden DNS-aanvragen doorgestuurd naar de hierboven opgegeven DNS-server. Hierdoor kan de firewall die FQDN automatisch omzetten.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +365,10 @@ Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en
 
 Maak een lege route tabel die moet worden gekoppeld aan een bepaald subnet. In de route tabel wordt de volgende hop gedefinieerd als de hierboven gemaakte Azure Firewall. Elk subnet kan zijn gekoppeld aan geen enkele of één routetabel.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +399,7 @@ Raadpleeg de [documentatie van Azure firewall](../firewall/overview.md) voor mee
 
 Als u het cluster wilt koppelen aan de firewall, moet het toegewezen subnet voor het subnet van het cluster verwijzen naar de route tabel die hierboven is gemaakt. U kunt de koppeling doen door een opdracht uit te geven aan het virtuele netwerk dat zowel het cluster als de firewall heeft om de route tabel van het subnet van het cluster bij te werken.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +415,7 @@ Nu kan een AKS-cluster worden geïmplementeerd in het bestaande virtuele netwerk
 
 Een service-principal wordt door AKS gebruikt om cluster bronnen te maken. De service-principal die tijdens het maken wordt door gegeven, wordt gebruikt voor het maken van onderliggende AKS-resources, zoals opslag resources, Ip's en load balancers die door AKS worden gebruikt (u kunt in plaats daarvan ook een [beheerde identiteit](use-managed-identity.md) gebruiken). Als u hieronder niet de juiste machtigingen hebt verleend, kunt u het AKS-cluster niet inrichten.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +423,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Vervang nu de `APPID` en `PASSWORD` onderstaande door de Service Principal AppID en het Service Principal-wacht woord dat automatisch wordt gegenereerd door de vorige opdracht uitvoer. We verwijzen naar de VNET-Resource-ID om machtigingen toe te kennen aan de Service-Principal zodat AKS hierin resources kan implementeren.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +461,7 @@ U definieert het uitgaande type voor het gebruik van de UDR die al in het subnet
 >
 > De AKS-functie voor door de [**API server geautoriseerde IP-adresbereiken**](api-server-authorized-ip-ranges.md) kan worden toegevoegd om de API-server toegang alleen te beperken tot het open bare eind punt van de firewall. De functie voor geautoriseerde IP-bereiken wordt in het diagram als optioneel aangeduid. Wanneer u de functie geautoriseerd IP-bereik inschakelt om de toegang tot de API-server te beperken, moeten uw ontwikkel hulpprogramma's gebruikmaken van een JumpBox in het virtuele netwerk van de firewall of moet u alle ontwikkel eindpunten toevoegen aan het geautoriseerde IP-bereik.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +492,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  Gebruik de opdracht [AZ AKS Get-credentials] [AZ-AKS-Get-credentials] om te configureren `kubectl` om verbinding te maken met het zojuist gemaakte Kubernetes-cluster. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -754,7 +755,7 @@ SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].
 ```
 
 Voeg de NAT-regel toe door uit te voeren:
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -772,7 +773,7 @@ U ziet de AKS stem-app. In dit voor beeld was de firewall het open bare IP-adres
 
 Als u Azure-resources wilt opschonen, verwijdert u de resource groep AKS.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

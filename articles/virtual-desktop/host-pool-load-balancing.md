@@ -3,15 +3,15 @@ title: Taak verdeling van hostgroep voor Windows Virtual Desktop-Azure
 description: Meer informatie over methoden voor het verdelen van de hostgroep voor een Windows-omgeving met virtueel bureau blad.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 09/04/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007434"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461116"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Taakverdelingsmethoden voor hostpool
 
@@ -34,7 +34,7 @@ Elke hostgroep kan alleen een specifiek type taak verdeling configureren. Beide 
 
 Met de gelijkmatige methode voor taak verdeling kunt u gebruikers verbindingen distribueren om te optimaliseren voor dit scenario. Deze methode is ideaal voor organisaties die de beste ervaring willen bieden voor gebruikers die verbinding willen maken met hun gegroepeerde virtueel-bureaublad omgeving.
 
-Met de methode breedte-eerste wordt eerst een query uitgevoerd op sessie-hosts die nieuwe verbindingen toestaan. De-methode selecteert vervolgens de sessiehost met het minste aantal sessies. Als er sprake is van een das, selecteert de methode de eerste sessie-host in de query.
+Met de methode breedte-eerste wordt eerst een query uitgevoerd op sessie-hosts die nieuwe verbindingen toestaan. De methode selecteert vervolgens wille keurig een sessie host van de helft van de sessie-hosts met het minste aantal sessies. Als er bijvoorbeeld negen machines zijn met 11, 12, 13, 14, 15, 16, 17, 18 en 19 sessies, gaat een nieuwe sessie die u maakt niet automatisch naar de eerste computer. In plaats daarvan kan het naar een van de eerste vijf computers met het laagste aantal sessies (11, 12, 13, 14, 15) gaan.
 
 ## <a name="depth-first-load-balancing-method"></a>Diepte: eerste methode voor taak verdeling
 

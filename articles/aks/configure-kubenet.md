@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f9bc0cd229888d952821509ced6cc5410000ee52
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078721"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462136"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -24,7 +24,7 @@ Dit artikel laat u zien hoe u *kubenet* -netwerken kunt gebruiken om een subnet 
 
 * Het virtuele netwerk voor het AKS-cluster moet uitgaande Internet verbinding toestaan.
 * Maak niet meer dan één AKS-cluster in hetzelfde subnet.
-* AKS-clusters mogen `169.254.0.0/16` , `172.30.0.0/16` , `172.31.0.0/16` , of `192.0.2.0/24` voor het adres bereik van de Kubernetes-service niet worden gebruikt.
+* AKS-clusters mogen niet worden gebruikt `169.254.0.0/16` , `172.30.0.0/16` , `172.31.0.0/16` , of `192.0.2.0/24` voor het adres bereik van de Kubernetes-service, het Pod-adres bereik of het virtuele netwerk bereik van het cluster.
 * De service-principal die wordt gebruikt door het AKS-cluster moet ten minste een rol voor [netwerkinzender](../role-based-access-control/built-in-roles.md#network-contributor) hebben in het subnet binnen het virtuele netwerk. U moet ook beschikken over de juiste machtigingen, zoals de eigenaar van het abonnement, om een service-principal te maken en de machtigingen toe te wijzen. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerk bijdrager te gebruiken, zijn de volgende machtigingen vereist:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`

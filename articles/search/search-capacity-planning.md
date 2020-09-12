@@ -7,32 +7,48 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927201"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660304"
 ---
-# <a name="adjust-capacity-in-azure-cognitive-search"></a>De capaciteit in azure Cognitive Search aanpassen
+# <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>De capaciteit van een Azure Cognitive Search-service aanpassen
 
-Voordat u [een zoek service inricht](search-create-service-portal.md) en vergren delen in een specifieke prijs categorie, duurt het enkele minuten om de rol van replica's en partities in een service te begrijpen en hoe u een service kunt aanpassen voor pieken en spannings dips in de vraag van resources.
+Voordat u [een zoek service inricht](search-create-service-portal.md) en vergren delen in een specifieke prijs categorie, duurt het enkele minuten om te begrijpen hoe capaciteit werkt en hoe u replica's en partities kunt aanpassen voor de schommeling van de werk belasting.
 
-Capaciteit is een functie van de [laag die u kiest](search-sku-tier.md) (lagen bepalen hardwarekenmerken) en de combi natie van replica en partitie die nodig is voor geraamde werk belastingen. Afhankelijk van de laag en de grootte van de aanpassing kan het toevoegen of beperken van de capaciteit 15 minuten tot enkele uren duren. 
+Capaciteit is een functie van de [laag die u kiest](search-sku-tier.md) (lagen bepalen hardwarekenmerken) en de combi natie van replica en partitie die nodig is voor geraamde werk belastingen. U kunt het aantal replica's of partities afzonderlijk verg Roten of verkleinen. Afhankelijk van de laag en de grootte van de aanpassing kan het toevoegen of beperken van de capaciteit 15 minuten tot enkele uren duren.
 
 Wanneer u de toewijzing van replica's en partities wijzigt, raden we u aan de Azure Portal te gebruiken. De portal dwingt limieten af voor toegestane combi naties die onder maximum limieten van een laag blijven. Als u echter een op scripts of code gebaseerde inrichtings benadering nodig hebt, zijn de [Azure PowerShell](search-manage-powershell.md) of het [beheer rest API](/rest/api/searchmanagement/services) alternatieve oplossingen.
 
-## <a name="terminology-replicas-and-partitions"></a>Terminologie: replica's en partities
+## <a name="concepts-search-units-replicas-partitions-shards"></a>Concepten: Zoek eenheden, replica's, partities, Shards
 
-|||
-|-|-|
-|*Partities* | Biedt index opslag en I/O voor lees-en schrijf bewerkingen (bijvoorbeeld bij het opnieuw samen stellen of vernieuwen van een index). Elke partitie heeft een deel van de totale index. Als u drie partities toewijst, wordt uw index onderverdeeld in derden. |
-|*Replica's* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica is één exemplaar van een index. Als u drie replica's toewijst, zijn er drie kopieën van een index beschikbaar voor het verwerken van query aanvragen.|
+Capaciteit wordt uitgedrukt in *Zoek eenheden* die kunnen worden toegewezen in combi Naties van *partities* en *replica's*, met behulp van een onderliggend *sharding* -mechanisme ter ondersteuning van flexibele configuraties:
+
+| Concept  | Definitie|
+|----------|-----------|
+|*Zoek eenheid* | Eén toename van de totale beschik bare capaciteit (36 eenheden). Het is ook de facturerings eenheid voor een Azure Cognitive Search service. Er is mini maal één eenheid vereist om de service uit te voeren.|
+|*Replica* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica fungeert als host voor één exemplaar van een index. Als u drie replica's toewijst, zijn er drie kopieën van een index beschikbaar voor het verwerken van query aanvragen.|
+|*Partitie* | Fysieke opslag en I/O voor lees-en schrijf bewerkingen (bijvoorbeeld bij het opnieuw samen stellen of vernieuwen van een index). Elke partitie heeft een segment van de totale index. Als u drie partities toewijst, wordt uw index onderverdeeld in derden. |
+|*Shard* | Een segment van een index. Azure Cognitive Search splitst elke index in Shards om het proces van het sneller toevoegen van partities te maken (door Shards te verplaatsen naar nieuwe zoek eenheden).|
+
+In het volgende diagram ziet u de relatie tussen replica's, partities, Shards en zoek eenheden. Er wordt een voor beeld weer gegeven van hoe een enkele index wordt verdeeld over vier Zoek eenheden in een service met twee replica's en twee partities. Met elk van de vier Zoek eenheden wordt slechts de helft van de Shards van de index opgeslagen. De zoek eenheden in de linkerkolom bevatten de eerste helft van de Shards, die bestaat uit de eerste partitie, terwijl in de rechter kolom de tweede helft van de Shards wordt opgeslagen, inclusief de tweede partitie. Omdat er twee replica's zijn, zijn er twee kopieën van elke index Shard. De zoek eenheden in de bovenste rij slaan één exemplaar op, bestaande uit de eerste replica, terwijl in de onderste rij een andere kopie wordt opgeslagen, inclusief de tweede replica.
+
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Zoek indexen zijn Shard over meerdere partities.":::
+
+Het bovenstaande diagram is slechts één voor beeld. Veel combi Naties van partities en replica's zijn mogelijk, Maxi maal 36 totaal aantal Zoek eenheden.
+
+In Cognitive Search is het Shard-beheer een implementatie detail en niet-configureerbaar, maar u weet wel dat een index Shard helpt bij het begrijpen van de incidentele afwijkingen in de classificatie en het gedrag van automatisch volt ooien:
+
++ Afwijkingen van de rang schikking: Zoek scores worden eerst op het niveau van de Shard berekend en vervolgens samengevoegd tot één resultatenset. Afhankelijk van de kenmerken van Shard-inhoud, kunnen overeenkomsten van één Shard hoger zijn dan de overeenkomsten in een andere. Als u onintuïtieve beoordelingen in de zoek resultaten ziet, is dit waarschijnlijk het gevolg van de gevolgen van sharding, met name als de indexen klein zijn. U kunt deze afwijkingen van de rang orde voor komen door ervoor te kiezen om [scores wereld wijd te berekenen voor de volledige index](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions), maar hierdoor wordt de prestaties nadeliger.
+
++ Afwijkingen van AutoAanvullen: automatisch aangevulde query's, waarbij overeenkomsten worden gemaakt voor de eerste verschillende tekens van een gedeeltelijk ingevoerde term, accepteren een fuzzy para meter waarmee kleine afwijkingen in de spelling worden verduidelijkt. Voor automatisch aanvullen wordt het vergelijken van de voor waarden in de huidige Shard beperkt. Als een Shard bijvoorbeeld ' micro soft ' bevat en een gedeeltelijke term ' Micor ' is opgegeven, komt de zoek machine overeen met ' micro soft ' in die Shard, maar niet in een andere Shards die de resterende onderdelen van de index bevatten.
 
 ## <a name="when-to-add-nodes"></a>Wanneer knoop punten moeten worden toegevoegd
 
-In eerste instantie wordt een mini maal niveau aan resources toegewezen dat bestaat uit één partitie en één replica. 
+In eerste instantie wordt een mini maal niveau aan resources toegewezen dat bestaat uit één partitie en één replica.
 
 Eén service moet voldoende resources hebben om alle werk belastingen (indexering en query's) af te handelen. Er wordt geen werk belasting uitgevoerd op de achtergrond. U kunt het indexeren plannen voor tijden wanneer query aanvragen niet vaak op een andere manier worden uitgevoerd, maar de service heeft geen andere prioriteit boven een taak. Daarnaast kan een bepaalde hoeveelheid redundantie de query prestaties versoepelen wanneer Services of knoop punten intern worden bijgewerkt.
 
@@ -59,7 +75,7 @@ In het algemeen moeten Zoek toepassingen meestal meer replica's dan partities no
 
    ![Replica's en partities toevoegen](media/search-capacity-planning/2-add-2-each.png "Replica's en partities toevoegen")
 
-1. Klik op **Opslaan** om de wijzigingen te bevestigen.
+1. Selecteer **Opslaan** om de wijzigingen te bevestigen.
 
    ![Wijzigingen voor schalen en facturering bevestigen](media/search-capacity-planning/3-save-confirm.png "Wijzigingen voor schalen en facturering bevestigen")
 

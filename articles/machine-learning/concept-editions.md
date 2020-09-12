@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ab8a49f62735a47c4ccc9fa488eed60088cd9c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508599"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658598"
 ---
 # <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enter prise (preview) en basis versies van Azure Machine Learning 
 
@@ -113,7 +113,7 @@ Meer informatie over het [upgraden van een Basic-werk ruimte naar Enter prise (p
 | Functies     | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | [Azure RBAC-ondersteuning (op rollen gebaseerd toegangs beheer)](how-to-assign-roles.md)                                           | Alles                     |
-| [Virtual Network-ondersteuning (VNet)](how-to-enable-virtual-network.md) voor compute                                         | Alles                     |
+| [Virtual Network-ondersteuning (VNet)](how-to-secure-training-vnet.md) voor compute                                         | Alles                     |
 | Score endpoint-verificatie                                                    | Alles                     |
 | [Persoonlijke werkruimte koppeling](how-to-configure-private-link.md)                                                            | Alles                     |
 | [Quota beheer](how-to-manage-quotas.md) in werk ruimten                                                 | Alleen Enter prise Edition |

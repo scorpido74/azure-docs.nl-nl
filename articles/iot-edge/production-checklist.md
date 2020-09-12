@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258789"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669601"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -41,7 +41,7 @@ IoT Edge-apparaten kunnen van een Raspberry pi van een laptop naar een virtuele 
 Voor elk IoT Edge apparaat in productie moet een certificaat van een apparaat voor een certificerings instantie (CA) worden geïnstalleerd. Dat CA-certificaat wordt vervolgens gedeclareerd voor de IoT Edge runtime in het bestand config. yaml. Voor ontwikkelings-en test scenario's maakt de IoT Edge-runtime tijdelijke certificaten als er geen certificaten worden gedefinieerd in het bestand config. yaml. Deze tijdelijke certificaten verlopen echter na drie maanden en zijn niet veilig voor productie scenario's. Voor productie scenario's moet u uw eigen CA-certificaat voor uw apparaat opgeven, hetzij van een zelfondertekende certificerings instantie, hetzij zijn gekocht bij een commerciële certificerings instantie.
 
 > [!NOTE]
-> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2038 verlopen.
 
 Zie [How Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de rol van het CA-certificaat van het apparaat.
 
@@ -182,7 +182,7 @@ Haal de installatie kopieën op met de docker-pull-opdracht die u in uw privé r
 | IoT Edge runtime-container | Docker-pull-opdracht |
 | --- | --- |
 | [Azure IoT Edge-agent](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge hub](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
 Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het deployment.template.jsbestand voor de systeem modules edgeAgent en edgeHub bijwerkt. Vervang door `mcr.microsoft.com` de naam en server van uw REGI ster voor beide modules.
 
@@ -231,7 +231,7 @@ Deze controle lijst is een start punt voor firewall regels:
 Sommige van deze firewall regels worden overgenomen van Azure Container Registry. Zie [regels configureren voor toegang tot een Azure container Registry achter een firewall](../container-registry/container-registry-firewall-access-rules.md)voor meer informatie.
 
 > [!NOTE]
-> Om een consistente FQDN-waarde tussen de REST-en data-eind punten te bieden, vanaf **15 juni 2020** wordt het gegevens eindpunt van micro soft container Registry gewijzigd van `*.cdn.mscr.io` in`*.data.mcr.microsoft.com`  
+> Om een consistente FQDN-waarde tussen de REST-en data-eind punten te bieden, vanaf **15 juni 2020** wordt het gegevens eindpunt van micro soft container Registry gewijzigd van `*.cdn.mscr.io` in `*.data.mcr.microsoft.com`  
 > Zie [configuratie van firewall regels voor micro soft container Registry-client](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md) voor meer informatie
 
 Als u uw firewall niet wilt configureren om toegang tot open bare container registers toe te staan, kunt u installatie kopieën opslaan in uw persoonlijke container register, zoals beschreven in [runtime-containers voor opslag in uw persoonlijke REGI ster](#store-runtime-containers-in-your-private-registry).
@@ -321,9 +321,9 @@ U kunt dit doen in de **createOptions** van elke module. Bijvoorbeeld:
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>Testen en CI/CD-pijp lijnen overwegen
 
-Voor het meest efficiënte IoT Edge implementatie scenario kunt u uw productie-implementatie integreren in uw test-en CI/CD-pijp lijnen. Azure IoT Edge ondersteunt meerdere CI/CD-platformen, waaronder Azure DevOps. Zie [continue integratie en continue implementatie voor Azure IOT Edge](how-to-ci-cd.md)voor meer informatie.
+Voor het meest efficiënte IoT Edge implementatie scenario kunt u uw productie-implementatie integreren in uw test-en CI/CD-pijp lijnen. Azure IoT Edge ondersteunt meerdere CI/CD-platformen, waaronder Azure DevOps. Zie [continue integratie en continue implementatie voor Azure IOT Edge](how-to-continuous-integration-continuous-deployment.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [IOT Edge automatische implementatie](module-deployment-monitoring.md).
-* Zie hoe IoT Edge ondersteuning biedt voor [continue integratie en continue implementatie](how-to-ci-cd.md).
+* Zie hoe IoT Edge ondersteuning biedt voor [continue integratie en continue implementatie](how-to-continuous-integration-continuous-deployment.md).

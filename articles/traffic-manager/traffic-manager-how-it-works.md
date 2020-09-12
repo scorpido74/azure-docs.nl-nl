@@ -3,7 +3,7 @@ title: Hoe werkt Azure Traffic Manager? Microsoft Docs
 description: Dit artikel helpt u te begrijpen hoe Traffic Manager verkeer routeert voor hoge prestaties en beschik baarheid van uw webtoepassingen
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294857"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462629"
 ---
 # <a name="how-traffic-manager-works"></a>Hoe Traffic Manager werkt
 
@@ -62,8 +62,8 @@ Wanneer een client de pagina opvraagt, `https://partners.contoso.com/login.aspx`
     - De huidige status van elk eind punt, zoals bepaald door de Traffic Manager status controles. Zie [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)voor meer informatie.
     - De gekozen methode voor het routeren van verkeer. Zie [Traffic Manager routerings methoden](traffic-manager-routing-methods.md)voor meer informatie.
 
-5. Het gekozen eind punt wordt geretourneerd als een andere DNS CNAME-record. In dit geval laten we ons zeggen dat contoso-us.cloudapp.net wordt geretourneerd.
-6. Vervolgens vindt de recursieve DNS-service de naam servers voor het domein ' cloudapp.net '. Er wordt contact opgenomen met deze naam servers om de DNS-record ' contoso-us.cloudapp.net ' aan te vragen. Er wordt een DNS A-record geretourneerd met het IP-adres van het service-eind punt dat is gebaseerd op de VS.
+5. Het gekozen eind punt wordt geretourneerd als een andere DNS CNAME-record. In dit geval laten we ons zeggen dat contoso-eu.cloudapp.net wordt geretourneerd.
+6. Vervolgens vindt de recursieve DNS-service de naam servers voor het domein ' cloudapp.net '. Er wordt contact opgenomen met deze naam servers om de DNS-record ' contoso-eu.cloudapp.net ' aan te vragen. Er wordt een DNS A-record geretourneerd met het IP-adres van het service-eind punt op basis van de EU.
 7. De recursieve DNS-service consolideert de resultaten en retourneert één DNS-antwoord naar de client.
 8. De client ontvangt de DNS-resultaten en maakt verbinding met het opgegeven IP-adres. De client maakt rechtstreeks verbinding met het eind punt van de toepassings service, niet via Traffic Manager. Omdat het een HTTPS-eind punt is, voert de client de benodigde SSL/TLS-Handshake uit en wordt vervolgens een HTTP GET-aanvraag voor de pagina '/login.aspx ' gemaakt.
 

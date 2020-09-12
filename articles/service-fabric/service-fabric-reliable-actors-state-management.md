@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007788"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611709"
 ---
 # <a name="reliable-actors-state-management"></a>Beheer van Reliable Actors status
 Reliable Actors zijn objecten met één thread die zowel logica als status kunnen inkapselen. Omdat actors worden uitgevoerd op Reliable Services, kunnen ze de status betrouwbaar onderhouden met behulp van dezelfde persistentie-en replicatie mechanismen. Op deze manier verliezen actors hun status na storingen, na het opnieuw activeren na het opschonen van de garbagecollection, of wanneer ze tussen knoop punten in een cluster worden verplaatst vanwege de resource verdeling of-upgrades.
@@ -115,7 +115,7 @@ Dit is essentieel voor het prestatie-en resource gebruik van uw toepassing. Wann
 ### <a name="correctly-manage-the-actors-life-cycle"></a>De levens cyclus van de actor goed beheren
 U moet beleid wissen over het beheren van de grootte van de status in elke partitie van een actor service. Uw actor service moet een vast aantal actors hebben en deze zo veel mogelijk opnieuw gebruiken. Als u voortdurend nieuwe actors maakt, moet u deze verwijderen zodra ze klaar zijn met hun werk. Het actor-Framework bevat enkele meta gegevens over elke actor die bestaat. Als u de status van een actor verwijdert, worden de meta gegevens over die actor niet verwijderd. U moet de actor verwijderen (Zie [actors en hun status](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)verwijderen) om alle gegevens te verwijderen die zijn opgeslagen in het systeem. Als extra controle moet u een query uitvoeren op de actor-service (Zie [actors opsommen](service-fabric-reliable-actors-enumerate.md)) eenmaal in een tijdje om te controleren of het aantal actors binnen het verwachte bereik valt.
  
-Als u ooit ziet dat de database bestands grootte van een actor service groter wordt dan de verwachte grootte, controleert u of u de voor gaande richt lijnen volgt. Als u deze richt lijnen volgt en nog steeds problemen hebt met de bestands grootte van de data base, moet u [een ondersteunings ticket openen](service-fabric-support.md) met het product team om hulp te krijgen.
+Als u ooit ziet dat de database bestands grootte van een actor service groter wordt dan de verwachte grootte, controleert u of u de voor gaande richt lijnen volgt. Als u deze richt lijnen volgt en er nog steeds problemen met database bestands grootte ondervindt, moet u [een ondersteunings ticket openen](service-fabric-support.md) met het product team om hulp te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

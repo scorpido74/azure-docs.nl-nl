@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760087"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661753"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Naslaginformatie over standaardregelengine voor Azure CDN
 
@@ -59,7 +59,7 @@ Een procent teken wordt gebruikt om URL-code ring aan te geven (bijvoorbeeld `%2
 
 ### <a name="wildcard-values"></a>Joker teken waarden
 
-Momenteel wordt het Joker teken ondersteund in de **UrlPath match-voor waarde** in de standaard regels-engine. Het \* teken is een sterretje dat bestaat uit een of meer tekens. 
+Momenteel wordt het Joker teken ondersteund in de **UrlPath match-voor waarde** in de standaard regels-engine. Het \* teken is een Joker teken dat bestaat uit een of meer tekens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

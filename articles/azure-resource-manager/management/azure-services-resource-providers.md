@@ -2,13 +2,13 @@
 title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 6c57f3523ca8f3f4ad1565d18791d24c0e698ad6
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.date: 09/04/2020
+ms.openlocfilehash: 34b2476b8194b8ad6f8e7e86e2644a1c0d0bbb4b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808334"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483998"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers for Azure services (Resourceproviders voor Azure-services)
 
@@ -45,7 +45,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. BotService | [Azure Bot Service](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache voor Redis](../../azure-cache-for-redis/index.yml) |
 | Micro soft. capacity | baan |
-| Micro soft. CDN | [Content Delivery Network](../../cdn/index.yml) |
+| Micro soft. CDN | [CDN (Content Delivery Network)](../../cdn/index.yml) |
 | Microsoft.CertificateRegistration | [App Service certificaten](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Micro soft. ChangeAnalysis | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | Klassieke implementatie model virtuele machine |
@@ -55,7 +55,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. ClassicSubscription<sup>1</sup> | Klassiek implementatiemodel |
 | Microsoft.CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Micro soft. commerce<sup>1</sup> | baan |
-| Microsoft.Compute | [Virtuele machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
+| Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
 | Micro soft. verbruik<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Micro soft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
@@ -82,35 +82,39 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Micro soft. DevOps | [Azure DevOps](/azure/devops/) |
 | Micro soft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
-| Microsoft.DevTestLab | [Azure Lab-Services](../../lab-services/index.yml) |
+| Microsoft.DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
 | Micro soft. DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Micro soft. DomainRegistration | [App Service](../../app-service/index.yml) |
+| Microsoft.DynamicsLcs | [Levenscyclus Services](https://lcs.dynamics.com/Logon/Index ) |
 | Micro soft. EnterpriseKnowledgeGraph | Enter prise-kennis grafiek |
 | Micro soft. EventGrid | [Event Grid](../../event-grid/index.yml) |
 | Microsoft.EventHub | [Event Hubs](../../event-hubs/index.yml) |
 | Micro soft. features<sup>1</sup> | [Azure Resource Manager](../index.yml) |
-| Micro soft. GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
+| Microsoft.GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
 | Micro soft. HanaOnAzure | [SAP HANA on Azure Large Instances](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Micro soft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Micro soft. HealthcareApis | [Azure-API voor FHIR](../../healthcare-apis/index.yml) |
-| Micro soft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
+| Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Micro soft. HybridData | [StorSimple](../../storsimple/index.yml) |
+| Micro soft. HybridNetwork  | Ondersteuning voor stack rand |
 | Microsoft.ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
 | micro soft. Insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Micro soft. IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Micro soft. IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
+| Microsoft.Intune | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Micro soft. KubernetesConfiguration | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
-| Micro soft. LabServices | [Azure Lab-Services](../../lab-services/index.yml) |
+| Micro soft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
 | Micro soft. onderhoud | [Onderhoud van Azure](../../virtual-machines/maintenance-control-cli.md) |
 | Micro soft. ManagedIdentity | [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/index.yml) |
+| Micro soft. ManagedNetwork | Virtuele netwerken die worden beheerd door PaaS Services |
 | Micro soft. ManagedServices | [Azure Lighthouse](../../lighthouse/index.yml) |
 | Micro soft. Management | [Beheergroepen](../../governance/management-groups/index.yml) |
 | Micro soft. Maps | [Azure Maps](../../azure-maps/index.yml) |
@@ -118,10 +122,12 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. MarketplaceApps | baan |
 | Micro soft. MarketplaceOrdering<sup>1</sup> | baan |
 | Microsoft.Media | [Media Services](../../media-services/index.yml) |
+| Micro soft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Micro soft. migrate | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Micro soft. MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Micro soft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
 | Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtual WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Micro soft. notebooks | [Azure Notebooks](https://notebooks.azure.com/help/introduction) |
 | Microsoft.NotificationHubs | [Notification Hubs](../../notification-hubs/index.yml) |
 | Micro soft. ObjectStore | Object opslag |
 | Micro soft. OffAzure | [Azure Migrate](../../migrate/migrate-services-overview.md) |
@@ -133,6 +139,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Micro soft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Micro soft. PowerPlatform | [Power Platform](/power-platform/) |
+| Micro soft. ProjectBabylon | [Azure Data Catalog](../../data-catalog/overview.md) |
 | Micro soft. Quantum | [Azure-Quantum](https://azure.microsoft.com/services/quantum/) |
 | Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Micro soft. RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
@@ -143,19 +150,21 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. SaaS | baan |
 | Microsoft.Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft.Search | [Azure Cognitive Search](../../search/index.yml) |
-| Microsoft.Security | [Security Center](../../security-center/index.yml) |
+| Microsoft.Security | [Beveiligingscentrum](../../security-center/index.yml) |
+| Micro soft. SecurityGraph | [Beveiligingscentrum](../../security-center/index.yml) |
 | Micro soft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
 | Micro soft. SerialConsole<sup>1</sup> | [Azure Serial console voor Windows](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Micro soft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Micro soft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
 | Micro soft. Services | baan |
-| Micro soft. SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
+| Micro soft. SignalRService | [Azure SignalR-service](../../azure-signalr/index.yml) |
 | Micro soft. SoftwarePlan | Licentie |
 | Micro soft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL Managed Instance](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Micro soft. SqlVirtualMachine | [SQL Server op virtuele machines in Azure](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
+| Micro soft. StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
 | Micro soft. StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
@@ -170,6 +179,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
 | Micro soft. VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
+| Micro soft. WindowsDefenderATP | [Microsoft Defender Advanced Threat Protection](../../security-center/security-center-wdatp.md) |
 | Micro soft. WindowsESU | Uitgebreide beveiligings updates |
 | Micro soft. WindowsIoT | [Windows 10 IoT Core Services](/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Micro soft. WorkloadMonitor<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) |

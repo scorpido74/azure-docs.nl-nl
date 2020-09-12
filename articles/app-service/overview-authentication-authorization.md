@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962822"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596036"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
 
@@ -33,7 +33,7 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)voor meer informatie over systeem eigen mobiele apps.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 ### <a name="on-windows"></a>In Windows
 
@@ -149,11 +149,11 @@ Met deze optie hoeft u geen verificatie code in uw app te schrijven. Nauw keurig
 
 ## <a name="more-resources"></a>Meer bronnen
 
-[Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](tutorial-auth-aad.md)  
-[Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-[Verificatie en autorisatie aanpassen in app service](app-service-authentication-how-to.md) 
- [.Net core-integratie van Azure AppService EasyAuth (derde partij)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
- [Azure app service-verificatie voor het werken met .net core (derden)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](tutorial-auth-aad.md)  
+* [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [Verificatie en autorisatie aanpassen in App Service](app-service-authentication-how-to.md)
+* [.NET core-integratie van Azure AppService EasyAuth (derde partij)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [Azure App Service-verificatie voor het werken met .NET core (derden)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Hand leidingen voor een specifieke provider:
 

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490282"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483725"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Een polybase data-strategie voor gegevens laden ontwerpen voor Azure Synapse SQL-groep
 
@@ -38,7 +38,7 @@ De basis stappen voor het implementeren van een poly base-ELT voor SQL-groep zij
 5. Transformeer de gegevens.
 6. Voeg de gegevens in productietabellen in.
 
-Zie [poly Base gebruiken voor het laden van gegevens uit Azure Blob-opslag naar Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een zelf studie.
+Zie [poly Base gebruiken voor het laden van gegevens uit Azure Blob-opslag naar Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een zelf studie.
 
 Zie [blog voor het laden van patronen](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)voor meer informatie.
 
@@ -50,7 +50,7 @@ Het ophalen van gegevens uit uw bron systeem is afhankelijk van de opslag locati
 
 Poly base laadt gegevens van UTF-8-en UTF-16-gecodeerde tekst bestanden met scheidings tekens. Naast de tekst bestanden met scheidings tekens, wordt deze geladen vanuit de Hadoop-bestands indelingen RC-bestand, ORC en Parquet. Poly Base kan ook gegevens laden uit gzip-en Snappy gecomprimeerde bestanden. Poly Base ondersteunt momenteel geen uitgebreide ASCII-indeling met een vaste breedte en geneste indelingen zoals WinZip, JSON en XML.
 
-Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens te exporteren naar tekst bestanden met scheidings tekens. De Parquet voor SQL DW-gegevens type toewijzing is als volgt:
+Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens te exporteren naar tekst bestanden met scheidings tekens. De Parquet voor Azure Synapse Analytics-gegevens type toewijzing is als volgt:
 
 | **Parquet-gegevens type** |                      **SQL-gegevens type**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -69,12 +69,12 @@ Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sq
 |        tekenreeks         |                           varchar                            |
 |        binair         |                            binair                            |
 |        binair         |                          varbinary                           |
-|       tijdstempel       |                             date                             |
+|       tijdstempel       |                             datum                             |
 |       tijdstempel       |                        smalldatetime                         |
 |       tijdstempel       |                          datetime2                           |
 |       tijdstempel       |                           datum/tijd                           |
 |       tijdstempel       |                             tijd                             |
-|       date            |                             date                             |
+|       datum            |                             date                             |
 |        decimal        |                            decimal                           |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Voer de gegevens over naar Azure Blob-opslag of Azure Data Lake Store
@@ -121,7 +121,7 @@ Als u gegevens wilt laden met poly Base, kunt u een van de volgende laad opties 
 - [Poly Base met T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) werkt goed als uw gegevens zich in Azure Blob storage of Azure data Lake Store bevinden. Het biedt u de meeste controle over het laad proces, maar u moet ook externe gegevens objecten definiëren. Met de andere methoden worden deze objecten achter de schermen gedefinieerd wanneer u bron tabellen aan doel tabellen toewijst.  U kunt met behulp van Azure Data Factory-, SSIS-of Azure-functies voor het organiseren van T-SQL-belasting.
 - [Poly Base met SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) werkt goed als uw bron gegevens zich in SQL Server bevinden. SSIS definieert de bron-naar-doel tabel toewijzingen en organiseert ook de belasting. Als u al SSIS-pakketten hebt, kunt u de pakketten wijzigen om met de nieuwe Data Warehouse-bestemming te werken.
 - [Poly Base met Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) is een andere Orchestration-tool.  Hierin worden een pijp lijn en plannings taken gedefinieerd.
-- [Poly Base met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) gegevens overdraagt van een SQL Data Warehouse tabel naar een Databricks data frame en/of schrijft gegevens van een Databricks data frame naar een SQL Data Warehouse-tabel met poly base.
+- [Poly Base met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) gegevens overdraagt van een Azure Synapse Analytics-tabel naar een Databricks data frame en/of schrijft gegevens van een Databricks data frame naar een Azure Synapse Analytics-tabel met poly base.
 
 ### <a name="non-polybase-loading-options"></a>Opties voor het laden van niet-poly base
 

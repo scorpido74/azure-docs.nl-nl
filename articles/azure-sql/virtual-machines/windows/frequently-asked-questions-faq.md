@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121439"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483742"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Veelgestelde vragen over SQL Server op virtuele Azure-machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="images"></a><a id="images"></a>Installatie kopieën
+## <a name="images"></a><a id="images"></a> Installatie kopieën
 
 1. **Wat SQL Server afbeeldingen van de galerie met virtuele machines zijn beschikbaar?** 
 
@@ -164,6 +164,9 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
    Ja. De SQL Server-installatie media bevindt zich in een map op station **C** . Voer **Setup.exe** uit vanaf die locatie om nieuwe SQL Server instanties toe te voegen of om andere geïnstalleerde functies van SQL Server op de computer te wijzigen. Houd er rekening mee dat sommige functies, zoals geautomatiseerde back-ups, automatische patching en Azure Key Vault integratie, alleen kunnen worden uitgevoerd op het standaard exemplaar of een benoemd exemplaar dat correct is geconfigureerd (zie vraag 3). Klanten die [Software Assurance gebruiken via het Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) of het licentie model voor **betalen per gebruik** kunnen meerdere exemplaren van SQL Server op de virtuele machine installeren zonder extra licentie kosten te betalen. Aanvullende SQL Server-exemplaren kunnen systeem bronnen beperken, tenzij correct geconfigureerd. 
 
+1. **Wat is het maximum aantal exemplaren op een VM?**
+   SQL Server 2012 tot SQL Server 2019 kan [50 instanties](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) op een zelfstandige server ondersteunen. Dit is dezelfde limiet, ongeacht in azure on-premises. Zie [Aanbevolen procedures](performance-guidelines-best-practices.md#multiple-instances) voor meer informatie over hoe u uw omgeving beter kunt voorbereiden. 
+
 1. **Kan ik het standaardexemplaar van SQL Server verwijderen?**
 
    Ja, maar er is een aantal overwegingen. SQL Server-gerelateerde facturering kan eerst worden uitgevoerd, afhankelijk van het licentie model voor de virtuele machine. Ten tweede, zoals vermeld in het vorige antwoord, zijn er functies die afhankelijk zijn van de [SQL Server IaaS agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Als u het standaard exemplaar verwijdert zonder de IaaS-extensie te verwijderen, blijft de uitbrei ding zoeken naar het standaard exemplaar en kunnen fouten in het gebeurtenis logboek worden gegenereerd. Deze fouten zijn afkomstig uit de volgende twee bronnen: **Microsoft SQL Server referentie beheer** en **Microsoft SQL Server IaaS-agent**. Een van de fouten lijkt mogelijk op de volgende:
@@ -179,6 +182,9 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 1. **Kan ik SQL Server volledig verwijderen van VM met SQL Server?**
 
    Ja, maar er worden nog steeds kosten in rekening gebracht voor uw SQL Server virtuele machine, zoals beschreven in [prijs informatie voor SQL Server virtuele machines van Azure](pricing-guidance.md). Als u de SQL Server niet langer nodig hebt, kunt u een nieuwe virtuele machine implementeren en de gegevens en toepassingen migreren naar de nieuwe virtuele machine. Vervolgens kunt u de virtuele SQL Server-machine verwijderen.
+
+1. **Kan ik de Azure-portal gebruiken om meerdere exemplaren op dezelfde VM te beheren?**
+   Nee. Portal beheer wordt verzorgd door de resource provider van de SQL-VM, die afhankelijk is van de SQL Server IaaS agent-extensie. Als zodanig gelden dezelfde beperkingen voor de resource provider als de extensie. De portal kan slechts één standaard exemplaar of één benoemd exemplaar beheren, zolang de configuratie op de juiste wijze is geconfigureerd. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md) (Engelstalig) voor meer informatie. 
    
 ## <a name="updating-and-patching"></a>Updates en patches
 

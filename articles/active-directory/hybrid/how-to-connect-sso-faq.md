@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589041"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658346"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory naadloze eenmalige aanmelding: veelgestelde vragen
 
@@ -37,7 +37,7 @@ Naadloze SSO is een gratis functie en u hebt geen betaalde versies van Azure AD 
 
 **V: is naadloze SSO beschikbaar in de [Microsoft Azure Duitsland Cloud](https://www.microsoft.de/cloud-deutschland) en de [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/)?**
 
-Naadloze SSO is beschikbaar voor de Azure Government Cloud. Bekijk voor meer informatie [hybride identiteits overwegingen voor Azure Government](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+Naadloze SSO is beschikbaar voor de Azure Government Cloud. Bekijk voor meer informatie [hybride identiteits overwegingen voor Azure Government](./reference-connect-government-cloud.md).
 
 **V: welke toepassingen profiteren van de `domain_hint` of `login_hint` parameter mogelijkheden van naadloze SSO?**
 
@@ -62,11 +62,11 @@ Als u wilt dat andere toepassingen gebruikmaken van de aanmeldings ervaring op d
 
 **V: biedt naadloze SSO `Alternate ID` -ondersteuning als de gebruikers naam, in plaats van `userPrincipalName` ?**
 
-Ja. Naadloze SSO ondersteunt `Alternate ID` als de gebruikers naam wanneer deze is geconfigureerd in azure AD Connect, zoals [hier](how-to-connect-install-custom.md)wordt weer gegeven. Niet alle Office 365-toepassingen ondersteunen `Alternate ID` . Raadpleeg de documentatie van de specifieke toepassing voor de ondersteunings verklaring.
+Ja. Naadloze SSO ondersteunt `Alternate ID` als de gebruikers naam wanneer deze is geconfigureerd in azure AD Connect, zoals [hier](how-to-connect-install-custom.md)wordt weer gegeven. Niet alle Microsoft 365-toepassingen worden ondersteund `Alternate ID` . Raadpleeg de documentatie van de specifieke toepassing voor de ondersteunings verklaring.
 
-**V: wat is het verschil tussen de eenmalige aanmelding van [Azure AD](../active-directory-azureadjoin-overview.md) en naadloze SSO?**
+**V: wat is het verschil tussen de eenmalige aanmelding van [Azure AD](../devices/overview.md) en naadloze SSO?**
 
-[Azure AD-deelname](../active-directory-azureadjoin-overview.md) levert SSO aan gebruikers als hun apparaten zijn geregistreerd bij Azure AD. Deze apparaten hoeven geen lid te zijn van een domein. SSO wordt met behulp van *primaire vernieuwings tokens* of *PRTs*, en niet met Kerberos. De gebruikers ervaring is het meest optimaal op Windows 10-apparaten. SSO wordt automatisch uitgevoerd in de micro soft Edge-browser. Het werkt ook op Chrome met het gebruik van een browser extensie.
+[Azure AD-deelname](../devices/overview.md) levert SSO aan gebruikers als hun apparaten zijn geregistreerd bij Azure AD. Deze apparaten hoeven geen lid te zijn van een domein. SSO wordt met behulp van *primaire vernieuwings tokens* of *PRTs*, en niet met Kerberos. De gebruikers ervaring is het meest optimaal op Windows 10-apparaten. SSO wordt automatisch uitgevoerd in de micro soft Edge-browser. Het werkt ook op Chrome met het gebruik van een browser extensie.
 
 U kunt zowel Azure AD-deelname als naadloze SSO gebruiken voor uw Tenant. Deze twee functies zijn complementair. Als beide functies zijn ingeschakeld, heeft SSO van Azure AD-deelname voor rang op naadloze SSO.
 
@@ -85,7 +85,7 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
 
    **Stap 1. Lijst met AD-forests ophalen waar naadloze SSO is ingeschakeld**
 
-   1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Down load en installeer eerst [Azure AD Power shell](/powershell/azure/active-directory/overview).
    2. Navigeer naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Importeer de naadloze SSO Power shell-module met de volgende opdracht: `Import-Module .\AzureADSSO.psd1` .
    4. Voer Power shell uit als beheerder. Bel in Power shell `New-AzureADSSOAuthenticationContext` . Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.
@@ -130,7 +130,7 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
 
    Voer de volgende stappen uit op de on-premises server waarop u Azure AD Connect uitvoert:
 
-   1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Down load en installeer eerst [Azure AD Power shell](/powershell/azure/active-directory/overview).
    2. Navigeer naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Importeer de naadloze SSO Power shell-module met de volgende opdracht: `Import-Module .\AzureADSSO.psd1` .
    4. Voer Power shell uit als beheerder. Bel in Power shell `New-AzureADSSOAuthenticationContext` . Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.
@@ -145,7 +145,7 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
 
    Volg de onderstaande taken 1 tot en met 4 als u naadloze SSO hebt uitgeschakeld met Azure AD Connect. Als u naadloze SSO hebt uitgeschakeld met behulp van Power shell, gaat u verder met taak 5 hieronder.
 
-   1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Down load en installeer eerst [Azure AD Power shell](/powershell/azure/active-directory/overview).
    2. Navigeer naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Importeer de naadloze SSO Power shell-module met de volgende opdracht: `Import-Module .\AzureADSSO.psd1` .
    4. Voer Power shell uit als beheerder. Bel in Power shell `New-AzureADSSOAuthenticationContext` . Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592284"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566633"
 ---
 # <a name="translator-30-detect"></a>Translator 3,0: detecteren
 
@@ -56,7 +56,7 @@ Aanvraag headers zijn onder andere:
     <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json` .</td>
   </tr>
   <tr>
-    <td>Content-length</td>
+    <td>Content-Length</td>
     <td>De *vereiste aanvraag header*.<br/>De lengte van de aanvraag tekst.</td>
   </tr>
   <tr>
@@ -67,7 +67,7 @@ Aanvraag headers zijn onder andere:
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met de naam `Text` . Taal detectie wordt toegepast op de waarde van de `Text` eigenschap. Een voor beeld van een aanvraag tekst ziet er als volgt uit:
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met de naam `Text` . Taal detectie wordt toegepast op de waarde van de `Text` eigenschap. De automatische taal detectie werkt beter met meer invoer tekst. Een voor beeld van een aanvraag tekst ziet er als volgt uit:
 
 ```json
 [
@@ -78,7 +78,6 @@ De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSO
 De volgende beperkingen zijn van toepassing:
 
 * De matrix kan Maxi maal 100 elementen bevatten.
-* De tekst waarde van een matrix element mag niet langer zijn dan 10.000 tekens, inclusief spaties.
 * De volledige tekst die in de aanvraag is opgenomen, mag niet langer zijn dan 50.000 tekens, inclusief spaties.
 
 ## <a name="response-body"></a>Hoofdtekst van de reactie

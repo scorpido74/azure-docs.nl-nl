@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011186"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506674"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -242,6 +242,30 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een
     }
   }
 }
+```
+
+### <a name="restore-disks-selectively"></a>Schijven selectief herstellen
+
+Als u [selectief back-ups](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)maakt van schijven, wordt de huidige lijst met back-upschijven weer gegeven in de [herstel punt samenvatting](#select-recovery-point) en het [gedetailleerde antwoord](https://docs.microsoft.com/rest/api/backup/recoverypoints/get). U kunt ook selectieve schijven herstellen en meer informatie vindt u [hier](selective-disk-backup-restore.md#selective-disk-restore). Als u een schijf selectief wilt herstellen uit de lijst met back-upschijven, zoekt u het LUN van de schijf vanaf het herstel punt antwoord en voegt u de eigenschap **restoreDiskLunList** toe aan de [bovenstaande aanvraag tekst](#example-request) , zoals hieronder wordt weer gegeven.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
 ```
 
 Zodra u het antwoord hebt gevolgd zoals [hierboven](#responses)is uitgelegd en de langlopende taak is voltooid, zijn de schijven en de configuratie van de back-up van de virtuele machine (VMConfig.jsop) aanwezig in het opgegeven opslag account.
