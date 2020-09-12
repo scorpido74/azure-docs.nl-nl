@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72328721"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469895"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Beheerde identiteiten gebruiken voor Azure-resources in Azure Cloud Shell
 
@@ -43,8 +43,8 @@ Het lokale MSI-subsysteem slaat tokens op in cache. Daarom kunt u deze zo vaak a
 
 Als u het token in de code in de cache opslaat, moet u voor bereid zijn op scenario's waarbij de bron aangeeft dat het token is verlopen.
 
-Voor het afhandelen van token fouten gaat u naar de [MSI-pagina over het omslaan van MSI-toegangs tokens](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
+Voor het afhandelen van token fouten gaat u naar de [MSI-pagina over het omslaan van MSI-toegangs tokens](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[Toegangs tokens verkrijgen van MSI-Vm's](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[Meer informatie over MSI](../active-directory/managed-identities-azure-resources/overview.md)  
+[Toegangs tokens verkrijgen van MSI-Vm's](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

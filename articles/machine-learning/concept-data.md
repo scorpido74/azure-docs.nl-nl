@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146684"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651169"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
@@ -81,9 +81,9 @@ Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, open bare url
 
 Er zijn twee typen gegevens sets: 
 
-+ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Als uw gegevens al zijn gereinigd en klaar zijn voor gebruik in trainings experimenten, kunt u [bestanden downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) waarnaar wordt verwezen door FileDatasets naar uw reken doel.
++ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Als uw gegevens al zijn gereinigd en klaar zijn voor gebruik in trainings experimenten, kunt u [bestanden downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) waarnaar wordt verwezen door FileDatasets naar uw reken doel.
 
-+ Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
++ Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
 Aanvullende gegevens sets kunnen worden gevonden in de volgende documentatie:
 

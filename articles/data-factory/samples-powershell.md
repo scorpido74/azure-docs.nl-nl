@@ -10,12 +10,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 9abf4b46896a3c067cfb189da7921dfe318aedab
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 6df400e7ce4b66a1589a0c44089148b33ab88638
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229377"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439058"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Voor beelden Azure PowerShell voor Azure Data Factory
 
@@ -28,7 +28,7 @@ De volgende tabel bevat koppelingen naar voor beelden van Azure PowerShell scrip
 |**Gegevens kopiëren**||
 |[Blobs kopiëren van een map naar een andere map in een Azure-Blob Storage](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script kopieert u blobs uit een map in Azure Blob Storage naar een andere map in dezelfde Blob Storage. |
 |[Gegevens kopiëren van SQL Server naar Azure Blob Storage](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script worden gegevens uit een SQL Server-Data Base gekopieerd naar een Azure Blob-opslag. |
-|[Bulksgewijs kopiëren](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-voorbeeld script worden gegevens uit meerdere tabellen in een data base in Azure SQL Database naar een Azure SQL-Data Warehouse gekopieerd. |
+|[Bulksgewijs kopiëren](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-voorbeeld script worden gegevens uit meerdere tabellen in een data base in Azure SQL Database naar Azure Synapse Analytics (voorheen SQL Data Warehouse) gekopieerd. |
 |[Incrementele kopie](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-voorbeeld script worden alleen nieuwe of bijgewerkte records van een brongegevens archief naar een Sink-gegevens archief geladen na de eerste volledige kopie van gegevens van de bron naar de sink. |
 |**Gegevens transformeren**||
 |[Gegevens transformeren met behulp van een Spark-cluster](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script worden gegevens getransformeerd door een programma uit te voeren op een Spark-cluster. |

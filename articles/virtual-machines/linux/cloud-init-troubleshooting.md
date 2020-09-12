@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510970"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434636"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problemen met VM-inrichting oplossen met Cloud-init
 
@@ -21,7 +21,7 @@ Als u gegeneraliseerde aangepaste installatie kopieën hebt gemaakt met behulp v
 
 Enkele voor beelden van problemen met het inrichten:
 - De VM wordt gedurende 40 minuten vastgemaakt aan het maken en het maken van de VM is gemarkeerd als mislukt
-- `CustomData`wordt niet verwerkt
+- `CustomData` wordt niet verwerkt
 - De tijdelijke schijf kan niet worden gekoppeld
 - Gebruikers worden niet gemaakt of er zijn problemen met de gebruikers toegang
 - Het netwerk is niet juist ingesteld
@@ -29,7 +29,7 @@ Enkele voor beelden van problemen met het inrichten:
 
 In dit artikel wordt stapsgewijs beschreven hoe u problemen met Cloud-init kunt oplossen. Zie [Cloud-init dieper](./cloud-init-deep-dive.md)voor meer gedetailleerde informatie.
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>Stap 1: de implementatie testen zonder`customData`
+## <a name="step-1-test-the-deployment-without-customdata"></a>Stap 1: de implementatie testen zonder `customData`
 
 Cloud-init kan worden geaccepteerd `customData` , die wordt door gegeven wanneer de virtuele machine wordt gemaakt. U moet er eerst voor zorgen dat dit geen problemen met implementaties veroorzaakt. Probeer de virtuele machine in te richten zonder een configuratie door te geven. Als u vindt dat de virtuele machine niet kan worden ingericht, gaat u door met de onderstaande stappen, als u de configuratie die u doorgeeft vindt, gaat u verder met [stap 4](). 
 
@@ -56,7 +56,7 @@ Wanneer de virtuele machine niet kan worden ingericht, wordt in azure de status 
 
 Terwijl de virtuele machine actief is, hebt u de logboeken van de virtuele machine nodig om te begrijpen waarom het inrichten is mislukt.  Als u wilt weten waarom het inrichten van de VM is mislukt, stopt u de virtuele machine niet. Zorg ervoor dat de VM wordt uitgevoerd. Als u logboeken wilt verzamelen, moet u de mislukte VM in een actieve status laten staan. Gebruik een van de volgende methoden om de logboeken te verzamelen:
 
-- [Seriële console](./serial-console-grub-single-user-mode.md)
+- [Seriële console](../troubleshooting/serial-console-grub-single-user-mode.md)
 
 - [Schakel diagnostische gegevens over opstarten in](./tutorial-monitor.md#enable-boot-diagnostics) voordat u de virtuele machine maakt en [weer geven](./tutorial-monitor.md#view-boot-diagnostics) tijdens het opstarten.
 
@@ -108,7 +108,7 @@ Als u een fout of waarschuwing hebt gevonden, leest u achterwaarts in het Cloud-
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Als u toegang hebt tot de [seriële console](./serial-console-grub-single-user-mode.md), kunt u proberen om de opdracht uit te voeren die door Cloud-init werd uitgevoerd.
+Als u toegang hebt tot de [seriële console](../troubleshooting/serial-console-grub-single-user-mode.md), kunt u proberen om de opdracht uit te voeren die door Cloud-init werd uitgevoerd.
 
 De logboek registratie voor `/var/log/cloud-init.log` kan ook opnieuw worden geconfigureerd binnen/etc/cloud/cloud.cfg.d/05_logging. cfg. Raadpleeg de [Cloud-init-documentatie](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)voor meer informatie over de Cloud-init-logboek registratie. 
 
@@ -126,7 +126,7 @@ Als u nog steeds niet kunt isoleren waarom Cloud-init niet kan inrichten, moet u
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>Stap 4: onderzoeken waarom de configuratie niet wordt toegepast
 Niet elke fout in de Cloud-init resulteert in een fatale inrichtings fout. Als u bijvoorbeeld de `runcmd` module in een Cloud-init-configuratie gebruikt, kan het inrichten van de VM mislukken vanwege een afsluit code die niet gelijk is aan nul van de opdracht die wordt uitgevoerd. Dit is omdat deze wordt uitgevoerd na de kern functionaliteit van de inrichting die in de eerste 3 fasen van Cloud-init optreedt. Als u problemen wilt oplossen waarom de configuratie niet is toegepast, raadpleegt u de logboeken in stap 3 en Cloud-init-modules hand matig. Bijvoorbeeld:
 
-- `runcmd`-de scripts worden uitgevoerd zonder fouten? Voer de configuratie hand matig uit vanaf de terminal om er zeker van te zijn dat ze worden uitgevoerd zoals verwacht.
+- `runcmd` -de scripts worden uitgevoerd zonder fouten? Voer de configuratie hand matig uit vanaf de terminal om er zeker van te zijn dat ze worden uitgevoerd zoals verwacht.
 - Pakketten installeren: heeft de virtuele machine toegang tot pakket opslagplaatsen?
 - U moet ook de `customData` gegevens configuratie controleren die aan de VM is door gegeven. Dit is te vinden in `/var/lib/cloud/instances/<unique-instance-identifier>/user-data.txt` .
 

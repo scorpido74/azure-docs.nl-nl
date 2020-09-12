@@ -3,12 +3,12 @@ title: GPU-bewaking configureren met Azure Monitor voor containers | Microsoft D
 description: In dit artikel wordt beschreven hoe u bewakings Kubernetes-clusters kunt configureren met NVIDIA-en AMD GPU-knoop punten met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373308"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569693"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>GPU-bewaking configureren met Azure Monitor voor containers
 
@@ -22,9 +22,12 @@ Azure Monitor voor containers ondersteunt bewaking van GPU-clusters van de volge
 
 - [POWERNOW](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-Azure Monitor voor containers worden het GPU-gebruik automatisch op knoop punten gestart en GPU die een Peul en werk belasting aanvraagt door de volgende metrische gegevens op 60sec intervallen te verzamelen en op te slaan in de tabel **InsightMetrics** :
+Azure Monitor voor containers worden het GPU-gebruik op knoop punten automatisch bewaakt en GPU die een Peul en werk belasting aanvragen door de volgende metrische gegevens bij 60sec-intervallen te verzamelen en op te slaan in de tabel **InsightMetrics** .
 
-|Naam van metrische gegevens |Metrische dimensie (Tags) |Beschrijving |
+>[!NOTE]
+>Nadat u het cluster hebt ingericht met GPU-knoop punten, moet u ervoor zorgen dat het [GPU-stuur programma](../../aks/gpu-cluster.md) is geïnstalleerd zoals vereist door aks om GPU-workloads uit te voeren. Azure Monitor voor containers worden metrische gegevens over GPU verzameld via het GPU-stuur programma dat in het knoop punt wordt uitgevoerd. 
+
+|Naam van meetwaarde |Metrische dimensie (Tags) |Beschrijving |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|Het percentage tijd in de afgelopen sample periode (60 seconden) gedurende welke GPU bezig was/actief werd verwerkt voor een container. Taak cyclus is een getal tussen 1 en 100. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |Elke container kan limieten als een of meer Gpu's opgeven. Het is niet mogelijk een fractie van een GPU aan te vragen of te beperken. |

@@ -2,17 +2,17 @@
 title: 'VPN Gateway: VPN-client voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie'
 description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c14d300e2c09316e0665ece3f3e15f7036d5b9a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 781d3aeea6a5568aec065ec4b1cbcfacb74836a6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525072"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434670"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory verificatie: een VPN-client configureren voor P2S OpenVPN-protocol verbindingen
 
@@ -20,6 +20,8 @@ Dit artikel helpt u bij het configureren van een VPN-client om verbinding te mak
 
 > [!NOTE]
 > Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
+>
+> Voor Azure AD-verificatie is de Azure VPN-client vereist, die alleen beschikbaar is voor Windows 10.
 >
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>Werken met client profielen
@@ -88,11 +90,11 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Selecteer de weglatings tekens naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![verwijderen](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
-    ![verwijderen](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Een verbinding maken
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019976"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440555"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -47,11 +47,11 @@ Data Factory is gecertificeerd voor:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/trustcenter/default.aspx)als u geïnteresseerd bent in de naleving van Azure en hoe Azure een eigen infra structuur beveiligt. Voor de meest recente lijst met alle Azure compliance-aanbiedingen controleren https://aka.ms/AzureCompliance .
+Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/trustcenter/default.aspx)als u geïnteresseerd bent in de naleving van Azure en hoe Azure een eigen infra structuur beveiligt. Voor de meest recente lijst met alle Azure compliance-aanbiedingen controleren  https://aka.ms/AzureCompliance .
 
 In dit artikel worden beveiligings overwegingen in de volgende twee scenario's voor het verplaatsen van gegevens besproken: 
 
-- **Cloud scenario**: in dit scenario zijn zowel uw bron als uw bestemming openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. Een volledige lijst met ondersteunde gegevens bronnen vindt u in [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Cloud scenario**: in dit scenario zijn zowel uw bron als uw bestemming openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure Synapse Analytics (voorheen SQL Data Warehouse), Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. Een volledige lijst met ondersteunde gegevens bronnen vindt u in  [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hybride scenario**: in dit scenario bevindt uw bron of uw bestemming zich achter een firewall of binnen een on-premises bedrijfs netwerk. Of het gegevens archief bevindt zich in een particulier netwerk of virtueel netwerk (meestal de bron) en is niet openbaar toegankelijk. Database servers die worden gehost op virtuele machines vallen ook onder dit scenario.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -67,7 +67,7 @@ In dit artikel worden beveiligings overwegingen in de volgende twee scenario's v
 Als de gegevens opslag in de Cloud HTTPS of TLS ondersteunt, worden alle gegevens overdrachten tussen services voor gegevens verplaatsing in Data Factory en een gegevens archief in de Cloud via Secure Channel HTTPS of TLS.
 
 > [!NOTE]
-> Alle verbindingen met Azure SQL Database en Azure SQL Data Warehouse vereisen versleuteling (SSL/TLS) terwijl gegevens onderweg naar en van de Data Base worden verzonden. Wanneer u een pijp lijn ontwerpt met behulp van JSON, voegt u de eigenschap Encryption toe en stelt u deze in op **True** in de Connection String. Voor Azure Storage kunt u **https** gebruiken in de Connection String.
+> Alle verbindingen met Azure SQL Database en Azure Synapse Analytics vereisen versleuteling (SSL/TLS) wanneer gegevens onderweg naar en van de Data Base worden verzonden. Wanneer u een pijp lijn ontwerpt met behulp van JSON, voegt u de eigenschap Encryption toe en stelt u deze in op **True** in de Connection String. Voor Azure Storage kunt u **https** gebruiken in de Connection String.
 
 > [!NOTE]
 > Volg een van de onderstaande opties om versleuteling in transit in te scha kelen terwijl u gegevens van Oracle verplaatst:
@@ -80,8 +80,8 @@ Als de gegevens opslag in de Cloud HTTPS of TLS ondersteunt, worden alle gegeven
 ### <a name="data-encryption-at-rest"></a>Versleuteling van inactieve gegevens
 Sommige gegevens archieven ondersteunen de versleuteling van gegevens in rust. Het is raadzaam om het mechanisme voor gegevens versleuteling in te scha kelen voor deze gegevens archieven. 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Met Transparent Data Encryption (TDE) in Azure SQL Data Warehouse kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van uw gegevens in rust uit te voeren. Dit gedrag is transparant voor de client. Zie [een Data Base beveiligen in SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Met Transparent Data Encryption (TDE) in azure Synapse Analytics kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van uw gegevens op rest uit te voeren. Dit gedrag is transparant voor de client. Zie [een Data Base beveiligen in azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL Database biedt ook ondersteuning voor transparent Data Encryption (TDE), dat bescherming biedt tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van de gegevens uit te voeren, zonder dat de toepassing hoeft te worden gewijzigd. Dit gedrag is transparant voor de client. Zie [transparent Data Encryption for SQL database en Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie.
@@ -128,7 +128,7 @@ Power Shell maakt standaard gebruik van poort 8060 op de computer met zelf-hoste
  
 
 
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 Alle gegevens overdrachten zijn via Secure Channel HTTPS en TLS via TCP om te voor komen dat man-in-the-middle-aanvallen optreden tijdens de communicatie met Azure-Services.
 
 U kunt ook [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Azure ExpressRoute](../expressroute/expressroute-introduction.md) gebruiken om het communicatie kanaal te beveiligen tussen uw on-premises netwerk en Azure.
@@ -153,10 +153,10 @@ De volgende installatie kopieën tonen het gebruik van zelf-hostende Integration
 
 ![IPSec VPN met gateway](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Firewall configuraties en lijst met toegestane instellingen voor IP-adressen
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Firewall configuraties en lijst met toegestane instellingen voor IP-adressen
 
 > [!NOTE] 
-> Mogelijk moet u poorten beheren of lijst met toegestane apps instellen voor domeinen op het niveau van de bedrijfs firewall, zoals vereist is door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure SQL Data Warehouse en Azure Data Lake Store als voor beeld gebruikt.
+> Mogelijk moet u poorten beheren of lijst met toegestane apps instellen voor domeinen op het niveau van de bedrijfs firewall, zoals vereist is door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure Synapse Analytics en Azure Data Lake Store als voor beeld gebruikt.
 
 > [!NOTE] 
 > Zie [dit artikel](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)voor meer informatie over strategieën voor gegevens toegang via Azure Data Factory.
@@ -169,11 +169,11 @@ De volgende tabel bevat uitgaande poort-en domein vereisten voor zakelijke firew
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Mogelijk moet u poorten beheren of lijst met toegestane apps instellen voor domeinen op het niveau van de bedrijfs firewall, zoals vereist is door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure SQL Data Warehouse en Azure Data Lake Store als voor beeld gebruikt.   
+> Mogelijk moet u poorten beheren of lijst met toegestane apps instellen voor domeinen op het niveau van de bedrijfs firewall, zoals vereist is door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure Synapse Analytics en Azure Data Lake Store als voor beeld gebruikt.   
 
 De volgende tabel bevat de binnenkomende poort vereisten voor Windows Firewall:
 
-| Poorten voor inkomend verkeer | Description                              |
+| Poorten voor inkomend verkeer | Beschrijving                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Vereist door de Power shell-versleutelings-cmdlet, zoals beschreven in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md), en door de toepassing voor referentie beheer om veilig referenties in te stellen voor on-premises gegevens archieven op de zelf-hostende Integration runtime. |
 
@@ -185,7 +185,7 @@ Voor sommige gegevens archieven in de Cloud moet u ook het IP-adres van de compu
 Voor de volgende gegevens archieven in de Cloud moet u het IP-adres van de zelf-hostende Integration runtime-computer toestaan. Sommige van deze gegevens archieven hebben standaard mogelijk geen Allow-lijst. 
 
 - [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -194,11 +194,11 @@ Voor de volgende gegevens archieven in de Cloud moet u het IP-adres van de zelf-
 
 **Kan de zelf-hostende Integration runtime worden gedeeld tussen verschillende gegevens fabrieken?**
 
-Ja. [Hier](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/) vindt u meer informatie.
+Ja. Meer informatie [vindt u hier](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Wat zijn de poort vereisten voor de zelf-hostende Integration runtime om te werken?**
 
-De zelf-hostende Integration runtime maakt op HTTP gebaseerde verbindingen voor toegang tot het internet. De uitgaande poorten 443 moeten worden geopend voor de zelf-hostende Integration runtime om deze verbinding te maken. Open de binnenkomende poort 8060 alleen op computer niveau (niet het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure SQL Data Warehouse als de bron of de bestemming wordt gebruikt, moet u ook poort 1433 openen. Zie de sectie [firewall configuraties en het instellen van de lijst met toegestane IP-adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) voor meer informatie. 
+De zelf-hostende Integration runtime maakt op HTTP gebaseerde verbindingen voor toegang tot het internet. De uitgaande poorten 443 moeten worden geopend voor de zelf-hostende Integration runtime om deze verbinding te maken. Open de binnenkomende poort 8060 alleen op computer niveau (niet het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure Synapse Analytics als de bron of de bestemming wordt gebruikt, moet u ook poort 1433 openen. Zie de sectie [firewall configuraties en het instellen van de lijst met toegestane IP-adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) voor meer informatie. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

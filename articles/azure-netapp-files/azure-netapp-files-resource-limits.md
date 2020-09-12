@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752310"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536476"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -31,20 +31,20 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 
 |  Resource  |  Standaardlimiet  |  Aanpasbaar via ondersteunings aanvraag  |
 |----------------|---------------------|--------------------------------------|
-|  Aantal NetApp-accounts per Azure-regio   |  10    |  Ja   |
-|  Aantal capaciteits Pools per NetApp-account   |    25     |   Ja   |
-|  Aantal volumes per abonnement   |    500     |   Ja   |
-|  Aantal volumes per capaciteits pool     |    500   |    Ja     |
-|  Aantal moment opnamen per volume       |    255     |    Nee        |
-|  Aantal subnetten dat wordt gedelegeerd aan Azure NetApp Files (micro soft. NetApp/volumes) per Azure-Virtual Network    |   1   |    Nee    |
-|  Aantal gebruikte Ip's in een VNet (inclusief onmiddellijk gepeerde VNets) met Azure NetApp Files   |    1000   |    Nee   |
-|  Minimum grootte van één capaciteits groep   |  4 TiB     |    Nee  |
-|  Maximale grootte van één capaciteits groep    |  500 TiB   |   Nee   |
-|  Minimum grootte van één volume    |    100 GiB    |    Nee    |
-|  Maximale grootte van één volume     |    100 TiB    |    Nee    |
-|  Maximale grootte van één bestand     |    16 TiB    |    Nee    |    
-|  Maximale grootte van Directory-meta gegevens in één map      |    320 MB    |    Nee    |    
-|  Maximum aantal bestanden ([maxfiles](#maxfiles)) per volume     |    100.000.000    |    Ja    |    
+|  Aantal NetApp-accounts per Azure-regio   |  10    |  Yes   |
+|  Aantal capaciteits Pools per NetApp-account   |    25     |   Yes   |
+|  Aantal volumes per abonnement   |    500     |   Yes   |
+|  Aantal volumes per capaciteits pool     |    500   |    Yes     |
+|  Aantal moment opnamen per volume       |    255     |    No        |
+|  Aantal subnetten dat wordt gedelegeerd aan Azure NetApp Files (micro soft. NetApp/volumes) per Azure-Virtual Network    |   1   |    No    |
+|  Aantal gebruikte Ip's in een VNet (inclusief onmiddellijk gepeerde VNets) met Azure NetApp Files   |    1000   |    No   |
+|  Minimum grootte van één capaciteits groep   |  4 TiB     |    No  |
+|  Maximale grootte van één capaciteits groep    |  500 TiB   |   No   |
+|  Minimum grootte van één volume    |    100 GiB    |    No    |
+|  Maximale grootte van één volume     |    100 TiB    |    No    |
+|  Maximale grootte van één bestand     |    16 TiB    |    No    |    
+|  Maximale grootte van Directory-meta gegevens in één map      |    320 MB    |    No    |    
+|  Maximum aantal bestanden ([maxfiles](#maxfiles)) per volume     |    100.000.000    |    Yes    |    
 
 Zie [Veelgestelde vragen over capaciteits beheer](azure-netapp-files-faqs.md#capacity-management-faqs)voor meer informatie.
 
@@ -56,11 +56,11 @@ De service past de maxfiles-limiet voor een volume dynamisch aan op basis van de
 
 |    Volume grootte (quotum)     |  Automatische aanpassing van de limiet van maxfiles    |
 |----------------------------|-------------------|
-|    < 1 TiB                 |    20.000.000     |
-|    >= 1 TiB, maar < 2 TiB    |    40.000.000     |
-|    >= 2 TiB, maar < 3 TiB    |    60.000.000     |
-|    >= 3 TiB, maar < 4 TiB    |    80.000.000     |
-|    >= 4 TiB                |    100.000.000    |
+|    <= 1 TiB                |    20.000.000     |
+|    > 1 TiB, maar <= 2 TiB    |    40.000.000     |
+|    > 2 TiB, maar <= 3 TiB    |    60.000.000     |
+|    > 3 TiB maar <= 4 TiB    |    80.000.000     |
+|    > 4 TiB                 |    100.000.000    |
 
 Als u al ten minste 4 TiB aan quota voor een volume hebt toegewezen, kunt u een [ondersteunings aanvraag](#limit_increase) initiëren om de maxfiles limiet van meer dan 100.000.000 te verhogen.
 

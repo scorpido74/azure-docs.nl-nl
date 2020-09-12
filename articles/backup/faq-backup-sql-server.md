@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180096"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500331"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -72,7 +72,7 @@ Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarsc
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Kan ik geplande back-uptaken weer geven in het menu back-uptaken?
 
-In het menu **back-uptaak** worden alleen back-uptaken op aanvraag weer gegeven. Gebruik voor een geplande taak [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+In het menu **back-uptaak** worden alle geplande bewerkingen en acties op aanvraag weer gegeven, met uitzonde ring van de geplande back-ups van het logboek, omdat ze zeer veelvuldig kunnen zijn. Voor geplande logboek taken gebruikt u [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Worden toekomstige databases automatisch voor back-ups toegevoegd?
 

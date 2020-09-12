@@ -1,19 +1,19 @@
 ---
 title: Operationeel maken a Data Analytics-pijp lijn-Azure
 description: Stel een voorbeeld gegevens pijplijn in en voer deze uit die wordt geactiveerd door nieuwe gegevens en die beknopte resultaten oplevert.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082791"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504415"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Een pijplijn voor gegevensanalyse operationeel maken
 
@@ -113,7 +113,7 @@ Als u de Oozie-webconsole wilt gebruiken om de status van uw coördinator en wer
         scp ./2017-01-FlightData.csv sshuser@CLUSTERNAME-ssh.azurehdinsight.net:2017-01-FlightData.csv
         ```
 
-    1. Gebruik de [SSH-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` de naam van uw cluster te vervangen en voer de volgende opdracht in:
+    1. Gebruik de [ssh-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster.Voer vervolgens deze opdracht in:
 
         ```cmd
         ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -594,7 +594,7 @@ Als u de pijp lijn met een coördinator wilt uitvoeren, gaat u op een vergelijk 
     oozie job -config job.properties -run
     ```
 
-5. Controleer de status met behulp van de Oozie-webconsole. deze keer dat u het tabblad **coördinator taken** selecteert en vervolgens **alle taken**.
+5. Controleer de status met behulp van de Oozie-webconsole. deze keer dat u het tabblad **coördinator taken** selecteert en vervolgens  **alle taken**.
 
     ![Taken voor Oozie web console-coördinator](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

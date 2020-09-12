@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926861"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462510"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -96,10 +96,26 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 
 <sup>4</sup> Maxi maal 30 vaardig heden per vaardig heden.
 
-<sup>5</sup> AI-verrijking en afbeeldings analyse zijn reken intensief en verbruiken een onevenredige hoeveelheid beschik bare verwerkings kracht. De uitvoerings tijd voor deze werk belastingen is inge kort om andere taken in de wachtrij meer kans te geven om uit te voeren.  
+<sup>5</sup> AI-verrijking en afbeeldings analyse zijn reken intensief en verbruiken een onevenredige hoeveelheid beschik bare verwerkings kracht. De uitvoerings tijd voor deze werk belastingen is inge kort om andere taken in de wachtrij meer kans te geven om uit te voeren.
 
 > [!NOTE]
 > Zoals vermeld in de [index limieten](#index-limits), worden ook de bovengrens van 3000 elementen voor alle complexe verzamelingen per document afgedwongen, te beginnen met de nieuwste versie van de Ga-API die complexe typen () op een later niveau ondersteunt `2019-05-06` . Dit betekent dat als u een Indexeer functie hebt gemaakt met een eerdere API-versie, u deze limiet niet onderhevig hebt. Een Indexeer functie die is gemaakt met een eerdere API-versie en die vervolgens is bijgewerkt met een API `2019-05-06` -versie of hoger, wordt nog steeds **uitgesloten** van de limieten voor het behouden van de maximale compatibiliteit. Klanten moeten op de hoogte zijn van de nadelige gevolgen van het hebben van zeer grote complexe verzamelingen (zoals eerder aangegeven). we raden u aan om nieuwe Indexeer functies te maken met de nieuwste versie van de GA-API.
+
+### <a name="shared-private-link-resource-limits"></a>Resource limieten voor gedeelde persoonlijke koppelingen
+
+> [!NOTE]
+> Indexeer functies kunnen veilig toegang krijgen tot bronnen via privé-eind punten die worden beheerd via de resource-API van de [gedeelde persoonlijke koppeling](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) zoals beschreven in [deze hand leiding](search-indexer-howto-access-private.md)
+
+| Resource | Gratis | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Ondersteuning voor het indexeren van persoonlijke eind punten | Nee | Ja | Ja | Ja | Ja | Nee | Ja | Ja |
+| Ondersteuning voor privé-eind punten voor Indexeer functies met vaardig heden<sup>1</sup> | Nee | Nee | Nee | Ja | Ja | Nee | Ja | Ja |
+| Maximum aantal privé-eind punten | N.v.t. | 10 of 30 | 100 | 400 | 400 | N.v.t. | 20 | 20 |
+| Maximum aantal afzonderlijke resource typen<sup>2</sup> | N.v.t. | 4 | 7 | 15 | 15 | N.v.t. | 4 | 4 |
+
+<sup>1</sup> AI-verrijking en afbeeldings analyse zijn reken intensief en verbruiken een onevenredige hoeveelheid beschik bare verwerkings kracht en daarom kunnen lagere zoek service lagen de prestaties en stabiliteit van de zoek service nadelig beïnvloeden.
+
+<sup>2</sup> het aantal afzonderlijke resource typen wordt berekend als het aantal unieke `groupId` waarden dat wordt gebruikt voor alle gedeelde persoonlijke koppelings resources voor een bepaalde zoek service, onafhankelijk van de status van de resource.
 
 ## <a name="synonym-limits"></a>Synoniemen limieten
 
@@ -116,7 +132,7 @@ QPS-schattingen moeten onafhankelijk van elke klant worden ontwikkeld. De groott
 
 Schattingen zijn meer voorspelbaar wanneer ze worden berekend op Services die worden uitgevoerd op speciale resources (Basic-en Standard-lagen). U kunt de QPS nauw keuriger schatten omdat u meer controle hebt over de para meters. Zie [Azure Cognitive Search prestaties en optimalisatie](search-performance-optimization.md)voor meer informatie over het aanpaken van de schatting.
 
-Voor de lagen geoptimaliseerd voor opslag (L1 en L2) moet u een lagere query door Voer en een hogere latentie dan de standaard lagen. 
+Voor de lagen geoptimaliseerd voor opslag (L1 en L2) moet u een lagere query door Voer en een hogere latentie dan de standaard lagen.
 
 ## <a name="data-limits-ai-enrichment"></a>Gegevens limieten (AI-verrijking)
 

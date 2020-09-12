@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056768"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505346"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Een persoonlijk Azure Red Hat open Shift 4-cluster maken
 
@@ -23,17 +23,35 @@ In dit artikel maakt u een voor bereiding van uw omgeving voor het maken van Azu
 > * De vereisten instellen en het vereiste virtuele netwerk en subnetten maken
 > * Een cluster met een persoonlijk API-server eindpunt en een persoonlijke ingangs controller implementeren
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.6.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-### <a name="register-the-resource-provider"></a>De resourceprovider registreren
+### <a name="register-the-resource-providers"></a>De resource providers registreren
 
-Vervolgens moet u de resourceprovider `Microsoft.RedHatOpenShift` registreren in uw abonnement.
+1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-ID op:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. Registreer de `Microsoft.RedHatOpenShift` resource provider:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. Registreer de `Microsoft.Compute` resource provider:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. Registreer de `Microsoft.Storage` resource provider:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Een pull-geheim voor Red Hat ophalen (optioneel)
 
@@ -141,7 +159,7 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Beleid voor privé-eindpunten van subnet uitschakelen](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
+5. **[Beleid voor privé-eindpunten van subnet uitschakelen](../private-link/disable-private-link-service-network-policy.md) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -180,7 +198,7 @@ Nadat de `az aro create`-opdracht is uitgevoerd, duurt het doorgaans ongeveer 35
 
 ## <a name="connect-to-the-private-cluster"></a>Verbinding maken met het persoonlijke cluster
 
-U kunt zich aanmelden bij het cluster met behulp van de `kubeadmin` gebruiker.  Voer de volgende opdracht uit om het wacht woord voor de gebruiker te zoeken `kubeadmin` .
+U kunt zich aanmelden bij het cluster met behulp van de `kubeadmin`-gebruiker.  Voer de volgende opdracht uit om het wachtwoord voor de `kubeadmin`-gebruiker te vinden.
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -188,7 +206,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeven `kubeadminPassword` .
+In de volgende voorbeeld ziet u dat het wachtwoord in `kubeadminPassword` is.
 
 ```json
 {
@@ -197,7 +215,7 @@ In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeve
 }
 ```
 
-U kunt de URL van de cluster console vinden door de volgende opdracht uit te voeren, die er als volgt uitziet:`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+U kunt de URL van de clusterconsole vinden door de volgende opdracht uit te voeren, die eruit ziet als `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -207,21 +225,21 @@ U kunt de URL van de cluster console vinden door de volgende opdracht uit te voe
 ```
 
 >[!IMPORTANT]
-> Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
+> Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](../virtual-network/virtual-network-peering-overview.md) .
 
-Start de console-URL in een browser en meld u aan met de `kubeadmin` referenties.
+Start de console-URL in een browser en meld u aan met de referenties van `kubeadmin`.
 
-![Aanmeldings scherm van Azure Red Hat open Shift](media/aro4-login.png)
+![Aanmeldingsscherm voor Azure Red Hat OpenShift](media/aro4-login.png)
 
-## <a name="install-the-openshift-cli"></a>De open Shift-CLI installeren
+## <a name="install-the-openshift-cli"></a>De OpenShift CLI installeren
 
-Zodra u bent aangemeld bij de open Shift-webconsole, klikt u op de **?** in de rechter bovenhoek en vervolgens op **opdracht regel Programma's**. Down load de versie die geschikt is voor uw computer.
+Zodra u bent aangemeld bij de OpenShift-webconsole, klikt u op **?** in de rechterbovenhoek en klikt u vervolgens op **Opdrachtregel hulpprogrammarogramma's**. Download de versie die geschikt is voor uw computer.
 
-![Aanmeldings scherm van Azure Red Hat open Shift](media/aro4-download-cli.png)
+![Aanmeldingsscherm voor Azure Red Hat OpenShift](media/aro4-download-cli.png)
 
-U kunt ook de meest recente versie van de CLI die geschikt is voor uw computer, downloaden van <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
+U kunt ook de meest recente versie van de CLI die geschikt is voor uw computer downloaden van <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/>.
 
-## <a name="connect-using-the-openshift-cli"></a>Verbinding maken met behulp van open Shift CLI
+## <a name="connect-using-the-openshift-cli"></a>Verbinding maken met behulp van OpenShift CLI
 
 Haal het adres van de API-server op.
 
@@ -230,9 +248,9 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
+> Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](../virtual-network/virtual-network-peering-overview.md) .
 
-Meld u aan bij de API-server van het open Shift-cluster met de volgende opdracht. Vervang door **\<kubeadmin password>** het wacht woord dat u zojuist hebt opgehaald.
+Meld u aan bij de API-server van het OpenShift-cluster met de volgende opdracht. Vervang **\<kubeadmin password>** door het wachtwoord dat u zojuist hebt opgehaald.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

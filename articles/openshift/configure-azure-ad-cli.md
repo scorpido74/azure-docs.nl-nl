@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590333"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469419"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory authenticatie configureren voor een Azure Red Hat open Shift 4-cluster (CLI)
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.6.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.6.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Haal de cluster-specifieke Url's op die u wilt gebruiken om de Azure Active Directory-toepassing te configureren.
 
@@ -66,7 +66,7 @@ U zou er ongeveer als volgt terug moeten gaan. Noteer dit als de **TenantId** di
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>Een manifest bestand maken om de optionele claims te definiëren die moeten worden meegenomen in het ID-token
 
-Ontwikkel aars van toepassingen kunnen [optionele claims](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) in hun Azure AD-toepassingen gebruiken om op te geven welke claims ze willen in tokens die naar hun toepassing worden verzonden.
+Ontwikkel aars van toepassingen kunnen [optionele claims](../active-directory/develop/active-directory-optional-claims.md) in hun Azure AD-toepassingen gebruiken om op te geven welke claims ze willen in tokens die naar hun toepassing worden verzonden.
 
 U kunt optionele claims gebruiken voor het volgende:
 
@@ -127,11 +127,11 @@ az ad app permission add \
 
 Toepassingen die zijn geregistreerd in een Azure Active Directory-Tenant (Azure AD), zijn standaard beschikbaar voor alle gebruikers van de Tenant die zijn geverifieerd. Met Azure AD kunnen Tenant beheerders en ontwikkel aars een app beperken tot een specifieke set gebruikers of beveiligings groepen in de Tenant.
 
-Volg de instructies in de Azure Active Directory-documentatie om [gebruikers en groepen toe te wijzen aan de app](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration).
+Volg de instructies in de Azure Active Directory-documentatie om [gebruikers en groepen toe te wijzen aan de app](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration).
 
 ## <a name="configure-openshift-openid-authentication"></a>Open Shift OpenID Connect-verificatie configureren
 
-De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wacht woord voor de gebruiker te zoeken `kubeadmin` .
+De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wachtwoord voor de `kubeadmin`-gebruiker te vinden.
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -139,7 +139,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeven `kubeadminPassword` .
+In de volgende voorbeeld ziet u dat het wachtwoord in `kubeadminPassword` is.
 
 ```json
 {

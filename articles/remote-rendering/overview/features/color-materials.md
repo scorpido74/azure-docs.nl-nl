@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021378"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613775"
 ---
 # <a name="color-materials"></a>Kleurmaterialen
 
@@ -50,6 +50,13 @@ De volgende eigenschappen zijn specifiek voor kleuren materialen:
   1. **AlphaBlended:** Deze modus is vergelijkbaar met de transparantie modus voor PBR-materialen. Dit moet worden gebruikt voor lees bare materialen zoals glas.
 
   1. **Additief:** Deze modus is de eenvoudigste en meest efficiënte transparantie modus. De bijdrage van het materiaal wordt toegevoegd aan de gerenderde afbeelding. Deze modus kan worden gebruikt voor het simuleren van glanzende objecten (maar wel transparant), zoals markeringen die worden gebruikt voor het markeren van belang rijke objecten.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# ColorMaterial-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ ColorMaterial-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Volgende stappen
 

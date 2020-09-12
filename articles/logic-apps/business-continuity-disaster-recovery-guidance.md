@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066529"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658206"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic Apps
 
@@ -69,7 +69,7 @@ In dit voor beeld worden de vorige instanties van de primaire en secundaire logi
 
 ## <a name="connections-to-resources"></a>Verbindingen met bronnen
 
-Azure Logic Apps biedt [ingebouwde triggers en acties plus honderden beheerde connectors](../connectors/apis-list.md) die uw logische app kan gebruiken om te werken met andere apps, services, systemen en andere resources, zoals Azure Storage accounts, SQL server data bases, Office 365 Outlook e-mail accounts, enzovoort. Als uw logische app toegang moet hebben tot deze bronnen, maakt u verbindingen die de toegang tot deze bronnen verifiëren. Elke verbinding is een afzonderlijke Azure-resource die bestaat op een specifieke locatie en niet kan worden gebruikt door resources op andere locaties.
+Azure Logic Apps biedt [ingebouwde triggers en acties plus honderden beheerde connectors](../connectors/apis-list.md) die uw logische app kan gebruiken om te werken met andere apps, services, systemen en andere resources, zoals Azure Storage accounts, SQL server data bases, werk-of school-e-mail accounts, enzovoort. Als uw logische app toegang moet hebben tot deze bronnen, maakt u verbindingen die de toegang tot deze bronnen verifiëren. Elke verbinding is een afzonderlijke Azure-resource die bestaat op een specifieke locatie en niet kan worden gebruikt door resources op andere locaties.
 
 Voor de strategie voor herstel na nood gevallen moet u rekening houden met de locaties waar afhankelijke resources zich bevinden ten opzichte van uw logische app-exemplaren:
 

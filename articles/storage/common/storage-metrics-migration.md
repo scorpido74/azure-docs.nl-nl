@@ -4,21 +4,21 @@ description: Meer informatie over het overstappen van Opslaganalyse metrische ge
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/04/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f0357c153a068b1f857e4595fa17a9ac6bc22104
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078245"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500263"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Overstappen op metrische gegevens in Azure Monitor
 
-Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Als u gebruikmaakt van klassieke metrische gegevens, moet u overstappen op metrische gegevens in Azure Monitor vóór die datum. Dit artikel helpt u bij het maken van de overgang.
+Op **31 augustus 2023** worden Opslaganalyse metrische gegevens, ook wel *klassieke metrische gegevens* genoemd, buiten gebruik gesteld. Zie de [officiële aankondiging](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)voor meer informatie. Als u gebruikmaakt van klassieke metrische gegevens, moet u overstappen op metrische gegevens in Azure Monitor vóór die datum. Dit artikel helpt u bij het maken van de overgang. 
 
 ## <a name="steps-to-complete-the-transition"></a>Stappen voor het volt ooien van de overgang
 

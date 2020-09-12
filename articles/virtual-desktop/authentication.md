@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038544"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500297"
 ---
 # <a name="supported-authentication-methods"></a>Ondersteunde verificatie methoden
 
@@ -43,9 +43,13 @@ Dit zijn de momenteel ondersteunde aanmeldings methoden:
 >[!NOTE]
 >Smart Card en Windows hello kunnen alleen Kerberos gebruiken om zich aan te melden. Aanmelden met Kerberos vereist een regel voor het gezichts vermogen van de domein controller.
 
+## <a name="hybrid-identity"></a>Hybride identiteit
+
+Het virtuele bureau blad van Windows ondersteunt [hybride identiteiten](../active-directory/hybrid/whatis-hybrid-identity.md) via Azure Active Directory (AD), waaronder federatieve Active Directory Federation Services (ADFS). Omdat gebruikers moeten kunnen worden gedetecteerd via Azure AD, ondersteunt Windows Virtual Desktop geen zelfstandige Active Directory implementaties met ADFS.
+
 ## <a name="single-sign-on-sso"></a>Eenmalige aanmelding (SSO)
 
-Windows virtueel bureau blad ondersteunt momenteel geen Active Directory Federation Services (ADFS) voor verificatie of SSO.
+Windows virtueel bureau blad biedt momenteel geen ondersteuning voor Active Directory Federation Services (ADFS) voor SSO.
 
 De enige manier om te voor komen dat u wordt gevraagd om uw referenties voor de host op te slaan in de-client. U kunt dit het beste alleen doen met beveiligde apparaten om te voor komen dat andere gebruikers toegang krijgen tot uw resources.
 

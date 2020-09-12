@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382918"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470082"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
 
@@ -30,7 +30,7 @@ Maak een nieuwe Azure Active Directory eigenaar van de gebruiker om u aan te mel
 1. Ga naar de Blade [gebruikers-alle gebruikers](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) .
 2. Klik op **+ nieuwe gebruiker** om het deel venster **gebruiker** te openen.
 3. Voer een **naam** in voor deze gebruiker.
-4. Maak een **gebruikers naam** op basis van de naam van de Tenant die u hebt gemaakt, die `.onmicrosoft.com` aan het einde is toegevoegd. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer deze gebruikers naam. U hebt deze nodig om u aan te melden bij uw cluster.
+4. Maak een **gebruikers naam** op basis van de naam van de Tenant die u hebt gemaakt, die  `.onmicrosoft.com` aan het einde is toegevoegd. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer deze gebruikers naam. U hebt deze nodig om u aan te melden bij uw cluster.
 5. Klik op **Directory functie** om het deel venster Directory-rollen te openen, selecteer **eigenaar** en klik onder aan het deel venster op **OK** .
 6. Klik in het deel venster **gebruiker** op **wacht woord weer geven** en het tijdelijke wacht woord vastleggen. Nadat u zich de eerste keer hebt aangemeld, wordt u gevraagd om deze opnieuw in te stellen.
 7. Klik onder aan het deel venster op **maken** om de gebruiker te maken.
@@ -86,9 +86,9 @@ Genereer een client geheim om uw app te verifiëren voor Azure Active Directory.
 
 ![Scherm afbeelding van het deel venster certificaten en geheimen](./media/howto-create-tenant/create-key.png)
 
-Zie voor meer informatie over Azure-toepassing-objecten [toepassings-en Service-Principal-objecten in azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Zie voor meer informatie over Azure-toepassing-objecten [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)voor meer informatie over het maken van een nieuwe Azure AD-toepassing.
+Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](../active-directory/develop/quickstart-register-app.md)voor meer informatie over het maken van een nieuwe Azure AD-toepassing.
 
 ## <a name="add-api-permissions"></a>API-machtigingen toevoegen
 
@@ -110,12 +110,12 @@ Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](https:/
 > [!IMPORTANT]
 > De synchronisatie van de groep cluster beheerders werkt pas nadat de toestemming is verleend. U ziet een groene cirkel met een vinkje en een bericht ' verleend voor *abonnements naam*' in de kolom *vereiste beheerder* .
 
-Zie [Azure-abonnements beheerders toevoegen of wijzigen](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)voor meer informatie over het beheren van beheerders en andere rollen.
+Zie [Azure-abonnements beheerders toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md)voor meer informatie over het beheren van beheerders en andere rollen.
 
 ## <a name="resources"></a>Resources
 
-* [Toepassingen en Service-Principal-objecten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [Snelstart: Een app registreren bij het Azure Active Directory v1.0-eindpunt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Toepassingen en Service-Principal-objecten in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)
+* [Snelstart: Een app registreren bij het Azure Active Directory v1.0-eindpunt](../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

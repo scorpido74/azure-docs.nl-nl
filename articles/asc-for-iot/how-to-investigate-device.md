@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab9b396f72ddd35638519ab69f17e034479e0d5a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311034"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504907"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Een verdacht IoT-apparaat onderzoeken
 
@@ -39,7 +39,7 @@ Azure Security Center voor IoT slaat standaard uw beveiligings waarschuwingen en
 De Log Analytics-werk ruimte voor gegevens opslag zoeken:
 
 1. Open uw IoT-hub,
-1. Klik onder **beveiliging**op **overzicht**en selecteer vervolgens **instellingen**.
+1. Selecteer onder **beveiliging**de optie **instellingen**en selecteer vervolgens **gegevens verzameling**.
 1. Wijzig de configuratie gegevens van uw Log Analytics werk ruimte.
 1. Klik op **Opslaan**.
 

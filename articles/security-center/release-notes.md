@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177241"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569251"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -28,6 +28,104 @@ Azure-beveiliging is in actieve ontwikkeling en ontvangt voortdurend verbetering
 - Afgeschafte functionaliteit
 
 Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Security Center](release-notes-archive.md).
+
+
+## <a name="september-2020"></a>September 2020
+
+De updates in september zijn onder andere:
+
+- [Conclusies voor evaluatie van beveiligings problemen zijn nu beschikbaar in continue export](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [Beveiligings onjuiste configuraties voor komen door aanbevelingen af te dwingen bij het maken van nieuwe resources](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [Aanbevelingen voor de netwerk beveiligings groep zijn verbeterd](#network-security-group-recommendations-improved)
+- [Afgeschafte aanbeveling voor AKS ' pod-beveiligings beleid moet worden gedefinieerd op Kubernetes Services '](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [E-mail meldingen van Azure Security Center verbeterd](#email-notifications-from-azure-security-center-improved)
+- [De beveiligde Score bevat geen preview-aanbevelingen](#secure-score-doesnt-include-preview-recommendations)
+- [Aanbevelingen bevatten nu een Ernst-indicator en het interval voor versheid](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Conclusies voor evaluatie van beveiligings problemen zijn nu beschikbaar in continue export
+
+Gebruik continue export om uw waarschuwingen en aanbevelingen in realtime te streamen naar Azure Event Hubs, Log Analytics werk ruimten of Azure Monitor. Daar kunt u deze gegevens integreren met Siem's (zoals Azure Sentinel, Power BI, Azure Data Explorer en meer.
+
+De hulpprogram ma's voor evaluatie van beveiligings problemen van Security Center retour neren informatie over uw resources als aanbevelingen voor het uitvoeren van acties in een ' bovenliggende ' aanbeveling, zoals ' beveiligings problemen in uw virtuele machines, moeten worden hersteld '. 
+
+De beveiligings bevindingen zijn nu beschikbaar om te worden geëxporteerd via continue export wanneer u aanbevelingen selecteert en de optie **beveiligings resultaten toevoegen** inschakelt.
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Beveiligings resultaten toevoegen in-/uitschakelen configuratie voor continue export" :::
+
+Gerelateerde pagina's:
+
+- [De oplossing voor het evalueren van geïntegreerde beveiligings problemen voor Azure virtual machines Security Center](deploy-vulnerability-assessment-vm.md)
+- [De oplossing voor de evaluatie van geïntegreerde beveiligings problemen van Security Center voor Azure Container Registry installatie kopieën](monitor-container-security.md)
+- [Continue export](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Beveiligings onjuiste configuraties voor komen door aanbevelingen af te dwingen bij het maken van nieuwe resources
+
+Onjuiste beveiligings configuraties zijn een grote oorzaak van beveiligings incidenten. Security Center heeft nu de mogelijkheid om onjuiste configuratie van nieuwe resources met betrekking tot specifieke aanbevelingen te helpen *voor komen* . 
+
+Deze functie kan u helpen uw workloads veilig te houden en uw veilige score te stabiliseren.
+
+Het afdwingen van een veilige configuratie op basis van een specifieke aanbeveling wordt aangeboden in twee modi:
+
+- Met het **weigeren** van het effect van Azure Policy kunt u stoppen met het maken van beschadigde resources
+
+- Met de optie **afdwingen** kunt u profiteren van het **DeployIfNotExist** -effect van het Azure-beleid en niet-compatibele resources automatisch herstellen wanneer deze worden gemaakt
+ 
+Dit is beschikbaar voor geselecteerde beveiligings aanbevelingen en is te vinden boven aan de pagina Resource Details.
+
+Meer informatie over het [voor komen van onjuiste configuraties met het afdwingen/weigeren van aanbevelingen](prevent-misconfigurations.md).
+
+###  <a name="network-security-group-recommendations-improved"></a>Aanbevelingen voor de netwerk beveiligings groep zijn verbeterd
+
+De volgende beveiligings aanbevelingen met betrekking tot netwerk beveiligings groepen zijn verbeterd om sommige instanties van valse positieven te verminderen.
+
+- Alle netwerk poorten moeten worden beperkt op NSG die zijn gekoppeld aan uw virtuele machine
+- Beheerpoorten moeten gesloten zijn op uw virtuele machines
+- Op internet gerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen
+- Subnetten moeten worden gekoppeld aan een netwerkbeveiligingsgroep
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Afgeschafte aanbeveling voor AKS ' pod-beveiligings beleid moet worden gedefinieerd op Kubernetes Services '
+
+De preview-aanbeveling ' pod Security Policies ' moet worden gedefinieerd op Kubernetes Services ' wordt afgeschaft zoals beschreven in de documentatie van de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/use-pod-security-policies) .
+
+De functie beveiligings beleid voor pod (preview) is ingesteld voor afschaffing en is na 15 oktober 2020 niet langer beschikbaar voor Azure Policy voor AKS.
+
+Nadat pod-beveiligings beleid (preview) is afgeschaft, moet u de functie op alle bestaande clusters uitschakelen met behulp van de afgeschafte functie om toekomstige cluster upgrades uit te voeren en de ondersteuning van Azure te blijven gebruiken.
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>E-mail meldingen van Azure Security Center verbeterd
+
+De volgende gebieden van de e-mail berichten met betrekking tot beveiligings waarschuwingen zijn verbeterd: 
+
+- De mogelijkheid voor het verzenden van e-mail meldingen over waarschuwingen voor alle ernst niveaus is toegevoegd
+- De mogelijkheid om gebruikers op de hoogte te stellen van verschillende RBAC-rollen in het abonnement
+- Er worden proactief geabonneerd op abonnements eigenaren op waarschuwingen met hoge urgentie (die een hoge kans hebben op legitieme inbreuken)
+- Het veld telefoon nummer is verwijderd van de pagina configuratie van e-mail meldingen
+
+Meer informatie vindt [u in e-mail meldingen instellen voor beveiligings waarschuwingen](security-center-provide-security-contact-details.md).
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>De beveiligde Score bevat geen preview-aanbevelingen 
+
+Met Security Center worden uw resources, abonnementen en organisaties doorlopend beoordeeld op beveiligings problemen. Vervolgens worden alle bevindingen in één enkele score geaggregeerd, zodat u in een oogopslag uw huidige beveiligings situatie kunt zien: hoe hoger de score, hoe lager het geïdentificeerde risico niveau is.
+
+Als er nieuwe bedreigingen worden gedetecteerd, wordt nieuw beveiligings advies beschikbaar gesteld in Security Center via nieuwe aanbevelingen. Om te voor komen dat uw beveiligde Score plotseling wordt gewijzigd en u een respijt periode wilt bieden waarin u nieuwe aanbevelingen kunt verkennen voordat deze van invloed zijn op uw scores, worden de aanbevelingen die als **Preview** zijn gemarkeerd, niet meer opgenomen in de berekeningen van uw beveiligde Score. Ze moeten, waar mogelijk, nog steeds worden hersteld, zodat wanneer de preview-periode afloopt dat ze bijdragen aan uw score.
+
+Daarnaast genereren **Preview** -aanbevelingen geen resource ' beschadigd '.
+
+Een voor beeld van een voor beeld van een preview-aanbeveling:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de vlag preview":::
+
+Meer [informatie over beveiligde scores](secure-score-security-controls.md).
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>Aanbevelingen bevatten nu een Ernst-indicator en het interval voor versheid
+
+De pagina Details voor aanbevelingen bevat nu een interval voor versheid (indien van toepassing) en een duidelijke weer gave van de ernst van de aanbeveling.
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Pagina aanbeveling met versheid en ernst":::
+
 
 
 ## <a name="august-2020"></a>Augustus 2020
@@ -489,7 +587,7 @@ Maak een aangepaste initiatief in azure Policy, voeg er beleids regels aan toe e
 
 We hebben nu ook de optie toegevoegd voor het bewerken van de aangepaste aanbevelings-meta gegevens. Meta gegevens opties zijn ernst, herstel stappen, informatie over bedreigingen en meer.  
 
-Meer informatie over [het verbeteren van uw aangepaste aanbevelingen met gedetailleerde informatie](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+Meer informatie over [het verbeteren van uw aangepaste aanbevelingen met gedetailleerde informatie](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information).
 
 
 
@@ -550,79 +648,3 @@ Als u abonnementen hebt op de prijs categorie gratis, worden hun beveiligde scor
 Meer informatie over [aanbevelingen voor identiteit en toegang](recommendations-reference.md#recs-identity).
 
 Meer informatie over het [bewaken van identiteit en toegang](security-center-identity-access.md).
-
-
-## <a name="march-2020"></a>Maart 2020
-
-De updates in maart zijn onder andere:
-- [Werk stroom automatisering is nu algemeen beschikbaar](#workflow-automation-is-now-generally-available)
-- [Integratie van Azure Security Center met Windows-beheer centrum](#integration-of-azure-security-center-with-windows-admin-center)
-- [Beveiliging voor de Azure Kubernetes-service](#protection-for-azure-kubernetes-service)
-- [Verbeterde just-in-time-ervaring](#improved-just-in-time-experience)
-- [Twee beveiligings aanbevelingen voor afgeschafte webtoepassingen](#two-security-recommendations-for-web-applications-deprecated)
-
-
-### <a name="workflow-automation-is-now-generally-available"></a>Werk stroom automatisering is nu algemeen beschikbaar
-
-De functie werk stroom automatisering van Azure Security Center is nu algemeen beschikbaar. Gebruik deze functie om automatisch Logic Apps te activeren voor beveiligings waarschuwingen en aanbevelingen. Daarnaast zijn er hand matige triggers beschikbaar voor waarschuwingen en worden alle aanbevelingen met de optie snel herstellen beschikbaar.
-
-Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidenten. Deze processen kunnen het melden van relevante belanghebbenden, het starten van een wijzigings beheer proces en het Toep assen van specifieke herbemiddelings stappen zijn. Beveiligings experts raden u aan zo veel mogelijk stappen van deze procedures te automatiseren. Automation vermindert de overhead en kan de beveiliging verbeteren door ervoor te zorgen dat de proces stappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
-
-Zie [werk stroom automatisering](workflow-automation.md)voor meer informatie over de mogelijkheden voor automatische en hand matige Security Center voor het uitvoeren van uw werk stromen.
-
-Meer informatie over [het maken van Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
-
-
-### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Integratie van Azure Security Center met Windows-beheer centrum
-
-Het is nu mogelijk om uw on-premises Windows-servers rechtstreeks naar de Azure Security Center te verplaatsen vanuit het Windows-beheer centrum. Security Center wordt vervolgens uw enige glas venster om beveiligings gegevens weer te geven voor alle resources van uw Windows-beheer centrum, waaronder on-premises servers, virtuele machines en extra PaaS-workloads.
-
-Nadat u een server hebt verplaatst van het Windows-beheer centrum naar Azure Security Center, kunt u het volgende doen:
-
-- Beveiligings waarschuwingen en aanbevelingen weer geven in de uitbrei ding Security Center van het Windows-beheer centrum.
-- Bekijk de beveiligings postuur en haal meer gedetailleerde informatie op over uw door Windows-beheer centrum beheerde servers in de Security Center in het Azure Portal (of via een API).
-
-Meer informatie over [het integreren van Azure Security Center met het Windows-beheer centrum](windows-admin-center-integration.md).
-
-
-### <a name="protection-for-azure-kubernetes-service"></a>Beveiliging voor de Azure Kubernetes-service
-
-Azure Security Center breidt de beveiligings functies van de container uit om Azure Kubernetes service (AKS) te beveiligen.
-
-De populaire open-source platform Kubernetes is zodanig aangenomen dat het nu een industrie standaard is voor container indeling. Ondanks deze wijde implementatie is er nog steeds geen informatie over het beveiligen van een Kubernetes-omgeving. Voor het beschermen van de kwets baarheid van een container toepassing is expertise vereist om te garanderen dat de infra structuur veilig is geconfigureerd en voortdurend wordt bewaakt voor mogelijke dreigingen.
-
-De Security Center verdediging omvat:
-
-- **Detectie en zicht baarheid** : doorlopende detectie van beheerde AKS-instanties binnen de abonnementen die zijn geregistreerd voor Security Center.
-- **Aanbevelingen voor beveiliging** -beschik bare aanbevelingen om u te helpen te voldoen aan de aanbevolen procedures voor beveiliging voor AKS. Deze aanbevelingen zijn opgenomen in uw beveiligde Score om ervoor te zorgen dat ze worden weer gegeven als onderdeel van de beveiligings postuur van uw organisatie. Een voor beeld van een AKS-aanbeveling die u kunt zien, is ' op rollen gebaseerd toegangs beheer moet worden gebruikt om de toegang tot een Kubernetes-service cluster te beperken '.
-- **Bedreigings beveiliging** : Security Center u wordt gewaarschuwd voor bedreigingen en schadelijke activiteiten die zijn gedetecteerd op het niveau van de host en het AKS-cluster.
-
-Meer informatie over de [integratie van Azure Kubernetes Services met Security Center](azure-kubernetes-service-integration.md).
-
-Meer informatie over [de beveiligings functies van de container in Security Center](container-security.md).
-
-
-### <a name="improved-just-in-time-experience"></a>Verbeterde just-in-time-ervaring
-
-De functies, bewerking en gebruikers interface voor het Azure Security Center van just-in-time hulpprogram ma's die uw beheer poorten beveiligen, zijn als volgt verbeterd: 
-
-- **Veld motivering** : als u via de just-in-time pagina van de Azure portal toegang tot een virtuele machine (VM) wilt aanvragen, is er een nieuw optioneel veld beschikbaar om een reden voor de aanvraag in te voeren. Gegevens die in dit veld worden ingevoerd, kunnen in het activiteiten logboek worden bijgehouden. 
-- **Automatisch opschonen van redundante just-in-time (JIT)-regels** : wanneer u een JIT-beleid bijwerkt, wordt automatisch een opschoon programma uitgevoerd om de geldigheid van de volledige ruleset te controleren. Het hulp programma zoekt naar verschillen tussen regels in uw beleid en regels in het NSG. Als het hulp programma voor opschonen een niet-overeenkomend item detecteert, wordt de oorzaak bepaald en, wanneer het veilig is om dit te doen, verwijdert u ingebouwde regels die niet meer nodig zijn. De verruiming verwijdert nooit regels die u hebt gemaakt. 
-
-Meer informatie over [de JIT-toegangs functie](security-center-just-in-time.md).
-
-
-### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Twee beveiligings aanbevelingen voor afgeschafte webtoepassingen
-
-Twee beveiligings aanbevelingen met betrekking tot webtoepassingen worden afgeschaft: 
-
-- De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard.
-    (Gerelateerd beleid: de Nsg's-regels voor webtoepassingen op IaaS moeten worden gehard)
-
-- Toegang tot App Services moet worden beperkt.
-    (Gerelateerd beleid: toegang tot App Services moet worden beperkt [Preview])
-
-Deze aanbevelingen worden niet meer weer gegeven in de Security Center lijst met aanbevelingen. Het gerelateerde beleid wordt niet meer opgenomen in het initiatief ' Security Center default '.
-
-Meer informatie over [beveiligings aanbevelingen](recommendations-reference.md).
-

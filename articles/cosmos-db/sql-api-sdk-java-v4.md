@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586212"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536397"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 
 ## <a name="helpful-content"></a>Nuttige inhoud
 
-| Inhoud | Koppeling |
+| Content | Koppeling |
 |---|---|
 |**SDK downloaden**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API-documentatie** | [Naslag documentatie voor Java API](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
@@ -68,7 +68,33 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 
 ## <a name="release-history"></a>Release geschiedenis
 
-### <a name="440-beta1-unreleased"></a>4.4.0-bèta versie 1 (niet-vrijgegeven)
+### <a name="440-beta2-unreleased"></a>4.4.0-bèta versie 2 (niet-vrijgegeven)
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Vaste RequestTimeoutException bij het inschakelen van tcnative.
+
+### <a name="440-beta1-2020-08-27"></a>4.4.0-Beta. 1 (2020-08-27)
+#### <a name="new-features"></a>Nieuwe functies
+* Er is een nieuwe API toegevoegd om veel documenten efficiënt te laden (via een lijst met PK/id-paren of alle documenten voor een set PK-waarden).
+* Nieuwe API is toegevoegd `deleteItem` .
+* Standaard waarden voor query's ingeschakeld.
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Vaste-NPE in `GatewayAddressCache` .
+* Er wordt een probleem met de query metriek voor nul-item reactie opgelost.
+* Verbeterde prestaties (gereduceerd CPU-gebruik) voor het parseren van adressen en hoofd sleutel verificatie.
+
+### <a name="432-beta2-2020-08-17"></a>4.3.2-Beta. 2 (2020-08-17)
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Geen wijzigingen ten opzichte van de vorige versie, het vrijgeven van compatibiliteits problemen met lente gegevens modules.
+
+### <a name="432-beta1-2020-08-14"></a>4.3.2-bèta. 1 (2020-08-14)
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Probleem opgelost in RntbdServiceEndpoint om te voor komen dat een ongebruikte TCP-verbinding vroegtijdig wordt gesloten.
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* `GROUP BY`Er is een probleem opgelost met een query, waarbij slechts één pagina werd geretourneerd.
+* Vaste teken reeks indeling van de gebruikers agent om te voldoen aan de richt lijnen voor de Central SDK.
+* Uitgebreide diagnostische informatie voor het toevoegen van diagnostische gegevens over het query plan.
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
 #### <a name="new-features"></a>Nieuwe functies

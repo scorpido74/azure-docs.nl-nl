@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495315"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470031"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
 
@@ -37,9 +37,9 @@ az --version
 
 De eerste regel van de uitvoer heeft bijvoorbeeld de CLI-versie `azure-cli (2.0.65)` .
 
-Hier vindt u instructies voor [het installeren van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u een nieuwe installatie of een upgrade nodig hebt.
+Hier vindt u instructies voor [het installeren van de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) als u een nieuwe installatie of een upgrade nodig hebt.
 
-U kunt ook de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)gebruiken. Wanneer u de Azure Cloud Shell gebruikt, moet u ervoor zorgen dat u de **bash** -omgeving selecteert als u de reeks zelf studies voor het [maken en beheren van Azure Red Hat open Shift-cluster](tutorial-create-cluster.md) wilt volgen.
+U kunt ook de [Azure Cloud shell](../cloud-shell/overview.md)gebruiken. Wanneer u de Azure Cloud Shell gebruikt, moet u ervoor zorgen dat u de **bash** -omgeving selecteert als u de reeks zelf studies voor het [maken en beheren van Azure Red Hat open Shift-cluster](tutorial-create-cluster.md) wilt volgen.
 
 ## <a name="register-providers-and-features"></a>Providers en functies registreren
 
@@ -103,7 +103,7 @@ Als u geen Azure AD kunt gebruiken als Tenant voor uw Azure Red Hat open Shift-c
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Een Azure AD-gebruiker, beveiligings groep en toepassings object maken
 
-Azure Red Hat open Shift vereist machtigingen voor het uitvoeren van taken in uw cluster, zoals het configureren van opslag. Deze machtigingen worden weer gegeven via een [Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). U wilt ook een nieuwe Active Directory gebruiker maken voor het testen van apps die worden uitgevoerd op uw Azure Red Hat open Shift-cluster.
+Azure Red Hat open Shift vereist machtigingen voor het uitvoeren van taken in uw cluster, zoals het configureren van opslag. Deze machtigingen worden weer gegeven via een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object). U wilt ook een nieuwe Active Directory gebruiker maken voor het testen van apps die worden uitgevoerd op uw Azure Red Hat open Shift-cluster.
 
 Volg de instructies in [een Azure AD-App-object en-gebruiker maken](howto-aad-app-configuration.md) om een service-principal te maken, een client geheim en een URL voor verificatie-call back voor uw app te genereren en een nieuwe Azure AD-beveiligings groep en-gebruiker te maken voor toegang tot het cluster.
 
@@ -115,4 +115,4 @@ Probeer de zelf studie:
 > [!div class="nextstepaction"]
 > [Een Azure Red Hat OpenShift-cluster maken](tutorial-create-cluster.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli-install]: /cli/azure/install-azure-cli

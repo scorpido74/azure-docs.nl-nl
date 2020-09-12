@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74926156"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436388"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Fout tolerantie in Kopieer activiteit toevoegen door incompatibele rijen over te slaan
 
@@ -48,7 +48,7 @@ De Kopieer activiteit ondersteunt drie scenario's voor het detecteren, overs Laa
     Bijvoorbeeld: gegevens kopiëren van een SQL-Server naar een SQL database. Er wordt een primaire sleutel gedefinieerd in de Sink-SQL database, maar er is geen dergelijke primaire sleutel gedefinieerd in de SQL-bron server. De dubbele rijen die aanwezig zijn in de bron, kunnen niet naar de Sink worden gekopieerd. Met de Kopieer activiteit wordt alleen de eerste rij van de bron gegevens naar de Sink gekopieerd. De volgende bron rijen die de dubbele primaire-sleutel waarde bevatten, worden gedetecteerd als incompatibel en worden overgeslagen.
 
 >[!NOTE]
->Deze functie is niet van toepassing wanneer Kopieer activiteit is geconfigureerd voor het aanroepen van het mechanisme voor het laden van externe gegevens, waaronder [Azure SQL Data Warehouse poly base](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) of [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Voor het laden van gegevens in SQL Data Warehouse met poly Base, gebruikt u de ondersteuning voor systeem eigen fout tolerantie van poly Base door '[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)' op te geven in de Kopieer activiteit.
+>Deze functie is niet van toepassing wanneer Kopieer activiteit is geconfigureerd voor het aanroepen van het mechanisme voor het laden van externe gegevens [, waaronder Azure Synapse Analytics (voorheen SQL Data Warehouse) poly base](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) of [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Voor het laden van gegevens in azure Synapse Analytics met poly Base, gebruikt u ondersteuning voor systeem eigen fout tolerantie van poly Base door '[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)' op te geven in de Kopieer activiteit.
 
 ## <a name="configuration"></a>Configuratie
 In het volgende voor beeld wordt een JSON-definitie geboden voor het overs laan van de niet-compatibele rijen in een Kopieer activiteit:

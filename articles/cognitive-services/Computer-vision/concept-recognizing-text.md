@@ -4,52 +4,57 @@ titleSuffix: Azure Cognitive Services
 description: Concepten met betrekking tot optische teken herkenning (OCR) van afbeeldingen en documenten met gedrukte en handgeschreven tekst met behulp van de Computer Vision-API.
 services: cognitive-services
 author: PatrickFarley
-manager: netahw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: cb931d0b9c3dd4d3fa0fa69f69f5f90fc37ea8f6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24be20d7eac48024b73e88f8ac8500928f0fb840
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929190"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594224"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
-De Computer Vision-API van Azure bevat functies voor optische teken herkenning (OCR) waarmee gedrukte of handgeschreven tekst uit afbeeldingen kan worden opgehaald. U kunt tekst extra heren uit afbeeldingen, zoals foto's van een licentie plaat of containers met serie nummers, en van documenten: facturen, facturen, financiële rapporten, artikelen en meer. 
+De Computer Vision-API van Azure bevat functies voor optische teken herkenning (OCR) waarmee gedrukte of handgeschreven tekst uit afbeeldingen kan worden opgehaald. U kunt tekst extra heren uit afbeeldingen, zoals foto's van een licentie plaat of containers met serie nummers, en van documenten: facturen, facturen, financiële rapporten, artikelen en meer.
 
 ## <a name="read-api"></a>API lezen 
 
-De Computer Vision [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) is de nieuwste OCR-technologie van Azure waarmee gedrukte tekst (in verschillende talen), handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst uit tekst-zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst in dezelfde afbeelding of hetzelfde document.
+De Computer Vision [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) is de nieuwste OCR-technologie van Azure ([informatie over wat er nieuw](./whats-new.md#read-api-v31-public-preview-adds-simplified-chinese-support)is) waarmee gedrukte tekst (in verschillende talen), handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst uit tekst-zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst in dezelfde afbeelding of hetzelfde document.
 
 ![Hoe OCR afbeeldingen en documenten converteert naar gestructureerde uitvoer met geëxtraheerde tekst](./Images/how-ocr-works.svg)
 
 ## <a name="input-requirements"></a>Vereisten voor invoer
-De **Lees** bewerking van de Lees-API neemt afbeeldingen en documenten op als invoer. Ze hebben de volgende vereisten:
+De **Lees** aanroep neemt afbeeldingen en documenten op als invoer. Ze hebben de volgende vereisten:
 
 * Ondersteunde bestands indelingen: JPEG, PNG, BMP, PDF en TIFF
-* Voor PDF en TIFF worden Maxi maal 2000 pagina's verwerkt. Voor abonnees met een gratis laag worden alleen de eerste twee pagina's verwerkt.
-* De bestands grootte moet kleiner zijn dan 50 MB en de afmetingen zijn ten minste 50 x 50 pixels en Maxi maal 10000 x 10000 pixels.
+* Voor PDF-en TIFF-bestanden worden Maxi maal 2000 pagina's (alleen de eerste twee pagina's voor de gratis laag) verwerkt.
+* De bestands grootte moet kleiner zijn dan 50 MB (4 MB voor de gratis laag) en afmetingen ten minste 50 x 50 pixels en Maxi maal 10000 x 10000 pixels. 
 * De PDF-dimensies mogen Maxi maal 17 x 17 inch zijn, overeenkomen met de papier formaten Legal of a3 en kleiner.
 
 > [!NOTE]
-> **Taal invoer** 
+> **Taalinvoer** 
 >
-> De [Lees bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) heeft een optionele aanvraag parameter voor de taal. Dit is de taal code BCP-47 van de tekst in het document. Lees ondersteuning voor automatische taal identificatie en meertalige documenten, zodat u alleen een taal code kunt opgeven als u wilt afdwingen dat het document wordt verwerkt als die specifieke taal.
+> De [Lees aanroep](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) heeft een optionele aanvraag parameter voor een taal. Dit is de taal code BCP-47 van de tekst in het document. Lees ondersteuning voor automatische taal identificatie en meertalige documenten, zodat u alleen een taal code kunt opgeven als u wilt afdwingen dat het document wordt verwerkt als die specifieke taal.
 
-## <a name="the-read-operation"></a>De Lees bewerking
+## <a name="the-read-call"></a>De Lees aanroep
 
-De [Lees bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) neemt een afbeeldings-of PDF-document als invoer en extraheert tekst asynchroon. De aanroep retourneert een veld met een antwoord header met de naam `Operation-Location` . De `Operation-Location` waarde is een URL die de bewerkings-id bevat die in de volgende stap moet worden gebruikt.
+De [Lees aanroep](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) van de Lees-API neemt een afbeeldings-of PDF-document als invoer en extraheert tekst asynchroon. De aanroep retourneert een veld met een antwoord header met de naam `Operation-Location` . De `Operation-Location` waarde is een URL die de bewerkings-id bevat die in de volgende stap moet worden gebruikt.
 
 |Reactie header| Resultaten-URL |
 |:-----|:----|
 |Bewerkings locatie | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="the-get-read-results-operation"></a>De bewerking Lees resultaten ophalen
+> [!NOTE]
+> **Facturering** 
+>
+> De pagina met [Computer Vision prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) bevat de prijs categorie voor lezen. Elke geanalyseerde afbeelding of pagina is één trans actie. Als u de bewerking aanroept met een PDF-of TIFF-document met 100 pagina's, telt de Lees bewerking deze als 100-trans acties en wordt er voor 100 trans acties gefactureerd. Als u 50-aanroepen hebt gedaan voor de bewerking en elke oproep een document met 100 pagina's heeft verzonden, wordt u gefactureerd voor 50 X 100 = 5000 trans acties.
+
+## <a name="the-get-read-results-call"></a>De aanroep Lees resultaten ophalen
 
 De tweede stap is het aanroepen van de bewerking [Lees resultaten ophalen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) . Met deze bewerking wordt de bewerkings-ID die is gemaakt door de Lees bewerking, als invoer gebruikt. Er wordt een JSON-antwoord geretourneerd dat een **status** veld met de volgende mogelijke waarden bevat. U roept deze bewerking iteratief aan tot deze met de **geslaagde** waarde wordt geretourneerd. Gebruik een interval van 1 tot 2 seconden om te voor komen dat het aantal aanvragen per seconde (RPS) wordt overschreden.
 
@@ -65,7 +70,7 @@ De tweede stap is het aanroepen van de bewerking [Lees resultaten ophalen](https
 
 Wanneer het veld **status** de waarde **geslaagd** heeft, bevat het JSON-antwoord de geëxtraheerde tekst inhoud van uw afbeelding of document. De JSON-respons houdt de oorspronkelijke regel groeperingen van herkende woorden bij. Het bevat de geëxtraheerde tekst regels en de coördinaten van het begrenzingsvak. Elke tekst regel bevat alle geëxtraheerde woorden met hun coördinaten en betrouwbaarheids scores.
 
-### <a name="sample-json-output"></a>Voor beeld van JSON-uitvoer
+## <a name="sample-json-output"></a>Voor beeld van JSON-uitvoer
 
 Zie het volgende voor beeld van een geslaagde JSON-reactie:
 
@@ -120,30 +125,25 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie:
   }
 }
 ```
+Ga aan de slag met de [Computer Vision OCR SDK Quick](./quickstarts-sdk/client-library.md) starts en de [Lees rest API SNELSTARTGIDS](./QuickStarts/CSharp-hand-text.md) om de OCR-mogelijkheden in uw toepassingen te integreren.
 
-Volg de Snelstartgids [gedrukte en handgeschreven tekst uitpakken](./QuickStarts/CSharp-hand-text.md) om OCR te implementeren met C# en de rest API.
-
-## <a name="language-support"></a>Taalondersteuning
-
-### <a name="printed-text"></a>Afgedrukte tekst
+## <a name="supported-languages-for-print-text"></a>Ondersteunde talen voor afdruk tekst
 De [lees 3,0-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. 
 
 De [open bare preview van de lees 3,1 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u de sectie [OCR API](#ocr-api) . 
 
 Zie de [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) voor de volledige lijst met talen die door OCR worden ondersteund.
 
-### <a name="handwritten-text"></a>Handgeschreven tekst
+## <a name="supported-languages-for-handwritten-text"></a>Ondersteunde talen voor handgeschreven tekst
 De Lees bewerking biedt momenteel alleen ondersteuning voor het extra heren van handgeschreven tekst in het Engels.
 
-## <a name="integration-options"></a>Integratie opties
-
-### <a name="use-the-rest-api-or-client-sdk"></a>De REST API-of client-SDK gebruiken
+## <a name="use-the-rest-api-and-sdk"></a>De REST API en SDK gebruiken
 De [rest API 3. x](./QuickStarts/CSharp-hand-text.md) is de voorkeurs optie voor de meeste klanten vanwege het gemak van integratie en snelle productiviteit. Azure en de Computer Vision service-afhandelings schaal, prestaties, gegevens beveiliging en nalevings behoeften terwijl u zich richt op het voldoen aan de behoeften van uw klanten.
 
-### <a name="use-containers-for-on-premise-deployment"></a>Containers gebruiken voor on-premises implementaties
+## <a name="deploy-on-premise-with-docker-containers"></a>On-premises implementeren met docker-containers
 Met de [lees 2,0 docker-container (preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) kunt u de nieuwe OCR-mogelijkheden in uw eigen lokale omgeving implementeren. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer.
 
-## <a name="read-ocr-examples"></a>OCR-voor beelden lezen
+## <a name="example-outputs"></a>Voorbeeld uitvoer
 
 ### <a name="text-from-images"></a>Tekst van afbeeldingen
 
@@ -188,6 +188,7 @@ Net als bij alle cognitieve services moeten ontwikkel aars die de Lees/OCR-Servi
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Ga aan de slag met de [Computer Vision lees 3,0 SDK Quick](./quickstarts-sdk/client-library.md) starts in C#, Java, java script of python.
+- Gebruik de [Lees-3,0-rest API Snelstartgids](./QuickStarts/CSharp-hand-text.md) in C#, Java, java script of python voor meer informatie over het gebruik van de rest-api's.
 - Meer informatie over de [lees 3,0-rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
 - Meer informatie over de [open bare preview-versie van 3,1 lees rest API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees.
-- Volg de Snelstartgids voor het [uitpakken van tekst](./QuickStarts/CSharp-hand-text.md) voor het implementeren van OCR met C#, Java, java script of python samen met rest API.

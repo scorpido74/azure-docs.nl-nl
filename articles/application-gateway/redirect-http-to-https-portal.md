@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804340"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594812"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van de Azure Portal
 
@@ -20,12 +20,11 @@ U kunt de Azure Portal gebruiken om een [toepassings gateway](overview.md) met e
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een zelfondertekend certificaat maken
-> * Een netwerk instellen
-> * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener-en omleidings regel toevoegen
-> * Een virtuele-machineschaalset maken met de standaard back-endgroep
+* Een zelfondertekend certificaat maken
+* Een netwerk instellen
+* Een toepassingsgateway maken met behulp van het certificaat
+* Een listener-en omleidings regel toevoegen
+* Een virtuele-machineschaalset maken met de standaard back-endgroep
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -173,7 +172,7 @@ Ten slotte moet u de schaalset bijwerken met deze wijzigingen.
 2. Selecteer onder **Instellingen** de optie **Instanties**.
 3. Selecteer beide instanties en selecteer vervolgens **upgrade**.
 4. Selecteer **Ja** om te bevestigen.
-5. Nadat dit is voltooid, gaat u terug naar de **myAppGateway** en selecteert u **back-endservers**. U ziet nu dat de **appGatewayBackendPool** twee doelen heeft en **myAppGatewaymyvmss** geen doelen heeft.
+5. Nadat dit is voltooid, gaat u terug naar de **myAppGateway** en selecteert u **back-endservers**. U ziet nu dat de **appGatewayBackendPool** twee doelen heeft en  **myAppGatewaymyvmss** geen doelen heeft.
 6. Selecteer **myAppGatewaymyvmss**en selecteer vervolgens **verwijderen**.
 7. Selecteer **OK** om te bevestigen.
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187279"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440504"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 
@@ -109,7 +109,7 @@ Er is geen vaste limiet voor het aantal instanties van Integration runtime dat u
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Wat zijn de belangrijkste concepten van Azure Data Factory?
 Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (oftewel 'data factory's') hebben. Azure Data Factory bevat vier belang rijke onderdelen die samen werken als een platform waarop u gegevensgestuurde werk stromen kunt samen stellen met de stappen voor het verplaatsen en transformeren van gegevens.
 
-### <a name="pipelines"></a>Pipelines
+### <a name="pipelines"></a>Pijplijnen
 Een gegevensfactory kan één of meer pijplijnen hebben. Een pijp lijn is een logische groepering van activiteiten om een werk eenheid uit te voeren. De activiteiten in een pijplijn voeren samen een taak uit. Een pijp lijn kan bijvoorbeeld een groep activiteiten bevatten die gegevens uit een Azure-Blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. Het voor deel is dat u een pijp lijn kunt gebruiken om de activiteiten te beheren als een set, in plaats van elke activiteit afzonderlijk te beheren. U kunt de activiteiten in een pijp lijn koppelen om ze opeenvolgend te laten werken of u kunt ze onafhankelijk van elkaar uitvoeren.
 
 ### <a name="data-flows"></a>Gegevensstromen
@@ -190,7 +190,7 @@ Wanneer micro soft Help of probleem oplossing biedt voor gegevens stromen, kunt 
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Hoe kan ik toegang tot gegevens met behulp van de andere typen van 90-gegevensset in Data Factory?
 
-Met de functie voor het toewijzen van gegevens stroom kunnen op dit moment Azure SQL Database, Azure SQL Data Warehouse, tekst bestanden met scheidings tekens worden gescheiden van Azure Blob-opslag of Azure Data Lake Storage Gen2, en Parquet bestanden van Blob Storage of Data Lake Storage Gen2 systeem eigen voor bron en Sink. 
+Met de functie voor het toewijzen van gegevens stroom kunnen op dit moment Azure SQL Database, Azure Synapse Analytics (voorheen SQL Data Warehouse), tekst bestanden met scheidings tekens worden gescheiden van Azure Blob-opslag of Azure Data Lake Storage Gen2, en Parquet bestanden van Blob Storage of Data Lake Storage Gen2 systeem eigen voor bron en Sink. 
 
 Gebruik de Kopieer activiteit om gegevens te stage van een van de andere connectors en voer vervolgens een gegevens stroom activiteit uit om gegevens te transformeren nadat deze is klaargezet. Uw pijp lijn wordt bijvoorbeeld eerst gekopieerd naar de Blob-opslag en vervolgens gebruikt een gegevens stroom activiteit een gegevensset in de bron om die gegevens te transformeren.
 
@@ -260,13 +260,13 @@ Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijg
 * geheel getal
 * int
 * bit
-* booleaans
+* boolean
 * smallint
 * tinyint
 * bigint
 * long
 * tekst
-* date
+* datum
 * datum/tijd
 * datetime2
 * smalldatetime

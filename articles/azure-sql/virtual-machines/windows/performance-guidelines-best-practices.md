@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690235"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481787"
 ---
-# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Richt lijnen voor prestaties voor SQL Server op Azure Virtual Machines
+# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Prestatierichtlijnen voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Dit artikel bevat richt lijnen voor het optimaliseren van SQL Server prestaties in Microsoft Azure Virtual Machines.
@@ -197,6 +197,19 @@ Als u opslag ruimten gebruikt, schakelt u bij het toevoegen van knoop punten aan
 ![De selectie van de in aanmerking komende opslag uitschakelen](./media/performance-guidelines-best-practices/uncheck-eligible-cluster-storage.png)
 
 Als u opslag ruimten gebruikt en de optie **alle in aanmerking komende opslag toevoegen**niet uitschakelt aan het cluster, worden de virtuele schijven tijdens het cluster losgekoppeld. Als gevolg hiervan worden ze niet weer gegeven in schijf beheer of Explorer totdat de opslag ruimten uit het cluster worden verwijderd en opnieuw zijn gekoppeld met Power shell. Met opslag ruimten worden meerdere schijven in opslag groepen gegroepeerd. Zie [opslag ruimten](/windows-server/storage/storage-spaces/overview)voor meer informatie.
+
+## <a name="multiple-instances"></a>Meerdere exemplaren 
+
+Houd rekening met de volgende aanbevolen procedures wanneer u meerdere exemplaren van SQL Server op één virtuele machine implementeert: 
+
+- Stel het maximale server geheugen voor elk SQL Server-exemplaar in, zodat er geheugen overblijft voor het besturings systeem. Zorg ervoor dat u de geheugen beperkingen voor de SQL Server-exemplaren bijwerkt als u de hoeveelheid geheugen die aan de virtuele machine wordt toegewezen wijzigt. 
+- Hebben afzonderlijke Lun's voor gegevens, logboeken en TempDB, omdat ze allemaal verschillende werkbelasting patronen hebben en u niet wilt dat ze van elkaar verschillen. 
+- Test uw omgeving grondig onder zware productie, zoals workloads, om ervoor te zorgen dat IT de capaciteit van de werk belasting kan verwerken binnen uw sollicitatie-Sla's. 
+
+Tekenen van overbelaste systemen kunnen, maar zijn niet beperkt tot, uitputting van werk thread, trage reactie tijden en/of Stallion-verdeel systeem geheugen. 
+
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

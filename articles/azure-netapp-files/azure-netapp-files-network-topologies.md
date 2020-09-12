@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797435"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569489"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
 
@@ -42,6 +42,7 @@ De onderstaande functies worden momenteel niet ondersteund voor Azure NetApp Fil
 * Azure Virtual WAN 
 * Zone redundante Virtual Network gateways (gateway-Sku's met AZ) 
 * Actieve/actieve Virtual Network GWs 
+* VNet (IPv4 en IPv6) met dubbele stack
 
 De volgende netwerk beperkingen zijn van toepassing op Azure NetApp Files:
 

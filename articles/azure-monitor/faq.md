@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782937"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569200"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
-Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor.
+Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor. Als u nog vragen hebt, gaat u naar het [discussie forum](https://docs.microsoft.com/answers/questions/topics/single/24223.html) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
+
 
 ## <a name="general"></a>Algemeen
 
@@ -98,7 +99,7 @@ De knoppen **query Verkenner**, **Opslaan** en **nieuwe waarschuwings regel** zi
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik de fout: ' micro soft. Insights van resource provider registreren voor dit abonnement om deze query in te scha kelen ' bij het openen van Log Analytics van een VM? 
 Veel resource providers worden automatisch geregistreerd, maar u moet mogelijk bepaalde resource providers hand matig registreren. Het bereik voor registratie is altijd het abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie.
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik geen toegangs fout bericht bij het openen van Log Analytics vanaf een virtuele machine? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik geen toegangs fout bericht bij het openen van Log Analytics vanaf een virtuele machine? 
 Als u VM-logboeken wilt weer geven, moet u beschikken over de machtiging lezen voor de werk ruimten waarin de VM-logboeken worden opgeslagen. In deze gevallen moet uw beheerder u de machtigingen verlenen in Azure.
 
 ## <a name="metrics"></a>Metrische gegevens
@@ -523,9 +524,54 @@ Er zijn echter nog steeds gevallen waarin zelfs wanneer bewaking aan server zijd
 
 In dit scenario kan een 502-of 503-antwoord worden geretourneerd naar een client vanwege een probleem met de reverse proxy-laag. Dit zou niet out-of-Box worden vastgelegd door Application Insights. Als u problemen op deze laag wilt detecteren, moet u mogelijk Logboeken van uw reverse proxy naar Log Analytics door sturen en een aangepaste regel maken om te controleren op 502/503-antwoorden. Raadpleeg voor meer informatie over veelvoorkomende oorzaken van 502-en 503-fouten het artikel over Azure App Service het [oplossen van problemen met ' 502 bad gateway ' en ' 503-Service niet beschikbaar '](../app-service/troubleshoot-http-502-http-503.md).     
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 
-Deze veelgestelde vragen over micro soft is een lijst met veelgestelde vragen over Azure Monitor voor containers. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>Wat is OpenTelemetry
+
+Een nieuwe open-source standaard voor de waarneembaarheid. Meer informatie vindt u in [https://opentelemetry.io/](https://opentelemetry.io/) .
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Waarom wordt micro soft/Azure Monitor investeren in OpenTelemetry?
+
+We zijn ervan overtuigd dat onze klanten voor drie redenen beter zijn:
+   1. Schakel ondersteuning in voor meer klant scenario's.
+   2. Instrument zonder bang te zijn voor het vergren delen van leveranciers.
+   3. Verbeter de transparantie en betrokkenheid van klanten.
+
+Het kan ook worden uitgelijnd met de strategie van micro soft om [open source](https://opensource.microsoft.com/)te kunnen inzetten.
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>Wat is de extra waarde van OpenTelemetry?
+
+Naast de bovenstaande redenen is OpenTelemetry efficiënter op schaal en biedt het consistente ontwerp/configuratie in verschillende talen.
+
+### <a name="how-can-i-test-out-opentelemetry"></a>Hoe kan ik OpenTelemetry testen?
+
+Meld u aan om lid te worden van onze Azure Monitor Application Insights early adopter Community op [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) .
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>Wat betekent dat in de context van OpenTelemetry?
+
+De OpenTelemetry-Community definieert [hier](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)algemeen beschikbaar (ga). OpenTelemetry "GA" betekent echter niet de functie pariteit met de bestaande Application Insights Sdk's. Azure Monitor blijven onze huidige Application Insights Sdk's aanbevelen voor klanten die behoefte hebben aan functies zoals [vooraf geaggregeerde metrische gegevens](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics), metrische [gegevens](app/live-stream.md)over [adaptieve steek proeven](app/sampling.md#adaptive-sampling), [Profiler](app/profiler-overview.md)en [snap shot debugger](app/snapshot-debugger.md) totdat de OpenTelemetry sdk's het functie-verval bereiken.
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>Kan ik preview-builds gebruiken in productie omgevingen?
+
+Het wordt niet aanbevolen. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) -voor beelden voor meer informatie.
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>Wat is het verschil tussen OpenTelemetry SDK en automatische instrumentatie?
+
+De OpenTelemetry-specificatie definieert [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk). Kortom: ' SDK ' is een taalspecifiek pakket dat telemetrie-gegevens verzamelt over de verschillende onderdelen van uw toepassing en de gegevens verzendt naar Azure Monitor via een exporteur.
+
+Het concept van automatische instrumentatie (soms byte code injectie, codeloos of op basis van een agent genoemd) verwijst naar de mogelijkheid om uw toepassing te instrumenteren zonder uw code te wijzigen. Bekijk bijvoorbeeld het [Leesmij-bestand voor OpenTelemetry Java auto-Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) voor meer informatie.
+
+### <a name="whats-the-opentelemetry-collector"></a>Wat is de OpenTelemetry-Collector?
+
+De OpenTelemetry-collector wordt beschreven in het [github Leesmij-bestand](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector). Micro soft gebruikt momenteel niet de OpenTelemetry Collector en is afhankelijk van directe exporteurs die naar de Application Insights van de Azure Monitor verzenden.
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>Wat is het verschil tussen opentellingen en OpenTelemetry?
+
+[Opentelling](https://opencensus.io/) is de precursor van [OpenTelemetry](https://opentelemetry.io/). Micro soft heeft open- [tracering](https://opentracing.io/) en opentellingen geholpen om OpenTelemetry te maken, een enkele waarneem bare standaard voor de wereld. De huidige voor [productie aanbevolen PYTHON SDK](app/opencensus-python.md) van Azure monitor is gebaseerd op opentellingen, maar uiteindelijk worden alle sdk's van alle Azure monitor gebaseerd op OpenTelemetry.
+
+
+## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 
 ### <a name="health-feature-is-in-private-preview"></a>De status functie is in een persoonlijke preview
 
@@ -660,12 +706,12 @@ Mogelijk wordt de volgende fout weer **gegeven: de antwoord-URL die in de aanvra
 
 Als u Azure Monitor voor containers voor een AKS-cluster hebt ingeschakeld, verwijdert u de Log Analytics werk ruimte waarnaar de gegevens naar het cluster zijn verzonden bij het upgraden van het cluster. U kunt dit probleem omzeilen door de bewaking uit te scha kelen en vervolgens weer in te scha kelen naar een andere geldige werk ruimte in uw abonnement. Wanneer u de cluster upgrade opnieuw probeert uit te voeren, moet het proces worden uitgevoerd en voltooid.  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Welke poorten en domeinen heb ik nodig om de agent te openen/white list?
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Welke poorten en domeinen moet ik openen/toestaan voor de agent?
 
 Zie de [netwerk firewall vereisten](insights/container-insights-onboard.md#network-firewall-requirements) voor de proxy-en firewall configuratie-informatie die is vereist voor de container agent met Azure, Azure US Government en Azure China 21vianet-Clouds.
 
+
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor voor virtuele machines
-Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor voor VM's. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kan ik onboarding uitvoeren op een bestaande werk ruimte?
 Als uw virtuele machines al zijn verbonden met een Log Analytics-werk ruimte, kunt u deze werk ruimte blijven gebruiken bij onboarding naar Azure Monitor voor VM's, op voor waarde dat deze zich in een van de [ondersteunde regio's](insights/vminsights-configure-workspace.md#supported-regions)bevindt.

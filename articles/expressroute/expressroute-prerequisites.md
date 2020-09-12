@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: vereisten'
 description: Deze pagina bevat een lijst met vereisten waaraan moet worden voldaan voordat u een Azure ExpressRoute-circuit kunt bestellen. Het bevat een controle lijst.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083360"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569625"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Vereisten en controlelijst voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u controleren of er is voldaan aan de vereisten die in de volgende secties worden genoemd.
@@ -20,8 +20,8 @@ Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-ser
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure-account
-* Een geldig en actief Microsoft Azure-account. Dit account is vereist om het ExpressRoute-circuit in te stellen. ExpressRoute-circuits zijn resources in Azure-abonnementen. Een Azure-abonnement is een vereiste, zelfs als connectiviteit is beperkt tot niet-Azure micro soft-Cloud Services, zoals Office 365.
-* Een actief Office 365-abonnement (als u Office 365-services gebruikt). Voor meer informatie raadpleegt u de sectie Specifieke vereisten voor Office 365 in dit artikel.
+* Een geldig en actief Microsoft Azure-account. Dit account is vereist om het ExpressRoute-circuit in te stellen. ExpressRoute-circuits zijn resources in Azure-abonnementen. Een Azure-abonnement is een vereiste, zelfs als connectiviteit is beperkt tot niet-Azure micro soft-Cloud Services, zoals Microsoft 365.
+* Een actief Microsoft 365 abonnement (als u Microsoft 365-Services gebruikt). Zie de sectie Microsoft 365 specifieke vereisten in dit artikel voor meer informatie.
 
 ## <a name="connectivity-provider"></a>Connectiveitsprovider
 
@@ -36,16 +36,16 @@ Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-ser
 * **QoS**: Skype voor Bedrijven heeft verschillende services (zoals spraak, video, tekst) die allemaal een andere QoS-behandeling vereisen. U en uw provider moeten de [QoS-vereisten](expressroute-qos.md) volgen.
 * **Netwerkbeveiliging**: overweeg [netwerkbeveiliging](../best-practices-network-security.md) als u via ExpressRoute verbinding maakt met de Microsoft Cloud.
 
-## <a name="office-365"></a>Office 365
-Als u Office 365 op ExpressRoute wilt inschakelen, raadpleegt u de volgende documenten voor meer informatie over de vereisten voor Office 365.
+## <a name="microsoft-365"></a>Microsoft 365
+Als u Microsoft 365 op ExpressRoute wilt inschakelen, raadpleegt u de volgende documenten voor meer informatie over Microsoft 365 vereisten.
 
-* [Overview of ExpressRoute for Office 365 (Overzicht van ExpressRoute voor Office 365)](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
-* [Routing with ExpressRoute for Office 365 (Routering met ExpressRoute voor Office 365)](https://support.office.com/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)
+* [Azure-ExpressRoute voor Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
+* [Route ring met ExpressRoute voor Microsoft 365](/microsoft-365/enterprise/routing-with-expressroute)
 * [Hoge beschikbaarheid en failover met ExpressRoute](https://aka.ms/erhighavailability)
-* [Office 365-URL's en IP-adresbereiken](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
-* [Network planning and performance tuning for Office 365 (Netwerkplanning en prestatieafstemming voor Office 365)](https://support.office.com/article/Network-planning-and-performance-tuning-for-Office-365-e5f1228c-da3c-4654-bf16-d163daee8848)
-* [Network bandwidth calculators and tools (Calculators en hulpmiddelen voor het berekenen van de netwerkbandbreedte)](https://support.office.com/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
-* [Office 365 integration with on-premises environments (Office 365-integratie met on-premises omgevingen)](https://support.office.com/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
+* [Microsoft 365 Url's en IP-adresbereiken](/microsoft-365/enterprise/urls-and-ip-address-ranges)
+* [Netwerk planning en prestaties afstemmen voor Microsoft 365](/microsoft-365/enterprise/network-planning-and-performance)
+* [Netwerk-en migratie planning voor Microsoft 365](/microsoft-365/enterprise/network-and-migration-planning)
+* [Integratie met on-premises omgevingen Microsoft 365](/microsoft-365/enterprise/microsoft-365-integration)
 * [Geavanceerde trainingsvideo's voor ExpressRoute in Office 365](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,19 +1,19 @@
 ---
 title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
-description: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
+description: In dit artikel wordt uitgelegd hoe u een persoonlijke verbinding maakt met een web-app met behulp van een persoonlijk Azure-eind punt
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737390"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569446"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
 
@@ -35,11 +35,11 @@ In deze sectie maakt u het virtuele netwerk en het subnet voor het hosten van de
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In deze sectie maakt u een virtueel netwerk en een subnet.
+In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource**  >  **netwerken**  >  **virtueel netwerk** maken of zoeken naar **virtueel netwerk** in het zoekvak.
 
-1. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad basis beginselen:
+1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad Basisinstellingen:
 
    > [!div class="mx-imgBorder"]
    > ![Virtual Network maken][1]
@@ -65,7 +65,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 1. Typ of selecteer in Een virtuele machine maken - Basisprincipes de volgende gegevens:
 
    > [!div class="mx-imgBorder"]
-   >![Basis van virtuele machines][4]
+   >![Basis van virtuele machines ][4]
 
 1. Selecteer **volgende: schijven**
 
@@ -94,7 +94,7 @@ In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk e
 1. Voer in web-app maken de volgende gegevens in of Selecteer deze:
 
    > [!div class="mx-imgBorder"]
-   >![Web-app-basis][6]
+   >![Web-app-basis ][6]
 
 1. Selecteer **' controleren + maken '**
 
@@ -138,13 +138,13 @@ In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk e
 
 1. Open het gedownloade RDP-bestand.
 
-- Selecteer Verbinding maken wanneer hierom wordt gevraagd.
-- Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
+   - Selecteer Verbinding maken wanneer hierom wordt gevraagd.
+   - Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
 
-> [!Note]
-> Mogelijk moet u meer opties selecteren > een ander account gebruiken om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+   > [!Note]
+   > Mogelijk moet u meer opties selecteren > een ander account gebruiken om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
-- Selecteer OK.
+   - Selecteer OK.
 
 1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u Ja of Doorgaan.
 
@@ -174,12 +174,21 @@ In deze sectie maakt u een persoonlijke verbinding met de web-app met behulp van
 1. Controleer in de myVM of de web-app niet toegankelijk is via het open bare IP-adres. Open een browser en plak de naam van de web-app. u moet een 403-verboden fout pagina hebben
 
    > [!div class="mx-imgBorder"]
-   >![Verboden][17]
+   >![fout verboden bij het gebruiken van het IP-adres][17]
 
-> [!Important]
-> Omdat deze functie in preview is, moet u de DNS-vermelding hand matig beheren.
+   > [!Important]
+   > Omdat deze functie in preview is, moet u de DNS-vermelding hand matig beheren.
 
-1. Maak de host-vermelding, open Verkenner en zoek het bestand hosts
+   Voor de DNS hebt u twee opties:
+   - het hostbestand van de virtuele machine gebruiken 
+   - of gebruik Azure DNS private zone service.
+
+1. Eerste oplossing: u kunt een persoonlijke DNS-zone met de naam privatelink.azurewebsites.net maken en deze koppelen aan het VNet
+1. Vervolgens moet u de twee A-records (app-naam en SCM-naam) maken met het IP-adres van uw persoonlijke eind punt
+   > [!div class="mx-imgBorder"]
+   >![Persoonlijke DNS-zone records][21]
+
+1. Tweede oplossing: Maak de host-vermelding, open Verkenner en zoek het bestand hosts
 
    > [!div class="mx-imgBorder"]
    >![Bestand hosts][18]
@@ -189,7 +198,7 @@ In deze sectie maakt u een persoonlijke verbinding met de web-app met behulp van
    > [!div class="mx-imgBorder"]
    >![Host inhoud][19]
 
-1. Sla het bestand op.
+1. Het bestand opslaan
 
 1. Open een browser en typ de URL van uw web-app
 
@@ -214,7 +223,7 @@ In deze Quick Start hebt u een VM gemaakt in een virtueel netwerk, een web-app e
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
 [2]: ./media/create-private-endpoint-webapp-portal/ipaddresses.png
 [3]: ./media/create-private-endpoint-webapp-portal/subnet.png
-[4]: ./media/create-private-endpoint-webapp-portal/virtualmachine.png
+[4]: ./media/create-private-endpoint-webapp-portal/virtual-machine.png
 [5]: ./media/create-private-endpoint-webapp-portal/vmnetwork.png
 [6]: ./media/create-private-endpoint-webapp-portal/webapp.png
 [7]: ./media/create-private-endpoint-webapp-portal/webappnetworking.png
@@ -231,6 +240,8 @@ In deze Quick Start hebt u een VM gemaakt in een virtueel netwerk, een web-app e
 [18]: ./media/create-private-endpoint-webapp-portal/explorer.png
 [19]: ./media/create-private-endpoint-webapp-portal/hosts.png
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
+[21]: ./media/create-private-endpoint-webapp-portal/dns-private-zone-records.png
+
 
 <!--Links-->
 [privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

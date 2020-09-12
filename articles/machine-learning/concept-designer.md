@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 788eebaf28a768acbdb5b1eb778f196fe05dc3e3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012940"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651218"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ De ontwerp functie maakt gebruik van uw Azure Machine Learning- [werk ruimte](co
 
 + [Pijplijnen](#pipeline)
 + [Gegevenssets](#datasets)
-+ [Reken resources](#compute)
++ [Rekenresources](#compute)
 + [Geregistreerde modellen](concept-azure-machine-learning-architecture.md#models)
 + [Gepubliceerde pijp lijnen](#publish)
 + [Realtime-eind punten](#deploy)
@@ -86,14 +86,14 @@ Een module kan een reeks parameters hebben waarmee u de interne algoritmen van d
 
 Zie voor meer informatie over de beschik bare bibliotheek met machine learning algoritmen [overzicht van algoritme & module](algorithm-module-reference/module-reference.md). Zie het overzicht van [Azure machine learning Algorithm Cheat](algorithm-cheat-sheet.md)voor meer informatie over het kiezen van een algoritme.
 
-## <a name="compute-resources"></a><a name="compute"></a>Reken resources
+## <a name="compute-resources"></a><a name="compute"></a> Reken resources
 
 Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde Compute-doelen zijn:
 
 | Rekendoel | Training | Implementatie |
 | ---- |:----:|:----:|
 | Azure Machine Learning compute | ✓ | |
-| Reken instantie Azure Machine Learning | ✓ | |
+| Azure Machine Learning-rekeninstantie | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Reken doelen zijn gekoppeld aan uw [Azure machine learning-werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in de [Azure machine learning Studio](https://ml.azure.com).
@@ -114,7 +114,7 @@ Gepubliceerde pijp lijnen zijn flexibel, ze kunnen worden gebruikt om modellen t
 
 Een gepubliceerde pijp lijn wordt uitgevoerd op de reken resources die u in de pijp lijn concept voor elke module definieert.
 
-De Designer maakt hetzelfde [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) -object als de SDK.
+De Designer maakt hetzelfde [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) -object als de SDK.
 
 ## <a name="next-steps"></a>Volgende stappen
 

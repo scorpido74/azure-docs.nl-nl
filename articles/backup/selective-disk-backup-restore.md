@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over selectieve back-ups en herst
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961989"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506692"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 
@@ -268,6 +268,10 @@ Het configureren van de back-upervaring voor selectieve schijven voor een virtue
 Wanneer u back-up met Azure Portal inschakelt, kunt u de optie **alleen back-Upbesturingssysteem schijf** kiezen. U kunt dus back-ups van uw Azure-VM configureren met de besturingssysteem schijf en alle gekoppelde gegevens schijven uitsluiten.
 
 ![Back-up alleen configureren voor de besturingssysteem schijf](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>Azure REST API gebruiken
+
+U kunt back-ups van Azure-VM'S configureren met enkele Select-schijven of u kunt de beveiliging van een bestaande virtuele machine zodanig wijzigen dat er weinig schijven worden opgenomen of uitgesloten, zoals [hier](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)wordt beschreven.
 
 ## <a name="selective-disk-restore"></a>Selectief schijf herstel
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2018
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081998"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426167"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Voorbeeld configuratie: Cisco ASA-apparaat (IKEv2/geen BGP)
 In dit artikel vindt u voor beelden van configuraties voor het koppelen van Cisco Adaptive Security Appliance-apparaten (ASA) aan Azure VPN-gateways. Het voor beeld is van toepassing op Cisco ASA-apparaten met IKEv2 zonder de Border Gateway Protocol (BGP). 
@@ -62,7 +62,7 @@ In deze sectie vindt u de para meters voor het voor beeld.
 | * On-premises BGP-peer-IP     | 10.52.255.254                |
 |                              |                              |
 
-\*Optionele para meter voor alleen BGP.
+\* Optionele para meter voor alleen BGP.
 
 ### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE-beleid en-para meters
 De volgende tabel bevat de IPsec/IKE-algoritmen en-para meters die in het voor beeld worden gebruikt. Raadpleeg de specificaties van uw VPN-apparaat om de algoritmen te controleren die worden ondersteund voor de modellen van uw VPN-apparaten en firmware.
@@ -80,7 +80,7 @@ De volgende tabel bevat de IPsec/IKE-algoritmen en-para meters die in het voor b
 | Vooraf gedeelde sleutel   | PreSharedKey                         |
 |                  |                                      |
 
-\*Op sommige apparaten moet IPsec-integriteit een null-waarde zijn wanneer de IPsec-versleutelings algoritme AES-GCM is.
+\* Op sommige apparaten moet IPsec-integriteit een null-waarde zijn wanneer de IPsec-versleutelings algoritme AES-GCM is.
 
 ### <a name="asa-device-support"></a>Ondersteuning voor het ASA-apparaat
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170510"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437867"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -25,12 +25,12 @@ De micro soft Authentication Library (MSAL) ondersteunt verschillende verificati
 
 | Stroom | Beschrijving | Gebruikt in |
 |--|--|--|
-| [Autorisatie code](#authorization-code) | Wordt gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Hiermee kunt u aanmelding en API-toegang toevoegen aan uw mobiele en desktop-apps. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md), [Web-apps](scenario-web-app-call-api-overview.md) |
+| [Autorisatiecode](#authorization-code) | Wordt gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Hiermee kunt u aanmelding en API-toegang toevoegen aan uw mobiele en desktop-apps. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md), [Web-apps](scenario-web-app-call-api-overview.md) |
 | [Clientreferenties](#client-credentials) | Hiermee krijgt u toegang tot webhoste bronnen met behulp van de identiteit van een toepassing. Wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. | [Daemon-apps](scenario-daemon-overview.md) |
 | [Apparaatcode](#device-code) | Hiermee kunnen gebruikers zich aanmelden op apparaten met invoer beperkingen, zoals een Smart TV, IoT-apparaat of printer. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Impliciete toekenning](#implicit-grant) | Hiermee kan de app tokens ophalen zonder dat er een back-end-server referentie-uitwisseling wordt uitgevoerd. Hiermee kunt u de app in staat stelt om zich aan te melden bij de gebruiker, de sessie te onderhouden en tokens te verkrijgen voor andere web-Api's, allemaal in de Java script-code van de client | [Toepassingen met één pagina (SPA)](scenario-spa-overview.md) |
 | [Namens-van](#on-behalf-of) | Een toepassing roept een service of Web-API aan, die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. | [Web-API's](scenario-web-api-call-api-overview.md) |
-| [Gebruikersnaam en wachtwoord](#usernamepassword) | Hiermee kan een toepassing zich aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. Deze stroom wordt niet aanbevolen. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#username-and-password) |
+| [Gebruikers naam/wacht woord](#usernamepassword) | Hiermee kan een toepassing zich aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. Deze stroom wordt niet aanbevolen. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#username-and-password) |
 | [Geïntegreerde Windows-verificatie](#integrated-windows-authentication) | Hiermee kunnen toepassingen die lid zijn van een domein of Azure Active Directory (Azure AD), een token op de achtergrond verkrijgen (zonder interactie van de gebruikers interface van de gebruiker). | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitstraalt
@@ -41,7 +41,7 @@ Afhankelijk van hoe uw client toepassing is gebouwd, kunnen ze een of meer van d
 |------------------------------------------------------------------------------------|:-------------------:|:--------:|:------------:|:-------------:|:------------------:|
 | [Autorisatie code stroom](v2-oauth2-auth-code-flow.md)                             |                     | x        | x            | x             | x                  |
 | [Clientreferenties](v2-oauth2-client-creds-grant-flow.md)                         |                     |          | x (alleen app) |               |                    |
-| [Toestel code stroom](v2-oauth2-device-code.md)                                       |                     | x        | x            | x             |                    |
+| [Stroom voor apparaatcode](v2-oauth2-device-code.md)                                       |                     | x        | x            | x             |                    |
 | [Impliciete stroom](v2-oauth2-implicit-grant-flow.md)                                  |                     | x        | x            |               |                    |
 | [Namens-stroom](v2-oauth2-on-behalf-of-flow.md)                                | toegangs token        | x        | x            | x             |                    |
 | [Gebruikers naam/wacht woord](v2-oauth-ropc.md) (ROPC)                                       | gebruikers naam & wacht woord | x        | x            | x             |                    |
@@ -70,7 +70,7 @@ In het voor gaande diagram wordt de toepassing:
 1. Vraagt een autorisatie code op die wordt ingewisseld voor een toegangs token.
 2. Maakt gebruik van het toegangs token om een web-API aan te roepen.
 
-### <a name="considerations"></a>Aandachtspunten
+### <a name="considerations"></a>Overwegingen
 
 - U kunt de autorisatie code slechts eenmaal gebruiken voor het inwisselen van een token. Probeer niet meerdere keren een token te verkrijgen met dezelfde autorisatie code omdat het expliciet is verboden door de specificatie van het Protocol standaard. Als u de code verschillende keren verwisselt, hetzij opzettelijk, hetzij omdat u niet weet dat een framework dit ook voor u doet, krijgt u de volgende fout:
 
@@ -219,7 +219,7 @@ Omdat IWA een stille stroom is, moet een van de volgende voor waarden worden vol
 Dit betekent dat een van de volgende voor waarden waar is:
 
 - Als ontwikkelaar hebt u de mogelijkheid **verleend** in de Azure portal voor uzelf te selecteren.
-- Een Tenant beheerder heeft de **toestemming beheerder verlenen/intrekken voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de app-registratie in de Azure Portal (Zie [machtigingen toevoegen voor toegang tot Web-api's](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Een Tenant beheerder heeft de **toestemming beheerder verlenen/intrekken voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de app-registratie in de Azure Portal (Zie [machtigingen toevoegen voor toegang tot uw web-API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)).
 - U hebt de mogelijkheid gegeven om gebruikers toestemming te geven voor de toepassing; Zie [toestemming van individuele gebruiker aanvragen](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - U hebt de mogelijkheid van de Tenant beheerder om toestemming te geven voor de toepassing. Zie [toestemming](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)van de beheerder.
 

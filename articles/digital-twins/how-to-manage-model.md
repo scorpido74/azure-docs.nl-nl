@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079773"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536452"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -168,13 +168,18 @@ Modellen zijn niet per se geretourneerd in het document formulier waarin ze zijn
 
 ### <a name="update-models"></a>Modellen bijwerken
 
-Zodra een model is geüpload naar uw exemplaar, is de gehele model interface onveranderbaar. Dit betekent dat er geen traditionele ' editing ' van modellen is.
+Zodra een model is geüpload naar uw Azure Digital Apparaatdubbels-exemplaar, is de gehele model interface onveranderbaar. Dit betekent dat er geen traditionele ' editing ' van modellen is. Azure Digital Apparaatdubbels staat ook niet toe om hetzelfde model opnieuw te uploaden.
 
-Als u in plaats daarvan wijzigingen wilt aanbrengen in een model in azure Digital Apparaatdubbels, kunt u dit het beste doen door een **nieuwere versie** van hetzelfde model te uploaden. Tijdens de preview-fase kunt u met het verplaatsen van een model versie alleen velden verwijderen, geen nieuwe velden toevoegen (u hoeft alleen maar [een gloed nieuw model te maken](#create-models)).
+Als u in plaats daarvan wijzigingen wilt aanbrengen in een model, zoals bijwerken `displayName` of `description` , kunt u dit doen door een **nieuwere versie** van het model te uploaden. 
+
+#### <a name="model-versioning"></a>Versiebeheer model
 
 Begin met het DTDL van het oorspronkelijke model om een nieuwe versie van een bestaand model te maken. Werk de velden die u wilt wijzigen bij.
 
-Markeer dit vervolgens als een nieuwere versie van het model door het `id` veld van het model bij te werken. De laatste sectie van de model-ID, na de `;` , vertegenwoordigt het model nummer. Om aan te geven dat dit nu een meer bijgewerkte versie van dit model is, verhoogt u het aantal aan het einde van de `id` waarde naar een getal dat groter is dan het huidige versie nummer.
+>[!NOTE]
+>Tijdens de preview-fase kunt u met het maken van een model versie alleen nieuwe velden toevoegen, maar niet bestaande verwijderen. Als u velden wilt verwijderen, moet u gewoon [een gloed nieuw model maken](#create-models).
+
+Markeer deze vervolgens als een nieuwere versie van het model door het `id` veld van het model bij te werken. De laatste sectie van de model-ID, na de `;` , vertegenwoordigt het model nummer. Om aan te geven dat dit nu een meer bijgewerkte versie van dit model is, verhoogt u het aantal aan het einde van de `id` waarde naar een getal dat groter is dan het huidige versie nummer.
 
 Als uw vorige model-ID bijvoorbeeld er als volgt uitziet:
 
@@ -188,7 +193,17 @@ versie 2 van dit model kan er als volgt uitzien:
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-Upload vervolgens de nieuwe versie van het model naar uw exemplaar. Er wordt gebruikgemaakt van de oude versie en nieuwe apparaatdubbels die u met dit model maakt, gebruiken de bijgewerkte versie.
+Upload vervolgens de nieuwe versie van het model naar uw exemplaar. 
+
+Deze versie van het model is vervolgens beschikbaar in uw-exemplaar om te gebruiken voor Digital apparaatdubbels. Eerdere versies van het model worden **niet** overschreven, waardoor er meerdere versies van het model in uw exemplaar bestaan, totdat u [deze verwijdert](#remove-models).
+
+#### <a name="impact-on-twins"></a>Impact op apparaatdubbels
+
+Wanneer u een nieuwe twee maakt, omdat de nieuwe model versie en de oude model versie naast elkaar bestaan, kan de nieuwe twee de nieuwe versie van het model of de oudere versie gebruiken.
+
+Dit betekent ook dat het uploaden van een nieuwe versie van een model niet automatisch invloed heeft op bestaande apparaatdubbels. De bestaande apparaatdubbels blijft gewoon instanties van de oude model versie.
+
+U kunt deze bestaande apparaatdubbels bijwerken naar de nieuwe versie van het model door deze te patchen, zoals wordt beschreven in het gedeelte [*een Digital*](how-to-manage-twin.md#update-a-digital-twins-model) - *navolgende model bijwerken van How-to: Manage Digital apparaatdubbels*. Binnen dezelfde patch moet u de **model-id** (naar de nieuwe versie) bijwerken en **alle velden die moeten worden gewijzigd op de dubbele waarde zodat deze overeenkomt met het nieuwe model**.
 
 ### <a name="remove-models"></a>Modellen verwijderen
 
@@ -251,7 +266,7 @@ Hier volgt een overzicht van wat u wel en niet kunt doen met apparaatdubbels die
 
 Dingen die u **kunt** doen:
 * Query uitvoeren op de dubbele
-* Eigenschappen lezen
+* Leeseigenschappen
 * Uitgaande relaties lezen
 * Inkomende relaties toevoegen en verwijderen (zoals in kan andere apparaatdubbels nog steeds relaties *met* dit dubbele formulier vormen)
   - De `target` in de definitie van de relatie kan nog steeds de DTMI van het verwijderde model weer spie gelen. Een relatie zonder gedefinieerd doel kan ook hier worden gebruikt.
@@ -273,6 +288,8 @@ Deze status wordt niet door Azure Digital Apparaatdubbels voor komen. Zorg er da
 ## <a name="manage-models-with-cli"></a>Modellen beheren met CLI
 
 Modellen kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [*How to: gebruik de Azure Digital APPARAATDUBBELS cli*](how-to-use-cli.md).
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

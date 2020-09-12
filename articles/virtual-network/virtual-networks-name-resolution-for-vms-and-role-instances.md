@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087008"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469640"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naamomzetting voor resources in virtuele Azure-netwerken
 
@@ -86,7 +86,7 @@ Punten waarmee u rekening moet houden wanneer u door Azure meegeleverde naam omz
 Omgekeerde DNS wordt ondersteund in alle virtuele netwerken op basis van ARM. U kunt reverse DNS-query's (PTR-query's) uitgeven om IP-adressen van virtuele machines toe te wijzen aan de FQDN-namen van virtuele machines.
 * Alle PTR-query's voor IP-adressen van virtuele machines retour neren FQDN-namen van het formulier \[ vmname \] . internal.cloudapp.net
 * Forward lookup op FQDN-namen van \[ het formulier vmname \] . internal.cloudapp.net wordt omgezet naar het IP-adres dat aan de virtuele machine is toegewezen.
-* Als het virtuele netwerk is gekoppeld aan een [Azure DNS particuliere zones](../dns/private-dns-overview.md) als een virtuele registratie-netwerk, retour neren de reverse DNS-query's twee records. Eén record heeft de van het formulier \[ vmname \] . [ privatednszonename] en andere hebben de vorm \[ vmname \] . internal.cloudapp.net
+* Als het virtuele netwerk is gekoppeld aan een [Azure DNS particuliere zones](../dns/private-dns-overview.md) als een virtuele registratie-netwerk, retour neren de reverse DNS-query's twee records. Eén record heeft de indeling \[ vmname \] . [ privatednszonename] en de andere hebben de vorm \[ vmname \] . internal.cloudapp.net
 * Achterwaartse DNS-zoek opdracht is binnen het bereik van een bepaald virtueel netwerk, zelfs als deze is gekoppeld aan andere virtuele netwerken. Omgekeerde DNS-query's (PTR-query's) voor IP-adressen van virtuele machines die zich in gekoppelde virtuele netwerken bevinden, wordt NXDOMAIN geretourneerd.
 * Als u omgekeerde DNS-functie in een virtueel netwerk wilt uitschakelen, kunt u dit doen door een zone voor reverse lookup te maken met behulp van [Azure DNS particuliere zones](../dns/private-dns-overview.md) en deze zone aan uw virtuele netwerk te koppelen. Als de IP-adres ruimte van uw virtuele netwerk bijvoorbeeld 10.20.0.0/16 is, kunt u een lege privé-DNS-zone 20.10.in-addr. arpa maken en deze koppelen aan het virtuele netwerk. Wanneer u de zone koppelt aan uw virtuele netwerk, moet u automatische registratie op de koppeling uitschakelen. Deze zone overschrijft de standaard zones voor reverse lookup voor het virtuele netwerk en omdat deze zone leeg is, ontvangt u NXDOMAIN voor uw omgekeerde DNS-query's. Raadpleeg onze [Snelstartgids](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) voor meer informatie over het maken van een privé-DNS-zone en het koppelen van deze aan een virtueel netwerk.
 

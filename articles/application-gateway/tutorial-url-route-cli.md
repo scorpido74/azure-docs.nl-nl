@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502695"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595221"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webverkeer routeren op basis van de URL met behulp van de Azure CLI
 
@@ -23,13 +23,12 @@ Als een IT-beheerder die webverkeer beheert, wilt u uw klanten of gebruikers hel
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een resourcegroep maken voor de netwerkresources die u nodig hebt
-> * De netwerkresources maken
-> * Een toepassingsgateway maken voor het verkeer dat afkomstig is van uw toepassing
-> * Servergroepen en regels voor doorsturen voor de verschillende soorten verkeer opgeven
-> * Een schaalset maken voor elke groep, zodat de toepassingen automatisch kunnen worden geschaald
-> * Een test uitvoeren zodat u kunt controleren of de verschillende soorten verkeer naar de juiste groep gaan
+* Een resourcegroep maken voor de netwerkresources die u nodig hebt
+* De netwerkresources maken
+* Een toepassingsgateway maken voor het verkeer dat afkomstig is van uw toepassing
+* Servergroepen en regels voor doorsturen voor de verschillende soorten verkeer opgeven
+* Een schaalset maken voor elke groep, zodat de toepassingen automatisch kunnen worden geschaald
+* Een test uitvoeren zodat u kunt controleren of de verschillende soorten verkeer naar de juiste groep gaan
 
 Als u wilt, kunt u deze procedure volt ooien met behulp van [Azure PowerShell](tutorial-url-route-powershell.md) of de [Azure Portal](create-url-route-portal.md).
 
@@ -182,7 +181,7 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
+## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
 In dit artikel maakt u drie virtuele-machine schaal sets die ondersteuning bieden voor de drie back-endservers die u hebt gemaakt. U maakt schaalsets met de namen *myvmss1*, *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u NGINX installeert.
 
@@ -248,7 +247,7 @@ az network public-ip show \
 
 ![Basis-URL testen in de toepassingsgateway](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Wijzig de URL in http:// &lt; IP-adres &gt; : 8080/images/test.html, waarbij u het IP-adres voor het &lt; IP-adres vervangt &gt; , en u ziet iets als in het volgende voor beeld:
+Wijzig de URL in http://&lt;IP-adres&gt;:8080/images/test.html, waarbij u &lt;ip-adres&gt; vervangt door uw eigen IP-adres. U krijgt nu iets te zien zoals in het volgende voorbeeld:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 

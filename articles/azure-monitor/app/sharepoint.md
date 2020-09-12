@@ -2,20 +2,20 @@
 title: Een SharePoint-site met Application Insights bewaken
 description: Een nieuwe toepassing bewaken met een nieuwe instrumentatiesleutel
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 0d365e1fbcc52e14cfc727dd1de3e31a7d3e5d68
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326525"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536494"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Een SharePoint-site met Application Insights bewaken
 
 Azure Application Insights bewaakt de beschikbaarheid, de prestaties en het gebruik van uw apps. Hier wordt uitgelegd hoe u dit kunt instellen voor een SharePoint-site.
 
 > [!NOTE]
-> Vanwege beveiligings problemen kunt u het script dat in dit artikel wordt beschreven, niet rechtstreeks toevoegen aan uw webpagina's in de share point moderne UX. Als alternatief kunt u [share point Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) gebruiken om een aangepaste extensie te maken die u kunt gebruiken om Application Insights te installeren op uw share point-sites. Zie [How to Create a SPFx extension Solution](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) [(Engelstalig) (Engelstalig](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)) voor meer informatie. 
+> Vanwege beveiligings problemen kunt u het script dat in dit artikel wordt beschreven, niet rechtstreeks toevoegen aan uw webpagina's in de share point moderne UX. Als alternatief kunt u [share point Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) gebruiken om een aangepaste extensie te maken die u kunt gebruiken om Application Insights te installeren op uw share point-sites. Zie [How to Create a SPFx extension Solution](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) [(Engelstalig) (Engelstalig](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample-NPM)) voor meer informatie. 
 
 ## <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 Maak in de [Azure Portal](https://portal.azure.com) een nieuwe Application Insights-resource. Kies ASP.NET als het toepassingstype.

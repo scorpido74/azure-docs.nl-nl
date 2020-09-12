@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226740"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482586"
 ---
 # <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 
@@ -23,14 +23,14 @@ De volgende tabel bevat de gegevens typen die worden ondersteund door Azure Time
 | Gegevenstype | Beschrijving | Voorbeeld | [Syntaxis van de expressie time series](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Naam van eigenschaps kolom in Parquet
 |---|---|---|---|---|
 | **booleaans** | Een gegevens type met een van de twee statussen: `true` of `false` . | `"isQuestionable" : true` | `$event.isQuestionable.Bool` of `$event['isQuestionable'].Bool` | `isQuestionable_bool`
-| **datum/tijd** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Als ' eventProcessedLocalTime ' de tijds tempel van de gebeurtenis bron is: `$event.$ts` . Als het een andere JSON-eigenschap is: `$event.eventProcessedLocalTime.DateTime` of `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
+| **datetime** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Als ' eventProcessedLocalTime ' de tijds tempel van de gebeurtenis bron is: `$event.$ts` . Als het een andere JSON-eigenschap is: `$event.eventProcessedLocalTime.DateTime` of `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Een 64-bits getal met dubbele precisie  | `"value": 31.0482941` | `$event.value.Double` of `$event['value'].Double` |  `value_double`
 | **long** | Een ondertekend 64-bits geheel getal  | `"value" : 31` | `$event.value.Long` of `$event['value'].Long` |  `value_long`
-| **tekenreeksexpressie** | Tekst waarden moeten bestaan uit geldige UTF-8. Null en lege teken reeksen worden op dezelfde manier behandeld. |  `"site": "DIM_MLGGG"`| `$event.site.String` of `$event['site'].String`| `site_string`
-| **dynamisch** | Een complex (niet-primitieve) type dat bestaat uit een matrix of eigenschappen verzameling (Dictionary). Momenteel worden alleen stringified JSON-matrices van primitieven of matrices met objecten die de TS-ID of tijds tempel eigenschap (s) bevatten, opgeslagen als dynamisch. Lees dit [artikel](./concepts-json-flattening-escaping-rules.md) voor meer informatie over hoe objecten worden afgevlakt en matrices kunnen niet worden gerollt. Payload-eigenschappen die zijn opgeslagen als dit type zijn alleen toegankelijk door te selecteren `Explore Events` in de TSI-Verkenner om onbewerkte gebeurtenissen weer te geven of via de [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   query-API voor het parseren van de client. |  `"values": "[197, 194, 189, 188]"` | Het verwijzen naar dynamische typen in een time series-expressie wordt nog niet ondersteund | `values_dynamic`
+| **tekenreeks** | Tekst waarden moeten bestaan uit geldige UTF-8. Null en lege teken reeksen worden op dezelfde manier behandeld. |  `"site": "DIM_MLGGG"`| `$event.site.String` of `$event['site'].String`| `site_string`
+| **dynamisch** | Een complex (niet-primitieve) type dat bestaat uit een matrix of eigenschappen verzameling (Dictionary). Momenteel worden alleen stringified JSON-matrices van primitieven of matrices met objecten die de TS-ID of tijds tempel eigenschap (s) bevatten, opgeslagen als dynamisch. Lees dit [artikel](./concepts-json-flattening-escaping-rules.md) voor meer informatie over hoe objecten worden afgevlakt en matrices kunnen niet worden gerollt. Payload-eigenschappen die zijn opgeslagen als dit type zijn alleen toegankelijk door te selecteren `Explore Events` in de time series Insights Explorer om onbewerkte gebeurtenissen weer te geven of via de [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   query-API voor het parseren van de client. |  `"values": "[197, 194, 189, 188]"` | Het verwijzen naar dynamische typen in een time series-expressie wordt nog niet ondersteund | `values_dynamic`
 
 > [!NOTE]
-> waarden van 64 bits geheel getal worden ondersteund, maar het grootste aantal dat de Azure Time Series Insights Explorer veilig kan uitdrukken, is 9.007.199.254.740.991 (2 ^ 53-1) vanwege beperkingen van Java script. Als u in het bovenstaande gegevens model met getallen werkt, kunt u de grootte verminderen door een variabele voor de [tijd reeks model](/concepts-variables#numeric-variables) te maken en de waarde te [converteren](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) .
+> waarden van 64 bits geheel getal worden ondersteund, maar het grootste aantal dat de Azure Time Series Insights Explorer veilig kan uitdrukken, is 9.007.199.254.740.991 (2 ^ 53-1) vanwege beperkingen van Java script. Als u in het bovenstaande gegevens model met getallen werkt, kunt u de grootte verminderen door een variabele voor de [tijd reeks model](/azure/time-series-insights/concepts-variables#numeric-variables) te maken en de waarde te [converteren](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) .
 
 > [!NOTE]
 > **Teken reeks** type is niet nullbaar:

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/21/2020
+ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 8a22e8f0bde2d13b4055566d96680fadc2db6e11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80337098"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595356"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Op afstand werken: NVA-overwegingen (Network Virtual Appliance) voor extern werk
 
@@ -52,6 +52,8 @@ Elke NVA-oplossing heeft zijn eigen hulp middelen en bronnen voor het bewaken va
 De belangrijkste NVA-partners hebben richt lijnen om te schalen voor plotselinge, onverwachte groei tijdens COVID-19. Hier volgen enkele handige koppelingen naar partner bronnen.
 
 [Barracuda werken vanaf thuis en tijdens het beveiligen van uw gegevens tijdens COVID-19](https://www.barracuda.com/covid-19/work-from-home "Werk vanaf thuis inschakelen en uw gegevens beschermen tijdens COVID-19")
+
+[Controle punt veilig extern personeel tijdens coronavirus](https://www.checkpoint.com/solutions/secure-remote-workforce-during-coronavirus/ "Veilig extern personeel tijdens coronavirus")
 
 [Cisco AnyConnect-implementatie en prestaties/schaal referentie voor COVID-19-voor bereiding](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "Cisco AnyConnect-implementatie en prestaties/schaal referentie voor COVID-19-voor bereiding")
 

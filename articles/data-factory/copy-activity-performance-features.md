@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846340"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440538"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Functies voor het optimaliseren van de activiteit prestaties
 
@@ -91,7 +91,7 @@ De volgende tabel geeft een overzicht van het gedrag van parallelle kopieën:
 
 | Scenario kopiëren | Gedrag van parallelle Kopieer bewerking |
 | --- | --- |
-| Tussen bestands archieven | `parallelCopies`bepaalt de parallellisme **op bestands niveau**. De Chunking binnen elk bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste juiste segment grootte te gebruiken voor een gegeven type gegevens opslag om gegevens parallel te laden. <br/><br/>Het werkelijke aantal Kopieer activiteiten voor parallelle kopieën dat tijdens de uitvoerings tijd wordt gebruikt, is niet groter dan het aantal bestanden dat u hebt. Als het Kopieer gedrag wordt **mergeFile** in de bestands sink, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau. |
+| Tussen bestands archieven | `parallelCopies` bepaalt de parallellisme **op bestands niveau**. De Chunking binnen elk bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste juiste segment grootte te gebruiken voor een gegeven type gegevens opslag om gegevens parallel te laden. <br/><br/>Het werkelijke aantal Kopieer activiteiten voor parallelle kopieën dat tijdens de uitvoerings tijd wordt gebruikt, is niet groter dan het aantal bestanden dat u hebt. Als het Kopieer gedrag wordt **mergeFile** in de bestands sink, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau. |
 | Uit bestands archief naar niet-bestands archief | -Bij het kopiëren van gegevens naar Azure SQL Database of Azure Cosmos DB is de standaard parallelle kopie ook afhankelijk van de Sink-laag (aantal Dtu's/RUs).<br>-Bij het kopiëren van gegevens naar een Azure-tabel is de standaard parallelle kopie 4. |
 | Van niet-bestands opslag naar File Store | -Bij het kopiëren van gegevens uit een gegevens archief met partitie opties ( [inclusief Azure SQL database](connector-azure-sql-database.md#azure-sql-database-as-the-source), Azure [SQL Managed instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP Hana](connector-sap-hana.md#sap-hana-as-source), [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)en [Teradata](connector-teradata.md#teradata-as-source)), is de standaard parallelle kopie 4. Het werkelijke aantal kopieën van de parallelle Kopieer activiteit wordt gebruikt tijdens de uitvoering van het aantal gegevens partities dat u hebt. Wanneer u zelf-hostende Integration Runtime gebruikt en naar Azure Blob/ADLS Gen2 kopieert, noteert u de maximale efficiënte parallelle kopie 4 of 5 per IR-knoop punt.<br>-Voor andere scenario's worden parallelle kopieën niet van kracht. Zelfs als parallelisme is opgegeven, wordt het niet toegepast. |
 | Tussen niet-bestands archieven | -Bij het kopiëren van gegevens naar Azure SQL Database of Azure Cosmos DB is de standaard parallelle kopie ook afhankelijk van de Sink-laag (aantal Dtu's/RUs).<br/>-Bij het kopiëren van gegevens uit een gegevens archief met partitie opties ( [inclusief Azure SQL database](connector-azure-sql-database.md#azure-sql-database-as-the-source), Azure [SQL Managed instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SAP Hana](connector-sap-hana.md#sap-hana-as-source), [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source)en [Teradata](connector-teradata.md#teradata-as-source)), is de standaard parallelle kopie 4.<br>-Bij het kopiëren van gegevens naar een Azure-tabel is de standaard parallelle kopie 4. |
@@ -126,7 +126,7 @@ Wanneer u een waarde voor de `parallelCopies` eigenschap opgeeft, neemt u de bel
 
 Wanneer u gegevens uit een brongegevens archief naar een Sink-gegevens archief kopieert, kunt u ervoor kiezen om Blob-opslag te gebruiken als een tijdelijke faserings opslag. Fase ring is met name handig in de volgende gevallen:
 
-- **U wilt gegevens uit verschillende gegevens archieven opnemen in azure Synapse Analytics (voorheen SQL Data Warehouse) via Poly base.** Azure Synapse Analytics maakt gebruik van poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in azure Synapse Analytics te laden. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob Storage of Azure Data Lake Store, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het efficiënt laden van gegevens in azure Synapse Analytics. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)voor meer informatie.
+- **U wilt gegevens uit verschillende gegevens archieven opnemen in azure Synapse Analytics (voorheen SQL Data Warehouse) via Poly base.** Azure Synapse Analytics maakt gebruik van poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in azure Synapse Analytics te laden. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob Storage of Azure Data Lake Store, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het efficiënt laden van gegevens in azure Synapse Analytics. Zie [poly Base gebruiken om gegevens te laden in azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)voor meer informatie.
 - **Soms duurt het even om een hybride gegevens verplaatsing (dat wil zeggen, kopiëren van een on-premises gegevens archief naar een gegevens archief in de Cloud) uit te voeren via een trage netwerk verbinding.** Om de prestaties te verbeteren, kunt u gefaseerde kopie gebruiken om de gegevens on-premises te comprimeren, zodat het minder tijd kost om gegevens te verplaatsen naar de faserings gegevens opslag in de Cloud. Vervolgens kunt u de gegevens in het faserings archief decomprimeren voordat u ze laadt in de doel gegevens opslag.
 - **U wilt geen andere poorten dan poort 80 en poort 443 openen in uw firewall vanwege het IT-beleid van het bedrijf.** Wanneer u bijvoorbeeld gegevens kopieert van een on-premises gegevens archief naar een Azure SQL Database sink of een Azure Synapse Analytics-sink, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario kan een gefaseerde kopie gebruikmaken van de zelf-hostende Integration runtime om eerst gegevens te kopiëren naar een staging-opslag instantie van een BLOB via HTTP of HTTPS op poort 443. Vervolgens kunnen de gegevens worden geladen in SQL Database of Azure Synapse Analytics vanuit de fase van het maken van Blob-opslag. In deze stroom hoeft u poort 1433 niet in te scha kelen.
 
@@ -146,10 +146,10 @@ Configureer de instelling **enableStaging** in de Kopieer activiteit om op te ge
 
 | Eigenschap | Beschrijving | Standaardwaarde | Vereist |
 | --- | --- | --- | --- |
-| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |Niet waar |Nee |
+| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |False |No |
 | linkedServiceName |Geef de naam op van een gekoppelde [opslag](connector-azure-blob-storage.md#linked-service-properties) -service die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag niet gebruiken met een Shared Access Signature om gegevens te laden in azure Synapse Analytics via Poly base. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
-| leertraject |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |Nee |
-| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |Niet waar |Nee |
+| leertraject |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |No |
+| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |False |No |
 
 >[!NOTE]
 > Als u een gefaseerde kopie gebruikt terwijl compressie is ingeschakeld, wordt de service-principal of MSI-verificatie voor de gekoppelde BLOB-hostservice niet ondersteund.
@@ -194,7 +194,7 @@ Er worden kosten in rekening gebracht op basis van twee stappen: de duur en het 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 - [Gids voor de prestaties en schaal baarheid van de Kopieer activiteit](copy-activity-performance.md)
 - [Prestaties van de Kopieer activiteit oplossen](copy-activity-performance-troubleshooting.md)
 - [Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure](data-migration-guidance-overview.md)

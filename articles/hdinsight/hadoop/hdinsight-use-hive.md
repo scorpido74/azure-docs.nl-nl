@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 95af0cd4b59863ad0f591476441d9a7733765453
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076025"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462272"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
 
@@ -23,7 +23,7 @@ Met hive kunt u de structuur projecteren op grotendeels ongestructureerde gegeve
 
 HDInsight biedt verschillende cluster typen, die zijn afgestemd op specifieke werk belastingen. De volgende cluster typen worden meestal gebruikt voor Hive-query's:
 
-|Cluster type |Description|
+|Clustertype |Beschrijving|
 |---|---|
 |Interactive Query|Een Hadoop-cluster dat [LLAP-functionaliteit (Low latentie Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) biedt om de reactie tijden voor interactieve query's te verbeteren. Zie het document [Start with Interactive query in HDInsight](../interactive-query/apache-interactive-query-get-started.md) voor meer informatie.|
 |Hadoop|Een Hadoop-cluster dat is afgestemd op werk belastingen voor batch verwerking. Zie het document [beginnen met Apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) voor meer informatie.|
@@ -100,7 +100,7 @@ Hive kan ook worden uitgebreid via door de **gebruiker gedefinieerde functies (U
 
 * [Een door de gebruiker gedefinieerde C#-functie gebruiken met Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Een aangepaste Apache Hive door de gebruiker gedefinieerde functie toevoegen aan HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Een aangepaste Apache Hive door de gebruiker gedefinieerde functie toevoegen aan HDInsight](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [Een voor beeld Apache Hive door de gebruiker gedefinieerde functie voor het converteren van datum/tijd-indelingen naar Hive-time stamp](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -131,7 +131,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 In het vorige voor beeld voeren de HiveQL-instructies de volgende acties uit:
 
-|Rekeningen |Description |
+|Rekeningen |Beschrijving |
 |---|---|
 |TABEL NEERZETTEN|Als de tabel al bestaat, verwijdert u deze.|
 |CREATE EXTERNAL TABLE|Hiermee maakt u een nieuwe **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie en in de oorspronkelijke indeling.|
@@ -164,7 +164,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Met deze instructies worden de volgende acties uitgevoerd:
 
-|Rekeningen |Description |
+|Rekeningen |Beschrijving |
 |---|---|
 |CREATE TABLE ALS DEZE NIET BESTAAT|Als de tabel niet bestaat, maakt u deze. Omdat het **externe** sleutel woord niet wordt gebruikt, maakt deze instructie een interne tabel. De tabel wordt opgeslagen in het Hive-Data Warehouse en wordt volledig beheerd door Hive.|
 |OPGESLAGEN ALS ORC|Hiermee worden de gegevens opgeslagen in de ORC-indeling (Optimized Row in kolommen). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.|

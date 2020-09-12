@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949130"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595075"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Hieronder ziet u enkele voor beelden van situaties die een verouderde publicatie
 
 ## <a name="switch-to-a-different-git-repository"></a>Overschakelen naar een andere Git-opslag plaats
 
-Als u wilt overschakelen naar een andere Git-opslag plaats, klikt u op het pictogram **Git opslag plaats-instellingen** in de rechter bovenhoek van de pagina overzicht van Data Factory. Als u het pictogram niet kunt zien, wist u de cache van de lokale browser. Selecteer het pictogram om de koppeling met de huidige opslag plaats te verwijderen.
+Als u wilt overschakelen naar een andere Git-opslag plaats, gaat u naar de pagina Git-configuratie in de beheer hub onder **broncode beheer**. Selecteer **verbinding verbreken**. 
 
-![Git-pictogram](media/author-visually/remove-repo.png)
+![Git-pictogram](media/author-visually/remove-repository.png)
 
-Zodra het deel venster instellingen van de opslag plaats wordt weer gegeven, selecteert u **Git verwijderen**. Voer uw data factory naam in en klik op **bevestigen** om de Git-opslag plaats te verwijderen die is gekoppeld aan uw Data Factory.
+Voer uw data factory naam in en klik op **bevestigen** om de Git-opslag plaats te verwijderen die is gekoppeld aan uw Data Factory.
 
-![De koppeling met de huidige Git-opslag plaats verwijderen](media/author-visually/remove-repo2.png)
+![De koppeling met de huidige Git-opslag plaats verwijderen](media/author-visually/remove-repository-2.png)
 
 Nadat u de koppeling met de huidige opslag plaats hebt verwijderd, kunt u uw Git-instellingen configureren voor het gebruik van een andere opslag plaats en vervolgens bestaande Data Factory resources importeren in de nieuwe opslag plaats.
 

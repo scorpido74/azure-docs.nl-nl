@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249158"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442902"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-multi tenant-app
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ SaaS-toepassingen die u ontwikkelt, hebben toegang tot een grote hoeveelheid Ten
 
 Het is eenvoudig om toegang te krijgen tot de gegevens voor alle tenants wanneer alle gegevens zich in slechts één data base met meerdere tenants bevinden. Maar de toegang is complexer wanneer deze op schaal wordt gedistribueerd over duizenden data bases. Een manier om de complexiteit te beheersenen is het extra heren van de gegevens naar een Analytics-Data Base of een Data Warehouse. Vervolgens voert u een query uit op het Data Warehouse om inzichten te verzamelen van de gegevens van tickets van alle tenants.
 
-In deze zelf studie wordt een volledig analyse scenario voor deze voor beeld van een SaaS-toepassing weer gegeven. Eerst worden elastische taken gebruikt voor het plannen van het ophalen van gegevens uit elke Tenant database. De gegevens worden verzonden naar een analyse-archief. Het analyse archief kan een SQL Database of een SQL Data Warehouse zijn. Voor grootschalige gegevens extractie is [Azure Data Factory](../../data-factory/introduction.md) Commended.
+In deze zelf studie wordt een volledig analyse scenario voor deze voor beeld van een SaaS-toepassing weer gegeven. Eerst worden elastische taken gebruikt voor het plannen van het ophalen van gegevens uit elke Tenant database. De gegevens worden verzonden naar een analyse-archief. Het analyse archief kan een SQL Database of een Azure Synapse Analytics (voorheen SQL Data Warehouse) zijn. Voor grootschalige gegevens extractie is [Azure Data Factory](../../data-factory/introduction.md) Commended.
 
 Vervolgens worden de geaggregeerde gegevens vernietigd tot een set [ster-schema](https://www.wikipedia.org/wiki/Star_schema) tabellen. De tabellen bestaan uit een centrale feiten tabel plus gerelateerde dimensie tabellen:
 
@@ -176,7 +176,7 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 
     ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinden**.  
+5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinding maken**.  
 
     ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

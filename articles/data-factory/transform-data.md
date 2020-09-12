@@ -1,6 +1,6 @@
 ---
 title: Gegevens transformeren
-description: Meer informatie over het transformeren van gegevens of het verwerken van gegevens in Azure Data Factory met Hadoop, Machine Learning of Azure Data Lake Analytics.
+description: Gegevens transformeren of gegevens verwerken in Azure Data Factory met behulp van Hadoop, Machine Learning of Azure Data Lake Analytics.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606616"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442782"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Gegevens transformeren in Azure Data Factory
 
@@ -78,7 +78,7 @@ De voorspellende modellen in de Machine Learning Score experimenten moeten na ve
 Zie [machine learning activiteiten gebruiken](transform-data-using-machine-learning.md) voor meer informatie over deze machine learning activiteiten. 
 
 ### <a name="stored-procedure-activity"></a>Opgeslagen procedure activiteit
-U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure SQL Data Warehouse, SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](transform-data-using-stored-procedure.md) voor meer informatie.  
+U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken om een opgeslagen procedure in een van de volgende gegevens archieven aan te roepen: Azure SQL Database, Azure Synapse Analytics (voorheen SQL Data Warehouse), SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](transform-data-using-stored-procedure.md) voor meer informatie.  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
 Met Data Lake Analytics U-SQL-activiteit wordt een U-SQL-script op een Azure Data Lake Analytics cluster uitgevoerd. Zie [het artikel Data Analytics U-SQL-activiteit](transform-data-using-data-lake-analytics.md) voor meer informatie. 

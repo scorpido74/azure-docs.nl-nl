@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: NAT-vereisten voor circuits'
 description: Deze pagina bevat gedetailleerde vereisten voor het configureren en beheren van de NAT voor ExpressRoute-circuits.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: 62effa04fd6130c35d3e2e64a401c124fe383200
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: a2c322c765d39a3afe4974ed88bf4dc18fd467a3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521918"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569642"
 ---
 # <a name="expressroute-nat-requirements"></a>NAT-vereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u NAT's instellen en beheren. Sommige connecitiviteitsproviders bieden het instellen en beheren van NAT aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de vereisten die hieronder worden beschreven. 
@@ -20,7 +20,7 @@ Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-ser
 Bekijk de pagina [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuits en routeringsdomeinen) voor een overzicht van de verschillende routeringsdomeinen. Om te voldoen aan de vereisten voor openbare IP-adressen voor openbare Azure-peering en Microsoft-peering, wordt u aangeraden om NAT in te stellen tussen uw netwerk en Microsoft. In deze sectie vindt u een gedetailleerde beschrijving van de NAT-infrastructuur die u moet instellen.
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>NAT-vereisten voor Microsoft-peering
-Met het pad voor Microsoft-peering kunt u verbinding maken met Microsoft Cloud-services die niet worden ondersteund via het pad voor openbare Azure-peering. De lijst met Services bevat Office 365-Services, zoals Exchange Online, share point online en Skype voor bedrijven. Microsoft verwacht bidirectionele connectiviteit op de Microsoft-peering te gaan ondersteunen. Verkeer dat is bestemd voor Microsoft Cloud-services moet met SNAT worden omgezet naar geldige openbare IPv4-adressen voordat het het Microsoft-netwerk binnenkomt. Verkeer dat is bestemd voor uw netwerk en afkomstig is van Microsoft Cloud-services, moet met SNAT worden omgezet aan de kant van uw internet om [asymmetrische routering](expressroute-asymmetric-routing.md) te voorkomen. In de afbeelding hieronder ziet u hoe de NAT moet worden ingesteld voor micro soft-peering.
+Met het pad voor Microsoft-peering kunt u verbinding maken met Microsoft Cloud-services die niet worden ondersteund via het pad voor openbare Azure-peering. De lijst met Services bevat Microsoft 365 Services, zoals Exchange Online, share point online en Skype voor bedrijven. Microsoft verwacht bidirectionele connectiviteit op de Microsoft-peering te gaan ondersteunen. Verkeer dat is bestemd voor Microsoft Cloud-services moet met SNAT worden omgezet naar geldige openbare IPv4-adressen voordat het het Microsoft-netwerk binnenkomt. Verkeer dat is bestemd voor uw netwerk en afkomstig is van Microsoft Cloud-services, moet met SNAT worden omgezet aan de kant van uw internet om [asymmetrische routering](expressroute-asymmetric-routing.md) te voorkomen. In de afbeelding hieronder ziet u hoe de NAT moet worden ingesteld voor micro soft-peering.
 
 ![Diagram op hoog niveau van hoe de NAT moet worden ingesteld voor micro soft-peering.](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -34,7 +34,7 @@ Met het pad voor Microsoft-peering kunt u verbinding maken met Microsoft Cloud-s
   > 
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Verkeer dat afkomstig is van Microsoft en is bestemd voor Microsoft
-* In bepaalde scenario's moet Microsoft connectiviteit starten met service-eindpunten die worden gehost in uw netwerk. Een typisch voorbeeld van het scenario is connectiviteit met ADFS-servers die vanuit Office 365 wordt gehost in uw netwerk. In dergelijke gevallen moet u vanuit uw netwerk geschikte voorvoegsels naar de Microsoft-peering laten lekken. 
+* In bepaalde scenario's moet Microsoft connectiviteit starten met service-eindpunten die worden gehost in uw netwerk. Een typisch voor beeld van het scenario is de verbinding met ADFS-servers die worden gehost in uw netwerk van Microsoft 365. In dergelijke gevallen moet u vanuit uw netwerk geschikte voorvoegsels naar de Microsoft-peering laten lekken. 
 * U moet Microsoft-verkeer met SNAT omzetten aan de kant van internet voor service-eindpunten in uw netwerk om [asymmetrische routering](expressroute-asymmetric-routing.md) te voorkomen. Aanvragen **en antwoorden** met een doel-IP die overeenkomt met een route ontvangen via ExpressRoute worden altijd verzonden via ExpressRoute. Er is sprake van asymmetrische routering als de aanvraag is ontvangen via internet en het antwoord wordt verzonden via ExpressRoute. Als het inkomende Microsoft-verkeer met SNAT wordt omgezet aan de kant van internet, wordt antwoordverkeer terug naar de kant van internet gedwongen, waarmee het probleem wordt opgelost.
 
 ![Asymmetrische routering met ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)

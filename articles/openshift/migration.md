@@ -1,18 +1,18 @@
 ---
-title: Migreren van een Azure Red Hat open Shift 3,11 naar Azure Red Hat open Shift 4
-description: Migreren van een Azure Red Hat open Shift 3,11 naar Azure Red Hat open Shift 4
+title: Migreren van een Azure Red Hat OpenShift 3.11 naar Azure Red Hat OpenShift 4
+description: Migreren van een Azure Red Hat OpenShift 3.11 naar Azure Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migratie, Aro, open Shift, Red Hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513186"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469742"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migreren van Azure Red Hat open Shift 3,11 naar Azure Red Hat open Shift 4
 
@@ -100,7 +100,7 @@ Zie voor meer informatie over het configureren van deze opslag typen [permanente
 
 Azure Red Hat open Shift 4 kan installatie kopieën bouwen van uw bron code, deze implementeren en hun levens cyclus beheren. Om dit mogelijk te maken, biedt Azure Red Hat open Shift vier een [intern, geïntegreerd REGI ster voor container installatie kopieën](https://docs.openshift.com/aro/4/registry/registry-options.html) dat kan worden geïmplementeerd in uw Azure Red Hat open Shift-omgeving om installatie kopieën lokaal te beheren.
 
-Als u externe registers gebruikt, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/), [Red Hat kade](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)-registers of een rood Hat-bestand met [verificatie mogelijkheden](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), voert u de stappen uit om referenties aan het cluster toe te voegen zodat het cluster toegang heeft tot de opslag plaatsen.
+Als u externe registers gebruikt, zoals [Azure container Registry](../container-registry/index.yml), [Red Hat kade](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)-registers of een rood Hat-bestand met [verificatie mogelijkheden](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), voert u de stappen uit om referenties aan het cluster toe te voegen zodat het cluster toegang heeft tot de opslag plaatsen.
 
 ### <a name="monitoring"></a>Bewaking
 
@@ -128,4 +128,3 @@ az openshift delete --name $CLUSTER_NAME
 ```
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk [hier](https://docs.openshift.com/aro/4/welcome/index.html)de Azure Red Hat open Shift-documentatie van Red Hat.
-

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978999"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438939"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API-wijzigings logboek
 > [!NOTE]
@@ -75,7 +75,7 @@ Toevoegingen van functies:
 ### <a name="feature-additions"></a>Functie toevoegingen
 * Het nieuwe StorageFormat type [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) -type is toegevoegd om bestanden te kopiëren in de indeling van de geoptimaliseerde rij in kolommen (Orc).
 * Voeg de eigenschappen [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) en PolyBaseSettings toe aan SqlDWSink.
-  * Hiermee schakelt u het gebruik van poly base in voor het kopiëren van gegevens naar SQL Data Warehouse.
+  * Hiermee schakelt u het gebruik van poly base in voor het kopiëren van gegevens naar Azure Synapse Analytics (voorheen SQL Data Warehouse).
 
 ## <a name="version-461"></a>Versie 4.6.1
 ### <a name="bug-fixes"></a>Opgeloste fouten
@@ -181,5 +181,5 @@ De naam van de volgende klassen is gewijzigd. De nieuwe namen bevinden zich in d
 * **Lijst** PIJPLIJN-API retourneert alleen de samen vatting van een pijp lijn in plaats van volledige details. Bijvoorbeeld: activiteiten in een pijp lijn-samen vatting bevatten alleen naam en type.
 
 ### <a name="feature-additions"></a>Functie toevoegingen
-* De klasse [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) ondersteunt twee nieuwe eigenschappen, **SliceIdentifierColumnName** en **SqlWriterCleanupScript**, ter ondersteuning van idempotent kopiëren naar Azure SQL Data Warehouse. Raadpleeg het [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) artikel voor meer informatie over deze eigenschappen.
-* We ondersteunen nu het uitvoeren van een opgeslagen procedure voor Azure SQL Database en Azure SQL Data Warehouse bronnen als onderdeel van de Kopieer activiteit. De klassen [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) en [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) hebben de volgende eigenschappen: **SqlReaderStoredProcedureName** en **StoredProcedureParameters**. Zie de [Azure SQL database](data-factory-azure-sql-connector.md#sqlsource) -en [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) artikelen op Azure.com voor meer informatie over deze eigenschappen.  
+* De klasse [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) ondersteunt twee nieuwe eigenschappen, **SliceIdentifierColumnName** en **SqlWriterCleanupScript**, ter ondersteuning van idempotent-kopie naar Azure Azure Synapse Analytics. Zie het artikel over [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) voor meer informatie over deze eigenschappen.
+* We ondersteunen nu het uitvoeren van een opgeslagen procedure voor Azure SQL Database en Azure Synapse Analytics-bronnen als onderdeel van de Kopieer activiteit. De klassen [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) en [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) hebben de volgende eigenschappen: **SqlReaderStoredProcedureName** en **StoredProcedureParameters**. Raadpleeg de [Azure SQL database](data-factory-azure-sql-connector.md#sqlsource) -en [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) -artikelen over Azure.com voor meer informatie over deze eigenschappen.  

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543381"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651094"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -71,7 +71,7 @@ Geregistreerde modellen worden geïdentificeerd met naam en versie. Telkens wann
 U kunt een geregistreerd model dat wordt gebruikt in een actieve implementatie, niet verwijderen.
 Zie de sectie model registreren van [modellen implementeren](how-to-deploy-and-where.md#registermodel)voor meer informatie.
 
-### <a name="profile-models"></a>Profiel modellen
+### <a name="profile-models"></a>Profielmodellen
 
 Azure Machine Learning kunt u meer inzicht krijgen in de vereisten voor de CPU en het geheugen van de service die wordt gemaakt wanneer u uw model implementeert. Profile ring test de service die uw model uitvoert en retourneert informatie zoals het CPU-gebruik, het geheugen gebruik en de reactie latentie. Het biedt ook een aanbeveling van CPU en geheugen op basis van het resource gebruik.
 Zie de sectie Profiler van [modellen implementeren](how-to-deploy-profile-model.md)voor meer informatie.
@@ -158,7 +158,7 @@ Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets
 > [!TIP]
 > Hoewel er automatisch een aantal informatie over modellen en gegevens sets wordt vastgelegd, kunt u extra informatie toevoegen met behulp van __Tags__. Wanneer u op zoek bent naar geregistreerde modellen en gegevens sets in uw werk ruimte, kunt u Tags gebruiken als filter.
 >
-> Een gegevensset koppelen aan een geregistreerd model is een optionele stap. Zie de verwijzing naar [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) klassen voor informatie over het verwijzen naar een gegevensset bij het registreren van een model.
+> Een gegevensset koppelen aan een geregistreerd model is een optionele stap. Zie de verwijzing naar [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) klassen voor informatie over het verwijzen naar een gegevensset bij het registreren van een model.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de levens cyclus van ML

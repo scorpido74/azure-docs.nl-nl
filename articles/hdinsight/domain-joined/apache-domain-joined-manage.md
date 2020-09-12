@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079731"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595781"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-clusters beheren met Enterprise Security Package
 
@@ -47,7 +47,7 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
 
 Enterprise Security Package (voorheen bekend als HDInsight Premium) biedt toegang van meerdere gebruikers tot het cluster, waarbij de verificatie wordt uitgevoerd door Active Directory en autorisatie door Apache zwerver en opslag-Acl's (ADLS Acl's). Autorisatie biedt een veilige grenzen tussen meerdere gebruikers en geeft alleen bevoegde gebruikers toegang tot de gegevens op basis van het autorisatie beleid.
 
-Beveiliging en gebruikers isolatie zijn belang rijk voor een HDInsight-cluster met Enterprise Security Package. Om aan deze vereisten te voldoen, wordt SSH-toegang tot het cluster met Enterprise Security Package geblokkeerd. De volgende tabel bevat de aanbevolen toegangs methoden voor elk cluster type:
+Beveiliging en gebruikers isolatie zijn belang rijk voor een HDInsight-cluster met Enterprise Security Package. Om aan deze vereisten te voldoen, wordt SSH-toegang tot het cluster met Enterprise Security Package ondersteund voor de lokale gebruiker die is geselecteerd op het moment dat het cluster wordt gemaakt, evenals de gebruikers die beschikbaar zijn in AAD-DS (d.w.z. Kerberos). De volgende tabel bevat de aanbevolen toegangs methoden voor elk cluster type:
 
 |Workload|Scenario|Toegangs methode|
 |--------|--------|-------------|
@@ -55,7 +55,7 @@ Beveiliging en gebruikers isolatie zijn belang rijk voor een HDInsight-cluster m
 |Apache Spark|Interactieve taken/Query's, PySpark Interactive|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin met livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive-weergave](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC-Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio-Hulpprogram Ma's](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Batch-Scenario's – Spark-verzen ding, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Interactieve query (LLAP)|Interactief|<ul><li>[Beeline](#beeline)</li><li>[Hive-weergave](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC-Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio-Hulpprogram Ma's](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Alle|Aangepaste toepassing installeren|<ul><li>[Script acties](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+|Elk|Aangepaste toepassing installeren|<ul><li>[Scriptacties](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
    > [!NOTE]  
    > Jupyter is niet geïnstalleerd/ondersteund in Enterprise Security Package.

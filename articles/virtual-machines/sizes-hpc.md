@@ -6,21 +6,23 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/01/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8870c83506b1d962b94cd4d671bd3acd3e96c17c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905360"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595730"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
 Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het leveren van prestaties van een leiderschaps klasse, MPI-schaal baarheid en rendabele efficiëntie voor diverse realistische HPC-workloads.
 
-[HBv2-serie](hbv2-series.md) De functie Vm's 200 GB/sec Mellanox HDR InfiniBand, terwijl zowel de virtuele machines van de HB-als de HC-serie 100 GB/sec Mellanox EDR InfiniBand zijn. Elk van deze VM-typen is verbonden met een niet-blokkerende Fat-structuur voor geoptimaliseerde en consistente RDMA-prestaties. HBv2 Vm's ondersteunen adaptieve route ring en het dynamisch verbonden Trans Port (DCT, in aanvulling op standaard-RC-en UD-transporten). Deze functies verbeteren de prestaties, schaal baarheid en consistentie van toepassingen, en het gebruik ervan wordt ten zeerste aanbevolen.
+[HBv2-serie](hbv2-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugen bandbreedte, zoals een Hydraulic-dynamiek, een eindige element analyse en reservoir simulatie. HBv2 Vm's feature 120 AMD EPYC 7742-processor kernen, 4 GB RAM per CPU-kern en zonder gelijktijdige multi threading. Elke HBv2-VM biedt tot 340 GB/sec. geheugen bandbreedte en Maxi maal 4 teraFLOPS van FP64 compute.
+
+HBv2 Vm's feature 200 GB/sec Mellanox HDR InfiniBand, terwijl zowel de virtuele machines van de HB-als de HC-serie 100 GB/sec Mellanox EDR InfiniBand zijn. Elk van deze VM-typen is verbonden met een niet-blokkerende Fat-structuur voor geoptimaliseerde en consistente RDMA-prestaties. HBv2 Vm's ondersteunen adaptieve route ring en het dynamisch verbonden Trans Port (DCT, in aanvulling op standaard-RC-en UD-transporten). Deze functies verbeteren de prestaties, schaal baarheid en consistentie van toepassingen, en het gebruik ervan wordt ten zeerste aanbevolen.
 
 [HB-serie](hb-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugen bandbreedte, zoals een Hydraulic-dynamiek, een expliciete, beperkte element analyse en weer modellen. HB Vm's feature 60 AMD EPYC 7551-processor kernen, 4 GB RAM per CPU-kern en geen hyperthreading. Het AMD EPYC-platform biedt meer dan 260 GB/sec. geheugen bandbreedte.
 
@@ -35,7 +37,7 @@ Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het levere
 
 De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over een netwerk interface voor RDMA-verbindingen (Remote Direct Memory Access). De geselecteerde [N-serie-](./nc-series.md) grootten die zijn aangewezen met r (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 en NC24r) zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is in de andere VM-grootten.
 
-Met deze interface kunnen de RDMA-compatibele instanties communiceren via een InfiniBand-netwerk (IB), op basis van de HDR-tarieven voor HBv2, EDR-tarieven voor HB, HC, NDv2, FDR-tarieven voor H16r, H16mr en andere RDMA-compatibele virtuele machines van de N-serie, en QDR tarieven voor A8 en A9 Vm's. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen. Zie de details in de tabellen op deze pagina voor meer informatie over de snelheid.
+Met deze interface kunnen de RDMA-compatibele instanties communiceren via een InfiniBand-netwerk (IB), op basis van de HDR-tarieven voor HBv2, EDR-tarieven voor HB, HC, NDv2, FDR-tarieven voor H16r, H16mr en andere RDMA-compatibele virtuele machines van de N-serie, en QDR tarieven voor A8 en A9 Vm's. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen.
 
 > [!NOTE]
 > In azure HPC zijn er twee klassen Vm's, afhankelijk van het feit of SR-IOV is ingeschakeld voor InfiniBand. Momenteel zijn de SR-IOV voor InfiniBand ingeschakelde Vm's: HBv2, HB, HC, NCv3 en NDv2. Voor de rest van de InfiniBand ingeschakelde Vm's is SR-IOV momenteel niet ingeschakeld.
@@ -60,7 +62,7 @@ Met deze interface kunnen de RDMA-compatibele instanties communiceren via een In
 
 Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm's die kunnen communiceren met behulp van het RDMA-netwerk, waaronder: 
 
-- **Virtuele machines** : implementeer de met RDMA compatibele HPC-vm's in dezelfde schaalset of beschikbaarheidsset (wanneer u het Azure Resource Manager-implementatie model gebruikt). Als u het klassieke implementatie model gebruikt, implementeert u de virtuele machines in dezelfde Cloud service.
+- **Virtuele machines**  : implementeer de met RDMA compatibele HPC-vm's in dezelfde schaalset of beschikbaarheidsset (wanneer u het Azure Resource Manager-implementatie model gebruikt). Als u het klassieke implementatie model gebruikt, implementeert u de virtuele machines in dezelfde Cloud service.
 
 - **Virtuele-machine schaal sets** : in een schaalset voor virtuele machines zorgt u ervoor dat u de implementatie beperkt tot één plaatsings groep voor InfiniBand-communicatie binnen de schaalset. Stel bijvoorbeeld in een resource manager-sjabloon de eigenschap in `singlePlacementGroup` op `true` . Houd er rekening mee dat de maximale grootte van de schaalset die met de eigenschap kan worden ingesteld `singlePlacementGroup` , standaard wordt afgesteld `true` op 100 vm's. Als uw HPC-taken schaal behoeften hoger zijn dan 100 Vm's in één Tenant, kunt u een verhoging aanvragen, [een online klant ondersteunings aanvraag openen](../azure-portal/supportability/how-to-create-azure-support-request.md) . De limiet voor het aantal virtuele machines in één schaalset kan worden verhoogd tot 300. Houd er rekening mee dat bij het implementeren van Vm's met beschikbaarheids sets de maximum limiet is 200 Vm's per Beschikbaarheidsset.
 
@@ -90,7 +92,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
@@ -100,5 +102,5 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [het configureren van uw vm's, het](./workloads/hpc/configure.md) [inschakelen van Infiniband](./workloads/hpc/enable-infiniband.md), het [instellen van MPI](./workloads/hpc/setup-mpi.md) en het optimaliseren van HPC-toepassingen voor Azure bij [HPC-workloads](./workloads/hpc/overview.md).
-- Meer informatie over de laatste aankondigingen en enkele HPC-voor beelden en-resultaten vindt u in de blogs van de [technische community van Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
-- Zie [High Performance Computing (HPC) in azure](/azure/architecture/topics/high-performance-computing/)voor een architectuur weergave op een hoger niveau voor het uitvoeren van HPC-workloads.
+- Lees over de laatste aankondigingen en enkele HPC-voorbeelden en -resultaten in de [Azure Compute Tech Community-blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) op Azure](/azure/architecture/topics/high-performance-computing/) voor een gedetailleerdere architectuurweergave van HPC-workloads die worden uitgevoerd.

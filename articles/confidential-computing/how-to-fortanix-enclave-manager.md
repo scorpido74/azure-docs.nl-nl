@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826290"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462425"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Procedure: een toepassing uitvoeren met Fortanix enclave Manager 
 
@@ -24,7 +24,7 @@ Start het uitvoeren van uw toepassing in azure vertrouwelijk Computing met behul
 Fortanix is een software leverancier van derden met producten en services die zijn gebouwd boven op de Azure-infra structuur. Er zijn andere providers van derden die vergelijk bare Services voor vertrouwelijke computing aanbieden op Azure.
 
 > [!Note] 
- > DE PRODUCTEN WAARNAAR IN DIT DOCUMENT WORDT VERWEZEN, VALLEN NIET ONDER HET BEHEER VAN MICRO SOFT. MICRO SOFT LEVERT DEZE INFORMATIE ALLEEN ALS EEN GEMAK EN DE VERWIJZING NAAR DEZE NIET-MICRO SOFT-PRODUCTEN IMPLICEERT GEEN GOED KEURING DOOR MICRO SOFT.
+ > De producten waarnaar in dit document wordt verwezen, vallen niet onder het beheer van micro soft. Micro soft levert deze informatie alleen als een gemak en de verwijzing naar deze niet-micro soft-producten impliceert geen goed keuring door micro soft.
 
 
 
@@ -43,7 +43,7 @@ In deze zelf studie leert u hoe u de installatie kopie van uw toepassing kunt co
 > Accounts voor gratis proefversies hebben geen toegang tot de virtuele machines die in deze zelfstudie worden gebruikt. U moet upgraden naar een abonnement met betalen per gebruik.
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>Een toepassing toevoegen aan Fortanix enclave Manager
-1. Meld u aan bij [FORTANIX em](https://fortanix.com)
+1. Meld u aan bij [Fortanix enclave Manager (FORTANIX em)](https://em.fortanix.com)
 1. Navigeer naar de pagina **accounts** en selecteer **account toevoegen** om een nieuw account te maken. 
     
 ![Een account maken](media/how-to-fortanix-enclave-manager/create-account.png)
@@ -120,7 +120,7 @@ Als u een Fortanix-knoop punt agent maakt, worden een virtuele machine, netwerk 
 1. Op deze pagina voert u informatie in voor het implementeren van een virtuele machine. Met name deze VM is een virtuele machine met Intel SGX-functionaliteit voor DCsv2 van Azure met Fortanix-knooppunt agent software geïnstalleerd. Met de knooppunt agent kan de geconverteerde afbeelding veilig worden uitgevoerd op Intel SGX-knoop punten in Azure.  Selecteer het **abonnement** en de **resource groep** waar u de virtuele machine en de bijbehorende resources wilt implementeren. 
  
     > [!NOTE]
-    > Er zijn beperkingen bij het implementeren van virtuele machines uit de DCsv2-serie in Azure. Mogelijk moet u een quotum aanvragen voor extra kern geheugens. Lees meer informatie over de [oplossingen voor vertrouwelijke Computing op Azure-vm's](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solution) . 
+    > Er zijn beperkingen bij het implementeren van virtuele machines uit de DCsv2-serie in Azure. Mogelijk moet u een quotum aanvragen voor extra kern geheugens. Lees meer informatie over de [oplossingen voor vertrouwelijke Computing op Azure-vm's](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
 
 1. Selecteer een beschikbare regio.
 1. Voer in het veld **knooppunt naam** een naam in voor de virtuele machine. 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 9ffc2af0309f8a682db04b36675a3c29725c44fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67bb77777ee1052a5429dc4599ed30593b9ae2ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324450"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436558"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Een Transparent Data Encryption-Protector (TDE) verwijderen met behulp van Power shell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -35,7 +35,7 @@ Houd er rekening mee dat wanneer de TDE-Protector wordt verwijderd in Key Vault,
 Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resultaat na een reactie op incidenten:
 
 - De data bases in Azure SQL Database/Azure Synapse Analytics **ontoegankelijk**maken.
-- De data bases in Azure SQL Database/Azure SQL Data Warehouse niet **toegankelijk**maken.
+- De data bases in Azure SQL Database/Azure Azure Synapse Analytics (voorheen SQL Data Warehouse) niet **toegankelijk**maken.
 
 ## <a name="prerequisites"></a>Vereisten
 

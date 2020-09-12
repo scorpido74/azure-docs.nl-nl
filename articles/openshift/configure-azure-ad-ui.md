@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590316"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469878"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Active Directory authenticatie configureren voor een Azure Red Hat open Shift 4-cluster (Portal)
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.6.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -50,7 +50,7 @@ Navigeer naar het **overzicht** en noteer de id van de **toepassing (client) ID*
 
 ## <a name="configure-optional-claims"></a>Optionele claims configureren
 
-Ontwikkel aars van toepassingen kunnen [optionele claims](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) in hun Azure AD-toepassingen gebruiken om op te geven welke claims ze willen in tokens die naar hun toepassing worden verzonden.
+Ontwikkel aars van toepassingen kunnen [optionele claims](../active-directory/develop/active-directory-optional-claims.md) in hun Azure AD-toepassingen gebruiken om op te geven welke claims ze willen in tokens die naar hun toepassing worden verzonden.
 
 U kunt optionele claims gebruiken voor het volgende:
 
@@ -68,11 +68,11 @@ Navigeer naar **token configuratie (preview)** en klik op **optionele claim toev
 
 Toepassingen die zijn geregistreerd in een Azure Active Directory-Tenant (Azure AD), zijn standaard beschikbaar voor alle gebruikers van de Tenant die zijn geverifieerd. Met Azure AD kunnen Tenant beheerders en ontwikkel aars een app beperken tot een specifieke set gebruikers of beveiligings groepen in de Tenant.
 
-Volg de instructies in de Azure Active Directory-documentatie om [gebruikers en groepen toe te wijzen aan de app](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration).
+Volg de instructies in de Azure Active Directory-documentatie om [gebruikers en groepen toe te wijzen aan de app](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration).
 
 ## <a name="configure-openshift-openid-authentication"></a>Open Shift OpenID Connect-verificatie configureren
 
-De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wacht woord voor de gebruiker te zoeken `kubeadmin` .
+De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wachtwoord voor de `kubeadmin`-gebruiker te vinden.
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -80,7 +80,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeven `kubeadminPassword` .
+In de volgende voorbeeld ziet u dat het wachtwoord in `kubeadminPassword` is.
 
 ```json
 {
@@ -89,7 +89,7 @@ In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeve
 }
 ```
 
-U kunt de URL van de cluster console vinden door de volgende opdracht uit te voeren, die er als volgt uitziet: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+U kunt de URL van de clusterconsole vinden door de volgende opdracht uit te voeren, die eruit ziet als `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -98,9 +98,9 @@ U kunt de URL van de cluster console vinden door de volgende opdracht uit te voe
     --query "consoleProfile.url" -o tsv
 ```
 
-Start de console-URL in een browser en meld u aan met de `kubeadmin` referenties.
+Start de console-URL in een browser en meld u aan met de referenties van `kubeadmin`.
 
-Navigeer naar **beheer**, klik op **cluster instellingen**en selecteer vervolgens het tabblad **globale configuratie** . Schuif naar Select **OAuth**.
+Ga naar **beheer**, klik op **cluster instellingen**en selecteer vervolgens het tabblad **globale configuratie** . Schuif naar Select **OAuth**.
 
 Schuif omlaag om **toevoegen** onder **id-providers** te selecteren en selecteer **OpenID Connect Connect**.
 ![Selecteer OpenID Connect Connect in de vervolg keuzelijst ID-providers](media/aro4-oauth-idpdrop.png)

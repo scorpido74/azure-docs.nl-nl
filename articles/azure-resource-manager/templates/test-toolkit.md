@@ -2,19 +2,19 @@
 title: ARM-sjabloon test Toolkit
 description: Hierin wordt beschreven hoe u de ARM-sjabloon test Toolkit uitvoert op uw sjabloon. Met de Toolkit kunt u zien of u aanbevolen procedures hebt geïmplementeerd.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7b88096dfdd1c7fb3e2671a369132e75a8885b8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255930"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439557"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM-sjabloon test Toolkit gebruiken
 
-Met de [arm-sjabloon test Toolkit](https://aka.ms/arm-ttk) wordt gecontroleerd of de sjabloon aanbevolen procedures gebruikt. Als uw sjabloon niet voldoet aan de aanbevolen procedures, wordt een lijst met waarschuwingen met de voorgestelde wijzigingen geretourneerd. Met behulp van de test Toolkit kunt u leren hoe u veelvoorkomende problemen bij het ontwikkelen van sjablonen voor komt.
+Met de [Azure Resource Manager (arm)-sjabloon test Toolkit](https://aka.ms/arm-ttk) wordt gecontroleerd of de sjabloon aanbevolen procedures gebruikt. Als uw sjabloon niet voldoet aan de aanbevolen procedures, wordt een lijst met waarschuwingen met de voorgestelde wijzigingen geretourneerd. Met behulp van de test Toolkit kunt u leren hoe u veelvoorkomende problemen bij het ontwikkelen van sjablonen voor komt.
 
 De test Toolkit bevat een aantal [standaard testen](test-cases.md). Deze tests zijn aanbevelingen, maar geen vereisten. U kunt bepalen welke tests relevant zijn voor uw doelen en aanpassen welke tests worden uitgevoerd.
 
@@ -22,53 +22,103 @@ In dit artikel wordt beschreven hoe u de test Toolkit uitvoert en hoe u tests to
 
 De Toolkit is een set Power shell-scripts die kunnen worden uitgevoerd met een opdracht in Power shell of CLI.
 
-## <a name="download-test-toolkit"></a>Test Toolkit downloaden
+## <a name="install-on-windows"></a>Installeren in Windows
 
-Als u de test Toolkit wilt gebruiken, kunt u de [opslag plaats](https://aka.ms/arm-ttk) met de scripts splitsen en klonen of [het meest recente zip-bestand downloaden](https://aka.ms/arm-ttk-latest).
+1. Als u Power shell nog niet hebt, [installeert u Power shell in Windows](/powershell/scripting/install/installing-powershell-core-on-windows).
 
-Afhankelijk van het uitvoerings beleid van de computer waarop u het script uitvoert, wordt mogelijk een fout bericht weer geven over het uitvoeren van scripts van het internet. U moet ofwel het [uitvoerings beleid](/powershell/module/microsoft.powershell.core/about/about_execution_policies) wijzigen of [de blok kering van de script bestanden opheffen](/powershell/module/microsoft.powershell.utility/unblock-file).
+1. [Down load het meest recente zip-bestand](https://aka.ms/arm-ttk-latest) voor de test Toolkit en pak het uit.
 
-## <a name="run-on-powershell"></a>Uitvoeren op Power shell
+1. Start Power shell.
 
-Importeer de module voordat u de tests uitvoert.
+1. Navigeer naar de map waar u de test Toolkit hebt uitgepakt. Ga in deze map naar **arm-ttk** map.
 
-```powershell
-Import-Module .\arm-ttk.psd1 # from the same directory as .\arm-ttk.psd1
-```
+1. Als uw [uitvoerings beleid](/powershell/module/microsoft.powershell.core/about/about_execution_policies) scripts van Internet blokkeert, moet u de blok kering van de script bestanden opheffen. Zorg ervoor dat u zich in de map **arm-ttk** bevindt.
 
-Als u de tests in **Power shell**wilt uitvoeren, gebruikt u de volgende opdracht:
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
 
-```powershell
-Test-AzTemplate -TemplatePath $TemplateFolder
-```
+1. Importeer de module.
 
-## <a name="run-on-linux"></a>Uitvoeren op Linux
+   ```powershell
+   Import-Module .\arm-ttk.psd1
+   ```
 
-Installeer [Power shell core](/powershell/scripting/install/installing-powershell-core-on-linux)voordat u de tests uitvoert.
+1. Als u de tests wilt uitvoeren, gebruikt u de volgende opdracht:
 
-Als u de tests op **Linux** in bash wilt uitvoeren, gebruikt u de volgende opdracht:
+   ```powershell
+   Test-AzTemplate -TemplatePath \path\to\template
+   ```
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+## <a name="install-on-linux"></a>Installeren in Linux
 
-U kunt ook de test uitvoeren op pwsh.exe.
+1. Als u Power shell nog niet hebt, [installeert u Power shell op Linux](/powershell/scripting/install/installing-powershell-core-on-linux).
 
-## <a name="run-on-macos"></a>Uitvoeren op macOS
+1. [Down load het meest recente zip-bestand](https://aka.ms/arm-ttk-latest) voor de test Toolkit en pak het uit.
 
-Installeer [Power shell core](/powershell/scripting/install/installing-powershell-core-on-macos)voordat u de tests uitvoert. 
+1. Start Power shell.
 
-`coreutils` installeren:
+   ```bash
+   pwsh
+   ```
 
-```bash
-brew install coreutils
-```
+1. Navigeer naar de map waar u de test Toolkit hebt uitgepakt. Ga in deze map naar **arm-ttk** map.
 
-Als u de tests op **macOS**wilt uitvoeren, gebruikt u de volgende opdracht:
+1. Als uw [uitvoerings beleid](/powershell/module/microsoft.powershell.core/about/about_execution_policies) scripts van Internet blokkeert, moet u de blok kering van de script bestanden opheffen. Zorg ervoor dat u zich in de map **arm-ttk** bevindt.
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Importeer de module.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. Als u de tests wilt uitvoeren, gebruikt u de volgende opdracht:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
+
+## <a name="install-on-macos"></a>Installeren in Mac OS
+
+1. Als u Power shell nog niet hebt, [installeert u Power shell op macOS](/powershell/scripting/install/installing-powershell-core-on-macos).
+
+1. `coreutils` installeren:
+
+   ```bash
+   brew install coreutils
+   ```
+
+1. [Down load het meest recente zip-bestand](https://aka.ms/arm-ttk-latest) voor de test Toolkit en pak het uit.
+
+1. Start Power shell.
+
+   ```bash
+   pwsh
+   ```
+
+1. Navigeer naar de map waar u de test Toolkit hebt uitgepakt. Ga in deze map naar **arm-ttk** map.
+
+1. Als uw [uitvoerings beleid](/powershell/module/microsoft.powershell.core/about/about_execution_policies) scripts van Internet blokkeert, moet u de blok kering van de script bestanden opheffen. Zorg ervoor dat u zich in de map **arm-ttk** bevindt.
+
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Importeer de module.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. Als u de tests wilt uitvoeren, gebruikt u de volgende opdracht:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
 
 ## <a name="result-format"></a>Resultaat indeling
 

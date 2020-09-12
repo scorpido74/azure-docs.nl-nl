@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146654"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651148"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Gedistribueerde training met Azure Machine Learning
 
@@ -24,7 +24,7 @@ In de gedistribueerde training wordt de werk belasting voor het trainen van een 
 
 ## <a name="deep-learning-and-distributed-training"></a>Diep gaande lessen en gedistribueerde trainingen 
 
-Er zijn twee hoofd typen gedistribueerde training: [gegevens parallellisme](#data-parallelism) en [model parallellisme](#model-parallelism). Voor gedistribueerde training over diepe leer modellen ondersteunt de [Azure machine learning SDK in python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) integraties met populaire frameworks, PyTorch en tensor flow. Beide Frameworks gebruiken gegevens parallellisme voor gedistribueerde trainingen en kunnen gebruikmaken van [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) voor het optimaliseren van reken snelheden. 
+Er zijn twee hoofd typen gedistribueerde training: [gegevens parallellisme](#data-parallelism) en [model parallellisme](#model-parallelism). Voor gedistribueerde training over diepe leer modellen ondersteunt de [Azure machine learning SDK in python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) integraties met populaire frameworks, PyTorch en tensor flow. Beide Frameworks gebruiken gegevens parallellisme voor gedistribueerde trainingen en kunnen gebruikmaken van [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) voor het optimaliseren van reken snelheden. 
 
 * [Gedistribueerde training met PyTorch](how-to-train-pytorch.md#distributed-training)
 

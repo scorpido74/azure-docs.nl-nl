@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure
 description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771373"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536435"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Machine-afhankelijkheden analyseren (zonder agents)
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden ins
 
 - In de weer gave afhankelijkheids analyse kunt u op dit moment geen server toevoegen aan of verwijderen uit een groep.
 - Een afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
-- De afhankelijkheids gegevens kunnen niet worden gedownload in de indeling tabellair.
+- Het verzamelen van afhankelijkheids gegevens kan gelijktijdig worden ingesteld voor 400-servers. U kunt een groter aantal servers analyseren door sequentiëren in batches van 400.
 
 ## <a name="before-you-start"></a>Voordat u begint
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: fdaffef6c682bd1f9c81f14af6cd949816f7555a
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815824"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505519"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
@@ -155,10 +155,15 @@ De analyse-TTL voor een container wordt ingesteld met behulp van de `AnalyticalS
 * Indien aanwezig en de waarde is ingesteld op een positief getal ' n ': items verlopen vanaf de ' n ' seconden van het analytische archief na de laatste wijziging in het transactionele archief. Deze instelling kan worden gebruikt als u uw operationele gegevens gedurende een beperkte periode wilt bewaren in de analytische opslag, ongeacht de retentie van de gegevens in het transactionele archief
 
 Enkele punten om in overweging te nemen:
-*   Nadat de analytische opslag is ingeschakeld met een analytische TTL-waarde, kan deze later worden bijgewerkt naar een andere geldige waarde. 
-*   Hoewel transactionele TTL kan worden ingesteld op container-of item niveau, kan analytische TTL alleen op het container niveau worden ingesteld.
-*   U kunt uw operationele gegevens in het analytische archief langer bewaren door de analytische TTL >= transactionele TTL op het niveau van de container in te stellen.
-*   De analytische opslag kan worden gemaakt om het transactionele archief te spie gelen door analytische TTL = transactionele TTL in te stellen.
+*   Nadat de analytische opslag is ingeschakeld met een analytische TTL-waarde, kan deze later worden bijgewerkt naar een andere geldige waarde 
+*   Hoewel transactionele TTL kan worden ingesteld op container-of item niveau, kan analytische TTL alleen worden ingesteld op het niveau van de container
+*   U kunt uw operationele gegevens in het analytische archief langer bewaren door de analytische TTL >= transactionele TTL op het niveau van de container in te stellen
+*   De analytische opslag kan worden gemaakt om het transactionele archief te spie gelen door analytische TTL = transactionele TTL in te stellen
+
+Wanneer u anaytical-archief inschakelt in een container:
+ * met behulp van Azure Portal is de analyse-TTL ingesteld op de standaard waarde-1. U kunt deze waarde wijzigen in ' n ' seconden door te navigeren naar container instellingen onder Data Explorer. 
+ 
+ * met Azure SDK of Power shell of CLI kunt u de analytische TTL inschakelen door deze in te stellen op-1 of n. 
 
 Zie [analytische TTL configureren voor een container](configure-synapse-link.md#create-analytical-ttl)voor meer informatie.
 

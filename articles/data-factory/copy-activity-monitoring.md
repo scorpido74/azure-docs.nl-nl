@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036365"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440606"
 ---
 # <a name="monitor-copy-activity"></a>Kopieeractiviteit bewaken
 
@@ -30,7 +30,7 @@ Zodra u een pijp lijn in Azure Data Factory hebt gemaakt en gepubliceerd, kunt u
 
 Als u de uitvoering van de Kopieer activiteit wilt controleren, gaat u naar uw data factory **Author & monitor** -gebruikers interface. Op het tabblad **monitor** ziet u een lijst met pijplijn uitvoeringen, klikt u op de koppeling van de **pijplijn naam** voor toegang tot de lijst met uitvoeringen van activiteiten in de pijplijn uitvoering.
 
-![Uitvoering van Kopieer activiteit controleren](./media/copy-activity-overview/monitor-pipeline-run.png)
+![De uitvoering van de pijplijn controleren](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 Op dit niveau ziet u koppelingen om de invoer van de activiteit, uitvoer en fouten te kopiëren (als de Kopieer activiteit is mislukt), evenals statistieken zoals duur/status. Als u op de knop **Details** (bril) naast de naam van de Kopieer activiteit klikt, krijgt u gedetailleerde informatie over de uitvoering van de Kopieer activiteit. 
 
@@ -38,7 +38,7 @@ Op dit niveau ziet u koppelingen om de invoer van de activiteit, uitvoer en fout
 
 In deze weer gave van de grafische bewaking geeft Azure Data Factory u de informatie over de uitvoering van de Kopieer activiteit, inclusief gegevens lezen/schrijven volume, het aantal bestanden/rijen gegevens dat is gekopieerd van bron naar sink, door Voer, de configuraties die worden toegepast voor uw Kopieer scenario, stappen die door de Kopieer activiteit worden uitgevoerd met de bijbehorende duur en Details. Raadpleeg [deze tabel](#monitor-programmatically) voor elke mogelijke metriek en de gedetailleerde beschrijving ervan. 
 
-In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Data Factory, de weer gave voor het **afstemmen van prestaties** aan de bovenkant van de bewakings weergave voor het kopiëren van activiteiten, zoals wordt weer gegeven in het voor beeld. De tips geven u de knel punt aan die door ADF is geïdentificeerd voor de specifieke Kopieer uitvoering, samen met suggesties voor wat u moet wijzigen om de door Voer van de Kopieer capaciteit te verhogen. Meer informatie over [Tips voor automatisch afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
+In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Data Factory, de weer gave voor het **afstemmen van prestaties**  aan de bovenkant van de bewakings weergave voor het kopiëren van activiteiten, zoals wordt weer gegeven in het voor beeld. De tips geven u de knel punt aan die door ADF is geïdentificeerd voor de specifieke Kopieer uitvoering, samen met suggesties voor wat u moet wijzigen om de door Voer van de Kopieer capaciteit te verhogen. Meer informatie over [Tips voor automatisch afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
 
 In de **Details van de onderste uitvoering en de duur** worden de belangrijkste stappen beschreven waarmee uw Kopieer activiteit wordt uitgevoerd. Dit is met name handig bij het oplossen van problemen met de Kopieer prestaties. Het knel punt van de Kopieer uitvoering is de versie met de langste duur. Raadpleeg de [prestaties van de Kopieer activiteit oplossen](copy-activity-performance-troubleshooting.md) voor wat elke fase vertegenwoordigt en de gedetailleerde richt lijnen voor probleem oplossing.
 
@@ -67,7 +67,7 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
 | doorvoer | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int32-waarde (geen eenheid) |
 | sinkPeakConnections| Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit.| Int32-waarde (geen eenheid) |
-| sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Booleaans |
+| sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens worden gekopieerd naar Azure Synapse Analytics (voorheen SQL Data Warehouse). | Booleaans |
 | redshiftUnload | Hiermee wordt aangegeven of verwijderen wordt gebruikt wanneer gegevens uit Redshift worden gekopieerd. | Booleaans |
 | hdfsDistcp | Hiermee wordt aangegeven of DistCp wordt gebruikt wanneer gegevens worden gekopieerd uit HDFS. | Booleaans |
 | effectiveIntegrationRuntime | Het uitvoeren van de uitvoering van de activiteit (IR) of runtime (Integration runtime), in de indeling `<IR name> (<region if it's Azure IR>)` . | Tekst (teken reeks) |
@@ -163,6 +163,6 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-\-[Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+\- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 
 \- [Prestaties van kopieeractiviteit](copy-activity-performance.md)

@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: routerings vereisten'
 description: Deze pagina bevat gedetailleerde vereisten voor het configureren en beheren van routering voor ExpressRoute-circuits.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.author: cherylmc
-ms.openlocfilehash: 7e70348ba1638057fdab579c1f2799a0f5aa77a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341362"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569608"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connecitiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -83,7 +83,7 @@ U moet voor het instellen van de BGP-sessies openbare IP-adressen gebruiken waar
 U kunt kiezen om openbare of persoonlijke IPv4-adressen te gebruiken voor persoonlijke peering. We bieden end-to-end-isolatie van uw verkeer, zodat het overlappen van adressen met andere klanten niet mogelijk is in het geval van persoonlijke peering. Deze adressen worden niet geadverteerd naar internet. 
 
 ### <a name="microsoft-peering"></a>Microsoft-peering
-Met het micro soft-peering-pad kunt u verbinding maken met micro soft-Cloud Services. De lijst met Services bevat Office 365-Services, zoals Exchange Online, share point online, Skype voor bedrijven en micro soft teams. Microsoft ondersteunt bidirectionele connectiviteit op de Microsoft-peering. Verkeer dat is bestemd voor Microsoft Cloud-services, moet geldige openbare IPv4-adressen gebruiken voordat het het Microsoft-netwerk binnenkomt.
+Met het micro soft-peering-pad kunt u verbinding maken met micro soft-Cloud Services. De lijst met Services omvat Microsoft 365 Services, zoals Exchange Online, share point online, Skype voor bedrijven en micro soft teams. Microsoft ondersteunt bidirectionele connectiviteit op de Microsoft-peering. Verkeer dat is bestemd voor Microsoft Cloud-services, moet geldige openbare IPv4-adressen gebruiken voordat het het Microsoft-netwerk binnenkomt.
 
 Controleer of uw IP-adres en AS-nummer in een van de volgende registers op uw naam zijn geregistreerd:
 
@@ -100,7 +100,7 @@ Als uw voorvoegsel en AS-nummer in voorgaande registers niet aan u zijn toegewez
 Een persoonlijk AS-nummer is toegestaan met Microsoft-peering, maar moet ook handmatig worden gevalideerd. Bovendien verwijderen we persoonlijke AS-nummers in het AS-pad voor de ontvangen voorvoegsels. Hierdoor is het niet mogelijk om persoonlijke AS-nummers aan het AS-pad toe te voegen om [routering voor Microsoft-peering te beïnvloeden](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Adverteer niet dezelfde open bare IP-route naar het open bare Internet en over ExpressRoute. Om het risico te verminderen dat een onjuiste configuratie wordt veroorzaakt door asymmetrische route ring, raden wij u ten zeerste aan dat de [NAT IP-adressen](expressroute-nat.md) die naar micro soft worden geadverteerd via ExpressRoute, afkomstig zijn uit een bereik dat helemaal niet is geadverteerd naar Internet. Als dit niet mogelijk is, is het van essentieel belang om ervoor te zorgen dat u een meer specifiek bereik aankondigt boven ExpressRoute dan het account dat op de Internet verbinding is. Naast de open bare route voor NAT kunt u ook adverteren via ExpressRoute de open bare IP-adressen die worden gebruikt door de servers in uw on-premises netwerk die communiceren met Office 365-eind punten in micro soft. 
+> Adverteer niet dezelfde open bare IP-route naar het open bare Internet en over ExpressRoute. Om het risico te verminderen dat een onjuiste configuratie wordt veroorzaakt door asymmetrische route ring, raden wij u ten zeerste aan dat de [NAT IP-adressen](expressroute-nat.md) die naar micro soft worden geadverteerd via ExpressRoute, afkomstig zijn uit een bereik dat helemaal niet is geadverteerd naar Internet. Als dit niet mogelijk is, is het van essentieel belang om ervoor te zorgen dat u een meer specifiek bereik aankondigt boven ExpressRoute dan het account dat op de Internet verbinding is. Naast de open bare route voor NAT kunt u ook adverteren via ExpressRoute de open bare IP-adressen die worden gebruikt door de servers in uw on-premises netwerk die communiceren met Microsoft 365-eind punten in micro soft. 
 > 
 > 
 
@@ -138,7 +138,7 @@ Standaardroutes zijn alleen toegestaan voor persoonlijke Azure-peeringsessies. I
 * U gebruikt door de gebruiker gedefinieerde routering om internetconnectiviteit toe te staan voor elk subnet dat internetconnectiviteit vereist.
 
 > [!NOTE]
-> Wanneer standaardroutes worden geadverteerd, wordt de activering van Windows- en andere VM-licenties verbroken. Volg [deze](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) instructies als u dit wilt omzeilen.
+> Wanneer standaardroutes worden geadverteerd, wordt de activering van Windows- en andere VM-licenties verbroken. Volg [deze](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) instructies als u dit wilt omzeilen.
 > 
 > 
 
@@ -204,7 +204,7 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | Zuid-Afrika - noord | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 | 12076:55034 |
 | Zuid-Afrika - west | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 | 12076:55035 |
 | **VAE**| |
-| UAE - noord | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 | 12076:55036 |
+| VAE - noord | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 | 12076:55036 |
 | UAE - centraal | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 | 12076:55037 |
 
 
@@ -229,10 +229,10 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 | Azure Resource Manager |12076:5070 |
 | Andere Office 365 Online Services * * | 12076:5100 |
 
-\*Azure Global Services omvat op dit moment alleen Azure DevOps. \
-\*\*Autorisatie vereist van micro soft; Raadpleeg [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md)\
-\*\*\*Deze community publiceert ook de benodigde routes voor de micro soft teams-Services. \
-\*\*\*\*CRM Online ondersteunt Dynamics v 8.2 en lager. Voor hogere versies selecteert u de regionale Community voor uw Dynamics-implementaties.
+\* Azure Global Services omvat op dit moment alleen Azure DevOps. \
+\*\* Autorisatie vereist van micro soft; Raadpleeg [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md)\
+\*\*\* Deze community publiceert ook de benodigde routes voor de micro soft teams-Services. \
+\*\*\*\* CRM Online ondersteunt Dynamics v 8.2 en lager. Voor hogere versies selecteert u de regionale Community voor uw Dynamics-implementaties.
 
 > [!NOTE]
 > BGP-communitywaarden die u instelt op de routes die worden geadverteerd naar Microsoft, worden niet door Microsoft erkend.

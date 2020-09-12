@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39736f0a369064e1a825ba3f6975a01c5e9ecc40
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147514"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437238"
 ---
 # <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
 
@@ -108,7 +108,7 @@ Als u geen gebruik maakt van CAE-compatibele clients, blijft de standaard levens
 1. In dit geval weigert de resource provider de toegang en stuurt een 401 + claim-Challenge terug naar de client.
 1. De-client die geschikt is voor CAE, begrijpt de 401 + claim Challenge. Het omzeilt de caches en gaat terug naar stap 1, verzendt het vernieuwings token samen met de claim uitdaging terug naar Azure AD. Azure AD evalueert vervolgens alle voor waarden en vraagt de gebruiker in dit geval opnieuw te verifiëren.
 
-### <a name="user-condition-change-flow-public-preview"></a>Wijzigings stroom voor de gebruikers voorwaarde (open bare preview):
+### <a name="user-condition-change-flow-preview"></a>Wijzigings stroom voor de gebruikers voorwaarde (preview-versie):
 
 In het volgende voor beeld heeft een beheerder van de voorwaardelijke toegang een op locatie gebaseerd beleid voor voorwaardelijke toegang geconfigureerd zodat alleen toegang vanaf specifieke IP-bereiken wordt toegestaan:
 
@@ -135,6 +135,13 @@ Op deze pagina kunt u optioneel de gebruikers en groepen beperken die aan de pre
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
+### <a name="supported-location-policies"></a>Ondersteund locatie beleid
+
+Voor CAE hebben we alleen inzicht in benoemde op IP gebaseerde benoemde locaties. We hebben geen inzicht in andere locatie-instellingen, zoals door [MFA vertrouwde IP-adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips) of locaties op basis van een land. Wanneer de gebruiker afkomstig is van een door MFA vertrouwd IP-adres of vertrouwde locaties met door MFA vertrouwde Ip's of land locatie, wordt de CAE niet afgedwongen nadat de gebruiker naar een andere locatie is verplaatst. In dergelijke gevallen geven we een CAE-token van 1 uur zonder onmiddellijke controle op IP-afdwinging uit.
+
+> [!IMPORTANT]
+> Bij het configureren van locaties voor continue toegang, gebruikt u alleen de [voor waarde voor voorwaardelijke toegang op basis van een IP-](../conditional-access/location-condition.md#preview-features) adres en configureert u alle IP-adressen, **met inbegrip van IPv4 en IPv6**, die kunnen worden weer gegeven door uw ID-provider en bronnen provider. Gebruik geen land locatie voorwaarden of de functie voor vertrouwde IP-adressen die beschikbaar is op de pagina Service-instellingen van Azure Multi-Factor Authentication.
+
 ### <a name="ip-address-configuration"></a>IP-adresconfiguratie
 
 Uw ID-provider en resource providers kunnen verschillende IP-adressen zien. Dit kan gebeuren als gevolg van implementaties van de netwerk proxy in uw organisatie of onjuiste IPv4/IPv6-configuraties tussen uw ID-provider en resource provider. Bijvoorbeeld:
@@ -144,9 +151,6 @@ Uw ID-provider en resource providers kunnen verschillende IP-adressen zien. Dit 
 - Het IP-adres dat uw ID-provider ziet maakt deel uit van een toegestaan IP-bereik in het beleid, maar het IP-adres van de resource provider is niet.
 
 Als dit scenario in uw omgeving bestaat om oneindige lussen te voor komen, geeft Azure AD een CAE-token van één uur op en wordt het wijzigen van de client locatie niet afgedwongen. Zelfs in dit geval is de beveiliging verbeterd ten opzichte van de traditionele tokens van één uur, omdat we nog steeds de [andere gebeurtenissen](#critical-event-evaluation) evalueren behalve client locatie wijzigings gebeurtenissen.
-
-> [!IMPORTANT]
-> Gebruik bij het configureren van locaties voor de evaluatie van continue toegang alleen de [voor waarde voor voorwaardelijke toegang op basis van een IP-adres](../conditional-access/location-condition.md). Gebruik geen land locatie voorwaarden of de functie voor vertrouwde IP-adressen die beschikbaar is op de pagina Service-instellingen van Azure Multi-Factor Authentication.
 
 ### <a name="office-and-web-account-manager-settings"></a>Instellingen voor Office en web-account beheer
 

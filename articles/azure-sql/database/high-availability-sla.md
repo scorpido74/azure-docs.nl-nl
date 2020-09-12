@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189934"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437669"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hoge Beschik baarheid voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,11 +91,11 @@ De zone redundante versie van de architectuur met hoge Beschik baarheid wordt ge
 
 ## <a name="accelerated-database-recovery-adr"></a>Versneld database herstel (ADR)
 
-[Versneld database herstel (ADR)](../accelerated-database-recovery.md) is een nieuwe functie van een data base-engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name in de aanwezigheid van langlopende trans acties. ADR is momenteel beschikbaar voor Azure SQL Database, Azure SQL Managed instance en Azure SQL Data Warehouse.
+[Versneld database herstel (ADR)](../accelerated-database-recovery.md) is een nieuwe functie van een data base-engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name in de aanwezigheid van langlopende trans acties. ADR is momenteel beschikbaar voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics (voorheen SQL Data Warehouse).
 
 ## <a name="testing-application-fault-resiliency"></a>Toepassings fout tolerantie testen
 
-Hoge Beschik baarheid is een fundamenteel onderdeel van het SQL Database en het SQL Managed instance-platform dat transparant werkt voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op een toepassing voordat u deze implementeert voor productie. U kunt een failover hand matig activeren door een speciale API aan te roepen om een Data Base, een elastische pool of een beheerd exemplaar opnieuw te starten. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat client verbindingen worden omgeleid naar de nieuwe primaire in een beschikbaarheids zone die afwijkt van de beschikbaarheids zone van de oude primaire. Naast het testen van de manier waarop failover van invloed is op bestaande database sessies, kunt u ook controleren of de end-to-end-prestaties worden gewijzigd vanwege wijzigingen in de netwerk latentie. Omdat de computer opnieuw moet worden opgestart, is het mogelijk dat er voor elke Data Base, elastische pool of een beheerd exemplaar slechts één failover-aanroep elke 30 minuten wordt toegestaan.
+Hoge beschikbaarheid is een fundamenteel onderdeel van het SQL Database- en SQL Managed Instance-platform dat transparant werkt voor uw databasetoepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failoverbewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen van invloed zijn op een toepassing voordat u deze implementeert voor productie. U kunt een failover hand matig activeren door een speciale API aan te roepen om een Data Base, een elastische pool of een beheerd exemplaar opnieuw te starten. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat client verbindingen worden omgeleid naar de nieuwe primaire in een beschikbaarheids zone die afwijkt van de beschikbaarheids zone van de oude primaire. Naast het testen van de manier waarop failover van invloed is op bestaande database sessies, kunt u ook controleren of de end-to-end-prestaties worden gewijzigd vanwege wijzigingen in de netwerk latentie. Omdat de computer opnieuw moet worden opgestart, is het mogelijk dat er voor elke Data Base, elastische pool of een beheerd exemplaar slechts één failover-aanroep elke 30 minuten wordt toegestaan.
 
 Een failover kan worden gestart met behulp van Power shell, REST API of Azure CLI:
 

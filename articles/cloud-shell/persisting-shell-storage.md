@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273287"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470133"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell persistent maken
 Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende sessies op te slaan. Bij de eerste keer starten Cloud Shell u gevraagd om een nieuwe of bestaande bestands share te koppelen om bestanden in verschillende sessies te behouden.
@@ -34,8 +34,8 @@ Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende s
 
 Wanneer u basis instellingen gebruikt en alleen een abonnement selecteert, maakt Cloud Shell drie resources namens u in de ondersteunde regio die het dichtst bij u ligt:
 * Resourcegroep: `cloud-shell-storage-<region>`
-* Opslag account:`cs<uniqueGuid>`
-* Bestands share:`cs-<user>-<domain>-com-<uniqueGuid>`
+* Opslag account: `cs<uniqueGuid>`
+* Bestands share: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![De abonnements instelling](media/persisting-shell-storage/basic-storage.png)
 
@@ -66,7 +66,7 @@ Als u uw huidige regio wilt vinden, kunt u `env` deze uitvoeren in bash en de va
 
 Cloud Shell machines bestaan in de volgende regio's:
 
-|Onderwerp|Regio|
+|Gebied|Regio|
 |---|---|
 |Noord- en Zuid-Amerika|VS-Oost, Zuid-Centraal VS, VS-West|
 |Europa|Europa - noord, Europa - west|
@@ -83,12 +83,12 @@ Als er een secundaire opslag regio wordt gebruikt, bevindt het gekoppelde Azure 
 Een gebruiker kan `(Get-CloudDrive | Get-AzStorageAccount).Location` in Power shell worden uitgevoerd om de locatie van de bestands share te zien.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resource beleid
-Opslag accounts die u in Cloud Shell maakt, zijn voorzien van een label `ms-resource-usage:azure-cloud-shell` . Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.
+Opslag accounts die u in Cloud Shell maakt, zijn voorzien van een label `ms-resource-usage:azure-cloud-shell` . Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../governance/policy/samples/index.md) die worden geactiveerd door deze specifieke tag.
 
 ## <a name="how-cloud-shell-storage-works"></a>Hoe Cloud Shell Storage werkt 
 Cloud Shell bestanden persistent maken via de volgende methoden: 
 * Er wordt een schijf kopie van uw `$Home` Directory gemaakt om alle inhoud in de map te behouden. De schijf installatie kopie wordt opgeslagen in de opgegeven bestands share `acc_<User>.img` , net zoals bij `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` , en de wijzigingen worden automatisch gesynchroniseerd. 
-* Koppel uw opgegeven bestands share als `clouddrive` uw `$Home` Directory voor directe interactie via bestands share. `/Home/<User>/clouddrive`is toegewezen aan `fileshare.storage.windows.net/fileshare` .
+* Koppel uw opgegeven bestands share als `clouddrive` uw `$Home` Directory voor directe interactie via bestands share. `/Home/<User>/clouddrive` is toegewezen aan `fileshare.storage.windows.net/fileshare` .
  
 > [!NOTE]
 > Alle bestanden in uw `$Home` Directory, zoals SSH-sleutels, blijven behouden in de installatie kopie van de gebruikers schijf, die wordt opgeslagen in de gekoppelde bestands share. Pas aanbevolen procedures toe wanneer u gegevens in uw `$Home` Directory en gekoppelde bestands share persistent wilt maken.
@@ -100,7 +100,7 @@ In Cloud Shell kunt u een opdracht met de naam `clouddrive` , waarmee u de besta
 
 ![De opdracht ' clouddrive ' uitvoeren](media/persisting-shell-storage/clouddrive-h.png)
 
-### <a name="list-clouddrive"></a>Orderverzamellijst`clouddrive`
+### <a name="list-clouddrive"></a>Orderverzamellijst `clouddrive`
 Als u wilt weten welke bestands share is gekoppeld als `clouddrive` , voert u de `df` opdracht uit. 
 
 Het bestandspad naar clouddrive toont de naam van uw opslag account en de bestands share in de URL. Bijvoorbeeld: `//storageaccountname.file.core.windows.net/filesharename`
@@ -157,7 +157,7 @@ De bestands share blijft bestaan, tenzij u deze hand matig verwijdert. Cloud She
 Met de `Get-CloudDrive` cmdlet worden de gegevens van de Azure-bestands share opgehaald die momenteel zijn gekoppeld door de `clouddrive` in de Cloud shell. <br>
 ![Get-CloudDrive uitvoeren](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
-### <a name="unmount-clouddrive"></a>Ontkoppelen`clouddrive`
+### <a name="unmount-clouddrive"></a>Ontkoppelen `clouddrive`
 U kunt op elk gewenst moment een Azure-bestands share ontkoppelen die aan Cloud Shell is gekoppeld. Als de Azure-bestands share is verwijderd, wordt u gevraagd om een nieuwe Azure-bestands share te maken en te koppelen tijdens de volgende sessie.
 
 `Dismount-CloudDrive`Met de cmdlet ontkoppelt u een Azure-bestands share van het huidige opslag account. Ontkoppelen van de `clouddrive` huidige sessie wordt beëindigd. De gebruiker wordt gevraagd een nieuwe Azure-bestands share te maken en koppelen tijdens de volgende sessie.
@@ -170,4 +170,4 @@ Opmerking: als u een functie in een bestand moet definiëren en deze aanroept va
 ## <a name="next-steps"></a>Volgende stappen
 [Snelstartgids Cloud Shell](quickstart.md) <br>
 [Meer informatie over de opslag van Microsoft Azure-bestanden](../storage/files/storage-files-introduction.md) <br>
-[Meer informatie over opslag Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[Meer informatie over opslag Tags](../azure-resource-manager/management/tag-resources.md) <br>

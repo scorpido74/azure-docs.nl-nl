@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038270"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536379"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace
 
@@ -65,11 +65,3 @@ Voer altijd een detectie van beveiligings problemen op uw installatie kopie uit 
 
 Zelfs als uw organisatie geen installatie kopieën heeft in de Azure Marketplace, kunt u de installatie kopieën van Windows en Linux controleren op basis van deze aanbevelingen.
 
-## <a name="contacting-customers"></a>Contact opnemen met klanten
-
-Klanten en hun e-mail adres identificeren:
-
-1.  In Cloud Partner-portal selecteert u op de rails de optie **inzichten**.
-2.  Gebruik op het tabblad **Orders en gebruik** de velden **begin datum** en **eind datum** om het gebruik van query's binnen het vereiste datum bereik te doorzoeken. Hier ziet u de Azure-abonnementen die dagelijks zijn gebruikt voor de aanbieding. Deze gegevens exporteren. 
-3.  Op dezelfde manier kunt u op het tabblad **klant** een query uitvoeren op uw klanten.
-4.  Zoek de abonnements-ID van stap 2 in de abonnements-ID uit stap 3 om de benodigde klant gegevens te vinden.

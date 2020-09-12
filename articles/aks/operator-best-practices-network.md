@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542701"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482722"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best practices voor netwerkverbinding en -beveiliging in Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ In deze best practices wordt het artikel gericht op netwerk connectiviteit en-be
 Virtuele netwerken bieden de basis connectiviteit voor AKS-knoop punten en klanten om toegang te krijgen tot uw toepassingen. Er zijn twee verschillende manieren voor het implementeren van AKS-clusters in virtuele netwerken:
 
 * **Kubenet-netwerken** : Azure beheert de virtuele netwerk resources wanneer het cluster is geïmplementeerd en maakt gebruik van de [Kubenet][kubenet] Kubernetes-invoeg toepassing.
-* **Azure cni-netwerken** : implementeert in een bestaand virtueel netwerk en maakt gebruik van de [Azure container Networking interface (cni) Kubernetes-][cni-networking] invoeg toepassing. Elk van de verschillende Ip's ontvangen die kunnen worden doorgestuurd naar andere netwerk services of on-premises bronnen.
+* **Azure cni-netwerken** : implementeert in een virtueel netwerk en maakt gebruik van de [Azure container Networking interface (cni) Kubernetes-][cni-networking] invoeg toepassing. Elk van de verschillende Ip's ontvangen die kunnen worden doorgestuurd naar andere netwerk services of on-premises bronnen.
 
 De container Networking interface (CNI) is een Vendor-neutraal protocol waarmee de container runtime aanvragen voor een netwerk provider kan indienen. De Azure CNI wijst IP-adressen toe aan de peulen en knoop punten en biedt functies voor IP-adres beheer (IPAM) wanneer u verbinding maakt met bestaande Azure Virtual Networks. Elk knoop punt en pod-resource ontvangt een IP-adres in het virtuele netwerk van Azure en er is geen verdere route ring nodig om te communiceren met andere resources of services.
 
@@ -64,7 +64,7 @@ Kubenet is geschikt voor kleine ontwikkel-en test werkbelastingen, omdat u het v
 
 **Richt lijnen voor best practices** : als u http-of HTTPS-verkeer naar uw toepassingen wilt distribueren, gebruikt u de bronnen en controllers van de ingang. Ingangs controllers bieden extra functies voor een gewone Azure-load balancer en kunnen worden beheerd als systeem eigen Kubernetes-resources.
 
-Een Azure-load balancer kan klant verkeer distribueren naar toepassingen in uw AKS-cluster, maar dit is beperkt in wat het verkeer begrijpt. Een load balancer resource werkt op laag 4 en distribueert verkeer op basis van protocollen of poorten. De meeste webtoepassingen die gebruikmaken van HTTP of HTTPS, moeten Kuberenetes inkomende bronnen en controllers gebruiken, die op laag 7 werken. Bij inkomend verkeer kunnen gegevens worden gedistribueerd op basis van de URL van de toepassing en worden de TLS/SSL-beëindiging afhandeld. Deze mogelijkheid vermindert ook het aantal IP-adressen dat u beschikbaar maakt en toewijst. Met een load balancer moet voor elke toepassing doorgaans een openbaar IP-adres zijn toegewezen en toegewezen aan de service in het AKS-cluster. Met een ingangs resource kan één IP-adres verkeer distribueren naar meerdere toepassingen.
+Een Azure-load balancer kan klant verkeer distribueren naar toepassingen in uw AKS-cluster, maar dit is beperkt in wat het verkeer begrijpt. Een load balancer resource werkt op laag 4 en distribueert verkeer op basis van protocollen of poorten. De meeste webtoepassingen die gebruikmaken van HTTP of HTTPS, moeten Kubernetes inkomende bronnen en controllers gebruiken, die op laag 7 werken. Bij inkomend verkeer kunnen gegevens worden gedistribueerd op basis van de URL van de toepassing en worden de TLS/SSL-beëindiging afhandeld. Deze mogelijkheid vermindert ook het aantal IP-adressen dat u beschikbaar maakt en toewijst. Met een load balancer moet voor elke toepassing doorgaans een openbaar IP-adres zijn toegewezen en toegewezen aan de service in het AKS-cluster. Met een ingangs resource kan één IP-adres verkeer distribueren naar meerdere toepassingen.
 
 ![Diagram van ingangs verkeers stroom in een AKS-cluster](media/operator-best-practices-network/aks-ingress.png)
 

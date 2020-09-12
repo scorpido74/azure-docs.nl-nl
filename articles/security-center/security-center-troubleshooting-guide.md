@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836002"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462391"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 
@@ -29,7 +29,7 @@ Waarschuwings typen:
 
 * VMBA (Virtual Machine Behavioral Analysis)
 * Netwerkanalyse
-* SQL Database- en SQL Data Warehouse-analyse
+* Analyse van SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse)
 * Contextuele informatie
 
 Afhankelijk van de soorten waarschuwingen, kunnen klanten met behulp van de volgende resources de benodigde gegevens verzamelen om de waarschuwing te onderzoeken:
@@ -40,7 +40,7 @@ Afhankelijk van de soorten waarschuwingen, kunnen klanten met behulp van de volg
 
 Klanten kunnen feedback delen voor waarschuwingsbeschrijving en relevantie. Navigeer naar de waarschuwing zelf, selecteer de knop **Was dit nuttig**, selecteer de reden en voer een opmerking in om de feedback uit te leggen. We houden dit feedbackkanaal constant in de gaten om onze waarschuwingen te verbeteren.
 
-## <a name="audit-log"></a>Audit logboek
+## <a name="audit-log"></a>Auditlogboek
 
 In de meeste gevallen vindt probleemoplossing in Security Center plaats door eerst de records in het [Controlelogboek](../azure-monitor/platform/platform-logs-overview.md) van het onderdeel met de fout te raadplegen. Met auditlogboeken kunt u het volgende bepalen:
 
@@ -64,7 +64,7 @@ Als u de Services Management Console (Services. msc) opent, ziet u ook de Log An
 
 Als u wilt zien welke versie van de agent u hebt, opent u **taak beheer**, gaat u naar het tabblad **processen** en gaat u naar de **log Analytics Agent-service**, klikt u erop met de rechter muisknop en klikt u op **Eigenschappen**. Op het tabblad **Details** kunt u de bestandsversie vinden, zoals hieronder wordt weergegeven:
 
-![Bestand](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Installatie scenario's voor Log Analytics agent
 
@@ -81,10 +81,10 @@ Er zijn twee installatie scenario's die verschillende resultaten kunnen oplevere
 
 **Bewakingsstatus** toont de reden waarom Security Center VM's en computers die zijn geïnitialiseerd voor automatische inrichting niet afdoende kan bewaken. In de volgende tabel ziet u de waarden, beschrijvingen en oplossingen voor **Bewakingsstatus**.
 
-| Bewakingsstatus | Description | Stappen om het probleem op te lossen |
+| Bewakingsstatus | Beschrijving | Stappen om het probleem op te lossen |
 |---|---|---|
 | Agent wacht op installatie | De installatie van de Log Analytics-agent is nog actief.  De installatie kan enkele uren duren. | Wacht totdat de automatische installatie is voltooid. |
-| Energiestatus uitgeschakeld | De virtuele machine is gestopt.  De Log Analytics-agent kan alleen worden geïnstalleerd op een virtuele machine waarop wordt uitgevoerd. | Start de VM opnieuw. |
+| Energiestatus uitgeschakeld | De virtuele machine is gestopt.  De Log Analytics-agent kan alleen worden geïnstalleerd op een virtuele machine waarop wordt uitgevoerd. | Start de VM opnieuw op. |
 | Azure VM-agent ontbreekt of is ongeldig | De Log Analytics-agent is nog niet geïnstalleerd.  Security Center installeert de extensie pas als er een geldige Azure VM-agent is. | Installeer de Azure VM-agent (opnieuw) op de virtuele machine of voer een upgrade uit. |
 | VM-status niet gereed voor installatie  | De Log Analytics-agent is nog niet geïnstalleerd, omdat de VM niet gereed is voor installatie. De virtuele machine is niet gereed voor installatie vanwege een probleem met de VM-agent of de VM-inrichting. | Controleer de status van uw virtuele machine. Ga terug naar **Virtuele machines** in de portal en selecteer de virtuele machine voor statusinformatie. |
 |Installatie is mislukt: algemene fout | De Log Analytics-agent is geïnstalleerd, maar is mislukt vanwege een fout. | [Installeer de extensie handmatig](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) of verwijder de extensie zodat Security Center deze opnieuw probeert te installeren. |
@@ -136,7 +136,7 @@ Sommige problemen kunnen worden geïdentificeerd aan de hand van de richt lijnen
 
 ![Microsoft-ondersteuning](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid configureert in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
@@ -144,11 +144,11 @@ In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid configureert in
 * [Beveiligings status controleren in azure Security Center](security-center-monitoring.md) : informatie over het controleren van de status van uw Azure-resources
 * [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) : meer informatie over het beheren en reageren op beveiligings waarschuwingen
 * [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-type.md)
-* [Zelfstudie: reageren op beveiligingsincidenten](tutorial-security-incident.md)
+* [Zelfstudie: Reageren op beveiligingsincidenten](tutorial-security-incident.md)
 * [Validatie van waarschuwingen in Azure Security Center](security-center-alert-validation.md)
 * [E-mailmeldingen in Azure Security Center](security-center-provide-security-contact-details.md)
 * [Beveiligingsincidenten afhandelen in Azure Security Center](security-center-incident.md)
 * [Detectie mogelijkheden Azure Security Center](security-center-detection-capabilities.md)
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
 * [Veelgestelde](faq-general.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service
-* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over de beveiliging en naleving van Azure
+* [Azure-beveiligings blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) : vind blog berichten over de beveiliging en naleving van Azure

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522360"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436294"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Gegevens transformeren in Azure Data Factory versie 1
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ De voorspellende modellen in de Machine Learning Score experimenten moeten na ve
 Zie [machine learning activiteiten gebruiken](data-factory-azure-ml-batch-execution-activity.md) voor meer informatie over deze machine learning activiteiten. 
 
 ## <a name="stored-procedure-activity"></a>Opgeslagen procedure activiteit
-U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure SQL Data Warehouse, SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](data-factory-stored-proc-activity.md) voor meer informatie.  
+U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken om een opgeslagen procedure in een van de volgende gegevens archieven aan te roepen: Azure SQL Database, Azure Synapse Analytics (voorheen SQL Data Warehouse), SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](data-factory-stored-proc-activity.md) voor meer informatie.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
 Met Data Lake Analytics U-SQL-activiteit wordt een U-SQL-script op een Azure Data Lake Analytics cluster uitgevoerd. Zie [het artikel Data Analytics U-SQL-activiteit](data-factory-usql-activity.md) voor meer informatie. 
@@ -93,7 +93,7 @@ Azure Data Factory ondersteunt de volgende activiteiten voor gegevens transforma
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop-streaming](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [Opgeslagen procedure](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse of SQL Server |
+| [Opgeslagen procedure](data-factory-stored-proc-activity.md) |Azure SQL, Azure Synapse Analytics of SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] of Azure Batch |
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874755"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462238"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Met python door de gebruiker gedefinieerde functies (UDF) met Apache Hive en Apache varken in HDInsight gebruiken
 
@@ -29,7 +29,7 @@ HDInsight omvat ook jython, een python-implementatie die is geschreven in Java. 
 
 * **Een Hadoop-cluster in HDInsight**. Zie aan de [slag met HDInsight op Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **Een SSH-client**. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is `wasb://` voor Azure Storage voor `abfs://` Azure Data Lake Storage Gen2 of adl://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI wasbs://zijn.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag voor uw clusters. Dit is `wasb://` voor Azure Storage voor `abfs://` Azure Data Lake Storage Gen2 of adl://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI wasbs://zijn.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 * **Mogelijke wijziging van de opslag configuratie.**  Zie [opslag configuratie](#storage-configuration) als u een type opslag account gebruikt `BlobStorage` .
 * Optioneel.  Als u Power shell wilt gebruiken, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) geïnstalleerd.
 
@@ -38,7 +38,7 @@ HDInsight omvat ook jython, een python-implementatie die is geschreven in Java. 
 
 ## <a name="storage-configuration"></a>Opslagconfiguratie
 
-U hoeft geen actie te ondernemen als het gebruikte opslag account van soort `Storage (general purpose v1)` of is `StorageV2 (general purpose v2)` .  Het proces in dit artikel produceert een uitvoer naar ten minste `/tezstaging` .  Een standaard configuratie voor Hadoop bevat `/tezstaging` in de `fs.azure.page.blob.dir` configuratie variabele `core-site.xml` voor service `HDFS` .  Deze configuratie zorgt ervoor dat de uitvoer naar de Directory wordt pagina-blobs, die niet worden ondersteund voor het type opslag account `BlobStorage` .  Als u `BlobStorage` dit artikel wilt gebruiken, verwijdert u `/tezstaging` uit de `fs.azure.page.blob.dir` configuratie variabele.  De configuratie kan worden geopend vanuit de [Ambari-gebruikers interface](../hdinsight-hadoop-manage-ambari.md).  Anders wordt het volgende fout bericht weer gegeven:`Page blob is not supported for this account type.`
+U hoeft geen actie te ondernemen als het gebruikte opslag account van soort `Storage (general purpose v1)` of is `StorageV2 (general purpose v2)` .  Het proces in dit artikel produceert een uitvoer naar ten minste `/tezstaging` .  Een standaard configuratie voor Hadoop bevat `/tezstaging` in de `fs.azure.page.blob.dir` configuratie variabele `core-site.xml` voor service `HDFS` .  Deze configuratie zorgt ervoor dat de uitvoer naar de Directory wordt pagina-blobs, die niet worden ondersteund voor het type opslag account `BlobStorage` .  Als u `BlobStorage` dit artikel wilt gebruiken, verwijdert u `/tezstaging` uit de `fs.azure.page.blob.dir` configuratie variabele.  De configuratie kan worden geopend vanuit de [Ambari-gebruikers interface](../hdinsight-hadoop-manage-ambari.md).  Anders wordt het volgende fout bericht weer gegeven: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > De stappen in dit document maken de volgende veronderstellingen:  
@@ -300,8 +300,8 @@ Een python-script kan worden gebruikt als een UDF van varken via de- `GENERATE` 
 
 Als u de Python-interpreter wilt opgeven, gebruikt u `register` bij het verwijzen naar het python-script. De volgende voor beelden registreren scripts met varkens als `myfuncs` :
 
-* **Jython gebruiken**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python gebruiken**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython gebruiken**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python gebruiken**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Wanneer u jython gebruikt, kan het pad naar het pig_jython bestand een lokaal pad of een WASBS://-pad zijn. Bij gebruik van C python moet u echter verwijzen naar een bestand op het lokale bestands systeem van het knoop punt dat u gebruikt om de Pig-taak te verzenden.
@@ -319,7 +319,7 @@ Dit voor beeld doet er als volgt uit:
 
 1. De eerste regel laadt het voorbeeld gegevensbestand `sample.log` in `LOGS` . Het definieert ook elke record als een `chararray` .
 2. De volgende regel filtert alle Null-waarden, waarbij het resultaat van de bewerking wordt opgeslagen in `LOG` .
-3. Vervolgens wordt de query herhaald voor de records in `LOG` en gebruikt `GENERATE` om de methode aan te roepen `create_structure` die in het python/jython-script is geladen als `myfuncs` . `LINE`wordt gebruikt om de huidige record door te geven aan de functie.
+3. Vervolgens wordt de query herhaald voor de records in `LOG` en gebruikt `GENERATE` om de methode aan te roepen `create_structure` die in het python/jython-script is geladen als `myfuncs` . `LINE` wordt gebruikt om de huidige record door te geven aan de functie.
 4. Ten slotte worden de uitvoer naar STDOUT gedumpt met behulp van de `DUMP` opdracht. Met deze opdracht worden de resultaten weer gegeven nadat de bewerking is voltooid.
 
 ### <a name="create-file"></a>Bestand maken
@@ -594,7 +594,7 @@ De fout informatie (STDERR) en het resultaat van de taak (STDOUT) worden ook ger
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
-Zie [een module implementeren in azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)als u python-modules wilt laden die niet standaard worden meegeleverd.
+Zie [een module implementeren in azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)als u python-modules wilt laden die niet standaard worden meegeleverd.
 
 Raadpleeg de volgende documenten voor andere manieren om Pig en Hive te gebruiken en om meer te leren over het gebruik van MapReduce:
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7f3f71f11c741e5e9108d945b60c4465f9cec7da
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534308"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594778"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
 
@@ -52,9 +52,12 @@ Het niet toestaan van open bare toegang voor het opslag account voor komt anonie
 
 Als u open bare toegang voor een opslag account wilt toestaan of weigeren, configureert u de eigenschap **AllowBlobPublicAccess** van het account. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model. Zie [overzicht van opslag accounts](../common/storage-account-overview.md)voor meer informatie.
 
-De eigenschap **AllowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** is of wanneer deze **waar**is.
+> [!NOTE]
+> De eigenschap **AllowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** is of wanneer deze **waar**is.
+>
+> De eigenschap **AllowBlobPublicAccess** is momenteel alleen beschikbaar voor opslag accounts in de open bare Azure-Cloud.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Ga als volgt te werk om open bare toegang voor een opslag account in de Azure Portal toe te staan of niet toe te staan:
 
@@ -189,7 +192,7 @@ Wanneer open bare toegang is toegestaan voor een opslag account, kunt u een cont
 
 U kunt het niveau van de open bare toegang voor een afzonderlijke BLOB niet wijzigen. Niveau van open bare toegang wordt alleen op container niveau ingesteld. U kunt het open bare toegangs niveau van de container instellen wanneer u de container maakt, of u kunt de instelling bijwerken op een bestaande container.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om het niveau van de open bare toegang voor een of meer bestaande containers in de Azure Portal bij te werken:
 

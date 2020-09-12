@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269366"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437374"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -50,7 +50,12 @@ Als gebruikers toegang hebben tot de Azure-bestands share met Active Directory (
 
 ### <a name="solution-for-cause-3"></a>Oplossing voor oorzaak 3
 
-Zie [toegangs machtigingen toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity)om de machtigingen op share niveau bij te werken.
+Controleer of de machtigingen juist zijn geconfigureerd:
+
+- **Active Directory (AD)** Zie [machtigingen op share niveau toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+
+    Machtigings toewijzingen op share niveau worden ondersteund voor groepen en gebruikers die zijn gesynchroniseerd van de Active Directory (AD) naar Azure Active Directory (AAD) met behulp van Azure AD Connect.  Controleer of de groepen en gebruikers toegewezen machtigingen op share niveau worden niet ondersteund in de Cloud groepen.
+- Zie **Azure Active Directory Domain Services (Azure AD DS)** [toegangs machtigingen toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Fout 53, fout 67 of fout 87 bij het koppelen of ontkoppelen van een Azure-bestands share
@@ -316,18 +321,6 @@ Fout AadDsTenantNotFound treedt op wanneer u probeert [Azure Active Directory Do
 Schakel Azure AD DS in op de Azure AD-Tenant van het abonnement waarop uw opslag account is geïmplementeerd. U hebt beheerders bevoegdheden nodig van de Azure AD-Tenant om een beheerd domein te maken. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
-
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Fout: systeem fout 1359 is opgetreden. Er is een interne fout ontvangen over SMB-toegang tot bestands shares met Azure Active Directory Domain Service (Azure AD DS)-verificatie ingeschakeld
-
-### <a name="cause"></a>Oorzaak
-
-Fout: systeem fout 1359 is opgetreden. Er treedt een interne fout op wanneer u verbinding probeert te maken met uw bestands share met Azure AD DS authenticatie is ingeschakeld voor een Azure-AD DS met een domein-DNS-naam die begint met een numeriek teken. Als de DNS-naam van uw Azure AD DS domein bijvoorbeeld ' 1domain ' is, krijgt u deze fout melding wanneer u probeert de bestands share te koppelen met behulp van Azure AD-referenties. 
-
-### <a name="solution"></a>Oplossing
-
-U kunt op dit moment overwegen uw Azure-AD DS opnieuw te implementeren met behulp van een nieuwe DNS-naam voor het domein die van toepassing is op de volgende regels:
-- Namen mogen niet beginnen met een numeriek teken.
-- Namen moeten tussen de 3 en 63 tekens lang zijn.
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Kan Azure Files niet koppelen aan AD-referenties 
 

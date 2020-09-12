@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270143"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482314"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-gegevens exporteren
 
@@ -35,10 +35,17 @@ De opdracht $export kan ook worden gebruikt voor het exporteren van de niet-geï
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|Query parameter            | Voorbeeld |Optionele| Description|
+|Query parameter            | Voorbeeld |Optionele| Beschrijving|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.jsop|Vereist voor de niet-geïdentificeerde export |De naam van het configuratie bestand. Bekijk [hier](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)de indeling van het configuratie bestand. Dit bestand moet worden bewaard in een container met de naam **anoniem maken** binnen hetzelfde Azure-opslag account dat is geconfigureerd als de export locatie. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Optioneel voor de niet-geïdentificeerde export|Dit is de ETAG van het configuratie bestand. U kunt de ETAG ophalen met behulp van Azure Storage Explorer vanuit de BLOB-eigenschap|
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Optioneel voor de niet-geïdentificeerde export|Dit is de ETAG van het configuratie bestand. U kunt de ETAG ophalen met behulp van Azure Storage Explorer van de BLOB-eigenschap|
 
 > [!IMPORTANT]
 > Houd er rekening mee dat zowel onbewerkte exporteren als de niet-geïdentificeerde export schrijf bewerkingen naar hetzelfde Azure Storage-account zijn opgegeven als onderdeel van de configuratie van de export. Het is raadzaam om verschillende containers te gebruiken die overeenkomen met de configuratie van de niet-geïdentificeerde configuraties en de gebruikers toegang te beheren op het niveau van de container.
+
+## <a name="next-steps"></a>Volgende stappen
+
+In dit artikel hebt u geleerd hoe u FHIR-resources kunt exporteren met behulp van $export opdracht, met inbegrip van de gegevens die zijn geïdentificeerd. Vervolgens kunt u uw export gegevens configureren:
+ 
+>[!div class="nextstepaction"]
+>[export gegevens configureren](configure-export-data.md)

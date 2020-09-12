@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 46e2563b0d1c26c984616b523a367c8b2cff7aaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038496"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482795"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Een beschikbaarheids groep configureren voor SQL Server op Azure VM (Azure Portal-preview)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -74,9 +74,14 @@ Als u nog geen bestaand cluster hebt, maakt u dit met behulp van de Azure Portal
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Geef referenties op voor het SQL-Service account, het cluster operator account en het Boots trap-account van het cluster":::
 
 1. Selecteer de SQL Server Vm's die u aan het cluster wilt toevoegen. Controleer of de computer opnieuw moet worden opgestart en wees voorzichtig. Alleen Vm's die zijn geregistreerd bij de resource provider van de SQL-VM in de volledige beheer modus en zich op dezelfde locatie, domein en op hetzelfde virtuele netwerk bevinden als de primaire SQL Server VM is zichtbaar. 
-1. Selecteer **Toep assen** om het cluster te maken. 
+1. Selecteer **Toep assen** om het cluster te maken. U kunt de status van uw implementatie controleren in het **activiteiten logboek** dat toegankelijk is via het klok pictogram in de bovenste navigatie balk. 
+1. Voor een failovercluster dat door micro soft wordt ondersteund, moet de cluster validatie worden door gegeven. Maak verbinding met de virtuele machine met behulp van uw voorkeurs methode (zoals Remote Desktop Protocol (RDP)) en controleer of de validatie van uw cluster wordt uitgevoerd voordat u doorgaat. Als u dit niet doet, wordt de status van het cluster niet ondersteund. U kunt het cluster valideren met behulp van Failoverclusterbeheer (FCM) of de volgende Power shell-opdracht:
 
-U kunt de status van uw implementatie controleren in het **activiteiten logboek** dat toegankelijk is via het klok pictogram in de bovenste navigatie balk. 
+    ```powershell
+    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+    ```
+    
+
 
 ### <a name="onboard-existing-cluster"></a>Bestaand cluster onboarding
 
@@ -93,6 +98,8 @@ Voer hiervoor de volgende stappen uit:
 
 1. Controleer de instellingen voor uw cluster. 
 1. Selecteer **Toep assen** om het cluster vrij te maken en selecteer vervolgens **Ja** bij de prompt om door te gaan.
+
+
 
 
 ## <a name="create-availability-group"></a>Beschikbaarheids groep maken
@@ -179,7 +186,7 @@ U kunt **meer Replica's toevoegen** aan de beschikbaarheids groep, **de listener
 
 Verwijder alle SQL Server-Vm's uit het cluster om deze te vernietigen en verwijder vervolgens de meta gegevens van het cluster van de resource provider van de SQL-VM. U kunt dit doen met behulp van de nieuwste versie van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) of Power shell. 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Verwijder eerst alle SQL Server-Vm's uit het cluster. Hiermee verwijdert u de knoop punten van het cluster fysiek en vernietigt u het cluster:  
 

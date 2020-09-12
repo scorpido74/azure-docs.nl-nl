@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416445"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442834"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory biedt een krachtig, robuust en rendabel mechanisme voor het migreren van gegevens op schaal van een on-premises Netezza-server naar uw Azure Storage-account of Azure SQL Data Warehouse-data base. 
+Azure Data Factory biedt een krachtig, robuust en rendabel mechanisme voor het migreren van gegevens op schaal van een on-premises Netezza-server naar uw Azure Storage-account of Azure Synapse Analytics-Data Base (voorheen SQL Data Warehouse). 
 
 In dit artikel vindt u de volgende informatie voor gegevens technici en ontwikkel aars:
 
@@ -57,7 +57,7 @@ Wanneer u gegevens kopieert tussen bron-en Sink-gegevens opslag, kunt u met Azur
 
 ## <a name="network-security"></a>Netwerkbeveiliging 
 
-Azure Data Factory brengt standaard gegevens over van de on-premises Netezza-server naar een Azure Storage-account of Azure SQL Data Warehouse-data base door gebruik te maken van een versleutelde verbinding via Hypertext Transfer Protocol Secure (HTTPS). HTTPS biedt gegevens versleuteling tijdens de overdracht en voor komt het afluis teren en man-in-the-middle-aanvallen.
+Azure Data Factory brengt standaard gegevens over van de on-premises Netezza-server naar een Azure-opslag account of Azure Synapse Analytics-Data Base door gebruik te maken van een versleutelde verbinding via Hypertext Transfer Protocol Secure (HTTPS). HTTPS biedt gegevens versleuteling tijdens de overdracht en voor komt het afluis teren en man-in-the-middle-aanvallen.
 
 Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kunt u een betere beveiliging bieden door gegevens over een koppeling met een privé-peering over te brengen via Azure Express route. 
 
@@ -109,7 +109,7 @@ Het voor gaande diagram kan als volgt worden geïnterpreteerd:
    
    - U kunt ook een sleutel voor de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of een [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)gebruiken. 
 
-- Verifiëren bij Azure SQL Data Warehouse:
+- Verificatie bij Azure Synapse Analytics:
 
    - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
    
@@ -131,7 +131,7 @@ Voor grotere tabellen (dat wil zeggen: tabellen met een volume van 100 GB of mee
 
 Als een Kopieer taak mislukt vanwege een tijdelijk probleem in het netwerk of het gegevens archief, kunt u de mislukte Kopieer taak opnieuw uitvoeren om deze specifieke partitie uit de tabel opnieuw te laden. Andere Kopieer taken die andere partities laden, worden niet beïnvloed.
 
-Wanneer u gegevens laadt in een Azure SQL Data Warehouse-data base, wordt u aangeraden poly base in de Kopieer taak met Azure Blob Storage in te scha kelen als fase ring.
+Wanneer u gegevens laadt in een Azure Synapse Analytics-Data Base, wordt u aangeraden poly base in de Kopieer taak met Azure Blob Storage in te scha kelen als fase ring.
 
 ### <a name="migrate-delta-data"></a>Delta gegevens migreren 
 
@@ -162,7 +162,7 @@ Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Fac
 
 ### <a name="estimate-your-pricing"></a>Uw prijzen ramen 
 
-Bekijk de volgende pijp lijn, die is gebouwd om gegevens te migreren van de on-premises Netezza-server naar een Azure SQL Data Warehouse-Data Base:
+Bekijk de volgende pijp lijn, die is gebouwd om gegevens te migreren van de on-premises Netezza-server naar een Azure Synapse Analytics-Data Base:
 
 ![De prijs pijplijn](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -196,7 +196,7 @@ Raadpleeg de volgende artikelen en hand leidingen voor meer informatie:
 - [ODBC-connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob-opslag connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Data Warehouse-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Azure Synapse Analytics-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Gids voor het afstemmen van de activiteit prestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Zelf-hostende Integration Runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Zelf-hostende runtime HA en schaal baarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)

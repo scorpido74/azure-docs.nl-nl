@@ -11,23 +11,23 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 04/23/2020
-ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984772"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434279"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory-verificatie gebruiken
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory-verificatie (Azure AD) is een mechanisme voor het maken van verbinding met [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md)en [azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) met behulp van identiteiten in azure AD.
+Azure Active Directory-verificatie (Azure AD) is een mechanisme voor het maken van verbinding met [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md)en [azure Synapse Analytics (voorheen SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) met behulp van identiteiten in azure AD.
 
 > [!NOTE]
 > Dit artikel is van toepassing op Azure SQL Database, SQL Managed instance en Azure Synapse Analytics.
 
-Met Azure AD-verificatie kunt u de identiteit van databasegebruikers en andere Microsoft-services op één locatie centraal beheren. Centraal identiteitsbeheer biedt één plek voor het beheren van databasegebruikers en vereenvoudigt het machtigingenbeheer. Dit biedt verschillende voordelen, zoals:
+Met Azure AD-verificatie kunt u de identiteit van databasegebruikers en andere Microsoft-services op één centrale locatie beheren. Centraal identiteitsbeheer biedt één plek voor het beheren van databasegebruikers en vereenvoudigt het machtigingenbeheer. Dit biedt verschillende voordelen, zoals:
 
 - Het biedt een alternatief voor SQL Server-verificatie.
 - Het helpt bij het stoppen van de verspreiding van gebruikers identiteiten op meerdere servers.
@@ -168,7 +168,7 @@ De volgende verificatie methoden worden ondersteund voor Azure AD-server-princip
 - Zie [aanmeldingen, gebruikers, database rollen en machtigingen](logins-create-manage.md)voor een overzicht van aanmeldingen, gebruikers, database rollen en machtigingen in SQL database.
 - Zie [Principals](https://msdn.microsoft.com/library/ms181127.aspx) voor meer informatie over database-principals.
 - Zie [Databaserollen](https://msdn.microsoft.com/library/ms189121.aspx) voor meer informatie over databaserollen.
-- Zie [login maken](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen) voor een door SQL beheerd exemplaar.
+- Zie  [login maken](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen) voor een door SQL beheerd exemplaar.
 - Zie [SQL Database-firewallregels](firewall-configure.md) voor meer informatie over de firewallregels in SQL Database.
 
 <!--Image references-->

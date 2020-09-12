@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 0fc4f9c2142011edf78033d36d13ecb9115a8850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e87a083f5b31237c00bc8421774c14d3ef8ef33f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84044988"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439683"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Elastische Pools beheren in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ Gebruik de volgende Power shell-cmdlets om SQL Database elastische Pools en gegr
 > Zie voor voor beelden van Power shell-scripts [elastische Pools maken en data bases verplaatsen tussen Pools en uit een pool met Power shell](scripts/move-database-between-elastic-pools-powershell.md) en [Power shell gebruiken om een elastische SQL-groep in Azure SQL database te controleren en te schalen](scripts/monitor-and-scale-pool-powershell.md).
 >
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Hiermee maakt u een elastische pool.|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Hiermee haalt u elastische Pools en de bijbehorende eigenschaps waarden op.|
@@ -71,7 +71,7 @@ Als u SQL Database elastische Pools wilt maken en beheren met de [Azure cli](/cl
 > Zie voor voor beelden van Azure CLI-scripts [CLI gebruiken om een data base in SQL database in een elastische SQL-pool te verplaatsen](scripts/move-database-between-elastic-pools-cli.md) en [gebruik Azure CLI om een elastische SQL-groep in Azure SQL database te schalen](scripts/scale-pool-cli.md).
 >
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[AZ SQL Elastic-pool Create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Hiermee maakt u een elastische pool.|
 |[AZ SQL Elastic-pool List](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Retourneert een lijst met elastische Pools in een server.|
@@ -94,7 +94,7 @@ Gebruik de volgende T-SQL-opdrachten om data bases te maken en te verplaatsen bi
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Een Data Base verplaatsen naar, uit of tussen elastische Pools.|
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Retourneert statistieken over het resource gebruik voor alle elastische Pools op een server. Voor elke elastische pool is er één rij voor elk venster van 15 seconden (vier rijen per minuut). Dit omvat CPU, IO, logboek, opslag verbruik en gelijktijdige aanvraag/sessie gebruik door alle data bases in de pool.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een data base in SQL Database of Azure SQL Data Warehouse. Als u bent aangemeld bij de hoofd database op een server, wordt er informatie weer gegeven over alle data bases. Voor Azure SQL Data Warehouse moet u verbinding hebben met de hoofd database.|
+|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een data base in SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse). Als u bent aangemeld bij de hoofd database op een server, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse Analytics moet u verbinding hebben met de hoofd database.|
 
 ## <a name="rest-api"></a>REST-API
 

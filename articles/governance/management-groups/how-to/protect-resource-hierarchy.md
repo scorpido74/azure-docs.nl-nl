@@ -1,14 +1,14 @@
 ---
 title: Uw resource hiërarchie beveiligen-Azure governance
 description: Meer informatie over het beveiligen van uw resource hiërarchie met hiërarchie-instellingen, zoals het instellen van de standaard beheer groep.
-ms.date: 08/10/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056615"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469776"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
 
@@ -31,7 +31,26 @@ Een nieuw abonnement dat in een Tenant wordt toegevoegd, wordt standaard toegevo
 
 Door toe te staan dat de standaard beheer groep voor nieuwe abonnementen kan worden gedefinieerd, kunnen bedrijfsbrede governance-constructies worden toegepast in de hoofd beheer groep en een afzonderlijke beheer groep met beleids toewijzingen of Azure-roltoewijzingen die geschikter zijn voor een nieuw abonnement, kan worden gedefinieerd.
 
-Als u deze instelling wilt configureren, worden de [hiërarchie-instellingen](/rest/api/resources/hierarchysettings) rest API eind punt genoemd. Gebruik hiervoor de volgende REST API URI en de indeling van de hoofd tekst. Vervang door `{rootMgID}` de id van uw hoofd beheer groep en `{defaultGroupID}` met de id van de beheer groep om de standaard beheer groep te worden:
+### <a name="set-default-management-group-in-portal"></a>Standaard beheer groep instellen in Portal
+
+Voer de volgende stappen uit om deze instelling te configureren in Azure Portal:
+
+1. Gebruik de zoek balk om beheer groepen te zoeken en te selecteren.
+
+1. Selecteer in de hoofd beheer groep de optie **Details** naast de naam van de beheer groep.
+
+1. Selecteer onder **instellingen**de optie **hiërarchie-instellingen**.
+
+1. Selecteer de knop **standaard beheer groep wijzigen** .
+
+   > [!NOTE]
+   > Als de knop **standaard beheer groep wijzigen** is uitgeschakeld, is de beheer groep die wordt weer gegeven, niet de hoofd beheer groep of uw beveiligingsprincipal heeft niet de benodigde machtigingen om de hiërarchie-instellingen te wijzigen.
+
+1. Selecteer een beheer groep in uw hiërarchie en gebruik de knop **selecteren** .
+
+### <a name="set-default-management-group-with-rest-api"></a>Standaard beheer groep instellen met REST API
+
+Als u deze instelling wilt configureren met REST API, wordt het eind punt van de [hiërarchie-instellingen](/rest/api/resources/hierarchysettings) aangeroepen. Gebruik hiervoor de volgende REST API URI en de indeling van de hoofd tekst. Vervang door `{rootMgID}` de id van uw hoofd beheer groep en `{defaultGroupID}` met de id van de beheer groep om de standaard beheer groep te worden:
 
 - REST API-URI
 
@@ -55,7 +74,24 @@ Gebruik hetzelfde eind punt en stel **defaultManagementGroup** in op een waarde 
 
 Elke gebruiker kan standaard nieuwe beheer groepen maken binnen een Tenant. Beheerders van een Tenant kunnen deze machtigingen alleen aanbieden aan specifieke gebruikers om consistentie en overeenstemming in de beheer groeps hiërarchie te behouden. Als deze functie is ingeschakeld, moet de gebruiker de `Microsoft.Management/managementGroups/write` bewerking in de hoofd beheer groep uitvoeren om nieuwe onderliggende beheer groepen te maken.
 
-Als u deze instelling wilt configureren, worden de [hiërarchie-instellingen](/rest/api/resources/hierarchysettings) rest API eind punt genoemd. Gebruik hiervoor de volgende REST API URI en de indeling van de hoofd tekst. Deze waarde is een _Boolean_, dus geef **waar** of **Onwaar** op voor de waarde. Met de waarde **True** wordt deze methode voor het beveiligen van uw beheer groeps hiërarchie ingeschakeld:
+### <a name="set-require-authorization-in-portal"></a>Instellen dat autorisatie is vereist in de portal
+
+Voer de volgende stappen uit om deze instelling te configureren in Azure Portal:
+
+1. Gebruik de zoek balk om beheer groepen te zoeken en te selecteren.
+
+1. Selecteer in de hoofd beheer groep de optie **Details** naast de naam van de beheer groep.
+
+1. Selecteer onder **instellingen**de optie **hiërarchie-instellingen**.
+
+1. Scha kelen tussen **machtigingen vereisen voor het maken van nieuwe beheer groepen.** optie aan aan.
+
+   > [!NOTE]
+   > Als de **machtigingen vereisen voor het maken van nieuwe beheer groepen.** Wissel knop is uitgeschakeld. de beheer groep die wordt weer gegeven, is niet de hoofd beheer groep of uw beveiligingsprincipal beschikt niet over de benodigde machtigingen om de hiërarchie-instellingen te wijzigen.
+
+### <a name="set-require-authorization-with-rest-api"></a>Instellen vereisen autorisatie met REST API
+
+Als u deze instelling wilt configureren met REST API, wordt het eind punt van de [hiërarchie-instellingen](/rest/api/resources/hierarchysettings) aangeroepen. Gebruik hiervoor de volgende REST API URI en de indeling van de hoofd tekst. Deze waarde is een _Boolean_, dus geef **waar** of **Onwaar** op voor de waarde. Met de waarde **True** wordt deze methode voor het beveiligen van uw beheer groeps hiërarchie ingeschakeld:
 
 - REST API-URI
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962176"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469929"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -187,14 +187,14 @@ De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen:
 
 | Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Beschrijving |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Ja | Standaard uitvoer en standaard fout |
+| AppServiceConsoleLogs | TBA | Yes | Standaard uitvoer en standaard fout |
 | AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |
 | AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service Environment: schalen, configuratie wijzigingen en status logboeken|
 | AppServiceAuditLogs | Ja | Ja | Aanmeldings activiteiten via FTP en kudu |
-| AppServiceFileAuditLogs | Ja | NOG TE BEPALEN | Bestands wijzigingen via FTP en kudu |
+| AppServiceFileAuditLogs | Yes | NOG TE BEPALEN | Bestands wijzigingen in de site-inhoud; alleen beschikbaar voor de Premium-laag en hoger |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | Toepassings logboeken |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Aanvragen van IP-regels |
-| AppServicePlatformLogs  | TBA | Ja | Container logboeken |
+| AppServicePlatformLogs  | TBA | Yes | Container logboeken |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Volgende stappen
 * [Logboeken doorzoeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

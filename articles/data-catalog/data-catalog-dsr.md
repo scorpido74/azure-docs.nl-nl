@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898151"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439081"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Ondersteunde gegevens bronnen in Azure Data Catalog
 
@@ -143,7 +143,7 @@ U kunt meta gegevens publiceren met behulp van een open bare API of een eenmalig
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse tabel</td>
+      <td>Azure Synapse Analytics-tabel</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +151,7 @@ U kunt meta gegevens publiceren met behulp van een open bare API of een eenmalig
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse weer gave</td>
+      <td>Azure Synapse Analytics-weer gave</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -449,8 +449,8 @@ Als u een specifieke gegevens bron wilt weer geven, kunt u deze Voorst Ellen (of
 
 <table>
     <tr>
-       <td><b>Bron type</b></td>
-       <td><b>Assettype</b></td>
+       <td><b>Brontype</b></td>
+       <td><b>Activa type</b></td>
        <td><b>Object typen</b></td>
        <td><b>DSL-structuur<b></td>
     </tr>
@@ -932,7 +932,7 @@ Als u een specifieke gegevens bron wilt weer geven, kunt u deze Voorst Ellen (of
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Command</td>
       <td>Stored procedure</td>
       <td>
@@ -948,7 +948,7 @@ Als u een specifieke gegevens bron wilt weer geven, kunt u deze Voorst Ellen (of
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>TableValuedFunction</td>
       <td>Table-valued function</td>
       <td>
@@ -964,7 +964,7 @@ Als u een specifieke gegevens bron wilt weer geven, kunt u deze Voorst Ellen (of
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Container</td>
       <td>Database</td>
       <td>
@@ -978,7 +978,7 @@ Als u een specifieke gegevens bron wilt weer geven, kunt u deze Voorst Ellen (of
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Table</td>
       <td>Table, view</td>
       <td>

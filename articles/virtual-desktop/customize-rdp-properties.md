@@ -3,15 +3,15 @@ title: RDP-eigenschappen aanpassen met Power shell-Azure
 description: RDP-eigenschappen voor virtuele Windows-Bureau bladen aanpassen met Power shell-cmdlets.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009100"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462221"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Eigenschappen van Remote Desktop Protocol (RDP) voor een hostgroep aanpassen
 
@@ -21,6 +21,16 @@ ms.locfileid: "88009100"
 Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wilt aanpassen, zoals de ervaring voor meerdere monitors en audio-omleiding, kunt u een optimale ervaring bieden aan uw gebruikers op basis van hun behoeften. U kunt RDP-eigenschappen in virtueel bureau blad van Windows aanpassen door gebruik te maken van de Azure Portal of door gebruik te maken van de para meter *-CustomRdpProperty* in de cmdlet **Update-AzWvdHostPool** .
 
 Zie [ondersteunde RDP-Bestands instellingen](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) voor een volledige lijst met ondersteunde eigenschappen en hun standaard waarden.
+
+## <a name="default-rdp-file-properties"></a>Standaard eigenschappen van RDP-bestand
+
+RDP-bestanden hebben standaard de volgende eigenschappen:
+
+|RDP-eigenschap|Op bureau blad|Als een RemoteApp|
+|---|---|---|
+|Modus voor meerdere monitors|Ingeschakeld|N.v.t.|
+|Omleidingen van stations ingeschakeld|Stations, klem bord, printers, COM-poorten, USB-apparaten en-Smart Cards|Stations, klem bord en printers|
+|Modus voor externe audio|Lokaal afspelen|Lokaal afspelen|
 
 ## <a name="prerequisites"></a>Vereisten
 

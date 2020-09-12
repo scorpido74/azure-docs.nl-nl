@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: problemen met Point-to-site-verbindingen oplossen: Mac OS X-clients'
 description: Meer informatie over het oplossen van problemen met Point-to-site-verbindingen van Mac OS X met behulp van de systeem eigen VPN-client en IKEv2.
 services: vpn-gateway
-author: kumudD
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030657"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442799"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Problemen met punt-naar-site-VPN-verbindingen van Mac OS X VPN-clients oplossen
 
@@ -25,7 +25,7 @@ Dit artikel helpt u bij het oplossen van problemen met Point-to-site-verbindinge
 * Versie van besturings systeem (10,11 of hoger)
 
 
-## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a>Problemen met verificatie op basis van certificaten oplossen
+## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a> Problemen met verificatie op basis van certificaten oplossen
 1. Controleer de instellingen voor de VPN-client. Ga naar de **netwerk instelling** door op Command + Shift te drukken en typ vervolgens ' VPN ' om de instellingen voor de VPN-client te controleren. Klik in de lijst op de VPN-vermelding die moet worden onderzocht.
 
    ![Verificatie op basis van IKEv2-certificaten](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)

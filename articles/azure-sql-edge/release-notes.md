@@ -9,28 +9,49 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/04/2020
+ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553407"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500348"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Release opmerkingen bij Azure SQL Edge 
 
 In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke nieuwe build van Azure SQL Edge.
 
+## <a name="ctp-23"></a>CTP 2,3
+### <a name="sql-engine-build-number---15020001549"></a>Buildnummer van SQL-engine-15.0.2000.1549
+### <a name="whats-new"></a>Wat is nieuw?
+1. Ondersteuning voor aangepaste oorsprongen in de functie Date_Bucket (). 
+2. Ondersteuning voor BacPac-bestanden als onderdeel van SQL-implementatie.
+3. Ondersteuning voor het opruimen van gegevens Bewaar beleid.      
+   - DDL-ondersteuning voor het inschakelen van Bewaar beleid 
+   - Opgeslagen procedures en opschoon taak voor achtergrond opschonen
+   - Uitgebreide gebeurtenissen voor het controleren van opschoon taken
+
+### <a name="fixes"></a>Oplossingen
+1. Aanvullende fout berichten en Details voor het oplossen van problemen met TSQL-streaming. 
+2. Imporvements om de levens duur van de accu in de niet-actieve modus te behouden. 
+3. Oplossingen voor TSQL Streaming-Engine: 
+   - Probleem met vastgelopen water merk oplossen met verspringen-venster met substream 
+   - Opgeloste verwerking van Framework-uitzonde ringen verhelpen om ervoor te zorgen dat deze wordt verzameld als een gebruikers actie fout
+
+
 ## <a name="ctp-22"></a>CTP 2,2
 ### <a name="sql-engine-build-number---15020001546"></a>Buildnummer van SQL-engine-15.0.2000.1546
-### <a name="fixes"></a>Oplossingen
+### <a name="whats-new"></a>Wat is nieuw?
 1. Ondersteuning voor niet-hoofd containers 
 2. Ondersteuning voor het verzamelen van gebruiks-en diagnostische gegevens 
 3. Updates voor T-SQL-streaming
    - Ondersteuning voor Unicode-tekens voor Stream-object namen
+
+### <a name="fixes"></a>Oplossingen
+1. Updates voor T-SQL-streaming
    - Verbeteringen bij het opschonen van processen
    - Verbeteringen in Logboeken en diagnoses
-4. Verbetering van de prestaties voor gegevens opname
+2. Verbetering van de prestaties voor gegevens opname
 
 ## <a name="ctp-21"></a>CTP 2,1 
 ### <a name="sql-engine-build-number---15020001545"></a>Buildnummer van SQL-engine-15.0.2000.1545

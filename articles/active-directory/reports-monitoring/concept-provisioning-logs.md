@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/01/2020
+ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229868"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469861"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
 
@@ -41,7 +41,7 @@ In dit onderwerp vindt u een overzicht van het inrichtings rapport.
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
+### <a name="who-can-access-the-data"></a>Wie hebben er toegang tot de gegevens?
 * Gebruikers in de rollen beveiligings beheerder, beveiligings lezer, rapport lezer, toepassings beheerder en Cloud toepassings beheerder
 * Globale beheerders
 
@@ -99,7 +99,7 @@ In de standaard weergave kunt u de volgende filters selecteren:
 - Actie
 
 
-![Filter](./media/concept-provisioning-logs/default-filter.png "Filter")
+![Filters toevoegen](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 Met het **identiteits** filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
 
@@ -118,7 +118,7 @@ Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum 
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 - Overgeslagen
@@ -175,7 +175,7 @@ De details worden gegroepeerd op basis van de volgende categorieën:
 - Samenvatting
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "Tabs")
+![Inrichtings gegevens](./media/concept-provisioning-logs/provisioning-tabs.png "Tabs")
 
 
 
@@ -190,7 +190,7 @@ Het tabblad **stappen** bevat een overzicht van de stappen voor het inrichten va
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "Filter")
+![Stappen](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problemen oplossen en aanbevelingen
@@ -214,11 +214,13 @@ Op het tabblad **samen vatting** vindt u een overzicht van wat er is gebeurd en 
 
 - U kunt het kenmerk ID wijzigen als unieke id gebruiken. Dit is bijvoorbeeld handig bij interactie met product ondersteuning.
 
-- Er is momenteel geen optie om inrichtings gegevens te downloaden.
+- Er is momenteel geen optie om inrichtings gegevens te downloaden als een CSV-bestand, maar u kunt de gegevens exporteren met behulp van [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http).
 
 - Er is momenteel geen ondersteuning voor log Analytics.
 
 - Er worden mogelijk overgeslagen gebeurtenissen weer geven voor gebruikers die zich niet in het bereik bevinden. Dit wordt verwacht, vooral wanneer het synchronisatie bereik is ingesteld op alle gebruikers en groepen. Onze service evalueert alle objecten in de Tenant, zelfs degene die buiten het bereik vallen. 
+
+- De inrichtings logboeken zijn momenteel niet beschikbaar in de Government Cloud. Als u geen toegang hebt tot de inrichtings logboeken, moet u de audit Logboeken gebruiken als tijdelijke oplossing.  
 
 ## <a name="error-codes"></a>Foutcodes
 
@@ -244,6 +246,7 @@ Gebruik de onderstaande tabel voor meer informatie over het oplossen van fouten 
 |DuplicateSourceEntries | De bewerking kan niet worden voltooid omdat er meer dan één gebruiker met de geconfigureerde overeenkomende kenmerken is gevonden. Verwijder de dubbele gebruiker of configureer de kenmerk toewijzingen opnieuw, zoals [hier](../app-provisioning/customize-application-attributes.md)wordt beschreven.|
 |ImportSkipped | Wanneer elke gebruiker wordt geëvalueerd, wordt geprobeerd de gebruiker te importeren uit het bron systeem. Deze fout treedt doorgaans op wanneer de gebruiker die wordt geïmporteerd, de overeenkomende eigenschap die is gedefinieerd in uw kenmerk toewijzingen ontbreekt. Zonder dat er een waarde aanwezig is in het gebruikers object voor het overeenkomende kenmerk, kunnen we geen bereik-, zoek-of export wijzigingen evalueren. Let op: de aanwezigheid van deze fout geeft niet aan dat de gebruiker zich in het bereik bevindt omdat er nog geen bereik voor de gebruiker is geëvalueerd.|
 |EntrySynchronizationSkipped | De inrichtings service heeft een query uitgevoerd op het bron systeem en heeft de gebruiker geïdentificeerd. Er is geen verdere actie ondernomen voor de gebruiker en deze is overgeslagen. De overs Laan kan worden veroorzaakt door de gebruiker buiten het bereik of de gebruiker die al in het doel systeem aanwezig is, zonder verdere wijzigingen vereist.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Bij het uitvoeren van een GET-aanvraag om een gebruiker of groep op te halen, hebben we meerdere gebruikers of groepen in het antwoord ontvangen. Verwacht wordt dat er slechts één gebruiker of groep in het antwoord wordt ontvangen. Als we [bijvoorbeeld](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)een GET-aanvraag doen om een groep op te halen en een filter op te geven om leden uit te sluiten en uw scim-eind punt de leden retourneert, wordt deze fout gegenereerd.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

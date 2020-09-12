@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec3fb8609612f3920e330da7922fdd1eb8883305
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080791"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459773"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Web-apps en API's van Azure App Service beveiligen
 
@@ -32,7 +32,7 @@ Wanneer het App Service-abonnement is ingeschakeld, bepaalt Security Center de r
 Security Center maakt gebruik van de schaal van de Cloud en de zicht baarheid die Azure als een Cloud provider heeft, om te controleren op veelvoorkomende web app-aanvallen. Security Center kunt aanvallen op uw toepassingen detecteren en opkomende aanvallen identificeren, zelfs wanneer een aanvaller zich in de Reconnaissance-fase bevindt, scans voor het identificeren van beveiligings problemen in meerdere door Azure gehoste toepassingen. Als Azure-systeem eigen service is Security Center ook in een unieke positie voor het bieden van op de host gebaseerde beveiligings analyse voor de onderliggende reken knooppunten voor deze PaaS, Security Center waardoor het mogelijk is om aanvallen te detecteren op webtoepassingen die al zijn misbruikt. Zie [bedreigings beveiliging voor Azure app service](threat-protection.md#app-services)voor meer informatie.
 
 
-## <a name="enabling-monitoring-and-protection-of-app-service"></a>Bewaking en beveiliging van App Service inschakelen
+## <a name="enable-monitoring-and-protection-of-app-service"></a>Bewaking en beveiliging van App Service inschakelen
 
 1. Kies in het Azure Portal Security Center.
 2. Ga naar **prijs & instellingen** en kies een abonnement.
@@ -57,11 +57,11 @@ Als u controle en aanbevelingen voor uw App Service wilt uitschakelen, herhaalt 
 
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 In dit artikel hebt u kunnen lezen hoe u de bewakingsmogelijkheden in Azure Security Center gebruikt. Raadpleeg de volgende artikelen voor meer informatie over Azure Security Center:
 
 * [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md): leer hoe u beveiligingsinstellingen configureert in Azure Security Center.
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
 * [App Services](security-center-virtual-machine-protection.md#app-services): Bekijk een lijst van uw app service-omgevingen met status overzichten.
 * [Partneroplossingen controleren met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt controleren.
-* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/): vind blog berichten over de beveiliging en naleving van Azure.
+* [Azure-beveiligings blog](https://docs.microsoft.com/archive/blogs/azuresecurity/): vind blog berichten over de beveiliging en naleving van Azure.

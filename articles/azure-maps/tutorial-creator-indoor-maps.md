@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688080"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469912"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>De Creator gebruiken om kaarten voor de binnenste toe te maken
 
@@ -117,10 +117,10 @@ De API voor het uploaden van gegevens is een langlopende trans actie die het hie
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="De waarde van de locatie sleutel kopiëren":::
 
-4. Start een nieuwe HTTP-methode **ophalen** op het tabblad opbouw functie. voeg uw Azure Maps primaire abonnements sleutel toe aan de `status URL` . Maak een **Get** -aanvraag op de `status URL` die u in stap 3 hebt gekopieerd. Het `status URL` lijkt op de volgende URL:
+4. Start een nieuwe HTTP-methode **ophalen** op het tabblad Builder. Voeg uw Azure Maps primaire abonnements sleutel toe aan de `status URL` . Maak een **Get** -aanvraag op de `status URL` die u in stap 3 hebt gekopieerd. Het `status URL` lijkt op de volgende URL:
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     Als het conversie proces nog niet is voltooid, ziet u mogelijk iets zoals het volgende JSON-antwoord:
@@ -208,7 +208,7 @@ Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tiles
 3. Maak een **Get** -aanvraag op de `statusURL` voor de tegelset. Voeg uw Azure Maps primaire abonnements sleutel toe voor authenticatie. De aanvraag moet er ongeveer uitzien als de volgende URL:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. Wanneer de **Get** HTTP-aanvraag is voltooid, bevat de antwoord header de `tilesetId` voor de gemaakte tegelset. Kopieer de `tilesetId` .

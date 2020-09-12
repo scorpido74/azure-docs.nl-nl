@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358443"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657111"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Volgende stappen en het beheren van Azure AD Connect
 Gebruik de operationele procedures in dit artikel om de verbinding van Azure Active Directory (Azure AD) aan te passen aan de behoeften en vereisten van uw organisatie.  
@@ -30,7 +30,7 @@ Gebruik de operationele procedures in dit artikel om de verbinding van Azure Act
 Standaard kan alleen de gebruiker die de installatie heeft uitgevoerd en lokale beheerders de geïnstalleerde synchronisatie-engine beheren. Ga naar de groep met de naam ADSyncAdmins op de lokale server en voeg deze toe aan deze groep voor meer personen die de synchronisatie-engine kunnen openen en beheren.
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Licenties toewijzen aan gebruikers van Azure AD Premium en Enter prise Mobility Suite
-Nu uw gebruikers zijn gesynchroniseerd met de Cloud, moet u ze een licentie toewijzen zodat ze kunnen gaan werken met Cloud-apps zoals Office 365.
+Nu uw gebruikers zijn gesynchroniseerd met de Cloud, moet u ze een licentie toewijzen zodat ze kunnen gaan werken met Cloud-apps, zoals Microsoft 365.
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Een licentie voor een Azure AD Premium of ENTER prise Mobility Suite toewijzen
 
@@ -56,12 +56,12 @@ Gebruik de Azure Portal om de status van een synchronisatie te controleren.
 Als u een synchronisatie taak moet uitvoeren, kunt u dit als volgt doen:
 
 1. Dubbel klik op de snelkoppeling Azure AD Connect bureau blad om de wizard te starten.
-2. Klik op **configureren**.
+2. Klik op **Configureren**
 3. Selecteer op het scherm taken de opties voor het aanpassen van de **synchronisatie** en klik op **volgende**
 4. Voer uw Azure AD-referenties in
 5. Klik op **Volgende**. Klik op **Volgende**.  Klik op **Volgende**.
 5.  Controleer op het scherm **gereed voor configureren** of het selectie vakje **het synchronisatie proces starten wanneer de configuratie is voltooid** is geselecteerd.
-6.  Klik op **configureren**.
+6.  Klik op **Configureren**
 
 Zie [Azure AD Connect scheduler](how-to-connect-sync-feature-scheduler.md)voor meer informatie over de Azure AD Connect synchronisatie planner.
 
@@ -72,7 +72,7 @@ De volgende tabel bevat een samen vatting van deze taken en een korte beschrijvi
 
 ![Lijst met aanvullende taken](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Aanvullende taak | Description |
+| Aanvullende taak | Beschrijving |
 | --- | --- |
 |**Privacyinstellingen**|Weer geven welke telemetriegegevens worden gedeeld met micro soft.|
 |**Huidige configuratie weer geven**|Bekijk uw huidige Azure AD Connect-oplossing.  Dit omvat algemene instellingen, gesynchroniseerde directory's en synchronisatie-instellingen. |
