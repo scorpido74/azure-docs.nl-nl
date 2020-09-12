@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 2a57c5244630c2328320d7d99eed98c892d49897
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230752"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321766"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Tags voor Azure Cognitive Services container installatie kopieën
 
@@ -29,7 +29,7 @@ De [afwijkende detector][ad-containers] container installatie kopie vindt u in h
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 
@@ -39,7 +39,7 @@ De [Computer Vision][cv-containers] OCR-container installatie kopie lezen kan wo
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest ( (2.0.013250001-amd64-preview)` | • Verminder het geheugen gebruik voor de container verder. |
 |                                          | • Externe cache is vereist voor het instellen van meerdere peulen. Stel bijvoorbeeld redis in voor caching. |
@@ -68,7 +68,7 @@ De [Face][fa-containers] -container installatie kopie vindt u in het `containerp
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -86,7 +86,7 @@ De container installatie kopie voor de [formulier herkenning][fr-containers] vin
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -99,7 +99,7 @@ De [Luis][lu-containers] -container installatie kopie vindt u in het `mcr.micros
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -117,7 +117,7 @@ De [Custom speech-naar-tekst][sp-cstt] container installatie kopie vindt u in he
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags            | Opmerkingen |
+| Afbeeldings Tags            | Notities |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.3.1-amd64-preview` |       | 
@@ -134,7 +134,7 @@ De [aangepaste tekst-naar-spraak-][sp-ctts] container installatie kopie vindt u 
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags            | Opmerkingen |
+| Afbeeldings Tags            | Notities |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.6.0-amd64-preview` |       |
@@ -149,7 +149,7 @@ De versie van de *Amerikaanse overheid Virginia* van spraak naar tekst afbeeldin
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                  | Opmerkingen                                    |
+| Afbeeldings Tags                  | Notities                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Container installatie kopie met de `en-US` land instelling. |
 | `2.4.0-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
@@ -588,7 +588,7 @@ De [tekst-naar-spraak][sp-tts] container installatie kopie vindt u in het `conta
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                                  | Opmerkingen                                                                      |
+| Afbeeldings Tags                                  | Notities                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaRUS` stem.         |
 | `1.6.0-amd64-ar-eg-hoda-preview`            | Container installatie kopie met de `ar-EG` land instellingen en de `ar-EG-Hoda` stem.            |
@@ -998,13 +998,39 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 | `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Kangkang-Apollo` stem. |
 | `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Yaoyao-Apollo` stem.   |
 
+## <a name="neural-text-to-speech"></a>Tekst-naar-spraak Neural
+
+De container installatie kopie [Neural text-to-speech] [SP-ntts] is te vinden in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-neural-text-to-speech` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` .
+
+Deze container installatie kopie heeft de volgende tags beschikbaar:
+
+| Afbeeldings Tags                                  | Notities                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaNeural` stem.      |
+| `1.1.0-amd64-de-de-katjaneural-preview`     | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-KatjaNeural` stem.     |
+| `1.1.0-amd64-en-au-natashaneural-preview`   | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-NatashaNeural` stem.   |
+| `1.1.0-amd64-en-ca-claraneural-preview`     | Container installatie kopie met de `en-CA` land instellingen en de `en-CA-ClaraNeural` stem.     |
+| `1.1.0-amd64-en-gb-libbyneural-preview`     | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-LibbyNeural` stem.     |
+| `1.1.0-amd64-en-gb-mianeural-preview`       | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-MiaNeural` stem.       |
+| `1.1.0-amd64-en-us-arianeural-preview`      | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaNeural` stem.      |
+| `1.1.0-amd64-en-us-guyneural-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-GuyNeural` stem.       |
+| `1.1.0-amd64-es-es-elviraneural-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-ElviraNeural` stem.    |
+| `1.1.0-amd64-es-mx-dalianeural-preview`     | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-DaliaNeural` stem.     |
+| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-SylvieNeural` stem.    |
+| `1.1.0-amd64-fr-fr-deniseneural-preview`    | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-DeniseNeural` stem.    |
+| `1.1.0-amd64-it-it-elsaneural-preview`      | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-ElsaNeural` stem.      |
+| `1.1.0-amd64-ja-jp-nanamineural-preview`    | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-NanamiNeural` stem.    |
+| `1.1.0-amd64-ko-kr-sunhineural-preview`     | Container installatie kopie met de `ko-KR` land instellingen en de `ko-KR-SunHiNeural` stem.     |
+| `1.1.0-amd64-pt-br-franciscaneural-preview` | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-FranciscaNeural` stem. |
+| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-XiaoxiaoNeural` stem.  |
+
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
 De [Sleuteltermextractie][ta-kp] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslag plaats en heet `keyphrase` . De volledig gekwalificeerde naam van de container installatie kopie is, `mcr.microsoft.com/azure-cognitive-services/keyphrase` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -1019,7 +1045,7 @@ De [taaldetectie][ta-la] container installatie kopie vindt u in het `mcr.microso
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -1034,7 +1060,7 @@ De [sentimentanalyse][ta-se] container installatie kopie vindt u in het `mcr.mic
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags | Opmerkingen                                         |
+| Afbeeldings Tags | Notities                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
 | `3.0-en`   | Sentimentanalyse v3 (Engels)               |

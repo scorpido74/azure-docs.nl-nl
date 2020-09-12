@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311565"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434534"
 ---
 # <a name="single-page-application-app-registration"></a>Toepassing met één pagina: app-registratie
 
@@ -29,10 +29,10 @@ Voer de volgende stappen uit als u een toepassing met één pagina (SPA) wilt re
 
 Voor zowel MSAL.js 1,0-als 2,0-toepassingen moet u eerst de volgende stappen uitvoeren om de eerste app-registratie te maken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als uw account toegang heeft tot meerdere tenants, selecteert u het filter voor **adres lijst en abonnementen** in het bovenste menu en selecteert u vervolgens de Tenant die de app-registratie bevat die u op het punt staat te maken.
-1. Zoek naar **Azure Active Directory** en selecteer deze optie.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als uw account toegang heeft tot meerdere tenants, selecteert u het filter voor **adres lijst en abonnementen** in het bovenste menu en selecteert u vervolgens de Tenant die de app-registratie bevat die u op het punt staat te maken.
+1. Zoek en selecteer de optie **Azure Active Directory**.
 1. Selecteer **App-registraties** onder **Beheren**.
-1. Selecteer **nieuwe registratie**, voer een **naam** in voor de toepassing en kies de **ondersteunde account typen** voor de toepassing. Voer **geen** **omleidings-URI**in. Zie voor een beschrijving van de verschillende typen accounts de [nieuwe toepassing registreren met behulp van de Azure Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+1. Selecteer **nieuwe registratie**, voer een **naam** in voor de toepassing en kies de **ondersteunde account typen** voor de toepassing. Voer **geen** **omleidings-URI**in. Zie voor een beschrijving van de verschillende typen accounts de [nieuwe toepassing registreren met behulp van de Azure Portal](quickstart-register-app.md).
 1. Selecteer **registreren** om de app-registratie te maken.
 
 Configureer vervolgens de app-registratie met een **omleidings-URI** om op te geven waar het micro soft Identity-platform de client moet omleiden met alle beveiligings tokens. Volg de stappen voor de versie van MSAL.js die u in uw toepassing gebruikt:

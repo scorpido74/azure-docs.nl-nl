@@ -1,27 +1,29 @@
 ---
-title: Tekst-naar-spraak-spraak service
+title: Overzicht van tekst naar spraak-spraak service
 titleSuffix: Azure Cognitive Services
-description: Met de functie voor tekst naar spraak in de speech-service kunt u uw toepassingen, hulpprogram ma's of apparaten gebruiken om tekst te converteren naar natuurlijke menselijke-achtige gesynthesizerde spraak. Kies vooraf ingestelde stemmen of maak uw eigen aangepaste stem.
+description: Met de functie voor tekst naar spraak in de speech-service kunt u uw toepassingen, hulpprogram ma's of apparaten gebruiken om tekst te converteren naar natuurlijke menselijke-achtige gesynthesizerde spraak. Dit artikel bevat een overzicht van de voor delen en mogelijkheden van de tekst naar spraak-service.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: tekst-naar-spraak
+ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167705"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401177"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Tekst-naar-spraak van de speech-service zorgt ervoor dat uw toepassingen, hulpprogram ma's of apparaten tekst kunnen converteren naar mensen met een menselijke ervaring. Kies uit standaard-en Neural stemmen of maak een aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in een geselecteerd aantal talen en land instellingen. Zie [ondersteunde talen](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen, talen en land instellingen.
+In dit overzicht vindt u meer informatie over de voor delen en mogelijkheden van de tekst naar spraak-service, waarmee u uw toepassingen, hulpprogram ma's of apparaten tekst kunt converteren naar mensen met een menselijke ervaring. Kies uit standaard-en Neural stemmen of maak een aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in een geselecteerd aantal talen en land instellingen. Zie [ondersteunde talen](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen, talen en land instellingen.
 
 > [!NOTE]
 > Bing Speech is uit bedrijf genomen op 15 oktober 2019. Als uw toepassingen, hulpprogram ma's of producten gebruikmaken van de Bing Speech Api's of Custom Speech, hebben we gidsen gemaakt om u te helpen migreren naar de speech-service.
@@ -48,7 +50,7 @@ Bekijk de [Snelstartgids](get-started-text-to-speech.md) om aan de slag te gaan 
 Voorbeeld code voor tekst-naar-spraak is beschikbaar op GitHub. Deze voor beelden hebben betrekking op conversie van tekst naar spraak in de populairste programmeer talen.
 
 - [Voor beelden van tekst naar spraak (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Voor beelden van tekst naar spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Voorbeelden van tekst-naar-spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="customization"></a>Aanpassing
 
@@ -68,10 +70,10 @@ Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/spe
 > [!IMPORTANT]
 > Elk Chinees, Japans en Koreaans teken worden als twee tekens beschouwd voor facturering.
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 - [Speech-SDK](speech-sdk.md)
-- [REST API: tekst-naar-spraak](rest-text-to-speech.md)
+- [REST API: Tekst-naar-spraak](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

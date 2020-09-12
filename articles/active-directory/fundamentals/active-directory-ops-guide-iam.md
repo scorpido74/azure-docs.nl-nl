@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298611"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321664"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Naslag Gids voor identiteits-en toegangs beheer van Azure Active Directory
 
@@ -45,14 +45,14 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 
 #### <a name="assigning-owners-recommended-reading"></a>Eigen aren toewijzen aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Governance in Azure](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Synchronisatie van on-premises identiteiten
 
 ### <a name="identify-and-resolve-synchronization-issues"></a>Synchronisatie problemen identificeren en oplossen
 
-Micro soft raadt u aan een goede basis lijn te hebben en te weten te komen over de problemen in uw on-premises omgeving die kunnen leiden tot synchronisatie problemen met de Cloud. Omdat automatische hulpprogram ma's, zoals [IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) en [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) , een groot aantal fout-positieven kunnen genereren, raden we u aan om synchronisatie fouten te identificeren die meer dan 100 dagen niet zijn geadresseerd door het opschonen van die objecten in een fout. Met lange termijn onopgeloste synchronisatie fouten kunnen ondersteunings incidenten worden gegenereerd. [Bij het oplossen van problemen tijdens de synchronisatie](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors) wordt een overzicht gegeven van de verschillende typen synchronisatie fouten, enkele van de mogelijke scenario's die deze fouten veroorzaken en mogelijke manieren om de fouten op te lossen.
+Micro soft raadt u aan een goede basis lijn te hebben en te weten te komen over de problemen in uw on-premises omgeving die kunnen leiden tot synchronisatie problemen met de Cloud. Omdat automatische hulpprogram ma's, zoals [IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) en [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#why-use-azure-ad-connect-health) , een groot aantal fout-positieven kunnen genereren, raden we u aan om synchronisatie fouten te identificeren die meer dan 100 dagen niet zijn geadresseerd door het opschonen van die objecten in een fout. Met lange termijn onopgeloste synchronisatie fouten kunnen ondersteunings incidenten worden gegenereerd. [Bij het oplossen van problemen tijdens de synchronisatie](../hybrid/tshoot-connect-sync-errors.md) wordt een overzicht gegeven van de verschillende typen synchronisatie fouten, enkele van de mogelijke scenario's die deze fouten veroorzaken en mogelijke manieren om de fouten op te lossen.
 
 ### <a name="azure-ad-connect-sync-configuration"></a>Configuratie van Azure AD Connect synchronisatie
 
@@ -81,7 +81,7 @@ Voor beelden van objecten die moeten worden uitgesloten:
 > [!NOTE]
 > Als één menselijke identiteit meerdere accounts heeft ingericht van iets zoals een verouderde domein migratie, fusie of overname, moet u het account dat door de gebruiker wordt gebruikt, bijvoorbeeld alleen op basis van een dag per dag synchroniseren, zoals wat ze gebruiken om zich aan te melden bij hun computer.
 
-In het ideale geval moet u een evenwicht bereiken tussen het verminderen van het aantal objecten dat moet worden gesynchroniseerd en de complexiteit van de regels. Over het algemeen is een combi natie tussen organisatie-eenheid/container [filtering](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) en een eenvoudige kenmerk toewijzing aan het kenmerk cloudFiltered een efficiënte filter combinatie.
+In het ideale geval moet u een evenwicht bereiken tussen het verminderen van het aantal objecten dat moet worden gesynchroniseerd en de complexiteit van de regels. Over het algemeen is een combi natie tussen organisatie-eenheid/container [filtering](../hybrid/how-to-connect-sync-configure-filtering.md) en een eenvoudige kenmerk toewijzing aan het kenmerk cloudFiltered een efficiënte filter combinatie.
 
 > [!IMPORTANT]
 > Als u groeps filters gebruikt in de productie, moet u overstappen op een andere filter methode.
@@ -105,7 +105,7 @@ Als uw Azure AD Connect-versie meer dan zes maanden achter is, moet u een upgrad
 
 #### <a name="source-anchor"></a>Bron anker
 
-Als u **MS-DS-consistencyguid** als [bron-anker](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts) gebruikt, kan de migratie van objecten tussen forests en domeinen eenvoudiger worden gemigreerd, wat gebruikelijk is in AD-domein consolidatie/opschoning, samen voegingen, acquisities en divestitures.
+Als u **MS-DS-consistencyguid** als [bron-anker](../hybrid/plan-connect-design-concepts.md) gebruikt, kan de migratie van objecten tussen forests en domeinen eenvoudiger worden gemigreerd, wat gebruikelijk is in AD-domein consolidatie/opschoning, samen voegingen, acquisities en divestitures.
 
 Als u **ObjectGuid** momenteel als bron-anker gebruikt, raden we u aan om te scha kelen naar het gebruik van **MS-DS-ConsistencyGuid**.
 
@@ -138,7 +138,7 @@ De [Azure AD Connect-configuratie Documenter](https://github.com/Microsoft/AADCo
 
 ### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Op groepen gebaseerde licentie verlening voor micro soft-Cloud Services
 
-Azure Active Directory stroomlijnt het beheer van licenties via [op groepen gebaseerde licentie verlening](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) voor micro soft-Cloud Services. Op deze manier biedt IAM de groeps infrastructuur en gedelegeerd beheer van deze groepen aan de juiste teams in de organisaties. Er zijn meerdere manieren om het lidmaatschap van groepen in azure AD in te stellen, waaronder:
+Azure Active Directory stroomlijnt het beheer van licenties via [op groepen gebaseerde licentie verlening](./active-directory-licensing-whatis-azure-portal.md) voor micro soft-Cloud Services. Op deze manier biedt IAM de groeps infrastructuur en gedelegeerd beheer van deze groepen aan de juiste teams in de organisaties. Er zijn meerdere manieren om het lidmaatschap van groepen in azure AD in te stellen, waaronder:
 
 - De **synchronisatie van on-premises** groepen kan afkomstig zijn uit on-premises directory's. Dit kan handig zijn voor organisaties die groeps beheer processen hebben ingesteld die kunnen worden uitgebreid om licenties toe te wijzen in Office 365.
 
@@ -157,26 +157,26 @@ Gebruik de volgende richt lijnen om service plannen te definiëren voor gebruike
 - Optioneel kan een kenmerk worden gedefinieerd om de pakketten voor gebruikers in op te slaan.
 
 > [!IMPORTANT]
-> Op groep gebaseerde licentie verlening in azure AD introduceert het concept van gebruikers met een licentie fout status. Als u eventuele licentie fouten ziet, moet u de problemen met de licentie toewijzing onmiddellijk [identificeren en oplossen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems) .
+> Op groep gebaseerde licentie verlening in azure AD introduceert het concept van gebruikers met een licentie fout status. Als u eventuele licentie fouten ziet, moet u de problemen met de licentie toewijzing onmiddellijk [identificeren en oplossen](../users-groups-roles/licensing-groups-resolve-problems.md) .
 
 ![Er wordt automatisch een scherm opname van een computer scherm beschrijving gegenereerd](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Levenscyclus beheer
 
-Als u momenteel een hulp programma gebruikt, zoals [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) of een systeem van derden, dat afhankelijk is van een on-premises infra structuur, raden we u aan de toewijzing te offloaden van het bestaande hulp programma, op groepen gebaseerde licentie verlening te implementeren en een groeps levenscyclus beheer te definiëren op basis van [groepen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups). Als uw bestaande proces geen rekening houdt met nieuwe werk nemers of werk nemers die de organisatie verlaten, moet u ook op groep gebaseerde licentie verlening implementeren op basis van dynamische groepen en de levens cyclus van groepslid maatschappen definiëren. Ten slotte, als op groepen gebaseerde licentie verlening is geïmplementeerd op on-premises groepen die geen levenscyclus beheer hebben, kunt u overwegen Cloud groepen te gebruiken voor het inschakelen van mogelijkheden zoals gedelegeerd eigendom of dynamisch lidmaatschap van een kenmerk.
+Als u momenteel een hulp programma gebruikt, zoals [Microsoft Identity Manager](/microsoft-identity-manager/) of een systeem van derden, dat afhankelijk is van een on-premises infra structuur, raden we u aan de toewijzing te offloaden van het bestaande hulp programma, op groepen gebaseerde licentie verlening te implementeren en een groeps levenscyclus beheer te definiëren op basis van [groepen](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Als uw bestaande proces geen rekening houdt met nieuwe werk nemers of werk nemers die de organisatie verlaten, moet u ook op groep gebaseerde licentie verlening implementeren op basis van dynamische groepen en de levens cyclus van groepslid maatschappen definiëren. Ten slotte, als op groepen gebaseerde licentie verlening is geïmplementeerd op on-premises groepen die geen levenscyclus beheer hebben, kunt u overwegen Cloud groepen te gebruiken voor het inschakelen van mogelijkheden zoals gedelegeerd eigendom of dynamisch lidmaatschap van een kenmerk.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>Toewijzing van apps met de groep alle gebruikers
 
 Resource-eigen aren kunnen van mening zijn dat de groep **alle gebruikers** alleen **werk nemers** van het bedrijf bevat wanneer ze mogelijk zowel **zakelijke mede werkers** als **gasten**bevatten. Als gevolg hiervan moet u bijzondere aandacht best denken wanneer u de groep **alle gebruikers** gebruikt voor het toewijzen van toepassingen en het verlenen van toegang tot resources, zoals share point-inhoud of-toepassingen.
 
 > [!IMPORTANT]
-> Als de groep **alle gebruikers** is ingeschakeld en wordt gebruikt voor beleid voor voorwaardelijke toegang, app of resource toewijzing, moet u [de groep beveiligen](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) als u geen gast gebruikers wilt toevoegen. Bovendien moet u uw licentie toewijzingen oplossen door te maken en toe te wijzen aan groepen die alleen **werk nemers** van een onderneming bevatten. Als u daarentegen ziet dat de groep **alle gebruikers** is ingeschakeld, maar niet wordt gebruikt om toegang te verlenen tot resources, moet u ervoor zorgen dat de operationele richt lijnen van uw organisatie opzettelijk gebruikmaken van die groep (die zowel **zakelijke mede werkers** als **gasten**bevat).
+> Als de groep **alle gebruikers** is ingeschakeld en wordt gebruikt voor beleid voor voorwaardelijke toegang, app of resource toewijzing, moet u [de groep beveiligen](../external-identities/use-dynamic-groups.md) als u geen gast gebruikers wilt toevoegen. Bovendien moet u uw licentie toewijzingen oplossen door te maken en toe te wijzen aan groepen die alleen **werk nemers** van een onderneming bevatten. Als u daarentegen ziet dat de groep **alle gebruikers** is ingeschakeld, maar niet wordt gebruikt om toegang te verlenen tot resources, moet u ervoor zorgen dat de operationele richt lijnen van uw organisatie opzettelijk gebruikmaken van die groep (die zowel **zakelijke mede werkers** als **gasten**bevat).
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatische gebruikers inrichting voor apps
 
-[Automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) voor toepassingen is de beste manier om een consistente inrichting, het ongedaan maken van de inrichting en de levens cyclus van identiteiten op meerdere systemen te creëren.
+[Automatische gebruikers inrichting](../app-provisioning/user-provisioning.md) voor toepassingen is de beste manier om een consistente inrichting, het ongedaan maken van de inrichting en de levens cyclus van identiteiten op meerdere systemen te creëren.
 
-Als u momenteel apps op een ad-hoc manier inricht of dingen zoals CSV-bestanden, JIT of een lokale oplossing gebruikt die geen levenscyclus beheer verbiedt, raden we u aan om [toepassings inrichting te implementeren](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application) met Azure AD voor ondersteunde toepassingen en een consistent patroon te definiëren voor toepassingen die nog niet door Azure AD worden ondersteund.
+Als u momenteel apps op een ad-hoc manier inricht of dingen zoals CSV-bestanden, JIT of een lokale oplossing gebruikt die geen levenscyclus beheer verbiedt, raden we u aan om [toepassings inrichting te implementeren](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) met Azure AD voor ondersteunde toepassingen en een consistent patroon te definiëren voor toepassingen die nog niet door Azure AD worden ondersteund.
 
 ![Azure AD-inrichtings service](./media/active-directory-ops-guide/active-directory-ops-img3.png)
 
@@ -184,12 +184,12 @@ Als u momenteel apps op een ad-hoc manier inricht of dingen zoals CSV-bestanden,
 
 Het is belang rijk om inzicht te krijgen in het volume van wijzigingen in uw organisatie en ervoor te zorgen dat het niet te lang duurt om een voorspel bare synchronisatie tijd te hebben.
 
-De [Standaard Delta synchronisatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) frequentie is 30 minuten. Als de Delta synchronisatie langer dan 30 minuten consistent duurt, of als er aanzienlijke verschillen zijn tussen de Delta synchronisatie prestaties van staging en productie, moet u de factoren onderzoeken en controleren die [van invloed zijn op de prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors).
+De [Standaard Delta synchronisatie](../hybrid/how-to-connect-sync-feature-scheduler.md) frequentie is 30 minuten. Als de Delta synchronisatie langer dan 30 minuten consistent duurt, of als er aanzienlijke verschillen zijn tussen de Delta synchronisatie prestaties van staging en productie, moet u de factoren onderzoeken en controleren die [van invloed zijn op de prestaties van Azure AD Connect](../hybrid/plan-connect-performance-factors.md).
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect probleem oplossing aanbevolen lezen
 
-- [Directory kenmerken voorbereiden voor synchronisatie met Office 365 met behulp van het IdFix-hulp programma-Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
-- [Azure AD Connect: problemen tijdens de synchronisatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
+- [Directory kenmerken voorbereiden voor synchronisatie met Office 365 met behulp van het IdFix-hulp programma-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Azure AD Connect: problemen tijdens de synchronisatie oplossen](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Samenvatting
 

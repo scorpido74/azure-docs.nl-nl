@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816300"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440334"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -232,7 +232,7 @@ De volgende Azure-hulpprogram ma's zijn geïnstalleerd op de VM:
 * **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U hebt toegang tot Storage Explorer via het pictogram Bureaublad snelkoppeling. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11 door sturen hebben ingesteld.
 * **Azure-bibliotheken**: Hier volgen enkele van de vooraf geïnstalleerde bibliotheken.
   
-  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken kunt u toegang krijgen tot Azure Storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-data base in Azure). De vierde bibliotheek, pyodbc (samen met het micro soft ODBC-stuur programma voor SQL Server), biedt toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse van python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg ervoor dat u deze opdracht uitvoert in zowel de python 2,7-als de 3,5-omgeving.
+  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken kunt u toegang krijgen tot Azure Storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-data base in Azure). De vierde bibliotheek, pyodbc (samen met het micro soft ODBC-stuur programma voor SQL Server), biedt toegang tot SQL Server, Azure SQL Database en Azure Synapse Analytics van python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg ervoor dat u deze opdracht uitvoert in zowel de python 2,7-als de 3,5-omgeving.
   * **R**: de Azure-gerelateerde bibliotheken in R zijn AZUREML en RODBC.
   * **Java**: de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de virtuele machine. De belangrijkste bibliotheken zijn Azure-opslag-en beheer-Api's, Azure Cosmos DB en JDBC-Stuur Programma's voor SQL Server.  
 

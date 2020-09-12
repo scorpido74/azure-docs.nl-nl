@@ -1,44 +1,42 @@
 ---
-title: bestand opnemen
+title: Include-bestand
 description: bestand insluiten voor vertrouwelijke client scenario landings pagina's (daemon, Web-app, Web-API)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 08/14/2020
 ms.author: jmprieur
-ms.custom: include file
-ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102598"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436461"
 ---
-## <a name="register-secrets-or-certificates"></a>Geheimen of certificaten registreren
+## <a name="add-a-client-secret-or-certificate"></a>Een client geheim of-certificaat toevoegen
 
-Net als bij elke vertrouwelijke client toepassing moet u een geheim of certificaat registreren. U kunt uw toepassings geheimen registreren via de interactieve ervaring in het [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) of door gebruik te maken van opdracht regel programma's (zoals Power shell).
+Net als bij elke vertrouwelijke client toepassing moet u een geheim of certificaat toevoegen om te fungeren als *referenties* van de toepassing, zodat het als zichzelf kan worden geverifieerd, zonder tussen komst van de gebruiker.
 
-### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Client geheimen registreren met behulp van de portal voor toepassings registratie
+U kunt referenties toevoegen aan de registratie van uw client-app met behulp van de [Azure Portal](#add-client-credentials-by-using-the-azure-portal) of door gebruik te maken van een opdracht regel programma zoals [Power shell](#add-client-credentials-by-using-powershell).
 
-Het beheer van client referenties vindt plaats op de pagina **certificaten & geheimen** voor een toepassing:
+### <a name="add-client-credentials-by-using-the-azure-portal"></a>Client Referenties toevoegen met behulp van de Azure Portal
 
-![Pagina certificaten & geheimen](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+Als u referenties wilt toevoegen aan de app-registratie van uw vertrouwelijke client toepassing, volgt u de stappen in [Quick Start: een toepassing registreren met het micro soft-identiteits platform](../articles/active-directory/develop/quickstart-register-app.md) voor het type referentie dat u wilt toevoegen:
 
-- U maakt een *client geheim* door **Nieuw client geheim** te selecteren in de registratie van de app in de Azure Portal. Wanneer u een client geheim maakt, _moet_ u de teken reeks van het geheim vastleggen voordat u naar het deel venster **certificaten & geheimen** gaat navigeren. De teken reeks van het geheim wordt nooit opnieuw weer gegeven.
-- Tijdens de registratie van de toepassing gebruikt u de knop **certificaat uploaden** om het certificaat te uploaden. Azure AD ondersteunt alleen certificaten die rechtstreeks zijn geregistreerd bij de toepassing en die niet voldoen aan de certificaat ketens.
+* [Een client geheim toevoegen](../articles/active-directory/develop/quickstart-register-app.md#add-a-client-secret)
+* [Een certificaat toevoegen](../articles/active-directory/develop/quickstart-register-app.md#add-a-certificate)
 
-Voor meer informatie raadpleegt [u Quick Start: een client toepassing configureren voor toegang tot Web-api's | Voeg referenties toe aan uw toepassing](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+### <a name="add-client-credentials-by-using-powershell"></a>Client Referenties toevoegen met behulp van Power shell
 
-### <a name="register-client-secrets-by-using-powershell"></a>Client geheimen registreren met behulp van Power shell
+U kunt ook referenties toevoegen wanneer u uw toepassing registreert bij het micro soft Identity-platform met behulp van Power shell.
 
-U kunt uw toepassing ook registreren bij Azure AD met behulp van opdracht regel Programma's. Het voor beeld van de [Active-Directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe u een toepassings geheim of certificaat kunt registreren bij een Azure AD-toepassing:
+Het code voorbeeld [Active-Directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) in github laat zien hoe u een toepassings geheim of certificaat toevoegt bij het registreren van een toepassing:
 
-- Zie [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)voor meer informatie over het registreren van een toepassings geheim.
-- Zie [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)voor meer informatie over het registreren van een certificaat bij een toepassing.
+- Zie [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)voor meer informatie over het toevoegen van een **client geheim** met Power shell.
+- Zie [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)voor meer informatie over het toevoegen van een **certificaat** met Power shell.

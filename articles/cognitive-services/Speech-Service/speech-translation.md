@@ -1,28 +1,29 @@
 ---
-title: Spraak omzetting met spraak service
+title: Overzicht van spraak omzetting-spraak service
 titleSuffix: Azure Cognitive Services
-description: Met de spraak service kunt u een end-to-end, realtime vertaling van spraak naar uw toepassingen, hulpprogram ma's en apparaten toevoegen. Dezelfde API kan worden gebruikt voor omzetting van zowel spraak-naar-spraak als spraak-naar-tekst.
+description: Met spraak omzetting kunt u een end-to-end, realtime vertaling van spraak naar uw toepassingen, hulpprogram ma's en apparaten toevoegen. Dezelfde API kan worden gebruikt voor omzetting van zowel spraak-naar-spraak als spraak-naar-tekst. Dit artikel bevat een overzicht van de voor delen en mogelijkheden van de service voor spraak omzetting.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/01/2020
 ms.author: erhopf
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
+keywords: spraak omzetting
+ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055529"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401211"
 ---
 # <a name="what-is-speech-translation"></a>Wat is spraakomzetting?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Spraak omzetting van de spraak service biedt de mogelijkheid om audio gegevensstromen in realtime, meertalige spraak naar spraak en spraak naar tekst te converteren. Met de spraak-SDK hebben uw toepassingen, hulpprogram ma's en apparaten toegang tot de bron-transcripties en de Vertaal uitvoer voor de audio. Tijdelijke transcriptie en vertaal resultaten worden geretourneerd als spraak wordt gedetecteerd en de eind resultaten kunnen worden omgezet in gesynthesizerde spraak.
+In dit overzicht vindt u meer informatie over de voor delen en mogelijkheden van de service voor spraak omzetting, waarmee u audio gegevensstromen in realtime, meertalige spraak naar spraak en spraak naar tekst kunt omzetten. Met de spraak-SDK hebben uw toepassingen, hulpprogram ma's en apparaten toegang tot de bron-transcripties en de Vertaal uitvoer voor de audio. Tussenliggende transcriptie-en vertaal resultaten worden geretourneerd als spraak wordt gedetecteerd en de uiteindelijke resultaten kunnen worden omgezet in gesynthesizerde spraak.
 
 De Vertaal engine van micro soft wordt aangedreven door twee verschillende benaderingen: statistische machine vertaling (SMT) en Neural machine translation (NMT). SMT maakt gebruik van geavanceerde statistische analyses om de best mogelijke vertalingen te ramen, op basis van de context van enkele woorden. Met NMT worden Neural-netwerken gebruikt om nauw keurige, natuurlijke geluids omzetting te bieden met behulp van de volledige context van zinnen voor het vertalen van woorden.
 
@@ -51,16 +52,16 @@ Als uw toepassingen, hulpprogram ma's of producten de [Translator Speech-API](ht
 
 * [Migreren van de Translator Speech-API naar de speech-service](how-to-migrate-from-translator-speech-api.md)
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [Speech-SDK](speech-sdk-reference.md)
 * [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: spraak naar tekst](rest-speech-to-text.md)
-* [REST API: tekst-naar-spraak](rest-text-to-speech.md)
-* [REST API: batch transcriptie en-aanpassing](https://westus.cris.ai/swagger/ui/index)
+* [REST API: Spraak-naar-tekst](rest-speech-to-text.md)
+* [REST API: Tekst-naar-spraak](rest-text-to-speech.md)
+* [REST API: Batchtranscriptie en aanpassing](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * De [Snelstartgids](get-started-speech-translation.md) voor spraak omzetting volt ooien
-* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [Verkrijg gratis een spraakserviceabonnementssleutel](get-started.md)
 * [De Speech SDK ophalen](speech-sdk.md)

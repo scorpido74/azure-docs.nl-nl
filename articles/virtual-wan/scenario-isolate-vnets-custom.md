@@ -8,18 +8,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831019"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400055"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scenario: aangepaste isolatie voor VNets
 
 Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In een aangepast isolatie scenario voor VNets is het doel om te voor komen dat specifieke sets van VNets een andere set VNets kunnen bereiken. De VNets zijn echter vereist om alle branches te bereiken (VPN/er/gebruikers-VPN). Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
-## <a name="design"></a><a name="design"></a>Ontwerpen
+## <a name="design"></a><a name="design"></a>Ontwerp
 
 Als u wilt weten hoeveel route tabellen er nodig zijn, kunt u een verbindings matrix maken. In dit scenario ziet het er als volgt uit, waarbij elke cel aangeeft of een bron (rij) kan communiceren met een doel (kolom):
 
@@ -29,7 +29,7 @@ Als u wilt weten hoeveel route tabellen er nodig zijn, kunt u een verbindings ma
 | **Rode VNets**  |   &#8594;|              |       X       |       X      |
 | **Vertakkingen**   |   &#8594;|     X        |       X       |       X      |
 
-In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom.
+In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom, waarbij een ' X ' betekent dat de connectiviteit wordt verschaft door Virtual WAN.
 
 Het aantal verschillende rijtypen is het aantal route tabellen dat in dit scenario nodig is. In dit geval zijn er drie route route tabellen die we **RT_BLUE** en **RT_RED** aanroepen voor de virtuele netwerken, en de **standaard** voor de vertakkingen. Houd er rekening mee dat de branches altijd moeten worden gekoppeld aan de standaard routerings tabel.
 

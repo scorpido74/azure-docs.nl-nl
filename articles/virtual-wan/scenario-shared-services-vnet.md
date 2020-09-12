@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c72ff14246f3f96980fe1de2fdef16794bf23e4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006482"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399987"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scenario: route naar gedeelde services VNets
 
@@ -24,7 +24,7 @@ Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor 
 
 ## <a name="design"></a><a name="design"></a>Ontwerp
 
-We kunnen een verbindings matrix gebruiken om de vereisten van dit scenario samen te vatten. In de matrix wordt in elke cel beschreven of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom.
+We kunnen een verbindings matrix gebruiken om de vereisten van dit scenario samen te vatten. In de matrix wordt in elke cel beschreven of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom. Een ' X ' betekent dat de connectiviteit wordt verschaft door Virtual WAN:
 
 **Verbindings matrix**
 

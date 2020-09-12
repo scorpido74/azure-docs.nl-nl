@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723942"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400349"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
@@ -47,7 +47,7 @@ In dit artikel wordt beschreven hoe u Git inschakelt en gebruikt voor het behere
 
 ## <a name="access-git-configuration-in-your-service"></a>Toegang tot Git-configuratie in uw service
 
-Als u uw Git-configuratie-instellingen wilt weer geven en configureren, klikt u op het menu **beveiliging** en gaat u naar het tabblad **configuratie opslagplaats** .
+Als u uw Git-configuratie-instellingen wilt weer geven en configureren, klikt u op het menu **implementatie en infra structuur** en gaat u naar het tabblad **opslag plaats** .
 
 ![GIT inschakelen][api-management-enable-git]
 
@@ -62,7 +62,7 @@ Zie voor meer informatie over het in-of uitschakelen van Git-toegang met behulp 
 
 De eerste stap voordat u de opslag plaats kloont, is door de huidige status van de service configuratie op te slaan in de opslag plaats. Klik op **opslaan in opslag plaats**.
 
-Breng de gewenste wijzigingen aan in het bevestigings scherm en klik op **OK** om op te slaan.
+Breng de gewenste wijzigingen aan in het bevestigings scherm en klik op **Opslaan** om op te slaan.
 
 Na enkele ogen blikken wordt de configuratie opgeslagen en wordt de configuratie status van de opslag plaats weer gegeven, met inbegrip van de datum en tijd van de laatste configuratie wijziging en de laatste synchronisatie tussen de service configuratie en de opslag plaats.
 
@@ -112,7 +112,7 @@ Zodra de opslag plaats is gekloond, kunt u deze in uw lokale bestands systeem we
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Uw lokale opslag plaats bijwerken met de meest recente service-exemplaar configuratie
 
-Als u wijzigingen aanbrengt in uw API Management service-exemplaar in de Azure Portal of de REST API gebruikt, moet u deze wijzigingen opslaan in de opslag plaats voordat u uw lokale opslag plaats kunt bijwerken met de meest recente wijzigingen. Hiertoe klikt u op **configuratie opslaan in opslag plaats** op het tabblad **configuratie opslagplaats** in het Azure Portal en geeft u de volgende opdracht op in uw lokale opslag plaats.
+Als u wijzigingen aanbrengt in uw API Management service-exemplaar in de Azure Portal of de REST API gebruikt, moet u deze wijzigingen opslaan in de opslag plaats voordat u uw lokale opslag plaats kunt bijwerken met de meest recente wijzigingen. Als u dit wilt doen, klikt u op **opslaan in opslag plaats** op het tabblad **opslag plaats** in het Azure Portal en geeft u de volgende opdracht op in uw lokale opslag plaats.
 
 ```
 git pull
@@ -198,7 +198,7 @@ De hoofdmap `api-management` bevat een `configuration.json` bestand dat informat
 }
 ```
 
-De eerste vier instellingen ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` en `UserRegistrationTermsConsentRequired` ) worden toegewezen aan de volgende instellingen op het tabblad **identiteiten** in het gedeelte **beveiliging** .
+De eerste vier instellingen ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` en `UserRegistrationTermsConsentRequired` ) worden toegewezen aan de volgende instellingen op het tabblad **identiteiten** in het gedeelte **ontwikkelaars Portal** .
 
 | Identiteits instelling | Wordt toegewezen aan |
 | --- | --- |
@@ -208,7 +208,7 @@ De eerste vier instellingen ( `RegistrationEnabled` , `UserRegistrationTerms` , 
 | UserRegistrationTermsConsentRequired |Selectie vakje **toestemming vereisen** |
 | RequireUserSigninEnabled |Selectie vakje **anonieme gebruikers omleiden naar aanmeldings pagina** |
 
-De volgende vier instellingen ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` en `DelegationValidationKey` ) worden toegewezen aan de volgende instellingen op het tabblad **delegering** in het gedeelte **beveiliging** .
+De volgende vier instellingen ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` en `DelegationValidationKey` ) worden toegewezen aan de volgende instellingen op het tabblad **delegering** in het gedeelte **ontwikkelaars Portal** .
 
 | Overdrachts instelling | Wordt toegewezen aan |
 | --- | --- |

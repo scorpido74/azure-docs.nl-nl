@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80876289"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321715"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -48,8 +48,8 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 
 #### <a name="owner-recommended-reading"></a>Door eigenaar aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Governance in Azure](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Referentiebeheer
 
@@ -61,13 +61,13 @@ Gebruik de onderstaande tabel om de aanbevolen oplossing te vinden voor het bepe
 
 | Probleem | Aanbeveling |
 | :- | :- |
-| Geen mechanisme om te beveiligen tegen zwakke wacht woorden | [Selfservice voor wachtwoord herstel (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) en [wachtwoord beveiliging](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) voor Azure AD inschakelen |
-| Geen mechanisme voor het detecteren van gelekte wacht woorden | [Wacht woord-hash-synchronisatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) inschakelen om inzichten te verkrijgen |
-| AD FS gebruiken en kan niet worden verplaatst naar beheerde verificatie | Inschakelen [AD FS extranet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) en/of [Azure AD Smart-vergren deling](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) |
-| Wachtwoord beleid maakt gebruik van regels op basis van complexiteit, zoals lengte, meerdere teken sets of verval datum | Bekijk het voor deel van [Aanbevolen procedures van micro soft](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) en schakel uw benadering uit voor wachtwoord beheer en implementeer [Azure AD-wachtwoord beveiliging](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad). |
-| Gebruikers zijn niet geregistreerd voor het gebruik van multi-factor Authentication (MFA) | [Alle beveiligings gegevens van de gebruiker registreren](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) zodat deze kan worden gebruikt als mechanisme om de identiteit van de gebruiker en het bijbehorende wacht woord te verifiëren |
-| Er worden geen wacht woorden ingetrokken op basis van het risico van gebruikers | Azure AD [Identity Protection-beleid voor gebruikers Risico's](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) implementeren om wachtwoord wijzigingen op gelekte referenties te forceren met behulp van SSPR |
-| Er is geen slim vergrendelings mechanisme om kwaad aardige verificatie te beschermen tegen beschadigde Actors die afkomstig zijn van geïdentificeerde IP-adressen | Door de Cloud beheerde authenticatie met hash-synchronisatie of [Pass Through-verificatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) implementeren |
+| Geen mechanisme om te beveiligen tegen zwakke wacht woorden | [Selfservice voor wachtwoord herstel (SSPR)](../authentication/concept-sspr-howitworks.md) en [wachtwoord beveiliging](../authentication/concept-password-ban-bad-on-premises.md) voor Azure AD inschakelen |
+| Geen mechanisme voor het detecteren van gelekte wacht woorden | [Wacht woord-hash-synchronisatie](../hybrid/how-to-connect-password-hash-synchronization.md) (PHS) inschakelen om inzichten te verkrijgen |
+| AD FS gebruiken en kan niet worden verplaatst naar beheerde verificatie | Inschakelen [AD FS extranet](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) en/of [Azure AD Smart-vergren deling](../authentication/howto-password-smart-lockout.md) |
+| Wachtwoord beleid maakt gebruik van regels op basis van complexiteit, zoals lengte, meerdere teken sets of verval datum | Bekijk het voor deel van [Aanbevolen procedures van micro soft](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) en schakel uw benadering uit voor wachtwoord beheer en implementeer [Azure AD-wachtwoord beveiliging](../authentication/concept-password-ban-bad.md). |
+| Gebruikers zijn niet geregistreerd voor het gebruik van multi-factor Authentication (MFA) | [Alle beveiligings gegevens van de gebruiker registreren](../identity-protection/howto-identity-protection-configure-mfa-policy.md) zodat deze kan worden gebruikt als mechanisme om de identiteit van de gebruiker en het bijbehorende wacht woord te verifiëren |
+| Er worden geen wacht woorden ingetrokken op basis van het risico van gebruikers | Azure AD [Identity Protection-beleid voor gebruikers Risico's](../identity-protection/howto-identity-protection-configure-risk-policies.md) implementeren om wachtwoord wijzigingen op gelekte referenties te forceren met behulp van SSPR |
+| Er is geen slim vergrendelings mechanisme om kwaad aardige verificatie te beschermen tegen beschadigde Actors die afkomstig zijn van geïdentificeerde IP-adressen | Door de Cloud beheerde authenticatie met hash-synchronisatie of [Pass Through-verificatie](../hybrid/how-to-connect-pta-quick-start.md) (PTA) implementeren |
 
 #### <a name="password-policies-recommended-reading"></a>Wachtwoord beleid wordt aanbevolen te lezen
 
@@ -77,19 +77,19 @@ Gebruik de onderstaande tabel om de aanbevolen oplossing te vinden voor het bepe
 
 Gebruikers die hun wacht woord moeten wijzigen of opnieuw moeten instellen, zijn een van de grootste bronnen van het volume en de kosten van helpdesk oproepen. Naast de kosten is het wijzigen van het wacht woord als een hulp programma voor het beperken van een gebruikers risico een fundamentele stap bij het verbeteren van de beveiligings postuur van uw organisatie.
 
-U kunt het beste Azure AD [self-service voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) (SSPR) en on-premises [wachtwoord beveiliging](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) implementeren om het volgende te bereiken:
+U kunt het beste Azure AD [self-service voor wachtwoord herstel](../authentication/concept-sspr-howitworks.md) (SSPR) en on-premises [wachtwoord beveiliging](../authentication/howto-password-ban-bad-on-premises-deploy.md) implementeren om het volgende te bereiken:
 
 - Bewijkend Help Desk-aanroepen.
 - Het gebruik van tijdelijke wacht woorden vervangen.
 - Vervang de bestaande selfservice oplossing voor wachtwoord beheer die afhankelijk is van een on-premises oplossing.
-- [Elimineer zwakke wacht woorden](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) in uw organisatie.
+- [Elimineer zwakke wacht woorden](../authentication/concept-password-ban-bad.md) in uw organisatie.
 
 > [!NOTE]
-> Voor organisaties met een Azure AD Premium P2-abonnement, wordt het aanbevolen SSPR te implementeren en deze te gebruiken als onderdeel van een [gebruikers risico beleid voor identiteits beveiliging](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy).
+> Voor organisaties met een Azure AD Premium P2-abonnement, wordt het aanbevolen SSPR te implementeren en deze te gebruiken als onderdeel van een [gebruikers risico beleid voor identiteits beveiliging](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
 ### <a name="strong-credential-management"></a>Sterk referentie beheer
 
-Wacht woorden zijn niet veilig genoeg om te voor komen dat ongeldige actors toegang krijgen tot uw omgeving. Elke gebruiker met een bevoegd account moet mini maal zijn ingeschakeld voor multi-factor Authentication (MFA). In het ideale geval moet u [gecombineerde registratie](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) inschakelen en vereisen dat alle gebruikers zich registreren voor MFA en SSPR met behulp van de [gecombineerde registratie-ervaring](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview). Uiteindelijk raden wij u aan een strategie te nemen om [flexibiliteit te bieden](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls) om het risico van vergren deling door onvoorziene omstandigheden te verminderen.
+Wacht woorden zijn niet veilig genoeg om te voor komen dat ongeldige actors toegang krijgen tot uw omgeving. Elke gebruiker met een bevoegd account moet mini maal zijn ingeschakeld voor multi-factor Authentication (MFA). In het ideale geval moet u [gecombineerde registratie](../authentication/concept-registration-mfa-sspr-combined.md) inschakelen en vereisen dat alle gebruikers zich registreren voor MFA en SSPR met behulp van de [gecombineerde registratie-ervaring](../user-help/security-info-setup-signin.md). Uiteindelijk raden wij u aan een strategie te nemen om [flexibiliteit te bieden](../authentication/concept-resilient-controls.md) om het risico van vergren deling door onvoorziene omstandigheden te verminderen.
 
 ![Stroom voor gecombineerde gebruikers ervaring](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -127,7 +127,7 @@ Net als een gebruiker in uw organisatie is een apparaat een kernidentiteit die u
 
 U kunt dit doel doen door de apparaat-id's te halen en te beheren in azure AD met behulp van een van de volgende methoden:
 
-- Organisaties kunnen [Microsoft intune](https://docs.microsoft.com/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevings beleid af te dwingen, de status van het apparaat te bevestigen en beleids regels voor voorwaardelijke toegang in te stellen op basis van het feit of het apparaat compatibel is. Microsoft Intune kunt iOS-apparaten, Mac-Bureau bladen (via JAMF-integratie), Windows-Bureau bladen (systeem eigen gebruik van Mobile Device Management voor Windows 10 en co-beheer met micro soft endpoint Configuration Manager) en mobiele Android-apparaten beheren.
+- Organisaties kunnen [Microsoft intune](/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevings beleid af te dwingen, de status van het apparaat te bevestigen en beleids regels voor voorwaardelijke toegang in te stellen op basis van het feit of het apparaat compatibel is. Microsoft Intune kunt iOS-apparaten, Mac-Bureau bladen (via JAMF-integratie), Windows-Bureau bladen (systeem eigen gebruik van Mobile Device Management voor Windows 10 en co-beheer met micro soft endpoint Configuration Manager) en mobiele Android-apparaten beheren.
 - [Hybride Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) biedt beheer met groeps beleid of micro soft Endpoint-Configuration Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure AD te brengen, wordt de gebruikers productiviteit via eenmalige aanmelding in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](../conditional-access/overview.md)   tegelijk kunt beveiligen.
 
 Als u Windows-apparaten die lid zijn van een domein die niet zijn geregistreerd in de Cloud, of Windows-apparaten die lid zijn van het domein die zijn geregistreerd in de Cloud, maar geen beleid voor voorwaardelijke toegang, moet u de niet-geregistreerde apparaten registreren en in beide gevallen [hybride Azure AD join gebruiken als een besturings element](../conditional-access/require-managed-devices.md) in uw beleid voor voorwaardelijke toegang.
@@ -141,11 +141,11 @@ Als u apparaten beheert met MDM of Microsoft Intune, maar niet met behulp van ap
 #### <a name="device-trust-access-policies-recommended-reading"></a>Toegangs beleid voor vertrouwens relaties van apparaten aanbevolen lezen
 
 - [Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen](../devices/hybrid-azuread-join-plan.md)
-- [Configuraties voor identiteit en apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Configuraties voor identiteiten en apparaattoegang](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven
 
-In Windows 10 vervangt [Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) wacht woorden met een sterke twee ledige verificatie op pc's. Windows hello voor bedrijven biedt een meer gestroomlijnde MFA-ervaring voor gebruikers en vermindert uw afhankelijkheid van wacht woorden. Als u Windows 10-apparaten niet hebt uitgerold of slechts gedeeltelijk hebt geïmplementeerd, raden we u aan een upgrade naar Windows 10 uit te voeren en [Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) op alle apparaten in te scha kelen.
+In Windows 10 vervangt [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification) wacht woorden met een sterke twee ledige verificatie op pc's. Windows hello voor bedrijven biedt een meer gestroomlijnde MFA-ervaring voor gebruikers en vermindert uw afhankelijkheid van wacht woorden. Als u Windows 10-apparaten niet hebt uitgerold of slechts gedeeltelijk hebt geïmplementeerd, raden we u aan een upgrade naar Windows 10 uit te voeren en [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) op alle apparaten in te scha kelen.
 
 Als u meer wilt weten over verificatie met een wacht woord, kunt u [een wereld zonder wacht woorden zien met Azure Active Directory](../authentication/concept-authentication-passwordless.md).
 
@@ -184,22 +184,22 @@ Het [migreren van apps van AD FS naar Azure AD](../manage-apps/migrate-adfs-apps
 - Definieer dynamische groepen als gebruikers kenmerken de toegang tot toepassingen consistent kunnen bepalen.
 - Implementeer Attestation naar groepen die worden gebruikt voor toegang tot toepassingen met [Azure AD-toegangs beoordelingen](../governance/access-reviews-overview.md).
 
-Als u daarentegen toepassingen vindt die aan afzonderlijke gebruikers zijn toegewezen, moet u ervoor zorgen dat [governance](https://docs.microsoft.com/azure/active-directory/governance/index) rond deze toepassingen wordt geïmplementeerd.
+Als u daarentegen toepassingen vindt die aan afzonderlijke gebruikers zijn toegewezen, moet u ervoor zorgen dat [governance](../governance/index.yml) rond deze toepassingen wordt geïmplementeerd.
 
 #### <a name="assign-users-to-applications-recommended-reading"></a>Gebruikers toewijzen aan toepassingen aanbevolen te lezen
 
-- [Gebruikers en groepen toewijzen aan een toepassing in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)
-- [Machtigingen voor app-registratie in Azure Active Directory delegeren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
-- [Dynamische lidmaatschaps regels voor groepen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
+- [Gebruikers en groepen toewijzen aan een toepassing in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)
+- [Machtigingen voor app-registratie in Azure Active Directory delegeren](../users-groups-roles/roles-delegate-app-roles.md)
+- [Dynamische lidmaatschapsregels voor groepen in Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Toegangsbeleid
 
 ### <a name="named-locations"></a>Benoemde locaties
 
-Met [benoemde locaties](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in azure AD kunt u vertrouwde IP-adresbereiken labelen in uw organisatie. Azure AD maakt gebruik van benoemde locaties voor:
+Met [benoemde locaties](../reports-monitoring/quickstart-configure-named-locations.md) in azure AD kunt u vertrouwde IP-adresbereiken labelen in uw organisatie. Azure AD maakt gebruik van benoemde locaties voor:
 
 - Voorkom fout-positieven in risico gebeurtenissen. Wanneer u zich aanmeldt vanaf een vertrouwde netwerk locatie, wordt het aanmeldings risico van een gebruiker verlaagd.
-- Configureren van [Voorwaardelijke toegang op basis van locatie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations).
+- Configureren van [Voorwaardelijke toegang op basis van locatie](../reports-monitoring/quickstart-configure-named-locations.md).
 
 ![Benoemde locatie](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -217,7 +217,7 @@ Gebruik de onderstaande tabel op basis van prioriteit voor de aanbevolen oplossi
 
 Azure AD kan het risico berekenen voor elke aanmelding en elke gebruiker. Het gebruik van een risico als criterium in het toegangs beleid kan een betere gebruikers ervaring bieden, bijvoorbeeld minder verificatie vragen en betere beveiliging, bijvoorbeeld alleen gebruikers vragen wanneer ze nodig zijn, en de reactie en het herstel automatiseren.
 
-![Beleid voor aanmeldings Risico's](./media/active-directory-ops-guide/active-directory-ops-img11.png)
+![Beleid voor aanmeldingsrisico's](./media/active-directory-ops-guide/active-directory-ops-img11.png)
 
 Als u al beschikt over Azure AD Premium P2-licenties die ondersteuning bieden voor het gebruik van Risico's in het toegangs beleid, maar deze niet worden gebruikt, kunt u het beste risico toevoegen aan uw beveiligings postuur.
 
@@ -255,10 +255,10 @@ Voorwaardelijke toegang is een essentieel hulp programma voor het verbeteren van
 
 #### <a name="conditional-access-recommended-reading"></a>Voorwaardelijke toegang aanbevolen lezen
 
-- [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Configuraties voor identiteit en apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
-- [Algemeen beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
+- [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](../conditional-access/best-practices.md)
+- [Configuraties voor identiteiten en apparaattoegang](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-conditions.md)
+- [Algemeen beleid voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-policy-common.md)
 
 ## <a name="access-surface-area"></a>Toegang surface area
 
@@ -273,9 +273,9 @@ Verouderde verificatie is een term die verwijst naar verificatie protocollen die
 
 Kwaadwillende personen geven de voor keur aan deze protocollen, bijna [100% van aanvallen met wachtwoord spray](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984) gebruiken verouderde verificatie protocollen. Hackers gebruiken verouderde verificatie protocollen, omdat ze geen ondersteuning bieden voor interactieve aanmelding, wat nodig is voor extra beveiligings problemen zoals multi-factor Authentication en verificatie van apparaten.
 
-Als verouderde verificatie veel in uw omgeving wordt gebruikt, moet u plannen om verouderde clients te migreren naar clients die [moderne verificatie](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) zo snel mogelijk ondersteunen. Als u in hetzelfde token een aantal gebruikers hebt die al gebruikmaken van moderne verificatie, maar anderen die nog steeds gebruikmaken van verouderde verificatie, moet u de volgende stappen uitvoeren om verouderde verificatie-clients te vergren delen:
+Als verouderde verificatie veel in uw omgeving wordt gebruikt, moet u plannen om verouderde clients te migreren naar clients die [moderne verificatie](/office365/enterprise/modern-auth-for-office-2013-and-2016) zo snel mogelijk ondersteunen. Als u in hetzelfde token een aantal gebruikers hebt die al gebruikmaken van moderne verificatie, maar anderen die nog steeds gebruikmaken van verouderde verificatie, moet u de volgende stappen uitvoeren om verouderde verificatie-clients te vergren delen:
 
-1. Gebruik [rapporten voor aanmeldings activiteiten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) om gebruikers te identificeren die nog steeds gebruikmaken van verouderde verificatie en herstel plannen:
+1. Gebruik [rapporten voor aanmeldings activiteiten](../reports-monitoring/concept-sign-ins.md) om gebruikers te identificeren die nog steeds gebruikmaken van verouderde verificatie en herstel plannen:
 
    a. Voer een upgrade uit naar gebruikers die geschikt zijn voor authenticatie.
    
@@ -288,7 +288,7 @@ Als verouderde verificatie veel in uw omgeving wordt gebruikt, moet u plannen om
 
 #### <a name="legacy-authentication-recommended-reading"></a>Verouderde verificatie wordt aanbevolen te lezen
 
-- [POP3-of IMAP4-toegang tot post vakken in Exchange server in-of uitschakelen](https://docs.microsoft.com/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [POP3-of IMAP4-toegang tot post vakken in Exchange server in-of uitschakelen](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
 
 ### <a name="consent-grants"></a>Verleende toestemming
 
@@ -316,11 +316,11 @@ Hieronder vindt u een lijst met apps met machtigingen die u mogelijk wilt scruti
 | Microsoft Graph API| Map. AccessAsUser. alle |
 | Azure REST API | user_impersonation |
 
-Om dit scenario te voor komen, dient u te verwijzen naar [illegale toestemming subsidies in Office 365 te detecteren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) en op te lossen om toepassingen te identificeren en te herstellen met illegale subsidies of toepassingen die meer subsidies hebben dan nodig zijn. Vervolgens [verwijdert u self-service samen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) en stelt u beheer [procedures](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)in. Ten slotte kunt u regel matig beoordelingen van app-machtigingen plannen en deze verwijderen wanneer ze niet nodig zijn.
+Om dit scenario te voor komen, dient u te verwijzen naar [illegale toestemming subsidies in Office 365 te detecteren](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) en op te lossen om toepassingen te identificeren en te herstellen met illegale subsidies of toepassingen die meer subsidies hebben dan nodig zijn. Vervolgens [verwijdert u self-service samen](../manage-apps/configure-user-consent.md) en stelt u beheer [procedures](../manage-apps/configure-admin-consent-workflow.md)in. Ten slotte kunt u regel matig beoordelingen van app-machtigingen plannen en deze verwijderen wanneer ze niet nodig zijn.
 
 #### <a name="consent-grants-recommended-reading"></a>Toestemming toekenningen aanbevolen te lezen
 
-- [Microsoft Graph API-machtigingen](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API-machtigingen](/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Gebruikers-en groeps instellingen
 
@@ -328,7 +328,7 @@ Hieronder ziet u de gebruikers-en groeps instellingen die kunnen worden vergrend
 
 #### <a name="user-settings"></a>Gebruikersinstellingen
 
-- **Externe gebruikers** : externe samen werking kan op biologische wijze plaatsvinden in de onderneming met Services als Teams, Power bi, share point Online en Azure Information Protection. Als u expliciete beperkingen hebt voor het beheren van de door de gebruiker gestarte externe samen werking, wordt u aangeraden externe gebruikers in te scha kelen met behulp van het [beheer van rechten van Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) of een gecontroleerde bewerking, zoals via uw Help Desk. Als u geen organische externe samen werking voor services wilt toestaan, kunt u [leden blok keren om externe gebruikers volledig uit te nodigen](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations). U kunt ook specifieke domeinen in uitnodigingen voor externe gebruikers [toestaan of blok keren](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) .
+- **Externe gebruikers** : externe samen werking kan op biologische wijze plaatsvinden in de onderneming met Services als Teams, Power bi, share point Online en Azure Information Protection. Als u expliciete beperkingen hebt voor het beheren van de door de gebruiker gestarte externe samen werking, wordt u aangeraden externe gebruikers in te scha kelen met behulp van het [beheer van rechten van Azure AD](../governance/entitlement-management-overview.md) of een gecontroleerde bewerking, zoals via uw Help Desk. Als u geen organische externe samen werking voor services wilt toestaan, kunt u [leden blok keren om externe gebruikers volledig uit te nodigen](../external-identities/delegate-invitations.md). U kunt ook specifieke domeinen in uitnodigingen voor externe gebruikers [toestaan of blok keren](../external-identities/allow-deny-list.md) .
 - **App-registraties** : als app-registraties zijn ingeschakeld, kunnen eind gebruikers toepassingen zelf opheffen en toegang tot hun gegevens verlenen. Een typisch voor beeld van app-registratie is het inschakelen van Outlook-invoeg toepassingen of spraak assistenten, zoals Alexa en SIRI, om hun e-mail en agenda te lezen of e-mail berichten te verzenden. Als de klant besluit om de app-registratie uit te scha kelen, moeten de InfoSec-en IAM-teams betrokken zijn bij het beheer van uitzonde ringen (app-registraties die nodig zijn op basis van de bedrijfs vereisten), omdat ze de toepassingen moeten registreren met een beheerders account en waarschijnlijk een proces moeten ontwerpen om het proces te operationeel maken.
 - **Beheer Portal** : organisaties kunnen de Azure AD-Blade in de Azure Portal vergren delen, zodat niet-beheerders geen toegang hebben tot Azure AD-beheer in de Azure Portal en worden verward. Ga naar de gebruikers instellingen in de Azure AD-beheer Portal om de toegang te beperken:
 
@@ -343,33 +343,33 @@ Hieronder ziet u de gebruikers-en groeps instellingen die kunnen worden vergrend
 
 #### <a name="groups-recommended-reading"></a>Aanbevolen groepen lezen
 
-- [Wat is Azure Active Directory B2B-samenwerking?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-- [Toepassingen integreren met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- [Apps, machtigingen en toestemming in Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
-- [Groepen gebruiken voor het beheren van de toegang tot resources in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-- [Toegangs beheer voor selfservice toepassingen instellen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)
+- [Wat is Azure Active Directory B2B-samenwerking?](../external-identities/what-is-b2b.md)
+- [Toepassingen integreren met Azure Active Directory](../develop/quickstart-register-app.md)
+- [Apps, machtigingen en toestemming in Azure Active Directory.](../develop/quickstart-register-app.md)
+- [Groepen gebruiken voor het beheren van de toegang tot resources in Azure Active Directory](./active-directory-manage-groups.md)
+- [Toegangs beheer voor selfservice toepassingen instellen in Azure Active Directory](../users-groups-roles/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Verkeer van onverwachte locaties
 
-Aanvallers zijn afkomstig van verschillende onderdelen van de wereld. Beheer dit risico door gebruik te maken van beleids regels voor voorwaardelijke toegang met de locatie van de voor waarde. De [locatie voorwaarde](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) van een beleid voor voorwaardelijke toegang stelt u in staat om toegang te blok keren voor locaties van waaruit er geen zakelijke reden is om zich aan te melden.
+Aanvallers zijn afkomstig van verschillende onderdelen van de wereld. Beheer dit risico door gebruik te maken van beleids regels voor voorwaardelijke toegang met de locatie van de voor waarde. De [locatie voorwaarde](../conditional-access/location-condition.md) van een beleid voor voorwaardelijke toegang stelt u in staat om toegang te blok keren voor locaties van waaruit er geen zakelijke reden is om zich aan te melden.
 
 ![Een nieuwe benoemde locatie maken](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
-Gebruik, indien beschikbaar, een SIEM-oplossing (Security Information and Event Management) om de toegang tot verschillende regio's te analyseren en te bepalen. Als u geen SIEM-product gebruikt of geen verificatie gegevens opneemt vanuit Azure AD, raden we u aan [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) te gebruiken om de toegang tot verschillende regio's te identificeren.
+Gebruik, indien beschikbaar, een SIEM-oplossing (Security Information and Event Management) om de toegang tot verschillende regio's te analyseren en te bepalen. Als u geen SIEM-product gebruikt of geen verificatie gegevens opneemt vanuit Azure AD, raden we u aan [Azure monitor](../../azure-monitor/overview.md) te gebruiken om de toegang tot verschillende regio's te identificeren.
 
 ## <a name="access-usage"></a>Toegang tot gebruik
 
 ### <a name="azure-ad-logs-archived-and-integrated-with-incident-response-plans"></a>Azure AD-logboeken gearchiveerd en geïntegreerd met incident response plannen
 
-U hebt toegang tot de aanmeldings activiteiten, audits en risico gebeurtenissen voor Azure AD van cruciaal belang voor het oplossen van problemen, gebruiks analyses en forensische onderzoek. Azure AD biedt toegang tot deze bronnen via REST Api's die een beperkte Bewaar periode hebben. Een SIEM-systeem (Security Information and Event Management) of gelijkwaardige archiverings technologie is essentieel voor lange termijn opslag van audits en ondersteuning. Als u lange termijn opslag van Azure AD-logboeken wilt inschakelen, moet u deze toevoegen aan uw bestaande SIEM-oplossing of gebruikmaken van [Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor). Archiveer logboeken die kunnen worden gebruikt als onderdeel van het antwoord plannen en onderzoeken van uw incident.
+U hebt toegang tot de aanmeldings activiteiten, audits en risico gebeurtenissen voor Azure AD van cruciaal belang voor het oplossen van problemen, gebruiks analyses en forensische onderzoek. Azure AD biedt toegang tot deze bronnen via REST Api's die een beperkte Bewaar periode hebben. Een SIEM-systeem (Security Information and Event Management) of gelijkwaardige archiverings technologie is essentieel voor lange termijn opslag van audits en ondersteuning. Als u lange termijn opslag van Azure AD-logboeken wilt inschakelen, moet u deze toevoegen aan uw bestaande SIEM-oplossing of gebruikmaken van [Azure monitor](../reports-monitoring/concept-activity-logs-azure-monitor.md). Archiveer logboeken die kunnen worden gebruikt als onderdeel van het antwoord plannen en onderzoeken van uw incident.
 
 #### <a name="logs-recommended-reading"></a>Aanbevolen Lees logboeken
 
-- [Naslag informatie over Azure Active Directory controle-API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)
-- [Rapport API-referentie voor Azure Active Directory-aanmeld activiteiten](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-sign-in-activity-reference)
-- [Gegevens ophalen met de rapportage-API van Azure AD met certificaten](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
-- [Microsoft Graph voor Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
-- [Naslag informatie voor Office 365 Management Activity API](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
+- [Naslag informatie over Azure Active Directory controle-API](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Rapport API-referentie voor Azure Active Directory-aanmeld activiteiten](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Gegevens ophalen met de rapportage-API van Azure AD met certificaten](../reports-monitoring/tutorial-access-api-with-certificates.md)
+- [Microsoft Graph voor Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)
+- [Naslag informatie voor Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Azure Active Directory Power BI Content Pack gebruiken](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Samenvatting

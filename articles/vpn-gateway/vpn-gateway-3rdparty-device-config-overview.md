@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/20/2017
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988077"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400157"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Overzicht van configuraties van VPN-apparaten voor partners
 Dit artikel bevat een overzicht van het configureren van on-premises VPN-apparaten om verbinding te maken met Azure VPN-gateways. Een voor beeld van een virtueel Azure-netwerk en een VPN-gateway Setup wordt gebruikt om te laten zien hoe u verbinding kunt maken met verschillende on-premises VPN-configuraties met dezelfde para meters.
@@ -43,7 +43,7 @@ In deze sectie vindt u de para meters voor de voor beelden die in de vorige sect
 | * On-premises BGP ASN         | 65050                        |
 | * On-premises BGP-peer-IP     | 10.52.255.254                |
 
-\*Optionele para meter voor alleen BGP.
+\* Optionele para meter voor alleen BGP.
 
 ### <a name="sample-powershell-script"></a>Power shell-voorbeeld script
 Deze sectie bevat een voorbeeld script om aan de slag te gaan. Zie [een S2S-VPN-verbinding maken met behulp van Power shell](vpn-gateway-create-site-to-site-rm-powershell.md)voor gedetailleerde instructies.

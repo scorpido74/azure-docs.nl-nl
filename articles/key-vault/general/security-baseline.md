@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230276"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400463"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-beveiligingsbasislijn voor Key Vault
 
@@ -411,7 +411,7 @@ Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plann
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: logboek en waarschuwing voor verdachte activiteiten van beheerders accounts
 
-**Hulp**: gebruik Azure Active Directory (AAD) PRIVILEGED Identity Management (PIM) voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik AAD-risico detecties om waarschuwingen en rapporten weer te geven over Risk ante gebruikers gedrag. Voor aanvullende logboek registratie kunt u waarschuwingen voor Azure Security Center risico detectie verzenden naar Azure Monitor en aangepaste waarschuwingen/meldingen configureren met actie groepen.
+**Hulp**: gebruik Azure Active Directory (Azure AD) PRIVILEGED Identity Management (PIM) voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure AD-risico detecties om waarschuwingen en rapporten weer te geven over Risk ante gebruikers gedrag. Voor aanvullende logboek registratie kunt u waarschuwingen voor Azure Security Center risico detectie verzenden naar Azure Monitor en aangepaste waarschuwingen/meldingen configureren met actie groepen.
 
 Schakel Advanced Threat Protection (ATP) in voor Azure Key Vault om waarschuwingen te genereren voor verdachte activiteiten.
 
@@ -445,7 +445,7 @@ Wat is de voor waarde van de locatie in Azure Active Directory voorwaardelijke t
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
-**Hulp**: gebruik Azure Active Directory (Aad) als centraal verificatie-en autorisatie systeem voor Azure-resources, zoals Key Vault. Hierdoor kan op rollen gebaseerd toegangs beheer (RBAC) gevoelige bronnen worden beheerd.
+**Hulp**: gebruik Azure Active Directory (Azure AD) als centraal verificatie-en autorisatie systeem voor Azure-resources, zoals Key Vault. Hierdoor kan op rollen gebaseerd toegangs beheer (RBAC) gevoelige bronnen worden beheerd.
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
-**Hulp**: Raadpleeg Azure Active Directory-Logboeken (Aad) om verouderde accounts met Azure Key Vault beheerders rollen te detecteren. Daarnaast kunt u toegangs Beoordelingen voor AAD gebruiken om groepslid maatschappen efficiënt te beheren, toegang te krijgen tot bedrijfs toepassingen die kunnen worden gebruikt voor toegang tot Azure Key Vault en roltoewijzingen. Gebruikers toegang moet regel matig worden gecontroleerd, bijvoorbeeld elke 90 dagen, om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
+**Hulp**: Raadpleeg Azure Active Directory-Logboeken (Azure AD) om verouderde accounts met Azure Key Vault beheerders rollen te detecteren. Daarnaast kunt u Azure AD-toegangs beoordelingen gebruiken om groepslid maatschappen efficiënt te beheren, toegang te krijgen tot bedrijfs toepassingen die kunnen worden gebruikt voor toegang tot Azure Key Vault en roltoewijzingen. Gebruikers toegang moet regel matig worden gecontroleerd, bijvoorbeeld elke 90 dagen, om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
 Azure Active Directory rapporten en controle-documentatie:
 
@@ -516,7 +516,7 @@ Ondersteunde services en scenario's in algemene Beschik baarheid: https://docs.m
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 Een Key Vault maken:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Key Vault verificatie bieden met een beheerde identiteit: 
+Verificatie bij Key Vault:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Een Key Vault toegangs beleid toewijzen:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center bewaking**: Ja
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-Integratie met door Azure beheerde identiteiten: 
+* [Integratie met door Azure beheerde identiteiten](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [Een Key Vault maken](quick-create-portal.md)
 
-Een Key Vault maken: 
+* [Verifiëren bij Key Vault](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-Key Vault verificatie bieden met een beheerde identiteit:  
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [Toegangs beleid voor Key Vault toewijzen](assign-access-policy-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

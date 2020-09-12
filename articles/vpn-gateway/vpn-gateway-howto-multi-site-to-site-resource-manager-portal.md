@@ -7,20 +7,20 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/09/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121422"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401194"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding
 
 > [!div class="op_single_selector"]
 > * [Azure-portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [Power shell (klassiek)](vpn-gateway-multi-site.md)
+> * [PowerShell (klassiek)](vpn-gateway-multi-site.md)
 >
 > 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553424"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400072"
 ---
 # <a name="scenario-any-to-any"></a>Scenario: any-to-any
 
@@ -29,7 +29,7 @@ Om erachter te komen hoeveel route tabellen nodig zijn in een virtueel WAN-scena
 | VNets     | &#8594;|      X     |     X    |
 | Vertakkingen   | &#8594;|    X     |     X    |
 
-In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom.
+In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan '-zijde van de stroom, de rijkoppen in de tabel) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom, waarbij een ' X ' betekent dat de connectiviteit wordt verschaft door Virtual WAN.
 
 Aangezien alle verbindingen van zowel VNets als filialen (VPN, ExpressRoute en gebruikers VPN) dezelfde connectiviteits vereisten hebben, is er één route tabel vereist. Als gevolg hiervan worden alle verbindingen gekoppeld en door gegeven aan dezelfde route tabel, de standaard route tabel:
 

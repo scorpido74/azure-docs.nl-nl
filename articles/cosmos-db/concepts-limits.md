@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605764"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400310"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -118,6 +118,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-container een verzam
 | Maximum aantal paden in het indexerings beleid| 100 <sup>*</sup>|
 | Maximum aantal unieke sleutels per container|6 <sup>*</sup>|
 | Maximum aantal paden per beperking van de unieke sleutel|18 <sup>*</sup>|
+| Maximale TTL-waarde |2147483647|
 
 <sup>*</sup> U kunt deze limieten per container verhogen door contact op te nemen met de ondersteuning van Azure.
 
@@ -136,6 +137,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-item een document in
 | Maximale lengte van eigenschaps waarde | Geen praktische limiet |
 | Maximale lengte van de waarde van de teken reeks eigenschap | Geen praktische limiet |
 | Maximale lengte van de waarde van de numerieke eigenschap | IEEE754 met dubbele precisie van 64 bits |
+| Maximale TTL-waarde |2147483647|
 
 Er zijn geen beperkingen voor de nettoladingen van het item, zoals het aantal eigenschappen en de diepte van het nesten, met uitzonde ring van de lengte beperkingen voor de waarden van de partitie sleutel en-ID en de totale grootte beperking van 2 MB. Mogelijk moet u het indexerings beleid voor containers met grote of complexe item structuren configureren om het gebruik van RU te verminderen. Zie [modellerings items in Cosmos DB](how-to-model-partition-example.md) voor een echt voor beeld en patronen voor het beheren van grote items.
 
